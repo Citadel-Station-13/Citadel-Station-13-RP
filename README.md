@@ -1,12 +1,12 @@
-# VOREStation
+# Citadel Station 13 - RP Server
 
 [![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/compatibility-club-penguin.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/no-ragrets.svg)](http://forthebadge.com)
 
-[Website](https://vore-station.net) - [Forums](https://forum.vore-station.net/) - [Wiki](https://wiki.vore-station.net/)
+[Website](https://citadel-station.net/home/)
 
 Going to make a Pull Request? Make sure you read the [CONTRIBUTING.md](.github/CONTRIBUTING.md) first!
 
-VOREStation is a fork of the Polaris code branch, itself a fork of the Baystation12 code branch, for the game Space Station 13.
+Citadel Station 13 - RP is a fork of VOREStation. VOREStation is a fork of the Polaris code branch, itself a fork of the Baystation12 code branch, for the game Space Station 13.
 
 ---
 
