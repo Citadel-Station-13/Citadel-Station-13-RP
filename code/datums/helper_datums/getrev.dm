@@ -32,7 +32,6 @@ var/global/datum/getrev/revdata = new()
 	world.log << revision
 
 	if(testmerge.len)	//CITADEL CHANGES START HERE - TGS3 testmerges
-		world.log << commit
 		for(var/line in testmerge)
 			if(line)
 				var/datum/tgs_revision_information/test_merge/tm = line
