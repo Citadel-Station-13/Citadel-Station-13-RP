@@ -1,7 +1,7 @@
 var/global/datum/controller/gameticker/ticker
 
 /datum/controller/gameticker
-	var/const/restart_timeout = 2 MINUTES //One minute is 600. -CIT EDIT, CHANGED FROM 3 TO 2 MINUTES.
+	var/const/restart_timeout = 2 MINUTES //One minute is 600. /CITADEL CHANGE - reduces the round end restart timer to 2 minutes
 	var/current_state = GAME_STATE_PREGAME
 
 	var/hide_mode = 0
