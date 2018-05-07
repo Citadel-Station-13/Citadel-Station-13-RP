@@ -5,8 +5,10 @@ var/global/datum/getrev/revdata = new()
 	var/revision
 	var/date
 	var/showinfo
+	var/list/testmerge = list()	//CITADEL CHANGE - adds hooks for TGS3 integration
 
 /datum/getrev/New()
+	testmerge = world.TgsTestMerges()	//CITADEL CHANGE - adds hooks for TGS3 testmerge display
 	var/list/head_branch = file2list(".git/HEAD", "\n")
 	if(head_branch.len)
 		branch = copytext(head_branch[1], 17)
@@ -29,6 +31,14 @@ var/global/datum/getrev/revdata = new()
 	world.log << date
 	world.log << revision
 
+	if(testmerge.len)	//CITADEL CHANGES START HERE - TGS3 testmerges
+		world.log << commit
+		for(var/line in testmerge)
+			if(line)
+				var/datum/tgs_revision_information/test_merge/tm = line
+				var/tmcommit = tm.commit
+				world.log << "Test merge active of PR #[line] commit [tmcommit]"	//END OF CITADEL CHANGES
+
 client/verb/showrevinfo()
 	set category = "OOC"
 	set name = "Show Server Revision"
@@ -38,7 +48,23 @@ client/verb/showrevinfo()
 		src << "<b>Server revision:</b> [revdata.branch] - [revdata.date]"
 		if(config.githuburl)
 			src << "<a href='[config.githuburl]/commit/[revdata.revision]'>[revdata.revision]</a>"
+			if(revdata.testmerge.len)	//CITADEL CHANGE - TGS3 testmerge display
+				src << revdata.GetTestMergeInfo()	//CITADEL CHANGE - ditto
 		else
 			src << revdata.revision
 	else
 		src << "Revision unknown"
+
+//CITADEL CHANGES START HERE - TGS3 testmerge stuff
+/datum/getrev/proc/GetTestMergeInfo(header = TRUE)
+	if(!testmerge.len)
+		return ""
+	. = header ? "The following pull requests are currently test merged:<br>" : ""
+	for(var/line in testmerge)
+		var/datum/tgs_revision_information/test_merge/tm = line
+		var/cm = tm.pull_request_commit
+		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext(cm, 1, min(length(cm), 11)))
+		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.holder))
+			continue
+		. += "<a href=\"[config.githuburl]/pull/[tm.number]\">#[tm.number][details]</a><br>"
+//END OF CITADEL CHANGES

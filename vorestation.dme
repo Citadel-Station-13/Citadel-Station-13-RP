@@ -2882,6 +2882,8 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+#include "modular_citadel\code\modules\admin\chat_commands.dm"
+#include "modular_citadel\code\modules\DMAPI\tgs.config.dm"
 #include "modular_citadel\code\modules\DMAPI\tgs.dm"
 #include "modular_citadel\code\modules\DMAPI\tgs\includes.dm"
 // END_INCLUDE
