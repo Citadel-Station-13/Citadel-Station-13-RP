@@ -42,6 +42,8 @@
 
 //Sender is optional
 /proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
+	if(message)	//CITADEL CHANGE - adds TGS3 integration to those fancy verbose round event messages
+		world.TgsTargetedChatBroadcast(message, TRUE)	//CITADEL CHANGE - ditto
 	if (!config.chat_webhook_url || !message)
 		return
 	spawn(0)
