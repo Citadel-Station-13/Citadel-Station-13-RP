@@ -68,7 +68,7 @@
 	if(logs.len)
 		logs = splittext(logs[logs.len - 1], " ")
 		commit = logs[2]
-	logs = file2list(".git/logs/refs/remotes/origin/master")
+	logs = file2list(".git/logs/refs/remotes/origin/tgs3")
 	if(logs.len)
 		originmastercommit = splittext(logs[logs.len - 1], " ")[2]
 
