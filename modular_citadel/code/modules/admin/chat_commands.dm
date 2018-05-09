@@ -24,7 +24,7 @@
 		var/client/C = directory[target]
 		if(C)
 			var/reconstructedmessage = all_params.Join(" ")
-			C << "<spam class='danger'>Discord Admin PM from [sender.friendly_name]:</span><span class='warning'> [reconstructedmessage]</span><br><span class='info'>Use the adminhelp verb to reply</span>"
+			C << "<span class='danger'>Discord Admin PM from [sender.friendly_name]:</span><span class='warning'> [reconstructedmessage]</span><br><span class='info'>Use the adminhelp verb to reply</span>"
 			C << 'sound/effects/adminhelp.ogg'
 			log_admin("Discord PM: [sender.friendly_name]->[key_name(C)]: [reconstructedmessage]")
 			return "Admin PM sent!"
