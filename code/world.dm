@@ -150,7 +150,6 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
 	debug_log << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]"
-	TGS_TOPIC	//CITADEL CHANGE - Adds hooks for TGS3 integration
 
 	if (T == "ping")
 		var/x = 1
