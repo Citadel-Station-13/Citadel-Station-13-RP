@@ -21,6 +21,9 @@
 #include "code\names.dm"
 #include "code\stylesheet.dm"
 #include "code\world.dm"
+#include "code\___DMAPI\tgs.config.dm"
+#include "code\___DMAPI\tgs.dm"
+#include "code\___DMAPI\tgs\includes.dm"
 #include "code\__defines\_compile_options.dm"
 #include "code\__defines\_planes+layers.dm"
 #include "code\__defines\_planes+layers_vr.dm"
@@ -2882,4 +2885,6 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+#include "modular_citadel\code\world.dm"
+#include "modular_citadel\code\modules\admin\chat_commands.dm"
 // END_INCLUDE
