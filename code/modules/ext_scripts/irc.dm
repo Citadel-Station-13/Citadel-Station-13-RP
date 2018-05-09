@@ -26,13 +26,13 @@
 /proc/send2mainirc(var/msg)
 	if(config.main_irc)
 		send2irc(config.main_irc, msg)
-	TgsTargetedChatBroadcast(msg, FALSE)	//CIT CHANGE - makes TGS3 relay messages to connected channels
+	world.TgsTargetedChatBroadcast(msg, FALSE)	//CIT CHANGE - makes TGS3 relay messages to connected channels
 	return
 
 /proc/send2adminirc(var/msg)
 	if(config.admin_irc)
 		send2irc(config.admin_irc, msg)
-	TgsTargetedChatBroadcast(msg, TRUE)	//CIT CHANGE - makes TGS3 relay messages to connected channels
+	world.TgsTargetedChatBroadcast(msg, TRUE)	//CIT CHANGE - makes TGS3 relay messages to connected channels
 	return
 
 
