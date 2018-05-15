@@ -14137,13 +14137,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
-"aHC" = (
-/obj/structure/grille,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/rnd/external)
 "aHD" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -14175,13 +14168,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
-"aHH" = (
-/obj/structure/grille,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/rnd/external)
 "aHI" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -22488,47 +22474,42 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/external)
-"bOI" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals3{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals3,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "rnd_s_airlock";
-	pixel_x = 0;
+	pixel_x = -25;
 	pixel_y = 30
 	},
 /obj/machinery/airlock_sensor/phoron{
 	id_tag = "rnd_s_airlock_sensor";
-	pixel_x = 11;
+	pixel_x = -35;
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
+"bOI" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
+	frequency = 1379;
+	scrub_id = "rnd_s_airlock_scrubber";
+	scrubbing_gas = list("phoron")
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/external)
 "bOL" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals3{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals3{
-	dir = 5
-	},
-/obj/machinery/light_switch{
-	pixel_y = 25
-	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"
+	},
+/obj/structure/grille,
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -22548,6 +22529,14 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25;
+	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -22745,14 +22734,13 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "bQT" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	icon_state = "warningcorner";
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/machinery/power/apc{
 	dir = 2;
 	name = "south bump";
@@ -22761,24 +22749,13 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/external)
-"bQU" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 4
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
-	id_tag = "rnd_s_airlock_pump"
+	scrub_id = "rnd_s_airlock_scrubber";
+	scrubbing_gas = list("phoron")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -22798,6 +22775,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -33739,9 +33720,9 @@ aGr
 aGh
 aGv
 aZe
-aHe
-bOo
-bOo
+azr
+aah
+aah
 azr
 cdr
 cdr
@@ -33881,9 +33862,9 @@ aHv
 aGi
 aGw
 aHA
+azr
 aHe
-aHC
-aHC
+aHe
 aHe
 azr
 azr
@@ -34451,7 +34432,7 @@ bHW
 atG
 aHh
 bOL
-bQU
+bOL
 aHh
 aIr
 akb
@@ -34592,8 +34573,8 @@ aGA
 bIj
 aGR
 aHh
-aHH
-aHH
+bOo
+bOo
 aHh
 aah
 aah
@@ -34734,8 +34715,8 @@ aGm
 bIg
 aGR
 aHh
-bOo
-bOo
+aHh
+aHh
 aHh
 aah
 aah
@@ -34875,10 +34856,10 @@ aFn
 aFn
 bIp
 aGS
-aHh
-aHh
-aHh
-aHh
+aah
+aah
+aah
+aah
 aah
 aah
 aad
