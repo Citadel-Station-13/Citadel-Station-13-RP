@@ -11945,9 +11945,6 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/computer/guestpass{
-	pixel_y = 32
-	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "tN" = (
@@ -22943,7 +22940,8 @@
 "Nn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9;
-	icon_state = "intact"
+	icon_state = "intact";
+	
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/ai)
@@ -23099,7 +23097,8 @@
 "Qi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5;
-	icon_state = "intact"
+	icon_state = "intact";
+	
 	},
 /turf/simulated/floor,
 /area/maintenance/station/ai)
@@ -23112,7 +23111,8 @@
 "Qq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10;
-	icon_state = "intact"
+	icon_state = "intact";
+	
 	},
 /turf/simulated/floor,
 /area/maintenance/station/ai)
@@ -23120,7 +23120,8 @@
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10;
-	icon_state = "intact"
+	icon_state = "intact";
+	
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/ai)
