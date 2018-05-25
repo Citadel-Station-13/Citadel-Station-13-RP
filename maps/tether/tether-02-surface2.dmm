@@ -9518,6 +9518,7 @@
 	icon_state = "tube1";
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "te" = (
@@ -9970,6 +9971,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "tS" = (
@@ -10367,6 +10369,7 @@
 	pixel_x = 30;
 	pixel_y = 0
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "uC" = (
@@ -10927,6 +10930,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 6
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "vr" = (

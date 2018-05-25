@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /obj/structure/closet/radiation/New()
 	..()
 	new /obj/item/clothing/head/radiation(src)
@@ -23,4 +24,12 @@
 
 /obj/structure/closet/hydrant/New()
 	..()
+=======
+/obj/structure/closet/firecloset/New()
+	..()
+	new /obj/item/weapon/storage/toolbox/emergency(src)
+
+/obj/structure/closet/hydrant/New()
+	..()
+>>>>>>> 2616b96... Merge pull request #3755 from VOREStation/master
 	new /obj/item/weapon/storage/toolbox/emergency(src)
