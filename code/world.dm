@@ -121,7 +121,7 @@ var/global/datum/global_init/init = new ()
 
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
-	
+
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
@@ -548,11 +548,13 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
+	s += "<a href=\"https://citadel-station.net/home/\">" //Change this to wherever you want the hub to link to. CITADEL CHANGE - makes hub entry link to website
 //	s += "[game_version]"
-	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
-	s += ")"
+	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
+	s += "<br><small><i>Citadel's VOREStation-based server. Normie compatibility not guaranteed.</i></small><br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+
 
 	var/list/features = list()
 
@@ -562,7 +564,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		features += "<b>STARTING</b>"
 
-	if (!config.enter_allowed)
+	/*if (!config.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
 		features += "closed"
 
 	features += config.abandon_allowed ? "respawn" : "no respawn"
@@ -571,7 +573,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "vote"
 
 	if (config && config.allow_ai)
-		features += "AI allowed"
+		features += "AI allowed"*/
 
 	var/n = 0
 	for (var/mob/M in player_list)
@@ -588,7 +590,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "hosted by <b>[config.hostedby]</b>"
 
 	if (features)
-		s += ": [jointext(features, ", ")]"
+		s += "\[[jointext(features, ", ")]"	//CITADEL CHANGE - replaces colon with left bracket to make the hub entry a little fancier
 
 	/* does this help? I do not know */
 	if (src.status != s)
