@@ -2,14 +2,27 @@
 	name = "shoulder holster"
 	desc = "A handgun holster."
 	icon_state = "holster"
+<<<<<<< HEAD
 	slot = "utility"
+=======
+	slot = ACCESSORY_SLOT_TORSO //Legacy/balance purposes
+>>>>>>> 4cddf6c... Merge pull request #3762 from VOREStation/aro-sync-05-25-2018
 	concealed_holster = 1
 	var/obj/item/holstered = null
+	var/list/can_hold //VOREStation Add
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
+<<<<<<< HEAD
+=======
+	//VOREStation Edit - Machete sheath support
+	if (LAZYLEN(can_hold))
+		if(!is_type_in_list(I,can_hold))
+			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
+			return
+>>>>>>> 4cddf6c... Merge pull request #3762 from VOREStation/aro-sync-05-25-2018
 
 	if (!(I.slot_flags & SLOT_HOLSTER))
 		user << "<span class='warning'>[I] won't fit in [src]!</span>"
