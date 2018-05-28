@@ -55,9 +55,15 @@
 						/mob/living/simple_animal/hostile/carp,
 						/mob/living/simple_animal/hostile/mimic,
 						/mob/living/simple_animal/hostile/rat,
+<<<<<<< HEAD
 						/mob/living/simple_animal/otie;0.5)
 	..()
 
+=======
+						/mob/living/simple_animal/hostile/rat/passive,
+						/mob/living/simple_animal/otie;0.5))
+	return ..()
+>>>>>>> 27a5fc3... Merge pull request #3472 from Verkister/hangryrat
 
 /obj/structure/largecrate/animal/dangerous
 	name = "Dangerous Predator carrier"
