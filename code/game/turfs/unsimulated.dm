@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-/turf/unsimulated
-	name = "command"
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
-	initialized = TRUE // Don't call init on unsimulated turfs (at least not yet)
-=======
 /turf/unsimulated
 	name = "command"
 	oxygen = MOLES_O2STANDARD
@@ -22,4 +15,3 @@
 	..()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 //VOREStation Add End
->>>>>>> 1d068ef... Merge pull request #3742 from VOREStation/aro-smite
