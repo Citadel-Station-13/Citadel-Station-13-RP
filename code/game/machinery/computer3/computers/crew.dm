@@ -55,6 +55,14 @@
 		popup.set_content(t)
 		popup.open()
 
+<<<<<<< HEAD
+=======
+/datum/file/program/crew/proc/scan()
+	for(var/obj/item/clothing/under/C in world)
+		if((C.has_sensor) && (istype(C.loc, /mob/living/carbon/human)))
+			tracked |= C
+	return 1
+>>>>>>> a01737d... Merge pull request #3781 from VOREStation/upstream-merge-5304
 
 	proc/scan()
 		for(var/obj/item/clothing/under/C in world)
