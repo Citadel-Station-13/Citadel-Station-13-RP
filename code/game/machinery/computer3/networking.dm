@@ -161,6 +161,7 @@
 	name = "proximity networking terminal"
 	desc = "Connects a computer to adjacent machines"
 
+<<<<<<< HEAD
 	get_machines(var/typekey)
 		var/turf/T = get_turf(loc)
 		if(!istype(T))
@@ -183,6 +184,27 @@
 			return 0
 		if(get_dist(get_turf(previous),get_turf(loc)) == 1)
 			return 1
+=======
+/obj/item/part/computer/networking/prox/get_machines(var/typekey)
+	var/turf/T = get_turf(loc)
+	if(!istype(T))
+		return list()
+	if(typekey == null)
+		typekey = /obj/machinery
+	var/list/nearby_machines = list()
+	for(var/obj/O in T)
+		if(istype(O,typekey))
+			nearby_machines += O
+	for(var/d in cardinal)
+		var/turf/T2 = get_step(T,d)
+		for(var/obj/O in T2)
+			if(istype(O,typekey))
+				nearby_machines += O
+	return nearby_machines
+
+/obj/item/part/computer/networking/prox/verify_machine(var/obj/previous)
+	if(!previous)
+>>>>>>> e1176af... Merge pull request #3783 from VOREStation/upstream-merge-5307
 		return 0
 /*
 	Cable networking: Not currently used
