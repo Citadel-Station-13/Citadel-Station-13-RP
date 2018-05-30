@@ -593,9 +593,9 @@
 /area/maintenance/station/sec_upper)
 "bb" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 4;
-	pixel_y = 0
+	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/station/sec_upper)
@@ -670,6 +670,9 @@
 	},
 /obj/effect/floor_decal/corner/green/border{
 	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -755,11 +758,6 @@
 	},
 /obj/item/weapon/cell/device/weapon{
 	pixel_x = 3
-	},
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1666,6 +1664,7 @@
 /area/security/armory/blue)
 "cS" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/green)
 "cT" = (
@@ -1702,6 +1701,9 @@
 /area/security/armory/green)
 "cY" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/green)
 "cZ" = (
@@ -4629,6 +4631,9 @@
 /obj/item/target,
 /obj/item/target,
 /obj/item/target,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "im" = (
@@ -5201,14 +5206,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
-"ja" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/range)
 "jb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -5699,6 +5696,10 @@
 	},
 /obj/structure/table/standard,
 /obj/item/device/megaphone,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "jO" = (
@@ -14607,6 +14608,9 @@
 	pixel_y = 24;
 	req_access = list()
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "yg" = (
@@ -14891,6 +14895,9 @@
 	},
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 6
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/teleporter/departing)
@@ -15482,9 +15489,6 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 10
-	},
-/obj/machinery/light{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
@@ -16912,6 +16916,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 6
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "Cj" = (
@@ -17467,6 +17474,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "Dd" = (
@@ -22476,10 +22484,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
 /obj/machinery/vending/medical,
 /obj/machinery/status_display{
 	pixel_x = 32
@@ -22767,6 +22771,10 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "KN" = (
@@ -22961,6 +22969,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/ai)
+"Nm" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "QMLoad"
+	},
+/obj/machinery/light,
+/turf/simulated/floor,
+/area/quartermaster/storage)
 "Nn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9;
@@ -23092,6 +23108,21 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
+"PN" = (
+/obj/structure/bed/padded,
+/obj/item/weapon/bedsheet/medical,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/ward)
 "PS" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/plating,
@@ -23145,6 +23176,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/ai)
+"Qw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/structure/table/standard,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/floor/tiled,
+/area/security/briefing_room)
 "QC" = (
 /obj/structure/table/steel,
 /obj/random/maintenance,
@@ -23366,6 +23411,22 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
+"UG" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/range)
+"UK" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "packageSort1"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/delivery)
 "UO" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -23448,6 +23509,12 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
+"WD" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/security/lobby)
 "WV" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -28638,7 +28705,7 @@ ab
 gC
 gC
 gC
-ik
+UG
 ik
 ik
 ik
@@ -28922,7 +28989,7 @@ ab
 gC
 gC
 gC
-ik
+UG
 ik
 ik
 ik
@@ -29208,7 +29275,7 @@ gC
 gC
 il
 ik
-ja
+ik
 ik
 ik
 kM
@@ -31067,7 +31134,7 @@ pp
 qb
 qI
 rq
-sf
+WD
 pd
 tM
 uH
@@ -31770,7 +31837,7 @@ ks
 kU
 lG
 ml
-ml
+Qw
 nX
 iK
 pu
@@ -32087,7 +32154,7 @@ EJ
 Ic
 Ix
 IY
-Jv
+PN
 Jv
 Kn
 Jv
@@ -35179,7 +35246,7 @@ lp
 lQ
 mE
 mE
-oj
+UK
 oj
 pF
 qm
@@ -37754,7 +37821,7 @@ Aq
 AV
 BN
 BN
-BN
+Nm
 ul
 ab
 ab
