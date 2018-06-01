@@ -15563,8 +15563,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 1e+006
@@ -15584,8 +15582,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
 /obj/machinery/door/window/northright{
 	name = "Atmospherics Hardsuits";
 	req_access = list(24)
