@@ -94,6 +94,7 @@
 	icon_off = "medicaloff"
 	req_access = list(access_medical_equip)
 
+<<<<<<< HEAD
 
 /obj/structure/closet/secure_closet/sar/New()
 	..()
@@ -123,6 +124,35 @@
 	new /obj/item/device/geiger(src)
 	new /obj/item/bodybag/cryobag(src)
 	return
+=======
+	starts_with = list(
+		/obj/item/weapon/storage/backpack/dufflebag/emt,
+		/obj/item/weapon/storage/box/autoinjectors,
+		/obj/item/weapon/storage/box/syringes,
+		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
+		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
+		/obj/item/weapon/storage/belt/medical/emt,
+		/obj/item/weapon/material/knife/tacknife/survival, //VOREStation Add,
+		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
+		/obj/item/clothing/shoes/boots/winter/explorer,
+		/obj/item/device/radio/headset/sar,
+		/obj/item/weapon/cartridge/medical,
+		/obj/item/device/flashlight,
+		/obj/item/weapon/tank/emergency/oxygen/engi,
+		/obj/item/clothing/glasses/hud/health,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio/off,
+		/obj/random/medical,
+		/obj/item/weapon/crowbar,
+		/obj/item/weapon/extinguisher/mini,
+		/obj/item/weapon/storage/box/freezer,
+		/obj/item/clothing/accessory/storage/white_vest,
+		/obj/item/taperoll/medical,
+		/obj/item/device/gps,
+		/obj/item/device/geiger,
+		/obj/item/bodybag/cryobag)
+>>>>>>> 5addac9... Pathfinder Update (#3777)
 
 //Pilot Locker
 
