@@ -99,6 +99,10 @@
 		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
 		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
 		/obj/item/weapon/storage/belt/medical/emt,
+<<<<<<< HEAD
+=======
+		/obj/item/weapon/material/knife/tacknife/survival, //VOREStation Add,
+>>>>>>> ad18753... Merge pull request #3813 from VOREStation/master
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
 		/obj/item/clothing/shoes/boots/winter/explorer,
