@@ -327,15 +327,12 @@ item_path: /obj/item/clothing/accessory/badge/holo/detective/ruda
 }
 
 {
-<<<<<<< HEAD
-=======
 ckey: interrolouis
 character_name: Kai Highlands
 item_path: /obj/item/borg/upgrade/modkit/chassis_mod/kai
 }
 
 {
->>>>>>> c60f8ae... Merge pull request #3713 from VOREStation/Cameron653-patch-1
 ckey: ivymoomoo
 character_name: Ivy Baladeva
 item_path: /obj/item/weapon/storage/backpack/messenger/sec/fluff/ivymoomoo
