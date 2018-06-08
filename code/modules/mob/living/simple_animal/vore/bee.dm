@@ -43,3 +43,5 @@
 /mob/living/simple_animal/retaliate/bee
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
+	vore_stomach_name = "Honey pouch"
+	vore_stomach_flavor = "You have been swallowed down by a ravenous bee, the hungry insect pressing you into a tight ball and leaving you surrounded by rippling flesh. It clings fast to your form, slathering you in a sticky substance that strangely smells sweet...It seems these bees have truely adapted to space without flowers, from the feel and smell they can turn creatures into honey, which includes you!"

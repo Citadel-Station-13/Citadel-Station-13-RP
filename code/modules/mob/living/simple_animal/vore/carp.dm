@@ -30,3 +30,5 @@
 	vore_capacity = 1
 	vore_max_size = RESIZE_HUGE
 	vore_icons = SA_ICON_LIVING
+	vore_stomach_name = "Stomach"
+	vore_stomach_flavor = "You're trapped in the belly of giant carp, while roomier than one might expect, it is still uncomfortably cramped as you're forced to lay out in some places and bend at other. The rippling walls of flesh cling fast, smearing your form with digestive juices with every pulse and the smell of fish is naturally always present as it works on making a meal out of you."

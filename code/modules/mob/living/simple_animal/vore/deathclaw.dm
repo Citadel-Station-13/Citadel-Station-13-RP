@@ -30,3 +30,5 @@
 	vore_min_size = RESIZE_SMALL
 	vore_pounce_chance = 0 // Beat them into crit before eating.
 	vore_icons = SA_ICON_LIVING
+	vore_stomach_name = "Stomach"
+	vore_stomach_flavor = "Crammed tightly into the packed gut of the alien monster, you are treated to a rough stay; the beast's stomach working hard on keeping you pinned down and unable to move. Despite the surface liberally coating you in enzymes, it is unyielding when you try to press outwards, proof of the Deathclaw's raw power. Though it's heartbeat might be comforting to some as it thuds in the distance, it is only a reminder that time is quickly ticking away in here."
