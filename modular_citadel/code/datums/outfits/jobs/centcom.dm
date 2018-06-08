@@ -6,5 +6,13 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	id_type = /obj/item/weapon/card/id/centcom
 	pda_type = /obj/item/device/pda/centcom
-  gloves = /obj/item/clothing/gloves/white
-  head = /obj/item/clothing/head/beret/centcom/officer
+	gloves = /obj/item/clothing/gloves/white
+	head = /obj/item/clothing/head/beret/centcom/officer
+	r_pocket = /obj/item/device/pda/heads
+	id_pda_assignment = "CentCom Officer"
+
+/decl/hierarchy/outfit/job/centcom_officer/phoebe
+	name = OUTFIT_JOB_NAME("CentCom Officer - Phoebs")
+	shoes = null
+	gloves = /obj/item/clothing/gloves/combat
+	belt = /obj/item/weapon/gun/energy

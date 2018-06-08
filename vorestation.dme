@@ -2910,6 +2910,7 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+#include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\modules\admin\chat_commands.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
