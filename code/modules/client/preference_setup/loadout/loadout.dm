@@ -70,6 +70,8 @@ var/list/gear_datums = list()
 			continue
 		if(max_cost && G.cost > max_cost)
 			continue
+		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))		//CITADEL CHANGE
+			continue		//CITADEL CHANGE
 		. += gear_name
 
 /datum/category_item/player_setup_item/loadout/sanitize_character()
@@ -88,7 +90,7 @@ var/list/gear_datums = list()
 			preference_mob << "<span class='warning'>You cannot have more than one of the \the [gear_name]</span>"
 			pref.gear -= gear_name
 		else if(!(gear_name in valid_gear_choices()))
-			preference_mob << "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species.</span>"
+			preference_mob << "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species or item.</span>"		//CITADEL CHANGE
 			pref.gear -= gear_name
 		else
 			var/datum/gear/G = gear_datums[gear_name]
