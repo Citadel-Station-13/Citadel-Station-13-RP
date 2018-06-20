@@ -102,6 +102,7 @@ var/list/gear_datums = list()
 
 /datum/category_item/player_setup_item/loadout/content()
 	. = list()
+	var/mob/preference_mob = preference_mob()	//CITADEL CHANGE
 	var/total_cost = 0
 	if(pref.gear && pref.gear.len)
 		for(var/i = 1; i <= pref.gear.len; i++)
@@ -147,6 +148,8 @@ var/list/gear_datums = list()
 	. += "<tr><td colspan=3><hr></td></tr>"
 	for(var/gear_name in LC.gear)
 		var/datum/gear/G = LC.gear[gear_name]
+		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))	//CITADEL CHANGE
+			continue	//CITADEL CHANGE
 		var/ticked = (G.display_name in pref.gear)
 		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
 		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
