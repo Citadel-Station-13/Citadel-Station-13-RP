@@ -2932,6 +2932,8 @@
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\modules\admin\chat_commands.dm"
+#include "modular_citadel\code\modules\client\preference_setup\loadout.dm"
+#include "modular_citadel\code\modules\client\preference_setup\loadout_donator.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
 // END_INCLUDE
