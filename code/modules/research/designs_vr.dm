@@ -90,7 +90,7 @@
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 8000, "uranium" = 6000, "diamond" = 6000)
 	build_path = /obj/item/device/nif
-	sort_string = "HABBB"
+	sort_string = "HABBC"
 
 /datum/design/item/nifrepairtool
 	name = "adv. NIF repair tool"
