@@ -217,10 +217,10 @@
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(prob(10);/obj/item/weapon/disk/nifsoft/compliance, //Citadel Override probability, 3.6%
-					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
+	var/path = pick(prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
 					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
+					prob(4);/obj/item/weapon/disk/nifsoft/compliance, //Citadel Override probability, 1.5%
 					prob(4);/obj/item/weapon/gun/energy/sizegun,
 					prob(3);/obj/item/weapon/material/butterfly,
 					prob(3);/obj/item/weapon/material/butterfly/switchblade,
@@ -230,8 +230,8 @@
 				//	prob(2);/obj/item/weapon/legcuffs,
 					prob(2);/obj/item/weapon/storage/box/syndie_kit/spy,
 					prob(2);/obj/item/weapon/grenade/anti_photon,
-					prob(2);/obj/item/device/nif/bad, //Citadel Override probability, 0.7%
-					prob(2);/obj/item/device/bodysnatcher, //Citadel Override probability, 0.7%
+					prob(2);/obj/item/device/nif/bad, //Citadel Override probability, 0.78%
+					prob(2);/obj/item/device/bodysnatcher, //Citadel Override probability, 0.78%
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,
 				//	prob(1);/obj/item/device/nif/bad, // VORECode default probability, 0.2%
 					prob(1);/obj/item/device/radio_jammer,
