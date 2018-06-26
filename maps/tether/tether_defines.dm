@@ -37,7 +37,7 @@
 #define Z_LEVEL_UNDERDARK					13
 
 /datum/map/tether
-	name = "Virgo"
+	name = "Virgolul"
 	full_name = "NSB Adephagia"
 	path = "tether"
 
