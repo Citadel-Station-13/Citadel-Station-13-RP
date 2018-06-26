@@ -10,3 +10,8 @@
 	path = /obj/item/weapon/bikehorn
 	ckeywhitelist = list("realdonaldtrump")
 */
+
+/datum/gear/donator/chayse
+	display_name = "NTSC Naval Uniform - Chayse"
+	path = /obj/item/clothing/under/donator/chayse
+	ckeywhitelist = list("realdonaldtrump")
