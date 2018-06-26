@@ -12,6 +12,6 @@
 */
 
 /datum/gear/donator/chayse
-	display_name = "NTSC Naval Uniform - Chayse"
+	display_name = "NTSC Naval Uniform"
 	path = /obj/item/clothing/under/donator/chayse
-	ckeywhitelist = list("realdonaldtrump")
+	ckeywhitelist = list("realdonaldtrump", "aaronskywalker")

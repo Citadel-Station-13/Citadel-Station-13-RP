@@ -13,3 +13,4 @@
 	icon_state = "Chayse_blue"
 	item_state = "Chayse_blue"
 	rolled_sleeves = 1
+	rolled_down = 1
