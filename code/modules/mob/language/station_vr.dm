@@ -71,7 +71,10 @@
 	"mihi","wan","six","salve","tartu")
 	machine_understands = FALSE
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 30caeb1... Merge pull request #3951 from Novacat/MiscTweaks
 /datum/language/unathi
 	flags = 0
 /datum/language/tajaran
