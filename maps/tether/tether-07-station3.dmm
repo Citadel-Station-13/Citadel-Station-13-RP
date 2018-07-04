@@ -1120,6 +1120,7 @@
 /turf/simulated/wall/r_wall,
 /area/ai)
 "ca" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -1137,6 +1138,38 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+=======
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass_security{
+	name = "Firing Range";
+	req_access = list(1)
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/security/range)
+"cb" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass_security{
+	name = "Security EVA";
+	req_one_access = list(1,2,18)
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/security/eva)
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 "cc" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
@@ -1576,6 +1609,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "cM" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -1585,6 +1619,23 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+=======
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
+"cN" = (
+/obj/structure/table/reinforced,
+/obj/item/device/retail_scanner/security,
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
+"cO" = (
+/obj/structure/bed/chair/comfy/black{
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1842,6 +1893,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "dn" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
 	},
@@ -1909,6 +1961,41 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+=======
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
+"do" = (
+/obj/machinery/light,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -32
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "security_lockdown";
+	name = "Brig Lockdown";
+	pixel_x = -6;
+	pixel_y = -40;
+	req_access = list(3)
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "warden";
+	name = "Office Shutters";
+	pixel_x = 6;
+	pixel_y = -39;
+	req_access = list(3)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
+"dp" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 "dq" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/floor_decal/industrial/outline,
@@ -2984,11 +3071,35 @@
 /area/security/warden)
 "fn" = (
 /obj/machinery/door/firedoor/glass,
+<<<<<<< HEAD
 /obj/machinery/door/airlock/glass_security{
 	name = "Warden's Office";
 	req_access = list(3)
 	},
 /turf/simulated/floor/tiled/dark,
+=======
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/westleft{
+	dir = 1;
+	name = "Warden's Desk";
+	req_access = list(3)
+	},
+/obj/machinery/door/window/brigdoor/eastleft{
+	dir = 2;
+	name = "Warden's Desk";
+	req_access = list(1)
+	},
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "warden";
+	layer = 3.1;
+	name = "Warden's Office Shutters";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled,
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 /area/security/warden)
 "fo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4622,8 +4733,32 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "ik" = (
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+=======
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/power/apc{
+	cell_type = /obj/item/weapon/cell/super;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 "il" = (
 /obj/structure/closet/crate,
 /obj/item/target,
@@ -4648,6 +4783,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+<<<<<<< HEAD
 /obj/item/device/radio/intercom{
 	dir = 8;
 	pixel_x = -24
@@ -4655,20 +4791,102 @@
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "in" = (
+=======
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
+"im" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallwayaux)
+"in" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor,
+/area/security/eva)
+"io" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass_security{
+	name = "Security EVA";
+	req_one_access = list(1,2,18)
+	},
+/turf/simulated/floor/tiled,
+/area/security/eva)
+"ip" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10;
+	icon_state = "borderfloorcorner2";
+	pixel_x = 0
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/security/hallway)
+<<<<<<< HEAD
 "io" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
@@ -4676,6 +4894,67 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+"iq" = (
+/turf/simulated/floor,
+/area/maintenance/station/sec_upper)
+"ir" = (
+/obj/structure/table/rack{
+	dir = 1
+	},
+/obj/random/maintenance/research,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor,
+/area/maintenance/station/ai)
+"is" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/closet/crate,
+/turf/simulated/floor,
+/area/maintenance/station/ai)
+"it" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/station/ai)
+"iu" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
+"iv" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/eastright,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/blue)
+"iw" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 8
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 	},
 /obj/structure/cable/green{
 	d1 = 2;
@@ -5639,6 +5918,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
@@ -5674,9 +5954,24 @@
 /area/security/briefing_room)
 "jL" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
+=======
+/turf/simulated/open,
+/area/security/brig)
+"jK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/security/briefing_room)
 "jM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5703,6 +5998,33 @@
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "jO" = (
+=======
+/area/security/hallway)
+"jL" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass_security{
+	name = "Brig Observation"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/security/observation)
+"jM" = (
+/turf/simulated/floor/carpet,
+/area/crew_quarters/heads/hos)
+"jN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper_bin{
 	pixel_x = -3;
@@ -6191,9 +6513,25 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "kD" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/security/observation)
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 "kE" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -6316,10 +6654,14 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 10
 	},
+<<<<<<< HEAD
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+=======
+/obj/structure/cable/green,
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "kS" = (
@@ -6544,6 +6886,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+<<<<<<< HEAD
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
@@ -6559,6 +6902,21 @@
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 1e+006
+=======
+/obj/structure/table/reinforced,
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/photocopier/faxmachine{
+	department = "Security"
+	},
+/turf/simulated/floor/tiled,
+/area/security/briefing_room)
+"li" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1;
+	pixel_y = 0
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7248,9 +7606,17 @@
 	pixel_x = 0;
 	pixel_y = -25
 	},
+<<<<<<< HEAD
 /obj/machinery/camera/network/security{
 	c_tag = "SEC - Head of Security's Office";
 	dir = 1
+=======
+/turf/simulated/floor,
+/area/maintenance/station/ai)
+"mx" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
@@ -7282,6 +7648,7 @@
 	dir = 2;
 	pixel_y = -24
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
 "ms" = (
@@ -7289,6 +7656,38 @@
 /obj/item/clothing/suit/space/void/security/fluff/hos{
 	armor = list("melee" = 70, "bullet" = 60, "laser" = 60, "energy" = 50, "bomb" = 50, "bio" = 100, "rad" = 10);
 	species_restricted = null
+=======
+/obj/structure/table/steel,
+/obj/item/weapon/storage/box/nifsofts_security,
+/turf/simulated/floor/tiled/dark,
+/area/security/security_lockerroom)
+"my" = (
+/obj/structure/sign/warning/secure_area,
+/turf/simulated/wall/r_wall,
+/area/security/security_bathroom)
+"mz" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/tiled,
+/area/security/security_processing)
+"mA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 	},
 /obj/item/clothing/head/helmet/space/void/security/fluff/hos{
 	armor = list("melee" = 70, "bullet" = 60, "laser" = 60, "energy" = 50, "bomb" = 50, "bio" = 100, "rad" = 10);
@@ -9850,11 +10249,13 @@
 /area/security/lobby)
 "qK" = (
 /obj/effect/floor_decal/borderfloor{
-	dir = 4
+	dir = 1;
+	pixel_y = 0
 	},
 /obj/effect/floor_decal/corner/red/border{
-	dir = 4
+	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
@@ -9869,6 +10270,33 @@
 /obj/random/maintenance/clean,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
+=======
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/junction{
+	icon_state = "pipe-j1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallway)
+"qQ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "sec_processing"
+	},
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 /turf/simulated/floor,
 /area/maintenance/station/elevator)
 "qM" = (
@@ -11282,6 +11710,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "tc" = (
+<<<<<<< HEAD
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -11302,6 +11731,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
+=======
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "lawyer_blast"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/lawoffice)
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 "td" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -27382,6 +27825,10 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
+=======
+ae
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 aa
 aa
 aa
@@ -28928,6 +29375,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
@@ -28962,6 +29410,55 @@ ri
 rh
 ls
 ls
+=======
+ao
+ao
+hd
+hA
+hS
+ig
+iw
+iM
+ja
+ja
+ja
+ja
+ja
+kc
+ko
+dg
+kK
+kY
+eT
+mc
+mx
+eu
+nH
+ob
+mh
+pb
+fs
+qe
+qD
+rm
+sg
+sR
+tN
+uJ
+vt
+vt
+vt
+we
+vt
+zk
+zV
+Bg
+BZ
+CY
+vt
+vt
+vt
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 ab
 ab
 ab
@@ -29251,6 +29748,57 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+=======
+ai
+ai
+ai
+ao
+hf
+hC
+bx
+ii
+bd
+iN
+jc
+ji
+jv
+kd
+jS
+rA
+ko
+kA
+dz
+la
+eT
+md
+mB
+nk
+nJ
+eK
+mh
+fm
+pE
+fH
+qF
+rn
+si
+sT
+tP
+uJ
+vu
+tc
+tc
+tc
+vu
+uO
+zX
+Bi
+Cb
+sp
+we
+vt
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 ab
 ab
 ab
@@ -29480,6 +30028,7 @@ aa
 aa
 aa
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
@@ -29494,6 +30043,21 @@ ao
 ao
 ao
 ao
+=======
+ai
+ai
+aZ
+gz
+bg
+hg
+hD
+dI
+ij
+ez
+cu
+iP
+jj
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 dI
 ee
 ez
@@ -29633,7 +30197,7 @@ aJ
 bc
 bn
 bC
-ca
+dn
 cL
 dn
 dJ
@@ -29775,9 +30339,17 @@ aK
 bd
 bo
 bD
+<<<<<<< HEAD
 cb
 cM
 do
+=======
+fl
+cN
+do
+dI
+dI
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 dK
 eg
 eB
@@ -29917,14 +30489,23 @@ aL
 bd
 bp
 bE
+<<<<<<< HEAD
 bd
 cN
+=======
+ez
+fn
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 dp
 dL
 eh
 eC
 eV
+<<<<<<< HEAD
 ez
+=======
+ip
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 fD
 ga
 gr
@@ -30066,6 +30647,7 @@ dI
 ei
 ei
 ei
+<<<<<<< HEAD
 fn
 ei
 ei
@@ -30079,6 +30661,23 @@ iK
 iL
 iL
 iL
+=======
+jK
+QW
+lb
+lA
+mj
+mF
+nn
+nN
+nN
+fe
+pi
+fu
+aG
+lA
+rs
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 lA
 me
 iL
@@ -30206,6 +30805,7 @@ cP
 ao
 dM
 ej
+<<<<<<< HEAD
 ej
 eW
 eW
@@ -30221,6 +30821,14 @@ jd
 jH
 kn
 kR
+=======
+cP
+cP
+jL
+eD
+cP
+lB
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 lB
 mf
 nd
@@ -30913,6 +31521,7 @@ ai
 bJ
 ch
 cS
+<<<<<<< HEAD
 aj
 dM
 em
@@ -30956,6 +31565,43 @@ BV
 CF
 Dn
 Ea
+=======
+jk
+jk
+jk
+jk
+jk
+jk
+jk
+jk
+cV
+cV
+jk
+jk
+jk
+og
+oB
+pl
+pM
+qh
+fK
+rv
+qQ
+qP
+tX
+uR
+vF
+wk
+wP
+xI
+yr
+zo
+Ae
+Bs
+Ck
+Dj
+DM
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 EG
 Fg
 Fh
@@ -31318,6 +31964,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -31382,6 +32029,63 @@ BY
 CF
 Dq
 Ed
+=======
+ae
+ae
+ae
+aJ
+cv
+cv
+cv
+ge
+gf
+gk
+ba
+gI
+gS
+au
+aD
+bG
+ca
+iA
+bM
+cg
+cV
+jk
+jk
+jk
+jk
+jk
+jk
+jk
+jk
+cS
+cS
+jk
+jk
+jk
+oh
+oE
+po
+pO
+qj
+qO
+pO
+sn
+tf
+tW
+uT
+vH
+wn
+wS
+wn
+yt
+zq
+Ae
+Bs
+Ck
+Dk
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 EJ
 Fj
 FN
@@ -31497,6 +32201,7 @@ ir
 iK
 jm
 jJ
+<<<<<<< HEAD
 jJ
 jJ
 jJ
@@ -31542,6 +32247,67 @@ IT
 IT
 IT
 ls
+=======
+jk
+jk
+jk
+jk
+jk
+gb
+cT
+cT
+mJ
+jk
+jk
+oh
+oF
+pp
+pP
+qi
+mz
+ry
+qQ
+tZ
+ua
+uU
+vI
+wo
+wT
+xK
+yu
+zq
+Ai
+Bs
+Cm
+Dl
+DQ
+EK
+Fz
+Gp
+GY
+HQ
+Iy
+Jm
+Kc
+KI
+Lk
+LN
+Mi
+LN
+Na
+LN
+NY
+Iy
+OT
+OT
+OT
+Qj
+OT
+OT
+OT
+OT
+vt
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 aa
 aa
 aa
@@ -31765,6 +32531,7 @@ aj
 bP
 cn
 cX
+<<<<<<< HEAD
 aj
 dM
 ej
@@ -31828,6 +32595,70 @@ KR
 ls
 ls
 aa
+=======
+jz
+ik
+cM
+cM
+kq
+cM
+cM
+lc
+lE
+lE
+mK
+np
+nP
+oi
+lE
+lE
+pQ
+ql
+qR
+lE
+aK
+th
+uc
+aM
+vK
+wp
+wn
+xL
+yw
+zr
+Ak
+Bu
+Co
+Dm
+DS
+EM
+FB
+Gr
+Ha
+HS
+IA
+Jo
+Kd
+KJ
+Lm
+LP
+LP
+LP
+Nc
+NF
+NZ
+Ox
+OV
+Ps
+PM
+Ql
+Pu
+Pu
+QQ
+QS
+vt
+vt
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 aa
 aa
 aa
@@ -31906,6 +32737,7 @@ aj
 aj
 bQ
 co
+<<<<<<< HEAD
 aj
 aj
 dM
@@ -31969,6 +32801,71 @@ KP
 KR
 ls
 ls
+=======
+jl
+jA
+im
+jU
+cY
+kr
+kr
+kP
+ld
+lF
+mk
+mL
+nq
+nQ
+oj
+oG
+pq
+pR
+qm
+qS
+rz
+aL
+ti
+ud
+aN
+vL
+wq
+wV
+xM
+yx
+zs
+Al
+Bv
+Cp
+Dn
+DT
+EN
+FC
+Gs
+EN
+HT
+IB
+Jp
+Ke
+KK
+Ln
+LQ
+LQ
+LQ
+Nd
+NG
+Oa
+Oy
+OW
+Pt
+PN
+Qm
+Pu
+Pu
+QQ
+QS
+vt
+vt
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 aa
 aa
 aa
@@ -32328,6 +33225,7 @@ ab
 aj
 aj
 aV
+<<<<<<< HEAD
 bh
 bh
 bh
@@ -32396,6 +33294,76 @@ IT
 ls
 ls
 ls
+=======
+cb
+iF
+iR
+cs
+jn
+jB
+jM
+jW
+jM
+kt
+kF
+je
+lf
+lH
+mm
+mm
+ns
+mO
+ol
+oI
+eX
+lC
+lC
+mH
+rC
+so
+tk
+uf
+uW
+vN
+ws
+uW
+xO
+uW
+zu
+Ao
+By
+Cs
+Dp
+DV
+EQ
+FF
+Gv
+Hc
+HV
+ID
+Js
+Kg
+KN
+Lq
+LS
+Mk
+Jr
+Ng
+KI
+Oc
+Iy
+OT
+OT
+OT
+OT
+OT
+OT
+OT
+OT
+vt
+vt
+vt
+>>>>>>> 0facf11... Merge pull request #3975 from Jakksergal/master
 aa
 aa
 aa
