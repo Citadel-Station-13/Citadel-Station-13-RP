@@ -23768,8 +23768,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+=======
+/turf/simulated/floor,
+/area/maintenance/station/sec_upper)
+"SW" = (
+/turf/simulated/mineral/vacuum,
+/area/space)
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 
 (1,1,1) = {"
 aa
@@ -31888,6 +31896,7 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
@@ -31895,6 +31904,14 @@ aa
 aa
 aa
 aa
+=======
+aJ
+aJ
+aJ
+aJ
+SW
+SW
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 ab
 ab
 aj
@@ -32032,11 +32049,17 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
 aa
 aa
+=======
+aJ
+SW
+SW
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 ab
 ab
 ab
@@ -32175,10 +32198,16 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
 aa
+=======
+aJ
+SW
+SW
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 ab
 ab
 ab
@@ -32317,9 +32346,14 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
 aa
+=======
+aJ
+SW
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 ab
 ab
 ab
@@ -32460,8 +32494,13 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
+=======
+aJ
+SW
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 ab
 ab
 ab
@@ -32602,8 +32641,13 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
 aa
 aa
+=======
+aJ
+aJ
+>>>>>>> ac2f61e... Merge pull request #3977 from Mewchild/MC-3945-2
 ab
 ab
 ab
