@@ -161,7 +161,7 @@ var/list/organ_cache = list()
 		infection_damage = max(1, 1 + round((germ_level - INFECTION_LEVEL_THREE)/200,0.25)) //1 Tox plus a little based on germ level
 
 	else if(germ_level > INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_OD)
-		infection_damage = max(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/200,0.25))
+		infection_damage = max(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/1000,0.25))
 
 	if(infection_damage)
 		owner.adjustToxLoss(infection_damage)
