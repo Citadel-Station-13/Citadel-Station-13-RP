@@ -172,4 +172,8 @@
 	desc = "A bottle of raw biomass! Gross!"
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-3"
+<<<<<<< HEAD
 	prefill = list("biomass" = 60)
+=======
+	prefill = list("biomass" = 60)
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master

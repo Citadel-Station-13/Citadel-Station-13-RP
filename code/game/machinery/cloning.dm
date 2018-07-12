@@ -23,7 +23,11 @@
 			break
 	return selected
 
+<<<<<<< HEAD
 #define CLONE_BIOMASS 60
+=======
+#define CLONE_BIOMASS 30 //VOREstation Edit
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master
 
 /obj/machinery/clonepod
 	name = "cloning pod"
@@ -244,6 +248,7 @@
 			locked = 0
 			to_chat(user, "System unlocked.")
 	else if(istype(W,/obj/item/weapon/reagent_containers/glass))
+<<<<<<< HEAD
 		var/obj/item/weapon/reagent_containers/glass/G = W
 		if(LAZYLEN(containers))
 			if(containers.len >= container_limit)
@@ -258,6 +263,16 @@
 		else
 			to_chat(user, "<span class='warning'>\The [src] doesn't have room for \the [G.name].</span>")
 			return
+=======
+		if(LAZYLEN(containers) >= container_limit)
+			to_chat(user, "<span class='warning'>\The [src] has too many containers loaded!</span>")
+		else if(do_after(user, 1 SECOND))
+			user.visible_message("[user] has loaded \the [W] into \the [src].", "You load \the [W] into \the [src].")
+			containers += W
+			user.drop_item()
+			W.forceMove(src)
+		return
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master
 	else if(istype(W, /obj/item/weapon/wrench))
 		if(locked && (anchored || occupant))
 			to_chat(user, "<span class='warning'>Can not do that while [src] is in use.</span>")

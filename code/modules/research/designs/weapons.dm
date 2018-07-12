@@ -47,9 +47,16 @@
 
 /datum/design/item/weapon/smg
 	id = "smg"
+<<<<<<< HEAD
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, "silver" = 2000, "diamond" = 1000)
 	build_path = /obj/item/weapon/gun/projectile/automatic
+=======
+	desc = "An compact reliable SMG firing armor piercing ammo."
+	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 8000, "silver" = 2000, "diamond" = 1000)
+	build_path = /obj/item/weapon/gun/projectile/automatic/saber
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master
 	sort_string = "TAABA"
 
 /datum/design/item/weapon/ammo_9mm

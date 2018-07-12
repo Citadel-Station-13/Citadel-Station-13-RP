@@ -230,4 +230,8 @@
 /obj/item/projectile/energy/phase/heavy/cannon
 	kill_count = 10
 	damage = 15
+<<<<<<< HEAD
 	SA_bonus_damage = 60	// 75 total on animals
+=======
+	SA_bonus_damage = 60	// 75 total on animals
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master
