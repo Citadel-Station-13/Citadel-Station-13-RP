@@ -243,7 +243,7 @@
 			/obj/item/weapon/circuitboard/pacman/super
 			)
 
-/datum/supply_packs/eng/fusion_core
+/*/datum/supply_packs/eng/fusion_core									CITADEL_OVERRIDE - Removes R-UST engine from cargo
 	name = "R-UST Mk. 8 Tokamak fusion core crate"
 	cost = 50
 	containername = "R-UST Mk. 8 Tokamak Fusion Core crate"
@@ -290,4 +290,4 @@
 	cost = 75
 	containername = "Tritium crate"
 	containertype = /obj/structure/closet/crate/engineering
-	contains = list(/obj/fiftyspawner/tritium)
+	contains = list(/obj/fiftyspawner/tritium)*/
