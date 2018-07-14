@@ -153,7 +153,11 @@
 	metabolic_rate = 1.1
 	gluttonous = 1
 	num_alternate_languages = 3
+<<<<<<< HEAD
 	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI)
+=======
+	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
+>>>>>>> 7b8f084... Merge pull request #3999 from VOREStation/upstream-merge-5401
 	name_language = LANGUAGE_SIIK
 	species_language = LANGUAGE_SIIK
 	health_hud_intensity = 2.5

@@ -50,6 +50,10 @@
 #define LANGUAGE_MINBUS "Minbus"
 #define LANGUAGE_EVENT1 "Occursus"
 #define LANGUAGE_AKHANI "Akhani"
+<<<<<<< HEAD
+=======
+#define LANGUAGE_ALAI "Alai"
+>>>>>>> 7b8f084... Merge pull request #3999 from VOREStation/upstream-merge-5401
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.
