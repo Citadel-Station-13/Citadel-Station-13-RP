@@ -32,7 +32,10 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_LIGHTING 0
 #define INIT_ORDER_AIR		-1
 #define INIT_ORDER_PLANETS	-4
+<<<<<<< HEAD
 #define INIT_ORDER_HOLOMAPS	-5 //VOREStation Add
+=======
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master
 #define INIT_ORDER_OVERLAY	-6
 #define INIT_ORDER_XENOARCH	-20
  

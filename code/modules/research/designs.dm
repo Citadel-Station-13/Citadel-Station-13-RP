@@ -79,4 +79,8 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_DATA = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
 	build_path = /obj/item/weapon/disk/tech_disk
+<<<<<<< HEAD
 	sort_string = "GAAAB"
+=======
+	sort_string = "GAAAB"
+>>>>>>> ab9727b... Merge pull request #4020 from VOREStation/master
