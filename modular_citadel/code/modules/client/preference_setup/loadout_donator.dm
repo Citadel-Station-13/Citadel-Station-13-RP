@@ -34,3 +34,15 @@
 	slot = slot_tie
 	path = /obj/item/clothing/accessory/collar/donator/striped
 	ckeywhitelist = list("jademanique")
+
+/datum/gear/donator/cameronbackpack
+	display_name = "Brig Physician's Backpack"
+	slot = slot_back
+	path = /obj/item/weapon/storage/backpack/satchel/donator/cameron
+	ckeywhitelist = list("cameronlancaster")
+
+/datum/gear/donator/cameronarmor
+	display_name = "Brig Physician's Armor Vest"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/suit/armor/vest/donator/cameron
+	ckeywhitelist = list("cameronlancaster")

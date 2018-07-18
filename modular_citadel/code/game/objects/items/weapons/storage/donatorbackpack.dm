@@ -6,6 +6,12 @@
 
 /obj/item/weapon/storage/backpack/satchel/donator/carrot
 	name = "carrot satchel"
-	desc = "An satchel that is designed to look like a carrot"
+	desc = "A satchel that is designed to look like a carrot"
 	icon_state = "satchel_carrot"
 	item_state = "satchel_carrot"
+
+/obj/item/weapon/storage/backpack/satchel/donator/cameron
+	name = "brig physician's backpack"
+	desc = "It's a very robust backpack. This one bears a blue cross, and has been modified for use in a sterile environment."
+	icon_state = "cameronbackpack"
+	item_state = "cameronbackpack"

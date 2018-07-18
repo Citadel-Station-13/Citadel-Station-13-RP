@@ -2,3 +2,4 @@
 	name = "Black and Red Coat"
 	desc = "An oddly special looking coat."
 	icon_state = "labredblack"
+
