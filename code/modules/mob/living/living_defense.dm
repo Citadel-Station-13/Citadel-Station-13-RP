@@ -380,6 +380,7 @@
 	var/turf/location = get_turf(src)
 	location.hotspot_expose(fire_burn_temperature(), 50, 1)
 
+//CIT CHANGES START HERE
 //altered this to cap at the temperature of the fire causing it, using the same 1:1500 value as /mob/living/carbon/human/handle_fire() in human/life.dm
 //TODO: set fire_stacks conversion to a #define? FIRE_STACKS_TEMPERATURE?
 /mob/living/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -389,6 +390,7 @@
 	else
 		adjust_fire_stacks(2) //some things call fire_act() without defining a temperature. this is fine.
 	IgniteMob()
+//END OF CIT CHANGES
 
 //Share fire evenly between the two mobs
 //Called in MobCollide() and Crossed()
