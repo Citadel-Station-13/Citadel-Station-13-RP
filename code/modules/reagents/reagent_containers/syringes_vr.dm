@@ -17,11 +17,13 @@
 	LAZYCLEARLIST(targets)
 	return ..()
 
+/* CITADEL CHANGE - Fuck this dumb infection increase tick
 /obj/item/weapon/reagent_containers/syringe/process()
 	dirtiness = min(dirtiness + targets.len,75)
 	if(dirtiness >= 75)
 		processing_objects -= src
 	return 1
+*/
 
 /obj/item/weapon/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
 	if(!ishuman(loc))
@@ -64,7 +66,7 @@
 		var/obj/item/organ/external/found_limb = limb_ref.resolve()
 		if(istype(found_limb))
 			eo.germ_level += INFECTION_LEVEL_ONE+30
-	
+
 //Allow for capped syringe mode
 /obj/item/weapon/reagent_containers/syringe/attack_self(mob/user as mob)
 	switch(mode)
@@ -79,10 +81,10 @@
 			return
 	update_icon()
 
-//Allow for capped syringes 
+//Allow for capped syringes
 /obj/item/weapon/reagent_containers/syringe/update_icon()
 	cut_overlays(src)
-	
+
 	var/matrix/tf = matrix()
 	if(isstorage(loc))
 		tf.Turn(-90) //Vertical for storing compact-ly
@@ -112,7 +114,7 @@
 			if (SYRINGE_INJECT)
 				injoverlay = "inject"
 		new_overlays += injoverlay
-	
+
 	add_overlay(new_overlays)
 	icon_state = "[rounded_vol]"
 	item_state = "syringe_[rounded_vol]"
