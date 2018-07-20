@@ -50,6 +50,10 @@
 #define LANGUAGE_MINBUS "Minbus"
 #define LANGUAGE_EVENT1 "Occursus"
 #define LANGUAGE_AKHANI "Akhani"
+<<<<<<< HEAD
+=======
+#define LANGUAGE_SIIK_ALAI "Siik'alai"
+>>>>>>> 507b8f8... Merge pull request #3989 from VOREStation/aro-sync07062018
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.
