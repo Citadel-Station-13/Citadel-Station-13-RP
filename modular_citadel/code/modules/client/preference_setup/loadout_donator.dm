@@ -12,10 +12,10 @@
 */
 
 /datum/gear/donator/gladiator
-    display_name = "Gladiator Armor"
-    sort_category = slot_wear_suit
-    path = /obj/item/clothing/under/gladiator
-    ckeywhitelist = list("aroche")
+	display_name = "Gladiator Armor"
+	sort_category = slot_wear_suit
+	path = /obj/item/clothing/under/gladiator
+	ckeywhitelist = list("aroche")
 
 /datum/gear/donator/chayse
 	display_name = "NTSC Naval Uniform"
