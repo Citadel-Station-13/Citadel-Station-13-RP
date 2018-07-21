@@ -1,8 +1,8 @@
 /obj/item/kevlarupgrade
 	name = "kevlar upgrade kit"
 	desc = "A kit for reinforcing standard jumpsuits with kevlar weave, upgrading their armour slightly."
-	icon = 'icons/obj/robot_component.dmi'
-	icon_state = "armor"
+	icon = 'icons/obj/robot_component.dmi'	//PLACEHOLDER
+	icon_state = "armor"	//PLACEHOLDER
 
 /obj/item/kevlarupgrade/afterattack(atom/A, mob/user)
 	var/meleemax = FALSE
