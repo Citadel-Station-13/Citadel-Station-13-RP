@@ -22,6 +22,7 @@ seiga - Vox
 sepulchre - Vox
 sepulchre - Xenomorph Hybrid
 silverTalismen - Diona
+silverTalismen - Vox
 silvertalismen - Xenochimera
 singo - Gutter
 some~user - Species
