@@ -10,3 +10,39 @@
 	path = /obj/item/weapon/bikehorn
 	ckeywhitelist = list("realdonaldtrump")
 */
+
+/datum/gear/donator/chayse
+	display_name = "NTSC Naval Uniform"
+	slot = slot_w_uniform
+	path = /obj/item/clothing/under/donator/chayse
+	ckeywhitelist = list("realdonaldtrump", "aaronskywalker")
+
+/datum/gear/donator/labredblack
+	display_name = "Black and Red Coat"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/labredblack
+	ckeywhitelist = list("blakeryan", "durandalphor")
+
+/datum/gear/donator/carrotsatchel
+	display_name = "Carrot Satchel"
+	slot = slot_back
+	path = /obj/item/weapon/storage/backpack/satchel/donator/carrot
+	ckeywhitelist = list("improvedname")
+
+/datum/gear/donator/stripedcollar
+	display_name = "Striped collar"
+	slot = slot_tie
+	path = /obj/item/clothing/accessory/collar/donator/striped
+	ckeywhitelist = list("jademanique")
+
+/datum/gear/donator/cameronbackpack
+	display_name = "Brig Physician's Backpack"
+	slot = slot_back
+	path = /obj/item/weapon/storage/backpack/satchel/donator/cameron
+	ckeywhitelist = list("cameronlancaster")
+
+/datum/gear/donator/cameronarmor
+	display_name = "Brig Physician's Armor Vest"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/suit/armor/vest/donator/cameron
+	ckeywhitelist = list("cameronlancaster")
