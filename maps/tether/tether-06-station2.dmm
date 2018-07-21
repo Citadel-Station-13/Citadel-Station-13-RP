@@ -255,10 +255,58 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/monotile,
+/area/security/brig)
+"aD" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/white/border,
+/obj/structure/holohoop{
+	icon_state = "hoop";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/security/brig)
+"aE" = (
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor,
+/area/security/riot_control)
+"aF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"aG" = (
+/obj/machinery/door/airlock/security{
+	name = "The Hole";
+	req_access = list(2)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"aH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /obj/machinery/door_timer/cell_3{
 	pixel_y = -32
@@ -299,7 +347,74 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+=======
+/turf/simulated/floor/tiled/steel_dirty,
+/area/security/brig)
+"aM" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	icon_state = "borderfloorcorner2_black";
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled/dark,
+/area/security/recstorage)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/maintenance/station/sec_lower)
+"aO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/maintenance/station/sec_lower)
+"aP" = (
+/turf/simulated/mineral/floor/vacuum,
+/area/mine/explored/upper_level)
+"aQ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Brig Restroom"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/security/brig/bathroom)
+"aR" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/table/steel,
+/obj/item/weapon/deck/cards,
+/obj/item/toy/nanotrasenballoon,
+/obj/item/weapon/material/twohanded/fireaxe/foam,
+/turf/simulated/floor/tiled/dark,
+/area/security/recstorage)
+"aS" = (
+/turf/simulated/wall/r_wall,
+/area/security/brig)
+"aT" = (
+/obj/structure/sink{
+	dir = 4;
+	icon_state = "sink";
+	pixel_x = 11;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/security/brig/bathroom)
+"aU" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/spline/plain,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/monotile,
+/area/security/brig)
+"aV" = (
+/obj/structure/railing{
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -1007,7 +1122,17 @@
 	pixel_x = -22;
 	pixel_y = 0
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/steel_dirty,
+=======
+/obj/structure/sink{
+	icon_state = "sink";
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled,
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 /area/security/brig)
 "bJ" = (
 /turf/space,
@@ -1150,8 +1275,45 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/shaft)
 "bX" = (
+<<<<<<< HEAD
 /obj/structure/window/reinforced{
 	dir = 1
+=======
+/obj/random/trash,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"bY" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border/shifted{
+	icon_state = "bordercolor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/obj/machinery/light/small{
+	icon_state = "bulb1";
+	dir = 1
+	},
+/obj/structure/bed/padded,
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+"bZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
@@ -1174,6 +1336,7 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "ca" = (
+<<<<<<< HEAD
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
@@ -1192,6 +1355,28 @@
 	health = 1e+006
 	},
 /turf/simulated/floor/plating,
+=======
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border/shifted{
+	icon_state = "bordercolor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/obj/machinery/light/small{
+	icon_state = "bulb1";
+	dir = 1
+	},
+/obj/structure/bed/padded,
+/obj/item/weapon/bedsheet,
+/obj/item/weapon/pen/crayon/green,
+/turf/simulated/floor/tiled/dark,
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 /area/security/brig)
 "cb" = (
 /obj/machinery/door/blast/regular{
@@ -1207,12 +1392,55 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/security/brig)
+<<<<<<< HEAD
 "cd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/security/brig)
 "ce" = (
 /obj/machinery/portable_atmospherics/hydroponics,
+=======
+"cc" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border/shifted{
+	icon_state = "bordercolor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/obj/machinery/light/small{
+	icon_state = "bulb1";
+	dir = 1
+	},
+/obj/structure/bed/padded,
+/obj/item/weapon/bedsheet,
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"cd" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/table/steel,
+/obj/item/weapon/storage/laundry_basket,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/security/brig)
+"ce" = (
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/security/brig)
+"cf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "cf" = (
@@ -1258,6 +1486,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
 "cl" = (
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	icon_state = "32-2"
 	},
@@ -1284,15 +1513,92 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+=======
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security{
+	name = "Interrogation";
+	req_access = newlist();
+	req_one_access = list(2,4)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/interrogation)
+"cm" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "brig_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_security{
+	id_tag = "briginner";
+	name = "Brig";
+	req_access = list(2);
+	req_one_access = newlist()
+	},
+/turf/simulated/floor/tiled,
+/area/security/brig)
+"cn" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "brig_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/glass_security{
+	id_tag = "briginner";
+	name = "Brig";
+	req_access = list(2);
+	req_one_access = newlist()
+	},
+/turf/simulated/floor/tiled,
+/area/security/brig)
+"co" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "cn" = (
 /obj/effect/floor_decal/borderfloor{
+=======
+/obj/machinery/door/airlock/glass_security{
+	name = "Brig Cells";
+	req_access = newlist();
+	req_one_access = list(2,4)
+	},
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+"cp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/danger{
@@ -1307,6 +1613,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -1316,25 +1623,144 @@
 /obj/machinery/door/blast/regular{
 	id = "Priacc";
 	name = "Prison Main Blast Door"
+=======
+/turf/simulated/floor/tiled,
+/area/security/brig/visitation)
+"cq" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass_security{
+	name = "Brig Cells";
+	req_access = newlist();
+	req_one_access = list(2,4)
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+"cr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/security/brig)
+"cs" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass_security{
+	id_tag = "brigouter";
+	name = "Brig";
+	req_access = list(2);
+	req_one_access = newlist()
+	},
+/turf/simulated/floor/tiled,
+/area/security/brig)
+"ct" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+"cu" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	icon_state = "intact";
+	dir = 4
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass_security{
+	id_tag = "brigouter";
+	name = "Brig";
+	req_access = list(2);
+	req_one_access = newlist()
+	},
+/turf/simulated/floor/tiled,
+/area/security/brig)
+"cv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	icon_state = "intact";
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/button/remote/airlock{
+	id = "brigouter";
+	name = "Outer Brig Doors";
+	pixel_x = 6;
+	pixel_y = -24
+	},
+/obj/machinery/button/remote/airlock{
+	id = "briginner";
+	name = "Inner Brig Doors";
+	pixel_x = -6;
+	pixel_y = -24
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/security/brig)
 "cp" = (
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+/area/security/security_cell_hallway)
+"cw" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border/shifted{
+	icon_state = "bordercolor_shifted";
+	dir = 1
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1350,6 +1776,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -1370,6 +1797,33 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+"cx" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/security{
+	name = "Observation";
+	req_one_access = list(1,4)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/interrogation)
+"cy" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1603,6 +2057,62 @@
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
 "cK" = (
+<<<<<<< HEAD
+=======
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border/shifted{
+	icon_state = "bordercolor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/obj/structure/table/steel,
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"cL" = (
+/turf/space,
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_l"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
+"cM" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	icon_state = "borderfloor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange/border/shifted{
+	icon_state = "bordercolor_shifted";
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"cN" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -1666,8 +2176,27 @@
 	dir = 8;
 	health = 1e+006
 	},
+<<<<<<< HEAD
 /obj/structure/window/reinforced{
 	dir = 4
+=======
+/turf/simulated/floor/tiled/dark,
+/area/security/recstorage)
+"cW" = (
+/turf/space,
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
+"cX" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -1946,8 +2475,24 @@
 	pixel_x = -28;
 	pixel_y = 0
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+=======
+/obj/machinery/door/window/brigdoor/eastright,
+/turf/simulated/floor/tiled,
+/area/security/brig/visitation)
+"dm" = (
+/turf/space,
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "dn" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 1"
@@ -3071,6 +3616,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3079,6 +3625,13 @@
 	name = "light switch ";
 	pixel_x = 0;
 	pixel_y = 26
+=======
+/turf/simulated/floor/tiled,
+/area/security/brig)
+"fc" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
@@ -3782,6 +4335,7 @@
 "gw" = (
 /turf/simulated/open,
 /area/engineering/locker_room)
+<<<<<<< HEAD
 "gx" = (
 /turf/simulated/mineral/vacuum,
 /area/maintenance/station/eng_upper)
@@ -3801,6 +4355,9 @@
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
 "gA" = (
+=======
+"gy" = (
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -3823,6 +4380,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/security/security_processing)
 "gC" = (
 /obj/structure/cable/green{
@@ -3864,6 +4422,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
+=======
+/area/security/security_cell_hallway)
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "gE" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
@@ -4585,6 +5146,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/security/security_processing)
 "hX" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -4601,6 +5163,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
+=======
+/area/security/security_cell_hallway)
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "hY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -17714,10 +18279,33 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+<<<<<<< HEAD
 "FJ" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/maintenance/station/sec_lower)
+=======
+"FI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "FR" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
@@ -17751,6 +18339,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
+<<<<<<< HEAD
+=======
+"Go" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/plating,
+/area/engineering/shaft)
+"Gw" = (
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+"GG" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/security/brig)
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "GV" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -18733,6 +19336,42 @@
 /obj/structure/lattice,
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/explored/upper_level)
+<<<<<<< HEAD
+=======
+"Vj" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor,
+/area/maintenance/station/sec_lower)
+"Vm" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "Vw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -18758,6 +19397,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/public_meeting_room)
+<<<<<<< HEAD
+=======
+"VF" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/door/blast/regular{
+	dir = 1;
+	id = "Cell 3";
+	name = "Cell 3"
+	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/brig)
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 "VH" = (
 /obj/structure/table/steel,
 /obj/item/device/radio{
@@ -26212,12 +26871,21 @@ dm
 dN
 eq
 eQ
+<<<<<<< HEAD
 fD
 ae
 gx
 gx
 hr
 hR
+=======
+dn
+IZ
+cm
+HK
+Xx
+hQ
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 iv
 je
 jH
@@ -26346,6 +27014,7 @@ ak
 aB
 aV
 bm
+<<<<<<< HEAD
 bF
 ca
 cs
@@ -26361,6 +27030,23 @@ gx
 hr
 hS
 iv
+=======
+DF
+ar
+bb
+bt
+cg
+bv
+bB
+bE
+dQ
+Ye
+cn
+YK
+Nc
+hQ
+YN
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 jf
 jI
 kh
@@ -26486,6 +27172,7 @@ YM
 ae
 ah
 aC
+<<<<<<< HEAD
 aS
 aS
 aS
@@ -26503,6 +27190,24 @@ gx
 hr
 hT
 iw
+=======
+br
+DF
+au
+bc
+bu
+bG
+bw
+bD
+bF
+ZH
+Fb
+Rq
+cs
+cu
+hQ
+Er
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 jg
 jJ
 kf
@@ -26637,6 +27342,7 @@ cP
 do
 dN
 es
+<<<<<<< HEAD
 eQ
 fD
 ae
@@ -26645,6 +27351,16 @@ gx
 hr
 hr
 hr
+=======
+cP
+Em
+Em
+YE
+ct
+cv
+TY
+TY
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 jh
 hr
 hr
@@ -26777,6 +27493,7 @@ ca
 cs
 cQ
 dp
+<<<<<<< HEAD
 bm
 et
 eV
@@ -26792,6 +27509,23 @@ jK
 hr
 gx
 gx
+=======
+Jc
+bK
+cd
+ce
+bK
+Zu
+Ng
+JD
+TY
+aE
+aK
+bn
+TY
+TY
+ac
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 kf
 mO
 mM
@@ -27049,6 +27783,7 @@ at
 at
 at
 at
+<<<<<<< HEAD
 QZ
 XA
 ae
@@ -27070,6 +27805,29 @@ gx
 gx
 gx
 hr
+=======
+Et
+HP
+aS
+aF
+bX
+aS
+cK
+cO
+aS
+cK
+cO
+aS
+cK
+cO
+aS
+cK
+cO
+aS
+PJ
+Ph
+TY
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 iz
 jj
 jj
@@ -27195,6 +27953,7 @@ VJ
 Rb
 IK
 Ew
+<<<<<<< HEAD
 Fo
 TA
 bo
@@ -27208,6 +27967,22 @@ ew
 eY
 fF
 ae
+=======
+am
+aS
+ca
+cQ
+aS
+cc
+cQ
+aS
+cc
+cQ
+aS
+cc
+cQ
+aS
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 gy
 gy
 gy
@@ -27628,6 +28403,7 @@ bK
 ce
 cy
 cT
+<<<<<<< HEAD
 bK
 dS
 ew
@@ -27635,6 +28411,15 @@ fb
 fH
 fZ
 gB
+=======
+bJ
+aY
+KQ
+bQ
+bd
+KQ
+co
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 gX
 hu
 hV
@@ -27776,7 +28561,7 @@ ew
 fc
 fI
 ga
-gC
+cq
 gY
 hv
 hW
@@ -27914,6 +28699,7 @@ cA
 cU
 dt
 dU
+<<<<<<< HEAD
 ex
 fd
 fJ
@@ -27924,6 +28710,18 @@ gZ
 hX
 iE
 gy
+=======
+cU
+fd
+fd
+cl
+fd
+fd
+fd
+cx
+fd
+aj
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 jO
 kj
 kX
@@ -28186,6 +28984,7 @@ aP
 aP
 at
 TW
+<<<<<<< HEAD
 XM
 af
 aq
@@ -28195,6 +28994,17 @@ bu
 bP
 ch
 cB
+=======
+WJ
+RS
+aj
+bY
+cC
+aj
+bY
+cC
+cA
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 cV
 dv
 dV
@@ -29521,11 +30331,19 @@ AN
 AN
 Bw
 yY
+<<<<<<< HEAD
 ad
 au
 au
 au
 bJ
+=======
+cL
+cW
+cW
+cW
+dm
+>>>>>>> 2549a1c... Merge pull request #4024 from Jakksergal/master
 yY
 ac
 ac
