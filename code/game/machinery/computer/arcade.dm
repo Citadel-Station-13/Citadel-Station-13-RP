@@ -11,6 +11,10 @@
 							/obj/item/weapon/gun/projectile/revolver/capgun	= 2,
 							/obj/item/toy/crossbow							= 2,
 							/obj/item/clothing/suit/syndicatefake			= 2,
+							/obj/item/clothing/head/medievalfake			= 2, 	//
+							/obj/item/clothing/suit/medievalfake			= 2, 	// Citadel
+							/obj/item/clothing/suit/medievalfake/crusader	= 2, 	// Addition
+							/obj/item/clothing/head/medievalfake/crusader	= 2, 	//
 							/obj/item/weapon/storage/fancy/crayons			= 2,
 							/obj/item/toy/spinningtoy						= 2,
 							/obj/item/toy/prize/ripley						= 1,
