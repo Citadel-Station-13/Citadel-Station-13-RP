@@ -26,7 +26,7 @@
 		)
 
 /datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+	music = list('modular_citadel/sound/music/elevator.ogg')  //CITADEL CHANGE - changes music here to modular_citadel/sound/music/elevator.ogg
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
 	use_power = 1
