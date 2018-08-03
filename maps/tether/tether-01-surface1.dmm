@@ -20250,6 +20250,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/cash_register/civilian{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
 "bum" = (

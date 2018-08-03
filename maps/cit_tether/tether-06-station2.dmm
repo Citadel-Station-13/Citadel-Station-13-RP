@@ -18746,11 +18746,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
-"Vz" = (
-/obj/structure/table/rack,
-/obj/item/weapon/rig/hazard,
-/turf/simulated/floor/tiled/dark,
-/area/ai_monitored/storage/eva)
 "VA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Public Meeting Room"
@@ -33335,7 +33330,7 @@ nV
 oF
 oY
 pE
-qc
+qj
 oY
 rN
 qc
@@ -33476,8 +33471,8 @@ ns
 ns
 ns
 oY
-Vz
-qj
+oY
+oY
 oY
 oY
 oY
@@ -33617,10 +33612,10 @@ iY
 ac
 ac
 ac
-oY
-oY
-oY
-oY
+ac
+ac
+ac
+ac
 ac
 oY
 sW
@@ -33762,8 +33757,8 @@ ac
 ac
 ac
 ac
-ac
-ac
+aa
+aa
 oY
 sX
 sX
@@ -33901,9 +33896,9 @@ ac
 aa
 aa
 aa
-ac
-ac
-ac
+aa
+aa
+aa
 aa
 aa
 oY

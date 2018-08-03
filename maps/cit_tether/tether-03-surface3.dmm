@@ -22119,17 +22119,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"Un" = (
-/obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	dir = 1;
-	id = "bar";
-	layer = 3.3;
-	name = "Bar Shutters"
-	},
-/obj/machinery/cash_register/civilian,
-/turf/simulated/floor/lino,
-/area/crew_quarters/bar)
 "Uu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/borderfloor{
@@ -22538,13 +22527,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
-"ZS" = (
-/obj/structure/table/marble,
-/obj/machinery/cash_register/civilian{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/bar)
 "ZX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -37831,7 +37813,7 @@ uk
 XN
 sX
 EF
-Un
+FI
 Qr
 Hb
 RB
@@ -38241,7 +38223,7 @@ sO
 sO
 uo
 uT
-ZS
+vr
 vO
 ww
 sX
