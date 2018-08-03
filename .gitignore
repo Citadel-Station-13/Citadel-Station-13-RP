@@ -12,3 +12,9 @@ cfg/
 
 temp.dmi
 config/
+tools/hooks/python.sh
+tools/hooks/pre-commit.hook
+tools/hooks/install.sh
+tools/hooks/install.bat
+tools/hooks/dmi.merge
+tools/hooks/README.md
