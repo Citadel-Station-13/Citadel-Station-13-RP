@@ -664,7 +664,7 @@
 							M = A
 							break
 				if(M)
-					message = "<span class='danger'>slaps [M]'s butt. Oof!</span>"
+					message = "<span class='danger'>slaps [M]'s butt.</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,M,"Buttslap")
 				else
