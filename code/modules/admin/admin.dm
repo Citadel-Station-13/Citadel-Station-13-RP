@@ -852,7 +852,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(!check_rights(R_ADMIN))
 		return
 
-	world.update_hub_visibility(!world.visibility)
+	world.update_hub_visibility(!world.visibility)				//CITADEL CHANGE - Use the ported from TG proc in hub.dm instead of setting visibility
 	log_admin("[key_name(usr)] toggled hub visibility.")
 	message_admins("[key_name_admin(usr)] toggled hub visibility.  The server is now [world.visibility ? "visible" : "invisible"] ([world.visibility]).", 1)
 	feedback_add_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc

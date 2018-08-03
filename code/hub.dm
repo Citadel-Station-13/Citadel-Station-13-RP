@@ -14,7 +14,7 @@ If not, let us know on the main tgstation IRC channel of irc.rizon.net #tgstatio
 	name = "Space Station 13"
 */
 
-/world/proc/update_hub_visibility(new_value)
+/world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
 	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
 		new_value = TRUE
 	else

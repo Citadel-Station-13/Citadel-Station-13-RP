@@ -6,7 +6,7 @@ var/list/gamemode_cache = list()
 
 	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
 
-	var/hub_visibility = FALSE
+	var/hub_visibility = FALSE				//CITADEL CHANGE - HUB CONFIG
 
 	var/log_ooc = 0						// log OOC channel
 	var/log_access = 0					// log login/logout
@@ -283,8 +283,8 @@ var/list/gamemode_cache = list()
 				if ("ban_legacy_system")
 					config.ban_legacy_system = 1
 
-				if ("hub_visibility")
-					config.hub_visbility = 1
+				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
+					config.hub_visibility = 1
 
 				if ("use_age_restriction_for_jobs")
 					config.use_age_restriction_for_jobs = 1
@@ -932,4 +932,4 @@ var/list/gamemode_cache = list()
 			config.python_path = "/usr/bin/env python2"
 		else //probably windows, if not this should work anyway
 			config.python_path = "python"
-	world.update_hub_visibility(hub_visibility)
+	world.update_hub_visibility(hub_visibility)			//CITADEL CHANGE - HUB CONFIG
