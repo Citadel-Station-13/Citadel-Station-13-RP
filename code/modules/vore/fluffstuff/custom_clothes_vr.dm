@@ -1313,18 +1313,13 @@ Departamental Swimsuits, for general use
 /obj/item/clothing/suit/storage/hooded/wintercoat/jessie
 	name = "Handmade Winter Suit"
 	desc = "A durable, but somewhat ragged lower portion of a snow suit fitted for a wolftaur."
-	icon = 'icons/mob/taursuits_vr.dmi'
-	icon_override = 'icons/mob/taursuits_vr.dmi'
+	icon = 'icons/mob/taursuits_wolf_vr.dmi'
 	icon_state = "jessiecoat"
+	item_state = "jessiecoat"
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/jessie/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 	if(..())
 		if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-			if(icon_state == "jessiecoat")
-				return ..()
-			icon_override = 'icons/mob/taursuits_vr.dmi'
-			icon_state = "jessiecoat"
-			pixel_x = -16
 			return ..()
 		else
 			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
@@ -1335,19 +1330,13 @@ Departamental Swimsuits, for general use
 	name = "Kat's Fox Taur Armor"
 	desc = "A set of security armor, light weight and easy to run in for a Taur, this item protects the \
 	entire body."
-	icon = 'icons/mob/taursuits_vr.dmi'
-	icon_override = 'icons/mob/taursuits_vr.dmi'
+	icon = 'icons/mob/taursuits_wolf_vr.dmi'
 	icon_state = "katesuit"
 	item_state_slots = null
 
 /obj/item/clothing/suit/armor/vest/wolftaur/kate/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 	if(..())
 		if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-			if(icon_state == "katesuit")
-				return ..()
-			icon_override = 'icons/mob/taursuits_vr.dmi'
-			icon_state = "katesuit"
-			pixel_x = -16
 			return ..()
 		else
 			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
@@ -1359,24 +1348,11 @@ Departamental Swimsuits, for general use
 	desc = "Taur engineering voidsuit. Recolored navy blue and white. Slightly tweaked as well to \
 	get close to having security voidsuit protection as possible with a slight reduction in movement \
 	speed to compensate for custom padding and armor Kateryna made herself."
-	icon = 'icons/mob/taursuits_vr.dmi'
-	icon_override = 'icons/mob/taursuits_vr.dmi'
+	icon = 'icons/mob/taursuits_wolf_vr.dmi'
 	icon_state = "lilithsuit"
+	item_state = "lilithsuit"
 	species_restricted = null
 	armor = list(melee = 40, bullet = 20, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
-
-/obj/item/clothing/suit/space/void/engineering/kate/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(..())
-		if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-			if(icon_state == "lilithsuit")
-				return ..()
-			icon_override = 'icons/mob/taursuits_vr.dmi'
-			icon_state = "lilithsuit"
-			pixel_x = -16
-			return ..()
-		else
-			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-			return 0
 
 //samanthafyre:Kateryna Petrovitch
 /obj/item/clothing/head/helmet/space/fluff/kate
@@ -1704,9 +1680,10 @@ Departamental Swimsuits, for general use
 
 //Mewchild: Phi Vietsi
 /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
-	name = "signet ring"
-	desc = "A signet ring carved from the bones of something long extinct, as a ward against bad luck."
-
+	name = "Phi Vietsi's Bone Signet Ring"
+	desc = "A signet ring belonging to Phi Vietsi, carved from the bones of something long extinct, as a ward against bad luck."
+	var/signet_name = "Phi Vietsi"
+	
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "vietsi_ring"
 
@@ -1785,17 +1762,16 @@ Departamental Swimsuits, for general use
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	desc = "A series of armor plates painted black, deployed from a back-mounted module. They fit smoothly over the unit's armor plates and projects a skintight bubble shield over the unit's uncovered parts. Faceplate and coolant unit not included."
 	species_restricted = null
-	icon = 'icons/mob/taursuits_vr.dmi'
-	icon_override = 'icons/mob/taursuits_vr.dmi'
+	icon = 'icons/mob/taursuits_lizard_vr.dmi'
 	icon_state = "hasd_suit"
 	item_state = "hasd_suit"
 	pixel_x = -16
 
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-		if(..() && istype(H) && H.ckey == "silencedmp5a5" && istype(H.tail_style, /datum/sprite_accessory/tail/taur/lizard/synthlizard))
+		if(..() && istype(H) && H.ckey == "silencedmp5a5")
 			return 1
 		else
-			H << "<span class='warning'>This suit is not designed for you.</span>"
+			to_chat(H,"<span class='warning'>This suit is not designed for you.</span>")
 			return 0
 
 //Zigfe:Zaoozaoo Xrimxuqmqixzix
@@ -1808,3 +1784,19 @@ Departamental Swimsuits, for general use
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "zao_cap_mob"
+
+//Nepox:Annie Rose
+/obj/item/clothing/accessory/sweater/fluff/annie
+	name = "Lazy Annie's Lazy Sweater"
+	desc = "A cozy sweater that's probably far too long for it's owner.  She's too lazy to care though."
+
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "sweater_annie"
+
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	item_state = "sweater_annie"
+
+	slot_flags = SLOT_OCLOTHING | SLOT_TIE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	w_class = ITEMSIZE_NORMAL
+	slot = ACCESSORY_SLOT_OVER

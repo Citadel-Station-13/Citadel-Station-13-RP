@@ -18,6 +18,9 @@
 	spawn(30)
 		eject_wait = 0
 
+	// Remove biomass when the cloning is started, rather than when the guy pops out
+	remove_biomass(CLONE_BIOMASS)
+
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = current_project.mydna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
@@ -110,16 +113,6 @@
 	return 1
 
 /obj/machinery/clonepod/transhuman/process()
-
-	var/visible_message = 0
-	for(var/obj/item/weapon/reagent_containers/food/snacks/meat/meat in range(1, src))
-		qdel(meat)
-		biomass += 50
-		visible_message = 1 // Prevent chatspam if multiple meat are near
-
-	if(visible_message)
-		visible_message("[src] sucks in and processes the nearby biomass.")
-
 	if(stat & NOPOWER)
 		if(occupant)
 			locked = 0
@@ -526,9 +519,10 @@
 
 	//Re-supply a NIF if one was backed up with them.
 	if(MR.nif_path)
-		var/obj/item/device/nif/nif = new MR.nif_path(occupant,MR.nif_durability)
+		var/obj/item/device/nif/nif = new MR.nif_path(occupant,null,MR.nif_savedata)
 		for(var/path in MR.nif_software)
 			new path(nif)
+		nif.durability = MR.nif_durability //Restore backed up durability after restoring the softs.
 
 	// If it was a custom sleeve (not owned by anyone), update namification sequences
 	if(!occupant.original_player)

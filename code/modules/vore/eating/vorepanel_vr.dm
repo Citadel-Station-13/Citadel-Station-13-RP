@@ -204,6 +204,9 @@
 			dat += " [english_list(flag_list)]"
 		else
 			dat += " None"
+		if(selected.mode_flags & DM_FLAG_ITEMWEAK)
+			dat += "<br><a href='?src=\ref[src];b_cont_flavor=\ref[selected]'>Contamination Mode:</a>"
+			dat += "[selected.cont_flavor]"
 
 		//Belly verb
 		dat += "<br><a href='?src=\ref[src];b_verb=\ref[selected]'>Vore Verb:</a>"
@@ -284,9 +287,9 @@
 
 	switch(user.allowmobvore)
 		if(1)
-			dat += "<a href='?src=\ref[src];togglemv=1'>Toggle Mob Vore</a>"
+			dat += "<a href='?src=\ref[src];togglemv=1'>Toggle Consumption</a>"	//CIT CHANGE - changes "mob vore" to consumption
 		if(0)
-			dat += "<a href='?src=\ref[src];togglemv=1'><span style='color:green;'>Toggle Mob Vore</span></a>"
+			dat += "<a href='?src=\ref[src];togglemv=1'><span style='color:green;'>Toggle Consumption</span></a>"	//CIT CHANGE - changes "mob vore" to consumption
 
 	dat += "<br><a href='?src=\ref[src];toggle_dropnom_prey=1'>Toggle Drop-nom Prey</a>" //These two get their own, custom row, too.
 	dat += "<a href='?src=\ref[src];toggle_dropnom_pred=1'>Toggle Drop-nom Pred</a>"
@@ -514,14 +517,14 @@
 		var/new_mode = input("Choose Mode (currently [selected.digest_mode])") as null|anything in menu_list
 		if(!new_mode)
 			return 0
-		
+
 		if(new_mode == DM_TRANSFORM) //Snowflek submenu
 			var/list/tf_list = selected.transform_modes
 			var/new_tf_mode = input("Choose TF Mode (currently [selected.tf_mode])") as null|anything in tf_list
 			if(!new_tf_mode)
 				return 0
 			selected.tf_mode = new_tf_mode
-		
+
 		selected.digest_mode = new_mode
 		selected.items_preserved.Cut() //Re-evaltuate all items in belly on belly-mode change
 
@@ -532,6 +535,13 @@
 			return 0
 		selected.mode_flags ^= selected.mode_flag_list[toggle_addon]
 		selected.items_preserved.Cut() //Re-evaltuate all items in belly on addon toggle
+
+	if(href_list["b_cont_flavor"])
+		var/list/menu_list = cont_flavors.Copy()
+		var/new_flavor = input("Choose Contamination Mode (currently [selected.cont_flavor])") as null|anything in menu_list
+		if(!new_flavor)
+			return 0
+		selected.cont_flavor = new_flavor
 
 	if(href_list["b_desc"])
 		var/new_desc = html_encode(input(usr,"Belly Description ([BELLIES_DESC_MAX] char limit):","New Description",selected.desc) as message|null)
@@ -794,16 +804,16 @@
 			user.client.prefs_vr.digestable = user.digestable
 
 	if(href_list["togglemv"])
-		var/choice = alert(user, "This button is for those who don't like being eaten by mobs. Messages admins when changed, so don't try to use it for mechanical benefit. Set it once and save it. Mobs are currently: [user.allowmobvore ? "Allowed to eat" : "Prevented from eating"] you.", "", "Allow Mob Predation", "Cancel", "Prevent Mob Predation")
+		var/choice = alert(user, "This button is for those who don't like the idea of diving down a gullet. Set it once and save it. Others are currently: [user.allowmobvore ? "Allowed to eat" : "Prevented from eating"] you.", "", "Allow Consumption", "Cancel", "Prevent Consumption")//CIT CHANGE - changes the flavor text for the mob vore preference to reflect its new status as a devourable toggle
 		switch(choice)
 			if("Cancel")
 				return 0
-			if("Allow Mob Predation")
+			if("Allow Consumption")
 				user.allowmobvore = TRUE
-			if("Prevent Mob Predation")
+			if("Prevent Consumption")
 				user.allowmobvore = FALSE
 
-		message_admins("[key_name(user)] toggled their mob vore preference to [user.allowmobvore] ([user ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[user.loc.];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>" : "null"])")
+		//message_admins("[key_name(user)] toggled their mob vore preference to [user.allowmobvore] ([user ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[user.loc.];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>" : "null"])") CIT CHANGE - We don't need this.
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.allowmobvore = user.allowmobvore

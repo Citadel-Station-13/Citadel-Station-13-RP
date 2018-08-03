@@ -21,6 +21,9 @@
 #define SEE_INVISIBLE_MINIMUM 5
 #define INVISIBILITY_MAXIMUM 100
 
+// For the client FPS pref and anywhere else
+#define MAX_CLIENT_FPS	200
+
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL 26 // Used to trigger removal from a processing list.
 #define MAX_GEAR_COST 15 // Used in chargen for accessory loadout limit.
@@ -101,7 +104,7 @@
 #define WAIT_FINISH  4
 
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
-#define MAX_MESSAGE_LEN       1024
+#define MAX_MESSAGE_LEN       2048 //VOREStation Edit - I'm not sure about "easily". It can be a little longer.
 #define MAX_PAPER_MESSAGE_LEN 6144
 #define MAX_BOOK_MESSAGE_LEN  24576
 #define MAX_RECORD_LENGTH	  24576
@@ -151,6 +154,12 @@
 #define MAT_LOG				"log"
 #define MAT_SIFWOOD			"alien wood"
 #define MAT_SIFLOG			"alien log"
+#define MAT_STEELHULL		"steel hull"
+#define MAT_PLASTEEL		"plasteel"
+#define MAT_PLASTEELHULL	"plasteel hull"
+#define MAT_DURASTEEL		"durasteel"
+#define MAT_DURASTEELHULL	"durasteel hull"
+#define MAT_TITANIUMHULL	"titanium hull"
 
 #define SHARD_SHARD "shard"
 #define SHARD_SHRAPNEL "shrapnel"
@@ -237,6 +246,25 @@
 #define USE_FAIL_INCAPACITATED 5
 #define USE_FAIL_NOT_IN_USER 6
 #define USE_FAIL_IS_SILICON 7
+
+// This creates a consistant definition for creating global lists, automatically inserting objects into it when they are created, and removing them when deleted.
+// It is very good for removing the 'in world' junk that exists in the codebase painlessly.
+// First argument is the list name/path desired, e.g. 'all_candles' would be 'var/list/all_candles = list()'.
+// Second argument is the path the list is expected to contain. Note that children will also get added to the global list.
+// If the GLOB system is ever ported, you can change this macro in one place and have less work to do than you otherwise would.
+#define GLOBAL_LIST_BOILERPLATE(LIST_NAME, PATH)\
+var/global/list/##LIST_NAME = list();\
+##PATH/initialize(mapload, ...)\
+	{\
+	##LIST_NAME += src;\
+	return ..();\
+	}\
+##PATH/Destroy(force, ...)\
+	{\
+	##LIST_NAME -= src;\
+	return ..();\
+	}\
+
 
 //'Normal'ness						 v								 v								 v
 //Various types of colorblindness	R2R		R2G		R2B		G2R		G2G		G2B		B2R		B2G		B2B

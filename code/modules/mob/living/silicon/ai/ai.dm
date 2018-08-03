@@ -1,7 +1,6 @@
 #define AI_CHECK_WIRELESS 1
 #define AI_CHECK_RADIO 2
 
-var/list/ai_list = list()
 var/list/ai_verbs_default = list(
 	// /mob/living/silicon/ai/proc/ai_recall_shuttle,
 	/mob/living/silicon/ai/proc/ai_emergency_message,
@@ -694,6 +693,9 @@ var/list/ai_verbs_default = list(
 		card.grab_ai(src, user)
 
 	else if(istype(W, /obj/item/weapon/wrench))
+		if(user == controlling_drone)
+			to_chat(user, "<span class='notice'>The drone's subsystems resist your efforts to tamper with your bolts.</span>")
+			return
 		if(anchored)
 			playsound(src, W.usesound, 50, 1)
 			user.visible_message("<font color='blue'>\The [user] starts to unbolt \the [src] from the plating...</font>")
@@ -801,6 +803,18 @@ var/list/ai_verbs_default = list(
 	// AI cores don't store what brain was used to build them so we're just gonna assume they can think to some degree.
 	// If that is ever fixed please update this proc.
 	return TRUE
+
+//Special subtype kept around for global announcements
+/mob/living/silicon/ai/announcer/initialize()
+	. = ..()
+	mob_list -= src
+	living_mob_list -= src
+	dead_mob_list -= src
+	ai_list -= src
+	silicon_mob_list -= src
+
+/mob/living/silicon/ai/announcer/Life()
+	return
 
 #undef AI_CHECK_WIRELESS
 #undef AI_CHECK_RADIO

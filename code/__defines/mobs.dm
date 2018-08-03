@@ -101,6 +101,7 @@
 #define INV_ACCESSORIES_DEF_ICON 'icons/mob/ties.dmi'
 #define INV_TIE_DEF_ICON 'icons/mob/ties.dmi'
 #define INV_SUIT_DEF_ICON 'icons/mob/suit.dmi'
+#define INV_SPACESUIT_DEF_ICON 'icons/mob/spacesuit.dmi'
 #define INV_WEAR_ID_DEF_ICON 'icons/mob/mob.dmi'
 #define INV_GLOVES_DEF_ICON 'icons/mob/hands.dmi'
 #define INV_EYES_DEF_ICON 'icons/mob/eyes.dmi'
@@ -264,6 +265,7 @@
 #define SPECIES_SHADOW			"Shadow"
 #define SPECIES_SKELETON		"Skeleton"
 #define SPECIES_GOLEM			"Golem"
+#define SPECIES_EVENT1			"X Occursus"
 
 // Used to seperate simple animals by ""intelligence"".
 #define SA_PLANT	1
@@ -299,7 +301,11 @@
 
 #define VIS_MESONS			18
 
-#define VIS_COUNT			18 //Must be highest number from above.
+#define VIS_TURFS			19
+#define VIS_OBJS			20
+#define VIS_MOBS			21
+
+#define VIS_COUNT			21 //Must be highest number from above.
 
 //Some mob icon layering defines
 #define BODY_LAYER		-100

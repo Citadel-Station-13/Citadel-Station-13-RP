@@ -428,6 +428,11 @@
 	name = "\improper AI Maintenance"
 	sound_env = SEWER_PIPE
 
+/area/tether/station/public_meeting_room
+	name = "Public Meeting Room"
+	icon_state = "blue"
+	sound_env = SMALL_SOFTFLOOR
+
 /area/shuttle/tether/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
@@ -446,6 +451,9 @@
 
 /area/tether/station/explorer_meeting
 	name = "\improper Explorer Meeting Room"
+
+/area/tether/station/pathfinder_office
+	name = "\improper Pathfinder's Office"
 
 /area/shuttle/excursion
 	name = "\improper Excursion Shuttle"

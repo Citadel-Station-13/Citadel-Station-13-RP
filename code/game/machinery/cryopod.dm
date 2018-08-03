@@ -362,6 +362,8 @@
 
 	qdel(R.mmi)
 	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
+		for(var/mob/M in I) //VOREStation edit
+			despawn_occupant(M)
 		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
 			O.forceMove(R)
 		qdel(I)
@@ -422,7 +424,7 @@
 			preserve = 1
 
 		if(istype(W,/obj/item/weapon/implant/health))
-			for(var/obj/machinery/computer/cloning/com in world)
+			for(var/obj/machinery/computer/cloning/com in machines)
 				for(var/datum/dna2/record/R in com.records)
 					if(locate(R.implant) == W)
 						qdel(R)

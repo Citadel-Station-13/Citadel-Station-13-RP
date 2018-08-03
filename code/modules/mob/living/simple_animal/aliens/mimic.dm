@@ -49,10 +49,7 @@
 	qdel(src)
 
 /mob/living/simple_animal/hostile/mimic/MouseEntered(location, control, params)
-	..()
-	closeToolTip(usr) 
-	// ideally, we'd remove the code in ..() that opens the tooltip, 
-	// but then we'd need to duplicate all the other code in ..()
+	return // Do not call parent: Mimics shouldn't have tooltips!
 
 //
 // Crate Mimic
@@ -117,6 +114,8 @@
 	var/obj/structure/closet/crate/C = new(get_turf(src))
 	// Put loot in crate
 	for(var/obj/O in src)
+		if(isbelly(O)) //VOREStation edit
+			continue
 		O.forceMove(C)
 	..()
 
@@ -149,6 +148,8 @@ var/global/list/protected_objects = list(/obj/structure/table, /obj/structure/ca
 /mob/living/simple_animal/hostile/mimic/copy/death()
 
 	for(var/atom/movable/M in src)
+		if(isbelly(M)) //VOREStation edit
+			continue
 		M.forceMove(get_turf(src))
 	..()
 
