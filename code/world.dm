@@ -36,8 +36,6 @@ var/global/datum/global_init/init = new ()
 	view = "15x15"
 	cache_lifespan = 7
 
-
-
 #define RECOMMENDED_VERSION 501
 /world/New()
 	world.log << "Map Loading Complete"
@@ -100,7 +98,7 @@ var/global/datum/global_init/init = new ()
 
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
-	
+
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
