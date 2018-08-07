@@ -381,8 +381,8 @@
 	name = "black insulated gloves"
 	},
 /obj/item/clothing/under/fluff/latexmaid,
-/obj/item/clothing/suit/stripper/stripper_green,
-/obj/item/clothing/suit/stripper/stripper_pink,
+/obj/item/clothing/under/modular_cit/stripper_pink,
+/obj/item/clothing/under/modular_cit/stripper_green,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "aZ" = (
