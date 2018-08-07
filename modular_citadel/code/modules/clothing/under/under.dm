@@ -12,9 +12,10 @@
 	icon_state = "hosskirt"
 	item_state = "hosskirt"
 	rolled_sleeves = 0
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/modular_cit/rank/captain/femformal
-	name ="director's female formal outfit"
+	name = "director's female formal outfit"
 	desc = "A formal uniform for the colony director."
 	icon_state = "lewdcap"
 	item_state = "lewdcap"
