@@ -21,12 +21,12 @@
 
 /obj/item/clothing/under/modular_cit/stripper_pink
 	name = "pink stripper outfit"
-	desc = "A pink stripper outfit.
+	desc = "A pink stripper outfit."
 	icon_state = "stripper_p"
 	item_state = "stripper_p"
 
 /obj/item/clothing/under/modular_cit/stripper_green
 	name = "green stripper outfit"
-	desc = "A green stripper outfit.
+	desc = "A green stripper outfit."
 	icon_state = "stripper_g"
 	item_state = "stripper_g"
