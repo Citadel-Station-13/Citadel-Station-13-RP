@@ -15,18 +15,18 @@
 
 /obj/item/clothing/under/modular_cit/rank/captain/femformal
 	name ="director's female formal outfit"
-	desc = ""
+	desc = "A formal uniform for the colony director."
 	icon_state = "lewdcap"
 	item_state = "lewdcap"
 
 /obj/item/clothing/under/modular_cit/stripper_pink
 	name = "pink stripper outfit"
-	desc = ""
+	desc = "A pink stripper outfit.
 	icon_state = "stripper_p"
 	item_state = "stripper_p"
 
 /obj/item/clothing/under/modular_cit/stripper_green
 	name = "green stripper outfit"
-	desc = ""
+	desc = "A green stripper outfit.
 	icon_state = "stripper_g"
 	item_state = "stripper_g"
