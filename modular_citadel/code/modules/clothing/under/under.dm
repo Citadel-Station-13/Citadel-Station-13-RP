@@ -12,7 +12,6 @@
 	rolled_sleeves = -1
 	rolled_down = -1
 
-
 /obj/item/clothing/under/modular_cit/rank/head_of_security/skirt
 	name = "head of security's skirt"
 	desc = "A security skirt decorated for those few with the dedication to achieve the position of Head of Security."
@@ -25,7 +24,6 @@
 	desc = ""
 	icon_state = "lewdcap"
 	item_state = "lewdcap"
-
 
 /obj/item/clothing/under/modular_cit/stripper_pink
 	name = "pink stripper outfit"
