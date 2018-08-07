@@ -190,6 +190,10 @@
 					prob(2);/obj/item/weapon/storage/box/sinpockets,
 					prob(2);/obj/item/weapon/storage/secure/briefcase,
 					prob(2);/obj/item/clothing/under/fluff/latexmaid,
+					//Citadel Changes Start here
+					prob(2);/obj/item/clothing/under/modular_cit/stripper_pink,
+					prob(2);/obj/item/clothing/under/modular_cit/stripper_green,
+					//Citadel Changes End here
 					prob(1);/obj/item/clothing/glasses/sunglasses,
 					prob(1);/obj/item/clothing/glasses/welding,
 					prob(1);/obj/item/clothing/gloves/yellow,
