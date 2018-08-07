@@ -477,9 +477,9 @@
 		/obj/item/weapon/storage/backpack/satchel/cap,
 		/obj/item/clothing/head/caphat/formal,
 		/obj/item/clothing/under/captainformal,
-		//Citadel Changes Start here
+//Citadel Changes Start here
 		/obj/item/clothing/under/modular_cit/rank/captain/femformal,
-		//Citadel Changes End here
+//Citadel Changes End here
 		/obj/item/clothing/suit/storage/hooded/wintercoat/captain,
 		/obj/item/clothing/shoes/boots/winter/command,
 		/obj/item/clothing/head/beret/centcom/captain,

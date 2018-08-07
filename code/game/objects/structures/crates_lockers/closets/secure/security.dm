@@ -93,9 +93,9 @@
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
-		//Citadel Changes Start here
+//Citadel Changes Start here
 		/obj/item/clothing/under/modular_cit/rank/head_of_security/skirt,
-		//Citadel Changes End here
+//Citadel Changes End here
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
 		/obj/item/clothing/head/helmet/dermal,
