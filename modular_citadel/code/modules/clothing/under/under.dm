@@ -1,7 +1,7 @@
-/obj/item/clothing/under/modular_cit
+/obj/item/clothing/under/moduler_cit
 	name = "base modular jumpsuit"
 	desc = "Here for ease of use in the future when adding items."
-	icon = 'modular_citadel/icons/obj/clothing/cit_clothes.dmi'
+	icon = 'modular_citadel/icons/obj/clothing/citclothes.dmi'
 	icon_override = 'modular_citadel/icons/mob/citadel/uniforms.dmi'
 	rolled_sleeves = -1
 	rolled_down = -1
@@ -14,20 +14,14 @@
 	rolled_sleeves = 0
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
-/obj/item/clothing/under/modular_cit/rank/captain/femformal
-	name = "director's female formal outfit"
-	desc = "A formal uniform for the colony director."
-	icon_state = "lewdcap"
-	item_state = "lewdcap"
-
 /obj/item/clothing/under/modular_cit/stripper_pink
 	name = "pink stripper outfit"
-	desc = "A pink stripper outfit."
+	desc = "Its just a bra with thongs strapped to it."
 	icon_state = "stripper_p"
 	item_state = "stripper_p"
 
-/obj/item/clothing/under/modular_cit/stripper_green
+/obj/item/clothing under/modular_cit/stripper_green
 	name = "green stripper outfit"
-	desc = "A green stripper outfit."
+	desc = "Its just a bra with thongs strapped to it."
 	icon_state = "stripper_g"
 	item_state = "stripper_g"
