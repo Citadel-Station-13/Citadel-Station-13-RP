@@ -5,7 +5,7 @@
 /hook/startup/proc/robot_modules_cit()
 	robot_modules["Service-Hound"] = /obj/item/weapon/robot_module/robot/clerical/brodog // Citadel addition
 
-// Cit changes starts here. Uses modified K9 sprites.
+// Uses modified K9 sprites.
 /obj/item/weapon/robot_module/robot/clerical/brodog
 	name = "service hound module"
 	sprites = list(
@@ -71,4 +71,3 @@
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	..()
-// Cit changes ends here
