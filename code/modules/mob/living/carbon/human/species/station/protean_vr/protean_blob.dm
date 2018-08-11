@@ -56,7 +56,7 @@
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/ventcrawl
+		//verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 	else
 		update_icon()
