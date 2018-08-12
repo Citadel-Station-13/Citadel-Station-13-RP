@@ -1,7 +1,7 @@
 /obj/item/clothing/under/moduler_cit
 	name = "base modular jumpsuit"
 	desc = "Here for ease of use in the future when adding items."
-	icon = 'modular_citadel/icons/obj/clothing/citclothes.dmi'
+	icon = 'modular_citadel/icons/obj/clothing/cit_clothes.dmi'
 	icon_override = 'modular_citadel/icons/mob/citadel/uniforms.dmi'
 	rolled_sleeves = -1
 	rolled_down = -1
@@ -20,7 +20,7 @@
 	icon_state = "stripper_p"
 	item_state = "stripper_p"
 
-/obj/item/clothing under/modular_cit/stripper_green
+/obj/item/clothing/under/modular_cit/stripper_green
 	name = "green stripper outfit"
 	desc = "Its just a bra with thongs strapped to it."
 	icon_state = "stripper_g"
