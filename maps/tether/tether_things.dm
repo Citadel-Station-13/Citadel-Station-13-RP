@@ -26,7 +26,7 @@
 		)
 
 /datum/turbolift
-	music = list('modular_citadel/sound/music/elevator.ogg')  //CITADEL CHANGE - changes music here to modular_citadel/sound/music/elevator.ogg
+	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
 	use_power = 1
@@ -378,11 +378,11 @@ var/global/list/latejoin_tram   = list()
 	reagents.add_reagent("paracetamol", 5)
 
 //"Red" Armory Door
-/obj/machinery/door/airlock/multi_tile/metal/red
+/obj/machinery/door/airlock/security/armory
 	name = "Red Armory"
 	//color = ""
 
-/obj/machinery/door/airlock/multi_tile/metal/red/allowed(mob/user)
+/obj/machinery/door/airlock/security/armory/allowed(mob/user)
 	if(get_security_level() in list("green","blue"))
 		return FALSE
 
