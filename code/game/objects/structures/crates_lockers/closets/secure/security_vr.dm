@@ -14,6 +14,9 @@
 		/obj/item/clothing/head/helmet/HoS/hat,
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
+//Citadel Changes Start here
+		/obj/item/clothing/under/modular_cit/rank/head_of_security/skirt,
+//Citadel Changes End here
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,

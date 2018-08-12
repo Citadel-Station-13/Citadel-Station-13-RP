@@ -188,7 +188,7 @@
 	name = "white wardrobe"
 	icon_state = "white"
 	icon_closed = "white"
-	
+
 	starts_with = list(
 		/obj/item/clothing/under/color/white = 3,
 		/obj/item/clothing/shoes/white = 3,
@@ -254,7 +254,7 @@
 		starts_with += /obj/item/weapon/storage/backpack/dufflebag/sci
 	else
 		starts_with += /obj/item/weapon/storage/backpack/satchel/tox
-	
+
 	return ..()
 
 
@@ -340,12 +340,12 @@
 	name = "grey wardrobe"
 	icon_state = "grey"
 	icon_closed = "grey"
-	
+
 	starts_with = list(
 		/obj/item/clothing/under/color/grey = 3,
 		/obj/item/clothing/shoes/black = 3,
 		/obj/item/clothing/head/soft/grey = 3)
-		
+
 
 /obj/structure/closet/wardrobe/mixed
 	name = "mixed wardrobe"
