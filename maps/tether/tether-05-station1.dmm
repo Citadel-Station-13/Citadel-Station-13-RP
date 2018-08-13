@@ -22835,6 +22835,10 @@
 "wmC" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/requests_console{
+	department = "Excursion Hanger Briefing";
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
 "wrg" = (

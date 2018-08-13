@@ -13418,6 +13418,11 @@
 /obj/item/weapon/book/manual/security_space_law,
 /obj/item/weapon/book/manual/command_guide,
 /obj/item/weapon/book/manual/command_guide,
+/obj/machinery/requests_console{
+	department = "IAA Office";
+	departmentType = 4;
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/dark,
 /area/lawoffice)
 "vy" = (
@@ -18837,14 +18842,6 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
-	},
-/obj/machinery/requests_console{
-	announcementConsole = 1;
-	department = "Medical Department";
-	departmentType = 3;
-	name = "Medical RC";
-	pixel_x = 0;
-	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
