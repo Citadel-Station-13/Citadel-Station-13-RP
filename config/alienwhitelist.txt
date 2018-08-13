@@ -1,4 +1,5 @@
 aether_elemental - Daemon
+improvedname - Vox
 aruis - Diona
 aruis - Xenochimera
 azmodan412 - Xenochimera
