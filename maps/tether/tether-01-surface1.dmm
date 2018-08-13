@@ -34,6 +34,16 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "aaj" = (
@@ -90,16 +100,6 @@
 	id_tag = "mining_airlock_outer";
 	locked = 1
 	},
-/obj/machinery/shield_diffuser,
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/airlock)
 "aaq" = (
@@ -113,11 +113,6 @@
 	master_tag = "mining_airlock";
 	pixel_x = 25;
 	pixel_y = 8
-	},
-/obj/machinery/shield_diffuser,
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/airlock)
@@ -4870,11 +4865,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
@@ -11878,9 +11868,10 @@
 	locked = 1
 	},
 /obj/structure/cable/green{
-	icon_state = "0-4"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "aCc" = (
@@ -11921,11 +11912,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva/external)
@@ -12609,10 +12595,6 @@
 	id_tag = "civ_airlock_outer";
 	locked = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "aDE" = (
@@ -14497,6 +14479,16 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/rnd/external)
@@ -20383,18 +20375,14 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/machinery/requests_console{
-	department = "Science";
-	departmentType = 2;
-	name = "Science Requests Console";
-	pixel_x = 30;
-	pixel_y = 0
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
+	},
+/obj/machinery/requests_console/preset/research{
+	pixel_x = 30
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
@@ -21535,6 +21523,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology/xenoflora_storage)
+"bBG" = (
+/obj/machinery/shield_diffuser,
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "bBP" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -22849,11 +22842,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
 "bQT" = (
@@ -22907,11 +22895,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -23228,8 +23211,11 @@
 	id_tag = "rnd_s_airlock_outer";
 	locked = 1
 	},
-/obj/machinery/shield_diffuser,
-/obj/structure/cable/green,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/external)
 "bSK" = (
@@ -23245,7 +23231,6 @@
 	id_tag = "rnd_s_airlock_outer";
 	locked = 1
 	},
-/obj/machinery/shield_diffuser,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/external)
@@ -27766,6 +27751,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+"hVt" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/storage/surface_eva/external)
 "idw" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
@@ -27878,6 +27871,14 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+"kzf" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "kOB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -28139,6 +28140,20 @@
 "pCg" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_one)
+"qcM" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/rnd/external)
 "qpB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -28242,6 +28257,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"ruk" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "rEC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -28433,6 +28455,27 @@
 /obj/effect/floor_decal/techfloor/hole/right,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"uhn" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"uvi" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "uwI" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -28473,6 +28516,14 @@
 "vkK" = (
 /turf/simulated/wall,
 /area/maintenance/lower/public_garden_maintenence)
+"vmV" = (
+/obj/machinery/shield_diffuser,
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "vzE" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -31942,8 +31993,8 @@ aah
 aah
 aah
 akb
-akb
-akb
+ruk
+ruk
 akb
 aah
 aah
@@ -32084,8 +32135,8 @@ aah
 aah
 aah
 akb
-akb
-akb
+uvi
+uhn
 akb
 aah
 aah
@@ -32226,7 +32277,7 @@ aah
 aah
 aah
 akc
-akH
+hVt
 akH
 alZ
 amD
@@ -34396,7 +34447,7 @@ bOt
 bQL
 bSJ
 aIq
-akb
+bBG
 aad
 aad
 aad
@@ -34537,8 +34588,8 @@ bMo
 bON
 bQV
 bSK
-aIq
-akb
+qcM
+bBG
 aad
 aad
 aad
@@ -39439,7 +39490,7 @@ aae
 aae
 aae
 aae
-aaf
+vmV
 aai
 aap
 aav
@@ -39581,8 +39632,8 @@ aae
 aae
 aae
 aae
-aaf
-aaf
+vmV
+kzf
 aaq
 aax
 aaB

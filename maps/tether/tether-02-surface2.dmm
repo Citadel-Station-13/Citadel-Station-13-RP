@@ -10360,23 +10360,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/research)
-"uB" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/obj/machinery/requests_console{
-	department = "Science";
-	departmentType = 2;
-	name = "Science Requests Console";
-	pixel_x = 30;
-	pixel_y = 0
-	},
-/obj/structure/closet/secure_closet/personal,
-/turf/simulated/floor/tiled,
-/area/rnd/research)
 "uC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -27653,7 +27636,7 @@ rB
 sh
 td
 tR
-uB
+tR
 vq
 vX
 wF

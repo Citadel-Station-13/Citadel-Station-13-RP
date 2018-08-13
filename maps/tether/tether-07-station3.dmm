@@ -20,7 +20,6 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/security/eva)
 "ad" = (
@@ -38,9 +37,6 @@
 "ag" = (
 /obj/machinery/light/small{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /turf/simulated/floor,
 /area/security/eva)
@@ -3694,6 +3690,14 @@
 	pixel_y = -25;
 	req_one_access = list(13)
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/airless,
 /area/space)
 "gk" = (
@@ -3712,10 +3716,8 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "1-2"
 	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/security/eva)
 "gm" = (
@@ -3841,11 +3843,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
 	},
 /turf/simulated/floor,
 /area/security/eva)
@@ -27436,6 +27433,14 @@
 "SW" = (
 /turf/simulated/mineral/vacuum,
 /area/space)
+"Tj" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "Ts" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -27465,6 +27470,20 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
+"VV" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
+"Wr" = (
+/obj/machinery/shield_diffuser,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 
 (1,1,1) = {"
 aa
@@ -36866,7 +36885,7 @@ aa
 aa
 aa
 ed
-gg
+VV
 gj
 gl
 gx
@@ -37008,8 +37027,8 @@ aa
 aa
 aa
 ed
-gg
-gg
+Tj
+Tj
 ac
 ag
 ak
@@ -37150,8 +37169,8 @@ aa
 aa
 aa
 ed
-gg
-gg
+Wr
+Wr
 aU
 aU
 aU

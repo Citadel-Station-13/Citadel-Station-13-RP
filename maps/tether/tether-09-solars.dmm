@@ -1772,6 +1772,9 @@
 	pixel_x = 4;
 	pixel_y = -24
 	},
+/obj/machinery/requests_console/preset/research{
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing)
 "dT" = (
@@ -2006,6 +2009,9 @@
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 6
+	},
+/obj/machinery/requests_console/preset/research{
+	pixel_x = 30
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
@@ -3434,6 +3440,9 @@
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
+	},
+/obj/machinery/requests_console/preset/research{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
