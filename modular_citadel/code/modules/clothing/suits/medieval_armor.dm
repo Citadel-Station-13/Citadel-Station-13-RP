@@ -1,4 +1,4 @@
-// Helmets
+//Helmets
 /obj/item/clothing/head/helmet/medieval
 	name = "medieval helmet"
 	desc = "A classic metal helmet, effective at stopping melee attacks."
@@ -26,7 +26,7 @@
 	icon_state = "knight_yellow"
 	item_state = "knight_yellow"
 
-// Armours
+//Armours
 /obj/item/clothing/suit/armor/medieval
 	name = "plate armour"
 	desc = "A classic suit of plate armour, effective at stopping melee attacks."
@@ -55,8 +55,8 @@
 	icon_state = "knight_yellow"
 	item_state = "knight_yellow"
 
-// Crusader stuff
-// Helmets
+//Crusader stuff
+//Helmets
 /obj/item/clothing/head/helmet/medieval/crusader
 	name = "great helm"
 	desc = "A classic, great metal helmet, effective at stopping melee attacks."
@@ -69,7 +69,7 @@
 	icon_state = "crusader_templar"
 	item_state = "crusader_templar"
 
-// Armours
+//Armours
 /obj/item/clothing/suit/armor/medieval/crusader
 	name = "bland crusader armour"
 	desc = "A classic suit of plate armour, usually worn by crusaders. It doesn't have any insignia."
@@ -98,9 +98,8 @@
 	icon_state = "crusader_dark"
 	item_state = "crusader_dark"
 
-//
-/// Replica stuff
-//
+//Replica stuff
+//Helmets
 /obj/item/clothing/head/medievalfake
 	name = "medieval helmet replica"
 	desc = "A plastic replica of knight helmet. Great for tabletop and LARP sessions, not great at stopping melee attacks."
@@ -127,7 +126,7 @@
 	icon_state = "knight_red"
 	item_state = "knight_red"
 
-// Armours
+//Armours
 /obj/item/clothing/suit/medievalfake
 	name = "plate armour replica"
 	desc = "A plastic replica of knight armor. Great for tabletop and LARP sessions, not great at stopping melee attacks."
@@ -154,8 +153,8 @@
 	icon_state = "knight_red"
 	item_state = "knight_red"
 
-// Crusader stuff
-// Helmet
+//Crusader stuff
+//Helmets
 /obj/item/clothing/head/medievalfake/crusader
 	name = "great helm replica"
 	desc = "A plastic replica of classic great helmet."
@@ -168,7 +167,7 @@
 	icon_state = "crusader_templar"
 	item_state = "crusader_templar"
 
-// Armour
+//Armours
 /obj/item/clothing/suit/medievalfake/crusader
 	name = "bland crusader armour replica"
 	desc = "A plastic replica of knight armor with crusader feeling to it. It doesn't have any insignia."
