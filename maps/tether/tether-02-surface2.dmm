@@ -7985,6 +7985,9 @@
 /obj/machinery/computer/rdconsole/core{
 	dir = 4
 	},
+/obj/machinery/requests_console/preset/research{
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "qv" = (
@@ -8735,7 +8738,7 @@
 	dir = 8
 	},
 /obj/item/weapon/storage/box/glasses/pint,
-/obj/machinery/requests_console/preset/engineering{
+/obj/machinery/requests_console/preset/atmos{
 	pixel_x = 30
 	},
 /turf/simulated/floor/tiled,
@@ -9946,6 +9949,9 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 8
+	},
+/obj/machinery/requests_console/preset/research{
+	pixel_x = -30
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -12039,6 +12045,9 @@
 	icon_state = "computer";
 	dir = 1
 	},
+/obj/machinery/requests_console/preset/atmos{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "wW" = (
@@ -13866,15 +13875,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
-"Ao" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/obj/machinery/requests_console{
-	pixel_x = -30
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "Ap" = (
 /obj/effect/floor_decal/corner_techfloor_gray{
 	dir = 1
@@ -27237,7 +27237,7 @@ yt
 vX
 zg
 zO
-Ao
+zO
 AL
 Ba
 Ar

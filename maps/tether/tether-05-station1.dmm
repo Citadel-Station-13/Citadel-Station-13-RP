@@ -4446,6 +4446,9 @@
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
+/obj/machinery/requests_console/preset/engineering{
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "ane" = (
@@ -6602,6 +6605,9 @@
 	},
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /obj/item/device/closet_painter,
+/obj/machinery/requests_console/preset/engineering{
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "asD" = (
@@ -7060,6 +7066,9 @@
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/white/diagonal,
 /obj/item/weapon/folder/yellow,
+/obj/machinery/requests_console/preset/engineering{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "auc" = (
@@ -7490,6 +7499,9 @@
 /obj/structure/table/reinforced,
 /obj/item/device/suit_cooling_unit,
 /obj/item/device/suit_cooling_unit,
+/obj/machinery/requests_console/preset/engineering{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "avw" = (
@@ -7640,6 +7652,9 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/machinery/requests_console/preset/arrivals{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "awb" = (
@@ -10110,6 +10125,10 @@
 	name = "Engineering Starboard External Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "aCC" = (
@@ -10387,6 +10406,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aDp" = (
@@ -10624,6 +10648,11 @@
 	frequency = 1379;
 	id_tag = "eng_starboard_pump"
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aEb" = (
@@ -10682,6 +10711,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aEm" = (
@@ -10699,6 +10731,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -10836,10 +10873,18 @@
 /area/crew_quarters/sleep/engi_wash)
 "aEN" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aEO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aEP" = (
@@ -11081,6 +11126,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aFr" = (
@@ -11104,6 +11152,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -11217,6 +11270,11 @@
 	tag_exterior_door = "eng_starboard_outer";
 	tag_interior_door = "eng_starboard_inner"
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aFK" = (
@@ -11296,6 +11354,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aFX" = (
@@ -11339,6 +11400,11 @@
 "aGb" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -11436,6 +11502,12 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/sign/dock/one,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aGB" = (
@@ -11449,6 +11521,16 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/sign/dock/two,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aGI" = (
@@ -11612,6 +11694,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aHv" = (
@@ -11628,6 +11713,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aHx" = (
@@ -11722,6 +11812,11 @@
 	name = "Engineering Starboard Internal Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
 "aHR" = (
@@ -11976,6 +12071,9 @@
 	dir = 6
 	},
 /obj/item/device/radio/beacon,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aIA" = (
@@ -12016,6 +12114,12 @@
 /area/library_conference_room)
 "aIM" = (
 /obj/effect/floor_decal/sign/dock/one,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aIO" = (
@@ -12023,6 +12127,16 @@
 /area/engineering/engineering_monitoring)
 "aIR" = (
 /obj/effect/floor_decal/sign/dock/two,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aIS" = (
@@ -12060,6 +12174,9 @@
 /area/tether/station/dock_one)
 "aIY" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aJa" = (
@@ -12101,6 +12218,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_airlock)
@@ -12417,6 +12539,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_airlock)
 "aLr" = (
@@ -12620,6 +12747,16 @@
 "aLI" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
@@ -17929,12 +18066,8 @@
 /obj/structure/table/reinforced,
 /obj/item/clothing/glasses/omnihud,
 /obj/machinery/light,
-/obj/machinery/requests_console{
-	announcementConsole = 1;
-	department = "Bridge";
-	departmentType = 5;
-	name = "Bridge RC";
-	pixel_y = -32
+/obj/machinery/requests_console/preset/hop{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
@@ -18614,6 +18747,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "byE" = (
@@ -18670,15 +18806,10 @@
 /area/crew_quarters/captain)
 "byW" = (
 /obj/machinery/camera/network/command,
-/obj/machinery/requests_console{
-	announcementConsole = 1;
-	department = "Bridge";
-	departmentType = 5;
-	name = "Bridge RC";
-	pixel_x = -32;
-	pixel_y = 0
-	},
 /obj/structure/closet/emcloset,
+/obj/machinery/requests_console/preset/director{
+	pixel_x = -30
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "byY" = (
@@ -19743,6 +19874,10 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bHu" = (
@@ -19755,6 +19890,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
@@ -19782,6 +19922,11 @@
 	tag_exterior_door = "d1a2_dock_outer";
 	tag_interior_door = "d1a2_dock_inner"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bHy" = (
@@ -19800,6 +19945,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
@@ -19830,6 +19980,10 @@
 	pixel_y = -26;
 	req_one_access = list(13)
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bHN" = (
@@ -19842,6 +19996,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -19869,6 +20028,11 @@
 	pixel_x = 0;
 	pixel_y = -25
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bHV" = (
@@ -19887,6 +20051,11 @@
 	pixel_x = -28;
 	pixel_y = 26;
 	req_one_access = list(13)
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -20414,6 +20583,10 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bPq" = (
@@ -20426,6 +20599,11 @@
 	id_tag = "d1a1_dock_inner";
 	locked = 1;
 	name = "Docking Port Airlock"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
@@ -20453,6 +20631,11 @@
 	frequency = 1380;
 	id_tag = "d1a1_dock_pump"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bPs" = (
@@ -20471,6 +20654,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
@@ -20491,6 +20679,10 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
 "bPx" = (
@@ -20503,6 +20695,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
@@ -20530,6 +20727,11 @@
 	tag_exterior_door = "tether_dock_outer";
 	tag_interior_door = "tether_dock_inner"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
 "bPA" = (
@@ -20548,6 +20750,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -20575,6 +20782,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	icon_state = "intact"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -20645,6 +20857,9 @@
 	locked = 1;
 	name = "Dock One Internal Access"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bPY" = (
@@ -20670,6 +20885,11 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQd" = (
@@ -20700,6 +20920,9 @@
 	tag_chamber_sensor = "trade_shuttle_dock_sensor";
 	tag_exterior_door = "trade_shuttle_dock_outer";
 	tag_interior_door = "trade_shuttle_dock_inner"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
@@ -20735,6 +20958,11 @@
 	dir = 8;
 	icon_state = "map"
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQl" = (
@@ -20765,6 +20993,14 @@
 	pixel_x = 30;
 	pixel_y = 8
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQq" = (
@@ -20778,6 +21014,11 @@
 	dir = 1;
 	frequency = 1380;
 	id_tag = "trade_shuttle_dock_pump"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
@@ -20796,6 +21037,16 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQu" = (
@@ -20804,6 +21055,9 @@
 	dir = 1;
 	frequency = 1380;
 	id_tag = "nuke_shuttle_dock_pump"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -20841,6 +21095,8 @@
 	locked = 1;
 	name = "Dock One External Access"
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQz" = (
@@ -20851,6 +21107,8 @@
 	locked = 1;
 	name = "Dock One External Access"
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQC" = (
@@ -20870,6 +21128,8 @@
 	pixel_y = -6;
 	req_one_access = list(13)
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQD" = (
@@ -20897,6 +21157,8 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
+/obj/structure/cable,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQM" = (
@@ -20942,6 +21204,11 @@
 "bXm" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bXn" = (
@@ -21372,6 +21639,12 @@
 /obj/machinery/meter,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/excursion/tether)
+"dch" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_one)
 "dkC" = (
 /obj/machinery/light{
 	dir = 8;
@@ -21426,6 +21699,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/pathfinder_office)
+"dLm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_one)
 "dMN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -22129,6 +22410,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"pWS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
 "pYE" = (
 /obj/structure/closet/secure_closet/pathfinder{
 	req_access = list(18,43,67)
@@ -28150,21 +28441,21 @@ bts
 bvt
 bwV
 byD
-aDF
+dLm
 aEl
 aEN
 aFq
 aFW
 aGz
-aDF
+dLm
 aHt
-aDF
+dLm
 aEl
 aEN
 aIy
 aFW
 aIM
-aDG
+dch
 aIY
 bPX
 bQe
@@ -30990,15 +31281,15 @@ btO
 bha
 bxe
 aDn
-aDK
+pWS
 aEn
 aEO
 aFt
 aGb
 aGF
-aDK
+pWS
 aHw
-aDK
+pWS
 aEn
 aEO
 aFt

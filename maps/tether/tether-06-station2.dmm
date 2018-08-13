@@ -2402,6 +2402,11 @@
 "dy" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/table/woodentable,
+/obj/machinery/requests_console{
+	department = "Chapel";
+	departmentType = 1;
+	pixel_x = -30
+	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "dz" = (
@@ -3957,6 +3962,9 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /obj/random/tech_supply,
+/obj/machinery/requests_console/preset/engineering{
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/locker_room)
 "hp" = (
@@ -11382,9 +11390,19 @@
 	icon_state = "0-2"
 	},
 /obj/structure/window/reinforced/full,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "uJ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "uK" = (
@@ -11400,6 +11418,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5;
 	icon_state = "intact"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
@@ -11424,6 +11447,11 @@
 	pixel_x = 0;
 	pixel_y = -32
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "uM" = (
@@ -11442,6 +11470,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "uN" = (
@@ -11455,6 +11488,11 @@
 	id_tag = "eva_port_sensor";
 	pixel_x = 0;
 	pixel_y = -25
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
@@ -11476,6 +11514,11 @@
 	pixel_y = -26;
 	req_access = list(18)
 	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "uP" = (
@@ -13834,9 +13877,6 @@
 	pixel_x = 11;
 	pixel_y = 0
 	},
-/obj/machinery/camera/network/medbay{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyaccess)
 "yI" = (
@@ -14127,6 +14167,9 @@
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
 /obj/item/device/sleevemate,
+/obj/machinery/requests_console/preset/medical{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled,
 /area/medical/biostorage)
 "zg" = (
@@ -15783,6 +15826,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 10
 	},
+/obj/machinery/requests_console/preset/medical{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay_emt_bay)
 "Bu" = (
@@ -16534,6 +16580,9 @@
 "CV" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/donkpockets,
+/obj/machinery/requests_console/preset/medical{
+	pixel_x = 30
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "CW" = (
@@ -16919,6 +16968,9 @@
 	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/requests_console/preset/security{
+	pixel_x = -30
+	},
 /turf/simulated/floor/tiled,
 /area/security/brig/visitation)
 "Fb" = (
@@ -17826,6 +17878,12 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"ND" = (
+/obj/machinery/requests_console/preset/bridge{
+	pixel_y = 30
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 "NJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/tool,
@@ -32996,7 +33054,7 @@ pz
 qc
 vI
 wo
-wV
+ND
 wV
 xM
 yq

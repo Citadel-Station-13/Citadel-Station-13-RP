@@ -2938,6 +2938,7 @@
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\datums\supplypacks\misc_vr.dm"
 #include "modular_citadel\code\datums\supplypacks\security.dm"
+#include "modular_citadel\code\game\requests_console_presets.dm"
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
 #include "modular_citadel\code\game\jobs\job\engineering_cit.dm"
 #include "modular_citadel\code\game\objects\items\upgradekit.dm"
