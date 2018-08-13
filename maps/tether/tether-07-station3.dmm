@@ -991,6 +991,7 @@
 /obj/item/weapon/stamp/denied{
 	pixel_x = 5
 	},
+/obj/item/device/binoculars,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "bD" = (

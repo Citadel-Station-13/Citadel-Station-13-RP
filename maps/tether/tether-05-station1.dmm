@@ -7436,6 +7436,11 @@
 /area/engineering/workshop)
 "avf" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/airless,
 /area/space)
 "avg" = (
@@ -9497,6 +9502,10 @@
 	req_one_access = list(11,24)
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/shield_diffuser,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/airless,
 /area/space)
 "aAR" = (
@@ -10125,10 +10134,6 @@
 	name = "Engineering Starboard External Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "aCC" = (
@@ -10647,11 +10652,6 @@
 	dir = 2;
 	frequency = 1379;
 	id_tag = "eng_starboard_pump"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
@@ -12752,11 +12752,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engineering_airlock)
@@ -21911,6 +21906,22 @@
 	},
 /turf/simulated/floor/carpet,
 /area/hallway/station/atrium)
+"hzQ" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1379;
+	icon_state = "door_locked";
+	id_tag = "eng_starboard_outer";
+	locked = 1;
+	name = "Engineering Starboard External Access"
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/engineering/engineering_airlock)
 "hCe" = (
 /turf/simulated/wall/r_wall,
 /area/tether/station/pathfinder_office)
@@ -22268,6 +22279,15 @@
 /obj/random/tech_supply,
 /turf/simulated/floor,
 /area/engineering/shaft)
+"nup" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "nxL" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
@@ -27279,8 +27299,8 @@ aoh
 aoh
 abZ
 ahW
-avf
-aCB
+nup
+hzQ
 aLI
 aFJ
 aHQ

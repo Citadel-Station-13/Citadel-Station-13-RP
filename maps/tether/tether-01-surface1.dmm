@@ -55,6 +55,11 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "aak" = (
@@ -28292,6 +28297,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/public_garden_one)
+"smt" = (
+/obj/machinery/shield_diffuser,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "svt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -39351,7 +39363,7 @@ aae
 aae
 aae
 aae
-aaf
+smt
 aaj
 aao
 aaw
