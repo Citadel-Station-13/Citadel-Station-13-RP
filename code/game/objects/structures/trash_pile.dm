@@ -201,8 +201,6 @@
 					prob(1);/obj/item/clothing/under/harness,
 					prob(1);/obj/item/clothing/under/tactical,
 					prob(1);/obj/item/clothing/suit/armor/material/makeshift,
-					prob(1);/obj/item/clothing/head/medievalfake/crusader, //Citadel Addition
-					prob(1);/obj/item/clothing/suit/medievalfake/crusader/dark, //Citadel Addition
 					prob(1);/obj/item/device/flashlight/glowstick/orange,
 					prob(1);/obj/item/device/flashlight/glowstick/red,
 					prob(1);/obj/item/device/flashlight/glowstick/yellow,
@@ -235,8 +233,8 @@
 					prob(2);/obj/item/device/nif/bad, //Citadel Override probability, 0.7%
 					prob(2);/obj/item/device/bodysnatcher, //Citadel Override probability, 0.7%
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,
-					prob(1);/obj/item/clothing/head/helmet/medieval/crusader, // Citadel Addition
-					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark, // Citadel Addition
+					prob(1);/obj/item/clothing/head/helmet/medieval/crusader, //Citadel Addition
+					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark, //Citadel Addition
 				//	prob(1);/obj/item/device/nif/bad, // VORECode default probability, 0.2%
 					prob(1);/obj/item/device/radio_jammer,
 					prob(1);/obj/item/device/sleevemate,

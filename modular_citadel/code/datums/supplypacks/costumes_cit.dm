@@ -20,8 +20,9 @@
 			/obj/item/clothing/head/medievalfake/crusader/templar = 2,
 			/obj/item/clothing/suit/medievalfake/crusader/cross/templar = 1,
 			/obj/item/clothing/suit/medievalfake/crusader/cross/hospitaller = 1,
-			/obj/item/clothing/head/medievalfake/crusader = 3,
-			/obj/item/clothing/suit/medievalfake/crusader/cross = 3
+			/obj/item/clothing/head/medievalfake/crusader = 4,
+			/obj/item/clothing/suit/medievalfake/crusader/cross = 3,
+			/obj/item/clothing/suit/medievalfake/crusader/dark = 1
 			)
 	cost = 50
 	containertype = /obj/structure/closet/crate
