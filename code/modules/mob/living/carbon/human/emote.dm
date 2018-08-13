@@ -653,7 +653,7 @@
 					message = "<span class='danger'>slaps [T.himself]!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
-// Citadel changes starts here
+//Citadel changes starts here
 		if("aslap", "aslaps")
 			m_type = 1
 			if(!restrained())
@@ -671,7 +671,7 @@
 					message = "<span class='danger'>slaps [T.his] own butt!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,src,"Slapped own butt")
-// Citadel changes ends here
+//Citadel changes ends here
 
 		if("scream", "screams")
 			if(miming)
