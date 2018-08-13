@@ -21,6 +21,7 @@
 	#include "tether-08-mining.dmm"
 	#include "tether-09-solars.dmm"
 	#include "tether-10-colony.dmm"
+	#include "submaps/tether_misc.dmm"	//CITADEL CHANGE - Adds the misc tether submap to server init mapload to fix a spawn issue
 
 	#include "submaps/_tether_submaps.dm"
 
