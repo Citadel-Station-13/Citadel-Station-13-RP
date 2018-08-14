@@ -32,12 +32,12 @@
 
 /obj/item/weapon/gun/projectile/nsfw/consume_next_projectile()
 	if(chambered && ammo_magazine)
-		var/obj/item/ammo_casing/nsfw_batt/batt = chambered
+		var/obj/item/ammo_casing/rechargeable/nsfw_batt/batt = chambered
 		if(batt.shots_left)
 			return new chambered.projectile_type()
 		else
 			for(var/B in ammo_magazine.stored_ammo)
-				var/obj/item/ammo_casing/nsfw_batt/other_batt = B
+				var/obj/item/ammo_casing/rechargeable/nsfw_batt/other_batt = B
 				if(istype(other_batt,chambered.type) && other_batt.shots_left)
 					switch_to(other_batt)
 					return new chambered.projectile_type()
@@ -52,18 +52,18 @@
 	if(!chambered)
 		return
 
-	var/obj/item/ammo_casing/nsfw_batt/batt = chambered
+	var/obj/item/ammo_casing/rechargeable/nsfw_batt/batt = chambered
 
 	charge_left = batt.shots_left
 	max_charge = initial(batt.shots_left)
 	if(ammo_magazine) //Crawl to find more
 		for(var/B in ammo_magazine.stored_ammo)
-			var/obj/item/ammo_casing/nsfw_batt/bullet = B
+			var/obj/item/ammo_casing/rechargeable/nsfw_batt/bullet = B
 			if(istype(bullet,batt.type))
 				charge_left += bullet.shots_left
 				max_charge += initial(bullet.shots_left)
 
-/obj/item/weapon/gun/projectile/nsfw/proc/switch_to(obj/item/ammo_casing/nsfw_batt/new_batt)
+/obj/item/weapon/gun/projectile/nsfw/proc/switch_to(obj/item/ammo_casing/rechargeable/nsfw_batt/new_batt)
 	if(ishuman(loc))
 		if(chambered && new_batt.type == chambered.type)
 			to_chat(loc,"<span class='warning'>\The [src] is now using the next [new_batt.type_name] power cell.</span>")
@@ -88,7 +88,7 @@
 
 	for(var/index in 1 to stored_ammo.len)
 		var/true_index = ((our_slot + index - 1) % stored_ammo.len) + 1 // Stupid ONE BASED lists!
-		var/obj/item/ammo_casing/nsfw_batt/next_batt = stored_ammo[true_index]
+		var/obj/item/ammo_casing/rechargeable/nsfw_batt/next_batt = stored_ammo[true_index]
 		if(chambered != next_batt && !istype(next_batt, chambered.type))
 			switch_to(next_batt)
 			break
@@ -97,7 +97,7 @@
 	if(!chambered)
 		return
 
-	var/obj/item/ammo_casing/nsfw_batt/batt = chambered
+	var/obj/item/ammo_casing/rechargeable/nsfw_batt/batt = chambered
 	if(!batt.shots_left)
 		return FALSE
 
@@ -119,7 +119,7 @@
 	if(!chambered)
 		return
 
-	var/obj/item/ammo_casing/nsfw_batt/batt = chambered
+	var/obj/item/ammo_casing/rechargeable/nsfw_batt/batt = chambered
 	var/batt_color = batt.type_color //Used many times
 
 	//Mode bar
@@ -152,7 +152,7 @@
 	icon_state = "nsfw_mag"
 	caliber = "nsfw"
 	matter = list(DEFAULT_WALL_MATERIAL = 1680, "glass" = 2000)
-	ammo_type = /obj/item/ammo_casing/nsfw_batt
+	ammo_type = /obj/item/ammo_casing/rechargeable/nsfw_batt
 	initial_ammo = 0
 	max_ammo = 3
 	mag_type = MAGAZINE
@@ -167,7 +167,7 @@
 	var/x_offset = 5
 	var/current = 0
 	for(var/B in stored_ammo)
-		var/obj/item/ammo_casing/nsfw_batt/batt = B
+		var/obj/item/ammo_casing/rechargeable/nsfw_batt/batt = B
 		var/image/cap = image(icon, icon_state = "[initial(icon_state)]_cap")
 		cap.color = batt.type_color
 		cap.pixel_x = current * x_offset //Caps don't need a pixel_y offset
@@ -182,8 +182,37 @@
 
 		current++ //Increment for offsets
 
+/obj/item/ammo_magazine/nsfw_mag/attack_hand(mob/living/user)
+	if(user.get_inactive_hand() != src)
+		..()
+		return
+	if(!stored_ammo.len)
+		user << "<span class='notice'>[src] is empty!</span>"
+		return
+	user << "<span class='notice'>You remove [stored_ammo[stored_ammo.len]].</span>"
+	user.put_in_hands(stored_ammo[stored_ammo.len])
+	stored_ammo.Remove(stored_ammo[stored_ammo.len])
+	update_icon()
+
 // The Casing //
-/obj/item/ammo_casing/nsfw_batt
+/obj/item/ammo_casing/rechargeable
+	name = "microbattery"
+	desc = "A miniature battery for an energy weapon."
+	icon = 'icons/obj/ammo_vr.dmi'
+	icon_state = "nsfw_batt"
+	flags = CONDUCT
+	slot_flags = SLOT_BELT | SLOT_EARS
+	throwforce = 1
+	w_class = ITEMSIZE_TINY
+
+	leaves_residue = 0
+	caliber = "microbattery"
+	var/shots_left = 0
+	var/type_color = null
+	var/type_name = null
+	projectile_type = /obj/item/projectile/beam
+
+/obj/item/ammo_casing/rechargeable/nsfw_batt
 	name = "\'NSFW\' microbattery - UNKNOWN"
 	desc = "A miniature battery for an energy weapon."
 	icon = 'icons/obj/ammo_vr.dmi'
@@ -195,53 +224,53 @@
 
 	leaves_residue = 0
 	caliber = "nsfw"
-	var/shots_left = 4
-	var/type_color = null
-	var/type_name = null
+	shots_left = 4
+	type_color = null
+	type_name = null
 	projectile_type = /obj/item/projectile/beam
 
-/obj/item/ammo_casing/nsfw_batt/initialize()
+/obj/item/ammo_casing/rechargeable/nsfw_batt/initialize()
 	. = ..()
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
 	update_icon()
 
-/obj/item/ammo_casing/nsfw_batt/update_icon()
+/obj/item/ammo_casing/rechargeable/nsfw_batt/update_icon()
 	cut_overlays()
 
 	var/image/ends = image(icon, icon_state = "[initial(icon_state)]_ends")
 	ends.color = type_color
 	add_overlay(ends)
 
-/obj/item/ammo_casing/nsfw_batt/expend()
+/obj/item/ammo_casing/rechargeable/nsfw_batt/expend()
 	shots_left--
 
 // Specific batteries //
-/obj/item/ammo_casing/nsfw_batt/lethal
+/obj/item/ammo_casing/rechargeable/nsfw_batt/lethal
 	name = "\'NSFW\' microbattery - LETHAL"
 	type_color = "#bf3d3d"
 	type_name = "<span style='color:#bf3d3d;font-weight:bold;'>LETHAL</span>"
 	projectile_type = /obj/item/projectile/beam
 
-/obj/item/ammo_casing/nsfw_batt/stun
+/obj/item/ammo_casing/rechargeable/nsfw_batt/stun
 	name = "\'NSFW\' microbattery - STUN"
 	type_color = "#0f81bc"
 	type_name = "<span style='color:#0f81bc;font-weight:bold;'>STUN</span>"
 	projectile_type = /obj/item/projectile/beam/stun/blue
 
-/obj/item/ammo_casing/nsfw_batt/net
+/obj/item/ammo_casing/rechargeable/nsfw_batt/net
 	name = "\'NSFW\' microbattery - NET"
 	type_color = "#43f136"
 	type_name = "<span style='color:#43d136;font-weight:bold;'>NET</span>"
 	projectile_type = /obj/item/projectile/beam/energy_net
 
-/obj/item/ammo_casing/nsfw_batt/xray
+/obj/item/ammo_casing/rechargeable/nsfw_batt/xray
 	name = "\'NSFW\' microbattery - XRAY"
 	type_color = "#32c025"
 	type_name = "<span style='color:#32c025;font-weight:bold;'>XRAY</span>"
 	projectile_type = /obj/item/projectile/beam/xray
 
-/obj/item/ammo_casing/nsfw_batt/shotstun
+/obj/item/ammo_casing/rechargeable/nsfw_batt/shotstun
 	name = "\'NSFW\' microbattery - SCATTERSTUN"
 	type_color = "#88ffff"
 	type_name = "<span style='color:#88ffff;font-weight:bold;'>SCATTERSTUN</span>"
@@ -259,13 +288,13 @@
 	sharp = 0
 	check_armour = "melee"
 
-/obj/item/ammo_casing/nsfw_batt/ion
+/obj/item/ammo_casing/rechargeable/nsfw_batt/ion
 	name = "\'NSFW\' microbattery - ION"
 	type_color = "#d084d6"
 	type_name = "<span style='color:#d084d6;font-weight:bold;'>ION</span>"
 	projectile_type = /obj/item/projectile/ion/small
 
-/obj/item/ammo_casing/nsfw_batt/stripper
+/obj/item/ammo_casing/rechargeable/nsfw_batt/stripper
 	name = "\'NSFW\' microbattery - STRIPPER"
 	type_color = "#fc8d0f"
 	type_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
@@ -295,7 +324,7 @@
 		//Hats can stay! Most other things fall off with removing these.
 	..()
 
-/obj/item/ammo_casing/nsfw_batt/final
+/obj/item/ammo_casing/rechargeable/nsfw_batt/final
 	name = "\'NSFW\' microbattery - FINAL OPTION"
 	type_color = "#fcfc0f"
 	type_name = "<span style='color:#000000;font-weight:bold;'>FINAL OPTION</span>" //Doesn't look good in yellow in chat
@@ -326,13 +355,13 @@
 
 	..()
 /*
-/obj/item/ammo_casing/nsfw_batt/shrink
+/obj/item/ammo_casing/rechargeable/nsfw_batt/shrink
 	name = "\'NSFW\' microbattery - SHRINK"
 	type_color = "#910ffc"
 	type_name = "<span style='color:#910ffc;font-weight:bold;'>SHRINK</span>"
 	projectile_type = /obj/item/projectile/beam/shrinklaser
 
-/obj/item/ammo_casing/nsfw_batt/grow
+/obj/item/ammo_casing/rechargeable/nsfw_batt/grow
 	name = "\'NSFW\' microbattery - GROW"
 	type_color = "#fc0fdc"
 	type_name = "<span style='color:#fc0fdc;font-weight:bold;'>GROW</span>"
@@ -347,7 +376,7 @@
 	..()
 	new /obj/item/weapon/gun/projectile/nsfw(src)
 	new /obj/item/ammo_magazine/nsfw_mag(src)
-	for(var/path in subtypesof(/obj/item/ammo_casing/nsfw_batt))
+	for(var/path in subtypesof(/obj/item/ammo_casing/rechargeable/nsfw_batt))
 		new path(src)
 
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos
@@ -359,10 +388,10 @@
 	..()
 	new /obj/item/weapon/gun/projectile/nsfw(src)
 	new /obj/item/ammo_magazine/nsfw_mag(src)
-	new /obj/item/ammo_casing/nsfw_batt/lethal(src)
-	new /obj/item/ammo_casing/nsfw_batt/lethal(src)
-	new /obj/item/ammo_casing/nsfw_batt/stun(src)
-	new /obj/item/ammo_casing/nsfw_batt/stun(src)
-	new /obj/item/ammo_casing/nsfw_batt/net(src)
-	new /obj/item/ammo_casing/nsfw_batt/ion(src)
+	new /obj/item/ammo_casing/rechargeable/nsfw_batt/lethal(src)
+	new /obj/item/ammo_casing/rechargeable/nsfw_batt/lethal(src)
+	new /obj/item/ammo_casing/rechargeable/nsfw_batt/stun(src)
+	new /obj/item/ammo_casing/rechargeable/nsfw_batt/stun(src)
+	new /obj/item/ammo_casing/rechargeable/nsfw_batt/net(src)
+	new /obj/item/ammo_casing/rechargeable/nsfw_batt/ion(src)
 

@@ -8,7 +8,7 @@ obj/machinery/recharger
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_casing/nsfw_batt) //VOREStation Add - NSFW Batteries
+	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_casing/rechargeable/nsfw_batt, /obj/item/weapon/gun/projectile/nsfw) //VOREStation Add - NSFW Batteries
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -44,7 +44,14 @@ obj/machinery/recharger
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>Your gun has no recharge port.</span>")
 				return
-		if(!G.get_cell())
+		if(istype(G, /obj/item/weapon/gun/projectile/nsfw))
+			var/obj/item/weapon/gun/projectile/nsfw/nsfw = G
+			if(!nsfw.ammo_magazine || !nsfw.ammo_magazine.stored_ammo.len)
+				to_chat(user, "<span class='notice'>Your NSFW is not loaded.</span>")
+				return
+		else if(istype(G, /obj/item/ammo_casing/rechargeable))
+
+		else if(!G.get_cell())
 			to_chat(user, "This device does not have a battery installed.")
 			return
 
@@ -97,8 +104,8 @@ obj/machinery/recharger
 				update_use_power(1)
 
 		//VOREStation Add - NSFW Batteries
-		else if(istype(charging, /obj/item/ammo_casing/nsfw_batt))
-			var/obj/item/ammo_casing/nsfw_batt/batt = charging
+		else if(istype(charging, /obj/item/ammo_casing/rechargeable))
+			var/obj/item/ammo_casing/rechargeable/batt = charging
 			if(batt.shots_left >= initial(batt.shots_left))
 				icon_state = icon_state_charged
 				update_use_power(1)
@@ -107,7 +114,23 @@ obj/machinery/recharger
 				batt.shots_left++
 				update_use_power(2)
 			return
-		//VOREStation Add End
+		// CITADEL Add - NSFW Autorecharge
+		else if(istype(charging, /obj/item/weapon/gun/projectile/nsfw))
+			var/obj/item/weapon/gun/projectile/nsfw/nsfw = charging
+			if(!nsfw.ammo_magazine)
+				return
+			var/obj/item/ammo_magazine/nsfw_mag/mag = nsfw.ammo_magazine
+			icon_state = icon_state_charged
+			for(var/obj/item/ammo_casing/rechargeable/batt in mag.stored_ammo)
+				if(batt.shots_left >= initial(batt.shots_left))
+					update_use_power(1)
+				else
+					icon_state = icon_state_charging
+					batt.shots_left++
+					update_use_power(2)
+			return
+
+		//Custom Add End
 
 /obj/machinery/recharger/emp_act(severity)
 	if(stat & (NOPOWER|BROKEN) || !anchored)
@@ -134,7 +157,7 @@ obj/machinery/recharger
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device)
+	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device, /obj/item/weapon/gun/projectile/nsfw)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"
