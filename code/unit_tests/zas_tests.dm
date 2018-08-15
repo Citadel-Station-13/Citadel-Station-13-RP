@@ -107,9 +107,10 @@
 	name = "ZAS: Virology"
 	area_path = /area/medical/virology
 
-/datum/unit_test/zas_area_test/xenobio
-	name = "ZAS: Xenobiology"
-	area_path = /area/rnd/xenobiology
+// Citadel Edit - We don't have this - Southern Cross
+// /datum/unit_test/zas_area_test/xenobio
+// 	name = "ZAS: Xenobiology"
+// 	area_path = /area/rnd/xenobiology
 
 /datum/unit_test/zas_area_test/mining_area
 	name = "ZAS: Mining Area (Vacuum)"
