@@ -75,14 +75,14 @@ var/const/access_explorer = 43
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1 //Citadel Edit
+	spawn_positions = 1 //Citadel Edit
 	supervisors = "the pathfinder and the head of personnel" //VOREStation Edit
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/pilot
 	economic_modifier = 5 //VOREStation Edit
-	access = list(access_pilot) //VOREStation Edit
-	minimal_access = list(access_pilot) //VOREStation Edit
+	access = list(access_pilot, access_cargo, access_mining, access_mining_station) //Citadel Edit
+	minimal_access = list(access_pilot, access_cargo, access_mining, access_mining_station) //Citadel Edit
 	outfit_type = /decl/hierarchy/outfit/job/pilot
 
 /datum/job/explorer
@@ -91,8 +91,8 @@ var/const/access_explorer = 43
 	department = "Science" //VOREStation Edit
 	department_flag = MEDSCI //VOREStation Edit
 	faction = "Station"
-	total_positions = 2 //VOREStation Edit
-	spawn_positions = 2 //VOREStation Edit
+	total_positions = 4 //Citadel Edit
+	spawn_positions = 4 //Citadel Edit
 	supervisors = "the pathfinder and the research director" //VOREStation Edit
 	selection_color = "#633D63" //VOREStation Edit
 	idtype = /obj/item/weapon/card/id/civilian/explorer
@@ -100,11 +100,11 @@ var/const/access_explorer = 43
 	access = list(access_pilot, access_explorer, access_research) //VOREStation Edit
 	minimal_access = list(access_pilot, access_explorer, access_research) //VOREStation Edit
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
-/*
+
 	alt_titles = list(
-		"Explorer Technician" = /decl/hierarchy/outfit/job/explorer2/technician,
-		"Explorer Medic" = /decl/hierarchy/outfit/job/explorer2/medic)
-*/
+		"Explorer Technician",
+		"Explorer Medic")
+
 
 /datum/job/sar
 	title = "Search and Rescue"
@@ -114,7 +114,7 @@ var/const/access_explorer = 43
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the pathfinder and the chief medical officer" //VOREStation Edit
+	supervisors = "the chief medical officer" //Citadel Edit
 	selection_color = "#013D3B" //VOREStation Edit
 	idtype = /obj/item/weapon/card/id/medical
 	economic_modifier = 6 //VOREStation Edit
