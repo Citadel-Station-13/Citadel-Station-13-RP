@@ -1,9 +1,3 @@
-cd ../../maps/tether
-
-FOR %%f IN (*.dmm) DO (
-  copy %%f %%f.backup
-)
-
 cd ../../maps/northern_star
 
 FOR %%f IN (*.dmm) DO (
