@@ -7,17 +7,25 @@
 	var/mob/living/carbon/human/prey
 	async = 1
 
-/datum/unit_test/belly_nonsuffocation/start_test()
-	pred = create_test_mob()
+/datum/unit_test/belly_nonsuffocation/start_test()//Citadel Changes Start Here - So, for some fucking reason, create_test_mob does not work when we switch from the tether to another map. I don't know why and neither do I understand, but manually locating a tile works so we use that instead.
+/*	pred = create_test_mob()
 	if(!istype(pred))
 		return 0
 	prey = create_test_mob(pred.loc)
 	if(!istype(prey))
-		return 0
+		return 0*/
+	var/turf/simulated/floor/tiled/T = locate()
+
+	pred = new(T)
+	prey = new(T)
 
 	return 1
 
 /datum/unit_test/belly_nonsuffocation/check_result()
+	if(!istype(pred))
+		return
+	if(!istype(prey))
+		return //Citadel Changes End Here
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
 	if(!pred.vore_organs || !pred.vore_organs.len)
 		return 0
@@ -26,20 +34,20 @@
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
 		return 1
-	
+
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
 		pred.vore_selected.nom_mob(prey)
-		
+
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
 			return 1
-	
+
 		// Okay, we succeeded in eating them, now lets wait a bit
 		startLifeTick = pred.life_tick
 		startOxyloss = prey.getOxyLoss()
 		return 0
-	
+
 	if(pred.life_tick < (startLifeTick + 10))
 		return 0 // Wait for them to breathe a few times
 
@@ -63,17 +71,25 @@
 	var/mob/living/carbon/human/prey
 	async = 1
 
-/datum/unit_test/belly_spacesafe/start_test()
-	pred = create_test_mob()
+/datum/unit_test/belly_spacesafe/start_test()//Citadel Changes Start Here
+/*	pred = create_test_mob()
 	if(!istype(pred))
 		return 0
 	prey = create_test_mob(pred.loc)
 	if(!istype(prey))
-		return 0
+		return 0*/
+	var/turf/simulated/floor/tiled/T = locate()
+
+	pred = new(T)
+	prey = new(T)
 
 	return 1
 
 /datum/unit_test/belly_spacesafe/check_result()
+	if(!istype(pred))
+		return
+	if(!istype(prey))
+		return //Citadel Changes End Here
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
 	if(!pred.vore_organs || !pred.vore_organs.len)
 		return 0
@@ -82,11 +98,11 @@
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
 		return 1
-	
+
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
 		pred.vore_selected.nom_mob(prey)
-		
+
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
 			return 1
@@ -102,7 +118,7 @@
 		startLifeTick = pred.life_tick
 		startOxyloss = prey.getOxyLoss()
 		return 0
-	
+
 	if(pred.life_tick < (startLifeTick + 10))
 		return 0 // Wait for them to breathe a few times
 
@@ -126,17 +142,25 @@
 	var/mob/living/carbon/human/prey
 	async = 1
 
-/datum/unit_test/belly_damage/start_test()
-	pred = create_test_mob()
+/datum/unit_test/belly_damage/start_test()//Citadel Changes Start Here
+/*	pred = create_test_mob()
 	if(!istype(pred))
 		return 0
 	prey = create_test_mob(pred.loc)
 	if(!istype(prey))
-		return 0
+		return 0*/
+	var/turf/simulated/floor/tiled/T = locate()
+
+	pred = new(T)
+	prey = new(T)
 
 	return 1
 
 /datum/unit_test/belly_damage/check_result()
+	if(!istype(pred))
+		return
+	if(!istype(prey))
+		return //Citadel Changes End Here
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
 	if(!pred.vore_organs || !pred.vore_organs.len)
 		return 0
@@ -145,21 +169,21 @@
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
 		return 1
-	
+
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
 		pred.vore_selected.nom_mob(prey)
-		
+
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
 			return 1
-	
+
 		// Okay, we succeeded in eating them, now lets wait a bit
 		pred.vore_selected.digest_mode = DM_DIGEST
 		startLifeTick = pred.life_tick
 		startBruteBurn = prey.getBruteLoss() + prey.getFireLoss()
 		return 0
-	
+
 	if(pred.life_tick < (startLifeTick + 10))
 		return 0 // Wait a few ticks for damage to happen
 
