@@ -18,6 +18,8 @@
 	return 1
 
 /datum/unit_test/belly_nonsuffocation/check_result()
+	if(!istype(pred))
+		return 0
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
 	if(!pred.vore_organs || !pred.vore_organs.len)
 		return 0
@@ -26,20 +28,20 @@
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
 		return 1
-	
+
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
 		pred.vore_selected.nom_mob(prey)
-		
+
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
 			return 1
-	
+
 		// Okay, we succeeded in eating them, now lets wait a bit
 		startLifeTick = pred.life_tick
 		startOxyloss = prey.getOxyLoss()
 		return 0
-	
+
 	if(pred.life_tick < (startLifeTick + 10))
 		return 0 // Wait for them to breathe a few times
 
@@ -74,6 +76,8 @@
 	return 1
 
 /datum/unit_test/belly_spacesafe/check_result()
+	if(!istype(pred))
+		return 0
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
 	if(!pred.vore_organs || !pred.vore_organs.len)
 		return 0
@@ -82,11 +86,11 @@
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
 		return 1
-	
+
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
 		pred.vore_selected.nom_mob(prey)
-		
+
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
 			return 1
@@ -102,7 +106,7 @@
 		startLifeTick = pred.life_tick
 		startOxyloss = prey.getOxyLoss()
 		return 0
-	
+
 	if(pred.life_tick < (startLifeTick + 10))
 		return 0 // Wait for them to breathe a few times
 
@@ -137,6 +141,8 @@
 	return 1
 
 /datum/unit_test/belly_damage/check_result()
+	if(!istype(pred))
+		return 0
 	// Unfortuantely we need to wait for the pred's belly to initialize. (Currently after a spawn())
 	if(!pred.vore_organs || !pred.vore_organs.len)
 		return 0
@@ -145,21 +151,21 @@
 	if(!pred.vore_selected)
 		fail("[pred] has no vore_selected.")
 		return 1
-	
+
 	// Attempt to eat the prey
 	if(prey.loc != pred.vore_selected)
 		pred.vore_selected.nom_mob(prey)
-		
+
 		if(prey.loc != pred.vore_selected)
 			fail("[pred.vore_selected].nom_mob([prey]) did not put prey inside [pred]")
 			return 1
-	
+
 		// Okay, we succeeded in eating them, now lets wait a bit
 		pred.vore_selected.digest_mode = DM_DIGEST
 		startLifeTick = pred.life_tick
 		startBruteBurn = prey.getBruteLoss() + prey.getFireLoss()
 		return 0
-	
+
 	if(pred.life_tick < (startLifeTick + 10))
 		return 0 // Wait a few ticks for damage to happen
 
