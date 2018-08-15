@@ -11,7 +11,7 @@
 #define Z_LEVEL_TRANSIT					9
 #define Z_LEVEL_SURFACE_WILD			10
 
-/datum/map/southern_cross
+/datum/map/southern_cross_citadel
 	name = "Southern Cross"
 	full_name = "Southern Cross"
 	path = "southern_cross"
@@ -19,7 +19,12 @@
 	lobby_icon = 'icons/misc/title.dmi'
 	lobby_screens = list("mockingjay00") // New lobby screen if possible.
 
-	zlevel_datum_type = /datum/map_z_level/southern_cross
+	holomap_smoosh = list(list(
+		Z_LEVEL_STATION_ONE,
+		Z_LEVEL_STATION_TWO,
+		Z_LEVEL_STATION_THREE))
+
+	zlevel_datum_type = /datum/map_z_level/southern_cross_citadel
 
 	station_name  = "NLS Southern Cross"
 	station_short = "Southern Cross"
@@ -68,7 +73,7 @@
 
 
 // Short range computers see only the six main levels, others can see the surrounding surface levels.
-/datum/map/southern_cross/get_map_levels(var/srcz, var/long_range = TRUE)
+/datum/map/southern_cross_citadel/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels
 	else if (srcz == Z_LEVEL_TRANSIT)
@@ -105,58 +110,72 @@
 	// Todo: Forest generation.
 	return 1
 
-/datum/map_z_level/southern_cross/station
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
+// For making the 6-in-1 holomap, we calculate some offsets
+#define SOUTHERN_CROSS_MAP_SIZE 160 // Width and height of compiled in Southern Cross z levels.
+#define SOUTHERN_CROSS_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
+#define SOUTHERN_CROSS_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*SOUTHERN_CROSS_MAP_SIZE) - SOUTHERN_CROSS_HOLOMAP_CENTER_GUTTER) / 2) // 100
+#define SOUTHERN_CROSS_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*SOUTHERN_CROSS_MAP_SIZE)) / 2) // 60
 
-/datum/map_z_level/southern_cross/station/station_one
+/datum/map_z_level/southern_cross_citadel/station
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
+	holomap_legend_x = 220
+	holomap_legend_y = 160
+
+/datum/map_z_level/southern_cross_citadel/station/station_one
 	z = Z_LEVEL_STATION_ONE
 	name = "Deck 1"
 	base_turf = /turf/space
 	transit_chance = 6
+	holomap_offset_x = SOUTHERN_CROSS_HOLOMAP_MARGIN_X - 40
+	holomap_offset_y = SOUTHERN_CROSS_HOLOMAP_MARGIN_Y + SOUTHERN_CROSS_MAP_SIZE*0
 
-/datum/map_z_level/southern_cross/station/station_two
+/datum/map_z_level/southern_cross_citadel/station/station_two
 	z = Z_LEVEL_STATION_TWO
 	name = "Deck 2"
 	base_turf = /turf/simulated/open
 	transit_chance = 6
+	holomap_offset_x = SOUTHERN_CROSS_HOLOMAP_MARGIN_X - 40
+	holomap_offset_y = SOUTHERN_CROSS_HOLOMAP_MARGIN_Y + SOUTHERN_CROSS_MAP_SIZE*1
 
-/datum/map_z_level/southern_cross/station/station_three
+/datum/map_z_level/southern_cross_citadel/station/station_three
 	z = Z_LEVEL_STATION_THREE
 	name = "Deck 3"
 	base_turf = /turf/simulated/open
 	transit_chance = 6
+	holomap_offset_x = HOLOMAP_ICON_SIZE - SOUTHERN_CROSS_HOLOMAP_MARGIN_X - SOUTHERN_CROSS_MAP_SIZE - 40
+	holomap_offset_y = SOUTHERN_CROSS_HOLOMAP_MARGIN_Y + SOUTHERN_CROSS_MAP_SIZE*1
 
-/datum/map_z_level/southern_cross/empty_space
+/datum/map_z_level/southern_cross_citadel/empty_space
 	z = Z_LEVEL_EMPTY_SPACE
 	name = "Empty"
 	flags = MAP_LEVEL_PLAYER
 	transit_chance = 76
 
-/datum/map_z_level/southern_cross/surface
+/datum/map_z_level/southern_cross_citadel/surface
 	z = Z_LEVEL_SURFACE
 	name = "Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
-/datum/map_z_level/southern_cross/surface_mine
+/datum/map_z_level/southern_cross_citadel/surface_mine
 	z = Z_LEVEL_SURFACE_MINE
 	name = "Mountains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
-/datum/map_z_level/southern_cross/surface_wild
+/datum/map_z_level/southern_cross_citadel/surface_wild
 	z = Z_LEVEL_SURFACE_WILD
 	name = "Wilderness"
 	flags = MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
-/datum/map_z_level/southern_cross/misc
+/datum/map_z_level/southern_cross_citadel/misc
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_PLAYER
 	transit_chance = 6
 
-/datum/map_z_level/southern_cross/centcom
+/datum/map_z_level/southern_cross_citadel/centcom
 	z = Z_LEVEL_CENTCOM
 	name = "Centcom"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT

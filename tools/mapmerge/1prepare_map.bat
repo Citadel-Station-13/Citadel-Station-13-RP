@@ -1,10 +1,4 @@
-cd ../../maps/northern_star
-
-FOR %%f IN (*.dmm) DO (
-  copy %%f %%f.backup
-)
-
-cd ../../maps/southern_cross
+cd ../../maps/southern_cross_citadel
 
 FOR %%f IN (*.dmm) DO (
   copy %%f %%f.backup
