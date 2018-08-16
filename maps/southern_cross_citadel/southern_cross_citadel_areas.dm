@@ -62,6 +62,13 @@
 	name = "Outpost Perimeter"
 	icon_state = "green"
 
+/area/surface/outside/plains/outpost/above //Citadel Add
+	name = "Plains' Sky"
+
+/area/plainssky/roof
+	name = "Main Outpost Roof"
+	dynamic_lighting = 0
+
 // Rest of the 'plains' Z-level, for POIs.
 /area/surface/outside/plains/normal
 	name = "Plains"
@@ -336,6 +343,8 @@
 
 /area/surface/outpost/main/dorms
 	name = "\improper Main Outpost Dorms"
+
+/area/surface/outpost/main/dorms/floor2
 
 /area/surface/outpost/main/construction_area
 	name = "\improper Main Outpost Construction Area"
@@ -1575,3 +1584,36 @@ area/crew_quarters/heads/sc/hop/quarters
 /area/wreck/supplyshuttle
 	name = "\improper Wreck"
 	icon_state = "storage"
+
+// Holodorms - Citadel Add
+
+/area/crew_quarters/sleep/Dorm_1/holo
+	name = "\improper Dorm 1 Holodeck"
+	icon_state = "dk_yellow"
+
+/area/crew_quarters/sleep/Dorm_2/holo
+	name = "\improper Dorm 2 Holodeck"
+	icon_state = "dk_yellow"
+
+/area/crew_quarters/sleep/Dorm_3/holo
+	name = "\improper Dorm 3 Holodeck"
+	icon_state = "dk_yellow"
+
+/area/holodeck/holodorm/source_basic
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_desert
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_seating
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_beach
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_garden
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_boxing
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_snow
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_space
+	name = "\improper Holodeck Source"
+/area/holodeck/holodorm/source_off
+	name = "\improper Holodeck Source"

@@ -83,6 +83,15 @@
 	nitrogen	= MOLES_N2SIF
 	temperature	= TEMPERATURE_SIF
 
+/turf/simulated/floor/outdoors/reinforced/sif/planetuse //Citadel Add
+	name = "reinforced floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "reinforced"
+	initial_flooring = /decl/flooring/reinforced
+	oxygen		= MOLES_O2SIF
+	nitrogen	= MOLES_N2SIF
+	temperature	= TEMPERATURE_SIF
+
 // PoI compatability, to stop active edges.
 // In hindsight it would've been better to do this first instead of making a billion /sif subtypes above,
 // but maybe we can transition to this instead now and over time get rid of the /sif subtypes.

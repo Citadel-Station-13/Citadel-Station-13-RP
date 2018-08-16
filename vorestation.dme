@@ -2942,6 +2942,7 @@
 #include "modular_citadel\code\datums\supplypacks\security.dm"
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
 #include "modular_citadel\code\game\jobs\job\engineering_cit.dm"
+#include "modular_citadel\code\game\machinery\holodorms_cit.dm"
 #include "modular_citadel\code\game\objects\items\upgradekit.dm"
 #include "modular_citadel\code\game\objects\items\weapons\storage\donatorbackpack.dm"
 #include "modular_citadel\code\modules\admin\chat_commands.dm"

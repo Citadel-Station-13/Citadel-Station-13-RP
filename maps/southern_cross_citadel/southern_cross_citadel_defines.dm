@@ -5,11 +5,12 @@
 #define Z_LEVEL_STATION_THREE			3
 #define Z_LEVEL_EMPTY_SPACE				4
 #define Z_LEVEL_SURFACE					5
-#define Z_LEVEL_SURFACE_MINE			6
-#define Z_LEVEL_MISC					7
-#define Z_LEVEL_CENTCOM					8
-#define Z_LEVEL_TRANSIT					9
-#define Z_LEVEL_SURFACE_WILD			10
+#define Z_LEVEL_SURFACE_SKY				6 // Citadel Add
+#define Z_LEVEL_SURFACE_MINE			7
+#define Z_LEVEL_MISC					8
+#define Z_LEVEL_CENTCOM					9
+#define Z_LEVEL_TRANSIT					10
+#define Z_LEVEL_SURFACE_WILD			11
 
 /datum/map/southern_cross_citadel
 	name = "Southern Cross"
@@ -83,15 +84,16 @@
 			Z_LEVEL_STATION_ONE,
 			Z_LEVEL_STATION_TWO,
 			Z_LEVEL_STATION_THREE)
-	else if(srcz in list(Z_LEVEL_SURFACE, Z_LEVEL_SURFACE_MINE, Z_LEVEL_SURFACE_WILD)) // Being on the surface lets you see other surface Zs.
+	else if(srcz in list(Z_LEVEL_SURFACE, Z_LEVEL_SURFACE_SKY, Z_LEVEL_SURFACE_MINE, Z_LEVEL_SURFACE_WILD)) // Being on the surface lets you see other surface Zs.
 		return list(
 			Z_LEVEL_SURFACE,
+			Z_LEVEL_SURFACE_SKY, //Citadel Add
 			Z_LEVEL_SURFACE_MINE,
 			Z_LEVEL_SURFACE_WILD)
 	else
 		return ..()
 
-/datum/map/southern_cross/perform_map_generation()
+/datum/map/southern_cross_citadel/perform_map_generation()
 	// First, place a bunch of submaps. This comes before tunnel/forest generation as to not interfere with the submap.
 
 	// Cave submaps are first.
@@ -156,6 +158,11 @@
 	name = "Plains"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks
+
+/datum/map_z_level/southern_cross_citadel/surface/sky //Citadel Addition
+	z = Z_LEVEL_SURFACE_SKY
+	name = "Plains' Sky"
+	base_turf = /turf/simulated/open
 
 /datum/map_z_level/southern_cross_citadel/surface_mine
 	z = Z_LEVEL_SURFACE_MINE
@@ -257,6 +264,7 @@
 /datum/planet/sif
 	expected_z_levels = list(
 		Z_LEVEL_SURFACE,
+		Z_LEVEL_SURFACE_SKY,
 		Z_LEVEL_SURFACE_MINE,
 		Z_LEVEL_SURFACE_WILD,
 		Z_LEVEL_TRANSIT
