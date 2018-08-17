@@ -1,3 +1,4 @@
+admiraldragon - Vox
 aether_elemental - Daemon
 arokha - Protean
 aruis - Diona
@@ -8,6 +9,7 @@ bothnevarbackwards - Diona
 cameron653 - Xenomorph Hybrid
 hawkerthegreat - Vox
 inuzari - Diona
+jademanique - Xenochimera
 jemli - Gutter
 ktccd - Diona
 mewchild - Diona
@@ -33,4 +35,8 @@ xioen - Xenochimera
 xioen - Xenomorph Hybrid
 zammyman215 - Vox
 zekesturm - Xenomorph Hybrid
+<<<<<<< HEAD
 wtfismyname - Xenomorph Hybrid
+=======
+wtfismyname - Xenomorph Hybrid
+>>>>>>> 4116b03... Merge pull request #4031 from AdmiralDragon/master
