@@ -2909,6 +2909,7 @@
 #include "maps\RandomZLevels\snowfield.dm"
 #include "maps\RandomZLevels\zoo.dm"
 #include "maps\southern_cross_citadel\southern_cross_citadel.dm"
+#include "maps\southern_cross_citadel\southern_cross_citadel_areas.dm"
 #include "maps\southern_cross_citadel\southern_cross_citadel_jobs.dm"
 #include "maps\southern_cross_citadel\southern_cross_citadel_jobs_vr.dm"
 #include "maps\southern_cross_citadel\items\encryptionkey_sc.dm"
