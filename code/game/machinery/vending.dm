@@ -1092,6 +1092,7 @@
 /obj/machinery/vending/giftvendor
 	name = "AlliCo Baubles and Confectionaries"
 	desc = "For that special someone!"
+	icon = 'icons/obj/vending.dmi' //Citadel Edit - This vendor uses old sprites, not new Eris ones.
 	icon_state = "giftvendor"
 	vend_delay = 15
 	products = list(/obj/item/weapon/storage/fancy/heartbox = 5,
