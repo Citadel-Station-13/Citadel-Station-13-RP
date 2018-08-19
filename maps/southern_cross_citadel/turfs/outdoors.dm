@@ -83,15 +83,6 @@
 	nitrogen	= MOLES_N2SIF
 	temperature	= TEMPERATURE_SIF
 
-/turf/simulated/floor/outdoors/reinforced/sif/planetuse //Citadel Add
-	name = "reinforced floor"
-	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "reinforced"
-	initial_flooring = /decl/flooring/reinforced
-	oxygen		= MOLES_O2SIF
-	nitrogen	= MOLES_N2SIF
-	temperature	= TEMPERATURE_SIF
-
 /turf/simulated/open/sif/planetuse
     oxygen	        = MOLES_O2SIF
     nitrogen	    = MOLES_N2SIF

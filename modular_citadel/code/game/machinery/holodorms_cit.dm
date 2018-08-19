@@ -32,3 +32,7 @@
 /obj/machinery/computer/HolodeckControl/holodorm/three
 	name = "dorm three holodeck control"
 	projection_area = /area/crew_quarters/sleep/Dorm_3/holo
+
+/obj/machinery/computer/HolodeckControl/holodorm/four
+	name = "dorm four holodeck control"
+	projection_area = /area/crew_quarters/sleep/Dorm_4/holo

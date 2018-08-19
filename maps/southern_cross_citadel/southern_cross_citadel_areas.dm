@@ -62,13 +62,6 @@
 	name = "Outpost Perimeter"
 	icon_state = "green"
 
-/area/surface/outside/plains/outpost/above //Citadel Add
-	name = "Plains' Sky"
-
-/area/plainssky/roof
-	name = "Main Outpost Roof"
-	dynamic_lighting = 0
-
 // Rest of the 'plains' Z-level, for POIs.
 /area/surface/outside/plains/normal
 	name = "Plains"
@@ -344,7 +337,8 @@
 /area/surface/outpost/main/dorms
 	name = "\improper Main Outpost Dorms"
 
-/area/surface/outpost/main/dorms/floor2
+/area/surface/outpost/main/dorms/luxury
+	name = "\improper Main Outpost Luxury Dorms"
 
 /area/surface/outpost/main/construction_area
 	name = "\improper Main Outpost Construction Area"
@@ -1597,6 +1591,10 @@ area/crew_quarters/heads/sc/hop/quarters
 
 /area/crew_quarters/sleep/Dorm_3/holo
 	name = "\improper Dorm 3 Holodeck"
+	icon_state = "dk_yellow"
+
+/area/crew_quarters/sleep/Dorm_4/holo
+	name = "\improper Dorm 4 Holodeck"
 	icon_state = "dk_yellow"
 
 /area/holodeck/holodorm/source_basic
