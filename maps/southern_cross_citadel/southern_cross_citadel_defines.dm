@@ -19,6 +19,7 @@
 
 	lobby_icon = 'icons/misc/title.dmi'
 	lobby_screens = list("mockingjay00") // New lobby screen if possible.
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_STATION_ONE,
