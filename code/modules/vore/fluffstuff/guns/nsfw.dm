@@ -197,7 +197,7 @@
 	update_icon()
 
 
-//CITADEL ADD, since clicking an nsfw_mag now removes batts unless empty, make it draggable across hands. This is copy pasted verbatim from /obj/item/weapon/storage/MouseDrop
+//CITADEL ADD, since clicking an nsfw_mag now removes batts unless empty, make it draggable across hands. This is copy pasted verbatim from /obj/item/weapon/storage/MouseDrop with the adjacent check removed.
 /obj/item/ammo_magazine/nsfw_mag/MouseDrop(obj/over_object as obj)
 	if(!canremove)
 		return
@@ -205,10 +205,6 @@
 	if (isliving(usr) || isobserver(usr))
 
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
-			src.open(usr)
 			return
 
 		if (!( istype(over_object, /obj/screen) ))
