@@ -8,7 +8,7 @@ obj/machinery/recharger
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_casing/rechargeable/nsfw_batt, /obj/item/weapon/gun/projectile/nsfw) //VOREStation Add - NSFW Batteries
+	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_casing/rechargeable/nsfw_batt, /obj/item/weapon/gun/projectile/nsfw) //VOREStation Add - NSFW Batteries, CITADEL CHANGE - NSFW Battery Reclass to ammo_casing/rechargeable and NSFW added.
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -44,6 +44,7 @@ obj/machinery/recharger
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>Your gun has no recharge port.</span>")
 				return
+		//START OF CITADEL CHANGES - allows bypassing the cell check for special items
 		if(istype(G, /obj/item/weapon/gun/projectile/nsfw))
 			var/obj/item/weapon/gun/projectile/nsfw/nsfw = G
 			if(!nsfw.ammo_magazine || !nsfw.ammo_magazine.stored_ammo.len)
@@ -54,6 +55,7 @@ obj/machinery/recharger
 		else if(!G.get_cell())
 			to_chat(user, "This device does not have a battery installed.")
 			return
+		//END OF CITADEL CHANGES
 
 		user.drop_item()
 		G.loc = src
@@ -105,7 +107,7 @@ obj/machinery/recharger
 
 		//VOREStation Add - NSFW Batteries
 		else if(istype(charging, /obj/item/ammo_casing/rechargeable))
-			var/obj/item/ammo_casing/rechargeable/batt = charging
+			var/obj/item/ammo_casing/rechargeable/batt = charging //CITADEL CHANGE, LETS ANY ammo_casing/rechargeable CHARGE
 			if(batt.shots_left >= initial(batt.shots_left))
 				icon_state = icon_state_charged
 				update_use_power(1)
@@ -157,7 +159,7 @@ obj/machinery/recharger
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device, /obj/item/weapon/gun/projectile/nsfw)
+	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device, /obj/item/weapon/gun/projectile/nsfw) //CITADEL CHANGE - NSFW Added
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

@@ -1,4 +1,5 @@
 // -------------- NSFW -------------
+//START OF CITADEL CHANGES - Microbatteries are now subtypes of ammo_casing/rechargeable instead of just ammo_casing
 /obj/item/weapon/gun/projectile/nsfw
 	name = "KHI-102b \'NSFW\'"
 	desc = "Variety is the spice of life! The 'Nanotech Selectable-Fire Weapon' is an unholy hybrid of an ammo-driven \
@@ -182,6 +183,7 @@
 
 		current++ //Increment for offsets
 
+//CITADEL ADD, LETS MICROBATTERIES BE REMOVED ONE BY ONE
 /obj/item/ammo_magazine/nsfw_mag/attack_hand(mob/living/user)
 	if(user.get_inactive_hand() != src)
 		..()
@@ -193,6 +195,44 @@
 	user.put_in_hands(stored_ammo[stored_ammo.len])
 	stored_ammo.Remove(stored_ammo[stored_ammo.len])
 	update_icon()
+
+
+//CITADEL ADD, since clicking an nsfw_mag now removes batts unless empty, make it draggable across hands. This is copy pasted verbatim from /obj/item/weapon/storage/MouseDrop
+/obj/item/ammo_magazine/nsfw_mag/MouseDrop(obj/over_object as obj)
+	if(!canremove)
+		return
+
+	if (isliving(usr) || isobserver(usr))
+
+		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
+			return
+
+		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
+			src.open(usr)
+			return
+
+		if (!( istype(over_object, /obj/screen) ))
+			return ..()
+
+		//makes sure that the storage is equipped, so that we can't drag it into our hand from miles away.
+		//there's got to be a better way of doing this.
+		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
+			return
+
+		if (( usr.restrained() ) || ( usr.stat ))
+			return
+
+		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
+			return
+
+		switch(over_object.name)
+			if("r_hand")
+				usr.unEquip(src)
+				usr.put_in_r_hand(src)
+			if("l_hand")
+				usr.unEquip(src)
+				usr.put_in_l_hand(src)
+		src.add_fingerprint(usr)
 
 // The Casing //
 /obj/item/ammo_casing/rechargeable
@@ -394,4 +434,4 @@
 	new /obj/item/ammo_casing/rechargeable/nsfw_batt/stun(src)
 	new /obj/item/ammo_casing/rechargeable/nsfw_batt/net(src)
 	new /obj/item/ammo_casing/rechargeable/nsfw_batt/ion(src)
-
+//END OF CITADEL CHANGES
