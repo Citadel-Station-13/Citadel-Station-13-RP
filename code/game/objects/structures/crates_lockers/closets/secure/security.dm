@@ -257,7 +257,7 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
-		///obj/item/gunbox, //VOREStation Removal,
+		/obj/item/gunbox, //Citadel Re-addition
 		/obj/item/weapon/storage/belt/detective,
 		/obj/item/weapon/storage/box/evidence,
 		/obj/item/device/radio/headset/headset_sec,

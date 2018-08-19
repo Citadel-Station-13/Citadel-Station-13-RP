@@ -46,8 +46,13 @@ var/const/NETWORK_MAIN_OUTPOST = "Main Outpost"
 
 /obj/machinery/telecomms/relay/preset/southerncross/planet
 	id = "Planet Relay"
-	listening_level = Z_LEVEL_SURFACE|Z_LEVEL_SURFACE_SKY
+	listening_level = Z_LEVEL_SURFACE
 	autolinkers = list("pnt_relay")
+
+/obj/machinery/telecomms/relay/preset/southerncross/planet2
+	id = "Planet Dorms Relay"
+	listening_level = Z_LEVEL_SURFACE_SKY
+	autolinkers = list("pnt2_relay")
 
 /obj/machinery/telecomms/relay/preset/southerncross/cave
 	id = "Cave Relay"
