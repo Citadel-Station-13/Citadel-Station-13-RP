@@ -2941,6 +2941,7 @@
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
 #include "modular_citadel\code\game\jobs\job\engineering_cit.dm"
 #include "modular_citadel\code\game\objects\items\upgradekit.dm"
+#include "modular_citadel\code\game\objects\items\devices\radio\headset.dm"
 #include "modular_citadel\code\game\objects\items\weapons\storage\donatorbackpack.dm"
 #include "modular_citadel\code\modules\admin\chat_commands.dm"
 #include "modular_citadel\code\modules\client\preference_setup\loadout.dm"
