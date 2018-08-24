@@ -54,8 +54,7 @@
 	//Now applying sound
 	if((get_dist(M, T) <= round(max_range * 0.3 * bang_effectiveness) || src.loc == M.loc || src.loc == M))
 		if(ear_safety > 0)
-			M.Confuse(2)
-			M.Weaken(1)
+			return		//CITADEL CHANGE - Makes hearing protection actually matter for flashbangs
 		else
 			M.Confuse(10)
 			M.Weaken(3)
