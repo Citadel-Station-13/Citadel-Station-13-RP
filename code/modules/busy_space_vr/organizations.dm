@@ -676,7 +676,7 @@
 							"if told you I'd have to kill you",
 							"... wait, why am I even telling you this? Just let me pass",
 							"stop asking questions")
-
+/* CITADEL CHANGE - REMOVES KHI
 /datum/lore/organization/gov/kitsuhana
 	name = "Kitsuhana Heavy Industries"
 	short_name = "Kitsuhana"
@@ -730,7 +730,7 @@
 						"a Kitsuhana ringworld in Lund VI",
 						"a Kitsuhana ringworld in Dais IX",
 						"a Kitsuhana ringworld in Leibert II-b")
-
+END OF CITADEL CHANGES*/
 /datum/lore/organization/gov/ares
 	name = "Ares Confederation"
 	short_name = "ArCon"
