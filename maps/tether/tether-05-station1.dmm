@@ -19219,6 +19219,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/skills,
 /obj/item/device/perfect_tele{
+	desc = "Seems absurd, doesn't it? Yet, here we are. Generally only considered Major Contraband if utilised in crimes such as infiltration, trespassing or resisting arrest. This one is the Colony Director's, and they are authorized to use it.";
 	name = "director's translocator"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
