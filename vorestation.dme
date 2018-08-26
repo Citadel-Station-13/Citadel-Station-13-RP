@@ -2955,6 +2955,7 @@
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station_cit.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
 #include "modular_citadel\code\modules\projectiles\guns\energy\netgun_vr.dm"
+#include "modular_citadel\code\modules\resleeving\implant.dm"
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_clothes_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\nsfw.dm"
