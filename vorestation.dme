@@ -2936,7 +2936,6 @@
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
-#include "modular_citadel\code\datums\supplypacks\misc_vr.dm"
 #include "modular_citadel\code\datums\supplypacks\security.dm"
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
 #include "modular_citadel\code\game\jobs\job\engineering_cit.dm"
