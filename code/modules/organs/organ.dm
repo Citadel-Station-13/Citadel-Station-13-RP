@@ -31,6 +31,10 @@ var/list/organ_cache = list()
 	var/rejecting                     // Is this organ already being rejected?
 	var/preserved = 0                 // If this is 1, prevents organ decay.
 
+	// Language vars. Putting them here in case we decide to do something crazy with sign-or-other-nonverbal languages.
+	var/list/will_assist_languages = list()
+	var/list/datum/language/assists_languages = list()
+
 /obj/item/organ/Destroy()
 
 	if(owner)           owner = null
@@ -161,7 +165,7 @@ var/list/organ_cache = list()
 		infection_damage = max(1, 1 + round((germ_level - INFECTION_LEVEL_THREE)/200,0.25)) //1 Tox plus a little based on germ level
 
 	else if(germ_level > INFECTION_LEVEL_TWO && antibiotics < ANTIBIO_OD)
-		infection_damage = max(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/200,0.25))
+		infection_damage = max(0.25, 0.25 + round((germ_level - INFECTION_LEVEL_TWO)/1000,0.25))	//CITADEL EDIT: Increases the /200 here to /1000 to nerf infection damage
 
 	if(infection_damage)
 		owner.adjustToxLoss(infection_damage)

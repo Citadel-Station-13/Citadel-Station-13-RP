@@ -1,6 +1,6 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
-	
+
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
 	if (findtext(act, "-", 1, null))
@@ -14,9 +14,10 @@
 	var/muzzled = is_muzzled()
 	//var/m_type = 1
 
-	for (var/obj/item/weapon/implant/I in src)
-		if (I.implanted)
-			I.trigger(act, src)
+	for(var/obj/item/organ/O in src.organs)
+		for (var/obj/item/weapon/implant/I in O)
+			if (I.implanted)
+				I.trigger(act, src)
 
 	if(src.stat == 2.0 && (act != "deathgasp"))
 		return
@@ -80,10 +81,11 @@
 
 		//Promethean-only emotes
 		if("squish")
-			if(!species.bump_flag == SLIME) //That should do, yaya.
+			/* VOREStation Removal Start - Eh. People can squish maybe.
+			if(species.bump_flag != SLIME) //This should definitely do it.
 				src << "<span class='warning'>You are not a slime thing!</span>"
 				return
-
+			*/ //VOREStation Removal End
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
 			m_type = 1
@@ -653,6 +655,26 @@
 					message = "<span class='danger'>slaps [T.himself]!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
+//Citadel changes starts here
+		if("aslap", "aslaps")
+			m_type = 1
+			if(!restrained())
+				var/M = null
+				if(param)
+					for(var/mob/A in view(1, null))
+						if(param == A.name)
+							M = A
+							break
+				if(M)
+					message = "<span class='danger'>slaps [M]'s butt.</span>"
+					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					add_attack_logs(src,M,"Buttslap")
+				else
+					message = "<span class='danger'>slaps [T.his] own butt!</span>"
+					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					add_attack_logs(src,src,"Slapped own butt")
+//Citadel changes ends here
+
 		if("scream", "screams")
 			if(miming)
 				message = "acts out a scream!"
@@ -739,7 +761,7 @@
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
 	set category = "IC"
-	
+
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)

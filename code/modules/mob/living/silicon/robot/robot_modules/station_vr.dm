@@ -148,7 +148,7 @@
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
+	water.max_energy = 500
 	water.energy = 0
 	R.water_res = water
 	synths += water
@@ -170,6 +170,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
 	..()
 
 /obj/item/weapon/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -207,7 +208,6 @@
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
 	src.modules += new /obj/item/device/dogborg/boop_module(src) //Boop the crew.
 	src.modules += new /obj/item/device/healthanalyzer(src) // See who's hurt specificially.
-	src.modules += new /obj/item/weapon/reagent_containers/borghypo(src)//So medi-hounds aren't nearly useless
 	src.modules += new /obj/item/weapon/reagent_containers/syringe(src) //In case the chemist is nice!
 	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker(src)//For holding the chemicals when the chemist is nice
 	src.modules += new /obj/item/device/sleevemate(src) //Lets them scan people.
@@ -217,10 +217,14 @@
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
+	water.max_energy = 500
 	water.energy = 0
 	R.water_res = water
 	synths += water
+
+	var/obj/item/weapon/reagent_containers/borghypo/hound/H = new /obj/item/weapon/reagent_containers/borghypo/hound(src)
+	H.water = water
+	src.modules += H
 
 	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
 	T.water = water
@@ -239,6 +243,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
 	..()
 
 /obj/item/weapon/robot_module/robot/ert
@@ -262,7 +267,7 @@
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
+	water.max_energy = 500
 	water.energy = 0
 	R.water_res = water
 	synths += water
@@ -284,6 +289,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
 	..()
 
 /obj/item/weapon/robot_module/robot/scrubpup
@@ -304,17 +310,17 @@
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
 	metal.name = "Steel reserves"
 	metal.recharge_rate = 0
-	metal.max_energy = 100000
+	metal.max_energy = 50000
 	metal.energy = 0
 	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
 	glass.name = "Glass reserves"
 	glass.recharge_rate = 0
-	glass.max_energy = 100000
+	glass.max_energy = 50000
 	glass.energy = 0
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
+	water.max_energy = 500
 	water.energy = 0
 	R.water_res = water
 
@@ -363,6 +369,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
 	..()
 
 /obj/item/weapon/robot_module/robot/science
@@ -386,7 +393,7 @@
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
+	water.max_energy = 500
 	water.energy = 0
 	R.water_res = water
 	synths += water
@@ -408,6 +415,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
 	..()
 
 /obj/item/weapon/robot_module/robot/engiedog
@@ -430,7 +438,7 @@
 	src.modules += new /obj/item/device/t_scanner(src)
 	src.modules += new /obj/item/taperoll/engineering(src)
 	src.modules += new /obj/item/weapon/inflatable_dispenser/robot(src)
-	src.modules += new /obj/item/device/geiger(src)
+	src.modules += new /obj/item/weapon/pickaxe(src)
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src)
@@ -439,27 +447,27 @@
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
 	metal.name = "Steel reserves"
 	metal.recharge_rate = 50
-	metal.max_energy = 100000
+	metal.max_energy = 50000
 	metal.energy = 5000
 	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
 	glass.name = "Glass reserves"
 	glass.recharge_rate = 50
-	glass.max_energy = 100000
+	glass.max_energy = 50000
 	glass.energy = 5000
 	var/datum/matter_synth/wood = new /datum/matter_synth/wood()
 	wood.name = "Wood reserves"
 	wood.recharge_rate = 50
-	wood.max_energy = 100000
+	wood.max_energy = 50000
 	wood.energy = 5000
 	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic()
 	plastic.name = "Plastic reserves"
 	plastic.recharge_rate = 50
-	plastic.max_energy = 100000
+	plastic.max_energy = 50000
 	plastic.energy = 5000
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
+	water.max_energy = 500
 	water.energy = 0
 	R.water_res = water
 
@@ -484,6 +492,7 @@
 	MD.glass = glass
 	MD.wood = wood
 	MD.plastic = plastic
+	MD.water = water
 	src.modules += MD
 
 	var/obj/item/stack/material/cyborg/steel/M = new (src)
@@ -531,6 +540,7 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
 	..()
 
 /obj/item/weapon/robot_module/Reset(var/mob/living/silicon/robot/R)
@@ -543,4 +553,5 @@
 	R.default_pixel_x = initial(pixel_x)
 	R.scrubbing = FALSE
 	R.verbs -= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs -= /mob/living/proc/shred_limb
 	..()
