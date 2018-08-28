@@ -285,10 +285,19 @@
 .uiIcon16.icon-pill.pill18  { background-position: -64px -96px; }
 .uiIcon16.icon-pill.pill19  { background-position: -96px -96px; }
 .uiIcon16.icon-pill.pill20  { background-position: -128px -96px; }
-.uiIcon16.icon-pill.bottle1 { background-position: 0 -128px; }
-.uiIcon16.icon-pill.bottle2 { background-position: -32px -128px; }
-.uiIcon16.icon-pill.bottle3 { background-position: -64px -128px; }
-.uiIcon16.icon-pill.bottle4 { background-position: -96px -128px; }
+.uiIcon16.icon-pill.pill21  { background-position: 0 -128px; }
+.uiIcon16.icon-pill.pill22  { background-position: -32px -128px; }
+.uiIcon16.icon-pill.pill23  { background-position: -64px -128px; }
+.uiIcon16.icon-pill.pill24  { background-position: -96px -128px; }
+.uiIcon16.icon-pill.pill25  { background-position: -128px -128px; }
+.uiIcon16.icon-pill.pill26  { background-position: 0 -160px; }
+.uiIcon16.icon-pill.pill27  { background-position: -32px -160px; }
+.uiIcon16.icon-pill.pill28  { background-position: -64px -160px; }
+.uiIcon16.icon-pill.pill29  { background-position: -96px -160px; }
+.uiIcon16.icon-pill.bottle1 { background-position: 0 -192px; }
+.uiIcon16.icon-pill.bottle2 { background-position: -32px -192px; }
+.uiIcon16.icon-pill.bottle3 { background-position: -64px -192px; }
+.uiIcon16.icon-pill.bottle4 { background-position: -96px -192px; }
 
 .mapIcon16 {
     position: absolute;
