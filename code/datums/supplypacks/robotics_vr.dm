@@ -64,7 +64,7 @@
 			/obj/item/weapon/disk/limb/dsi_akula,
 			/obj/item/weapon/disk/limb/dsi_spider,
 			/obj/item/weapon/disk/limb/dsi_teshari,
-//			/obj/item/weapon/disk/limb/eggnerdltd,
+//			/obj/item/weapon/disk/limb/eggnerdltd, - CITADEL CHANGE
 			/obj/item/weapon/disk/limb/eggnerdltdred
 			)
 	cost = 40

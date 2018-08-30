@@ -21,7 +21,3 @@
 /obj/item/clothing/under/rank/khi/sci
 	name = "FTU Science Suit"
 	desc = "In the constantly changing field of the Free Trade Union, plots and schemes change by the hour. Yet nobody heeds the alchemist in the lab."
-
-/obj/item/clothing/under/rank/khi/fluff/aronai
-	name = "FTU MediTech Suit"
-	desc = "With the mercenaries of the merchants dying to poison and blade, sleeving is essential. The MediTech are invaluable, well paid to do their job, and to not do it in certain cases."

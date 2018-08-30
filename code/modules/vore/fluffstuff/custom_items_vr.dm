@@ -65,7 +65,7 @@
 	parts &= ~flag
 	if(!parts)
 		qdel(src)
-
+/* CITADEL CHANGE - Removes this fluff stuff
 //JoanRisu:Joan Risu
 /obj/item/weapon/flame/lighter/zippo/fluff/joan
 	name = "Federation Zippo Lighter"
@@ -193,7 +193,7 @@
 	from_suit = /obj/item/clothing/suit/space/void
 	to_helmet = /obj/item/clothing/head/helmet/space/void/engineering/hazmat/fluff/screehelm
 	to_suit = /obj/item/clothing/suit/space/void/engineering/hazmat/fluff/screespess
-
+END OF CITADEL CHANGES */
 //General Use
 /obj/item/weapon/flag
 	name = "Nanotrasen Banner"
@@ -213,7 +213,7 @@
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
 
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 /obj/item/weapon/flag/federation
 	name = "Federation Banner"
 	desc = "Space, The Final Frontier. Sorta. Just go with it and say the damn oath."
@@ -285,14 +285,14 @@
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
-
+END OF CITADEL CHANGE */
 //General use
 /obj/item/weapon/melee/fluff/holochain/mass
 	desc = "A mass produced version of the original. It has faux leather and an aluminium base, but still stings like the original."
 	force = 8
 	attack_verb = list("flogged", "whipped", "lashed", "flayed")
 
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 // joey4298:Emoticon
 /obj/item/device/fluff/id_kit_mime
 	name = "Mime ID reprinter"
@@ -521,7 +521,7 @@
 	..()
 	new /obj/item/weapon/paper/khcrystal_manual(src)
 	new /obj/item/clothing/accessory/collar/khcrystal(src)
-
+END OF CITADEL CHANGES */
 /obj/item/weapon/cane/fluff
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."
@@ -535,7 +535,7 @@
 	w_class = ITEMSIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 /obj/item/weapon/cane/fluff/tasald
 	name = "Ornate Walking Cane"
 	desc = "An elaborately made custom walking stick with a dark wooding core, a crimson red gemstone on its head and a steel cover around the bottom. you'd probably hear someone using this down the hall."
@@ -1147,7 +1147,7 @@
 		qdel(I)
 		accessset = 1
 	..()
-
+END OF CITADEL CHANGES */
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/science_proper
 	name = "Aesthetic Science Goggles"
@@ -1526,7 +1526,7 @@
 		to_chat(user,"<span class='warning'>\The [src] is too far away from the beacon. Try getting closer first!</span>")
 		return FALSE
 	return ..()
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //InterroLouis: Ruda Lizden
 /obj/item/clothing/accessory/badge/holo/detective/ruda
 	name = "Hisstective's Badge"
@@ -1611,7 +1611,7 @@
 
 /obj/item/weapon/material/twohanded/fluff/New(var/newloc)
 	..(newloc," ") //See materials_vr_dmi for more information as to why this is a blank space.
-
+END OF CITADEL CHANGES*/
 //General use.
 /obj/item/weapon/material/twohanded/fluff/riding_crop
 	name = "riding crop"
@@ -1624,6 +1624,7 @@
 	base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")
+/* CITADEL CHANGE - Removes Virgo Fluff
 //1R1S: Malady Blanche
 /obj/item/weapon/material/twohanded/fluff/riding_crop/malady
 	name = "Malady's riding crop"
@@ -1796,7 +1797,7 @@
 /obj/item/weapon/storage/backpack/fluff/stunstaff/New()
 	..()
 	new /obj/item/weapon/melee/baton/fluff/stunstaff(src)
-
+END OF CITADEL CHANGES */
 
 /*
  * Awoo Sword
@@ -1902,7 +1903,7 @@
 	..()
 	attack_verb = list("bapped", "thwapped", "bonked", "whacked")
 	icon_state = initial(icon_state)
-
+/* CITADEL CHANGES - Removes Virgo Fluff
 //SilencedMP5A5 - Serdykov Antoz
 /obj/item/device/modkit_conversion/hasd
 	name = "HASD EVA modification kit"
@@ -1942,9 +1943,9 @@
 
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "penlightlynn"
-	
+
 //Knightfall5:Ashley Kifer
 /obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
 	name = "nobel sciences award"
 	desc = "A bronze medal which represents significant contributions to the field of science or engineering, this one has Ashley Kifer engraved on it."
-
+END OF CITADEL CHANGES */

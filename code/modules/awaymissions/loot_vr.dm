@@ -138,7 +138,7 @@
 					prob(9);/obj/item/weapon/gun/projectile/automatic/mini_uzi,\
 					prob(9);/obj/item/weapon/gun/projectile/pistol,\
 					prob(9);/obj/item/weapon/gun/projectile/shotgun/pump/combat,\
-					prob(9);/obj/item/weapon/twohanded/fireaxe,\
+					prob(9);/obj/item/weapon/material/twohanded/fireaxe,\			//CITADEL CHANGE - Fixes error with removal of virgo fluff
 					prob(9);/obj/item/weapon/cane/concealed,\
 					prob(9);/obj/item/weapon/gun/energy/gun,\
 					prob(8);/obj/item/weapon/gun/energy/ionrifle,\

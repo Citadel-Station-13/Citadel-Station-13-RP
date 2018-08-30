@@ -70,7 +70,7 @@
 					prob(2);/obj/item/weapon/gun/projectile/automatic/l6_saw,\
 					prob(2);/obj/item/weapon/gun/energy/gun/burst,\
 					prob(2);/obj/item/weapon/storage/box/frags,\
-					prob(2);/obj/item/weapon/twohanded/fireaxe,\
+					prob(2);/obj/item/weapon/material/twohanded/fireaxe,\			//CITADEL CHANGE - Fixes error with removal of virgo fluff
 					prob(2);/obj/item/weapon/gun/projectile/luger/brown,\
 					prob(2);/obj/item/weapon/gun/launcher/crossbow,\
 				/*	prob(1);/obj/item/weapon/gun/projectile/automatic/battlerifle,\ */ // Too OP
