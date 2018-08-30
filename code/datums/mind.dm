@@ -217,7 +217,7 @@
 			if(!def_value)//If it's a custom objective, it will be an empty string.
 				def_value = "custom"
 
-		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "debrain", "protect", "prevent", "harm", "brig", "hijack", "escape", "survive", "steal", "download", "mercenary", "capture", "absorb", "custom")
+		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "debrain", "protect", "prevent", "harm", "brig", "hijack", "escape", "survive", "steal", "download", "mercenary", "capture", "absorb", "consume", "custom") //CITADEL EDIT - adds "consume" to this list
 		if (!new_obj_type) return
 
 		var/datum/objective/new_objective = null
@@ -254,6 +254,10 @@
 					new_objective.owner = src
 					new_objective:target = M.mind
 					new_objective.explanation_text = "[objective_type] [M.real_name], the [M.mind.special_role ? M.mind:special_role : M.mind:assigned_role]."
+
+			if("consume") //CIT CHANGE - adds consume to the list of objectives that can be added
+				new_objective = new /datum/objective/consume //CIT CHANGE - ditto
+				new_objective.owner = src //CIT CHANGE - ditto.
 
 			if ("prevent")
 				new_objective = new /datum/objective/block
