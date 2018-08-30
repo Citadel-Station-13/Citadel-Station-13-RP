@@ -8,7 +8,7 @@
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "APLU \"Gopher\" Circuit Crate"
 	access = access_robotics
-  
+
 /datum/supply_packs/robotics/mecha_polecat
 	name = "Circuit Crate (\"Polecat\" APLU)"
 	contains = list(
@@ -64,7 +64,7 @@
 			/obj/item/weapon/disk/limb/dsi_akula,
 			/obj/item/weapon/disk/limb/dsi_spider,
 			/obj/item/weapon/disk/limb/dsi_teshari,
-			/obj/item/weapon/disk/limb/eggnerdltd,
+//			/obj/item/weapon/disk/limb/eggnerdltd,
 			/obj/item/weapon/disk/limb/eggnerdltdred
 			)
 	cost = 40
