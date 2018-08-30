@@ -436,7 +436,7 @@
 						"the SolGov embassy in Virgo-Erigone",
 						"the SolGov embassy in Vilous"
 						)// autogen will add a lot of other places as well.
-
+/* CITADEL CHANGE - REMOVES VEGA
 /datum/lore/organization/gov/sifgov // Overrides Polaris stuff
 	name = "Virgo-Erigone Governmental Authority"
 	short_name = ""
@@ -468,7 +468,7 @@
 						"a telecommunications satellite near Virgo-3B",
 						"a telecommunications satellite near Virgo-Prime"
 						)
-
+END OF CITADEL CHANGE */
 /* // Waiting for lore to be updated.
 /datum/lore/organization/gov/federation
 	name = "United Federation of Planets"
