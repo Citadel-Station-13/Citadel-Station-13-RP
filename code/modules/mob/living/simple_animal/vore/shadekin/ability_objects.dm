@@ -1,4 +1,6 @@
-/*/obj/effect/shadekin_ability
+/*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
+
+/obj/effect/shadekin_ability
 	name = ""
 	desc = ""
 	icon = 'icons/mob/screen_spells.dmi'

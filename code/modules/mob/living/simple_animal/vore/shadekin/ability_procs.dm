@@ -1,4 +1,6 @@
-/*/ Phase shifting procs (and related procs)
+/*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
+
+// Phase shifting procs (and related procs)
 /mob/living/simple_animal/shadekin/proc/phase_shift()
 	var/turf/T = get_turf(src)
 	if(!T.CanPass(null,T) || loc != T)

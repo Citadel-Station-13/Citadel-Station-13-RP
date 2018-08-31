@@ -1,4 +1,5 @@
-/*#define NOT_WHILE_SHIFTED 1  This whole Shadekin is 
+/*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
+#define NOT_WHILE_SHIFTED 1  This whole Shadekin is 
 #define ONLY_WHILE_SHIFTED 2
 #define SHIFTED_OR_NOT 3
 

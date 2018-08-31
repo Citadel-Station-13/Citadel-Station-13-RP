@@ -1,4 +1,6 @@
-/*/mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
+/*
+
+//mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
 	desc = "Some sort of fluffer. Big ears, long tail."
 	icon = 'icons/mob/vore_shadekin.dmi'
