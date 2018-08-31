@@ -217,7 +217,7 @@
 		buckled.unbuckle_mob()
 	if(LAZYLEN(buckled_mobs))
 		for(var/buckledmob in buckled_mobs)
-			unbuckle_mob(buckledmob, force = TRUE)
+			riding_datum.force_dismount(buckledmob)
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
@@ -241,7 +241,7 @@
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
-	
+
 	//Duration of the to_puddle iconstate that the blob starts with
 	sleep(13)
 	blob.update_icon() //Will remove the collapse anim
@@ -264,11 +264,11 @@
 		buckled.unbuckle_mob()
 	if(LAZYLEN(buckled_mobs))
 		for(var/buckledmob in buckled_mobs)
-			unbuckle_mob(buckledmob, force = TRUE)
+			riding_datum.force_dismount(buckledmob)
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
-	
+
 	//Stop healing if we are
 	if(blob.healing)
 		blob.healing.expire()
@@ -278,7 +278,7 @@
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> reshapes into a humanoid appearance!")
-	
+
 	//Duration of above animation
 	sleep(8)
 
@@ -303,7 +303,7 @@
 		var/obj/belly/B = belly
 		B.forceMove(src)
 		B.owner = src
-	
+
 	//Get rid of friend blob
 	qdel(blob)
 

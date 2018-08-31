@@ -24,7 +24,7 @@
 		return
 
 	//Organ is missing, needs restoring
-	if(!organs_by_name[choice] || istype(organs_by_name[choice], /organ/external/stump)) //CITADEL CHANGE: allows limb stumps to regenerate like removed limbs.
+	if(!organs_by_name[choice] || istype(organs_by_name[choice], /obj/item/organ/external/stump)) //CITADEL CHANGE: allows limb stumps to regenerate like removed limbs.
 		if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < PER_LIMB_STEEL_COST)
 			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it.</span>")
 			return
@@ -196,9 +196,10 @@
 	var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen")
 	var allowed = FALSE
 	for(var/material in edible_materials)
-	 	if(material == substance) allowed = TRUE
+		if(material == substance) allowed = TRUE
 	if(!allowed)
 		to_chat(src,"<span class='warning'>You can't process [substance]!</span>")
+		return //Only a few things matter, the rest are best not cluttering the lists.
 
 	var/howmuch = input(src,"How much do you want to store? (0-[matstack.amount])","Select amount") as null|num
 	if(!howmuch || matstack != get_active_hand() || howmuch > matstack.amount)
@@ -383,13 +384,5 @@
 	desc = "Store the metal you're holding. Your refactory can only store steel, and all other metals will be converted into nanites ASAP for various effects."
 	icon_state = "metal"
 	to_call = /mob/living/carbon/human/proc/nano_metalnom
-
-/mob/living/simple_animal/protean_blob/proc/ventcrawl()
-	set name = "Crawl through Vent"
-	set desc = "Enter an air vent and crawl through the pipe system."
-	set category = "Abilities"
-	var/pipe = start_ventcrawl()
-	if(pipe)
-		handle_ventcrawl()
 
 #undef PER_LIMB_STEEL_COST
