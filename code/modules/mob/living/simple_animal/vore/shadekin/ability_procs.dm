@@ -1,4 +1,4 @@
-// Phase shifting procs (and related procs)
+/*/ Phase shifting procs (and related procs)
 /mob/living/simple_animal/shadekin/proc/phase_shift()
 	var/turf/T = get_turf(src)
 	if(!T.CanPass(null,T) || loc != T)
@@ -131,3 +131,4 @@
 	visible_message("<span class='notice'>\The [src] gently places a hand on \the [target]...</span>")
 	face_atom(target)
 	return TRUE
+*/

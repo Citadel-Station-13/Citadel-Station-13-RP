@@ -1,4 +1,4 @@
-#define NOT_WHILE_SHIFTED 1
+/*#define NOT_WHILE_SHIFTED 1  This whole Shadekin is 
 #define ONLY_WHILE_SHIFTED 2
 #define SHIFTED_OR_NOT 3
 
@@ -10,4 +10,4 @@
 #define ORANGE_EYES 6
 
 #define AB_PHASE_SHIFTED	0x1
-#define AB_SHADE_REGEN		0x2
+#define AB_SHADE_REGEN		0x2*/
