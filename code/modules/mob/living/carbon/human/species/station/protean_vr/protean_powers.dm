@@ -32,6 +32,8 @@
 		if(regen != "Yes")
 			return
 		if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
+			if(organs_by_name[choice])
+				organs_by_name[choice].removed()
 			return
 
 		var/mob/living/simple_animal/protean_blob/blob = nano_intoblob()
@@ -70,7 +72,7 @@
 		return //Lost it meanwhile
 
 	eo.robotize(manu_choice)
-	visible_message("<B>[src]</B>'s ")
+	visible_message("<B>[src]</B>'s [choice] loses its shape, then reforms.")
 	update_icons_body()
 
 ////
