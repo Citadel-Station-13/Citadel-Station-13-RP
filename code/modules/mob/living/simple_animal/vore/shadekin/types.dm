@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
 =======
 /*Modularized version of the shadekins.
