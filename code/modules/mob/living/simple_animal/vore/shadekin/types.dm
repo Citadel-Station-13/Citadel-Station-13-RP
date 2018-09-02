@@ -1,14 +1,4 @@
 /*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
-=======
-/*Modularized version of the shadekins.
-
-Don't fuck this up too much. We "might" be looking towards altering the lore but that may be unlikely.
-for now, I suggest tinkering with this and noting the edits (please).
-
-Also, make sure the other shadekin folder is NOT enabled. - Nylon
-*/
-
-
 >>>>>>> parent of ade9a1c... Revert "Shadekin modularized, made a few adjustments with plans."
 /////////////////////////////////////////////////////////////////
 /mob/living/simple_animal/shadekin/red
