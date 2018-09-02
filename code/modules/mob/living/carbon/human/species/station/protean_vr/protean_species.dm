@@ -115,7 +115,7 @@
 /datum/species/protean/create_organs(var/mob/living/carbon/human/H)
 	var/obj/item/device/nif/saved_nif = H.nif
 	if(saved_nif)
-		H.nif.unimplant()
+		H.nif.unimplant(H) //CITADEL CHANGE: Needs reference to owner to unimplant right.
 		H.nif.forceMove(null)
 	..()
 	if(saved_nif)

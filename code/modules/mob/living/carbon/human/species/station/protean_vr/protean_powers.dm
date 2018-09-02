@@ -32,9 +32,11 @@
 		if(regen != "Yes")
 			return
 		if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
-			if(organs_by_name[choice])
-				organs_by_name[choice].removed()
 			return
+		if(organs_by_name[choice])
+			var/obj/item/organ/external/oldlimb = organs_by_name[choice]
+			oldlimb.removed()
+			qdel(oldlimb)
 
 		var/mob/living/simple_animal/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
@@ -99,7 +101,7 @@
 		to_chat(src, "<span class='warning'>You are already refactoring!</span>")
 		return
 
-	var/swap_not_rebuild = alert(src,"Do you want to rebuild, or reshape?","Rebuild or Reshape","Rebuild","Cancel","Reshape")
+	var/swap_not_rebuild = alert(src,"Do you want to rebuild, or reshape?","Rebuild or Reshape","Reshape","Cancel","Rebuild")
 	if(swap_not_rebuild == "Cancel")
 		return
 	if(swap_not_rebuild == "Reshape")
@@ -147,13 +149,13 @@
 	visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
 	active_regen = TRUE
 
-	nano_intoblob()
-	if(do_after(src,delay_length))
+	var/mob/living/simple_animal/protean_blob/blob = nano_intoblob()
+	if(do_after(blob, delay_length, null, 0))
 		if(stat != DEAD && refactory)
 			var/list/holder = refactory.materials
 			species.create_organs(src)
 			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
-			torso.robotize(synthetic.company)
+			torso.robotize() //CITADEL CHANGE, synthetic wasn't defined here.
 			LAZYCLEARLIST(blood_DNA)
 			LAZYCLEARLIST(feet_blood_DNA)
 			blood_color = null
@@ -164,11 +166,14 @@
 				log_debug("[src] protean-regen'd but lacked a refactory when done.")
 			else
 				new_refactory.materials = holder
-			to_chat(src, "<span class='notice'>Your refactoring is complete!</span>")
+			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //CITADEL CHANGE: Guarantees the message shows no matter how bad the timing.
+			to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
 		else
-			to_chat(src, "<span class='critical'>Your refactoring has failed.</span>")
+			to_chat(src,  "<span class='critical'>Your refactoring has failed.</span>")
+			to_chat(blob, "<span class='critical'>Your refactoring has failed!</span>")
 	else
-		to_chat(src, "<span class='critical'>Your refactoring is interrupted!</span>")
+		to_chat(src,  "<span class='critical'>Your refactoring is interrupted.</span>")
+		to_chat(blob, "<span class='critical'>Your refactoring is interrupted!</span>")
 	active_regen = FALSE
 	nano_outofblob()
 
@@ -195,7 +200,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.name
-	var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen")
+	var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //CITADEL CHANGE: Can't eat all materials, just useful ones.
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE
