@@ -26,7 +26,12 @@
 	if(H.species.flags & NO_SCAN)
 		new /obj/item/device/nif/bioadap(H)
 	else
-		new /obj/item/device/nif(H)
+		var/list/NIFtypes = list(/obj/item/device/nif/authentic,/obj/item/device/nif,/obj/item/device/nif/bad) 
+		var/pickednif = input("Pick the NIF type to implant","Quick NIF") as null|anything in NIFtypes
+		if(pickednif)
+			new pickednif(H)
+		else
+			new /obj/item/device/nif(H)
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
