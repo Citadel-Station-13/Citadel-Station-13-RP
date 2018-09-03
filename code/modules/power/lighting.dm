@@ -375,7 +375,7 @@
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
-/obj/machinery/light/proc/seton(var/s)
+/obj/machinery/light/proc/seton(s)	//CITADEL CHANGE - Ports Eris auto-lighting
 	on = (s && status == LIGHT_OK)
 	update()
 
@@ -533,7 +533,7 @@
 		return A && (!A.requires_power || A.power_light)
 	else
 		return A && A.lightswitch && (!A.requires_power || A.power_light)
-
+/* CITADEL CHANGE - Ports Eris auto-lighting
 /obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
 	if(flickering) return
 	flickering = 1
@@ -547,7 +547,7 @@
 			on = (status == LIGHT_OK)
 			update(0)
 		flickering = 0
-
+END OF CITADEL CHANGE */
 // ai attack - make lights flicker, because why not
 
 /obj/machinery/light/attack_ai(mob/user)

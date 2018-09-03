@@ -29,6 +29,9 @@
 		on = area.lightswitch
 		updateicon()
 
+		if(area.are_living_present())	//CITADEL - Ports Eris auto-lighting
+			set_on(TRUE)				//CHANGE
+
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
 		overlay = image(icon, "light1-overlay")
@@ -47,7 +50,7 @@
 /obj/machinery/light_switch/examine(mob/user)
 	if(..(user, 1))
 		user << "A light switch. It is [on? "on" : "off"]."
-
+/* CITADEL CHANGE - Ports Eris auto-lighting
 /obj/machinery/light_switch/attack_hand(mob/user)
 
 	on = !on
@@ -61,7 +64,7 @@
 		L.updateicon()
 
 	area.power_change()
-
+END OF CITADEL CHANGE */
 /obj/machinery/light_switch/power_change()
 
 	if(!otherarea)
