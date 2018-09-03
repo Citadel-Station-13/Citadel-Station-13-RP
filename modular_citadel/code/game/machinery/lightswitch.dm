@@ -1,10 +1,11 @@
 /obj/machinery/light_switch
 	var/slow_turning_on = FALSE
 	var/forceful_toggle = FALSE
-	var/check_time = 0 // A time at which another mob check will occure.
+	var/check_time = 0 // A time at which another mob check will occur.
+	var/lastcheck = 0 // A record of when the last check was performed
 
 /obj/machinery/light_switch/process()
-	if(check_time < world.time && !(round(world.time) % 10 SECONDS)) // Each 10 seconds it checks if anyone is in the area, but also whether the light wasn't switched on recently.
+	if(check_time < world.time && world.time >= (lastcheck + 10 SECONDS)) // Each 10 seconds it checks if anyone is in the area, but also whether the light wasn't switched on recently.
 		if(area.are_living_present())
 			if(!on)
 				spawn(0)
@@ -15,7 +16,7 @@
 				check_time = world.time + 10 MINUTES
 		else
 			set_on(FALSE, FALSE)
-
+		lastcheck = world.time
 /obj/machinery/light_switch/attack_hand(mob/user)
 	forceful_toggle = TRUE
 	set_on(!on)
@@ -54,7 +55,3 @@
 		check_time = world.time + 10 MINUTES
 
 	area.power_change()
-
-/obj/machinery/light_switch/attack_hand(mob/user)
-	forceful_toggle = TRUE
-	set_on(!on)

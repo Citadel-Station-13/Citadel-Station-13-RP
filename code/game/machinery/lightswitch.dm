@@ -29,8 +29,8 @@
 		on = area.lightswitch
 		updateicon()
 
-		if(area.are_living_present())	//CITADEL - Ports Eris auto-lighting
-			set_on(TRUE)				//CHANGE
+		if(!area.are_living_present())	//CITADEL - Ports Eris auto-lighting
+			set_on(FALSE)				//CHANGE
 
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
