@@ -152,6 +152,11 @@
 			var/obj/item/organ/internal/O = organ
 			O.removed()
 			O.forceMove(drop_location())
+		var/list/items = humanform.get_equipped_items()
+		if(humanform.l_hand) items += humanform.l_hand
+		if(humanform.r_hand) items += humanform.r_hand
+		for(var/obj/object in items)
+			object.forceMove(drop_location())
 		qdel_null(humanform) //Don't leave it just sitting in nullspace
 	animate(src,alpha = 0,time = 2 SECONDS)
 	sleep(2 SECONDS)
@@ -193,6 +198,13 @@
 /mob/living/simple_animal/protean_blob/DoPunch(var/atom/A)
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
+		var/substance = S.material.name
+		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //CITADEL CHANGE: Can't eat all materials, just useful ones.
+		var allowed = FALSE
+		for(var/material in edible_materials)
+			if(material == substance) allowed = TRUE
+		if(!allowed)
+			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
 	else
@@ -201,6 +213,13 @@
 /mob/living/simple_animal/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/S = O
+		var/substance = S.material.name
+		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //CITADEL CHANGE: Can't eat all materials, just useful ones.
+		var allowed = FALSE
+		for(var/material in edible_materials)
+			if(material == substance) allowed = TRUE
+		if(!allowed)
+			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
 	else
@@ -213,6 +232,10 @@
 
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
+	handle_grasp() //CITADEL CHANGE: It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
+	for(var/obj/item/I in src)
+		if(istype(I, /obj/item/weapon/holder))
+			drop_from_inventory(I) //CITADEL CHANGE: Living things don't fare well in roblobs.
 	if(buckled)
 		buckled.unbuckle_mob()
 	if(LAZYLEN(buckled_mobs))
