@@ -233,9 +233,7 @@
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
 	handle_grasp() //CITADEL CHANGE: It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
-	for(var/obj/item/I in src)
-		if(istype(I, /obj/item/weapon/holder))
-			drop_from_inventory(I) //CITADEL CHANGE: Living things don't fare well in roblobs.
+	remove_micros(src, src) //CITADEL CHANGE: Living things don't fare well in roblobs.
 	if(buckled)
 		buckled.unbuckle_mob()
 	if(LAZYLEN(buckled_mobs))
@@ -279,6 +277,13 @@
 
 	//Return our blob in case someone wants it
 	return blob
+
+//CITADEL CHANGE: For some reason, there's no way to force drop all the mobs grabbed. This ought to fix that. And be moved elsewhere. Call with caution, doesn't handle cycles.
+/proc/remove_micros(var/src, var/mob/root)
+	for(var/obj/item/I in src)
+		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
+		if(istype(I, /obj/item/weapon/holder))
+			root.remove_from_mob(I)
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_animal/protean_blob/blob)
 	if(!istype(blob))
