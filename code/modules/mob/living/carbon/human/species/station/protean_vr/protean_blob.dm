@@ -45,6 +45,9 @@
 	var/obj/item/organ/internal/nano/refactory/refactory
 	var/datum/modifier/healing
 
+	var/obj/prev_left_hand
+	var/obj/prev_right_hand
+
 	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
 
 	can_buckle = TRUE //Blobsurfing
@@ -153,8 +156,8 @@
 			O.removed()
 			O.forceMove(drop_location())
 		var/list/items = humanform.get_equipped_items()
-		if(humanform.l_hand) items += humanform.l_hand
-		if(humanform.r_hand) items += humanform.r_hand
+		if(prev_left_hand) items += prev_left_hand
+		if(prev_right_hand) items += prev_right_hand
 		for(var/obj/object in items)
 			object.forceMove(drop_location())
 		qdel_null(humanform) //Don't leave it just sitting in nullspace
@@ -253,6 +256,9 @@
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 
+	if(l_hand) blob.prev_left_hand = l_hand
+	if(r_hand) blob.prev_right_hand = r_hand
+
 	//Put our owner in it (don't transfer var/mind)
 	blob.ckey = ckey
 	temporary_form = blob
@@ -320,6 +326,9 @@
 	//Move them back where the blob was
 	forceMove(reform_spot)
 
+	var/prev_left = blob.prev_left_hand
+	var/prev_right = blob.prev_right_hand
+
 	//Put our owner in it (don't transfer var/mind)
 	ckey = blob.ckey
 	temporary_form = null
@@ -331,6 +340,9 @@
 		var/obj/belly/B = belly
 		B.forceMove(src)
 		B.owner = src
+
+	if(prev_left) put_in_l_hand(prev_left)
+	if(prev_right) put_in_r_hand(prev_right)
 
 	//Get rid of friend blob
 	qdel(blob)
