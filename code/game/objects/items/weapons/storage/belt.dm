@@ -143,13 +143,11 @@
 	name = "EMT utility belt"
 	desc = "A sturdy black webbing belt with attached pouches."
 	icon_state = "ems"
-	icon_override = 'modular_citadel/icons/mob/belt.dmi' // CITADEL CHANGE - Matches belt with common paramedic gear
 
 /obj/item/weapon/storage/belt/security
 	name = "security belt"
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "security"
-	icon_override = 'modular_citadel/icons/mob/belt.dmi' // CITADEL CHANGE - Matches belt with security armor and gear
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
 		/obj/item/weapon/grenade,
