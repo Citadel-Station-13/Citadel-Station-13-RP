@@ -17,11 +17,13 @@
 	LAZYCLEARLIST(targets)
 	return ..()
 
+/* CITADEL CHANGE - Fuck this dumb infection increase tick
 /obj/item/weapon/reagent_containers/syringe/process()
 	dirtiness = min(dirtiness + targets.len,75)
 	if(dirtiness >= 75)
 		processing_objects -= src
 	return 1
+*/
 
 /obj/item/weapon/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
 	if(!ishuman(loc))
@@ -43,7 +45,11 @@
 
 	//Dirtiness should be very low if you're the first injectee. If you're spam-injecting 4 people in a row around you though,
 	//This gives the last one a 30% chance of infection.
-	if(prob(dirtiness+(targets.len-1)*10))
+	var/infect_chance = dirtiness        //Start with dirtiness
+	if(infect_chance <= 10 && (hash in targets)) //Extra fast uses on target is free
+		infect_chance = 0
+	infect_chance += (targets.len-1)*10    //Extra 10% per extra target
+	if(prob(infect_chance))
 		log_and_message_admins("[loc] infected [target]'s [eo.name] with \the [src].")
 		infect_limb(eo)
 
@@ -64,7 +70,7 @@
 		var/obj/item/organ/external/found_limb = limb_ref.resolve()
 		if(istype(found_limb))
 			eo.germ_level += INFECTION_LEVEL_ONE+30
-	
+
 //Allow for capped syringe mode
 /obj/item/weapon/reagent_containers/syringe/attack_self(mob/user as mob)
 	switch(mode)
@@ -79,10 +85,10 @@
 			return
 	update_icon()
 
-//Allow for capped syringes 
+//Allow for capped syringes
 /obj/item/weapon/reagent_containers/syringe/update_icon()
 	cut_overlays(src)
-	
+
 	var/matrix/tf = matrix()
 	if(isstorage(loc))
 		tf.Turn(-90) //Vertical for storing compact-ly
@@ -112,7 +118,7 @@
 			if (SYRINGE_INJECT)
 				injoverlay = "inject"
 		new_overlays += injoverlay
-	
+
 	add_overlay(new_overlays)
 	icon_state = "[rounded_vol]"
 	item_state = "syringe_[rounded_vol]"

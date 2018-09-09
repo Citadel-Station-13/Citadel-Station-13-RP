@@ -449,6 +449,13 @@
 
 /mob/new_player/proc/create_character(var/turf/T)
 	if (!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
+	//CITADEL EDITS START HERE - gives a big ol' "lol nope" to skids trying to spawn in as proteans
+	if(client.prefs.species)
+		var/datum/species/diosmio = all_species[client.prefs.species]
+		if(!is_alien_whitelisted(src, diosmio))
+			to_chat(src, "<span class='warning'>You aren't whitelisted for your selected species.</span>")
+			return
+	//END OF CIT CHANGES
 	spawning = 1
 	close_spawn_windows()
 

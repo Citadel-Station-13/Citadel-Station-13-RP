@@ -11,6 +11,12 @@
 	ckeywhitelist = list("realdonaldtrump")
 */
 
+/datum/gear/donator/gladiator
+	display_name = "Gladiator Armor"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/under/gladiator
+	ckeywhitelist = list("aroche")
+
 /datum/gear/donator/chayse
 	display_name = "NTSC Naval Uniform"
 	slot = slot_w_uniform
@@ -46,3 +52,9 @@
 	slot = slot_wear_suit
 	path = /obj/item/clothing/suit/armor/vest/donator/cameron
 	ckeywhitelist = list("cameronlancaster")
+
+/datum/gear/donator/crown
+	display_name = "Crown"
+	slot = slot_head
+	path = /obj/item/clothing/accessory/collar/donator/crown
+	ckeywhitelist = list("grayrachnid")
