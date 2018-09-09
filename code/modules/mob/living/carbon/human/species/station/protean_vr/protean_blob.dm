@@ -326,13 +326,9 @@
 	//Move them back where the blob was
 	forceMove(reform_spot)
 
-	var/prev_left = blob.prev_left_hand
-	var/prev_right = blob.prev_right_hand
-
 	//Put our owner in it (don't transfer var/mind)
 	ckey = blob.ckey
 	temporary_form = null
-	Life(1) //Fix my blindness right meow
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
@@ -341,8 +337,10 @@
 		B.forceMove(src)
 		B.owner = src
 
-	if(prev_left) put_in_l_hand(prev_left)
-	if(prev_right) put_in_r_hand(prev_right)
+	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //CITADEL CHANGE: The restore for when reforming.
+	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
+
+	Life(1) //Fix my blindness right meow // CITADEL CHANGE: Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
 
 	//Get rid of friend blob
 	qdel(blob)
