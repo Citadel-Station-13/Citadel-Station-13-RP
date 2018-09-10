@@ -159,7 +159,7 @@
 			for(var/T in reagent_ids)
 				if(reagent_volumes[T] < volume && water.energy >= charge_cost)
 					R.cell.use(charge_cost)
-					water.use_charge(charge_cost)
+					// water.use_charge(charge_cost) // CITADEL CHANGE - Makes it worse than the normal hypo for no good reason, let's not and say we didn't
 					reagent_volumes[T] = min(reagent_volumes[T] + 1, volume)
 	return 1
 

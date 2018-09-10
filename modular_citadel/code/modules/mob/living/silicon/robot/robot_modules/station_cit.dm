@@ -33,8 +33,8 @@
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
-	water.max_energy = 1000
-	water.energy = 0
+	water.max_energy = 500
+	water.energy = 500
 	R.water_res = water
 	synths += water
 
