@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Config stuff
 #define SUPPLY_DOCKZ 2				//Z-level of the Dock.
 #define SUPPLY_STATIONZ 1			//Z-level of the Station.
@@ -331,3 +332,5 @@ var/list/mechtoys = list(
 			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
 
 	return
+=======
+>>>>>>> 18c33de... Merge pull request #4076 from VOREStation/upstream-merge-5432
