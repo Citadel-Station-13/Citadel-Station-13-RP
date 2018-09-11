@@ -655,6 +655,26 @@
 					message = "<span class='danger'>slaps [T.himself]!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
+//Citadel changes starts here
+		if("aslap", "aslaps")
+			m_type = 1
+			if(!restrained())
+				var/M = null
+				if(param)
+					for(var/mob/A in view(1, null))
+						if(param == A.name)
+							M = A
+							break
+				if(M)
+					message = "<span class='danger'>slaps [M]'s butt.</span>"
+					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					add_attack_logs(src,M,"Buttslap")
+				else
+					message = "<span class='danger'>slaps [T.his] own butt!</span>"
+					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					add_attack_logs(src,src,"Slapped own butt")
+//Citadel changes ends here
+
 		if("scream", "screams")
 			if(miming)
 				message = "acts out a scream!"
