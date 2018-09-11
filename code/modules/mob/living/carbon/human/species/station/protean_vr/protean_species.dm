@@ -21,6 +21,7 @@
 	health_hud_intensity = 2
 	num_alternate_languages = 3
 	species_language = LANGUAGE_SOL_COMMON
+	assisted_langs = list(LANGUAGE_EAL)
 	color_mult = TRUE
 
 	breath_type = null
