@@ -1,5 +1,3 @@
-/*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
-
 /obj/effect/shadekin_ability
 	name = ""
 	desc = ""
@@ -164,4 +162,4 @@
 /obj/effect/shadekin_ability/energy_feast/do_ability()
 	if(!..())
 		return
-*/*/
+*/
