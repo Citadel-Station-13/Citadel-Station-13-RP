@@ -1,5 +1,6 @@
 
 /*
+
 	The initialization of the game happens roughly like this:
 
 	1. All global variables are initialized (including the global_init instance).
