@@ -16,11 +16,6 @@
 	var/mode = 1  // 1 mode - teleport you to turf  0 mode teleport turf to you
 	var/last_fire = 0
 	var/transforming = 0
-	var/cooldown = 20 SECONDS
-	var/wallhack = FALSE
-	var/range = 8
-	var/failchance = 5
-	var/failrange = 24
 
 /obj/item/weapon/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
 	var/current_fire = world.time
@@ -29,10 +24,7 @@
 	if(transforming)
 		to_chat(user,"<span class = 'warning'>You can't fire while \the [src] transforming!</span>")
 		return
-	if(!((wallhack && (get_dist(A, get_turf(user)) <= range)) || (A in view(get_turf(user), range))))
-		to_chat(user, "<span class='warning'>The target is either out of range, or you couldn't see it clearly enough to lock on!</span>")
-		return
-	if((current_fire - last_fire) <= cooldown)
+	if(!(current_fire - last_fire >= 30 SECONDS))
 		to_chat(user,"<span class = 'warning'>\The [src] is recharging...</span>")
 		return
 	if(is_jammed(A) || is_jammed(user))
@@ -43,6 +35,10 @@
 	var/turf/T = get_turf(A)
 	if(!T || T.check_density())
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
+		return
+	var/turf/ownturf = get_turf(src)
+	if(ownturf.z != T.z || get_dist(T,ownturf) > world.view)
+		to_chat(user, "<span class='warning'>The target is out of range!</span>")
 		return
 
 	last_fire = current_fire
@@ -62,14 +58,14 @@
 
 	for(var/obj/O in FromTurf)
 		if(O.anchored) continue
-		if(prob(failchance))
-			O.forceMove(pick(trange(failrange,user)))
+		if(prob(5))
+			O.forceMove(pick(trange(24,user)))
 		else
 			O.forceMove(ToTurf)
 
 	for(var/mob/living/M in FromTurf)
-		if(prob(failchance))
-			M.forceMove(pick(trange(failrange,user)))
+		if(prob(5))
+			M.forceMove(pick(trange(24,user)))
 		else
 			M.forceMove(ToTurf)
 
