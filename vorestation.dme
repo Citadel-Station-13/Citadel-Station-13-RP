@@ -2965,4 +2965,5 @@
 #include "modular_citadel\code\modules\shadekin\~defines.dm"
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_items_vr.dm"
+#include "modular_citadel\maps\tether\tether_defines.dm"
 // END_INCLUDE
