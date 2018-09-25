@@ -5,3 +5,9 @@
 	item_state = "Chayse_blue"
 	rolled_sleeves = 0
 	rolled_down = 0
+
+/obj/item/clothing/under/donator/crystalnole
+	name = "keyhole sweater"
+	desc = "Sweater with a keyhole that's slightly elongated."
+	icon_state = "noodlekeyhole"
+	item_state = "noodlekeyhole"
