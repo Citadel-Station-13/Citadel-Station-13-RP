@@ -208,7 +208,7 @@ var/list/gamemode_cache = list()
 	var/ninjas_allowed = 0
 	var/abandon_allowed = 1
 	var/ooc_allowed = 1
-	var/looc_allowed = 1
+	var/looc_allowed = 0
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
