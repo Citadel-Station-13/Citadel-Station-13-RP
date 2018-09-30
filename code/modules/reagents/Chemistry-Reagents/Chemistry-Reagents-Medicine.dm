@@ -822,11 +822,11 @@
 /datum/reagent/methylphenidate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
-		M << "<span class='warning'>You lose focus...</span>"
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+	if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(volume <= 0.1 && data != -1)
+			data = -1
+			M << "<span class='warning'>You lose focus...</span>"
+		else
 			data = world.time
 			M << "<span class='notice'>Your mind feels focused and undivided.</span>"
 
@@ -844,11 +844,11 @@
 /datum/reagent/citalopram/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
+	if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 	if(volume <= 0.1 && data != -1)
-		data = -1
-		M << "<span class='warning'>Your mind feels a little less stable...</span>"
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+			data = -1
+			M << "<span class='warning'>Your mind feels a little less stable...</span>"
+		else
 			data = world.time
 			M << "<span class='notice'>Your mind feels stable... a little stable.</span>"
 
@@ -866,11 +866,11 @@
 /datum/reagent/paroxetine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
-		M << "<span class='warning'>Your mind feels much less stable...</span>"
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+	if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(volume <= 0.1 && data != -1)
+			data = -1
+			M << "<span class='warning'>Your mind feels much less stable...</span>"
+		else
 			data = world.time
 			if(prob(90))
 				M << "<span class='notice'>Your mind feels much more stable.</span>"
@@ -892,11 +892,11 @@
 /datum/reagent/qerr_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	if(volume <= 0.1 && data != -1)
-		data = -1
-		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+	if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+		if(volume <= 0.1 && data != -1)
+			data = -1
+			to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
+		else
 			data = world.time
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
 
