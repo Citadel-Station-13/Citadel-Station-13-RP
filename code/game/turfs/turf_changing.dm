@@ -26,8 +26,11 @@
 	if (!N)
 		return
 
+<<<<<<< HEAD
 	/* VOREStation Edit Start - Say Nope To This.  Tether's Z info is setup fine, trust it.
 	// This makes sure that turfs are not changed to space when one side is part of a zone
+=======
+>>>>>>> b8f240f... Merge pull request #4282 from VOREStation/sync-09272018
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)
 		if(istype(below) && (air_master.has_valid_zone(below) || air_master.has_valid_zone(src)))
