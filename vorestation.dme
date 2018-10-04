@@ -2948,6 +2948,7 @@
 #include "modular_citadel\code\modules\client\preference_setup\loadout.dm"
 #include "modular_citadel\code\modules\client\preference_setup\loadout_donator.dm"
 #include "modular_citadel\code\modules\client\preference_setup\loadout\loadout_utility.dm"
+#include "modular_citadel\code\modules\clothing\cape.dm"
 #include "modular_citadel\code\modules\clothing\donatorclothing.dm"
 #include "modular_citadel\code\modules\clothing\suits\donatorarmor.dm"
 #include "modular_citadel\code\modules\clothing\suits\donatorlabcoat.dm"
