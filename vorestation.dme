@@ -2947,6 +2947,7 @@
 #include "modular_citadel\code\modules\admin\chat_commands.dm"
 #include "modular_citadel\code\modules\client\preference_setup\loadout.dm"
 #include "modular_citadel\code\modules\client\preference_setup\loadout_donator.dm"
+#include "modular_citadel\code\modules\client\preference_setup\loadout\loadout_suit.dm"
 #include "modular_citadel\code\modules\client\preference_setup\loadout\loadout_utility.dm"
 #include "modular_citadel\code\modules\clothing\cape.dm"
 #include "modular_citadel\code\modules\clothing\donatorclothing.dm"
