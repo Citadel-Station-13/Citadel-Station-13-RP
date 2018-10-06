@@ -2,4 +2,4 @@
 
 /datum/gear/suit/cape
 	display_name = "cape"
-	path = /obj/item/clothing/suit/cape
+	path = /obj/item/clothing/suit/storage/hooded/cape
