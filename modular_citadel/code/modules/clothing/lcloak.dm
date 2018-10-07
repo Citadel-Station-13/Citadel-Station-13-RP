@@ -1,31 +1,36 @@
 // I gave up.
 // Toggle front function is from flannel verbs.
-// Also contains modified hood toggle and hood remove procs for cape.
+// Also contains modified hood toggle and hood remove procs for long cloak.
 
-/obj/item/clothing/head/cape_hood
-	name = "cape hood"
+// Hood for long cloak
+/obj/item/clothing/head/lcloak_hood
+	name = "cloak hood"
 	desc = "It's a hood that covers the head."
-	icon = 'modular_citadel/icons/obj/clothing/cape.dmi'
-	icon_override = 'modular_citadel/icons/mob/cape.dmi'
-	icon_state = "cape_hood"
+	icon = 'modular_citadel/icons/obj/clothing/lcloak.dmi'
+	icon_override = 'modular_citadel/icons/mob/lcloak.dmi'
+	icon_state = "lcloak_hood"
 	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
 	flags_inv = BLOCKHEADHAIR
 	body_parts_covered = HEAD
 
-/obj/item/clothing/suit/storage/hooded/cape
-	name = "cape"
-	desc = "A bland, rough, dark cape."
-	icon = 'modular_citadel/icons/obj/clothing/cape.dmi'
-	icon_override = 'modular_citadel/icons/mob/cape.dmi'
-	icon_state = "cape"
+
+// Long cloak itself
+/obj/item/clothing/suit/storage/hooded/lcloak
+	name = "dark long cloak"
+	desc = "A bland, rough, dark cloak."
+	icon = 'modular_citadel/icons/obj/clothing/lcloak.dmi'
+	icon_override = 'modular_citadel/icons/mob/lcloak.dmi'
+	icon_state = "lcloak"
 	body_parts_covered = 0
 	flags_inv = 0
-	hoodtype = /obj/item/clothing/head/cape_hood
+	hoodtype = /obj/item/clothing/head/lcloak_hood
 	w_class = ITEMSIZE_NORMAL
 	var/frontcover = 0 // Alas, doesn't cover your items in hands and still show backpack straps.
 
-/obj/item/clothing/suit/storage/hooded/cape/verb/adjust_cape()
-	set name = "Adjust Cape"
+
+// Code that makes long cloak special
+/obj/item/clothing/suit/storage/hooded/lcloak/verb/adjust_cloak()
+	set name = "Adjust Cloak"
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)||usr.stat)
@@ -42,13 +47,15 @@
 		usr << "<span class='notice'>You move [src]'s fabric away.</span>"
 	update_icon()
 
-/obj/item/clothing/suit/storage/hooded/cape/update_icon()
+/obj/item/clothing/suit/storage/hooded/lcloak/update_icon()
 	icon_state = initial(icon_state)
 	if(frontcover)
 		icon_state += "_f"
 	update_clothing_icon()
 
-/obj/item/clothing/suit/storage/hooded/cape/RemoveHood()
+
+// Code that modifies hood-related code, so it will not break frontcover sprite
+/obj/item/clothing/suit/storage/hooded/lcloak/RemoveHood()
 	if(!frontcover)
 		icon_state = toggleicon
 	else
@@ -61,7 +68,7 @@
 		H.update_inv_wear_suit()
 	hood.forceMove(src)
 
-/obj/item/clothing/suit/storage/hooded/cape/ToggleHood()
+/obj/item/clothing/suit/storage/hooded/lcloak/ToggleHood()
 	if(!suittoggled)
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = src.loc
