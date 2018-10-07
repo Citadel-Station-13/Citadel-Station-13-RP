@@ -28,3 +28,11 @@
 	containertype = /obj/structure/closet/crate
 	containername = "crusader crate"
 	contraband = 1
+
+/datum/supply_packs/supply/goliath_cloak
+	name = "Goliath cloak crate"
+	contains = list(/obj/item/clothing/suit/storage/hooded/lcloak/goliath = 4)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "goliath cloak crate"
+	contraband = 1

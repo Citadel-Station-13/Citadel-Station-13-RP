@@ -13,7 +13,6 @@
 	flags_inv = BLOCKHEADHAIR
 	body_parts_covered = HEAD
 
-
 // Long cloak itself
 /obj/item/clothing/suit/storage/hooded/lcloak
 	name = "dark long cloak"
@@ -27,6 +26,32 @@
 	w_class = ITEMSIZE_NORMAL
 	var/frontcover = 0 // Alas, doesn't cover your items in hands and still show backpack straps.
 
+// Goliath cloak
+/obj/item/clothing/head/lcloak_hood/goliath
+	name = "goliath cloak hood"
+	icon_state = "golhood"
+	desc = "A protective & concealing hood."
+	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0)
+	flags_inv = BLOCKHEADHAIR|HIDEEARS|HIDEEYES
+
+/obj/item/clothing/suit/storage/hooded/lcloak/goliath
+	name = "goliath cloak"
+	desc = "A staunch, practical cape made out of numerous monster materials, it is coveted amongst exiles & hermits."
+	icon_state = "golclo"
+	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0)
+	hoodtype = /obj/item/clothing/head/lcloak_hood/goliath
+	body_parts_covered = UPPER_TORSO|ARMS
+
+// Same stuff but no armor (AKA Replica).
+/obj/item/clothing/head/lcloak_hood/goliath/fake
+	name = "goliath cloak hood replica"
+	desc = "A concealing hood."
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0)
+
+/obj/item/clothing/suit/storage/hooded/lcloak/goliath/fake
+	name = "goliath cloak replica"
+	desc = "A practical cape made out of numerous plastic materials."
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0)
 
 // Code that makes long cloak special
 /obj/item/clothing/suit/storage/hooded/lcloak/verb/adjust_cloak()
@@ -37,13 +62,13 @@
 		return
 	if(frontcover == 0)
 		frontcover = 1
-		flags_inv = HIDEJUMPSUIT|HIDEGLOVES|HIDETIE|HIDEHOLSTER|HIDESUITSTORAGE|HIDETAIL
+		flags_inv = HIDEGLOVES|HIDETIE|HIDEHOLSTER|HIDESUITSTORAGE|HIDETAIL
 		body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS
 		usr << "<span class='notice'>You adjust [src]'s fabric to front.</span>"
 	else
 		frontcover = 0
 		flags_inv = 0
-		body_parts_covered = 0
+		body_parts_covered = initial(body_parts_covered)
 		usr << "<span class='notice'>You move [src]'s fabric away.</span>"
 	update_icon()
 
