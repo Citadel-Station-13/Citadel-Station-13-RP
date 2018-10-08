@@ -1,5 +1,5 @@
 // Currently adds: long cloak for everyone to use.
 
-/datum/gear/suit/cape
-	display_name = "cloak, dark"
+/datum/gear/suit/lcloak
+	display_name = "cloak"
 	path = /obj/item/clothing/suit/storage/hooded/lcloak
