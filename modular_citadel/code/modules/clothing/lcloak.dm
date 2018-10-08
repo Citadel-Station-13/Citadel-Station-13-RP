@@ -30,7 +30,7 @@
 /obj/item/clothing/head/lcloak_hood/goliath
 	name = "goliath cloak hood"
 	icon_state = "golhood"
-	desc = "A protective & concealing hood."
+	desc = "A protective and concealing hood."
 	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0)
 	flags_inv = BLOCKHEADHAIR|HIDEEARS|HIDEEYES
 
@@ -44,13 +44,13 @@
 
 // Same stuff but no armor (AKA Replica).
 /obj/item/clothing/head/lcloak_hood/goliath/fake
-	name = "goliath cloak hood replica"
+	name = "dark-red cloak hood"
 	desc = "A concealing hood."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0)
 
 /obj/item/clothing/suit/storage/hooded/lcloak/goliath/fake
-	name = "goliath cloak replica"
-	desc = "A practical cape made out of numerous plastic materials."
+	name = "dark-red cloak"
+	desc = "A practical, dark-red cloak."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0)
 
 // Code that makes long cloak special
