@@ -62,7 +62,7 @@
 		return
 	if(frontcover == 0)
 		frontcover = 1
-		flags_inv = HIDEGLOVES|HIDETIE|HIDEHOLSTER|HIDESUITSTORAGE|HIDETAIL
+		flags_inv = HIDEJUMPSUIT|HIDEGLOVES|HIDETIE|HIDEHOLSTER|HIDESUITSTORAGE|HIDETAIL
 		body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS
 		usr << "<span class='notice'>You adjust [src]'s fabric to front.</span>"
 	else
@@ -70,6 +70,20 @@
 		flags_inv = 0
 		body_parts_covered = initial(body_parts_covered)
 		usr << "<span class='notice'>You move [src]'s fabric away.</span>"
+	update_icon()
+
+/obj/item/clothing/suit/storage/hooded/lcloak/goliath/adjust_cloak()
+	..()
+	if(frontcover == 0)
+		frontcover = 1
+		flags_inv = HIDEGLOVES|HIDETIE|HIDEHOLSTER|HIDESUITSTORAGE|HIDETAIL
+		body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|LEGS
+		usr << "<span class='notice'>You adjust [src] to front.</span>"
+	else
+		frontcover = 0
+		flags_inv = 0
+		body_parts_covered = initial(body_parts_covered)
+		usr << "<span class='notice'>You move [src] back in place.</span>"
 	update_icon()
 
 /obj/item/clothing/suit/storage/hooded/lcloak/update_icon()
