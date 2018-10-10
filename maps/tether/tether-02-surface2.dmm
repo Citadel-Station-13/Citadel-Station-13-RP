@@ -10029,8 +10029,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12529,8 +12528,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
@@ -14896,9 +14894,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "CT" = (
@@ -14906,16 +14901,15 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "CU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "CV" = (
@@ -14997,31 +14991,19 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner_techfloor_gray,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "Df" = (
 /obj/machinery/atmospherics/binary/pump,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Dg" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Dh" = (
 /obj/machinery/hologram/holopad,
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Di" = (
@@ -15029,24 +15011,15 @@
 	icon_state = "warningcorner";
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Dj" = (
 /obj/effect/floor_decal/corner_techfloor_grid,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Dk" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Dl" = (
@@ -15055,10 +15028,7 @@
 /area/engineering/atmos)
 "Dm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	icon_state = "map-scrubbers";
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
 "Dn" = (
@@ -15155,8 +15125,7 @@
 /area/engineering/atmos)
 "DB" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
@@ -15563,11 +15532,8 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/door/window/northleft{
 	name = "Atmospherics Hardsuits";
@@ -15584,8 +15550,6 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
 /obj/machinery/door/window/northright{
 	name = "Atmospherics Hardsuits";
 	req_access = list(24)
@@ -15653,8 +15617,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos)
@@ -17660,12 +17623,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"IM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "IT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -17924,13 +17881,6 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Qj" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "Qr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -17969,15 +17919,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_two)
-"QN" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "Rc" = (
 /obj/structure/table/rack/holorack,
 /obj/random/maintenance/clean,
@@ -18004,15 +17945,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"RQ" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/atmos)
 "Sv" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable{
@@ -18086,13 +18018,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Ud" = (
-/obj/effect/floor_decal/techfloor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "Uh" = (
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
@@ -18186,12 +18111,6 @@
 "VR" = (
 /turf/simulated/floor/outdoors/rocks/virgo3b,
 /area/tether/surfacebase/outside/outside2)
-"Wg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "Wr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -18286,13 +18205,6 @@
 /obj/structure/frame/computer,
 /turf/simulated/floor,
 /area/maintenance/lower/bar)
-"Yo" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "Yq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
@@ -18302,8 +18214,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
@@ -18318,8 +18229,7 @@
 /area/tether/surfacebase/public_garden_two)
 "YH" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	health = 1e+006
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18400,16 +18310,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"ZM" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
 "ZO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -28198,7 +28098,7 @@ Ce
 BL
 Bw
 CI
-RQ
+AP
 De
 AB
 AB
@@ -28341,7 +28241,7 @@ Cp
 AC
 AC
 CS
-IM
+AB
 AB
 AB
 Ek
@@ -28482,8 +28382,8 @@ Cg
 Cq
 CA
 CJ
-ZM
-Qj
+zT
+CJ
 CJ
 DL
 El
@@ -28624,8 +28524,8 @@ BQ
 BQ
 CB
 CK
-QN
-IM
+zV
+AB
 AB
 DM
 Em
@@ -28908,7 +28808,7 @@ BQ
 BQ
 BQ
 CM
-Wg
+AB
 Dg
 Du
 Du
@@ -29050,8 +28950,8 @@ BQ
 BQ
 BQ
 CM
-Wg
-Yo
+AB
+BO
 Dv
 Dv
 Dv
@@ -29192,8 +29092,8 @@ BQ
 BQ
 BQ
 CM
-Wg
-Yo
+AB
+BO
 Dw
 Dw
 Dw
@@ -29334,8 +29234,8 @@ BQ
 BQ
 BQ
 CM
-Wg
-Yo
+AB
+BO
 Dx
 Dx
 Ep
@@ -29476,8 +29376,8 @@ BQ
 BQ
 BQ
 CM
-Wg
-Yo
+AB
+BO
 Dy
 Dy
 Dy
@@ -29618,8 +29518,8 @@ BQ
 BQ
 BQ
 CM
-Wg
-Yo
+AB
+BO
 Dz
 Dz
 Dz
@@ -29760,7 +29660,7 @@ Ch
 BR
 BR
 CN
-Wg
+AB
 Dh
 DA
 DA
@@ -29902,7 +29802,7 @@ zV
 AB
 AB
 AB
-Wg
+AB
 Di
 DB
 DB
@@ -30329,7 +30229,7 @@ AB
 AB
 AB
 CV
-Ud
+Dl
 yW
 DN
 sK

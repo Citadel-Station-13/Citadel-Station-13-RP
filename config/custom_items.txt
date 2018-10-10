@@ -61,6 +61,12 @@ item_path: /obj/item/clothing/head/helmet/hos/fluff/lethe
 }
 
 {
+ckey: argobargsoup
+character_name: Lynn Shady
+item_path: /obj/item/device/flashlight/pen/fluff/lynn
+}
+
+{
 ckey: arokha
 character_name: Aronai Kadigan
 item_path: /obj/item/clothing/under/utility/sifguard/medical/command
@@ -327,15 +333,12 @@ item_path: /obj/item/clothing/accessory/badge/holo/detective/ruda
 }
 
 {
-<<<<<<< HEAD
-=======
 ckey: interrolouis
 character_name: Kai Highlands
 item_path: /obj/item/borg/upgrade/modkit/chassis_mod/kai
 }
 
 {
->>>>>>> c60f8ae... Merge pull request #3713 from VOREStation/Cameron653-patch-1
 ckey: ivymoomoo
 character_name: Ivy Baladeva
 item_path: /obj/item/weapon/storage/backpack/messenger/sec/fluff/ivymoomoo
@@ -509,6 +512,12 @@ character_name: Rischi
 item_path: /obj/item/weapon/implanter/reagent_generator/rischi
 }
 
+{
+ckey: knightfall5
+character_name: Ashley Kifer
+item_path: /obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
+}
+
 # ######## L CKEYS
 #{
 #ckey: luminescentring
@@ -531,7 +540,7 @@ item_path: /obj/item/weapon/implanter/reagent_generator/savannah
 {
 ckey: mewchild
 character_name: Phi Vietsi
-item_path: /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
+item_path: /obj/item/weapon/storage/box/fluff/vietsi
 }
 
 {
@@ -605,9 +614,9 @@ item_path: /obj/item/clothing/under/fluff/aluranevines
 }
 
 {
-ckey: natje
-character_name: Pumila
-item_path: /obj/item/weapon/implanter/reagent_generator/pumila_apple
+ckey: nepox
+character_name: Annie Rose
+item_path: /obj/item/clothing/accessory/sweater/fluff/annie
 }
 
 # ######## O CKEYS

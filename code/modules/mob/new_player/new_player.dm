@@ -28,7 +28,7 @@
 /mob/new_player/proc/new_player_panel_proc()
 	var/output = "<div align='center'>"
 	output +="<hr>"
-	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
@@ -358,7 +358,6 @@
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
 	character = job_master.EquipRank(character, rank, 1)					//equips the human
 	UpdateFactionList(character)
-	log_game("JOINED [key_name(character)] as \"[rank]\"")
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
@@ -450,6 +449,13 @@
 
 /mob/new_player/proc/create_character(var/turf/T)
 	if (!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
+	//CITADEL EDITS START HERE - gives a big ol' "lol nope" to skids trying to spawn in as proteans
+	if(client.prefs.species)
+		var/datum/species/diosmio = all_species[client.prefs.species]
+		if(!is_alien_whitelisted(src, diosmio))
+			to_chat(src, "<span class='warning'>You aren't whitelisted for your selected species.</span>")
+			return
+	//END OF CIT CHANGES
 	spawning = 1
 	close_spawn_windows()
 
@@ -483,9 +489,10 @@
 
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
-		if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
-			new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
-			new_character.rename_self("clown")
+		// VOREStation edit to disable the destructive forced renaming for our responsible whitelist clowns.
+		//if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
+		//	new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
+		//	new_character.rename_self("clown")
 		mind.original = new_character
 		// VOREStation
 		mind.loaded_from_ckey = client.ckey

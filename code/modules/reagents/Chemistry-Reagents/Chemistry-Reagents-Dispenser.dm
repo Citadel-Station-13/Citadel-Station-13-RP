@@ -65,7 +65,7 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	ingest_met = REM
+	ingest_met = REM * 2
 
 	var/nutriment_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
@@ -94,7 +94,9 @@
 		strength_mod *= 0.75
 	if(alien == IS_DIONA)
 		strength_mod = 0
-
+	if(alien == IS_SLIME)
+		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
+	
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
 	if(dose * strength_mod >= strength) // Early warning
@@ -136,6 +138,8 @@
 		strength_mod *= 0.75
 	if(alien == IS_DIONA)
 		strength_mod = 0
+	if(alien == IS_SLIME)
+		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed * 2)
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 

@@ -26,16 +26,15 @@
 /proc/send2mainirc(var/msg)
 	if(config.main_irc)
 		send2irc(config.main_irc, msg)
-	world.TgsTargetedChatBroadcast(msg, FALSE)	//CIT CHANGE - makes TGS3 relay messages to connected channels
 	return
 
 /proc/send2adminirc(var/msg)
 	if(config.admin_irc)
 		send2irc(config.admin_irc, msg)
-	world.TgsTargetedChatBroadcast(msg, TRUE)	//CIT CHANGE - makes TGS3 relay messages to connected channels
 	return
 
 
 /hook/startup/proc/ircNotify()
 	send2mainirc("Server starting up on byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")
 	return 1
+
