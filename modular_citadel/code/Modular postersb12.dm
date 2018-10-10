@@ -1,4 +1,4 @@
-/*// baystation12 posters
+// baystation12 posters
 /datum/poster/bay_1
 	icon_state="bsposter1"
 	name = "Unlucky Space Explorer"
@@ -288,4 +288,3 @@
 	icon_state="bsposter58"
 	name = "space carp information poster"
 	desc = "This poster showcases an old spacer saying on the dangers of migrant space carp."
-*/
