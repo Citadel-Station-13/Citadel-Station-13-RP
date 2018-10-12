@@ -8450,13 +8450,11 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor,
-/area/security/security_processing)
-"oh" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "sec_processing"
+	},
 /turf/simulated/floor,
 /area/security/security_processing)
 "oi" = (
@@ -34968,7 +34966,7 @@ cS
 jk
 jk
 jk
-oh
+qQ
 oE
 po
 pO
@@ -35110,7 +35108,7 @@ cT
 jy
 jk
 jk
-oh
+qQ
 oF
 pp
 pP
@@ -35253,9 +35251,9 @@ mH
 lD
 lD
 of
-oh
-oh
-oh
+qQ
+qQ
+qQ
 qk
 qQ
 qQ
