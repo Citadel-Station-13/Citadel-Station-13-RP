@@ -1802,9 +1802,15 @@
 /area/tether/surfacebase/mining_main/storage)
 "adU" = (
 /obj/structure/table/rack,
+<<<<<<< HEAD
 /obj/item/weapon/pickaxe/hammer,
 /obj/item/weapon/wrench,
 /obj/item/weapon/crowbar,
+=======
+/obj/item/weapon/pickaxe,
+/obj/item/weapon/tool/wrench,
+/obj/item/weapon/tool/crowbar,
+>>>>>>> 1faaecb... Merge pull request #4346 from VOREStation/upstream-merge-5632
 /obj/item/weapon/shovel,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
