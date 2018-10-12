@@ -427,7 +427,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	if(reason && usr)
 		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
 		for(var/client/C in clients)
-			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!"
+			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!</span>"
 
 	processScheduler.stop()
 	Master.Shutdown()	//run SS shutdowns
