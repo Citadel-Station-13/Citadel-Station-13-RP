@@ -20,6 +20,7 @@
 #include "code\hub.dm"
 #include "code\names.dm"
 #include "code\stylesheet.dm"
+#include "code\TGS_DMAPI.dm"
 #include "code\world.dm"
 #include "code\___DMAPI\tgs.config.dm"
 #include "code\___DMAPI\tgs.dm"
