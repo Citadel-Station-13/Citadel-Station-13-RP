@@ -13,7 +13,7 @@
 			"bullet" = 20,
 			"laser" = 20,
 			"energy" = 50,
-			"bomb" = 15,
+			"bomb" = 10,
 			"bio" = 100,
 			"rad" = 100)
 
