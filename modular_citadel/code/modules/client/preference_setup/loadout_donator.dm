@@ -68,5 +68,5 @@
 /datum/gear/donator/beesuit
 	display_name = "Bee Suit"
 	slot = slot_head
-	path /obj/item/clothing/suit/storage/hooded/donator/bee_costume
+	path = /obj/item/clothing/suit/storage/hooded/donator/bee_costume
 	ckeywhitelist = list("beeskee")
