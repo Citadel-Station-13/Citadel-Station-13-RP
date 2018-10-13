@@ -5,7 +5,7 @@
 /datum/supply_pack/sci
 	group = "Science"
 
-/datum/supply_packs/sci/virus
+/datum/supply_pack/sci/virus
 	name = "Virus sample crate"
 	contains = list(/obj/item/weapon/virusdish/random = 4)
 	cost = 25
