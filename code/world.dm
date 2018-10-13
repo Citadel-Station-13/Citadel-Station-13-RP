@@ -36,6 +36,8 @@ var/global/datum/global_init/init = new ()
 	view = "15x15"
 	cache_lifespan = 7
 
+
+
 #define RECOMMENDED_VERSION 501
 /world/New()
 	world.log << "Map Loading Complete"
@@ -62,6 +64,8 @@ var/global/datum/global_init/init = new ()
 	// TODO - Figure out what this is. Can you assign to world.log?
 	// if(config && config.log_runtime)
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
+
+	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	callHook("startup")
 	//Emergency Fix
@@ -172,7 +176,10 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			s["players"] = players.len
 			s["playerlist"] = list2params(players)
-			s["admins"] = admins.len
+			var/list/adm = get_admin_counts()
+			var/list/presentmins = adm["present"]
+			var/list/afkmins = adm["afk"]
+			s["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 			s["adminlist"] = list2params(admins)
 		else
 			var/n = 0
@@ -529,13 +536,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"https://citadel-station.net/home/\">" //Change this to wherever you want the hub to link to. CITADEL CHANGE - makes hub entry link to website
+	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
 	s += "<br><small><i>Citadel's VOREStation-based server. Normie compatibility not guaranteed.</i></small><br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
 
+	s += ")"
 
 	var/list/features = list()
 
