@@ -2957,6 +2957,7 @@
 #include "modular_citadel\code\modules\clothing\under\accessories\holster.dm"
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station_cit.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
+#include "modular_citadel\code\modules\mob\living\simple_animal\animals\snake_cit.dm"
 #include "modular_citadel\code\modules\shadekin\_defines.dm"
 #include "modular_citadel\code\modules\shadekin\ability_objects.dm"
 #include "modular_citadel\code\modules\shadekin\ability_procs.dm"
