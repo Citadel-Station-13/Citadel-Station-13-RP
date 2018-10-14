@@ -2,5 +2,5 @@
 // Basically renames snack box into proper one.
 
 /obj/item/weapon/storage/box/snakesnackbox
-	name = "box of Snake Snack"
+	name = "box of Snake Snak"
 	..()
