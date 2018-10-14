@@ -1,7 +1,7 @@
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'modular_citadel/icons/obj/closet.dmi' // CITADEL EDIT - Icon Overhaul
 	icon_state = "closed"
 	density = 1
 	w_class = ITEMSIZE_HUGE

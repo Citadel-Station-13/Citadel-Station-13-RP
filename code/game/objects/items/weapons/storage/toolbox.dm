@@ -1,7 +1,7 @@
 /obj/item/weapon/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'modular_citadel/icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "red"
 	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
 	flags = CONDUCT
@@ -94,6 +94,7 @@
 /obj/item/weapon/storage/toolbox/lunchbox
 	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
 	name = "rainbow lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_rainbow"
 	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
@@ -122,6 +123,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/heart
 	name = "heart lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_lovelyhearts"
 	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
 	desc = "A little lunchbox. This one has cute little hearts on it!"
@@ -131,6 +133,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/cat
 	name = "cat lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_sciencecatshow"
 	item_state_slots = list(slot_r_hand_str = "toolbox_green", slot_l_hand_str = "toolbox_green")
 	desc = "A little lunchbox. This one has a cute little science cat from a popular show on it!"
@@ -140,6 +143,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/nt
 	name = "NanoTrasen brand lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_nanotrasen"
 	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
 	desc = "A little lunchbox. This one is branded with the NanoTrasen logo!"
@@ -149,6 +153,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/mars
 	name = "\improper Mojave university lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_marsuniversity"
 	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
 	desc = "A little lunchbox. This one is branded with the Mojave university logo!"
@@ -158,6 +163,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/cti
 	name = "\improper CTI lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_cti"
 	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
 	desc = "A little lunchbox. This one is branded with the CTI logo!"
@@ -167,6 +173,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/nymph
 	name = "\improper Diona nymph lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_dionanymph"
 	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
 	desc = "A little lunchbox. This one is an adorable Diona nymph on the side!"
@@ -176,6 +183,7 @@
 
 /obj/item/weapon/storage/toolbox/lunchbox/syndicate
 	name = "black and red lunchbox"
+	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lunchbox_syndie"
 	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
 	desc = "A little lunchbox. This one is a sleek black and red, made of a durable steel!"

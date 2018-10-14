@@ -1,7 +1,7 @@
 /obj/structure/undies_wardrobe
 	name = "underwear wardrobe"
 	desc = "Holds item of clothing you shouldn't be showing off in the hallways."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'modular_citadel/icons/obj/closet.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "cabinet_closed"
 	density = 1
 
