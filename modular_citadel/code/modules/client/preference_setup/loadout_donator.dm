@@ -17,6 +17,12 @@
 	path = /obj/item/clothing/under/gladiator
 	ckeywhitelist = list("aroche")
 
+/datum/gear/donator/keyholesweater
+	display_name = "Keyhole Sweater"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/under/donator/crystalnole
+	ckeywhitelist = list("crystal9156")
+
 /datum/gear/donator/chayse
 	display_name = "NTSC Naval Uniform"
 	slot = slot_w_uniform
@@ -58,3 +64,9 @@
 	slot = slot_head
 	path = /obj/item/clothing/accessory/collar/donator/crown
 	ckeywhitelist = list("grayrachnid")
+	
+/datum/gear/donator/beesuit
+	display_name = "Bee Suit"
+	slot = slot_head
+	path = /obj/item/clothing/suit/storage/hooded/donator/bee_costume
+	ckeywhitelist = list("beeskee")

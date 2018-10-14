@@ -1,6 +1,14 @@
-/*
+/*TODO:
 
-//mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
+	Get shadekins OFF the simple mobs and into something more stable like the human species template.
+
+	Make some adjustments for better RP and Combat authenticity.
+
+	Pray every night that Verysoft doesn't get mad for messing with the shadekins to the degree we might be doing.
+
+*/
+
+/mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
 	desc = "Some sort of fluffer. Big ears, long tail."
 	icon = 'icons/mob/vore_shadekin.dmi'
@@ -37,7 +45,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-	maxbodytemp = 900
+	maxbodytemp = 600 //Used to be 900, reduced to 600 for purposes of making them a bit more vulnerable. - Nylon
 
 	speak_chance = 2
 	speak = list("Marrr.", "Marrr?", "Marrr!")
@@ -163,7 +171,7 @@
 	// TODO - Customizable per mob
 	B.emote_lists[DM_HOLD] = list(
 		"The walls gently squeeze against you. The wet sounds of shifting flesh against your form fill the air.",
-		"The hot, humid air rushes around you for a moment as the creature urps. The walls clench in around you for a moment, before relaxing again.",
+		"The hot, humid air rushes around you for a moment as the creature urps. The walls clench in around you for a moment, before relaxxing again.",
 		"Your body is soaked in the fluids that cling to the churning walls. They squeeze across your form gently, conforming to your shape.",
 		"You can feel the world around you shift and sway as the creature moves! The flesh is stretchy, doughy. You can sink into it a little ways before it bounces back, curling you into a small shape."
 		)
@@ -202,7 +210,7 @@
 	. = ..()
 	if(ability_flags & AB_PHASE_SHIFTED)
 		density = FALSE
-
+	
 	//Convert spare nutrition into energy at a certain ratio
 	if(. && nutrition > initial(nutrition) && energy < 100)
 		nutrition = max(0, nutrition-5)
@@ -210,7 +218,7 @@
 
 /mob/living/simple_animal/shadekin/update_icon()
 	. = ..()
-
+	
 	cut_overlay(tailimage)
 
 	tailimage.icon_state = icon_state
@@ -268,20 +276,21 @@
 	if(ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0
 	else
-		//Heal (very) slowly in good darkness
+		//Heal (very) slowly in good darkness -- Adjusted for better Gameplay. save an extra few decades just to head a bit per tick. - Nylon
 		if(darkness >= 0.75)
-			adjustFireLoss(-0.05)
-			adjustBruteLoss(-0.05)
-			adjustToxLoss(-0.05)
+			adjustFireLoss(-0.9)
+			adjustBruteLoss(-0.8)
+			adjustToxLoss(-1.4)
 
 		switch(eye_state)
 			//Blue has constant, steady (slow) regen and ignores darkness.
 			if(BLUE_EYES)
 				dark_gains = 0.5
 			//Red has extremely tiny energy buildup in dark, none in light, and hunts for energy.
-			if(RED_EYES)
-				if(darkness >= 0.75)
-					dark_gains = 0.25
+			if(RED_EYES) //Kinda hoping my math isn't wrong - Nylon
+				dark_gains = round((darkness - 0.75) * 1.5, 0.1)
+				//if(darkness >= 0.75)
+					//dark_gains = 0.25
 			//Purple eyes have moderate gains in darkness and loss in light.
 			if(PURPLE_EYES)
 				dark_gains = round((darkness - 0.5) * 2, 0.1)
@@ -294,12 +303,12 @@
 				dark_gains += round((darkness - 0.5), 0.1)
 			//More able to get energy out of the dark, worse attack gains tho
 			if(ORANGE_EYES)
-				if(darkness >= 0.65)
-					dark_gains = 0.30
+				if(darkness >= 0.65) //Some adjustments - Nylon
+					dark_gains = 0.60
 
 	energy = max(0,min(initial(energy),energy + dark_gains))
 
-	if(energy_adminbuse)
+	if(energy_adminbuse) //You Mega gay for using this - Nylon
 		energy = 100
 
 	//Update turf darkness hud
@@ -331,6 +340,7 @@
 				energyhud.icon_state = "energy4"
 
 //Friendly ones wander towards people, maybe shy-ly if they are set to shy
+//This will be removed later when shadekins get ported over to a human species template but we'll keep this code just in case for reference. - Nylon
 /mob/living/simple_animal/shadekin/handle_wander_movement()
 	if(isturf(src.loc) && !resting && !buckled && canmove)
 		lifes_since_move++
@@ -394,19 +404,19 @@
 		var/mob/living/L = A
 		if(L.stat != DEAD)
 			var/gains = 0
-			switch(eye_state)
+			switch(eye_state) //Some adjustments, Originals will be commented - Nylon
 				if(RED_EYES)
-					gains = 8
+					gains = 9 //8
 				if(BLUE_EYES)
-					gains = 1
+					gains = 1 //Blue eyes are meant to be limp wristed sluts :>
 				if(PURPLE_EYES)
-					gains = 4
+					gains = 5 //4
 				if(YELLOW_EYES)
-					gains = 3
+					gains = 4 //4
 				if(GREEN_EYES)
-					gains = 1
+					gains = 2 //1
 				if(ORANGE_EYES)
-					gains = 5
+					gains = 6 //5
 
 			energy += gains
 
@@ -445,4 +455,4 @@
 	exclaim_verb = "mars"
 	key = "m"
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND*/
+	flags = RESTRICTED | HIVEMIND
