@@ -127,7 +127,7 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	TGS_TOPIC
+	//TGS_TOPIC
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if (T == "ping")
@@ -424,10 +424,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
 	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
-	if(reason && usr)
+	if(reason && usr)//CITADEL CHANGE - Logs reboots done by debug functions
 		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
 		for(var/client/C in clients)
-			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!")
+			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!</span>"
 
 	processScheduler.stop()
 	Master.Shutdown()	//run SS shutdowns
