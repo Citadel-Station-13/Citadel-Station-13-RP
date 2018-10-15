@@ -22,7 +22,6 @@
 /obj/item/weapon/storage/box
 	name = "box"
 	desc = "It's just an ordinary box."
-	icon = 'icons/obj/storage.dmi'
 	icon_state = "box"
 	item_state = "syringe_kit"
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
