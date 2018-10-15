@@ -1,6 +1,6 @@
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
-	icon = 'modular_citadel/icons/obj/chemical.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/chemical.dmi'
 	icon_state = "dispenser"
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()

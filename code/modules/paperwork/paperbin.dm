@@ -1,6 +1,6 @@
 /obj/item/weapon/paper_bin
 	name = "paper bin"
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',

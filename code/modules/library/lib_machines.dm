@@ -401,7 +401,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
  */
 /obj/machinery/libraryscanner
 	name = "scanner"
-	icon = 'modular_citadel/icons/obj/library.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
 	anchored = 1
 	density = 1
@@ -452,7 +452,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
  */
 /obj/machinery/bookbinder
 	name = "Book Binder"
-	icon = 'modular_citadel/icons/obj/library.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/library.dmi'
 	icon_state = "binder"
 	anchored = 1
 	density = 1

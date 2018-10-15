@@ -12,7 +12,7 @@
 /obj/structure/filingcabinet
 	name = "filing cabinet"
 	desc = "A large cabinet with drawers."
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "filingcabinet"
 	density = 1
 	anchored = 1

@@ -1,6 +1,6 @@
 /obj/machinery/photocopier
 	name = "photocopier"
-	icon = 'modular_citadel/icons/obj/library.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
 	var/insert_anim = "bigscanner1"
 	anchored = 1

@@ -117,7 +117,7 @@
 /obj/item/weapon/storage/firstaid/surgery
 	name = "surgery kit"
 	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
-	icon = 'modular_citadel/icons/obj/storage.dmi' // CITADEL EDIT - Nice double edit time
+	icon = 'icons/obj/storage.dmi' // VOREStation edit
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
 	max_w_class = ITEMSIZE_NORMAL

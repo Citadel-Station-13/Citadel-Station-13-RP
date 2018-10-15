@@ -22,7 +22,7 @@
 /obj/item/weapon/storage/box
 	name = "box"
 	desc = "It's just an ordinary box."
-	icon = 'modular_citadel/icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "box"
 	item_state = "syringe_kit"
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
@@ -122,7 +122,6 @@
 /obj/item/weapon/storage/box/blanks
 	name = "box of blank shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "blankshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/blank = 8)
@@ -133,7 +132,6 @@
 /obj/item/weapon/storage/box/beanbags
 	name = "box of beanbag shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "beanshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/beanbag = 8)
@@ -144,7 +142,6 @@
 /obj/item/weapon/storage/box/shotgunammo
 	name = "box of shotgun slugs"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lethalshellshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g = 8)
@@ -155,7 +152,6 @@
 /obj/item/weapon/storage/box/shotgunshells
 	name = "box of shotgun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "lethalslug_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/pellet = 8)
@@ -166,7 +162,6 @@
 /obj/item/weapon/storage/box/flashshells
 	name = "box of illumination shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "illumshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/flash = 8)
@@ -177,7 +172,6 @@
 /obj/item/weapon/storage/box/stunshells
 	name = "box of stun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "stunshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/stunshell = 8)
@@ -188,7 +182,6 @@
 /obj/item/weapon/storage/box/practiceshells
 	name = "box of practice shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "blankshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/practice = 8)
@@ -199,7 +192,6 @@
 /obj/item/weapon/storage/box/empshells
 	name = "box of emp shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
-	icon = 'icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "empshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/emp = 8)
@@ -389,7 +381,6 @@
 /obj/item/weapon/storage/box/pillbottles
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
-	icon_state = "pillbox" // CITADEL EDIT - Icon overhaul
 	starts_with = list(/obj/item/weapon/storage/pill_bottle = 7)
 
 /obj/item/weapon/storage/box/snappops
@@ -427,7 +418,7 @@
 
 /obj/item/weapon/storage/box/lights
 	name = "box of replacement bulbs"
-	icon = 'modular_citadel/icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")

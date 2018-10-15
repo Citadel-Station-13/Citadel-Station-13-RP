@@ -60,7 +60,6 @@
 /obj/machinery/chemical_dispenser/bar_soft
 	name = "soft drink dispenser"
 	desc = "A soda machine."
-	icon = 'modular_citadel/icons/obj/chemical.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "soda_dispenser"
 	ui_title = "Soda Dispenser"
 	accept_drinking = 1
@@ -90,7 +89,6 @@
 /obj/machinery/chemical_dispenser/bar_alc
 	name = "booze dispenser"
 	desc = "A beer machine. Like a soda machine, but more fun!"
-	icon = 'modular_citadel/icons/obj/chemical.dmi' // CITADEL EDIT - Icon overhaul
 	icon_state = "booze_dispenser"
 	ui_title = "Booze Dispenser"
 	accept_drinking = 1

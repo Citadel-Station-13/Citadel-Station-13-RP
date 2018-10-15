@@ -1,6 +1,6 @@
 /obj/machinery/microwave
 	name = "microwave"
-	icon = 'modular_citadel/icons/obj/kitchen.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	density = 1
 	anchored = 1

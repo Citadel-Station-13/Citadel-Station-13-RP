@@ -3,7 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
-	icon = 'modular_citadel/icons/obj/storage.dmi' // CITADEL EDIT - Icon overhaul
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
