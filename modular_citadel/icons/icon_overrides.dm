@@ -124,3 +124,7 @@
 
 /obj/item/smallDelivery
 	icon = 'modular_citadel/icons/obj/storage.dmi'
+
+//code/modules/paperwork/faxmachine.dm
+/obj/machinery/photocopier/faxmachine
+	icon = 'modular_citadel/icons/obj/library.dmi'
