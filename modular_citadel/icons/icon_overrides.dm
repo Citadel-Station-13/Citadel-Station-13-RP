@@ -118,6 +118,10 @@
 /obj/structure/reagent_dispensers/fueltank
 	icon = 'modular_citadel/icons/obj/objects.dmi'
 
+/obj/structure/reagent_dispensers/water_cooler
+	icon = 'modular_citadel/icons/obj/vending.dmi'
+
+
 //code/modules/recycling/sortingmachinery.dm
 /obj/structure/bigDelivery
 	icon = 'modular_citadel/icons/obj/storage.dmi'
@@ -128,3 +132,58 @@
 //code/modules/paperwork/faxmachine.dm
 /obj/machinery/photocopier/faxmachine
 	icon = 'modular_citadel/icons/obj/library.dmi'
+
+//code/game/machinery/vending.dm
+/obj/machinery/vending
+	icon = 'modular_citadel/icons/obj/vending.dmi'
+
+/* This section lists all the vending machines that will inherit from the above without specific overrides
+/obj/machinery/vending/coffee
+/obj/machinery/vending/snack
+/obj/machinery/vending/cigarette
+/obj/machinery/vending/cola
+/obj/machinery/vending/dinnerware
+/obj/machinery/vending/tool
+/obj/machinery/vending/engivend
+/obj/machinery/vending/security
+*/
+
+// We need to do this because the vendomat is the template vending machine but IS used and spawned
+/obj/machinery/vending/boozeomat
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/fitness
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/cart
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/medical
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/phoronresearch
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/wallmed1
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/wallmed2
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/hydronutrients
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/hydroseeds
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/magivend
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/sovietsoda
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/robotics
+	icon = 'icons/obj/vending_vr.dmi'
+
+/obj/machinery/vending/giftvendor
+	icon = 'icons/obj/vending_vr.dmi'
