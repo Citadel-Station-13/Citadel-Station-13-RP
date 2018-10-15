@@ -146,13 +146,11 @@
 /obj/machinery/vending/tool
 /obj/machinery/vending/engivend
 /obj/machinery/vending/security
+/obj/machinery/vending/fitness
 */
 
 // We need to do this because the vendomat is the template vending machine but IS used and spawned
 /obj/machinery/vending/boozeomat
-	icon = 'icons/obj/vending_vr.dmi'
-
-/obj/machinery/vending/fitness
 	icon = 'icons/obj/vending_vr.dmi'
 
 /obj/machinery/vending/cart
