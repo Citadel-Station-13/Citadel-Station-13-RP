@@ -185,3 +185,7 @@
 
 /obj/machinery/vending/giftvendor
 	icon = 'icons/obj/vending_vr.dmi'
+
+//code/game/objects/items/devices/PDA/PDA.dm
+/obj/item/weapon/storage/box/PDAs
+	icon = 'modular_citadel/icons/obj/storage.dmi'
