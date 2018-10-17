@@ -86,6 +86,7 @@
 #include "code\_global_vars\sensitive.dm"
 #include "code\_global_vars\lists\mapping.dm"
 #include "code\_helpers\_global_objects.dm"
+#include "code\_helpers\_logging.dm"
 #include "code\_helpers\atmospherics.dm"
 #include "code\_helpers\events.dm"
 #include "code\_helpers\files.dm"
