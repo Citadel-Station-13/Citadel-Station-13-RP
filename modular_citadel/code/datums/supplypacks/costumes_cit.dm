@@ -27,3 +27,10 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "crusader cosplay crate"
+
+/datum/supply_packs/costumes/goliath_cloak
+	name = "Red cloak crate"
+	contains = list(/obj/item/clothing/suit/storage/hooded/lcloak/goliath/fake = 4)
+	cost = 20
+	containertype = /obj/structure/closet/crate
+	containername = "red cloak crate"
