@@ -91,6 +91,6 @@
 	supervisors = "nobody! Enjoy your time off"
 	selection_color = "#2F2F7F"
 	access = list(access_maint_tunnels, access_heads) // Off-duty COs get access to the bridge mostly for the lounge.
-	minimal_access = list(access_maint_tunnels, access_heads)
+	minimal_access = list(access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 //////////// END ADDITION
