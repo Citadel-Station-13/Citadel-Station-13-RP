@@ -17,6 +17,7 @@
 		else
 			set_on(FALSE, FALSE)
 		lastcheck = world.time
+
 /obj/machinery/light_switch/attack_hand(mob/user)
 	forceful_toggle = TRUE
 	set_on(!on)
