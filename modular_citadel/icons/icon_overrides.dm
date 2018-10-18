@@ -111,6 +111,9 @@
 /obj/machinery/chemical_dispenser/bar_alc
 	icon = 'modular_citadel/icons/obj/chemical.dmi'
 
+/obj/machinery/chemical_dispenser/bar_coffee
+	icon = 'icons/obj/chemical.dmi'
+
 //code/modules/reagents/reagent_dispenser.dm
 /obj/structure/reagent_dispensers/watertank
 	icon = 'modular_citadel/icons/obj/objects.dmi'
@@ -184,6 +187,10 @@
 	icon = 'icons/obj/vending_vr.dmi'
 
 /obj/machinery/vending/giftvendor
+	icon = 'icons/obj/vending_vr.dmi'
+
+//maps/tether/tether_things.dm
+/obj/machinery/vending/wallmed_airlock
 	icon = 'icons/obj/vending_vr.dmi'
 
 //code/game/objects/items/devices/PDA/PDA.dm
