@@ -92,3 +92,7 @@
 
 /area/submap/deadspy
 	name = "Dead Spy"
+
+/area/submap/cave/cultmine
+	name = "Cult Mine"
+	requires_power = FALSE
