@@ -209,7 +209,7 @@
 	desc = "The remains of an explorer who rotted away ages ago, and their equipment. Again."
 	mappath = 'maps/submaps/surface_submaps/mountains/lost_explorer.dmm'
 	cost = 5
-	allow_duplicates = FALSE //A million of these spawning instead of interesting stuff in the deep part sucks.
+	allow_duplicates = FALSE //Citadel change; A million of these spawning instead of interesting stuff in the deep part sucks.
 
 /datum/map_template/surface/mountains/deep/crashed_ufo
 	name = "Crashed UFO"
@@ -236,6 +236,7 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/Cavelake.dmm'
 	cost = 20
 
+//Citadel change
 //Vaults 1-3 kept in the normal area, since they're basically just a box and two xenos.
 //datum/map_template/surface/mountains/deep/vault1
 	//name = "Mine Vault 1"

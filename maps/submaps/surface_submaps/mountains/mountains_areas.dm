@@ -93,6 +93,7 @@
 /area/submap/deadspy
 	name = "Dead Spy"
 
+//Citadel change
 /area/submap/cave/cultmine
 	name = "Cult Mine"
 	requires_power = FALSE
