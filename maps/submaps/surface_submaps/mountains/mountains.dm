@@ -32,6 +32,7 @@
 #include "BlastMine1.dmm"
 #include "crashedcontainmentshuttle.dmm"
 #include "deadspy.dmm"
+#include "cultmine.dmm"
 #endif
 
 // The 'mountains' is the mining z-level, and has a lot of caves.
@@ -208,7 +209,7 @@
 	desc = "The remains of an explorer who rotted away ages ago, and their equipment. Again."
 	mappath = 'maps/submaps/surface_submaps/mountains/lost_explorer.dmm'
 	cost = 5
-	allow_duplicates = TRUE
+	allow_duplicates = FALSE //A million of these spawning instead of interesting stuff in the deep part sucks.
 
 /datum/map_template/surface/mountains/deep/crashed_ufo
 	name = "Crashed UFO"
@@ -235,25 +236,26 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/Cavelake.dmm'
 	cost = 20
 
-/datum/map_template/surface/mountains/deep/vault1
-	name = "Mine Vault 1"
-	desc = "A small vault with potential loot."
-	mappath = 'maps/submaps/surface_submaps/mountains/vault1.dmm'
-	cost = 5
-	allow_duplicates = TRUE
+//Vaults 1-3 kept in the normal area, since they're basically just a box and two xenos.
+//datum/map_template/surface/mountains/deep/vault1
+	//name = "Mine Vault 1"
+	//desc = "A small vault with potential loot."
+	//mappath = 'maps/submaps/surface_submaps/mountains/vault1.dmm'
+	//cost = 5
+	//allow_duplicates = TRUE
 
-/datum/map_template/surface/mountains/deep/vault2
-	name = "Mine Vault 2"
-	desc = "A small vault with potential loot."
-	mappath = 'maps/submaps/surface_submaps/mountains/vault2.dmm'
-	cost = 5
-	allow_duplicates = TRUE
+//datum/map_template/surface/mountains/deep/vault2
+	//name = "Mine Vault 2"
+	//desc = "A small vault with potential loot."
+	//mappath = 'maps/submaps/surface_submaps/mountains/vault2.dmm'
+	//cost = 5
+	//low_duplicates = TRUE
 
-/datum/map_template/surface/mountains/deep/vault3
-	name = "Mine Vault 3"
-	desc = "A small vault with potential loot. Also a horrible suprise."
-	mappath = 'maps/submaps/surface_submaps/mountains/vault3.dmm'
-	cost = 15
+//datum/map_template/surface/mountains/deep/vault3
+	//name = "Mine Vault 3"
+	//desc = "A small vault with potential loot. Also a horrible suprise."
+	//mappath = 'maps/submaps/surface_submaps/mountains/vault3.dmm'
+	//cost = 15
 
 /datum/map_template/surface/mountains/deep/vault4
 	name = "Mine Vault 4"
@@ -272,3 +274,9 @@
 	desc = "An abandoned blast mining site, seems that local wildlife has moved in."
 	mappath = 'maps/submaps/surface_submaps/mountains/BlastMine1.dmm'
 	cost = 20
+
+/datum/map_template/surface/mountains/deep/cultmine
+	name = "Cult Mine"
+	desc = "A mining operation that found more than it bargained for."
+	mappath = 'maps/submaps/surface_submaps/mountains/cultmine.dmm'
+	cost = 30
