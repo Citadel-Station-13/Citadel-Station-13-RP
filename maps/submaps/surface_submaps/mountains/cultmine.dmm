@@ -9,9 +9,9 @@
 "ai" = (/turf/simulated/floor/tiled/steel_dirty,/area/submap/cave/cultmine)
 "aj" = (/obj/structure/filingcabinet/medical,/turf/simulated/floor/tiled/steel_dirty,/area/submap/cave/cultmine)
 "ak" = (/obj/effect/decal/cleanable/liquid_fuel,/obj/structure/closet/toolcloset,/turf/simulated/floor/tiled/steel_grid,/area/submap/cave/cultmine)
-"al" = (/obj/structure/fans/tiny,/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/generic,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
+"al" = (/obj/structure/fans/tiny,/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/generic,/obj/random/projectile,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "am" = (/obj/structure/fans/tiny,/obj/machinery/light/small{dir = 1},/obj/item/clothing/glasses/meson,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/steel_grid,/area/submap/cave/cultmine)
-"an" = (/obj/structure/door_assembly/door_assembly_highsecurity,/obj/effect/decal/cleanable/blood/oil,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
+"an" = (/obj/structure/door_assembly/door_assembly_highsecurity{anchored = 1},/obj/effect/decal/cleanable/blood/oil,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "ao" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "ap" = (/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "aq" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/cobweb,/obj/effect/mine/training,/turf/simulated/floor/plating,/area/submap/cave/cultmine)
@@ -31,7 +31,7 @@
 "aE" = (/obj/structure/sign/ironhammer,/turf/simulated/wall/r_wall,/area/submap/cave/cultmine)
 "aF" = (/obj/machinery/light/small{dir = 1},/turf/simulated/floor/tiled/white,/area/submap/cave/cultmine)
 "aG" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/lino,/area/submap/cave/cultmine)
-"aH" = (/obj/machinery/deployable/barrier,/turf/simulated/floor/lino,/area/submap/cave/cultmine)
+"aH" = (/obj/machinery/deployable/barrier{anchored = 1},/obj/structure/fans/tiny,/turf/simulated/floor/lino,/area/submap/cave/cultmine)
 "aI" = (/turf/simulated/wall,/area/submap/cave/cultmine)
 "aJ" = (/obj/structure/fans/tiny,/turf/simulated/floor/tiled/freezer,/area/submap/cave/cultmine)
 "aK" = (/obj/structure/mirror,/turf/unsimulated/wall,/area/submap/cave/cultmine)
@@ -41,7 +41,7 @@
 "aO" = (/obj/structure/table/steel,/obj/item/weapon/reagent_containers/food/snacks/beans{pixel_x = 2; pixel_y = 7},/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "aP" = (/obj/structure/girder,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "aQ" = (/obj/structure/door_assembly/door_assembly_hatch,/obj/effect/decal/cleanable/blood/oil,/turf/simulated/floor/plating,/area/submap/cave/cultmine)
-"aR" = (/obj/structure/door_assembly/door_assembly_highsecurity,/obj/structure/boulder,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
+"aR" = (/obj/structure/door_assembly/door_assembly_highsecurity{anchored = 1},/obj/structure/boulder,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "aS" = (/obj/effect/decal/mecha_wreckage/ripley/deathripley,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "aT" = (/obj/structure/grille/broken,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "aU" = (/obj/machinery/door/airlock/multi_tile/metal,/turf/simulated/floor/tiled/steel_dirty,/area/submap/cave/cultmine)
@@ -119,12 +119,12 @@
 "co" = (/obj/structure/grille/broken,/obj/structure/lattice,/obj/effect/decal/cleanable/blood,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "cp" = (/obj/structure/girder,/obj/structure/boulder,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "cq" = (/obj/structure/grille/cult,/obj/structure/boulder,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
-"cr" = (/obj/structure/grille,/mob/living/simple_animal/construct/armoured,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
+"cr" = (/obj/effect/decal/cleanable/dirt,/mob/living/simple_animal/shade{hostile = 1},/turf/simulated/floor/tiled/freezer,/area/submap/cave/cultmine)
 "cs" = (/obj/effect/decal/remains/deer,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "ct" = (/turf/template_noop,/area/template_noop)
 "cu" = (/turf/simulated/wall/solidrock,/area/submap/cave/cultmine)
 "cv" = (/obj/structure/grille,/obj/structure/boulder,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
-"cw" = (/mob/living/simple_animal/construct/harvester,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
+"cw" = (/obj/structure/grille,/mob/living/simple_animal/hostile/faithless/strong,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "cx" = (/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "cy" = (/obj/structure/cult/pylon,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "cz" = (/obj/effect/decal/remains/mummy2,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
@@ -134,7 +134,7 @@
 "cD" = (/obj/machinery/floodlight,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "cE" = (/obj/effect/gateway,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "cF" = (/mob/living/simple_animal/hostile/giant_snake,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
-"cG" = (/obj/mecha/working/ripley/deathripley{desc = "The zealous martyr is praised for his valour: the craven and the unready are justly abhorred."; equipment = null; name = "The Exorcist"},/turf/simulated/floor/cult,/area/submap/cave/cultmine)
+"cG" = (/obj/mecha/working/ripley{desc = "The zealous martyr is praised for his valour: the craven and the unready are justly abhorred."; icon_state = "deathripley"; initial_icon = "deathripley"; name = "The Exorcist"},/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "cH" = (/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/blood,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "cI" = (/obj/structure/cult/forge,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "cJ" = (/obj/item/weapon/archaeological_find,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
@@ -155,7 +155,7 @@
 "cY" = (/obj/structure/table/woodentable,/obj/item/weapon/storage/bible/booze,/turf/simulated/floor/lino,/area/submap/cave/cultmine)
 "cZ" = (/obj/structure/fans/tiny,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/freezer,/area/submap/cave/cultmine)
 "da" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/freezer,/area/submap/cave/cultmine)
-"db" = (/obj/effect/decal/cleanable/dirt,/mob/living/simple_animal/shade,/turf/simulated/floor/tiled/freezer,/area/submap/cave/cultmine)
+"db" = (/mob/living/simple_animal/hostile/faithless/strong,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "dc" = (/obj/structure/bed/chair{dir = 1},/obj/effect/decal/cleanable/dirt,/obj/machinery/light/small{dir = 4},/mob/living/simple_animal/hostile/syndicate/melee,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "dd" = (/obj/effect/decal/cleanable/dirt,/obj/item/weapon/storage/bible/booze,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "de" = (/obj/structure/table/steel,/obj/item/weapon/storage/bible/booze,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
@@ -164,8 +164,8 @@
 "dh" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/structure/boulder,/obj/effect/decal/cleanable/generic,/turf/simulated/floor/greengrid,/area/submap/cave/cultmine)
 "di" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "dj" = (/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
-"dk" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
-"dl" = (/obj/effect/decal/cleanable/blood/writing,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
+"dk" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/blood/drip,/obj/structure/boulder,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
+"dl" = (/obj/effect/decal/cleanable/blood/writing,/mob/living/simple_animal/hostile/faithless/strong,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "dm" = (/obj/effect/decal/cleanable/blood/writing,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/cult,/area/submap/cave/cultmine)
 "dn" = (/obj/item/weapon/shovel,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 "do" = (/obj/item/weapon/storage/excavation,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
@@ -177,7 +177,7 @@
 "du" = (/obj/effect/decal/cleanable/generic,/turf/simulated/floor/tiled/white,/area/submap/cave/cultmine)
 "dv" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "dw" = (/obj/effect/decal/cleanable/generic,/mob/living/simple_animal/hostile/viscerator,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
-"dx" = (/obj/machinery/deployable/barrier,/obj/structure/fans/tiny,/turf/simulated/floor/lino,/area/submap/cave/cultmine)
+"dx" = (/obj/machinery/deployable/barrier{anchored = 1},/turf/simulated/floor/lino,/area/submap/cave/cultmine)
 "dy" = (/obj/structure/table/woodentable,/obj/random/contraband,/turf/simulated/floor/lino,/area/submap/cave/cultmine)
 "dz" = (/obj/random/junk,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "dA" = (/obj/effect/decal/cleanable/generic,/obj/effect/decal/cleanable/dirt,/obj/random/junk,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
@@ -188,18 +188,19 @@
 "dF" = (/obj/effect/decal/cleanable/ash,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "dG" = (/obj/structure/table/steel,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
 "dH" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/cave/cultmine)
+"dI" = (/obj/effect/decal/remains/ribcage,/obj/item/weapon/pickaxe/hand,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/cave/cultmine)
 
 (1,1,1) = {"
 ctctctctaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaactctctctct
 ctaaaaaaaaaaababababacababababababababababaaaaaaaaaact
 aaaaadadadadabaeafagahaiajabakamayanaoavabababababaact
 aaaaadaqarasataiaudycYawaxabazaAcTaBaCbrabaDaDcaabaact
-aaaaadasaEadabbXaGdxccawaIaIaIaIaIaIapbVcNcZcVcOaKaact
-aaaaaLaraLaaabaicPaHaGaiaIaMaNaOaOaIdfapaIaIaIaIabaact
+aaaaadasaEadabbXaGaHccawaIaIaIaIaIaIapbVcNcZcVcOaKaact
+aaaaaLaraLaaabaicPdxaGaiaIaMaNaOaOaIdfapaIaIaIaIabaact
 aaaaaPaQaaaaabaidqdrawaiaIapaoaodzaIapaoaRaJdabaaKaact
-aaaaaSaTaaaaabababacaUaiaIdAaWaXaYaIbpdsaZaDcUdbabaaaa
+aaaaaSaTaaaaabababacaUaiaIdAaWaXaYaIbpdsaZaDcUcrabaaaa
 aabbbcbdbeaaaaaaaaabapapbfapbgbhbiaIaobjaIaIaIaIababaa
-aabkblbmbndgboaaaaabapaVapdpbqbqdcaIdHdEbsbsbtaFbuabaa
+aabkblbmdIdgboaaaaabapaVapdpbqbqdcaIdHdEbsbsbtaFbuabaa
 aaaabvbwbvbmbxbyaaabapaobAbpdBbBbBaIapapcMbCbDdubsabaa
 ctaacAbmbmbEdnbyaaabaodvbfapbFbGbHaIapdjbIbJbKbLbMabaa
 ctaaaabmbmbvaaaaaaabapdjaIddbNbqbqaIdkapaIbObPbQbRabaa
@@ -210,16 +211,16 @@ ctaabmbvaaaaaaabcSbYdFapcdapcXcecfaadhdtdGciaactctctct
 ctaabmbmaaaaaaababababababababcjabcjckcldecmaactctctct
 ctaabmbmcAaaaaaaaaaaaaaaaaaaabababababcncoabaactctctct
 ctaabmbmbmbmaaaabmbmbmbmcAaaaaaaaaaaabaPcpabaactctctct
-ctaaaabmbmbmbmbmbEbmbmbmbmbmaaaaaaaaabcqcrabaactctctct
+ctaaaabmbmbmbmbmbEbmbmbmbmbmaaaaaaaaabcqcwabaactctctct
 ctctaaaaaaaaaaaaaaaabmcsbmbmbmaaaaaacucvcvcucuctctctct
-ctctaaaaaaaaaaaaaaaaaaaabmbmbmbmaaaacucucwcxcucuctctct
-ctctctaaaaaaaaaaaaaaaaaaaabmbmbmaaaaaacudCcwcycuctctct
-ctctctaaaaaaaaaaaaaaaaaaaabmbmbmaaaaaacubmczbmcuctctct
+ctctaaaaaaaaaaaaaaaaaaaabmbmbmbmaaaacucubmcxcucuctctct
+ctctctaaaaaaaaaaaaaaaaaaaabmbmbmaaaaaacudCdbcycuctctct
+ctctctaaaaaaaaaaaaaaaaaaaabmbmbmaaaaaacudbczbmcuctctct
 ctctaaaabmcAaaaaaaaaaaaaaabmbmbmaaaacucucAbvdlcucuctct
 ctaaaabmbmbmbmaabmbmcBaaaabmcCcAaaaacucDcxbvdmcEcuctct
 ctaacAbmbwbmbvbmbmcFbmbmbmbmbmaaaacucucJdicGdDcxcuctct
 ctaabmbvbncHbmbmbmbmbmbmbmbmaaaactcucIcxcxcxcxcJcuctct
 ctaaaabdbmaaaaaaaaaaaaaaaaaaaactctcucKcLcJcucucucuctct
-ctaacAbmbmaactctaaaaaaaaaactctctctcucucucucucuctctctct
-ctctctctctctctctctctctctctctctctctctctctctctctctctctct
+ctaacAbmbmaabmcAaaaaaaaaaactctctctcucucucucuctctctctct
+ctbmbmbmbmbmbmbmbmctctctctctctctctctctctctctctctctctct
 "}
