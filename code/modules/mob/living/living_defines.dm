@@ -60,3 +60,7 @@
 	var/has_huds = FALSE	//Whether or not we should bother initializing the above list
 
 	var/makes_dirt = TRUE	//FALSE if the mob shouldn't be making dirt on the ground when it walks
+
+///////////////////////// CITADEL STATION ADDITIONS START
+	var/lastLifeProc = 0    // Wallclock time of the last time this mob had life() called on them (at finish), used for tying variables to wallclock rather than tickcount
+///////////////////////// CITADEL STATION ADDITIONS END
