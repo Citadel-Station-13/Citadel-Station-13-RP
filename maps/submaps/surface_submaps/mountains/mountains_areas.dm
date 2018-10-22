@@ -121,3 +121,8 @@
 /area/submap/deadspy
 	name = "Dead Spy"
 	ambience = AMBIENCE_FOREBODING
+
+//Citadel change
+/area/submap/cave/cultmine
+	name = "Cult Mine"
+	requires_power = FALSE

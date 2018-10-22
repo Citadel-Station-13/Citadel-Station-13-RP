@@ -64,4 +64,7 @@
 	var/makes_dirt = TRUE	//FALSE if the mob shouldn't be making dirt on the ground when it walks
 
 	var/looking_elsewhere = FALSE //If the mob's view has been relocated to somewhere else, like via a camera or with binocs
-	
+
+///////////////////////// CITADEL STATION ADDITIONS START
+	var/lastLifeProc = 0    // Wallclock time of the last time this mob had life() called on them (at finish), used for tying variables to wallclock rather than tickcount
+///////////////////////// CITADEL STATION ADDITIONS END

@@ -6417,16 +6417,13 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/north_stairs_three)
 "ld" = (
-/obj/machinery/door/airlock/maintenance/common,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_three)
 "le" = (
-/obj/structure/sign/directions/engineering{
-	dir = 10;
-	icon_state = "direction_eng";
-	pixel_y = -10
-	},
-/turf/simulated/wall,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1,
+/turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_three)
 "lf" = (
 /obj/structure/sign/directions/medical{
@@ -6442,6 +6439,11 @@
 	dir = 1;
 	icon_state = "direction_sec";
 	pixel_y = -4
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 10;
+	icon_state = "direction_eng";
+	pixel_y = -10
 	},
 /turf/simulated/wall,
 /area/tether/surfacebase/north_stairs_three)
@@ -20740,8 +20742,8 @@
 /turf/simulated/floor/reinforced,
 /area/tether/surfacebase/shuttle_pad)
 "JI" = (
-/turf/simulated/floor/reinforced,
 /obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/tether/surface)
 "JJ" = (

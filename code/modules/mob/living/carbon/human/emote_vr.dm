@@ -26,7 +26,10 @@
 			nme()
 			return TRUE
 		if ("flip")
-			var/danger = 1 //Base 1% chance to break something.
+///////////////////////// CITADEL STATION ADDITIONS START
+			emoteDanger =  min(1 + (emoteDanger*2), 100)
+			var/danger = emoteDanger //Base chance to break something.
+///////////////////////// CITADEL STATION ADDITIONS END
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			for(var/organ_name in involved_parts)
 				var/obj/item/organ/external/E = get_organ(organ_name)
