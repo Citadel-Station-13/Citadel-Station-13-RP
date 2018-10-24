@@ -197,7 +197,7 @@
 		"secure day"	= 'sound/voice/bsecureday.ogg',
 		)
 	spawn_flags = IC_SPAWN_RESEARCH
-	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_ILLEGAL = 1)
+	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_COMBAT = 1)
 
 /obj/item/integrated_circuit/output/sound/medbot
 	name = "medbot sound circuit"
@@ -299,7 +299,7 @@
 		text_output += "\an [name]"
 	else
 		text_output += "\an ["\improper[initial_name]"] labeled '[name]'"
-	text_output += " which is currently [get_pin_data(IC_INPUT, 1) ? "lit <font color=[led_color]>¤</font>" : "unlit."]"
+	text_output += " which is currently [get_pin_data(IC_INPUT, 1) ? "lit <font color=[led_color]>Â¤</font>" : "unlit."]"
 	to_chat(user,jointext(text_output,null))
 
 /obj/item/integrated_circuit/output/led/red
