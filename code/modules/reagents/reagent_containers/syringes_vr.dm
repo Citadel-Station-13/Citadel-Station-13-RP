@@ -17,13 +17,11 @@
 	LAZYCLEARLIST(targets)
 	return ..()
 
-/* CITADEL CHANGE - Fuck this dumb infection increase tick
 /obj/item/weapon/reagent_containers/syringe/process()
 	dirtiness = min(dirtiness + targets.len,75)
 	if(dirtiness >= 75)
 		processing_objects -= src
 	return 1
-*/
 
 /obj/item/weapon/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
 	if(!ishuman(loc))
