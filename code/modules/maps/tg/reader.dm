@@ -14,11 +14,11 @@ var/global/use_preloader = FALSE
 
 /dmm_suite
 		// /"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}/g
-	var/static/regex/dmmRegex = new({""(\[a-zA-Z]+)" = \\(((?:.|\n)*?)\\)\n(?!\t)|\\((\\d+),(\\d+),(\\d+)\\) = \\{"(\[a-zA-Z\n]*)"\\}"}, "g")
+	var/static/regex/dmmRegex = new/regex({""(\[a-zA-Z]+)" = \\(((?:.|\n)*?)\\)\n(?!\t)|\\((\\d+),(\\d+),(\\d+)\\) = \\{"(\[a-zA-Z\n]*)"\\}"}, "g")
 		// /^[\s\n]+"?|"?[\s\n]+$|^"|"$/g
-	var/static/regex/trimQuotesRegex = new({"^\[\\s\n]+"?|"?\[\\s\n]+$|^"|"$"}, "g")
+	var/static/regex/trimQuotesRegex = new/regex({"^\[\\s\n]+"?|"?\[\\s\n]+$|^"|"$"}, "g")
 		// /^[\s\n]+|[\s\n]+$/
-	var/static/regex/trimRegex = new("^\[\\s\n]+|\[\\s\n]+$", "g")
+	var/static/regex/trimRegex = new/regex("^\[\\s\n]+|\[\\s\n]+$", "g")
 	var/static/list/modelCache = list()
 	var/static/space_key
 	#ifdef TESTING
@@ -52,20 +52,6 @@ var/global/use_preloader = FALSE
 		Master.StopLoadingMap()
 
 /dmm_suite/proc/load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, orientation)
-	//CITADEL ADD: BANDAID PATCH
-
-	if(!dmmRegex)
-		dmmRegex = new({""(\[a-zA-Z]+)" = \\(((?:.|\n)*?)\\)\n(?!\t)|\\((\\d+),(\\d+),(\\d+)\\) = \\{"(\[a-zA-Z\n]*)"\\}"}, "g")
-	if(!trimQuotesRegex)
-		trimQuotesRegex = new({"^\[\\s\n]+"?|"?\[\\s\n]+$|^"|"$"}, "g")
-	if(!trimRegex)
-		trimRegex = new("^\[\\s\n]+|\[\\s\n]+$", "g")
-	if(!modelCache)
-		modelCache = list()
-	//END
-
-
-
 	var/tfile = dmm_file//the map file we're creating
 	if(isfile(tfile))
 		tfile = file2text(tfile)
