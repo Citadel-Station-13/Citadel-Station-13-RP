@@ -94,6 +94,7 @@
 	///////////
 /client/New(TopicData)
 	TopicData = null							//Prevent calls to client.Topic from connect
+	chatOutput = new /datum/chatOutput(src)
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
@@ -139,6 +140,8 @@
 		add_admin_verbs()
 		admin_memo_show()
 
+	chatOutput.start() // Starts the chat
+
 	// Forcibly enable hardware-accelerated graphics, as we need them for the lighting overlays.
 	// (but turn them off first, since sometimes BYOND doesn't turn them on properly otherwise)
 	spawn(5) // And wait a half-second, since it sounds like you can do this too fast.
@@ -164,7 +167,7 @@
 			src.changes()
 
 	hook_vr("client_new",list(src)) //VOREStation Code
-	
+
 	if(config.paranoia_logging)
 		if(isnum(player_age) && player_age == 0)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")

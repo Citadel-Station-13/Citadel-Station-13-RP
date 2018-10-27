@@ -56,3 +56,5 @@
 	preload_rsc = PRELOAD_RSC
 
 	var/global/obj/screen/click_catcher/void
+
+	var/datum/chatOutput/chatOutput
