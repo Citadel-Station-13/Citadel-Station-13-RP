@@ -10,7 +10,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 //On client, created on login
 /datum/chatOutput
 	var/client/owner	 //client ref
-	var/loaded       = FALSE // Has the client loaded the browser output area?
+	var/loaded       = TRUE // Has the client loaded the browser output area?
 	var/list/messageQueue //If they haven't loaded chat, this is where messages will go until they do
 	var/cookieSent   = FALSE // Has the client sent a cookie for analysis
 	var/broken       = FALSE
