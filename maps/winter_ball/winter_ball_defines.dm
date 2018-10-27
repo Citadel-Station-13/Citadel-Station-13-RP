@@ -6,7 +6,7 @@
 	name = "The Ball"
 	full_name = "The Citadel Ball"
 	path = "ball"
-	allowed_jobs = list(/datum/job/chef, /datum/job/janitor, /datum/job/doctor, /datum/job/assistant, /datum/job/engineer)
+	allowed_jobs = list(/datum/job/chef, /datum/job/janitor, /datum/job/doctor, /datum/job/assistant)
 
 	lobby_icon = 'icons/misc/title.dmi'
 	lobby_screens = list("mockingjay00")
