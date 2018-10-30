@@ -4,7 +4,7 @@ datum/controller/transfer_controller
 	var/timerbuffer = 0 //buffer for time check
 	var/currenttick = 0
 	var/shift_hard_end = 0 //VOREStation Edit
-	var/shift_last_vote = 240 MINUTES //VOREStation Edit
+	var/shift_last_vote = 240 MINUTES //Citadel Edit
 datum/controller/transfer_controller/New()
 	timerbuffer = config.vote_autotransfer_initial
 	shift_hard_end = config.vote_autotransfer_initial + (config.vote_autotransfer_interval * 1) //VOREStation Edit //Change this "1" to how many extend votes you want there to be.
