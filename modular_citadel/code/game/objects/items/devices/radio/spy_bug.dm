@@ -55,13 +55,10 @@
 	if(!freqblacklist)
 		for (var/chan in radiochannels)
 			freqblacklist |= radiochannels[chan]
-
 	radio = new(src)
 	radio.broadcasting = 0
 	radio.listening = 1
 	radio.canhear_range = 0
-
-
 	do
 		radio.set_frequency( rand(RADIO_LOW_FREQ, RADIO_HIGH_FREQ) )
 	while (radio.frequency in freqblacklist || (radio.frequency % 2 == 0))
