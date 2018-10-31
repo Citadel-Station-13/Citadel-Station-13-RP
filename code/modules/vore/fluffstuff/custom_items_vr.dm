@@ -213,7 +213,7 @@ END OF CITADEL CHANGES */
 	if(isliving(user))
 		user.visible_message("<span class='warning'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='warning'>You invade [M]'s personal space, thrusting [src] into their face insistently.</span>")
 
-/* CITADEL CHANGE - Goodbye Virgo Fluff
+
 /obj/item/weapon/flag/federation
 	name = "Federation Banner"
 	desc = "Space, The Final Frontier. Sorta. Just go with it and say the damn oath."
@@ -244,7 +244,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "flag_advent_mob"
 
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 //Vorrakul: Kaitlyn Fiasco
 /obj/item/toy/plushie/mouse/fluff
 	name = "Mouse Plushie"
