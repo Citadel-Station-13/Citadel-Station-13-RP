@@ -2961,6 +2961,7 @@
 #include "modular_citadel\code\modules\projectiles\guns\energy\netgun_vr.dm"
 #include "modular_citadel\code\modules\resleeving\documents.dm"
 #include "modular_citadel\code\modules\resleeving\implant.dm"
+#include "modular_citadel\code\modules\resleeving\sleevecard.dm"
 #include "modular_citadel\code\modules\shadekin\_defines.dm"
 #include "modular_citadel\code\modules\shadekin\ability_objects.dm"
 #include "modular_citadel\code\modules\shadekin\ability_procs.dm"
