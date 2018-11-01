@@ -2955,6 +2955,7 @@
 #include "modular_citadel\code\modules\clothing\under\donatoruniform.dm"
 #include "modular_citadel\code\modules\clothing\under\accessories\donatoraccessory.dm"
 #include "modular_citadel\code\modules\clothing\under\accessories\holster.dm"
+#include "modular_citadel\code\modules\games\dice.dm"
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station_cit.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
 #include "modular_citadel\code\modules\shadekin\_defines.dm"
