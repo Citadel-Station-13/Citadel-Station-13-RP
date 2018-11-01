@@ -13,7 +13,7 @@
 	icon_state = "multiphasedis100"
 	projectile_type = /obj/item/projectile/beam/stun/disabler
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
 	w_class = ITEMSIZE_NORMAL
 	fire_delay = 6	//standard rate
