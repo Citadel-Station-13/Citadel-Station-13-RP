@@ -27,7 +27,7 @@
 
 	if(H.species.flags & NO_SCAN)
 		var/obj/item/device/nif/S = new /obj/item/device/nif/bioadap
-		input_NIF = S.name
+		input_NIF = initial(S.name)
 		new /obj/item/device/nif/bioadap(H)
 	else
 		var/list/NIF_types = typesof(/obj/item/device/nif)
@@ -35,7 +35,7 @@
 
 		for(var/NIF_type in NIF_types)
 			var/obj/item/device/nif/S = new NIF_type
-			NIFs[capitalize(S.name)] = NIF_type
+			NIFs[capitalize(initial(S.name))] = NIF_type
 
 		var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
 
