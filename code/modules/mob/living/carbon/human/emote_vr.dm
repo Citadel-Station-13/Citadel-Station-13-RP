@@ -17,8 +17,13 @@
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
 		if ("awoo")
-			message = "awoos loudly. AwoooOOOOoooo!"
+			message = "lets out an awoo."
 			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/awoo.ogg', 50, 1, -1)
+		if ("nya")
+			message = "lets out a nya."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE
