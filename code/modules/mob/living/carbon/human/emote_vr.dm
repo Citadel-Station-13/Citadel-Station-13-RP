@@ -17,8 +17,17 @@
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
 		if ("awoo")
-			message = "awoos loudly. AwoooOOOOoooo!"
+			message = "lets out an awoo."
 			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/awoo.ogg', 50, 1, -1)
+		if ("nya")
+			message = "lets out a nya."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+		if ("weh")
+			message = "lets out a weh."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE
@@ -26,7 +35,10 @@
 			nme()
 			return TRUE
 		if ("flip")
-			var/danger = 1 //Base 1% chance to break something.
+///////////////////////// CITADEL STATION ADDITIONS START
+			emoteDanger =  min(1 + (emoteDanger*2), 100)
+			var/danger = emoteDanger //Base chance to break something.
+///////////////////////// CITADEL STATION ADDITIONS END
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			for(var/organ_name in involved_parts)
 				var/obj/item/organ/external/E = get_organ(organ_name)
