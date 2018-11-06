@@ -3,4 +3,3 @@
 
 /obj/item/weapon/storage/box/snakesnackbox
 	name = "box of Snek Snaks"
-	..()
