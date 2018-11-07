@@ -10,7 +10,7 @@
 			/obj/item/clothing/suit/armor/medieval/blue = 1,
 			/obj/item/clothing/suit/armor/medieval/yellow = 1
 			)
-	cost = 100
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "knight set crate"
 	contraband = 1
@@ -24,7 +24,7 @@
 			/obj/item/clothing/head/helmet/medieval/crusader = 3,
 			/obj/item/clothing/suit/armor/medieval/crusader/cross = 3
 			)
-	cost = 100
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "crusader crate"
 	contraband = 1
