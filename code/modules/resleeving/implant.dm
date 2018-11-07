@@ -9,20 +9,20 @@
 	desc = "A mindstate backup implant that occasionally stores a copy of one's mind on a central server for backup purposes."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "backup_implant"
-
+//CITADEL CHANGE - ALTERING IMPLANT DATA
 /obj/item/weapon/implant/backup/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> [using_map.company_name] Employee Backup Implant<BR>
 <b>Life:</b> ~8 hours.<BR>
-<b>Important Notes:</b> Implant is life-limited due to KHI licensing restrictions. Dissolves into harmless biomaterial after around ~8 hours, the typical work shift.<BR>
+<b>Important Notes:</b> Implant is life-limited. Dissolves into harmless biomaterial after around ~8 hours, the typical work shift.<BR>
 <HR>
 <b>Implant Details:</b><BR>
-<b>Function:</b> Contains a small swarm of nanobots that perform neuron scanning to create mind-backups.<BR>
-<b>Special Features:</b> Will allow restoring of backups during the 8-hour period it is active.<BR>
-<b>Integrity:</b> Generally very survivable. Susceptible to being destroyed by acid."}
+<b>Function:</b> Contains a microchip that scans the brain to create identical backups.<BR>
+<b>Special Features:</b> Allows the restoration of employees within an eight hour period.<BR>
+<b>Integrity:</b> Sturdy, weak against acidic compounds."}
 	return dat
-
+//END OF CITADEL CHANGE
 /obj/item/weapon/implant/backup/Destroy()
 	SStranscore.implants -= src
 	return ..()
@@ -133,8 +133,9 @@
 	for(var/i = 1 to 7)
 		new /obj/item/weapon/implantcase/backup(src)
 	new /obj/item/weapon/implanter(src)
-
+/* CITADEL CHANGE - Removes this useless shit
 //Purely for fluff
 /obj/item/weapon/implant/backup/full
 	name = "khi backup implant"
 	desc = "A normal KHI wireless cortical stack with neutrino and QE transmission for constant-stream consciousness upload."
+END OF CITADEL CHANGE */
