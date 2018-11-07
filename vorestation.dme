@@ -2973,7 +2973,7 @@
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_clothes_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_items_vr.dm"
-#include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\nsfw.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
+#include "modular_citadel\icons\icon_overrides.dm"
 // END_INCLUDE
