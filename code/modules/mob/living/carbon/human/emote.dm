@@ -79,17 +79,17 @@
 			playsound(src.loc, use_sound, 50, 0)
 			m_type = 1
 
-		//Promethean-only emotes
+		//Start Promethean-only emotes
 		if("squish")
-			/* VOREStation Removal Start - Eh. People can squish maybe.
+
 			if(species.bump_flag != SLIME) //This should definitely do it.
-				src << "<span class='warning'>You are not a slime thing!</span>"
+				src << "<span class='warning'>You are not a slime!</span>"
 				return
-			*/ //VOREStation Removal End
+
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
 			m_type = 1
-
+		//End Promethean-only emotes
 
 		if ("blink")
 			message = "blinks."
