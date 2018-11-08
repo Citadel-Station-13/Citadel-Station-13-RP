@@ -109,7 +109,7 @@
 		/obj/item/weapon/reagent_containers/food/snacks/meat
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/generalschicken
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 /datum/recipe/chocroizegg
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/chocolatebar,
@@ -130,7 +130,7 @@
 		/obj/item/weapon/reagent_containers/food/snacks/egg/roiz
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/boiledegg/roiz
-
+END OF CITADEL CHANGES */
 /datum/recipe/pillbugball
 	reagents = list("carbon" = 5)
 	items = list(
