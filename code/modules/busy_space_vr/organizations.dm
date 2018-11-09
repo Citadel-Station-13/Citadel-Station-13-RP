@@ -436,7 +436,7 @@
 						"the SolGov embassy in Virgo-Erigone",
 						"the SolGov embassy in Vilous"
 						)// autogen will add a lot of other places as well.
-
+/* CITADEL CHANGE - Removes VEGA
 /datum/lore/organization/gov/sifgov // Overrides Polaris stuff
 	name = "Virgo-Erigone Governmental Authority"
 	short_name = ""
@@ -468,7 +468,7 @@
 						"a telecommunications satellite near Virgo-3B",
 						"a telecommunications satellite near Virgo-Prime"
 						)
-
+END OF CITADEL CHANGES */
 /* // Waiting for lore to be updated.
 /datum/lore/organization/gov/federation
 	name = "United Federation of Planets"
@@ -676,7 +676,7 @@
 							"if told you I'd have to kill you",
 							"... wait, why am I even telling you this? Just let me pass",
 							"stop asking questions")
-
+/* CITADEL CHANGE - Goodbye KHI
 /datum/lore/organization/gov/kitsuhana
 	name = "Kitsuhana Heavy Industries"
 	short_name = "Kitsuhana"
@@ -730,7 +730,7 @@
 						"a Kitsuhana ringworld in Lund VI",
 						"a Kitsuhana ringworld in Dais IX",
 						"a Kitsuhana ringworld in Leibert II-b")
-
+END OF CITADEL CHANGES */
 /datum/lore/organization/gov/ares
 	name = "Ares Confederation"
 	short_name = "ArCon"
@@ -787,7 +787,7 @@
 						"New Berlin on Nov-Ferrum",
 						"a settlement needing our help",
 						"Forward Base Sigma-Alpha in ArCon space")
-
+/* CITADEL CHANGE - Removes the Golden Empire
 /datum/lore/organization/gov/imperial
 	name = "Auream Imperium"
 	short_name = "Imperial"
@@ -884,3 +884,4 @@
 							"near Cor Galaxia",
 							"Segmentum Obscurum", // Basically their home territory, where our telescopes can't see. They prefer to keep it that way. They call it something else internally.
 							)
+END OF CITADEL CHANGES */

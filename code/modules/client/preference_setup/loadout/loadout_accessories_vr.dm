@@ -35,12 +35,12 @@
 
 /datum/gear/accessory/white_vest
 	allowed_roles = list("Paramedic","Chief Medical Officer","Medical Doctor","Chemist")
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 /datum/gear/accessory/khcrystal
 	display_name = "KH Life Crystal"
 	path = /obj/item/weapon/storage/box/khcrystal
 	description = "A small necklace device that will notify an offsite cloning facility should you expire after activating it."
-
+END OF CITADEL CHANGE */
 /datum/gear/accessory/tronket
     display_name = "metal necklace"
     description = "A shiny steel chain with a vague metallic object dangling off it."
