@@ -80,14 +80,6 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 	if(!GLOB)
 		new /datum/controller/global_vars
 
-	//CIT CHANGE - WELL DOESN'T THIS SUCK THAT WE HAVE TO DO THIS
-	makeDatumRefLists()
-	load_configuration()
-
-	initialize_chemical_reagents()
-	initialize_chemical_reactions()
-	initialize_integrated_circuits_list()
-
 /datum/controller/master/Destroy()
 	..()
 	// Tell qdel() to Del() this object.

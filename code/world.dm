@@ -9,8 +9,25 @@
 	5. The gameticker is created.
 
 */
+var/global/datum/global_init/init = new ()
 
-//CIT CHANGE - GLOBAL INIT BS REMOVED
+/*
+	Pre-map initialization stuff should go here.
+*/
+/datum/global_init/New()
+
+	makeDatumRefLists()
+	load_configuration()
+
+	initialize_chemical_reagents()
+	initialize_chemical_reactions()
+	initialize_integrated_circuits_list()
+
+	qdel(src) //we're done
+
+/datum/global_init/Destroy()
+	global.init = null
+	return 2 // QDEL_HINT_IWILLGC
 
 /world
 	mob = /mob/new_player
@@ -88,7 +105,7 @@
 
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
-
+	
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
