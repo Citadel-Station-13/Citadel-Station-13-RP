@@ -16,18 +16,62 @@
 		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
+
 		if ("awoo")
 			message = "lets out an awoo."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/awoo.ogg', 50, 1, -1)
+			//Citadel Addition {
+			emoteDanger = min(1 + (emoteDanger*2), 100)
+			var/danger = 16*(emoteDanger - 1)
+
+			var/obj/item/organ/internal/L = internal_organs_by_name["lungs"]
+
+			if(prob(danger))
+				adjustOxyLoss(60) //Very easy to crit yourself with oxyloss, if you spam it with a macro. Intended
+				if(oxyloss > 60 && L) //If the person got an unfortunate roll while awooing while already having some oxyloss
+					L.damage += rand(15, 20)
+					log_and_message_admins("got lung damage from *awoo, ahahah.", src)
+
+				message += " <span class='danger'>And loses their breath!</span>"
+
+
 		if ("nya")
 			message = "lets out a nya."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+			//Citadel Addition {
+			emoteDanger = min(1 + (emoteDanger*2), 100)
+			var/danger = 8*(emoteDanger - 1)
+
+			var/obj/item/organ/internal/L = internal_organs_by_name["lungs"]
+
+			if(prob(danger))
+				adjustOxyLoss(60)
+				if(oxyloss > 60 && L)
+					L.damage += rand(15, 20)
+					log_and_message_admins("got lung damage from *nya, ahahah.", src)
+
+				message += " <span class='danger'>And loses their breath!</span>"
+			//} Citadel Addition
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
+			//Citadel Addition {
+			emoteDanger = min(1 + (emoteDanger*2), 100)
+			var/danger = 8*(emoteDanger - 1)
+
+			var/obj/item/organ/internal/L = internal_organs_by_name["lungs"]
+
+			if(prob(danger))
+				adjustOxyLoss(60)
+				if(oxyloss > 60 && L)
+					L.damage += rand(15, 20)
+					log_and_message_admins("got lung damage from *weh, ahahah.", src)
+
+				message += " <span class='danger'>And loses their breath!</span>"
+			//} Citadel Addition
 		if ("nsay")
 			nsay()
 			return TRUE
