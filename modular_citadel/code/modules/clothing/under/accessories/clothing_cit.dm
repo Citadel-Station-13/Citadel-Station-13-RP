@@ -24,3 +24,28 @@
 	name = "hospitaller cloak"
 	icon_state = "cloak_crusader_hospitaller"
 	item_state = "cloak_crusader_hospitaller"
+
+// Renames some default cloaks to be more dpt. related.
+/obj/item/clothing/accessory/poncho/roles/cloak/cargo
+	name = "cargo cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/mining
+	name = "trimmed mining cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/security
+	name = "security cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/service
+	name = "service cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/engineer
+	name = "engineering cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/atmos
+	name = "atmospherics cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/research
+	name = "science cloak"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/medical
+	name = "medical cloak"
