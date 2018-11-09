@@ -5,7 +5,7 @@
 /obj/item/clothing/accessory/permit/gun/fluff/emag_act(var/remaining_charges, var/mob/user)
 	to_chat(user, "You cannot reset the naming locks on [src]. It's issued by CentCom and totally tamper-proof!")
 	return
-/* CITADEL CHANGE - Removes Virgo Fluff
+
 // aerowing:Sebastian Aji
 /obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji
 	name = "Sebastian Aji's Sidearm Permit"
@@ -62,7 +62,7 @@
 	name = "Jesse Soemmer's Sidearm Permit"
 	desc = "A card indicating that the owner is allowed to carry a sidearm. It is issued by CentCom, so it is valid until it expires on March 4, 2563."
 */
-END OF CITADEL CHANGES */
+
 /* Legacy Permits
 // BEGIN - PROTOTYPE
 /obj/item/clothing/accessory/permit/gun/fluff

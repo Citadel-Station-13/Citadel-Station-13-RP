@@ -112,7 +112,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 	projectile_type = /obj/item/projectile/beam/imperial
-/* CITADEL CHANGE - Removes Virgo Fluff
+
 // jertheace : Jeremiah 'Ace' Acacius
 /obj/item/weapon/gun/projectile/shotgun/pump/USDF/fluff/ace
 	name = "Ace's tactical shotgun" // D-model holds half as many shells as the normal version so as not OP as shit. Better than normal shotgun, worse than combat shotgun.
@@ -214,7 +214,7 @@
 	desc = "It's a palm sized gun. One of the few things that won't break an angel's wrists. Uses 10mm rounds."
 	caliber = "10mm"
 	ammo_type = /obj/item/ammo_casing/a10mm
-END OF CITADEL CHANGES */
+
 // For general use
 /obj/item/weapon/gun/projectile/automatic/stg
 	name = "\improper Sturmgewehr"
@@ -330,7 +330,7 @@ END OF CITADEL CHANGES */
 		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg'),
 		)*/
 
-/* CITADEL CHANGE - Removes Virgo Fluff
+
 // molenar:Kari Akiren
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
 	name = "clockwork rifle"
@@ -356,7 +356,7 @@ END OF CITADEL CHANGES */
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
 	preserve_item = FALSE
-END OF CITADEL CHANGES */
+
 //////////////////// Energy Weapons ////////////////////
 
 // ------------ Energy Luger ------------

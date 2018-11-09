@@ -19,8 +19,8 @@
 	..()
 
 /obj/machinery/vending/medical/New()
-	products += list(/obj/item/weapon/backup_implanter = 3,
-				/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/device/glasses_kit = 1,  /obj/item/weapon/storage/quickdraw/syringe_case = 4)	//CITADEL CHANGE - Removes Life Crystals
+	products += list(/obj/item/weapon/storage/box/khcrystal = 4,/obj/item/weapon/backup_implanter = 3,
+					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/device/glasses_kit = 1,  /obj/item/weapon/storage/quickdraw/syringe_case = 4)
 	..()
 
 //Custom vendors

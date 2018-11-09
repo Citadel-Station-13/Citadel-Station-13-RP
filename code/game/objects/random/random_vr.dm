@@ -70,7 +70,7 @@
 					prob(2);/obj/item/weapon/gun/projectile/automatic/l6_saw,\
 					prob(2);/obj/item/weapon/gun/energy/gun/burst,\
 					prob(2);/obj/item/weapon/storage/box/frags,\
-					prob(2);/obj/item/weapon/material/twohanded/fireaxe,\
+					prob(2);/obj/item/weapon/twohanded/fireaxe,\
 					prob(2);/obj/item/weapon/gun/projectile/luger/brown,\
 					prob(2);/obj/item/weapon/gun/launcher/crossbow,\
 				/*	prob(1);/obj/item/weapon/gun/projectile/automatic/battlerifle,\ */ // Too OP
@@ -85,7 +85,7 @@
 					prob(1);/obj/item/weapon/gun/energy/ionrifle,\
 					prob(1);/obj/item/weapon/material/sword,\
 					prob(1);/obj/item/weapon/cane/concealed,\
-					prob(1);/obj/item/weapon/material/sword/katana)	//CITADEL CHANGE - FIXED FIREAXE PATH
+					prob(1);/obj/item/weapon/material/sword/katana)
 
 /obj/random/weapon/guarenteed
 	spawn_nothing_percentage = 0
