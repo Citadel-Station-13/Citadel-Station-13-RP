@@ -419,25 +419,26 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "Database connection failed or not set up"
 
 
-/world/Reboot(var/reason)
-	/*spawn(0)
-		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
-		*/
-	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
-	if(reason && usr)//CITADEL CHANGE - Logs reboots done by debug functions
-		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
+/world/Reboot(reason = 0, fase_track = FALSE)
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+			world << "<span class='boldannounce'>"[key_name_admin(usr)] has requested an immediate world restart via client side debugging tools")
+			
+		else
+			world << "<span class='boldannounce'>Rebooting World immediately due to host request</span>"
+	else
+		processScheduler.stop()
+		Master.Shutdown()	//run SS shutdowns
 		for(var/client/C in clients)
-			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!</span>"
+			if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+				C << link("byond://[config.server]")
 
-	processScheduler.stop()
-	Master.Shutdown()	//run SS shutdowns
-
-	for(var/client/C in clients)
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[config.server]")
-
+	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
-	..(reason)
+	log_world("World rebooted at [time_stamp()]")
+	..()
 
 /hook/startup/proc/loadMode()
 	world.load_mode()
