@@ -20,9 +20,12 @@
 	contains = list(
 			/obj/item/clothing/head/helmet/medieval/crusader/templar = 2,
 			/obj/item/clothing/suit/armor/medieval/crusader/cross/templar = 1,
+			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar = 1,
 			/obj/item/clothing/suit/armor/medieval/crusader/cross/hospitaller = 1,
+			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller = 1,
 			/obj/item/clothing/head/helmet/medieval/crusader = 3,
-			/obj/item/clothing/suit/armor/medieval/crusader/cross = 3
+			/obj/item/clothing/suit/armor/medieval/crusader/cross = 3,
+			/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade = 3
 			)
 	cost = 60
 	containertype = /obj/structure/closet/crate
