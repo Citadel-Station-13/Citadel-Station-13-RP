@@ -2950,6 +2950,7 @@
 #include "modular_citadel\code\modules\client\preference_setup\loadout\loadout_utility.dm"
 #include "modular_citadel\code\modules\clothing\donatorclothing.dm"
 #include "modular_citadel\code\modules\clothing\glasses\hud_vr.dm"
+#include "modular_citadel\code\modules\clothing\head\misc_cit.dm"
 #include "modular_citadel\code\modules\clothing\suits\donatorarmor.dm"
 #include "modular_citadel\code\modules\clothing\suits\donatorlabcoat.dm"
 #include "modular_citadel\code\modules\clothing\suits\medieval_armor.dm"
