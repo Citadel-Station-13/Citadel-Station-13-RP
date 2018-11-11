@@ -86,7 +86,7 @@
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Ballistic armor crate"
 	access = access_armory
-/* VOREStation Removal - Howabout no ERT armor being orderable?
+//CITADEL EDIT - YEET EM AND SKEET EM BOYS WE'RE FREEING ARMOR /* VOREStation Removal - Howabout no ERT armor being orderable?
 /datum/supply_pack/security/combat_armor
 	name = "Armor - Combat"
 	contains = list(
@@ -124,7 +124,8 @@
 			/obj/item/clothing/shoes/boots/jackboots,
 			/obj/item/clothing/gloves/black
 			)
-*/
+
+//CITADEL EDIT - lets get this bread*/
 /datum/supply_pack/security/securitybarriers
 	name = "Misc - Security Barriers"
 	contains = list(/obj/machinery/deployable/barrier = 4)

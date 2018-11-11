@@ -11,7 +11,7 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Burger crate"
-/*
+//citadel change - uncomments stuff/*
 /datum/supply_pack/randomised/hospitality/bakery_vr
 	num_contained = 5
 	contains = list(
@@ -68,7 +68,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Mexican takeout crate"
-*/
+//citadel change - uncomments stuff END*/
 /datum/supply_pack/randomised/hospitality/asian_vr
 	num_contained = 5
 	contains = list(

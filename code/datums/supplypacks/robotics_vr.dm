@@ -64,9 +64,8 @@
 			/obj/item/weapon/disk/limb/dsi_akula,
 			/obj/item/weapon/disk/limb/dsi_spider,
 			/obj/item/weapon/disk/limb/dsi_teshari,
-			/obj/item/weapon/disk/limb/eggnerdltd,
 			/obj/item/weapon/disk/limb/eggnerdltdred
-			)
+			)	//CITADEL CHANGE - Removes Virgo Fluff
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Advanced Robolimb Blueprint Crate"

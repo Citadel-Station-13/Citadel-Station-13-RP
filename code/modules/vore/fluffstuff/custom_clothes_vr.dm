@@ -23,7 +23,6 @@
 	item_state = "myicon"
 
 */
-
 //Natje: Awen Henry
 /obj/item/clothing/head/fluff/wolfgirl
     name = "Wolfgirl Hat"
@@ -56,7 +55,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "wolfgirluni_mob"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //SpoopyLizz: Roiz Lizden
 /obj/item/clothing/suit/storage/hooded/wintercoat/roiz
 	name = "dinosaur winter coat"
@@ -206,7 +205,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "greatcoat_mob"
-
+END OF CITADEL CHANGES */
 //For general use
 /obj/item/clothing/suit/storage/fluff/fedcoat
 	name = "Federation Uniform Jacket (Red)"
@@ -399,7 +398,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "gogblue"
 */
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //wickedtemp:chakat tempest
 /obj/item/clothing/glasses/omnihud/med/fluff/wickedtemphud
 	name = "Tempest's Glasses"
@@ -410,7 +409,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "tempesthud"
-
+END OF CITADEL CHANGE */
 //For general use
 /obj/item/clothing/accessory/fluff/smilepin
 	name = "Smiley Pin"
@@ -432,7 +431,7 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	overlay_state = "" //They don't have one
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //john.wayne9392:Harmony Prechtl
 /obj/item/clothing/suit/armor/captain/fluff/harmsuit
 	name = "Harmony's Captain Armor"
@@ -517,7 +516,7 @@
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
-
+END OF CITADEL CHANGE */
 //Event Costumes Below
 /obj/item/clothing/head/helmet/fluff/freddy
 	name = "Animatronic Suit Helmet"
@@ -592,7 +591,7 @@
 	item_state = "chicasuit_mob"
 
 //End event costumes
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //scree:Scree
 /obj/item/clothing/head/helmet/space/void/engineering/hazmat/fluff/screehelm
 	name = "Modified Tajara Helmet"
@@ -681,7 +680,7 @@
 
 /obj/item/clothing/under/fluff/screesuit/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
-
+END OF CITADEL CHANGES */
 //HOS Hardsuit
 /obj/item/clothing/suit/space/void/security/fluff/hos // ToDo: Rig version.
 	name = "\improper prototype voidsuit"
@@ -708,10 +707,10 @@
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "rig0-hos_mob"
-
 	armor = list("melee" = 60, "bullet" = 35, "laser" = 35, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 10)
 	species_restricted = null
 
+/* CITADEL CHANGE - Removes Virgo Fluff
 //adk09:Lethe
 /obj/item/clothing/head/helmet/hos/fluff/lethe
 	name = "Lethe's Hat"
@@ -723,7 +722,7 @@
 
 	icon_override = 'icons/mob/head.dmi'
 	item_state = "hoscap"
-
+END OF CITADEL CHANGE */
 /obj/item/weapon/storage/belt/utility/fluff/vulpine
 	name = "vulpine belt"
 	desc = "A tool-belt in Atmos colours."
@@ -745,7 +744,7 @@
 	new /obj/item/weapon/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
 	new /obj/item/stack/cable_coil(src, 30, "red")
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 // molenar:Giliana Gamish
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar
 	name = "Gili Custom Labcoat"
@@ -899,7 +898,7 @@
 	icon_state = "kamina"
 	desc = "ROW ROW, FIGHT THE POWER."
 	flash_prot = 1 //Why not.
-
+END OF CITADEL CHANGES */
 //Kitsuhana Uniforms
 /obj/item/clothing/under/rank/khi
 	name = "Delete Me"
@@ -952,6 +951,7 @@
 	worn_state = "khi_uniform_sci"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 
+/* CITADEL CHANGE - Removes Virgo Fluff
 /obj/item/clothing/under/rank/khi/fluff/aronai //Aro fluff version
 	name = "KHI meditech suit"
 	desc = "Kitsuhana Heavy Industries uniform. This one has the colors of a resleeving or mnemonics engineer. It has 'Aronai' written inside the top."
@@ -1030,7 +1030,7 @@
 	item_state = "clockworkgoggle_l_mob"
 	item_state_slots = null
 	body_parts_covered = 0
-
+END OF CITADEL CHANGES */
 
 /obj/item/clothing/shoes/black/cuffs
 	name = "gilded leg wraps"
@@ -1052,7 +1052,7 @@
 	name = "blue leg wraps"
 	desc = "Ankle coverings for digitigrade creatures. Blue!"
 	icon_state = "bluecuffs"
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //bwoincognito:Octavious Ward
 /obj/item/clothing/shoes/black/cuffs/octavious
 	name = "silvered leg wraps"
@@ -1143,6 +1143,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "taigaff_on"
 	icon_state = "taigaff" //Went ahead and made the det_corporate sprite fit.
+END OF CITADEL CHANGES */
 /*
 Departamental Swimsuits, for general use
 */
@@ -1175,14 +1176,14 @@ Departamental Swimsuits, for general use
 	desc = "It's made of a special fiber that provides no protection whatsoever, but its elastic. It has a cross on the back denoting that the wearer is trained medical personnel."
 	icon_state = "swimsuit_medical"
 	item_state = "swimsuit_medical_mob"
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //Xsdew:Penelope Allen
 /obj/item/clothing/under/swimsuit/fluff/penelope
 	name = "Penelope's Swimsuit"
 	desc = "It's made of a special fiber that provides no protection whatsoever, but its elastic. This one was custom made for Penelope."
 	icon_state = "swimsuit_penelope"
 	item_state = "swimsuit_penelope_mob"
-
+END OF CITADEL CHANGES */
 //Just some alt-uniforms themed around Star Trek - Pls don't sue, Mr Roddenberry ;_;
 // PS. <3 Nienhaus
 
@@ -1332,7 +1333,7 @@ Departamental Swimsuits, for general use
 		else
 			to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
 			return 0
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //samanthafyre:Kateryna Petrovitch
 /obj/item/clothing/suit/armor/vest/wolftaur/kate
 	name = "Kat's Fox Taur Armor"
@@ -1416,7 +1417,7 @@ Departamental Swimsuits, for general use
 	icon_state = "morthighs"
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "morthighs_mob"
-
+END OF CITADEL CHANGES */
 //Jackets For General Use. Sprited by Joji.
 /obj/item/clothing/suit/storage/fluff/jacket //Not the toggle version since it uses custom toggle code to update the on-mob icon.
 	name = "Field Jacket"
@@ -1530,7 +1531,7 @@ Departamental Swimsuits, for general use
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "loincloth"
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //BeyondMyLife: Ne'tra Ky'ram
 /obj/item/clothing/suit/storage/hooded/wintercoat/kilanocoat
 	name = "black and gold armoured coat."
@@ -1698,7 +1699,7 @@ Departamental Swimsuits, for general use
 /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi/change_name(var/signet_name = "Unknown")
 	name = "[signet_name]'s Bone Signet Ring"
 	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
-
+END OF CITADEL CHANGES */
 //KotetsuRedwood:Latex Maid Dresses, for everyone to 'enjoy'. :3c
 /obj/item/clothing/under/fluff/latexmaid
 	name = "latex maid dress"
@@ -1745,7 +1746,7 @@ Departamental Swimsuits, for general use
 	icon_state = "tronsiren_shoes"
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 /obj/item/clothing/head/helmet/space/void/security/hasd
 	name = "HASD EVA faceplate"
 	desc = "It's a faceplate that slots into the HASD EVA bodyplate assembly. Functionally useless alone."
@@ -1808,3 +1809,4 @@ Departamental Swimsuits, for general use
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
+END OF CITADEL CHANGES */

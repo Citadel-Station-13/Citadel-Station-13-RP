@@ -658,6 +658,19 @@
 //Citadel changes starts here
 		if("aslap", "aslaps")
 			m_type = 1
+			var/mob/living/carbon/human/H = src
+			var/obj/item/organ/external/L = H.get_organ("l_hand")
+			var/obj/item/organ/external/R = H.get_organ("r_hand")
+			var/left_hand_good = 0
+			var/right_hand_good = 0
+			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
+				left_hand_good = 1
+			if(R && (!(R.status & ORGAN_DESTROYED)) && (!(R.splinted)) && (!(R.status & ORGAN_BROKEN)))
+				right_hand_good = 1
+
+			if(!left_hand_good && !right_hand_good)
+				to_chat(usr, "You need at least one hand in good working order to slap someone.")
+				return
 			if(!restrained())
 				var/M = null
 				if(param)
@@ -673,6 +686,34 @@
 					message = "<span class='danger'>slaps [T.his] own butt!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,src,"Slapped own butt")
+					//adding damage for aslaps to stop the spam
+			emoteDanger =  min(1+(emoteDanger*2), 100)
+			var/danger = emoteDanger - 5
+			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Same dmg as snapping
+			for(var/organ_name in involved_parts)
+				var/obj/item/organ/external/E = get_organ(organ_name)
+				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
+					involved_parts -= organ_name
+					danger += 5
+
+
+			if(prob(danger))
+				spawn(10) //more copied snap dmg code
+					var/breaking = pick(involved_parts)
+					var/obj/item/organ/external/E = get_organ(breaking)
+					if(isSynthetic())
+						src.Weaken(5)
+						E.droplimb(1,DROPLIMB_EDGE)
+						message += " <span class='danger'>And loses a limb!</span>"
+						log_and_message_admins("lost their [breaking] with *aslap, ahahah.", src)
+					else
+						src.Weaken(5)
+						if(E.cannot_break) //Prometheans go splat
+							E.droplimb(0,DROPLIMB_BLUNT)
+						else
+							E.fracture()
+						message += " <span class='danger'>And breaks something!</span>"
+						log_and_message_admins("broke their [breaking] with *aslap, ahahah.", src)
 //Citadel changes ends here
 
 		if("scream", "screams")

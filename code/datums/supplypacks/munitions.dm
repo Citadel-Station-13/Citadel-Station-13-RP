@@ -8,7 +8,8 @@
 
 /datum/supply_pack/randomised/munitions
 	group = "Munitions"
-/* VOREStation Removal - What? This crate costs 40... the crate with just two eguns costs 50... what??? This crate is also like "the armory" and has OFFICER access?
+
+//CITADEL CHANGE - uncomments VOREstation removals /* VOREStation Removal - What? This crate costs 40... the crate with just two eguns costs 50... what??? This crate is also like "the armory" and has OFFICER access?
 /datum/supply_pack/munitions/weapons
 	name = "Weapons - Security basic equipment"
 	contains = list(
@@ -22,7 +23,7 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Security equipment crate"
-	access = access_security*/
+	access = access_security //CITADEL CHANGE - uncomments them shits*/
 
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
@@ -74,7 +75,7 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Shotgun crate"
 	access = access_armory
-/* VOREStation edit -- This is a bad idea. -- So is this.
+//CITADEL CHANGE - comments out VOREdev antifun /* VOREStation edit -- This is a bad idea. -- So is this.
 /datum/supply_pack/munitions/erifle
 	name = "Weapons - Energy marksman"
 	contains = list(/obj/item/weapon/gun/energy/sniperrifle = 2)
@@ -90,7 +91,7 @@
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Burst laser crate"
 	access = access_armory
-*/
+// CITADEL CHANGE - uncomments removed shit */
 /datum/supply_pack/munitions/ionweapons
 	name = "Weapons - Electromagnetic Rifles"
 	contains = list(
