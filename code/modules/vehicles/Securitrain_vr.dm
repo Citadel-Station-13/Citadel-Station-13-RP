@@ -101,8 +101,9 @@
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
 /obj/vehicle/train/security/bullet_act(var/obj/item/projectile/Proj)
-	if(buckled_mob && prob(70))
-		buckled_mob.bullet_act(Proj)
+	if(has_buckled_mobs() && prob(70))
+		var/mob/living/M = pick(buckled_mobs)
+		M.bullet_act(Proj)
 		return
 	..()
 
@@ -181,7 +182,7 @@
 
 	if(is_train_head() && istype(load, /mob/living/carbon/human))
 		var/mob/living/carbon/human/D = load
-		to_chat(D, "<span class='danger'>You ran over \the [H]!</span>"
+		to_chat(D, "<span class='danger'>You ran over \the [H]!</span>")
 		visible_message("<span class='danger'>\The [src] ran over \the [H]!</span>")
 		add_attack_logs(D,H,"Ran over with [src.name]")
 		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey]), driven by [D.name] ([D.ckey])</font>")
