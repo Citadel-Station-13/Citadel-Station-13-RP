@@ -2962,6 +2962,7 @@
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
 #include "modular_citadel\code\modules\nifsoft\nif.dm"
 #include "modular_citadel\code\modules\paperwork\paper.dm"
+#include "modular_citadel\code\modules\paperwork\stamps.dm"
 #include "modular_citadel\code\modules\projectiles\guns\energy\netgun_vr.dm"
 #include "modular_citadel\code\modules\resleeving\documents.dm"
 #include "modular_citadel\code\modules\resleeving\implant.dm"
