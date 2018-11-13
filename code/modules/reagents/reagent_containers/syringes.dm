@@ -203,13 +203,13 @@
 			var/contained = reagentlist()
 			while(reagents.total_volume)
 				if(ismob(target))
-					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)	
+					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
 				else
 					trans += reagents.trans_to_obj(target, amount_per_transfer_from_this)
 				update_icon()
 				if(!reagents.total_volume || !do_after(user,cycle_time,target))
 					break
-			
+
 			if (reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
