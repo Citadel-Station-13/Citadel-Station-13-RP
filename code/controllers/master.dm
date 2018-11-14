@@ -202,6 +202,7 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 	#endif
 	world.fps = config.fps
 	var/initialized_tod = REALTIMEOFDAY
+	world.TgsInitializationComplete()	//CIT CHANGE - adds hooks necessary for TGS3 integration
 	sleep(1)
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
 	// Loop.
