@@ -134,6 +134,7 @@
 	item_state = "tesh_cloak_brg"
 
 /obj/item/clothing/suit/storage/seromi/cloak/jobs
+	icon = 'icons/mob/species/seromi/deptcloak.dmi' //CITADEL FIX
 	icon_override = 'icons/mob/species/seromi/deptcloak.dmi'
 
 /obj/item/clothing/suit/storage/seromi/cloak/jobs/cargo
