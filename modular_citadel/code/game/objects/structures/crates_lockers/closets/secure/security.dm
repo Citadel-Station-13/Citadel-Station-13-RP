@@ -1,6 +1,6 @@
 //Secure head closets go here
 
-/obj/structure/closet/secure_closet/hos
+/obj/structure/closet/secure_closet/hos //It's plausible to just use initialize() to remove the plain egun from the list and add the multiphase in, but eh.
 		starts_with = list(
 		/obj/item/clothing/head/helmet/HoS,
 		/obj/item/clothing/head/helmet/HoS/hat,
@@ -25,7 +25,7 @@
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun/multiphase,	//It's plausible to just use initialize() to remove the plain egun from the list and add the multiphase in, but eh.
+		/obj/item/weapon/gun/energy/gun/multiphase,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/weapon/melee/telebaton,
