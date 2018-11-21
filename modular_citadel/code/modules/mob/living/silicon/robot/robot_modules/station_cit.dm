@@ -3,13 +3,13 @@
 //
 
 /hook/startup/proc/robot_modules_cit()
-	robot_modules["Service-Hound"] = /obj/item/weapon/robot_module/robot/clerical/brodog // Citadel addition
+	robot_modules["Service-Hound"] = /obj/item/weapon/robot_module/robot/clerical/brodog
 
 // Uses modified K9 sprites.
 /obj/item/weapon/robot_module/robot/clerical/brodog
 	name = "service hound module"
 	sprites = list(
-					"Morale Hound" = "k69",
+					"Zerohound" = "k0",
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
