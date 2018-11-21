@@ -3039,4 +3039,5 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\nsfw.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
+#include "modular_citadel\maps\tether\tether_defines.dm"
 // END_INCLUDE
