@@ -1,4 +1,4 @@
-/datum/supply_packs/supply/medieval
+/datum/supply_pack/supply/medieval
 	name = "Knight set crate"
 	contains = list(
 			/obj/item/clothing/head/helmet/medieval/red = 1,
@@ -15,7 +15,7 @@
 	containername = "knight set crate"
 	contraband = 1
 
-/datum/supply_packs/supply/deusvult
+/datum/supply_pack/supply/deusvult
 	name = "Crusader set crate"
 	contains = list(
 			/obj/item/clothing/head/helmet/medieval/crusader/templar = 2,

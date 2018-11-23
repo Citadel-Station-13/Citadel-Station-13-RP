@@ -88,11 +88,13 @@ character_name: Aronai Kadigan
 item_path: /obj/item/weapon/card/id/centcom/station/fluff/aronai
 }
 
+Weapon Box. Permit Expired
 {
 ckey: aerowing
 character_name: Sebastian Aji
 item_path: /obj/item/weapon/storage/box/fluff/sebastian_aji
 }
+
 # ######## B CKEYS
 {
 ckey: benemuel
@@ -188,17 +190,18 @@ character_name: Dhaeleena M'iar
 item_path: /obj/item/clothing/accessory/medal/silver/security/fluff/dhael
 }
 
-{
-ckey: dhaeleena
-character_name: Dhaeleena M'iar
-item_path: /obj/item/weapon/gun/projectile/revolver/mateba/fluff/dhael
-}
-
-{
-ckey: dhaeleena
-character_name: Dhaeleena M'iar
-item_path: /obj/item/clothing/accessory/permit/gun/fluff/dhaeleena_miar
-}
+#Permit Expired
+#{
+#ckey: dhaeleena
+#character_name: Dhaeleena M'iar
+#item_path: /obj/item/weapon/gun/projectile/revolver/mateba/fluff/dhael
+#}
+#
+#{
+#ckey: dhaeleena
+#character_name: Dhaeleena M'iar
+#item_path: /obj/item/clothing/accessory/permit/gun/fluff/dhaeleena_miar
+#}
 
 {
 ckey: dickfreedomjohnson
@@ -229,13 +232,7 @@ item_desc: An engraved coin made of diamond. On the side for heads is printed th
 {
 ckey: draycu
 character_name: Schae Yonra
-item_path: /obj/item/weapon/melee/fluff/holochain/mass
-}
-
-{
-ckey: draycu
-character_name: Schae Yonra
-item_path: /obj/item/weapon/implanter/reagent_generator/yonra
+item_path: /obj/item/weapon/storage/box/fluff/yonra
 }
 
 # ######## E CKEYS
@@ -306,23 +303,23 @@ character_name: Belle Day
 item_path: /obj/item/weapon/implanter/reagent_generator/belle
 }
 
-{
-ckey: hzdonut
-character_name: Jesse Soemmer
-item_path: /obj/item/weapon/gun/projectile/revolver/fluff/jesselemat
-}
-
-{
-ckey: hzdonut
-character_name: Jesse Soemmer
-item_path: /obj/item/clothing/accessory/permit/gun/fluff/JesseSoemmer
-}
-
-{
-ckey: hzdonut
-character_name: Jesse Soemmer
-item_path: /obj/item/clothing/accessory/holster/hip
-}
+#{
+#ckey: hzdonut
+#character_name: Jesse Soemmer
+#item_path: /obj/item/weapon/gun/projectile/revolver/fluff/jesselemat
+#}
+#
+#{
+#ckey: hzdonut
+#character_name: Jesse Soemmer
+#item_path: /obj/item/clothing/accessory/permit/gun/fluff/JesseSoemmer
+#}
+#
+#{
+#ckey: hzdonut
+#character_name: Jesse Soemmer
+#item_path: /obj/item/clothing/accessory/holster/hip
+#}
 
 # ######## I CKEYS
 
@@ -471,6 +468,18 @@ item_path: /obj/item/device/modkit_conversion/fluff/harmonyspace
 
 # ######## K CKEYS
 {
+ckey: kazkin
+character_name: Ahzrukhal Ahkeen
+item_path: /obj/item/clothing/accessory/medal/silver/unity
+}
+
+{
+ckey: keekenox
+character_name: SMU-453
+item_path: /obj/item/clothing/accessory/medal/nobel_science
+}
+
+{
 ckey: ketrai
 character_name: Ketrai
 item_path: /obj/item/clothing/head/fluff/ketrai
@@ -492,6 +501,12 @@ item_path: /obj/item/clothing/glasses/omnihud/kamina
 ckey: Killjaden
 character_name: Lassara Faaira'Nrezi
 item_path: /obj/item/clothing/accessory/storage/knifeharness
+}
+
+{
+ckey: kitchifox
+character_name: Rana Uma
+item_path: /obj/item/clothing/accessory/medal/silver/unity
 }
 
 {
@@ -519,11 +534,14 @@ item_path: /obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
 }
 
 # ######## L CKEYS
+
+#Weapon Box. Permit Expired
 #{
 #ckey: luminescentring
 #character_name: Briana Moore
 #item_path: /obj/item/weapon/storage/box/fluff/briana_moore
 #}
+
 {
 ckey: luminescentring
 character_name: Briana Moore
@@ -642,6 +660,12 @@ item_desc: "A cheap Martian knock-off of a Colt M1911. It has the word 'Cavalet'
 }
 
 {
+ckey: phoaly
+character_name: Lily Maximus
+item_path: /obj/item/clothing/accessory/medal/silver/unity
+}
+
+{
 ckey: pontifexminimus
 character_name: Lucius Null
 item_path: /obj/item/weapon/fluff/dragor_dot
@@ -731,7 +755,7 @@ item_path: /obj/item/clothing/glasses/sunglasses/fluff/alfonso
 #item_path: /obj/item/clothing/suit/armor/vest/wolftaur/serdy
 #req_access = 1
 #}
-
+#
 #{
 #ckey: silencedmp5a5
 #character_name: Serdykov Antoz
@@ -808,15 +832,33 @@ item_path: /obj/item/clothing/under/sexymime
 
 # ######## T CKEYS
 {
+ckey: tabiranth
+character_name: Ascian
+item_path: /obj/item/clothing/accessory/medal/silver/unity
+}
+
+{
 ckey: techtypes
 character_name: Lasshseeki Korss
 item_path: /obj/item/weapon/implant/language/eal
 }
 
 {
+ckey: tinydude16
+character_name: Konor Foxe
+item_path: /obj/item/clothing/accessory/medal/silver/unity
+}
+
+{
 ckey: tonyvld
 character_name: Tony Bingham
 item_path: /obj/item/clothing/head/fluff/runac
+}
+
+{
+ckey: tabiranth
+character_name: Ascian
+item_path: /obj/item/weapon/grenade/spawnergrenade/spirit
 }
 
 # ######## U CKEYS
@@ -956,6 +998,12 @@ item_path: /obj/item/weapon/storage/box/fluff/penelope
 ckey: Xennith
 character_name: Amy Lessen
 item_path: /obj/item/weapon/card/id/fluff/xennith
+}
+
+{
+ckey: Xonkon
+character_name: Ali
+item_path: /obj/item/clothing/accessory/medal/silver/unity
 }
 
 # ######## Y CKEYS
