@@ -7,9 +7,10 @@
 
 // Uses modified K9 sprites.
 /obj/item/weapon/robot_module/robot/clerical/brodog
-	name = "service hound module"
+	name = "service-hound module"
 	sprites = list(
-					"Zerohound" = "k0",
+					"Blackhound" = "k50",
+					"Pinkhound" = "k69"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
