@@ -20,3 +20,5 @@
 	#define USING_MAP_DATUM /datum/map
 	#define MAP_OVERRIDE 1
 #endif
+
+#define USE_CUSTOM_ERROR_HANDLER

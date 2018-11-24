@@ -1225,8 +1225,8 @@ END OF CITADEL CHANGES */
 	for(var/obj/item/device/perfect_tele_beacon/B in beacons)
 		B.tele_hand = null
 	beacons.Cut()
-	qdel_null(power_source)
-	qdel_null(spk)
+	QDEL_NULL(power_source)
+	QDEL_NULL(spk)
 	return ..()
 
 /obj/item/device/perfect_tele/update_icon()
@@ -1860,11 +1860,11 @@ END OF CITADEL CHANGES */
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/melee/fluffstuff/awoosword
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword
 	name = "Wolfgirl Sword Replica"
 	desc = "A replica of a large, scimitar-like sword with a dull edge. Ceremonial... until it isn't."
 	icon = 'icons/obj/weapons_vr.dmi'
-	icon_state = "awoosword"
+	icon_state = "wolfgirlsword"
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	active_force = 15
 	active_throwforce = 7
@@ -1876,16 +1876,16 @@ END OF CITADEL CHANGES */
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
-	var/active_state = "awoosword"
-	allowed = list(/obj/item/weapon/shield/fluff/awooshield)
+	var/active_state = "wolfgirlsword"
+	allowed = list(/obj/item/weapon/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS
 
-/obj/item/weapon/melee/fluffstuff/awoosword/dropped(var/mob/user)
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword/dropped(var/mob/user)
 	..()
 	if(!istype(loc,/mob))
 		deactivate(user)
 
-/obj/item/weapon/melee/fluffstuff/awoosword/activate(mob/living/user)
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword/activate(mob/living/user)
 	if(!active)
 		to_chat(user, "<span class='notice'>The [src] is now sharpened. It will cut!</span>")
 
@@ -1897,7 +1897,7 @@ END OF CITADEL CHANGES */
 	damtype = BRUTE
 
 
-/obj/item/weapon/melee/fluffstuff/awoosword/deactivate(mob/living/user)
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)
 	if(active)
 		to_chat(user, "<span class='notice'>The [src] grows dull!</span>")
 	..()

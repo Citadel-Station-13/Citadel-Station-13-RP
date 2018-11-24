@@ -4,6 +4,7 @@
 	tt_desc = "Homo felinus"
 	icon = 'icons/mob/vore.dmi'
 	icon_state = "catgirl"
+	intelligence_level = SA_HUMANOID
 
 	speed = 5
 
@@ -29,6 +30,7 @@
 
 	var/random_skin = 1
 	var/list/skins = list(
+		"catgirl",
 		"catgirlnude",
 		"catgirlbikini",
 		"catgirlrednude",

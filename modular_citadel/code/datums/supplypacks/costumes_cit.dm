@@ -1,4 +1,4 @@
-/datum/supply_packs/costumes/larp
+/datum/supply_pack/costumes/larp
 	name = "Knight cosplay crate"
 	contains = list(
 			/obj/item/clothing/head/medievalfake/red = 1,
@@ -14,7 +14,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "knight cosplay crate"
 
-/datum/supply_packs/costumes/situla_vult
+/datum/supply_pack/costumes/situla_vult
 	name = "Crusader cosplay crate"
 	contains = list(
 			/obj/item/clothing/head/medievalfake/crusader/templar = 2,
