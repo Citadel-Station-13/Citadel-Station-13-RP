@@ -2,7 +2,7 @@
 /obj/structure/closet/fireaxecabinet
 	name = "fire axe cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
-	var/obj/item/weapon/material/twohanded/fireaxe/fireaxe			//CITADEL CHANGE - Should fix the fireaxe
+	var/obj/item/weapon/material/twohanded/fireaxe/fireaxe
 	icon_state = "fireaxe1000"
 	icon_closed = "fireaxe1000"
 	icon_opened = "fireaxe1100"
@@ -16,7 +16,7 @@
 
 	starts_with = list(/obj/item/weapon/material/twohanded/fireaxe)
 
-/obj/structure/closet/fireaxecabinet/New()
+/obj/structure/closet/fireaxecabinet/initialize()
 	..()
 	fireaxe = locate() in contents
 
