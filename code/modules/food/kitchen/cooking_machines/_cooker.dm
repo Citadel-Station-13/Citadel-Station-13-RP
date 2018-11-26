@@ -18,7 +18,7 @@
 	var/cooking						// Whether or not the machine is currently operating.
 	var/cook_type					// A string value used to track what kind of food this machine makes.
 	var/cook_time = 200				// How many ticks the cooking will take.
-	var/cooking_sound
+	var/cooking_sound				// Citadel edit. Sound that plays during the cooking.
 	var/can_cook_mobs				// Whether or not this machine accepts grabbed mobs.
 	var/food_color					// Colour of resulting food item.
 	var/cooked_sound				// Sound played when cooking completes.
@@ -118,7 +118,7 @@
 	icon_state = on_icon
 
 	//This does pretty much what you expect; play a cooking sound if there is one.
-	if(cooking_sound)
+	if(cooking_sound)//Citadel edit
 		playsound(get_turf(src), cooking_sound, 50, 1)
 
 	// Doop de doo. Jeopardy theme goes here.
