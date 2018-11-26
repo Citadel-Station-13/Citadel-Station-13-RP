@@ -18,6 +18,7 @@
 	var/cooking						// Whether or not the machine is currently operating.
 	var/cook_type					// A string value used to track what kind of food this machine makes.
 	var/cook_time = 200				// How many ticks the cooking will take.
+	var/cooking_sound
 	var/can_cook_mobs				// Whether or not this machine accepts grabbed mobs.
 	var/food_color					// Colour of resulting food item.
 	var/cooked_sound				// Sound played when cooking completes.
@@ -115,6 +116,10 @@
 	cooking_obj.forceMove(src)
 	cooking = 1
 	icon_state = on_icon
+
+	//This does pretty much what you expect; play a cooking sound if there is one.
+	if(cooking_sound)
+		playsound(get_turf(src), cooking_sound, 50, 1)
 
 	// Doop de doo. Jeopardy theme goes here.
 	sleep(cook_time)
