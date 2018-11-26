@@ -54,6 +54,10 @@
 		update_clothing_icon()	//so our overlays update
 
 
+/obj/item/clothing/suit/storage/toggle/AltClick()
+	..()
+	toggle()
+
 /obj/item/clothing/suit/storage/hooded/toggle
 	flags_inv = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle

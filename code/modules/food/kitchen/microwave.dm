@@ -163,6 +163,9 @@
 	user.set_machine(src)
 	interact(user)
 
+/obj/machinery/microwave/AltClick()
+	cook()
+
 /*******************
 *   Microwave Menu
 ********************/
