@@ -26,7 +26,6 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	hooded = 1
 	hoodtype = /obj/item/clothing/head/donator/bee_hood
 
 /obj/item/clothing/head/donator/bee_hood

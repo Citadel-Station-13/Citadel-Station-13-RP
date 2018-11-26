@@ -35,8 +35,8 @@
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 		/*		CITADEL EDIT - This is dumb.
-		if(vote && vote.mode)
-			src << "<span class='danger'>OOC is not allowed during voting.</span>"
+		if(SSvote && SSvote.mode)
+			to_chat(src,"<span class='danger'>OOC is not allowed during voting.</span>")
 			return
 		*/
 
