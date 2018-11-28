@@ -1,8 +1,10 @@
 /datum/design/item/stock_part/basic_capacitor
 	time = 3
-  /datum/design/item/stock_part/adv_capacitor
+
+/datum/design/item/stock_part/adv_capacitor
 	time = 3
-  /datum/design/item/stock_part/super_capacitor
+
+/datum/design/item/stock_part/super_capacitor
 	time = 3
   
  /datum/design/item/stock_part/micro_mani
