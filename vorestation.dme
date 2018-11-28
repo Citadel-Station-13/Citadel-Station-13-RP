@@ -3020,6 +3020,7 @@
 #include "modular_citadel\code\modules\clothing\suits\donatorarmor.dm"
 #include "modular_citadel\code\modules\clothing\suits\donatorlabcoat.dm"
 #include "modular_citadel\code\modules\clothing\suits\medieval_armor.dm"
+#include "modular_citadel\code\modules\clothing\suits\miscellaneous_cit.dm"
 #include "modular_citadel\code\modules\clothing\under\donatoruniform.dm"
 #include "modular_citadel\code\modules\clothing\under\miscellaneous_vr.dm"
 #include "modular_citadel\code\modules\clothing\under\accessories\clothing_cit.dm"
