@@ -11,7 +11,7 @@
 
 	log_adminsay(msg,src)
 
-	if(check_rights(R_ADMIN,0))
+	if(check_rights(R_ADMIN,R_MOD, 0))
 		for(var/client/C in admins)
 			if(R_ADMIN & C.holder.rights)
 				C << "<span class='admin_channel'>" + create_text_tag("admin", "ADMIN:", C) + " <span class='name'>[key_name(usr, 1)]</span>([admin_jump_link(mob, src)]): <span class='message'>[msg]</span></span>"
