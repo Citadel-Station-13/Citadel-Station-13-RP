@@ -45,7 +45,7 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("tether")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_LOW,

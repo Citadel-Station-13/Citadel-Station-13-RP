@@ -1,4 +1,4 @@
-/datum/supply_packs/security/kevlarkit
+/datum/supply_pack/security/kevlarkit
 	name = "Misc - Kevlar upgrade kit"
 	contains = list(
 			/obj/item/kevlarupgrade = 5,
