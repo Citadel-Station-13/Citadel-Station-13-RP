@@ -2,7 +2,7 @@
 	var/includes_tail			//Cyberlimbs dmi includes a tail sprite to wear.
 	var/includes_wing			//Cyberlimbs dmi includes a wing sprite to wear.
 	var/list/whitelisted_to		//List of ckeys that are allowed to pick this in charsetup.
-
+/* CITADEL CHANGE - Removes these ckey whitelisted special snowflake limbs
 //////////////// For-specific-character fluff ones /////////////////
 // arokha : Aronai Kadigan
 /datum/robolimb/kitsuhana
@@ -31,7 +31,7 @@
 
 /obj/item/weapon/disk/limb/white_kryten
 	company = "White Kryten Cybernetics"
-
+END OF CITADEL CHANGES */
 // verkister : Rahwoof Boop
 /datum/robolimb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."

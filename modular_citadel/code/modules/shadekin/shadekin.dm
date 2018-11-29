@@ -148,7 +148,7 @@
 	return ..()
 
 /mob/living/simple_animal/shadekin/Destroy()
-	qdel_null_list(shadekin_abilities)
+	QDEL_NULL_LIST(shadekin_abilities)
 	. = ..()
 
 /mob/living/simple_animal/shadekin/init_vore()
@@ -210,7 +210,7 @@
 	. = ..()
 	if(ability_flags & AB_PHASE_SHIFTED)
 		density = FALSE
-	
+
 	//Convert spare nutrition into energy at a certain ratio
 	if(. && nutrition > initial(nutrition) && energy < 100)
 		nutrition = max(0, nutrition-5)
@@ -218,7 +218,7 @@
 
 /mob/living/simple_animal/shadekin/update_icon()
 	. = ..()
-	
+
 	cut_overlay(tailimage)
 
 	tailimage.icon_state = icon_state
