@@ -407,9 +407,39 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
+"aaT" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "aaU" = (
 /turf/simulated/wall,
 /area/maintenance/lower/trash_pit)
+"aaV" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"aaW" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "aaX" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
@@ -481,6 +511,17 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
+"abf" = (
+/obj/structure/cable/ender{
+	icon_state = "4-8";
+	id = "surface-solars"
+	},
+/obj/structure/railing,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "abh" = (
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/refinery)
@@ -27335,13 +27376,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
-"cGe" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
 "cHS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -27470,16 +27504,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
-"ezH" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
 "ePE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -27831,14 +27855,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
-"jRG" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/structure/catwalk,
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
 "kcR" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
@@ -27856,19 +27872,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
-"kfl" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/surfacebase/mining_main/external)
 "kuC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -28114,15 +28117,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
-"ozS" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
 "oAC" = (
 /obj/structure/railing{
 	dir = 4
@@ -28140,14 +28134,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
-"oPX" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/surfacebase/mining_main/external)
 "oUC" = (
 /obj/machinery/light{
 	dir = 8
@@ -28435,21 +28421,6 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
-"tMg" = (
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "0-8"
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
 "tNF" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -28539,15 +28510,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
-"vbd" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-4"
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
 "vkK" = (
 /turf/simulated/wall,
 /area/maintenance/lower/public_garden_maintenence)
@@ -28866,82 +28828,82 @@ aaa
 "}
 (2,1,1) = {"
 aaa
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-byr
+aaT
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+frA
+frA
+frA
+abf
 aad
 aFC
 aFC
@@ -29008,7 +28970,7 @@ aaa
 "}
 (3,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -29150,7 +29112,7 @@ aaa
 "}
 (4,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -29292,7 +29254,7 @@ aaa
 "}
 (5,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -29434,7 +29396,7 @@ aaa
 "}
 (6,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -29576,7 +29538,7 @@ aaa
 "}
 (7,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -29718,7 +29680,7 @@ aaa
 "}
 (8,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -29860,7 +29822,7 @@ aaa
 "}
 (9,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30002,7 +29964,7 @@ aaa
 "}
 (10,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30144,7 +30106,7 @@ aaa
 "}
 (11,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30286,7 +30248,7 @@ aaa
 "}
 (12,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30428,7 +30390,7 @@ aaa
 "}
 (13,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30570,7 +30532,7 @@ aaa
 "}
 (14,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30712,7 +30674,7 @@ aaa
 "}
 (15,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30854,7 +30816,7 @@ aaa
 "}
 (16,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -30996,7 +30958,7 @@ aaa
 "}
 (17,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31138,7 +31100,7 @@ aaa
 "}
 (18,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31280,7 +31242,7 @@ aaa
 "}
 (19,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31422,7 +31384,7 @@ aaa
 "}
 (20,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31564,7 +31526,7 @@ aaa
 "}
 (21,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31706,7 +31668,7 @@ aaa
 "}
 (22,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31848,7 +31810,7 @@ aaa
 "}
 (23,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -31990,7 +31952,7 @@ aaa
 "}
 (24,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32132,7 +32094,7 @@ aaa
 "}
 (25,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32274,7 +32236,7 @@ aaa
 "}
 (26,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32416,7 +32378,7 @@ aaa
 "}
 (27,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32558,7 +32520,7 @@ aaa
 "}
 (28,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32700,7 +32662,7 @@ aaa
 "}
 (29,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32842,7 +32804,7 @@ aaa
 "}
 (30,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -32984,7 +32946,7 @@ aaa
 "}
 (31,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33126,7 +33088,7 @@ aaa
 "}
 (32,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33268,7 +33230,7 @@ aaa
 "}
 (33,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33410,7 +33372,7 @@ aaa
 "}
 (34,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33552,7 +33514,7 @@ aaa
 "}
 (35,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33694,7 +33656,7 @@ aaa
 "}
 (36,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33836,7 +33798,7 @@ aaa
 "}
 (37,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -33978,7 +33940,7 @@ aaa
 "}
 (38,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34120,7 +34082,7 @@ aaa
 "}
 (39,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34262,7 +34224,7 @@ aaa
 "}
 (40,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34404,7 +34366,7 @@ aaa
 "}
 (41,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34546,7 +34508,7 @@ aaa
 "}
 (42,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34688,7 +34650,7 @@ aaa
 "}
 (43,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34830,7 +34792,7 @@ aaa
 "}
 (44,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -34972,7 +34934,7 @@ aaa
 "}
 (45,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35114,7 +35076,7 @@ aaa
 "}
 (46,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35256,7 +35218,7 @@ aaa
 "}
 (47,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35398,7 +35360,7 @@ aaa
 "}
 (48,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35540,7 +35502,7 @@ aaa
 "}
 (49,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35682,7 +35644,7 @@ aaa
 "}
 (50,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35824,7 +35786,7 @@ aaa
 "}
 (51,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -35966,7 +35928,7 @@ aaa
 "}
 (52,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36108,7 +36070,7 @@ aaa
 "}
 (53,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36250,7 +36212,7 @@ aaa
 "}
 (54,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36392,7 +36354,7 @@ aaa
 "}
 (55,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36534,7 +36496,7 @@ aaa
 "}
 (56,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36676,7 +36638,7 @@ aaa
 "}
 (57,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36818,7 +36780,7 @@ aaa
 "}
 (58,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -36960,7 +36922,7 @@ aaa
 "}
 (59,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37102,7 +37064,7 @@ aaa
 "}
 (60,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37244,7 +37206,7 @@ aaa
 "}
 (61,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37386,7 +37348,7 @@ aaa
 "}
 (62,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37528,7 +37490,7 @@ aaa
 "}
 (63,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37670,7 +37632,7 @@ aaa
 "}
 (64,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37812,7 +37774,7 @@ aaa
 "}
 (65,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -37954,7 +37916,7 @@ clb
 "}
 (66,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -38096,7 +38058,7 @@ aaa
 "}
 (67,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -38238,7 +38200,7 @@ aaa
 "}
 (68,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -38380,7 +38342,7 @@ aaa
 "}
 (69,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -38522,7 +38484,7 @@ aaa
 "}
 (70,1,1) = {"
 aaa
-aad
+byr
 aad
 aad
 aad
@@ -38664,24 +38626,24 @@ aaa
 "}
 (71,1,1) = {"
 aaa
-kdx
-fAq
-frA
-frA
-frA
-frA
-frA
-frA
-ezH
-cGe
-cGe
-cGe
-cGe
-cGe
-cGe
-jRG
-frA
-vbd
+aaV
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
+aad
 aah
 aah
 aah
@@ -38823,7 +38785,7 @@ aad
 aad
 aad
 aad
-ozS
+aad
 aah
 aah
 aah
@@ -38965,7 +38927,7 @@ aad
 aad
 aad
 aad
-ozS
+aad
 aah
 aah
 aah
@@ -39107,7 +39069,7 @@ aad
 aFv
 aad
 aad
-tMg
+aad
 aah
 aao
 aao
@@ -39249,7 +39211,7 @@ aae
 aae
 aae
 aae
-oPX
+aaf
 aaf
 aao
 aau
@@ -39391,7 +39353,7 @@ aae
 aae
 aae
 aae
-kfl
+aaW
 aaj
 aao
 aaw
