@@ -1,5 +1,5 @@
 /*
-	Various Stock Parts
+	Various Stock Parts!
 */
 
 /datum/design/item/stock_part
