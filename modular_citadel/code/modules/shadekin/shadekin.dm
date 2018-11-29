@@ -10,7 +10,7 @@
 
 /mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
-	desc = "Some sort of fluffer. Big ears, long tail."
+	desc = "A strange, undocumented creature. It doesn't look like anything you've seen before."
 	icon = 'icons/mob/vore_shadekin.dmi'
 	icon_state = "map_example"
 	icon_living = "map_example"
