@@ -3037,6 +3037,8 @@
 #include "modular_citadel\code\modules\paperwork\paper.dm"
 #include "modular_citadel\code\modules\paperwork\stamps.dm"
 #include "modular_citadel\code\modules\projectiles\guns\energy\netgun_vr.dm"
+#include "modular_citadel\code\modules\projectiles\guns\energy\nuclear.dm"
+#include "modular_citadel\code\modules\projectiles\projectile\energy.dm"
 #include "modular_citadel\code\modules\resleeving\documents.dm"
 #include "modular_citadel\code\modules\resleeving\implant.dm"
 #include "modular_citadel\code\modules\resleeving\sleevecard.dm"
