@@ -84,6 +84,7 @@
 	build_path = /obj/item/device/perfect_tele
 	sort_string = "HABAF"
 
+/* Citadel Comment Out because Travis
 /datum/design/item/nif
 	name = "nanite implant framework"
 	id = "nif"
@@ -100,6 +101,7 @@
 	build_path = /obj/item/device/nif/bioadap
 	sort_string = "HABBD" //Changed String from HABBE to HABBD
 //Addiing bioadaptive NIF to Protolathe
+*/
 
 /datum/design/item/nifrepairtool
 	name = "adv. NIF repair tool"
