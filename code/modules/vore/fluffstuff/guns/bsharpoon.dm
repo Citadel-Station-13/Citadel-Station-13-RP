@@ -17,7 +17,7 @@
 	var/last_fire = 0
 	var/transforming = 0
 	var/cooldown = 20 SECONDS
-	var/wallhack = FALSE
+	var/wallhack = TRUE
 	var/range = 8
 	var/failchance = 5
 	var/failrange = 24
