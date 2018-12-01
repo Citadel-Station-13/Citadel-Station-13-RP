@@ -180,7 +180,7 @@
 		spawn(50)
 			new /obj/item/honey_frame(loc)
 			new /obj/item/stack/material/wax(loc)
-			playsound(src,'sound/machines/beep_1.ogg',40,1) //Soft sound so you know it did something.
+			playsound(src,'modular_citadel/sound/machines/beep_1.ogg',40,1) //CITADEL EDIT. Soft sound so you know it did something.
 			honey += processing
 			processing = 0
 			icon_state = "centrifuge"
