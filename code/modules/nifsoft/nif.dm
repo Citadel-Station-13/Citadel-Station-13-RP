@@ -190,11 +190,11 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	if(durability <= 0)
 		stat = NIF_TEMPFAIL
 		update_icon()
-
+		
 		if(human)
 			notify("Danger! General system insta#^!($",TRUE)
 			to_chat(human,"<span class='danger'>Your NIF vision overlays disappear and your head suddenly seems very quiet...</span>")
-
+		
 //Attackby proc, for maintenance
 /obj/item/device/nif/attackby(obj/item/weapon/W, mob/user as mob)
 	if(open == 0 && W.is_screwdriver())

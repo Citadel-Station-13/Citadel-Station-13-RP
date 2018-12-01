@@ -147,7 +147,7 @@
 
 	spawn(0) //Let their real nif load if they have one
 		if(!H.nif)
-			var/obj/item/device/nif/protean/new_nif = new()
+			var/obj/item/device/nif/protean/new_nif = new() //Citadel Change: Bioadaptive to Protean
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)
