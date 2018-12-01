@@ -6025,21 +6025,18 @@
 /area/tether/surfacebase/atrium_two)
 "na" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
 "nb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6051,6 +6048,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
@@ -6398,15 +6398,14 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/light/small,
 /obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
 "nM" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/steeldecal/steel_decals6,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
 "nN" = (
@@ -6567,25 +6566,16 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/janitor)
 "oe" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/eastleft{
-	name = "Janitorial Desk";
-	icon_state = "left";
-	dir = 2
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/obj/machinery/door/window/eastleft{
-	name = "Janitorial Desk";
-	icon_state = "left";
-	dir = 1
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Atrium Second Floor"
 	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "janitor_blast";
-	layer = 3.3;
-	name = "Janitorial Shutters"
-	},
-/turf/simulated/floor/tiled,
-/area/janitor)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "of" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -7033,10 +7023,12 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/purple/border{
+	icon_state = "bordercolor";
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -7051,13 +7043,16 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -7097,16 +7092,14 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -7121,30 +7114,26 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/turf/simulated/floor/tiled,
-/area/janitor)
-"oS" = (
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1
+	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/purple/bordercorner2{
-	dir = 4
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
 	},
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
@@ -7163,25 +7152,12 @@
 	pixel_x = 25;
 	pixel_y = 0
 	},
-/obj/machinery/light_switch{
-	pixel_x = 34;
-	pixel_y = 1
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "janitor_blast";
-	name = "Privacy Shutters";
-	pixel_x = 0;
-	pixel_y = 24;
-	pixel_z = 0
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
-	dir = 5
+	dir = 4
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
-/area/janitor)
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "oV" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -7479,15 +7455,18 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
 "pB" = (
+/obj/item/weapon/stool/padded,
+/obj/effect/landmark/start{
+	name = "Janitor"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
-	},
-/obj/item/weapon/stool/padded,
-/obj/effect/landmark/start{
-	name = "Janitor"
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
@@ -7496,27 +7475,41 @@
 /obj/effect/landmark/start{
 	name = "Janitor"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "pD" = (
 /turf/simulated/floor/tiled,
 /area/janitor)
 "pE" = (
-/obj/machinery/hologram/holopad,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
-/area/janitor)
-"pF" = (
-/obj/structure/janitorialcart,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/light_switch{
+	pixel_x = 34;
+	pixel_y = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 25;
+	pixel_y = 0
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
+"pF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "pG" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -7907,30 +7900,37 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
 "qn" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/floor_decal/rust,
-/obj/random/trash_pile,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/south)
-"qo" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
-	},
+/obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/borderfloor{
-	dir = 8
+	dir = 9
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8
+	icon_state = "bordercolor";
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/janitor)
+"qo" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "qp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "qq" = (
@@ -7940,22 +7940,16 @@
 /turf/simulated/floor/tiled,
 /area/janitor)
 "qr" = (
-/obj/structure/janitorialcart,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/janitor)
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "qs" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -8299,44 +8293,21 @@
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled,
 /area/janitor)
-"qZ" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_x = 0;
-	pixel_y = -26
-	},
-/obj/structure/mopbucket,
-/obj/item/weapon/mop,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/turf/simulated/floor/tiled,
-/area/janitor)
 "ra" = (
-/obj/structure/mopbucket,
-/obj/item/weapon/mop,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
 "rb" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 9
+/obj/machinery/door/airlock{
+	name = "Custodial Closet";
+	req_access = list(26)
 	},
-/obj/effect/floor_decal/corner/purple/bordercorner2{
-	dir = 9
-	},
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "rc" = (
@@ -8346,23 +8317,20 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
-/area/janitor)
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "rd" = (
-/obj/structure/reagent_dispensers/watertank,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
-	dir = 6
+	dir = 4
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 6
-	},
-/obj/effect/floor_decal/borderfloor/corner2,
-/obj/effect/floor_decal/corner/purple/bordercorner2,
-/turf/simulated/floor/tiled,
-/area/janitor)
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "re" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -8742,13 +8710,15 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
 "rN" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Custodial Maintenance";
-	req_access = list(26)
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
-/obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/tiled/steel_grid,
-/area/janitor)
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Atrium Second Floor"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "rO" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/east_stairs_two)
@@ -9184,47 +9154,36 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/breakroom)
-"sx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/random/junk,
-/turf/simulated/floor,
-/area/maintenance/lower/south)
 "sy" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor,
-/area/maintenance/lower/south)
+/obj/structure/closet/jcloset,
+/obj/item/weapon/soap/nanotrasen,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	icon_state = "bordercolor";
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/janitor)
 "sz" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/maintenance/lower/south)
-"sA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet,
-/obj/random/maintenance/research,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/clean,
-/obj/random/junk,
-/turf/simulated/floor,
-/area/maintenance/lower/south)
 "sB" = (
-/obj/machinery/alarm{
-	dir = 4;
-	icon_state = "alarm0";
-	pixel_x = -22
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/east_stairs_two)
 "sC" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/east_stairs_two)
 "sD" = (
@@ -9715,6 +9674,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/east_stairs_two)
 "tw" = (
+/obj/machinery/alarm{
+	breach_detection = 0;
+	dir = 8;
+	pixel_x = 25;
+	pixel_y = 0;
+	report_danger_level = 0
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/east_stairs_two)
 "tx" = (
@@ -17648,6 +17614,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"JI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "Kj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17702,6 +17675,14 @@
 "LI" = (
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
+"LJ" = (
+/obj/structure/mopbucket,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/weapon/mop,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled,
+/area/janitor)
 "LM" = (
 /obj/structure/frame{
 	anchored = 1
@@ -17724,6 +17705,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"MT" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "MX" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -17746,9 +17734,27 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Nb" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "Nf" = (
 /turf/simulated/open,
 /area/tether/surfacebase/public_garden_two)
+"No" = (
+/obj/structure/mopbucket,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/weapon/mop,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/janitor)
 "Nq" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/borderfloor/corner{
@@ -17920,6 +17926,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_two)
+"QP" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled,
+/area/janitor)
 "Rc" = (
 /obj/structure/table/rack/holorack,
 /obj/random/maintenance/clean,
@@ -17965,6 +17975,12 @@
 /obj/structure/sign/poster,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
+"SB" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash_pile,
+/turf/simulated/floor,
+/area/maintenance/lower/south)
 "SE" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -17977,6 +17993,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"SG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "SH" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -18121,6 +18144,25 @@
 /obj/effect/floor_decal/corner/lime/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Wu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/structure/closet,
+/obj/random/junk,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/research,
+/turf/simulated/floor,
+/area/maintenance/lower/south)
+"Wv" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/janitor)
 "WO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -18130,6 +18172,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"WW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "Xc" = (
 /obj/structure/dogbed,
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -18202,6 +18252,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_two)
+"XY" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/purple/bordercorner,
+/turf/simulated/floor/tiled,
+/area/janitor)
 "Ye" = (
 /obj/structure/frame/computer,
 /turf/simulated/floor,
@@ -18219,6 +18274,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Yv" = (
+/obj/structure/janitorialcart,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled,
+/area/janitor)
 "YE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18301,6 +18362,18 @@
 /obj/effect/floor_decal/corner/lime/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Zy" = (
+/obj/structure/janitorialcart,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/janitor)
 "ZF" = (
 /obj/machinery/seed_extractor,
 /obj/effect/floor_decal/borderfloor{
@@ -31197,11 +31270,11 @@ mX
 nA
 nW
 en
-dY
+oc
 qn
-qW
-qW
-sx
+Wv
+Wv
+qX
 tt
 ua
 ua
@@ -31340,10 +31413,10 @@ nz
 oc
 oc
 oc
-oc
-oc
-oc
-sy
+oT
+pD
+pD
+qY
 tt
 ub
 ua
@@ -31483,8 +31556,8 @@ oc
 oN
 pB
 qo
-qX
-oc
+pD
+XY
 sy
 tt
 uc
@@ -31625,9 +31698,9 @@ oc
 oO
 pC
 pD
-qY
+pD
+No
 oc
-sz
 tt
 tt
 tt
@@ -31765,12 +31838,12 @@ mX
 nz
 oc
 oP
+qq
+QP
 pD
-pD
-qY
+LJ
 oc
-qW
-rg
+sz
 ud
 ud
 ud
@@ -31907,12 +31980,12 @@ mX
 nJ
 oc
 oQ
+qq
 pD
 pD
-qZ
+Yv
 oc
-sA
-rg
+sz
 ud
 ud
 ud
@@ -32052,10 +32125,10 @@ oR
 pE
 qp
 ra
+Zy
 oc
-sz
-rg
-ud
+SB
+Wu
 ud
 ud
 rg
@@ -32190,12 +32263,12 @@ mw
 mZ
 nL
 oc
-oS
-pD
-qq
+oc
+oc
+oc
 rb
 oc
-rO
+oc
 rO
 rO
 rO
@@ -32330,11 +32403,11 @@ kM
 kM
 kM
 na
-nz
+SG
 oe
-oT
-pD
-qq
+JI
+JI
+Nb
 rc
 rN
 sB
@@ -32473,12 +32546,12 @@ iE
 mx
 nb
 nM
-oc
+WW
 oU
 pF
 qr
 rd
-rO
+MT
 sC
 tv
 tv
@@ -32615,11 +32688,11 @@ dY
 my
 nc
 dY
-oc
-oc
-oc
-oc
-oc
+dY
+dY
+dY
+dY
+dY
 rO
 sD
 tw

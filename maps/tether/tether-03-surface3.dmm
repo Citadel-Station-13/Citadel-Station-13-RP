@@ -6417,7 +6417,10 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/north_stairs_three)
 "ld" = (
-/obj/machinery/door/airlock/maintenance/common,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Atrium Third Floor"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_three)
 "le" = (

@@ -19705,10 +19705,7 @@
 	name = "south bump";
 	pixel_y = -32
 	},
-/obj/structure/closet/secure_closet/chemical{
-	req_access = list(64);
-	req_one_access = list(5)
-	},
+/obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/carpet/blue,
 /area/medical/psych)
 "FO" = (
