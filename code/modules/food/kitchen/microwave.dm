@@ -163,9 +163,6 @@
 	user.set_machine(src)
 	interact(user)
 
-/obj/machinery/microwave/AltClick()//citadel edit
-	cook()
-
 /*******************
 *   Microwave Menu
 ********************/

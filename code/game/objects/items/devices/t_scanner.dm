@@ -25,9 +25,6 @@
 /obj/item/device/t_scanner/attack_self(mob/user)
 	set_active(!on)
 
-/obj/item/device/t_scanner/AltClick()//citadel edit
-	set_active(!on)
-
 /obj/item/device/t_scanner/proc/set_active(var/active)
 	on = active
 	if(on)
