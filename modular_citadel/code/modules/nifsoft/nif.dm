@@ -645,6 +645,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	install_blind = 1 MINUTES
 	install_synchronize = 3 MINUTES
 	charge_use_multiplier = 0.1
+	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 
 /obj/item/device/nif/cheap //Needs only metal and glass to be built once unlocked in Research
 	name = "cheap NIF"
