@@ -353,6 +353,34 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/range)
+"aF" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 6
+	},
+/obj/structure/sign/poster{
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 8
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/upper)
 "aG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4324,6 +4352,46 @@
 "hr" = (
 /turf/simulated/floor/tiled,
 /area/security/eva)
+"hs" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/upper)
+"ht" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/upper)
 "hu" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
@@ -4355,6 +4423,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/eva)
+"hx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/hologram/holopad,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/upper)
 "hy" = (
 /turf/simulated/mineral/floor/cave,
 /area/maintenance/station/ai)
@@ -15303,24 +15389,6 @@
 "yz" = (
 /turf/simulated/wall,
 /area/maintenance/station/elevator)
-"yA" = (
-/obj/effect/floor_decal/corner/lightgrey{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/lightgrey{
-	dir = 6
-	},
-/obj/structure/sign/poster{
-	pixel_x = -32
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/upper)
 "yB" = (
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 9
@@ -15973,21 +16041,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor,
 /area/maintenance/station/elevator)
-"zv" = (
-/obj/effect/floor_decal/corner/lightgrey{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/lightgrey{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/upper)
 "zw" = (
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 9
@@ -16624,25 +16677,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
-"Aq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/upper)
 "Ar" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16730,21 +16764,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/upper)
-"Aw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/hologram/holopad,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
@@ -27335,8 +27354,7 @@
 	id = "sec_processing";
 	pixel_x = 26;
 	pixel_y = 6;
-	req_access = list(1);
-	
+	req_access = list(1)
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
@@ -36354,10 +36372,10 @@ vO
 wu
 wX
 sp
-yA
-zv
-Aq
-Aw
+aF
+hs
+ht
+hx
 Ck
 Dq
 DX
