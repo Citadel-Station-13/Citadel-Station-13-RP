@@ -6119,17 +6119,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "kB" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals6,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "kC" = (
@@ -6417,19 +6410,33 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/north_stairs_three)
 "ld" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
+/obj/effect/floor_decal/spline/plain{
+	icon_state = "spline_plain";
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1{
+	dir = 8
+	},
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Atrium Third Floor"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monofloor{
+	dir = 1
+	},
 /area/tether/surfacebase/north_stairs_three)
 "le" = (
-/obj/structure/sign/directions/engineering{
-	dir = 10;
-	icon_state = "direction_eng";
-	pixel_y = -10
+/obj/effect/floor_decal/spline/plain{
+	icon_state = "spline_plain";
+	dir = 1
 	},
-/turf/simulated/wall,
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monofloor{
+	dir = 1
+	},
 /area/tether/surfacebase/north_stairs_three)
 "lf" = (
 /obj/structure/sign/directions/medical{
@@ -6445,6 +6452,11 @@
 	dir = 1;
 	icon_state = "direction_sec";
 	pixel_y = -4
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 10;
+	icon_state = "direction_eng";
+	pixel_y = -10
 	},
 /turf/simulated/wall,
 /area/tether/surfacebase/north_stairs_three)
@@ -7174,11 +7186,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
 	name = "Atrium Third Floor"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /turf/simulated/floor/tiled/monofloor,
 /area/tether/surfacebase/north_stairs_three)
 "mG" = (
@@ -20743,8 +20755,8 @@
 /turf/simulated/floor/reinforced,
 /area/tether/surfacebase/shuttle_pad)
 "JI" = (
-/turf/simulated/floor/reinforced,
 /obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/tether/surface)
 "JJ" = (
@@ -21736,6 +21748,23 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"Qb" = (
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Qd" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/material/minihoe,
@@ -22150,6 +22179,21 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/public_garden_three)
+"Vc" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Ve" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -32931,7 +32975,7 @@ hA
 gT
 iQ
 jM
-kx
+Qb
 lc
 lS
 mC
@@ -33073,7 +33117,7 @@ hB
 gT
 iR
 jM
-kx
+kq
 ld
 lT
 mD
@@ -33357,7 +33401,7 @@ hD
 gT
 iT
 jO
-kC
+Vc
 lf
 lV
 mF
