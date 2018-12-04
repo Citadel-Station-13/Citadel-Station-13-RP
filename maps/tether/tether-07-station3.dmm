@@ -4576,14 +4576,6 @@
 "hE" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
-"hF" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/security{
-	name = "Armory Storage";
-	secured_wires = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/security/warden)
 "hG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -27570,6 +27562,15 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"Rz" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/security{
+	name = "Armory Storage";
+	req_access = list(3);
+	secured_wires = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
 "RB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -33286,7 +33287,7 @@ hB
 if
 dI
 dI
-hF
+Rz
 iO
 jd
 dI
@@ -33568,7 +33569,7 @@ gC
 bR
 Rn
 gC
-hF
+Rz
 ez
 ez
 iv
