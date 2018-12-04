@@ -3042,11 +3042,8 @@
 #include "modular_citadel\code\modules\clothing\under\accessories\holster.dm"
 #include "modular_citadel\code\modules\clothing\under\jobs\civilian_cit.dm"
 #include "modular_citadel\code\modules\detectivework\tools\rag.dm"
-<<<<<<< HEAD
 #include "modular_citadel\code\modules\events\event_manager.dm"
-=======
 #include "modular_citadel\code\modules\food\kitchen\microwave.dm"
->>>>>>> 173fdaa52ee37f4e1ea76f30326645b50a51e17c
 #include "modular_citadel\code\modules\games\dice.dm"
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station_cit.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
