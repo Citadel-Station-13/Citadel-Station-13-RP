@@ -758,8 +758,9 @@
 "bl" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 5
+	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "bm" = (
@@ -27557,6 +27558,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"Ry" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "RB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -34399,7 +34408,7 @@ Rg
 bh
 ai
 ai
-bg
+bl
 Rw
 hj
 oh
@@ -34541,7 +34550,7 @@ Rg
 bh
 ai
 ai
-bl
+Ry
 Rx
 hA
 rA
