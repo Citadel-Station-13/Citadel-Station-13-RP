@@ -1,4 +1,5 @@
-#define TGS_EXTERNAL_CONFIGURATION
+//MOVED TO CODE/TGS_DMAPI.DM
+/*#define TGS_EXTERNAL_CONFIGURATION
 #define TGS_DEFINE_AND_SET_GLOBAL(Name, Value) var/global/##Name = ##Value
 #define TGS_READ_GLOBAL(Name) global.##Name
 #define TGS_WRITE_GLOBAL(Name, Value) global.##Name = ##Value
@@ -8,3 +9,4 @@
 #define TGS_NOTIFY_ADMINS(event) message_admins(##event)
 #define TGS_CLIENT_COUNT clients.len
 #define TGS_PROTECT_DATUM(Path)
+*/

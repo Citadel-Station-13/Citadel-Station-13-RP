@@ -34,7 +34,8 @@ macro "borghotkeymode"
 		command = "northface"
 	elem 
 		name = "NORTH+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -43,7 +44,8 @@ macro "borghotkeymode"
 		command = "eastface"
 	elem 
 		name = "EAST+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -52,7 +54,8 @@ macro "borghotkeymode"
 		command = "southface"
 	elem 
 		name = "SOUTH+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -88,16 +91,20 @@ macro "borghotkeymode"
 		command = ".me"
 	elem 
 		name = "A+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+A+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "D+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "F"
 		command = "a-intent left"
@@ -130,19 +137,23 @@ macro "borghotkeymode"
 		command = ".southwest"
 	elem "s_key"
 		name = "S+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+S+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "T"
 		command = ".say"
 	elem "w_key"
 		name = "W+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "X"
 		command = ".northeast"
@@ -246,7 +257,8 @@ macro "macro"
 		command = "westface"
 	elem 
 		name = "WEST+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "ALT+NORTH"
 		command = "northfaceperm"
@@ -255,7 +267,8 @@ macro "macro"
 		command = "northface"
 	elem 
 		name = "NORTH+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -264,7 +277,8 @@ macro "macro"
 		command = "eastface"
 	elem 
 		name = "EAST+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -273,7 +287,8 @@ macro "macro"
 		command = "southface"
 	elem 
 		name = "SOUTH+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -294,10 +309,12 @@ macro "macro"
 		command = "a-intent harm"
 	elem 
 		name = "CTRL+A+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+E"
 		command = "quick-equip"
@@ -315,10 +332,12 @@ macro "macro"
 		command = ".southwest"
 	elem 
 		name = "CTRL+S+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+X"
 		command = ".northeast"
@@ -413,7 +432,8 @@ macro "hotkeymode"
 		command = "westface"
 	elem 
 		name = "WEST+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "ALT+NORTH"
 		command = "northfaceperm"
@@ -422,7 +442,8 @@ macro "hotkeymode"
 		command = "northface"
 	elem 
 		name = "NORTH+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -431,7 +452,8 @@ macro "hotkeymode"
 		command = "eastface"
 	elem 
 		name = "EAST+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -440,7 +462,8 @@ macro "hotkeymode"
 		command = "southface"
 	elem 
 		name = "SOUTH+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -479,16 +502,20 @@ macro "hotkeymode"
 		command = "subtle"
 	elem 
 		name = "A+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+A+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "D+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "E"
 		command = "quick-equip"
@@ -533,19 +560,23 @@ macro "hotkeymode"
 		command = ".southwest"
 	elem "s_key"
 		name = "S+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+S+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "T"
 		command = ".say"
 	elem "w_key"
 		name = "W+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "X"
 		command = ".northeast"
@@ -649,7 +680,8 @@ macro "borgmacro"
 		command = "westface"
 	elem 
 		name = "WEST+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "ALT+NORTH"
 		command = "northfaceperm"
@@ -658,7 +690,8 @@ macro "borgmacro"
 		command = "northface"
 	elem 
 		name = "NORTH+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -667,7 +700,8 @@ macro "borgmacro"
 		command = "eastface"
 	elem 
 		name = "EAST+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -676,7 +710,8 @@ macro "borgmacro"
 		command = "southface"
 	elem 
 		name = "SOUTH+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -697,10 +732,12 @@ macro "borgmacro"
 		command = "a-intent left"
 	elem 
 		name = "CTRL+A+REP"
-		command = ".west"
+		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
-		command = ".east"
+		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+F"
 		command = "a-intent left"
@@ -715,10 +752,12 @@ macro "borgmacro"
 		command = ".southwest"
 	elem 
 		name = "CTRL+S+REP"
-		command = ".south"
+		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
-		command = ".north"
+		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+X"
 		command = ".northeast"

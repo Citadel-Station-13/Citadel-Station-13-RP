@@ -391,7 +391,7 @@
 	icon_state = "RPED"
 	w_class = ITEMSIZE_HUGE
 	can_hold = list(/obj/item/weapon/stock_parts)
-	storage_slots = 50
+	storage_slots = 100 // Cit change
 	use_to_pickup = 1
 	allow_quick_gather = 1
 	allow_quick_empty = 1
