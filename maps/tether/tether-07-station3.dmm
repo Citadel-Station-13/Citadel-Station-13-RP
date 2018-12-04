@@ -3907,6 +3907,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/security/armory/red)
 "gE" = (
@@ -3973,6 +3974,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/security/armory/red)
 "gH" = (
@@ -4269,6 +4271,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/security/armory/red)
 "hh" = (
@@ -4317,6 +4320,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
 /area/security/armory/red)
 "hk" = (
