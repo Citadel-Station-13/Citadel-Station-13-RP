@@ -7848,10 +7848,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
-"nc" = (
-/obj/item/weapon/melee/baton,
-/turf/simulated/open,
-/area/security/brig)
 "nd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -27513,9 +27509,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/range)
-"Ru" = (
-/turf/simulated/mineral/vacuum,
-/area/security/range)
 "Rv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -34990,7 +34983,7 @@ gR
 hm
 aC
 aQ
-Ru
+hp
 br
 bK
 cf
@@ -35421,7 +35414,7 @@ iB
 bN
 cg
 jk
-nc
+jk
 jk
 jk
 jk
