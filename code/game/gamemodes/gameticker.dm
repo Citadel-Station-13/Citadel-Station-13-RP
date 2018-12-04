@@ -139,7 +139,8 @@ var/global/datum/controller/gameticker/ticker
 			if (S.name != "AI")
 				qdel(S)
 		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
-		world << sound('sound/AI/welcome.ogg') // Skie
+		world << sound(pick('sound/AI/welcome.ogg', 'sound/misc/citadel-roundstart.ogg'))
+		//world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 

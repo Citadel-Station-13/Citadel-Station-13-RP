@@ -400,9 +400,9 @@ var/world_topic_spam_protect_time = world.timeofday
 
 
 /world/Reboot(var/reason)
-	/*spawn(0)
-		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
-		*/
+	spawn(0)
+		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg','sound/misc/citadel-roundend.ogg')) // random end sounds!! - LastyBatsy
+
 	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	if(reason && usr)//CITADEL CHANGE - Logs reboots done by debug functions
 		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
