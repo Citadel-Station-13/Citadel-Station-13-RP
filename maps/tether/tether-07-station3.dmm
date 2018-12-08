@@ -4576,6 +4576,12 @@
 "hE" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
+"hF" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/tiled,
+/area/security/range)
 "hG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -27502,13 +27508,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
-"Rt" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Tactical Armory";
-	req_one_access = list(3)
-	},
-/turf/simulated/floor/tiled,
-/area/security/range)
 "Rv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -34840,7 +34839,7 @@ gH
 gR
 hl
 aB
-Rt
+hF
 hp
 cj
 iR
