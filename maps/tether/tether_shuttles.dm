@@ -174,7 +174,11 @@
 	name = "shuttle control console"
 	shuttle_tag = "Excursion Shuttle"
 	req_access = list()
+<<<<<<< HEAD
 	req_one_access = list(access_heads,access_explorer,access_pilot)
+=======
+	req_one_access = list(access_pilot)
+>>>>>>> 9b92dc1... Merge pull request #4462 from Novacat/nova-basicfixes
 	var/wait_time = 45 MINUTES
 
 /obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
