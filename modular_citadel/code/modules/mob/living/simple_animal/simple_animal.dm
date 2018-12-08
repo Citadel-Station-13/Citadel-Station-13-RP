@@ -11,8 +11,8 @@ ai_override is there for when you put a person into a mob, because if they log o
 */
 /mob/living/simple_animal/Logout()
 	. = ..()
-	if ai_override = 1
+	if(ai_override == 1)
 		ai_inactive = 0 //Forces the AI to be enabled.
-	if ai_override = -1
+	if(ai_override == -1)
 		ai_inactive = 1 //Forces the AI to be disabled.
 
