@@ -1,4 +1,4 @@
-///SCI TELEPAD///
+/*
 /obj/machinery/telepad
 	name = "telepad"
 	desc = "A bluespace telepad used for teleporting objects to and from a location."
@@ -44,4 +44,4 @@
 			user << "<span class='caution'>You save the data in the [M.name]'s buffer.</span>"
 			return 1
 
-	return ..()
+	return ..()*/ //CITADEL EDIT - NEW VERSION IMPLEMENTED

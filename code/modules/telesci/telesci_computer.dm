@@ -1,4 +1,4 @@
-/obj/machinery/computer/telescience
+/*/obj/machinery/computer/telescience
 	name = "\improper Telepad Control Console"
 	desc = "Used to teleport objects to and from the telescience telepad."
 	icon_screen = "teleport"
@@ -378,4 +378,4 @@
 	var/time = distance / 10 // 100ms per distance seems fine?
 	var/dest_x = src_x + distance*sin(rotation);
 	var/dest_y = src_y + distance*cos(rotation);
-	return new /datum/projectile_data(src_x, src_y, time, distance, 0, 0, dest_x, dest_y)
+	return new /datum/projectile_data(src_x, src_y, time, distance, 0, 0, dest_x, dest_y)*/ //CITADEL EDIT - NEW VERSION IMPLEMENTED
