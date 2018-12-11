@@ -266,7 +266,7 @@
 		return "buzzes, \"Unrecogized physiology. Operation aborted.\""
 	else if(H.isSynthetic() && !use_on_synthetic)
 		return "buzzes, \"Synthetic Body. Operation aborted.\""
-	else if(H.species.reagent_tag & IS_VOX && combat == 0)
+	else if(H.species.reagent_tag & IS_VOX && combat == 0) //Citadel change - gives vox a different defib message
 		return "buzzes, \"Voltage rating insufficient. Operation aborted.\""
 	else if(!H.isSynthetic() && use_on_synthetic)
 		return "buzzes, \"Organic Body. Operation aborted.\""
