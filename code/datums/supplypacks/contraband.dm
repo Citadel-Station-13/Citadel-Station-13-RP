@@ -61,7 +61,7 @@
 			list( //the operator,
 					/obj/item/weapon/gun/projectile/shotgun/pump/combat,
 //					/obj/item/clothing/suit/storage/vest/heavy/merc, CIT CHANGE - "tan" vest to pcarrier
-					/obj/item/clothing/suit/armor/pcarrier/merc
+					/obj/item/clothing/suit/armor/pcarrier/merc,
 					/obj/item/clothing/head/helmet/merc, //CIT CHANGE
 					/obj/item/clothing/glasses/night,
 					/obj/item/weapon/storage/box/anti_photons,
