@@ -60,15 +60,7 @@
 	contains = list(
 			list( //the operator,
 					/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-<<<<<<< HEAD
-					//obj/item/clothing/suit/storage/vest/heavy/merc,
-					/obj/item/clothing/suit/armor/pcarrier/merc,
-					/obj/item/clothing/head/helmet/merc,
-=======
-//				/obj/item/clothing/suit/storage/vest/heavy/merc, CIT CHANGE - "tan" vest to pcarrier
-				/obj/item/clothing/suit/armor/pcarrier/merc, //CIT CHANGE
-				/obj/item/clothing/head/helmet/merc, //CIT CHANGE
->>>>>>> f008245accf77ef28122dec7bbdf855dfb73c4a8
+					/obj/item/clothing/suit/storage/vest/heavy/merc,
 					/obj/item/clothing/glasses/night,
 					/obj/item/weapon/storage/box/anti_photons,
 					/obj/item/ammo_magazine/clip/c12g/pellet,
