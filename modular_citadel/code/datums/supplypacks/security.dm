@@ -87,3 +87,16 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Plate carrier crate"
 	access = access_security
+
+/datum/supply_pack/security/pcarriers/merc
+	name = "Armor - Plate carrier kit (heavy)"
+	contains = list(
+			/obj/item/clothing/accessory/armor/armorplate/merc = 1,
+			/obj/item/clothing/accessory/armor/armguards/merc = 1,
+			/obj/item/clothing/accessory/armor/legguards/merc = 1,
+			)
+	cost = 50
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Plate carrier crate"
+	access = access_security
+	contraband = 1
