@@ -69,11 +69,21 @@
 /datum/supply_pack/security/pcarriers/laserproof
 	name = "Armor - Plate carrier kit (ablative)"
 	contains = list(
-			/obj/item/clothing/accessory/armor/armorplate/tactical = 3,
+			/obj/item/clothing/accessory/armor/armorplate/medium = 3,
 			/obj/item/clothing/accessory/armor/armguards/laserproof = 3,
 			/obj/item/clothing/accessory/armor/legguards/laserproof = 3,
 			)
 	cost = 35
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Plate carrier crate"
+	access = access_security
+
+/datum/supply_pack/security/pcarriers/tactical
+	name = "Armor - Plate carrier kit (tactical plates)"
+	contains = list(
+			/obj/item/clothing/accessory/armor/armorplate/tactical = 3,
+			)
+	cost = 45
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Plate carrier crate"
 	access = access_security
