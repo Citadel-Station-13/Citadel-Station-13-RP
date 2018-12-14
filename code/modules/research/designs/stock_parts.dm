@@ -18,7 +18,6 @@
 	req_tech = list(TECH_POWER = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 	build_path = /obj/item/weapon/stock_parts/capacitor
-	time = 3 //Cit change
 	sort_string = "CAAAA"
 
 /datum/design/item/stock_part/adv_capacitor
@@ -26,7 +25,6 @@
 	req_tech = list(TECH_POWER = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 	build_path = /obj/item/weapon/stock_parts/capacitor/adv
-	time = 3 //Cit change
 	sort_string = "CAAAB"
 
 /datum/design/item/stock_part/super_capacitor
@@ -34,7 +32,6 @@
 	req_tech = list(TECH_POWER = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, "gold" = 20)
 	build_path = /obj/item/weapon/stock_parts/capacitor/super
-	time = 3 //Cit change
 	sort_string = "CAAAC"
 
 /datum/design/item/stock_part/micro_mani
@@ -42,7 +39,6 @@
 	req_tech = list(TECH_MATERIAL = 1, TECH_DATA = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 30)
 	build_path = /obj/item/weapon/stock_parts/manipulator
-	time = 3 //Cit change
 	sort_string = "CAABA"
 
 /datum/design/item/stock_part/nano_mani
@@ -50,7 +46,6 @@
 	req_tech = list(TECH_MATERIAL = 3, TECH_DATA = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 30)
 	build_path = /obj/item/weapon/stock_parts/manipulator/nano
-	time = 3 //Cit change
 	sort_string = "CAABB"
 
 /datum/design/item/stock_part/pico_mani
@@ -58,7 +53,6 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_DATA = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 30)
 	build_path = /obj/item/weapon/stock_parts/manipulator/pico
-	time = 3 //Cit change
 	sort_string = "CAABC"
 
 /datum/design/item/stock_part/basic_matter_bin
@@ -66,7 +60,6 @@
 	req_tech = list(TECH_MATERIAL = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 80)
 	build_path = /obj/item/weapon/stock_parts/matter_bin
-	time = 3 //Cit change
 	sort_string = "CAACA"
 
 /datum/design/item/stock_part/adv_matter_bin
@@ -74,7 +67,6 @@
 	req_tech = list(TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 80)
 	build_path = /obj/item/weapon/stock_parts/matter_bin/adv
-	time = 3 //Cit change
 	sort_string = "CAACB"
 
 /datum/design/item/stock_part/super_matter_bin
@@ -82,7 +74,6 @@
 	req_tech = list(TECH_MATERIAL = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 80)
 	build_path = /obj/item/weapon/stock_parts/matter_bin/super
-	time = 3 //Cit change
 	sort_string = "CAACC"
 
 /datum/design/item/stock_part/basic_micro_laser
@@ -90,7 +81,6 @@
 	req_tech = list(TECH_MAGNET = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "glass" = 20)
 	build_path = /obj/item/weapon/stock_parts/micro_laser
-	time = 3 //Cit change
 	sort_string = "CAADA"
 
 /datum/design/item/stock_part/high_micro_laser
@@ -98,7 +88,6 @@
 	req_tech = list(TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "glass" = 20)
 	build_path = /obj/item/weapon/stock_parts/micro_laser/high
-	time = 3 //Cit change
 	sort_string = "CAADB"
 
 /datum/design/item/stock_part/ultra_micro_laser
@@ -106,7 +95,6 @@
 	req_tech = list(TECH_MAGNET = 5, TECH_MATERIAL = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "glass" = 20, "uranium" = 10)
 	build_path = /obj/item/weapon/stock_parts/micro_laser/ultra
-	time = 3 //Cit change
 	sort_string = "CAADC"
 
 /datum/design/item/stock_part/basic_sensor
@@ -114,7 +102,6 @@
 	req_tech = list(TECH_MAGNET = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
 	build_path = /obj/item/weapon/stock_parts/scanning_module
-	time = 3 //Cit change
 	sort_string = "CAAEA"
 
 /datum/design/item/stock_part/adv_sensor
@@ -122,7 +109,6 @@
 	req_tech = list(TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
 	build_path = /obj/item/weapon/stock_parts/scanning_module/adv
-	time = 3 //Cit change
 	sort_string = "CAAEB"
 
 /datum/design/item/stock_part/phasic_sensor
@@ -130,7 +116,6 @@
 	req_tech = list(TECH_MAGNET = 5, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20, "silver" = 10)
 	build_path = /obj/item/weapon/stock_parts/scanning_module/phasic
-	time = 3 //Cit change
 	sort_string = "CAAEC"
 
 /datum/design/item/stock_part/subspace_ansible
