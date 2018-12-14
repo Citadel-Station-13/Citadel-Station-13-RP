@@ -9,7 +9,7 @@
 	access = access_security
 
 /datum/supply_pack/security/pcarriers //time 2 get modular up in this bitch -hatterhat
-	name = "Armor - Plate carriers (empty)"
+	name = "Armor - Empty plate carriers"
 	contains = list(
 			/obj/item/clothing/suit/armor/pcarrier = 3,
 			)
@@ -19,7 +19,7 @@
 	access = access_security
 
 /datum/supply_pack/security/pcarrierspouches
-	name = "Armor - Plate carrier pouches"
+	name = "Armor - Plate carrier attachments - pouches"
 	num_contained = 6
 	contains = list(
 			/obj/item/clothing/accessory/storage/pouches,
