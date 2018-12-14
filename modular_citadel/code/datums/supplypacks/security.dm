@@ -31,7 +31,7 @@
 	access = access_security
 
 /datum/supply_pack/security/pcarriers/standard
-name = "Armor - Plate carrier - general attachments"
+	name = "Armor - Plate carrier - general attachments"
 	contains = list(
 			/obj/item/clothing/accessory/armor/armorplate/medium = 3,
 			/obj/item/clothing/accessory/armor/armguards = 3,
