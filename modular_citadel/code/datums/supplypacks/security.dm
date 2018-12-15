@@ -19,7 +19,7 @@
 	access = access_security
 
 /datum/supply_pack/security/pcarrierspouches
-	name = "Armor - Plate carrier attachments - pouches"
+	name = "Armor - Plate carrier - storage pouches"
 	num_contained = 6
 	contains = list(
 			/obj/item/clothing/accessory/storage/pouches,
@@ -31,7 +31,7 @@
 	access = access_security
 
 /datum/supply_pack/security/pcarriers/standard
-	name = "Armor - Plate carrier - general attachments"
+	name = "Armor - Plate carrier kit - general attachments"
 	contains = list(
 			/obj/item/clothing/accessory/armor/armorplate/medium = 3,
 			/obj/item/clothing/accessory/armor/armguards = 3,
@@ -43,7 +43,7 @@
 	access = access_security
 
 /datum/supply_pack/security/pcarriers/riot
-	name = "Armor - Plate carrier - riot control attachments"
+	name = "Armor - Plate carrier kit - riot control attachments"
 	contains = list(
 			/obj/item/clothing/accessory/armor/armorplate/medium = 3,
 			/obj/item/clothing/accessory/armor/armguards/riot = 3,
