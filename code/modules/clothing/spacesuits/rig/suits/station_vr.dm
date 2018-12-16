@@ -20,10 +20,10 @@
 		/obj/item/rig_module/rescue_pharm
 		)
 
-//Armor reduction for industrial suit
-/obj/item/weapon/rig/industrial
+//cit change - unnerfs indy suit | Armor reduction for industrial suit
+/*obj/item/weapon/rig/industrial
 	armor = list(melee = 50, bullet = 10, laser = 20, energy = 15, bomb = 30, bio = 100, rad = 50)
-
+*/
 //Area allowing backpacks to be placed on rigsuits.
 /obj/item/weapon/rig/vox
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/backpack)
