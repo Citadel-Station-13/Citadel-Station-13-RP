@@ -150,9 +150,9 @@ obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 					node2 = target
 					break
 
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
+//	Citadel change, why are upwards pipes capable of being hidden by tiles????
+//	var/turf/T = src.loc			// hide if turf is not intact
+//	hide(!T.is_plating())
 
 ///////////////////////
 // and the down pipe //
