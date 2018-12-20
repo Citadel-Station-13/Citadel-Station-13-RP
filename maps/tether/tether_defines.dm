@@ -39,7 +39,7 @@
 #define Z_LEVEL_BEACH						15
 #define Z_LEVEL_BEACH_CAVE					16
 #define Z_LEVEL_AEROSTAT					17
-#define Z_LEVEL_AEROSTAT_SURFACE			18 // cit change ends
+#define Z_LEVEL_AEROSTAT_SURFACE				18 // cit change ends
 
 /datum/map/tether
 	name = "Virgo"
