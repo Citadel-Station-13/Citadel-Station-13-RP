@@ -10,10 +10,10 @@
 	var/list/fromitem = /obj/item/clothing/head/helmet/space/void/security //what it needs
 	afterattack(obj/O, mob/user as mob) //after being used
 		if(istype(O, product)) // Checks what it was used on
-			to_chat(user,"<span class='warning'>[O] is already modified!") //If it's being used on an already reskinned item
+			to_chat(user,"<span class='warning'>[O] is already modified!</span>") //If it's being used on an already reskinned item
 		else if(O.type == fromitem) //makes sure O is the right thing
 			new product(usr.loc) //spawns the product
-			user.visible_message("<span class='warning'>[user] modifies [O]!","<span class='warning'>You modify the [O]!") //Tells the user it's been done
+			user.visible_message("<span class='warning'>[user] modifies [O]!</span>","<span class='warning'>You modify the [O]!</span>") //Tells the user it's been done
 			qdel(O) //Gets rid of the unskinned item
 			qdel(src) //gets rid of the kit
 		else
