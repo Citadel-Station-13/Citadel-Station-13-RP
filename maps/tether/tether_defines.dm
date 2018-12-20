@@ -35,6 +35,11 @@
 #define Z_LEVEL_MISC						11
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
+#define Z_LEVEL_ALIENSHIP					14 //cit change - let's fix s u b m a p s
+#define Z_LEVEL_BEACH						15
+#define Z_LEVEL_BEACH_CAVE					16
+#define Z_LEVEL_AEROSTAT					17
+#define Z_LEVEL_AEROSTAT_SURFACE			18 // cit change ends
 
 /datum/map/tether
 	name = "Virgo"

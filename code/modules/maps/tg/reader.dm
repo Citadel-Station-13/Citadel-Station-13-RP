@@ -99,6 +99,11 @@ var/global/use_preloader = FALSE
 			var/ycrd = text2num(dmmRegex.group[4]) + y_offset - 1
 			var/zcrd = text2num(dmmRegex.group[5]) + z_offset - 1
 
+			if(orientation & (EAST | WEST)) //citadel change - y'all say early merge? - VOREStation edit we just have to pray the upstream spacebrains take into consideration before their refactor is done.
+				xcrd = ycrd // temp variable
+				ycrd = xcrdStart
+				xcrdStart = xcrd //cit change end
+
 			var/zexpansion = zcrd > world.maxz
 			if(zexpansion && !measureOnly)
 				if(cropMap)
