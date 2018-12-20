@@ -2,8 +2,8 @@
 
 
 /obj/item/reskin_kit/jenna //path
-	name = "silver helmet kit" //name of the KIT, not the reskinned item
-	desc = "a modkit for making a voidsuit helmet into a silver helmet" //desc of the KIT, not the reskinned item
+	name = "silver's helmet kit" //name of the KIT, not the reskinned item
+	desc = "A modkit for making a security voidsuit helmet into Silver's Helmet" //desc of the KIT, not the reskinned item
 	icon = 'icons/obj/storage.dmi' //icon of the KIT, not the reskinned item
 	icon_state = "box" //icon_state of the KIT, not the reskinned item
 	var/product = /obj/item/clothing/head/helmet/space/void/security/jenna //what it makes
