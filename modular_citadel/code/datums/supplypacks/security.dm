@@ -20,10 +20,9 @@
 
 /datum/supply_pack/security/pcarrierspouches
 	name = "Armor - Plate carrier - storage pouches"
-	num_contained = 6
 	contains = list(
-			/obj/item/clothing/accessory/storage/pouches,
-			/obj/item/clothing/accessory/storage/pouches/large
+			/obj/item/clothing/accessory/storage/pouches = 3,
+			/obj/item/clothing/accessory/storage/pouches/large = 3,
 			)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure
@@ -94,7 +93,7 @@
 			/obj/item/clothing/accessory/armor/armorplate/merc = 1,
 			/obj/item/clothing/accessory/armor/armguards/merc = 1,
 			/obj/item/clothing/accessory/armor/legguards/merc = 1,
-			/obj/item/clothing/head/helmet/merc = 1
+			/obj/item/clothing/head/helmet/merc = 1,
 			)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure
