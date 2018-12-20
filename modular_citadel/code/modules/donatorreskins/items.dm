@@ -10,7 +10,3 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	item_state = "silverhelmet"
 	item_state_slots = list(slot_r_hand_str = "sec_helm", slot_l_hand_str = "sec_helm")
-	armor = list(melee = 50, bullet = 25, laser = 25, energy = 5, bomb = 45, bio = 100, rad = 10)
-	siemens_coefficient = 0.7
-	light_overlay = "helmet_light_dual"
-	species_restricted = list(SPECIES_AKULA)
