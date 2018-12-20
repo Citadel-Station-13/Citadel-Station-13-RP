@@ -3046,6 +3046,8 @@
 #include "modular_citadel\code\modules\clothing\under\accessories\holster.dm"
 #include "modular_citadel\code\modules\clothing\under\jobs\civilian_cit.dm"
 #include "modular_citadel\code\modules\detectivework\tools\rag.dm"
+#include "modular_citadel\code\modules\donatorreskins\items.dm"
+#include "modular_citadel\code\modules\donatorreskins\reskinkits.dm"
 #include "modular_citadel\code\modules\events\event_manager.dm"
 #include "modular_citadel\code\modules\food\kitchen\microwave.dm"
 #include "modular_citadel\code\modules\games\dice.dm"
