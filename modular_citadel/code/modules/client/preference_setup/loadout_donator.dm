@@ -81,5 +81,6 @@
 /datum/gear/donator/silverhelmet
 	display_name = "Silver's Helmet"
 	sort_category = "Donator"
+	slot = slot_head
 	path = /obj/item/reskin_kit/jenna
-	ckeywhitelist = list("JennaSilver")
+	ckeywhitelist = list("jennasilver")
