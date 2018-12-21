@@ -83,4 +83,4 @@
 	sort_category = "Donator"
 	slot = slot_head
 	path = /obj/item/reskin_kit/jenna
-	ckeywhitelist = list("Jenna Silver")
+	ckeywhitelist = list("jennasilver")
