@@ -82,4 +82,4 @@
 	display_name = "Silver's Helmet"
 	sort_category = "Donator"
 	path = /obj/item/reskin_kit/jenna
-	ckeywhitelist = list("JennaSilver")
+	ckeywhitelist = list("Jenna Silver")
