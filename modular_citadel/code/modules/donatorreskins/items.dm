@@ -10,3 +10,4 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	item_state = "silverhelmet"
 	item_state_slots = list(slot_r_hand_str = "sec_helm", slot_l_hand_str = "sec_helm")
+	species_restricted = list(SPECIES_AKULA) 
