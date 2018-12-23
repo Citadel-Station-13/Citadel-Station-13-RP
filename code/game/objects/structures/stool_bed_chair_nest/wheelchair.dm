@@ -9,6 +9,10 @@
 	var/mob/living/pulling = null
 	var/bloodiness
 
+	//Until someone refactors this shit properly -  C I T A D E L E D I T!!
+	var/lastmove = 0
+	var/movedelay = 2
+
 /obj/structure/bed/chair/wheelchair/update_icon()
 	return
 
@@ -28,6 +32,10 @@
 	..()
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
+	//CIT EDIT
+	if(lastmove < world.time + movedelay)
+		return
+	//END
 	// Redundant check?
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
 		if(user==pulling)
@@ -90,6 +98,8 @@
 	if(bloodiness)
 		create_track()
 	driving = 0
+	//CIT EDIT
+	lastmove = world.time
 
 /obj/structure/bed/chair/wheelchair/Move()
 	..()
