@@ -33,7 +33,7 @@
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	//CIT EDIT
-	if(lastmove < world.time + movedelay)
+	if(lastmove >= world.time - movedelay)
 		return
 	//END
 	// Redundant check?
