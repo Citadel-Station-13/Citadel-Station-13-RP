@@ -101,7 +101,7 @@
 	vended = FALSE
 	access = 999 //Prevents anyone from buying it without an emag.
 	var/laws = "Be nice to people!"
-	complexity = 2
+	complexity = -1
 
 	New(var/newloc,var/newlaws)
 		laws = newlaws //Sanitize before this (the disk does)

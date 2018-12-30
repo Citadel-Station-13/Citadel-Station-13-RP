@@ -19,6 +19,9 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	implants inside living hosts on the fly based on software uploads. Must be surgically \
 	implanted in the head to work. May eventually wear out and break."
 
+	var/stealth_name = null //If stealth_name is set the NIF will rename itself to it when installed, and unname itself to it when removed.
+	var/typeletter = null //The typeletter will override the quality detail. Generally usable when using q-1 NIFs.
+
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "nif_0"
 
@@ -29,6 +32,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	var/quality = 2 						// How good an NIF it can support.
 	var/nif_flags = 0						// Special Flags
 	var/charge_use_multiplier 				// Some NIFs don't make you hungry.
+	var/repair_multiplier = 1				// Some NIFs have varying benefits from "programmed nanomachines"
 
 	var/install_blind = 3 MINUTES
 	var/install_synchronize = 30 MINUTES
@@ -137,6 +141,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 		human.nif = src
 		stat = NIF_INSTALLING
 		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
+		if(stealth_name)
+			name = (stealth_name ? stealth_name : initial(name)) + (owner ? " ([owner])" : null)
 		return TRUE
 
 	return FALSE
@@ -177,6 +183,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	human = null
 	install_done = null
 	update_icon()
+	name = owner ? initial(name) + owner : initial(name)
 
 //EMP adds wear and disables all nifsoft
 /obj/item/device/nif/emp_act(var/severity)
@@ -315,7 +322,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	else if(percent_done >= 1.0)
 		stat = NIF_WORKING
 		owner = human.mind.name
-		name = initial(name) + " ([owner])"
+		name = (stealth_name ? stealth_name : initial(name)) + " ([owner])"
 		if(comm)
 			var/saved_name = save_data["commlink_name"]
 			if(saved_name)
@@ -577,19 +584,50 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 		human.recalculate_vis()
 
 // Alternate NIFs
-/obj/item/device/nif/bad //Ignores NIFSoft Vendor Access Restrictions, handled in the vendor. Not a free emag.
-	name = "sketchy NIF"
+/obj/item/device/nif/bad
+	name = "bootleg NIF"
 	desc = "A copy of a ripoff of a copy of a clone of... this can't be any good, right?"
+	typeletter = "B"
+	quality = -1 //Ignores quality restrictions
+	durability = 20
+	bioadap = TRUE
+	charge_use_multiplier = 0.1
+
+	emag_act(mob/user)
+		if(open)
+			var/obj/item/device/nif/newnif = new /obj/item/device/nif/sketchy()
+			newnif.owner = owner
+			newnif.open = open
+			newnif.update_icon()
+
+			newnif.forceMove(get_turf(src))
+			QDEL_NULL(src)
+		. = ..()
+
+/obj/item/device/nif/sketchy //Ignores NIFSoft Vendor Access Restrictions, handled in the vendor. Not a free emag.
+	name = "sketchy NIF"
+	stealth_name = "bootleg NIF"
+	desc = "An illegally modified NIF which is definitely major contraband, and malpractice to install."
+	typeletter = "S"
 	quality = -1 //Ignores quality restrictions
 	durability = 10
 	nif_flags = NIF_IGNORE_RESTRICTIONS
+	bioadap = TRUE
 	charge_use_multiplier = 0.75
+	repair_multiplier = 0
 
 /obj/item/device/nif/authentic //KHI removed, still the "best" you can get, minus special features
+	name = "\improper Vey-Med NIF"
+	desc = "Vey-Med's entry into the NIF market. Usually reserved for only the rich."
+	quality = 4
+	durability = 1000
+	repair_multiplier = 5
+
+/obj/item/device/nif/specialty
 	name = "\improper specialty NIF"
 	desc = "A high-endurance NIF with better nanites and programming. Produced by specialty manufacturers."
 	quality = 3
-	durability = 750
+	durability = 500
 	charge_use_multiplier = 1.25
 
 /obj/item/device/nif/bioadap
@@ -600,12 +638,13 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	bioadap = TRUE
 	nif_flags = NIF_FORCE_INSTALL
 	charge_use_multiplier = 1.1
+	repair_multiplier = 0.5
 
 /obj/item/device/nif/quality
 	name = "quality NIF"
 	desc = "A well-programmed NIF that can support higher-quality software than usual."
-	quality = 3
-	durability = 75
+	quality = 4
+	durability = 100
 
 /obj/item/device/nif/durable
 	name = "durable NIF"
@@ -622,7 +661,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	nif_flags = NIF_FORCE_DELETE
 
 /obj/item/device/nif/backup
-	name = "survivivalist NIF"
+	name = "survivalist NIF"
 	desc = "This NIF is preloaded with robust mind backup and soulcatcher utilities, and runs on a minimum of power."
 	quality = 2
 	durability = 75 //Not as powerful as the sandbox NIF.
@@ -630,35 +669,101 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	install_synchronize = 20 MINUTES //Not so fast but no side-effects.
 	install_side_effect_chance = 100
 	charge_use_multiplier = 0.5 //Hunger Begone
+	repair_multiplier = 10 //Survivalist is very resource-light.
 
 	load_starting_software()
-		. = ..()
 		new /datum/nifsoft/mindbackup(src)
 		new /datum/nifsoft/soulcatcher(src)
+		. = ..()
 
 // Cheap NIFs
 /obj/item/device/nif/consumer //Buildable in Autolathe
 	name = "consumer NIF"
-	desc = "A mass-production NIF that can only run simple programs. Lasts practically forever. Installs instantly."
+	desc = "A mass-production NIF that can only run simple programs. Lasts practically forever. Installs almost instantly."
 	quality = 0
 	durability = 500
 	install_blind = 1 MINUTES
 	install_synchronize = 3 MINUTES
 	charge_use_multiplier = 0.1
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	repair_multiplier = 5
 
 /obj/item/device/nif/cheap //Needs only metal and glass to be built once unlocked in Research
 	name = "cheap NIF"
-	desc = "A cheap but capable NIF. Can run vision augments as well as simple programs, but nothing intensive. Lasts for a while. Installs instantly."
+	desc = "A cheap but capable NIF. Can run vision augments as well as simple programs, but nothing intensive. Lasts for a long while. Installs just about instantly."
 	quality = 1
 	durability = 250
 	install_blind = 3 MINUTES
 	install_synchronize = 5 MINUTES
 	charge_use_multiplier = 0.2
+	repair_multiplier = 5
 
-/obj/item/device/nif/ultra //For adminspawn only.
+// Weird NIFs
+
+/obj/item/device/nif/preprogrammed //These are NIFs that come with some built in software, but they don't indicate what software on scan.
+	name = "preprogrammed NIF"
+	desc = "An NIF that's had some software permanently written to it."
+	durability = 70
+
+/obj/item/device/nif/preprogrammed/sizechange
+	load_starting_software()
+		new /datum/nifsoft/sizechange(src)
+		. = ..()
+
+// Reward NIFs
+
+/obj/item/device/nif/reward //Lowpower Vey-Med
+	name = "\improper awarded NIF"
+	desc = "A rare NIF model that is usually awarded alongside medals."
+	quality = 4
+	durability = 1000
+	charge_use_multiplier = 0.75
+	repair_multiplier = 5
+
+/obj/item/device/nif/reward/champion //Builtin Healing
+	name = "\improper champion's NIF"
+	desc = "A rare NIF model that is usually given to the victor of a battle."
+	quality = 3
+	durability = 100
+	nif_flags = NIF_FORCE_INSTALL
+	repair_multiplier = 5
+
+	load_starting_software()
+		new /datum/nifsoft/mindbackup(src)
+		new /datum/nifsoft/medichines_org(src)
+		new /datum/nifsoft/medichines_syn(src)
+		. = ..()
+
+/obj/item/device/nif/reward/syndicate //Basically an upgraded sketchy.
+	name = "\improper illegal NIF"
+	stealth_name = "adaptive NIF"
+	desc = "A rare NIF model that is by no means legal in NT space."
+	typeletter = "I"
+	quality = -1
+	durability = 50
+	bioadap = TRUE
+	charge_use_multiplier = 0.5
+	nif_flags = NIF_IGNORE_RESTRICTIONS
+	repair_multiplier = -0.1 //Don't 'chuu dare feed me them nanites.
+
+/obj/item/device/nif/reward/command
+	name = "\improper decorated NIF"
+	desc = "A rare NIF model augmented with NT command programming."
+	quality = 4
+	durability = 100
+	nif_flags = NIF_FORCE_DELETE
+
+	load_starting_software()
+		new /datum/nifsoft/ar_omni(src)
+		new /datum/nifsoft/commlink(src)
+		new /datum/nifsoft/crewmonitor(src)
+		. = ..()
+
+// For event use only, do not give to players.
+/obj/item/device/nif/ultra //For adminspawn only. Kinda broken but whatever.
 	name = "ultra NIF"
-	desc = "You can't have gotten your hands on this, but it is the very best."
+	desc = "You can't have gotten your hands on this, but it is the very best. (Only for event characters)"
+	typeletter = "U"
 	quality = -1
 	durability = 65535
 	install_blind = 1
@@ -666,21 +771,40 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	install_quick = 1
 	install_side_effect_chance = 100
 	charge_use_multiplier = 0
+	repair_multiplier = 65535
 	nif_flags = 65535 //Just maxing this shit out, don't mind me.
+
+	New(var/newloc,var/wear,var/list/load_data)
+		if(load_data)
+			log_and_message_admins("[src] was spawned at [newloc] with saved NIF data. It's not meant for persistency. If it's a player, they've been offered a choice of any other NIF instead.")
+			if(ishuman(newloc))
+				var/mob/living/carbon/human/H = newloc
+				var/niftype
+				niftype = input(H, "Ultra NIFs are non-persistent, pick another.", "NIF Select", null) as null|anything in ((typesof(/obj/item/device/nif)) - /obj/item/device/nif/ultra - /obj/item/device/nif/protean)
+				if(niftype)
+					new niftype(H)
+					log_and_message_admins("[H] selected a [niftype] to replace their [src].")
+					return
+				QDEL_NULL(src)
+			else
+				. = ..()
+		. = ..()
 
 // Special-Case NIFs
 /obj/item/device/nif/protean //Sandboxed because it's not an actual NIF, it's just being emulated by the protean.
 	name = "emulated NIF"
 	desc = "A mass of nanites emulating a fully-functional NIF. (Contact a coder if you see this description)"
+	typeletter = "P"
 	quality = -1
-	durability = 25
+	durability = 15
 	bioadap = TRUE
 	nif_flags = NIF_FORCE_DELETE
 	charge_use_multiplier = 0
+	repair_multiplier = 0 //Proteans get no benefit from foreign nanites here.
 
 	load_starting_software()
-		. = ..()
 		new /datum/nifsoft/apc_recharge(src) //Mainly because they "do the same thing" for regular rechargers, though it's hidden.
+		. = ..()
 
 ////////////////////////////////
 // Special Promethean """surgery"""

@@ -1,3 +1,4 @@
+
 //Custom vendors
 /obj/machinery/vending/nifsoft_shop
 	name = "NIFSoft Shop"
@@ -114,6 +115,24 @@
 		return 1 // Allows NIFs with the ignore restrictions flag to buy anything displayed where access is permitted in the first place.
 	return 0
 
+/obj/machinery/vending/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	if(W.GetID()||(istype(W, /obj/item/weapon/spacecash/ewallet))||(istype(W, /obj/item/weapon/spacecash)))
+		var/obj/item/device/nif/N = H.nif
+		if(!istype(N))
+			to_chat(usr, "<span class='warning'>You don't have an NIF.</span>")
+			return
+		var/datum/nifsoft/curven = currently_vending.item_path
+		if(!ispath(curven))
+			log_and_message_admins("Something that isn't a NIFsoft was selected and attempted purchase at [src].")
+		if(N.quality < initial(curven.complexity))
+			to_chat(usr, "<span class='warning'>Your NIF can't support this NIFsoft.</span>")
+			return
+	. = ..()
+
+
 //Had to override this too
 /obj/machinery/vending/nifsoft_shop/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
@@ -152,7 +171,7 @@
 			if(initial(path.access))
 				var/list/soft_access = list(initial(path.access))
 				var/list/usr_access = usr.GetAccess()
-				if(!has_access(soft_access, list(), usr_access) && !emagged && (has_access(list(), list(999), soft_access) || !bootleg(usr)))
+				if(!has_access(soft_access, list(), usr_access) && !emagged && !bootleg(usr))
 					usr << "<span class='warning'>You aren't authorized to buy [initial(path.name)].</span>"
 					flick(icon_deny,entopic.my_image)
 					return
@@ -186,6 +205,10 @@
 	if((!allowed(usr)) && !emagged && scan_id && istype(H))	//For SECURE VENDING MACHINES YEAH
 		to_chat(usr, "<span class='warning'>Purchase not allowed.</span>")	//Unless emagged of course
 		flick(icon_deny,entopic.my_image)
+		return
+	var/datum/nifsoft/path = R.item_path
+	if(!emagged && initial(path.access) && (has_access(list(), list(999), list(initial(path.access))) && !bootleg(usr)))
+		to_chat(usr, "<span class='warning'>Thanks for the money, sucker.</span>") //Steal people's money if they're stupid enough to try without emag or sketchy.
 		return
 	vend_ready = 0 //One thing at a time!!
 	status_message = "Installing..."

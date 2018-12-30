@@ -20,7 +20,7 @@
 			nif_status = "Adapting To User"
 		else
 			nif_status = "Unknown - Error"
-	nif_status += " \[[nif.quality]\]"
+	nif_status += nif.typeletter ? " \[[nif.typeletter]\]" : " \[[nif.quality]\]"
 	nif_status += " (Condition: [nif_percent]%)"
 	stat("NIF Status", nif_status)
 
