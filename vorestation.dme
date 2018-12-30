@@ -3007,7 +3007,6 @@
 #include "modular_citadel\code\defines\obj\weapon.dm"
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
 #include "modular_citadel\code\game\jobs\job\engineering_cit.dm"
-#include "modular_citadel\code\game\jobs\job\z_all_jobs_cit.dm"
 #include "modular_citadel\code\game\objects\items\upgradekit.dm"
 #include "modular_citadel\code\game\objects\items\devices\communicator.dm"
 #include "modular_citadel\code\game\objects\items\devices\defib.dm"
