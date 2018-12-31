@@ -115,7 +115,7 @@
 		return 1 // Allows NIFs with the ignore restrictions flag to buy anything displayed where access is permitted in the first place.
 	return 0
 
-/obj/machinery/vending/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/vending/nifsoft_shop/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
 		return
