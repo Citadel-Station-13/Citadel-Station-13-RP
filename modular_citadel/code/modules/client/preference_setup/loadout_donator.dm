@@ -64,9 +64,23 @@
 	slot = slot_head
 	path = /obj/item/clothing/accessory/collar/donator/crown
 	ckeywhitelist = list("grayrachnid")
-	
+
 /datum/gear/donator/beesuit
 	display_name = "Bee Suit"
 	slot = slot_head
 	path = /obj/item/clothing/suit/storage/hooded/donator/bee_costume
 	ckeywhitelist = list("beeskee")
+
+/datum/gear/donator/rarehat
+	display_name = "Ultra Rare Hat"
+	slot = slot_head
+	path = /obj/item/clothing/head/collectable/petehat
+	ckeywhitelist = list("risingstarslash")
+
+
+/datum/gear/donator/silverhelmet
+	display_name = "Silver's Helmet"
+	sort_category = "Donator"
+	slot = slot_head
+	path = /obj/item/reskin_kit/jenna
+	ckeywhitelist = list("jennasilver")

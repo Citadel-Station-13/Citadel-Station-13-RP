@@ -110,7 +110,7 @@ var/global/list/limb_icon_cache = list()
 			res.add_overlay(facial_s)
 
 	//Head hair
-	if(owner.h_style && !(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR)))
+	if(owner.h_style)
 		var/style = owner.h_style
 		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[style]
 		if(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR))
@@ -179,13 +179,12 @@ var/global/list/limb_icon_cache = list()
 	if(model)
 		icon_cache_key += "_model_[model]"
 		apply_colouration(mob_icon)
-		// VOREStation edit to enable markings on synths
 		if(owner && owner.synth_markings)
 			for(var/M in markings)
 				var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 				var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 				mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode) // VOREStation edit
-				overlays |= mark_s //So when it's not on your body, it has icons
+				add_overlay(mark_s) //So when it's not on your body, it has icons
 				mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 				icon_cache_key += "[M][markings[M]["color"]]"
 

@@ -6119,17 +6119,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "kB" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals6,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "kC" = (
@@ -6417,13 +6410,33 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/north_stairs_three)
 "ld" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
-/obj/machinery/door/airlock/multi_tile/glass,
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	icon_state = "spline_plain";
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1{
+	dir = 8
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Atrium Third Floor"
+	},
+/turf/simulated/floor/tiled/monofloor{
+	dir = 1
+	},
 /area/tether/surfacebase/north_stairs_three)
 "le" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/plain{
+	icon_state = "spline_plain";
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/steeldecal/steel_decals_central1{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monofloor{
+	dir = 1
+	},
 /area/tether/surfacebase/north_stairs_three)
 "lf" = (
 /obj/structure/sign/directions/medical{
@@ -7173,11 +7186,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
 	name = "Atrium Third Floor"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
 /turf/simulated/floor/tiled/monofloor,
 /area/tether/surfacebase/north_stairs_three)
 "mG" = (
@@ -9672,7 +9685,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "qY" = (
-/obj/machinery/chem_master,
+/obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "qZ" = (
@@ -13291,7 +13304,7 @@
 /obj/item/honey_frame,
 /obj/item/honey_frame,
 /obj/item/honey_frame,
-/obj/item/weapon/crowbar,
+/obj/item/weapon/tool/crowbar,
 /obj/item/bee_smoker,
 /obj/item/beehive_assembly,
 /obj/structure/closet/crate/hydroponics{
@@ -18896,8 +18909,8 @@
 /obj/item/device/multitool{
 	pixel_x = 3
 	},
-/obj/item/weapon/crowbar,
-/obj/item/weapon/crowbar,
+/obj/item/weapon/tool/crowbar,
+/obj/item/weapon/tool/crowbar,
 /obj/item/weapon/storage/belt/utility,
 /obj/item/weapon/storage/toolbox/electrical{
 	pixel_x = 1;
@@ -21278,7 +21291,7 @@
 "KO" = (
 /obj/structure/table/marble,
 /obj/item/weapon/flame/lighter/zippo,
-/obj/item/weapon/screwdriver,
+/obj/item/weapon/tool/screwdriver,
 /obj/item/clothing/head/that{
 	pixel_x = 4;
 	pixel_y = 6
@@ -21578,7 +21591,7 @@
 /obj/item/clothing/gloves/rainbow,
 /obj/item/clothing/head/soft/rainbow,
 /obj/item/clothing/shoes/rainbow,
-/obj/item/clothing/suit/storage/seromi/cloak/rainbow,
+/obj/item/clothing/suit/storage/seromi/cloak/standard/rainbow,
 /obj/item/clothing/under/color/rainbow,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -21735,6 +21748,23 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"Qb" = (
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Qd" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/material/minihoe,
@@ -22149,6 +22179,21 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/public_garden_three)
+"Vc" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Ve" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -32930,7 +32975,7 @@ hA
 gT
 iQ
 jM
-kx
+Qb
 lc
 lS
 mC
@@ -33072,7 +33117,7 @@ hB
 gT
 iR
 jM
-kx
+kq
 ld
 lT
 mD
@@ -33356,7 +33401,7 @@ hD
 gT
 iT
 jO
-kC
+Vc
 lf
 lV
 mF

@@ -31,7 +31,7 @@
 
 /obj/item/weapon/disk/limb/white_kryten
 	company = "White Kryten Cybernetics"
-
+END OF CITADEL CHANGES */
 // verkister : Rahwoof Boop
 /datum/robolimb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
@@ -45,7 +45,7 @@
 	company = "Eggnerd Prototyping Ltd."
 	icon = 'icons/obj/items_vr.dmi'
 	icon_state = "verkdisk"
-END OF CITADEL CHANGES */
+
 //////////////// General VS-only ones /////////////////
 /datum/robolimb/talon //They're buildable by default due to being extremely basic.
 	company = "Talon LLC"
