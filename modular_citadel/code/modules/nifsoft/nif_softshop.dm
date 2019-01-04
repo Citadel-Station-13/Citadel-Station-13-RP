@@ -127,7 +127,7 @@
 		var/datum/nifsoft/curven = currently_vending.item_path
 		if(!ispath(curven))
 			log_and_message_admins("Something that isn't a NIFsoft was selected and attempted purchase at [src].")
-		if(N.quality < initial(curven.complexity))
+		if(N.quality < initial(curven.complexity) && N.quality >= 0 && initial(curven.complexity) >= 0)
 			to_chat(usr, "<span class='warning'>Your NIF can't support this NIFsoft.</span>")
 			return
 	. = ..()
