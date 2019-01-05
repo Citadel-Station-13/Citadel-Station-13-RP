@@ -177,13 +177,29 @@ datum/design/item/laserpointer
 	build_path = /obj/item/device/universal_translator
 	sort_string = "HABQA"
 
+/datum/design/item/translator_all
+	name = "handheld omni-translator"
+	id = "translator_all"
+	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, "gold" = 500, "silver" = 500)
+	build_path = /obj/item/device/universal_translator/all
+	sort_string = "HABQB" //S T R I N G S
+
 /datum/design/item/ear_translator
 	name = "earpiece translator"
 	id = "ear_translator"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)	//It's been hella miniaturized.
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000, "gold" = 1000)
 	build_path = /obj/item/device/universal_translator/ear
-	sort_string = "HABQB"
+	sort_string = "HABQC" //cit change - S T R I N G S
+
+/datum/design/item/ear_translator_all
+	name = "earpiece omni-translator"
+	id = "ear_translator_all"
+	req_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 6)	//dude what hte fuck lmao
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000, "gold" = 2000, "silver" = 2000)
+	build_path = /obj/item/device/universal_translator/ear/all
+	sort_string = "HABQD" //big shit cit change ends
 
 /datum/design/item/xenoarch_multi_tool
 	name = "xenoarcheology multitool"
@@ -191,7 +207,7 @@ datum/design/item/laserpointer
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 3)
 	build_path = /obj/item/device/xenoarch_multi_tool
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "uranium" = 500, "phoron" = 500)
-	sort_string = "HABQC"
+	sort_string = "HABQE" // cit change - STRINGS
 
 /datum/design/item/excavationdrill
 	name = "Excavation Drill"
@@ -200,4 +216,4 @@ datum/design/item/laserpointer
 	build_type = PROTOLATHE
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
 	build_path = /obj/item/weapon/pickaxe/excavationdrill
-	sort_string = "HABQD"
+	sort_string = "HABQF" // cit change - STRINGS
