@@ -3064,6 +3064,7 @@
 #include "modular_citadel\code\modules\projectiles\guns\energy\netgun_vr.dm"
 #include "modular_citadel\code\modules\projectiles\guns\energy\nuclear.dm"
 #include "modular_citadel\code\modules\projectiles\projectile\energy.dm"
+#include "modular_citadel\code\modules\research\designs\misc.dm"
 #include "modular_citadel\code\modules\research\designs\stock_parts.dm"
 #include "modular_citadel\code\modules\resleeving\documents.dm"
 #include "modular_citadel\code\modules\resleeving\implant.dm"
