@@ -458,9 +458,9 @@
 
 // This is about 0.896m^3 of atmosphere
 /datum/gas_mixture/belly_air
-    volume = 1000
+    volume = 2500
     temperature = 293.150
-    total_moles = 40
+    total_moles = 104
 
 /datum/gas_mixture/belly_air/New()
     . = ..()
@@ -553,6 +553,10 @@
 		to_chat(src, "<span class='notice'>You are not holding anything.</span>")
 		return
 
+	if(is_type_in_list(I,item_vore_blacklist))
+		to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
+		return
+
 	if(is_type_in_list(I,edible_trash))
 		drop_item()
 		I.forceMove(vore_selected)
@@ -588,7 +592,7 @@
 				to_chat(src, "<span class='notice'>You can taste the flavor of pain. This can't possibly be healthy for your guts.</span>")
 			else
 				to_chat(src, "<span class='notice'>You can taste the flavor of really bad ideas.</span>")
-		else if(istype(I,/obj/item/toy/figure))
+		else if(istype(I,/obj/item/toy))
 			visible_message("<span class='warning'>[src] demonstrates their voracious capabilities by swallowing [I] whole!</span>")
 		else if(istype(I,/obj/item/device/paicard) || istype(I,/obj/item/device/mmi/digital/posibrain) || istype(I,/obj/item/device/aicard))
 			visible_message("<span class='warning'>[src] demonstrates their voracious capabilities by swallowing [I] whole!</span>")
