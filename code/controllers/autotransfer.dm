@@ -14,7 +14,7 @@ datum/controller/transfer_controller/New()
 datum/controller/transfer_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
 
-datum/controller/transfer_controller/proc/process()
+datum/controller/transfer_controller/process()
 	currenttick = currenttick + 1
 	//VOREStation Edit START
 	if (round_duration_in_ticks >= shift_last_vote - 2 MINUTES)
