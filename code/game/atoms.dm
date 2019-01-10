@@ -270,7 +270,7 @@
 		//He has no prints!
 		if (mFingerprints in M.mutations)
 			if(fingerprintslast != M.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
+				fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
 				fingerprintslast = M.key
 			return 0		//Now, lets get to the dirty work.
 		//First, make sure their DNA makes sense.
@@ -284,7 +284,7 @@
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
 			if(fingerprintslast != H.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(H)] (Wearing [H.gloves])"
+				fingerprintshidden += text("\[[]\](Wearing gloves). Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 				fingerprintslast = H.key
 			H.gloves.add_fingerprint(M)
 
@@ -298,7 +298,7 @@
 
 		//More adminstuffz
 		if(fingerprintslast != H.key)
-			fingerprintshidden += "[time_stamp()]: [key_name(H)]"
+			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 			fingerprintslast = H.key
 
 		//Make the list if it does not exist.
@@ -351,7 +351,7 @@
 	else
 		//Smudge up dem prints some
 		if(fingerprintslast != M.key)
-			fingerprintshidden += "[time_stamp()]: [key_name(M)]"
+			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), M.real_name, M.key)
 			fingerprintslast = M.key
 
 	//Cleaning up shit.
