@@ -34,7 +34,7 @@
 	update_name()
 
 /obj/item/weapon/reagent_containers/glass/rag/Destroy()
-	processing_objects -= src //so we don't continue turning to ash while gc'd
+	STOP_PROCESSING(SSobj, src) //so we don't continue turning to ash while gc'd
 	return ..()
 
 /obj/item/weapon/reagent_containers/glass/rag/attack_self(mob/user as mob)
