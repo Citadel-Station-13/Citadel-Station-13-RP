@@ -132,8 +132,8 @@
 	item_state = "deagle"
 	force = 14.0
 	caliber = ".44"
+	fire_sound = 'sound/weapons/Gunshot_deagle.ogg'
 	load_method = MAGAZINE
-	fire_sound = 'sound/weapons/deagle.ogg'
 	magazine_type = /obj/item/ammo_magazine/m44
 	allowed_magazines = list(/obj/item/ammo_magazine/m44)
 
@@ -180,7 +180,7 @@
 	icon_state = "gyropistol"
 	max_shells = 8
 	caliber = ".75"
-	fire_sound = 'sound/weapons/rpg.ogg'
+	fire_sound = 'sound/weapons/railgun.ogg'
 	origin_tech = list(TECH_COMBAT = 3)
 	ammo_type = "/obj/item/ammo_casing/a75"
 	load_method = MAGAZINE
@@ -331,7 +331,6 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
 	caliber = "9mm"
 	load_method = MAGAZINE
-	fire_sound = 'sound/weapons/gunshot3.ogg'
 	magazine_type = /obj/item/ammo_magazine/m9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/m9mm) // Can accept illegal large capacity magazines, or compact magazines.
 
