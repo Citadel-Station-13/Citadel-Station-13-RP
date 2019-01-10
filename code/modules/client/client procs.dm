@@ -166,7 +166,7 @@
 			src.changes()
 
 	hook_vr("client_new",list(src)) //VOREStation Code
-	
+
 	if(config.paranoia_logging)
 		if(isnum(player_age) && player_age == 0)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
@@ -265,13 +265,23 @@
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
 	//Panic bunker code
-	if (isnum(player_age) && player_age == 0) //first connection
+	if(sql_id)
+		//Player already identified previously, we need to just update the 'lastseen', 'ip' and 'computer_id' variables
+		var/DBQuery/query_update = dbcon.NewQuery("UPDATE erro_player SET lastseen = Now(), ip = '[sql_ip]', computerid = '[sql_computerid]', lastadminrank = '[sql_admin_rank]' WHERE id = [sql_id]")
+		query_update.Execute()
+	else
 		if (config.panic_bunker && !holder && !deadmin_holder)
-			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
-			qdel(src)
-			return 0
+			if (isnum(player_age) && player_age == 0) //first connection
+				log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
+				message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
+				to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
+				qdel(src)
+				return 0
+		else
+			//New player!! Need to insert all the stuff
+			var/DBQuery/query_insert = dbcon.NewQuery("INSERT INTO erro_player (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, '[sql_ckey]', Now(), Now(), '[sql_ip]', '[sql_computerid]', '[sql_admin_rank]')")
+			query_insert.Execute()
+
 
 	// VOREStation Edit Start - Department Hours
 	if(config.time_off)
@@ -281,15 +291,6 @@
 			LAZYINITLIST(department_hours)
 			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
 	// VOREStation Edit End - Department Hours
-
-	if(sql_id)
-		//Player already identified previously, we need to just update the 'lastseen', 'ip' and 'computer_id' variables
-		var/DBQuery/query_update = dbcon.NewQuery("UPDATE erro_player SET lastseen = Now(), ip = '[sql_ip]', computerid = '[sql_computerid]', lastadminrank = '[sql_admin_rank]' WHERE id = [sql_id]")
-		query_update.Execute()
-	else
-		//New player!! Need to insert all the stuff
-		var/DBQuery/query_insert = dbcon.NewQuery("INSERT INTO erro_player (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, '[sql_ckey]', Now(), Now(), '[sql_ip]', '[sql_computerid]', '[sql_admin_rank]')")
-		query_insert.Execute()
 
 	//Logging player access
 	var/serverip = "[world.internet_address]:[world.port]"
