@@ -85,10 +85,9 @@
 	if(O.abiotic())
 		to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
 		return 0
-	for(var/mob/living/simple_animal/slime/M in range(1, O))
-		if(M.victim == O)
-			to_chat(user, "<span class='danger'>[O] has a slime attached to them, deal with that first.</span>")
-			return 0
+	if(O.has_buckled_mobs())
+		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		return
 
 	if(O == user)
 		visible_message("[user] climbs into \the [src].")
