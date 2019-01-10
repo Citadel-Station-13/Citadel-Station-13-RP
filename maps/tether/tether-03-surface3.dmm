@@ -253,7 +253,6 @@
 /area/tether/surfacebase/medical/triage)
 "aE" = (
 /obj/structure/table/rack,
-/obj/random/tetheraid,
 /obj/random/maintenance/medical,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_site2)
@@ -1787,7 +1786,6 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/random/tetheraid,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "dB" = (
@@ -2249,11 +2247,9 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/random/tetheraid,
 /obj/machinery/vending/wallmed1{
 	pixel_x = 32
 	},
-/obj/random/tetheraid,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/common)
 "ev" = (
