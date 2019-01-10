@@ -49,7 +49,7 @@
 				return
 		else
 			if (mode == 2)
-				processing_objects.Remove(src) // Now the power sink actually stops draining the station's power if you unhook it. --NeoFite
+				STOP_PROCESSING(SSobj, src) // Now the power sink actually stops draining the station's power if you unhook it. --NeoFite
 				STOP_PROCESSING_POWER_OBJECT(src)
 			anchored = 0
 			mode = 0
