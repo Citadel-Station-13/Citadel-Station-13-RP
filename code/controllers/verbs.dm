@@ -85,7 +85,6 @@
 		if("Jobs")
 			debug_variables(job_master)
 			feedback_add_details("admin_verb","DJobs")
-		if("Sun")
 			debug_variables(sun)
 			feedback_add_details("admin_verb","DSun")
 		if("Radio")
@@ -131,7 +130,6 @@
 			debug_variables(chemistryProcess)
 			feedback_add_details("admin_verb", "DChem")
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
-	return
 
 /client/proc/debug_process_scheduler()
 	set category = "Debug"
