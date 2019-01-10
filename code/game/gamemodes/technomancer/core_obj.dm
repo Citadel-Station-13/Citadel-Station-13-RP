@@ -42,7 +42,7 @@
 
 /obj/item/weapon/technomancer_core/Destroy()
 	dismiss_all_summons()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 // Add the spell buttons to the HUD.

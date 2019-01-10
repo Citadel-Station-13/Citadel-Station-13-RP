@@ -436,7 +436,7 @@ END OF CITADEL CHANGE */
 /obj/item/clothing/accessory/collar/khcrystal/process()
 	check_owner()
 	if((state > 1) || !owner)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/khcrystal/attack_self(mob/user as mob)
 	if(state > 0) //Can't re-pair, one time only, for security reasons.
@@ -447,7 +447,7 @@ END OF CITADEL CHANGE */
 	owner_c = user.client	//This is his client
 	update_state(1)
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/khcrystal/proc/check_owner()
 	//He's dead, jim

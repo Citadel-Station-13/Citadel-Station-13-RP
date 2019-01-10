@@ -632,7 +632,7 @@
 
 	if(!patient && !cleaning) //We think we're done working.
 		if(!update_patient()) //One last try to find someone
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 			return
 
 /obj/item/device/dogborg/sleeper/K9 //The K9 portabrig
