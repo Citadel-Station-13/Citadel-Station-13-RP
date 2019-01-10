@@ -49,6 +49,7 @@ var/datum/controller/supply/supply_controller = new()
 			"platinum" = 5
 		)
 
+
 /datum/controller/supply/New()
 	ordernum = rand(1,9000)
 
@@ -131,6 +132,7 @@ var/datum/controller/supply/supply_controller = new()
 						EC.contents[EC.contents.len]["value"] = P.get_amount() * material_points_conversion[P.get_material_name()]
 					EC.contents[EC.contents.len]["quantity"] = P.get_amount()
 					EC.value += EC.contents[EC.contents.len]["value"]
+
 
 				//Sell spacebucks
 				if(istype(A, /obj/item/weapon/spacecash))

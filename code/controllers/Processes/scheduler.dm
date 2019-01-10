@@ -40,7 +40,7 @@
 // We are being killed. Least we can do is deregister all those events we registered
 /datum/controller/process/scheduler/onKill()
 	for(var/st in scheduled_tasks)
-		destroyed_event.unregister(st, src)
+		GLOB.destroyed_event.unregister(st, src)
 
 /datum/controller/process/scheduler/statProcess()
 	..()
@@ -58,19 +58,11 @@
 /proc/schedule_task_in(var/in_time, var/procedure, var/list/arguments = list())
 	return schedule_task(world.time + in_time, procedure, arguments)
 
-/proc/schedule_callback_in(var/in_time, var/datum/callback)
-	return schedule_callback(world.time + in_time, callback)
-
 /proc/schedule_task_with_source_in(var/in_time, var/source, var/procedure, var/list/arguments = list())
 	return schedule_task_with_source(world.time + in_time, source, procedure, arguments)
 
 /proc/schedule_task(var/trigger_time, var/procedure, var/list/arguments)
 	var/datum/scheduled_task/st = new/datum/scheduled_task(trigger_time, procedure, arguments, /proc/destroy_scheduled_task, list())
-	scheduler.schedule(st)
-	return st
-
-/proc/schedule_callback(var/trigger_time, var/datum/callback)
-	var/datum/scheduled_task/callback/st = new/datum/scheduled_task/callback(trigger_time, callback, /proc/destroy_scheduled_task, list())
 	scheduler.schedule(st)
 	return st
 
@@ -122,7 +114,7 @@
 /datum/scheduled_task/proc/pre_process()
 	task_triggered_event.raise_event(list(src))
 
-/datum/scheduled_task/process()
+/datum/scheduled_task/proc/process()
 	if(procedure)
 		call(procedure)(arglist(arguments))
 
@@ -133,21 +125,12 @@
 /datum/scheduled_task/proc/trigger_task_in(var/trigger_in)
 	src.trigger_time = world.time + trigger_in
 
-/datum/scheduled_task/callback
-	var/datum/callback/callback
-
-/datum/scheduled_task/callback/New(var/trigger_time, var/datum/callback, var/proc/task_after_process, var/list/task_after_process_args)
-	..(trigger_time = trigger_time, task_after_process = task_after_process, task_after_process_args = task_after_process_args)
-
-/datum/scheduled_task/callback/process()
-	callback.Invoke()
-
 /datum/scheduled_task/source
 	var/datum/source
 
 /datum/scheduled_task/source/New(var/trigger_time, var/datum/source, var/procedure, var/list/arguments, var/proc/task_after_process, var/list/task_after_process_args)
 	src.source = source
-	destroyed_event.register(src.source, src, /datum/scheduled_task/source/proc/source_destroyed)
+	GLOB.destroyed_event.register(src.source, src, /datum/scheduled_task/source/proc/source_destroyed)
 	..(trigger_time, procedure, arguments, task_after_process, task_after_process_args)
 
 /datum/scheduled_task/source/Destroy()
