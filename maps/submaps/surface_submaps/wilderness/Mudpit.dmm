@@ -55,13 +55,11 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "n" = (
-/obj/effect/decal/mecha_wreckage/ripley/firefighter,
+/mob/living/simple_mob/animal/giant_spider/thermic,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
-"D" = (
-/mob/living/simple_animal/hostile/giant_spider/thermic{
-	returns_home = 1
-	},
+"o" = (
+/obj/effect/decal/mecha_wreckage/ripley/firefighter,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 
@@ -212,7 +210,7 @@ c
 c
 m
 c
-D
+n
 b
 b
 c
@@ -227,7 +225,7 @@ b
 c
 c
 c
-D
+n
 c
 c
 b
@@ -244,7 +242,7 @@ c
 c
 g
 c
-n
+o
 c
 c
 b

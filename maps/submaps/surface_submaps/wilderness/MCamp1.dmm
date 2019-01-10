@@ -60,9 +60,7 @@
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "q" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "r" = (
@@ -71,23 +69,15 @@
 /area/submap/MilitaryCamp1)
 "s" = (
 /obj/machinery/computer/communications,
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "t" = (
 /obj/structure/table/standard,
 /obj/random/energy,
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "u" = (
@@ -101,21 +91,13 @@
 /area/submap/MilitaryCamp1)
 "w" = (
 /obj/machinery/computer/security,
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "x" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "y" = (
@@ -129,15 +111,11 @@
 /area/submap/MilitaryCamp1)
 "A" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "B" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "C" = (

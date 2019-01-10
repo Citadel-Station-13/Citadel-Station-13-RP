@@ -32,19 +32,19 @@
 /turf/template_noop,
 /area/submap/Rocky2)
 "j" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/item/weapon/shovel,
 /turf/template_noop,
 /area/submap/Rocky2)
 "k" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/ausbushes/sunnybush,
 /turf/template_noop,
 /area/submap/Rocky2)
 "l" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/ausbushes/stalkybush,
 /turf/template_noop,
 /area/submap/Rocky2)
-"A" = (
-/obj/item/weapon/shovel,
+"m" = (
+/obj/structure/flora/tree/dead,
 /turf/template_noop,
 /area/submap/Rocky2)
 
@@ -125,7 +125,7 @@ b
 b
 b
 b
-l
+m
 b
 a
 "}
@@ -336,7 +336,7 @@ f
 b
 b
 b
-j
+k
 b
 b
 c
@@ -359,7 +359,7 @@ b
 d
 b
 h
-A
+j
 b
 g
 b
@@ -392,7 +392,7 @@ b
 b
 d
 b
-k
+l
 b
 c
 c
@@ -665,7 +665,7 @@ c
 c
 b
 b
-l
+m
 b
 a
 "}

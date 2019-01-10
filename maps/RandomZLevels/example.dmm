@@ -241,7 +241,7 @@
 /area/awaymission/example)
 "aF" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/crowbar,
+/obj/item/weapon/crowbar,
 /turf/simulated/floor,
 /area/awaymission/example)
 "aG" = (
@@ -258,7 +258,7 @@
 "aI" = (
 /obj/structure/table/standard,
 /obj/effect/spawner/lootdrop{
-	loot = "/obj/item/weapon/tool/wrench;/obj/item/weapon/tool/screwdriver;/obj/item/weapon/cigpacket/dromedaryco";
+	loot = "/obj/item/weapon/wrench;/obj/item/weapon/screwdriver;/obj/item/weapon/cigpacket/dromedaryco";
 	lootcount = 2
 	},
 /turf/simulated/floor,
@@ -774,13 +774,13 @@
 /area/awaymission/example)
 "ca" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wirecutters,
+/obj/item/weapon/wirecutters,
 /obj/item/stack/cable_coil/yellow,
 /turf/simulated/floor,
 /area/awaymission/example)
 "cb" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wrench,
+/obj/item/weapon/wrench,
 /turf/simulated/floor,
 /area/awaymission/example)
 "cc" = (
@@ -813,7 +813,7 @@
 /area/awaymission/example)
 "ch" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/weapon/screwdriver,
 /obj/item/weapon/hand_labeler,
 /obj/machinery/light{
 	icon_state = "tube1";

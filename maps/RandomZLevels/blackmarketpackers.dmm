@@ -886,13 +886,13 @@
 /area/awaymission/BMPship2)
 "cC" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/weapon/screwdriver,
+/obj/item/weapon/screwdriver,
 /obj/item/weapon/paper{
 	info = "The next person who takes one of my screwdrivers gets stabbed with one. They are MINE. - Love, Madsen";
 	name = "scribbled note"
 	},
-/obj/item/weapon/tool/screwdriver,
+/obj/item/weapon/screwdriver,
 /turf/simulated/floor{
 	icon_state = "bar"
 	},
@@ -1281,7 +1281,7 @@
 	},
 /area/awaymission/BMPship1)
 "dF" = (
-/obj/item/weapon/tool/crowbar,
+/obj/item/weapon/crowbar,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -2419,7 +2419,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship2)
 "gb" = (
-/obj/item/weapon/tool/wrench,
+/obj/item/weapon/wrench,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship2)
 "gc" = (
