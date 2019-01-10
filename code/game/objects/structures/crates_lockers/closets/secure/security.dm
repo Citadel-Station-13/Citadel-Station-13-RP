@@ -207,7 +207,7 @@
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
-		///obj/item/ammo_magazine/m45/rubber, //VOREStation Removal,
+		/obj/item/ammo_magazine/m45/rubber,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
@@ -257,7 +257,7 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
-		///obj/item/gunbox, //VOREStation Removal,
+		/obj/item/gunbox,
 		/obj/item/weapon/storage/belt/detective,
 		/obj/item/weapon/storage/box/evidence,
 		/obj/item/device/radio/headset/headset_sec,

@@ -49,10 +49,9 @@
 		if(occupant)
 			to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
 			return
-		for(var/mob/living/simple_animal/slime/M in range(1, H.affecting))
-			if(M.victim == H.affecting)
-				to_chat(user, "<span class='danger'>[H.affecting.name] has a slime attached to them, deal with that first.</span>")
-				return
+		if(H.affecting.has_buckled_mobs())
+			to_chat(user, span("warning", "\The [H.affecting] has other entities attached to it. Remove them first."))
+			return
 		var/mob/M = H.affecting
 		if(M.abiotic())
 			to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
