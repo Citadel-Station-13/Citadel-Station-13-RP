@@ -726,7 +726,7 @@ END OF CITADEL CHANGES */
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_roiz
 
 /obj/item/weapon/implant/reagent_generator/roiz/post_implant(mob/living/carbon/source)
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
@@ -794,7 +794,7 @@ END OF CITADEL CHANGES */
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_jasmine
 
 /obj/item/weapon/implant/reagent_generator/jasmine/post_implant(mob/living/carbon/source)
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
@@ -862,7 +862,7 @@ END OF CITADEL CHANGES */
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_yonra
 
 /obj/item/weapon/implant/reagent_generator/yonra/post_implant(mob/living/carbon/source)
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
@@ -946,7 +946,7 @@ END OF CITADEL CHANGES */
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_rischi
 
 /obj/item/weapon/implant/reagent_generator/rischi/post_implant(mob/living/carbon/source)
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1
@@ -1642,7 +1642,7 @@ END OF CITADEL CHANGES*/
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_evian
 
 /obj/item/weapon/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
 	return 1

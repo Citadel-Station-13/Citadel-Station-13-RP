@@ -20,7 +20,7 @@
 /obj/item/weapon/reagent_containers/syringe/process()
 	dirtiness = min(dirtiness + targets.len,75)
 	if(dirtiness >= 75)
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 	return 1
 
 /obj/item/weapon/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
@@ -59,7 +59,7 @@
 			infect_virus2(target,virus.getcopy())
 
 	if(!used)
-		processing_objects |= src
+		START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
 	src = null

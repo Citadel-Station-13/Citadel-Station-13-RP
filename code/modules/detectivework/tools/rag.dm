@@ -187,14 +187,14 @@
 		qdel(src)
 		return
 
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	set_light(2, null, "#E38F46")
 	on_fire = 1
 	update_name()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/glass/rag/proc/extinguish()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	set_light(0)
 	on_fire = 0
 
@@ -221,7 +221,7 @@
 		location.hotspot_expose(700, 5)
 
 	if(burn_time <= 0)
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		new /obj/effect/decal/cleanable/ash(location)
 		qdel(src)
 		return

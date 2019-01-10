@@ -38,7 +38,7 @@
 
 /obj/item/weapon/technomancer_core/New()
 	..()
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/technomancer_core/Destroy()
 	dismiss_all_summons()

@@ -91,7 +91,7 @@ var/list/organ_cache = list()
 	if(robotic < ORGAN_ROBOT)
 		status |= ORGAN_DEAD
 	damage = max_damage
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	if(owner && vital)
 		owner.death()
 		owner.can_defib = 0
@@ -336,7 +336,7 @@ var/list/organ_cache = list()
 	if(affected) affected.internal_organs -= src
 
 	loc = owner.drop_location()
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	rejecting = null
 	var/datum/reagent/blood/organ_blood = locate(/datum/reagent/blood) in reagents.reagent_list
 	if(!organ_blood || !organ_blood.data["blood_DNA"])
@@ -367,7 +367,7 @@ var/list/organ_cache = list()
 
 	owner = target
 	loc = owner
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	target.internal_organs |= src
 	affected.internal_organs |= src
 	target.internal_organs_by_name[organ_tag] = src
