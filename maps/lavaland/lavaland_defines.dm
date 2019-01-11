@@ -1,5 +1,4 @@
 #define Z_LEVEL_FIRST_LAVALAND					1
-#define Z_LEVEL_SECOND_LAVALAND					2
 
 /datum/map/lavaland
 	name = "Test Map"
@@ -8,8 +7,6 @@
 
 	lobby_icon = 'icons/misc/title.dmi'
 	lobby_screens = list("mockingjay00")
-
-	zlevel_datum_type = /datum/map_z_level/lavaland
 
 	station_name  = "The Funhouse"
 	station_short = "Funhouse"

@@ -35,7 +35,6 @@
 /area/ruin/unpowered/syndicate_lava_base
 	name = "Secret Base"
 	icon_state = "dk_yellow"
-	ambientsounds = HIGHSEC
 
 /area/ruin/unpowered/syndicate_lava_base/engineering
 	name = "Syndicate Lavaland Engineering"
