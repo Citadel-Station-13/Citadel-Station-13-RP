@@ -17,7 +17,7 @@ datum/controller/transfer_controller/Destroy()
 datum/controller/transfer_controller/proc/process()
 	currenttick = currenttick + 1
 	//VOREStation Edit START
-	if (round_duration_in_ticks >= shift_last_vote - 2 MINUTES) 
+	if (round_duration_in_ticks >= shift_last_vote - 2 MINUTES)
 		shift_last_vote = 999999999999 //Setting to a stupidly high number since it'll be not used again.
 		to_world("<b>Warning: This upcoming round-extend vote will be your ONLY extend vote. Wrap up your scenes in the next 60 minutes if the round is extended.</b>") //VOREStation Edit
 	if (round_duration_in_ticks >= shift_hard_end - 1 MINUTE)

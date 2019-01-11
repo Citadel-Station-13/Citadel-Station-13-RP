@@ -196,3 +196,8 @@
 //code/game/objects/items/devices/PDA/PDA.dm
 /obj/item/weapon/storage/box/PDAs
 	icon = 'modular_citadel/icons/obj/storage.dmi'
+
+//Fixes missing RSF icon.
+//code/game/objects/items/weapons/RSF.dm
+/obj/item/weapon/rsf
+	icon = 'icons/obj/tools.dmi'

@@ -12,4 +12,4 @@
 	name = "dark-purple semi-galoshes"
 	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
 	icon_state = "galoshes_sc"
-	slowdown = SHOES_SLOWDOWN+0.5
+	slowdown = SHOES_SLOWDOWN
