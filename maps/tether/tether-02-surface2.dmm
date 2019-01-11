@@ -7321,9 +7321,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "pC" = (
@@ -18456,14 +18453,6 @@
 "LI" = (
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside2)
-"LJ" = (
-/obj/structure/mopbucket,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/mop,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/turf/simulated/floor/tiled,
-/area/janitor)
 "LM" = (
 /obj/structure/frame{
 	anchored = 1
@@ -18486,13 +18475,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
-"MT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/east_stairs_two)
 "MX" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -18515,27 +18497,9 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Nb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/atrium_two)
 "Nf" = (
 /turf/simulated/open,
 /area/tether/surfacebase/public_garden_two)
-"No" = (
-/obj/structure/mopbucket,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/mop,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
-/area/janitor)
 "Nq" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/borderfloor/corner{
@@ -18756,12 +18720,6 @@
 /obj/structure/sign/poster,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
-"SB" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
-/obj/random/trash_pile,
-/turf/simulated/floor,
-/area/maintenance/lower/south)
 "SE" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -18943,14 +18901,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"WW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/atrium_two)
 "Xc" = (
 /obj/structure/dogbed,
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -19023,11 +18973,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_two)
-"XY" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/corner/purple/bordercorner,
-/turf/simulated/floor/tiled,
-/area/janitor)
 "Ye" = (
 /obj/structure/frame/computer,
 /turf/simulated/floor,
@@ -19045,12 +18990,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Yv" = (
-/obj/structure/janitorialcart,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/turf/simulated/floor/tiled,
-/area/janitor)
 "YE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -19133,18 +19072,6 @@
 /obj/effect/floor_decal/corner/lime/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Zy" = (
-/obj/structure/janitorialcart,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/janitor)
 "ZF" = (
 /obj/machinery/seed_extractor,
 /obj/effect/floor_decal/borderfloor{
