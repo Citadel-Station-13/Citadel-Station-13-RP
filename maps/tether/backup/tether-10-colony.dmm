@@ -12,11 +12,11 @@
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/centcom/specops)
 "ae" = (
-/turf/unsimulated/floor/shuttle_ceiling,
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_l";
 	dir = 8
 	},
+/turf/unsimulated/floor/shuttle_ceiling,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom{
 	base_turf = /turf/unsimulated/floor/shuttle_ceiling
@@ -35,11 +35,11 @@
 /turf/unsimulated/wall,
 /area/centcom/specops)
 "ai" = (
-/turf/unsimulated/floor/shuttle_ceiling,
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "propulsion";
 	dir = 8
 	},
+/turf/unsimulated/floor/shuttle_ceiling,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom{
 	base_turf = /turf/unsimulated/floor/shuttle_ceiling
@@ -729,11 +729,11 @@
 	},
 /area/centcom/specops)
 "bh" = (
-/turf/unsimulated/floor/shuttle_ceiling,
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_r";
 	dir = 8
 	},
+/turf/unsimulated/floor/shuttle_ceiling,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom{
 	base_turf = /turf/unsimulated/floor/shuttle_ceiling

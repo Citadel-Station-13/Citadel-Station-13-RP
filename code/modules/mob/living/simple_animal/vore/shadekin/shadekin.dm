@@ -8,6 +8,7 @@
 	icon_living = "map_example"
 	faction = "shadekin"
 	ui_icons = 'icons/mob/shadekin_hud.dmi'
+	intelligence_level = SA_HUMANOID
 
 	maxHealth = 200
 	health = 200
@@ -86,7 +87,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_animal/shadekin/initialize()
+/mob/living/simple_animal/shadekin/Initialize()
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 
@@ -445,4 +446,4 @@
 	exclaim_verb = "mars"
 	key = "m"
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND*/
+	flags = WHITELISTED | HIVEMIND

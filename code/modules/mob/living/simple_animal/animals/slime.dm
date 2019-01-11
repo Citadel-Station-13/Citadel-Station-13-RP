@@ -1,4 +1,4 @@
-/mob/living/simple_animal/old_slime
+/mob/living/simple_animal/slime
 	name = "pet slime"
 	desc = "A lovable, domesticated slime."
 	tt_desc = "Amorphidae proteus"
@@ -20,14 +20,14 @@
 
 	var/colour = "grey"
 
-/mob/living/simple_animal/old_slime/science
+/mob/living/simple_animal/slime/science
 	name = "Kendrick"
 	colour = "rainbow"
 	icon_state = "rainbow baby slime"
 	icon_living = "rainbow baby slime"
 	icon_dead = "rainbow baby slime dead"
 
-/mob/living/simple_animal/old_slime/science/initialize()
+/mob/living/simple_animal/slime/science/Initialize()
 	. = ..()
 	overlays.Cut()
 	overlays += "aslime-:33"
@@ -57,12 +57,12 @@
 	overlays += "aslime-:33"
 
 /mob/living/simple_animal/adultslime/death()
-	var/mob/living/simple_animal/old_slime/S1 = new /mob/living/simple_animal/old_slime (src.loc)
+	var/mob/living/simple_animal/slime/S1 = new /mob/living/simple_animal/slime (src.loc)
 	S1.icon_state = "[src.colour] baby slime"
 	S1.icon_living = "[src.colour] baby slime"
 	S1.icon_dead = "[src.colour] baby slime dead"
 	S1.colour = "[src.colour]"
-	var/mob/living/simple_animal/old_slime/S2 = new /mob/living/simple_animal/old_slime (src.loc)
+	var/mob/living/simple_animal/slime/S2 = new /mob/living/simple_animal/slime (src.loc)
 	S2.icon_state = "[src.colour] baby slime"
 	S2.icon_living = "[src.colour] baby slime"
 	S2.icon_dead = "[src.colour] baby slime dead"

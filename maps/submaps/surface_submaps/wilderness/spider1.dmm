@@ -18,24 +18,20 @@
 /turf/template_noop,
 /area/submap/spider1)
 "f" = (
-/mob/living/simple_animal/hostile/giant_spider/frost{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/giant_spider/frost,
 /turf/template_noop,
 /area/submap/spider1)
 "g" = (
-/obj/structure/flora/tree/sif,
+/mob/living/simple_mob/animal/giant_spider/nurse,
 /turf/template_noop,
 /area/submap/spider1)
 "h" = (
-/obj/effect/spider/cocoon,
-/mob/living/simple_animal/hostile/giant_spider/frost{
-	returns_home = 1
-	},
+/obj/structure/flora/tree/sif,
 /turf/template_noop,
 /area/submap/spider1)
-"Z" = (
-/mob/living/simple_animal/hostile/giant_spider/nurse,
+"i" = (
+/obj/effect/spider/cocoon,
+/mob/living/simple_mob/animal/giant_spider/frost,
 /turf/template_noop,
 /area/submap/spider1)
 
@@ -104,7 +100,7 @@ a
 b
 b
 c
-Z
+g
 c
 c
 b
@@ -118,7 +114,7 @@ c
 c
 c
 c
-h
+i
 b
 c
 a
@@ -129,7 +125,7 @@ b
 c
 c
 c
-g
+h
 c
 d
 c

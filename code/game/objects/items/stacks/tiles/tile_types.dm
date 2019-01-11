@@ -88,6 +88,7 @@
 	icon_state = "tile-tealcarpet"
 	no_variants = FALSE
 
+// TODO - Add descriptions to these
 /obj/item/stack/tile/carpet/bcarpet
 	icon_state = "tile-carpet"
 /obj/item/stack/tile/carpet/blucarpet

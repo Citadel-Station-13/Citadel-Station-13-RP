@@ -20,7 +20,7 @@ var/list/turf_edge_cache = list()
 	// When a turf gets demoted or promoted, this list gets adjusted.  The top-most layer is the layer on the bottom of the list, due to how pop() works.
 	var/list/turf_layers = list(/turf/simulated/floor/outdoors/rocks)
 
-/turf/simulated/floor/outdoors/initialize()
+/turf/simulated/floor/outdoors/Initialize()
 	update_icon()
 	. = ..()
 
@@ -117,18 +117,9 @@ var/list/turf_edge_cache = list()
 
 /turf/simulated/floor/outdoors/ex_act(severity)
 	switch(severity)
-		//VOREStation Edit - Outdoor turfs less explosion resistant
-		if(1)
-			if(prob(66))
-				ChangeTurf(get_base_turf_by_area(src))
-				return
-			demote()
 		if(2)
 			if(prob(33))
 				return
-			else if(prob(33))
-				demote()
-		//VOREStation Edit End
 		if(3)
 			if(prob(66))
 				return

@@ -19,7 +19,7 @@
 			SCHECK
 		else
 			catchBadType(O)
-			processing_objects -= O
+			STOP_PROCESSING(SSobj, O)
 
 /datum/controller/process/obj/statProcess()
 	..()

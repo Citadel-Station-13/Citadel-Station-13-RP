@@ -50,7 +50,7 @@
 	},
 /area/submap/MHR)
 "l" = (
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -63,7 +63,7 @@
 /area/submap/MHR)
 "n" = (
 /obj/effect/decal/cleanable/cobweb2,
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -95,9 +95,9 @@
 	outdoors = 0
 	},
 /area/submap/MHR)
-"t" = (
+"s" = (
 /obj/effect/decal/cleanable/spiderling_remains,
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -250,7 +250,7 @@ l
 d
 l
 l
-t
+s
 e
 e
 e

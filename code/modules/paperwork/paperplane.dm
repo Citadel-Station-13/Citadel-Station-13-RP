@@ -19,11 +19,7 @@
 		internalPaper = newPaper
 		flags = newPaper.flags
 		color = newPaper.color
-		if(isstorage(newPaper.loc))
-			var/obj/item/weapon/storage/S = newPaper.loc
-			S.remove_from_storage(newPaper, src)
-		else
-			newPaper.forceMove(src)
+		newPaper.forceMove(src)
 	else
 		internalPaper = new /obj/item/weapon/paper(src)
 	update_icon()

@@ -50,7 +50,7 @@
 		kill()
 		return
 
-	if(IsMultiple(activeFor, 5))
+	if(ISMULTIPLE(activeFor, 5))
 		if(prob(15))
 			var/obj/machinery/vending/infectedMachine = pick(vendingMachines)
 			vendingMachines.Remove(infectedMachine)

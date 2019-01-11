@@ -17,37 +17,37 @@
 /turf/template_noop,
 /area/submap/GovPatrol)
 "f" = (
-/obj/item/weapon/storage/box/flare,
+/obj/item/weapon/storage/backpack/parachute,
 /turf/template_noop,
 /area/submap/GovPatrol)
 "g" = (
-/obj/item/ammo_casing,
+/obj/item/weapon/storage/box/flare,
 /turf/template_noop,
 /area/submap/GovPatrol)
 "h" = (
+/obj/item/ammo_casing,
+/turf/template_noop,
+/area/submap/GovPatrol)
+"i" = (
 /obj/item/clothing/under/utility/sifguard,
 /obj/item/clothing/shoes/boots/jackboots,
 /obj/effect/decal/remains,
 /turf/template_noop,
 /area/submap/GovPatrol)
-"i" = (
+"j" = (
 /obj/item/stack/material/wood/sif,
 /turf/template_noop,
 /area/submap/GovPatrol)
-"j" = (
+"k" = (
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/lever,
 /turf/template_noop,
 /area/submap/GovPatrol)
-"k" = (
+"l" = (
 /obj/structure/bonfire/sifwood,
 /turf/template_noop,
 /area/submap/GovPatrol)
-"l" = (
+"m" = (
 /obj/effect/decal/remains,
-/turf/template_noop,
-/area/submap/GovPatrol)
-"u" = (
-/obj/item/weapon/storage/backpack/parachute,
 /turf/template_noop,
 /area/submap/GovPatrol)
 
@@ -105,10 +105,10 @@ b
 b
 b
 b
-g
-i
+h
+j
 b
-g
+h
 a
 "}
 (5,1,1) = {"
@@ -122,7 +122,7 @@ b
 b
 b
 b
-j
+k
 b
 a
 "}
@@ -135,7 +135,7 @@ b
 b
 e
 b
-h
+i
 b
 b
 b
@@ -163,11 +163,11 @@ b
 b
 b
 b
-u
 f
+g
 b
 b
-k
+l
 b
 a
 "}
@@ -179,7 +179,7 @@ b
 b
 b
 b
-g
+h
 b
 b
 b
@@ -198,7 +198,7 @@ b
 b
 b
 b
-l
+m
 a
 "}
 (11,1,1) = {"
@@ -212,8 +212,8 @@ b
 b
 b
 b
-g
-g
+h
+h
 a
 "}
 (12,1,1) = {"

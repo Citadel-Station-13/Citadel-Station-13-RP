@@ -979,7 +979,7 @@
 /area/awaymission/academy/headmaster)
 "cS" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/tool/crowbar/red,
+/obj/item/weapon/crowbar/red,
 /turf/simulated/floor{
 	 icon_state = "vault";
 	dir = 5
@@ -2761,7 +2761,7 @@
 	},
 /area/awaymission/academy/academyaft)
 "hk" = (
-/obj/item/weapon/tool/crowbar/red,
+/obj/item/weapon/crowbar/red,
 /turf/simulated/floor{
 	 icon_state = "green";
 	dir = 4

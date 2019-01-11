@@ -206,7 +206,7 @@ var/hadevent    = 0
 /proc/carp_migration() // -- Darem
 	for(var/obj/effect/landmark/C in landmarks_list)
 		if(C.name == "carpspawn")
-			new /mob/living/simple_animal/hostile/carp(C.loc)
+			new /mob/living/simple_mob/animal/space/carp(C.loc)
 	//sleep(100)
 	spawn(rand(300, 600)) //Delayed announcements to keep the crew on their toes.
 		command_announcement.Announce("Unknown biological entities have been detected near \the [station_name()], please stand-by.", "Lifesign Alert", new_sound = 'sound/AI/commandreport.ogg')
@@ -345,12 +345,12 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 					M << "<span class='danger'>THE STATION IS [who2pref] [who2]...LAWS UPDATED</span>"
 					M << "<br>"
 					M.add_ion_law("THE STATION IS [who2pref] [who2]")
-/* //VOREStation Edit
+
 	if(botEmagChance)
 		for(var/mob/living/bot/bot in machines)
 			if(prob(botEmagChance))
 				bot.emag_act(1)
-*/ //VOREStation Edit
+
 	/*
 
 	var/apcnum = 0

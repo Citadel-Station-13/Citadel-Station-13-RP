@@ -283,7 +283,7 @@ var/const/enterloopsanity = 100
 				L.Add(t)
 	return L
 
-/turf/proc/process()
+/turf/process()
 	return PROCESS_KILL
 
 /turf/proc/contains_dense_objects()
@@ -321,6 +321,10 @@ var/const/enterloopsanity = 100
 			M.turf_collision(src, speed)
 
 /turf/AllowDrop()
+	return TRUE
+
+// Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
+/turf/proc/is_safe_to_enter(mob/living/L)
 	return TRUE
 
 // This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.

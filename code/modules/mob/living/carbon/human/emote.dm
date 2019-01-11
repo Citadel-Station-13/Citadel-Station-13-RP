@@ -81,13 +81,11 @@
 
 		//Promethean-only emotes
 		if("squish")
-			//Citadel changes start
-			///* VOREStation Removal Start - Eh. People can squish maybe.
+			/* VOREStation Removal Start - Eh. People can squish maybe.
 			if(species.bump_flag != SLIME) //This should definitely do it.
 				src << "<span class='warning'>You are not a slime thing!</span>"
 				return
-			//*/ //VOREStation Removal End
-			//Citadel changes end
+			*/ //VOREStation Removal End
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
 			m_type = 1
@@ -689,35 +687,6 @@
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,src,"Slapped own butt")
 					//adding damage for aslaps to stop the spam
-			emoteDanger =  min(1+(emoteDanger*2), 100)
-			var/danger = emoteDanger - 5
-			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Same dmg as snapping
-			for(var/organ_name in involved_parts)
-				var/obj/item/organ/external/E = get_organ(organ_name)
-				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
-					involved_parts -= organ_name
-					danger += 5
-
-
-			if(prob(danger))
-				spawn(10) //more copied snap dmg code
-					var/breaking = pick(involved_parts)
-					var/obj/item/organ/external/E = get_organ(breaking)
-					if(isSynthetic())
-						src.Weaken(5)
-						E.droplimb(1,DROPLIMB_EDGE)
-						message += " <span class='danger'>And loses a limb!</span>"
-						log_and_message_admins("lost their [breaking] with *aslap, ahahah.", src)
-					else
-						src.Weaken(5)
-						if(E.cannot_break) //Prometheans go splat
-							E.droplimb(0,DROPLIMB_BLUNT)
-						else
-							E.fracture()
-						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("broke their [breaking] with *aslap, ahahah.", src)
-//Citadel changes ends here
-
 		if("scream", "screams")
 			if(miming)
 				message = "acts out a scream!"
@@ -755,36 +724,6 @@
 			message = "snaps [T.his] fingers."
 			playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
 
-
-			///////////////////////// CITADEL STATION ADDITIONS START
-			emoteDanger =  min(1+(emoteDanger*2), 100)
-			var/danger = emoteDanger - 5//Base chance to break something. Snapping is inherently less dangerous.
-			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Snapping is dangerous yo
-			for(var/organ_name in involved_parts)
-				var/obj/item/organ/external/E = get_organ(organ_name)
-				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
-					involved_parts -= organ_name
-					danger += 5 //Add 5% to the chance for each problem limb
-
-
-			if(prob(danger))
-				spawn(10) //Don't be so rough with your hands...
-					var/breaking = pick(involved_parts)
-					var/obj/item/organ/external/E = get_organ(breaking)
-					if(isSynthetic())
-						src.Weaken(5)
-						E.droplimb(1,DROPLIMB_EDGE)
-						message += " <span class='danger'>And loses a limb!</span>"
-						log_and_message_admins("lost their [breaking] with *snap, ahahah.", src)
-					else
-						src.Weaken(5)
-						if(E.cannot_break) //Prometheans go splat
-							E.droplimb(0,DROPLIMB_BLUNT)
-						else
-							E.fracture()
-						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("broke their [breaking] with *snap, ahahah.", src)
-			///////////////////////// CITADEL STATION ADDITIONS END
 		if("swish")
 			src.animate_tail_once()
 
