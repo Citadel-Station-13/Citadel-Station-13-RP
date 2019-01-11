@@ -7525,6 +7525,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "pU" = (
@@ -7836,6 +7841,13 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/power/apc{
+	cell_type = /obj/item/weapon/cell/apc;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "qq" = (
@@ -18399,6 +18411,17 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"JI" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/south)
+"JJ" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Atmospherics Balcony";
+	req_access = list(24)
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "Kj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -31565,7 +31588,7 @@ wJ
 wJ
 wJ
 wJ
-wJ
+JJ
 wJ
 wJ
 ac
@@ -32842,7 +32865,7 @@ Bs
 BI
 rg
 rg
-rg
+JI
 rg
 rg
 rg
