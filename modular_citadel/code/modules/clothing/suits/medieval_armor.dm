@@ -77,7 +77,7 @@
 
 /obj/item/clothing/head/helmet/medieval/crusader/winged
 	name = "winged great helm"
-	desc = "A classic metal great helm, effective at stopping melee attacks. This one have winged horns attached (and may or may not be endrosed by Unathi <i>and</i> Avian crew)."
+	desc = "A classic metal great helm, effective at stopping melee attacks. This one have winged horns attached (and may or may not be endrosed by Unathi AND Avian crew)."
 	icon_state = "crusader_winged"
 	item_state = "crusader_winged"
 
