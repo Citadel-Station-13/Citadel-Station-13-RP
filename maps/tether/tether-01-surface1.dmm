@@ -14662,6 +14662,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
 "aBh" = (
@@ -15466,6 +15471,11 @@
 "aCC" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
@@ -16291,10 +16301,12 @@
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva)
 "aEp" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple{
-	dir = 4
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall,
 /area/engineering/atmos/processing)
 "aEq" = (
 /obj/item/weapon/storage/briefcase/inflatable{
@@ -16882,8 +16894,10 @@
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology/xenoflora_storage)
 "aFq" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
@@ -17199,8 +17213,12 @@
 /area/engineering/atmos/processing)
 "aGd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
-	icon_state = "intact";
-	dir = 10
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
@@ -17764,11 +17782,14 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "aHq" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple,
-/obj/machinery/atmospherics/pipe/simple/visible/black{
+/obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "aHr" = (
@@ -21502,6 +21523,54 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm1)
+"aOY" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	icon_state = "intact";
+	dir = 10
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/processing)
+"aOZ" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/processing)
+"aPa" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/processing)
+"aPb" = (
+/turf/simulated/wall/r_wall,
+/area/engineering/atmos/intake)
+"aPc" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/structure/cable/cyan,
+/obj/machinery/power/apc{
+	cell_type = /obj/item/weapon/cell/apc;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/intake)
 "aPq" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -41682,7 +41751,7 @@ aEm
 aHp
 aIv
 aIv
-aIv
+aPb
 aIv
 aJe
 aJe
@@ -41816,15 +41885,15 @@ azG
 anv
 aBg
 aCC
-aIv
-aDK
 aEp
 aFq
 aGd
 aHq
-aHW
-aHW
-aHW
+aOY
+aOZ
+aPa
+aPa
+aPc
 aHW
 aJf
 aJB
