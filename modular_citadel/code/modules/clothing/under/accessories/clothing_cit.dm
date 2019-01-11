@@ -15,6 +15,11 @@
 	icon_state = "cloak_crusader"
 	item_state = "cloak_crusader"
 
+/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
+	name = "teutonic cloak"
+	icon_state = "cloak_crusader_teutonic"
+	item_state = "cloak_crusader_teutonic"
+
 /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar
 	name = "templar cloak"
 	icon_state = "cloak_crusader_templar"
