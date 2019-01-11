@@ -1,97 +1,96 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/indestructible/riveted/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/mineral/virgo3b/legion,
+/area/mine/explored/underdark)
 "ab" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ac" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "ad" = (
-/turf/closed/mineral/random/high_chance/volcanic,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/virgo3b/rich,
+/area/mine/explored/underdark)
 "ae" = (
-/obj/structure/stone_tile/block,
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "af" = (
-/obj/structure/necropolis_gate/legion_gate,
-/obj/structure/necropolis_arch{
-	pixel_y = -40
+/turf/simulated/floor/maglev,
+/turf/simulated/floor/maglev{
 	},
-/obj/structure/stone_tile/slab,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "ag" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ah" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ai" = (
-/turf/closed/mineral/random/volcanic,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/virgo3b,
+/area/mine/explored/underdark)
 "aj" = (
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "ak" = (
-/turf/closed/mineral/random/volcanic,
-/area/lavaland/surface/outdoors/unexplored/danger)
+/turf/simulated/mineral/virgo3b,
+/area/mine/explored/underdark)
 "al" = (
-/turf/closed/mineral/random/high_chance/volcanic,
-/area/lavaland/surface/outdoors/unexplored/danger)
+/turf/simulated/mineral/virgo3b/rich,
+/area/mine/explored/underdark)
 "am" = (
-/turf/closed/mineral/random/volcanic,
-/area/lavaland/surface/outdoors/unexplored)
+/turf/simulated/mineral/virgo3b,
+/area/mine/explored/underdark)
 "an" = (
-/turf/closed/mineral/random/labormineral/volcanic,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/virgo3b,
+/area/mine/explored/underdark)
 "ap" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/obj/structure/window/reinforced/full,
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "aq" = (
-/turf/closed/wall,
-/area/mine/laborcamp)
+/turf/unsimulated/wall,
+/area/engineering/hallway)
 "ar" = (
 /obj/structure/table,
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "as" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "at" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -101,7 +100,7 @@
 	network = list("labor")
 	},
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "au" = (
 /obj/structure/rack,
 /obj/item/storage/bag/ore,
@@ -110,7 +109,7 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/mining_scanner,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "av" = (
 /obj/structure/rack,
 /obj/item/storage/bag/ore,
@@ -119,35 +118,35 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/mining_scanner,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aw" = (
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors/explored)
+/turf/simulated/lava,
+/area/mine/explored/underdark/explored)
 "ax" = (
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "ay" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "az" = (
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aA" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aB" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Infirmary"
 	},
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aC" = (
 /obj/structure/closet/crate/internals,
 /obj/item/tank/internals/emergency_oxygen,
@@ -159,38 +158,37 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aD" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors/explored)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark/explored)
 "aE" = (
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	dir = 2;
 	name = "Prison Intercom (General)";
-	pixel_y = 24;
 	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aF" = (
 /obj/machinery/door/airlock{
 	name = "Labor Camp Storage"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aG" = (
 /obj/structure/table,
 /obj/item/trash/plate,
 /obj/item/kitchen/fork,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aH" = (
 /obj/structure/chair{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aI" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -199,61 +197,61 @@
 	name = "Labor Camp External Access"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aJ" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aK" = (
 /obj/structure/chair{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aL" = (
 /obj/machinery/door/airlock{
 	name = "Vending"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aM" = (
 /obj/machinery/light/small,
 /obj/effect/turf_decal/loading_area{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aN" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aO" = (
 /obj/machinery/camera{
 	c_tag = "Labor Camp External";
 	dir = 4;
 	network = list("labor")
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "aP" = (
 /obj/machinery/vending/sustenance,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aQ" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aR" = (
 /obj/machinery/shower{
 	dir = 8
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/white,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aS" = (
 /obj/machinery/mineral/unloading_machine{
 	dir = 1;
@@ -261,29 +259,29 @@
 	input_dir = 1;
 	output_dir = 2
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "aT" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors/explored)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark/explored)
 "aU" = (
 /obj/machinery/flasher{
 	id = "labor"
 	},
-/turf/closed/wall,
-/area/mine/laborcamp)
+/turf/unsimulated/wall,
+/area/engineering/hallway)
 "aW" = (
 /obj/machinery/conveyor{
 	dir = 2;
 	id = "gulag"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "aX" = (
 /obj/structure/closet/crate,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors/explored)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark/explored)
 "aY" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -293,7 +291,7 @@
 	req_access_txt = "2"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "aZ" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -301,86 +299,84 @@
 /obj/machinery/button/door{
 	id = "labor";
 	name = "Labor Camp Lockdown";
-	pixel_y = 28;
 	req_access_txt = "2"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "ba" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "labor";
 	name = "labor camp blast door"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bb" = (
 /obj/machinery/camera{
 	c_tag = "Labor Camp Central";
 	network = list("labor")
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bc" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "gulag"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bd" = (
 /obj/machinery/mineral/processing_unit_console{
 	dir = 2;
 	machinedir = 4
 	},
-/turf/closed/wall,
-/area/mine/laborcamp)
+/turf/unsimulated/wall,
+/area/engineering/hallway)
 "be" = (
 /obj/machinery/mineral/processing_unit{
 	dir = 1;
 	output_dir = 2
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "bf" = (
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/eva)
 "bg" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/structure/window/reinforced/full,
+/turf/unsimulated/floor/steel,
 /area/mine/eva)
 "bh" = (
 /obj/machinery/computer/shuttle/labor/one_way,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bi" = (
 /obj/structure/gulag_beacon,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bj" = (
 /obj/machinery/status_display{
-	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bk" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bl" = (
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "gulag"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "bm" = (
 /obj/machinery/conveyor{
 	dir = 10;
 	id = "gulag"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "bn" = (
 /obj/structure/table,
 /obj/item/pickaxe,
@@ -421,11 +417,11 @@
 /turf/open/floor/plasteel,
 /area/mine/eva)
 "bq" = (
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/production)
 "br" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/structure/window/reinforced/full,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "bs" = (
 /obj/machinery/camera{
@@ -434,16 +430,12 @@
 	network = list("mine")
 	},
 /obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -23
 	},
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = -1
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -458,7 +450,6 @@
 /area/mine/eva)
 "bu" = (
 /obj/machinery/light_switch{
-	pixel_x = 27
 	},
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -470,7 +461,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/simulated/mineral/floor/virgo3b,
 /area/mine/eva)
 "bx" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -480,19 +471,19 @@
 	name = "Labor Camp Shuttle Prisoner Airlock"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "by" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bz" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bA" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Backroom";
@@ -502,12 +493,11 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bB" = (
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Labor Camp APC";
-	pixel_y = 24
 	},
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -516,10 +506,9 @@
 	icon_state = "0-2"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bC" = (
 /obj/machinery/airalarm{
-	pixel_y = 23
 	},
 /obj/machinery/computer/shuttle/mining{
 	req_access = null
@@ -550,7 +539,7 @@
 /area/mine/production)
 "bF" = (
 /obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/eva)
 "bG" = (
 /obj/structure/table,
@@ -583,8 +572,6 @@
 /area/mine/eva)
 "bK" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
 	},
 /obj/machinery/shower{
 	dir = 8
@@ -601,7 +588,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "bM" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Labor Camp Maintenance";
@@ -610,12 +597,12 @@
 /obj/structure/cable{
 	icon_state = "1-10"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "bN" = (
 /obj/structure/sign/warning/docking,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/structure/window/reinforced/full,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "bO" = (
 /obj/item/beacon,
@@ -724,11 +711,11 @@
 /turf/open/floor/plasteel,
 /area/mine/eva)
 "bZ" = (
-/turf/closed/mineral/random/volcanic,
-/area/lavaland/surface/outdoors/explored)
+/turf/simulated/mineral/virgo3b,
+/area/mine/explored/underdark/explored)
 "ca" = (
-/turf/closed/wall,
-/area/mine/laborcamp/security)
+/turf/unsimulated/wall,
+/area/engineering/hallway/security)
 "cb" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -736,7 +723,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp/security)
+/area/engineering/hallway/security)
 "cc" = (
 /obj/structure/chair/office/dark,
 /obj/structure/cable{
@@ -747,18 +734,15 @@
 	name = "Prison Ofitser"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp/security)
+/area/engineering/hallway/security)
 "cd" = (
 /obj/structure/table,
 /obj/item/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
 	},
 /obj/item/pen,
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "Labor Camp Security APC";
-	pixel_x = 24
 	},
 /obj/machinery/camera{
 	c_tag = "Labor Camp Monitoring";
@@ -768,7 +752,7 @@
 	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp/security)
+/area/engineering/hallway/security)
 "ce" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -776,24 +760,24 @@
 /obj/structure/cable{
 	icon_state = "5-6"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cf" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cg" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "ch" = (
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cj" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -839,8 +823,6 @@
 /obj/machinery/power/apc{
 	dir = 2;
 	name = "Mining EVA APC";
-	pixel_x = 1;
-	pixel_y = -23
 	},
 /obj/structure/cable,
 /obj/machinery/recharge_station,
@@ -852,7 +834,7 @@
 "cp" = (
 /obj/machinery/mech_bay_recharge_port,
 /obj/structure/cable,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/eva)
 "cq" = (
 /turf/open/floor/mech_bay_recharge_floor,
@@ -880,34 +862,34 @@
 /area/mine/eva)
 "cu" = (
 /obj/item/pickaxe,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "cv" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "cw" = (
 /obj/machinery/computer/secure_data,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp/security)
+/area/engineering/hallway/security)
 "cx" = (
 /obj/machinery/computer/security{
 	name = "Labor Camp Monitoring";
 	network = list("labor")
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp/security)
+/area/engineering/hallway/security)
 "cy" = (
 /obj/machinery/computer/prisoner,
 /turf/open/floor/plasteel,
-/area/mine/laborcamp/security)
+/area/engineering/hallway/security)
 "cz" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
 /obj/structure/cable,
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cA" = (
 /obj/machinery/power/smes{
 	charge = 5e+006
@@ -918,16 +900,16 @@
 /obj/structure/cable{
 	icon_state = "0-9"
 	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cB" = (
 /obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cC" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway)
 "cD" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -949,9 +931,9 @@
 /turf/open/floor/plasteel,
 /area/mine/production)
 "cG" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
+/obj/structure/window/reinforced/full,
+/turf/unsimulated/floor/steel,
+/area/engineering/hallway/security)
 "cH" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -969,30 +951,29 @@
 /obj/machinery/door/airlock{
 	name = "Closet"
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "cK" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "cL" = (
 /obj/machinery/space_heater,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "cM" = (
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/living_quarters)
 "cN" = (
 /obj/structure/sign/warning/electricshock,
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/living_quarters)
 "cO" = (
 /obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
-	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -1004,7 +985,6 @@
 /area/mine/production)
 "cP" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 30
 	},
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -1013,11 +993,11 @@
 /turf/open/floor/plasteel,
 /area/mine/production)
 "cQ" = (
-/turf/closed/wall/r_wall,
+/turf/unsimulated/wall/r_wall,
 /area/mine/maintenance)
 "cR" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/structure/window/reinforced/full,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "cS" = (
 /obj/machinery/power/smes{
@@ -1026,7 +1006,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "cT" = (
 /obj/structure/cable{
@@ -1036,28 +1016,26 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/secure/loot,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "cU" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "cV" = (
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "cW" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "cX" = (
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "Mining Station Starboard Wing APC";
-	pixel_x = -27;
-	pixel_y = 2
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -1112,15 +1090,12 @@
 "dc" = (
 /obj/structure/closet/crate,
 /obj/machinery/airalarm{
-	pixel_y = 23
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/mine/production)
 "dd" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
 	},
 /obj/structure/table,
 /obj/item/paper/fluff/stations/lavaland/orm_notice,
@@ -1145,8 +1120,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Mining Communications APC";
-	pixel_x = 1;
-	pixel_y = 25
 	},
 /turf/open/floor/plasteel/dark,
 /area/mine/maintenance)
@@ -1173,7 +1146,6 @@
 /area/mine/maintenance)
 "dk" = (
 /obj/machinery/airalarm{
-	pixel_y = 24
 	},
 /turf/open/floor/circuit,
 /area/mine/maintenance)
@@ -1182,7 +1154,6 @@
 	dir = 8
 	},
 /obj/machinery/airalarm{
-	pixel_y = 23
 	},
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/blue{
@@ -1205,8 +1176,6 @@
 "dn" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/toxin{
-	pixel_x = 3;
-	pixel_y = 3
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -1224,7 +1193,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dp" = (
 /obj/structure/cable{
@@ -1233,20 +1202,20 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dq" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dr" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "ds" = (
 /obj/machinery/mineral/equipment_vendor,
@@ -1290,7 +1259,6 @@
 /area/mine/maintenance)
 "dz" = (
 /obj/machinery/light_switch{
-	pixel_y = -25
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -1309,22 +1277,14 @@
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/blood,
 /obj/item/reagent_containers/blood{
-	pixel_x = -3;
-	pixel_y = -3
 	},
 /obj/item/reagent_containers/blood/AMinus,
 /obj/item/reagent_containers/blood/BMinus{
-	pixel_x = -4;
-	pixel_y = 4
 	},
 /obj/item/reagent_containers/blood/BPlus{
-	pixel_x = 1;
-	pixel_y = 2
 	},
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OPlus{
-	pixel_x = -2;
-	pixel_y = -1
 	},
 /obj/item/reagent_containers/blood/random,
 /obj/item/reagent_containers/blood/random,
@@ -1360,7 +1320,7 @@
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dG" = (
 /obj/machinery/power/port_gen/pacman{
@@ -1369,7 +1329,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dH" = (
 /obj/structure/cable{
@@ -1378,13 +1338,13 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dJ" = (
 /obj/effect/turf_decal/tile/purple{
@@ -1405,8 +1365,6 @@
 	network = list("mine")
 	},
 /obj/machinery/newscaster{
-	pixel_x = 30;
-	pixel_y = 1
 	},
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -1428,31 +1386,24 @@
 "dN" = (
 /obj/machinery/camera{
 	c_tag = "Processing Area Room";
-	dir = 8;
 	network = list("mine")
 	},
 /obj/item/radio/intercom{
-	dir = 8;
 	name = "Station Intercom (General)";
-	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/brown,
-/obj/effect/turf_decal/tile/brown{
-	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
 "dO" = (
 /obj/machinery/mineral/unloading_machine{
-	dir = 1;
 	icon_state = "unloader-corner";
 	input_dir = 1;
 	output_dir = 2
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 9
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "dP" = (
 /obj/machinery/door/airlock/maintenance{
@@ -1467,7 +1418,7 @@
 /area/mine/maintenance)
 "dQ" = (
 /obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dR" = (
 /obj/machinery/door/airlock/medical/glass{
@@ -1488,7 +1439,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/living_quarters)
 "dT" = (
 /obj/effect/turf_decal/tile/brown{
@@ -1502,7 +1453,7 @@
 /area/mine/production)
 "dV" = (
 /obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "dW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -1527,7 +1478,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "dZ" = (
 /turf/open/floor/plasteel,
@@ -1566,7 +1517,6 @@
 /area/mine/living_quarters)
 "ee" = (
 /obj/machinery/airalarm{
-	pixel_y = 23
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
@@ -1584,8 +1534,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Mining Station Port Wing APC";
-	pixel_x = 1;
-	pixel_y = 25
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -1594,8 +1542,6 @@
 /area/mine/living_quarters)
 "eh" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
@@ -1645,7 +1591,7 @@
 /area/mine/production)
 "en" = (
 /obj/machinery/mineral/processing_unit_console,
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/production)
 "eo" = (
 /obj/machinery/mineral/processing_unit{
@@ -1655,7 +1601,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "ep" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -1919,8 +1865,6 @@
 /area/mine/living_quarters)
 "eS" = (
 /obj/machinery/airalarm{
-	dir = 1;
-	pixel_y = -22
 	},
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -1978,7 +1922,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "eY" = (
 /obj/machinery/conveyor{
@@ -1988,7 +1932,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "eZ" = (
 /obj/machinery/conveyor{
@@ -2001,7 +1945,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/unsimulated/floor/steel,
 /area/mine/production)
 "fa" = (
 /obj/machinery/mineral/equipment_vendor,
@@ -2021,8 +1965,6 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -2031,17 +1973,14 @@
 /area/mine/living_quarters)
 "fc" = (
 /obj/machinery/airalarm{
-	pixel_y = 23
 	},
 /obj/effect/turf_decal/tile/purple{
-	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
 "fd" = (
 /obj/machinery/camera{
 	c_tag = "Storage";
-	dir = 2;
 	network = list("mine")
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -2058,7 +1997,6 @@
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /obj/machinery/airalarm{
-	pixel_y = 23
 	},
 /turf/open/floor/carpet,
 /area/mine/living_quarters)
@@ -2122,7 +2060,6 @@
 "fm" = (
 /obj/machinery/vending/cigarette,
 /obj/machinery/newscaster{
-	pixel_y = 32
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -2133,7 +2070,6 @@
 "fn" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	pixel_y = 6
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -2159,9 +2095,7 @@
 /area/mine/living_quarters)
 "fq" = (
 /obj/item/radio/intercom{
-	dir = 8;
 	name = "Station Intercom (General)";
-	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -2181,7 +2115,6 @@
 	id = "miningdorm1";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
-	pixel_x = 25;
 	specialfunctions = 4
 	},
 /turf/open/floor/carpet,
@@ -2274,18 +2207,13 @@
 "fD" = (
 /obj/structure/table,
 /obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = 7;
-	pixel_y = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
 /obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = -1;
-	pixel_y = 9
 	},
 /obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = -8
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -2339,7 +2267,6 @@
 /obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
-	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -2354,34 +2281,26 @@
 	network = list("mine")
 	},
 /obj/machinery/computer/security/telescreen/entertainment{
-	pixel_y = -32
 	},
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
-	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
 "fK" = (
 /obj/machinery/airalarm{
-	dir = 1;
-	pixel_y = -22
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
-	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
 "fL" = (
 /obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
-	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
@@ -2393,7 +2312,6 @@
 	id = "miningdorm2";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
-	pixel_x = 25;
 	specialfunctions = 4
 	},
 /turf/open/floor/carpet,
@@ -2423,168 +2341,167 @@
 	id = "miningdorm3";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
-	pixel_x = 25;
 	specialfunctions = 4
 	},
 /turf/open/floor/carpet,
 /area/mine/living_quarters)
 "fQ" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors/unexplored/danger)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "fR" = (
-/turf/closed/mineral/random/high_chance/volcanic,
-/area/lavaland/surface/outdoors/unexplored)
+/turf/simulated/mineral/virgo3b/rich,
+/area/mine/explored/underdark)
 "fS" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors/unexplored)
+/turf/simulate/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "fT" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "fV" = (
 /turf/closed/indestructible/riveted/boss/see_through,
-/area/lavaland/surface/outdoors)
+/area/mine/explored/underdark)
 "fW" = (
 /obj/structure/necropolis_gate/locked,
-/obj/structure/stone_tile/slab,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "gj" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/center,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "gk" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile/center,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "go" = (
-/obj/structure/stone_tile/block,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "gr" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gs" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gy" = (
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gB" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gC" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "gG" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gM" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "gO" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "gP" = (
-/obj/structure/stone_tile/slab,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gR" = (
-/obj/structure/stone_tile/block,
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "gY" = (
 /obj/docking_port/stationary{
-	area_type = /area/lavaland/surface/outdoors;
+	area_type = /area/mine/explored/underdark;
 	dir = 8;
 	dwidth = 2;
 	height = 5;
@@ -2592,951 +2509,951 @@
 	name = "labor camp";
 	width = 9
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors/explored)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark/explored)
 "hg" = (
-/obj/structure/stone_tile/surrounding,
-/obj/structure/stone_tile/center/cracked,
+/turf/unsimulated/floor/steel/surrounding,
+/turf/unsimulated/floor/steel/center,
 /mob/living/simple_animal/hostile/megafauna/legion,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "hs" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "hH" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "hJ" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "id" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "ir" = (
-/obj/structure/stone_tile/slab/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 5
 	},
-/obj/structure/stone_tile/slab/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "it" = (
-/obj/structure/stone_tile/block,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iu" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iw" = (
-/obj/structure/stone_tile/slab/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/slab/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ix" = (
-/obj/structure/stone_tile/block/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iy" = (
-/obj/structure/stone_tile/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iC" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile/block/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iK" = (
-/obj/structure/stone_tile/block,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iX" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "iY" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ja" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jb" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jg" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jk" = (
-/obj/structure/stone_tile/center,
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jl" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile/center/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/center,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jm" = (
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jq" = (
-/obj/structure/stone_tile,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "js" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jx" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jF" = (
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/center/cracked,
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "jH" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/center/cracked,
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "jL" = (
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/center,
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "jN" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/center/cracked,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/center,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "jQ" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jR" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "jS" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "kg" = (
 /obj/structure/fluff/drake_statue,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "kj" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "kl" = (
 /obj/structure/fluff/drake_statue/falling,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ko" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ky" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "kB" = (
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/center/cracked,
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "kD" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile/center,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/center,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "kH" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/surrounding_tile,
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile,
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/center/cracked,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/center,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "kJ" = (
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 4
 	},
-/obj/structure/stone_tile/surrounding_tile{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile/surrounding_tile/cracked{
+/turf/unsimulated/floor/steel/surrounding_tile{
 	dir = 1
 	},
-/obj/structure/stone_tile/center,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel/center,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "kM" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "kN" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "kR" = (
-/obj/structure/stone_tile/slab/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "le" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lg" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lj" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ll" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lp" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lq" = (
-/obj/structure/stone_tile/block/cracked,
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lr" = (
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ls" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lu" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lv" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lw" = (
-/obj/structure/stone_tile/cracked,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "ly" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lz" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lD" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lE" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lF" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lG" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile/block,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lI" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lP" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lQ" = (
-/obj/structure/stone_tile/surrounding/cracked{
+/turf/unsimulated/floor/steel/surrounding{
 	dir = 6
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lR" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "lS" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lW" = (
-/obj/structure/stone_tile/block/cracked,
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "lZ" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "ma" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mb" = (
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "mk" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "ml" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "mn" = (
-/obj/structure/stone_tile/block/cracked,
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mq" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mr" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "ms" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mt" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile/cracked,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mu" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mv" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "mw" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "mx" = (
-/obj/structure/stone_tile,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "my" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mA" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mB" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mC" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "mD" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mE" = (
-/obj/structure/stone_tile/block,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mF" = (
-/obj/structure/stone_tile/block/cracked,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mG" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mH" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mI" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mJ" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mK" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mL" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mM" = (
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mN" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mO" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mP" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "mQ" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mS" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mV" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mW" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mX" = (
-/obj/structure/stone_tile/cracked,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mY" = (
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "mZ" = (
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "nb" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "nc" = (
-/obj/structure/stone_tile/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "ne" = (
-/obj/structure/stone_tile/block{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "nf" = (
-/obj/structure/stone_tile/slab/cracked,
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "ng" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/obj/structure/stone_tile/block/cracked{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/open/indestructible/boss,
-/area/lavaland/surface/outdoors)
+/turf/unsimulated/floor/techfloor_grid,
+/area/mine/explored/underdark)
 "Uq" = (
 /obj/docking_port/stationary{
-	area_type = /area/lavaland/surface/outdoors;
+	area_type = /area/mine/explored/underdark;
 	dir = 2;
 	dwidth = 11;
 	height = 22;
@@ -3544,11 +3461,11 @@
 	name = "lavaland wastes";
 	width = 35
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "Wp" = (
 /obj/docking_port/stationary{
-	area_type = /area/lavaland/surface/outdoors;
+	area_type = /area/mine/explored/underdark;
 	dir = 8;
 	dwidth = 3;
 	height = 5;
@@ -3556,16 +3473,16 @@
 	name = "lavaland mine";
 	width = 7
 	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/mineral/floor/virgo3b,
+/area/mine/explored/underdark)
 "Wt" = (
 /obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/wall,
-/area/mine/laborcamp/security)
+/turf/unsimulated/wall,
+/area/engineering/hallway/security)
 "Wz" = (
 /obj/effect/mapping_helpers/planet_z,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/simulated/lava,
+/area/mine/explored/underdark)
 "WA" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -3574,7 +3491,7 @@
 	name = "Labor Camp External Access"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "WB" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -3584,7 +3501,7 @@
 	req_access_txt = "2"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "WC" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -3593,7 +3510,7 @@
 	name = "Labor Camp Shuttle Prisoner Airlock"
 	},
 /turf/open/floor/plasteel,
-/area/mine/laborcamp)
+/area/engineering/hallway)
 "WD" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -3619,23 +3536,23 @@
 /area/mine/production)
 "WF" = (
 /obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/wall,
-/area/mine/laborcamp)
+/turf/unsimulated/wall,
+/area/engineering/hallway)
 "WH" = (
 /obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/eva)
 "WI" = (
 /obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/production)
 "WJ" = (
 /obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/wall/r_wall,
+/turf/unsimulated/wall/r_wall,
 /area/mine/maintenance)
 "WK" = (
 /obj/effect/baseturf_helper/lava_land/surface,
-/turf/closed/wall,
+/turf/unsimulated/wall,
 /area/mine/living_quarters)
 
 (1,1,1) = {"

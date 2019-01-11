@@ -72,6 +72,14 @@
 /area/ruin/unpowered/syndicate_lava_base/circuits
 	name = "Syndicate Lavaland Circuit Lab"
 
+/area/mine/explored/underdark
+	name = "\improper Mining Underdark"
+	base_turf = /turf/simulated/mineral/floor/virgo3b
+
+/area/engineering/hallway
+	name = "\improper Engineering Hallway"
+	icon_state = "engineering"
+
 
 //Xeno Nest
 
