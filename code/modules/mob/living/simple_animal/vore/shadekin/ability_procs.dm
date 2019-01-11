@@ -1,3 +1,5 @@
+/*CITADEL EDIT - takes all of this, and moves it over to modular_citadel! entire file goes here
+
 // Phase shifting procs (and related procs)
 /mob/living/simple_animal/shadekin/proc/phase_shift()
 	var/turf/T = get_turf(src)
@@ -131,3 +133,4 @@
 	visible_message("<span class='notice'>\The [src] gently places a hand on \the [target]...</span>")
 	face_atom(target)
 	return TRUE
+*/

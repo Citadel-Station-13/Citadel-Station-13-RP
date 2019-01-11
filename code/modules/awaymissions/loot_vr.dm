@@ -138,7 +138,7 @@
 					prob(9);/obj/item/weapon/gun/projectile/automatic/mini_uzi,\
 					prob(9);/obj/item/weapon/gun/projectile/pistol,\
 					prob(9);/obj/item/weapon/gun/projectile/shotgun/pump/combat,\
-					prob(9);/obj/item/weapon/twohanded/fireaxe,\
+					prob(9);/obj/item/weapon/material/twohanded/fireaxe,\
 					prob(9);/obj/item/weapon/cane/concealed,\
 					prob(9);/obj/item/weapon/gun/energy/gun,\
 					prob(8);/obj/item/weapon/gun/energy/ionrifle,\
@@ -175,7 +175,7 @@
 					prob(1);/obj/item/weapon/plastique,\
 					prob(1);/obj/item/weapon/material/sword,\
 					prob(1);/obj/item/weapon/cane/concealed,\
-					prob(1);/obj/item/weapon/material/sword/katana)
+					prob(1);/obj/item/weapon/material/sword/katana)			//CITADEL CHANGE - FIXED FIREAXE PATH
 				new new_gun(C)
 			if(prob(50))
 				var/new_ammo = pick( // Copied from Random.dm

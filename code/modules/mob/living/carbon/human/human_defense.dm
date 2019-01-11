@@ -146,45 +146,35 @@ emp_act
 
 //this proc returns the armour value for a particular external organ.
 /mob/living/carbon/human/proc/getarmor_organ(var/obj/item/organ/external/def_zone, var/type)
-	if(!type || !def_zone) return 0
+	if(!type || !def_zone)
+		return 0
 	var/protection = 0
-	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
+	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		if(gear.body_parts_covered & def_zone.body_part)
-			protection += gear.armor[type]
-		if(LAZYLEN(gear.accessories))
-			for(var/obj/item/clothing/accessory/bling in gear.accessories)
-				if(bling.body_parts_covered & def_zone.body_part)
-					protection += bling.armor[type]
+		protection += gear.armor[type]
 	return protection
 
 /mob/living/carbon/human/proc/getsoak_organ(var/obj/item/organ/external/def_zone, var/type)
-	if(!type || !def_zone) return 0
+	if(!type || !def_zone)
+		return 0
 	var/soaked = 0
-	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
+	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		if(gear.body_parts_covered & def_zone.body_part)
-			soaked += gear.armorsoak[type]
-		if(LAZYLEN(gear.accessories))
-			for(var/obj/item/clothing/accessory/bling in gear.accessories)
-				if(bling.body_parts_covered & def_zone.body_part)
-					soaked += bling.armorsoak[type]
+		soaked += gear.armorsoak[type]
 	return soaked
 
+// Checked in borer code
 /mob/living/carbon/human/proc/check_head_coverage()
-
-	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform)
-	for(var/bp in body_parts)
-		if(!bp)	continue
-		if(bp && istype(bp ,/obj/item/clothing))
-			var/obj/item/clothing/C = bp
-			if(C.body_parts_covered & HEAD)
-				return 1
+	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/list/body_parts = H.get_covering_clothing(EYES)
+	if(LAZYLEN(body_parts))
+		return 1
 	return 0
 
 //Used to check if they can be fed food/drinks/pills
 /mob/living/carbon/human/proc/check_mouth_coverage()
-	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform)
+	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
+	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
 		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.item_flags & FLEXIBLEMATERIAL))
 			return gear
@@ -197,18 +187,6 @@ emp_act
 		if(.) return
 	return 0
 
-/mob/living/carbon/human/proc/get_accuracy_penalty(mob/living/user)
-	// Certain statuses make it harder to score a hit.  These are the same as gun accuracy, however melee doesn't use multiples of 15.
-	var/accuracy_penalty = 0
-	if(user.eye_blind)
-		accuracy_penalty += 75
-	if(user.eye_blurry)
-		accuracy_penalty += 30
-	if(user.confused)
-		accuracy_penalty += 45
-
-	return accuracy_penalty
-
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
 		return null
@@ -216,7 +194,7 @@ emp_act
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
 
-	var/hit_zone = get_zone_with_miss_chance(target_zone, src, get_accuracy_penalty(user))
+	var/hit_zone = get_zone_with_miss_chance(target_zone, src, user.get_accuracy_penalty())
 
 	if(!hit_zone)
 		user.do_attack_animation(src)
@@ -359,13 +337,14 @@ emp_act
 	if(istype(AM,/obj/))
 		var/obj/O = AM
 
-		if(in_throw_mode && !get_active_hand() && speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode
+		if(in_throw_mode && speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode
 			if(canmove && !restrained())
 				if(isturf(O.loc))
-					put_in_active_hand(O)
-					visible_message("<span class='warning'>[src] catches [O]!</span>")
-					throw_mode_off()
-					return
+					if(can_catch(O))
+						put_in_active_hand(O)
+						visible_message("<span class='warning'>[src] catches [O]!</span>")
+						throw_mode_off()
+						return
 
 		var/dtype = O.damtype
 		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
@@ -459,6 +438,29 @@ emp_act
 					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
 					src.anchored = 1
 					src.pinned += O
+
+// This does a prob check to catch the thing flying at you, with a minimum of 1%
+/mob/living/carbon/human/proc/can_catch(var/obj/O)
+	if(!get_active_hand())	// If active hand is empty
+		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
+		if (hand)
+			temp = organs_by_name["l_hand"]
+		if(temp && !temp.is_usable())
+			return FALSE	// The hand isn't working in the first place
+
+	// Alright, our hand works? Time to try the catching.
+	var/catch_chance = 90	// Default 90% catch rate
+
+	if(O.sharp)
+		catch_chance -= 50	// Catching knives is hard
+
+	catch_chance -= get_accuracy_penalty()	// Same issues with shooting a gun, or swinging a weapon
+
+	catch_chance = between(1, catch_chance, 100)
+
+	if(prob(catch_chance))
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/embed(var/obj/O, var/def_zone=null)
 	if(!def_zone) ..()

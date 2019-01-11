@@ -221,7 +221,7 @@
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
-			dirty(target,affected) //VOREStation Add
+//		dirty(target,affected) //VOREStation Add -- Removed by Request
 
 	return
 /* VOREStation Edit - See syringes_vr.dm
@@ -333,8 +333,8 @@
 /obj/item/weapon/reagent_containers/syringe/inaprovaline/New()
 	..()
 	reagents.add_reagent("inaprovaline", 15)
-	mode = SYRINGE_INJECT
-	update_icon()
+	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
+	//update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/antitoxin
 	name = "Syringe (anti-toxin)"
@@ -343,8 +343,8 @@
 /obj/item/weapon/reagent_containers/syringe/antitoxin/New()
 	..()
 	reagents.add_reagent("anti_toxin", 15)
-	mode = SYRINGE_INJECT
-	update_icon()
+	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
+	//update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/antiviral
 	name = "Syringe (spaceacillin)"
@@ -353,8 +353,8 @@
 /obj/item/weapon/reagent_containers/syringe/antiviral/New()
 	..()
 	reagents.add_reagent("spaceacillin", 15)
-	mode = SYRINGE_INJECT
-	update_icon()
+	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
+	//update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/drugs
 	name = "Syringe (drugs)"
@@ -365,8 +365,8 @@
 	reagents.add_reagent("space_drugs",  5)
 	reagents.add_reagent("mindbreaker",  5)
 	reagents.add_reagent("cryptobiolin", 5)
-	mode = SYRINGE_INJECT
-	update_icon()
+	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
+	//update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/choral/New()
 	..()

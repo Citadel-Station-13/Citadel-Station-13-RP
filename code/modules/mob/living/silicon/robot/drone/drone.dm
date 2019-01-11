@@ -114,6 +114,7 @@ var/list/mob_hat_cache = list()
 
 	verbs -= /mob/living/silicon/robot/verb/Namepick
 	updateicon()
+	updatename()
 
 /mob/living/silicon/robot/drone/init()
 	aiCamera = new/obj/item/device/camera/siliconcam/drone_camera(src)
@@ -180,7 +181,7 @@ var/list/mob_hat_cache = list()
 		to_chat(user, "<span class='danger'>\The [src] is not compatible with \the [W].</span>")
 		return
 
-	else if (istype(W, /obj/item/weapon/crowbar))
+	else if (W.is_crowbar())
 		to_chat(user, "<span class='danger'>\The [src] is hermetically sealed. You can't open the case.</span>")
 		return
 

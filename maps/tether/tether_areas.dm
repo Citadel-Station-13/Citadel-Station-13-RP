@@ -24,7 +24,7 @@
 // Elevator areas.
 /area/turbolift
 	delay_time = 2 SECONDS
-	forced_ambience = list('modular_citadel/sound/music/elevator.ogg') //CITADEL CHANGE - changes forced_ambience here to modular_citadel/sound/music/elevator.ogg
+	forced_ambience = list('sound/music/elevator.ogg')
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
 
 /area/turbolift/tether/transit
@@ -90,3 +90,7 @@
 /area/engineering/shaft
 	name = "\improper Engineering Electrical Shaft"
 	icon_state = "substation"
+
+/area/vacant/vacant_office
+	name = "\improper Vacant Office"
+	icon_state = "vacant_site"

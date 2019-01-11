@@ -38,6 +38,7 @@
 	req_access = list(access_hos)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
+	// citadel edit NSFW > Multiphase
 	starts_with = list(
 		/obj/item/weapon/cartridge/hos,
 		/obj/item/taperoll/police,
@@ -45,11 +46,11 @@
 		/obj/item/weapon/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/crowbar/red,
+		/obj/item/weapon/tool/crowbar/red,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos,
+		/obj/item/weapon/gun/energy/gun/multiphase,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
@@ -133,7 +134,7 @@
 		/obj/item/weapon/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/crowbar/red,
+		/obj/item/weapon/tool/crowbar/red,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,

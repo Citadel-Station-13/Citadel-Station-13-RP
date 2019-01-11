@@ -8,6 +8,12 @@
 	name = "grower pod"
 	circuit = /obj/item/weapon/circuitboard/transhuman_clonepod
 
+//A full version of the pod
+/obj/machinery/clonepod/transhuman/full/initialize()
+	. = ..()
+	for(var/i = 1 to container_limit)
+		containers += new /obj/item/weapon/reagent_containers/glass/bottle/biomass(src)
+
 /obj/machinery/clonepod/transhuman/growclone(var/datum/transhuman/body_record/current_project)
 	//Manage machine-specific stuff.
 	if(mess || attempting)
@@ -532,21 +538,16 @@
 
 	//Give them a backup implant
 	var/obj/item/weapon/implant/backup/new_imp = new()
-	if(new_imp.implanted(occupant))
-		new_imp.loc = occupant
-		new_imp.imp_in = occupant
-		new_imp.implanted = 1
-		//Put it in the head! Makes sense.
-		var/obj/item/organ/external/affected = occupant.get_organ(BP_HEAD)
-		affected.implants += new_imp
-		new_imp.part = affected
+	if(new_imp.handle_implant(occupant, BP_HEAD))
+		new_imp.post_implant(occupant)
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)
-		occupant << "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Your new body feels comfortable already, however.</span>"
+	//cit change start
+		occupant << "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. </span>"
 	else
-		occupant << "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. It's disorienting, to say the least.</span>"
-
+		occupant << "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>"
+	//cit change end
 	occupant.confused = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
 
