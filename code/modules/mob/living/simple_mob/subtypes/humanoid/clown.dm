@@ -1,5 +1,4 @@
 /mob/living/simple_mob/humanoid/clown
-	clown
 	name = "clown"
 	desc = "A denizen of clown planet"
 	tt_desc = "E Homo sapiens corydon" //this is an actual clown, as opposed to someone dressed up as one
@@ -23,6 +22,7 @@
 	attack_sound = 'sound/items/bikehorn.ogg'
 
 	say_list_type = /datum/say_list/clown
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 /datum/say_list/clown
 	speak = list("HONK", "Honk!", "Welcome to clown planet!")

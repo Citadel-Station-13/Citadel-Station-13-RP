@@ -1,22 +1,9 @@
 //Why are these a subclass of cat?
 /mob/living/simple_mob/animal/passive/bird
 	name = "parrot"
-	desc = "A domesticated bird. Tweet tweet!"
-	icon = 'icons/mob/birds.dmi'
 	icon_state = "parrot-flap"
-	item_state = null
 	icon_living = "parrot-flap"
 	icon_dead = "parrot-dead"
-
-	pass_flags = PASSTABLE
-
-	speak_chance = 5
-	speak = list("Chirp!","Caw!","Screech!","Squawk!")
-	speak_emote = list("chirps", "caws")
-	emote_hear = list("chirps","caws")
-	emote_see = list("shakes their head", "ruffles their feathers")
-
-	holder_type = /obj/item/weapon/holder/bird
 
 /mob/living/simple_mob/animal/passive/bird/kea
 	name = "Kea"
@@ -143,9 +130,3 @@
 	icon_state = "mtoo-flap"
 	icon_living = "mtoo-flap"
 	icon_dead = "mtoo-dead"
-
-/obj/item/weapon/holder/bird
-	name = "Bird"
-	desc = "It's a bird!"
-	icon_state = null
-	item_icons = null

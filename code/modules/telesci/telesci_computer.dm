@@ -73,7 +73,7 @@
 		return ..()
 
 /obj/machinery/computer/telescience/proc/get_max_allowed_distance()
-	return Floor(crystals.len * telepad.efficiency * powerCoefficient)
+	return FLOOR(crystals.len * telepad.efficiency * powerCoefficient, 1)
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	src.attack_hand(user)
@@ -97,7 +97,7 @@
 		data["cooldown"] = max(0, min(100, round(teleport_cooldown - world.time) / 10))
 		data["crystalCount"] = crystals.len
 		data["maxCrystals"] = max_crystals
-		data["maxPossibleDistance"] = Floor(max_crystals * powerCoefficient * 6); // max efficiency is 6
+		data["maxPossibleDistance"] = FLOOR(max_crystals * powerCoefficient * 6, 1); // max efficiency is 6
 		data["maxAllowedDistance"] = get_max_allowed_distance()
 		data["distance"] = distance
 
@@ -320,15 +320,15 @@
 		var/new_rot = input("Please input desired bearing in degrees.", name, rotation) as num
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
-		rotation = Clamp(new_rot, -900, 900)
+		rotation = CLAMP(new_rot, -900, 900)
 		rotation = round(rotation, 0.01)
 
 	if(href_list["setdistance"])
 		var/new_pow = input("Please input desired distance in meters.", name, rotation) as num
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
-		distance = Clamp(new_pow, 1, get_max_allowed_distance())
-		distance = Floor(distance)
+		distance = CLAMP(new_pow, 1, get_max_allowed_distance())
+		distance = FLOOR(distance, 1)
 
 	if(href_list["setz"])
 		var/new_z = text2num(href_list["setz"])
