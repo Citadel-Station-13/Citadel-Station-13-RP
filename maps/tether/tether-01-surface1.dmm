@@ -14662,11 +14662,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
 "aBh" = (
@@ -15471,11 +15466,6 @@
 "aCC" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
@@ -16300,14 +16290,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva)
-"aEp" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/wall/r_wall,
-/area/engineering/atmos/processing)
 "aEq" = (
 /obj/item/weapon/storage/briefcase/inflatable{
 	pixel_x = 3;
@@ -16893,14 +16875,6 @@
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology/xenoflora_storage)
-"aFq" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos/processing)
 "aFr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -17214,11 +17188,6 @@
 "aGd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
@@ -17784,11 +17753,6 @@
 "aHq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
@@ -21528,11 +21492,6 @@
 	icon_state = "intact";
 	dir = 10
 	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "aOZ" = (
@@ -21541,20 +21500,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/atmos/processing)
-"aPa" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
 "aPb" = (
@@ -21562,13 +21507,6 @@
 /area/engineering/atmos/intake)
 "aPc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
-/obj/structure/cable/cyan,
-/obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/apc;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/intake)
 "aPq" = (
@@ -31772,6 +31710,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"fKN" = (
+/obj/structure/table/rack,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
+"fWs" = (
+/obj/random/junk,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "fWK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -32150,6 +32098,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
+"lXX" = (
+/obj/structure/closet,
+/obj/random/maintenance/engineering,
+/obj/random/junk,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "mpN" = (
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor,
@@ -32463,6 +32419,13 @@
 /obj/vehicle/train/trolley,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/mining_main/ore)
+"rZr" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Atmospherics";
+	req_access = list(24)
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/processing)
 "slR" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	scrub_id = "atrium"
@@ -32756,6 +32719,13 @@
 	dir = 1
 	},
 /area/tether/surfacebase/public_garden_one)
+"wzo" = (
+/obj/structure/table/rack,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "wzH" = (
 /obj/structure/railing{
 	dir = 4
@@ -41885,14 +41855,14 @@ azG
 anv
 aBg
 aCC
-aEp
-aFq
+aIv
+aDK
 aGd
 aHq
 aOY
 aOZ
-aPa
-aPa
+aHW
+aHW
 aPc
 aHW
 aJf
@@ -42181,7 +42151,7 @@ aIv
 aIv
 aIv
 aIv
-aIv
+rZr
 aIv
 aIv
 aIv
@@ -42322,10 +42292,10 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
-aah
+azI
+aIB
+lXX
+azI
 aah
 aah
 aah
@@ -42464,9 +42434,9 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
+azI
+aIk
+fKN
 azI
 azI
 azI
@@ -42606,9 +42576,9 @@ aah
 aah
 aah
 aah
-aah
-aah
-aah
+azI
+aIB
+wzo
 azI
 aKL
 aLk
@@ -42748,9 +42718,9 @@ anv
 anv
 aah
 aah
-aah
-aah
-aah
+azI
+aIB
+aJP
 azI
 aKM
 aIk
@@ -42890,9 +42860,9 @@ aHX
 anv
 aah
 aah
-aah
-aah
-aah
+azI
+aIB
+aIk
 azI
 aKL
 aIB
@@ -43030,11 +43000,11 @@ aFf
 aBX
 aIj
 anv
-aah
-aah
+adK
+adK
 azI
-azI
-azI
+aIk
+aIB
 azI
 aKQ
 aIB
@@ -43172,11 +43142,11 @@ aHK
 aHY
 aHY
 anv
-azI
-azI
-azI
 aJP
 aKm
+azI
+aIk
+aIB
 azI
 azI
 aLl
@@ -43460,7 +43430,7 @@ aIk
 aJi
 aIk
 aIk
-aIk
+fWs
 aIk
 aKS
 aIB
