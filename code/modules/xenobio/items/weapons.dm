@@ -29,11 +29,12 @@
 			H.apply_damage(agony_to_apply, HALLOSS)
 	..()
 
-/obj/item/weapon/melee/baton/slime/loaded/New()
 	..()
+
+/obj/item/weapon/melee/baton/slime/loaded/Initialize()
 	bcell = new/obj/item/weapon/cell/device(src)
 	update_icon()
-	return
+	return ..()
 
 
 // Research borg's version

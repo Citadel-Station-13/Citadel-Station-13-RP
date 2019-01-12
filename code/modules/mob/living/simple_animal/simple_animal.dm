@@ -1349,7 +1349,7 @@
 		if(casingtype)
 			new casingtype
 
-	return 1
+	return TRUE
 
 //Check firing lines for faction_friends (if we're not cooperative, we don't care)
 /mob/living/simple_animal/proc/CheckFiringLine(var/turf/tturf)
