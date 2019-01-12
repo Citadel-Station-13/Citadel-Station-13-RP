@@ -104,7 +104,7 @@
 	icon_gib = "bear-gib"
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/hostile/carp
+/mob/living/simple_mob/animal/space/carp
 	icon = 'icons/mob/vore.dmi'
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
@@ -223,24 +223,24 @@
 	vore_max_size = RESIZE_SMALL
 
 
-/mob/living/simple_animal/hostile/carp/pike
+/mob/living/simple_mob/animal/space/carp/pike
 	vore_active = 1
 	// NO VORE SPRITES
 
-/mob/living/simple_animal/hostile/carp/holodeck
+/mob/living/simple_mob/animal/space/carp/holodeck
 	vore_icons = 0 // NO VORE SPRITES
 	vore_digest_chance = 0
 	vore_absorb_chance = 0
 
 // Override stuff for holodeck carp to make them not digest when set to safe!
-/mob/living/simple_animal/hostile/carp/holodeck/init_vore()
+/mob/living/simple_mob/animal/space/carp/holodeck/init_vore()
 	. = ..()
 	var/safe = (faction == "neutral")
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
 		B.digest_mode = safe ? DM_HOLD : vore_default_mode
 
-/mob/living/simple_animal/hostile/carp/holodeck/set_safety(var/safe)
+/mob/living/simple_mob/animal/space/carp/holodeck/set_safety(var/safe)
 	. = ..()
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly

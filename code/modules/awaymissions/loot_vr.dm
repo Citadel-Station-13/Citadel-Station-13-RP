@@ -283,7 +283,7 @@
 				if(live_cargo) // Carp! Since Facehuggers got removed.
 					var/num = rand(1,3)
 					for(var/i=0,i<num,i++)
-						new /mob/living/simple_animal/hostile/carp(C)
+						new /mob/living/simple_mob/animal/space/carp(C)
 				else // Just a costume.
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))

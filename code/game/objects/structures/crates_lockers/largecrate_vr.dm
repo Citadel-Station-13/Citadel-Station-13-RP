@@ -5,28 +5,28 @@
 /obj/structure/largecrate/birds/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		new /obj/item/stack/material/wood(src)
-		new /mob/living/simple_animal/bird(src)
-		new /mob/living/simple_animal/bird/kea(src)
-		new /mob/living/simple_animal/bird/eclectus(src)
-		new /mob/living/simple_animal/bird/greybird(src)
-		new /mob/living/simple_animal/bird/eclectusf(src)
-		new /mob/living/simple_animal/bird/blue_caique(src)
-		new /mob/living/simple_animal/bird/white_caique(src)
-		new /mob/living/simple_animal/bird/green_budgerigar(src)
-		new /mob/living/simple_animal/bird/blue_Budgerigar(src)
-		new /mob/living/simple_animal/bird/bluegreen_Budgerigar(src)
-		new /mob/living/simple_animal/bird/commonblackbird(src)
-		new /mob/living/simple_animal/bird/azuretit(src)
-		new /mob/living/simple_animal/bird/europeanrobin(src)
-		new /mob/living/simple_animal/bird/goldcrest(src)
-		new /mob/living/simple_animal/bird/ringneckdove(src)
-		new /mob/living/simple_animal/bird/cockatiel(src)
-		new /mob/living/simple_animal/bird/white_cockatiel(src)
-		new /mob/living/simple_animal/bird/yellowish_cockatiel(src)
-		new /mob/living/simple_animal/bird/grey_cockatiel(src)
-		new /mob/living/simple_animal/bird/too(src)
-		new /mob/living/simple_animal/bird/hooded_too(src)
-		new /mob/living/simple_animal/bird/pink_too(src)
+		new /mob/living/simple_mob/animal/passive/bird(src)
+		new /mob/living/simple_mob/animal/passive/bird/kea(src)
+		new /mob/living/simple_mob/animal/passive/bird/eclectus(src)
+		new /mob/living/simple_mob/animal/passive/bird/greybird(src)
+		new /mob/living/simple_mob/animal/passive/bird/eclectusf(src)
+		new /mob/living/simple_mob/animal/passive/bird/blue_caique(src)
+		new /mob/living/simple_mob/animal/passive/bird/white_caique(src)
+		new /mob/living/simple_mob/animal/passive/bird/green_budgerigar(src)
+		new /mob/living/simple_mob/animal/passive/bird/blue_Budgerigar(src)
+		new /mob/living/simple_mob/animal/passive/bird/bluegreen_Budgerigar(src)
+		new /mob/living/simple_mob/animal/passive/bird/commonblackbird(src)
+		new /mob/living/simple_mob/animal/passive/bird/azuretit(src)
+		new /mob/living/simple_mob/animal/passive/bird/europeanrobin(src)
+		new /mob/living/simple_mob/animal/passive/bird/goldcrest(src)
+		new /mob/living/simple_mob/animal/passive/bird/ringneckdove(src)
+		new /mob/living/simple_mob/animal/passive/bird/cockatiel(src)
+		new /mob/living/simple_mob/animal/passive/bird/white_cockatiel(src)
+		new /mob/living/simple_mob/animal/passive/bird/yellowish_cockatiel(src)
+		new /mob/living/simple_mob/animal/passive/bird/grey_cockatiel(src)
+		new /mob/living/simple_mob/animal/passive/bird/too(src)
+		new /mob/living/simple_mob/animal/passive/bird/hooded_too(src)
+		new /mob/living/simple_mob/animal/passive/bird/pink_too(src)
 		var/turf/T = get_turf(src)
 		for(var/atom/movable/AM in contents)
 			if(AM.simulated) AM.forceMove(T)
@@ -51,7 +51,7 @@
 						/mob/living/simple_animal/hostile/wolf,
 						/mob/living/simple_animal/hostile/bear;0.5,
 						/mob/living/simple_animal/hostile/bear/brown;0.5,
-						/mob/living/simple_animal/hostile/carp,
+						/mob/living/simple_mob/animal/space/carp,
 						/mob/living/simple_animal/hostile/mimic,
 						/mob/living/simple_animal/hostile/rat,
 						/mob/living/simple_animal/hostile/rat/passive,
@@ -63,7 +63,7 @@
 	starts_with = list(/mob/living/simple_animal/hostile/alien)
 
 /obj/structure/largecrate/animal/dangerous/Initialize()
-	starts_with = list(pick(/mob/living/simple_animal/hostile/carp/pike,
+	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/pike,
 						/mob/living/simple_animal/hostile/deathclaw,
 						/mob/living/simple_animal/hostile/dino,
 						/mob/living/simple_animal/hostile/alien,
