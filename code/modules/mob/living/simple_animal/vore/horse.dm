@@ -1,4 +1,4 @@
-/mob/living/simple_animal/horse
+/mob/living/simple_mob/horse
 	name = "horse"
 	desc = "Don't look it in the mouth."
 	tt_desc = "Equus ferus caballus"
@@ -38,15 +38,15 @@
 	mount_offset_x = 0
 
 // Activate Noms!
-/mob/living/simple_animal/horse
+/mob/living/simple_mob/horse
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/horse/Login()
+/mob/living/simple_mob/horse/Login()
 	. = ..()
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_animal/horse/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/horse/MouseDrop_T(mob/living/M, mob/living/user)
 	return

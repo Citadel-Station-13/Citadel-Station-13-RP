@@ -1,4 +1,4 @@
-/mob/living/simple_animal/retaliate/hippo
+/mob/living/simple_mob/retaliate/hippo
 	name = "hippo"
 	desc = "Mostly know for the spectacular hit of the live action movie Hungry Hungry Hippos."
 	tt_desc = "Hippopotamus amphibius"
@@ -56,7 +56,7 @@
 	mount_offset_y = 20
 
 // Activate Noms!
-/mob/living/simple_animal/retaliate/hippo //I don't know why it's in a seperate line but everyone does it so i do it
+/mob/living/simple_mob/retaliate/hippo //I don't know why it's in a seperate line but everyone does it so i do it
 	vore_active = 1
 	vore_capacity = 1
 	vore_bump_chance = 15
@@ -71,11 +71,11 @@
 	vore_stomach_flavor	= "You are squeezed into the sweltering insides of the herbivore rumen."
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/retaliate/hippo/Login()
+/mob/living/simple_mob/retaliate/hippo/Login()
 	. = ..()
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_animal/retaliate/hippo/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/retaliate/hippo/MouseDrop_T(mob/living/M, mob/living/user)
 	return

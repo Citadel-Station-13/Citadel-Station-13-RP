@@ -1,5 +1,5 @@
 //Look Sir, free head!
-/mob/living/simple_animal/head
+/mob/living/simple_mob/head
 	name = "CommandBattle AI"
 	desc = "A standard borg shell on its chest crude marking saying CommandBattle AI MK4 : Head."
 	icon_state = "crab"
@@ -41,7 +41,7 @@
 	"Ezekiel 25:17 ,The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who in the name of charity and good will shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know my name is the Lord... when I lay my vengeance upon thee.",
 	"Did you notice a sign out in front of my house that said \"Dead Nigger Storage\"?")
 
-/mob/living/simple_animal/head/Life()
+/mob/living/simple_mob/head/Life()
 	. = ..()
 	if(!. || ai_inactive) return
 
@@ -49,7 +49,7 @@
 		if(A.ckey)
 			say_something(A)
 
-/mob/living/simple_animal/head/proc/say_something(mob/A)
+/mob/living/simple_mob/head/proc/say_something(mob/A)
 	if(prob(85))
 		return
 	if(prob(30))

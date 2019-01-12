@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/savik
+/mob/living/simple_mob/hostile/savik
 	name = "savik"
 	desc = "A fast, armoured predator accustomed to hiding and ambushing in cold terrain."
 	tt_desc = "S Pistris tellus" //landshark
@@ -29,7 +29,7 @@
 	emote_see = list("paws the ground","shakes its mane","stomps")
 	emote_hear = list("snuffles")
 
-/mob/living/simple_animal/hostile/savik/handle_stance(var/new_stance)
+/mob/living/simple_mob/hostile/savik/handle_stance(var/new_stance)
 	..(new_stance)
 	if(stance == STANCE_ATTACK || stance == STANCE_ATTACKING)
 		if((health / maxHealth) <= 0.5) // At half health, and fighting someone currently.

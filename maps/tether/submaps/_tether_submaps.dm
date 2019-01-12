@@ -237,7 +237,7 @@
 	var/guard				//# will set the mobs to remain nearby their spawn point within this dist
 
 	//Internal use only
-	var/mob/living/simple_animal/my_mob
+	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
 /obj/tether_away_spawner/Initialize()
@@ -304,5 +304,5 @@
 	prob_fall = 1
 	guard = 10 //Don't wander too far, to stay alive.
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/shadekin
+		/mob/living/simple_mob/shadekin
 	)

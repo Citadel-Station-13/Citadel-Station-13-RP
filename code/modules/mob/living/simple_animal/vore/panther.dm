@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/panther
+/mob/living/simple_mob/hostile/panther
 	name = "panther"
 	desc = "Runtime's larger, less cuddly cousin."
 	tt_desc = "Panthera pardus"
@@ -34,17 +34,17 @@
 	mount_offset_y = 12
 
 // Activate Noms!
-/mob/living/simple_animal/hostile/panther
+/mob/living/simple_mob/hostile/panther
 	vore_active = 1
 	vore_capacity = 2
 	vore_pounce_chance = 10
 	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
-/mob/living/simple_animal/hostile/panther/Login()
+/mob/living/simple_mob/hostile/panther/Login()
 	. = ..()
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_animal/hostile/panther/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/hostile/panther/MouseDrop_T(mob/living/M, mob/living/user)
 	return

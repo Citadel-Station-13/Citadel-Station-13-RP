@@ -36,18 +36,18 @@
 	var/mount_offset_y = 8				// Vertical riding offset
 
 // Release belly contents before being gc'd!
-/mob/living/simple_animal/Destroy()
+/mob/living/simple_mob/Destroy()
 	release_vore_contents()
 	prey_excludes.Cut()
 	. = ..()
 
 //For all those ID-having mobs
-/mob/living/simple_animal/GetIdCard()
+/mob/living/simple_mob/GetIdCard()
 	if(myid)
 		return myid
 
 // Update fullness based on size & quantity of belly contents
-/mob/living/simple_animal/proc/update_fullness()
+/mob/living/simple_mob/proc/update_fullness()
 	var/new_fullness = 0
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
@@ -56,7 +56,7 @@
 	new_fullness = round(new_fullness, 1) // Because intervals of 0.25 are going to make sprite artists cry.
 	vore_fullness = min(vore_capacity, new_fullness)
 
-/mob/living/simple_animal/proc/update_vore_icon()
+/mob/living/simple_mob/proc/update_vore_icon()
 	if(!vore_active)
 		return 0
 	update_fullness()
@@ -69,7 +69,7 @@
 	else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
 		return "[icon_rest]-[vore_fullness]"
 
-/mob/living/simple_animal/proc/will_eat(var/mob/living/M)
+/mob/living/simple_mob/proc/will_eat(var/mob/living/M)
 	if(client) //You do this yourself, dick!
 		ai_log("vr/wont eat [M] because we're player-controlled", 3)
 		return 0
@@ -96,7 +96,7 @@
 		return 0
 	return 1
 
-/mob/living/simple_animal/PunchTarget()
+/mob/living/simple_mob/PunchTarget()
 	ai_log("vr/PunchTarget() [target_mob]", 3)
 
 	// If we're not hungry, call the sideways "parent" to do normal punching
@@ -114,7 +114,7 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/proc/CanPounceTarget() //returns either FALSE or a %chance of success
+/mob/living/simple_mob/proc/CanPounceTarget() //returns either FALSE or a %chance of success
 	if(!target_mob.canmove || issilicon(target_mob) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
 		return FALSE
 	if(!prob(vore_pounce_chance)) //mob doesn't want to pounce
@@ -128,7 +128,7 @@
 		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
 
 
-/mob/living/simple_animal/proc/PounceTarget(var/successrate = 100)
+/mob/living/simple_mob/proc/PounceTarget(var/successrate = 100)
 	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
 	if(prob(successrate)) // pounce success!
 		target_mob.Weaken(5)
@@ -144,7 +144,7 @@
 
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
-/mob/living/simple_animal/proc/EatTarget()
+/mob/living/simple_mob/proc/EatTarget()
 	ai_log("vr/EatTarget() [target_mob]",2)
 	stop_automated_movement = 1
 	var/old_target = target_mob
@@ -164,17 +164,17 @@
 		set_stance(STANCE_ATTACK)
 	stop_automated_movement = 0
 
-/mob/living/simple_animal/death()
+/mob/living/simple_mob/death()
 	release_vore_contents()
 	. = ..()
 
 // Make sure you don't call ..() on this one, otherwise you duplicate work.
-/mob/living/simple_animal/init_vore()
+/mob/living/simple_mob/init_vore()
 	if(!vore_active || no_vore)
 		return
 
 	if(!IsAdvancedToolUser())
-		verbs |= /mob/living/simple_animal/proc/animal_nom
+		verbs |= /mob/living/simple_mob/proc/animal_nom
 		verbs |= /mob/living/proc/shred_limb
 
 	if(LAZYLEN(vore_organs))
@@ -216,7 +216,7 @@
 		"The churning walls slowly pulverize you into meaty nutrients.",
 		"The stomach glorps and gurgles as it tries to work you into slop.")
 
-/mob/living/simple_animal/Bumped(var/atom/movable/AM, yes)
+/mob/living/simple_mob/Bumped(var/atom/movable/AM, yes)
 	if(ismob(AM))
 		var/mob/tmob = AM
 		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey) //check if they decide to eat. Includes sanity check to prevent cannibalism.
@@ -230,7 +230,7 @@
 	..()
 
 // Checks to see if mob doesn't like this kind of turf
-/mob/living/simple_animal/avoid_turf(var/turf/turf)
+/mob/living/simple_mob/avoid_turf(var/turf/turf)
 	//So we only check if the parent didn't find anything terrible
 	if((. = ..(turf)))
 		return .
@@ -239,7 +239,7 @@
 		return TRUE //Mobs aren't that stupid, probably
 
 //Grab = Nomf
-/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/simple_mob/UnarmedAttack(var/atom/A, var/proximity)
 	. = ..()
 
 	if(a_intent == I_GRAB && isliving(A) && !has_hands)
@@ -252,22 +252,22 @@
 	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
 
-/datum/riding/simple_animal/handle_vehicle_layer()
+/datum/riding/simple_mob/handle_vehicle_layer()
 	ridden.layer = initial(ridden.layer)
 
-/datum/riding/simple_animal/ride_check(mob/living/M)
+/datum/riding/simple_mob/ride_check(mob/living/M)
 	var/mob/living/L = ridden
 	if(L.stat)
 		force_dismount(M)
 		return FALSE
 	return TRUE
 
-/datum/riding/simple_animal/force_dismount(mob/M)
+/datum/riding/simple_mob/force_dismount(mob/M)
 	. =..()
 	ridden.visible_message("<span class='notice'>[M] stops riding [ridden]!</span>")
 
-/datum/riding/simple_animal/get_offsets(pass_index) // list(dir = x, y, layer)
-	var/mob/living/simple_animal/L = ridden
+/datum/riding/simple_mob/get_offsets(pass_index) // list(dir = x, y, layer)
+	var/mob/living/simple_mob/L = ridden
 	var/scale = L.size_multiplier
 
 	var/list/values = list(
@@ -278,7 +278,7 @@
 
 	return values
 
-/mob/living/simple_animal/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
+/mob/living/simple_mob/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	if(forced)
 		return ..() // Skip our checks
 	if(!riding_datum)
@@ -303,7 +303,7 @@
 	if(.)
 		buckled_mobs[H] = "riding"
 
-/mob/living/simple_animal/attack_hand(mob/user as mob)
+/mob/living/simple_mob/attack_hand(mob/user as mob)
 	if(riding_datum && LAZYLEN(buckled_mobs))
 		//We're getting off!
 		if(user in buckled_mobs)
@@ -315,7 +315,7 @@
 	else
 		. = ..()
 
-/mob/living/simple_animal/proc/animal_mount(var/mob/living/M in living_mobs(1))
+/mob/living/simple_mob/proc/animal_mount(var/mob/living/M in living_mobs(1))
 	set name = "Animal Mount/Dismount"
 	set category = "Abilities"
 	set desc = "Let people ride on you."

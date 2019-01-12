@@ -13,12 +13,12 @@
 
 /obj/item/weapon/melee/baton/slime/attack(mob/M, mob/user, hit_zone)
 	// Simple Animals.
-	if(istype(M, /mob/living/simple_animal/slime) && status)
-		var/mob/living/simple_animal/SA = M
+	if(istype(M, /mob/living/simple_mob/slime) && status)
+		var/mob/living/simple_mob/SA = M
 		if(SA.intelligence_level <= SA_ANIMAL) // So it doesn't stun hivebots or syndies.
 			SA.Weaken(5)
 			if(isslime(SA))
-				var/mob/living/simple_animal/slime/S = SA
+				var/mob/living/simple_mob/slime/S = SA
 				S.adjust_discipline(3)
 
 	// Prometheans.
@@ -105,12 +105,12 @@
 		var/mob/living/L = target
 
 		// Simple Animals.
-		if(istype(L, /mob/living/simple_animal/slime))
-			var/mob/living/simple_animal/SA = L
+		if(istype(L, /mob/living/simple_mob/slime))
+			var/mob/living/simple_mob/SA = L
 			if(SA.intelligence_level <= SA_ANIMAL) // So it doesn't stun hivebots or syndies.
 				SA.Weaken(round(agony/2)) // Less powerful since its ranged, and therefore safer.
 				if(isslime(SA))
-					var/mob/living/simple_animal/slime/S = SA
+					var/mob/living/simple_mob/slime/S = SA
 					S.adjust_discipline(round(agony/2))
 
 		// Prometheans.
