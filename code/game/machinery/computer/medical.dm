@@ -5,7 +5,6 @@
 	desc = "Used to view, edit and maintain medical records."
 	icon_keyboard = "med_key"
 	icon_screen = "medcomp"
-	density = TRUE			//Why does a laptop blocks peoples.		//Because this isn't a fucking laptop. - Citadel
 	light_color = "#315ab4"
 	req_one_access = list(access_medical, access_forensics_lockers, access_robotics)
 	circuit = /obj/item/weapon/circuitboard/med_data
@@ -554,5 +553,4 @@
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"
 	icon_screen = "medlaptop"
-	throwpass = 1 //VOREStation Edit - Really???
-	density = FALSE			//THIS IS A LAPTOP.	--CITADEL EDIT
+	density = 0
