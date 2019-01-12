@@ -33,7 +33,7 @@
 	name = "Operations Funding"
 	item_cost = 10
 	path = /obj/item/weapon/storage/secure/briefcase/money
-	desc = "A briefcase with 10,000 untraceable thalers for funding your sneaky activities."
+	desc = "A briefcase with 10,000 untraceable V-bucks for funding your sneaky activities."
 
 /datum/uplink_item/item/tools/plastique
 	name = "C-4 (Destroys walls)"

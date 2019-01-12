@@ -38,7 +38,7 @@
 	concerning still is NanoTrasen's business practice regarding the intelligences: much like their positronic lines, sources within the\
 	company indicate that they will be \"farmed out\" to employees of the corporation and residents of their Northern Star and Cynosure\
 	habitation complexes. Quote our source, who wishes to remain anonymous, \"\[we\] call the program 'Lend-Lease', sometimes. The whole idea\
-	is that we only have to pay the\ cost of the Promethean core, which is about 2000-3000 thalers after startup costs, and we still get\
+	is that we only have to pay the\ cost of the Promethean core, which is about 2000-3000 V-bucks after startup costs, and we still get\
 	the data we need while \[our\] own employees pay to feed 'em and put hours into raising them.\"\
 	<br></br>\
 	The bill passed fairly quietly this afternoon, owing to the closed nature of the Bicamarial. A post-facto Occulum poll of voting-age\

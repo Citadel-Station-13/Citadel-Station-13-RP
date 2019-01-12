@@ -64,7 +64,7 @@
 /datum/lore/codex/page/law/vandalism/add_content()
 	name = "Vandalism"
 	definition = "To deliberately damage or deface the station."
-	suggested_punishments = "Fine of up to 200 thaler or brig time of up to 30 minutes.  \
+	suggested_punishments = "Fine of up to 200 V-buck or brig time of up to 30 minutes.  \
 	Demotion at discretion of Superior.  Confiscation of tools used at discretion of arresting officer."
 	notes = "This should be used for minor damages such as broken windows which do not lead to vacuum, flipping tables, breaking \
 	lights, ripping up floor tiles, and such.  More serious or life threatening damages should have [quick_link("Sabotage")] applied instead."
@@ -90,7 +90,7 @@
 /datum/lore/codex/page/law/drone_id_failure
 	name = "Failure to Present Drone ID"
 	definition = "Failing to carry or present an EIO-issued Drone Identification card as a Drone intelligence."
-	suggested_punishments = "200 thaler fine.  Give Drone a temporary paper stating that it is a drone, if the ID was lost.  Fax SifGov.  Inform owner of \
+	suggested_punishments = "200 V-buck fine.  Give Drone a temporary paper stating that it is a drone, if the ID was lost.  Fax SifGov.  Inform owner of \
 	Drone if possible.  Instruct Drone to obtain new ID at its earliest opportunity, if it was lost."
 	notes = "This is only applicable to Drone intelligences which possess autonomous capability.  It must be proven that the offender is a Drone, which can be \
 	accomplished in various ways, generally with the expertise of a Roboticist.  Lawbound synthetics, maintenance drones, and \
@@ -100,7 +100,7 @@
 /datum/lore/codex/page/law/slander
 	name = "Slander / Libel"
 	definition = "To spread false rumours in order to damage someone's reputation."
-	suggested_punishments = "150 thaler fine."
+	suggested_punishments = "150 V-buck fine."
 	notes = "Slander is for verbal cases, where as Libel is for written cases."
 	mandated = TRUE
 
@@ -216,8 +216,8 @@
 	Punishments for estimated Drone Class.;\
 	<ul>\
 	<li><b>\"F\"-class</b>: No action needed.</li>\
-	<li><b>D-class</b>: 500 thaler fine.</li>\
-	<li><b>C-class</b>: 2500 thaler fine.</li>\
+	<li><b>D-class</b>: 500 V-buck fine.</li>\
+	<li><b>C-class</b>: 2500 V-buck fine.</li>\
 	<li><b>B-class and higher</b>: Hold until Transfer.</li>\
 	<li><b>Cannot determine</b>: Hold until Transfer, bring Drone to Spaceport for further investigation.</li>\
 	</ul>"
@@ -252,7 +252,7 @@
 	<li>Phoron, in any form.</li>\
 	<li>Mineral wealth obtained from Mining or the Vault (Gold, Silver, Diamonds, etc).</li>\
 	<li>Hardsuits.</li>\
-	<li>Money in excess of 5,000 thaler.</li>\
+	<li>Money in excess of 5,000 V-buck.</li>\
 	</ul>"
 	mandated = TRUE
 

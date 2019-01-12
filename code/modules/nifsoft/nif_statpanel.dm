@@ -65,7 +65,7 @@
 			if("Display Info")
 				nifsoft.nif.notify("[nifsoft_name]: [nifsoft.desc] - It consumes [nifsoft.p_drain] energy units \
 				while installed, and [nifsoft.a_drain] additionally while active. It is [nifsoft.illegal ? "NOT " : ""]\
-				a legal software package. The MSRP of the package is [nifsoft.cost] Thalers. The difficulty to construct \
+				a legal software package. The MSRP of the package is [nifsoft.cost] V-bucks. The difficulty to construct \
 				the associated implant is Rating [nifsoft.wear].")
 			if("Uninstall")
 				var/confirm = alert("Really uninstall [nifsoft_name]?","Are you sure?","Cancel","Uninstall","Cancel")

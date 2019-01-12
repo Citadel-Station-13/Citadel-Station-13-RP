@@ -41,7 +41,7 @@
 "h" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper{
-	desc = "Lamen's Hunter Shack! Selling freshly hunted meat for six thalers a slab. Support Locale hunters! Also selling Getmore Products for 3 thalers a bag, or 2 thalers for a bottle of water. Please place all payments into the nearbye bag."
+	desc = "Lamen's Hunter Shack! Selling freshly hunted meat for six V-bucks a slab. Support Locale hunters! Also selling Getmore Products for 3 V-bucks a bag, or 2 V-bucks for a bottle of water. Please place all payments into the nearbye bag."
 	},
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Smol3)

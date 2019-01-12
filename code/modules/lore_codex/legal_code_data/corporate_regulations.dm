@@ -115,7 +115,7 @@
 /datum/lore/codex/page/law/minor_trespass
 	name = "Minor Trespass"
 	definition = "Being in an area which a person does not have access to, and does not have permission to be in."
-	suggested_punishments = "Removal from area. Fine of up to 150 thaler or brig time of up to 10 minutes at discretion of \
+	suggested_punishments = "Removal from area. Fine of up to 150 V-buck or brig time of up to 10 minutes at discretion of \
 	arresting officer. Demotion at discretion of Superior.  Confiscation of tools used at discretion of arresting officer."
 	suggested_brig_time = 10 MINUTES
 	suggested_fine = 150
@@ -127,7 +127,7 @@
 	name = "Petty Theft of Company Property"
 	keywords += list("Petty Theft")
 	definition = "Taking or using the Company's property without permission, which is of low value."
-	suggested_punishments = "Return of stolen item(s). Fine of up to 200 thaler or brig time of up to 20 minutes.  Demotion at discretion of Superior."
+	suggested_punishments = "Return of stolen item(s). Fine of up to 200 V-buck or brig time of up to 20 minutes.  Demotion at discretion of Superior."
 	suggested_brig_time = 20 MINUTES
 	suggested_fine = 200
 	notes = "This is for theft of company belongings which are of a relatively low value, such as low-end medical equipment, tools, clothing, \
@@ -148,7 +148,7 @@
 /datum/lore/codex/page/law/failure_to_execute_order
 	name = "Failure to Execute an Order"
 	definition = "Refusing to follow a valid, lawful order of a Superior, when able to do so, as an employee of NanoTrasen."
-	suggested_punishments = "50 thaler fine. Demotion at discretion of Superior."
+	suggested_punishments = "50 V-buck fine. Demotion at discretion of Superior."
 	suggested_fine = 50
 	notes = "For this charge to apply, the order must be lawful, reasonable, and the person being ordered to do it must have been able to do so.  \
 	This includes orders from someone who is not necessarily the direct superior of the offender, but has authority in that context, for instance the Chief Engineer \
@@ -157,13 +157,13 @@
 /datum/lore/codex/page/law/littering
 	name = "Littering"
 	definition = "Failing to throw garbage away, or otherwise creating a mess."
-	suggested_punishments = "50 thaler fine issued to litterer.  Demotion at discretion of Superior <u>for extreme cases or repeat offenders</u>."
+	suggested_punishments = "50 V-buck fine issued to litterer.  Demotion at discretion of Superior <u>for extreme cases or repeat offenders</u>."
 	suggested_fine = 50
 
 /datum/lore/codex/page/law/graffiti
 	name = "Graffiti"
 	definition = "Defacing Company property, or otherwise writing or drawing on Company property without authorization."
-	suggested_punishments = "Up to 150 thaler fine issued to to those responsible. Cleanup of graffiti. Demotion at discretion of Superior."
+	suggested_punishments = "Up to 150 V-buck fine issued to to those responsible. Cleanup of graffiti. Demotion at discretion of Superior."
 	suggested_fine = 150
 	notes = "This applies for a wide variety of forms of graffiti, including writing on the walls or the floor, or drawing on the floor \
 	with painting tools.  Authorization for painting or otherwise altering the floor or walls' appearance can be granted by Command staff."
@@ -171,21 +171,21 @@
 /datum/lore/codex/page/law/false_complaint
 	name = "Filing a False Complaint"
 	definition = "Knowingly filing a complaint which is false, and in bad faith, to Internal Affairs, Command, or Security."
-	suggested_punishments = "Fine of 250 thaler.  Demotion at discretion of Superior."
+	suggested_punishments = "Fine of 250 V-buck.  Demotion at discretion of Superior."
 	suggested_fine = 250
 	notes = "If someone's complaint is merely incorrect but not maliciously so, it does not count for this charge."
 
 /datum/lore/codex/page/law/breaking_sop_minor
 	name = "Breaking Standard Operating Procedure (Minor)"
 	definition = "Actively and willfully disregarding the station's Standard Operating Procedures, without risking serious threat to station property or crew."
-	suggested_punishments = "Fine of 100 thaler. Demotion at discretion of Superior."
+	suggested_punishments = "Fine of 100 V-buck. Demotion at discretion of Superior."
 	suggested_fine = 100
 	notes = "This includes refusal to activate suit sensors on blue or red alert."
 
 /datum/lore/codex/page/law/resisting_arrest
 	name = "Resisting Arrest"
 	definition = "Noncompliance with an Arresting Officer, whom has cause, and is following SOP."
-	suggested_punishments = "Fine of up to 200 thaler, or brig time extention up to 20 minutes. Demotion at discretion of Superior."
+	suggested_punishments = "Fine of up to 200 V-buck, or brig time extention up to 20 minutes. Demotion at discretion of Superior."
 	suggested_fine = 200
 	suggested_brig_time = 20 MINUTES
 	notes = "If this disputed, an Internal Affairs Agent (if available) is to be the impartial mediator."
@@ -202,21 +202,21 @@
 	name = "Disrespecting a Head of Staff"
 	definition = "Knowingly insulting, belittling, offending, or otherwise disrespecting a Head of Staff of NanoTrasen, while also \
 	an employee of NanoTrasen."
-	suggested_punishments = "Fine of up to 100 thaler. Demotion at discretion of Superior."
+	suggested_punishments = "Fine of up to 100 V-buck. Demotion at discretion of Superior."
 	suggested_fine = 100
 	notes = "Accidential cases resulting from, for example, ignorance of a species' culture, invalidates this charge."
 
 /datum/lore/codex/page/law/indecent_exposure
 	name = "Indecent Exposure"
 	definition = "To be intentionally and publicly unclothed in public."
-	suggested_punishments = "Fine of 150 thaler. Demotion at discretion of Superior."
+	suggested_punishments = "Fine of 150 V-buck. Demotion at discretion of Superior."
 	suggested_fine = 150
 	notes = "Exceptions are allowed based on species.  See the Dress Code section of General SOP for more details."
 
 /datum/lore/codex/page/law/hooliganism
 	name = "Hooliganism"
 	definition = "To intentionally engage in disruptive behavior such as belligerent drunkenness, disorderly shouting, or aggressive assembly. "
-	suggested_punishments = "Fine of 100 thaler or brig time of 15 minutes. Demotion at discretion of Superior."
+	suggested_punishments = "Fine of 100 V-buck or brig time of 15 minutes. Demotion at discretion of Superior."
 	suggested_fine = 100
 	notes = "People who are intoxicated and being an annoyance can be brigged until they become sober, at the discretion of the Arresting Officer."
 

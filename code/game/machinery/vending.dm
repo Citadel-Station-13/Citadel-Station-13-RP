@@ -174,7 +174,7 @@
 			return
 		else if(handled)
 			GLOB.nanomanager.update_uis(src)
-			return // don't smack that machine with your 2 thalers
+			return // don't smack that machine with your 2 V-bucks
 
 	if(I || istype(W, /obj/item/weapon/spacecash))
 		attack_hand(user)
