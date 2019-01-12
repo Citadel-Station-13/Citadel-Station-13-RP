@@ -197,9 +197,10 @@ var/datum/species/shapeshifter/promethean/prometheans
 				H.adjustFireLoss(-heal_rate * starve_mod)
 				nutrition_cost += nutrition_debt - H.getFireLoss()
 
-			nutrition_debt = H.getOxyLoss()
-			H.adjustOxyLoss(-heal_rate * starve_mod)
-			nutrition_cost += nutrition_debt - H.getOxyLoss()
+			if(regen_oxy)
+				nutrition_debt = H.getOxyLoss()
+				H.adjustOxyLoss(-heal_rate * starve_mod)
+				nutrition_cost += nutrition_debt - H.getOxyLoss()
 
 			if(regen_tox)
 				nutrition_debt = H.getToxLoss()
