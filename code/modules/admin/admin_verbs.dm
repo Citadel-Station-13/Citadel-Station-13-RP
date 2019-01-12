@@ -115,7 +115,9 @@ var/list/admin_verbs_ban = list(
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
-	/client/proc/play_server_sound
+	/client/proc/play_web_sound,
+	/client/proc/play_web_sound_manual,
+	/client/proc/stop_sounds
 	)
 
 var/list/admin_verbs_fun = list(
@@ -216,7 +218,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/callproc,
 	/client/proc/callproc_target,
 	/client/proc/debug_process,
-	/client/proc/SDQL_query,
 	/client/proc/SDQL2_query,
 	/client/proc/Jump,
 	/client/proc/debug_rogueminer,
@@ -274,7 +275,9 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
-	/client/proc/play_server_sound,
+	/client/proc/play_web_sound,
+	/client/proc/play_web_sound_manual,
+	/client/proc/stop_sounds,
 	/client/proc/object_talk,
 	/datum/admins/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
