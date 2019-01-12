@@ -171,10 +171,11 @@
 					to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 					return
 
-			var/warmup_time = 0 //None if we're using this on ourselves.
 			var/cycle_time = injtime*0.33 //33% of the time slept between 5u doses
+			var/warmup_time = cycle_time //If the target is another mob, this gets overwritten
+
 			if(ismob(target) && target != user)
-				warmup_time = injtime*0.66 //66% of the time is warmup
+				warmup_time = injtime*0.66 // Otherwise 66% of the time is warmup
 
 				if(istype(H))
 					if(H.wear_suit)
@@ -184,7 +185,6 @@
 							return
 
 				else if(isliving(target))
-
 					var/mob/living/M = target
 					if(!M.can_inject(user, 1))
 						return
@@ -203,13 +203,13 @@
 			var/contained = reagentlist()
 			while(reagents.total_volume)
 				if(ismob(target))
-					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)	
+					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
 				else
 					trans += reagents.trans_to_obj(target, amount_per_transfer_from_this)
 				update_icon()
 				if(!reagents.total_volume || !do_after(user,cycle_time,target))
 					break
-			
+
 			if (reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
@@ -222,6 +222,9 @@
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
 //		dirty(target,affected) //VOREStation Add -- Removed by Request
+			if (reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
+				mode = SYRINGE_DRAW
+				update_icon()
 
 	return
 /* VOREStation Edit - See syringes_vr.dm
@@ -380,5 +383,5 @@
 
 /obj/item/weapon/reagent_containers/syringe/steroid/New()
 	..()
-	//reagents.add_reagent("adrenaline",5) //VOREStation Edit - No thanks.
+	reagents.add_reagent("adrenaline",5)
 	reagents.add_reagent("hyperzine",10)
