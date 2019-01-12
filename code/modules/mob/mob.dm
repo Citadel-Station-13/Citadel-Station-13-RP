@@ -682,14 +682,18 @@
 				stat("Location:", "([x], [y], [z]) [loc]")
 				stat("CPU:","[world.cpu]")
 				stat("Instances:","[world.contents.len]")
+				stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 
 			if(statpanel("Processes"))
 				if(processScheduler)
 					processScheduler.statProcesses()
 
 			if(statpanel("MC"))
+				stat("Location:", "([x], [y], [z]) [loc]")
 				stat("CPU:","[world.cpu]")
 				stat("Instances:","[world.contents.len]")
+				stat("World Time:", world.time)
+				stat("Real time of day:", REALTIMEOFDAY)
 				stat(null)
 				if(Master)
 					Master.stat_entry()
@@ -731,8 +735,6 @@
 							continue
 						if(is_type_in_list(A, shouldnt_see))
 							continue
-						if(A.plane > plane)
-							continue
 						stat(A)
 
 
@@ -754,13 +756,12 @@
 
 
 /mob/proc/facedir(var/ndir)
-	if(!canface() || (client && (client.moving || (world.time < client.move_delay))))
+	if(!canface() || (client && (client.moving || (world.time < move_delay))))
 		return 0
 	set_dir(ndir)
 	if(buckled && buckled.buckle_movable)
 		buckled.set_dir(ndir)
-	if(client)
-		client.move_delay += movement_delay()
+	move_delay += movement_delay()
 	return 1
 
 
@@ -1013,7 +1014,7 @@ mob/proc/yank_out_object()
 /mob/proc/has_brain_worms()
 
 	for(var/I in contents)
-		if(istype(I,/mob/living/simple_animal/borer))
+		if(istype(I,/mob/living/simple_mob/animal/borer))
 			return I
 
 	return 0
@@ -1184,6 +1185,21 @@ mob/proc/yank_out_object()
 
 	..()
 
+// Manages a global list of mobs with clients attached, indexed by z-level.
+/mob/proc/update_client_z(new_z) // +1 to register, null to unregister.
+	if(registered_z != new_z)
+		if(registered_z)
+			GLOB.players_by_zlevel[registered_z] -= src
+		if(client)
+			if(new_z)
+				GLOB.players_by_zlevel[new_z] += src
+			registered_z = new_z
+		else
+			registered_z = null
+
+/mob/on_z_change(old_z, new_z)
+	..()
+	update_client_z(new_z)
 /mob/MouseExited()
 	closeToolTip(usr) //No reason not to, really
 

@@ -62,7 +62,7 @@
 
 		playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 
-		set_dir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
+		set_dir(tesla_zap(src.loc, 7, TESLA_DEFAULT_POWER, TRUE))
 
 		for (var/ball in orbiting_balls)
 			var/range = rand(1, Clamp(orbiting_balls.len, 3, 7))
@@ -185,7 +185,6 @@
 										/obj/machinery/atmospherics,
 										/obj/machinery/power/emitter,
 										/obj/machinery/field_generator,
-										/mob/living/simple_animal,
 										/obj/machinery/door/blast,
 										/obj/machinery/particle_accelerator/control_box,
 										/obj/structure/particle_accelerator/fuel_chamber,
@@ -290,7 +289,7 @@
 
 	else if(closest_mob)
 		var/shock_damage = Clamp(round(power/400), 10, 90) + rand(-5, 5)
-		closest_mob.electrocute_act(shock_damage, source, 1, ran_zone())
+		closest_mob.electrocute_act(shock_damage, source, 1 - closest_mob.get_shock_protection(), ran_zone())
 		log_game("TESLA([source.x],[source.y],[source.z]) Shocked [key_name(closest_mob)] for [shock_damage]dmg.")
 		message_admins("Tesla zapped [key_name_admin(closest_mob)]!")
 		if(issilicon(closest_mob))
