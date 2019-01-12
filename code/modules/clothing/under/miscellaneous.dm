@@ -230,8 +230,8 @@
 	icon_state = "red_suit_skirt"
 
 /obj/item/clothing/under/schoolgirl
-	name = "schoolgirl uniform"
-	desc = "It's just like one of my Japanese animes!"
+	name = "frilly blue skirt"
+	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime."
 	icon_state = "schoolgirl"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
