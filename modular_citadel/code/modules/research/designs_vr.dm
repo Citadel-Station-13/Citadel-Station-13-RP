@@ -49,7 +49,7 @@
 /datum/design/item/nifsurvival
 	name = "survivalist NIF"
 	id = "backupnif"
-	req_tech = list(TECH_MAGNET = 8, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 6, TECH_BIO = 5)
+	req_tech = list(TECH_MAGNET = 7, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 6, TECH_BIO = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, "glass" = 4000, "phoron" = 8000)
 	build_path = /obj/item/device/nif/backup
 	sort_string = "HABBCG"

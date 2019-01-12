@@ -589,7 +589,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	desc = "A copy of a ripoff of a copy of a clone of... this can't be any good, right?"
 	typeletter = "B"
 	quality = -1 //Ignores quality restrictions
-	durability = 20
+	durability = 30
 	bioadap = TRUE
 	charge_use_multiplier = 0.1
 
@@ -610,11 +610,11 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	desc = "An illegally modified NIF which is definitely major contraband, and malpractice to install."
 	typeletter = "S"
 	quality = -1 //Ignores quality restrictions
-	durability = 10
+	durability = 20
 	nif_flags = NIF_IGNORE_RESTRICTIONS
 	bioadap = TRUE
 	charge_use_multiplier = 0.75
-	repair_multiplier = 0
+	repair_multiplier = 0.05 //Some people be desperate.
 
 /obj/item/device/nif/authentic //KHI removed, still the "best" you can get, minus special features
 	name = "\improper Vey-Med NIF"
@@ -664,7 +664,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	name = "survivalist NIF"
 	desc = "This NIF is preloaded with robust mind backup and soulcatcher utilities, and runs on a minimum of power."
 	quality = 2
-	durability = 75 //Not as powerful as the sandbox NIF.
+	durability = 70 //Not as powerful as the sandbox NIF.
 	install_blind = 1 MINUTES //Really fast because this is for paranoid people.
 	install_synchronize = 20 MINUTES //Not so fast but no side-effects.
 	install_side_effect_chance = 100
