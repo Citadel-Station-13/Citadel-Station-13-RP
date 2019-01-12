@@ -9357,18 +9357,16 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 28
-	},
 /obj/structure/table/standard,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/device/radio/headset/headset_eng,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/power/apc/super{
+	dir = 1;
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -14544,15 +14542,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 28
-	},
 /obj/structure/cable/cyan{
 	d2 = 4;
 	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/super{
+	dir = 1;
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
@@ -21562,13 +21558,11 @@
 /area/engineering/atmos/intake)
 "aPc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
-/obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/apc;
+/obj/structure/cable/cyan,
+/obj/machinery/power/apc/super{
 	dir = 8;
-	name = "west bump";
 	pixel_x = -28
 	},
-/obj/structure/cable/cyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/intake)
 "aPq" = (
