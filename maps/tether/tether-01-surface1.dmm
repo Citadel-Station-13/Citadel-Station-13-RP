@@ -16290,6 +16290,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva)
+"aEp" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/machinery/power/apc{
+	cell_type = /obj/item/weapon/cell/apc;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/intake)
 "aEq" = (
 /obj/item/weapon/storage/briefcase/inflatable{
 	pixel_x = 3;
@@ -21504,10 +21514,6 @@
 /area/engineering/atmos/processing)
 "aPb" = (
 /turf/simulated/wall/r_wall,
-/area/engineering/atmos/intake)
-"aPc" = (
-/obj/machinery/atmospherics/pipe/simple/visible/purple,
-/turf/simulated/floor/plating,
 /area/engineering/atmos/intake)
 "aPq" = (
 /obj/machinery/firealarm{
@@ -41863,7 +41869,7 @@ aOY
 aOZ
 aHW
 aHW
-aPc
+aEp
 aHW
 aJf
 aJB
