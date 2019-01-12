@@ -80,6 +80,18 @@
 	name = "\improper Engineering Hallway"
 	icon_state = "engineering"
 
+/area/tether/surfacebase/mining_main/refinery
+	name = "\improper Mining Refinery"
+
+/area/tether/surfacebase/mining_main/lobby
+	name = "\improper Mining Lobby"
+
+/area/tether/surfacebase/mining_main/break_room
+	name = "\improper Mining Crew Area"
+
+/area/tether/outpost/solars_outside
+	name = "\improper Solar Farm"
+
 
 //Xeno Nest
 

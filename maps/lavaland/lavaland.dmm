@@ -223,7 +223,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "aP" = (
-/obj/machinery/vending/sustenance,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "aQ" = (
@@ -242,8 +242,6 @@
 /obj/machinery/mineral/unloading_machine{
 	dir = 1;
 	icon_state = "unloader-corner";
-	input_dir = 1;
-	output_dir = 2
 	},
 /turf/unsimulated/floor/steel,
 /area/engineering/hallway)
@@ -269,12 +267,8 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "aY" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/door/airlock/security/glass{
+/obj/machinery/door/airlock/glass_security{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -282,18 +276,13 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/button/door{
+/obj/machinery/button/remote/airlock{
 	id = "labor";
 	name = "Labor Camp Lockdown";
-	req_access_txt = "2"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "ba" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "labor";
-	name = "labor camp blast door"
-	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "bb" = (
@@ -312,30 +301,26 @@
 "bd" = (
 /obj/machinery/mineral/processing_unit_console{
 	dir = 2;
-	machinedir = 4
 	},
 /turf/unsimulated/wall,
 /area/engineering/hallway)
 "be" = (
 /obj/machinery/mineral/processing_unit{
 	dir = 1;
-	output_dir = 2
 	},
 /turf/unsimulated/floor/steel,
 /area/engineering/hallway)
 "bf" = (
 /turf/unsimulated/wall,
-/area/mine/eva)
+/area/engineering/hallway)
 "bg" = (
 /obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/eva)
+/area/engineering/hallway)
 "bh" = (
-/obj/machinery/computer/shuttle/labor/one_way,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "bi" = (
-/obj/structure/gulag_beacon,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "bj" = (
@@ -363,62 +348,59 @@
 "bn" = (
 /obj/structure/table,
 /obj/item/weapon/pickaxe,
-/obj/item/gps/mining,
-/obj/item/gps/mining,
-/obj/item/gps/mining,
-/obj/item/gps/mining,
+/obj/item/device/gps,
+/obj/item/device/gps,
+/obj/item/device/gps,
+/obj/item/device/gps,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bo" = (
-/obj/machinery/suit_storage_unit/mining,
+/obj/machinery/suit_cycler/mining,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bp" = (
-/obj/machinery/suit_storage_unit/mining,
+/obj/machinery/suit_cycler/mining,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bq" = (
 /turf/unsimulated/wall,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "br" = (
 /obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bs" = (
 /obj/machinery/camera{
 	c_tag = "EVA";
 	dir = 4;
 	network = list("mine")
 	},
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/structure/table,
-/obj/item/storage/toolbox/mechanical{
+/obj/item/weapon/storage/toolbox/mechanical{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bt" = (
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bu" = (
 /obj/machinery/light_switch{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bv" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/mineral/floor/virgo3b,
-/area/mine/eva)
+/area/engineering/hallway)
 "bx" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/door/airlock/security/glass{
+/obj/machinery/door/airlock/glass_security{
 	name = "Labor Camp Shuttle Prisoner Airlock"
 	},
 /turf/simulated/floor/tiled,
@@ -436,9 +418,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "bA" = (
-/obj/machinery/door/airlock/security/glass{
+/obj/machinery/door/airlock/glass_security{
 	name = "Labor Camp Backroom";
-	req_access_txt = "2"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -459,47 +440,44 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "bC" = (
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
-/obj/machinery/computer/shuttle/mining{
-	req_access = null
-	},floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bD" = (
 /obj/structure/closet/crate,
-/obj/item/dice/d4,
+/obj/item/weapon/dice/d4,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bE" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bF" = (
-/obj/effect/spawner/structure/window,
+/obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/eva)
+/area/engineering/hallway)
 "bG" = (
 /obj/structure/table,
-/obj/item/stack/packageWrap,
-/obj/item/stack/packageWrap,
-/obj/item/stack/packageWrap,
-/obj/item/hand_labeler,
+/obj/item/weapon/wrapping_paper,
+/obj/item/weapon/dice/d4,
+/obj/item/weapon/wrapping_paper,
+/obj/item/weapon/hand_labeler,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bH" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bI" = (
-/obj/structure/tank_dispenser/oxygen,
+/obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bJ" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bK" = (
 /obj/structure/extinguisher_cabinet{
 	},
@@ -507,11 +485,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bL" = (
-/obj/machinery/door/airlock/security/glass{
+/obj/machinery/door/airlock/glass_security{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -521,7 +498,6 @@
 "bM" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Labor Camp Maintenance";
-	req_access_txt = "2"
 	},
 /obj/structure/cable{
 	icon_state = "1-10"
@@ -529,99 +505,92 @@
 /turf/unsimulated/floor/steel,
 /area/engineering/hallway)
 "bN" = (
-/obj/structure/sign/warning/docking,
 /obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bO" = (
-/obj/item/beacon,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bP" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bQ" = (
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bR" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "bS" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/mining/glass{
+/obj/machinery/door/airlock/glass_mining {
 	name = "Mining Station EVA";
-	req_access_txt = "54"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bT" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bU" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bV" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bW" = (
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bX" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/machinery/door/airlock/external{
 	glass = 1;
 	name = "Mining External Airlock";
 	opacity = 0;
-	req_access_txt = "54"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bY" = (
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "bZ" = (
 /turf/simulated/mineral/virgo3b,
 /area/mine/explored/underdark)
 "ca" = (
 /turf/unsimulated/wall,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cb" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -629,23 +598,19 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cc" = (
 /obj/structure/bed/chair/office/dark,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/mob/living/simple_animal/bot/secbot/beepsky{
-	desc = "Powered by the tears and sweat of laborers.";
-	name = "Prison Ofitser"
-	},
 /turf/simulated/floor/tiled,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cd" = (
 /obj/structure/table,
-/obj/item/paper_bin{
+/obj/item/weapon/paper_bin{
 	},
-/obj/item/pen,
+/obj/item/weapon/pen,
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "Labor Camp Security APC";
@@ -658,7 +623,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "ce" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -685,37 +650,34 @@
 /turf/unsimulated/floor/steel,
 /area/engineering/hallway)
 "cj" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/machinery/door/airlock/external{
 	glass = 1;
 	name = "Mining Shuttle Airlock";
 	opacity = 0
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "ck" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cl" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cm" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cn" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "co" = (
 /obj/machinery/power/apc{
 	dir = 2;
@@ -724,27 +686,26 @@
 /obj/structure/cable,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "cp" = (
-/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/mech_recharger,
 /obj/structure/cable,
 /turf/unsimulated/floor/steel,
-/area/mine/eva)
+/area/engineering/hallway)
 "cq" = (
-/turf/open/floor/mech_bay_recharge_floor,
-/area/mine/eva)
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/hallway)
 "cr" = (
-/obj/machinery/computer/mech_bay_power_console,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "cs" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "ct" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "cu" = (
 /obj/item/weapon/pickaxe,
 /turf/simulated/mineral/floor/virgo3b,
@@ -756,18 +717,18 @@
 "cw" = (
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/tiled,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cx" = (
 /obj/machinery/computer/security{
 	name = "Labor Camp Monitoring";
 	network = list("labor")
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cy" = (
 /obj/machinery/computer/prisoner,
 /turf/simulated/floor/tiled,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cz" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
@@ -797,69 +758,69 @@
 /area/engineering/hallway)
 "cD" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cE" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cF" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cG" = (
 /obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "cH" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cI" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cJ" = (
 /obj/machinery/door/airlock{
 	name = "Closet"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cK" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cL" = (
 /obj/machinery/space_heater,
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cM" = (
 /turf/unsimulated/wall,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cN" = (
-/obj/structure/sign/warning/electricshock,
+/obj/structure/sign/securearea,
 /turf/unsimulated/wall,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cO" = (
-/obj/item/radio/intercom{
+/obj/item/device/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cP" = (
 /obj/structure/extinguisher_cabinet{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cQ" = (
-/turf/unsimulated/wall/r_wall,
-/area/mine/maintenance)
+/turf/simulated/wall/r_wall,
+/area/tether/outpost/solars_outside)
 "cR" = (
 /obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cS" = (
 /obj/machinery/power/smes{
 	charge = 5e+006
@@ -868,7 +829,7 @@
 	icon_state = "0-4"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -878,21 +839,21 @@
 	},
 /obj/structure/closet/crate/secure/loot,
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cU" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cV" = (
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cW" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "cX" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -905,9 +866,9 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cY" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -915,46 +876,44 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "cZ" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "da" = (
 /obj/machinery/mineral/mint{
-	input_dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "db" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dc" = (
 /obj/structure/closet/crate,
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dd" = (
 /obj/structure/extinguisher_cabinet{
 	},
 /obj/structure/table,
-/obj/item/paper/fluff/stations/lavaland/orm_notice,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "de" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "df" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dg" = (
-/turf/open/floor/circuit,
-/area/mine/maintenance)
+/turf/unsimulated/floor/steel,
+/area/tether/outpost/solars_outside)
 "dh" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -964,41 +923,41 @@
 	name = "Mining Communications APC";
 	},
 /turf/simulated/floor/tiled/dark,
-/area/mine/maintenance)
+/area/tether/outpost/solars_outside)
 "di" = (
 /obj/machinery/telecomms/relay/preset/mining,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/mine/maintenance)
+/area/tether/outpost/solars_outside)
 "dj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
-/area/mine/maintenance)
+/area/tether/outpost/solars_outside)
 "dk" = (
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
-/turf/open/floor/circuit,
-/area/mine/maintenance)
+/turf/unsimulated/floor/steel,
+/area/tether/outpost/solars_outside)
 "dl" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dm" = (
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dn" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/toxin{
+/obj/item/weapon/storage/firstaid/toxin{
 	},
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "do" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -1007,111 +966,111 @@
 	icon_state = "0-2"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dp" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dq" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dr" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
+/obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ds" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "du" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dv" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dw" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dx" = (
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/open/floor/circuit,
-/area/mine/maintenance)
+/turf/unsimulated/floor/steel,
+/area/tether/outpost/solars_outside)
 "dy" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
-/area/mine/maintenance)
+/area/tether/outpost/solars_outside)
 "dz" = (
 /obj/machinery/light_switch{
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/open/floor/circuit,
-/area/mine/maintenance)
+/turf/unsimulated/floor/steel,
+/area/tether/outpost/solars_outside)
 "dA" = (
 /obj/machinery/camera{
 	c_tag = "Communications Relay";
 	dir = 8;
 	network = list("mine")
 	},
-/turf/open/floor/circuit,
-/area/mine/maintenance)
+/turf/unsimulated/floor/steel,
+/area/tether/outpost/solars_outside)
 "dB" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/blood,
-/obj/item/reagent_containers/blood{
+/obj/item/weapon/reagent_containers/blood,
+/obj/item/weapon/reagent_containers/blood{
 	},
-/obj/item/reagent_containers/blood/AMinus,
-/obj/item/reagent_containers/blood/BMinus{
+/obj/item/weapon/reagent_containers/blood/AMinus,
+/obj/item/weapon/reagent_containers/blood/BMinus{
 	},
-/obj/item/reagent_containers/blood/BPlus{
+/obj/item/weapon/reagent_containers/blood/BPlus{
 	},
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OPlus{
+/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/weapon/reagent_containers/blood/OPlus{
 	},
-/obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/random,
+/obj/item/weapon/reagent_containers/blood/APlus,
+/obj/item/weapon/reagent_containers/blood/APlus,
+/obj/item/weapon/reagent_containers/blood/BPlus,
 /obj/machinery/camera{
 	c_tag = "Sleeper Room";
 	dir = 1;
 	network = list("mine")
 	},
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dC" = (
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dD" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dE" = (
 /obj/structure/table,
 /obj/item/weapon/storage/firstaid/regular,
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dF" = (
 /obj/structure/cable,
 /obj/structure/cable{
@@ -1121,7 +1080,7 @@
 	anchored = 1
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dG" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
@@ -1130,25 +1089,25 @@
 	icon_state = "0-8"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dH" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dI" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dJ" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dK" = (
 /obj/machinery/light{
 	dir = 4
@@ -1161,131 +1120,127 @@
 /obj/machinery/newscaster{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dL" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dM" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dN" = (
 /obj/machinery/camera{
 	c_tag = "Processing Area Room";
 	network = list("mine")
 	},
-/obj/item/radio/intercom{
+/obj/item/device/radio/intercom{
 	name = "Station Intercom (General)";
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dO" = (
 /obj/machinery/mineral/unloading_machine{
 	icon_state = "unloader-corner";
-	input_dir = 1;
-	output_dir = 2
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dP" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Communications";
-	req_access_txt = "48"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/maintenance)
+/area/tether/outpost/solars_outside)
 "dQ" = (
-/obj/effect/spawner/structure/window,
+/obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dR" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Infirmary"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance";
-	req_access_txt = "48"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/unsimulated/floor/steel,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "dT" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dU" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dV" = (
-/obj/effect/spawner/structure/window,
+/obj/structure/window/reinforced/full,
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dW" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dX" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "mining_internal";
 	name = "mining conveyor"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dY" = (
 /obj/machinery/conveyor{
 	dir = 2;
 	id = "mining_internal"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "dZ" = (
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ea" = (
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eb" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ec" = (
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ed" = (
 /obj/machinery/camera{
 	c_tag = "Crew Area Hallway West";
 	network = list("mine")
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ee" = (
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ef" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eg" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -1295,84 +1250,82 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eh" = (
 /obj/structure/extinguisher_cabinet{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ei" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ej" = (
 /obj/machinery/camera{
 	c_tag = "Crew Area Hallway East";
 	network = list("mine")
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ek" = (
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "el" = (
-/obj/machinery/door/airlock/mining/glass{
+/obj/machinery/door/airlock/glass_mining {
 	name = "Processing Area";
-	req_access_txt = "48"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "em" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "en" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/unsimulated/wall,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eo" = (
 /obj/machinery/mineral/processing_unit{
 	dir = 1;
-	output_dir = 2
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "ep" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eq" = (
-/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "er" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "es" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "et" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -1382,7 +1335,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eu" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -1390,198 +1343,194 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ev" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ew" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ex" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/mining/glass{
+/obj/machinery/door/airlock/glass_mining {
 	name = "Mining Station Bridge";
-	req_access_txt = "48"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ey" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "ez" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eA" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/mining/glass{
+/obj/machinery/door/airlock/glass_mining {
 	name = "Mining Station Bridge";
-	req_access_txt = "48"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eB" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eC" = (
-/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eD" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eE" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eF" = (
-/obj/machinery/door/airlock/mining/glass{
+/obj/machinery/door/airlock/glass_mining {
 	name = "Processing Area";
-	req_access_txt = "48"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eG" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eH" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eI" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eJ" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eK" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eL" = (
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eM" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eN" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eO" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eP" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eQ" = (
 /obj/machinery/door/airlock/mining{
 	name = "Mining Station Storage";
-	req_access_txt = "48"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eR" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass{
 	name = "Break Room"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "eS" = (
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eT" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eU" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eV" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eW" = (
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eX" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -1589,14 +1538,14 @@
 	},
 /obj/structure/plasticflaps,
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eY" = (
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "mining_internal"
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "eZ" = (
 /obj/machinery/conveyor{
 	dir = 10;
@@ -1606,11 +1555,11 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "fa" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fb" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1618,12 +1567,12 @@
 /obj/structure/extinguisher_cabinet{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fc" = (
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fd" = (
 /obj/machinery/camera{
 	c_tag = "Storage";
@@ -1631,97 +1580,96 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fe" = (
 /obj/structure/bed,
-/obj/item/bedsheet/brown,
-/obj/machinery/airalarm{
+/obj/item/weapon/bedsheet,
+/obj/machinery/alarm{
 	},
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/mining_main/break_room)
 "ff" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/mining_main/break_room)
 "fg" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningdorm1";
 	name = "Room 1"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fh" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fi" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fj" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fk" = (
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fl" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fm" = (
 /obj/machinery/vending/cigarette,
 /obj/machinery/newscaster{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fn" = (
 /obj/structure/table,
 /obj/machinery/microwave{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fo" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fp" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fq" = (
-/obj/item/radio/intercom{
+/obj/item/device/radio/intercom{
 	name = "Station Intercom (General)";
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fr" = (
 /obj/structure/table,
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/mining_main/break_room)
 "fs" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/button/door{
+/obj/machinery/button/remote/airlock{
 	id = "miningdorm1";
 	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/mining_main/break_room)
 "ft" = (
 /obj/machinery/camera{
 	c_tag = "Dormitories";
@@ -1729,93 +1677,93 @@
 	network = list("mine")
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fu" = (
 /obj/structure/bed/chair,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fv" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fx" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fy" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fz" = (
 /obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fA" = (
 /obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fB" = (
 /obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fC" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fD" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/drinks/beer{
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/item/reagent_containers/food/drinks/beer{
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
 	},
-/obj/item/reagent_containers/food/drinks/beer{
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fE" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fF" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fG" = (
 /obj/structure/table,
-/obj/item/storage/box/donkpockets,
+/obj/item/weapon/storage/box/donkpockets,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fH" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningdorm2";
 	name = "Room 2"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fI" = (
-/obj/item/radio/intercom{
+/obj/item/device/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fJ" = (
 /obj/machinery/camera{
 	c_tag = "Crew Area";
@@ -1826,58 +1774,56 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fK" = (
-/obj/machinery/airalarm{
+/obj/machinery/alarm{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fL" = (
 /obj/structure/sink{
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fM" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/button/door{
+/obj/machinery/button/remote/airlock{
 	id = "miningdorm2";
 	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/mining_main/break_room)
 "fN" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fO" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningdorm3";
 	name = "Room 3"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/mine/living_quarters)
+/area/tether/surfacebase/mining_main/break_room)
 "fP" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/button/door{
+/obj/machinery/button/remote/airlock{
 	id = "miningdorm3";
 	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/mining_main/break_room)
 "fQ" = (
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
@@ -1885,7 +1831,7 @@
 /turf/simulated/mineral/virgo3b/rich,
 /area/mine/explored/underdark)
 "fS" = (
-/turf/simulate/turf/unsimulated/floor/techfloor_grid,
+/turf/unsimulated/floor/techfloor_grid,
 /area/mine/explored/underdark)
 "fT" = (
 /turf/unsimulated/floor/steel{
@@ -1897,35 +1843,34 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "fV" = (
-/turf/closed/indestructible/riveted/boss/see_through,
+/turf/unsimulated/wall,
 /area/mine/explored/underdark)
 "fW" = (
-/obj/structure/necropolis_gate/locked,
 /turf/unsimulated/floor/steel,
 /turf/unsimulated/floor/techfloor_grid,
 /area/mine/explored/underdark)
 "gj" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel,
 /turf/unsimulated/floor/techfloor_grid,
 /area/mine/explored/underdark)
 "gk" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
 /turf/unsimulated/floor/techfloor_grid,
 /area/mine/explored/underdark)
 "go" = (
@@ -2033,21 +1978,12 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "gY" = (
-/obj/docking_port/stationary{
-	area_type = /area/mine/explored/underdark;
-	dir = 8;
-	dwidth = 2;
-	height = 5;
-	id = "laborcamp_away";
-	name = "labor camp";
-	width = 9
-	},
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "hg" = (
-/turf/unsimulated/floor/steel/surrounding,
-/turf/unsimulated/floor/steel/center,
-/mob/living/simple_animal/hostile/megafauna/legion,
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel,
+/mob/living/simple_animal/fish/koi/poisonous,
 /turf/unsimulated/floor/techfloor_grid,
 /area/mine/explored/underdark)
 "hs" = (
@@ -2182,27 +2118,27 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "jk" = (
-/turf/unsimulated/floor/steel/center,
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "jl" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "jm" = (
@@ -2235,47 +2171,47 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "jF" = (
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/center,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "jH" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/center,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "jL" = (
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/center,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "jN" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel,
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "jQ" = (
@@ -2297,7 +2233,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "kg" = (
-/obj/structure/fluff/drake_statue,
+/obj/machinery/light/flamp/noshade,
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "kj" = (
@@ -2310,7 +2246,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "kl" = (
-/obj/structure/fluff/drake_statue/falling,
+/obj/machinery/light/flamp/noshade,
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "ko" = (
@@ -2333,51 +2269,51 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "kB" = (
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/center,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "kD" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "kH" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/surrounding_tile,
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel,
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "kJ" = (
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 4
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 8
 	},
-/turf/unsimulated/floor/steel/surrounding_tile{
+/turf/unsimulated/floor/steel{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel/center,
+/turf/unsimulated/floor/steel,
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "kM" = (
@@ -2557,7 +2493,7 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "lQ" = (
-/turf/unsimulated/floor/steel/surrounding{
+/turf/unsimulated/floor/steel{
 	dir = 6
 	},
 /turf/simulated/lava,
@@ -2985,108 +2921,66 @@
 /turf/unsimulated/floor/techfloor_grid,
 /area/mine/explored/underdark)
 "Uq" = (
-/obj/docking_port/stationary{
-	area_type = /area/mine/explored/underdark;
-	dir = 2;
-	dwidth = 11;
-	height = 22;
-	id = "whiteship_lavaland";
-	name = "lavaland wastes";
-	width = 35
-	},
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "Wp" = (
-/obj/docking_port/stationary{
-	area_type = /area/mine/explored/underdark;
-	dir = 8;
-	dwidth = 3;
-	height = 5;
-	id = "mining_away";
-	name = "lavaland mine";
-	width = 7
-	},
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "Wt" = (
-/obj/effect/baseturf_helper/lava_land/surface,
 /turf/unsimulated/wall,
-/area/engineering/hallway/security)
+/area/tether/surfacebase/mining_main/lobby)
 "Wz" = (
-/obj/effect/mapping_helpers/planet_z,
 /turf/simulated/lava,
 /area/mine/explored/underdark)
 "WA" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/machinery/door/airlock{
 	name = "Labor Camp External Access"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "WB" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/security/glass{
+/obj/machinery/door/airlock/glass_security{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "WC" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/security/glass{
+/obj/machinery/door/airlock/glass_security{
 	name = "Labor Camp Shuttle Prisoner Airlock"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "WD" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/machinery/door/airlock/external{
 	glass = 1;
 	name = "Mining External Airlock";
 	opacity = 0;
-	req_access_txt = "54"
 	},
 /turf/simulated/floor/tiled,
-/area/mine/eva)
+/area/engineering/hallway)
 "WE" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/machinery/door/airlock/external{
 	glass = 1;
 	name = "Mining Shuttle Airlock";
 	opacity = 0
 	},
 /turf/simulated/floor/tiled,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "WF" = (
-/obj/effect/baseturf_helper/lava_land/surface,
 /turf/unsimulated/wall,
 /area/engineering/hallway)
 "WH" = (
-/obj/effect/baseturf_helper/lava_land/surface,
 /turf/unsimulated/wall,
-/area/mine/eva)
+/area/engineering/hallway)
 "WI" = (
-/obj/effect/baseturf_helper/lava_land/surface,
 /turf/unsimulated/wall,
-/area/mine/production)
+/area/tether/surfacebase/mining_main/refinery)
 "WJ" = (
-/obj/effect/baseturf_helper/lava_land/surface,
-/turf/unsimulated/wall/r_wall,
-/area/mine/maintenance)
-"WK" = (
-/obj/effect/baseturf_helper/lava_land/surface,
 /turf/unsimulated/wall,
-/area/mine/living_quarters)
+/area/tether/outpost/solars_outside)
+"WK" = (
+/turf/unsimulated/wall,
+/area/tether/surfacebase/mining_main/break_room)
 
 (1,1,1) = {"
 aa
