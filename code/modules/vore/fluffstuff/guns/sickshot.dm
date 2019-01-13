@@ -26,9 +26,9 @@
 /obj/item/projectile/sickshot
 	name = "sickshot pulse"
 	icon_state = "sound"
-	damage = 5
+	damage = 2
 	armor_penetration = 30
-	damage_type = BURN
+	damage_type = BRUTE
 	check_armour = "melee"
 	embed_chance = 0
 	vacuum_traversal = 0
@@ -37,7 +37,7 @@
 /obj/item/projectile/sickshot/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
-		if(prob(20))
+		if(prob(40))
 			L.release_vore_contents()
 
 		if(ishuman(target))
