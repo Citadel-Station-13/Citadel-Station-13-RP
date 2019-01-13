@@ -26,9 +26,15 @@
 	/obj/item/roller,
 	/obj/structure/closet/crate,
 	/obj/structure/closet/acloset,
+<<<<<<< HEAD
 	/mob/living/simple_animal/hostile/mimic/crate,
 	/mob/living/simple_animal/hostile/viscerator,
 	/mob/living/simple_animal/hostile/hivebot,
+=======
+	// /mob/living/simple_mob/mimic/crate, // Vorestation edit //VORESTATION AI TEMPORARY REMOVAL
+	/mob/living/simple_mob/mechanical/viscerator,
+	/mob/living/simple_mob/mechanical/hivebot,
+>>>>>>> 9dbbbf5... Merge pull request #4672 from Cameron653/Cameron_Test_Branch
 	/obj/item/device/analyzer,
 	/obj/item/device/camera,
 	/obj/item/device/flash,
