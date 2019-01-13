@@ -4242,7 +4242,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/cooker/fryer,
+/obj/machinery/appliance/cooker/fryer,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -15799,7 +15799,7 @@
 /obj/effect/floor_decal/corner/grey/diagonal{
 	dir = 4
 	},
-/obj/machinery/cooker/fryer,
+/obj/machinery/appliance/cooker/fryer,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
