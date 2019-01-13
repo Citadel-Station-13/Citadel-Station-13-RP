@@ -144,6 +144,8 @@
 /obj/item/weapon/reagent_containers/food/snacks/examine(mob/user)
 	if(!..(user, 1))
 		return
+	if (coating) // BEGIN CITADEL CHANGE
+		user << "<span class='notice'>It's coated in [coating.name]!</span>" // END CITADEL CHANGE
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
@@ -3401,6 +3403,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/bun/New()
 	..()
 
+/* BEGIN CITADEL CHANGE - Moved to /modular_citadel/code/modules/food/food/snacks.dm for Aurora kitchen port
 /obj/item/weapon/reagent_containers/food/snacks/bun/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/weapon/reagent_containers/food/snacks/meatball))
@@ -3422,6 +3425,7 @@
 		user << "You make a hotdog."
 		qdel(W)
 		qdel(src)
+END CITADEL CHANGE */
 
 // Burger + cheese wedge = cheeseburger
 /obj/item/weapon/reagent_containers/food/snacks/monkeyburger/attackby(obj/item/weapon/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)

@@ -38,7 +38,7 @@
 	if(!injectable && alien != IS_SLIME)
 		M.adjustToxLoss(0.1 * removed)
 		return
-	affect_ingest(M, alien, removed) 
+	affect_ingest(M, alien, removed)
 	*/ //VOREStation Removal End
 	if(injectable) //vorestation addition/replacement
 		affect_ingest(M, alien, removed)
@@ -182,6 +182,7 @@
 	nutriment_factor = 1
 	color = "#801E28"
 
+/* Begin Citadel Change - Removed due to Aurora cooking port
 /datum/reagent/nutriment/cornoil
 	name = "Corn Oil"
 	id = "cornoil"
@@ -206,6 +207,8 @@
 
 	if(volume >= 3)
 		T.wet_floor()
+
+End Citadel Change */
 
 /datum/reagent/nutriment/virus_food
 	name = "Virus Food"

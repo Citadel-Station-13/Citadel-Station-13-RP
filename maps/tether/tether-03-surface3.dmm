@@ -10823,7 +10823,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "sP" = (
-/obj/machinery/cooker/grill,
+/obj/machinery/appliance/grill,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
@@ -10948,7 +10948,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "tc" = (
-/obj/machinery/cooker/candy,
+/obj/machinery/appliance/mixer/candy,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
@@ -11068,7 +11068,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "to" = (
-/obj/machinery/cooker/cereal,
+/obj/machinery/appliance/mixer/cereal,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
@@ -11177,10 +11177,10 @@
 /turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "tA" = (
-/obj/machinery/cooker/fryer,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
+/obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "tB" = (
@@ -11409,10 +11409,10 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "tS" = (
-/obj/machinery/cooker/oven,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
+/obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "tT" = (

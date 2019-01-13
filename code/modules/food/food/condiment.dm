@@ -98,6 +98,17 @@
 				name = "Sugar"
 				desc = "Tastey space sugar!"
 				center_of_mass = list("x"=16, "y"=6)
+			if("spacespice") //BEGIN CITADEL CHANGE - AURORA KITCHEN PORT
+				name = "bottle of space spice"
+				desc = "An exotic blend of spices for cooking. Definitely not worms."
+				icon = 'modular_citadel/icons/obj/food_syn.dmi'
+				icon_state = "spacespicebottle"
+				center_of_mass = list("x"=16, "y"=6)
+			if("barbecue")
+				name = "barbecue sauce"
+				desc = "Barbecue sauce, it's labeled 'sweet and spicy'."
+				icon_state = "barbecue"
+				center_of_mass = list("x"=16, "y"=6) // END CITADEL CHANGE - AURORA KITCHEN PORT
 			else
 				name = "Misc Condiment Bottle"
 				if (reagents.reagent_list.len==1)
