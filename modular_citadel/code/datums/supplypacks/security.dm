@@ -41,16 +41,15 @@
 
 /datum/supply_pack/security/pcarriers/patches/blood
 	name = "Armor - Plate carrier kit - blood type patches"
-	num_contained = 10
 	contains = list(
-		/obj/item/clothing/accessory/armor/tag/opos,
-		/obj/item/clothing/accessory/armor/tag/oneg,
-		/obj/item/clothing/accessory/armor/tag/apos,
-		/obj/item/clothing/accessory/armor/tag/aneg,
-		/obj/item/clothing/accessory/armor/tag/bpos,
-		/obj/item/clothing/accessory/armor/tag/bneg,
-		/obj/item/clothing/accessory/armor/tag/abpos,
-		/obj/item/clothing/accessory/armor/tag/abneg
+		/obj/item/clothing/accessory/armor/tag/opos = 2,
+		/obj/item/clothing/accessory/armor/tag/oneg = 2,
+		/obj/item/clothing/accessory/armor/tag/apos = 2,
+		/obj/item/clothing/accessory/armor/tag/aneg = 2,
+		/obj/item/clothing/accessory/armor/tag/bpos = 2,
+		/obj/item/clothing/accessory/armor/tag/bneg = 2,
+		/obj/item/clothing/accessory/armor/tag/abpos = 2,
+		/obj/item/clothing/accessory/armor/tag/abneg = 2
 		)
 	cost = 10
 	containertype = /obj/structure/closet/crate/secure
