@@ -62,6 +62,7 @@
 		/obj/item/clothing/accessory/armor/tag/sec = 3,
 		/obj/item/clothing/accessory/armor/tag/nt = 3,
 		/obj/item/clothing/accessory/armor/tag/pcrc = 3,
+		/obj/item/clothing/accessory/armor/helmcover/blue = 3,
 		/obj/item/clothing/accessory/armor/helmcover/nt = 3,
 		/obj/item/clothing/accessory/armor/helmcover/pcrc = 3
 		)
