@@ -3007,6 +3007,7 @@
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\datums\supplypacks\contraband_cit.dm"
 #include "modular_citadel\code\datums\supplypacks\costumes_cit.dm"
+#include "modular_citadel\code\datums\supplypacks\misc.dm"
 #include "modular_citadel\code\datums\supplypacks\security.dm"
 #include "modular_citadel\code\defines\obj\weapon.dm"
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
