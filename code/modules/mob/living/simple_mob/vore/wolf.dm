@@ -1,4 +1,4 @@
-/mob/living/simple_mob/hostile/wolf
+/mob/living/simple_mob/animal/wolf
 	name = "grey wolf"
 	desc = "My, what big jaws it has!"
 	tt_desc = "Canis lupus"
@@ -9,19 +9,20 @@
 
 	speed = 5
 
-	run_at_them = 0
-	cooperative = 1
-	investigates = 1
-	returns_home = 1
-	reacts = 1
-
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 25
 
 	minbodytemp = 200
 
-// Activate Noms!
-/mob/living/simple_mob/hostile/wolf
-	vore_active = 1
+	ai_holder_type = /datum/ai_holder/wolf
+
+	//Vorestation features
+	vore_active = TRUE
 	vore_icons = SA_ICON_LIVING
+
+/datum/ai_holder/wolf
+	hostile = FALSE
+	cooperative = TRUE
+	returns_home = TRUE
+	retaliate = TRUE
