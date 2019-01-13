@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(vote)
 						factor = 1.4
 				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
 				world << "<font color='purple'>Crew Transfer Factor: [factor]</font>"
-				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Continue The Round"])
+				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //Citadel change in line with player vote.
 
 	. = list() // Get all options with that many votes and return them in a list
 	if(greatest_votes)
@@ -202,8 +202,8 @@ SUBSYSTEM_DEF(vote)
 					if(ticker.current_state <= GAME_STATE_SETTING_UP)
 						initiator_key << "The crew transfer button has been disabled!"
 						return 0
-				question = "End the shift?"
-				choices.Add("Initiate Crew Transfer", "Continue The Round")
+				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //Citadel change in line with player vote.
+				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //Citadel change in line with player vote.
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
