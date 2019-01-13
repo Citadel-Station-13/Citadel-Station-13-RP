@@ -645,7 +645,7 @@ I said no!
 
 /datum/recipe/mashedpotato
 	items = list(
-		/obj/item/weapon/reagent_containers/food/snacks/spreads/spreads/butter // to prevent conflicts with yellow curry
+		/obj/item/weapon/reagent_containers/food/snacks/spreads/butter // to prevent conflicts with yellow curry
 	)
 	fruit = list("potato" = 1)
 	result = /obj/item/weapon/reagent_containers/food/snacks/mashedpotato
