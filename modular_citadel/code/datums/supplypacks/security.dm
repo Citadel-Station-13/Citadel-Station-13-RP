@@ -56,6 +56,20 @@
 	containername = "Plate carrier patch crate"
 	access = access_security
 
+/datum/supply_pack/security/pcarriers/patches/decorative
+	name = "Armor - Plate carrier kit - decorative patches"
+	contains = list(
+		/obj/item/clothing/accessory/armor/tag/sec = 3,
+		/obj/item/clothing/accessory/armor/tag/nt = 3,
+		/obj/item/clothing/accessory/armor/tag/pcrc = 3,
+		/obj/item/clothing/accessory/armor/helmcover/nt = 3,
+		/obj/item/clothing/accessory/armor/helmcover/pcrc = 3
+		)
+	cost = 10
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Plate carrier patch crate"
+	access = access_security
+
 /datum/supply_pack/security/pcarriers/standard
 	name = "Armor - Plate carrier kit - general attachments"
 	contains = list(
