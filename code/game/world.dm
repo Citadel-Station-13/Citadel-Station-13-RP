@@ -398,26 +398,55 @@ var/world_topic_spam_protect_time = world.timeofday
 		else
 			return "Database connection failed or not set up"
 
-
-/world/Reboot(var/reason)
-	/*spawn(0)
-		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
-		*/
-	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
-	if(reason && usr)//CITADEL CHANGE - Logs reboots done by debug functions
-		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
+/world/Reboot(reason = 0, fast_track = FALSE)
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+			to_chat(world, "[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
+	else
+		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
+		Master.Shutdown()	//run SS shutdowns
+		processScheduler.stop()
 		for(var/client/C in clients)
-			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!</span>"
+			if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+				C << link("byond://[config.server]")
 
-	processScheduler.stop()
-	Master.Shutdown()	//run SS shutdowns
+	//if(!GLOB.bypass_tgs_reboot)
+	//	TgsReboot()
+	TgsReboot()!
 
-	for(var/client/C in clients)
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[config.server]")
+	if(TEST_RUN_PARAMETER in params)
+		FinishTestRun()
+		return
+	
+	/*
+	if(TgsAvailable())
+		var/do_hard_reboot
+		// check the hard reboot counter
+		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
+		switch(ruhr)
+			if(-1)
+				do_hard_reboot = FALSE
+			if(0)
+				do_hard_reboot = TRUE
+			else
+				if(GLOB.restart_counter >= ruhr)
+					do_hard_reboot = TRUE
+				else
+					text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
+					do_hard_reboot = FALSE
 
+		if(do_hard_reboot)
+			log_world("World hard rebooted at [time_stamp()]")
+			shutdown_logging() // See comment below.
+			TgsEndProcess()
+	*/
+
+	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
-	..(reason)
+	..()
 
 /hook/startup/proc/loadMode()
 	world.load_mode()
