@@ -8,12 +8,10 @@
 	item_icons = list(
 		slot_l_hand_str = 'modular_citadel/icons/mob/inhands/balls_left.dmi',
 		slot_r_hand_str = 'modular_citadel/icons/mob/inhands/balls_right.dmi',
-		slot_l_ear_str = 'modular_citadel/icons/mob/mouthball.dmi',
-		slot_r_ear_str = 'modular_citadel/icons/mob/mouthball.dmi',
-		slot_head_str = 'modular_citadel/icons/mob/mouthball.dmi'
+		slot_wear_mask_str = 'modular_citadel/icons/mob/mouthball.dmi'
 		)
 	item_state = "tennis_classic"
-	slot_flags = SLOT_HEAD | SLOT_EARS
+	slot_flags = SLOT_MASK
 	throw_range = 14
 	w_class = ITEMSIZE_SMALL
 
