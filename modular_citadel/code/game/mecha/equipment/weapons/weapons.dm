@@ -1,5 +1,5 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/hmg
-	name = "\improper \"Sturmk�nig\" RAC/5"
+	name = "\improper \"Sturmkönig\" RAC/5"
 	desc = "A superior version of the standard Ultra AC 2 design. Bigger bullets, larger burst, tears through ammo stores."
 	icon_state = "mecha_uac2"
 	equip_cooldown = 5
