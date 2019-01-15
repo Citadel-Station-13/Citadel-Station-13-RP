@@ -598,6 +598,7 @@
 #include "code\game\gamemodes\technomancer\spell_objs.dm"
 #include "code\game\gamemodes\technomancer\spell_objs_helpers.dm"
 #include "code\game\gamemodes\technomancer\technomancer.dm"
+#include "code\game\gamemodes\technomancer\assistance\assistance.dm"
 #include "code\game\gamemodes\technomancer\devices\boots_of_speed.dm"
 #include "code\game\gamemodes\technomancer\devices\disposable_teleporter.dm"
 #include "code\game\gamemodes\technomancer\devices\gloves_of_regen.dm"
