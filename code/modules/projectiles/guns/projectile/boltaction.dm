@@ -53,7 +53,6 @@
 	desc = "A reproduction of an almost ancient weapon design from the 19th century. This one uses a lever-action to move new rounds into the chamber. Uses 7.62mm rounds."
 	item_state = "leveraction"
 	icon_state = "leveraction"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
 	max_shells = 5
 	caliber = "7.62mm"
 	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
