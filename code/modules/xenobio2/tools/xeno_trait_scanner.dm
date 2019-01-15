@@ -45,11 +45,11 @@
 	var/growth_max
 	if(istype(target,/obj/structure/table))
 		return ..()
-	else if(istype(target,/mob/living/simple_mob/xeno))
+	else if(istype(target,/mob/living/simple_animal/xeno))
 
-		var/mob/living/simple_mob/xeno/X = target
-		if(istype(X, /mob/living/simple_mob/xeno/slime))
-			var/mob/living/simple_mob/xeno/slime/S = X
+		var/mob/living/simple_animal/xeno/X = target
+		if(istype(X, /mob/living/simple_animal/xeno/slime))
+			var/mob/living/simple_animal/xeno/slime/S = X
 			if(S.is_child)
 				growth_level = S.growthcounter
 				growth_max = S.growthpoint

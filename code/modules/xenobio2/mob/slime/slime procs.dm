@@ -5,7 +5,7 @@ Slime specific procs go here.
 #define LIGHTOVERLAY 1	
 #define MAXOVERLAY 2	//Should be 1 + last overlay, to give the chance for matte slimes
 
-/mob/living/simple_mob/xeno/slime/RandomizeTraits()
+/mob/living/simple_animal/xeno/slime/RandomizeTraits()
 	traitdat.traits[TRAIT_XENO_COLDRES] = rand(30,270)
 	traitdat.traits[TRAIT_XENO_HEATRES] = rand(30,270)
 	traitdat.traits[TRAIT_XENO_CHEMVOL] = round(rand(20,40))	//Wow, a slime core with the capacity to hold 2/3rd's a beaker's worth of chemicals.
@@ -24,7 +24,7 @@ Slime specific procs go here.
 	traitdat.traits[TRAIT_XENO_CANLEARN] = prob(68)
 	traitdat.traits[TRAIT_XENO_SPEED] = round(rand(-10,10))
 	
-/mob/living/simple_mob/xeno/slime/RandomChemicals()
+/mob/living/simple_animal/xeno/slime/RandomChemicals()
 	..()
 	if(prob(40))
 		var/hasMutToxin
@@ -42,7 +42,7 @@ Slime specific procs go here.
 			chemamount = rand(1,5)
 			traitdat.chems["mutationtoxin"] = chemamount
 
-/mob/living/simple_mob/xeno/slime/proc/GrowUp()
+/mob/living/simple_animal/xeno/slime/proc/GrowUp()
 	GenerateAdult()
 	
 	maxHealth = traitdat.get_trait(TRAIT_XENO_HEALTH)
@@ -51,7 +51,7 @@ Slime specific procs go here.
 		
 	return 1
 	
-/mob/living/simple_mob/xeno/slime/Mutate()
+/mob/living/simple_animal/xeno/slime/Mutate()
 	..()
 	cores = round(rand(1,9))
 	if(is_child)
@@ -60,7 +60,7 @@ Slime specific procs go here.
 	else
 		GenerateAdult()
 		
-/mob/living/simple_mob/xeno/slime/proc/GenerateChild()
+/mob/living/simple_animal/xeno/slime/proc/GenerateChild()
 	overlays.Cut()
 	name = "[nameVar] baby slime"
 	real_name = "[nameVar] baby slime"
@@ -74,7 +74,7 @@ Slime specific procs go here.
 	
 	return 1
 	
-/mob/living/simple_mob/xeno/slime/proc/GenerateAdult()
+/mob/living/simple_animal/xeno/slime/proc/GenerateAdult()
 	overlays.Cut()
 	name = "[nameVar] slime"
 	real_name = "[nameVar] slime"
@@ -84,7 +84,7 @@ Slime specific procs go here.
 	overlay = round(rand(0, MAXOVERLAY))
 	GenerateAdultIcon()
 	
-/mob/living/simple_mob/xeno/slime/proc/GenerateAdultIcon()	//Hack and slash adventure game to make slimes have no color on light effects later
+/mob/living/simple_animal/xeno/slime/proc/GenerateAdultIcon()	//Hack and slash adventure game to make slimes have no color on light effects later
 	overlays.Cut()
 	var/image/Img = new(src.icon)
 	Img.icon_state = "slime adult"
@@ -109,7 +109,7 @@ Slime specific procs go here.
 			I.color = "#FFFFFF"
 			overlays += I
 
-/mob/living/simple_mob/xeno/slime/handle_reagents()
+/mob/living/simple_animal/xeno/slime/handle_reagents()
 	if(!stasis)
 		if(!reagents)
 			return
@@ -120,7 +120,7 @@ Slime specific procs go here.
 			traitdat.traits[TRAIT_XENO_HOSTILE] = 0
 		..()
 		
-/mob/living/simple_mob/xeno/slime/ProcessTraits()
+/mob/living/simple_animal/xeno/slime/ProcessTraits()
 	..()
 	if(is_child)
 		GenerateChild()
