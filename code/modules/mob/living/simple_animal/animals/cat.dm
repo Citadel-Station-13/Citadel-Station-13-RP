@@ -1,5 +1,5 @@
 //Cat
-/mob/living/simple_mob/cat
+/mob/living/simple_animal/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	tt_desc = "E Felis silvestris catus"
@@ -44,7 +44,7 @@
 	var/turns_since_scan = 0
 	var/mob/flee_target
 
-/mob/living/simple_mob/cat/Life()
+/mob/living/simple_animal/cat/Life()
 	. = ..()
 	if(!.) return
 
@@ -62,7 +62,7 @@
 
 	handle_flee_target()
 
-/mob/living/simple_mob/cat/PunchTarget()
+/mob/living/simple_animal/cat/PunchTarget()
 	if(ismouse(target_mob))
 		var/mob/living/simple_mob/animal/passive/mouse/mouse = target_mob
 		mouse.splat()
@@ -71,11 +71,11 @@
 	else
 		..()
 
-/mob/living/simple_mob/cat/Found(var/atom/found_atom)
+/mob/living/simple_animal/cat/Found(var/atom/found_atom)
 	if(ismouse(found_atom) && SA_attackable(found_atom))
 		return found_atom
 
-/mob/living/simple_mob/cat/proc/handle_flee_target()
+/mob/living/simple_animal/cat/proc/handle_flee_target()
 	//see if we should stop fleeing
 	if (flee_target && !(flee_target in ListTargets(view_range)))
 		flee_target = null
@@ -88,22 +88,22 @@
 		stop_automated_movement = 1
 		walk_away(src, flee_target, 7, 2)
 
-/mob/living/simple_mob/cat/react_to_attack(var/atom/A)
+/mob/living/simple_animal/cat/react_to_attack(var/atom/A)
 	if(A == src) return
 	flee_target = A
 	turns_since_scan = 5
 
-/mob/living/simple_mob/cat/ex_act()
+/mob/living/simple_animal/cat/ex_act()
 	. = ..()
 	react_to_attack(src.loc)
 
 //Basic friend AI
-/mob/living/simple_mob/cat/fluff
+/mob/living/simple_animal/cat/fluff
 	var/mob/living/carbon/human/friend
 	var/befriend_job = null
 	var/friend_name = null
 
-/mob/living/simple_mob/cat/fluff/Life()
+/mob/living/simple_animal/cat/fluff/Life()
 	. = ..()
 	if(!. || ai_inactive || !friend) return
 
@@ -130,7 +130,7 @@
 			var/verb = pick("meows", "mews", "mrowls")
 			audible_emote("[verb] anxiously.")
 
-/mob/living/simple_mob/cat/fluff/verb/become_friends()
+/mob/living/simple_animal/cat/fluff/verb/become_friends()
 	set name = "Become Friends"
 	set category = "IC"
 	set src in view(1)
@@ -154,7 +154,7 @@
 	return
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
-/mob/living/simple_mob/cat/fluff/Runtime
+/mob/living/simple_animal/cat/fluff/Runtime
 	name = "Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
 	tt_desc = "E Felis silvestris medicalis" //a hypoallergenic breed produced by NT for... medical purposes? Sure.
@@ -166,7 +166,7 @@
 	icon_rest = "cat_rest"
 	befriend_job = "Chief Medical Officer"
 
-/mob/living/simple_mob/cat/kitten
+/mob/living/simple_animal/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww"
 	icon_state = "kitten"
@@ -174,7 +174,6 @@
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
 	gender = NEUTER
-	holder_type = /obj/item/weapon/holder/cat/kitten //VOREStation Edit
 
 // Leaving this here for now.
 /obj/item/weapon/holder/cat/fluff/bones
@@ -183,7 +182,7 @@
 	gender = MALE
 	icon_state = "cat3"
 
-/mob/living/simple_mob/cat/fluff/bones
+/mob/living/simple_animal/cat/fluff/bones
 	name = "Bones"
 	desc = "That's Bones the cat. He's a laid back, black cat. Meow."
 	gender = MALE
@@ -195,11 +194,6 @@
 	holder_type = /obj/item/weapon/holder/cat/fluff/bones
 	friend_name = "Erstatz Vryroxes"
 
-/mob/living/simple_mob/cat/kitten/New()
+/mob/living/simple_animal/cat/kitten/New()
 	gender = pick(MALE, FEMALE)
 	..()
-
-// VOREStation Edit - Adds generic tactical kittens
-/obj/item/weapon/holder/cat/kitten
-	icon_state = "kitten"
-	w_class = ITEMSIZE_SMALL

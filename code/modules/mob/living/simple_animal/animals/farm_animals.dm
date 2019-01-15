@@ -1,5 +1,5 @@
 //goat
-/mob/living/simple_mob/retaliate/goat
+/mob/living/simple_animal/retaliate/goat
 	name = "goat"
 	desc = "Not known for their pleasant disposition."
 	tt_desc = "E Oreamnos americanus"
@@ -33,12 +33,12 @@
 
 	var/datum/reagents/udder = null
 
-/mob/living/simple_mob/retaliate/goat/New()
+/mob/living/simple_animal/retaliate/goat/New()
 	udder = new(50)
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_mob/retaliate/goat/Life()
+/mob/living/simple_animal/retaliate/goat/Life()
 	. = ..()
 	if(.)
 		if(stat == CONSCIOUS)
@@ -60,18 +60,18 @@
 				var/step = get_step_to(src, food, 0)
 				Move(step)
 
-/mob/living/simple_mob/retaliate/goat/react_to_attack()
+/mob/living/simple_animal/retaliate/goat/react_to_attack()
 	. = ..()
 	if(.)
 		visible_message("<span class='warning'>[src] gets an evil-looking gleam in their eye.</span>")
 
-/mob/living/simple_mob/retaliate/goat/Move()
+/mob/living/simple_animal/retaliate/goat/Move()
 	..()
 	if(!stat)
 		for(var/obj/effect/plant/SV in loc)
 			SV.die_off(1)
 
-/mob/living/simple_mob/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/weapon/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
@@ -83,7 +83,7 @@
 	else
 		..()
 //cow
-/mob/living/simple_mob/cow
+/mob/living/simple_animal/cow
 	name = "cow"
 	desc = "Known for their milk, just don't tip them over."
 	tt_desc = "E Bos taurus"
@@ -113,12 +113,12 @@
 
 	var/datum/reagents/udder = null
 
-/mob/living/simple_mob/cow/New()
+/mob/living/simple_animal/cow/New()
 	udder = new(50)
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_mob/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/weapon/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
@@ -130,13 +130,13 @@
 	else
 		..()
 
-/mob/living/simple_mob/cow/Life()
+/mob/living/simple_animal/cow/Life()
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(udder && prob(5))
 			udder.add_reagent("milk", rand(5, 10))
 
-/mob/living/simple_mob/cow/attack_hand(mob/living/carbon/M as mob)
+/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == I_DISARM && icon_state != icon_dead)
 		M.visible_message("<span class='warning'>[M] tips over [src].</span>","<span class='notice'>You tip over [src].</span>")
 		Weaken(30)
@@ -152,7 +152,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/chick
+/mob/living/simple_animal/chick
 	name = "\improper chick"
 	desc = "Adorable! They make such a racket though."
 	tt_desc = "E Gallus gallus"
@@ -185,25 +185,25 @@
 
 	var/amount_grown = 0
 
-/mob/living/simple_mob/chick/New()
+/mob/living/simple_animal/chick/New()
 	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_mob/chick/Life()
+/mob/living/simple_animal/chick/Life()
 	. =..()
 	if(!.)
 		return
 	if(!stat)
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
-			new /mob/living/simple_mob/chicken(src.loc)
+			new /mob/living/simple_animal/chicken(src.loc)
 			qdel(src)
 
 var/const/MAX_CHICKENS = 50
 var/global/chicken_count = 0
 
-/mob/living/simple_mob/chicken
+/mob/living/simple_animal/chicken
 	name = "\improper chicken"
 	desc = "Hopefully the eggs are good this season."
 	tt_desc = "E Gallus gallus"
@@ -235,7 +235,7 @@ var/global/chicken_count = 0
 	var/eggsleft = 0
 	var/body_color
 
-/mob/living/simple_mob/chicken/New()
+/mob/living/simple_animal/chicken/New()
 	..()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
@@ -246,11 +246,11 @@ var/global/chicken_count = 0
 	pixel_y = rand(0, 10)
 	chicken_count += 1
 
-/mob/living/simple_mob/chicken/death()
+/mob/living/simple_animal/chicken/death()
 	..()
 	chicken_count -= 1
 
-/mob/living/simple_mob/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown)) //feedin' dem chickens
 		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = O
 		if(G.seed && G.seed.kitchen_tag == "wheat")
@@ -266,7 +266,7 @@ var/global/chicken_count = 0
 	else
 		..()
 
-/mob/living/simple_mob/chicken/Life()
+/mob/living/simple_animal/chicken/Life()
 	. =..()
 	if(!.)
 		return
@@ -285,7 +285,7 @@ var/global/chicken_count = 0
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
 			visible_message("[src] hatches with a quiet cracking sound.")
-			new /mob/living/simple_mob/chick(get_turf(src))
+			new /mob/living/simple_animal/chick(get_turf(src))
 			STOP_PROCESSING(SSobj, src)
 			qdel(src)
 	else
