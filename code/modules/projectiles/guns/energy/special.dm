@@ -30,7 +30,6 @@
 	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
 	icon_state = "decloner"
 	item_state = "decloner"
-	fire_sound = 'sound/weapons/pulse3.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_POWER = 3)
 	projectile_type = /obj/item/projectile/energy/declone
 
@@ -39,7 +38,6 @@
 	desc = "A tool that discharges controlled radiation which induces mutation in plant cells."
 	icon_state = "floramut100"
 	item_state = "floramut"
-	fire_sound = 'sound/effects/stealthoff.ogg'
 	projectile_type = /obj/item/projectile/energy/floramut
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
 	modifystate = "floramut"
@@ -112,13 +110,11 @@
 	desc = "A custom-built weapon of some kind."
 	icon_state = "xray"
 	projectile_type = /obj/item/projectile/beam/mindflayer
-	fire_sound = 'sound/weapons/Laser.ogg'
 
 /obj/item/weapon/gun/energy/toxgun
 	name = "phoron pistol"
 	desc = "A specialized firearm designed to fire lethal bolts of phoron."
 	icon_state = "toxgun"
-	fire_sound = 'sound/effects/stealthoff.ogg'
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
 	projectile_type = /obj/item/projectile/energy/phoron
@@ -131,7 +127,6 @@
 	icon = 'icons/obj/gun.dmi'
 	item_icons = null
 	icon_state = "staffofchange"
-	fire_sound = 'sound/weapons/emitter.ogg'
 	flags =  CONDUCT
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE
@@ -155,13 +150,13 @@
 	else
 		src.visible_message("*fizzle*")
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
-
+/*
 /obj/item/weapon/gun/energy/staff/animate
 	name = "staff of animation"
 	desc = "An artifact that spits bolts of life force, which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
 	projectile_type = /obj/item/projectile/animate
 	charge_cost = 240
-
+*/
 obj/item/weapon/gun/energy/staff/focus
 	name = "mental focus"
 	desc = "An artifact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."

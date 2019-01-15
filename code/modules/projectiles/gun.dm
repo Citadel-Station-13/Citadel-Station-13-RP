@@ -470,7 +470,8 @@
 			P.shot_from = src.name
 			P.silenced = silenced
 
-			P.launch(target)
+			P.old_style_target(target)
+			P.fire()
 
 			last_shot = world.time
 
@@ -540,18 +541,20 @@
 		flick(fire_anim, src)
 
 	if(silenced)
-		if(reflex)
-			user.visible_message(
-				"<span class='reflex_shoot'><b>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""] by reflex!</b></span>",
-				"<span class='reflex_shoot'>You fire \the [src] by reflex!</span>",
-				"You hear a [fire_sound_text]!"
+		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")
+		for(var/mob/living/L in oview(2,user))
+			if(L.stat)
+				continue
+			if(L.blinded)
+				to_chat(L, "You hear a [fire_sound_text]!")
+				continue
+			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")
+	else
+		user.visible_message(
+			"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
+			"<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
+			"You hear a [fire_sound_text]!"
 			)
-		else
-			user.visible_message(
-				"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""]!</span>",
-				"<span class='warning'>You fire \the [src]!</span>",
-				"You hear a [fire_sound_text]!"
-				)
 
 	if(muzzle_flash)
 		set_light(muzzle_flash)
@@ -643,24 +646,17 @@
 /obj/item/weapon/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
-		return 0 //default behaviour only applies to true projectiles
-
-	if(params)
-		P.set_clickpoint(params)
+		return FALSE //default behaviour only applies to true projectiles
 
 	//shooting while in shock
-	var/x_offset = 0
-	var/y_offset = 0
+	var/forcespread
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
 		if(mob.shock_stage > 120)
-			y_offset = rand(-2,2)
-			x_offset = rand(-2,2)
+			forcespread = rand(50, 50)
 		else if(mob.shock_stage > 70)
-			y_offset = rand(-1,1)
-			x_offset = rand(-1,1)
-
-	var/launched = !P.launch_from_gun(target, user, src, target_zone, x_offset, y_offset)
+			forcespread = rand(-25, 25)
+	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
 
 	if(launched)
 		play_fire_sound(user, P)

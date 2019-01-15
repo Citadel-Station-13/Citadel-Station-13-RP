@@ -33,6 +33,7 @@
 #include "crashedcontainmentshuttle.dmm"
 #include "deadspy.dmm"
 #include "cultmine.dmm"
+#include "lava_trench.dmm"
 #endif
 
 // The 'mountains' is the mining z-level, and has a lot of caves.
@@ -280,4 +281,9 @@
 	name = "Cult Mine"
 	desc = "A mining operation that found more than it bargained for."
 	mappath = 'maps/submaps/surface_submaps/mountains/cultmine.dmm'
-	cost = 30
+	cost = 30/datum/map_template/surface/mountains/deep/lava_trench
+	name = "lava trench"
+	desc = "A long stretch of lava underground, almost river-like, with a small crystal research outpost on the side."
+	mappath = 'maps/submaps/surface_submaps/mountains/lava_trench.dmm'
+	cost = 20
+	fixed_orientation = TRUE
