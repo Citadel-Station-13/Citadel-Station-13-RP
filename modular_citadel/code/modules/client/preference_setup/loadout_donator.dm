@@ -84,3 +84,9 @@
 	slot = slot_head
 	path = /obj/item/reskin_kit/jenna
 	ckeywhitelist = list("jennasilver")
+
+/datum/gear/donator/izzyball
+	display_name = "Katlin's Ball"
+	sort_category = "Donator"
+	path = /obj/item/toy/tennis/rainbow/izzy
+	ckeywhitelist = list("izzyinbox")
