@@ -2,7 +2,7 @@
 	camera_networks = list(NETWORK_MINE)
 
 /obj/item/clothing/head/helmet/space/rig/ce
-	camera_networks = list(NETWORK_ENGINEERING)
+	camera_networks = list(NETWORK_ENGINEERING,NETWORK_COMMAND)
 
 /obj/item/clothing/head/helmet/space/rig/eva
 	light_overlay = "helmet_light_dual"
@@ -10,7 +10,7 @@
 
 /obj/item/clothing/head/helmet/space/rig/hazmat
 	light_overlay = "hardhat_light"
-	camera_networks = list(NETWORK_RESEARCH)
+	camera_networks = list(NETWORK_RESEARCH,NETWORK_COMMAND)
 
 /obj/item/clothing/head/helmet/space/rig/medical
 	camera_networks = list(NETWORK_MEDICAL)
