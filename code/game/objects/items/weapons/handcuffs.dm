@@ -149,7 +149,7 @@ var/last_chew = 0
 	breakouttime = 300 //Deciseconds = 30s
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_type = "cable restraints"
-	elastic = 1
+	elastic = 0 //citadel change, why would cable be better than actual handcuffs? who knows.
 
 /obj/item/weapon/handcuffs/cable/red
 	color = "#DD0000"
