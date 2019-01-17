@@ -19664,8 +19664,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/item/stack/cable_coil/green{
-	amount = 1
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -19681,11 +19683,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/stack/cable_coil/green{
-	amount = 2
-	},
-/obj/item/stack/cable_coil/green{
-	amount = 1
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -19696,10 +19697,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/item/stack/cable_coil/green{
-	amount = 1
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -20015,11 +20015,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/stack/cable_coil/green{
-	amount = 2
-	},
-/obj/item/stack/cable_coil/green{
-	amount = 1
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
@@ -20149,6 +20148,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "aMl" = (
@@ -27847,6 +27851,10 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/effect/floor_decal/steeldecal/steel_decals8{
+	icon_state = "steel_decals8";
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "bOe" = (
@@ -46343,8 +46351,8 @@ aEU
 anM
 amr
 aEU
-ani
-ani
+anh
+anh
 anv
 jrz
 qIr
@@ -46485,8 +46493,8 @@ aEU
 aEU
 aqh
 aEU
-ani
-ani
+anh
+anh
 anv
 qIr
 awS
