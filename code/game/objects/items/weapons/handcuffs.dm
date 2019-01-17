@@ -70,9 +70,9 @@
 		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
 		return 0
 
-	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
-		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
-		return 0
+	//if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit. // CITADEL CHANGE - nah
+	//	to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
+	//	return 0
 
 	user.visible_message("<span class='danger'>\The [user] is attempting to put [cuff_type] on \the [H]!</span>")
 
