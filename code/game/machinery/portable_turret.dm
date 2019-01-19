@@ -271,7 +271,7 @@ var/list/turret_icons
 		settings[++settings.len] = list("category" = "Neutralize All Entities", "setting" = "check_all", "value" = check_all)
 		data["settings"] = settings
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "turret_control.tmpl", "Turret Controls", 500, 300)
 		ui.set_initial_data(data)
@@ -722,7 +722,10 @@ var/list/turret_icons
 		def_zone = pick(BP_TORSO, BP_GROIN)
 
 	//Shooting Code:
-	A.launch(target, def_zone)
+	A.firer = src
+	A.old_style_target(target)
+	A.def_zone = def_zone
+	A.fire()
 
 	// Reset the time needed to go back down, since we just tried to shoot at someone.
 	timeout = 10

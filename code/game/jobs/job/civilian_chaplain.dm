@@ -62,6 +62,28 @@
 				B.name = "Wealth of Nations"
 			if("communism")
 				B.name = "The Communist Manifesto"
+			if("buddhism")
+				B.name = "Tripitakas"
+			if("hinduism")
+				B.name = pick("The Srimad Bhagvatam", "The Four Vedas", "The Shiv Mahapuran", "Devi Mahatmya")
+			if("neopaganism")
+				B.name = "Neopagan Hymnbook"
+			if("phact shintoism")
+				B.name = "The Kojiki"
+			if("kishari national faith")
+				B.name = "The Scriptures of Kishar"
+			if("pleromanism")
+				B.name = "The Revised Talmudic Quran"
+			if("spectralism")
+				B.name = "The Book of the Spark"
+			if("hauler")
+				B.name = "Histories of Captaincy"
+			if("nock")
+				B.name = "The Book of the First"
+			if("singulitarian worship")
+				B.name = "The Book of the Precursors"
+			if("starlit path of angessa martei")
+				B.name = "Quotations of Exalted Martei"
 			else
 				B.name = "The Holy Book of [new_religion]"
 		feedback_set_details("religion_name","[new_religion]")
