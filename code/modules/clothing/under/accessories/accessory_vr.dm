@@ -3,7 +3,7 @@
 //
 
 /obj/item/clothing/accessory/collar
-	slot_flags = SLOT_TIE | SLOT_OCLOTHING | SLOT_ICLOTHING
+	slot_flags = SLOT_TIE | SLOT_OCLOTHING | SLOT_ICLOTHING //cit change
 	icon = 'icons/obj/clothing/collars_vr.dmi'
 	icon_override = 'icons/obj/clothing/collars_vr.dmi'
 
