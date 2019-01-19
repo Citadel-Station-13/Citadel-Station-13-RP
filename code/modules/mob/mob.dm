@@ -1,4 +1,4 @@
-/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
+/mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
 	mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
@@ -672,10 +672,12 @@
 	. = (is_client_active(10 MINUTES))
 
 	if(.)
-		if(statpanel("Status") && ticker && ticker.current_state != GAME_STATE_PREGAME)
-			stat("Station Time", stationtime2text())
-			stat("Station Date", stationdate2text())
-			stat("Round Duration", roundduration2text())
+		if(statpanel("Status"))
+			stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
+			if(ticker && ticker.current_state != GAME_STATE_PREGAME)
+				stat("Station Time", stationtime2text())
+				stat("Station Date", stationdate2text())
+				stat("Round Duration", roundduration2text())
 
 		if(client.holder)
 			if(statpanel("Status"))
@@ -695,6 +697,10 @@
 				stat("World Time:", world.time)
 				stat("Real time of day:", REALTIMEOFDAY)
 				stat(null)
+				if(GLOB)
+					GLOB.stat_entry()
+				else
+					stat("Globals:", "ERROR")
 				if(Master)
 					Master.stat_entry()
 				else
@@ -703,10 +709,6 @@
 					Failsafe.stat_entry()
 				else
 					stat("Failsafe Controller:", "ERROR")
-				if(GLOB)
-					GLOB.stat_entry()
-				else
-					stat("Globals:", "ERROR")
 				if(Master)
 					stat(null)
 					for(var/datum/controller/subsystem/SS in Master.subsystems)
@@ -897,10 +899,10 @@
 	return
 
 /mob/proc/AdjustLosebreath(amount)
-	losebreath = Clamp(0, losebreath + amount, 25)
+	losebreath = CLAMP(0, losebreath + amount, 25)
 
 /mob/proc/SetLosebreath(amount)
-	losebreath = Clamp(0, amount, 25)
+	losebreath = CLAMP(0, amount, 25)
 
 /mob/proc/get_species()
 	return ""
@@ -1202,6 +1204,6 @@ mob/proc/yank_out_object()
 		else
 			registered_z = null
 
-/mob/on_z_change(old_z, new_z)
+/mob/onTransitZ(old_z, new_z)
 	..()
 	update_client_z(new_z)
