@@ -1,4 +1,12 @@
 
+//citadel modularization of posters.
+/*
+To contribute with posters, be sure to use the citadelPosters.dm to add a name, description and more importantly,
+the state of the poster. follow the format of "citposter[number]" within citadelPosters.dm.AIAltClick(atom/A)
+
+Try not to go out of the format unless you have a good reason to so we don't clutter up the code.
+*/
+
 //########################## CONTRABAND ;3333333333333333333 -Agouri ###################################################
 
 /obj/item/weapon/contraband
