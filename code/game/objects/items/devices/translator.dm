@@ -9,6 +9,7 @@
 	var/mult_icons = 1	//Changes sprite when it translates
 	var/visual = 1		//If you need to see to get the message
 	var/audio = 0		//If you need to hear to get the message
+	var/omni = 0		//cit change - if the language translated doesn't need machine_understands
 	var/listening = 0
 	var/datum/language/langset
 
@@ -53,7 +54,7 @@
 	if (language && (language.flags & NONVERBAL))
 		return //Not gonna translate sign language
 
-	if (!language.machine_understands)
+	if (!language.machine_understands & omni == 0) // cit change - omni check
 		return //Any other languages that it can't translate.
 
 	if (visual && ((L.sdisabilities & BLIND) || L.eye_blind))
