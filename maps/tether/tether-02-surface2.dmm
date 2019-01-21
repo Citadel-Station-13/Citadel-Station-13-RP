@@ -6847,7 +6847,7 @@
 /area/engineering/lower/breakroom)
 "oM" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "oN" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
@@ -7239,7 +7239,7 @@
 /area/engineering/lower/breakroom)
 "pz" = (
 /obj/machinery/vending/snack,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "pA" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7713,7 +7713,7 @@
 	dir = 8
 	},
 /obj/machinery/disposal,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "qj" = (
 /obj/effect/floor_decal/borderfloor{
@@ -8082,7 +8082,7 @@
 /obj/structure/table/glass,
 /obj/item/weapon/storage/box/cups,
 /obj/item/weapon/storage/box/cups,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "qS" = (
 /obj/effect/floor_decal/borderfloor{
@@ -8507,6 +8507,9 @@
 /obj/machinery/light_switch{
 	pixel_y = -28
 	},
+/obj/machinery/computer/security/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/engineering/lower/breakroom)
 "rE" = (
@@ -8537,7 +8540,7 @@
 "rI" = (
 /obj/structure/table/glass,
 /obj/machinery/chemical_dispenser/bar_soft/full,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/engineering/lower/breakroom)
 "rJ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -10780,6 +10783,7 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
+/obj/item/weapon/storage/box/nifsofts_engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_lockers)
 "vw" = (
@@ -13309,12 +13313,18 @@
 	icon_state = "bordercolor";
 	dir = 9
 	},
-/obj/machinery/computer/area_atmos/tag,
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/camera/network/engineering{
 	dir = 4
+	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 1441;
+	input_tag = "atmos_out";
+	name = "Atmos Intake Control";
+	output_tag = "atmos_in";
+	sensors = list("atmos_intake" = "Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
@@ -13335,13 +13345,10 @@
 	icon_state = "bordercolorcorner2";
 	dir = 1
 	},
-/obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1441;
-	input_tag = "atmos_out";
-	name = "Atmos Intake Control";
-	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
-	},
+/obj/structure/table/standard,
+/obj/item/taperoll/atmos,
+/obj/random/tech_supply,
+/obj/random/tool,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "zj" = (
@@ -13570,9 +13577,10 @@
 	icon_state = "bordercolor";
 	dir = 8
 	},
-/obj/structure/table/standard,
-/obj/item/taperoll/atmos,
-/obj/random/maintenance/engineering,
+/obj/machinery/computer/atmoscontrol{
+	icon_state = "computer";
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "zG" = (
@@ -13634,9 +13642,8 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/random/tech_supply,
-/obj/item/stack/cable_coil/random_belt,
-/obj/random/maintenance/engineering,
+/obj/item/weapon/storage/firstaid/regular,
+/obj/random/medical/lite,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "zM" = (
@@ -13811,9 +13818,10 @@
 	icon_state = "bordercolor";
 	dir = 8
 	},
-/obj/structure/table/standard,
-/obj/random/tech_supply,
-/obj/item/stack/cable_coil/random_belt,
+/obj/machinery/computer/area_atmos/tag{
+	dir = 4;
+	scrub_id = "rnd_can_store"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "Ah" = (
@@ -13885,10 +13893,11 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/engineering,
-/obj/random/tech_supply,
-/obj/item/weapon/storage/box/nifsofts_engineering,
+/obj/item/weapon/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/weapon/pen,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "An" = (
@@ -14274,7 +14283,7 @@
 	icon_state = "bordercolor";
 	dir = 6
 	},
-/obj/machinery/computer/atmoscontrol{
+/obj/machinery/computer/security/engineering{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -15249,6 +15258,7 @@
 	dir = 5
 	},
 /obj/structure/railing,
+/obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
 "DB" = (
@@ -18463,6 +18473,13 @@
 /obj/structure/sign/nanotrasen,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
+"NX" = (
+/obj/machinery/computer/station_alert{
+	icon_state = "computer";
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/engineering/lower/breakroom)
 "NY" = (
 /obj/structure/symbol/gu,
 /turf/simulated/wall{
@@ -30846,7 +30863,7 @@ ob
 oG
 oK
 qd
-oK
+NX
 rD
 sl
 ta
