@@ -7,10 +7,6 @@
 		to_chat(src, "<span class='warning'>You need more energy to produce antiseptic enzymes. Eat something and try again.</span>")
 		return
 
-	if (!istype(M))
-		src << "<span class='warning'>\The [src] cannot be applied to [M]!</span>"
-		return
-
 	if ( ! (istype(src, /mob/living/carbon/human) || \
 			istype(src, /mob/living/silicon)) )
 		src << "<span class='warning'>If you even have a tongue, it doesn't work that way.</span>"
