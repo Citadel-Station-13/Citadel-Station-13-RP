@@ -16,7 +16,7 @@
 /datum/riding/human
 	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
 	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
-	key_name = "a riding crop"		// What the 'keys' for the thing being rode on would be called.
+	key_name = "a riding crop"		// What the 'keys' for the thing being ridden would be called.
 	only_one_driver = TRUE
 /mob/living/carbon/human
 	var/human = FALSE
