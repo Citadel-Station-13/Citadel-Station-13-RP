@@ -3094,7 +3094,6 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_items_cit.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\nsfw.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
-#include "modular_citadel\code\modules\vore\fluffstuff\guns\sickshot.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\maps\tether\tether_defines.dm"
 // END_INCLUDE
