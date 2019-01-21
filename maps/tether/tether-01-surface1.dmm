@@ -6848,7 +6848,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
 "amu" = (
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/tether/surfacebase/atrium_one)
 "amv" = (
@@ -16816,7 +16816,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aFv" = (
-/mob/living/simple_animal/retaliate/gaslamp,
+/mob/living/simple_mob/animal/space/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aFw" = (
@@ -17298,11 +17298,15 @@
 "aGx" = (
 /obj/structure/table/glass,
 /obj/item/weapon/storage/toolbox/emergency,
+<<<<<<< HEAD
 /obj/item/device/radio{
 	frequency = 1487;
 	icon_state = "med_walkietalkie";
 	name = "Medbay Emergency Radio Link"
 	},
+=======
+/obj/item/device/radio/emergency
+>>>>>>> 9a66bee... Merge pull request #4707 from Sebbe9123/upstream-merge-5735
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
