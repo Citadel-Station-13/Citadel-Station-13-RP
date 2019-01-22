@@ -3092,6 +3092,7 @@
 #include "modular_citadel\code\modules\research\designs\stock_parts.dm"
 #include "modular_citadel\code\modules\resleeving\documents.dm"
 #include "modular_citadel\code\modules\resleeving\implant.dm"
+#include "modular_citadel\code\modules\resleeving\machines.dm"
 #include "modular_citadel\code\modules\resleeving\sleevecard.dm"
 #include "modular_citadel\code\modules\shadekin\_defines.dm"
 #include "modular_citadel\code\modules\shadekin\ability_objects.dm"
