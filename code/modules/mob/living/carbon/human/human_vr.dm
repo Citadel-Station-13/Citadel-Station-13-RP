@@ -16,7 +16,6 @@
 /mob/living/carbon/human
 	var/human = TRUE
 
-
 /datum/riding/human
 	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
 	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
