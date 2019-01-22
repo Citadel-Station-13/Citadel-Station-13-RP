@@ -1,1 +1,2 @@
-var/time = 6 //drops research print time
+/datum/design
+  var/time = 6 //drops research print time
