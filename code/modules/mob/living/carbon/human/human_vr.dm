@@ -13,13 +13,47 @@
 	. = ..()
 
 //Human overrides for Human piggybacking
+/mob/living/carbon/human
+	var/human = TRUE
+
+
 /datum/riding/human
 	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
 	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
 	key_name = "a riding crop"		// What the 'keys' for the thing being ridden would be called.
-	only_one_driver = TRUE
-/mob/living/carbon/human
-	var/human = FALSE
+	only_one_driver = TRUE			// Allows for the person riding to steer the carrier when holding a riding crop :toolewd:
+
+/datum/riding/human/handle_vehicle_layer()
+	if(ridden.has_buckled_mobs())
+		if(ridden.dir != NORTH)
+			ridden.layer = ABOVE_MOB_LAYER
+		else
+			ridden.layer = initial(ridden.layer)
+	else
+		ridden.layer = initial(ridden.layer)
+
+/datum/riding/human/ride_check(mob/living/M)
+	var/mob/living/L = ridden
+	if(L.stat)
+		force_dismount(M)
+		return FALSE
+	return TRUE
+
+/datum/riding/human/force_dismount(mob/M)
+	. =..()
+	ridden.visible_message("<span class='notice'>[M] hops off of [ridden]'s back!</span>")
+
+/datum/riding/human/get_offsets(pass_index) // list(dir = x, y, layer)
+	var/mob/living/L = ridden
+	var/scale = L.size_multiplier
+
+	var/list/values = list(
+		"[NORTH]" = list(0, 8*scale, ABOVE_MOB_LAYER),
+		"[SOUTH]" = list(0, 8*scale, BELOW_MOB_LAYER),
+		"[EAST]" = list(-5*scale, 8*scale, ABOVE_MOB_LAYER),
+		"[WEST]" = list(5*scale, 8*scale, ABOVE_MOB_LAYER))
+
+	return values
 
 /mob/living/carbon/human
 	max_buckled_mobs = 1
@@ -43,7 +77,7 @@
 	if(M in buckled_mobs)
 		return FALSE
 	if(M.size_multiplier > size_multiplier * 1.2)
-		to_chat(src,"<span class='warning'>They're too big, you'll be crushed! You need to be bigger for them to ride.</span>")
+		to_chat(src,"<span class='warning'>They're too big, you'll be crushed! You'll need to be bigger for them to ride.</span>")
 		return FALSE
 
 	var/mob/living/carbon/human/H = M
@@ -59,9 +93,6 @@
 	if(.)
 		buckled_mobs[M] = "riding"
 
-/mob/living/carbon/human/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
-	return
-
 /mob/living/carbon/human/attack_hand(mob/user as mob)
 	if(LAZYLEN(buckled_mobs))
 		//We're getting off!
@@ -76,7 +107,7 @@
 
 /mob/living/carbon/human/proc/human_mount(var/mob/living/M in living_mobs(1))
 	set name = "Mount/Dismount toggle"
-	set category = "IC"
+	set category = "Abilities"
 	set desc = "Let people piggyback on you."
 
 	if(LAZYLEN(buckled_mobs))
