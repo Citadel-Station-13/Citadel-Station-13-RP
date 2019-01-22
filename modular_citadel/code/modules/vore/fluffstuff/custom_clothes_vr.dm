@@ -24,4 +24,4 @@
 
 /obj/item/clothing/accessory/sweater/fluff/annie
 	name = "Lazy Sweater"
-	desc = "A cozy sweater that's probably far too long for it's owner. Really."
+	desc = "A cozy sweater that's probably far too long for its' owner. Really."
