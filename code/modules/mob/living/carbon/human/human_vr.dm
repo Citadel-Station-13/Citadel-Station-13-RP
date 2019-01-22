@@ -14,7 +14,7 @@
 
 //Human overrides for Human piggybacking
 /mob/living/carbon/human
-	var/human = TRUE
+	var/human = FALSE
 
 /datum/riding/human
 	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
@@ -105,7 +105,7 @@
 		. = ..()
 
 /mob/living/carbon/human/proc/human_mount(var/mob/living/M in living_mobs(1))
-	set name = "Mount/Dismount toggle"
+	set name = "Human Mount/Dismount"
 	set category = "Abilities"
 	set desc = "Let people piggyback on you."
 
