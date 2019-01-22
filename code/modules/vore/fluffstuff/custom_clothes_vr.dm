@@ -1796,8 +1796,8 @@ END OF CITADEL CHANGES */
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "zao_cap_mob"
-
-//Nepox:Annie Rose END OF CITADEL CHANGES */
+END OF CITADEL CHANGES */
+//Nepox:Annie Rose
 /obj/item/clothing/accessory/sweater/fluff/annie
 	name = "Lazy Annie's Lazy Sweater"
 	desc = "A cozy sweater that's probably far too long for it's owner.  She's too lazy to care though."
