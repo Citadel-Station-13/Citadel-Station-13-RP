@@ -21,3 +21,7 @@
 /obj/item/clothing/under/rank/khi/sci
 	name = "FTU Science Suit"
 	desc = "In the constantly changing field of the Free Trade Union, plots and schemes change by the hour. Yet nobody heeds the alchemist in the lab."
+
+/obj/item/clothing/accessory/sweater/fluff/annie
+	name = "Lazy Sweater"
+	desc = "A cozy sweater that's probably far too long for it's owner. Really."
