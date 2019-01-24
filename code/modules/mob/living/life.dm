@@ -64,10 +64,6 @@
 
 	handle_vision()
 
-///////////////////////// CITADEL STATION ADDITIONS START
-	lastLifeProc = world.time
-///////////////////////// CITADEL STATION ADDITIONS END
-
 /mob/living/proc/handle_breathing()
 	return
 
