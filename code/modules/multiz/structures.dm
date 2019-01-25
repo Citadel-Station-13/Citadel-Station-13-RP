@@ -130,7 +130,6 @@
 	density = 0
 	opacity = 0
 	anchored = 1
-	layer = 2.4 // Above turf, but they're sort of the floor, so below objects.
 
 /obj/structure/stairs/Initialize()
 	. = ..()
