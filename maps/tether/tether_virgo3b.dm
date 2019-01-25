@@ -77,7 +77,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	if(weather_holder && weather_holder.current_weather)
 		weather_light_modifier = weather_holder.current_weather.light_modifier
 
-	var/new_brightness = (Interpolate(low_brightness, high_brightness, weight = lerp_weight) ) * weather_light_modifier
+	var/new_brightness = (LERP(low_brightness, high_brightness, lerp_weight) ) * weather_light_modifier
 
 	var/new_color = null
 	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)

@@ -97,7 +97,7 @@
 		data["cooldown"] = max(0, min(100, round(teleport_cooldown - world.time) / 10))
 		data["crystalCount"] = crystals.len
 		data["maxCrystals"] = max_crystals
-		data["maxPossibleDistance"] = Floor(max_crystals * powerCoefficient * 6); // max efficiency is 6
+		data["maxPossibleDistance"] = FLOOR(max_crystals * powerCoefficient * 6, 1); // max efficiency is 6
 		data["maxAllowedDistance"] = get_max_allowed_distance()
 		data["distance"] = distance
 

@@ -219,7 +219,7 @@
 	cost = 24 //so you can fit four plus a tracer cosmetic
 
 /obj/item/borg/upgrade/modkit/range/modify_projectile(obj/item/projectile/kinetic/K)
-	K.kill_count += modifier
+	K.range += modifier
 
 
 //Damage

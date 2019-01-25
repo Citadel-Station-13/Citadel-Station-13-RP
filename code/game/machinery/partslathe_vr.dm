@@ -186,7 +186,7 @@
 /obj/machinery/partslathe/proc/getLackingMaterials(var/datum/category_item/partslathe/D)
 	var/ret = ""
 	for(var/M in D.resources)
-		if(materials[M] < Ceiling(D.resources[M] * mat_efficiency))
+		if(materials[M] < CEILING(D.resources[M] * mat_efficiency, 1))
 			if(ret != "")
 				ret += ", "
 			ret += "[CEILING(D.resources[M] * mat_efficiency, 1) - materials[M]] [M]"
