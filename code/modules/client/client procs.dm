@@ -186,8 +186,8 @@
 		holder.owner = null
 		admins -= src
 	GLOB.ahelp_tickets.ClientLogout(src)
-	directory -= ckey
-	clients -= src
+	GLOB.directory -= ckey
+	GLOB.clients -= src
 	return ..()
 
 /client/Destroy()
@@ -406,3 +406,8 @@ client/verb/character_setup()
 			. = R.group[1]
 		else
 			CRASH("Age check regex failed for [src.ckey]")
+
+/client/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, holder))
+		return FALSE
+	return ..()
