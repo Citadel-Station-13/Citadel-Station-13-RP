@@ -80,150 +80,109 @@ default behaviour is:
 			return 1
 		return 0
 
-/mob/living/Bump(atom/movable/AM, yes)
-	spawn(0)
-		if ((!( yes ) || now_pushing) || !loc)
+/mob/living/Bump(atom/movable/AM)
+	if(now_pushing || !loc)
+		return
+	now_pushing = 1
+	if (istype(AM, /mob/living))
+		var/mob/living/tmob = AM
+
+		//Even if we don't push/swap places, we "touched" them, so spread fire
+		spread_fire(tmob)
+
+		for(var/mob/living/M in range(tmob, 1))
+			if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)) )
+				if ( !(world.time % 5) )
+					to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
+				now_pushing = 0
+				return
+			if( tmob.pulling == M && ( M.restrained() && !( tmob.restrained() ) && tmob.stat == 0) )
+				if ( !(world.time % 5) )
+					to_chat(src, "<span class='warning'>[tmob] is restraining [M], you cannot push past</span>")
+				now_pushing = 0
+				return
+
+		//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
+		var/dense = 0
+		if(loc.density)
+			dense = 1
+		for(var/atom/movable/A in loc)
+			if(A == src)
+				continue
+			if(A.density)
+				if(A.flags&ON_BORDER)
+					dense = !A.CanPass(src, src.loc)
+				else
+					dense = 1
+			if(dense) break
+
+		//Leaping mobs just land on the tile, no pushing, no anything.
+		if(status_flags & LEAPING)
+			loc = tmob.loc
+			status_flags &= ~LEAPING
+			now_pushing = 0
 			return
+
+		if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && !dense && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
+			var/turf/oldloc = loc
+			forceMove(tmob.loc)
+			tmob.forceMove(oldloc)
+			now_pushing = 0
+			return
+
+		if(!can_move_mob(tmob, 0, 0))
+			now_pushing = 0
+			return
+		if(a_intent == I_HELP || src.restrained())
+			now_pushing = 0
+			return
+		if(istype(tmob, /mob/living/carbon/human) && (FAT in tmob.mutations))
+			if(prob(40) && !(FAT in src.mutations))
+				to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
+				now_pushing = 0
+				return
+		if(tmob.r_hand && istype(tmob.r_hand, /obj/item/weapon/shield/riot))
+			if(prob(99))
+				now_pushing = 0
+				return
+		if(tmob.l_hand && istype(tmob.l_hand, /obj/item/weapon/shield/riot))
+			if(prob(99))
+				now_pushing = 0
+				return
+		if(!(tmob.status_flags & CANPUSH))
+			now_pushing = 0
+			return
+
+		tmob.LAssailant = src
+
+	now_pushing = 0
+	. = ..()
+	if (!istype(AM, /atom/movable) || AM.anchored)
+		if(confused && prob(50) && m_intent=="run")
+			Weaken(2)
+			playsound(loc, "punch", 25, 1, -1)
+			visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [AM]!</span>")
+			src.apply_damage(5, BRUTE)
+			to_chat(src, "<span class='warning'>You just [pick("ran", "slammed")] into \the [AM]!</span>")
+		return
+	if (!now_pushing)
+		if(isobj(AM))
+			var/obj/I = AM
+			if(!can_pull_size || can_pull_size < I.w_class)
+				return
 		now_pushing = 1
-		if (istype(AM, /mob/living))
-			var/mob/living/tmob = AM
 
-			//Even if we don't push/swap places, we "touched" them, so spread fire
-			spread_fire(tmob)
-
-			for(var/mob/living/M in range(tmob, 1))
-				if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)) )
-					if ( !(world.time % 5) )
-						to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
-					now_pushing = 0
-					return
-				if( tmob.pulling == M && ( M.restrained() && !( tmob.restrained() ) && tmob.stat == 0) )
-					if ( !(world.time % 5) )
-						to_chat(src, "<span class='warning'>[tmob] is restraining [M], you cannot push past</span>")
-					now_pushing = 0
-					return
-
-			//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
-			var/dense = 0
-			if(loc.density)
-				dense = 1
-			for(var/atom/movable/A in loc)
-				if(A == src)
-					continue
-				if(A.density)
-					if(A.flags&ON_BORDER)
-						dense = !A.CanPass(src, src.loc)
-					else
-						dense = 1
-				if(dense) break
-
-			//Leaping mobs just land on the tile, no pushing, no anything.
-			if(status_flags & LEAPING)
-				loc = tmob.loc
-				status_flags &= ~LEAPING
+		var/t = get_dir(src, AM)
+		if (istype(AM, /obj/structure/window))
+			for(var/obj/structure/window/win in get_step(AM,t))
 				now_pushing = 0
 				return
-
-			if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && !dense && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
-				var/turf/oldloc = loc
-				forceMove(tmob.loc)
-
-				//VOREstation Edit - Begin
-				if (istype(tmob, /mob/living/simple_animal)) //check bumpnom chance, if it's a simplemob that's bumped
-					tmob.Bumped(src)
-				else if(istype(src, /mob/living/simple_animal)) //otherwise, if it's a simplemob doing the bumping. Simplemob on simplemob doesn't seem to trigger but that's fine.
-					Bumped(tmob)
-				if (tmob.loc == src) //check if they got ate, and if so skip the forcemove
-					now_pushing = 0
-					return
-
-				// In case of micros, we don't swap positions; instead occupying the same square!
-				if (handle_micro_bump_helping(tmob))
-					now_pushing = 0
-					return
-				// TODO - Check if we need to do something about the slime.UpdateFeed() we are skipping below.
-				// VOREStation Edit - End
-
-				tmob.forceMove(oldloc)
-				now_pushing = 0
-				return
-
-			if(!can_move_mob(tmob, 0, 0))
-				now_pushing = 0
-				return
-			if(a_intent == I_HELP || src.restrained())
-				now_pushing = 0
-				return
-
-			// VOREStation Edit - Begin
-			// Plow that nerd.
-			if(ishuman(tmob))
-				var/mob/living/carbon/human/H = tmob
-				if(H.species.lightweight == 1 && prob(50))
-					H.visible_message("<span class='warning'>[src] bumps into [H], knocking them off balance!</span>")
-					H.Weaken(5)
-					now_pushing = 0
-					return
-			// Handle grabbing, stomping, and such of micros!
-			if(handle_micro_bump_other(tmob)) return
-			// VOREStation Edit - End
-
-			if(istype(tmob, /mob/living/carbon/human) && (FAT in tmob.mutations))
-				if(prob(40) && !(FAT in src.mutations))
-					to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
-					now_pushing = 0
-					return
-			if(tmob.r_hand && istype(tmob.r_hand, /obj/item/weapon/shield/riot))
-				if(prob(99))
-					now_pushing = 0
-					return
-			if(tmob.l_hand && istype(tmob.l_hand, /obj/item/weapon/shield/riot))
-				if(prob(99))
-					now_pushing = 0
-					return
-			if(!(tmob.status_flags & CANPUSH))
-				now_pushing = 0
-				return
-
-			tmob.LAssailant = src
-
+		step(AM, t)
+		if(ishuman(AM) && AM:grabbed_by)
+			for(var/obj/item/weapon/grab/G in AM:grabbed_by)
+				step(G:assailant, get_dir(G:assailant, AM))
+				G.adjust_position()
 		now_pushing = 0
-		spawn(0)
-			..()
-			if (!istype(AM, /atom/movable) || AM.anchored)
-				//VOREStation Edit - object-specific proc for running into things
-				if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying)
-					AM.stumble_into(src)
-				//VOREStation Edit End
-				/* VOREStation Removal - See above
-					Weaken(2)
-					playsound(loc, "punch", 25, 1, -1)
-					visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [AM]!</span>")
-					src.apply_damage(5, BRUTE)
-					src << ("<span class='warning'>You just [pick("ran", "slammed")] into \the [AM]!</span>")
-					to_chat(src, "<span class='warning'>You just [pick("ran", "slammed")] into \the [AM]!</span>")
-					*/ // VOREStation Removal End
-				return
-			if (!now_pushing)
-				if(isobj(AM))
-					var/obj/I = AM
-					if(!can_pull_size || can_pull_size < I.w_class)
-						return
-				now_pushing = 1
-
-				var/t = get_dir(src, AM)
-				if (istype(AM, /obj/structure/window))
-					for(var/obj/structure/window/win in get_step(AM,t))
-						now_pushing = 0
-						return
-				step(AM, t)
-				if(ishuman(AM) && AM:grabbed_by)
-					for(var/obj/item/weapon/grab/G in AM:grabbed_by)
-						step(G:assailant, get_dir(G:assailant, AM))
-						G.adjust_position()
-				now_pushing = 0
-			return
-	return
 
 /mob/living/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
@@ -470,7 +429,6 @@ default behaviour is:
 	return result
 
 /mob/living/proc/setMaxHealth(var/newMaxHealth)
-	health = (health/maxHealth) * (newMaxHealth) //VOREStation Add - Adjust existing health
 	maxHealth = newMaxHealth
 
 /mob/living/Stun(amount)
@@ -769,8 +727,9 @@ default behaviour is:
 		else
 			to_chat(usr, "[src] does not have any stored infomation!")
 	else
-		usr << "OOC Metadata is not supported by this server!"
 	//VOREStation Edit End - Making it so SSD people have prefs with fallback to original style.
+		to_chat(usr, "OOC Metadata is not supported by this server!")
+
 	return
 
 /mob/living/Move(a, b, flag)
@@ -867,7 +826,7 @@ default behaviour is:
 					if (pulling)
 						if (istype(pulling, /obj/structure/window))
 							var/obj/structure/window/W = pulling
-							if(W.is_full_window())
+							if(W.is_fulltile())
 								for(var/obj/structure/window/win in get_step(pulling,get_dir(pulling.loc, T)))
 									stop_pulling()
 					if (pulling)
@@ -909,8 +868,6 @@ default behaviour is:
 		spawn() C.mob_breakout(src)
 		return TRUE
 
-	if(istype(loc,/obj/item/clothing))
-		spawn() escape_clothes(loc)
 
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 
@@ -926,7 +883,7 @@ default behaviour is:
 
 		// Update whether or not this mob needs to pass emotes to contents.
 		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_animal/borer) || istype(A,/obj/item/weapon/holder))
+			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/weapon/holder))
 				return
 
 	else if(istype(H.loc,/obj/item/clothing/accessory/holster))
@@ -1158,10 +1115,9 @@ default behaviour is:
 /mob/living/proc/is_sentient()
 	return TRUE
 
-
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale = size_multiplier //VOREStation edit
+	var/desired_scale = icon_scale
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.icon_scale_percent))
 			desired_scale *= M.icon_scale_percent

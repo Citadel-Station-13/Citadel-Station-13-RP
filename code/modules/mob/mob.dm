@@ -1187,6 +1187,11 @@ mob/proc/yank_out_object()
 
 	..()
 
+/mob/MouseExited()
+	closeToolTip(usr) //No reason not to, really
+
+	..()
+
 // Manages a global list of mobs with clients attached, indexed by z-level.
 /mob/proc/update_client_z(new_z) // +1 to register, null to unregister.
 	if(registered_z != new_z)
@@ -1202,7 +1207,3 @@ mob/proc/yank_out_object()
 /mob/onTransitZ(old_z, new_z)
 	..()
 	update_client_z(new_z)
-/mob/MouseExited()
-	closeToolTip(usr) //No reason not to, really
-
-	..()
