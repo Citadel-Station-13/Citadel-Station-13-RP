@@ -632,8 +632,7 @@
 
 	if(!patient && !cleaning) //We think we're done working.
 		if(!update_patient()) //One last try to find someone
-			processing_objects.Remove(src)
-			return
+			return PROCESS_KILL
 
 /obj/item/device/dogborg/sleeper/K9 //The K9 portabrig
 	name = "Brig-Belly"
