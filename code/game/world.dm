@@ -1,6 +1,7 @@
 
 #define RECOMMENDED_VERSION 501
 /world/New()
+	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	world.log << "Map Loading Complete"
 	//logs
 	log_path += time2text(world.realtime, "YYYY/MM-Month/DD-Day/round-hh-mm-ss")
@@ -14,7 +15,6 @@
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
-	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 
 	config.post_load()
 
@@ -92,7 +92,7 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	//TGS_TOPIC
+	TGS_TOPIC
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if (T == "ping")
@@ -388,10 +388,10 @@ var/world_topic_spam_protect_time = world.timeofday
 
 
 /world/Reboot(reason = 0, fast_track = FALSE)
+	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
-	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")

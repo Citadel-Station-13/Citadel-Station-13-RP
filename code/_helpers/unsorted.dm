@@ -1304,8 +1304,12 @@ var/mob/dview/dview_mob = new
 	global.dview_mob = new
 	return ..()
 
-// call to generate a stack trace and print to runtime logs
-/proc/crash_with(msg)
+#define crash_with stack_trace
+//gives us the stack trace from CRASH() without ending the current proc.
+/proc/stack_trace(msg)
+	CRASH(msg)
+
+/datum/proc/stack_trace(msg)
 	CRASH(msg)
 
 /proc/screen_loc2turf(scr_loc, turf/origin)
