@@ -140,7 +140,7 @@
 			nif.human.update_icons() //Apply matrix transform asap
 			nif.human.Confuse(10)
 
-			if(prob(50))
+			if(prob(25))
 				nif.human.vomit()
 
 			spawn(0)
