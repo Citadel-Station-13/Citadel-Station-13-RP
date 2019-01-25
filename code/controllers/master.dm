@@ -200,7 +200,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/initialized_tod = REALTIMEOFDAY
 	sleep(1)
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
-	TgsInitializationComplete()
+	world.TgsInitializationComplete()
 	// Loop.
 	Master.StartProcessing(0)
 

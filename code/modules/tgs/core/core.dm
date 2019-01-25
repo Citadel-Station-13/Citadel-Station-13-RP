@@ -30,7 +30,7 @@
 /world/proc/SelectTgsApi(tgs_version)
 	//remove the old 3.0 header
 	tgs_version = replacetext(tgs_version, "/tg/station 13 Server v", "")
-  
+
 	var/list/version_bits = splittext(tgs_version, ".")
 
 	var/super = text2num(version_bits[1])

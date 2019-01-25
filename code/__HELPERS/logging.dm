@@ -24,11 +24,6 @@
 /proc/error(msg)
 	world.log << "## ERROR: [msg]"
 
-#define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
-//print a warning message to world.log
-/proc/warning(msg)
-	world.log << "## WARNING: [msg]"
-
 //print a testing-mode debug message to world.log
 /proc/testing(msg)
 	world.log << "## TESTING: [msg]"
@@ -61,7 +56,7 @@
 
 /proc/log_access_in(client/new_client)
 	if (config.log_access)
-		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"			
+		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"
 		WRITE_LOG(diary, "ACCESS IN: [message]")
 
 /proc/log_access_out(mob/last_mob)
@@ -222,7 +217,7 @@
 
 			if(include_link && is_special_character(M) && highlight_special_characters)
 				name = "<font color='#FFA500'>[name]</font>" //Orange
-		
+
 		. += "/([name])"
 
 	return .
