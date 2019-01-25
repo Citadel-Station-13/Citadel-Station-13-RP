@@ -62,10 +62,10 @@
 
 		playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 
-		set_dir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
+		set_dir(tesla_zap(src.loc, 7, TESLA_DEFAULT_POWER, TRUE))
 
 		for (var/ball in orbiting_balls)
-			var/range = rand(1, Clamp(orbiting_balls.len, 3, 7))
+			var/range = rand(1, CLAMP(orbiting_balls.len, 3, 7))
 			tesla_zap(ball, range, TESLA_MINI_POWER/7*range, TRUE)
 	else
 		energy = 0 // ensure we dont have miniballs of miniballs
@@ -185,7 +185,6 @@
 										/obj/machinery/atmospherics,
 										/obj/machinery/power/emitter,
 										/obj/machinery/field_generator,
-										/mob/living/simple_animal,
 										/obj/machinery/door/blast,
 										/obj/machinery/particle_accelerator/control_box,
 										/obj/structure/particle_accelerator/fuel_chamber,
@@ -273,13 +272,10 @@
 	//Alright, we've done our loop, now lets see if was anything interesting in range
 	if(closest_atom)
 		//common stuff
-		var/atom/srcLoc = get_turf(source) // VOREStation Edit - Makes beams look nicer
-		srcLoc.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time=5, maxdistance = INFINITY)  // VOREStation Edit - Makes beams look nicer
+		source.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time=5, maxdistance = INFINITY)
 		var/zapdir = get_dir(source, closest_atom)
 		if(zapdir)
 			. = zapdir
-
-	var/drain_energy = FALSE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
 
 	//per type stuff:
 	if(closest_tesla_coil)
@@ -289,8 +285,8 @@
 		closest_grounding_rod.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_mob)
-		var/shock_damage = Clamp(round(power/400), 10, 90) + rand(-5, 5)
-		closest_mob.electrocute_act(shock_damage, source, 1, ran_zone())
+		var/shock_damage = CLAMP(round(power/400), 10, 90) + rand(-5, 5)
+		closest_mob.electrocute_act(shock_damage, source, 1 - closest_mob.get_shock_protection(), ran_zone())
 		log_game("TESLA([source.x],[source.y],[source.z]) Shocked [key_name(closest_mob)] for [shock_damage]dmg.")
 		message_admins("Tesla zapped [key_name_admin(closest_mob)]!")
 		if(issilicon(closest_mob))
@@ -302,20 +298,10 @@
 			tesla_zap(closest_mob, 5, power / 1.5, explosive, stun_mobs)
 
 	else if(closest_machine)
-		drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
 		closest_machine.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_blob)
-		drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
 		closest_blob.tesla_act(power, explosive, stun_mobs)
 
 	else if(closest_structure)
-		drain_energy = TRUE // VOREStation Edit - Safety First! Drain Tesla fast when its loose
 		closest_structure.tesla_act(power, explosive, stun_mobs)
-
-	// VOREStation Edit Start - Safety First! Drain Tesla fast when its loose
-	if(drain_energy && istype(source, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/EB = source
-		if (EB.energy > 0)
-			EB.energy -= min(EB.energy, max(10, round(EB.energy * 0.05)))
-	// VOREStation Edit End

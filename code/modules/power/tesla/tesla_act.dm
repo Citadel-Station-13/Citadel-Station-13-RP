@@ -30,7 +30,7 @@
 /obj/machinery/tesla_act(power, explosive = FALSE)
 	..()
 	if(prob(85) && explosive)
-		explosion(loc, 0, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/) // VOREStation Edit - No devastation range
+		explosion(loc, 1, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/)
 	else if(prob(50))
 		emp_act(2)
 	else

@@ -88,9 +88,15 @@
 
 	var/debug = 0
 
+	var/datum/looping_sound/supermatter/soundloop
+
+/obj/machinery/power/supermatter/Initialize()
+	soundloop = new(list(src), TRUE)
+	return ..()
 
 /obj/machinery/power/supermatter/Destroy()
-	. = ..()
+	QDEL_NULL(soundloop)
+	return ..()
 
 /obj/machinery/power/supermatter/proc/explode()
 	message_admins("Supermatter exploded at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
@@ -150,7 +156,6 @@
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
-			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222") //VOREStation Add
 			public_alert = 1
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		else if(safe_warned && public_alert)
@@ -196,6 +201,11 @@
 		shift_light(4,initial(light_color))
 	if(grav_pulling)
 		supermatter_pull(src)
+
+	if(power)
+		// Volume will be 1 at no power, ~12.5 at ENERGY_NITROGEN, and 20+ at ENERGY_PHORON.
+		// Capped to 20 volume since higher volumes get annoying and it sounds worse.
+		soundloop.volume = min(round(power/10)+1, 20)
 
 	//Ok, get the air from the turf
 	var/datum/gas_mixture/removed = null
@@ -258,7 +268,13 @@
 		env.merge(removed)
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
-		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // VOREStation Edit - Only mesons can protect you!
+		var/eye_shield = 0	//How protected they are
+		if(istype(l.glasses, /obj/item/clothing/glasses/meson))
+			eye_shield += 1
+		if(istype(l.head, /obj/item/clothing/head/helmet/space))
+			if(l.run_armor_check(BP_HEAD, "rad") >= 60)
+				eye_shield += 1
+		if(eye_shield < 1)
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
 	radiation_repository.radiate(src, max(power * 1.5, 50) ) //Better close those shutters!

@@ -42,7 +42,7 @@
 	var/load_offset_y = 0		//pixel_y offset for item overlay
 	var/mob_offset_y = 0		//pixel_y offset for mob overlay
 
-	//var/datum/riding/riding_datum = null //VOREStation Edit - Moved to movables.
+	var/datum/riding/riding_datum = null
 
 //-------------------------------------------
 // Standard procs
@@ -162,6 +162,10 @@
 /obj/vehicle/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	..()
+	healthcheck()
+
+/obj/vehicle/proc/adjust_health(amount)
+	health = between(0, health + amount, maxhealth)
 	healthcheck()
 
 /obj/vehicle/ex_act(severity)
