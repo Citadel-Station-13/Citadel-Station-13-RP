@@ -9,7 +9,7 @@ var/list/dreams = list(
 	//VOREStation Additions after this
 	"slimey surroundings","a sexy squirrel","licking their lips","a gaping maw","an unlikely predator","sinking inside",
 	"vulpine assets","more dakka","churning guts","pools of fluid","an exceptional grip","mawing in faces","gaping throat",
-	"swallowed whole","a fox","a wolf","a cat","a tiger","a dog","a taur","a xenochimera"
+	"swallowed whole","a fox","a wolf","a cat","a tiger","a dog","a taur","a xenochimera",
 	"the Head of Personnel","the Head of Security","the Chief Engineer","the Research Director","the Chief Medical Officer",
 	"the Detective","the Warden","an Internal Affairs Agent","a Station Engineer","the Janitor","the Atmospheric Technician",
 	"the Quartermaster","a Cargo Technician","the Botanist","a Shaft Miner","the Psychologist","the Chemist","a Geneticist",
@@ -18,7 +18,7 @@ var/list/dreams = list(
 	"an Unathi","a Tajaran","the Station Intelligence core","the mining station","the research station","a beaker of strange liquid",
 	"a Teshari", "a Diona nymph","the supermatter","Major Bill","a Morpheus ship with a ridiculous name","the Exodus","a star",
 	"a Dionaea gestalt","the chapel","a distant scream","endless chittering noises","glowing eyes in the shadows","an empty glass",
-	"a disoriented Promethean","towers of plastic","a Gygax","a synthetic","a Man-Machine Interface","maintenance drones", 
+	"a disoriented Promethean","towers of plastic","a Gygax","a synthetic","a Man-Machine Interface","maintenance drones",
 	"unintelligible writings","a Fleet ship",
 	)
 
