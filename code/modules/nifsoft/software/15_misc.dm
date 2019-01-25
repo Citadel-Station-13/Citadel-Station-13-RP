@@ -120,10 +120,10 @@
 
 /datum/nifsoft/sizechange
 	name = "Mass Alteration"
-	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
+	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed, and significant disorientation in the user.."
 	list_pos = NIF_SIZECHANGE
-	cost = 750
-	wear = 6
+	cost = 2000
+	wear = 10
 
 	activate()
 		if((. = ..()))
@@ -138,6 +138,10 @@
 
 			nif.human.visible_message("<span class='warning'>Swirling grey mist envelops [nif.human] as they change size!</span>","<span class='notice'>Swirling streams of nanites wrap around you as you change size!</span>")
 			nif.human.update_icons() //Apply matrix transform asap
+			nif.human.Confuse(10)
+
+			if(prob(50))
+				nif.human.vomit()
 
 			spawn(0)
 				deactivate()
