@@ -32,9 +32,13 @@ By participating, you are expected to uphold this code.
 
 Unsure where to begin contributing to VOREStation? You can start by looking through the issues tab.
 
-### VOREStation Coding Standards
+### Citadel Station 13 RP Coding Standards
 
 Any code submissions that do not meet our coding standards are likely to be rejected, or at the very least, have a maintainer request changes on your PR. Save time and follow these standards from the start.
+
+New items are not allowed to be obj/item/weapon or obj/item/device. These paths have no need to exist and their removal is a question of when, not if.
+
+-------------------------------
 
 * If it is something like a bugfix that Polaris would want (the codebase we use), code it in their code and make the PR to them. We regularly update from them. They would want any general gameplay bugfixes, and things that are obviously intended to work one way, but do not. They do not have any of our fluff species (vulp, akula, fenn, etc) so do not make PRs related to that, or any vore content to them.
 * Never edit stock Polaris .DMI files. If you are confused about which .DMI files we have added and which were there originally, refer to their repository and and see if they exist (https://github.com/PolarisSS13/Polaris). All PRs with edits to stock .DMI files will be rejected.
