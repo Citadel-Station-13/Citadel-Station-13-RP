@@ -7,7 +7,7 @@
 	if(world.time - last_check < 10)
 		return
 	last_check = world.time
-	return "Players: [clients.len] -- Address: [world.internet_address]:[world.port]"
+	return "Players: [GLOB.clients.len] -- Address: [world.internet_address]:[world.port]"
 
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"
@@ -21,7 +21,7 @@
 	var/target = ckey(all_params[1])
 	all_params.Cut(1, 2)
 	if(target)
-		var/client/C = directory[target]
+		var/client/C = GLOB.directory[target]
 		if(C)
 			var/reconstructedmessage = all_params.Join(" ")
 			C << "<span class='danger'>Discord Admin PM from [sender.friendly_name]:</span><span class='warning'> [reconstructedmessage]</span><br><span class='info'>Use the adminhelp verb to reply</span>"
