@@ -1,4 +1,5 @@
 /obj/item/device/uplink
+	icon = 'icons/obj/device.dmi'
 	var/welcome = "Welcome, Operative"	// Welcoming menu message
 	var/uses 							// Numbers of crystals
 	var/list/ItemsCategory				// List of categories with lists of items

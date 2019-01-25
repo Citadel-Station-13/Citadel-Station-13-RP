@@ -7,6 +7,7 @@
 /obj/item/device/multitool
 	name = "multitool"
 	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors."
+	icon = 'icons/obj/device.dmi'
 	icon_state = "multitool"
 	flags = CONDUCT
 	force = 5.0
