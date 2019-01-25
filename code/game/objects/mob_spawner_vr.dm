@@ -9,8 +9,8 @@
 	var/spawn_delay = 10 MINUTES
 
 	var/list/spawn_types = list(
-	/mob/living/simple_animal/corgi = 100,
-	/mob/living/simple_animal/cat = 25
+	/mob/living/simple_mob/corgi = 100,
+	/mob/living/simple_mob/cat = 25
 	)
 
 	var/total_spawns = -1 //Total mob spawns, over all time, -1 for no limit
@@ -136,8 +136,8 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	spawn_delay = 3 MINUTES
 	mob_faction = "Corgi"
 	spawn_types = list(
-	/mob/living/simple_animal/corgi = 75,
-	/mob/living/simple_animal/corgi/puppy = 50
+	/mob/living/simple_mob/corgi = 75,
+	/mob/living/simple_mob/corgi/puppy = 50
 	)
 
 	simultaneous_spawns = 5
@@ -157,10 +157,10 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	anchored = 1
 	invisibility = 101
 	spawn_types = list(
-	/mob/living/simple_animal/retaliate/gaslamp = 20,
-	/mob/living/simple_animal/otie/feral = 10,
-	/mob/living/simple_animal/hostile/dino/virgo3b = 5,
-	/mob/living/simple_animal/hostile/dragon/virgo3b = 1
+	/mob/living/simple_mob/retaliate/gaslamp = 20,
+	/mob/living/simple_mob/otie/feral = 10,
+	/mob/living/simple_mob/hostile/dino/virgo3b = 5,
+	/mob/living/simple_mob/hostile/dragon/virgo3b = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos
@@ -176,10 +176,10 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/mob/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_animal/hostile/alien/drone = 20,
-	/mob/living/simple_animal/hostile/alien = 10,
-	/mob/living/simple_animal/hostile/alien/sentinel = 5,
-	/mob/living/simple_animal/hostile/alien/queen = 1
+	/mob/living/simple_mob/hostile/alien/drone = 20,
+	/mob/living/simple_mob/hostile/alien = 10,
+	/mob/living/simple_mob/hostile/alien/sentinel = 5,
+	/mob/living/simple_mob/hostile/alien/queen = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -195,5 +195,5 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/mob/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_animal/hostile/alien/queen = 5,
+	/mob/living/simple_mob/hostile/alien/queen = 5,
 	)

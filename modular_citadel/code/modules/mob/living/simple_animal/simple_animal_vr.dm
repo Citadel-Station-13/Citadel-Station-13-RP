@@ -1,4 +1,4 @@
-/mob/living/simple_animal/will_eat(var/mob/living/M)
+/mob/living/simple_mob/will_eat(var/mob/living/M)
 	. = ..()
 	if(.)	//insanely negligible performance buff
 		if(istype(M) && hostile && !M.incapacitated(INCAPACITATION_ALL))
