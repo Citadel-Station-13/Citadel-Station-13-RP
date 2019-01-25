@@ -16,7 +16,7 @@
 	active_power_usage = 500
 	circuit = /obj/item/weapon/circuitboard/xenobio2computer
 	var/obj/machinery/xenobio2/manualinjector/injector
-	var/transfer_amount = 5 //VOREStation Edit - This is never set anywhere, and 1 is too slow (1 is the default in the transfer proc).
+	var/transfer_amount
 	var/active
 
 /obj/machinery/computer/xenobio2/Destroy()
@@ -81,7 +81,7 @@
 		data["occupantHealth"] = null
 		data["occupantHealthMax"] = null
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "xenobio_computer.tmpl", "Injector Control Console UI", 470, 450)
 		ui.set_initial_data(data)

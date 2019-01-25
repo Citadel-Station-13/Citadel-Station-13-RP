@@ -213,4 +213,3 @@
 
 /proc/_step_away(ref, trg, max)
 	step_away(ref, trg, max)
-

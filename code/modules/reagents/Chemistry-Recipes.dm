@@ -1,22 +1,3 @@
-
-//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
-// It is filtered into multiple lists within a list.
-// For example:
-// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
-// Note that entries in the list are NOT duplicated. So if a reaction pertains to
-// more than one chemical it will still only appear in only one of the sublists.
-/proc/initialize_chemical_reactions()
-	var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction
-	chemical_reactions_list = list()
-
-	for(var/path in paths)
-		var/datum/chemical_reaction/D = new path()
-		if(D.required_reagents && D.required_reagents.len)
-			var/reagent_id = D.required_reagents[1]
-			if(!chemical_reactions_list[reagent_id])
-				chemical_reactions_list[reagent_id] = list()
-			chemical_reactions_list[reagent_id] += D
-
 //helper that ensures the reaction rate holds after iterating
 //Ex. REACTION_RATE(0.3) means that 30% of the reagents will react each chemistry tick (~2 seconds by default).
 #define REACTION_RATE(rate) (1.0 - (1.0-rate)**(1.0/PROCESS_REACTION_ITER))
@@ -96,7 +77,7 @@
 
 	return progress
 
-/datum/chemical_reaction/proc/process(var/datum/reagents/holder)
+/datum/chemical_reaction/process(var/datum/reagents/holder)
 	//determine how far the reaction can proceed
 	var/list/reaction_limits = list()
 	for(var/reactant in required_reagents)
@@ -712,9 +693,8 @@
 		var/mob/living/L = holder.my_atom
 		if(L.stat != DEAD)
 			e.amount *= 0.5
-	else
-		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
 	e.start()
+	holder.clear_reagents()
 	return
 
 /datum/chemical_reaction/flash_powder
@@ -759,8 +739,7 @@
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
 	empulse(location, round(created_volume / 24), round(created_volume / 20), round(created_volume / 18), round(created_volume / 14), 1)
-	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
+	holder.clear_reagents()
 	return
 
 /datum/chemical_reaction/nitroglycerin
@@ -779,10 +758,9 @@
 		var/mob/living/L = holder.my_atom
 		if(L.stat!=DEAD)
 			e.amount *= 0.5
-	else
-		holder.clear_reagents() //No more powergaming by creating a tiny amount of this
 	e.start()
 
+	holder.clear_reagents()
 	return
 
 /datum/chemical_reaction/napalm
@@ -815,8 +793,7 @@
 	playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 	spawn(0)
 		S.start()
-	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
+	holder.clear_reagents()
 	return
 
 /datum/chemical_reaction/foam
@@ -836,8 +813,7 @@
 	var/datum/effect/effect/system/foam_spread/s = new()
 	s.set_up(created_volume, location, holder, 0)
 	s.start()
-	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
-		holder.clear_reagents()
+	holder.clear_reagents()
 	return
 
 /datum/chemical_reaction/metalfoam
@@ -2268,6 +2244,13 @@
 	required_reagents = list("cornoil" = 2, "honey" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	result = "eggnog"
+	required_reagents = list("milk" = 5, "cream" = 5, "sugar" = 5, "egg" = 3)
+	result_amount = 15
+
 /datum/chemical_reaction/drinks/nuclearwaste_radium
 	name = "Nuclear Waste"
 	id = "nuclearwasterad"
@@ -2331,4 +2314,4 @@
 	id = "biomass"
 	result = "biomass"
 	required_reagents = list("protein" = 1, "sugar" = 1, "phoron" = 1)
-	result_amount = 6	// Roughly 120u per phoron sheet //VOREStation Edit
+	result_amount = 1	// Roughly 20u per phoron sheet

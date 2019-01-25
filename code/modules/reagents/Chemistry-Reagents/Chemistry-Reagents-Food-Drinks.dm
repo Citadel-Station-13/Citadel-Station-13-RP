@@ -1508,6 +1508,16 @@
 	glass_desc = "A concoction that should probably be in an engine, rather than your stomach."
 	glass_icon = DRINK_ICON_NOISY
 
+/datum/reagent/drink/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	description = "A creamy, rich beverage made out of whisked eggs, milk and sugar, for when you feel like celebrating the winter holidays."
+	taste_description = "thick cream and vanilla"
+	color = "#fff3c1" // rgb(255, 243, 193)
+
+	glass_name = "Eggnog"
+	glass_desc = "You can't egg-nore the holiday cheer all around you"
+
 /datum/reagent/drink/nuclearwaste
 	name = "Nuclear Waste"
 	id = "nuclearwaste"
