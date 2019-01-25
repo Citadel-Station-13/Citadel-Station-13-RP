@@ -73,7 +73,7 @@
 		return ..()
 
 /obj/machinery/computer/telescience/proc/get_max_allowed_distance()
-	return Floor(crystals.len * telepad.efficiency * powerCoefficient)
+	return FLOOR(crystals.len * telepad.efficiency * powerCoefficient, 1)
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	src.attack_hand(user)
@@ -328,7 +328,7 @@
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
 		distance = CLAMP(new_pow, 1, get_max_allowed_distance())
-		distance = Floor(distance)
+		distance = FLOOR(distance, 1)
 
 	if(href_list["setz"])
 		var/new_z = text2num(href_list["setz"])

@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/Initialize(timeofday)
 	setupgenetics() //to set the mutations' place in structural enzymes, so initializers know where to put mutations.
 	initialized = INITIALIZATION_INNEW_MAPLOAD
-	to_world_log("Initializing objects")
+	log_world("Initializing objects")
 	admin_notice("<span class='danger'>Initializing objects</span>", R_DEBUG)
 	InitializeAtoms()
 	return ..()

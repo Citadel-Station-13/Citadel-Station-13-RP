@@ -93,9 +93,9 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		var/high_g = high_color_list[2]
 		var/high_b = high_color_list[3]
 
-		var/new_r = Interpolate(low_r, high_r, weight = lerp_weight)
-		var/new_g = Interpolate(low_g, high_g, weight = lerp_weight)
-		var/new_b = Interpolate(low_b, high_b, weight = lerp_weight)
+		var/new_r = LERP(low_r, high_r, lerp_weight)
+		var/new_g = LERP(low_g, high_g, lerp_weight)
+		var/new_b = LERP(low_b, high_b, lerp_weight)
 
 		new_color = rgb(new_r, new_g, new_b)
 

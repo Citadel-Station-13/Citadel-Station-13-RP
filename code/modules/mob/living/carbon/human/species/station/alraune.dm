@@ -113,6 +113,7 @@
 
 	if(H.wear_suit && (H.wear_suit.item_flags & STOPPRESSUREDAMAGE) && H.head && (H.head.item_flags & STOPPRESSUREDAMAGE))
 		fullysealed = TRUE
+
 	else // find out if local gas mixture is enough to override use of internals
 		var/datum/gas_mixture/environment = H.loc.return_air()
 		var/envpressure = environment.return_pressure()
@@ -207,7 +208,7 @@
 
 	var/co2buff = 0
 	if(inhaling)
-		co2buff = (Clamp(inhale_pp, 0, minimum_breath_pressure))/minimum_breath_pressure //returns a value between 0 and 1.
+		co2buff = (CLAMP(inhale_pp, 0, minimum_breath_pressure))/minimum_breath_pressure //returns a value between 0 and 1.
 
 	var/light_amount = fullysealed ? H.getlightlevel() : H.getlightlevel()/5 // if they're covered, they're not going to get much light on them.
 
@@ -222,7 +223,7 @@
 	if(toxins_pp > safe_toxins_max)
 		var/ratio = (poison/safe_toxins_max) * 10
 		if(H.reagents)
-			H.reagents.add_reagent("toxin", Clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
+			H.reagents.add_reagent("toxin", CLAMP(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
 			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
 		H.phoron_alert = max(H.phoron_alert, 1)
 	else

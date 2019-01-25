@@ -1,11 +1,3 @@
-//print an error message to world.log
-
-// Fall back to using old format if we are not using rust-g
-#ifdef RUST_G
-	#define WRITE_LOG(log, text) call(RUST_G, "log_write")(log, text)
-#else
-	#define WRITE_LOG(log, text) log << "\[[time_stamp()]][text]"
-#endif
 
 /* For logging round startup. */
 /proc/start_log(log)
@@ -23,10 +15,6 @@
 
 /proc/error(msg)
 	world.log << "## ERROR: [msg]"
-
-//print a testing-mode debug message to world.log
-/proc/testing(msg)
-	world.log << "## TESTING: [msg]"
 
 /proc/log_admin(text)
 	admin_log.Add(text)
