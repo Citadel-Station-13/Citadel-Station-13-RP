@@ -86,7 +86,7 @@ Nurse Family
 	var/egg_inject_chance = 5
 
 /mob/living/simple_animal/hostile/giant_spider/nurse/hat
-	desc = "Furry and beige, it makes you shudder to look at it. This one has brilliant green eyes and a tiny nurse hat."
+	desc = "Furry and beige, it makes you shudder to look at it. This one has brilliant green eyes and a tiny nurse hat"
 	icon_state = "nursemed"
 	icon_living = "nursemed"
 	icon_dead = "nursemed_dead"
@@ -197,9 +197,9 @@ Nurse Family
 		for(var/I = 1 to spiderling_count)
 			if(prob(10) && src)
 				var/mob/living/simple_animal/hostile/giant_spider/swarmling = new swarmling_type(src.loc)
-				var/swarm_health = Floor(swarmling.maxHealth * 0.4)
-				var/swarm_dam_lower = Floor(melee_damage_lower * 0.4)
-				var/swarm_dam_upper = Floor(melee_damage_upper * 0.4)
+				var/swarm_health = FLOOR(swarmling.maxHealth * 0.4, 1)
+				var/swarm_dam_lower = FLOOR(melee_damage_lower * 0.4, 1)
+				var/swarm_dam_upper = FLOOR(melee_damage_upper * 0.4, 1)
 				swarmling.name = "spiderling"
 				swarmling.maxHealth = swarm_health
 				swarmling.health = swarm_health

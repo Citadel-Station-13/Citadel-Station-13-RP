@@ -179,7 +179,6 @@
 	var/follow_until_time = 0		// Give up following when we reach this time (0 = never)
 	var/annoyed = 0					// Do people keep distract-kiting us?
 	////// ////// //////
-	var/life_disabled = 0           //VOREStation Edit -- For performance reasons
 
 /mob/living/simple_animal/New()
 	..()
@@ -317,12 +316,6 @@
 	else
 		ma.icon_state = initial(icon_state)
 
-	//VOREStation edit start
-	var/vore_icon_state = update_vore_icon()
-	if(vore_icon_state)
-		ma.icon_state = vore_icon_state
-	//VOREStation edit end
-
 	if(has_hands)
 		if(r_hand_sprite)
 			ma.overlays += r_hand_sprite
@@ -352,12 +345,6 @@
 
 
 /mob/living/simple_animal/Life()
-
-	//VOREStation Edit
-	if(life_disabled)
-		return 0
-	//VOREStation Edit End
-
 	..()
 
 	//Health
@@ -414,21 +401,8 @@
 				var/moving_to = 0 // otherwise it always picks 4, fuck if I know.   Did I mention fuck BYOND
 				moving_to = pick(cardinal)
 				dir = moving_to			//How about we turn them the direction they are moving, yay.
-				var/turf/T = get_step(src,moving_to)
-				if(avoid_turf(T))
-					return
-				Move(T)
+				Move(get_step(src,moving_to))
 				lifes_since_move = 0
-
-// Checks to see if mob doesn't like this kind of turf
-/mob/living/simple_animal/proc/avoid_turf(var/turf/turf)
-	if(!turf)
-		return TRUE //Avoid the nothing, yes
-
-	if(istype(turf,/turf/simulated/sky))
-		return TRUE //Mobs aren't that stupid, probably
-
-	return FALSE //Override it on stuff to adjust
 
 // Handles random chatter, called from Life() when stance = STANCE_IDLE
 /mob/living/simple_animal/proc/handle_idle_speaking()
@@ -591,21 +565,14 @@
 	if(act)
 		..(act, type, desc)
 
-/mob/living/simple_animal/proc/visible_emote(var/act_desc)
-	custom_emote(1, act_desc)
-
-/mob/living/simple_animal/proc/audible_emote(var/act_desc)
-	custom_emote(2, act_desc)
-
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
 	ai_log("bullet_act() I was shot by: [Proj.firer]",2)
 
-	/* VOREStation Edit - Ace doesn't like bonus SA damage.
 	//Projectiles with bonus SA damage
 	if(!Proj.nodamage)
 		if(!Proj.SA_vulnerability || Proj.SA_vulnerability == intelligence_level)
 			Proj.damage += Proj.SA_bonus_damage
-	*/ // VOREStation Edit End
+
 	. = ..()
 
 	if(Proj.firer)
@@ -710,9 +677,9 @@
 
 //SA vs SA basically
 /mob/living/simple_animal/attack_generic(var/mob/attacker)
-	..()
 	if(attacker)
 		react_to_attack(attacker)
+	return ..()
 
 /mob/living/simple_animal/movement_delay()
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
@@ -1280,8 +1247,11 @@
 /mob/living/simple_animal/proc/PunchTarget()
 	if(!Adjacent(target_mob))
 		return
-	if(!client)
-		sleep(rand(melee_attack_minDelay, melee_attack_maxDelay))
+	if(!canClick())
+		return
+	setClickCooldown(get_attack_speed())
+//	if(!client)
+//		sleep(rand(melee_attack_minDelay, melee_attack_maxDelay))
 	if(isliving(target_mob))
 		var/mob/living/L = target_mob
 
@@ -1322,13 +1292,18 @@
 
 //The actual top-level ranged attack proc
 /mob/living/simple_animal/proc/ShootTarget()
+	if(!canClick())
+		return FALSE
+
+	setClickCooldown(get_attack_speed())
+
 	var/target = target_mob
 	var/tturf = get_turf(target)
 
 	if((firing_lines && !client) && !CheckFiringLine(tturf))
 		step_rand(src)
 		face_atom(tturf)
-		return 0
+		return FALSE
 
 	visible_message("<span class='danger'><b>[src]</b> fires at [target]!</span>")
 	if(rapid)
@@ -1349,7 +1324,7 @@
 		if(casingtype)
 			new casingtype
 
-	return 1
+	return TRUE
 
 //Check firing lines for faction_friends (if we're not cooperative, we don't care)
 /mob/living/simple_animal/proc/CheckFiringLine(var/turf/tturf)
@@ -1377,21 +1352,19 @@
 	return 0
 
 //Shoot a bullet at someone
-/mob/living/simple_animal/proc/Shoot(var/target, var/start, var/user, var/bullet = 0)
+/mob/living/simple_animal/proc/Shoot(atom/target, atom/start, mob/user, var/bullet = 0)
 	if(target == start)
 		return
 
-	var/obj/item/projectile/A = new projectiletype(user:loc)
+	var/obj/item/projectile/A = new projectiletype(user.loc)
 	playsound(user, projectilesound, 100, 1)
 	if(!A)	return
 
 //	if (!istype(target, /turf))
 //		qdel(A)
 //		return
-
-	A.firer = src
-	A.launch(target)
-	return
+	A.old_style_target(target)
+	A.fire()
 
 //We can't see the target
 /mob/living/simple_animal/proc/LoseTarget()
@@ -1582,13 +1555,13 @@
 		return 0
 	else
 		return armorval
-
+/*
 // Force it to target something
 /mob/living/simple_animal/proc/taunt(var/mob/living/new_target, var/forced = FALSE)
 	if(intelligence_level == SA_HUMANOID && !forced)
 		return
 	set_target(new_target)
-
+*/
 /mob/living/simple_animal/is_sentient()
 	return intelligence_level != SA_PLANT && intelligence_level != SA_ROBOTIC
 

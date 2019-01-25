@@ -269,7 +269,6 @@ var/global/list/##LIST_NAME = list();\
 	return ..();\
 	}\
 
-
 //'Normal'ness						 v								 v								 v
 //Various types of colorblindness	R2R		R2G		R2B		G2R		G2G		G2B		B2R		B2G		B2B
 #define MATRIX_Monochromia 		list(0.33,	0.33,	0.33,	0.59,	0.59,	0.59,	0.11,	0.11,	0.11)
@@ -290,6 +289,11 @@ var/global/list/##LIST_NAME = list();\
 #define IS_WIRECUTTER		"wirecutter"
 #define IS_WRENCH			"wrench"
 
+
+// Diagonal movement
+#define FIRST_DIAG_STEP 1
+#define SECOND_DIAG_STEP 2
+
 // RCD modes. Used on the RCD, and gets passed to an object's rcd_act() when an RCD is used on it, to determine what happens.
 #define RCD_FLOORWALL		"Floor / Wall"		// Builds plating on space/ground/open tiles. Builds a wall when on floors. Finishes walls when used on girders.
 #define RCD_AIRLOCK			"Airlock"			// Builds an airlock on the tile if one isn't already there.
@@ -300,6 +304,11 @@ var/global/list/##LIST_NAME = list();\
 #define RCD_VALUE_DELAY		"delay"
 #define RCD_VALUE_COST		"cost"
 
-
 #define RCD_SHEETS_PER_MATTER_UNIT	4	// Each physical material sheet is worth four matter units.
 #define RCD_MAX_CAPACITY			30 * RCD_SHEETS_PER_MATTER_UNIT
+
+// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
+#define RAD_LEVEL_LOW 0.01 // Around the level at which radiation starts to become harmful
+#define RAD_LEVEL_MODERATE 10
+#define RAD_LEVEL_HIGH 25
+#define RAD_LEVEL_VERY_HIGH 50

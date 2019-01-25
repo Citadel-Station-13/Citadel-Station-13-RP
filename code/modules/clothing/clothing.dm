@@ -473,6 +473,7 @@
 
 	var/water_speed = 0		//Speed boost/decrease in water, lower/negative values mean more speed
 	var/snow_speed = 0		//Speed boost/decrease on snow, lower/negative values mean more speed
+	var/rock_climbing = FALSE // If true, allows climbing cliffs with clickdrag.
 
 	var/step_volume_mod = 1	//How quiet or loud footsteps in this shoe are
 
@@ -553,13 +554,6 @@
 	return ..()
 
 /obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
-	if(prob(1) && !recent_squish) //VOREStation edit begin
-		recent_squish = 1
-		spawn(100)
-			recent_squish = 0
-		for(var/mob/living/M in contents)
-			var/emote = pick(inside_emotes)
-			M << emote //VOREStation edit end
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()

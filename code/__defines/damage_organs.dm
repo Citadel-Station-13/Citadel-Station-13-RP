@@ -7,6 +7,7 @@
 #define CLONE     "clone"
 #define HALLOSS   "halloss"
 #define ELECTROCUTE "electrocute"
+#define BIOACID   "bioacid"
 
 #define CUT       "cut"
 #define BRUISE    "bruise"
@@ -49,11 +50,10 @@
 #define ORGAN_ASSISTED 1 // Like pacemakers, not robotic
 #define ORGAN_ROBOT    2 // Fully robotic, no organic parts
 #define ORGAN_LIFELIKE 3 // Robotic, made to appear organic
-#define ORGAN_NANOFORM 4 // VOREStation Add - Fully nanoswarm organ
 
 //Germs and infections.
-#define GERM_LEVEL_AMBIENT  30 // Maximum germ level you can reach by standing still.		//CITADEL CHANGE - reduces this value from 110 to 30 to make infections harder to get
-#define GERM_LEVEL_MOVE_CAP 110 // Maximum germ level you can reach by running around.	//CITADEL CHANGE - reduces this value from 200 to 110 to make infections harder to get
+#define GERM_LEVEL_AMBIENT  110 // Maximum germ level you can reach by standing still.
+#define GERM_LEVEL_MOVE_CAP 200 // Maximum germ level you can reach by running around.
 
 #define INFECTION_LEVEL_ONE   100
 #define INFECTION_LEVEL_TWO   500

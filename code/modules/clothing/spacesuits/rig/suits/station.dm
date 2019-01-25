@@ -2,7 +2,7 @@
 	camera_networks = list(NETWORK_MINE)
 
 /obj/item/clothing/head/helmet/space/rig/ce
-	camera_networks = list(NETWORK_ENGINEERING,NETWORK_COMMAND)
+	camera_networks = list(NETWORK_ENGINEERING)
 
 /obj/item/clothing/head/helmet/space/rig/eva
 	light_overlay = "helmet_light_dual"
@@ -10,7 +10,7 @@
 
 /obj/item/clothing/head/helmet/space/rig/hazmat
 	light_overlay = "hardhat_light"
-	camera_networks = list(NETWORK_RESEARCH,NETWORK_COMMAND)
+	camera_networks = list(NETWORK_RESEARCH)
 
 /obj/item/clothing/head/helmet/space/rig/medical
 	camera_networks = list(NETWORK_MEDICAL)
@@ -74,6 +74,8 @@
 	offline_vision_restriction = 2
 	emp_protection = -20
 	siemens_coefficient= 0.75
+	rigsuit_max_pressure = 15 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
+	rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/industrial
 
@@ -97,8 +99,8 @@
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/device/drill,
 		/obj/item/rig_module/device/orescanner,
-		/obj/item/rig_module/vision/material,
-		/obj/item/rig_module/maneuvering_jets) //VOREStation Edit - Added maneuvering jets
+		/obj/item/rig_module/vision/meson
+		)
 
 //Engineering suit
 /obj/item/weapon/rig/eva
@@ -155,6 +157,8 @@
 	offline_slowdown = 0
 	offline_vision_restriction = 0
 	siemens_coefficient= 0.75
+	rigsuit_max_pressure = 20 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
+	rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/ce
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/ce

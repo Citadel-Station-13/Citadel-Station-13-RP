@@ -128,7 +128,7 @@
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
 				var/n_amount = round(input("Enter amount", "New amount") as num)
-				n_amount = Clamp(n_amount, 0, 20)
+				n_amount = CLAMP(n_amount, 0, 20)
 				if (!item_list[item_name] || !Adjacent(usr)) return
 				transaction_amount += (n_amount - item_list[item_name]) * price_list[item_name]
 				if(!n_amount)
@@ -519,21 +519,28 @@
 
 /obj/machinery/cash_register/command
 	account_to_connect = "Command"
+	..()
 
 /obj/machinery/cash_register/medical
 	account_to_connect = "Medical"
+	..()
 
 /obj/machinery/cash_register/engineering
 	account_to_connect = "Engineering"
+	..()
 
 /obj/machinery/cash_register/science
 	account_to_connect = "Science"
+	..()
 
 /obj/machinery/cash_register/security
 	account_to_connect = "Security"
+	..()
 
 /obj/machinery/cash_register/cargo
 	account_to_connect = "Cargo"
+	..()
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = "Civilian"
+	..()

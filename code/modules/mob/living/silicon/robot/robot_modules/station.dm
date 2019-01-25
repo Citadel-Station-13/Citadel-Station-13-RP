@@ -518,7 +518,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/handcuffs/cyborg(src)
 	src.modules += new /obj/item/weapon/melee/baton/robot(src)
 	src.modules += new /obj/item/weapon/gun/energy/taser/mounted/cyborg(src)
-	// src.modules += new /obj/item/weapon/gun/energy/taser/xeno/sec/robot(src) // VOREStation Edit - We don't need these
+	src.modules += new /obj/item/weapon/gun/energy/taser/xeno/sec/robot(src)
 	src.modules += new /obj/item/taperoll/police(src)
 	src.modules += new /obj/item/weapon/reagent_containers/spray/pepper(src)
 	src.emag = new /obj/item/weapon/gun/energy/laser/mounted(src)
@@ -791,7 +791,7 @@ var/global/list/robot_modules = list(
 /obj/item/weapon/robot_module/robot/security/combat/New()
 	..()
 	src.modules += new /obj/item/device/flash(src)
-	//src.modules += new /obj/item/borg/sight/thermal(src) // VOREStation Edit
+	src.modules += new /obj/item/borg/sight/thermal(src)
 	src.modules += new /obj/item/weapon/gun/energy/laser/mounted(src)
 	src.modules += new /obj/item/weapon/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/borg/combat/shield(src)
