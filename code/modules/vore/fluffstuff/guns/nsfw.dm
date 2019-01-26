@@ -134,7 +134,7 @@
 	add_overlay(barrel_color)
 
 	//Charge bar
-	var/ratio = Ceiling((charge_left / max_charge) * charge_sections)
+	var/ratio = CEILING((charge_left / max_charge) * charge_sections, 1)
 	for(var/i = 0, i < ratio, i++)
 		var/image/charge_bar = image(icon, icon_state = "[initial(icon_state)]_charge")
 		charge_bar.pixel_x = i

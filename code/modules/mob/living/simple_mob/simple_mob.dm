@@ -408,25 +408,22 @@
 
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
-/mob/living/simple_mob/proc/EatTarget()
+/mob/living/simple_mob/proc/EatTarget(mob/living/target_mob)
 	ai_log_mob("vr/EatTarget() [target_mob]",2)
-	stop_automated_movement = 1
+	if(ai_holder)
+		ai_holder.set_busy(TRUE)
 	var/old_target = target_mob
-	handle_stance(STANCE_BUSY)
 	. = animal_nom(target_mob)
 	playsound(src, swallowsound, 50, 1)
 	update_icon()
 
 	if(.)
 		// If we succesfully ate them, lose the target
-		LoseTarget()
+		if(ai_holder)
+			ai_holder.LoseTarget()
 		return old_target
-	else if(old_target == target_mob)
-		// If we didn't but they are still our target, go back to attack.
-		// but don't run the handler immediately, wait until next tick
-		// Otherwise we'll be in a possibly infinate loop
-		set_stance(STANCE_ATTACK)
-	stop_automated_movement = 0
+	if(ai_holder)
+		ai_holder.set_busy(FALSE)
 
 // Make sure you don't call ..() on this one, otherwise you duplicate work.
 /mob/living/simple_mob/init_vore()
@@ -479,12 +476,12 @@
 /mob/living/simple_mob/Bumped(var/atom/movable/AM, yes)
 	if(ismob(AM))
 		var/mob/tmob = AM
-		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey) //check if they decide to eat. Includes sanity check to prevent cannibalism.
+		if(will_eat(tmob) && !istype(tmob, type) && prob(vore_bump_chance) && !ckey && ai_holder) //check if they decide to eat. Includes sanity check to prevent cannibalism.
 			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
 				tmob.Weaken(5)
 			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
-			stop_automated_movement = 1
+			ai_holder.set_busy(TRUE)
 			animal_nom(tmob)
 			update_icon()
-			stop_automated_movement = 0
+			ai_holder.set_busy(FALSE)
 	return ..()

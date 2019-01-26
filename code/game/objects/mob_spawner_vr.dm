@@ -9,8 +9,8 @@
 	var/spawn_delay = 10 MINUTES
 
 	var/list/spawn_types = list(
-	/mob/living/simple_mob/corgi = 100,
-	/mob/living/simple_mob/cat = 25
+	/mob/living/simple_mob/animal/passive/corgi = 100,
+	/mob/living/simple_mob/animal/passive/cat = 25
 	)
 
 	var/total_spawns = -1 //Total mob spawns, over all time, -1 for no limit
