@@ -36,12 +36,6 @@
 	var/threaten_sound = null			// Sound file played when the mob's AI calls threaten_target() for the first time.
 	var/stand_down_sound = null			// Sound file played when the mob's AI loses sight of the threatened target.
 
-
-
-
-
-
-
 // Subtypes.
 
 // This one's pretty dumb, but pirates are dumb anyways and it makes for a good test.

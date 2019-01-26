@@ -75,3 +75,37 @@
 	icon_living = "koi-swim"
 	icon_dead = "koi-dead"
 
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous
+	desc = "A genetic marvel, combining the docility and aesthetics of the koi with some of the resiliency and cunning of the noble space carp."
+	health = 50
+	maxHealth = 50
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/Initialize()
+	. = ..()
+	create_reagents(60)
+	reagents.add_reagent("toxin", 45)
+	reagents.add_reagent("impedrezene", 15)
+
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/Life()
+	..()
+	if(isbelly(loc) && prob(10))
+		var/obj/belly/B = loc
+		sting(B.owner)
+
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/apply_attack(atom/A)
+	sting(A)
+	return ..()
+
+/mob/living/simple_animal/fish/koi/poisonous/proc/sting(mob/living/M, silent = FALSE, chance = 75)
+	if(prob(chance))
+		if(!M.reagents)
+			return FALSE
+		visible_message("<span class='warning'>\The [src][is_dead()?"'s corpse":""] flails at [M]!</span>")
+		SpinAnimation(7,1)
+		if(!silent)
+			to_chat(M, "<span class='warning'>You feel a tiny prick.</span>")
+		M.reagents.add_reagent("toxin", 2)
+		M.reagents.add_reagent("impedrezene", 1)
+		return TRUE
+	return FALSE

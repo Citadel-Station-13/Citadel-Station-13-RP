@@ -10,7 +10,7 @@ kills them.
 TODO: Make them light up and heat the air when exposed to oxygen.
 */
 
-/mob/living/simple_animal/retaliate/gaslamp
+/mob/living/simple_mob/animal/gaslamp
 	name = "gaslamp"
 	desc = "Some sort of floaty alien with a warm glow. This creature is endemic to Virgo-3B."
 	tt_desc = "Semaeostomeae virginus"
@@ -23,9 +23,6 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	maxHealth = 100
 	health = 100
 	move_to_delay = 4
-
-	speak_chance = 1
-	emote_see = list("looms", "sways gently")
 
 	speed = 2
 
@@ -50,8 +47,6 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	min_n2 = 0
 	max_n2 = 0
 
-// Activate Noms!
-/mob/living/simple_animal/retaliate/gaslamp
 	vore_active = 1
 	vore_capacity = 2
 	vore_bump_chance = 90 //they're frickin' jellyfish anenome filterfeeders, get tentacled
@@ -65,3 +60,9 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	vore_stomach_name = "internal chamber"
 	vore_stomach_flavor	= "You are squeezed into the tight embrace of the alien creature's warm and cozy insides."
 	vore_icons = SA_ICON_LIVING
+
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	say_list_type = /datum/say_list/gaslamp
+
+/datum/say_list/gaslamp
+	emote_see = list("looms", "sways gently")

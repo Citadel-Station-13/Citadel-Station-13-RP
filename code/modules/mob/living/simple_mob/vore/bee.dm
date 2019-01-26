@@ -41,5 +41,5 @@
 
 // Activate Noms!
 /mob/living/simple_animal/retaliate/bee
-	vore_active = 1
+	vore_active = TRUE
 	vore_icons = SA_ICON_LIVING

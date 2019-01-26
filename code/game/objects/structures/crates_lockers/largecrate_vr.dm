@@ -51,7 +51,7 @@
 						/mob/living/simple_mob/hostile/wolf,
 						/mob/living/simple_mob/hostile/bear;0.5,
 						/mob/living/simple_mob/hostile/bear/brown;0.5,
-						/mob/living/simple_mob/hostile/carp,
+						/mob/living/simple_mob/animal/space/carp,
 						/mob/living/simple_mob/hostile/mimic,
 						/mob/living/simple_mob/hostile/rat,
 						/mob/living/simple_mob/hostile/rat/passive,
@@ -63,7 +63,7 @@
 	starts_with = list(/mob/living/simple_mob/animal/space/alien)
 
 /obj/structure/largecrate/animal/dangerous/Initialize()
-	starts_with = list(pick(/mob/living/simple_mob/hostile/carp/pike,
+	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/pike,
 						/mob/living/simple_mob/hostile/deathclaw,
 						/mob/living/simple_mob/hostile/dino,
 						/mob/living/simple_mob/animal/space/alien,
