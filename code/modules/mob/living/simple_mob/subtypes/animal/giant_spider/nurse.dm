@@ -24,7 +24,7 @@
 	var/fed = 0 // Counter for how many egg laying 'charges' the spider has.
 	var/laying_eggs = FALSE	// Only allow one set of eggs to be laid at once.
 	var/egg_inject_chance = 25 // One in four chance to get eggs.
-	var/egg_type = /obj/effect/spider/eggcluster/small
+	var/spider_egg_type = /obj/effect/spider/eggcluster/small
 	var/web_type = /obj/effect/spider/stickyweb/dark
 
 
@@ -38,7 +38,7 @@
 			for(var/obj/effect/spider/eggcluster/E in O.implants)
 				eggcount++
 			if(!eggcount)
-				var/eggs = new egg_type(O, src)
+				var/eggs = new spider_egg_type(O, src)
 				O.implants += eggs
 				to_chat(H, span("critical", "\The [src] injects something into your [O.name]!") ) // Oh god its laying eggs in me!
 
@@ -176,7 +176,7 @@
 		return FALSE // Spamclick protection.
 
 	set_AI_busy(FALSE)
-	new egg_type(T)
+	new spider_egg_type(T)
 	fed--
 	laying_eggs = FALSE
 	return TRUE

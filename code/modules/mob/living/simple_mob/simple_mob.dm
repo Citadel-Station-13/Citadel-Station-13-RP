@@ -348,28 +348,28 @@
 
 /mob/living/simple_mob/proc/will_eat(var/mob/living/M)
 	if(client) //You do this yourself, dick!
-		ai_log("vr/wont eat [M] because we're player-controlled", 3)
+		ai_log_mob("vr/wont eat [M] because we're player-controlled", 3)
 		return 0
 	if(!istype(M)) //Can't eat 'em if they ain't /mob/living
-		ai_log("vr/wont eat [M] because they are not /mob/living", 3)
+		ai_log_mob("vr/wont eat [M] because they are not /mob/living", 3)
 		return 0
 	if(src == M) //Don't eat YOURSELF dork
-		ai_log("vr/won't eat [M] because it's me!", 3)
+		ai_log_mob("vr/won't eat [M] because it's me!", 3)
 		return 0
 	if(vore_ignores_undigestable && !M.digestable) //Don't eat people with nogurgle prefs
-		ai_log("vr/wont eat [M] because I am picky", 3)
+		ai_log_mob("vr/wont eat [M] because I am picky", 3)
 		return 0
 	if(!M.allowmobvore) // Don't eat people who don't want to be ate by mobs
-		ai_log("vr/wont eat [M] because they don't allow mob vore", 3)
+		ai_log_mob("vr/wont eat [M] because they don't allow mob vore", 3)
 		return 0
 	if(M in prey_excludes) // They're excluded
-		ai_log("vr/wont eat [M] because they are excluded", 3)
+		ai_log_mob("vr/wont eat [M] because they are excluded", 3)
 		return 0
 	if(M.size_multiplier < vore_min_size || M.size_multiplier > vore_max_size)
-		ai_log("vr/wont eat [M] because they too small or too big", 3)
+		ai_log_mob("vr/wont eat [M] because they too small or too big", 3)
 		return 0
 	if(vore_capacity != 0 && (vore_fullness >= vore_capacity)) // We're too full to fit them
-		ai_log("vr/wont eat [M] because I am too full", 3)
+		ai_log_mob("vr/wont eat [M] because I am too full", 3)
 		return 0
 	return 1
 
@@ -378,7 +378,7 @@
 	if(myid)
 		return myid
 
-/mob/living/simple_mob/proc/CanPounceTarget() //returns either FALSE or a %chance of success
+/mob/living/simple_mob/proc/CanPounceTarget(mob/living/target_mob) //returns either FALSE or a %chance of success
 	if(!target_mob.canmove || issilicon(target_mob) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
 		return FALSE
 	if(!prob(vore_pounce_chance)) //mob doesn't want to pounce
@@ -392,7 +392,7 @@
 		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
 
 
-/mob/living/simple_mob/proc/PounceTarget(var/successrate = 100)
+/mob/living/simple_mob/proc/PounceTarget(mob/living/target_mob, successrate = 100)
 	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
 	if(prob(successrate)) // pounce success!
 		target_mob.Weaken(5)
@@ -409,7 +409,7 @@
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
 /mob/living/simple_mob/proc/EatTarget()
-	ai_log("vr/EatTarget() [target_mob]",2)
+	ai_log_mob("vr/EatTarget() [target_mob]",2)
 	stop_automated_movement = 1
 	var/old_target = target_mob
 	handle_stance(STANCE_BUSY)

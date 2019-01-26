@@ -157,9 +157,9 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	anchored = 1
 	invisibility = 101
 	spawn_types = list(
-	/mob/living/simple_mob/retaliate/gaslamp = 20,
+	/mob/living/simple_mob/animal/gaslamp = 20,
 	/mob/living/simple_mob/otie/feral = 10,
-	/mob/living/simple_mob/hostile/dino/virgo3b = 5,
+	/mob/living/simple_mob/animal/dino/virgo3b = 5,
 	/mob/living/simple_mob/hostile/dragon/virgo3b = 1
 	)
 

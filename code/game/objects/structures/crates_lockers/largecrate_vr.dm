@@ -37,6 +37,7 @@
 	else
 		return attack_hand(user)
 
+/* TEMPORARY REMOVAL - READD ALL THESE ASAP
 /obj/structure/largecrate/animal/pred
 	name = "Predator carrier"
 	starts_with = list(/mob/living/simple_mob/catgirl)
@@ -74,6 +75,7 @@
 						/mob/living/simple_mob/otie/red,
 						/mob/living/simple_mob/hostile/corrupthound))
 	return ..()
+*/
 
 /obj/structure/largecrate/animal/guardbeast
 	name = "VARMAcorp autoNOMous security solution"
@@ -114,6 +116,7 @@
 		taped = 0
 	..()
 
+/* TEMPORARY REMOVAL
 /obj/structure/largecrate/animal/catgirl
 	name = "Catgirl Crate"
 	desc = "A sketchy looking crate with airholes that seems to have had most marks and stickers removed. You can almost make out 'genetically-engineered subject' written on it."
@@ -123,6 +126,8 @@
 	name = "Wolfgirl Crate"
 	desc = "A sketchy looking crate with airholes that shakes and thuds every now and then. Someone seems to be demanding they be let out."
 	starts_with = list(/mob/living/simple_mob/retaliate/wolfgirl)
+*/
+
 
 /obj/structure/largecrate/animal/fennec
 	name = "Fennec Crate"

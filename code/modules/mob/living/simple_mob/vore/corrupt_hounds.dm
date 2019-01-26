@@ -7,12 +7,9 @@
 	icon_dead = "badboi-dead"
 	icon_rest = "badboi_rest"
 	faction = "corrupt"
-	intelligence_level = SA_ROBOTIC
 
 	maxHealth = 200
 	health = 200
-
-	investigates = TRUE
 
 	melee_damage_lower = 10
 	melee_damage_upper = 25
@@ -49,9 +46,6 @@
 	buckle_movable = TRUE
 	buckle_lying = FALSE
 
-	var/image/eye_layer = null
-
-
 	vore_active = TRUE
 	vore_capacity = 1
 	vore_pounce_chance = 15
@@ -80,13 +74,15 @@
 	vore_pounce_chance = 40
 
 	attacktext = list("malsnuggled","scrunched","squeezed","assaulted","violated")
+	say_list_type = /datum/say_list/corrupthound/prettyboi
+
+/datum/say_list/corrupthound/prettyboi
 	speak = list("I FEEL SOFT.","FEED ME!","Feelin' fine... So fine!","F-F-F-F-darn.","Delicious!","Still craving meat...","PET ME!","I am become softness.","I AM BIG MEAN HUG MACHINE!","Honk...")
 	speak_emote = list("growls", "declares", "groans", "distorts")
 	emote_hear = list("jitters and snaps.", "lets out some awkwardly distorted kitten noises.", "awoos mechanically", "growls.", "emits some soft distorted melody.", "gurgles ferociously.", "lets out a distorted beep.", "borks.", "lets out a broken howl.")
 	emote_see = list("stares ferociously.", "snarls.", "jitters and snaps.", "convulses.", "suddenly hugs something unseen.", "appears to howl unaudibly.", "nuzzles at something unseen.", "dissociates for a moment.", "twitches.")
 	say_maybe_target = list("MEAT?", "NEW FRIEND?", "WHAT!", "Not again. NOT AGAIN!", "FRIEND?")
 	say_got_target = list("HERE COMES BIG MEAN HUG MACHINE!", "I'LL BE GENTLE!", "FUEL ME FRIEND!", "I*M SO SORRY!", "YUMMY TREAT DETECTED!", "LOVE ME!", "Not again. NOT AGAIN!")
-
 
 /mob/living/simple_mob/mechanical/corrupthound/isSynthetic()
 	return TRUE
