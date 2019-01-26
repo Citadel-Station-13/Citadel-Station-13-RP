@@ -216,7 +216,7 @@
 	desc = "A (formerly) flying saucer that is now embedded into the mountain, yet it still seems to be running..."
 	mappath = 'maps/submaps/surface_submaps/mountains/crashed_ufo.dmm'
 	cost = 4
-	discard_prob = 8
+	discard_prob = 25
 
 /datum/map_template/surface/mountains/deep/Scave1
 	name = "Spider Cave 1"
