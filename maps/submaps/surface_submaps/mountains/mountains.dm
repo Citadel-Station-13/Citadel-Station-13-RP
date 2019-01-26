@@ -155,7 +155,7 @@
 	name = "Mine Vault 3"
 	desc = "A small vault with potential loot. Also a horrible suprise."
 	mappath = 'maps/submaps/surface_submaps/mountains/vault3.dmm'
-	cost = 15
+	cost = 3
 
 /datum/map_template/surface/mountains/normal/IceCave1A
 	name = "Ice Cave 1A"
@@ -191,7 +191,7 @@
 	name = "Crashed Cargo Shuttle"
 	desc = "A severely damaged military shuttle, its cargo seems to remain intact."
 	mappath = 'maps/submaps/surface_submaps/mountains/crashedcontainmentshuttle.dmm'
-	cost = 6
+	cost = 5
 
 /datum/map_template/surface/mountains/normal/deadspy
 	name = "Spy Remains"
