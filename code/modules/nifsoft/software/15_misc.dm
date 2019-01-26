@@ -122,7 +122,7 @@
 	name = "Mass Alteration"
 	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
 	list_pos = NIF_SIZECHANGE
-	cost = 1250
+	cost = 750
 	wear = 10
 
 	activate()
@@ -146,10 +146,7 @@
 			else
 				to_chat(nif.human,"<span class='warning'>You feel sick as your mass is rearranged!</span>")
 
-			nif.human.Confuse(10)
-
-			if(prob(25))
-				nif.human.vomit()
+			nif.human.Stun(10)
 
 			spawn(0)
 				deactivate()
