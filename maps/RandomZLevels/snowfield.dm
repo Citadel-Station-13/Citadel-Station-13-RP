@@ -18,7 +18,7 @@
 	mobcountmax = 100
 	floracountmax = 7000
 	valid_mobs = list(/mob/living/simple_mob/hostile/samak/polar, /mob/living/simple_mob/hostile/diyaab/polar,
-					/mob/living/simple_mob/hostile/shantak/polar, /mob/living/simple_mob/hostile/bear/polar,
+					/mob/living/simple_mob/hostile/shantak/polar, /mob/living/simple_mob/animal/bear/polar,
 					/mob/living/simple_mob/hostile/wolf)
 	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
 					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
@@ -43,7 +43,7 @@
 
 // -- Mobs -- //
 
-/mob/living/simple_mob/hostile/bear/polar // More aggressive than normal bears so none of that fancy life() stuff.
+/mob/living/simple_mob/animal/bear/polar // More aggressive than normal bears so none of that fancy life() stuff.
 	name = "polar bear"
 	desc = "The real question is, why are you examining it, instead of running away?"
 	icon = 'icons/mob/vore.dmi'
@@ -71,16 +71,16 @@
 
 	minbodytemp = 0
 
-	speak_chance = 1
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/bearmeat
+	say_list_type = /datum/say_list/polar_bear
+
+/datum/say_list/polar_bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	speak_emote = list("growls", "roars")
 	emote_hear = list("rawrs","grumbles","grawls")
 	emote_see = list("stares ferociously", "stomps")
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/bearmeat
-
-
-/mob/living/simple_mob/hostile/bear/polar/death()
+/mob/living/simple_mob/animal/bear/polar/death()
 	desc = "This bastard sure isn't drinking Space Cola anymore."
 	..()
 

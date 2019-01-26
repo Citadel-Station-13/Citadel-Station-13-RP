@@ -123,7 +123,7 @@
 	. = ..()
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
 /mob/living/simple_mob/mechanical/corrupthound/MouseDrop_T(mob/living/M, mob/living/user)
 	return
