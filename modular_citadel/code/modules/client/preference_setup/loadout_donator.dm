@@ -90,3 +90,9 @@
 	sort_category = "Donator"
 	path = /obj/item/toy/tennis/rainbow/izzy
 	ckeywhitelist = list("izzyinbox")
+
+/datum/gear/donator/pduni
+	display_name = "Olympius PD Service Uniform"
+	sort_category = "Donator"
+	path = /
+	ckeywhitelist = list("hungrycricket")
