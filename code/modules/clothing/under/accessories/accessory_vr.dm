@@ -40,8 +40,7 @@
 	if(!jingled)
 		usr.audible_message("[usr] jingles the [src]'s bell.")
 		jingled = 1
-		schedule_callback_in(5 SECONDS, VARSET_CALLBACK(src, jingled, 0))
-	return
+		addtimer(VARSET_CALLBACK(src, jingled, 0), 5 SECONDS)
 
 /obj/item/clothing/accessory/collar/shock
 	name = "Shock collar"
@@ -206,23 +205,23 @@
 /obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		return
-	
+
 	if(istype(I,/obj/item/weapon/tool/screwdriver))
 		update_collartag(user, I, "scratched out", "scratch out", "engraved")
 		return
-		
+
 	if(istype(I,/obj/item/weapon/pen))
 		update_collartag(user, I, "crossed out", "cross out", "written")
 		return
-	
+
 	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
-	
+
 /obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
 	if(!(istype(user.get_active_hand(),I)) || !(istype(user.get_inactive_hand(),src)) || (user.stat))
 		return
-	
+
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
-	
+
 	if(!str || !length(str))
 		if(!writtenon)
 			to_chat(user,"<span class='notice'>You don't write anything.</span>")

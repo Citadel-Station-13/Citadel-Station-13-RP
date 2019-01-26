@@ -64,9 +64,9 @@
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/mechanical/hivebot/range = 3,
-		/mob/living/simple_mob/mechanical/hivebot/range/ion = 3,
-		/mob/living/simple_mob/mechanical/hivebot/range/laser = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser = 3,
 		/mob/living/simple_mob/mechanical/corrupthound = 1
 	)
 

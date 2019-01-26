@@ -22,9 +22,8 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	faction = "virgo3b"
 	maxHealth = 100
 	health = 100
-	move_to_delay = 4
 
-	speed = 2
+	movement_cooldown = 2
 
 	melee_damage_lower = 30 // Because fuck anyone who hurts this sweet, innocent creature.
 	melee_damage_upper = 30

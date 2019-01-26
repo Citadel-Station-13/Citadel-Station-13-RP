@@ -8,7 +8,7 @@
 
 	maxHealth = 600 // Boss
 	health = 600
-	speed = 3
+	movement_cooldown = 3
 
 	meat_amount = 10
 
@@ -41,10 +41,8 @@
 
 	maxHealth = 150
 	health = 150
-	speed = 0
-	move_to_delay = 2
+	movement_cooldown = 0
 
-	turns_per_move = 2
 	mob_size = MOB_LARGE
 
 	harm_intent_damage = 5
