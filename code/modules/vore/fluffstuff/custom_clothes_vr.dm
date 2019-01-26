@@ -1796,7 +1796,7 @@ END OF CITADEL CHANGES */
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "zao_cap_mob"
-
+END OF CITADEL CHANGES */
 //Nepox:Annie Rose
 /obj/item/clothing/accessory/sweater/fluff/annie
 	name = "Lazy Annie's Lazy Sweater"
@@ -1812,4 +1812,3 @@ END OF CITADEL CHANGES */
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
-END OF CITADEL CHANGES */
