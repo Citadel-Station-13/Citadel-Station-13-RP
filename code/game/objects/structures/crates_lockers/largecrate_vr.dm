@@ -60,16 +60,16 @@
 
 /obj/structure/largecrate/animal/dangerous
 	name = "Dangerous Predator carrier"
-	starts_with = list(/mob/living/simple_mob/hostile/alien)
+	starts_with = list(/mob/living/simple_mob/animal/space/alien)
 
 /obj/structure/largecrate/animal/dangerous/Initialize()
 	starts_with = list(pick(/mob/living/simple_mob/hostile/carp/pike,
 						/mob/living/simple_mob/hostile/deathclaw,
 						/mob/living/simple_mob/hostile/dino,
-						/mob/living/simple_mob/hostile/alien,
-						/mob/living/simple_mob/hostile/alien/drone,
-						/mob/living/simple_mob/hostile/alien/sentinel,
-						/mob/living/simple_mob/hostile/alien/queen,
+						/mob/living/simple_mob/animal/space/alien,
+						/mob/living/simple_mob/animal/space/alien/drone,
+						/mob/living/simple_mob/animal/space/alien/sentinel,
+						/mob/living/simple_mob/animal/space/alien/queen,
 						/mob/living/simple_mob/otie/feral,
 						/mob/living/simple_mob/otie/red,
 						/mob/living/simple_mob/hostile/corrupthound))

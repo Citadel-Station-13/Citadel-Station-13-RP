@@ -8,10 +8,11 @@
 /mob/living
 	var/datum/say_list/say_list = null
 	var/say_list_type = /datum/say_list	// Type to give us on initialization. Default has empty lists, so the mob will be silent.
+	var/say_list_use_cache = TRUE		//Set to false if we ever modify our own say list.
 
 /mob/living/Initialize()
 	if(say_list_type)
-		say_list = new say_list_type(src)
+		say_list = say_list_use_cache? SSai.get_say_list(say_list_type) : new say_list_type(src)
 	return ..()
 
 /mob/living/Destroy()

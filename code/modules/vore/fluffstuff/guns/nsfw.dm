@@ -174,7 +174,7 @@
 		add_overlay(cap)
 
 		if(batt.shots_left)
-			var/ratio = Ceiling((batt.shots_left / initial(batt.shots_left)) * 4) //4 is how many lights we have a sprite for
+			var/ratio = CEILING((batt.shots_left / initial(batt.shots_left)) * 4, 1) //4 is how many lights we have a sprite for
 			var/image/charge = image(icon, icon_state = "[initial(icon_state)]_charge-[ratio]")
 			charge.color = "#29EAF4" //Could use battery color but eh.
 			charge.pixel_x = current * x_offset

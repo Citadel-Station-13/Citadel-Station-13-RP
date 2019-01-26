@@ -24,11 +24,11 @@
 
 /obj/structure/mob_spawner/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	last_spawn = world.time + rand(0,spawn_delay)
 
 /obj/structure/mob_spawner/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	for(var/mob/living/L in spawned_mobs)
 		L.source_spawner = null
 	spawned_mobs.Cut()
@@ -176,10 +176,10 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/mob/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_mob/hostile/alien/drone = 20,
-	/mob/living/simple_mob/hostile/alien = 10,
-	/mob/living/simple_mob/hostile/alien/sentinel = 5,
-	/mob/living/simple_mob/hostile/alien/queen = 1
+	/mob/living/simple_mob/animal/space/alien/drone = 20,
+	/mob/living/simple_mob/animal/space/alien = 10,
+	/mob/living/simple_mob/animal/space/alien/sentinel = 5,
+	/mob/living/simple_mob/animal/space/alien/queen = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -195,5 +195,5 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon = 'icons/mob/actions.dmi'
 	icon_state = "alien_egg"
 	spawn_types = list(
-	/mob/living/simple_mob/hostile/alien/queen = 5,
+	/mob/living/simple_mob/animal/space/alien/queen = 5,
 	)

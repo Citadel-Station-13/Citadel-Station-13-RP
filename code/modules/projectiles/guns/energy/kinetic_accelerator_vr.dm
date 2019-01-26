@@ -100,7 +100,7 @@
 	damage = 32
 	damage_type = BRUTE
 	check_armour = "bomb"
-	kill_count = 3 // Our "range" var is named "kill_count". Yes it is.
+	range = 3 // Our "range" var is named "kill_count". Yes it is.
 
 	var/pressure_decrease = 0.25
 	var/turf_aoe = FALSE

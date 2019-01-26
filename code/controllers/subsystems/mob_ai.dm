@@ -1,3 +1,4 @@
+//Should be renamed to NPCPool like TG sometime with another AI rework, haha..
 SUBSYSTEM_DEF(ai)
 	name = "AI"
 	init_order = INIT_ORDER_AI
@@ -8,6 +9,12 @@ SUBSYSTEM_DEF(ai)
 
 	var/list/processing = list()
 	var/list/currentrun = list()
+
+	var/list/say_list_cache
+
+/datum/controller/subsystem/ai/Initialize()
+	say_list_cache = list()
+	return ..()
 
 /datum/controller/subsystem/ai/stat_entry(msg_prefix)
 	var/list/msg = list(msg_prefix)
@@ -34,3 +41,13 @@ SUBSYSTEM_DEF(ai)
 
 		if(MC_TICK_CHECK)
 			return
+
+/datum/controller/subsystem/ai/proc/get_say_list(type)
+	if(istext(type))
+		type = text2path(type)
+	if(!ispath(type, /datum/say_list))
+		return
+	. = say_list_cache[type]
+	if(!.)
+		. = new type
+		say_list_cache[type] = .
