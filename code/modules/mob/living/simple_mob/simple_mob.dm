@@ -149,6 +149,9 @@
 	var/purge = 0					// Cult stuff.
 	var/supernatural = FALSE		// Ditto.
 
+//V O R E
+	var/vore_active =
+
 
 /mob/living/simple_mob/Initialize()
 	verbs -= /mob/verb/observe

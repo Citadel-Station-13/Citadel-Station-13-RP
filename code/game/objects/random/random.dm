@@ -1561,7 +1561,7 @@ var/list/multi_point_spawns
 				prob(15);/mob/living/simple_mob/penguin,
 				prob(15);/mob/living/simple_mob/mouse,
 				prob(15);/mob/living/simple_mob/corgi/tamaskan,
-				prob(2);/mob/living/simple_mob/hostile/giant_spider/frost,
+				prob(2);/mob/living/simple_mob/animal/giant_spider/frost,
 				prob(1);/mob/living/simple_mob/hostile/goose,
 				prob(20);/mob/living/simple_mob/giant_crab)
 
@@ -1572,7 +1572,7 @@ var/list/multi_point_spawns
 
 /obj/random/mob/sif/hostile/item_to_spawn()
 	return pick(prob(22);/mob/living/simple_mob/hostile/savik,
-				prob(33);/mob/living/simple_mob/hostile/giant_spider/frost,
+				prob(33);/mob/living/simple_mob/animal/giant_spider/frost,
 				prob(45);/mob/living/simple_mob/hostile/shantak)
 
 /obj/random/mob/spider
@@ -1581,9 +1581,9 @@ var/list/multi_point_spawns
 	icon_state = "guard"
 
 /obj/random/mob/spider/item_to_spawn()
-	return pick(prob(22);/mob/living/simple_mob/hostile/giant_spider/nurse,
-				prob(33);/mob/living/simple_mob/hostile/giant_spider/hunter,
-				prob(45);/mob/living/simple_mob/hostile/giant_spider)
+	return pick(prob(22);/mob/living/simple_mob/animal/giant_spider/nurse,
+				prob(33);/mob/living/simple_mob/animal/giant_spider/hunter,
+				prob(45);/mob/living/simple_mob/animal/giant_spider)
 
 /obj/random/mob/spider/mutant
 	name = "Random Mutant Spider"
@@ -1592,15 +1592,15 @@ var/list/multi_point_spawns
 
 /obj/random/mob/spider/mutant/item_to_spawn()
 	return pick(prob(5);/obj/random/mob/spider,
-				prob(10);/mob/living/simple_mob/hostile/giant_spider/webslinger,
-				prob(10);/mob/living/simple_mob/hostile/giant_spider/carrier,
-				prob(33);/mob/living/simple_mob/hostile/giant_spider/lurker,
-				prob(33);/mob/living/simple_mob/hostile/giant_spider/tunneler,
-				prob(40);/mob/living/simple_mob/hostile/giant_spider/pepper,
-				prob(20);/mob/living/simple_mob/hostile/giant_spider/thermic,
-				prob(40);/mob/living/simple_mob/hostile/giant_spider/electric,
-				prob(1);/mob/living/simple_mob/hostile/giant_spider/phorogenic,
-				prob(40);/mob/living/simple_mob/hostile/giant_spider/frost)
+				prob(10);/mob/living/simple_mob/animal/giant_spider/webslinger,
+				prob(10);/mob/living/simple_mob/animal/giant_spider/carrier,
+				prob(33);/mob/living/simple_mob/animal/giant_spider/lurker,
+				prob(33);/mob/living/simple_mob/animal/giant_spider/tunneler,
+				prob(40);/mob/living/simple_mob/animal/giant_spider/pepper,
+				prob(20);/mob/living/simple_mob/animal/giant_spider/thermic,
+				prob(40);/mob/living/simple_mob/animal/giant_spider/electric,
+				prob(1);/mob/living/simple_mob/animal/giant_spider/phorogenic,
+				prob(40);/mob/living/simple_mob/animal/giant_spider/frost)
 
 /obj/random/mob/robotic
 	name = "Random Robot Mob"

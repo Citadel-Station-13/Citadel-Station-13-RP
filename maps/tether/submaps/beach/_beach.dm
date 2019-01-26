@@ -119,9 +119,9 @@
 	mobs_to_pick_from = list(
 		/mob/living/simple_mob/hostile/frog = 3, //Frogs are 3x more likely to spawn than,
 		/mob/living/simple_mob/hostile/deathclaw = 1, //these deathclaws are, with these values,
-		/mob/living/simple_mob/hostile/giant_spider = 3,
+		/mob/living/simple_mob/animal/giant_spider = 3,
 		/mob/living/simple_mob/hostile/giant_snake = 1,
-		/mob/living/simple_mob/hostile/giant_spider/ion = 2
+		/mob/living/simple_mob/animal/giant_spider/ion = 2
 	)
 
 // These are step-teleporters, for map edge transitions

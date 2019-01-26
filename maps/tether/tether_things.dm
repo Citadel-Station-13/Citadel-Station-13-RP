@@ -409,9 +409,9 @@ var/global/list/latejoin_tram   = list()
 	guard = 20
 	mobs_to_pick_from = list(
 		/mob/living/simple_mob/hostile/jelly = 3,
-		/mob/living/simple_mob/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_mob/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_mob/hostile/giant_spider/lurker = 1,
+		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
+		/mob/living/simple_mob/animal/giant_spider/phorogenic = 1,
+		/mob/living/simple_mob/animal/giant_spider/lurker = 1,
 	)
 
 /obj/tether_away_spawner/underdark_hard
