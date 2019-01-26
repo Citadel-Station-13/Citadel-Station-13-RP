@@ -52,121 +52,121 @@
 	desc = "A small spider nest, in the forest."
 	mappath = 'maps/submaps/surface_submaps/wilderness/spider1.dmm'
 	allow_duplicates = TRUE
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Flake
 	name = "Forest Lake"
 	desc = "A serene lake sitting amidst the surface."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Flake.dmm'
-	cost = 2
+	cost = 10
 
 /datum/map_template/surface/wilderness/normal/Mcamp1
 	name = "Military Camp 1"
 	desc = "A derelict military camp host to some unsavory dangers"
 	mappath = 'maps/submaps/surface_submaps/wilderness/MCamp1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Mudpit
 	name = "Mudpit"
 	desc = "What happens when someone is a bit too careless with gas.."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Mudpit.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky1
 	name = "Rocky1"
 	desc = "DununanununanununuNAnana"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky1.dmm'
 	allow_duplicates = TRUE
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky2
 	name =  "Rocky2"
 	desc = "More rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky2.dmm'
 	allow_duplicates = TRUE
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky3
 	name = "Rocky3"
 	desc = "More and more and more rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky3.dmm'
 	desc = "DununanununanununuNAnana"
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Shack1
 	name = "Shack1"
 	desc = "A small shack in the middle of nowhere, Your halloween murder happens here"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Shack1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Smol1
 	name = "Smol1"
 	desc = "A tiny grove of trees, The Nemesis of thicc"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Smol1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Snowrock1
 	name = "Snowrock1"
 	desc = "A rocky snow covered area"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Snowrock1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Cragzone1
 	name = "Cragzone1"
 	desc = "Rocks and more rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Cragzone1.dmm'
-	cost = 1
+	cost = 5
 	allow_duplicates = TRUE
 
 /datum/map_template/surface/wilderness/normal/Lab1
 	name = "Lab1"
 	desc = "An isolated small robotics lab."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Lab1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky4
 	name = "Rocky4"
 	desc = "An interesting geographic formation."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky4.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/DJOutpost1
 	name = "DJOutpost1"
 	desc = "Home of Sif Free Radio, the best - and only - radio station for miles around."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DJOutpost1.dmm'
 	template_group = "Sif Free Radio"
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/DJOutpost2
 	name = "DJOutpost2"
 	desc = "The cratered remains of Sif Free Radio, the best - and only - radio station for miles around."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DJOutpost2.dmm'
 	template_group = "Sif Free Radio"
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/Boombase
 	name = "Boombase"
 	desc = "What happens when you don't follow SOP."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Boombase.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/BSD
 	name = "Black Shuttle Down"
 	desc = "You REALLY shouldn't be near this."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Blackshuttledown.dmm'
-	cost = 5
+	cost = 30
 
 /datum/map_template/surface/wilderness/deep/Rockybase
 	name = "Rocky Base"
 	desc = "A guide to upsetting Icarus and the EIO"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rockybase.dmm'
-	cost = 5
+	cost = 35
 
 /datum/map_template/surface/wilderness/deep/MHR
 	name = "Manhack Rock"
 	desc = "A rock filled with nasty Synthetics."
 	mappath = 'maps/submaps/surface_submaps/wilderness/MHR.dmm'
-	cost = 3
+	cost = 15
 
 /datum/map_template/surface/wilderness/normal/GovPatrol
 	name = "Government Patrol"
@@ -178,34 +178,34 @@
 	name = "Decoupled Engine"
 	desc = "A damaged fission engine jettisoned from a starship long ago."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DecoupledEngine.dmm'
-	cost = 3
+	cost = 15
 
 /datum/map_template/surface/wilderness/deep/DoomP
 	name = "DoomP"
 	desc = "Witty description here."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DoomP.dmm'
-	cost = 5
+	cost = 30
 
 /datum/map_template/surface/wilderness/deep/Cave
 	name = "CaveS"
 	desc = "Chitter chitter!"
 	mappath = 'maps/submaps/surface_submaps/wilderness/CaveS.dmm'
-	cost = 4
+	cost = 20
 
 /datum/map_template/surface/wilderness/normal/Drugden
 	name = "Drugden"
 	desc = "The remains of ill thought out whims."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Drugden.dmm'
-	cost = 4
+	cost = 20
 
 /datum/map_template/surface/wilderness/normal/Musk
 	name = "Musk"
 	desc = "0 to 60 in 1.9 seconds."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Musk.dmm'
-	cost = 2
+	cost = 10
 
 /datum/map_template/surface/wilderness/deep/Manor1
 	name = "Manor1"
 	desc = "Whodunit"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Manor1.dmm'
-	cost = 4
+	cost = 20
