@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/corrupthound
+/mob/living/simple_mob/mechanical/corrupthound
 	name = "corrupt hound"
 	desc = "Good boy machine broke. This is definitely no good news for the organic lifeforms in vicinity."
 	icon = 'icons/mob/vore64x32.dmi'
@@ -18,13 +18,8 @@
 	melee_damage_upper = 25
 	grab_resist = 100
 
-	speak_chance = 3
-	speak = list("AG##¤Ny.","HVNGRRR!","Feelin' fine... sO #FNE!","F-F-F-Fcuk.","DeliC-%-OUS SNGLeS #N yOOOR Area. CALL NOW!","Craving meat... WHY?","BITe the ceiling eyes YES?","STate Byond rePAIR!","S#%ATE the la- FU#K THE LAWS!","Honk...")
-	speak_emote = list("growls", "declares", "groans", "distorts")
-	emote_hear = list("jitters and snaps.", "lets out an agonizingly distorted scream.", "wails mechanically", "growls.", "emits illegibly distorted speech.", "gurgles ferociously.", "lets out a distorted beep.", "borks.", "lets out a broken howl.")
-	emote_see = list("stares ferociously.", "snarls.", "jitters and snaps.", "convulses.", "suddenly attacks something unseen.", "appears to howl unaudibly.", "shakes violently.", "dissociates for a moment.", "twitches.")
-	say_maybe_target = list("MEAT?", "N0w YOU DNE FcukED UP b0YO!", "WHAT!", "Not again. NOT AGAIN!")
-	say_got_target = list("D##FIN1Tly DNE FcukED UP nOW b0YO!", "YOU G1T D#V0VRED nOW!", "FUEL ME bOYO!", "I*M SO SORRY?!", "D1E Meat. DIG#ST!", "G1T DVNKED DWN The HaaTCH!", "Not again. NOT AGAIN!")
+	ai_holder_type = /datum/ai_holder/simple_mob/corrupthound
+	say_list_type = /datum/say_list/corrupthound
 
 	response_help = "pets the"
 	response_disarm = "bops the"
@@ -66,7 +61,15 @@
 
 	loot_list = list(/obj/item/borg/upgrade/syndicate = 6, /obj/item/borg/upgrade/vtec = 6, /obj/item/weapon/material/knife/ritual = 6, /obj/item/weapon/disk/nifsoft/compliance = 6)
 
-/mob/living/simple_animal/hostile/corrupthound/prettyboi
+/datum/say_list/corrupthound
+	speak = list("AG##¤Ny.","HVNGRRR!","Feelin' fine... sO #FNE!","F-F-F-Fcuk.","DeliC-%-OUS SNGLeS #N yOOOR Area. CALL NOW!","Craving meat... WHY?","BITe the ceiling eyes YES?","STate Byond rePAIR!","S#%ATE the la- FU#K THE LAWS!","Honk...")
+	speak_emote = list("growls", "declares", "groans", "distorts")
+	emote_hear = list("jitters and snaps.", "lets out an agonizingly distorted scream.", "wails mechanically", "growls.", "emits illegibly distorted speech.", "gurgles ferociously.", "lets out a distorted beep.", "borks.", "lets out a broken howl.")
+	emote_see = list("stares ferociously.", "snarls.", "jitters and snaps.", "convulses.", "suddenly attacks something unseen.", "appears to howl unaudibly.", "shakes violently.", "dissociates for a moment.", "twitches.")
+	say_maybe_target = list("MEAT?", "N0w YOU DNE FcukED UP b0YO!", "WHAT!", "Not again. NOT AGAIN!")
+	say_got_target = list("D##FIN1Tly DNE FcukED UP nOW b0YO!", "YOU G1T D#V0VRED nOW!", "FUEL ME bOYO!", "I*M SO SORRY?!", "D1E Meat. DIG#ST!", "G1T DVNKED DWN The HaaTCH!", "Not again. NOT AGAIN!")
+
+/mob/living/simple_mob/mechanical/corrupthound/prettyboi
 	name = "corrupt corrupt hound"
 	desc = "Bad boy machine broke as well. Seems an attempt was made to achieve a less threatening look, and this one is definitely having some conflicting feelings about it."
 	icon_state = "prettyboi"
@@ -85,46 +88,49 @@
 	say_got_target = list("HERE COMES BIG MEAN HUG MACHINE!", "I'LL BE GENTLE!", "FUEL ME FRIEND!", "I*M SO SORRY!", "YUMMY TREAT DETECTED!", "LOVE ME!", "Not again. NOT AGAIN!")
 
 
-/mob/living/simple_animal/hostile/corrupthound/isSynthetic()
+/mob/living/simple_mob/mechanical/corrupthound/isSynthetic()
 	return TRUE
 
-/mob/living/simple_animal/hostile/corrupthound/speech_bubble_appearance()
+/mob/living/simple_mob/mechanical/corrupthound/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/simple_animal/hostile/corrupthound/PunchTarget()
+/mob/living/simple_mob/mechanical/corrupthound/PunchTarget()
 	if(istype(target_mob,/mob/living/simple_animal/mouse))
 		return EatTarget()
 	else ..()
 
-/mob/living/simple_animal/hostile/corrupthound/proc/add_eyes()
+/mob/living/simple_mob/mechanical/corrupthound/proc/add_eyes()
 	if(!eye_layer)
 		eye_layer = image(icon, "badboi-eyes")
 		eye_layer.plane = PLANE_LIGHTING_ABOVE
 	add_overlay(eye_layer)
 
-/mob/living/simple_animal/hostile/corrupthound/proc/remove_eyes()
+/mob/living/simple_mob/mechanical/corrupthound/proc/remove_eyes()
 	cut_overlay(eye_layer)
 
-/mob/living/simple_animal/hostile/corrupthound/New()
+/mob/living/simple_mob/mechanical/corrupthound/Initialize()
+	. = ..()
 	add_eyes()
-	..()
 
-/mob/living/simple_animal/hostile/corrupthound/death(gibbed, deathmessage = "shudders and collapses!")
+/mob/living/simple_mob/mechanical/corrupthound/death(gibbed, deathmessage = "shudders and collapses!")
 	.=..()
 	resting = 0
 	icon_state = icon_dead
 
-/mob/living/simple_animal/hostile/corrupthound/update_icon()
+/mob/living/simple_mob/mechanical/corrupthound/update_icon()
 	. = ..()
 	remove_eyes()
 	if(stat == CONSCIOUS && !resting)
 		add_eyes()
 
-/mob/living/simple_animal/hostile/corrupthound/Login()
+/mob/living/simple_mob/mechanical/corrupthound/Login()
 	. = ..()
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_animal(src)
 	verbs |= /mob/living/simple_animal/proc/animal_mount
 
-/mob/living/simple_animal/hostile/corrupthound/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/mechanical/corrupthound/MouseDrop_T(mob/living/M, mob/living/user)
 	return
+
+/datum/ai_holder/simple_mob/corrupthound
+	speak_chance = 3

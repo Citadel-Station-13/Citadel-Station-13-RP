@@ -30,11 +30,16 @@
 	response_disarm = "gently moves aside"
 	response_harm   = "swats"
 
+	ai_holder_type = /datum/ai_holder/passive/bird
 	say_list_type = /datum/say_list/bird
 	holder_type = /obj/item/weapon/holder/bird
 
+/datum/ai_holder/passive/bird
+	speak_chance = 5
+
 /datum/say_list/bird
 	speak = list("Chirp!","Caw!","Screech!","Squawk!")
+	speak_emote = list("chirps", "caws")
 	emote_hear = list("chirps","caws")
 	emote_see = list("shakes their head", "ruffles their feathers")
 
@@ -103,16 +108,6 @@
 	item_state = null
 	icon_living = "parrot-flap"
 	icon_dead = "parrot-dead"
-
-	pass_flags = PASSTABLE
-
-	speak_chance = 5
-	speak = list("Chirp!","Caw!","Screech!","Squawk!")
-	speak_emote = list("chirps", "caws")
-	emote_hear = list("chirps","caws")
-	emote_see = list("shakes their head", "ruffles their feathers")
-
-	holder_type = /obj/item/weapon/holder/bird
 
 /mob/living/simple_mob/animal/passive/bird/kea
 	name = "Kea"

@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/jelly
+/mob/living/simple_mob/animal/jelly
 	name = "jelly blob"
 	desc = "Some sort of undulating blob of slime!"
 	icon = 'icons/mob/vore.dmi'
@@ -17,9 +17,8 @@
 	emote_hear = list("squishes","spluts","splorts","sqrshes","makes slime noises")
 	emote_see = list("undulates quietly")
 
-// Activate Noms!
-/mob/living/simple_animal/hostile/jelly
 	vore_active = 1
 	vore_pounce_chance = 0
 	vore_icons = SA_ICON_LIVING
 	swallowTime = 2 SECONDS // Hungry little bastards.
+	ai_holder_type = /datum/ai_holder/simple_mob

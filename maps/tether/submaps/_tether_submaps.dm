@@ -288,7 +288,7 @@
 
 		return
 	else
-		STOP_PROCESING(SSobj, src)
+		STOP_PROCESSING(SSobj, src)
 		depleted = TRUE
 		return
 

@@ -36,16 +36,6 @@
 			return TRUE
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
-			for(var/organ_name in involved_parts)
-				var/obj/item/organ/external/E = get_organ(organ_name)
-				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
-					involved_parts -= organ_name
-					danger += 5 //Add 5% to the chance for each problem limb
-
-			//Taurs are harder to flip
-			if(istype(tail_style, /datum/sprite_accessory/tail/taur))
-				danger += 1
-
 			//Check if they are physically capable
 			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained() || involved_parts.len < 2)
 				src << "<span class='warning'>You can't *flip in your current state!</span>"
@@ -54,24 +44,6 @@
 				src.SpinAnimation(7,1)
 				message = "does a flip!"
 				m_type = 1
-
-				if(prob(danger))
-					spawn(10) //Stick the landing.
-						var/breaking = pick(involved_parts)
-						var/obj/item/organ/external/E = get_organ(breaking)
-						if(isSynthetic())
-							src.Weaken(5)
-							E.droplimb(1,DROPLIMB_EDGE)
-							message += " <span class='danger'>And loses a limb!</span>"
-							log_and_message_admins("lost their [breaking] with *flip, ahahah.", src)
-						else
-							src.Weaken(5)
-							if(E.cannot_break) //Prometheans go splat
-								E.droplimb(0,DROPLIMB_BLUNT)
-							else
-								E.fracture()
-							message += " <span class='danger'>And breaks something!</span>"
-							log_and_message_admins("broke their [breaking] with *flip, ahahah.", src)
 
 	if (message)
 		custom_emote(m_type,message)

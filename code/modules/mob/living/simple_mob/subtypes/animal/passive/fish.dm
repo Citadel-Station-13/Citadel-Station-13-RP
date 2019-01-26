@@ -97,7 +97,7 @@
 	sting(A)
 	return ..()
 
-/mob/living/simple_animal/fish/koi/poisonous/proc/sting(mob/living/M, silent = FALSE, chance = 75)
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous/proc/sting(mob/living/M, silent = FALSE, chance = 75)
 	if(prob(chance))
 		if(!M.reagents)
 			return FALSE
