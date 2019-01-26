@@ -15,9 +15,9 @@
 	ranged = 1
 	projectilesound = 'sound/weapons/taser2.ogg'
 	projectiletype = /obj/item/projectile/ion/small
-	firing_lines = 1
-	cooperative = 1
 
 	poison_chance = 15
 	poison_per_bite = 2
 	poison_type = "psilocybin"
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider

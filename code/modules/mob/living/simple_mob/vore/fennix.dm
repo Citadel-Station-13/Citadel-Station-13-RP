@@ -1,3 +1,4 @@
+
 /mob/living/simple_animal/retaliate/fennix
 	name = "Fennix"
 	desc = "A feral fennix, Warm to the touch"
