@@ -5,4 +5,4 @@
 
 /datum/trait/antiseptic_saliva/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
-	H.verbs |= /mob/living/carbon/human/verb/lick_wounds
+	H.verbs |= /mob/living/carbon/human/proc/lick_wounds
