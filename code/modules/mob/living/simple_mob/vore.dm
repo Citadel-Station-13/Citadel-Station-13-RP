@@ -1,5 +1,5 @@
 
-/mob/living/simple_mob/proc/ai_autovore(atom/A)
+/mob/living/simple_mob/proc/ai_autovore(mob/living/target_mob)
 	ai_log_mob("vr/PunchTarget() [target_mob]", 3)
 
 	// If we're not hungry, call the sideways "parent" to do normal punching

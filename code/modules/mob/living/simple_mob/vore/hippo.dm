@@ -1,4 +1,4 @@
-/mob/living/simple_animal/retaliate/hippo
+/mob/living/simple_mob/animal/hippo
 	name = "hippo"
 	desc = "Mostly know for the spectacular hit of the live action movie Hungry Hungry Hippos."
 	tt_desc = "Hippopotamus amphibius"
@@ -11,10 +11,8 @@
 
 	maxHealth = 200
 	health = 200
-	turns_per_move = 5
+	movement_cooldown = 5
 	see_in_dark = 3
-	stop_when_pulled = 1
-	speed = 5
 	armor = list(
 		"melee" = 15,//They thick as fuck boi
 		"bullet" = 15,
@@ -28,7 +26,8 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 	attacktext = list("bit")
-	retaliate = 1
+
+	ai_holder_type = /datum/ai_holder/retaliate
 
 	melee_damage_upper = 25
 	melee_damage_lower = 15
@@ -40,11 +39,8 @@
 	pixel_x = -16
 	pixel_y = 0
 
-	speak_chance = 0.1
-	speak = list("UUUUUUH")
 	speak_emote = list("grunts","groans", "roars", "snorts")
-	emote_hear = list("groan")
-	emote_see = list("shakes its head")
+	say_list_type = /datum/say_list/hippo
 
 	meat_amount = 10 //Infinite meat!
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
@@ -55,8 +51,6 @@
 	buckle_lying = FALSE
 	mount_offset_y = 20
 
-// Activate Noms!
-/mob/living/simple_animal/retaliate/hippo //I don't know why it's in a seperate line but everyone does it so i do it
 	vore_active = 1
 	vore_capacity = 1
 	vore_bump_chance = 15
@@ -71,11 +65,16 @@
 	vore_stomach_flavor	= "You are squeezed into the sweltering insides of the herbivore rumen."
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/retaliate/hippo/Login()
+/mob/living/simple_mob/animal/hippo/Login()
 	. = ..()
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_animal(src)
 	verbs |= /mob/living/simple_animal/proc/animal_mount
 
-/mob/living/simple_animal/retaliate/hippo/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/animal/hippo/MouseDrop_T(mob/living/M, mob/living/user)
 	return
+
+/datum/say_list/hippo
+	speak = list("UUUUUUH")
+	emote_hear = list("groan")
+	emote_see = list("shakes its head")

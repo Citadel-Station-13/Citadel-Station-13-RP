@@ -1,4 +1,4 @@
-/mob/living/simple_animal/snake
+/mob/living/simple_mob/animal/snake
 	name = "snake"
 	desc = "A big thick snake."
 	icon = 'icons/mob/snake_vr.dmi'
@@ -9,7 +9,7 @@
 	maxHealth = 20
 	health = 20
 
-	turns_per_move = 8 // SLOW-ASS MUTHAFUCKA
+	movement_cooldown = 8 // SLOW-ASS MUTHAFUCKA
 
 	response_help  = "pets"
 	response_disarm = "shoos"
@@ -19,17 +19,21 @@
 	melee_damage_upper = 5
 	attacktext = list("bitten")
 
-	speak_chance = 1
+	say_list_type = /datum/say_list/snake
+
+	ai_holder_type = /datum/ai_holder/simple_mob/passive
+
+/datum/say_list/snake
 	speak_emote = list("hisses")
 
 //NOODLE IS HERE! SQUEEEEEEEE~
-/mob/living/simple_animal/snake/Noodle
+/mob/living/simple_mob/animal/snake/Noodle
 	name = "Noodle"
 	desc = "This snake is particularly chubby and demands nothing but the finest of treats."
 	var/turns_since_scan = 0
 	var/obj/movement_target
 
-/mob/living/simple_animal/snake/Noodle/Life() //stolen from Ian in corgi.dm
+/mob/living/simple_mob/animal/snake/Noodle/Life() //stolen from Ian in corgi.dm
 	if(!..())
 		return 0
 
@@ -102,7 +106,8 @@
 	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
 	..()
-/mob/living/simple_animal/hostile/giant_snake
+
+/mob/living/simple_mob/animal/giant_snake
 	name = "giant snake"
 	desc = "Snakes. Why did it have to be snakes?"
 	icon = 'icons/mob/vore64x64.dmi'
@@ -124,8 +129,8 @@
 	pixel_x = -16
 	pixel_y = -16
 
-// Activate Noms!
-/mob/living/simple_animal/hostile/giant_snake
+	ai_holder_type = /datum/ai_holder/simple_mob
+
 	vore_active = 1
 	vore_pounce_chance = 25
 	vore_icons = SA_ICON_LIVING

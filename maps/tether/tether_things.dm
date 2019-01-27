@@ -408,7 +408,7 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/hostile/jelly = 3,
+		/mob/living/simple_mob/animal/jelly = 3,
 		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
 		/mob/living/simple_mob/animal/giant_spider/phorogenic = 1,
 		/mob/living/simple_mob/animal/giant_spider/lurker = 1,
@@ -422,9 +422,9 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/hostile/corrupthound = 1,
-		/mob/living/simple_mob/hostile/rat = 1,
-		/mob/living/simple_mob/hostile/mimic = 1
+		/mob/living/simple_mob/hostile/animal/corrupthound = 1,
+		/mob/living/simple_mob/hostile/animal/rat = 1,
+		/mob/living/simple_mob/hostile/alien/mimic = 1
 	)
 
 /obj/tether_away_spawner/underdark_boss

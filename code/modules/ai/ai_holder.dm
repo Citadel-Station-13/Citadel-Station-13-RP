@@ -16,6 +16,7 @@
 	return ..()
 
 /datum/ai_holder
+	var/name = "AI Holder"
 	var/mob/living/holder = null		// The mob this datum is going to control.
 	var/stance = STANCE_IDLE			// Determines if the mob should be doing a specific thing, e.g. attacking, following, standing around, etc.
 	var/intelligence_level = AI_NORMAL	// Adjust to make the AI be intentionally dumber, or make it more robust (e.g. dodging grenades).

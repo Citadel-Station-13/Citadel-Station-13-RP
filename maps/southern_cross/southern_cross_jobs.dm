@@ -1,8 +1,9 @@
 // Pilots
-
-var/const/SAR 				=(1<<11)
-var/const/PILOT 			=(1<<13)
-var/const/EXPLORER 			=(1<<14)
+/*
+var/SAR 				=(1<<11)
+var/PILOT 			=(1<<13)
+var/EXPLORER 			=(1<<14)
+*/
 
 var/const/access_pilot = 67
 var/const/access_explorer = 43

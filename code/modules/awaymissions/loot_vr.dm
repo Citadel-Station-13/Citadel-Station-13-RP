@@ -283,7 +283,7 @@
 				if(live_cargo) // Carp! Since Facehuggers got removed.
 					var/num = rand(1,3)
 					for(var/i=0,i<num,i++)
-						new /mob/living/simple_mob/hostile/carp(C)
+						new /mob/living/simple_mob/animal/space/carp(C)
 				else // Just a costume.
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))
@@ -336,14 +336,14 @@
 				new /obj/effect/decal/remains/xeno(src)
 		if("mimic")
 			//a guardian of the tomb!
-			var/mob/living/simple_mob/hostile/mimic/crate/mimic = new(src.loc)
+			var/mob/living/simple_mob/alien/mimic/crate/mimic = new(src.loc)
 			mimic.faction = spawned_faction
 		if("viscerator")
 			//more tomb guardians!
 			var/num = rand(1,3)
 			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
 			for(var/i=0,i<num,i++)
-				new /mob/living/simple_mob/hostile/viscerator(C)
+				new /mob/living/simple_mob/animal/viscerator(C)
 
 	qdel(src)
 

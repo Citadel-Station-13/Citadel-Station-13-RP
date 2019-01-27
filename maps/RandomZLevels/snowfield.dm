@@ -57,9 +57,8 @@
 	faction = "polar"
 	maxHealth = 80
 	health = 80 // Polar bear will fuck you up.
-
-	stop_when_pulled = 0
-	turns_per_move = 5
+	speak_emote = list("growls", "roars")
+	movement_cooldown = 5
 	see_in_dark = 6
 
 	response_help  = "pets"
@@ -76,7 +75,7 @@
 
 /datum/say_list/polar_bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
-	speak_emote = list("growls", "roars")
+
 	emote_hear = list("rawrs","grumbles","grawls")
 	emote_see = list("stares ferociously", "stomps")
 

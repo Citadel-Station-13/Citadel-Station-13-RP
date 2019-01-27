@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/rat
+/mob/living/simple_mob/animal/rat
 	name = "giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king."
 	tt_desc = "Mus muscular"
@@ -12,18 +12,13 @@
 	maxHealth = 150
 	health = 150
 
-	investigates = TRUE
+	ai_holder_type = /datum/ai_holder/simple_mob
+	say_list_type = /datum/say_list/rat
 	melee_damage_lower = 5
 	melee_damage_upper = 15
 	grab_resist = 100
 
-	speak_chance = 4
-	speak = list("Squeek!","SQUEEK!","Squeek?")
 	speak_emote = list("squeeks","squeeks","squiks")
-	emote_hear = list("squeeks","squeaks","squiks")
-	emote_see = list("runs in a circle", "shakes", "scritches at something")
-	say_maybe_target = list("Squeek?")
-	say_got_target = list("SQUEEK!")
 	response_help = "pets the"
 	response_disarm = "bops the"
 	response_harm = "hits the"
@@ -49,7 +44,8 @@
 
 	var/life_since_foodscan = 0
 
-/mob/living/simple_animal/hostile/rat/passive
+/*
+/mob/living/simple_mob/animal/rat/passive
 	name = "curious giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king. It seems to be more interested on scavenging."
 	follow_dist = 1
@@ -161,6 +157,7 @@
 			T = F
 			break
 	return T
+*/
 
 /mob/living/simple_animal/hostile/rat/death()
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 50, 1)
@@ -174,3 +171,10 @@
 
 /mob/living/simple_animal/hostile/rat/MouseDrop_T(mob/living/M, mob/living/user)
 	return
+
+/datum/say_list/rat
+	speak = list("Squeek!","SQUEEK!","Squeek?")
+	emote_hear = list("squeeks","squeaks","squiks")
+	emote_see = list("runs in a circle", "shakes", "scritches at something")
+	say_maybe_target = list("Squeek?")
+	say_got_target = list("SQUEEK!")

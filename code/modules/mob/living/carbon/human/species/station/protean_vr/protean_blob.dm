@@ -36,10 +36,7 @@
 	minbodytemp = 0
 	maxbodytemp = 900
 
-	speak_chance = 1
-	speak = list("Blrb?","Sqrsh.","Glrsh!")
-	emote_hear = list("squishes softly","spluts quietly","makes wet noises")
-	emote_see = list("shifts wetly","undulates placidly")
+	say_list_type = /datum/say_list/protean
 
 	var/mob/living/carbon/human/humanform
 	var/obj/item/organ/internal/nano/refactory/refactory
@@ -52,9 +49,14 @@
 
 	can_buckle = TRUE //Blobsurfing
 
+/datum/say_list/protean
+	speak = list("Blrb?","Sqrsh.","Glrsh!")
+	emote_hear = list("squishes softly","spluts quietly","makes wet noises")
+	emote_see = list("shifts wetly","undulates placidly")
+
 //Constructor allows passing the human to sync damages
-/mob/living/simple_mob/protean_blob/New(var/newloc, var/mob/living/carbon/human/H)
-	..()
+/mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
+	. = ..()
 	if(H)
 		humanform = H
 		updatehealth()

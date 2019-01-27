@@ -1,4 +1,4 @@
-/mob/living/simple_animal/horse
+/mob/living/simple_mob/animal/horse
 	name = "horse"
 	desc = "Don't look it in the mouth."
 	tt_desc = "Equus ferus caballus"
@@ -22,11 +22,7 @@
 	melee_damage_upper = 5
 	attacktext = list("kicked")
 
-	speak_chance = 1
-	speak = list("NEHEHEHEHEH","Neh?")
 	speak_emote = list("whinnies")
-	emote_hear = list("snorts")
-	emote_see = list("shakes its head", "stamps a hoof", "looks around")
 
 	meat_amount = 4
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
@@ -37,16 +33,21 @@
 	buckle_lying = FALSE
 	mount_offset_x = 0
 
-// Activate Noms!
-/mob/living/simple_animal/horse
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/horse/Login()
+	say_list_type = /datum/say_list/horse
+
+/mob/living/simple_mob/animal/horse/Login()
 	. = ..()
 	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+		riding_datum = new /datum/riding/simple_mob(src)
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_animal/horse/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/animal/horse/MouseDrop_T(mob/living/M, mob/living/user)
 	return
+
+/datum/say_list/horse
+	speak = list("NEHEHEHEHEH","Neh?")
+	emote_hear = list("snorts")
+	emote_see = list("shakes its head", "stamps a hoof", "looks around")
