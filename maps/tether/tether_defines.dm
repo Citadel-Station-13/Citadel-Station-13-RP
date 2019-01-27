@@ -35,6 +35,11 @@
 #define Z_LEVEL_MISC						11
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
+#define Z_LEVEL_ALIENSHIP					14
+#define Z_LEVEL_BEACH						15
+#define Z_LEVEL_BEACH_CAVE					16
+#define Z_LEVEL_AEROSTAT					17
+#define Z_LEVEL_AEROSTAT_SURFACE			18
 
 /datum/map/tether
 	name = "Virgo"
@@ -45,7 +50,7 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("tether")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_LOW,

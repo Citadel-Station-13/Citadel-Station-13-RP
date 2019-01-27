@@ -32,8 +32,8 @@
 
 /obj/item/device/defib_kit/Destroy()
 	. = ..()
-	qdel_null(paddles)
-	qdel_null(bcell)
+	QDEL_NULL(paddles)
+	QDEL_NULL(bcell)
 
 /obj/item/device/defib_kit/loaded //starts with a cell
 	bcell = /obj/item/weapon/cell/apc
@@ -94,7 +94,7 @@
 			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 			update_icon()
 
-	else if(isscrewdriver(W))
+	else if(W.is_screwdriver())
 		if(bcell)
 			bcell.update_icon()
 			bcell.forceMove(get_turf(src.loc))
@@ -262,10 +262,12 @@
 
 //Checks for various conditions to see if the mob is revivable
 /obj/item/weapon/shockpaddles/proc/can_defib(mob/living/carbon/human/H) //This is checked before doing the defib operation
-	if((H.species.flags & NO_SCAN))
+	if((H.species.flags & NO_SCAN && !(H.species.reagent_tag & IS_VOX))) //Citadel change - gives vox a different defib message
 		return "buzzes, \"Unrecogized physiology. Operation aborted.\""
 	else if(H.isSynthetic() && !use_on_synthetic)
 		return "buzzes, \"Synthetic Body. Operation aborted.\""
+	else if(H.species.reagent_tag & IS_VOX && combat == 0) //Citadel change - gives vox a different defib message
+		return "buzzes, \"Voltage rating insufficient. Operation aborted.\""
 	else if(!H.isSynthetic() && use_on_synthetic)
 		return "buzzes, \"Organic Body. Operation aborted.\""
 

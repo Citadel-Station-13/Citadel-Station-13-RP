@@ -13,7 +13,7 @@
 	if(mind && mind.current == src)
 		spellremove(src)
 	ghostize()
-	qdel_null(plane_holder)
+	QDEL_NULL(plane_holder)
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -699,10 +699,24 @@
 					Failsafe.stat_entry()
 				else
 					stat("Failsafe Controller:", "ERROR")
+				if(GLOB)
+					GLOB.stat_entry()
+				else
+					stat("Globals:", "ERROR")
 				if(Master)
 					stat(null)
 					for(var/datum/controller/subsystem/SS in Master.subsystems)
 						SS.stat_entry()
+
+			if(statpanel("Tickets"))
+				GLOB.ahelp_tickets.stat_entry()
+
+			if(length(GLOB.sdql2_queries))
+				if(statpanel("SDQL2"))
+					stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
+					for(var/i in GLOB.sdql2_queries)
+						var/datum/SDQL2_query/Q = i
+						Q.generate_stat()
 
 		if(listed_turf && client)
 			if(!TurfAdjacent(listed_turf))
@@ -1154,8 +1168,13 @@ mob/proc/yank_out_object()
 /mob/proc/throw_item(atom/target)
 	return
 
+/mob/proc/will_show_tooltip()
+	if(alpha <= EFFECTIVE_INVIS)
+		return FALSE
+	return TRUE
+
 /mob/MouseEntered(location, control, params)
-	if(usr != src && usr.is_preference_enabled(/datum/client_preference/mob_tooltips))
+	if(usr != src && usr.is_preference_enabled(/datum/client_preference/mob_tooltips) && src.will_show_tooltip())
 		openToolTip(user = usr, tip_src = src, params = params, title = get_nametag_name(usr), content = get_nametag_desc(usr))
 
 	..()

@@ -6,7 +6,7 @@
 		to_chat(src, "<span class='notice'>You move upwards.</span>")
 
 /mob/verb/down()
-	set name = "Move Down"
+	set name = "Move Downwards" //cit change - dumb name, "Move Down" -> "Move Downwards"
 	set category = "IC"
 
 	if(zMove(DOWN))
@@ -171,6 +171,9 @@
 
 	var/turf/below = GetBelow(src)
 	if(!below)
+		return
+
+	if(istype(below, /turf/space))
 		return
 
 	var/turf/T = loc

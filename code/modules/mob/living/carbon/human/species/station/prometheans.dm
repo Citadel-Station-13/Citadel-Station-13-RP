@@ -48,11 +48,12 @@ var/datum/species/shapeshifter/promethean/prometheans
 	//gluttonous =	1 // VOREStation Edit. Redundant feature.
 	virus_immune =	1
 	blood_volume =	560
-	brute_mod =		0.75
+	slowdown = -0.2 // citadel change
+	brute_mod =		0.5 // citadel change, used to be 0.75
 	burn_mod =		2
 	oxy_mod =		0
 	flash_mod =		0.5 //No centralized, lensed eyes.
-	item_slowdown_mod = 1.33
+	item_slowdown_mod = 0.66 // citadel change, used to be 1.33
 
 	cloning_modifier = /datum/modifier/cloning_sickness/promethean
 

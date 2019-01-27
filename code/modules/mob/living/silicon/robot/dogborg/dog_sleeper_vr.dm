@@ -224,7 +224,7 @@
 		dat += "<font color='red'>Cargo compartment slot: Fuel.</font><BR>"
 		dat += "<font color='red'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
 
-	if(analyzer && synced)
+	if(analyzer && !synced)
 		dat += "<A href='?src=\ref[src];sync=1'>Sync Files</A><BR>"
 
 	//Cleaning and there are still un-preserved items
@@ -560,6 +560,9 @@
 					if(T.reagents)
 						volume = T.reagents.total_volume
 						water.add_charge(volume)
+					if(patient == T)
+						patient_laststat = null
+						patient = null
 					qdel(T)
 
 		//Pick a random item to deal with (if there are any)
