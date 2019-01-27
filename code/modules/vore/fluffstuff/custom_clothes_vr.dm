@@ -1749,6 +1749,15 @@ END OF CITADEL CHANGES */
 	icon_state = "tronsiren_shoes"
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_onmob_vr.dmi'
+
+//Mewchild: Phi Vietsi
+/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
+	name = "Phi Vietsi's Bone Signet Ring"
+	desc = "A signet ring belonging to Phi Vietsi, carved from the bones of something long extinct, as a ward against bad luck."
+	var/signet_name = "Phi Vietsi"
+
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "vietsi_ring"
 /* CITADEL CHANGE - Removes Virgo Fluff
 /obj/item/clothing/head/helmet/space/void/security/hasd
 	name = "HASD EVA faceplate"
