@@ -246,6 +246,26 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
 //Exploration
+//Cit change start
+/obj/item/clothing/head/helmet/space/void/exploration
+	name = "exploration voidsuit helmet"
+	desc = "A radiation-resistant helmet made especially for exploring unknown planetary environments."
+	icon_state = "helm_pathfinder"
+	item_state = "helm_pathfinder"
+	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	armor = list(melee = 50, bullet = 25, laser = 30,energy = 35, bomb = 30, bio = 100, rad = 70)
+	light_overlay = "helmet_light_dual" //explorer_light
+
+/obj/item/clothing/suit/space/void/exploration
+	name = "pathfinder voidsuit"
+	desc = "A lightweight, radiation-resistant voidsuit. Designed for exploring unknown planetary environments."
+	icon_state = "void_pathfinder"
+	item_state_slots = list(slot_r_hand_str = "skrell_suit_black", slot_l_hand_str = "skrell_suit_black")
+	armor = list(melee = 50, bullet = 25, laser = 30,energy = 35, bomb = 30, bio = 100, rad = 70)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/stack/flag,/obj/item/device/healthanalyzer,/obj/item/device/gps,/obj/item/device/radio/beacon, \
+	/obj/item/weapon/shovel,/obj/item/ammo_magazine,/obj/item/weapon/gun)
+
+//Cit change end
 /obj/item/clothing/head/helmet/space/void/exploration
 	name = "exploration voidsuit helmet"
 	desc = "A radiation-resistant helmet made especially for exploring unknown planetary environments."
