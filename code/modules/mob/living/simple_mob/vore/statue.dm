@@ -179,8 +179,6 @@
 		visible_message("The statue slowly points at the light.")
 	for(var/obj/machinery/light/L in oview(12, src))
 		L.flicker()
-	return
-
 
 /mob/living/simple_animal/hostile/statue/proc/AI_mirrorshmash()
 	for(var/obj/structure/mirror/M in oview(4, src))
@@ -188,9 +186,6 @@
 			visible_message("The statue slowly points at the mirror!")
 			sleep(5)
 			M.shatter()
-	return
-
-
 
 /mob/living/simple_animal/hostile/statue/AttackTarget()
 	if(can_be_seen(get_turf(loc)))
@@ -200,8 +195,6 @@
 	else
 		spawn(3) //a small delay
 		..()
-
-
 
 /mob/living/simple_animal/hostile/statue/DoPunch(var/atom/A) //had to redo that, since it's supposed to target only head and upper body
 	if(!Adjacent(A)) // They could've moved in the meantime.
@@ -326,8 +319,6 @@
 		var/turf/T = get_turf(L.loc)
 		if(T && T in targets)
 			L.Blind(4)
-	return
-
 
 /spell/aoe_turf/shatter
 	name = "Shatter mirrors!"
@@ -338,17 +329,10 @@
 	spell_flags = 0
 	range = 8
 
-
-
-
 /spell/aoe_turf/shatter/cast(list/targets, mob/user = usr)
-	spawn(50)
 	for(var/obj/structure/mirror/M in view(5, src))
-		if ((!M.shattered )||(!M.glass))
+		if ((!M.shattered ) || (!M.glass))
 			M.shatter()
-	return
-
-
 
 /mob/living/simple_animal/hostile/statue/verb/toggle_darkness()
 	set name = "Toggle Darkness"
@@ -358,13 +342,10 @@
 	plane_holder.set_vis(VIS_FULLBRIGHT, !seedarkness)
 	to_chat(src,"You [seedarkness ? "now" : "no longer"] see darkness.")
 
-
-
 /mob/living/simple_animal/hostile/statue/restrained()
 	. = ..()
 	if(can_be_seen(loc))
-		return 1
-
+		return TRUE
 
 /mob/living/simple_animal/hostile/statue/ListTargets(dist = view_range)
 	var/list/L = mobs_in_xray_view(dist, src)
@@ -376,8 +357,6 @@
 		L -= creator
 
 	return L
-
-
 
 /obj/item/cursed_marble //slime cube copypaste
 	name = "marble slab"
@@ -395,7 +374,6 @@
 		request_player(user)
 		spawn(60 SECONDS)
 			reset_search()
-
 
 /obj/item/cursed_marble/proc/request_player(var/mob/user)
 	for(var/mob/observer/dead/O in player_list)
@@ -438,7 +416,6 @@
 	S.mind.assigned_role = "The Statue"
 	visible_message("<span class='warning'>The slab suddenly takes the shape of a humanoid!</span>")
 	qdel(src)
-
 
 /obj/item/cursed_marble/verb/crush() //if there's no ghosts to respond to your request/you want to use the statue for malicious stuff
 	set name = "Crush the marble slab"

@@ -11,7 +11,7 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src) //VOREStation Edit - Reflect too long messages, within reason
+		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as message|null, src) //VOREStation Edit - Reflect too long messages, within reason
 	else
 		input = message
 	if(input)
@@ -77,7 +77,7 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as text|null, src) //VOREStation Edit - Reflect too long messages, within reason
+		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as message|null, src) //VOREStation Edit - Reflect too long messages, within reason
 	else
 		input = message
 

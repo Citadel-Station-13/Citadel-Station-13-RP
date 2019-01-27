@@ -20,18 +20,19 @@
 	maxHealth = 200
 	health = 200
 
-	move_to_delay = 2
-	speed = -1
+	movement_cooldown = -1
 	see_in_dark = 10 //SHADEkin
 	has_hands = TRUE //Pawbs
 	seedarkness = FALSE //SHAAAADEkin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
 
+/*
 	investigates = TRUE
 	reacts = TRUE
 	run_at_them = FALSE
 	cooperative = FALSE
+*/
 
 	melee_damage_lower = 10
 	melee_damage_upper = 20
@@ -48,11 +49,6 @@
 	maxbodytemp = 600 //Used to be 900, reduced to 600 for purposes of making them a bit more vulnerable. - Nylon
 
 	speak_chance = 2
-	speak = list("Marrr.", "Marrr?", "Marrr!")
-	emote_hear = list("chrrrrrs", "wurbles", "wrrrrbles")
-	emote_see = list("tailtwitches", "earflicks")
-	say_maybe_target = list("...mar?")
-	say_got_target = list("MAR!!!")
 	response_help = "pets the"
 	response_disarm = "bops the"
 	response_harm = "hits the"
@@ -93,6 +89,15 @@
 	var/obj/screen/energyhud //Holder to update this icon
 
 	var/list/shadekin_abilities
+
+	say_list_type = /datum/say_list/shadekin
+
+/datum/say_list/shadekin
+	speak = list("Marrr.", "Marrr?", "Marrr!")
+	emote_hear = list("chrrrrrs", "wurbles", "wrrrrbles")
+	emote_see = list("tailtwitches", "earflicks")
+	say_maybe_target = list("...mar?")
+	say_got_target = list("MAR!!!")
 
 /mob/living/simple_mob/shadekin/Initialize()
 	//You spawned the prototype, and want a totally random one.
@@ -246,6 +251,7 @@
 
 	. = ..(FALSE, deathmessage)
 
+/*
 //Blue-eyes want to nom people to heal them
 /mob/living/simple_mob/shadekin/Found(var/atom/A)
 	if(specific_targets && isliving(A)) //Healing!
@@ -254,6 +260,7 @@
 		if(health_percent <= 50)
 			return A
 	. = ..()
+*/
 
 //They reach nutritional equilibrium (important for blue-eyes healbelly)
 /mob/living/simple_mob/shadekin/Life()
@@ -339,6 +346,7 @@
 			if(0 to 20)
 				energyhud.icon_state = "energy4"
 
+/*
 //Friendly ones wander towards people, maybe shy-ly if they are set to shy
 //This will be removed later when shadekins get ported over to a human species template but we'll keep this code just in case for reference. - Nylon
 /mob/living/simple_mob/shadekin/handle_wander_movement()
@@ -394,6 +402,7 @@
 					return
 				Move(T)
 				lifes_since_move = 0
+*/
 
 /mob/living/simple_mob/shadekin/speech_bubble_appearance()
 	return "ghost"

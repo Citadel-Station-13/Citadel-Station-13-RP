@@ -2,7 +2,7 @@
 ////////////////////SUBTLE COMMAND////////////////////
 //////////////////////////////////////////////////////
 
-/mob/verb/me_verb_subtle(message as text) //This would normally go in say.dm
+/mob/verb/me_verb_subtle(message as message|null) //This would normally go in say.dm
 	set name = "Subtle"
 	set category = "IC"
 	set desc = "Emote to nearby people (and your pred/prey)"
@@ -31,7 +31,7 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src)
+		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as message|null, src)
 	else
 		input = message
 

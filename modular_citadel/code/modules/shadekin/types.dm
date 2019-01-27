@@ -2,10 +2,8 @@
 /mob/living/simple_mob/shadekin/red
 	name = "red-eyed shadekin"
 	eye_state = RED_EYES
-	hostile = TRUE
-	retaliate = TRUE
-	stop_when_pulled = FALSE
-	destroy_surroundings = TRUE
+	ai_holder_type = /datum/ai_holder/simple_mob
+//	destroy_surroundings = TRUE
 	armor = list(
 			"melee" = 30,
 			"bullet" = 20,
@@ -40,11 +38,12 @@
 	name = "blue-eyed shadekin"
 	eye_state = BLUE_EYES
 	health = 100
-	hostile = FALSE
+/*	hostile = FALSE
 	retaliate = FALSE
 	stop_when_pulled = TRUE
 	specific_targets = TRUE //For finding injured people
-	destroy_surroundings = FALSE
+*/
+//	destroy_surroundings = FALSE
 	vore_default_mode = DM_HEAL
 	vore_escape_chance = 75
 	vore_standing_too = 1
@@ -87,10 +86,8 @@
 	name = "purple-eyed shadekin"
 	eye_state = PURPLE_EYES
 	health = 150
-	hostile = FALSE
-	retaliate = TRUE
-	stop_when_pulled = FALSE
-	destroy_surroundings = TRUE
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+//	destroy_surroundings = TRUE
 	vore_default_mode = DM_HOLD
 	vore_digest_chance = 25
 	vore_absorb_chance = 25
@@ -129,10 +126,8 @@
 	name = "yellow-eyed shadekin"
 	eye_state = YELLOW_EYES
 	health = 100
-	hostile = FALSE
-	retaliate = TRUE
-	stop_when_pulled = FALSE
-	destroy_surroundings = TRUE
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+//	destroy_surroundings = TRUE
 	vore_default_mode = DM_DRAIN
 	vore_digest_chance = 5
 	vore_ignores_undigestable = FALSE
@@ -169,10 +164,8 @@
 	name = "green-eyed shadekin"
 	eye_state = GREEN_EYES
 	health = 125
-	hostile = FALSE
-	retaliate = TRUE
-	stop_when_pulled = FALSE
-	destroy_surroundings = TRUE
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+//	destroy_surroundings = TRUE
 	vore_default_mode = DM_DRAIN
 	vore_digest_chance = 0
 	vore_ignores_undigestable = FALSE
@@ -209,10 +202,8 @@
 	name = "orange-eyed shadekin"
 	eye_state = ORANGE_EYES
 	health = 175
-	hostile = TRUE
-	retaliate = TRUE
-	stop_when_pulled = FALSE
-	destroy_surroundings = TRUE
+	ai_holder_type = /datum/ai_holder/simple_mob
+//	destroy_surroundings = TRUE
 	armor = list(
 			"melee" = 20,
 			"bullet" = 15,

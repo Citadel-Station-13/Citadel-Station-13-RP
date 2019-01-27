@@ -37,25 +37,24 @@
 	else
 		return attack_hand(user)
 
-/* TEMPORARY REMOVAL - READD ALL THESE ASAP
 /obj/structure/largecrate/animal/pred
 	name = "Predator carrier"
 	starts_with = list(/mob/living/simple_mob/catgirl)
 
 /obj/structure/largecrate/animal/pred/Initialize() //This is nessesary to get a random one each time.
 	starts_with = list(pick(/mob/living/simple_mob/retaliate/bee,
-						/mob/living/simple_mob/catgirl;3,
-						/mob/living/simple_mob/hostile/frog,
-						/mob/living/simple_mob/horse,
-						/mob/living/simple_mob/hostile/panther,
-						/mob/living/simple_mob/hostile/giant_snake,
-						/mob/living/simple_mob/hostile/wolf,
-						/mob/living/simple_mob/hostile/bear;0.5,
-						/mob/living/simple_mob/hostile/bear/brown;0.5,
+						/mob/living/simple_mob/humanoid/catgirl;3,
+						/mob/living/simple_mob/animal/frog,
+						/mob/living/simple_mob/animal/horse,
+						/mob/living/simple_mob/animal/panther,
+						/mob/living/simple_mob/animal/giant_snake,
+						/mob/living/simple_mob/animal/wolf,
+						/mob/living/simple_mob/animal/bear;0.5,
+						/mob/living/simple_mob/animal/bear/brown;0.5,
 						/mob/living/simple_mob/animal/space/carp,
-						/mob/living/simple_mob/hostile/mimic,
-						/mob/living/simple_mob/hostile/rat,
-						/mob/living/simple_mob/hostile/rat/passive,
+						/mob/living/simple_mob/alien/mimic,
+						/mob/living/simple_mob/animal/rat,
+						/mob/living/simple_mob/animal/rat/passive,
 						/mob/living/simple_mob/otie;0.5))
 	return ..()
 
@@ -66,16 +65,15 @@
 /obj/structure/largecrate/animal/dangerous/Initialize()
 	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/pike,
 						/mob/living/simple_mob/hostile/deathclaw,
-						/mob/living/simple_mob/hostile/dino,
+						/mob/living/simple_mob/animal/dino,
 						/mob/living/simple_mob/animal/space/alien,
 						/mob/living/simple_mob/animal/space/alien/drone,
 						/mob/living/simple_mob/animal/space/alien/sentinel,
 						/mob/living/simple_mob/animal/space/alien/queen,
 						/mob/living/simple_mob/otie/feral,
 						/mob/living/simple_mob/otie/red,
-						/mob/living/simple_mob/hostile/corrupthound))
+						/mob/living/simple_mob/mechanical/corrupthound))
 	return ..()
-*/
 
 /obj/structure/largecrate/animal/guardbeast
 	name = "VARMAcorp autoNOMous security solution"
@@ -116,25 +114,22 @@
 		taped = 0
 	..()
 
-/* TEMPORARY REMOVAL
 /obj/structure/largecrate/animal/catgirl
 	name = "Catgirl Crate"
 	desc = "A sketchy looking crate with airholes that seems to have had most marks and stickers removed. You can almost make out 'genetically-engineered subject' written on it."
-	starts_with = list(/mob/living/simple_mob/catgirl)
+	starts_with = list(/mob/living/simple_mob/humanoid/catgirl)
 
 /obj/structure/largecrate/animal/wolfgirl
 	name = "Wolfgirl Crate"
 	desc = "A sketchy looking crate with airholes that shakes and thuds every now and then. Someone seems to be demanding they be let out."
-	starts_with = list(/mob/living/simple_mob/retaliate/wolfgirl)
-*/
-
+	starts_with = list(/mob/living/simple_mob/humanoid/wolfgirl)
 
 /obj/structure/largecrate/animal/fennec
 	name = "Fennec Crate"
 	desc = "Bounces around a lot. Looks messily packaged, were they in a hurry?"
-	starts_with = list(/mob/living/simple_mob/fennec)
+	starts_with = list(/mob/living/simple_mob/animal/fennec)
 
 /obj/structure/largecrate/animal/fennec/Initialize()
-	starts_with = list(pick(/mob/living/simple_mob/fennec,
-						/mob/living/simple_mob/retaliate/fennix;0.5))
+	starts_with = list(pick(/mob/living/simple_mob/animal/fennec,
+						/mob/living/simple_mob/animal/fennix;0.5))
 	return ..()

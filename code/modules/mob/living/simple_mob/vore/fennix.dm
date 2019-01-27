@@ -1,5 +1,4 @@
-
-/mob/living/simple_animal/retaliate/fennix
+/mob/living/simple_mob/animal/fennix
 	name = "Fennix"
 	desc = "A feral fennix, Warm to the touch"
 	tt_desc = "Incaendium Faeles Vulpes"
@@ -21,7 +20,10 @@
 	melee_damage_upper = 3
 	attacktext = list("Bites")
 
-	speak_chance = 1
+	say_list_type = /datum/say_list/fennix
+	ai_holder_type = /datum/ai_holder/retaliate
+
+/datum/say_list/fennix
 	speak = list("SQUEL!",
 				"SQEL?",
 				"Skree.")

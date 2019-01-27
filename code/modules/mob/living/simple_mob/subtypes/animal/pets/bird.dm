@@ -10,7 +10,7 @@
 	item_state = null
 	icon_rest = "parrot-held"
 	icon_dead = "parrot-dead"
-
+	speak_emote = list("chirps", "caws")
 	pass_flags = PASSTABLE
 
 	health = 30
@@ -39,7 +39,7 @@
 
 /datum/say_list/bird
 	speak = list("Chirp!","Caw!","Screech!","Squawk!")
-	speak_emote = list("chirps", "caws")
+
 	emote_hear = list("chirps","caws")
 	emote_see = list("shakes their head", "ruffles their feathers")
 

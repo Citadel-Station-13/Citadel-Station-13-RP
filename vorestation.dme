@@ -2402,6 +2402,8 @@
 #include "code\modules\mob\living\simple_mob\vore\corrupt_hounds.dm"
 #include "code\modules\mob\living\simple_mob\vore\deathclaw.dm"
 #include "code\modules\mob\living\simple_mob\vore\dino.dm"
+#include "code\modules\mob\living\simple_mob\vore\fennec.dm"
+#include "code\modules\mob\living\simple_mob\vore\fennix.dm"
 #include "code\modules\mob\living\simple_mob\vore\gaslamp.dm"
 #include "code\modules\mob\living\simple_mob\vore\jelly.dm"
 #include "code\modules\mob\living\simple_mob\vore\mouse.dm"
