@@ -94,5 +94,5 @@
 /datum/gear/donator/pduni
 	display_name = "Olympius PD Service Uniform"
 	sort_category = "Donator"
-	path = /
+	path = /obj/item/clothing/under/donator/opd
 	ckeywhitelist = list("hungrycricket")
