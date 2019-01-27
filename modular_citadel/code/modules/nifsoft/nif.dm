@@ -141,8 +141,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 		human.nif = src
 		stat = NIF_INSTALLING
 		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
-		if(stealth_name)
-			name = (stealth_name ? stealth_name : initial(name)) + (owner ? " ([owner])" : null)
+		name = (stealth_name ? stealth_name : initial(name)) + (owner ? " ([owner])" : "")
 		return TRUE
 
 	return FALSE
@@ -183,7 +182,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	human = null
 	install_done = null
 	update_icon()
-	name = owner ? initial(name) + owner : initial(name)
+	name = initial(name) + (owner ? " [owner]" : "")
 
 //EMP adds wear and disables all nifsoft
 /obj/item/device/nif/emp_act(var/severity)
@@ -664,12 +663,12 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	name = "survivalist NIF"
 	desc = "This NIF is preloaded with robust mind backup and soulcatcher utilities, and runs on a minimum of power."
 	quality = 2
-	durability = 70 //Not as powerful as the sandbox NIF.
+	durability = 40 //Not durable, but it does its best to keep you alive.
 	install_blind = 1 MINUTES //Really fast because this is for paranoid people.
 	install_synchronize = 20 MINUTES //Not so fast but no side-effects.
 	install_side_effect_chance = 100
 	charge_use_multiplier = 0.5 //Hunger Begone
-	repair_multiplier = 10 //Survivalist is very resource-light.
+	repair_multiplier = 8 //Only costs 5 units of nif repair stuff to fully repair. Mainly for speed of repair.
 
 	load_starting_software()
 		new /datum/nifsoft/mindbackup(src)
