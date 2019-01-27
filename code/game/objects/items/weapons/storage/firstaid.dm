@@ -123,7 +123,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 	can_hold = list(
-		/obj/item/weapon/surgical/bone_clamp, //Cit change
+		/obj/item/weapon/surgical/bone_clamp,		//Cit change
 		/obj/item/weapon/surgical/bonesetter,
 		/obj/item/weapon/surgical/cautery,
 		/obj/item/weapon/surgical/circular_saw,
