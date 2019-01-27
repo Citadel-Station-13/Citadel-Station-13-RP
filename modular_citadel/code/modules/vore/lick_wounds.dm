@@ -1,4 +1,4 @@
-/mob/living/carbon/human/verb/lick_wounds(var/mob/living/carbon/M in living_mobs(1))
+/mob/living/carbon/human/proc/lick_wounds(var/mob/living/carbon/M in living_mobs(1))
 	set name = "Lick Wounds"
 	set category = "Abilities"
 	set desc = "Disinfect and heal small wounds with your saliva."
@@ -61,10 +61,10 @@
 
 				if(affecting.is_bandaged() && affecting.is_salved()) // We do a second check after the delay, in case it was bandaged after the first check.
 					to_chat(src, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been treated.</span>")
-					return 
+					return
 
 				else
-					visible_message("<span class='notice'>\The [src] [pick("slathers \a [W.desc] on [M]'s [affecting.name] with their spit.", 
+					visible_message("<span class='notice'>\The [src] [pick("slathers \a [W.desc] on [M]'s [affecting.name] with their spit.",
 																			   "drags their tongue across \a [W.desc] on [M]'s [affecting.name].",
 																			   "drips saliva onto \a [W.desc] on [M]'s [affecting.name].",
 																			   "uses their tongue to disinfect \a [W.desc] on [M]'s [affecting.name].",
