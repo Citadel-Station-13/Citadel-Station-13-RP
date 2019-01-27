@@ -7,7 +7,6 @@
 	icon_living = "hippo"
 	icon_dead = "hippo_dead"
 	icon_gib = "hippo_gib"
-	intelligence_level = SA_ANIMAL
 
 	maxHealth = 200
 	health = 200

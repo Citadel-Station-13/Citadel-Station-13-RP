@@ -48,13 +48,13 @@
 	minbodytemp = 0
 	maxbodytemp = 600 //Used to be 900, reduced to 600 for purposes of making them a bit more vulnerable. - Nylon
 
-	speak_chance = 2
+	//speak_chance = 2
 	response_help = "pets the"
 	response_disarm = "bops the"
 	response_harm = "hits the"
 	attacktext = list("mauled","slashed","clawed")
 	friendly = list("boops", "pawbs", "mars softly at", "sniffs on")
-	reactions = list("Mar?" = "Marrr!", "Mar!" = "Marrr???", "Mar." = "Marrr.")
+	//reactions = list("Mar?" = "Marrr!", "Mar!" = "Marrr???", "Mar." = "Marrr.")
 
 	vore_active = TRUE
 	vore_pounce_chance = 10

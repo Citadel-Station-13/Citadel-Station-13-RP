@@ -3,8 +3,8 @@
 // can use a more or less complex AI by giving it a different datum.
 
 /mob/living
-	var/datum/ai_holder/ai_holder = null
-	var/ai_holder_type = null // Which ai_holder datum to give to the mob when initialized. If null, nothing happens.
+	var/datum/ai_holder/ai_holder
+	var/ai_holder_type		// Which ai_holder datum to give to the mob when initialized. If null, nothing happens.
 
 /mob/living/Initialize()
 	if(ai_holder_type)

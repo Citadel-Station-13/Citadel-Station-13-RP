@@ -13,6 +13,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 
+	speak_emote = list("purrs","meows")
 	response_help = "pets the"
 	response_disarm = "gently baps the"
 	response_harm = "hits the"
@@ -47,7 +48,6 @@
 
 /datum/say_list/catgirl
 	speak = list("Meow!","Esp!","Purr!","HSSSSS","Mew?","Nya~")
-	speak_emote = list("purrs","meows")
 	emote_hear = list("meows","mews")
 	emote_see = list("shakes her head","shivers","stretches","grooms herself")
 

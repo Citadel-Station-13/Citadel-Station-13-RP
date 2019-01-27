@@ -181,10 +181,10 @@
 
 /obj/random/outside_mob/item_to_spawn() // Special version for mobs to have the same faction.
 	return pick(
-				prob(50);/mob/living/simple_mob/retaliate/gaslamp,
+				prob(50);/mob/living/simple_mob/animal/gaslamp,
 //				prob(50);/mob/living/simple_mob/otie/feral, // Removed until Otie code is unfucked.
-				prob(20);/mob/living/simple_mob/hostile/dino/virgo3b,
-				prob(1);/mob/living/simple_mob/hostile/dragon/virgo3b)
+				prob(20);/mob/living/simple_mob/animal/dino/virgo3b,
+				prob(1);/mob/living/simple_mob/animal/dragon/virgo3b)
 
 /obj/random/outside_mob/spawn_item()
 	. = ..()

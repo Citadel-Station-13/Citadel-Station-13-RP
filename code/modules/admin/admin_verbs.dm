@@ -300,7 +300,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/callproc,
-	/client/proc/debug_process,
 	/client/proc/callproc_datum,
 	/client/proc/Debug2,
 	/client/proc/reload_admins,

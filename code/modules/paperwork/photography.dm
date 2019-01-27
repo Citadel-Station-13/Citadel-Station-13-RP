@@ -237,7 +237,7 @@ var/global/photo_count = 0
 		else
 			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
 
-	for(var/mob/living/simple_mob/hostile/statue/S in the_turf)
+	for(var/mob/living/simple_mob/alien/statue/S in the_turf)
 		if(S)
 		 mob_detail +=	"You can see \a [S] on the photo. Its stare makes you feel uneasy." //"That which holds the image of an angel, becomes itself an angel."
 

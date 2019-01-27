@@ -1,4 +1,4 @@
-/mob/living/simple_animal/redpanda
+/mob/living/simple_mob/animal/redpanda
 	name = "red panda"
 	desc = "It's a wah! Beware of doom pounce!"
 	tt_desc = "Ailurus fulgens"
@@ -21,15 +21,8 @@
 	melee_damage_upper = 2
 	attacktext = list("bapped")
 
-	speak_chance = 1
-	speak = list("Wah!",
-				"Wah?",
-				"Waaaah.")
-	emote_hear = list("wahs!","chitters.")
-	emote_see = list("trundles around","rears up onto their hind legs and pounces a bug")
-
-// Activate Noms!
-/mob/living/simple_animal/redpanda
+	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	say_list_type = /datum/say_list/redpanda
 	vore_active = 1
 	vore_bump_chance = 10
 	vore_bump_emote	= "playfully lunges at"
@@ -37,7 +30,7 @@
 	vore_default_mode = DM_HOLD // above will only matter if someone toggles it anyway
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/redpanda/fae
+/mob/living/simple_mob/animal/redpanda/fae
 	name = "dark wah"
 	desc = "Ominous, but still cute!"
 	tt_desc = "Ailurus brattus"
@@ -55,3 +48,10 @@
 	health = 100
 	melee_damage_lower = 10
 	melee_damage_upper = 20
+
+/datum/say_list/redpanda
+	speak = list("Wah!",
+				"Wah?",
+				"Waaaah.")
+	emote_hear = list("wahs!","chitters.")
+	emote_see = list("trundles around","rears up onto their hind legs and pounces a bug")

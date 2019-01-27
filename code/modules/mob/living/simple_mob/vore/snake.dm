@@ -18,19 +18,15 @@
 	melee_damage_lower = 3
 	melee_damage_upper = 5
 	attacktext = list("bitten")
-
-	say_list_type = /datum/say_list/snake
+	speak_emote = list("hisses")
 
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
-
-/datum/say_list/snake
-	speak_emote = list("hisses")
 
 //NOODLE IS HERE! SQUEEEEEEEE~
 /mob/living/simple_mob/animal/snake/Noodle
 	name = "Noodle"
 	desc = "This snake is particularly chubby and demands nothing but the finest of treats."
-	var/turns_since_scan = 0
+/*	var/turns_since_scan = 0
 	var/obj/movement_target
 
 /mob/living/simple_mob/animal/snake/Noodle/Life() //stolen from Ian in corgi.dm
@@ -64,6 +60,7 @@
 					walk(src,0)
 				else if(ishuman(movement_target.loc) && prob(20))
 					visible_emote("stares at the [movement_target] that [movement_target.loc] has with an unknowable reptilian gaze.")
+*/
 
 /mob/living/simple_animal/snake/Noodle/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/snakesnack))

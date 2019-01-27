@@ -49,7 +49,7 @@
 			vore_selected.digest_mode = DM_HOLD
 
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
-	if (istype(O, /obj/item/weapon/newspaper) && !(ckey || (hostile && faction != user.faction)) && isturf(user.loc))
+	if (istype(O, /obj/item/weapon/newspaper) && !(ckey || (faction != user.faction)) && isturf(user.loc))
 		if (ai_holder && ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.Weaken(5) //They get tackled anyway whether they're edible or not.
 			user.visible_message("<span class='danger'>\the [user] swats \the [src] with \the [O] and promptly gets tackled!</span>!")
