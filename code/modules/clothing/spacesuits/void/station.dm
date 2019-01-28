@@ -303,3 +303,18 @@
 	desc = "An atmos resistant voidsuit for space."
 	icon_state = "rig-pilot2"
 	item_state = "rig-pilot2"
+
+//Captain (just need to fix sprites ok?)
+/obj/item/clothing/head/helmet/space/void/captain
+	desc = "Bulky blue helmet to go with the suit you hopefully have. You're the boss now."
+	name = "colony director voidsuit helmet"
+	icon_state = "capvoid"
+	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
+	slowdown = 1.5
+
+/obj/item/clothing/suit/space/void/captain
+	desc = "Bulky blue armor for the people on top. Has traditional voidsuit mountings. You are in charge!"
+	name = "colony director voidsuit"
+	icon_state = "capsuit_void"
+	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/gun)
