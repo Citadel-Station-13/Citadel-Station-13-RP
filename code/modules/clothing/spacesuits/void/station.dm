@@ -247,7 +247,7 @@
 
 //Exploration
 //Cit change start
-/obj/item/clothing/head/helmet/space/void/exploration
+/obj/item/clothing/head/helmet/space/void/pathfinder
 	name = "exploration voidsuit helmet"
 	desc = "A radiation-resistant helmet made especially for exploring unknown planetary environments."
 	icon_state = "helm_pathfinder"
@@ -256,7 +256,7 @@
 	armor = list(melee = 50, bullet = 25, laser = 30,energy = 35, bomb = 30, bio = 100, rad = 70)
 	light_overlay = "helmet_light_dual" //explorer_light
 
-/obj/item/clothing/suit/space/void/exploration
+/obj/item/clothing/suit/space/void/pathfinder
 	name = "pathfinder voidsuit"
 	desc = "A lightweight, radiation-resistant voidsuit. Designed for exploring unknown planetary environments."
 	icon_state = "void_pathfinder"
