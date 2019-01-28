@@ -17,9 +17,9 @@
 	power_environ = 0
 	mobcountmax = 100
 	floracountmax = 7000
-	valid_mobs = list(/mob/living/simple_mob/hostile/samak/polar, /mob/living/simple_mob/hostile/diyaab/polar,
-					/mob/living/simple_mob/hostile/shantak/polar, /mob/living/simple_mob/animal/bear/polar,
-					/mob/living/simple_mob/hostile/wolf)
+	valid_mobs = list(/mob/living/simple_mob/animal/samak/polar, /mob/living/simple_mob/animal/diyaab/polar,
+					/mob/living/simple_mob/animal/shantak/polar, /mob/living/simple_mob/animal/bear/polar,
+					/mob/living/simple_mob/animal/wolf)
 	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
 					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
 					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,

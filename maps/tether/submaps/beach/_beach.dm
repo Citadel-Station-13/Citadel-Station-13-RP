@@ -106,7 +106,7 @@
 	prob_fall = 25
 	guard = 40
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/fennec
+		/mob/living/simple_mob/animal/fennec
 	)
 
 /obj/tether_away_spawner/beach_cave

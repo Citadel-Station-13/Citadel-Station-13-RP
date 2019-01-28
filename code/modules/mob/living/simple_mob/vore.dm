@@ -7,13 +7,13 @@
 		return TRUE
 
 	// If target is standing we might pounce and knock them down instead of attacking
-	var/pouncechance = CanPounceTarget(A)
+	var/pouncechance = CanPounceTarget(target_mob)
 	if(pouncechance)
-		return PounceTarget(A, pouncechance)
+		return PounceTarget(target_mob, pouncechance)
 
 	// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
 	if(will_eat(target_mob) && (!target_mob.canmove || vore_standing_too))
-		return EatTarget(A)
+		return EatTarget(target_mob)
 	else
 		return TRUE
 

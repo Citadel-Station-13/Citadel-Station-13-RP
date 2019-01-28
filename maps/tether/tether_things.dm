@@ -422,9 +422,9 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/hostile/animal/corrupthound = 1,
-		/mob/living/simple_mob/hostile/animal/rat = 1,
-		/mob/living/simple_mob/hostile/alien/mimic = 1
+		/mob/living/simple_mob/mechanical/corrupthound = 1,
+		/mob/living/simple_mob/animal/rat = 1,
+		/mob/living/simple_mob/alien/mimic = 1
 	)
 
 /obj/tether_away_spawner/underdark_boss
@@ -435,7 +435,7 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 100
 	guard = 70
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/hostile/dragon = 1
+		/mob/living/simple_mob/animal/dragon = 1
 	)
 
 // Used at centcomm for the elevator

@@ -82,7 +82,7 @@
 	var/unsuitable_atoms_damage = 2	// This damage is taken when atmos doesn't fit all the requirements above
 
 	//Hostility settings
-	var/taser_kill = 1				// Is the mob weak to tasers
+	var/taser_kill = TRUE				// Is the mob weak to tasers
 
 	//Attack ranged settings
 	var/projectiletype				// The projectiles I shoot
@@ -411,7 +411,7 @@
 /mob/living/simple_mob/proc/EatTarget(mob/living/target_mob)
 	ai_log_mob("vr/EatTarget() [target_mob]",2)
 	if(ai_holder)
-		ai_holder.set_busy(TRUE)
+		set_AI_busy(TRUE)
 	var/old_target = target_mob
 	. = animal_nom(target_mob)
 	playsound(src, swallowsound, 50, 1)
@@ -423,7 +423,7 @@
 			ai_holder.LoseTarget()
 		return old_target
 	if(ai_holder)
-		ai_holder.set_busy(FALSE)
+		set_AI_busy(FALSE)
 
 // Make sure you don't call ..() on this one, otherwise you duplicate work.
 /mob/living/simple_mob/init_vore()
@@ -480,8 +480,8 @@
 			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
 				tmob.Weaken(5)
 			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
-			ai_holder.set_busy(TRUE)
+			set_AI_busy(TRUE)
 			animal_nom(tmob)
 			update_icon()
-			ai_holder.set_busy(FALSE)
+			set_AI_busy(FALSE)
 	return ..()

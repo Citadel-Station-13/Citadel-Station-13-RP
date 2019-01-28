@@ -67,8 +67,8 @@
 /mob/living/simple_mob/animal/hippo/Login()
 	. = ..()
 	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+		riding_datum = new /datum/riding/simple_mob(src)
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
 /mob/living/simple_mob/animal/hippo/MouseDrop_T(mob/living/M, mob/living/user)
 	return

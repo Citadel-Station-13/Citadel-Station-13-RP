@@ -2,7 +2,9 @@
 //Weeping angels/SCP-173 hype
 //Horrible shitcoding and stolen code adaptations below. You have been warned.
 
-/mob/living/simple_animal/hostile/statue
+//WIP: THIS FILE IS HELD TOGETHER WITH DUCT TAPE. THIS THING NEEDS A COMPLETE OVERHAUL ENTIRELY.  - Kevinz000
+
+/mob/living/simple_mob/alien/statue
 	name = "statue" // matches the name of the statue with the flesh-to-stone spell
 	desc = "An incredibly lifelike marble carving. Its eyes seems to follow you..." // same as an ordinary statue with the added "eye following you" description
 	icon = 'icons/obj/statue.dmi'
@@ -10,20 +12,15 @@
 	icon_state = "human_male"
 	icon_living = "human_male"
 	icon_dead = "human_male"
-	intelligence_level = SA_HUMANOID
-	stop_automated_movement = 1
-	var/annoyance = 30 //stop staring you creep
-	var/respond = 1
-	var/banishable = 0
 	faction = "statue"
 	mob_size = MOB_HUGE
 	response_help = "touches"
 	response_disarm = "pushes"
-	environment_smash = 2
-	can_be_antagged = 1
-	speed = -1
+	can_be_antagged = TRUE
+	movement_cooldown = -1
 	maxHealth = 3000
 	health = 3000
+	var/banishable = 0
 	status_flags = CANPUSH
 //	investigates = 1
 	a_intent = I_HURT
@@ -47,9 +44,6 @@
 	max_n2 = 0
 	minbodytemp = 0
 	maxbodytemp = 9000
-	run_at_them = 0
-
-	move_to_delay = 0 // Very fast
 
 	animate_movement = NO_STEPS // Do not animate movement, you jump around as you're a scary statue.
 
@@ -57,6 +51,8 @@
 	view_range = 35 //So it can run at the victim when out of the view
 
 	melee_miss_chance = 0
+
+	ai_holder_type = /datum/ai_holder/simple_mob/statue
 
 	armor = list(
 				"melee" = 30,
@@ -79,21 +75,21 @@
 
 // No movement while seen code.
 
-/mob/living/simple_animal/hostile/statue/New(loc)
-	..()
+/mob/living/simple_mob/alien/statue/Initialize()
+	. = ..()
 	// Give spells
 	add_spell(new/spell/aoe_turf/flicker_lights)
 	add_spell(new/spell/aoe_turf/blindness)
 	add_spell(new/spell/aoe_turf/shatter)
 
-/mob/living/simple_animal/hostile/statue/DestroySurroundings()
+/mob/living/simple_mob/alien/statue/DestroySurroundings()
 	if(can_be_seen(get_turf(loc)))
 		if(client)
 			to_chat(src, "<span class='warning'>You cannot move, there are eyes on you!</span>")
 		return 0
 	return ..()
 
-/mob/living/simple_animal/hostile/statue/attackby(var/obj/item/O as obj, var/mob/user as mob) //banishing the statue is a risky job
+/mob/living/simple_mob/alien/statue/attackby(var/obj/item/O as obj, var/mob/user as mob) //banishing the statue is a risky job
 	if(istype(O, /obj/item/weapon/nullrod))
 		visible_message("<span class='warning'>[user] tries to banish [src] with [O]!</span>")
 		if(do_after(user, 15, src))
@@ -111,121 +107,33 @@
 			resistance = initial(resistance)
 	..()
 
-/mob/living/simple_animal/hostile/statue/death()
+/mob/living/simple_mob/alien/statue/death()
 	var/chunks_to_spawn = rand(2,5)
 	for(var/I = 1 to chunks_to_spawn)
 		new /obj/item/stack/material/marble(get_turf(loc))
 	new /obj/item/cursed_marble(get_turf(loc))
-	..()
+	return ..()
 
-/mob/living/simple_animal/hostile/statue/Move(turf/NewLoc)
+/mob/living/simple_mob/alien/statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
 		if(client)
 			to_chat(src, "<span class='warning'>You cannot move, there are eyes on you!</span>")
-		return 0
+		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/statue/Life()
-	..()
-	handle_target()
-	handleAnnoyance()
-	if(target_mob) //if there's a victim, statue will use its powers
-		if((annoyance + 4) < 800)
-			annoyance += 4
-		if(drilled && (annoyance + 4) < 800) //Being hit with a drill makes them weaker, and angrier.
-			annoyance += 4
-	else if ((annoyance - 2) > 0)
-		annoyance -= 2
-
-/mob/living/simple_animal/hostile/statue/proc/handle_target()
-	if(target_mob) // If we have a target and we're AI controlled
-		var/mob/watching = can_be_seen()
-		// If they're not our target
-		if(watching && (watching != target_mob))
-			// This one is closer.
-			if(get_dist(watching, src) > get_dist(target_mob, src))
-				LoseTarget()
-				target_mob = watching
-
-
-/mob/living/simple_animal/hostile/statue/proc/handleAnnoyance()
-	if(respond) //so it won't blind people 24/7
-		respond = 0
-		if (annoyance > 30)
-			AI_blind()
-			annoyance -= 30
-			if (prob(30) && annoyance > 30)
-				var/turf/T = get_turf(loc)
-				if(T.get_lumcount() * 10 > 1.5)
-					AI_flash()
-					annoyance -= 30
-	spawn(20)
-		respond = 1
-
-
-/mob/living/simple_animal/hostile/statue/proc/AI_blind()
-	for(var/mob/living/L in oviewers(12, src)) //the range is so big, because it tries to keep out of sight and can't reengage if you get too far
-		if (prob(70))
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				if (H.species == "Diona" || H.species == "Promethean" || H == creator)// can't blink and organic
-					return
-			to_chat(L, pick("<span class='notice'>Your eyes feel very heavy.</span>", "<span class='notice'>You blink suddenly!</span>", "<span class='notice'>Your eyes close involuntarily!</span>"))
-			L.Blind(2)
-	return
-
-/mob/living/simple_animal/hostile/statue/proc/AI_flash()
-	if (prob(60))
-		visible_message("The statue slowly points at the light.")
-	for(var/obj/machinery/light/L in oview(12, src))
-		L.flicker()
-
-/mob/living/simple_animal/hostile/statue/proc/AI_mirrorshmash()
-	for(var/obj/structure/mirror/M in oview(4, src))
-		if ((!M.shattered )||(!M.glass))
-			visible_message("The statue slowly points at the mirror!")
-			sleep(5)
-			M.shatter()
-
-/mob/living/simple_animal/hostile/statue/AttackTarget()
+/mob/living/simple_mob/alien/statue/attack_target()
 	if(can_be_seen(get_turf(loc)))
 		if(client)
 			to_chat(src, "<span class='warning'>You cannot attack, there are eyes on you!</span>")
 			return
 	else
-		spawn(3) //a small delay
-		..()
+		return ..()
 
-/mob/living/simple_animal/hostile/statue/DoPunch(var/atom/A) //had to redo that, since it's supposed to target only head and upper body
-	if(!Adjacent(A)) // They could've moved in the meantime.
-		return FALSE
-
-	var/damage_to_do = rand(melee_damage_lower, melee_damage_upper)
-
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.outgoing_melee_damage_percent))
-			damage_to_do *= M.outgoing_melee_damage_percent
-
-	// SA attacks can be blocked with shields.
-	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		H.adjustBruteLossByPart(damage_to_do*0.9, pick(BP_HEAD, BP_TORSO))
-		playsound(src, attack_sound, 75, 1)
-
-	else if(A.attack_generic(src, damage_to_do, pick(attacktext), attack_armor_type, attack_armor_pen, attack_sharp, attack_edge) && attack_sound)
-		playsound(src, attack_sound, 75, 1)
-
-	return TRUE
-
-
-
-
-
-/mob/living/simple_animal/hostile/statue/face_atom()
+/mob/living/simple_mob/alien/statue/face_atom()
 	if(!can_be_seen(get_turf(loc)))
 		..()
 
-/mob/living/simple_animal/hostile/statue/proc/can_be_seen(turf/destination)
+/mob/living/simple_mob/alien/statue/proc/can_be_seen(turf/destination)
 	if(!cannot_be_seen)
 		return null
 
@@ -259,31 +167,31 @@
 					return M.occupant
 		for(var/obj/structure/mirror/M in view(3, check)) //Weeping angels hate mirrors. Probably because they're ugly af
 			if ((!M.shattered )||(!M.glass))
-				annoyance += 3
-				if (prob(5) && (ai_inactive == 0))
+				ai_holder?.annoyance += 3
+				if (prob(5) && has_AI())
 					AI_mirrorshmash()
-					annoyance -= 50
+					ai_holder?.annoyance -= 50
 				return src //if it sees the mirror, it sees itself, right?
 	return null
 
 // Cannot talk
 
-/mob/living/simple_animal/hostile/statue/say()
-	return 0
+/mob/living/simple_mob/alien/statue/say()
+	return FALSE
 
 // Turn to dust when gibbed
 
-/mob/living/simple_animal/hostile/statue/gib()
+/mob/living/simple_mob/alien/statue/gib()
 	dust()
 
 
 // Stop attacking clientless mobs
 
-/mob/living/simple_animal/hostile/statue/proc/CanAttack(atom/the_target) //ignore clientless mobs
+/mob/living/simple_mob/alien/statue/proc/CanAttack(atom/the_target) //ignore clientless mobs
 	if(isliving(the_target))
 		var/mob/living/L = the_target
 		if(!L.client && !L.ckey)
-			return 0
+			return FALSE
 	return ..()
 
 // Statue powers
@@ -312,7 +220,7 @@
 	spell_flags = 0
 	range = 10
 
-/spell/aoe_turf/blindness/cast(list/targets, mob/living/simple_animal/hostile/statue/user = usr)
+/spell/aoe_turf/blindness/cast(list/targets, mob/living/simple_mob/alien/statue/user = usr)
 	for(var/mob/living/L in targets)
 		if(L == user || L == user.creator)
 			continue
@@ -334,7 +242,7 @@
 		if ((!M.shattered ) || (!M.glass))
 			M.shatter()
 
-/mob/living/simple_animal/hostile/statue/verb/toggle_darkness()
+/mob/living/simple_mob/alien/statue/verb/toggle_darkness()
 	set name = "Toggle Darkness"
 	set desc = "You ARE the darkness."
 	set category = "Abilities"
@@ -342,12 +250,12 @@
 	plane_holder.set_vis(VIS_FULLBRIGHT, !seedarkness)
 	to_chat(src,"You [seedarkness ? "now" : "no longer"] see darkness.")
 
-/mob/living/simple_animal/hostile/statue/restrained()
+/mob/living/simple_mob/alien/statue/restrained()
 	. = ..()
 	if(can_be_seen(loc))
 		return TRUE
 
-/mob/living/simple_animal/hostile/statue/ListTargets(dist = view_range)
+/mob/living/simple_mob/alien/statue/ListTargets(dist = view_range)
 	var/list/L = mobs_in_xray_view(dist, src)
 
 	for(var/obj/mecha/M in mechas_list)
@@ -408,7 +316,7 @@
 /obj/item/cursed_marble/proc/transfer_personality(var/mob/candidate, var/mob/user)
 	announce_ghost_joinleave(candidate, 0, "They are a statue now.")
 	src.searching = 2
-	var/mob/living/simple_animal/hostile/statue/S = new(get_turf(src))
+	var/mob/living/simple_mob/alien/statue/S = new(get_turf(src))
 	S.client = candidate.client
 	if(user)
 		S.creator = user
@@ -428,7 +336,80 @@
 		var/choice = alert(user, "Are you sure you want to crush the marble? (this will spawn a clientless version of the statue, hostile to everyone, but you)", "Crush it?", "Yes", "No")
 		if(choice)
 			if(choice == "Yes")
-				var/mob/living/simple_animal/hostile/statue/S = new /mob/living/simple_animal/hostile/statue(get_turf(user))
+				var/mob/living/simple_mob/alien/statue/S = new /mob/living/simple_mob/alien/statue(get_turf(user))
 				visible_message("<span class='warning'>The slab suddenly takes the shape of a humanoid!</span>")
 				S.creator = user
 				qdel(src)
+
+/datum/ai_holder/simple_mob/statue
+	name = "Hostile AI: Statue"
+	var/annoyance = 30 //stop staring you creep
+	var/respond = 1
+
+/datum/ai_holder/simple_mob/statue/handle_special_strategical()
+	var/mob/living/simple_mob/alien/statue/S = holder
+	if(!istype(S))
+		return
+	handle_target()
+	handleAnnoyance()
+	if(target) //if there's a victim, statue will use its powers
+		if((annoyance + 4) < 800)
+			annoyance += 4
+		if(S.drilled && (annoyance + 4) < 800) //Being hit with a drill makes them weaker, and angrier.
+			annoyance += 4
+	else if ((annoyance - 2) > 0)
+		annoyance -= 2
+
+/datum/ai_holder/simple_mob/statue/proc/handle_target()
+	var/mob/living/simple_mob/alien/statue/S = holder
+	if(!istype(S))
+		return
+	if(target) // If we have a target and we're AI controlled
+		var/mob/watching = S.can_be_seen()
+		// If they're not our target
+		if(watching && (watching != target))
+			// This one is closer.
+			if(get_dist(watching, S) > get_dist(target, S))
+				lose_target()
+				target = watching
+
+/datum/ai_holder/simple_mob/statue/proc/handleAnnoyance()
+	if(!istype(holder, /mob/living/simple_mob/alien/statue))
+		return
+	var/mob/living/simple_mob/alien/statue/S = holder
+	if(respond) //so it won't blind people 24/7
+		respond = FALSE
+		if (annoyance > 30)
+			S.AI_blind()
+			annoyance -= 30
+			if (prob(30) && annoyance > 30)
+				var/turf/T = get_turf(S)
+				if(T.get_lumcount() * 10 > 1.5)
+					S.AI_flash()
+					annoyance -= 30
+	addtimer(VARSET_CALLBACK(S, respond, TRUE), 20)
+
+/mob/living/simple_mob/alien/statue/proc/AI_blind()
+	for(var/mob/living/L in oviewers(12, src)) //the range is so big, because it tries to keep out of sight and can't reengage if you get too far
+		if (prob(70))
+			if(ishuman(L))
+				var/mob/living/carbon/human/H = L
+				if (H.species == "Diona" || H.species == "Promethean" || H == creator)// can't blink and organic
+					return
+			to_chat(L, pick("<span class='notice'>Your eyes feel very heavy.</span>", "<span class='notice'>You blink suddenly!</span>", "<span class='notice'>Your eyes close involuntarily!</span>"))
+			L.Blind(2)
+	return
+
+/mob/living/simple_mob/alien/statue/proc/AI_flash()
+	if (prob(60))
+		visible_message("The statue slowly points at the light.")
+	for(var/obj/machinery/light/L in oview(12, src))
+		L.flicker()
+
+/mob/living/simple_mob/alien/statue/proc/AI_mirrorshmash()
+	for(var/obj/structure/mirror/M in oview(4, src))
+		if ((!M.shattered )||(!M.glass))
+			visible_message("The statue slowly points at the mirror!")
+			sleep(5)
+			M.shatter()
+

@@ -13,7 +13,6 @@
 	maxHealth = 200
 	health = 200
 
-	ai_inactive = TRUE //Always off
 	show_stat_health = FALSE //We will do it ourselves
 
 	response_help = "pats the"
