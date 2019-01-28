@@ -136,8 +136,8 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	spawn_delay = 3 MINUTES
 	mob_faction = "Corgi"
 	spawn_types = list(
-	/mob/living/simple_mob/corgi = 75,
-	/mob/living/simple_mob/corgi/puppy = 50
+	/mob/living/simple_mob/animal/passive/corgi = 75,
+	/mob/living/simple_mob/animal/passive/corgi/puppy = 50
 	)
 
 	simultaneous_spawns = 5

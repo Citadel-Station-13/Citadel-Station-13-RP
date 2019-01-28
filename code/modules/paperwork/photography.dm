@@ -291,11 +291,10 @@ var/global/photo_count = 0
 		user.visible_message("<span class='userdanger'>Something starts to slowly manifest from the picture!</span>")
 		spawn(150)
 			var/turf/T = get_turf(p)
-			var/mob/living/simple_mob/hostile/statue/S = new /mob/living/simple_mob/hostile/statue(T)
-			S.banishable = 1//At least you can get rid of those bastards
+			var/mob/living/simple_mob/alien/statue/S = new(T)
+			S.banishable = TRUE//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)
-
 
 	printpicture(user, p)
 

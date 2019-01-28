@@ -95,13 +95,13 @@
 		return EatTarget()
 	else ..()
 
-/mob/living/simple_mob/mechanical/corrupthound/proc/add_eyes()
+/mob/living/simple_mob/mechanical/corrupthound/add_eyes()
 	if(!eye_layer)
 		eye_layer = image(icon, "badboi-eyes")
 		eye_layer.plane = PLANE_LIGHTING_ABOVE
 	add_overlay(eye_layer)
 
-/mob/living/simple_mob/mechanical/corrupthound/proc/remove_eyes()
+/mob/living/simple_mob/mechanical/corrupthound/remove_eyes()
 	cut_overlay(eye_layer)
 
 /mob/living/simple_mob/mechanical/corrupthound/Initialize()

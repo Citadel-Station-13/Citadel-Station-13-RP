@@ -54,10 +54,10 @@
 			user.Weaken(5) //They get tackled anyway whether they're edible or not.
 			user.visible_message("<span class='danger'>\the [user] swats \the [src] with \the [O] and promptly gets tackled!</span>!")
 			if (will_eat(user))
-				ai_holder.set_busy(TRUE)
+				set_AI_busy(TRUE)
 				animal_nom(user)
 				update_icon()
-				ai_holder.set_busy(FALSE)
+				set_AI_busy(FALSE)
 			else if (!target_mob) // no using this to clear a retaliate mob's target
 				target_mob = user //just because you're not tasty doesn't mean you get off the hook. A swat for a swat.
 				AttackTarget()

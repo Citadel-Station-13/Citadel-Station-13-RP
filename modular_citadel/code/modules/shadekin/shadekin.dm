@@ -407,7 +407,7 @@
 /mob/living/simple_mob/shadekin/speech_bubble_appearance()
 	return "ghost"
 
-/mob/living/simple_mob/shadekin/DoPunch(var/atom/A)
+/mob/living/simple_mob/shadekin/attack_target(var/atom/A)
 	. = ..(A)
 	if(isliving(A)) //We punched something!
 		var/mob/living/L = A

@@ -82,13 +82,6 @@
 	add_spell(new/spell/aoe_turf/blindness)
 	add_spell(new/spell/aoe_turf/shatter)
 
-/mob/living/simple_mob/alien/statue/DestroySurroundings()
-	if(can_be_seen(get_turf(loc)))
-		if(client)
-			to_chat(src, "<span class='warning'>You cannot move, there are eyes on you!</span>")
-		return 0
-	return ..()
-
 /mob/living/simple_mob/alien/statue/attackby(var/obj/item/O as obj, var/mob/user as mob) //banishing the statue is a risky job
 	if(istype(O, /obj/item/weapon/nullrod))
 		visible_message("<span class='warning'>[user] tries to banish [src] with [O]!</span>")
@@ -167,10 +160,8 @@
 					return M.occupant
 		for(var/obj/structure/mirror/M in view(3, check)) //Weeping angels hate mirrors. Probably because they're ugly af
 			if ((!M.shattered )||(!M.glass))
-				ai_holder?.annoyance += 3
 				if (prob(5) && has_AI())
 					AI_mirrorshmash()
-					ai_holder?.annoyance -= 50
 				return src //if it sees the mirror, it sees itself, right?
 	return null
 
@@ -370,7 +361,7 @@
 		if(watching && (watching != target))
 			// This one is closer.
 			if(get_dist(watching, S) > get_dist(target, S))
-				lose_target()
+				lose_target	()
 				target = watching
 
 /datum/ai_holder/simple_mob/statue/proc/handleAnnoyance()

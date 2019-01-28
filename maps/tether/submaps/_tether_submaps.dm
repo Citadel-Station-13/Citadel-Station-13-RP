@@ -283,8 +283,9 @@
 				my_mob.max_co2 = gaslist["carbon_dioxide"] * 1.2
 
 		if(guard)
-			my_mob.returns_home = TRUE
-			my_mob.wander_distance = guard
+			if(my_mob.ai_holder)
+				my_mob.ai_holder.returns_home = TRUE
+				my_mob.ai_holder.wander_distance = guard
 
 		return
 	else

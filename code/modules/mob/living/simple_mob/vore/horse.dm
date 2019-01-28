@@ -11,7 +11,6 @@
 	maxHealth = 60
 	health = 60
 
-	turns_per_move = 5
 	see_in_dark = 6
 
 	response_help  = "pets"
