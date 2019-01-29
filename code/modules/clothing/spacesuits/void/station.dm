@@ -264,6 +264,26 @@
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/stack/flag,/obj/item/device/healthanalyzer,/obj/item/device/gps,/obj/item/device/radio/beacon, \
 	/obj/item/weapon/shovel,/obj/item/ammo_magazine,/obj/item/weapon/gun)
 
+//cit change start
+/obj/item/clothing/head/helmet/space/void/searchandrescue
+	name = "search and rescue voidsuit helmet"
+	desc = "A _______    helmet made especially for exploring unknown planetary environments."
+	icon_state = "helm_sar"
+	item_state = "helm_explorer"
+	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	armor = list(melee = 40, bullet = 15, laser = 25,energy = 35, bomb = 30, bio = 100, rad = 70)
+
+/obj/item/clothing/suit/space/void/searchandrescue
+	name = "search and rescue voidsuit"
+	desc = "________. Designed for exploring unknown planetary environments."
+	icon_state = "void_sar"
+	item_state_slots = list(slot_r_hand_str = "skrell_suit_black", slot_l_hand_str = "skrell_suit_black")
+	slowdown = 0
+	armor = list(melee = 30, bullet = 15, laser = 15,energy = 10, bomb = 10, bio = 100, rad = 70)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/stack/flag,/obj/item/device/healthanalyzer,/obj/item/device/gps,/obj/item/device/radio/beacon, \
+	/obj/item/weapon/shovel,/obj/item/ammo_magazine,/obj/item/weapon/gun)
+//cit change end
+
 /obj/item/clothing/head/helmet/space/void/exploration/alt
 	desc = "A radiation-resistant helmet retrofitted for exploring unknown planetary environments."
 	icon_state = "helm_explorer2"
