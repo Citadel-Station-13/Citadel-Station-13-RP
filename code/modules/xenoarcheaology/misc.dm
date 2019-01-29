@@ -93,6 +93,7 @@
 		/obj/item/weapon/storage/bag/fossils,
 		/obj/item/device/camera_film,
 		/obj/item/device/camera_film,
+		/obj/item/device/camera_film,
 		/obj/item/device/camera,
 		/obj/item/weapon/storage/box/evidence,
 		/obj/item/weapon/storage/box/evidence,
