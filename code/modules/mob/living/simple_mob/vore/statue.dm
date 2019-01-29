@@ -246,17 +246,6 @@
 	if(can_be_seen(loc))
 		return TRUE
 
-/mob/living/simple_mob/alien/statue/ListTargets(dist = view_range)
-	var/list/L = mobs_in_xray_view(dist, src)
-
-	for(var/obj/mecha/M in mechas_list)
-		if ((M.z == src.z) && (get_dist(src, M) <= dist) && (isInSight(src,M)))
-			L += M
-	if(creator)
-		L -= creator
-
-	return L
-
 /obj/item/cursed_marble //slime cube copypaste
 	name = "marble slab"
 	desc = "A peculiar slab of marble, radiating with dark energy."
@@ -335,7 +324,7 @@
 /datum/ai_holder/simple_mob/statue
 	name = "Hostile AI: Statue"
 	var/annoyance = 30 //stop staring you creep
-	var/respond = 1
+	var/respond = TRUE		//Crappy cooldown system that needs overhauling - kevinz000
 
 /datum/ai_holder/simple_mob/statue/handle_special_strategical()
 	var/mob/living/simple_mob/alien/statue/S = holder
@@ -378,7 +367,10 @@
 				if(T.get_lumcount() * 10 > 1.5)
 					S.AI_flash()
 					annoyance -= 30
-	addtimer(VARSET_CALLBACK(S, respond, TRUE), 20)
+	addtimer(VARSET_CALLBACK(src, respond, TRUE), 20)
+
+/datum/ai_holder/simple_mob/statue/list_targets()
+	return ..() - creator
 
 /mob/living/simple_mob/alien/statue/proc/AI_blind()
 	for(var/mob/living/L in oviewers(12, src)) //the range is so big, because it tries to keep out of sight and can't reengage if you get too far

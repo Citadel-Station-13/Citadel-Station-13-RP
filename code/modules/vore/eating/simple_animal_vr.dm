@@ -34,8 +34,8 @@
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user) || user.stat) return
 
-	if((ai_holder && ai_holder.retaliate) || (hostile && faction != user.faction))
-		user << "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>"
+	if(ai_holder && ((ai_holder && ai_holder.retaliate) || (ai_holder.hostile && faction != user.faction)))
+		to_chat(user, "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>")
 		return
 	if(vore_selected.digest_mode == DM_HOLD)
 		var/confirm = alert(user, "Enabling digestion on [name] will cause it to digest all stomach contents. Using this to break OOC prefs is against the rules. Digestion will reset after 20 minutes.", "Enabling [name]'s Digestion", "Enable", "Cancel")
@@ -48,7 +48,7 @@
 		if(confirm == "Disable")
 			vore_selected.digest_mode = DM_HOLD
 
-/mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_mob/attackby(obj/item/O, mob/user)
 	if (istype(O, /obj/item/weapon/newspaper) && !(ckey || (faction != user.faction)) && isturf(user.loc))
 		if (ai_holder && ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.Weaken(5) //They get tackled anyway whether they're edible or not.
@@ -58,10 +58,8 @@
 				animal_nom(user)
 				update_icon()
 				set_AI_busy(FALSE)
-			else if (!target_mob) // no using this to clear a retaliate mob's target
-				target_mob = user //just because you're not tasty doesn't mean you get off the hook. A swat for a swat.
-				AttackTarget()
-				LoseTarget() // only make one attempt at an attack rather than going into full rage mode
+			else
+				attack_target(user)
 		else
 			user.visible_message("<span class='info'>\the [user] swats \the [src] with \the [O]!</span>!")
 			release_vore_contents()

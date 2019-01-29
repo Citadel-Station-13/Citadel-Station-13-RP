@@ -343,7 +343,7 @@
 			var/num = rand(1,3)
 			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
 			for(var/i=0,i<num,i++)
-				new /mob/living/simple_mob/animal/viscerator(C)
+				new /mob/living/simple_mob/mechanical/viscerator(C)
 
 	qdel(src)
 

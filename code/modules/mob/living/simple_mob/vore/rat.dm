@@ -52,7 +52,7 @@
 	var/mob/living/carbon/human/food
 	var/hunger = 0
 
-/mob/living/simple_animal/hostile/rat/passive/Life()
+/mob/living/simple_mob/animal/rat/passive/Life()
 	. = ..()
 	if(!. || ai_inactive)
 		return
@@ -123,7 +123,7 @@
 			hunger = 0
 			food = null
 
-/mob/living/simple_animal/hostile/rat/passive/attackby(var/obj/item/O, var/mob/user) // Feed the rat your food to satisfy it.
+/mob/living/simple_mob/animal/rat/passive/attackby(var/obj/item/O, var/mob/user) // Feed the rat your food to satisfy it.
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks))
 		qdel(O)
 		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
@@ -132,7 +132,7 @@
 		return
 	. = ..()
 
-/mob/living/simple_animal/hostile/rat/passive/Found(var/atom/found_atom)
+/mob/living/simple_mob/animal/rat/passive/Found(var/atom/found_atom)
 	if(!SA_attackable(found_atom))
 		return null
 	else if(ishuman(found_atom) && will_eat(found_atom))
@@ -147,7 +147,7 @@
 			break
 	return null
 
-/mob/living/simple_animal/hostile/rat/passive/FindTarget()
+/mob/living/simple_mob/animal/rat/passive/FindTarget()
 	var/atom/T = null
 	for(var/atom/A in ListTargets(view_range))
 		if(A == src)
@@ -159,17 +159,17 @@
 	return T
 */
 
-/mob/living/simple_animal/hostile/rat/death()
+/mob/living/simple_mob/animal/rat/death()
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 50, 1)
 	..()
 
-/mob/living/simple_animal/hostile/rat/Login()
+/mob/living/simple_mob/animal/rat/Login()
 	. = ..()
 	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+		riding_datum = new /datum/riding/simple_mob(src)
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_animal/hostile/rat/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/animal/rat/MouseDrop_T(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/rat

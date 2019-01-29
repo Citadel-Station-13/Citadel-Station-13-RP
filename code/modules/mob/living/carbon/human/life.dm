@@ -721,21 +721,21 @@
 	else
 		if( !(COLD_RESISTANCE in mutations))
 			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
-			take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
-			if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
-				var/pressure_dam = 3	// 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
-										// (Extra 1 oxyloss from failed breath)
-										// Being in higher pressure decreases the damage taken, down to a minimum of (species.hazard_low_pressure / ONE_ATMOSPHERE) at species.hazard_low_pressure
-				pressure_dam *= (ONE_ATMOSPHERE - adjusted_pressure) / ONE_ATMOSPHERE
+				take_overall_damage(brute = LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
+				if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
+					var/pressure_dam = 3	// 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
+											// (Extra 1 oxyloss from failed breath)
+											// Being in higher pressure decreases the damage taken, down to a minimum of (species.hazard_low_pressure / ONE_ATMOSPHERE) at species.hazard_low_pressure
+					pressure_dam *= (ONE_ATMOSPHERE - adjusted_pressure) / ONE_ATMOSPHERE
 
-				if(wear_suit && wear_suit.min_pressure_protection && head && head.min_pressure_protection)
-					var/protection = max(wear_suit.min_pressure_protection, head.min_pressure_protection) // Take the weakest protection
-					pressure_dam *= (protection) / (ONE_ATMOSPHERE) 	// Divide by ONE_ATMOSPHERE to get a fractional protection
-																		// Stronger protection (Closer to 0) results in a smaller fraction
-																		// Firesuits (Min protection = 0.2 atmospheres) decrease oxyloss to 1/5
+					if(wear_suit && wear_suit.min_pressure_protection && head && head.min_pressure_protection)
+						var/protection = max(wear_suit.min_pressure_protection, head.min_pressure_protection) // Take the weakest protection
+						pressure_dam *= (protection) / (ONE_ATMOSPHERE) 	// Divide by ONE_ATMOSPHERE to get a fractional protection
+																			// Stronger protection (Closer to 0) results in a smaller fraction
+																			// Firesuits (Min protection = 0.2 atmospheres) decrease oxyloss to 1/5
 
-				adjustOxyLoss(pressure_dam)
-			pressure_alert = -2
+					adjustOxyLoss(pressure_dam)
+				pressure_alert = -2
 		else
 			pressure_alert = -1
 

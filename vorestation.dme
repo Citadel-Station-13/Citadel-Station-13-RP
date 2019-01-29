@@ -2403,6 +2403,8 @@
 #include "code\modules\mob\living\simple_mob\vore\dino.dm"
 #include "code\modules\mob\living\simple_mob\vore\fennec.dm"
 #include "code\modules\mob\living\simple_mob\vore\fennix.dm"
+#include "code\modules\mob\living\simple_mob\vore\fox.dm"
+#include "code\modules\mob\living\simple_mob\vore\frog.dm"
 #include "code\modules\mob\living\simple_mob\vore\gaslamp.dm"
 #include "code\modules\mob\living\simple_mob\vore\hippo.dm"
 #include "code\modules\mob\living\simple_mob\vore\horse.dm"

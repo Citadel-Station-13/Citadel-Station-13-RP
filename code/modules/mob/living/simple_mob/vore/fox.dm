@@ -1,4 +1,4 @@
-/mob/living/simple_animal/fox
+/mob/living/simple_mob/animal/passive/fox
 	name = "fox"
 	desc = "It's a fox. I wonder what it says?"
 	tt_desc = "Vulpes vulpes"
@@ -8,12 +8,14 @@
 	icon_dead = "fox2_dead"
 	icon_rest = "fox2_rest"
 
+/*
 	investigates = 1
 	specific_targets = 1 //Only targets with Found()
 	run_at_them = 0 //DOMESTICATED
 	view_range = 5
+*/
 
-	turns_per_move = 5
+	movement_cooldown = 5
 	see_in_dark = 6
 	mob_size = MOB_TINY
 
@@ -25,13 +27,9 @@
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323		//Above 50 Degrees Celcius
 
-	speak_chance = 1
-	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
+	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	say_list_type = /datum/say_list/fox
 	speak_emote = list("geckers", "barks")
-	emote_hear = list("howls","barks")
-	emote_see = list("shakes its head", "shivers", "geckers")
-	say_maybe_target = list("Yip?","Yap?")
-	say_got_target = list("YAP!","YIP!")
 
 	meat_amount = 1
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fox
@@ -39,7 +37,14 @@
 	var/turns_since_scan = 0
 	var/mob/flee_target
 
-/mob/living/simple_animal/fox/init_vore()
+/datum/say_list/fox
+	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
+	emote_hear = list("howls","barks")
+	emote_see = list("shakes its head", "shivers", "geckers")
+	say_maybe_target = list("Yip?","Yap?")
+	say_got_target = list("YAP!","YIP!")
+
+/mob/living/simple_mob/animal/passive/fox/init_vore()
 	..()
 	var/obj/belly/B = vore_selected
 	B.name = "Stomach"
@@ -61,26 +66,21 @@
 		"The fox's stomach churns hungrily over your form, trying to take you.",
 		"With a loud glorp, the stomach spills more acids onto you.")
 
-// All them complicated fox procedures.
-/mob/living/simple_animal/fox/Life()
-	. = ..()
-	if(!.) return
-
-	handle_flee_target()
-
-/mob/living/simple_animal/fox/PunchTarget()
-	if(istype(target_mob,/mob/living/simple_animal/mouse))
-		var/mob/living/simple_animal/mouse/mouse = target_mob
+/mob/living/simple_mob/animal/passive/fox/do_attack(atom/target)
+	if(istype(target_mob,/mob/living/simple_mob/animal/mouse))
+		var/mob/living/simple_mob/animal/mouse = target_mob
 		mouse.splat()
 		visible_emote(pick("bites \the [mouse]!","pounces on \the [mouse]!","chomps on \the [mouse]!"))
 	else
-		..()
+		return ..()
 
-/mob/living/simple_animal/fox/Found(var/atom/found_atom)
+/*
+/mob/living/simple_mob/animal/passive/fox/Found(var/atom/found_atom)
 	if(istype(found_atom,/mob/living/simple_animal/mouse))
 		return found_atom
 
-/mob/living/simple_animal/fox/proc/handle_flee_target()
+//this all needs to be in an ai holder sometime.
+/mob/living/simple_mob/animal/passive/fox/proc/handle_flee_target()
 	//see if we should stop fleeing
 	if (flee_target && !(flee_target in ListTargets(view_range)))
 		flee_target = null
@@ -93,16 +93,17 @@
 		stop_automated_movement = 1
 		walk_away(src, flee_target, 7, 2)
 
-/mob/living/simple_animal/fox/react_to_attack(var/atom/A)
+/mob/living/simple_mob/animal/passive/fox/react_to_attack(var/atom/A)
 	if(A == src) return
 	flee_target = A
 	turns_since_scan = 5
 
-/mob/living/simple_animal/fox/ex_act()
+/mob/living/simple_mob/animal/passive/fox/ex_act()
 	. = ..()
-	react_to_attack(src.loc)
+	react_to_attack(loc)
+*/
 
-/mob/living/simple_animal/fox/MouseDrop(atom/over_object)
+/mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
 	var/mob/living/carbon/H = over_object
 	if(!istype(H) || !Adjacent(H)) return ..()
 
@@ -112,17 +113,19 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/fox/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/simple_mob/animal/passive/fox/get_scooped(var/mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return //since the holder icon looks like a living cat
 	..()
 
 //Basic friend AI
-/mob/living/simple_animal/fox/fluff
+/mob/living/simple_mob/animal/passive/fox/fluff
+
 	var/mob/living/carbon/human/friend
 	var/befriend_job = null
 
-/mob/living/simple_animal/fox/fluff/Life()
+/*
+/mob/living/simple_mob/animal/passive/fox/fluff/Life()
 	. = ..()
 	if(!. || ai_inactive || !friend) return
 
@@ -148,8 +151,9 @@
 		if (prob(10))
 			var/verb = pick("yaps", "howls", "whines")
 			audible_emote("[verb] anxiously.")
+*/
 
-/mob/living/simple_animal/fox/fluff/verb/friend()
+/mob/living/simple_mob/animal/passive/fox/fluff/verb/friend()
 	set name = "Become Friends"
 	set category = "IC"
 	set src in view(1)
@@ -160,7 +164,7 @@
 		return
 
 	if (!(ishuman(usr) && befriend_job && usr.job == befriend_job))
-		usr << "<span class='notice'>[src] ignores you.</span>"
+		to_chat(usr, "<span class='notice'>[src] ignores you.</span>")
 		return
 
 	friend = usr
@@ -173,13 +177,13 @@
 	desc = "The fox doesn't say a goddamn thing, now."
 
 //Captain fox
-/mob/living/simple_animal/fox/fluff/Renault
+/mob/living/simple_mob/animal/passive/fox/fluff/Renault
 	name = "Renault"
 	desc = "Renault, the Colony Director's trustworthy fox. I wonder what it says?"
 	tt_desc = "Vulpes nobilis"
 	befriend_job = "Colony Director"
 
-/mob/living/simple_animal/fox/fluff/Renault/init_vore()
+/mob/living/simple_mob/animal/passive/fox/fluff/Renault/init_vore()
 	..()
 	var/obj/belly/B = vore_selected
 	B.name = "Stomach"
@@ -201,7 +205,7 @@
 		"A thick glob of acids drip down from above, adding to the pool of caustic fluids in Renault's belly.",
 		"There's a loud gurgle as the stomach declares the intent to make you a part of Renault.")
 
-/mob/living/simple_animal/fox/syndicate
+/mob/living/simple_mob/animal/passive/fox/syndicate
 	name = "syndi-fox"
 	desc = "It's a DASTARDLY fox! The horror! Call the shuttle!"
 	tt_desc = "Vulpes malus"

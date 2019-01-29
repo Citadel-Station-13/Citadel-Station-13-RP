@@ -90,8 +90,8 @@
 /mob/living/simple_mob/mechanical/corrupthound/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/simple_mob/mechanical/corrupthound/PunchTarget()
-	if(istype(target_mob,/mob/living/simple_animal/mouse))
+/mob/living/simple_mob/mechanical/corrupthound/do_attack(atom/target)
+	if(istype(target, /mob/living/simple_animal/mouse))
 		return EatTarget()
 	else ..()
 

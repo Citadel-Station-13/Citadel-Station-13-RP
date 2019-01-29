@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/frog
+/mob/living/simple_mob/animal/frog
 	name = "giant frog"
 	desc = "You've heard of having a frog in your throat, now get ready for the reverse."
 	tt_desc = "Anura gigantus"
@@ -7,26 +7,27 @@
 	icon_living = "frog"
 	icon_state = "frog"
 
-	speed = 5
+	movement_cooldown = 5
 
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 25
+	ai_holder_type = /datum/ai_holder/simple_mob
 
 // Pepe is love, not hate.
-/mob/living/simple_animal/hostile/frog/Initialize()
+/mob/living/simple_mob/animal/frog/Initialize()
 	. = ..()
 	if(rand(1,1000000) == 1)
 		name = "rare Pepe"
 		desc = "You found a rare Pepe. Screenshot for good luck."
 
 // Activate Noms!
-/mob/living/simple_animal/hostile/frog
+/mob/living/simple_mob/animal/frog
 	vore_active = 1
 	vore_pounce_chance = 50
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/hostile/frog/space
+/mob/living/simple_mob/animal/frog/space
 	name = "space frog"
 
 	//Space frog can hold its breath or whatever

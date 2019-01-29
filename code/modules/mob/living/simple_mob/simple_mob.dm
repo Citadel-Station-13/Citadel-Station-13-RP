@@ -420,7 +420,7 @@
 	if(.)
 		// If we succesfully ate them, lose the target
 		if(ai_holder)
-			ai_holder.LoseTarget()
+			ai_holder.lose_target()
 		return old_target
 	if(ai_holder)
 		set_AI_busy(FALSE)
