@@ -185,7 +185,7 @@
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
-	char_rendeR_holders = null
+	char_render_holders = null
 	return ..()
 
 /client/Destroy()
