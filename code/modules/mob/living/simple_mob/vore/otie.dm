@@ -329,7 +329,7 @@
 	if(!istype(S))
 		return ..()
 	if(radio_attacks && S.check_threat(M) >= 4)
-		global_announcer.autosay("[src] is attempting to detain suspect <b>[holder.target_name(M)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
+		global_announcer.autosay("[src] is attempting to detain suspect <b>[M]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
 	return ..()
 
 /mob/living/simple_mob/animal/otie/security/proc/target_name(mob/living/T)

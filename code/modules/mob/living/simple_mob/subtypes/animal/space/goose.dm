@@ -24,6 +24,9 @@
 	has_langs = list("Bird")
 
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	vore_active = 1
+	// NO VORE SPRITES
+	vore_max_size = RESIZE_SMALL
 
 /datum/say_list/goose
 	speak = list("HONK!")

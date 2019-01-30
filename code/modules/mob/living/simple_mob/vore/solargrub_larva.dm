@@ -10,7 +10,7 @@ var/global/list/grub_machine_overlays = list()
 
 	health = 5
 	maxHealth = 5
-	
+
 	meat_amount = 2
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat
 

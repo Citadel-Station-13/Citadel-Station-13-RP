@@ -20,8 +20,12 @@
 	attacktext = list("pecked")
 
 	has_langs = list("Bird")
+	vore_active = 1
+	// NO VORE SPRITES
+	vore_max_size = RESIZE_SMALL
 
 /mob/living/simple_mob/animal/passive/penguin/tux
 	name = "Tux"
 	desc = "A penguin that has been known to associate with gnus."
 	speak_emote = list("interjects")
+

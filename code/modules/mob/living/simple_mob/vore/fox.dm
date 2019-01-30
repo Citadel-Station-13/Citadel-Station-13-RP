@@ -66,7 +66,7 @@
 		"With a loud glorp, the stomach spills more acids onto you.")
 
 /mob/living/simple_mob/animal/passive/fox/do_attack(atom/target)
-	if(istype(target_mob,/mob/living/simple_mob/animal/passive/mouse))
+	if(istype(target,/mob/living/simple_mob/animal/passive/mouse))
 		var/mob/living/simple_mob/animal/passive/mouse = target
 		if(mouse.stat != DEAD)
 			mouse.death()

@@ -160,7 +160,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	/mob/living/simple_mob/animal/gaslamp = 20,
 	/mob/living/simple_mob/animal/otie/feral = 10,
 	/mob/living/simple_mob/animal/dino/virgo3b = 5,
-	/mob/living/simple_mob/hostile/dragon/virgo3b = 1
+	/mob/living/simple_mob/animal/dragon/virgo3b = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos

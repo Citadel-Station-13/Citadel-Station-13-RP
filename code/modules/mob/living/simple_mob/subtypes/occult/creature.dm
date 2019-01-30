@@ -66,3 +66,14 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 13
 	melee_damage_upper = 25
+
+/mob/living/simple_mob/animal/creature/vore
+	vore_active = 1
+	// NO VORE SPRITES
+	vore_capacity = 0
+	vore_pounce_chance = 0	// Only pounces if you're crit.
+	vore_escape_chance = 0	// As such, if you're a dibshit who feeds yourself to it, you're staying down.
+	// Overrides to non-vore version
+	movement_cooldown = 4			// Slow it down a bit
+	health = 80			// Increase health to compensate
+	maxHealth = 80

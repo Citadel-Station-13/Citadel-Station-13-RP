@@ -1,11 +1,6 @@
 /mob/living/simple_mob/animal/space/alien
 	name = "alien hunter"
 	desc = "Hiss!"
-	icon = 'icons/mob/alien.dmi'
-	icon_state = "alienh_running"
-	icon_living = "alienh_running"
-	icon_dead = "alien_l"
-	icon_gib = "syndicate_gib"
 	icon_rest = "alienh_sleep"
 
 	faction = "xeno"
@@ -28,23 +23,34 @@
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
+	vore_active = 1
+	icon = 'icons/mob/vore.dmi'
+	icon_state = "xenohunter"
+	icon_living = "xenohunter"
+	icon_dead = "xenohunter-dead"
+	icon_gib = "gibbed-a"
+	vore_icons = SA_ICON_LIVING
+
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/xenomeat
 
 /mob/living/simple_mob/animal/space/alien/drone
 	name = "alien drone"
-	icon_state = "aliend_running"
-	icon_living = "aliend_running"
-	icon_dead = "aliend_l"
 	icon_rest = "aliend_sleep"
 	health = 60
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 
+	vore_active = 1
+	icon = 'icons/mob/vore.dmi'
+	icon_state = "xenodrone"
+	icon_living = "xenodrone"
+	icon_dead = "xenodrone-dead"
+	icon_gib = "gibbed-a"
+	vore_icons = SA_ICON_LIVING
+
 /mob/living/simple_mob/animal/space/alien/sentinel
 	name = "alien sentinel"
-	icon_state = "aliens_running"
-	icon_living = "aliens_running"
-	icon_dead = "aliens_l"
+
 	icon_rest = "aliens_sleep"
 	health = 120
 	melee_damage_lower = 15
@@ -52,9 +58,17 @@
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 
+	vore_active = 1
+	icon = 'icons/mob/vore.dmi'
+	icon_state = "xenosentinel"
+	icon_living = "xenosentinel"
+	icon_dead = "xenosentinel-dead"
+	icon_gib = "gibbed-a"
+	vore_icons = SA_ICON_LIVING
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged
+
 /mob/living/simple_mob/animal/space/alien/sentinel/praetorian
 	name = "alien praetorian"
-	icon = 'icons/mob/64x64.dmi'
 	icon_state = "prat_s"
 	icon_living = "prat_s"
 	icon_dead = "prat_dead"
@@ -65,12 +79,11 @@
 	pixel_x = -16
 	old_x = -16
 	meat_amount = 5
+	icon = 'icons/mob/vore64x64.dmi'
+	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
 /mob/living/simple_mob/animal/space/alien/queen
 	name = "alien queen"
-	icon_state = "alienq_running"
-	icon_living = "alienq_running"
-	icon_dead = "alienq_l"
 	icon_rest = "alienq_sleep"
 	health = 250
 	maxHealth = 250
@@ -79,20 +92,35 @@
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 
+	vore_active = 1
+	icon = 'icons/mob/vore.dmi'
+	icon_state = "xenoqueen"
+	icon_living = "xenoqueen"
+	icon_dead = "xenoqueen-dead"
+	icon_gib = "gibbed-a"
+	vore_icons = SA_ICON_LIVING
 
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged
 	movement_cooldown = 8
 
 /mob/living/simple_mob/animal/space/alien/queen/empress
 	name = "alien empress"
-	icon = 'icons/mob/64x64.dmi'
-	icon_state = "queen_s"
-	icon_living = "queen_s"
-	icon_dead = "queen_dead"
 	icon_rest = "queen_sleep"
 	maxHealth = 400
 	health = 400
 	meat_amount = 5
 
+	vore_active = 1
+
+	icon = 'icons/mob/vore64x64.dmi'
+	icon_state = "queen_s"
+	icon_living = "queen_s"
+	icon_dead = "queen_dead"
+	vore_icons = SA_ICON_LIVING | SA_ICON_REST
+	default_pixel_x = -16
+
+	vore_capacity = 3
+	vore_pounce_chance = 75
 	pixel_x = -16
 	old_x = -16
 
@@ -108,7 +136,7 @@
 	meat_amount = 10
 	melee_damage_lower = 15
 	melee_damage_upper = 25
-
+	vore_icons = 0 // NO VORE SPRITES
 	pixel_x = -32
 	old_x = -32
 

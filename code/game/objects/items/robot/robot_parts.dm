@@ -277,7 +277,7 @@
 			add_flashes(W,user)
 	else if(istype(W, /obj/item/weapon/stock_parts/manipulator))
 		to_chat(user, "<span class='notice'>You install some manipulators and modify the head, creating a functional spider-bot!</span>")
-		new /mob/living/simple_mob/spiderbot(get_turf(loc))
+		new /mob/living/simple_mob/mechanical/spiderbot(get_turf(loc))
 		user.drop_item()
 		qdel(W)
 		qdel(src)

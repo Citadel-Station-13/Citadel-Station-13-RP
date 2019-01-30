@@ -31,6 +31,10 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
+	icon = 'icons/mob/vore.dmi'
+	vore_active = 1
+	vore_icons = SA_ICON_LIVING
+
 	var/knockdown_chance = 15
 
 /mob/living/simple_mob/animal/space/carp/apply_melee_effects(var/atom/A)
@@ -106,12 +110,16 @@
 	set_light(2) // Hologram lighting.
 	return ..()
 
-// Presumably the holodeck emag code requires this.
+// Presumably the holographic emag code requires this.
 // Pass TRUE to make safe. Pass FALSE to make unsafe.
 /mob/living/simple_mob/animal/space/carp/holographic/proc/set_safety(safe)
 	if(!isnull(get_AI_stance())) // Will return null if lacking an AI holder or a player is controlling it w/o autopilot var.
 		ai_holder.hostile = !safe // Inverted so safe = TRUE means hostility = FALSE.
 		ai_holder.forget_everything() // Reset state so it'll stop chewing on its target.
+	. = ..()
+	for(var/belly in vore_organs)
+		var/obj/belly/B = belly
+		B.digest_mode = safe ? DM_HOLD : vore_default_mode
 
 // Called on death.
 /mob/living/simple_mob/animal/space/carp/holographic/proc/derez()
@@ -125,4 +133,19 @@
 	..()
 	derez()
 
+/mob/living/simple_mob/animal/carp/pike
+	vore_active = 1
+	// NO VORE SPRITES
 
+/mob/living/simple_mob/animal/carp/holographic
+	vore_icons = 0 // NO VORE SPRITES
+	vore_digest_chance = 0
+	vore_absorb_chance = 0
+
+// Override stuff for holographic carp to make them not digest when set to safe!
+/mob/living/simple_mob/animal/carp/holographic/init_vore()
+	. = ..()
+	var/safe = (faction == "neutral")
+	for(var/belly in vore_organs)
+		var/obj/belly/B = belly
+		B.digest_mode = safe ? DM_HOLD : vore_default_mode

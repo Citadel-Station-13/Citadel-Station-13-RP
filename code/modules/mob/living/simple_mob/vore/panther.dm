@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/panther
+/mob/living/simple_mob/animal/panther
 	name = "panther"
 	desc = "Runtime's larger, less cuddly cousin."
 	tt_desc = "Panthera pardus"
@@ -10,13 +10,11 @@
 	faction = "panther"
 	maxHealth = 200
 	health = 200
-	move_to_delay = 4
 
-	speak_chance = 2
-	speak = list("RAWR!","Rawr!","GRR!","Growl!")
+	ai_holder_type = /datum/ai_holder/simple_mob/panther
+	say_list_type = /datum/say_list/panther
+
 	speak_emote = list("growls", "roars")
-	emote_hear = list("rawrs","rumbles","rowls")
-	emote_see = list("stares ferociously", "snarls")
 
 	melee_damage_lower = 10
 	melee_damage_upper = 30
@@ -33,18 +31,24 @@
 	buckle_lying = FALSE
 	mount_offset_y = 12
 
-// Activate Noms!
-/mob/living/simple_animal/hostile/panther
 	vore_active = 1
 	vore_capacity = 2
 	vore_pounce_chance = 10
 	vore_icons = SA_ICON_LIVING | SA_ICON_REST
 
-/mob/living/simple_animal/hostile/panther/Login()
+/mob/living/simple_mob/animal/panther/Login()
 	. = ..()
 	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+		riding_datum = new /datum/riding/simple_mob(src)
+	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_animal/hostile/panther/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/animal/panther/MouseDrop_T(mob/living/M, mob/living/user)
 	return
+
+/datum/ai_holder/simple_mob/panther
+	speak_chance = 2
+
+/datum/say_list/panther
+	speak = list("RAWR!","Rawr!","GRR!","Growl!")
+	emote_hear = list("rawrs","rumbles","rowls")
+	emote_see = list("stares ferociously", "snarls")

@@ -2,10 +2,6 @@
 	name = "space bear"
 	desc = "A product of Space Russia?"
 	tt_desc = "U Ursinae aetherius" //...bearspace? Maybe.
-	icon_state = "bear"
-	icon_living = "bear"
-	icon_dead = "bear_dead"
-	icon_gib = "bear_gib"
 
 	faction = "russian"
 
@@ -25,6 +21,27 @@
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/bearmeat
 
 	say_list_type = /datum/say_list/bear
+
+	vore_active = 1
+	icon = 'icons/mob/vore.dmi'
+	icon_state = "spacebear"
+	icon_living = "spacebear"
+	icon_dead = "spacebear-dead"
+	icon_gib = "bear-gib"
+	vore_icons = SA_ICON_LIVING
+
+/mob/living/simple_mob/animal/space/bear/hudson
+	name = "Hudson"
+
+/mob/living/simple_mob/animal/space/bear/brown
+	vore_active = 1
+	icon = 'icons/mob/vore.dmi'
+	name = "brown bear"
+	icon_state = "brownbear"
+	icon_living = "brownbear"
+	icon_dead = "brownbear-dead"
+	icon_gib = "bear-gib"
+	vore_icons = SA_ICON_LIVING
 
 /datum/say_list/bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
