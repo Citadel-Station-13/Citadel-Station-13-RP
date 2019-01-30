@@ -17,8 +17,8 @@
 	power_environ = 0
 	mobcountmax = 100
 	floracountmax = 7000
-	valid_mobs = list(/mob/living/simple_mob/animal/samak/polar, /mob/living/simple_mob/animal/diyaab/polar,
-					/mob/living/simple_mob/animal/shantak/polar, /mob/living/simple_mob/animal/bear/polar,
+	valid_mobs = list(/mob/living/simple_mob/animal/sif/samak/polar, /mob/living/simple_mob/animal/sif/diyaab/polar,
+					/mob/living/simple_mob/animal/sif/shantak/polar, /mob/living/simple_mob/animal/bear/polar,
 					/mob/living/simple_mob/animal/wolf)
 	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
 					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
@@ -83,13 +83,13 @@
 	desc = "This bastard sure isn't drinking Space Cola anymore."
 	..()
 
-/mob/living/simple_mob/hostile/samak/polar
+/mob/living/simple_mob/animal/samak/polar
 	faction = "polar"
 
-/mob/living/simple_mob/hostile/diyaab/polar
+/mob/living/simple_mob/animal/diyaab/polar
 	faction = "polar"
 
-/mob/living/simple_mob/hostile/shantak/polar
+/mob/living/simple_mob/animal/shantak/polar
 	faction = "polar"
 
 // -- Items -- //

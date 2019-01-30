@@ -39,10 +39,10 @@
 
 /obj/structure/largecrate/animal/pred
 	name = "Predator carrier"
-	starts_with = list(/mob/living/simple_mob/catgirl)
+	starts_with = list(/mob/living/simple_mob/humanoid/catgirl)
 
 /obj/structure/largecrate/animal/pred/Initialize() //This is nessesary to get a random one each time.
-	starts_with = list(pick(/mob/living/simple_mob/retaliate/bee,
+	starts_with = list(pick(/mob/living/simple_mob/animal/bee,
 						/mob/living/simple_mob/humanoid/catgirl;3,
 						/mob/living/simple_mob/animal/frog,
 						/mob/living/simple_mob/animal/horse,

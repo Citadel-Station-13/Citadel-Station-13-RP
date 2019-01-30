@@ -8,13 +8,6 @@
 	icon_dead = "fox2_dead"
 	icon_rest = "fox2_rest"
 
-/*
-	investigates = 1
-	specific_targets = 1 //Only targets with Found()
-	run_at_them = 0 //DOMESTICATED
-	view_range = 5
-*/
-
 	movement_cooldown = 5
 	see_in_dark = 6
 	mob_size = MOB_TINY
@@ -27,7 +20,7 @@
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323		//Above 50 Degrees Celcius
 
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/simple_mob/passive/fox
 	say_list_type = /datum/say_list/fox
 	speak_emote = list("geckers", "barks")
 
@@ -36,6 +29,12 @@
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
+	var/mob/living/carbon/human/friend
+
+/mob/living/simple_mob/animal/passive/fox/Destroy()
+	flee_target = null
+	friend = null
+	return ..()
 
 /datum/say_list/fox
 	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
@@ -67,41 +66,55 @@
 		"With a loud glorp, the stomach spills more acids onto you.")
 
 /mob/living/simple_mob/animal/passive/fox/do_attack(atom/target)
-	if(istype(target_mob,/mob/living/simple_mob/animal/mouse))
-		var/mob/living/simple_mob/animal/mouse = target_mob
-		mouse.splat()
-		visible_emote(pick("bites \the [mouse]!","pounces on \the [mouse]!","chomps on \the [mouse]!"))
+	if(istype(target_mob,/mob/living/simple_mob/animal/passive/mouse))
+		var/mob/living/simple_mob/animal/passive/mouse = target
+		if(mouse.stat != DEAD)
+			mouse.death()
+			visible_emote(pick("bites \the [mouse]!","pounces on \the [mouse]!","chomps on \the [mouse]!"))
 	else
 		return ..()
 
-/*
-/mob/living/simple_mob/animal/passive/fox/Found(var/atom/found_atom)
-	if(istype(found_atom,/mob/living/simple_animal/mouse))
-		return found_atom
+/datum/ai_holder/simple_mob/passive/fox
+	hostile = TRUE		//Scan for targets
+	specific_target = TRUE		//Only attack those found()
+	outmatched_threshold = 0
 
-//this all needs to be in an ai holder sometime.
-/mob/living/simple_mob/animal/passive/fox/proc/handle_flee_target()
-	//see if we should stop fleeing
-	if (flee_target && !(flee_target in ListTargets(view_range)))
-		flee_target = null
-		GiveUpMoving()
+/datum/ai_holder/simple_mob/passive/fox/found(atom/A)
+	if(istype(A, /mob/living/simple_mob/animal/passive/mouse))
+		return A
+	return ..()
 
-	if (flee_target && !stat && !buckled)
-		if (resting)
-			lay_down()
-		if(prob(25)) say("GRRRRR!")
-		stop_automated_movement = 1
-		walk_away(src, flee_target, 7, 2)
+/datum/ai_holder/simple_mob/passive/fox/react_to_attack(atom/A)
+	give_target(A)
+	flee_from_target()
 
-/mob/living/simple_mob/animal/passive/fox/react_to_attack(var/atom/A)
-	if(A == src) return
-	flee_target = A
-	turns_since_scan = 5
+/datum/ai_holder/simple_mob/passive/fox/special_flee_check()
+	return TRUE
 
-/mob/living/simple_mob/animal/passive/fox/ex_act()
-	. = ..()
-	react_to_attack(loc)
-*/
+/datum/ai_holder/simple_mob/passive/fox/handle_special_strategical()
+	if(!istype(src.holder, /mob/living/simple_mob/animal/passive/fox))
+		return
+	var/mob/living/simple_mob/animal/passive/fox/holder = src.holder
+	var/friend_dist = get_dist(holder, holder.friend)
+	if(friend_dist <= 4)
+		if(stance == STANCE_IDLE)
+			set_follow(holder.friend)
+			set_stance(STANCE_FOLLOW)
+	if (friend_dist <= 1)
+		if (holder.friend.stat >= DEAD || holder.friend.health <= config.health_threshold_softcrit)
+			if (prob((holder.friend.stat < DEAD)? 50 : 15))
+				var/verb = pick("yaps", "howls", "whines")
+				holder.audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
+		else
+			if (prob(5))
+				holder.visible_emote(pick("nips [holder.friend].",
+								   "brushes against [holder.friend].",
+								   "tugs on [holder.friend].",
+								   "chrrrrs."))
+	else if (holder.friend.health <= 50)
+		if (prob(10))
+			var/verb = pick("yaps", "howls", "whines")
+			holder.audible_emote("[verb] anxiously.")
 
 /mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
 	var/mob/living/carbon/H = over_object
@@ -118,40 +131,8 @@
 		return //since the holder icon looks like a living cat
 	..()
 
-//Basic friend AI
 /mob/living/simple_mob/animal/passive/fox/fluff
-
-	var/mob/living/carbon/human/friend
-	var/befriend_job = null
-
-/*
-/mob/living/simple_mob/animal/passive/fox/fluff/Life()
-	. = ..()
-	if(!. || ai_inactive || !friend) return
-
-	var/friend_dist = get_dist(src,friend)
-
-	if (friend_dist <= 4)
-		if(stance == STANCE_IDLE)
-			if(set_follow(friend))
-				handle_stance(STANCE_FOLLOW)
-
-	if (friend_dist <= 1)
-		if (friend.stat >= DEAD || friend.health <= config.health_threshold_softcrit)
-			if (prob((friend.stat < DEAD)? 50 : 15))
-				var/verb = pick("yaps", "howls", "whines")
-				audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
-		else
-			if (prob(5))
-				visible_emote(pick("nips [friend].",
-								   "brushes against [friend].",
-								   "tugs on [friend].",
-								   "chrrrrs."))
-	else if (friend.health <= 50)
-		if (prob(10))
-			var/verb = pick("yaps", "howls", "whines")
-			audible_emote("[verb] anxiously.")
-*/
+	var/befriend_job
 
 /mob/living/simple_mob/animal/passive/fox/fluff/verb/friend()
 	set name = "Become Friends"

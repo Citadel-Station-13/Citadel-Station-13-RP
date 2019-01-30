@@ -48,7 +48,6 @@
 	animate_movement = NO_STEPS // Do not animate movement, you jump around as you're a scary statue.
 
 	see_in_dark = 13
-	view_range = 35 //So it can run at the victim when out of the view
 
 	melee_miss_chance = 0
 
@@ -325,6 +324,7 @@
 	name = "Hostile AI: Statue"
 	var/annoyance = 30 //stop staring you creep
 	var/respond = TRUE		//Crappy cooldown system that needs overhauling - kevinz000
+	vision_range = 35
 
 /datum/ai_holder/simple_mob/statue/handle_special_strategical()
 	var/mob/living/simple_mob/alien/statue/S = holder
@@ -370,7 +370,10 @@
 	addtimer(VARSET_CALLBACK(src, respond, TRUE), 20)
 
 /datum/ai_holder/simple_mob/statue/list_targets()
-	return ..() - creator
+	var/mob/living/simple_animal/alien/statue/S = holder
+	. = ..()
+	if(istype(S))
+		. -= S.creator
 
 /mob/living/simple_mob/alien/statue/proc/AI_blind()
 	for(var/mob/living/L in oviewers(12, src)) //the range is so big, because it tries to keep out of sight and can't reengage if you get too far

@@ -2,6 +2,9 @@
 
 /datum/ai_holder
 	var/hostile = FALSE						// Do we try to hurt others?
+
+	var/specific_target = FALSE				//Only target those found()
+
 	var/retaliate = FALSE					// Attacks whatever struck it first. Mobs will still attack back if this is false but hostile is true.
 	var/mauling = FALSE						// Attacks unconscious mobs
 
@@ -44,6 +47,8 @@
 		if(found(A)) // In case people want to override this.
 			. = list(A)
 			break
+		else if(specific_target)
+			continue
 		if(can_attack(A)) // Can we attack it?
 			. += A
 			continue
@@ -233,6 +238,10 @@
 	ai_log("react_to_attack() : Was attacked by [attacker].", AI_LOG_INFO)
 	on_attacked(attacker) // So we attack immediately and not threaten.
 	return give_target(attacker) // Also handles setting the appropiate stance.
+
+/datum/ai_holder/proc/react_attack_hand(mob/living/L, intent)
+	if(intent != I_HELP)
+		return react_to_attack(L)
 
 // Sets a few vars so mobs that threaten will react faster to an attacker or someone who attacked them before.
 /datum/ai_holder/proc/on_attacked(atom/movable/AM)

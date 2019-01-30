@@ -1,4 +1,6 @@
-/mob/living/simple_animal/spiderbot
+//This entire file is shitcode, refactor ASA-heccing-P - kevinz000
+
+/mob/living/simple_mob/mechanical/spiderbot
 	name = "spider-bot"
 	desc = "A skittering robotic friend!"
 	tt_desc = "Maintenance Robot"
@@ -6,7 +8,6 @@
 	icon_state = "spiderbot-chassis"
 	icon_living = "spiderbot-chassis"
 	icon_dead = "spiderbot-smashed"
-	intelligence_level = SA_HUMANOID // Because its piloted by players.
 
 	health = 10
 	maxHealth = 10
@@ -30,7 +31,6 @@
 	minbodytemp = 0
 	maxbodytemp = 500
 
-	speak_chance = 1
 	speak_emote = list("beeps","clicks","chirps")
 
 	var/obj/item/device/radio/borg/radio = null
@@ -53,14 +53,14 @@
 	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
 
-/mob/living/simple_animal/spiderbot/New()
+/mob/living/simple_mob/mechanical/spiderbot/New()
 	..()
 	add_language(LANGUAGE_GALCOM)
 	default_language = all_languages[LANGUAGE_GALCOM]
 	verbs |= /mob/living/proc/ventcrawl
 	verbs |= /mob/living/proc/hide
 
-/mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/mechanical/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
 	if(istype(O, /obj/item/device/mmi))
 		var/obj/item/device/mmi/B = O
@@ -144,7 +144,7 @@
 	else
 		O.attack(src, user, user.zone_sel.selecting)
 
-/mob/living/simple_animal/spiderbot/emag_act(var/remaining_charges, var/mob/user)
+/mob/living/simple_mob/mechanical/spiderbot/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
 		user << "<span class='warning'>[src] is already overloaded - better run.</span>"
 		return 0
@@ -154,7 +154,7 @@
 		spawn(200)	src << "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>"
 		spawn(300)	src.explode()
 
-/mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
+/mob/living/simple_mob/mechanical/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
@@ -162,13 +162,13 @@
 		src.name = "spider-bot ([M.brainmob.name])"
 		src.languages = M.brainmob.languages
 
-/mob/living/simple_animal/spiderbot/proc/explode() //When emagged.
+/mob/living/simple_mob/mechanical/spiderbot/proc/explode() //When emagged.
 	src.visible_message("<span class='danger'>\The [src] makes an odd warbling noise, fizzles, and explodes!</span>")
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	eject_brain()
 	death()
 
-/mob/living/simple_animal/spiderbot/update_icon()
+/mob/living/simple_mob/mechanical/spiderbot/update_icon()
 	if(mmi)
 		if(positronic)
 			icon_state = "spiderbot-chassis-posi"
@@ -180,7 +180,7 @@
 		icon_state = "spiderbot-chassis"
 		icon_living = "spiderbot-chassis"
 
-/mob/living/simple_animal/spiderbot/proc/eject_brain()
+/mob/living/simple_mob/mechanical/spiderbot/proc/eject_brain()
 	if(mmi)
 		var/turf/T = get_turf(loc)
 		if(T)
@@ -193,11 +193,11 @@
 	remove_language("Robot Talk")
 	positronic = null
 
-/mob/living/simple_animal/spiderbot/Destroy()
+/mob/living/simple_mob/mechanical/spiderbot/Destroy()
 	eject_brain()
 	..()
 
-/mob/living/simple_animal/spiderbot/New()
+/mob/living/simple_mob/mechanical/spiderbot/New()
 
 	radio = new /obj/item/device/radio/borg(src)
 	camera = new /obj/machinery/camera(src)
@@ -206,7 +206,7 @@
 
 	..()
 
-/mob/living/simple_animal/spiderbot/death()
+/mob/living/simple_mob/mechanical/spiderbot/death()
 
 	living_mob_list -= src
 	dead_mob_list += src
@@ -222,7 +222,7 @@
 	return
 
 //Cannibalized from the parrot mob. ~Zuhayr
-/mob/living/simple_animal/spiderbot/verb/drop_held_item()
+/mob/living/simple_mob/mechanical/spiderbot/verb/drop_held_item()
 	set name = "Drop held item"
 	set category = "Spiderbot"
 	set desc = "Drop the item you're holding."
@@ -252,9 +252,7 @@
 	held_item = null
 	return 1
 
-	return
-
-/mob/living/simple_animal/spiderbot/verb/get_item()
+/mob/living/simple_mob/mechanical/spiderbot/verb/get_item()
 	set name = "Pick up item"
 	set category = "Spiderbot"
 	set desc = "Allows you to take a nearby small item."
@@ -288,13 +286,13 @@
 	src << "<span class='warning'>There is nothing of interest to take.</span>"
 	return 0
 
-/mob/living/simple_animal/spiderbot/examine(mob/user)
+/mob/living/simple_mob/mechanical/spiderbot/examine(mob/user)
 	..(user)
 	if(src.held_item)
 		user << "It is carrying \icon[src.held_item] \a [src.held_item]."
 
-/mob/living/simple_animal/spiderbot/cannot_use_vents()
+/mob/living/simple_mob/mechanical/spiderbot/cannot_use_vents()
 	return
 
-/mob/living/simple_animal/spiderbot/binarycheck()
+/mob/living/simple_mob/mechanical/spiderbot/binarycheck()
 	return positronic
