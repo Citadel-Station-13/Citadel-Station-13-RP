@@ -35,7 +35,7 @@
 	flags = RAD_SHIELDED | BLUE_SHIELDED
 
 /area/teleporter/departing
-	name = "\improper Long-Range Teleporter"
+	name = "Long-Range Teleporter"
 	icon_state = "teleporter"
 	music = "signal"
 
@@ -203,15 +203,15 @@
 
 // rnd (Research and Development)
 /area/rnd/research/testingrange
-	name = "\improper Weapons Testing Range"
+	name = "Weapons Testing Range"
 	icon_state = "firingrange"
 
 /area/rnd/outpost
-	name = "\improper Research Outpost Hallway"
+	name = "Research Outpost Hallway"
 	icon_state = "research"
 
 /area/rnd/outpost/airlock
-	name = "\improper Research Outpost Airlock"
+	name = "Research Outpost Airlock"
 	icon_state = "green"
 
 /area/rnd/outpost/eva
@@ -219,7 +219,7 @@
 	icon_state = "eva"
 
 /area/rnd/outpost/chamber
-	name = "\improper Research Outpost Burn Chamber"
+	name = "Research Outpost Burn Chamber"
 	icon_state = "engine"
 
 /area/rnd/outpost/atmos
@@ -227,24 +227,24 @@
 	icon_state = "atmos"
 
 /area/rnd/outpost/storage
-	name = "\improper Research Outpost Gas Storage"
+	name = "Research Outpost Gas Storage"
 	icon_state = "toxstorage"
 
 /area/rnd/outpost/testing
-	name = "\improper Research Outpost Testing"
+	name = "Research Outpost Testing"
 	icon_state = "toxtest"
 
 /area/rnd/outpost/mixing
-	name = "\improper Research Outpost Gas Mixing"
+	name = "Research Outpost Gas Mixing"
 	icon_state = "toxmix"
 
 /area/rnd/outpost/heating
-	name = "\improper Research Outpost Gas Heating"
+	name = "Research Outpost Gas Heating"
 	icon_state = "toxmix"
 
 /area/maintenance/substation/outpost
 	name = "Research Outpost Substation"
 
 /area/engineering/engine_gas
-	name = "\improper Engine Gas Storage"
+	name = "Engine Gas Storage"
 	icon_state = "engine_waste"

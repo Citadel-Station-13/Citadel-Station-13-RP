@@ -31,8 +31,6 @@ var/global/list/language_keys[0]					// Table of say codes for all languages
 var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that require a whitelist check.
 var/global/list/playable_species = list(SPECIES_CUSTOM, SPECIES_HUMAN)    // A list of ALL playable species, whitelisted, latejoin or otherwise. //VOREStation Edit - Making sure custom species is obvious.
 
-var/list/mannequins_
-
 // Posters
 var/global/list/poster_designs = list()
 
@@ -99,14 +97,6 @@ var/global/list/string_slot_flags = list(
 	"uniform" = SLOT_TIE,
 	"holster" = SLOT_HOLSTER
 )
-
-/proc/get_mannequin(var/ckey)
-	if(!mannequins_)
-		mannequins_ = new()
- 	. = mannequins_[ckey]
-	if(!.)
-		. = new/mob/living/carbon/human/dummy/mannequin()
-		mannequins_[ckey] = .
 
 //////////////////////////
 /////Initial Building/////

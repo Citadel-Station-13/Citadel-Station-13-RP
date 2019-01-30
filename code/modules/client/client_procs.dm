@@ -159,10 +159,7 @@
 	send_resources()
 	SSnanoui.send_resources(src)
 
-	if(!void)
-		void = new()
-		void.MakeGreed()
-	screen += void
+	apply_clickcatcher()
 
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		src << "<span class='info'>You have unread updates in the changelog.</span>"
@@ -188,6 +185,7 @@
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	char_rendeR_holders = null
 	return ..()
 
 /client/Destroy()
@@ -407,7 +405,79 @@ client/verb/character_setup()
 		else
 			CRASH("Age check regex failed for [src.ckey]")
 
+//Hook, override it to run code when dir changes
+//Like for /atoms, but clients are their own snowflake FUCK
+/client/proc/setDir(newdir)
+	dir = newdir
+
 /client/vv_edit_var(var_name, var_value)
-	if(var_name == NAMEOF(src, holder))
-		return FALSE
-	return ..()
+	switch (var_name)
+		if ("holder")
+			return FALSE
+		if ("ckey")
+			return FALSE
+		if ("key")
+			return FALSE
+		if("view")
+			change_view(var_value)
+			return TRUE
+	. = ..()
+
+/client/proc/rescale_view(change, min, max)
+	var/viewscale = getviewsize(view)
+	var/x = viewscale[1]
+	var/y = viewscale[2]
+	x = CLAMP(x+change, min, max)
+	y = CLAMP(y+change, min,max)
+	change_view("[x]x[y]")
+
+//WIP: Make sure all view operations use this or the above
+/client/proc/change_view(new_size)
+	if (isnull(new_size))
+		CRASH("change_view called without argument.")
+
+	view = new_size
+	apply_clickcatcher()
+	mob.reload_fullscreen()
+	/*
+	if (isliving(mob))
+		var/mob/living/M = mob
+		M.update_damage_hud()
+	if (prefs.auto_fit_viewport)
+		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+	*/
+
+/client/proc/generate_clickcatcher()
+	if(!void)
+		void = new
+		screen += void
+
+/client/proc/apply_clickcatcher()
+	generate_clickcatcher()
+	var/list/actualview = getviewsize(view)
+	void.UpdateGreed(actualview[1],actualview[2])
+
+GLOBAL_VAR_INIT(announce_prs, TRUE)
+/client/proc/AnnouncePR(announcement)
+	if(GLOB.announce_prs)
+		to_chat(src, announcement)
+
+/client/proc/show_character_previews(mutable_appearance/MA)
+	var/pos = 0
+	for(var/D in cardinals)
+		pos++
+		var/obj/screen/O = LAZYACCESS(char_render_holders, "[D]")
+		if(!O)
+			O = new
+			LAZYSET(char_render_holders, "[D]", O)
+			screen |= O
+		O.appearance = MA
+		O.dir = D
+		O.screen_loc = "character_render:0,[pos]"
+
+/client/proc/clear_character_previews()
+	for(var/index in char_render_holders)
+		var/obj/screen/S = char_render_holders[index]
+		screen -= S
+		qdel(S)
+	char_render_holders = null
