@@ -24,7 +24,7 @@
 /mob/living/simple_mob/animal/passive/cat/Found(var/atom/found_atom)
 	if(!SA_attackable(found_atom))
 		return null
-	if(istype(found_atom,/mob/living/simple_mob/mouse))
+	if(ismouse(found_atom))
 		return found_atom
 	if(found_atom in friends)
 		return null

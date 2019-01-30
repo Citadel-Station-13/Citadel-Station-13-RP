@@ -464,7 +464,7 @@ GLOBAL_VAR_INIT(announce_prs, TRUE)
 
 /client/proc/show_character_previews(mutable_appearance/MA)
 	var/pos = 0
-	for(var/D in cardinals)
+	for(var/D in GLOB.cardinal)
 		pos++
 		var/obj/screen/O = LAZYACCESS(char_render_holders, "[D]")
 		if(!O)
