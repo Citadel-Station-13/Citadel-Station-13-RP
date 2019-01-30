@@ -283,7 +283,7 @@
 			..()
 
 /datum/ai_holder/simple_mob/otie/security/found(atom/A)
-	if(!istype(holder, /mob/living/simple_animal/otie/security))
+	if(!istype(holder, /mob/living/simple_mob/animal/otie/security))
 		return ..()
 	var/mob/living/simple_mob/animal/otie/security/O = holder
 	if(O.check_threat(A) >= 4)

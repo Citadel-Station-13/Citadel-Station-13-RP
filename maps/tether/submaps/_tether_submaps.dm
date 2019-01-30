@@ -285,7 +285,7 @@
 		if(guard)
 			if(my_mob.ai_holder)
 				my_mob.ai_holder.returns_home = TRUE
-				my_mob.ai_holder.wander_distance = guard
+				my_mob.ai_holder.max_home_distance = guard
 
 		return
 	else

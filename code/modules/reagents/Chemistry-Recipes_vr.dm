@@ -334,9 +334,8 @@
 		var/spawn_count = rand(1,3)
 		for(var/i = 1, i <= spawn_count, i++)
 			var/chosen = pick(voremobs)
-			var/mob/living/simple_mob/hostile/C = new chosen
+			var/mob/living/simple_mob/C = new chosen(get_turf(holder.my_atom))
 			C.faction = "slimesummon"
-			C.loc = get_turf(holder.my_atom)
 			if(prob(50))
 				for(var/j = 1, j <= rand(1, 3), j++)
 					step(C, pick(NORTH,SOUTH,EAST,WEST))

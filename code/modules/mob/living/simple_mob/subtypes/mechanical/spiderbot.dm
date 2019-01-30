@@ -12,8 +12,7 @@
 	health = 10
 	maxHealth = 10
 
-	wander = 0
-	speed = -1                    //Spiderbots gotta go fast.
+	movement_cooldown = -1                    //Spiderbots gotta go fast.
 	pass_flags = PASSTABLE
 	mob_size = MOB_SMALL
 

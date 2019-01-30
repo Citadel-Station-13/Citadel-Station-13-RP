@@ -83,13 +83,13 @@
 	desc = "This bastard sure isn't drinking Space Cola anymore."
 	..()
 
-/mob/living/simple_mob/animal/samak/polar
+/mob/living/simple_mob/animal/sif/samak/polar
 	faction = "polar"
 
-/mob/living/simple_mob/animal/diyaab/polar
+/mob/living/simple_mob/animal/sif/diyaab/polar
 	faction = "polar"
 
-/mob/living/simple_mob/animal/shantak/polar
+/mob/living/simple_mob/animal/sif/shantak/polar
 	faction = "polar"
 
 // -- Items -- //

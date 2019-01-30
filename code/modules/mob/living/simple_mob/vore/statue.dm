@@ -370,7 +370,7 @@
 	addtimer(VARSET_CALLBACK(src, respond, TRUE), 20)
 
 /datum/ai_holder/simple_mob/statue/list_targets()
-	var/mob/living/simple_animal/alien/statue/S = holder
+	var/mob/living/simple_mob/alien/statue/S = holder
 	. = ..()
 	if(istype(S))
 		. -= S.creator
