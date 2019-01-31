@@ -106,8 +106,8 @@
 	return INITIALIZE_HINT_NORMAL
 
 //This is LINDA, by the by.
-/turf/proc/Initalize_Atmos(times_fired)
-	CalculateAdjacentTurfs()
+///turf/proc/Initalize_Atmos(times_fired)
+//	CalculateAdjacentTurfs()
 
 /turf/Destroy(force)
 	. = QDEL_HINT_IWILLGC
