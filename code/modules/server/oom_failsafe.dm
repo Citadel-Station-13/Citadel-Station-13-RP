@@ -17,9 +17,9 @@
 	DIRECT_OUTPUT(world, "<span class='danger'>SERVER RECOVERY: REBOOT FORCED BY [ckey]</span>")
 	OOM_force_reboot()
 
-GLOBAL_REAL(OOM_detection) = list()
-GLOBAL_REAL(OOM_recovery_in_progress)
-GLOBAL_REAL(OOM_recovery_finished)
+GLOBAL_REAL(OOM_detection, list())
+GLOBAL_REAL(OOM_recovery_in_progress, FALSE)
+GLOBAL_REAL(OOM_recovery_finished, FALSE)
 
 /world/proc/OOM_check()
 	return OOM_detection? TRUE : FALSE
