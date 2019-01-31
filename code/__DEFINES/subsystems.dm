@@ -1,3 +1,8 @@
+//Update this whenever the db schema changes
+//make sure you add an update to the schema_version stable in the db changelog
+#define DB_MAJOR_VERSION 5
+#define DB_MINOR_VERSION 0
+
 //Timing subsystem
 //Don't run if there is an identical unique timer active
 //if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer, and returns the id of the existing timer
@@ -19,13 +24,17 @@
 
 #define TIMER_ID_NULL -1
 
-#define INITIALIZATION_INSSATOMS 0	//New should not call Initialize
-#define INITIALIZATION_INNEW_MAPLOAD 1	//New should call Initialize(TRUE)
-#define INITIALIZATION_INNEW_REGULAR 2	//New should call Initialize(FALSE)
+//For servers that can't do with any additional lag, set this to none in flightpacks.dm in subsystem/processing.
+#define FLIGHTSUIT_PROCESSING_NONE 0
+#define FLIGHTSUIT_PROCESSING_FULL 1
 
-#define INITIALIZE_HINT_NORMAL   0  //Nothing happens
+#define INITIALIZATION_INSSATOMS 0	//New should not call Initialize
+#define INITIALIZATION_INNEW_MAPLOAD 2	//New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_REGULAR 1	//New should call Initialize(FALSE)
+
+#define INITIALIZE_HINT_NORMAL 0    //Nothing happens
 #define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
-#define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom
+#define INITIALIZE_HINT_QDEL 2  //Call qdel on the atom
 
 //type and all subtypes should always call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
@@ -35,19 +44,6 @@
 		SSatoms.InitAtom(src, args);\
 	}\
 }
-
-// SS runlevels
-
-#define RUNLEVEL_INIT 0			// "Initialize Only" - Used for subsystems that should never be fired (Should also have SS_NO_FIRE set)
-#define RUNLEVEL_LOBBY 1		// Initial runlevel before setup.  Returns to here if setup fails.
-#define RUNLEVEL_SETUP 2		// While the gamemode setup is running.  I.E gameticker.setup()
-#define RUNLEVEL_GAME 4			// After successful game ticker setup, while the round is running.
-#define RUNLEVEL_POSTGAME 8		// When round completes but before reboot
-
-#define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
-
-var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
-#define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)	// Convert from the runlevel bitfield constants to index in runlevel_flags list
 
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
@@ -86,6 +82,19 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_MACHINES		100
 #define FIRE_PRIORITY_PROJECTILES	150
 #define FIRE_PRIORITY_OVERLAYS		500
+
+// SS runlevels
+
+#define RUNLEVEL_INIT 0
+#define RUNLEVEL_LOBBY 1
+#define RUNLEVEL_SETUP 2
+#define RUNLEVEL_GAME 4
+#define RUNLEVEL_POSTGAME 8
+
+#define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+
+
+
 
 #define COMPILE_OVERLAYS(A)\
 	if (TRUE) {\
