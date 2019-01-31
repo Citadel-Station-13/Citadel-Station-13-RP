@@ -1,7 +1,7 @@
 //Update this whenever the db schema changes
 //make sure you add an update to the schema_version stable in the db changelog
-#define DB_MAJOR_VERSION 5
-#define DB_MINOR_VERSION 0
+//#define DB_MAJOR_VERSION 5
+//#define DB_MINOR_VERSION 0
 
 //Timing subsystem
 //Don't run if there is an identical unique timer active
@@ -48,13 +48,16 @@
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
-#define INIT_ORDER_CHEMISTRY	18
-#define INIT_ORDER_MAPPING		17
-#define INIT_ORDER_DECALS		16
-#define INIT_ORDER_ATOMS		15
-#define INIT_ORDER_MACHINES		10
-#define INIT_ORDER_SHUTTLES		3
-#define INIT_ORDER_TIMER		1
+
+#define INIT_ORDER_GARBAGE		70
+#define INIT_ORDER_TIMER		60
+#define INIT_ORDER_CHEMISTRY	50
+#define INIT_ORDER_MAPPING		40
+#define INIT_ORDER_DECALS		38
+#define INIT_ORDER_VIS			36
+#define INIT_ORDER_ATOMS		34
+#define INIT_ORDER_MACHINES		32
+#define INIT_ORDER_SHUTTLES		30
 #define INIT_ORDER_DEFAULT		0
 #define INIT_ORDER_LIGHTING		0
 #define INIT_ORDER_AIR			-1
@@ -72,6 +75,7 @@
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
+#define FIRE_PRIORITY_VIS			10
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35

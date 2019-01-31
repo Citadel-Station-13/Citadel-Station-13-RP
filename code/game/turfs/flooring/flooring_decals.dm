@@ -45,7 +45,7 @@ var/list/floor_decals = list()
 	if(T.decals && T.decals.len)
 		T.decals.Cut()
 		T.update_icon()
-	initialized = TRUE
+	flags |= INITIALIZED
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/floor_decal/corner
