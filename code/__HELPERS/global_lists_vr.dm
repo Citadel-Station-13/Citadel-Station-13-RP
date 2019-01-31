@@ -38,7 +38,8 @@ var/global/list/item_vore_blacklist = list(
 		/obj/item/blueprints,
 		/obj/item/clothing/head/helmet/space,
 		/obj/item/weapon/disk/nuclear,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/roiz)
+		///obj/item/clothing/suit/storage/hooded/wintercoat/roiz
+		)
 
 var/global/list/digestion_sounds = list(
 		'sound/vore/digest1.ogg',

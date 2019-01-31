@@ -320,7 +320,7 @@ var/global/list/##LIST_NAME = list();\
 // /atom/mouse_opacity
 #define MOUSE_OPACITY_TRANSPARENT 0
 #define MOUSE_OPACITY_ICON 1
-#define MOUSE_OPACITY_OPAQUE
+#define MOUSE_OPACITY_OPAQUE 2
 
 //generate_or_wait_for_human_dummy slot keys
 #define DUMMY_HUMAN_SLOT_PREFERENCES "PREFERENCE HUMAN RENDER"

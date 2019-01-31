@@ -1,4 +1,4 @@
-/mob/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/mob/CanPass(atom/movable/mover, turf/target, height, air_group)
 	if(air_group || (height==0)) return 1
 
 	if(ismob(mover))

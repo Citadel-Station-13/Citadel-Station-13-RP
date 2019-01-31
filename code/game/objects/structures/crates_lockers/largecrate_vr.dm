@@ -54,7 +54,6 @@
 						/mob/living/simple_mob/animal/space/carp,
 						/mob/living/simple_mob/alien/mimic,
 						/mob/living/simple_mob/animal/rat,
-						/mob/living/simple_mob/animal/passive/rat,
 						/mob/living/simple_mob/animal/otie;0.5))
 	return ..()
 

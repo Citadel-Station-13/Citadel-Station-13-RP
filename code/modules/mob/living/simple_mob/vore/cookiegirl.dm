@@ -10,7 +10,7 @@
 	maxHealth = 10
 	health = 10
 
-	speed = 5
+	movement_cooldown = 5
 
 	harm_intent_damage = 2
 	melee_damage_lower = 5

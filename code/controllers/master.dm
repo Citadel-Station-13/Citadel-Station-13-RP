@@ -205,8 +205,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	Master.StartProcessing(0)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
+	#ifdef TESTING
 	var/old_runlevel = isnull(current_runlevel) ? "NULL" : runlevel_flags[current_runlevel]
 	testing("MC: Runlevel changed from [old_runlevel] to [new_runlevel]")
+	#endif
 	current_runlevel = RUNLEVEL_FLAG_TO_INDEX(new_runlevel)
 	if(current_runlevel < 1)
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")

@@ -11,7 +11,6 @@
 	response_harm = "hits the"
 
 	movement_cooldown = 5
-	speed = 5
 	maxHealth = 25
 	health = 25
 

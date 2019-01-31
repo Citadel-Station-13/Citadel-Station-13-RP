@@ -424,7 +424,7 @@ var/global/list/latejoin_tram   = list()
 	mobs_to_pick_from = list(
 		/mob/living/simple_mob/mechanical/corrupthound = 1,
 		/mob/living/simple_mob/animal/rat = 1,
-		/mob/living/simple_mob/alien/mimic = 1
+		///mob/living/simple_mob/alien/mimic = 1
 	)
 
 /obj/tether_away_spawner/underdark_boss

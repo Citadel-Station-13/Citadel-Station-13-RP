@@ -319,7 +319,7 @@
 	on_reaction(var/datum/reagents/holder)
 		var/mob_path = /mob/living/simple_mob
 		var/blocked = list(
-			/mob/living/simple_mob/alien/mimic,
+			///mob/living/simple_mob/alien/mimic,
 			/mob/living/simple_mob/animal/space/alien/queen,
 			/mob/living/simple_mob/shadekin
 			)//exclusion list for things you don't want the reaction to create.
