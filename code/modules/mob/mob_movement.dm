@@ -468,7 +468,8 @@
 
 	if(restrained()) //Check to see if we can do things
 		return 0
-
+		
+/* this is a stupid mechanic
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)) && !buckled)
 		src << "<font color='blue'><B>You slipped!</B></font>"
@@ -478,6 +479,7 @@
 	//If not then we can reset inertia and move
 	inertia_dir = 0
 	return 1
+*/
 
 /mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
 
