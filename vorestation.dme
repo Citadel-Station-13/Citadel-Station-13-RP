@@ -2717,6 +2717,7 @@
 #include "code\modules\scripting\Scanner\Tokens.dm"
 #include "code\modules\security levels\keycard authentication.dm"
 #include "code\modules\security levels\security levels.dm"
+#include "code\modules\server\oom_failsafe.dm"
 #include "code\modules\shieldgen\directional_shield.dm"
 #include "code\modules\shieldgen\emergency_shield.dm"
 #include "code\modules\shieldgen\energy_field.dm"
