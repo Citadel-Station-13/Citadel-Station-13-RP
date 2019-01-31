@@ -87,25 +87,21 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_PROJECTILES	150
 #define FIRE_PRIORITY_OVERLAYS		500
 
-// Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
-// TODO - I don't really like the location of this macro define.  Consider it. ~Leshana
 #define COMPILE_OVERLAYS(A)\
 	if (TRUE) {\
-		var/list/oo = A.our_overlays;\
+		var/list/ad = A.add_overlays;\
+		var/list/rm = A.remove_overlays;\
 		var/list/po = A.priority_overlays;\
+		if(LAZYLEN(rm)){\
+			A.overlays -= rm;\
+			rm.Cut();\
+		}\
+		if(LAZYLEN(ad)){\
+			A.overlays |= ad;\
+			ad.Cut();\
+		}\
 		if(LAZYLEN(po)){\
-			if(LAZYLEN(oo)){\
-				A.overlays = oo + po;\
-			}\
-			else{\
-				A.overlays = po;\
-			}\
-		}\
-		else if(LAZYLEN(oo)){\
-			A.overlays = oo;\
-		}\
-		else{\
-			A.overlays.Cut();\
+			A.overlays |= po;\
 		}\
 		A.flags &= ~OVERLAY_QUEUED;\
 	}

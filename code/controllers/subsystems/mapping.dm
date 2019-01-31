@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	if(subsystem_initialized)
+	if(initialized)
 		return
 	maploader = new
 	load_map_templates()

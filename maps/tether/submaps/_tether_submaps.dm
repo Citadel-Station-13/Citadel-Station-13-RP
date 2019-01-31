@@ -240,13 +240,11 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/tether_away_spawner/Initialize()
-	. = ..()
-
+/obj/tether_away_spawner/Initialize(mapload)
 	if(!LAZYLEN(mobs_to_pick_from))
-		error("Mob spawner at [x],[y],[z] ([get_area(src)]) had no mobs_to_pick_from set on it!")
-		initialized = TRUE
+		stack_trace("Mob spawner at [x],[y],[z] ([get_area(src)]) had no mobs_to_pick_from set on it!")
 		return INITIALIZE_HINT_QDEL
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/tether_away_spawner/process()

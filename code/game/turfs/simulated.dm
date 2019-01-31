@@ -53,7 +53,7 @@
 		B.clean_blood()
 	..()
 
-/turf/simulated/Initialze()
+/turf/simulated/Initialize()
 	. = ..()
 	if(istype(loc, /area/chapel))
 		holy = 1

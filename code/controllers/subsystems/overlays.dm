@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(overlays)
 	..("Ov:[length(queue)]")
 
 /datum/controller/subsystem/overlays/Shutdown()
-	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")
+	text2file(render_stats(stats), "[log_path]/overlay.log")
 
 /datum/controller/subsystem/overlays/Recover()
 	overlay_icon_state_caches = SSoverlays.overlay_icon_state_caches
@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(overlays)
 		else
 			if(isloc(overlay))
 				var/atom/A = overlay
-				if (A.flags_1 & OVERLAY_QUEUED_1)
+				if (A.flags & OVERLAY_QUEUED)
 					COMPILE_OVERLAYS(A)
 			appearance_bro.appearance = overlay //this works for images and atoms too!
 			if(!ispath(overlay))
@@ -108,8 +108,8 @@ SUBSYSTEM_DEF(overlays)
 			new_overlays += appearance_bro.appearance
 	return new_overlays
 
-#define NOT_QUEUED_ALREADY (!(flags_1 & OVERLAY_QUEUED_1))
-#define QUEUE_FOR_COMPILE flags_1 |= OVERLAY_QUEUED_1; SSoverlays.queue += src;
+#define NOT_QUEUED_ALREADY (!(flags & OVERLAY_QUEUED))
+#define QUEUE_FOR_COMPILE flags |= OVERLAY_QUEUED; SSoverlays.queue += src;
 /atom/proc/cut_overlays(priority = FALSE)
 	LAZYINITLIST(priority_overlays)
 	LAZYINITLIST(remove_overlays)

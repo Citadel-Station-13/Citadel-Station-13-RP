@@ -69,9 +69,11 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
+/*
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+*/
 
 	if (light_power && light_range)
 		update_light()
@@ -80,8 +82,10 @@
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
+/*
 	if (canSmoothWith)
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
+*/
 
 	ComponentInitialize()
 

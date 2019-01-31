@@ -53,7 +53,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, world.maxx, world.maxy)
 	new /datum/random_map/noise/ore/virgo2(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, 64, 64)*/
 
-	initialized = TRUE
+	//initialized = TRUE
 	return INITIALIZE_HINT_QDEL
 
 /obj/tether_away_spawner/aerostat_inside

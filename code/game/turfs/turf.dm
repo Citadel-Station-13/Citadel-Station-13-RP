@@ -11,6 +11,8 @@
 	var/nitrogen = 0
 	var/phoron = 0
 
+	var/changing_turf = FALSE
+
 	//Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
@@ -96,10 +98,8 @@
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
 	*/
 
-	/*
 	if (opacity)
 		has_opaque_atom = TRUE
-	*/
 
 	ComponentInitialize()
 
