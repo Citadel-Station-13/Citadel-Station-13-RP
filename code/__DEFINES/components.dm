@@ -1,11 +1,14 @@
 //Until DCS is enabled.
-#define RegisterSignal(A, B, C...)
-#define UnregisterSignal(A...)
-#define COMSIG_ATOM_DIR_CHANGE
-#define SEND_SIGNAL(target, sigtype, arguments...)
-#define SEND_GLOBAL_SIGNAL(sigtype, arguments...)
+#define RegisterSignal(A, B, C...) NONE? NONE : DPass()
+#define UnregisterSignal(A...) NONE? NONE : DPass()
+#define COMSIG_ATOM_DIR_CHANGE "UNIMPLEMENTED"
+#define SEND_SIGNAL(target, sigtype, arguments...) NONE? NONE : DPass()
+#define SEND_GLOBAL_SIGNAL(sigtype, arguments...) NONE? NONE : DPass()
 #define GET_COMPONENT_FROM(varname, path, target) var##path/##varname = null
 #define GET_COMPONENT(varname, path) var/##path/##varname = null
+
+/proc/DPass()
+	return		//just to make defines work until dcs is enabled and working
 
 /*
 #define SEND_SIGNAL(target, sigtype, arguments...) ( !target.comp_lookup || !target.comp_lookup[sigtype] ? NONE : target._SendSignal(sigtype, list(target, ##arguments)) )

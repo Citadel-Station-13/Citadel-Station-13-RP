@@ -201,21 +201,24 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
+
 	// Set world options.
 	#ifdef UNIT_TEST
 	world.sleep_offline = 0
 	#else
 	world.sleep_offline = 1
 	#endif
+
 	world.fps = config.fps
 	var/initialized_tod = REALTIMEOFDAY
-
+/*
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE
 	sleep(1)
 
 	if(sleep_offline_after_initializations && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
+*/
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
 	// Loop.
 	Master.StartProcessing(0)
@@ -612,7 +615,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
 
-
+/*
 /datum/controller/master/proc/UpdateTickRate()
 	if (!processing)
 		return
@@ -621,3 +624,4 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		processing = CONFIG_GET(number/mc_tick_rate/base_mc_tick_rate)
 	else if (client_count > CONFIG_GET(number/mc_tick_rate/high_pop_mc_mode_amount))
 		processing = CONFIG_GET(number/mc_tick_rate/high_pop_mc_tick_rate)
+*/

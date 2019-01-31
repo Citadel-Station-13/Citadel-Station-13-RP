@@ -230,7 +230,7 @@
 	name = "Research Outpost Gas Storage"
 	icon_state = "toxstorage"
 
-/area/rnd/outpost/testing
+/area/rnd/outpost/testsite
 	name = "Research Outpost Testing"
 	icon_state = "toxtest"
 

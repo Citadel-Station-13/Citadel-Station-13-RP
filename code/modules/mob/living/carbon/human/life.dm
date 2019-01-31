@@ -34,9 +34,6 @@
 	var/heartbeat = 0
 
 /mob/living/carbon/human/Life()
-	set invisibility = 0
-	set background = BACKGROUND_ENABLED
-
 	if (transforming)
 		return
 

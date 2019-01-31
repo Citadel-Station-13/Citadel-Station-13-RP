@@ -34,6 +34,9 @@
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
 			C << "DEBUG: [text]"
 
+/proc/log_qdel(text)
+	WRITE_LOG("[log_path]-qdel.log", "QDEL: [text]")
+
 /proc/log_game(text)
 	if (config.log_game)
 		WRITE_LOG(diary, "GAME: [text]")
