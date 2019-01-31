@@ -16,7 +16,7 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/Initialize()
 	add_to_turf_decals()
-	initialized = TRUE
+	flags |= INITIALIZED
 	return INITIALIZE_HINT_QDEL
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.

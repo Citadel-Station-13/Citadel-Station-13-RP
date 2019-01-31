@@ -4,6 +4,7 @@
 	nitrogen = MOLES_N2STANDARD
 
 /turf/unsimulated/Initialize(mapload)
+	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 //VOREStation Add

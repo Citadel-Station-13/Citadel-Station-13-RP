@@ -50,9 +50,9 @@
 						/mob/living/simple_mob/animal/giant_snake,
 						/mob/living/simple_mob/animal/wolf,
 						/mob/living/simple_mob/animal/bear;0.5,
-						/mob/living/simple_mob/animal/bear/brown;0.5,
+						///mob/living/simple_mob/animal/bear/brown;0.5,
 						/mob/living/simple_mob/animal/space/carp,
-						/mob/living/simple_mob/alien/mimic,
+						///mob/living/simple_mob/alien/mimic,
 						/mob/living/simple_mob/animal/rat,
 						/mob/living/simple_mob/animal/otie;0.5))
 	return ..()

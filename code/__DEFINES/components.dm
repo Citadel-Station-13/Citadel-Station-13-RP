@@ -1,5 +1,7 @@
 //Until DCS is enabled.
 #define RegisterSignal(A, B, C...)
+#define UnregisterSignal(A...)
+#define COMSIG_ATOM_DIR_CHANGE
 #define SEND_SIGNAL(target, sigtype, arguments...)
 #define SEND_GLOBAL_SIGNAL(sigtype, arguments...)
 #define GET_COMPONENT_FROM(varname, path, target) var##path/##varname = null
