@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define	NOREACT					(1<<6)	// Reagents don't react inside this container.
 #define PROXMOVE				(1<<7)// Does this object require proximity checking in Enter()?
 #define OVERLAY_QUEUED			(1<<8)// Atom queued to SSoverlay for COMPILE_OVERLAYS
+#define INITIALIZED				(1<<9)	//Initialize() has ran already
 
 //Flags for items (equipment) - Used in /obj/item/var/item_flags
 #define THICKMATERIAL			(1<<0)	// Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.

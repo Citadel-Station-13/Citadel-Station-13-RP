@@ -5,15 +5,10 @@ SUBSYSTEM_DEF(overlays)
 	priority = FIRE_PRIORITY_OVERLAYS
 	init_order = INIT_ORDER_OVERLAY
 
-	var/initialized = FALSE
-	var/list/queue						// Queue of atoms needing overlay compiling (TODO-VERIFY!)
+	var/list/queue
 	var/list/stats
-	var/list/overlay_icon_state_caches	// Cache thing
-	var/list/overlay_icon_cache			// Cache thing
-
-var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
+	var/list/overlay_icon_state_caches
+	var/list/overlay_icon_cache
 
 /datum/controller/subsystem/overlays/PreInit()
 	overlay_icon_state_caches = list()
@@ -24,20 +19,18 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 /datum/controller/subsystem/overlays/Initialize()
 	initialized = TRUE
 	fire(mc_check = FALSE)
-	..()
+	return ..()
 
 /datum/controller/subsystem/overlays/stat_entry()
 	..("Ov:[length(queue)]")
 
-
 /datum/controller/subsystem/overlays/Shutdown()
-	text2file(render_stats(stats), "[log_path]-overlay.log")
+	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")
 
 /datum/controller/subsystem/overlays/Recover()
 	overlay_icon_state_caches = SSoverlays.overlay_icon_state_caches
 	overlay_icon_cache = SSoverlays.overlay_icon_cache
 	queue = SSoverlays.queue
-
 
 /datum/controller/subsystem/overlays/fire(resumed = FALSE, mc_check = TRUE)
 	var/list/queue = src.queue
@@ -66,7 +59,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 		count = 0
 
 /proc/iconstate2appearance(icon, iconstate)
-	// var/static/image/stringbro = new() // Moved to be superglobal due to BYOND insane init order stupidness.
+	var/static/image/stringbro = new()
 	var/list/icon_states_cache = SSoverlays.overlay_icon_state_caches
 	var/list/cached_icon = icon_states_cache[icon]
 	if (cached_icon)
@@ -83,7 +76,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 	return cached_appearance
 
 /proc/icon2appearance(icon)
-	// var/static/image/iconbro = new() // Moved to be superglobal due to BYOND insane init order stupidness.
+	var/static/image/iconbro = new()
 	var/list/icon_cache = SSoverlays.overlay_icon_cache
 	. = icon_cache[icon]
 	if (!.)
@@ -92,7 +85,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 		icon_cache[icon] = .
 
 /atom/proc/build_appearance_list(old_overlays)
-	// var/static/image/appearance_bro = new() // Moved to be superglobal due to BYOND insane init order stupidness.
+	var/static/image/appearance_bro = new()
 	var/list/new_overlays = list()
 	if (!islist(old_overlays))
 		old_overlays = list(old_overlays)
@@ -106,7 +99,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 		else
 			if(isloc(overlay))
 				var/atom/A = overlay
-				if (A.flags & OVERLAY_QUEUED)
+				if (A.flags_1 & OVERLAY_QUEUED_1)
 					COMPILE_OVERLAYS(A)
 			appearance_bro.appearance = overlay //this works for images and atoms too!
 			if(!ispath(overlay))
@@ -115,112 +108,80 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 			new_overlays += appearance_bro.appearance
 	return new_overlays
 
-#define NOT_QUEUED_ALREADY (!(flags & OVERLAY_QUEUED))
-#define QUEUE_FOR_COMPILE flags |= OVERLAY_QUEUED; SSoverlays.queue += src;
-
-/**
- * Cut all of atom's normal overlays.  Usually leaves "priority" overlays untouched.
- *
- *  @param priority If true, also will cut priority overlays.
- */
+#define NOT_QUEUED_ALREADY (!(flags_1 & OVERLAY_QUEUED_1))
+#define QUEUE_FOR_COMPILE flags_1 |= OVERLAY_QUEUED_1; SSoverlays.queue += src;
 /atom/proc/cut_overlays(priority = FALSE)
-	var/list/cached_overlays = our_overlays
-	var/list/cached_priority = priority_overlays
+	LAZYINITLIST(priority_overlays)
+	LAZYINITLIST(remove_overlays)
+	LAZYINITLIST(add_overlays)
+	remove_overlays = overlays.Copy()
+	add_overlays.Cut()
 
-	var/need_compile = FALSE
+	if(priority)
+		priority_overlays.Cut()
 
-	if(LAZYLEN(cached_overlays)) //don't queue empty lists, don't cut priority overlays
-		cached_overlays.Cut()  //clear regular overlays
-		need_compile = TRUE
-
-	if(priority && LAZYLEN(cached_priority))
-		cached_priority.Cut()
-		need_compile = TRUE
-
-	if(NOT_QUEUED_ALREADY && need_compile)
+	//If not already queued for work and there are overlays to remove
+	if(NOT_QUEUED_ALREADY && remove_overlays.len)
 		QUEUE_FOR_COMPILE
 
-/**
- * Removes specific overlay(s) from the atom.  Usually does not remove them from "priority" overlays.
- *
- * @param overlays The overlays to removed, type can be anything that is allowed for add_overlay().
- * @param priority If true, also will remove them from the "priority" overlays.
- */
 /atom/proc/cut_overlay(list/overlays, priority)
 	if(!overlays)
 		return
-
 	overlays = build_appearance_list(overlays)
+	LAZYINITLIST(add_overlays) //always initialized after this point
+	LAZYINITLIST(priority_overlays)
+	LAZYINITLIST(remove_overlays)
+	var/a_len = add_overlays.len
+	var/r_len = remove_overlays.len
+	var/p_len = priority_overlays.len
+	remove_overlays += overlays
+	add_overlays -= overlays
 
-	var/list/cached_overlays = our_overlays	//sanic
-	var/list/cached_priority = priority_overlays
-	var/init_o_len = LAZYLEN(cached_overlays)
-	var/init_p_len = LAZYLEN(cached_priority)  //starter pokemon
-
-	LAZYREMOVE(cached_overlays, overlays)
 	if(priority)
+		var/list/cached_priority = priority_overlays
 		LAZYREMOVE(cached_priority, overlays)
 
-	if(NOT_QUEUED_ALREADY && ((init_o_len != LAZYLEN(cached_overlays)) || (init_p_len != LAZYLEN(cached_priority))))
+	var/fa_len = add_overlays.len
+	var/fr_len = remove_overlays.len
+	var/fp_len = priority_overlays.len
+
+	//If not already queued and there is work to be done
+	if(NOT_QUEUED_ALREADY && (fa_len != a_len || fr_len != r_len || fp_len != p_len))
 		QUEUE_FOR_COMPILE
 
-/**
- * Adds specific overlay(s) to the atom.
- * It is designed so any of the types allowed to be added to /atom/overlays can be added here too. More details below.
- *
- * @param overlays The overlay(s) to add.  These may be
- *	- A string: In which case it is treated as an icon_state of the atom's icon.
- *	- An icon: It is treated as an icon.
- *	- An atom: Its own overlays are compiled and then it's appearance is added. (Meaning its current apperance is frozen).
- *	- An image: Image's apperance is added (i.e. subsequently editing the image will not edit the overlay)
- *	- A type path: Added to overlays as is.  Does whatever it is BYOND does when you add paths to overlays.
- *	- Or a list containing any of the above.
- * @param priority The overlays are added to the "priority" list istead of the normal one.
- */
 /atom/proc/add_overlay(list/overlays, priority = FALSE)
 	if(!overlays)
 		return
 
 	overlays = build_appearance_list(overlays)
 
-	LAZYINITLIST(our_overlays)	//always initialized after this point
+	LAZYINITLIST(add_overlays) //always initialized after this point
 	LAZYINITLIST(priority_overlays)
-
-	var/list/cached_overlays = our_overlays	//sanic
-	var/list/cached_priority = priority_overlays
-	var/init_o_len = cached_overlays.len
-	var/init_p_len = cached_priority.len  //starter pokemon
-	var/need_compile
+	var/a_len = add_overlays.len
+	var/p_len = priority_overlays.len
 
 	if(priority)
-		cached_priority += overlays  //or in the image. Can we use [image] = image?
-		need_compile = init_p_len != cached_priority.len
+		priority_overlays += overlays  //or in the image. Can we use [image] = image?
+		var/fp_len = priority_overlays.len
+		if(NOT_QUEUED_ALREADY && fp_len != p_len)
+			QUEUE_FOR_COMPILE
 	else
-		cached_overlays += overlays
-		need_compile = init_o_len != cached_overlays.len
+		add_overlays += overlays
+		var/fa_len = add_overlays.len
+		if(NOT_QUEUED_ALREADY && fa_len != a_len)
+			QUEUE_FOR_COMPILE
 
-	if(NOT_QUEUED_ALREADY && need_compile) //have we caught more pokemon?
-		QUEUE_FOR_COMPILE
-
-/**
- * Copy the overlays from another atom, either replacing all of ours or appending to our existing overlays.
- * Note: This copies only the normal overlays, not the "priority" overlays.
- *
- * @param other The atom to copy overlays from.
- * @param cut_old If true, all of our overlays will be *replaced* by the other's. If other is null, that means cutting all ours.
- */
 /atom/proc/copy_overlays(atom/other, cut_old)	//copys our_overlays from another atom
 	if(!other)
 		if(cut_old)
 			cut_overlays()
 		return
 
-	var/list/cached_other = other.our_overlays
+	var/list/cached_other = other.overlays.Copy()
 	if(cached_other)
-		if(cut_old || !LAZYLEN(our_overlays))
-			our_overlays = cached_other.Copy()
-		else
-			our_overlays |= cached_other
+		if(cut_old || !LAZYLEN(overlays))
+			remove_overlays = overlays
+		add_overlays = cached_other
 		if(NOT_QUEUED_ALREADY)
 			QUEUE_FOR_COMPILE
 	else if(cut_old)
@@ -231,7 +192,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 
 //TODO: Better solution for these?
 /image/proc/add_overlay(x)
-	overlays += x
+	overlays |= x
 
 /image/proc/cut_overlay(x)
 	overlays -= x
@@ -245,10 +206,10 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 			cut_overlays()
 		return
 
-	var/list/cached_other = other.our_overlays
+	var/list/cached_other = other.overlays.Copy()
 	if(cached_other)
 		if(cut_old || !overlays.len)
-			overlays = cached_other.Copy()
+			overlays = cached_other
 		else
 			overlays |= cached_other
 	else if(cut_old)

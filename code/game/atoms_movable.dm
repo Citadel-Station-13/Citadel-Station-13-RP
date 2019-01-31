@@ -25,7 +25,6 @@
 	var/movement_type = NONE
 
 /atom/movable/Destroy()
-	. = ..()
 	if(reagents)
 		qdel(reagents)
 		reagents = null
@@ -43,6 +42,7 @@
 			pulledby.pulling = null
 		pulledby = null
 	QDEL_NULL(riding_datum) //VOREStation Add
+	return ..()
 
 /atom/movable/vv_edit_var(var_name, var_value)
 	if(GLOB.VVpixelmovement[var_name])			//Pixel movement is not yet implemented, changing this will break everything irreversibly.
