@@ -34,5 +34,6 @@
 		hit |= A
 	return ..()
 
-/obj/item/projectile/test/attack_mob()
-	return
+/obj/item/projectile/test/prehit(atom/A)
+	hit |= A
+	return FALSE

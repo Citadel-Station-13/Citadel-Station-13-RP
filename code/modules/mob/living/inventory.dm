@@ -111,7 +111,7 @@
 	return
 
 //Just wait until we get variable arm amounts!
-/mob/living/return_all_grabbed_mobs(list/ret = list())
+/mob/living/proc/return_all_grabbed_mobs(list/ret = list())
 	. = ret
 	var/obj/item/weapon/grab/left = l_hand
 	var/obj/item/weapon/grab/right = r_hand
@@ -122,7 +122,7 @@
 		. |= right.affecting
 		right.affecting.return_all_grabbed_mobs(ret)
 
-/mob/living/return_all_grab_holders(list/ret = list())
+/mob/living/proc/return_all_grab_holders(list/ret = list())
 	. = ret
 	var/obj/item/weapon/grab/left = l_hand
 	var/obj/item/weapon/grab/right = r_hand

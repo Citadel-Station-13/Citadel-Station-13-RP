@@ -128,7 +128,7 @@ Protectiveness | Armor %
 				P.redirect(new_x, new_y, curloc, user)
 				P.reflected = 1
 
-				return PROJECTILE_CONTINUE // complete projectile permutation
+				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation	//No bullet act for reflect yet
 
 /proc/calculate_material_armor(amount)
 	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))

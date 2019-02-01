@@ -616,9 +616,7 @@
 
 /obj/mecha/bullet_act(var/obj/item/projectile/Proj) //wrapper
 	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.check_armour]).",1)
-	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
-	..()
-	return
+	. = call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
 
 /obj/mecha/proc/dynbulletdamage(var/obj/item/projectile/Proj)
 	if(prob(src.deflect_chance))
@@ -654,8 +652,7 @@
 				if(prob(15))
 					break //give a chance to exit early
 
-	Proj.on_hit(src) //on_hit just returns if it's argument is not a living mob so does this actually do anything?
-	return
+	. = Proj.on_hit(src) //on_hit just returns if it's argument is not a living mob so does this actually do anything?
 
 /obj/mecha/ex_act(severity)
 	src.log_message("Affected by explosion of severity: [severity].",1)

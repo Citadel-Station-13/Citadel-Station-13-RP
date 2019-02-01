@@ -153,9 +153,8 @@
 	combustion = FALSE
 
 /obj/item/projectile/bullet/shotgun/ion/on_hit(var/atom/target, var/blocked = 0)
-	..()
+	. = ..()
 	empulse(target, 0, 0, 0, 0)	//Only affects what it hits
-	return 1
 
 
 /* "Rifle" rounds */
@@ -236,7 +235,7 @@
 /obj/item/projectile/bullet/burstbullet/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
 		explosion(target, -1, 0, 2)
-	..()
+	. = ..()
 
 /* Incendiary */
 

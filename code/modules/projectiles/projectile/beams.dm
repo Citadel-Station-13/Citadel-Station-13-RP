@@ -99,8 +99,8 @@
 	name = "pulse"
 	icon_state = "u_laser"
 	fire_sound='sound/weapons/gauss_shoot.ogg' // Needs a more meaty sound than what pulse.ogg currently is; this will be a placeholder for now.
-	damage = 100	//Badmin toy, don't care
-	armor_penetration = 100
+	damage = 50	//Badmin toy, don't care		//No fuck you
+	armor_penetration = 50
 	light_color = "#0066FF"
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_pulse
@@ -110,7 +110,7 @@
 /obj/item/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
 		target.ex_act(2)
-	..()
+	. = ..()
 
 /obj/item/projectile/beam/emitter
 	name = "emitter beam"

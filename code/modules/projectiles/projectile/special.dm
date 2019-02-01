@@ -18,8 +18,8 @@
 	var/sev4_range = 1
 
 /obj/item/projectile/ion/on_hit(var/atom/target, var/blocked = 0)
-		empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
-		return 1
+	empulse(target, sev1_range, sev2_range, sev3_range, sev4_range)
+	return BULLET_ACT_HIT
 
 /obj/item/projectile/ion/small
 	sev1_range = -1
@@ -43,7 +43,7 @@
 
 /obj/item/projectile/bullet/gyro/on_hit(var/atom/target, var/blocked = 0)
 	explosion(target, -1, 0, 2)
-	..()
+	. = ..()
 
 /obj/item/projectile/temp
 	name = "freeze beam"

@@ -97,7 +97,7 @@
 			P.redirect(new_x, new_y, curloc, user)
 			P.reflected = 1
 
-			return PROJECTILE_CONTINUE // complete projectile permutation
+			return BULLET_ACT_FORCE_PIERCE // complete projectile permutation	//No reflect act yet
 
 /obj/item/clothing/suit/armor/combat
 	name = "combat vest"
@@ -192,8 +192,8 @@
 		playsound(user.loc, "sparks", 50, 1)
 
 		user.loc = picked
-		return PROJECTILE_FORCE_MISS
-	return 0
+		return BULLET_ACT_FORCE_HIT		//no reflect yet
+	return BULLET_ACT_HIT
 
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	active = !( active )

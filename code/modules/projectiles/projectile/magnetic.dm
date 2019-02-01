@@ -115,8 +115,8 @@
 		playsound(target.loc, 'sound/effects/teleport.ogg', 40, 0)
 	return ..(target, blocked, def_zone)
 
-/obj/item/projectile/bullet/magnetic/fuelrod/supermatter/check_penetrate()
-	return 1
+/obj/item/projectile/bullet/magnetic/fuelrod/supermatter/can_penetrate()
+	return TRUE
 
 /obj/item/projectile/bullet/magnetic/bore
 	name = "phorogenic blast"

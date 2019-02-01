@@ -73,8 +73,8 @@
 			redirect(new_target.x, new_target.y, curloc, firer)
 			bounces--
 
-			return 0
-	return 1
+			return BULLET_ACT_FORCE_PIERCE
+	return BULLET_ACT_HIT
 
 
 

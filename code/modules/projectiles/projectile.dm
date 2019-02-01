@@ -410,6 +410,9 @@
 	qdel(trajectory)
 	return ..()
 
+/obj/item/projectile/proc/prehit(atom/target)
+	return TRUE
+
 /obj/item/projectile/proc/cleanup_beam_segments()
 	QDEL_LIST_ASSOC(beam_segments)
 	beam_segments = list()
@@ -504,11 +507,13 @@
 	var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
 	def_zone = ran_zone(def_zone, max(100-(7*distance), 5)) //Lower accurancy/longer range tradeoff. 7 is a balanced number to use.
 
+	/*
 	if(isturf(A) && hitsound_wall)
 		var/volume = CLAMP(vol_by_damage() + 20, 0, 100)
 		if(suppressed)
 			volume = 5
 		playsound(loc, hitsound_wall, volume, 1, -1)
+	*/
 
 	return process_hit(T, select_target(T, A, silent = silenced), null, null, distance)
 
@@ -528,7 +533,7 @@
 	var/result = ismob(target)? attack_mob(target, distance, 0) : target.bullet_act(src, def_zone)
 	if((result == BULLET_ACT_FORCE_PIERCE) || (result == BULLET_ACT_MISS) || can_penetrate)
 		if((result == BULLET_ACT_MISS) && (silenced <= PROJECTILE_SILENCE_NONE))
-			visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
+			visible_message("<span class='notice'>\The [src] misses [target] narrowly!</span>")
 		else if(can_penetrate && (result != BULLET_ACT_FORCE_PIERCE))
 			do_penetrate(target)
 		if(!CHECK_BITFIELD(movement_type, UNSTOPPABLE))
@@ -579,7 +584,7 @@
 		return T
 	//Returns null if nothing at all was found.
 
-/obj/item/projectile/proc/get_mob_projectile_target(mob/living/M, silent = PROJETILE_SILENCE_NONE)
+/obj/item/projectile/proc/get_mob_projectile_target(mob/living/M, silent = PROJECTILE_SILENCE_NONE)
 	. = M.lowest_buckled_mob()
 	//POLARISCODE START - This is bad but I can't be bothered to refactor the whole grab system for now..
 	var/list/obj/item/weapon/grab/grabs = M.return_all_grab_holders()
@@ -594,7 +599,7 @@
 					if(silent <= PROJECTILE_SILENCE_NORMAL)
 						visible_message("<span class='danger'>\The [M] uses [grab.affecting] as a shield!</span>")
 					return grab.affecting
-				else if(silent <= PROJECTILE_SILENCE_NORMAL
+				else if(silent <= PROJECTILE_SILENCE_NORMAL)
 					visible_message("<span class='danger'>\The [M] tries to use [grab.affecting] as a shield, but fails!</span>")
 			else
 				if(silent <= PROJECTILE_SILENCE_NORMAL)
