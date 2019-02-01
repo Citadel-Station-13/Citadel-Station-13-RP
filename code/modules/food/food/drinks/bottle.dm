@@ -47,7 +47,7 @@
 		return 0
 	return prob(chance_table[idx])
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
+/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash(newloc, atom/against)
 	if(ismob(loc))
 		var/mob/M = loc
 		M.drop_from_inventory(src)
@@ -383,8 +383,8 @@
 	icon_state = "space-up_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/New()
-	..()
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/Initialize()
+	. = ..()
 	reagents.add_reagent("space_up", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind
@@ -393,8 +393,8 @@
 	icon_state = "space_mountain_wind_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/New()
-	..()
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/Initialize()
+	. = ..()
 	reagents.add_reagent("spacemountainwind", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/pwine

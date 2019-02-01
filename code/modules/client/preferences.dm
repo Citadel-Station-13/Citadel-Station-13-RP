@@ -229,9 +229,10 @@ datum/preferences
 
 	dat += "</html></body>"
 	//user << browse(dat, "window=preferences;size=635x736")
+	winshow(user, "preferences_window", src)
 	var/datum/browser/popup = new(user, "preferences_browser", "Character Setup", 800, 800, src)
 	popup.set_content(dat)
-	popup.open()
+	popup.open(FALSE)
 	onclose(user, "preferences_window", src)
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)

@@ -357,7 +357,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		below.update_icon() // To add or remove the 'ceiling-less' overlay.
 
 //Creates a new turf
-/turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/preserve_outdoors = FALSE)
+/turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, preserve_outdoors = FALSE)
 	if (!N)
 		return
 
@@ -377,14 +377,16 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	//world << "Replacing [src.type] with [N]"
 
-	if(connections) connections.erase_all()
+	if(connections)
+		connections.erase_all()
 
 	if(istype(src,/turf/simulated))
 		//Yeah, we're just going to rebuild the whole thing.
 		//Despite this being called a bunch during explosions,
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
-		if(S.zone) S.zone.rebuild()
+		if(S.zone)
+			S.zone.rebuild()
 
 	changing_turf = TRUE
 	qdel(src)

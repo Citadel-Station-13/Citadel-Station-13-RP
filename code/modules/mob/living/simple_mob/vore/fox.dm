@@ -44,7 +44,7 @@
 	say_got_target = list("YAP!","YIP!")
 
 /mob/living/simple_mob/animal/passive/fox/init_vore()
-	..()
+	. = ..()
 	var/obj/belly/B = vore_selected
 	B.name = "Stomach"
 	B.desc = "Slick foxguts. Cute on the outside, slimy on the inside!"
@@ -166,7 +166,7 @@
 	befriend_job = "Colony Director"
 
 /mob/living/simple_mob/animal/passive/fox/fluff/Renault/init_vore()
-	..()
+	. = ..()
 	var/obj/belly/B = vore_selected
 	B.name = "Stomach"
 	B.desc = "Slick foxguts. They seem somehow more regal than perhaps other foxes!"
