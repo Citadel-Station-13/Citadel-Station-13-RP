@@ -189,6 +189,7 @@
 	..()
 
 /obj/item/projectile/beam/lightning/energy_siphon/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+	. = ..()
 	if(target_mob == firer) // This shouldn't actually occur due to Bump(), but just in-case.
 		return 1
 	if(ishuman(target_mob)) // Otherwise someone else stood in the beam and is going to pay for it.
@@ -197,7 +198,7 @@
 		H.electrocute_act(power, src, H.get_siemens_coefficient_organ(affected), affected, 0)
 	else
 		target_mob.electrocute_act(power, src, 0.75, BP_TORSO)
-	return 0 // Since this is a continous beam, it needs to keep flying until it hits the Technomancer.
+	return BULLET_ACT_FORCE_PIERCE // Since this is a continous beam, it needs to keep flying until it hits the Technomancer.
 
 
 #undef SIPHON_CELL_TO_ENERGY

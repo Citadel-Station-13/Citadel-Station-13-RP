@@ -59,7 +59,8 @@
 	..() // Does the regular launching stuff.
 
 /obj/item/projectile/energy/hook/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
-	if(..())
+	. = ..()
+	if(blocked < 100)
 		perform_intent_unique(target)
 
 /obj/item/projectile/energy/hook/on_impact(var/atom/A)

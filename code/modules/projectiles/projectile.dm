@@ -515,7 +515,7 @@
 		playsound(loc, hitsound_wall, volume, 1, -1)
 	*/
 
-	return process_hit(T, select_target(T, A, silent = silenced), null, null, distance)
+	. = process_hit(T, select_target(T, A, silent = silenced), null, null, distance)
 
 #define QDEL_SELF 1			//Delete if we're not UNSTOPPABLE flagged non-temporarily
 #define DO_NOT_QDEL 2		//Pass through.
@@ -638,7 +638,7 @@
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 //TODO: Do the same but also make this stuff work on objs - kevinz000
-/obj/item/projectile/proc/_on_hit(atom/target, blocked = 0, def_zone)
+/obj/item/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
 	if(blocked >= 100)
 		return BULLET_ACT_BLOCK
 	if(isliving(target))

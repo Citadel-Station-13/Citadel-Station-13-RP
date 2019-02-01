@@ -62,7 +62,7 @@
 	combustion = FALSE
 
 /obj/item/projectile/temp/on_hit(atom/target, blocked = FALSE)
-	..()
+	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
 
@@ -83,8 +83,6 @@
 
 		new_temperature = round(new_temperature * temp_factor)
 		L.bodytemperature = new_temperature
-
-	return 1
 
 /obj/item/projectile/temp/hot
 	name = "heat beam"
@@ -137,6 +135,7 @@
 	combustion = FALSE
 
 /obj/item/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
@@ -165,8 +164,6 @@
 	//	for (var/mob/V in viewers(src))
 	//		V.show_message("The radiation beam dissipates harmlessly through [M]", 3)
 		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
-	else
-		return 1
 
 /obj/item/projectile/energy/floramut/gene
 	name = "gamma somatoray"
@@ -191,6 +188,7 @@
 	light_color = "#FFFFFF"
 
 /obj/item/projectile/energy/florayield/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
 		var/mob/living/carbon/human/H = M
@@ -198,16 +196,13 @@
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
 		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
-	else
-		return 1
-
 
 /obj/item/projectile/beam/mindflayer
 	name = "flayer ray"
-
 	combustion = FALSE
 
 /obj/item/projectile/beam/mindflayer/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		M.Confuse(rand(5,8))
@@ -232,13 +227,13 @@
 	combustion = FALSE
 
 /obj/item/projectile/bola/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	if(ishuman(target))
 		var/mob/living/carbon/human/M = target
 		var/obj/item/weapon/handcuffs/legcuffs/bola/B = new(src.loc)
 		if(!B.place_legcuffs(M,firer))
 			if(B)
 				qdel(B)
-	..()
 
 /obj/item/projectile/webball
 	name = "ball of web"
@@ -251,12 +246,12 @@
 	combustion = FALSE
 
 /obj/item/projectile/webball/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	if(isturf(target.loc))
 		var/obj/effect/spider/stickyweb/W = locate() in get_turf(target)
 		if(!W && prob(75))
 			visible_message("<span class='danger'>\The [src] splatters a layer of web on \the [target]!</span>")
 			new /obj/effect/spider/stickyweb(target.loc)
-	..()
 
 /obj/item/projectile/beam/tungsten
 	name = "core of molten tungsten"
@@ -318,7 +313,7 @@
 			else if(armor_special)
 				target.visible_message("<span class='cult'>\The [src] slams into \the [target]'s [target_limb] with a low rumble!</span>")
 
-	..()
+	. = ..()
 
 /obj/item/projectile/beam/tungsten/on_impact(var/atom/A)
 	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))

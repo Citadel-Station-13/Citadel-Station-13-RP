@@ -9,6 +9,7 @@
 	combustion = FALSE
 
 /obj/item/projectile/change/on_hit(var/atom/change)
+	. = ..()
 	wabbajack(change)
 
 /obj/item/projectile/change/proc/wabbajack(var/mob/M)

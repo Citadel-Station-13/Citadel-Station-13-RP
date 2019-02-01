@@ -129,22 +129,10 @@
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
-		src <<"<font color='red'>You have been hit by [P]!</font>"
-		if(!P.nodamage)
-			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-		qdel(P)
-		return
 
 	if(!P.nodamage)
 		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
-	P.on_hit(src, absorb, soaked, def_zone)
-
-	if(absorb == 100)
-		return 2
-	else if (absorb >= 0)
-		return 1
-	else
-		return 0
+	. = P.on_hit(src, absorb, soaked, def_zone)
 
 //	return absorb
 

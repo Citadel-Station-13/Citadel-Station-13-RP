@@ -42,6 +42,7 @@
 	var/energetic_impact = 0 //Does this fuelrod cause a bright flash on impact with a mob?
 
 /obj/item/projectile/bullet/magnetic/fuelrod/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null) //Future-proofing. Special effects for impact.
+	. = ..()
 	if(istype(target,/mob/living))
 		var/mob/living/V = target
 		if(detonate_mob)
@@ -62,8 +63,6 @@
 		if(searing)
 			if(blocked)
 				blocked = 0
-
-	return ..(target, blocked, def_zone)
 
 /obj/item/projectile/bullet/magnetic/fuelrod/on_impact(var/atom/A) //Future-proofing, again. In the event new fuel rods are introduced, and have special effects for when they stop flying.
 	if(src.loc)
@@ -110,10 +109,10 @@
 	energetic_impact = 1
 
 /obj/item/projectile/bullet/magnetic/fuelrod/supermatter/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null) //You cannot touch the supermatter without disentigrating. Assumedly, this is true for condensed rods of it flying at relativistic speeds.
+	. = ..()
 	if(istype(target,/turf/simulated/wall) || istype(target,/mob/living))
 		target.visible_message("<span class='danger'>The [src] burns a perfect hole through \the [target] with a blinding flash!</span>")
 		playsound(target.loc, 'sound/effects/teleport.ogg', 40, 0)
-	return ..(target, blocked, def_zone)
 
 /obj/item/projectile/bullet/magnetic/fuelrod/supermatter/can_penetrate()
 	return TRUE

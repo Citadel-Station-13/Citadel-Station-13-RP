@@ -149,7 +149,7 @@
 	damage = 45
 
 /obj/item/projectile/sonic/strong/on_hit(var/atom/movable/target, var/blocked = 0)
+	. = ..()
 	if(ismob(target))
 		var/throwdir = get_dir(firer,target)
 		target.throw_at(get_edge_target_turf(target, throwdir), rand(1,6), 10)
-		return 1

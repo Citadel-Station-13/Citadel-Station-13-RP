@@ -123,8 +123,8 @@
 	. = ..()
 
 /obj/item/projectile/kinetic/on_hit(var/atom/target)
-	strike_thing(target)
 	. = ..()
+	strike_thing(target)
 
 /obj/item/projectile/kinetic/proc/strike_thing(atom/target)
 	var/turf/target_turf = get_turf(target)

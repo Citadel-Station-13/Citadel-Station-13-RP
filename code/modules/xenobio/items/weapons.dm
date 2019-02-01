@@ -99,6 +99,7 @@
 	agony = 3
 
 /obj/item/projectile/beam/stun/xeno/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+	. = ..()
 	if(istype(target, /mob/living))
 		var/mob/living/L = target
 		if(L.mob_class & MOB_CLASS_SLIME)
@@ -113,5 +114,3 @@
 			if(H.species && H.species.name == SPECIES_PROMETHEAN)
 				if(agony == initial(agony)) // ??????
 					agony = round((14 * agony) - agony) //60-4 = 56, 56 / 4 = 14. Prior was flat 60 - agony of the beam to equate to 60.
-
-	..()

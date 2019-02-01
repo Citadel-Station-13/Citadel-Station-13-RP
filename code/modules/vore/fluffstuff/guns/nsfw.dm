@@ -279,7 +279,8 @@
 	sharp = 0
 	check_armour = "melee"
 
-/obj/item/projectile/bullet/stripper/on_hit(var/atom/stripped)
+/obj/item/projectile/bullet/stripper/on_hit(atom/stripped)
+	. = ..()
 	if(ishuman(stripped))
 		var/mob/living/carbon/human/H = stripped
 		if(H.wear_suit)
@@ -293,7 +294,6 @@
 		if(H.gloves)
 			H.unEquip(H.gloves)
 		//Hats can stay! Most other things fall off with removing these.
-	..()
 
 /obj/item/ammo_casing/nsfw_batt/final
 	name = "\'NSFW\' microbattery - FINAL OPTION"
@@ -324,7 +324,7 @@
 			SStranscore.m_backup(L.mind,nif,one_time = TRUE)
 		L.gib()
 
-	..()
+	. = ..()
 /*
 /obj/item/ammo_casing/nsfw_batt/shrink
 	name = "\'NSFW\' microbattery - SHRINK"

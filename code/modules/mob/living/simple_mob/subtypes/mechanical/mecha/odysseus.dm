@@ -54,13 +54,12 @@
 	var/piercing = FALSE // If true, ignores thick material.
 
 /obj/item/projectile/fake_syringe/on_hit(atom/target, blocked = 0, def_zone = null)
+	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
 		if(!L.can_inject(null, null, def_zone, piercing))
 			return FALSE
 		to_chat(L, span("warning", "You feel a tiny prick."))
-	return ..() // This will add the modifier and return the correct value.
-
 
 // Fake syringe, which inflicts a long lasting modifier that slowly kills them.
 /obj/item/projectile/fake_syringe/poison

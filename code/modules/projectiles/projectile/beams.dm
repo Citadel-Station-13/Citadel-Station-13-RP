@@ -138,12 +138,12 @@
 	tracer_type = /obj/effect/projectile/tracer/laser_blue
 	impact_type = /obj/effect/projectile/impact/laser_blue
 
-/obj/item/projectile/beam/lastertag/blue/on_hit(var/atom/target, var/blocked = 0)
+/obj/item/projectile/beam/lastertag/blue/on_hit(atom/target, blocked = 0)
+	. = ..()
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/redtag))
 			M.Weaken(5)
-	return 1
 
 /obj/item/projectile/beam/lastertag/red
 	name = "lasertag beam"
@@ -157,11 +157,11 @@
 	combustion = FALSE
 
 /obj/item/projectile/beam/lastertag/red/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = target
 		if(istype(M.wear_suit, /obj/item/clothing/suit/bluetag))
 			M.Weaken(5)
-	return 1
 
 /obj/item/projectile/beam/lastertag/omni//A laser tag bolt that stuns EVERYONE
 	name = "lasertag beam"
@@ -178,11 +178,11 @@
 	impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/item/projectile/beam/lastertag/omni/on_hit(var/atom/target, var/blocked = 0)
+	. = ..()
 	if(istype(target, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = target
 		if((istype(M.wear_suit, /obj/item/clothing/suit/bluetag))||(istype(M.wear_suit, /obj/item/clothing/suit/redtag)))
 			M.Weaken(5)
-	return 1
 
 /obj/item/projectile/beam/sniper
 	name = "sniper beam"
