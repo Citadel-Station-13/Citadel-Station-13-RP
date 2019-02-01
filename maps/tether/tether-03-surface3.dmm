@@ -13168,7 +13168,7 @@
 	icon_state = "tube-construct-stage1";
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/plating,
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_library)
 "xi" = (
@@ -13642,9 +13642,6 @@
 /obj/item/stack/tile/carpet,
 /obj/item/weapon/book/codex/lore/robutt,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/firealarm{
-	pixel_x = -30
-	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_library)
 "xY" = (
@@ -14671,7 +14668,7 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_library)
 "zT" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/plating,
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_library)
 "zU" = (
@@ -14710,8 +14707,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
-/turf/simulated/floor/wood/broken,
+/turf/simulated/floor/plating,
 /area/vacant/vacant_library)
 "zY" = (
 /obj/structure/bookcase,
@@ -16597,7 +16593,7 @@
 	})
 "CV" = (
 /obj/machinery/light_construct,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/plating,
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_library)
 "CW" = (
@@ -18760,6 +18756,7 @@
 	icon_state = "warningcorner";
 	dir = 8
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "Gn" = (
@@ -21477,6 +21474,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"Qc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/turf/simulated/floor/wood/broken,
+/area/vacant/vacant_library)
 "Qd" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/material/minihoe,
@@ -22102,6 +22104,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
+"WS" = (
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Xo" = (
 /obj/structure/bed/chair/wood,
 /obj/structure/window/basic{
@@ -33504,7 +33510,7 @@ Pu
 wK
 xh
 yx
-yy
+Qc
 zS
 zX
 AD
@@ -33651,7 +33657,7 @@ zl
 zl
 AE
 yx
-yz
+zT
 yz
 yx
 zY
@@ -36499,7 +36505,7 @@ EA
 FC
 Fu
 Gh
-yG
+WS
 Hg
 HU
 Gj
