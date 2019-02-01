@@ -20,6 +20,7 @@
 	icon_state = "grave"
 	icon_closed = "grave"
 	icon_opened = "grave_open"
+	layer = TURF_OBJ_LAYER
 	seal_tool = null
 	breakout_sound = 'sound/weapons/thudswoosh.ogg'
 	anchored = 1
@@ -149,9 +150,6 @@
 /obj/structure/closet/grave/open()
 	.=..()
 	alpha = 255	// Needed because of grave hiding
-
-/obj/structure/closet/grave/bullet_act(var/obj/item/projectile/P)
-	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
 	var/gasid = "carbon_dioxide"

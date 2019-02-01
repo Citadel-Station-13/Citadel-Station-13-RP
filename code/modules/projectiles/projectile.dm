@@ -488,7 +488,7 @@
 	return TRUE
 
 /obj/item/projectile/Bump(atom/A)
-	var/datum/point/pcache = trajectory.copy_to()
+	//var/datum/point/pcache = trajectory.copy_to()
 	var/turf/T = get_turf(A)
 
 	/*
@@ -521,7 +521,7 @@
 #define DO_NOT_QDEL 2		//Pass through.
 #define FORCE_QDEL 3		//Force deletion.
 
-/obj/item/projectile/proc/process_hit(turf/T, atom/target, qdel_self, hit_something = FALSE, distance = 0)		//probably needs to be reworked entirely when pixel movement is done.
+/obj/item/projectile/proc/process_hit(turf/T, atom/target, qdel_self, hit_something = FALSE, distance = 0, accuracy_mod = 0)		//probably needs to be reworked entirely when pixel movement is done.
 	if(QDELETED(src) || !T || !target)		//We're done, nothing's left.
 		if((qdel_self == FORCE_QDEL) || ((qdel_self == QDEL_SELF) && !temporary_unstoppable_movement && !CHECK_BITFIELD(movement_type, UNSTOPPABLE)))
 			qdel(src)
@@ -530,7 +530,7 @@
 	if(!prehit(target))
 		return process_hit(T, select_target(T, silent = silenced), qdel_self, hit_something, distance)		//Hit whatever else we can since that didn't work.
 	var/can_penetrate = can_penetrate(target)
-	var/result = ismob(target)? attack_mob(target, distance, 0) : target.bullet_act(src, def_zone)
+	var/result = ismob(target)? attack_mob(target, distance, accuracy_mod) : target.bullet_act(src, def_zone)
 	if((result == BULLET_ACT_FORCE_PIERCE) || (result == BULLET_ACT_MISS) || can_penetrate)
 		if((result == BULLET_ACT_MISS) && (silenced <= PROJECTILE_SILENCE_NONE))
 			visible_message("<span class='notice'>\The [src] misses [target] narrowly!</span>")
@@ -609,7 +609,7 @@
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
 //This proc needs to be refactored. Only on_hit should exist - kevinz000
-/obj/item/projectile/proc/_attack_mob(mob/living/target_mob, distance, miss_modifier = -100)
+/obj/item/projectile/proc/attack_mob(mob/living/target_mob, distance, miss_modifier = -INFINITY)
 	if(!istype(target_mob))
 		return
 

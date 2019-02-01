@@ -247,6 +247,12 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 	return returntext
 
 
+/mob/proc/lowest_buckled_mob()
+	if(ismob(buckled))
+		var/mob/M = buckled
+		return M.lowest_buckled_mob()
+	return src
+
 /proc/ninjaspeak(n)
 /*
 The difference with stutter is that this proc can stutter more than 1 letter

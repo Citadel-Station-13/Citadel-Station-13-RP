@@ -50,12 +50,13 @@
 
 
 // This is just fragmentate, but less specific. Don't know how to make either of them less awful, at the moment
+//They're both awful and needs overhauling - kevinz000
 /obj/proc/launch_many_projectiles(var/turf/T=get_turf(src), var/spreading_range = 5, var/list/projectiletypes=list(/obj/item/projectile/bullet/pistol/rubber))
 	set waitfor = 0
 	var/list/target_turfs = getcircle(T, spreading_range)
 
 	for(var/turf/O in target_turfs)
-		sleep(0)
+		CHECK_TICK
 		var/shot_type = pick(projectiletypes)
 
 		var/obj/item/projectile/P = new shot_type(T)
@@ -69,8 +70,8 @@
 			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
 			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
 			if(M.lying && isturf(src.loc))
-				P.attack_mob(M, 0, 5)
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = 25)
 			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.attack_mob(M, 0, 25) //you're holding a grenade, dude!
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -25 //you're holding a grenade, dude!
 			else
-				P.attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -75 //otherwise, allow a decent amount of fragments to pass

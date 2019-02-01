@@ -8,7 +8,6 @@
 	check_armour = "bullet"
 	embed_chance = 20	//Modified in the actual embed process, but this should keep embed chance about the same
 	sharp = 1
-	var/mob_passthrough_check = 0
 
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
 
@@ -17,12 +16,7 @@
 	if(ismob(target))
 		shake_camera(target, 3, 2)
 
-/obj/item/projectile/bullet/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
-	if(penetrating > 0 && damage > 20 && prob(damage))
-		mob_passthrough_check = 1
-	else
-		mob_passthrough_check = 0
-	return ..()
+#define mob_passthrough_check (penetrating > 0 && damage > 20 && prob(damage))
 
 /obj/item/projectile/bullet/can_embed()
 	//prevent embedding if the projectile is passing through the mob
@@ -30,19 +24,9 @@
 		return 0
 	return ..()
 
-/obj/item/projectile/bullet/check_penetrate(var/atom/A)
-	if(!A || !A.density) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
-
-	if(istype(A, /obj/mecha))
-		return 1 //mecha have their own penetration handling
-
+/obj/item/projectile/bullet/can_penetrate(target/A)
 	if(ismob(A))
-		if(!mob_passthrough_check)
-			return 0
-		if(iscarbon(A))
-			damage *= 0.7 //squishy mobs absorb KE
-		return 1
-
+		return mob_passthrough_check
 	var/chance = damage
 	if(istype(A, /turf/simulated/wall))
 		var/turf/simulated/wall/W = A
@@ -53,14 +37,13 @@
 		if(D.glass) chance *= 2
 	else if(istype(A, /obj/structure/girder))
 		chance = 100
+	return prob(chance)
 
-	if(prob(chance))
-		if(A.opacity)
-			//display a message so that people on the other side aren't so confused
-			A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
-		return 1
-
-	return 0
+/obj/item/projectile/bullet/do_penetrate(target/A)
+	A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
+	if(iscarbon(A))
+		damage *= 0.7
+	return ..()
 
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 

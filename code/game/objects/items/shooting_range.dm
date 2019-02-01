@@ -82,7 +82,7 @@
 /obj/item/target/bullet_act(var/obj/item/projectile/Proj)
 	. = ..()				//Citadel edit - I wonder if whoever coded this stupid shit realizes the overhead of drawing from scratch 35 boxes, 100 overlays, 35 datums,\
 	 and the crash implications of doing that without a single sleep.
-	return PROJECTILE_FORCE_PIERCE
+	return BULLET_ACT_FORCE_PIERCE
 	/*
 	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
 	var/p_y = Proj.p_y + pick(0,0,0,0,0,-1,1)
