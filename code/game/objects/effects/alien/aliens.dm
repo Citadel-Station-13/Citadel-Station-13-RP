@@ -59,9 +59,8 @@
 
 /obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
-	..()
+	. = ..()
 	healthcheck()
-	return
 
 /obj/effect/alien/resin/ex_act(severity)
 	switch(severity)
@@ -397,10 +396,8 @@ Alien plants should do something if theres a lot of poison
 */
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
-	..()
+	. = ..()
 	healthcheck()
-	return
-
 
 /obj/effect/alien/egg/attackby(var/obj/item/weapon/W, var/mob/user)
 	if(health <= 0)

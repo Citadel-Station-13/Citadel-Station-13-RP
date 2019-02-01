@@ -26,8 +26,9 @@
 	qdel(s)
 	qdel(src)
 
-/obj/effect/mine/bullet_act()
-	if(prob(50))
+/obj/effect/mine/bullet_act(obj/item/projectile/P)
+	. = ..()
+	if(prob(P.damage * 1.5))
 		explode()
 
 /obj/effect/mine/ex_act(severity)

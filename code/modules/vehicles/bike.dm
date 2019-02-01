@@ -157,9 +157,8 @@
 /obj/vehicle/bike/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs() && prob(protection_percent))
 		var/mob/living/L = pick(buckled_mobs)
-		L.bullet_act(Proj)
-		return
-	..()
+		return L.bullet_act(Proj)
+	return ..()
 
 /obj/vehicle/bike/update_icon()
 	overlays.Cut()

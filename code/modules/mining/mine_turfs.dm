@@ -209,7 +209,7 @@ var/list/mining_overlay_cache = list()
 				resources[ore] = 0
 
 /turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj)
-
+	. = ..()
 	// Emitter blasts
 	if(istype(Proj, /obj/item/projectile/beam/emitter) || istype(Proj, /obj/item/projectile/beam/heavylaser/fakeemitter))
 		emitter_blasts_taken++

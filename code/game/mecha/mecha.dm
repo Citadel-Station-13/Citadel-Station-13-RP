@@ -615,6 +615,7 @@
 
 
 /obj/mecha/bullet_act(var/obj/item/projectile/Proj) //wrapper
+	. = ..()
 	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.check_armour]).",1)
 	. = call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
 

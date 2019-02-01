@@ -142,7 +142,7 @@
 		cell.charge = 7500
 
 	. = ..()
-	
+
 	if(cell)
 		var/datum/robot_component/cell_component = components["power cell"]
 		cell_component.wrapped = cell
@@ -446,9 +446,9 @@
 	return 0
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
-	..(Proj)
-	if(prob(75) && Proj.damage > 0) spark_system.start()
-	return 2
+	. = ..(Proj)
+	if(prob(75) && Proj.damage > 0)
+		spark_system.start()
 
 /mob/living/silicon/robot/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do

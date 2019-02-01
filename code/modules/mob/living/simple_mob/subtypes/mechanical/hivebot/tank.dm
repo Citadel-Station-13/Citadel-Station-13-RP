@@ -161,6 +161,6 @@
 				P.redirect(new_x, new_y, curloc, src)
 				P.reflected = 1
 
-			return -1 // complete projectile permutation
+			return BULLET_ACT_REFLECT // complete projectile permutation
 
-	return (..(P))
+	return ..()

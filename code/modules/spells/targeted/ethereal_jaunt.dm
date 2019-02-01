@@ -72,10 +72,12 @@
 	name = "water"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "nothing"
-	var/canmove = 1
-	var/reappearing = 0
-	density = 0
-	anchored = 1
+	var/lastmove = 0
+	var/move_delay = 2
+	var/reappearing = FALSE
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 	var/turf/last_valid_turf
 
 /obj/effect/dummy/spell_jaunt/New(var/location)
@@ -89,7 +91,8 @@
 	return ..()
 
 /obj/effect/dummy/spell_jaunt/relaymove(var/mob/user, direction)
-	if (!src.canmove || reappearing) return
+	if((world.time - lastmove > move_delay) || reappearing)
+		return
 	var/turf/newLoc = get_step(src,direction)
 	if(!(newLoc.flags & NOJAUNT))
 		loc = newLoc
@@ -97,11 +100,8 @@
 		if(!T.contains_dense_objects())
 			last_valid_turf = T
 	else
-		user << "<span class='warning'>Some strange aura is blocking the way!</span>"
-	src.canmove = 0
-	spawn(2) src.canmove = 1
+		to_chat(user, "<span class='warning'>Some strange aura is blocking the way!</span>")
+	lastmove = world.time
 
 /obj/effect/dummy/spell_jaunt/ex_act(blah)
-	return
-/obj/effect/dummy/spell_jaunt/bullet_act(blah)
 	return

@@ -445,6 +445,7 @@ var/list/turret_icons
 		die()	//the death process :(
 
 /obj/machinery/porta_turret/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	var/damage = Proj.get_structure_damage()
 
 	if(!damage)
@@ -456,8 +457,6 @@ var/list/turret_icons
 			spawn()
 				sleep(60)
 				attacked = 0
-
-	..()
 
 	take_damage(damage)
 

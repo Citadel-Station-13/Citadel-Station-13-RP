@@ -9,47 +9,49 @@
 	var/fleshcolor //Used for gibbed humans.
 	var/bloodcolor //Used for gibbed humans.
 
-	New(location, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor)
-		..()
+/obj/effect/gibspawner/Initialize(mapload, datum/dna/MobDNA, fleshcolor, bloodcolor)
+	. = ..()
 
-		if(fleshcolor) src.fleshcolor = fleshcolor
-		if(bloodcolor) src.bloodcolor = bloodcolor
-		Gib(loc,MobDNA)
+	if(fleshcolor)
+		src.fleshcolor = fleshcolor
+	if(bloodcolor)
+		src.bloodcolor = bloodcolor
+	Gib(loc,MobDNA)
 
-	proc/Gib(atom/location, var/datum/dna/MobDNA = null)
-		if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
-			world << "<span class='warning'>Gib list length mismatch!</span>"
-			return
+	return INITIALIZE_HIN_QDEL
 
-		var/obj/effect/decal/cleanable/blood/gibs/gib = null
+/obj/effect/gibspawner/proc/Gib(atom/location, var/datum/dna/MobDNA = null)
+	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
+		world << "<span class='warning'>Gib list length mismatch!</span>"
+		return
 
-		if(sparks)
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()
-			s.set_up(2, 1, get_turf(location)) // Not sure if it's safe to pass an arbitrary object to set_up, todo
-			s.start()
+	var/obj/effect/decal/cleanable/blood/gibs/gib = null
 
-		for(var/i = 1, i<= gibtypes.len, i++)
-			if(gibamounts[i])
-				for(var/j = 1, j<= gibamounts[i], j++)
-					var/gibType = gibtypes[i]
-					gib = new gibType(location)
+	if(sparks)
+		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()
+		s.set_up(2, 1, get_turf(location)) // Not sure if it's safe to pass an arbitrary object to set_up, todo
+		s.start()
 
-					// Apply human species colouration to masks.
-					if(fleshcolor)
-						gib.fleshcolor = fleshcolor
-					if(bloodcolor)
-						gib.basecolor = bloodcolor
+	for(var/i = 1, i<= gibtypes.len, i++)
+		if(gibamounts[i])
+			for(var/j = 1, j<= gibamounts[i], j++)
+				var/gibType = gibtypes[i]
+				gib = new gibType(location)
 
-					gib.update_icon()
+				// Apply human species colouration to masks.
+				if(fleshcolor)
+					gib.fleshcolor = fleshcolor
+				if(bloodcolor)
+					gib.basecolor = bloodcolor
 
-					gib.blood_DNA = list()
-					if(MobDNA)
-						gib.blood_DNA[MobDNA.unique_enzymes] = MobDNA.b_type
-					else if(istype(src, /obj/effect/gibspawner/human)) // Probably a monkey
-						gib.blood_DNA["Non-human DNA"] = "A+"
-					if(istype(location,/turf/))
-						var/list/directions = gibdirections[i]
-						if(directions.len)
-							gib.streak(directions)
+				gib.update_icon()
 
-		qdel(src)
+				gib.blood_DNA = list()
+				if(MobDNA)
+					gib.blood_DNA[MobDNA.unique_enzymes] = MobDNA.b_type
+				else if(istype(src, /obj/effect/gibspawner/human)) // Probably a monkey
+					gib.blood_DNA["Non-human DNA"] = "A+"
+				if(istype(location,/turf/))
+					var/list/directions = gibdirections[i]
+					if(directions.len)
+						gib.streak(directions)

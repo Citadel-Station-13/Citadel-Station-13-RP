@@ -31,22 +31,22 @@
 		AC.ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
-	if(!glass) return
-	if(shattered)	return
+	if(!glass)
+		return
+	if(shattered)
+		return
 	shattered = 1
 	icon_state = "mirror_broke"
 	playsound(src, "shatter", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 
-
 /obj/structure/mirror/bullet_act(var/obj/item/projectile/Proj)
-
+	. = ..()
 	if(prob(Proj.get_structure_damage() * 2))
 		if(!shattered)
 			shatter()
 		else if(glass)
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
-	..()
 
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())

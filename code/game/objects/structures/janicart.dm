@@ -292,13 +292,13 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_y = 7
 
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(obj/item/projectile/Proj)
 	if(has_buckled_mobs())
 		if(prob(85))
 			var/mob/living/L = pick(buckled_mobs)
 			return L.bullet_act(Proj)
+	. = ..()
 	visible_message("<span class='warning'>[Proj] ricochets off the [callme]!</span>")
-
 
 /obj/item/key
 	name = "key"

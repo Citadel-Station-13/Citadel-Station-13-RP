@@ -102,16 +102,13 @@
 	qdel(src)
 	return
 
-
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
-
+/obj/structure/window/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
+	if(!proj_damage)
+		return
 
-	..()
 	take_damage(proj_damage)
-	return
-
 
 /obj/structure/window/ex_act(severity)
 	switch(severity)

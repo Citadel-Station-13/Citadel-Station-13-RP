@@ -863,7 +863,8 @@ FIRE ALARM
 	return attack_hand(user)
 
 /obj/machinery/firealarm/bullet_act()
-	return alarm()
+	. = ..()
+	alarm()
 
 /obj/machinery/firealarm/emp_act(severity)
 	if(prob(50 / severity))

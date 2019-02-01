@@ -9,7 +9,7 @@
 	anchored = TRUE
 	unacidable = TRUE
 	pass_flags = PASSTABLE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff
@@ -289,8 +289,7 @@
 /obj/item/projectile/proc/fire(angle, atom/direct_target)
 	//If no angle needs to resolve it from xo/yo!
 	if(direct_target)
-		direct_target.bullet_act(src, def_zone)
-		qdel(src)
+		process_hit(get_turf(direct_target), direct_target, accuracy_mod = INFINITY)		//For the sake of hoping no one aims that badly, we'll say you can hit things point blank.
 		return
 	if(isnum(angle))
 		setAngle(angle)
@@ -531,7 +530,10 @@
 		return process_hit(T, select_target(T, silent = silenced), qdel_self, hit_something, distance)		//Hit whatever else we can since that didn't work.
 	var/can_penetrate = can_penetrate(target)
 	var/result = ismob(target)? attack_mob(target, distance, accuracy_mod) : target.bullet_act(src, def_zone)
-	if((result == BULLET_ACT_FORCE_PIERCE) || (result == BULLET_ACT_MISS) || can_penetrate)
+	if(result == BULLET_ACT_FORCE_QDEL)
+		qdel_self = FORCE_QDEL
+		hit_something = TRUE
+	else if((result == BULLET_ACT_FORCE_PIERCE) || (result == BULLET_ACT_MISS) || can_penetrate)
 		if((result == BULLET_ACT_MISS) && (silenced <= PROJECTILE_SILENCE_NONE))
 			visible_message("<span class='notice'>\The [src] misses [target] narrowly!</span>")
 		else if(can_penetrate && (result != BULLET_ACT_FORCE_PIERCE))

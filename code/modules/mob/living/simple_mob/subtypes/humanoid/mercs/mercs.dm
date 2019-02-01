@@ -125,14 +125,13 @@
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
 /mob/living/simple_mob/humanoid/merc/melee/sword/bullet_act(var/obj/item/projectile/Proj)
-	if(!Proj)	return
 	if(prob(35))
 		visible_message("<font color='red'><B>[src] blocks [Proj] with its shield!</B></font>")
 		if(Proj.firer)
 			ai_holder.react_to_attack(Proj.firer)
-		return
+		return BULLET_ACT_BLOCK
 	else
-		..()
+		. = ..()
 
 
 ////////////////////////////////

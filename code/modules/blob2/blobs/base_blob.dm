@@ -254,6 +254,7 @@ var/list/blobs = list()
 	return
 
 /obj/structure/blob/bullet_act(var/obj/item/projectile/P)
+	. = ..()
 	if(!P)
 		return
 
@@ -276,8 +277,6 @@ var/list/blobs = list()
 		damage = overmind.blob_type.on_received_damage(src, damage, P.damage_type, P.firer)
 
 	adjust_integrity(-damage)
-
-	return ..()
 
 /obj/structure/blob/water_act(amount)
 	if(overmind)

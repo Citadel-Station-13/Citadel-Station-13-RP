@@ -98,7 +98,8 @@
 			update_coverage()
 			START_PROCESSING(SSobj, src)
 
-/obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/camera/bullet_act(obj/item/projectile/P)
+	. = ..()
 	take_damage(P.get_structure_damage())
 
 /obj/machinery/camera/ex_act(severity)

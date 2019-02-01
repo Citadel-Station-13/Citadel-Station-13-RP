@@ -160,18 +160,15 @@ field_generator power level display
 /obj/machinery/field_generator/emp_act()
 	return 0
 
-/obj/machinery/field_generator/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/field_generator/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	if(istype(Proj, /obj/item/projectile/beam))
 		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
-	return 0
-
 
 /obj/machinery/field_generator/Destroy()
-	src.cleanup()
-	. = ..()
-
-
+	cleanup()
+	return ..()
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0

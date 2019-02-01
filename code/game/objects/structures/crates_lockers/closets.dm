@@ -233,14 +233,9 @@
 		qdel(src)
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage)
-		return
-
-	..()
 	damage(proj_damage)
-
-	return
 
 /obj/structure/closet/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(src.opened)

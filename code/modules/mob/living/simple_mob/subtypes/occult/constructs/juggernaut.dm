@@ -85,9 +85,8 @@
 			P.redirect(new_x, new_y, curloc, src)
 			P.reflected = 1
 
-		return -1 // complete projectile permutation
-
-	return (..(P))
+		return BULLET_ACT_REFLECT
+	return ..()
 
 /*
  * The Behemoth. Admin-allowance only, still try to keep it in some guideline of 'Balanced', even if it means Security has to be fully geared to be so.
@@ -137,7 +136,5 @@
 			// redirect the projectile
 			P.redirect(new_x, new_y, curloc, src)
 			P.reflected = 1
-
-		return -1 // complete projectile permutation
-
-	return (..(P))
+		return BULLET_ACT_REFLECT
+	return ..()

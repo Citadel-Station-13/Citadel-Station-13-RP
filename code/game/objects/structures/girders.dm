@@ -98,7 +98,7 @@
 
 	var/damage = Proj.get_structure_damage()
 	if(!damage)
-		return
+		return ..()
 
 	if(!istype(Proj, /obj/item/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
@@ -121,13 +121,11 @@
 
 		// redirect the projectile
 		Proj.redirect(new_x, new_y, curloc, null)
-
+		return BULLET_ACT_FORCE_PIERCE
+	. = ..()
 	health -= damage
-	..()
 	if(health <= 0)
 		dismantle()
-
-	return
 
 /obj/structure/girder/blob_act()
 	dismantle()

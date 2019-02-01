@@ -246,7 +246,8 @@
 		user.visible_message("[user.name] emags [src].","<span class='warning'>You short out the lock.</span>")
 		return 1
 
-/obj/machinery/power/emitter/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/power/emitter/bullet_act(obj/item/projectile/P)
+	. = ..()
 	if(!P || !P.damage || P.get_structure_damage() <= 0 )
 		return
 

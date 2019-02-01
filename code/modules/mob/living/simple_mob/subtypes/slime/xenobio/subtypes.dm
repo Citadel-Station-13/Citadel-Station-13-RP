@@ -204,20 +204,16 @@
 	ignite()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/item/projectile/P, var/def_zone)
+	. = ..()
 	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
-	else
-		..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/weapon/W, var/mob/user)
+	. = ..()
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
-	else
-		..()
-
-
 
 /mob/living/simple_mob/slime/xenobio/dark_blue
 	desc = "This slime makes other entities near it feel much colder, and is more resilient to the cold.  It tends to kill other slimes rather quickly."

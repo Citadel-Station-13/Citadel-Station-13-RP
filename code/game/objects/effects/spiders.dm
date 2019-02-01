@@ -40,8 +40,8 @@
 	health -= damage
 	healthcheck()
 
-/obj/effect/spider/bullet_act(var/obj/item/projectile/Proj)
-	..()
+/obj/effect/spider/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	health -= Proj.get_structure_damage()
 	healthcheck()
 

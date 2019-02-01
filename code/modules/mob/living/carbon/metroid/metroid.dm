@@ -165,9 +165,8 @@
 	return
 
 /mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	attacked += 10
-	..(Proj)
-	return 0
 
 /mob/living/carbon/slime/emp_act(severity)
 	powerlevel = 0 // oh no, the power!

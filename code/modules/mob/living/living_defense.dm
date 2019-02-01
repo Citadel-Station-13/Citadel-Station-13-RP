@@ -100,7 +100,7 @@
 			ai_holder.react_attack_hand(L, L.a_intent)
 
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
-
+	. = ..()
 	//Being hit while using a deadman switch
 	if(istype(get_active_hand(),/obj/item/device/assembly/signaler))
 		var/obj/item/device/assembly/signaler/signaler = get_active_hand()

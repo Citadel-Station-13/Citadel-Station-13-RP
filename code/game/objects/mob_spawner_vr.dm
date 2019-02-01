@@ -79,8 +79,8 @@
 	visible_message("<span class='warning'>\The [src] has been [I.attack_verb.len ? "[pick(I.attack_verb)]":"attacked"] with \the [I] by [user].</span>")
 	take_damage(I.force)
 
-/obj/structure/mob_spawner/bullet_act(var/obj/item/projectile/Proj)
-	..()
+/obj/structure/mob_spawner/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	if(destructible)
 		take_damage(Proj.get_structure_damage())
 

@@ -44,7 +44,7 @@ emp_act
 				SP.loc = organ
 				organ.embed(SP)
 
-	return (..(P , def_zone))
+	. = ..()
 
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))

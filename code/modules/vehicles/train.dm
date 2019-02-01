@@ -63,9 +63,8 @@
 /obj/vehicle/train/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
-		L.bullet_act(Proj)
-		return
-	..()
+		return L.bullet_act(Proj)
+	return ..()
 
 /obj/vehicle/train/update_icon()
 	if(open)

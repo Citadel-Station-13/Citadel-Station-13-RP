@@ -124,16 +124,13 @@
 		return
 	B.pulse(forceLeft - 1, dirs)
 
-/obj/effect/blob/bullet_act(var/obj/item/projectile/Proj)
-	if(!Proj)
-		return
-
+/obj/effect/blob/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	switch(Proj.damage_type)
 		if(BRUTE)
 			take_damage(Proj.damage / brute_resist)
 		if(BURN)
 			take_damage(Proj.damage / fire_resist)
-	return 0
 
 /obj/effect/blob/attackby(var/obj/item/weapon/W, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

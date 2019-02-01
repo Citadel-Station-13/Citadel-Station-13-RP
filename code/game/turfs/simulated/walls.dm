@@ -89,7 +89,7 @@
 			Proj.redirect(new_x, new_y, curloc, null)
 
 	take_damage(damage)
-	return
+	return ..()
 
 /turf/simulated/wall/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
 	..()

@@ -285,6 +285,7 @@
 
 
 /obj/machinery/power/supermatter/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	var/turf/L = loc
 	if(!istype(L))		// We don't run process() when we are in space
 		return 0	// This stops people from being able to really power up the supermatter
@@ -301,7 +302,6 @@
 		damage += added_damage
 	if(added_energy || added_damage)
 		log_game("SUPERMATTER([x],[y],[z]) Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.")
-	return 0
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)
 	if(Adjacent(user))

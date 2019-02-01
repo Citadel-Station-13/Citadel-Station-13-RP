@@ -80,14 +80,10 @@
 	..()
 
 /obj/structure/gravemarker/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage)
-		return
-
-	..()
-	damage(proj_damage)
-
-	return
+	if(proj_damage)
+		damage(proj_damage)
 
 /obj/structure/gravemarker/ex_act(severity)
 	switch(severity)
