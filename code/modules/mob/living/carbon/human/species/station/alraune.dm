@@ -1,3 +1,5 @@
+#define ALRAUNE_LOW_PRESSURE_SEAL 50
+
 /datum/species/alraune
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
@@ -111,7 +113,7 @@
 	var/fullysealed = FALSE //if they're wearing a fully sealed suit, their internals take priority.
 	var/environmentalair = FALSE //if no sealed suit, internals take priority in low pressure environements
 
-	if(H.wear_suit && (H.wear_suit.item_flags & STOPPRESSUREDAMAGE) && H.head && (H.head.item_flags & STOPPRESSUREDAMAGE))
+	if(H.wear_suit && (H.wear_suit.min_pressure_protection <= ALRAUNE_LOW_PRESSURE_SEAL) && H.head && (H.head.min_pressure_protection <= ALRAUNE_LOW_PRESSURE_SEAL))
 		fullysealed = TRUE
 
 	else // find out if local gas mixture is enough to override use of internals

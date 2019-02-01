@@ -10,11 +10,7 @@ SUBSYSTEM_DEF(ai)
 	var/list/processing = list()
 	var/list/currentrun = list()
 
-	var/list/say_list_cache
-
-/datum/controller/subsystem/ai/Initialize()
-	say_list_cache = list()
-	return ..()
+	var/list/say_list_cache = list()
 
 /datum/controller/subsystem/ai/stat_entry(msg_prefix)
 	var/list/msg = list(msg_prefix)

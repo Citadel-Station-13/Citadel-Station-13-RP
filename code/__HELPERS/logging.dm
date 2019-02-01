@@ -120,6 +120,10 @@
 	world.log << text
 	WRITE_LOG(error_log, "RUNTIME: [text]")
 
+/* Log to the logfile only. */
+/proc/log_runtime(text)
+	WRITE_LOG(error_log, text)
+
 /proc/log_misc(text)
 	WRITE_LOG(diary, "MISC: [text]")
 

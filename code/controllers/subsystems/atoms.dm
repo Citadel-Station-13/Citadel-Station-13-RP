@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(atoms)
 	var/list/BadInitializeCalls = list()
 
 /datum/controller/subsystem/atoms/Initialize(timeofday)
-	GLOB.fire_overlay.appearance_flags = RESET_COLOR
+	//GLOB.fire_overlay.appearance_flags = RESET_COLOR
 	setupGenetics() //to set the mutations' sequence
 	initialized = INITIALIZATION_INNEW_MAPLOAD
 	InitializeAtoms()

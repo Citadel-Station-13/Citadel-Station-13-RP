@@ -95,26 +95,27 @@
 	if(!istype(src.holder, /mob/living/simple_mob/animal/passive/fox))
 		return
 	var/mob/living/simple_mob/animal/passive/fox/holder = src.holder
-	var/friend_dist = get_dist(holder, holder.friend)
-	if(friend_dist <= 4)
-		if(stance == STANCE_IDLE)
-			set_follow(holder.friend)
-			set_stance(STANCE_FOLLOW)
-	if (friend_dist <= 1)
-		if (holder.friend.stat >= DEAD || holder.friend.health <= config.health_threshold_softcrit)
-			if (prob((holder.friend.stat < DEAD)? 50 : 15))
+	if(holder.friend)
+		var/friend_dist = get_dist(holder, holder.friend)
+		if(friend_dist <= 4)
+			if(stance == STANCE_IDLE)
+				set_follow(holder.friend)
+				set_stance(STANCE_FOLLOW)
+		if (friend_dist <= 1)
+			if (holder.friend.stat >= DEAD || holder.friend.health <= config.health_threshold_softcrit)
+				if (prob((holder.friend.stat < DEAD)? 50 : 15))
+					var/verb = pick("yaps", "howls", "whines")
+					holder.audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
+			else
+				if (prob(5))
+					holder.visible_emote(pick("nips [holder.friend].",
+									   "brushes against [holder.friend].",
+									   "tugs on [holder.friend].",
+									   "chrrrrs."))
+		else if (holder.friend.health <= 50)
+			if (prob(10))
 				var/verb = pick("yaps", "howls", "whines")
-				holder.audible_emote(pick("[verb] in distress.", "[verb] anxiously."))
-		else
-			if (prob(5))
-				holder.visible_emote(pick("nips [holder.friend].",
-								   "brushes against [holder.friend].",
-								   "tugs on [holder.friend].",
-								   "chrrrrs."))
-	else if (holder.friend.health <= 50)
-		if (prob(10))
-			var/verb = pick("yaps", "howls", "whines")
-			holder.audible_emote("[verb] anxiously.")
+				holder.audible_emote("[verb] anxiously.")
 
 /mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
 	var/mob/living/carbon/H = over_object
