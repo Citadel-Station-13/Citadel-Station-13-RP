@@ -18,12 +18,8 @@
 	desc = "A small power cell designed to power handheld weaponry."
 	icon_state = "wcell"
 	maxcharge = 2400
-	charge_amount = 20
-
-/obj/item/weapon/cell/device/weapon/empty/Initialize()
-	. = ..()
 	charge = 0
-	update_icon()
+	charge_amount = 20
 
 /obj/item/weapon/cell/device/weapon/recharge
 	name = "self-charging weapon power cell"

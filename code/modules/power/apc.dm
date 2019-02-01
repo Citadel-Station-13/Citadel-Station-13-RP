@@ -156,8 +156,8 @@
 
 	return drained_energy
 
-/obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
-	..()
+/obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
+	. = ..()
 	wires = new(src)
 
 	// offset 24 pixels in direction of dir
