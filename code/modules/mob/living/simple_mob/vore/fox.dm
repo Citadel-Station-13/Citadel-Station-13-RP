@@ -31,6 +31,10 @@
 	var/mob/flee_target
 	var/mob/living/carbon/human/friend
 
+	vore_active = TRUE
+	// NO VORE SPRITES
+	vore_max_size = RESIZE_TINY
+
 /mob/living/simple_mob/animal/passive/fox/Destroy()
 	flee_target = null
 	friend = null
@@ -133,6 +137,11 @@
 	..()
 
 /mob/living/simple_mob/animal/passive/fox/fluff
+	vore_ignores_undigestable = 0
+	vore_pounce_chance = 100
+	vore_digest_chance = 0 // just use the toggle
+	vore_default_mode = DM_HOLD //can use the toggle if you wanna be foxfood
+	vore_standing_too = TRUE // gonna get pounced
 	var/befriend_job
 
 /mob/living/simple_mob/animal/passive/fox/fluff/verb/friend()

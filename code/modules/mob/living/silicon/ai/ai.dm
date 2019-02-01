@@ -117,6 +117,7 @@ var/list/ai_verbs_default = list(
 
 	if(!is_dummy)
 		aiPDA = new/obj/item/device/pda/ai(src)
+
 	SetName(pickedName)
 
 	if(!is_dummy)
@@ -803,8 +804,8 @@ var/list/ai_verbs_default = list(
 	return TRUE
 
 //Special subtype kept around for global announcements
-/mob/living/silicon/ai/announcer/
-	is_dummy = 1
+/mob/living/silicon/ai/announcer
+	is_dummy = TRUE
 
 /mob/living/silicon/ai/announcer/Initialize()
 	. = ..()

@@ -51,11 +51,6 @@
 			prey_excludes -= TM
 	..() // will_eat check is carried out before EatTarget is called, so prey on the prey_excludes list isn't a problem.
 
-/mob/living/simple_mob/animal/fox
-	vore_active = 1
-	// NO VORE SPRITES
-	vore_max_size = RESIZE_TINY
-
 /mob/living/simple_mob/animal/fox/PunchTarget()
 	if(istype(target_mob,/mob/living/simple_mob/mouse))
 		return EatTarget()
@@ -75,13 +70,6 @@
 	if (friend == found_atom)
 		return null
 	return ..()
-
-/mob/living/simple_mob/animal/fox/fluff
-	vore_ignores_undigestable = 0
-	vore_pounce_chance = 100
-	vore_digest_chance = 0 // just use the toggle
-	vore_default_mode = DM_HOLD //can use the toggle if you wanna be foxfood
-	vore_standing_too = TRUE // gonna get pounced
 
 /mob/living/simple_mob/animal/fox/fluff/EatTarget()
 	var/mob/living/TM = target_mob

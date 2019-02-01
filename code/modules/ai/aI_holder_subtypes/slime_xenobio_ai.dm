@@ -24,11 +24,11 @@
 	discipline = 10
 	obedience = 10
 
-/datum/ai_holder/simple_mob/xenobio_slime/passive/Initialize() // For Kendrick.
+/datum/ai_holder/simple_mob/xenobio_slime/passive/New() // For Kendrick.
 	. = ..()
 	pacify()
 
-/datum/ai_holder/simple_mob/xenobio_slime/Initialize()
+/datum/ai_holder/simple_mob/xenobio_slime/New()
 	. = ..()
 	ASSERT(istype(holder, /mob/living/simple_mob/slime/xenobio))
 
