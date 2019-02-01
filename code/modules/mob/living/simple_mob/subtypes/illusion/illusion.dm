@@ -50,7 +50,7 @@
 	if(realistic)
 		return ..()
 
-	return PROJECTILE_FORCE_MISS
+	return BULLET_ACT_FORCE_PIERCE
 
 /mob/living/simple_mob/illusion/attack_hand(mob/living/carbon/human/M)
 	if(!realistic)

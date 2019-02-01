@@ -12,7 +12,7 @@ emp_act
 
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
-		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
+		return BULLET_ACT_MISS //if they don't have the organ in question then the projectile just passes by.
 
 	var/obj/item/organ/external/organ = get_organ()
 
@@ -205,8 +205,8 @@ emp_act
 	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
-		if(.) return
-	return 0
+		if(.) return BULLET_ACT_BLOCK
+	return BULLET_ACT_HIT
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
@@ -386,7 +386,7 @@ emp_act
 
 		if(zone && O.thrower != src)
 			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")
-			if(shield_check == PROJECTILE_FORCE_MISS)
+			if(shield_check == BULLET_ACT_MISS)
 				zone = null
 			else if(shield_check)
 				return

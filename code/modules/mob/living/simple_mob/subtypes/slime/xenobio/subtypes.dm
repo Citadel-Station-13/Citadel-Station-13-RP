@@ -303,9 +303,9 @@
 		// redirect the projectile
 		P.redirect(new_x, new_y, curloc, src)
 		P.reflected = TRUE
-		return PROJECTILE_CONTINUE // complete projectile permutation
+		return BULLET_ACT_REFLECT // complete projectile permutation
 	else
-		..()
+		return ..()
 
 
 // Tier 3

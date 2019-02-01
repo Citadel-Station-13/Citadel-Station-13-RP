@@ -24,7 +24,7 @@
 		return 0
 	return ..()
 
-/obj/item/projectile/bullet/can_penetrate(target/A)
+/obj/item/projectile/bullet/can_penetrate(atom/A)
 	if(ismob(A))
 		return mob_passthrough_check
 	var/chance = damage
@@ -39,7 +39,7 @@
 		chance = 100
 	return prob(chance)
 
-/obj/item/projectile/bullet/do_penetrate(target/A)
+/obj/item/projectile/bullet/do_penetrate(atom/A)
 	A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
 	if(iscarbon(A))
 		damage *= 0.7

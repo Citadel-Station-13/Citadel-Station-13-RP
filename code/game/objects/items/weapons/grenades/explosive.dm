@@ -62,9 +62,9 @@
 			if(M.lying && isturf(src.loc))
 				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = 25)
 			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -25 //you're holding a grenade, dude!
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -25) //you're holding a grenade, dude!
 			else
-				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -75 //otherwise, allow a decent amount of fragments to pass
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -75) //otherwise, allow a decent amount of fragments to pass
 
 /obj/item/weapon/grenade/explosive/mini
 	name = "mini fragmentation grenade"

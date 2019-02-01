@@ -7,6 +7,7 @@
 #define BULLET_ACT_MISS				"MISS"		//Automatic miss
 #define BULLET_ACT_FORCE_PIERCE		"PIERCE"	//It pierces through the object regardless of the bullet being piercing by default.
 #define BULLET_ACT_TURF				"TURF"		//It hit us but it should hit something on the same turf too. Usually used for turfs.
+#define BULLET_ACT_REFLECT			BULLET_ACT_FORCE_PIERCE		//Until we have better handling
 
 //Gun silencing
 #define PROJECTILE_SILENCE_NONE			0	//No silencing

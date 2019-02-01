@@ -192,7 +192,7 @@
 		playsound(user.loc, "sparks", 50, 1)
 
 		user.loc = picked
-		return BULLET_ACT_FORCE_HIT		//no reflect yet
+		return BULLET_ACT_MISS		//no reflect yet
 	return BULLET_ACT_HIT
 
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)

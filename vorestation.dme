@@ -131,6 +131,7 @@
 #include "code\_global_vars\mobs.dm"
 #include "code\_global_vars\sensitive.dm"
 #include "code\_global_vars\lists\mapping.dm"
+#include "code\_global_vars\lists\typecaches.dm"
 #include "code\_globals\regexes.dm"
 #include "code\_onclick\_defines.dm"
 #include "code\_onclick\adjacent.dm"
