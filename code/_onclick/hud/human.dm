@@ -345,11 +345,8 @@
 
 	mymob.client.screen += hud_elements
 	mymob.client.screen += src.adding + src.hotkeybuttons
-	mymob.client.screen += mymob.client.void
+	mymob.client.apply_clickcatcher()
 	inventory_shown = 0
-
-	return
-
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
 	set category = "OOC"

@@ -1,13 +1,5 @@
-/mob/CanPass(atom/movable/mover, turf/target, height, air_group)
-	if(air_group || (height==0)) return 1
-
-	if(ismob(mover))
-		var/mob/moving_mob = mover
-		if ((other_mobs && moving_mob.other_mobs))
-			return 1
-		return (!mover.density || !density || lying)
-	else
-		return (!mover.density || !density || lying)
+/mob/CanPass(atom/movable/mover, turf/target)
+	return TRUE				//There's almost no cases where non /living mobs should be used in game as actual mobs, other than ghosts.
 
 /mob/proc/setMoveCooldown(var/timeout)
 	move_delay = max(world.time + timeout, move_delay)

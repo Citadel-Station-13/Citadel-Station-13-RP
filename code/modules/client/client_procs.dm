@@ -473,7 +473,7 @@ GLOBAL_VAR_INIT(announce_prs, TRUE)
 			screen |= O
 		O.appearance = MA
 		O.dir = D
-		O.screen_loc = "character_render:0,[pos]"
+		O.screen_loc = "preferences_render:0,[pos]"
 
 /client/proc/clear_character_previews()
 	for(var/index in char_render_holders)

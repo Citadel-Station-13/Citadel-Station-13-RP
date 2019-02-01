@@ -17,10 +17,6 @@
 
 	anchored = 1	//  don't get pushed around
 
-/mob/new_player/Initialize()
-	. = ..()
-	mob_list += src
-
 /mob/new_player/verb/new_player_panel()
 	set src = usr
 	new_player_panel_proc()

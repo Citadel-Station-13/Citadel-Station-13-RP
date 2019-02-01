@@ -10,6 +10,8 @@
 //---------------
 //#define isobj(D)		istype(D, /obj)		//Built in
 
+#define ismecha(D)		istype(D, /obj/mecha)
+
 #define isitem(D)		istype(D, /obj/item)
 
 #define isairlock(A)	istype(A, /obj/machinery/door/airlock)

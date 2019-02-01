@@ -6,8 +6,14 @@
 	var/use_astar = FALSE				// Do we use the more expensive A* implementation or stick with BYOND's default step_to()?
 	var/list/path = list()				// A list of tiles that A* gave us as a solution to reach the target.
 	var/list/obstacles = list()			// Things A* will try to avoid.
+	var/list/obstacle_typecache	= /turf/unsimulated/floor/sky		// Typecache of things for A* and normal run_at to avoid. Will be turned into a typecache on New().
+	var/cache_obstacle_typecache = TRUE
 	var/astar_adjacent_proc = /turf/proc/CardinalTurfsWithAccess // Proc to use when A* pathfinding.  Default makes them bound to cardinals.
 	var/failed_steps = 0				// If move_once() fails to move the mob onto the correct tile, this increases. When it reaches 3, the path is recalc'd since they're probably stuck.
+
+/datum/ai_holder/New()
+	obstacle_typecache = typecacheof(obstacle_typecache, null, null, cache_obstacle_typecache)
+	..()
 
 // This clears the stored A* path.
 /datum/ai_holder/proc/forget_path()

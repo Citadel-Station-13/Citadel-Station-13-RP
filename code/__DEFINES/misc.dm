@@ -186,11 +186,6 @@
 #define BOMBCAP_LIGHT_RADIUS max_explosion_range
 #define BOMBCAP_FLASH_RADIUS (max_explosion_range*1.5)
 
-// Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
-#define PROJECTILE_CONTINUE   -1 //if the projectile should continue flying after calling bullet_act()
-#define PROJECTILE_FORCE_MISS -2 //if the projectile should treat the attack as a miss (suppresses attack and admin logs) - only applies to mobs.
-
-
 // Vending stuff
 #define CAT_NORMAL 1
 #define CAT_HIDDEN 2

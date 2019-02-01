@@ -229,7 +229,7 @@ datum/preferences
 
 	dat += "</html></body>"
 	//user << browse(dat, "window=preferences;size=635x736")
-	winshow(user, "preferences_window", src)
+	winshow(user, "preferences_window", TRUE)
 	var/datum/browser/popup = new(user, "preferences_browser", "Character Setup", 800, 800, src)
 	popup.set_content(dat)
 	popup.open(FALSE)

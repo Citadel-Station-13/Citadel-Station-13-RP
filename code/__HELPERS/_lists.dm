@@ -85,8 +85,25 @@ proc/isemptylist(list/list)
 		if(typecache_include[A.type] && !typecache_exclude[A.type])
 			. += A
 
+GLOBAL_LIST_EMPTY(typecache_cache)
+
+/proc/typecache_id(list/path)
+	if(!islist(path))
+		return "[path]"
+	else
+		. = ""
+		for(var/i in 1 to path.len)
+			. += "[path[i]]"
+			if(i != path.len)
+				. += "-"
+
 //Like typesof() or subtypesof(), but returns a typecache instead of a list
-/proc/typecacheof(path, ignore_root_path, only_root_path = FALSE)
+/proc/typecacheof(path, ignore_root_path, only_root_path = FALSE, use_cached = FALSE)
+	var/store_cache = FALSE
+	if(use_cached && LAZYACCESS(GLOB.typecache_cache, "[typecache_id(path)]-[ignore_root_path]-[only_root_path]"))
+		return GLOB.typecache_cache["[typecache_id(path)]-[ignore_root_path]-[only_root_path]"]
+	else
+		store_cache = TRUE
 	if(ispath(path))
 		var/list/types = list()
 		if(only_root_path)
@@ -96,6 +113,8 @@ proc/isemptylist(list/list)
 		var/list/L = list()
 		for(var/T in types)
 			L[T] = TRUE
+		if(store_cache)
+			LAZYSET(GLOB.typecache_cache, "[typecache_id(path)]-[ignore_root_path]-[only_root_path]", L)
 		return L
 	else if(islist(path))
 		var/list/pathlist = path
@@ -111,6 +130,8 @@ proc/isemptylist(list/list)
 				else
 					for(var/T in typesof(P))
 						L[T] = TRUE
+		if(store_cache)
+			LAZYSET(GLOB.typecache_cache, "[typecache_id(path)]-[ignore_root_path]-[only_root_path]", L)
 		return L
 
 //////////////////////////////////////////////////////
