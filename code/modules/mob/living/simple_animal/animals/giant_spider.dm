@@ -186,10 +186,10 @@ Nurse Family
 	var/swarmling_type = /mob/living/simple_animal/hostile/giant_spider/hunter
 	var/swarmling_faction = "spiders"
 
-/mob/living/simple_animal/hostile/giant_spider/carrier/New()
+/mob/living/simple_animal/hostile/giant_spider/carrier/Initialize()
+	. = ..()
 	spiderling_count = rand(5,10)
 	adjust_scale(1.2)
-	..()
 
 /mob/living/simple_animal/hostile/giant_spider/carrier/death()
 	visible_message("<span class='notice'>\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.</span>")
@@ -310,9 +310,9 @@ Guard Family
 	poison_per_bite = 5
 	poison_type = "condensedcapsaicin_v"
 
-/mob/living/simple_animal/hostile/giant_spider/pepper/New()
+/mob/living/simple_animal/hostile/giant_spider/pepper/Initialize()
+	. = ..()
 	adjust_scale(1.1)
-	..()
 
 /mob/living/simple_animal/hostile/giant_spider/thermic
 	desc = "Mirage-cloaked and orange, it makes you shudder to look at it. This one has simmering orange eyes."
@@ -376,9 +376,9 @@ Guard Family
 
 	var/exploded = 0
 
-/mob/living/simple_animal/hostile/giant_spider/phorogenic/New()
+/mob/living/simple_animal/hostile/giant_spider/phorogenic/Initialize()
+	. = ..()
 	adjust_scale(1.25)
-	return ..()
 
 /mob/living/simple_animal/hostile/giant_spider/phorogenic/death()
 	visible_message("<span class='danger'>\The [src]'s body begins to rupture!</span>")
@@ -406,10 +406,10 @@ Guard Family
 Spider Procs
 */
 
-/mob/living/simple_animal/hostile/giant_spider/New(var/location, var/atom/parent)
+/mob/living/simple_animal/hostile/giant_spider/Initialize(mapload, atom/parent)
+	. = ..()
 	get_light_and_color(parent)
 	add_eyes()
-	..()
 
 /mob/living/simple_animal/hostile/giant_spider/death()
 	remove_eyes()

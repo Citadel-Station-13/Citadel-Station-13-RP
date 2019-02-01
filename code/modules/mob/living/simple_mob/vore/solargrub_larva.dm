@@ -43,8 +43,8 @@ var/global/list/grub_machine_overlays = list()
 	var/power_drained = 0
 	var/forced_out = 0
 
-/mob/living/simple_animal/solargrub_larva/New()
-	..()
+/mob/living/simple_animal/solargrub_larva/Initialize()
+	. = ..()
 	powermachine = new(src)
 	sparks = new(src)
 	sparks.set_up()

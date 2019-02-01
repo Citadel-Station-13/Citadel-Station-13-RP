@@ -56,14 +56,14 @@
 //INSERT CODE HERE SO MONKEYS CAN BE SPAWNED.
 //Also, M was added to the end of the spawn names to signify that it's a monkey, since some names were conflicting.
 
-/mob/living/carbon/human/sharkm/New(var/new_loc)
-	..(new_loc, "Sobaka")
+/mob/living/carbon/human/sharkm/Initialize(mapload)
+	. = ..(mapload, "Sobaka")
 
-/mob/living/carbon/human/sergallingm/New(var/new_loc)
-	..(new_loc, "Saru")
+/mob/living/carbon/human/sergallingm/Initialize(mapload)
+	. = ..(mapload, "Saru")
 
-/mob/living/carbon/human/sparram/New(var/new_loc)
-	..(new_loc, "Sparra")
+/mob/living/carbon/human/sparram/Initialize(mapload)
+	. = ..(mapload, "Sparra")
 
-/mob/living/carbon/human/wolpin/New(var/new_loc)
-	..(new_loc, "Wolpin")
+/mob/living/carbon/human/wolpin/Initialize(mapload)
+	. = ..(mapload, "Wolpin")

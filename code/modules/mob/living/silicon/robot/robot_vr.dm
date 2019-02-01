@@ -179,8 +179,8 @@
 	buckle_movable = TRUE
 	buckle_lying = FALSE
 
-/mob/living/silicon/robot/New(loc,var/unfinished = 0)
-	..()
+/mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
+	. = ..()
 	riding_datum = new /datum/riding/dogborg(src)
 
 /mob/living/silicon/robot/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)

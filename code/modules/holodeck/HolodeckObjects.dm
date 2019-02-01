@@ -429,8 +429,8 @@
 	meat_amount = 0
 	meat_type = null
 
-/mob/living/simple_mob/animal/space/carp/holodeck/New()
-	..()
+/mob/living/simple_mob/animal/space/carp/holodeck/Initialize()
+	. = ..()
 	set_light(2) //hologram lighting
 
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)

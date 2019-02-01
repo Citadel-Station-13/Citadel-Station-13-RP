@@ -90,9 +90,9 @@ var/list/mob_hat_cache = list()
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
 
-/mob/living/silicon/robot/drone/New()
+/mob/living/silicon/robot/drone/Initialize()
 
-	..()
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide

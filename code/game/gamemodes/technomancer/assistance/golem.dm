@@ -83,8 +83,8 @@
 		"golem_sword_attack_4" = 3
 	)
 
-/mob/living/simple_mob/technomancer_golem/New()
-	..()
+/mob/living/simple_mob/technomancer_golem/Initialize()
+	. = ..()
 	core = new(src)
 	sword_image = image(icon, src, "golem_sword")
 	spell_image = image(icon, src, "golem_spell")

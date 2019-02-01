@@ -96,7 +96,7 @@
 		/mob/living/silicon/robot/proc/robot_checklaws
 	)
 
-/mob/living/silicon/robot/New(loc,var/unfinished = 0)
+/mob/living/silicon/robot/New(mapload, unfinished = 0)
 	spark_system = new /datum/effect/effect/system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -141,8 +141,8 @@
 		cell.maxcharge = 7500
 		cell.charge = 7500
 
-	..()
-
+	. = ..()
+	
 	if(cell)
 		var/datum/robot_component/cell_component = components["power cell"]
 		cell_component.wrapped = cell

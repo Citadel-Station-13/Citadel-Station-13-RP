@@ -30,8 +30,8 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	var/eggsleft = 0
 	var/body_color
 
-/mob/living/simple_mob/animal/passive/chicken/New()
-	..()
+/mob/living/simple_mob/animal/passive/chicken/Initialize()
+	. = ..()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
 	icon_state = "chicken_[body_color]"
@@ -129,8 +129,8 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	var/amount_grown = 0
 
-/mob/living/simple_mob/animal/passive/chick/New()
-	..()
+/mob/living/simple_mob/animal/passive/chick/Initialize()
+	. = ..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 

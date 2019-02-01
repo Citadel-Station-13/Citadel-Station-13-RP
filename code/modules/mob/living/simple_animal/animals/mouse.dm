@@ -63,8 +63,8 @@
 		else if(prob(1))
 			audible_emote("snuffles.")
 
-/mob/living/simple_animal/mouse/New()
-	..()
+/mob/living/simple_animal/mouse/Initialize()
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -128,8 +128,8 @@
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_animal/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_animal/mouse/brown/Tom/Initialize()
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

@@ -24,12 +24,12 @@
 	discipline = 10
 	obedience = 10
 
-/datum/ai_holder/simple_mob/xenobio_slime/passive/New() // For Kendrick.
-	..()
+/datum/ai_holder/simple_mob/xenobio_slime/passive/Initialize() // For Kendrick.
+	. = ..()
 	pacify()
 
-/datum/ai_holder/simple_mob/xenobio_slime/New()
-	..()
+/datum/ai_holder/simple_mob/xenobio_slime/Initialize()
+	. = ..()
 	ASSERT(istype(holder, /mob/living/simple_mob/slime/xenobio))
 
 // Checks if disciplining the slime would be 'justified' right now.

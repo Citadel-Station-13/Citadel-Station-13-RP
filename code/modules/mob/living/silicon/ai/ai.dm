@@ -43,8 +43,9 @@ var/list/ai_verbs_default = list(
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
-	density = 1
+	anchored = TRUE
+	density = TRUE
+	canmove = FALSE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	shouldnt_see = list(/obj/effect/rune)
 	var/list/network = list(NETWORK_DEFAULT)
@@ -96,11 +97,13 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/device/mmi/B, var/safety = 0)
-	announcement = new()
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/device/mmi/B, safety = FALSE)
+	. = ..()
+	ai_list += src
+	announcement = new
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
-	announcement.newscast = 1
+	announcement.newscast = TRUE
 
 	var/list/possibleNames = ai_names
 
@@ -115,10 +118,6 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
-	canmove = 0
-	density = 1
-	loc = loc
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/device/communicator/integrated(src)
@@ -176,9 +175,6 @@ var/list/ai_verbs_default = list(
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
 
-	ai_list += src
-	..()
-	return
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	src << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
@@ -419,7 +415,7 @@ var/list/ai_verbs_default = list(
 		return
 	if(usr != src)
 		return
-	/*if(..()) // <------ MOVED FROM HERE 
+	/*if(..()) // <------ MOVED FROM HERE
 		return*/
 	if (href_list["mach_close"])
 		if (href_list["mach_close"] == "aialerts")
