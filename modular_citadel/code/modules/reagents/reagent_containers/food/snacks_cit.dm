@@ -8,6 +8,6 @@
 	nutriment_amt = 9
 	nutriment_desc = list("Cheese" = 5, "pasta" = 4, "happiness" = 1)
 
-/obj/item/weapon/reagent_containers/food/snacks/macncheese/New()
+/obj/item/weapon/reagent_containers/food/snacks/macncheese/initialize()
 	..()
 	bitesize = 3

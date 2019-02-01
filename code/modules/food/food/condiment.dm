@@ -129,11 +129,11 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 
-/obj/item/weapon/reagent_containers/food/condiment/enzyme/New()
+/obj/item/weapon/reagent_containers/food/condiment/enzyme/initialize()
 	..()
 	reagents.add_reagent("enzyme", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/sugar/New()
+/obj/item/weapon/reagent_containers/food/condiment/sugar/initialize()
 	..()
 	reagents.add_reagent("sugar", 50)
 
@@ -151,7 +151,7 @@
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 
-/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/New()
+/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/initialize()
 	..()
 	reagents.add_reagent("sodiumchloride", 20)
 
@@ -160,7 +160,7 @@
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
 
-/obj/item/weapon/reagent_containers/food/condiment/small/peppermill/New()
+/obj/item/weapon/reagent_containers/food/condiment/small/peppermill/initialize()
 	..()
 	reagents.add_reagent("blackpepper", 20)
 
@@ -169,7 +169,7 @@
 	desc = "Sweetness in a bottle"
 	icon_state = "sugarsmall"
 
-/obj/item/weapon/reagent_containers/food/condiment/small/sugar/New()
+/obj/item/weapon/reagent_containers/food/condiment/small/sugar/initialize()
 	..()
 	reagents.add_reagent("sugar", 20)
 
@@ -182,7 +182,7 @@
 /obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
 	return
 
-/obj/item/weapon/reagent_containers/food/condiment/flour/New()
+/obj/item/weapon/reagent_containers/food/condiment/flour/initialize()
 	..()
 	reagents.add_reagent("flour", 30)
 	src.pixel_x = rand(-10.0, 10)

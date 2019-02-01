@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/snacks/meat/New()
+/obj/item/weapon/reagent_containers/food/snacks/meat/initialize()
 	..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("triglyceride", 2)

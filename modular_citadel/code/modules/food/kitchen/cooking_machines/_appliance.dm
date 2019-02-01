@@ -16,8 +16,10 @@
 	use_power = 0
 	idle_power_usage = 5			// Power used when turned on, but not processing anything
 	active_power_usage = 1000		// Power used when turned on and actively cooking something
+	var/initial_active_power_usage = 1000
 
 	var/cooking_power  = 1
+	var/initial_cooking_power = 1
 	var/max_contents = 1			// Maximum number of things this appliance can simultaneously cook
 	var/on_icon						// Icon state used when cooking.
 	var/off_icon					// Icon state used when not cooking.
@@ -351,7 +353,7 @@
 
 //Called every tick while we're cooking something
 /obj/machinery/appliance/proc/do_cooking_tick(var/datum/cooking_item/CI)
-	if (!CI.max_cookwork)
+	if (!istype(CI) || !CI.max_cookwork)
 		return 0
 
 	var/was_done = 0
@@ -707,20 +709,20 @@
 	var/scan_rating = 0
 	var/cap_rating = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
+	for(var/obj/item/weapon/stock_parts/P in src.component_parts)
 		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
 			scan_rating += P.rating
 		else if(istype(P, /obj/item/weapon/stock_parts/capacitor))
 			cap_rating += P.rating
 
 	active_power_usage = initial(active_power_usage) - scan_rating*10
-	cooking_power = (scan_rating+cap_rating)/10
+	cooking_power = initial(cooking_power) + (scan_rating+cap_rating)/10
 
 /obj/item/weapon/circuitboard/cooking
 	name = "kitchen appliance circuitry"
 	desc = "The circuitboard for many kitchen appliances. Not of much use."
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	req_components = list(
-							"/obj/item/weapon/stock_parts/capacitor" = 3,
-							"/obj/item/weapon/stock_parts/scanning_module" = 1,
-							"/obj/item/weapon/stock_parts/matter_bin" = 2)
+							/obj/item/weapon/stock_parts/capacitor = 3,
+							/obj/item/weapon/stock_parts/scanning_module = 1,
+							/obj/item/weapon/stock_parts/matter_bin = 2)

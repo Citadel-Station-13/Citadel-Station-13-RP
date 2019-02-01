@@ -16,7 +16,7 @@
 	if (.)	//no need to duplicate adjacency check
 		if (!stat)
 			if (temperature < min_temp)
-				to_chat(user, span("warning", "The [src] is still heating up and is too cold to cook anything yet."))
+				to_chat(user, span("warning", "\The [src] is still heating up and is too cold to cook anything yet."))
 			else
 				to_chat(user, span("notice", "It is running at [round(get_efficiency(), 0.1)]% efficiency!"))
 			to_chat(user, "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C")
@@ -37,8 +37,8 @@
 		to_chat(user, span("notice","It is empty."))
 
 /obj/machinery/appliance/cooker/proc/get_efficiency()
-	RefreshParts()
-	. = (cooking_power / optimal_power) * 100
+	//RefreshParts()
+	return (cooking_power / optimal_power) * 100
 
 /obj/machinery/appliance/cooker/New()
 	. = ..()
@@ -90,7 +90,7 @@
 
 
 	cooking_power = optimal_power * temp_scale
-	RefreshParts()
+	//RefreshParts()
 
 /obj/machinery/appliance/cooker/proc/heat_up()
 	if (temperature < optimal_temp)
@@ -132,5 +132,5 @@
 /obj/machinery/appliance/cooker/add_content(var/obj/item/I, var/mob/user)
 	var/datum/cooking_item/CI = ..()
 	if (CI && CI.combine_target)
-		to_chat(user, "The [I] will be used to make a [selected_option]. Output selection is returned to default for future items.")
+		to_chat(user, "\The [I] will be used to make a [selected_option]. Output selection is returned to default for future items.")
 		selected_option = null

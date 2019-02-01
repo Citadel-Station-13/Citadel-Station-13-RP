@@ -177,7 +177,7 @@
 	var/ice_creamed = 0
 	var/cone_type
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream/New()
+/obj/item/weapon/reagent_containers/food/snacks/icecream/initialize()
 	create_reagents(20)
 	reagents.add_reagent("nutriment", 5)
 

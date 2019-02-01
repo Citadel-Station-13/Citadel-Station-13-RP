@@ -6,7 +6,7 @@
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/New()
+/obj/item/weapon/reagent_containers/food/snacks/meat/initialize()
 	..()
 	reagents.add_reagent("protein", 9)
 	src.bitesize = 3

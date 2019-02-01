@@ -431,11 +431,11 @@
 	set category = "Object"
 	set name = "Eject content"
 	usr.visible_message(
-	"<span class='notice'>[usr] is trying to open [src] to take out its content.</span>" ,
-	"<span class='notice'>You are trying to open [src] to take out its content</span>"
+	"<span class='notice'>[usr] tries to open [src] and remove its contents.</span>" ,
+	"<span class='notice'>You try to open [src] and remove its contents.</span>"
 	)
 
-	if (!do_after(usr, 1 SECONDS, act_target = src))
+	if (!do_after(usr, 1 SECONDS, target = src))
 		return
 
 	usr.visible_message(

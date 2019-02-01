@@ -181,15 +181,15 @@
 //We will not touch things which are not required for this recipe. They will be left behind for the caller
 //to decide what to do. They may be used again to make another recipe or discarded, or merged into the results,
 //thats no longer the concern of this proc
-	var/datum/reagents/buffer = new /datum/reagents(999999999999, null)//
-
+	var/obj/temp = new /obj(src)
+	temp.create_reagents(9999999999)
 
 	//Find items we need
 	if (items && items.len)
 		for (var/i in items)
 			var/obj/item/I = locate(i) in container
 			if (I && I.reagents)
-				I.reagents.trans_to_holder(buffer,I.reagents.total_volume)
+				I.reagents.trans_to_holder(temp.reagents,I.reagents.total_volume)
 				qdel(I)
 
 	//Find fruits
@@ -205,22 +205,14 @@
 				//We found a thing we need
 				checklist[G.seed.kitchen_tag]--
 				if (G && G.reagents)
-					G.reagents.trans_to_holder(buffer,G.reagents.total_volume)
+					G.reagents.trans_to_holder(temp.reagents,G.reagents.total_volume)
 				qdel(G)
 
 	//And lastly deduct necessary quantities of reagents
 	if (reagents && reagents.len)
 		for (var/r in reagents)
 			//Doesnt matter whether or not there's enough, we assume that check is done before
-			var/datum/reagent/transfering_reagent = container.reagents.get_reagent(r)
-			var/amount = min(reagents[r], transfering_reagent.volume)
-			if(!amount)
-				return
-			var/datum/reagents/F = new /datum/reagents(amount)
-			var/tmpdata = container.reagents.get_data(r)
-			F.add_reagent(r, amount, tmpdata)
-			container.reagents.remove_reagent(r, amount)
-			return F.trans_to_holder(buffer, amount)
+			container.reagents.trans_id_to(temp, r, reagents[r])
 
 	/*
 	Now we've removed all the ingredients that were used and we have the buffer containing the total of
@@ -235,7 +227,8 @@
 	If, as in the most common case, there is only a single result, then it will just be a reference to
 	the single-result's reagents
 	*/
-	var/datum/reagents/holder = new/datum/reagents(9999999999)
+	var/obj/tempholder = new(src)
+	tempholder.create_reagents(9999999999)
 	var/list/results = list()
 	while (tally < result_quantity)
 		var/obj/result_obj = new result(container)
@@ -243,13 +236,15 @@
 
 		if (!result_obj.reagents)//This shouldn't happen
 			//If the result somehow has no reagents defined, then create a new holder
-			result_obj.reagents = new /datum/reagents(buffer.total_volume*1.5, result_obj)
+			world << "[result_obj] had no reagents!"
+			result_obj.create_reagents(temp.reagents.total_volume*1.5)
 
 		if (result_quantity == 1)
-			qdel(holder)
-			holder = result_obj.reagents
+			qdel(tempholder.reagents)
+			tempholder.reagents = result_obj.reagents
 		else
-			result_obj.reagents.trans_to(holder, result_obj.reagents.total_volume)
+			world << result_obj
+			result_obj.reagents.trans_to(tempholder.reagents, result_obj.reagents.total_volume)
 		tally++
 
 
@@ -258,39 +253,38 @@
 			//We do no transferring
 		if (RECIPE_REAGENT_SUM)
 			//Sum is easy, just shove the entire buffer into the result
-			buffer.trans_to_holder(holder, buffer.total_volume)
+			temp.reagents.trans_to_holder(tempholder.reagents, temp.reagents.total_volume)
 		if (RECIPE_REAGENT_MAX)
 			//We want the highest of each.
 			//Iterate through everything in buffer. If the target has less than the buffer, then top it up
-			for (var/datum/reagent/R in buffer.reagent_list)
-				var/rvol = holder.get_reagent_amount(R.id)
+			for (var/datum/reagent/R in temp.reagents.reagent_list)
+				var/rvol = tempholder.reagents.get_reagent_amount(R.id)
 				if (rvol < R.volume)
 					//Transfer the difference
-					buffer.trans_id_to(holder, R.id, R.volume-rvol)
+					temp.reagents.trans_id_to(tempholder, R.id, R.volume-rvol)
 
 		if (RECIPE_REAGENT_MIN)
 			//Min is slightly more complex. We want the result to have the lowest from each side
 			//But zero will not count. Where a side has zero its ignored and the side with a nonzero value is used
-			for (var/datum/reagent/R in buffer.reagent_list)
-				var/rvol = holder.get_reagent_amount(R.id)
+			for (var/datum/reagent/R in temp.reagents.reagent_list)
+				var/rvol = tempholder.reagents.get_reagent_amount(R.id)
 				if (rvol == 0) //If the target has zero of this reagent
-					buffer.trans_id_to(holder, R.id, R.volume)
+					temp.reagents.trans_id_to(tempholder, R.id, R.volume)
 					//Then transfer all of ours
 
 				else if (rvol > R.volume)
 					//if the target has more than ours
 					//Remove the difference
-					holder.remove_reagent(R.id, rvol-R.volume)
+					tempholder.reagents.remove_reagent(R.id, rvol-R.volume)
 
 
 	if (results.len > 1)
 		//If we're here, then holder is a buffer containing the total reagents for all the results.
 		//So now we redistribute it among them
-		var/total = holder.total_volume
+		var/total = tempholder.reagents.total_volume
 		for (var/i in results)
 			var/atom/a = i //optimisation
-			holder.trans_to(a, total / results.len)
-
+			tempholder.reagents.trans_to(a, total / results.len)
 	return results
 
 //When exact is false, extraneous ingredients are ignored
