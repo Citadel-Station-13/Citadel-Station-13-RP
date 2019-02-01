@@ -65,7 +65,7 @@ fundamental differences
 	if (stat)
 		return 1
 	else
-		user << span("warning", "You can't remove ingredients while its turned on! Turn it off first or wait for it to finish.")
+		user << span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish.")
 
 //Container is not removable
 /obj/machinery/appliance/mixer/removal_menu(var/mob/user)
@@ -75,7 +75,7 @@ fundamental differences
 			var/datum/cooking_item/CI = a
 			if (CI.container)
 				if (!CI.container.check_contents())
-					user << "There's nothing in the [src] you can remove!"
+					to_chat(user, "There's nothing in [src] you can remove!")
 					return
 
 				for (var/obj/item/I in CI.container)

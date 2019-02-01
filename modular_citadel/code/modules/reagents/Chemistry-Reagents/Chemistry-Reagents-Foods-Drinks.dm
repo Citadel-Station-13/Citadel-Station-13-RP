@@ -155,11 +155,41 @@
 			M << span("danger", "Searing hot oil burns you, wash it off quick!")
 			lastburnmessage = world.time
 
-
 /datum/reagent/nutriment/triglyceride/oil/corn
 	name = "Corn Oil"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
+
+//Protein! Get your mind out of the gutter.
+/datum/reagent/nutriment/protein // Bad for Skrell!
+	name = "animal protein"
+	id = "protein"
+	color = "#440000"
+	taste_description = "meat"
+
+/datum/reagent/nutriment/protein/tofu
+	name = "tofu protein"
+	id = "tofu"
+	color = "#fdffa8"
+	taste_description = "tofu"
+
+/datum/reagent/nutriment/protein/seafood
+	name = "seafood protein"
+	id = "seafood"
+	color = "#f5f4e9"
+	taste_description = "fish"
+
+/datum/reagent/nutriment/protein/egg
+	name = "egg yolk"
+	id = "egg"
+	color = "#FFFFAA"
+	taste_description = "egg"
+
+/datum/reagent/nutriment/protein/cheese // Also bad for skrell.
+	name = "cheese"
+	id = "cheese"
+	color = "#EDB91F"
+	taste_description = "cheese"
 
 //SYNNONO MEME FOODS EXPANSION - Credit to Synnono
 
