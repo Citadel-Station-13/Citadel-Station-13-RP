@@ -573,30 +573,30 @@ var/list/global/tank_gauge_cache = list()
 	src.overlays += "bomb_assembly"
 
 
-/obj/item/weapon/tank/phoron/onetankbomb/New()
-	..()
-	src.onetankbomb()
+/obj/item/weapon/tank/phoron/onetankbomb/Initialize()
+	. = ..()
+	onetankbomb()
 
-/obj/item/weapon/tank/oxygen/onetankbomb/New()
-	..()
-	src.onetankbomb()
+/obj/item/weapon/tank/oxygen/onetankbomb/Initialize()
+	. = ..()
+	onetankbomb()
 
 
-/obj/item/weapon/tank/phoron/onetankbomb/full/New()
-	..()
-	src.onetankbomb(2)
+/obj/item/weapon/tank/phoron/onetankbomb/full/Initialize()
+	. = ..()
+	onetankbomb(2)
 
-/obj/item/weapon/tank/oxygen/onetankbomb/full/New()
-	..()
-	src.onetankbomb(2)
+/obj/item/weapon/tank/oxygen/onetankbomb/full/Initialize()
+	. = ..()
+	onetankbomb(2)
 
-/obj/item/weapon/tank/phoron/onetankbomb/small/New()
-	..()
-	src.onetankbomb(0)
+/obj/item/weapon/tank/phoron/onetankbomb/small/Initialize()
+	. = ..()
+	onetankbomb(0)
 
-/obj/item/weapon/tank/oxygen/onetankbomb/small/New()
-	..()
-	src.onetankbomb(0)
+/obj/item/weapon/tank/oxygen/onetankbomb/small/Initialize()
+	. = ..()
+	onetankbomb(0)
 
 /////////////////////////////////
 ///Pulled from rewritten bomb.dm

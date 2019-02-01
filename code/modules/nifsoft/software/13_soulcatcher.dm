@@ -311,12 +311,12 @@
 	//If they're blinded
 	if(ext_blind)
 		eye_blind = 5
-		client.screen.Remove(global_hud.whitense)
+		client.screen.Remove(GLOB.global_hud.whitense)
 		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 	else
 		eye_blind = 0
 		clear_fullscreens()
-		client.screen.Add(global_hud.whitense)
+		client.screen.Add(GLOB.global_hud.whitense)
 
 	//If they're deaf
 	if(ext_deaf)
