@@ -119,12 +119,8 @@
 /datum/category_item/player_setup_item/vore/ears/content(var/mob/user)
 	. += "<h2>VORE Station Settings</h2>"
 
-	if(!pref.preview_icon)
-		pref.update_preview_icon()
- 	user << browse_rsc(pref.preview_icon, "previewicon.png")
-
 	. += "<b>Preview</b><br>"
-	. += "<div class='statusDisplay'><center><img src=previewicon.png width=[pref.preview_icon.Width()] height=[pref.preview_icon.Height()]></center></div>"
+	. += "<div class='statusDisplay'><center>Character render on side.</center></div>"
 	. += "<br><a href='?src=\ref[src];toggle_clothing=1'>[pref.dress_mob ? "Hide equipment" : "Show equipment"]</a><br>"
 
 	var/ear_display = "Normal"

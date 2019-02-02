@@ -127,9 +127,10 @@
 	name = "Stairs"
 	desc = "Stairs leading to another deck.  Not too useful if the gravity goes out."
 	icon = 'icons/obj/stairs.dmi'
-	density = 0
-	opacity = 0
-	anchored = 1
+	density = FALSE
+	opacity = FALSE
+	anchored = TRUE
+	flags = ON_BORDER
 
 /obj/structure/stairs/Initialize()
 	. = ..()

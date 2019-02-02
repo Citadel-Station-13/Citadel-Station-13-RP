@@ -265,6 +265,8 @@
 /atom/proc/update_icon()
 	return
 
+/atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+	return (!density || (height == 0) || air_group)
 
 /atom/proc/hitby(atom/movable/AM as mob|obj)
 	if (density)
@@ -272,8 +274,10 @@
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
+	if(isnull(M))
+		return
+	if(isnull(M.key))
+		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))

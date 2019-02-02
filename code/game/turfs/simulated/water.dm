@@ -63,7 +63,7 @@
 		if(!istype(oldloc, /turf/simulated/floor/water))
 			to_chat(L, "<span class='warning'>You get drenched in water from entering \the [src]!</span>")
 	AM.water_act(5)
-	..()
+	. = ..()
 
 /turf/simulated/floor/water/Exited(atom/movable/AM, atom/newloc)
 	if(istype(AM, /mob/living))
@@ -73,7 +73,7 @@
 			return
 		if(!istype(newloc, /turf/simulated/floor/water))
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
-	..()
+	. = ..()
 
 /turf/simulated/floor/water/deep
 	name = "deep water"

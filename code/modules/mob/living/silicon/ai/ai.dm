@@ -142,6 +142,10 @@ var/list/ai_verbs_default = list(
 
 	aiCamera = new/obj/item/device/camera/siliconcam/ai_camera(src)
 
+	create_eyeobj()
+	if(eyeobj)
+		eyeobj.loc = src.loc
+
 	if (istype(loc, /turf))
 		add_ai_verbs(src)
 
@@ -220,6 +224,7 @@ var/list/ai_verbs_default = list(
 	QDEL_NULL(aiRadio)
 	QDEL_NULL(aiCamera)
 	hack = null
+	destroy_eyeobj()
 
 	return ..()
 
@@ -250,7 +255,7 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/SetName(pickedName as text)
-	..()
+	. = ..()
 	announcement.announcer = pickedName
 	if(eyeobj)
 		eyeobj.name = "[pickedName] (AI Eye)"

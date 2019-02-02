@@ -261,12 +261,22 @@ var/const/enterloopsanity = 100
 					if ((thing && A) && (thing.flags & PROXMOVE))
 						thing.HasProximity(A, 1)
 
-/turf/CanPass(atom/movable/mover, turf/target)
+/turf/CanPass(atom/movable/mover, turf/target, height, air_group)
 	if(!target)
 		return FALSE
 
 	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
 		return !density
+	else		//ZAS STUFF: Well guess it's air
+		if(target.blocks_air || blocks_air)
+			return FALSE
+		for(var/atom/A in src)
+			if(!A.CanPass(mover, target, height, air_group))
+				return FALSE
+		if(target != src)
+			for(var/atom/A in target)
+				if(!A.CanPass(mover, target, height, air_group))
+					return FALSE
 
 	crash_with("Non movable passed to turf CanPass : [mover]")
 	return FALSE

@@ -70,9 +70,6 @@ datum/preferences
 	var/antag_faction = "None"			//Antag associated faction.
 	var/antag_vis = "Hidden"			//How visible antag association is to others.
 
-		//Mob preview
-	var/icon/preview_icon = null
-
 		//Jobs, uses bitflags
 	var/job_civilian_high = 0
 	var/job_civilian_med = 0

@@ -18,11 +18,8 @@ emp_act
 
 	//Shields
 	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
-	if(shield_check) // If the block roll succeeded, this is true.
-		if(shield_check < 0) // The shield did something weird and the bullet needs to keep doing things (e.g. it was reflected).
-			return shield_check // Likely equal to PROJECTILE_FORCE_MISS or PROJECTILE_CONTINUE.
-		else // Otherwise we blocked normally and stopped all the damage.
-			return 0
+	if(shield_check != BULLET_ACT_HIT) // If the block roll succeeded, this is true.
+		return shield_check
 
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
@@ -205,7 +202,8 @@ emp_act
 	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
-		if(.) return BULLET_ACT_BLOCK
+		if(.)
+			return BULLET_ACT_BLOCK
 	return BULLET_ACT_HIT
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)

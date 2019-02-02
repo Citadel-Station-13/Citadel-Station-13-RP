@@ -12,15 +12,15 @@
 	set desc = "Since you can't grab, you get a verb!"
 
 	if (stat != CONSCIOUS)
-		return
+		return FALSE
 	if (istype(src,/mob/living/simple_mob/animal/passive/mouse) && T.ckey == null)
-		return
+		return FALSE
 	if (client && IsAdvancedToolUser())
 		to_chat(src,"<span class='warning'>Put your hands to good use instead!</span>")
-		return
-	feed_grabbed_to_self(src,T)
-	update_icon()
-	return
+		return FALSE
+	. = feed_grabbed_to_self(src,T)
+	if(.)
+		update_icon()
 
 //
 // Simple proc for animals to have their digestion toggled on/off externally

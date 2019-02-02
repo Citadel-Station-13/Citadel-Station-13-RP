@@ -1,3 +1,42 @@
+// These are used as the layers for the icons, as well as indexes in a list that holds onto them.
+// Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
+//Human Overlays Indexes/////////
+#define MUTATIONS_LAYER			1		//Mutations like fat, and lasereyes
+#define SKIN_LAYER				2		//Skin things added by a call on species
+#define BLOOD_LAYER				3		//Bloodied hands/feet/anything else
+#define DAMAGE_LAYER			4		//Injury overlay sprites like open wounds
+#define SURGERY_LAYER			5		//Overlays for open surgical sites
+#define UNDERWEAR_LAYER  		6		//Underwear/bras/etc
+#define SHOES_LAYER_ALT			7		//Shoe-slot item (when set to be under uniform via verb)
+#define UNIFORM_LAYER			8		//Uniform-slot item
+#define ID_LAYER				9		//ID-slot item
+#define SHOES_LAYER				10		//Shoe-slot item
+#define GLOVES_LAYER			11		//Glove-slot item
+#define BELT_LAYER				12		//Belt-slot item
+#define SUIT_LAYER				13		//Suit-slot item
+#define TAIL_LAYER				14		//Some species have tails to render
+#define GLASSES_LAYER			15		//Eye-slot item
+#define BELT_LAYER_ALT			16		//Belt-slot item (when set to be above suit via verb)
+#define SUIT_STORE_LAYER		17		//Suit storage-slot item
+#define BACK_LAYER				18		//Back-slot item
+#define HAIR_LAYER				19		//The human's hair
+#define EARS_LAYER				20		//Both ear-slot items (combined image)
+#define EYES_LAYER				21		//Mob's eyes (used for glowing eyes)
+#define FACEMASK_LAYER			22		//Mask-slot item
+#define HEAD_LAYER				23		//Head-slot item
+#define HANDCUFF_LAYER			24		//Handcuffs, if the human is handcuffed, in a secret inv slot
+#define LEGCUFF_LAYER			25		//Same as handcuffs, for legcuffs
+#define L_HAND_LAYER			26		//Left-hand item
+#define R_HAND_LAYER			27		//Right-hand item
+#define WING_LAYER				28		//VOREStation edit. Simply move this up a number if things are added.
+#define TAIL_LAYER_ALT			29		//VOREStation edit. Simply move this up a number if things are added.
+#define MODIFIER_EFFECTS_LAYER	30		//Effects drawn by modifiers
+#define FIRE_LAYER				31		//'Mob on fire' overlay layer
+#define WATER_LAYER				32		//'Mob submerged' overlay layer
+#define TARGETED_LAYER			33		//'Aimed at' overlay layer
+#define TOTAL_LAYERS			33		//VOREStation edit. <---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
+//////////////////////////////////
+
 // /mob/var/stat things.
 #define CONSCIOUS   0
 #define UNCONSCIOUS 1

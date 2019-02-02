@@ -393,7 +393,7 @@
 	var/user_to_prey = get_dist(get_turf(user),get_turf(prey))
 
 	if(user_to_pred > 1 || user_to_prey > 1)
-		return 0
+		return FALSE
 
 	// Prepare messages
 	if(user == pred) //Feeding someone to yourself
@@ -415,7 +415,7 @@
 
 	//Timer and progress bar
 	if(!do_after(user, swallow_time, prey))
-		return 0 // Prey escpaed (or user disabled) before timer expired.
+		return FALSE // Prey escpaed (or user disabled) before timer expired.
 
 	// If we got this far, nom successful! Announce it!
 	user.visible_message(success_msg)
@@ -433,7 +433,7 @@
 		add_attack_logs(pred,prey,"Eaten via [belly.name]")
 	else
 		add_attack_logs(user,pred,"Forced to eat [key_name(prey)]")
-	return 1
+	return TRUE
 
 //
 // Magical pred-air breathing for inside preds
