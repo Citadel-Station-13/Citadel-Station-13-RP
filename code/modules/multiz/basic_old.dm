@@ -1,3 +1,4 @@
+
 // If you add a more comprehensive system, just untick this file.
 // WARNING: Only works for up to 17 z-levels!
 var/z_levels = 0 // Each bit represents a connection between adjacent levels.  So the first bit means levels 1 and 2 are connected.

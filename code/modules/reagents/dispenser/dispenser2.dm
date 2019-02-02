@@ -163,9 +163,10 @@
 	else if(href_list["ejectBeaker"])
 		if(container)
 			var/obj/item/weapon/reagent_containers/B = container
-			B.loc = loc
+			B.forceMove(drop_location())
 			container = null
 
+	SSnanoui.try_update_ui(usr, src, "main")
 	add_fingerprint(usr)
 	return 1 // update UIs attached to this object
 

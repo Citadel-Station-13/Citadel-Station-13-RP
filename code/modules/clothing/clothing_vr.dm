@@ -5,7 +5,8 @@
 	var/list/inside_emotes = list()
 	var/recent_squish = 0
 
-/obj/item/clothing/shoes/New()
+/obj/item/clothing/shoes/Initialize()
+	. = ..()
 	inside_emotes = list(
 		"<font color='red'>You feel weightless for a moment as \the [name] moves upwards.</font>",
 		"<font color='red'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</font>",
@@ -13,7 +14,6 @@
 		"<font color='red'>More motion while \the [name] move, feet pressing down against you.</font>"
 	)
 
-	..()
 /* //Must be handled in clothing.dm
 /obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
 	if(prob(1) && !recent_squish)
@@ -105,7 +105,7 @@
 
 /obj/item/clothing/suit/equipped(var/mob/user, var/slot)
 	var/normalize = TRUE
-	
+
 	//Pyramid of doom-y. Improve somehow?
 	if(!taurized && slot == slot_wear_suit && ishuman(user))
 		var/mob/living/carbon/human/H = user

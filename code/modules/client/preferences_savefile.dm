@@ -83,6 +83,7 @@
 		S.cd = "/character[default_slot]"
 
 	player_setup.load_character(S)
+	update_preview_icon()
 	return 1
 
 /datum/preferences/proc/save_character()

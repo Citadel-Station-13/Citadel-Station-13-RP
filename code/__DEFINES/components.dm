@@ -6,6 +6,7 @@
 #define SEND_GLOBAL_SIGNAL(sigtype, arguments...) NONE? NONE : DPass()
 #define GET_COMPONENT_FROM(varname, path, target) var##path/##varname = null
 #define GET_COMPONENT(varname, path) var/##path/##varname = null
+#define COMSIG_MULTIZ_TURF_NEW "UNIMPLEMENTED"
 
 /proc/DPass()
 	return		//just to make defines work until dcs is enabled and working

@@ -15,18 +15,14 @@
 	var/maxhealth = 70
 	var/check = 0
 
-/obj/structure/railing/New(loc, constructed = 0)
-	..()
+/obj/structure/railing/Initialize(mapload, constructed = FALSE)
+	. = ..()
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
-		anchored = 0
+		anchored = FALSE
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
-
-/obj/structure/railing/Initialize()
-	. = ..()
-	if(src.anchored)
-		update_icon(0)
+	update_icon(FALSE)
 
 /obj/structure/railing/Destroy()
 	var/turf/location = loc
@@ -42,7 +38,14 @@
 	if(get_dir(mover, target) == turn(dir, 180))
 		if(density)
 			return FALSE
-	return ..()
+	return TRUE
+
+/obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
+	if(istype(O) && O.checkpass(PASSTABLE))
+		return TRUE
+	if(get_dir(O.loc, target) == dir)
+		return FALSE
+	return TRUE
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
@@ -188,13 +191,6 @@
 	set_dir(turn(dir, 180))
 	update_icon()
 	return
-
-/obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
 
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle

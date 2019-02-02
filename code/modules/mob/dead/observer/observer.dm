@@ -327,13 +327,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(target != src)
 		if(following && following == target)
 			return
-		following = target
 		src << "<span class='notice'>Now following [target]</span>"
 		if(ismob(target))
 			forceMove(get_turf(target))
 			var/mob/M = target
+			following = target
 			M.following_mobs += src
 		else
+			following = target
 			spawn(0)
 				while(target && following == target && client)
 					var/turf/T = get_turf(target)

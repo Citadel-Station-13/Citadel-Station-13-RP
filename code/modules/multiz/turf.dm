@@ -1,3 +1,9 @@
+/turf
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+
+///turf/proc/multiz_turf_del(turf/T, dir)
+
 /turf/proc/CanZPass(atom/A, direction)
 	if(z == A.z) //moving FROM this turf
 		return direction == UP //can't go below
@@ -48,10 +54,14 @@
 	. = ..()
 	AM.fall()
 
+/turf/simulated/open/multiz_turf_new(turf/T, dir)
+	if(dir == UP)
+		update_icon()
+	return ..()
+
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	turf_changed_event.register(below, src, /turf/simulated/open/update_icon)
 	levelupdate()
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)

@@ -71,13 +71,13 @@
 		user << "<span class='notice'>You attach \the [src] to \the [has_suit].</span>"
 		add_fingerprint(user)
 
-/obj/item/clothing/accessory/proc/on_removed(var/mob/user)
+/obj/item/clothing/accessory/proc/on_removed(mob/user)
 	if(!has_suit)
 		return
 	has_suit.overlays -= get_inv_overlay()
 	has_suit = null
 	if(user)
-		usr.put_in_hands(src)
+		user.put_in_hands(src)
 		add_fingerprint(user)
 	else
 		forceMove(get_turf(src))

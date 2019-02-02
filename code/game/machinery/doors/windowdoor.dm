@@ -85,13 +85,15 @@
 		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if(!mover)		//Fuck ZAS get rid of this get rid of it get rid of it!!
+		if(dir == get_dir(src, target))
+			return !air_group && !density
+		return TRUE
 	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(mover, loc) == turn(dir, 180)) //Make sure looking at appropriate border
-		if(air_group) return 0
-		return !density
-	else
-		return 1
+		return TRUE
+	if(get_dir(mover, target) == turn(dir, 180))
+		return ..()
+	return TRUE
 
 /obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(istype(mover) && mover.checkpass(PASSGLASS))

@@ -77,10 +77,14 @@
 	return
 
 /datum/reagents/proc/handle_reactions()
-	START_PROCESSING(SSchemistry, src)
+	if(auto_reactions() != PROCESS_KILL)
+		START_PROCESSING(SSchemistry, src)
 
 //returns 1 if the holder should continue reactiong, 0 otherwise.
 /datum/reagents/process()
+	return auto_reactions()
+
+/datum/reagents/proc/auto_reactions()
 	if(QDELETED(my_atom))		//No container, no reaction.
 		return PROCESS_KILL
 	if(my_atom.flags & NOREACT) // No reactions here
