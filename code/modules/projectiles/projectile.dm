@@ -1,5 +1,5 @@
 #define MOVES_HITSCAN -1		//Not actually hitscan but close as we get without actual hitscan.
-#define MUZZLE_EFFECT_PIXEL_INCREMENT 17	//How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
+#define MUZZLE_EFFECT_PIXEL_INCREMENT 15	//How many pixels to move the muzzle flash up so your character doesn't look like they're shitting out lasers.
 
 /obj/item/projectile
 	name = "projectile"

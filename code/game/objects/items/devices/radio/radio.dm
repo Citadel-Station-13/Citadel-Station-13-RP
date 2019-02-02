@@ -236,7 +236,7 @@ var/global/list/default_medbay_channels = list(
 	if(.)
 		SSnanoui.update_uis(src)
 
-GLOBAL_DATUM_INIT(device_radio_autosay_ai, /mob/living/silicon/ai/announcer, new(null, null, null, TRUE))
+GLOBAL_DATUM_INIT(device_radio_autosay_ai, /mob/living/silicon/ai/announcer, new(safety = TRUE))
 
 /obj/item/device/radio/proc/autosay(var/message, var/from, var/channel) //BS12 EDIT
 	var/datum/radio_frequency/connection = null

@@ -1,4 +1,4 @@
-/mob/living/silicon/ai/Initialize(mapload)
+/mob/living/silicon/ai/Initialize()
 	. = ..()
 	add_language(LANGUAGE_BIRDSONG,		1)
 	add_language(LANGUAGE_SAGARU,		1)

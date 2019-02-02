@@ -177,8 +177,7 @@ var/list/ai_verbs_default = list(
 
 			on_mob_init()
 
-	spawn(5)
-		new /obj/machinery/ai_powersupply(src)
+	new /obj/machinery/ai_powersupply(src)
 
 
 /mob/living/silicon/ai/proc/on_mob_init()
@@ -281,12 +280,11 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/machinery/ai_powersupply/Initialize(mapload, mob/living/silicon/AI/ai)
 	powered_ai = ai
 	powered_ai.psupply = src
 	forceMove(powered_ai.loc)
-
-	..()
+	. = ..()
 	use_power(1) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()

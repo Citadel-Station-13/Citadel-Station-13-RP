@@ -18,8 +18,8 @@ emp_act
 
 	//Shields
 	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
-	if(shield_check != BULLET_ACT_HIT) // If the block roll succeeded, this is true.
-		return shield_check
+	if(shield_check) // If the block roll succeeded, this is true.
+		return BULLET_ACT_BLOCK
 
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
