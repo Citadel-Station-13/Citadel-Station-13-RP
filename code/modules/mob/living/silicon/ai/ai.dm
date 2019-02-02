@@ -166,7 +166,7 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_ROOTLOCAL, 1)
 	add_language(LANGUAGE_TERMINUS, 1)
 
-	if(!safety)//Only used by AIize() to successfully spawn an AI.
+	if(!safety && !is_dummy)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
 			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
 			qdel(src)//Delete AI.
@@ -177,7 +177,7 @@ var/list/ai_verbs_default = list(
 
 			on_mob_init()
 
-	new /obj/machinery/ai_powersupply(src)
+	new /obj/machinery/ai_powersupply(src, src)
 
 
 /mob/living/silicon/ai/proc/on_mob_init()

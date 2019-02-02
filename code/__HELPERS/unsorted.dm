@@ -1315,7 +1315,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	stack_trace("Attempt to delete the dview_mob: [log_info_line(src)]")
 	if (!force)
 		return QDEL_HINT_LETMELIVE
-	global.dview_mob = new
+	GLOB.dview_mob = new
 	return ..()
 
 #define crash_with stack_trace
