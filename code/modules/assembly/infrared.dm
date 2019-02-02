@@ -56,7 +56,7 @@
 		var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam((holder ? holder.loc : loc) )
 		I.master = src
 		I.density = 1
-		I.set_dir(dir)
+		I.setDir(dir)
 		step(I, I.dir)
 		if(I)
 			I.density = 0
@@ -81,14 +81,14 @@
 /obj/item/device/assembly/infra/Move()
 	var/t = dir
 	..()
-	set_dir(t)
+	setDir(t)
 	qdel(first)
 	return
 
 
 /obj/item/device/assembly/infra/holder_movement()
 	if(!holder)	return 0
-//		set_dir(holder.dir)
+//		setDir(holder.dir)
 	qdel(first)
 	return 1
 
@@ -147,7 +147,7 @@
 	set category = "Object"
 	set src in usr
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	return
 
 
@@ -203,7 +203,7 @@
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
 	I.density = 1
-	I.set_dir(dir)
+	I.setDir(dir)
 	//world << "created new beam \ref[I] at [I.x] [I.y] [I.z]"
 	step(I, I.dir)
 

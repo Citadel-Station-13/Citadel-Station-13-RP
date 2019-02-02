@@ -150,7 +150,7 @@
 	set src in view(1)
 
 	if(friend && usr == friend)
-		set_dir(get_dir(src, friend))
+		setDir(get_dir(src, friend))
 		say("Yap!")
 		return
 
@@ -160,7 +160,7 @@
 
 	friend = usr
 
-	set_dir(get_dir(src, friend))
+	setDir(get_dir(src, friend))
 	say("Yap!")
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/fox

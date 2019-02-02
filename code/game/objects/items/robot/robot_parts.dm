@@ -10,7 +10,7 @@
 	var/model_info
 	dir = SOUTH
 
-/obj/item/robot_parts/set_dir()
+/obj/item/robot_parts/setDir()
 	return
 
 /obj/item/robot_parts/New(var/newloc, var/model)

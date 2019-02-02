@@ -412,7 +412,7 @@ var/global/use_preloader = FALSE
 	// Rotate the atom now that it exists, rather than changing its orientation beforehand through the fields["dir"]
 	if(orientation != 0) // 0 means no rotation
 		var/atom/A = .
-		A.set_dir(turn(A.dir, orientation))
+		A.setDir(turn(A.dir, orientation))
 
 /dmm_suite/proc/create_atom(path, crds)
 	set waitfor = FALSE

@@ -546,7 +546,7 @@
 
 		forceMove(D.trunk)
 		active = 1
-		set_dir(DOWN)
+		setDir(DOWN)
 		spawn(1)
 			move()		// spawn off the movement process
 
@@ -709,7 +709,7 @@
 	//
 	proc/transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
-		H.set_dir(nextdir)
+		H.setDir(nextdir)
 		var/turf/T = H.nextloc()
 		var/obj/structure/disposalpipe/P = H.findpipe(T)
 
@@ -817,7 +817,7 @@
 			for(var/D in cardinal)
 				if(D & dpdir)
 					var/obj/structure/disposalpipe/broken/P = new(src.loc)
-					P.set_dir(D)
+					P.setDir(D)
 
 		src.invisibility = 101	// make invisible (since we won't delete the pipe immediately)
 		var/obj/structure/disposalholder/H = locate() in src
@@ -931,7 +931,7 @@
 				C.ptype = 14
 		C.subtype = src.subtype
 		src.transfer_fingerprints_to(C)
-		C.set_dir(dir)
+		C.setDir(dir)
 		C.density = 0
 		C.anchored = 1
 		C.update()
@@ -1004,7 +1004,7 @@
 
 	transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
-		H.set_dir(nextdir)
+		H.setDir(nextdir)
 
 		var/turf/T
 		var/obj/structure/disposalpipe/P
@@ -1261,7 +1261,7 @@
 
 	transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir, H.destinationTag)
-		H.set_dir(nextdir)
+		H.setDir(nextdir)
 		var/turf/T = H.nextloc()
 		var/obj/structure/disposalpipe/P = H.findpipe(T)
 

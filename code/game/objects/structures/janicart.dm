@@ -259,7 +259,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	return M
 
 
-/obj/structure/bed/chair/janicart/set_dir()
+/obj/structure/bed/chair/janicart/setDir()
 	..()
 	update_layer()
 	if(has_buckled_mobs())
@@ -276,7 +276,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.set_dir(dir)
+			L.setDir(dir)
 			switch(dir)
 				if(SOUTH)
 					L.pixel_x = 0

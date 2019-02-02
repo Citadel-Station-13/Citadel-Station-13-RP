@@ -15,7 +15,7 @@
 
 
 /obj/mecha/medical/mechturn(direction)
-	set_dir(direction)
+	setDir(direction)
 	playsound(src,'sound/mecha/mechmove01.ogg',40,1)
 	return 1
 

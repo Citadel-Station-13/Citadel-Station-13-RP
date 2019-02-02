@@ -122,7 +122,7 @@ Class Procs:
 /obj/machinery/New(l, d=0)
 	..(l)
 	if(d)
-		set_dir(d)
+		setDir(d)
 	if(circuit)
 		circuit = new circuit(src)
 
@@ -170,7 +170,7 @@ Class Procs:
 		pulse2.icon_state = "empdisable"
 		pulse2.name = "emp sparks"
 		pulse2.anchored = 1
-		pulse2.set_dir(pick(cardinal))
+		pulse2.setDir(pick(cardinal))
 
 		spawn(10)
 			qdel(pulse2)
@@ -437,7 +437,7 @@ Class Procs:
 	else
 		A.state = FRAME_WIRED
 
-	A.set_dir(dir)
+	A.setDir(dir)
 	A.pixel_x = pixel_x
 	A.pixel_y = pixel_y
 	A.update_desc()

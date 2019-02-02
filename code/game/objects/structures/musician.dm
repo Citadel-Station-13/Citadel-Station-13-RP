@@ -327,7 +327,7 @@
 		return
 	if (isobserver(usr) && !config.ghost_interaction)
 		return
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 /obj/structure/device/piano/attack_hand(mob/user)
 	if(!user.IsAdvancedToolUser())

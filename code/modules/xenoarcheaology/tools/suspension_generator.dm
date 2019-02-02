@@ -227,7 +227,7 @@
 	if(anchored)
 		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
 		return
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 
 /obj/machinery/suspension_gen/verb/rotate_clockwise()
 	set src in view(1)
@@ -237,7 +237,7 @@
 	if(anchored)
 		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
 		return
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 /obj/effect/suspension_field
 	name = "energy field"

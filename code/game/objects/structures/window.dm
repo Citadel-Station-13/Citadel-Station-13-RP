@@ -343,7 +343,7 @@
 		return 0
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 	updateSilicate()
 	update_nearby_tiles(need_rebuild=1)
 	return
@@ -365,7 +365,7 @@
 		return 0
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	updateSilicate()
 	update_nearby_tiles(need_rebuild=1)
 	return
@@ -374,7 +374,7 @@
 	..()
 
 	if (start_dir)
-		set_dir(start_dir)
+		setDir(start_dir)
 
 	//player-constructed windows
 	if (constructed)
@@ -402,7 +402,7 @@
 	var/ini_dir = dir
 	update_nearby_tiles(need_rebuild=1)
 	..()
-	set_dir(ini_dir)
+	setDir(ini_dir)
 	update_nearby_tiles(need_rebuild=1)
 
 //checks if this window is full-tile one

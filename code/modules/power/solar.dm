@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER)
 	else
 		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER)
-		src.set_dir(angle2dir(adir))
+		src.setDir(angle2dir(adir))
 	return
 
 //calculates the fraction of the SSsun.sunlight that the panel recieves

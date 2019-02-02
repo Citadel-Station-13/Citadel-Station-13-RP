@@ -60,7 +60,7 @@
 
 	if(!direct)
 		direct = get_dir(src, newloc)
-	set_dir(direct)
+	setDir(direct)
 
 	if(!loc.Exit(src, newloc))
 		return
@@ -150,7 +150,7 @@
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
 				if(!.)
-					set_dir(first_step_dir)
+					setDir(first_step_dir)
 				//else if (!inertia_moving)
 				//	inertia_next_move = world.time + inertia_move_delay
 				//	newtonian_move(direct)
@@ -171,7 +171,7 @@
 	//End
 
 	last_move = direct
-	set_dir(direct)
+	setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
 		return FALSE
 

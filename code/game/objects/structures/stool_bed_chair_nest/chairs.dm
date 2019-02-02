@@ -25,7 +25,7 @@
 		user.drop_item()
 		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		E.set_dir(dir)
+		E.setDir(dir)
 		E.part = SK
 		SK.loc = E
 		SK.master = E
@@ -60,13 +60,13 @@
 	else
 		reset_plane_and_layer()
 
-/obj/structure/bed/chair/set_dir()
+/obj/structure/bed/chair/setDir()
 	..()
 	update_layer()
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.set_dir(dir)
+			L.setDir(dir)
 
 /obj/structure/bed/chair/verb/rotate_clockwise()
 	set name = "Rotate Chair Clockwise"
@@ -80,7 +80,7 @@
 	if(ismouse(usr) || (isobserver(usr) && !config.ghost_interaction))
 		return
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 /obj/structure/bed/chair/shuttle
 	name = "chair"

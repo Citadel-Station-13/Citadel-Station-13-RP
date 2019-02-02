@@ -142,7 +142,7 @@ var/list/fuel_injectors = list()
 	if (usr.incapacitated() || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 /obj/machinery/fusion_fuel_injector/verb/rotate_counterclockwise()
 	set category = "Object"
@@ -152,4 +152,4 @@ var/list/fuel_injectors = list()
 	if (usr.incapacitated() || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
