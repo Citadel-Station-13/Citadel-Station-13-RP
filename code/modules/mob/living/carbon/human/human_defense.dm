@@ -203,8 +203,8 @@ emp_act
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.)
-			return BULLET_ACT_BLOCK
-	return BULLET_ACT_HIT
+			return TRUE
+	return FALSE
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))

@@ -14,6 +14,7 @@
 
 
 /obj/structure/grille/ex_act(severity)
+	. = ..()
 	qdel(src)
 
 /obj/structure/grille/update_icon()
@@ -23,7 +24,9 @@
 		icon_state = initial(icon_state)
 
 /obj/structure/grille/Bumped(atom/user)
-	if(ismob(user)) shock(user, 70)
+	. = ..()
+	if(ismob(user))
+		shock(user, 70)
 
 /obj/structure/grille/attack_hand(mob/user as mob)
 
@@ -49,10 +52,11 @@
 
 	attack_generic(user,damage_dealt,attack_message)
 
-/obj/structure/grille/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+/obj/structure/grille/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if(air_group || (height == 0))
+		return TRUE
 	if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return 1
+		return TRUE
 	else
 		if(istype(mover, /obj/item/projectile))
 			return prob(30)
