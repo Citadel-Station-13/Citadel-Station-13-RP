@@ -28,7 +28,6 @@ var/global/list/default_medbay_channels = list(
 	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit
 	name = "shortwave radio" //VOREStation Edit
 	suffix = "\[3\]"
-	icon = 'icons/obj/device.dmi'
 	icon_state = "walkietalkie"
 	item_state = "radio"
 
