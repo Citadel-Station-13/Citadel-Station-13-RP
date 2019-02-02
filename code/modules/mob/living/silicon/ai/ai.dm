@@ -177,7 +177,7 @@ var/list/ai_verbs_default = list(
 
 			on_mob_init()
 
-	new /obj/machinery/ai_powersupply(src, src)
+	new /obj/machinery/ai_powersupply(loc, src)
 
 
 /mob/living/silicon/ai/proc/on_mob_init()

@@ -119,15 +119,10 @@ Class Procs:
 
 	var/speed_process = FALSE			//If false, SSmachines. If true, SSfastprocess.
 
-/obj/machinery/New(l, d=0)
-	..(l)
-	if(d)
-		setDir(d)
+/obj/machinery/Initialize(mapload)
+	. = ..()
 	if(circuit)
 		circuit = new circuit(src)
-
-/obj/machinery/Initialize()
-	. = ..()
 	global.machines += src
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)

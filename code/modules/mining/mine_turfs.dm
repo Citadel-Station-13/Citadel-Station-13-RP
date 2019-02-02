@@ -599,3 +599,4 @@ var/list/mining_overlay_cache = list()
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
+
