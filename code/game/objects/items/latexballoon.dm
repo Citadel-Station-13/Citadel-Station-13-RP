@@ -42,7 +42,7 @@
 /obj/item/latexballon/bullet_act()
 	. = ..()
 	burst()		//obj damage when
-	return BULLET_ACT_FORCe_PIERCE
+	return BULLET_ACT_FORCE_PIERCE
 
 /obj/item/latexballon/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(temperature > T0C+100)

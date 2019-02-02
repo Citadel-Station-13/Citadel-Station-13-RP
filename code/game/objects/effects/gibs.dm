@@ -18,7 +18,7 @@
 		src.bloodcolor = bloodcolor
 	Gib(loc,MobDNA)
 
-	return INITIALIZE_HIN_QDEL
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/gibspawner/proc/Gib(atom/location, var/datum/dna/MobDNA = null)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
