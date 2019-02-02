@@ -13,7 +13,8 @@
 		return (!density || lying)
 	if(buckled == mover)
 		return TRUE
-	if(ismob(mover))
+	if(isliving(mover))
+		var/mob/living/moving_mob = mover
 		if(mover in buckled_mobs)
 			return TRUE
 

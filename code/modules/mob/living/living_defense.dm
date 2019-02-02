@@ -198,7 +198,7 @@
 	apply_damage(damage, damage_type, def_zone, absorb, soaked)
 
 /mob/living/proc/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
-	return target_zone
+	return target_zone || BP_TORSO
 
 //Called when the mob is hit with an item in combat. Returns the blocked result
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)

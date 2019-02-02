@@ -167,7 +167,7 @@
 		return
 
 	if(config.allow_admin_jump)
-		user.forceMove(pick(get_area_turfs(A)))
+		usr.forceMove(pick(get_area_turfs(A)))
 
 		log_admin("[key_name(usr)] jumped to [A]")
 		message_admins("[key_name_admin(usr)] jumped to [A]", 1)

@@ -305,7 +305,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	usr.forceMove(pick(get_area_turfs(A)))
-	usr.on_mob_jump()
 
 /mob/observer/dead/verb/follow(input in getmobs())
 	set category = "Ghost"
@@ -811,3 +810,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 
 /mob/observer/dead/speech_bubble_appearance()
 	return "ghost"
+
+/mob/observer/dead/forceMove()
+	. = ..()
+	following = null
