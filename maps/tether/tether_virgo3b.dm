@@ -1,4 +1,5 @@
-var/datum/planet/virgo3b/planet_virgo3b = null
+//refactor this stuff soon!
+GLOBAL_DATUM(planet_virgo3b, /datum/planet/virgo3b)
 
 /datum/time/virgo3b
 	seconds_in_day = 3 HOURS
@@ -19,8 +20,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
 
 /datum/planet/virgo3b/New()
-	..()
-	planet_virgo3b = src
+	. = ..()
+	GLOB.planet_virgo3b = src
 	weather_holder = new /datum/weather_holder/virgo3b(src)
 
 /datum/planet/virgo3b/update_sun()

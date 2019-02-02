@@ -23,8 +23,8 @@
 	var/sheets_refunded = 2
 	var/obj/machinery/light/newlight = null
 
-/obj/machinery/light_construct/New()
-	..()
+/obj/machinery/light_construct/Initialize()
+	. = ..()
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 	if (fixture_type == "flamp")
@@ -237,43 +237,43 @@
 	auto_flicker = TRUE
 
 
-/obj/machinery/light/built/New()
+/obj/machinery/light/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
-/obj/machinery/light/small/built/New()
+/obj/machinery/light/small/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
-/obj/machinery/light/flamp/built/New()
+/obj/machinery/light/flamp/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	lamp_shade = 0
 	update(0)
-	..()
+
 //VOREStation Add - Shadeless!
-/obj/machinery/light/flamp/noshade/New()
+/obj/machinery/light/flamp/noshade/Initialize()
+	. = ..()
 	lamp_shade = 0
 	update(0)
-	..()
+
 //VOREStation Add End
 // create a new lighting fixture
-/obj/machinery/light/New()
-	..()
+/obj/machinery/light/Initialize()
+	. = ..()
 
-	spawn(2)
-		on = has_power()
+	on = has_power()
 
-		switch(fitting)
-			if("tube")
-				if(prob(2))
-					broken(1)
-			if("bulb")
-				if(prob(5))
-					broken(1)
-		spawn(1)
-			update(0)
+	switch(fitting)
+		if("tube")
+			if(prob(2))
+				broken(1)
+		if("bulb")
+			if(prob(5))
+				broken(1)
+	update(0)
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
@@ -838,15 +838,14 @@
 			desc = "A broken [name]."
 
 
-/obj/item/weapon/light/New()
-	..()
+/obj/item/weapon/light/Initialize()
+	. = ..()
 	switch(name)
 		if("light tube")
 			brightness_range = rand(6,9)
 		if("light bulb")
 			brightness_range = rand(4,6)
 	update()
-
 
 // attack bulb/tube with object
 // if a syringe, can inject phoron to make it explode

@@ -15,8 +15,8 @@
 	var/wire_allow_manual_3 = FALSE
 	var/opened = FALSE
 
-/obj/machinery/power/grid_checker/New()
-	..()
+/obj/machinery/power/grid_checker/Initialize()
+	. = ..()
 	connect_to_network()
 	update_icon()
 	wires = new(src)

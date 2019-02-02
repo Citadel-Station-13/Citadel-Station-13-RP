@@ -404,14 +404,15 @@
 
 
 //Overlays
+//this is bad code and needs to go - kevinz000
 /atom/movable/overlay
 	var/atom/master = null
 	anchored = 1
 
-/atom/movable/overlay/New()
-	for(var/x in src.verbs)
-		src.verbs -= x
-	..()
+/atom/movable/overlay/Initialize()
+	. = ..()
+	for(var/x in verbs)
+		verbs -= x
 
 /atom/movable/overlay/attackby(a, b)
 	if (src.master)

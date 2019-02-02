@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)
-		if(istype(below) && !istype(below,/turf/space))
+		if(istype(below) && !istype(below,/turf/space) && istype(below, /turf/simulated))
 			N = /turf/simulated/open
 
 	var/obj/fire/old_fire = fire

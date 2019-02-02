@@ -93,6 +93,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
+
 /obj/effect/step_trigger/teleporter/from_underdark/Initialize()
 	. = ..()
 	teleport_x = x
@@ -103,7 +104,7 @@
 			teleport_z = Z.z
 
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/Initialize()
-	planet = planet_virgo3b
+	planet = GLOB.planet_virgo3b
 	. = ..()
 
 /obj/effect/step_trigger/lost_in_space

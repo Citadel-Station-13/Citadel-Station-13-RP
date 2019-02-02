@@ -29,7 +29,7 @@
 	var/moon_phase = null // Set if above is defined.
 
 /datum/planet/New()
-	..()
+	. = ..()
 	weather_holder = new(src)
 	current_time = current_time.make_random_time()
 	if(moon_name)

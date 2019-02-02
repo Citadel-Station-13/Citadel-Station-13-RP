@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	return
 
 
-/obj/machinery/power/solar/fake/New(var/turf/loc, var/obj/item/solar_assembly/S)
+/obj/machinery/power/solar/fake/Initialize(mapload, obj/item/solar_assembly/S)
 	..(loc, S, 0)
 
 /obj/machinery/power/solar/fake/process()
@@ -532,8 +532,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar_control/autostart
 	track = 2 // Auto tracking mode
 
-/obj/machinery/power/solar_control/autostart/New()
-	..()
+/obj/machinery/power/solar_control/autostart/Initialize()
+	. = ..()
 	spawn(150) // Wait 15 seconds to ensure everything was set up properly (such as, powernets, solar panels, etc.
 		src.search_for_connected()
 		if(connected_tracker && track == 2)

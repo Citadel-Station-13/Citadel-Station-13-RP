@@ -115,7 +115,7 @@
 	LAZYCLEARLIST(overlays)
 	LAZYCLEARLIST(priority_overlays)
 
-	//QDEL_NULL(light)
+	QDEL_NULL(light)
 
 	return ..()
 

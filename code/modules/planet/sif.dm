@@ -1,4 +1,5 @@
-var/datum/planet/sif/planet_sif = null
+//refactor planets soon
+GLOBAL_DATUM(planet_sif, /datum/planet/sif)
 
 /datum/planet/sif
 	name = "Sif"
@@ -16,8 +17,8 @@ var/datum/planet/sif/planet_sif = null
 	moon_name = "Thor"
 
 /datum/planet/sif/New()
-	..()
-	planet_sif = src
+	. = ..()
+	GLOB.planet_sif = src
 	weather_holder = new /datum/weather_holder/sif(src) // Cold weather is also nice.
 
 // This code is horrible.
