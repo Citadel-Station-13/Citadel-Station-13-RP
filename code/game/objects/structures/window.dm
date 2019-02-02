@@ -127,6 +127,8 @@
 	take_damage(50)
 
 /obj/structure/window/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if(air_group)		//Fuck ZAS get rid of this get rid of it get rid of it!!
+
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
 	if(is_fulltile() || (get_dir(mover, target) == turn(dir, 180)))
@@ -651,3 +653,15 @@
 			qdel(src)
 			return TRUE
 	return FALSE
+
+
+//OVERRIDE
+//VORESTATION MAPS ARE BAD AND I HAVE TO DO THIS SO IT WORKS
+/obj/structure/window/is_fulltile()
+	if(dir & (dir - 1))		//diagonal
+		return TRUE
+	return ..()
+//AAAAAAAAAAAAAAAAAAAAAAAAAAA GET RID OF THE DIR VAREDITS
+
+
+
