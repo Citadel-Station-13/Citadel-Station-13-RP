@@ -42,6 +42,13 @@
 			var/obj/item/clothing/accessory/tie = new T(src)
 			src.attach_accessory(null, tie)
 
+/obj/item/clothing/Destroy()
+	for(var/i in accessories)
+		var/obj/item/clothing/accessory/A = i
+		A.on_removed()
+		qdel(A)
+	return ..()
+
 /obj/item/clothing/equipped(var/mob/user,var/slot)
 	..()
 	if(enables_planes)

@@ -14,11 +14,10 @@
 	var/image/turf_image
 	var/list/decals
 
-	New(var/location = null, var/turf/simulated/shuttle/turf)
-		..(null)
-		my_turf = turf
+/obj/landed_holder/Initialize(mapload, turf/simulated/shuttle/turf)
+	my_turf = turf
 
-/obj/landed_holder/proc/land_on(var/turf/T)
+/obj/landed_holder/proc/land_on(turf/T)
 	//Gather destination information
 	var/obj/landed_holder/new_holder = new(null)
 	new_holder.turf_type = T.type
@@ -30,7 +29,6 @@
 	new_holder.decals = T.decals ? T.decals.Copy() : null
 
 	//Set the destination to be like us
-	T.Destroy()
 	var/turf/simulated/shuttle/new_dest = T.ChangeTurf(my_turf.type,,1)
 	new_dest.set_dir(my_turf.dir)
 	new_dest.icon_state = my_turf.icon_state

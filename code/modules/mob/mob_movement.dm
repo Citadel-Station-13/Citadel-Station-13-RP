@@ -317,12 +317,14 @@
 	switch(mob.incorporeal_move)
 		if(1)
 			var/turf/T = get_step(mob, direct)
+			if(!T)
+				return
 			if(mob.check_holy(T))
 				mob << "<span class='warning'>You cannot get past holy grounds while you are in this plane of existence!</span>"
 				return
 			else
-				mob.forceMove(get_step(mob, direct))
-				mob.dir = direct
+				mob.forceMove(T)
+				mob.setDir(direct)
 		if(2)
 			if(prob(50))
 				var/locx
@@ -363,17 +365,6 @@
 					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
 				mob.forceMove(get_step(mob, direct))
 			mob.dir = direct
-	// Crossed is always a bit iffy
-	for(var/obj/S in mob.loc)
-		if(istype(S,/obj/effect/step_trigger) || istype(S,/obj/effect/beam))
-			S.Crossed(mob)
-
-	var/area/A = get_area_master(mob)
-	if(A)
-		A.Entered(mob)
-	if(isturf(mob.loc))
-		var/turf/T = mob.loc
-		T.Entered(mob)
 	mob.Post_Incorpmove()
 	return 1
 
