@@ -884,7 +884,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "acg" = (
@@ -1446,7 +1446,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "adA" = (
@@ -10732,7 +10732,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/mob/living/simple_animal/fox/fluff/Renault,
+/mob/living/simple_mob/animal/passive/fox/fluff/Renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEu" = (

@@ -8666,7 +8666,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge_hallway)
 "azy" = (
-/mob/living/simple_animal/corgi/Ian,
+/obj/structure/plushie/ian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "azz" = (
