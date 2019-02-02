@@ -1,7 +1,7 @@
 /mob/living/CanPass(atom/movable/mover, turf/target, height, air_group)
 	/* DEATH TO ZAS	*/
 	if(air_group || height == 0)
-		return TREU
+		return TRUE
 	/*				*/
 	if((mover.pass_flags & PASSMOB))
 		return TRUE
