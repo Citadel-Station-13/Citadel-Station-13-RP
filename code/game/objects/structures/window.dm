@@ -127,8 +127,12 @@
 	take_damage(50)
 
 /obj/structure/window/CanPass(atom/movable/mover, turf/target, height, air_group)
-	if(air_group)		//Fuck ZAS get rid of this get rid of it get rid of it!!
-
+	if(!mover)		//Fuck ZAS get rid of this get rid of it get rid of it!!
+		if(is_fulltile())
+			return FALSE
+		if(dir == get_dir(src, target))
+			return FALSE
+		return TRUE
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
 	if(is_fulltile() || (get_dir(mover, target) == turn(dir, 180)))
