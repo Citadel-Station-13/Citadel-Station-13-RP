@@ -90,7 +90,7 @@
 			return
 
 		// Antag synthetic checks
-		if(!istype(user, /mob/living/silicon) || !(user.mind.special_role && user.mind.original == user))
+		if(!istype(user, /mob/living/silicon) || !(user.mind.special_role))
 			user << "Access Denied"
 			return
 
@@ -146,11 +146,11 @@
 		robot["master_ai"] = R.connected_ai ? R.connected_ai.name : "None"
 		robot["hackable"] = 0
 		//Antag synths should be able to hack themselves and see their hacked status.
-		if(operator && isrobot(operator) && (operator.mind.special_role && operator.mind.original == operator) && (operator == R))
+		if(operator && isrobot(operator) && operator.mind.special_role && (operator == R))
 			robot["hacked"] = R.emagged ? 1 : 0
 			robot["hackable"] = R.emagged? 0 : 1
 		// Antag AIs know whether linked cyborgs are hacked or not.
-		if(operator && isAI(operator) && (R.connected_ai == operator) && (operator.mind.special_role && operator.mind.original == operator))
+		if(operator && isAI(operator) && (R.connected_ai == operator) && operator.mind.special_role)
 			robot["hacked"] = R.emagged ? 1 : 0
 			robot["hackable"] = R.emagged? 0 : 1
 		robots.Add(list(robot))

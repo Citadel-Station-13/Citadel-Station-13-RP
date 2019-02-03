@@ -93,8 +93,8 @@ var/datum/antagonist/technomancer/technomancers
 	var/text = print_player_lite(player)
 
 	var/obj/item/weapon/technomancer_core/core
-	if(player.original)
-		core = locate() in player.original
+	if(player.current)
+		core = locate() in player.current
 		if(core)
 			text += "<br>Bought [english_list(core.spells)], and used \a [core]."
 		else

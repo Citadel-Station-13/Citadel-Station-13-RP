@@ -179,6 +179,8 @@ Works together with spawning an observer, noted above.
 			ghost.client.time_died_as_mouse = ghost.timeofdeath
 		if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+		if(mind)
+			mind.current = ghost // citadel change, makes cryo work?
 		return ghost
 
 /*

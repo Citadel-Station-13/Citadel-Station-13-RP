@@ -328,7 +328,7 @@ datum/objective/survive
 	check_completion()
 		if(!owner.current || owner.current.stat == DEAD || isbrain(owner.current))
 			return 0		//Brains no longer win survive objectives. --NEO
-		if(issilicon(owner.current) && owner.current != owner.original)
+		if(issilicon(owner.current) && owner.name != owner.current.real_name)
 			return 0
 		return 1
 
