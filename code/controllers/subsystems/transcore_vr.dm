@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(transcore)
 			implants -= imp
 			continue
 
-		//In a human	
+		//In a human
 		BITSET(H.hud_updateflag, BACKUP_HUD)
 
 		if(H == imp.imp_in && H.mind && H.stat < DEAD)

@@ -23,7 +23,7 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
 //
-/datum/configuration
+/datum/controller/configuration
 	var/items_survive_digestion = 1		//For configuring if the important_items survive digestion
 
 //
@@ -92,9 +92,9 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 		return 0 //Need to know what character to load!
 
 	slot = client.prefs.default_slot
-	
+
 	load_path(client_ckey,slot)
-	
+
 	if(!path) return 0 //Path couldn't be set?
 	if(!fexists(path)) //Never saved before
 		save_vore() //Make the file first
@@ -130,7 +130,7 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 
 /datum/vore_preferences/proc/save_vore()
 	if(!path)				return 0
-	
+
 	var/version = 1	//For "good times" use in the future
 	var/list/settings_list = list(
 			"version"				= version,
@@ -147,7 +147,7 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 	if(!json_to_file)
 		log_debug("Saving: [path] failed jsonencode")
 		return 0
-	
+
 	//Write it out
 #ifdef RUST_G
 	call(RUST_G, "file_write")(json_to_file, path)

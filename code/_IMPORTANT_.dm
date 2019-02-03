@@ -4,7 +4,4 @@ code/__DEFINES/bsql.config.dm
 code/__DEFINES/bsql.dm
 code/modules/bsql/includes.dm
 
-SAME FOR DCS
-code/controller/subsystems/dcs.dm
-
 */

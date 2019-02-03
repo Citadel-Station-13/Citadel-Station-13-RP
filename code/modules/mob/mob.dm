@@ -40,6 +40,7 @@
 
 /mob/Initialize()
 	. = ..()
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_CREATED, src)
 	mob_list += src
 	if(stat == DEAD)
 		dead_mob_list += src
@@ -679,11 +680,6 @@
 				stat("Round Duration", roundduration2text())
 
 		if(client.holder)
-			if(statpanel("Status"))
-				stat("Location:", "([x], [y], [z]) [loc]")
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
-				stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 
 			if(statpanel("Processes"))
 				if(processScheduler)
@@ -696,6 +692,10 @@
 				stat("World Time:", world.time)
 				stat("Real time of day:", REALTIMEOFDAY)
 				stat(null)
+				if(config)
+					config.stat_entry()
+				else
+					stat("Configuration:", "ERROR")
 				if(GLOB)
 					GLOB.stat_entry()
 				else
@@ -716,12 +716,11 @@
 			if(statpanel("Tickets"))
 				GLOB.ahelp_tickets.stat_entry()
 
-			if(length(GLOB.sdql2_queries))
-				if(statpanel("SDQL2"))
-					stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-					for(var/i in GLOB.sdql2_queries)
-						var/datum/SDQL2_query/Q = i
-						Q.generate_stat()
+			if(statpanel("SDQL2"))
+				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
+				for(var/i in GLOB.sdql2_queries)
+					var/datum/SDQL2_query/Q = i
+					Q.generate_stat()
 
 		if(listed_turf && client)
 			if(!TurfAdjacent(listed_turf))

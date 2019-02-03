@@ -89,7 +89,7 @@ var/list/reverse_dir = list( // reverse_dir[dir] = reverse of dir
 	23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63
 )
 
-var/datum/configuration/config      = null
+var/datum/controller/configuration/config      = null
 
 var/list/combatlog = list()
 var/list/IClog     = list()

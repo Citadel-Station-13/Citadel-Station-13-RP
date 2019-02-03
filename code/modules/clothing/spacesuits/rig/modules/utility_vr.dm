@@ -38,7 +38,7 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 	to_chat(H,"<span class='notice'>You activate the P.A.T. module.</span>")
-	GLOB.moved_event.register(H, src, /obj/item/rig_module/pat_module/proc/boop)
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, CALLBACK(src, .proc/boop))
 
 /obj/item/rig_module/pat_module/deactivate()
 	if(!..())
@@ -46,23 +46,23 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 	to_chat(H,"<span class='notice'>Your disable the P.A.T. module.</span>")
-	GLOB.moved_event.unregister(H, src)
+	UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
 
-/obj/item/rig_module/pat_module/proc/boop(var/mob/living/carbon/human/user,var/turf/To,var/turf/Tn)
-	if(!istype(user) || !istype(To) || !istype(Tn))
+/obj/item/rig_module/pat_module/proc/boop(mob/living/L, dir)
+	if(!isturf(L.loc))
 		deactivate() //They were picked up or something, or put themselves in a locker, who knows. Just turn off.
 		return
 
-	var/direction = user.dir
-	var/turf/current = Tn
+	var/turf/current = L.loc
 	for(var/i = 0; i < range; i++)
-		current = get_step(current,direction)
+		current = get_step(current, dir)
 		if(!current) break
 
 		var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in current
-		if(!A || !A.density) continue
+		if(!A || !A.density)
+			continue
 
-		if(A.allowed(user) && A.operable())
+		if(A.allowed(L) && A.operable())
 			A.open()
 
 /obj/item/rig_module/pat_module/engage()

@@ -168,17 +168,17 @@
 	say("Down on the floor, [suspect_name]! You have [SECBOT_WAIT_TIME] seconds to comply.")
 	playsound(src.loc, pick(preparing_arrest_sounds), 50)
 	// Register to be told when the target moves
-	GLOB.moved_event.register(target, src, /mob/living/bot/secbot/proc/target_moved)
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, CALLBACK(src, .proc/target_moved))
 
 // Callback invoked if the registered target moves
-/mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance, atom/old_loc, atom/new_loc)
+/mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance)
 	if(get_dist(get_turf(src), get_turf(target)) >= 1)
 		awaiting_surrender = INFINITY	// Done waiting!
-		GLOB.moved_event.unregister(moving_instance, src)
+		UnregisterSignal(moving_instance, COMSIG_MOVABLE_MOVED)
 
 /mob/living/bot/secbot/resetTarget()
 	..()
-	GLOB.moved_event.unregister(target, src)
+	UnregisterSignal(moving_instance, COMSIG_MOVABLE_MOVED)
 	awaiting_surrender = -1
 	walk_to(src, 0)
 

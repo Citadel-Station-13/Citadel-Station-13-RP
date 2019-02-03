@@ -357,14 +357,14 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		below.update_icon() // To add or remove the 'ceiling-less' overlay.
 
 //Creates a new turf
-/turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, preserve_outdoors = FALSE)
-	if (!N)
+/turf/proc/ChangeTurf(turf/path, tell_universe = TRUE, force_lighting_update = FALSE, preserve_outdoors = FALSE)
+	if (!path)
 		return
 
-	if(N == /turf/space)
+	if(path == /turf/space)
 		var/turf/below = GetBelow(src)
 		if(istype(below) && !istype(below,/turf/space) && istype(below, /turf/simulated))
-			N = /turf/simulated/open
+			path = /turf/simulated/open
 
 	var/obj/fire/old_fire = fire
 	var/old_opacity = opacity
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
 
-	//world << "Replacing [src.type] with [N]"
+	//world << "Replacing [src.type] with [path]"
 
 	if(connections)
 		connections.erase_all()
@@ -388,11 +388,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(S.zone)
 			S.zone.rebuild()
 
+	var/list/transferring_comps = list()
+	//SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, new_baseturfs, flags, transferring_comps)
+	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, null, flags, transferring_comps)
+	for(var/i in transferring_comps)
+		var/datum/component/comp = i
+		comp.RemoveComponent()
+
 	changing_turf = TRUE
 	qdel(src)
-	var/turf/W = new N(src)
+	var/turf/W = new path(src)
 
-	if(ispath(N, /turf/simulated/floor))
+	if(ispath(path, /turf/simulated/floor))
 		if(old_fire)
 			fire = old_fire
 

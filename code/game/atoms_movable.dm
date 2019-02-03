@@ -25,24 +25,17 @@
 	var/movement_type = NONE
 
 /atom/movable/Destroy()
-	if(reagents)
-		qdel(reagents)
-		reagents = null
+	unbuckle_all_mobs(force=1)
+	. = ..()
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
-	var/turf/un_opaque
-	if(opacity && isturf(loc))
-		un_opaque = loc
-
+	if(loc)
+		loc.handle_atom_del(src)
 	moveToNullspace()
-	if(un_opaque)
-		un_opaque.recalc_atom_opacity()
+	invisibility = INVISIBILITY_ABSTRACT
 	if (pulledby)
-		if (pulledby.pulling == src)
-			pulledby.pulling = null
-		pulledby = null
+		pulledby.stop_pulling()
 	QDEL_NULL(riding_datum) //VOREStation Add
-	return ..()
 
 /atom/movable/vv_edit_var(var_name, var_value)
 	if(GLOB.VVpixelmovement[var_name])			//Pixel movement is not yet implemented, changing this will break everything irreversibly.
@@ -177,6 +170,7 @@
 
 //Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
 	//if (!inertia_moving)
 	//	inertia_next_move = world.time + inertia_move_delay
 	//	newtonian_move(Dir)
@@ -189,20 +183,27 @@
 // You probably want CanPass()
 /atom/movable/Cross(atom/movable/AM)
 	. = TRUE
-	return CanPass(AM, loc)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)
+	return CanPass(AM, AM.loc, TRUE)
 
 //oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
-	return
+	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
 
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
 	. = ..()
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSS, AM) & COMPONENT_MOVABLE_BLOCK_UNCROSS)
+		return FALSE
 	if(isturf(newloc) && !CheckExit(AM, newloc))
 		return FALSE
+
+/atom/movable/Uncrossed(atom/movable/AM)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
 
 /atom/movable/Bump(atom/A)
 	if(!A)
 		CRASH("Bump was called with no argument.")
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 	. = ..()
 	if(throwing)
 		throw_impact(A)
@@ -272,7 +273,7 @@
 		loc = null
 
 /atom/movable/proc/onTransitZ(old_z,new_z)
-	GLOB.z_moved_event.raise_event(src, old_z, new_z)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		var/atom/movable/AM = item
 		AM.onTransitZ(old_z,new_z)
