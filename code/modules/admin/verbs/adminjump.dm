@@ -159,7 +159,7 @@
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Send Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 */
 
-/client/proc/Jump(var/area/A in return_sorted_areas())
+/client/proc/Jump(var/area/A in GLOB.sortedAreas)
 	set name = "Jump to Area"
 	set desc = "Area to jump to"
 	set category = "Admin"
@@ -300,7 +300,7 @@
 	set name = "Send Mob"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
-	var/area/A = input(usr, "Pick an area.", "Pick an area") in return_sorted_areas()
+	var/area/A = input(usr, "Pick an area.", "Pick an area") in GLOB.sortedAreas
 	if(A)
 		if(config.allow_admin_jump)
 			M.forceMove(pick(get_area_turfs(A)))

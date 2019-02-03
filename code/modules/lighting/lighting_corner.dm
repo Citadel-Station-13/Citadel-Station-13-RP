@@ -25,6 +25,9 @@ GLOBAL_LIST_INIT(LIGHTING_CORNER_DIAGONAL, list(NORTHEAST, SOUTHEAST, SOUTHWEST,
 	var/cache_b  = LIGHTING_SOFT_THRESHOLD
 	var/cache_mx = 0
 
+	//Sunlight stuff, whatever.
+	var/update_gen		//check subsystems/planets.dm
+
 /datum/lighting_corner/New(var/turf/new_turf, var/diagonal)
 	. = ..()
 	masters = list()

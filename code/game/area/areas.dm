@@ -119,7 +119,7 @@
 	if(outdoors)
 		return FALSE
 	areasize = 0
-	for(var/turf/open/T in contents)
+	for(var/turf/simulated/floor/T in contents)
 		areasize++
 
 /area/Destroy()
