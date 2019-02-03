@@ -4,7 +4,7 @@
 
 	Guidelines for using minds properly:
 
-	-	Never mind.transfer_to(ghost). The var/current and var/original of a mind must always be of type mob/living!
+	-	Never mind.transfer_to(ghost). The var/current of a mind must always be of type mob/living!
 		ghost.mind is however used as a reference to the ghost's corpse
 
 	-	When creating a new mob for an existing IC character (e.g. cloning a dead guy or borging a brain of a human)
@@ -33,7 +33,6 @@
 	var/key
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
-	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = 0
 
 	var/memory
@@ -486,7 +485,6 @@
 		mind.key = key
 	else
 		mind = new /datum/mind(key)
-		mind.original = src
 		if(ticker)
 			ticker.minds += mind
 		else

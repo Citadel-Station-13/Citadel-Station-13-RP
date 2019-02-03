@@ -489,7 +489,6 @@
 		//if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
 		//	new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
-		mind.original = new_character
 		// VOREStation
 		mind.loaded_from_ckey = client.ckey
 		mind.loaded_from_slot = client.prefs.default_slot
