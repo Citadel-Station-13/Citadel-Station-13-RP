@@ -1,3 +1,6 @@
+//???? dunno why but this is here.
+#define PRELOAD_RSC 1
+
 //#define TESTING				//By using the testing("message") proc you can create debug-feedback for people with this
 								//uncommented, but not visible in the release version)
 
