@@ -59,13 +59,12 @@
 	playsound(src, swallowsound, 50, 1)
 	update_icon()
 
+	set_AI_busy(FALSE)
 	if(.)
 		// If we succesfully ate them, lose the target
 		if(ai_holder)
 			ai_holder.lose_target()
 		return old_target
-	if(ai_holder)
-		set_AI_busy(FALSE)
 
 // Make sure you don't call ..() on this one, otherwise you duplicate work.
 /mob/living/simple_mob/init_vore()
