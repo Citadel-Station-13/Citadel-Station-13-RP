@@ -43,7 +43,7 @@
 		qdel(src)
 		return
 
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	..()
 
 /obj/structure/closet/statue/process()
@@ -55,7 +55,7 @@
 		M.setOxyLoss(intialOxy)
 	if (timer <= 0)
 		dump_contents()
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		qdel(src)
 
 /obj/structure/closet/statue/dump_contents()
@@ -86,10 +86,9 @@
 			shatter(M)
 
 /obj/structure/closet/statue/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	health -= Proj.get_structure_damage()
 	check_health()
-
-	return
 
 /obj/structure/closet/statue/attack_generic(var/mob/user, damage, attacktext, environment_smash)
 	if(damage && environment_smash)

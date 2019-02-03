@@ -418,8 +418,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/msg = "[key_name(user)] has (re)started query #[id]"
 	message_admins(msg)
 	log_admin(msg)
-	ARun()
 	show_next_to_key = user.ckey
+	ARun()
 
 /datum/SDQL2_query/proc/admin_del(user = usr)
 	var/msg = "[key_name(user)] has stopped + deleted query #[id]"
@@ -480,7 +480,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	finished = TRUE
 	. = TRUE
 	if(show_next_to_key)
-		var/client/C = directory[show_next_to_key]
+		var/client/C = GLOB.directory[show_next_to_key]
 		if(C)
 			var/mob/showmob = C.mob
 			to_chat(showmob, "<span class='admin'>SDQL query results: [get_query_text()]<br>\
@@ -491,7 +491,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				var/text = islist(select_text)? select_text.Join() : select_text
 				var/static/result_offset = 0
 				showmob << browse(text, "window=SDQL-result-[result_offset++]")
-	show_next_to_key = null
+		show_next_to_key = null
 	if(qdel_on_finish)
 		qdel(src)
 
@@ -748,8 +748,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		new_args[++new_args.len] = SDQL_expression(source, arg)
 	if(object == GLOB) // Global proc.
 		procname = "/proc/[procname]"
-		return call(procname)(arglist(new_args))
-	return call(object, procname)(arglist(new_args))
+		return superuser? (call(procname)(new_args)) : (WrapAdminProcCall(GLOBAL_PROC, procname, new_args))
+	return superuser? (call(object, procname)(new_args)) : (WrapAdminProcCall(object, procname, new_args))
 
 /datum/SDQL2_query/proc/SDQL_function_async(datum/object, procname, list/arguments, source)
 	set waitfor = FALSE

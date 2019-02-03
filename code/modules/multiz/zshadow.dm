@@ -68,14 +68,6 @@
 	. = ..()
 	check_shadow()
 
-/mob/living/on_mob_jump()
-	// We're about to be admin-jumped.
-	// Unfortuantely loc isn't set until after this proc is called. So we must spawn() so check_shadow executes with the new loc.
-	. = ..()
-	if(shadow)
-		spawn(0)
-			check_shadow()
-
 /mob/living/proc/check_shadow()
 	var/mob/M = src
 	if(isturf(M.loc))
@@ -107,10 +99,10 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/set_dir(new_dir)
+/mob/setDir(new_dir)
 	. = ..()
 	if(shadow)
-		shadow.set_dir(new_dir)
+		shadow.setDir(new_dir)
 
 // Transfer messages about what we are doing to upstairs
 /mob/visible_message(var/message, var/self_message, var/blind_message)

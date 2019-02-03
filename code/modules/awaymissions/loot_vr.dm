@@ -14,22 +14,22 @@
 
 /obj/effect/landmark/loot_spawn/New()
 
-	switch(pick( \
-	low_probability * 1000;"nothing", \
-	200 - low_probability * 175;"treasure", \
-	25 + low_probability * 75;"remains", \
-	50 + low_probability * 50;"clothes", \
-	"glasses", \
-	100 - low_probability * 50;"weapons", \
-	100 - low_probability * 50;"spacesuit", \
-	"health", \
-	25 + low_probability * 75;"snacks", \
-	25;"alien", \
-	"lights", \
-	25 - low_probability * 25;"engineering", \
-	25 - low_probability * 25;"coffin", \
-	25;"mimic", \
-	25;"viscerator", \
+	switch(pick(
+	low_probability * 1000;"nothing",
+	200 - low_probability * 175;"treasure",
+	25 + low_probability * 75;"remains",
+	50 + low_probability * 50;"clothes",
+	"glasses",
+	100 - low_probability * 50;"weapons",
+	100 - low_probability * 50;"spacesuit",
+	"health",
+	25 + low_probability * 75;"snacks",
+	25;"alien",
+	"lights",
+	25 - low_probability * 25;"engineering",
+	25 - low_probability * 25;"coffin",
+	//25;"mimic",
+	25;"viscerator",
 	))
 		if("treasure")
 			var/obj/structure/closet/crate/C = new(src.loc)
@@ -265,14 +265,14 @@
 			var/obj/structure/closet/crate/freezer/C = new(src.loc)
 			var/num = rand(2,6)
 			var/new_type = pick(
-			/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer, \
-			/obj/item/weapon/reagent_containers/food/drinks/tea, \
-			/obj/item/weapon/reagent_containers/food/drinks/dry_ramen, \
-			/obj/item/weapon/reagent_containers/food/snacks/candiedapple, \
-			/obj/item/weapon/reagent_containers/food/snacks/chocolatebar, \
-			/obj/item/weapon/reagent_containers/food/snacks/cookie, \
-			/obj/item/weapon/reagent_containers/food/snacks/meatball, \
-			/obj/item/weapon/reagent_containers/food/snacks/plump_pie, \
+			/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+			/obj/item/weapon/reagent_containers/food/drinks/tea,
+			/obj/item/weapon/reagent_containers/food/drinks/dry_ramen,
+			/obj/item/weapon/reagent_containers/food/snacks/candiedapple,
+			/obj/item/weapon/reagent_containers/food/snacks/chocolatebar,
+			/obj/item/weapon/reagent_containers/food/snacks/cookie,
+			/obj/item/weapon/reagent_containers/food/snacks/meatball,
+			/obj/item/weapon/reagent_containers/food/snacks/plump_pie,
 			/obj/item/weapon/reagent_containers/food/snacks/liquidfood)
 			for(var/i=0,i<num,i++)
 				new new_type(C)
@@ -283,12 +283,12 @@
 				if(live_cargo) // Carp! Since Facehuggers got removed.
 					var/num = rand(1,3)
 					for(var/i=0,i<num,i++)
-						new /mob/living/simple_animal/hostile/carp(C)
+						new /mob/living/simple_mob/animal/space/carp(C)
 				else // Just a costume.
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
-					var/spawn_type = pick(/mob/living/simple_animal/hostile/alien, /mob/living/simple_animal/hostile/alien/drone, /mob/living/simple_animal/hostile/alien/sentinel)
+					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/sentinel)
 					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)
@@ -302,13 +302,13 @@
 			var/num = rand(2,6)
 			for(var/i=0,i<num,i++)
 				var/spawn_type = pick(
-					/obj/item/device/flashlight/flare, \
-					/obj/item/weapon/flame/candle, \
-					/obj/item/weapon/storage/box/matches, \
-					/obj/item/device/flashlight/glowstick, \
-					/obj/item/device/flashlight/glowstick/red, \
-					/obj/item/device/flashlight/glowstick/blue, \
-					/obj/item/device/flashlight/glowstick/orange, \
+					/obj/item/device/flashlight/flare,
+					/obj/item/weapon/flame/candle,
+					/obj/item/weapon/storage/box/matches,
+					/obj/item/device/flashlight/glowstick,
+					/obj/item/device/flashlight/glowstick/red,
+					/obj/item/device/flashlight/glowstick/blue,
+					/obj/item/device/flashlight/glowstick/orange,
 					/obj/item/device/flashlight/glowstick/yellow)
 				new spawn_type(C)
 		if("engineering")
@@ -336,14 +336,14 @@
 				new /obj/effect/decal/remains/xeno(src)
 		if("mimic")
 			//a guardian of the tomb!
-			var/mob/living/simple_animal/hostile/mimic/crate/mimic = new(src.loc)
-			mimic.faction = spawned_faction
+			//var/mob/living/simple_mob/alien/mimic/crate/mimic = new(src.loc)
+			//mimic.faction = spawned_faction
 		if("viscerator")
 			//more tomb guardians!
 			var/num = rand(1,3)
 			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
 			for(var/i=0,i<num,i++)
-				new /mob/living/simple_animal/hostile/viscerator(C)
+				new /mob/living/simple_mob/mechanical/viscerator(C)
 
 	qdel(src)
 

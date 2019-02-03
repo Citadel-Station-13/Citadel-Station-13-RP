@@ -229,15 +229,15 @@
 
 /obj/item/device/beacon_locator/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/beacon_locator/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	..()
 
 /obj/item/device/beacon_locator/process()
 	if(target_radio)
-		set_dir(get_dir(src,target_radio))
+		setDir(get_dir(src,target_radio))
 		switch(get_dist(src,target_radio))
 			if(0 to 3)
 				icon_state = "pinondirect"
@@ -254,7 +254,7 @@
 			if(prob(scan_ticks * 10))
 				spawn(0)
 					set background = 1
-					if(processing_objects.Find(src))
+					if(datum_flags & DF_ISPROCESSING)
 						//scan radios in the world to try and find one
 						var/cur_dist = 999
 						for(var/obj/item/device/radio/beacon/R in all_beacons)

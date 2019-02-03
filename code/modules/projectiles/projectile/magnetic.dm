@@ -34,7 +34,7 @@
 	penetrating = 2
 	embed_chance = 0
 	armor_penetration = 40
-	kill_count = 20
+	range = 20
 
 	var/searing = 0 //Does this fuelrod ignore shields?
 	var/detonate_travel = 0 //Will this fuelrod explode when it reaches maximum distance?
@@ -42,6 +42,7 @@
 	var/energetic_impact = 0 //Does this fuelrod cause a bright flash on impact with a mob?
 
 /obj/item/projectile/bullet/magnetic/fuelrod/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null) //Future-proofing. Special effects for impact.
+	. = ..()
 	if(istype(target,/mob/living))
 		var/mob/living/V = target
 		if(detonate_mob)
@@ -50,7 +51,7 @@
 
 		if(energetic_impact)
 			var/eye_coverage = 0
-			for(var/mob/living/carbon/M in viewers(world.view, location))
+			for(var/mob/living/carbon/M in viewers(world.view, get_turf(src)))
 				eye_coverage = 0
 				if(iscarbon(M))
 					eye_coverage = M.eyecheck()
@@ -62,8 +63,6 @@
 		if(searing)
 			if(blocked)
 				blocked = 0
-
-	return ..(target, blocked, def_zone)
 
 /obj/item/projectile/bullet/magnetic/fuelrod/on_impact(var/atom/A) //Future-proofing, again. In the event new fuel rods are introduced, and have special effects for when they stop flying.
 	if(src.loc)
@@ -103,17 +102,42 @@
 	armor_penetration = 100
 	penetrating = 100 //Theoretically, this shouldn't stop flying for a while, unless someone lines it up with a wall or fires it into a mountain.
 	irradiate = 120
-	kill_count = 75
+	range = 75
 	searing = 1
 	detonate_travel = 1
 	detonate_mob = 1
 	energetic_impact = 1
 
 /obj/item/projectile/bullet/magnetic/fuelrod/supermatter/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null) //You cannot touch the supermatter without disentigrating. Assumedly, this is true for condensed rods of it flying at relativistic speeds.
+	. = ..()
 	if(istype(target,/turf/simulated/wall) || istype(target,/mob/living))
 		target.visible_message("<span class='danger'>The [src] burns a perfect hole through \the [target] with a blinding flash!</span>")
 		playsound(target.loc, 'sound/effects/teleport.ogg', 40, 0)
-	return ..(target, blocked, def_zone)
 
-/obj/item/projectile/bullet/magnetic/fuelrod/supermatter/check_penetrate()
-	return 1
+/obj/item/projectile/bullet/magnetic/fuelrod/supermatter/can_penetrate()
+	return TRUE
+
+/obj/item/projectile/bullet/magnetic/bore
+	name = "phorogenic blast"
+	icon_state = "purpleemitter"
+	damage = 20
+	incendiary = 1
+	armor_penetration = 20
+	penetrating = 0
+	check_armour = "melee"
+	irradiate = 20
+	range = 6
+
+/obj/item/projectile/bullet/magnetic/bore/Bump(atom/A, forced=0)
+	if(istype(A, /turf/simulated/mineral))
+		var/turf/simulated/mineral/MI = A
+		loc = get_turf(A) // Careful.
+		permutated.Add(A)
+		MI.GetDrilled(TRUE)
+		return 0
+	else if(istype(A, /turf/simulated/wall) || istype(A, /turf/simulated/shuttle/wall))	// Cause a loud, but relatively minor explosion on the wall it hits.
+		explosion(A, -1, -1, 1, 3)
+		qdel(src)
+		return 1
+	else
+		..()

@@ -28,10 +28,10 @@
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
 	contains = list(/obj/item/weapon/gun/energy/gun = 2)
-	cost = 50
+	cost = 40
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy sidearms crate"
-	access = access_armory //VOREStation Edit - Guns are for the armory.
+	access = access_security
 
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
@@ -44,7 +44,7 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Flare gun crate"
-	access = access_armory //VOREStation Edit - Guns are for the armory.
+	access = access_security
 
 /datum/supply_pack/munitions/eweapons
 	name = "Weapons - Experimental weapons crate"
@@ -142,8 +142,8 @@
  			)
  	cost = 40
  	containertype = /obj/structure/closet/crate/secure/weapon
- 	containername = "Ballistic Weapons crate"
- 	access = access_armory //VOREStation Edit - Guns are for the armory.
+ 	containername = "Ballistic weapons crate"
+ 	access = access_security
 
 /datum/supply_pack/munitions/shotgunammo
 	name = "Ammunition - Shotgun shells"
@@ -162,7 +162,7 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate
 	containername = "Ballistic ammunition crate"
-	access = access_armory //VOREStation Edit - Guns are for the armory.
+	access = null
 
 /datum/supply_pack/munitions/bsmgammo
 	name = "Ammunition - 9mm top mounted lethal"

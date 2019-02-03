@@ -27,8 +27,7 @@
 	return
 
 /obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
-	return
-
+	return ..()
 
 /obj/effect/decal/mecha_wreckage/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/weldingtool))
@@ -98,6 +97,14 @@
 /obj/effect/decal/mecha_wreckage/gygax/dark
 	name = "Dark Gygax wreckage"
 	icon_state = "darkgygax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/adv
+	name = "Advanced Dark Gygax wreckage"
+	icon_state = "darkgygax_adv-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/medgax
+	name = "Medgax wreckage"
+	icon_state = "medgax-broken"
 
 /obj/effect/decal/mecha_wreckage/marauder
 	name = "Marauder wreckage"
@@ -197,6 +204,9 @@
 				welder_salvage += part
 				parts -= part
 		return
+
+/obj/effect/decal/mecha_wreckage/odysseus/murdysseus
+	icon_state = "murdysseus-broken"
 
 /obj/effect/decal/mecha_wreckage/hoverpod
 	name = "Hover pod wreckage"

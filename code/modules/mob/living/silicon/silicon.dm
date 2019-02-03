@@ -27,9 +27,9 @@
 
 	var/hudmode = null
 
-/mob/living/silicon/New()
+/mob/living/silicon/Initialize()
 	silicon_mob_list |= src
-	..()
+	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	set_default_language(all_languages[LANGUAGE_GALCOM])
 	init_id()
@@ -101,17 +101,14 @@
 	return 1
 
 /mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)
-
+	. = ..()
 	if(!Proj.nodamage)
 		switch(Proj.damage_type)
 			if(BRUTE)
 				adjustBruteLoss(Proj.damage)
 			if(BURN)
 				adjustFireLoss(Proj.damage)
-
-	Proj.on_hit(src,2)
 	updatehealth()
-	return 2
 
 /mob/living/silicon/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0)
 	return 0//The only effect that can hit them atm is flashes and they still directly edit so this works for now
@@ -193,7 +190,7 @@
 //Silicon mob language procs
 
 /mob/living/silicon/can_speak(datum/language/speaking)
-	return universal_speak || (speaking in src.speech_synthesizer_langs)	//need speech synthesizer support to vocalize a language
+	return universal_speak || (speaking in src.speech_synthesizer_langs) || (speaking.name == "Noise")	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
 	var/var/datum/language/added_language = all_languages[language]

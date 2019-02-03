@@ -1,31 +1,31 @@
 /mob/living/carbon/human/dummy
 	no_vore = TRUE //Dummies don't need bellies.
 
-/mob/living/carbon/human/sergal/New(var/new_loc)
+/mob/living/carbon/human/sergal/Initialize(mapload)
+	. = ..(mapload, "Sergal")
 	h_style = "Sergal Plain"
-	..(new_loc, "Sergal")
 
-/mob/living/carbon/human/akula/New(var/new_loc)
-	..(new_loc, "Akula")
+/mob/living/carbon/human/akula/Initialize(mapload)
+	. = ..(mapload, "Akula")
 
-/mob/living/carbon/human/nevrean/New(var/new_loc)
-	..(new_loc, "Nevrean")
+/mob/living/carbon/human/nevrean/Initialize(mapload)
+	. = ..(mapload, "Nevrean")
 
-/mob/living/carbon/human/xenochimera/New(var/new_loc)
-	..(new_loc, "Xenochimera")
+/mob/living/carbon/human/xenochimera/Initialize(mapload)
+	. = ..(mapload, "Xenochimera")
 
-/mob/living/carbon/human/xenohybrid/New(var/new_loc)
-	..(new_loc, "Xenomorph Hybrid")
+/mob/living/carbon/human/xenohybrid/Initialize(mapload)
+	. = ..(mapload, "Xenomorph Hybrid")
 
-/mob/living/carbon/human/spider/New(var/new_loc)
-	..(new_loc, "Vasilissan")
+/mob/living/carbon/human/spider/Initialize(mapload)
+	. = ..(mapload, "Vasilissan")
 
-/mob/living/carbon/human/vulpkanin/New(var/new_loc)
-	..(new_loc, "Vulpkanin")
+/mob/living/carbon/human/vulpkanin/Initialize(mapload)
+	. = ..(mapload, "Vulpkanin")
 
-/mob/living/carbon/human/protean/New(var/new_loc)
-	..(new_loc, "Protean")
+/mob/living/carbon/human/protean/Initialize(mapload)
+	. = ..(mapload, "Protean")
 
 
-/mob/living/carbon/human/alraune/New(var/new_loc)
-	..(new_loc, "Alraune")
+/mob/living/carbon/human/alraune/Initialize(mapload)
+	. = ..(mapload, "Alraune")

@@ -59,14 +59,13 @@ var/list/possible_cable_coil_colours = list(
 	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
-
 	if(drain_check)
 		return 1
 
-	var/datum/powernet/PN = get_powernet()
-	if(!PN) return 0
+	if(!powernet)
+		return 0
 
-	return PN.draw_power(amount)
+	return powernet.draw_power(amount)
 
 /obj/structure/cable/yellow
 	color = COLOR_YELLOW
@@ -89,8 +88,8 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/New()
-	..()
+/obj/structure/cable/Initialize(mapload)
+	. = ..()
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 
@@ -122,6 +121,35 @@ var/list/possible_cable_coil_colours = list(
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 	return
 
+
+// Rotating cables requires d1 and d2 to be rotated
+/obj/structure/cable/setDir(new_dir)
+	if(powernet)
+		cut_cable_from_powernet() // Remove this cable from the powernet so the connections update
+
+	// If d1 is 0, then it's a not, and doesn't rotate
+	if(d1)
+		// Using turn will maintain the cable's shape
+		// Taking the difference between current orientation and new one
+		d1 = turn(d1, dir2angle(new_dir) - dir2angle(dir))
+	d2 = turn(d2, dir2angle(new_dir) - dir2angle(dir))
+
+	// Maintain d1 < d2
+	if(d1 > d2)
+		var/temp = d1
+		d1 = d2
+		d2 = temp
+
+	//	..()	Cable sprite generation is dependent upon only d1 and d2.
+	// 			Actually changing dir will rotate the generated sprite to look wrong, but function correctly.
+	update_icon()
+	// Add this cable back to the powernet, if it's connected to any
+	if(d1)
+		mergeConnectedNetworks(d1)
+	else
+		mergeConnectedNetworksOnTurf()
+	mergeConnectedNetworks(d2)
+
 ///////////////////////////////////
 // General procedures
 ///////////////////////////////////
@@ -138,10 +166,6 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/update_icon()
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
-
-// returns the powernet this cable belongs to
-/obj/structure/cable/proc/get_powernet()			//TODO: remove this as it is obsolete
-	return powernet
 
 //Telekinesis has no effect on a cable
 /obj/structure/cable/attack_tk(mob/user)
@@ -509,8 +533,8 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		user.visible_message("<span class='suicide'>[user] is strangling [TU.himself] with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return(OXYLOSS)
 
-/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
-	..()
+/obj/item/stack/cable_coil/Initialize(mapoad, length = MAXCOIL, var/param_color = null)
+	. = ..()
 	src.amount = length
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		color = param_color
@@ -532,7 +556,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
 			return ..()
 
-		var/use_amt = min(src.amount, ceil(S.burn_dam/5), 5)
+		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
 				src.use(use_amt)
@@ -802,8 +826,8 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/cut
 	item_state = "coil2"
 
-/obj/item/stack/cable_coil/cut/New(loc)
-	..()
+/obj/item/stack/cable_coil/cut/Initialize(mapload)
+	. = ..()
 	src.amount = rand(1,2)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
@@ -882,16 +906,16 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	stacktype = /obj/item/stack/cable_coil
 	color = COLOR_BROWN
 
-/obj/item/stack/cable_coil/random/New()
+/obj/item/stack/cable_coil/random/Initialize()
+	. = ..()
 	stacktype = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
-	..()
 
-/obj/item/stack/cable_coil/random_belt/New()
+/obj/item/stack/cable_coil/random_belt/Initialize()
+	. = ..()
 	stacktype = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
-	..()
 
 //Endless alien cable coil
 
@@ -914,7 +938,8 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	stacktype = null
 	toolspeed = 0.25
 
-/obj/item/stack/cable_coil/alien/New(loc, length = MAXCOIL, var/param_color = null)		//There has to be a better way to do this.
+/obj/item/stack/cable_coil/alien/Initialize(mapload, length = MAXCOIL, var/param_color = null)		//There has to be a better way to do this.
+	. = ..()
 	if(embed_chance == -1)		//From /obj/item, don't want to do what the normal cable_coil does
 		if(sharp)
 			embed_chance = force/w_class

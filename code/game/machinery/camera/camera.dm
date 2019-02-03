@@ -44,7 +44,7 @@
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
-	client_huds |= global_hud.whitense
+	client_huds |= GLOB.global_hud.whitense
 
 	/* // Use this to look for cameras that have the same c_tag.
 	for(var/obj/machinery/camera/C in cameranet.cameras)
@@ -96,9 +96,10 @@
 			kick_viewers()
 			update_icon()
 			update_coverage()
-			processing_objects |= src
+			START_PROCESSING(SSobj, src)
 
-/obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/camera/bullet_act(obj/item/projectile/P)
+	. = ..()
 	take_damage(P.get_structure_damage())
 
 /obj/machinery/camera/ex_act(severity)
@@ -143,7 +144,7 @@
 
 /obj/machinery/camera/attack_generic(mob/user as mob)
 	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_mob/S = user
 		set_status(0)
 		S.do_attack_animation(src)
 		S.setClickCooldown(user.get_attack_speed())
@@ -360,13 +361,13 @@
 			//If someone knows a better way to do this, let me know. -Giacom
 			switch(i)
 				if(NORTH)
-					src.set_dir(SOUTH)
+					src.setDir(SOUTH)
 				if(SOUTH)
-					src.set_dir(NORTH)
+					src.setDir(NORTH)
 				if(WEST)
-					src.set_dir(EAST)
+					src.setDir(EAST)
 				if(EAST)
-					src.set_dir(WEST)
+					src.setDir(WEST)
 			break
 
 //Return a working camera that can see a given mob

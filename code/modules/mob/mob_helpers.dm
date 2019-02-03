@@ -54,6 +54,9 @@ proc/isdeaf(A)
 /mob/proc/break_cloak()
 	return
 
+/mob/proc/is_cloaked()
+	return FALSE
+
 proc/hasorgans(A) // Fucking really??
 	return ishuman(A)
 
@@ -243,6 +246,12 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 
 	return returntext
 
+
+/mob/proc/lowest_buckled_mob()
+	if(ismob(buckled))
+		var/mob/M = buckled
+		return M.lowest_buckled_mob()
+	return src
 
 /proc/ninjaspeak(n)
 /*
@@ -534,19 +543,17 @@ proc/is_blind(A)
 
 	return threatcount
 
-/mob/living/simple_animal/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
+/mob/living/simple_mob/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	var/threatcount = ..()
 	if(. == SAFE_PERP)
 		return SAFE_PERP
 
-	if(!istype(src, /mob/living/simple_animal/retaliate/goat))
-		if(hostile)
-			if(faction != "neutral") // Otherwise Runtime gets killed.
-				threatcount += 4
+	if(has_AI() && ai_holder.hostile && faction != "neutral") // Otherwise Runtime gets killed.
+		threatcount += 4
 	return threatcount
 
 // Beepsky will (try to) only beat 'bad' slimes.
-/mob/living/simple_animal/slime/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
+/mob/living/simple_mob/slime/xenobio/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	var/threatcount = 0
 
 	if(stat == DEAD)
@@ -565,8 +572,10 @@ proc/is_blind(A)
 	if(victim)
 		threatcount += 4
 */
-	if(rabid)
-		threatcount = 10
+	if(has_AI())
+		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		if(AI.rabid)
+			threatcount = 10
 
 	return threatcount
 

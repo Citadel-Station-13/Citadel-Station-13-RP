@@ -109,18 +109,18 @@
 /mob/living/simple_animal/construct/cultify()
 	return
 
-/mob/living/simple_animal/construct/New()
-	..()
+/mob/living/simple_animal/construct/Initialize()
+	. = ..()
 	name = text("[initial(name)] ([rand(1, 1000)])")
 	real_name = name
 	add_language("Cult")
 	add_language("Occult")
 	for(var/spell in construct_spells)
-		src.add_spell(new spell, "const_spell_ready")
+		add_spell(new spell, "const_spell_ready")
 	updateicon()
 
 /mob/living/simple_animal/construct/updateicon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(do_glow)
 		add_glow()

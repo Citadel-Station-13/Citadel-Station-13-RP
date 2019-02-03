@@ -2,7 +2,7 @@
 ////////////////////SUBTLE COMMAND////////////////////
 //////////////////////////////////////////////////////
 
-/mob/verb/me_verb_subtle(message as text) //This would normally go in say.dm
+/mob/verb/me_verb_subtle(message as message|null) //This would normally go in say.dm
 	set name = "Subtle"
 	set category = "IC"
 	set desc = "Emote to nearby people (and your pred/prey)"
@@ -31,7 +31,7 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src)
+		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as message|null, src)
 	else
 		input = message
 
@@ -64,14 +64,14 @@
 
 #define MAX_HUGE_MESSAGE_LEN 8192
 #define POST_DELIMITER_STR "\<\>"
-/proc/sanitize_or_reflect(message,user)	
+/proc/sanitize_or_reflect(message,user)
 	//Way too long to send
 	if(length(message) > MAX_HUGE_MESSAGE_LEN)
 		fail_to_chat(user)
 		return
 
 	message = sanitize(message, max_length = MAX_HUGE_MESSAGE_LEN)
-	
+
 	//Came back still too long to send
 	if(length(message) > MAX_MESSAGE_LEN)
 		fail_to_chat(user,message)
@@ -83,9 +83,9 @@
 	if(!message)
 		to_chat(user,"<span class='danger'>Your message was NOT SENT, either because it was FAR too long, or sanitized to nothing at all.</span>")
 		return
-	
+
 	var/length = length(message)
-	var/posts = Ceiling(length/MAX_MESSAGE_LEN)
+	var/posts = CEILING(length/MAX_MESSAGE_LEN, 1)
 	to_chat(user,message)
 	to_chat(user,"<span class='danger'>^ This message was NOT SENT ^ -- It was [length] characters, and the limit is [MAX_MESSAGE_LEN]. It would fit in [posts] separate messages.</span>")
 #undef MAX_HUGE_MESSAGE_LEN

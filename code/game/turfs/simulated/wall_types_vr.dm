@@ -19,8 +19,8 @@
 /turf/simulated/flesh/attackby()
 	return
 
-/turf/simulated/flesh/New()
-	..()
+/turf/simulated/flesh/Initialize()
+	. = ..()
 	update_icon(1)
 
 var/list/flesh_overlay_cache = list()

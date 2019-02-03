@@ -25,7 +25,7 @@
 /obj/item/latexballon/proc/burst()
 	if (!air_contents)
 		return
-	playsound(src, 'sound/weapons/Gunshot.ogg', 100, 1)
+	playsound(src, 'sound/weapons/Gunshot_old.ogg', 100, 1)
 	icon_state = "latexballon_bursted"
 	item_state = "lgloves"
 	loc.assume_air(air_contents)
@@ -40,7 +40,9 @@
 				qdel(src)
 
 /obj/item/latexballon/bullet_act()
-	burst()
+	. = ..()
+	burst()		//obj damage when
+	return BULLET_ACT_FORCE_PIERCE
 
 /obj/item/latexballon/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(temperature > T0C+100)

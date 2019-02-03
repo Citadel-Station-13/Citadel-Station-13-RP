@@ -3,6 +3,7 @@
 /obj/item/device/t_scanner
 	name = "\improper T-ray scanner"
 	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
+	icon = 'icons/obj/device.dmi'
 	icon_state = "t-ray0"
 	item_state = "t-ray"
 	slot_flags = SLOT_BELT
@@ -28,10 +29,10 @@
 /obj/item/device/t_scanner/proc/set_active(var/active)
 	on = active
 	if(on)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 		flicker = 0
 	else
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		set_user_client(null)
 	update_icon()
 

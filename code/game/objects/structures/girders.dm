@@ -25,12 +25,12 @@
 
 /obj/structure/girder/Destroy()
 	if(girder_material.products_need_process())
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/structure/girder/process()
 	if(!radiate())
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		return
 
 /obj/structure/girder/proc/radiate()
@@ -53,9 +53,9 @@
 	if(applies_material_colour)
 		color = girder_material.icon_colour
 	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
-		processing_objects |= src
-	else if(src in processing_objects) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
-		processing_objects -= src
+		START_PROCESSING(SSobj, src)
+	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
+		STOP_PROCESSING(SSobj, src)
 
 /obj/structure/girder/get_material()
 	return girder_material
@@ -83,8 +83,8 @@
 	health = (displaced_health - round(current_damage / 4))
 	cover = 25
 
-/obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart", var/wallbreaker)
-	if(!damage || !wallbreaker)
+/obj/structure/girder/attack_generic(var/mob/user, var/damage, var/attack_message = "smashes apart")
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return 0
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
@@ -94,11 +94,11 @@
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
 	//Girders only provide partial cover. There's a chance that the projectiles will just pass through. (unless you are trying to shoot the girder)
 	if(Proj.original != src && !prob(cover))
-		return PROJECTILE_CONTINUE //pass through
+		return BULLET_ACT_FORCE_PIERCE //pass through
 
 	var/damage = Proj.get_structure_damage()
 	if(!damage)
-		return
+		return ..()
 
 	if(!istype(Proj, /obj/item/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
@@ -121,13 +121,11 @@
 
 		// redirect the projectile
 		Proj.redirect(new_x, new_y, curloc, null)
-
+		return BULLET_ACT_FORCE_PIERCE
+	. = ..()
 	health -= damage
-	..()
 	if(health <= 0)
 		dismantle()
-
-	return
 
 /obj/structure/girder/blob_act()
 	dismantle()

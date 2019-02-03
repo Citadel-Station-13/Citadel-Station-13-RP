@@ -102,7 +102,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	data["replacer"] = myreplacer ? capitalize(myreplacer.name) : null
 	data["signs"] = signs ? "[signs] sign\s" : null
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "janitorcart.tmpl", "Janitorial cart", 240, 160)
 		ui.set_initial_data(data)
@@ -259,7 +259,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	return M
 
 
-/obj/structure/bed/chair/janicart/set_dir()
+/obj/structure/bed/chair/janicart/setDir()
 	..()
 	update_layer()
 	if(has_buckled_mobs())
@@ -276,7 +276,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.set_dir(dir)
+			L.setDir(dir)
 			switch(dir)
 				if(SOUTH)
 					L.pixel_x = 0
@@ -292,13 +292,13 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_y = 7
 
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(obj/item/projectile/Proj)
 	if(has_buckled_mobs())
 		if(prob(85))
 			var/mob/living/L = pick(buckled_mobs)
 			return L.bullet_act(Proj)
+	. = ..()
 	visible_message("<span class='warning'>[Proj] ricochets off the [callme]!</span>")
-
 
 /obj/item/key
 	name = "key"

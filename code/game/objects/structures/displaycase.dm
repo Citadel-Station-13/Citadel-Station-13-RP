@@ -28,11 +28,10 @@
 				src.healthcheck()
 
 
-/obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	health -= Proj.get_structure_damage()
-	..()
-	src.healthcheck()
-	return
+	healthcheck()
 
 /obj/structure/displaycase/proc/healthcheck()
 	if (src.health <= 0)

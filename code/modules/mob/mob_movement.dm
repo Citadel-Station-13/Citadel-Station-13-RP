@@ -1,34 +1,13 @@
-/mob/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
-
-	if(ismob(mover))
-		var/mob/moving_mob = mover
-		if ((other_mobs && moving_mob.other_mobs))
-			return 1
-		return (!mover.density || !density || lying)
-	else
-		return (!mover.density || !density || lying)
-	return
+/mob/CanPass(atom/movable/mover, turf/target)
+	return TRUE				//There's almost no cases where non /living mobs should be used in game as actual mobs, other than ghosts.
 
 /mob/proc/setMoveCooldown(var/timeout)
-	if(client)
-		client.move_delay = max(world.time + timeout, client.move_delay)
+	move_delay = max(world.time + timeout, move_delay)
 
-/client/North()
-	..()
-
-
-/client/South()
-	..()
-
-
-/client/West()
-	..()
-
-
-/client/East()
-	..()
-
+/mob/proc/check_move_cooldown()
+	if(world.time < src.move_delay)
+		return FALSE // Need to wait more.
+	return TRUE
 
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
@@ -122,60 +101,6 @@
 	*/
 	return
 
-//This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
-/atom/movable/Move(newloc, direct)
-	if (direct & (direct - 1))
-		if (direct & 1)
-			if (direct & 4)
-				if (step(src, NORTH))
-					step(src, EAST)
-				else
-					if (step(src, EAST))
-						step(src, NORTH)
-			else
-				if (direct & 8)
-					if (step(src, NORTH))
-						step(src, WEST)
-					else
-						if (step(src, WEST))
-							step(src, NORTH)
-		else
-			if (direct & 2)
-				if (direct & 4)
-					if (step(src, SOUTH))
-						step(src, EAST)
-					else
-						if (step(src, EAST))
-							step(src, SOUTH)
-				else
-					if (direct & 8)
-						if (step(src, SOUTH))
-							step(src, WEST)
-						else
-							if (step(src, WEST))
-								step(src, SOUTH)
-	else
-		var/atom/A = src.loc
-
-		var/olddir = dir //we can't override this without sacrificing the rest of movable/New()
-		. = ..()
-		if(direct != olddir)
-			dir = olddir
-			set_dir(direct)
-
-		src.move_speed = world.time - src.l_move_time
-		src.l_move_time = world.time
-		src.m_flag = 1
-		if ((A != src.loc && A && A.z == src.z))
-			src.last_move = get_dir(A, src.loc)
-		if(.)
-			Moved(A, direct)
-	return
-
-// Called on a successful Move().
-/atom/movable/proc/Moved(atom/oldloc)
-	return
-
 /client/proc/Move_object(direct)
 	if(mob && mob.control_object)
 		if(mob.control_object.density)
@@ -199,7 +124,8 @@
 
 	if(moving)	return 0
 
-	if(world.time < move_delay)	return
+	if(!mob.check_move_cooldown())
+		return
 
 	if(locate(/obj/effect/stop/, mob.loc))
 		for(var/obj/effect/stop/S in mob.loc)
@@ -271,21 +197,21 @@
 			src << "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>"
 			return 0
 
-		move_delay = world.time//set move delay
+		mob.move_delay = world.time//set move delay
 
 		switch(mob.m_intent)
 			if("run")
 				if(mob.drowsyness > 0)
-					move_delay += 6
-				move_delay += config.run_speed
+					mob.move_delay += 6
+				mob.move_delay += config.run_speed
 			if("walk")
-				move_delay += config.walk_speed
-		move_delay += mob.movement_delay()
+				mob.move_delay += config.walk_speed
+		mob.move_delay += mob.movement_delay()
 
-		if(istype(mob.buckled))// VOREStation Removal - , /obj/vehicle))
+		if(istype(mob.buckled, /obj/vehicle))
 			//manually set move_delay for vehicles so we don't inherit any mob movement penalties
 			//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
-			move_delay = world.time
+			mob.move_delay = world.time
 			//drunk driving
 			if(mob.confused && prob(20)) //vehicles tend to keep moving in the same direction
 				direct = turn(direct, pick(90, -90))
@@ -314,14 +240,14 @@
 							if(prob(50))	direct = turn(direct, pick(90, -90))
 						if("walk")
 							if(prob(25))	direct = turn(direct, pick(90, -90))
-				move_delay += 2
+				mob.move_delay += 2
 				return mob.buckled.relaymove(mob,direct)
 
 		//We are now going to move
 		moving = 1
 		//Something with pulling things
 		if(locate(/obj/item/weapon/grab, mob))
-			move_delay = max(move_delay, world.time + 7)
+			mob.move_delay = max(mob.move_delay, world.time + 7)
 			var/list/L = mob.ret_grab()
 			if(istype(L, /list))
 				if(L.len == 2)
@@ -367,7 +293,7 @@
 
 		for (var/obj/item/weapon/grab/G in mob)
 			if (G.state == GRAB_NECK)
-				mob.set_dir(reverse_dir[direct])
+				mob.setDir(reverse_dir[direct])
 			G.adjust_position()
 		for (var/obj/item/weapon/grab/G in mob.grabbed_by)
 			G.adjust_position()
@@ -391,12 +317,14 @@
 	switch(mob.incorporeal_move)
 		if(1)
 			var/turf/T = get_step(mob, direct)
+			if(!T)
+				return
 			if(mob.check_holy(T))
 				mob << "<span class='warning'>You cannot get past holy grounds while you are in this plane of existence!</span>"
 				return
 			else
-				mob.forceMove(get_step(mob, direct))
-				mob.dir = direct
+				mob.forceMove(T)
+				mob.setDir(direct)
 		if(2)
 			if(prob(50))
 				var/locx
@@ -437,17 +365,6 @@
 					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
 				mob.forceMove(get_step(mob, direct))
 			mob.dir = direct
-	// Crossed is always a bit iffy
-	for(var/obj/S in mob.loc)
-		if(istype(S,/obj/effect/step_trigger) || istype(S,/obj/effect/beam))
-			S.Crossed(mob)
-
-	var/area/A = get_area_master(mob)
-	if(A)
-		A.Entered(mob)
-	if(isturf(mob.loc))
-		var/turf/T = mob.loc
-		T.Entered(mob)
 	mob.Post_Incorpmove()
 	return 1
 
@@ -518,8 +435,6 @@
 	return dense_object
 
 /mob/proc/Check_Shoegrip()
-	if(flying) //VOREStation Edit. Checks to see if they  and are flying.
-		return 1 //VOREStation Edit. Checks to see if they are flying. Mostly for this to be ported to Polaris.
 	return 0
 
 /mob/proc/Process_Spaceslipping(var/prob_slip = 5)

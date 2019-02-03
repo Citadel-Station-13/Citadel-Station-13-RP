@@ -80,7 +80,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/initialize()
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -93,7 +93,8 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/initialize()
+
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -102,8 +103,8 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/initialize()
-	planet = planet_virgo3b
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/Initialize()
+	planet = GLOB.planet_virgo3b
 	. = ..()
 
 /obj/effect/step_trigger/lost_in_space
@@ -157,7 +158,7 @@
 
 	var/area/shock_area = /area/tether/surfacebase/tram
 
-/turf/simulated/floor/maglev/initialize()
+/turf/simulated/floor/maglev/Initialize()
 	. = ..()
 	shock_area = locate(shock_area)
 
@@ -197,7 +198,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down
 	name = "\improper Smart Chemavator - Lower"
 
-/obj/machinery/smartfridge/chemistry/chemvator/down/initialize()
+/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
 	. = ..()
 	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
 	if(istype(above))
@@ -408,10 +409,10 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
+		/mob/living/simple_mob/animal/jelly = 3,
+		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
+		/mob/living/simple_mob/animal/giant_spider/phorogenic = 1,
+		/mob/living/simple_mob/animal/giant_spider/lurker = 1,
 	)
 
 /obj/tether_away_spawner/underdark_hard
@@ -422,9 +423,9 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/corrupthound = 1,
-		/mob/living/simple_animal/hostile/rat = 1,
-		/mob/living/simple_animal/hostile/mimic = 1
+		/mob/living/simple_mob/mechanical/corrupthound = 1,
+		/mob/living/simple_mob/animal/rat = 1,
+		///mob/living/simple_mob/alien/mimic = 1
 	)
 
 /obj/tether_away_spawner/underdark_boss
@@ -435,7 +436,7 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 100
 	guard = 70
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/dragon = 1
+		/mob/living/simple_mob/animal/dragon = 1
 	)
 
 // Used at centcomm for the elevator

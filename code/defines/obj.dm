@@ -157,7 +157,7 @@ var/global/list/PDA_Manifest = list()
 		list("cat" = "Medical", "elems" = med),
 		list("cat" = "Science", "elems" = sci),
 		list("cat" = "Cargo", "elems" = car),
-		// list("cat" = "Planetside", "elems" = pla), // VOREStation Edit - Don't show empty dpt in PDA
+		list("cat" = "Planetside", "elems" = pla),
 		list("cat" = "Civilian", "elems" = civ),
 		list("cat" = "Silicon", "elems" = bot),
 		list("cat" = "Miscellaneous", "elems" = misc)
@@ -173,21 +173,10 @@ var/global/list/PDA_Manifest = list()
 	var/damage = 0.0
 	var/range = 10.0
 
-
-/obj/effect/list_container
-	name = "list container"
-
-/obj/effect/list_container/mobl
-	name = "mobl"
-	var/master = null
-
-	var/list/container = list(  )
-
 /obj/effect/projection
 	name = "Projection"
 	desc = "This looks like a projection of something."
 	anchored = 1.0
-
 
 /obj/effect/shut_controller
 	name = "shut controller"

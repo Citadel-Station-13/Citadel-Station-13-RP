@@ -231,13 +231,13 @@ update_flag
 	return 0
 
 /obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
 	if(Proj.damage)
 		src.health -= round(Proj.damage / 2)
 		healthcheck()
-	..()
 
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if(!W.is_wrench() && !istype(W, /obj/item/weapon/tank) && !istype(W, /obj/item/device/analyzer) && !istype(W, /obj/item/device/pda))
@@ -261,7 +261,7 @@ update_flag
 
 	..()
 
-	GLOB.nanomanager.update_uis(src) // Update all NanoUIs attached to src
+	SSnanoui.update_uis(src) // Update all NanoUIs attached to src
 
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
@@ -289,7 +289,7 @@ update_flag
 		data["holdingTank"] = list("name" = holding.name, "tankPressure" = round(holding.air_contents.return_pressure()))
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm

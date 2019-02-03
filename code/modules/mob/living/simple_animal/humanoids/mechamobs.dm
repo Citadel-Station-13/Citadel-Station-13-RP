@@ -66,8 +66,8 @@
 	var/datum/effect/effect/system/spark_spread/sparks
 	var/wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark
 
-/mob/living/simple_animal/hostile/mecha/New()
-	..()
+/mob/living/simple_animal/hostile/mecha/Initialize()
+	. = ..()
 	sparks = new (src)
 	sparks.set_up(3, 1, src)
 
@@ -96,7 +96,7 @@
 	..()
 	playsound(src,'sound/mecha/mechstep.ogg',40,1)
 
-
+// This is a PoI mob, not the normal, floaty drones that hang out around windows
 /mob/living/simple_animal/hostile/mecha/malf_drone
 	name = "autonomous mechanized drone"
 	desc = "It appears to be an exosuit, piloted by a drone intelligence. It looks scary."

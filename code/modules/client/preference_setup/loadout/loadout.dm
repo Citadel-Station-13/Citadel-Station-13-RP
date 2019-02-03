@@ -57,8 +57,8 @@ var/list/gear_datums = list()
 
 /datum/category_item/player_setup_item/loadout/save_character(var/savefile/S)
 	pref.gear_list["[pref.gear_slot]"] = pref.gear
-	to_file(S["gear_list"], pref.gear_list)
-	to_file(S["gear_slot"], pref.gear_slot)
+	WRITE_FILE(S["gear_list"], pref.gear_list)
+	WRITE_FILE(S["gear_slot"], pref.gear_slot)
 
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
 	. = list()
@@ -66,12 +66,13 @@ var/list/gear_datums = list()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
 
-		if(G.whitelisted && !is_alien_whitelisted(preference_mob, all_species[G.whitelisted]))
-			continue
+		if(preference_mob)
+			if(G.whitelisted && !is_alien_whitelisted(preference_mob, all_species[G.whitelisted]))
+				continue
+			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))		//CITADEL CHANGE
+				continue		//CITADEL CHANGE
 		if(max_cost && G.cost > max_cost)
 			continue
-		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))		//CITADEL CHANGE
-			continue		//CITADEL CHANGE
 		. += gear_name
 
 /datum/category_item/player_setup_item/loadout/sanitize_character()

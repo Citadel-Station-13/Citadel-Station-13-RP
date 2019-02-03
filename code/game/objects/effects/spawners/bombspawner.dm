@@ -151,14 +151,17 @@
 	name = "TTV bomb - proximity"
 	assembly_type = /obj/item/device/assembly/prox_sensor
 
-/obj/effect/spawner/newbomb/radio/custom/New(var/newloc, ph, ox, co)
-	if(ph != null) phoron_amt = ph
-	if(ox != null) oxygen_amt = ox
-	if(co != null) carbon_amt = co
-	..()
+/obj/effect/spawner/newbomb/radio/custom/Initialize(mapload, ph, ox, co)
+	. = ..()
+	if(ph != null)
+		phoron_amt = ph
+	if(ox != null)
+		oxygen_amt = ox
+	if(co != null)
+		carbon_amt = co
 
-/obj/effect/spawner/newbomb/New(newloc)
-	..(newloc)
+/obj/effect/spawner/newbomb/Initialize(mapload)
+	. = ..()
 
 	var/obj/item/device/transfer_valve/V = new(src.loc)
 	var/obj/item/weapon/tank/phoron/PT = new(V)
@@ -183,20 +186,12 @@
 	OT.air_contents.temperature = PHORON_MINIMUM_BURN_TEMPERATURE+1
 	OT.air_contents.update_values()
 
-
 	var/obj/item/device/assembly/S = new assembly_type(V)
-
-
 	V.attached_device = S
-
 	S.holder = V
 	S.toggle_secure()
-
 	V.update_icon()
-
 	qdel(src)
-
-
 
 ///////////////////////
 //One Tank Bombs, WOOOOOOO! -Luke

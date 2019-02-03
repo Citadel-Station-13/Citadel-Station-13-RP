@@ -6,6 +6,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/hide_verbs,			//hides all our adminverbs,
 	/client/proc/hide_most_verbs,		//hides all our hideable adminverbs,
 	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify,
+	/client/proc/mark_datum_mapview,
 	/client/proc/cmd_check_new_players,	//allows us to see every new player
 //	/client/proc/check_antagonists,		//shows all antags,
 //	/client/proc/cmd_mod_say,
@@ -193,7 +194,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/ZASSettings,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/kill_airgroup,
-	/client/proc/debug_controller,
 	/client/proc/debug_antagonist_template,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_using_map,
@@ -216,8 +216,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
-	/client/proc/callproc_target,
-	/client/proc/debug_process,
+	/client/proc/callproc_datum,
+	/client/proc/debug_controller,
 	/client/proc/SDQL2_query,
 	/client/proc/Jump,
 	/client/proc/debug_rogueminer,
@@ -232,13 +232,6 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
 	/client/proc/simple_DPS
-	)
-
-var/list/admin_verbs_paranoid_debug = list(
-	/client/proc/callproc,
-	/client/proc/callproc_target,
-	/client/proc/debug_process,
-	/client/proc/debug_controller
 	)
 
 var/list/admin_verbs_possess = list(
@@ -307,8 +300,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/callproc,
-	/client/proc/callproc_target,
-	/client/proc/debug_process,
+	/client/proc/callproc_datum,
 	/client/proc/Debug2,
 	/client/proc/reload_admins,
 	/client/proc/kill_air,
@@ -376,7 +368,7 @@ var/list/admin_verbs_event_manager = list(
 	/proc/possess,
 	/proc/release,
 	/client/proc/callproc,
-	/client/proc/callproc_target,
+	/client/proc/callproc_datum,
 	/client/proc/debug_controller,
 	/client/proc/show_gm_status,
 	/datum/admins/proc/change_weather,
@@ -413,8 +405,6 @@ var/list/admin_verbs_event_manager = list(
 		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
 		if(holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
-			if(config.debugparanoid && !(holder.rights & R_ADMIN))
-				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
 		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
 		if(holder.rights & R_STEALTH)		verbs += /client/proc/stealth
@@ -648,7 +638,7 @@ var/list/admin_verbs_event_manager = list(
 		return
 
 	var/datum/preferences/D
-	var/client/C = directory[warned_ckey]
+	var/client/C = GLOB.directory[warned_ckey]
 	if(C)	D = C.prefs
 	else	D = preferences_datums[warned_ckey]
 

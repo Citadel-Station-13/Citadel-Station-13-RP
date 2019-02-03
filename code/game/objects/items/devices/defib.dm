@@ -19,8 +19,8 @@
 	var/obj/item/weapon/shockpaddles/linked/paddles
 	var/obj/item/weapon/cell/bcell = null
 
-/obj/item/device/defib_kit/New() //starts without a cell for rnd
-	..()
+/obj/item/device/defib_kit/Initialize() //starts without a cell for rnd
+	. = ..()
 	if(ispath(paddles))
 		paddles = new paddles(src, src)
 	else
@@ -53,7 +53,7 @@
 			else
 				new_overlays += "[initial(icon_state)]-powered"
 
-		var/ratio = Ceiling(bcell.percent()/25) * 25
+		var/ratio = CEILING(bcell.percent()/25, 1) * 25
 		new_overlays += "[initial(icon_state)]-charge[ratio]"
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
@@ -505,7 +505,7 @@
 	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
 	if(!brain) return //no brain
 
-	var/brain_damage = Clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
+	var/brain_damage = CLAMP((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
 /obj/item/weapon/shockpaddles/proc/make_announcement(var/message, var/msg_class)
@@ -568,9 +568,9 @@
 /obj/item/weapon/shockpaddles/linked
 	var/obj/item/device/defib_kit/base_unit
 
-/obj/item/weapon/shockpaddles/linked/New(newloc, obj/item/device/defib_kit/defib)
+/obj/item/weapon/shockpaddles/linked/Initialize(mapload, obj/item/device/defib_kit/defib)
 	base_unit = defib
-	..(newloc)
+	. = ..()
 
 /obj/item/weapon/shockpaddles/linked/Destroy()
 	if(base_unit)
@@ -606,7 +606,7 @@
 /obj/item/weapon/shockpaddles/standalone/Destroy()
 	. = ..()
 	if(fail_counter)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/shockpaddles/standalone/check_charge(var/charge_amt)
 	return 1
@@ -619,7 +619,7 @@
 	if(fail_counter > 0)
 		radiation_repository.radiate(src, fail_counter--)
 	else
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/shockpaddles/standalone/emp_act(severity)
 	..()
@@ -634,7 +634,7 @@
 				to_chat(loc, "<span class='warning'>\The [src] feel pleasantly warm.</span>")
 
 	if(new_fail && !fail_counter)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	fail_counter = new_fail
 
 /* From the Bay port, this doesn't seem to have a sprite.

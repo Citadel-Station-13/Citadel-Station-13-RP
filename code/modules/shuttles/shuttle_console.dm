@@ -57,7 +57,7 @@
 		"can_force" = shuttle.can_force(),
 	)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "shuttle_control_console.tmpl", "[shuttle_tag] Shuttle Control", 470, 310)
@@ -91,7 +91,8 @@
 		user << "You short out the console's ID checking system. It's now available to everyone!"
 		return 1
 
-/obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/computer/shuttle_control/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	visible_message("\The [Proj] ricochets off \the [src]!")
 
 /obj/machinery/computer/shuttle_control/ex_act()

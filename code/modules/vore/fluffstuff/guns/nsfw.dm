@@ -1,7 +1,7 @@
 // -------------- NSFW -------------
 /obj/item/weapon/gun/projectile/nsfw
-	name = "KHI-102b \'NSFW\'"
-	desc = "Variety is the spice of life! The 'Nanotech Selectable-Fire Weapon' is an unholy hybrid of an ammo-driven \
+	name = "cell-loaded revolver"
+	desc = "Variety is the spice of life! The KHI-102b 'Nanotech Selectable-Fire Weapon', or NSFW for short, is an unholy hybrid of an ammo-driven  \
 	energy weapon that allows the user to mix and match their own fire modes. Up to three combinations of \
 	energy beams can be configured at once. Ammo not included."
 
@@ -134,7 +134,7 @@
 	add_overlay(barrel_color)
 
 	//Charge bar
-	var/ratio = Ceiling((charge_left / max_charge) * charge_sections)
+	var/ratio = CEILING((charge_left / max_charge) * charge_sections, 1)
 	for(var/i = 0, i < ratio, i++)
 		var/image/charge_bar = image(icon, icon_state = "[initial(icon_state)]_charge")
 		charge_bar.pixel_x = i
@@ -174,7 +174,7 @@
 		add_overlay(cap)
 
 		if(batt.shots_left)
-			var/ratio = Ceiling((batt.shots_left / initial(batt.shots_left)) * 4) //4 is how many lights we have a sprite for
+			var/ratio = CEILING((batt.shots_left / initial(batt.shots_left)) * 4, 1) //4 is how many lights we have a sprite for
 			var/image/charge = image(icon, icon_state = "[initial(icon_state)]_charge-[ratio]")
 			charge.color = "#29EAF4" //Could use battery color but eh.
 			charge.pixel_x = current * x_offset
@@ -200,7 +200,7 @@
 	var/type_name = null
 	projectile_type = /obj/item/projectile/beam
 
-/obj/item/ammo_casing/nsfw_batt/initialize()
+/obj/item/ammo_casing/nsfw_batt/Initialize()
 	. = ..()
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
@@ -279,7 +279,8 @@
 	sharp = 0
 	check_armour = "melee"
 
-/obj/item/projectile/bullet/stripper/on_hit(var/atom/stripped)
+/obj/item/projectile/bullet/stripper/on_hit(atom/stripped)
+	. = ..()
 	if(ishuman(stripped))
 		var/mob/living/carbon/human/H = stripped
 		if(H.wear_suit)
@@ -293,7 +294,6 @@
 		if(H.gloves)
 			H.unEquip(H.gloves)
 		//Hats can stay! Most other things fall off with removing these.
-	..()
 
 /obj/item/ammo_casing/nsfw_batt/final
 	name = "\'NSFW\' microbattery - FINAL OPTION"
@@ -324,7 +324,7 @@
 			SStranscore.m_backup(L.mind,nif,one_time = TRUE)
 		L.gib()
 
-	..()
+	. = ..()
 /*
 /obj/item/ammo_casing/nsfw_batt/shrink
 	name = "\'NSFW\' microbattery - SHRINK"

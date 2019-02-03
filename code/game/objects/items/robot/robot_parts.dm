@@ -10,7 +10,7 @@
 	var/model_info
 	dir = SOUTH
 
-/obj/item/robot_parts/set_dir()
+/obj/item/robot_parts/setDir()
 	return
 
 /obj/item/robot_parts/New(var/newloc, var/model)
@@ -277,7 +277,7 @@
 			add_flashes(W,user)
 	else if(istype(W, /obj/item/weapon/stock_parts/manipulator))
 		to_chat(user, "<span class='notice'>You install some manipulators and modify the head, creating a functional spider-bot!</span>")
-		new /mob/living/simple_animal/spiderbot(get_turf(loc))
+		new /mob/living/simple_mob/mechanical/spiderbot(get_turf(loc))
 		user.drop_item()
 		qdel(W)
 		qdel(src)

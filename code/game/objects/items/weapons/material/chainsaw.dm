@@ -1,6 +1,7 @@
 obj/item/weapon/chainsaw
 	name = "chainsaw"
 	desc = "Vroom vroom."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "chainsaw0"
 	item_state = "chainsaw0"
 	var/on = 0
@@ -17,11 +18,11 @@ obj/item/weapon/chainsaw/New()
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 	..()
 
 obj/item/weapon/chainsaw/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	if(reagents)
 		qdel(reagents)
 	..()

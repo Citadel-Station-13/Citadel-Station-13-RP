@@ -11,6 +11,8 @@
 	var/nitrogen = 0
 	var/phoron = 0
 
+	var/changing_turf = FALSE
+
 	//Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
@@ -32,14 +34,39 @@
 
 	var/block_tele = FALSE      // If true, most forms of teleporting to or from this turf tile will fail.
 	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
+	var/list/dangerous_objects // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
-/turf/New()
-	..()
-	for(var/atom/movable/AM as mob|obj in src)
-		spawn( 0 )
-			src.Entered(AM)
-			return
-	turfs |= src
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list("x", "y", "z")
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
+/turf/Initialize(mapload)
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+
+	// by default, vis_contents is inherited from the turf that was here before
+	vis_contents.Cut()
+
+	//assemble_baseturfs()
+
+	levelupdate()
+	/*
+	if(smooth)
+		queue_smooth(src)
+	*/
+	//visibilityChanged()
+
+	for(var/atom/movable/AM in src)
+		Entered(AM)
+
+	/*
+	var/area/A = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+		add_overlay(/obj/effect/fullbright)
+	*/
 
 	if(dynamic_lighting)
 		luminosity = 0
@@ -49,10 +76,67 @@
 	if(movement_cost && pathweight == 1) // This updates pathweight automatically.
 		pathweight = movement_cost
 
-/turf/Destroy()
-	turfs -= src
+	/*
+	if(requires_activation)
+		CalculateAdjacentTurfs()
+		SSair.add_to_active(src)
+	*/
+
+	/*
+	if (light_power && light_range)
+		update_light()
+	*/
+
+	/*
+	var/turf/T = SSmapping.get_turf_above(src)
+	if(T)
+		T.multiz_turf_new(src, DOWN)
+		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
+	T = SSmapping.get_turf_below(src)
+	if(T)
+		T.multiz_turf_new(src, UP)
+		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
+	*/
+
+	if (opacity)
+		has_opaque_atom = TRUE
+
+	ComponentInitialize()
+
+	return INITIALIZE_HINT_NORMAL
+
+//This is LINDA, by the by.
+///turf/proc/Initalize_Atmos(times_fired)
+//	CalculateAdjacentTurfs()
+
+/turf/Destroy(force)
+	. = QDEL_HINT_IWILLGC
+	if(!changing_turf)
+		stack_trace("Incorrect turf deletion")
+	changing_turf = FALSE
+	/*
+	var/turf/T = SSmapping.get_turf_above(src)
+	if(T)
+		T.multiz_turf_del(src, DOWN)
+	T = SSmapping.get_turf_below(src)
+	if(T)
+		T.multiz_turf_del(src, UP)
+	*/
+	if(force)
+		..()
+		//this will completely wipe turf state
+		var/turf/B = new world.turf(src)
+		for(var/A in B.contents)
+			qdel(A)
+		for(var/I in B.vars)
+			B.vars[I] = null
+		return
+	//SSair.remove_from_active(src)
+	//visibilityChanged()
+	//QDEL_LIST(blueprint_data)
+	flags &= ~INITIALIZED
+	//requires_activation = FALSE
 	..()
-	return QDEL_HINT_IWILLGC
 
 /turf/ex_act(severity)
 	return 0
@@ -141,50 +225,6 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 			sleep(2)
 			O.update_transform()
 
-/turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
-
-	..()
-
-	if (!mover || !isturf(mover.loc))
-		return 1
-
-	//First, check objects to block exit that are not on the border
-	for(var/obj/obstacle in mover.loc)
-		if(!(obstacle.flags & ON_BORDER) && (mover != obstacle) && (forget != obstacle))
-			if(!obstacle.CheckExit(mover, src))
-				mover.Bump(obstacle, 1)
-				return 0
-
-	//Now, check objects to block exit that are on the border
-	for(var/obj/border_obstacle in mover.loc)
-		if((border_obstacle.flags & ON_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
-			if(!border_obstacle.CheckExit(mover, src))
-				mover.Bump(border_obstacle, 1)
-				return 0
-
-	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src)
-		if(border_obstacle.flags & ON_BORDER)
-			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
-				mover.Bump(border_obstacle, 1)
-				return 0
-
-	//Then, check the turf itself
-	if (!src.CanPass(mover, src))
-		mover.Bump(src, 1)
-		return 0
-
-	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src)
-		if(!(obstacle.flags & ON_BORDER))
-			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
-				mover.Bump(obstacle, 1)
-				return 0
-	return 1 //Nothing found to block so return success!
-
 var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
 
@@ -204,9 +244,6 @@ var/const/enterloopsanity = 100
 			M.lastarea = get_area(M.loc)
 		if(M.lastarea.has_gravity == 0)
 			inertial_drift(M)
-		if(M.flying) //VORESTATION Edit Start. This overwrites the above is_space without touching it all that much.
-			inertial_drift(M)
-			M.make_floating(1) //VOREStation Edit End.
 		else if(!is_space())
 			M.inertia_dir = 0
 			M.make_floating(0)
@@ -217,14 +254,86 @@ var/const/enterloopsanity = 100
 	var/objects = 0
 	if(A && (A.flags & PROXMOVE))
 		for(var/atom/movable/thing in range(1))
-			if(objects > enterloopsanity) break
-			objects++
+			if(objects++ > enterloopsanity) break
 			spawn(0)
 				if(A) //Runtime prevention
 					A.HasProximity(thing, 1)
 					if ((thing && A) && (thing.flags & PROXMOVE))
 						thing.HasProximity(A, 1)
-	return
+
+/turf/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if(!target)
+		return FALSE
+
+	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
+		return !density
+	else		//ZAS STUFF: Well guess it's air
+		if(target.blocks_air || blocks_air)
+			return FALSE
+		for(var/atom/A in src)
+			if(!A.CanPass(mover, target, height, air_group))
+				return FALSE
+		if(target != src)
+			for(var/atom/A in target)
+				if(!A.CanPass(mover, target, height, air_group))
+					return FALSE
+
+	//ZAS bullshit necessitates this.
+	return TRUE
+	//crash_with("Non movable passed to turf CanPass : [mover]")
+	//return FALSE
+
+//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanPass/Cross call, lemme know or go ahead and fix this mess - kevinz000
+/turf/Enter(atom/movable/mover, atom/oldloc)
+	if(movement_disabled && usr.ckey != movement_disabled_exception)
+		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
+		return
+	// Do not call ..()
+	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
+	// By default byond will call Bump() on the first dense object in contents
+	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
+	var/atom/firstbump
+	var/CanPassSelf = CanPass(mover, src)
+	if(CanPassSelf || CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
+		for(var/i in contents)
+			if(QDELETED(mover))
+				return FALSE		//We were deleted, do not attempt to proceed with movement.
+			if(i == mover || i == mover.loc) // Multi tile objects and moving out of other objects
+				continue
+			var/atom/movable/thing = i
+			if(!thing.Cross(mover))
+				if(QDELETED(mover))		//Mover deleted from Cross/CanPass, do not proceed.
+					return FALSE
+				if(CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
+					mover.Bump(thing)
+					continue
+				else
+					if(!firstbump || ((thing.layer > firstbump.layer || thing.flags & ON_BORDER) && !(firstbump.flags & ON_BORDER)))
+						firstbump = thing
+	if(QDELETED(mover))					//Mover deleted from Cross/CanPass/Bump, do not proceed.
+		return FALSE
+	if(!CanPassSelf)	//Even if mover is unstoppable they need to bump us.
+		firstbump = src
+	if(firstbump)
+		mover.Bump(firstbump)
+		return !QDELETED(mover) && CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE)
+	return TRUE
+
+/turf/Exit(atom/movable/mover, atom/newloc)
+	. = ..()
+	if(!. || QDELETED(mover))
+		return FALSE
+	for(var/i in contents)
+		if(i == mover)
+			continue
+		var/atom/movable/thing = i
+		if(!thing.Uncross(mover, newloc))
+			if(thing.flags & ON_BORDER)
+				mover.Bump(thing)
+			if(!CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
+				return FALSE
+		if(QDELETED(mover))
+			return FALSE		//We were deleted.
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return
@@ -283,9 +392,6 @@ var/const/enterloopsanity = 100
 				L.Add(t)
 	return L
 
-/turf/proc/process()
-	return PROCESS_KILL
-
 /turf/proc/contains_dense_objects()
 	if(density)
 		return 1
@@ -323,6 +429,30 @@ var/const/enterloopsanity = 100
 /turf/AllowDrop()
 	return TRUE
 
+// Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
+/turf/proc/is_safe_to_enter(mob/living/L)
+	if(LAZYLEN(dangerous_objects))
+		for(var/obj/O in dangerous_objects)
+			if(!O.is_safe_to_step(L))
+				return FALSE
+	return TRUE
+
+// Tells the turf that it currently contains something that automated movement should consider if planning to enter the tile.
+// This uses lazy list macros to reduce memory footprint, since for 99% of turfs the list would've been empty anyways.
+/turf/proc/register_dangerous_object(obj/O)
+	if(!istype(O))
+		return FALSE
+	LAZYADD(dangerous_objects, O)
+//	color = "#FF0000"
+
+// Similar to above, for when the dangerous object stops being dangerous/gets deleted/moved/etc.
+/turf/proc/unregister_dangerous_object(obj/O)
+	if(!istype(O))
+		return FALSE
+	LAZYREMOVE(dangerous_objects, O)
+	UNSETEMPTY(dangerous_objects) // This nulls the list var if it's empty.
+//	color = "#00FF00"
+
 // This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
 // More specialized turfs like walls should instead override this.
 // The code for applying lattices/floor tiles onto lattices could also utilize something similar in the future.
@@ -347,3 +477,88 @@ var/const/enterloopsanity = 100
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE
+
+
+/******************************************************************/
+// Navigation procs
+// Used for A-star pathfinding
+
+
+// Returns the surrounding cardinal turfs with open links
+// Including through doors openable with the ID
+/turf/proc/CardinalTurfsWithAccess(var/obj/item/weapon/card/id/ID)
+	var/L[] = new()
+
+	//	for(var/turf/simulated/t in oview(src,1))
+
+	for(var/d in cardinal)
+		var/turf/T = get_step(src, d)
+		if(istype(T) && !T.density)
+			if(!LinkBlockedWithAccess(src, T, ID))
+				L.Add(T)
+	return L
+
+
+// Similar to above but not restricted to just cardinal directions.
+/turf/proc/TurfsWithAccess(var/obj/item/weapon/card/id/ID)
+	var/L[] = new()
+
+	for(var/d in alldirs)
+		var/turf/T = get_step(src, d)
+		if(istype(T) && !T.density)
+			if(!LinkBlockedWithAccess(src, T, ID))
+				L.Add(T)
+	return L
+
+
+// Returns true if a link between A and B is blocked
+// Movement through doors allowed if ID has access
+/proc/LinkBlockedWithAccess(turf/A, turf/B, obj/item/weapon/card/id/ID)
+
+	if(A == null || B == null) return 1
+	var/adir = get_dir(A,B)
+	var/rdir = get_dir(B,A)
+	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//	diagonal
+		var/iStep = get_step(A,adir&(NORTH|SOUTH))
+		if(!LinkBlockedWithAccess(A,iStep, ID) && !LinkBlockedWithAccess(iStep,B,ID))
+			return 0
+
+		var/pStep = get_step(A,adir&(EAST|WEST))
+		if(!LinkBlockedWithAccess(A,pStep,ID) && !LinkBlockedWithAccess(pStep,B,ID))
+			return 0
+		return 1
+
+	if(DirBlockedWithAccess(A,adir, ID))
+		return 1
+
+	if(DirBlockedWithAccess(B,rdir, ID))
+		return 1
+
+	for(var/obj/O in B)
+		if(O.density && !istype(O, /obj/machinery/door) && !(O.flags & ON_BORDER))
+			return 1
+
+	return 0
+
+// Returns true if direction is blocked from loc
+// Checks doors against access with given ID
+/proc/DirBlockedWithAccess(turf/loc,var/dir,var/obj/item/weapon/card/id/ID)
+	for(var/obj/structure/window/D in loc)
+		if(!D.density)			continue
+		if(D.dir == SOUTHWEST)	return 1
+		if(D.dir == dir)		return 1
+
+	for(var/obj/machinery/door/D in loc)
+		if(!D.density)			continue
+
+		if(istype(D, /obj/machinery/door/airlock))
+			var/obj/machinery/door/airlock/A = D
+			if(!A.can_open())	return 1
+
+		if(istype(D, /obj/machinery/door/window))
+			if( dir & D.dir )	return !D.check_access(ID)
+
+			//if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return !D.check_access(ID)
+			//if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return !D.check_access(ID)
+		else return !D.check_access(ID)	// it's a real, air blocking door
+	return 0

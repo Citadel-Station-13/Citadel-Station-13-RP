@@ -51,7 +51,6 @@
 		client.eye = src
 		client.perspective = MOB_PERSPECTIVE
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
-	add_click_catcher()
 	update_client_color()
 
 	if(!plane_holder) //Lazy
@@ -71,4 +70,7 @@
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
-	
+
+	var/turf/T = get_turf(src)
+	if(isturf(T))
+		update_client_z(T.z)

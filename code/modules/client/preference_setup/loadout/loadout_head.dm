@@ -125,7 +125,7 @@
 	display_name = "cap, bill"
 	path = /obj/item/clothing/head/soft/mbill
 
-/*/datum/gear/head/cap/sol
+/datum/gear/head/cap/sol
 	display_name = "cap, sol"
 	path = /obj/item/clothing/head/soft/sol
 
@@ -135,7 +135,7 @@
 
 /datum/gear/head/cap/fleet
 	display_name = "cap, fleet"
-	path = /obj/item/clothing/head/soft/sol/fleet*/ // Vorestation removal
+	path = /obj/item/clothing/head/soft/sol/fleet
 
 /datum/gear/head/cowboy
 	display_name = "cowboy, rodeo"
@@ -341,7 +341,7 @@
 	path = /obj/item/clothing/head/welding/engie
 	allowed_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Roboticist")
 
-/*/datum/gear/head/beret/sol
+/datum/gear/head/beret/sol
 	display_name = "beret sol, selection"
 	path = /obj/item/clothing/head/beret/sol
 
@@ -351,7 +351,7 @@
 	for(var/sol_style in typesof(/obj/item/clothing/head/beret/sol))
 		var/obj/item/clothing/head/beret/sol/sol = sol_style
 		sols[initial(sol.name)] = sol
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sols))*/ // Vorestation removal.
+	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sols))
 
 /datum/gear/head/surgery
 	display_name = "surgical cap selection"
@@ -371,3 +371,12 @@
 /datum/gear/head/circuitry
 	display_name = "headwear, circuitry (empty)"
 	path = /obj/item/clothing/head/circuitry
+
+/datum/gear/head/maangtikka
+	display_name = "maang tikka"
+	path = /obj/item/clothing/head/maangtikka
+
+/datum/gear/head/jingasa
+	display_name = "jingasa"
+	path = /obj/item/clothing/head/jingasa
+

@@ -2,26 +2,8 @@
 	The global hud:
 	Uses the same visual objects for all players.
 */
-var/datum/global_hud/global_hud = new()
-var/list/global_huds = list(
-		global_hud.druggy,
-		global_hud.blurry,
-		global_hud.whitense,
-		global_hud.vimpaired,
-		global_hud.darkMask,
-		global_hud.centermarker,
-		global_hud.nvg,
-		global_hud.thermal,
-		global_hud.meson,
-		global_hud.science,
-		global_hud.material,
-		global_hud.holomap
-		)
 
-/datum/hud/var/obj/screen/grab_intent
-/datum/hud/var/obj/screen/hurt_intent
-/datum/hud/var/obj/screen/disarm_intent
-/datum/hud/var/obj/screen/help_intent
+GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 /datum/global_hud
 	var/obj/screen/druggy
@@ -73,12 +55,6 @@ var/list/global_huds = list(
 	darksight.icon = null
 	darksight.screen_loc = "1,1"
 	darksight.plane = PLANE_LIGHTING
-
-	//Marks the center of the screen, for things like ventcrawl
-	centermarker = new /obj/screen()
-	centermarker.icon = 'icons/mob/screen1.dmi'
-	centermarker.icon_state = "centermarker"
-	centermarker.screen_loc = "CENTER,CENTER"
 
 	//Marks the center of the screen, for things like ventcrawl
 	centermarker = new /obj/screen()
@@ -180,6 +156,11 @@ var/list/global_huds = list(
 	var/obj/screen/l_hand_hud_object
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
+
+	var/obj/screen/grab_intent
+	var/obj/screen/hurt_intent
+	var/obj/screen/disarm_intent
+	var/obj/screen/help_intent
 
 	var/list/adding
 	var/list/other
@@ -316,8 +297,6 @@ datum/hud/New(mob/owner)
 		mymob.instantiate_hud(src)
 	else if(isalien(mymob))
 		larva_hud()
-	else if(isslime(mymob))
-		slime_hud()
 	else if(isAI(mymob))
 		ai_hud()
 	else if(isobserver(mymob))
@@ -426,9 +405,3 @@ datum/hud/New(mob/owner)
 	hud_used.hidden_inventory_update()
 	hud_used.persistant_inventory_update()
 	update_action_buttons()
-
-/mob/proc/add_click_catcher()
-	client.screen += client.void
-
-/mob/new_player/add_click_catcher()
-	return

@@ -56,34 +56,27 @@
 	return smes_amt / SMESRATE
 
 
-/obj/machinery/power/smes/New()
-	..()
-	spawn(5)
-		if(!powernet)
-			connect_to_network()
+/obj/machinery/power/smes/Initialize()
+	. = ..()
+	if(!powernet)
+		connect_to_network()
 
-		dir_loop:
-			for(var/d in cardinal)
-				var/turf/T = get_step(src, d)
-				for(var/obj/machinery/power/terminal/term in T)
-					if(term && term.dir == turn(d, 180))
-						terminal = term
-						break dir_loop
-		if(!terminal)
-			stat |= BROKEN
-			return
-		terminal.master = src
-		if(!terminal.powernet)
-			terminal.connect_to_network()
-		update_icon()
-
-
-
-
-		if(!should_be_mapped)
-			warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
-
-	return
+	dir_loop:
+		for(var/d in cardinal)
+			var/turf/T = get_step(src, d)
+			for(var/obj/machinery/power/terminal/term in T)
+				if(term && term.dir == turn(d, 180))
+					terminal = term
+					break dir_loop
+	if(!terminal)
+		stat |= BROKEN
+		return
+	terminal.master = src
+	if(!terminal.powernet)
+		terminal.connect_to_network()
+	update_icon()
+	if(!should_be_mapped)
+		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
 
 
 /obj/machinery/power/smes/disconnect_terminal()
@@ -213,7 +206,7 @@
 	to_chat(user, "<span class='notice'>You start adding cable to the [src].</span>")
 	if(do_after(user, 50))
 		terminal = new /obj/machinery/power/terminal(tempLoc)
-		terminal.set_dir(tempDir)
+		terminal.setDir(tempDir)
 		terminal.master = src
 		terminal.connect_to_network()
 		return 0
@@ -328,7 +321,7 @@
 		data["outputting"] = 0			// smes is not outputting
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm

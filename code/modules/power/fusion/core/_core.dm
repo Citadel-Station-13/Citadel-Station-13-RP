@@ -27,12 +27,12 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/mapped
 	anchored = 1
 
-/obj/machinery/power/fusion_core/initialize()
+/obj/machinery/power/fusion_core/Initialize()
 	. = ..()
 	fusion_cores += src
 	default_apply_parts()
 
-/obj/machinery/power/fusion_core/mapped/initialize()
+/obj/machinery/power/fusion_core/mapped/Initialize()
 	. = ..()
 	connect_to_network()
 
@@ -89,12 +89,14 @@ var/list/fusion_cores = list()
 		owned_field.AddParticles(name, quantity)
 		. = 1
 
-/obj/machinery/power/fusion_core/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/power/fusion_core/bullet_act(obj/item/projectile/Proj)
 	if(owned_field)
 		. = owned_field.bullet_act(Proj)
+	else
+		return ..()
 
 /obj/machinery/power/fusion_core/proc/set_strength(var/value)
-	value = Clamp(value, MIN_FIELD_STR, MAX_FIELD_STR)
+	value = CLAMP(value, MIN_FIELD_STR, MAX_FIELD_STR)
 	field_strength = value
 	active_power_usage = 5 * value
 	if(owned_field)

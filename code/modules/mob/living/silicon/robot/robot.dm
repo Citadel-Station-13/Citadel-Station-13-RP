@@ -96,7 +96,7 @@
 		/mob/living/silicon/robot/proc/robot_checklaws
 	)
 
-/mob/living/silicon/robot/New(loc,var/unfinished = 0)
+/mob/living/silicon/robot/New(mapload, unfinished = 0)
 	spark_system = new /datum/effect/effect/system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -141,7 +141,7 @@
 		cell.maxcharge = 7500
 		cell.charge = 7500
 
-	..()
+	. = ..()
 
 	if(cell)
 		var/datum/robot_component/cell_component = components["power cell"]
@@ -446,9 +446,9 @@
 	return 0
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
-	..(Proj)
-	if(prob(75) && Proj.damage > 0) spark_system.start()
-	return 2
+	. = ..(Proj)
+	if(prob(75) && Proj.damage > 0)
+		spark_system.start()
 
 /mob/living/silicon/robot/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do
@@ -681,7 +681,7 @@
 
 //Robots take half damage from basic attacks.
 /mob/living/silicon/robot/attack_generic(var/mob/user, var/damage, var/attack_message)
-	return ..(user,Floor(damage/2),attack_message)
+	return ..(user,FLOOR(damage/2, 1),attack_message)
 
 /mob/living/silicon/robot/proc/allowed(mob/M)
 	//check if it doesn't require any access at all

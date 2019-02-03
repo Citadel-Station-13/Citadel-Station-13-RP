@@ -46,7 +46,8 @@
 			var/turf/simulated/T = locate(tx+j, ty+i, origin_z)
 			if(!istype(T) || !T.has_resources)
 				continue
-			if(!priority_process) sleep(-1)
+			if(!priority_process)
+				sleep(-1)
 			T.resources = list()
 			T.resources["silicates"] = rand(3,5)
 			T.resources["carbon"] = rand(3,5)
@@ -79,7 +80,6 @@
 				T.resources["hematite"] = 0
 				T.resources["gold"] =     0
 				T.resources["silver"] =   0
-	return
 
 /datum/random_map/noise/ore/get_map_char(var/value)
 	if(value < rare_val)

@@ -32,14 +32,15 @@
 
 	var/list/starts_with
 
-/obj/structure/closet/initialize()
+/obj/structure/closet/Initialize()
 	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
 
 	if(!opened)		// if closed, any item at the crate's loc is put in the contents
-		if(istype(loc, /mob/living)) return //VOREStation Edit - No collecting mob organs if spawned inside mob
+		if(istype(loc, /mob/living))
+			return //VOREStation Edit - No collecting mob organs if spawned inside mob
 		var/obj/item/I
 		for(I in src.loc)
 			if(I.density || I.anchored || I == src) continue
@@ -47,7 +48,7 @@
 		// adjust locker size to hold all items with 5 units of free store room
 		var/content_size = 0
 		for(I in src.contents)
-			content_size += Ceiling(I.w_class/2)
+			content_size += CEILING(I.w_class/2, 1)
 		if(content_size > storage_capacity-5)
 			storage_capacity = content_size + 5
 	update_icon()
@@ -57,7 +58,7 @@
 		var/content_size = 0
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
-				content_size += Ceiling(I.w_class/2)
+				content_size += CEILING(I.w_class/2, 1)
 		if(!content_size)
 			to_chat(user, "It is empty.")
 		else if(storage_capacity > content_size*4)
@@ -69,9 +70,10 @@
 		else
 			to_chat(user, "It is full.")
 
-/obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0 || wall_mounted)) return 1
-	return (!density)
+/obj/structure/closet/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if(wall_mounted)
+		return TRUE
+	return ..()
 
 /obj/structure/closet/proc/can_open()
 	if(src.sealed)
@@ -114,7 +116,8 @@
 	src.icon_state = src.icon_opened
 	src.opened = 1
 	playsound(src.loc, open_sound, 15, 1, -3)
-	density = !density
+	if(initial(density))
+		density = !density
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -138,7 +141,8 @@
 	src.opened = 0
 
 	playsound(src.loc, close_sound, 15, 1, -3)
-	density = !density
+	if(initial(density))
+		density = !density
 	return 1
 
 //Cham Projector Exception
@@ -154,7 +158,7 @@
 /obj/structure/closet/proc/store_items(var/stored_units)
 	var/added_units = 0
 	for(var/obj/item/I in src.loc)
-		var/item_size = Ceiling(I.w_class / 2)
+		var/item_size = CEILING(I.w_class / 2, 1)
 		if(stored_units + added_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)
@@ -229,14 +233,9 @@
 		qdel(src)
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage)
-		return
-
-	..()
 	damage(proj_damage)
-
-	return
 
 /obj/structure/closet/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(src.opened)
@@ -381,8 +380,8 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys", var/wallbreaker)
-	if(damage < 10 || !wallbreaker)
+/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys")
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")

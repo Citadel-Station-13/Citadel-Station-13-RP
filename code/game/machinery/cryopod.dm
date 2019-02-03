@@ -97,7 +97,7 @@
 		//dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>" //VOREStation Removal - Just log them.
 		//dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>" //VOREStation Removal
 
-	to_chat(user, browse(dat, "window=cryopod_console"))
+	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
 
 /obj/machinery/computer/cryopod/Topic(href, href_list)
@@ -116,7 +116,7 @@
 			dat += "[person]<br/>"
 		dat += "<hr/>"
 
-		to_chat(user, browse(dat, "window=cryolog"))
+		user << browse(dat, "window=cryolog")
 
 	if(href_list["view"])
 		if(!allow_items) return
@@ -128,7 +128,7 @@
 		//VOREStation Edit End
 		dat += "<hr/>"
 
-		to_chat(user, browse(dat, "window=cryoitems"))
+		user << browse(dat, "window=cryoitems")
 
 	else if(href_list["item"])
 		if(!allow_items) return
@@ -303,7 +303,7 @@
 		occupant.resting = 1
 	return ..()
 
-/obj/machinery/cryopod/initialize()
+/obj/machinery/cryopod/Initialize()
 	. = ..()
 
 	find_control_computer()
@@ -574,9 +574,10 @@
 		to_chat(usr, "<span class='notice'><B>\The [src] is in use.</B></span>")
 		return
 
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			to_chat(usr, "You're too busy getting your life sucked out of you.")
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
 	visible_message("[usr] [on_enter_visible_message] [src].", 3)

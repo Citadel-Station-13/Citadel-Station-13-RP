@@ -17,13 +17,9 @@
 
 	anchored = 1	//  don't get pushed around
 
-/mob/new_player/New()
-	mob_list += src
-
 /mob/new_player/verb/new_player_panel()
 	set src = usr
 	new_player_panel_proc()
-
 
 /mob/new_player/proc/new_player_panel_proc()
 	var/output = "<div align='center'>"
@@ -121,7 +117,7 @@
 			var/mob/living/carbon/human/dummy/mannequin = new()
 			client.prefs.dress_preview_mob(mannequin)
 			var/mob/observer/dead/observer = new(mannequin)
-			observer.forceMove(null) //Let's not stay in our doomed mannequin
+			observer.moveToNullspace() //Let's not stay in our doomed mannequin
 			qdel(mannequin)
 
 			spawning = 1
@@ -385,7 +381,7 @@
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
 		character.buckled.loc = character.loc
-		character.buckled.set_dir(character.dir)
+		character.buckled.setDir(character.dir)
 
 	ticker.mode.latespawn(character)
 

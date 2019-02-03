@@ -1,7 +1,7 @@
-#define TOPIC_NOACTION 0
-#define TOPIC_HANDLED 1
-#define TOPIC_REFRESH 2
-#define TOPIC_UPDATE_PREVIEW 4
+#define TOPIC_NOACTION NONE
+#define TOPIC_HANDLED (1<<0)
+#define TOPIC_REFRESH (1<<1)
+#define TOPIC_UPDATE_PREVIEW (1<<2)
 #define TOPIC_REFRESH_UPDATE_PREVIEW (TOPIC_REFRESH|TOPIC_UPDATE_PREVIEW)
 
 #define PREF_FBP_CYBORG "cyborg"
@@ -238,7 +238,7 @@
 
 	. = OnTopic(href, href_list, usr)
 	if(. & TOPIC_UPDATE_PREVIEW)
-		pref_mob.client.prefs.preview_icon = null
+		pref.update_preview_icon()
 	if(. & TOPIC_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 

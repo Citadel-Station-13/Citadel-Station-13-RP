@@ -22,14 +22,12 @@
 	var/times_idle = 0 //VOREStation Add
 	var/obj/structure/reagent_dispensers/watertank/tank
 
-
-/mob/living/bot/farmbot/New(var/newloc, var/newTank)
-	..(newloc)
+/mob/living/bot/farmbot/Initialize(mapload, newTank)
+	. = ..()
 	if(!newTank)
 		newTank = new /obj/structure/reagent_dispensers/watertank(src)
 	tank = newTank
 	tank.forceMove(src)
-
 
 /mob/living/bot/farmbot/attack_hand(var/mob/user as mob)
 	. = ..()
@@ -52,11 +50,9 @@
 		dat += "Weed plants: <A href='?src=\ref[src];weed=1'>[uproots_weeds ? "Yes" : "No"]</A><BR>"
 		dat += "<br>Nutriment controls:<br>"
 		dat += "Replace fertilizer: <A href='?src=\ref[src];replacenutri=1'>[replaces_nutriment ? "Yes" : "No"]</A><BR>"
-		/* VOREStation Removal - No whole-job lag-bot automation.
 		dat += "<br>Plant controls:<br>"
 		dat += "Collect produce: <A href='?src=\ref[src];collect=1'>[collects_produce ? "Yes" : "No"]</A><BR>"
 		dat += "Remove dead plants: <A href='?src=\ref[src];removedead=1'>[removes_dead ? "Yes" : "No"]</A><BR>"
-		*/
 		dat += "</TT>"
 
 	user << browse("<HEAD><TITLE>Farmbot v1.0 controls</TITLE></HEAD>[dat]", "window=autofarm")

@@ -161,7 +161,7 @@
 
 	if(holder && holder.wearer)
 		if(..(target) && target)
-			set_dir(get_dir(src,target))  // Face the target
+			setDir(get_dir(src,target))  // Face the target
 			holder.wearer.Beam(target,"n_beam",,10)
 		return 1
 	return 0
@@ -182,8 +182,8 @@
 	interface_name = "dead man's switch"
 	interface_desc = "An integrated self-destruct module. When the wearer dies, they vanish in smoke. Do not press this button."
 
-/obj/item/rig_module/self_destruct/New()
-	..()
+/obj/item/rig_module/self_destruct/Initialize()
+	. = ..()
 	src.smoke = new /datum/effect/effect/system/smoke_spread/bad()
 	src.smoke.attach(src)
 
@@ -191,8 +191,6 @@
 	qdel(smoke)
 	smoke = null
 	return ..()
-
-
 
 /obj/item/rig_module/self_destruct/activate()
 	return

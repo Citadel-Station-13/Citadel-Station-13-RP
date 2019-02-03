@@ -97,7 +97,7 @@
 			P.redirect(new_x, new_y, curloc, user)
 			P.reflected = 1
 
-			return PROJECTILE_CONTINUE // complete projectile permutation
+			return BULLET_ACT_FORCE_PIERCE // complete projectile permutation	//No reflect act yet
 
 /obj/item/clothing/suit/armor/combat
 	name = "combat vest"
@@ -126,7 +126,7 @@
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
+	item_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
@@ -135,6 +135,8 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	min_pressure_protection = 0 * ONE_ATMOSPHERE
+	max_pressure_protection = 20* ONE_ATMOSPHERE
 	siemens_coefficient = 0.6
 
 
@@ -190,8 +192,8 @@
 		playsound(user.loc, "sparks", 50, 1)
 
 		user.loc = picked
-		return PROJECTILE_FORCE_MISS
-	return 0
+		return BULLET_ACT_MISS		//no reflect yet
+	return BULLET_ACT_HIT
 
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	active = !( active )

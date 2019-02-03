@@ -236,7 +236,7 @@
 		state = FRAME_PLACED
 
 		if(dir)
-			set_dir(dir)
+			setDir(dir)
 
 		if(loc)
 			src.loc = loc
@@ -374,7 +374,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -388,7 +388,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -401,7 +401,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -569,7 +569,7 @@
 
 	update_icon()
 
-/obj/structure/frame/verb/rotate()
+/obj/structure/frame/verb/rotate_counterclockwise()
 	set name = "Rotate Frame Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
@@ -581,14 +581,14 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 90))
+	src.setDir(turn(src.dir, 90))
 
 	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
 
 	return
 
 
-/obj/structure/frame/verb/revrotate()
+/obj/structure/frame/verb/rotate_clockwise()
 	set name = "Rotate Frame Clockwise"
 	set category = "Object"
 	set src in oview(1)
@@ -600,7 +600,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
 

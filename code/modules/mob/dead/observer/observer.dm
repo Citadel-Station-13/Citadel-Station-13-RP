@@ -200,7 +200,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					return
 				src.client.admin_ghost()
 		else
-			response = alert(src, "Are you -sure- you want to ghost?\n(You are alive, or otherwise have the potential to become alive. Don't abuse ghost unless you are inside a cryopod or equivalent! You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", "Ghost", "Stay in body") // VOREStation edit because we don't make players stay dead for 30 minutes.
+			response = alert(src, "Are you -sure- you want to ghost?\n(You are alive, or otherwise have the potential to become alive. If you ghost, you won't be able to play this round until you respawn as a new character! You can't change your mind so choose wisely!)", "Are you sure you want to ghost?", "Ghost", "Stay in body")
 		if(response != "Ghost")
 			return
 		resting = 1
@@ -305,7 +305,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	usr.forceMove(pick(get_area_turfs(A)))
-	usr.on_mob_jump()
 
 /mob/observer/dead/verb/follow(input in getmobs())
 	set category = "Ghost"
@@ -328,13 +327,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(target != src)
 		if(following && following == target)
 			return
-		following = target
 		src << "<span class='notice'>Now following [target]</span>"
 		if(ismob(target))
 			forceMove(get_turf(target))
 			var/mob/M = target
+			following = target
 			M.following_mobs += src
 		else
+			following = target
 			spawn(0)
 				while(target && following == target && client)
 					var/turf/T = get_turf(target)
@@ -393,7 +393,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Jump to Mob"
 	set desc = "Teleport to a mob"
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+
 	if(istype(usr, /mob/observer/dead)) //Make sure they're an observer!
 
 		if (!target)//Make sure we actually have a target
@@ -498,7 +498,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 
 	//find a viable mouse candidate
-	var/mob/living/simple_animal/mouse/host
+	var/mob/living/simple_mob/animal/passive/mouse/host
 	var/obj/machinery/atmospherics/unary/vent_pump/vent_found
 	var/list/found_vents = list()
 	for(var/obj/machinery/atmospherics/unary/vent_pump/v in machines)
@@ -506,7 +506,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			found_vents.Add(v)
 	if(found_vents.len)
 		vent_found = pick(found_vents)
-		host = new /mob/living/simple_animal/mouse(vent_found)
+		host = new /mob/living/simple_mob/animal/passive/mouse(vent_found)
 	else
 		src << "<span class='warning'>Unable to find any unwelded vents to spawn mice at.</span>"
 
@@ -811,3 +811,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 
 /mob/observer/dead/speech_bubble_appearance()
 	return "ghost"
+
+/mob/observer/dead/forceMove()
+	. = ..()
+	following = null

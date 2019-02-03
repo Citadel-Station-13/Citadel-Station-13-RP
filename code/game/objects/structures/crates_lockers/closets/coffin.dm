@@ -20,6 +20,7 @@
 	icon_state = "grave"
 	icon_closed = "grave"
 	icon_opened = "grave_open"
+	layer = TURF_OBJ_LAYER
 	seal_tool = null
 	breakout_sound = 'sound/weapons/thudswoosh.ogg'
 	anchored = 1
@@ -27,6 +28,9 @@
 	opened = 1
 
 /obj/structure/closet/grave/attack_hand(mob/user as mob)
+	. = ..()
+	if(.)
+		return
 	if(opened)
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")
@@ -37,7 +41,6 @@
 		else
 			visible_message("<span class='notice'>[user] decides not to climb into \the [src.name].</span>", \
 							"<span class='notice'>You stop climbing into \the [src.name].</span>")
-	return
 
 /obj/structure/closet/grave/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(opened && ismob(mover))
@@ -147,9 +150,6 @@
 /obj/structure/closet/grave/open()
 	.=..()
 	alpha = 255	// Needed because of grave hiding
-
-/obj/structure/closet/grave/bullet_act(var/obj/item/projectile/P)
-	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
 	var/gasid = "carbon_dioxide"

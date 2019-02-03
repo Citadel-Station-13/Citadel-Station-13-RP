@@ -1,6 +1,7 @@
 /obj/item/weapon/nullrod
 	name = "null rod"
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	slot_flags = SLOT_BELT
@@ -106,7 +107,7 @@
 
 /obj/effect/energy_net/New()
 	..()
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/energy_net/Destroy()
 	if(has_buckled_mobs())
@@ -114,7 +115,7 @@
 			to_chat(A,"<span class='notice'>You are free of the net!</span>")
 			unbuckle_mob(A)
 
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/effect/energy_net/process()

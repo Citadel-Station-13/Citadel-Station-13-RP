@@ -10,6 +10,7 @@
 	var/mineitemtype = /obj/item/weapon/mine
 	var/panel_open = 0
 	var/datum/wires/mines/wires = null
+	register_as_dangerous_object = TRUE
 
 /obj/effect/mine/New()
 	icon_state = "uglyminearmed"
@@ -25,8 +26,9 @@
 	qdel(s)
 	qdel(src)
 
-/obj/effect/mine/bullet_act()
-	if(prob(50))
+/obj/effect/mine/bullet_act(obj/item/projectile/P)
+	. = ..()
+	if(prob(P.damage * 1.5))
 		explode()
 
 /obj/effect/mine/ex_act(severity)
@@ -272,3 +274,9 @@
 	name = "incendiary mine"
 	desc = "A small explosive mine with a fire symbol on the side."
 	minetype = /obj/effect/mine/incendiary
+
+// This tells AI mobs to not be dumb and step on mines willingly.
+/obj/item/weapon/mine/is_safe_to_step(mob/living/L)
+	if(!L.hovering)
+		return FALSE
+	return ..()

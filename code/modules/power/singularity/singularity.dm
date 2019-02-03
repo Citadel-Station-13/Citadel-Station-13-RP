@@ -37,14 +37,14 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	energy = starting_energy
 
 	..()
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	for(var/obj/machinery/power/singularity_beacon/singubeacon in machines)
 		if(singubeacon.active)
 			target = singubeacon
 			break
 
 /obj/singularity/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/singularity/attack_hand(mob/user as mob)
@@ -67,7 +67,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			return
 
 /obj/singularity/bullet_act(obj/item/projectile/P)
-	return 0 //Will there be an impact? Who knows. Will we see it? No.
+	. = ..()
 
 /obj/singularity/Bump(atom/A)
 	consume(A)
@@ -364,11 +364,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 /obj/singularity/proc/can_move(const/turf/T)
 	if (!isturf(T))
 		return 0
-
-	// VOREStation Edit Start
-	if(istype(get_area(T), /area/crew_quarters/sleep)) //No going to dorms
-		return 0
-	// VOREStation Edit End
 
 	if ((locate(/obj/machinery/containment_field) in T) || (locate(/obj/machinery/shieldwall) in T))
 		return 0

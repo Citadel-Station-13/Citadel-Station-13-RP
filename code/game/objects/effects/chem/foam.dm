@@ -24,7 +24,7 @@
 		process()
 		checkReagents()
 	spawn(120)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		sleep(30)
 		if(metal)
 			var/obj/structure/foamedmetal/M = new(src.loc)
@@ -150,7 +150,8 @@
 /obj/structure/foamedmetal/ex_act(severity)
 	qdel(src)
 
-/obj/structure/foamedmetal/bullet_act(var/obj/item/projectile/P)
+/obj/structure/foamedmetal/bullet_act(obj/item/projectile/P)
+	. = ..()
 	if(istype(P, /obj/item/projectile/test))
 		return
 	else if(metal == 1 || prob(50))

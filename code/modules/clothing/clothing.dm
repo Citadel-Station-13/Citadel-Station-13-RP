@@ -35,12 +35,19 @@
 	..()
 	gunshot_residue = null
 
-/obj/item/clothing/New()
-	..()
+/obj/item/clothing/Initialize()
+	. = ..()
 	if(starting_accessories)
 		for(var/T in starting_accessories)
 			var/obj/item/clothing/accessory/tie = new T(src)
 			src.attach_accessory(null, tie)
+
+/obj/item/clothing/Destroy()
+	for(var/i in accessories)
+		var/obj/item/clothing/accessory/A = i
+		A.on_removed()
+		qdel(A)
+	return ..()
 
 /obj/item/clothing/equipped(var/mob/user,var/slot)
 	..()
@@ -182,7 +189,7 @@
 		desc = O.desc
 		icon = O.icon
 		icon_state = O.icon_state
-		set_dir(O.dir)
+		setDir(O.dir)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Gloves
@@ -473,6 +480,7 @@
 
 	var/water_speed = 0		//Speed boost/decrease in water, lower/negative values mean more speed
 	var/snow_speed = 0		//Speed boost/decrease on snow, lower/negative values mean more speed
+	var/rock_climbing = FALSE // If true, allows climbing cliffs with clickdrag.
 
 	var/step_volume_mod = 1	//How quiet or loud footsteps in this shoe are
 
@@ -553,13 +561,6 @@
 	return ..()
 
 /obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
-	if(prob(1) && !recent_squish) //VOREStation edit begin
-		recent_squish = 1
-		spawn(100)
-			recent_squish = 0
-		for(var/mob/living/M in contents)
-			var/emote = pick(inside_emotes)
-			M << emote //VOREStation edit end
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()
@@ -660,8 +661,8 @@
 		return
 	..()
 
-/obj/item/clothing/under/New()
-	..()
+/obj/item/clothing/under/Initialize()
+	. = ..()
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()

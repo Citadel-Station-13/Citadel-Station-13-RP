@@ -21,12 +21,12 @@ var/list/holder_mob_icon_cache = list()
 	pixel_y = 8
 	var/mob/living/held_mob
 
-/obj/item/weapon/holder/New()
-	..()
-	processing_objects.Add(src)
+/obj/item/weapon/holder/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/holder/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/weapon/holder/process()
@@ -112,11 +112,20 @@ var/list/holder_mob_icon_cache = list()
 /mob/living/var/holder_type
 
 /mob/living/MouseDrop(var/atom/over_object)
+	if(!Adjacent(over_object) || (over_object == src))
+		return ..()
 	var/mob/living/carbon/human/H = over_object
-	if(holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == I_HELP && H.a_intent == I_HELP)) //VOREStation Edit
+	if(buckled || pinned.len)
+		return ..()
+	if(holder_type && istype(H) && !H.lying && (src.a_intent == I_HELP && H.a_intent == I_HELP))
+		//VORESTATION STUFF
+		return H.attempt_to_scoop(src, (usr == src))
+		/*
+		//VORESTATION STUFF END
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
 			get_scooped(H, (usr == src))
 		return
+		*/
 	return ..()
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)

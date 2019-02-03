@@ -237,7 +237,7 @@ var/global/photo_count = 0
 		else
 			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
 
-	for(var/mob/living/simple_animal/hostile/statue/S in the_turf)
+	for(var/mob/living/simple_mob/alien/statue/S in the_turf)
 		if(S)
 		 mob_detail +=	"You can see \a [S] on the photo. Its stare makes you feel uneasy." //"That which holds the image of an angel, becomes itself an angel."
 
@@ -291,11 +291,10 @@ var/global/photo_count = 0
 		user.visible_message("<span class='userdanger'>Something starts to slowly manifest from the picture!</span>")
 		spawn(150)
 			var/turf/T = get_turf(p)
-			var/mob/living/simple_animal/hostile/statue/S = new /mob/living/simple_animal/hostile/statue/(T)
-			S.banishable = 1//At least you can get rid of those bastards
+			var/mob/living/simple_mob/alien/statue/S = new(T)
+			S.banishable = TRUE//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)
-
 
 	printpicture(user, p)
 
@@ -345,7 +344,7 @@ var/global/photo_count = 0
 		T.visible_message("<span class='userdanger'>Something starts to slowly manifest from the picture!</span>")
 		spawn(150)
 			T = get_turf(p) //second time, because the photo could've moved
-			var/mob/living/simple_animal/hostile/statue/S = new /mob/living/simple_animal/hostile/statue/(T)
+			var/mob/living/simple_mob/alien/statue/S = new(T)
 			S.banishable = 1//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)

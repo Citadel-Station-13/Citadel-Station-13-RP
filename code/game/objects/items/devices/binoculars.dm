@@ -3,7 +3,7 @@
 	name = "binoculars"
 	desc = "A pair of binoculars."
 	icon_state = "binoculars"
-
+	icon = 'icons/obj/device.dmi'
 	flags = CONDUCT
 	force = 5.0
 	w_class = ITEMSIZE_SMALL

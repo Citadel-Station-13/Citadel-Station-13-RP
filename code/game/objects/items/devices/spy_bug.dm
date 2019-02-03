@@ -116,19 +116,20 @@
 		..()
 
 /obj/item/device/camerabug/bullet_act()
+	. = ..()
 	visible_message("The [src] lens shatters!")
 	new brokentype(get_turf(src))
 	if(linkedmonitor)
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
-	spawn(0)
 	qdel(src)
 
 /obj/item/device/camerabug/Destroy()
 	if(linkedmonitor)
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
-	..()
+	return ..()
+
 /*
 /obj/item/device/camerabug/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
 	radio.hear_talk(M, msg, speaking)

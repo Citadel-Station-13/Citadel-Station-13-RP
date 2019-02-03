@@ -25,7 +25,7 @@ var/list/blobs = list()
 	update_icon()
 	if(!integrity)
 		integrity = max_integrity
-	set_dir(pick(cardinal))
+	setDir(pick(cardinal))
 	blobs += src
 	consume_tile()
 
@@ -199,7 +199,7 @@ var/list/blobs = list()
 
 /obj/structure/blob/proc/blob_attack_animation(atom/A = null, controller) //visually attacks an atom
 	var/obj/effect/temporary_effect/blob_attack/O = new /obj/effect/temporary_effect/blob_attack(src.loc)
-	O.set_dir(dir)
+	O.setDir(dir)
 	if(controller)
 		var/mob/observer/blob/BO = controller
 		O.color = BO.blob_type.color
@@ -218,7 +218,7 @@ var/list/blobs = list()
 	if(controller)
 		B.overmind = controller
 	B.update_icon()
-	B.set_dir(dir)
+	B.setDir(dir)
 	qdel(src)
 	return B
 
@@ -254,6 +254,7 @@ var/list/blobs = list()
 	return
 
 /obj/structure/blob/bullet_act(var/obj/item/projectile/P)
+	. = ..()
 	if(!P)
 		return
 
@@ -276,8 +277,6 @@ var/list/blobs = list()
 		damage = overmind.blob_type.on_received_damage(src, damage, P.damage_type, P.firer)
 
 	adjust_integrity(-damage)
-
-	return ..()
 
 /obj/structure/blob/water_act(amount)
 	if(overmind)

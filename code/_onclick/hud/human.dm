@@ -37,7 +37,7 @@
 		slot_info["[inv_box.slot_id]"] = inv_box.screen_loc
 
 		if(slot_data["dir"])
-			inv_box.set_dir(slot_data["dir"])
+			inv_box.setDir(slot_data["dir"])
 
 		if(slot_data["toggle"])
 			src.other += inv_box
@@ -345,11 +345,8 @@
 
 	mymob.client.screen += hud_elements
 	mymob.client.screen += src.adding + src.hotkeybuttons
-	mymob.client.screen += mymob.client.void
+	mymob.client.apply_clickcatcher()
 	inventory_shown = 0
-
-	return
-
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
 	set category = "OOC"

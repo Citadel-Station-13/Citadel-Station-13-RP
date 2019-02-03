@@ -884,7 +884,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "acg" = (
@@ -1446,7 +1446,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "adA" = (
@@ -1948,7 +1948,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/machinery/suit_cycler/explorer,
+/obj/machinery/suit_cycler/exploration,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
 "aeC" = (
@@ -2562,8 +2562,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "afV" = (
-/turf/simulated/floor/reinforced,
 /obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/excursion/tether)
 "afX" = (
@@ -4048,7 +4048,7 @@
 	icon_state = "extinguisher_closed";
 	pixel_y = 32
 	},
-/obj/vehicle/train/cargo/trolley,
+/obj/vehicle/train/trolley,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
 "alQ" = (
@@ -4062,7 +4062,7 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/obj/vehicle/train/cargo/trolley,
+/obj/vehicle/train/trolley,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
 "alT" = (
@@ -4078,7 +4078,7 @@
 	frequency = 1441;
 	pixel_y = 22
 	},
-/obj/vehicle/train/cargo/engine,
+/obj/vehicle/train/engine,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
 "alX" = (
@@ -4949,7 +4949,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/vehicle/train/cargo/trolley,
+/obj/vehicle/train/trolley,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/hallway)
 "aoy" = (
@@ -8635,7 +8635,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "azq" = (
-/obj/machinery/computer/ordercomp{
+/obj/machinery/computer/supplycomp{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -10732,7 +10732,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/mob/living/simple_animal/fox/fluff/Renault,
+/mob/living/simple_mob/animal/passive/fox/fluff/Renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEu" = (
@@ -19219,7 +19219,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/skills,
 /obj/item/device/perfect_tele{
-	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command. This one is the Colony Director's, and they are authorized to use it.";
+	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon. This one is the Colony Director's.";
 	name = "director's translocator"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -19977,6 +19977,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/teleporter)
 "bJY" = (
@@ -21116,7 +21117,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/heads/chief)
 "bYN" = (
-/obj/item/device/violin,
+/obj/item/device/instrument/violin,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bYP" = (
@@ -22129,9 +22130,23 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"pTz" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/machinery/suit_cycler/pilot,
+/turf/simulated/floor/tiled,
+/area/tether/station/excursion_dock)
 "pYE" = (
 /obj/structure/closet/secure_closet/pathfinder{
-	req_access = list(18,43,67)
+	req_access = list(62)
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/steeldecal/steel_decals9,
@@ -22462,7 +22477,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Pathfinder's Office";
-	req_access = list(18,43,67)
+	req_access = list(62)
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -35486,7 +35501,7 @@ aad
 aaH
 aah
 aah
-aah
+pTz
 abc
 aad
 abU

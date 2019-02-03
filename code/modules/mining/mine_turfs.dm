@@ -121,7 +121,7 @@ var/list/mining_overlay_cache = list()
 	//Cache hit
 	return mining_overlay_cache["[cache_id]_[direction]"]
 
-/turf/simulated/mineral/initialize()
+/turf/simulated/mineral/Initialize()
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
@@ -202,14 +202,14 @@ var/list/mining_overlay_cache = list()
 	if(severity <= 2) // Now to expose the ore lying under the sand.
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
 			for(var/ore in resources)
-				var/amount_to_give = rand(Ceiling(resources[ore]/2), resources[ore])  // Should result in at least one piece of ore.
+				var/amount_to_give = rand(CEILING(resources[ore]/2, 1), resources[ore])  // Should result in at least one piece of ore.
 				for(var/i=1, i <= amount_to_give, i++)
 					var/oretype = ore_types[ore]
 					new oretype(src)
 				resources[ore] = 0
 
 /turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj)
-
+	. = ..()
 	// Emitter blasts
 	if(istype(Proj, /obj/item/projectile/beam/emitter) || istype(Proj, /obj/item/projectile/beam/heavylaser/fakeemitter))
 		emitter_blasts_taken++
@@ -599,3 +599,4 @@ var/list/mining_overlay_cache = list()
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
+

@@ -14,10 +14,9 @@
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
 
-/obj/machinery/power/smes/batteryrack/New()
-	..()
+/obj/machinery/power/smes/batteryrack/Initialize()
+	. = ..()
 	RefreshParts()
-	return
 
 //Maybe this should be moved up to obj/machinery
 /obj/machinery/power/smes/batteryrack/proc/add_parts()

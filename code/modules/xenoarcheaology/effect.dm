@@ -32,7 +32,7 @@
 		if(3)
 			//large range, long charge time
 			chargelevelmax = rand(20, 120)
-			effectrange = rand(20, 100) //VOREStation Edit - Map size.
+			effectrange = rand(20, 200)
 
 /datum/artifact_effect/proc/ToggleActivate(var/reveal_toggle = 1)
 	//so that other stuff happens first
@@ -60,7 +60,7 @@
 /datum/artifact_effect/proc/DoEffectPulse(var/atom/holder)
 /datum/artifact_effect/proc/UpdateMove()
 
-/datum/artifact_effect/proc/process()
+/datum/artifact_effect/process()
 	if(chargelevel < chargelevelmax)
 		chargelevel++
 

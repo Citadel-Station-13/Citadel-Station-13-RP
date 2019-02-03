@@ -79,11 +79,6 @@
 
 	switch(M.a_intent)
 		if(I_HELP)
-
-			// VOREStation Edit - Begin
-			if (istype(H) && attempt_to_scoop(H))
-				return 0;
-			// VOREStation Edit - End
 			if(istype(H) && health < config.health_threshold_crit)
 				if(!H.check_has_mouth())
 					H << "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>"
@@ -232,7 +227,7 @@
 						attack_message = "[H] attempted to strike [src], but missed!"
 					else
 						attack_message = "[H] attempted to strike [src], but [TT.he] rolled out of the way!"
-						src.set_dir(pick(cardinal))
+						src.setDir(pick(cardinal))
 					miss_type = 1
 
 			if(!miss_type && block)

@@ -26,7 +26,7 @@
 
 	interaction_message = "<span class='notice'>The prismatic turret seems to be able to rotate.</span>"
 
-/obj/structure/prop/prism/initialize()
+/obj/structure/prop/prism/Initialize()
 	if(degrees_from_north)
 		animate(src, transform = turn(NORTH, degrees_from_north), time = 3)
 
@@ -116,7 +116,8 @@
 	else
 		animate(src, transform = turn(src.transform, rotate_degrees), time = 6)
 
-/obj/structure/prop/prism/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/prop/prism/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	if(istype(Proj, redirect_type))
 		visible_message("<span class='danger'>\The [src] redirects \the [Proj]!</span>")
 		flick("[initial(icon_state)]+glow", src)
@@ -128,6 +129,7 @@
 		Proj.penetrating += 1 // Needed for the beam to get out of the turret.
 
 		Proj.redirect(new_x, new_y, curloc, null)
+		return BULLET_ACT_REFLECT
 
 /obj/structure/prop/prism/incremental
 	free_rotate = 0
@@ -196,7 +198,7 @@
 	for(var/obj/structure/prop/prism/P in my_turrets)
 		P.rotate_auto(new_bearing)
 
-/obj/structure/prop/prismcontrol/initialize()
+/obj/structure/prop/prismcontrol/Initialize()
 	..()
 	if(my_turrets.len) //Preset controls.
 		for(var/obj/structure/prop/prism/P in my_turrets)

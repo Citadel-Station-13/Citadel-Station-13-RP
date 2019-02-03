@@ -71,7 +71,7 @@
 						owner << "<span class='danger'>Your shield fades due being used up!</span>"
 						qdel(src)
 
-				return PROJECTILE_CONTINUE // complete projectile permutation
+				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation		//No bullet act for reflect yet
 
 		else if(istype(damage_source, /obj/item/weapon))
 			var/obj/item/weapon/W = damage_source

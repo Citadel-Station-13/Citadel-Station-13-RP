@@ -1,3 +1,9 @@
+/turf
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+
+///turf/proc/multiz_turf_del(turf/T, dir)
+
 /turf/proc/CanZPass(atom/A, direction)
 	if(z == A.z) //moving FROM this turf
 		return direction == UP //can't go below
@@ -34,13 +40,13 @@
 	..()
 	update()
 
-/turf/simulated/open/initialize()
+/turf/simulated/open/Initialize()
 	. = ..()
 	ASSERT(HasBelow(z))
 	update()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
-	. = ..()
+	..()
 	mover.fall()
 
 // Called when thrown object lands on this turf.
@@ -48,10 +54,14 @@
 	. = ..()
 	AM.fall()
 
+/turf/simulated/open/multiz_turf_new(turf/T, dir)
+	if(dir == UP)
+		update_icon()
+	return ..()
+
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	turf_changed_event.register(below, src, /turf/simulated/open/update_icon)
 	levelupdate()
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
@@ -149,3 +159,9 @@
 /turf/simulated/open/is_space()
 	var/turf/below = GetBelow(src)
 	return !below || below.is_space()
+
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()

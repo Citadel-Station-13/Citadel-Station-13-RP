@@ -86,7 +86,7 @@ Nurse Family
 	var/egg_inject_chance = 5
 
 /mob/living/simple_animal/hostile/giant_spider/nurse/hat
-	desc = "Furry and beige, it makes you shudder to look at it. This one has brilliant green eyes and a tiny nurse hat."
+	desc = "Furry and beige, it makes you shudder to look at it. This one has brilliant green eyes and a tiny nurse hat"
 	icon_state = "nursemed"
 	icon_living = "nursemed"
 	icon_dead = "nursemed_dead"
@@ -186,10 +186,10 @@ Nurse Family
 	var/swarmling_type = /mob/living/simple_animal/hostile/giant_spider/hunter
 	var/swarmling_faction = "spiders"
 
-/mob/living/simple_animal/hostile/giant_spider/carrier/New()
+/mob/living/simple_animal/hostile/giant_spider/carrier/Initialize()
+	. = ..()
 	spiderling_count = rand(5,10)
 	adjust_scale(1.2)
-	..()
 
 /mob/living/simple_animal/hostile/giant_spider/carrier/death()
 	visible_message("<span class='notice'>\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.</span>")
@@ -197,9 +197,9 @@ Nurse Family
 		for(var/I = 1 to spiderling_count)
 			if(prob(10) && src)
 				var/mob/living/simple_animal/hostile/giant_spider/swarmling = new swarmling_type(src.loc)
-				var/swarm_health = Floor(swarmling.maxHealth * 0.4)
-				var/swarm_dam_lower = Floor(melee_damage_lower * 0.4)
-				var/swarm_dam_upper = Floor(melee_damage_upper * 0.4)
+				var/swarm_health = FLOOR(swarmling.maxHealth * 0.4, 1)
+				var/swarm_dam_lower = FLOOR(melee_damage_lower * 0.4, 1)
+				var/swarm_dam_upper = FLOOR(melee_damage_upper * 0.4, 1)
 				swarmling.name = "spiderling"
 				swarmling.maxHealth = swarm_health
 				swarmling.health = swarm_health
@@ -310,9 +310,9 @@ Guard Family
 	poison_per_bite = 5
 	poison_type = "condensedcapsaicin_v"
 
-/mob/living/simple_animal/hostile/giant_spider/pepper/New()
+/mob/living/simple_animal/hostile/giant_spider/pepper/Initialize()
+	. = ..()
 	adjust_scale(1.1)
-	..()
 
 /mob/living/simple_animal/hostile/giant_spider/thermic
 	desc = "Mirage-cloaked and orange, it makes you shudder to look at it. This one has simmering orange eyes."
@@ -376,9 +376,9 @@ Guard Family
 
 	var/exploded = 0
 
-/mob/living/simple_animal/hostile/giant_spider/phorogenic/New()
+/mob/living/simple_animal/hostile/giant_spider/phorogenic/Initialize()
+	. = ..()
 	adjust_scale(1.25)
-	return ..()
 
 /mob/living/simple_animal/hostile/giant_spider/phorogenic/death()
 	visible_message("<span class='danger'>\The [src]'s body begins to rupture!</span>")
@@ -406,10 +406,10 @@ Guard Family
 Spider Procs
 */
 
-/mob/living/simple_animal/hostile/giant_spider/New(var/location, var/atom/parent)
+/mob/living/simple_animal/hostile/giant_spider/Initialize(mapload, atom/parent)
+	. = ..()
 	get_light_and_color(parent)
 	add_eyes()
-	..()
 
 /mob/living/simple_animal/hostile/giant_spider/death()
 	remove_eyes()

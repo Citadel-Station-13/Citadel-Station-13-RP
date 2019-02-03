@@ -56,6 +56,7 @@ var/global/list/rad_collectors = list()
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
 			return
+..()
 
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)

@@ -43,8 +43,9 @@ var/list/ai_verbs_default = list(
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
-	density = 1
+	anchored = TRUE
+	density = TRUE
+	canmove = FALSE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	shouldnt_see = list(/obj/effect/rune)
 	var/list/network = list(NETWORK_DEFAULT)
@@ -96,11 +97,13 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/device/mmi/B, var/safety = 0)
-	announcement = new()
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/device/mmi/B, safety = FALSE)
+	. = ..()
+	ai_list += src
+	announcement = new
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
-	announcement.newscast = 1
+	announcement.newscast = TRUE
 
 	var/list/possibleNames = ai_names
 
@@ -114,11 +117,8 @@ var/list/ai_verbs_default = list(
 
 	if(!is_dummy)
 		aiPDA = new/obj/item/device/pda/ai(src)
+
 	SetName(pickedName)
-	anchored = 1
-	canmove = 0
-	density = 1
-	loc = loc
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/device/communicator/integrated(src)
@@ -142,6 +142,10 @@ var/list/ai_verbs_default = list(
 
 	aiCamera = new/obj/item/device/camera/siliconcam/ai_camera(src)
 
+	create_eyeobj()
+	if(eyeobj)
+		eyeobj.loc = src.loc
+
 	if (istype(loc, /turf))
 		add_ai_verbs(src)
 
@@ -162,7 +166,7 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_ROOTLOCAL, 1)
 	add_language(LANGUAGE_TERMINUS, 1)
 
-	if(!safety)//Only used by AIize() to successfully spawn an AI.
+	if(!safety && !is_dummy)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
 			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
 			qdel(src)//Delete AI.
@@ -173,12 +177,8 @@ var/list/ai_verbs_default = list(
 
 			on_mob_init()
 
-	spawn(5)
-		new /obj/machinery/ai_powersupply(src)
+	new /obj/machinery/ai_powersupply(loc, src)
 
-	ai_list += src
-	..()
-	return
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	src << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
@@ -223,6 +223,7 @@ var/list/ai_verbs_default = list(
 	QDEL_NULL(aiRadio)
 	QDEL_NULL(aiCamera)
 	hack = null
+	destroy_eyeobj()
 
 	return ..()
 
@@ -253,7 +254,7 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/SetName(pickedName as text)
-	..()
+	. = ..()
 	announcement.announcer = pickedName
 	if(eyeobj)
 		eyeobj.name = "[pickedName] (AI Eye)"
@@ -279,12 +280,11 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/machinery/ai_powersupply/Initialize(mapload, mob/living/silicon/AI/ai)
 	powered_ai = ai
 	powered_ai.psupply = src
 	forceMove(powered_ai.loc)
-
-	..()
+	. = ..()
 	use_power(1) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()
@@ -419,7 +419,7 @@ var/list/ai_verbs_default = list(
 		return
 	if(usr != src)
 		return
-	/*if(..()) // <------ MOVED FROM HERE 
+	/*if(..()) // <------ MOVED FROM HERE
 		return*/
 	if (href_list["mach_close"])
 		if (href_list["mach_close"] == "aialerts")
@@ -807,10 +807,10 @@ var/list/ai_verbs_default = list(
 	return TRUE
 
 //Special subtype kept around for global announcements
-/mob/living/silicon/ai/announcer/
-	is_dummy = 1
+/mob/living/silicon/ai/announcer
+	is_dummy = TRUE
 
-/mob/living/silicon/ai/announcer/initialize()
+/mob/living/silicon/ai/announcer/Initialize()
 	. = ..()
 	mob_list -= src
 	living_mob_list -= src

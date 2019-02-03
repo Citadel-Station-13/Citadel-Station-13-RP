@@ -26,9 +26,9 @@
 	nodamage = 1
 	damage_type = HALLOSS
 
-	muzzle_type = /obj/effect/projectile/lightning/muzzle
-	tracer_type = /obj/effect/projectile/lightning/tracer
-	impact_type = /obj/effect/projectile/lightning/impact
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
 
 	var/bounces = 3				//How many times it 'chains'.  Note that the first hit is not counted as it counts /bounces/.
 	var/list/hit_mobs = list() 	//Mobs which were already hit.
@@ -73,8 +73,8 @@
 			redirect(new_target.x, new_target.y, curloc, firer)
 			bounces--
 
-			return 0
-	return 1
+			return BULLET_ACT_FORCE_PIERCE
+	return BULLET_ACT_HIT
 
 
 

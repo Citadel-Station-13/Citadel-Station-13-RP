@@ -9,8 +9,8 @@
 	var/obj/item/weapon/storage/internal/hold
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/clothing/accessory/storage/New()
-	..()
+/obj/item/clothing/accessory/storage/Initialize()
+	. = ..()
 	hold = new/obj/item/weapon/storage/internal(src)
 	hold.max_storage_space = slots * 2
 	hold.max_w_class = ITEMSIZE_SMALL

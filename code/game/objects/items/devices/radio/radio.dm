@@ -1,4 +1,5 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
+//VOREStation Edit Start - Updating this for Virgo
 var/global/list/default_internal_channels = list(
 	num2text(PUB_FREQ) = list(),
 	num2text(AI_FREQ)  = list(access_synth),
@@ -10,16 +11,18 @@ var/global/list/default_internal_channels = list(
 	num2text(MED_I_FREQ)=list(access_medical_equip),
 	num2text(SEC_FREQ) = list(access_security),
 	num2text(SEC_I_FREQ)=list(access_security),
-	num2text(SCI_FREQ) = list(access_tox,access_robotics,access_xenobiology),
-	num2text(SUP_FREQ) = list(access_cargo),
-	num2text(SRV_FREQ) = list(access_janitor, access_hydroponics)
+	num2text(SCI_FREQ) = list(access_tox, access_robotics, access_xenobiology, access_explorer),
+	num2text(SUP_FREQ) = list(access_cargo, access_mining_station),
+	num2text(SRV_FREQ) = list(access_janitor, access_library, access_hydroponics, access_bar, access_kitchen),
+	num2text(EXP_FREQ) = list(access_explorer, access_pilot, access_rd)
 )
 
 var/global/list/default_medbay_channels = list(
 	num2text(PUB_FREQ) = list(),
-	num2text(MED_FREQ) = list(access_medical_equip),
-	num2text(MED_I_FREQ) = list(access_medical_equip)
+	num2text(MED_FREQ) = list(),
+	num2text(MED_I_FREQ) = list()
 )
+//VOREStation Edit End
 
 /obj/item/device/radio
 	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit
@@ -61,8 +64,8 @@ var/global/list/default_medbay_channels = list(
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 
-/obj/item/device/radio/New()
-	..()
+/obj/item/device/radio/Initialize()
+	. = ..()
 	wires = new(src)
 	internal_channels = default_internal_channels.Copy()
 	listening_objects += src
@@ -78,7 +81,7 @@ var/global/list/default_medbay_channels = list(
 	return ..()
 
 
-/obj/item/device/radio/initialize()
+/obj/item/device/radio/Initialize()
 	. = ..()
 	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
 		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
@@ -119,7 +122,7 @@ var/global/list/default_medbay_channels = list(
 	if(syndie)
 		data["useSyndMode"] = 1
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430)
 		ui.set_initial_data(data)
@@ -230,7 +233,10 @@ var/global/list/default_medbay_channels = list(
 		return 1
 
 	if(.)
-		GLOB.nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
+
+//Bad system, refactor sometime.
+GLOBAL_DATUM_INIT(device_radio_autosay_ai, /mob/living/silicon/ai/announcer, new)
 
 /obj/item/device/radio/proc/autosay(var/message, var/from, var/channel) //BS12 EDIT
 	var/datum/radio_frequency/connection = null
@@ -247,9 +253,8 @@ var/global/list/default_medbay_channels = list(
 	if (!connection)
 		return
 
-	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(src, null, null, 1)
-	A.SetName(from)
-	Broadcast_Message(connection, A,
+	GLOB.device_radio_autosay_ai.SetName(from)
+	Broadcast_Message(connection, GLOB.device_radio_autosay_ai,
 						0, "*garbled automated announcement*", src,
 						message, from, "Automated Announcement", from, "synthesized voice",
 						4, 0, list(0), connection.frequency, "states")
@@ -480,6 +485,13 @@ var/global/list/default_medbay_channels = list(
 	//THIS IS TEMPORARY. YEAH RIGHT
 	if(!connection)	return 0	//~Carn
 
+//VOREStation Add Start
+	if(bluespace_radio)
+		return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
+					  src, message, displayname, jobname, real_name, M.voice_name,
+					  0, signal.data["compression"], list(0), connection.frequency,verb,speaking)
+//VOREStation Add End
+
 	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
 					  filter_type, signal.data["compression"], list(position.z), connection.frequency,verb,speaking)
@@ -518,7 +530,8 @@ var/global/list/default_medbay_channels = list(
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
 		if(!position || !(position.z in level))
-			return -1
+			if(!bluespace_radio) //VOREStation Edit
+				return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
 			return -1
@@ -714,7 +727,7 @@ var/global/list/default_medbay_channels = list(
 		. = 1
 
 	if(.)
-		GLOB.nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
 
 /obj/item/device/radio/borg/interact(mob/user as mob)
 	if(!on)
@@ -743,7 +756,7 @@ var/global/list/default_medbay_channels = list(
 	data["has_subspace"] = 1
 	data["subspace"] = subspace_transmission
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430)
 		ui.set_initial_data(data)

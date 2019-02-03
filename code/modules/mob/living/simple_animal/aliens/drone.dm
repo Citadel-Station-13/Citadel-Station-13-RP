@@ -51,8 +51,8 @@
 	var/exploding = 0
 	var/has_loot = 1
 
-/mob/living/simple_animal/hostile/malf_drone/New()
-	..()
+/mob/living/simple_animal/hostile/malf_drone/Initialize()
+	. = ..()
 	if(prob(5))
 		projectiletype = /obj/item/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'

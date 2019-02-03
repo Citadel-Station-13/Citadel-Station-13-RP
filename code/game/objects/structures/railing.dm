@@ -15,18 +15,14 @@
 	var/maxhealth = 70
 	var/check = 0
 
-/obj/structure/railing/New(loc, constructed = 0)
-	..()
+/obj/structure/railing/Initialize(mapload, constructed = FALSE)
+	. = ..()
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
-		anchored = 0
+		anchored = FALSE
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
-
-/obj/structure/railing/initialize()
-	. = ..()
-	if(src.anchored)
-		update_icon(0)
+	update_icon(FALSE)
 
 /obj/structure/railing/Destroy()
 	var/turf/location = loc
@@ -34,15 +30,22 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(!mover)
-		return 1
+/obj/structure/railing/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if((height == 0) || air_group)
+		return TRUE
 	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
+		return TRUE
+	if(get_dir(mover, target) == turn(dir, 180))
+		if(density)
+			return FALSE
+	return TRUE
+
+/obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
+	if(istype(O) && O.checkpass(PASSTABLE))
+		return TRUE
+	if(get_dir(O.loc, target) == dir)
+		return FALSE
+	return TRUE
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
@@ -126,7 +129,7 @@
 					if (WEST)
 						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
 
-/obj/structure/railing/verb/rotate()
+/obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
@@ -141,11 +144,11 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 90))
+	src.setDir(turn(src.dir, 90))
 	update_icon()
 	return
 
-/obj/structure/railing/verb/revrotate()
+/obj/structure/railing/verb/rotate_clockwise()
 	set name = "Rotate Railing Clockwise"
 	set category = "Object"
 	set src in oview(1)
@@ -160,7 +163,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, -90))
+	src.setDir(turn(src.dir, 270))
 	update_icon()
 	return
 
@@ -185,16 +188,9 @@
 		return 0
 
 	src.loc = get_step(src, src.dir)
-	set_dir(turn(dir, 180))
+	setDir(turn(dir, 180))
 	update_icon()
 	return
-
-/obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
 
 /obj/structure/railing/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle

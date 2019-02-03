@@ -8,12 +8,13 @@
 	var/list/blood_DNA
 	var/was_bloodied
 	var/blood_color
-	var/last_bumped = 0
 	var/pass_flags = 0
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
+
+	var/last_bumped = 0
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -22,31 +23,33 @@
 	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
 	///Chemistry.
 
-	// Overlays
-	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
+	var/list/remove_overlays // a very temporary list of overlays to remove
+	var/list/add_overlays // a very temporary list of overlays to add
+
+	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
 
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
-	// Track if we are already had initialize() called to prevent double-initialization.
-	var/initialized = FALSE
 
 /atom/New(loc, ...)
-	// Don't call ..() unless /datum/New() ever exists
-
 	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
 	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
 	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		_preloader.load(src)
 
-	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload.
-	var/do_initialize = SSatoms && SSatoms.initialized // Workaround our non-ideal initialization order: SSatoms may not exist yet.
-	//var/do_initialize = SSatoms.initialized
-	if(do_initialize > INITIALIZATION_INSSATOMS)
-		args[1] = (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
+	/*
+	if(datum_flags & DF_USE_TAG)
+		GenerateTag()
+	*/
+
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
+		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
 		if(SSatoms.InitAtom(src, args))
-			// We were deleted. No sense continuing
+			//we were deleted
 			return
+	// Don't call ..() unless /datum/New() ever exists
 
 	// Uncomment if anything ever uses the return value of SSatoms.InitializeAtoms ~Leshana
 	// If a map is being loaded, it might want to know about newly created objects so they can be handled.
@@ -63,17 +66,58 @@
 // Must not sleep!
 // Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
 // Must return an Initialize hint. Defined in code/__defines/subsystems.dm
-/atom/proc/initialize(mapload, ...)
-	if(QDELETED(src))
-		crash_with("GC: -- [type] had initialize() called after qdel() --")
-	if(initialized)
-		crash_with("Warning: [src]([type]) initialized multiple times!")
-	initialized = TRUE
+/atom/proc/Initialize(mapload, ...)
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+
+/*
+	//atom color stuff
+	if(color)
+		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+*/
+
+	if (light_power && light_range)
+		update_light()
+
+	if (opacity && isturf(loc))
+		var/turf/T = loc
+		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+
+/*
+	if (canSmoothWith)
+		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
+*/
+
+	ComponentInitialize()
+
 	return INITIALIZE_HINT_NORMAL
 
-// Called after all object's normal initialize() if initialize() returns INITIALIZE_HINT_LATELOAD
+//called if Initialize returns INITIALIZE_HINT_LATELOAD
 /atom/proc/LateInitialize()
 	return
+
+// Put your AddComponent() calls here
+/atom/proc/ComponentInitialize()
+	return
+
+/atom/Destroy()
+	/*if(alternate_appearances)
+		for(var/K in alternate_appearances)
+			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+			AA.remove_from_hud(src)*/
+
+	if(reagents)
+		qdel(reagents)
+
+	//orbiters = null // The component is attached to us normaly and will be deleted elsewhere
+
+	LAZYCLEARLIST(overlays)
+	LAZYCLEARLIST(priority_overlays)
+
+	QDEL_NULL(light)
+
+	return ..()
 
 /atom/proc/reveal_blood()
 	return
@@ -97,11 +141,8 @@
 		return 0
 	return -1
 
-/atom/proc/on_reagent_change()
-	return
-
 /atom/proc/Bumped(AM as mob|obj)
-	return
+	set waitfor = FALSE
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
@@ -129,10 +170,8 @@
 /atom/proc/emp_act(var/severity)
 	return
 
-
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
-	P.on_hit(src, 0, def_zone)
-	. = 0
+	. = P.on_hit(src, 0, def_zone)
 
 // Called when a blob expands onto the tile the atom occupies.
 /atom/proc/blob_act()
@@ -196,7 +235,7 @@
 	return
 
 //called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/set_dir(new_dir)
+/atom/proc/setDir(new_dir)
 	. = new_dir != dir
 	dir = new_dir
 
@@ -226,6 +265,8 @@
 /atom/proc/update_icon()
 	return
 
+/atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+	return (!density || (height == 0) || air_group)
 
 /atom/proc/hitby(atom/movable/AM as mob|obj)
 	if (density)
@@ -233,8 +274,10 @@
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
+	if(isnull(M))
+		return
+	if(isnull(M.key))
+		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
@@ -270,7 +313,7 @@
 		//He has no prints!
 		if (mFingerprints in M.mutations)
 			if(fingerprintslast != M.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
+				fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
 				fingerprintslast = M.key
 			return 0		//Now, lets get to the dirty work.
 		//First, make sure their DNA makes sense.
@@ -284,7 +327,7 @@
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
 			if(fingerprintslast != H.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(H)] (Wearing [H.gloves])"
+				fingerprintshidden += text("\[[]\](Wearing gloves). Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 				fingerprintslast = H.key
 			H.gloves.add_fingerprint(M)
 
@@ -298,7 +341,7 @@
 
 		//More adminstuffz
 		if(fingerprintslast != H.key)
-			fingerprintshidden += "[time_stamp()]: [key_name(H)]"
+			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 			fingerprintslast = H.key
 
 		//Make the list if it does not exist.
@@ -351,7 +394,7 @@
 	else
 		//Smudge up dem prints some
 		if(fingerprintslast != M.key)
-			fingerprintshidden += "[time_stamp()]: [key_name(M)]"
+			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), M.real_name, M.key)
 			fingerprintslast = M.key
 
 	//Cleaning up shit.
@@ -499,7 +542,7 @@
 		if(!istype(drop_destination) || drop_destination == destination)
 			return forceMove(destination)
 		destination = drop_destination
-	return forceMove(null)
+	return moveToNullspace()
 
 /atom/proc/onDropInto(var/atom/movable/AM)
 	return // If onDropInto returns null, then dropInto will forceMove AM into us.
@@ -524,7 +567,7 @@
 	var/atom/L = loc
 	if(!L)
 		return null
-	return L.AllowDrop() ? L : get_turf(L)
+	return L.AllowDrop() ? L : L.drop_location()
 
 /atom/proc/AllowDrop()
 	return FALSE
@@ -534,3 +577,35 @@
 
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
+
+/atom/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_ATOM_EXPLODE, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_ATOM_EMP, "Emp Pulse")
+
+/atom/vv_do_topic(list/href_list)
+	. = ..()
+	IF_VV_OPTION(VV_HK_ATOM_EXPLODE)
+		if(!check_rights(R_DEBUG|R_FUN))
+			return
+		usr.client.cmd_admin_explosion(src)
+		href_list["datumrefresh"] = "\ref[src]"
+	IF_VV_OPTION(VV_HK_ATOM_EMP)
+		if(!check_rights(R_DEBUG|R_FUN))
+			return
+		usr.client.cmd_admin_emp(src)
+		href_list["datumrefresh"] = "\ref[src]"
+
+/atom/vv_get_header()
+	. = ..()
+	var/custom_edit_name
+	if(!isliving(src))
+		custom_edit_name = "<a href='?_src_=vars;datumedit=\ref[src];varnameedit=name'><b>[src]</b></a>"
+	. += {"
+		[custom_edit_name]
+		<br><font size='1'>
+		<a href='?_src_=vars;rotatedatum=\ref[src];rotatedir=left'><<</a>
+		<a href='?_src_=vars;datumedit=\ref[src];varnameedit=dir'>[dir2text(dir)]</a>
+		<a href='?_src_=vars;rotatedatum=\ref[src];rotatedir=right'>>></a>
+		</font>
+		"}

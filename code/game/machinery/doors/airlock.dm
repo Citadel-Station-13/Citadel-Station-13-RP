@@ -46,11 +46,12 @@
 	var/bolt_up_sound = 'sound/machines/boltsup.ogg'
 	var/bolt_down_sound = 'sound/machines/boltsdown.ogg'
 
-/obj/machinery/door/airlock/attack_generic(var/mob/user, var/damage)
+/obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	if(stat & (BROKEN|NOPOWER))
-		if(damage >= 10)
+		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			if(src.locked || src.welded)
 				visible_message("<span class='danger'>\The [user] begins breaking into \the [src] internals!</span>")
+				user.set_AI_busy(TRUE) // If the mob doesn't have an AI attached, this won't do anything.
 				if(do_after(user,10 SECONDS,src))
 					src.locked = 0
 					src.welded = 0
@@ -58,6 +59,7 @@
 					open(1)
 					if(prob(25))
 						src.shock(user, 100)
+				user.set_AI_busy(FALSE)
 			else if(src.density)
 				visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
 				open(1)
@@ -323,6 +325,7 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_research
 	glass = 1
 	req_one_access = list(access_research)
+	heat_proof = 1
 
 /obj/machinery/door/airlock/glass_mining
 	name = "Mining Airlock"
@@ -506,9 +509,6 @@ About the new airlock wires panel:
 			user.halloss += 10
 			user.stunned += 10
 			return
-	..(user)
-
-/obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
 	..(user)
 
 /obj/machinery/door/airlock/proc/isElectrified()
@@ -728,7 +728,7 @@ About the new airlock wires panel:
 
 	data["commands"] = commands
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "door_control.tmpl", "Door Controls", 450, 350, state = state)
 		ui.set_initial_data(data)
@@ -944,7 +944,7 @@ About the new airlock wires panel:
 
 				var/obj/structure/door_assembly/da = new assembly_type(src.loc)
 				if (istype(da, /obj/structure/door_assembly/multi_tile))
-					da.set_dir(src.dir)
+					da.setDir(src.dir)
 
 				da.anchored = 1
 				if(mineral)
@@ -1195,7 +1195,7 @@ About the new airlock wires panel:
 			name = "[istext(assembly.glass) ? "[assembly.glass] airlock" : assembly.base_name]"
 
 		//get the dir from the assembly
-		set_dir(assembly.dir)
+		setDir(assembly.dir)
 
 	//wires
 	var/turf/T = get_turf(newloc)
@@ -1206,7 +1206,7 @@ About the new airlock wires panel:
 	else
 		wires = new/datum/wires/airlock(src)
 
-/obj/machinery/door/airlock/initialize()
+/obj/machinery/door/airlock/Initialize()
 	if(src.closeOtherId != null)
 		for (var/obj/machinery/door/airlock/A in machines)
 			if(A.closeOtherId == src.closeOtherId && A != src)

@@ -17,8 +17,8 @@
 
 	maxHealth = 150
 	var/maxHealth_adult = 200
-	melee_damage_lower = 5
-	melee_damage_upper = 25
+	melee_damage_lower = 10
+	melee_damage_upper = 15
 	melee_miss_chance = 0
 	gender = NEUTER
 
@@ -98,7 +98,8 @@
 	/obj/item/clothing/head,
 	)
 
-/mob/living/simple_animal/slime/New(var/location, var/start_as_adult = FALSE)
+/mob/living/simple_animal/slime/Initialize(mapload, start_as_adult = FALSE)
+	. = ..()
 	verbs += /mob/living/proc/ventcrawl
 	if(start_as_adult)
 		make_adult()
@@ -107,7 +108,6 @@
 	update_icon()
 	number = rand(1, 1000)
 	update_name()
-	..(location)
 
 /mob/living/simple_animal/slime/Destroy()
 	if(hat)

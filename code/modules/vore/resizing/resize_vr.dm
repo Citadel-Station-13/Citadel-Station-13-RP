@@ -109,7 +109,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 	var/nagmessage = "Adjust your mass to be a size between 25 to 200% (DO NOT ABUSE)"
 	var/new_size = input(nagmessage, "Pick a Size") as num|null
-	if(new_size && IsInRange(new_size,25,200))
+	if(new_size && ISINRANGE(new_size,25,200))
 		src.resize(new_size/100)
 		message_admins("[key_name(src)] used the resize command in-game to be [new_size]% size. \
 			([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
@@ -125,14 +125,14 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
  * Attempt to scoop up this mob up into H's hands, if the size difference is large enough.
  * @return false if normal code should continue, 1 to prevent normal code.
  */
-/mob/living/proc/attempt_to_scoop(var/mob/living/M)
+/mob/living/proc/attempt_to_scoop(mob/living/M, self_grab)
 	var/size_diff = M.get_effective_size() - get_effective_size()
 	if(!holder_default && holder_type)
 		holder_default = holder_type
 	if(!istype(M))
 		return 0
 	if(isanimal(M))
-		var/mob/living/simple_animal/SA = M
+		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
 			return 0
 	if(M.buckled)
@@ -140,7 +140,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		return 0
 	if(size_diff >= 0.50)
 		holder_type = /obj/item/weapon/holder/micro
-		var/obj/item/weapon/holder/m_holder = get_scooped(M)
+		var/obj/item/weapon/holder/m_holder = M.get_scooped(src, self_grab)
 		holder_type = holder_default
 		if (m_holder)
 			return 1

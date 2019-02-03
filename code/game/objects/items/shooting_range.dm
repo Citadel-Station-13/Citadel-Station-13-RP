@@ -80,6 +80,10 @@
 		hp = 2350 // alium onest too kinda
 
 /obj/item/target/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()				//Citadel edit - I wonder if whoever coded this stupid shit realizes the overhead of drawing from scratch 35 boxes, 100 overlays, 35 datums,\
+	 and the crash implications of doing that without a single sleep.
+	return BULLET_ACT_FORCE_PIERCE
+	/*
 	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
 	var/p_y = Proj.p_y + pick(0,0,0,0,0,-1,1)
 	var/decaltype = 1 // 1 - scorch, 2 - bullet
@@ -115,7 +119,7 @@
 
 			if(Proj.damage >= 20 || istype(Proj, /obj/item/projectile/beam/practice))
 				bmark.icon_state = "scorch"
-				bmark.set_dir(pick(NORTH,SOUTH,EAST,WEST)) // random scorch design
+				bmark.setDir(pick(NORTH,SOUTH,EAST,WEST)) // random scorch design
 
 
 			else
@@ -146,6 +150,7 @@
 		return
 
 	return PROJECTILE_CONTINUE // the bullet/projectile goes through the target!
+	*/
 
 
 // Small memory holder entity for transparent bullet holes

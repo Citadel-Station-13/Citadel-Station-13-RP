@@ -23,7 +23,7 @@
 
 		if(distance <= maxdistance)
 			if(T && T.z == turf_source.z)
-				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, channel, pressure_affected, S)
+				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, channel, pressure_affected, S, preference)
 
 /mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/S, preference)
 	if(!client || ear_deaf > 0)
@@ -109,11 +109,9 @@
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
 
 /client/proc/playtitlemusic()
-	if(!ticker || !all_lobby_tracks.len || !media)	return
-	if(is_preference_enabled(/datum/client_preference/play_lobby_music))
-		var/datum/track/T = pick(all_lobby_tracks)
-		media.push_music(T.url, world.time, 0.85)
-		to_chat(src,"<span class='notice'>Lobby music: <b>[T.title]</b> by <b>[T.artist]</b>.</span>")
+	//if(!ticker || !ticker.login_music)	return
+	//if(is_preference_enabled(/datum/client_preference/play_lobby_music))
+	//	src << sound(ticker.login_music, repeat = 0, wait = 0, volume = 85, channel = 1) // MAD JAMS
 
 /proc/get_sfx(soundin)
 	if(istext(soundin))
@@ -130,8 +128,6 @@
 			if ("fracture") soundin = pick('sound/effects/bonebreak1.ogg','sound/effects/bonebreak2.ogg','sound/effects/bonebreak3.ogg','sound/effects/bonebreak4.ogg')
 			if ("canopen") soundin = pick('sound/effects/can_open1.ogg','sound/effects/can_open2.ogg','sound/effects/can_open3.ogg','sound/effects/can_open4.ogg')
 			if ("mechstep") soundin = pick('sound/mecha/mechstep1.ogg', 'sound/mecha/mechstep2.ogg')
-			if ("geiger") soundin = pick('sound/items/geiger1.ogg', 'sound/items/geiger2.ogg', 'sound/items/geiger3.ogg', 'sound/items/geiger4.ogg', 'sound/items/geiger5.ogg')
-			if ("geiger_weak") soundin = pick('sound/items/geiger_weak1.ogg', 'sound/items/geiger_weak2.ogg', 'sound/items/geiger_weak3.ogg', 'sound/items/geiger_weak4.ogg')
 			if ("thunder") soundin = pick('sound/effects/thunder/thunder1.ogg', 'sound/effects/thunder/thunder2.ogg', 'sound/effects/thunder/thunder3.ogg', 'sound/effects/thunder/thunder4.ogg',
 			'sound/effects/thunder/thunder5.ogg', 'sound/effects/thunder/thunder6.ogg', 'sound/effects/thunder/thunder7.ogg', 'sound/effects/thunder/thunder8.ogg', 'sound/effects/thunder/thunder9.ogg',
 			'sound/effects/thunder/thunder10.ogg')

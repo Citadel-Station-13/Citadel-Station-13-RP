@@ -40,10 +40,9 @@
 	if(occupant)
 		occupant_message("The sleeper is already occupied")
 		return
-	for(var/mob/living/simple_animal/slime/M in range(1,target))
-		if(M.victim == target)
-			occupant_message("[target] will not fit into the sleeper because they have a slime latched onto their head.")
-			return
+	if(target.has_buckled_mobs())
+		occupant_message(span("warning", "\The [target] has other entities attached to it. Remove them first."))
+		return
 	occupant_message("You start putting [target] into [src].")
 	chassis.visible_message("[chassis] starts putting [target] into the [src].")
 	var/C = chassis.loc
@@ -405,44 +404,6 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_MAGNET = 4, TECH_DATA = 3)
 	required_type = /obj/mecha/medical
 
-	//This is a list of datums so as to allow id changes, and force compile errors if removed.
-	var/static/list/allowed_reagents = list(
-		//Med Reagents,
-		/datum/reagent/inaprovaline,
-		/datum/reagent/bicaridine,
-		/datum/reagent/kelotane,
-		/datum/reagent/dermaline,
-		/datum/reagent/dylovene,
-		/datum/reagent/dexalin,
-		/datum/reagent/tricordrazine,
-		/datum/reagent/paracetamol,
-		/datum/reagent/tramadol,
-		/datum/reagent/spaceacillin,
-		//Dispenser Reagents,
-		/datum/reagent/water,
-		/datum/reagent/aluminum,
-		/datum/reagent/carbon,
-		/datum/reagent/chlorine,
-		/datum/reagent/copper,
-		/datum/reagent/ethanol,
-		/datum/reagent/fluorine,
-		/datum/reagent/hydrogen,
-		/datum/reagent/iron,
-		/datum/reagent/lithium,
-		/datum/reagent/mercury,
-		/datum/reagent/nitrogen,
-		/datum/reagent/oxygen,
-		/datum/reagent/phosphorus,
-		/datum/reagent/potassium,
-		/datum/reagent/radium,
-		/datum/reagent/acid,
-		/datum/reagent/silicon,
-		/datum/reagent/sodium,
-		/datum/reagent/sugar,
-		/datum/reagent/sulfur,
-		/datum/reagent/tungsten
-		)
-
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/New()
 	..()
 	flags |= NOREACT
@@ -451,14 +412,6 @@
 	processed_reagents = new
 	create_reagents(max_volume)
 	synth = new (list(src),0)
-
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/initialize()
-	. = ..()
-	//Wow nice, firsties
-	if(LAZYLEN(allowed_reagents) && !istext(allowed_reagents[1]))
-		for(var/index = 1 to allowed_reagents.len)
-			var/datum/reagent/path = allowed_reagents[index]
-			allowed_reagents[index] = initial(path.id)
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/detach()
 	synth.stop()
@@ -663,20 +616,16 @@
 		return 0
 	occupant_message("Analyzing reagents...")
 	for(var/datum/reagent/R in A.reagents.reagent_list)
-		if(R.id in known_reagents)
-			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
-		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))
+		if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))
 			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
-		else
-			occupant_message("Reagent \"[R.name]\" unable to be scanned, skipping.")
 	occupant_message("Analyzis complete.")
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/proc/add_known_reagent(r_id,r_name)
 	set_ready_state(0)
 	do_after_cooldown()
-	if(!(r_id in known_reagents) && (r_id in allowed_reagents))
+	if(!(r_id in known_reagents))
 		known_reagents += r_id
 		known_reagents[r_id] = r_name
 		return 1

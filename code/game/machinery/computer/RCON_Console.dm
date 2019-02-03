@@ -40,4 +40,4 @@
 /obj/machinery/computer/rcon/update_icon()
 	..()
 	if(!(stat & (NOPOWER|BROKEN)))
-		overlays += image(icon, "ai-fixer-empty", overlay_layer) //VOREStation Edit
+		overlays += image('icons/obj/computer.dmi', "ai-fixer-empty", overlay_layer)

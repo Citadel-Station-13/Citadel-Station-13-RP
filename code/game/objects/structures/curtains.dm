@@ -14,11 +14,10 @@
 	opacity = 0
 
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
+	. = ..()
 	if(!P.nodamage)
 		visible_message("<span class='warning'>[P] tears [src] down!</span>")
-		qdel(src)
-	else
-		..(P, def_zone)
+	return BULLET_ACT_FORCE_PIERCE
 
 /obj/structure/curtain/attack_hand(mob/user)
 	playsound(get_turf(loc), "rustle", 15, 1, -5)

@@ -12,17 +12,14 @@ emp_act
 
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
-		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
+		return BULLET_ACT_MISS //if they don't have the organ in question then the projectile just passes by.
 
 	var/obj/item/organ/external/organ = get_organ()
 
 	//Shields
 	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
 	if(shield_check) // If the block roll succeeded, this is true.
-		if(shield_check < 0) // The shield did something weird and the bullet needs to keep doing things (e.g. it was reflected).
-			return shield_check // Likely equal to PROJECTILE_FORCE_MISS or PROJECTILE_CONTINUE.
-		else // Otherwise we blocked normally and stopped all the damage.
-			return 0
+		return BULLET_ACT_BLOCK
 
 	if(!P.nodamage)
 		organ.add_autopsy_data("[P.name]", P.damage)
@@ -44,7 +41,7 @@ emp_act
 				SP.loc = organ
 				organ.embed(SP)
 
-	return (..(P , def_zone))
+	. = ..()
 
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
@@ -135,6 +132,27 @@ emp_act
 
 	return siemens_coefficient
 
+// Similar to above but is for the mob's overall protection, being the average of all slots.
+/mob/living/carbon/human/proc/get_siemens_coefficient_average()
+	var/siemens_value = 0
+	var/total = 0
+	for(var/organ_name in organs_by_name)
+		if(organ_name in organ_rel_size)
+			var/obj/item/organ/external/organ = organs_by_name[organ_name]
+			if(organ)
+				var/weight = organ_rel_size[organ_name]
+				siemens_value += get_siemens_coefficient_organ(organ) * weight
+				total += weight
+
+	if(fire_stacks < 0) // Water makes you more conductive.
+		siemens_value *= 1.5
+
+	return (siemens_value/max(total, 1))
+
+// Returns a number between 0 to 1, with 1 being total protection.
+/mob/living/carbon/human/get_shock_protection()
+	return between(0, 1-get_siemens_coefficient_average(), 1)
+
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
 	var/list/results = list()
@@ -184,8 +202,9 @@ emp_act
 	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
-		if(.) return
-	return 0
+		if(.)
+			return TRUE
+	return FALSE
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 	if(check_neckgrab_attack(I, user, target_zone))
@@ -365,7 +384,7 @@ emp_act
 
 		if(zone && O.thrower != src)
 			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")
-			if(shield_check == PROJECTILE_FORCE_MISS)
+			if(shield_check == BULLET_ACT_MISS)
 				zone = null
 			else if(shield_check)
 				return
@@ -542,6 +561,20 @@ emp_act
 
 	return perm
 
+// This is for preventing harm by being covered in water, which only prometheans need to deal with.
+// This is not actually used for now since the code for prometheans gets changed a lot.
+/mob/living/carbon/human/get_water_protection()
+	var/protection = ..() // Todo: Replace with species var later.
+	if(protection == 1) // No point doing permeability checks if it won't matter.
+		return protection
+	// Wearing clothing with a low permeability_coefficient can protect from water.
+
+	var/converted_protection = 1 - protection
+	var/perm = reagent_permeability()
+	converted_protection *= perm
+	return 1-converted_protection
+
+
 /mob/living/carbon/human/shank_attack(obj/item/W, obj/item/weapon/grab/G, mob/user, hit_zone)
 
 	if(!..())
@@ -569,3 +602,72 @@ emp_act
 		flick(G.hud.icon_state, G.hud)
 
 	return 1
+
+
+/mob/living/carbon/human/ex_act(severity)
+	if(!blinded)
+		flash_eyes()
+
+	var/shielded = 0
+	var/b_loss = null
+	var/f_loss = null
+	switch (severity)
+		if (1.0)
+			b_loss += 500
+			if (!prob(getarmor(null, "bomb")))
+				gib()
+				return
+			else
+				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
+				throw_at(target, 200, 4)
+			//return
+//				var/atom/target = get_edge_target_turf(user, get_dir(src, get_step_away(user, src)))
+				//user.throw_at(target, 200, 4)
+
+		if (2.0)
+			if (!shielded)
+				b_loss += 60
+
+			f_loss += 60
+
+			if (prob(getarmor(null, "bomb")))
+				b_loss = b_loss/1.5
+				f_loss = f_loss/1.5
+
+			if (!get_ear_protection() >= 2)
+				ear_damage += 30
+				ear_deaf += 120
+			if (prob(70) && !shielded)
+				Paralyse(10)
+
+		if(3.0)
+			b_loss += 30
+			if (prob(getarmor(null, "bomb")))
+				b_loss = b_loss/2
+			if (!get_ear_protection() >= 2)
+				ear_damage += 15
+				ear_deaf += 60
+			if (prob(50) && !shielded)
+				Paralyse(10)
+
+	var/update = 0
+
+	// focus most of the blast on one organ
+	var/obj/item/organ/external/take_blast = pick(organs)
+	update |= take_blast.take_damage(b_loss * 0.9, f_loss * 0.9, used_weapon = "Explosive blast")
+
+	// distribute the remaining 10% on all limbs equally
+	b_loss *= 0.1
+	f_loss *= 0.1
+
+	var/weapon_message = "Explosive Blast"
+
+	for(var/obj/item/organ/external/temp in organs)
+		switch(temp.organ_tag)
+			if(BP_HEAD)
+				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, null, weapon_message)
+			if(BP_TORSO)
+				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, null, weapon_message)
+			else
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, null, weapon_message)
+	if(update)	UpdateDamageIcon()

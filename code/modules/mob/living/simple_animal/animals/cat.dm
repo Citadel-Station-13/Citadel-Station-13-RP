@@ -63,8 +63,8 @@
 	handle_flee_target()
 
 /mob/living/simple_animal/cat/PunchTarget()
-	if(istype(target_mob,/mob/living/simple_animal/mouse))
-		var/mob/living/simple_animal/mouse/mouse = target_mob
+	if(ismouse(target_mob))
+		var/mob/living/simple_mob/animal/passive/mouse/mouse = target_mob
 		mouse.splat()
 		visible_emote(pick("bites \the [mouse]!","toys with \the [mouse].","chomps on \the [mouse]!"))
 		return mouse
@@ -72,7 +72,7 @@
 		..()
 
 /mob/living/simple_animal/cat/Found(var/atom/found_atom)
-	if(istype(found_atom,/mob/living/simple_animal/mouse) && SA_attackable(found_atom))
+	if(ismouse(found_atom) && SA_attackable(found_atom))
 		return found_atom
 
 /mob/living/simple_animal/cat/proc/handle_flee_target()
@@ -101,6 +101,7 @@
 /mob/living/simple_animal/cat/fluff
 	var/mob/living/carbon/human/friend
 	var/befriend_job = null
+	var/friend_name = null
 
 /mob/living/simple_animal/cat/fluff/Life()
 	. = ..()
@@ -136,14 +137,14 @@
 
 	if(!friend)
 		var/mob/living/carbon/human/H = usr
-		if(istype(H) && (!befriend_job || H.job == befriend_job))
+		if(istype(H) && (!befriend_job || H.job == befriend_job) && (!friend_name || H.real_name == friend_name))
 			friend = usr
 			. = 1
 	else if(usr == friend)
 		. = 1 //already friends, but show success anyways
 
 	if(.)
-		set_dir(get_dir(src, friend))
+		setDir(get_dir(src, friend))
 		visible_emote(pick("nuzzles [friend].",
 						   "brushes against [friend].",
 						   "rubs against [friend].",
@@ -192,11 +193,11 @@
 	icon_dead = "cat3_dead"
 	icon_rest = "cat3_rest"
 	holder_type = /obj/item/weapon/holder/cat/fluff/bones
-	var/friend_name = "Erstatz Vryroxes"
+	friend_name = "Erstatz Vryroxes"
 
-/mob/living/simple_animal/cat/kitten/New()
+/mob/living/simple_animal/cat/kitten/Initialize()
+	. = ..()
 	gender = pick(MALE, FEMALE)
-	..()
 
 // VOREStation Edit - Adds generic tactical kittens
 /obj/item/weapon/holder/cat/kitten

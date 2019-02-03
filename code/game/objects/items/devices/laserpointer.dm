@@ -166,7 +166,7 @@
 			outmsg = "<span class='info'>You missed the lens of [C] with [src].</span>"
 
 	//cats!
-	for(var/mob/living/simple_animal/cat/C in viewers(1,targloc))
+	for(var/mob/living/simple_mob/animal/passive/cat/C in viewers(1,targloc))
 		if (!(C.stat || C.buckled))
 			if(prob(50) && !(C.client))
 				C.visible_message("<span class='warning'>[C] pounces on the light!</span>", "<span class='warning'>You pounce on the light!</span>")
@@ -175,7 +175,7 @@
 				spawn(10)
 					C.lay_down()
 			else
-				C.set_dir(get_dir(C,targloc))
+				C.setDir(get_dir(C,targloc))
 				C.visible_message("<span class='notice'>[C] watches the light.</span>", "<span class='notice'>Your attention is drawn to the mysterious glowing dot.</span>")
 
 
@@ -200,7 +200,7 @@
 	if(energy <= max_energy)
 		if(!recharging)
 			recharging = 1
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 		if(energy <= 0)
 			to_chat(user, "<span class='warning'>You've overused the battery of [src], now it needs time to recharge!</span>")
 			recharge_locked = 1

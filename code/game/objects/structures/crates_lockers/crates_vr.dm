@@ -1,7 +1,8 @@
 /obj/structure/closet/crate/secure
 	var/tamper_proof = 0
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/crate/secure/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
@@ -27,8 +28,3 @@
 				qdel(src)
 			if(5)
 				visible_message("<font color='green'><b>The anti-tamper mechanism of [src] fails!</b></font>")
-		return
-
-	..()
-
-	return

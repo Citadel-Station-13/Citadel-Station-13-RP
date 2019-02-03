@@ -16,7 +16,7 @@
 		/obj/item/ammo_magazine/clip/c762/hunter = 9,
 		/obj/item/weapon/gun/projectile/shotgun/pump/rifle = 2)
 
-/obj/structure/closet/secure_closet/guncabinet/rifle/initialize()
+/obj/structure/closet/secure_closet/guncabinet/rifle/Initialize()
 	if(prob(85))
 		starts_with += /obj/item/weapon/gun/projectile/shotgun/pump/rifle
 	else
@@ -24,7 +24,7 @@
 	return ..()
 
 /obj/structure/closet/secure_closet/guncabinet/phase
-	name = "phase pistol cabinet"
+	name = "explorer weapon cabinet"
 	req_one_access = list(access_explorer,access_brig)
 
 	starts_with = list(
@@ -36,15 +36,6 @@
 
 /obj/structure/closet/secure_closet/explorer
 	name = "explorer locker"
-	//VOREStation Add begin
-	icon = 'icons/obj/closet_vr.dmi' //VOREStation Add
-	icon_state = "secureexp1"
-	icon_closed = "secureexp"
-	icon_locked = "secureexp1"
-	icon_opened = "secureexpopen"
-	icon_broken = "secureexpbroken"
-	icon_off = "secureexpoff"
-	//VOREStation Add end
 	req_access = list(access_explorer)
 
 	starts_with = list(
@@ -60,13 +51,9 @@
 		/obj/item/device/geiger,
 		/obj/item/weapon/cell/device,
 		/obj/item/device/radio,
-		/obj/item/stack/marker_beacon/thirty,
-		/obj/item/weapon/material/knife/tacknife/survival, //VOREStation Add,
-		/obj/item/weapon/material/knife/machete, //VOREStation Add,
-		/obj/item/clothing/accessory/holster/machete, //VOREStation Add,
-		/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 2) //VOREStation Add
+		/obj/item/stack/marker_beacon/thirty)
 
-/obj/structure/closet/secure_closet/explorer/initialize()
+/obj/structure/closet/secure_closet/explorer/Initialize()
 	if(prob(50))
 		starts_with += /obj/item/weapon/storage/backpack
 	else
@@ -99,7 +86,6 @@
 		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
 		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
 		/obj/item/weapon/storage/belt/medical/emt,
-		/obj/item/weapon/material/knife/tacknife/survival, //VOREStation Add,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
 		/obj/item/clothing/shoes/boots/winter/explorer,
@@ -143,7 +129,7 @@
 		/obj/item/weapon/cell/device,
 		/obj/item/device/radio)
 
-/obj/structure/closet/secure_closet/pilot/initialize()
+/obj/structure/closet/secure_closet/pilot/Initialize()
 	if(prob(50))
 		starts_with += /obj/item/weapon/storage/backpack
 	else

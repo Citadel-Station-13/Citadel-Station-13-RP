@@ -142,7 +142,7 @@
 	new /obj/effect/gibspawner/human/xenochimera(T)
 
 	reviving = REVIVING_COOLDOWN
-	schedule_callback_in(1 HOUR, VARSET_CALLBACK(src, reviving, 0))
+	addtimer(VARSET_CALLBACK(src, reviving, 0), 1 HOUR)
 
 /obj/effect/gibspawner/human/xenochimera
 	fleshcolor = "#14AD8B"
@@ -689,7 +689,7 @@
 
 	return ..(target)
 
-/mob/living/simple_animal/can_shred(var/mob/living/carbon/human/target)
+/mob/living/simple_mob/can_shred(var/mob/living/carbon/human/target)
 	if(!target)
 		var/list/choices = list()
 		for(var/mob/living/carbon/human/M in oviewers(1))

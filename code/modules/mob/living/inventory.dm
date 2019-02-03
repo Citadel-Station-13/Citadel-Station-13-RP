@@ -110,39 +110,28 @@
 	onclose(user, "mob[name]")
 	return
 
-/mob/living/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
-	if ((!( istype(l_hand, /obj/item/weapon/grab) ) && !( istype(r_hand, /obj/item/weapon/grab) )))
-		if (!( L ))
-			return null
-		else
-			return L.container
-	else
-		if (!( L ))
-			L = new /obj/effect/list_container/mobl( null )
-			L.container += src
-			L.master = src
-		if (istype(l_hand, /obj/item/weapon/grab))
-			var/obj/item/weapon/grab/G = l_hand
-			if (!( L.container.Find(G.affecting) ))
-				L.container += G.affecting
-				if (G.affecting)
-					G.affecting.ret_grab(L, 1)
-		if (istype(r_hand, /obj/item/weapon/grab))
-			var/obj/item/weapon/grab/G = r_hand
-			if (!( L.container.Find(G.affecting) ))
-				L.container += G.affecting
-				if (G.affecting)
-					G.affecting.ret_grab(L, 1)
-		if (!( flag ))
-			if (L.master == src)
-				var/list/temp = list(  )
-				temp += L.container
-				//L = null
-				qdel(L)
-				return temp
-			else
-				return L.container
-	return
+//Just wait until we get variable arm amounts!
+/mob/living/proc/return_all_grabbed_mobs(list/ret = list())
+	. = ret
+	var/obj/item/weapon/grab/left = l_hand
+	var/obj/item/weapon/grab/right = r_hand
+	if(istype(left) && left.affecting)
+		. |= left.affecting
+		left.affecting.return_all_grabbed_mobs(ret)
+	if(istype(right) && right.affecting)
+		. |= right.affecting
+		right.affecting.return_all_grabbed_mobs(ret)
+
+/mob/living/proc/return_all_grab_holders(list/ret = list())
+	. = ret
+	var/obj/item/weapon/grab/left = l_hand
+	var/obj/item/weapon/grab/right = r_hand
+	if(istype(left) && left.affecting)
+		. |= left
+		left.affecting.return_all_grab_holders(ret)
+	if(istype(right) && right.affecting)
+		. |= right
+		right.affecting.return_all_grab_holders(ret)
 
 /mob/living/mode()
 	set name = "Activate Held Object"

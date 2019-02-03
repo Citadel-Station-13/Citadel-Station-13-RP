@@ -27,8 +27,8 @@
 	impact_type = /obj/effect/projectile/xray/impact
 
 /obj/item/projectile/beam/energy_net/on_hit(var/atom/netted)
+	. = ..()
 	do_net(netted)
-	..()
 
 /obj/item/projectile/beam/energy_net/proc/do_net(var/mob/M)
 	var/obj/item/weapon/energy_net/net = new (get_turf(M))

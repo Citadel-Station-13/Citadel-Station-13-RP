@@ -128,7 +128,7 @@
 	desc = "This is an upgraded version of the drill that'll pierce the heavens! (Can be attached to: Combat and Engineering Exosuits)"
 	icon_state = "mecha_diamond_drill"
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
-	equip_cooldown = 20
+	equip_cooldown = 10
 	force = 15
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill/action(atom/target)
@@ -177,12 +177,11 @@
 	var/spray_amount = 5	//units of liquid per particle. 5 is enough to wet the floor - it's a big fire extinguisher, so should be fine
 	var/max_water = 1000
 
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/New()
+/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/Initialize()
+	. = ..()
 	reagents = new/datum/reagents(max_water)
 	reagents.my_atom = src
 	reagents.add_reagent("water", max_water)
-	..()
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/extinguisher/action(atom/target) //copypasted from extinguisher. TODO: Rewrite from scratch.
 	if(!action_checks(target) || get_dist(chassis, target)>3) return
@@ -247,7 +246,7 @@
 	equip_type = EQUIP_SPECIAL
 	var/obj/item/weapon/rcd/electric/mounted/mecha/my_rcd = null
 
-/obj/item/mecha_parts/mecha_equipment/tool/rcd/initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/rcd/Initialize()
 	my_rcd = new(src)
 	return ..()
 
@@ -530,11 +529,10 @@
 	else
 		chassis.take_damage(round(Proj.damage*src.damage_coeff),Proj.check_armour)
 		chassis.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-		Proj.on_hit(chassis)
+		. = Proj.on_hit(chassis)
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
 	do_after_cooldown()
-	return
 
 /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster/proc/dynhitby(atom/movable/A)
 	if(!action_checks(A))
@@ -1203,9 +1201,10 @@
 			usr << "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>"
 			return
 
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			usr << "<span class='danger'>You're too busy getting your life sucked out of you.</span>"
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
 	//search for a valid passenger compartment
@@ -1289,7 +1288,7 @@
 	if(chassis.hasInternalDamage(MECHA_INT_CONTROL_LOST))
 		move_result = step_rand(chassis)
 	else if(chassis.dir!=direction)
-		chassis.set_dir(direction)
+		chassis.setDir(direction)
 		move_result = 1
 	else
 		move_result	= step(chassis,direction)

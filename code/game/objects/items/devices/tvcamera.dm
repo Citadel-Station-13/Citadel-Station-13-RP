@@ -1,6 +1,7 @@
 /obj/item/device/tvcamera
 	name = "press camera drone"
 	desc = "A Ward-Takahashi EyeBuddy media streaming hovercam. Weapon of choice for war correspondents and reality show cameramen."
+	icon = 'icons/obj/device.dmi'
 	icon_state = "camcorder"
 	item_state = "camcorder"
 	w_class = ITEMSIZE_LARGE
@@ -26,7 +27,7 @@
 	to_chat(usr, "Video feed is [camera.status ? "on" : "off"]")
 	to_chat(usr, "Audio feed is [radio.broadcasting ? "on" : "off"]")
 
-/obj/item/device/tvcamera/initialize()
+/obj/item/device/tvcamera/Initialize()
 	. = ..()
 	camera = new(src)
 	camera.c_tag = channel

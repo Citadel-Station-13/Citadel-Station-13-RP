@@ -271,7 +271,7 @@ var/list/turret_icons
 		settings[++settings.len] = list("category" = "Neutralize All Entities", "setting" = "check_all", "value" = check_all)
 		data["settings"] = settings
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "turret_control.tmpl", "Turret Controls", 500, 300)
 		ui.set_initial_data(data)
@@ -406,16 +406,16 @@ var/list/turret_icons
 					attacked = 0
 		..()
 
-/obj/machinery/porta_turret/attack_generic(mob/user as mob, var/damage)
-	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
-		if(damage >= 10)
+/obj/machinery/porta_turret/attack_generic(mob/living/L, damage)
+	if(isanimal(L))
+		var/mob/living/simple_mob/S = L
+		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			var/incoming_damage = round(damage - (damage / 5)) //Turrets are slightly armored, assumedly.
 			visible_message("<span class='danger'>\The [S] [pick(S.attacktext)] \the [src]!</span>")
 			take_damage(incoming_damage)
 			S.do_attack_animation(src)
 			return 1
-		visible_message("<span class='notice'>\The [user] bonks \the [src]'s casing!</span>")
+		visible_message("<span class='notice'>\The [L] bonks \the [src]'s casing!</span>")
 	return ..()
 
 /obj/machinery/porta_turret/emag_act(var/remaining_charges, var/mob/user)
@@ -445,6 +445,7 @@ var/list/turret_icons
 		die()	//the death process :(
 
 /obj/machinery/porta_turret/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	var/damage = Proj.get_structure_damage()
 
 	if(!damage)
@@ -456,8 +457,6 @@ var/list/turret_icons
 			spawn()
 				sleep(60)
 				attacked = 0
-
-	..()
 
 	take_damage(damage)
 
@@ -675,7 +674,7 @@ var/list/turret_icons
 		last_target = target
 		spawn()
 			popUp()				//pop the turret up if it's not already up.
-		set_dir(get_dir(src, target))	//even if you can't shoot, follow the target
+		setDir(get_dir(src, target))	//even if you can't shoot, follow the target
 		spawn()
 			shootAt(target)
 		return 1
@@ -722,7 +721,10 @@ var/list/turret_icons
 		def_zone = pick(BP_TORSO, BP_GROIN)
 
 	//Shooting Code:
-	A.launch(target, def_zone)
+	A.firer = src
+	A.old_style_target(target)
+	A.def_zone = def_zone
+	A.fire()
 
 	// Reset the time needed to go back down, since we just tried to shoot at someone.
 	timeout = 10

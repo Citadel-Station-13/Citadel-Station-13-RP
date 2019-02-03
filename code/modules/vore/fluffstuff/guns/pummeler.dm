@@ -1,7 +1,7 @@
 // -------------- Pummeler -------------
 /obj/item/weapon/gun/energy/pummeler
-	name = "\improper PML9 \'Pummeler\'"
-	desc = "For when you want to get that pesky marketing guy out of your face ASAP. The pummeler fires one HUGE \
+	name = "hypersonic gun"
+	desc = "For when you want to get that pesky marketing guy out of your face ASAP. The PML9 'Pummeler' fires one HUGE \
 	sonic blast in the direction of fire, throwing the target away from you at high speed. Now you can REALLY \
 	turn up the bass to max."
 
@@ -34,9 +34,10 @@
 	check_armour = "melee"
 	embed_chance = 0
 	vacuum_traversal = 0
-	kill_count = 6 //Scary name, but just deletes the projectile after this range
+	range = 6 //Scary name, but just deletes the projectile after this range
 
 /obj/item/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
+	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
@@ -44,8 +45,6 @@
 			L.Stun(1)
 			L.Confuse(1)
 		L.throw_at(get_edge_target_turf(L, throwdir), rand(3,6), 10)
-
-		return 1
 
 //R&D Design
 /datum/design/item/weapon/pummeler

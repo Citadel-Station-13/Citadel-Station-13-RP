@@ -23,8 +23,8 @@
 	var/sheets_refunded = 2
 	var/obj/machinery/light/newlight = null
 
-/obj/machinery/light_construct/New()
-	..()
+/obj/machinery/light_construct/Initialize()
+	. = ..()
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 	if (fixture_type == "flamp")
@@ -179,6 +179,11 @@
 	var/shows_alerts = TRUE		// Flag for if this fixture should show alerts.  Make sure icon states exist!
 	var/current_alert = null	// Which alert are we showing right now?
 
+	var/auto_flicker = FALSE // If true, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
+
+/obj/machinery/light/flicker
+	auto_flicker = TRUE
+
 // the smaller bulb light fixture
 
 /obj/machinery/light/small
@@ -190,6 +195,9 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 	shows_alerts = FALSE
+
+/obj/machinery/light/small/flicker
+	auto_flicker = TRUE
 
 /obj/machinery/light/flamp
 	icon = 'icons/obj/lighting.dmi'
@@ -205,9 +213,17 @@
 	shows_alerts = FALSE
 	var/lamp_shade = 1
 
+/obj/machinery/light/flamp/flicker
+	auto_flicker = TRUE
+
+
 /obj/machinery/light/small/emergency
 	brightness_range = 4
 	brightness_color = "#da0205"
+
+/obj/machinery/light/small/emergency/flicker
+	auto_flicker = TRUE
+
 
 /obj/machinery/light/spot
 	name = "spotlight"
@@ -217,43 +233,47 @@
 	brightness_range = 12
 	brightness_power = 0.9
 
-/obj/machinery/light/built/New()
+/obj/machinery/light/spot/flicker
+	auto_flicker = TRUE
+
+
+/obj/machinery/light/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
-/obj/machinery/light/small/built/New()
+/obj/machinery/light/small/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
-/obj/machinery/light/flamp/built/New()
+/obj/machinery/light/flamp/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	lamp_shade = 0
 	update(0)
-	..()
+
 //VOREStation Add - Shadeless!
-/obj/machinery/light/flamp/noshade/New()
+/obj/machinery/light/flamp/noshade/Initialize()
+	. = ..()
 	lamp_shade = 0
 	update(0)
-	..()
+
 //VOREStation Add End
 // create a new lighting fixture
-/obj/machinery/light/New()
-	..()
+/obj/machinery/light/Initialize()
+	. = ..()
 
-	spawn(2)
-		on = has_power()
+	on = has_power()
 
-		switch(fitting)
-			if("tube")
-				if(prob(2))
-					broken(1)
-			if("bulb")
-				if(prob(5))
-					broken(1)
-		spawn(1)
-			update(0)
+	switch(fitting)
+		if("tube")
+			if(prob(2))
+				broken(1)
+		if("bulb")
+			if(prob(5))
+				broken(1)
+	update(0)
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
@@ -333,7 +353,8 @@
 
 	if(on)
 		if(light_range != brightness_range || light_power != brightness_power || light_color != brightness_color)
-			switchcount++
+			if(!auto_flicker)
+				switchcount++
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 
@@ -716,6 +737,13 @@
 	if(on)
 		use_power(light_range * LIGHTING_POWER_FACTOR, LIGHT)
 
+	if(auto_flicker && !flickering)
+		if(check_for_player_proximity(src, radius = 12, ignore_ghosts = FALSE, ignore_afk = TRUE))
+			seton(TRUE) // Lights must be on to flicker.
+			flicker(5)
+		else
+			seton(FALSE) // Otherwise keep it dark and spooky for when someone shows up.
+
 
 // called when area power state changes
 /obj/machinery/light/power_change()
@@ -810,15 +838,14 @@
 			desc = "A broken [name]."
 
 
-/obj/item/weapon/light/New()
-	..()
+/obj/item/weapon/light/Initialize()
+	. = ..()
 	switch(name)
 		if("light tube")
 			brightness_range = rand(6,9)
 		if("light bulb")
 			brightness_range = rand(4,6)
 	update()
-
 
 // attack bulb/tube with object
 // if a syringe, can inject phoron to make it explode

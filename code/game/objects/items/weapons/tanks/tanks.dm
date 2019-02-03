@@ -58,21 +58,21 @@ var/list/global/tank_gauge_cache = list()
 	src.proxyassembly = proxy
 
 
-/obj/item/weapon/tank/New()
+/obj/item/weapon/tank/Initialize()
 	..()
 
 	src.init_proxy()
 	src.air_contents = new /datum/gas_mixture()
 	src.air_contents.volume = volume //liters
 	src.air_contents.temperature = T20C
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	update_gauge()
 	return
 
 /obj/item/weapon/tank/Destroy()
 	QDEL_NULL(air_contents)
 
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(src.proxyassembly)
 
 	if(istype(loc, /obj/item/device/transfer_valve))
@@ -264,7 +264,7 @@ var/list/global/tank_gauge_cache = list()
 					data["maskConnected"] = 1
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -464,7 +464,7 @@ var/list/global/tank_gauge_cache = list()
 			if(!T)
 				return
 			T.assume_air(air_contents)
-			playsound(get_turf(src), 'sound/weapons/shotgun.ogg', 20, 1)
+			playsound(get_turf(src), 'sound/weapons/Gunshot_shotgun.ogg', 20, 1)
 			visible_message("\icon[src] <span class='danger'>\The [src] flies apart!</span>", "<span class='warning'>You hear a bang!</span>")
 			T.hotspot_expose(air_contents.temperature, 70, 1)
 
@@ -503,7 +503,7 @@ var/list/global/tank_gauge_cache = list()
 
 			var/release_ratio = 0.002
 			if(tank_pressure)
-				release_ratio = Clamp(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
+				release_ratio = CLAMP(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
 
 			var/datum/gas_mixture/leaked_gas = air_contents.remove_ratio(release_ratio)
 			//dynamic air release based on ambient pressure
@@ -573,30 +573,30 @@ var/list/global/tank_gauge_cache = list()
 	src.overlays += "bomb_assembly"
 
 
-/obj/item/weapon/tank/phoron/onetankbomb/New()
-	..()
-	src.onetankbomb()
+/obj/item/weapon/tank/phoron/onetankbomb/Initialize()
+	. = ..()
+	onetankbomb()
 
-/obj/item/weapon/tank/oxygen/onetankbomb/New()
-	..()
-	src.onetankbomb()
+/obj/item/weapon/tank/oxygen/onetankbomb/Initialize()
+	. = ..()
+	onetankbomb()
 
 
-/obj/item/weapon/tank/phoron/onetankbomb/full/New()
-	..()
-	src.onetankbomb(2)
+/obj/item/weapon/tank/phoron/onetankbomb/full/Initialize()
+	. = ..()
+	onetankbomb(2)
 
-/obj/item/weapon/tank/oxygen/onetankbomb/full/New()
-	..()
-	src.onetankbomb(2)
+/obj/item/weapon/tank/oxygen/onetankbomb/full/Initialize()
+	. = ..()
+	onetankbomb(2)
 
-/obj/item/weapon/tank/phoron/onetankbomb/small/New()
-	..()
-	src.onetankbomb(0)
+/obj/item/weapon/tank/phoron/onetankbomb/small/Initialize()
+	. = ..()
+	onetankbomb(0)
 
-/obj/item/weapon/tank/oxygen/onetankbomb/small/New()
-	..()
-	src.onetankbomb(0)
+/obj/item/weapon/tank/oxygen/onetankbomb/small/Initialize()
+	. = ..()
+	onetankbomb(0)
 
 /////////////////////////////////
 ///Pulled from rewritten bomb.dm

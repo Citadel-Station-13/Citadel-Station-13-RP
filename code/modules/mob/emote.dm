@@ -11,7 +11,7 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as text|null, src) //VOREStation Edit - Reflect too long messages, within reason
+		input = sanitize_or_reflect(input(src,"Choose an emote to display.") as message|null, src) //VOREStation Edit - Reflect too long messages, within reason
 	else
 		input = message
 	if(input)
@@ -52,6 +52,13 @@
 				if(O)
 					O.see_emote(src, message, m_type)
 
+// Shortcuts for above proc
+/mob/proc/visible_emote(var/act_desc)
+	custom_emote(1, act_desc)
+
+/mob/proc/audible_emote(var/act_desc)
+	custom_emote(2, act_desc)
+
 /mob/proc/emote_dead(var/message)
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
@@ -70,7 +77,7 @@
 
 	var/input
 	if(!message)
-		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as text|null, src) //VOREStation Edit - Reflect too long messages, within reason
+		input = sanitize_or_reflect(input(src, "Choose an emote to display.") as message|null, src) //VOREStation Edit - Reflect too long messages, within reason
 	else
 		input = message
 

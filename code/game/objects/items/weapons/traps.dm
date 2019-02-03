@@ -95,7 +95,7 @@
 		return 0
 
 	//trap the victim in place
-	set_dir(L.dir)
+	setDir(L.dir)
 	can_buckle = 1
 	buckle_mob(L)
 	L << "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>"

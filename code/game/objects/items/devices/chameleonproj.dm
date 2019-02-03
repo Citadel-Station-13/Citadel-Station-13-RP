@@ -1,5 +1,6 @@
 /obj/item/device/chameleon
 	name = "chameleon projector"
+	icon = 'icons/obj/device.dmi'
 	icon_state = "shield0"
 	flags = CONDUCT
 	slot_flags = SLOT_BELT
@@ -66,6 +67,9 @@
 
 /obj/item/device/chameleon/proc/disrupt(var/delete_dummy = 1)
 	if(active_dummy)
+		for(var/mob/M in active_dummy)
+			to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
+
 		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)
@@ -98,30 +102,22 @@
 	icon = new_icon
 	icon_state = new_iconstate
 	overlays = new_overlays
-	set_dir(O.dir)
+	setDir(O.dir)
 	M.loc = src
 	master = C
 	master.active_dummy = src
 
 /obj/effect/dummy/chameleon/attackby()
-	for(var/mob/M in src)
-		M << "<span class='warning'>Your chameleon-projector deactivates.</span>"
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/attack_hand()
-	for(var/mob/M in src)
-		M << "<span class='warning'>Your chameleon-projector deactivates.</span>"
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/ex_act()
-	for(var/mob/M in src)
-		M << "<span class='warning'>Your chameleon-projector deactivates.</span>"
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/bullet_act()
-	for(var/mob/M in src)
-		M << "<span class='warning'>Your chameleon-projector deactivates.</span>"
-	..()
+	. = ..()
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/relaymove(var/mob/user, direction)

@@ -4,7 +4,7 @@
 	icon_state = "mecha_uac2"
 	equip_cooldown = 60 // 6 seconds
 	projectile = /obj/item/projectile/bullet/cannon
-	fire_sound = 'sound/weapons/cannon.ogg'
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 1000
 	salvageable = 0 // We don't want players ripping this off a dead mech. Could potentially be a prize for beating it if Devs bless me and someone offers a nerf idea.
@@ -15,9 +15,10 @@
 	icon_state = "shell"
 	damage = 1000 // In order to 1-hit any other mech and royally fuck anyone unfortunate enough to get in the way.
 
-/obj/item/projectile/bullet/cannon/on_hit(var/atom/target, var/blocked = 0)
+/obj/item/projectile/bullet/cannon/on_hit(atom/target, blocked = 0)
+	. = ..()
 	explosion(target, 0, 0, 2, 4)
-	return 1
+	return BULLET_ACT_HIT
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/cannon/weak
 	name = "8.8 cm KwK 36"

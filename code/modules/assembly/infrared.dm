@@ -25,11 +25,11 @@
 /obj/item/device/assembly/infra/toggle_secure()
 	secured = !secured
 	if(secured)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		on = 0
 		if(first)	qdel(first)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 
@@ -56,7 +56,7 @@
 		var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam((holder ? holder.loc : loc) )
 		I.master = src
 		I.density = 1
-		I.set_dir(dir)
+		I.setDir(dir)
 		step(I, I.dir)
 		if(I)
 			I.density = 0
@@ -81,14 +81,14 @@
 /obj/item/device/assembly/infra/Move()
 	var/t = dir
 	..()
-	set_dir(t)
+	setDir(t)
 	qdel(first)
 	return
 
 
 /obj/item/device/assembly/infra/holder_movement()
 	if(!holder)	return 0
-//		set_dir(holder.dir)
+//		setDir(holder.dir)
 	qdel(first)
 	return 1
 
@@ -142,12 +142,12 @@
 	return
 
 
-/obj/item/device/assembly/infra/verb/rotate()//This could likely be better
-	set name = "Rotate Infrared Laser"
+/obj/item/device/assembly/infra/verb/rotate_clockwise()
+	set name = "Rotate Infrared Laser Clockwise"
 	set category = "Object"
 	set src in usr
 
-	set_dir(turn(dir, 90))
+	src.setDir(turn(src.dir, 270))
 	return
 
 
@@ -203,7 +203,7 @@
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
 	I.density = 1
-	I.set_dir(dir)
+	I.setDir(dir)
 	//world << "created new beam \ref[I] at [I.x] [I.y] [I.z]"
 	step(I, I.dir)
 

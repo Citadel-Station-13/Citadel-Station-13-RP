@@ -2,7 +2,8 @@
 //Having them here also makes for a nice reference list of the various overlay-updating procs available
 
 /mob/proc/regenerate_icons()		//Update every aspect of the mob's icons (expensive, resist the urge to use unless you need it)
-	return
+	update_inv_r_hand()
+	update_inv_l_hand()
 
 /mob/proc/update_icons()
 	update_icon() //Ugh.

@@ -160,18 +160,15 @@ field_generator power level display
 /obj/machinery/field_generator/emp_act()
 	return 0
 
-/obj/machinery/field_generator/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/field_generator/bullet_act(obj/item/projectile/Proj)
+	. = ..()
 	if(istype(Proj, /obj/item/projectile/beam))
 		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
-	return 0
-
 
 /obj/machinery/field_generator/Destroy()
-	src.cleanup()
-	. = ..()
-
-
+	cleanup()
+	return ..()
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0
@@ -290,7 +287,7 @@ field_generator power level display
 			fields += CF
 			G.fields += CF
 			CF.loc = T
-			CF.set_dir(field_dir)
+			CF.setDir(field_dir)
 	var/listcheck = 0
 	for(var/obj/machinery/field_generator/FG in connected_gens)
 		if (isnull(FG))

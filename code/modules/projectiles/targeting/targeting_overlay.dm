@@ -89,7 +89,7 @@
 		aiming_at = null
 	owner = null
 	aiming_with = null
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 obj/aiming_overlay/proc/update_aiming_deferred()
@@ -139,7 +139,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 
 	if(!owner.incapacitated() && owner.client)
 		spawn(0)
-			owner.set_dir(get_dir(get_turf(owner), get_turf(src)))
+			owner.setDir(get_dir(get_turf(owner), get_turf(src)))
 
 /obj/aiming_overlay/proc/aim_at(var/mob/target, var/obj/thing)
 
@@ -176,7 +176,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	if(istype(aiming_with, /obj/item/weapon/gun))
 		playsound(get_turf(owner), 'sound/weapons/TargetOn.ogg', 50,1)
 	forceMove(get_turf(target))
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
 	aiming_at.aimed |= src
 	toggle_active(1)
@@ -222,5 +222,5 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	aiming_at.aimed -= src
 	aiming_at = null
 	loc = null
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 

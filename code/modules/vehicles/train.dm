@@ -22,7 +22,7 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/train/initialize()
+/obj/vehicle/train/Initialize()
 	. = ..()
 	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
@@ -63,9 +63,8 @@
 /obj/vehicle/train/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
-		L.bullet_act(Proj)
-		return
-	..()
+		return L.bullet_act(Proj)
+	return ..()
 
 /obj/vehicle/train/update_icon()
 	if(open)
@@ -171,7 +170,7 @@
 	//latch with src as the follower
 	lead = T
 	T.tow = src
-	set_dir(lead.dir)
+	setDir(lead.dir)
 
 	if(user)
 		user << "<font color='blue'>You hitch [src] to [T].</font>"

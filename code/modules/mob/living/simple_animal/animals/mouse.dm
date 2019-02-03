@@ -16,10 +16,10 @@
 	see_in_dark = 6
 	universal_understand = 1
 
-	mob_size = MOB_MINISCULE
+	mob_size = MOB_SMALL
 	pass_flags = PASSTABLE
-	can_pull_size = ITEMSIZE_TINY
-	can_pull_mobs = MOB_PULL_NONE
+//	can_pull_size = ITEMSIZE_TINY
+//	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
 
@@ -63,8 +63,8 @@
 		else if(prob(1))
 			audible_emote("snuffles.")
 
-/mob/living/simple_animal/mouse/New()
-	..()
+/mob/living/simple_animal/mouse/Initialize()
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -128,8 +128,8 @@
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_animal/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_animal/mouse/brown/Tom/Initialize()
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

@@ -32,9 +32,10 @@
 	check_armour = "melee"
 	embed_chance = 0
 	vacuum_traversal = 0
-	kill_count = 5 //Scary name, but just deletes the projectile after this range
+	range = 5 //Scary name, but just deletes the projectile after this range
 
 /obj/item/projectile/sickshot/on_hit(var/atom/movable/target, var/blocked = 0)
+	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
 		if(prob(20))
@@ -44,8 +45,6 @@
 			var/mob/living/carbon/human/H = target
 			H.vomit()
 			H.Confuse(2)
-			
-		return 1
 
 //R&D Design
 /datum/design/item/weapon/sickshot

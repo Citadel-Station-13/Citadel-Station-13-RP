@@ -58,10 +58,10 @@
 	var/x_offset = 26
 	var/y_offset = 26
 
-/obj/structure/construction/initialize(var/mapload, var/ndir, var/building = FALSE)
+/obj/structure/construction/Initialize(var/mapload, var/ndir, var/building = FALSE)
 	. = ..()
 	if(ndir)
-		set_dir(ndir)
+		setDir(ndir)
 	if(x_offset)
 		pixel_x = (dir & 3) ? 0 : (dir == EAST ? -x_offset : x_offset)
 	if(y_offset)

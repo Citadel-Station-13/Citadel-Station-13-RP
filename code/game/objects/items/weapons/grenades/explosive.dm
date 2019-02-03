@@ -50,20 +50,21 @@
 		var/fragment_type = pickweight(fragtypes)
 		var/obj/item/projectile/bullet/pellet/fragment/P = new fragment_type(T)
 		P.pellets = fragments_per_projectile
-		P.shot_from = src.name
+		P.shot_from = name
 
-		P.launch(O)
+		P.old_style_target(O)
+		P.fire()
 
 		//Make sure to hit any mobs in the source turf
 		for(var/mob/living/M in T)
 			//lying on a frag grenade while the grenade is on the ground causes you to absorb most of the shrapnel.
 			//you will most likely be dead, but others nearby will be spared the fragments that hit you instead.
 			if(M.lying && isturf(src.loc))
-				P.attack_mob(M, 0, 5)
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = 25)
 			else if(!M.lying && src.loc != get_turf(src)) //if it's not on the turf, it must be in the mob!
-				P.attack_mob(M, 0, 25) //you're holding a grenade, dude!
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -25) //you're holding a grenade, dude!
 			else
-				P.attack_mob(M, 0, 100) //otherwise, allow a decent amount of fragments to pass
+				P.process_hit(get_turf(M), M, distance = 0, accuracy_mod = -75) //otherwise, allow a decent amount of fragments to pass
 
 /obj/item/weapon/grenade/explosive/mini
 	name = "mini fragmentation grenade"

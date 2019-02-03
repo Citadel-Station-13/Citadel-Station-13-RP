@@ -20,15 +20,7 @@
 	var/active_regen = FALSE //Used for the regenerate proc in human_powers.dm
 	var/active_regen_delay = 300
 
-///////////////////////// CITADEL STATION ADDITIONS START
-
-	var/emoteDanger = 1					// What the current danger for spamming emotes is - shared between different types of emotes to keep people from just
-										// flip/snap/flip/snap.  Decays at a rate of 1 per second to a minimum of 1.
-
-///////////////////////// CITADEL STATION ADDITIONS END
-
-/mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-
+/mob/living/carbon/human/Initialize(mapload, var/new_species = null)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
@@ -49,7 +41,7 @@
 
 	human_mob_list |= src
 
-	..()
+	. = ..()
 
 	hide_underwear.Cut()
 	for(var/category in global_underwear.categories_by_name)
@@ -65,7 +57,7 @@
 	for(var/organ in organs)
 		qdel(organ)
 	QDEL_NULL(nif)	//VOREStation Add
-	QDEL_NULL_LIST(vore_organs) //VOREStation Add
+	QDEL_LIST_NULL(vore_organs) //VOREStation Add
 	return ..()
 
 /mob/living/carbon/human/Stat()
@@ -104,74 +96,6 @@
 				stat("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(species)
 		species.Stat(src)
-
-/mob/living/carbon/human/ex_act(severity)
-	if(!blinded)
-		flash_eyes()
-
-	var/shielded = 0
-	var/b_loss = null
-	var/f_loss = null
-	switch (severity)
-		if (1.0)
-			b_loss += 500
-			if (!prob(getarmor(null, "bomb")))
-				gib()
-				return
-			else
-				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
-				throw_at(target, 200, 4)
-			//return
-//				var/atom/target = get_edge_target_turf(user, get_dir(src, get_step_away(user, src)))
-				//user.throw_at(target, 200, 4)
-
-		if (2.0)
-			if (!shielded)
-				b_loss += 60
-
-			f_loss += 60
-
-			if (prob(getarmor(null, "bomb")))
-				b_loss = b_loss/1.5
-				f_loss = f_loss/1.5
-
-			if (!get_ear_protection() >= 2)
-				ear_damage += 30
-				ear_deaf += 120
-			if (prob(70) && !shielded)
-				Paralyse(10)
-
-		if(3.0)
-			b_loss += 30
-			if (prob(getarmor(null, "bomb")))
-				b_loss = b_loss/2
-			if (!get_ear_protection() >= 2)
-				ear_damage += 15
-				ear_deaf += 60
-			if (prob(50) && !shielded)
-				Paralyse(10)
-
-	var/update = 0
-
-	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
-	update |= take_blast.take_damage(b_loss * 0.9, f_loss * 0.9, used_weapon = "Explosive blast")
-
-	// distribute the remaining 10% on all limbs equally
-	b_loss *= 0.1
-	f_loss *= 0.1
-
-	var/weapon_message = "Explosive Blast"
-
-	for(var/obj/item/organ/external/temp in organs)
-		switch(temp.organ_tag)
-			if(BP_HEAD)
-				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
-			if(BP_TORSO)
-				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message)
-			else
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
-	if(update)	UpdateDamageIcon()
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
 	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
