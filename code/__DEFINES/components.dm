@@ -47,6 +47,8 @@
 #define COMSIG_ATOM_SET_LIGHT "atom_set_light"					//from base of atom/set_light(): (l_range, l_power, l_color)
 
 // /area signals
+#define COMSIG_AREA_ENTERED "area_entered" 						//from base of area/Entered(): (atom/movable/M)
+#define COMSIG_AREA_EXITED "area_exited" 							//from base of area/Exited(): (atom/movable/M)
 
 // /turf signals
 #define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"				//from base of turf/New(): (turf/source, direction)
@@ -61,6 +63,8 @@
 #define COMSIG_MOVABLE_UNCROSSED "movable_uncrossed"            //from base of atom/movable/Uncrossed(): (/atom/movable)
 #define COMSIG_MOVABLE_BUMP "movable_bump"						//from base of atom/movable/Bump(): (/atom)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit" 			//from base of atom/movable/onTransitZ(): (old_z, new_z)
+#define COMSIG_ENTER_AREA "enter_area" 							//from base of area/Entered(): (/area)
+#define COMSIG_EXIT_AREA "exit_area" 							//from base of area/Exited(): (/area)
 
 /*******Non-Signal Component Related Defines*******/
 

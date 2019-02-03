@@ -779,7 +779,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/areas = new/list()
-	for(var/area/N in all_areas)
+	for(var/area/N in GLOB.sortedAreas)
 		if(istype(N, areatype)) areas += N
 	return areas
 
@@ -793,7 +793,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/turfs = new/list()
-	for(var/area/N in all_areas)
+	for(var/area/N in GLOB.sortedAreas)
 		if(istype(N, areatype))
 			for(var/turf/T in N) turfs += T
 	return turfs
@@ -808,7 +808,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/atoms = new/list()
-	for(var/area/N in all_areas)
+	for(var/area/N in GLOB.sortedAreas)
 		if(istype(N, areatype))
 			for(var/atom/A in N)
 				atoms += A
@@ -884,13 +884,6 @@ proc/get_mob_with_client_list()
 	else if (zone == "l_foot") return "left foot"
 	else if (zone == "r_foot") return "right foot"
 	else return zone
-
-/proc/get(atom/loc, type)
-	while(loc)
-		if(istype(loc, type))
-			return loc
-		loc = loc.loc
-	return null
 
 /proc/get_turf_or_move(turf/location)
 	return get_turf(location)

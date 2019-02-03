@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(mapping)
 
 	var/obj/effect/landmark/engine_loader/engine_loader
 
+	var/loading_ruins = FALSE
+
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)

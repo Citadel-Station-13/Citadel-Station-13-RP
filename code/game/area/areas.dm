@@ -20,6 +20,12 @@
 
 	var/eject = null
 
+	var/outdoors = FALSE //For space, the asteroid, lavaland, etc. Used with blueprints to determine if we are adding a new area (vs editing a station room)
+	var/areasize = 0 //Size of the area in open turfs, only calculated for indoors areas.
+
+	/// If false, loading multiple maps with this area type will create multiple instances.
+	var/unique = TRUE
+
 	var/debug = 0
 	var/requires_power = 1
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
@@ -108,6 +114,13 @@
 		if(!areas_in_z["[z]"])
 			areas_in_z["[z]"] = list()
 		areas_in_z["[z]"] += src
+
+/area/proc/update_areasize()
+	if(outdoors)
+		return FALSE
+	areasize = 0
+	for(var/turf/open/T in contents)
+		areasize++
 
 /area/Destroy()
 	if(GLOB.areas_by_type[type] == src)
@@ -312,10 +325,10 @@
 
 
 
-/area/Entered(atom/movable/M)
+/area/Entered(atom/movable/A)
 	set waitfor = FALSE
-	SEND_SIGNAL(src, COMSIG_AREA_ENTERED, M)
-	SEND_SIGNAL(M, COMSIG_ENTER_AREA, src) //The atom that enters the area
+	SEND_SIGNAL(src, COMSIG_AREA_ENTERED, A)
+	SEND_SIGNAL(A, COMSIG_ENTER_AREA, src) //The atom that enters the area
 
 	if(!istype(A,/mob/living))	return
 
@@ -458,7 +471,7 @@ var/list/mob/living/forced_ambiance_list = new
 var/list/teleportlocs = list()
 
 /hook/startup/proc/setupTeleportLocs()
-	for(var/area/AR in all_areas)
+	for(var/area/AR in GLOB.sortedAreas)
 		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
 		if(teleportlocs.Find(AR.name)) continue
 		var/turf/picked = pick(get_area_turfs(AR.type))
@@ -473,7 +486,7 @@ var/list/teleportlocs = list()
 var/list/ghostteleportlocs = list()
 
 /hook/startup/proc/setupGhostTeleportLocs()
-	for(var/area/AR in all_areas)
+	for(var/area/AR in GLOB.sortedAreas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
 			ghostteleportlocs += AR.name

@@ -71,7 +71,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 
 // Paranoid about the maploader, direction is very important to cliffs, since they may get bigger if initialized while facing NORTH.
 /obj/structure/cliff/automatic/LateInitialize()
-	if(dir in GLOB.cardinal)
+	if(dir in GLOB.cardinals)
 		icon_variant = pick("a", "b", "c")
 
 	if(dir & NORTH && !bottom) // North-facing cliffs require more cliffs to be made.

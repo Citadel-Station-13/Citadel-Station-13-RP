@@ -341,7 +341,7 @@
 	var/list/areas_with_intercom = list()
 	var/list/areas_with_camera = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
@@ -672,3 +672,41 @@
 			var/log = "[key_name(src)] changed [planet.name]'s time to [planet.current_time.show_time("hh:mm")]."
 			message_admins(log)
 			log_admin(log)
+
+/client/proc/start_line_profiling()
+	set category = "Profile"
+	set name = "Start Line Profiling"
+	set desc = "Starts tracking line by line profiling for code lines that support it"
+
+	PROFILE_START
+
+	message_admins("<span class='adminnotice'>[key_name_admin(src)] started line by line profiling.</span>")
+	feedback_add_details("admin_verb","STALPF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(src)] started line by line profiling.")
+
+/client/proc/stop_line_profiling()
+	set category = "Profile"
+	set name = "Stops Line Profiling"
+	set desc = "Stops tracking line by line profiling for code lines that support it"
+
+	PROFILE_STOP
+
+	message_admins("<span class='adminnotice'>[key_name_admin(src)] stopped line by line profiling.</span>")
+	feedback_add_details("admin_verb","STOLPF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(src)] stopped line by line profiling.")
+
+/client/proc/show_line_profiling()
+	set category = "Profile"
+	set name = "Show Line Profiling"
+	set desc = "Shows tracked profiling info from code lines that support it"
+
+	var/sortlist = list(
+		"Avg time"		=	/proc/cmp_profile_avg_time_dsc,
+		"Total Time"	=	/proc/cmp_profile_time_dsc,
+		"Call Count"	=	/proc/cmp_profile_count_dsc
+	)
+	var/sort = input(src, "Sort type?", "Sort Type", "Avg time") as null|anything in sortlist
+	if (!sort)
+		return
+	sort = sortlist[sort]
+	profile_show(src, sort)

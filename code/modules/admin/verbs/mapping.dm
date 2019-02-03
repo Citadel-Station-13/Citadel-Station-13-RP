@@ -136,6 +136,9 @@ var/list/debug_verbs = list (
         ,/client/proc/powerdebug
         ,/client/proc/count_objects_on_z_level
         ,/client/proc/count_objects_all
+        ,/client/proc/start_line_profiling
+        ,/client/proc/show_line_profiling
+        ,/client/proc/stop_line_profiling
         ,/client/proc/cmd_assume_direct_control
         ,/client/proc/jump_to_dead_group
         ,/client/proc/startSinglo
