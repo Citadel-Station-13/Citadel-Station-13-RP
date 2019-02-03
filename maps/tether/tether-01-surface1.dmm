@@ -17298,11 +17298,15 @@
 "aGx" = (
 /obj/structure/table/glass,
 /obj/item/weapon/storage/toolbox/emergency,
+<<<<<<< HEAD
 /obj/item/device/radio{
 	frequency = 1487;
 	icon_state = "med_walkietalkie";
 	name = "Medbay Emergency Radio Link"
 	},
+=======
+/obj/item/device/radio/emergency,
+>>>>>>> 6ac6d84... Merge pull request #4742 from Poojawa/upstream/upstream-merge-5735
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)

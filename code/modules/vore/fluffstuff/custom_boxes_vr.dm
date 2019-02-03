@@ -232,8 +232,21 @@
 	name = "Phi's Personal Items"
 	has_items = list(
 		/obj/item/clothing/accessory/medal/bronze_heart,
+<<<<<<< HEAD
 		/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi)
 END OF CITADEL CHANGES */
+=======
+		/obj/item/clothing/gloves/ring/seal/signet/fluff/phi)
+
+/* //VORESTATION AI TEMPORARY REMOVAL
+// Tabiranth: Ascian
+/obj/item/weapon/grenade/spawnergrenade/spirit
+	name = "spirit's pet carrier"
+	desc = "Contains kitten."
+	spawner_type = /mob/living/simple_mob/cat/fluff/tabiranth
+	deliveryamt = 1
+*/
+>>>>>>> 6ac6d84... Merge pull request #4742 from Poojawa/upstream/upstream-merge-5735
 /*
 Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 */

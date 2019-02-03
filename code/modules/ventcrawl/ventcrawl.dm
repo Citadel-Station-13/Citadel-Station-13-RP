@@ -9,10 +9,16 @@ var/list/ventcrawl_machinery = list(
 	/obj/item/device/radio/borg,
 	/obj/item/weapon/holder,
 	/obj/machinery/camera,
+<<<<<<< HEAD
 	/mob/living/simple_animal/borer,
 	/obj/belly, //VOREStation Edit,
+=======
+	/obj/belly,
+>>>>>>> 6ac6d84... Merge pull request #4742 from Poojawa/upstream/upstream-merge-5735
 	/obj/screen
 	)
+	//VOREStation Edit : added /obj/belly, to this list, travis is complaining about this in his indentation check
+	//mob/living/simple_mob/borer, //VORESTATION AI TEMPORARY REMOVAL REPLACE BACK IN LIST WHEN RESOLVED //VOREStation Edit
 
 /mob/living/var/list/icon/pipes_shown = list()
 /mob/living/var/last_played_vent

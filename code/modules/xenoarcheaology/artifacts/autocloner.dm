@@ -21,6 +21,7 @@
 
 	//33% chance to spawn nasties
 	if(prob(33))
+<<<<<<< HEAD
 		spawn_type = pick(\
 		/mob/living/simple_animal/hostile/giant_spider/nurse,\
 		/mob/living/simple_animal/hostile/alien,\
@@ -28,6 +29,15 @@
 		/mob/living/simple_animal/hostile/carp,\
 		/mob/living/simple_animal/hostile/creature\
 		) // Vorestation Edits
+=======
+		spawn_type = pick(
+		/mob/living/simple_mob/animal/giant_spider/nurse,
+		/mob/living/simple_mob/animal/space/alien,
+		/mob/living/simple_mob/animal/space/bear,
+		/mob/living/simple_mob/creature,
+		/mob/living/simple_mob/slime/xenobio)
+	//	/mob/living/simple_mob/carp,	// Vorestation edit //VORESTATION AI TEMPORARY REMOVAL, REPLACE BACK IN LIST WHEN FIXED
+>>>>>>> 6ac6d84... Merge pull request #4742 from Poojawa/upstream/upstream-merge-5735
 	else
 		spawn_type = pick(\
 		/mob/living/simple_animal/cat,
