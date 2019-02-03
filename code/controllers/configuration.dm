@@ -214,8 +214,6 @@ var/list/gamemode_cache = list()
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
-	var/starlight = 0	// Whether space turfs have ambient light or not
-
 	var/list/ert_species = list(SPECIES_HUMAN)
 
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
@@ -231,6 +229,8 @@ var/list/gamemode_cache = list()
 	var/radiation_lower_limit = 0.35 //If the radiation level for a turf would be below this, ignore it.
 
 	var/random_submap_orientation = FALSE // If true, submaps loaded automatically can be rotated.
+
+	var/starlight = TRUE
 
 /datum/controller/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode

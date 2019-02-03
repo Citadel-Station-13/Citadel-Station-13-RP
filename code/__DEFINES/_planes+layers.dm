@@ -110,6 +110,7 @@ What is the naming convention for planes or layers?
 #define PLANE_ADMIN1			3 //Purely for shenanigans (below lighting)
 #define PLANE_PLANETLIGHTING	4 //Lighting on planets
 #define PLANE_LIGHTING			5 //Where the lighting (and darkness) lives
+#define LAYER_LIGHTING			5
 #define PLANE_LIGHTING_ABOVE	6 //For glowy eyes etc. that shouldn't be affected by darkness
 
 #define PLANE_GHOSTS			10 //Spooooooooky ghooooooosts

@@ -62,11 +62,9 @@
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	/*
 	var/area/A = loc
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
 		add_overlay(/obj/effect/fullbright)
-	*/
 
 	if(dynamic_lighting)
 		luminosity = 0
@@ -82,12 +80,9 @@
 		SSair.add_to_active(src)
 	*/
 
-	/*
 	if (light_power && light_range)
 		update_light()
-	*/
 
-	/*
 	var/turf/T = SSmapping.get_turf_above(src)
 	if(T)
 		T.multiz_turf_new(src, DOWN)
@@ -96,7 +91,6 @@
 	if(T)
 		T.multiz_turf_new(src, UP)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
-	*/
 
 	if (opacity)
 		has_opaque_atom = TRUE

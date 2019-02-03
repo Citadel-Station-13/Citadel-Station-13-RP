@@ -6,6 +6,7 @@
 
 //---------------
 #define isatom(D)		istype(D, /atom)
+#define ismovableatom(D)	istype(D, /atom/movable)
 
 //---------------
 //#define isobj(D)		istype(D, /obj)		//Built in

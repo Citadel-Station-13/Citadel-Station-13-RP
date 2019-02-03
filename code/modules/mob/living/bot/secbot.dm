@@ -178,7 +178,7 @@
 
 /mob/living/bot/secbot/resetTarget()
 	..()
-	UnregisterSignal(moving_instance, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	awaiting_surrender = -1
 	walk_to(src, 0)
 

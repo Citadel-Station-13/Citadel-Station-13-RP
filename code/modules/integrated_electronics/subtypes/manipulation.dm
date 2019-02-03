@@ -191,7 +191,7 @@
 	size += G.w_class
 	desc += " \An [attached_grenade] is attached to it!"
 
-/obj/item/integrated_circuit/manipulation/grenade/handle_content_del(atom/A)
+/obj/item/integrated_circuit/manipulation/grenade/handle_atom_del(atom/A)
 	if(A == attached_grenade)
 		detach_grenade()
 

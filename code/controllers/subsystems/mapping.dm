@@ -7,6 +7,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/map_templates = list()
 	var/dmm_suite/maploader = null
 
+	var/list/areas_in_z = list()
+
 	var/obj/effect/landmark/engine_loader/engine_loader
 
 	var/list/shelter_templates = list()
@@ -27,6 +29,7 @@ SUBSYSTEM_DEF(mapping)
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()
 	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
+	repopulate_sorted_areas()
 	return ..()
 
 /datum/controller/subsystem/mapping/Recover()
