@@ -99,6 +99,9 @@ Class Procs:
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
 
+	var/global/gl_uid = 0
+	var/uid
+
 	var/stat = 0
 	var/emagged = 0
 	var/use_power = 1
@@ -109,9 +112,7 @@ Class Procs:
 	var/active_power_usage = 0
 	var/power_channel = EQUIP //EQUIP, ENVIRON or LIGHT
 	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
-	var/uid
 	var/panel_open = 0
-	var/global/gl_uid = 1
 	var/clicksound			// sound played on succesful interface. Just put it in the list of vars at the start.
 	var/clickvol = 40		// volume
 	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
@@ -259,8 +260,10 @@ Class Procs:
 	return
 
 /obj/machinery/proc/assign_uid()
-	uid = gl_uid
-	gl_uid++
+	if(!isnull(uid))
+		stack_trace("[src] ([type]) ordered to make UID when UID already made.")
+		return
+	uid = ++gl_uid
 
 /obj/machinery/proc/state(var/msg)
 	for(var/mob/O in hearers(src, null))

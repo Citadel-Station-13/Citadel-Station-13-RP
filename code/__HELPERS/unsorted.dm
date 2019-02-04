@@ -265,6 +265,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			line+=locate(px,py,M.z)
 	return line
 
+//Returns: Instance for the area in the world.
+/proc/get_area_instance_from_text(areatext)
+	if(istext(areatext))
+		areatext = text2path(areatext)
+	return GLOB.areas_by_type[areatext]
+
 #define LOCATE_COORDS(X, Y, Z) locate(between(1, X, world.maxx), between(1, Y, world.maxy), Z)
 /proc/getcircle(turf/center, var/radius) //Uses a fast Bresenham rasterization algorithm to return the turfs in a thin circle.
 	if(!radius) return list(center)
@@ -798,7 +804,8 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 	var/list/areas = new/list()
 	for(var/area/N in GLOB.sortedAreas)
-		if(istype(N, areatype)) areas += N
+		if(istype(N, areatype))
+			areas += N
 	return areas
 
 //Takes: Area type as text string or as typepath OR an instance of the area.

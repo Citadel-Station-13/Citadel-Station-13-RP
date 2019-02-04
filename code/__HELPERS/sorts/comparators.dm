@@ -39,11 +39,13 @@
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
 
-/proc/cmp_clientcolour_priority(datum/client_colour/A, datum/client_colour/B)
+/proc/cmp_clientcolor_priority(datum/client_color/A, datum/client_color/B)
 	return B.priority - A.priority
 
-/proc/cmp_ruincost_priority(datum/map_template/ruin/A, datum/map_template/ruin/B)
+/*
+/proc/cmp_ruincost_priority(datum/map_template/submap/A, datum/map_template/submap/B)
 	return initial(A.cost) - initial(B.cost)
+*/
 
 /proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
 	. = B.hard_delete_time - A.hard_delete_time

@@ -10,6 +10,9 @@
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
+	layer = AREA_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_LIGHTING
 	plane = PLANE_LIGHTING_ABOVE //In case we color them
 	luminosity = 0
 	mouse_opacity = 0

@@ -70,6 +70,7 @@
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 
 /datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = 0)
+	stack_trace("DEBUG: Loading new z")
 	var/x = 1
 	var/y = 1
 
@@ -282,3 +283,6 @@
 	else
 		admin_notice("Submaps loaded.", R_DEBUG)
 	admin_notice("Loaded: [english_list(pretty_submap_list)]", R_DEBUG)
+
+/datum/map_template/proc/on_map_loaded(z)
+	return
