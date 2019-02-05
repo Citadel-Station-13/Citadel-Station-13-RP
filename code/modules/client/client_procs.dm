@@ -125,14 +125,17 @@
 
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
-	holder = GLOB.GLOB.admin_datums[ckey]
+	holder = GLOB.admin_datums[ckey]
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
 		connecting_admin = TRUE
 	else if(GLOB.deadmins[ckey])
-		verbs += /client/proc/readmin
+		verbs += /client/proc/readmin_self
 		connecting_admin = TRUE
+
+	connecting_admin = connecting_admin		//TEMPORARY - To prevent compile errors until refactor
+	tdata = tdata
 	/*
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.GLOB.admin_datums[ckey])
@@ -435,7 +438,7 @@
 /client/Del()
 	if(holder)
 		holder.owner = null
-		admins -= src
+		GLOB.admins -= src
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
@@ -522,7 +525,7 @@
 
 	//Panic bunker code
 	if (isnum(player_age) && player_age == 0) //first connection
-		if (config.panic_bunker && !holder && !deadmin_holder)
+		if (config.panic_bunker && !holder && !GLOB.deadmins[ckey])
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")

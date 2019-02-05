@@ -580,19 +580,15 @@
 	set name = "Debug Mob Lists"
 	set desc = "For when you just gotta know"
 
-	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
+	switch(input("Which list?") in list("Players","Mobs","Living Mobs","Dead Mobs"))
 		if("Players")
 			usr << jointext(player_list,",")
-		if("Admins")
-			usr << jointext(admins,",")
 		if("Mobs")
 			usr << jointext(mob_list,",")
 		if("Living Mobs")
 			usr << jointext(living_mob_list,",")
 		if("Dead Mobs")
 			usr << jointext(dead_mob_list,",")
-		if("Clients")
-			usr << jointext(GLOB.clients,",")
 
 /client/proc/cmd_debug_using_map()
 	set category = "Debug"

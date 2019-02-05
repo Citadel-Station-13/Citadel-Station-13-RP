@@ -23,6 +23,7 @@
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
+#define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
 #define reverseList(L) reverseRange(L.Copy())
 
 // binary search sorted insert

@@ -32,7 +32,7 @@ GLOBAL_PROTECT(admin_datums)
 		owner = C
 		owner.holder = src
 		owner.add_admin_verbs()	//TODO
-		admins |= C
+		GLOB.admins |= C
 
 /datum/admins/proc/disassociate()
 	if(owner)

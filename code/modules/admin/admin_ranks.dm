@@ -67,7 +67,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	for(var/client/C in GLOB.admins)
 		C.remove_admin_verbs()
 		C.holder = null
-	admins.Cut()
+	GLOB.admins.Cut()
 
 	if(config.admin_legacy_system)
 		load_admin_ranks()
