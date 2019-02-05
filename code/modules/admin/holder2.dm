@@ -1,4 +1,5 @@
-var/list/admin_datums = list()
+GLOBAL_LIST_EMPTY(admin_datums)
+GLOBAL_PROTECT(admin_datums)
 
 /datum/admins
 	var/rank			= "Temporary Admin"
@@ -35,16 +36,16 @@ var/list/admin_datums = list()
 
 /datum/admins/proc/disassociate()
 	if(owner)
-		admins -= owner
+		GLOB.deadmins += owner.ckey
+		GLOB.admins -= owner
 		owner.remove_admin_verbs()
-		owner.deadmin_holder = owner.holder
 		owner.holder = null
 
 /datum/admins/proc/reassociate()
 	if(owner)
-		admins += owner
+		GLOB.admins += owner
 		owner.holder = src
-		owner.deadmin_holder = null
+		GLOB.deadmins -= owner.ckey
 		owner.add_admin_verbs()
 
 /datum/admins/vv_edit_var(var_name, var_value)

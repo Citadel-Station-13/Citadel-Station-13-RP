@@ -802,11 +802,12 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Re-Admin self"
 	set category = "Admin"
 
-	if(deadmin_holder)
-		deadmin_holder.reassociate()
+	if(GLOB.deadmins[ckey])
+		var/datum/admins/A = GLOB.deadmins[ckey]
+		A.reassociate()
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
-		src << "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>"
+		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")
 		verbs -= /client/proc/readmin_self
 
 /client/proc/deadmin_self()
