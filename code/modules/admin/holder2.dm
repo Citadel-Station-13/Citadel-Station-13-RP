@@ -1,5 +1,5 @@
-GLOBAL_LIST_EMPTY(GLOB.admin_datums)
-GLOBAL_PROTECT(GLOB.admin_datums)
+GLOBAL_LIST_EMPTY(admin_datums)
+GLOBAL_PROTECT(admin_datums)
 
 /datum/admins
 	var/rank			= "Temporary Admin"
