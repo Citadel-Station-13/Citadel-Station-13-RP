@@ -331,7 +331,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		C << message
 
 
-		for(var/client/A in admins)
+		for(var/client/A in GLOB.admins)
 			if(A != C)
 				A << amessage
 

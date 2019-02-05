@@ -1,5 +1,5 @@
-GLOBAL_LIST_EMPTY(admin_datums)
-GLOBAL_PROTECT(admin_datums)
+GLOBAL_LIST_EMPTY(GLOB.admin_datums)
+GLOBAL_PROTECT(GLOB.admin_datums)
 
 /datum/admins
 	var/rank			= "Temporary Admin"
@@ -23,7 +23,7 @@ GLOBAL_PROTECT(admin_datums)
 	admincaster_signature = "[using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 	if(rights & R_DEBUG) //grant profile access
 		world.SetConfig("APP/admin", ckey, "role=admin")
 

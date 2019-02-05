@@ -63,8 +63,8 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 
 /proc/load_admins()
 	//clear the datums references
-	admin_datums.Cut()
-	for(var/client/C in admins)
+	GLOB.admin_datums.Cut()
+	for(var/client/C in GLOB.admins)
 		C.remove_admin_verbs()
 		C.holder = null
 	admins.Cut()
@@ -126,7 +126,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 
 			//find the client for a ckey if they are connected and associate them with the new admin datum
 			D.associate(GLOB.directory[ckey])
-		if(!admin_datums)
+		if(!GLOB.admin_datums)
 			error("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
 			log_misc("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
 			config.admin_legacy_system = 1
@@ -135,9 +135,9 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 
 	#ifdef TESTING
 	var/msg = "Admins Built:\n"
-	for(var/ckey in admin_datums)
+	for(var/ckey in GLOB.admin_datums)
 		var/rank
-		var/datum/admins/D = admin_datums[ckey]
+		var/datum/admins/D = GLOB.admin_datums[ckey]
 		if(D)	rank = D.rank
 		msg += "\t[ckey] - [rank]\n"
 	testing(msg)

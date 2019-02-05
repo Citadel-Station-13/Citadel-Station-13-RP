@@ -125,7 +125,7 @@
 
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
-	holder = GLOB.admin_datums[ckey]
+	holder = GLOB.GLOB.admin_datums[ckey]
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
@@ -135,7 +135,7 @@
 		connecting_admin = TRUE
 	/*
 	if(CONFIG_GET(flag/autoadmin))
-		if(!GLOB.admin_datums[ckey])
+		if(!GLOB.GLOB.admin_datums[ckey])
 			var/datum/admin_rank/autorank
 			for(var/datum/admin_rank/R in GLOB.admin_ranks)
 				if(R.name == CONFIG_GET(string/autoadmin_rank))

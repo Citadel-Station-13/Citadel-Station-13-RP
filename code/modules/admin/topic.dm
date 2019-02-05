@@ -115,7 +115,7 @@
 		if(task == "add")
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
 			if(!new_ckey)	return
-			if(new_ckey in admin_datums)
+			if(new_ckey in GLOB.admin_datums)
 				usr << "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>"
 				return
 			adm_ckey = new_ckey
@@ -126,12 +126,12 @@
 				usr << "<font color='red'>Error: Topic 'editrights': No valid ckey</font>"
 				return
 
-		var/datum/admins/D = admin_datums[adm_ckey]
+		var/datum/admins/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
 				if(!D)	return
-				admin_datums -= adm_ckey
+				GLOB.admin_datums -= adm_ckey
 				D.disassociate()
 
 				message_admins("[key_name_admin(usr)] removed [adm_ckey] from the admins list")
@@ -1238,7 +1238,7 @@
 		var/mob/M = locate(href_list["take_question"])
 		if(ismob(M))
 			var/take_msg = "<span class='notice'><b>ADMINHELP</b>: <b>[key_name(usr.client)]</b> is attending to <b>[key_name(M)]'s</b> adminhelp, please don't dogpile them.</span>"
-			for(var/client/X in admins)
+			for(var/client/X in GLOB.admins)
 				if((R_ADMIN|R_MOD|R_EVENT|R_SERVER) & X.holder.rights)
 					to_chat(X, take_msg)
 			to_chat(M, "<span class='notice'><b>Your adminhelp is being attended to by [usr.client]. Thanks for your patience!</b></span>")
