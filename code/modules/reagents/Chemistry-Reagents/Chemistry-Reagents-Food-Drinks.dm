@@ -38,7 +38,7 @@
 	if(!injectable && alien != IS_SLIME)
 		M.adjustToxLoss(0.1 * removed)
 		return
-	affect_ingest(M, alien, removed) 
+	affect_ingest(M, alien, removed)
 	*/ //VOREStation Removal End
 	if(injectable) //vorestation addition/replacement
 		affect_ingest(M, alien, removed)
@@ -142,6 +142,12 @@
 	reagent_state = SOLID
 	nutriment_factor = 5
 	color = "#302000"
+
+/datum/reagent/nutriment/coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+		M.nutrition += removed * 5
 
 /datum/reagent/nutriment/soysauce
 	name = "Soysauce"
@@ -335,6 +341,11 @@
 /datum/reagent/capsaicin/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_ALRAUNE) //cit change: it wouldn't effect plants that much.
+		if(prob(5))
+			M << "<span class='rose'>You feel a pleasant sensation in your mouth.</span>"
+		M.bodytemperature += rand(10, 25)
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
@@ -384,6 +395,9 @@
 
 	if(alien == IS_SKRELL)	//Larger eyes means bigger targets.
 		effective_strength = 8
+
+	if(alien == IS_ALRAUNE) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
+		effective_strength = 4
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
@@ -736,11 +750,19 @@
 	glass_name = "chocolate milk"
 	glass_desc = "Deliciously fattening!"
 
+/datum/reagent/drink/milk/chocolate/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
+		M << "<span class='vox'>You feel nourished by the milk.</span>"
+		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
 
@@ -1026,6 +1048,12 @@
 	cup_name = "cup of hot chocolate"
 	cup_desc = "Made with love! And cocoa beans."
 
+/datum/reagent/drink/hot_coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+		M.nutrition += removed * 5
+
 /datum/reagent/drink/soda/sodawater
 	name = "Soda Water"
 	id = "sodawater"
@@ -1144,6 +1172,12 @@
 
 	glass_name = "Chocolate Milkshake"
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
+
+/datum/reagent/drink/milkshake/chocoshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
 	name = "Berry Milkshake"
