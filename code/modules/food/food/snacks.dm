@@ -4491,7 +4491,7 @@ END CITADEL CHANGE */
 	icon_state = "onionrings"
 	trash = /obj/item/trash/plate
 	filling_color = "#eddd00"
-	center_of_mass = "x=16;y=11"
+	center_of_mass = list("x"=16,"y"=11)
 	nutriment_desc = list("fried onions" = 5)
 	nutriment_amt = 5
 	bitesize = 2
@@ -4587,7 +4587,7 @@ END CITADEL CHANGE */
 	icon = 'modular_citadel/icons/obj/food_syn.dmi'
 	icon_state = "pancakes"
 	trash = /obj/item/trash/plate
-	center_of_mass = "x=15;y=11"
+	center_of_mass = list("x"=15, "y"=11)
 	nutriment_desc = list("pancake" = 8)
 	nutriment_amt = 8
 	bitesize = 2
@@ -5040,6 +5040,7 @@ END CITADEL CHANGE */
 	trash = /obj/item/trash/snacktray
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/grilled_carp/initialize()
+	. = ..()
 	reagents.add_reagent("seafood", 12)
 
 /obj/item/weapon/reagent_containers/food/snacks/grilled_carp_slice
