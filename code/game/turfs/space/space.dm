@@ -48,7 +48,7 @@
 	return INITIALIZE_HINT_NORMAL
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
-/turf/space/attack_ghost(mob/dead/observer/user)
+/turf/space/attack_ghost(mob/observer/user)
 	if(destination_z)
 		var/turf/T = locate(destination_x, destination_y, destination_z)
 		user.forceMove(T)

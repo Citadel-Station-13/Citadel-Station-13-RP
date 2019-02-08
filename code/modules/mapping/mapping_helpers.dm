@@ -18,7 +18,7 @@
 
 /obj/effect/baseturf_helper/LateInitialize()
 	if(!baseturf_to_replace)
-		baseturf_to_replace = typecacheof(STANDARD_SPACE_TURF_TYPE)
+		baseturf_to_replace = typecacheof(/turf/space)
 	else if(!length(baseturf_to_replace))
 		baseturf_to_replace = list(baseturf_to_replace = TRUE)
 	else if(baseturf_to_replace[baseturf_to_replace[1]] != TRUE) // It's not associative
@@ -50,7 +50,7 @@
 
 /obj/effect/baseturf_helper/space
 	name = "space baseturf editor"
-	baseturf = STANDARD_SPACE_TURF_TYPE
+	baseturf = /turf/space
 
 /*
 /obj/effect/baseturf_helper/asteroid

@@ -32,4 +32,4 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 /turf/template_noop
 	name = "Turf Passthrough"
 	icon_state = "noop"
-	bullet_bounce_sound = null
+	//bullet_bounce_sound = null

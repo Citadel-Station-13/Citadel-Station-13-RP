@@ -37,10 +37,6 @@
 
 	var/turf/below
 
-/turf/simulated/open/post_change()
-	..()
-	update()
-
 /turf/simulated/open/Initialize()
 	. = ..()
 	ASSERT(HasBelow(z))

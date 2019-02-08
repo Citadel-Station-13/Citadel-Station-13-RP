@@ -2,7 +2,7 @@
 	//set src in oview(1)
 	switch(severity)
 		if(1.0)
-			src.ScrapAway()
+			src.ScrapeAway()
 		if(2.0)
 			switch(pick(40;1,40;2,3))
 				if (1)

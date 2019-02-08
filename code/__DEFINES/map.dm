@@ -20,10 +20,8 @@ Multi-Z stations are supported and multi-Z mining and away missions would
 require only minor tweaks.
 */
 
-#define STANDARD_SPACE_TURF_TYPE		/turf/space
 #define STANDARD_RESERVED_TURF_TYPE		/turf/space/basic
 #define STANDARD_TRANSIT_TURF_TYPE		/turf/space
-#define STANDARD_SPACE_TURF_TYPE_VAR(v)	var/turf/space/##v
 
 #define DEFINE_RUIN_BUDGET_MULT 1			//be careful
 #define STANDARD_RUIN_COST 12		//This is for a 15x15 ruin.
@@ -64,6 +62,12 @@ require only minor tweaks.
     // CROSSLINKED - mixed in with the cross-linked space pool
     #define CROSSLINKED "Cross"
 
+// must correspond to _basemap.dm for things to work correctly
+//THIS IS NOT CORRECT! OVERRIDDEN IN USING_MAP UNTIL A PROPER REFACTOR!
+#define DEFAULT_MAP_TRAITS list(\
+    DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
+)
+
 /*
 // helpers for modifying jobs, used in various job_changes.dm files
 #define MAP_JOB_CHECK if(SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) { return; }
@@ -98,10 +102,6 @@ require only minor tweaks.
 #define ZTRAITS_REEBE list(ZTRAIT_REEBE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 0.5)
 
 
-// must correspond to _basemap.dm for things to work correctly
-#define DEFAULT_MAP_TRAITS list(\
-    DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
-)
 
 // Camera lock flags
 #define CAMERA_LOCK_STATION 1
@@ -120,6 +120,19 @@ require only minor tweaks.
 */
 
 #define SUBMAP_GROUP_ID_DEFAULT "Default"
+
+// Helpers for checking whether a z-level conforms to a specific requirement
+
+// Basic levels
+#define is_centcom_level(z) SSmapping.level_trait(z, ZTRAIT_CENTCOM)
+
+#define is_station_level(z) SSmapping.level_trait(z, ZTRAIT_STATION)
+
+#define is_mining_level(z) SSmapping.level_trait(z, ZTRAIT_MINING)
+
+#define is_reserved_level(z) SSmapping.level_trait(z, ZTRAIT_RESERVED)
+
+#define is_away_level(z) SSmapping.level_trait(z, ZTRAIT_AWAY)
 
 //vorestation stuff below
 

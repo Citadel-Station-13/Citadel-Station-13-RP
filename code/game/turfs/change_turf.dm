@@ -1,10 +1,10 @@
 // This is a list of turf types we dont want to assign to baseturfs unless through initialization or explicitly
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
-	/turf/open/space,
+	/turf/space,
 	/turf/baseturf_bottom,
 	)))
 
-/turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
+/turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
 	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/effect/landmark, /atom/movable/lighting_object))	//obj/docking_port
 	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
@@ -42,9 +42,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		T.setDir(dir)
 	return T
 
-/turf/open/copyTurf(turf/T, copy_air = FALSE)
+/turf/simulated/floor/copyTurf(turf/T, copy_air = FALSE)
 	. = ..()
-	if (isopenturf(T))
+	if (istype(T, /turf/simulated/floor))
 		/*
 		GET_COMPONENT(slip, /datum/component/wet_floor)
 		if(slip)
@@ -63,12 +63,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	//Can be optimized later
-	var/zlevel_base_path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
+	var/zlevel_base_path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/space
 	if (!ispath(zlevel_base_path))
 		zlevel_base_path = text2path(zlevel_base_path)
 		if (!ispath(zlevel_base_path))
 			warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
-			zlevel_base_path = STANDARD_SPACE_TURF_TYPE
+			zlevel_base_path = /turf/space
 	//End
 	switch(path)
 		if(null)
@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(/turf/space/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of
-			path = STANDARD_SPACE_TURF_TYPE
+			path = /turf/space
 
 	//MULTIZ ADD
 	if(ispath(path, zlevel_base_path))
@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			else
 				lighting_clear_overlay()
 
-		for(var/turf/open/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			S.update_starlight()
 
 	//POLARIS START
@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/is_floor = istype(., /turf/simulated/floor)
 	if(old_fire)
 		is_floor? (fire = old_fire) : fire.RemoveFire()
-		fire? update_icon : NONE
+		fire? update_icon() : NONE
 	//ZAS END
 
 // Take off the top layer turf and replace it with the next baseturf down
@@ -355,8 +355,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		Assimilate_Air()
 
 //////Assimilate Air//////
-/*
 /turf/open/proc/Assimilate_Air()
+/*
 	var/turf_count = LAZYLEN(atmos_adjacent_turfs)
 	if(blocks_air || !turf_count) //if there weren't any open turfs, no need to update.
 		return
