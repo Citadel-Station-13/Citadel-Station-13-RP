@@ -139,12 +139,6 @@ var/list/all_maps = list()
 		return current_z_level
 	return text2num(pickweight(candidates))
 
-/datum/map/proc/get_empty_zlevel()
-	if(empty_levels == null)
-		world.increment_max_z()
-		empty_levels = list(world.maxz)
-	return pick(empty_levels)
-
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
 // The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
 // zLevels outside station_levels will return an empty list.
