@@ -16,7 +16,7 @@
 	//This is used to optimize the map loader
 	return
 
-/turf/open/space/Initialize()
+/turf/space/Initialize()
 	if(!keep_sprite)
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 	/*Icon state commented until parallax
@@ -48,7 +48,7 @@
 	return INITIALIZE_HINT_NORMAL
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
-/turf/open/space/attack_ghost(mob/dead/observer/user)
+/turf/space/attack_ghost(mob/dead/observer/user)
 	if(destination_z)
 		var/turf/T = locate(destination_x, destination_y, destination_z)
 		user.forceMove(T)

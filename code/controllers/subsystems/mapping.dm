@@ -653,7 +653,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			// No need to empty() these, because it's world init and they're
 			// already /turf/open/space/basic.
 			var/turf/T = t
-			T.flags_1 |= UNUSED_RESERVATION_TURF
+			T.flags |= UNUSED_RESERVATION_TURF
 		unused_turfs["[i]"] = block
 	clearing_reserved_turfs = FALSE
 
@@ -663,7 +663,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		T.empty(STANDARD_RESERVED_TURF_TYPE, STANDARD_RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])
 		unused_turfs["[T.z]"] |= T
-		T.flags_1 |= UNUSED_RESERVATION_TURF
+		T.flags |= UNUSED_RESERVATION_TURF
 		GLOB.areas_by_type[world.area].contents += T
 		CHECK_TICK
 

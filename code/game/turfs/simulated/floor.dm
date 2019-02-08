@@ -157,5 +157,5 @@
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			to_chat(user, span("notice", "You deconstruct \the [src]."))
-			ChangeTurf(get_base_turf_by_area(src), preserve_outdoors = TRUE)
+			ChangeTurf(get_base_turf_by_area(src), flags = CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE

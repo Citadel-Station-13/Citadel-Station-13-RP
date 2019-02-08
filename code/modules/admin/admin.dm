@@ -1137,8 +1137,8 @@ var/datum/announcement/minor/admin_min_announcer = new
 			return
 
 	if(ispath(chosen,/turf))
-		var/turf/T = get_turf(usr.loc)
-		T.ChangeTurf(chosen)
+		var/turf/T = get_turf(usr)
+		T.PlaceOnTop(chosen)
 	else
 		new chosen(usr.loc)
 

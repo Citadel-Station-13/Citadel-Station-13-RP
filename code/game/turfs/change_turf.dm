@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
-/turf/proc/_ChangeTurf(path, list/new_baseturfs, flags)
+/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	//Can be optimized later
 	var/zlevel_base_path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
 	if (!ispath(zlevel_base_path))
