@@ -309,7 +309,7 @@
 		alien_weeds.healthcheck()
 
 /datum/reagent/toxin/plantbgone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_DIONA
+	if(alien == IS_DIONA)
 		M.adjustToxLoss(50 * removed)
 
 	if(alien == IS_ALRAUNE)
