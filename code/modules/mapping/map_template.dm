@@ -80,7 +80,9 @@
 
 	//initialize things that are normally initialized after map load
 	parsed.initTemplateBounds()
+	/*
 	smooth_zlevel(world.maxz)
+	*/
 	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
 
 	return level
