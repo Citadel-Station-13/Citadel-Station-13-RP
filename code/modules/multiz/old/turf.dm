@@ -1,6 +1,7 @@
 /turf
 
 /turf/proc/multiz_turf_new(turf/T, dir)
+	update_icon()
 
 ///turf/proc/multiz_turf_del(turf/T, dir)
 
@@ -53,11 +54,6 @@
 /turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
 	. = ..()
 	AM.fall()
-
-/turf/simulated/open/multiz_turf_new(turf/T, dir)
-	if(dir == UP)
-		update_icon()
-	return ..()
 
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z

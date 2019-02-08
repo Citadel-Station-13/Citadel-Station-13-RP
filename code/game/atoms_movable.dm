@@ -425,50 +425,6 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
-/atom/movable/proc/touch_map_edge()
-	if(z in using_map.sealed_levels)
-		return
-
-	if(config.use_overmap)
-		overmap_spacetravel(get_turf(src), src)
-		return
-
-	var/move_to_z = src.get_transit_zlevel()
-	if(move_to_z)
-		z = move_to_z
-
-		if(x <= TRANSITIONEDGE)
-			x = world.maxx - TRANSITIONEDGE - 2
-			y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (x >= (world.maxx - TRANSITIONEDGE + 1))
-			x = TRANSITIONEDGE + 1
-			y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
-
-		else if (y <= TRANSITIONEDGE)
-			y = world.maxy - TRANSITIONEDGE -2
-			x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		else if (y >= (world.maxy - TRANSITIONEDGE + 1))
-			y = TRANSITIONEDGE + 1
-			x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
-
-		if(ticker && istype(ticker.mode, /datum/game_mode/nuclear)) //only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = ticker.mode
-			G.check_nuke_disks()
-
-		spawn(0)
-			if(loc) loc.Entered(src)
-
-//by default, transition randomly to another zlevel
-/atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = using_map.accessible_z_levels.Copy()
-	candidates.Remove("[src.z]")
-
-	if(!candidates.len)
-		return null
-	return text2num(pickweight(candidates))
-
 /atom/movable/proc/update_transform()
 	var/matrix/M = matrix()
 	M.Scale(icon_scale)

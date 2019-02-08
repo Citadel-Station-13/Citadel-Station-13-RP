@@ -135,7 +135,7 @@
 		for(var/i in kill_these)
 			qdel(i)
 			CHECK_TICK
-			delete_atoms++
+			deleted_atoms++
 	log_world("Annihilated [deleted_atoms] objects.")
 
 //for your ever biggening badminnery kevinz000

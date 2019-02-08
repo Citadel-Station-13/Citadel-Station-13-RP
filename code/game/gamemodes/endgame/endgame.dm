@@ -24,6 +24,13 @@
  	// Simulates stuff getting broken due to molecular bonds decaying.
  	var/decay_rate = 0
 
+/datum/universal_state/New()
+	RegisterSignal(SSdcs, COMSIG_GLOB_TURF_CHANGE, .proc/OnTurfChange)
+
+/datum/universal_state/Destroy()
+	UnregisterSignal(SSdcs, COMSIG_GLOB_TURF_CHANGE)
+	return ..()
+
 // Actually decay the turf.
 /datum/universal_state/proc/DecayTurf(var/turf/T)
 	if(istype(T,/turf/simulated/wall))

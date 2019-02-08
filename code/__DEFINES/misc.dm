@@ -1,8 +1,3 @@
-// Turf-only flags.
-#define NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
-
-#define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
-
 #define TEXT_NORTH	"[NORTH]"
 #define TEXT_SOUTH	"[SOUTH]"
 #define TEXT_EAST	"[EAST]"

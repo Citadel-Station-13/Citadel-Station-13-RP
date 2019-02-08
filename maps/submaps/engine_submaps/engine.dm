@@ -11,7 +11,7 @@
 	name = "Engine Content"
 	desc = "It would be boring to have the same engine every day right?"
 	// annihilate = TRUE - Would wipe out in a rectangular area unfortunately
-	allow_duplicates = FALSE
+	// allow_duplicates = FALSE
 
 /datum/map_template/engine/rust
 	name = "R-UST Engine"

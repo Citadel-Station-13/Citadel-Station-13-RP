@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(mapping)
 GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
-	var/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/ruin, /area/asteroid/nearstation))
+	var/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/submap))
 	for(var/area/A in world)
 		var/turf/picked = safepick(get_area_turfs(A.type))
 		if(picked && is_station_level(picked.z))
@@ -660,7 +660,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 /datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
 	for(var/i in turfs)
 		var/turf/T = i
-		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
+		T.empty(STANDARD_RESERVED_TURF_TYPE, STANDARD_RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])
 		unused_turfs["[T.z]"] |= T
 		T.flags_1 |= UNUSED_RESERVATION_TURF

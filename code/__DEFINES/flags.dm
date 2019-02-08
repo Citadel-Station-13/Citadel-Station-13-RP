@@ -33,6 +33,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define OVERLAY_QUEUED			(1<<8)// Atom queued to SSoverlay for COMPILE_OVERLAYS
 #define INITIALIZED				(1<<9)	//Initialize() has ran already
 
+//Turf flags
+#define UNUSED_RESERVATION_TURF	(1<<22)
+#define NOJAUNT					(1<<23) // This is used in literally one place, turf.dm, to block ethereal jaunt.
+
 //Flags for items (equipment) - Used in /obj/item/var/item_flags
 #define THICKMATERIAL			(1<<0)	// Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.
 #define AIRTIGHT				(1<<1)	// Functions with internals.

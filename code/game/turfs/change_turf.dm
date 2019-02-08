@@ -1,4 +1,3 @@
-/*
 // This is a list of turf types we dont want to assign to baseturfs unless through initialization or explicitly
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	/turf/open/space,
@@ -16,9 +15,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(turf_type)
 		var/turf/newT = ChangeTurf(turf_type, baseturf_type, flags)
+		/*
 		SSair.remove_from_active(newT)
 		newT.CalculateAdjacentTurfs()
 		SSair.add_to_active(newT,1)
+		*/
 
 /turf/proc/copyTurf(turf/T)
 	if(T.type != type)
@@ -43,10 +44,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/open/copyTurf(turf/T, copy_air = FALSE)
 	. = ..()
 	if (isopenturf(T))
+		/*
 		GET_COMPONENT(slip, /datum/component/wet_floor)
 		if(slip)
 			var/datum/component/wet_floor/WF = T.AddComponent(/datum/component/wet_floor)
 			WF.InheritComponent(slip)
+		*/
 		if (copy_air)
 			var/turf/open/openTurf = T
 			openTurf.air.copy_from(air)
@@ -57,26 +60,41 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
-/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+/turf/proc/_ChangeTurf(path, list/new_baseturfs, flags)
+	//Can be optimized later
+	var/zlevel_base_path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
+	if (!ispath(zlevel_base_path))
+		zlevel_base_path = text2path(zlevel_base_path)
+		if (!ispath(zlevel_base_path))
+			warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+			zlevel_base_path = STANDARD_SPACE_TURF_TYPE
+	//End
 	switch(path)
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
-			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || /turf/open/space
-			if (!ispath(path))
-				path = text2path(path)
-				if (!ispath(path))
-					warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
-					path = /turf/open/space
-		if(/turf/open/space/basic)
+			path = zlevel_base_path
+		if(STANDARD_SPACE_TURF_TYPE/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of
-			path = /turf/open/space
+			path = STANDARD_SPACE_TURF_TYPE
+
+	//MULTIZ ADD
+	if(ispath(path, zlevel_base_path))
+		var/turf/below = GetBelow(src)
+		if(istype(below) && !istype(below, zlevel_base_path) && istype(below, /turf/simulated))
+			path = /turf/simulated/open
+	//END
 
 	if(!GLOB.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP)) // Don't no-op if the map loader requires it to be reconstructed
 		return src
 	if(flags & CHANGETURF_SKIP)
 		return new path(src)
+
+	//POLARIS START
+	var/old_outdoors = outdoors
+	var/old_dangerous_objects = dangerous_objects
+	//END
 
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
@@ -93,6 +111,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	var/list/transferring_comps = list()
 	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, new_baseturfs, flags, transferring_comps)
+
+	//Blah blah universal state crap
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TURF_CHANGE, src, path, new_baseturfs, flags, transferring_comps)
+	//END
+
 	for(var/i in transferring_comps)
 		var/datum/component/comp = i
 		comp.RemoveComponent()
@@ -134,9 +157,23 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		for(var/turf/open/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			S.update_starlight()
 
+	//POLARIS START
+	if(preserve_outdoors)
+		outdoors = old_outdoors
+	dangerous_objects = old_dangerous_objects
+	//POLARIS END
+
 	return W
 
 /turf/open/ChangeTurf(path, list/new_baseturfs, flags)
+
+	//ZAS START
+	var/obj/fire/old_fire = fire
+	var/zone/old_zone = zone
+	var/connection_manager/old_connections = connections
+	//ZAS END
+
+	/*
 	if ((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/open))
 		SSair.remove_from_active(src)
 		var/stashed_air = air
@@ -152,6 +189,23 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		SSair.add_to_active(newTurf)
 	else
 		return ..()
+	*/
+	. = ..()
+	if(!. || . == src)
+		return
+
+	//ZAS START
+	if(air_master)
+		air_master.mark_for_update(src)
+	if(old_connections)
+		old_connections.erase_all()
+	if(old_zone)
+		old_zone.rebuild()
+	var/is_floor = istype(., /turf/simulated/floor)
+	if(old_fire)
+		is_floor? (fire = old_fire) : fire.RemoveFire()
+		fire? update_icon : NONE
+	//ZAS END
 
 // Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)
@@ -294,6 +348,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		Assimilate_Air()
 
 //////Assimilate Air//////
+/*
 /turf/open/proc/Assimilate_Air()
 	var/turf_count = LAZYLEN(atmos_adjacent_turfs)
 	if(blocks_air || !turf_count) //if there weren't any open turfs, no need to update.
@@ -320,147 +375,13 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	air.temperature /= turf_count
 	SSair.add_to_active(src)
+*/
 
 /turf/proc/ReplaceWithLattice()
 	ScrapeAway()
 	new /obj/structure/lattice(locate(x, y, z))
-*/
 
-//Above is TG, below is old. We're going to replace the old with the new stuff.. soon (tm). - Kevinz000
-
-
-
-
-
-
-/turf/proc/ReplaceWithLattice()
-	src.ChangeTurf(get_base_turf_by_area(src))
-	spawn()
-		new /obj/structure/lattice( locate(src.x, src.y, src.z) )
-
-// Removes all signs of lattice on the pos of the turf -Donkieyo
 /turf/proc/RemoveLattice()
 	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-	if(L)
+	if(L && (L.flags_1 & INITIALIZED_1))
 		qdel(L)
-
-// Called after turf replaces old one
-/turf/proc/post_change()
-	levelupdate()
-
-	var/turf/simulated/open/above = GetAbove(src)
-	if(istype(above))
-		above.update_icon()
-
-	var/turf/simulated/below = GetBelow(src)
-	if(istype(below))
-		below.update_icon() // To add or remove the 'ceiling-less' overlay.
-
-//Creates a new turf
-/turf/proc/ChangeTurf(turf/path, tell_universe = TRUE, force_lighting_update = FALSE, preserve_outdoors = FALSE)
-	if (!path)
-		return
-
-	if(path == /turf/space)
-		var/turf/below = GetBelow(src)
-		if(istype(below) && !istype(below,/turf/space) && istype(below, /turf/simulated))
-			path = /turf/simulated/open
-
-	var/obj/fire/old_fire = fire
-
-	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
-	var/old_affecting_lights = affecting_lights
-	var/old_lighting_object = lighting_object
-	var/old_corners = corners
-
-	var/old_outdoors = outdoors
-	var/old_dangerous_objects = dangerous_objects
-
-	//world << "Replacing [src.type] with [path]"
-
-	if(connections)
-		connections.erase_all()
-
-	if(istype(src,/turf/simulated))
-		//Yeah, we're just going to rebuild the whole thing.
-		//Despite this being called a bunch during explosions,
-		//the zone will only really do heavy lifting once.
-		var/turf/simulated/S = src
-		if(S.zone)
-			S.zone.rebuild()
-
-	var/list/transferring_comps = list()
-	//SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, new_baseturfs, flags, transferring_comps)
-	SEND_SIGNAL(src, COMSIG_TURF_CHANGE, path, null, flags, transferring_comps)
-	for(var/i in transferring_comps)
-		var/datum/component/comp = i
-		comp.RemoveComponent()
-
-	changing_turf = TRUE
-	qdel(src)
-	var/turf/W = new path(src)
-
-	if(ispath(path, /turf/simulated/floor))
-		if(old_fire)
-			fire = old_fire
-
-		if (istype(W,/turf/simulated/floor))
-			W.RemoveLattice()
-
-		if(tell_universe)
-			universe.OnTurfChange(W)
-
-		if(air_master)
-			air_master.mark_for_update(src) //handle the addition of the new turf.
-
-		for(var/turf/space/S in range(W,1))
-			S.update_starlight()
-
-		W.levelupdate()
-		W.update_icon(1)
-		W.post_change()
-		. = W
-
-	else
-
-		if(old_fire)
-			old_fire.RemoveFire()
-
-		if(tell_universe)
-			universe.OnTurfChange(W)
-
-		if(air_master)
-			air_master.mark_for_update(src)
-
-		for(var/turf/space/S in range(W,1))
-			S.update_starlight()
-
-		W.levelupdate()
-		W.update_icon(1)
-		W.post_change()
-		. =  W
-
-	recalc_atom_opacity()
-
-	dangerous_objects = old_dangerous_objects
-
-	if(SSlighting.initialized)
-		recalc_atom_opacity()
-		lighting_object = old_lighting_object
-		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
-			reconsider_lights()
-
-		if (dynamic_lighting != old_dynamic_lighting)
-			if (IS_DYNAMIC_LIGHTING(src))
-				lighting_build_overlay()
-			else
-				lighting_clear_overlay()
-
-		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			S.update_starlight()
-
-	if(preserve_outdoors)
-		outdoors = old_outdoors
