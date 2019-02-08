@@ -194,3 +194,61 @@
 		to_chat(teleatom, "<span class='warning'>The portal refuses to carry you that far away!</span>")
 	return 0
 	//VOREStation Edit End
+
+// Safe location finder
+/proc/find_safe_turf(zlevel, list/zlevels, extended_safety_checks = FALSE)
+	if(!zlevels)
+		if (zlevel)
+			zlevels = list(zlevel)
+		else
+			zlevels = SSmapping.levels_by_trait(ZTRAIT_STATION)
+	var/cycles = 1000
+	for(var/cycle in 1 to cycles)
+		// DRUNK DIALLING WOOOOOOOOO
+		var/x = rand(1, world.maxx)
+		var/y = rand(1, world.maxy)
+		var/z = pick(zlevels)
+		var/random_location = locate(x,y,z)
+
+		if(!istype(random_location, /turf/simulated/floor))
+			continue
+		var/turf/simulated/floor/F = random_location
+		if(!F.air)
+			continue
+
+		/*		WIP!!
+		var/datum/gas_mixture/A = F.air
+		var/list/A_gases = A.gases
+		var/trace_gases
+		for(var/id in A_gases)
+			if(id in GLOB.hardcoded_gases)
+				continue
+			trace_gases = TRUE
+			break
+
+		// Can most things breathe?
+		if(trace_gases)
+			continue
+		if(!(A_gases[/datum/gas/oxygen] && A_gases[/datum/gas/oxygen][MOLES] >= 16))
+			continue
+		if(A_gases[/datum/gas/plasma])
+			continue
+		if(A_gases[/datum/gas/carbon_dioxide] && A_gases[/datum/gas/carbon_dioxide][MOLES] >= 10)
+			continue
+
+		// Aim for goldilocks temperatures and pressure
+		if((A.temperature <= 270) || (A.temperature >= 360))
+			continue
+		var/pressure = A.return_pressure()
+		if((pressure <= 20) || (pressure >= 550))
+			continue
+
+		if(extended_safety_checks)
+			if(islava(F)) //chasms aren't /floor, and so are pre-filtered
+				var/turf/open/lava/L = F
+				if(!L.is_safe())
+					continue
+		*/
+
+		// DING! You have passed the gauntlet, and are "probably" safe.
+		return F

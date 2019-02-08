@@ -10,7 +10,7 @@
 	var/list/baseturf_to_replace
 	var/baseturf
 
-	layer = POINT_LAYER
+	layer = MAPPING_BASETURF_HELPER_LAYER
 
 /obj/effect/baseturf_helper/Initialize()
 	. = ..()
@@ -98,7 +98,7 @@
 
 //airlock helpers
 /obj/effect/mapping_helpers/airlock
-	layer = DOOR_HELPER_LAYER
+	layer = MAPPING_DOOR_HELPER_LAYER
 
 /obj/effect/mapping_helpers/airlock/Initialize(mapload)
 	. = ..()

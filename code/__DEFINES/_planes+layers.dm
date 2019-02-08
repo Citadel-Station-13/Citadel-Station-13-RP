@@ -132,6 +132,10 @@ What is the naming convention for planes or layers?
 
 #define PLANE_ADMIN2			33 //Purely for shenanigans (above lighting)
 
+#define PLANE_MAPPING					50
+#define MAPPING_BASETURF_HELPER_LAYER	20
+#define MAPPING_DOOR_HELPER_LAYER		15
+
 //Fullscreen overlays under inventory
 #define PLANE_FULLSCREEN		90 //Blindness, mesons, druggy, etc
 	#define OBFUSCATION_LAYER	5 //Where images covering the view for eyes are put

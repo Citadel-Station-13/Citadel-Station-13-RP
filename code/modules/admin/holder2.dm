@@ -151,6 +151,8 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	return "<input type='hidden' name='admin_token' value='[RawHrefToken(forceGlobal)]'>"
 
 /datum/admins/proc/CheckAdminHref(href, href_list)
+	return TRUE
+	/*			Disabled
 	var/auth = href_list["admin_token"]
 	. = auth && (auth == href_token || auth == GLOB.href_token)
 	if(.)
@@ -162,3 +164,4 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		log_world("UAH: [href]")
 		return TRUE
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
+	*/

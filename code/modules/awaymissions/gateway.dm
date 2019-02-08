@@ -1,3 +1,4 @@
+GLOBAL_DATUM(the_gateway, /obj/machinery/gateway)
 /obj/machinery/gateway
 	name = "gateway"
 	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."  //VOREStation Edit
@@ -35,6 +36,7 @@
 	var/obj/machinery/gateway/centeraway/awaygate = null
 
 /obj/machinery/gateway/centerstation/Initialize()
+	GLOB.the_gateway = src
 	update_icon()
 	wait = world.time + config.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)

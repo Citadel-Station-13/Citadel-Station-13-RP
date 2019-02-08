@@ -46,3 +46,6 @@ GLOBAL_LIST_EMPTY(sortedAreas)
 /// An association from typepath to area instance. Only includes areas with `unique` set.
 GLOBAL_LIST_EMPTY(areas_by_type)
 
+//LANDMARKS
+GLOBAL_LIST_EMPTY(blobstart)			//Blobs and stationloving things use these.
+

@@ -1983,6 +1983,7 @@
 #include "code\modules\lore_codex\robutt_data\bybrand.dm"
 #include "code\modules\lore_codex\robutt_data\main_robutts.dm"
 #include "code\modules\lore_codex\robutt_data\more.dm"
+#include "code\modules\mapping\map_config.dm"
 #include "code\modules\mapping\map_template.dm"
 #include "code\modules\mapping\mapping_helpers.dm"
 #include "code\modules\mapping\preloader.dm"
