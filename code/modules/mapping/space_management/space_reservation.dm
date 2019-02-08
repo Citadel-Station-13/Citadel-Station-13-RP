@@ -57,7 +57,7 @@
 	for(var/i in final)
 		var/turf/T = i
 		reserved_turfs |= T
-		T.flags_1 &= ~UNUSED_RESERVATION_TURF
+		T.flags &= ~UNUSED_RESERVATION_TURF
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
 		T.ChangeTurf(turf_type, turf_type)

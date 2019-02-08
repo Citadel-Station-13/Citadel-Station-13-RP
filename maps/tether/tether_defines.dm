@@ -47,7 +47,39 @@
 	path = "tether"
 
 	ztrait_defines = list(
+		list(
 
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
+		list(
+
+		),
 	)
 
 	zlevel_datum_type = /datum/map_z_level/tether

@@ -614,7 +614,7 @@ var/list/ghostteleportlocs = list()
 					else if(turftoleave)
 						T.ChangeTurf(turftoleave)
 					else
-						T.ChangeTurf(get_base_turf_by_area(T))
+						T.ScrapeAway()
 
 					refined_src -= T
 					refined_trg -= B

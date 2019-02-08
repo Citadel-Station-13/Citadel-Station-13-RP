@@ -274,12 +274,13 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(src.flags & INITIALIZED)
 			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
+	var/is_self_closed_turf = istype(src, /turf/closed)
 	if(fake_turf_type)
 		if(!new_baseturfs) // If no baseturfs list then we want to create one from the turf type
 			if(!length(baseturfs))
 				baseturfs = list(baseturfs)
 			var/list/old_baseturfs = baseturfs.Copy()
-			if(!istype(src, /turf/closed))
+			if(!is_self_closed_turf)
 				old_baseturfs += type
 			newT = ChangeTurf(fake_turf_type, null, flags)
 			newT.assemble_baseturfs(initial(fake_turf_type.baseturfs)) // The baseturfs list is created like roundstart
@@ -290,13 +291,13 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			return newT
 		if(!length(baseturfs))
 			baseturfs = list(baseturfs)
-		if(!istype(src, /turf/closed))
+		if(!is_self_closed_turf)
 			baseturfs += type
 		baseturfs += new_baseturfs
 		return ChangeTurf(fake_turf_type, null, flags)
 	if(!length(baseturfs))
 		baseturfs = list(baseturfs)
-	if(!istype(src, /turf/closed))
+	if(!is_self_closed_turf)
 		baseturfs += type
 	var/turf/change_type
 	if(length(new_baseturfs))
