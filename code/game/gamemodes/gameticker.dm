@@ -3,6 +3,7 @@ var/global/datum/controller/gameticker/ticker
 /datum/controller/gameticker
 	var/const/restart_timeout = 3 MINUTES //One minute is 600.
 	var/current_state = GAME_STATE_PREGAME
+	var/block_start = TRUE //CitEd: used to prevent setup() if init hasn't cleared.
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
@@ -64,6 +65,18 @@ var/global/datum/controller/gameticker/ticker
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
 			sleep(10)
+
+		/*-----------------------------------------------Citadel-RP Edit-----------------------------------------------*\
+		|Here we abandon sanity and elegance in using a "magic" while loop to wait for init to clear before we setup(). |
+		|The while loop relies on master.dm to set block_start to FALSE in order to exit the while.                     |
+		\*-------------------------------------------------------------------------------------------------------------*/
+		if(block_start)
+			to_chat(world, "Initialization is taking a particularly long time. The game will start after initializations complete.")
+			while(block_start)
+				sleep(20)
+			to_chat(world, "The game is now starting!")
+		//CitEd END
+
 	while (!setup())
 
 

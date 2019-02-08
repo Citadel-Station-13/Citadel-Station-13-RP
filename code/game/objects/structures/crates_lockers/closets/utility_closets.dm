@@ -70,7 +70,8 @@
 		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
-		/obj/item/clothing/head/hardhat/red)
+		/obj/item/clothing/head/hardhat/red,
+		/obj/item/stack/medical/ointment) // CIT ADD
 
 /obj/structure/closet/firecloset/full
 	starts_with = list(
@@ -214,7 +215,8 @@
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
-		/obj/item/clothing/head/hardhat/red)
+		/obj/item/clothing/head/hardhat/red,
+		/obj/item/stack/medical/ointment) // CIT ADD
 
 /*
  * First Aid
