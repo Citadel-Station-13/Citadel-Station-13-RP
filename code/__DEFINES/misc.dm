@@ -1,25 +1,12 @@
-
 // Turf-only flags.
 #define NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
 
 #define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
 
-// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
-#define INVISIBILITY_LIGHTING             20
-#define INVISIBILITY_LEVEL_ONE            35
-#define INVISIBILITY_LEVEL_TWO            45
-#define INVISIBILITY_OBSERVER             60
-#define INVISIBILITY_EYE		          61
-
-#define SEE_INVISIBLE_LIVING              25
-#define SEE_INVISIBLE_NOLIGHTING 15
-#define SEE_INVISIBLE_LEVEL_ONE           35
-#define SEE_INVISIBLE_LEVEL_TWO           45
-#define SEE_INVISIBLE_CULT		          60
-#define SEE_INVISIBLE_OBSERVER            61
-
-#define SEE_INVISIBLE_MINIMUM 5
-#define INVISIBILITY_MAXIMUM 100
+#define TEXT_NORTH	"[NORTH]"
+#define TEXT_SOUTH	"[SOUTH]"
+#define TEXT_EAST	"[EAST]"
+#define TEXT_WEST	"[WEST]"
 
 // Pseudo-Invis, like Ninja, Ling, Etc.
 #define EFFECTIVE_INVIS					  50		// Below this, can't be examined, may as well be invisible to the game

@@ -38,8 +38,8 @@
 /atom/New(loc, ...)
 	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
 	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
-	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		_preloader.load(src)
+	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+		GLOB._preloader.load(src)
 
 	/*
 	if(datum_flags & DF_USE_TAG)

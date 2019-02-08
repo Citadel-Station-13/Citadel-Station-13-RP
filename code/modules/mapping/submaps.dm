@@ -2,15 +2,28 @@
 	var/abstract_type = /datum/map_template/submap
 	var/fixed_orientation = FALSE			//Do not allow random rotations
 	var/cost								//cost of spawning - SEE code/__DEFINES/map.dm for guidelines. Set to 0 for free spawns.
+	var/default_cost = STANDARD_RUIN_COST	//If cost is not set it defaults to that, if it's null it'll try to calculate automatically.
+	var/group_id = SUBMAP_GROUP_ID_DEFAULT
 	// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until \
 	it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc.
+
+	//Vorestation stuff start
+	var/discard_prob = 0
+	var/allow_duplicates = FALSE
+	var/template_group
+	//Vorestation stuff end
+
+/*		Seeding algorithms 2.0 soon(tm)
 	var/max_spawns_per_seeding = 1			//max number of times to spawn per seeding
-	var/min_spawns_per_seeding = 0			//self explanatory
-	var/default_cost = STANDARD_RUIN_COST	//If cost is not set it defaults to that, if it's null it'll try to calculate automatically.
+	var/min_spawns_per_seeding = 0			//self explanatory.
+	var/max_spawns_global = INFINITY		//across all load operations including admin, only prevents submap seeding though.
+	var/priority = 100						//higher priority = seeded first.
+	var/priority_decrease_per_spawn = 0		//never goes below 0
 	var/discard_prob = 0					//If set to nonzero, mapgen has that chance to completely toss it out for the duration of the seeding pass.
 	var/only_one_of_group					//if set, only one template of the group will be spawned.
 	var/min_distance_self = 0				//keeps away from other submaps during a single seeding this much
 	var/min_distance_other = 3				//keeps other submaps during a single seeding this far away
+*/
 
 /datum/map_template/submap/New()
 	. = ..()
@@ -20,14 +33,27 @@
 		else if(height && width)
 			cost = STANDARD_RUIN_COST_CALC_TILES(width * height)
 
-
-/datum/map_template/submap/proc/standard_autoplace(z, allowed_areas)
-	var/sanity = PLACEMENT_TRIES
+/*
+/datum/map_template/submap/proc/standard_autoplace(z,
+	var/sanity = RUIN_PLACEMENT_TRIES
 	while(sanity > 0)
 
+*/
 
+/datum/submap_group
+	var/name = "Group Of Submaps"
+	var/desc = "In theory, this is a group of submaps."
+	var/id
+	var/abstract_type = /datum/submap_group
+	var/list/datum/map_template/submap/submaps
+	/*		WIP
+	var/min_spawns_per_seeding = 0
+	var/max_spawns_per_seeding = INFINITY
+	var/max_spawns_global = INFINITY
+	var/loaded = 0
+	*/
 
-
+/*
 /datum/map_template/ruin/proc/try_to_place(z,allowed_areas)
 	var/sanity = PLACEMENT_TRIES
 	while(sanity > 0)
@@ -65,21 +91,36 @@
 		return TRUE
 	return FALSE
 
-/proc/seedSubmaps(list/z_levels = list(), budget = 0, list/turfBlacklist = STANDARD_SUBMAP_BLOCKING_TURFS, list/areaBlacklist = STANDARD_SUBMAP_BLOCKING_AREAS)
+/datum/submap_loader
+	var/list/potentialRuins = list()
+	var/budget = 0
+	var/z_levels = list()
+	//Blacklists override whitelists in a conflict
+	var/list/turfWhitelistTypecache
+	var/list/turfBlacklistTypecache
+	var/list/areaWhitelistTypecache
+	var/list/areaBlacklistTypecache
+
+	var/list/map
+	var/list/BPrioritySortedRuins
+	var/list/
 
 
-/proc/seedRuins(list/z_levels = null, budget = 0, whitelist = /area/space, list/potentialRuins)
-	if(!z_levels || !z_levels.len)
-		WARNING("No Z levels provided - Not generating ruins")
-		return
+#define SEED_STOPCHECK if(SSmapping.force_stop_seeding) CRASH("SEEDING FORCE STOPPED")
+/proc/seedSubmaps(list/z_levels = list(), budget = 0, list/turfWhitelist = STANDARD_SUBMAP_BLOCKING_TURFS, list/areaWhitelist = STANDARD_SUBMAP_BLOCKING_AREAS, list/ruinList)
+	SEED_STOPCHECK
+	if(!length(z_levels))
+		CRASH("No Z levels provided")
+	for(var/z in z_levels)
+		if(!isturf(locate(1, 1, z)))
+			CRASH("Z [z] doesn't exist!")
+	turfWhitelist = typecacheof(turfWhitelist)
+	areaWhitelist = typecacheof(areaWhitelist)
+	ruinList = ruinList.Copy()
 
-	for(var/zl in z_levels)
-		var/turf/T = locate(1, 1, zl)
-		if(!T)
-			WARNING("Z level [zl] does not exist - Not generating ruins")
-			return
 
-	var/list/ruins = potentialRuins.Copy()
+
+
 
 	var/list/forced_ruins = list()		//These go first on the z level associated (same random one by default)
 	var/list/ruins_availible = list()	//we can try these in the current pass
@@ -166,7 +207,7 @@
 
 	log_world("Ruin loader finished with [budget] left to spend.")
 
-
+*/
 
 
 ///////////////VORESTATION STUFF BELOW
@@ -212,7 +253,7 @@
 	// Now lets start choosing some.
 	while(budget > 0 && overall_sanity > 0)
 		overall_sanity--
-		var/datum/map_template/chosen_template = null
+		var/datum/map_template/submap/chosen_template = null
 
 		if(potential_submaps.len)
 			if(priority_submaps.len) // Do these first.

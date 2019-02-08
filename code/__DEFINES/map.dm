@@ -20,6 +20,10 @@ Multi-Z stations are supported and multi-Z mining and away missions would
 require only minor tweaks.
 */
 
+#define STANDARD_SPACE_TURF_TYPE		/turf/space
+#define STANDARD_RESERVED_TURF_TYPE		/turf/space
+#define STANDARD_TRANSIT_TURF_TYPE		/turf/space
+
 #define DEFINE_RUIN_BUDGET_MULT 1			//be careful
 #define STANDARD_RUIN_COST 12		//This is for a 15x15 ruin.
 //These are crap formulas, someone make better ones.
@@ -28,7 +32,18 @@ require only minor tweaks.
 #define STANDARD_RUIN_BUDGET_CALC_SQUARE(side)			STANDARD_RUIN_BUDGET_CALC_TILES(side ** 2)
 #define STANDARD_RUIN_BUDGET_CALC_TILES(total_area)		((total_area ^ 0.5) * DEFINE_RUIN_BUDGET_MULT)
 
+#define RUIN_PLACEMENT_TRIES 100				//times to place a ruin before giving up
+
 	//TG STUFF.
+
+// boolean - marks if present {"Trait" = TRUE}
+#define ZTRAIT_CENTCOM "CentCom"
+#define ZTRAIT_STATION "Station"
+#define ZTRAIT_RESERVED "Transit/Reserved"
+
+// numeric offsets - e.g. {"Down": -1} means that chasms will fall to z - 1 rather than oblivion
+#define ZTRAIT_UP "Up"
+#define ZTRAIT_DOWN "Down"
 
 /*
 // helpers for modifying jobs, used in various job_changes.dm files
@@ -40,11 +55,8 @@ require only minor tweaks.
 
 // traits
 // boolean - marks a level as having that property if present
-#define ZTRAIT_CENTCOM "CentCom"
-#define ZTRAIT_STATION "Station"
 #define ZTRAIT_MINING "Mining"
 #define ZTRAIT_REEBE "Reebe"
-#define ZTRAIT_RESERVED "Transit/Reserved"
 #define ZTRAIT_AWAY "Away Mission"
 #define ZTRAIT_SPACE_RUINS "Space Ruins"
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
@@ -55,9 +67,6 @@ require only minor tweaks.
 // number - default gravity if there's no gravity generators or area overrides present
 #define ZTRAIT_GRAVITY "Gravity"
 
-// numeric offsets - e.g. {"Down": -1} means that chasms will fall to z - 1 rather than oblivion
-#define ZTRAIT_UP "Up"
-#define ZTRAIT_DOWN "Down"
 
 // enum - how space transitions should affect this level
 #define ZTRAIT_LINKAGE "Linkage"
@@ -109,6 +118,10 @@ require only minor tweaks.
 #define PLACE_SPACE_RUIN "space"
 #define PLACE_LAVA_RUIN "lavaland"
 */
+
+#define SUBMAP_GROUP_ID_DEFAULT "Default"
+
+//vorestation stuff below
 
 
 // Z-level flags bitfield - Set these flags to determine the z level's purpose

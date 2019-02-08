@@ -1,4 +1,7 @@
 /datum/map_template
+	var/id = "default"
+	var/abstract_type = /datum/map_template
+	var/autoinit = FALSE			//init at load
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
 	var/width = 0

@@ -11,6 +11,10 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_config/next_map_config
 
 	var/list/map_templates = list()
+	var/list/submap_templates = list()
+	var/list/shelter_templates = list()
+	var/list/engine_templates = list()
+	var/list/submap_groups = list()
 
 	/*
 	var/list/ruins_templates = list()
@@ -18,8 +22,6 @@ SUBSYSTEM_DEF(mapping)
 	var/list/lava_ruins_templates = list()
 	var/list/shuttle_templates = list()
 	*/
-
-	var/list/shelter_templates = list()
 
 	var/list/areas_in_z = list()
 
@@ -29,7 +31,6 @@ SUBSYSTEM_DEF(mapping)
 	var/list/used_turfs = list()				//list of turf = datum/turf_reservation
 
 	var/clearing_reserved_turfs = FALSE
-	var/force_stop_seeding = FALSE		//force stop ruin seeding
 
 	// Z-manager stuff
 	var/station_start  // should only be used for maploading-related tasks
@@ -39,21 +40,8 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 
-
-
-
-
 //Vorestation stuff start
 	var/obj/effect/landmark/engine_loader/engine_loader
-
-/datum/controller/subsystem/mapping/proc/load_map_templates()
-	for(var/T in subtypesof(/datum/map_template))
-		var/datum/map_template/template = T
-		if(!(initial(template.mappath))) // If it's missing the actual path its probably a base type or being used for inheritence.
-			continue
-		template = new T()
-		map_templates[template.name] = template
-	return TRUE
 
 /datum/controller/subsystem/mapping/proc/loadEngine()
 	if(!engine_loader)
@@ -189,7 +177,6 @@ SUBSYSTEM_DEF(mapping)
 	*/
 
 	//Vorestation stuff
-	load_map_templates()
 	preloadShelterTemplates()
 	loadEngine()
 	// Mining generation probably should be here too
@@ -201,6 +188,11 @@ SUBSYSTEM_DEF(mapping)
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()
 	//Vorestation stuff end
+
+	load_map_templates()
+	process_map_templates()
+	generate_submap_groups()
+	sort_submaps()
 
 	/*
 	// Generate deep space ruins
@@ -473,15 +465,16 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
 	initialized = SSmapping.initialized
-	map_templates = SSmapping.map_templates
-	ruins_templates = SSmapping.ruins_templates
-	space_ruins_templates = SSmapping.space_ruins_templates
-	lava_ruins_templates = SSmapping.lava_ruins_templates
-	shuttle_templates = SSmapping.shuttle_templates
-	shelter_templates = SSmapping.shelter_templates
+
 	unused_turfs = SSmapping.unused_turfs
 	turf_reservations = SSmapping.turf_reservations
 	used_turfs = SSmapping.used_turfs
+
+	map_templates = SSmapping.map_templates
+	shelter_templates = SSmapping.shelter_templates
+	submap_templates = SSmapping.submap_templates
+	engine_templates = SSmapping.engine_templates
+	submap_groups = SSmapping.submap_groups
 
 	config = SSmapping.config
 	next_map_config = SSmapping.next_map_config
@@ -499,6 +492,53 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		shelter_templates[S.shelter_id] = S
 		map_templates[S.shelter_id] = S
+
+/datum/controller/subsystem/mapping/proc/load_map_templates()
+	for(var/path in subtypesof(/datum/map_tempalte))
+		var/datum/map_template/template = path
+		if(!initial(template.autoinit) || (template.abstract_type == path))
+			continue
+		template = new path
+		if(map_templates[template.id])
+			stack_trace("Map template collision on ID [template.id]")
+			qdel(template)
+			continue
+		map_templates[template.id] = template
+	return TRUE
+
+/datum/controller/subsystem/mapping/proc/process_map_templates()
+	for(var/id in map_templates)
+		var/datum/map_template/template = map_templates[id]
+		if(istype(template, /datum/map_template/submap))
+			submap_templates[id] = template
+		else if(istype(template, /datum/map_template/shelter))
+			shelter_templates[id] = template
+		else if(istype(template, /datum/map_template/engine))
+			engine_templates[id] = template
+
+/datum/controller/subsystem/mapping/proc/generate_submap_groups()
+	for(var/path in subtypesof(/datum/submap_group))
+		var/datum/submap_group/group = path
+		if((initial(group.abstract_type) == path) || isnull(initial(group.id)))
+			continue
+		group = new path
+		if(submap_groups[group.id])
+			stack_trace("Submap group collision on ID [group.id]")
+			qdel(group)
+			continue
+		submap_groups[group.id] = group
+	return TRUE
+
+/datum/controller/subsystem/mapping/proc/sort_submaps()
+	for(var/id in submap_groups)
+		var/datum/submap_group/group = submap_groups[id]
+		group.submaps = list()
+	for(var/id in submap_templates)
+		var/datum/map_template/submap/submap = submap_templates[id]
+		if(submap.group_id && submap_groups[submap.group_id])
+			var/datum/submap_group/group = submap_groups[submap.group_id]
+			group.submaps += submap
+	return
 
 //Manual loading of away missions.
 /client/proc/admin_away()
@@ -558,9 +598,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	if(clearing_reserved_turfs || !initialized)			//in either case this is just not needed.
 		return
 	clearing_reserved_turfs = TRUE
-	SSshuttle.transit_requesters.Cut()
+	//SSshuttle.transit_requesters.Cut()
 	message_admins("Clearing dynamic reservation space.")
 	var/list/obj/docking_port/mobile/in_transit = list()
+	/*
 	for(var/i in SSshuttle.transit)
 		var/obj/docking_port/stationary/transit/T = i
 		if(!istype(T))
@@ -573,6 +614,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	for(var/i in in_transit)
 		INVOKE_ASYNC(src, .proc/safety_clear_transit_dock, i, in_transit[i], cleared)
 	UNTIL((go_ahead < world.time) || (cleared.len == in_transit.len))
+	*/
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
 
@@ -611,7 +653,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			// No need to empty() these, because it's world init and they're
 			// already /turf/open/space/basic.
 			var/turf/T = t
-			T.flags_1 |= UNUSED_RESERVATION_TURF_1
+			T.flags_1 |= UNUSED_RESERVATION_TURF
 		unused_turfs["[i]"] = block
 	clearing_reserved_turfs = FALSE
 
@@ -621,7 +663,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])
 		unused_turfs["[T.z]"] |= T
-		T.flags_1 |= UNUSED_RESERVATION_TURF_1
+		T.flags_1 |= UNUSED_RESERVATION_TURF
 		GLOB.areas_by_type[world.area].contents += T
 		CHECK_TICK
 

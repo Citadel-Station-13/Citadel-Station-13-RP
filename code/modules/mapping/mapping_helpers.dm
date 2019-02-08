@@ -18,7 +18,7 @@
 
 /obj/effect/baseturf_helper/LateInitialize()
 	if(!baseturf_to_replace)
-		baseturf_to_replace = typecacheof(/turf/open/space)
+		baseturf_to_replace = typecacheof(STANDARD_SPACE_TURF_TYPE)
 	else if(!length(baseturf_to_replace))
 		baseturf_to_replace = list(baseturf_to_replace = TRUE)
 	else if(baseturf_to_replace[baseturf_to_replace[1]] != TRUE) // It's not associative
@@ -48,12 +48,11 @@
 	else
 		thing.PlaceOnBottom(null, baseturf)
 
-
-
 /obj/effect/baseturf_helper/space
 	name = "space baseturf editor"
-	baseturf = /turf/open/space
+	baseturf = STANDARD_SPACE_TURF_TYPE
 
+/*
 /obj/effect/baseturf_helper/asteroid
 	name = "asteroid baseturf editor"
 	baseturf = /turf/open/floor/plating/asteroid
@@ -85,7 +84,7 @@
 /obj/effect/baseturf_helper/lava_land/surface
 	name = "lavaland baseturf editor"
 	baseturf = /turf/open/lava/smooth/lava_land_surface
-
+*/
 
 /obj/effect/mapping_helpers
 	icon = 'icons/effects/mapping_helpers.dmi'

@@ -38,12 +38,12 @@
 		built-in navigation, entertainment, medical facilities and a \
 		sleeping area! Order now, and we'll throw in a TINY FAN, \
 		absolutely free!"
-	mappath = "maps/submaps/shelters/shelter_1.dmm"
+	mappath = "_maps/shelter_templates/shelter_1.dmm"
 	roof = "roof_alpha"
 
 /datum/map_template/shelter/alpha_roof
 	shelter_id = "roof_alpha"
-	mappath = "maps/submaps/shelters/shelter_1_roof.dmm"
+	mappath = "_maps/shelter_templates/shelter_1_roof.dmm"
 
 /datum/map_template/shelter/alpha/New()
 	. = ..()
@@ -58,30 +58,14 @@
 		running water, a gourmet three course meal, cooking facilities, \
 		and a deluxe companion to keep you from getting lonely during \
 		an ash storm."
-	mappath = "maps/submaps/shelters/shelter_2.dmm"
+	mappath = "_maps/shelter_templates/shelter_2.dmm"
 	roof = "roof_beta"
 
 /datum/map_template/shelter/beta_roof
 	shelter_id = "roof_beta"
-	mappath = "maps/submaps/shelters/shelter_2_roof.dmm"
+	mappath = "_maps/shelter_templates/shelter_2_roof.dmm"
 
 /datum/map_template/shelter/beta/New()
-	. = ..()
-	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
-	banned_objects = list()
-
-/datum/map_template/shelter/gamma
-	name = "Shelter Gamma"
-	shelter_id = "shelter_gamma"
-	description = "An heavily modified variant of the luxury shelter, \
-		this particular model has extra food, drinks, and other supplies. \
-		Originally designed for use by colonists on worlds with little to \
-		to no contact, the expense of these shelters have prevented them \
-		from seeing common use."
-	mappath = "maps/submaps/shelters/shelter_3.dmm"
-	roof = "roof_beta"
-
-/datum/map_template/shelter/gamma/New()
 	. = ..()
 	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
 	banned_objects = list()
