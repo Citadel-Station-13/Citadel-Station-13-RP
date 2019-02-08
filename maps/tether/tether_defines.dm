@@ -46,6 +46,10 @@
 	full_name = "NSB Adephagia"
 	path = "tether"
 
+	ztrait_defines = list(
+
+	)
+
 	zlevel_datum_type = /datum/map_z_level/tether
 
 	lobby_icon = 'icons/misc/title_vr.dmi'

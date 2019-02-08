@@ -745,3 +745,6 @@ var/list/ghostteleportlocs = list()
 
 	return copiedobjs
 
+// A hook so areas can modify the incoming args
+/area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
+	return flags

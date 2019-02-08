@@ -22,6 +22,8 @@ var/list/all_maps = list()
 	var/full_name = "Unnamed Map"
 	var/path
 
+	var/list/ztrait_define = list()	//ztraits soon to be changed to map configs
+
 	var/list/zlevels = list()
 	var/zlevel_datum_type			// If populated, all subtypes of this type will be instantiated and used to populate the *_levels lists.
 

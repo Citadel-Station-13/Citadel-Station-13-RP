@@ -643,7 +643,7 @@ proc/establish_old_db_connection()
 		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
 
 // Call this to make a new blank z-level, don't modify maxz directly.
-/world/proc/increment_max_z()
+/world/proc/incrementMaxZ()
 	maxz++
 	max_z_changed()
 

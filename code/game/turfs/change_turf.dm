@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port, /atom/movable/lighting_object))
+	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/effect/landmark, /atom/movable/lighting_object))	//obj/docking_port
 	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
@@ -14,7 +14,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		qdel(thing, force=TRUE)
 
 	if(turf_type)
-		var/turf/newT = ChangeTurf(turf_type, baseturf_type, flags)
+		ChangeTurf(turf_type, baseturf_type, flags)
+		//var/turf/newT = ChangeTurf(turf_type, baseturf_type, flags)
 		/*
 		SSair.remove_from_active(newT)
 		newT.CalculateAdjacentTurfs()
@@ -35,8 +36,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.icon != icon)
 		T.icon = icon
 	if(color)
-		T.atom_colours = atom_colours.Copy()
-		T.update_atom_colour()
+		T.atom_colors = atom_colors.Copy()
+		T.update_atom_color()
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
@@ -74,7 +75,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			return
 		if(/turf/baseturf_bottom)
 			path = zlevel_base_path
-		if(STANDARD_SPACE_TURF_TYPE/basic)
+		if(/turf/space/basic)
 			// basic doesn't initialize and this will cause issues
 			// no warning though because this can happen naturaly as a result of it being built on top of
 			path = STANDARD_SPACE_TURF_TYPE
@@ -102,10 +103,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_object = lighting_object
 	var/old_corners = corners
 
+	/*
 	var/old_exl = explosion_level
 	var/old_exi = explosion_id
 	var/old_bp = blueprint_data
 	blueprint_data = null
+	*/
 
 	var/list/old_baseturfs = baseturfs
 
@@ -132,13 +135,17 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	else
 		W.baseturfs = old_baseturfs
 
+	/*
 	W.explosion_id = old_exi
 	W.explosion_level = old_exl
+	*/
 
 	if(!(flags & CHANGETURF_DEFER_CHANGE))
 		W.AfterChange(flags)
 
+	/*
 	W.blueprint_data = old_bp
+	*/
 
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
@@ -264,7 +271,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	var/turf/newT
 	if(flags & CHANGETURF_SKIP) // We haven't been initialized
-		if(flags_1 & INITIALIZED_1)
+		if(src.flags & INITIALIZED)
 			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
 	if(fake_turf_type)
@@ -383,5 +390,5 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/RemoveLattice()
 	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-	if(L && (L.flags_1 & INITIALIZED_1))
+	if(L && (L.flags & INITIALIZED))
 		qdel(L)

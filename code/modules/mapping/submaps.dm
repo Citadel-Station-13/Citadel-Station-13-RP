@@ -1,5 +1,5 @@
 /datum/map_template/submap
-	var/abstract_type = /datum/map_template/submap
+	abstract_type = /datum/map_template/submap
 	var/fixed_orientation = FALSE			//Do not allow random rotations
 	var/cost								//cost of spawning - SEE code/__DEFINES/map.dm for guidelines. Set to 0 for free spawns.
 	var/default_cost = STANDARD_RUIN_COST	//If cost is not set it defaults to that, if it's null it'll try to calculate automatically.
@@ -233,7 +233,7 @@
 
 	// Lets go find some submaps to make.
 	for(var/map in SSmapping.map_templates)
-		var/datum/map_template/MT = SSmapping.map_templates[map]
+		var/datum/map_template/submap/MT = SSmapping.map_templates[map]
 		if(!MT.allow_duplicates && MT.loaded > 0) // This probably won't be an issue but we might as well.
 			continue
 		if(!istype(MT, desired_map_template_type)) // Not the type wanted.
