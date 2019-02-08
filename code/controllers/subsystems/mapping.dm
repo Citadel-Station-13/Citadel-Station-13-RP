@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(mapping)
 	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
 	if(using_map)
 		loadLateMaps()
-	if(config.generate_map)
+	if(global.config.generate_map)
 		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()
@@ -494,7 +494,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		map_templates[S.shelter_id] = S
 
 /datum/controller/subsystem/mapping/proc/load_map_templates()
-	for(var/path in subtypesof(/datum/map_tempalte))
+	for(var/path in subtypesof(/datum/map_template))
 		var/datum/map_template/template = path
 		if(!initial(template.autoinit) || (template.abstract_type == path))
 			continue
@@ -600,8 +600,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	clearing_reserved_turfs = TRUE
 	//SSshuttle.transit_requesters.Cut()
 	message_admins("Clearing dynamic reservation space.")
-	var/list/obj/docking_port/mobile/in_transit = list()
 	/*
+	var/list/obj/docking_port/mobile/in_transit = list()
 	for(var/i in SSshuttle.transit)
 		var/obj/docking_port/stationary/transit/T = i
 		if(!istype(T))

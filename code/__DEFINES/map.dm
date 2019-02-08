@@ -62,11 +62,16 @@ require only minor tweaks.
     // CROSSLINKED - mixed in with the cross-linked space pool
     #define CROSSLINKED "Cross"
 
+// default trait definitions, used by SSmapping
+
 // must correspond to _basemap.dm for things to work correctly
 //THIS IS NOT CORRECT! OVERRIDDEN IN USING_MAP UNTIL A PROPER REFACTOR!
 #define DEFAULT_MAP_TRAITS list(\
     DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
 )
+#define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)
+#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE)
+#define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
 
 /*
 // helpers for modifying jobs, used in various job_changes.dm files
@@ -90,10 +95,6 @@ require only minor tweaks.
 // number - default gravity if there's no gravity generators or area overrides present
 #define ZTRAIT_GRAVITY "Gravity"
 
-// default trait definitions, used by SSmapping
-#define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)
-#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE)
-#define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
 #define ZTRAITS_LAVALAND list(\
     ZTRAIT_MINING = TRUE, \
     ZTRAIT_LAVA_RUINS = TRUE, \

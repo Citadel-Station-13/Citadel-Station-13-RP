@@ -222,7 +222,7 @@ var/global/list/narsie_list = list()
 			if (dist <= consume_range)
 				consume(AM2)
 				continue
-
+		var/turf/T2 = A
 		T2.ScrapeAway()
 
 /obj/singularity/narsie/consume(const/atom/A) //This one is for the small ones.
@@ -262,6 +262,7 @@ var/global/list/narsie_list = list()
 
 				spawn (0)
 					AM2.singularity_pull(src, src.current_size)
+		var/turf/T2 = A
 
 		T2.ScrapeAway()
 

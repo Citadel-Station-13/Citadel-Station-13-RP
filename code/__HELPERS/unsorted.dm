@@ -349,7 +349,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 
 		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
+		var/list/searching = GetAllContents()
 		var/search_id = 1
 		var/search_pda = 1
 
@@ -643,16 +643,42 @@ proc/GaussRand(var/sigma)
 proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
-/atom/proc/GetAllContents(searchDepth = 5)
-	var/list/toReturn = list()
+/*
+	Gets all contents of contents and returns them all in a list.
+*/
 
-	for(var/atom/part in contents)
-		toReturn += part
-		if(part.contents.len && searchDepth)
-			toReturn += part.GetAllContents(searchDepth - 1)
+/atom/proc/GetAllContents(var/T)
+	var/list/processing_list = list(src)
+	var/list/assembled = list()
+	if(T)
+		while(processing_list.len)
+			var/atom/A = processing_list[1]
+			processing_list.Cut(1, 2)
+			//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+			//This is also why we don't need to check against assembled as we go along
+			processing_list += A.contents
+			if(istype(A,T))
+				assembled += A
+	else
+		while(processing_list.len)
+			var/atom/A = processing_list[1]
+			processing_list.Cut(1, 2)
+			processing_list += A.contents
+			assembled += A
+	return assembled
 
-	return toReturn
+/atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
+	if(!length(ignore_typecache))
+		return GetAllContents()
+	var/list/processing = list(src)
+	var/list/assembled = list()
+	while(processing.len)
+		var/atom/A = processing[1]
+		processing.Cut(1,2)
+		if(!ignore_typecache[A.type])
+			processing += A.contents
+			assembled += A
+	return assembled
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.

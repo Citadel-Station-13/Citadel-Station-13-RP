@@ -61,3 +61,4 @@
 	blurb = "Ook ook."
 	icobase = 'icons/mob/human_races/subspecies/r_upliftedchimp.dmi'
 */
+

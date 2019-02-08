@@ -352,10 +352,6 @@ var/global/list/latejoin_tram   = list()
 	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
 	)
 
-// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
-/obj/machinery/power/supermatter/touch_map_edge()
-	qdel(src)
-
 //Airlock antitox vendor
 /obj/machinery/vending/wallmed_airlock
 	name = "Airlock NanoMed"

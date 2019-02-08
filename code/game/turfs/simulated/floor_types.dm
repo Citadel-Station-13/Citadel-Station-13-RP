@@ -124,7 +124,7 @@
 		else if(isfloor(T3) || istype(T3,/turf/space/transit))
 			under = T3
 		else
-			under = get_base_turf_by_area(src)
+			under = SSmapping.level_trait(z, ZTRAIT_BASETURF)
 
 	if(istype(under,/turf/simulated/shuttle))
 		interior_corner = 1 //Prevents us from 'landing on grass' and having interior corners update.
