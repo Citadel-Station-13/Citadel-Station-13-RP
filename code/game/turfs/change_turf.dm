@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	return W
 
-/turf/open/ChangeTurf(path, list/new_baseturfs, flags)
+/turf/simulated/floor/ChangeTurf(path, list/new_baseturfs, flags)
 
 	//ZAS START
 	var/obj/fire/old_fire = fire

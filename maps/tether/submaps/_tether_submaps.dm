@@ -150,7 +150,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for Tether lateload maps
 /datum/map_template/tether_lateload
-	allow_duplicates = FALSE
 	var/associated_map_datum
 
 /datum/map_template/tether_lateload/on_map_loaded(z)

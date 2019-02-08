@@ -3,23 +3,50 @@
 //defaults to box
 //  -Cyberboss
 
-//Citadel: Defaults to Southern Cross.
+//Citadel: Defaults to Tether.
+
+//JSON FORMAT
+/*
+STRING													map_name				OOC name of the map
+STRING													map_path				Path to the map as _maps/{map_path}/
+STRING|LIST(STRING)										map_file				Filenames in path, if list will be loaded in order.
+LIST(STRING = VALUE)									traits					Z Level traits, ordered by load order - SEE __DEFINES/map.dm FOR TRAIT LISTING
+LIST(TYPEPATH[/datum/spawnpoint])						allowed_spawnpoints		Datum typepaths of allowed spawnpoints.
+STRING													station_name_long		Long name of station (IC)
+STRING													station_name			Short name of station (IC)
+*/
+//JSON FORMAT END
 
 /datum/map_config
 	// Metadata
-	var/config_filename = "_maps/boxstation.json"
+	var/config_filename = "_maps/tether.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
+
+	//	Config from the JSON - Should default to a fallback map.
+	var/map_name = "Tether"
+	var/map_path = "map_files/Tether"
+	var/list/map_file = list(
+
+	)
+
+	var/list/traits = list(
+
+	)
+
+	var/list/allowed_spawnpoints = list(
+
+	)
+
+	var/station_name_long = "NSB Adephagia"
+	var/station_name = "Tether"
+
+/*
 	// Config from maps.txt
+	//MAP ROTATION
 	var/config_max_users = 0
 	var/config_min_users = 0
 	var/voteweight = 1
 
-	// Config actually from the JSON - should default to Box
-	var/map_name = "Box Station"
-	var/map_path = "map_files/BoxStation"
-	var/map_file = "BoxStation.dmm"
-
-	var/traits = null
 	var/space_ruin_levels = 7
 	var/space_empty_levels = 1
 
@@ -31,6 +58,7 @@
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_box",
 		"emergency" = "emergency_box")
+*/
 
 /proc/load_map_config(filename = "data/next_map.json", force_default_config, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -40,7 +68,7 @@
 		qdel(config)
 		config = new /datum/map_config  // Fall back to Box
 	if(delete_after)
-		if(!IsAdminAdvancedProccall())			//bad idea.
+		if(!IsAdminAdvancedProcCall())			//bad idea.
 			fdel(filename)
 	return config
 
