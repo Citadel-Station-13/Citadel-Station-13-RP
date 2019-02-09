@@ -475,7 +475,7 @@
 		src.inertia_dir = src.last_move
 		step(src, src.inertia_dir)
 		return 0
-*\	
+*/	
 	//If not then we can reset inertia and move
 	inertia_dir = 0
 	return 1
