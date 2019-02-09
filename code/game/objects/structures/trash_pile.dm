@@ -130,7 +130,7 @@
 					prob(5);/obj/item/weapon/storage/backpack,
 					prob(5);/obj/item/weapon/storage/backpack/satchel/norm,
 					prob(5);/obj/item/weapon/storage/box,
-					prob(5);/obj/random/cigarettes,
+				//	prob(5);/obj/random/cigarettes,
 					prob(4);/obj/item/broken_device,
 					prob(4);/obj/item/clothing/head/hardhat,
 					prob(4);/obj/item/clothing/mask/breath,
@@ -241,8 +241,10 @@
 					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark, //Citadel Addition
 				//	prob(1);/obj/item/device/nif/bad, // VORECode default probability, 0.2%
 					prob(1);/obj/item/device/radio_jammer,
+					prob(1);/obj/item/device/sleevemate,
 				//	prob(1);/obj/item/device/bodysnatcher, //VORECode default probability, 0.2%
 					prob(1);/obj/item/weapon/beartrap,
+					prob(1);/obj/item/weapon/cell/hyper/empty,
 				//	prob(1);/obj/item/weapon/disk/nifsoft/compliance, //VORECode default probability, 0.2%
 					prob(1);/obj/item/weapon/material/knife/tacknife,
 					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
