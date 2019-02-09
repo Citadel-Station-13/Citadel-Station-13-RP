@@ -159,6 +159,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/tool/crowbar/cyborg(src)
 	src.modules += new /obj/item/weapon/extinguisher(src)
 	src.modules += new /obj/item/device/gps/robot(src)
+	src.modules += new /obj/item/device/assembly/signaler(src)
 	vr_new() // Vorestation Edit: For modules in robot_modules_vr.dm
 
 /obj/item/weapon/robot_module/robot/standard
@@ -821,6 +822,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/extinguisher(src)
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
+	src.modules += new /obj/item/device/assembly/signaler(src)
 
 	robot.internals = new/obj/item/weapon/tank/jetpack/carbondioxide(src)
 	src.modules += robot.internals
