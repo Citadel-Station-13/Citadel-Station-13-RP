@@ -468,13 +468,14 @@
 
 	if(restrained()) //Check to see if we can do things
 		return 0
-
+/* no
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)) && !buckled)
 		src << "<font color='blue'><B>You slipped!</B></font>"
 		src.inertia_dir = src.last_move
 		step(src, src.inertia_dir)
 		return 0
+*\	
 	//If not then we can reset inertia and move
 	inertia_dir = 0
 	return 1
