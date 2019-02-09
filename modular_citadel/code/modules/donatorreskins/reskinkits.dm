@@ -18,3 +18,21 @@
 			qdel(src) //gets rid of the kit
 		else
 			to_chat(user, "<span class='warning'> You can't modify [O] with this kit!</span>") //Tells the user they have the wrong item type.
+
+/obj/item/reskin_kit/stunsword //path
+	name = "stunsword kit" //name of the KIT, not the reskinned item
+	desc = "A modkit for making a stunbaton into a wicked stunsword. Remove cell before use." //desc of the KIT, not the reskinned item
+	icon = 'icons/obj/storage.dmi' //icon of the KIT, not the reskinned item
+	icon_state = "box" //icon_state of the KIT, not the reskinned item
+	var/product = /obj/item/weapon/melee/baton/stunsword //what it makes
+	var/list/fromitem = /obj/item/weapon/melee/baton/loaded // sec lockers use this, doesnt work on others.
+	afterattack(obj/O, mob/user as mob) //after being used
+		if(istype(O, product)) // Checks what it was used on
+			to_chat(user,"<span class='warning'>[O] is already modified!</span>") //If it's being used on an already reskinned item
+		else if(O.type == fromitem) //makes sure O is the right thing
+			new product(usr.loc) //spawns the product
+			user.visible_message("<span class='warning'>[user] modifies [O]!</span>","<span class='warning'>You modify the [O]!</span>") //Tells the user it's been done
+			qdel(O) //Gets rid of the unskinned item
+			qdel(src) //gets rid of the kit
+		else
+			to_chat(user, "<span class='warning'> You can't modify [O] with this kit!</span>") //Tells the user they have the wrong item type.
