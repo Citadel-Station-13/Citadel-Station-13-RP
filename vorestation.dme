@@ -138,6 +138,7 @@
 #include "code\_global_vars\misc.dm"
 #include "code\_global_vars\mobs.dm"
 #include "code\_global_vars\sensitive.dm"
+#include "code\_global_vars\lists\atoms.dm"
 #include "code\_global_vars\lists\mapping.dm"
 #include "code\_global_vars\lists\typecaches.dm"
 #include "code\_globals\regexes.dm"
