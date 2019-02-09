@@ -575,7 +575,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 	if(!customname)
 		customname = "[using_map.company_name] Update"
-	for (var/obj/machinery/computer/communications/C in machines)
+	for (var/obj/machinery/computer/communications/C in GLOB.machines)
 		if(! (C.stat & (BROKEN|NOPOWER) ) )
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( C.loc )
 			P.name = "'[command_name()] Update.'"
@@ -969,7 +969,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/list/human_cryopods = list()
 	var/list/robot_cryopods = list()
 
-	for(var/obj/machinery/cryopod/CP in machines)
+	for(var/obj/machinery/cryopod/CP in GLOB.machines)
 		if(!CP.control_computer)
 			continue //Broken pod w/o computer, move on.
 

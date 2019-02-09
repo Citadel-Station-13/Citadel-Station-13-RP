@@ -75,12 +75,12 @@ In short:
 			new /obj/effect/gateway/active/cult(T)
 		CHECK_TICK
 
-	for (var/obj/machinery/firealarm/alm in machines)
+	for (var/obj/machinery/firealarm/alm in GLOB.machines)
 		if (!(alm.stat & BROKEN))
 			alm.ex_act(2)
 
 /datum/universal_state/hell/proc/APCSet()
-	for (var/obj/machinery/power/apc/APC in machines)
+	for (var/obj/machinery/power/apc/APC in GLOB.machines)
 		if (!(APC.stat & BROKEN) && !APC.is_critical)
 			APC.emagged = 1
 			APC.queue_icon_update()

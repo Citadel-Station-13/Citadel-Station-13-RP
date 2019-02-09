@@ -16,11 +16,11 @@
 
 /obj/effect/map/ship/Initialize()
 	. = ..()
-	for(var/obj/machinery/computer/engines/E in machines)
+	for(var/obj/machinery/computer/engines/E in GLOB.machines)
 		if (E.z == map_z)
 			eng_control = E
 			break
-	for(var/obj/machinery/computer/helm/H in machines)
+	for(var/obj/machinery/computer/helm/H in GLOB.machines)
 		if (H.z == map_z)
 			nav_control = H
 			break

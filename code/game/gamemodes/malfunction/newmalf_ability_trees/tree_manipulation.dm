@@ -47,7 +47,7 @@
 	if(!ability_prechecks(user, price) || !ability_pay(user,price))
 		return
 	user << "Sending feedback pulse..."
-	for(var/obj/machinery/power/apc/AP in machines)
+	for(var/obj/machinery/power/apc/AP in GLOB.machines)
 		if(prob(5))
 			AP.overload_lighting()
 		if(prob(1) && prob(1)) // Very very small chance to actually destroy the APC.
@@ -129,7 +129,7 @@
 		user.hacking = 0
 
 
-/datum/game_mode/malfunction/verb/machine_overload(obj/machinery/M in machines)
+/datum/game_mode/malfunction/verb/machine_overload(obj/machinery/M in GLOB.machines)
 	set name = "Machine Overload"
 	set desc = "400 CPU - Causes cyclic short-circuit in machine, resulting in weak explosion after some time."
 	set category = "Software"
@@ -173,7 +173,7 @@
 		if(M.inoperable()) // Not functional
 			user << "<span class='notice'>ERROR: Unknown error. Machine is probably damaged or power supply is nonfunctional.</span>"
 			return
-	else // Not a machine at all (what the hell is this doing in Machines list anyway??)
+	else // Not a machine at all (what the hell is this doing in GLOB.machines list anyway??)
 		user << "<span class='notice'>ERROR: Unable to overload - target is not a machine.</span>"
 		return
 

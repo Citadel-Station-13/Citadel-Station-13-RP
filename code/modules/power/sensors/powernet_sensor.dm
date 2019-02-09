@@ -35,7 +35,7 @@
 /obj/machinery/power/sensor/Destroy()
 	. = ..()
 	// TODO - Switch power_monitor to register deletion events instead of this.
-	for(var/obj/machinery/computer/power_monitor/PM in machines)
+	for(var/obj/machinery/computer/power_monitor/PM in GLOB.machines)
 		if(PM.power_monitor)
 			PM.power_monitor.refresh_sensors()
 
@@ -51,7 +51,7 @@
 
 // Proc: process()
 // Parameters: None
-// Description: This has to be here because we need sensors to remain in Machines list.
+// Description: This has to be here because we need sensors to remain in GLOB.machines list.
 /obj/machinery/power/sensor/process()
 	return 1
 

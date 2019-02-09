@@ -134,7 +134,7 @@
 		dat += "<br>Prefabrication: [autolinkers.len ? "TRUE" : "FALSE"]"
 		if(hide) dat += "<br>Shadow Link: ACTIVE</a>"
 
-		//Show additional options for certain machines.
+		//Show additional options for certain GLOB.machines.
 		dat += Options_Menu()
 
 		dat += "<br>Linked Network Entities: <ol>"
@@ -211,7 +211,7 @@
 			P = user.get_active_hand()
 	return P
 
-// Additional Options for certain machines. Use this when you want to add an option to a specific machine.
+// Additional Options for certain GLOB.machines. Use this when you want to add an option to a specific machine.
 // Example of how to use below.
 
 /obj/machinery/telecomms/proc/Options_Menu()

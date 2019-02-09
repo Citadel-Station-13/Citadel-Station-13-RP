@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(shuttles)
 		shuttle.dock() //makes all shuttles docked to something at round start go into the docked state
 		CHECK_TICK
 
-	for(var/obj/machinery/embedded_controller/C in machines)
+	for(var/obj/machinery/embedded_controller/C in GLOB.machines)
 		if(istype(C.program, /datum/computer/file/embedded_program/docking))
 			C.program.tag = null //clear the tags, 'cause we don't need 'em anymore
 	docks_initialized = TRUE

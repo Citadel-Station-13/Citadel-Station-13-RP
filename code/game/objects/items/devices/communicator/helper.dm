@@ -225,7 +225,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		var/list/levels = using_map.get_map_levels(T.z, FALSE)
-		for(var/obj/machinery/power/sensor/S in machines)
+		for(var/obj/machinery/power/sensor/S in GLOB.machines)
 			if((S.long_range) || (S.loc.z in levels) || (S.loc.z == T.z)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 				if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
 					warning("Powernet sensor with unset ID Tag! [S.x]X [S.y]Y [S.z]Z")
@@ -535,7 +535,7 @@
 
 /obj/item/weapon/commcard/proc/find_blast_doors()
 	var/target_doors[0]
-	for(var/obj/machinery/door/blast/B in machines)
+	for(var/obj/machinery/door/blast/B in GLOB.machines)
 		if(B.id == internal_data["shuttle_door_code"])
 			target_doors += B
 

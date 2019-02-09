@@ -11,7 +11,7 @@
 	access.req_one_access = req_one_access
 
 	if(monitored_alarm_ids)
-		for(var/obj/machinery/alarm/alarm in machines)
+		for(var/obj/machinery/alarm/alarm in GLOB.machines)
 			if(alarm.alarm_id && alarm.alarm_id in monitored_alarm_ids)
 				monitored_alarms += alarm
 		// machines may not yet be ordered at this point
