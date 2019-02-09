@@ -84,3 +84,9 @@
 	slot = slot_head
 	path = /obj/item/reskin_kit/jenna
 	ckeywhitelist = list("jennasilver")
+
+/datum/gear/donator/stunsword
+	display_name = "Stunsword kit"
+	sort_category = "Donator"
+	path = /obj/item/reskin_kit/stunsword
+	ckeywhitelist = list("phillip458")
