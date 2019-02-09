@@ -1607,7 +1607,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/slimesoup
 	name = "slime soup"
 	desc = "If no water is available, you may substitute tears."
-	icon_state = "slimesoup" //nonexistant?
+	icon_state = "slimesoup"
 	filling_color = "#C4DBA0"
 
 /obj/item/weapon/reagent_containers/food/snacks/slimesoup/initialize()
@@ -2326,9 +2326,9 @@
 	reagents.add_reagent("cherryjelly", 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/boiledslimecore
-	name = "Boiled slime Core"
+	name = "Boiled Slime Core"
 	desc = "A boiled red thing."
-	icon_state = "boiledslimecore" //nonexistant?
+	icon_state = "boiledslimecore"
 
 /obj/item/weapon/reagent_containers/food/snacks/boiledslimecore/initialize()
 	..()
@@ -4458,7 +4458,7 @@ END CITADEL CHANGE */
 	name = "bacon burger"
 	desc = "The cornerstone of every nutritious breakfast, now with bacon!"
 	icon = 'modular_citadel/icons/obj/food_syn.dmi'
-	icon_state = "hburger"
+	icon_state = "baconburger"
 	filling_color = "#D63C3C"
 	center_of_mass = list("x"=16, "y"=11)
 	nutriment_desc = list("bun" = 2)
@@ -5143,7 +5143,7 @@ END CITADEL CHANGE */
 	gender = PLURAL
 	desc = "A thick, dark stew of bear meat and vegetables."
 	icon = 'modular_citadel/icons/obj/food_syn.dmi'
-	icon_state = "stew"
+	icon_state = "bearstew"
 	filling_color = "#9E673A"
 	nutriment_amt = 6
 	nutriment_desc = list("hearty stew" = 6)

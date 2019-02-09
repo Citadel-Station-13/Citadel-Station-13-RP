@@ -976,6 +976,15 @@ I said no!
 	result = /obj/item/weapon/reagent_containers/food/snacks/burrito_hell
 	reagent_mix = RECIPE_REAGENT_REPLACE //Already hot sauce
 
+/datum/recipe/breakfast_wrap
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/tortilla,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/egg
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/breakfast_wrap
+
 /datum/recipe/burrito_mystery
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/burrito,
