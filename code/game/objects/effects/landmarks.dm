@@ -1,3 +1,4 @@
+//NOTE: REFACOTR THESE!
 /obj/effect/landmark
 	name = "landmark"
 	icon = 'icons/mob/screen1.dmi'
@@ -61,7 +62,7 @@
 			delete_me = 1
 			return
 		if("blobstart")
-			blobstart += loc
+			GLOB.blobstart += loc
 			delete_me = 1
 			return
 		if("xeno_spawn")

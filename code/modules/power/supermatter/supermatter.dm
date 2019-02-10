@@ -162,20 +162,6 @@
 			global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
 
-
-/obj/machinery/power/supermatter/get_transit_zlevel()
-	//don't send it back to the station -- most of the time
-	if(prob(99))
-		var/list/candidates = using_map.accessible_z_levels.Copy()
-		for(var/zlevel in using_map.station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
-
-	return ..()
-
 /obj/machinery/power/supermatter/process()
 
 	var/turf/L = loc

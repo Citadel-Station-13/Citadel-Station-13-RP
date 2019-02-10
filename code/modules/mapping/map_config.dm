@@ -117,18 +117,9 @@ STRING													station_name			Short name of station (IC)
 		log_world("map_file missing from json!")
 		return
 
-	if (islist(json["shuttles"]))
-		var/list/L = json["shuttles"]
-		for(var/key in L)
-			var/value = L[key]
-			shuttles[key] = value
-	else if ("shuttles" in json)
-		log_world("map_config shuttles is not a list!")
-		return
-
 	traits = json["traits"]
 	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]
-	if (islist(traits))
+	/*if (islist(traits))
 		// "Station" is set by default, but it's assumed if you're setting
 		// traits you want to customize which level is cross-linked
 		for (var/level in traits)
@@ -136,7 +127,39 @@ STRING													station_name			Short name of station (IC)
 				level[ZTRAIT_STATION] = TRUE
 	// "traits": null or absent -> default
 	else if (!isnull(traits))
+	*/
+	if(!islist(traits))
 		log_world("map_config traits is not a list!")
+		return
+
+	allowed_spawnpoints = json["allowed_spawnpoints"]
+	for(var/path in allowed_spawnpoints.Copy())
+		allowed_spawnpoints -= path
+		if(!ispath(path, /datum/spawnpoint))
+			log_world("map_config Errored spawnpoint: [path] removed from map config [config_name].")
+			continue
+		allowed_spawnpoints += text2path(path)
+	if(!length(allowed_spawnpoints))
+		log_world("map_config No spawnpoints defined for map config [config_name]!.")
+		allowed_spawnpoints = FALLBACK_DEFAULT_ALLOWED_SPAWNPOINTS
+
+	station_name_long = json["station_name_long"]
+	station_name = json["station_name"]
+	if(!length(station_name_long))
+		log_world("map_config No long station name defined.")
+		station_name_long = "$ERROR \[LONG\]"
+	if(!length(station_anme))
+		log_world("map_config No short station name defined.")
+		station_name = "$ERROR"
+
+/*
+	if (islist(json["shuttles"]))
+		var/list/L = json["shuttles"]
+		for(var/key in L)
+			var/value = L[key]
+			shuttles[key] = value
+	else if ("shuttles" in json)
+		log_world("map_config shuttles is not a list!")
 		return
 
 	var/temp = json["space_ruin_levels"]
@@ -157,6 +180,7 @@ STRING													station_name			Short name of station (IC)
 		minetype = json["minetype"]
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
+*/
 
 	defaulted = FALSE
 	return TRUE

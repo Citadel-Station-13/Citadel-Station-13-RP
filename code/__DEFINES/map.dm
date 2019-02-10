@@ -34,7 +34,9 @@ require only minor tweaks.
 #define RUIN_PLACEMENT_TRIES 100				//times to place a ruin before giving up
 
 #define SHUTTLE_TRANSIT_BORDER		7
-#define SPACE_TRANSITION_BORDER		7 // Distance from edge to move to another z-level.
+#define SPACE_TRANSITION_BORDER		7 // Default distance from edge to move to another z-level.
+
+#define FALLBACK_DEFAULT_ALLOWED_SPAWNPOINTS list(/datum/spawnpoint/arrivals, /datum/spawnpoint/gateway, /datum/spawnpoint/cryo, /datum/spawnpoint/cyborg)		//When spawnpoint laoding fails.
 
 //ZTRAITS
 #define DL_NAME "name"
@@ -55,12 +57,26 @@ require only minor tweaks.
 
 // enum - how space transitions should affect this level
 #define ZTRAIT_LINKAGE "Linkage"
-    // UNAFFECTED if absent - no space transitions
-    #define UNAFFECTED null
-    // SELFLOOPING - space transitions always self-loop
-    #define SELFLOOPING "Self"
-    // CROSSLINKED - mixed in with the cross-linked space pool
-    #define CROSSLINKED "Cross"
+	// UNAFFECTED if absent - no space transitions
+	#define UNAFFECTED null
+	// SELFLOOPING - space transitions always self-loop
+	#define SELFLOOPING "Self"
+	// CROSSLINKED - mixed in with the cross-linked space pool
+	#define CROSSLINKED "Cross"
+	// STATIC - Links to another zlevel with the same ID
+	#define STATIC "Static"
+
+// string - id for static linkage as above.
+#define ZTRAIT_TRANSITION_ID "Transition ID"
+
+// number - tiles of padding on edge for transitions - defaults to SPACE_TRANSITION_BORDER
+#define ZTRAIT_TRANSITION_PADDING "Transition Padding"
+
+// boolean - Enable transition mirage holders - defaults to false
+#define ZTRAIT_TRANSITION_MIRAGE "Transition Mirage"
+
+// boolean - Linkage uses step teleporters instead of space tiles only
+#define ZTRAIT_TRANSITION_FORCED "Transition forced"
 
 // default trait definitions, used by SSmapping
 
@@ -70,8 +86,8 @@ require only minor tweaks.
     DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
 )
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)
-#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE)
-#define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
+#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE, ZTRAIT_TRANSITION_MIRAGE = TRUE)
+#define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE, ZTRAIT_TRANSITION_MIRAGE = TRUE)
 
 /*
 // helpers for modifying jobs, used in various job_changes.dm files

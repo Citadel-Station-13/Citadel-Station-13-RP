@@ -122,9 +122,9 @@ Class Procs:
 
 /obj/machinery/Initialize(mapload)
 	. = ..()
-	if(circuit)
+	GLOB.machines |= src
+	if(ispath(circuit))
 		circuit = new circuit(src)
-	global.machines += src
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
 	else
@@ -135,7 +135,6 @@ Class Procs:
 		STOP_MACHINE_PROCESSING(src)
 	else
 		STOP_PROCESSING(SSfastprocess, src)
-	global.machines -= src
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
@@ -151,6 +150,7 @@ Class Procs:
 				H.loc = src.loc
 			else
 				qdel(A)
+	GLOB.machines -= src
 	return ..()
 
 /obj/machinery/process()//If you dont use process or power why are you here

@@ -205,9 +205,7 @@ SUBSYSTEM_DEF(mapping)
 
 	repopulate_sorted_areas()
 	// Set up Z-level transitions.
-	/*
 	setup_map_transitions()
-	*/
 	generate_station_area_list()
 	initialize_reserved_level()
 	return ..()
