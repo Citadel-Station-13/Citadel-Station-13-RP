@@ -109,3 +109,4 @@
 	sort_category = "Donator"
 	path = /obj/item/reskin_kit/stunsword
 	ckeywhitelist = list("phillip458")
+

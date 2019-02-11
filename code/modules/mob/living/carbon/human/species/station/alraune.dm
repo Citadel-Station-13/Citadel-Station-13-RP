@@ -2,16 +2,17 @@
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 2
+	num_alternate_languages = 3 //cit lore change
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard
 	brute_mod = 1 //nothing special
 	burn_mod = 1.5 //plants don't like fire
+	radiation_mod = 0.7 //cit change: plants seem to be pretty resilient. shouldn't come up much.
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
 	min_age = 18
-	max_age = 250
+	max_age = 500 //cit lore change
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
 	selects_bodytype = TRUE
@@ -41,7 +42,7 @@
 	breath_heat_level_2 = 450
 	breath_heat_level_3 = 800 //lower incineration threshold though
 
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED // whitelist only while WIP
+	spawn_flags = SPECIES_CAN_JOIN
 	flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -50,6 +51,7 @@
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
+		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/alraune_fruit_select) //Give them the voremodes related to wrapping people in vines and sapping their fluids
 
 	color_mult = 1
@@ -59,27 +61,27 @@
 	blood_color = "#edf4d0" //sap!
 	base_color = "#1a5600"
 
-	blurb = "Alraunes are a rare sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
-	traits with other humanoid beings.\
+	reagent_tag = IS_ALRAUNE
+
+	blurb = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
+	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.\
 	\
-	Most Alraunes are not interested in traversing space, their heavy preference for natural environments and general\
-	disinterest in things outside it keeps them as a species at a rather primal stage.\
+	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they are selfish or unable to empathise with others.\
 	\
-	However, after their discovery by the angels of Sanctum, many alraunes succumbed to their curiosity, and took the offer\
-	to learn of the world and venture out, whether it's to Sanctum, or elsewhere in the galaxy."
+	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/plant),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable/plant),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable/plant),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable/plant),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant) //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
 		)
 
 	// limited organs, 'cause they're simple
