@@ -460,10 +460,10 @@ SUBSYSTEM_DEF(timer)
 		CRASH("addtimer called without a callback")
 
 	if (wait < 0)
-		crash_with("addtimer called with a negative wait. Converting to [world.tick_lag]")
+		stack_trace("addtimer called with a negative wait. Converting to [world.tick_lag]")
 
 	if (callback.object != GLOBAL_PROC && QDELETED(callback.object) && !QDESTROYING(callback.object))
-		crash_with("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not be supported and may refuse to run or run with a 0 wait")
+		stack_trace("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not be supported and may refuse to run or run with a 0 wait")
 
 	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
 
@@ -494,7 +494,7 @@ SUBSYSTEM_DEF(timer)
 						. = hash_timer.id
 					return
 	else if(flags & TIMER_OVERRIDE)
-		crash_with("TIMER_OVERRIDE used without TIMER_UNIQUE")
+		stack_trace("TIMER_OVERRIDE used without TIMER_UNIQUE")
 
 	var/datum/timedevent/timer = new(callback, wait, flags, hash)
 	return timer.id
