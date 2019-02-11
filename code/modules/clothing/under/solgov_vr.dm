@@ -45,3 +45,7 @@
 /obj/item/clothing/under/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the USDF Marine Corps, even classier in gold."
+
+/obj/item/clothing/under/mildress/marine/command/hos
+	name = "head of security's dress uniform"
+	desc = "Comfy brown button-up shirt, paired with a pair of slick black trousers."

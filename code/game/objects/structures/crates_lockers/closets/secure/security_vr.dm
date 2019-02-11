@@ -15,8 +15,10 @@
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
+		/obj/item/clothing/under/mildress/marine/command/hos,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/device/radio/headset/heads/hos,
 		/obj/item/device/radio/headset/heads/hos/alt,
@@ -38,6 +40,7 @@
 	req_access = list(access_hos)
 	storage_capacity = 2.5 * MOB_MEDIUM
 
+	// citadel edit NSFW > Multiphase
 	starts_with = list(
 		/obj/item/weapon/cartridge/hos,
 		/obj/item/taperoll/police,
@@ -49,7 +52,7 @@
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos,
+		/obj/item/weapon/gun/energy/gun/multiphase,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
