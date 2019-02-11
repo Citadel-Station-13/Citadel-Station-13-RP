@@ -682,7 +682,7 @@ var/list/ghostteleportlocs = list()
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
-						if(istype(B, get_base_turf_by_area(B)))
+						if(istype(B, SSmapping.level_trait(B.z, ZTRAIT_BASETURF)))
 							continue moving
 
 					var/turf/X = B

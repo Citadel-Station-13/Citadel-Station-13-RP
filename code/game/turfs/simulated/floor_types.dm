@@ -57,7 +57,7 @@
 	var/turf/new_source
 	//Change our source to whatever it was before
 	if(turf_type)
-		new_source = my_turf.ChangeTurf(turf_type,,1)
+		new_source = my_turf.ChangeTurf(turf_type)
 		new_source.setDir(dir)
 		new_source.icon_state = icon_state
 		new_source.icon = icon
@@ -65,7 +65,7 @@
 		new_source.underlays = underlays
 		new_source.decals = decals
 	else
-		new_source = my_turf.ChangeTurf(get_base_turf_by_area(my_turf),,1)
+		new_source = my_turf.ScrapeAway()
 
 	return new_source
 

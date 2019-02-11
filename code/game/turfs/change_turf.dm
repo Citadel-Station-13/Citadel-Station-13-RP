@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			S.update_starlight()
 
 	//POLARIS START
-	if(preserve_outdoors)
+	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
 		outdoors = old_outdoors
 	dangerous_objects = old_dangerous_objects
 	//POLARIS END
@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	//ZAS END
 
 // Take off the top layer turf and replace it with the next baseturf down
-/turf/proc/ScrapeAway(amount=1, flags)
+/turf/proc/ScrapeAway(amount = 1, flags)
 	if(!amount)
 		return
 	if(length(baseturfs))
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(src.flags & INITIALIZED)
 			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
-	var/is_self_closed_turf = istype(src, /turf/closed)
+#define is_self_closed_turf istype(src, /turf/simulated/wall)
 	if(fake_turf_type)
 		if(!new_baseturfs) // If no baseturfs list then we want to create one from the turf type
 			if(!length(baseturfs))
@@ -308,6 +308,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	else
 		change_type = new_baseturfs
 	return ChangeTurf(change_type, null, flags)
+#undef is_self_closed_turf
 
 // Copy an existing turf and put it on top
 // Returns the new turf
@@ -347,7 +348,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			FD.CalculateAffectingAreas()
 	*/
 
+	/*
 	queue_smooth_neighbors(src)
+	*/
 
 	HandleTurfChange(src)
 

@@ -136,11 +136,11 @@ STRING													station_name			Short name of station (IC)
 	for(var/path in allowed_spawnpoints.Copy())
 		allowed_spawnpoints -= path
 		if(!ispath(path, /datum/spawnpoint))
-			log_world("map_config Errored spawnpoint: [path] removed from map config [config_name].")
+			log_world("map_config Errored spawnpoint: [path] removed from map config [config_filename].")
 			continue
 		allowed_spawnpoints += text2path(path)
 	if(!length(allowed_spawnpoints))
-		log_world("map_config No spawnpoints defined for map config [config_name]!.")
+		log_world("map_config No spawnpoints defined for map config [config_filename]!.")
 		allowed_spawnpoints = FALLBACK_DEFAULT_ALLOWED_SPAWNPOINTS
 
 	station_name_long = json["station_name_long"]
@@ -148,7 +148,7 @@ STRING													station_name			Short name of station (IC)
 	if(!length(station_name_long))
 		log_world("map_config No long station name defined.")
 		station_name_long = "$ERROR \[LONG\]"
-	if(!length(station_anme))
+	if(!length(station_name))
 		log_world("map_config No short station name defined.")
 		station_name = "$ERROR"
 
