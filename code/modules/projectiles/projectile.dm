@@ -16,6 +16,9 @@
 	var/range = 50
 	var/originalRange
 
+	var/override_pixel_speed				//DO NOT TOUCH THESE TWO VARS UNLESS YOU KNOW EXACTLY WHAT YOU ARE DOING.
+	var/override_pixel_iterations
+
 	//Fired processing vars
 	var/fired = FALSE	//Have we been fired yet
 	var/ignore_source_check = FALSE
@@ -68,8 +71,8 @@
 	//Targetting
 	var/yo = null
 	var/xo = null
-	var/atom/original = null // the original target clicked
-	var/turf/starting = null // the projectile's starting turf
+	var/atom/original		// the original target clicked
+	var/turf/starting	// the projectile's starting turf
 	var/list/permutated = list() // we've passed through these atoms, don't try to hit them again
 	var/p_x = 16
 	var/p_y = 16			// the pixel location of the tile that the player clicked. Default is the center
@@ -134,8 +137,8 @@
 	var/datum/point/vector/current = trajectory
 	if(!current)
 		var/turf/T = get_turf(src)
-		current = new(T.x, T.y, T.z, pixel_x, pixel_y, isnull(forced_angle)? Angle : forced_angle, SSprojectiles.global_pixel_speed)
-	var/datum/point/vector/v = current.return_vector_after_increments(moves * SSprojectiles.global_iterations_per_move)
+		current = new(T.x, T.y, T.z, pixel_x, pixel_y, isnull(forced_angle)? Angle : forced_angle, (override_pixel_speed || SSprojectiles.global_pixel_speed))
+	var/datum/point/vector/v = current.return_vector_after_increments(moves * (override_pixel_iterations || SSprojectiles.global_iterations_per_move))
 	return v.return_turf()
 
 /obj/item/projectile/proc/return_pathing_turfs_in_moves(moves, forced_angle)
@@ -177,7 +180,7 @@
 	if(homing)
 		process_homing()
 	var/forcemoved = FALSE
-	for(var/i in 1 to SSprojectiles.global_iterations_per_move)
+	for(var/i in 1 to (override_pixel_iterations || SSprojectiles.global_iterations_per_move))
 		if(QDELETED(src))
 			return
 		trajectory.increment(trajectory_multiplier)
@@ -205,8 +208,8 @@
 		if(can_hit_target(original, permutated))
 			Bump(original)
 	if(!hitscanning && !forcemoved)
-		pixel_x = trajectory.return_px() - trajectory.mpx * trajectory_multiplier * SSprojectiles.global_iterations_per_move
-		pixel_y = trajectory.return_py() - trajectory.mpy * trajectory_multiplier * SSprojectiles.global_iterations_per_move
+		pixel_x = trajectory.return_px() - trajectory.mpx * trajectory_multiplier * (override_pixel_iterations || SSprojectiles.global_iterations_per_move)
+		pixel_y = trajectory.return_py() - trajectory.mpy * trajectory_multiplier * (override_pixel_iterations || SSprojectiles.global_iterations_per_move)
 		animate(src, pixel_x = trajectory.return_px(), pixel_y = trajectory.return_py(), time = 1, flags = ANIMATION_END_NOW)
 	Range()
 
@@ -300,20 +303,20 @@
 			qdel(src)
 			return
 		var/turf/target = locate(CLAMP(starting + xo, 1, world.maxx), CLAMP(starting + yo, 1, world.maxy), starting.z)
-		setAngle(Get_Angle(src, target))
+		setAngle(GET_ANGLE(src, target))
 	if(dispersion)
 		setAngle(Angle + rand(-dispersion, dispersion))
 	original_angle = Angle
 	trajectory_ignore_forcemove = TRUE
 	forceMove(starting)
 	trajectory_ignore_forcemove = FALSE
-	trajectory = new(starting.x, starting.y, starting.z, pixel_x, pixel_y, Angle, SSprojectiles.global_pixel_speed)
+	trajectory = new(starting.x, starting.y, starting.z, pixel_x, pixel_y, Angle, (override_pixel_speed || SSprojectiles.global_iterations_per_move))
 	last_projectile_move = world.time
 	permutated = list()
 	originalRange = range
 	fired = TRUE
 	if(hitscan)
-		process_hitscan()
+		. = process_hitscan()
 	START_PROCESSING(SSprojectiles, src)
 	pixel_move(1, FALSE)	//move it now!
 
@@ -344,7 +347,7 @@
 	if(targloc || !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(Get_Angle(src, targloc) + spread)
+		setAngle(GET_ANGLE(src, targloc) + spread)
 
 	if(isliving(source) && params)
 		var/list/calculated = calculate_projectile_angle_and_pixel_offsets(source, params)
@@ -355,7 +358,7 @@
 	else if(targloc)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(Get_Angle(src, targloc) + spread)
+		setAngle(GET_ANGLE(src, targloc) + spread)
 	else
 		crash_with("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)
@@ -399,7 +402,7 @@
 		source = get_turf(src)
 	starting = source
 	original = target
-	setAngle(Get_Angle(source, target))
+	setAngle(GET_ANGLE(source, target))
 
 /obj/item/projectile/Destroy()
 	if(hitscan)
@@ -529,7 +532,7 @@
 	if(!prehit(target))
 		return process_hit(T, select_target(T, silent = silenced), qdel_self, hit_something, distance)		//Hit whatever else we can since that didn't work.
 	var/can_penetrate = can_penetrate(target)
-	var/result = ismob(target)? attack_mob(target, distance, accuracy_mod) : target.bullet_act(src, def_zone)
+	var/result = do_hit_atom(target, distance, accuracy_mod)
 	if(result == BULLET_ACT_FORCE_QDEL)
 		qdel_self = FORCE_QDEL
 		hit_something = TRUE
@@ -608,6 +611,9 @@
 					visible_message("<span class='danger'>\The [M] uses [grab.affecting] as a shield!</span>")
 				return grab.affecting
 	//PLARISCODE STOP
+
+/obj/item/projectile/proc/do_hit_atom(atom/target, distance = 0, accuracy_mod = 0)
+	return ismob(target)? attack_mob(target, distance, accuracy_mod) : target.bullet_act(src, def_zone)
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
 //This proc needs to be refactored. Only on_hit should exist - kevinz000

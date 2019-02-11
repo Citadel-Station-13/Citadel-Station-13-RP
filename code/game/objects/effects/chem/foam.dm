@@ -152,9 +152,9 @@
 
 /obj/structure/foamedmetal/bullet_act(obj/item/projectile/P)
 	. = ..()
-	if(istype(P, /obj/item/projectile/test))
+	if(P.nodamage)
 		return
-	else if(metal == 1 || prob(50))
+	if(metal == 1 || prob(50))
 		qdel(src)
 
 /obj/structure/foamedmetal/attack_hand(var/mob/user)

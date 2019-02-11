@@ -4,15 +4,7 @@
  * A large number of misc global procs.
  */
 
-//Checks if all high bits in req_mask are set in bitfield
-#define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
-//supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
-#define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
 
 //returns a GUID like identifier (using a mostly made up record format)
 //guids are not on their own suitable for access or security tokens, as most of their bits are predictable.
@@ -77,27 +69,6 @@
 //Returns the middle-most value
 /proc/dd_range(var/low, var/high, var/num)
 	return max(low,min(high,num))
-
-//Returns whether or not A is the middle most value
-/proc/InRange(var/A, var/lower, var/upper)
-	if(A < lower) return 0
-	if(A > upper) return 0
-	return 1
-
-
-/proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
-	if(!start || !end) return 0
-	var/dy
-	var/dx
-	dy=(32*end.y+end.pixel_y)-(32*start.y+start.pixel_y)
-	dx=(32*end.x+end.pixel_x)-(32*start.x+start.pixel_x)
-	if(!dy)
-		return (dx>=0)?90:270
-	.=arctan(dx/dy)
-	if(dy<0)
-		.+=180
-	else if(dx<0)
-		.+=360
 
 //Returns location. Returns null if no location was found.
 /proc/get_teleport_loc(turf/location,mob/target,distance = 1, density = 0, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
@@ -1140,88 +1111,11 @@ var/list/WALLITEMS = list(
 			colour += temp_col
 	return colour
 
-GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
-
-//Version of view() which ignores darkness, because BYOND doesn't have it.
-/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
-	if(!center)
-		return
-	var/mob/dview/dview_mob = GLOB.dview_mob
-	dview_mob.loc = center
-
-	dview_mob.see_invisible = invis_flags
-
-	. = view(range, dview_mob)
-	dview_mob.loc = null
-
-/mob/dview
-	invisibility = 101
-	density = 0
-
-	anchored = 1
-	simulated = 0
-
-	see_in_dark = 1e6
-
 /atom/proc/get_light_and_color(var/atom/origin)
 	if(origin)
 		color = origin.color
 		set_light(origin.light_range, origin.light_power, origin.light_color)
 
-/mob/dview/Initialize()
-	. = ..()
-	// We don't want to be in any mob lists; we're a dummy not a mob.
-	mob_list -= src
-	if(stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
-
-/mob/dview/Destroy(var/force)
-	stack_trace("Attempt to delete the dview_mob: [log_info_line(src)]")
-	if (!force)
-		return QDEL_HINT_LETMELIVE
-	GLOB.dview_mob = new
-	return ..()
-
-#define crash_with stack_trace
-//gives us the stack trace from CRASH() without ending the current proc.
-/proc/stack_trace(msg)
-	CRASH(msg)
-
-/datum/proc/stack_trace(msg)
-	CRASH(msg)
-
-GLOBAL_REAL_VAR(list/stack_trace_storage)
-/proc/gib_stack_trace()
-	stack_trace_storage = list()
-	stack_trace()
-	stack_trace_storage.Cut(1, min(3,stack_trace_storage.len))
-	. = stack_trace_storage
-	stack_trace_storage = null
-
-//Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
-
-//Increases delay as the server gets more overloaded,
-//as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
-#define DELTA_CALC max(((max(TICK_USAGE, world.cpu) / 100) * max(Master.sleep_delta-1,1)), 1)
-
-//returns the number of ticks slept
-/proc/stoplag(initial_delay)
-	if (!Master || !(Master.current_runlevel & RUNLEVELS_DEFAULT))
-		sleep(world.tick_lag)
-		return 1
-	if (!initial_delay)
-		initial_delay = world.tick_lag
-	. = 0
-	var/i = DS2TICKS(initial_delay)
-	do
-		. += CEILING(i*DELTA_CALC, 1)
-		sleep(i*world.tick_lag*DELTA_CALC)
-		i *= 2
-	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
-
-#undef DELTA_CALC
 
 // Displays something as commonly used (non-submultiples) SI units.
 /proc/format_SI(var/number, var/symbol)
@@ -1236,27 +1130,6 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 			return "[round(number / 1e9, 0.1)] G[symbol]" // giga
 		if(1e12 to 1e15-1)
 			return "[round(number / 1e12, 0.1)] T[symbol]" // tera
-
-
-
-//ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
-	if(!dist)
-		if(!orange)
-			return list(center)
-		else
-			return list()
-
-	var/list/turfs = RANGE_TURFS(dist, center)
-	if(orange)
-		turfs -= get_turf(center)
-	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
-		. += T
-		. += T.contents
-		if(areas)
-			. |= T.loc
 
 #define NOT_FLAG(flag) (!(flag & use_flags))
 #define HAS_FLAG(flag) (flag & use_flags)
@@ -1303,62 +1176,6 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 #undef NOT_FLAG
 #undef HAS_FLAG
 
-//datum may be null, but it does need to be a typed var
-#define NAMEOF(datum, X) (#X || ##datum.##X)
-
-#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##target, ##var_name, ##var_value)
-//dupe code because dm can't handle 3 level deep macros
-#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
-
-/proc/___callbackvarset(list_or_datum, var_name, var_value)
-	if(length(list_or_datum))
-		list_or_datum[var_name] = var_value
-		return
-	var/datum/D = list_or_datum
-	D.vars[var_name] = var_value
-
-// Returns direction-string, rounded to multiples of 22.5, from the first parameter to the second
-// N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW
-/proc/get_adir(var/turf/A, var/turf/B)
-	var/degree = Get_Angle(A, B)
-	switch(round(degree%360, 22.5))
-		if(0)
-			return "North"
-		if(22.5)
-			return "North-Northeast"
-		if(45)
-			return "Northeast"
-		if(67.5)
-			return "East-Northeast"
-		if(90)
-			return "East"
-		if(112.5)
-			return "East-Southeast"
-		if(135)
-			return "Southeast"
-		if(157.5)
-			return "South-Southeast"
-		if(180)
-			return "South"
-		if(202.5)
-			return "South-Southwest"
-		if(225)
-			return "Southwest"
-		if(247.5)
-			return "West-Southwest"
-		if(270)
-			return "West"
-		if(292.5)
-			return "West-Northwest"
-		if(315)
-			return "Northwest"
-		if(337.5)
-			return "North-Northwest"
-
-/proc/pass()
-	return
-
-#define NAMEOF(datum, X) (#X || ##datum.##X)
 
 /proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if (value == FALSE) //nothing should be calling us with a number, so this is safe
@@ -1443,8 +1260,3 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 				typename = TYPES_SHORTCUTS[tn]+copytext(typename,length("[tn]/"))
 				break
 		.[typename] = type
-
-/proc/IsValidSrc(datum/D)
-	if(istype(D))
-		return !QDELETED(D)
-	return FALSE

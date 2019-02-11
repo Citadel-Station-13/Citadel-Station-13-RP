@@ -105,7 +105,7 @@ var/list/GPS_list = list()
 
 		gps_data["z_name"] = using_map.get_zlevel_name(T.z)
 		gps_data["direction"] = get_adir(curr, T)
-		gps_data["degrees"] = round(Get_Angle(curr,T))
+		gps_data["degrees"] = round(GET_ANGLE(curr, T), 1)
 		gps_data["distX"] = T.x - curr.x
 		gps_data["distY"] = T.y - curr.y
 		gps_data["distance"] = get_dist(curr, T)
