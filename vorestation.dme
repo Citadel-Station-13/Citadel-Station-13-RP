@@ -3196,8 +3196,6 @@
 #include "modular_citadel\code\modules\detectivework\tools\rag.dm"
 #include "modular_citadel\code\modules\donatorreskins\items.dm"
 #include "modular_citadel\code\modules\donatorreskins\reskinkits.dm"
-#include "modular_citadel\code\modules\food\recipes_microwave_cit.dm"
-#include "modular_citadel\code\modules\food\kitchen\microwave.dm"
 #include "modular_citadel\code\modules\games\dice.dm"
 #include "modular_citadel\code\modules\mob\living\carbon\human\species\station\traits\neutral.dm"
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station.dm"
