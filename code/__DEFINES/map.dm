@@ -54,6 +54,9 @@ require only minor tweaks.
 #define ZTRAIT_UP "Up"
 #define ZTRAIT_DOWN "Down"
 
+// number - bombcap is multiplied by this before being applied to bombs
+#define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
+
 // string - type path of the z-level's baseturf (defaults to space)
 #define ZTRAIT_BASETURF "Baseturf"
 
@@ -108,8 +111,6 @@ require only minor tweaks.
 #define ZTRAIT_SPACE_RUINS "Space Ruins"
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
 
-// number - bombcap is multiplied by this before being applied to bombs
-#define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
 
 // number - default gravity if there's no gravity generators or area overrides present
 #define ZTRAIT_GRAVITY "Gravity"
