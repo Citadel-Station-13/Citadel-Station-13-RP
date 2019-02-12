@@ -24,7 +24,6 @@
 // Elevator areas.
 /area/turbolift
 	delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator.ogg')
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
 
 /area/turbolift/tether/transit
