@@ -32,9 +32,9 @@
 						"Reagents" = R.reagents,
 						"Fruit" = R.fruit,
 						"Ingredients" = R.items,
+						"Appliance" = R.appliance,
 						"Image" = result_icon
 						)
-
 		qdel(res)
 		qdel(R)
 
@@ -81,6 +81,20 @@
 			drink_recipes[Rp]["Reagents"] -= rid
 			drink_recipes[Rp]["Reagents"][R_name] = amt
 
+	//We can also change the appliance to its proper name.
+	for(var/Rp in food_recipes)
+		switch(food_recipes[Rp]["Appliance"])
+			if(1)
+				food_recipes[Rp]["Appliance"] = "Microwave"
+			if(2)
+				food_recipes[Rp]["Appliance"] = "Fryer"
+			if(4)
+				food_recipes[Rp]["Appliance"] = "Oven"
+			if(8)
+				food_recipes[Rp]["Appliance"] = "Candy Maker"
+			if(16)
+				food_recipes[Rp]["Appliance"] = "Cereal Maker"
+
 	//////////////////////// SORTING
 	var/list/foods_to_paths = list()
 	var/list/drinks_to_paths = list()
@@ -119,7 +133,7 @@
 
 	html += "<html><body><h3>Food Recipes (as of [time2text(world.realtime,"MMM DD, YYYY")])</h3><br>"
 	html += "<table class='recipes'>"
-	html += "<tr><th>Icon</th><th>Name</th><th>Ingredients</th></tr>"
+	html += "<tr><th>Icon</th><th>Name</th><th>Appliance</th><th>Ingredients</th></tr>"
 	for(var/Rp in food_recipes)
 		//Open this row
 		html += "<tr>"
@@ -135,6 +149,9 @@
 
 		//Name
 		html += "<td><b>[food_recipes[Rp]["Result"]]</b></td>"
+
+		//Appliance
+		html += "<td><b>[food_recipes[Rp]["Appliance"]]</b></td>"
 
 		//Ingredients
 		html += "<td><ul>"

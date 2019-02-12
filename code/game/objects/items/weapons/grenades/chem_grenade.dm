@@ -16,7 +16,7 @@
 	var/list/allowed_containers = list(/obj/item/weapon/reagent_containers/glass/beaker, /obj/item/weapon/reagent_containers/glass/bottle)
 	var/affected_area = 3
 
-	New()
+	initialize()
 		create_reagents(1000)
 
 	Destroy()
@@ -203,7 +203,7 @@
 	path = 1
 	stage = 2
 
-	New()
+	initialize()
 		..()
 		var/obj/item/weapon/reagent_containers/glass/beaker/B1 = new(src)
 		var/obj/item/weapon/reagent_containers/glass/beaker/B2 = new(src)
