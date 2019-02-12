@@ -149,6 +149,8 @@
 /datum/reagent/dexalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 6)
+	if(alien == IS_ALRAUNE)
+		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 15)
 		M.add_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
@@ -173,6 +175,8 @@
 /datum/reagent/dexalinp/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 9)
+	if(alien == IS_ALRAUNE)
+		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 10)
 		M.add_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))
