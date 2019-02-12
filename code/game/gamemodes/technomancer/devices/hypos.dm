@@ -7,9 +7,6 @@
 	origin_tech = list(TECH_BIO = 4)
 	filled_reagents = list("inaprovaline" = 15)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/initialize()
-	..()
-
 /datum/technomancer/consumable/hypo_brute
 	name = "Trauma Hypo"
 	desc = "A extended capacity hypo which can treat blunt trauma."

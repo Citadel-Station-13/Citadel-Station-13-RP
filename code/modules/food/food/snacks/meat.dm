@@ -6,11 +6,11 @@
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/initialize()
-	..()
+/obj/item/weapon/reagent_containers/food/snacks/meat/Initialize()
+	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("triglyceride", 2)
-	src.bitesize = 1.5
+	bitesize = 1.5
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/cook()
 
@@ -27,10 +27,10 @@
 		new /obj/item/weapon/reagent_containers/food/snacks/rawcutlet(src)
 		new /obj/item/weapon/reagent_containers/food/snacks/rawcutlet(src)
 		new /obj/item/weapon/reagent_containers/food/snacks/rawcutlet(src)
-		user << "You cut the meat into thin strips."
+		to_chat(user, "You cut the meat into thin strips.")
 		qdel(src)
 	else
-		..()
+		return ..()
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/syntiflesh
 	name = "synthetic meat"
@@ -54,7 +54,7 @@
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/chicken/initialize()
-		..()
-		reagents.remove_reagent("triglyceride", INFINITY)
-		//Chicken is low fat. Less total calories than other meats
+/obj/item/weapon/reagent_containers/food/snacks/meat/chicken/Initialize()
+	. = ..()
+	reagents.remove_reagent("triglyceride", INFINITY)
+	//Chicken is low fat. Less total calories than other meats

@@ -199,6 +199,6 @@
 /obj/item/weapon/reagent_containers/food/condiment/spacespice/on_reagent_change()
 	return
 
-/obj/item/weapon/reagent_containers/food/condiment/spacespice/initialize()
-	..()
+/obj/item/weapon/reagent_containers/food/condiment/spacespice/Initialize()
+	. = ..()
 	reagents.add_reagent("spacespice", 40)

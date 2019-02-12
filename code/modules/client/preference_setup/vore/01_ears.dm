@@ -114,8 +114,6 @@
 	character.b_wing			= pref.b_wing
 	character.g_wing			= pref.g_wing
 
-
-
 /datum/category_item/player_setup_item/vore/ears/content(var/mob/user)
 	. += "<h2>VORE Station Settings</h2>"
 

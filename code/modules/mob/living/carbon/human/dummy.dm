@@ -3,6 +3,13 @@
 	status_flags = GODMODE|CANPUSH
 	var/in_use = FALSE
 
+/mob/living/carbon/human/dummy/mannequin/Initialize()
+	. = ..()
+	mob_list -= src
+	living_mob_list -= src
+	dead_mob_list -= src
+	delete_inventory()
+
 INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 /mob/living/carbon/human/dummy/Destroy()

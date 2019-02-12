@@ -11,9 +11,8 @@
 	var/datum/seed/seed
 	var/potency = -1
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/initialize(newloc,planttype)
-
-	..()
+/obj/item/weapon/reagent_containers/food/snacks/grown/Initialize(newloc,planttype)
+	. = ..()
 	if(!dried_type)
 		dried_type = type
 	src.pixel_x = rand(-5.0, 5)
@@ -24,13 +23,6 @@
 		plantname = planttype
 
 	if(!plantname)
-		return
-
-	if(!plant_controller)
-		sleep(250) // ugly hack, should mean roundstart plants are fine.
-	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
-		qdel(src)
 		return
 
 	seed = plant_controller.seeds[plantname]
