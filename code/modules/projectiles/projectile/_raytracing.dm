@@ -22,7 +22,7 @@
 	return ..()		//eehhhh..
 
 //EXPENSIVE pixel projectile ""raytracing"".
-/proc/projectile_raytrae(turf/source, atom/angle_or_target, pass_flags = (PASSTABLE | PASSGLASS | PASSGRILLE), penetration = 0, override_pixel_speed, override_pixel_iterations)
+/proc/projectile_raytrace(turf/source, atom/angle_or_target, pass_flags = (PASSTABLE | PASSGLASS | PASSGRILLE), penetration = 0, override_pixel_speed, override_pixel_iterations)
 	var/obj/item/projectile/trajectory_tester/P = new(get_turf(source))
 	P.pass_flags = pass_flags
 	P.penetrating = penetration
@@ -31,5 +31,6 @@
 	if(override_pixel_iterations)
 		P.override_pixel_iterations = override_pixel_iterations
 	if(istype(angle_or_target))
-		angle_or_target = GET_ANGLEb(source, angle_or_target)
+		AUTO_GET_ANGLE(source, angle_or_target, new_angle)
+		angle_or_target = new_angle
 	return P.fire(angle_or_target)

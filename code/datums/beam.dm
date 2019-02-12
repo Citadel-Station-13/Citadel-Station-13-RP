@@ -63,7 +63,7 @@
 		qdel(src)
 		return
 
-	var/Angle = round(GET_VISUAL_ANGLE(origin, target))
+	AUTO_GET_VISUAL_ANGLE(origin, target, Angle)
 
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(Angle)

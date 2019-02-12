@@ -138,6 +138,10 @@ SUBSYSTEM_DEF(mapping)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Box Station</span>")
 			config = old_config
 	*/
+
+	// ensure we have space_level datums for compiled-in maps
+	InitializeDefaultZLevels()
+
 	/*
 	loadWorld()
 	*/
@@ -293,9 +297,6 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/loadWorld()
 	//if any of these fail, something has gone horribly, HORRIBLY, wrong
 	var/list/FailedZs = list()
-
-	// ensure we have space_level datums for compiled-in maps
-	InitializeDefaultZLevels()
 
 	// load the station
 	station_start = world.maxz + 1

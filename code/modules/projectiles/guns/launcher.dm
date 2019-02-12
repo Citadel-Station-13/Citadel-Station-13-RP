@@ -10,10 +10,6 @@
 	muzzle_flash = 0
 	fire_sound_text = "a launcher firing"
 
-//This normally uses a proc on projectiles and our ammo is not strictly speaking a projectile.
-/obj/item/weapon/gun/launcher/can_hit(var/mob/living/target as mob, var/mob/living/user as mob)
-	return 1
-
 //Override this to avoid a runtime with suicide handling.
 /obj/item/weapon/gun/launcher/handle_suicide(mob/living/user)
 	user << "<font color='red'>Shooting yourself with \a [src] is pretty tricky. You can't seem to manage it.</font>"

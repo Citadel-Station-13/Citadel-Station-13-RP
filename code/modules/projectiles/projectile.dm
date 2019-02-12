@@ -303,7 +303,8 @@
 			qdel(src)
 			return
 		var/turf/target = locate(CLAMP(starting + xo, 1, world.maxx), CLAMP(starting + yo, 1, world.maxy), starting.z)
-		setAngle(GET_ANGLE(src, target))
+		AUTO_GET_ANGLE(src, target, _new_angle)
+		setAngle(_new_angle)
 	if(dispersion)
 		setAngle(Angle + rand(-dispersion, dispersion))
 	original_angle = Angle
@@ -402,7 +403,8 @@
 		source = get_turf(src)
 	starting = source
 	original = target
-	setAngle(GET_ANGLE(source, target))
+	AUTO_GET_ANGLE(source, target, angle)
+	setAngle(angle)
 
 /obj/item/projectile/Destroy()
 	if(hitscan)
@@ -681,9 +683,6 @@
 /obj/item/projectile/proc/do_penetrate(atom/A)
 	auto_penetrate_amount--
 	return TRUE
-
-/obj/item/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
-	check_trajectory(target, user, pass_flags, flags)
 
 /obj/item/projectile/CanPass()
 	return TRUE

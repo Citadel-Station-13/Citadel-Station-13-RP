@@ -54,3 +54,7 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
 
 #undef DELTA_CALC
+
+//There's a good reason we have this. I think.
+/proc/pass()
+	return

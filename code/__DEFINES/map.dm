@@ -47,6 +47,8 @@ require only minor tweaks.
 #define ZTRAIT_CENTCOM "CentCom"
 #define ZTRAIT_STATION "Station"
 #define ZTRAIT_RESERVED "Transit/Reserved"
+#define ZTRAIT_MINING "Mining"
+#define ZTRAIT_AWAY "Away Mission"
 
 // numeric offsets - e.g. {"Down": -1} means that chasms will fall to z - 1 rather than oblivion
 #define ZTRAIT_UP "Up"
@@ -67,7 +69,10 @@ require only minor tweaks.
 	#define STATIC "Static"
 
 // string - id for static linkage as above.
-#define ZTRAIT_TRANSITION_ID "Transition ID"
+#define ZTRAIT_TRANSITION_ID_NORTH "Transition ID North"
+#define ZTRAIT_TRANSITION_ID_SOUTH "Transition ID South"
+#define ZTRAIT_TRANSITION_ID_EAST "Transition ID East"
+#define ZTRAIT_TRANSITION_ID_WEST "Transition ID West"
 
 // number - tiles of padding on edge for transitions - defaults to SPACE_TRANSITION_BORDER
 #define ZTRAIT_TRANSITION_PADDING "Transition Padding"
@@ -99,9 +104,7 @@ require only minor tweaks.
 
 // traits
 // boolean - marks a level as having that property if present
-#define ZTRAIT_MINING "Mining"
 #define ZTRAIT_REEBE "Reebe"
-#define ZTRAIT_AWAY "Away Mission"
 #define ZTRAIT_SPACE_RUINS "Space Ruins"
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
 

@@ -336,6 +336,7 @@
 		src.add_fingerprint(usr)
 
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
+	set waitfor = FALSE			//Hacky solution until we get burst firing done right.
 	if(!user || !target) return
 	if(target.z != user.z) return
 
@@ -518,14 +519,8 @@
 /obj/item/weapon/gun/proc/consume_next_projectile()
 	return null
 
-//used by aiming code
-/obj/item/weapon/gun/proc/can_hit(atom/target as mob, var/mob/living/user as mob)
-	if(!special_check(user))
-		return 2
-	//just assume we can shoot through glass and stuff. No big deal, the player can just choose to not target someone
-	//on the other side of a window if it makes a difference. Or if they run behind a window, too bad.
-	if(check_trajectory(target, user))
-		return 1 // Magic numbers are fun.
+/obj/item/weapon/gun/proc/aiming_can_hit_target(atom/target, mob/living/user)		//, robust_aiming_aka_corner_dodging) when?
+	return projectile_raytrace(user, target)
 
 //called if there was no projectile to shoot
 /obj/item/weapon/gun/proc/handle_click_empty(mob/user)

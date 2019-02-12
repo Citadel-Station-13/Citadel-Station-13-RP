@@ -41,6 +41,46 @@
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
 
+#define DEFAULT_MAP_TRAITS \
+	list(\
+	DECLARE_LEVEL("Surface 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1)),\
+	DECLARE_LEVEL("Surface 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1)),\
+	DECLARE_LEVEL("Surface 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1)),\
+	DECLARE_LEVEL("ELEVATOR MIDPOINT", list()),\
+	DECLARE_LEVEL("Station 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_LINKAGE = CROSSLINKED)),\
+	DECLARE_LEVEL("Station 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED)),\
+	DECLARE_LEVEL("Station 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED)),\
+	DECLARE_LEVEL("Surface Mine", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE),\
+	DECLARE_LEVEL("Surface Solars", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE),\
+	DECLARE_LEVEL("CentComm", list(ZTRAIT_CENTCOM = TRUE)),\
+	DECLARE_LEVEL("Misc", list(ZTRAIT_CENTCOM = TRUE)),\
+	DECLARE_LEVEL("Ships", list(ZTRAIT_CENTCOM = TRUE)),\
+	DECLARE_LEVEL("Underdark", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE)),\
+	DECLARE_LEVEL("Alien Ship", list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING)),\
+	DECLARE_LEVEL("V2 Beach", list(ZTRAIT_AWAY = TRUE)),\
+	DECLARE_LEVEL("V2 Caves", list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),\
+	DECLARE_LEVEL("V4 Aerostat", list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1)),\
+	DECLARE_LEVEL("V4 Surface", list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))\
+	)
+
+//Doing an override like this does not make me happy but it makes things work until runtime maploading..
+/datum/controller/subsystem/mapping/InitializeDefaultZLevels()
+	if (z_list)  // subsystem/Recover or badminnery, no need
+		return
+
+	z_list = list()
+	var/list/default_map_traits = DEFAULT_MAP_TRAITS
+
+	if (default_map_traits.len != world.maxz)
+		WARNING("More or less map attributes pre-defined ([default_map_traits.len]) than existent z-levels ([world.maxz]). Ignoring the larger.")
+		if (default_map_traits.len > world.maxz)
+			default_map_traits.Cut(world.maxz + 1)
+
+	for (var/I in 1 to default_map_traits.len)
+		var/list/features = default_map_traits[I]
+		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])
+		z_list += S
+
 /datum/map/tether
 	name = "Virgo"
 	full_name = "NSB Adephagia"

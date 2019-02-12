@@ -141,7 +141,7 @@
 
 	// This will hold a list of all mobs in a line, even those behind the target, and possibly the wall.
 	// By default the test projectile goes through things like glass and grilles, which is desirable as otherwise the AI won't try to shoot through windows.
-	var/list/hit_things = check_trajectory(AM, holder) // This isn't always reliable but its better than the previous method.
+	var/list/hit_things = projectile_raytrace(holder, AM) // This isn't always reliable but its better than the previous method.
 
 	// Test to see if the primary target actually has a chance to get hit.
 	// We'll fire anyways if not, if we have conserve_ammo turned off.
