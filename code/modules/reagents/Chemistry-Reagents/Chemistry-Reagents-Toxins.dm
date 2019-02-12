@@ -281,6 +281,13 @@
 	strength = 0.5 // It's not THAT poisonous.
 	color = "#664330"
 
+/datum/reagent/toxin/fertilizer/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: fertilizer is full of natural easily digestible plant fats
+		if(prob(5))
+			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+		M.nutrition += removed * 5
+		return
+
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
 	id = "eznutrient"
@@ -322,8 +329,14 @@
 	if(alien == IS_DIONA)
 		M.adjustToxLoss(50 * removed)
 
+	if(alien == IS_ALRAUNE)
+		M.adjustToxLoss(50 * removed)
+
 /datum/reagent/toxin/plantbgone/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
+		M.adjustToxLoss(50 * removed)
+
+	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
 
 /datum/reagent/acid/polyacid

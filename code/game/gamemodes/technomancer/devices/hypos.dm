@@ -1,3 +1,15 @@
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector
+	name = "empty hypo"
+	desc = "A refined version of the standard autoinjector, allowing greater capacity."
+	icon_state = "autoinjector"
+	amount_per_transfer_from_this = 15
+	volume = 15
+	origin_tech = list(TECH_BIO = 4)
+	filled_reagents = list("inaprovaline" = 15)
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/initialize()
+	..()
+
 /datum/technomancer/consumable/hypo_brute
 	name = "Trauma Hypo"
 	desc = "A extended capacity hypo which can treat blunt trauma."

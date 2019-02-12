@@ -285,10 +285,20 @@
 	if(do_after(src,delay_length))
 		nutrition -= 200
 
-		for(var/obj/item/organ/I in internal_organs)
-			if(I.damage > 0)
-				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
-				to_chat(src, "<span class='notice'>You feel a soothing sensation within your [I.name]...</span>")
+		for(var/organ_tag in src.species.has_organ)
+			var/obj/item/organ/internal/I = src.internal_organs_by_name[organ_tag]
+			if(I && I.damage > 0)
+				I.damage = max(I.damage - 30, 0) // Repair functionally half of a dead internal organ.
+				to_chat(src, span("notice", "You feel a soothing sensation within your [I.name]..."))
+			if(!I)
+				var/organ_path = src.species.has_organ[organ_tag]
+				var/obj/item/organ/internal/IO = new organ_path(src,1)
+				if(organ_tag != IO.organ_tag)
+					warning("[IO.type] has a default organ tag \"[IO.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
+				IO.organ_tag = organ_tag
+				IO.damage = 30 // starts off as half-damaged, need to regen again to heal it
+				src.internal_organs_by_name[organ_tag] = IO
+				to_chat(src, span("notice", "You feel a soothing sensation as your missing [IO.name] reforms."))
 
 		// Replace completely missing limbs.
 		for(var/limb_type in src.species.has_limbs)
@@ -306,6 +316,8 @@
 				var/obj/item/organ/O = new limb_path(src)
 				organ_data["descriptor"] = O.name
 				to_chat(src, "<span class='notice'>You feel a slithering sensation as your [O.name] reform.</span>")
+		UpdateAppearance()
+		sync_organ_dna()
 		update_icons_body()
 		active_regen = FALSE
 	else

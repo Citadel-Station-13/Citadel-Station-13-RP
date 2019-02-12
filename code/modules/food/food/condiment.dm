@@ -98,6 +98,17 @@
 				name = "Sugar"
 				desc = "Tastey space sugar!"
 				center_of_mass = list("x"=16, "y"=6)
+			if("spacespice") //BEGIN CITADEL CHANGE - AURORA KITCHEN PORT
+				name = "bottle of space spice"
+				desc = "An exotic blend of spices for cooking. Definitely not worms."
+				icon = 'modular_citadel/icons/obj/food_syn.dmi'
+				icon_state = "spacespicebottle"
+				center_of_mass = list("x"=16, "y"=6)
+			if("barbecue")
+				name = "barbecue sauce"
+				desc = "Barbecue sauce, it's labeled 'sweet and spicy'."
+				icon_state = "barbecue"
+				center_of_mass = list("x"=16, "y"=6) // END CITADEL CHANGE - AURORA KITCHEN PORT
 			else
 				name = "Misc Condiment Bottle"
 				if (reagents.reagent_list.len==1)
@@ -176,3 +187,18 @@
 	reagents.add_reagent("flour", 30)
 	src.pixel_x = rand(-10.0, 10)
 	src.pixel_y = rand(-10.0, 10)
+
+/obj/item/weapon/reagent_containers/food/condiment/spacespice
+	name = "space spices"
+	desc = "An exotic blend of spices for cooking. Definitely not worms."
+	icon_state = "spacespicebottle"
+	possible_transfer_amounts = list(1,40) //for clown turning the lid off
+	amount_per_transfer_from_this = 1
+	volume = 40
+
+/obj/item/weapon/reagent_containers/food/condiment/spacespice/on_reagent_change()
+	return
+
+/obj/item/weapon/reagent_containers/food/condiment/spacespice/initialize()
+	..()
+	reagents.add_reagent("spacespice", 40)
