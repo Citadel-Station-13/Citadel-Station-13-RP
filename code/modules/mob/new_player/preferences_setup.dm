@@ -1,5 +1,4 @@
-/datum/preferences
-	//The mob should have a gender you want before running this proc. Will run fine without H
+//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	var/datum/species/current_species = all_species[species ? species : "Human"]
 	set_biological_gender(pick(current_species.genders))
@@ -246,10 +245,3 @@
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
 		mannequin.job = previewJob.title
 		previewJob.equip_preview(mannequin, player_alt_titles[previewJob.title])
-
-/datum/preferences/proc/update_preview_icon()
-	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-	dress_preview_mob(mannequin)
-	COMPILE_OVERLAYS(mannequin)
-	client.show_character_previews(new /mutable_appearance(mannequin))
-	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)

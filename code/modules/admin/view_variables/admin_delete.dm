@@ -14,11 +14,11 @@
 		log_admin("[key_name(usr)] deleted [D] [coords]")
 		message_admins("[key_name_admin(usr)] deleted [D] [jmp_coords]")
 		feedback_add_details("admin_verb","ADEL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		/*if(isturf(D))		//Polaris doesn't support baseturfs yet.
+		if(isturf(D))
 			var/turf/T = D
 			T.ScrapeAway()
-		else*/
-		vv_update_display(D, "deleted", VV_MSG_DELETED)
-		qdel(D)
-		if(!QDELETED(D))
-			vv_update_display(D, "deleted", "")
+		else
+			vv_update_display(D, "deleted", VV_MSG_DELETED)
+			qdel(D)
+			if(!QDELETED(D))
+				vv_update_display(D, "deleted", "")

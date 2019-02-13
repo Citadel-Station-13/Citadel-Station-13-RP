@@ -17,6 +17,8 @@
 	conversion in savefile.dm
 */
 
+//KEVINZ000: This entire system needs to be overhauled.
+
 /datum/sprite_accessory
 
 	var/icon			// the icon file the accessory is located in

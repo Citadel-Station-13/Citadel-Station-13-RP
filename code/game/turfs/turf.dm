@@ -10,6 +10,10 @@
 	// In the case of a list it is sorted from bottom layer to top.
 	// This shouldn't be modified directly, use the helper procs.
 	var/list/baseturfs = /turf/baseturf_bottom
+	//This caches certain baseturf things. Admins, do not touch this, unless you happen to know how baseturf generation works. Tip: You don't.
+	var/static/list/created_baseturf_lists = list()
+
+	var/changing_turf = FALSE
 
 	var/holy = 0
 
@@ -19,7 +23,6 @@
 	var/nitrogen = 0
 	var/phoron = 0
 
-	var/changing_turf = FALSE
 
 	//Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05

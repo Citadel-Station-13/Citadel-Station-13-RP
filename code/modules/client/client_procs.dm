@@ -715,7 +715,7 @@ GLOBAL_VAR_INIT(announce_prs, TRUE)
 		if(!O)
 			O = new
 			LAZYSET(char_render_holders, "[D]", O)
-			screen |= O
+		screen |= O									//UNFORTUNATELY, HUDs aren't SMART enough to wipe their stuff off the screen properly so everything is snowflaked so that screen just gets wiped. So we need to keep readding ourselves.
 		O.appearance = MA
 		O.dir = D
 		O.screen_loc = "preferences_render:0,[pos]"
