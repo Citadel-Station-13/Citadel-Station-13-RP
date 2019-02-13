@@ -75,6 +75,7 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SKRELLIAN
+	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = 1
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
