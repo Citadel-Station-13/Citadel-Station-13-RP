@@ -15,6 +15,10 @@
 	var/can_dirty = TRUE	// If false, tile never gets dirty
 	var/dirt = 0
 
+/turf/simulated/Initialize()
+	. = ..()
+	air_master.mark_for_update(src)			//Screw you ZAS.
+
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
 	if(wet > 2)	//Can't mop up ice
