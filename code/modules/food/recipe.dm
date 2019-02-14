@@ -48,7 +48,7 @@
 
 	var/result        // example: = /obj/item/weapon/reagent_containers/food/snacks/donut/normal
 	var/result_quantity = 1 //number of instances of result that are created.
-	var/time = 100    // 1/10 part of second
+	var/time = 50    // 1/10 part of second // Citadel change, increases recipe speed.
 
 
 	#define RECIPE_REAGENT_REPLACE		0 //Reagents in the ingredients are discarded.

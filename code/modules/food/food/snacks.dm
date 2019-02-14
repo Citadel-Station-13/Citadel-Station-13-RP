@@ -3400,7 +3400,7 @@
 	bitesize = 2
 	center_of_mass = list("x"=16, "y"=12)
 	nutriment_amt = 4
-	nutriment_desc = "bun"
+	nutriment_desc = list("bun" = 4)
 
 /obj/item/weapon/reagent_containers/food/snacks/bun/initialize()
 	. = ..()
@@ -5510,7 +5510,7 @@ END CITADEL CHANGE */
 
 /obj/item/weapon/reagent_containers/food/snacks/browniesslice
 	name = "brownie"
-	desc = "a dense, decadent chocolate brownie."
+	desc = "A dense, decadent chocolate brownie."
 	icon = 'modular_citadel/icons/obj/food_syn.dmi'
 	icon_state = "browniesslice"
 	trash = /obj/item/trash/plate
@@ -5551,7 +5551,7 @@ END CITADEL CHANGE */
 
 /obj/item/weapon/reagent_containers/food/snacks/cosmicbrowniesslice
 	name = "cosmic brownie"
-	desc = "a dense, decadent and fun-looking chocolate brownie."
+	desc = "A dense, decadent and fun-looking chocolate brownie."
 	icon = 'modular_citadel/icons/obj/food_syn.dmi'
 	icon_state = "cosmicbrowniesslice"
 	trash = /obj/item/trash/plate
