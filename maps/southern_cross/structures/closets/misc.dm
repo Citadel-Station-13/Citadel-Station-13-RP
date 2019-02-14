@@ -100,6 +100,8 @@
 		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
 		/obj/item/weapon/storage/belt/medical/emt,
 		/obj/item/weapon/material/knife/tacknife/survival, //VOREStation Add,
+		/obj/item/weapon/material/knife/machete, //cit change,
+		/obj/item/clothing/accessory/holster/machete, //cit change,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
 		/obj/item/clothing/shoes/boots/winter/explorer,

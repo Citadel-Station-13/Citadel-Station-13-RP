@@ -22,9 +22,9 @@
 	icon_state = "knight_blue"
 	item_state = "knight_blue"
 
-/obj/item/clothing/head/helmet/medieval/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/head/helmet/medieval/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 //Armours
 /obj/item/clothing/suit/armor/medieval
@@ -51,9 +51,9 @@
 	icon_state = "knight_blue"
 	item_state = "knight_blue"
 
-/obj/item/clothing/suit/armor/medieval/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/suit/armor/medieval/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 //Crusader stuff
 //Helmets
@@ -134,9 +134,9 @@
 	icon_state = "knight_blue"
 	item_state = "knight_blue"
 
-/obj/item/clothing/head/medievalfake/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/head/medievalfake/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 /obj/item/clothing/head/medievalfake/red
 	icon_state = "knight_red"
@@ -157,9 +157,9 @@
 	icon_state = "knight_green"
 	item_state = "knight_green"
 
-/obj/item/clothing/suit/medievalfake/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/suit/medievalfake/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 /obj/item/clothing/suit/medievalfake/blue
 	icon_state = "knight_blue"

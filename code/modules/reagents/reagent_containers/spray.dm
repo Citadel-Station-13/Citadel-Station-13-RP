@@ -17,7 +17,7 @@
 	var/list/spray_sizes = list(1,3)
 	volume = 250
 
-/obj/item/weapon/reagent_containers/spray/New()
+/obj/item/weapon/reagent_containers/spray/initialize()
 	..()
 	src.verbs -= /obj/item/weapon/reagent_containers/verb/set_APTFT
 
@@ -102,7 +102,7 @@
 	desc = "BLAM!-brand non-foaming space cleaner!"
 	volume = 50
 
-/obj/item/weapon/reagent_containers/spray/cleaner/New()
+/obj/item/weapon/reagent_containers/spray/cleaner/initialize()
 	..()
 	reagents.add_reagent("cleaner", volume)
 
@@ -110,7 +110,7 @@
 	name = "sterilizine"
 	desc = "Great for hiding incriminating bloodstains and sterilizing scalpels."
 
-/obj/item/weapon/reagent_containers/spray/sterilizine/New()
+/obj/item/weapon/reagent_containers/spray/sterilizine/initialize()
 	..()
 	reagents.add_reagent("sterilizine", volume)
 
@@ -124,7 +124,7 @@
 	volume = 40
 	var/safety = 1
 
-/obj/item/weapon/reagent_containers/spray/pepper/New()
+/obj/item/weapon/reagent_containers/spray/pepper/initialize()
 	..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
@@ -152,7 +152,7 @@
 	possible_transfer_amounts = null
 	volume = 10
 
-/obj/item/weapon/reagent_containers/spray/waterflower/New()
+/obj/item/weapon/reagent_containers/spray/waterflower/initialize()
 	..()
 	reagents.add_reagent("water", 10)
 
@@ -196,6 +196,6 @@
 	item_state = "plantbgone"
 	volume = 100
 
-/obj/item/weapon/reagent_containers/spray/plantbgone/New()
+/obj/item/weapon/reagent_containers/spray/plantbgone/initialize()
 	..()
 	reagents.add_reagent("plantbgone", 100)

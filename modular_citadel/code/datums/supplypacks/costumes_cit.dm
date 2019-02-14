@@ -4,11 +4,11 @@
 			/obj/item/clothing/head/medievalfake/red = 1,
 			/obj/item/clothing/head/medievalfake/green = 1,
 			/obj/item/clothing/head/medievalfake/blue = 1,
-			/obj/item/clothing/head/medievalfake/yellow = 1,
+			/obj/item/clothing/head/medievalfake/orange = 1,
 			/obj/item/clothing/suit/medievalfake/red = 1,
 			/obj/item/clothing/suit/medievalfake/green = 1,
 			/obj/item/clothing/suit/medievalfake/blue = 1,
-			/obj/item/clothing/suit/medievalfake/yellow = 1
+			/obj/item/clothing/suit/medievalfake/orange = 1
 			)
 	cost = 60
 	containertype = /obj/structure/closet/crate

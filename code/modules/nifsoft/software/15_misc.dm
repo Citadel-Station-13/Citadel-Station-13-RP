@@ -123,7 +123,7 @@
 	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
 	list_pos = NIF_SIZECHANGE
 	cost = 750
-	wear = 6
+	wear = 10
 
 	activate()
 		if((. = ..()))
@@ -138,6 +138,15 @@
 
 			nif.human.visible_message("<span class='warning'>Swirling grey mist envelops [nif.human] as they change size!</span>","<span class='notice'>Swirling streams of nanites wrap around you as you change size!</span>")
 			nif.human.update_icons() //Apply matrix transform asap
+
+			if (new_size < 75)
+				to_chat(nif.human,"<span class='warning'>You get dizzy as the floor rushes up to you!</span>")
+			else if(new_size > 125)
+				to_chat(nif.human,"<span class='warning'>You feel disoriented as the floor falls away from you!</span>")
+			else
+				to_chat(nif.human,"<span class='warning'>You feel sick as your mass is rearranged!</span>")
+
+			nif.human.Stun(10)
 
 			spawn(0)
 				deactivate()
