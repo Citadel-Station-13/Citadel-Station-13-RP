@@ -34,7 +34,7 @@
 		// adding a template with the key "mapHeader" replaces the map header content
 		ui.add_template("mapHeader", "crew_monitor_map_header.tmpl")
 		if(!(ui.map_z_level in data["map_levels"]))
-			ui.set_map_z_level(data["map_levels"][1])
+			ui.set_map_z_level(data["map_levels"][0]) // citadel change to hopefully avoid a runtime. we zero-index lists apparently
 
 		ui.set_initial_data(data)
 		ui.open()

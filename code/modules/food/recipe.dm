@@ -48,7 +48,7 @@
 
 	var/result        // example: = /obj/item/weapon/reagent_containers/food/snacks/donut/normal
 	var/result_quantity = 1 //number of instances of result that are created.
-	var/time = 100    // 1/10 part of second
+	var/time = 50    // 1/10 part of second // Citadel change, increases recipe speed.
 
 
 	#define RECIPE_REAGENT_REPLACE		0 //Reagents in the ingredients are discarded.
@@ -236,14 +236,12 @@
 
 		if (!result_obj.reagents)//This shouldn't happen
 			//If the result somehow has no reagents defined, then create a new holder
-			world << "[result_obj] had no reagents!"
 			result_obj.create_reagents(temp.reagents.total_volume*1.5)
 
 		if (result_quantity == 1)
 			qdel(tempholder.reagents)
 			tempholder.reagents = result_obj.reagents
 		else
-			world << result_obj
 			result_obj.reagents.trans_to(tempholder.reagents, result_obj.reagents.total_volume)
 		tally++
 
