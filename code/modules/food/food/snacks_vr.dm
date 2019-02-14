@@ -269,7 +269,7 @@
 	icon_state = "makaroni"
 	trash = /obj/item/trash/plate
 	nutriment_amt = 15
-	nutriment_desc = list("Cheese" = 5, "eggs" = 3, "pasta" = 4, "sparkles" = 3)
+	nutriment_desc = list("cheese" = 5, "eggs" = 3, "pasta" = 4, "sparkles" = 3)
 
 /obj/item/weapon/reagent_containers/food/snacks/makaroni/Initialize()
 	. = ..()
