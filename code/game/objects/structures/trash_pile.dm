@@ -135,7 +135,6 @@
 					prob(4);/obj/item/clothing/head/hardhat,
 					prob(4);/obj/item/clothing/mask/breath,
 					prob(4);/obj/item/clothing/shoes/black,
-					prob(4);/obj/item/clothing/shoes/black,
 					prob(4);/obj/item/clothing/shoes/laceup,
 					prob(4);/obj/item/clothing/shoes/leather,
 					prob(4);/obj/item/clothing/suit/storage/hazardvest,
@@ -226,6 +225,11 @@
 					prob(3);/obj/item/weapon/material/butterfly/switchblade,
 					prob(3);/obj/item/clothing/gloves/knuckledusters,
 					prob(3);/obj/item/weapon/reagent_containers/syringe/drugs,
+					prob(2);/obj/item/weapon/storage/pill_bottle/citalopram, //happer pills
+					prob(2);/obj/item/weapon/storage/pill_bottle/iron,
+					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine, 
+					prob(2);/obj/item/weapon/storage/pill_bottle/antitox,
+					prob(2);/obj/item/weapon/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/weapon/handcuffs/fuzzy,
 				//	prob(2);/obj/item/weapon/legcuffs,
 					prob(2);/obj/item/weapon/storage/box/syndie_kit/spy,
@@ -243,6 +247,9 @@
 					prob(1);/obj/item/weapon/cell/hyper/empty,
 				//	prob(1);/obj/item/weapon/disk/nifsoft/compliance, //VORECode default probability, 0.2%
 					prob(1);/obj/item/weapon/material/knife/tacknife,
+					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
+					prob(1);/obj/item/clothing/accessory/storage/black_vest,
+					prob(1);/obj/item/clothing/accessory/storage/white_vest,
 					prob(1);/obj/item/weapon/reagent_containers/syringe/steroid)
 
 	var/obj/item/I = new path()

@@ -103,3 +103,10 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
 	ckeywhitelist = list("mewchild")
+
+/datum/gear/donator/stunsword
+	display_name = "Stunsword kit"
+	sort_category = "Donator"
+	path = /obj/item/reskin_kit/stunsword
+	ckeywhitelist = list("phillip458")
+
