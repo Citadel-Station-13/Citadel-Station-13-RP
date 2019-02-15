@@ -52,7 +52,7 @@
 		user.drop_from_inventory(C)
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
-	C.loc = src
+	C.forceMove(src)
 	cartridges[C.label] = C
 	cartridges = sortAssoc(cartridges)
 	SSnanoui.update_uis(src)

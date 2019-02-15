@@ -20,12 +20,8 @@
 			return ZONE_PASS_YES
 		if(ZONE_PASS_DENSITY)
 			return !density
-		if(ZONE_PASS_HORIZONTAL)
-			return !vertical
 		else
 			return CanZonePass
-
-
 
 /* See all this good code? None of it can be used until atmos is refactored.
 /atom/var/CanAtmosPass = ATMOS_PASS_YES

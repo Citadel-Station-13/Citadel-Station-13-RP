@@ -12,7 +12,6 @@
 #define ZONE_PASS_NO 0
 #define ZONE_PASS_PROC -1
 #define ZONE_PASS_DENSITY -2
-#define ZONE_PASS_HORIZONTAL -3		//Only if it's not a vertical conduction
 
 #define CANZONEPASS(A, O) (A.CanZonePass == ZONE_PASS_PROC? A.CanZonePass(O) : (A.CanZonePass == ZONE_PASS_DENSITY? !A.density : (A.CanZonePass == ZONE_PASS_HORIZONTAL? TRUE : A.CanZonePass)))
-#define CANVERTICALZONEPASS(A, O) (A.CanZonePassVertical == ZONE_PASS_PROC? A.CanZonePass(O, TRUE) : (A.CanZonePassVertical == ZONE_PASS_DENSITY? !A.density : (A.CanZonePassVertical == ZONE_PASS_HORIZONTAL? FALSE : A.CanZonePassVertical)))
+#define CANVERTICALZONEPASS(A, O) (A.CanZonePassVertical == ZONE_PASS_PROC? A.CanZonePass(O, TRUE) : (A.CanZonePassVertical == ZONE_PASS_DENSITY? !A.density  A.CanZonePassVertical))

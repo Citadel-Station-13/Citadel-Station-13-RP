@@ -126,7 +126,7 @@
 "aB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/lurker,
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aC" = (
@@ -169,7 +169,7 @@
 /area/submap/Manor1)
 "aJ" = (
 /obj/effect/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/lurker,
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aK" = (
@@ -181,7 +181,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aM" = (
-/mob/living/simple_animal/hostile/giant_spider/lurker,
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aN" = (

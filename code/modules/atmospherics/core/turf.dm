@@ -3,66 +3,69 @@
 	CanAtmosPassVertical = ATMOS_PASS_NO
 	CanZonePass = ZONE_PASS_NO
 	CanZonePassVertical = ZONE_PASS_NO
+	var/blocks_air = TRUE
+	var/blocks_zone = TRUE
+	var/initial_gas_mix			//Initial gas string
 
 //ZAS simulated/unsimulated stuff
 /turf/simulated/floor
 	CanAtmosPass = ATMOS_PASS_PROC
 	CanAtmosPassVertical = ATMOS_PASS_PROC
 	CanZonePass = ZONE_PASS_PROC
-	CanZonePassVertical = ZONE_PASS_NO
+	CanZonePassVertical = ZONE_PASS_PROC
+	blocks_air = FALSE
+	blocks_zone = FALSE
+	var/datum/gas_mixture/air
+	var/datum/atmos_zone/zone
 
 //ZAS CanAtmosPass stuff
 /turf/CanAtmosPass(turf/T, vertical = FALSE)
-	//Really simplified, doesn't have ~~LINDA EFFICIENCY~~
-	var/blocked = FALSE
+	var/dir = vertical? get_dir_multiz(src, T) : get_dir(src, T)
+	var/opp = dir_inverse_multiz(dir)
 	if(blocks_air || T.blocks_air)
-		blocked = TRUE
-	if(T == src)
-		return !blocked
+		return FALSE
+	if(vertical && !(zAirOut(dir, T) && T.zAirIn(dir, src)))
+		return FALSE
 	for(var/obj/O in contents + T.contents)
 		var/turf/other = (O.loc == src? T : src)
 		if(!CANATMOSPASS(O, other))
-			blocked = TRUE
-			break
-		//Blah blah I dont' care about superconduct checks right now
+			return FALSE
 	return TRUE
 
 /turf/CanZonePass(turf/T, vertical = FALSE)
-	//Really simplified, doesn't have ~~LINDA EFFICIENCY~~
-	var/blocked = FALSE
-	if(blocks_air || T.blocks_air)
-		blocked = TRUE
-	if(T == src)
-		return !blocked
+	var/dir = vertical? get_dir_multiz(src, T) : get_dir(src, T)
+	var/opp = dir_inverse_multiz(dir)
+	if(blocks_zone || T.blocks_zone)
+		return FALSE
+	if(vertical && !(zZoneOut(dir, T) && T.zZoneIn(dir, src)))
+		return FALSE
 	for(var/obj/O in contents + T.contents)
 		var/turf/other = (O.loc == src? T : src)
 		if(!CANZONEPASS(O, other))
-			blocked = TRUE
-			break
-		//Blah blah I dont' care about superconduct checks right now
+			return FALSE
 	return TRUE
 
+//MultiZ turf handling
+/turf/proc/zAirOut(dir, turf/T)
+	return FALSE
 
-/turf/open/CanAtmosPass(turf/T, vertical = FALSE)
-	var/dir = vertical? get_dir_multiz(src, T) : get_dir(src, T)
-	var/opp = dir_inverse_multiz(dir)
-	var/R = FALSE
-	if(vertical && !(zAirOut(dir, T) && T.zAirIn(dir, src)))
-		R = TRUE
-	if(blocks_air || T.blocks_air)
-		R = TRUE
-	if (T == src)
-		return !R
-	for(var/obj/O in contents+T.contents)
-		var/turf/other = (O.loc == src ? T : src)
-		if(!(vertical? (CANVERTICALATMOSPASS(O, other)) : (CANATMOSPASS(O, other))))
-			R = TRUE
-			if(O.BlockSuperconductivity()) 	//the direction and open/closed are already checked on CanAtmosPass() so there are no arguments
-				atmos_supeconductivity |= dir
-				T.atmos_supeconductivity |= opp
-				return FALSE						//no need to keep going, we got all we asked
+/turf/proc/zAirIn(dir, turf/T)
+	return FALSE
 
-	atmos_supeconductivity &= ~dir
-	T.atmos_supeconductivity &= ~opp
+/turf/proc/zZoneOut(dir, turf/T)
+	return FALSE
 
-	return !R
+/turf/proc/zZoneIn(dir, turf/T)
+	return FALSE
+
+/turf/proc/setup_atmospherics()
+	setup_gasmix(TRUE)						//Sets up air mixture and parses initial gas string
+	setup_zone()							//Sets up zone
+
+/turf/proc/setup_gasmix(initial = FALSE)
+
+/turf/proc/setup_zone()
+	if(zone)
+		return
+	zone = new(src, TRUE)
+
