@@ -23,7 +23,8 @@
 		/obj/item/weapon/gun/energy/netgun,
 		/obj/item/weapon/gun/projectile/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/weapon/gun/projectile/dartgun
+		/obj/item/weapon/gun/projectile/dartgun,
+		/obj/item/weapon/gun/projectile/revolver/mateba
 		)
 
 	var/global/list/allocated_gamma = list()
@@ -126,6 +127,7 @@
 //Random lists
 /obj/structure/trash_pile/proc/produce_alpha_item()
 	var/path = pick(prob(5);/obj/item/clothing/gloves/rainbow,
+					prob(6);/obj/item/weapon/gun/projectile/revolver,
 					prob(5);/obj/item/clothing/gloves/white,
 					prob(5);/obj/item/weapon/storage/backpack,
 					prob(5);/obj/item/weapon/storage/backpack/satchel/norm,
@@ -216,7 +218,7 @@
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(prob(10);/obj/item/weapon/disk/nifsoft/compliance, //Citadel Override probability, 3.6%
+	var/path = pick(prob(10);/obj/item/weapon/gun/projectile/revolver, //Citadel Override probability, 3.6% - fuck ya chicken strips
 					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
 					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
