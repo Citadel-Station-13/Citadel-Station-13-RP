@@ -90,3 +90,23 @@
 	sort_category = "Donator"
 	path = /obj/item/toy/tennis/rainbow/izzy
 	ckeywhitelist = list("izzyinbox")
+
+
+/datum/gear/donator/pduni
+	display_name = "Olympius PD Service Uniform"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/opd
+	ckeywhitelist = list("hungrycricket")
+
+/datum/gear/donator/mewchild
+	display_name = "Bone Signet Ring"
+	sort_category = "Donator"
+	path = /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
+	ckeywhitelist = list("mewchild")
+
+/datum/gear/donator/stunsword
+	display_name = "Stunsword kit"
+	sort_category = "Donator"
+	path = /obj/item/reskin_kit/stunsword
+	ckeywhitelist = list("phillip458")
+

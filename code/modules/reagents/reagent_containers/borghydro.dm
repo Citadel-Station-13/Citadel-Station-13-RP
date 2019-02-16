@@ -34,7 +34,7 @@
 	bypass_protection = TRUE // Because mercs tend to be in spacesuits.
 	reagent_ids = list("healing_nanites", "hyperzine", "tramadol", "oxycodone", "spaceacillin", "peridaxon", "osteodaxon", "myelamine", "synthblood")
 
-/obj/item/weapon/reagent_containers/borghypo/New()
+/obj/item/weapon/reagent_containers/borghypo/initialize()
 	..()
 
 	for(var/T in reagent_ids)

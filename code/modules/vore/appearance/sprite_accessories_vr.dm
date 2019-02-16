@@ -898,6 +898,14 @@
 	ani_state = "ketraitail_w"
 	//ckeys_allowed = list("ketrai") //They requested it to be enabled for everyone.
 
+/datum/sprite_accessory/tail/tamamo_kitsune
+	name = "Tamamo Kitsune Tails" //Tamamo-no-Tiro, let it be known!
+	desc = ""
+	icon_state = "tamamo-kitsunetails"
+	extra_overlay = "tamamo-kitsunetails-tips"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/tail/redpanda
 	name = "red panda"
 	desc = ""

@@ -27,7 +27,7 @@
 	..()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/glass/bottle/New()
+/obj/item/weapon/reagent_containers/glass/bottle/initialize()
 	..()
 	if(!icon_state)
 		icon_state = "bottle-[rand(1,4)]"
