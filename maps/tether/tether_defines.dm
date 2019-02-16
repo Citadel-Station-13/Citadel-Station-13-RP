@@ -72,7 +72,7 @@
 	var/list/default_map_traits = DEFAULT_MAP_TRAITS
 
 	if (default_map_traits.len != world.maxz)
-		WARNING("More or less map attributes pre-defined ([default_map_traits.len]) than existent z-levels ([world.maxz]). Ignoring the larger.")
+		stack_trace("More or less map attributes pre-defined ([default_map_traits.len]) than existent z-levels ([world.maxz]). Ignoring the larger.")
 		if (default_map_traits.len > world.maxz)
 			default_map_traits.Cut(world.maxz + 1)
 
@@ -161,10 +161,10 @@
 		/area/tether/surfacebase/emergency_storage/atrium)
 
 	lateload_z_levels = list(
-		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
-		list("Alien Ship - Z1 Ship"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("Tether - Misc" = list(ZTRAIT_CENTCOM = TRUE), "Tether - Ships" = list(ZTRAIT_CENTCOM = TRUE),"Tether - Underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5)), //Stock Tether lateload maps
+		list("Alien Ship - Z1 Ship" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING)),
+		list("Desert Planet - Z1 Beach" = list(ZTRAIT_AWAY = TRUE),"Desert Planet - Z2 Cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),
+		list("Remmi Aerostat - Z1 Aerostat" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1),"Remmi Aerostat - Z2 Surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))
 		)
 
 	lateload_single_pick = null //Nothing right now.

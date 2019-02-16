@@ -232,6 +232,8 @@ var/list/gamemode_cache = list()
 
 	var/starlight = TRUE
 
+	var/invoke_youtubedl
+
 /datum/controller/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -757,6 +759,10 @@ var/list/gamemode_cache = list()
 
 				if("random_submap_orientation")
 					config.random_submap_orientation = 1
+
+
+				if("invoke_youtubedl")
+					config.invoke_youtubedl = value
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")

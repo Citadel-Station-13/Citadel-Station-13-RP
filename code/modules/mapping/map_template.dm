@@ -1,7 +1,7 @@
 /datum/map_template
 	var/id = "default"
 	var/abstract_type = /datum/map_template
-	var/autoinit = FALSE			//init at load
+	var/autoinit = FALSE			//Init this and keep this at load. Otherwise will be init + kept when needed.
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
 	var/width = 0
@@ -11,6 +11,7 @@
 	var/datum/parsed_map/cached_map
 	var/keep_cached_map = FALSE
 	var/default_annihilate = FALSE
+	var/list/ztraits				//zlevel traits for load_new_z - DO NOT DEFINE UNLESS THIS IS EXPLICITLY A LATELOAD MAP!
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
 	if(path)
@@ -68,11 +69,11 @@
 	SSmachines.setup_powernets_for_cables(cables)
 	SSmachines.setup_atmos_machinery(atmos_machines)			//SSair when?!
 
-/datum/map_template/proc/load_new_z(orientation = 0)
-	var/x = round((world.maxx - width)/2)
-	var/y = round((world.maxy - height)/2)
+/datum/map_template/proc/load_new_z(orientation = 0, list/ztraits = src.ztraits || list(ZTRAIT_AWAY = TRUE), centered = TRUE)
+	var/x = centered? round((world.maxx - width)/2) : 1
+	var/y = centered? round((world.maxy - height)/2) : 1
 
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE))
+	var/datum/space_level/level = SSmapping.add_new_zlevel(name, ztraits)
 	var/datum/parsed_map/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop = TRUE, orientation = orientation)
 	var/list/bounds = parsed.bounds
 	if(!bounds)
@@ -146,9 +147,9 @@
 
 //for your ever biggening badminnery kevinz000
 //❤ - Cyberboss
-/proc/load_new_z_level(var/file, var/name, orientation)
+/proc/load_new_z_level(file, name, orientation, list/ztraits)
 	var/datum/map_template/template = new(file, name)
-	template.load_new_z()
+	template.load_new_z(orientation, ztraits)
 
 /datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE, orientation = 0)
 	var/turf/placement = T

@@ -130,3 +130,8 @@
 	name = "Trench Outpost"
 	requires_power = FALSE
 	icon_state = "submap2"
+
+/area/submap/cave/cultmine
+	name = "Abandoned Mine"
+	ambience = AMBIENCE_FOREBODING
+	requires_power = FALSE

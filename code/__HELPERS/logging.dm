@@ -13,9 +13,6 @@
 	call(RUST_G, "log_close_all")()
 	#endif
 
-/proc/error(msg)
-	world.log << "## ERROR: [msg]"
-
 /proc/log_admin(text)
 	admin_log.Add(text)
 	if (config.log_admin)

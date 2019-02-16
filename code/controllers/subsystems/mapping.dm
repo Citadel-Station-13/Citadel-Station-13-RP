@@ -10,10 +10,12 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_config/config
 	var/datum/map_config/next_map_config
 
-	var/list/map_templates = list()
+	var/list/_map_templates = list()				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
+	//These are IDs only, non associative.
 	var/list/submap_templates = list()
 	var/list/shelter_templates = list()
 	var/list/engine_templates = list()
+
 	var/list/submap_groups = list()
 
 	/*
@@ -39,6 +41,7 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/transit
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
+	var/max_reserved_levels = 4		//Let's not let stuff OOM us.
 
 //Vorestation stuff start
 	var/obj/effect/landmark/engine_loader/engine_loader
@@ -46,7 +49,6 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/loadEngine()
 	if(!engine_loader)
 		return // Seems this map doesn't need an engine loaded.
-
 	var/turf/T = get_turf(engine_loader)
 	if(!isturf(T))
 		log_world("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
@@ -60,12 +62,7 @@ SUBSYSTEM_DEF(mapping)
 		if(!istype(chosen_type))
 			error("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
-		var/list/engine_types = list()
-		for(var/map in map_templates)
-			var/datum/map_template/engine/MT = map_templates[map]
-			if(istype(MT))
-				engine_types += MT
-		chosen_type = pick(engine_types)
+		chosen_type = safepick(engine_templates)
 	log_world("Chose Engine Map: [chosen_type.name]")
 	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
 
@@ -81,14 +78,14 @@ SUBSYSTEM_DEF(mapping)
 
 	for(var/list/maplist in deffo_load)
 		if(!islist(maplist))
-			error("Lateload Z level [maplist] is not a list! Must be in a list!")
+			stack_trace("Lateload Z level [maplist] is not a list! Must be in a list!")
 			continue
 		for(var/mapname in maplist)
 			var/datum/map_template/MT = map_templates[mapname]
 			if(!istype(MT))
-				error("Lateload Z level \"[mapname]\" is not a valid map!")
+				stack_trace("Lateload Z level \"[mapname]\" is not a valid map!")
 				continue
-			MT.load_new_z(centered = FALSE)
+			MT.load_new_z(ztraits = maplist[mapname])
 			CHECK_TICK
 
 	if(LAZYLEN(maybe_load))
@@ -98,15 +95,15 @@ SUBSYSTEM_DEF(mapping)
 			return
 
 		if(!islist(picklist)) //So you can have a 'chain' of z-levels that make up one away mission
-			error("Randompick Z level [picklist] is not a list! Must be in a list!")
+			stack_trace("Randompick Z level [picklist] is not a list! Must be in a list!")
 			return
 
 		for(var/map in picklist)
 			var/datum/map_template/MT = map_templates[map]
 			if(!istype(MT))
-				error("Randompick Z level \"[map]\" is not a valid map!")
+				stack_trace("Randompick Z level \"[map]\" is not a valid map!")
 			else
-				MT.load_new_z(centered = FALSE)
+				MT.load_new_z(ztraits = maplist[mapname])
 //Vorestation stuff end
 
 
@@ -495,9 +492,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 /datum/controller/subsystem/mapping/proc/load_map_templates()
 	for(var/path in subtypesof(/datum/map_template))
 		var/datum/map_template/template = path
-		if(!initial(template.autoinit) || (template.abstract_type == path))
+		if(initial(template.abstract_type) == path)
 			continue
-		template = new path
+		if(initial(template.autoinit))
+			template = new path
 		if(map_templates[template.id])
 			stack_trace("Map template collision on ID [template.id]")
 			qdel(template)
@@ -505,15 +503,22 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		map_templates[template.id] = template
 	return TRUE
 
+/datum/controller/subsystem/mapping/proc/get_map_template(id)
+	var/datum/map_template/template = map_templates[id]
+	if(!istype(template))
+		template = new template		//it's a path.
+	return template
+
 /datum/controller/subsystem/mapping/proc/process_map_templates()
 	for(var/id in map_templates)
 		var/datum/map_template/template = map_templates[id]
-		if(istype(template, /datum/map_template/submap))
-			submap_templates[id] = template
-		else if(istype(template, /datum/map_template/shelter))
-			shelter_templates[id] = template
-		else if(istype(template, /datum/map_template/engine))
-			engine_templates[id] = template
+		var/path = initial(template.type)
+		if(istype(path, /datum/map_template/submap))
+			submap_templates += id
+		else if(istype(path, /datum/map_template/shelter))
+			shelter_templates += id
+		else if(istype(path, /datum/map_template/engine))
+			engine_templates += id
 
 /datum/controller/subsystem/mapping/proc/generate_submap_groups()
 	for(var/path in subtypesof(/datum/submap_group))
@@ -625,9 +630,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	if(turf_type_override)
 		reserve.turf_type = turf_type_override
 	if(!z)
+		var/count = 0
 		for(var/i in levels_by_trait(ZTRAIT_RESERVED))
 			if(reserve.Reserve(width, height, i))
 				return reserve
+			count++
+		if(count >= max_reserved_levels)		//If we're at the limit for reserved levels don't just spin up more.
+			return
 		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
 		num_of_res_levels += 1
 		var/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))

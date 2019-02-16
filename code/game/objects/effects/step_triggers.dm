@@ -1,24 +1,20 @@
 /* Simple object type, calls a proc when "stepped" on by something */
 
 /obj/effect/step_trigger
-	var/affect_ghosts = 0
-	var/stopper = 1 // stops throwers
-	invisibility = 99 // nope cant see this shit
+	var/affect_ghosts = FALSE
+	var/stopper = TRUE // stops throwers
+	invisibility = INVISIBILITY_ABSTRACT // nope cant see this shit
 	plane = ABOVE_PLANE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
-	return 0
+	return FALSE
 
-/obj/effect/step_trigger/Crossed(H as mob|obj)
-	..()
-	if(!H)
+/obj/effect/step_trigger/Crossed(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /mob/observer) && !affect_ghosts)
 		return
-	if(istype(H, /mob/observer) && !affect_ghosts)
-		return
-	Trigger(H)
-
-
+	Trigger(AM)
 
 /* Tosses things in a certain direction */
 
@@ -99,7 +95,6 @@
 		var/turf/T = locate(teleport_x, teleport_y, teleport_z)
 		move_object(AM, T)
 
-
 /obj/effect/step_trigger/teleporter/proc/move_object(atom/movable/AM, turf/T)
 	if(AM.anchored)
 		return
@@ -145,7 +140,7 @@
 
 
 
-/* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
+/* Random teleporter, teleports atoms to locations ranging from teleport_x to teleport_x_offset, etc */
 
 /obj/effect/step_trigger/teleporter/random
 	var/teleport_x_offset = 0

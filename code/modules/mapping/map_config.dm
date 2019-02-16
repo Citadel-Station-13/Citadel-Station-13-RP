@@ -14,8 +14,12 @@ LIST(STRING = VALUE)									traits					Z Level traits, ordered by load order - 
 LIST(TYPEPATH[/datum/spawnpoint])						allowed_spawnpoints		Datum typepaths of allowed spawnpoints.
 STRING													station_name_long		Long name of station (IC)
 STRING													station_name			Short name of station (IC)
+NUMBER													max_reserved_levels		Maximum number of reserved levels to spin up. This is a map config thing because the larger the map, the smaller this should be. Recommended: 2 for 255x255.
+
+
 */
 //JSON FORMAT END
+
 
 /datum/map_config
 	// Metadata
@@ -151,6 +155,11 @@ STRING													station_name			Short name of station (IC)
 	if(!length(station_name))
 		log_world("map_config No short station name defined.")
 		station_name = "$ERROR"
+
+	var/_max_reserved_levels = json["max_reserved_levels"]
+	if(!isnum(_max_reserved_levels))
+		_max_reserved_levels = text2num(_max_reserved_levels)
+	max_reserved_levels = _max_reserved_levels || 2				//2 is default.
 
 /*
 	if (islist(json["shuttles"]))
