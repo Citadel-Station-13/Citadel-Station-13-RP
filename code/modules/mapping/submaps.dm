@@ -233,7 +233,7 @@
 
 	// Lets go find some submaps to make.
 	for(var/map in SSmapping.map_templates)
-		var/datum/map_template/submap/MT = SSmapping.map_templates[map]
+		var/datum/map_template/submap/MT = SSmapping.get_map_template(map)
 		if(!MT.allow_duplicates && MT.loaded > 0) // This probably won't be an issue but we might as well.
 			continue
 		if(!istype(MT, desired_map_template_type)) // Not the type wanted.

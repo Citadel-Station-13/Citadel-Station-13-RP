@@ -10,11 +10,11 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_config/config
 	var/datum/map_config/next_map_config
 
-	var/list/_map_templates = list()				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
+	var/list/map_templates = list()				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
 	//These are IDs only, non associative.
-	var/list/submap_templates = list()
-	var/list/shelter_templates = list()
-	var/list/engine_templates = list()
+	var/list/_submap_templates = list()
+	var/list/_shelter_templates = list()
+	var/list/_engine_templates = list()
 
 	var/list/submap_groups = list()
 
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_template/engine/chosen_type = null
 	if (LAZYLEN(global.config.engine_map))
 		var/chosen_name = pick(global.config.engine_map)
-		chosen_type = map_templates[chosen_name]
+		chosen_type = get_map_template(chosen_name)
 		if(!istype(chosen_type))
 			error("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(mapping)
 			stack_trace("Lateload Z level [maplist] is not a list! Must be in a list!")
 			continue
 		for(var/mapname in maplist)
-			var/datum/map_template/MT = map_templates[mapname]
+			var/datum/map_template/MT = get_map_template(mapname)
 			if(!istype(MT))
 				stack_trace("Lateload Z level \"[mapname]\" is not a valid map!")
 				continue
@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(mapping)
 			return
 
 		for(var/map in picklist)
-			var/datum/map_template/MT = map_templates[map]
+			var/datum/map_template/MT = get_map_template(map)
 			if(!istype(MT))
 				stack_trace("Randompick Z level \"[map]\" is not a valid map!")
 			else
@@ -478,16 +478,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	clearing_reserved_turfs = SSmapping.clearing_reserved_turfs
 
 	z_list = SSmapping.z_list
-
-/datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
-	for(var/item in subtypesof(/datum/map_template/shelter))
-		var/datum/map_template/shelter/shelter_type = item
-		if(!(initial(shelter_type.mappath)))
-			continue
-		var/datum/map_template/shelter/S = new shelter_type()
-
-		shelter_templates[S.shelter_id] = S
-		map_templates[S.shelter_id] = S
 
 /datum/controller/subsystem/mapping/proc/load_map_templates()
 	for(var/path in subtypesof(/datum/map_template))

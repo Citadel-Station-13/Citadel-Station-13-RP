@@ -44,6 +44,8 @@ NUMBER													max_reserved_levels		Maximum number of reserved levels to spi
 	var/station_name_long = "NSB Adephagia"
 	var/station_name = "Tether"
 
+	var/max_reserved_levels = 2
+
 /*
 	// Config from maps.txt
 	//MAP ROTATION
