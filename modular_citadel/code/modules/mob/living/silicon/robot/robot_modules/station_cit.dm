@@ -29,6 +29,7 @@
 	src.modules += new /obj/item/device/multitool(src) //to freeze trays
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
+	src.modules += new /obj/item/weapon/material/twohanded/fluff/riding_crop(src)
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
 
 	var/datum/matter_synth/water = new /datum/matter_synth()
