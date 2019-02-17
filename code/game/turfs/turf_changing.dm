@@ -28,7 +28,11 @@
 
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)
+<<<<<<< HEAD
 		if(istype(below) && (air_master.has_valid_zone(below) || air_master.has_valid_zone(src)))
+=======
+		if(istype(below) && (air_master.has_valid_zone(below) || air_master.has_valid_zone(src))) //VOREStation Edit - Polaris change breaks Tether
+>>>>>>> fcfba92... Merge pull request #4772 from Novacat/nova-aicompile
 			N = /turf/simulated/open
 
 	var/obj/fire/old_fire = fire
