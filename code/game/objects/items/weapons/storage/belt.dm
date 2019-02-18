@@ -366,7 +366,6 @@
 		/obj/item/weapon/photo,
 		/obj/item/weapon/folder,
 		/obj/item/weapon/pen,
-		/obj/item/weapon/folder,
 		/obj/item/weapon/clipboard,
 		/obj/item/weapon/anodevice,
 		/obj/item/clothing/glasses,
@@ -375,6 +374,7 @@
 		/obj/item/weapon/anobattery,
 		/obj/item/device/ano_scanner,
 		/obj/item/weapon/pickaxe/hand,
+		/obj/item/weapon/hand_labeler,
 		/obj/item/device/xenoarch_multi_tool,
 		/obj/item/weapon/pickaxe/excavationdrill
 		)
