@@ -13,7 +13,7 @@
 
 /turf/unsimulated/floor/sky/Initialize()
 	if(does_skyfall && !LAZYLEN(skyfall_levels))
-		error("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
+		stack_trace("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
 	if(locate(/turf/simulated) in orange(src,1))
 		set_light(2, 2, color)
 	return INITIALIZE_HINT_NORMAL

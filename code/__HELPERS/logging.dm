@@ -245,3 +245,7 @@
 
 /client/proc/simple_info_line()
 	return "[key_name(src)] ([mob.x],[mob.y],[mob.z])"
+
+/proc/log_config(thing)
+	stack_trace(thing)
+	return log_world(thing)

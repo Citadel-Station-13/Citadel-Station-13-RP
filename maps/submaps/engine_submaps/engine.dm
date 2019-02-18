@@ -10,6 +10,7 @@
 /datum/map_template/engine
 	name = "Engine Content"
 	desc = "It would be boring to have the same engine every day right?"
+	autoinit = TRUE
 	// annihilate = TRUE - Would wipe out in a rectangular area unfortunately
 	// allow_duplicates = FALSE
 

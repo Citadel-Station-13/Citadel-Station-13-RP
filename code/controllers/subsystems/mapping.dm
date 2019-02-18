@@ -12,9 +12,9 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/map_templates = list()				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
 	//These are IDs only, non associative.
-	var/list/_submap_templates = list()
-	var/list/_shelter_templates = list()
-	var/list/_engine_templates = list()
+	var/list/submap_templates = list()
+	var/list/shelter_templates = list()
+	var/list/engine_templates = list()
 
 	var/list/submap_groups = list()
 
@@ -60,9 +60,11 @@ SUBSYSTEM_DEF(mapping)
 		var/chosen_name = pick(global.config.engine_map)
 		chosen_type = get_map_template(chosen_name)
 		if(!istype(chosen_type))
-			error("Configured engine map [chosen_name] is not a valid engine map name!")
+			log_config("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
-		chosen_type = safepick(engine_templates)
+		chosen_type = get_map_template(safepick(engine_templates))
+	if(!istype(chosen_type))	//oh no
+		to_chat(world, "<span class='warning'><b>WARNING: Engine failed to load. Check runtime logs.</b></span>")
 	log_world("Chose Engine Map: [chosen_type.name]")
 	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
 
@@ -103,7 +105,7 @@ SUBSYSTEM_DEF(mapping)
 			if(!istype(MT))
 				stack_trace("Randompick Z level \"[map]\" is not a valid map!")
 			else
-				MT.load_new_z(ztraits = maplist[mapname])
+				MT.load_new_z(ztraits = picklist[map])
 //Vorestation stuff end
 
 
@@ -178,7 +180,6 @@ SUBSYSTEM_DEF(mapping)
 	*/
 
 	//Vorestation stuff
-	preloadShelterTemplates()
 	loadEngine()
 	// Mining generation probably should be here too
 	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
@@ -484,16 +485,22 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/datum/map_template/template = path
 		if(initial(template.abstract_type) == path)
 			continue
+		var/id
 		if(initial(template.autoinit))
 			template = new path
-		if(map_templates[template.id])
-			stack_trace("Map template collision on ID [template.id]")
+			id = template.id
+		else
+			id = initial(template.id)
+		if(map_templates[id])
+			stack_trace("Map template collision on ID [id]")
 			qdel(template)
 			continue
-		map_templates[template.id] = template
+		map_templates[id] = template
 	return TRUE
 
 /datum/controller/subsystem/mapping/proc/get_map_template(id)
+	if(!length(id))
+		return
 	var/datum/map_template/template = map_templates[id]
 	if(!istype(template))
 		template = new template		//it's a path.
@@ -502,12 +509,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 /datum/controller/subsystem/mapping/proc/process_map_templates()
 	for(var/id in map_templates)
 		var/datum/map_template/template = map_templates[id]
-		var/path = initial(template.type)
-		if(istype(path, /datum/map_template/submap))
+		var/path = ispath(template)? template : template.type
+		if(ispath(path, /datum/map_template/submap))
 			submap_templates += id
-		else if(istype(path, /datum/map_template/shelter))
+		else if(ispath(path, /datum/map_template/shelter))
 			shelter_templates += id
-		else if(istype(path, /datum/map_template/engine))
+		else if(ispath(path, /datum/map_template/engine))
 			engine_templates += id
 
 /datum/controller/subsystem/mapping/proc/generate_submap_groups()
@@ -528,8 +535,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/datum/submap_group/group = submap_groups[id]
 		group.submaps = list()
 	for(var/id in submap_templates)
-		var/datum/map_template/submap/submap = submap_templates[id]
-		if(submap.group_id && submap_groups[submap.group_id])
+		var/datum/map_template/submap/submap = map_templates[id]
+		if((ispath(submap)? initial(submap.group_id) : submap.group_id) && submap_groups[submap.group_id])
 			var/datum/submap_group/group = submap_groups[submap.group_id]
 			group.submaps += submap
 	return

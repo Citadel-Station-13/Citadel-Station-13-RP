@@ -56,7 +56,7 @@
 		if(loc)
 			stack_trace("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z] has errored. [src.network?"Empty network list":"Null network list"]")
 		else
-			stack_race("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
+			stack_trace("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
 		ASSERT(src.network.len > 0)
 	// VOREStation Edit Start - Make mapping with cameras easier
