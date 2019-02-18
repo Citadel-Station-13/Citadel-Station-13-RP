@@ -195,9 +195,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aaF" = (
@@ -1034,6 +1031,10 @@
 "acs" = (
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/newscaster{
+	layer = 3.3;
+	pixel_x = 28
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -10670,7 +10671,6 @@
 /obj/item/device/flashlight/lamp/green,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/woodentable,
-/obj/item/device/megaphone,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aDR" = (
@@ -18793,11 +18793,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/weapon/coin/phoron{
-	desc = "The face of the coin shows a portrait of the explorer who discovered the Virgo-Erigone system. The back depicts a Zodiac symbol that represents Virgo.";
-	name = "limited edition phoron coin"
-	},
-/obj/item/weapon/melee/chainofcommand,
+/obj/item/device/megaphone,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bza" = (
@@ -18806,6 +18802,11 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/coin/phoron{
+	desc = "The face of the coin shows a portrait of the explorer who discovered the Virgo-Erigone system. The back depicts a Zodiac symbol that represents Virgo.";
+	name = "limited edition phoron coin"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -22367,10 +22368,6 @@
 /obj/item/device/binoculars,
 /turf/simulated/floor/tiled,
 /area/tether/station/pathfinder_office)
-"rgR" = (
-/obj/machinery/door/airlock/multi_tile,
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "rhA" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/danger,
@@ -32226,7 +32223,7 @@ bGW
 nvn
 uya
 aDu
-rgR
+aDu
 aDu
 aaY
 aci
