@@ -1018,13 +1018,13 @@
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE) //This lets all races use the default hairstyles.
 
-	fullhead
+	genfullhead
 		name = "Full Head Coloring"
 		icon_state = "fullhead"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
-	fullface
+	genfullface
 		name = "Face Coloring"
 		icon_state = "fullface"
 		color_blend_mode = ICON_MULTIPLY
@@ -1042,3 +1042,8 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
+	genshortbeak
+		name = "Short Beak"
+		icon_state = "shortbeak"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
