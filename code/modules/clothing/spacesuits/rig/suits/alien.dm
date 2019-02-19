@@ -7,7 +7,7 @@
 	desc = "A cheap NT knock-off of an Unathi battle-rig. Looks like a fish, moves like a fish, steers like a cow."
 	suit_type = "\improper NT breacher"
 	icon_state = "breacher_rig_cheap"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 60, bomb = 70, bio = 100, rad = 50)
+	armor = list(melee = 80, bullet = 80, laser = 80, energy = 80, bomb = 70, bio = 100, rad = 70)
 	emp_protection = -20
 	slowdown = 6
 	offline_slowdown = 10
