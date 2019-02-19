@@ -1,6 +1,4 @@
 /datum/map_template/shelter
-	var/shelter_id
-	var/description
 	var/blacklisted_turfs
 	var/whitelisted_turfs
 	var/banned_areas
@@ -33,16 +31,16 @@
 
 /datum/map_template/shelter/alpha
 	name = "Shelter Alpha"
-	shelter_id = "shelter_alpha"
-	description = "A cosy self-contained pressurized shelter, with \
+	id = "shelter_alpha"
+	desc = "A cosy self-contained pressurized shelter, with \
 		built-in navigation, entertainment, medical facilities and a \
 		sleeping area! Order now, and we'll throw in a TINY FAN, \
 		absolutely free!"
 	mappath = "_maps/shelter_templates/shelter_1.dmm"
-	roof = "roof_alpha"
+	roof = "shelter_alpha_roof"
 
 /datum/map_template/shelter/alpha_roof
-	shelter_id = "roof_alpha"
+	id = "shelter_alpha_roof"
 	mappath = "_maps/shelter_templates/shelter_1_roof.dmm"
 
 /datum/map_template/shelter/alpha/New()
@@ -52,17 +50,17 @@
 
 /datum/map_template/shelter/beta
 	name = "Shelter Beta"
-	shelter_id = "shelter_beta"
-	description = "An extremely luxurious shelter, containing all \
+	id = "shelter_beta"
+	desc = "An extremely luxurious shelter, containing all \
 		the amenities of home, including carpeted floors, hot and cold \
 		running water, a gourmet three course meal, cooking facilities, \
 		and a deluxe companion to keep you from getting lonely during \
 		an ash storm."
 	mappath = "_maps/shelter_templates/shelter_2.dmm"
-	roof = "roof_beta"
+	roof = "shelter_beta_roof"
 
 /datum/map_template/shelter/beta_roof
-	shelter_id = "roof_beta"
+	id = "shelter_beta_roof"
 	mappath = "_maps/shelter_templates/shelter_2_roof.dmm"
 
 /datum/map_template/shelter/beta/New()

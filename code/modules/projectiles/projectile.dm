@@ -180,10 +180,11 @@
 	if(homing)
 		process_homing()
 	var/forcemoved = FALSE
-	for(var/i in 1 to (override_pixel_iterations || SSprojectiles.global_iterations_per_move))
+	var/moves = (override_pixel_iterations || SSprojectiles.global_iterations_per_move) * trajectory_multiplier
+	for(var/i in 1 to moves)
 		if(QDELETED(src))
 			return
-		trajectory.increment(trajectory_multiplier)
+		trajectory.increment()
 		var/turf/T = trajectory.return_turf()
 		if(!istype(T))
 			qdel(src)

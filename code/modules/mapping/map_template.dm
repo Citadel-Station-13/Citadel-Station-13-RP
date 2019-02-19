@@ -13,13 +13,17 @@
 	var/default_annihilate = FALSE
 	var/list/ztraits				//zlevel traits for load_new_z - DO NOT DEFINE UNLESS THIS IS EXPLICITLY A LATELOAD MAP!
 
-/datum/map_template/New(path = null, rename = null, cache = FALSE)
+/datum/map_template/New(path = null, rename = null, cache = FALSE, set_id = null)
 	if(path)
 		mappath = path
 	if(mappath)
 		preload_size(mappath, cache)
 	if(rename)
 		name = rename
+	if(set_id)
+		id = set_id
+	if(initial(id) == "default")
+		id = path
 
 /datum/map_template/Destroy()
 	QDEL_NULL(cached_map)
@@ -86,7 +90,7 @@
 	/*
 	smooth_zlevel(world.maxz)
 	*/
-	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
+	log_game("Z-level [name] ([id]) loaded at at [x],[y],[world.maxz]")
 
 	return level
 
@@ -126,7 +130,7 @@
 
 	on_map_loaded(T.z, parsed.bounds)
 
-	log_game("[name] loaded at at [T.x],[T.y],[T.z]")
+	log_game("[name] ([id]) loaded at at [T.x],[T.y],[T.z]")
 	return bounds
 
 //This, get_affected_turfs, and load() calculations for bounds/center can probably be optimized. Later.

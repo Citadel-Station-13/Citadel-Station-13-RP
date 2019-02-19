@@ -33,7 +33,7 @@
 			return
 
 		if(template.load(T, centered = TRUE, orientation=orientation))
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] has placed a map template ([template.name]).</span>")
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] has placed a map template [template.name] ([template.id]).</span>")
 		else
 			to_chat(usr, "Failed to place map")
 	usr.client.images -= preview
@@ -43,11 +43,11 @@
 	set name = "Map template - New Z"
 
 	var/datum/map_template/template
-
-	var/map = input(usr, "Choose a Map Template to place on a new Z-level.","Place Map Template") as null|anything in SSmapping.map_templates
+	var/list/maps = SSmapping.map_template_name_list()
+	var/map = input(usr, "Choose a Map Template to place on a new Z-level.","Place Map Template") as null|anything in maps
 	if(!map)
 		return
-	template = SSmapping.get_map_template(map)
+	template = SSmapping.get_map_template(maps[map])
 
 	var/orientation = text2dir(input(usr, "Choose an orientation for this Map Template.", "Orientation") as null|anything in list("North", "South", "East", "West"))
 	if(!orientation)
@@ -63,7 +63,7 @@
 
 	if(alert(usr,"Confirm map load.", "Template Confirm","No","Yes") == "Yes")
 		if(template.load_new_z(orientation=orientation))
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] has placed a map template ([template.name]) on Z level [world.maxz].</span>")
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] has placed a map template [template.name] ([template.id]) on Z level [world.maxz].</span>")
 		else
 			to_chat(usr, "Failed to place map")
 
@@ -82,7 +82,7 @@
 	var/datum/map_template/M = new(map, "[map]")
 	if(M.preload_size(map))
 		to_chat(usr, "Map template '[map]' ready to place ([M.width]x[M.height])")
-		SSmapping.map_templates[M.name] = M
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] has uploaded a map template ([map])</span>")
+		SSmapping.map_templates[M.id] = M
+		message_admins("<span class='adminnotice'>[key_name_admin(usr)] has uploaded a map template [M] ([M.id])</span>")
 	else
 		to_chat(usr, "Map template '[map]' failed to load properly")

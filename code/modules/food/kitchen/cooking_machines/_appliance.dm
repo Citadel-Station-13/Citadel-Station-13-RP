@@ -1,3 +1,5 @@
+//This folder contains a lot of bad code that needs to be refactored.
+
 // This folder contains code that was originally ported from Apollo Station and then refactored/optimized/changed.
 
 // Tracks precooked food to stop deep fried baked grilled grilled grilled diona nymph cereal.
@@ -10,8 +12,8 @@
 	desc = "You shouldn't be seeing this!"
 	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
 	var/appliancetype = 0
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 
 	use_power = 0
 	idle_power_usage = 5			// Power used when turned on, but not processing anything
@@ -31,7 +33,7 @@
 	var/cooked_sound = 'sound/machines/ding.ogg'				// Sound played when cooking completes.
 	var/can_burn_food				// Can the object burn food that is left inside?
 	var/burn_chance = 10			// How likely is the food to burn?
-	var/list/cooking_objs = list()	// List of things being cooked
+	var/list/cooking_objs			// List of things being cooked
 
 	// If the machine has multiple output modes, define them here.
 	var/selected_option
@@ -40,9 +42,9 @@
 
 	var/container_type = null
 
-	var/combine_first = 0//If 1, this appliance will do combinaiton cooking before checking recipes
+	var/combine_first = FALSE	//If TRUE, this appliance will do combinaiton cooking before checking recipes
 
-/obj/machinery/appliance/New()
+/obj/machinery/appliance/Initialize()
 	. = ..()
 	component_parts = list()
 	component_parts += /obj/item/weapon/circuitboard/cooking
@@ -64,6 +66,7 @@
 			available_recipes += test
 		else
 			qdel(test)
+	cooking_objs = list()
 
 /obj/machinery/appliance/Destroy()
 	for (var/a in cooking_objs)
@@ -71,6 +74,7 @@
 		qdel(CI.container)//Food is fragile, it probably doesnt survive the destruction of the machine
 		cooking_objs -= CI
 		qdel(CI)
+	cooking_objs = null
 	return ..()
 
 /obj/machinery/appliance/examine(var/mob/user)

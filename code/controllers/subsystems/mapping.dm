@@ -10,13 +10,13 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_config/config
 	var/datum/map_config/next_map_config
 
-	var/list/map_templates = list()				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
+	var/list/map_templates				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
 	//These are IDs only, non associative.
-	var/list/submap_templates = list()
-	var/list/shelter_templates = list()
-	var/list/engine_templates = list()
+	var/list/submap_templates
+	var/list/shelter_templates
+	var/list/engine_templates
 
-	var/list/submap_groups = list()
+	var/list/submap_groups
 
 	/*
 	var/list/ruins_templates = list()
@@ -58,7 +58,8 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_template/engine/chosen_type = null
 	if (LAZYLEN(global.config.engine_map))
 		var/chosen_name = pick(global.config.engine_map)
-		chosen_type = get_map_template(chosen_name)
+		var/list/names = map_template_name_list()
+		chosen_type = get_map_template(names[chosen_name])
 		if(!istype(chosen_type))
 			log_config("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
@@ -178,6 +179,7 @@ SUBSYSTEM_DEF(mapping)
 		for (var/lava_z in lava_ruins)
 			spawn_rivers(lava_z)
 	*/
+	initialize_map_templates()
 
 	//Vorestation stuff
 	loadEngine()
@@ -190,11 +192,6 @@ SUBSYSTEM_DEF(mapping)
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()
 	//Vorestation stuff end
-
-	load_map_templates()
-	process_map_templates()
-	generate_submap_groups()
-	sort_submaps()
 
 	/*
 	// Generate deep space ruins
@@ -480,51 +477,90 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 	z_list = SSmapping.z_list
 
+/datum/controller/subsystem/mapping/proc/initialize_map_templates(reset = FALSE)
+	if(reset)
+		map_templates = null
+		shelter_templates = null
+		submap_templates = null
+		engine_templates = null
+		submap_groups = null
+	load_map_templates()
+	process_map_templates()
+	generate_submap_groups()
+	sort_submaps()
+
 /datum/controller/subsystem/mapping/proc/load_map_templates()
+	var/permissive = FALSE
+	if(islist(map_templates))
+		permissive = TRUE
+	else
+		map_templates = list()
 	for(var/path in subtypesof(/datum/map_template))
 		var/datum/map_template/template = path
 		if(initial(template.abstract_type) == path)
 			continue
 		var/id
+		var/loaded
 		if(initial(template.autoinit))
 			template = new path
 			id = template.id
+			loaded = TRUE
 		else
 			id = initial(template.id)
 		if(map_templates[id])
-			stack_trace("Map template collision on ID [id]")
-			qdel(template)
+			if(!permissive)			//don't bother stack tracing if we're operating on an already existing template list.
+				stack_trace("Map template collision on ID [id] type [path]")
+			if(loaded)
+				qdel(template)
 			continue
 		map_templates[id] = template
 	return TRUE
+
+/datum/controller/subsystem/mapping/proc/map_template_name_list()
+	. = list()
+	for(var/id in map_templates)
+		var/datum/map_template/T = map_templates[id]
+		if(ispath(T))
+			.[initial(T.name)] = id
+		else
+			.[T.name] = id
 
 /datum/controller/subsystem/mapping/proc/get_map_template(id)
 	if(!length(id))
 		return
 	var/datum/map_template/template = map_templates[id]
-	if(!istype(template))
+	if(!istype(template) && ispath(template))
 		template = new template		//it's a path.
 	return template
 
 /datum/controller/subsystem/mapping/proc/process_map_templates()
+	LAZYINITLIST(submap_templates)
+	LAZYINITLIST(shelter_templates)
+	LAZYINITLIST(engine_templates)
 	for(var/id in map_templates)
 		var/datum/map_template/template = map_templates[id]
 		var/path = ispath(template)? template : template.type
 		if(ispath(path, /datum/map_template/submap))
-			submap_templates += id
+			submap_templates |= id
 		else if(ispath(path, /datum/map_template/shelter))
-			shelter_templates += id
+			shelter_templates |= id
 		else if(ispath(path, /datum/map_template/engine))
-			engine_templates += id
+			engine_templates |= id
 
 /datum/controller/subsystem/mapping/proc/generate_submap_groups()
+	var/permissive = FALSE
+	if(islist(submap_groups))
+		permissive = TRUE
+	else
+		submap_groups = list()
 	for(var/path in subtypesof(/datum/submap_group))
 		var/datum/submap_group/group = path
 		if((initial(group.abstract_type) == path) || isnull(initial(group.id)))
 			continue
 		group = new path
 		if(submap_groups[group.id])
-			stack_trace("Submap group collision on ID [group.id]")
+			if(!permissive)
+				stack_trace("Submap group collision on ID [group.id] type [path]")
 			qdel(group)
 			continue
 		submap_groups[group.id] = group
@@ -539,7 +575,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		if((ispath(submap)? initial(submap.group_id) : submap.group_id) && submap_groups[submap.group_id])
 			var/datum/submap_group/group = submap_groups[submap.group_id]
 			group.submaps += submap
-	return
 
 //Manual loading of away missions.
 /client/proc/admin_away()

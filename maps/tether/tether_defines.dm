@@ -161,10 +161,10 @@
 		/area/tether/surfacebase/emergency_storage/atrium)
 
 	lateload_z_levels = list(
-		list("Tether - Misc" = list(ZTRAIT_CENTCOM = TRUE), "Tether - Ships" = list(ZTRAIT_CENTCOM = TRUE),"Tether - Underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5)), //Stock Tether lateload maps
-		list("Alien Ship - Z1 Ship" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING)),
-		list("Desert Planet - Z1 Beach" = list(ZTRAIT_AWAY = TRUE),"Desert Planet - Z2 Cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),
-		list("Remmi Aerostat - Z1 Aerostat" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1),"Remmi Aerostat - Z2 Surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))
+		list("tether_misc" = list(ZTRAIT_CENTCOM = TRUE), "tether_ships" = list(ZTRAIT_CENTCOM = TRUE),"tether_underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5)), //Stock Tether lateload maps
+		list("abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING)),
+		list("v4_beach" = list(ZTRAIT_AWAY = TRUE),"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),
+		list("v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1),"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))
 		)
 
 	lateload_single_pick = null //Nothing right now.

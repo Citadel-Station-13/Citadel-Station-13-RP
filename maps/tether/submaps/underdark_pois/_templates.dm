@@ -1,12 +1,14 @@
 /datum/map_template/submap/underdark/normal_mob
 	name = "Underdark Normal Mob Spawn"
 	mappath = 'normal_mob.dmm'
+	id = "underdark_mob"
 	cost = 5
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/underdark/hard_mob
 	name = "Underdark Hard Mob Spawn"
 	mappath = 'hard_mob.dmm'
+	id = "underdark_mob_hard"
 	cost = 15
 	allow_duplicates = TRUE
 /*

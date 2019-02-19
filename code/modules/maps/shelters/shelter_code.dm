@@ -35,7 +35,7 @@
 	. = ..()
 	get_template()
 	to_chat(user, "This capsule has the [template.name] stored.")
-	to_chat(user, template.description)
+	to_chat(user, template.desc)
 
 /obj/item/device/survivalcapsule/attack_self()
 	//Can't grab when capsule is New() because templates aren't loaded then

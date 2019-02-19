@@ -305,14 +305,14 @@
 /turf/simulated/floor/tiled/white,
 /area/houseboat)
 "aU" = (
-/obj/machinery/appliance/cooker/oven,
+/obj/machinery/cooker/oven,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/houseboat)
 "aV" = (
-/obj/machinery/appliance/grill,
+/obj/machinery/cooker/grill,
 /turf/simulated/floor/tiled/white,
 /area/houseboat)
 "aW" = (
