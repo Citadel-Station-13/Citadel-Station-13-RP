@@ -271,6 +271,10 @@
 	display_name = "rabbit ears"
 	path = /obj/item/clothing/head/rabbitears
 
+/datum/gear/head/maid_band
+	display_name = "maid headband"
+	path = /obj/item/clothing/head/headband/maid
+
 /datum/gear/head/beanie
 	display_name = "beanie"
 	path = /obj/item/clothing/head/beanie
