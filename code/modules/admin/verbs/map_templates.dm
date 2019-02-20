@@ -4,7 +4,6 @@
 
 	var/datum/map_template/template
 
-
 	var/map = input(usr, "Choose a Map Template to place at your CURRENT LOCATION","Place Map Template") as null|anything in SSmapping.map_templates
 	if(!map)
 		return

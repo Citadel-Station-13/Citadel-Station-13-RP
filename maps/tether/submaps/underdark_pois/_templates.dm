@@ -1,3 +1,6 @@
+/datum/map_template/submap/underdark
+	abstract_type = /datum/map_template/submap/underdark
+
 /datum/map_template/submap/underdark/normal_mob
 	name = "Underdark Normal Mob Spawn"
 	mappath = 'normal_mob.dmm'

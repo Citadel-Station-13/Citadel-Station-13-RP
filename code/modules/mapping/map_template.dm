@@ -91,6 +91,7 @@
 	smooth_zlevel(world.maxz)
 	*/
 	log_game("Z-level [name] ([id]) loaded at at [x],[y],[world.maxz]")
+	on_map_loaded(world.maxz, parsed.bounds)
 
 	return level
 

@@ -531,6 +531,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	var/datum/map_template/template = map_templates[id]
 	if(!istype(template) && ispath(template))
 		template = new template		//it's a path.
+		map_templates[id] = template		//cache for obvious reasons.
 	return template
 
 /datum/controller/subsystem/mapping/proc/process_map_templates()
@@ -569,12 +570,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 /datum/controller/subsystem/mapping/proc/sort_submaps()
 	for(var/id in submap_groups)
 		var/datum/submap_group/group = submap_groups[id]
-		group.submaps = list()
+		group.submap_ids = list()
 	for(var/id in submap_templates)
 		var/datum/map_template/submap/submap = map_templates[id]
-		if((ispath(submap)? initial(submap.group_id) : submap.group_id) && submap_groups[submap.group_id])
-			var/datum/submap_group/group = submap_groups[submap.group_id]
-			group.submaps += submap
+		var/gid = ispath(submap)? initial(submap.group_id) : submap.group_id
+		if(gid && submap_groups[gid])
+			var/datum/submap_group/group = submap_groups[gid]
+			group.submap_ids += id
 
 //Manual loading of away missions.
 /client/proc/admin_away()

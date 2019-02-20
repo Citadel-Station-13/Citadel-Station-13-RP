@@ -45,7 +45,7 @@
 	var/desc = "In theory, this is a group of submaps."
 	var/id
 	var/abstract_type = /datum/submap_group
-	var/list/datum/map_template/submap/submaps
+	var/list/submap_ids
 	/*		WIP
 	var/min_spawns_per_seeding = 0
 	var/max_spawns_per_seeding = INFINITY
@@ -232,7 +232,7 @@
 	var/list/priority_submaps = list() // Submaps that will always be placed.
 
 	// Lets go find some submaps to make.
-	for(var/map in SSmapping.map_templates)
+	for(var/map in SSmapping.submap_templates)
 		var/datum/map_template/submap/MT = SSmapping.get_map_template(map)
 		if(!MT.allow_duplicates && MT.loaded > 0) // This probably won't be an issue but we might as well.
 			continue

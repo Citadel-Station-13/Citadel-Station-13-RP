@@ -21,7 +21,6 @@
 #define VIRGO3B_TURF_CREATE(x)	x/virgo3b/nitrogen=VIRGO3B_MOL_N2;x/virgo3b/oxygen=VIRGO3B_MOL_O2;x/virgo3b/carbon_dioxide=VIRGO3B_MOL_CO2;x/virgo3b/phoron=VIRGO3B_MOL_PHORON;x/virgo3b/temperature=VIRGO3B_AVG_TEMP;x/virgo3b/outdoors=TRUE;x/virgo3b/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
 #define VIRGO3B_TURF_CREATE_UN(x)	x/virgo3b/nitrogen=VIRGO3B_MOL_N2;x/virgo3b/oxygen=VIRGO3B_MOL_O2;x/virgo3b/carbon_dioxide=VIRGO3B_MOL_CO2;x/virgo3b/phoron=VIRGO3B_MOL_PHORON;x/virgo3b/temperature=VIRGO3B_AVG_TEMP
 
-//Normal map defs
 #define Z_LEVEL_SURFACE_LOW					1
 #define Z_LEVEL_SURFACE_MID					2
 #define Z_LEVEL_SURFACE_HIGH				3
@@ -32,6 +31,9 @@
 #define Z_LEVEL_SURFACE_MINE				8
 #define Z_LEVEL_SOLARS						9
 #define Z_LEVEL_CENTCOM						10
+
+/*
+//Normal map defs
 #define Z_LEVEL_MISC						11
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
@@ -40,6 +42,7 @@
 #define Z_LEVEL_BEACH_CAVE					16
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
+*/
 
 #define DEFAULT_MAP_TRAITS \
 	list(\
@@ -53,6 +56,8 @@
 	DECLARE_LEVEL("Surface Mine", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 2.5)),\
 	DECLARE_LEVEL("Surface Solars", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE)),\
 	DECLARE_LEVEL("CentComm", list(ZTRAIT_CENTCOM = TRUE)),\
+	)
+	/*
 	DECLARE_LEVEL("Misc", list(ZTRAIT_CENTCOM = TRUE)),\
 	DECLARE_LEVEL("Ships", list(ZTRAIT_CENTCOM = TRUE)),\
 	DECLARE_LEVEL("Underdark", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5)),\
@@ -61,7 +66,7 @@
 	DECLARE_LEVEL("V2 Caves", list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),\
 	DECLARE_LEVEL("V4 Aerostat", list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1)),\
 	DECLARE_LEVEL("V4 Surface", list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))\
-	)
+	*/
 
 //Doing an override like this does not make me happy but it makes things work until runtime maploading..
 /datum/controller/subsystem/mapping/InitializeDefaultZLevels()
