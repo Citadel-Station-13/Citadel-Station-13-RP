@@ -18,7 +18,7 @@
 	flags = MAP_LEVEL_SEALED
 
 /datum/map_z_level/tether_lateload/New(var/datum/map/map, mapZ)
-	if(mapZ && !z)
+	if(mapZ)
 		z = mapZ
 	return ..(map)
 
@@ -61,7 +61,6 @@
 	name = "Underdark"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/virgo3b
-	z = Z_LEVEL_UNDERDARK
 
 /datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
 	. = ..()
@@ -89,7 +88,6 @@
 
 /datum/map_z_level/tether_lateload/away_beach
 	name = "Away Mission - Desert Beach"
-	z = Z_LEVEL_BEACH
 
 /datum/map_template/tether_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
@@ -109,7 +107,6 @@
 
 /datum/map_z_level/tether_lateload/away_beach_cave
 	name = "Away Mission - Desert Cave"
-	z = Z_LEVEL_BEACH_CAVE
 
 /obj/effect/step_trigger/zlevel_fall/beach
 	var/static/target_z
@@ -124,8 +121,6 @@
 
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
-	z = Z_LEVEL_ALIENSHIP
-
 
 #include "aerostat/_aerostat.dm"
 /datum/map_template/tether_lateload/away_aerostat
@@ -137,7 +132,6 @@
 
 /datum/map_z_level/tether_lateload/away_aerostat
 	name = "Away Mission - Aerostat"
-	z = Z_LEVEL_AEROSTAT
 
 /datum/map_template/tether_lateload/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
@@ -154,7 +148,6 @@
 
 /datum/map_z_level/tether_lateload/away_aerostat_surface
 	name = "Away Mission - Aerostat Surface"
-	z = Z_LEVEL_AEROSTAT_SURFACE
 
 
 //////////////////////////////////////////////////////////////////////////////////////

@@ -41,7 +41,6 @@
 
 /obj/machinery/telecomms/relay/preset/underdark
 	id = "Mining Underground Relay"
-	listening_level = Z_LEVEL_UNDERDARK
 	autolinkers = list("ud_relay")
 
 // #### Hub ####

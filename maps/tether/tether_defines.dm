@@ -284,7 +284,6 @@
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT
 
 /datum/map_z_level/tether/misc
-	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN
 
