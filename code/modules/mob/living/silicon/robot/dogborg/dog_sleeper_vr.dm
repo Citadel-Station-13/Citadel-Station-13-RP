@@ -11,7 +11,7 @@
 	var/min_health = -100
 	var/cleaning = 0
 	var/patient_laststat = null
-	var/list/injection_chems = list("inaprovaline", "dexalin", "bicaridine", "kelotane","anti_toxin", "alkysine", "imidazoline", "spaceacillin", "paracetamol") //The borg is able to heal every damage type. As a nerf, they use 750 charge per injection.
+	var/list/injection_chems = list("tricordrazine", "inaprovaline", "anti_toxin", "tramadol", "dexalin", "spaceacillin") // CITADEL CHANGE - Brings the sleeper in line with the standard borg hypospray.
 	var/eject_port = "ingestion"
 	var/list/items_preserved = list()
 	var/UI_open = FALSE
@@ -381,14 +381,14 @@
 /obj/item/device/dogborg/sleeper/proc/inject_chem(mob/user, chem)
 	if(patient && patient.reagents)
 		if(chem in injection_chems + "inaprovaline")
-			if(hound.cell.charge < 800) //This is so borgs don't kill themselves with it.
+			if(hound.cell.charge < 150) //CITADEL CHANGE - Brings this value down to 150 from 800, to match the new lowered energy cost.
 				to_chat(hound, "<span class='notice'>You don't have enough power to synthesize fluids.</span>")
 				return
 			else if(patient.reagents.get_reagent_amount(chem) + 10 >= 20) //Preventing people from accidentally killing themselves by trying to inject too many chemicals!
 				to_chat(hound, "<span class='notice'>Your stomach is currently too full of fluids to secrete more fluids of this kind.</span>")
 			else if(patient.reagents.get_reagent_amount(chem) + 10 <= 20) //No overdoses for you
 				patient.reagents.add_reagent(chem, inject_amount)
-				drain(750) //-750 charge per injection
+				drain(100) // CITADEL CHANGE - Brings this value down to 100 from 750 to match the drain of the standard borg hypospray.
 			var/units = round(patient.reagents.get_reagent_amount(chem))
 			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [chemical_reagents_list[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
 
