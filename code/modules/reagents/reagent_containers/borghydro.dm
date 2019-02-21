@@ -19,7 +19,7 @@
 	var/list/reagent_names = list()
 
 /obj/item/weapon/reagent_containers/borghypo/surgeon
-	reagent_ids = list("bicaridine", "kelotane", "dexalin", "tricordrazine", "inaprovaline", "oxycodone", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
+	reagent_ids = list( "tricordrazine", "dexalin", "inaprovaline", "oxycodone", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
 
 /obj/item/weapon/reagent_containers/borghypo/crisis
 	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
