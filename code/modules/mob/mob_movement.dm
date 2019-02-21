@@ -470,7 +470,7 @@
 		return 0
 
 	//Check to see if we slipped
-	if(prob(Process_Spaceslipping(5)) && !buckled)
+	if(prob(Process_Spaceslipping(0)) && !buckled) //Cit change, removes spaceslipping.
 		src << "<font color='blue'><B>You slipped!</B></font>"
 		src.inertia_dir = src.last_move
 		step(src, src.inertia_dir)
