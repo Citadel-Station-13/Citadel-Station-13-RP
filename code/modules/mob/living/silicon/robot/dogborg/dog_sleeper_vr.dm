@@ -11,7 +11,7 @@
 	var/min_health = -100
 	var/cleaning = 0
 	var/patient_laststat = null
-	var/list/injection_chems = list("tricordrazine", "inaprovaline", "anti_toxin", "tramadol", "dexalin", "spaceacillin") // CITADEL CHANGE - Brings the sleeper in line with the standard borg hypospray.
+	var/list/injection_chems = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Brings the sleeper in line with the standard borg hypospray.
 	var/eject_port = "ingestion"
 	var/list/items_preserved = list()
 	var/UI_open = FALSE
