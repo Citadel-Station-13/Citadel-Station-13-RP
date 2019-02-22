@@ -10572,8 +10572,7 @@
 /obj/item/device/flashlight/lamp/green,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/woodentable,
-/obj/item/clothing/glasses/omnihud/all{
-	},
+/obj/item/clothing/glasses/omnihud/all,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aDR" = (
@@ -10723,6 +10722,12 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	id = "captaindoor";
+	name = "Office Doors";
+	req_access = list(20)
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEs" = (
@@ -17023,12 +17028,6 @@
 /obj/item/weapon/storage/secure/safe{
 	pixel_x = -28
 	},
-/obj/machinery/button/remote/airlock{
-	dir = 8;
-	id = "captaindoor";
-	name = "Office Doors";
-	req_access = list(20);
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bnZ" = (
@@ -19661,8 +19660,8 @@
 	icon_state = "alarm0";
 	pixel_y = -22
 	},
-/obj/item/weapon/folder/blue_captain{
-	},
+/obj/item/weapon/folder/blue_captain,
+/obj/item/weapon/stamp/captain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHg" = (
@@ -20942,8 +20941,6 @@
 /obj/item/weapon/book/manual/command_guide,
 /obj/item/weapon/book/manual/standard_operating_procedure,
 /obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/stamp/captain{
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bWN" = (
