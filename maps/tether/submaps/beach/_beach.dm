@@ -155,7 +155,7 @@
 //And some special areas, including our shuttle landing spot (must be unique)
 /area/shuttle/excursion/away_beach
 	name = "\improper Excursion Shuttle - Beach"
-	dynamic_lighting = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/tether_away/beach
 	name = "\improper Away Mission - Virgo 4 Beach"
@@ -163,7 +163,7 @@
 	base_turf = /turf/simulated/floor/beach/sand //This is what the ground turns into if destroyed/bombed/etc
 	//Not going to do sunlight simulations here like virgo3b
 	//So we just make the whole beach fullbright all the time
-	dynamic_lighting = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/tether_away/beach/powershed
 	name = "\improper Away Mission - Virgo 4 Coast PS"

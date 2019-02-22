@@ -35,7 +35,6 @@ var/list/all_maps = list()
 	var/list/empty_levels = null     // Empty Z-levels that may be used for various things (currently used by bluespace jump)
 
 	var/list/map_levels              // Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
-	var/list/base_turf_by_z = list() // Custom base turf by Z-level. Defaults to world.turf for unlisted Z-levels
 
 	//This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
 	var/list/accessible_z_levels = list()
@@ -188,8 +187,6 @@ var/list/all_maps = list()
 	if(flags & MAP_LEVEL_CONSOLES)
 		if (!map.map_levels) map.map_levels = list()
 		map.map_levels += z
-	if(base_turf)
-		map.base_turf_by_z["[z]"] = base_turf
 	if(transit_chance)
 		map.accessible_z_levels["[z]"] = transit_chance
 	// Holomaps

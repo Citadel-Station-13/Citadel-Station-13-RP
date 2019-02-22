@@ -14,8 +14,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
 	plane = PLANE_LIGHTING_ABOVE //In case we color them
-	luminosity = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	var/map_name // Set in New(); preserves the name set by the map maker, even if renamed by the Blueprints.
 

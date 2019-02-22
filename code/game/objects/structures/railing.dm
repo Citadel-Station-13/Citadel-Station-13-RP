@@ -3,11 +3,11 @@
 	name = "railing"
 	desc = "A standard steel railing.  Play stupid games, win stupid prizes."
 	icon = 'icons/obj/railing.dmi'
-	density = 1
-	throwpass = 1
-	climbable = 1
+	density = TRUE
+	throwpass = TRUE
+	climbable = TRUE
 	layer = WINDOW_LAYER
-	anchored = 1
+	anchored = TRUE
 	flags = ON_BORDER
 	icon_state = "railing0"
 	var/broken = FALSE
@@ -36,14 +36,13 @@
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	if(get_dir(mover, target) == turn(dir, 180))
-		if(density)
-			return FALSE
+		return !density
 	return TRUE
 
 /obj/structure/railing/CheckExit(atom/movable/O as mob|obj, target as turf)
 	if(istype(O) && O.checkpass(PASSTABLE))
 		return TRUE
-	if(get_dir(O.loc, target) == dir)
+	if(get_dir(O, target) == dir)
 		return FALSE
 	return TRUE
 
