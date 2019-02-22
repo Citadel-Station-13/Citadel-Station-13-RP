@@ -2,10 +2,17 @@
 /mob/living/simple_animal/shadekin/red
 	name = "red-eyed shadekin"
 	eye_state = RED_EYES
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/types.dm
 	hostile = TRUE
 	retaliate = TRUE
 	stop_when_pulled = FALSE
 	destroy_surroundings = TRUE
+=======
+	//hostile = TRUE
+	//animal = TRUE
+	//stop_when_pulled = FALSE
+	//destroy_surroundings = TRUE
+>>>>>>> eabe9a0... Merge pull request #4792 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/types.dm
 	armor = list(
 			"melee" = 30,
 			"bullet" = 20,
@@ -40,11 +47,19 @@
 	name = "blue-eyed shadekin"
 	eye_state = BLUE_EYES
 	health = 100
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/types.dm
 	hostile = FALSE
 	retaliate = FALSE
 	stop_when_pulled = TRUE
 	specific_targets = TRUE //For finding injured people
 	destroy_surroundings = FALSE
+=======
+	//hostile = FALSE
+	//animal = FALSE
+	//stop_when_pulled = TRUE
+	//specific_targets = TRUE //For finding injured people
+	//destroy_surroundings = FALSE
+>>>>>>> eabe9a0... Merge pull request #4792 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/types.dm
 	vore_default_mode = DM_HEAL
 	vore_escape_chance = 75
 	vore_standing_too = 1
@@ -87,10 +102,17 @@
 	name = "purple-eyed shadekin"
 	eye_state = PURPLE_EYES
 	health = 150
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/types.dm
 	hostile = FALSE
 	retaliate = TRUE
 	stop_when_pulled = FALSE
 	destroy_surroundings = TRUE
+=======
+	//hostile = FALSE
+	//animal = TRUE
+	//stop_when_pulled = FALSE
+	//destroy_surroundings = TRUE
+>>>>>>> eabe9a0... Merge pull request #4792 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/types.dm
 	vore_default_mode = DM_HOLD
 	vore_digest_chance = 25
 	vore_absorb_chance = 25
@@ -129,10 +151,17 @@
 	name = "yellow-eyed shadekin"
 	eye_state = YELLOW_EYES
 	health = 100
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/types.dm
 	hostile = FALSE
 	retaliate = TRUE
 	stop_when_pulled = FALSE
 	destroy_surroundings = TRUE
+=======
+	//hostile = FALSE
+	//animal = TRUE
+	//stop_when_pulled = FALSE
+	//destroy_surroundings = TRUE
+>>>>>>> eabe9a0... Merge pull request #4792 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/types.dm
 	vore_default_mode = DM_DRAIN
 	vore_digest_chance = 5
 	vore_ignores_undigestable = FALSE
@@ -169,10 +198,17 @@
 	name = "green-eyed shadekin"
 	eye_state = GREEN_EYES
 	health = 125
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/types.dm
 	hostile = FALSE
 	retaliate = TRUE
 	stop_when_pulled = FALSE
 	destroy_surroundings = TRUE
+=======
+	//hostile = FALSE
+	//animal = TRUE
+	//stop_when_pulled = FALSE
+	//destroy_surroundings = TRUE
+>>>>>>> eabe9a0... Merge pull request #4792 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/types.dm
 	vore_default_mode = DM_DRAIN
 	vore_digest_chance = 0
 	vore_ignores_undigestable = FALSE
@@ -209,10 +245,17 @@
 	name = "orange-eyed shadekin"
 	eye_state = ORANGE_EYES
 	health = 175
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/types.dm
 	hostile = TRUE
 	retaliate = TRUE
 	stop_when_pulled = FALSE
 	destroy_surroundings = TRUE
+=======
+	//hostile = TRUE
+	//animal = TRUE
+	//stop_when_pulled = FALSE
+	//destroy_surroundings = TRUE
+>>>>>>> eabe9a0... Merge pull request #4792 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/types.dm
 	armor = list(
 			"melee" = 20,
 			"bullet" = 15,
