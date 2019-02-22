@@ -232,8 +232,20 @@
 	name = "Phi's Personal Items"
 	has_items = list(
 		/obj/item/clothing/accessory/medal/bronze_heart,
+<<<<<<< HEAD
 		/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi)
 END OF CITADEL CHANGES */
+=======
+		/obj/item/clothing/gloves/ring/seal/signet/fluff/phi)
+
+// Tabiranth: Ascian
+/obj/item/weapon/grenade/spawnergrenade/spirit
+	name = "spirit's pet carrier"
+	desc = "Contains kitten."
+	spawner_type = /mob/living/simple_mob/animal/passive/cat/tabiranth
+	deliveryamt = 1
+
+>>>>>>> d7f5fa1... Merge pull request #4709 from Novacat/nova-aifixes
 /*
 Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 */
