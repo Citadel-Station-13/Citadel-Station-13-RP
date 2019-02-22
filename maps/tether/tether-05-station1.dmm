@@ -10572,6 +10572,9 @@
 /obj/item/device/flashlight/lamp/green,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/woodentable,
+/obj/item/clothing/glasses/omnihud/all{
+	step_y = 0
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aDR" = (
@@ -10717,13 +10720,10 @@
 /area/tether/station/dock_two)
 "aEr" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue_captain,
-/obj/item/clothing/glasses/omnihud/all,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/item/weapon/stamp/captain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEs" = (
@@ -10749,7 +10749,6 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/mob/living/simple_animal/fox/fluff/Renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEu" = (
@@ -17025,6 +17024,14 @@
 /obj/item/weapon/storage/secure/safe{
 	pixel_x = -28
 	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	id = "captaindoor";
+	name = "Office Doors";
+	req_access = list(20);
+	step_x = 27;
+	step_y = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bnZ" = (
@@ -19632,7 +19639,6 @@
 /turf/simulated/floor/plating,
 /area/tether/station/dock_two)
 "bGQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "bGW" = (
@@ -19640,11 +19646,15 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/dogbed{
+	desc = "A bed made just for the Colony Director's fox.";
+	name = "Renault's Bed"
+	},
+/mob/living/simple_animal/fox/fluff/Renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHe" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
 /obj/item/weapon/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -19653,6 +19663,10 @@
 	dir = 1;
 	icon_state = "alarm0";
 	pixel_y = -22
+	},
+/obj/item/weapon/folder/blue_captain{
+	step_x = 3;
+	step_y = 2
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -20933,6 +20947,10 @@
 /obj/item/weapon/book/manual/command_guide,
 /obj/item/weapon/book/manual/standard_operating_procedure,
 /obj/item/weapon/book/manual/security_space_law,
+/obj/item/weapon/stamp/captain{
+	step_x = 25;
+	step_y = 5
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bWN" = (
@@ -21614,7 +21632,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "gcH" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -21652,6 +21670,13 @@
 "hCe" = (
 /turf/simulated/wall/r_wall,
 /area/tether/station/pathfinder_office)
+"hFL" = (
+/obj/machinery/button/remote/blast_door{
+	id = "cd-blast";
+	name = "Colony Director Lockdown"
+	},
+/turf/simulated/wall/r_wall,
+/area/crew_quarters/captain)
 "hJg" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper_bin{
@@ -22601,6 +22626,7 @@
 "vWQ" = (
 /obj/structure/bed/double/padded,
 /obj/item/weapon/bedsheet/captaindouble,
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "wbr" = (
@@ -32107,7 +32133,7 @@ bGW
 nvn
 aDu
 aDu
-aCO
+hFL
 aac
 aac
 aac
