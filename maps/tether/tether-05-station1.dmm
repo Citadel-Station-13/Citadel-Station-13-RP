@@ -10573,7 +10573,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/woodentable,
 /obj/item/clothing/glasses/omnihud/all{
-	step_y = 0
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -17029,8 +17028,6 @@
 	id = "captaindoor";
 	name = "Office Doors";
 	req_access = list(20);
-	step_x = 27;
-	step_y = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -19665,8 +19662,6 @@
 	pixel_y = -22
 	},
 /obj/item/weapon/folder/blue_captain{
-	step_x = 3;
-	step_y = 2
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -20948,8 +20943,6 @@
 /obj/item/weapon/book/manual/standard_operating_procedure,
 /obj/item/weapon/book/manual/security_space_law,
 /obj/item/weapon/stamp/captain{
-	step_x = 25;
-	step_y = 5
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
