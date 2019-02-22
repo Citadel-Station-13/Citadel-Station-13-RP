@@ -110,3 +110,9 @@
 	path = /obj/item/reskin_kit/stunsword
 	ckeywhitelist = list("phillip458")
 
+/datum/gear/donator/redlensmask
+	display_name = "Red-Lensed Gas Mask"
+	sort_category = "Donator"
+	path = /obj/item/clothing/mask/red_mask
+	ckeywhitelist = list("figneugen")
+
