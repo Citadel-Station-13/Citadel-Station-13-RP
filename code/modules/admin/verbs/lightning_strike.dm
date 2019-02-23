@@ -84,6 +84,7 @@
 	// Some apply to those within zap range, others if they were a bit farther away.
 	for(var/mob/living/L in view(5, T))
 		if(get_dist(L, T) <= LIGHTNING_ZAP_RANGE) // They probably got zapped.
+<<<<<<< HEAD
 			// The actual damage/electrocution is handled by tesla_zap().
 			L.Paralyse(5)
 			L.stuttering += 20
@@ -101,6 +102,9 @@
 					SA.visible_message(span("critical", "\The [SA] disintegrates into ash!"))
 					SA.ash()
 					continue // No point deafening something that wont exist.
+=======
+			L.lightning_act()
+>>>>>>> b819aa1... Merge pull request #4522 from VOREStation/upstream-merge-5735
 
 		// Deafen them.
 		if(L.get_ear_protection() < 2)
@@ -112,4 +116,8 @@
 
 #undef GROUNDING_ROD_RANGE
 #undef LIGHTNING_ZAP_RANGE
+<<<<<<< HEAD
 #undef LIGHTNING_POWER
+=======
+#undef LIGHTNING_POWER
+>>>>>>> b819aa1... Merge pull request #4522 from VOREStation/upstream-merge-5735
