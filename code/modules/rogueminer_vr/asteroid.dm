@@ -113,7 +113,11 @@
 	New()
 		..()
 		spot_add(2,2,/obj/random/cargopod) //EXTRA loot!
+<<<<<<< HEAD
 		spot_add(2,2,/mob/living/simple_animal/hostile/alien) //GRRR
+=======
+		spot_add(2,2,/mob/living/simple_mob/animal/space/alien) //GRRR
+>>>>>>> 172f208... Merge pull request #4790 from Sebbe9123/upstream-merge-5735
 
 //Longer cargo container for higher difficulties
 /datum/rogue/asteroid/predef/cargo_large
@@ -147,4 +151,8 @@
 		spot_add(4,3,/obj/random/cargopod) //Right loot
 
 		if(prob(30))
+<<<<<<< HEAD
 			spot_add(3,3,/mob/living/simple_animal/hostile/alien) //And maybe a friend.
+=======
+			spot_add(3,3,/mob/living/simple_mob/animal/space/alien) //And maybe a friend.
+>>>>>>> 172f208... Merge pull request #4790 from Sebbe9123/upstream-merge-5735

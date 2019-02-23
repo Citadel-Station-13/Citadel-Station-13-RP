@@ -277,7 +277,11 @@
 	desc = "A small heap of trash, perfect for mice to nest in."
 	icon = 'icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
+<<<<<<< HEAD
 	spawn_types = list(/mob/living/simple_animal/mouse)
+=======
+	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse)
+>>>>>>> 172f208... Merge pull request #4790 from Sebbe9123/upstream-merge-5735
 	simultaneous_spawns = 1
 	destructible = 1
 	spawn_delay = 1 HOUR
