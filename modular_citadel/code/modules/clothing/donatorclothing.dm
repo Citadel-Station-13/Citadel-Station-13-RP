@@ -38,7 +38,7 @@
 	body_parts_covered = HEAD
 
 /obj/item/clothing/mask/red_mask
-	name = "Explorer's Red Lensed Mask
+	name = "Explorer's Red Lensed Mask"
 	desc = "A gas mask with red lenses."
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
