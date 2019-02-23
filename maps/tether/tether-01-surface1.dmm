@@ -42,7 +42,13 @@
 	name = "south bump";
 	pixel_y = -28
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green,
+=======
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "aak" = (
@@ -6848,7 +6854,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
 "amu" = (
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/tether/surfacebase/atrium_one)
 "amv" = (
@@ -13999,10 +14005,13 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "azY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "azZ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -15646,6 +15655,7 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aDb" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 6
@@ -15658,6 +15668,8 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aDd" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -16393,12 +16405,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aEB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aEC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -16746,15 +16761,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aFj" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aFk" = (
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aFl" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 5;
@@ -16771,6 +16790,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aFn" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -16816,7 +16837,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aFv" = (
-/mob/living/simple_animal/retaliate/gaslamp,
+/mob/living/simple_mob/animal/space/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aFw" = (
@@ -16881,6 +16902,7 @@
 /obj/item/slime_extract/grey,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aFG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -16888,6 +16910,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aFH" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -16924,6 +16948,7 @@
 /obj/structure/closet/l3closet/scientist/double,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aFK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -16951,6 +16976,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aFL" = (
 /turf/simulated/wall,
 /area/rnd/xenobiology)
@@ -17144,12 +17171,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aGj" = (
 /obj/machinery/atmospherics/unary/heat_exchanger{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aGk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -17298,11 +17328,7 @@
 "aGx" = (
 /obj/structure/table/glass,
 /obj/item/weapon/storage/toolbox/emergency,
-/obj/item/device/radio{
-	frequency = 1487;
-	icon_state = "med_walkietalkie";
-	name = "Medbay Emergency Radio Link"
-	},
+/obj/item/device/radio/emergency,
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
@@ -17463,6 +17489,7 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aGP" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -17472,6 +17499,8 @@
 /obj/effect/floor_decal/corner/orange/border,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aGQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -17581,6 +17610,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "aHc" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -17594,6 +17624,8 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "aHe" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/external)
@@ -18543,14 +18575,7 @@
 /area/maintenance/lower/atmos)
 "aJj" = (
 /obj/structure/table/glass,
-/obj/item/device/radio{
-	anchored = 1;
-	broadcasting = 0;
-	canhear_range = 1;
-	frequency = 1487;
-	icon = 'icons/obj/items.dmi';
-	icon_state = "red_phone";
-	listening = 1;
+/obj/item/device/radio/phone/medbay{
 	name = "Medical Emergency Phone"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -27866,6 +27891,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
 "bOa" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
@@ -27876,6 +27902,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "bOe" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/industrial/danger,
@@ -28973,6 +29001,38 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
+=======
+"bWp" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/atmos/processing)
+"bWt" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/zpipe/up{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/atmos/processing)
+"bWu" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/atmos/processing)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "bWv" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
@@ -29935,6 +29995,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+<<<<<<< HEAD
+=======
+"cdu" = (
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	icon_state = "map_on";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/atmos/processing)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "cdK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
@@ -31756,6 +31826,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+"cGe" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
 "cHS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -31909,6 +31986,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+<<<<<<< HEAD
 "ejt" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
@@ -31956,6 +32034,18 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+"ezH" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "ePE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -32034,6 +32124,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+<<<<<<< HEAD
 "fbT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	icon_state = "intact";
@@ -32041,6 +32132,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "frA" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -32439,6 +32532,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"jRG" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
 "kcR" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
@@ -32456,6 +32557,7 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
+<<<<<<< HEAD
 "kdT" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -32472,6 +32574,21 @@
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
+=======
+"kfl" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "kuC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -32816,6 +32933,15 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"ozS" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
 "oAC" = (
 /obj/structure/railing{
 	dir = 4
@@ -32839,6 +32965,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+"oPX" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "oUC" = (
 /obj/machinery/light{
 	dir = 8
@@ -33313,6 +33447,21 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"tMg" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
 "tNF" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -33443,9 +33592,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+<<<<<<< HEAD
 "vhj" = (
 /turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
+=======
+"vbd" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "vkK" = (
 /turf/simulated/wall,
 /area/maintenance/lower/public_garden_maintenence)
@@ -33475,11 +33636,14 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+<<<<<<< HEAD
 "vAe" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/grey/border,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 "vCB" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -43637,6 +43801,7 @@ aaa
 "}
 (71,1,1) = {"
 aaa
+<<<<<<< HEAD
 aaV
 aad
 aad
@@ -43655,6 +43820,26 @@ aad
 aad
 aad
 aad
+=======
+kdx
+fAq
+frA
+frA
+frA
+frA
+frA
+frA
+ezH
+cGe
+cGe
+cGe
+cGe
+cGe
+cGe
+jRG
+frA
+vbd
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 aah
 aah
 aah
@@ -43796,7 +43981,7 @@ aad
 aad
 aad
 aad
-aad
+ozS
 aah
 aah
 aah
@@ -43938,7 +44123,7 @@ aad
 aad
 aad
 aad
-aad
+ozS
 aah
 aah
 aah
@@ -44080,7 +44265,7 @@ aad
 aFv
 aad
 aad
-aad
+tMg
 aah
 aao
 aao
@@ -44222,7 +44407,7 @@ aae
 aae
 aae
 aae
-aaf
+oPX
 aaf
 aao
 aau
@@ -44364,7 +44549,11 @@ aae
 aae
 aae
 aae
+<<<<<<< HEAD
 aaW
+=======
+kfl
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 aaj
 aao
 aaw

@@ -1,4 +1,8 @@
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/vore/wolfgirl.dm
 /mob/living/simple_animal/retaliate/wolfgirl
+=======
+/mob/living/simple_mob/retaliate/wolfgirl
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/mob/living/simple_animal/vore/wolfgirl.dm
 	name = "wolfgirl"
 	desc = "AwooOOOOoooo!"
 	tt_desc = "Homo lupus"
@@ -48,7 +52,11 @@
 
 	var/loopstop = 0 //To prevent circular awoooos.
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/vore/wolfgirl.dm
 /mob/living/simple_animal/retaliate/wolfgirl/hear_say()
+=======
+/mob/living/simple_mob/retaliate/wolfgirl/hear_say()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/mob/living/simple_animal/vore/wolfgirl.dm
 	if(world.time - loopstop < 5 SECONDS)
 		return
 	else
@@ -56,7 +64,11 @@
 		..()
 
 // Activate Noms!
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/vore/wolfgirl.dm
 /mob/living/simple_animal/retaliate/wolfgirl
+=======
+/mob/living/simple_mob/retaliate/wolfgirl
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/mob/living/simple_animal/vore/wolfgirl.dm
 	vore_active = 1
 	vore_pounce_chance = 40
 	vore_icons = SA_ICON_LIVING

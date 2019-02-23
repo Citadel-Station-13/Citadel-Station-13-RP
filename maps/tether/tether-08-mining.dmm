@@ -72,20 +72,35 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
+<<<<<<< HEAD
 "ap" = (
+=======
+"ai" = (
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/mining/brace,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
 "aq" = (
+=======
+/obj/machinery/mining/drill,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/storage)
+"aj" = (
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/mining/drill,
+=======
+/obj/machinery/mining/brace,
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
 "ar" = (
@@ -148,6 +163,7 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
+<<<<<<< HEAD
 "aC" = (
 /obj/structure/table/steel,
 /obj/item/weapon/tool/screwdriver,
@@ -160,6 +176,10 @@
 /area/outpost/mining_main/storage)
 "aD" = (
 /obj/machinery/mech_recharger,
+=======
+"aw" = (
+/obj/machinery/light/small,
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
 "aE" = (
@@ -171,8 +191,23 @@
 /obj/item/weapon/cell/high,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
+<<<<<<< HEAD
 "aF" = (
 /obj/machinery/light/small,
+=======
+"ay" = (
+/turf/simulated/wall/r_wall,
+/area/outpost/mining_main/maintenance)
+"az" = (
+/turf/simulated/wall/r_wall,
+/area/outpost/mining_main/break_room)
+"aC" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
 "aG" = (
@@ -213,6 +248,7 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/break_room)
+<<<<<<< HEAD
 "aM" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
@@ -288,6 +324,35 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
 "aT" = (
+=======
+"aI" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"aK" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -296,6 +361,7 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
+<<<<<<< HEAD
 	},
 /obj/machinery/light_switch{
 	dir = 1;
@@ -334,6 +400,17 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "aW" = (
+=======
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = 12;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"aM" = (
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -343,6 +420,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
+<<<<<<< HEAD
 	},
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -366,8 +444,30 @@
 	name = "north bump";
 	pixel_x = 0;
 	pixel_y = 24
+=======
 	},
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/item/weapon/storage/belt,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"aR" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
+	},
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"aW" = (
 /obj/structure/cable/green{
+<<<<<<< HEAD
 	icon_state = "0-2"
 	},
 /obj/machinery/light_switch{
@@ -396,12 +496,32 @@
 	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = 26
+=======
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"aX" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "aZ" = (
@@ -476,6 +596,409 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
 "bg" = (
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"aY" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"aZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"bg" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 2;
+	layer = 3.3;
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"bh" = (
+/obj/structure/table/glass,
+/obj/machinery/microwave,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"bi" = (
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/item/weapon/storage/box/cups{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/weapon/storage/box/donkpockets,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"bv" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"by" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"bE" = (
+/obj/effect/floor_decal/rust/steel_decals_rusted2,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored)
+"bW" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"ck" = (
+/obj/effect/floor_decal/rust/steel_decals_rusted1,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored)
+"cl" = (
+/obj/effect/floor_decal/rust/steel_decals_rusted1,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/explored)
+"cm" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/passage)
+"cn" = (
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/outpost/mining_main/passage)
+"co" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/passage)
+"cp" = (
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/passage)
+"cq" = (
+/obj/effect/step_trigger/teleporter/from_mining,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/passage)
+"cu" = (
+/mob/living/simple_mob/animal/space/gaslamp,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/mine/explored)
+"cv" = (
+/obj/machinery/status_display,
+/turf/simulated/wall/r_wall,
+/area/outpost/mining_main/break_room)
+"di" = (
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	dir = 2;
+	frequency = 1379;
+	master_tag = "mining_outpost_airlock";
+	name = "Mining Outpost Access Button";
+	pixel_x = 0;
+	pixel_y = 24;
+	req_access = list(48,54)
+	},
+/obj/machinery/door/airlock/glass_external/public{
+	frequency = 1379;
+	icon_state = "door_locked";
+	id_tag = "mining_outpost_airlock_outer";
+	locked = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/airlock)
+"ef" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1379;
+	master_tag = "mining_outpost_airlock";
+	name = "Mining Outpost Access Button";
+	pixel_x = 0;
+	pixel_y = 24;
+	req_access = list(48,54)
+	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1379;
+	icon_state = "door_locked";
+	id_tag = "mining_outpost_airlock_inner";
+	locked = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/airlock)
+"el" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"hK" = (
+/turf/simulated/wall/r_wall,
+/area/outpost/mining_main/dorms)
+"hW" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"jh" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"jq" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/structure/cable/green,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"jV" = (
+/obj/machinery/atmospherics/omni/atmos_filter{
+	tag_east = 1;
+	tag_north = 3;
+	tag_south = 2
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"kc" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 4;
+	name = "Air to Supply"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"kB" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"lb" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"ld" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	icon_state = "map_vent_out";
+	name = "Large Waste Vent";
+	pressure_checks = 2;
+	pressure_checks_default = 2;
+	use_power = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/maintenance)
+"mH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"ng" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"ol" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"om" = (
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
+	frequency = 1379;
+	scrub_id = "mining_outpost_airlock_scrubber"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/outpost/mining_main/airlock)
+"po" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"qx" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/storage)
+"rp" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
+"rH" = (
+/obj/effect/floor_decal/rust/steel_decals_rusted1{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/airlock)
+"sg" = (
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /obj/machinery/atmospherics/omni/atmos_filter{
 	tag_east = 1;
 	tag_north = 4;
@@ -483,7 +1006,464 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
+<<<<<<< HEAD
 "bh" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
+	dir = 4
+	},
+=======
+"si" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/sensor{
+	long_range = 1;
+	name = "Powernet Sensor - Mining Station";
+	name_tag = "Mining Station"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"so" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"tk" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/break_room)
+"ty" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"uo" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"uE" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/dorms)
+"vo" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"vx" = (
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
+"vG" = (
+/obj/effect/floor_decal/borderfloorblack/cee{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/bordercee{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/outpost/mining_main/airlock)
+"wN" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"xA" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"xC" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"BD" = (
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "mining_outpost_airlock";
+	pixel_x = 0;
+	pixel_y = -25
+	},
+/obj/machinery/airlock_sensor/phoron{
+	id_tag = "mining_outpost_airlock_sensor";
+	pixel_x = 12;
+	pixel_y = -26
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1379;
+	id_tag = "mining_outpost_airlock_pump";
+	power_rating = 15000
+	},
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
+"BR" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Cx" = (
+/turf/simulated/mineral/floor/virgo3b{
+	color = "#AAAAAA"
+	},
+/area/mine/explored)
+"Cy" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/mining{
+	name = "Utility Room"
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/maintenance)
+"DV" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"DX" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 4;
+	name = "Airlock Refill";
+	target_pressure = 3800
+	},
+/turf/simulated/floor/tiled/dark,
+/area/outpost/mining_main/airlock)
+"Eu" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"Ex" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = 12;
+	pixel_y = 24
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"EH" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"Fa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = 12;
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/dorms)
+"Fb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
+"Fn" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"Fo" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"FG" = (
+/obj/structure/cable/ender{
+	icon_state = "1-2";
+	id = "surface-solars"
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"FV" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"Gs" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
+"Gw" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"GU" = (
+/obj/machinery/status_display,
+/turf/simulated/wall/r_wall,
+/area/outpost/mining_main/airlock)
+"Hi" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/storage)
+"Hl" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"HP" = (
+/obj/effect/floor_decal/rust/steel_decals_rusted1{
+	dir = 8
+	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/airlock)
+"HS" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Il" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"Ir" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"IA" = (
+/obj/structure/closet/firecloset,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 2;
+	frequency = 1379;
+	id_tag = "mining_outpost_airlock_pump"
+	},
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
+"IX" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 1
+	},
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "mair_mining_meter";
+	name = "Mixed Air Tank"
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"IY" = (
+/obj/effect/step_trigger/teleporter/to_underdark{
+	dir = 4;
+	icon_state = "";
+	pixel_x = -16
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/mine/explored)
+"JA" = (
+/obj/item/weapon/bedsheet/orange,
+/obj/structure/bed/padded,
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/dorms)
+"Kj" = (
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
@@ -496,6 +1476,343 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"KF" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"KJ" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Ma" = (
+/obj/machinery/door/airlock/mining{
+	name = "Quarters"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/dorms)
+"MV" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Nh" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/mine/explored)
+"Pr" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Px" = (
+/turf/simulated/wall/r_wall,
+/area/outpost/mining_main/airlock)
+"QH" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"QI" = (
+/obj/structure/sign/mining,
+/turf/simulated/wall/r_wall,
+/area/mine/explored)
+"QZ" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/outpost/mining_main/airlock)
+"RB" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Sq" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/break_room)
+"SF" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"SQ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"SW" = (
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/mine/explored)
+"TC" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Uk" = (
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/break_room)
+"Uy" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"US" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 6
+	},
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"Vk" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/machinery/telecomms/relay/preset/mining,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"VG" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack/cee{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercee{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/outpost/mining_main/airlock)
+"VK" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/break_room)
+"Wy" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/mine/explored)
+"WK" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/dorms)
+"WV" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/structure/closet/secure_closet/miner,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"XA" = (
+/obj/structure/table/standard,
+/obj/item/weapon/storage/briefcase/inflatable,
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"XR" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"YA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/structure/closet/secure_closet/miner,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
+"Zg" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Zn" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/tiled/dark,
+/area/outpost/mining_main/airlock)
+"Zy" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"ZC" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"ZV" = (
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+<<<<<<< HEAD
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
@@ -872,10 +2189,26 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
+=======
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
+<<<<<<< HEAD
 "bM" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -1513,6 +2846,8 @@
 /obj/effect/step_trigger/teleporter/from_mining,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 
 (1,1,1) = {"
 aa
@@ -1650,6 +2985,8 @@ aa
 aa
 aa
 aa
+<<<<<<< HEAD
+=======
 aa
 aa
 aa
@@ -2506,6 +3843,863 @@ ab
 ab
 ab
 ab
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(4,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ld
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ay
+QH
+vo
+vo
+ZC
+vo
+Fo
+ay
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ay
+Gw
+XR
+xC
+so
+jq
+xA
+aR
+ng
+Eu
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 aa
 "}
 (8,1,1) = {"
@@ -2628,16 +4822,16 @@ ab
 ab
 ab
 ab
+ay
+IX
+uo
+HS
+si
+MV
+KJ
+SF
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -2733,16 +4927,16 @@ ab
 ab
 ab
 ab
+ay
+Pr
+jV
+mH
+ol
+MV
+KJ
+SF
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -2873,16 +5067,16 @@ ab
 ab
 ab
 ab
+ay
+TC
+sg
+kc
+Hl
+MV
+KJ
+SF
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -3010,16 +5204,16 @@ ab
 ab
 ab
 ab
+ay
+Ex
+Kj
+Zg
+RB
+MV
+KJ
+SF
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -3131,16 +5325,16 @@ ab
 ab
 ab
 ab
+ay
+Zy
+SQ
+BR
+Ir
+XA
+Vk
+po
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -3243,7 +5437,19 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+=======
+ay
+ay
+Cy
+ay
+ay
+ay
+ay
+ay
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -3312,15 +5518,29 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
 ab
+=======
+ah
+an
+an
+Hi
+au
+ax
+cv
+aI
+aW
+bh
+hK
+WK
+JA
+hK
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -3381,6 +5601,29 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+ab
+ab
+ab
+ab
+=======
+ag
+am
+am
+at
+at
+aw
+az
+aY
+aW
+bi
+hK
+Fa
+uE
+hK
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
+ab
+Il
 ab
 ab
 ab
@@ -3431,16 +5674,29 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
 ab
+=======
+aj
+at
+ar
+at
+at
+aD
+az
+aK
+aX
+bW
+hK
+Ma
+hK
+hK
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -3499,6 +5755,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 aa
 "}
@@ -3509,6 +5766,24 @@ ab
 ab
 ab
 ab
+=======
+ai
+at
+aq
+at
+qx
+aC
+aE
+bg
+bv
+ZV
+ty
+Fn
+kB
+az
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
+ab
+Il
 ab
 ab
 ab
@@ -3557,11 +5832,28 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
+=======
+ak
+ao
+as
+ao
+ao
+ao
+VK
+aM
+aZ
+Uk
+Uk
+by
+DV
+az
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
-ab
+Il
 ab
 ab
 ab
@@ -3615,10 +5907,22 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
+=======
+VK
+Uy
+hW
+YA
+WV
+by
+US
+az
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -3758,8 +6062,20 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Sq
+tk
+tk
+Px
+Px
+ef
+Px
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -3827,8 +6143,17 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Px
+om
+VG
+om
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -3941,8 +6266,17 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Px
+om
+DX
+om
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -4014,8 +6348,17 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Px
+Gs
+QZ
+BD
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -4104,8 +6447,17 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Px
+Fb
+Zn
+vx
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -4174,8 +6526,17 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Px
+IA
+vG
+rp
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
+Il
 ab
 ab
 ab
@@ -4245,31 +6606,17 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
+=======
+Px
+Px
+di
+GU
+Px
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-aj
-aj
-aj
-aj
-ab
-ab
-ab
-ab
-aj
-ab
-ab
-ab
-ab
-ab
+Il
 ab
 ab
 ab
@@ -4283,13 +6630,10 @@ aj
 aj
 aj
 aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
+ab
+ab
+ab
+ab
 aj
 ab
 ab
@@ -4305,11 +6649,14 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
+aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
 aj
 aj
 aj
@@ -4330,6 +6677,30 @@ ab
 ab
 ab
 ab
+ab
+ab
+ab
+aj
+aj
+aj
+aj
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+<<<<<<< HEAD
 ab
 ab
 aI
@@ -4342,6 +6713,15 @@ cp
 cE
 ab
 cH
+=======
+ab
+rH
+rH
+HP
+ab
+ab
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -4438,7 +6818,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -4500,6 +6880,11 @@ aa
 aa
 ab
 ab
+<<<<<<< HEAD
+=======
+af
+el
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -4539,6 +6924,11 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+=======
+af
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 aj
 aj
@@ -4641,6 +7031,25 @@ aa
 (23,1,1) = {"
 aa
 ab
+<<<<<<< HEAD
+=======
+al
+al
+af
+al
+al
+al
+al
+al
+al
+al
+al
+al
+ck
+al
+af
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -4741,6 +7150,7 @@ aj
 aj
 aj
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
@@ -4768,6 +7178,23 @@ cr
 bK
 ab
 cH
+=======
+ap
+al
+al
+al
+al
+af
+al
+al
+al
+al
+al
+cl
+al
+af
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -4894,6 +7321,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ap
 av
 ay
@@ -4910,6 +7338,10 @@ bK
 bK
 ab
 cH
+=======
+af
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -5089,6 +7521,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
@@ -5194,6 +7627,10 @@ ct
 aK
 ab
 cH
+=======
+al
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -5325,6 +7762,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 aM
 ba
@@ -5336,6 +7774,10 @@ cu
 aK
 ab
 cH
+=======
+al
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -5461,6 +7903,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
@@ -5492,6 +7935,14 @@ aa
 "}
 (29,1,1) = {"
 aa
+=======
+al
+af
+al
+al
+al
+EH
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -5610,6 +8061,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 ab
 ab
@@ -5620,6 +8072,14 @@ bN
 bB
 ab
 cH
+=======
+af
+af
+al
+al
+al
+wN
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -5755,6 +8215,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 bB
 bN
 cf
@@ -5762,6 +8223,9 @@ bN
 bB
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -5897,6 +8361,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 bB
 bO
 cg
@@ -5904,6 +8369,9 @@ cv
 bB
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -6036,7 +8504,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 bB
@@ -6180,6 +8648,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 bB
 bQ
@@ -6188,6 +8657,9 @@ cx
 bB
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -6323,6 +8795,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 bB
 bB
 cj
@@ -6330,6 +8803,9 @@ cy
 bB
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -6457,7 +8933,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -6602,7 +9078,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -6776,7 +9252,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -7023,6 +9499,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 as
 as
@@ -7040,6 +9517,9 @@ cA
 as
 am
 cJ
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -7188,7 +9668,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -7454,7 +9934,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -7602,12 +10082,16 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 as
 as
 am
 ab
 as
 cJ
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -7781,7 +10265,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 aj
 aj
@@ -8032,8 +10516,12 @@ as
 as
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -8197,7 +10685,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -8350,6 +10838,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 aj
 aj
@@ -8460,6 +10949,9 @@ ab
 ab
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -8600,8 +11092,12 @@ ab
 am
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -8884,8 +11380,12 @@ ab
 am
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -9026,8 +11526,12 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -9194,7 +11698,7 @@ ab
 ab
 ab
 ab
-ab
+Il
 ab
 ab
 ab
@@ -9452,8 +11956,12 @@ ab
 ab
 am
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -9594,8 +12102,12 @@ ab
 am
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -9628,6 +12140,148 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+=======
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+af
+af
+ab
+ab
+Il
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(69,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -9736,8 +12390,12 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -9878,8 +12536,12 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
+=======
+Il
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 ab
@@ -10162,6 +12824,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 ab
 cH
 ab
@@ -10174,6 +12837,19 @@ ab
 ab
 ab
 ab
+=======
+FV
+jh
+jh
+jh
+jh
+jh
+jh
+jh
+lb
+KF
+FG
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 aa
 "}
 (62,1,1) = {"
@@ -10477,6 +13153,11 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+=======
+al
+af
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 ab
 ab
 aj

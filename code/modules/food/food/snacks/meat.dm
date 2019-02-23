@@ -6,6 +6,7 @@
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
 
+<<<<<<< HEAD:code/modules/food/food/snacks/meat.dm
 /obj/item/weapon/reagent_containers/food/snacks/meat/initialize()
 	..()
 	reagents.add_reagent("protein", 6)
@@ -21,6 +22,12 @@
 
 	if (name == initial(name))
 		name = "cooked [name]"
+=======
+/obj/item/weapon/reagent_containers/food/snacks/meat/New()
+	..()
+	reagents.add_reagent("protein", 9)
+	src.bitesize = 3
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/snacks/meat.dm
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/material/knife))
@@ -45,6 +52,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/corgi
 	name = "Corgi meat"
+<<<<<<< HEAD:code/modules/food/food/snacks/meat.dm
 	desc = "Tastes like... well, you know."
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/chicken
@@ -58,3 +66,6 @@
 		..()
 		reagents.remove_reagent("triglyceride", INFINITY)
 		//Chicken is low fat. Less total calories than other meats
+=======
+	desc = "Tastes like... well, you know."
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/snacks/meat.dm

@@ -2244,5 +2244,9 @@ Zeta
 Leporis
 Barnard
 Vega
+<<<<<<< HEAD
 Altair
 >>>>>>> 16f14ee... Merge pull request #4525 from VOREStation/upstream-merge-5732
+=======
+Altair
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master

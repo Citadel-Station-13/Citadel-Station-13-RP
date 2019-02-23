@@ -81,4 +81,8 @@
 	containername = "Chinese takeout crate"
 
 /datum/supply_pack/randomised/hospitality/pizza
+<<<<<<< HEAD
 	cost = 50
+=======
+	cost = 25
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master

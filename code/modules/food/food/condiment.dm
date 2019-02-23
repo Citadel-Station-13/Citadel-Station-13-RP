@@ -98,6 +98,7 @@
 				name = "Sugar"
 				desc = "Tastey space sugar!"
 				center_of_mass = list("x"=16, "y"=6)
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 			if("spacespice") //BEGIN CITADEL CHANGE - AURORA KITCHEN PORT
 				name = "bottle of space spice"
 				desc = "An exotic blend of spices for cooking. Definitely not worms."
@@ -109,6 +110,8 @@
 				desc = "Barbecue sauce, it's labeled 'sweet and spicy'."
 				icon_state = "barbecue"
 				center_of_mass = list("x"=16, "y"=6) // END CITADEL CHANGE - AURORA KITCHEN PORT
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm
 			else
 				name = "Misc Condiment Bottle"
 				if (reagents.reagent_list.len==1)
@@ -129,11 +132,19 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 /obj/item/weapon/reagent_containers/food/condiment/enzyme/initialize()
 	..()
 	reagents.add_reagent("enzyme", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/sugar/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/enzyme/New()
+	..()
+	reagents.add_reagent("enzyme", 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/sugar/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm
 	..()
 	reagents.add_reagent("sugar", 50)
 
@@ -151,7 +162,11 @@
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm
 	..()
 	reagents.add_reagent("sodiumchloride", 20)
 
@@ -160,7 +175,11 @@
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
 
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/small/peppermill/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm
 	..()
 	reagents.add_reagent("blackpepper", 20)
 
@@ -169,7 +188,11 @@
 	desc = "Sweetness in a bottle"
 	icon_state = "sugarsmall"
 
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/small/sugar/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm
 	..()
 	reagents.add_reagent("sugar", 20)
 
@@ -178,11 +201,15 @@
 	desc = "A big bag of flour. Good for baking!"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "flour"
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 	volume = 220
+=======
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm
 
 /obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
 	return
 
+<<<<<<< HEAD:code/modules/food/food/condiment.dm
 /obj/item/weapon/reagent_containers/food/condiment/flour/initialize()
 	..()
 	reagents.add_reagent("flour", 200)
@@ -203,3 +230,10 @@
 /obj/item/weapon/reagent_containers/food/condiment/spacespice/initialize()
 	..()
 	reagents.add_reagent("spacespice", 40)
+=======
+/obj/item/weapon/reagent_containers/food/condiment/flour/New()
+	..()
+	reagents.add_reagent("flour", 30)
+	src.pixel_x = rand(-10.0, 10)
+	src.pixel_y = rand(-10.0, 10)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/condiment.dm

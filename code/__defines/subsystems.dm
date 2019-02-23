@@ -60,6 +60,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_OVERLAY	-6
 #define INIT_ORDER_XENOARCH	-20
 #define INIT_ORDER_CIRCUIT	-21
+#define INIT_ORDER_AI		-22
 
 
 // Subsystem fire priority, from lowest to highest priority
@@ -67,6 +68,10 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
+<<<<<<< HEAD
+=======
+#define FIRE_PRIORITY_AI			10
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35

@@ -27,7 +27,11 @@
 	..()
 	update_icon()
 
+<<<<<<< HEAD:code/modules/food/glass/bottle.dm
 /obj/item/weapon/reagent_containers/glass/bottle/initialize()
+=======
+/obj/item/weapon/reagent_containers/glass/bottle/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/glass/bottle.dm
 	..()
 	if(!icon_state)
 		icon_state = "bottle-[rand(1,4)]"

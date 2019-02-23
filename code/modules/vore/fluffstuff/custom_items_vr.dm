@@ -1948,4 +1948,14 @@ END OF CITADEL CHANGES */
 /obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
 	name = "nobel sciences award"
 	desc = "A bronze medal which represents significant contributions to the field of science or engineering, this one has Ashley Kifer engraved on it."
+<<<<<<< HEAD
 END OF CITADEL CHANGES */
+=======
+
+//lm40 - Kenzie Houser
+/obj/item/weapon/reagent_containers/hypospray/vial/kenzie
+	name = "gold-trimmed hypospray"
+	desc = "A gold-trimmed MKII hypospray. The name 'Kenzie Houser' is engraved on the side."
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_state = "kenziehypo"
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master

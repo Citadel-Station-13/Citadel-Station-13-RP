@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
@@ -29,17 +30,39 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 												If negative, starts at -1, and goes down by 1 each time that error gets skipped*/
 
 	if(!error_last_seen) // A runtime is occurring too early in start-up initialization
+=======
+// error_cooldown items will either be positive (cooldown time) or negative (silenced error)
+//  If negative, starts at -1, and goes down by 1 each time that error gets skipped
+var/total_runtimes = 0
+var/total_runtimes_skipped = 0
+// The ifdef needs to be down here, since the error viewer references total_runtimes
+#ifdef DEBUG
+/world/Error(var/exception/e, var/datum/e_src)
+	if(!istype(e)) // Something threw an unusual exception
+		log_error("\[[time_stamp()]] Uncaught exception: [e]")
+		return ..()
+	if(!GLOB.error_last_seen) // A runtime is occurring too early in start-up initialization
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 		return ..()
 
+<<<<<<< HEAD
 	var/erroruid = "[E.file][E.line]"
 	var/last_seen = error_last_seen[erroruid]
 	var/cooldown = error_cooldown[erroruid] || 0
 
 	if(last_seen == null)
 		error_last_seen[erroruid] = world.time
+=======
+	var/erroruid = "[e.file][e.line]"
+	var/last_seen = GLOB.error_last_seen[erroruid]
+	var/cooldown = GLOB.error_cooldown[erroruid] || 0
+	if(last_seen == null) // A new error!
+		GLOB.error_last_seen[erroruid] = world.time
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 		last_seen = world.time
 
 	if(cooldown < 0)
+<<<<<<< HEAD
 		error_cooldown[erroruid]-- //Used to keep track of skip count for this error
 		GLOB.total_runtimes_skipped++
 		return //Error is currently silenced, skip handling it
@@ -53,12 +76,23 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
 	//Each occurence of a unique error adds to its cooldown time...
 	cooldown = max(0, cooldown - (world.time - last_seen)) + configured_error_cooldown
+=======
+		GLOB.error_cooldown[erroruid]-- // Used to keep track of skip count for this error
+		total_runtimes_skipped++
+		return // Error is currently silenced, skip handling it
+
+	// Handle cooldowns and silencing spammy errors
+	var/silencing = 0
+	// Each occurrence of a unique error adds to its "cooldown" time...
+	cooldown = max(0, cooldown - (world.time - last_seen)) + ERROR_COOLDOWN
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 	// ... which is used to silence an error if it occurs too often, too fast
 	if(cooldown > configured_error_cooldown * configured_error_limit)
 		cooldown = -1
 		silencing = TRUE
 		spawn(0)
 			usr = null
+<<<<<<< HEAD
 			sleep(configured_error_silence_time)
 			var/skipcount = abs(error_cooldown[erroruid]) - 1
 			error_cooldown[erroruid] = 0
@@ -68,6 +102,16 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
 	error_last_seen[erroruid] = world.time
 	error_cooldown[erroruid] = cooldown
+=======
+			sleep(ERROR_SILENCE_TIME)
+			var/skipcount = abs(GLOB.error_cooldown[erroruid]) - 1
+			GLOB.error_cooldown[erroruid] = 0
+			if(skipcount > 0)
+				log_error("\[[time_stamp()]] Skipped [skipcount] runtimes in [e.file],[e.line].")
+				error_cache.logError(e, skipCount = skipcount)
+	GLOB.error_last_seen[erroruid] = world.time
+	GLOB.error_cooldown[erroruid] = cooldown
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 
 	var/list/usrinfo = null
 	var/locinfo
@@ -111,6 +155,22 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		GLOB.current_test.Fail("[main_line]\n[desclines.Join("\n")]")
 #endif
 
+<<<<<<< HEAD
 	// This writes the regular format (unwrapping newlines and inserting timestamps as needed).
 	log_error("runtime error: [E.name]\n[E.desc]")
 #endif
+=======
+/proc/log_runtime(exception/e, datum/e_src, extra_info)
+	if(!istype(e))
+		world.Error(e, e_src)
+		return
+
+	if(extra_info)
+		// Adding extra info adds two newlines, because parsing runtimes is funky
+		if(islist(extra_info))
+			e.desc = "  [jointext(extra_info, "\n  ")]\n\n" + e.desc
+		else
+			e.desc = "  [extra_info]\n\n" + e.desc
+
+	world.Error(e, e_src)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master

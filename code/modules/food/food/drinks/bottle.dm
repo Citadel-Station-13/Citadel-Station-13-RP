@@ -14,7 +14,11 @@
 	var/rag_underlay = "rag"
 	on_reagent_change() return // To suppress price updating. Bottles have their own price tags.
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	if(isGlass) unacidable = 1
 
@@ -193,7 +197,11 @@
 	icon_state = "ginbottle"
 	center_of_mass = list("x"=16, "y"=4)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/gin/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/gin/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("gin", 100)
 
@@ -203,7 +211,11 @@
 	icon_state = "whiskeybottle"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("whiskey", 100)
 
@@ -213,7 +225,11 @@
 	icon_state = "whiskeybottle2"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("specialwhiskey", 100)
 
@@ -223,7 +239,11 @@
 	icon_state = "vodkabottle"
 	center_of_mass = list("x"=17, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("vodka", 100)
 
@@ -233,7 +253,11 @@
 	icon_state = "tequillabottle"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("tequilla", 100)
 
@@ -243,7 +267,11 @@
 	icon_state = "bottleofnothing"
 	center_of_mass = list("x"=17, "y"=5)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("nothing", 100)
 
@@ -253,7 +281,11 @@
 	icon_state = "patronbottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/patron/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/patron/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("patron", 100)
 
@@ -263,7 +295,11 @@
 	icon_state = "rumbottle"
 	center_of_mass = list("x"=16, "y"=8)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/rum/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("rum", 100)
 
@@ -273,7 +309,11 @@
 	icon_state = "holyflask"
 	center_of_mass = list("x"=17, "y"=10)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/holywater/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("holywater", 100)
 
@@ -283,7 +323,11 @@
 	icon_state = "vermouthbottle"
 	center_of_mass = list("x"=17, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("vermouth", 100)
 
@@ -293,7 +337,11 @@
 	icon_state = "kahluabottle"
 	center_of_mass = list("x"=17, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("kahlua", 100)
 
@@ -303,7 +351,11 @@
 	icon_state = "goldschlagerbottle"
 	center_of_mass = list("x"=15, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("goldschlager", 100)
 
@@ -313,7 +365,11 @@
 	icon_state = "cognacbottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cognac/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("cognac", 100)
 
@@ -323,7 +379,11 @@
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/wine/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("wine", 100)
 
@@ -333,7 +393,11 @@
 	icon_state = "absinthebottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("absinthe", 100)
 
@@ -343,7 +407,11 @@
 	icon_state = "alco-green" //Placeholder.
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("melonliquor", 100)
 
@@ -353,7 +421,11 @@
 	icon_state = "alco-blue" //Placeholder.
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("bluecuracao", 100)
 
@@ -363,7 +435,11 @@
 	icon_state = "grenadinebottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("grenadine", 100)
 
@@ -373,7 +449,11 @@
 	icon_state = "colabottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cola/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cola/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("cola", 100)
 
@@ -383,7 +463,11 @@
 	icon_state = "space-up_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("space_up", 100)
 
@@ -393,7 +477,11 @@
 	icon_state = "space_mountain_wind_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("spacemountainwind", 100)
 
@@ -403,7 +491,11 @@
 	icon_state = "pwinebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/pwine/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/pwine/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("pwine", 100)
 
@@ -413,7 +505,11 @@
 	icon_state = "redeemersbrew"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("unathiliquor", 100)
 
@@ -427,7 +523,11 @@
 	center_of_mass = list("x"=16, "y"=7)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/orangejuice/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/orangejuice/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("orangejuice", 100)
 
@@ -439,7 +539,11 @@
 	center_of_mass = list("x"=16, "y"=7)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/applejuice/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/applejuice/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("applejuice", 100)
 
@@ -451,7 +555,11 @@
 	center_of_mass = list("x"=16, "y"=9)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/milk/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/milk/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("milk", 100)
 
@@ -463,7 +571,11 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cream/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cream/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("cream", 100)
 
@@ -475,7 +587,11 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tomatojuice/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tomatojuice/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("tomatojuice", 100)
 
@@ -487,7 +603,11 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("limejuice", 100)
 
@@ -499,7 +619,11 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("lemonjuice", 100)
 
@@ -516,7 +640,11 @@
 	icon_state = "beer"
 	center_of_mass = list("x"=16, "y"=12)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("beer", 30)
 
@@ -527,7 +655,11 @@
 	item_state = "beer"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("ale", 30)
 
@@ -537,7 +669,11 @@
 	icon_state = "sakebottle"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/sake/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/sake/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("sake", 100)
 
@@ -546,6 +682,10 @@
 	desc = "For those special occassions."
 	icon_state = "champagne"
 
+<<<<<<< HEAD:code/modules/food/food/drinks/bottle.dm
 /obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/bottle.dm
 	..()
 	reagents.add_reagent("champagne", 100)

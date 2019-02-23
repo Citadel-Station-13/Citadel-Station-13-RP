@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/dragon
+/mob/living/simple_mob/hostile/dragon
 	name = "red dragon"
 	desc = "Here to pillage stations and kidnap princesses, and there probably aren't any princesses."
 	icon = 'icons/mob/vore64x64.dmi'
@@ -30,6 +30,7 @@
 	pixel_x = -16
 	pixel_y = 0
 
+<<<<<<< HEAD
 	max_buckled_mobs = 1 //Yeehaw
 	can_buckle = TRUE
 	buckle_movable = TRUE
@@ -38,21 +39,24 @@
 	mount_offset_y = 16
 
 /mob/living/simple_animal/hostile/dragon/Process_Spacemove(var/check_drift = 0)
+=======
+/mob/living/simple_mob/hostile/dragon/Process_Spacemove(var/check_drift = 0)
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 	return 1	//No drifting in space for space dragons!
 
-/mob/living/simple_animal/hostile/dragon/FindTarget()
+/mob/living/simple_mob/hostile/dragon/FindTarget()
 	. = ..()
 	if(.)
 		custom_emote(1,"snaps at [.]")
 
 // Activate Noms!
-/mob/living/simple_animal/hostile/dragon
+/mob/living/simple_mob/hostile/dragon
 	vore_active = 1
 	vore_capacity = 2
 	vore_pounce_chance = 0 // Beat them into crit before eating.
 	vore_icons = SA_ICON_LIVING
 
-/mob/living/simple_animal/hostile/dragon/virgo3b
+/mob/living/simple_mob/hostile/dragon/virgo3b
 	maxHealth = 200
 	health = 200
 	faction = "virgo3b"

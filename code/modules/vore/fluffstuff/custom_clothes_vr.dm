@@ -710,7 +710,13 @@ END OF CITADEL CHANGES */
 	armor = list("melee" = 60, "bullet" = 35, "laser" = 35, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 10)
 	species_restricted = null
 
+<<<<<<< HEAD
 /* CITADEL CHANGE - Removes Virgo Fluff
+=======
+	armor = list("melee" = 60, "bullet" = 35, "laser" = 35, "energy" = 15, "bomb" = 50, "bio" = 100, "rad" = 10)
+	species_restricted = null
+
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 //adk09:Lethe
 /obj/item/clothing/head/helmet/hos/fluff/lethe
 	name = "Lethe's Hat"
@@ -1690,16 +1696,15 @@ END OF CITADEL CHANGES */
 	icon_state = "kilanosuit_p"
 	item_state = "kilanosuit_p"
 
-//Mewchild: Phi Vietsi
-/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
-	name = "Phi Vietsi's Bone Signet Ring"
-	desc = "A signet ring belonging to Phi Vietsi, carved from the bones of something long extinct, as a ward against bad luck."
-	var/signet_name = "Phi Vietsi"
+//Mewchild: Phi Ahkeen
+/obj/item/clothing/gloves/ring/seal/signet/fluff/phi
+	name = "Phi's Bone Signet Ring"
+	desc = "A signet ring belonging to Phi, carved from the bones of something long extinct, as a ward against bad luck."
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
-	icon_state = "vietsi_ring"
+	icon_state = "phi_ring"
 
-/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi/change_name(var/signet_name = "Unknown")
+/obj/item/clothing/gloves/ring/seal/signet/fluff/phi/change_name(var/signet_name = "Unknown")
 	name = "[signet_name]'s Bone Signet Ring"
 	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
 END OF CITADEL CHANGES */

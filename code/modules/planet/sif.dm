@@ -423,11 +423,19 @@ var/datum/planet/sif/planet_sif = null
 			var/amount_soaked = H.get_armor_soak(target_zone, "melee")
 
 			var/damage = rand(1,3)
+<<<<<<< HEAD
 
 			if(amount_blocked >= 30)
 				continue // No need to apply damage. Hardhats are 30. They should probably protect you from hail on your head.
 				//Voidsuits are likewise 40, and riot, 80. Clothes are all less than 30.
 
+=======
+
+			if(amount_blocked >= 30)
+				continue // No need to apply damage. Hardhats are 30. They should probably protect you from hail on your head.
+				//Voidsuits are likewise 40, and riot, 80. Clothes are all less than 30.
+
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master
 			if(amount_soaked >= damage)
 				continue // No need to apply damage.
 

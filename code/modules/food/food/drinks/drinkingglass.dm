@@ -98,13 +98,21 @@
 
 // for /obj/machinery/vending/sovietsoda
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/soda
+<<<<<<< HEAD:code/modules/food/food/drinks/drinkingglass.dm
 	initialize()
+=======
+	New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/drinkingglass.dm
 		..()
 		reagents.add_reagent("sodawater", 50)
 		on_reagent_change()
 
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cola
+<<<<<<< HEAD:code/modules/food/food/drinks/drinkingglass.dm
 	initialize()
+=======
+	New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/drinkingglass.dm
 		..()
 		reagents.add_reagent("cola", 50)
 		on_reagent_change()
@@ -141,7 +149,11 @@
 	volume = 100
 	matter = list("plastic" = 2000)
 
+<<<<<<< HEAD:code/modules/food/food/drinks/drinkingglass.dm
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/drinkingglass.dm
 	..()
 	icon_state = pick("fitness-cup_black", "fitness-cup_red", "fitness-cup_black")
 
@@ -169,7 +181,11 @@
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake
 	name = "protein shake"
 
+<<<<<<< HEAD:code/modules/food/food/drinks/drinkingglass.dm
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/New()
+>>>>>>> 25ec595... Merge pull request #4663 from VOREStation/master:code/modules/food/food/drinks/drinkingglass.dm
 	..()
 	reagents.add_reagent("nutriment", 30)
 	reagents.add_reagent("iron", 10)
