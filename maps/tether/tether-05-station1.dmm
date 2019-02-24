@@ -7500,9 +7500,18 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "avs" = (
-/obj/structure/table/reinforced,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
+	},
+/obj/machinery/door/window/southleft{
+	name = "EVA RIGs";
+	req_one_access = list(11,24)
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/weapon/rig/eva/equipped,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "avw" = (
@@ -9561,6 +9570,14 @@
 	pixel_y = 24;
 	req_access = list()
 	},
+/obj/item/weapon/storage/briefcase/inflatable{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/weapon/storage/briefcase/inflatable{
+	pixel_y = 3
+	},
+/obj/item/weapon/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aAV" = (
@@ -9656,17 +9673,6 @@
 /area/engineering/engine_eva)
 "aBm" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/briefcase/inflatable{
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/obj/item/weapon/storage/briefcase/inflatable{
-	pixel_y = 3
-	},
-/obj/item/weapon/storage/briefcase/inflatable{
-	pixel_x = -3;
-	pixel_y = 0
-	},
 /obj/machinery/camera/network/engineering,
 /obj/machinery/firealarm{
 	dir = 2;
@@ -9674,6 +9680,8 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
+/obj/item/device/suit_cooling_unit,
+/obj/item/device/suit_cooling_unit,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aBp" = (
@@ -9702,11 +9710,18 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aBq" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/cell/high{
-	charge = 100;
-	maxcharge = 15000
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
 	},
+/obj/machinery/door/window/southright{
+	name = "EVA RIGs";
+	req_one_access = list(11,24)
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/weapon/rig/eva/equipped,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aBr" = (
@@ -10204,6 +10219,10 @@
 /obj/item/weapon/tool/wrench,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/item/weapon/cell/high{
+	charge = 100;
+	maxcharge = 15000
 	},
 /obj/item/weapon/cell/high{
 	charge = 100;
