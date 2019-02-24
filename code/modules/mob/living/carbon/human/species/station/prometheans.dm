@@ -154,7 +154,15 @@ var/datum/species/shapeshifter/promethean/prometheans
 			H.gib()
 
 /datum/species/shapeshifter/promethean/handle_environment_special(var/mob/living/carbon/human/H)
+<<<<<<< HEAD
 /* VOREStation Removal - Too crazy with our uncapped hunger and slowdown stuff.
+=======
+	var/regen_brute = 1
+	var/regen_burn = 1
+	var/regen_tox = 1
+	var/regen_oxy = 1
+
+>>>>>>> a0f6b85... Merge pull request #4798 from Heroman3003/5723-fix
 	var/turf/T = H.loc
 	if(istype(T))
 		var/obj/effect/decal/cleanable/C = locate() in T
@@ -163,9 +171,22 @@ var/datum/species/shapeshifter/promethean/prometheans
 			if (istype(T, /turf/simulated))
 				var/turf/simulated/S = T
 				S.dirt = 0
+			H.nutrition = max(H.nutrition, min(500, H.nutrition + rand(15, 30)))	//VOREStation Edit: Gives nutrition up to a point instead of being capped
 
+<<<<<<< HEAD
 			H.nutrition = min(500, max(0, H.nutrition + rand(15, 30)))
 VOREStation Removal End */
+=======
+	T = get_turf(H) // Swap over to an actual turf, because we need to get the pressure.
+	if(istype(T)) // Make sure it exists, and is a turf again.
+		var/datum/gas_mixture/environment = T.return_air()
+		var/pressure = environment.return_pressure()
+		var/affecting_pressure = H.calculate_affecting_pressure(pressure)
+		if(affecting_pressure <= hazard_low_pressure) // Dangerous low pressure stops the regeneration of physical wounds. Body is focusing on keeping them intact rather than sealing.
+			regen_brute = 0
+			regen_burn = 0
+
+>>>>>>> a0f6b85... Merge pull request #4798 from Heroman3003/5723-fix
 	// Heal remaining damage.
 	if(H.fire_stacks >= 0)
 		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())
@@ -190,6 +211,14 @@ VOREStation Removal End */
 			nutrition_cost += nutrition_debt - H.getToxLoss()
 			H.nutrition -= (2 * nutrition_cost) //Costs Nutrition when damage is being repaired, corresponding to the amount of damage being repaired.
 			H.nutrition = max(0, H.nutrition) //Ensure it's not below 0.
+<<<<<<< HEAD
+=======
+
+			var/agony_to_apply = ((1 / starve_mod) * nutrition_cost) //Regenerating damage causes minor pain over time. Small injures will be no issue, large ones will cause problems.
+			if((H.getHalLoss() + agony_to_apply) <= 70) // Don't permalock, but make it far easier to knock them down.
+				H.apply_damage(agony_to_apply, HALLOSS)
+
+>>>>>>> a0f6b85... Merge pull request #4798 from Heroman3003/5723-fix
 	//else//VOREStation Removal
 		//H.adjustToxLoss(2*heal_rate)	// Doubled because 0.5 is miniscule, and fire_stacks are capped in both directions
 
