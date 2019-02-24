@@ -609,4 +609,8 @@
 /obj/item/weapon/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
 
+<<<<<<< HEAD
 #undef WELDER_FUEL_BURN_INTERVAL
+=======
+#undef WELDER_FUEL_BURN_INTERVAL
+>>>>>>> dd6949a... Merge pull request #4797 from Novacat/nova-aifixes
