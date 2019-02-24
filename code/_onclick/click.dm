@@ -49,19 +49,19 @@
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
-		CtrlShiftClickOn(A)
+		CtrlShiftClickOn(A, params)
 		return 1
 	if(modifiers["middle"])
-		MiddleClickOn(A)
+		MiddleClickOn(A, params)
 		return 1
 	if(modifiers["shift"])
-		ShiftClickOn(A)
+		ShiftClickOn(A, params)
 		return 0
 	if(modifiers["alt"]) // alt and alt-gr (rightalt)
-		AltClickOn(A)
+		AltClickOn(A, params)
 		return 1
 	if(modifiers["ctrl"])
-		CtrlClickOn(A)
+		CtrlClickOn(A, params)
 		return 1
 
 	if(stat || paralysis || stunned || weakened)
@@ -207,7 +207,7 @@
 	Middle click
 	Only used for swapping hands
 */
-/mob/proc/MiddleClickOn(var/atom/A)
+/mob/proc/MiddleClickOn(atom/A, params)
 	swap_hand()
 	return
 
@@ -222,25 +222,24 @@
 	For most mobs, examine.
 	This is overridden in ai.dm
 */
-/mob/proc/ShiftClickOn(var/atom/A)
-	A.ShiftClick(src)
-	return
-/atom/proc/ShiftClick(var/mob/user)
+/mob/proc/ShiftClickOn(atom/A, params)
+	return A.ShiftClick(src)
+
+/atom/proc/ShiftClick(mob/user, params)
 	if(user.client && user.client.eye == user)
 		user.examinate(src)
-	return
 
 /*
 	Ctrl click
 	For most objects, pull
 */
-/mob/proc/CtrlClickOn(var/atom/A)
-	A.CtrlClick(src)
-	return
-/atom/proc/CtrlClick(var/mob/user)
+/mob/proc/CtrlClickOn(atom/A, params)
+	return A.CtrlClick(src, params)
+
+/atom/proc/CtrlClick(mob/user, params)
 	return
 
-/atom/movable/CtrlClick(var/mob/user)
+/atom/movable/CtrlClick(mob/user, params)
 	if(Adjacent(user))
 		user.start_pulling(src)
 
@@ -248,11 +247,10 @@
 	Alt click
 	Unused except for AI
 */
-/mob/proc/AltClickOn(var/atom/A)
-	A.AltClick(src)
-	return
+/mob/proc/AltClickOn(atom/A, params)
+	return A.AltClick(src, params)
 
-/atom/proc/AltClick(var/mob/user)
+/atom/proc/AltClick(mob/user, params)
 	var/turf/T = get_turf(src)
 	if(T && user.TurfAdjacent(T))
 		if(user.listed_turf == T)
@@ -269,11 +267,11 @@
 	Control+Shift click
 	Unused except for AI
 */
-/mob/proc/CtrlShiftClickOn(var/atom/A)
+/mob/proc/CtrlShiftClickOn(atom/A, params)
 	A.CtrlShiftClick(src)
 	return
 
-/atom/proc/CtrlShiftClick(var/mob/user)
+/atom/proc/CtrlShiftClick(mob/user, params)
 	return
 
 /*

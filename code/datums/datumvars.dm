@@ -17,6 +17,9 @@
 			return debug_variable(var_name, list(), 0, src)
 	return debug_variable(var_name, vars[var_name], 0, src)
 
+/datum/proc/can_vv_mark()
+	return TRUE
+
 //please call . = ..() first and append to the result, that way parent items are always at the top and child items are further down
 //add separaters by doing . += "---"
 /datum/proc/vv_get_dropdown()

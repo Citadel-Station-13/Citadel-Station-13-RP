@@ -67,11 +67,15 @@
 				VV_NEW_TYPE,
 				VV_NEW_LIST,
 				VV_NULL,
-				VV_RESTORE_DEFAULT
+				VV_RESTORE_DEFAULT,
+				VV_TEXT_LOCATE
 				)
 
+		var/markstring
+
 		if(holder && holder.marked_datum && !(VV_MARKED_DATUM in restricted_classes))
-			classes += "[VV_MARKED_DATUM] ([holder.marked_datum.type])"
+			markstring = "[VV_MARKED_DATUM] (CURRENT: [holder.marked_datum.type])"
+			classes += markstring
 		if (restricted_classes)
 			classes -= restricted_classes
 
@@ -79,7 +83,7 @@
 			classes += extra_classes
 
 		.["class"] = input(src, "What kind of data?", "Variable Type", default_class) as null|anything in classes
-		if (holder && holder.marked_datum && .["class"] == "[VV_MARKED_DATUM] ([holder.marked_datum.type])")
+		if (holder && holder.marked_datum && .["class"] == markstring)
 			.["class"] = VV_MARKED_DATUM
 
 
@@ -135,7 +139,6 @@
 				return
 			.["value"] = type
 
-
 		if (VV_ATOM_REFERENCE)
 			var/type = pick_closest_path(FALSE)
 			var/subtypes = vv_subtype_prompt(type)
@@ -175,14 +178,11 @@
 				return
 			.["value"] = things[value]
 
-
-
 		if (VV_CLIENT)
 			.["value"] = input("Select reference:", "Reference", current_value) as null|anything in GLOB.clients
 			if (.["value"] == null)
 				.["class"] = null
 				return
-
 
 		if (VV_FILE)
 			.["value"] = input("Pick file:", "File") as null|file
@@ -190,20 +190,17 @@
 				.["class"] = null
 				return
 
-
 		if (VV_ICON)
 			.["value"] = input("Pick icon:", "Icon") as null|icon
 			if (.["value"] == null)
 				.["class"] = null
 				return
 
-
 		if (VV_MARKED_DATUM)
 			.["value"] = holder.marked_datum
 			if (.["value"] == null)
 				.["class"] = null
 				return
-
 
 		if (VV_NEW_ATOM)
 			var/type = pick_closest_path(FALSE)
@@ -244,7 +241,23 @@
 				newguy.datum_flags |= DF_VAR_EDITED
 			.["value"] = newguy
 
-
 		if (VV_NEW_LIST)
 			.["value"] = list()
 			.["type"] = /list
+
+		if(VV_TEXT_LOCATE)
+			var/datum/D
+			do
+				var/ref = input("Enter reference:", "Reference") as null|text
+				if(!ref)
+					break
+				D = locate(ref)
+				if(!D)
+					alert("Invalid ref!")
+					continue
+				if(!D.can_vv_mark())
+					alert("Datum can not be marked!")
+					continue
+			while(!D)
+			.["type"] = D.type
+			.["value"] = D

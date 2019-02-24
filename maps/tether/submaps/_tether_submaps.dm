@@ -29,7 +29,6 @@
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
 	id = "tether_misc"
 	mappath = 'tether_misc.dmm'
-
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
 
 /datum/map_z_level/tether_lateload/misc

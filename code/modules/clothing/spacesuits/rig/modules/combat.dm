@@ -110,7 +110,7 @@
 	..()
 	gun = new gun_type(src)
 
-/obj/item/rig_module/mounted/engage(atom/target)
+/obj/item/rig_module/mounted/engage(atom/target, params)
 
 	if(!..())
 		return 0
@@ -119,7 +119,7 @@
 		gun.attack_self(holder.wearer)
 		return
 
-	gun.Fire(target,holder.wearer)
+	gun.Fire(target, holder.wearer, params)
 	return 1
 
 /obj/item/rig_module/mounted/egun

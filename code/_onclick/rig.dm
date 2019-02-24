@@ -29,21 +29,21 @@
 			src << "Somehow you bugged the system. Setting your hardsuit mode to middle-click."
 			hardsuit_click_mode = MIDDLE_CLICK
 
-/mob/living/MiddleClickOn(atom/A)
+/mob/living/MiddleClickOn(atom/A, params)
 	if(client && client.hardsuit_click_mode == MIDDLE_CLICK)
-		if(HardsuitClickOn(A))
+		if(HardsuitClickOn(A, params))
 			return
 	..()
 
-/mob/living/AltClickOn(atom/A)
+/mob/living/AltClickOn(atom/A, params)
 	if(client && client.hardsuit_click_mode == ALT_CLICK)
-		if(HardsuitClickOn(A))
+		if(HardsuitClickOn(A, params))
 			return
 	..()
 
-/mob/living/CtrlClickOn(atom/A)
+/mob/living/CtrlClickOn(atom/A, params)
 	if(client && client.hardsuit_click_mode == CTRL_CLICK)
-		if(HardsuitClickOn(A))
+		if(HardsuitClickOn(A, params))
 			return
 	..()
 
@@ -62,7 +62,7 @@
 /mob/living/silicon/pai/can_use_rig()
 	return loc == card
 
-/mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
+/mob/living/proc/HardsuitClickOn(atom/A, params)
 	if(!can_use_rig() || !canClick())
 		return 0
 	var/obj/item/weapon/rig/rig = get_rig()
@@ -72,7 +72,7 @@
 				message_admins("[key_name_admin(src, include_name = 1)] is trying to force \the [key_name_admin(rig.wearer, include_name = 1)] to use a hardsuit module.")
 			else
 				return 0
-		rig.selected_module.engage(A, alert_ai)
+		rig.selected_module.engage(A, params)
 		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
 			setClickCooldown(get_attack_speed())
 		return 1

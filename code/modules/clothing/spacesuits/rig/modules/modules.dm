@@ -140,7 +140,7 @@
 	return
 
 //Proc for one-use abilities like teleport.
-/obj/item/rig_module/proc/engage()
+/obj/item/rig_module/proc/engage(atom/A, params)
 
 	if(damage >= 2)
 		usr << "<span class='warning'>The [interface_name] is damaged beyond use!</span>"

@@ -1,4 +1,3 @@
-
 #define RECOMMENDED_VERSION 501
 /world/New()
 	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration

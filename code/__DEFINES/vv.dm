@@ -19,6 +19,7 @@
 #define VV_RESTORE_DEFAULT "Restore to Default"
 #define VV_MARKED_DATUM "Marked Datum"
 #define VV_BITFIELD "Bitfield"
+#define VV_TEXT_LOCATE "Custom Reference Locate"
 
 #define VV_MSG_MARKED "<br><font size='1' color='red'><b>Marked Object</b></font>"
 #define VV_MSG_EDITED "<br><font size='1' color='red'><b>Var Edited</b></font>"

@@ -46,16 +46,16 @@
 
 #define DEFAULT_MAP_TRAITS \
 	list(\
-	DECLARE_LEVEL("Surface 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1)),\
-	DECLARE_LEVEL("Surface 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1)),\
-	DECLARE_LEVEL("Surface 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1)),\
-	DECLARE_LEVEL("ELEVATOR MIDPOINT", list()),\
-	DECLARE_LEVEL("Station 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_LINKAGE = CROSSLINKED)),\
-	DECLARE_LEVEL("Station 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED)),\
-	DECLARE_LEVEL("Station 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED)),\
-	DECLARE_LEVEL("Surface Mine", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 2.5)),\
-	DECLARE_LEVEL("Surface Solars", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE)),\
-	DECLARE_LEVEL("CentComm", list(ZTRAIT_CENTCOM = TRUE)),\
+	DECLARE_LEVEL("Surface 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	DECLARE_LEVEL("Surface 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/simulated/open)),\
+	DECLARE_LEVEL("Surface 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/simulated/open)),\
+	DECLARE_LEVEL("ELEVATOR MIDPOINT", list(ZTRAIT_BASETURF = /turf/simulated/floor/plating)),\
+	DECLARE_LEVEL("Station 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_BASETURF = /turf/space)),\
+	DECLARE_LEVEL("Station 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_BASETURF = /turf/space)),\
+	DECLARE_LEVEL("Station 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_BASETURF = /turf/space)),\
+	DECLARE_LEVEL("Surface Mine", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 2.5, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	DECLARE_LEVEL("Surface Solars", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	DECLARE_LEVEL("CentComm", list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
 	)
 	/*
 	DECLARE_LEVEL("Misc", list(ZTRAIT_CENTCOM = TRUE)),\
@@ -166,13 +166,11 @@
 		/area/tether/surfacebase/emergency_storage/atrium)
 
 	lateload_z_levels = list(
-		list("tether_misc" = list(ZTRAIT_CENTCOM = TRUE), "tether_ships" = list(ZTRAIT_CENTCOM = TRUE),"tether_underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5)), //Stock Tether lateload maps
-		list("abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING)),
-		list("v4_beach" = list(ZTRAIT_AWAY = TRUE),"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),
-		list("v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1),"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))
+		list("tether_misc" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space), "tether_ships" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space),"tether_underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5, ZTRAIT_BASETURF = /turf/simulated/mineral/virgo3b/rich)), //Stock Tether lateload maps
+		list("abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)),
+		list("v4_beach" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert),"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert)),
+		list("v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/unsimulated/floor/sky/virgo2_sky),"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/ignore_mapgen/virgo2))
 		)
-
-	lateload_single_pick = null //Nothing right now.
 
 /datum/map/tether/perform_map_generation()
 
