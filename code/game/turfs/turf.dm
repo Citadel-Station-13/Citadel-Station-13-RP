@@ -3,6 +3,7 @@
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	level = 1
+	luminosity = 1
 
 	// baseturfs can be either a list or a single turf type.
 	// In class definition like here it should always be a single type.
@@ -59,7 +60,7 @@
 	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
+	vis_contents.len = 0
 
 	assemble_baseturfs()
 
@@ -73,13 +74,7 @@
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
-		add_overlay(/obj/effect/fullbright)
-
-	if(dynamic_lighting)
-		luminosity = 0
-	else
+	if(!IS_DYNAMIC_LIGHTING(src))
 		luminosity = 1
 
 	if(movement_cost && pathweight == 1) // This updates pathweight automatically.
