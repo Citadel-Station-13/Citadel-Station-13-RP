@@ -33,15 +33,15 @@
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
 		if ("merp")
-			message = "lets out an merp."
+			message = "lets out a merp."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/merp.ogg', 50, 1, -1)
 		if ("bark")
-			message = "lets out an bark."
+			message = "lets out a bark."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
 		if ("hiss")
-			message = "lets out an hiss."
+			message = "lets out a hiss."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1)
 		if ("nsay")
