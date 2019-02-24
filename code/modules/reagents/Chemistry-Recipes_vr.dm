@@ -1,15 +1,15 @@
 ///////////////////////////////////////////////////////////////////////////////////
 /// Micro/Macro chemicals
 
-/datum/chemical_reaction/sizeoxadone
-	name = "sizeoxadone"
-	id = "sizeoxadone"
-	result = "sizeoxadone"
-	required_reagents = list("clonexadone" = 1, "tramadol" = 3, "phoron" = 1)
-	catalysts = list("phoron" = 5)
-	result_amount = 5
+// /datum/chemical_reaction/sizeoxadone CITADEL CHANGE - Disables size-changing chems
+//	name = "sizeoxadone"
+//	id = "sizeoxadone"
+//	result = "sizeoxadone"
+//	required_reagents = list("clonexadone" = 1, "tramadol" = 3, "phoron" = 1)
+//	catalysts = list("phoron" = 5)
+//	result_amount = 5
 
-/datum/chemical_reaction/macrocillin
+ /datum/chemical_reaction/macrocillin
 	name = "Macrocillin"
 	id = "macrocillin"
 	result = "macrocillin"

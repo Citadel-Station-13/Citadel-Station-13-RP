@@ -133,6 +133,24 @@
 	build_path = /obj/item/device/healthanalyzer/improved
 	sort_string = "MBBAG"
 
+/datum/design/item/medical/advanced_analyzer
+	name = "advanced health analyzer"
+	desc = "A prototype version of the improved health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites"
+	id = "advanced_analyzer"
+	req_tech = list(TECH_MAGNET = 6, TECH_BIO = 7, TECH_PHORON = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 1500, "uranium" = 2000, "plastic" = 100)
+	build_path = /obj/item/device/healthanalyzer/advanced
+	sort_string = "MBBAH"
+
+/datum/design/item/medical/phasic_analyzer
+	name = "phasic health analyzer"
+	desc = "A prototype version of the regular health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites. This analyzer even picks up chemicals in the patient's stomach"
+	id = "phasic_analyzer"
+	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 1500, "uranium" = 2000, "diamond" = 1000, "osmium" = 100, "phoron" = 500, "plastic" = 100)
+	build_path = /obj/item/device/healthanalyzer/phasic
+	sort_string = "MBBAI"
+
 /datum/design/item/implant
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 
