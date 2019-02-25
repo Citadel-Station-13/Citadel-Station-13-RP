@@ -405,7 +405,6 @@
 	src.modules += new /obj/item/weapon/gripper/research(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
 	src.modules += new /obj/item/weapon/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/stack/cable_coil/cyborg(src)
 	src.modules += new /obj/item/weapon/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
 	src.modules += new /obj/item/weapon/storage/part_replacer(src)
@@ -424,6 +423,10 @@
 	var/obj/item/device/dogborg/sleeper/compactor/analyzer/B = new /obj/item/device/dogborg/sleeper/compactor/analyzer(src)
 	B.water = water
 	src.modules += B
+
+	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
+	C.synths = list(wire)
+	src.modules += C
 
 	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
 	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
