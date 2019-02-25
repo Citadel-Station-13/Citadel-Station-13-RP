@@ -416,6 +416,9 @@
 	R.water_res = water
 	synths += water
 
+	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
+	synths += wire
+
 	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
 	T.water = water
 	src.modules += T
