@@ -6,7 +6,7 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 5
-	active_power_usage = 60000	//60 kW. (this the power drawn when charging)
+	active_power_usage = 500	//500 W. (this the power drawn when charging)
 	power_channel = EQUIP
 	var/obj/item/weapon/cell/charging = null
 	var/chargelevel = -1
@@ -108,7 +108,7 @@
 		return
 
 	if(charging && !charging.fully_charged())
-		charging.give(active_power_usage*CELLRATE)
+		charging.give(active_power_usage) // cit change - for a heavy duty charger you'd think it'd suck less
 		update_use_power(2)
 
 		update_icon()
