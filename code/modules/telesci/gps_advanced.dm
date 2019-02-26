@@ -8,7 +8,7 @@
 	desc = "Helping lost spacemen find their way through the planets since 1995."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "gps-c"
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	var/gpstag = "COM0"
