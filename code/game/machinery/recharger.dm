@@ -6,7 +6,7 @@ obj/machinery/recharger
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 4
-	active_power_usage = 40000	//40 kW
+	active_power_usage = 400	//400 W cit edit
 	var/obj/item/charging = null
 	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/ammo_casing/nsfw_batt) //VOREStation Add - NSFW Batteries
 	var/icon_state_charged = "recharger2"
@@ -90,7 +90,7 @@ obj/machinery/recharger
 		if(istype(C))
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
-				C.give(active_power_usage*CELLRATE)
+				C.give(active_power_usage) // cit edit - charger homo
 				update_use_power(2)
 			else
 				icon_state = icon_state_charged
