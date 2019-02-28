@@ -31,3 +31,15 @@
 /obj/item/weapon/card/mining_point_card/examine(mob/user)
 	..(user)
 	to_chat(user, "There's [points] points on the card.")
+
+/obj/item/weapon/card/mining_point_card/1k
+	name = "deluxe mining point card"
+	var/points = 1000
+
+/obj/item/weapon/card/mining_point_card/2k
+	name = "deluxe mining point card"
+	var/points = 2000
+
+/obj/item/weapon/card/mining_point_card/3k
+	name = "deluxe mining point card"
+	var/points = 3000

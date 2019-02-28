@@ -17,6 +17,8 @@
 		new /datum/data/mining_equipment("30 Marker Beacons",			/obj/item/stack/marker_beacon/thirty,								300),
 		new /datum/data/mining_equipment("Whiskey",						/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,		125),
 		new /datum/data/mining_equipment("Absinthe",					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,	125),
+		new /datum/data/mining_equipment("Special Blend Whiskey",						/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,		250),
+		new /datum/data/mining_equipment("Random Booze",						/obj/random/alcohol,		125),
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,			150),
 		new /datum/data/mining_equipment("Soap",						/obj/item/weapon/soap/nanotrasen,									200),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/device/laser_pointer,										900),
@@ -25,13 +27,17 @@
 		new /datum/data/mining_equipment("Fulton Beacon",				/obj/item/fulton_core,												500),
 		new /datum/data/mining_equipment("Shelter Capsule",				/obj/item/device/survivalcapsule,									500),
 		// TODO new /datum/data/mining_equipment("Explorer's Webbing",	/obj/item/storage/belt/mining,										500),
-		new /datum/data/mining_equipment("Point Transfer Card",			/obj/item/weapon/card/mining_point_card,							500),
+		new /datum/data/mining_equipment("500 Point Transfer Card",			/obj/item/weapon/card/mining_point_card,							500),
+		new /datum/data/mining_equipment("1000 Point Transfer Card",			/obj/item/weapon/card/mining_point_card,							1000),
+		new /datum/data/mining_equipment("2000 Point Transfer Card",			/obj/item/weapon/card/mining_point_card,							2000),
+		new /datum/data/mining_equipment("3000 Point Transfer Card",			/obj/item/weapon/card/mining_point_card,							3000),
 		new /datum/data/mining_equipment("Survival Medipen",			/obj/item/weapon/reagent_containers/hypospray/autoinjector/miner,	500),
 		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/device/perfect_tele/one_beacon,							1200),
 		// new /datum/data/mining_equipment("Kinetic Crusher",			/obj/item/twohanded/required/kinetic_crusher,						750),
 		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/weapon/gun/energy/kinetic_accelerator,					900),
 		new /datum/data/mining_equipment("Resonator",					/obj/item/resonator,												900),
 		new /datum/data/mining_equipment("Fulton Pack",					/obj/item/extraction_pack,											1200),
+		new /datum/data/mining_equipment("Wormhole Fulton Pack",					/obj/item/extraction_pack/wormhole,											1200),
 		new /datum/data/mining_equipment("Silver Pickaxe",				/obj/item/weapon/pickaxe/silver,									1200),
 		//new /datum/data/mining_equipment("Mining Conscription Kit",	/obj/item/storage/backpack/duffelbag/mining_conscript,				1000),
 		new /datum/data/mining_equipment("Space Cash",					/obj/item/weapon/spacecash/c1000,									2000), //CITADEL EDIT - reverts space cash nerf
@@ -66,7 +72,7 @@
 	src.equipment_path = path
 	src.cost = cost
 
-/obj/machinery/power/quantumpad/initialize()
+/obj/machinery/power/quantumpad/initialize() //anewbe/leshana put this here and im mad
 	. = ..()
 	default_apply_parts()
 
