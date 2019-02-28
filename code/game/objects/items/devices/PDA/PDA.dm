@@ -362,10 +362,10 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		if (send_result)
 			return
 
-		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
+		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = REF(src))))
 
-		if(!P.conversations.Find("\ref[src]"))
-			P.conversations.Add("\ref[src]")
+		if(!P.conversations.Find(REF(src)))
+			P.conversations.Add(REF(src))
 
 		P.new_message(src, "[original_sender] \[Relayed\]", original_job, t, 0)
 
@@ -1105,7 +1105,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			return
 
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = REF(P))))
-		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
+		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = REF(src))))
 		for(var/mob/M in player_list)
 			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
@@ -1116,8 +1116,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 		if(!conversations.Find(REF(P)))
 			conversations.Add(REF(P))
-		if(!P.conversations.Find("\ref[src]"))
-			P.conversations.Add("\ref[src]")
+		if(!P.conversations.Find(REF(src)))
+			P.conversations.Add(REF(src))
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message

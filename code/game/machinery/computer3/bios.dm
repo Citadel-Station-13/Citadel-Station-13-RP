@@ -107,7 +107,7 @@
 		if(PROG_CRASH)
 			if(usr)
 				usr << "<span class='warning'>The program crashed!</span>"
-				usr << browse(null,"\ref[src]")
+				usr << browse(null,REF(src))
 				Reset()
 
 		if(MISSING_PERIPHERAL)
@@ -139,7 +139,7 @@
 		else
 			if(usr)
 				usr << "<span class='warning'>The program crashed!</span>"
-				usr << browse(null,"\ref[src]")
+				usr << browse(null,REF(src))
 				testing("computer/Crash() - unknown error code [errorcode]")
 				Reset()
 	return null

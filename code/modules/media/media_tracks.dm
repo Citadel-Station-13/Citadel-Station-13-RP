@@ -26,7 +26,7 @@
 	return str
 
 /datum/track/proc/toNanoList()
-	return list("ref" = "\ref[src]", "title" = title, "artist" = artist, "duration" = duration)
+	return list("ref" = REF(src), "title" = title, "artist" = artist, "duration" = duration)
 
 
 // Global list holding all configured jukebox tracks

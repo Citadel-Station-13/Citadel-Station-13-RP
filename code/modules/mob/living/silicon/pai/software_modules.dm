@@ -225,7 +225,7 @@
 		for(var/datum/data/record/general in sortRecord(data_core.general))
 			var/record[0]
 			record["name"] = general.fields["name"]
-			record["ref"] = "\ref[general]"
+			record["ref"] = REF(general)
 			records[++records.len] = record
 
 		data["records"] = records
@@ -279,7 +279,7 @@
 		for(var/datum/data/record/general in sortRecord(data_core.general))
 			var/record[0]
 			record["name"] = general.fields["name"]
-			record["ref"] = "\ref[general]"
+			record["ref"] = REF(general)
 			records[++records.len] = record
 
 		data["records"] = records

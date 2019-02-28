@@ -459,10 +459,10 @@
 						else
 
 							src.linkedServer.send_pda_message("[customrecepient.owner]", "[PDARec.owner]","[custommessage]")
-							customrecepient.tnote.Add(list(list("sent" = 0, "owner" = "[PDARec.owner]", "job" = "[customjob]", "message" = "[custommessage]", "target" ="\ref[PDARec]")))
+							customrecepient.tnote.Add(list(list("sent" = 0, "owner" = "[PDARec.owner]", "job" = "[customjob]", "message" = "[custommessage]", "target" =REF(PDARec))))
 
-							if(!customrecepient.conversations.Find("\ref[PDARec]"))
-								customrecepient.conversations.Add("\ref[PDARec]")
+							if(!customrecepient.conversations.Find(REF(PDARec)))
+								customrecepient.conversations.Add(REF(PDARec))
 
 							customrecepient.new_message(PDARec, custommessage)
 						//Finally..

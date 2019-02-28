@@ -37,7 +37,7 @@
   * @return /nanoui Returns the found ui, or null if none exists
   */
 /datum/controller/subsystem/nanoui/proc/get_open_ui(var/mob/user, src_object, ui_key)
-	var/src_object_key = "\ref[src_object]"
+	var/src_object_key = REF(src_object)
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		//testing("nanomanager/get_open_ui mob [user.name] [src_object:name] [ui_key] - there are no uis open")
 		return null
@@ -60,7 +60,7 @@
   * @return int The number of uis updated
   */
 /datum/controller/subsystem/nanoui/proc/update_uis(src_object)
-	var/src_object_key = "\ref[src_object]"
+	var/src_object_key = REF(src_object)
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		return 0
 
@@ -80,7 +80,7 @@
   * @return int The number of uis close
   */
 /datum/controller/subsystem/nanoui/proc/close_uis(src_object)
-	var/src_object_key = "\ref[src_object]"
+	var/src_object_key = REF(src_object)
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		return 0
 
@@ -146,7 +146,7 @@
   * @return nothing
   */
 /datum/controller/subsystem/nanoui/proc/ui_opened(var/datum/nanoui/ui)
-	var/src_object_key = "\ref[ui.src_object]"
+	var/src_object_key = REF(ui.src_object)
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		open_uis[src_object_key] = list(ui.ui_key = list())
 	else if (isnull(open_uis[src_object_key][ui.ui_key]) || !istype(open_uis[src_object_key][ui.ui_key], /list))
@@ -167,7 +167,7 @@
   * @return int 0 if no ui was removed, 1 if removed successfully
   */
 /datum/controller/subsystem/nanoui/proc/ui_closed(var/datum/nanoui/ui)
-	var/src_object_key = "\ref[ui.src_object]"
+	var/src_object_key = REF(ui.src_object)
 	if (isnull(open_uis[src_object_key]) || !istype(open_uis[src_object_key], /list))
 		return 0 // wasn't open
 	else if (isnull(open_uis[src_object_key][ui.ui_key]) || !istype(open_uis[src_object_key][ui.ui_key], /list))

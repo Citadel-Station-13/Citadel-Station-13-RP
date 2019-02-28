@@ -279,10 +279,10 @@
 		def_zone = pick("l_hand", "r_hand")
 
 	if(species.siemens_coefficient == -1)
-		if(stored_shock_by_ref["\ref[src]"])
-			stored_shock_by_ref["\ref[src]"] += shock_damage
+		if(stored_shock_by_ref[REF(src)])
+			stored_shock_by_ref[REF(src)] += shock_damage
 		else
-			stored_shock_by_ref["\ref[src]"] = shock_damage
+			stored_shock_by_ref[REF(src)] = shock_damage
 		return
 
 	var/obj/item/organ/external/affected_organ = get_organ(check_zone(def_zone))

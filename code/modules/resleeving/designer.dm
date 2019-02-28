@@ -60,7 +60,7 @@
 		var/bodyrecords_list_ui[0]
 		for(var/N in SStranscore.body_scans)
 			var/datum/transhuman/body_record/BR = SStranscore.body_scans[N]
-			bodyrecords_list_ui[++bodyrecords_list_ui.len] = list("name" = N, "recref" = "\ref[BR]")
+			bodyrecords_list_ui[++bodyrecords_list_ui.len] = list("name" = N, "recref" = REF(BR))
 		if(bodyrecords_list_ui.len)
 			data["bodyrecords"] = bodyrecords_list_ui
 

@@ -151,7 +151,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_species = null
 	new_species = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in species.get_valid_shapeshifter_forms(src)
 
-	if(!new_species || !all_species[new_species] || wrapped_species_by_ref["\ref[src]"] == new_species)
+	if(!new_species || !all_species[new_species] || wrapped_species_by_ref[REF(src)] == new_species)
 		return
 	shapeshifter_change_shape(new_species)
 
@@ -159,7 +159,7 @@ var/list/wrapped_species_by_ref = list()
 	if(!new_species)
 		return
 
-	wrapped_species_by_ref["\ref[src]"] = new_species
+	wrapped_species_by_ref[REF(src)] = new_species
 	visible_message("<span class='notice'>\The [src] shifts and contorts, taking the form of \a [new_species]!</span>")
 	regenerate_icons()
 

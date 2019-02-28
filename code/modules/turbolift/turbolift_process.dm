@@ -33,4 +33,4 @@ var/datum/controller/process/turbolift/turbolift_controller
 		SCHECK
 
 /datum/controller/process/turbolift/proc/lift_is_moving(var/datum/turbolift/lift,var/floor_delay)
-	moving_lifts["\ref[lift]"] = world.time + floor_delay
+	moving_lifts[REF(lift)] = world.time + floor_delay

@@ -152,7 +152,7 @@
 	if(!user || !user.client) return
 	var/param = "null"
 	if(ref)
-		param = "\ref[ref]"
+		param = REF(ref)
 
 	winset(user, windowid, "on-close=\".windowclose [param]\"")
 
@@ -297,7 +297,7 @@
 	if (!User)
 		return
 
-	var/output =  {"<form><input type="hidden" name="src" value="\ref[src]"><ul class="sparse">"}
+	var/output =  {"<form><input type="hidden" name="src" value=REF(src)><ul class="sparse">"}
 	if (inputtype == "checkbox" || inputtype == "radio")
 		for (var/i in values)
 			var/div_slider = slidecolor

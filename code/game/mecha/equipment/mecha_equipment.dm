@@ -45,7 +45,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/update_equip_info()
 	if(chassis)
-		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
+		send_byjax(chassis.occupant,"exosuit.browser",REF(src),get_equip_info())
 		return 1
 	return
 
@@ -212,7 +212,7 @@
 /obj/item/mecha_parts/mecha_equipment/proc/set_ready_state(state)
 	equip_ready = state
 	if(chassis)
-		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
+		send_byjax(chassis.occupant,"exosuit.browser",REF(src),src.get_equip_info())
 	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/occupant_message(message)

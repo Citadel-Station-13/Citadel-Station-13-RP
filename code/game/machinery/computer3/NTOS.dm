@@ -176,7 +176,7 @@
 	dat += "</div></body></html>"
 
 	usr << browse(dat, "window=\ref[computer];size=670x510")
-	onclose(usr, "\ref[computer]")
+	onclose(usr, REF(computer))
 
  	// STATUS BAR
  	// Small 16x16 icons representing status of components, etc.

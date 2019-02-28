@@ -610,12 +610,12 @@
 		if(!check_rights(R_DEBUG|R_FUN))
 			return
 		usr.client.cmd_admin_explosion(src)
-		href_list["datumrefresh"] = "\ref[src]"
+		href_list["datumrefresh"] = REF(src)
 	IF_VV_OPTION(VV_HK_ATOM_EMP)
 		if(!check_rights(R_DEBUG|R_FUN))
 			return
 		usr.client.cmd_admin_emp(src)
-		href_list["datumrefresh"] = "\ref[src]"
+		href_list["datumrefresh"] = REF(src)
 
 /atom/vv_get_header()
 	. = ..()

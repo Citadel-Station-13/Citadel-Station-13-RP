@@ -112,12 +112,12 @@
 	var/bodyrecords_list_ui[0]
 	for(var/N in SStranscore.body_scans)
 		var/datum/transhuman/body_record/BR = SStranscore.body_scans[N]
-		bodyrecords_list_ui[++bodyrecords_list_ui.len] = list("name" = N, "recref" = "\ref[BR]")
+		bodyrecords_list_ui[++bodyrecords_list_ui.len] = list("name" = N, "recref" = REF(BR))
 
 	var/mindrecords_list_ui[0]
 	for(var/N in SStranscore.backed_up)
 		var/datum/transhuman/mind_record/MR = SStranscore.backed_up[N]
-		mindrecords_list_ui[++mindrecords_list_ui.len] = list("name" = N, "recref" = "\ref[MR]")
+		mindrecords_list_ui[++mindrecords_list_ui.len] = list("name" = N, "recref" = REF(MR))
 
 	var/pods_list_ui[0]
 	for(var/obj/machinery/clonepod/transhuman/pod in pods)

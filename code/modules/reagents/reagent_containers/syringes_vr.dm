@@ -30,7 +30,7 @@
 
 	//We can't keep a mob reference, that's a bad idea, so instead name+ref should suffice.
 	var/name_to_use = ismob(target) ? target.real_name : target.name
-	var/hash = md5(name_to_use + "\ref[target]")
+	var/hash = md5(name_to_use + REF(target))
 
 	//Just once!
 	targets |= hash

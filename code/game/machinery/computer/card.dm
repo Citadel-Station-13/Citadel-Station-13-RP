@@ -86,7 +86,7 @@
 		data_core.get_manifest_list()
 
 	var/data[0]
-	data["src"] = "\ref[src]"
+	data["src"] = REF(src)
 	data["station_name"] = station_name()
 	data["mode"] = mode
 	data["printing"] = printing

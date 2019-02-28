@@ -152,7 +152,7 @@ Programs are a file that can be executed
 /datum/file/program/proc/interactable(var/mob/user = usr)
 	if(computer && computer.interactable(user))
 		if(!popup)
-			popup = new(user, "\ref[computer]", name, nref=src)
+			popup = new(user, REF(computer), name, nref=src)
 			popup.set_title_image(usr.browse_rsc_icon(overlay.icon, overlay.icon_state))
 			popup.set_title_buttons(topic_link(src,"quit","<img src=\ref['icons/ntos/tb_close.png']>"))
 		if(popup.user != user)

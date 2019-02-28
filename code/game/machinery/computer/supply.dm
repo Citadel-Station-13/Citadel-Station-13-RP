@@ -155,7 +155,7 @@
 					)
 			)
 
-	data["user"] = "\ref[user]"
+	data["user"] = REF(user)
 	data["currentTab"] = menu_tab // Communicator compatibility, controls which menu is in use
 	data["shuttle_auth"] = (authorization & SUP_SEND_SHUTTLE) // Whether this ui is permitted to control the supply shuttle
 	data["order_auth"] = (authorization & SUP_ACCEPT_ORDERS)   // Whether this ui is permitted to accept/deny requested orders

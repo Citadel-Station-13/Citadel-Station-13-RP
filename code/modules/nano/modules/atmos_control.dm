@@ -40,7 +40,7 @@
 			continue
 		alarms[++alarms.len] = list(
 			"name" = sanitize(alarm.name),
-			"ref"= "\ref[alarm]",
+			"ref"= REF(alarm),
 			"danger" = max(alarm.danger_level, alarm.alarm_area.atmosalm),
 			"x" = alarm.x,
 			"y" = alarm.y,

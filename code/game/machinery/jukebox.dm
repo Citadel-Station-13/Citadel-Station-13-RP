@@ -255,7 +255,7 @@
 		data["loop_mode"] = loop_mode
 		data["volume"] = volume
 		if(current_track)
-			data["current_track_ref"] = "\ref[current_track]"  // Convenient shortcut
+			data["current_track_ref"] = REF(current_track)  // Convenient shortcut
 			data["current_track"] = current_track.toNanoList()
 		data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
 

@@ -153,7 +153,7 @@
 		var/datum/turbolift_floor/floor = lift.floors[i]
 		var/label = floor.label? floor.label : "Level #[i]"
 		dat += "<font color = '[(floor in lift.queued_floors) ? COLOR_YELLOW : COLOR_WHITE]'>"
-		dat += "<a href='?src=[REF(src)];move_to_floor=["\ref[floor]"]'>[label]</a>: [floor.name]</font><br>"
+		dat += "<a href='?src=[REF(src)];move_to_floor=[REF(floor)]'>[label]</a>: [floor.name]</font><br>"
 
 	dat += "<hr>"
 	if(lift.doors_are_open())

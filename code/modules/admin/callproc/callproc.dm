@@ -105,7 +105,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			UNTIL(!GLOB.AdminProcCaller)
 	GLOB.LastAdminCalledProc = procname
 	if(target != GLOBAL_PROC)
-		GLOB.LastAdminCalledTargetRef = "\ref[target]"
+		GLOB.LastAdminCalledTargetRef = REF(target)
 	GLOB.AdminProcCaller = ckey	//if this runtimes, too bad for you
 	++GLOB.AdminProcCallCount
 	. = world.WrapAdminProcCall(target, procname, arguments)

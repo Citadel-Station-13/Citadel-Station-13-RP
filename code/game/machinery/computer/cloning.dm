@@ -348,13 +348,13 @@
 	if (isnull(imp))
 		imp = new /obj/item/weapon/implant/health(subject)
 		imp.implanted = subject
-		R.implant = "\ref[imp]"
+		R.implant = REF(imp)
 	//Update it if needed
 	else
-		R.implant = "\ref[imp]"
+		R.implant = REF(imp)
 
 	if (!isnull(subject.mind)) //Save that mind so traitors can continue traitoring after cloning.
-		R.mind = "\ref[subject.mind]"
+		R.mind = REF(subject.mind)
 
 	records += R
 	scantemp = "Subject successfully scanned."

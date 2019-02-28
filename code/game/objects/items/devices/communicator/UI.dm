@@ -29,7 +29,7 @@
 	//Lists all the other communicators that we invited.
 	for(var/obj/item/device/communicator/comm in voice_invites)
 		if(comm.exonet)
-			invites[++invites.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = "\ref[comm]")
+			invites[++invites.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = REF(comm))
 
 	//Ghosts we invited.
 	for(var/mob/observer/dead/O in voice_invites)
@@ -39,7 +39,7 @@
 	//Communicators that want to talk to us.
 	for(var/obj/item/device/communicator/comm in voice_requests)
 		if(comm.exonet)
-			requests[++requests.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = "\ref[comm]")
+			requests[++requests.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = REF(comm))
 
 	//Ghosts that want to talk to us.
 	for(var/mob/observer/dead/O in voice_requests)
@@ -52,16 +52,16 @@
 
 	//Finally, all the communicators linked to this one.
 	for(var/obj/item/device/communicator/comm in communicating)
-		connected_communicators[++connected_communicators.len] = list("name" = sanitize(comm.name), "true_name" = sanitize(comm.name), "ref" = "\ref[comm]")
+		connected_communicators[++connected_communicators.len] = list("name" = sanitize(comm.name), "true_name" = sanitize(comm.name), "ref" = REF(comm))
 
 	//Devices that have been messaged or recieved messages from.
 	for(var/obj/item/device/communicator/comm in im_contacts)
 		if(comm.exonet)
-			im_contacts_ui[++im_contacts_ui.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = "\ref[comm]")
+			im_contacts_ui[++im_contacts_ui.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = REF(comm))
 
 	for(var/mob/observer/dead/ghost in im_contacts)
 		if(ghost.exonet)
-			im_contacts_ui[++im_contacts_ui.len] = list("name" = sanitize(ghost.name), "address" = ghost.exonet.address, "ref" = "\ref[ghost]")
+			im_contacts_ui[++im_contacts_ui.len] = list("name" = sanitize(ghost.name), "address" = ghost.exonet.address, "ref" = REF(ghost))
 
 	//Actual messages.
 	for(var/I in im_list)
@@ -88,7 +88,7 @@
 	for(var/list/R in modules)
 		modules_ui[++modules_ui.len] = R
 
-	data["user"] = "\ref[user]"	// For receiving input() via topic, because input(usr,...) wasn't working on cartridges
+	data["user"] = REF(user)	// For receiving input() via topic, because input(usr,...) wasn't working on cartridges
 	data["owner"] = owner ? owner : "Unset"
 	data["occupation"] = occupation ? occupation : "Swipe ID to set."
 	data["connectionStatus"] = get_connection_to_tcomms()
@@ -102,7 +102,7 @@
 	data["requestsReceived"] = requests
 	data["voice_mobs"] = voices
 	data["communicating"] = connected_communicators
-	data["video_comm"] = video_source ? "\ref[video_source.loc]" : null
+	data["video_comm"] = video_source ? REF(video_source.loc) : null
 	data["imContacts"] = im_contacts_ui
 	data["imList"] = im_list_ui
 	data["time"] = stationtime2text()

@@ -353,7 +353,7 @@ nanoui is used to open and update nano browser uis
 	var/initial_data_json = replacetext(replacetext(json_encode(send_data), "&#34;", "&amp;#34;"), "'", "&#39;")
 	initial_data_json = strip_improper(initial_data_json);
 
-	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
+	var/url_parameters_json = json_encode(list("src" = REF(src)))
 
 	return {"
 <!DOCTYPE html>
@@ -450,7 +450,7 @@ nanoui is used to open and update nano browser uis
 /datum/nanoui/proc/on_close_winset()
 	if(!user.client)
 		return
-	var/params = "\ref[src]"
+	var/params = REF(src)
 
 	winset(user, window_id, "on-close=\"nanoclose [params]\"")
 
