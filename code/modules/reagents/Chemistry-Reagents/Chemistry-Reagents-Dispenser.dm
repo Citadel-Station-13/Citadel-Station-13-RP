@@ -96,7 +96,11 @@
 		strength_mod = 0
 	if(alien == IS_SLIME)
 		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
-	
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			M << "<span class='danger'>You feel your leaves start to wilt.</span>"
+		strength_mod *=5 //cit change - alcohol ain't good for plants
+
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
 
@@ -281,6 +285,12 @@
 	reagent_state = SOLID
 	color = "#832828"
 
+/datum/reagent/phosphorus/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
+
 /datum/reagent/potassium
 	name = "Potassium"
 	id = "potassium"
@@ -458,6 +468,12 @@
 		else
 			M.sleeping = max(M.sleeping, 20)
 			M.drowsyness = max(M.drowsyness, 60)
+
+	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants
+		if(effective_dose < 2)
+			if(prob(5))
+				M << "<span class='danger'>You feel an imbalance of energy.</span>"
+			M.make_jittery(4)
 
 /datum/reagent/sulfur
 	name = "Sulfur"

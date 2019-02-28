@@ -45,3 +45,12 @@
 
 /obj/item/clothing/gloves/ring/material/glass/New(var/newloc)
 	..(newloc, "glass")
+
+/obj/item/clothing/gloves/ring/material/uranium/New(var/newloc)
+	..(newloc, "uranium")
+
+/obj/item/clothing/gloves/ring/material/osmium/New(var/newloc)
+	..(newloc, "osmium")
+
+/obj/item/clothing/gloves/ring/material/mhydrogen/New(var/newloc)
+	..(newloc, "mhydrogen")

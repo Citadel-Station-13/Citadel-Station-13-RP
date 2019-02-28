@@ -18099,6 +18099,7 @@
 	name = "Atmospherics";
 	req_access = list(24)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "aIg" = (
@@ -18823,6 +18824,8 @@
 /obj/item/weapon/towel/random,
 /obj/item/weapon/towel/random,
 /obj/item/weapon/towel/random,
+/obj/item/weapon/towel/random,
+/obj/item/weapon/towel/random,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
 "aJI" = (
@@ -19346,16 +19349,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aKT" = (
-/obj/machinery/button/remote/blast_door{
-	id = "maintbar";
-	name = "Bar Sign";
-	pixel_x = -22;
-	pixel_y = 0;
-	pixel_z = 0
-	},
 /obj/structure/table/steel,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
+/obj/machinery/button/holosign{
+	id = "maintbar";
+	pixel_x = -24
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "aKU" = (
@@ -22436,6 +22436,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
+"aVw" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2_sensor"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/engineering/atmos)
 "aVD" = (
 /obj/machinery/door/airlock/maintenance/common{
 	name = "Solars Maintenance Access"
@@ -27094,6 +27101,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/hallway)
+"bCV" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "co2_sensor"
+	},
+/turf/simulated/floor/reinforced/carbon_dioxide,
+/area/engineering/atmos)
 "bDU" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -27266,6 +27280,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"bGI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/beach_ball/holoball,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
 "bHm" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -30935,8 +30954,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "chF" = (
-/obj/item/weapon/bedsheet/double,
 /obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/reddouble,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "chG" = (
@@ -30994,6 +31013,7 @@
 	icon_state = "bordercolor";
 	dir = 8
 	},
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
 "chP" = (
@@ -31147,8 +31167,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "cit" = (
-/obj/item/weapon/bedsheet/double,
 /obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/yellowdouble,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
 "ciu" = (
@@ -31357,8 +31377,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "cjg" = (
-/obj/item/weapon/bedsheet/double,
 /obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/bluedouble,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "cjh" = (
@@ -31521,7 +31541,6 @@
 	dir = 6
 	},
 /obj/structure/closet/crate,
-/obj/item/weapon/bedsheet/green,
 /obj/machinery/alarm{
 	breach_detection = 0;
 	dir = 8;
@@ -31608,8 +31627,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "cjR" = (
-/obj/item/weapon/bedsheet/double,
 /obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/purpledouble,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "cjS" = (
@@ -31794,6 +31813,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
+"dyb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/bone/skull/unathi,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
 "dAk" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -32116,6 +32140,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+"giX" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2o_sensor"
+	},
+/turf/simulated/floor/reinforced/n20,
+/area/engineering/atmos)
 "gph" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -32192,6 +32223,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/mining_main/airlock)
+"gSM" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "o2_sensor"
+	},
+/turf/simulated/floor/reinforced/oxygen,
+/area/engineering/atmos)
 "gUy" = (
 /obj/structure/railing{
 	dir = 4
@@ -32274,9 +32312,8 @@
 "hND" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	icon_state = "intact";
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/visible/green{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -32427,6 +32464,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)
+"kdW" = (
+/obj/machinery/air_sensor{
+	frequency = 1443;
+	id_tag = "air_sensor";
+	output = 7
+	},
+/turf/simulated/floor/reinforced/airmix,
+/area/engineering/atmos)
 "kuC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -33132,6 +33177,13 @@
 	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
+"sFC" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "tox_sensor"
+	},
+/turf/simulated/floor/reinforced/phoron,
+/area/engineering/atmos)
 "sJs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -33330,6 +33382,13 @@
 /obj/effect/floor_decal/techfloor/hole/right,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"tXM" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/red{
+	icon_state = "map";
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "ugx" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8
@@ -33416,6 +33475,11 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"vAe" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/grey/border,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/visitor_laundry)
 "vCB" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -43657,7 +43721,7 @@ arM
 asQ
 atz
 auC
-avx
+tXM
 avx
 avx
 eNe
@@ -43799,7 +43863,7 @@ arR
 aqT
 atv
 auD
-aqT
+auT
 aqT
 aqT
 aqT
@@ -43813,7 +43877,7 @@ auT
 aGy
 aFf
 awR
-aIj
+bCV
 whR
 anv
 aah
@@ -44381,7 +44445,7 @@ aqT
 aGI
 beR
 awR
-ing
+sFC
 hyK
 anv
 aIk
@@ -44949,7 +45013,7 @@ aqT
 aGU
 hjD
 awR
-vhj
+giX
 iWU
 anv
 aJl
@@ -46351,19 +46415,19 @@ aEU
 anM
 amr
 aEU
-anh
-anh
+ani
+bGI
 anv
 jrz
-qIr
+kdW
 ayj
 anv
 sMO
-wnu
+gSM
 aBX
 anv
 ejt
-kXh
+aVw
 rNs
 anv
 anv
@@ -46494,7 +46558,7 @@ aEU
 aqh
 aEU
 anh
-anh
+dyb
 anv
 qIr
 awS
@@ -48648,7 +48712,7 @@ cgB
 chm
 cfv
 cfv
-cjo
+vAe
 azI
 azI
 aMd
