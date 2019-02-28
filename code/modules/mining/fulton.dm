@@ -189,3 +189,8 @@ var/global/list/total_extraction_beacons = list()
 
 /obj/effect/extraction_holder/singularity_pull()
 	return
+
+/obj/item/extraction_pack/wormhole
+	name = "wormhole fulton extraction pack"
+	desc = "A balloon with integrated wormhole technology that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
+	var/can_use_indoors = TRUE
