@@ -37,7 +37,7 @@
 		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/weapon/gun/energy/kinetic_accelerator,					900),
 		new /datum/data/mining_equipment("Resonator",					/obj/item/resonator,												900),
 		new /datum/data/mining_equipment("Fulton Pack",					/obj/item/extraction_pack,											1200),
-		new /datum/data/mining_equipment("Wormhole Fulton Pack",					/obj/item/extraction_pack/wormhole,											1200),
+		new /datum/data/mining_equipment("Wormhole Fulton Pack",					/obj/item/extraction_pack/wormhole,											1750),
 		new /datum/data/mining_equipment("Silver Pickaxe",				/obj/item/weapon/pickaxe/silver,									1200),
 		//new /datum/data/mining_equipment("Mining Conscription Kit",	/obj/item/storage/backpack/duffelbag/mining_conscript,				1000),
 		new /datum/data/mining_equipment("Space Cash",					/obj/item/weapon/spacecash/c1000,									2000), //CITADEL EDIT - reverts space cash nerf
