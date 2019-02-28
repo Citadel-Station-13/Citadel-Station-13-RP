@@ -3,13 +3,13 @@
 	var/dat = "<tr><td><b>[role_text]:</b>"
 	var/extra = get_extra_panel_options(player)
 	if(is_antagonist(player))
-		dat += "<a href='?src=\ref[player];remove_antagonist=[id]'>\[-\]</a>"
-		dat += "<a href='?src=\ref[player];equip_antagonist=[id]'>\[equip\]</a>"
+		dat += "<a href='?src=[REF(player)];remove_antagonist=[id]'>\[-\]</a>"
+		dat += "<a href='?src=[REF(player)];equip_antagonist=[id]'>\[equip\]</a>"
 		if(starting_locations && starting_locations.len)
-			dat += "<a href='?src=\ref[player];move_antag_to_spawn=[id]'>\[move to spawn\]</a>"
+			dat += "<a href='?src=[REF(player)];move_antag_to_spawn=[id]'>\[move to spawn\]</a>"
 		if(extra) dat += "[extra]"
 	else
-		dat += "<a href='?src=\ref[player];add_antagonist=[id]'>\[+\]</a>"
+		dat += "<a href='?src=[REF(player)];add_antagonist=[id]'>\[+\]</a>"
 	dat += "</td></tr>"
 
 	return dat
@@ -31,7 +31,7 @@
 			if(!M.client)      dat += " <i>(logged out)</i>"
 			if(M.stat == DEAD) dat += " <b><font color=red>(DEAD)</font></b>"
 			dat += "</td>"
-			dat += "<td>\[<A HREF='?src=\ref[caller];adminplayeropts=[REF(M)]'>PP</A>]\[<A href='?src=\ref[caller];priv_msg=[REF(M)]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=[REF(M)]'>TP</A>\]</td>"
+			dat += "<td>\[<A HREF='?src=[REF(caller)];adminplayeropts=[REF(M)]'>PP</A>]\[<A href='?src=[REF(caller)];priv_msg=[REF(M)]'>PM</A>\]\[<A href='?src=[REF(caller)];traitor=[REF(M)]'>TP</A>\]</td>"
 		else
 			dat += "<td>[player.key] <i>Mob not found!</i></td>"
 		dat += "</tr>"
@@ -45,7 +45,7 @@
 			while(!istype(disk_loc, /turf))
 				if(istype(disk_loc, /mob))
 					var/mob/M = disk_loc
-					dat += "carried by <a href='?src=\ref[caller];adminplayeropts=[REF(M)]'>[M.real_name]</a> "
+					dat += "carried by <a href='?src=[REF(caller)];adminplayeropts=[REF(M)]'>[M.real_name]</a> "
 				if(istype(disk_loc, /obj))
 					var/obj/O = disk_loc
 					dat += "in \a [O.name] "
