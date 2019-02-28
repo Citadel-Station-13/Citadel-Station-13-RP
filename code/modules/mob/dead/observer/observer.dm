@@ -729,15 +729,15 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 
 /mob/extra_ghost_link(var/atom/ghost)
 	if(client && eyeobj)
-		return "|<a href='byond://?src=\ref[ghost];track=\ref[eyeobj]'>eye</a>"
+		return "|<a href='byond://?src=[REF(ghost)];track=[REF(eyeobj)]'>eye</a>"
 
 /mob/observer/dead/extra_ghost_link(var/atom/ghost)
 	if(mind && mind.current)
-		return "|<a href='byond://?src=\ref[ghost];track=\ref[mind.current]'>body</a>"
+		return "|<a href='byond://?src=[REF(ghost)];track=[REF(mind.current)]'>body</a>"
 
 /proc/ghost_follow_link(var/atom/target, var/atom/ghost)
 	if((!target) || (!ghost)) return
-	. = "<a href='byond://?src=\ref[ghost];track=\ref[target]'>follow</a>"
+	. = "<a href='byond://?src=[REF(ghost)];track=[REF(target)]'>follow</a>"
 	. += target.extra_ghost_link(ghost)
 
 //Culted Ghosts

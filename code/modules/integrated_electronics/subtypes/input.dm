@@ -443,7 +443,7 @@
 /obj/item/integrated_circuit/input/EPv2/New()
 	..()
 	exonet = new(src)
-	exonet.make_address("EPv2_circuit-\ref[src]")
+	exonet.make_address("EPv2_circuit-[REF(src)]")
 	desc += "<br>This circuit's EPv2 address is: [exonet.address]"
 
 /obj/item/integrated_circuit/input/EPv2/Destroy()

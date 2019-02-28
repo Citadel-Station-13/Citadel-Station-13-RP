@@ -76,7 +76,7 @@
 	if(.) return 1
 
 	if(href_list["info"])
-		usr << browse(info, "window=info_\ref[src]")
+		usr << browse(info, "window=info_[REF(src)]")
 		return 1
 
 /obj/item/weapon/ruinedvirusdish

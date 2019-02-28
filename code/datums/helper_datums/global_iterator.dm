@@ -110,7 +110,7 @@ Data storage vars:
 		while(state)
 			sleep(1)
 			if(++lag>10)
-				CRASH("The global_iterator loop \ref[src] failed to terminate in designated timeframe. This may be caused by server lagging.")
+				CRASH("The global_iterator loop [REF(src)] failed to terminate in designated timeframe. This may be caused by server lagging.")
 		return 1
 
 	proc/active()
@@ -140,7 +140,7 @@ Data storage vars:
 			arg_list = arguments
 			return 1
 		else
-//			world << "<span class='danger'>Invalid arguments supplied for [src.type], ref = \ref[src]</span>"
+//			world << "<span class='danger'>Invalid arguments supplied for [src.type], ref = [REF(src)]</span>"
 			return 0
 
 	proc/toggle_null_checks()

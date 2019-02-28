@@ -24,7 +24,7 @@
 		if(u_attack == default_attack)
 			dat += "<b>Primarily [u_attack.attack_name]</b> - default - <a href='byond://?src=[REF(src)];default_attk=reset_attk'>reset</a><br/><br/><br/>"
 		else
-			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=[REF(src)];default_attk=\ref[u_attack]'>set default</a><br/><br/><br/>"
+			dat += "<b>Primarily [u_attack.attack_name]</b> - <a href='byond://?src=[REF(src)];default_attk=[REF(u_attack)]'>set default</a><br/><br/><br/>"
 
 	src << browse(dat, "window=checkattack")
 

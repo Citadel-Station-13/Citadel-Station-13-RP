@@ -37,7 +37,7 @@
 				if(machinelist.len)
 					dat += "<br>Detected Network Entities:<ul>"
 					for(var/obj/machinery/telecomms/T in machinelist)
-						dat += "<li><a href='?src=[REF(src)];viewmachine=[T.id]'>\ref[T] [T.name]</a> ([T.id])</li>"
+						dat += "<li><a href='?src=[REF(src)];viewmachine=[T.id]'>[REF(T)] [T.name]</a> ([T.id])</li>"
 					dat += "</ul>"
 					dat += "<br><a href='?src=[REF(src)];operation=release'>\[Flush Buffer\]</a>"
 				else
@@ -54,7 +54,7 @@
 				dat += "Linked Entities: <ol>"
 				for(var/obj/machinery/telecomms/T in SelectedMachine.links)
 					if(!T.hide)
-						dat += "<li><a href='?src=[REF(src)];viewmachine=[T.id]'>\ref[T.id] [T.name]</a> ([T.id])</li>"
+						dat += "<li><a href='?src=[REF(src)];viewmachine=[T.id]'>[REF(T.id)] [T.name]</a> ([T.id])</li>"
 				dat += "</ol>"
 
 

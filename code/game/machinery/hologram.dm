@@ -61,7 +61,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in living_mob_list)
 				if(!AI.client)	continue
-				AI << "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>"
+				AI << "<span class='info'>Your presence is requested at <a href='?src=[REF(AI)];jumptoholopad=[REF(src)]'>\the [area]</a>.</span>"
 		else
 			user << "<span class='notice'>A request for AI presence was already sent recently.</span>"
 

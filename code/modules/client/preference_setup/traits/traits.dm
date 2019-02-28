@@ -86,7 +86,7 @@ var/list/trait_categories = list() // The categories available for the trait men
 //		if(ticked)
 //			. += "<tr><td colspan=3>"
 //			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
-//				. += " <a href='?src=[REF(src)];gear=[G.display_name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
+//				. += " <a href='?src=[REF(src)];gear=[G.display_name];tweak=[REF(tweak)]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 //			. += "</td></tr>"
 	. += "</table>"
 	. = jointext(., null)

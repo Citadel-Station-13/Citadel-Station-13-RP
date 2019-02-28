@@ -234,7 +234,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			<A href='?src=[REF(src)];arccheckout=1'>Yes.</A><BR>
 			<A href='?src=[REF(src)];switchscreen=0'>No.</A><BR>"}
 
-	//dat += "<A HREF='?src=\ref[user];mach_close=library'>Close</A><br><br>"
+	//dat += "<A HREF='?src=[REF(user)];mach_close=library'>Close</A><br><br>"
 	user << browse(dat, "window=library")
 	onclose(user, "library")
 
@@ -388,7 +388,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		var/orderid = input("Enter your order:") as num|null
 		if(orderid)
 			if(isnum(orderid))
-				var/nhref = "src=\ref[src];targetid=[orderid]"
+				var/nhref = "src=[REF(src)];targetid=[orderid]"
 				spawn() src.Topic(nhref, params2list(nhref), src)
 	if(href_list["sort"] in list("author", "title", "category"))
 		sortby = href_list["sort"]

@@ -79,7 +79,7 @@
 					body += "<a href='?src=[REF(src)];notes=show;mob="+ref+"'>N</a> - "
 					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
 					body += "<a href='?src=[REF(src)];traitor="+ref+"'>TP</a> - "
-					body += "<a href='?src=\ref[usr];priv_msg=\ref"+ref+"'>PM</a> - "
+					body += "<a href='?src=[REF(usr)];priv_msg=\ref"+ref+"'>PM</a> - "
 					body += "<a href='?src=[REF(src)];subtlemessage="+ref+"'>SM</a> - "
 					body += "<a href='?src=[REF(src)];adminplayerobservejump="+ref+"'>JMP</a><br>"
 					if(antagonist > 0)
@@ -360,7 +360,7 @@
 
 		dat += {"<td>[M.key ? (M.client ? M.key : "[M.key] (DC)") : "No key"]</td>
 		<td align=center><A HREF='?src=[REF(src)];adminplayeropts=[REF(M)]'>X</A></td>
-		<td align=center><A href='?src=\ref[usr];priv_msg=[REF(M)]'>PM</A></td>
+		<td align=center><A href='?src=[REF(usr)];priv_msg=[REF(M)]'>PM</A></td>
 		"}
 
 		if(usr.client)

@@ -81,13 +81,13 @@
 						//That's an absorbed person you're checking
 						if(M.absorbed)
 							if(user.absorbed)
-								dat += "<a href='?src=[REF(src)];outsidepick=[REF(O)];outsidebelly=\ref[inside_belly]'><span style='color:purple;'>[O]</span></a>"
+								dat += "<a href='?src=[REF(src)];outsidepick=[REF(O)];outsidebelly=[REF(inside_belly)]'><span style='color:purple;'>[O]</span></a>"
 								continue
 							else
 								continue
 
 					//Anything else
-					dat += "<a href='?src=[REF(src)];outsidepick=[REF(O)];outsidebelly=\ref[inside_belly]'>[O]&#8203;</a>"
+					dat += "<a href='?src=[REF(src)];outsidepick=[REF(O)];outsidebelly=[REF(inside_belly)]'>[O]&#8203;</a>"
 
 					//Zero-width space, for wrapping
 					dat += "&#8203;"
@@ -186,16 +186,16 @@
 			dat += "<HR>"
 
 		//Belly Name Button
-		dat += "<a href='?src=[REF(src)];b_name=\ref[selected]'>Name:</a>"
+		dat += "<a href='?src=[REF(src)];b_name=[REF(selected)]'>Name:</a>"
 		dat += " '[selected.name]'"
 
 		//Digest Mode Button
-		dat += "<br><a href='?src=[REF(src)];b_mode=\ref[selected]'>Belly Mode:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_mode=[REF(selected)]'>Belly Mode:</a>"
 		var/mode = selected.digest_mode
 		dat += " [mode == DM_TRANSFORM ? selected.tf_mode : mode]"
 
 		//Mode addons button
-		dat += "<br><a href='?src=[REF(src)];b_addons=\ref[selected]'>Mode Addons:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_addons=[REF(selected)]'>Mode Addons:</a>"
 		var/list/flag_list = list()
 		for(var/flag_name in selected.mode_flag_list)
 			if(selected.mode_flags & selected.mode_flag_list[flag_name])
@@ -205,77 +205,77 @@
 		else
 			dat += " None"
 		if(selected.mode_flags & DM_FLAG_ITEMWEAK)
-			dat += "<br><a href='?src=[REF(src)];b_cont_flavor=\ref[selected]'>Contamination Mode:</a>"
+			dat += "<br><a href='?src=[REF(src)];b_cont_flavor=[REF(selected)]'>Contamination Mode:</a>"
 			dat += "[selected.cont_flavor]"
 
 		//Belly verb
-		dat += "<br><a href='?src=[REF(src)];b_verb=\ref[selected]'>Vore Verb:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_verb=[REF(selected)]'>Vore Verb:</a>"
 		dat += " '[selected.vore_verb]'"
 
 		//Inside flavortext
-		dat += "<br><a href='?src=[REF(src)];b_desc=\ref[selected]'>Flavor Text:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_desc=[REF(selected)]'>Flavor Text:</a>"
 		dat += " '[selected.desc]'"
 
 		//Belly sound
-		dat += "<br><a href='?src=[REF(src)];b_sound=\ref[selected]'>Set Vore Sound</a>"
-		dat += "<a href='?src=[REF(src)];b_soundtest=\ref[selected]'>Test</a>"
+		dat += "<br><a href='?src=[REF(src)];b_sound=[REF(selected)]'>Set Vore Sound</a>"
+		dat += "<a href='?src=[REF(src)];b_soundtest=[REF(selected)]'>Test</a>"
 
 		//Belly messages
-		dat += "<br><a href='?src=[REF(src)];b_msgs=\ref[selected]'>Belly Messages</a>"
+		dat += "<br><a href='?src=[REF(src)];b_msgs=[REF(selected)]'>Belly Messages</a>"
 
 		//Can belly taste?
-		dat += "<br><a href='?src=[REF(src)];b_tastes=\ref[selected]'>Can Taste:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_tastes=[REF(selected)]'>Can Taste:</a>"
 		dat += " [selected.can_taste ? "Yes" : "No"]"
 
 		//How much brute damage
-		dat += "<br><a href='?src=[REF(src)];b_brute_dmg=\ref[selected]'>Digest Brute Damage:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_brute_dmg=[REF(selected)]'>Digest Brute Damage:</a>"
 		dat += " [selected.digest_brute]"
 
 		//How much burn damage
-		dat += "<br><a href='?src=[REF(src)];b_burn_dmg=\ref[selected]'>Digest Burn Damage:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_burn_dmg=[REF(selected)]'>Digest Burn Damage:</a>"
 		dat += " [selected.digest_burn]"
 
 		//Minimum size prey must be to show up.
-		dat += "<br><a href='?src=[REF(src)];b_bulge_size=\ref[selected]'>Required examine size:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_bulge_size=[REF(selected)]'>Required examine size:</a>"
 		dat += " [selected.bulge_size*100]%"
 
 		//Size that prey will be grown/shrunk to.
-		dat += "<br><a href='?src=[REF(src)];b_grow_shrink=\ref[selected]'>Shrink/Grow size:</a>"
+		dat += "<br><a href='?src=[REF(src)];b_grow_shrink=[REF(selected)]'>Shrink/Grow size:</a>"
 		dat += "[selected.shrink_grow_size*100]%"
 
 		//Belly escapability
-		dat += "<br><a href='?src=[REF(src)];b_escapable=\ref[selected]'>Belly Interactions ([selected.escapable ? "On" : "Off"])</a>"
+		dat += "<br><a href='?src=[REF(src)];b_escapable=[REF(selected)]'>Belly Interactions ([selected.escapable ? "On" : "Off"])</a>"
 		if(selected.escapable)
-			dat += "<a href='?src=[REF(src)];show_int=\ref[selected]'>[show_interacts ? "Hide" : "Show"]</a>"
+			dat += "<a href='?src=[REF(src)];show_int=[REF(selected)]'>[show_interacts ? "Hide" : "Show"]</a>"
 
 		if(show_interacts && selected.escapable)
 			dat += "<HR>"
-			dat += "Interaction Settings <a href='?src=[REF(src)];int_help=\ref[selected]'>?</a>"
-			dat += "<br><a href='?src=[REF(src)];b_escapechance=\ref[selected]'>Set Belly Escape Chance</a>"
+			dat += "Interaction Settings <a href='?src=[REF(src)];int_help=[REF(selected)]'>?</a>"
+			dat += "<br><a href='?src=[REF(src)];b_escapechance=[REF(selected)]'>Set Belly Escape Chance</a>"
 			dat += " [selected.escapechance]%"
 
-			dat += "<br><a href='?src=[REF(src)];b_escapetime=\ref[selected]'>Set Belly Escape Time</a>"
+			dat += "<br><a href='?src=[REF(src)];b_escapetime=[REF(selected)]'>Set Belly Escape Time</a>"
 			dat += " [selected.escapetime/10]s"
 
 			//Special <br> here to add a gap
 			dat += "<br style='line-height:5px;'>"
-			dat += "<br><a href='?src=[REF(src)];b_transferchance=\ref[selected]'>Set Belly Transfer Chance</a>"
+			dat += "<br><a href='?src=[REF(src)];b_transferchance=[REF(selected)]'>Set Belly Transfer Chance</a>"
 			dat += " [selected.transferchance]%"
 
-			dat += "<br><a href='?src=[REF(src)];b_transferlocation=\ref[selected]'>Set Belly Transfer Location</a>"
+			dat += "<br><a href='?src=[REF(src)];b_transferlocation=[REF(selected)]'>Set Belly Transfer Location</a>"
 			dat += " [selected.transferlocation ? selected.transferlocation : "Disabled"]"
 
 			//Special <br> here to add a gap
 			dat += "<br style='line-height:5px;'>"
-			dat += "<br><a href='?src=[REF(src)];b_absorbchance=\ref[selected]'>Set Belly Absorb Chance</a>"
+			dat += "<br><a href='?src=[REF(src)];b_absorbchance=[REF(selected)]'>Set Belly Absorb Chance</a>"
 			dat += " [selected.absorbchance]%"
 
-			dat += "<br><a href='?src=[REF(src)];b_digestchance=\ref[selected]'>Set Belly Digest Chance</a>"
+			dat += "<br><a href='?src=[REF(src)];b_digestchance=[REF(selected)]'>Set Belly Digest Chance</a>"
 			dat += " [selected.digestchance]%"
 			dat += "<HR>"
 
 		//Delete button
-		dat += "<br><a style='background:#990000;' href='?src=[REF(src)];b_del=\ref[selected]'>Delete Belly</a>"
+		dat += "<br><a style='background:#990000;' href='?src=[REF(src)];b_del=[REF(selected)]'>Delete Belly</a>"
 
 	dat += "<HR>"
 

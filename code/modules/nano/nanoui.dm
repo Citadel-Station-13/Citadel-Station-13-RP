@@ -75,7 +75,7 @@ nanoui is used to open and update nano browser uis
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
-	window_id = "[ui_key]\ref[src_object]"
+	window_id = "[ui_key][REF(src_object)]"
 
 	src.master_ui = master_ui
 	if(master_ui)

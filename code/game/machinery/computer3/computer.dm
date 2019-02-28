@@ -200,7 +200,7 @@
 
 /obj/machinery/computer3/proc/Reset(var/error = 0)
 	for(var/mob/living/M in range(1))
-		M << browse(null,"window=\ref[src]")
+		M << browse(null,"window=[REF(src)]")
 	if(program)
 		program.Reset()
 		program		= null

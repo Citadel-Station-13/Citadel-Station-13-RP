@@ -57,14 +57,14 @@
 		var/datum/lore/codex/checked = current_page
 		output = "<b>[checked.name]</b>"
 		while(checked.parent)
-			output = "<a href='?src=[REF(src)];target=\ref[checked.parent]'>[checked.parent.name]</a> \> [output]"
+			output = "<a href='?src=[REF(src)];target=[REF(checked.parent)]'>[checked.parent.name]</a> \> [output]"
 			checked = checked.parent
 		return output
 
 /datum/codex_tree/proc/make_search_bar()
 	var/html = {"
 	<form id="submitForm" action="?">
-	<input type = 'hidden' name = 'src' value = '\ref[src]'>
+	<input type = 'hidden' name = 'src' value = '[REF(src)]'>
 	<input type = 'hidden' name = 'action' value='search'>
 	<label for = 'search_query'>Page Search: </label>
 	<input type = 'text' name = 'search_query' id = 'search_query'>
@@ -99,7 +99,7 @@
 		dat += "<div class='button-group'>"
 		var/datum/lore/codex/category/C = current_page
 		for(var/datum/lore/codex/child in C.children)
-			dat += "<a href='?src=[REF(src)];target=\ref[child]' class='button'>[child.name]</a>"
+			dat += "<a href='?src=[REF(src)];target=[REF(child)]' class='button'>[child.name]</a>"
 		dat += "</div>"
 	dat += "<hr>"
 	if(history.len - 1)

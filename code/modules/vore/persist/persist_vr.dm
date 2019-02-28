@@ -94,7 +94,7 @@
 		prefs.spawnpoint = initial(new_spawn_point_type.display_name)
 	if(ishuman(occupant) && occupant.stat != DEAD)
 		var/mob/living/carbon/human/H = occupant
-		testing("Persist (PID): Saving stuff from [H] to [prefs] (\ref[prefs]).")
+		testing("Persist (PID): Saving stuff from [H] to [prefs] ([REF(prefs)]).")
 		if(prefs.persistence_settings & PERSIST_ORGANS)
 			apply_organs_to_prefs(H, prefs)
 		if(prefs.persistence_settings & PERSIST_MARKINGS)

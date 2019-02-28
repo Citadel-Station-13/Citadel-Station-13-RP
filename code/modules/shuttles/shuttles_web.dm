@@ -231,7 +231,7 @@
 			dat += "<br><b><A href='?src=[REF(src)];toggle_cloak=[1]'>Toggle cloaking field</A></b><br>"
 
 		for(var/datum/shuttle_route/route in WS.current_destination.routes)
-			dat += "<b><a href='?src=[REF(src)];traverse=\ref[route]'>[route.display_route(WS.current_destination)]</a></b><br>"
+			dat += "<b><a href='?src=[REF(src)];traverse=[REF(route)]'>[route.display_route(WS.current_destination)]</a></b><br>"
 
 
 	//Docking

@@ -278,7 +278,7 @@ Proc for attack log creation, because really why not
 	return humans
 
 /proc/cached_character_icon(var/mob/desired)
-	var/cachekey = "\ref[desired][desired.real_name]"
+	var/cachekey = "[REF(desired)][desired.real_name]"
 
 	if(cached_character_icons[cachekey])
 		. = cached_character_icons[cachekey]

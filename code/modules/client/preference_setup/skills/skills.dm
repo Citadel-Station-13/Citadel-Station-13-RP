@@ -51,13 +51,13 @@
 /datum/category_item/player_setup_item/proc/skill_to_button(var/skill, var/level_name, var/current_level, var/selection_level)
 	if(current_level == selection_level)
 		return "<th><span class='linkOn'>[level_name]</span></th>"
-	return "<th><a href='?src=[REF(src)];setskill=\ref[skill];newvalue=[selection_level]'>[level_name]</a></th>"
+	return "<th><a href='?src=[REF(src)];setskill=[REF(skill)];newvalue=[selection_level]'>[level_name]</a></th>"
 
 /datum/category_item/player_setup_item/skills/OnTopic(href, href_list, user)
 	if(href_list["skillinfo"])
 		var/datum/skill/S = locate(href_list["skillinfo"])
 		var/HTML = "<b>[S.name]</b><br>[S.desc]"
-		user << browse(HTML, "window=\ref[user]skillinfo")
+		user << browse(HTML, "window=[REF(user)]skillinfo")
 		return TOPIC_HANDLED
 
 	else if(href_list["setskill"])

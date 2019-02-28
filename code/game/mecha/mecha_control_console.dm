@@ -23,8 +23,8 @@
 				var/answer = TR.get_mecha_info()
 				if(answer)
 					dat += {"<hr>[answer]<br/>
-							  <a href='?src=[REF(src)];send_message=\ref[TR]'>Send message</a><br/>
-							  <a href='?src=[REF(src)];get_log=\ref[TR]'>Show exosuit log</a> | <a style='color: #f00;' href='?src=[REF(src)];shock=\ref[TR]'>(EMP pulse)</a><br>"}
+							  <a href='?src=[REF(src)];send_message=[REF(TR)]'>Send message</a><br/>
+							  <a href='?src=[REF(src)];get_log=[REF(TR)]'>Show exosuit log</a> | <a style='color: #f00;' href='?src=[REF(src)];shock=[REF(TR)]'>(EMP pulse)</a><br>"}
 
 		if(screen==1)
 			dat += "<h3>Log contents</h3>"

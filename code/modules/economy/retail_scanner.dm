@@ -178,7 +178,7 @@
 
 /obj/item/device/retail_scanner/showoff(mob/user)
 	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=[REF(M)];clickitem=\ref[src]>Swipe card or item.</a>",1)
+		M.show_message("[user] holds up [src]. <a HREF=?src=[REF(M)];clickitem=[REF(src)]>Swipe card or item.</a>",1)
 
 
 /obj/item/device/retail_scanner/proc/confirm(var/obj/item/I)
@@ -329,7 +329,7 @@
 	var/item_name
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
-		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=[REF(src)];choice=subtract;item=\ref[item_name]'>-</a> <a href='?src=[REF(src)];choice=set_amount;item=\ref[item_name]'>Set</a> <a href='?src=[REF(src)];choice=add;item=\ref[item_name]'>+</a> [item_list[item_name]] x " : ""][item_name] <a href='?src=[REF(src)];choice=clear;item=\ref[item_name]'>Remove</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
+		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=[REF(src)];choice=subtract;item=[REF(item_name)]'>-</a> <a href='?src=[REF(src)];choice=set_amount;item=[REF(item_name)]'>Set</a> <a href='?src=[REF(src)];choice=add;item=[REF(item_name)]'>+</a> [item_list[item_name]] x " : ""][item_name] <a href='?src=[REF(src)];choice=clear;item=[REF(item_name)]'>Remove</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
 	dat += "</table><table width=300>"
 	dat += "<tr><td class=\"tx-name-r\"><a href='?src=[REF(src)];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
 	dat += "</table></html>"

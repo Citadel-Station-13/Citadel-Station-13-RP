@@ -89,10 +89,10 @@
 //Put removable circuits in separate categories from non-removable
 	for(var/obj/item/integrated_circuit/circuit in contents)
 		if(!circuit.removable)
-			HTML += "<a href=?src=\ref[circuit];examine=1;from_assembly=1>[circuit.displayed_name]</a> | "
-			HTML += "<a href=?src=\ref[circuit];rename=1;from_assembly=1>\[Rename\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];scan=1;from_assembly=1>\[Scan with Debugger\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];bottom=\ref[circuit];from_assembly=1>\[Move to Bottom\]</a>"
+			HTML += "<a href=?src=[REF(circuit)];examine=1;from_assembly=1>[circuit.displayed_name]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];rename=1;from_assembly=1>\[Rename\]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];scan=1;from_assembly=1>\[Scan with Debugger\]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];bottom=[REF(circuit)];from_assembly=1>\[Move to Bottom\]</a>"
 			HTML += "<br>"
 
 	HTML += "<hr>"
@@ -100,15 +100,15 @@
 
 	for(var/obj/item/integrated_circuit/circuit in contents)
 		if(circuit.removable)
-			HTML += "<a href=?src=\ref[circuit];examine=1;from_assembly=1>[circuit.displayed_name]</a> | "
-			HTML += "<a href=?src=\ref[circuit];rename=1;from_assembly=1>\[Rename\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];scan=1;from_assembly=1>\[Scan with Debugger\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];remove=1;from_assembly=1>\[Remove\]</a> | "
-			HTML += "<a href=?src=\ref[circuit];bottom=\ref[circuit];from_assembly=1>\[Move to Bottom\]</a>"
+			HTML += "<a href=?src=[REF(circuit)];examine=1;from_assembly=1>[circuit.displayed_name]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];rename=1;from_assembly=1>\[Rename\]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];scan=1;from_assembly=1>\[Scan with Debugger\]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];remove=1;from_assembly=1>\[Remove\]</a> | "
+			HTML += "<a href=?src=[REF(circuit)];bottom=[REF(circuit)];from_assembly=1>\[Move to Bottom\]</a>"
 			HTML += "<br>"
 
 	HTML += "</body></html>"
-	user << browse(jointext(HTML,null), "window=assembly-\ref[src];size=600x350;border=1;can_resize=1;can_close=1;can_minimize=1")
+	user << browse(jointext(HTML,null), "window=assembly-[REF(src)];size=600x350;border=1;can_resize=1;can_close=1;can_minimize=1")
 
 /obj/item/device/electronic_assembly/Topic(href, href_list[])
 	if(..())

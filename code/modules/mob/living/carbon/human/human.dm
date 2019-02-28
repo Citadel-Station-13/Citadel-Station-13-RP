@@ -164,8 +164,8 @@
 		dat += "<BR><A href='?src=[REF(src)];item=tie'>Remove accessory</A>"
 	dat += "<BR><A href='?src=[REF(src)];item=splints'>Remove splints</A>"
 	dat += "<BR><A href='?src=[REF(src)];item=pockets'>Empty pockets</A>"
-	dat += "<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>"
-	dat += "<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>"
+	dat += "<BR><A href='?src=[REF(user)];refresh=1'>Refresh</A>"
+	dat += "<BR><A href='?src=[REF(user)];mach_close=mob[name]'>Close</A>"
 
 	user << browse(dat, text("window=mob[name];size=340x540"))
 	onclose(user, "mob[name]")

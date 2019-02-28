@@ -882,7 +882,7 @@
 	if(!istype(user, /mob/living/silicon/ai))
 		return
 	var/output = {"<b>Assume direct control over [src]?</b>
-						<a href='?src=[REF(src)];ai_take_control=\ref[user];duration=3000'>Yes</a><br>
+						<a href='?src=[REF(src)];ai_take_control=[REF(user)];duration=3000'>Yes</a><br>
 						"}
 	user << browse(output, "window=mecha_attack_ai")
 	return
@@ -1498,7 +1498,7 @@
 		return
 	var/output = "<b>Equipment:</b><div style=\"margin-left: 15px;\">"
 	for(var/obj/item/mecha_parts/mecha_equipment/MT in equipment)
-		output += "<div id='\ref[MT]'>[MT.get_equip_info()]</div>"
+		output += "<div id='[REF(MT)]'>[MT.get_equip_info()]</div>"
 	output += "</div>"
 	return output
 
@@ -1525,14 +1525,14 @@
 						<body>
 						<h1>Following keycodes are present in this system:</h1>"}
 	for(var/a in operation_req_access)
-		output += "[get_access_desc(a)] - <a href='?src=[REF(src)];del_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Delete</a><br>"
+		output += "[get_access_desc(a)] - <a href='?src=[REF(src)];del_req_access=[a];user=[REF(user)];id_card=[REF(id_card)]'>Delete</a><br>"
 	output += "<hr><h1>Following keycodes were detected on portable device:</h1>"
 	for(var/a in id_card.access)
 		if(a in operation_req_access) continue
 		var/a_name = get_access_desc(a)
 		if(!a_name) continue //there's some strange access without a name
-		output += "[a_name] - <a href='?src=[REF(src)];add_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Add</a><br>"
-	output += "<hr><a href='?src=[REF(src)];finish_req_access=1;user=\ref[user]'>Finish</a> <font color='red'>(Warning! The ID upload panel will be locked. It can be unlocked only through Exosuit Interface.)</font>"
+		output += "[a_name] - <a href='?src=[REF(src)];add_req_access=[a];user=[REF(user)];id_card=[REF(id_card)]'>Add</a><br>"
+	output += "<hr><a href='?src=[REF(src)];finish_req_access=1;user=[REF(user)]'>Finish</a> <font color='red'>(Warning! The ID upload panel will be locked. It can be unlocked only through Exosuit Interface.)</font>"
 	output += "</body></html>"
 	user << browse(output, "window=exosuit_add_access")
 	onclose(user, "exosuit_add_access")
@@ -1541,9 +1541,9 @@
 /obj/mecha/proc/output_maintenance_dialog(obj/item/weapon/card/id/id_card,mob/user)
 	if(!id_card || !user) return
 
-	var/maint_options = "<a href='?src=[REF(src)];set_internal_tank_valve=1;user=\ref[user]'>Set Cabin Air Pressure</a>"
+	var/maint_options = "<a href='?src=[REF(src)];set_internal_tank_valve=1;user=[REF(user)]'>Set Cabin Air Pressure</a>"
 	if (locate(/obj/item/mecha_parts/mecha_equipment/tool/passenger) in contents)
-		maint_options += "<a href='?src=[REF(src)];remove_passenger=1;user=\ref[user]'>Remove Passenger</a>"
+		maint_options += "<a href='?src=[REF(src)];remove_passenger=1;user=[REF(user)]'>Remove Passenger</a>"
 
 	var/output = {"<html>
 						<head>
@@ -1553,8 +1553,8 @@
 						</style>
 						</head>
 						<body>
-						[add_req_access?"<a href='?src=[REF(src)];req_access=1;id_card=\ref[id_card];user=\ref[user]'>Edit operation keycodes</a>":null]
-						[maint_access?"<a href='?src=[REF(src)];maint_access=1;id_card=\ref[id_card];user=\ref[user]'>Initiate maintenance protocol</a>":null]
+						[add_req_access?"<a href='?src=[REF(src)];req_access=1;id_card=[REF(id_card)];user=[REF(user)]'>Edit operation keycodes</a>":null]
+						[maint_access?"<a href='?src=[REF(src)];maint_access=1;id_card=[REF(id_card)];user=[REF(user)]'>Initiate maintenance protocol</a>":null]
 						[(state>0) ? maint_options : ""]
 						</body>
 						</html>"}

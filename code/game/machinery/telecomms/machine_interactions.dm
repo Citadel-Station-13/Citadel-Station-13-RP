@@ -144,7 +144,7 @@
 			i++
 			if(T.hide && !src.hide)
 				continue
-			dat += "<li>\ref[T] [T.name] ([T.id])  <a href='?src=[REF(src)];unlink=[i]'>\[X\]</a></li>"
+			dat += "<li>[REF(T)] [T.name] ([T.id])  <a href='?src=[REF(src)];unlink=[i]'>\[X\]</a></li>"
 		dat += "</ol>"
 
 		dat += "<br>Filtering Frequencies: "
@@ -355,7 +355,7 @@
 
 		if(text2num(href_list["unlink"]) <= length(links))
 			var/obj/machinery/telecomms/T = links[text2num(href_list["unlink"])]
-			temp = "<font color = #666633>-% Removed \ref[T] [T.name] from linked entities. %-</font>"
+			temp = "<font color = #666633>-% Removed [REF(T)] [T.name] from linked entities. %-</font>"
 
 			// Remove link entries from both T and src.
 
@@ -373,7 +373,7 @@
 				if(!(P.buffer in src.links))
 					src.links.Add(P.buffer)
 
-				temp = "<font color = #666633>-% Successfully linked with \ref[P.buffer] [P.buffer.name] %-</font>"
+				temp = "<font color = #666633>-% Successfully linked with [REF(P.buffer)] [P.buffer.name] %-</font>"
 
 			else
 				temp = "<font color = #666633>-% Unable to acquire buffer %-</font>"
@@ -381,7 +381,7 @@
 	if(href_list["buffer"])
 
 		P.buffer = src
-		temp = "<font color = #666633>-% Successfully stored \ref[P.buffer] [P.buffer.name] in buffer %-</font>"
+		temp = "<font color = #666633>-% Successfully stored [REF(P.buffer)] [P.buffer.name] in buffer %-</font>"
 
 
 	if(href_list["flush"])

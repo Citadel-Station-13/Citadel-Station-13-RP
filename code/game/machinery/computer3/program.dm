@@ -50,7 +50,7 @@ Programs are a file that can be executed
 		update_icon()
 		computer.update_icon()
 		if(usr)
-			usr << browse(null, "window=\ref[computer]")
+			usr << browse(null, "window=[REF(computer)]")
 			computer.attack_hand(usr)
 
 	..()
@@ -234,7 +234,7 @@ Programs are a file that can be executed
 				computer.cardslot.remove(usr)
 		return 1
 	//
-	// usage: runfile=\ref[file]
+	// usage: runfile=[REF(file)]
 	// executes the file
 	//
 	if("runfile" in href_list)
@@ -253,7 +253,7 @@ Programs are a file that can be executed
 	//
 	if("quit" in href_list)
 		computer.program = null
-		usr << browse(null,"window=\ref[computer]") // ntos will need to resize the window
+		usr << browse(null,"window=[REF(computer)]") // ntos will need to resize the window
 		computer.update_icon()
 		computer.updateDialog()
 		return 1

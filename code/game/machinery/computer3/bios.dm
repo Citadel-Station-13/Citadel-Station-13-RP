@@ -113,28 +113,28 @@
 		if(MISSING_PERIPHERAL)
 			Reset()
 			if(usr)
-				usr << browse("<h2>ERROR: Missing or disabled component</h2><b>A hardware failure has occured.  Please insert or replace the missing or damaged component and restart the computer.</b>","window=\ref[src]")
+				usr << browse("<h2>ERROR: Missing or disabled component</h2><b>A hardware failure has occured.  Please insert or replace the missing or damaged component and restart the computer.</b>","window=[REF(src)]")
 
 		if(BUSTED_ASS_COMPUTER)
 			Reset()
 			os.error = BUSTED_ASS_COMPUTER
 			if(usr)
-				usr << browse("<h2>ERROR: Missing or disabled component</h2><b>A hardware failure has occured.  Please insert or replace the missing or damaged component and restart the computer.</b>","window=\ref[src]")
+				usr << browse("<h2>ERROR: Missing or disabled component</h2><b>A hardware failure has occured.  Please insert or replace the missing or damaged component and restart the computer.</b>","window=[REF(src)]")
 
 		if(MISSING_PROGRAM)
 			Reset()
 			if(usr)
-				usr << browse("<h2>ERROR: No associated program</h2><b>This file requires a specific program to open, which cannot be located.  Please install the related program and try again.</b>","window=\ref[src]")
+				usr << browse("<h2>ERROR: No associated program</h2><b>This file requires a specific program to open, which cannot be located.  Please install the related program and try again.</b>","window=[REF(src)]")
 
 		if(FILE_DRM)
 			Reset()
 			if(usr)
-				usr << browse("<h2>ERROR: File operation prohibited</h2><b>Copy protection exception: missing authorization token.</b>","window=\ref[src]")
+				usr << browse("<h2>ERROR: File operation prohibited</h2><b>Copy protection exception: missing authorization token.</b>","window=[REF(src)]")
 
 		if(NETWORK_FAILURE)
 			Reset()
 			if(usr)
-				usr << browse("<h2>ERROR: Networking exception: Unable to connect to remote host.</h2>","window=\ref[src]")
+				usr << browse("<h2>ERROR: Networking exception: Unable to connect to remote host.</h2>","window=[REF(src)]")
 
 		else
 			if(usr)

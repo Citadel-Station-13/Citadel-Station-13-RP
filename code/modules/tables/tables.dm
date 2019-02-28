@@ -326,7 +326,7 @@ var/list/table_icon_cache = list()
 	return shards
 
 /proc/get_table_image(var/icon/ticon,var/ticonstate,var/tdir,var/tcolor,var/talpha)
-	var/icon_cache_key = "\ref[ticon]-[ticonstate]-[tdir]-[tcolor]-[talpha]"
+	var/icon_cache_key = "[REF(ticon)]-[ticonstate]-[tdir]-[tcolor]-[talpha]"
 	var/image/I = table_icon_cache[icon_cache_key]
 	if(!I)
 		I = image(icon = ticon, icon_state = ticonstate, dir = tdir)

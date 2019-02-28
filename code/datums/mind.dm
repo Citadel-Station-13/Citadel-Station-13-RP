@@ -148,7 +148,7 @@
 	else
 		out += "None."
 	out += "<br><a href='?src=[REF(src)];obj_add=1'>\[add\]</a><br><br>"
-	out += "<b>Ambitions:</b> [ambitions ? ambitions : "None"] <a href='?src=[REF(src)];amb_edit=\ref[src]'>\[edit\]</a></br>"
+	out += "<b>Ambitions:</b> [ambitions ? ambitions : "None"] <a href='?src=[REF(src)];amb_edit=[REF(src)]'>\[edit\]</a></br>"
 	usr << browse(out, "window=edit_memory[src]")
 
 /datum/mind/Topic(href, href_list)

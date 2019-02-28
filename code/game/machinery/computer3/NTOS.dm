@@ -33,7 +33,7 @@
 			dat += {"
 			<td>
 				<center><a href='?src=[REF(src)];[fileop]=[REF(F)]'>
-					<img src=\ref[F.image]><br>
+					<img src=[REF(F.image)]><br>
 					<span>[F.name]</span>
 				</a></center>
 			</td>"}
@@ -175,7 +175,7 @@
 
 	dat += "</div></body></html>"
 
-	usr << browse(dat, "window=\ref[computer];size=670x510")
+	usr << browse(dat, "window=[REF(computer)];size=670x510")
 	onclose(usr, REF(computer))
 
  	// STATUS BAR

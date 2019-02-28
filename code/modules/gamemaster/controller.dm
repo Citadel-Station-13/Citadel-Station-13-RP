@@ -24,7 +24,7 @@
 	for(var/datum/gm_action/action in available_actions)
 		if(action.enabled == FALSE)
 			continue
-		HTML += "[action.name] ([english_list(action.departments)]) (weight: [action.get_weight()]) <a href='?src=\ref[action];force=1'>\[Force\]</a> <br>"
+		HTML += "[action.name] ([english_list(action.departments)]) (weight: [action.get_weight()]) <a href='?src=[REF(action)];force=1'>\[Force\]</a> <br>"
 
 	HTML += "<br>"
 	HTML += "All living mobs activity: [metric.assess_all_living_mobs()]%<br>"

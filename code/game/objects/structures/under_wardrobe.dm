@@ -20,7 +20,7 @@
 		dat += "[UWC.name]: <a href='?src=[REF(src)];change_underwear=[UWC.name]'>[item_name]</a>"
 		if(UWI)
 			for(var/datum/gear_tweak/gt in UWI.tweaks)
-				dat += " <a href='?src=[REF(src)];underwear=[UWC.name];tweak=\ref[gt]'>[gt.get_contents(get_metadata(H, UWC.name, gt))]</a>"
+				dat += " <a href='?src=[REF(src)];underwear=[UWC.name];tweak=[REF(gt)]'>[gt.get_contents(get_metadata(H, UWC.name, gt))]</a>"
 		dat += " <a href='?src=[REF(src)];remove_underwear=[UWC.name]'>(Remove)</a><br>"
 
 	dat = jointext(dat,null)
