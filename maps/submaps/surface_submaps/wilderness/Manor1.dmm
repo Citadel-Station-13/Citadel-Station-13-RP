@@ -234,7 +234,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aY" = (
-/obj/machinery/cooker/oven,
+/obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aZ" = (
@@ -243,7 +243,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "ba" = (
-/obj/machinery/cooker/grill,
+/obj/machinery/appliance/grill,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bb" = (

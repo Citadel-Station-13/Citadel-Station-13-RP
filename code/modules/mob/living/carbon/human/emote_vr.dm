@@ -24,6 +24,10 @@
 			message = "lets out a nya."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+		if ("peep")
+			message = "peeps like a bird."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2

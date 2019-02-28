@@ -54,148 +54,159 @@
 
 //Here's the real ones
 /obj/item/clothing/under/utility/sifguard
-	name = "\improper SifGuard uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has silver trim."
+	name = "crew uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has silver trim."
 	icon_state = "blackutility_crew"
 	worn_state = "blackutility_crew"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10)
+//	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10) // cit edit: these are in loadout now, no more resists
 
 /obj/item/clothing/under/utility/sifguard/medical
-	name = "\improper SifGuard medical uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has silver trim and blue blazes."
+	name = "medical crew uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has silver trim and blue blazes."
 	icon_state = "blackutility_med"
 	worn_state = "blackutility_med"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/utility/sifguard/medical/command
-	name = "\improper SifGuard medical command uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has gold trim and blue blazes."
+	name = "medical command uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has gold trim and blue blazes."
 	icon_state = "blackutility_medcom"
 	worn_state = "blackutility_medcom"
 
 /obj/item/clothing/under/utility/sifguard/engineering
-	name = "\improper SifGuard engineering uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has silver trim and organge blazes."
+	name = "engineering crew uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has silver trim and organge blazes."
 	icon_state = "blackutility_eng"
 	worn_state = "blackutility_eng"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
 
 /obj/item/clothing/under/utility/sifguard/engineering/command
-	name = "\improper SifGuard engineering command uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has gold trim and organge blazes."
+	name = "engineering command uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has gold trim and organge blazes."
 	icon_state = "blackutility_engcom"
 	worn_state = "blackutility_engcom"
 
 /obj/item/clothing/under/utility/sifguard/supply
-	name = "\improper SifGuard supply uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has silver trim and brown blazes."
+	name = "supply crew uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has silver trim and brown blazes."
 	icon_state = "blackutility_sup"
 	worn_state = "blackutility_sup"
 
 /obj/item/clothing/under/utility/sifguard/security
-	name = "\improper SifGuard security uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has silver trim and red blazes."
+	name = "security crew uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has silver trim and red blazes."
 	icon_state = "blackutility_sec"
 	worn_state = "blackutility_sec"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/utility/sifguard/security/command
-	name = "\improper SifGuard security command uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has gold trim and red blazes."
+	name = "security command uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has gold trim and red blazes."
 	icon_state = "blackutility_seccom"
 	worn_state = "blackutility_seccom"
 
 /obj/item/clothing/under/utility/sifguard/command
-	name = "\improper SifGuard command uniform"
-	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has gold trim and gold blazes."
+	name = "crew command uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has gold trim and gold blazes."
 	icon_state = "blackutility_com"
 	worn_state = "blackutility_com"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 
 /obj/item/clothing/under/utility/fleet
-	name = "fleet coveralls"
-	desc = "The utility uniform of the SCG Fleet, made from an insulated material."
+	name = "coveralls"
+	desc = "A blue utility uniform."
 	icon_state = "navyutility"
 	worn_state = "navyutility"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
-	siemens_coefficient = 0.7
+/*	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.7 */// cit edit, no more armour ffs
 
 /obj/item/clothing/under/utility/fleet/medical
-	name = "fleet medical coveralls"
-	desc = "The utility uniform of the SCG Fleet, made from an insulated material. This one has blue cuffs."
+	name = "medical coveralls"
+	desc = "A blue utility uniform. This one has blue cuffs."
 	icon_state = "navyutility_med"
 	worn_state = "navyutility_med"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/utility/fleet/engineering
-	name = "fleet engineering coveralls"
-	desc = "The utility uniform of the SCG Fleet, made from an insulated material. This one has orange cuffs."
+	name = "engineering coveralls"
+	desc = "A blue utility uniform. This one has orange cuffs."
 	icon_state = "navyutility_eng"
 	worn_state = "navyutility_eng"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
 
 /obj/item/clothing/under/utility/fleet/supply
-	name = "fleet supply coveralls"
-	desc = "The utility uniform of the SCG Fleet, made from an insulated material. This one has brown cuffs."
+	name = "supply coveralls"
+	desc = "A blue utility uniform. This one has brown cuffs."
 	icon_state = "navyutility_sup"
 	worn_state = "navyutility_sup"
 
 /obj/item/clothing/under/utility/fleet/security
-	name = "fleet security coveralls"
-	desc = "The utility uniform of the SCG Fleet, made from an insulated material. This one has red cuffs."
+	name = "security coveralls"
+	desc = "A blue utility uniform. This one has red cuffs."
 	icon_state = "navyutility_sec"
 	worn_state = "navyutility_sec"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/utility/fleet/command
-	name = "fleet command coveralls"
-	desc = "The utility uniform of the SCG Fleet, made from an insulated material. This one has gold cuffs."
+	name = "command coveralls"
+	desc = "A blue utility uniform.  This one has gold cuffs."
 	icon_state = "navyutility_com"
 	worn_state = "navyutility_com"
-
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/utility/marine
-	name = "marine fatigues"
-	desc = "The utility uniform of the SCG Marine Corps, made from durable material."
+	name = "fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use."
 	icon_state = "greyutility"
 	worn_state = "greyutility"
-	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
+//	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0) fuck outta here no more armour
 
 /obj/item/clothing/under/utility/marine/green
 	name = "green fatigues"
-	desc = "A green version of the SCG marine utility uniform, made from durable material."
+	desc = "Green fatigues vaguely based off of military design, for corporate use."
 	icon_state = "greenutility"
 	worn_state = "greenutility"
 
 /obj/item/clothing/under/utility/marine/tan
 	name = "tan fatigues"
-	desc = "A tan version of the SCG marine utility uniform, made from durable material."
+	desc = "Tan fatigues vaguely based off of military design, for corporate use."
 	icon_state = "tanutility"
 	worn_state = "tanutility"
 
 /obj/item/clothing/under/utility/marine/medical
-	name = "marine medical fatigues"
-	desc = "The utility uniform of the SCG Marine Corps, made from durable material. This one has blue markings."
+	name = "medical fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use. This one has blue markings."
 	icon_state = "greyutility_med"
 	worn_state = "greyutility_med"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/utility/marine/engineering
-	name = "marine engineering fatigues"
-	desc = "The utility uniform of the SCG Marine Corps, made from durable material. This one has orange markings."
+	name = "engineering fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use. This one has orange markings."
 	icon_state = "greyutility_eng"
 	worn_state = "greyutility_eng"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
 
 /obj/item/clothing/under/utility/marine/supply
-	name = "marine supply fatigues"
-	desc = "The utility uniform of the SCG Marine Corps, made from durable material. This one has brown markings."
+	name = "supply fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use. This one has brown markings."
 	icon_state = "greyutility_sup"
 	worn_state = "greyutility_sup"
 
 /obj/item/clothing/under/utility/marine/security
-	name = "marine security fatigues"
-	desc = "The utility uniform of the SCG Marine Corps, made from durable material. This one has red markings."
+	name = "security fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use. This one has red markings."
 	icon_state = "greyutility_sec"
 	worn_state = "greyutility_sec"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/utility/marine/command
-	name = "marine command coveralls"
-	desc = "The utility uniform of the SCG Marine Corps, made from durable material. This one has gold markings."
+	name = "command fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use. This one has gold markings."
 	icon_state = "greyutility_com"
 	worn_state = "greyutility_com"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 //Service
 
