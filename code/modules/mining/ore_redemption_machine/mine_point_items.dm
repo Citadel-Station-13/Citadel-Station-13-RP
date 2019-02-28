@@ -32,14 +32,14 @@
 	..(user)
 	to_chat(user, "There's [points] points on the card.")
 
-/obj/item/weapon/card/mining_point_card/1k
+/obj/item/weapon/card/mining_point_card/onethou
 	name = "deluxe mining point card"
-	var/points = 1000
+	points = 1000
 
-/obj/item/weapon/card/mining_point_card/2k
+/obj/item/weapon/card/mining_point_card/twothou
 	name = "deluxe mining point card"
-	var/points = 2000
+	points = 2000
 
-/obj/item/weapon/card/mining_point_card/3k
+/obj/item/weapon/card/mining_point_card/threethou
 	name = "deluxe mining point card"
-	var/points = 3000
+	points = 3000

@@ -529,5 +529,5 @@
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale,
-	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/sake,
-	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/champagne)
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/sake,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne)
