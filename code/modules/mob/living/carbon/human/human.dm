@@ -139,31 +139,31 @@
 		if((slot_ref["slot"] in list(slot_l_store, slot_r_store)))
 			continue
 		var/obj/item/thing_in_slot = get_equipped_item(slot_ref["slot"])
-		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=\ref[src];item=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
+		dat += "<BR><B>[slot_ref["name"]]:</b> <a href='?src=[REF(src)];item=[slot_ref["slot"]]'>[istype(thing_in_slot) ? thing_in_slot : "nothing"]</a>"
 
 	dat += "<BR><HR>"
 
 	if(species.hud.has_hands)
-		dat += "<BR><b>Left hand:</b> <A href='?src=\ref[src];item=[slot_l_hand]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
-		dat += "<BR><b>Right hand:</b> <A href='?src=\ref[src];item=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
+		dat += "<BR><b>Left hand:</b> <A href='?src=[REF(src)];item=[slot_l_hand]'>[istype(l_hand) ? l_hand : "nothing"]</A>"
+		dat += "<BR><b>Right hand:</b> <A href='?src=[REF(src)];item=[slot_r_hand]'>[istype(r_hand) ? r_hand : "nothing"]</A>"
 
 	// Do they get an option to set internals?
 	if(istype(wear_mask, /obj/item/clothing/mask) || istype(head, /obj/item/clothing/head/helmet/space))
 		if(istype(back, /obj/item/weapon/tank) || istype(belt, /obj/item/weapon/tank) || istype(s_store, /obj/item/weapon/tank))
-			dat += "<BR><A href='?src=\ref[src];item=internals'>Toggle internals.</A>"
+			dat += "<BR><A href='?src=[REF(src)];item=internals'>Toggle internals.</A>"
 
 	// Other incidentals.
 	if(istype(suit) && suit.has_sensor == 1)
-		dat += "<BR><A href='?src=\ref[src];item=sensors'>Set sensors</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=sensors'>Set sensors</A>"
 	if(handcuffed)
-		dat += "<BR><A href='?src=\ref[src];item=[slot_handcuffed]'>Handcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[slot_handcuffed]'>Handcuffed</A>"
 	if(legcuffed)
-		dat += "<BR><A href='?src=\ref[src];item=[slot_legcuffed]'>Legcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[slot_legcuffed]'>Legcuffed</A>"
 
 	if(suit && LAZYLEN(suit.accessories))
-		dat += "<BR><A href='?src=\ref[src];item=tie'>Remove accessory</A>"
-	dat += "<BR><A href='?src=\ref[src];item=splints'>Remove splints</A>"
-	dat += "<BR><A href='?src=\ref[src];item=pockets'>Empty pockets</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=tie'>Remove accessory</A>"
+	dat += "<BR><A href='?src=[REF(src)];item=splints'>Remove splints</A>"
+	dat += "<BR><A href='?src=[REF(src)];item=pockets'>Empty pockets</A>"
 	dat += "<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>"
 	dat += "<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>"
 
@@ -369,7 +369,7 @@
 								usr << "<b>Major Crimes:</b> [R.fields["ma_crim"]]"
 								usr << "<b>Details:</b> [R.fields["ma_crim_d"]]"
 								usr << "<b>Notes:</b> [R.fields["notes"]]"
-								usr << "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>"
+								usr << "<a href='?src=[REF(src)];secrecordComment=`'>\[View Comment Log\]</a>"
 								read = 1
 
 			if(!read)
@@ -397,7 +397,7 @@
 									counter++
 								if (counter == 1)
 									usr << "No comment found"
-								usr << "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
+								usr << "<a href='?src=[REF(src)];secrecordadd=`'>\[Add comment\]</a>"
 
 			if(!read)
 				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
@@ -486,7 +486,7 @@
 								usr << "<b>Major Disabilities:</b> [R.fields["ma_dis"]]"
 								usr << "<b>Details:</b> [R.fields["ma_dis_d"]]"
 								usr << "<b>Notes:</b> [R.fields["notes"]]"
-								usr << "<a href='?src=\ref[src];medrecordComment=`'>\[View Comment Log\]</a>"
+								usr << "<a href='?src=[REF(src)];medrecordComment=`'>\[View Comment Log\]</a>"
 								read = 1
 
 			if(!read)
@@ -514,7 +514,7 @@
 									counter++
 								if (counter == 1)
 									usr << "No comment found"
-								usr << "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
+								usr << "<a href='?src=[REF(src)];medrecordadd=`'>\[Add comment\]</a>"
 
 			if(!read)
 				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"

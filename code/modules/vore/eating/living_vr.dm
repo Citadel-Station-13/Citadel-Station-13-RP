@@ -643,7 +643,7 @@
 /mob/living/examine(mob/user, distance, infix, suffix)
 	. = ..(user, distance, infix, suffix)
 	if(showvoreprefs)
-		to_chat(user, "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>")
+		to_chat(user, "<span class='deptradio'><a href='?src=[REF(src)];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>")
 
 /mob/living/Topic(href, href_list)	//Can't find any instances of Topic() being overridden by /mob/living in polaris' base code, even though /mob/living/carbon/human's Topic() has a ..() call
 	if(href_list["vore_prefs"])

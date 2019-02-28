@@ -155,7 +155,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/device/paicard)
 		dat += {"
 			<table>
 				<td class="button">
-					<a href='byond://?src=\ref[src];setlaws=1' class='button'>Configure Directives</a>
+					<a href='byond://?src=[REF(src)];setlaws=1' class='button'>Configure Directives</a>
 				</td>
 			</table>
 		"}
@@ -163,7 +163,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/device/paicard)
 			dat += {"
 				<table>
 					<td class="button">
-						<a href='byond://?src=\ref[src];setdna=1' class='button'>Imprint Master DNA</a>
+						<a href='byond://?src=[REF(src)];setdna=1' class='button'>Imprint Master DNA</a>
 					</td>
 				</table>
 			"}
@@ -174,13 +174,13 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/device/paicard)
 				<table class="request">
 					<tr>
 						<td class="radio">Transmit:</td>
-						<td><a href='byond://?src=\ref[src];wires=4'>[radio.broadcasting ? "<font color=#55FF55>En" : "<font color=#FF5555>Dis" ]abled</font></a>
+						<td><a href='byond://?src=[REF(src)];wires=4'>[radio.broadcasting ? "<font color=#55FF55>En" : "<font color=#FF5555>Dis" ]abled</font></a>
 
 						</td>
 					</tr>
 					<tr>
 						<td class="radio">Receive:</td>
-						<td><a href='byond://?src=\ref[src];wires=2'>[radio.listening ? "<font color=#55FF55>En" : "<font color=#FF5555>Dis" ]abled</font></a>
+						<td><a href='byond://?src=[REF(src)];wires=2'>[radio.listening ? "<font color=#55FF55>En" : "<font color=#FF5555>Dis" ]abled</font></a>
 
 						</td>
 					</tr>
@@ -192,7 +192,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/device/paicard)
 			dat += "<font color=red><i>Radio firmware not loaded. Please install a pAI personality to load firmware.</i></font><br>"
 		dat += {"
 			<table>
-				<td class="button_red"><a href='byond://?src=\ref[src];wipe=1' class='button'>Wipe current pAI personality</a>
+				<td class="button_red"><a href='byond://?src=[REF(src)];wipe=1' class='button'>Wipe current pAI personality</a>
 
 				</td>
 			</table>
@@ -207,7 +207,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/device/paicard)
 				<table>
 					<tr>
 						<td class="button">
-							<a href='byond://?src=\ref[src];request=1' class="button">Refresh available personalities</a>
+							<a href='byond://?src=[REF(src)];request=1' class="button">Refresh available personalities</a>
 						</td>
 					</tr>
 				</table><br>
@@ -218,7 +218,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/device/paicard)
 			    <p>No personality is installed.</p>
 				<table>
 					<tr>
-						<td class="button"><a href='byond://?src=\ref[src];request=1' class="button">Request personality</a>
+						<td class="button"><a href='byond://?src=[REF(src)];request=1' class="button">Request personality</a>
 						</td>
 					</tr>
 				</table>

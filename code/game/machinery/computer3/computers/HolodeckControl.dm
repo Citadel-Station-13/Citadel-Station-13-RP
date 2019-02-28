@@ -26,28 +26,28 @@
 	if(!interactable())
 		return
 	var/dat = "<h3>Current Loaded Programs</h3>"
-	dat += "<A href='?src=\ref[src];emptycourt'>((Empty Court))</A><BR>"
-	dat += "<A href='?src=\ref[src];boxingcourt'>((Boxing Court))</A><BR>"
-	dat += "<A href='?src=\ref[src];basketball'>((Basketball Court))</A><BR>"
-	dat += "<A href='?src=\ref[src];thunderdomecourt'>((Thunderdome Court))</A><BR>"
-	dat += "<A href='?src=\ref[src];beach'>((Beach))</A><BR>"
-//	dat += "<A href='?src=\ref[src];turnoff'>((Shutdown System))</A><BR>"
+	dat += "<A href='?src=[REF(src)];emptycourt'>((Empty Court))</A><BR>"
+	dat += "<A href='?src=[REF(src)];boxingcourt'>((Boxing Court))</A><BR>"
+	dat += "<A href='?src=[REF(src)];basketball'>((Basketball Court))</A><BR>"
+	dat += "<A href='?src=[REF(src)];thunderdomecourt'>((Thunderdome Court))</A><BR>"
+	dat += "<A href='?src=[REF(src)];beach'>((Beach))</A><BR>"
+//	dat += "<A href='?src=[REF(src)];turnoff'>((Shutdown System))</A><BR>"
 
 	dat += "<span class='notice'>Please ensure that only holographic weapons are used in the holodeck if a combat simulation has been loaded.</span><BR>"
 
 	if(emagged)
-		dat += "<A href='?src=\ref[src];burntest'>(<font color=red>Begin Atmospheric Burn Simulation</font>)</A><BR>"
+		dat += "<A href='?src=[REF(src)];burntest'>(<font color=red>Begin Atmospheric Burn Simulation</font>)</A><BR>"
 		dat += "Ensure the holodeck is empty before testing.<BR>"
 		dat += "<BR>"
-		dat += "<A href='?src=\ref[src];wildlifecarp'>(<font color=red>Begin Wildlife Simulation</font>)</A><BR>"
+		dat += "<A href='?src=[REF(src)];wildlifecarp'>(<font color=red>Begin Wildlife Simulation</font>)</A><BR>"
 		dat += "Ensure the holodeck is empty before testing.<BR>"
 		dat += "<BR>"
 		if(issilicon(usr))
-			dat += "<A href='?src=\ref[src];AIoverride'>(<font color=green>Re-Enable Safety Protocols?</font>)</A><BR>"
+			dat += "<A href='?src=[REF(src)];AIoverride'>(<font color=green>Re-Enable Safety Protocols?</font>)</A><BR>"
 		dat += "Safety Protocols are <font class='bad'>DISABLED</font><BR>"
 	else
 		if(issilicon(usr))
-			dat += "<A href='?src=\ref[src];AIoverride'>(<font color=red>Override Safety Protocols?</font>)</A><BR>"
+			dat += "<A href='?src=[REF(src)];AIoverride'>(<font color=red>Override Safety Protocols?</font>)</A><BR>"
 		dat += "<BR>"
 		dat += "Safety Protocols are <font class='good'>ENABLED</font><BR>"
 

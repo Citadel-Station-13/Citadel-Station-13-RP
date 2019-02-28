@@ -69,7 +69,7 @@
 /obj/item/weapon/virusdish/examine(mob/user)
 	..()
 	if(basic_info)
-		user << "[basic_info] : <a href='?src=\ref[src];info=1'>More Information</a>"
+		user << "[basic_info] : <a href='?src=[REF(src)];info=1'>More Information</a>"
 
 /obj/item/weapon/virusdish/Topic(href, href_list)
 	. = ..()

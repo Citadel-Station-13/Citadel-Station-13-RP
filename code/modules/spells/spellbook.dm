@@ -21,7 +21,7 @@
 	user.set_machine(src)
 	var/dat
 	if(temp)
-		dat = "[temp]<BR><BR><A href='byond://?src=\ref[src];temp=1'>Clear</A>"
+		dat = "[temp]<BR><BR><A href='byond://?src=[REF(src)];temp=1'>Clear</A>"
 	else
 
 		// AUTOFIXED BY fix_string_idiocy.py
@@ -30,54 +30,54 @@
 			<HR>
 			<B>Memorize which spell:</B><BR>
 			<I>The number after the spell name is the cooldown time.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=magicmissile'>Magic Missile</A> (10)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=magicmissile'>Magic Missile</A> (10)<BR>
 			<I>This spell fires several, slow moving, magic projectiles at nearby targets. If they hit a target, it is paralyzed and takes minor damage.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=fireball'>Fireball</A> (10)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=fireball'>Fireball</A> (10)<BR>
 			<I>This spell fires a fireball in the direction you're facing and does not require wizard garb. Be careful not to fire it at people that are standing next to you.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=disabletech'>Disable Technology</A> (60)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=disabletech'>Disable Technology</A> (60)<BR>
 			<I>This spell disables all weapons, cameras and most other technology in range.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=smoke'>Smoke</A> (10)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=smoke'>Smoke</A> (10)<BR>
 			<I>This spell spawns a cloud of choking smoke at your location and does not require wizard garb.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=blind'>Blind</A> (30)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=blind'>Blind</A> (30)<BR>
 			<I>This spell temporarly blinds a single person and does not require wizard garb.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=subjugation'>Subjugation</A> (30)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=subjugation'>Subjugation</A> (30)<BR>
 			<I>This spell temporarily subjugates a target's mind and does not require wizard garb.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=forcewall'>Forcewall</A> (10)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=forcewall'>Forcewall</A> (10)<BR>
 			<I>This spell creates an unbreakable wall that lasts for 30 seconds and does not need wizard garb.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=blink'>Blink</A> (2)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=blink'>Blink</A> (2)<BR>
 			<I>This spell randomly teleports you a short distance. Useful for evasion or getting into areas if you have patience.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=teleport'>Teleport</A> (60)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=teleport'>Teleport</A> (60)<BR>
 			<I>This spell teleports you to a type of area of your selection. Very useful if you are in danger, but has a decent cooldown, and is unpredictable.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=mutate'>Mutate</A> (60)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=mutate'>Mutate</A> (60)<BR>
 			<I>This spell causes you to turn into a hulk and gain telekinesis for a short while.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=etherealjaunt'>Ethereal Jaunt</A> (60)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=etherealjaunt'>Ethereal Jaunt</A> (60)<BR>
 			<I>This spell creates your ethereal form, temporarily making you invisible and able to pass through walls.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=knock'>Knock</A> (10)<BR>
+			<A href='byond://?src=[REF(src)];spell_choice=knock'>Knock</A> (10)<BR>
 			<I>This spell opens nearby doors and does not require wizard garb.</I><BR>
-			<A href='byond://?src=\ref[src];spell_choice=noclothes'>Remove Clothes Requirement</A> <b>Warning: this takes away 2 spell choices.</b><BR>
+			<A href='byond://?src=[REF(src)];spell_choice=noclothes'>Remove Clothes Requirement</A> <b>Warning: this takes away 2 spell choices.</b><BR>
 			<HR>
 			<B>Artefacts:</B><BR>
 			Powerful items imbued with eldritch magics. Summoning one will count towards your maximum number of spells.<BR>
 			It is recommended that only experienced wizards attempt to wield such artefacts.<BR>
 			<HR>
-			<A href='byond://?src=\ref[src];spell_choice=mentalfocus'>Mental Focus</A><BR>
+			<A href='byond://?src=[REF(src)];spell_choice=mentalfocus'>Mental Focus</A><BR>
 			<I>An artefact that channels the will of the user into destructive bolts of force.</I><BR>
 			<HR>
-			<A href='byond://?src=\ref[src];spell_choice=soulstone'>Six Soul Stone Shards and the spell Artificer</A><BR>
+			<A href='byond://?src=[REF(src)];spell_choice=soulstone'>Six Soul Stone Shards and the spell Artificer</A><BR>
 			<I>Soul Stone Shards are ancient tools capable of capturing and harnessing the spirits of the dead and dying. The spell Artificer allows you to create arcane machines for the captured souls to pilot.</I><BR>
 			<HR>
-			<A href='byond://?src=\ref[src];spell_choice=armor'>Mastercrafted Armor Set</A><BR>
+			<A href='byond://?src=[REF(src)];spell_choice=armor'>Mastercrafted Armor Set</A><BR>
 			<I>An artefact suit of armor that allows you to cast spells while providing more protection against attacks and the void of space.</I><BR>
 			<HR>
-			<A href='byond://?src=\ref[src];spell_choice=staffanimation'>Staff of Animation</A><BR>
+			<A href='byond://?src=[REF(src)];spell_choice=staffanimation'>Staff of Animation</A><BR>
 			<I>An arcane staff capable of shooting bolts of eldritch energy which cause inanimate objects to come to life. This magic doesn't affect machines.</I><BR>
 			<HR>
-			<A href='byond://?src=\ref[src];spell_choice=scrying'>Scrying Orb</A><BR>
+			<A href='byond://?src=[REF(src)];spell_choice=scrying'>Scrying Orb</A><BR>
 			<I>An incandescent orb of crackling energy, using it will allow you to ghost while alive, allowing you to spy upon the station with ease. In addition, buying it will permanently grant you x-ray vision.</I><BR>
 			<HR>"}
 		// END AUTOFIX
 		if(op)
-			dat += "<A href='byond://?src=\ref[src];spell_choice=rememorize'>Re-memorize Spells</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];spell_choice=rememorize'>Re-memorize Spells</A><BR>"
 	user << browse(dat, "window=radio")
 	onclose(user, "radio")
 	return

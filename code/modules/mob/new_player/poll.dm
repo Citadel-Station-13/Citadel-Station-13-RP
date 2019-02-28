@@ -22,19 +22,19 @@
 	output +="<hr>"
 	output += "How do you feel about the game gathering player-specific statistics? This includes statistics about individual players as well as in-game polling/opinion requests."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=signed'>Signed stats gathering</A>"
+	output += "<p><a href='byond://?src=[REF(src)];privacy_poll=signed'>Signed stats gathering</A>"
 	output += "<br>Pick this option if you think usernames should be logged with stats. This allows us to have personalized stats as well as polls."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=anonymous'>Anonymous stats gathering</A>"
+	output += "<p><a href='byond://?src=[REF(src)];privacy_poll=anonymous'>Anonymous stats gathering</A>"
 	output += "<br>Pick this option if you think only hashed (indecipherable) usernames should be logged with stats. This doesn't allow us to have personalized stats, as we can't tell who is who (hashed values aren't readable), we can however have ingame polls."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=nostats'>No stats gathering</A>"
+	output += "<p><a href='byond://?src=[REF(src)];privacy_poll=nostats'>No stats gathering</A>"
 	output += "<br>Pick this option if you don't want player-specific stats gathered. This does not allow us to have player-specific stats or polls."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=later'>Ask again later</A>"
+	output += "<p><a href='byond://?src=[REF(src)];privacy_poll=later'>Ask again later</A>"
 	output += "<br>This poll will be brought up again next round."
 
-	output += "<p><a href='byond://?src=\ref[src];privacy_poll=abstain'>Don't ask again</A>"
+	output += "<p><a href='byond://?src=[REF(src)];privacy_poll=abstain'>Don't ask again</A>"
 	output += "<br>Only pick this if you are fine with whatever option wins."
 
 	output += "</div>"
@@ -70,7 +70,7 @@
 		while(select_query.NextRow())
 			pollid = select_query.item[1]
 			pollquestion = select_query.item[2]
-			output += "<tr bgcolor='[ (i % 2 == 1) ? color1 : color2 ]'><td><a href=\"byond://?src=\ref[src];pollid=[pollid]\"><b>[pollquestion]</b></a></td></tr>"
+			output += "<tr bgcolor='[ (i % 2 == 1) ? color1 : color2 ]'><td><a href=\"byond://?src=[REF(src)];pollid=[pollid]\"><b>[pollquestion]</b></a></td></tr>"
 			i++
 
 		output += "</table>"
@@ -135,7 +135,7 @@
 				output += "<font size='2'>Poll runs from <b>[pollstarttime]</b> until <b>[pollendtime]</b></font><p>"
 
 				if(!voted)	//Only make this a form if we have not voted yet
-					output += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
+					output += "<form name='cardcomp' action='?src=[REF(src)]' method='get'>"
 					output += "<input type='hidden' name='src' value='\ref[src]'>"
 					output += "<input type='hidden' name='votepollid' value='[pollid]'>"
 					output += "<input type='hidden' name='votetype' value='OPTION'>"
@@ -179,7 +179,7 @@
 				output += "<font size='2'>Feedback gathering runs from <b>[pollstarttime]</b> until <b>[pollendtime]</b></font><p>"
 
 				if(!voted)	//Only make this a form if we have not voted yet
-					output += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
+					output += "<form name='cardcomp' action='?src=[REF(src)]' method='get'>"
 					output += "<input type='hidden' name='src' value='\ref[src]'>"
 					output += "<input type='hidden' name='votepollid' value='[pollid]'>"
 					output += "<input type='hidden' name='votetype' value='TEXT'>"
@@ -190,7 +190,7 @@
 					output += "<p><input type='submit' value='Submit'>"
 					output += "</form>"
 
-					output += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
+					output += "<form name='cardcomp' action='?src=[REF(src)]' method='get'>"
 					output += "<input type='hidden' name='src' value='\ref[src]'>"
 					output += "<input type='hidden' name='votepollid' value='[pollid]'>"
 					output += "<input type='hidden' name='votetype' value='TEXT'>"
@@ -222,7 +222,7 @@
 					output += "<br><b>[optiontext] - [rating]</b>"
 
 				if(!voted)	//Only make this a form if we have not voted yet
-					output += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
+					output += "<form name='cardcomp' action='?src=[REF(src)]' method='get'>"
 					output += "<input type='hidden' name='src' value='\ref[src]'>"
 					output += "<input type='hidden' name='votepollid' value='[pollid]'>"
 					output += "<input type='hidden' name='votetype' value='NUMVAL'>"
@@ -308,7 +308,7 @@
 				output += "<font size='2'>Poll runs from <b>[pollstarttime]</b> until <b>[pollendtime]</b></font><p>"
 
 				if(!voted)	//Only make this a form if we have not voted yet
-					output += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
+					output += "<form name='cardcomp' action='?src=[REF(src)]' method='get'>"
 					output += "<input type='hidden' name='src' value='\ref[src]'>"
 					output += "<input type='hidden' name='votepollid' value='[pollid]'>"
 					output += "<input type='hidden' name='votetype' value='MULTICHOICE'>"

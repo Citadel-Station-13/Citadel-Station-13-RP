@@ -186,7 +186,7 @@
 			for(var/re in injection_chems)
 				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
 				if(C)
-					dat += "<A href='?src=\ref[src];inject=[C.id]'>Inject [C.name]</A><BR>"
+					dat += "<A href='?src=[REF(src)];inject=[C.id]'>Inject [C.name]</A><BR>"
 		else
 			for(var/re in injection_chems)
 				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
@@ -194,18 +194,18 @@
 					dat += "<span class='linkOff'>Inject [C.name]</span><BR>"
 
 	dat += "<h3>[name] Status</h3>"
-	dat += "<A id='refbutton' href='?src=\ref[src];refresh=1'>Refresh</A>"
-	dat += "<A href='?src=\ref[src];eject=1'>Eject All</A>"
-	dat += "<A href='?src=\ref[src];port=1'>Eject port: [eject_port]</A>"
+	dat += "<A id='refbutton' href='?src=[REF(src)];refresh=1'>Refresh</A>"
+	dat += "<A href='?src=[REF(src)];eject=1'>Eject All</A>"
+	dat += "<A href='?src=[REF(src)];port=1'>Eject port: [eject_port]</A>"
 	if(!cleaning)
-		dat += "<A href='?src=\ref[src];clean=1'>Self-Clean</A>"
+		dat += "<A href='?src=[REF(src)];clean=1'>Self-Clean</A>"
 	else
 		dat += "<span class='linkOff'>Self-Clean</span>"
 	if(delivery)
 		dat += "<BR><h3>Cargo Compartment</h3><BR>"
-		dat += "<A href='?src=\ref[src];deliveryslot=1'>Active Slot: [delivery_tag]</A>"
+		dat += "<A href='?src=[REF(src)];deliveryslot=1'>Active Slot: [delivery_tag]</A>"
 		if(islist(deliverylists[delivery_tag]))
-			dat += "<A href='?src=\ref[src];slot_eject=1'>Eject Slot</A>"
+			dat += "<A href='?src=[REF(src)];slot_eject=1'>Eject Slot</A>"
 
 	dat += "<div class='statusDisplay'>"
 
@@ -228,7 +228,7 @@
 		dat += "<font color='red'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
 
 	if(analyzer && !synced)
-		dat += "<A href='?src=\ref[src];sync=1'>Sync Files</A><BR>"
+		dat += "<A href='?src=[REF(src)];sync=1'>Sync Files</A><BR>"
 
 	//Cleaning and there are still un-preserved items
 	if(cleaning && length(contents - items_preserved))

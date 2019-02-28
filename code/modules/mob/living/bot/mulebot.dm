@@ -78,24 +78,24 @@
 			dat += "<HR>Controls are unlocked<BR><BR>"
 
 		if(!locked || issilicon(user))
-			dat += "<A href='byond://?src=\ref[src];op=power'>Toggle power</A><BR>"
-			dat += "<A href='byond://?src=\ref[src];op=stop'>Stop</A><BR>"
-			dat += "<A href='byond://?src=\ref[src];op=go'>Proceed</A><BR>"
-			dat += "<A href='byond://?src=\ref[src];op=home'>Return to home</A><BR>"
-			dat += "<A href='byond://?src=\ref[src];op=destination'>Set destination</A><BR>"
-			dat += "<A href='byond://?src=\ref[src];op=sethome'>Set home</A><BR>"
-			dat += "<A href='byond://?src=\ref[src];op=autoret'>Toggle auto return home</A> ([auto_return ? "On" : "Off"])<BR>"
-			dat += "<A href='byond://?src=\ref[src];op=cargotypes'>Toggle non-standard cargo</A> ([crates_only ? "Off" : "On"])<BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=power'>Toggle power</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=stop'>Stop</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=go'>Proceed</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=home'>Return to home</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=destination'>Set destination</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=sethome'>Set home</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=autoret'>Toggle auto return home</A> ([auto_return ? "On" : "Off"])<BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=cargotypes'>Toggle non-standard cargo</A> ([crates_only ? "Off" : "On"])<BR>"
 
 			if(load)
-				dat += "<A href='byond://?src=\ref[src];op=unload'>Unload now</A><BR>"
+				dat += "<A href='byond://?src=[REF(src)];op=unload'>Unload now</A><BR>"
 			dat += "<HR>The maintenance hatch is closed.<BR>"
 
 	else
 		if(!issilicon(user))
 			dat += "The maintenance hatch is open.<BR><BR>"
 
-			dat += "<A href='byond://?src=\ref[src];op=safety'>Toggle safety</A> ([safety ? "On" : "Off - DANGER"])<BR>"
+			dat += "<A href='byond://?src=[REF(src)];op=safety'>Toggle safety</A> ([safety ? "On" : "Off - DANGER"])<BR>"
 		else
 			dat += "The bot is in maintenance mode and cannot be controlled.<BR>"
 
