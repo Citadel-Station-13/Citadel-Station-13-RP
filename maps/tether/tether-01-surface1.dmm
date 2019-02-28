@@ -2318,6 +2318,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/mineral/input,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aek" = (
@@ -2327,6 +2328,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
+/obj/machinery/mineral/mint,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "ael" = (
@@ -2335,7 +2337,11 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/random/trash_pile,
+/obj/machinery/mineral/output,
+/obj/item/weapon/moneybag{
+	anchored = 1;
+	name = "money bag"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aem" = (
@@ -2345,6 +2351,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aen" = (
