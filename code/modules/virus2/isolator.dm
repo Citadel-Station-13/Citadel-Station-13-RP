@@ -80,9 +80,9 @@
 							"name" = "[D.get_species()] [B.name]", \
 							"dna" = B.data["blood_DNA"], \
 							"unique_id" = V.uniqueID, \
-							"reference" = "\ref[V]", \
+							"reference" = REF(V), \
 							"is_in_database" = !!R, \
-							"record" = "\ref[R]")))
+							"record" = REF(R))))
 
 				if (pathogen_pool.len > 0)
 					data["pathogen_pool"] = pathogen_pool
@@ -91,7 +91,7 @@
 			var/list/db[0]
 			for (var/ID in virusDB)
 				var/datum/data/record/r = virusDB[ID]
-				db.Add(list(list("name" = r.fields["name"], "record" = "\ref[r]")))
+				db.Add(list(list("name" = r.fields["name"], "record" = REF(r))))
 
 			if (db.len > 0)
 				data["database"] = db

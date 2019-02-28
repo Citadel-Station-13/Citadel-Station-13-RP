@@ -12,7 +12,7 @@
 	var/ref
 
 /weakref/New(datum/D)
-	ref = "\ref[D]"
+	ref = REF(D)
 
 /weakref/Destroy()
 	// A weakref datum should not be manually destroyed as it is a shared resource,

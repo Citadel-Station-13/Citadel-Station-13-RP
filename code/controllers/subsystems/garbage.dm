@@ -181,7 +181,7 @@ SUBSYSTEM_DEF(garbage)
 		HardDelete(D)
 		return
 	var/gctime = world.time
-	var/refid = "\ref[D]"
+	var/refid = REF(D)
 
 	D.gc_destroyed = gctime
 	var/list/queue = queues[level]
@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(garbage)
 	++delslasttick
 	++totaldels
 	var/type = D.type
-	var/refID = "\ref[D]"
+	var/refID = REF(D)
 
 	del(D)
 

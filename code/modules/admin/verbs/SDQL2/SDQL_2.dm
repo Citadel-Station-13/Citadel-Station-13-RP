@@ -652,7 +652,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			obj_count_finished = select_refs
 			for(var/i in found)
 				SDQL_print(i, text_list, print_nulls)
-				select_refs["\ref[i]"] = TRUE
+				select_refs[REF(i)] = TRUE
 				SDQL2_TICK_CHECK
 				SDQL2_HALT_CHECK
 			select_text = text_list

@@ -157,9 +157,9 @@
 				var/pda[0]
 				pda["name"] = "[P]"
 				pda["owner"] = "[P.owner]"
-				pda["ref"] = "\ref[P]"
+				pda["ref"] = REF(P)
 				if(P.owner == user.current_pda_messaging)
-					data["current_ref"] = "\ref[P]"
+					data["current_ref"] = REF(P)
 				pdas[++pdas.len] = pda
 
 		data["pdas"] = pdas

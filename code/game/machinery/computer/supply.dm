@@ -115,7 +115,7 @@
 					"manifest" = uniquelist(P.manifest),
 					"random" = P.num_contained,
 					"expand" = 0,
-					"ref" = "\ref[P]"
+					"ref" = REF(P)
 				)
 
 			if(P in expanded_packs)
@@ -129,7 +129,7 @@
 	// List is nested so both the list of orders, and the list of elements in each order, can be iterated over
 	for(var/datum/supply_order/S in supply_controller.order_history)
 		orders[++orders.len] = list(
-				"ref" = "\ref[S]",
+				"ref" = REF(S),
 				"status" = S.status,
 				"entries" = list(
 						list("field" = "Supply Pack", "entry" = S.name),
@@ -146,7 +146,7 @@
 	// Compile exported crates
 	for(var/datum/exported_crate/E in supply_controller.exported_crates)
 		receipts[++receipts.len] = list(
-				"ref" = "\ref[E]",
+				"ref" = REF(E),
 				"contents" = E.contents,
 				"error" = E.contents["error"],
 				"title" = list(

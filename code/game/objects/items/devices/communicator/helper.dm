@@ -210,7 +210,7 @@
 		unit[++unit.len] = list("tab" = "Code", "val" = S.code)
 		unit[++unit.len] = list("tab" = "Frequency", "val" = S.frequency)
 
-		signalers[++signalers.len] = list("ref" = "\ref[S]", "status" = unit)
+		signalers[++signalers.len] = list("ref" = REF(S), "status" = unit)
 
 	return signalers
 
@@ -350,7 +350,7 @@
 				if(!G.local_mode)
 					cumulative.local_mode = FALSE // It is detecting long-range
 
-		gpsdata["ref"] = "\ref[G]"
+		gpsdata["ref"] = REF(G)
 		gpsdata["tag"] = G.gps_tag
 		gpsdata["power"] = G.tracking
 		gpsdata["local_mode"] = G.local_mode
@@ -455,7 +455,7 @@
 	var/orders[0]
 	for(var/datum/supply_order/S in supply_controller.order_history)
 		orders[++orders.len] = list(
-				"ref" = "\ref[S]",
+				"ref" = REF(S),
 				"status" = S.status,
 				"entries" = list(
 						list("field" = "Supply Pack", "entry" = S.name),
@@ -478,7 +478,7 @@
 	var/receipts[0]
 	for(var/datum/exported_crate/E in supply_controller.exported_crates)
 		receipts[++receipts.len] = list(
-				"ref" = "\ref[E]",
+				"ref" = REF(E),
 				"contents" = E.contents,
 				"error" = E.contents["error"],
 				"title" = list(
@@ -504,7 +504,7 @@
 					"manifest" = uniquelist(P.manifest),
 					"random" = P.num_contained,
 					"expand" = 0,
-					"ref" = "\ref[P]"
+					"ref" = REF(P)
 				)
 
 			if(P in internal_data["supply_pack_expanded"])

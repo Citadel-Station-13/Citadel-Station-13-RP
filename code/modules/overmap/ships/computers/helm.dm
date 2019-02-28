@@ -99,7 +99,7 @@
 		rdata["name"] = R.fields["name"]
 		rdata["x"] = R.fields["x"]
 		rdata["y"] = R.fields["y"]
-		rdata["reference"] = "\ref[R]"
+		rdata["reference"] = REF(R)
 		locations.Add(list(rdata))
 
 	data["locations"] = locations

@@ -16,7 +16,7 @@
 		return
 
 	var/title = ""
-	var/refid = "\ref[D]"
+	var/refid = REF(D)
 	var/icon/sprite
 	var/hash
 

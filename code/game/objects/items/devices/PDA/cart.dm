@@ -334,7 +334,7 @@ var/list/civilian_cartridges = list(
 	if(mode == 44 || mode == 441)
 		var/medData[0]
 		for(var/datum/data/record/R in sortRecord(data_core.general))
-			medData[++medData.len] = list(Name = R.fields["name"],"ref" = "\ref[R]")
+			medData[++medData.len] = list(Name = R.fields["name"],"ref" = REF(R))
 		values["medical_records"] = medData
 
 		if(istype(active2, /datum/data/record) && (active2 in data_core.medical))
@@ -348,7 +348,7 @@ var/list/civilian_cartridges = list(
 	if(mode == 45 || mode == 451)
 		var/secData[0]
 		for (var/datum/data/record/R in sortRecord(data_core.general))
-			secData[++secData.len] = list(Name = R.fields["name"], "ref" = "\ref[R]")
+			secData[++secData.len] = list(Name = R.fields["name"], "ref" = REF(R))
 		values["security_records"] = secData
 
 		if(istype(active3, /datum/data/record) && (active3 in data_core.security))
@@ -376,7 +376,7 @@ var/list/civilian_cartridges = list(
 				for(var/mob/living/bot/B in SC.botlist)
 					botsCount++
 					if(B.loc)
-						botsData[++botsData.len] = list("Name" = sanitize(B.name), "Location" = sanitize(B.loc.loc.name), "ref" = "\ref[B]")
+						botsData[++botsData.len] = list("Name" = sanitize(B.name), "Location" = sanitize(B.loc.loc.name), "ref" = REF(B))
 
 			if(!botsData.len)
 				botsData[++botsData.len] = list("Name" = "No bots found", "Location" = "Invalid", "ref"= null)
@@ -410,7 +410,7 @@ var/list/civilian_cartridges = list(
 			muleData["paused"] = M.paused
 			muleData["home"] = M.homeName
 			muleData["target"] = M.targetName
-			muleData["ref"] = "\ref[M]"
+			muleData["ref"] = REF(M)
 			muleData["load"] = M.load ? M.load.name : "Nothing"
 
 			mulebotsData[++mulebotsData.len] = muleData.Copy()

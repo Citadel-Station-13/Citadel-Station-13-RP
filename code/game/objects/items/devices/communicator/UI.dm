@@ -24,7 +24,7 @@
 	//Now for ghosts who we pretend have communicators.
 	for(var/mob/observer/dead/O in known_devices)
 		if(O.client && O.client.prefs.communicator_visibility == 1 && O.exonet)
-			communicators[++communicators.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = "\ref[O]")
+			communicators[++communicators.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = REF(O))
 
 	//Lists all the other communicators that we invited.
 	for(var/obj/item/device/communicator/comm in voice_invites)
@@ -34,7 +34,7 @@
 	//Ghosts we invited.
 	for(var/mob/observer/dead/O in voice_invites)
 		if(O.exonet && O.client)
-			invites[++invites.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = "\ref[O]")
+			invites[++invites.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = REF(O))
 
 	//Communicators that want to talk to us.
 	for(var/obj/item/device/communicator/comm in voice_requests)
@@ -44,7 +44,7 @@
 	//Ghosts that want to talk to us.
 	for(var/mob/observer/dead/O in voice_requests)
 		if(O.exonet && O.client)
-			requests[++requests.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = "\ref[O]")
+			requests[++requests.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = REF(O))
 
 	//Now for all the voice mobs inside the communicator.
 	for(var/mob/living/voice/voice in contents)

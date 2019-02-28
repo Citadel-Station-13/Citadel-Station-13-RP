@@ -549,10 +549,10 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		var/count = 0
 		for (var/obj/item/device/pda/P in PDAs)
 			if (!P.owner||P.toff||P == src||P.hidden)       continue
-			if(conversations.Find("\ref[P]"))
-				convopdas.Add(list(list("Name" = "[P]", "Reference" = "\ref[P]", "Detonate" = "[P.detonate]", "inconvo" = "1")))
+			if(conversations.Find(REF(P)))
+				convopdas.Add(list(list("Name" = "[P]", "Reference" = REF(P), "Detonate" = "[P.detonate]", "inconvo" = "1")))
 			else
-				pdas.Add(list(list("Name" = "[P]", "Reference" = "\ref[P]", "Detonate" = "[P.detonate]", "inconvo" = "0")))
+				pdas.Add(list(list("Name" = "[P]", "Reference" = REF(P), "Detonate" = "[P.detonate]", "inconvo" = "0")))
 			count++
 
 		data["convopdas"] = convopdas
@@ -1104,7 +1104,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			to_chat(U, "ERROR: Messaging server rejected your message. Reason: contains '[send_result]'.")
 			return
 
-		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
+		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = REF(P))))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
 		for(var/mob/M in player_list)
 			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
@@ -1114,8 +1114,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					continue
 				M.show_message("<span class='game say'>PDA Message - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t]</span></span>")
 
-		if(!conversations.Find("\ref[P]"))
-			conversations.Add("\ref[P]")
+		if(!conversations.Find(REF(P)))
+			conversations.Add(REF(P))
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
