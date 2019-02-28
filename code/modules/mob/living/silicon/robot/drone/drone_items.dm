@@ -545,7 +545,7 @@
 		else if(activated(O))
 			module_string += text("[O]: <B>Activated</B><BR>")
 		else
-			module_string += text("[O]: <A HREF=?src=[REF(src)];act=\ref[O]>Activate</A><BR>")
+			module_string += text("[O]: <A HREF=?src=[REF(src)];act=[REF(O)]>Activate</A><BR>")
 
 		if((istype(O,/obj/item/weapon) || istype(O,/obj/item/device)) && !(istype(O,/obj/item/stack/cable_coil)))
 			tools += module_string

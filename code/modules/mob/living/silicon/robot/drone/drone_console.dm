@@ -32,7 +32,7 @@
 		dat += "<BR>[D.real_name] ([D.stat == 2 ? "<font color='red'>INACTIVE</FONT>" : "<font color='green'>ACTIVE</FONT>"])"
 		dat += "<font dize = 9><BR>Cell charge: [D.cell.charge]/[D.cell.maxcharge]."
 		dat += "<BR>Currently located in: [get_area(D)]."
-		dat += "<BR><A href='?src=[REF(src)];resync=\ref[D]'>Resync</A> | <A href='?src=[REF(src)];shutdown=\ref[D]'>Shutdown</A></font>"
+		dat += "<BR><A href='?src=[REF(src)];resync=[REF(D)]'>Resync</A> | <A href='?src=[REF(src)];shutdown=[REF(D)]'>Shutdown</A></font>"
 
 	dat += "<BR><BR><B>Request drone presence in area:</B> <A href='?src=[REF(src)];setarea=1'>[drone_call_area]</A> (<A href='?src=[REF(src)];ping=1'>Send ping</A>)"
 

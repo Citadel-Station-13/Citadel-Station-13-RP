@@ -114,7 +114,7 @@
 					dat += "<CENTER><B>Virus Database</B></CENTER>"
 					for (var/ID in virusDB)
 						var/datum/data/record/v = virusDB[ID]
-						dat += "<br><a href='?src=[REF(src)];vir=\ref[v]'>[v.fields["name"]]</a>"
+						dat += "<br><a href='?src=[REF(src)];vir=[REF(v)]'>[v.fields["name"]]</a>"
 
 					dat += "<br><a href='?src=[REF(src)];screen=1'>Back</a>"
 				if(6.0)
@@ -228,10 +228,10 @@
 			if(href_list["vir"])
 				var/datum/data/record/v = locate(href_list["vir"])
 				src.temp = "<center>GNAv2 based virus lifeform V-[v.fields["id"]]</center>"
-				src.temp += "<br><b>Name:</b> <A href='?src=[REF(src)];field=vir_name;edit_vir=\ref[v]'>[v.fields["name"]]</A>"
+				src.temp += "<br><b>Name:</b> <A href='?src=[REF(src)];field=vir_name;edit_vir=[REF(v)]'>[v.fields["name"]]</A>"
 				src.temp += "<br><b>Antigen:</b> [v.fields["antigen"]]"
 				src.temp += "<br><b>Spread:</b> [v.fields["spread type"]] "
-				src.temp += "<br><b>Details:</b><br> <A href='?src=[REF(src)];field=vir_desc;edit_vir=\ref[v]'>[v.fields["description"]]</A>"
+				src.temp += "<br><b>Details:</b><br> <A href='?src=[REF(src)];field=vir_desc;edit_vir=[REF(v)]'>[v.fields["description"]]</A>"
 
 			if (href_list["del_all"])
 				src.temp = text("Are you sure you wish to delete all records?<br>\n\t<A href='?src=\ref[];temp=1;del_all2=1'>Yes</A><br>\n\t<A href='?src=\ref[];temp=1'>No</A><br>", src, src)

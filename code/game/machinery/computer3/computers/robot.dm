@@ -74,9 +74,9 @@
 					dat += " Independent from AI |"
 				if (istype(usr, /mob/living/silicon))
 					if(issilicon(usr) && is_special_character(usr) && !R.emagged)
-						dat += "<A href='?src=[REF(src)];magbot=\ref[R]'>(<i>Hack</i>)</A> "
-				dat += "<A href='?src=[REF(src)];stopbot=\ref[R]'>(<i>[R.canmove ? "Lockdown" : "Release"]</i>)</A> "
-				dat += "<A href='?src=[REF(src)];killbot=\ref[R]'>(<i>Destroy</i>)</A>"
+						dat += "<A href='?src=[REF(src)];magbot=[REF(R)]'>(<i>Hack</i>)</A> "
+				dat += "<A href='?src=[REF(src)];stopbot=[REF(R)]'>(<i>[R.canmove ? "Lockdown" : "Release"]</i>)</A> "
+				dat += "<A href='?src=[REF(src)];killbot=[REF(R)]'>(<i>Destroy</i>)</A>"
 				dat += "<BR>"
 			dat += "<A href='?src=[REF(src)];screen=0'>(Return to Main Menu)</A><BR>"
 		if(screen == 2)

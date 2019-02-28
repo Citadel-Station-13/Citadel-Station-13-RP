@@ -178,7 +178,7 @@
 
 /obj/item/device/retail_scanner/showoff(mob/user)
 	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];clickitem=\ref[src]>Swipe card or item.</a>",1)
+		M.show_message("[user] holds up [src]. <a HREF=?src=[REF(M)];clickitem=\ref[src]>Swipe card or item.</a>",1)
 
 
 /obj/item/device/retail_scanner/proc/confirm(var/obj/item/I)

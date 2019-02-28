@@ -81,13 +81,13 @@
 						//That's an absorbed person you're checking
 						if(M.absorbed)
 							if(user.absorbed)
-								dat += "<a href='?src=[REF(src)];outsidepick=\ref[O];outsidebelly=\ref[inside_belly]'><span style='color:purple;'>[O]</span></a>"
+								dat += "<a href='?src=[REF(src)];outsidepick=[REF(O)];outsidebelly=\ref[inside_belly]'><span style='color:purple;'>[O]</span></a>"
 								continue
 							else
 								continue
 
 					//Anything else
-					dat += "<a href='?src=[REF(src)];outsidepick=\ref[O];outsidebelly=\ref[inside_belly]'>[O]&#8203;</a>"
+					dat += "<a href='?src=[REF(src)];outsidepick=[REF(O)];outsidebelly=\ref[inside_belly]'>[O]&#8203;</a>"
 
 					//Zero-width space, for wrapping
 					dat += "&#8203;"
@@ -100,9 +100,9 @@
 	for(var/belly in user.vore_organs)
 		var/obj/belly/B = belly
 		if(B == selected)
-			dat += "<li style='float: left'><a href='?src=[REF(src)];bellypick=\ref[B]'><b>[B.name]</b>"
+			dat += "<li style='float: left'><a href='?src=[REF(src)];bellypick=[REF(B)]'><b>[B.name]</b>"
 		else
-			dat += "<li style='float: left'><a href='?src=[REF(src)];bellypick=\ref[B]'>[B.name]"
+			dat += "<li style='float: left'><a href='?src=[REF(src)];bellypick=[REF(B)]'>[B.name]"
 
 		var/spanstyle
 		switch(B.digest_mode)
@@ -170,11 +170,11 @@
 
 					//Absorbed gets special color OOoOOOOoooo
 					if(M.absorbed)
-						dat += "<a href='?src=[REF(src)];insidepick=\ref[O]'><span style='color:purple;'>[O]</span></a>"
+						dat += "<a href='?src=[REF(src)];insidepick=[REF(O)]'><span style='color:purple;'>[O]</span></a>"
 						continue
 
 				//Anything else
-				dat += "<a href='?src=[REF(src)];insidepick=\ref[O]'>[O]</a>"
+				dat += "<a href='?src=[REF(src)];insidepick=[REF(O)]'>[O]</a>"
 
 				//Zero-width space, for wrapping
 				dat += "&#8203;"

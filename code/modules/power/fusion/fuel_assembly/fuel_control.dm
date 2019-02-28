@@ -53,7 +53,7 @@
 		else
 			dat += "<td>[I.cur_assembly ? I.cur_assembly.fuel_type : "NONE"]</td>"
 			if(I.cur_assembly)
-				dat += "<td><a href='?src=[REF(src)];toggle_injecting=\ref[I]'>\[[I.injecting ? "Halt injecting" : "Begin injecting"]\]</a></td>"
+				dat += "<td><a href='?src=[REF(src)];toggle_injecting=[REF(I)]'>\[[I.injecting ? "Halt injecting" : "Begin injecting"]\]</a></td>"
 			else
 				dat += "<td>None</td>"
 			if(I.cur_assembly)

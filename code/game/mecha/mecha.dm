@@ -1422,7 +1422,7 @@
 	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
 	if(src.cargo.len)
 		for(var/obj/O in src.cargo)
-			output += "<a href='?src=[REF(src)];drop_from_cargo=\ref[O]'>Unload</a> : [O]<br>"
+			output += "<a href='?src=[REF(src)];drop_from_cargo=[REF(O)]'>Unload</a> : [O]<br>"
 	else
 		output += "Nothing"
 	output += "</div>"
@@ -1475,15 +1475,15 @@
 						<div class='header'>Equipment</div>
 						<div class='links'>"}
 		for(var/obj/item/mecha_parts/mecha_equipment/W in hull_equipment)
-			output += "Hull Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output += "Hull Module: [W.name] <a href='?src=[REF(W)];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in weapon_equipment)
-			output += "Weapon Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output += "Weapon Module: [W.name] <a href='?src=[REF(W)];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in utility_equipment)
-			output += "Utility Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output += "Utility Module: [W.name] <a href='?src=[REF(W)];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in universal_equipment)
-			output += "Universal Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output += "Universal Module: [W.name] <a href='?src=[REF(W)];detach=1'>Detach</a><br>"
 		for(var/obj/item/mecha_parts/mecha_equipment/W in special_equipment)
-			output += "Special Module: [W.name] <a href='?src=\ref[W];detach=1'>Detach</a><br>"
+			output += "Special Module: [W.name] <a href='?src=[REF(W)];detach=1'>Detach</a><br>"
 		output += {"<b>Available hull slots:</b> [max_hull_equip-hull_equipment.len]<br>
 		 <b>Available weapon slots:</b> [max_weapon_equip-weapon_equipment.len]<br>
 		 <b>Available utility slots:</b> [max_utility_equip-utility_equipment.len]<br>

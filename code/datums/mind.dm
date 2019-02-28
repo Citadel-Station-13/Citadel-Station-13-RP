@@ -140,8 +140,8 @@
 				out += "(<font color='green'>complete</font>)"
 			else
 				out += "(<font color='red'>incomplete</font>)"
-			out += " <a href='?src=[REF(src)];obj_completed=\ref[O]'>\[toggle\]</a>"
-			out += " <a href='?src=[REF(src)];obj_delete=\ref[O]'>\[remove\]</a><br>"
+			out += " <a href='?src=[REF(src)];obj_completed=[REF(O)]'>\[toggle\]</a>"
+			out += " <a href='?src=[REF(src)];obj_delete=[REF(O)]'>\[remove\]</a><br>"
 			num++
 		out += "<br><a href='?src=[REF(src)];obj_announce=1'>\[announce objectives\]</a>"
 

@@ -35,7 +35,7 @@
 		for(var/datum/skill/S in SKILLS[V])
 			var/level = pref.skills[S.ID]
 			. += "<tr style='text-align:left;'>"
-			. += "<th><a href='?src=[REF(src)];skillinfo=\ref[S]'>[S.name]</a></th>"
+			. += "<th><a href='?src=[REF(src)];skillinfo=[REF(S)]'>[S.name]</a></th>"
 			. += skill_to_button(S, "Untrained", level, SKILL_NONE)
 			// secondary skills don't have an amateur level
 			if(S.secondary)

@@ -32,7 +32,7 @@
 				continue
 			dat += {"
 			<td>
-				<center><a href='?src=[REF(src)];[fileop]=\ref[F]'>
+				<center><a href='?src=[REF(src)];[fileop]=[REF(F)]'>
 					<img src=\ref[F.image]><br>
 					<span>[F.name]</span>
 				</a></center>
@@ -60,7 +60,7 @@
 			continue
 		dat += {"
 		<td>
-			<a href='?src=[REF(src)];[peripheralop]=\ref[C]'>
+			<a href='?src=[REF(src)];[peripheralop]=[REF(C)]'>
 				\icon[C]<br>
 				<span>[C.name]</span>
 			</a>

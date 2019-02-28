@@ -183,7 +183,7 @@ Programs are a file that can be executed
 		dat += "<h3>[computer.hdd]</h3>"
 		for(var/datum/file/F in computer.hdd.files)
 			if(istype(F,typekey))
-				dat += topic_link(src,"[linkop]=\ref[F]",F.name) + "<br>"
+				dat += topic_link(src,"[linkop]=[REF(F)]",F.name) + "<br>"
 		if(computer.hdd.files.len == 0)
 			dat += "<i>No files</i><br>"
 		dat += "<br>"
@@ -194,7 +194,7 @@ Programs are a file that can be executed
 		else
 			dat += "<h3>[computer.floppy] - [topic_link(src,"eject_disk","Eject")]</h3>"
 			for(var/datum/file/F in computer.floppy.inserted.files)
-				dat += topic_link(src,"[linkop]=\ref[F]",F.name) + "<br>"
+				dat += topic_link(src,"[linkop]=[REF(F)]",F.name) + "<br>"
 			if(computer.floppy.inserted.files.len == 0)
 				dat += "<i>No files</i><br>"
 			dat += "<br>"
@@ -203,7 +203,7 @@ Programs are a file that can be executed
 		dat += "<h3>[computer.cardslot.reader] - [topic_link(src,"eject_card=reader","Eject")]</h3>"
 		var/obj/item/weapon/card/data/D = computer.cardslot.reader
 		for(var/datum/file/F in D.files)
-			dat += topic_link(src,"[linkop]=\ref[F]",F.name) + "<br>"
+			dat += topic_link(src,"[linkop]=[REF(F)]",F.name) + "<br>"
 		if(D.files.len == 0)
 			dat += "<i>No files</i><br>"
 	return dat

@@ -76,7 +76,7 @@
 	var/dat = "<title>[name]</title>"
 
 	for(var/obj/item/weapon/paper/P in src)
-		dat += "<A href='?src=[REF(src)];remove=\ref[P]'>Remove</A> <A href='?src=[REF(src)];rename=\ref[P]'>Rename</A> - <A href='?src=[REF(src)];read=\ref[P]'>[P.name]</A><BR>"
+		dat += "<A href='?src=[REF(src)];remove=[REF(P)]'>Remove</A> <A href='?src=[REF(src)];rename=[REF(P)]'>Rename</A> - <A href='?src=[REF(src)];read=[REF(P)]'>[P.name]</A><BR>"
 	for(var/obj/item/weapon/photo/Ph in src)
 		dat += "<A href='?src=[REF(src)];remove=\ref[Ph]'>Remove</A> <A href='?src=[REF(src)];rename=\ref[Ph]'>Rename</A> - <A href='?src=[REF(src)];look=\ref[Ph]'>[Ph.name]</A><BR>"
 	for(var/obj/item/weapon/paper_bundle/Pb in src)

@@ -157,7 +157,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			// Inventory
 			dat += "<H3>Inventory</H3><BR>"
 			for(var/obj/item/weapon/book/b in inventory)
-				dat += "[b.name] <A href='?src=[REF(src)];delbook=\ref[b]'>(Delete)</A><BR>"
+				dat += "[b.name] <A href='?src=[REF(src)];delbook=[REF(b)]'>(Delete)</A><BR>"
 			dat += "<A href='?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
 		if(2)
 			// Checked Out
@@ -175,7 +175,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 				else
 					timedue = round(timedue)
 				dat += {"\"[b.bookname]\", Checked out to: [b.mobname]<BR>--- Taken: [timetaken] minutes ago, Due: in [timedue] minutes<BR>
-				<A href='?src=[REF(src)];checkin=\ref[b]'>(Check In)</A><BR><BR>"}
+				<A href='?src=[REF(src)];checkin=[REF(b)]'>(Check In)</A><BR><BR>"}
 			dat += "<A href='?src=[REF(src)];switchscreen=0'>(Return to main menu)</A><BR>"
 		if(3)
 			// Check Out a Book

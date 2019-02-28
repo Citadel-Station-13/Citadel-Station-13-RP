@@ -27,11 +27,11 @@
 		var/mob/M = player.current
 		dat += "<tr>"
 		if(M)
-			dat += "<td><a href='?src=[REF(src)];adminplayeropts=\ref[M]'>[M.real_name]/([player.key])</a>"
+			dat += "<td><a href='?src=[REF(src)];adminplayeropts=[REF(M)]'>[M.real_name]/([player.key])</a>"
 			if(!M.client)      dat += " <i>(logged out)</i>"
 			if(M.stat == DEAD) dat += " <b><font color=red>(DEAD)</font></b>"
 			dat += "</td>"
-			dat += "<td>\[<A HREF='?src=\ref[caller];adminplayeropts=\ref[M]'>PP</A>]\[<A href='?src=\ref[caller];priv_msg=\ref[M]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=\ref[M]'>TP</A>\]</td>"
+			dat += "<td>\[<A HREF='?src=\ref[caller];adminplayeropts=[REF(M)]'>PP</A>]\[<A href='?src=\ref[caller];priv_msg=[REF(M)]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=[REF(M)]'>TP</A>\]</td>"
 		else
 			dat += "<td>[player.key] <i>Mob not found!</i></td>"
 		dat += "</tr>"
@@ -45,7 +45,7 @@
 			while(!istype(disk_loc, /turf))
 				if(istype(disk_loc, /mob))
 					var/mob/M = disk_loc
-					dat += "carried by <a href='?src=\ref[caller];adminplayeropts=\ref[M]'>[M.real_name]</a> "
+					dat += "carried by <a href='?src=\ref[caller];adminplayeropts=[REF(M)]'>[M.real_name]</a> "
 				if(istype(disk_loc, /obj))
 					var/obj/O = disk_loc
 					dat += "in \a [O.name] "

@@ -119,7 +119,7 @@
 			html += "<td>[EM.name]</td>"
 			html += "<td>[worldtime2stationtime(ends_at)]</td>"
 			html += "<td>[ends_in]</td>"
-			html += "<td><A align='right' href='?src=[REF(src)];stop=\ref[E]'>Stop</A></td>"
+			html += "<td><A align='right' href='?src=[REF(src)];stop=[REF(E)]'>Stop</A></td>"
 			html += "</tr>"
 		html += "</table>"
 		html += "</div>"
