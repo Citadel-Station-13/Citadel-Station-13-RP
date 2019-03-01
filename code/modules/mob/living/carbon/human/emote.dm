@@ -658,7 +658,7 @@
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
 //Citadel changes starts here
-		if ("fingerguns")
+		if ("fguns")
 			message = "points some fingerguns."
 			m_type = 1
 
