@@ -1,4 +1,5 @@
-/obj/item/weapon/dice/throw_impact(atom/hit_atom)
+/obj/item/weapon/dice/_throw_impact(atom/hit_atom)
+	. = ..()
 	result = rand(1, sides)
 	icon_state = "[name][result]"
 

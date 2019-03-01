@@ -11,25 +11,24 @@
 	if(!QDELING(src))
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 10)
 
-/obj/item/weapon/energy_net/throw_impact(atom/hit_atom)
+/obj/item/weapon/energy_net/_throw_impact(atom/hit_atom)
 	. = ..()
-
+	if(. == HITBY_CAUGHT)
+		return
 	var/mob/living/M = hit_atom
 
-	if(!istype(M) || locate(/obj/effect/energy_net) in M.loc)
-		qdel(src)
-		return 0
-	ensnare(M)
-
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 10)
+	if(!ensnare(M))
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 10)
 
 /obj/item/weapon/energy_net/proc/ensnare(mob/living/M)
 	var/turf/T = get_turf(M)
-	if(T)
+	if(T && istype(M) && !(locate(/obj/effect/energy_net) in M.loc))
 		var/obj/effect/energy_net/net = new net_type(T)
 		if(net.buckle_mob(M))
 			T.visible_message("[M] was caught in an energy net!")
 		qdel(src)
+		return TRUE
+	return FALSE
 
 /obj/effect/energy_net
 	name = "energy net"

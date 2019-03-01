@@ -30,7 +30,7 @@
 	if(. == HITBY_CAUGHT)
 		return		//caught
 	if(isGlass && (throwingdatum.thrown_intent == I_HURT))
-		if(speed >= throw_speed) //not as reliable as smashing directly
+		if(throwingdatum.speed >= throw_speed) //not as reliable as smashing directly
 			if(reagents)
 				hit_atom.visible_message("<span class='notice'>The contents of [src] splash all over [hit_atom]!</span>")
 				reagents.splash(hit_atom, reagents.total_volume)

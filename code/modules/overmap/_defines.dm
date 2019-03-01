@@ -32,7 +32,7 @@ proc/toggle_move_stars(zlevel, direction)
 						T.icon_state = "speedspace_[gen_dir]_[rand(1,15)]"
 						for(var/atom/movable/AM in T)
 							if (!AM.anchored)
-								AM.throw_at(get_step(T,reverse_direction(direction)), 5, 1)
+								AM.safe_throw_at(get_step(T,reverse_direction(direction)), 5, 1)
 
 
 //list used to cache empty zlevels to avoid nedless map bloat

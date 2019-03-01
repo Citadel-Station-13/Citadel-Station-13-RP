@@ -208,14 +208,15 @@ var/global/list/PDA_Manifest = list()
 	anchored = 0
 	w_class = ITEMSIZE_LARGE
 	force = 0.0
-	throwforce = 0.0
+	throwforce = 0
 	throw_speed = 1
 	throw_range = 20
 	flags = CONDUCT
 
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
-		user.drop_item()
-		src.throw_at(target, throw_range, throw_speed, user)
+/obj/item/weapon/beach_ball/afterattack(atom/target, mob/user)
+	. = ..()
+	drop_item()
+	safe_throw_at(target, throw_range, throw_speed, user)
 
 /obj/effect/stop
 	var/victim = null

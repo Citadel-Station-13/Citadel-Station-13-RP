@@ -139,7 +139,7 @@
 				spawn(2)
 					playsound(target, crack_sound, 40, 1)
 				visible_message("<span class='notice'>\The [T] is snatched by \the [src]!</span>")
-				T.throw_at(get_turf(firer), 7, 1, src)
+				T.safe_throw_at(get_turf(firer), 7, 1, src)
 				success = TRUE
 	else if(isliving(target) && !done_mob_unique)
 		var/mob/living/L = target
@@ -164,7 +164,7 @@
 						ranged_disarm(L)
 					else
 						L.visible_message("<span class='danger'>\The [src] sends \the [L] stumbling backwards.</span>")
-						L.throw_at(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
+						L.safe_throw_at(get_turf(get_step(L,get_dir(firer,L))), 10, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
 				if(I_GRAB)
@@ -172,7 +172,7 @@
 					spawn(2)
 						playsound(STurf, crack_sound, 60, 1)
 					L.visible_message("<span class='critical'>\The [src] rips [L] towards \the [firer]!</span>")
-					L.throw_at(get_turf(get_step(firer,get_dir(firer,L))), 6, 1, src)
+					L.safe_throw_at(get_turf(get_step(firer,get_dir(firer,L))), 10, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
 	else if(istype(target, /obj/structure))

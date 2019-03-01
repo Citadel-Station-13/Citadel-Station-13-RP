@@ -80,17 +80,19 @@ var/global/list/ashtray_cache = list()
 	return
 
 /obj/item/weapon/material/ashtray/throw_impact(atom/hit_atom)
+	. = ..()
+	if(. == HITBY_BLOCKED)
+		return
 	if (health > 0)
 		health = max(0,health - 3)
 		if (contents.len)
 			src.visible_message("<span class='danger'>\The [src] slams into [hit_atom], spilling its contents!</span>")
-		for (var/obj/item/clothing/mask/smokable/cigarette/O in contents)
-			O.loc = src.loc
+		for(var/obj/item/clothing/mask/smokable/cigarette/O in contents)
+			O.forceMove(drop_location())
 		if (health < 1)
 			shatter()
 			return
 		update_icon()
-	return ..()
 
 /obj/item/weapon/material/ashtray/plastic/New(var/newloc)
 	..(newloc, "plastic")

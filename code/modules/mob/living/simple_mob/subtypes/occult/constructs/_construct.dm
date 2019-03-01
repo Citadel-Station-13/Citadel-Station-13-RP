@@ -41,6 +41,8 @@
 	max_n2 = 0
 	minbodytemp = 0
 
+	spacewalk = TRUE
+
 	shock_resist = 0.1 //Electricity isn't very effective on stone, especially that from hell.
 	poison_resist = 1.0
 
@@ -145,10 +147,6 @@
 	msg += "*---------*</span>"
 
 	user << msg
-
-//Constructs levitate, can fall from a shuttle with no harm, and are piloted by either damned spirits or some otherworldly entity. Let 'em float in space.
-/mob/living/simple_mob/construct/Process_Spacemove()
-	return 1
 
 /*
 // Glowing Procs

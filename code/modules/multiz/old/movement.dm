@@ -133,7 +133,7 @@
 	if(hovering)
 		return TRUE
 
-	if(Process_Spacemove())
+	if(process_spacemove(NONE))
 		return TRUE
 
 	if(Check_Shoegrip())	//scaling hull with magboots
@@ -148,7 +148,7 @@
 	if(hovering)
 		return TRUE
 
-	if(Process_Spacemove()) //Checks for active jetpack
+	if(process_spacemove(NONE)) //Checks for active jetpack
 		return TRUE
 
 	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"

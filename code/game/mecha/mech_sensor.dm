@@ -5,7 +5,7 @@
 	desc = "Regulates mech movement."
 	anchored = TRUE
 	density = TRUE
-	passflags = LETPASSTHROW
+	pass_flags = LETPASSTHROW
 	use_power = 1
 	layer = ON_WINDOW_LAYER
 	power_channel = EQUIP

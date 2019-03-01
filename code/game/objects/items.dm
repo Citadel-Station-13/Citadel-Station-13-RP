@@ -262,17 +262,6 @@
 			itempush = 0 //too light to push anything
 		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
 
-/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force)
-	thrownby = thrower
-	callback = CALLBACK(src, .proc/after_throw, callback) //replace their callback with our own
-	. = ..(target, range, speed, thrower, spin, diagonals_first, callback, force)
-
-/obj/item/proc/after_throw(datum/callback/callback)
-	if (callback) //call the original callback
-		. = callback.Invoke()
-	throw_speed = initial(throw_speed) //explosions change this.
-	//item_flags &= ~IN_INVENTORY
-
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))
 		//If the item is part of a cyborg module, equip it

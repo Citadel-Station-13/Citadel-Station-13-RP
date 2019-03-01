@@ -32,16 +32,16 @@
 	slot_flags = SLOT_HOLSTER
 
 // POCKET SAND!
-/obj/item/weapon/ore/glass/throw_impact(atom/hit_atom)
-	..()
+/obj/item/weapon/ore/glass/_throw_impact(atom/hit_atom)
+	. = ..()
+	if(. == HITBY_CAUGHT)
+		return
 	var/mob/living/carbon/human/H = hit_atom
 	if(istype(H) && H.has_eyes() && prob(85))
-		H << "<span class='danger'>Some of \the [src] gets in your eyes!</span>"
+		to_chat(H, "<span class='danger'>Some of [src] gets in your eyes!</span>")
 		H.Blind(5)
 		H.eye_blurry += 10
-		spawn(1)
-			if(istype(loc, /turf/)) qdel(src)
-
+		qdel(src)
 
 /obj/item/weapon/ore/phoron
 	name = "phoron crystals"
