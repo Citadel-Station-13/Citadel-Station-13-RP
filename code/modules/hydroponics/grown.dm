@@ -165,8 +165,9 @@
 			return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
-	if(seed) seed.thrown_at(src,hit_atom)
-	..()
+	if(seed)
+		seed.thrown_at(src,hit_atom)
+	return ..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/attackby(var/obj/item/weapon/W, var/mob/living/user)
 

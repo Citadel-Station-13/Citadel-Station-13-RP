@@ -46,6 +46,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 //Add an entry to overlays, assuming it exists
 /mob/living/carbon/human/proc/apply_layer(cache_index)
+	remove_layer(cache_index)
 	if((. = overlays_standing[cache_index]))
 		add_overlay(.)
 

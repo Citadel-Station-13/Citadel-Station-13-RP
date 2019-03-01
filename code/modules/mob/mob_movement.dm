@@ -371,86 +371,12 @@
 /mob/proc/Post_Incorpmove()
 	return
 
-///Process_Spacemove
-///Called by /client/Move()
-///For moving in space
-///Return 1 for movement 0 for none
-/mob/proc/Process_Spacemove(var/check_drift = 0)
-
-	if(!Check_Dense_Object()) //Nothing to push off of so end here
-		update_floating(0)
-		return 0
-
-	update_floating(1)
-
-	if(restrained()) //Check to see if we can do things
-		return 0
-
-	//Check to see if we slipped
-	if(prob(Process_Spaceslipping(0)) && !buckled) //Cit change, removes spaceslipping.
-		src << "<font color='blue'><B>You slipped!</B></font>"
-		src.inertia_dir = src.last_move
-		step(src, src.inertia_dir)
-		return 0
-	//If not then we can reset inertia and move
-	inertia_dir = 0
-	return 1
-
-/mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
-
-	var/dense_object = 0
-	var/shoegrip
-
-	for(var/turf/turf in oview(1,src))
-		if(istype(turf,/turf/space))
-			continue
-
-		if(istype(turf,/turf/simulated/floor)) // Floors don't count if they don't have gravity
-			var/area/A = turf.loc
-			if(istype(A) && A.has_gravity == 0)
-				if(shoegrip == null)
-					shoegrip = Check_Shoegrip() //Shoegrip is only ever checked when a zero-gravity floor is encountered to reduce load
-				if(!shoegrip)
-					continue
-
-		dense_object++
-		break
-
-	if(!dense_object && (locate(/obj/structure/lattice) in oview(1, src)))
-		dense_object++
-
-	if(!dense_object && (locate(/obj/structure/catwalk) in oview(1, src)))
-		dense_object++
-
-
-	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
-	//Due to a few issues only anchored and dense objects will now work.
-	if(!dense_object)
-		for(var/obj/O in oview(1, src))
-			if((O) && (O.density) && (O.anchored))
-				dense_object++
-				break
-
-	return dense_object
-
 /mob/proc/Check_Shoegrip()
 	return 0
-
-/mob/proc/Process_Spaceslipping(var/prob_slip = 5)
-	//Setup slipage
-	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
-	if(stat)
-		prob_slip = 0  // Changing this to zero to make it line up with the comment.
-
-	prob_slip = round(prob_slip)
-	return(prob_slip)
 
 /mob/proc/mob_has_gravity(turf/T)
 	return has_gravity(src, T)
 
-/mob/proc/update_gravity()
-	return
 /*
 // The real Move() proc is above, but touching that massive block just to put this in isn't worth it.
 /mob/Move(var/newloc, var/direct)
@@ -489,3 +415,48 @@
 	set name = ".moveleft"
 	set instant = 1
 	Move(get_step(mob, WEST), WEST)
+
+
+
+
+
+
+/mob/process_spacemove(movement_dir = NONE)
+	if(spacewalk || ..())
+		return TRUE
+	var/atom/movable/backup = get_spacemove_backup()
+	if(backup)
+		if(istype(backup) && movement_dir && !backup.anchored)
+			if(backup.newtonian_move(turn(movement_dir, 180))) //You're pushing off something movable, so it moves
+				to_chat(src, "<span class='info'>You push off of [backup] to propel yourself.</span>")
+		return TRUE
+	return FALSE
+
+/mob/proc/update_gravity(has_gravity)
+	update_floating(has_gravity)
+
+/mob/get_spacemove_backup()
+	for(var/A in orange(1, get_turf(src)))
+		if(isarea(A))
+			continue
+		else if(isturf(A))
+			var/turf/turf = A
+			if(isspaceturf(turf))
+				continue
+			if(!turf.density && !mob_negates_gravity())
+				continue
+			return A
+		else
+			var/atom/movable/AM = A
+			if(AM == buckled)
+				continue
+			if(ismob(AM))
+				var/mob/M = AM
+				if(M.buckled)
+					continue
+			if(!AM.CanPass(src) || AM.density)
+				if(AM.anchored)
+					return AM
+				if(pulling == AM)
+					continue
+				. = AM

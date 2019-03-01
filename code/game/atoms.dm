@@ -8,8 +8,7 @@
 	var/list/blood_DNA
 	var/was_bloodied
 	var/blood_color
-	var/pass_flags = 0
-	var/throwpass = 0
+	var/pass_flags = NONE
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
@@ -289,10 +288,15 @@
 /atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	return (!density || (height == 0) || air_group)
 
-/atom/proc/hitby(atom/movable/AM as mob|obj)
-	if (density)
-		AM.throwing = 0
-	return
+///////////////////////////////////////////////////////////////////////////
+/atom/proc/_hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(density && !has_gravity(AM)) //thrown stuff bounces off dense stuff in no grav, unless the thrown stuff ends up inside what it hit(embedding, bola, etc...).
+		addtimer(CALLBACK(src, .proc/hitby_react, AM), 2)
+
+/atom/proc/hitby_react(atom/movable/AM)
+	if(AM && isturf(AM.loc))
+		step(AM, turn(AM.dir, 180))
+///////////////////////////////////////////////////////////////////////////
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
 	if(isnull(M))

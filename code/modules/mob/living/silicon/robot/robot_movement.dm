@@ -1,17 +1,11 @@
-/mob/living/silicon/robot/Process_Spaceslipping(var/prob_slip)
-	if(module && module.no_slip)
-		return 0
-	..(prob_slip)
-
 /mob/living/silicon/robot/Process_Spacemove()
+	if(..())
+		return TRUE
 	if(module)
 		for(var/obj/item/weapon/tank/jetpack/J in module.modules)
 			if(istype(J, /obj/item/weapon/tank/jetpack))
 				if(J.allow_thrust(0.01))
-					return 1
-	if(..())
-		return 1
-	return 0
+					return TRUE
 
  //No longer needed, but I'll leave it here incase we plan to re-use it.
 /mob/living/silicon/robot/movement_delay()

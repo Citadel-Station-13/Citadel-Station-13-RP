@@ -706,3 +706,6 @@
 	silenced = launcher.silenced
 
 	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
+
+/obj/item/projectile/process_spacemove()
+	return TRUE

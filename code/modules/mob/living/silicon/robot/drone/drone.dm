@@ -285,10 +285,6 @@ var/list/mob_hat_cache = list()
 		release_ai_control("<b>WARNING: remote system failure.</b> Connection timed out.")
 	. = ..(gibbed)
 
-//DRONE MOVEMENT.
-/mob/living/silicon/robot/drone/Process_Spaceslipping(var/prob_slip)
-	return 0
-
 //CONSOLE PROCS
 /mob/living/silicon/robot/drone/proc/law_resync()
 
