@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/Process_Spacemove()
+/mob/living/silicon/robot/process_spacemove()
 	if(..())
 		return TRUE
 	if(module)

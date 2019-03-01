@@ -140,9 +140,6 @@
 
 	..()
 
-/mob/living/carbon/slime/Process_Spacemove()
-	return 2
-
 /mob/living/carbon/slime/Stat()
 	..()
 

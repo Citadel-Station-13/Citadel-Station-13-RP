@@ -90,7 +90,7 @@
 	safe_blink(user, 14)
 	qdel(src)
 
-/obj/item/slime_crystal/throw_impact(atom/movable/AM)
+/obj/item/slime_crystal/throw_impact(atom/movable/AM, thrownthing/throwingdatum)
 	if(!istype(AM))
 		return
 

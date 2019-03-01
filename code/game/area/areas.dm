@@ -338,7 +338,7 @@
 	var/area/oldarea = L.lastarea
 	if((oldarea.has_gravity == 0) && (newarea.has_gravity == 1) && (L.m_intent == "run")) // Being ready when you change areas gives you a chance to avoid falling all together.
 		thunk(L)
-		L.update_floating( L.Check_Dense_Object() )
+		L.update_gravity()
 
 	L.lastarea = newarea
 	play_ambience(L)
@@ -405,7 +405,7 @@ var/list/mob/living/forced_ambiance_list = new
 	for(var/mob/M in A)
 		if(has_gravity)
 			thunk(M)
-		M.update_floating( M.Check_Dense_Object() )
+		M.update_gravity()
 
 /area/proc/thunk(mob)
 	if(istype(get_turf(mob), /turf/space)) // Can't fall onto nothing.
@@ -417,7 +417,8 @@ var/list/mob/living/forced_ambiance_list = new
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
 			return
-
+		if(H.resting)
+			return
 		if(H.m_intent == "run")
 			H.AdjustStunned(6)
 			H.AdjustWeakened(6)

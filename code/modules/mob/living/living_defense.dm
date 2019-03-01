@@ -236,37 +236,36 @@
 	return 1
 
 //this proc handles being hit by a thrown atom
-/mob/living/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)//Standardization and logging -Sieve
-	if(istype(AM,/obj/))
+/mob/living/_hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(isobj(AM))
 		var/obj/O = AM
 		var/dtype = O.damtype
 		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
 
-		var/miss_chance = 15
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
-
-		if (prob(miss_chance))
-			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
-			return
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
 		var/armor = run_armor_check(null, "melee")
 		var/soaked = get_armor_soak(null, "melee")
 
 
-		apply_damage(throw_damage, dtype, null, armor, soaked, is_sharp(O), has_edge(O), O)
+		var/zone
+		if (istype(throwingdatum.thrower, /mob/living))		//needs refactoring; they shouldn't be able to "redirect" it after it's launched.
+			var/mob/living/L = throwingdatum.thrower
+			zone = check_zone(L.zone_sel.selecting)
+		else
+			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 
-		O.throwing = 0		//it hit, so stop moving
+		SEND_SIGNAL(O, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
 
-		if(ismob(O.thrower))
-			var/mob/M = O.thrower
+		apply_damage(throw_damage, dtype, zone, armor, soaked, is_sharp(O), has_edge(O), O)
+
+		if(ismob(throwingdatum.thrower))
+			var/mob/M = throwingdatum.thrower
 			var/client/assailant = M.client
 			if(assailant)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
 			if(ai_holder)
-				ai_holder.react_to_attack(O.thrower)
+				ai_holder.react_to_attack(throwingdatum.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
@@ -275,8 +274,8 @@
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
 		var/momentum = speed*mass
 
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
+		if(throwingdatum.source_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+			var/dir = get_dir(throwingdatum.source_turf, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
@@ -297,6 +296,7 @@
 					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
 					src.anchored = 1
 					src.pinned += O
+	return ..()
 
 /mob/living/proc/embed(var/obj/O, var/def_zone=null)
 	O.loc = src

@@ -18,6 +18,7 @@
 	health = 50
 	movement_cooldown = 5
 	hovering = TRUE
+	spacewalk = TRUE
 
 	base_attack_cooldown = 5
 	projectiletype = /obj/item/projectile/beam/drone
@@ -49,9 +50,6 @@
 /mob/living/simple_mob/mechanical/combat_drone/death()
 	..(null,"suddenly breaks apart.")
 	qdel(src)
-
-/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
-	return TRUE
 
 /obj/item/projectile/beam/drone
 	damage = 10

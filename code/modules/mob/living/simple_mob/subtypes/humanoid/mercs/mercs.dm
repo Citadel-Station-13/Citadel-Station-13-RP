@@ -234,6 +234,7 @@
 	icon_living = "syndicaterangedpsace"
 
 	movement_cooldown = 0
+	spacewalk = TRUE
 
 	min_oxy = 0
 	max_oxy = 0
@@ -246,9 +247,6 @@
 	minbodytemp = 0
 
 	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
-
-/mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
-	return
 
 ////////////////////////////////
 //			PoI Mercs

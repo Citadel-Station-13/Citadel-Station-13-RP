@@ -176,7 +176,7 @@
 		mob.lastarea = get_area(mob.loc)
 
 	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
-		if(!mob.Process_Spacemove(0))	return 0
+		if(!mob.process_spacemove(direct))	return 0
 
 	if(isobj(mob.loc) || ismob(mob.loc))//Inside an object, tell it we moved
 		var/atom/O = mob.loc

@@ -4,6 +4,9 @@
 	var/last_move = null
 
 	var/anchored = FALSE
+	var/move_resist = MOVE_RESIST_DEFAULT
+	var/move_force = MOVE_FORCE_DEFAULT
+	var/pull_force = PULL_FORCE_DEFAULT
 	var/datum/thrownthing/throwing = null
 	var/throw_speed = 2 //How many tiles to move per ds when being thrown. Float values are fully supported
 	var/throw_range = 7
@@ -211,9 +214,9 @@
 		CRASH("Bump was called with no argument.")
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 	. = ..()
-	if(throwing)
-		throw_impact(A)
-		throwing = 0
+	if(!QDELETED(throwing))
+		throwing.hit_atom(A)
+		. = TRUE
 		if(QDELETED(A))
 			return
 	A.Bumped(src)
@@ -286,7 +289,7 @@
 /////////////////////////////////////////////////////////////////
 
 /atom/movable/proc/newtonian_move(direction) //Only moves the object if it's under no gravity
-	if(!loc || Process_Spacemove(NONE))
+	if(!loc || process_spacemove(NONE))
 		inertia_dir = NONE
 		return FALSE
 

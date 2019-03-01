@@ -1,3 +1,5 @@
+
+
 /obj/item/weapon/syringe_cartridge
 	name = "syringe gun cartridge"
 	desc = "An impact-triggered compressed gas cartridge that can be fitted to a syringe for rapid injection."

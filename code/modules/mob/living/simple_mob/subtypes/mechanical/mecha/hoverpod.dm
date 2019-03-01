@@ -8,6 +8,7 @@
 
 	maxHealth = 150
 	hovering = TRUE // Can fly.
+	spacewalk = TRUE
 
 	projectiletype = /obj/item/projectile/beam
 	base_attack_cooldown = 2 SECONDS
@@ -22,6 +23,3 @@
 	ion_trail.set_up(src)
 	ion_trail.start()
 	return ..()
-
-/mob/living/simple_mob/mechanical/mecha/hoverpod/Process_Spacemove(var/check_drift = 0)
-	return TRUE

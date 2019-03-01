@@ -349,6 +349,7 @@ emp_act
 	return 1
 
 //this proc handles being hit by a thrown atom
+//KEVINZ000: THIS NEEDS TO BE COMBINED WITH LIVING/hitby, DUPLCIATED CODE!
 /mob/living/carbon/human/hitby(atom/movable/AM, datum/thrownthing/throwingdatum)
 //	if(buckled && buckled == AM)
 //		return // Don't get hit by the thing we're buckled to.
@@ -374,6 +375,7 @@ emp_act
 			zone = check_zone(L.zone_sel.selecting)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
+		SEND_SIGNAL(O, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
 
 		//check if we hit
 		var/miss_chance = 15
@@ -383,7 +385,7 @@ emp_act
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
 
 		if(zone && O.thrower != src)
-			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")
+			var/shield_check = check_shields(throw_damage, O, throwingdatum.thrower, zone, "[O]")
 			if(shield_check == BULLET_ACT_MISS)
 				zone = null
 			else if(shield_check)

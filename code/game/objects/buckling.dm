@@ -71,7 +71,6 @@
 	M.facing_dir = null
 	M.setDir(buckle_dir ? buckle_dir : dir)
 	M.update_canmove()
-	M.update_floating( M.Check_Dense_Object() )
 //	buckled_mob = M
 	buckled_mobs |= M
 
@@ -97,7 +96,6 @@
 		buckled_mob.buckled = null
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		buckled_mob.update_canmove()
-		buckled_mob.update_floating( buckled_mob.Check_Dense_Object() )
 	//	buckled_mob = null
 		buckled_mobs -= buckled_mob
 
