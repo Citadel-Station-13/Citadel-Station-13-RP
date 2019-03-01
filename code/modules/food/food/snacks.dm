@@ -1065,7 +1065,7 @@
 	reagents.add_reagent("banana",5)
 	bitesize = 3
 
-/obj/item/weapon/reagent_containers/food/snacks/pie/throw_impact(atom/hit_atom)
+/obj/item/weapon/reagent_containers/food/snacks/pie/_throw_impact(atom/hit_atom)
 	. = ..()
 	new /obj/effect/decal/cleanable/pie_smudge(loc)
 	visible_message("<span class='danger'>[name] splats.</span>","<span class='danger'>You hear a splat.</span>")

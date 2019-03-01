@@ -313,12 +313,8 @@
 // Proc: throw_impact()
 // Parameters: 1 (hit_atom - the atom that got hit by the spell as it was thrown)
 // Description: Calls on_throw_cast() on whatever was hit, then deletes itself incase it missed.
-/obj/item/weapon/spell/throw_impact(atom/hit_atom)
-	..()
+/obj/item/weapon/spell/_throw_impact(atom/hit_atom)
+	. = ..()
 	if(cast_methods & CAST_THROW)
 		on_throw_cast(hit_atom)
-
-	// If we miss or hit an obstacle, we still want to delete the spell.
-	spawn(20)
-		if(src)
-			qdel(src)
+	QDEL_IN(src, 20)

@@ -35,8 +35,8 @@
 
 	faction = "bee"
 
-/mob/living/simple_mob/animal/bee/Process_Spacemove(var/check_drift = 0)
-	return 1	//No drifting in space for space bee!
+	hovering = TRUE
+	spacewalk = TRUE
 
 /datum/say_list/bee
 	speak = list("Buzzzz")

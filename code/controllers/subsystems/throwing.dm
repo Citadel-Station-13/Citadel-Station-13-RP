@@ -56,6 +56,7 @@ SUBSYSTEM_DEF(throwing)
 	var/dx
 	var/dy
 	var/force = MOVE_FORCE_DEFAULT
+	var/thrown_intent = I_HURT
 	var/pure_diagonal
 	var/diagonal_error
 	var/datum/callback/callback
@@ -134,16 +135,16 @@ SUBSYSTEM_DEF(throwing)
 			var/atom/A = thing
 			if (A == target)
 				hit = TRUE
-				thrownthing.throw_impact(A, src)
+				thrownthing._throw_impact(A, src)
 				break
 		if (!hit)
-			thrownthing.throw_impact(get_turf(thrownthing), src)  // we haven't hit something yet and we still must, let's hit the ground.
+			thrownthing._throw_impact(get_turf(thrownthing), src)  // we haven't hit something yet and we still must, let's hit the ground.
 			thrownthing.newtonian_move(init_dir)
 	else
 		thrownthing.newtonian_move(init_dir)
 
 	if(target)
-		thrownthing.throw_impact(target, src)
+		thrownthing._throw_impact(target, src)
 
 	if (callback)
 		callback.Invoke()

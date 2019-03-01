@@ -234,7 +234,11 @@
 		var/obj/item/weapon/storage/S = src.loc
 		S.remove_from_storage(src)
 
-	src.throwing = 0
+	////If the item is in a storage item, take it out
+	//SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
+
+	if(throwing)
+		throwing.finalize(FALSE)
 	if (src.loc == user)
 		if(!user.unEquip(src))
 			return
@@ -246,7 +250,28 @@
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
 			ghost.assumeform(src)
 			ghost.animate_towards(user)
-	return
+
+/obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(hit_atom && !QDELETED(hit_atom))
+		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
+		if(is_hot() && isliving(hit_atom))
+			var/mob/living/L = hit_atom
+			L.IgniteMob()
+		var/itempush = 1
+		if(w_class < 4)
+			itempush = 0 //too light to push anything
+		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
+
+/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force)
+	thrownby = thrower
+	callback = CALLBACK(src, .proc/after_throw, callback) //replace their callback with our own
+	. = ..(target, range, speed, thrower, spin, diagonals_first, callback, force)
+
+/obj/item/proc/after_throw(datum/callback/callback)
+	if (callback) //call the original callback
+		. = callback.Invoke()
+	throw_speed = initial(throw_speed) //explosions change this.
+	//item_flags &= ~IN_INVENTORY
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))

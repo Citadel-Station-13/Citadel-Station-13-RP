@@ -272,7 +272,7 @@
 		if(istype(O, /obj/item))
 			var/obj/item/I = O
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = speed*mass
+		var/momentum = speed * mass
 
 		if(throwingdatum.source_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
 			var/dir = get_dir(throwingdatum.source_turf, src)

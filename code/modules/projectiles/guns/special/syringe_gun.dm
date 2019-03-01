@@ -78,7 +78,7 @@
 	desc = "A small spring-loaded sidearm that functions identically to a syringe gun."
 	icon_state = "syringe_pistol"
 	item_state = "gun" //Smaller inhand
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = ITEMSIZE_SMALL
 	force = 2 //Also very weak because it's smaller
 	suppressed = TRUE //Softer fire sound
 	can_unsuppress = FALSE //Permanently silenced

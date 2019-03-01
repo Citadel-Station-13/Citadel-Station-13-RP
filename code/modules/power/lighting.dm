@@ -810,8 +810,8 @@
 	brightness_range = 5
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
 
-/obj/item/weapon/light/throw_impact(atom/hit_atom)
-	..()
+/obj/item/weapon/light/_throw_impact(atom/hit_atom)
+	. = ..()
 	shatter()
 
 /obj/item/weapon/light/bulb/fire

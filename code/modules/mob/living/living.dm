@@ -1048,14 +1048,16 @@
 		swap_hand()
 
 /mob/living/throw_item(atom/target)
-	src.throw_mode_off()
+	throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /obj/screen) return
+	if(target.type == /obj/screen)
+		return
 
-	var/atom/movable/item = src.get_active_hand()
+	var/atom/movable/item = get_active_hand()
 
-	if(!item) return
+	if(!item)
+		return
 
 	var/throw_range = item.throw_range
 	if (istype(item, /obj/item/weapon/grab))
@@ -1071,12 +1073,12 @@
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
 
-	src.drop_from_inventory(item)
+	drop_from_inventory(item)
 	if(!item || !isturf(item.loc))
 		return
 
 	//actually throw it!
-	src.visible_message("<span class='warning'>[src] has thrown [item].</span>")
+	visible_message("<span class='warning'>[src] has thrown [item].</span>")
 
 	if(!src.lastarea)
 		src.lastarea = get_area(src.loc)
@@ -1092,7 +1094,7 @@
 */
 
 
-	item.throw_at(target, throw_range, item.throw_speed, src)
+	item.throw_at(target, throw_range, item.throw_speed, src, throw_intent = a_intent)
 
 /mob/living/get_sound_env(var/pressure_factor)
 	if (hallucination)

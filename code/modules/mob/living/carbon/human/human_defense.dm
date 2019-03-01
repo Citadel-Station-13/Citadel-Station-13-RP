@@ -357,7 +357,7 @@ emp_act
 	if(isobj(AM))
 		var/obj/O = AM
 
-		if(in_throw_mode && speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode
+		if(in_throw_mode && throwingdatum.speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode
 			if(canmove && !restrained())
 				if(isturf(O.loc))
 					if(can_catch(O))
@@ -367,7 +367,7 @@ emp_act
 						return
 
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce * (speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throwforce * (throwingdatum.speed / THROWFORCE_SPEED_DIVISOR)
 
 		var/zone
 		if (istype(throwingdatum.thrower, /mob/living))		//needs refactoring; they shouldn't be able to "redirect" it after it's launched.

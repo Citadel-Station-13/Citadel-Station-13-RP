@@ -20,32 +20,21 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/Destroy()
 	if(rag)
-		rag.forceMove(src.loc)
+		rag.forceMove(drop_location())
 	rag = null
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
-/obj/item/weapon/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
-	..()
-
-	var/mob/M = thrower
-	if(isGlass && istype(M) && M.a_intent == I_HURT)
-		var/throw_dist = get_dist(throw_source, loc)
-		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
+/obj/item/weapon/reagent_containers/food/drinks/bottle/_throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(. == HITBY_CAUGHT)
+		return		//caught
+	if(isGlass && (throwingdatum.thrown_intent == I_HURT))
+		if(speed >= throw_speed) //not as reliable as smashing directly
 			if(reagents)
-				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
+				hit_atom.visible_message("<span class='notice'>The contents of [src] splash all over [hit_atom]!</span>")
 				reagents.splash(hit_atom, reagents.total_volume)
-			src.smash(loc, hit_atom)
-
-/obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash_check(var/distance)
-	if(!isGlass || !smash_duration)
-		return 0
-
-	var/list/chance_table = list(100, 95, 90, 85, 75, 55, 35) //starting from distance 0
-	var/idx = max(distance + 1, 1) //since list indices start at 1
-	if(idx > chance_table.len)
-		return 0
-	return prob(chance_table[idx])
+			smash(loc, hit_atom)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash(newloc, atom/against)
 	if(ismob(loc))
@@ -143,8 +132,6 @@
 
 	if(user.a_intent != I_HURT)
 		return
-	if(!smash_check(1))
-		return //won't always break on the first hit
 
 	// You are going to knock someone out for longer if they are not wearing a helmet.
 	var/weaken_duration = 0

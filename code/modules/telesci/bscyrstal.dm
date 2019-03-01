@@ -26,8 +26,8 @@
 /obj/item/weapon/ore/bluespace_crystal/proc/blink_mob(mob/living/L)
 	do_teleport(L, get_turf(L), blink_range, asoundin = 'sound/effects/phasein.ogg')
 
-/obj/item/weapon/ore/bluespace_crystal/throw_impact(atom/hit_atom)
-	if(!..()) // not caught in mid-air
+/obj/item/weapon/ore/bluespace_crystal/_throw_impact(atom/hit_atom)
+	if(!((. =..()))) // not caught in mid-air
 		visible_message("<span class='notice'>[src] fizzles and disappears upon impact!</span>")
 		var/turf/T = get_turf(hit_atom)
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()

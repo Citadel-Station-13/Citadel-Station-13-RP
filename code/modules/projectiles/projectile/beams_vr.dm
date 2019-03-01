@@ -26,13 +26,14 @@
 	tracer_type = /obj/effect/projectile/xray/tracer
 	impact_type = /obj/effect/projectile/xray/impact
 
-/obj/item/projectile/beam/energy_net/on_hit(var/atom/netted)
+/obj/item/projectile/beam/energy_net/on_hit(atom/netted, blocked)
 	. = ..()
-	do_net(netted)
+	if(blocked < 100)
+		do_net(netted)
 
-/obj/item/projectile/beam/energy_net/proc/do_net(var/mob/M)
+/obj/item/projectile/beam/energy_net/proc/do_net(mob/M)
 	var/obj/item/weapon/energy_net/net = new (get_turf(M))
-	net.throw_impact(M)
+	net.ensnare(M)
 
 /obj/item/projectile/beam/stun/blue
 	icon_state = "bluelaser"

@@ -45,7 +45,7 @@
 	icon_state = icon_flight
 	underlays.Cut()
 
-/obj/item/weapon/syringe_cartridge/throw_impact(atom/hit_atom, var/speed)
+/obj/item/weapon/syringe_cartridge/_throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..() //handles embedding for us. Should have a decent chance if thrown fast enough
 	if(syringe)
 		//check speed to see if we hit hard enough to trigger the rapid injection

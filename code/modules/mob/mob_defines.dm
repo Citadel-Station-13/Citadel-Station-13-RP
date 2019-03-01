@@ -232,3 +232,5 @@
 	var/attack_icon_state //State for above
 
 	var/registered_z
+
+	var/spacewalk = FALSE		//infinite space movement
