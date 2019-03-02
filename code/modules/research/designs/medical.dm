@@ -151,6 +151,24 @@
 	build_path = /obj/item/device/healthanalyzer/phasic
 	sort_string = "MBBAI"
 
+/datum/design/item/medical/hypospray_mki
+	name = "Mark One Hypospray"
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
+	id = "hypospray_mki"
+	req_tech = list(TECH_MAGNET = 5, TECH_BIO = 6, TECH_MATERIAL = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 1500, "diamond" = 2000, "osmium" = 1000, "plastic" = 1500)
+	build_path = /obj/item/weapon/reagent_containers/hypospray
+	sort_string = "MBBAJ"
+
+/datum/design/item/medical/hypospray_mkii
+	name = "Mark Two Hypospray"
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one is the mark two, that hads the addtion of being able to inject and hold even more chemicals."
+	id = "hypospray_mkii"
+	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 9, TECH_MATERIAL = 7)
+	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 5000, "silver" = 5000, "gold" = 4500, "diamond" = 3000, "osmium" = 2000, "plastic" = 2500)
+	build_path = /obj/item/weapon/reagent_containers/hypospray/vial
+	sort_string = "MBBAK"
+
 /datum/design/item/implant
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 
