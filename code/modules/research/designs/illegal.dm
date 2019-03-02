@@ -32,7 +32,7 @@
 	desc = "A rapid firing dart gun, uses top loaded clips."
 	id = "dartgun"
 	req_tech = list(TECH_ILLEGAL = 8)
-	materials = list(DEFAULT_WALL_MATERIAL = 2500, "glass" = 5000, "silver" = 4000, "gold" = 8500, "uranium" = 20000, "diamond" = 2000, "osmium" = 1000, "plastic" = 1000)
+	materials = list(DEFAULT_WALL_MATERIAL = 7500, "glass" = 5000, "silver" = 4000, "gold" = 8500, "uranium" = 20000, "diamond" = 2000, "osmium" = 1000, "plastic" = 1000)
 	build_path = /obj/item/weapon/gun/projectile/dartgun
 	sort_string = "VASBD"
 
