@@ -26,7 +26,7 @@
 
 	var/talkative = 0
 	/*if(prob(0))
-		talkative = 1*/ no u
+		talkative = 1*/ //no u
 
 	//for all items here:
 	//icon_state
