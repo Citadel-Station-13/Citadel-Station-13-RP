@@ -55,4 +55,4 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/science,
 		/obj/item/clothing/shoes/boots/winter/science,
 		/obj/item/weapon/bluespace_harpoon, //VOREStation Add
-		/obj/item/clothing/suit/toggle/labcoat/rd) // epic coat
+		/obj/item/clothing/suit/toggle/labcoat_rd) // epic coat
