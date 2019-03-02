@@ -41,6 +41,6 @@
 	desc = "A cartridge of toxic darts used in dartguns."
 	id = "dartgun_cartridge"
 	req_tech = list(TECH_ILLEGAL = 8)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 5000  "uranium" = 2000)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 5000,  "uranium" = 2000)
 	build_path = /obj/item/ammo_magazine/chemdart
 	sort_string = "VASBEA"
