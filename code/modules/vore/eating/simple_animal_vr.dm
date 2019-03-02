@@ -13,7 +13,11 @@
 
 	if (stat != CONSCIOUS)
 		return
+<<<<<<< HEAD
 	if (istype(src,/mob/living/simple_animal/mouse) && T.ckey == null)
+=======
+	if (istype(src,/mob/living/simple_mob/mouse) && T.ckey == null)
+>>>>>>> 6aa653b... Merge pull request #4813 from Novacat/nova-aifixes
 		return
 	if (client && IsAdvancedToolUser())
 		to_chat(src,"<span class='warning'>Put your hands to good use instead!</span>")
@@ -25,7 +29,12 @@
 //
 // Simple proc for animals to have their digestion toggled on/off externally
 //
+<<<<<<< HEAD
 /mob/living/simple_animal/verb/toggle_digestion()
+=======
+
+/mob/living/simple_mob/verb/toggle_digestion()
+>>>>>>> 6aa653b... Merge pull request #4813 from Novacat/nova-aifixes
 	set name = "Toggle Animal's Digestion"
 	set desc = "Enables digestion on this mob for 20 minutes."
 	set category = "OOC"
@@ -34,7 +43,7 @@
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user) || user.stat) return
 
-	if(retaliate || (hostile && faction != user.faction))
+	if(ai_holder.retaliate || (ai_holder.hostile && faction != user.faction))
 		user << "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>"
 		return
 	if(vore_selected.digest_mode == DM_HOLD)
@@ -48,7 +57,12 @@
 		if(confirm == "Disable")
 			vore_selected.digest_mode = DM_HOLD
 
+<<<<<<< HEAD
 /mob/living/simple_animal/attackby(var/obj/item/O, var/mob/user)
+=======
+/*
+/mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
+>>>>>>> 6aa653b... Merge pull request #4813 from Novacat/nova-aifixes
 	if (istype(O, /obj/item/weapon/newspaper) && !(ckey || (hostile && faction != user.faction)) && isturf(user.loc))
 		if (retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.Weaken(5) //They get tackled anyway whether they're edible or not.
