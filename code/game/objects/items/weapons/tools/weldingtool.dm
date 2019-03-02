@@ -137,7 +137,10 @@
 	if (istype(location, /turf))
 		location.hotspot_expose(700, 5)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e63bad... Merge pull request #4814 from Novacat/nova-pathfinder
 /obj/item/weapon/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
@@ -164,12 +167,14 @@
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
+<<<<<<< HEAD
 	return
 
+=======
+>>>>>>> 7e63bad... Merge pull request #4814 from Novacat/nova-pathfinder
 
 /obj/item/weapon/weldingtool/attack_self(mob/user as mob)
 	setWelding(!welding, usr)
-	return
 
 //Returns the amount of fuel in the welder
 /obj/item/weapon/weldingtool/proc/get_fuel()
@@ -609,4 +614,8 @@
 /obj/item/weapon/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
 
+<<<<<<< HEAD
 #undef WELDER_FUEL_BURN_INTERVAL
+=======
+#undef WELDER_FUEL_BURN_INTERVAL
+>>>>>>> 7e63bad... Merge pull request #4814 from Novacat/nova-pathfinder
