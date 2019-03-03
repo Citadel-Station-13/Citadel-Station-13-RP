@@ -503,3 +503,31 @@
 				/obj/item/weapon/cigbutt,
 				/obj/item/weapon/cigbutt/cigarbutt,
 				/obj/effect/decal/remains/mouse)
+
+/obj/random/alcohol //cit change starts
+	name = "random booze"
+	desc = "This is a random booze object."
+	icon = 'icons/obj/drinks.dmi'
+	icon_state = "shaker"
+
+/obj/random/alcohol/item_to_spawn()
+	return pick(/obj/item/weapon/reagent_containers/food/drinks/bottle/gin,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/patron,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/sake,
+	/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne)

@@ -2,7 +2,7 @@ var/global/list/total_extraction_beacons = list()
 
 /obj/item/extraction_pack
 	name = "fulton extraction pack"
-	desc = "A balloon that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
+	desc = "A balloon pack that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
 	icon = 'icons/obj/fulton.dmi'
 	icon_state = "extraction_pack"
 	w_class = ITEMSIZE_NORMAL
@@ -11,6 +11,7 @@ var/global/list/total_extraction_beacons = list()
 	var/uses_left = 3
 	var/can_use_indoors
 	var/safe_for_living_creatures = 1
+	var/stuntime = 15
 
 /obj/item/extraction_pack/examine()
 	. = ..()
@@ -108,7 +109,7 @@ var/global/list/total_extraction_beacons = list()
 			animate(holder_obj, pixel_z = 1000, time = 30)
 			if(ishuman(A))
 				var/mob/living/carbon/human/L = A
-				L.AdjustStunned(20)
+				L.AdjustStunned(stuntime)
 				L.drowsyness = 0
 			sleep(30)
 			var/list/flooring_near_beacon = list()
@@ -189,3 +190,9 @@ var/global/list/total_extraction_beacons = list()
 
 /obj/effect/extraction_holder/singularity_pull()
 	return
+
+/obj/item/extraction_pack/wormhole
+	name = "wormhole fulton extraction pack"
+	desc = "A balloon pack with integrated wormhole technology and less disruptive movement that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
+	can_use_indoors = TRUE
+	stuntime = 5
