@@ -80,8 +80,8 @@
 
 	add_fingerprint(user)
 
-/obj/item/weapon/paperplane/throw_impact(atom/hit_atom)
-	if(..() || !ishuman(hit_atom))//if the plane is caught or it hits a nonhuman
+/obj/item/weapon/paperplane/_throw_impact(atom/hit_atom)
+	if(((. = ..()) == HITBY_CAUGHT) || !ishuman(hit_atom))//if the plane is caught or it hits a nonhuman
 		return
 	var/mob/living/carbon/human/H = hit_atom
 	if(prob(2))

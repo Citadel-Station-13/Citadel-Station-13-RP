@@ -177,8 +177,7 @@
 					success = TRUE
 	else if(istype(target, /obj/structure))
 		var/obj/structure/S = target
-		if(!S.anchored)
-			S.throw_at(get_turf(get_step(firer,get_dir(firer,S))), 4, 1, src)
+		if(S.safe_throw_at(get_turf(get_step(firer,get_dir(firer,S))), 4, 1, src))
 			success = TRUE
 	qdel(my_tracking_beam)
 	return success

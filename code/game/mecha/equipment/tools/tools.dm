@@ -393,7 +393,7 @@
 				return
 			else if(target!=locked)
 				if(locked in view(chassis))
-					locked.throw_at(target, 14, 1.5, chassis)
+					locked.safe_throw_at(target, 14, 1.5, chassis)
 					locked = null
 					send_byjax(chassis.occupant,"exosuit.browser",REF(src),src.get_equip_info())
 					set_ready_state(0)

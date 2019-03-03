@@ -177,8 +177,7 @@
 		user.visible_message("<span class = 'notice'>\The [user] deals [dcard] card(s) to [TU.himself].</span>")
 	else
 		user.visible_message("<span class = 'notice'>\The [user] deals [dcard] card(s) to \the [target].</span>")
-	H.throw_at(get_step(target,target.dir),10,1,H)
-
+	H.safe_throw_at(get_step(target,target.dir),10,1,H)
 
 /obj/item/weapon/hand/attackby(obj/O as obj, mob/user as mob)
 	if(cards.len == 1 && istype(O, /obj/item/weapon/pen))

@@ -260,7 +260,7 @@
 		var/itempush = 1
 		if(w_class < 4)
 			itempush = 0 //too light to push anything
-		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
+		return hit_atom._hitby(src, FALSE, itempush, null, throwingdatum)
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))

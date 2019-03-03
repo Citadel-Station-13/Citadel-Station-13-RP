@@ -312,8 +312,10 @@
 	icon_state = "snappop"
 	w_class = ITEMSIZE_TINY
 
-/obj/item/toy/snappop/throw_impact(atom/hit_atom)
+/obj/item/toy/snappop/_throw_impact(atom/hit_atom)
 	. = ..()
+	if(. == HITBY_CAUGHT)
+		return
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()

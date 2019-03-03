@@ -191,7 +191,7 @@
 /obj/effect/meteor/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)
 		var/obj/item/O = new meteordrop(get_turf(src))
-		O.throw_at(dest, 5, 10)
+		O.safe_throw_at(dest, 5, 10, src)
 
 /obj/effect/meteor/proc/shake_players()
 	for(var/mob/M in player_list)

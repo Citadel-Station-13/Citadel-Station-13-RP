@@ -56,9 +56,9 @@
 			s2.set_up(2, 1, L)
 			s1.start()
 			s2.start()
-			L.throw_at(get_step(get_turf(src),get_turf(L)), 4, 1, src)
+			L.safe_throw_at(get_step(get_turf(src),get_turf(L)), 4, 1, user)
 			user.drop_item(src)
-			src.loc = null
+			moveToNullspace()
 
 			spawn(1 SECOND)
 				if(!user.Adjacent(L))

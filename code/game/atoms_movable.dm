@@ -326,16 +326,16 @@
 /atom/movable/proc/_throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	set waitfor = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
-	return hit_atom._hitby(src, throwingdatum=throwingdatum)
+	return hit_atom._hitby(src, FALSE, null, null, throwingdatum)
 
 /atom/movable/_hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
 	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
 		step(src, AM.dir)
-	..()
+	return ..()
 
 /atom/movable/proc/safe_throw_at(atom/target, range, speed, atom/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, throw_intent = I_HURT)
 	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
-		return
+		return FALSE
 	return _throw_at(target, range, speed, thrower, spin, diagonals_first, callback, force, throw_intent)
 
 /atom/movable/proc/_throw_at(atom/target, range, speed, atom/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = INFINITY, throw_intent = I_HURT) //If this returns FALSE then callback will not be called.

@@ -164,7 +164,7 @@
 			if(src) qdel(src)
 			return
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
+/obj/item/weapon/reagent_containers/food/snacks/grown/_throw_impact(atom/hit_atom)
 	if(seed)
 		seed.thrown_at(src,hit_atom)
 	return ..()

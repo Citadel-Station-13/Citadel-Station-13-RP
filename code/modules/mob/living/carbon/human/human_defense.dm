@@ -364,7 +364,7 @@ emp_act
 						put_in_active_hand(O)
 						visible_message("<span class='warning'>[src] catches [O]!</span>")
 						throw_mode_off()
-						return
+						return HITBY_CAUGHT
 
 		var/dtype = O.damtype
 		var/throw_damage = O.throwforce * (throwingdatum.speed / THROWFORCE_SPEED_DIVISOR)

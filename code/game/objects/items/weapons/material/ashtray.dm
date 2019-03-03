@@ -79,9 +79,9 @@ var/global/list/ashtray_cache = list()
 			shatter()
 	return
 
-/obj/item/weapon/material/ashtray/throw_impact(atom/hit_atom)
+/obj/item/weapon/material/ashtray/_throw_impact(atom/hit_atom)
 	. = ..()
-	if(. == HITBY_BLOCKED)
+	if(. == HITBY_CAUGHT)
 		return
 	if (health > 0)
 		health = max(0,health - 3)

@@ -38,5 +38,5 @@
 
 	playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
 	user.visible_message("<span class='warning'>[user] dashes forward into the air!</span>")
-	user.throw_at(target, jumpdistance, jumpspeed)
-	recharging_time = world.time + recharging_rate	
+	user.safe_throw_at(target, jumpdistance, jumpspeed)
+	recharging_time = world.time + recharging_rate
