@@ -2195,6 +2195,9 @@
 	pixel_x = 4;
 	pixel_y = 26
 	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/rig_module/mounted/egun,
+/obj/item/rig_module/mounted/egun,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "dK" = (
@@ -4243,10 +4246,6 @@
 	icon_state = "2-8"
 	},
 /obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/security,
-/obj/item/clothing/head/helmet/space/void/security,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -4256,6 +4255,10 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
+/obj/item/weapon/rig/hazard,
+/obj/item/rig_module/vision/sechud,
+/obj/item/rig_module/mounted/taser,
+/obj/item/rig_module/maneuvering_jets,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "hg" = (
@@ -4520,10 +4523,6 @@
 	icon_state = "1-4"
 	},
 /obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/security,
-/obj/item/clothing/head/helmet/space/void/security,
 /obj/structure/window/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4531,6 +4530,10 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
+/obj/item/weapon/rig/hazard,
+/obj/item/rig_module/vision/sechud,
+/obj/item/rig_module/mounted/taser,
+/obj/item/rig_module/maneuvering_jets,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "hC" = (
@@ -4691,14 +4694,14 @@
 /area/security/eva)
 "hO" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/storage/box/handcuffs{
-	pixel_x = 6;
-	pixel_y = -2
-	},
-/obj/item/weapon/storage/box/handcuffs{
-	pixel_x = 6;
-	pixel_y = -2
-	},
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
+/obj/item/clothing/mask/gas/half,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "hP" = (
@@ -5105,18 +5108,18 @@
 /area/maintenance/station/ai)
 "iu" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/cell/device/weapon{
-	pixel_x = 3
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
-/obj/item/weapon/cell/device/weapon{
-	pixel_x = 3
-	},
-/obj/item/weapon/cell/device/weapon{
-	pixel_x = 3
-	},
-/obj/item/weapon/cell/device/weapon{
-	pixel_x = 3
-	},
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
+/obj/item/clothing/accessory/armor/legguards,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "iv" = (
@@ -5863,13 +5866,25 @@
 /area/security/armory/blue)
 "jF" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/item/weapon/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/weapon/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/weapon/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/weapon/cell/device/weapon{
+	pixel_x = 3
+	},
+/obj/item/weapon/storage/box/handcuffs{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/weapon/storage/box/handcuffs{
+	pixel_x = 6;
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -5918,6 +5933,10 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
+/obj/item/clothing/accessory/armor/helmcover/nt,
+/obj/item/clothing/accessory/armor/helmcover/nt,
+/obj/item/clothing/accessory/armor/helmcover/nt,
+/obj/item/clothing/accessory/armor/helmcover/nt,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "jK" = (
@@ -6163,13 +6182,17 @@
 	pixel_y = -9
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/armor/armguards/navy,
-/obj/item/clothing/accessory/armor/armguards/navy,
-/obj/item/clothing/accessory/armor/armguards/navy,
-/obj/item/clothing/accessory/armor/armguards/navy,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "kh" = (
@@ -7637,13 +7660,17 @@
 	dir = 8
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/pcarrier/medium/security,
-/obj/item/clothing/suit/armor/pcarrier/medium/security,
-/obj/item/clothing/suit/armor/pcarrier/medium/security,
-/obj/item/clothing/suit/armor/pcarrier/medium/security,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "mJ" = (
@@ -10420,6 +10447,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "rm" = (
@@ -10432,6 +10462,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
@@ -10448,6 +10481,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "ro" = (
@@ -10461,6 +10497,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
@@ -10481,6 +10520,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "rq" = (
@@ -10494,6 +10536,9 @@
 	id_tag = "detdoor";
 	name = "Detective";
 	req_access = list(4)
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/security/detectives_office)
@@ -32855,7 +32900,7 @@ iM
 ao
 jc
 hO
-iu
+jF
 kc
 gB
 gB
@@ -33138,7 +33183,7 @@ ig
 ai
 ao
 ji
-jF
+iu
 jJ
 kg
 mI

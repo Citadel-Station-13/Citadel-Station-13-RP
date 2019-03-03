@@ -303,3 +303,18 @@
 	desc = "An atmos resistant voidsuit for space."
 	icon_state = "rig-pilot2"
 	item_state = "rig-pilot2"
+
+//Captain (cit addition, the idea is to replace the "colony director armor" which doesnt function like a voidsuit
+/obj/item/clothing/head/helmet/space/void/captain
+	desc = "Shiny blue helmet, complete with far-too-big golden visor. It probably doesn't protects from bright flashes."
+	name = "colony director voidsuit helmet"
+	icon_state = "capvoid"
+	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
+
+/obj/item/clothing/suit/space/void/captain
+	desc = "Sleek, blue and gold suit, fitted with spaceproofing and protective inserts. Fits like an oversized, shiny glove."
+	name = "colony director voidsuit"
+	icon_state = "capsuit_void"
+	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/gun)
+	slowdown = 1.5
