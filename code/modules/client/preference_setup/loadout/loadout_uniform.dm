@@ -463,6 +463,7 @@
 /datum/gear/uniform/circuitry
 	display_name = "jumpsuit, circuitry (empty)"
 	path = /obj/item/clothing/under/circuitry
+<<<<<<< HEAD
 // NEW UNIFORMS BEGIN HERE
 /datum/gear/uniform/sifguard
 	display_name = "uniform, crew"
@@ -553,3 +554,26 @@
 /datum/gear/uniform/marine/tan
 	display_name = "uniform, fatigues (tan)"
 	path = /obj/item/clothing/under/utility/marine/tan
+=======
+
+/datum/gear/uniform/sleekoverall
+	display_name = "sleek overalls"
+	path = /obj/item/clothing/under/overalls/sleek
+
+/datum/gear/uniform/sarired
+	display_name = "sari, red"
+	path = /obj/item/clothing/under/dress/sari
+
+/datum/gear/uniform/sarigreen
+	display_name = "sari, green"
+	path = /obj/item/clothing/under/dress/sari/green
+
+/datum/gear/uniform/wrappedcoat
+	display_name = "modern wrapped coat"
+	path = /obj/item/clothing/under/moderncoat
+
+/datum/gear/uniform/ascetic
+	display_name = "plain ascetic garb"
+	path = /obj/item/clothing/under/ascetic
+
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master

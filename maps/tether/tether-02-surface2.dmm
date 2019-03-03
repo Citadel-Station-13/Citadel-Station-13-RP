@@ -376,9 +376,9 @@
 /obj/item/weapon/handcuffs/legcuffs/fuzzy,
 /obj/item/weapon/handcuffs/fuzzy,
 /obj/item/clothing/mask/balaclava,
-/obj/item/clothing/gloves/combat{
-	desc = "These gloves are insulated with rubber.";
-	name = "black insulated gloves"
+/obj/item/clothing/gloves/black{
+	desc = "They seem to be made of rubber-like material, though insulation quality is doubtful";
+	name = "elastic black gloves"
 	},
 /obj/item/clothing/under/fluff/latexmaid,
 /turf/simulated/floor/tiled/techfloor,
@@ -478,6 +478,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "bj" = (
@@ -1174,14 +1177,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "cU" = (
-/obj/structure/catwalk,
-/obj/machinery/alarm{
-	dir = 8;
-	icon_state = "alarm0";
-	pixel_x = 24
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/mining)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
 "cV" = (
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
@@ -2616,22 +2622,25 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/north)
 "fQ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole/right{
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "2-4"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/machinery/alarm{
+	pixel_y = 22
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/north)
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/public_garden_two)
 "fR" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4635,15 +4644,21 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "kl" = (
-/obj/structure/railing{
-	dir = 1
+/obj/machinery/door/airlock/maintenance/engi,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/gateway)
 "km" = (
 /obj/item/toy/plushie/kitten{
 	desc = "An odd appearing, cryptic plush of a cat.";
@@ -5353,21 +5368,24 @@
 /turf/simulated/floor,
 /area/maintenance/substation/research)
 "lM" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/engineering{
-	name = "Science Substation";
-	req_one_access = list(11,24,47)
-	},
-/obj/machinery/door/firedoor,
 /obj/structure/cable{
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
-/turf/simulated/floor,
-/area/maintenance/substation/research)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22;
+	pixel_y = 0
+	},
+/turf/simulated/floor/plating,
+/area/gateway)
 "lN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 6
@@ -5852,24 +5870,26 @@
 /turf/simulated/floor,
 /area/maintenance/substation/research)
 "mM" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/techfloor/hole/right{
+	dir = 1
+	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/door/airlock/engineering{
-	name = "Science Substation";
-	req_one_access = list(11,24,47)
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
-/area/maintenance/substation/research)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/north)
 "mN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/green{
@@ -6145,14 +6165,20 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
 "nj" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
+/obj/structure/railing{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 10
+/obj/effect/floor_decal/techfloor{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/research/testingrange)
+/obj/effect/floor_decal/rust,
+/obj/machinery/alarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/bar)
 "nk" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -6951,9 +6977,21 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "oX" = (
-/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Science Substation";
+	req_one_access = list(11,24,47)
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
-/area/maintenance/lower/bar)
+/area/maintenance/substation/research)
 "oY" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -7811,6 +7849,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "qs" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	icon_state = "map";
 	dir = 1
@@ -7818,6 +7857,17 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
+=======
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner_techfloor_grid/full{
+	dir = 1
+	},
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/south)
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 "qt" = (
 /obj/structure/railing{
 	dir = 8
@@ -8648,14 +8698,24 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
 "rS" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner_techfloor_grid/full{
+/obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/south)
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark{
+	name = "lightsout"
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos/hallway)
 "rT" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -10262,6 +10322,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/engineering/lower/atmos_eva)
 "uE" = (
 /obj/structure/cable/cyan{
@@ -10276,6 +10337,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_eva)
+=======
+/area/engineering/atmos/hallway)
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 "uF" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -15507,6 +15571,7 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+<<<<<<< HEAD
 "DZ" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -15729,23 +15794,37 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+=======
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 "Ew" = (
 /obj/structure/sign/department/telecoms,
 /turf/simulated/wall,
 /area/maintenance/substation/tcomms)
 "Ex" = (
+<<<<<<< HEAD
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "Telecomms Substation"
 	},
+=======
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/maintenance/substation/tcomms)
+/obj/machinery/door/airlock/engineering{
+	name = "Science Substation";
+	req_one_access = list(11,24,47)
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/maintenance/substation/research)
 "Ey" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
@@ -16138,17 +16217,18 @@
 	name = "\improper Telecomms Lobby"
 	})
 "Fn" = (
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
 	},
-/turf/simulated/floor/plating,
-/area/tcomsat{
-	name = "\improper Telecomms Lobby"
-	})
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 10
+	},
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/testingrange)
 "Fo" = (
 /turf/simulated/floor/tiled,
 /area/tcomsat{
@@ -16219,21 +16299,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
 "Fy" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Telecomms Access";
-	req_one_access = list(61)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/tcommsat/entrance{
-	name = "\improper Telecomms Entrance"
-	})
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/maintenance/lower/bar)
 "Fz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -16277,27 +16346,13 @@
 	name = "\improper Telecomms Entrance"
 	})
 "FC" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/structure/catwalk,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/airlock/hatch{
-	name = "Telecomms Foyer";
-	req_access = list(61);
-	req_one_access = list(12)
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/tcomsat{
-	name = "\improper Telecomms Lobby"
-	})
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/south)
 "FD" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -16703,19 +16758,20 @@
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Gi" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	frequency = 1381;
-	icon_state = "door_locked";
-	id_tag = "server_access_outer";
-	locked = 1;
-	name = "Telecoms Server Access";
-	req_access = list(61)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/tcommsat/chamber)
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/alarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/asmaint2)
 "Gj" = (
 /obj/machinery/airlock_sensor{
 	frequency = 1381;
@@ -17635,9 +17691,94 @@
 	},
 /area/tcommsat/chamber)
 "HM" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
+=======
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Telecomms Substation"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/substation/tcomms)
+"HN" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/tcomsat{
+	name = "\improper Telecomms Lobby"
+	})
+"HO" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Telecomms Access";
+	req_one_access = list(61)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/tcommsat/entrance{
+	name = "\improper Telecomms Entrance"
+	})
+"HP" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Telecomms Foyer";
+	req_access = list(61);
+	req_one_access = list(12)
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/tcomsat{
+	name = "\improper Telecomms Lobby"
+	})
+"HQ" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	frequency = 1381;
+	icon_state = "door_locked";
+	id_tag = "server_access_outer";
+	locked = 1;
+	name = "Telecoms Server Access";
+	req_access = list(61)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/tcommsat/chamber)
+"HT" = (
+/obj/item/weapon/storage/box/glasses/pint,
+/obj/item/weapon/storage/box/glass_extras/straws,
+/obj/structure/table/standard{
+	name = "plastic table frame"
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -18684,21 +18825,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Sv" = (
-/obj/machinery/door/airlock/maintenance/engi,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/gateway)
 "Sy" = (
 /obj/structure/sign/poster,
 /turf/simulated/wall,
@@ -18818,23 +18944,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor,
 /area/maintenance/lower/bar)
-"UX" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/public_garden_two)
 "Vk" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -25428,7 +25537,7 @@ ac
 ac
 ac
 Kt
-UX
+fQ
 IB
 Mf
 Kt
@@ -25712,7 +25821,7 @@ ae
 ae
 ae
 ae
-Sv
+kl
 ae
 ae
 ae
@@ -25746,7 +25855,7 @@ li
 lC
 lZ
 mF
-nj
+Fn
 nP
 ol
 oZ
@@ -25856,7 +25965,7 @@ bX
 cm
 ZO
 bX
-cm
+lM
 bX
 bX
 dP
@@ -26614,7 +26723,7 @@ vW
 wz
 xl
 xM
-xl
+Gi
 xl
 xl
 zJ
@@ -27166,7 +27275,7 @@ ln
 lJ
 mg
 mJ
-nq
+ln
 nq
 ot
 pi
@@ -27308,7 +27417,7 @@ ln
 lK
 mh
 mK
-nq
+ln
 nq
 os
 pj
@@ -27589,9 +27698,9 @@ ku
 il
 il
 lo
-lM
+oX
 ln
-mM
+Ex
 nr
 nS
 ou
@@ -29015,6 +29124,7 @@ ml
 nw
 nU
 dY
+<<<<<<< HEAD
 pm
 pF
 qo
@@ -29064,6 +29174,57 @@ By
 Cy
 JE
 By
+=======
+pn
+qb
+pn
+pn
+pn
+pn
+tg
+rS
+vt
+tg
+tg
+tg
+tg
+tg
+yW
+zn
+zU
+Av
+AC
+AC
+AC
+BM
+Cf
+Cp
+AC
+AC
+CS
+AB
+AB
+AB
+Ek
+yW
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 ac
 ac
 ac
@@ -29130,7 +29291,7 @@ dV
 eD
 eW
 ap
-fQ
+mM
 ge
 ge
 ge
@@ -31323,7 +31484,7 @@ rg
 rg
 ET
 Ff
-Fy
+HO
 FU
 ET
 ac
@@ -31891,7 +32052,7 @@ Ez
 Ez
 EM
 EM
-FC
+HP
 EM
 EM
 Gw
@@ -32026,9 +32187,15 @@ rg
 ac
 ac
 rg
+<<<<<<< HEAD
 HM
 HX
 Ex
+=======
+DQ
+Et
+HM
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 EB
 EH
 EM
@@ -32394,7 +32561,7 @@ dG
 dG
 aG
 dY
-fn
+cU
 fG
 fY
 gj
@@ -32600,7 +32767,7 @@ Ez
 Ez
 EL
 EM
-Fn
+HN
 FH
 Ga
 FR
@@ -32671,7 +32838,7 @@ bO
 ad
 cx
 cy
-cU
+cy
 dh
 cy
 cy
@@ -33131,7 +33298,29 @@ kM
 kM
 na
 nz
+<<<<<<< HEAD
 dY
+=======
+oe
+oT
+pD
+qq
+rc
+rN
+sB
+tu
+tu
+rO
+vP
+vP
+FC
+rg
+ac
+ac
+ac
+ac
+ac
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 ac
 ac
 ac
@@ -33557,11 +33746,24 @@ du
 mz
 nd
 du
+<<<<<<< HEAD
 ox
 oR
 tx
 qk
 qT
+=======
+of
+oV
+pG
+pG
+re
+rO
+sE
+rO
+rO
+rO
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 rg
 rg
 rg
@@ -33841,7 +34043,7 @@ du
 mB
 ne
 du
-ee
+mA
 ee
 ee
 gY
@@ -34022,7 +34224,7 @@ ES
 Fd
 Fv
 FR
-Gi
+HQ
 FR
 GG
 GI
@@ -34268,7 +34470,7 @@ mD
 nf
 du
 du
-oX
+Fy
 du
 du
 rg
@@ -34542,7 +34744,7 @@ ef
 ef
 ef
 jZ
-kl
+nj
 id
 kQ
 ee
@@ -34698,7 +34900,7 @@ du
 du
 du
 rg
-rS
+qs
 sL
 tB
 tB

@@ -101,7 +101,7 @@ var/global/list/struggle_sounds = list(
 		"Squish4" = 'sound/vore/squish4.ogg')
 
 
-var/global/list/global_egg_types = list(
+var/global/list/global_vore_egg_types = list(
 		"Unathi" 		= UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		"Akula" 		= AKULA_EGG,
@@ -114,7 +114,7 @@ var/global/list/global_egg_types = list(
 		"Xenochimera" 		= XENOCHIMERA_EGG,
 		"Xenomorph"		= XENOMORPH_EGG)
 
-var/global/list/tf_egg_types = list(
+var/global/list/tf_vore_egg_types = list(
 	"Unathi" 		= /obj/structure/closet/secure_closet/egg/unathi,
 	"Tajara" 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	"Akula" 		= /obj/structure/closet/secure_closet/egg/shark,

@@ -95,19 +95,23 @@
 		ai_log("vr/wont eat [M] because I am too full", 3)
 		return 0
 	return 1
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 
 /mob/living/simple_animal/PunchTarget()
 	ai_log("vr/PunchTarget() [target_mob]", 3)
+=======
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 
-	// If we're not hungry, call the sideways "parent" to do normal punching
-	if(!vore_active)
-		return ..()
+/mob/living/simple_mob/apply_attack(atom/A, damage_to_do)
+	if(isliving(A)) // Converts target to living
+		var/mob/living/L = A
 
-	// If target is standing we might pounce and knock them down instead of attacking
-	var/pouncechance = CanPounceTarget()
-	if(pouncechance)
-		return PounceTarget(pouncechance)
+		//ai_log("vr/do_attack() [L]", 3)
+		// If we're not hungry, call the sideways "parent" to do normal punching
+		if(!vore_active)
+			return ..()
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 	// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
 	if(will_eat(target_mob) && (!target_mob.canmove || vore_standing_too))
 		return EatTarget()
@@ -116,48 +120,83 @@
 
 /mob/living/simple_animal/proc/CanPounceTarget() //returns either FALSE or a %chance of success
 	if(!target_mob.canmove || issilicon(target_mob) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
+=======
+		// If target is standing we might pounce and knock them down instead of attacking
+		var/pouncechance = CanPounceTarget(L)
+		if(pouncechance)
+			return PounceTarget(L, pouncechance)
+
+		// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
+		if(will_eat(L) && (!L.canmove || vore_standing_too))
+			return EatTarget(L)
+		else
+			return ..()
+
+
+/mob/living/simple_mob/proc/CanPounceTarget(var/mob/living/M) //returns either FALSE or a %chance of success
+	if(!M.canmove || issilicon(M) || world.time < vore_pounce_cooldown) //eliminate situations where pouncing CANNOT happen
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 		return FALSE
 	if(!prob(vore_pounce_chance)) //mob doesn't want to pounce
 		return FALSE
-	if(will_eat(target_mob) && vore_standing_too) //100% chance of hitting people we can eat on the spot
+	if(will_eat(M) && vore_standing_too) //100% chance of hitting people we can eat on the spot
 		return 100
-	var/TargetHealthPercent = (target_mob.health/target_mob.getMaxHealth())*100 //now we start looking at the target itself
+	var/TargetHealthPercent = (M.health/M.getMaxHealth())*100 //now we start looking at the target itself
 	if (TargetHealthPercent > vore_pounce_maxhealth) //target is too healthy to pounce
 		return FALSE
 	else
 		return max(0,(vore_pounce_successrate - (vore_pounce_falloff * TargetHealthPercent)))
 
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 /mob/living/simple_animal/proc/PounceTarget(var/successrate = 100)
+=======
+/mob/living/simple_mob/proc/PounceTarget(var/mob/living/M, var/successrate = 100)
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 	vore_pounce_cooldown = world.time + 20 SECONDS // don't attempt another pounce for a while
 	if(prob(successrate)) // pounce success!
-		target_mob.Weaken(5)
-		target_mob.visible_message("<span class='danger'>\the [src] pounces on \the [target_mob]!</span>!")
+		M.Weaken(5)
+		M.visible_message("<span class='danger'>\the [src] pounces on \the [M]!</span>!")
 	else // pounce misses!
-		target_mob.visible_message("<span class='danger'>\the [src] attempts to pounce \the [target_mob] but misses!</span>!")
+		M.visible_message("<span class='danger'>\the [src] attempts to pounce \the [M] but misses!</span>!")
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 
-	if(will_eat(target_mob) && (!target_mob.canmove || vore_standing_too)) //if they're edible then eat them too
-		return EatTarget()
+	if(will_eat(M) && (!M.canmove || vore_standing_too)) //if they're edible then eat them too
+		return EatTarget(M)
 	else
 		return //just leave them
 
 // Attempt to eat target
 // TODO - Review this.  Could be some issues here
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 /mob/living/simple_animal/proc/EatTarget()
 	ai_log("vr/EatTarget() [target_mob]",2)
 	stop_automated_movement = 1
 	var/old_target = target_mob
 	handle_stance(STANCE_BUSY)
 	. = animal_nom(target_mob)
+=======
+/mob/living/simple_mob/proc/EatTarget(var/mob/living/M)
+	//ai_log("vr/EatTarget() [M]",2) //VORESTATION AI TEMPORARY REMOVAL
+	//stop_automated_movement = 1 //VORESTATION AI TEMPORARY REMOVAL
+	var/old_target = M
+	set_AI_busy(1) //VORESTATION AI TEMPORARY EDIT
+	. = animal_nom(M)
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 	playsound(src, swallowsound, 50, 1)
 	update_icon()
 
 	if(.)
 		// If we succesfully ate them, lose the target
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 		LoseTarget()
 		return old_target
 	else if(old_target == target_mob)
+=======
+		set_AI_busy(0) // lose_target(M) //Unsure what to put here. Replaced with set_AI_busy(1) //VORESTATION AI TEMPORARY EDIT
+		return old_target
+	else if(old_target == M)
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 		// If we didn't but they are still our target, go back to attack.
 		// but don't run the handler immediately, wait until next tick
 		// Otherwise we'll be in a possibly infinate loop

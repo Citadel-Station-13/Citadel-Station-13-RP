@@ -56,6 +56,7 @@
 	if (use_power == 2 && !stat)
 		light = image(icon, "light_on")
 	else
+<<<<<<< HEAD
 		light = image(icon, "light_off")
 	light.pixel_x = light_x
 	light.pixel_y = light_y
@@ -69,6 +70,35 @@
 		if (temperature > T.temperature)
 			equalize_temperature()
 	..()
+=======
+		var/failed
+		var/overcook_period = max(FLOOR(cook_time/5, 1),1)
+		cooking_obj = result
+		var/count = overcook_period
+		while(1)
+			sleep(overcook_period)
+			count += overcook_period
+			if(!cooking || !result || result.loc != src)
+				failed = 1
+			else if(prob(burn_chance) || count == cook_time)	//Fail before it has a chance to cook again.
+				// You dun goofed.
+				qdel(cooking_obj)
+				cooking_obj = new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(src)
+				// Produce nasty smoke.
+				visible_message("<span class='danger'>\The [src] vomits a gout of rancid smoke!</span>")
+				var/datum/effect/effect/system/smoke_spread/bad/smoke = new /datum/effect/effect/system/smoke_spread/bad()
+				smoke.attach(src)
+				smoke.set_up(10, 0, usr.loc)
+				smoke.start()
+				failed = 1
+
+			if(failed)
+				cooking = 0
+				icon_state = off_icon
+				break
+
+/obj/machinery/cooker/attack_hand(var/mob/user)
+>>>>>>> 0c71385... Merge pull request #4796 from VOREStation/master
 
 /obj/machinery/appliance/cooker/power_change()
 	. = ..()
