@@ -60,7 +60,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			return_name = "Silver"
 		if("phoron")
 			return_name = "Solid Phoron"
-		if("Plastic")
+		if("plastic")
 			return_name = "Plastic"
 		if("osmium")
 			return_name = "Osmium"
