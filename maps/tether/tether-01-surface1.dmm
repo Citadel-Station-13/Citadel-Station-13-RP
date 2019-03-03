@@ -401,9 +401,16 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/mining_main/refinery)
 "aaS" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
+<<<<<<< HEAD
 /area/tether/surfacebase/mining_main/refinery)
 "aaT" = (
 /obj/structure/cable/heavyduty{
@@ -411,10 +418,26 @@
 	},
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
+=======
+/area/maintenance/lower/mining_eva)
+"aaT" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/alarm{
+	pixel_y = 22;
+	target_temperature = 293.15
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/solars)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "aaU" = (
 /turf/simulated/wall,
 /area/maintenance/lower/trash_pit)
 "aaV" = (
+<<<<<<< HEAD
 /obj/structure/cable/heavyduty{
 	icon_state = "1-8"
 	},
@@ -432,6 +455,28 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
+=======
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/alarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 24
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
+"aaW" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/vacant_site)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "aaX" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
@@ -504,6 +549,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
 "abf" = (
+<<<<<<< HEAD
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4-8"
 	},
@@ -511,12 +557,32 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "abg" = (
+=======
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 /obj/machinery/door/airlock/maintenance/common{
 	name = "Trash Pit Access";
 	req_one_access = list(26,48)
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
+=======
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
+"abg" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/machinery/alarm{
+	pixel_y = 22;
+	target_temperature = 293.15
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "abh" = (
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/refinery)
@@ -695,8 +761,27 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "abx" = (
+<<<<<<< HEAD
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
+=======
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 6
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "monotile"
+	},
+/area/security/checkpoint)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "aby" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -712,6 +797,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
 "abA" = (
+<<<<<<< HEAD
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "abB" = (
@@ -721,6 +807,27 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/tram)
+=======
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/tiled{
+	icon_state = "techmaint"
+	},
+/area/security/checkpoint)
+"abB" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/solars)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "abC" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -730,6 +837,7 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
 "abD" = (
+<<<<<<< HEAD
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -751,6 +859,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology/xenoflora/lab_atmos)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "abE" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -1130,6 +1252,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/eva)
 "aci" = (
+<<<<<<< HEAD
 /obj/structure/bed/chair,
 /obj/machinery/camera/network/northern_star,
 /obj/effect/floor_decal/borderfloor{
@@ -1140,6 +1263,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "acj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -1214,6 +1351,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/uxstorage)
 "aco" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -1223,6 +1361,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/tram)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/locker_room)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "acp" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -1241,6 +1391,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "acr" = (
+<<<<<<< HEAD
 /obj/structure/table/steel,
 /obj/structure/window/basic{
 	dir = 4
@@ -1289,6 +1440,102 @@
 /obj/machinery/door/window/southleft,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+/obj/structure/table/marble,
+/obj/machinery/door/window{
+	dir = 8;
+	req_one_access = list(25)
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "cafe";
+	layer = 3.1;
+	name = "Cafe Shutters"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/visitor_dining)
+"acs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/locker_room)
+"act" = (
+/obj/machinery/door/airlock/maintenance/common{
+	name = "Tram Maintenance Access"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/crew_quarters/visitor_dining)
+"acu" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/hallway)
+"acv" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Drone Bay"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/atmos)
+"acw" = (
+/obj/effect/floor_decal/steeldecal/steel_decals_central1{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/monofloor{
+	dir = 1
+	},
+/area/crew_quarters/visitor_laundry)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "acx" = (
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
@@ -1297,6 +1544,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "acz" = (
+<<<<<<< HEAD
 /obj/machinery/hologram/holopad,
 /obj/structure/table/steel,
 /obj/structure/window/basic,
@@ -1305,6 +1553,33 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+/obj/machinery/door/airlock/multi_tile/glass{
+	autoclose = 1;
+	dir = 2;
+	id_tag = null;
+	name = "Laundry";
+	req_access = list()
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central1,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/monofloor,
+/area/crew_quarters/visitor_laundry)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "acA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1396,12 +1671,22 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/eva)
 "acJ" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/disposalpipe/segment,
 /obj/structure/table/bench/steel,
 /obj/structure/window/basic,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/landmark{
+	name = "lightsout"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/first_west)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "acK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -2061,16 +2346,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining_eva)
-"adO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining_eva)
@@ -9769,6 +10044,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+<<<<<<< HEAD
 "asj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
@@ -9782,6 +10058,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+=======
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "asl" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -10163,11 +10441,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/first_west)
-"asX" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "asY" = (
@@ -13217,15 +13490,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
-"ayG" = (
-/obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology/xenoflora/lab_atmos)
 "ayH" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloor{
@@ -15475,6 +15739,7 @@
 	pixel_x = 0;
 	pixel_y = -25
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -15484,6 +15749,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/processing)
+=======
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/atmos)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "aCH" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -15546,14 +15815,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
-"aCP" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/vacant_site)
 "aCQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16123,6 +16384,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
+<<<<<<< HEAD
 "aEf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	icon_state = "intact";
@@ -16162,6 +16424,8 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+=======
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "aEl" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
@@ -19839,6 +20103,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -19861,6 +20126,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site)
+=======
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/atmos/processing)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "aLB" = (
 /obj/structure/catwalk,
 /obj/machinery/firealarm{
@@ -21960,20 +22229,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
-"aQK" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
-	dir = 6
-	},
-/turf/simulated/floor/tiled{
-	icon_state = "monotile"
-	},
-/area/security/checkpoint)
 "aQM" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled{
@@ -24352,15 +24607,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/solars)
-"bht" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/solars)
 "bhw" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -25714,20 +25960,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
-"brv" = (
-/obj/structure/table/marble,
-/obj/machinery/door/window{
-	dir = 8;
-	req_one_access = list(25)
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "cafe";
-	layer = 3.1;
-	name = "Cafe Shutters"
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/visitor_dining)
 "brw" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/glass,
@@ -26948,6 +27180,36 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+<<<<<<< HEAD
+=======
+"bAN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_site/east)
+"bAP" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/tether/surfacebase/atrium_one)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "bAR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -27032,29 +27294,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
-"bBl" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/hallway)
 "bBy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -28248,6 +28487,50 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
+<<<<<<< HEAD
+=======
+"bRl" = (
+/obj/effect/floor_decal/techfloor/corner,
+/obj/effect/floor_decal/techfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/drone_fabrication)
+"bRs" = (
+/obj/structure/catwalk,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/atmos)
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 "bRy" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -30310,14 +30593,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
-"cfM" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central1{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monofloor{
-	dir = 1
-	},
-/area/crew_quarters/visitor_laundry)
 "cfN" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
@@ -30375,12 +30650,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/visitor_laundry)
-"cgb" = (
-/obj/machinery/door/airlock/maintenance/common{
-	name = "Tram Maintenance Access"
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/visitor_dining)
 "cge" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -30535,31 +30804,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/visitor_dining)
-"cgw" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	autoclose = 1;
-	dir = 2;
-	id_tag = null;
-	name = "Laundry";
-	req_access = list()
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central1,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monofloor,
-/area/crew_quarters/visitor_laundry)
 "cgz" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -37455,7 +37699,7 @@ ars
 ars
 awc
 axf
-bht
+abB
 azr
 aBv
 azU
@@ -38023,7 +38267,7 @@ amU
 amU
 amU
 axf
-bhp
+aaT
 azr
 bkd
 bmv
@@ -39010,7 +39254,7 @@ apt
 aqf
 aSt
 arA
-asj
+abg
 asU
 atF
 arG
@@ -39437,7 +39681,7 @@ ako
 ako
 ako
 ako
-asX
+acJ
 atI
 arG
 aVu
@@ -39453,7 +39697,7 @@ aCX
 auu
 bvO
 byA
-bBl
+acu
 bEf
 bFS
 bHV
@@ -39857,7 +40101,7 @@ akV
 anB
 akX
 aor
-aLA
+akX
 apw
 aqj
 aSP
@@ -41715,7 +41959,7 @@ auz
 avw
 beQ
 bgd
-ayG
+abD
 atf
 blx
 aAZ
@@ -42995,8 +43239,15 @@ auF
 auF
 atW
 atj
+<<<<<<< HEAD
 aij
 aEU
+=======
+aci
+azI
+aah
+aah
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 aah
 aah
 aah
@@ -43847,8 +44098,52 @@ axF
 axH
 agM
 agM
+<<<<<<< HEAD
 aib
 aEU
+=======
+aAt
+azI
+aah
+aah
+aah
+aBe
+bxW
+bzL
+aFx
+aFZ
+aBe
+aBe
+aBe
+aBe
+aBe
+acv
+aBe
+aIv
+aIB
+aIQ
+aJf
+aIv
+aJL
+aJe
+bZe
+aJi
+caH
+cbE
+aJi
+aJh
+cet
+aIv
+aJb
+aJb
+aJb
+aJb
+aJb
+aJb
+aJb
+aJb
+aah
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 aah
 aah
 aah
@@ -44378,7 +44673,7 @@ abn
 abn
 abn
 abT
-adO
+aaS
 abT
 akz
 alH
@@ -45980,9 +46275,58 @@ azK
 aAA
 aBj
 avP
+<<<<<<< HEAD
 ajw
 ajY
 aEU
+=======
+aco
+bse
+aAG
+aAG
+aAG
+aAG
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aIv
+aIM
+aJa
+bWL
+aJI
+aJQ
+aJQ
+aKi
+aKv
+caV
+aKv
+ccS
+aLm
+aLF
+aIv
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 aah
 aEU
 aEU
@@ -46358,8 +46702,8 @@ aah
 aah
 aar
 aaI
-aaS
-aaS
+aaC
+aaC
 abE
 abM
 acg
@@ -46500,7 +46844,7 @@ aah
 aah
 aar
 aaI
-aaS
+aaC
 abb
 abh
 abM
@@ -46642,7 +46986,7 @@ aah
 aah
 aar
 aaJ
-aaS
+aaC
 abc
 abG
 abL
@@ -46690,9 +47034,20 @@ azN
 aAE
 aBn
 avP
+<<<<<<< HEAD
 aEU
 aki
 aEU
+=======
+aCI
+aCI
+aCI
+aAG
+acs
+aAG
+bgr
+bgr
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 bgr
 bgr
 agM
@@ -46784,7 +47139,7 @@ aah
 aah
 aar
 aaK
-aaS
+aaC
 abq
 abF
 abL
@@ -47210,7 +47565,7 @@ aah
 aah
 aar
 aaI
-aaS
+aaC
 abs
 abO
 acP
@@ -47352,7 +47707,7 @@ aah
 aah
 aar
 aaI
-aaS
+aaC
 abh
 abN
 abM
@@ -47494,7 +47849,7 @@ aah
 aah
 aar
 aaJ
-aaS
+aaC
 abi
 abU
 abL
@@ -47533,7 +47888,7 @@ atp
 auf
 atp
 aLp
-aQK
+abx
 aLJ
 bdV
 ayb
@@ -47636,7 +47991,7 @@ aad
 aah
 aar
 aaM
-aaS
+aaC
 abt
 abQ
 abP
@@ -47943,7 +48298,7 @@ awr
 ayq
 ajZ
 ahx
-aCP
+aaW
 alU
 amy
 alr
@@ -48101,7 +48456,7 @@ atp
 acT
 awM
 aLJ
-aQM
+abA
 atp
 biv
 bhi
@@ -48423,8 +48778,8 @@ cdd
 cjs
 ceM
 ceM
-cfM
-cgw
+acw
+acz
 ceM
 chQ
 chQ
@@ -48938,7 +49293,7 @@ ajl
 aka
 ajl
 ajl
-aEk
+abf
 alY
 amR
 alr
@@ -49215,7 +49570,7 @@ aah
 aaU
 abH
 agT
-abH
+aaV
 agT
 agT
 aaU
@@ -49388,7 +49743,7 @@ apP
 apP
 aFc
 aFc
-brv
+acr
 lHO
 lHO
 lHO
@@ -49515,6 +49870,7 @@ abA
 abA
 abA
 apP
+<<<<<<< HEAD
 abD
 agw
 aiR
@@ -49535,6 +49891,14 @@ aPt
 akR
 aPu
 cgb
+=======
+bqi
+arm
+cfj
+cfz
+arm
+act
+>>>>>>> 5f4d6c7... Merge pull request #4804 from Heroman3003/atmos-map-fixes
 bdk
 cgt
 bdk
