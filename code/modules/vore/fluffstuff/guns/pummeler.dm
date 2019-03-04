@@ -29,8 +29,8 @@
 /obj/item/projectile/pummel
 	name = "sonic blast"
 	icon_state = "sound"
-	damage = 5
-	damage_type = BRUTE
+	damage = 15
+	damage_type = AGONY
 	check_armour = "melee"
 	embed_chance = 0
 	vacuum_traversal = 0
@@ -41,10 +41,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)
-		if(prob(40) && !blocked)
-			L.Stun(1)
-			L.Confuse(1)
-		L.throw_at(get_edge_target_turf(L, throwdir), rand(3,6), 10)
+		L.safe_throw_at(get_edge_target_turf(L, throwdir), rand(3,6), 10)
 
 //R&D Design
 /datum/design/item/weapon/pummeler

@@ -4,7 +4,7 @@
 	desc = "A standard steel railing.  Play stupid games, win stupid prizes."
 	icon = 'icons/obj/railing.dmi'
 	density = TRUE
-	throwpass = TRUE
+	pass_flags = LETPASSTHROW
 	climbable = TRUE
 	layer = WINDOW_LAYER
 	anchored = TRUE

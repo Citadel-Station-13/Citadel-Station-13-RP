@@ -215,7 +215,7 @@ var/global/list/PDA_Manifest = list()
 
 /obj/item/weapon/beach_ball/afterattack(atom/target, mob/user)
 	. = ..()
-	drop_item()
+	user.drop_item()
 	safe_throw_at(target, throw_range, throw_speed, user)
 
 /obj/effect/stop

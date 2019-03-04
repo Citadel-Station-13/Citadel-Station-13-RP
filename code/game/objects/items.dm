@@ -251,7 +251,7 @@
 			ghost.assumeform(src)
 			ghost.animate_towards(user)
 
-/obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+/obj/item/_throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(hit_atom && !QDELETED(hit_atom))
 		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
 		if(is_hot() && isliving(hit_atom))

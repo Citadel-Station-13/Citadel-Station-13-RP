@@ -41,7 +41,8 @@
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/lava/hitby(atom/movable/AM)
+/turf/simulated/floor/lava/_hitby(atom/movable/AM)
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 

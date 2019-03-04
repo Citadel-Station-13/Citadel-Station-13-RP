@@ -71,20 +71,20 @@
 	src.update_icon()
 	return
 
-/obj/item/toy/balloon/throw_impact(atom/hit_atom)
-	if(src.reagents.total_volume >= 1)
-		src.visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
-		src.reagents.touch_turf(get_turf(hit_atom))
+/obj/item/toy/balloon/_throw_impact(atom/hit_atom)
+	. = ..()
+	if(. == HITBY_CAUGHT)
+		return
+	if(reagents.total_volume >= 1)
+		visible_message("<span class='warning'>\The [src] bursts!</span>","You hear a pop and a splash.")
+		reagents.touch_turf(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
-			src.reagents.touch(A)
-		src.icon_state = "burst"
-		spawn(5)
-			if(src)
-				qdel(src)
-	return
+			reagents.touch(A)
+		icon_state = "burst"
+		QDEL_IN(src, 5)
 
 /obj/item/toy/balloon/update_icon()
-	if(src.reagents.total_volume >= 1)
+	if(reagents.total_volume >= 1)
 		icon_state = "waterballoon"
 	else
 		icon_state = "waterballoon-e"

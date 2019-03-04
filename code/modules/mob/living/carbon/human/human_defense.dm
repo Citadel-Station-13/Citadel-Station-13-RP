@@ -350,7 +350,7 @@ emp_act
 
 //this proc handles being hit by a thrown atom
 //KEVINZ000: THIS NEEDS TO BE COMBINED WITH LIVING/hitby, DUPLCIATED CODE!
-/mob/living/carbon/human/hitby(atom/movable/AM, datum/thrownthing/throwingdatum)
+/mob/living/carbon/human/_hitby(atom/movable/AM, datum/thrownthing/throwingdatum)
 //	if(buckled && buckled == AM)
 //		return // Don't get hit by the thing we're buckled to.
 
@@ -445,7 +445,7 @@ emp_act
 			var/dir = get_dir(O.throw_source, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+			safe_throw_at(get_edge_target_turf(src,dir), 1, momentum)
 
 			if(!O || !src) return
 

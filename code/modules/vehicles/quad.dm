@@ -151,7 +151,7 @@
 		if(tow)
 			throw_dirs -= get_dir(H, tow) //Don't throw it at the trailer either.
 	var/turf/T = get_step(H, pick(throw_dirs))
-	H.throw_at(T, 1, 1, src)
+	H.safe_throw_at(T, 1, 1, src)
 
 /*
  * Trailer bits and bobs.

@@ -147,11 +147,11 @@
 	desc = "Apply corpse before closing."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "morguet"
-	density = 1
+	density = TRUE
 	plane = TURF_PLANE
 	var/obj/structure/morgue/connected = null
-	anchored = 1
-	throwpass = 1
+	anchored = TRUE
+	pass_flags = LETPASSTHROW
 
 /obj/structure/m_tray/Destroy()
 	if(connected && connected.connected == src)

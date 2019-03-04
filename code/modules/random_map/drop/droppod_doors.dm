@@ -64,9 +64,9 @@
 
 	// Hurl the mobs away.
 	for(var/mob/living/M in T)
-		M.throw_at(get_edge_target_turf(T,src.dir),rand(0,3),50)
+		M.safe_throw_at(get_edge_target_turf(T,src.dir),rand(0,3),50, src)
 	for(var/mob/living/M in origin)
-		M.throw_at(get_edge_target_turf(origin,src.dir),rand(0,3),50)
+		M.safe_throw_at(get_edge_target_turf(origin,src.dir),rand(0,3),50, src)
 
 	// Create a decorative ramp bottom and flatten out our current ramp.
 	density = 0
