@@ -51,7 +51,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/return_name = ID
 	switch(return_name)
 		if("metal")
-			return_name = "Steel"
+			return_name = "Metal"
 		if("glass")
 			return_name = "Glass"
 		if("gold")
@@ -60,10 +60,6 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			return_name = "Silver"
 		if("phoron")
 			return_name = "Solid Phoron"
-		if("plastic")
-			return_name = "Plastic"
-		if("osmium")
-			return_name = "Osmium"
 		if("uranium")
 			return_name = "Uranium"
 		if("diamond")
