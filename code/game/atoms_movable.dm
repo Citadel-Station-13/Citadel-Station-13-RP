@@ -4,7 +4,7 @@
 	var/last_move = null
 
 	var/anchored = FALSE
-	var/move_resist = MOVE_RESIST_DEFAULT
+	var/move_resist = MOVE_RESIST_DEFAULT			//not sure what to use this for, this can be determined later.
 	var/move_force = MOVE_FORCE_DEFAULT
 	var/pull_force = PULL_FORCE_DEFAULT
 	var/datum/thrownthing/throwing = null
@@ -334,7 +334,7 @@
 	return ..()
 
 /atom/movable/proc/safe_throw_at(atom/target, range, speed, atom/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, throw_intent = I_HURT)
-	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
+	if(anchored || (force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))		//stuff ripping off anchored things from floor comes later.
 		return FALSE
 	return _throw_at(target, range, speed, thrower, spin, diagonals_first, callback, force, throw_intent)
 

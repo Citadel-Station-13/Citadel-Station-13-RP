@@ -676,7 +676,7 @@
 								H.handcuffed = C
 								H.update_inv_handcuffed()
 							else
-								C.throw_at(usr,16,3,src)
+								C.safe_throw_at(usr, 16, 3, src)
 
 
 				fuel += FU

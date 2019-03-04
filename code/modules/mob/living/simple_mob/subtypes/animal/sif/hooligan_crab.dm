@@ -79,7 +79,7 @@
 		playsound(L, 'sound/effects/break_stone.ogg', 75, 1)
 		if(was_stunned) // Try to prevent chain-stuns by having them thrown.
 			var/throwdir = get_dir(src, L)
-			L.throw_at(get_edge_target_turf(L, throwdir), 5, 1, src)
+			L.safe_throw_at(get_edge_target_turf(L, throwdir), 5, 1, src)
 			visible_message(span("danger", "\The [src] hurls \the [L] away!"))
 		else
 			visible_message(span("danger", "\The [src] crushes \the [L]!"))

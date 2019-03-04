@@ -33,7 +33,7 @@
 	var/missed = FALSE
 	if(!isturf(A) && !(A in T) ) // Turfs don't contain themselves so checking contents is pointless if we're targeting a turf.
 		missed = TRUE
-	else if(!T.AdjacentQuick(src))
+	else if(!T.Adjacent(src))
 		missed = TRUE
 
 	if(missed) // Most likely we have a slow attack and they dodged it or we somehow got moved.

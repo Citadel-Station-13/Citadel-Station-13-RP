@@ -76,20 +76,18 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/hitby(AM as mob|obj)
-	..()
+/obj/effect/alien/resin/_hitby(atom/movable/AM)
+	. = ..()
 	for(var/mob/O in viewers(src, null))
 		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
 	else
-		tforce = AM:throwforce
-	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
+		tforce = AM.throwforce
+	playsound(src, 'sound/effects/attackblob.ogg', 100, 1)
 	health = max(0, health - tforce)
 	healthcheck()
-	..()
-	return
 
 /obj/effect/alien/resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -115,7 +113,6 @@
 			O.show_message("<span class='warning'>[usr] claws at the [name]!</span>", 1)
 		health -= rand(5,10)
 	healthcheck()
-	return
 
 /obj/effect/alien/resin/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
@@ -125,7 +122,6 @@
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	healthcheck()
 	..()
-	return
 
 /obj/effect/alien/resin/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group) return 0

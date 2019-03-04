@@ -229,7 +229,7 @@ var/const/enterloopsanity = 100
 /turf/Entered(atom/movable/AM)
 
 	if(isliving(AM))
-		var/mob/living/L = M
+		var/mob/living/L = AM
 		L.handle_footstep(src)
 	..()
 	var/objects = 0

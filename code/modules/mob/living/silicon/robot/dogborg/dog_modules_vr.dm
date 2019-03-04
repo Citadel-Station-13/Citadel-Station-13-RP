@@ -413,7 +413,7 @@
 	pixel_y = 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
+	safe_throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/mecha/mechstep2.ogg', 50, 1)
 	pixel_y = 0
 	cell.charge -= 750

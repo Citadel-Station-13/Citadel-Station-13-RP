@@ -359,7 +359,7 @@
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)
-		return 0
+		return FALSE
 
 	for(var/datum/stored_item/I in item_records)
 		throw_item = I.get_product(get_turf(src))
@@ -368,11 +368,10 @@
 		break
 
 	if(!throw_item)
-		return 0
-	spawn(0)
-		throw_item.throw_at(target,16,3,src)
-	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
-	return 1
+		return FALSE
+	throw_item.safe_throw_at(target, 16, 3, src)
+	visible_message("<span class='warning'>[src] launches [throw_item] at [target]!</span>")
+	return TRUE
 
 /************************
 *   Secure SmartFridges

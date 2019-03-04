@@ -107,14 +107,12 @@
 /obj/item/device/assembly/mousetrap/_hitby(atom/movable/AM)
 	. = ..()
 	if(armed)
-		visible_message("<span class='warning'>[src] is triggered by [A].</span>")
+		visible_message("<span class='warning'>[src] is triggered by [AM].</span>")
 		triggered(null)
-
 
 /obj/item/device/assembly/mousetrap/armed
 	icon_state = "mousetraparmed"
-	armed = 1
-
+	armed = TRUE
 
 /obj/item/device/assembly/mousetrap/verb/hide_under()
 	set src in oview(1)

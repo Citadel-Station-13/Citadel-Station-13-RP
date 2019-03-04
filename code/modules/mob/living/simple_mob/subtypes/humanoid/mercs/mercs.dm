@@ -69,7 +69,7 @@
 
 	var/obj/item/weapon/grenade/G = new grenade_type(get_turf(src))
 	if(istype(G))
-		G.throw_at(A, G.throw_range, G.throw_speed, src)
+		G.safe_throw_at(A, G.throw_range, G.throw_speed, src)
 		G.attack_self(src)
 		special_attack_charges = max(special_attack_charges-1, 0)
 
