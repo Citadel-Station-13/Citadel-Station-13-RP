@@ -8,9 +8,9 @@
 	taser_effect = 0
 	agony = 20
 
-	muzzle_type = /obj/effect/projectile/lightning/tracer
-	tracer_type = /obj/effect/projectile/lightning/muzzle
-	impact_type = /obj/effect/projectile/lightning/impact
+	muzzle_type = /obj/effect/temp_visual/projectile/tracer/lightning
+	tracer_type = /obj/effect/temp_visual/projectile/muzzle/lightning
+	impact_type = /obj/effect/temp_visual/projectile/impact/lightning
 
 /obj/item/projectile/energy/electrode/goldenbolt	//MIGHTY GOLDEN BOLT
 	name = "taser bolt"

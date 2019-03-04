@@ -28,6 +28,9 @@
 /obj/effect/temp_visual/ex_act()
 	return
 
+/obj/effect/temp_visual/proc/force_persist()
+	deltimer(timerid)
+
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
