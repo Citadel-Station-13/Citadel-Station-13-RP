@@ -90,8 +90,9 @@
 	safe_blink(user, 14)
 	qdel(src)
 
-/obj/item/slime_crystal/throw_impact(atom/movable/AM, thrownthing/throwingdatum)
-	if(!istype(AM))
+/obj/item/slime_crystal/_throw_impact(atom/movable/AM, thrownthing/throwingdatum)
+	. = ..()
+	if(. == HITBY_CAUGHT)
 		return
 
 	if(AM.anchored)

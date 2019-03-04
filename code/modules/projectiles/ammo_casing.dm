@@ -1,3 +1,21 @@
+/obj/item/ammu_casing
+	name = "projectile casing"
+	desc = "A projectile's casing."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "s-casing"
+	flags = CONDUCT
+	slot_flags = SLOT_BELT | SLOT_EARS
+	throwforce = 1
+	throwrange = 7
+	throwspeed = 3
+	w_class = ITEMSIZE_TINY
+
+	var/leaves_residue = TRUE										//some bay forensics shit
+	var/caliber = ""												//what kinds of magazines/guns can load this
+	var/projectile_type = /obj/item/projectile						//Can be directly accessed.
+	var/obj/item/projectile/projectile = PROJECTILE_UNINITIALIZED	//DO NOT DIRECTLY ACCESS. Use get_projectile()
+
+
 /obj/item/ammo_casing
 	name = "bullet casing"
 	desc = "A bullet casing."

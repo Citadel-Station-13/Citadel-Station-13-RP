@@ -1094,7 +1094,7 @@
 */
 
 
-	item.throw_at(target, throw_range, item.throw_speed, src, throw_intent = a_intent)
+	item.safe_throw_at(target, throw_range, item.throw_speed, src, throw_intent = a_intent)
 
 /mob/living/get_sound_env(var/pressure_factor)
 	if (hallucination)

@@ -588,11 +588,10 @@
 		src.log_append_to_last("Armor saved.")
 	return
 
-/obj/mecha/hitby(atom/movable/A as mob|obj) //wrapper
-	..()
-	src.log_message("Hit by [A].",1)
+/obj/mecha/_hitby(atom/movable/A) //wrapper
+	. = ..()
+	log_message("Hit by [A].",1)
 	call((proc_res["dynhitby"]||src), "dynhitby")(A)
-	return
 
 /obj/mecha/proc/dynhitby(atom/movable/A)
 	if(istype(A, /obj/item/mecha_parts/mecha_tracking))

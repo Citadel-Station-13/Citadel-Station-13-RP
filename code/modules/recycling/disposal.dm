@@ -786,7 +786,7 @@
 					AM.pipe_eject(direction)
 					spawn(1)
 						if(AM)
-							AM.throw_at(target, 100, 1)
+							AM.safe_throw_at(target, 100, 1, src)
 				H.vent_gas(T)
 				qdel(H)
 

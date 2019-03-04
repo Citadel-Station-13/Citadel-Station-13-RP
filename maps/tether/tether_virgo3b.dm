@@ -288,7 +288,7 @@ GLOBAL_DATUM(planet_virgo3b, /datum/planet/virgo3b)
 				if(U.open)
 					to_chat(L, "<span class='warning'>A gust of wind yanks the umbrella from your hand!</span>")
 					L.drop_from_inventory(U)
-					U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
+					U.safe_throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
 
 			L.water_act(2)
 			to_chat(L, "<span class='warning'>Rain falls on you, drenching you in water.</span>")
