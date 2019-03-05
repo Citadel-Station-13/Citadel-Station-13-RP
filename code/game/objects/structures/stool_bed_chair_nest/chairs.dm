@@ -161,7 +161,7 @@
 			var/def_zone = ran_zone()
 			var/blocked = occupant.run_armor_check(def_zone, "melee")
 			var/soaked = occupant.get_armor_soak(def_zone, "melee")
-			occupant.throw_at(A, 3, propelled)
+			occupant.safe_throw_at(A, 3, propelled, src)
 			occupant.apply_effect(6, STUN, blocked)
 			occupant.apply_effect(6, WEAKEN, blocked)
 			occupant.apply_effect(6, STUTTER, blocked)

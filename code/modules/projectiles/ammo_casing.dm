@@ -15,6 +15,9 @@
 	var/projectile_type = /obj/item/projectile						//Can be directly accessed.
 	var/obj/item/projectile/projectile = PROJECTILE_UNINITIALIZED	//DO NOT DIRECTLY ACCESS. Use get_projectile()
 
+/obj/item/ammu_casing/proc/is_spent()
+	return istype(projectile) || (projectile == PROJECTILE_UNINITIALIZED)
+
 
 /obj/item/ammo_casing
 	name = "bullet casing"

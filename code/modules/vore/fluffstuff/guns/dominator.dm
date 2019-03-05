@@ -45,6 +45,6 @@
 /obj/item/projectile/beam/dominator
 	name = "dominator lethal beam"
 	icon_state = "xray"
-	muzzle_type = /obj/effect/temp_visual/projectile/muzzle/xray
-	tracer_type = /obj/effect/temp_visual/projectile/tracer/xray
-	impact_type = /obj/effect/temp_visual/projectile/impact/xray
+	muzzle_type = /obj/effect/projectile/muzzle/xray
+	tracer_type = /obj/effect/projectile/tracer/xray
+	impact_type = /obj/effect/projectile/impact/xray

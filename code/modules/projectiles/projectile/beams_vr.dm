@@ -7,9 +7,9 @@
     damage_type = HALLOSS
     light_color = "#00CECE"
 
-    muzzle_type = /obj/effect/temp_visual/projectile/muzzle/laser_omni
-    tracer_type = /obj/effect/temp_visual/projectile/tracer/laser_omni
-    impact_type = /obj/effect/temp_visual/projectile/impact/laser_omni
+    muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+    tracer_type = /obj/effect/projectile/tracer/laser_omni
+    impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/item/projectile/beam/stun
 	agony = 35
@@ -22,9 +22,9 @@
 	damage_type = HALLOSS
 	light_color = "#00CC33"
 
-	muzzle_type = /obj/effect/temp_visual/projectile/muzzle/xray
-	tracer_type = /obj/effect/temp_visual/projectile/tracer/xray
-	impact_type = /obj/effect/temp_visual/projectile/impact/xray
+	muzzle_type = /obj/effect/projectile/muzzle/xray
+	tracer_type = /obj/effect/projectile/tracer/xray
+	impact_type = /obj/effect/projectile/impact/xray
 
 /obj/item/projectile/beam/energy_net/on_hit(atom/netted, blocked)
 	. = ..()
@@ -39,6 +39,6 @@
 	icon_state = "bluelaser"
 	light_color = "#0066FF"
 
-	muzzle_type = /obj/effect/temp_visual/projectile/muzzle/laser_blue
-	tracer_type = /obj/effect/temp_visual/projectile/tracer/laser_blue
-	impact_type = /obj/effect/temp_visual/projectile/impact/laser_blue
+	muzzle_type = /obj/effect/projectile/muzzle/laser_blue
+	tracer_type = /obj/effect/projectile/tracer/laser_blue
+	impact_type = /obj/effect/projectile/impact/laser_blue
