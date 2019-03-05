@@ -137,7 +137,7 @@
 		affecting.drop_r_hand()
 
 		if(iscarbon(affecting))
-			handle_eye_mouth_covering(affecting, assailant, assailant.zone_sel.selecting)
+			handle_eye_mouth_covering(affecting, assailant, assailant.zone_selected)
 
 		if(force_down)
 			if(affecting.loc != assailant.loc || size_difference(affecting, assailant) > 0)
@@ -310,7 +310,7 @@
 	if(M == affecting)
 		if(ishuman(affecting))
 			var/mob/living/carbon/human/H = affecting
-			var/hit_zone = assailant.zone_sel.selecting
+			var/hit_zone = assailant.zone_selected
 			flick(hud.icon_state, hud)
 			switch(assailant.a_intent)
 				if(I_HELP)

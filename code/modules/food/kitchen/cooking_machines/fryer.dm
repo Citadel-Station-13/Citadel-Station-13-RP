@@ -165,9 +165,9 @@
 
 	var/obj/item/organ/external/E
 	var/nopain
-	if(ishuman(victim) && user.zone_sel.selecting != "groin" && user.zone_sel.selecting != "chest")
+	if(ishuman(victim) && user.zone_selected != "groin" && user.zone_selected != "chest")
 		var/mob/living/carbon/human/H = victim
-		E = H.get_organ(user.zone_sel.selecting)
+		E = H.get_organ(user.zone_selected)
 		if(!E || E.species.flags & NO_PAIN)
 			nopain = 2
 		else if(E.robotic >= ORGAN_ROBOT)
@@ -186,7 +186,7 @@
 
 			E.take_damage(0, damage)
 		else
-			victim.apply_damage(damage, BURN, user.zone_sel.selecting)
+			victim.apply_damage(damage, BURN, user.zone_selected)
 
 
 		if(!nopain)

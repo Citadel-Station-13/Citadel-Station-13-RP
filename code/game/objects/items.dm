@@ -509,7 +509,7 @@ var/list/global/slot_flags_enumeration = list(
 		return
 
 	if(U.get_accuracy_penalty(U))	//Should only trigger if they're not aiming well
-		var/hit_zone = get_zone_with_miss_chance(U.zone_sel.selecting, M, U.get_accuracy_penalty(U))
+		var/hit_zone = get_zone_with_miss_chance(U.zone_selected, M, U.get_accuracy_penalty(U))
 		if(!hit_zone)
 			U.do_attack_animation(M)
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)

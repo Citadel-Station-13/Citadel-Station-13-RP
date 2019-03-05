@@ -23,7 +23,7 @@
 			user << "<span class='danger'>You need to have a firm grip on [H] before you can use \the [src]!</span>"
 			return
 		else
-			if(user.zone_sel.selecting == O_EYES)
+			if(user.zone_selected == O_EYES)
 
 				if(!H.organs_by_name[BP_HEAD])
 					user << "<span class='warning'>\The [H] doesn't have a head.</span>"
@@ -62,7 +62,7 @@
 				H.update_inv_glasses()
 				playsound(src, 'sound/effects/tape.ogg',25)
 
-			else if(user.zone_sel.selecting == O_MOUTH || user.zone_sel.selecting == BP_HEAD)
+			else if(user.zone_selected == O_MOUTH || user.zone_selected == BP_HEAD)
 				if(!H.organs_by_name[BP_HEAD])
 					user << "<span class='warning'>\The [H] doesn't have a head.</span>"
 					return
@@ -101,7 +101,7 @@
 				H.update_inv_wear_mask()
 				playsound(src, 'sound/effects/tape.ogg',25)
 
-			else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
+			else if(user.zone_selected == "r_hand" || user.zone_selected == "l_hand")
 				can_place = 0
 
 				if(istype(user, /mob/living/silicon/robot))

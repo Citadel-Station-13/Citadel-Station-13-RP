@@ -54,7 +54,7 @@
 				src.visible_message("<span class='danger'>[src] stabs [T] with the proboscis!</span>")
 				T << "<span class='danger'>You feel a sharp stabbing pain!</span>"
 				add_attack_logs(src,T,"Absorbed (changeling)")
-				var/obj/item/organ/external/affecting = T.get_organ(src.zone_sel.selecting)
+				var/obj/item/organ/external/affecting = T.get_organ(src.zone_selected)
 				if(affecting.take_damage(39,0,1,0,"large organic needle"))
 					T:UpdateDamageIcon()
 

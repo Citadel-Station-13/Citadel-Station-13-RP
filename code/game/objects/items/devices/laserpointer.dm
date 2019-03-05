@@ -92,7 +92,7 @@
 
 	//human/alien mobs
 	if(iscarbon(target))
-		if(user.zone_sel.selecting == "eyes")
+		if(user.zone_selected == "eyes")
 			var/mob/living/carbon/C = target
 
 			//20% chance to actually hit the eyes

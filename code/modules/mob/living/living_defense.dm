@@ -251,7 +251,7 @@
 		var/zone
 		if (istype(throwingdatum.thrower, /mob/living))		//needs refactoring; they shouldn't be able to "redirect" it after it's launched.
 			var/mob/living/L = throwingdatum.thrower
-			zone = check_zone(L.zone_sel.selecting)
+			zone = check_zone(L.zone_selected)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 

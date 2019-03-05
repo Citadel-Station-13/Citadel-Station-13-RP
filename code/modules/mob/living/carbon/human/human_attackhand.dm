@@ -34,14 +34,14 @@
 	// Should this all be in Touch()?
 	if(istype(H))
 		if(H.get_accuracy_penalty() && H != src)	//Should only trigger if they're not aiming well
-			var/hit_zone = get_zone_with_miss_chance(H.zone_sel.selecting, src, H.get_accuracy_penalty())
+			var/hit_zone = get_zone_with_miss_chance(H.zone_selected, src, H.get_accuracy_penalty())
 			if(!hit_zone)
 				H.do_attack_animation(src)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				visible_message("<font color='red'><B>[H] reaches for [src], but misses!</B></font>")
 				return 0
 
-		if(H != src && check_shields(0, null, H, H.zone_sel.selecting, H.name))
+		if(H != src && check_shields(0, null, H, H.zone_selected, H.name))
 			H.do_attack_animation(src)
 			return 0
 
@@ -52,7 +52,7 @@
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				visible_message("<font color='red'><B>[H] has attempted to punch [src]!</B></font>")
 				return 0
-			var/obj/item/organ/external/affecting = get_organ(ran_zone(H.zone_sel.selecting))
+			var/obj/item/organ/external/affecting = get_organ(ran_zone(H.zone_selected))
 			var/armor_block = run_armor_check(affecting, "melee")
 			var/armor_soak = get_armor_soak(affecting, "melee")
 
@@ -113,7 +113,7 @@
 					updatehealth()
 					src << "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>"
 
-			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
+			else if(!(M == src && apply_pressure(M, M.zone_selected)))
 				help_shake_act(M)
 			return 1
 
@@ -139,13 +139,13 @@
 			H.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			//VORESTATION EDIT
-			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
+			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_selected == BP_L_HAND || M.zone_selected == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
 			//VORESTATION END END
 			return 1
 
 		if(I_HURT)
 
-			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
+			if(M.zone_selected == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
 				var/obj/item/weapon/grenade/G = wear_mask
 				if(!G.active)
 					visible_message("<span class='danger'>\The [M] pulls the pin from \the [src]'s [G.name]!</span>")
@@ -162,7 +162,7 @@
 			var/rand_damage = rand(1, 5)
 			var/block = 0
 			var/accurate = 0
-			var/hit_zone = H.zone_sel.selecting
+			var/hit_zone = H.zone_selected
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
 
 			if(!affecting || affecting.is_stump())
@@ -284,7 +284,7 @@
 
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
-			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
+			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.zone_selected))
 
 			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
 
@@ -364,7 +364,7 @@
 	if(!has_grab)
 		return 0
 
-	if(!def_zone) def_zone = user.zone_sel.selecting
+	if(!def_zone) def_zone = user.zone_selected
 	var/target_zone = check_zone(def_zone)
 	if(!target_zone)
 		return 0

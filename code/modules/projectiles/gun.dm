@@ -74,6 +74,17 @@
 	var/flight_x_offset = 0
 	var/flight_y_offset = 0
 
+////////////////////////////////////////////////////////
+
+
+	var/list/datum/firemode/firemodes = 		//maybe?
+
+
+	var/obj/item/ammu_casing/chambered			//currently chambered
+
+
+
+
 /obj/item/weapon/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
@@ -223,7 +234,7 @@
 */
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
-	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+	if (A == user && user.zone_selected == O_MOUTH && !mouthshoot)
 		handle_suicide(user)
 	else if(user.a_intent == I_HURT) //point blank shooting
 		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
@@ -365,7 +376,7 @@
 		if(pointblank)
 			process_point_blank(projectile, user, target)
 
-		if(process_projectile(projectile, user, target, user.zone_sel.selecting, clickparams))
+		if(process_projectile(projectile, user, target, user.zone_selected, clickparams))
 			handle_post_fire(user, target, pointblank, reflex)
 			update_icon()
 
@@ -457,7 +468,7 @@
 	//	if(pointblank)
 	//		process_point_blank(projectile, user, target)
 
-	//	if(process_projectile(projectile, null, target, user.zone_sel.selecting, clickparams))
+	//	if(process_projectile(projectile, null, target, user.zone_selected, clickparams))
 	//		handle_post_fire(null, target, pointblank, reflex)
 
 	//	update_icon()

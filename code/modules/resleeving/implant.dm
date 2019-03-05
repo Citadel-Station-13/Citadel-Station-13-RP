@@ -103,7 +103,7 @@
 				M.visible_message("<span class='notice'>[M] has been backup implanted by [user].</span>")
 
 				var/obj/item/weapon/implant/backup/imp = imps[imps.len]
-				if(imp.handle_implant(M,user.zone_sel.selecting))
+				if(imp.handle_implant(M,user.zone_selected))
 					imp.post_implant(M)
 					imps -= imp
 					add_attack_logs(user,M,"Implanted backup implant")

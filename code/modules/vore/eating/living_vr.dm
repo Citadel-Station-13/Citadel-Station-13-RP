@@ -92,7 +92,7 @@
 					log_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed.")
 
 			///// If grab clicked on grabbed
-			else if((src == G.affecting) && (attacker.a_intent == I_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
+			else if((src == G.affecting) && (attacker.a_intent == I_GRAB) && (attacker.zone_selected == BP_TORSO) && (is_vore_predator(G.affecting)))
 				if (attacker.feed_self_to_grabbed(attacker, G.affecting))
 					qdel(G)
 					return 1

@@ -351,11 +351,11 @@
 				t_him = "him"
 			if(FEMALE)
 				t_him = "her"
-	if(H.zone_sel.selecting == "head") //VOREStation Edit - Headpats and Handshakes.
+	if(H.zone_selected == "head") //VOREStation Edit - Headpats and Handshakes.
 		H.visible_message( \
 			"<span class='notice'>[H] pats [target] on the head.</span>", \
 			"<span class='notice'>You pat [target] on the head.</span>", )
-	else if(H.zone_sel.selecting == "r_hand" || H.zone_sel.selecting == "l_hand")
+	else if(H.zone_selected == "r_hand" || H.zone_selected == "l_hand")
 		H.visible_message( \
 			"<span class='notice'>[H] shakes [target]'s hand.</span>", \
 			"<span class='notice'>You shake [target]'s hand.</span>", )

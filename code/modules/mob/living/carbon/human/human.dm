@@ -1,4 +1,4 @@
-/mob/living/carbon/human
+v/mob/living/carbon/human
 	name = "unknown"
 	real_name = "unknown"
 	voice_name = "unknown"
@@ -1191,7 +1191,7 @@
 		if(!user)
 			target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
 		else
-			target_zone = user.zone_sel.selecting
+			target_zone = user.zone_selected
 
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 	var/fail_msg

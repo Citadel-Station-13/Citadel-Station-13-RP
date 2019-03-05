@@ -222,7 +222,7 @@
 	if(!istype(M, /mob))
 		return
 
-	if(M == user && user.zone_sel.selecting == O_MOUTH)
+	if(M == user && user.zone_selected == O_MOUTH)
 		// Find ourselves a cig. Note that we could be full of lighters.
 		var/obj/item/clothing/mask/smokable/cigarette/cig = locate() in src
 

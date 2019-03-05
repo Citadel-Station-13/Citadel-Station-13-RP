@@ -36,7 +36,7 @@
 		P.def_zone = zone_override
 	else if(isliving(user))
 		var/mob/living/L = user
-		P.def_zone = L.zone_sel.selecting
+		P.def_zone = L.zone_selected
 
 
 /obj/item/ammo_casing/proc/ready_proj(atom/target, mob/living/user, quiet, zone_override = "")

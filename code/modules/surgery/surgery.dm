@@ -111,7 +111,7 @@
 	if(!ishuman(M))
 		return 1
 	var/mob/living/carbon/human/H = M
-	var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
+	var/obj/item/organ/external/affected = H.get_organ(user.zone_selected)
 	if(affected)
 		for(var/datum/surgery_step/S in surgery_steps)
 			if(!affected.open && S.req_open)
@@ -123,7 +123,7 @@
 		return 0
 	if (user.a_intent == I_HURT)	//check for Hippocratic Oath
 		return 0
-	var/zone = user.zone_sel.selecting
+	var/zone = user.zone_selected
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
 		user << "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>"
 		return 1

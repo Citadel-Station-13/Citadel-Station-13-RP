@@ -337,7 +337,7 @@ emp_act
 	return 0
 
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
-	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
+	var/obj/item/organ/external/affecting = get_organ(user.zone_selected)
 	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
 		user << "<span class='warning'>That limb isn't robotic.</span>"
 		return -1
@@ -372,7 +372,7 @@ emp_act
 		var/zone
 		if (istype(throwingdatum.thrower, /mob/living))		//needs refactoring; they shouldn't be able to "redirect" it after it's launched.
 			var/mob/living/L = throwingdatum.thrower
-			zone = check_zone(L.zone_sel.selecting)
+			zone = check_zone(L.zone_selected)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 		SEND_SIGNAL(O, COMSIG_MOVABLE_IMPACT_ZONE, src, zone)
