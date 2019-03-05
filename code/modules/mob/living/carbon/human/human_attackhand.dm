@@ -381,6 +381,7 @@
 	if(do_after(user, 100))
 		organ.dislocate(1)
 		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		log_and_message_admins("has dislocated [src]'s [organ.joint]!")
 		return 1
 	return 0
 
