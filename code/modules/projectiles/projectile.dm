@@ -337,8 +337,8 @@
 	beam_index = pcache
 	beam_segments[beam_index] = null
 
-//Spread is FORCED!
-/obj/item/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, spread = 0)
+//angle_offset is ADDEd/FORCED!
+/obj/item/projectile/proc/preparePixelProjectile(atom/target, atom/source, params, angle_offset = 0)
 	var/turf/curloc = get_turf(source)
 	var/turf/targloc = get_turf(target)
 	trajectory_ignore_forcemove = TRUE
@@ -349,18 +349,18 @@
 	if(targloc || !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(GET_ANGLE(src, targloc) + spread)
+		setAngle(GET_ANGLE(src, targloc) + angle_offset)
 
 	if(isliving(source) && params)
 		var/list/calculated = calculate_projectile_angle_and_pixel_offsets(source, params)
 		p_x = calculated[2]
 		p_y = calculated[3]
 
-		setAngle(calculated[1] + spread)
+		setAngle(calculated[1] + angle_offset)
 	else if(targloc)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(GET_ANGLE(src, targloc) + spread)
+		setAngle(GET_ANGLE(src, targloc) + angle_offset)
 	else
 		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)

@@ -101,12 +101,12 @@
 	name = "damage zone"
 	icon_state = "zone_sel"
 	screen_loc = ui_zonesel
-	var/selecting = BP_TORSO
 
 /obj/screen/zone_sel/Click(location, control,params)
 	var/list/PL = params2list(params)
 	var/icon_x = text2num(PL["icon-x"])
 	var/icon_y = text2num(PL["icon-y"])
+	var/selecting = usr.zone_selected
 	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
 
 	switch(icon_y)
@@ -162,6 +162,7 @@
 
 	if(old_selecting != selecting)
 		update_icon()
+	usr.zone_selected = selecting
 	return 1
 
 /obj/screen/zone_sel/proc/set_selected_zone(bodypart)
