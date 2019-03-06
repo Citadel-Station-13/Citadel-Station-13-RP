@@ -314,6 +314,7 @@ emp_act
 	if(prob(dislocate_chance * (100 - blocked)/100))
 		visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
 		organ.dislocate(1)
+		log_and_message_admins("has dislocated [src]'s [organ.joint]!")
 		return 1
 	return 0
 
