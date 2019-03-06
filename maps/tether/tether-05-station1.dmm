@@ -17050,9 +17050,7 @@
 	name = "Office Doors";
 	pixel_x = -28;
 	pixel_y = 23;
-	req_access = list(20);
-	step_x = 0;
-	step_y = 0
+	req_access = list(20)
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
