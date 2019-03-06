@@ -342,8 +342,9 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				continue // No need to apply damage.
 
 			H.apply_damage(damage, BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
-			if(show_message)
-				to_chat(H, effect_message)
+			if(prob(10))
+				if(show_message)
+					to_chat(H, effect_message)
 
 /datum/weather/virgo3b/blood_moon
 	name = "blood moon"
