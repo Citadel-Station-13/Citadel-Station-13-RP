@@ -114,3 +114,23 @@
 		update_icon()
 	else
 		update_use_power(1)
+//cit change starts
+/obj/item/cell_charger_kit
+	name = "cell charger kit"
+	desc = "A box with the parts for a heavy-duty cell charger inside of it. Use it in-hand to deploy a cell charger."
+	icon = 'modular_citadel/icons/obj/storage.dmi'
+	icon_state = "box"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+		)
+	item_state = "syringe_kit"
+	w_class = ITEMSIZE_NORMAL
+	matter = list(DEFAULT_WALL_MATERIAL = 4000,"glass" = 1000)
+
+/obj/item/cell_charger_kit/attack_self(mob/user)
+		to_chat(user, "<span class='notice'>You assemble and deploy the cell charger in place.</span>")
+		playsound(user, 'sound/machines/click.ogg', 50, 1)
+		var/obj/machinery/cell_charger/C = new(user.loc)
+		C.add_fingerprint(user)
+		qdel(src)
