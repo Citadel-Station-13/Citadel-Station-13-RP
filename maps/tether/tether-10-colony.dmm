@@ -1632,6 +1632,7 @@
 "Ft" = (/obj/machinery/door/airlock/security{name = "Section 4 Security"},/turf/simulated/shuttle/floor/white{color = "#cccccc"},/area/shuttle/escape/centcom)
 "Fu" = (/obj/structure/bed/chair{dir = 8},/obj/machinery/light{dir = 4; icon_state = "tube1"; pixel_x = 0},/turf/simulated/shuttle/floor/skipjack,/area/shuttle/escape/centcom)
 "Fv" = (/obj/machinery/computer/secure_data{dir = 4},/obj/machinery/light,/turf/simulated/shuttle/floor/white{color = "#cccccc"},/area/shuttle/escape/centcom)
+"Fw" = (/obj/structure/dogbed,/turf/simulated/floor/outdoors/grass/sif/virgo3b,/area/space)
 "Fx" = (/obj/item/weapon/soap/syndie,/turf/unsimulated/floor{icon_state = "freezer"},/area/centcom/security)
 "JC" = (/obj/machinery/power/thermoregulator,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
 "JF" = (/obj/structure/reagent_dispensers/fueltank,/turf/unsimulated/floor{icon_state = "dark"},/area/centcom/specops)
@@ -1782,6 +1783,6 @@ aaababababababababrsrCrIrXrIrIrIrIrXrIrFrsrprprprprprsrCrIrXrIrIrIrIrXrIrFrsabab
 aaababababababababrsrCrIrXrIrIrIrIrXrIrFrsabababababrsrCrIrXrIrIrIrIrXrIrFrsabababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaa
 aaababababababababrsrCrIrXrIrIrIrIrXrIrFrsabababababrsrCrIrXrIrIrIrIrXrIrFrsababababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaa
 aaababababababababrsrCrIrXrIrIrIrIrXrIrFrsabababababrsrCrIrXrIrIrIrIrXrIrFrsababababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaa
-aaababababababababrsrCrIrXrIrIrIrIrXrIrFrsabababababrsrCrIrXrIrIrIrIrXrIrFrsababababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaa
+aaFwabababababababrsrCrIrXrIrIrIrIrXrIrFrsabababababrsrCrIrXrIrIrIrIrXrIrFrsababababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacaa
 aaaaaaaaaaaaaaaaaarsqVqVqVqVqVqVqVqVqVqVrsaaaaaaaaaarsqVqVqVqVqVqVqVqVqVqVrsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
