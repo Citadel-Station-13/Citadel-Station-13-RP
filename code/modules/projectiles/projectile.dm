@@ -202,10 +202,16 @@
 			forcemoved = TRUE
 			hitscan_last = loc
 		else if(T != loc)
-			before_move()
-			step_towards(src, T)
-			hitscan_last = loc
-			after_move()
+			var/safety = 100
+			while(loc && (T != loc) && (T.z == loc.z))
+				if(safety-- < 0)
+					stack_trace("Infinite recursion caught on a projectile.")
+					qdel(src)
+					return
+				before_move()
+				step_towards(src, T)
+				hitscan_last = loc
+				after_move()
 		if(can_hit_target(original, permutated))
 			Bump(original)
 	if(!hitscanning && !forcemoved)

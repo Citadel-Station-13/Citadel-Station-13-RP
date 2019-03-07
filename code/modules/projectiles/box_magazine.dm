@@ -6,40 +6,38 @@
 	flags = CONDUCT
 	slot_flags = NONE
 	item_state = "syringe_kit"
-
-
-////////////////////////////////////////
-
-//Gun loading types
-#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
-#define MAGAZINE 		4	//The magazine item itself goes inside the gun
-
-//An item that holds casings and can be used to put them inside guns
-/obj/item/ammo_magazine
-	name = "magazine"
-	desc = "A magazine for some kind of gun."
-	icon_state = ".357"
-	icon = 'icons/obj/ammo.dmi'
-	flags = CONDUCT
-	slot_flags = SLOT_BELT
-	item_state = "syringe_kit"
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	throwforce = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 4
 	throw_range = 10
-	preserve_item = 1
+	matter = list(DEFAULT_WALL_MATERIAL = 500)
 
-	var/list/stored_ammo = list()
-	var/mag_type = SPEEDLOADER //ammo_magazines can only be used with compatible guns. This is not a bitflag, the load_method var on guns is.
-	var/caliber = ".357"
+	var/magazine_type = SPEEDLOADER
+	var/caliber = CALIBER_357
+	var/list/stored_ammo					//DO NOT DIRECTLY ACCESS. SPECIAL FORMAT! ONLY TRY TO SET IN COMPILE TIME IF YOU KNOW WHAT YOU ARE DOING!
+	//stored_ammo list: The first loaded (so index 1) will be the first out.
+	//If it gets a projectile, it will return/eject that
+	//If it's something like type, number, where the next index after the type is the number, it will deduct one if ejecting, or instantiate it and shift the rest backwards to put the new casing on top
+	//this is all to save memory.
 	var/max_ammo = 7
+	var/starting_ammo = 7
+	var/ammo_type = /obj/item/ammo_casing	//Initially loaded type
+	var/open_container = TRUE				//Can remove ammo by hand.
 
-	var/ammo_type = /obj/item/ammo_casing //ammo type that is initially loaded
-	var/initial_ammo = null
+/obj/item/ammo_box/Initialize()
 
-	var/can_remove_ammo = TRUE	// Can this thing have bullets removed one-by-one? As of first implementation, only affects smart magazines
+/obj/item/ammo_box/proc/return_top_casing()
+	if(!LAZYLEN(stored_ammo))
+		return
+	var/obj/item/ammu_casing/C = stored_ammo[1]
+	if(istype(C))
+		return C
+	else if(ispath(C))
+		var/amount_left = stored_ammo[2]
+		if(amount_left
+
+////////////////////////////////////////
+
 
 	var/multiple_sprites = 0
 	//because BYOND doesn't support numbers as keys in associative lists
@@ -316,3 +314,34 @@
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
 	update_icon()
+
+
+
+
+
+
+
+
+/obj/item/ammo_casing/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/ammo_box))
+		var/obj/item/ammo_box/box = I
+		if(isturf(loc))
+			var/boolets = 0
+			for(var/obj/item/ammo_casing/bullet in loc)
+				if (box.stored_ammo.len >= box.max_ammo)
+					break
+				if (bullet.BB)
+					if (box.give_round(bullet, 0))
+						boolets++
+				else
+					continue
+			if (boolets > 0)
+				box.update_icon()
+				to_chat(user, "<span class='notice'>You collect [boolets] shell\s. [box] now contains [box.stored_ammo.len] shell\s.</span>")
+			else
+				to_chat(user, "<span class='warning'>You fail to collect anything!</span>")
+	else
+		return ..()
+
+
+

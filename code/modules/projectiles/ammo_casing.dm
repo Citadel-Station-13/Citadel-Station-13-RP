@@ -9,30 +9,39 @@
 	throwrange = 7
 	throwspeed = 3
 	w_class = ITEMSIZE_TINY
+	matter = list(DEFAULT_WALL_MATERIAL = 500)
 
 	var/leaves_residue = TRUE										//some bay forensics shit
 	var/caliber = ""												//what kinds of magazines/guns can load this
 	var/projectile_type = /obj/item/projectile						//Can be directly accessed.
-	var/obj/item/projectile/projectile = PROJECTILE_UNINITIALIZED	//DO NOT DIRECTLY ACCESS. Use get_projectile()
+	var/obj/item/projectile/_projectile = PROJECTILE_UNINITIALIZED	//DO NOT DIRECTLY ACCESS. Use get_projectile()
+	var/ammo_flags = NONE
+	var/variance = 0												//variance intrinsic to the casing
+	var/sound_volume = 100											//volume of firing sound
+	var/fire_sound													//sound played when firing
+	var/pellets = 1													//pellets per fire
+	var/firing_effect_type											//firing effect when ammo is fired
+	var/clickcd_override											//if non null, will override user clickcd.
 
 /obj/item/ammu_casing/proc/is_spent()
-	return istype(projectile) || (projectile == PROJECTILE_UNINITIALIZED)
+	return istype(_projectile) || (_projectile == PROJECTILE_UNINITIALIZED)
 
 /obj/item/ammu_casing/proc/initialize_projectile()
-	return ((projectile = new projectile_type(src, src)))
+	return ((_projectile = new projectile_type(src, src)))
 
 /obj/item/ammu_casing/proc/return_projectile()
-	return (projectile == PROJECTILE_UNINITIALIZED)? initialize_projectile() : projectile
+	return (_projectile == PROJECTILE_UNINITIALIZED)? initialize_projectile() : _projectile
 
 /obj/item/ammu_casing/Initialize()
 	. = ..()
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
+	update_icon()
 
 /obj/item/ammu_casing/proc/expend_projectile()		//both return and expend
 	. = return_projectile()
 	if(.)
-		projectile = null
+		_projectile = null
 		setDir(pick(cardinal))
 		update_icon()
 
@@ -50,14 +59,11 @@
 			to_chat(user, "<span class='notice'>You inscribe [text] onto [P].</span>")
 			P.name = "[P.name] (\"[text]\")"
 
-/obj/item/ammo_casing/update_icon()
-	if(is_spent())
-		icon_state = "[initial(icon_state)]-spent"
-	else
-		icon_state = initial(icon_state)
+/obj/item/ammu_casing/update_icon()
+	icon_state = "[initial(icon_state)][BB ? "" : "-spent"]"
+	desc = "[initial(desc)][BB ? "" : " This one is spent."]"
 
-/obj/item/ammo_casing/examine(mob/user)
+/obj/item/ammu_casing/examine(mob/user)
 	. = ..()
 	if(is_spent())
 		to_chat(user, "This one is spent.")
-

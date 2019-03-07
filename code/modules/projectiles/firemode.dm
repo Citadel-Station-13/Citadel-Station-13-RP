@@ -1,3 +1,36 @@
+/datum/firamode
+	var/name = "default"
+
+	//Badmin shennanigans/varedits. DO NOT USE THIS IN CODE, EXTREMELY INEFFICIENT!
+	var/list/custom_gun_vars
+	var/list/custom_ammo_vars
+	var/list/custom_projectile_vars
+
+
+/datum/firemode/New(obj/item/gun/gun,
+
+/datum/firemode/proc/apply_to_gun(obj/item/gun/G)
+	if(custom_gun_vars)
+		for(var/key in custom_gun_vars)
+			G.vv_edit_var(key, custom_gun_vars[key])
+
+	return G
+
+/datum/firemode/proc/apply_to_casing(obj/item/ammu_casing/C)
+	if(custom_ammo_vars)
+		for(var/key in custom_ammo_vars)
+			C.vv_edit_var(key, custom_ammo_vars[key])
+
+	return C
+
+/datum/firemode/proc/apply_to_projectile(obj/item/projectile/P)
+	if(custom_projectile_vars)
+		for(var/key in custom_projectile_vars)
+			P.vv_edit_var(key, custom_projectile_vars[key]
+
+	return P
+
+
 /*
 	Defines a firing mode for a gun.
 
