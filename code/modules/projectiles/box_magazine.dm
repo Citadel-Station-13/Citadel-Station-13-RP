@@ -14,27 +14,85 @@
 
 	var/magazine_type = SPEEDLOADER
 	var/caliber = CALIBER_357
-	var/list/stored_ammo					//DO NOT DIRECTLY ACCESS. SPECIAL FORMAT! ONLY TRY TO SET IN COMPILE TIME IF YOU KNOW WHAT YOU ARE DOING!
-	//stored_ammo list: The first loaded (so index 1) will be the first out.
+	var/list/_stored_ammo					//DO NOT DIRECTLY ACCESS. SPECIAL FORMAT! ONLY TRY TO SET IN COMPILE TIME IF YOU KNOW WHAT YOU ARE DOING!
+	//stored_ammo list: see box_list_access for access procs but basically:
 	//If it gets a projectile, it will return/eject that
-	//If it's something like type, number, where the next index after the type is the number, it will deduct one if ejecting, or instantiate it and shift the rest backwards to put the new casing on top
+	//If it gets a path, it'll instantiate it and return/eject that.
+	//When it runs out, it'll use ammo_type and default_ammo_left.
+	//DEFAULT_AMMO_LEFT IS ALWAYS ASSUMED TO BE THE LAST SHELLS IN THE SHELL ORDERING! If someone wants to change that, be my guest, but right now I don't see a need to get a headache over this.
+	//If it's MAGAZINE_USE_COMPILETIME anything that tries to use ammo will deduct from default_ammo_left, however
 	//this is all to save memory.
 	var/max_ammo = 7
-	var/starting_ammo = 7
+	var/default_ammo_left
 	var/ammo_type = /obj/item/ammo_casing	//Initially loaded type
 	var/open_container = TRUE				//Can remove ammo by hand.
+	var/default_fire_order = MAGAZINE_ORDER_FILO
 
 /obj/item/ammo_box/Initialize()
+	. = ..()
+	initialize_stored_ammo()
+	update_icon()
 
-/obj/item/ammo_box/proc/return_top_casing()
-	if(!LAZYLEN(stored_ammo))
+/obj/item/ammo_box/proc/instantiate_casing(casing_type, location = src)
+	return new casing_type(location)
+
+/obj/item/ammo_box/handle_atom_del(atom/A)
+	_stored_ammo -= A						//one of the only exceptions to the do not directly access rule.
+	update_icon()
+
+/obj/item/ammo_box/rejuvenate(fully_heal, admin_revive)
+	. = ..()
+	if(fully_heal)
+		set_full
+
+/obj/item/ammo_box/proc/set_full()
+	default_ammo_left = initial(default_ammo_left)
+
+/obj/item/ammo_box/proc/set_empty()
+	_stored_ammo = null
+	default_ammo_left = 0
+
+/obj/item/ammo_box/attack_self(mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_INTERACT)
 		return
-	var/obj/item/ammu_casing/C = stored_ammo[1]
-	if(istype(C))
-		return C
-	else if(ispath(C))
-		var/amount_left = stored_ammo[2]
-		if(amount_left
+	if(open_container)
+		var/obj/item/ammo_casing/A = expend_top_casing()
+		if(A)
+			A.forceMove(drop_location())
+			if(!user.is_holding(src) || !user.put_in_hands(A))
+				A.bounce_away(FALSE, NONE)
+			playsound(src, 'sound/weapons/bulletinsert.ogg', 60, TRUE)
+			to_chat(user, "<span class='notice'>You remove a round from [src].</span>")
+			update_icon()
+	else
+		to_chat(user, "<span class='notice'>[src] is not designed to be unloaded.</span>")
+
+/obj/item/ammo_box/proc/dump_out()
+	var/atom/drop = drop_location()
+	var/obj/item/ammu_casing/A
+	do
+		A = expend_top_round()
+		A.forceMove(drop)
+	while(A)
+	update_icon()
+
+// This dumps all the bullets right on the floor
+/obj/item/ammo_box/AltClick(mob/user)
+	. = ..()
+	if(open_container)
+		if(!ammo_left)
+			to_chat(user, "<span class='notice'>[src] is already empty!</span>")
+			return
+		to_chat(user, "<span class='notice'>You empty [src].</span>")
+		playsound(src, "casing_sound", 50, 1)
+		dump_out()
+	else
+		to_chat(user, "<span class='notice'>[src] is not designed to be unloaded.</span>")
+
+/obj/item/ammo_box/examine(mob/user)
+	. = ..()
+	to_chat(user, "<span class='notice'>Alt click to retrieve all rounds. Use in hand to take out one round.</span>")
 
 ////////////////////////////////////////
 
@@ -46,18 +104,9 @@
 
 /obj/item/ammo_magazine/New()
 	..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	if(multiple_sprites)
 		initialize_magazine_icondata(src)
 
-	if(isnull(initial_ammo))
-		initial_ammo = max_ammo
-
-	if(initial_ammo)
-		for(var/i in 1 to initial_ammo)
-			stored_ammo += new ammo_type(src)
-	update_icon()
 
 /obj/item/ammo_magazine/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
@@ -91,39 +140,7 @@
 	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
 	update_icon()
 
-// This dumps all the bullets right on the floor
-/obj/item/ammo_magazine/attack_self(mob/user)
-	if(can_remove_ammo)
-		if(!stored_ammo.len)
-			to_chat(user, "<span class='notice'>[src] is already empty!</span>")
-			return
-		to_chat(user, "<span class='notice'>You empty [src].</span>")
-		playsound(user.loc, "casing_sound", 50, 1)
-		spawn(7)
-			playsound(user.loc, "casing_sound", 50, 1)
-		spawn(10)
-			playsound(user.loc, "casing_sound", 50, 1)
-		for(var/obj/item/ammo_casing/C in stored_ammo)
-			C.loc = user.loc
-			C.setDir(pick(cardinal))
-		stored_ammo.Cut()
-		update_icon()
-	else
-		to_chat(user, "<span class='notice'>\The [src] is not designed to be unloaded.</span>")
-		return
 
-// This puts one bullet from the magazine into your hand
-/obj/item/ammo_magazine/attack_hand(mob/user)
-	if(can_remove_ammo)	// For Smart Magazines
-		if(user.get_inactive_hand() == src)
-			if(stored_ammo.len)
-				var/obj/item/ammo_casing/C = stored_ammo[stored_ammo.len]
-				stored_ammo-=C
-				user.put_in_hands(C)
-				user.visible_message("\The [user] removes \a [C] from [src].", "<span class='notice'>You remove \a [C] from [src].</span>")
-				update_icon()
-				return
-	..()
 
 /obj/item/ammo_magazine/update_icon()
 	if(multiple_sprites)
@@ -185,13 +202,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	var/list/stored_ammo = list()
-	var/ammo_type = /obj/item/ammo_casing
-	var/max_ammo = 7
 	var/multiple_sprites = 0
-	var/caliber
 	var/multiload = 1
-	var/start_empty = 0
 	var/list/bullet_cost
 	var/list/base_cost// override this one as well if you override bullet_cost
 
@@ -209,16 +221,6 @@
 		for(var/i = 1, i <= max_ammo, i++)
 			stored_ammo += new ammo_type(src)
 	update_icon()
-
-/obj/item/ammo_box/proc/get_round(keep = 0)
-	if (!stored_ammo.len)
-		return null
-	else
-		var/b = stored_ammo[stored_ammo.len]
-		stored_ammo -= b
-		if (keep)
-			stored_ammo.Insert(1,b)
-		return b
 
 /obj/item/ammo_box/proc/give_round(obj/item/ammo_casing/R, replace_spent = 0)
 	// Boxes don't have a caliber type, magazines do. Not sure if it's intended or not, but if we fail to find a caliber, then we fall back to ammo_type.
@@ -274,15 +276,7 @@
 
 	return num_loaded
 
-/obj/item/ammo_box/attack_self(mob/user)
-	var/obj/item/ammo_casing/A = get_round()
-	if(A)
-		A.forceMove(drop_location())
-		if(!user.is_holding(src) || !user.put_in_hands(A))	//incase they're using TK
-			A.bounce_away(FALSE, NONE)
-		playsound(src, 'sound/weapons/bulletinsert.ogg', 60, TRUE)
-		to_chat(user, "<span class='notice'>You remove a round from [src]!</span>")
-		update_icon()
+
 
 /obj/item/ammo_box/update_icon()
 	var/shells_left = stored_ammo.len
@@ -297,23 +291,13 @@
 		material_amount = (material_amount*stored_ammo.len) + base_cost[material]
 		materials[material] = material_amount
 
-//Behavior for magazines
-/obj/item/ammo_box/magazine/proc/ammo_count(countempties = TRUE)
-	var/boolets = 0
-	for(var/obj/item/ammo_casing/bullet in stored_ammo)
-		if(bullet && (bullet.BB || countempties))
-			boolets++
-	return boolets
 
 /obj/item/ammo_box/magazine/proc/empty_magazine()
-	var/turf_mag = get_turf(src)
+	var/turf/turf_mag = get_turf(src)
 	for(var/obj/item/ammo in stored_ammo)
 		ammo.forceMove(turf_mag)
 		stored_ammo -= ammo
 
-/obj/item/ammo_box/magazine/handle_atom_del(atom/A)
-	stored_ammo -= A
-	update_icon()
 
 
 
@@ -342,6 +326,11 @@
 				to_chat(user, "<span class='warning'>You fail to collect anything!</span>")
 	else
 		return ..()
+
+
+
+
+
 
 
 

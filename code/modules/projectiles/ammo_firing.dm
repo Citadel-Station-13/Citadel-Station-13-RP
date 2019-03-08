@@ -43,7 +43,7 @@
 		qdel(reagents)
 	return P
 
-/obj/item/ammo_casing/proc/throw_projectile(atom/target_or_angle, turf/target_turf, atom/user, params, angle_offset)
+/obj/item/ammu_casing/proc/throw_projectile(atom/target_or_angle, turf/target_turf, atom/user, params, angle_offset)
 	if(isnum(target_or_angle))
 
 
@@ -62,12 +62,12 @@
 	P.fire(null, direct_target)
 	return P
 
-/obj/item/ammo_casing/proc/get_spread_arc_turf(turf/target, turf/current, distro)
+/obj/item/ammu_casing/proc/get_spread_arc_turf(turf/target, turf/current, distro)
 	var/dx = abs(target.x - current.x)
 	var/dy = abs(target.y - current.y)
 	return locate(CLAMP(target.x + round(gaussian(0, distro) * (dy+2)/8, 1), 1, world.maxx), CLAMP(target.y + round(gaussian(0, distro) * (dx+2)/8, 1), 1, world.maxy), target.z)
 
-/obj/item/ammo_casing/proc/get_spread_arc_precise(datum/point/target, datum/point/current, distro)
+/obj/item/ammu_casing/proc/get_spread_arc_precise(datum/point/target, datum/point/current, distro)
 	if(isatom(target))
 		target = GET_PRECISE_POINT(target)
 	if(isatom(current))

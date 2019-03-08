@@ -7,6 +7,9 @@
 //Indicates an ammo casing isn't spent, rather just hasn't made its projectile yet.
 #define PROJECTILE_UNINITIALIZED "UNINITIALIZED"
 
+//Indiciates list is default compile time value - UNUSED, MIGHT BE USED FOR MORE COMPLEX LOGIC LATER.
+#define MAGAZINE_USE_COMPILETIME
+
 //Ammo flags
 #define FIRE_SOUND_CONCURRENT		(1<<0)			//plays alongside gun sound rather than override
 #define FIRE_EFFECT_CONCURRENT		(1<<1)			//same but for effect
@@ -14,6 +17,10 @@
 #define NON_HARMFUL					(1<<3)		//is NOT a harmful ammo type
 #define RANDOMSPREAD				(1<<4)			//spread is truly random rather than normalized
 
+//Magazine ammo_left()
+#define MAGAZINE_COUNT_ALL		0
+#define MAGAZINE_COUNT_LIVE		1
+#define MAGAZINE_COUNT_SPENT	2
 
 //Magazine types
 #define MAGAZINE_TYPE_DEFAULT "DEFAULT"
