@@ -9,8 +9,8 @@
 
 	//Basic
 	var/recoil = 0			//screenshake when firing
-	var/fire_delay = 2		//Minimum time between fires
-	var/clickcooldown = 2	//time to add to user's clickcooldown
+	var/fire_delay = 4		//Minimum time between fires
+	var/clickcooldown = 4	//time to set the user's click cooldown to.
 	var/
 
 /datum/firamode/proc/apply_to_gun(obj/item/gun/G)

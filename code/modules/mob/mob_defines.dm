@@ -8,7 +8,10 @@
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/move_delay = null // For movement speed delays.
+
 	var/next_move = null // For click delay, despite the misleading name.
+	var/next_move_modifier = 1	//multiplied
+	var/next_move_adjust = 0	//added
 
 	//Not in use yet
 	var/obj/effect/organstructure/organStructure = null
