@@ -10,11 +10,41 @@
 	cost = 1
 	var_changes = list("item_slowdown_mod" = 0.5)
 
+/datum/trait/hardy/apply(var/datum/species/S,var/mob/living/carbon/human/H) //cit edit
+	..(S,H)
+	H.verbs |= /mob/living/carbon/human/proc/hardy_toggle
+
+/mob/living/carbon/human/proc/hardy_toggle(var/mob/living/carbon/human/H)
+	set name = "Toggle Hardiness"
+	set desc = "Switch whether you let your equipment bear down on you or not."
+	set category = "Abilities"
+	if(H.species.item_slowdown_mod == 0.5)
+		H.species.item_slowdown_mod = 1
+		to_chat(src, "You let the weight of your equipment set in.")
+	else
+		H.species.item_slowdown_mod = 0.5
+		to_chat(src, "You gather your strength and shrug off some of the weight of your equipment.")
+
 /datum/trait/hardy_plus
 	name = "Major Hardy"
 	desc = "Allows you to carry heavy equipment with almost no slowdown."
 	cost = 2
 	var_changes = list("item_slowdown_mod" = 0.1)
+
+/datum/trait/hardy_plus/apply(var/datum/species/S,var/mob/living/carbon/human/H) //cit edit
+	..(S,H)
+	H.verbs |= /mob/living/carbon/human/proc/hardy_plus_toggle
+
+/mob/living/carbon/human/proc/hardy_plus_toggle(var/mob/living/carbon/human/H)
+	set name = "Toggle Major Hardiness"
+	set desc = "Switch whether you let your equipment bear down on you or not. Majorly."
+	set category = "Abilities"
+	if(H.species.item_slowdown_mod == 0.1)
+		H.species.item_slowdown_mod = 1
+		to_chat(src, "You let the weight of your equipment set in.")
+	else
+		H.species.item_slowdown_mod = 0.1
+		to_chat(src, "You gather your strength and shrug off most of the weight of your equipment.")
 
 /datum/trait/endurance_high
 	name = "High Endurance"
