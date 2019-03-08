@@ -78,9 +78,9 @@
 
 
 	var/list/datum/firamode/firamodes = 		//maybe?
-
-
 	var/obj/item/ammu_casing/chambered			//currently chambered
+	var/datum/firamode/firamode
+
 
 
 

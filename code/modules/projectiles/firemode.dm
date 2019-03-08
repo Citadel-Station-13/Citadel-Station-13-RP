@@ -1,3 +1,4 @@
+//These will be mostly accessed, rather than setting instance vars.
 /datum/firamode
 	var/name = "default"
 
@@ -6,24 +7,26 @@
 	var/list/custom_ammo_vars
 	var/list/custom_projectile_vars
 
+	//Basic
+	var/recoil = 0			//screenshake when firing
+	var/fire_delay = 2		//Minimum time between fires
+	var/clickcooldown = 2	//time to add to user's clickcooldown
+	var/
 
-/datum/firemode/New(obj/item/gun/gun,
-
-/datum/firemode/proc/apply_to_gun(obj/item/gun/G)
+/datum/firamode/proc/apply_to_gun(obj/item/gun/G)
 	if(custom_gun_vars)
 		for(var/key in custom_gun_vars)
 			G.vv_edit_var(key, custom_gun_vars[key])
-
 	return G
 
-/datum/firemode/proc/apply_to_casing(obj/item/ammu_casing/C)
+/datum/firamode/proc/apply_to_casing(obj/item/ammu_casing/C)
 	if(custom_ammo_vars)
 		for(var/key in custom_ammo_vars)
 			C.vv_edit_var(key, custom_ammo_vars[key])
 
 	return C
 
-/datum/firemode/proc/apply_to_projectile(obj/item/projectile/P)
+/datum/firamode/proc/apply_to_projectile(obj/item/projectile/P)
 	if(custom_projectile_vars)
 		for(var/key in custom_projectile_vars)
 			P.vv_edit_var(key, custom_projectile_vars[key]

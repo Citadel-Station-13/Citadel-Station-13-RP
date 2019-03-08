@@ -13,7 +13,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
 
 	var/magazine_type = SPEEDLOADER
-	var/caliber = CALIBER_357
+	var/caliber								//caliber is checked for match first, then ammo typepath == ammo_type
 	var/list/_stored_ammo					//DO NOT DIRECTLY ACCESS. SPECIAL FORMAT! ONLY TRY TO SET IN COMPILE TIME IF YOU KNOW WHAT YOU ARE DOING!
 	//stored_ammo list: see box_list_access for access procs but basically:
 	//If it gets a projectile, it will return/eject that
@@ -94,8 +94,53 @@
 	. = ..()
 	to_chat(user, "<span class='notice'>Alt click to retrieve all rounds. Use in hand to take out one round.</span>")
 
-////////////////////////////////////////
+/obj/item/ammo_box/proc/give_round(obj/item/ammu_casing/R, replace_spent = FALSE)
+	if(!R)
+		return FALSE
+	if(caliber)
+		if(R.caliber != caliber)
+			return FALSE
+	else
+		if(R.type != ammo_type)
+			return FALSE
+	if(space_left() > 0)
+		R.forceMove(src)
+		insert_top_casing(R)
+	else if(replace_spent)
+		var/obj/item/ammu_casing/C = replace_round(get_index_first_spent(), R)
+		if(C)
+			C.forceMove(drop_location())
+			R.forceMove(src)
+			return TRUE
+	return FALSE
 
+/obj/item/ammo_box/proc/give_rounds(list/obj/item/ammu_casing/L, replace_spent = FALSE)
+	if(!LAZYLEN(L))
+		return 0
+	for(var/i in L)
+		var/obj/item/ammu_casing/C = i
+		if(insert_top_casing(C))
+			C.forceMove(src)
+			L -= C
+			.++
+	if(L.len && replace_spent)		//still more, and we can try replacing spent
+		var/list/indices = get_indices_spent()
+		var/index = 1
+		var/max_index = indices.len
+		for(var/i in L)
+			if(index > max_index)
+				return
+			var/obj/item/ammu_casing/C = i
+			var/obj/item/ammu_casing/old = replace_casing(indices[index++], C)
+			if(old)
+				old.forceMove(drop_location())
+				C.forceMove(src)
+				.++
+			else
+				return
+
+////////////////////////////////////////
+///////////////////////
 
 	var/multiple_sprites = 0
 	//because BYOND doesn't support numbers as keys in associative lists
@@ -217,33 +262,8 @@
 			material_amount *= 0.90 // 10% for the container
 			material_amount /= max_ammo
 			LAZYSET(bullet_cost, material, material_amount)
-	if(!start_empty)
-		for(var/i = 1, i <= max_ammo, i++)
-			stored_ammo += new ammo_type(src)
-	update_icon()
 
-/obj/item/ammo_box/proc/give_round(obj/item/ammo_casing/R, replace_spent = 0)
-	// Boxes don't have a caliber type, magazines do. Not sure if it's intended or not, but if we fail to find a caliber, then we fall back to ammo_type.
-	if(!R || (caliber && R.caliber != caliber) || (!caliber && R.type != ammo_type))
-		return 0
 
-	if (stored_ammo.len < max_ammo)
-		stored_ammo += R
-		R.forceMove(src)
-		return 1
-
-	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
-	else if(replace_spent)
-		for(var/obj/item/ammo_casing/AC in stored_ammo)
-			if(!AC.BB)//found a spent ammo
-				stored_ammo -= AC
-				AC.forceMove(get_turf(src.loc))
-
-				stored_ammo += R
-				R.forceMove(src)
-				return 1
-
-	return 0
 
 /obj/item/ammo_box/proc/can_load(mob/user)
 	return 1
@@ -290,20 +310,6 @@
 		var/material_amount = bullet_cost[material]
 		material_amount = (material_amount*stored_ammo.len) + base_cost[material]
 		materials[material] = material_amount
-
-
-/obj/item/ammo_box/magazine/proc/empty_magazine()
-	var/turf/turf_mag = get_turf(src)
-	for(var/obj/item/ammo in stored_ammo)
-		ammo.forceMove(turf_mag)
-		stored_ammo -= ammo
-
-
-
-
-
-
-
 
 
 /obj/item/ammo_casing/attackby(obj/item/I, mob/user, params)

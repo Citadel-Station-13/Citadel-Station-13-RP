@@ -12,7 +12,11 @@
 		default_ammo_left = space_left()
 
 /obj/item/ammo_box/proc/default_return_casing()
-	return return_top_casing()
+	switch(default_fire_order)
+		if(MAGAZINE_ORDER_FILO)
+			return expend_top_casing()
+		if(MAGAZINE_ORDER_FIFO)
+			return expend_last_casing()
 
 /obj/item/ammo_box/proc/default_expend_casing()
 	switch(default_fire_order)
@@ -116,7 +120,7 @@
 	LAZYINITLIST(_stored_ammo)
 	if(index <= _stored_ammo.len)		//already can do this without more cpu usage
 		_stored_ammo.Insert(index, C)
-		return
+		return TRUE
 	force_instantiate_stored_ammo(TRUE)			//otherwise..
 	if(index > _stored_ammo.len)		//ok.
 		_stored_ammo.Insert(0, C)
@@ -126,6 +130,25 @@
 
 /obj/item/ammo_box/proc/insert_last_casing(obj/item/ammu_casing/C, force = FALSE)
 	return insert_casing(INFINITY, C, force)
+
+/obj/item/ammo_box/proc/replace_top_casing(obj/item/ammu_casing/C)
+	return replace_casing(1, C)
+
+//returns the old casing.
+/obj/item/ammo_box/proc/replace_casing(index, obj/item/ammu_casing/C)
+	if(index <= LAZYLEN(_stored_ammo))
+		. = _stored_ammo[index]
+		_stored_ammo[index] = C
+	else
+		force_instantiate_stored_ammo(TRUE)
+		if(index > _stored_ammo.len)
+			return
+		. = _stored_ammo[index]
+		_stored_ammo[index] = C
+
+/obj/item/ammo_box/proc/replace_last_casing(obj/item/ammu_casing/C)
+	force_instantiate_stored_ammo(TRUE)
+	return replace_casing(_stored_ammo.len, C)
 
 //Do not use this unnecessarily. This is for admins to get all rounds initialized for adminbus, or for purposes where you absolutely must have access to every index and do it often enough this offsets
 //the memory costs of using this instead of the access procs.
@@ -182,40 +205,41 @@
 
 /obj/item/ammo_box/proc/ammo_left(count_empty = MAGAZINE_COUNT_ALL)
 	if(!LAZYLEN(_stored_ammo))
-		if(count_empty != MAGAZINE_COUNT_SPENT)
-
-	if(_stored_ammo == MAGAZINE_USE_COMPILETIME)
-		return default_ammo_left
-	else if(LAZYLEN(_stored_ammo))
-		if(count_empty == MAGAZINE_COUNT_ALL)
-			. = _stored_ammo.len
-			. += default_ammo_left
-			return
-		else
-			. = 0
-			if(count_empty == MAGAZINE_COUNT_LIVE)
-				. += default_ammo_left
-			for(var/i in _stored_ammo)
-				if(count_empty == MAGAZINE_COUNT_LIVE && ispath(i))
-					.++
-				else if(istype(i, /obj/item/ammu_casing))
-					var/obj/item/ammu_casing/C = i
-					if(count_empty == (C.is_spent()? MAGAZINE_COUNT_SPENT : MAGAZINE_COUNT_LIVE))
-						.++
-
-			return
+		return (count_empty == MAGAZINE_COUNT_EMPTY)? 0 : default_ammo_left
+	if(count_empty == MAGAZINE_COUNT_ALL)
+		return _stored_ammo.len + default_ammo_left
 	else
-		return 0
+		. = MAGAZINE_COUNT_LIVE? default_ammo_left : 0
+		for(var/i in _stored_ammo)
+			if(count_empty == MAGAZINE_COUNT_LIVE && ispath(i))
+				.++
+			else			//if this runtimes, not our fault someone messed the list up. It says DO NOT ACCESS!
+				var/obj/item/ammu_casing/C = i
+				if(count_empty == (C.is_spent()? MAGAZINE_COUNT_SPENT : MAGAZINE_COUNT_LIVE))
+					.++
+
+/obj/item/ammo_box/proc/get_index_first_spent()
+	if(!LAZYLEN(_stored_ammo))
+		return
+	for(var/i in 1 to _stored_ammo.len)
+		var/obj/item/ammu_casing/C = _stored_ammo[i]
+		if(C.is_spent())
+			return i
+
+/obj/item/ammo_box/proc/get_indices_spent()
+	. = list()
+	if(!LAZYLEN(_stored_ammo))
+		return
+	for(var/i in 1 to _stored_ammo.len)
+		var/obj/item/ammu_casing/C = _stored_ammo[i]
+		if(C.is_spent())
+			. += i
+
 
 /obj/item/ammo_box/proc/space_left()
-	if(_stored_ammo == MAGAZINE_USE_COMPILETIME)
+	if(!LAZYLEN(_stored_ammo))
 		return max_ammo - default_ammo_left
-	else if(LAZYLEN(_stored_ammo))
-		. = _stored_ammo.len
-		. += default_ammo_left
-		return max_ammo - .
-	else
-		return max_ammo
+	return max_ammo - (_stored_ammo.len + default_ammo_left)
 
 //Do not auto vveditvar these.
 /obj/item/ammo_box/proc/change_default_ammo_left(amt)
@@ -232,8 +256,3 @@
 		_stored_ammo.len = min(amt, _stored_ammo.len)
 	default_ammo_left = CLAMP(default_ammo_left, max_ammo - LAZYLEN(_stored_ammo), max_ammo)
 	return TRUE
-
-//Testing procs.
-/obj/item/ammo_box/proc/sanity_check_ammo_count()
-	if((LAZYLEN(_stored_ammo) + default_ammo_left) > max_ammo)
-		stack_trace("Warning: Ammo box [type] with list plus default ammo exceeding max ammo!")
