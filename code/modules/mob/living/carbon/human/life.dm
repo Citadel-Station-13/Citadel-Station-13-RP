@@ -1326,13 +1326,13 @@
 
 		var/tmp/glasses_processed = 0
 		var/obj/item/weapon/rig/rig = back
-		if(istype(rig) && rig.visor && !looking_elsewhere)
+		if(istype(rig) && rig.visor) //&& !looking_elsewhere)
 			if(!rig.helmet || (head && rig.helmet == head))
 				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
 					glasses_processed = 1
 					process_glasses(rig.visor.vision.glasses)
 
-		if(glasses && !glasses_processed && !looking_elsewhere)
+		if(glasses && !glasses_processed) // && !looking_elsewhere)
 			glasses_processed = 1
 			process_glasses(glasses)
 		if(XRAY in mutations)
@@ -1349,7 +1349,7 @@
 			var/viewflags = machine.check_eye(src)
 			if(viewflags < 0)
 				reset_view(null, 0)
-			else if(viewflags && !looking_elsewhere)
+			else if(viewflags) //&& !looking_elsewhere)
 				sight |= viewflags
 		else if(eyeobj)
 			if(eyeobj.owner != src)
