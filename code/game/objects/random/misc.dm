@@ -526,7 +526,6 @@
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao,
-	/obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale,
 	/obj/item/weapon/reagent_containers/food/drinks/bottle/sake,
