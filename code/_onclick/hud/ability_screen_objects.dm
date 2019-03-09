@@ -383,3 +383,26 @@
 	ability_objects.Add(A)
 	if(my_mob.client)
 		toggle_open(2) //forces the icons to refresh on screen
+
+/obj/screen/moveable/ability_master/deploy_last_shell
+	name = "Reconnect to shell"
+	desc = "Reconnect to the most recently used AI shell."
+	icon = 'icons/mob/human_face.dmi'
+	icon_state = "husk_s"
+	var/mob/living/silicon/robot/last_used_shell
+
+/obj/screen/moveable/ability_master/deploy_last_shell/Trigger()
+	if(!owner)
+		return
+	if(last_used_shell)
+		var/mob/living/silicon/ai/AI = owner
+		AI.deploy_to_shell(last_used_shell)
+	else
+		Remove(owner) //If the last shell is blown, destroy it.
+
+/obj/screen/movable/ability_master/shell
+	name = "Disconnect from shell"
+	desc = "Stop controlling your shell and resume normal core operations."
+	icon = 'icons/mob/human_face.dmi'
+	icon_state = "husk_s"
+	//button_icon_state = "ai_core"

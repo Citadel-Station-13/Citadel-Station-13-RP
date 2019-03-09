@@ -35,6 +35,7 @@ var/const/BORG_WIRE_CAMERA = 16
 		if (BORG_WIRE_AI_CONTROL) //Cut the AI wire to reset AI control
 			if(!mended)
 				R.disconnect_from_ai()
+				R.undeploy() //Forced disconnect of an AI should this body be a shell.
 
 		if (BORG_WIRE_CAMERA)
 			if(!isnull(R.camera) && !R.scrambledcodes)
@@ -44,6 +45,8 @@ var/const/BORG_WIRE_CAMERA = 16
 		if(BORG_WIRE_LAWCHECK)	//Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh
 			if (R.lawupdate)
 				R.lawsync()
+			else if(!R.deployed) //AI shells must always have the same laws as the AI
+				R.lawupdate = FALSE
 
 		if(BORG_WIRE_LOCKED_DOWN)
 			R.SetLockdown(!mended)

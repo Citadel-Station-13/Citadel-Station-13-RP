@@ -264,11 +264,8 @@
 #include "code\datums\orbit.dm"
 #include "code\datums\organs.dm"
 #include "code\datums\progressbar.dm"
-<<<<<<< HEAD
-#include "code\datums\recipe.dm"
-=======
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "code\datums\riding.dm"
+#include "code\datums\soullink.dm"
 #include "code\datums\sun.dm"
 #include "code\datums\weakref.dm"
 #include "code\datums\autolathe\arms.dm"
@@ -921,10 +918,7 @@
 #include "code\game\objects\effects\chem\foam.dm"
 #include "code\game\objects\effects\chem\water.dm"
 #include "code\game\objects\effects\decals\cleanable.dm"
-<<<<<<< HEAD
-=======
 #include "code\game\objects\effects\decals\contraband.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "code\game\objects\effects\decals\crayon.dm"
 #include "code\game\objects\effects\decals\misc.dm"
 #include "code\game\objects\effects\decals\remains.dm"
@@ -937,10 +931,7 @@
 #include "code\game\objects\effects\decals\Cleanable\tracks.dm"
 #include "code\game\objects\effects\decals\posters\bs12.dm"
 #include "code\game\objects\effects\decals\posters\polarisposters.dm"
-<<<<<<< HEAD
 #include "code\game\objects\effects\decals\posters\tgposters.dm"
-=======
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "code\game\objects\effects\spawners\bombspawner.dm"
 #include "code\game\objects\effects\spawners\gibspawner.dm"
 #include "code\game\objects\effects\temporary_visuals\miscellaneous.dm"
@@ -1770,17 +1761,11 @@
 #include "code\modules\flufftext\look_up.dm"
 #include "code\modules\flufftext\TextFilters.dm"
 #include "code\modules\food\food.dm"
-<<<<<<< HEAD
-#include "code\modules\food\recipe_dump.dm"
-#include "code\modules\food\recipes_microwave.dm"
-#include "code\modules\food\recipes_microwave_vr.dm"
-=======
 #include "code\modules\food\recipe.dm"
 #include "code\modules\food\recipe_dump.dm"
 #include "code\modules\food\recipes_fryer.dm"
 #include "code\modules\food\recipes_microwave.dm"
 #include "code\modules\food\recipes_oven.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "code\modules\food\drinkingglass\drinkingglass.dm"
 #include "code\modules\food\drinkingglass\extras.dm"
 #include "code\modules\food\drinkingglass\glass_boxes.dm"
@@ -1807,12 +1792,6 @@
 #include "code\modules\food\kitchen\icecream.dm"
 #include "code\modules\food\kitchen\microwave.dm"
 #include "code\modules\food\kitchen\smartfridge.dm"
-<<<<<<< HEAD
-#include "code\modules\food\kitchen\cooking_machines\_cooker.dm"
-#include "code\modules\food\kitchen\cooking_machines\_cooker_output.dm"
-#include "code\modules\food\kitchen\cooking_machines\candy.dm"
-#include "code\modules\food\kitchen\cooking_machines\cereal.dm"
-=======
 #include "code\modules\food\kitchen\cooking_machines\_appliance.dm"
 #include "code\modules\food\kitchen\cooking_machines\_cooker.dm"
 #include "code\modules\food\kitchen\cooking_machines\_cooker_output.dm"
@@ -1820,7 +1799,6 @@
 #include "code\modules\food\kitchen\cooking_machines\candy.dm"
 #include "code\modules\food\kitchen\cooking_machines\cereal.dm"
 #include "code\modules\food\kitchen\cooking_machines\container.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "code\modules\food\kitchen\cooking_machines\fryer.dm"
 #include "code\modules\food\kitchen\cooking_machines\grill.dm"
 #include "code\modules\food\kitchen\cooking_machines\oven.dm"
@@ -2437,10 +2415,7 @@
 #include "code\modules\organs\internal\lungs.dm"
 #include "code\modules\organs\internal\organ_internal.dm"
 #include "code\modules\organs\internal\voicebox.dm"
-<<<<<<< HEAD
-=======
 #include "code\modules\organs\subtypes\alraune.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "code\modules\organs\subtypes\diona.dm"
 #include "code\modules\organs\subtypes\indestructible.dm"
 #include "code\modules\organs\subtypes\machine.dm"
@@ -3041,21 +3016,14 @@
 #include "modular_citadel\code\datums\supplypacks\misc.dm"
 #include "modular_citadel\code\datums\supplypacks\security.dm"
 #include "modular_citadel\code\defines\obj\weapon.dm"
-<<<<<<< HEAD
-#include "modular_citadel\code\game\effects\decals\contraband.dm"
 #include "modular_citadel\code\game\effects\decals\Posters\citadelPosters.dm"
-=======
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "modular_citadel\code\game\jobs\job\assistant_cit.dm"
 #include "modular_citadel\code\game\jobs\job\engineering_cit.dm"
 #include "modular_citadel\code\game\jobs\job\z_all_jobs_cit.dm"
 #include "modular_citadel\code\game\mecha\equipment\weapons\weapons.dm"
 #include "modular_citadel\code\game\objects\items\balls.dm"
 #include "modular_citadel\code\game\objects\items\donator_item.dm"
-<<<<<<< HEAD
-=======
 #include "modular_citadel\code\game\objects\items\trash.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "modular_citadel\code\game\objects\items\upgradekit.dm"
 #include "modular_citadel\code\game\objects\items\devices\communicator.dm"
 #include "modular_citadel\code\game\objects\items\devices\defib.dm"
@@ -3111,14 +3079,8 @@
 #include "modular_citadel\code\modules\donatorreskins\items.dm"
 #include "modular_citadel\code\modules\donatorreskins\reskinkits.dm"
 #include "modular_citadel\code\modules\events\event_manager.dm"
-<<<<<<< HEAD
-#include "modular_citadel\code\modules\food\recipes_microwave_cit.dm"
-#include "modular_citadel\code\modules\food\kitchen\microwave.dm"
-#include "modular_citadel\code\modules\games\dice.dm"
-=======
 #include "modular_citadel\code\modules\games\dice.dm"
 #include "modular_citadel\code\modules\mob\living\carbon\human\species\station\traits\neutral.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station.dm"
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station_cit.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal.dm"
@@ -3130,20 +3092,13 @@
 #include "modular_citadel\code\modules\projectiles\guns\energy\netgun_vr.dm"
 #include "modular_citadel\code\modules\projectiles\guns\energy\nuclear.dm"
 #include "modular_citadel\code\modules\projectiles\projectile\energy.dm"
-<<<<<<< HEAD
-#include "modular_citadel\code\modules\reagents\reagent_containers\food\snacks_cit.dm"
-=======
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "modular_citadel\code\modules\research\designs.dm"
 #include "modular_citadel\code\modules\research\designs\medical.dm"
 #include "modular_citadel\code\modules\research\designs\misc.dm"
 #include "modular_citadel\code\modules\research\designs\stock_parts.dm"
 #include "modular_citadel\code\modules\resleeving\documents.dm"
 #include "modular_citadel\code\modules\resleeving\implant.dm"
-<<<<<<< HEAD
-=======
 #include "modular_citadel\code\modules\resleeving\machines.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "modular_citadel\code\modules\resleeving\sleevecard.dm"
 #include "modular_citadel\code\modules\shadekin\_defines.dm"
 #include "modular_citadel\code\modules\shadekin\ability_objects.dm"
@@ -3151,11 +3106,8 @@
 #include "modular_citadel\code\modules\shadekin\shadekin.dm"
 #include "modular_citadel\code\modules\shadekin\types.dm"
 #include "modular_citadel\code\modules\shadekin\~defines.dm"
-<<<<<<< HEAD
-=======
 #include "modular_citadel\code\modules\vore\lick_wounds.dm"
 #include "modular_citadel\code\modules\vore\appearance\leaf.dm"
->>>>>>> 03a9a7f9c72b99d9a0c699174b6ce92a59f1d7b3
 #include "modular_citadel\code\modules\vore\eating\living_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_clothes_vr.dm"
 #include "modular_citadel\code\modules\vore\fluffstuff\custom_items_cit.dm"

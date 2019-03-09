@@ -38,6 +38,9 @@ var/list/ai_verbs_default = list(
 				subject.attack_ai(M)
 	return is_in_use
 
+/mob/living/silicon
+	var/designation = ""
+	var/owner = ""
 
 /mob/living/silicon/ai
 	name = "AI"
@@ -65,6 +68,11 @@ var/list/ai_verbs_default = list(
 	var/obj/machinery/ai_powersupply/psupply = null // Backwards reference to AI's powersupply object.
 	var/hologram_follow = 1 //This is used for the AI eye, to determine if a holopad's hologram should follow it or not.
 	var/is_dummy = 0 //Used to prevent dummy AIs from spawning with communicators.
+	var/obj/structure/AIcore/deactivated/linked_core //For exosuit control
+	var/mob/living/silicon/robot/deployed_shell = null //For shell control
+	var/obj/screen/moveable/ability/deploy_last_shell = new
+	var/obj/screen/moveable/ability/deploy_last_shell = new
+	var/chnotify = 0
 	//NEWMALF VARIABLES
 	var/malfunctioning = 0						// Master var that determines if AI is malfunctioning.
 	var/datum/malf_hardware/hardware = null		// Installed piece of hardware.
@@ -820,6 +828,70 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/announcer/Life()
 	return
+
+/obj/screen/moveable/ability/deploy_shell/Trigger()
+	var/mob/living/silicon/ai/AI = owner
+	if(!AI)
+		return
+	AI.deploy_to_shell()
+
+/datum/hud/ai/New(mob/owner)
+	..()
+	var/obj/screen/using
+
+/mob/living/silicon/ai/Stat()
+	..()
+	if(statpanel("Status"))
+		if(!stat)
+			stat(null, text("System integrity: [(health+100)/2]%"))
+			stat(null, text("Connected cyborgs: [connected_robots.len]"))
+			for(var/mob/living/silicon/robot/R in connected_robots)
+				var/robot_status = "Nominal"
+				if(R.shell)
+					robot_status = "AI SHELL"
+				else if(R.stat || !R.client)
+					robot_status = "OFFLINE"
+				else if(!R.cell || R.cell.charge <= 0)
+					robot_status = "DEPOWERED"
+				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
+				stat(null, text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				Module: [R.designation] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]"))
+			stat(null, text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
+		else
+			stat(null, text("Systems nonfunctional"))
+
+/mob/living/silicon/ai/verb/deploy_to_shell(var/mob/living/silicon/robot/target)
+	set category = "AI Commands"
+	set name = "Deploy to Shell"
+
+	if(incapacitated())
+		return
+	if(control_disabled)
+		to_chat(src, "<span class='warning'>Wireless networking module is offline.</span>")
+		return
+
+	var/list/possible = list()
+
+	for(var/borgie in GLOB.available_ai_shells)
+		var/mob/living/silicon/robot/R = borgie
+		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai ||(R.connected_ai == src)))
+			possible += R
+
+	if(!LAZYLEN(possible))
+		to_chat(src, "No usable AI shell beacons detected.")
+
+	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
+		target = input(src, "Which body to control?") as null|anything in possible
+
+	if (!target || target.stat == DEAD || target.deployed || !(!target.connected_ai ||(target.connected_ai == src)))
+		return
+
+	else if(mind)
+		soullink(/datum/soullink/sharedbody, src, target)
+		deployed_shell = target
+		target.deploy_init(src)
+		mind.transfer_to(target)
+	//diag_hud_set_deployed()
 
 #undef AI_CHECK_WIRELESS
 #undef AI_CHECK_RADIO

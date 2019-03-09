@@ -1,4 +1,9 @@
 #define CYBORG_POWER_USAGE_MULTIPLIER 2 // Multiplier for amount of power cyborgs use.
+#define		NEW_BORG		1
+#define		NEW_MODULE		2
+#define		RENAME			3
+#define		AI_SHELL		4
+#define		DISCONNECT		5
 
 /mob/living/silicon/robot
 	name = "Cyborg"
@@ -7,7 +12,7 @@
 	icon_state = "robot"
 	maxHealth = 200
 	health = 200
-
+	shell = null
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
@@ -21,6 +26,10 @@
 	var/crisis_override = 0
 	var/integrated_light_power = 6
 	var/datum/wires/robot/wires
+	var/shell = FALSE
+	var/deployed = FALSE
+	var/mob/living/silicon/ai/mainframe = null
+	var/datum/action/innate/undeployment/undeployment_action = new
 
 	can_be_antagged = TRUE
 
@@ -226,6 +235,8 @@
 				mmi.brainmob.languages = languages
 			mmi.brainmob.remove_language("Robot Talk")
 			mind.transfer_to(mmi.brainmob)
+		if(shell)
+			GLOB.available_ai_shells -= src
 		else
 			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
 			ghostize()
@@ -1121,3 +1132,106 @@
 	if(module_active && istype(module_active,/obj/item/weapon/gripper))
 		var/obj/item/weapon/gripper/G = module_active
 		G.drop_item_nm()
+
+/mob/living/silicon/robot/proc/notify_ai(notifytype, oldname, newname)
+	if(!connected_ai)
+		return
+	switch(notifytype)
+		if(NEW_BORG) //New Cyborg
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg connection detected: <a href='?src=[(connected_ai)];track=[html_encode(name)]'>[name]</a></span><br>")
+		if(NEW_MODULE) //New Module
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg module change detected: [name] has loaded the [designation] module.</span><br>")
+		if(RENAME) //New Name
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg reclassification detected: [oldname] is now designated as [newname].</span><br>")
+		if(AI_SHELL) //New Shell
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg shell detected: <a href='?src=[(connected_ai)];track=[html_encode(name)]'>[name]</a></span><br>")
+		if(DISCONNECT) //Tampering with the wires
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Remote telemetry lost with [name].</span><br>")
+
+/mob/living/silicon/robot/proc/make_shell(var/obj/item/borg/upgrade/ai/board)
+	if(!board)
+		upgrades |= new /obj/item/borg/upgrade/ai(src)
+	shell = TRUE
+	braintype = "AI Shell"
+	name = "[designation] AI Shell [rand(100,999)]"
+	real_name = name
+	GLOB.available_ai_shells |= src
+	//if(!QDELETED(builtInCamera))
+		//builtInCamera.c_tag = real_name	//update the camera name too
+	//diag_hud_set_aishell()
+	notify_ai(AI_SHELL)
+
+/mob/living/silicon/robot/proc/revert_shell()
+	if(!shell)
+		return
+	undeploy()
+	for(var/obj/item/borg/upgrade/ai/boris in src)
+	//A player forced reset of a borg would drop the module before this is called, so this is for catching edge cases
+		qdel(boris)
+	shell = FALSE
+	GLOB.available_ai_shells -= src
+	name = "Unformatted Cyborg [rand(100,999)]"
+	real_name = name
+	//if(!QDELETED(builtInCamera))
+		//builtInCamera.c_tag = real_name
+	//diag_hud_set_aishell()
+
+/mob/living/silicon/robot/proc/deploy_init(var/mob/living/silicon/ai/AI)
+	real_name = "[AI.real_name] shell [rand(100, 999)] - [designation]"	//Randomizing the name so it shows up separately in the shells list
+	name = real_name
+	//if(!QDELETED(builtInCamera))
+		//builtInCamera.c_tag = real_name	//update the camera name too
+	mainframe = AI
+	deployed = TRUE
+	connected_ai = mainframe
+	mainframe.connected_robots |= src
+	lawupdate = TRUE
+	lawsync()
+	//TODO: Replace with current Radio system
+	/*if(radio && AI.radio) //AI keeps all channels, including Syndie if it is a Traitor
+		if(AI.radio.syndie)
+			radio.make_syndie()
+		radio.subspace_transmission = TRUE
+		radio.channels = AI.radio.channels
+		for(var/chan in radio.channels)
+			radio.secure_radio_connections[chan] = add_radio(radio, GLOB.radiochannels[chan]) */
+
+	//diag_hud_set_aishell()
+	undeployment_action.Grant(src)
+
+/datum/action/innate/undeployment/Trigger()
+	if(!..())
+		return FALSE
+	var/mob/living/silicon/robot/R = owner
+
+	R.undeploy()
+	return TRUE
+
+
+/mob/living/silicon/robot/proc/undeploy()
+
+	if(!deployed || !mind || !mainframe)
+		return
+	mainframe.redeploy_action.Grant(mainframe)
+	mainframe.redeploy_action.last_used_shell = src
+	mind.transfer_to(mainframe)
+	deployed = FALSE
+	mainframe.deployed_shell = null
+	undeployment_action.Remove(src)
+	if(radio) //Return radio to normal
+		radio.recalculateChannels()
+	//if(!QDELETED(builtInCamera))
+		//builtInCamera.c_tag = real_name	//update the camera name too
+	//diag_hud_set_aishell()
+	//mainframe.diag_hud_set_deployed()
+	if(mainframe.laws)
+		mainframe.laws.show_laws(mainframe) //Always remind the AI when switching
+	mainframe = null
+
+/mob/living/silicon/robot/attack_ai(mob/user)
+	if(shell && (!connected_ai || connected_ai == user))
+		var/mob/living/silicon/ai/AI = user
+		AI.deploy_to_shell(src)
+
+/mob/living/silicon/robot/shell
+	shell = TRUE

@@ -365,3 +365,10 @@
 	req_tech = list(TECH_DATA = 6, TECH_MATERIAL = 6)
 	materials = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 3000, "gold" = 350)
 	build_path = /obj/item/borg/upgrade/language
+
+/datum/design/item/prosfab/robot_upgrade/ai
+	name = "B.O.R.I.S. module"
+	desc = "Bluespace Optimized Remote Intelligence Synchronization. An uplink device which takes the place of an MMI in cyborg endoskeletons, creating a robotic shell controlled by an AI."
+	id = "boris"
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 4000,)
+	build_path = /obj/item/borg/upgrade/ai
