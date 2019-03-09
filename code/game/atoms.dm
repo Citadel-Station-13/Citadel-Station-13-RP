@@ -507,6 +507,9 @@
 	else
 		return 0
 
+//REQUIRES REWORK!!
+
+
 // Show a message to all mobs and objects in sight of this atom
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"

@@ -26,7 +26,8 @@
 	return TRUE
 
 /obj/item/ammu_casing/proc/ready_projectile(atom/target_or_angle, atom/user, suppress, zone_override)
-	var/obj/item/projectile/P = . = return_projectile()
+	var/obj/item/projectile/P
+	P = . = return_projectile()
 	if(!.)
 		return FALSE
 	if(istype(target_or_angle))
