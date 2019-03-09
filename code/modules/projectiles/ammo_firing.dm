@@ -44,21 +44,20 @@
 	return P
 
 /obj/item/ammu_casing/proc/throw_projectile(atom/target_or_angle, turf/target_turf, atom/user, params, angle_offset)
-	if(isnum(target_or_angle))
-
-
 	var/turf/source_turf = get_turf(user)
-	if(!istype(source_turf) || (!istype(target_turf) && !istype(target)) || !return_projectile())
+	if(!istype(source_turf) || (!istype(target_turf) && !istype(target_or_angle) && !isnum(target_or_angle)) || !return_projectile())
 		return FALSE
 	var/obj/item/projectile/P = expend_projectile()		//point of no return
-	if(!target_turf)
-		target_turf = get_turf(target)
-	else if(!target)
-		target = target_turf
-	P.preparePixelProjectile(target, user, params, angle_offset)
+	var/number_mode == isnum(target_or_angle)
+	if(!number_mode)
+		if(!target_turf)
+			target_turf = get_turf(target)
+		else if(!target_or_angle)
+			target = target_turf
+	P.preparePixelProjectile(number_mode? target_or_angle : null, user, params, angle_offset, target_or_angle)
 	var/direct_target
-	if(target && (get_dist(target_turf, source_turf) <= 1))						//If they're right next to us, just hit 'em.
-		direct_target = target
+	if(!number_mode && target_or_angle && (get_dist(target_turf, source_turf) <= 1))						//If they're right next to us, just hit 'em.
+		direct_target = target_or_angle
 	P.fire(null, direct_target)
 	return P
 

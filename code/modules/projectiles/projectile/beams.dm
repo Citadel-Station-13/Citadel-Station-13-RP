@@ -8,7 +8,7 @@
 	check_armour = "laser"
 	eyeblur = 4
 	var/frequency = 1
-	hitscan = 1
+	hitscan = TRUE
 	embed_chance = 0
 	invisibility = 99	//beam projectiles are invisible as they are rendered by the effect engine
 	light_range = 2
@@ -38,7 +38,6 @@
 /obj/item/projectile/beam/burstlaser
 	damage = 30
 	armor_penetration = 10
-
 
 /obj/item/projectile/beam/midlaser
 	damage = 40

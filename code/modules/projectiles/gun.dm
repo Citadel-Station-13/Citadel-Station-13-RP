@@ -21,32 +21,145 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 
-	var/automatic = 0
-	var/burst = 1
-	var/fire_delay = 6 	//delay after shooting before the gun can be used again
-	var/burst_delay = 2	//delay between shots, if firing in bursts
-	var/move_delay = 1
-	var/fire_sound = null // This is handled by projectile.dm's fire_sound var now, but you can override the projectile's fire_sound with this one if you want to.
-	var/fire_sound_text = "gunshot"
-	var/fire_anim = null
-	var/recoil = 0		//screen shake
-	var/silenced = 0
-	var/muzzle_flash = 3
-	var/accuracy = 0   //Accuracy is measured in percents. +15 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -15 means the opposite. launchers are not supported, at the moment.
-	var/scoped_accuracy = null
-	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
-	var/list/dispersion = list(0)
-	var/mode_name = null
-	var/projectile_type = /obj/item/projectile	//On ballistics, only used to check for the cham gun
+	var/list/datum/firamode/firamodes = /datum/firamode		//list of typepaths, or just one thing if there's only one, created on init. first one is chosen.
+	var/obj/item/ammu_casing/chambered						//currently chambered
+	var/datum/firamode/firamode								//current firemode
+	var/firamode_index										//current firemode index
 
+	var/firing_burst = FALSE
+	var/last_fire_time = 0
+
+/obj/item/gun/Initialize()
+	initialize_firemodes()
+	return ..()
+
+/obj/item/gun/proc/initialize_firemodes()
+	if(!islist(firamodes))
+		if(!ispath(firamodes))
+			CRASH("WARNING: Gun without a firemode tried to initialize them.")
+		firamodes = new firamodes
+	else
+		if(!firamodes.len)
+			CRASH("WARNING: Gun without a firemode tried to initialize them.")
+		for(var/i in 1 to firamodes.len)
+			var/path = firamodes[i]
+			firamodes[i] = new path
+	set_firemode_index(1)
+
+/obj/item/gun/proc/set_firemode(datum/firamode/M)
+	if((M != firamodes) && !(M in firamodes))
+		islist(firamodes)? ((firamodes += M)) : (isdatum(firamodes)? ((firamodes = list(firamodes, M))) : ((firamodes = M)))
+	firamode = M
+	islist(firamodes)? ((firamode_index = firamodes.Find(M))) : ((firamode_index = null))
+	. = firamode
+	firamode.apply_to_gun(src)
+	update_icon()
+
+/obj/item/gun/proc/set_firemode_index(index)
+	if(!islist(firamodes))
+		return set_firemode(firamodes)
+	else if(!firamodes.len)
+		return
+	else if(!ISINRANGE(index, 1, firamodes.len))
+		index = 1
+	return set_firemode(firamodes[index])
+
+/obj/item/gun/proc/next_firemode()
+	return set_firemode_index(isnull(firemode_index)? 1 : firemode_index + 1)
+
+/obj/item/gun/handle_atom_del(atom/A)
+	if(A == chambered)
+		chambered = null
+		update_icon()
+	return ..()
+
+/obj/item/gun/Destroy()
+	QDEL_NULL(chambered)
+	QDEL_LIST(firamodes)
+	firamode = null			//already qdel list'd
+	return ..()
+
+
+
+/obj/item/gun/proc/
+
+
+
+
+
+
+
+
+
+/obj/item/gun
+	name = "gun"
+	desc = "It's a gun. It's pretty terrible, though."
+	icon = 'icons/obj/guns/projectile.dmi'
+	icon_state = "detective"
+	item_state = "gun"
+	flags_1 =  CONDUCT_1
+	slot_flags = ITEM_SLOT_BELT
+	materials = list(MAT_METAL=2000)
+	w_class = WEIGHT_CLASS_NORMAL
+	throwforce = 5
+	throw_speed = 3
+	throw_range = 5
+	force = 5
+	item_flags = NEEDS_PERMIT
+	attack_verb = list("struck", "hit", "bashed")
+
+	var/dry_fire_sound = 'sound/weapons/gun_dry_fire.ogg'
+	var/suppressed = null					//whether or not a message is displayed when fired
+	var/can_suppress = FALSE
+	var/can_unsuppress = TRUE
+	var/clumsy_check = TRUE
+	trigger_guard = TRIGGER_GUARD_NORMAL	//trigger guard on the weapon, hulks can't fire them with their big meaty fingers
+	var/sawn_desc = null				//description change if weapon is sawn-off
+	var/sawn_off = FALSE
+	var/weapon_weight = WEAPON_LIGHT
+
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
+	var/obj/item/firing_pin/pin = /obj/item/firing_pin //standard firing pin for most guns
+
+	var/can_flashlight = FALSE //if a flashlight can be added or removed if it already has one.
+	var/obj/item/flashlight/seclite/gun_light
+	var/mutable_appearance/flashlight_overlay
+	var/datum/action/item_action/toggle_gunlight/alight
+
+	var/can_bayonet = FALSE //if a bayonet can be added or removed if it already has one.
+	var/obj/item/kitchen/knife/bayonet
+	var/mutable_appearance/knife_overlay
+	var/bayonet_x_offset = 0
+	var/bayonet_y_offset = 0
+
+	var/ammo_x_offset = 0 //used for positioning ammo count overlay on sprite
+	var/ammo_y_offset = 0
+	var/flight_x_offset = 0
+	var/flight_y_offset = 0
+
+	//Zooming
+	var/zoomable = FALSE //whether the gun generates a Zoom action on creation
+	var/zoomed = FALSE //Zoom toggle
+	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
+	var/zoom_out_amt = 0
+	var/datum/action/toggle_scope_zoom/azoom
+
+
+
+
+
+
+
+
+
+
+	var/silenced = FALSE
+	var/scoped_accuracy = null
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
 	var/obj/screen/auto_target/auto_target
-	var/shooting = 0
-	var/next_fire_time = 0
-
-	var/sel_mode = 1 //index of the currently selected mode
-	var/list/firemodes = list()
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -60,8 +173,6 @@
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
 
-	var/last_shot = 0			//records the last shot fired
-
 //VOREStation Add - /tg/ icon system
 	var/charge_sections = 4
 	var/shaded_charge = FALSE
@@ -74,12 +185,6 @@
 	var/flight_x_offset = 0
 	var/flight_y_offset = 0
 
-////////////////////////////////////////////////////////
-
-
-	var/list/datum/firamode/firamodes = 		//maybe?
-	var/obj/item/ammu_casing/chambered			//currently chambered
-	var/datum/firamode/firamode
 
 
 
@@ -105,8 +210,6 @@
 
 /obj/item/weapon/gun/Initialize()
 	. = ..()
-	for(var/i in 1 to firemodes.len)
-		firemodes[i] = new /datum/firemode(src, firemodes[i])
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
@@ -738,73 +841,6 @@
 
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 
-/obj/item/gun
-	name = "gun"
-	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'icons/obj/guns/projectile.dmi'
-	icon_state = "detective"
-	item_state = "gun"
-	flags_1 =  CONDUCT_1
-	slot_flags = ITEM_SLOT_BELT
-	materials = list(MAT_METAL=2000)
-	w_class = WEIGHT_CLASS_NORMAL
-	throwforce = 5
-	throw_speed = 3
-	throw_range = 5
-	force = 5
-	item_flags = NEEDS_PERMIT
-	attack_verb = list("struck", "hit", "bashed")
-
-	var/fire_sound = "gunshot"
-	var/vary_fire_sound = TRUE
-	var/fire_sound_volume = 50
-	var/dry_fire_sound = 'sound/weapons/gun_dry_fire.ogg'
-	var/suppressed = null					//whether or not a message is displayed when fired
-	var/can_suppress = FALSE
-	var/suppressed_sound = 'sound/weapons/gunshot_silenced.ogg'
-	var/suppressed_volume = 10
-	var/can_unsuppress = TRUE
-	var/recoil = 0						//boom boom shake the room
-	var/clumsy_check = TRUE
-	var/obj/item/ammo_casing/chambered = null
-	trigger_guard = TRIGGER_GUARD_NORMAL	//trigger guard on the weapon, hulks can't fire them with their big meaty fingers
-	var/sawn_desc = null				//description change if weapon is sawn-off
-	var/sawn_off = FALSE
-	var/burst_size = 1					//how large a burst is
-	var/fire_delay = 0					//rate of fire for burst firing and semi auto
-	var/firing_burst = 0				//Prevent the weapon from firing again while already firing
-	var/semicd = 0						//cooldown handler
-	var/weapon_weight = WEAPON_LIGHT
-	var/spread = 0						//Spread induced by the gun itself.
-	var/randomspread = 1				//Set to 0 for shotguns. This is used for weapons that don't fire all their bullets at once.
-
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-
-	var/obj/item/firing_pin/pin = /obj/item/firing_pin //standard firing pin for most guns
-
-	var/can_flashlight = FALSE //if a flashlight can be added or removed if it already has one.
-	var/obj/item/flashlight/seclite/gun_light
-	var/mutable_appearance/flashlight_overlay
-	var/datum/action/item_action/toggle_gunlight/alight
-
-	var/can_bayonet = FALSE //if a bayonet can be added or removed if it already has one.
-	var/obj/item/kitchen/knife/bayonet
-	var/mutable_appearance/knife_overlay
-	var/knife_x_offset = 0
-	var/knife_y_offset = 0
-
-	var/ammo_x_offset = 0 //used for positioning ammo count overlay on sprite
-	var/ammo_y_offset = 0
-	var/flight_x_offset = 0
-	var/flight_y_offset = 0
-
-	//Zooming
-	var/zoomable = FALSE //whether the gun generates a Zoom action on creation
-	var/zoomed = FALSE //Zoom toggle
-	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
-	var/zoom_out_amt = 0
-	var/datum/action/toggle_scope_zoom/azoom
 
 /obj/item/gun/Initialize()
 	. = ..()
@@ -822,12 +858,10 @@
 	QDEL_NULL(azoom)
 	return ..()
 
+
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == pin)
 		pin = null
-	if(A == chambered)
-		chambered = null
-		update_icon()
 	if(A == bayonet)
 		clear_bayonet()
 	if(A == gun_light)
@@ -881,7 +915,6 @@
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='danger'>*click*</span>")
 	playsound(src, dry_fire_sound, 30, TRUE)
-
 
 /obj/item/gun/proc/shoot_live_shot(mob/living/user as mob|obj, pointblank = 0, mob/pbtarget = null, message = 1)
 	if(recoil)
@@ -1068,10 +1101,6 @@
 
 /obj/item/gun/update_icon()
 	..()
-
-
-/obj/item/gun/proc/reset_semicd()
-	semicd = FALSE
 
 /obj/item/gun/attack(mob/M as mob, mob/user)
 	if(user.a_intent == INTENT_HARM) //Flogging
