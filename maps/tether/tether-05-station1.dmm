@@ -10742,12 +10742,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/button/remote/airlock{
-	dir = 8;
-	id = "captaindoor";
-	name = "Office Doors";
-	req_access = list(20)
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEs" = (
@@ -17026,7 +17020,8 @@
 "bnW" = (
 /obj/machinery/computer/communications,
 /obj/machinery/keycard_auth{
-	pixel_x = -28
+	pixel_x = -28;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -17048,6 +17043,21 @@
 	},
 /obj/item/weapon/storage/secure/safe{
 	pixel_x = -28
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "captaindoor";
+	name = "Office Doors";
+	pixel_x = -28;
+	pixel_y = 23;
+	req_access = list(20)
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "cap_office";
+	name = "Security Shutters";
+	pixel_x = -28;
+	pixel_y = 12
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -19687,12 +19697,6 @@
 /area/crew_quarters/captain)
 "bHg" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/button/remote/blast_door{
-	id = "cap_office";
-	name = "Security Shutters";
-	pixel_x = 0;
-	pixel_y = -24
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHi" = (

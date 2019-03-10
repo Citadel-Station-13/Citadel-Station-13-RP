@@ -8,7 +8,7 @@
 	species_language = LANGUAGE_VOX
 	num_alternate_languages = 1
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp) // CITADEL CHANGE - Disallows Vox from breaking handcuffs
 	rarity_value = 4
 	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
 	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
