@@ -22,12 +22,13 @@
 	var/automatic = FALSE	//Full automatic mode, autoclickers included.
 	var/autoclick_delay = 1		//deciseconds between each time the autoclicker forces a click for automatics.
 
-	var/fire_sound = "gunshot"			//sound, file, or text.
 	var/vary_fire_sound = TRUE
+	var/fire_sound = 'sound/weapons/Gunshot_old.ogg'			//sound, file, or text. inherent gunshot sound.
 	var/fire_sound_volume = 50
 	var/suppressed_sound = 'sound/weapons/gunshot_silenced.ogg'
 	var/suppressed_volume = 10
 	var/dry_fire_sound = 'sound/weapons/gun_dry_fire.ogg'
+	var/dry_fire_volume = 30
 
 	var/muzzle_flash = 3			//idk what this is
 	var/suppressed = FALSE			//inherent firemode silencing

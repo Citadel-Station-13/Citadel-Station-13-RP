@@ -11,11 +11,9 @@
 #define MAGAZINE_USE_COMPILETIME
 
 //Ammo flags
-#define FIRE_SOUND_CONCURRENT		(1<<0)			//plays alongside gun sound rather than override
-#define FIRE_EFFECT_CONCURRENT		(1<<1)			//same but for effect
-#define LIGHT_METAL					(1<<2)			//UNIMPLEMENTED - disables "heavy metal" shell bouncing effects from /tg/
-#define NON_HARMFUL					(1<<3)		//is NOT a harmful ammo type
-#define RANDOMSPREAD				(1<<4)			//spread is truly random rather than normalized
+#define LIGHT_METAL					(1<<1)			//UNIMPLEMENTED - disables "heavy metal" shell bouncing effects from /tg/
+#define NON_HARMFUL					(1<<2)		//is NOT a harmful ammo type
+#define RANDOMSPREAD				(1<<3)			//spread is truly random rather than normalized
 
 //Magazine ammo_left()
 #define MAGAZINE_COUNT_ALL		0

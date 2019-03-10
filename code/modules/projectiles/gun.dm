@@ -89,36 +89,32 @@
 /obj/item/gun/proc/process_chamber()				//called to clear/set chamber, usually after firing
 	return
 
-/obj/item/gun/proc/postfire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firamode.recoil)
-	if(recoil)
-		shake_camera(user, recoil + 1, recoil)
+#define FIREMODE_OR_CHAMBERED(var) NULL_EITHER_OR(firamode, chambered, var)
+/obj/item/gun/proc/prefire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firamode.recoil, reflex = FALSE)
+	if(!chambered)
+		return
 	if(is_suppressed())
-		playsound(user, firamode.suppressed_sound, firamode.suppressed_volume, firamode.vary_fire_sound)
+		playsound(user, FIREMODE_OR_CHAMBERED(suppressed_sound), FIREMODE_OR_CHAMBERED(suppressed_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
 	else
-		playsound(user, firamode.fire_sound, firamode.fire_sound_volume, firamode.vary_fire_sound)
+		playsound(user, FIREMODE_OR_CHAMBERED(fire_sound), FIREMODE_OR_CHAMBERED(fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
 		if(message)
 			if(pointblank)
-				user.visible_message("<span class='danger'>[user] fires [src] point blank at [target]!</span>")
+				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src] point blank at [target]!</span>")
 			else
-				user.visible_message("<span class='danger'>[user] fires [src]!</span>")
+				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src]!</span>")
+
+/obj/item/gun/proc/postfire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firamode.recoil, reflex = FALSE)
+	if(recoil)
+		shake_camera(user, recoil + 1, recoil)
 
 /obj/item/gun/proc/postfire_empty(atom/target, atom/user, point_blank = FALSE, message = TRUE)
 	to_chat(user, "<span class='danger'>*click*</span>")
-	playsound(src, firamode.dry_fire_sound, 30, firamode.vary_fire_sound)
+	playsound(src, FIREMODE_OR_CHAMBERED(dry_fire_sound), FIREMODE_OR_CHAMBERED(dry_fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
 
 /obj/item/gun/proc/do_fire(atom/target, atom/user, params, zone_override,
 
 /obj/item/gun/proc/process_shot(atom/target, atom/user, params, zone_override, burst_iteration = 0, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread())
 
-
-
-//called if there was no projectile to shoot
-/obj/item/weapon/gun/proc/handle_click_empty(mob/user)
-	if (user)
-		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
-	else
-		src.visible_message("*click click*")
-	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
 
 //called after successfully firing
 /obj/item/weapon/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)

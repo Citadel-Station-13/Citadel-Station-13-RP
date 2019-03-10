@@ -17,11 +17,17 @@
 	var/obj/item/projectile/_projectile = PROJECTILE_UNINITIALIZED	//DO NOT DIRECTLY ACCESS. Use get_projectile()
 	var/ammo_flags = NONE
 	var/variance = 0												//variance intrinsic to the casing
-	var/sound_volume = 100											//volume of firing sound
-	var/fire_sound													//sound played when firing
 	var/pellets = 1													//pellets per fire
 	var/firing_effect_type											//firing effect when ammo is fired
 	var/clickcd_override											//if non null, will override user clickcd.
+
+	var/vary_fire_sound = TRUE
+	var/fire_sound = 'sound/weapons/Gunshot_old.ogg'			//sound, file, or text. inherent gunshot sound.
+	var/fire_sound_volume = 50
+	var/suppressed_sound = 'sound/weapons/gunshot_silenced.ogg'
+	var/suppressed_volume = 10
+	var/dry_fire_sound = 'sound/weapons/gun_dry_fire.ogg'
+	var/dry_fire_volume = 30
 
 /obj/item/ammu_casing/proc/is_spent()
 	return istype(_projectile) || (_projectile == PROJECTILE_UNINITIALIZED)
