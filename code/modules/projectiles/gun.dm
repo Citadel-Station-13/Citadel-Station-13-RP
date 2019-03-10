@@ -1,3 +1,5 @@
+#define FIREMODE_ADD_CHAMBERED(var) ((chambered && chambered.var) + (firamode.var))
+#define FIREMODE_OR_CHAMBERED(var) NULL_EITHER_OR(chambered, firemode, var)
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty broken, though."
@@ -33,8 +35,16 @@
 	var/can_suppress = FALSE
 	var/can_unsuppress = TRUE
 
+	var/obj/item/firing_pin/pin = /obj/item/firing_pin
+
 /obj/item/gun/Initialize()
 	initialize_firemodes()
+	if(pin)
+		pin = new pin(src, src)
+	return ..()
+
+/obj/item/gun/Destroy()
+	QDEL_NULL(pin)
 	return ..()
 
 /obj/item/gun/proc/initialize_firemodes()
@@ -71,6 +81,53 @@
 /obj/item/gun/proc/next_firemode()
 	return set_firemode_index(isnull(firemode_index)? 1 : firemode_index + 1)
 
+/obj/item/gun/proc/user_switch_firemode(mob/user, index)
+	. = isnull(index)? next_firemode() : set_firemode_index(index)
+	to_chat(user, "<span class='notice'>[src] is now set to [.].</span>")
+
+/obj/item/gun/attack_self(mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_INTERACT)
+		return
+	user_switch_firemode(user)
+
+/obj/item/gun/examine(mob/user)
+	. = ..()
+	to_chat(user, "It is set to [firamode].")
+	to_chat(user, "It [pin? "has [pin] installed" : "is missing a firing pin"].")
+
+/obj/item/gun/proc/unlock() //used in summon guns and as a convience for admins
+	if(pin)
+		qdel(pin)
+	pin = new /obj/item/firing_pin
+
+
+
+/obj/item/gun/examine(mob/user)
+	..()
+
+	if(gun_light)
+		to_chat(user, "It has \a [gun_light] [can_flashlight ? "" : "permanently "]mounted on it.")
+		if(can_flashlight) //if it has a light and this is false, the light is permanent.
+			to_chat(user, "<span class='info'>[gun_light] looks like it can be <b>unscrewed</b> from [src].</span>")
+	else if(can_flashlight)
+		to_chat(user, "It has a mounting point for a <b>seclite</b>.")
+
+	if(bayonet)
+		to_chat(user, "It has \a [bayonet] [can_bayonet ? "" : "permanently "]affixed to it.")
+		if(can_bayonet) //if it has a bayonet and this is false, the bayonet is permanent.
+			to_chat(user, "<span class='info'>[bayonet] looks like it can be <b>unscrewed</b> from [src].</span>")
+	else if(can_bayonet)
+		to_chat(user, "It has a <b>bayonet</b> lug on it.")
+
+
+
+/obj/item/gun/emp_act(severity)
+	. = ..()
+	if(!(. & EMP_PROTECT_CONTENTS))
+		for(var/obj/O in contents)
+			O.emp_act(severity)
+
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == chambered)
 		chambered = null
@@ -84,13 +141,13 @@
 	return ..()
 
 /obj/item/gun/proc/is_suppressed(obj/item/projectile/P)
-	return firamode.suppressed || suppressed.handle_suppression(P)
+	var/self = suppressed.handle_suppression(P)
+	return self || FIREMODE_AND_CASING(suppressed)
 
 /obj/item/gun/proc/process_chamber()				//called to clear/set chamber, usually after firing
 	return
 
-#define FIREMODE_OR_CHAMBERED(var) NULL_EITHER_OR(firamode, chambered, var)
-/obj/item/gun/proc/prefire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firamode.recoil, reflex = FALSE)
+/obj/item/gun/proc/prefire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = FIREMODE_AND_CHAMBERED(recoil), reflex = FALSE)
 	if(!chambered)
 		return
 	if(is_suppressed())
@@ -99,49 +156,23 @@
 		playsound(user, FIREMODE_OR_CHAMBERED(fire_sound), FIREMODE_OR_CHAMBERED(fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
 		if(message)
 			if(pointblank)
-				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src] point blank at [target]!</span>")
+				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src] point blank at [target]!</span>", blind_message = "<span class='danger'>You hear a [FIREMODE_OR_CHAMBERED(sound_text)]!</span>")
 			else
-				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src]!</span>")
+				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src]!</span>", blind_message = "<span class='danger'>You hear a [FIREMODE_OR_CHAMBERED(sound_text)]!</span>")
 
 /obj/item/gun/proc/postfire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firamode.recoil, reflex = FALSE)
 	if(recoil)
 		shake_camera(user, recoil + 1, recoil)
+	var/muzzle_flash_power = FIREMODE_OR_CHAMBERED(muzzle_flash_power)
+	if(muzzle_flash_power)
+		var/turf/T = get_turf(src)
+		if(T)
+			new /obj/effect/dummy/lighting(T, FIREMODE_OR_CHAMBERED(muzzle_flash_color), FIREMODE_OR_CHAMBERED(muzzle_flash_range), muzzle_flash_power, FIREMODE_OR_CHAMBERED(muzzle_flash_duration)
 
-/obj/item/gun/proc/postfire_empty(atom/target, atom/user, point_blank = FALSE, message = TRUE)
-	to_chat(user, "<span class='danger'>*click*</span>")
-	playsound(src, FIREMODE_OR_CHAMBERED(dry_fire_sound), FIREMODE_OR_CHAMBERED(dry_fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
-
-/obj/item/gun/proc/do_fire(atom/target, atom/user, params, zone_override,
-
-/obj/item/gun/proc/process_shot(atom/target, atom/user, params, zone_override, burst_iteration = 0, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread())
-
-
-//called after successfully firing
-/obj/item/weapon/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
-	if(fire_anim)
-		flick(fire_anim, src)
-
-	if(silenced)
-		to_chat(user, "<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]</span>")
-		for(var/mob/living/L in oview(2,user))
-			if(L.stat)
-				continue
-			if(L.blinded)
-				to_chat(L, "You hear a [fire_sound_text]!")
-				continue
-			to_chat(L, 	"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>")
-	else
-		user.visible_message(
-			"<span class='danger'>\The [user] fires \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
-			"<span class='warning'>You fire \the [src][pointblank ? " point blank at \the [target]":""][reflex ? " by reflex":""]!</span>",
-			"You hear a [fire_sound_text]!"
-			)
-
-	if(muzzle_flash)
-		set_light(muzzle_flash)
-
+	var/one_handed_penalty = FIREMODE_OR_CHAMBERED(one_handed_penalty)
+	//this section needs overhauling soonish.
 	if(one_handed_penalty)
-		if(!src.is_held_twohanded(user))
+		if(!is_held_twohanded(user))
 			switch(one_handed_penalty)
 				if(1 to 15)
 					if(prob(50)) //don't need to tell them every single time
@@ -164,10 +195,19 @@
 				if(46 to INFINITY)
 					to_chat(user, "<span class='warning'>You struggle to hold \the [src] steady!</span>")
 
-	if(recoil)
-		spawn()
-			shake_camera(user, recoil+1, recoil)
-	update_icon()
+/obj/item/gun/proc/postfire_empty(atom/target, atom/user, point_blank = FALSE, message = TRUE)
+	to_chat(user, "<span class='danger'>*click*</span>")
+	playsound(src, FIREMODE_OR_CHAMBERED(dry_fire_sound), FIREMODE_OR_CHAMBERED(dry_fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
+
+/obj/item/gun/proc/do_fire(atom/target, atom/user, params, zone_override,
+
+/obj/item/gun/proc/process_shot(atom/target, atom/user, params, zone_override, burst_iteration = 0, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread())
+
+
+
+//called after successfully firing
+/obj/item/weapon/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+
 
 
 
@@ -354,11 +394,6 @@
 
 	accuracy = initial(accuracy)	//Reset the gun's accuracy
 
-	if(muzzle_flash)
-		set_light(0)
-
-
-
 /obj/item/gun/proc/process_burst(mob/living/user, atom/target, message = TRUE, params=null, zone_override = "", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
 	if(!user || !firing_burst)
 		firing_burst = FALSE
@@ -524,9 +559,6 @@
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
 
-	var/dna_lock = 0				//whether or not the gun is locked to dna
-	var/obj/item/dnalockingchip/attached_lock
-
 //VOREStation Add - /tg/ icon system
 	var/charge_sections = 4
 	var/shaded_charge = FALSE
@@ -561,19 +593,6 @@
 	playsound(src, 'sound/machines/button.ogg', 25)
 	update_icon()
 //VOREStation Add End
-
-/obj/item/weapon/gun/Initialize()
-	. = ..()
-
-	if(isnull(scoped_accuracy))
-		scoped_accuracy = accuracy
-
-	if(dna_lock)
-		attached_lock = new /obj/item/dnalockingchip(src)
-	if(!dna_lock)
-		verbs -= /obj/item/weapon/gun/verb/remove_dna
-		verbs -= /obj/item/weapon/gun/verb/give_dna
-		verbs -= /obj/item/weapon/gun/verb/allow_dna
 
 /obj/item/weapon/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -616,21 +635,6 @@
 			return 0
 
 	var/mob/living/M = user
-	if(dna_lock && attached_lock.stored_dna)
-		if(!authorized_user(user))
-			if(attached_lock.safety_level == 0)
-				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapoint and displays an invalid DNA symbol.</span>")
-				return 0
-			if(!attached_lock.exploding)
-				if(attached_lock.safety_level == 1)
-					to_chat(M, "<span class='danger'>\The [src] hisses in dissapointment.</span>")
-					visible_message("<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>", "<span class='game say'><span class='name'>\The [src]</span> announces, \"Self-destruct occurring in ten seconds.\"</span>")
-					spawn(100)
-						explosion(src, 0, 0, 3, 4)
-						attached_lock.exploding = 1
-						sleep(1)
-						qdel(src)
-					return 0
 	if(HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
@@ -650,9 +654,6 @@
 		return 0
 	return 1
 
-/obj/item/weapon/gun/emp_act(severity)
-	for(var/obj/O in contents)
-		O.emp_act(severity)
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
@@ -702,44 +703,7 @@
 	else
 		return ..() //Pistolwhippin'
 
-/obj/item/weapon/gun/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A, /obj/item/dnalockingchip))
-		if(dna_lock)
-			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
-			return
-		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
-		attached_lock = A
-		dna_lock = 1
-		verbs += /obj/item/weapon/gun/verb/remove_dna
-		verbs += /obj/item/weapon/gun/verb/give_dna
-		verbs += /obj/item/weapon/gun/verb/allow_dna
-		return
 
-	if(A.is_screwdriver())
-		if(dna_lock && attached_lock && !attached_lock.controller_lock)
-			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 25 * A.toolspeed))
-				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
-				user.put_in_hands(attached_lock)
-				dna_lock = 0
-				attached_lock = null
-				verbs -= /obj/item/weapon/gun/verb/remove_dna
-				verbs -= /obj/item/weapon/gun/verb/give_dna
-				verbs -= /obj/item/weapon/gun/verb/allow_dna
-		else
-			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
-	..()
-
-/obj/item/weapon/gun/emag_act(var/remaining_charges, var/mob/user)
-	if(dna_lock && attached_lock.controller_lock)
-		to_chat(user, "<span class='notice'>You short circuit the internal locking mechanisms of \the [src]!</span>")
-		attached_lock.controller_dna = null
-		attached_lock.controller_lock = 0
-		attached_lock.stored_dna = list()
-		return 1
 
 /obj/item/weapon/gun/MouseDrop(obj/over_object as obj)
 	if(!canremove)
@@ -855,18 +819,6 @@
 
 	return launched
 
-/obj/item/weapon/gun/proc/play_fire_sound(var/mob/user, var/obj/item/projectile/P)
-	var/shot_sound = fire_sound
-
-	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
-		shot_sound = P.fire_sound
-	if(!shot_sound) // If there's still no sound...
-		return
-
-	if(silenced)
-		playsound(user, shot_sound, 10, 1)
-	else
-		playsound(user, shot_sound, 50, 1)
 
 //Suicide handling.
 /obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
@@ -927,28 +879,6 @@
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
 
-/obj/item/weapon/gun/examine(mob/user)
-	. = ..()
-	if(firemodes.len > 1)
-		var/datum/firemode/current_mode = firemodes[sel_mode]
-		to_chat(user, "The fire selector is set to [current_mode.name].")
-
-/obj/item/weapon/gun/proc/switch_firemodes(mob/user)
-	if(firemodes.len <= 1)
-		return null
-
-	sel_mode++
-	if(sel_mode > firemodes.len)
-		sel_mode = 1
-	var/datum/firemode/new_mode = firemodes[sel_mode]
-	new_mode.apply_to(src)
-	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-
-	return new_mode
-
-/obj/item/weapon/gun/attack_self(mob/user)
-	switch_firemodes(user)
-
 
 ///////////////////////////////////////////////////////////
 
@@ -957,14 +887,11 @@
 
 /obj/item/gun/Initialize()
 	. = ..()
-	if(pin)
-		pin = new pin(src)
 	if(gun_light)
 		alight = new(src)
 	build_zooming()
 
 /obj/item/gun/Destroy()
-	QDEL_NULL(pin)
 	QDEL_NULL(gun_light)
 	QDEL_NULL(bayonet)
 	QDEL_NULL(chambered)
@@ -990,27 +917,6 @@
 		visible_message("[G] can now fit a new pin, but the old one was destroyed in the process.", null, null, 3)
 		qdel(src)
 
-/obj/item/gun/examine(mob/user)
-	..()
-	if(pin)
-		to_chat(user, "It has \a [pin] installed.")
-	else
-		to_chat(user, "It doesn't have a <b>firing pin</b> installed, and won't fire.")
-
-	if(gun_light)
-		to_chat(user, "It has \a [gun_light] [can_flashlight ? "" : "permanently "]mounted on it.")
-		if(can_flashlight) //if it has a light and this is false, the light is permanent.
-			to_chat(user, "<span class='info'>[gun_light] looks like it can be <b>unscrewed</b> from [src].</span>")
-	else if(can_flashlight)
-		to_chat(user, "It has a mounting point for a <b>seclite</b>.")
-
-	if(bayonet)
-		to_chat(user, "It has \a [bayonet] [can_bayonet ? "" : "permanently "]affixed to it.")
-		if(can_bayonet) //if it has a bayonet and this is false, the bayonet is permanent.
-			to_chat(user, "<span class='info'>[bayonet] looks like it can be <b>unscrewed</b> from [src].</span>")
-	else if(can_bayonet)
-		to_chat(user, "It has a <b>bayonet</b> lug on it.")
-
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
 	if(zoomed && user.get_active_held_item() != src)
@@ -1022,11 +928,6 @@
 	return TRUE
 
 
-/obj/item/gun/emp_act(severity)
-	. = ..()
-	if(!(. & EMP_PROTECT_CONTENTS))
-		for(var/obj/O in contents)
-			O.emp_act(severity)
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -1044,7 +945,7 @@
 
 	if(istype(user))//Check if the user can use the gun, if the user isn't alive(turrets) assume it can.
 		var/mob/living/L = user
-		if(!can_trigger_gun(L))
+		if(!can_trigger_gun(L, target, params))
 			return
 
 	if(!can_shoot()) //Just because you can pull the trigger doesn't mean it can shoot.
@@ -1088,14 +989,15 @@
 
 
 
-/obj/item/gun/can_trigger_gun(mob/living/user)
+/obj/item/gun/can_trigger_gun(mob/living/user, atom/target, params)
 	. = ..()
-	if(!handle_pins(user))
+	if(!handle_pins(user, target, params))
 		return FALSE
 
-/obj/item/gun/proc/handle_pins(mob/living/user)
+
+/obj/item/gun/proc/handle_pins(mob/living/user, atom/target, params)
 	if(pin)
-		if(pin.pin_auth(user) || (pin.obj_flags & EMAGGED))
+		if((pin.obj_flags & EMAGGED) || pin.pin_auth(user, target, params))
 			return TRUE
 		else
 			pin.auth_fail(user)
@@ -1103,12 +1005,6 @@
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return FALSE
-
-/obj/item/gun/proc/recharge_newshot()
-	return
-
-/obj/item/gun/update_icon()
-	..()
 
 /obj/item/gun/attack(mob/M as mob, mob/user)
 	if(user.a_intent == INTENT_HARM) //Flogging
@@ -1271,8 +1167,6 @@
 	if(!ishuman(user) || !ishuman(target))
 		return
 
-	if(semicd)
-		return
 
 	if(user == target)
 		target.visible_message("<span class='warning'>[user] sticks [src] in [user.p_their()] mouth, ready to pull the trigger...</span>", \
@@ -1281,18 +1175,14 @@
 		target.visible_message("<span class='warning'>[user] points [src] at [target]'s head, ready to pull the trigger...</span>", \
 			"<span class='userdanger'>[user] points [src] at your head, ready to pull the trigger...</span>")
 
-	semicd = TRUE
-
 	if(!bypass_timer && (!do_mob(user, target, 120) || user.zone_selected != BODY_ZONE_PRECISE_MOUTH))
 		if(user)
 			if(user == target)
 				user.visible_message("<span class='notice'>[user] decided not to shoot.</span>")
 			else if(target && target.Adjacent(user))
 				target.visible_message("<span class='notice'>[user] has decided to spare [target]</span>", "<span class='notice'>[user] has decided to spare your life!</span>")
-		semicd = FALSE
 		return
 
-	semicd = FALSE
 
 	target.visible_message("<span class='warning'>[user] pulls the trigger!</span>", "<span class='userdanger'>[(user == target) ? "You pull" : "[user] pulls"] the trigger!</span>")
 
@@ -1301,10 +1191,6 @@
 
 	process_fire(target, user, TRUE, params)
 
-/obj/item/gun/proc/unlock() //used in summon guns and as a convience for admins
-	if(pin)
-		qdel(pin)
-	pin = new /obj/item/firing_pin
 
 /////////////
 // ZOOMING //
@@ -1372,9 +1258,6 @@
 	if(zoomable)
 		azoom = new()
 		azoom.gun = src
-
-
-
 
 
 

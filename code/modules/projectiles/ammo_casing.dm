@@ -21,13 +21,24 @@
 	var/firing_effect_type											//firing effect when ammo is fired
 	var/clickcd_override											//if non null, will override user clickcd.
 
+	//ANY OF THESE WILL BE ADDED TO FIREMODE'S VARIABLES DURING CALCULATION.
+	var/recoil
+	var/fire_delay
+
+	//ANY OF THESE BEING SET WILL OVERRIDE FIREMODE'S VARIABLES ON THESE! See firemode.dm for what they do/details.
 	var/vary_fire_sound = TRUE
-	var/fire_sound = 'sound/weapons/Gunshot_old.ogg'			//sound, file, or text. inherent gunshot sound.
-	var/fire_sound_volume = 50
-	var/suppressed_sound = 'sound/weapons/gunshot_silenced.ogg'
-	var/suppressed_volume = 10
-	var/dry_fire_sound = 'sound/weapons/gun_dry_fire.ogg'
-	var/dry_fire_volume = 30
+	var/fire_sound						//sound, file, or text. inherent gunshot sound.
+	var/fire_sound_volume				//0 to 100
+	var/suppressed_sound
+	var/suppressed_volume
+	var/dry_fire_sound
+	var/dry_fire_volume
+	var/sound_text = "gunshot"			//what blind people hear
+	var/muzzle_flash_power
+	var/muzzle_flash_range
+	var/muzzle_flash_color
+	var/muzzle_flash_duration			//deciseconds
+	var/one_handed_penalty
 
 /obj/item/ammu_casing/proc/is_spent()
 	return istype(_projectile) || (_projectile == PROJECTILE_UNINITIALIZED)
