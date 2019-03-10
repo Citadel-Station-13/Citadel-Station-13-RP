@@ -305,4 +305,4 @@ var/global/list/##LIST_NAME = list();\
 #define FIXED_COLOR_PRIORITY 		4 //color inherent to the atom (e.g. blob color)
 #define COLOR_PRIORITY_AMOUNT 4 //how many priority levels there are.
 
-#define NULL_EITHER_OR(thing1, thing2, var) (isnull(thing1.var)? thing2.var : thing1.var)
+#define NULL_EITHER_OR(thing1, thing2, __var) (isnull(thing1.__var)? thing2.__var : thing1.__var)

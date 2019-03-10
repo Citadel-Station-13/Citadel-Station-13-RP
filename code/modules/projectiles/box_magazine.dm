@@ -1,8 +1,8 @@
 /obj/item/ammo_box
 	name = "ammo box"
 	desc = "A box of ammo, of some sort."
-	icon =
-	icon_state =
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "357"
 	flags = CONDUCT
 	slot_flags = NONE
 	item_state = "syringe_kit"
@@ -236,10 +236,8 @@
 /obj/item/ammo_box
 	name = "ammo box (null_reference_exception)"
 	desc = "A box of ammo."
-	icon = 'icons/obj/ammo.dmi'
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	item_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	materials = list(MAT_METAL = 30000)

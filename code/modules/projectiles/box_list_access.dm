@@ -62,7 +62,7 @@
 		return
 	var/obj/item/ammu_casing/C = _stored_ammo[_stored_ammo.len]
 	if(ispath(C))
-		_stored_ammo[_stored_ammo.len = C = instantiate_casing(C, src)
+		_stored_ammo[_stored_ammo.len] = C = instantiate_casing(C, src)
 	return C
 
 /obj/item/ammo_box/proc/expend_top_casing()

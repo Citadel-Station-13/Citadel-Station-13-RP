@@ -1,5 +1,5 @@
-#define FIREMODE_ADD_CHAMBERED(var) ((chambered && chambered.var) + (firamode.var))
-#define FIREMODE_OR_CHAMBERED(var) NULL_EITHER_OR(chambered, firemode, var)
+#define FIREMODE_ADD_CHAMBERED(__var) ((chambered && chambered.__var) + (firemode.__var))
+#define FIREMODE_OR_CHAMBERED(__var) NULL_EITHER_OR(chambered, firemode, __var)
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty broken, though."
@@ -23,10 +23,10 @@
 	attack_verb = list("struck", "hit", "bashed")
 	zoomdevicename = "scope"
 
-	var/list/datum/firamode/firamodes = /datum/firamode		//list of typepaths, or just one thing if there's only one, created on init. first one is chosen.
+	var/list/datum/firemode/firemodes = /datum/firemode		//list of typepaths, or just one thing if there's only one, created on init. first one is chosen.
 	var/obj/item/ammu_casing/chambered						//currently chambered
-	var/datum/firamode/firamode								//current firemode
-	var/firamode_index										//current firemode index
+	var/datum/firemode/firemode								//current firemode
+	var/firemode_index										//current firemode index
 
 	var/firing_burst = FALSE
 	var/last_fire_time = 0
@@ -48,35 +48,35 @@
 	return ..()
 
 /obj/item/gun/proc/initialize_firemodes()
-	if(!islist(firamodes))
-		if(!ispath(firamodes))
+	if(!islist(firemodes))
+		if(!ispath(firemodes))
 			CRASH("WARNING: Gun without a firemode tried to initialize them.")
-		firamodes = new firamodes
+		firemodes = new firemodes
 	else
-		if(!firamodes.len)
+		if(!firemodes.len)
 			CRASH("WARNING: Gun without a firemode tried to initialize them.")
-		for(var/i in 1 to firamodes.len)
-			var/path = firamodes[i]
-			firamodes[i] = new path
+		for(var/i in 1 to firemodes.len)
+			var/path = firemodes[i]
+			firemodes[i] = new path
 	set_firemode_index(1)
 
-/obj/item/gun/proc/set_firemode(datum/firamode/M)
-	if((M != firamodes) && !(M in firamodes))
-		islist(firamodes)? ((firamodes += M)) : (isdatum(firamodes)? ((firamodes = list(firamodes, M))) : ((firamodes = M)))
-	firamode = M
-	islist(firamodes)? ((firamode_index = firamodes.Find(M))) : ((firamode_index = null))
-	. = firamode
-	firamode.apply_to_gun(src)
+/obj/item/gun/proc/set_firemode(datum/firemode/M)
+	if((M != firemodes) && !(M in firemodes))
+		islist(firemodes)? ((firemodes += M)) : (isdatum(firemodes)? ((firemodes = list(firemodes, M))) : ((firemodes = M)))
+	firemode = M
+	islist(firemodes)? ((firemode_index = firemodes.Find(M))) : ((firemode_index = null))
+	. = firemode
+	firemode.apply_to_gun(src)
 	update_icon()
 
 /obj/item/gun/proc/set_firemode_index(index)
-	if(!islist(firamodes))
-		return set_firemode(firamodes)
-	else if(!firamodes.len)
+	if(!islist(firemodes))
+		return set_firemode(firemodes)
+	else if(!firemodes.len)
 		return
-	else if(!ISINRANGE(index, 1, firamodes.len))
+	else if(!ISINRANGE(index, 1, firemodes.len))
 		index = 1
-	return set_firemode(firamodes[index])
+	return set_firemode(firemodes[index])
 
 /obj/item/gun/proc/next_firemode()
 	return set_firemode_index(isnull(firemode_index)? 1 : firemode_index + 1)
@@ -93,7 +93,7 @@
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
-	to_chat(user, "It is set to [firamode].")
+	to_chat(user, "It is set to [firemode].")
 	to_chat(user, "It [pin? "has [pin] installed" : "is missing a firing pin"].")
 
 /obj/item/gun/proc/unlock() //used in summon guns and as a convience for admins
@@ -136,8 +136,8 @@
 
 /obj/item/gun/Destroy()
 	QDEL_NULL(chambered)
-	QDEL_LIST(firamodes)
-	firamode = null			//already qdel list'd
+	QDEL_LIST(firemodes)
+	firemode = null			//already qdel list'd
 	return ..()
 
 /obj/item/gun/proc/is_suppressed(obj/item/projectile/P)
@@ -160,14 +160,14 @@
 			else
 				user.visible_message("<span class='danger'>[user] [reflex? "reflexively ":""]fires [src]!</span>", blind_message = "<span class='danger'>You hear a [FIREMODE_OR_CHAMBERED(sound_text)]!</span>")
 
-/obj/item/gun/proc/postfire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firamode.recoil, reflex = FALSE)
+/obj/item/gun/proc/postfire_live(atom/target, atom/user, point_blank = FALSE, message = TRUE, recoil = firemode.recoil, reflex = FALSE)
 	if(recoil)
 		shake_camera(user, recoil + 1, recoil)
 	var/muzzle_flash_power = FIREMODE_OR_CHAMBERED(muzzle_flash_power)
 	if(muzzle_flash_power)
 		var/turf/T = get_turf(src)
 		if(T)
-			new /obj/effect/dummy/lighting(T, FIREMODE_OR_CHAMBERED(muzzle_flash_color), FIREMODE_OR_CHAMBERED(muzzle_flash_range), muzzle_flash_power, FIREMODE_OR_CHAMBERED(muzzle_flash_duration)
+			new /obj/effect/dummy/lighting(T, FIREMODE_OR_CHAMBERED(muzzle_flash_color), FIREMODE_OR_CHAMBERED(muzzle_flash_range), muzzle_flash_power, FIREMODE_OR_CHAMBERED(muzzle_flash_duration))
 
 	var/one_handed_penalty = FIREMODE_OR_CHAMBERED(one_handed_penalty)
 	//this section needs overhauling soonish.
@@ -199,9 +199,22 @@
 	to_chat(user, "<span class='danger'>*click*</span>")
 	playsound(src, FIREMODE_OR_CHAMBERED(dry_fire_sound), FIREMODE_OR_CHAMBERED(dry_fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
 
-/obj/item/gun/proc/do_fire(atom/target, atom/user, params, zone_override,
+/obj/item/gnu/proc/default_inherent_spread(mob/living/user)
+	. = firemode_spread
+	if(istype(user) && !user.auto_wield_check(src))
+		var/one_handed_penalty = FIREMODE_OR_CHAMBERED(one_handed_penalty)
+		. += one_handed_penalty
 
-/obj/item/gun/proc/process_shot(atom/target, atom/user, params, zone_override, burst_iteration = 0, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread())
+/obj/item/gun/proc/mob_try_fire(atom/target, mob/living/uesr, params, zone_override, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread(user))
+
+
+	return do_fire(target, user, params, zone_override, current_dualwield_penalty, inherent_spread)
+
+/obj/item/gun/proc/do_fire(atom/target, atom/user, params, zone_override, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread(user))
+
+
+
+/obj/item/gun/proc/process_shot(atom/target, atom/user, params, zone_override, burst_iteration = 0, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread(user))
 
 
 
@@ -229,16 +242,10 @@
 	if(!special_check(user))
 		return
 
-	if(world.time < next_fire_time)
-		if (world.time % 3) //to prevent spam
-			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
-		return
-
 	var/shoot_time = (burst - 1)* burst_delay
 
 	//These should apparently be disabled to allow for the automatic system to function without causing near-permanant paralysis. Re-enabling them while we sort that out.
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
-	user.setMoveCooldown(shoot_time) //no moving while shooting either
 
 	next_fire_time = world.time + shoot_time
 
@@ -247,26 +254,7 @@
 	//actually attempt to shoot
 	var/turf/targloc = get_turf(target) //cache this in case target gets deleted during shooting, e.g. if it was a securitron that got destroyed.
 
-/*	// Commented out for quality control and testing.
-	shooting = 1
-	if(automatic == 1 && auto_target && auto_target.active)//When we are going to shoot and have an auto_target AND its active meaning we clicked on it we tell it to burstfire 1000 rounds
-		burst = 1000//Yes its not EXACTLY full auto but when are we shooting more than 1000 normally and it can easily be made higher
-*/
 	for(var/i in 1 to burst)
-		/*	// Commented out for quality control and testing.
-		if(!reflex && automatic)//If we are shooting automatic then check our target, however if we are shooting reflex we dont use automatic
-			//extra sanity checking.
-			if(user.incapacitated())
-				return
-			if(user.get_active_hand() != src)
-				break
-			if(!auto_target) break//Stopped shooting
-			else if(auto_target.loc)
-				target = auto_target.loc
-			//Lastly just update our dir if needed
-			if(user.dir != get_dir(user, auto_target))
-				user.face_atom(auto_target)
-		*/
 		var/obj/projectile = consume_next_projectile(user)
 		if(!projectile)
 			handle_click_empty(user)
@@ -310,18 +298,9 @@
 
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	user.setMoveCooldown(move_delay)
 	next_fire_time = world.time + fire_delay
 
 	accuracy = initial(accuracy)	//Reset the gun's accuracy
-
-	if(muzzle_flash)
-		//VOREStation Edit - Flashlights
-		if(gun_light)
-			set_light(light_brightness)
-		else
-			set_light(0)
-		//VOREStation Edit End
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
 /obj/item/weapon/gun/proc/Fire_userless(atom/target)

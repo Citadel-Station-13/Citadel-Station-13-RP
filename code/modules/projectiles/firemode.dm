@@ -1,5 +1,5 @@
 //These will be mostly accessed, rather than setting instance vars.
-/datum/firamode
+/datum/firemode
 	var/name = "default"
 	var/can_select = TRUE	//default cycling can select this. can still be forced codewise otherwise.
 
@@ -30,7 +30,7 @@
 	var/suppressed = FALSE			//inherent firemode silencing
 
 	//These are added to chambered casing's vars of the same name.
-	var/fire_delay = 6		//Minimum time between fires
+	var/fire_delay = 4		//Minimum time between fires
 	var/recoil = 0			//screenshake when firing
 
 	//These are all overridden by the chambered casing if the casing doesn't have them as null!!
@@ -53,28 +53,26 @@
 	var/one_handed_penalty_old = 0		//inherent firemode penalty for one-handing a gun - old variant, uses accuracy rather than angular dispersion
 
 //Energy weapons.
-/datum/firamode/energy
+/datum/firemode/energy
 	var/e_cost = 100				//energy cost to fire
 	var/casing_type					//type of energy ammo casing.
 
 	dualwield_volatility = 0.5
 
-/datum/firamode/proc/apply_to_gun(obj/item/gun/G)
+/datum/firemode/proc/apply_to_gun(obj/item/gun/G)
 	if(custom_gun_vars)
 		for(var/key in custom_gun_vars)
 			G.vv_edit_var(key, custom_gun_vars[key])
 	return G
 
-/datum/firamode/proc/apply_to_casing(obj/item/ammu_casing/C)
+/datum/firemode/proc/apply_to_casing(obj/item/ammu_casing/C)
 	if(custom_ammo_vars)
 		for(var/key in custom_ammo_vars)
 			C.vv_edit_var(key, custom_ammo_vars[key])
-
 	return C
 
-/datum/firamode/proc/apply_to_projectile(obj/item/projectile/P)
+/datum/firemode/proc/apply_to_projectile(obj/item/projectile/P)
 	if(custom_projectile_vars)
 		for(var/key in custom_projectile_vars)
-			P.vv_edit_var(key, custom_projectile_vars[key]
-
+			P.vv_edit_var(key, custom_projectile_vars[key])
 	return P
