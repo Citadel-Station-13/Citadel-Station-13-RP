@@ -1,6 +1,6 @@
 /obi/item/ammu_casing/proc/fire_casing(atom/target_or_angle, atom/user, params, distro = variance, suppress = FALSE, zone_override, angle_offset = 0)
 	if(!istype(target_or_angle) && !isnum(target_or_angle))
-		return FALSe
+		return FALSE
 	var/firing_dir = istype(target_or_angle)? get_dir(user, target_or_angle) : angle2dir(target_or_angle)
 	new firing_effect_type(get_turf(src), firing_dir)
 	var/turf/targloc

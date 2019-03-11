@@ -22,7 +22,6 @@
 
 	var/spread = 0					//inherent angular spread
 	var/randomspread = TRUE			//whether spread should be randomized (true) or distributed like a shotgun blast (false)
-	var/one_handed_penalty = 0		//inherent firemode penalty for one-handing a gun
 	var/dualwield_volatility = 1	//multiplier for how much it's affected by dualwield_penalty from every other gun.
 	var/dualwield_penalty = 13		//dualwield penalty: stacks per dualwield gun fired in order. you're going to have a harder time dualwielding an assault rifle than a bunch of pistols.
 
@@ -32,6 +31,7 @@
 	//These are added to chambered casing's vars of the same name.
 	var/fire_delay = 4		//Minimum time between fires
 	var/recoil = 0			//screenshake when firing
+	var/one_handed_penalty = 0		//inherent firemode penalty for one-handing a gun
 
 	//These are all overridden by the chambered casing if the casing doesn't have them as null!!
 	var/vary_fire_sound = TRUE
