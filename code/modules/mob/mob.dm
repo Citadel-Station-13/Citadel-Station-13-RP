@@ -373,8 +373,8 @@
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 
-		if ((deathtime < (150)) && (ticker && ticker.current_state > GAME_STATE_PREGAME))
-			to_chat(usr, "You must wait 15 seconds to respawn!")
+		if ((deathtime < (1 * 600)) && (ticker && ticker.current_state > GAME_STATE_PREGAME))
+			to_chat(usr, "You must wait 1 minute to respawn!")
 			return
 		else
 			to_chat(usr, "You can respawn now, enjoy your new life!")
