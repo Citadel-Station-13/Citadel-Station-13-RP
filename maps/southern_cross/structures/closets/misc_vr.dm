@@ -7,7 +7,7 @@
 	icon_opened = "secureexpopen"
 	icon_broken = "secureexpbroken"
 	icon_off = "secureexpoff"
-	req_access = list(access_explorer)
+	req_access = list(access_gateway)
 
 	starts_with = list(
 		/obj/item/clothing/under/explorer,
@@ -29,7 +29,7 @@
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 2)
 
-/obj/structure/closet/secure_closet/explorer/initialize()
+/obj/structure/closet/secure_closet/pathfinder/initialize()
 	if(prob(50))
 		starts_with += /obj/item/weapon/storage/backpack
 	else

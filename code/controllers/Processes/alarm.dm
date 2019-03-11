@@ -8,7 +8,7 @@
 /var/global/datum/alarm_handler/power/power_alarm			= new()
 
 // Alarm Manager, the manager for alarms.
-var/datum/controller/process/alarm/alarm_manager
+var/global/datum/controller/process/alarm/alarm_manager // citadel change, please don't break
 
 /datum/controller/process/alarm
 	var/list/datum/alarm/all_handlers

@@ -1,13 +1,13 @@
 ///////////////////////////////////////////////
 /////////////////// Stage 1 ///////////////////
-
+/* can u dont
 /datum/disease2/effect/mlem
 	name = "Mlemington's Syndrome"
 	stage = 1
 	chance_maxm = 25
 	activate(var/mob/living/carbon/mob,var/multiplier)
 		mob.say("[pick("Mlem.","MLEM!","Mlem?")]")
-
+*/
 /datum/disease2/effect/spin
 	name = "Spyndrome"
 	stage = 1

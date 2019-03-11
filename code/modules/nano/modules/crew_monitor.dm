@@ -25,7 +25,7 @@
 	for(var/z in (data["map_levels"] | T.z))  // Always show crew from the current Z even if we can't show a map
 		data["crewmembers"] += crew_repository.health_data(z)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "crew_monitor.tmpl", "Crew Monitoring Computer", 900, 800, state = state)
 
@@ -34,7 +34,7 @@
 		// adding a template with the key "mapHeader" replaces the map header content
 		ui.add_template("mapHeader", "crew_monitor_map_header.tmpl")
 		if(!(ui.map_z_level in data["map_levels"]))
-			ui.set_map_z_level(data["map_levels"][1])
+			ui.set_map_z_level(data["map_levels"][0]) // citadel change to hopefully avoid a runtime. we zero-index lists apparently
 
 		ui.set_initial_data(data)
 		ui.open()

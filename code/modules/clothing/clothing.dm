@@ -231,7 +231,7 @@
 	return 0 // return 1 to cancel attack_hand()
 
 /*/obj/item/clothing/gloves/attackby(obj/item/weapon/W, mob/user)
-	if(istype(W, /obj/item/weapon/wirecutters) || istype(W, /obj/item/weapon/scalpel))
+	if(W.is_wirecutter() || istype(W, /obj/item/weapon/scalpel))
 		if (clipped)
 			user << "<span class='notice'>The [src] have already been clipped!</span>"
 			update_icon()
@@ -253,7 +253,8 @@
 	var/mob/living/carbon/human/H = user
 
 	if(slot && slot == slot_gloves)
-		if(H.gloves)
+		var/obj/item/clothing/gloves/G = H.gloves
+		if(istype(G))
 			ring = H.gloves
 			if(ring.glove_level >= src.glove_level)
 				to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")

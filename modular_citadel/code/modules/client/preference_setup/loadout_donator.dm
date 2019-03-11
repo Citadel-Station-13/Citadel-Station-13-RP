@@ -11,6 +11,18 @@
 	ckeywhitelist = list("realdonaldtrump")
 */
 
+/datum/gear/donator/gladiator
+	display_name = "Gladiator Armor"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/under/gladiator
+	ckeywhitelist = list("aroche")
+
+/datum/gear/donator/keyholesweater
+	display_name = "Keyhole Sweater"
+	slot = slot_wear_suit
+	path = /obj/item/clothing/under/donator/crystalnole
+	ckeywhitelist = list("crystal9156")
+
 /datum/gear/donator/chayse
 	display_name = "NTSC Naval Uniform"
 	slot = slot_w_uniform
@@ -46,3 +58,61 @@
 	slot = slot_wear_suit
 	path = /obj/item/clothing/suit/armor/vest/donator/cameron
 	ckeywhitelist = list("cameronlancaster")
+
+/datum/gear/donator/crown
+	display_name = "Crown"
+	slot = slot_head
+	path = /obj/item/clothing/accessory/collar/donator/crown
+	ckeywhitelist = list("grayrachnid")
+
+/datum/gear/donator/beesuit
+	display_name = "Bee Suit"
+	slot = slot_head
+	path = /obj/item/clothing/suit/storage/hooded/donator/bee_costume
+	ckeywhitelist = list("beeskee")
+
+/datum/gear/donator/rarehat
+	display_name = "Ultra Rare Hat"
+	slot = slot_head
+	path = /obj/item/clothing/head/collectable/petehat
+	ckeywhitelist = list("risingstarslash")
+
+
+/datum/gear/donator/silverhelmet
+	display_name = "Silver's Helmet"
+	sort_category = "Donator"
+	slot = slot_head
+	path = /obj/item/reskin_kit/jenna
+	ckeywhitelist = list("jennasilver")
+
+/datum/gear/donator/izzyball
+	display_name = "Katlin's Ball"
+	sort_category = "Donator"
+	path = /obj/item/toy/tennis/rainbow/izzy
+	ckeywhitelist = list("izzyinbox")
+
+
+/datum/gear/donator/pduni
+	display_name = "Olympius PD Service Uniform"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/opd
+	ckeywhitelist = list("hungrycricket")
+
+/datum/gear/donator/mewchild
+	display_name = "Bone Signet Ring"
+	sort_category = "Donator"
+	path = /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
+	ckeywhitelist = list("mewchild")
+
+/datum/gear/donator/stunsword
+	display_name = "Stunsword kit"
+	sort_category = "Donator"
+	path = /obj/item/reskin_kit/stunsword
+	ckeywhitelist = list("phillip458")
+
+/datum/gear/donator/redlensmask
+	display_name = "Red-Lensed Gas Mask"
+	sort_category = "Donator"
+	path = /obj/item/clothing/mask/red_mask
+	ckeywhitelist = list("figneugen")
+

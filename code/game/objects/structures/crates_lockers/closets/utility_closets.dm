@@ -70,7 +70,8 @@
 		/obj/item/clothing/mask/gas,
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
-		/obj/item/clothing/head/hardhat/red)
+		/obj/item/clothing/head/hardhat/red,
+		/obj/item/stack/medical/ointment) // CIT ADD
 
 /obj/structure/closet/firecloset/full
 	starts_with = list(
@@ -113,15 +114,15 @@
 	if(prob(70))
 		starts_with += /obj/item/device/flashlight
 	if(prob(70))
-		starts_with += /obj/item/weapon/screwdriver
+		starts_with += /obj/item/weapon/tool/screwdriver
 	if(prob(70))
-		starts_with += /obj/item/weapon/wrench
+		starts_with += /obj/item/weapon/tool/wrench
 	if(prob(70))
 		starts_with += /obj/item/weapon/weldingtool
 	if(prob(70))
-		starts_with += /obj/item/weapon/crowbar
+		starts_with += /obj/item/weapon/tool/crowbar
 	if(prob(70))
-		starts_with += /obj/item/weapon/wirecutters
+		starts_with += /obj/item/weapon/tool/wirecutters
 	if(prob(70))
 		starts_with += /obj/item/device/t_scanner
 	if(prob(20))
@@ -203,7 +204,7 @@
 	icon_closed = "hydrant"
 	icon_opened = "hydrant_open"
 	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER	
+	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	density = 0
 	wall_mounted = 1
@@ -214,7 +215,8 @@
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank/oxygen/red,
 		/obj/item/weapon/extinguisher,
-		/obj/item/clothing/head/hardhat/red)
+		/obj/item/clothing/head/hardhat/red,
+		/obj/item/stack/medical/ointment) // CIT ADD
 
 /*
  * First Aid

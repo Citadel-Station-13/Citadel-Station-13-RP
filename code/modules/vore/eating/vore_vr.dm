@@ -1,24 +1,3 @@
-
-/*
-VVVVVVVV           VVVVVVVV     OOOOOOOOO     RRRRRRRRRRRRRRRRR   EEEEEEEEEEEEEEEEEEEEEE
-V::::::V           V::::::V   OO:::::::::OO   R::::::::::::::::R  E::::::::::::::::::::E
-V::::::V           V::::::V OO:::::::::::::OO R::::::RRRRRR:::::R E::::::::::::::::::::E
-V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEEEEE::::E
- V:::::V           V:::::V O::::::O   O::::::O  R::::R     R:::::R  E:::::E       EEEEEE
-  V:::::V         V:::::V  O:::::O     O:::::O  R::::R     R:::::R  E:::::E
-   V:::::V       V:::::V   O:::::O     O:::::O  R::::RRRRRR:::::R   E::::::EEEEEEEEEE
-    V:::::V     V:::::V    O:::::O     O:::::O  R:::::::::::::RR    E:::::::::::::::E
-     V:::::V   V:::::V     O:::::O     O:::::O  R::::RRRRRR:::::R   E:::::::::::::::E
-      V:::::V V:::::V      O:::::O     O:::::O  R::::R     R:::::R  E::::::EEEEEEEEEE
-       V:::::V:::::V       O:::::O     O:::::O  R::::R     R:::::R  E:::::E
-        V:::::::::V        O::::::O   O::::::O  R::::R     R:::::R  E:::::E       EEEEEE
-         V:::::::V         O:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEEEE:::::E
-          V:::::V           OO:::::::::::::OO R::::::R     R:::::RE::::::::::::::::::::E
-           V:::V              OO:::::::::OO   R::::::R     R:::::RE::::::::::::::::::::E
-            VVV                 OOOOOOOOO     RRRRRRRR     RRRRRRREEEEEEEEEEEEEEEEEEEEEE
-
--Aro <3 */
-
 //
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
@@ -92,9 +71,9 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 		return 0 //Need to know what character to load!
 
 	slot = client.prefs.default_slot
-	
+
 	load_path(client_ckey,slot)
-	
+
 	if(!path) return 0 //Path couldn't be set?
 	if(!fexists(path)) //Never saved before
 		save_vore() //Make the file first
@@ -130,7 +109,7 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 
 /datum/vore_preferences/proc/save_vore()
 	if(!path)				return 0
-	
+
 	var/version = 1	//For "good times" use in the future
 	var/list/settings_list = list(
 			"version"				= version,
@@ -147,11 +126,16 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 	if(!json_to_file)
 		log_debug("Saving: [path] failed jsonencode")
 		return 0
-	
+
 	//Write it out
+#ifdef RUST_G
+	call(RUST_G, "file_write")(json_to_file, path)
+#else
+	// Fall back to using old format if we are not using rust-g
 	if(fexists(path))
 		fdel(path) //Byond only supports APPENDING to files, not replacing.
-	text2file(json_to_file,path)
+	text2file(json_to_file, path)
+#endif
 	if(!fexists(path))
 		log_debug("Saving: [path] failed file write")
 		return 0

@@ -1,6 +1,38 @@
 // These should all be procs, you can add them to humans/subspecies by
 // species.dm's inherent_verbs ~ Z
 
+/mob/living/carbon/human/proc/tie_hair()
+	set name = "Tie Hair"
+	set desc = "Style your hair."
+	set category = "IC"
+
+	if(incapacitated())
+		to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
+		return
+
+	if(h_style)
+		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
+		var/selected_string
+		if(!(hair_style.flags & HAIR_TIEABLE))
+			to_chat(src, "<span class ='warning'>Your hair isn't long enough to tie.</span>")
+			return
+		else
+			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
+			for(var/hair_string in hair_styles_list)
+				var/list/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
+				if(test.flags & HAIR_TIEABLE)
+					valid_hairstyles.Add(hair_string)
+			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
+		if(incapacitated())
+			to_chat(src, "<span class='warning'>You can't mess with your hair right now!</span>")
+			return
+		else if(selected_string && h_style != selected_string)
+			h_style = selected_string
+			regenerate_icons()
+			visible_message("<span class='notice'>[src] pauses a moment to style their hair.</span>")
+		else
+			to_chat(src, "<span class ='notice'>You're already using that style.</span>")
+
 /mob/living/carbon/human/proc/tackle()
 	set category = "Abilities"
 	set name = "Tackle"
@@ -253,10 +285,20 @@
 	if(do_after(src,delay_length))
 		nutrition -= 200
 
-		for(var/obj/item/organ/I in internal_organs)
-			if(I.damage > 0)
-				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
-				to_chat(src, "<span class='notice'>You feel a soothing sensation within your [I.name]...</span>")
+		for(var/organ_tag in src.species.has_organ)
+			var/obj/item/organ/internal/I = src.internal_organs_by_name[organ_tag]
+			if(I && I.damage > 0)
+				I.damage = max(I.damage - 30, 0) // Repair functionally half of a dead internal organ.
+				to_chat(src, span("notice", "You feel a soothing sensation within your [I.name]..."))
+			if(!I)
+				var/organ_path = src.species.has_organ[organ_tag]
+				var/obj/item/organ/internal/IO = new organ_path(src,1)
+				if(organ_tag != IO.organ_tag)
+					warning("[IO.type] has a default organ tag \"[IO.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
+				IO.organ_tag = organ_tag
+				IO.damage = 30 // starts off as half-damaged, need to regen again to heal it
+				src.internal_organs_by_name[organ_tag] = IO
+				to_chat(src, span("notice", "You feel a soothing sensation as your missing [IO.name] reforms."))
 
 		// Replace completely missing limbs.
 		for(var/limb_type in src.species.has_limbs)
@@ -273,6 +315,8 @@
 				var/obj/item/organ/O = new limb_path(src)
 				organ_data["descriptor"] = O.name
 				to_chat(src, "<span class='notice'>You feel a slithering sensation as your [O.name] reform.</span>")
+		UpdateAppearance()
+		sync_organ_dna()
 		update_icons_body()
 		active_regen = FALSE
 	else

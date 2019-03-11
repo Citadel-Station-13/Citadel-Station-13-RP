@@ -64,9 +64,9 @@
 	var/turf/home_turf				// Set when they spawned, they try to come back here sometimes.
 
 	//Mob interaction
-	var/response_help   = "tries to help"	// If clicked on help intent
-	var/response_disarm = "tries to disarm" // If clicked on disarm intent
-	var/response_harm   = "tries to hurt"	// If clicked on harm intent
+	var/response_help   = "gently pats"	// If clicked on help intent
+	var/response_disarm = "tries to shove" // If clicked on disarm intent
+	var/response_harm   = "violently attacks"	// If clicked on harm intent
 	var/harm_intent_damage = 3		// How much an unarmed harm click does to this mob.
 	var/meat_amount = 0				// How much meat to drop from this mob when butchered
 	var/obj/meat_type				// The meat object to drop
@@ -393,7 +393,7 @@
 		//Resisting out of closets
 		if(istype(loc,/obj/structure/closet))
 			var/obj/structure/closet/C = loc
-			if(C.welded)
+			if(C.sealed)
 				handle_resist()
 			else
 				C.open()
@@ -600,12 +600,12 @@
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
 	ai_log("bullet_act() I was shot by: [Proj.firer]",2)
 
-	/* VOREStation Edit - Ace doesn't like bonus SA damage.
+	//* VOREStation Edit - Ace doesn't like bonus SA damage.
 	//Projectiles with bonus SA damage
 	if(!Proj.nodamage)
 		if(!Proj.SA_vulnerability || Proj.SA_vulnerability == intelligence_level)
 			Proj.damage += Proj.SA_bonus_damage
-	*/ // VOREStation Edit End
+	// */ // VOREStation Edit End
 	. = ..()
 
 	if(Proj.firer)
@@ -686,7 +686,6 @@
 	return ..()
 
 /mob/living/simple_animal/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
-	effective_force = O.force
 
 	//Animals can't be stunned(?)
 	if(O.damtype == HALLOSS)
@@ -914,6 +913,8 @@
 			if(L.faction == src.faction && !attack_same)
 				continue
 			else if(L in friends)
+				continue
+			else if(L.alpha <= EFFECTIVE_INVIS)
 				continue
 			else if(!SA_attackable(L))
 				continue
@@ -1242,7 +1243,7 @@
 		ai_log("AttackTarget() Bailing because we're disabled",2)
 		LoseTarget()
 		return 0
-	if(!target_mob || !SA_attackable(target_mob))
+	if(!target_mob || !SA_attackable(target_mob) || (target_mob.alpha <= EFFECTIVE_INVIS)) //if the target went invisible, you can't follow it
 		LoseTarget()
 		return 0
 	if(!(target_mob in ListTargets(view_range)))
@@ -1387,6 +1388,8 @@
 //	if (!istype(target, /turf))
 //		qdel(A)
 //		return
+
+	A.firer = src
 	A.launch(target)
 	return
 

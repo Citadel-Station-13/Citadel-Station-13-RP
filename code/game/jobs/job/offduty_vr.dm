@@ -79,3 +79,18 @@
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/assistant
+
+/////////// CITADEL STATION ADDITION
+/datum/job/offduty_command
+	title = "Off-duty CO"
+	latejoin_only = TRUE
+	timeoff_factor = -1
+	total_positions = -1
+	faction = "Station"
+	department = "Command"
+	supervisors = "nobody! Enjoy your time off"
+	selection_color = "#2F2F7F"
+	access = list(access_maint_tunnels, access_external_airlocks)
+	minimal_access = list(access_maint_tunnels, access_external_airlocks)
+	outfit_type = /decl/hierarchy/outfit/job/assistant
+//////////// END ADDITION

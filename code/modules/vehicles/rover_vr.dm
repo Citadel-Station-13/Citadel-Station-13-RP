@@ -82,7 +82,7 @@
 	return ..()
 
 /obj/vehicle/train/rover/trolley/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(open && istype(W, /obj/item/weapon/wirecutters))
+	if(open && istype(W, /obj/item/weapon/tool/wirecutters))
 		passenger_allowed = !passenger_allowed
 		user.visible_message("<span class='notice'>[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src].</span>","<span class='notice'>You [passenger_allowed ? "cut" : "mend"] the load limiter cable.</span>")
 	else
@@ -100,8 +100,9 @@
 
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
 /obj/vehicle/train/rover/bullet_act(var/obj/item/projectile/Proj)
-	if(buckled_mob && prob(70))
-		buckled_mob.bullet_act(Proj)
+	if(has_buckled_mobs() && prob(70))
+		var/mob/living/M = pick(buckled_mobs)
+		M.bullet_act(Proj)
 		return
 	..()
 
@@ -302,7 +303,7 @@
 	return ..()
 
 /obj/vehicle/train/rover/engine/unload(var/mob/user, var/direction)
-	var/mob/living/carbon/human/C = load	
+	var/mob/living/carbon/human/C = load
 
 
 	if(ismob(load))

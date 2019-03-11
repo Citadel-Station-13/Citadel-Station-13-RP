@@ -17,8 +17,9 @@
 	preserve_item = 1
 	var/filled = 0
 	var/list/filled_reagents = list()
+	var/hyposound	// What sound do we play on use?
 
-/obj/item/weapon/reagent_containers/hypospray/New()
+/obj/item/weapon/reagent_containers/hypospray/initialize()
 	..()
 	if(filled)
 		if(filled_reagents)
@@ -49,14 +50,15 @@
 				if(H.a_intent != I_HELP)
 					to_chat(user, "<span class='notice'>[H] is resisting your attempt to inject them with \the [src].</span>")
 					to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
-					if(!do_after(user, 30))
+					if(!do_after(user, 30, H))
 						return
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	to_chat(user, "<span class='notice'>You inject [M] with \the [src].</span>")
 	to_chat(M, "<span class='notice'>You feel a tiny prick!</span>")
-	
-	playsound(src, 'sound/effects/hypospray.ogg',25)
+
+	if(hyposound)
+		playsound(src, hyposound,25)
 
 	if(M.reagents)
 		var/contained = reagentlist()
@@ -72,7 +74,7 @@
 	var/obj/item/weapon/reagent_containers/glass/beaker/vial/loaded_vial //Wow, what a name.
 	volume = 0
 
-/obj/item/weapon/reagent_containers/hypospray/vial/New()
+/obj/item/weapon/reagent_containers/hypospray/vial/initialize()
 	..()
 	loaded_vial = new /obj/item/weapon/reagent_containers/glass/beaker/vial(src) //Comes with an empty vial
 	volume = loaded_vial.volume
@@ -126,6 +128,7 @@
 	filled = 1
 	filled_reagents = list("inaprovaline" = 5)
 	preserve_item = 0
+	hyposound = 'sound/effects/hypospray.ogg'
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/on_reagent_change()
 	..()
@@ -135,7 +138,7 @@
 	filled = 0
 	filled_reagents = list()
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/used/New()
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/used/initialize()
 	..()
 	flags &= ~OPENCONTAINER
 	icon_state = "[initial(icon_state)]0"
