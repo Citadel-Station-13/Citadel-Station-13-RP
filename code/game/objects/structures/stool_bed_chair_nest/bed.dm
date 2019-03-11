@@ -311,7 +311,9 @@
 	return ..()
 
 /obj/structure/bed/roller/MouseDrop(over_object, src_location, over_location)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return
 		if(has_buckled_mobs())	return 0

@@ -92,6 +92,9 @@ var/global/photo_count = 0
 	can_hold = list(/obj/item/weapon/photo)
 
 /obj/item/weapon/storage/photo_album/MouseDrop(obj/over_object as obj)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 
 	if((istype(usr, /mob/living/carbon/human)))
 		var/mob/living/carbon/human/M = usr

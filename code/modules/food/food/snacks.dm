@@ -4774,11 +4774,13 @@ END CITADEL CHANGE */
 		qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/chipplate/MouseDrop(mob/user) //Dropping the chip onto the user
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(istype(user) && user == usr)
 		user.put_in_active_hand(src)
 		src.pickup(user)
 		return
-	. = ..()
 
 /obj/item/weapon/reagent_containers/food/snacks/chipplate/nachos
 	name = "plate of nachos"

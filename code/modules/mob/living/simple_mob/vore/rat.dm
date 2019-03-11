@@ -169,9 +169,6 @@
 		riding_datum = new /datum/riding/simple_mob(src)
 	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_mob/animal/rat/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-
 /datum/say_list/rat
 	speak = list("Squeek!","SQUEEK!","Squeek?")
 	emote_hear = list("squeeks","squeaks","squiks")

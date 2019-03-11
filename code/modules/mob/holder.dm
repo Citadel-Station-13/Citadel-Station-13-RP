@@ -112,11 +112,14 @@ var/list/holder_mob_icon_cache = list()
 /mob/living/var/holder_type
 
 /mob/living/MouseDrop(var/atom/over_object)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(!Adjacent(over_object) || (over_object == src))
-		return ..()
+		return
 	var/mob/living/carbon/human/H = over_object
 	if(buckled || pinned.len)
-		return ..()
+		return
 	if(holder_type && istype(H) && !H.lying && (src.a_intent == I_HELP && H.a_intent == I_HELP))
 		//VORESTATION STUFF
 		return H.attempt_to_scoop(src, (usr == src))
@@ -126,7 +129,6 @@ var/list/holder_mob_icon_cache = list()
 			get_scooped(H, (usr == src))
 		return
 		*/
-	return ..()
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
 

@@ -12,6 +12,9 @@
 	default_apply_parts()
 
 /obj/machinery/fusion_fuel_compressor/MouseDrop_T(var/atom/movable/target, var/mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.incapacitated() || !user.Adjacent(src))
 		return
 	return do_special_fuel_compression(target, user)

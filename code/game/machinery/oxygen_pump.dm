@@ -41,7 +41,9 @@
 	return ..()
 
 /obj/machinery/oxygen_pump/MouseDrop(var/mob/living/carbon/human/target, src_location, over_location)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(istype(target) && CanMouseDrop(target))
 		if(!can_apply_to_target(target, usr)) // There is no point in attempting to apply a mask if it's impossible.
 			return

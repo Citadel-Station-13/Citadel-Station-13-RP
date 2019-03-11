@@ -106,6 +106,9 @@
 	// Grab() process should clean up the grab item, no need to del it.
 
 /obj/machinery/gibber/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat || user.restrained())
 		return
 	move_into_gibber(user,target)

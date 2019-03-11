@@ -70,6 +70,9 @@
 		..()
 
 /obj/item/device/defib_kit/MouseDrop()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(ismob(src.loc))
 		if(!CanMouseDrop(src))
 			return

@@ -14,7 +14,9 @@
 		M.examine(user)
 
 /obj/item/weapon/holder/MouseDrop(mob/M as mob)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(M != usr) return
 	if(usr == src) return
 	if(!Adjacent(usr)) return

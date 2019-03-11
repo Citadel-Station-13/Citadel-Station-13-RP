@@ -252,6 +252,9 @@
 	add_fingerprint(usr)
 
 /obj/machinery/sleeper/MouseDrop_T(var/mob/target, var/mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user) || !ishuman(target))
 		return
 	go_in(target, user)

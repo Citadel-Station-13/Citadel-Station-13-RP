@@ -350,7 +350,9 @@
 	var/busy = 0 	//Something's being washed at the moment
 
 /obj/structure/sink/MouseDrop_T(var/obj/item/thing, var/mob/user)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(!istype(thing) || !thing.is_open_container())
 		return ..()
 	if(!usr.Adjacent(src))

@@ -36,7 +36,10 @@
 			overlays += filling
 
 /obj/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
+
 	if(!isliving(usr))
 		return
 

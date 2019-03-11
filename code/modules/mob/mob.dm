@@ -540,7 +540,9 @@
 	return 0
 
 /mob/MouseDrop(mob/M as mob)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(M != usr) return
 	if(usr == src) return
 	if(!Adjacent(usr)) return

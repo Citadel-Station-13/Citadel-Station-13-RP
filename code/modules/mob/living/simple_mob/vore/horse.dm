@@ -43,9 +43,6 @@
 		riding_datum = new /datum/riding/simple_mob(src)
 	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_mob/animal/horse/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-
 /datum/say_list/horse
 	speak = list("NEHEHEHEHEH","Neh?")
 	emote_hear = list("snorts")

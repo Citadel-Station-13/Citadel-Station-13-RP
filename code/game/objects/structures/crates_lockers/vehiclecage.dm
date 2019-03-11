@@ -58,6 +58,9 @@
 		underlays += showcase
 
 /obj/structure/vehiclecage/MouseDrop_T(var/atom/movable/C, mob/user as mob)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user && (user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C)))
 		return
 

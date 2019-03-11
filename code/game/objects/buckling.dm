@@ -35,6 +35,8 @@
 
 /atom/movable/MouseDrop_T(mob/living/M, mob/living/user)
 	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(can_buckle && istype(M))
 		if(user_buckle_mob(M, user))
 			return TRUE

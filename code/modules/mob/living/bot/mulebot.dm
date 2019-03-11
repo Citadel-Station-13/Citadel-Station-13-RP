@@ -52,6 +52,9 @@
 	name = "Mulebot #[suffix]"
 
 /mob/living/bot/mulebot/MouseDrop_T(var/atom/movable/C, var/mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat)
 		return
 

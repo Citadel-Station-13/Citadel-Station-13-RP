@@ -70,9 +70,6 @@
 		riding_datum = new /datum/riding/simple_mob(src)
 	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_mob/animal/hippo/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-
 /datum/say_list/hippo
 	speak = list("UUUUUUH")
 	emote_hear = list("groan")

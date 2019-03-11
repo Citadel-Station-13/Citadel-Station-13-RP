@@ -56,6 +56,9 @@
 
 	var/obj/screen/click_catcher/void
 
+	var/list/topiclimiter
+	var/list/clicklimiter
+
 	var/datum/chatOutput/chatOutput
 
 	var/list/char_render_holders			//Should only be a key-value list of north/south/east/west = obj/screen.

@@ -650,6 +650,9 @@
 		name = "[name] ([occupant])"
 
 /obj/machinery/cryopod/MouseDrop_T(var/mob/target, var/mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 	go_in(target, user)

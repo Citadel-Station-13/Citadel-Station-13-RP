@@ -22,14 +22,15 @@
 	return
 
 /mob/living/silicon/robot/drone/MouseDrop(var/atom/over_object)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	var/mob/living/carbon/human/H = over_object
 	if(!istype(H) || !Adjacent(H))
-		return ..()
+		return
 	if(H.a_intent == "grab" && hat && !(H.l_hand && H.r_hand))
 		hat.loc = get_turf(src)
 		H.put_in_hands(hat)
 		H.visible_message("<span class='danger'>\The [H] removes \the [src]'s [hat].</span>")
 		hat = null
 		updateicon()
-	else
-		return ..()

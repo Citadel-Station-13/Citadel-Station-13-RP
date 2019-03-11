@@ -113,6 +113,9 @@
 	return FALSE
 
 /obj/machinery/processor/MouseDrop_T(var/atom/movable/AM, var/mob/living/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !istype(user))
 		return
 	insert(AM, user)

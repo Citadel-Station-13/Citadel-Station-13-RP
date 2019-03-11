@@ -61,12 +61,13 @@
 	do_climb(usr)
 
 /obj/structure/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 
 	var/mob/living/H = user
 	if(istype(H) && can_climb(H) && target == user)
 		do_climb(target)
-	else
-		return ..()
 
 /obj/structure/proc/can_climb(var/mob/living/user, post_climb_check=0)
 	if (!climbable || !can_touch(user) || (!post_climb_check && (user in climbers)))

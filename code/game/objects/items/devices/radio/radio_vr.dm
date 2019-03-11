@@ -54,14 +54,17 @@
 		..()
 
 /obj/item/device/subspaceradio/MouseDrop()
-    if(ismob(loc))
-        if(!CanMouseDrop(src))
-            return
-        var/mob/M = loc
-        if(!M.unEquip(src))
-            return
-        add_fingerprint(usr)
-        M.put_in_any_hand_if_possible(src)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
+	if(ismob(loc))
+		if(!CanMouseDrop(src))
+			return
+		var/mob/M = loc
+		if(!M.unEquip(src))
+			return
+		add_fingerprint(usr)
+		M.put_in_any_hand_if_possible(src)
 
 /obj/item/device/subspaceradio/attackby(obj/item/weapon/W, mob/user, params)
 	if(W == handset)

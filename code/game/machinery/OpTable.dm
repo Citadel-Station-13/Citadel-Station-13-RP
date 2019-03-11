@@ -57,6 +57,9 @@
 		return 0
 
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 
 	if((!(istype(O, /obj/item/weapon)) || user.get_active_hand() != O))
 		return

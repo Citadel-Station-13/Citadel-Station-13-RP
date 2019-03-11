@@ -66,6 +66,3 @@
 	if(!riding_datum)
 		riding_datum = new /datum/riding/simple_mob(src)
 	verbs |= /mob/living/simple_mob/proc/animal_mount
-
-/mob/living/simple_mob/animal/dragon/MouseDrop_T(mob/living/M, mob/living/user)
-	return

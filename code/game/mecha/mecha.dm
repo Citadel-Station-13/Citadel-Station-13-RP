@@ -1104,6 +1104,9 @@
 
 
 /obj/mecha/MouseDrop_T(mob/O, mob/user as mob)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	//Humans can pilot mechs.
 	if(!ishuman(O))
 		return

@@ -200,6 +200,9 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	return success
 
 /turf/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	var/turf/T = get_turf(user)
 	var/area/A = T.loc
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))

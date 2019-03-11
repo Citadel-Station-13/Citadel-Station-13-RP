@@ -10,10 +10,13 @@
 	var/obj/item/stored_item = null
 
 /obj/item/weapon/evidencebag/MouseDrop(var/obj/item/I as obj)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if (!ishuman(usr))
 		return
 	if(!istype(I) || I.anchored)
-		return  ..()
+		return
 
 	var/mob/living/carbon/human/user = usr
 

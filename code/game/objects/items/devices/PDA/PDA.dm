@@ -459,6 +459,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	return id
 
 /obj/item/device/pda/MouseDrop(obj/over_object as obj, src_location, over_location)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	var/mob/M = usr
 	if((!istype(over_object, /obj/screen)) && can_use())
 		return attack_self(M)

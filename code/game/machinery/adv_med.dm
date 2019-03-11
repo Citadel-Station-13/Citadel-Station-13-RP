@@ -63,6 +63,9 @@
 		qdel(G)
 
 /obj/machinery/bodyscanner/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(!istype(O))
 		return 0 //not a mob
 	if(user.incapacitated())

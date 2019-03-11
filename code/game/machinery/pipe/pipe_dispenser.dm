@@ -121,6 +121,9 @@ Nah
 
 //Allow you to drag-drop disposal pipes into it
 /obj/machinery/pipedispenser/disposal/MouseDrop_T(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(!usr.canmove || usr.stat || usr.restrained())
 		return
 

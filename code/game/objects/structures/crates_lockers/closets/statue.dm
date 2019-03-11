@@ -108,7 +108,9 @@
 	check_health()
 
 /obj/structure/closet/statue/MouseDrop_T()
-	return
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 
 /obj/structure/closet/statue/relaymove()
 	return

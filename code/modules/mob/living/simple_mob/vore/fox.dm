@@ -122,14 +122,14 @@
 				holder.audible_emote("[verb] anxiously.")
 
 /mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	var/mob/living/carbon/H = over_object
-	if(!istype(H) || !Adjacent(H)) return ..()
-
+	if(!istype(H) || !Adjacent(H))
+		return
 	if(H.a_intent == "help")
 		get_scooped(H)
-		return
-	else
-		return ..()
 
 /mob/living/simple_mob/animal/passive/fox/get_scooped(var/mob/living/carbon/grabber)
 	if (stat >= DEAD)

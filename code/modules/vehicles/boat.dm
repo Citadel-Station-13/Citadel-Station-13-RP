@@ -71,10 +71,11 @@
 
 // Boarding.
 /obj/vehicle/boat/MouseDrop_T(var/atom/movable/C, mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(ismob(C))
 		user_buckle_mob(C, user)
-	else
-		..(C, user)
 
 /obj/vehicle/boat/load(mob/living/L, mob/living/user)
 	if(!istype(L)) // Only mobs on boats.

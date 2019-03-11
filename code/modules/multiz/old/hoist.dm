@@ -29,6 +29,9 @@
 	return // This has to be overridden so that it works properly.
 
 /obj/effect/hoist_hook/MouseDrop_T(atom/movable/AM,mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if (use_check(user, USE_DISALLOW_SILICONS))
 		return
 
@@ -51,7 +54,9 @@
 	source_hook.layer = AM.layer + 0.1
 
 /obj/effect/hoist_hook/MouseDrop(atom/dest)
-	..()
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(!Adjacent(usr) || !dest.Adjacent(usr)) return // carried over from the default proc
 
 	if (!ishuman(usr))

@@ -101,10 +101,11 @@
 	remove_sample(usr)
 
 /obj/machinery/microscope/MouseDrop(var/atom/other)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(usr == other)
 		remove_sample(usr)
-	else
-		return ..()
 
 /obj/machinery/microscope/update_icon()
 	icon_state = "microscope"

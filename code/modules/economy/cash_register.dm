@@ -197,6 +197,9 @@
 
 
 /obj/machinery/cash_register/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(Adjacent(dropping) && Adjacent(user) && !user.stat)
 		attackby(dropping, user)
 

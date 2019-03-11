@@ -40,6 +40,8 @@ What is the naming convention for planes or layers?
 
 */
 
+#define CLICKCATCHER_PLANE -99
+
 #define SPACE_PLANE     		-82	// Reserved for use in space/parallax
 #define PARALLAX_PLANE  		-80	// Reserved for use in space/parallax
 

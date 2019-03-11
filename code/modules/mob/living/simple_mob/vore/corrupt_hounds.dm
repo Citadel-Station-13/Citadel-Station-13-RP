@@ -125,8 +125,5 @@
 		riding_datum = new /datum/riding/simple_mob(src)
 	verbs |= /mob/living/simple_mob/proc/animal_mount
 
-/mob/living/simple_mob/mechanical/corrupthound/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-
 /datum/ai_holder/simple_mob/corrupthound
 	speak_chance = 3

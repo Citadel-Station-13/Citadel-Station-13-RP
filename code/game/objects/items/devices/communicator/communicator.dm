@@ -252,6 +252,9 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 // Proc: MouseDrop()
 //Same thing PDAs do
 /obj/item/device/communicator/MouseDrop(obj/over_object as obj)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	var/mob/M = usr
 	if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
 		return
