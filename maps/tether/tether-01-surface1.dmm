@@ -2094,6 +2094,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 10
 	},
+/obj/item/device/binoculars,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "adR" = (
