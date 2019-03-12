@@ -67,4 +67,5 @@
 
 ///////////////////////// CITADEL STATION ADDITIONS START
 	var/lastLifeProc = 0    // Wallclock time of the last time this mob had life() called on them (at finish), used for tying variables to wallclock rather than tickcount
+	var/last_risky_emote = 0 // y'all really did not, in fact, have to do it to 'em, yet here we are
 ///////////////////////// CITADEL STATION ADDITIONS END
