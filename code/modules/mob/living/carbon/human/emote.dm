@@ -669,7 +669,7 @@
 			var/obj/item/organ/external/R = H.get_organ("r_hand")
 			var/left_hand_good = 0
 			var/right_hand_good = 0
-			if(world.time - last_risky_emote < 15) //god fuck what timing system are we using here
+			if(world.time - last_risky_emote < 150) //god fuck what timing system are we using here (its ds)
 
 			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
 				left_hand_good = 1
