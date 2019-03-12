@@ -25,7 +25,7 @@
 
 /obj/item/ammo_casing/a357
 	desc = "A .357 bullet casing."
-	caliber = ".357"
+	caliber = CALIBER_357
 	projectile_type = /obj/item/projectile/bullet/pistol/strong
 	matter = list(DEFAULT_WALL_MATERIAL = 210)
 

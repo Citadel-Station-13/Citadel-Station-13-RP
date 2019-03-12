@@ -31,7 +31,6 @@ var/datum/sortInstance/sortInstance = new()
 	var/list/runBases = list()
 	var/list/runLens = list()
 
-
 /datum/sortInstance/proc/timSort(start, end)
 	runBases.Cut()
 	runLens.Cut()

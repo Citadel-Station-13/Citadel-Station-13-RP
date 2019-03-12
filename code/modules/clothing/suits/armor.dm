@@ -25,7 +25,7 @@
 	desc = "An armored vest that protects against some damage."
 	icon_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	armor = STANDARD_ARMOR_LIST_BASIC_SECURITY_ARMOR
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"

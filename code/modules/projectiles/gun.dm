@@ -250,14 +250,10 @@
 		if(firemode.randomspread)
 			spread = (rand() - 0.5) * (inherent_spread)
 		else
-			spread = (
-			(((inherent_spread / final_burst_size) * iteration)			//10, 20, 30, 40, 50 for inherent 50, 5 iterations
-			* 0.5														//5, 10, 15, 20, 25
-			* ((-1) * ((iteration % 2) - 1)))							//5, -10, 15, -20, 25
-			- (0.25 * (inherent_spread / final_burst_size))				//2.5, -12.5, 12.5, -22.5, 22.5
-			)
+			var/divided = inherent_spread / final_burst_size
+			spread = ((((divided) * iteration) * 0.5 * (((-1) * ((iteration % 2) - 1)))) - (0.25 * (inherent_spread / final_burst_size)))
 		var/suppressed = is_suppressed(chambered.return_projectile(), chambered) || force_suppress
-		if(!chambered.fire_casing(target_or_angle, user, params, null, suppressed, chambered), zone_override, spread))
+		if(!chambered.fire_casing(target_or_angle, user, params, null, suppressed, zone_override, spread))
 			postfire_empty(target_or_angle, user, point_blank)
 			firing_burst = FALSE
 			return FALSE
