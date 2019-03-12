@@ -1,87 +1,107 @@
-/obj/item/weapon/gun/energy
+/obj/item/gun/energy
 	name = "energy gun"
 	desc = "A basic energy-based gun."
 	icon_state = "energy"
-	fire_sound_text = "laser blast"
 
-	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
-
-	var/accept_cell_type = /obj/item/weapon/cell/device
+	//PENDING STOCK PART CELL REFACTOR AND STUFF.
+	var/obj/item/weapon/cell/cell
 	var/cell_type = /obj/item/weapon/cell/device/weapon
+	var/accept_cell_type = /obj/item/weapon/cell/device
+	//	//accept_cell_types = CELLTYPE_DEVICE_SMALL | CELLTYPE_DEVICE_MEDIUM ...
+	var/removable_battery = TRUE		//can remove battery by hand.
 
-	var/modifystate
-	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
+	var/self_recharge = FALSE
+	var/recharge_last = 0			//last world.time
+	var/recharge_fire_delay = 75	//time before it starts charging from firing
+	var/recharge_amount = 3			//amount to charge per decisecond.
 
-	//self-recharging
-	var/self_recharge = 0	//if set, the weapon will recharge itself
-	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
-	var/recharge_time = 4
-	var/charge_tick = 0
-	var/charge_delay = 75	//delay between firing and charging
+	var/use_external_cell = ENERGY_GUN_EXTERNAL_CHARGE
+	var/external_cell_min_percent = 20				//0-100
+	var/show_cell_charge = ENERGY_GUN_SHOW_SHOTS | ENERGY_GUN_SHOW_CHARGE
 
-	var/battery_lock = 0	//If set, weapon cannot switch batteries
-
-
-/obj/item/weapon/gun/energy/Initialize()
+/obj/item/gun/energy/Initialize()
 	. = ..()
-	if(self_recharge)
-		power_supply = new /obj/item/weapon/cell/device/weapon(src)
-		START_PROCESSING(SSobj, src)
+	if(ispath(cell_type))
+		cell = new cell_type
 	else
-		if(cell_type)
-			power_supply = new cell_type(src)
-		else
-			power_supply = null
-
-	update_icon()
+		cell = new /obj/item/weapon/cell/device/weapon
+	if(self_recharge)
+		START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/energy/Destroy()
-	if(self_recharge)
-		STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(cell)
 	return ..()
+
+/obj/item/gun/energy/vv_edit_var(var_name, var_value)
+	. = ..()
+	if(. && (var_name == NAMEOF(src, self_recharge)))
+		self_recharge? START_PROCESSING(SSobj, src) : STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/energy/get_cell()
 	return power_supply
 
 /obj/item/weapon/gun/energy/process()
-	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
-		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
-			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
-				return 0 // check if we actually need to recharge
+	if(!self_recharge)
+		return PROCESS_KILL
+	if((world.time < (last_fire_time + recharge_fire_delay)) || !istype(cell))
+		return ..()
+	var/delay = world.time - recharge_last
+	recharge_last = world.time
+	if(use_external_power == ENERGY_GUN_EXTERNAL_CHARGE)
+		var/obj/item/weapon/cell/ext = get_external_power_supply()
+		if(!ext || (ext.percent() < external_cell_min_percent))
+			return ..()
+		var/used = ext.use(delay * recharge_amount)
+		cell.give(used)
+	else
+		cell.give(delay * recharge_amount)
+	process_chamber()
+	update_icon()
+	return ..()
 
-			charge_tick++
-			if(charge_tick < recharge_time) return 0
-			charge_tick = 0
 
-			var/rechargeamt = power_supply.maxcharge*0.2
+/obj/item/weapon/gun/energy/set_firemode()
+	. = ..()
+	if(.)
+		process_chamber()
+		recharge_newshot(TRUE)
+		update_icon(TRUE)
 
-			if(use_external_power)
-				var/obj/item/weapon/cell/external = get_external_power_supply()
-				if(!external || !external.use(rechargeamt)) //Take power from the borg...
-					return 0
-
-			power_supply.give(rechargeamt) //... to recharge 1/5th the battery
-			update_icon()
-		else
-			charge_tick = 0
-	return 1
-
-/obj/item/weapon/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
-
-/obj/item/weapon/gun/energy/switch_firemodes(mob/user)
-	if(..())
+/obj/item/gun/energy/emp_act(severity)
+	. = ..()
+	if(!(. & EMP_PROTECT_CONTENTS))
+		cell.use(round(cell.charge / severity))
+		chambered = null //we empty the chamber
+		recharge_newshot() //and try to charge a new shot
 		update_icon()
 
-/obj/item/weapon/gun/energy/emp_act(severity)
-	..()
-	update_icon()
+/obj/item/weapon/gun/energy/examine(mob/user)
+	. = ..()
+	if(cell)
+		if(show_cell_charge & ENERGY_GUN_SHOW_SHOTS)
+			to_chat(user, "Has [round(cell.charge / firemode.e_cost)] shot\s remaining.")
+		if(show_cell_charge & ENERGY_GUN_SHOW_CHARGE)
+			to_chat(user, "Its power cell has [cell.charge]/[cell.maxcharge] kJ ([cell.percent()]) remaining.")
+	else
+		to_chat(user, "It does not seem to have a power cell.")
 
-/obj/item/weapon/gun/energy/consume_next_projectile()
-	if(!power_supply) return null
-	if(!ispath(projectile_type)) return null
-	if(!power_supply.checked_use(charge_cost)) return null
-	return new projectile_type(src)
+/obj/item/gun/energy/process_shot()
+	if(!chambered && can_shoot())
+		process_chamber()
+	return ..()
+
+/obj/item/gun/energy/process_chamber()
+	if(chambered && chambered.is_spent())
+		cell.use(firemode.e_cost)
+	chambered = null
+	recharge_newshot()
+
+
+
+
+
+
 
 /obj/item/weapon/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
 	if(istype(C, /obj/item/weapon/cell))
@@ -131,6 +151,10 @@
 	else
 		return ..()
 
+/obj/item/weapon/gun/energy/AltClick(mob/uesr)
+	. = ..()
+	unload_ammo(user)
+
 /obj/item/weapon/gun/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
@@ -145,14 +169,6 @@
 					return suit.cell
 	return null
 
-/obj/item/weapon/gun/energy/examine(mob/user)
-	. = ..()
-	if(power_supply)
-		var/shots_remaining = round(power_supply.charge / charge_cost)
-		user << "Has [shots_remaining] shot\s remaining."
-	else
-		user << "Does not have a power cell."
-	return
 
 /obj/item/weapon/gun/energy/update_icon(var/ignore_inhands)
 	if(power_supply == null)
@@ -182,13 +198,6 @@
 			icon_state = "[initial(icon_state)]"
 
 	if(!ignore_inhands) update_held_icon()
-
-/obj/item/weapon/gun/energy/proc/start_recharge()
-	if(power_supply == null)
-		power_supply = new /obj/item/weapon/cell/device/weapon(src)
-	self_recharge = 1
-	START_PROCESSING(SSobj, src)
-	update_icon()
 
 /obj/item/weapon/gun/energy/get_description_interaction()
 	var/list/results = list()
@@ -233,30 +242,12 @@
 	var/use_cyborg_cell = 0 //whether the gun's cell drains the cyborg user's cell to recharge
 	var/dead_cell = FALSE //set to true so the gun is given an empty cell
 
-/obj/item/gun/energy/emp_act(severity)
-	. = ..()
-	if(!(. & EMP_PROTECT_CONTENTS))
-		cell.use(round(cell.charge / severity))
-		chambered = null //we empty the chamber
-		recharge_newshot() //and try to charge a new shot
-		update_icon()
-
-/obj/item/gun/energy/get_cell()
-	return cell
-
 /obj/item/gun/energy/Initialize()
 	. = ..()
-	if(cell_type)
-		cell = new cell_type(src)
-	else
-		cell = new(src)
 	if(!dead_cell)
 		cell.give(cell.maxcharge)
 	update_ammo_types()
 	recharge_newshot(TRUE)
-	if(selfcharge)
-		START_PROCESSING(SSobj, src)
-	update_icon()
 
 /obj/item/gun/energy/proc/update_ammo_types()
 	var/obj/item/ammo_casing/energy/shot
@@ -267,22 +258,6 @@
 	shot = ammo_type[select]
 	fire_sound = shot.fire_sound
 	fire_delay = shot.delay
-
-/obj/item/gun/energy/Destroy()
-	QDEL_NULL(cell)
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/item/gun/energy/process()
-	if(selfcharge && cell && cell.percent() < 100)
-		charge_tick++
-		if(charge_tick < charge_delay)
-			return
-		charge_tick = 0
-		cell.give(100)
-		if(!chambered) //if empty chamber we try to charge a new shot
-			recharge_newshot(TRUE)
-		update_icon()
 
 /obj/item/gun/energy/attack_self(mob/living/user as mob)
 	if(ammo_type.len > 1)
@@ -310,22 +285,6 @@
 			if(!chambered.BB)
 				chambered.newshot()
 
-/obj/item/gun/energy/process_chamber()
-	if(chambered && !chambered.BB) //if BB is null, i.e the shot has been fired...
-		var/obj/item/ammo_casing/energy/shot = chambered
-		cell.use(shot.e_cost)//... drain the cell cell
-	chambered = null //either way, released the prepared shot
-	recharge_newshot() //try to charge a new shot
-
-/obj/item/gun/energy/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(!chambered && can_shoot())
-		process_chamber()	// If the gun was drained and then recharged, load a new shot.
-	return ..()
-
-/obj/item/gun/energy/process_burst(mob/living/user, atom/target, message = TRUE, params = null, zone_override="", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
-	if(!chambered && can_shoot())
-		process_chamber()	// Ditto.
-	return ..()
 
 /obj/item/gun/energy/proc/select_fire(mob/living/user)
 	select++
@@ -339,7 +298,6 @@
 	chambered = null
 	recharge_newshot(TRUE)
 	update_icon(TRUE)
-	return
 
 /obj/item/gun/energy/update_icon(force_update)
 	if(QDELETED(src))
@@ -397,15 +355,6 @@
 		return (OXYLOSS)
 
 
-/obj/item/gun/energy/vv_edit_var(var_name, var_value)
-	switch(var_name)
-		if("selfcharge")
-			if(var_value)
-				START_PROCESSING(SSobj, src)
-			else
-				STOP_PROCESSING(SSobj, src)
-	. = ..()
-
 
 /obj/item/gun/energy/ignition_effect(atom/A, mob/living/user)
 	if(!can_shoot() || !ammo_type[select])
@@ -434,9 +383,3 @@
 			playsound(user, BB.hitsound, 50, 1)
 			cell.use(E.e_cost)
 			. = "<span class='danger'>[user] casually lights their [A.name] with [src]. Damn.</span>"
-
-
-
-
-
-

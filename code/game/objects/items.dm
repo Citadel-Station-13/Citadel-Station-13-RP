@@ -904,3 +904,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/cleave_visual(var/mob/living/user, var/mob/living/target)
 	var/obj/effect/temporary_effect/cleave_attack/E = new(get_turf(src))
 	E.dir = get_dir(user, target)
+
+//Return default cell for inducers and stuff.
+/obj/item/proc/get_cell()
+	return null
+
+//When used as suppressor.
+/obj/item/proc/handle_suppression(obj/item/projectile/P)
+	return TRUE

@@ -86,8 +86,11 @@
 	light_power = 0.5
 	light_color = "#FF0D00"
 
-/obj/effect/projectile/tungsten/muzzle
+/obj/effect/projectile/muzzle/tungsten
 	icon_state = "muzzle_mhd_laser"
 	light_range = 4
 	light_power = 3
 	light_color = "#3300ff"
+
+/obj/effect/projectile/muzzle/laser_greyscale
+	icon = "laser_greyscale"

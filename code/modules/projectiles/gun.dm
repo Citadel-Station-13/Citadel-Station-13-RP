@@ -51,10 +51,11 @@
 	var/bayonet_y_offset = 0
 
 /obj/item/gun/Initialize()
+	. = ..()
 	initialize_firemodes()
 	if(pin)
 		pin = new pin(src, src)
-	return ..()
+	update_icon()
 
 /obj/item/gun/Destroy()
 	QDEL_NULL(pin)
@@ -102,6 +103,10 @@
 	. = ..()
 	if(. & COMPONENT_NO_INTERACT)
 		return
+	on_attack_self()
+
+//so this can be overridden if we want ballistics to drop mags or something and rebind firemode switching.
+/obj/item/gun/proc/on_attack_self()
 	user_switch_firemode(user)
 
 /obj/item/gun/examine(mob/user)
@@ -127,12 +132,6 @@
 		qdel(pin)
 	pin = new /obj/item/firing_pin
 
-/obj/item/gun/emp_act(severity)
-	. = ..()
-	if(!(. & EMP_PROTECT_CONTENTS))
-		for(var/obj/O in contents)
-			O.emp_act(severity)
-
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == chambered)
 		chambered = null
@@ -145,7 +144,7 @@
 	firemode = null			//already qdel list'd
 	return ..()
 
-/obj/item/gun/proc/is_suppressed(obj/item/projectile/P, obj/item/ammo_casing/C)
+/obj/item/gun/proc/is_suppressed(obj/item/projectile/P, obj/item/ammu_casing/C)
 	var/self = suppressed && suppressed.handle_suppression(P)
 	return self || FIREMODE_AND_CASING(suppressed)
 

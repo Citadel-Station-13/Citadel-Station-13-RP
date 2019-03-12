@@ -12,7 +12,7 @@
 
 //Ammo flags
 #define LIGHT_METAL					(1<<1)			//UNIMPLEMENTED - disables "heavy metal" shell bouncing effects from /tg/
-#define NON_HARMFUL					(1<<2)		//is NOT a harmful ammo type
+#define NON_HARMFUL					(1<<2)			//is NOT a harmful ammo type
 #define RANDOMSPREAD				(1<<3)			//spread is truly random rather than normalized
 
 //Magazine ammo_left()
@@ -23,7 +23,16 @@
 //Magazine types
 #define MAGAZINE_TYPE_DEFAULT "DEFAULT"
 
+//gun/energy use_external_power
+#define ENERGY_GUN_EXTERNAL_DIRECT		1		//Directly use external power
+#define ENERGY_GUN_EXTERNAL_CHARGE		2		//Use external power to charge during processing/selfcharging.
+
+//gun/energy show_cell_charge
+#define ENERGY_GUN_SHOT_SHOTS			1		//show shots left on examine
+#define ENERGY_GUN_SHOW_CHARGE			2		//cell charge
+
 //Calibers
+#define CALIBER_ENERGY				"ENERGY"		//energy "lens" virtual casings for energy weapons.
 #define CALIBER_357					".357"
 
 

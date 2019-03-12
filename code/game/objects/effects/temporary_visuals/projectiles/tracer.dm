@@ -107,3 +107,6 @@
 	light_range = 4
 	light_power = 3
 	light_color = "#3300ff"
+
+/obj/effect/projectile/tracer/laser_greyscale
+	icon_state = "laser_greyscale"

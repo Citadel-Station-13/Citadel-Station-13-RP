@@ -8,6 +8,7 @@
 	var/list/entries
 	var/list/entries_by_type
 
+/*
 	var/list/maplist
 	var/datum/map_config/defaultmap
 
@@ -17,6 +18,7 @@
 	var/list/mode_names
 	var/list/mode_reports
 	var/list/mode_false_report_weight
+*/
 
 	var/motd
 
@@ -197,6 +199,19 @@
 		log_admin_private("Config access of [entry_type] attempted by [key_name(usr)]")
 		return
 	return E.config_entry_value
+
+/datum/controller/configuration/proc/GetDatum(type)
+	var/datum/config_entry/E = entry_type
+	var/entry_is_abstract = initial(E.abstract_type) == entry_type
+	if(entry_is_abstract)
+		CRASH("Tried to retrieve an abstract config_entry: [entry_type]")
+	E = entries_by_type[entry_type]
+	if(!E)
+		CRASH("Missing config entry for [entry_type]!")
+	if((E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+		log_admin_private("Config datum entry retrieval of [entry_type] attempted by [key_name(usr)]")
+		return
+	return E
 
 /datum/controller/configuration/proc/Set(entry_type, new_val)
 	var/datum/config_entry/E = entry_type
