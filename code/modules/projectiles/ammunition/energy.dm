@@ -4,4 +4,4 @@
 	leaves_residue = FALSE
 	caliber = CALIBER_ENERGY
 	projectile_type = /obj/item/projectile/energy
-	ammo_flags =
+	ammo_flags = LIGHT_METAL

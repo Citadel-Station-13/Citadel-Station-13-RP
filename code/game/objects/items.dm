@@ -907,8 +907,13 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //Return default cell for inducers and stuff.
 /obj/item/proc/get_cell()
-	return null
+	return
 
 //When used as suppressor.
 /obj/item/proc/handle_suppression(obj/item/projectile/P)
 	return TRUE
+
+/obj/item/proc/inducer_act(amount)
+	var/obj/item/weapon/cell/C = get_cell()
+	update_icon()
+	return C.give(amount)

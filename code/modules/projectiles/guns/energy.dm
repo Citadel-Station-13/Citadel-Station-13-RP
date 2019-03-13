@@ -27,8 +27,11 @@
 		cell = new /obj/item/weapon/cell/device/weapon
 	if(self_recharge)
 		START_PROCESSING(SSobj, src)
+	if(!dead_cell)
+		cell.give(cell.maxcharge)
+	recharge_newshot(TRUE)
 
-/obj/item/weapon/gun/energy/Destroy()
+/obj/item/gun/energy/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(cell)
 	return ..()
@@ -38,10 +41,10 @@
 	if(. && (var_name == NAMEOF(src, self_recharge)))
 		self_recharge? START_PROCESSING(SSobj, src) : STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/gun/energy/get_cell()
+/obj/item/gun/energy/get_cell()
 	return power_supply
 
-/obj/item/weapon/gun/energy/process()
+/obj/item/gun/energy/process()
 	if(!self_recharge)
 		return PROCESS_KILL
 	if((world.time < (last_fire_time + recharge_fire_delay)) || !istype(cell))
@@ -60,8 +63,7 @@
 	update_icon()
 	return ..()
 
-
-/obj/item/weapon/gun/energy/set_firemode()
+/obj/item/gun/energy/set_firemode()
 	. = ..()
 	if(.)
 		process_chamber()
@@ -72,11 +74,11 @@
 	. = ..()
 	if(!(. & EMP_PROTECT_CONTENTS))
 		cell.use(round(cell.charge / severity))
-		chambered = null //we empty the chamber
+		clear_chamber(FALSE, FALSE)		//we empty the chamber
 		recharge_newshot() //and try to charge a new shot
 		update_icon()
 
-/obj/item/weapon/gun/energy/examine(mob/user)
+/obj/item/gun/energy/examine(mob/user)
 	. = ..()
 	if(cell)
 		if(show_cell_charge & ENERGY_GUN_SHOW_SHOTS)
@@ -94,16 +96,43 @@
 /obj/item/gun/energy/process_chamber()
 	if(chambered && chambered.is_spent())
 		cell.use(firemode.e_cost)
-	chambered = null
+	clear_chamber(FALSE, FALSE)
 	recharge_newshot()
 
+/obj/item/gun/energy/attack_hand(mob/user as mob)
+	. = ..()
+	if(. & COMPONENT_NO_INTERACT)
+		return
+	if(user.get_inactive_hand() == src)
+		unload_ammo(user)
+
+/obj/item/gun/energy/AltClick(mob/uesr)
+	. = ..()
+	unload_ammo(user)
+
+/obj/item/gun/energy/proc/get_external_power_supply()
+	if(isrobot(loc))
+		var/mob/living/silicon/robot/R = loc
+		return R.cell
+	//this needs reworking. rig rewrite not soon enough!
+	if(istype(loc, /obj/item/rig_module))
+		var/obj/item/rig_module/module = loc
+		if(module.holder && module.holder.wearer)
+			var/mob/living/carbon/human/H = module.holder.wearer
+			if(istype(H) && H.back)
+				var/obj/item/weapon/rig/suit = H.back
+				if(istype(suit))
+					return suit.cell
+	else if(isitem(loc))
+		var/obj/item/I = loc
+		return I.get_cell()
 
 
 
 
 
 
-/obj/item/weapon/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
+/obj/item/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
 	if(istype(C, /obj/item/weapon/cell))
 		if(self_recharge || battery_lock)
 			user << "<span class='notice'>[src] does not have a battery port.</span>"
@@ -126,7 +155,7 @@
 			user << "<span class='notice'>This cell is not fitted for [src].</span>"
 	return
 
-/obj/item/weapon/gun/energy/proc/unload_ammo(mob/user)
+/obj/item/gun/energy/proc/unload_ammo(mob/user)
 	if(self_recharge || battery_lock)
 		user << "<span class='notice'>[src] does not have a battery port.</span>"
 		return
@@ -141,36 +170,13 @@
 	else
 		user << "<span class='notice'>[src] does not have a power cell.</span>"
 
-/obj/item/weapon/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
 	..()
 	load_ammo(A, user)
 
-/obj/item/weapon/gun/energy/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
-		unload_ammo(user)
-	else
-		return ..()
-
-/obj/item/weapon/gun/energy/AltClick(mob/uesr)
-	. = ..()
-	unload_ammo(user)
-
-/obj/item/weapon/gun/energy/proc/get_external_power_supply()
-	if(isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		return R.cell
-	if(istype(src.loc, /obj/item/rig_module))
-		var/obj/item/rig_module/module = src.loc
-		if(module.holder && module.holder.wearer)
-			var/mob/living/carbon/human/H = module.holder.wearer
-			if(istype(H) && H.back)
-				var/obj/item/weapon/rig/suit = H.back
-				if(istype(suit))
-					return suit.cell
-	return null
 
 
-/obj/item/weapon/gun/energy/update_icon(var/ignore_inhands)
+/obj/item/gun/energy/update_icon(var/ignore_inhands)
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -199,7 +205,7 @@
 
 	if(!ignore_inhands) update_held_icon()
 
-/obj/item/weapon/gun/energy/get_description_interaction()
+/obj/item/gun/energy/get_description_interaction()
 	var/list/results = list()
 
 	if(!battery_lock && !self_recharge)
@@ -225,29 +231,19 @@
 	desc = "A basic energy-based gun."
 	icon = 'icons/obj/guns/energy.dmi'
 
-	var/obj/item/stock_parts/cell/cell //What type of power cell this uses
-	var/cell_type = /obj/item/stock_parts/cell
 	var/modifystate = 0
 	var/list/ammo_type = list(/obj/item/ammo_casing/energy)
-	var/select = 1 //The state of the select fire switch. Determines from the ammo_type list what kind of shot is fired next.
 	var/can_charge = 1 //Can it be charged in a recharger?
 	var/automatic_charge_overlays = TRUE	//Do we handle overlays with base update_icon()?
 	var/charge_sections = 4
 	ammo_x_offset = 2
 	var/shaded_charge = FALSE //if this gun uses a stateful charge bar for more detail
 	var/old_ratio = 0 // stores the gun's previous ammo "ratio" to see if it needs an updated icon
-	var/selfcharge = 0
-	var/charge_tick = 0
-	var/charge_delay = 4
-	var/use_cyborg_cell = 0 //whether the gun's cell drains the cyborg user's cell to recharge
 	var/dead_cell = FALSE //set to true so the gun is given an empty cell
 
 /obj/item/gun/energy/Initialize()
 	. = ..()
-	if(!dead_cell)
-		cell.give(cell.maxcharge)
 	update_ammo_types()
-	recharge_newshot(TRUE)
 
 /obj/item/gun/energy/proc/update_ammo_types()
 	var/obj/item/ammo_casing/energy/shot

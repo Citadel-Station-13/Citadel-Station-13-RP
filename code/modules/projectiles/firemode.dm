@@ -3,11 +3,6 @@
 	var/name = "default"
 	var/can_select = TRUE	//default cycling can select this. can still be forced codewise otherwise.
 
-	//Gun icon overrides.
-	var/icon_override				//all of the three: if none, will make gun do its own handling
-	var/icon_state_override
-	var/item_state_override
-
 	//Badmin shennanigans/varedits. DO NOT USE THIS IN CODE, EXTREMELY INEFFICIENT!
 	var/list/custom_gun_vars
 	var/list/custom_ammo_vars
@@ -56,6 +51,7 @@
 /datum/firemode/energy
 	var/e_cost = 100				//energy cost to fire
 	var/casing_type					//type of energy ammo casing.
+	var/mode_icon_state				//usually the name.
 
 	dualwield_volatility = 0.5
 

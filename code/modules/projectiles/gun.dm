@@ -134,7 +134,7 @@
 
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == chambered)
-		chambered = null
+		clear_chamber()
 		update_icon()
 	return ..()
 
@@ -147,6 +147,15 @@
 /obj/item/gun/proc/is_suppressed(obj/item/projectile/P, obj/item/ammu_casing/C)
 	var/self = suppressed && suppressed.handle_suppression(P)
 	return self || FIREMODE_AND_CASING(suppressed)
+
+/obj/item/gun/proc/chamber_casing(obj/item/ammu_casing/C)
+	casing = C
+	firemode.apply_to_casing(C)
+
+/obj/item/gun/proc/clear_chamber(del_casing = TRUE, drop_casing = FALSE)
+	chambered = null
+	if(!QDELETED(chambered))
+		del_casing? qdel(chambered) : (drop_casing? chambered.forceMove(drop_location()) : NONE)
 
 /obj/item/gun/proc/process_chamber()				//called to clear/set chamber, usually after firing
 	return
@@ -711,7 +720,6 @@
 	QDEL_NULL(chambered)
 	QDEL_NULL(azoom)
 	return ..()
-
 
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == pin)
