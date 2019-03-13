@@ -26,6 +26,10 @@
 	name = "mechanical trap"
 	path =/obj/item/weapon/beartrap
 
+/datum/category_item/autolathe/devices/cell_charger_kit //cit edit
+	name = "cell charger kit"
+	path =/obj/item/cell_charger_kit
+
 /datum/category_item/autolathe/devices/electropack
 	name = "electropack"
 	path =/obj/item/device/radio/electropack
