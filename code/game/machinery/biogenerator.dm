@@ -9,13 +9,14 @@
 	use_power = 1
 	idle_power_usage = 40
 	emagged = 0
+	var/isemaged = 0
 	var/processing = 0
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
 	var/points = 0
 	var/menustat = "menu"
 	var/build_eff = 1
 	var/eat_eff = 1
-	
+//WHYYY
 /obj/machinery/biogenerator/New()
 	..()
 	var/datum/reagents/R = new/datum/reagents(1000)
@@ -100,7 +101,7 @@
 		dat += "<FONT COLOR=red>Biogenerator is processing! Please wait...</FONT>"
 	else
 		dat += "Biomass: [points] points.<HR>"
-		if(emagged = 1)
+		if(emagged && isemagged)
 			switch(menustat)
 				if("menu")
 					if(beaker)
