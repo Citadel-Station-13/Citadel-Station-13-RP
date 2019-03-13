@@ -24,16 +24,19 @@ var/const/access_explorer = 43
 	assignment = "Search and Rescue"
 	rank = "Search and Rescue"
 	job_access_type = /datum/job/sar
+	initial_sprite_stack = list("", "pips-science")
 
 /obj/item/weapon/card/id/civilian/pilot
 	assignment = "Pilot"
 	rank = "Pilot"
 	job_access_type = /datum/job/pilot
+	initial_sprite_stack = list("", "pips-science")
 
-/obj/item/weapon/card/id/civilian/explorer
+/obj/item/weapon/card/id/science/explorer
 	assignment = "Explorer"
 	rank = "Explorer"
 	job_access_type = /datum/job/explorer
+	initial_sprite_stack = list("", "top-science-explorer")
 
 //SC Jobs
 
@@ -95,7 +98,7 @@ var/const/access_explorer = 43
 	spawn_positions = 2 //VOREStation Edit
 	supervisors = "the pathfinder and the research director" //VOREStation Edit
 	selection_color = "#633D63" //VOREStation Edit
-	idtype = /obj/item/weapon/card/id/civilian/explorer
+	idtype = /obj/item/weapon/card/id/science/explorer
 	economic_modifier = 6 //VOREStation Edit
 	access = list(access_pilot, access_explorer, access_research) //VOREStation Edit
 	minimal_access = list(access_pilot, access_explorer, access_research) //VOREStation Edit

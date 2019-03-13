@@ -66,7 +66,7 @@
 /obj/item/weapon/card/id/guest/process()
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
-		icon_state = "guest_invalid"
+		icon_state = "guest-invalid"
 		expired = 1
 		world.time = expiration_time
 		return

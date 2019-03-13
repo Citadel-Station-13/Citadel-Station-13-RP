@@ -14,12 +14,42 @@
 /obj/item/weapon/card
 	name = "card"
 	desc = "Does card things."
-	icon = 'icons/obj/card.dmi'
+	icon = 'icons/obj/card_cit.dmi'
+	icon_state = "generic"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	var/associated_account_number = 0
 
+	var/list/initial_sprite_stack = list("")
+	var/list/base_icon = 'icons/obj/card_cit.dmi'
+	var/list/sprite_stack
+
 	var/list/files = list(  )
+
+/obj/item/weapon/card/New()
+	. = ..()
+	reset_icon()
+
+/obj/item/weapon/card/proc/reset_icon()
+	sprite_stack = initial_sprite_stack
+	update_icon()
+
+/obj/item/weapon/card/update_icon()
+	if(!sprite_stack || sprite_stack == list(""))
+		icon_state = initial(icon_state)
+		icon = base_icon
+
+	var/icon/I = null
+	for(var/iconstate in sprite_stack)
+		if(!iconstate)
+			iconstate = icon_state
+		if(I)
+			var/icon/IC = new(base_icon, iconstate)
+			I.Blend(IC, ICON_OVERLAY)
+		else
+			I = new/icon(base_icon, iconstate)
+	if(I)
+		icon = I
 
 /obj/item/weapon/card/data
 	name = "data disk"
@@ -44,7 +74,7 @@
 
 /obj/item/weapon/card/data/clown
 	name = "\proper the coordinates to clown planet"
-	icon_state = "data"
+	icon_state = "rainbow"
 	item_state = "card-id"
 	level = 2
 	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
@@ -58,7 +88,7 @@
 /obj/item/weapon/card/emag_broken
 	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
 	name = "broken cryptographic sequencer"
-	icon_state = "emag"
+	icon_state = "emag-spent"
 	item_state = "card-id"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 2)
 

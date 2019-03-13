@@ -5,6 +5,7 @@ var/const/PATHFINDER 		=(1<<13) //VOREStation Edit - Added Pathfinder
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
 	job_access_type = /datum/job/pathfinder
+	initial_sprite_stack = list("", "top-science-explorer", "pips-gold")
 
 /datum/job/pathfinder
 	title = "Pathfinder"

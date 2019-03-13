@@ -1,6 +1,6 @@
 /obj/item/weapon/card/id/syndicate
 	name = "agent card"
-	icon_state = "syndicate"
+	icon_state = "generic-s"
 	assignment = "Agent"
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/electronic_warfare = 1
@@ -108,6 +108,8 @@
 				if(choice && CanUseTopic(user, state))
 					src.icon_state = choice.icon_state
 					src.item_state = choice.item_state
+					src.sprite_stack = choice.sprite_stack
+					update_icon()
 					usr << "<span class='notice'>Appearance changed to [choice].</span>"
 					. = 1
 			if("Assignment")
@@ -196,6 +198,7 @@
 			var/datum/card_state/CS = new()
 			CS.icon_state = initial(ID.icon_state)
 			CS.item_state = initial(ID.item_state)
+			CS.sprite_stack = initial(ID.initial_sprite_stack)
 			CS.name = initial(ID.name) + " - " + initial(ID.icon_state)
 			id_card_states += CS
 		id_card_states = dd_sortedObjectList(id_card_states)
@@ -206,6 +209,7 @@
 	var/name
 	var/icon_state
 	var/item_state
+	var/sprite_stack
 
 /datum/card_state/dd_SortValue()
 	return name
@@ -215,4 +219,5 @@
 	desc = "An ID straight from the Syndicate."
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
+	icon_state = "syndicate-id"
 	access = list(access_syndicate, access_external_airlocks)

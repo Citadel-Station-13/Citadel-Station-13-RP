@@ -1,7 +1,7 @@
 /obj/item/weapon/card/id
 	name = "identification card"
 	desc = "A card used to provide ID and determine access across the station."
-	icon_state = "id"
+	icon_state = "generic-nt"
 	item_state = "card-id"
 
 	sprite_sheets = list(
@@ -130,8 +130,8 @@
 /obj/item/weapon/card/id/silver
 	name = "identification card"
 	desc = "A silver card which shows honour and dedication."
-	icon_state = "silver"
-	item_state = "silver_id"
+	icon_state = "silver-id"
+	item_state = "silver-id"
 
 /obj/item/weapon/card/id/silver/secretary
 	assignment = "Command Secretary"
@@ -142,12 +142,13 @@
 	assignment = "Head of Personnel"
 	rank = "Head of Personnel"
 	job_access_type = /datum/job/hop
+	initial_sprite_stack = list("base-stamp-silver", "top-command", "letter-n-command", "pips-gold")
 
 /obj/item/weapon/card/id/gold
 	name = "identification card"
 	desc = "A golden card which shows power and might."
-	icon_state = "gold"
-	item_state = "gold_id"
+	icon_state = "gold-id"
+	item_state = "gold-id"
 	preserve_item = 1
 
 /obj/item/weapon/card/id/gold/captain
@@ -175,7 +176,7 @@
 /obj/item/weapon/card/id/centcom
 	name = "\improper CentCom. ID"
 	desc = "An ID straight from Central Command."
-	icon_state = "nanotrasen"
+	icon_state = "cc-id"
 	registered_name = "Central Command"
 	assignment = "General"
 
@@ -187,10 +188,16 @@
 	. = ..()
 	access |= get_all_station_access()
 
+/obj/item/weapon/card/id/centcom/vip
+	name = "\improper V.I.P. ID"
+	desc = "An ID given to someone whose fingernail is probably worth more than you."
+	icon_state = "vip-id"
+	registered_name = "Very Important Person"
+
 /obj/item/weapon/card/id/centcom/ERT
 	name = "\improper Emergency Response Team ID"
 	assignment = "Emergency Response Team"
-	icon_state = "centcom"
+	icon_state = "ert-id"
 
 /obj/item/weapon/card/id/centcom/ERT/initialize()
 	. = ..()
@@ -200,7 +207,7 @@
 /obj/item/weapon/card/id/medical
 	name = "identification card"
 	desc = "A card issued to station medical staff."
-	icon_state = "med"
+	icon_state = "medical-id"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(223,255,255)
 
@@ -213,36 +220,40 @@
 	assignment = "Chemist"
 	rank = "Chemist"
 	job_access_type = /datum/job/chemist
+	initial_sprite_stack = list("", "pips-engineering")
 
 /obj/item/weapon/card/id/medical/geneticist
 	assignment = "Geneticist"
 	rank = "Geneticist"
 	job_access_type = /datum/job/doctor	//geneticist
+	initial_sprite_stack = list("base-stamp", "top-medical", "letter-n-science", "pips-science")
 
 /obj/item/weapon/card/id/medical/psychiatrist
 	assignment = "Psychiatrist"
 	rank = "Psychiatrist"
 	job_access_type = /datum/job/psychiatrist
+	//initial_sprite_stack = list("", "pips-mime")
 
 /obj/item/weapon/card/id/medical/paramedic
 	assignment = "Paramedic"
 	rank = "Paramedic"
 	job_access_type = /datum/job/paramedic
+	//initial_sprite_stack = list("", "pips-security")
 
 /obj/item/weapon/card/id/medical/head
 	name = "identification card"
 	desc = "A card which represents care and compassion."
-	icon_state = "medGold"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Medical Officer"
 	rank = "Chief Medical Officer"
 	job_access_type = /datum/job/cmo
+	initial_sprite_stack = list("base-stamp-silver", "top-command-medical", "letter-n-command", "pips-medical")
 
 /obj/item/weapon/card/id/security
 	name = "identification card"
 	desc = "A card issued to station security staff."
-	icon_state = "sec"
+	icon_state = "security-id"
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(223,127,95)
 
@@ -260,21 +271,22 @@
 	assignment = "Warden"
 	rank = "Warden"
 	job_access_type = /datum/job/warden
+	initial_sprite_stack = list("", "pips-gold")
 
 /obj/item/weapon/card/id/security/head
 	name = "identification card"
 	desc = "A card which represents honor and protection."
-	icon_state = "secGold"
 	primary_color = rgb(189,47,0)
 	secondary_color = rgb(255,223,127)
 	assignment = "Head of Security"
 	rank = "Head of Security"
 	job_access_type = /datum/job/hos
+	initial_sprite_stack = list("base-stamp-silver", "top-command-security", "letter-n-command", "pips-security")
 
 /obj/item/weapon/card/id/engineering
 	name = "identification card"
 	desc = "A card issued to station engineering staff."
-	icon_state = "eng"
+	icon_state = "engineering-id"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(223,159,95)
 
@@ -287,21 +299,22 @@
 	assignment = "Atmospheric Technician"
 	rank = "Atmospheric Technician"
 	job_access_type = /datum/job/atmos
+	initial_sprite_stack = list("", "pips-medical")
 
 /obj/item/weapon/card/id/engineering/head
 	name = "identification card"
 	desc = "A card which represents creativity and ingenuity."
-	icon_state = "engGold"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(255,223,127)
 	assignment = "Chief Engineer"
 	rank = "Chief Engineer"
 	job_access_type = /datum/job/chief_engineer
+	initial_sprite_stack = list("base-stamp-silver", "top-command-engineering", "letter-n-command", "pips-engineering")
 
 /obj/item/weapon/card/id/science
 	name = "identification card"
 	desc = "A card issued to station science staff."
-	icon_state = "sci"
+	icon_state = "science-id"
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(191,127,191)
 
@@ -323,17 +336,17 @@
 /obj/item/weapon/card/id/science/head
 	name = "identification card"
 	desc = "A card which represents knowledge and reasoning."
-	icon_state = "sciGold"
 	primary_color = rgb(142,47,142)
 	secondary_color = rgb(255,223,127)
 	assignment = "Research Director"
 	rank = "Research Director"
 	job_access_type = /datum/job/rd
+	initial_sprite_stack = list("base-stamp-silver", "top-command-science", "letter-n-command", "pips-science")
 
 /obj/item/weapon/card/id/cargo
 	name = "identification card"
 	desc = "A card issued to station cargo staff."
-	icon_state = "cargo"
+	icon_state = "cargo-id"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)
 
@@ -350,12 +363,12 @@
 /obj/item/weapon/card/id/cargo/head
 	name = "identification card"
 	desc = "A card which represents service and planning."
-	icon_state = "cargoGold"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(255,223,127)
 	assignment = "Quartermaster"
 	rank = "Quartermaster"
 	job_access_type = /datum/job/qm
+	initial_sprite_stack = list("", "pips-gold")
 
 /obj/item/weapon/card/id/assistant
 	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
@@ -365,7 +378,7 @@
 /obj/item/weapon/card/id/civilian
 	name = "identification card"
 	desc = "A card issued to station civilian staff."
-	icon_state = "civ"
+	icon_state = "civilian-id"
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(95,159,191)
 	assignment = "Civilian"
@@ -386,6 +399,7 @@
 	assignment = "Chaplain"
 	rank = "Chaplain"
 	job_access_type = /datum/job/chaplain
+	initial_sprite_stack = list("base-stamp-silver", "top-dark", "letter-cross", "pips-mime")
 
 /obj/item/weapon/card/id/civilian/chef
 	assignment = "Chef"
@@ -396,6 +410,7 @@
 	assignment = "Internal Affairs Agent"
 	rank = "Internal Affairs Agent"
 	job_access_type = /datum/job/lawyer
+	initial_sprite_stack = list("base-stamp", "top-internal-affairs", "letter-n-command")
 
 /obj/item/weapon/card/id/civilian/janitor
 	assignment = "Janitor"
@@ -407,16 +422,28 @@
 	rank = "Librarian"
 	job_access_type = /datum/job/librarian
 
+/obj/item/weapon/card/id/civilian/clown
+	assignment = "Clown"
+	rank = "Clown"
+	job_access_type = /datum/job/clown
+	initial_sprite_stack = list("base-stamp", "top-clown", "letter-n-clown")
+
+/obj/item/weapon/card/id/civilian/mime
+	assignment = "Mime"
+	rank = "Mime"
+	job_access_type = /datum/job/mime
+	initial_sprite_stack = list("base-stamp", "top-mime", "letter-n-mime")
+
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "identification card"
 	desc = "A card which represents common sense and responsibility."
-	icon_state = "civGold"
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(255,223,127)
+	initial_sprite_stack = list("base-stamp-silver", "top-command", "letter-n-command", "pips-civilian")
 
 /obj/item/weapon/card/id/external
 	name = "identification card"
 	desc = "An identification card of some sort. It does not look like it is issued by NT."
-	icon_state = "permit"
+	icon_state = "generic"
 	primary_color = rgb(142,94,0)
 	secondary_color = rgb(191,159,95)
