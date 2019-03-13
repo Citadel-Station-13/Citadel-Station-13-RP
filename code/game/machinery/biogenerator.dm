@@ -8,12 +8,21 @@
 	circuit = /obj/item/weapon/circuitboard/biogenerator
 	use_power = 1
 	idle_power_usage = 40
+	var/isemagged = 0 //Until this bug where the machine starts off as emagged = 1, We're going to use a secondary variable to compensate.
 	var/processing = 0
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
 	var/points = 0
 	var/menustat = "menu"
 	var/build_eff = 1
 	var/eat_eff = 1
+
+/obj/machinery/biogenerator/attackby(/obj/item/weapon/card/emag/usr)
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if(..())
+		usr << "You hear a click."
+		emagged = 1
+	return
 
 /obj/machinery/biogenerator/New()
 	..()
@@ -108,6 +117,10 @@
 					dat += "<A href='?src=\ref[src];action=create;item=milk;cost=20'>10 milk</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=milk5;cost=95'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cream;cost=30'>10 cream</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=cream5;cost=120'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=meat;cost=50'>Slab of meat</A> <FONT COLOR=blue>([round(50/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=meat5;cost=24s0'>x5</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=carpmeat;cost=100'>Carp Fellet</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=carpmeat5;cost=500s0'>x5</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=enzyme;cost=75'>10 Universal enzyme</A> <FONT COLOR=blue>([round(75/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=enzyme5;cost=375s0'>x5</A><BR>"
+					if(var/emagged = 1)
+						dat += "<A href='?src=\ref[src];action=create;item=mutagen;cost=100'>10 Unstable Mutagen</A> <FONT COLOR=blue>([round(75/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=mutagen5;cost=500s0'>x5</A><BR>"
 					dat += "Nutrient:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=ez;cost=60'>E-Z-Nutrient</A> <FONT COLOR=blue>([round(60/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=ez5;cost=300'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=120'>Left 4 Zed</A> <FONT COLOR=blue>([round(120/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=600'>x5</A><BR>"
@@ -120,7 +133,8 @@
 					dat += "<A href='?src=\ref[src];action=create;item=tbelt;cost=300'>Utility belt</A> <FONT COLOR=blue>([round(300/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=satchel;cost=400'>Leather Satchel</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cashbag;cost=400'>Cash Bag</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=chembag;cost=400'>Chemistry Bag</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=foodbag;cost=400'>Food Bag</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=orebag;cost=400'>Ore bag</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=workboots;cost=400'>Workboots</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=leathershoes;cost=400'>Leather Shoes</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=leatherchaps;cost=400'>Leather Chaps</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
@@ -128,8 +142,14 @@
 					dat += "<A href='?src=\ref[src];action=create;item=leatherjacket;cost=500'>Leather Jacket</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=wintercoat;cost=500'>Winter Coat</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=algae;cost=400'>4 Algae Sheets</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>" //VOREStation Edit - Algae for oxygen generator
-					//dat += "Other<BR>"
-					//dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=500'>Monkey</A> <FONT COLOR=blue>(500)</FONT><BR>"
+					dat += "Other<BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=500'>Monkey</A> <FONT COLOR=blue>(500)</FONT><BR>"
+					if(var/emagged = 1)
+						dat += "<A href='?src=\ref[src];action=create;item=sbelt;cost=600'>Security Belt</A> <FONT COLOR=blue>([round(600/build_eff)])</FONT><BR>"
+						dat += "<A href='?src=\ref[src];action=create;item=tbelt;cost=1200'>Tactical Belt</A> <FONT COLOR=blue>([round(1200/build_eff)])</FONT><BR>"
+						dat += "<A href='?src=\ref[src];action=create;item=tbbelt;cost=1200'>Bandolier Belt</A> <FONT COLOR=blue>([round(1200/build_eff)])</FONT><BR>"
+						dat += "<A href='?src=\ref[src];action=create;item=gamble;cost=2500'>Gamble</A> <FONT COLOR=blue>([round(2500/build_eff)])</FONT><BR>"
+					
 				else
 					dat += "<BR><FONT COLOR=red>No beaker inside. Please insert a beaker.</FONT><BR>"
 			if("nopoints")
@@ -196,6 +216,14 @@
 			beaker.reagents.add_reagent("cream", 10)
 		if("cream5")
 			beaker.reagents.add_reagent("cream", 50)
+		if("enzyme")
+			beaker.reagents.add_reagent("enzyme", 10)
+		if("enzyme50")
+			beaker.reagents.add_reagent("enzyme5", 50)
+		if("mutagen")
+			beaker.reagents.add_reagent("mutagen", 10)
+		if("mutagen5")
+			beaker.reagents.add_reagent("mutagen", 50)
 		if("meat")
 			new/obj/item/weapon/reagent_containers/food/snacks/meat(loc)
 		if("meat5")
@@ -204,6 +232,14 @@
 			new/obj/item/weapon/reagent_containers/food/snacks/meat(loc)
 			new/obj/item/weapon/reagent_containers/food/snacks/meat(loc)
 			new/obj/item/weapon/reagent_containers/food/snacks/meat(loc)
+		if("carpmeat")
+			new/obj/item/weapon/reagent_containers/food/snacks/carpmeat(loc)
+		if("carpmeat5")
+			new/obj/item/weapon/reagent_containers/food/snacks/carpmeat(loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/carpmeat(loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/carpmeat(loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/carpmeat(loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/carpmeat(loc)
 		if("ez")
 			new/obj/item/weapon/reagent_containers/glass/bottle/eznutrient(loc)
 		if("l4z")
@@ -236,6 +272,10 @@
 			new/obj/item/weapon/storage/bag/plants(loc)
 		if("plantbaglarge")
 			new/obj/item/weapon/storage/bag/plants/large(loc)
+		if("foodbag")
+			new/obj/item/weapon/storage/bag/food(loc)
+		if("orebag")
+			new/obj/item/weapon/storage/bag/ore(loc)
 		if("tbelt")
 			new/obj/item/weapon/storage/belt/utility(loc)
 		if("satchel")
@@ -261,6 +301,39 @@
 		if("algae") //VOREStation Edit - Algae for oxygen generator
 			var/obj/item/stack/material/algae/A = new(loc)
 			A.amount = 4 //VOREStation Edit End
+		if("monkey") //Citadel Edit - for hides and other things for kitchen. ~N
+			new/obj/item/weapon/reagent_containers/food/snacks/monkeycube(loc)
+		if("sbelt")
+			new/obj/item/weapon/storage/belt/security(loc)
+		if("tbelt")
+			new/obj/item/weapon/storage/belt/security/tactical(loc)
+		if("tbbelt")
+			new/obj/item/weapon/storage/belt/security/tactical/bandolier(loc)
+		if("cgloves")
+			new/obj/item/clothing/gloves/combat(loc)
+		if("gamble")
+			playsound(loc, 'sound/effects/supermatter.ogg', 75, 1)
+			switch(rand(1,10))
+				if(1)
+					new/mob/living/bot/secbot/beepsky(loc)
+				if(2)
+					new/obj/item/weapon/reagent_containers/syringe/steroid(loc)
+				if(3)
+					new/obj/item/stolenpackage(loc)
+				if(4)
+					new/obj/random/action_figure/item_to_spawn(loc)
+				if(5)
+					new/mob/living/simple_animal/shadekin(loc)
+				if(6)
+					new/obj/item/weapon/bikehorn(loc)
+				if(7)
+					explosion(loc, -1, -1, 3, 8)
+				if(8)
+					new/obj/item/weapon/rcd(loc)
+				if(9)
+					new/mob/living/simple_animal/retaliate/bee(loc)
+				if(10)
+					explosion(loc, -1, 2, 3, 5)
 	processing = 0
 	menustat = "complete"
 	update_icon()
