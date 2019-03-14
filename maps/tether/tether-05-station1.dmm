@@ -95,24 +95,18 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/excursion/tether)
 "aar" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/tether)
-"aas" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+006;
-	input_attempt = 1;
-	input_level = 100000;
-	output_level = 200000;
-	RCon_tag = "Engine - Core"
-	},
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/power/smes/buildable/engine,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"aas" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
 "aat" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/explored/upper_level)
@@ -29096,7 +29090,7 @@ aaa
 aaa
 aaa
 acL
-aas
+aar
 aaR
 abr
 abD
@@ -33803,7 +33797,7 @@ aeo
 aaq
 aaq
 aau
-aar
+aas
 avK
 avN
 aad
@@ -33945,7 +33939,7 @@ amF
 avG
 adB
 aaq
-aar
+aas
 avK
 avN
 aad
@@ -34087,7 +34081,7 @@ amF
 avG
 adB
 aaq
-aar
+aas
 avK
 auH
 aad
@@ -34939,7 +34933,7 @@ aaD
 avG
 tIi
 aaq
-aar
+aas
 avK
 auQ
 aad
@@ -35081,7 +35075,7 @@ amL
 aob
 dbI
 aaq
-aar
+aas
 avK
 qgR
 aad
@@ -35223,7 +35217,7 @@ aep
 aeu
 aev
 aau
-aar
+aas
 avK
 qgR
 aad

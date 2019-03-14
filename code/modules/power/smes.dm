@@ -449,7 +449,7 @@
 /obj/machinery/power/smes/buildable/main
 	name = "main smes"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the main one for facility power."
-	charge = 2e+007
+	charge = 2e7
 	input_level = 500000
 	output_level = 1000000
 
@@ -468,3 +468,9 @@
 	..()
 
 
+/obj/machinery/power/smes/buildable/engine
+	name = "engine smes"
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the engine."
+	charge = 2e6
+	input_level = 100000
+	output_level = 200000
