@@ -192,14 +192,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "aaG" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+007;
-	cur_coils = 4;
-	input_attempt = 1;
-	input_level = 500000;
-	output_level = 1e+006;
-	RCon_tag = "Power - Main"
-	},
+/obj/machinery/power/smes/buildable/main,
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
