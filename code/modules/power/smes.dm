@@ -46,8 +46,9 @@
 	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
 	var/grid_check = FALSE 			// If true, suspends all I/O.
 
-	var/lastsolaralert = 0 		//really big number because I'm not sure how else to do this right now
+	var/lastsolaralert = 0
 	var/lastenginealert = 0
+	var/lastcharge = 2e+007
 
 /obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
 
@@ -453,13 +454,17 @@
 	output_level = 1000000
 
 /obj/machinery/power/smes/buildable/main/process()
-	if(charge < 7200000 && charge > 4800000 && world.time >= lastsolaralert && inputting == 0)
-		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
+	if(charge < 7200000 && charge > 4800000 && world.time >= lastsolaralert && charge < lastcharge)
+		global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
 		lastsolaralert = world.time + 1800
 
-	if(charge < 4800000 && world.time >= lastenginealert && inputting == 0)
-		global_announcer.autosay("WARNING: Main Facility SMES unit now under 10 percent charge. Non-Engineering personnel are now permitted to attempt engine startup procedures.", "SMES Monitor")
+
+	if(charge < 4800000 && world.time >= lastenginealert && charge < lastcharge)
+		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge. Non-Engineering personnel are now permitted to attempt engine startup procedures.", "SMES Monitor")
 		lastenginealert = world.time + 1800
+
+	lastcharge = charge
+
 	..()
 
 
