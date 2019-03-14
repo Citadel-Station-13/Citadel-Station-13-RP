@@ -94,6 +94,14 @@
 "aaq" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/excursion/tether)
+"aar" = (
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/smes/buildable/main,
+/turf/simulated/floor,
+/area/engineering/engine_smes)
 "aas" = (
 /obj/machinery/power/smes/buildable{
 	charge = 2e+006;
@@ -158,36 +166,25 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"aaB" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
 "aaC" = (
-/obj/machinery/power/grid_checker,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
 	},
+/obj/machinery/power/grid_checker,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "aaD" = (
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
-"aaG" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+007;
-	cur_coils = 4;
-	input_attempt = 1;
-	input_level = 500000;
-	output_level = 1e+006;
-	RCon_tag = "Power - Main"
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/turf/simulated/floor,
-/area/engineering/engine_smes)
 "aaH" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -2561,11 +2558,6 @@
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
-"afV" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/tether)
 "afX" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -29385,7 +29377,7 @@ aaa
 aaa
 aaa
 acL
-aaG
+aar
 abe
 aeb
 abI
@@ -33666,7 +33658,7 @@ aeo
 aaq
 aaq
 aau
-afV
+aaB
 avK
 avN
 aad
@@ -33808,7 +33800,7 @@ amF
 avG
 adB
 aaq
-afV
+aaB
 avK
 avN
 aad
@@ -33950,7 +33942,7 @@ amF
 avG
 adB
 aaq
-afV
+aaB
 avK
 auH
 aad
@@ -34802,7 +34794,7 @@ aaD
 avG
 tIi
 aaq
-afV
+aaB
 avK
 auQ
 aad
@@ -34944,7 +34936,7 @@ amL
 aob
 dbI
 aaq
-afV
+aaB
 avK
 qgR
 aad
@@ -35086,7 +35078,7 @@ aep
 aeu
 aev
 aau
-afV
+aaB
 avK
 qgR
 aad

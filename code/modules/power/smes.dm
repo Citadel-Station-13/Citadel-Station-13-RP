@@ -41,10 +41,13 @@
 
 	var/open_hatch = 0
 	var/name_tag = null
-	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
+	var/building_terminal = 0 		//Suggestions about how to avoid clickspam building several terminals accepted!
 	var/obj/machinery/power/terminal/terminal = null
-	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
-	var/grid_check = FALSE // If true, suspends all I/O.
+	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
+	var/grid_check = FALSE 			// If true, suspends all I/O.
+
+	var/lastsolaralert = 0 		//really big number because I'm not sure how else to do this right now
+	var/lastenginealert = 0
 
 /obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
 
@@ -441,3 +444,22 @@
 /obj/machinery/power/smes/magical/process()
 	charge = 5000000
 	..()
+
+/obj/machinery/power/smes/buildable/main
+	name = "main smes"
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the main one for facility power."
+	charge = 2e+007
+	input_level = 500000
+	output_level = 1000000
+
+/obj/machinery/power/smes/buildable/main/process()
+	if(charge < 7200000 && charge > 4800000 && world.time >= lastsolaralert)
+		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
+		lastsolaralert = world.time + 1800
+
+	if(charge < 4800000 && world.time >= lastenginealert )
+		global_announcer.autosay("WARNING: Main Facility SMES unit now under 10 percent charge. Non-Engineering personnel are now permitted to attempt engine startup procedures.", "SMES Monitor")
+		lastenginealert = world.time + 1800
+	..()
+
+
