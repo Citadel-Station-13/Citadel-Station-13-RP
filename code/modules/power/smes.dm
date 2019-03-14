@@ -458,13 +458,11 @@
 		global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge and seems to be discharging. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
 		lastsolaralert = world.time + 1800
 
-
 	if(charge < 4800000 && world.time >= lastenginealert && charge < lastcharge)
 		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge and seems to be discharging. Non-Engineering personnel are now permitted to attempt engine startup procedures.", "SMES Monitor")
 		lastenginealert = world.time + 1800
 
 	lastcharge = charge
-
 	..()
 
 
