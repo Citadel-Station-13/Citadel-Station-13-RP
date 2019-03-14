@@ -9,7 +9,6 @@
 	var/list/custom_projectile_vars
 
 	//Firing
-	var/next_move = 4		//change user's next move to this.
 	var/burst_size = 1		//number of casings to shoot
 	var/burst_delay = 2		//delay between each shot in burst
 	var/automatic = FALSE	//Full automatic mode, autoclickers included.
@@ -41,19 +40,12 @@
 	var/muzzle_flash_range = 1.75
 	var/muzzle_flash_color = "#FFFFFF"
 	var/muzzle_flash_duration = 2.5
+	var/clickcd_override = 4		//change user's next move to this.
 
 	//Stuff that's honestly going to be deprecated/removed but whatever.
 	var/accuracy = 0		//percentage, 15 = +15%, -15 opposite.
 	var/list/burst_accuracy		//allows for different accuracies for each shot in a burst. Applied on top of accuracy. use list, if null nothing happens, the end of the list will be applied for all shots after that if more shots than list len.
 	var/one_handed_penalty_old = 0		//inherent firemode penalty for one-handing a gun - old variant, uses accuracy rather than angular dispersion
-
-//Energy weapons.
-/datum/firemode/energy
-	var/e_cost = 100				//energy cost to fire
-	var/casing_type					//type of energy ammo casing.
-	var/mode_icon_state				//usually the name.
-
-	dualwield_volatility = 0.5
 
 /datum/firemode/proc/apply_to_gun(obj/item/gun/G)
 	if(custom_gun_vars)
@@ -72,3 +64,28 @@
 		for(var/key in custom_projectile_vars)
 			P.vv_edit_var(key, custom_projectile_vars[key])
 	return P
+
+//Energy weapons.
+/datum/firemode/energy
+	var/e_cost = 100				//energy cost to fire
+	var/mode_icon_state				//usually the name.
+
+	//variables for /obj/item/ammo_casing/energy
+	var/projectile_type = /obj/item/projectile/energy		//type of projectile
+	var/casing_flags = NONE									//casing ammo_flags
+	var/casing_pellets = 1									//number of pellets
+	var/casing_variance = 0									//casing inherent spread
+	var/firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect
+
+	dualwield_volatility = 0.5
+
+/datum/firemode/energy/apply_to_casing(obj/item/ammu_csaing/C)
+	. = ..()
+	C.projectile_type = projectile_type
+	C.ammo_flags = casing_flags
+	C.pellets = casing_pellets
+	C.variance = casing_variance
+	C.firing_effect_type = firing_effect_type
+	if(istype(C.projectile))
+		qdel(C.projectile)
+	C.initialize_projectile()

@@ -22,9 +22,9 @@
 
 
 /obj/item/weapon/gun/energy/laser/mounted
-	self_recharge = 1
-	use_external_power = 1
-	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
+	self_recharge = TRUE
+	use_external_power = TRUE
+	one_handed_penalty = FALSE	// Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
 
 /obj/item/weapon/gun/energy/laser/practice
 	name = "practice laser carbine"

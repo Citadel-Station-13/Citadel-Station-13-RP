@@ -81,6 +81,8 @@
 	islist(firemodes)? ((firemode_index = firemodes.Find(M))) : ((firemode_index = null))
 	. = firemode
 	firemode.apply_to_gun(src)
+	if(chambered)
+		firemode.apply_to_casing(chambered)
 	update_icon()
 
 /obj/item/gun/proc/set_firemode_index(index)
@@ -219,7 +221,7 @@
 	add_fingerprint(user)
 	. = do_fire(target_or_angle, user, params, zone_override, current_dualwield_penalty, inherent_spread, requires_held = TRUE)
 	if(.)
-		user.change_next_move(firemode.next_move)
+		user.change_next_move(FIREMODE_OR_CHAMBERED(clickcd_override))
 		user.update_inv_hands()
 
 
@@ -260,7 +262,9 @@
 		else
 			var/divided = inherent_spread / final_burst_size
 			spread = ((((divided) * iteration) * 0.5 * (((-1) * ((iteration % 2) - 1)))) - (0.25 * (inherent_spread / final_burst_size)))
-		var/suppressed = is_suppressed(chambered.return_projectile(), chambered) || force_suppress
+		var/obj/item/projectile/P = chambered.return_projectile()
+		firemode.apply_to_projectile(P)
+		var/suppressed = is_suppressed(P, chambered) || force_suppress
 		if(!chambered.fire_casing(target_or_angle, user, params, null, suppressed, zone_override, spread))
 			postfire_empty(target_or_angle, user, point_blank)
 			firing_burst = FALSE

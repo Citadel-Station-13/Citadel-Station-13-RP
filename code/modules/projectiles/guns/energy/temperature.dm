@@ -6,9 +6,4 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_POWER = 3, TECH_MAGNET = 2)
 	slot_flags = SLOT_BELT|SLOT_BACK
 
-	projectile_type = /obj/item/projectile/temp
-
-	firemodes = list(
-		list(mode_name="endothermic beam", projectile_type = /obj/item/projectile/temp, charge_cost = 240),
-		list(mode_name="exothermic beam", projectile_type = /obj/item/projectile/temp/hot, charge_cost = 240),
-		)
+	firemodes = list(/datum/firemode/energy/tempgun/cold, /datum/firemode/energy/tempgun/hot)

@@ -18,8 +18,8 @@
 	var/ammo_flags = NONE
 	var/variance = 0												//variance intrinsic to the casing
 	var/pellets = 1													//pellets per fire
-	var/firing_effect_type											//firing effect when ammo is fired
-	var/clickcd_override											//if non null, will override user clickcd.
+
+	var/firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect		//firing effect when ammo is fired
 
 	//ANY OF THESE WILL BE ADDED TO FIREMODE'S VARIABLES DURING CALCULATION.
 	var/recoil
@@ -39,6 +39,7 @@
 	var/muzzle_flash_range
 	var/muzzle_flash_color
 	var/muzzle_flash_duration			//deciseconds
+	var/clickcd_override											//if non null, will override user clickcd.
 
 /obj/item/ammu_casing/proc/is_spent()
 	return istype(_projectile) || (_projectile == PROJECTILE_UNINITIALIZED)
