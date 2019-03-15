@@ -737,7 +737,7 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "phaser"
 	item_state = "phaser"
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi', "slot_belt" = 'icons/mob/belt_vr.dmi')
+	item_icons = list(slot_l_hand_str = 'icons/item_onmob/lefthand/guns_vr.dmi', slot_r_hand_str = 'icons/item_onmob/righthand/guns_vr.dmi', "slot_belt" = 'icons/mob/belt_vr.dmi')
 	fire_sound = 'sound/weapons/laser2.ogg'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
 	charge_cost = 300
@@ -820,7 +820,7 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "carbinekill"
 	item_state = "retro"
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi', slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi')
+	item_icons = list(slot_l_hand_str = 'icons/item_onmob/lefthand/guns.dmi', slot_r_hand_str = 'icons/item_onmob/righthand/guns.dmi')
 
 	modifystate = "carbinekill"
 	firemodes = list(

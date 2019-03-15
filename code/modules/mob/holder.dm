@@ -15,8 +15,8 @@ var/list/holder_mob_icon_cache = list()
 
 	origin_tech = null
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_holder.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/holder.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/holder.dmi',
 		)
 	pixel_y = 8
 	var/mob/living/held_mob

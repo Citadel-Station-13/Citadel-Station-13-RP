@@ -140,8 +140,8 @@
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "crossbow"
 	item_icons = list(
-		icon_l_hand = 'icons/mob/items/lefthand_guns.dmi',
-		icon_r_hand = 'icons/mob/items/righthand_guns.dmi',
+		icon_l_hand = 'icons/item_onmob/lefthand/guns.dmi',
+		icon_r_hand = 'icons/item_onmob/righthand/guns.dmi',
 		)
 	slot_flags = SLOT_HOLSTER
 	w_class = ITEMSIZE_SMALL
@@ -257,8 +257,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "sword0"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/melee.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/melee.dmi',
 		)
 	var/active = 0.0
 	w_class = ITEMSIZE_SMALL
@@ -292,8 +292,8 @@
 	icon_state = "katana"
 	item_state = "katana"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/material.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/material.dmi',
 		)
 	flags = CONDUCT
 	slot_flags = SLOT_BELT | SLOT_BACK
@@ -1174,8 +1174,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "cultblade"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/melee.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/melee.dmi',
 		)
 	w_class = ITEMSIZE_LARGE
 	attack_verb = list("attacked", "slashed", "stabbed", "poked")

@@ -448,8 +448,8 @@ proc/findNullRod(var/atom/target)
 	icon = 'icons/obj/spells.dmi'
 	icon_state = "generic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_spells.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_spells.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/spells.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/spells.dmi',
 		)
 	throwforce = 0
 	force = 0

@@ -34,8 +34,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "malformed flesh"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_uniforms.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_uniforms.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/uniforms.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/uniforms.dmi',
 			)
 	item_state = "lingchameleon"
 	worn_state = "lingchameleon"
@@ -82,8 +82,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "chitinous chest"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_suits.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_suits.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/suits.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/suits.dmi',
 			)
 	item_state = "armor"
 	desc = "The cells in our chest are rapidly shifting, ready to reform into material that can resemble most pieces of clothing."
@@ -107,8 +107,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "malformed feet"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_shoes.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_shoes.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/shoes.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/shoes.dmi',
 			)
 	item_state = "black"
 	desc = "Our feet are overlayed with another layer of flesh and bone on top.  We can reform our feet to resemble various boots and shoes."
@@ -132,8 +132,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "backpack"
 	icon_state = "backpack"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/storage.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/storage.dmi',
 			)
 	item_state = "backpack"
 	desc = "A large pouch imbedded in our back, it can shift form to resemble many common backpacks that other biologicals are fond of using."
@@ -159,8 +159,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "malformed hands"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/gloves.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/gloves.dmi',
 			)
 	item_state = "lingchameleon"
 	desc = "Our hands have a second layer of flesh on top.  We can reform our hands to resemble a large variety of fabrics and materials that biologicals \
@@ -185,8 +185,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "chitin visor"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/masks.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/masks.dmi',
 			)
 	item_state = "gas_alt"
 	desc = "A transparent visor of brittle chitin covers our face.  We can reform it to resemble various masks that biologicals use.  It can also utilize internal \
@@ -233,8 +233,8 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "We can store objects in this, as well as shift it's appearance, so that it resembles various common belts."
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/storage.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/storage.dmi',
 			)
 	item_state = "utility"
 	origin_tech = list()

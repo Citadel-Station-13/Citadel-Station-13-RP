@@ -6,8 +6,8 @@
 	icon_state = "resonator"
 	item_state = "resonator"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/vr.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/vr.dmi',
 		)
 	origin_tech =  list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	desc = "A handheld device that creates small fields of energy that resonate until they detonate, crushing rock. It can also be activated without a target to create a field at the user's location, to act as a delayed time trap. It's more effective in low temperature."

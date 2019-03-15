@@ -7,8 +7,8 @@
 	gauge_icon = null
 	w_class = ITEMSIZE_LARGE
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			slot_l_hand_str = 'icons/item_onmob/lefthand/storage.dmi',
+			slot_r_hand_str = 'icons/item_onmob/righthand/storage.dmi',
 			)
 	item_state_slots = list(slot_r_hand_str = "jetpack", slot_l_hand_str = "jetpack")
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD

@@ -5,8 +5,8 @@
 	desc = "It's a gun. It's pretty broken, though."
 	icon = 'icons/obj/gun.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/guns.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/guns.dmi',
 		)
 	icon_state = "detective"
 	item_state = "gun"

@@ -9,8 +9,8 @@
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+		slot_l_hand_str = 'icons/item_onmob/lefthand/storage.dmi',
+		slot_r_hand_str = 'icons/item_onmob/righthand/storage.dmi',
 		)
 	w_class = ITEMSIZE_NORMAL
 	show_messages = 1
