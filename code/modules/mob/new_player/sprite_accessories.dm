@@ -755,6 +755,15 @@
 		icon_state = "hair_supernova"
 		flags = HAIR_TIEABLE
 
+	keanu
+		name = "Keanu"
+		icon_state = "hair_keanu"
+		flags = HAIR_TIEABLE			//or any other flags you want, this isn't required.
+
+	hedgehog
+		name = "Hedgehog Hair"
+		icon_state = "hair_hedgehog"
+
 /*
 ///////////////////////////////////
 /  =---------------------------=  /
