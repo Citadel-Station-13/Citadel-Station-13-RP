@@ -3,19 +3,15 @@
 	desc = "The NT Mk30 NL is a small gun used for non-lethal takedowns. Produced by NT, it's actually a licensed version of a W-T design."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
-	projectile_type = /obj/item/projectile/beam/stun
-	charge_cost = 480
+	firemodes = list(/datum/firemode/energy/stun/taser)
 
 /obj/item/weapon/gun/energy/taser/mounted
 	name = "mounted taser gun"
-	self_recharge = 1
-	use_external_power = 1
+	self_recharge = TRUE
+	use_external_cell = ENERGY_GUN_EXTERNAL_CHARGE
 
 /obj/item/weapon/gun/energy/taser/mounted/cyborg
 	name = "taser gun"
-	charge_cost = 400
-	recharge_time = 7 //Time it takes for shots to recharge (in ticks)
-
 
 /obj/item/weapon/gun/energy/stunrevolver
 	name = "stun revolver"
@@ -23,9 +19,7 @@
 	icon_state = "stunrevolver"
 	item_state = "stunrevolver"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	projectile_type = /obj/item/projectile/energy/electrode/strong
-	charge_cost = 300
-
+	firemodes = list(/datum/firemode/energy/stun/stunrevolver)
 
 /obj/item/weapon/gun/energy/crossbow
 	name = "mini energy-crossbow"
