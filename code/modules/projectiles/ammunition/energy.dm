@@ -5,3 +5,4 @@
 	caliber = CALIBER_ENERGY
 	projectile_type = /obj/item/projectile/energy
 	ammo_flags = LIGHT_METAL
+	projectile = null					//gun will use charge to charge us.

@@ -14,19 +14,13 @@
 
 //Override these if you need special behaviour for a specific type.
 /atom/proc/get_description_info()
-	if(description_info)
-		return description_info
-	return
+	return description_info
 
 /atom/proc/get_description_fluff()
-	if(description_fluff)
-		return description_fluff
-	return
+	return description_fluff
 
 /atom/proc/get_description_antag()
-	if(description_antag)
-		return description_antag
-	return
+	return description_antag
 
 // This one is slightly different, in that it must return a list.
 /atom/proc/get_description_interaction()

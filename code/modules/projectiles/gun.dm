@@ -50,6 +50,9 @@
 	var/bayonet_x_offset = 0
 	var/bayonet_y_offset = 0
 
+	var/ammo_x_offset = 0 //used for positioning ammo count overlay on sprite
+	var/ammo_y_offset = 0
+
 /obj/item/gun/Initialize()
 	. = ..()
 	initialize_firemodes()
@@ -236,7 +239,7 @@
 	if(burst_size > 1)
 		for(var/i in 1 to (burst_size - 1))
 			addtimer(CALLBACK(src, .proc/process_shot, target_or_angle, user, params, zone_override, i + 1, current_dualwield_penalty, inherent_spread, requires_held, reflex, burst_size), burst_delay * (i))
-	. = process_shot(taret_or_angle, user, params, zone_override, 1, current_dualwield_penalty, inherent_spread, requires_held, reflex, 1)
+	. = process_shot(target_or_angle, user, params, zone_override, 1, current_dualwield_penalty, inherent_spread, requires_held, reflex, 1)
 	if(.)
 		last_fire_time = world.time
 		add_attack_logs(user, target_or_angle, "fired gun [src] ([reflex? "(REFLEX)" : ""])")
@@ -303,6 +306,7 @@
 
 
 
+
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
@@ -329,8 +333,6 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
-	var/ammo_x_offset = 0 //used for positioning ammo count overlay on sprite
-	var/ammo_y_offset = 0
 
 	//Zooming
 	var/zoomable = FALSE //whether the gun generates a Zoom action on creation

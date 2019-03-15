@@ -2,6 +2,7 @@
 	name = "energy gun"
 	desc = "A basic energy-based gun."
 	icon_state = "energy"
+	icon = 'icons/obj/item/guns/energy.dmi'
 
 	//PENDING STOCK PART CELL REFACTOR AND STUFF.
 	var/obj/item/weapon/cell/cell
@@ -18,18 +19,28 @@
 	var/use_external_cell = ENERGY_GUN_EXTERNAL_CHARGE
 	var/external_cell_min_percent = 20				//0-100
 	var/show_cell_charge = ENERGY_GUN_SHOW_SHOTS | ENERGY_GUN_SHOW_CHARGE
+	var/starts_dead_cell = FALSE
+
+	ammo_x_offset = 2
+	var/automatic_charge_overlays = TRUE
+	var/charge_sections = 4					//how many sections spritewise to divide gun charge to. 4 is 25, 50, 75, 100. empty = "empty"
+	var/shaded_charge = FALSE				//This gun uses predefined sectioned sprites rather than dynamic generation
+	var/old_ratio = 0						//old ammo ratio to see if it needs to update icon
 
 /obj/item/gun/energy/Initialize()
 	. = ..()
+	chambered = new /obj/item/ammu_casing/energy
 	if(ispath(cell_type))
 		cell = new cell_type
 	else
 		cell = new /obj/item/weapon/cell/device/weapon
 	if(self_recharge)
 		START_PROCESSING(SSobj, src)
-	if(!dead_cell)
+	if(!starts_dead_cell)
 		cell.give(cell.maxcharge)
-	recharge_newshot(TRUE)
+	else
+		cell.charge = 0
+	update_icon()
 
 /obj/item/gun/energy/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -39,10 +50,20 @@
 /obj/item/gun/energy/vv_edit_var(var_name, var_value)
 	. = ..()
 	if(. && (var_name == NAMEOF(src, self_recharge)))
-		self_recharge? START_PROCESSING(SSobj, src) : STOP_PROCESSING(SSobj, src)
+		if(self_recharge)
+			START_PROCESSING(SSobj, src)
+		else
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/gun/energy/get_cell()
 	return power_supply
+
+/obj/item/gun/energy/handle_atom_del(atom/A)
+	if(A == cell)
+		cell = null
+		chambered?.clear_projectile()
+		update_icon()
+	return ..()
 
 /obj/item/gun/energy/process()
 	if(!self_recharge)
@@ -59,23 +80,13 @@
 		cell.give(used)
 	else
 		cell.give(delay * recharge_amount)
-	process_chamber()
 	update_icon()
 	return ..()
-
-/obj/item/gun/energy/set_firemode()
-	. = ..()
-	if(.)
-		process_chamber()
-		recharge_newshot(TRUE)
-		update_icon(TRUE)
 
 /obj/item/gun/energy/emp_act(severity)
 	. = ..()
 	if(!(. & EMP_PROTECT_CONTENTS))
 		cell.use(round(cell.charge / severity))
-		clear_chamber(FALSE, FALSE)		//we empty the chamber
-		recharge_newshot() //and try to charge a new shot
 		update_icon()
 
 /obj/item/gun/energy/examine(mob/user)
@@ -89,15 +100,27 @@
 		to_chat(user, "It does not seem to have a power cell.")
 
 /obj/item/gun/energy/process_shot()
-	if(!chambered && can_shoot())
-		process_chamber()
+	charge_chamber()
 	return ..()
 
-/obj/item/gun/energy/process_chamber()
-	if(chambered && chambered.is_spent())
-		cell.use(firemode.e_cost)
-	clear_chamber(FALSE, FALSE)
-	recharge_newshot()
+/obj/item/gun/energy/can_shoot()
+	return !QDELETED(cell) ? (cell.charge >= firemode.e_cost) : FALSE
+
+//probably needs recoding at some point, but this ensures the chamber is charged with the right projectile type.
+/obj/item/gun/energy/proc/charge_chamber()
+	if(!chambered)
+		return
+	var/spent = chambered.is_spent()
+	chambered.clear_projectile()
+	if(!spent || drain_power(firemoode.e_cost))
+		chambered.initialize_projectile()
+
+/obj/item/gun/energy/proc/drain_power(amount)
+	var/obj/item/weapon/power_cell/C = (use_external_cell == ENERGY_GUN_EXTERNAL_DIRECT)? get_external_power_supply() : cell
+	if(!C || !C.check_charge(amount))
+		return FALSE
+	C.use(amount)
+	return TRUE
 
 /obj/item/gun/energy/attack_hand(mob/user as mob)
 	. = ..()
@@ -127,83 +150,111 @@
 		var/obj/item/I = loc
 		return I.get_cell()
 
+//both of these return the old cell if it's removed, and do NOT have sanity checks/checks for types!
+/obj/item/gun/energy/proc/insert_cell(obj/item/weapon/cell/C)
+	. = cell
+	if(.)
+		cell.forceMove(drop_location())
+	cell = C
+	C.forceMove(src)
+	process_chamber()
+	update_icon()
 
+/obj/item/gun/energy/proc/remove_cell()
+	chambered?.clear_projectile()			//just in case..
+	if(!cell)
+		return
+	cell.forceMove(drop_location())
+	. = cell
+	cell = null
 
-
-
-
-/obj/item/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
-	if(istype(C, /obj/item/weapon/cell))
-		if(self_recharge || battery_lock)
-			user << "<span class='notice'>[src] does not have a battery port.</span>"
-			return
-		if(istype(C, accept_cell_type))
-			var/obj/item/weapon/cell/P = C
-			if(power_supply)
-				user << "<span class='notice'>[src] already has a power cell.</span>"
-			else
-				user.visible_message("[user] is reloading [src].", "<span class='notice'>You start to insert [P] into [src].</span>")
-				if(do_after(user, 5 * P.w_class))
-					user.remove_from_mob(P)
-					power_supply = P
-					P.loc = src
-					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
-					playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-					update_icon()
-					update_held_icon()
-		else
-			user << "<span class='notice'>This cell is not fitted for [src].</span>"
-	return
+/obj/item/gun/energy/proc/load_ammo(obj/item/weapon/cell/C, mob/user)
+	if(!istype(C))
+		return
+	if(!removable_battery)
+		to_chat(user, "<span class='warning'>[src] doesn't have a battery port!</span>")
+		return
+	if(!istype(C, accept_cell_type))
+		to_chat(user, "<span class='warning'>[C] won't fit in [src]!</span>")
+		return
+	if(cell)
+		to_chat(user, "<span class='warning'>[src] already has a power cell!</span>")
+		return
+	if(!user)
+		return insert_cell(C)
+	else
+		user.visible_message("<span class='notice'>[user] starts to slot [C] into [src]...</span>")
+		if(do_after(user, 5 * P.w_class))			//NEEDS TO BE CHANGED TO A LOAD SPEED OR SOMETHING SYSTEM LATER!
+			user.remove_from_mob(C)
+			load_cell(C)
+			user.visible_message("[user] inserts [C] into [src].")
+			playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
+			process_chamber()
+			update_icon()
 
 /obj/item/gun/energy/proc/unload_ammo(mob/user)
-	if(self_recharge || battery_lock)
-		user << "<span class='notice'>[src] does not have a battery port.</span>"
+	if(!removable_battery)
+		to_chat(user, "<span class='warning'>[src] does not have a battery port.</span>")
 		return
-	if(power_supply)
-		user.put_in_hands(power_supply)
-		power_supply.update_icon()
-		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
-		power_supply = null
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
-		update_icon()
-		update_held_icon()
+	if(!cell)
+		to_chat(user, "<span class='warning'>[src] does not have a power cell.</span>")
+		return
+	. = remove_cell()
+	playsound(src, 'sound/weapons/empty.ogg', 50, 1)
+	update_icon()
+	if(!.)
+		return
+	if(user)
+		user.put_in_hands(.)
+		user.visible_message("[user] removes [.] from [src].")
+
+/obj/item/gun/energy/attackby(obj/item/I, mob/living/L)
+	. = ..()
+	load_ammo(I, L)
+
+/obj/item/gun/energy/update_icon(force_update)
+	if(QDELETED(src))
+		return
+	. = ..()
+	if(!automatic_charge_overlays)
+		return
+	var/ratio = CEILING(CLAMP(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1)
+	if(ratio == old_ratio && !force_update)
+		return
+	old_ratio = ratio
+	cut_overlays()
+	if(!cell)
+		add_overlay("[icon_state]_open")
+	var/iconState = "[icon_state]_charge"
+	var/itemState = initial(item_state) || icon_state
+	if(firemode.mode_icon_state)
+		add_overlay("[icon_state]_[firemode.mode_icon_state]")
+		iconState += "_[firemode.mode_icon_state]"
+		if(itemState)
+			itemState += "[firemode.mode_icon_state]"
+	if(cell.charge < firemode.e_cost)
+		add_overlay("[icon_state]_empty")
 	else
-		user << "<span class='notice'>[src] does not have a power cell.</span>"
-
-/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
-	..()
-	load_ammo(A, user)
-
-
-
-/obj/item/gun/energy/update_icon(var/ignore_inhands)
-	if(power_supply == null)
-		if(modifystate)
-			icon_state = "[modifystate]_open"
+		if(!shaded_charge)
+			var/mutable_appearance/charge_overlay = mutable_appearance(icon, iconState)
+			for(var/i = ratio, i >= 1, i--)
+				charge_overlay.pixel_x = ammo_x_offset * (i - 1)
+				charge_overlay.pixel_y = ammo_y_offset * (i - 1)
+				add_overlay(charge_overlay)
 		else
-			icon_state = "[initial(icon_state)]_open"
-		return
-	else if(charge_meter)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+			add_overlay("[icon_state]_charge[ratio]")
+	if(itemState)
+		itemState += "[ratio]"
+		item_state = itemState
+	update_held_icon()
 
-		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
-		if(power_supply.charge < charge_cost)
-			ratio = 0
-		else
-			ratio = max(round(ratio, 0.25) * 100, 25)
+///////////////////////
 
-		if(modifystate)
-			icon_state = "[modifystate][ratio]"
-		else
-			icon_state = "[initial(icon_state)][ratio]"
 
-	else if(power_supply)
-		if(modifystate)
-			icon_state = "[modifystate]"
-		else
-			icon_state = "[initial(icon_state)]"
 
-	if(!ignore_inhands) update_held_icon()
+
+
+
 
 /obj/item/gun/energy/get_description_interaction()
 	var/list/results = list()
@@ -225,112 +276,7 @@
 
 
 
-/obj/item/gun/energy
-	icon_state = "energy"
-	name = "energy gun"
-	desc = "A basic energy-based gun."
-	icon = 'icons/obj/guns/energy.dmi'
-
-	var/modifystate = 0
-	var/list/ammo_type = list(/obj/item/ammo_casing/energy)
-	var/can_charge = 1 //Can it be charged in a recharger?
-	var/automatic_charge_overlays = TRUE	//Do we handle overlays with base update_icon()?
-	var/charge_sections = 4
-	ammo_x_offset = 2
-	var/shaded_charge = FALSE //if this gun uses a stateful charge bar for more detail
-	var/old_ratio = 0 // stores the gun's previous ammo "ratio" to see if it needs an updated icon
-	var/dead_cell = FALSE //set to true so the gun is given an empty cell
-
-/obj/item/gun/energy/Initialize()
-	. = ..()
-	update_ammo_types()
-
-/obj/item/gun/energy/proc/update_ammo_types()
-	var/obj/item/ammo_casing/energy/shot
-	for (var/i = 1, i <= ammo_type.len, i++)
-		var/shottype = ammo_type[i]
-		shot = new shottype(src)
-		ammo_type[i] = shot
-	shot = ammo_type[select]
-	fire_sound = shot.fire_sound
-	fire_delay = shot.delay
-
-/obj/item/gun/energy/attack_self(mob/living/user as mob)
-	if(ammo_type.len > 1)
-		select_fire(user)
-		update_icon()
-
-/obj/item/gun/energy/can_shoot()
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	return !QDELETED(cell) ? (cell.charge >= shot.e_cost) : FALSE
-
-/obj/item/gun/energy/recharge_newshot(no_cyborg_drain)
-	if (!ammo_type || !cell)
-		return
-	if(use_cyborg_cell && !no_cyborg_drain)
-		if(iscyborg(loc))
-			var/mob/living/silicon/robot/R = loc
-			if(R.cell)
-				var/obj/item/ammo_casing/energy/shot = ammo_type[select] //Necessary to find cost of shot
-				if(R.cell.use(shot.e_cost)) 		//Take power from the borg...
-					cell.give(shot.e_cost)	//... to recharge the shot
-	if(!chambered)
-		var/obj/item/ammo_casing/energy/AC = ammo_type[select]
-		if(cell.charge >= AC.e_cost) //if there's enough power in the cell cell...
-			chambered = AC //...prepare a new shot based on the current ammo type selected
-			if(!chambered.BB)
-				chambered.newshot()
-
-
-/obj/item/gun/energy/proc/select_fire(mob/living/user)
-	select++
-	if (select > ammo_type.len)
-		select = 1
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	fire_sound = shot.fire_sound
-	fire_delay = shot.delay
-	if (shot.select_name)
-		to_chat(user, "<span class='notice'>[src] is now set to [shot.select_name].</span>")
-	chambered = null
-	recharge_newshot(TRUE)
-	update_icon(TRUE)
-
-/obj/item/gun/energy/update_icon(force_update)
-	if(QDELETED(src))
-		return
-	..()
-	if(!automatic_charge_overlays)
-		return
-	var/ratio = CEILING(CLAMP(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1)
-	if(ratio == old_ratio && !force_update)
-		return
-	old_ratio = ratio
-	cut_overlays()
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	var/iconState = "[icon_state]_charge"
-	var/itemState = null
-	if(!initial(item_state))
-		itemState = icon_state
-	if (modifystate)
-		add_overlay("[icon_state]_[shot.select_name]")
-		iconState += "_[shot.select_name]"
-		if(itemState)
-			itemState += "[shot.select_name]"
-	if(cell.charge < shot.e_cost)
-		add_overlay("[icon_state]_empty")
-	else
-		if(!shaded_charge)
-			var/mutable_appearance/charge_overlay = mutable_appearance(icon, iconState)
-			for(var/i = ratio, i >= 1, i--)
-				charge_overlay.pixel_x = ammo_x_offset * (i - 1)
-				charge_overlay.pixel_y = ammo_y_offset * (i - 1)
-				add_overlay(charge_overlay)
-		else
-			add_overlay("[icon_state]_charge[ratio]")
-	if(itemState)
-		itemState += "[ratio]"
-		item_state = itemState
-
+/*
 /obj/item/gun/energy/suicide_act(mob/living/user)
 	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
 		user.visible_message("<span class='suicide'>[user] is putting the barrel of [src] in [user.p_their()] mouth.  It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -349,9 +295,10 @@
 		user.visible_message("<span class='suicide'>[user] is pretending to melt [user.p_their()] face off with [src]! It looks like [user.p_theyre()] trying to commit suicide!</b></span>")
 		playsound(src, dry_fire_sound, 30, TRUE)
 		return (OXYLOSS)
+*/
 
 
-
+/*
 /obj/item/gun/energy/ignition_effect(atom/A, mob/living/user)
 	if(!can_shoot() || !ammo_type[select])
 		shoot_with_empty_chamber()
@@ -379,3 +326,5 @@
 			playsound(user, BB.hitsound, 50, 1)
 			cell.use(E.e_cost)
 			. = "<span class='danger'>[user] casually lights their [A.name] with [src]. Damn.</span>"
+*/
+

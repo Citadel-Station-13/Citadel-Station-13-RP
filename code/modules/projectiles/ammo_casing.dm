@@ -56,6 +56,18 @@
 	pixel_y = rand(-10, 10)
 	update_icon()
 
+/obj/item/ammu_casing/handle_atom_del(atom/movable/A)
+	. = ..()
+	if(A == projectile)
+		projectile = null
+
+/obj/item/ammu_casing/proc/clear_projectile()
+	if(projectile)
+		if(istype(projectile))
+			qdel(projectile)
+		else
+			projectile = null
+
 /obj/item/ammu_casing/proc/expend_projectile()		//both return and expend
 	. = return_projectile()
 	if(.)
