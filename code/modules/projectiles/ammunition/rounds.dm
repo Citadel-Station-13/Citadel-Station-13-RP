@@ -102,6 +102,11 @@
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/rubber
 
+/obj/item/ammo_casing/a9mm/pepperball
+	desc = "A 9mm pepperball casing."
+	icon_state = "r-casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/pepperball
+
 /obj/item/ammo_casing/a9mm/practice
 	desc = "A 9mm practice bullet casing."
 	icon_state = "r-casing"
@@ -138,6 +143,12 @@
 	desc = "A .45 flash shell casing."
 	icon_state = "r-casing"
 	projectile_type = /obj/item/projectile/energy/flash
+	matter = list(DEFAULT_WALL_MATERIAL = 60)
+
+/obj/item/ammo_casing/a45/pepperball
+	desc = "A .45 pepperball shell casing."
+	icon_state = "r-casing"
+	projectile_type = /obj/item/projectile/bullet/pistol/pepperball
 	matter = list(DEFAULT_WALL_MATERIAL = 60)
 
 /obj/item/ammo_casing/a45/emp
