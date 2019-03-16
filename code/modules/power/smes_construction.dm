@@ -81,6 +81,10 @@
 	charge = 0
 	should_be_mapped = 1
 
+/obj/machinery/power/smes/buildable/main
+	cur_coils = 4
+	RCon_tag = "Power - Main"
+
 /obj/machinery/power/smes/buildable/Destroy()
 	qdel(wires)
 	wires = null
