@@ -114,7 +114,7 @@
 /datum/reagent/ethanol/rum
 	price_tag = 5
 
-/datum/reagent/ethanol/tequilla
+/datum/reagent/ethanol/tequila
 	price_tag = 5
 
 /datum/reagent/ethanol/thirteenloko
@@ -300,7 +300,7 @@
 /datum/reagent/ethanol/syndicatebomb
 	price_tag = 4
 
-/datum/reagent/ethanol/tequillasunrise
+/datum/reagent/ethanol/tequilasunrise
 	price_tag = 4
 
 /datum/reagent/ethanol/threemileisland
@@ -462,7 +462,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/rum
 	price_tag = 15
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila
 	price_tag = 15
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka

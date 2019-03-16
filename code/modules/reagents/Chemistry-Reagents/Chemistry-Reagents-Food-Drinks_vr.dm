@@ -6,7 +6,7 @@
 	M.overeatduration = 0
 	if(M.nutrition < 0)
 		M.nutrition = 0
-		
+
 /datum/reagent/ethanol/deathbell
 	name = "Deathbell"
 	id = "deathbell"
@@ -20,7 +20,7 @@
 
 	glass_name = "Deathbell"
 	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
-	
+
 /datum/reagent/ethanol/deathbell/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 

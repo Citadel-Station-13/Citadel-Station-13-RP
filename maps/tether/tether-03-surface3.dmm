@@ -408,7 +408,7 @@
 /area/tether/surfacebase/medical/triage)
 "aV" = (
 /obj/structure/closet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site2)
