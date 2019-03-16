@@ -86,7 +86,7 @@
 
 /obj/item/ammo_magazine/m45/pepperball
 	name = "magazine (.45 pepperball)"
-	ammo_type = /obj/item/ammo_casing/a45/flash
+	ammo_type = /obj/item/ammo_casing/a45/pepperball
 
 /obj/item/ammo_magazine/m45/ap
 	name = "magazine (.45 AP)"
