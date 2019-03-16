@@ -442,6 +442,7 @@
 	name = "Construction Hound module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
+					"V2 Engidog" = "thottbot"
 					)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
