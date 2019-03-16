@@ -366,10 +366,11 @@
 			return
 	else if(eyes_covered)
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperball!</span>")
+		to_chat(M, "<span class='warning'>Oh god, it burns!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
 		M.Blind(effective_strength)
-		M.Stun(5)
 		M.Weaken(5)
+		M.apply_effect(3 * effective_strength, AGONY, 0)
 		if(alien != IS_SLIME)
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
@@ -379,10 +380,11 @@
 			return
 	else// Oh dear :D
 		to_chat(M, "<span class='warning'>Your eyes are affected by the pepperball!</span>")
+		to_chat(M, "<span class='warning'>Oh god, it burns!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
 		M.Blind(effective_strength * 2)
-		M.Stun(5)
 		M.Weaken(5)
+		M.apply_effect(5 * effective_strength, AGONY, 0)
 		if(alien != IS_SLIME)
 			return
 	if(alien == IS_SLIME)
