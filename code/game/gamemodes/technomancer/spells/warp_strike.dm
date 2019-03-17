@@ -57,7 +57,7 @@
 		var/obj/item/I = user.get_inactive_hand()
 		// List of items we don't want used, for balance reasons or to avoid infinite loops.
 		var/list/blacklisted_items = list(
-			/obj/item/weapon/gun,
+			/obj/item/gun,
 			/obj/item/weapon/spell/warp_strike,
 			/obj/item/weapon/spell/targeting_matrix
 			)

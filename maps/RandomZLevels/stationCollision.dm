@@ -60,7 +60,7 @@
  * Guns - I'm making these specifically so that I dont spawn a pile of fully loaded weapons on the map.
  */
 //Captain's retro laser - Fires practice laser shots instead.
-obj/item/weapon/gun/energy/laser/retro/sc_retro
+obj/item/gun/energy/laser/retro/sc_retro
 	name ="retro laser"
 	icon_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by NanoTrasen's security or military forces."
@@ -68,32 +68,32 @@ obj/item/weapon/gun/energy/laser/retro/sc_retro
 	clumsy_check = 0 //No sense in having a harmless gun blow up in the clowns face
 
 //Syndicate silenced pistol. This definition is not necessary, it's just habit.
-/obj/item/weapon/gun/projectile/silenced/sc_silenced
+/obj/item/gun/projectile/silenced/sc_silenced
 
 //Make it so that these guns only spawn with a couple bullets... if any
-/obj/item/weapon/gun/projectile/silenced/sc_silenced/New()
+/obj/item/gun/projectile/silenced/sc_silenced/New()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Syndicate sub-machine guns.
-/obj/item/weapon/gun/projectile/automatic/c20r/sc_c20r
+/obj/item/gun/projectile/automatic/c20r/sc_c20r
 
-/obj/item/weapon/gun/projectile/automatic/c20r/sc_c20r/New()
+/obj/item/gun/projectile/automatic/c20r/sc_c20r/New()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Barman's shotgun
-/obj/item/weapon/gun/projectile/shotgun/pump/sc_pump
+/obj/item/gun/projectile/shotgun/pump/sc_pump
 
-/obj/item/weapon/gun/projectile/shotgun/pump/sc_pump/New()
+/obj/item/gun/projectile/shotgun/pump/sc_pump/New()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Lasers
-/obj/item/weapon/gun/energy/laser/practice/sc_laser
+/obj/item/gun/energy/laser/practice/sc_laser
 	name = "Old laser"
 	desc = "A once potent weapon, years of dust have collected in the chamber and lens of this weapon, weakening the beam significantly."
 	clumsy_check = 0
@@ -156,7 +156,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 	..()
 	l_code = "[sc_safecode1][sc_safecode2][sc_safecode3][sc_safecode4][sc_safecode5]"
 	l_set = 1
-	new /obj/item/weapon/gun/energy/mindflayer(src)
+	new /obj/item/gun/energy/mindflayer(src)
 	new /obj/item/device/soulstone(src)
 	new /obj/item/clothing/head/helmet/space/cult(src)
 	new /obj/item/clothing/suit/space/cult(src)

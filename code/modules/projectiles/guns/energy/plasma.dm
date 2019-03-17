@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/plasmastun
+/obj/item/gun/energy/plasmastun
 	name = "plasma pulse projector"
 	desc = "The Mars Military Industries MA21 Selkie is a weapon that uses a laser pulse to ionise the local atmosphere, creating a disorienting pulse of plasma and deafening shockwave as the wave expands."
 	icon_state = "plasma_stun"

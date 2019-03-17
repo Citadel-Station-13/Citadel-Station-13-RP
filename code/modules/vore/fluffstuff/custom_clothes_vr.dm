@@ -222,8 +222,8 @@ END OF CITADEL CHANGES */
 	allowed = list(
 				/obj/item/weapon/tank/emergency/oxygen,
 				/obj/item/device/flashlight,
-				/obj/item/weapon/gun/energy,
-				/obj/item/weapon/gun/projectile,
+				/obj/item/gun/energy,
+				/obj/item/gun/projectile,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
 //				/obj/item/weapon/storage/fancy/shotgun_ammo,
@@ -292,8 +292,8 @@ END OF CITADEL CHANGES */
 	allowed = list(
 				/obj/item/weapon/tank/emergency/oxygen,
 				/obj/item/device/flashlight,
-				/obj/item/weapon/gun/energy,
-				/obj/item/weapon/gun/projectile,
+				/obj/item/gun/energy,
+				/obj/item/gun/projectile,
 				/obj/item/ammo_magazine,
 				/obj/item/ammo_casing,
 //				/obj/item/weapon/storage/fancy/shotgun_ammo,
@@ -505,7 +505,7 @@ END OF CITADEL CHANGE */
 /obj/item/clothing/suit/storage/det_suit/fluff/tas_coat
 	name = "Armored Colony coat"
 	desc = "Dark green and grey colored sleeveless long coat with two thick metal shoulder pads. has seen some wear and tear, with noticeable patches in the fabric, scratches on the shoulder pads, but with a clean patch on the left upper chest. It has a red NT marked on the right shoulder pad and red Security on the left. "
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "tasaldcoat"
@@ -863,7 +863,7 @@ END OF CITADEL CHANGE */
 
 	armor = list(melee = 50, bullet = 40, laser = 45, energy = 25, bomb = 50, bio = 100, rad = 50) //These values were taken from the combat rigs and adjusted to be weaker than said rigs.
 	slowdown = 0
-	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/melee/baton)
+	allowed = list(/obj/item/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/melee/baton)
 	w_class = ITEMSIZE_NORMAL
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
@@ -987,7 +987,7 @@ END OF CITADEL CHANGES */
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "octavgentlecoat_mob"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder,/obj/item/device/uv_light)
+	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder,/obj/item/device/uv_light)
 
 //bwoincognito:Octavious Ward
 /obj/item/clothing/under/det/fluff/octavious

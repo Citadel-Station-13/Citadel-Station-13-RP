@@ -46,7 +46,7 @@
 /datum/supply_pack/munitions/bolt_rifles_militia
  	name = "Weapon - Surplus militia rifles"
  	contains = list(
- 			/obj/item/weapon/gun/projectile/shotgun/pump/rifle = 3,
+ 			/obj/item/gun/projectile/shotgun/pump/rifle = 3,
  			/obj/item/ammo_magazine/clip/c762 = 6
  			)
  	cost = 50
@@ -59,7 +59,7 @@
 	num_contained = 1
 	contains = list(
 			list( //the operator,
-					/obj/item/weapon/gun/projectile/shotgun/pump/combat,
+					/obj/item/gun/projectile/shotgun/pump/combat,
 					/obj/item/clothing/suit/storage/vest/heavy/merc,
 					/obj/item/clothing/glasses/night,
 					/obj/item/weapon/storage/box/anti_photons,
@@ -68,7 +68,7 @@
 					),
 			list( //the doc,
 					/obj/item/weapon/storage/firstaid/combat,
-					/obj/item/weapon/gun/projectile/dartgun,
+					/obj/item/gun/projectile/dartgun,
 					/obj/item/weapon/reagent_containers/hypospray,
 					/obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate,
 					/obj/item/weapon/reagent_containers/glass/bottle/cyanide,
@@ -83,7 +83,7 @@
 					/obj/item/weapon/storage/toolbox/syndicate/powertools
 					),
 			list( //the infiltrator,
-					/obj/item/weapon/gun/projectile/silenced,
+					/obj/item/gun/projectile/silenced,
 					/obj/item/device/chameleon,
 					/obj/item/weapon/storage/box/syndie_kit/chameleon,
 					/obj/item/device/encryptionkey/syndicate,
@@ -91,8 +91,8 @@
 					/obj/item/clothing/mask/gas/voice
 					),
 			list( //the professional,
-					/obj/item/weapon/gun/projectile/silenced,
-					/obj/item/weapon/gun/energy/ionrifle/pistol,
+					/obj/item/gun/projectile/silenced,
+					/obj/item/gun/energy/ionrifle/pistol,
 					/obj/item/clothing/glasses/thermal/syndi,
 					/obj/item/weapon/card/emag,
 					/obj/item/ammo_magazine/m45/ap,

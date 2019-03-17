@@ -156,12 +156,12 @@
 /area/security/armory/red)
 "as" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/projectile/shotgun/pump{
+/obj/item/gun/projectile/shotgun/pump{
 	ammo_type = /obj/item/ammo_casing/a12g/pellet;
 	pixel_x = 2;
 	pixel_y = -6
 	},
-/obj/item/weapon/gun/projectile/shotgun/pump{
+/obj/item/gun/projectile/shotgun/pump{
 	ammo_type = /obj/item/ammo_casing/a12g/pellet;
 	pixel_x = 1;
 	pixel_y = 4
@@ -170,11 +170,11 @@
 /area/security/armory/red)
 "at" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/energy/laser{
+/obj/item/gun/energy/laser{
 	pixel_x = -1;
 	pixel_y = -11
 	},
-/obj/item/weapon/gun/energy/laser{
+/obj/item/gun/energy/laser{
 	pixel_x = -1;
 	pixel_y = 2
 	},
@@ -203,7 +203,7 @@
 /area/security/armory/red)
 "aw" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /obj/machinery/camera/network/security{
 	c_tag = "SEC - Red Armory East";
 	dir = 9
@@ -370,19 +370,19 @@
 	dir = 1
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/energy/gun{
+/obj/item/gun/energy/gun{
 	pixel_y = 7
 	},
-/obj/item/weapon/gun/energy/gun{
+/obj/item/gun/energy/gun{
 	pixel_y = 7
 	},
-/obj/item/weapon/gun/energy/gun{
+/obj/item/gun/energy/gun{
 	pixel_y = 7
 	},
-/obj/item/weapon/gun/energy/gun{
+/obj/item/gun/energy/gun{
 	pixel_y = 7
 	},
-/obj/item/weapon/gun/energy/gun{
+/obj/item/gun/energy/gun{
 	pixel_y = -5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -424,7 +424,7 @@
 	dir = 5
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle/pistol,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "aO" = (
@@ -2369,7 +2369,7 @@
 	},
 /obj/structure/closet/secure_closet/warden,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat{
+/obj/item/gun/projectile/shotgun/pump/combat{
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
 	desc = "Built for close quarters combat, the Hesphaistos Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. This one has 'Property of the Warden' inscribed on the stock.";
 	name = "warden's shotgun"
@@ -3883,7 +3883,7 @@
 "gP" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/weapon/reagent_containers/spray/pepper,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "gQ" = (
@@ -6672,7 +6672,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6689,7 +6689,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/weapon/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
@@ -6698,7 +6698,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/weapon/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "ly" = (
@@ -13589,7 +13589,7 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/weapon/gun/projectile/revolver/consul,
+/obj/item/gun/projectile/revolver/consul,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /turf/simulated/floor/tiled/dark,

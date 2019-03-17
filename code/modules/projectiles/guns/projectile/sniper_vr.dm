@@ -1,6 +1,6 @@
 ////////////// Dragunov Sniper Rifle //////////////
 
-/obj/item/weapon/gun/projectile/SVD
+/obj/item/gun/projectile/SVD
 	name = "\improper Dragunov"
 	desc = "The SVD, also known as the Dragunov, was mass produced with an Optical Sniper Sight so simple that even Ivan can figure out how it works. Too bad for you that it's written in Russian. Uses 7.62mm rounds."
 	icon_state = "SVD"
@@ -19,7 +19,7 @@
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)
 
-/obj/item/weapon/gun/projectile/SVD/update_icon()
+/obj/item/gun/projectile/SVD/update_icon()
 	..()
 //	if(istype(ammo_magazine,/obj/item/ammo_magazine/m762)
 //		icon_state = "SVD-bigmag" //No icon for this exists yet.
@@ -28,7 +28,7 @@
 	else
 		icon_state = "SVD-empty"
 
-/obj/item/weapon/gun/projectile/SVD/verb/scope()
+/obj/item/gun/projectile/SVD/verb/scope()
 	set category = "Object"
 	set name = "Use Scope"
 	set popup_menu = 1

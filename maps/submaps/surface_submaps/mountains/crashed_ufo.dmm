@@ -62,7 +62,7 @@
 "bj" = (/obj/machinery/porta_turret/alien/destroyed{ icon_state = "destroyed_target_prism"; dir = 6},/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
 "bk" = (/obj/item/weapon/cell/device/weapon/empty,/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
 "bl" = (/obj/machinery/porta_turret/alien/destroyed{ icon_state = "destroyed_target_prism"; dir = 10},/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
-"bm" = (/obj/item/weapon/gun/energy/retro/empty,/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
+"bm" = (/obj/item/gun/energy/retro/empty,/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
 "bn" = (/obj/item/device/gps{gps_tag = "COMDOM1"},/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
 "bo" = (/obj/item/weapon/reagent_containers/hypospray/autoinjector/used,/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)
 "bp" = (/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/burn,/turf/simulated/shuttle/floor/alienplating,/area/submap/cave/crashed_ufo)

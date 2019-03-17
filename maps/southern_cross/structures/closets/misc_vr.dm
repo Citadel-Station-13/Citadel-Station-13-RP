@@ -37,7 +37,7 @@
 		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
 		/obj/item/weapon/storage/belt/medical/emt,
 		/obj/item/weapon/material/knife/tacknife/survival,
-		/obj/item/weapon/gun/energy/frontier/locked/holdout,
+		/obj/item/gun/energy/frontier/locked/holdout,
 		/obj/item/clothing/mask/gas/explorer,
 		/obj/item/clothing/suit/storage/hooded/explorer/medic,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
@@ -64,7 +64,7 @@
 	starts_with = list(
 		/obj/item/weapon/storage/backpack/parachute,
 		/obj/item/weapon/material/knife/tacknife/survival,
-		/obj/item/weapon/gun/energy/frontier/locked/holdout,
+		/obj/item/gun/energy/frontier/locked/holdout,
 		/obj/item/clothing/head/pilot,
 		/obj/item/clothing/under/rank/pilot1,
 		/obj/item/clothing/suit/storage/toggle/bomber/pilot,
@@ -109,7 +109,7 @@
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/weapon/material/knife/tacknife/survival,
 		/obj/item/weapon/material/knife/machete/deluxe,
-		/obj/item/weapon/gun/energy/frontier/locked/carbine,
+		/obj/item/gun/energy/frontier/locked/carbine,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 2)
 

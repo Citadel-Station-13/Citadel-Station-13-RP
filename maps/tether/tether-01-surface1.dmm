@@ -17131,7 +17131,7 @@
 /area/rnd/xenobiology)
 "aGi" = (
 /obj/structure/table/standard,
-/obj/item/weapon/gun/energy/taser/xeno,
+/obj/item/gun/energy/taser/xeno,
 /obj/item/device/multitool,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -24720,7 +24720,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/gun/energy/taser/xeno,
+/obj/item/gun/energy/taser/xeno,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},

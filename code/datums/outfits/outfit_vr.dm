@@ -8,7 +8,7 @@
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
 	r_hand = /obj/item/ammo_magazine/m95
-	back = /obj/item/weapon/gun/projectile/automatic/battlerifle
+	back = /obj/item/gun/projectile/automatic/battlerifle
 	backpack_contents = list(/obj/item/weapon/storage/box = 1)
 	hierarchy_type = /decl/hierarchy/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/USDF
@@ -32,7 +32,7 @@
 	l_ear = /obj/item/device/radio/headset/centcom
 	uniform = /obj/item/clothing/under/mildress/marine/command
 	back = /obj/item/weapon/storage/backpack/satchel
-	belt = /obj/item/weapon/gun/projectile/revolver/consul
+	belt = /obj/item/gun/projectile/revolver/consul
 	l_pocket = /obj/item/ammo_magazine/s44
 	r_pocket = /obj/item/ammo_magazine/s44
 	r_hand = /obj/item/clothing/accessory/holster/hip
@@ -84,7 +84,7 @@
 	r_pocket = /obj/item/weapon/cell/device/weapon
 	r_hand = /obj/item/weapon/melee/energy/sword/imperial
 	l_hand = /obj/item/weapon/shield/energy/imperial
-	suit_store = /obj/item/weapon/gun/energy/imperial
+	suit_store = /obj/item/gun/energy/imperial
 
 /decl/hierarchy/outfit/imperial/officer
 	name = "Imperial officer"
@@ -100,4 +100,4 @@
 	r_pocket = /obj/item/weapon/cell/device/weapon
 	r_hand = /obj/item/weapon/melee/energy/sword/imperial
 	l_hand = /obj/item/weapon/shield/energy/imperial
-	suit_store = /obj/item/weapon/gun/energy/imperial
+	suit_store = /obj/item/gun/energy/imperial

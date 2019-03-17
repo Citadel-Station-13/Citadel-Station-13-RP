@@ -125,8 +125,8 @@
 /obj/item/ammo_magazine/m545/ap,
 /obj/item/ammo_magazine/m545/ap,
 /obj/item/ammo_magazine/m545/ap,
-/obj/item/weapon/gun/projectile/automatic/sts35,
-/obj/item/weapon/gun/projectile/automatic/sts35,
+/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/projectile/automatic/sts35,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -170,7 +170,7 @@
 	dir = 6
 	},
 /obj/item/weapon/storage/box/sniperammo,
-/obj/item/weapon/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -183,8 +183,8 @@
 	},
 /obj/item/weapon/storage/box/shotgunshells/large,
 /obj/item/weapon/storage/box/shotgunammo/large,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -201,7 +201,7 @@
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
-/obj/item/weapon/gun/projectile/revolver/consul,
+/obj/item/gun/projectile/revolver/consul,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -212,8 +212,8 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
-/obj/item/weapon/gun/energy/lasercannon,
-/obj/item/weapon/gun/energy/lasercannon,
+/obj/item/gun/energy/lasercannon,
+/obj/item/gun/energy/lasercannon,
 /obj/item/weapon/cell/device/weapon,
 /obj/item/weapon/cell/device/weapon,
 /obj/item/weapon/cell/device/weapon,
@@ -236,8 +236,8 @@
 /obj/item/ammo_magazine/m9mm,
 /obj/item/ammo_magazine/m9mm,
 /obj/item/ammo_magazine/m9mm,
-/obj/item/weapon/gun/projectile/luger,
-/obj/item/weapon/gun/projectile/luger/brown,
+/obj/item/gun/projectile/luger,
+/obj/item/gun/projectile/luger/brown,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -2575,7 +2575,7 @@
 /obj/item/ammo_magazine/m380,
 /obj/item/ammo_magazine/m380,
 /obj/item/ammo_magazine/m380,
-/obj/item/weapon/gun/projectile/giskard,
+/obj/item/gun/projectile/giskard,
 /obj/item/clothing/accessory/holster,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -6084,7 +6084,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -6463,7 +6463,7 @@
 	dir = 5
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/gun/launcher/rocket,
+/obj/item/gun/launcher/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
@@ -6482,8 +6482,8 @@
 	})
 "pg" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/plasmastun,
-/obj/item/weapon/gun/energy/plasmastun,
+/obj/item/gun/energy/plasmastun,
+/obj/item/gun/energy/plasmastun,
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
@@ -6494,8 +6494,8 @@
 /area/antag/antag_base)
 "ph" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/darkmatter,
-/obj/item/weapon/gun/energy/darkmatter,
+/obj/item/gun/energy/darkmatter,
+/obj/item/gun/energy/darkmatter,
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
@@ -6543,8 +6543,8 @@
 /area/antag/antag_base)
 "pm" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/xray,
-/obj/item/weapon/gun/energy/xray,
+/obj/item/gun/energy/xray,
+/obj/item/gun/energy/xray,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -6650,8 +6650,8 @@
 /area/syndicate_station/start)
 "pu" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/sniperrifle,
-/obj/item/weapon/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
@@ -6913,11 +6913,11 @@
 /area/antag/antag_base)
 "pU" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/sizegun,
-/obj/item/weapon/gun/energy/sizegun,
-/obj/item/weapon/gun/energy/sizegun,
-/obj/item/weapon/gun/energy/sizegun,
-/obj/item/weapon/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
@@ -7122,12 +7122,12 @@
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
-/obj/item/weapon/gun/projectile/automatic/c20r,
-/obj/item/weapon/gun/projectile/automatic/c20r,
-/obj/item/weapon/gun/projectile/automatic/c20r,
-/obj/item/weapon/gun/projectile/automatic/c20r,
-/obj/item/weapon/gun/projectile/automatic/c20r,
-/obj/item/weapon/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
+/obj/item/gun/projectile/automatic/c20r,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -7141,13 +7141,13 @@
 /area/antag/antag_base)
 "qm" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/silenced,
-/obj/item/weapon/gun/projectile/silenced,
-/obj/item/weapon/gun/projectile/silenced,
-/obj/item/weapon/gun/projectile/silenced,
-/obj/item/weapon/gun/projectile/silenced,
-/obj/item/weapon/gun/projectile/silenced,
-/obj/item/weapon/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
+/obj/item/gun/projectile/silenced,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -7323,10 +7323,10 @@
 /area/antag/antag_base)
 "qz" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
@@ -7462,12 +7462,12 @@
 /area/antag/antag_base)
 "qM" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 6
 	},
@@ -7481,10 +7481,10 @@
 /area/antag/antag_base)
 "qN" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/ionrifle/pistol,
-/obj/item/weapon/gun/energy/ionrifle/pistol,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 6
 	},
@@ -7588,8 +7588,8 @@
 /area/antag/antag_base)
 "qY" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/netgun,
-/obj/item/weapon/gun/energy/netgun,
+/obj/item/gun/energy/netgun,
+/obj/item/gun/energy/netgun,
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
@@ -7603,17 +7603,17 @@
 /area/antag/antag_base)
 "qZ" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
 	},
@@ -9197,8 +9197,8 @@
 	},
 /area/antag/antag_base)
 "tu" = (
-/obj/item/weapon/gun/energy/sizegun,
-/obj/item/weapon/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -9273,8 +9273,8 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/weapon/cell/device/weapon,
 /obj/item/weapon/cell/device/weapon,
 /obj/structure/table/steel,

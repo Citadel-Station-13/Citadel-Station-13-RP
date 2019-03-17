@@ -518,11 +518,11 @@ var/global/list/robot_modules = list(
 	..()
 	src.modules += new /obj/item/weapon/handcuffs/cyborg(src)
 	src.modules += new /obj/item/weapon/melee/baton/robot(src)
-	src.modules += new /obj/item/weapon/gun/energy/taser/mounted/cyborg(src)
-	src.modules += new /obj/item/weapon/gun/energy/taser/xeno/sec/robot(src)
+	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src)
+	src.modules += new /obj/item/gun/energy/taser/xeno/sec/robot(src)
 	src.modules += new /obj/item/taperoll/police(src)
 	src.modules += new /obj/item/weapon/reagent_containers/spray/pepper(src)
-	src.emag = new /obj/item/weapon/gun/energy/laser/mounted(src)
+	src.emag = new /obj/item/gun/energy/laser/mounted(src)
 
 /obj/item/weapon/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/device/flash/F = locate() in src.modules
@@ -532,7 +532,7 @@ var/global/list/robot_modules = list(
 		F.icon_state = "flash"
 	else if(F.times_used)
 		F.times_used--
-	var/obj/item/weapon/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
+	var/obj/item/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
 	if(T.power_supply.charge < T.power_supply.maxcharge)
 		T.power_supply.give(T.charge_cost * amount)
 		T.update_icon()
@@ -750,7 +750,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/storage/part_replacer(src)
 	src.modules += new /obj/item/weapon/shockpaddles/robot/jumper(src)
 	src.modules += new /obj/item/weapon/melee/baton/slime/robot(src)
-	src.modules += new /obj/item/weapon/gun/energy/taser/xeno/robot(src)
+	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
 	src.emag = new /obj/item/weapon/hand_tele(src)
 
 	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
@@ -793,11 +793,11 @@ var/global/list/robot_modules = list(
 	..()
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/borg/sight/thermal(src)
-	src.modules += new /obj/item/weapon/gun/energy/laser/mounted(src)
+	src.modules += new /obj/item/gun/energy/laser/mounted(src)
 	src.modules += new /obj/item/weapon/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/borg/combat/shield(src)
 	src.modules += new /obj/item/borg/combat/mobility(src)
-	src.emag = new /obj/item/weapon/gun/energy/lasercannon/mounted(src)
+	src.emag = new /obj/item/gun/energy/lasercannon/mounted(src)
 
 
 /* Drones */

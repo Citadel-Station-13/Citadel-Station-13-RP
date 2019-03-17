@@ -57,7 +57,7 @@
 "bf" = (/obj/structure/bed/chair/office/dark{dir = 8},/obj/effect/decal/remains/human,/turf/simulated/mineral/floor/ignore_mapgen,/area/submap/crashedcontainmentshuttle)
 "bg" = (/obj/effect/gibspawner/generic,/turf/template_noop,/area/submap/crashedcontainmentshuttle)
 "bh" = (/obj/effect/decal/remains/human,/turf/simulated/shuttle/floor/yellow,/area/submap/crashedcontainmentshuttle)
-"bi" = (/obj/item/weapon/circuitboard/broken,/obj/effect/decal/remains/human,/obj/item/weapon/gun/energy/laser,/turf/simulated/shuttle/floor/black,/area/submap/crashedcontainmentshuttle)
+"bi" = (/obj/item/weapon/circuitboard/broken,/obj/effect/decal/remains/human,/obj/item/gun/energy/laser,/turf/simulated/shuttle/floor/black,/area/submap/crashedcontainmentshuttle)
 "bj" = (/obj/item/device/gps/internal/poi,/turf/simulated/shuttle/floor/red,/area/submap/crashedcontainmentshuttle)
 "bk" = (/obj/effect/decal/cleanable/vomit,/turf/simulated/shuttle/floor/black,/area/submap/crashedcontainmentshuttle)
 "bl" = (/obj/effect/decal/remains/robot,/turf/simulated/shuttle/floor/red,/area/submap/crashedcontainmentshuttle)

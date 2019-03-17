@@ -51,7 +51,7 @@
 
 
 // Xeno stun gun + projectile
-/obj/item/weapon/gun/energy/taser/xeno
+/obj/item/gun/energy/taser/xeno
 	name = "xeno taser gun"
 	desc = "Straight out of NT's testing laboratories, this small gun is used to subdue non-humanoid xeno life forms. \
 	While marketed towards handling slimes, it may be useful for other creatures."
@@ -64,12 +64,12 @@
 	description_fluff = "An easy to use weapon designed by NanoTrasen, for NanoTrasen.  This weapon is designed to subdue lesser \
 	slime-based xeno lifeforms at a distance.  It is ineffective at stunning non-slimy lifeforms such as humanoids."
 
-/obj/item/weapon/gun/energy/taser/xeno/robot // Borg version
+/obj/item/gun/energy/taser/xeno/robot // Borg version
 	self_recharge = 1
 	use_external_power = 1
 	recharge_time = 3
 
-/obj/item/weapon/gun/energy/taser/xeno/sec //NT's corner-cutting option for their on-station security.
+/obj/item/gun/energy/taser/xeno/sec //NT's corner-cutting option for their on-station security.
 	desc = "An NT Mk30 NL retrofitted to fire beams for subduing non-humanoid slimy xeno life forms."
 	icon_state = "taserblue"
 	item_state = "taser"
@@ -78,7 +78,7 @@
 	accuracy = 0 //Same accuracy as a normal Sec taser.
 	description_fluff = "An NT Mk30 NL retrofitted after the events that occurred aboard the NRS Prometheus."
 
-/obj/item/weapon/gun/energy/taser/xeno/sec/robot //Cyborg variant of the security xeno-taser.
+/obj/item/gun/energy/taser/xeno/sec/robot //Cyborg variant of the security xeno-taser.
 	self_recharge = 1
 	use_external_power = 1
 	recharge_time = 3

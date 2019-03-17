@@ -48,7 +48,7 @@
 	return FALSE
 /obj/item/device/paicard/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
-/obj/item/weapon/gun/digest_act(var/atom/movable/item_storage = null)
+/obj/item/gun/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 /obj/item/weapon/pinpointer/digest_act(var/atom/movable/item_storage = null)
 	return FALSE

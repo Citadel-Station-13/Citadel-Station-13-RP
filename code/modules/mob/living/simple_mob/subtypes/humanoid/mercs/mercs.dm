@@ -145,7 +145,7 @@
 	projectiletype = /obj/item/projectile/bullet/pistol/medium
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
-	loot_list = list(/obj/item/weapon/gun/projectile/colt = 100)
+	loot_list = list(/obj/item/gun/projectile/colt = 100)
 
 	needs_reload = TRUE
 	reload_max = 7		// Not the best default, but it fits the pistol
@@ -156,7 +156,7 @@
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
-	loot_list = list(/obj/item/weapon/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -168,7 +168,7 @@
 	projectiletype = /obj/item/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/laser = 100)
+	loot_list = list(/obj/item/gun/energy/laser = 100)
 
 	reload_max = 10
 
@@ -179,7 +179,7 @@
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/ionrifle = 100)
+	loot_list = list(/obj/item/gun/energy/ionrifle = 100)
 
 	reload_max = 10
 
@@ -190,7 +190,7 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/projectile/shotgun/pump = 100)
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump = 100)
 
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment

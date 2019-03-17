@@ -26,9 +26,9 @@
 /datum/supply_pack/recreation/lasertag
 	name = "Lasertag equipment"
 	contains = list(
-			/obj/item/weapon/gun/energy/lasertag/red,
+			/obj/item/gun/energy/lasertag/red,
 			/obj/item/clothing/suit/redtag,
-			/obj/item/weapon/gun/energy/lasertag/blue,
+			/obj/item/gun/energy/lasertag/blue,
 			/obj/item/clothing/suit/bluetag
 			)
 	containertype = /obj/structure/closet

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/magnetic
+/obj/item/gun/magnetic
 	name = "improvised coilgun"
 	desc = "A coilgun hastily thrown together out of a basic frame and advanced power storage components. Is it safe for it to be duct-taped together like that?"
 	icon_state = "coilgun"
@@ -20,24 +20,24 @@
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
 
-/obj/item/weapon/gun/magnetic/New()
+/obj/item/gun/magnetic/New()
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	update_icon()
 	. = ..()
 
-/obj/item/weapon/gun/magnetic/Destroy()
+/obj/item/gun/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(cell)
 	QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()
 
-/obj/item/weapon/gun/magnetic/get_cell()
+/obj/item/gun/magnetic/get_cell()
 	return cell
 
-/obj/item/weapon/gun/magnetic/process()
+/obj/item/gun/magnetic/process()
 	if(capacitor)
 		if(cell)
 			if(capacitor.charge < capacitor.max_charge && cell.checked_use(power_per_tick))
@@ -46,7 +46,7 @@
 			capacitor.use(capacitor.charge * 0.05)
 	update_icon()
 
-/obj/item/weapon/gun/magnetic/update_icon()
+/obj/item/gun/magnetic/update_icon()
 	var/list/overlays_to_add = list()
 	if(removable_components)
 		if(cell)
@@ -65,11 +65,11 @@
 	overlays = overlays_to_add
 	..()
 
-/obj/item/weapon/gun/magnetic/proc/show_ammo(var/mob/user)
+/obj/item/gun/magnetic/proc/show_ammo(var/mob/user)
 	if(loaded)
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 
-/obj/item/weapon/gun/magnetic/examine(var/mob/user)
+/obj/item/gun/magnetic/examine(var/mob/user)
 	. = ..(user, 2)
 	if(.)
 		show_ammo(user)
@@ -88,7 +88,7 @@
 				to_chat(user, "<span class='notice'>The capacitor charge indicator is <font color ='[COLOR_GREEN]'>green</font>.</span>")
 		return TRUE
 
-/obj/item/weapon/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/gun/magnetic/attackby(var/obj/item/thing, var/mob/user)
 
 	if(removable_components)
 		if(istype(thing, /obj/item/weapon/cell))
@@ -151,7 +151,7 @@
 		return
 	. = ..()
 
-/obj/item/weapon/gun/magnetic/attack_hand(var/mob/user)
+/obj/item/gun/magnetic/attack_hand(var/mob/user)
 	if(user.get_inactive_hand() == src)
 		var/obj/item/removing
 
@@ -171,14 +171,14 @@
 			return
 	. = ..()
 
-/obj/item/weapon/gun/magnetic/proc/check_ammo()
+/obj/item/gun/magnetic/proc/check_ammo()
 	return loaded
 
-/obj/item/weapon/gun/magnetic/proc/use_ammo()
+/obj/item/gun/magnetic/proc/use_ammo()
 	qdel(loaded)
 	loaded = null
 
-/obj/item/weapon/gun/magnetic/consume_next_projectile()
+/obj/item/gun/magnetic/consume_next_projectile()
 
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
@@ -195,7 +195,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/weapon/gun/magnetic/fuelrod
+/obj/item/gun/magnetic/fuelrod
 	name = "Fuel-Rod Cannon"
 	desc = "A bulky weapon designed to fire reactor core fuel rods at absurd velocities... who thought this was a good idea?!"
 	description_antag = "This device is capable of firing reactor fuel assemblies, acquired from a R-UST fuel compressor and an appropriate fueltype. Be warned, Supermatter rods may have unforseen consequences."
@@ -214,7 +214,7 @@
 
 	power_cost = 500
 
-/obj/item/weapon/gun/magnetic/fuelrod/consume_next_projectile()
+/obj/item/gun/magnetic/fuelrod/consume_next_projectile()
 	if(!check_ammo() || !capacitor || capacitor.charge < power_cost)
 		return
 
@@ -253,7 +253,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/weapon/gun/magnetic/fuelrod/New()
+/obj/item/gun/magnetic/fuelrod/New()
 	cell = new /obj/item/weapon/cell/high
 	capacitor = new /obj/item/weapon/stock_parts/capacitor
 	. = ..()

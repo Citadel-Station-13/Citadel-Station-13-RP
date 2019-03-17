@@ -16,7 +16,7 @@
 		/obj/item/weapon/storage/lockbox/medal,
 		/obj/item/device/radio/headset/heads/captain,
 		/obj/item/device/radio/headset/heads/captain/alt,
-		/obj/item/weapon/gun/energy/gun,
+		/obj/item/gun/energy/gun,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/flash,
 		/obj/item/weapon/storage/box/ids)
@@ -39,9 +39,9 @@
 		/obj/item/device/radio/headset/heads/hop,
 		/obj/item/device/radio/headset/heads/hop/alt,
 		/obj/item/weapon/storage/box/ids = 2,
-		/obj/item/weapon/gun/energy/gun,
-		/obj/item/weapon/gun/energy/gun/martin, //VOREStation Add,
-		///obj/item/weapon/gun/projectile/sec/flash, //VOREStation Removal,
+		/obj/item/gun/energy/gun,
+		/obj/item/gun/energy/gun/martin, //VOREStation Add,
+		///obj/item/gun/projectile/sec/flash, //VOREStation Removal,
 		/obj/item/device/flash)
 
 /obj/structure/closet/secure_closet/hop2
@@ -111,7 +111,7 @@
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun,
+		/obj/item/gun/energy/gun,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/weapon/melee/telebaton,
@@ -160,7 +160,7 @@
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun,
+		/obj/item/gun/energy/gun,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/clothing/head/beret/sec/corporate/warden,
@@ -208,7 +208,7 @@
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
 		/obj/item/ammo_magazine/m45/rubber,
-		/obj/item/weapon/gun/energy/taser,
+		/obj/item/gun/energy/taser,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,

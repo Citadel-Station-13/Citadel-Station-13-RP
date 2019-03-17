@@ -20,10 +20,10 @@
 	var/global/list/unique_gamma = list(
 		/obj/item/device/perfect_tele,
 		/obj/item/weapon/bluespace_harpoon,
-		/obj/item/weapon/gun/energy/netgun,
-		/obj/item/weapon/gun/projectile/pirate,
+		/obj/item/gun/energy/netgun,
+		/obj/item/gun/projectile/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/weapon/gun/projectile/dartgun
+		/obj/item/gun/projectile/dartgun
 		)
 
 	var/global/list/allocated_gamma = list()
@@ -220,7 +220,7 @@
 					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
 					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
-					prob(4);/obj/item/weapon/gun/energy/sizegun,
+					prob(4);/obj/item/gun/energy/sizegun,
 					prob(3);/obj/item/weapon/material/butterfly,
 					prob(3);/obj/item/weapon/material/butterfly/switchblade,
 					prob(3);/obj/item/clothing/gloves/knuckledusters,

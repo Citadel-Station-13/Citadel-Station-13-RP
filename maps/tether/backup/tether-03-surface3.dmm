@@ -661,14 +661,14 @@
 /area/gateway/prep_room)
 "bD" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/obj/item/weapon/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
@@ -1102,14 +1102,14 @@
 /area/gateway/prep_room)
 "co" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
 	pixel_y = 0
 	},
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
@@ -1505,8 +1505,8 @@
 /area/gateway/prep_room)
 "da" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
@@ -21648,7 +21648,7 @@
 "OI" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/storage/box/beanbags,
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel,
+/obj/item/gun/projectile/shotgun/doublebarrel,
 /obj/item/weapon/paper{
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
 	name = "Shotgun permit"

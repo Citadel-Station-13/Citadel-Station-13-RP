@@ -40,7 +40,7 @@
 	/obj/item/ammo_magazine/m10mm = 5,
 	/obj/item/weapon/storage/box/handcuffs,
 	/obj/item/weapon/storage/box/flashbangs,
-	/obj/item/weapon/gun/energy/gun = 5,
+	/obj/item/gun/energy/gun = 5,
 	/obj/item/weapon/pinpointer/nukeop = 5,
 	/obj/item/device/pda/syndicate,
 	/obj/item/device/radio/uplink)

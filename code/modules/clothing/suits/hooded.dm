@@ -172,7 +172,7 @@
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35) // Inferior to sec vests in bullet/laser but better for environmental protection.
 	allowed = list(
 		/obj/item/device/flashlight,
-		/obj/item/weapon/gun,
+		/obj/item/gun,
 		/obj/item/ammo_magazine,
 		/obj/item/weapon/melee,
 		/obj/item/weapon/material/knife,

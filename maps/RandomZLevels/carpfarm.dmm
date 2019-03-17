@@ -490,7 +490,7 @@
 /area/awaymission/carpfarm/base)
 "bD" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin,
+/obj/item/gun/projectile/shotgun/pump/rifle/mosin,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)

@@ -1459,7 +1459,7 @@
 /area/awaymission/snowfield/base)
 "eg" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin,
+/obj/item/gun/projectile/shotgun/pump/rifle/mosin,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/base)
 "eh" = (

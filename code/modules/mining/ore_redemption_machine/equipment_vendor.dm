@@ -29,7 +29,7 @@
 		new /datum/data/mining_equipment("Survival Medipen",			/obj/item/weapon/reagent_containers/hypospray/autoinjector/miner,	500),
 		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/device/perfect_tele/one_beacon,							1200),
 		// new /datum/data/mining_equipment("Kinetic Crusher",			/obj/item/twohanded/required/kinetic_crusher,						750),
-		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/weapon/gun/energy/kinetic_accelerator,					900),
+		new /datum/data/mining_equipment("Kinetic Accelerator",			/obj/item/gun/energy/kinetic_accelerator,					900),
 		new /datum/data/mining_equipment("Resonator",					/obj/item/resonator,												900),
 		new /datum/data/mining_equipment("Fulton Pack",					/obj/item/extraction_pack,											1200),
 		new /datum/data/mining_equipment("Silver Pickaxe",				/obj/item/weapon/pickaxe/silver,									1200),
@@ -189,7 +189,7 @@
 	var/drop_location = drop_location()
 	switch(selection)
 		if("Kinetic Accelerator")
-			new /obj/item/weapon/gun/energy/kinetic_accelerator(drop_location)
+			new /obj/item/gun/energy/kinetic_accelerator(drop_location)
 		if("Resonator")
 			new /obj/item/resonator(drop_location)
 	//VOREStation Edit End

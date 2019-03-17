@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/magnetic/railgun
+/obj/item/gun/magnetic/railgun
 	name = "railgun"
 	desc = "The Mars Military Industries MI-76 Thunderclap. A man-portable mass driver for squad support anti-armour and destruction of fortifications and emplacements."
 	gun_unreliable = 0
@@ -20,7 +20,7 @@
 	var/slowdown_worn = 1
 	var/empty_sound = 'sound/machines/twobeep.ogg'
 
-/obj/item/weapon/gun/magnetic/railgun/New()
+/obj/item/gun/magnetic/railgun/New()
 	capacitor = new initial_capacitor_type(src)
 	capacitor.charge = capacitor.max_charge
 
@@ -31,30 +31,30 @@
 
 // Not going to check type repeatedly, if you code or varedit
 // load_type and get runtime errors, don't come crying to me.
-/obj/item/weapon/gun/magnetic/railgun/show_ammo(var/mob/user)
+/obj/item/gun/magnetic/railgun/show_ammo(var/mob/user)
 	var/obj/item/weapon/rcd_ammo/ammo = loaded
 	if (ammo)
 		to_chat(user, "<span class='notice'>There are [ammo.remaining] shot\s remaining in \the [loaded].</span>")
 	else
 		to_chat(user, "<span class='notice'>There is nothing loaded.</span>")
 
-/obj/item/weapon/gun/magnetic/railgun/check_ammo()
+/obj/item/gun/magnetic/railgun/check_ammo()
 	var/obj/item/weapon/rcd_ammo/ammo = loaded
 	return ammo && ammo.remaining
 
-/obj/item/weapon/gun/magnetic/railgun/use_ammo()
+/obj/item/gun/magnetic/railgun/use_ammo()
 	var/obj/item/weapon/rcd_ammo/ammo = loaded
 	ammo.remaining--
 	if(ammo.remaining <= 0)
 		out_of_ammo()
 
-/obj/item/weapon/gun/magnetic/railgun/proc/out_of_ammo()
+/obj/item/gun/magnetic/railgun/proc/out_of_ammo()
 	loaded.forceMove(get_turf(src))
 	loaded = null
 	visible_message("<span class='warning'>\The [src] beeps and ejects its empty cartridge.</span>","<span class='warning'>There's a beeping sound!</span>")
 	playsound(get_turf(src), empty_sound, 40, 1)
 
-/obj/item/weapon/gun/magnetic/railgun/automatic // Adminspawn only, this shit is absurd.
+/obj/item/gun/magnetic/railgun/automatic // Adminspawn only, this shit is absurd.
 	name = "\improper RHR accelerator"
 	desc = "The Mars Military Industries MI-227 Meteor. Originally a vehicle-mounted turret weapon for heavy anti-vehicular and anti-structural fire, the fact that it was made man-portable is mindboggling in itself."
 	icon_state = "heavy_railgun"
@@ -76,12 +76,12 @@
 		list(mode_name="long bursts", burst=6, fire_delay=null, move_delay=10, one_handed_penalty=30, burst_accuracy=list(0,-15,-15,-15,-30), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/weapon/gun/magnetic/railgun/automatic/examine(var/mob/user)
+/obj/item/gun/magnetic/railgun/automatic/examine(var/mob/user)
 	. = ..(user,1)
 	if(.)
 		to_chat(user, "<span class='notice'>Someone has scratched <i>Ultima Ratio Regum</i> onto the side of the barrel.</span>")
 
-/obj/item/weapon/gun/magnetic/railgun/flechette
+/obj/item/gun/magnetic/railgun/flechette
 	name = "flechette gun"
 	desc = "The MI-12 Skadi is a burst fire capable railgun that fires flechette rounds at high velocity. Deadly against armour, but much less effective against soft targets."
 	icon_state = "flechette_gun"

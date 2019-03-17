@@ -67,17 +67,17 @@
 /datum/uplink_item/item/visible_weapons/dartgun
 	name = "Dart Gun"
 	item_cost = 30
-	path = /obj/item/weapon/gun/projectile/dartgun
+	path = /obj/item/gun/projectile/dartgun
 
 /datum/uplink_item/item/visible_weapons/crossbow
 	name = "Energy Crossbow"
 	item_cost = 40
-	path = /obj/item/weapon/gun/energy/crossbow
+	path = /obj/item/gun/energy/crossbow
 
 /datum/uplink_item/item/visible_weapons/silenced_45
 	name = "Silenced .45"
 	item_cost = 40
-	path = /obj/item/weapon/gun/projectile/silenced
+	path = /obj/item/gun/projectile/silenced
 
 /datum/uplink_item/item/visible_weapons/riggedlaser
 	name = "Exosuit Rigged Laser"
@@ -87,42 +87,42 @@
 /datum/uplink_item/item/visible_weapons/revolver
 	name = "Revolver"
 	item_cost = 70
-	path = /obj/item/weapon/gun/projectile/revolver
+	path = /obj/item/gun/projectile/revolver
 
 /datum/uplink_item/item/visible_weapons/mateba
 	name = "Mateba"
 	item_cost = 70
-	path = /obj/item/weapon/gun/projectile/revolver/mateba
+	path = /obj/item/gun/projectile/revolver/mateba
 
 /datum/uplink_item/item/visible_weapons/judge
 	name = "Judge"
 	item_cost = 70
-	path = /obj/item/weapon/gun/projectile/revolver/judge
+	path = /obj/item/gun/projectile/revolver/judge
 
 /datum/uplink_item/item/visible_weapons/pistol_standard_capacity
 	name = "9mm Pistol"
 	item_cost = 40
-	path = /obj/item/weapon/gun/projectile/p92x
+	path = /obj/item/gun/projectile/p92x
 
 /datum/uplink_item/item/visible_weapons/pistol_large_capacity
 	name = "9mm Pistol (with large capacity magazine)"
 	item_cost = 70
-	path = /obj/item/weapon/gun/projectile/p92x/large
+	path = /obj/item/gun/projectile/p92x/large
 
 /datum/uplink_item/item/visible_weapons/lemat
 	name = "LeMat"
 	item_cost = 60
-	path = /obj/item/weapon/gun/projectile/revolver/lemat
+	path = /obj/item/gun/projectile/revolver/lemat
 
 /datum/uplink_item/item/visible_weapons/Derringer
 	name = ".357 Derringer Pistol"
 	item_cost = 40
-	path = /obj/item/weapon/gun/projectile/derringer
+	path = /obj/item/gun/projectile/derringer
 
 /datum/uplink_item/item/visible_weapons/heavysnipermerc
 	name = "Anti-Materiel Rifle (14.5mm)"
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
-	path = /obj/item/weapon/gun/projectile/heavysniper
+	path = /obj/item/gun/projectile/heavysniper
 	antag_roles = list("mercenary")
 
 /datum/uplink_item/item/visible_weapons/heavysnipertraitor
@@ -141,55 +141,55 @@
 /datum/uplink_item/item/visible_weapons/tommygun
 	name = "Tommy Gun (.45)" // We're keeping this because it's CLASSY. -Spades
 	item_cost = 60
-	path = /obj/item/weapon/gun/projectile/automatic/tommygun
+	path = /obj/item/gun/projectile/automatic/tommygun
 
 //These are for traitors (or other antags, perhaps) to have the option of purchasing some merc gear.
 /datum/uplink_item/item/visible_weapons/submachinegun
 	name = "Submachine Gun (10mm)"
 	item_cost = 60
-	path = /obj/item/weapon/gun/projectile/automatic/c20r
+	path = /obj/item/gun/projectile/automatic/c20r
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
 	name = "Assault Rifle (5.45mm)"
 	item_cost = 75
-	path = /obj/item/weapon/gun/projectile/automatic/sts35
+	path = /obj/item/gun/projectile/automatic/sts35
 
 /datum/uplink_item/item/visible_weapons/combatshotgun
 	name = "Combat Shotgun"
 	item_cost = 75
-	path = /obj/item/weapon/gun/projectile/shotgun/pump/combat
+	path = /obj/item/gun/projectile/shotgun/pump/combat
 
 /datum/uplink_item/item/visible_weapons/leveraction
 	name = "Lever Action Rifle"
 	item_cost = 50
-	path = /obj/item/weapon/gun/projectile/shotgun/pump/rifle/lever
+	path = /obj/item/gun/projectile/shotgun/pump/rifle/lever
 
 /datum/uplink_item/item/visible_weapons/egun
 	name = "Energy Gun"
 	item_cost = 60
-	path = /obj/item/weapon/gun/energy/gun
+	path = /obj/item/gun/energy/gun
 
 /datum/uplink_item/item/visible_weapons/lasercannon
 	name = "Laser Cannon"
 	item_cost = 60
-	path = /obj/item/weapon/gun/energy/lasercannon
+	path = /obj/item/gun/energy/lasercannon
 
 /datum/uplink_item/item/visible_weapons/lasercarbine
 	name = "Laser Carbine"
 	item_cost = 75
-	path = /obj/item/weapon/gun/energy/laser
+	path = /obj/item/gun/energy/laser
 
 /datum/uplink_item/item/visible_weapons/ionrifle
 	name = "Ion Rifle"
 	item_cost = 40
-	path = /obj/item/weapon/gun/energy/ionrifle
+	path = /obj/item/gun/energy/ionrifle
 
 /datum/uplink_item/item/visible_weapons/ionpistol
 	name = "Ion Pistol"
 	item_cost = 25
-	path = /obj/item/weapon/gun/energy/ionrifle/pistol
+	path = /obj/item/gun/energy/ionrifle/pistol
 
 /datum/uplink_item/item/visible_weapons/xray
 	name = "Xray Gun"
 	item_cost = 85
-	path = /obj/item/weapon/gun/energy/xray
+	path = /obj/item/gun/energy/xray

@@ -150,7 +150,7 @@
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/laser
 	icon_state = "syndicateranged_laser"
@@ -159,7 +159,7 @@
 	projectiletype = /obj/item/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/laser = 100)
+	loot_list = list(/obj/item/gun/energy/laser = 100)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/ionrifle
 	icon_state = "syndicateranged_ionrifle"
@@ -168,7 +168,7 @@
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/ionrifle = 100)
+	loot_list = list(/obj/item/gun/energy/ionrifle = 100)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/space
 	name = "space mercenary" //VOREStation Edit

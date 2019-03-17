@@ -35,7 +35,7 @@
 	starts_with = list(
 		/obj/item/clothing/suit/bio_suit/security,
 		/obj/item/clothing/head/bio_hood/security,
-		/obj/item/weapon/gun/energy/taser/xeno/sec)
+		/obj/item/gun/energy/taser/xeno/sec)
 
 
 /obj/structure/closet/l3closet/janitor

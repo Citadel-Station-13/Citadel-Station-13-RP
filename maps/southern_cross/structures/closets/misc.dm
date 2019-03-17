@@ -5,7 +5,7 @@
 	req_one_access = list(access_armory,access_captain)
 
 	starts_with = list(
-		/obj/item/weapon/gun/energy/gun = 4)
+		/obj/item/gun/energy/gun = 4)
 
 
 /obj/structure/closet/secure_closet/guncabinet/rifle
@@ -14,13 +14,13 @@
 
 	starts_with = list(
 		/obj/item/ammo_magazine/clip/c762/hunter = 9,
-		/obj/item/weapon/gun/projectile/shotgun/pump/rifle = 2)
+		/obj/item/gun/projectile/shotgun/pump/rifle = 2)
 
 /obj/structure/closet/secure_closet/guncabinet/rifle/Initialize()
 	if(prob(85))
-		starts_with += /obj/item/weapon/gun/projectile/shotgun/pump/rifle
+		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle
 	else
-		starts_with += /obj/item/weapon/gun/projectile/shotgun/pump/rifle/lever
+		starts_with += /obj/item/gun/projectile/shotgun/pump/rifle/lever
 	return ..()
 
 /obj/structure/closet/secure_closet/guncabinet/phase
@@ -28,7 +28,7 @@
 	req_one_access = list(access_explorer,access_brig)
 
 	starts_with = list(
-		/obj/item/weapon/gun/energy/phasegun = 2,
+		/obj/item/gun/energy/phasegun = 2,
 		/obj/item/weapon/cell/device/weapon = 2,
 		/obj/item/clothing/accessory/permit/gun/planetside)
 

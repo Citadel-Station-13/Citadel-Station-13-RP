@@ -380,13 +380,13 @@
 
 
 
-/obj/item/weapon/gun/CtrlClick(mob/user)
+/obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
 		toggle_flashlight()
 	else
 		return ..()
 
-/obj/item/weapon/gun/proc/toggle_flashlight()
+/obj/item/gun/proc/toggle_flashlight()
 	if(gun_light)
 		set_light(0)
 		gun_light = FALSE
@@ -398,7 +398,7 @@
 	update_icon()
 //VOREStation Add End
 
-/obj/item/weapon/gun/update_twohanding()
+/obj/item/gun/update_twohanding()
 	if(one_handed_penalty)
 		var/mob/living/M = loc
 		if(istype(M))
@@ -411,7 +411,7 @@
 		update_icon() // In case item_state is set somewhere else.
 	..()
 
-/obj/item/weapon/gun/update_held_icon()
+/obj/item/gun/update_held_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
@@ -427,7 +427,7 @@
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
-/obj/item/weapon/gun/proc/special_check(var/mob/user)
+/obj/item/gun/proc/special_check(var/mob/user)
 
 	if(!istype(user, /mob/living))
 		return 0
@@ -459,7 +459,7 @@
 	return 1
 
 
-/obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params)
+/obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
 
 	if(!user.aiming)
@@ -478,7 +478,7 @@
 		return
 
 
-/obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
+/obj/item/gun/attack(atom/A, mob/living/user, def_zone)
 	if (A == user && user.zone_selected == O_MOUTH && !mouthshoot)
 		handle_suicide(user)
 	else if(user.a_intent == I_HURT) //point blank shooting
@@ -570,10 +570,10 @@
 	return ..()
 
 
-/obj/item/weapon/gun/proc/aiming_can_hit_target(atom/target, mob/living/user)		//, robust_aiming_aka_corner_dodging) when?
+/obj/item/gun/proc/aiming_can_hit_target(atom/target, mob/living/user)		//, robust_aiming_aka_corner_dodging) when?
 	return projectile_raytrace(user, target)
 
-/obj/item/weapon/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
+/obj/item/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -594,7 +594,7 @@
 				damage_mult = 1.5
 	P.damage *= damage_mult
 
-/obj/item/weapon/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
+/obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -628,7 +628,7 @@
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
 
 //does the actual launching of the projectile
-/obj/item/weapon/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
+/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
 		return FALSE //default behaviour only applies to true projectiles
@@ -650,9 +650,9 @@
 
 
 //Suicide handling.
-/obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
+/obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 
-/obj/item/weapon/gun/proc/handle_suicide(mob/living/user)
+/obj/item/gun/proc/handle_suicide(mob/living/user)
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/M = user
@@ -688,7 +688,7 @@
 		mouthshoot = 0
 		return
 
-/obj/item/weapon/gun/proc/toggle_scope(var/zoom_amount=2.0)
+/obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
 	//still, increase the view size by a tiny amount so that sniping isn't too restricted to NSEW
 	var/zoom_offset = round(world.view * zoom_amount)
@@ -702,7 +702,7 @@
 			recoil = round(recoil*zoom_amount+1) //recoil is worse when looking through a scope
 
 //make sure accuracy and recoil are reset regardless of how the item is unzoomed.
-/obj/item/weapon/gun/zoom()
+/obj/item/gun/zoom()
 	..()
 	if(!zoom)
 		accuracy = initial(accuracy)

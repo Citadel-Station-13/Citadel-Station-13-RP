@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/protector
+/obj/item/gun/energy/protector
 	name = "Hephaestus Myrmidon'"
 	desc = "The Hephaestus Industries Myrmidon is a common energy sidearm for private security firms in the known galaxy. The Myrmidon can both stun and kill, its lethal mode locked to the alert level of its owner's choice. In the case of Nanotrasen facilities, this is most often locked to Code Blue."
 
@@ -13,5 +13,5 @@
 	id = "protector"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "silver" = 1000)
-	build_path = /obj/item/weapon/gun/energy/protector
+	build_path = /obj/item/gun/energy/protector
 	sort_string = "TAADA"

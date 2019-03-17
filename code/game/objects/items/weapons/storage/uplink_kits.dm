@@ -7,7 +7,7 @@
 			new /obj/item/clothing/shoes/syndigaloshes(src)
 
 		if("stealth")
-			new /obj/item/weapon/gun/energy/crossbow(src)
+			new /obj/item/gun/energy/crossbow(src)
 			new /obj/item/weapon/pen/reagent/paralysis(src)
 			new /obj/item/device/chameleon(src)
 
@@ -21,7 +21,7 @@
 			new /obj/item/weapon/tank/emergency/oxygen/double(src)
 
 		if("guns")
-			new /obj/item/weapon/gun/projectile/revolver(src)
+			new /obj/item/gun/projectile/revolver(src)
 			new /obj/item/ammo_magazine/s357(src)
 			new /obj/item/weapon/card/emag(src)
 			new /obj/item/weapon/plastique(src)
@@ -115,7 +115,7 @@
 		/obj/item/clothing/mask/chameleon,
 		/obj/item/clothing/glasses/chameleon,
 		/obj/item/clothing/accessory/chameleon,
-		/obj/item/weapon/gun/energy/chameleon
+		/obj/item/gun/energy/chameleon
 	)
 
 /obj/item/weapon/storage/box/syndie_kit/clerical
@@ -141,7 +141,7 @@
 	name = "\improper Smooth operator"
 	desc = "Compact 9mm with silencer kit."
 	starts_with = list(
-		/obj/item/weapon/gun/projectile/pistol,
+		/obj/item/gun/projectile/pistol,
 		/obj/item/weapon/silencer
 	)
 
@@ -253,10 +253,10 @@
 	description_fluff = "The container, upon opening, looks to have a few oddly shaped indentations in its packing."
 	description_antag = "This case will likely contain a charged fuel rod gun, and a few fuel rods to go with it. It can only hold the fuel rod gun, fuel rods, batteries, a screwdriver, and stock machine parts."
 	force = 12 //Anti-rad lined i.e. Lead, probably gonna hurt a bit if you get bashed with it.
-	can_hold = list(/obj/item/weapon/gun/magnetic/fuelrod, /obj/item/weapon/fuel_assembly, /obj/item/weapon/cell, /obj/item/weapon/stock_parts, /obj/item/weapon/tool/screwdriver)
+	can_hold = list(/obj/item/gun/magnetic/fuelrod, /obj/item/weapon/fuel_assembly, /obj/item/weapon/cell, /obj/item/weapon/stock_parts, /obj/item/weapon/tool/screwdriver)
 	cant_hold = list(/obj/item/weapon/tool/screwdriver/power)
 	starts_with = list(
-		/obj/item/weapon/gun/magnetic/fuelrod,
+		/obj/item/gun/magnetic/fuelrod,
 		/obj/item/weapon/fuel_assembly/deuterium,
 		/obj/item/weapon/fuel_assembly/deuterium,
 		/obj/item/weapon/fuel_assembly/tritium,

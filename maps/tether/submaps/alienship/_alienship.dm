@@ -64,7 +64,7 @@
 /obj/machinery/porta_turret/alien/ion
 	name = "interior anti-boarding turret"
 	desc = "A very tough looking turret made by alien hands."
-	installation = /obj/item/weapon/gun/energy/ionrifle/weak
+	installation = /obj/item/gun/energy/ionrifle/weak
 	enabled = TRUE
 	lethal = TRUE
 	ailock = TRUE

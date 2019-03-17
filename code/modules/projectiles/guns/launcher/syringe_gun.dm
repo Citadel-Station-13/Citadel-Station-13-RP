@@ -64,7 +64,7 @@
 	icon_state = initial(icon_state) //reset icon state
 	update_icon()
 
-/obj/item/weapon/gun/launcher/syringe
+/obj/item/gun/launcher/syringe
 	name = "syringe gun"
 	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
 	icon_state = "syringegun"
@@ -84,18 +84,18 @@
 	var/max_darts = 1
 	var/obj/item/weapon/syringe_cartridge/next
 
-/obj/item/weapon/gun/launcher/syringe/consume_next_projectile()
+/obj/item/gun/launcher/syringe/consume_next_projectile()
 	if(next)
 		next.prime()
 		return next
 	return null
 
-/obj/item/weapon/gun/launcher/syringe/handle_post_fire()
+/obj/item/gun/launcher/syringe/handle_post_fire()
 	..()
 	darts -= next
 	next = null
 
-/obj/item/weapon/gun/launcher/syringe/attack_self(mob/living/user as mob)
+/obj/item/gun/launcher/syringe/attack_self(mob/living/user as mob)
 	if(next)
 		user.visible_message("[user] unlatches and carefully relaxes the bolt on [src].", "<span class='warning'>You unlatch and carefully relax the bolt on [src], unloading the spring.</span>")
 		next = null
@@ -105,7 +105,7 @@
 		next = darts[1]
 	add_fingerprint(user)
 
-/obj/item/weapon/gun/launcher/syringe/attack_hand(mob/living/user as mob)
+/obj/item/gun/launcher/syringe/attack_hand(mob/living/user as mob)
 	if(user.get_inactive_hand() == src)
 		if(!darts.len)
 			user << "<span class='warning'>[src] is empty.</span>"
@@ -121,7 +121,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/launcher/syringe/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/launcher/syringe/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/weapon/syringe_cartridge))
 		var/obj/item/weapon/syringe_cartridge/C = A
 		if(darts.len >= max_darts)
@@ -134,7 +134,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/launcher/syringe/rapid
+/obj/item/gun/launcher/syringe/rapid
 	name = "syringe gun revolver"
 	desc = "A modification of the syringe gun design, using a rotating cylinder to store up to five syringes. The spring still needs to be drawn between shots."
 	icon_state = "rapidsyringegun"

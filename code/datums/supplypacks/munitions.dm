@@ -16,8 +16,8 @@
 			/obj/item/device/flash = 2,
 			/obj/item/weapon/reagent_containers/spray/pepper = 2,
 			/obj/item/weapon/melee/baton/loaded = 2,
-			/obj/item/weapon/gun/energy/taser = 2,
-			/obj/item/weapon/gun/projectile/colt/detective = 2,
+			/obj/item/gun/energy/taser = 2,
+			/obj/item/gun/projectile/colt/detective = 2,
 			/obj/item/weapon/storage/box/flashbangs = 2
 			)
 	cost = 40
@@ -27,7 +27,7 @@
 
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
-	contains = list(/obj/item/weapon/gun/energy/gun = 2)
+	contains = list(/obj/item/gun/energy/gun = 2)
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy sidearms crate"
@@ -36,9 +36,9 @@
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(
-			/obj/item/weapon/gun/projectile/sec/flash,
+			/obj/item/gun/projectile/sec/flash,
 			/obj/item/ammo_magazine/m45/flash,
-			/obj/item/weapon/gun/projectile/shotgun/doublebarrel/flare,
+			/obj/item/gun/projectile/shotgun/doublebarrel/flare,
 			/obj/item/weapon/storage/box/flashshells
 			)
 	cost = 25
@@ -49,7 +49,7 @@
 /datum/supply_pack/munitions/eweapons
 	name = "Weapons - Experimental weapons crate"
 	contains = list(
-			/obj/item/weapon/gun/energy/xray = 2,
+			/obj/item/gun/energy/xray = 2,
 			/obj/item/weapon/shield/energy = 2)
 	cost = 100
 	containertype = /obj/structure/closet/crate/secure/science
@@ -58,7 +58,7 @@
 
 /datum/supply_pack/munitions/energyweapons
 	name = "Weapons - Laser rifle crate"
-	contains = list(/obj/item/weapon/gun/energy/laser = 2) //VOREStation Edit - Made to be consistent with the energy guns crate.
+	contains = list(/obj/item/gun/energy/laser = 2) //VOREStation Edit - Made to be consistent with the energy guns crate.
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy weapons crate"
@@ -69,7 +69,7 @@
 	contains = list(
 			/obj/item/weapon/storage/box/shotgunammo,
 			/obj/item/weapon/storage/box/shotgunshells,
-			/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2
+			/obj/item/gun/projectile/shotgun/pump/combat = 2
 			)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
@@ -78,7 +78,7 @@
 //CITADEL CHANGE - comments out VOREdev antifun /* VOREStation edit -- This is a bad idea. -- So is this.
 /datum/supply_pack/munitions/erifle
 	name = "Weapons - Energy marksman"
-	contains = list(/obj/item/weapon/gun/energy/sniperrifle = 2)
+	contains = list(/obj/item/gun/energy/sniperrifle = 2)
 	cost = 100
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy marksman crate"
@@ -86,7 +86,7 @@
 
 /datum/supply_pack/munitions/burstlaser
 	name = "Weapons - Burst laser"
-	contains = list(/obj/item/weapon/gun/energy/gun/burst = 2)
+	contains = list(/obj/item/gun/energy/gun/burst = 2)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Burst laser crate"
@@ -95,7 +95,7 @@
 /datum/supply_pack/munitions/ionweapons
 	name = "Weapons - Electromagnetic Rifles"
 	contains = list(
-			/obj/item/weapon/gun/energy/ionrifle = 2,
+			/obj/item/gun/energy/ionrifle = 2,
 			/obj/item/weapon/storage/box/empslite
 			)
 	cost = 50
@@ -106,7 +106,7 @@
 /datum/supply_pack/munitions/ionpistols
 	name = "Weapons - Electromagnetic pistols"
 	contains = list(
-			/obj/item/weapon/gun/energy/ionrifle/pistol = 2,
+			/obj/item/gun/energy/ionrifle/pistol = 2,
 			/obj/item/weapon/storage/box/empslite
 			)
 	cost = 30
@@ -116,7 +116,7 @@
 
 /datum/supply_pack/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
-	contains = list(/obj/item/weapon/gun/projectile/automatic/wt550 = 2)
+	contains = list(/obj/item/gun/projectile/automatic/wt550 = 2)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Ballistic weapon crate"
@@ -124,7 +124,7 @@
 
 /datum/supply_pack/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
-	contains = list(/obj/item/weapon/gun/projectile/automatic/z8 = 2)
+	contains = list(/obj/item/gun/projectile/automatic/z8 = 2)
 	cost = 80
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Ballistic weapon crate"
@@ -134,7 +134,7 @@
  	name = "Weapons - Competitive shooting rifles"
  	contains = list(
  			/obj/item/device/assembly/timer,
- 			/obj/item/weapon/gun/projectile/shotgun/pump/rifle/practice = 2,
+ 			/obj/item/gun/projectile/shotgun/pump/rifle/practice = 2,
  			/obj/item/ammo_magazine/clip/c762/practice = 4,
  			/obj/item/target = 2,
  			/obj/item/target/alien = 2,

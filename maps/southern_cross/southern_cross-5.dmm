@@ -31,7 +31,7 @@
 "aE" = (/obj/machinery/door/window,/turf/simulated/shuttle/floor/white,/area/derelict/ship)
 "aF" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/shuttle/floor/white,/area/derelict/ship)
 "aG" = (/obj/structure/lattice,/turf/space,/area/space)
-"aH" = (/obj/structure/table/standard,/obj/item/weapon/gun/energy/retro,/turf/simulated/shuttle/floor/white,/area/derelict/ship)
+"aH" = (/obj/structure/table/standard,/obj/item/gun/energy/retro,/turf/simulated/shuttle/floor/white,/area/derelict/ship)
 "aI" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/turf/simulated/shuttle/plating,/area/derelict/ship)
 "aJ" = (/obj/machinery/light/small{dir = 8},/turf/simulated/shuttle/floor/white,/area/derelict/ship)
 "aK" = (/obj/structure/table/standard,/obj/item/weapon/tank/oxygen,/turf/simulated/shuttle/floor/white,/area/derelict/ship)

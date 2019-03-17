@@ -124,8 +124,8 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -140,8 +140,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/gun/energy/ionrifle/pistol,
-/obj/item/weapon/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle/pistol,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -151,7 +151,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/netgun,
+/obj/item/gun/energy/netgun,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -162,9 +162,9 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -182,10 +182,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -196,10 +196,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/gun/nuclear,
-/obj/item/weapon/gun/energy/gun/nuclear,
-/obj/item/weapon/gun/energy/gun/nuclear,
-/obj/item/weapon/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -221,8 +221,8 @@
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
-/obj/item/weapon/gun/projectile/automatic/sts35,
-/obj/item/weapon/gun/projectile/automatic/sts35,
+/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/projectile/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -241,8 +241,8 @@
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
 /obj/item/ammo_magazine/m545,
-/obj/item/weapon/gun/projectile/automatic/sts35,
-/obj/item/weapon/gun/projectile/automatic/sts35,
+/obj/item/gun/projectile/automatic/sts35,
+/obj/item/gun/projectile/automatic/sts35,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -253,10 +253,10 @@
 	},
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -291,10 +291,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
-/obj/item/weapon/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -376,10 +376,10 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/item/weapon/gun/launcher/rocket,
-/obj/item/weapon/gun/launcher/rocket,
-/obj/item/weapon/gun/projectile/automatic/l6_saw,
-/obj/item/weapon/gun/projectile/automatic/l6_saw,
+/obj/item/gun/launcher/rocket,
+/obj/item/gun/launcher/rocket,
+/obj/item/gun/projectile/automatic/l6_saw,
+/obj/item/gun/projectile/automatic/l6_saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
 /obj/item/ammo_magazine/m545saw,
@@ -584,12 +584,12 @@
 	})
 "aV" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/pulse_rifle,
-/obj/item/weapon/gun/energy/pulse_rifle,
-/obj/item/weapon/gun/energy/pulse_rifle,
-/obj/item/weapon/gun/energy/pulse_rifle,
-/obj/item/weapon/gun/energy/pulse_rifle,
-/obj/item/weapon/gun/energy/pulse_rifle,
+/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/pulse_rifle,
+/obj/item/gun/energy/pulse_rifle,
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -611,8 +611,8 @@
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
 /obj/item/clothing/accessory/storage/black_drop_pouches,
-/obj/item/weapon/gun/energy/gun/martin,
-/obj/item/weapon/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -655,8 +655,8 @@
 "ba" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -689,7 +689,7 @@
 "bd" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/weapon/gun/projectile/automatic/saber,
+/obj/item/gun/projectile/automatic/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
 /obj/item/ammo_magazine/m9mmR/saber,
@@ -701,7 +701,7 @@
 "be" = (
 /obj/structure/table/rack,
 /obj/structure/window/reinforced,
-/obj/item/weapon/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -712,16 +712,16 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/gun/projectile/revolver/detective45,
-/obj/item/weapon/gun/projectile/revolver/detective45,
+/obj/item/gun/projectile/revolver/detective45,
+/obj/item/gun/projectile/revolver/detective45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
 /obj/item/ammo_magazine/s45,
-/obj/item/weapon/gun/projectile/p92x,
-/obj/item/weapon/gun/projectile/p92x,
-/obj/item/weapon/gun/projectile/p92x,
-/obj/item/weapon/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
 /obj/item/ammo_magazine/m9mm/large/preban,
 /obj/item/ammo_magazine/m9mm/large/preban,
 /obj/item/ammo_magazine/m9mm/large/preban,
@@ -1311,7 +1311,7 @@
 /obj/item/ammo_casing/nsfw_batt/net,
 /obj/item/ammo_casing/nsfw_batt/net,
 /obj/item/ammo_magazine/nsfw_mag,
-/obj/item/weapon/gun/projectile/nsfw,
+/obj/item/gun/projectile/nsfw,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1373,7 +1373,7 @@
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/ammo_magazine/m44,
 /obj/item/ammo_magazine/m44,
-/obj/item/weapon/gun/projectile/deagle,
+/obj/item/gun/projectile/deagle,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
 	icon_state = "wood"
@@ -1480,7 +1480,7 @@
 /obj/item/device/flash,
 /obj/item/weapon/melee/baton/loaded,
 /obj/item/weapon/storage/belt/security/tactical,
-/obj/item/weapon/gun/energy/stunrevolver,
+/obj/item/gun/energy/stunrevolver,
 /obj/item/clothing/glasses/sunglasses/sechud/tactical,
 /obj/item/weapon/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/steel{
@@ -1499,7 +1499,7 @@
 /area/centcom/specops)
 "co" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
 /obj/item/weapon/hand_tele,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -1905,8 +1905,8 @@
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
 /obj/item/clothing/accessory/storage/brown_drop_pouches,
-/obj/item/weapon/gun/energy/gun/martin,
-/obj/item/weapon/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
+/obj/item/gun/energy/gun/martin,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2164,7 +2164,7 @@
 	},
 /area/centcom/control)
 "dv" = (
-/obj/item/weapon/gun/energy/sizegun,
+/obj/item/gun/energy/sizegun,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -4449,7 +4449,7 @@
 "ie" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/projectile/automatic/l6_saw,
+/obj/item/gun/projectile/automatic/l6_saw,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4627,11 +4627,11 @@
 /area/centcom/security)
 "iq" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
@@ -4641,11 +4641,11 @@
 /area/centcom/security)
 "ir" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -4655,8 +4655,8 @@
 "is" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/gun/burst,
-/obj/item/weapon/gun/energy/gun/burst,
+/obj/item/gun/energy/gun/burst,
+/obj/item/gun/energy/gun/burst,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4665,8 +4665,8 @@
 "it" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/lasercannon,
-/obj/item/weapon/gun/energy/lasercannon,
+/obj/item/gun/energy/lasercannon,
+/obj/item/gun/energy/lasercannon,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4675,8 +4675,8 @@
 "iu" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/sniperrifle,
-/obj/item/weapon/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
+/obj/item/gun/energy/sniperrifle,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4685,7 +4685,7 @@
 "iv" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/xray,
+/obj/item/gun/energy/xray,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4694,8 +4694,8 @@
 "iw" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/ionrifle/pistol,
-/obj/item/weapon/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle/pistol,
+/obj/item/gun/energy/ionrifle/pistol,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4877,7 +4877,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4889,7 +4889,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet/swat,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4938,7 +4938,7 @@
 "iZ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/projectile/heavysniper,
+/obj/item/gun/projectile/heavysniper,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -5020,8 +5020,8 @@
 "je" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/netgun,
-/obj/item/weapon/gun/energy/netgun,
+/obj/item/gun/energy/netgun,
+/obj/item/gun/energy/netgun,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -5209,8 +5209,8 @@
 "jB" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/projectile/automatic/z8,
-/obj/item/weapon/gun/projectile/automatic/z8,
+/obj/item/gun/projectile/automatic/z8,
+/obj/item/gun/projectile/automatic/z8,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -5232,7 +5232,7 @@
 "jD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -5289,9 +5289,9 @@
 "jG" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -5541,11 +5541,11 @@
 /area/centcom/security)
 "kc" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/automatic/p90,
-/obj/item/weapon/gun/projectile/automatic/p90,
-/obj/item/weapon/gun/projectile/automatic/p90,
-/obj/item/weapon/gun/projectile/automatic/p90,
-/obj/item/weapon/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/p90,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -5554,11 +5554,11 @@
 /area/centcom/security)
 "kd" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/automatic/bullpup,
-/obj/item/weapon/gun/projectile/automatic/bullpup,
-/obj/item/weapon/gun/projectile/automatic/bullpup,
-/obj/item/weapon/gun/projectile/automatic/bullpup,
-/obj/item/weapon/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -5567,11 +5567,11 @@
 /area/centcom/security)
 "ke" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/automatic/wt550/lethal,
-/obj/item/weapon/gun/projectile/automatic/wt550/lethal,
-/obj/item/weapon/gun/projectile/automatic/wt550/lethal,
-/obj/item/weapon/gun/projectile/automatic/wt550/lethal,
-/obj/item/weapon/gun/projectile/automatic/wt550/lethal,
+/obj/item/gun/projectile/automatic/wt550/lethal,
+/obj/item/gun/projectile/automatic/wt550/lethal,
+/obj/item/gun/projectile/automatic/wt550/lethal,
+/obj/item/gun/projectile/automatic/wt550/lethal,
+/obj/item/gun/projectile/automatic/wt550/lethal,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
@@ -5581,11 +5581,11 @@
 /area/centcom/security)
 "kf" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -5897,11 +5897,11 @@
 /area/centcom/security)
 "kH" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF,
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF,
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF,
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF,
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -5910,11 +5910,11 @@
 /area/centcom/security)
 "kI" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/shotgun/pump,
-/obj/item/weapon/gun/projectile/shotgun/pump,
-/obj/item/weapon/gun/projectile/shotgun/pump,
-/obj/item/weapon/gun/projectile/shotgun/pump,
-/obj/item/weapon/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
+/obj/item/gun/projectile/shotgun/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -6341,11 +6341,11 @@
 /area/centcom/security)
 "lw" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/automatic/battlerifle,
-/obj/item/weapon/gun/projectile/automatic/battlerifle,
-/obj/item/weapon/gun/projectile/automatic/battlerifle,
-/obj/item/weapon/gun/projectile/automatic/battlerifle,
-/obj/item/weapon/gun/projectile/automatic/battlerifle,
+/obj/item/gun/projectile/automatic/battlerifle,
+/obj/item/gun/projectile/automatic/battlerifle,
+/obj/item/gun/projectile/automatic/battlerifle,
+/obj/item/gun/projectile/automatic/battlerifle,
+/obj/item/gun/projectile/automatic/battlerifle,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -6677,11 +6677,11 @@
 /area/centcom/security)
 "md" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/automatic/pdw,
-/obj/item/weapon/gun/projectile/automatic/pdw,
-/obj/item/weapon/gun/projectile/automatic/pdw,
-/obj/item/weapon/gun/projectile/automatic/pdw,
-/obj/item/weapon/gun/projectile/automatic/pdw,
+/obj/item/gun/projectile/automatic/pdw,
+/obj/item/gun/projectile/automatic/pdw,
+/obj/item/gun/projectile/automatic/pdw,
+/obj/item/gun/projectile/automatic/pdw,
+/obj/item/gun/projectile/automatic/pdw,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -10954,7 +10954,7 @@
 "tT" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
@@ -12038,7 +12038,7 @@
 	pixel_y = 30
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat{
+/obj/item/gun/projectile/shotgun/pump/combat{
 	name = "Discipline"
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -13792,7 +13792,7 @@
 /obj/structure/table/reinforced,
 /obj/item/weapon/melee/baton/loaded,
 /obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -13805,7 +13805,7 @@
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/weapon/storage/box/handcuffs,
-/obj/item/weapon/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /obj/item/weapon/shield/riot,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -13825,7 +13825,7 @@
 	},
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/item/weapon/storage/box/handcuffs,
-/obj/item/weapon/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /obj/item/weapon/shield/riot,
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -14798,7 +14798,7 @@
 /area/centcom/security)
 "Ae" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = 26

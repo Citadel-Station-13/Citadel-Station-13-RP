@@ -38,8 +38,8 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
 		/obj/item/weapon/storage/backpack/dufflebag/sec,
 		/obj/item/weapon/shield/energy,
-		/obj/item/weapon/gun/energy/ionrifle,
-		/obj/item/weapon/gun/energy/xray,
+		/obj/item/gun/energy/ionrifle,
+		/obj/item/gun/energy/xray,
 		/obj/item/weapon/storage/box/emps,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/material/knife/tacknife/combatknife)
@@ -61,10 +61,10 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/weapon/shield/riot/tele,
 		/obj/item/weapon/storage/box/emps,
 		/obj/item/weapon/storage/box/flashbangs,
-		/obj/item/weapon/gun/projectile/automatic/sts35,
+		/obj/item/gun/projectile/automatic/sts35,
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/ammo_magazine/m762/ap,
-		/obj/item/weapon/gun/projectile/colt,
+		/obj/item/gun/projectile/colt,
 		/obj/item/ammo_magazine/m45,
 		/obj/item/weapon/material/knife/tacknife/combatknife)
 
@@ -82,7 +82,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 		/obj/item/weapon/storage/belt/security/tactical/bandolier,
 		/obj/item/clothing/accessory/storage/black_drop_pouches,
 		/obj/item/weapon/storage/backpack/dufflebag/sec,
-		/obj/item/weapon/gun/projectile/automatic/bullpup,
+		/obj/item/gun/projectile/automatic/bullpup,
 		/obj/item/ammo_magazine/m762/ap,
 		/obj/item/ammo_magazine/m762,
 		/obj/item/weapon/shield/energy,
@@ -114,10 +114,10 @@ datum/supply_drop_loot/riot
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/gloves/black,
-		/obj/item/weapon/gun/projectile/shotgun/pump,
-		/obj/item/weapon/gun/energy/gun,
+		/obj/item/gun/projectile/shotgun/pump,
+		/obj/item/gun/energy/gun,
 		/obj/item/clothing/accessory/holster,
-		/obj/item/weapon/gun/launcher/grenade,
+		/obj/item/gun/launcher/grenade,
 		/obj/item/weapon/storage/backpack/dufflebag/sec)
 
 /datum/supply_drop_loot/seeds

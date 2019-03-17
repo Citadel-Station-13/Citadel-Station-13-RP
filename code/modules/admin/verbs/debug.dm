@@ -38,16 +38,16 @@
 				weapon_damage *= M.outgoing_melee_damage_percent
 				modified_damage_percent *= M.outgoing_melee_damage_percent
 
-		if(istype(I, /obj/item/weapon/gun))
-			var/obj/item/weapon/gun/G = I
+		if(istype(I, /obj/item/gun))
+			var/obj/item/gun/G = I
 			var/obj/item/projectile/P
 
-			if(istype(I, /obj/item/weapon/gun/energy))
-				var/obj/item/weapon/gun/energy/energy_gun = G
+			if(istype(I, /obj/item/gun/energy))
+				var/obj/item/gun/energy/energy_gun = G
 				P = new energy_gun.projectile_type()
 
-			else if(istype(I, /obj/item/weapon/gun/projectile))
-				var/obj/item/weapon/gun/projectile/projectile_gun = G
+			else if(istype(I, /obj/item/gun/projectile))
+				var/obj/item/gun/projectile/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
 				P = ammo.BB
 

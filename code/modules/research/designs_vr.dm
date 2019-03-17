@@ -26,7 +26,7 @@
 	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000, "uranium" = 2000)
-	build_path = /obj/item/weapon/gun/energy/sizegun
+	build_path = /obj/item/gun/energy/sizegun
 	sort_string = "TAAAB"
 
 /datum/design/item/bluespace_jumpsuit
@@ -65,7 +65,7 @@
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1000, "gold" = 1000, "uranium" = 750)
-	build_path = /obj/item/weapon/gun/energy/particle/advanced
+	build_path = /obj/item/gun/energy/particle/advanced
 	sort_string = "TAADB"
 
 /datum/design/item/weapon/particlecannon
@@ -73,7 +73,7 @@
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 1500, "gold" = 2000, "uranium" = 1000, "diamond" = 2000)
-	build_path = /obj/item/weapon/gun/energy/particle/cannon
+	build_path = /obj/item/gun/energy/particle/cannon
 	sort_string = "TAADC"
 
 /datum/design/item/hud/omni
@@ -166,7 +166,7 @@
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 3000)
-	build_path = /obj/item/weapon/gun/energy/netgun
+	build_path = /obj/item/gun/energy/netgun
 	sort_string = "TAADF"
 
 /datum/design/circuit/algae_farm

@@ -29,7 +29,7 @@
 
 /*/obj/item/weapon/grenade/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 	if (istype(target, /obj/item/weapon/storage)) return ..() // Trying to put it in a full container
-	if (istype(target, /obj/item/weapon/gun/grenadelauncher)) return ..()
+	if (istype(target, /obj/item/gun/grenadelauncher)) return ..()
 	if((user.get_active_hand() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
 		user << "<span class='warning'>You prime the [name]! [det_time/10] seconds!</span>"
 		active = 1

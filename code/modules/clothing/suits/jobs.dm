@@ -109,7 +109,7 @@
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/projectile, /obj/item/ammo_magazine,
+	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/handcuffs, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/flame/lighter,
 	/obj/item/device/taperecorder, /obj/item/device/uv_light)
 	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
@@ -126,7 +126,7 @@
 	desc = "A forensics technician jacket."
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/projectile, /obj/item/ammo_magazine,
+	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/handcuffs, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/flame/lighter,
 	/obj/item/device/taperecorder, /obj/item/device/uv_light)
 	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)

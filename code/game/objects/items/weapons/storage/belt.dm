@@ -160,9 +160,9 @@
 		/obj/item/weapon/cell/device,
 		/obj/item/weapon/reagent_containers/food/snacks/donut/,
 		/obj/item/weapon/melee/baton,
-		/obj/item/weapon/gun/energy/taser,
-		/obj/item/weapon/gun/energy/stunrevolver,
-		/obj/item/weapon/gun/energy/gun,
+		/obj/item/gun/energy/taser,
+		/obj/item/gun/energy/stunrevolver,
+		/obj/item/gun/energy/gun,
 		/obj/item/weapon/flame/lighter,
 		/obj/item/device/flashlight,
 		/obj/item/device/taperecorder,
@@ -174,10 +174,10 @@
 		/obj/item/device/megaphone,
 		/obj/item/weapon/melee,
 		/obj/item/clothing/accessory/badge,
-		/obj/item/weapon/gun/projectile/sec,
-		/obj/item/weapon/gun/projectile/p92x,
+		/obj/item/gun/projectile/sec,
+		/obj/item/gun/projectile/p92x,
 		/obj/item/taperoll,
-		/obj/item/weapon/gun/projectile/colt/detective
+		/obj/item/gun/projectile/colt/detective
 		)
 
 /obj/item/weapon/storage/belt/detective
@@ -219,7 +219,7 @@
 		/obj/item/weapon/flame/lighter,
 		/obj/item/weapon/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/weapon/gun/projectile/colt/detective
+		/obj/item/gun/projectile/colt/detective
 		)
 
 /obj/item/weapon/storage/belt/soulstone

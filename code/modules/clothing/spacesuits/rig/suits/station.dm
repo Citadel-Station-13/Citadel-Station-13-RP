@@ -291,7 +291,7 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/hazard
 
 	allowed = list(
-		/obj/item/weapon/gun,
+		/obj/item/gun,
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
 		/obj/item/device/suit_cooling_unit,

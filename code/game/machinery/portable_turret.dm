@@ -27,7 +27,7 @@
 	var/locked = 1			//if the turret's behaviour control access is locked
 	var/controllock = 0		//if the turret responds to control panels
 
-	var/installation = /obj/item/weapon/gun/energy/gun		//the type of weapon installed
+	var/installation = /obj/item/gun/energy/gun		//the type of weapon installed
 	var/gun_charge = 0		//the charge of the gun inserted
 	var/projectile = null	//holder for bullettype
 	var/eprojectile = null	//holder for the shot when emagged
@@ -79,7 +79,7 @@
 /obj/machinery/porta_turret/stationary
 	ailock = 1
 	lethal = 1
-	installation = /obj/item/weapon/gun/energy/laser
+	installation = /obj/item/gun/energy/laser
 
 /obj/machinery/porta_turret/stationary/syndie // Generic turrets for POIs that need to not shoot their buddies.
 	enabled = TRUE
@@ -89,14 +89,14 @@
 /obj/machinery/porta_turret/ai_defense
 	name = "defense turret"
 	desc = "This variant appears to be much more durable."
-	installation = /obj/item/weapon/gun/energy/xray // For the armor pen.
+	installation = /obj/item/gun/energy/xray // For the armor pen.
 	health = 250 // Since lasers do 40 each.
 	maxhealth = 250
 
 /obj/machinery/porta_turret/alien // The kind used on the UFO submap.
 	name = "interior anti-boarding turret"
 	desc = "A very tough looking turret made by alien hands."
-	installation = /obj/item/weapon/gun/energy/alien
+	installation = /obj/item/gun/energy/alien
 	enabled = TRUE
 	lethal = TRUE
 	ailock = TRUE
@@ -146,7 +146,7 @@
 	. = ..()
 
 /obj/machinery/porta_turret/proc/setup()
-	var/obj/item/weapon/gun/energy/E = installation	//All energy-based weapons are applicable
+	var/obj/item/gun/energy/E = installation	//All energy-based weapons are applicable
 	//var/obj/item/ammo_casing/shottype = E.projectile_type
 
 	projectile = initial(E.projectile_type)
@@ -158,45 +158,45 @@
 
 /obj/machinery/porta_turret/proc/weapon_setup(var/guntype)
 	switch(guntype)
-		if(/obj/item/weapon/gun/energy/laser/practice)
+		if(/obj/item/gun/energy/laser/practice)
 			iconholder = 1
 			eprojectile = /obj/item/projectile/beam
 
-//			if(/obj/item/weapon/gun/energy/laser/practice/sc_laser)
+//			if(/obj/item/gun/energy/laser/practice/sc_laser)
 //				iconholder = 1
 //				eprojectile = /obj/item/projectile/beam
 
-		if(/obj/item/weapon/gun/energy/retro)
+		if(/obj/item/gun/energy/retro)
 			iconholder = 1
 
-//			if(/obj/item/weapon/gun/energy/retro/sc_retro)
+//			if(/obj/item/gun/energy/retro/sc_retro)
 //				iconholder = 1
 
-		if(/obj/item/weapon/gun/energy/captain)
+		if(/obj/item/gun/energy/captain)
 			iconholder = 1
 
-		if(/obj/item/weapon/gun/energy/lasercannon)
+		if(/obj/item/gun/energy/lasercannon)
 			iconholder = 1
 
-		if(/obj/item/weapon/gun/energy/taser)
+		if(/obj/item/gun/energy/taser)
 			eprojectile = /obj/item/projectile/beam
 			eshot_sound = 'sound/weapons/Laser.ogg'
 
-		if(/obj/item/weapon/gun/energy/stunrevolver)
+		if(/obj/item/gun/energy/stunrevolver)
 			eprojectile = /obj/item/projectile/beam
 			eshot_sound = 'sound/weapons/Laser.ogg'
 
-		if(/obj/item/weapon/gun/energy/gun)
+		if(/obj/item/gun/energy/gun)
 			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
 			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
-		if(/obj/item/weapon/gun/energy/gun/nuclear)
+		if(/obj/item/gun/energy/gun/nuclear)
 			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
 			eshot_sound = 'sound/weapons/Laser.ogg'
 			egun = 1
 
-		if(/obj/item/weapon/gun/energy/xray)
+		if(/obj/item/gun/energy/xray)
 			eprojectile = /obj/item/projectile/beam/xray
 			projectile = /obj/item/projectile/beam/stun // Otherwise we fire xrays on both modes.
 			eshot_sound = 'sound/weapons/eluger.ogg'
@@ -343,7 +343,7 @@ var/list/turret_icons
 				if(can_salvage && prob(70))
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
-						var/obj/item/weapon/gun/energy/Gun = new installation(loc)
+						var/obj/item/gun/energy/Gun = new installation(loc)
 						Gun.power_supply.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
@@ -835,11 +835,11 @@ var/list/turret_icons
 					return
 
 		if(3)
-			if(istype(I, /obj/item/weapon/gun/energy)) //the gun installation part
+			if(istype(I, /obj/item/gun/energy)) //the gun installation part
 
 				if(isrobot(user))
 					return
-				var/obj/item/weapon/gun/energy/E = I //typecasts the item to an energy gun
+				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
 				if(!user.unEquip(I))
 					to_chat(user, "<span class='notice'>\the [I] is stuck to your hand, you cannot put it in \the [src]</span>")
 					return
@@ -945,7 +945,7 @@ var/list/turret_icons
 				return
 			build_step = 3
 
-			var/obj/item/weapon/gun/energy/Gun = new installation(loc)
+			var/obj/item/gun/energy/Gun = new installation(loc)
 			Gun.power_supply.charge = gun_charge
 			Gun.update_icon()
 			installation = null

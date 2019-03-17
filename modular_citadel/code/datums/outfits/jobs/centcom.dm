@@ -15,4 +15,4 @@
 	name = OUTFIT_JOB_NAME("CentCom Officer - Phoebs")
 	shoes = null
 	gloves = /obj/item/clothing/gloves/combat
-	belt = /obj/item/weapon/gun/energy
+	belt = /obj/item/gun/energy

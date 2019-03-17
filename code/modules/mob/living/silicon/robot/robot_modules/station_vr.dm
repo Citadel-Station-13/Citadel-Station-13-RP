@@ -150,9 +150,9 @@
 	src.modules += new /obj/item/weapon/melee/baton/robot(src) //Since the pounce module refused to work, they get a stunbaton instead.
 	src.modules += new /obj/item/device/dogborg/boop_module(src) //Boop people on the nose.
 	src.modules += new /obj/item/taperoll/police(src) //Block out crime scenes.
-	src.modules += new /obj/item/weapon/gun/energy/taser/mounted/cyborg(src) //They /are/ a security borg, after all.
+	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src) //They /are/ a security borg, after all.
 	src.modules += new /obj/item/weapon/dogborg/pounce(src) //Pounce
-	src.emag 	 = new /obj/item/weapon/gun/energy/laser/mounted(src) //Emag. Not a big problem.
+	src.emag 	 = new /obj/item/gun/energy/laser/mounted(src) //Emag. Not a big problem.
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500) //Starts full and has a max of 500
 	water.name = "Water reserves"
@@ -189,7 +189,7 @@
 		F.icon_state = "flash"
 	else if(F.times_used)
 		F.times_used--
-	var/obj/item/weapon/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
+	var/obj/item/gun/energy/taser/mounted/cyborg/T = locate() in src.modules
 	if(T.power_supply.charge < T.power_supply.maxcharge)
 		T.power_supply.give(T.charge_cost * amount)
 		T.update_icon()
@@ -281,9 +281,9 @@
 	src.modules += new /obj/item/weapon/dogborg/jaws/big(src)
 	src.modules += new /obj/item/weapon/melee/baton/robot(src)
 	src.modules += new /obj/item/taperoll/police(src)
-	src.modules += new /obj/item/weapon/gun/energy/taser/mounted/cyborg/ertgun(src)
+	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg/ertgun(src)
 	src.modules += new /obj/item/weapon/dogborg/swordtail(src)
-	src.emag     = new /obj/item/weapon/gun/energy/laser/mounted(src)
+	src.emag     = new /obj/item/gun/energy/laser/mounted(src)
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"

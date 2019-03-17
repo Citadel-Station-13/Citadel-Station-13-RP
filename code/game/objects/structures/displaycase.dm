@@ -15,7 +15,7 @@
 		if (1)
 			new /obj/item/weapon/material/shard( src.loc )
 			if (occupied)
-				new /obj/item/weapon/gun/energy/captain( src.loc )
+				new /obj/item/gun/energy/captain( src.loc )
 				occupied = 0
 			qdel(src)
 		if (2)
@@ -64,7 +64,7 @@
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)
 	if (src.destroyed && src.occupied)
-		new /obj/item/weapon/gun/energy/captain( src.loc )
+		new /obj/item/gun/energy/captain( src.loc )
 		user << "<span class='notice'>You deactivate the hover field built into the case.</span>"
 		src.occupied = 0
 		src.add_fingerprint(user)

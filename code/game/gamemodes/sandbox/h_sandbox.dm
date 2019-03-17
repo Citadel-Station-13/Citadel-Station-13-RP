@@ -132,7 +132,7 @@ datum/hSB
 					var/list/selectable = list()
 					for(var/O in typesof(/obj/item/))
 					//Note, these istypes don't work
-						if(istype(O, /obj/item/weapon/gun))
+						if(istype(O, /obj/item/gun))
 							continue
 						if(istype(O, /obj/item/assembly))
 							continue

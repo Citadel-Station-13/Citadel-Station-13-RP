@@ -319,21 +319,21 @@
 	icon_state = "energykill100"
 
 /obj/random/energy/item_to_spawn()
-	return pick(prob(3);/obj/item/weapon/gun/energy/laser,
-				prob(4);/obj/item/weapon/gun/energy/gun,
-				prob(3);/obj/item/weapon/gun/energy/gun/burst,
-				prob(1);/obj/item/weapon/gun/energy/gun/nuclear,
-				prob(2);/obj/item/weapon/gun/energy/retro,
-				prob(2);/obj/item/weapon/gun/energy/lasercannon,
-				prob(3);/obj/item/weapon/gun/energy/xray,
-				prob(1);/obj/item/weapon/gun/energy/sniperrifle,
-				prob(1);/obj/item/weapon/gun/energy/plasmastun,
-				prob(2);/obj/item/weapon/gun/energy/ionrifle,
-				prob(2);/obj/item/weapon/gun/energy/ionrifle/pistol,
-				prob(3);/obj/item/weapon/gun/energy/toxgun,
-				prob(4);/obj/item/weapon/gun/energy/taser,
-				prob(2);/obj/item/weapon/gun/energy/crossbow/largecrossbow,
-				prob(4);/obj/item/weapon/gun/energy/stunrevolver)
+	return pick(prob(3);/obj/item/gun/energy/laser,
+				prob(4);/obj/item/gun/energy/gun,
+				prob(3);/obj/item/gun/energy/gun/burst,
+				prob(1);/obj/item/gun/energy/gun/nuclear,
+				prob(2);/obj/item/gun/energy/retro,
+				prob(2);/obj/item/gun/energy/lasercannon,
+				prob(3);/obj/item/gun/energy/xray,
+				prob(1);/obj/item/gun/energy/sniperrifle,
+				prob(1);/obj/item/gun/energy/plasmastun,
+				prob(2);/obj/item/gun/energy/ionrifle,
+				prob(2);/obj/item/gun/energy/ionrifle/pistol,
+				prob(3);/obj/item/gun/energy/toxgun,
+				prob(4);/obj/item/gun/energy/taser,
+				prob(2);/obj/item/gun/energy/crossbow/largecrossbow,
+				prob(4);/obj/item/gun/energy/stunrevolver)
 
 /obj/random/energy/sec
 	name = "Random Security Energy Weapon"
@@ -342,8 +342,8 @@
 	icon_state = "energykill100"
 
 /obj/random/energy/sec/item_to_spawn()
-	return pick(prob(2);/obj/item/weapon/gun/energy/laser,
-				prob(2);/obj/item/weapon/gun/energy/gun)
+	return pick(prob(2);/obj/item/gun/energy/laser,
+				prob(2);/obj/item/gun/energy/gun)
 
 /obj/random/projectile
 	name = "Random Projectile Weapon"
@@ -352,39 +352,39 @@
 	icon_state = "revolver"
 
 /obj/random/projectile/item_to_spawn()
-	return pick(prob(3);/obj/item/weapon/gun/projectile/automatic/wt550,
-				prob(3);/obj/item/weapon/gun/projectile/automatic/mini_uzi,
-				prob(3);/obj/item/weapon/gun/projectile/automatic/tommygun,
-				prob(2);/obj/item/weapon/gun/projectile/automatic/c20r,
-				prob(2);/obj/item/weapon/gun/projectile/automatic/sts35,
-				prob(2);/obj/item/weapon/gun/projectile/automatic/z8,
-				prob(4);/obj/item/weapon/gun/projectile/colt,
-				prob(2);/obj/item/weapon/gun/projectile/deagle,
-				prob(1);/obj/item/weapon/gun/projectile/deagle/camo,
-				prob(1);/obj/item/weapon/gun/projectile/deagle/gold,
-				prob(3);/obj/item/weapon/gun/projectile/derringer,
-				prob(1);/obj/item/weapon/gun/projectile/heavysniper,
-				prob(4);/obj/item/weapon/gun/projectile/luger,
-				prob(3);/obj/item/weapon/gun/projectile/luger/brown,
-				prob(4);/obj/item/weapon/gun/projectile/sec,
-				prob(3);/obj/item/weapon/gun/projectile/sec/wood,
-				prob(4);/obj/item/weapon/gun/projectile/p92x,
-				prob(3);/obj/item/weapon/gun/projectile/p92x/brown,
-				prob(4);/obj/item/weapon/gun/projectile/pistol,
-				prob(5);/obj/item/weapon/gun/projectile/pirate,
-				prob(2);/obj/item/weapon/gun/projectile/revolver,
-				prob(4);/obj/item/weapon/gun/projectile/revolver/deckard,
-				prob(4);/obj/item/weapon/gun/projectile/revolver/detective,
-				prob(2);/obj/item/weapon/gun/projectile/revolver/judge,
-				prob(3);/obj/item/weapon/gun/projectile/revolver/lemat,
-				prob(2);/obj/item/weapon/gun/projectile/revolver/mateba,
-				prob(4);/obj/item/weapon/gun/projectile/shotgun/doublebarrel,
-				prob(3);/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn,
-				prob(3);/obj/item/weapon/gun/projectile/shotgun/pump,
-				prob(2);/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-				prob(4);/obj/item/weapon/gun/projectile/shotgun/pump/rifle,
-				prob(3);/obj/item/weapon/gun/projectile/shotgun/pump/rifle/lever,
-				prob(2);/obj/item/weapon/gun/projectile/silenced)
+	return pick(prob(3);/obj/item/gun/projectile/automatic/wt550,
+				prob(3);/obj/item/gun/projectile/automatic/mini_uzi,
+				prob(3);/obj/item/gun/projectile/automatic/tommygun,
+				prob(2);/obj/item/gun/projectile/automatic/c20r,
+				prob(2);/obj/item/gun/projectile/automatic/sts35,
+				prob(2);/obj/item/gun/projectile/automatic/z8,
+				prob(4);/obj/item/gun/projectile/colt,
+				prob(2);/obj/item/gun/projectile/deagle,
+				prob(1);/obj/item/gun/projectile/deagle/camo,
+				prob(1);/obj/item/gun/projectile/deagle/gold,
+				prob(3);/obj/item/gun/projectile/derringer,
+				prob(1);/obj/item/gun/projectile/heavysniper,
+				prob(4);/obj/item/gun/projectile/luger,
+				prob(3);/obj/item/gun/projectile/luger/brown,
+				prob(4);/obj/item/gun/projectile/sec,
+				prob(3);/obj/item/gun/projectile/sec/wood,
+				prob(4);/obj/item/gun/projectile/p92x,
+				prob(3);/obj/item/gun/projectile/p92x/brown,
+				prob(4);/obj/item/gun/projectile/pistol,
+				prob(5);/obj/item/gun/projectile/pirate,
+				prob(2);/obj/item/gun/projectile/revolver,
+				prob(4);/obj/item/gun/projectile/revolver/deckard,
+				prob(4);/obj/item/gun/projectile/revolver/detective,
+				prob(2);/obj/item/gun/projectile/revolver/judge,
+				prob(3);/obj/item/gun/projectile/revolver/lemat,
+				prob(2);/obj/item/gun/projectile/revolver/mateba,
+				prob(4);/obj/item/gun/projectile/shotgun/doublebarrel,
+				prob(3);/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
+				prob(3);/obj/item/gun/projectile/shotgun/pump,
+				prob(2);/obj/item/gun/projectile/shotgun/pump/combat,
+				prob(4);/obj/item/gun/projectile/shotgun/pump/rifle,
+				prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,
+				prob(2);/obj/item/gun/projectile/silenced)
 
 /obj/random/projectile/sec
 	name = "Random Security Projectile Weapon"
@@ -393,9 +393,9 @@
 	icon_state = "revolver"
 
 /obj/random/projectile/sec/item_to_spawn()
-	return pick(prob(3);/obj/item/weapon/gun/projectile/shotgun/pump,
-				prob(2);/obj/item/weapon/gun/projectile/automatic/wt550,
-				prob(1);/obj/item/weapon/gun/projectile/shotgun/pump/combat)
+	return pick(prob(3);/obj/item/gun/projectile/shotgun/pump,
+				prob(2);/obj/item/gun/projectile/automatic/wt550,
+				prob(1);/obj/item/gun/projectile/shotgun/pump/combat)
 
 /obj/random/handgun
 	name = "Random Handgun"
@@ -404,16 +404,16 @@
 	icon_state = "secgundark"
 
 /obj/random/handgun/item_to_spawn()
-	return pick(prob(4);/obj/item/weapon/gun/projectile/sec,
-				prob(4);/obj/item/weapon/gun/projectile/p92x,
-				prob(3);/obj/item/weapon/gun/projectile/sec/wood,
-				prob(3);/obj/item/weapon/gun/projectile/p92x/brown,
-				prob(3);/obj/item/weapon/gun/projectile/colt,
-				prob(2);/obj/item/weapon/gun/projectile/luger,
-				prob(2);/obj/item/weapon/gun/energy/gun,
-				prob(2);/obj/item/weapon/gun/projectile/pistol,
-				prob(1);/obj/item/weapon/gun/energy/retro,
-				prob(1);/obj/item/weapon/gun/projectile/luger/brown)
+	return pick(prob(4);/obj/item/gun/projectile/sec,
+				prob(4);/obj/item/gun/projectile/p92x,
+				prob(3);/obj/item/gun/projectile/sec/wood,
+				prob(3);/obj/item/gun/projectile/p92x/brown,
+				prob(3);/obj/item/gun/projectile/colt,
+				prob(2);/obj/item/gun/projectile/luger,
+				prob(2);/obj/item/gun/energy/gun,
+				prob(2);/obj/item/gun/projectile/pistol,
+				prob(1);/obj/item/gun/energy/retro,
+				prob(1);/obj/item/gun/projectile/luger/brown)
 
 /obj/random/handgun/sec
 	name = "Random Security Handgun"
@@ -422,8 +422,8 @@
 	icon_state = "secgundark"
 
 /obj/random/handgun/sec/item_to_spawn()
-	return pick(prob(3);/obj/item/weapon/gun/projectile/sec,
-				prob(1);/obj/item/weapon/gun/projectile/sec/wood)
+	return pick(prob(3);/obj/item/gun/projectile/sec,
+				prob(1);/obj/item/gun/projectile/sec/wood)
 
 /obj/random/ammo
 	name = "Random Ammunition"
@@ -1356,8 +1356,8 @@ var/list/multi_point_spawns
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
 				/obj/item/clothing/suit/space/syndicate/black/red,
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
-				/obj/item/weapon/gun/projectile/automatic/mini_uzi,
-				/obj/item/weapon/gun/projectile/automatic/mini_uzi,
+				/obj/item/gun/projectile/automatic/mini_uzi,
+				/obj/item/gun/projectile/automatic/mini_uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi/empty,
@@ -1373,8 +1373,8 @@ var/list/multi_point_spawns
 			prob(2);list(
 				/obj/item/clothing/suit/armor/vest,
 				/obj/item/clothing/suit/armor/vest,
-				/obj/item/weapon/gun/projectile/garand,
-				/obj/item/weapon/gun/projectile/garand,
+				/obj/item/gun/projectile/garand,
+				/obj/item/gun/projectile/garand,
 				/obj/item/ammo_magazine/m762garand,
 				/obj/item/ammo_magazine/m762garand,
 				/obj/structure/closet/crate/plastic
@@ -1454,15 +1454,15 @@ var/list/multi_point_spawns
 				/obj/item/clothing/head/bearpelt,
 				/obj/item/clothing/under/soviet,
 				/obj/item/clothing/under/soviet,
-				/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial,
-				/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial,
+				/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial,
+				/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(
-				/obj/item/weapon/gun/projectile/revolver/detective,
-				/obj/item/weapon/gun/projectile/contender,
-				/obj/item/weapon/gun/projectile/p92x,
-				/obj/item/weapon/gun/projectile/derringer,
+				/obj/item/gun/projectile/revolver/detective,
+				/obj/item/gun/projectile/contender,
+				/obj/item/gun/projectile/p92x,
+				/obj/item/gun/projectile/derringer,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(

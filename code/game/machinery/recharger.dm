@@ -8,7 +8,7 @@ obj/machinery/recharger
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/ammo_casing/nsfw_batt) //VOREStation Add - NSFW Batteries
+	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/ammo_casing/nsfw_batt) //VOREStation Add - NSFW Batteries
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -39,8 +39,8 @@ obj/machinery/recharger
 		if(!powered())
 			to_chat(user, "<span class='warning'>The [name] blinks red as you try to insert the item!</span>")
 			return
-		if(istype(G, /obj/item/weapon/gun/energy))
-			var/obj/item/weapon/gun/energy/E = G
+		if(istype(G, /obj/item/gun/energy))
+			var/obj/item/gun/energy/E = G
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>Your gun has no recharge port.</span>")
 				return
@@ -134,7 +134,7 @@ obj/machinery/recharger
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device)
+	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

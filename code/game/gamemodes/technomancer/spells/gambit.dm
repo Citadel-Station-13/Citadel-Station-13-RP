@@ -96,7 +96,7 @@
 
 			for(var/obj/item/I in list(H.l_hand, H.r_hand))
 				// Guns are scary.
-				if(istype(I, /obj/item/weapon/gun)) // Toy guns will count as well but oh well.
+				if(istype(I, /obj/item/gun)) // Toy guns will count as well but oh well.
 					hostile_mobs++
 					continue
 				// Strong melee weapons are scary as well.

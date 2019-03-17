@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/crossbow
+/obj/item/gun/energy/crossbow
 	name = "mini energy-crossbow"
 	desc = "A weapon favored by many mercenary stealth specialists."
 	icon_state = "crossbow"
@@ -14,11 +14,11 @@
 	automatic_charge_overlays = FALSE
 	firemodes = /datum/firemode/energy/ebow
 
-/obj/item/weapon/gun/energy/crossbow/ninja
+/obj/item/gun/energy/crossbow/ninja
 	name = "energy dart thrower"
 	firemodes = /datum/firemode/energy/ebow/ninja
 
-/obj/item/weapon/gun/energy/crossbow/largecrossbow
+/obj/item/gun/energy/crossbow/largecrossbow
 	name = "energy crossbow"
 	desc = "A weapon favored by mercenary infiltration teams."
 	w_class = ITEMSIZE_LARGE
