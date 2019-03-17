@@ -33,6 +33,14 @@
 	containername = "Energy sidearms crate"
 	access = access_armory //VOREStation Edit - Guns are for the armory.
 
+/datum/supply_pack/munitions/vvttaser
+	name = "Weapons - Variable Velocity Tasers"
+	contains = list(/obj/item/weapon/gun/energy/vvt = 4)
+	cost = 50
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "Variable Velocity Tasers Crate"
+	access = access_security
+
 /datum/supply_pack/munitions/flareguns
 	name = "Weapons - Flare guns"
 	contains = list(

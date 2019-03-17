@@ -80,6 +80,6 @@
 	modifystate = "vvttase"
 
 	firemodes = list(
-		list(mode_name="taser", projectile_type=/obj/item/projectile/beam/stun, modifystate="vvttase", charge_cost = 120),
-		list(mode_name="revolver", projectile_type=/obj/item/projectile/energy/electrode/strong, modifystate="vvtrev", charge_cost = 240),
+		list(mode_name="taser", projectile_type=/obj/item/projectile/beam/stun, modifystate="vvttase", charge_cost = 150),
+		list(mode_name="revolver", projectile_type=/obj/item/projectile/energy/electrode/strong, modifystate="vvtrev", charge_cost = 300),
 		)
