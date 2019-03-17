@@ -520,7 +520,7 @@ GLOBAL_DATUM(planet_sif, /datum/planet/sif)
 // Totally radical.
 /datum/weather/sif/fallout
 	name = "fallout"
-	icon_state = "fallout"
+	icon_state = "ashfall_light"
 	light_modifier = 0.7
 	light_color = "#CCFFCC"
 	flight_failure_modifier = 30

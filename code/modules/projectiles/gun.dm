@@ -150,7 +150,7 @@
 	return ..()
 
 /obj/item/gun/proc/is_suppressed(obj/item/projectile/P, obj/item/ammu_casing/C)
-	var/self = suppressed && suppressed.handle_suppression(P)
+	var/self = suppressed && (!istype(suppressed) || suppressed.handle_suppression(P))
 	return self || FIREMODE_AND_CASING(suppressed)
 
 /obj/item/gun/proc/chamber_casing(obj/item/ammu_casing/C)

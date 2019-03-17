@@ -285,3 +285,9 @@ obj/item/weapon/gun/energy/staff/focus
 		power_cycle = FALSE
 	else
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
+
+/obj/item/weapon/gun/energy/ionrifle/pistol
+	projectile_type = /obj/item/projectile/ion/pistol // still packs a punch but no AoE
+
+/obj/item/weapon/gun/energy/ionrifle/weak
+	projectile_type = /obj/item/projectile/ion/small

@@ -9,3 +9,8 @@
 	projectile_type = /obj/item/projectile/energy/electrode/stun
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(6)
 
+/datum/firemode/energy/disable
+	name = "disable"
+	projectile_type = /obj/item/projectile/beam/disable
+	mode_icon_state = "disable"
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(24)
