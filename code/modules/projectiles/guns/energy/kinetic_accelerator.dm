@@ -15,7 +15,7 @@
 	charge_cost = 120 // 20 shots on weapon power cell
 	fire_delay = 16
 	self_recharge = TRUE
-	recharge_time = 10 // every 20*2 seconds will get 20% power restored
+	recharge_amount = SCALE_ENERGY_WEAPON_NORMAL(600)		//1 minute to full charge.
 
 	var/max_mod_capacity = 100
 	var/list/modkits = list()
