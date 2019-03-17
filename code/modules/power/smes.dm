@@ -381,8 +381,8 @@
 		output_level = max(0, min(output_level_max, output_level))	// clamp to range
 
 	else if( href_list["mute"] )
-		lastsolaralert = world.time + 6000
-		lastenginealert = world.time + 6000
+		lastsolaralert = world.time + 12000
+		lastenginealert = world.time + 12000
 
 	investigate_log("input/output; <font color='[input_level>output_level?"green":"red"][input_level]/[output_level]</font> | Output-mode: [output_attempt?"<font color='green'>on</font>":"<font color='red'>off</font>"] | Input-mode: [input_attempt?"<font color='green'>auto</font>":"<font color='red'>off</font>"] by [usr.key]","singulo")
 	log_game("SMES([x],[y],[z]) [key_name(usr)] changed settings: I:[input_level]([input_attempt]), O:[output_level]([output_attempt])")
