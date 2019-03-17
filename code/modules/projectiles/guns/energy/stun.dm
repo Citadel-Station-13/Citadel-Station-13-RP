@@ -75,7 +75,7 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_delay = 10
 
-	projectile_type = /obj/item/projectile/beam/stun/med
+	projectile_type = /obj/item/projectile/beam/stun
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	modifystate = "vvttase"
 
