@@ -3580,8 +3580,6 @@
 	},
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light,
-/obj/item/weapon/gun/energy/netgun,
-/obj/item/weapon/gun/energy/netgun,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "fX" = (
