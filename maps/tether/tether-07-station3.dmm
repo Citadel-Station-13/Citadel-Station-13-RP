@@ -3580,6 +3580,8 @@
 	},
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light,
+/obj/item/weapon/gun/energy/netgun,
+/obj/item/weapon/gun/energy/netgun,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "fX" = (
@@ -27617,6 +27619,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"RG" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/weapon/gun/projectile/sec,
+/obj/item/weapon/gun/projectile/sec,
+/obj/item/weapon/gun/projectile/sec,
+/obj/item/ammo_magazine/m45/rubber,
+/obj/item/ammo_magazine/m45/rubber,
+/obj/item/ammo_magazine/m45/rubber,
+/turf/simulated/floor/tiled/dark,
+/area/security/armory/red)
 "Sa" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -34313,7 +34325,7 @@ gz
 hg
 jb
 gC
-bR
+RG
 Ro
 iw
 bC

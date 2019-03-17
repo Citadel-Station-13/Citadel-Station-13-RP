@@ -1,6 +1,3 @@
-/obj/item/projectile/energy/electrode/strong
-	agony = 70
-
 /obj/item/projectile/energy
 	flash_strength = 10
 

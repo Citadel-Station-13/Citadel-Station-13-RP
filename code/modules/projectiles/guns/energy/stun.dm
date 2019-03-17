@@ -4,6 +4,8 @@
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	projectile_type = /obj/item/projectile/beam/stun
+	charge_cost = 300
+	fire_delay = 4
 
 /obj/item/weapon/gun/energy/taser/mounted
 	name = "mounted taser gun"
@@ -65,3 +67,19 @@
 	fire_delay = 20
 	charge_cost = 600
 	projectile_type = /obj/item/projectile/energy/plasmastun
+
+/obj/item/weapon/gun/energy/vvt
+	name = "variable velocity taser"
+	desc = "The NanoTrasen 'VVT-32' Variable Velocity Taser is a specialty design manufactured for use by the company's private security division. It features a rotating tri-chamber design and two distinct fire modes; a semi-automatic mode that fires traditional taser projectiles and a slow-firing revolver mode that propels overcharged contacts to bring down even the most resistant targets."
+	icon_state = "vvttase100"
+	item_state = null	//so the human update icon uses the icon_state instead.
+	fire_delay = 10
+
+	projectile_type = /obj/item/projectile/beam/stun/med
+	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
+	modifystate = "vvttase"
+
+	firemodes = list(
+		list(mode_name="taser", projectile_type=/obj/item/projectile/beam/stun, modifystate="vvttase", charge_cost = 120),
+		list(mode_name="revolver", projectile_type=/obj/item/projectile/energy/electrode/strong, modifystate="vvtrev", charge_cost = 240),
+		)
