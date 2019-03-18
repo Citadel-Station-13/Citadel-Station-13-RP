@@ -350,6 +350,7 @@
 
 	if (!ui)
 		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
+		ui.set_auto_update(1)
 	..()
 
 /obj/machinery/power/smes/proc/Percentage()
