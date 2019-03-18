@@ -22,6 +22,7 @@
 	var/cutoff_temp = 600
 	var/rod_capacity = 9
 	var/mapped_in = 0
+	var/repairing = 0
 	// Material properties from Tungsten Carbide, otherwise core'll be too weak.
 	// Material properties for the core are just it's heat exchange system, not the entire core.
 	var/specific_heat = 40	// J/(mol*K)
@@ -191,19 +192,23 @@
 	if(!anchored && !W.is_wrench())
 		return ..()
 
+	if(repairing)
+		to_chat(user, "<span class='warning'>\The [src] is being repaired!</span>")
+		return
+
 	if(istype(W, /obj/item/device/multitool))
-		user << "<span class='notice'>You connect \the [src] to \the [W].</span>"
+		to_chat(user, "<span class='notice'>You connect \the [src] to \the [W].</span>")
 		var/obj/item/device/multitool/M = W
 		M.connectable = src
 		return
 
 	if(istype(W, /obj/item/weapon/fuelrod))
 		if(rods.len >= rod_capacity)
-			user << "<span class='notice'>Looks like \the [src] is full.</span>"
+			to_chat(user, "<span class='notice'>Looks like \the [src] is full.</span>")
 		else
 			var/obj/item/weapon/fuelrod/rod = W
 			if(rod.is_melted())
-				user << "<span class='notice'>That's probably a bad idea.</span>"
+				to_chat(user, "<span class='notice'>That's probably a bad idea.</span>")
 				return
 			user.visible_message("[user.name] carefully starts to load \the [W] into to \the [src].", \
 				"You carefully start loading \the [W] into to \the [src].", \
@@ -218,17 +223,17 @@
 
 	if(W.is_wirecutter()) // Wirecutters? Sort of like prongs, for removing a rod. Good luck getting a 20kg fuel rod out with wirecutters though.
 		if(rods.len == 0)
-			user << "<span class='notice'>There's nothing left to remove.</span>"
-			return ..()
+			to_chat(user, "<span class='notice'>There's nothing left to remove.</span>")
+			return
 		for(var/i=1,i<=rods.len,i++)
 			var/obj/item/weapon/fuelrod/rod = rods[i]
 			if(rod.health == 0 || rod.life == 0)
-				user << "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>"
+				to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 				if(do_after(user, 40))
 					eject_rod(rod)
 				return
 		var/obj/item/weapon/fuelrod/rod = rods[rods.len]
-		user << "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>"
+		to_chat(user, "<span class='notice'>You carefully start removing \the [rod] from \the [src].</span>")
 		if(do_after(user, 40))
 			eject_rod(rod)
 		return
@@ -238,22 +243,24 @@
 		if(!WT.remove_fuel(0, user))
 			to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task.</span>")
 			return
+		repairing = 1
 		playsound(src.loc, WT.usesound, 50, 1)
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
 		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
 			health = between(1, health + 10, max_health)
+		repairing = 0
 		return
 
 	if(!W.is_wrench())
 		return ..()
 
 	if(anchored && rods.len > 0)
-		user << "<span class='warning'>You cannot unwrench \the [src], while it contains fuel rods.</span>"
+		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], while it contains fuel rods.</span>")
 		return 1
 
 	playsound(src, W.usesound, 75, 1)
-	if(!anchored || do_after(user, 40))
+	if(!anchored || do_after(user, 40 * W.toolspeed))
 		anchor()
 		user.visible_message("\The [user.name] [anchored ? "secures" : "unsecures"] the bolts holding \the [src.name] to the floor.", \
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
@@ -433,14 +440,14 @@
 							if(istype(E))
 								E.damage += root_distance * 100
 								if(E.damage >= E.min_broken_damage)
-									H << "<span class='danger'>You are blinded by the flash!</span>"
+									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
 									H.sdisabilities |= BLIND
 								else if(E.damage >= E.min_bruised_damage)
-									H << "<span class='danger'>You are blinded by the flash!</span>"
+									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
 									H.eye_blind = 5
 									H.eye_blurry = 5
 								else if(E.damage > 10)
-									H << "<span class='warning'>Your eyes burn.</span>"
+									to_chat(H, "<span class='warning'>Your eyes burn.</span>")
 						if(!H.isSynthetic())
 							H.radiation += max(rads / 10, 0) // Not even a radsuit can save you now.
 						H.apply_damage(max((rads / 10) * H.species.radiation_mod, 0), BURN) // Flash burns
