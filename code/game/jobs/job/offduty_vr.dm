@@ -3,7 +3,7 @@
 //
 
 /datum/job/offduty_civilian
-	title = "Off-Duty Worker"
+	title = "Off-Duty Employee"
 	latejoin_only = TRUE
 	timeoff_factor = -1
 	total_positions = -1
