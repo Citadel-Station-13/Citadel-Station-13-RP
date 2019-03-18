@@ -346,6 +346,12 @@
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
+/obj/machinery/power/smes/buildable/main/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
+	..()
+
 /obj/machinery/power/smes/proc/Percentage()
 	return round(100.0*charge/capacity, 0.1)
 
