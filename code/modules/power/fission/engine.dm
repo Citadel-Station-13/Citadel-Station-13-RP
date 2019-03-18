@@ -1,4 +1,4 @@
-#define REACTOR_RADIATION_MULTIPLIER 15
+#define REACTOR_RADIATION_MULTIPLIER 20
 #define BREACH_RADIATION_MULTIPLIER 0.1
 #define REACTOR_TEMPERATURE_CUTOFF 10000
 #define REACTOR_RADS_TO_MJ 10000
@@ -216,7 +216,7 @@
 				rod.insertion = 0
 		return
 
-	if(istype(W, /obj/item/weapon/tool/wirecutters)) // Wirecutters? Sort of like prongs, for removing a rod. Good luck getting a 20kg fuel rod out with wirecutters though.
+	if(W.is_wirecutter()) // Wirecutters? Sort of like prongs, for removing a rod. Good luck getting a 20kg fuel rod out with wirecutters though.
 		if(rods.len == 0)
 			user << "<span class='notice'>There's nothing left to remove.</span>"
 			return ..()
@@ -233,6 +233,18 @@
 			eject_rod(rod)
 		return
 
+	if(istype(W, /obj/item/weapon/weldingtool) && health < max_health)
+		var/obj/item/weapon/weldingtool/WT = W
+		if(!WT.remove_fuel(0, user))
+			to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task.</span>")
+			return
+		playsound(src.loc, WT.usesound, 50, 1)
+		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
+			"<span class='notice'>You start repairing \the [src].</span>")
+		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
+			health = between(1, health + 10, max_health)
+		return
+
 	if(!W.is_wrench())
 		return ..()
 
@@ -243,7 +255,7 @@
 	playsound(src, W.usesound, 75, 1)
 	if(!anchored || do_after(user, 40))
 		anchor()
-		user.visible_message("[user.name] [anchored ? "secures" : "unsecures"] the bolts holding [src.name] to the floor.", \
+		user.visible_message("\The [user.name] [anchored ? "secures" : "unsecures"] the bolts holding \the [src.name] to the floor.", \
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
 				"You hear a ratchet.")
 
