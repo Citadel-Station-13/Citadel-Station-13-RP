@@ -145,7 +145,7 @@
 	if(cooler)
 		cooler.canremove = 1
 		cooler.forceMove(src)
-/*
+
 /obj/item/clothing/suit/space/void/verb/toggle_helmet()
 
 	set name = "Toggle Helmet"
@@ -183,7 +183,7 @@
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
 			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
-*/ // below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me
+// below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me
 /obj/item/clothing/suit/space/void/attack_self(mob/user)
 	if(!istype(src.loc,/mob/living)) return
 
