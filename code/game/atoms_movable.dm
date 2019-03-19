@@ -25,7 +25,7 @@
 	var/m_flag = 1
 	var/moved_recently = 0
 	var/mob/pulledby = null
-	var/item_state = null // Used to specify the item state for the on-mob overlays.
+	var/item_state
 	var/icon_scale = 1 // Used to scale icons up or down in update_transform().
 	var/icon_rotation = 0 // Used to rotate icons in update_transform()
 	var/old_x = 0

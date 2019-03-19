@@ -69,6 +69,7 @@
 /datum/firemode/energy
 	var/e_cost = 100				//energy cost to fire
 	var/mode_icon_state				//usually the name.
+	var/mode_item_state				//see energy.dm
 
 	//variables for /obj/item/ammo_casing/energy
 	var/projectile_type = /obj/item/projectile/energy		//type of projectile

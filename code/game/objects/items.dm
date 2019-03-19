@@ -94,6 +94,16 @@
 	var/icon/default_worn_icon	//Default on-mob icon
 	var/worn_layer				//Default on-mob layer
 
+	//worn icon
+
+	var/item_state		//this the state in the icon that's being rendered while worn.
+
+	//UNIMPLEMENTED: TODO: PORT INHAND STUFF TO THESE
+	var/item_onmob_lefthand
+	var/item_onmob_righthand
+
+	//end
+
 /obj/item/Initialize()
 	. = ..()
 	if(embed_chance < 0)

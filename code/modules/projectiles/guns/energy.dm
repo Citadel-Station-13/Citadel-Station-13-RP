@@ -22,10 +22,14 @@
 	var/starts_dead_cell = FALSE
 
 	ammo_x_offset = 2
+
 	var/automatic_charge_overlays = TRUE
 	var/charge_sections = 4					//how many sections spritewise to divide gun charge to. 4 is 25, 50, 75, 100. empty = "empty"
 	var/shaded_charge = FALSE				//This gun uses predefined sectioned sprites rather than dynamic generation
 	var/old_ratio = 0						//old ammo ratio to see if it needs to update icon
+	var/automatic_item_state = TRUE			//update item state too
+	var/item_state_use_icon_key = TRUE		//use mode icon key, FALSE for use its own or none if it doesn't exist
+	var/item_state_shaded_charge = TRUE		//uses stateful ratio charges (like egun_kill_4, egun_kill_3, .., egun_kill_0)
 
 /obj/item/gun/energy/Initialize()
 	. = ..()
@@ -218,20 +222,20 @@
 	. = ..()
 	if(!automatic_charge_overlays)
 		return
-	var/ratio = CEILING(CLAMP(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1)
+	var/ratio = cell? CEILING(CLAMP(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1) : 0
 	if(ratio == old_ratio && !force_update)
 		return
 	old_ratio = ratio
 	cut_overlays()
 	if(!cell)
 		add_overlay("[icon_state]_open")
+		return								//how do we have charge without a cell? don't bother.
+
+	//do icon state first
 	var/iconState = "[icon_state]_charge"
-	var/itemState = initial(item_state) || icon_state
 	if(firemode.mode_icon_state)
 		add_overlay("[icon_state]_[firemode.mode_icon_state]")
 		iconState += "_[firemode.mode_icon_state]"
-		if(itemState)
-			itemState += "[firemode.mode_icon_state]"
 	if(cell.charge < firemode.e_cost)
 		add_overlay("[icon_state]_empty")
 	else
@@ -243,10 +247,19 @@
 				add_overlay(charge_overlay)
 		else
 			add_overlay("[icon_state]_charge[ratio]")
-	if(itemState)
-		itemState += "[ratio]"
+
+	//then do inhand/item state
+	var/itemState = initial(item_state) || icon_state
+	var/itemKey = item_state_use_icon_key? firemode.mode_icon_state : firemode.mode_item_state
+	var/oldItemState = item_state
+	if(itemKey)
+		itemState += "_[itemKey]"
+	if(item_state_shaded_charge)
+		itemState += "_[ratio]"
+	if(itemState != oldItemState)
 		item_state = itemState
-	update_held_icon()
+		update_held_icon()
+
 
 ///////////////////////
 
