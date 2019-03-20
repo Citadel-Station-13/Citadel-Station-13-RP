@@ -389,8 +389,11 @@
 	name = "rapid part exchange device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
+ 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_HUGE
-	can_hold = list(/obj/item/weapon/stock_parts)
+	can_hold = list(
+		/obj/item/weapon/cell,
+		/obj/item/weapon/stock_parts)
 	storage_slots = 50
 	use_to_pickup = 1
 	allow_quick_gather = 1
