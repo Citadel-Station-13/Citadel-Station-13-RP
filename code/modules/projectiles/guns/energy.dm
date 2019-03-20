@@ -30,6 +30,7 @@
 	var/automatic_item_state = TRUE			//update item state too
 	var/item_state_use_icon_key = TRUE		//use mode icon key, FALSE for use its own or none if it doesn't exist
 	var/item_state_shaded_charge = TRUE		//uses stateful ratio charges (like egun_kill_4, egun_kill_3, .., egun_kill_0)
+	var/item_state_has_open = FALSE			//has _open state.
 
 /obj/item/gun/energy/Initialize()
 	. = ..()
@@ -227,12 +228,22 @@
 		return
 	old_ratio = ratio
 	cut_overlays()
+
+	var/iconState = "[icon_state]_charge"
+	var/itemState = initial(item_state) || icon_state
+	var/itemKey = item_state_use_icon_key? firemode.mode_icon_state : firemode.mode_item_state
+	var/oldItemState = item_state
+
 	if(!cell)
 		add_overlay("[icon_state]_open")
+		if(item_state_has_open)
+			itemState += "_open"
+		if(itemState != oldItemState)
+			item_state = itemState()
+			update_held_icon()
 		return								//how do we have charge without a cell? don't bother.
 
 	//do icon state first
-	var/iconState = "[icon_state]_charge"
 	if(firemode.mode_icon_state)
 		add_overlay("[icon_state]_[firemode.mode_icon_state]")
 		iconState += "_[firemode.mode_icon_state]"
@@ -249,13 +260,10 @@
 			add_overlay("[icon_state]_charge[ratio]")
 
 	//then do inhand/item state
-	var/itemState = initial(item_state) || icon_state
-	var/itemKey = item_state_use_icon_key? firemode.mode_icon_state : firemode.mode_item_state
-	var/oldItemState = item_state
 	if(itemKey)
-		itemState += "_[itemKey]"
+		itemState += "[itemKey]"
 	if(item_state_shaded_charge)
-		itemState += "_[ratio]"
+		itemState += "[ratio]"
 	if(itemState != oldItemState)
 		item_state = itemState
 		update_held_icon()
