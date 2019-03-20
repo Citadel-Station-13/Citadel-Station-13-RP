@@ -392,8 +392,8 @@
  	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_HUGE
 	can_hold = list(
-		/obj/item/weapon/cell,
-		/obj/item/weapon/stock_parts)
+	/obj/item/weapon/cell,
+	/obj/item/weapon/stock_parts)
 	storage_slots = 50
 	use_to_pickup = 1
 	allow_quick_gather = 1
