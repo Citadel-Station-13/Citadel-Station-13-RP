@@ -7,6 +7,6 @@
 	possible_transfer_amounts = null
 	volume = 80
 
-/obj/item/weapon/reagent_containers/spray/windowsealant/New()
+/obj/item/weapon/reagent_containers/spray/windowsealant/initialize()
 	..()
 	reagents.add_reagent("silicate", 80)

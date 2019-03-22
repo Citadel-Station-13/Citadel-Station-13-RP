@@ -22,9 +22,9 @@
 	icon_state = "knight_blue"
 	item_state = "knight_blue"
 
-/obj/item/clothing/head/helmet/medieval/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/head/helmet/medieval/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 //Armours
 /obj/item/clothing/suit/armor/medieval
@@ -51,9 +51,9 @@
 	icon_state = "knight_blue"
 	item_state = "knight_blue"
 
-/obj/item/clothing/suit/armor/medieval/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/suit/armor/medieval/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 //Crusader stuff
 //Helmets
@@ -71,13 +71,13 @@
 
 /obj/item/clothing/head/helmet/medieval/crusader/horned
 	name = "horned great helm"
-	desc = "A classic metal great helm, effective at stopping melee attacks. This one have horns attached (and may or may not be endrosed by Unathi crew)."
+	desc = "Helfen, Wehren, Heilen!"
 	icon_state = "crusader_horned"
 	item_state = "crusader_horned"
 
 /obj/item/clothing/head/helmet/medieval/crusader/winged
 	name = "winged great helm"
-	desc = "A classic metal great helm, effective at stopping melee attacks. This one have winged horns attached (and may or may not be endrosed by Unathi AND Avian crew)."
+	desc = "Helfen, Wehren, Heilen!"
 	icon_state = "crusader_winged"
 	item_state = "crusader_winged"
 
@@ -134,9 +134,9 @@
 	icon_state = "knight_blue"
 	item_state = "knight_blue"
 
-/obj/item/clothing/head/medievalfake/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/head/medievalfake/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 /obj/item/clothing/head/medievalfake/red
 	icon_state = "knight_red"
@@ -157,9 +157,9 @@
 	icon_state = "knight_green"
 	item_state = "knight_green"
 
-/obj/item/clothing/suit/medievalfake/yellow
-	icon_state = "knight_yellow"
-	item_state = "knight_yellow"
+/obj/item/clothing/suit/medievalfake/orange
+	icon_state = "knight_orange"
+	item_state = "knight_orange"
 
 /obj/item/clothing/suit/medievalfake/blue
 	icon_state = "knight_blue"
@@ -173,7 +173,7 @@
 //Helmets
 /obj/item/clothing/head/medievalfake/crusader
 	name = "great helm replica"
-	desc = "A plastic replica of classic great helm."
+	desc = "A plastic replica of classic great helm. Alas, divine protection is not included and you would be safer with an actual bucket."
 	icon_state = "crusader"
 	item_state = "crusader"
 
@@ -185,13 +185,13 @@
 
 /obj/item/clothing/head/medievalfake/crusader/horned
 	name = "horned great helm replica"
-	desc = "A plastic replica of classic great helm. This one have horns attached (and may or may not be endrosed by Unathi crew)."
+	desc = "A plastic replica of classic great helm. This one have horns attached (and may or may not be endrosed by crew with horns)."
 	icon_state = "crusader_horned"
 	item_state = "crusader_horned"
 
 /obj/item/clothing/head/medievalfake/crusader/winged
 	name = "winged great helm replica"
-	desc = "A plastic replica of classic great helm. This one have winged horns attached (and may or may not be endrosed by Unathi <i>and</i> Avian crew)."
+	desc = "A plastic replica of classic great helm. This one have winged horns attached (and may or may not be endrosed by crew with horns, <i>and</i> wings)."
 	icon_state = "crusader_winged"
 	item_state = "crusader_winged"
 
@@ -204,7 +204,7 @@
 
 /obj/item/clothing/suit/medievalfake/crusader/cross
 	name = "crusader armour replica"
-	desc = "A plastic replica of knight armor with crusader feeling to it."
+	desc = "A plastic replica of knight armor with crusader feeling to it. Alas, divine protection is not included."
 	icon_state = "crusader_cross"
 	item_state = "crusader_cross"
 

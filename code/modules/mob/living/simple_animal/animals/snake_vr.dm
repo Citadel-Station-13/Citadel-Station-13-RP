@@ -78,7 +78,7 @@
 	nutriment_amt = 1
 	nutriment_desc = list("sugar" = 1)
 
-/obj/item/weapon/reagent_containers/food/snacks/snakesnack/New()
+/obj/item/weapon/reagent_containers/food/snacks/snakesnack/initialize()
 	..()
 	if(!snack_colour)
 		snack_colour = pick( list("yellow","green","pink","blue") )

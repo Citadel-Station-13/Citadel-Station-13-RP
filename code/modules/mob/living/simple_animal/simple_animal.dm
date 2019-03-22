@@ -64,9 +64,9 @@
 	var/turf/home_turf				// Set when they spawned, they try to come back here sometimes.
 
 	//Mob interaction
-	var/response_help   = "tries to help"	// If clicked on help intent
-	var/response_disarm = "tries to disarm" // If clicked on disarm intent
-	var/response_harm   = "tries to hurt"	// If clicked on harm intent
+	var/response_help   = "gently pats"	// If clicked on help intent
+	var/response_disarm = "tries to shove" // If clicked on disarm intent
+	var/response_harm   = "violently attacks"	// If clicked on harm intent
 	var/harm_intent_damage = 3		// How much an unarmed harm click does to this mob.
 	var/meat_amount = 0				// How much meat to drop from this mob when butchered
 	var/obj/meat_type				// The meat object to drop
@@ -600,12 +600,12 @@
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
 	ai_log("bullet_act() I was shot by: [Proj.firer]",2)
 
-	/* VOREStation Edit - Ace doesn't like bonus SA damage.
+	//* VOREStation Edit - Ace doesn't like bonus SA damage.
 	//Projectiles with bonus SA damage
 	if(!Proj.nodamage)
 		if(!Proj.SA_vulnerability || Proj.SA_vulnerability == intelligence_level)
 			Proj.damage += Proj.SA_bonus_damage
-	*/ // VOREStation Edit End
+	// */ // VOREStation Edit End
 	. = ..()
 
 	if(Proj.firer)

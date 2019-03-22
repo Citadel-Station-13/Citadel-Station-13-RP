@@ -878,10 +878,9 @@
 		body_parts = list(BP_L_FOOT,BP_R_FOOT)
 
 	alurane
-		name = "Alurane Body"
+		name = "Alraune Body"
 		icon_state = "alurane"
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_GROIN,BP_TORSO,BP_HEAD)
-		ckeys_allowed = list("natje")
 
 	body_tone
 		name = "Body toning (for emergency contrast loss)"
@@ -1017,3 +1016,33 @@
 		icon_state = "heterochromia"
 		body_parts = list(BP_HEAD)
 		species_allowed = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE) //This lets all races use the default hairstyles.
+
+	genfullhead
+		name = "Full Head Coloring"
+		icon_state = "fullhead"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	genfullface
+		name = "Face Coloring"
+		icon_state = "fullface"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	genfade
+		name = "Neck Fade (For Head Coloring)"
+		icon_state = "genfade"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_TORSO)
+
+	genbeak
+		name = "Generic Beak"
+		icon_state = "genbeak"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	genshortbeak
+		name = "Short Beak"
+		icon_state = "shortbeak"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)

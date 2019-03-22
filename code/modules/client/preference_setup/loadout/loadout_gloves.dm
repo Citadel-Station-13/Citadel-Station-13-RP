@@ -98,6 +98,9 @@
 	ringtype["ring, glass"] = /obj/item/clothing/gloves/ring/material/glass
 	ringtype["ring, wood"] = /obj/item/clothing/gloves/ring/material/wood
 	ringtype["ring, plastic"] = /obj/item/clothing/gloves/ring/material/plastic
+	ringtype["ring, uranium"] = /obj/item/clothing/gloves/ring/material/uranium
+	ringtype["ring, osmium"] = /obj/item/clothing/gloves/ring/material/osmium
+	ringtype["ring, mhydrogen"] = /obj/item/clothing/gloves/ring/material/mhydrogen
 	gear_tweaks += new/datum/gear_tweak/path(ringtype)
 
 /datum/gear/gloves/circuitry

@@ -65,7 +65,7 @@
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
 		unique_reskin = options[choice]
-		M << "Your gun is now sprited as [choice]. Say hello to your new friend."
+		M << "Your gun is now a(n) [choice]. Say hello to your new friend."
 		return 1
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks

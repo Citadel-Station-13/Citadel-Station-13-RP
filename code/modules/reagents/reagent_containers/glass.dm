@@ -47,7 +47,7 @@
 		/obj/machinery/radiocarbon_spectrometer
 		)
 
-/obj/item/weapon/reagent_containers/glass/New()
+/obj/item/weapon/reagent_containers/glass/initialize()
 	..()
 	if(LAZYLEN(prefill))
 		for(var/R in prefill)
@@ -150,7 +150,7 @@
 	item_state = "beaker"
 	matter = list("glass" = 500)
 
-/obj/item/weapon/reagent_containers/glass/beaker/New()
+/obj/item/weapon/reagent_containers/glass/beaker/initialize()
 	..()
 	desc += " Can hold up to [volume] units."
 
