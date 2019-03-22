@@ -209,7 +209,7 @@
 	sprites = list(
 					"Medical Hound" = "medihound",
 					"Dark Medical Hound (Static)" = "medihounddark",
-					"Mediborg model V-2" = "vale"
+					"Mediborg model V-2" = "vale",
 					)
 
 /obj/item/weapon/robot_module/robot/medihound/New(var/mob/living/silicon/robot/R)
@@ -250,7 +250,7 @@
 	K.synths = list(medicine)
 	L.uses_charge = 1
 	L.charge_costs = list(1000)
-	L.synths = list(medicine) 
+	L.synths = list(medicine)
 	src.modules += K
 	src.modules += L // END CITADEL CHANGES
 
@@ -403,12 +403,19 @@
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
 	src.modules += new /obj/item/weapon/gripper/research(src)
+	src.modules += new /obj/item/weapon/gripper/no_use/organ/robotics(src)
+	src.modules += new /obj/item/weapon/gripper/no_use/mech(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
 	src.modules += new /obj/item/weapon/tool/screwdriver/cyborg(src)
+	src.modules += new /obj/item/weapon/tool/wrench/cyborg(src)
+	src.modules += new /obj/item/device/robotanalyzer(src)
 	src.modules += new /obj/item/stack/cable_coil/cyborg(src)
 	src.modules += new /obj/item/weapon/weldingtool/electric/mounted/cyborg(src)
+	src.modules += new /obj/item/device/multitool(src)
 	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
 	src.modules += new /obj/item/weapon/storage/part_replacer(src)
+	src.modules += new /obj/item/weapon/card/robot(src)
+	src.modules += new /obj/item/weapon/shockpaddles/robot/jumper(src)
 	src.emag = new /obj/item/weapon/hand_tele(src)
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
@@ -441,8 +448,8 @@
 /obj/item/weapon/robot_module/robot/engiedog
 	name = "Construction Hound module"
 	sprites = list(
+					"V2 Engidog" = "thottbot",
 					"Pupdozer" = "pupdozer",
-					"V2 Engidog" = "thottbot"
 					)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
@@ -463,6 +470,10 @@
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src)
+	src.modules += new /obj/item/device/geiger(src)
+	src.modules += new /obj/item/device/pipe_painter(src)
+	src.modules += new /obj/item/device/floor_painter(src)
+	src.modules += new /obj/item/weapon/gripper(src)
 
 	//Painfully slow charger regen but high capacity. Also starts with low amount.
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
