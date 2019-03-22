@@ -307,7 +307,7 @@
 	name = "internal affair's headset"
 	desc = "The headset of your worst enemy."
 	icon_state = "com_headset"
-	ks2type = /obj/item/device/encryptionkey/heads/hos
+	ks2type = /obj/item/device/encryptionkey/heads/captain
 
 /obj/item/device/radio/headset/mmi_radio
 	name = "brain-integrated radio"
