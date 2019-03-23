@@ -111,6 +111,7 @@
 	offline_slowdown = 1
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75
+	seal_delay = 8
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/eva
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
@@ -139,7 +140,6 @@
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/rcd,
 		/obj/item/rig_module/vision/meson
 		)
 

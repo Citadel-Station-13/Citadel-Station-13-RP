@@ -190,7 +190,6 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 	log_world(msg)
 
 	if (!current_runlevel)
-		ticker.block_start = FALSE //CitEd: stop blocking start in gameticker.dm.
 		SetRunLevel(RUNLEVEL_LOBBY)
 
 	// Sort subsystems by display setting for easy access.

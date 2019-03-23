@@ -1,13 +1,13 @@
-/*
+
 /datum/supply_pack/sci/dune_buggy
 	name = "Exploration Dune Buggy"
 	contains = list(
 			/obj/vehicle/train/rover/engine/dunebuggy
 			)
-	cost = 100
+	cost = 200
 	containertype = /obj/structure/largecrate
 	containername = "Exploration Dune Buggy Crate"
-*/
+
 /datum/supply_pack/sci/pred
 	name = "Dangerous Predator crate"
 	cost = 40

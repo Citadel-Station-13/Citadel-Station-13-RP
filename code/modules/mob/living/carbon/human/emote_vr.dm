@@ -13,7 +13,7 @@
 				message = "[flapping ? "starts" : "stops"] flapping their wings."
 			else
 				return 1
-		if ("mlem")
+/*		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
 ///////////////////////// EMOTES PORTED FROM MAIN START
@@ -112,16 +112,32 @@
 						else
 							E.fracture()
 						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("spammed *nya and broke their [breaking].", src)
+						log_and_message_admins("spammed *nya and broke their [breaking].", src) */
 ///////////////////////// EMOTES PORTED FROM MAIN END
-		if ("peep")
+/*		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
+		if("chirp")
+			message = "<B>The [src.name]</B> chirps!"
+			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
+			m_type = 2
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
+		if ("merp")
+			message = "lets out a merp."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/merp.ogg', 50, 1, -1)
+		if ("bark")
+			message = "lets out a bark."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+		if ("hiss")
+			message = "lets out a hiss."
+			m_type = 2
+			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1) */
 		if ("nsay")
 			nsay()
 			return TRUE

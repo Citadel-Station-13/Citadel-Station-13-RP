@@ -101,7 +101,8 @@
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
-	alt_titles = list("Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
+	alt_titles = list("Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist,
+			  "Therapist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
 
 /datum/job/paramedic
 	title = "Paramedic"

@@ -479,7 +479,7 @@
 
 /datum/recipe/pancakes
 	appliance = OVEN
-	fruit = list("blueberries" = 2)
+	fruit = list("berries" = 2)
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/sliceable/flatdough,
 		/obj/item/weapon/reagent_containers/food/snacks/sliceable/flatdough
