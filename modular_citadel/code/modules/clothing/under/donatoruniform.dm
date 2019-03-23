@@ -15,7 +15,7 @@
 /obj/item/clothing/under/donator/opd
 	name = "Olympius PD Service Uniform"
 	desc = "Special Uniform with an Olympius logo on it."
-	icon_state = "officerblueclothes_s"
-	item_state = "officerblueclothes_s"
+	icon_state = "hungrycricket_opd"
+	item_state = "hungrycricket_opd"
 	rolled_sleeves = 0
 	rolled_down = 0

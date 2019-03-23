@@ -13,7 +13,7 @@
 				message = "[flapping ? "starts" : "stops"] flapping their wings."
 			else
 				return 1
-		if ("mlem")
+/*		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
 ///////////////////////// EMOTES PORTED FROM MAIN START
@@ -112,9 +112,9 @@
 						else
 							E.fracture()
 						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("spammed *nya and broke their [breaking].", src)
+						log_and_message_admins("spammed *nya and broke their [breaking].", src) */
 ///////////////////////// EMOTES PORTED FROM MAIN END
-		if ("peep")
+/*		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
@@ -137,7 +137,7 @@
 		if ("hiss")
 			message = "lets out a hiss."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1)
+			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1) */
 		if ("nsay")
 			nsay()
 			return TRUE

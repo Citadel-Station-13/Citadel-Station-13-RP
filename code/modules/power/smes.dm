@@ -41,10 +41,16 @@
 
 	var/open_hatch = 0
 	var/name_tag = null
-	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
+	var/building_terminal = 0 		//Suggestions about how to avoid clickspam building several terminals accepted!
 	var/obj/machinery/power/terminal/terminal = null
-	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
-	var/grid_check = FALSE // If true, suspends all I/O.
+	var/should_be_mapped = 0 		// If this is set to 0 it will send out warning on New()
+	var/grid_check = FALSE 			// If true, suspends all I/O.
+
+	var/lastsolaralert = 0
+	var/lastenginealert = 0
+	var/lastcharge = 2e+007
+	var/lastcheck = 0
+	var/percentfull
 
 /obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
 
@@ -340,6 +346,13 @@
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
+/obj/machinery/power/smes/buildable/main/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
+		ui.set_auto_update(1)
+	..()
+
 /obj/machinery/power/smes/proc/Percentage()
 	return round(100.0*charge/capacity, 0.1)
 
@@ -373,6 +386,10 @@
 			if("set")
 				output_level = (input(usr, "Enter new output level (0-[output_level_max/1000] kW)", "SMES Output Power Control", output_level/1000) as num) * 1000
 		output_level = max(0, min(output_level_max, output_level))	// clamp to range
+
+	else if( href_list["mute"] )
+		lastsolaralert = world.time + 12000
+		lastenginealert = world.time + 12000
 
 	investigate_log("input/output; <font color='[input_level>output_level?"green":"red"][input_level]/[output_level]</font> | Output-mode: [output_attempt?"<font color='green'>on</font>":"<font color='red'>off</font>"] | Input-mode: [input_attempt?"<font color='green'>auto</font>":"<font color='red'>off</font>"] by [usr.key]","singulo")
 	log_game("SMES([x],[y],[z]) [key_name(usr)] changed settings: I:[input_level]([input_attempt]), O:[output_level]([output_attempt])")
@@ -441,3 +458,35 @@
 /obj/machinery/power/smes/magical/process()
 	charge = 5000000
 	..()
+
+/obj/machinery/power/smes/buildable/main
+	name = "main smes"
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the main one for facility power."
+	charge = 2e7
+	input_level = 500000
+	output_level = 1000000
+
+/obj/machinery/power/smes/buildable/main/process()
+
+	percentfull = 100.0*charge/capacity
+
+	if(percentfull < 30 && percentfull > 20 && world.time >= lastsolaralert && charge < lastcharge)
+		global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge and seems to be discharging. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
+		lastsolaralert = world.time + 1800
+
+	if(percentfull < 20 && world.time >= lastenginealert && charge < lastcharge)
+		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge and seems to be discharging. Non-Engineering personnel are now advised to attempt engine startup procedures if not already being done.", "SMES Monitor")
+		lastenginealert = world.time + 1800
+
+	if(lastcheck <= world.time ||lastcheck == 0)
+		lastcharge = charge
+		lastcheck = world.time + 20
+	..()
+
+
+/obj/machinery/power/smes/buildable/engine
+	name = "engine smes"
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. This is the one dedicated to the engine."
+	charge = 2e6
+	input_level = 100000
+	output_level = 200000

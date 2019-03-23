@@ -95,24 +95,18 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/excursion/tether)
 "aar" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/tether)
-"aas" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+006;
-	input_attempt = 1;
-	input_level = 100000;
-	output_level = 200000;
-	RCon_tag = "Engine - Core"
-	},
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/power/smes/buildable/engine,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"aas" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
 "aat" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/explored/upper_level)
@@ -192,14 +186,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "aaG" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+007;
-	cur_coils = 4;
-	input_attempt = 1;
-	input_level = 500000;
-	output_level = 1e+006;
-	RCon_tag = "Power - Main"
-	},
+/obj/machinery/power/smes/buildable/main,
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
@@ -10742,12 +10729,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/button/remote/airlock{
-	dir = 8;
-	id = "captaindoor";
-	name = "Office Doors";
-	req_access = list(20)
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEs" = (
@@ -17026,7 +17007,8 @@
 "bnW" = (
 /obj/machinery/computer/communications,
 /obj/machinery/keycard_auth{
-	pixel_x = -28
+	pixel_x = -28;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -17048,6 +17030,21 @@
 	},
 /obj/item/weapon/storage/secure/safe{
 	pixel_x = -28
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "captaindoor";
+	name = "Office Doors";
+	pixel_x = -28;
+	pixel_y = 23;
+	req_access = list(20)
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "cap_office";
+	name = "Security Shutters";
+	pixel_x = -28;
+	pixel_y = 12
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -19687,12 +19684,6 @@
 /area/crew_quarters/captain)
 "bHg" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/button/remote/blast_door{
-	id = "cap_office";
-	name = "Security Shutters";
-	pixel_x = 0;
-	pixel_y = -24
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHi" = (
@@ -29099,7 +29090,7 @@ aaa
 aaa
 aaa
 acL
-aas
+aar
 aaR
 abr
 abD
@@ -33806,7 +33797,7 @@ aeo
 aaq
 aaq
 aau
-aar
+aas
 avK
 avN
 aad
@@ -33948,7 +33939,7 @@ amF
 avG
 adB
 aaq
-aar
+aas
 avK
 avN
 aad
@@ -34090,7 +34081,7 @@ amF
 avG
 adB
 aaq
-aar
+aas
 avK
 auH
 aad
@@ -34942,7 +34933,7 @@ aaD
 avG
 tIi
 aaq
-aar
+aas
 avK
 auQ
 aad
@@ -35084,7 +35075,7 @@ amL
 aob
 dbI
 aaq
-aar
+aas
 avK
 qgR
 aad
@@ -35226,7 +35217,7 @@ aep
 aeu
 aev
 aau
-aar
+aas
 avK
 qgR
 aad

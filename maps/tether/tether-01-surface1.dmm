@@ -2094,6 +2094,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 10
 	},
+/obj/item/device/binoculars,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "adR" = (
@@ -25460,8 +25461,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
-	req_access = list();
-	req_one_access = list(7,29)
+	req_access = list(55);
+	req_one_access = list()
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -27033,8 +27034,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
-	req_access = list();
-	req_one_access = list(7,29)
+	req_access = list(55);
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology)
