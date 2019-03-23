@@ -49,7 +49,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/chicken
 	name = "chicken"
-	icon = 'modular_citadel/icons/obj/food_syn.dmi'
+	icon = 'icons/obj/food.dmi'
 	icon_state = "chickenbreast"
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"

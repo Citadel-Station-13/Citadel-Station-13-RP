@@ -18073,7 +18073,7 @@
 "IO" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
