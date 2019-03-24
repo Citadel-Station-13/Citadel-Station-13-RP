@@ -110,6 +110,53 @@
 	else
 		icon_state = "secgundark-e"
 
+/obj/item/weapon/gun/projectile/secnew
+	var/unique_reskin
+	name = ".45 pistol"
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
+	icon = 'modular_citadel/icons/obj/mk58.dmi'
+	icon_state = "secguncomp"
+	magazine_type = /obj/item/ammo_magazine/m45/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	caliber = ".45"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	load_method = MAGAZINE
+
+/obj/item/weapon/gun/projectile/secnew/verb/reskin_gun()
+	set name = "Resprite gun"
+	set category = "Object"
+	set desc = "Click to choose a sprite for your gun."
+
+	var/mob/M = usr
+	var/list/options = list()
+	options["NT Mk. 58, Old"] = "secguncomp"
+	options["NT Mk. 58 Custom, Old"] = "secgundark"
+	options["NT Mk. 58, New"] = "mk58"
+	options["NT Mk. 58 Custom, New"] = "mk58_wood"
+	var/choice = input(M,"Choose your sprite!","Resprite Gun") in options
+	if(src && choice && !M.stat && in_range(M,src))
+		icon_state = options[choice]
+		unique_reskin = options[choice]
+		M << "Your gun is now sprited as [choice]."
+		return 1
+
+/obj/item/weapon/gun/projectile/secnew/update_icon()
+	if(ammo_magazine)
+		if(unique_reskin)
+			icon_state = unique_reskin
+		else
+			icon_state = initial(icon_state)
+	else
+		if(unique_reskin)
+			icon_state = "[unique_reskin]-e"
+		else
+			icon_state = "[initial(icon_state)]-e"
+
+/obj/item/weapon/gun/projectile/secnew/flash
+	name = ".45 pistol"
+	magazine_type = /obj/item/ammo_magazine/m45/flash
+
 /obj/item/weapon/gun/projectile/silenced
 	name = "silenced pistol"
 	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
