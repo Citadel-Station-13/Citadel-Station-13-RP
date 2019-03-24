@@ -399,7 +399,7 @@
 	allow_quick_empty = 1
 	collection_mode = 1
 	display_contents_with_number = 1
-	slot_flags = SLOT_BELT
+	//slot_flags = SLOT_BELT
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = 100
 
