@@ -51,6 +51,17 @@
 	var/lastcharge = 2e+007
 	var/lastcheck = 0
 	var/percentfull
+	var/enginecheck1 = FALSE
+	var/enginecheck2 = FALSE
+	var/enginecheck3 = FALSE
+	var/enginecheckv1 = 0
+	var/enginecheckv3 = 0
+	var/solarcheck1 = FALSE
+	var/solarcheck2 = FALSE
+	var/solarcheck3 = FALSE
+	var/solarcheckv1 = 0
+	var/solarcheckv3 = 0
+	var/checkselect = 1
 
 /obj/machinery/power/smes/drain_power(var/drain_check, var/surge, var/amount = 0)
 
@@ -470,11 +481,49 @@
 
 	percentfull = 100.0*charge/capacity
 
-	if(percentfull < 30 && percentfull > 20 && world.time >= lastsolaralert && charge < lastcharge)
+	if(percentfull < 30 && percentfull > 20  && charge < lastcharge)
+		switch(checkselect)
+			if(1)
+				solarcheck1 = TRUE
+				checkselect = 2
+				solarcheckv1 = charge
+			if(2)
+				solarcheck2 = TRUE
+				checkselect = 3
+			if(3)
+				solarcheck3 = TRUE
+				checkselect = 4
+				solarcheckv3 = charge
+			if(4)
+				checkselect = 1
+				solarcheck1 = FALSE
+				solarcheck2 = FALSE
+				solarcheck3 = FALSE
+
+	if(percentfull < 20 && charge < lastcharge)
+		switch(checkselect)
+			if(1)
+				enginecheck1 = TRUE
+				checkselect = 2
+				enginecheckv1 = charge
+			if(2)
+				enginecheck2 = TRUE
+				checkselect = 3
+			if(3)
+				enginecheck3= TRUE
+				checkselect = 4
+				enginecheckv3 = charge
+			if(4)
+				checkselect = 1
+				enginecheck1 = FALSE
+				enginecheck2 = FALSE
+				enginecheck3 = FALSE
+
+	if(solarcheck1 && solarcheck2 && solarcheck3 == TRUE && solarcheckv1 > solarcheckv3 && world.time >= lastsolaralert)
 		global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge and seems to be discharging. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
 		lastsolaralert = world.time + 1800
 
-	if(percentfull < 20 && world.time >= lastenginealert && charge < lastcharge)
+	if(enginecheck1 && enginecheck2 && enginecheck3 == TRUE && enginecheckv1 > enginecheckv3 && world.time >= lastenginealert)
 		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge and seems to be discharging. Non-Engineering personnel are now advised to attempt engine startup procedures if not already being done.", "SMES Monitor")
 		lastenginealert = world.time + 1800
 
