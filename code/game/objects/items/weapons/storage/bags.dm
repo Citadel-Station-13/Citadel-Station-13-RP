@@ -314,13 +314,13 @@
 	capacity = 500//Borgs get more because >specialization
 
 // -----------------------------
-//           Cash Bag
+//           Cash Bag			cit edit: its now a moneybag to replace the godawful mint moneybag
 // -----------------------------
 
 /obj/item/weapon/storage/bag/cash
-	name = "cash bag"
+	name = "moneybag"
 	icon = 'icons/obj/storage.dmi'
-	icon_state = "cashbag"
+	icon_state = "moneybag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL

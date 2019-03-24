@@ -165,6 +165,7 @@
 		new/datum/stack_recipe("white folder", /obj/item/weapon/folder/white), \
 		new/datum/stack_recipe("yellow folder", /obj/item/weapon/folder/yellow), \
 		))
+	recipes += new/datum/stack_recipe("cardboard coin", /obj/item/weapon/coin/cardboard)
 
 /material/snow/generate_recipes()
 	recipes = list()

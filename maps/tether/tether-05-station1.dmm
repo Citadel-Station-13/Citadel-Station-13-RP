@@ -9736,6 +9736,7 @@
 /obj/machinery/keycard_auth{
 	pixel_x = -28
 	},
+/obj/item/weapon/coin/hop,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "aBt" = (
@@ -14531,6 +14532,7 @@
 /area/hallway/station/atrium)
 "aYE" = (
 /obj/structure/table/reinforced,
+/obj/item/weapon/coin/ce,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aYF" = (

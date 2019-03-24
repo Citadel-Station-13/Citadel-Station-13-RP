@@ -19529,6 +19529,10 @@
 /obj/structure/table/glass,
 /obj/item/weapon/folder/white_rd,
 /obj/item/weapon/stamp/rd,
+/obj/item/weapon/coin/void{
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "HB" = (

@@ -2319,6 +2319,10 @@
 	dir = 1
 	},
 /obj/machinery/mineral/input,
+/obj/structure/sign/warning{
+	name = "\improper INPUT AREA";
+	pixel_y = -32
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aek" = (
@@ -2338,10 +2342,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/mineral/output,
-/obj/item/weapon/moneybag{
-	anchored = 1;
-	name = "money bag"
-	},
+/obj/item/weapon/storage/bag/cash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aem" = (

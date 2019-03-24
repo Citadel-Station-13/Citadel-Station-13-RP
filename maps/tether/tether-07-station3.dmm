@@ -6106,6 +6106,10 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
+/obj/item/weapon/coin/hos{
+	pixel_x = 4;
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "jY" = (
@@ -17610,6 +17614,9 @@
 	pixel_x = 2;
 	pixel_y = 6
 	},
+/obj/item/weapon/coin/qm{
+	pixel_y = 10
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "BO" = (
@@ -24772,6 +24779,10 @@
 /area/crew_quarters/heads/cmo)
 "Ny" = (
 /obj/structure/table/glass,
+/obj/item/weapon/coin/cmo{
+	pixel_x = 10;
+	pixel_y = 3
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "Nz" = (
