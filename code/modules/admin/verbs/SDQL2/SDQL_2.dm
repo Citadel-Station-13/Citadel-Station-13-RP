@@ -608,6 +608,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				out += d
 			SDQL2_TICK_CHECK
 			SDQL2_HALT_CHECK
+	
+	else if(ispath(type, /client))		//yeah okay.
+		for(var/client/C in location)
+			out += C
+			SDQL2_TICK_CHECK
+			SDQL2_HALT_CHECK
 
 	else if(ispath(type, /datum))
 		if(location == world) //snowflake for byond shortcut
@@ -704,7 +710,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			SDQL_print(x, text_list)
 			if (!isnull(x) && !isnum(x) && L[x] != null)
 				text_list += " -> "
-				SDQL_print(L[L[x]])
+				SDQL_print(L[L[x]], text_list)
 		text_list += "]<br>"
 	else
 		if(isnull(object))
