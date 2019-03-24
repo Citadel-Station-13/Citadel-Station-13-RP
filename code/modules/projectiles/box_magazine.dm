@@ -43,7 +43,7 @@
 /obj/item/ammo_box/rejuvenate(fully_heal, admin_revive)
 	. = ..()
 	if(fully_heal)
-		set_full
+		set_full()
 
 /obj/item/ammo_box/proc/set_full()
 	default_ammo_left = initial(default_ammo_left)
@@ -57,7 +57,7 @@
 	if(. & COMPONENT_NO_INTERACT)
 		return
 	if(open_container)
-		var/obj/item/ammo_casing/A = expend_top_casing()
+		var/obj/item/ammo_casing/A = default_expend_casing()
 		if(A)
 			A.forceMove(drop_location())
 			if(!user.is_holding(src) || !user.put_in_hands(A))
@@ -72,7 +72,7 @@
 	var/atom/drop = drop_location()
 	var/obj/item/ammu_casing/A
 	do
-		A = expend_top_round()
+		A = default_expend_round()
 		A.forceMove(drop)
 	while(A)
 	update_icon()
@@ -105,7 +105,7 @@
 			return FALSE
 	if(space_left() > 0)
 		R.forceMove(src)
-		insert_top_casing(R)
+		default_top_casing(R)
 	else if(replace_spent)
 		var/obj/item/ammu_casing/C = replace_round(get_index_first_spent(), R)
 		if(C)
@@ -119,7 +119,7 @@
 		return 0
 	for(var/i in L)
 		var/obj/item/ammu_casing/C = i
-		if(insert_top_casing(C))
+		if(default_insert_casing(C))
 			C.forceMove(src)
 			L -= C
 			.++
@@ -142,15 +142,6 @@
 ////////////////////////////////////////
 ///////////////////////
 
-	var/multiple_sprites = 0
-	//because BYOND doesn't support numbers as keys in associative lists
-	var/list/icon_keys = list()		//keys
-	var/list/ammo_states = list()	//values
-
-/obj/item/ammo_magazine/New()
-	..()
-	if(multiple_sprites)
-		initialize_magazine_icondata(src)
 
 
 /obj/item/ammo_magazine/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -185,6 +176,28 @@
 	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
 	update_icon()
 
+	var/multiple_sprites = 0
+	//because BYOND doesn't support numbers as keys in associative lists
+	var/list/icon_keys = list()		//keys
+	var/list/ammo_states = list()	//values
+
+/obj/item/ammo_magazine/New()
+	..()
+	if(multiple_sprites)
+		initialize_magazine_icondata(src)
+
+//yeah this is totally not copied from energy guns.
+	var/automatic_ammo_overlays = TRUE
+	var/shaded_ammo_levels = TRUE			//true = use ratios, false = use overlays + offsets
+	var/ammo_offset_x = 0
+	var/ammo_offset_y = -1
+	var/ammo_sections = 4
+	var/old_ratio = 0
+
+/obj/item/ammo_box/update_icon()
+	if(!automatic_ammo_overlays)
+		return
+	cut_overlays()
 
 
 /obj/item/ammo_magazine/update_icon()
@@ -247,19 +260,6 @@
 	throw_range = 7
 	var/multiple_sprites = 0
 	var/multiload = 1
-	var/list/bullet_cost
-	var/list/base_cost// override this one as well if you override bullet_cost
-
-/obj/item/ammo_box/Initialize()
-	. = ..()
-	if (!bullet_cost)
-		for (var/material in materials)
-			var/material_amount = materials[material]
-			LAZYSET(base_cost, material, (material_amount * 0.10))
-
-			material_amount *= 0.90 // 10% for the container
-			material_amount /= max_ammo
-			LAZYSET(bullet_cost, material, material_amount)
 
 
 
@@ -304,10 +304,6 @@
 		if(2)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	for (var/material in bullet_cost)
-		var/material_amount = bullet_cost[material]
-		material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-		materials[material] = material_amount
 
 
 /obj/item/ammo_casing/attackby(obj/item/I, mob/user, params)

@@ -10,6 +10,7 @@
 	unacidable = TRUE
 	pass_flags = PASSTABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	matter = null
 
 	////TG PROJECTILE SYTSEM
 	//Projectile stuff

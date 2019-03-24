@@ -1,0 +1,2 @@
+/datum/firemode/ballistic
+
