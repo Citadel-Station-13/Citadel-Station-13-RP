@@ -5,6 +5,7 @@
 	magazine_type = /obj/item/ammo_magazine/m45
 	allowed_magazines = list(/obj/item/ammo_magazine/m45)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	icon = 'modular_citadel/icons/obj/mk58.dmi'
 	icon_state = "colt"
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -61,6 +62,8 @@
 	options["P08 Luger"] = "p08"
 	options["P08 Luger, Brown"] = "p08b"
 	options["Glock 37"] = "enforcer_black"
+	options["NT Mk. 58, New"] = "mk58"
+	options["NT Mk. 58 Custom, New"] = "mk58_wood"
 	var/choice = input(M,"Choose your sprite!","Resprite Gun") in options
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
