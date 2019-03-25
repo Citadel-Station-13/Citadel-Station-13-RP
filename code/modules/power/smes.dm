@@ -499,6 +499,9 @@
 				solarcheck1 = FALSE
 				solarcheck2 = FALSE
 				solarcheck3 = FALSE
+				enginecheck1 = FALSE
+				enginecheck2 = FALSE
+				enginecheck3 = FALSE
 
 	if(percentfull < 20 && charge < lastcharge)
 		switch(checkselect)
@@ -518,6 +521,9 @@
 				enginecheck1 = FALSE
 				enginecheck2 = FALSE
 				enginecheck3 = FALSE
+				solarcheck1 = FALSE
+				solarcheck2 = FALSE
+				solarcheck3 = FALSE
 
 	if(solarcheck1 && solarcheck2 && solarcheck3 == TRUE && solarcheckv1 > solarcheckv3 && world.time >= lastsolaralert)
 		global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge and seems to be discharging. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
