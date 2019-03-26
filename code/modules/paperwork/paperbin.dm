@@ -3,8 +3,8 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/material.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/material.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/material_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/material_righthand.dmi',
 			)
 	item_state = "sheet-metal"
 	throwforce = 1

@@ -8,8 +8,8 @@
 	throw_range = 3
 	max_amount = 50
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/material.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/material.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/material_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/material_righthand.dmi',
 		)
 
 	var/default_type = DEFAULT_WALL_MATERIAL

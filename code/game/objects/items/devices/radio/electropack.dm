@@ -3,8 +3,8 @@
 	desc = "Dance my monkeys! DANCE!!!"
 	icon_state = "electropack0"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/storage.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/storage.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/storage_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/storage_righthand.dmi',
 			)
 	item_state = "electropack"
 	frequency = 1449

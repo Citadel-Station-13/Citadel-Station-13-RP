@@ -4,8 +4,8 @@
 	icon = 'icons/obj/flamethrower.dmi'
 	icon_state = "flamethrowerbase"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/guns.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/guns.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/guns_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/guns_righthand.dmi',
 			)
 	item_state = "flamethrower_0"
 	flags = CONDUCT

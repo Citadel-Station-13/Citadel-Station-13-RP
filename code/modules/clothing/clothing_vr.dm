@@ -78,8 +78,8 @@
 	name = "mask"
 	icon = 'icons/obj/clothing/masks_vr.dmi' // This is intentional because of our custom species.
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/masks.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/masks.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/masks_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/masks_righthand.dmi',
 		)
 	body_parts_covered = HEAD
 	slot_flags = SLOT_MASK

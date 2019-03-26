@@ -196,8 +196,8 @@
 /obj/item/clothing/gloves
 	name = "gloves"
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/gloves.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/gloves.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/gloves_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/gloves_righthand.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = ITEMSIZE_SMALL
@@ -320,8 +320,8 @@
 	name = "head"
 	icon = 'icons/obj/clothing/hats.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/hats.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/hats.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/hats_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/hats_righthand.dmi',
 		)
 	body_parts_covered = HEAD
 	slot_flags = SLOT_HEAD
@@ -431,8 +431,8 @@
 	name = "mask"
 	icon = 'icons/obj/clothing/masks.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/masks.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/masks.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/masks_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/masks_righthand.dmi',
 		)
 	body_parts_covered = HEAD
 	slot_flags = SLOT_MASK
@@ -463,8 +463,8 @@
 	name = "shoes"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/shoes.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/shoes.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/shoes_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/shoes_righthand.dmi',
 		)
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
@@ -573,8 +573,8 @@
 /obj/item/clothing/suit
 	icon = 'icons/obj/clothing/suits.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/suits.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/suits.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/suits_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/suits_righthand.dmi',
 		)
 	name = "suit"
 	var/fire_resist = T0C+100
@@ -606,8 +606,8 @@
 /obj/item/clothing/under
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/uniforms.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/uniforms.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/clothing/uniforms_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/clothing/uniforms_righthand.dmi',
 		)
 	name = "under"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS

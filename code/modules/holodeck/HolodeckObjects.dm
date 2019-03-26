@@ -122,8 +122,8 @@
 	desc = "Because you really needed another excuse to punch your crewmates."
 	icon_state = "boxing"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/gloves.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/gloves.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/clothing/gloves_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/clothing/gloves_righthand.dmi',
 			)
 	item_state = "boxing"
 
@@ -234,8 +234,8 @@
 	desc = "May the force be within you. Sorta."
 	icon_state = "sword0"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/melee.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/melee.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/melee_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/melee_righthand.dmi',
 			)
 	force = 3.0
 	throw_speed = 1

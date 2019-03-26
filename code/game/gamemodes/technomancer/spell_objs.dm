@@ -27,8 +27,8 @@
 	icon = 'icons/obj/spells.dmi'
 	icon_state = "generic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/item_onmob/lefthand/spells.dmi',
-		slot_r_hand_str = 'icons/item_onmob/righthand/spells.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/spells_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/spells_righthand.dmi',
 		)
 	throwforce = 0
 	force = 0

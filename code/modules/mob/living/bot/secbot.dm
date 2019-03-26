@@ -354,8 +354,8 @@
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "helmet_signaler"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/hats.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/hats.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/clothing/hats_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/clothing/hats_righthand.dmi',
 			)
 	item_state = "helmet"
 	var/build_step = 0

@@ -16,8 +16,8 @@
 	name = "bluespace jumpsuit"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/item_onmob/lefthand/uniforms.dmi',
-			slot_r_hand_str = 'icons/item_onmob/righthand/uniforms.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/clothing/uniforms_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/clothing/uniforms_righthand.dmi',
 			)
 	item_state = "lingchameleon"
 	worn_state = "lingchameleon"
