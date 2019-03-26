@@ -111,7 +111,7 @@
 			if(total_harvest <= 0) break
 			if(harvesting.resources[metal])
 
-				found_resource  = 1
+				found_resource = 1
 
 				var/create_ore = 0
 				if(harvesting.resources[metal] >= total_harvest)

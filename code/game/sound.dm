@@ -9,7 +9,12 @@
 	channel = channel || open_sound_channel()
 
  	// Looping through the player list has the added bonus of working for mobs inside containers
-	var/sound/S = sound(get_sfx(soundin))
+ 	var/sound/S
+	var/_S = get_sfx(soundin)
+	if(_S)
+		S = sound(_S)
+	else
+		stack_trace("Invalid sfx!")
 	var/maxdistance = (world.view + extrarange) * 3
 	var/list/listeners = player_list
 	if(!ignore_walls) //these sounds don't carry through walls
@@ -32,7 +37,11 @@
 		return
 
 	if(!S)
-		S = sound(get_sfx(soundin))
+		var/_S = get_sfx(soundin)
+		if(_S)
+			S = sound(_S)
+		else
+			stack_trace("Invalid sfx!")
 
 	S.wait = 0 //No queue
 	S.channel = channel || open_sound_channel()

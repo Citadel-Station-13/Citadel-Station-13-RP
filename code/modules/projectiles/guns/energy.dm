@@ -28,6 +28,7 @@
 	var/shaded_charge = FALSE				//This gun uses predefined sectioned sprites rather than dynamic generation
 	var/old_ratio = 0						//old ammo ratio to see if it needs to update icon
 	var/automatic_item_state = TRUE			//update item state too
+	var/icon_state_shaded_mod = FALSE		//when using shaded charge, append _mode where mode is firemode.mode_icon_state to the end of the state.
 	var/item_state_use_icon_key = TRUE		//use mode icon key, FALSE for use its own or none if it doesn't exist
 	var/item_state_shaded_charge = TRUE		//uses stateful ratio charges (like egun_kill_4, egun_kill_3, .., egun_kill_0)
 	var/item_state_has_open = FALSE			//has _open state.
@@ -257,7 +258,7 @@
 				charge_overlay.pixel_y = ammo_y_offset * (i - 1)
 				add_overlay(charge_overlay)
 		else
-			add_overlay("[icon_state]_charge[ratio]")
+			add_overlay("[icon_state]_charge[ratio][icon_state_shaded_mod? "_[firemode.mode_icon_state]" : ""]")
 
 	//then do inhand/item state
 	if(itemKey)

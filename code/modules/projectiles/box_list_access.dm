@@ -26,7 +26,7 @@
 			return expend_last_casing()
 
 /obj/item/ammo_box/proc/default_insert_casing(obj/item/ammu_casing/C)
-	return insert_top_casing()
+	return insert_top_casing(C)
 
 /obj/item/ammo_box/proc/return_top_casing()
 	if(!LAZYLEN(_stored_ammo))
@@ -150,6 +150,13 @@
 	force_instantiate_stored_ammo(TRUE)
 	return replace_casing(_stored_ammo.len, C)
 
+/obj/item/ammo_box/proc/force_remove_casing(obj/item/ammu_casing/C)
+	_stored_ammo -= C
+
+/obj/item/ammo_box/proc/return_full_ammo_list()		//not efficient, don't overuse
+	force_initialize_stored_ammo()
+	return _stored_ammo
+
 //Do not use this unnecessarily. This is for admins to get all rounds initialized for adminbus, or for purposes where you absolutely must have access to every index and do it often enough this offsets
 //the memory costs of using this instead of the access procs.
 //This will, however, ensure the list exists, even if empty, unless otherwise specified.
@@ -234,7 +241,6 @@
 		var/obj/item/ammu_casing/C = _stored_ammo[i]
 		if(C.is_spent())
 			. += i
-
 
 /obj/item/ammo_box/proc/space_left()
 	if(!LAZYLEN(_stored_ammo))

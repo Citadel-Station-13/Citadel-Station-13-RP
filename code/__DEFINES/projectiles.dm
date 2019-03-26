@@ -31,6 +31,12 @@
 #define ENERGY_GUN_SHOT_SHOTS			1		//show shots left on examine
 #define ENERGY_GUN_SHOW_CHARGE			2		//cell charge
 
+//gun/ballistic bolt_type
+#define BOLT_TYPE_OPEN
+#define BOLT_TYPE_STANDARD
+#define BOLT_TYPE_NONE
+#define BOLT_TYPE_LOCKING
+
 //Calibers
 #define CALIBER_ENERGY				"ENERGY"		//energy "lens" virtual casings for energy weapons.
 #define CALIBER_357					".357"

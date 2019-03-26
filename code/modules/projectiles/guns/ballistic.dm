@@ -260,14 +260,21 @@
 
 
 
-///////////////////////
+
+
+
+
+
+//////////////
+
+//Ballistic guns! Magazines rather than energy
 /obj/item/gun/ballistic
-	desc = "Now comes in flavors like GUN. Uses 10mm ammo, for some reason."
 	name = "projectile gun"
+	desc = "Now comes in flavors like GUN. Uses 10mm ammo, for some reason."
 	icon_state = "pistol"
 	w_class = WEIGHT_CLASS_NORMAL
 
-	//sound info vars
+	//Sound variables
 	var/load_sound = "gun_insert_full_magazine"
 	var/load_empty_sound = "gun_insert_empty_magazine"
 	var/load_sound_volume = 40
@@ -287,21 +294,17 @@
 	var/empty_alarm_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	var/empty_alarm_volume = 70
 	var/empty_alarm_vary = TRUE
-
-	var/spawnwithmagazine = TRUE
-	var/mag_type = /obj/item/ammo_box/magazine/m10mm //Removes the need for max_ammo and caliber info
-	var/mag_display = FALSE //Whether the sprite has a visible magazine or not
-	var/mag_display_ammo = FALSE //Whether the sprite has a visible ammo display or not
-	var/empty_indicator = FALSE //Whether the sprite has an indicator for being empty or not.
-	var/empty_alarm = FALSE //Whether the gun alarms when empty or not.
-	var/special_mags = FALSE //Whether the gun supports multiple special mag types
 	var/alarmed = FALSE
+	var/empty_alarm = FALSE //Whether the gun alarms when empty or not.
+
+	//Bolts/firing vars
+
 	//Four bolt types:
 	//BOLT_TYPE_STANDARD: Gun has a bolt, it stays closed while not cycling. The gun must be racked to have a bullet chambered when a mag is inserted.
 	//Example: c20, shotguns, m90
 	//BOLT_TYPE_OPEN: Gun has a bolt, it is open when ready to fire. The gun can never have a chambered bullet with no magazine, but the bolt stays ready when a mag is removed.
 	//Example: Some SMGs, the L6
-	//BOLT_TYPE_NO_BOLT: Gun has no moving bolt mechanism, it cannot be racked. Also dumps the entire contents when emptied instead of a magazine.
+	//BOLT_TYPE_NONE: Gun has no moving bolt mechanism, it cannot be racked. Also dumps the entire contents when emptied instead of a magazine.
 	//Example: Break action shotguns, revolvers
 	//BOLT_TYPE_LOCKING: Gun has a bolt, it locks back when empty. It can be released to chamber a round if a magazine is in.
 	//Example: Pistols with a slide lock, some SMGs
@@ -309,114 +312,95 @@
 	var/bolt_locked = FALSE //Used for locking bolt and open bolt guns. Set a bit differently for the two but prevents firing when true for both.
 	var/bolt_wording = "bolt" //bolt, slide, etc.
 	var/semi_auto = TRUE //Whether the gun has to be racked each shot or not.
-	var/obj/item/ammo_box/magazine/magazine
-	var/casing_ejector = TRUE //whether the gun ejects the chambered casing
-	var/internal_magazine = FALSE //Whether the gun has an internal magazine or a detatchable one. Overridden by BOLT_TYPE_NO_BOLT.
-	var/magazine_wording = "magazine"
-	var/cartridge_wording = "bullet"
 	var/rack_delay = 5
 	var/recent_rack = 0
-	var/tac_reloads = FALSE //Snowflake mechanic no more.
+	var/casing_ejector = TRUE //whether the gun ejects the chambered casing
+
+	//Magazines and bullets
+	var/spawnwithmagazine = TRUE
+	var/obj/item/ammo_box/magazine/magazine
+	var/internal_magazine = FALSE		//Whether the gun has an internal magazine or a detatchable one. Overridden by BOLT_TYPE_NO_BOLT.
+	var/magazine_wording = "magazine"
+	var/cartridge_wording = "bullet"
+	var/tac_reloads = FALSE		//Snowflake mechanic no more.
+	var/mag_type = /obj/item/ammo_box/magazine/m10mm		//Removes the need for max_ammo and caliber info.
+	var/special_mags = FALSE //Whether the gun supports multiple special mag types
+
+	//Sprite vars
+	var/mag_display = FALSE //Whether the sprite has a visible magazine or not
+	var/mag_display_ammo = FALSE //Whether the sprite has a visible ammo display or not
+	var/empty_indicator = FALSE //Whether the sprite has an indicator for being empty or not.
 
 /obj/item/gun/ballistic/Initialize()
 	. = ..()
-	if (!spawnwithmagazine)
+	if(spawn_with_magazine)
+		if(!magazine)
+			magazine = new mag_type(src)
+	if(!magazine)
 		bolt_locked = TRUE
-		update_icon()
-		return
-	if (!magazine)
-		magazine = new mag_type(src)
-	chamber_round()
-	update_icon()
-
-/obj/item/gun/ballistic/update_icon()
-	if (QDELETED(src))
-		return
-	..()
-	if(current_skin)
-		icon_state = "[unique_reskin[current_skin]][sawn_off ? "_sawn" : ""]"
 	else
-		icon_state = "[initial(icon_state)][sawn_off ? "_sawn" : ""]"
-	cut_overlays()
-	if (bolt_type == BOLT_TYPE_LOCKING)
-		add_overlay("[icon_state]_bolt[bolt_locked ? "_locked" : ""]")
-	if (bolt_type == BOLT_TYPE_OPEN && bolt_locked)
-		add_overlay("[icon_state]_bolt")
-	if (suppressed)
-		add_overlay("[icon_state]_suppressor")
-	if(!chambered && empty_indicator)
-		add_overlay("[icon_state]_empty")
-	if (magazine)
-		if (special_mags)
-			add_overlay("[icon_state]_mag_[initial(magazine.icon_state)]")
-			if (!magazine.ammo_count())
-				add_overlay("[icon_state]_mag_empty")
-		else
-			add_overlay("[icon_state]_mag")
-			var/capacity_number = 0
-			switch(get_ammo() / magazine.max_ammo)
-				if(0.2 to 0.39)
-					capacity_number = 20
-				if(0.4 to 0.59)
-					capacity_number = 40
-				if(0.6 to 0.79)
-					capacity_number = 60
-				if(0.8 to 0.99)
-					capacity_number = 80
-				if(1.0)
-					capacity_number = 100
-			if (capacity_number)
-				add_overlay("[icon_state]_mag_[capacity_number]")
-
+		update_icon()
+	update_icon()
 
 /obj/item/gun/ballistic/process_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
 	if(!semi_auto && from_firing)
 		return
-	var/obj/item/ammo_casing/AC = chambered //Find chambered round
-	if(istype(AC)) //there's a chambered round
+	var/obj/item/ammu_casing/AC = chambered
+	if(istype(AC))
 		if(casing_ejector || !from_firing)
 			AC.forceMove(drop_location()) //Eject casing onto ground.
 			AC.bounce_away(TRUE)
 			chambered = null
 		else if(empty_chamber)
 			chambered = null
-	if (chamber_next_round && (magazine.max_ammo > 1))
+	if(chambered && (bolt_type == BOLT_TYPE_NO_BOLT))
+		magazine.insert_last_casing(chambered)
+	if (chamber_next_round && (magazine.ammo_left()))
 		chamber_round()
 
 /obj/item/gun/ballistic/proc/chamber_round()
-	if (chambered || !magazine)
+	if(chambered || !magazine)
 		return
-	if (magazine.ammo_count())
-		chambered = magazine.get_round((bolt_type == BOLT_TYPE_NO_BOLT))
-		if (bolt_type != BOLT_TYPE_OPEN)
-			chambered.forceMove(src)
+	if(magazine.ammo_left())
+		chambered = magazine.default_expend_casing()
+		chambered.forceMove(src)
 
-/obj/item/gun/ballistic/proc/rack(mob/user = null)
-	if (bolt_type == BOLT_TYPE_NO_BOLT) //If there's no bolt, nothing to rack
+/obj/item/gun/ballistic/proc/rack(mob/user)
+	if(bold_type == BOLT_TYPE_NONE)
 		return
-	if (bolt_type == BOLT_TYPE_OPEN)
-		if(!bolt_locked)	//If it's an open bolt, racking again would do nothing
-			if (user)
-				to_chat(user, "<span class='notice'>\The [src] is already ready to fire!</span>")
+	if(bolt_type == BOLT_TYPE_OPEN)
+		if(!bolt_locked)
+			to_chat(user, "<span class='notice'>[src] is already ready to fire!</span>")
 			return
 		bolt_locked = FALSE
-	if (user)
-		to_chat(user, "<span class='notice'>You rack the [bolt_wording] of \the [src].</span>")
+	to_chat(user, "<span class='noticed'>You rack the [bolt_wording] of [src].</span>")
 	process_chamber(!chambered, FALSE)
-	if (bolt_type == BOLT_TYPE_LOCKING && !chambered)
+	if((bolt_type == BOLT_TYPE_LOCKING) && !chambered)
 		bolt_locked = TRUE
 		playsound(src, lock_back_sound, lock_back_sound_volume, lock_back_sound_vary)
 	else
 		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 	update_icon()
 
-/obj/item/gun/ballistic/proc/drop_bolt(mob/user = null)
+/obj/item/gun/ballistic/proc/drop_bolt(mob/user)
 	playsound(src, bolt_drop_sound, bolt_drop_sound_volume, FALSE)
-	if (user)
-		to_chat(user, "<span class='notice'>You drop the [bolt_wording] of \the [src].</span>")
+	to_chat(user, "<span class='notice'>You drop the [bolt_wording] of [src].</span>")
 	chamber_round()
 	bolt_locked = FALSE
 	update_icon()
+
+/obj/item/gun/ballistic/can_shoot()
+	return chambered
+
+
+
+
+
+
+
+
+
+
 
 /obj/item/gun/ballistic/proc/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message = TRUE)
 	if(user.transferItemToLoc(AM, src))
@@ -445,6 +429,7 @@
 		insert_magazine(user, tac_load, FALSE)
 		to_chat(user, "<span class='notice'>You perform a tactical reload on \the [src].")
 	user.put_in_hands(old_mag)
+	//besure to insert logic in here somewhere to drop the bullet chambered if bolt is open bolt!
 	old_mag.update_icon()
 	if (!tac_load)
 		magazine = null
@@ -452,8 +437,9 @@
 		to_chat(user, "<span class='notice'>You pull the [magazine_wording] out of \the [src].</span>")
 	update_icon()
 
-/obj/item/gun/ballistic/can_shoot()
-	return chambered
+
+
+
 
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	..()
@@ -679,16 +665,41 @@
 			. = TRUE
 
 
-/obj/item/suppressor
-	name = "suppressor"
-	desc = "A syndicate small-arms suppressor for maximum espionage."
-	icon = 'icons/obj/guns/projectile.dmi'
-	icon_state = "suppressor"
-	w_class = WEIGHT_CLASS_TINY
-
-
-/obj/item/suppressor/specialoffer
-	name = "cheap suppressor"
-	desc = "A foreign knock-off suppressor, it feels flimsy, cheap, and brittle. Still fits most weapons."
-	icon = 'icons/obj/guns/projectile.dmi'
-	icon_state = "suppressor"
+/obj/item/gun/ballistic/update_icon()
+	if (QDELETED(src))
+		return
+	..()
+	if(current_skin)
+		icon_state = "[unique_reskin[current_skin]][sawn_off ? "_sawn" : ""]"
+	else
+		icon_state = "[initial(icon_state)][sawn_off ? "_sawn" : ""]"
+	cut_overlays()
+	if (bolt_type == BOLT_TYPE_LOCKING)
+		add_overlay("[icon_state]_bolt[bolt_locked ? "_locked" : ""]")
+	if (bolt_type == BOLT_TYPE_OPEN && bolt_locked)
+		add_overlay("[icon_state]_bolt")
+	if (suppressed)
+		add_overlay("[icon_state]_suppressor")
+	if(!chambered && empty_indicator)
+		add_overlay("[icon_state]_empty")
+	if (magazine)
+		if (special_mags)
+			add_overlay("[icon_state]_mag_[initial(magazine.icon_state)]")
+			if (!magazine.ammo_count())
+				add_overlay("[icon_state]_mag_empty")
+		else
+			add_overlay("[icon_state]_mag")
+			var/capacity_number = 0
+			switch(get_ammo() / magazine.max_ammo)
+				if(0.2 to 0.39)
+					capacity_number = 20
+				if(0.4 to 0.59)
+					capacity_number = 40
+				if(0.6 to 0.79)
+					capacity_number = 60
+				if(0.8 to 0.99)
+					capacity_number = 80
+				if(1.0)
+					capacity_number = 100
+			if (capacity_number)
+				add_overlay("[icon_state]_mag_[capacity_number]")

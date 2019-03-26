@@ -110,8 +110,15 @@
 		return
 	on_attack_self()
 
+/obj/item/gun/AltClick(mob/user)
+	. = ..()
+	on_alt_click()
+
 //so this can be overridden if we want ballistics to drop mags or something and rebind firemode switching.
 /obj/item/gun/proc/on_attack_self()
+	user_switch_firemode(user)
+
+/obj/item/gun/proc/on_alt_click()
 	user_switch_firemode(user)
 
 /obj/item/gun/examine(mob/user)
@@ -649,6 +656,7 @@
 	return launched
 
 
+/*
 //Suicide handling.
 /obj/item/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
 
@@ -687,6 +695,7 @@
 		handle_click_empty(user)
 		mouthshoot = 0
 		return
+*/
 
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
@@ -896,6 +905,7 @@
 		azoom.Remove(user)
 	if(zoomed)
 		zoom(user,FALSE)
+
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))

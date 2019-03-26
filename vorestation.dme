@@ -2681,7 +2681,7 @@
 #include "code\modules\projectiles\ammunition\rounds.dm"
 #include "code\modules\projectiles\ammunition\smartmag.dm"
 #include "code\modules\projectiles\boxes_magazines\placeholder.dm"
-#include "code\modules\projectiles\firemodes\basic.dm"
+#include "code\modules\projectiles\firemodes\ballistic\basic.dm"
 #include "code\modules\projectiles\firemodes\energy\ebow.dm"
 #include "code\modules\projectiles\firemodes\energy\hook.dm"
 #include "code\modules\projectiles\firemodes\energy\laser.dm"

@@ -25,6 +25,7 @@
 	var/max_ammo = 7
 	var/default_ammo_left
 	var/ammo_type = /obj/item/ammo_casing	//Initially loaded type
+	var/strict_type = FALSE					//ammo casinsgs must be the exact type as ammo_type, versus type or subtype
 	var/open_container = TRUE				//Can remove ammo by hand.
 	var/default_fire_order = MAGAZINE_ORDER_FILO
 
@@ -32,6 +33,15 @@
 	. = ..()
 	initialize_stored_ammo()
 	update_icon()
+
+/obj/item/ammo_box/proc/ammo_fits(obj/item/ammu_casing/AC)
+	if(istype(AC))
+		return (AC.caliber == caliber) || (strict_type? (AC.type == ammo_type) : istype(AC, ammo_type))
+	else if(ispath(AC))
+		var/obj/item/ammu_casing/C = AC
+		return (initial(C.caliber) == caliber) || (strict_type? (AC == ammo_type) : (ispath(AC, ammo_type)))
+	else
+		return FALSE
 
 /obj/item/ammo_box/proc/instantiate_casing(casing_type, location = src)
 	return new casing_type(location)
@@ -94,31 +104,38 @@
 	. = ..()
 	to_chat(user, "<span class='notice'>Alt click to retrieve all rounds. Use in hand to take out one round.</span>")
 
-/obj/item/ammo_box/proc/give_round(obj/item/ammu_casing/R, replace_spent = FALSE)
+/obj/item/ammo_box/proc/give_round(obj/item/ammu_casing/R, replace_spent = FALSE, force = FALSE, update_icon = TRUE)
 	if(!R)
 		return FALSE
-	if(caliber)
-		if(R.caliber != caliber)
-			return FALSE
-	else
-		if(R.type != ammo_type)
-			return FALSE
+	if(!force && (!ammo_fits(R) || (space_left() <= 0)))
+		return FALSE
 	if(space_left() > 0)
 		R.forceMove(src)
-		default_top_casing(R)
+		default_insert_casing(R)
+		if(update_icon)
+			update_icon()
+		return TRUE
 	else if(replace_spent)
 		var/obj/item/ammu_casing/C = replace_round(get_index_first_spent(), R)
 		if(C)
 			C.forceMove(drop_location())
 			R.forceMove(src)
+			if(update_icon)
+				update_icon()
 			return TRUE
 	return FALSE
 
-/obj/item/ammo_box/proc/give_rounds(list/obj/item/ammu_casing/L, replace_spent = FALSE)
+/obj/item/ammo_box/proc/give_rounds(list/obj/item/ammu_casing/L, replace_spent = FALSE, force = FALSE, update_icon = TRUE)
 	if(!LAZYLEN(L))
 		return 0
 	for(var/i in L)
 		var/obj/item/ammu_casing/C = i
+		if(!force)
+			if(!ammo_fits(C))
+				L -= C
+				continue
+			else if(space_left() <= 0)
+				break
 		if(default_insert_casing(C))
 			C.forceMove(src)
 			L -= C
@@ -137,44 +154,48 @@
 				C.forceMove(src)
 				.++
 			else
-				return
+				break
+	if(update_icon)
+		update_icon()
+
+/obj/item/ammo_box/attackby(obj/item/I, mob/user)
+	. = ..()
+	if(istype(I, /obj/item/ammu_casing))
+		var/obj/item/ammu_casing/C = I
+		if(!ammo_fits(C))
+			to_chat(user, "<span class='warning'>[C] does not fit into [src]!</span>")
+			return
+		if(space_left() <= 0)
+			to_chat(user, "<span class='warning'>[src] is full!</span>")
+			return
+		user.remove_from_mob(C)
+		if(!give_round(C))
+			C.forceMove(drop_location())
+	else if(istype(I, /obj/item/ammo_box))
+		var/obj/item/ammo_box/B = I
+		if(!open_container)
+			to_chat(user, "<span class='warning'>[src] can't be opened!</span>")
+			return
+		if(!B.open_container)
+			to_chat(user, "<span class='warning'>[B] can't be opened!</span>")
+			return
+		if((B.caliber && caliber) ? (B.caliber != caliber) : (strict_path? (B.ammo_tpye != ammo_type) : (!ispath(B.ammo_type, ammo_type))))
+			to_chat(user, "<span class='warning'>[B] is the wrong caliber!</span>")
+			return
+		var/amt = B.transfer_into(src)
+		to_chat(user, "<span class='notice'>You transfer [amt] shells from [B] to [src]</span>")
+	playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
+
+/obj/item/ammo_box/proc/transfer_into(obj/item/ammo_box/other)
+
+
+
+
+
 
 ////////////////////////////////////////
 ///////////////////////
 
-
-
-/obj/item/ammo_magazine/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/ammo_casing))
-		var/obj/item/ammo_casing/C = W
-		if(C.caliber != caliber)
-			to_chat(user, "<span class='warning'>[C] does not fit into [src].</span>")
-			return
-		if(stored_ammo.len >= max_ammo)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
-			return
-		user.remove_from_mob(C)
-		C.loc = src
-		stored_ammo.Add(C)
-		update_icon()
-	if(istype(W, /obj/item/ammo_magazine/clip))
-		var/obj/item/ammo_magazine/clip/L = W
-		if(L.caliber != caliber)
-			to_chat(user, "<span class='warning'>The ammo in [L] does not fit into [src].</span>")
-			return
-		if(!L.stored_ammo.len)
-			to_chat(user, "<span class='warning'>There's no more ammo [L]!</span>")
-			return
-		if(stored_ammo.len >= max_ammo)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
-			return
-		var/obj/item/ammo_casing/AC = L.stored_ammo[1] //select the next casing.
-		L.stored_ammo -= AC //Remove this casing from loaded list of the clip.
-		AC.loc = src
-		stored_ammo.Insert(1, AC) //add it to the head of our magazine's list
-		L.update_icon()
-	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-	update_icon()
 
 	var/multiple_sprites = 0
 	//because BYOND doesn't support numbers as keys in associative lists
