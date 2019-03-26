@@ -32,3 +32,31 @@
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "industrial hardsuit crate"
 	access = access_mining
+
+/datum/supply_pack/misc/looksir
+	name = "free crab"
+	contains = list(
+			/mob/living/simple_animal/crab = 1
+			)
+	cost = 7
+
+/datum/supply_pack/misc/freecrabs
+	name = "5 free crabs"
+	contains = list(
+			/mob/living/simple_animal/crab = 5
+			)
+	cost = 7
+
+/datum/supply_pack/misc/toomanycrabs
+	name = "10 free crabs"
+	contains = list(
+			/mob/living/simple_animal/crab = 10
+			)
+	cost = 7
+
+/datum/supply_pack/misc/moidlimitreached
+	name = "an obnoxious amount of free crabs"
+	contains = list(
+			/mob/living/simple_animal/crab = 255
+			)
+	cost = 7
