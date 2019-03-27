@@ -27,6 +27,26 @@
 	icon_state = "collar_bell"
 	item_state = "collar_bell_overlay"
 	overlay_state = "collar_bell_overlay"
+<<<<<<< HEAD
+=======
+	var/jingled = 0
+
+/obj/item/clothing/accessory/collar/bell/verb/jinglebell()
+	set name = "Jingle Bell"
+	set category = "Object"
+	set src in usr
+	if(!istype(usr, /mob/living)) return
+	if(usr.stat) return
+
+	if(!jingled)
+		usr.audible_message("[usr] jingles the [src]'s bell.")
+		jingled = 1
+		addtimer(CALLBACK(src, .proc/jingledreset), 50)
+	return
+>>>>>>> 4839b4b... Merge pull request #4577 from VOREStation/upstream-merge-5677
+
+/obj/item/clothing/accessory/collar/bell/proc/jingledreset()
+		jingled = 0
 
 /obj/item/clothing/accessory/collar/shock
 	name = "Shock collar"

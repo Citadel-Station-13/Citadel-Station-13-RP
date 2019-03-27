@@ -147,8 +147,13 @@
 
 	return ..()
 
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
 /mob/living/simple_animal/shadekin/Destroy()
 	QDEL_NULL_LIST(shadekin_abilities)
+=======
+/mob/living/simple_mob/shadekin/Destroy()
+	QDEL_LIST_NULL(shadekin_abilities)
+>>>>>>> 4839b4b... Merge pull request #4577 from VOREStation/upstream-merge-5677:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 	. = ..()
 
 /mob/living/simple_animal/shadekin/init_vore()

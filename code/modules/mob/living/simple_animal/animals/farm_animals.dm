@@ -277,7 +277,11 @@ var/global/chicken_count = 0
 		E.pixel_x = rand(-6,6)
 		E.pixel_y = rand(-6,6)
 		if(chicken_count < MAX_CHICKENS && prob(10))
+<<<<<<< HEAD
 			processing_objects.Add(E)
+=======
+			START_PROCESSING(SSobj, E)
+>>>>>>> 4839b4b... Merge pull request #4577 from VOREStation/upstream-merge-5677
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/var/amount_grown = 0
 /obj/item/weapon/reagent_containers/food/snacks/egg/process()
@@ -286,7 +290,14 @@ var/global/chicken_count = 0
 		if(amount_grown >= 100)
 			visible_message("[src] hatches with a quiet cracking sound.")
 			new /mob/living/simple_animal/chick(get_turf(src))
+<<<<<<< HEAD
 			processing_objects.Remove(src)
 			qdel(src)
 	else
 		processing_objects.Remove(src)
+=======
+			STOP_PROCESSING(SSobj, src)
+			qdel(src)
+	else
+		STOP_PROCESSING(SSobj, src)
+>>>>>>> 4839b4b... Merge pull request #4577 from VOREStation/upstream-merge-5677

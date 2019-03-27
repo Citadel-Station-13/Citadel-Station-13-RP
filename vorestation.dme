@@ -28,6 +28,7 @@
 #include "code\___DMAPI\tgs\includes.dm"
 #include "code\__datastructures\globals.dm"
 #include "code\__defines\_compile_options.dm"
+#include "code\__defines\_lists.dm"
 #include "code\__defines\_planes+layers.dm"
 #include "code\__defines\_planes+layers_vr.dm"
 #include "code\__defines\_tick.dm"
@@ -215,10 +216,12 @@
 #include "code\controllers\Processes\game_master.dm"
 #include "code\controllers\Processes\inactivity.dm"
 #include "code\controllers\Processes\nanoui.dm"
-#include "code\controllers\Processes\obj.dm"
 #include "code\controllers\Processes\radiation.dm"
+<<<<<<< HEAD
 #include "code\controllers\Processes\scheduler.dm"
 #include "code\controllers\Processes\sun.dm"
+=======
+>>>>>>> 4839b4b... Merge pull request #4577 from VOREStation/upstream-merge-5677
 #include "code\controllers\Processes\supply.dm"
 #include "code\controllers\Processes\ticker.dm"
 #include "code\controllers\Processes\turf.dm"
@@ -241,9 +244,18 @@
 #include "code\controllers\subsystems\persist_vr.dm"
 #include "code\controllers\subsystems\planets.dm"
 #include "code\controllers\subsystems\shuttles.dm"
+<<<<<<< HEAD
+=======
+#include "code\controllers\subsystems\sun.dm"
+#include "code\controllers\subsystems\time_track.dm"
+#include "code\controllers\subsystems\timer.dm"
+>>>>>>> 4839b4b... Merge pull request #4577 from VOREStation/upstream-merge-5677
 #include "code\controllers\subsystems\transcore_vr.dm"
 #include "code\controllers\subsystems\vote.dm"
 #include "code\controllers\subsystems\xenoarch.dm"
+#include "code\controllers\subsystems\processing\fastprocess.dm"
+#include "code\controllers\subsystems\processing\obj.dm"
+#include "code\controllers\subsystems\processing\processing.dm"
 #include "code\datums\ai_law_sets.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\beam.dm"
@@ -301,7 +313,6 @@
 #include "code\datums\observation\logged_in.dm"
 #include "code\datums\observation\moved.dm"
 #include "code\datums\observation\observation.dm"
-#include "code\datums\observation\task_triggered.dm"
 #include "code\datums\observation\turf_changed.dm"
 #include "code\datums\observation\unequipped.dm"
 #include "code\datums\observation\~cleanup.dm"
