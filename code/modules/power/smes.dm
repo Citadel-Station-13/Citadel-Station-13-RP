@@ -486,7 +486,7 @@
 		solarcheck2 = FALSE
 		solarcheck3 = FALSE
 		
-	if(percentful > 20)
+	if(percentfull > 20)
 		enginecheck1 = FALSE
 		enginecheck2 = FALSE
 		enginecheck3 = FALSE
