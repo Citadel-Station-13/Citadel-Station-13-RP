@@ -2645,16 +2645,23 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/lobby)
 "aeT" = (
-/obj/structure/table/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor{
-	dir = 1
+	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 1
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
 	},
-/obj/machinery/camera/network/mining,
+/obj/machinery/camera/network/tether{
+	dir = 9
+	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/mining_main/lobby)
+/area/tether/surfacebase/public_garden)
 "aeU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2867,12 +2874,25 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "afs" = (
+<<<<<<< HEAD
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/machinery/camera/network/cargo,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/mining_main/lobby)
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "aft" = (
 /obj/machinery/camera/network/civilian{
 	dir = 2
@@ -2916,6 +2936,7 @@
 /area/storage/primary)
 "afx" = (
 /obj/effect/floor_decal/borderfloor{
+<<<<<<< HEAD
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -2923,6 +2944,33 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+=======
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/machinery/camera/network/cargo{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/mining_main/lobby)
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "afy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2942,6 +2990,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/eva)
 "afz" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -2956,6 +3005,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/tram)
+=======
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/camera/network/tether,
+/turf/simulated/floor/tiled,
+/area/hallway/lower/first_west)
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "afA" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
@@ -3019,6 +3083,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/eva)
 "afG" = (
+<<<<<<< HEAD
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
@@ -3046,6 +3111,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
+=======
+/obj/structure/bed/chair,
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/tram)
+"afH" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "afI" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
@@ -3187,6 +3267,7 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "afU" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3200,6 +3281,16 @@
 /obj/effect/landmark/tram,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
@@ -3218,6 +3309,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/mining)
 "afY" = (
+<<<<<<< HEAD
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3275,6 +3367,41 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
+=======
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/tram)
+"afZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/visitor_laundry)
+"aga" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/machinery/vending/coffee,
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/visitor_laundry)
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "agd" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
@@ -3531,33 +3658,6 @@
 /obj/machinery/vending/tool,
 /turf/simulated/floor/tiled,
 /area/storage/primary)
-"agC" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
-	dir = 8
-	},
-/obj/machinery/camera/network/mining{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/mining_main/lobby)
 "agD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4054,22 +4154,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
-"ahH" = (
-/obj/machinery/camera/network/civilian{
-	dir = 2
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/first_west)
 "ahI" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -4187,7 +4271,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "ahR" = (
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -4392,7 +4476,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
@@ -4539,7 +4623,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
@@ -7227,7 +7311,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -7249,7 +7333,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -8856,6 +8940,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
+<<<<<<< HEAD
 "aqw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8900,6 +8985,8 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+=======
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "aqz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -9903,7 +9990,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -10057,15 +10144,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/tram)
-"asK" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/machinery/camera/network/northern_star{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
 /area/tether/surfacebase/tram)
 "asL" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -11091,7 +11169,7 @@
 /area/tether/surfacebase/atrium_one)
 "auN" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -12707,7 +12785,7 @@
 /area/tether/surfacebase/atrium_one)
 "axK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -13893,8 +13971,13 @@
 	name = "south bump";
 	pixel_y = -28
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+=======
+/obj/machinery/camera/network/tether{
+	dir = 1
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor,
@@ -13911,9 +13994,15 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/meter,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
+=======
+/obj/machinery/camera/network/tether{
+	dir = 8;
+	icon_state = "camera"
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	icon_state = "bordercolor";
@@ -15468,6 +15557,14 @@
 /turf/simulated/floor/tiled,
 /area/storage/art)
 "aCA" = (
+<<<<<<< HEAD
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -16967,7 +17064,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 8;
 	icon_state = "camera"
 	},
@@ -22383,7 +22480,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 8;
 	icon_state = "camera"
 	},
@@ -24014,7 +24111,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
@@ -24042,6 +24139,34 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_dining)
+<<<<<<< HEAD
+=======
+"bfF" = (
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/tram)
+"bfI" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
+	},
+/obj/effect/landmark/tram,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/tram)
+"bfL" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/effect/landmark/tram,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/tram)
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 "bfN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -24213,7 +24338,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -25927,24 +26052,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
-"btx" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 4
-	},
-/obj/machinery/camera/network/civilian{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/public_garden)
 "btD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
@@ -27648,7 +27755,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bLY" = (
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -28786,7 +28893,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -29352,7 +29459,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 9
 	},
 /obj/structure/disposalpipe/junction{
@@ -30238,19 +30345,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
-"cft" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/grey/border{
-	icon_state = "bordercolor";
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/visitor_laundry)
 "cfv" = (
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
@@ -31083,17 +31177,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
-"chW" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/grey/border{
-	icon_state = "bordercolor";
-	dir = 4
-	},
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled,
-/area/crew_quarters/visitor_laundry)
 "chY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/plain{
@@ -39414,7 +39497,7 @@ aah
 aah
 aah
 ahl
-ahH
+afz
 aiE
 ajq
 ako
@@ -40399,7 +40482,7 @@ wIm
 thL
 kuC
 xED
-btx
+aeT
 qGm
 aYz
 dYl
@@ -46510,7 +46593,7 @@ afk
 anL
 agl
 agx
-agC
+afx
 agN
 ahd
 ahv
@@ -47641,7 +47724,7 @@ afL
 adE
 aeg
 abP
-aeT
+afs
 afo
 afo
 agr
@@ -48559,7 +48642,7 @@ cce
 cda
 cjs
 ceK
-cft
+afZ
 cfL
 cgk
 chl
@@ -49557,7 +49640,7 @@ cfx
 cfU
 cfv
 chu
-chW
+aga
 ciK
 cjA
 ceM
@@ -49652,11 +49735,16 @@ abA
 abA
 abA
 apP
+<<<<<<< HEAD
 aci
+=======
+afG
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 arm
 acv
 arm
 arm
+<<<<<<< HEAD
 avX
 aeP
 afc
@@ -49666,6 +49754,19 @@ agt
 ahP
 aiM
 afx
+=======
+att
+apP
+avb
+avV
+bfI
+ayi
+azl
+azR
+avb
+apP
+afY
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 arm
 ajP
 ajP
@@ -50084,6 +50185,7 @@ acJ
 asJ
 atu
 atu
+<<<<<<< HEAD
 aFz
 aPf
 aPh
@@ -50091,6 +50193,15 @@ agb
 aPk
 aPl
 aPn
+=======
+atu
+avX
+axd
+afU
+azo
+azS
+aAJ
+>>>>>>> 9994f97... Merge pull request #4833 from Heroman3003/camera-fixes
 aAJ
 aAJ
 ajT
@@ -51785,7 +51896,7 @@ apR
 aqG
 aTI
 aqG
-asK
+afH
 aTI
 aqG
 aqG
@@ -51797,7 +51908,7 @@ aTI
 aqG
 aqG
 aTI
-asK
+afH
 aqG
 aTI
 aqG
