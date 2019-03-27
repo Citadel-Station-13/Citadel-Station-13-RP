@@ -15,7 +15,12 @@
 	var/spore_cooldown = 8 SECONDS
 
 /obj/structure/blob/factory/Destroy()
+<<<<<<< HEAD
 	for(var/mob/living/simple_animal/hostile/blob/spore/spore in spores)
+=======
+	for(var/mob/living/L in spores)
+		var/mob/living/simple_mob/blob/spore/spore = L
+>>>>>>> 5806e2d... Merge pull request #4666 from VOREStation/upstream-merge-5826
 		if(istype(spore) && spore.factory == src)
 			spore.factory = null
 		else
