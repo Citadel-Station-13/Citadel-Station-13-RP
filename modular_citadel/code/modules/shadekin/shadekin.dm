@@ -94,7 +94,11 @@
 
 	var/list/shadekin_abilities
 
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
 /mob/living/simple_animal/shadekin/initialize()
+=======
+/mob/living/simple_mob/shadekin/Initialize()
+>>>>>>> 1578c5c... Merge pull request #4568 from VOREStation/upstream-merge-5762:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 

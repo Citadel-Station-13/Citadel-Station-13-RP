@@ -28,9 +28,13 @@
 			var/agony_to_apply = 60 - agonyforce
 			H.apply_damage(agony_to_apply, HALLOSS)
 	..()
+<<<<<<< HEAD
 
 /obj/item/weapon/melee/baton/slime/loaded/New()
 	..()
+=======
+/obj/item/weapon/melee/baton/slime/loaded/Initialize()
+>>>>>>> 1578c5c... Merge pull request #4568 from VOREStation/upstream-merge-5762
 	bcell = new/obj/item/weapon/cell/device(src)
 	update_icon()
 	return

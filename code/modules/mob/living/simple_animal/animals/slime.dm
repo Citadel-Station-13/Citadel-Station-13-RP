@@ -27,7 +27,11 @@
 	icon_living = "rainbow baby slime"
 	icon_dead = "rainbow baby slime dead"
 
+<<<<<<< HEAD
 /mob/living/simple_animal/old_slime/science/initialize()
+=======
+/mob/living/simple_animal/slime/science/Initialize()
+>>>>>>> 1578c5c... Merge pull request #4568 from VOREStation/upstream-merge-5762
 	. = ..()
 	overlays.Cut()
 	overlays += "aslime-:33"

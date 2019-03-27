@@ -92,6 +92,7 @@
 		if(L.stat)
 			deselect(L)
 			continue
+<<<<<<< HEAD
 		if(istype(L, /mob/living/simple_animal/hostile))
 			var/mob/living/simple_animal/hostile/SAH
 			SAH.target_mob = target
@@ -100,6 +101,11 @@
 			B.UnarmedAttack(L)
 
 /obj/item/weapon/spell/control/New()
+=======
+		L.ai_holder.give_target(target)
+
+/obj/item/weapon/spell/control/Initialize()
+>>>>>>> 1578c5c... Merge pull request #4568 from VOREStation/upstream-merge-5762
 	control_overlay = image('icons/obj/spells.dmi',"controlled")
 	..()
 

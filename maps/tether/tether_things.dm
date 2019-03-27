@@ -80,7 +80,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/initialize()
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -93,7 +93,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/initialize()
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -102,7 +102,7 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/initialize()
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/Initialize()
 	planet = planet_virgo3b
 	. = ..()
 
@@ -157,7 +157,7 @@
 
 	var/area/shock_area = /area/tether/surfacebase/tram
 
-/turf/simulated/floor/maglev/initialize()
+/turf/simulated/floor/maglev/Initialize()
 	. = ..()
 	shock_area = locate(shock_area)
 
@@ -197,7 +197,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down
 	name = "\improper Smart Chemavator - Lower"
 
-/obj/machinery/smartfridge/chemistry/chemvator/down/initialize()
+/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
 	. = ..()
 	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
 	if(istype(above))

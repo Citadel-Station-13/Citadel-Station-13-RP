@@ -72,7 +72,11 @@
 	src.equipment_path = path
 	src.cost = cost
 
+<<<<<<< HEAD
 /obj/machinery/power/quantumpad/initialize() //anewbe/leshana put this here and im mad
+=======
+/obj/machinery/power/quantumpad/Initialize()
+>>>>>>> 1578c5c... Merge pull request #4568 from VOREStation/upstream-merge-5762
 	. = ..()
 	default_apply_parts()
 
