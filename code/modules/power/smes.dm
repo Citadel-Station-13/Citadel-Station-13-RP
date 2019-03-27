@@ -481,10 +481,12 @@
 
 	percentfull = 100.0*charge/capacity
 	
-	if(percentfull >30)
+	if(percentfull > 30)
 		solarcheck1 = FALSE
 		solarcheck2 = FALSE
 		solarcheck3 = FALSE
+		
+	if(percentful > 20)
 		enginecheck1 = FALSE
 		enginecheck2 = FALSE
 		enginecheck3 = FALSE
