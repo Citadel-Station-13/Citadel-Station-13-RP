@@ -16,6 +16,20 @@ SUBSYSTEM_DEF(mapping)
 	shelter_templates = SSmapping.shelter_templates
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+<<<<<<< HEAD
+=======
+	if(subsystem_initialized)
+		return
+	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
+	maploader = new()
+	load_map_templates()
+
+	if(config.generate_map)
+		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
+		if(using_map.perform_map_generation())
+			using_map.refresh_mining_turfs()
+
+>>>>>>> a01f21f... Merge pull request #4623 from VOREStation/upstream-merge-5791
 	loadEngine()
 	preloadShelterTemplates()
 	// Mining generation probably should be here too

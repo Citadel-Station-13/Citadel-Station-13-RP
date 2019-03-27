@@ -8,8 +8,27 @@
 	off_icon = "fryer_off"
 	food_color = "#FFAD33"
 	cooked_sound = 'sound/machines/ding.ogg'
+<<<<<<< HEAD
 	appliancetype = FRYER
 	active_power_usage = 12 KILOWATTS
+=======
+	var/datum/looping_sound/deep_fryer/fry_loop
+
+/obj/machinery/cooker/fryer/Initialize()
+	fry_loop = new(list(src), FALSE)
+	return ..()
+
+/obj/machinery/cooker/fryer/Destroy()
+	QDEL_NULL(fry_loop)
+	return ..()
+
+/obj/machinery/cooker/fryer/set_cooking(new_setting)
+	..()
+	if(new_setting)
+		fry_loop.start()
+	else
+		fry_loop.stop()
+>>>>>>> a01f21f... Merge pull request #4623 from VOREStation/upstream-merge-5791
 
 	optimal_power = 0.35
 
@@ -57,6 +76,13 @@
 		if (OL && istype(OL))
 			OL.data["temperature"] = temperature
 
+<<<<<<< HEAD
+=======
+	user.visible_message("<span class='danger'>\The [user] starts pushing \the [victim] into \the [src]!</span>")
+	icon_state = on_icon
+	cooking = 1
+	fry_loop.start()
+>>>>>>> a01f21f... Merge pull request #4623 from VOREStation/upstream-merge-5791
 
 /obj/machinery/appliance/cooker/fryer/update_cooking_power()
 	..()//In addition to parent temperature calculation
@@ -83,6 +109,7 @@
 		icon_state = on_icon
 	else
 		icon_state = off_icon
+<<<<<<< HEAD
 	..()
 
 
@@ -142,6 +169,9 @@
 /obj/machinery/appliance/cooker/fryer/cook_mob(var/mob/living/victim, var/mob/user)
 
 	if(!istype(victim))
+=======
+		fry_loop.stop()
+>>>>>>> a01f21f... Merge pull request #4623 from VOREStation/upstream-merge-5791
 		return
 
 	//user.visible_message("<span class='danger'>\The [user] starts pushing \the [victim] into \the [src]!</span>")
@@ -155,6 +185,12 @@
 
 	if(!victim || !victim.Adjacent(user))
 		user << "<span class='danger'>Your victim slipped free!</span>"
+<<<<<<< HEAD
+=======
+		cooking = 0
+		icon_state = off_icon
+		fry_loop.stop()
+>>>>>>> a01f21f... Merge pull request #4623 from VOREStation/upstream-merge-5791
 		return
 
 	var/damage = rand(7,13)
@@ -203,6 +239,7 @@
 	//Coat the victim in some oil
 	oil.trans_to(victim, 40)
 
+<<<<<<< HEAD
 /obj/machinery/appliance/cooker/fryer/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/weapon/reagent_containers/glass) && I.reagents)
 		if (I.reagents.total_volume <= 0 && oil)
@@ -228,3 +265,9 @@
 				return 1
 	//If neither of the above returned, then call parent as normal
 	..()
+=======
+	icon_state = off_icon
+	cooking = 0
+	fry_loop.stop()
+	return
+>>>>>>> a01f21f... Merge pull request #4623 from VOREStation/upstream-merge-5791
