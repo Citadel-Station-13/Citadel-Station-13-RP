@@ -254,7 +254,11 @@
 			if(prob(scan_ticks * 10))
 				spawn(0)
 					set background = 1
+<<<<<<< HEAD
 					if(processing_objects.Find(src))
+=======
+					if(datum_flags & DF_ISPROCESSING)
+>>>>>>> 97e98dd... Merge pull request #4682 from VOREStation/upstream-merge-5829
 						//scan radios in the world to try and find one
 						var/cur_dist = 999
 						for(var/obj/item/device/radio/beacon/R in all_beacons)
