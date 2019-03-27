@@ -480,7 +480,15 @@
 /obj/machinery/power/smes/buildable/main/process()
 
 	percentfull = 100.0*charge/capacity
-
+	
+	if(percentfull >30)
+		solarcheck1 = FALSE
+		solarcheck2 = FALSE
+		solarcheck3 = FALSE
+		enginecheck1 = FALSE
+		enginecheck2 = FALSE
+		enginecheck3 = FALSE
+		
 	if(percentfull < 30 && percentfull > 20  && charge < lastcharge)
 		switch(checkselect)
 			if(1)
