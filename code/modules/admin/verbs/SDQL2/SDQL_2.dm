@@ -206,7 +206,10 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 	message_admins("[log_entry1] [query_log]")
 	query_log = "[log_entry2] [query_log]"
 	log_game(query_log)
+<<<<<<< HEAD
 	NOTICE(query_log)
+=======
+>>>>>>> b176b05... Merge pull request #4655 from VOREStation/upstream-merge-5793
 
 	var/start_time_total = REALTIMEOFDAY
 
@@ -418,8 +421,13 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/msg = "[key_name(user)] has (re)started query #[id]"
 	message_admins(msg)
 	log_admin(msg)
+<<<<<<< HEAD
 	ARun()
 	show_next_to_key = user.ckey
+=======
+	show_next_to_key = user.ckey
+	ARun()
+>>>>>>> b176b05... Merge pull request #4655 from VOREStation/upstream-merge-5793
 
 /datum/SDQL2_query/proc/admin_del(user = usr)
 	var/msg = "[key_name(user)] has stopped + deleted query #[id]"
@@ -480,7 +488,11 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	finished = TRUE
 	. = TRUE
 	if(show_next_to_key)
+<<<<<<< HEAD
 		var/client/C = directory[show_next_to_key]
+=======
+		var/client/C = GLOB.directory[show_next_to_key]
+>>>>>>> b176b05... Merge pull request #4655 from VOREStation/upstream-merge-5793
 		if(C)
 			var/mob/showmob = C.mob
 			to_chat(showmob, "<span class='admin'>SDQL query results: [get_query_text()]<br>\
@@ -491,7 +503,11 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				var/text = islist(select_text)? select_text.Join() : select_text
 				var/static/result_offset = 0
 				showmob << browse(text, "window=SDQL-result-[result_offset++]")
+<<<<<<< HEAD
 	show_next_to_key = null
+=======
+		show_next_to_key = null
+>>>>>>> b176b05... Merge pull request #4655 from VOREStation/upstream-merge-5793
 	if(qdel_on_finish)
 		qdel(src)
 

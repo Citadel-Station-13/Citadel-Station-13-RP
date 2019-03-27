@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> b176b05... Merge pull request #4655 from VOREStation/upstream-merge-5793
 //I'm pretty sure that this is a recursive [s]descent[/s] ascent parser.
 
 
@@ -631,4 +635,8 @@
 	else
 		i = variable(i, node)
 
+<<<<<<< HEAD
 	return i
+=======
+	return i
+>>>>>>> b176b05... Merge pull request #4655 from VOREStation/upstream-merge-5793
