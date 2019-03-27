@@ -158,8 +158,20 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
+<<<<<<< HEAD
 "aD" = (
 /obj/machinery/mech_recharger,
+=======
+"av" = (
+/obj/structure/cable/ender{
+	icon_state = "1-2";
+	id = "surface-mining"
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"aw" = (
+/obj/machinery/light/small,
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
 "aE" = (
@@ -731,8 +743,16 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
+<<<<<<< HEAD
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
+=======
+/obj/machinery/camera/network/mining{
+	dir = 1
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -32
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -810,9 +830,17 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
+=======
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"mH" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
@@ -1065,11 +1093,27 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
+<<<<<<< HEAD
 "cc" = (
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+"Fo" = (
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/maintenance)
+"FV" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1117,9 +1161,38 @@
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/airlock)
 "cf" = (
+=======
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"KF" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/mine/explored)
+"KJ" = (
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"KL" = (
+/obj/machinery/telecomms/relay/preset/underdark,
+/obj/effect/floor_decal/techfloor,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
+"Ma" = (
+/obj/machinery/door/airlock/mining{
+	name = "Quarters"
+	},
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -1233,10 +1306,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
+<<<<<<< HEAD
 "cn" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Mining Outpost Substation Bypass"
+=======
+"SW" = (
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/mine/explored)
+"TC" = (
+/obj/machinery/camera/network/mining,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 10
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
@@ -4190,6 +4274,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 aI
 aT
 bh
@@ -4198,6 +4283,16 @@ bI
 bW
 co
 cD
+=======
+ay
+Ex
+Kj
+Zg
+RB
+MV
+KL
+SF
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 ab
 cH
 ab
@@ -10174,6 +10269,20 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
+=======
+FV
+jh
+jh
+jh
+jh
+jh
+jh
+jh
+lb
+KF
+av
+>>>>>>> 9be4192... Merge pull request #4818 from Heroman3003/mining-cable-fix
 aa
 "}
 (62,1,1) = {"
