@@ -102,6 +102,13 @@
 /mob/living/proc/check_submerged()
 	if(buckled)
 		return 0
+<<<<<<< HEAD
+=======
+	if(hovering)
+		return 0
+	if(locate(/obj/structure/catwalk) in loc)
+		return 0
+>>>>>>> 8233544... Merge pull request #4659 from VOREStation/upstream-merge-5796
 	var/turf/simulated/floor/water/T = loc
 	if(istype(T))
 		return T.depth

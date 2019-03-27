@@ -122,7 +122,18 @@
 	name = "Dead Spy"
 	ambience = AMBIENCE_FOREBODING
 
+<<<<<<< HEAD
 //Citadel change
 /area/submap/cave/cultmine
 	name = "Cult Mine"
 	requires_power = FALSE
+=======
+/area/submap/lava_trench
+	name = "Lava Trench"
+	ambience = AMBIENCE_LAVA
+
+/area/submap/lava_trench/outpost
+	name = "Trench Outpost"
+	requires_power = FALSE
+	icon_state = "submap2"
+>>>>>>> 8233544... Merge pull request #4659 from VOREStation/upstream-merge-5796
