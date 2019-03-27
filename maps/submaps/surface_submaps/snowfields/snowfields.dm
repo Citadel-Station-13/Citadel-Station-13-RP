@@ -6,6 +6,6 @@
 
 #endif
 
-/datum/map_template/surface/mountains
+/datum/map_template/surface/snowfields
 	name = "Snowfield Content"
 	desc = "Bring a coat!"
