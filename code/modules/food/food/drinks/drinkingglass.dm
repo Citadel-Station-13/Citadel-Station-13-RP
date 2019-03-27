@@ -141,8 +141,13 @@
 	volume = 100
 	matter = list("plastic" = 2000)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	icon_state = pick("fitness-cup_black", "fitness-cup_red", "fitness-cup_black")
 
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/on_reagent_change()
@@ -169,8 +174,13 @@
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake
 	name = "protein shake"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("nutriment", 30)
 	reagents.add_reagent("iron", 10)
 	reagents.add_reagent("protein", 15)

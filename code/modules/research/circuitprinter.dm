@@ -22,8 +22,13 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	idle_power_usage = 30
 	active_power_usage = 2500
 
+<<<<<<< HEAD
 /obj/machinery/r_n_d/circuit_imprinter/initialize()
 	..()
+=======
+/obj/machinery/r_n_d/circuit_imprinter/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	component_parts = list()
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)

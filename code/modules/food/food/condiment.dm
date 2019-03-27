@@ -130,12 +130,21 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/enzyme/initialize()
 	..()
 	reagents.add_reagent("enzyme", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/sugar/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/enzyme/Initialize()
+	. = ..()
+	reagents.add_reagent("enzyme", 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/sugar/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("sugar", 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/small
@@ -152,8 +161,13 @@
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("sodiumchloride", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill
@@ -161,8 +175,13 @@
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/small/peppermill/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("blackpepper", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar
@@ -170,8 +189,13 @@
 	desc = "Sweetness in a bottle"
 	icon_state = "sugarsmall"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/condiment/small/sugar/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("sugar", 20)
 
 /obj/item/weapon/reagent_containers/food/condiment/flour
@@ -184,9 +208,15 @@
 /obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
 	return
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/flour/initialize()
 	..()
 	reagents.add_reagent("flour", 200)
+=======
+/obj/item/weapon/reagent_containers/food/condiment/flour/Initialize()
+	. = ..()
+	reagents.add_reagent("flour", 30)
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	src.pixel_x = rand(-10.0, 10)
 	src.pixel_y = rand(-10.0, 10)
 

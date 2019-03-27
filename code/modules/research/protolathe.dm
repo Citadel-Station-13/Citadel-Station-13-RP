@@ -17,8 +17,13 @@
 
 	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0)
 
+<<<<<<< HEAD
 /obj/machinery/r_n_d/protolathe/initialize()
 	..()
+=======
+/obj/machinery/r_n_d/protolathe/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	component_parts = list()
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)

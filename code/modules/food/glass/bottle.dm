@@ -27,8 +27,13 @@
 	..()
 	update_icon()
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/bottle/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/glass/bottle/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	if(!icon_state)
 		icon_state = "bottle-[rand(1,4)]"
 

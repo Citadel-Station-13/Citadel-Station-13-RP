@@ -47,8 +47,13 @@
 		/obj/machinery/radiocarbon_spectrometer
 		)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/glass/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	if(LAZYLEN(prefill))
 		for(var/R in prefill)
 			reagents.add_reagent(R,prefill[R])
@@ -150,8 +155,13 @@
 	item_state = "beaker"
 	matter = list("glass" = 500)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/beaker/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/glass/beaker/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	desc += " Can hold up to [volume] units."
 
 /obj/item/weapon/reagent_containers/glass/beaker/on_reagent_change()

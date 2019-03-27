@@ -11,8 +11,13 @@
 
 	var/list/center_of_mass = list() // Used for table placement
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	if (center_of_mass.len && !pixel_x && !pixel_y)
 		src.pixel_x = rand(-6.0, 6) //Randomizes postion
 		src.pixel_y = rand(-6.0, 6)

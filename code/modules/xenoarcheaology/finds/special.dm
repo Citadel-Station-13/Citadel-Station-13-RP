@@ -5,9 +5,15 @@
 /obj/item/weapon/reagent_containers/glass/replenishing
 	var/spawning_id
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/replenishing/initialize()
 	..()
 	processing_objects.Add(src)
+=======
+/obj/item/weapon/reagent_containers/glass/replenishing/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
 /obj/item/weapon/reagent_containers/glass/replenishing/process()

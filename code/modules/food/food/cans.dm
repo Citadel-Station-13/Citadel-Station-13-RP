@@ -11,8 +11,13 @@
 	icon_state = "cola"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/cola/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/cola/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("cola", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle
@@ -21,8 +26,13 @@
 	icon_state = "waterbottle"
 	center_of_mass = list("x"=15, "y"=8)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("water", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind
@@ -41,8 +51,13 @@
 	icon_state = "thirteen_loko"
 	center_of_mass = list("x"=16, "y"=8)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("thirteenloko", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb
@@ -61,8 +76,13 @@
 	icon_state = "starkist"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/starkist/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/starkist/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("brownstar", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up
@@ -111,8 +131,13 @@
 	icon_state = "tonic"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/tonic/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/tonic/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("tonic", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/sodawater
@@ -121,8 +146,13 @@
 	icon_state = "sodawater"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/sodawater/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/sodawater/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("sodawater", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/gingerale
@@ -131,6 +161,11 @@
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/gingerale/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("gingerale", 30)

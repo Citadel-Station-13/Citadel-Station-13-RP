@@ -117,8 +117,13 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/milk/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/milk/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("milk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk
@@ -127,8 +132,13 @@
 	icon_state = "soymilk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/soymilk/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/soymilk/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("soymilk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk
@@ -138,8 +148,13 @@
 	icon_state = "mini-milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/smallmilk/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk
@@ -149,8 +164,13 @@
 	icon_state = "mini-milk_choco"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("chocolate_milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/coffee
@@ -158,8 +178,13 @@
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/coffee/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/coffee/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("coffee", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea
@@ -169,8 +194,13 @@
 	item_state = "coffee"
 	center_of_mass = list("x"=16, "y"=14)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/tea/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/tea/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("tea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/ice
@@ -178,8 +208,13 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/ice/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/ice/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	reagents.add_reagent("ice", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate
@@ -210,8 +245,13 @@
 	volume = 10
 	center_of_mass = list("x"=16, "y"=12)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/sillycup/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/sillycup/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 
 /obj/item/weapon/reagent_containers/food/drinks/sillycup/on_reagent_change()
 	..()

@@ -123,6 +123,11 @@
 	nutriment_amt = 25 // Very filling.
 	nutriment_desc = list("slime" = 10, "sweetness" = 10, "bliss" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/slime/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/slime/Initialize()
+	. = ..()
+>>>>>>> dce3466... Merge pull request #4684 from VOREStation/upstream-merge-5814
 	bitesize = 5
