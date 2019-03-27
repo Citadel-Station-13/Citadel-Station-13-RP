@@ -68,3 +68,21 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Plushies crate"
+<<<<<<< HEAD
+=======
+	
+/datum/supply_pack/recreation/collars
+	name = "Collar bundle"
+	contains = list(
+			/obj/item/clothing/accessory/collar/shock = 1,
+			/obj/item/clothing/accessory/collar/spike = 1,
+			/obj/item/clothing/accessory/collar/silver = 1,
+			/obj/item/clothing/accessory/collar/gold = 1,
+			/obj/item/clothing/accessory/collar/bell = 1,
+			/obj/item/clothing/accessory/collar/pink = 1,
+			/obj/item/clothing/accessory/collar/holo = 1
+			)
+	cost = 25
+	containertype = /obj/structure/closet/crate
+	containername = "collar crate"
+>>>>>>> e660a87... Merge pull request #4636 from TheFurryFeline/patch-1
