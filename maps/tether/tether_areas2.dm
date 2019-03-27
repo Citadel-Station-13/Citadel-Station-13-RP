@@ -522,6 +522,10 @@
 	name = "\improper Excursion Shuttle - Sand Transit"
 	base_turf = /turf/space/sandyscroll
 
+/area/shuttle/excursion/snow_moving
+	name = "\improper Excursion Shuttle - Snow Transit"
+	base_turf = /turf/space/snowyscroll
+
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Virgo3b Sky"
 	base_turf = /turf/simulated/sky

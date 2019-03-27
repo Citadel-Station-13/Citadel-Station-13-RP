@@ -22,49 +22,15 @@
 		/datum/shuttle_destination/excursion/virgo6orbit = 30 SECONDS //This is the above one
 	)
 
-//This is a special subtype of the thing that generates ores on a map
-//It will generate more rich ores because of the lower numbers than the normal one
-/datum/random_map/noise/ore/beachmine
-	descriptor = "Sowfield mine ore distribution map"
-	deep_val = 0.7
-	rare_val = 0.8
-
-//The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
-/datum/random_map/noise/ore/beachmine/check_map_sanity()
-	var/rare_count = 0
-	var/surface_count = 0
-	var/deep_count = 0
-
-	// Increment map sanity counters.
-	for(var/value in map)
-		if(value < rare_val)
-			surface_count++
-		else if(value < deep_val)
-			rare_count++
-		else
-			deep_count++
-	// Sanity check.
-	if(surface_count < 100)
-		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
-		return 0
-	else if(rare_count < 50)
-		admin_notice("<span class='danger'>Insufficient rare minerals. Rerolling...</span>", R_DEBUG)
-		return 0
-	else if(deep_count < 50)
-		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
-		return 0
-	else
-		return 1
-
 // -- Objs -- //
 
 //This is a special type of object which will build our shuttle paths, only if this map loads
 //You do need to place this object on the map somewhere.
 /obj/shuttle_connector/snowfield
-	name = "shuttle connector - beach"
+	name = "shuttle connector - snowfield"
 	shuttle_name = "Excursion Shuttle"
 	//This list needs to be in the correct order, and start with the one that connects to the rest of the shuttle 'network'
-	destinations = list(/datum/shuttle_destination/excursion/virgo4orbit, /datum/shuttle_destination/excursion/beach)
+	destinations = list(/datum/shuttle_destination/excursion/virgo6orbit, /datum/shuttle_destination/excursion/beach)
 
 //This object simply performs any map setup that needs to happen on our map if it loads.
 //As with the above, you do need to place this object on the map somewhere.
@@ -96,17 +62,6 @@
 	guard = 40 //They'll stay within this range (not defining this disables them staying nearby and they will wander the map (and through step teleports))
 	mobs_to_pick_from = list(
 		/mob/living/simple_animal/snake
-	)
-
-/obj/tether_away_spawner/beach_outside_friendly
-	name = "Fennec Spawner"
-	faction = "fennec"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 25
-	guard = 40
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/fennec
 	)
 
 /obj/tether_away_spawner/beach_cave
@@ -153,12 +108,12 @@
 // -- Areas -- //
 
 //And some special areas, including our shuttle landing spot (must be unique)
-/area/shuttle/excursion/away_beach
-	name = "\improper Excursion Shuttle - Beach"
+/area/shuttle/excursion/away_snowfields
+	name = "\improper Excursion Shuttle - Snowfields"
 	dynamic_lighting = 0
 
 /area/tether_away/beach
-	name = "\improper Away Mission - Virgo 4 Beach"
+	name = "\improper Away Mission - Virgo 6 Beach"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/beach/sand //This is what the ground turns into if destroyed/bombed/etc
 	//Not going to do sunlight simulations here like virgo3b
