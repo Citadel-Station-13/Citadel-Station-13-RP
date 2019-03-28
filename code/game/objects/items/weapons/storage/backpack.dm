@@ -62,7 +62,7 @@
 /*/obj/item/weapon/storage/backpack/holding/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(istype(W, /obj/item/weapon/storage/backpack/holding))
 		return 1
-	return ..()*/ - let's not
+	return ..()*/ //- let's not
 
 /obj/item/weapon/storage/backpack/santabag
 	name = "\improper Santa's gift bag"
