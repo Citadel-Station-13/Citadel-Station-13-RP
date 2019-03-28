@@ -53,6 +53,7 @@
 #include "alienship/alienship.dmm"
 #include "aerostat/aerostat.dmm"
 #include "aerostat/surface.dmm"
+#include "snowfields/snowfields.dmm"
 #endif
 
 #include "beach/_beach.dm"
@@ -128,6 +129,16 @@
 	name = "Away Mission - Aerostat Surface"
 	z = Z_LEVEL_AEROSTAT_SURFACE
 
+#include "snowfields/snowfields.dmm"
+/datum/map_template/tether_lateload/away_snowfields
+	name = "Snow Planet - Z1 Snowfields"
+	desc = "The surface of the snowy planet, the landing site featuring a large, open snowfield speckled with trees and small hills."
+	mappath = 'snowfields/snowfields.dmm'
+	associated_map_datum = /datum/map_z_level/tether_lateload/away_snowfields
+
+/datum/map_z_level/tether_lateload/away_snowfields
+	name = "Away Mission - Snowfields"
+	z = Z_LEVEL_SNOWFIELDS
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like

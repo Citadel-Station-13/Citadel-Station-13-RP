@@ -37,15 +37,11 @@
 /obj/away_mission_init/snowfieldsinit
 	name = "away mission initializer - snowfields"
 
-//In our case, it initializes the ores and random submaps in the beach's cave, then deletes itself
-/obj/away_mission_init/beachcave/initialize()
-	// Cave submaps are first.
-	/*seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
-	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/deep, /datum/map_template/surface/mountains/deep)
+/obj/away_mission_init/snowfieldsinit/initialize()
+	seed_submaps(list(z), 50, /area/tether_away/snowfields/unexplored/normal, /datum/map_template/surface/snowfields/near)
+	seed_submaps(list(z), 50, /area/tether_away/snowfields/unexplored/deep, /datum/map_template/surface/snowfields/far)
 
-	// Now for the tunnels.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_BEACH_CAVE, world.maxx, world.maxy)
-	new /datum/random_map/noise/ore/beachmine(null, 1, 1, Z_LEVEL_BEACH_CAVE, 64, 64)*/
+/obj/away_mission_init/snowfields/initialize()
 
 	initialized = TRUE
 	return INITIALIZE_HINT_QDEL
@@ -53,19 +49,19 @@
 // Two mob spawners that are placed on the map that spawn some mobs!
 // They keep track of their mob, and when it's dead, spawn another (only if nobody is looking)
 // Note that if your map has step teleports, mobs may wander through them accidentally and not know how to get back
-/obj/tether_away_spawner/beach_outside
-	name = "Beach Outside Spawner" //Just a name
+/obj/tether_away_spawner/snowfields_easy
+	name = "Snowfield Spawner Easy" //Just a name
 	faction = "beach_out" //Sets all the mobs to this faction so they don't infight
 	atmos_comp = TRUE //Sets up their atmos tolerances to work in this setting, even if they don't normally (20% up/down tolerance for each gas, and heat)
-	prob_spawn = 50 //Chance of this spawner spawning a mob (once this is missed, the spawner is 'depleted' and won't spawn anymore)
+	prob_spawn = 75 //Chance of this spawner spawning a mob (once this is missed, the spawner is 'depleted' and won't spawn anymore)
 	prob_fall = 25 //Chance goes down by this much each time it spawns one (not defining and prob_spawn 100 means they spawn as soon as one dies)
-	guard = 40 //They'll stay within this range (not defining this disables them staying nearby and they will wander the map (and through step teleports))
+	guard = //They'll stay within this range (not defining this disables them staying nearby and they will wander the map (and through step teleports))
 	mobs_to_pick_from = list(
 		/mob/living/simple_animal/snake
 	)
 
-/obj/tether_away_spawner/beach_cave
-	name = "Beach Cave Spawner"
+/obj/tether_away_spawner/snowfields_medium
+	name = "Snowfield Spawner Medium"
 	faction = "beach_cave"
 	atmos_comp = TRUE
 	prob_spawn = 100
@@ -79,32 +75,6 @@
 		/mob/living/simple_animal/hostile/giant_spider/ion = 2
 	)
 
-// These are step-teleporters, for map edge transitions
-// This top one goes INTO the cave
-/obj/effect/step_trigger/teleporter/away_beach_tocave/New()
-	..()
-	teleport_x = src.x //X is horizontal. This is a top of map transition, so you want the same horizontal alignment in the cave as you have on the beach
-	teleport_y = 2 //2 is because it's putting you on row 2 of the map to the north
-	teleport_z = z+1 //The cave is always our Z-level plus 1, because it's loaded after us
-
-//This one goes OUT OF the cave
-/obj/effect/step_trigger/teleporter/away_beach_tobeach/New()
-	..()
-	teleport_x = src.x //Same reason as bove
-	teleport_y = world.maxy - 1 //This means "1 space from the top of the map"
-	teleport_z = z-1 //Opposite of 'tocave', beach is always loaded as the map before us
-
-// -- Turfs -- //
-
-//These are just some special turfs for the beach water
-/turf/simulated/floor/beach/coastwater
-	name = "Water"
-	icon_state = "water"
-
-/turf/simulated/floor/beach/coastwater/New()
-	..()
-	add_overlay(image("icon"='icons/misc/beach.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1))
-
 // -- Areas -- //
 
 //And some special areas, including our shuttle landing spot (must be unique)
@@ -117,32 +87,27 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/beach/sand //This is what the ground turns into if destroyed/bombed/etc
 	//Not going to do sunlight simulations here like virgo3b
-	//So we just make the whole beach fullbright all the time
+	//So we just make the whole snowfield fullbright all the time for now.
 	dynamic_lighting = 0
 
-/area/tether_away/beach/powershed
-	name = "\improper Away Mission - Virgo 4 Coast PS"
-	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/beach/sand
-
-//Some areas for the cave, which are referenced by our init object to seed submaps and ores
+//Some areas for the snowfields which are referenced by our init object to seed submaps.
 /area/tether_away/cave
 	flags = RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/cave
 
-/area/tether_away/cave/explored/normal
-	name = "\improper Away Mission - Virgo 4 Cave (E)"
+/area/tether_away/snowfields/explored/near
+	name = "\improper Away Mission - Virgo 6 snowfields (E)"
 	icon_state = "explored"
 
-/area/tether_away/cave/unexplored/normal
-	name = "\improper Away Mission - Virgo 4 Cave (UE)"
+/area/tether_away/snowfields/unexplored/near
+	name = "\improper Away Mission - Virgo 6 snowfields (UE)"
 	icon_state = "unexplored"
 
-/area/tether_away/cave/explored/deep
-	name = "\improper Away Mission - Virgo 4 Cave Deep (E)"
+/area/tether_away/snowfields/explored/far
+	name = "\improper Away Mission - Virgo 6 snowfields far (E)"
 	icon_state = "explored_deep"
 
-/area/tether_away/cave/unexplored/deep
-	name = "\improper Away Mission - Virgo 4 Cave Deep (UE)"
+/area/tether_away/snowfields/unexplored/far
+	name = "\improper Away Mission - Virgo 6 snowfields far (UE)"
 	icon_state = "unexplored_deep"
