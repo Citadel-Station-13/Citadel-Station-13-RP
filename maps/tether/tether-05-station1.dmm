@@ -1782,10 +1782,10 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "aeq" = (
-/turf/simulated/shuttle/wall/voidcraft/green{
-	hard_corner = 1
-	},
-/area/hallway/station/atrium)
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
 "aer" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -2112,8 +2112,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/excursion_dock)
 "aeO" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/hallway/station/atrium)
+/turf/simulated/shuttle/wall/voidcraft/green{
+	hard_corner = 1
+	},
+/area/tether/elevator)
 "aeP" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -2379,11 +2381,8 @@
 /turf/simulated/floor,
 /area/engineering/storage)
 "afy" = (
-/obj/structure/sign/deck1,
-/turf/simulated/shuttle/wall/voidcraft/green{
-	hard_corner = 1
-	},
-/area/hallway/station/atrium)
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator)
 "afz" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
@@ -2667,6 +2666,200 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+<<<<<<< HEAD
+=======
+"agi" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "englockdown";
+	name = "Engineering Lockdown";
+	opacity = 0
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "ce_office"
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 8;
+	id = "ce_office"
+	},
+/turf/simulated/floor,
+/area/crew_quarters/heads/chief)
+"agj" = (
+/obj/structure/grille,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "hop_office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hop)
+"agk" = (
+/obj/structure/grille,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "hop_office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hop)
+"agl" = (
+/obj/structure/grille,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "hop_office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hop)
+"agm" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hop)
+"agn" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hop)
+"ago" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/window/reinforced/polarized/full{
+	id = "library_study"
+	},
+/turf/simulated/floor/plating,
+/area/library)
+"agp" = (
+/obj/machinery/button/windowtint{
+	id = "library_study";
+	pixel_x = 26;
+	pixel_y = -26
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet,
+/area/library)
+"agq" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/camera/network/exploration,
+/turf/simulated/floor/tiled/monotile,
+/area/tether/station/excursion_dock)
+"agr" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 10
+	},
+/obj/machinery/camera/network/exploration,
+/turf/simulated/floor/tiled,
+/area/tether/station/excursion_dock)
+"ags" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/pathfinder_office)
+"agt" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/machinery/camera/network/exploration,
+/turf/simulated/floor/tiled/monotile,
+/area/tether/station/excursion_dock)
+"agu" = (
+/obj/structure/sign/deck1,
+/turf/simulated/shuttle/wall/voidcraft/green{
+	hard_corner = 1
+	},
+/area/tether/elevator)
+"agv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/tether/station/excursion_dock)
+"agw" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	icon_state = "bordercolor";
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	icon_state = "extinguisher_closed";
+	pixel_x = -30
+	},
+/obj/machinery/camera/network/exploration{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/explorer_meeting)
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 "agx" = (
 /obj/structure/bed/chair/comfy/blue{
 	icon_state = "comfychair_preview";
@@ -31821,12 +32014,12 @@ alQ
 aBH
 aGP
 alQ
-aeq
-aeq
-aeq
-aeq
-aeq
-aeq
+aeO
+aeO
+aeO
+aeO
+aeO
+aeO
 afC
 afC
 afC
@@ -31963,12 +32156,12 @@ aDs
 aEW
 aGI
 alQ
-aeq
 aeO
+afy
+afy
+afy
+afy
 aeO
-aeO
-aeO
-aeq
 afC
 afE
 agd
@@ -32105,12 +32298,12 @@ aDM
 aEX
 aof
 alQ
-aeq
 aeO
+afy
+afy
+afy
+afy
 aeO
-aeO
-aeO
-aeq
 afC
 afJ
 age
@@ -32247,12 +32440,12 @@ alQ
 alQ
 alQ
 alQ
-aeq
 aeO
+afy
+afy
+afy
+afy
 aeO
-aeO
-aeO
-aeq
 afC
 afF
 age
@@ -32389,12 +32582,12 @@ asu
 aFc
 aog
 aoO
-aeq
 aeO
+afy
+afy
+afy
+afy
 aeO
-aeO
-aeO
-aeq
 afC
 afN
 agg
@@ -32531,12 +32724,12 @@ aDP
 aEZ
 avS
 aoO
-aeq
-aeq
 aeO
 aeO
 afy
-aeq
+afy
+agu
+aeO
 afC
 afC
 aYt
@@ -33797,7 +33990,11 @@ aeo
 aaq
 aaq
 aau
+<<<<<<< HEAD
 aas
+=======
+aeq
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 avK
 avN
 aad
@@ -33939,7 +34136,11 @@ amF
 avG
 adB
 aaq
+<<<<<<< HEAD
 aas
+=======
+aeq
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 avK
 avN
 aad
@@ -34081,7 +34282,11 @@ amF
 avG
 adB
 aaq
+<<<<<<< HEAD
 aas
+=======
+aeq
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 avK
 auH
 aad
@@ -34933,7 +35138,11 @@ aaD
 avG
 tIi
 aaq
+<<<<<<< HEAD
 aas
+=======
+aeq
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 avK
 auQ
 aad
@@ -35075,7 +35284,11 @@ amL
 aob
 dbI
 aaq
+<<<<<<< HEAD
 aas
+=======
+aeq
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 avK
 qgR
 aad
@@ -35217,7 +35430,11 @@ aep
 aeu
 aev
 aau
+<<<<<<< HEAD
 aas
+=======
+aeq
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 avK
 qgR
 aad

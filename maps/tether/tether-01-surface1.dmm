@@ -3263,6 +3263,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/tether/surfacebase/tram)
 "agc" = (
 /obj/machinery/door/firedoor/glass,
@@ -3275,6 +3276,17 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
+=======
+/area/crew_quarters/visitor_laundry)
+"agb" = (
+/turf/simulated/shuttle/wall/voidcraft/green{
+	hard_corner = 1
+	},
+/area/tether/elevator)
+"agc" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator)
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 "agd" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
@@ -3300,6 +3312,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/mining_main/ore)
 "agh" = (
+<<<<<<< HEAD
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -3323,6 +3336,19 @@
 /obj/random/contraband,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/atrium_one)
+=======
+/obj/turbolift_map_holder/tether{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/tether/elevator)
+"agi" = (
+/obj/structure/sign/deck/first,
+/turf/simulated/shuttle/wall/voidcraft/green{
+	hard_corner = 1
+	},
+/area/tether/elevator)
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 "agj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -8731,6 +8757,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/storage/primary)
+<<<<<<< HEAD
 "aqj" = (
 /turf/simulated/wall,
 /area/maintenance/substation/civ_west)
@@ -8743,6 +8770,10 @@
 /area/maintenance/lower/xenoflora)
 "aql" = (
 /obj/structure/railing{
+=======
+"atX" = (
+/obj/effect/floor_decal/borderfloor{
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 	dir = 8
 	},
 /obj/machinery/atmospherics/binary/passive_gate{
@@ -9121,11 +9152,16 @@
 /obj/random/maintenance/research,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
+<<<<<<< HEAD
 "aqZ" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
+=======
+"auG" = (
+/obj/structure/closet/firecloset/full/double,
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
 "ara" = (
@@ -10677,6 +10713,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
@@ -10689,6 +10726,29 @@
 /area/tether/surfacebase/atrium_one)
 "atX" = (
 /obj/effect/floor_decal/borderfloor{
+=======
+/obj/structure/disposalpipe/junction,
+/obj/random/junk,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/xenoflora)
+"axF" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
+"axG" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
+"axH" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -42421,8 +42481,13 @@ ati
 ati
 ati
 ati
+<<<<<<< HEAD
 agR
 aib
+=======
+aBe
+aAt
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aBd
 aBV
 bqS
@@ -42563,8 +42628,13 @@ avA
 avA
 avA
 ayJ
+<<<<<<< HEAD
 agR
 aij
+=======
+aBe
+aAu
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aBd
 aBd
 aBd
@@ -42698,6 +42768,7 @@ alg
 alg
 alg
 aah
+<<<<<<< HEAD
 atj
 atW
 atW
@@ -42709,6 +42780,18 @@ atj
 aij
 aEU
 aah
+=======
+ati
+agb
+agb
+agb
+agb
+agb
+agb
+aBe
+aAu
+azI
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aah
 aah
 aah
@@ -42840,6 +42923,7 @@ alg
 aah
 aah
 aah
+<<<<<<< HEAD
 atj
 atW
 auF
@@ -42850,6 +42934,18 @@ atW
 atj
 aij
 aEU
+=======
+ati
+agb
+agc
+agc
+agc
+agh
+agb
+aBe
+aAu
+azI
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aah
 aah
 aah
@@ -42982,6 +43078,7 @@ alg
 aah
 aah
 aah
+<<<<<<< HEAD
 atj
 atW
 auF
@@ -42993,6 +43090,18 @@ atj
 aij
 aEU
 aah
+=======
+ati
+agb
+agc
+agc
+agc
+agc
+agb
+aBe
+aci
+azI
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aah
 aah
 aah
@@ -43124,6 +43233,7 @@ alg
 aah
 aah
 aah
+<<<<<<< HEAD
 atj
 atW
 auF
@@ -43134,6 +43244,19 @@ atW
 atj
 aij
 aEU
+=======
+ati
+agb
+agc
+agc
+agc
+agc
+agb
+aBe
+aAu
+azI
+aah
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aah
 aah
 aah
@@ -43266,6 +43389,7 @@ alg
 aah
 aah
 aah
+<<<<<<< HEAD
 atj
 atW
 auF
@@ -43275,6 +43399,25 @@ auF
 atW
 atj
 aij
+=======
+ati
+agb
+agc
+agc
+agc
+agc
+agb
+aBe
+aAu
+azI
+aah
+aah
+aah
+aah
+aah
+aEU
+aFu
+>>>>>>> 42231eb... Merge pull request #4827 from Heroman3003/elevator-permapower
 aEU
 aah
 aah
@@ -43409,12 +43552,12 @@ aah
 aah
 aah
 atj
-atW
-atW
-auF
-auF
-axE
-atW
+agb
+agb
+agc
+agc
+agi
+agb
 atj
 aij
 aEU

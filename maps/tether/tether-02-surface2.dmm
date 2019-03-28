@@ -5143,7 +5143,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green{
 	hard_corner = 1
 	},
-/area/tether/surfacebase/atrium_two)
+/area/tether/elevator)
 "lt" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
@@ -5430,7 +5430,7 @@
 /area/maintenance/lower/rnd)
 "lQ" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/tether/surfacebase/atrium_two)
+/area/tether/elevator)
 "lR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -6245,7 +6245,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green{
 	hard_corner = 1
 	},
-/area/tether/surfacebase/atrium_two)
+/area/tether/elevator)
 "nw" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
@@ -28197,7 +28197,7 @@ jN
 jN
 ky
 jy
-ld
+lc
 ls
 ls
 ls
@@ -28339,7 +28339,7 @@ jy
 jy
 jy
 jy
-ld
+lc
 ls
 lQ
 lQ
@@ -28481,7 +28481,7 @@ jy
 jy
 jy
 jy
-ld
+lc
 ls
 lQ
 lQ
@@ -28623,7 +28623,7 @@ jy
 jy
 jy
 jy
-ld
+lc
 ls
 lQ
 lQ
@@ -28765,7 +28765,7 @@ jy
 jy
 jy
 jy
-ld
+lc
 ls
 lQ
 lQ
@@ -28907,7 +28907,7 @@ jy
 jy
 jy
 jy
-ld
+lc
 ls
 ls
 lQ
@@ -29049,7 +29049,7 @@ jy
 jy
 jy
 jy
-dY
+ii
 dY
 lR
 ml
