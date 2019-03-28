@@ -3,12 +3,26 @@
 	desc = "A fancy bed with built-in sensory I/O ports and connectors to interface users' minds with their bodies in virtual reality."
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "syndipod_0"
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
+=======
+
+	var/base_state = "syndipod_"
+
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 	density = 1
 	anchored = 1
 	circuit = /obj/item/weapon/circuitboard/vr_sleeper
 	var/mob/living/carbon/human/occupant = null
 	var/mob/living/carbon/human/avatar = null
 	var/datum/mind/vr_mind = null
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
+=======
+	var/datum/effect/effect/system/smoke_spread/bad/smoke
+
+	var/eject_dead = TRUE
+
+	var/mirror_first_occupant = TRUE	// Do we force the newly produced body to look like the occupant?
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 
 	use_power = 1
 	idle_power_usage = 15
@@ -23,6 +37,7 @@
 
 	RefreshParts()
 
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 /obj/machinery/vr_sleeper/initialize()
 	. = ..()
 	update_icon()
@@ -33,6 +48,29 @@
 
 /obj/machinery/vr_sleeper/update_icon()
 	icon_state = "syndipod_[occupant ? "1" : "0"]"
+=======
+/obj/machinery/vr_sleeper/Initialize()
+	. = ..()
+	smoke = new
+	update_icon()
+
+/obj/machinery/vr_sleeper/Destroy()
+	. = ..()
+	go_out()
+
+/obj/machinery/vr_sleeper/process()
+	if(stat & (NOPOWER|BROKEN))
+		if(occupant)
+			go_out()
+			visible_message("<span class='notice'>\The [src] emits a low droning sound, before the pod door clicks open.</span>")
+		return
+	else if(eject_dead && occupant && occupant.stat == DEAD) // If someone dies somehow while inside, spit them out.
+		visible_message("<span class='warning'>\The [src] sounds an alarm, swinging its hatch open.</span>")
+		go_out()
+
+/obj/machinery/vr_sleeper/update_icon()
+	icon_state = "[base_state][occupant ? "1" : "0"]"
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 
 /obj/machinery/vr_sleeper/Topic(href, href_list)
 	if(..())
@@ -51,6 +89,14 @@
 
 /obj/machinery/vr_sleeper/attackby(var/obj/item/I, var/mob/user)
 	add_fingerprint(user)
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
+=======
+
+	if(occupant && (istype(I, /obj/item/device/healthanalyzer) || istype(I, /obj/item/device/robotanalyzer)))
+		I.attack(occupant, user)
+		return
+
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 	if(default_deconstruction_screwdriver(user, I))
 		return
 	else if(default_deconstruction_crowbar(user, I))
@@ -83,19 +129,34 @@
 
 	if(occupant)
 		// This will eject the user from VR
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 		// ### Fry the brain?
+=======
+		// ### Fry the brain? Yes. Maybe.
+		if(prob(15 / ( severity / 4 )) && occupant.species.has_organ[O_BRAIN] && occupant.internal_organs_by_name[O_BRAIN])
+			var/obj/item/organ/O = occupant.internal_organs_by_name[O_BRAIN]
+			O.take_damage(severity * 2)
+			visible_message("<span class='danger'>\The [src]'s internal lighting flashes rapidly, before the hatch swings open with a cloud of smoke.</span>")
+			smoke.set_up(n = severity, 0, src)
+			smoke.start("#202020")
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 		go_out()
 
 	..(severity)
 
 /obj/machinery/vr_sleeper/verb/eject()
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 	set src in oview(1)
+=======
+	set src in view(1)
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 	set category = "Object"
 	set name = "Eject VR Capsule"
 
 	if(usr.incapacitated())
 		return
 
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 	if(usr != occupant && avatar && alert(avatar, "Someone wants to remove you from virtual reality. Do you want to leave?", "Leave VR?", "Yes", "No") == "No")
 		return
 
@@ -103,6 +164,14 @@
 	avatar.exit_vr()
 	avatar = null
 	go_out()
+=======
+	var/forced = FALSE
+
+	if(stat & (BROKEN|NOPOWER) || occupant && occupant.stat == DEAD)
+		forced = TRUE
+
+	go_out(forced)
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 	add_fingerprint(usr)
 
 /obj/machinery/vr_sleeper/verb/climb_in()
@@ -126,9 +195,15 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(M))
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 		user << "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>"
 	if(occupant)
 		user << "<span class='warning'>\The [src] is already occupied.</span>"
+=======
+		to_chat(user, "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>")
+	if(occupant)
+		to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 		return
 
 	if(M == user)
@@ -153,10 +228,23 @@
 		enter_vr()
 	return
 
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 /obj/machinery/vr_sleeper/proc/go_out()
 	if(!occupant)
 		return
 
+=======
+/obj/machinery/vr_sleeper/proc/go_out(var/forced = TRUE)
+	if(!occupant)
+		return
+
+	if(!forced && avatar && alert(avatar, "Someone wants to remove you from virtual reality. Do you want to leave?", "Leave VR?", "Yes", "No") == "No")
+		return
+
+	avatar.exit_vr()
+	avatar = null
+
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 	if(occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
@@ -182,12 +270,20 @@
 		return
 
 	// Mob doesn't have an active consciousness to send/receive from
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 	if(occupant.stat != CONSCIOUS)
+=======
+	if(occupant.stat == DEAD)
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 		return
 
 	avatar = occupant.vr_link
 	// If they've already enterred VR, and are reconnecting, prompt if they want a new body
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 	if(avatar && alert(occupant, "You already have a Virtual Reality avatar. Would you like to use it?", "New avatar", "Yes", "No") == "No")
+=======
+	if(avatar && alert(occupant, "You already have a [avatar.stat == DEAD ? "" : "deceased "]Virtual Reality avatar. Would you like to use it?", "New avatar", "Yes", "No") == "No")
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 		// Delink the mob
 		occupant.vr_link = null
 		avatar = null
@@ -210,7 +306,11 @@
 
 		avatar = new(S, "Virtual Reality Avatar")
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
+<<<<<<< HEAD:code/game/machinery/vr_console.dm
 		if(occupant.species.name != "Promethean" && occupant.species.name != "Human")
+=======
+		if(occupant.species.name != "Promethean" && occupant.species.name != "Human" && mirror_first_occupant)
+>>>>>>> 615f413... Merge pull request #4727 from VOREStation/upstream-merge-5798:code/game/machinery/virtual_reality/vr_console.dm
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
 		avatar.Sleeping(1)
