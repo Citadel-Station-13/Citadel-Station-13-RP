@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
 	Defines a firing mode for a gun.
 
