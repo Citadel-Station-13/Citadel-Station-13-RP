@@ -59,13 +59,10 @@
 	return ..()
 
 /datum/beam/proc/Draw()
-<<<<<<< HEAD
-=======
 	if(QDELETED(target) || QDELETED(origin))
 		qdel(src)
 		return
 
->>>>>>> 1a9107a... Merge pull request #4619 from VOREStation/upstream-merge-5797
 	var/Angle = round(Get_Angle(origin,target))
 
 	var/matrix/rot_matrix = matrix()
