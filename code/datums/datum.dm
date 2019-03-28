@@ -18,6 +18,7 @@
 // Return the appropriate QDEL_HINT; in most cases this is QDEL_HINT_QUEUE.
 /datum/proc/Destroy(force=FALSE)
 	weakref = null // Clear this reference to ensure it's kept for as brief duration as possible.
+
 	tag = null
 	GLOB.nanomanager.close_uis(src)
 	return QDEL_HINT_QUEUE

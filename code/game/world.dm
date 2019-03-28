@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Byond is a shit. That's why this is here.
 /*
 	The initialization of the game happens roughly like this:
@@ -11,23 +12,36 @@
 */
 
 
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 #define RECOMMENDED_VERSION 501
 /world/New()
 	world.log << "Map Loading Complete"
 	//logs
+<<<<<<< HEAD
+=======
+	//VOREStation Edit Start
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 	log_path += time2text(world.realtime, "YYYY/MM-Month/DD-Day/round-hh-mm-ss")
 	diary = start_log("[log_path].log")
 	href_logfile = start_log("[log_path]-hrefs.htm")
 	error_log = start_log("[log_path]-error.log")
 	debug_log = start_log("[log_path]-debug.log")
+<<<<<<< HEAD
+=======
+	//VOREStation Edit End
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
+<<<<<<< HEAD
 	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 	config.post_load()
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
@@ -60,6 +74,7 @@
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
+<<<<<<< HEAD
 	// Loads all the pre-made submap templates.
 	load_map_templates()
 
@@ -67,6 +82,8 @@
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()
 
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 	// Create frame types.
 	populate_frame_types()
 
@@ -78,7 +95,11 @@
 
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
@@ -104,7 +125,10 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
+<<<<<<< HEAD
 	//TGS_TOPIC
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if (T == "ping")
@@ -140,7 +164,11 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/list/players = list()
 			var/list/admins = list()
 
+<<<<<<< HEAD
 			for(var/client/C in clients)
+=======
+			for(var/client/C in GLOB.clients)
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 				if(C.holder)
 					if(C.holder.fakekey)
 						continue
@@ -158,7 +186,11 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/n = 0
 			var/admins = 0
 
+<<<<<<< HEAD
 			for(var/client/C in clients)
+=======
+			for(var/client/C in GLOB.clients)
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 				if(C.holder)
 					if(C.holder.fakekey)
 						continue	//so stealthmins aren't revealed by the hub
@@ -282,7 +314,11 @@ var/world_topic_spam_protect_time = world.timeofday
 			info["hasbeenrev"] = M.mind ? M.mind.has_been_rev : "No mind"
 			info["stat"] = M.stat
 			info["type"] = M.type
+<<<<<<< HEAD
 			if(isliving(M))
+=======
+			if(istype(M, /mob/living))
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 				var/mob/living/L = M
 				info["damage"] = list2params(list(
 							oxy = L.getOxyLoss(),
@@ -329,7 +365,11 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/client/C
 		var/req_ckey = ckey(input["adminmsg"])
 
+<<<<<<< HEAD
 		for(var/client/K in clients)
+=======
+		for(var/client/K in GLOB.clients)
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 			if(K.ckey == req_ckey)
 				C = K
 				break
@@ -399,6 +439,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "Database connection failed or not set up"
 
 
+<<<<<<< HEAD
 /world/Reboot(var/reason)
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
@@ -418,6 +459,30 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	..(reason)
+=======
+/world/Reboot(reason = 0, fast_track = FALSE)
+	/*spawn(0)
+		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
+		*/
+
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+			world << "<span class='boldannounce'>[key_name_admin(usr)] has requested an immediate world restart via client side debugging tools</span>"
+
+		else
+			world << "<span class='boldannounce'>Rebooting world immediately due to host request</span>"
+	else
+		processScheduler.stop()
+		Master.Shutdown()	//run SS shutdowns
+		for(var/client/C in GLOB.clients)
+			if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+				C << link("byond://[config.server]")
+
+	log_world("World rebooted at [time_stamp()]")
+	..()
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 
 /hook/startup/proc/loadMode()
 	world.load_mode()
@@ -447,6 +512,17 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
 
+<<<<<<< HEAD
+=======
+
+/proc/load_configuration()
+	config = new /datum/configuration()
+	config.load("config/config.txt")
+	config.load("config/game_options.txt","game_options")
+	config.loadsql("config/dbconfig.txt")
+	config.loadforumsql("config/forumdbconfig.txt")
+
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 /hook/startup/proc/loadMods()
 	world.load_mods()
 	world.load_mentors() // no need to write another hook.
@@ -471,7 +547,11 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
+<<<<<<< HEAD
 				D.associate(directory[ckey])
+=======
+				D.associate(GLOB.directory[ckey])
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 
 /world/proc/load_mentors()
 	if(config.admin_legacy_system)
@@ -491,7 +571,11 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
+<<<<<<< HEAD
 				D.associate(directory[ckey])
+=======
+				D.associate(GLOB.directory[ckey])
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 
 /world/proc/update_status()
 	var/s = ""
@@ -503,11 +587,16 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += " ("
 	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
+<<<<<<< HEAD
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
 	s += "<br><small><i>Citadel's VOREStation-based server. Normie compatibility not guaranteed.</i></small><br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
 
+=======
+	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+	s += "</a>"
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 	s += ")"
 
 	var/list/features = list()
@@ -518,7 +607,11 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		features += "<b>STARTING</b>"
 
+<<<<<<< HEAD
 	/*if (!config.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
+=======
+	if (!config.enter_allowed)
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 		features += "closed"
 
 	features += config.abandon_allowed ? "respawn" : "no respawn"
@@ -527,7 +620,11 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "vote"
 
 	if (config && config.allow_ai)
+<<<<<<< HEAD
 		features += "AI allowed"*/
+=======
+		features += "AI allowed"
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 
 	var/n = 0
 	for (var/mob/M in player_list)
@@ -544,7 +641,11 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "hosted by <b>[config.hostedby]</b>"
 
 	if (features)
+<<<<<<< HEAD
 		s += "\[[jointext(features, ", ")]"	//CITADEL CHANGE - replaces colon with left bracket to make the hub entry a little fancier
+=======
+		s += ": [jointext(features, ", ")]"
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 
 	/* does this help? I do not know */
 	if (src.status != s)
@@ -642,4 +743,20 @@ proc/establish_old_db_connection()
 	else
 		return 1
 
+<<<<<<< HEAD
+=======
+// Things to do when a new z-level was just made.
+/world/proc/max_z_changed()
+	if(!istype(GLOB.players_by_zlevel, /list))
+		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	while(GLOB.players_by_zlevel.len < world.maxz)
+		GLOB.players_by_zlevel.len++
+		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+
+// Call this to make a new blank z-level, don't modify maxz directly.
+/world/proc/increment_max_z()
+	maxz++
+	max_z_changed()
+
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 #undef FAILED_DB_CONNECTION_CUTOFF

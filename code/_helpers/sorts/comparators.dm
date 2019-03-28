@@ -19,6 +19,9 @@
 /proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return a.priority - b.priority
 
+/proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
+	return a.timeToRun - b.timeToRun
+
 // Sorts qdel statistics recorsd by time and count
 /proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
 	. = B.hard_delete_time - A.hard_delete_time
@@ -42,9 +45,12 @@
 	. = B[STAT_ENTRY_TIME] - A[STAT_ENTRY_TIME]
 	if (!.)
 		. = B[STAT_ENTRY_COUNT] - A[STAT_ENTRY_COUNT]
+<<<<<<< HEAD
 
 // Compares complexity of recipes for use in cooking, etc. This is for telling which recipe to make, not for showing things to the player.
 /proc/cmp_recipe_complexity_dsc(datum/recipe/A, datum/recipe/B)
 	var/a_score = LAZYLEN(A.items) + LAZYLEN(A.reagents) + LAZYLEN(A.fruit)
 	var/b_score = LAZYLEN(B.items) + LAZYLEN(B.reagents) + LAZYLEN(B.fruit)
 	return b_score - a_score
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636

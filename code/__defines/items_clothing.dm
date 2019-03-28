@@ -40,6 +40,7 @@
 
 #define ACCESSORY_SLOT_TORSO 	(ACCESSORY_SLOT_UTILITY|ACCESSORY_SLOT_WEAPON)
 
+<<<<<<< HEAD
 // Flags bitmasks. - Used in /atom/var/flags
 #define NOBLUDGEON         0x1    // When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
 #define CONDUCT            0x2   // Conducts electricity. (metal etc.)
@@ -65,6 +66,8 @@
 #define PASSGRILLE 0x4
 #define PASSBLOB   0x8
 
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636
 // Bitmasks for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
 #define HIDEGLOVES      0x1

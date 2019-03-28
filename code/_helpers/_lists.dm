@@ -27,9 +27,12 @@ proc/listgetindex(var/list/list,index)
 			return list[index]
 	return
 
+<<<<<<< HEAD:code/_helpers/lists.dm
 proc/islist(list/list)
 	return(istype(list))
 
+=======
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636:code/_helpers/_lists.dm
 //Return either pick(list) or null if list is not of type /list or is empty
 proc/safepick(list/list)
 	if(!islist(list) || !list.len)
@@ -250,7 +253,11 @@ proc/listclearnulls(list/list)
 		else
 			L[key] = temp[key]
 
+<<<<<<< HEAD:code/_helpers/lists.dm
 			
+=======
+
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636:code/_helpers/_lists.dm
 //Mergesort: divides up the list into halves to begin the sort
 /proc/sortKey(var/list/client/L, var/order = 1)
 	if(isnull(L) || L.len < 2)
@@ -753,3 +760,12 @@ proc/dd_sortedTextList(list/incoming)
 	for(var/i = 1 to l.len)
 		if(islist(.[i]))
 			.[i] = .(.[i])
+<<<<<<< HEAD:code/_helpers/lists.dm
+=======
+
+//Return a list with no duplicate entries
+/proc/uniqueList(list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+>>>>>>> a4919ca... Merge pull request #4719 from VOREStation/upstream-merge-5636:code/_helpers/_lists.dm
