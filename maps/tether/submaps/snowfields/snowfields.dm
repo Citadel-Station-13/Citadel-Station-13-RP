@@ -30,7 +30,7 @@
 	name = "shuttle connector - snowfield"
 	shuttle_name = "Excursion Shuttle"
 	//This list needs to be in the correct order, and start with the one that connects to the rest of the shuttle 'network'
-	destinations = list(/datum/shuttle_destination/excursion/virgo6orbit, /datum/shuttle_destination/excursion/beach)
+	destinations = list(/datum/shuttle_destination/excursion/virgo6orbit, /datum/shuttle_destination/excursion/snowfields)
 
 //This object simply performs any map setup that needs to happen on our map if it loads.
 //As with the above, you do need to place this object on the map somewhere.
@@ -112,8 +112,8 @@
 	name = "\improper Excursion Shuttle - Snowfields"
 	dynamic_lighting = 0
 
-/area/tether_away/beach
-	name = "\improper Away Mission - Virgo 6 Beach"
+/area/tether_away/snowfields
+	name = "\improper Away Mission - Virgo 6 Snowfields"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/beach/sand //This is what the ground turns into if destroyed/bombed/etc
 	//Not going to do sunlight simulations here like virgo3b
@@ -124,21 +124,6 @@
 	name = "\improper Away Mission - Virgo 4 Coast PS"
 	icon_state = "blue2"
 	base_turf = /turf/simulated/floor/beach/sand
-
-/area/tether_away/beach/coast
-	name = "\improper Away Mission - Virgo 4 Coast"
-	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/beach/coastline
-
-/area/tether_away/beach/water
-	name = "\improper Away Mission - Virgo 4 Water"
-	icon_state = "bluenew"
-	base_turf = /turf/simulated/floor/beach/coastwater
-
-/area/tether_away/beach/jungle
-	name = "\improper Away Mission - Virgo 4 Desert"
-	icon_state = "green"
-	base_turf = /turf/simulated/floor/beach/sand/desert
 
 //Some areas for the cave, which are referenced by our init object to seed submaps and ores
 /area/tether_away/cave
