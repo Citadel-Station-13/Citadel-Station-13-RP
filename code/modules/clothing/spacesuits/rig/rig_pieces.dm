@@ -16,7 +16,13 @@
 		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
 		)
+<<<<<<< HEAD
 	species_restricted = null
+=======
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_TESHARI) //vox, diona, and zaddat can't use hardsuits not designed for them
+	max_pressure_protection = null
+	min_pressure_protection = null
+>>>>>>> 6d4ea26... Merge pull request #4753 from VOREStation/upstream-merge-5936
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
@@ -56,6 +62,8 @@
 		)
 	supporting_limbs = list()
 	var/obj/item/weapon/material/knife/tacknife
+	max_pressure_protection = null
+	min_pressure_protection = null
 
 /obj/item/clothing/suit/space/rig/attack_hand(var/mob/living/M)
 	if(tacknife)
