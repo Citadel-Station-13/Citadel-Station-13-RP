@@ -142,7 +142,11 @@
 		return 0
 
 	if(Process_Spacemove()) //Checks for active jetpack
+<<<<<<< HEAD
 		return 1
+=======
+		return TRUE
+>>>>>>> 8939765... Merge pull request #4706 from VOREStation/upstream-merge-5889
 
 	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
 		if(T.density)
