@@ -36,9 +36,17 @@
 /mob/living/carbon/human/promethean/New(var/new_loc)
 	..(new_loc, SPECIES_PROMETHEAN)
 
+<<<<<<< HEAD
 /mob/living/carbon/human/machine/New(var/new_loc)
 	h_style = "blue IPC screen"
 	..(new_loc, "Machine")
+=======
+/mob/living/carbon/human/zaddat/New(var/new_loc)
+	return ..(new_loc, SPECIES_ZADDAT)
+
+/mob/living/carbon/human/monkey/Initialize(var/new_loc)
+	return ..(new_loc, SPECIES_MONKEY)
+>>>>>>> 65cd059... Merge pull request #4751 from VOREStation/upstream-merge-5869
 
 /mob/living/carbon/human/monkey/New(var/new_loc)
 	..(new_loc, SPECIES_MONKEY)

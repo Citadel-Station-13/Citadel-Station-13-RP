@@ -16,7 +16,7 @@
 		SPECIES_UNATHI = 'icons/mob/species/unathi/helmet.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
 		)
-	species_restricted = null
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_TESHARI) //vox, diona, and zaddat can't use hardsuits not designed for them
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
@@ -24,7 +24,7 @@
 	body_parts_covered = HANDS
 	heat_protection =    HANDS
 	cold_protection =    HANDS
-	species_restricted = null
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_TESHARI)
 	gender = PLURAL
 
 /obj/item/clothing/shoes/magboots/rig
@@ -32,7 +32,7 @@
 	body_parts_covered = FEET
 	cold_protection = FEET
 	heat_protection = FEET
-	species_restricted = null
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_TESHARI)
 	gender = PLURAL
 	icon_base = null
 
@@ -55,6 +55,7 @@
 		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi'
 		)
 	supporting_limbs = list()
+	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_TAJ, SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_TESHARI) //vox, diona, and zaddat can't use hardsuits not designed for them
 	var/obj/item/weapon/material/knife/tacknife
 
 /obj/item/clothing/suit/space/rig/attack_hand(var/mob/living/M)
@@ -112,6 +113,7 @@
 	heat_protection =    HEAD|FACE|EYES
 	cold_protection =    HEAD|FACE|EYES
 	flags =              THICKMATERIAL|AIRTIGHT
+	species_restricted = null
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"
@@ -121,6 +123,7 @@
 	cold_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv =          HIDEJUMPSUIT
 	flags =              THICKMATERIAL
+	species_restricted = null
 
 /obj/item/clothing/shoes/lightrig
 	name = "boots"
