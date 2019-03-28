@@ -480,6 +480,7 @@
 	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
 
 // Exploration Shuttle stuff //
+
 /area/tether/station/excursion_dock
 	name = "\improper Excursion Shuttle Dock"
 
