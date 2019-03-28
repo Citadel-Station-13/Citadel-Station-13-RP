@@ -68,9 +68,7 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Plushies crate"
-<<<<<<< HEAD
-=======
-	
+
 /datum/supply_pack/recreation/collars
 	name = "Collar bundle"
 	contains = list(
@@ -85,4 +83,3 @@
 	cost = 25
 	containertype = /obj/structure/closet/crate
 	containername = "collar crate"
->>>>>>> e660a87... Merge pull request #4636 from TheFurryFeline/patch-1
