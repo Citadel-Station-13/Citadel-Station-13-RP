@@ -232,8 +232,31 @@
 	name = "Phi's Personal Items"
 	has_items = list(
 		/obj/item/clothing/accessory/medal/bronze_heart,
+<<<<<<< HEAD
 		/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi)
 END OF CITADEL CHANGES */
+=======
+		/obj/item/clothing/gloves/ring/seal/signet/fluff/phi)
+
+// Tabiranth: Ascian
+/obj/item/weapon/grenade/spawnergrenade/spirit
+	name = "spirit's pet carrier"
+	desc = "Contains kitten."
+	spawner_type = /mob/living/simple_mob/animal/passive/cat/tabiranth
+	deliveryamt = 1
+
+// Jwguy: Koyo Akimomi
+/obj/item/weapon/storage/box/fluff/koyoakimomi
+	name = "Koyo's Cosplay Box"
+	desc = "One of many traditional wolfgirl clothing sets that Koyo owns. Awoo!"
+	has_items = list(
+		/obj/item/clothing/head/fluff/wolfgirl,
+		/obj/item/clothing/shoes/fluff/wolfgirl,
+		/obj/item/clothing/under/fluff/wolfgirl,
+		/obj/item/weapon/melee/fluffstuff/wolfgirlsword,
+		/obj/item/weapon/shield/fluff/wolfgirlshield)
+
+>>>>>>> f98177b... Merge pull request #4741 from Jwguy/Silver-KoyoFluffApp
 /*
 Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 */
