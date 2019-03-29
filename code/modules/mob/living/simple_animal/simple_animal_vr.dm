@@ -223,6 +223,7 @@
 			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
 				tmob.Weaken(5)
 			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 			stop_automated_movement = 1
 			animal_nom(tmob)
 			update_icon()
@@ -237,6 +238,19 @@
 
 	if(istype(turf,/turf/unsimulated/floor/sky))
 		return TRUE //Mobs aren't that stupid, probably
+=======
+			set_AI_busy(TRUE)
+			animal_nom(tmob)
+			update_icon()
+			set_AI_busy(FALSE)
+	..()
+
+// Checks to see if mob doesn't like this kind of turf
+/mob/living/simple_mob/IMove(newloc)
+	if(istype(newloc,/turf/unsimulated/floor/sky))
+		return MOVEMENT_FAILED //Mobs aren't that stupid, probably
+	return ..() // Procede as normal.
+>>>>>>> 1aa2f39... Merge pull request #4815 from Novacat/nova-aifixes:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 
 //Grab = Nomf
 /mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
