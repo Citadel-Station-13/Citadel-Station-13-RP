@@ -21,7 +21,7 @@
 /datum/gear/uniform/job_khi/med
 	display_name = "khi uniform, med"
 	path = /obj/item/clothing/under/rank/khi/med
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Search and Rescue","Chemist","Search and Rescue","Paramedic","Geneticist")
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Search and Rescue","Paramedic","Geneticist")
 
 /datum/gear/uniform/job_khi/eng
 	display_name = "khi uniform, eng"

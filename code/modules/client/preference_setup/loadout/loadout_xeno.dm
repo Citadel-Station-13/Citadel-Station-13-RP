@@ -165,7 +165,7 @@
 /datum/gear/uniform/dept
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
-	
+
 /datum/gear/uniform/dept/undercoat/ce
 	display_name = "Teshari Chief Engineer Undercoat"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/ce
@@ -244,7 +244,7 @@
 /datum/gear/uniform/dept/undercoat/medical
 	display_name = "Teshari Medical Undercoat"
 	path = /obj/item/clothing/under/seromi/undercoat/jobs/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/dept/undercoat/chemistry
 	display_name = "Teshari Chemistry Undercoat"
@@ -269,7 +269,7 @@
 /datum/gear/suit/dept/cloak/
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
-	
+
 /datum/gear/suit/cloak/dept/ce
 	display_name = "Teshari Chief Engineer Cloak"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/ce
@@ -339,7 +339,7 @@
 /datum/gear/suit/dept/cloak/medical
 	display_name = "Teshari Medical Cloak"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/suit/dept/cloak/chemistry
 	display_name = "Teshari Chemistry Cloak"
