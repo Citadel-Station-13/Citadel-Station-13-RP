@@ -90,6 +90,8 @@
 	var/static/target_z
 
 
+
+
 #include "alienship/_alienship.dm"
 /datum/map_template/tether_lateload/away_alienship
 	name = "Alien Ship - Z1 Ship"
@@ -100,6 +102,8 @@
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
 	z = Z_LEVEL_ALIENSHIP
+
+
 
 
 #include "aerostat/_aerostat.dm"
@@ -129,7 +133,10 @@
 	name = "Away Mission - Aerostat Surface"
 	z = Z_LEVEL_AEROSTAT_SURFACE
 
-#include "snowfields/snowfields.dmm"
+
+
+
+#include "snowfields/_snowfields.dm"
 /datum/map_template/tether_lateload/away_snowfields
 	name = "Snow Planet - Z1 Snowfields"
 	desc = "The surface of the snowy planet, the landing site featuring a large, open snowfield speckled with trees and small hills."
@@ -139,6 +146,12 @@
 /datum/map_z_level/tether_lateload/away_snowfields
 	name = "Away Mission - Snowfields"
 	z = Z_LEVEL_SNOWFIELDS
+
+/obj/effect/step_trigger/zlevel_fall/snowfields
+	var/static/target_z
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like

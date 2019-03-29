@@ -11,8 +11,8 @@
 	faction = "diyaab"
 	cooperative = 1
 
-	maxHealth = 25
-	health = 25
+	maxHealth = 50 //cit change, buffed from 25
+	health = 50 //cit change, buffed from 25
 	speed = 1
 	move_to_delay = 1
 

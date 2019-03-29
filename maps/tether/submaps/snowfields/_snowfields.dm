@@ -38,9 +38,10 @@
 	name = "away mission initializer - snowfields"
 
 /obj/away_mission_init/snowfieldsinit/initialize()
-	seed_submaps(list(z), 50, /area/tether_away/snowfields/unexplored/normal, /datum/map_template/surface/snowfields/near)
-	seed_submaps(list(z), 50, /area/tether_away/snowfields/unexplored/deep, /datum/map_template/surface/snowfields/far)
-
+/*
+	seed_submaps(list(z), 50, /area/tether_away/snowfields/unexplored/near, /datum/map_template/surface/snowfields/near)
+	seed_submaps(list(z), 50, /area/tether_away/snowfields/unexplored/far, /datum/map_template/surface/snowfields/far)
+*/
 /obj/away_mission_init/snowfields/initialize()
 
 	initialized = TRUE
@@ -51,28 +52,60 @@
 // Note that if your map has step teleports, mobs may wander through them accidentally and not know how to get back
 /obj/tether_away_spawner/snowfields_easy
 	name = "Snowfield Spawner Easy" //Just a name
-	faction = "beach_out" //Sets all the mobs to this faction so they don't infight
+	faction = "Snowfields" //Sets all the mobs to this faction so they don't infight
 	atmos_comp = TRUE //Sets up their atmos tolerances to work in this setting, even if they don't normally (20% up/down tolerance for each gas, and heat)
 	prob_spawn = 75 //Chance of this spawner spawning a mob (once this is missed, the spawner is 'depleted' and won't spawn anymore)
 	prob_fall = 25 //Chance goes down by this much each time it spawns one (not defining and prob_spawn 100 means they spawn as soon as one dies)
-	guard = //They'll stay within this range (not defining this disables them staying nearby and they will wander the map (and through step teleports))
+	guard = 40 //They'll stay within this range when wandering, but will chase past this distance. (not defining this disables them staying nearby and they will wander the map (and through step teleports))
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/snake
+		/mob/living/simple_animal/hostile/giant_spider/frost = 1,
+		/mob/living/simple_animal/hostile/giant_spider/lurker = 1
 	)
 
 /obj/tether_away_spawner/snowfields_medium
 	name = "Snowfield Spawner Medium"
-	faction = "beach_cave"
+	faction = "Snowfields"
 	atmos_comp = TRUE
-	prob_spawn = 100
+	prob_spawn = 80
 	prob_fall = 40
+	guard = 40
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/shantak = 1,
+		/mob/living/simple_animal/hostile/tree = 1
+
+	)
+
+/obj/tether_away_spawner/snowfields_hard
+	name = "Snowfield Spawner Hard"
+	faction = "Snowfields"
+	atmos_comp = TRUE
+	prob_spawn = 60
+	prob_fall = 20
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/frog = 3, //Frogs are 3x more likely to spawn than,
-		/mob/living/simple_animal/hostile/deathclaw = 1, //these deathclaws are, with these values,
-		/mob/living/simple_animal/hostile/giant_spider = 3,
-		/mob/living/simple_animal/hostile/giant_snake = 1,
-		/mob/living/simple_animal/hostile/giant_spider/ion = 2
+		/mob/living/simple_animal/hostile/savik = 1,
+		/mob/living/simple_animal/hostile/creature/strong = 1,
+	)
+
+/obj/tether_away_spawner/snowfields_boss
+	name = "Snowfield Spawner boss"
+	faction = "Snowfields"
+	atmos_comp = TRUE
+	prob_spawn = 50
+	prob_fall = 50
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/wolf = 1
+	)
+
+/obj/tether_away_spawner/snowfields_diyaab
+	name = "Snowfield Spawner diyaab"
+	faction = "Diyaab" //This will cause diyaabs to protect ONLY the herd if one is attacked, instead of sending them into a rage for attacking a different species.
+	atmos_comp = TRUE
+	prob_spawn = 50
+	prob_fall = 50
+	guard = 10 //Hopefully this will keep the herd close to one another.
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/diyaab = 1
 	)
 
 // -- Areas -- //
@@ -85,16 +118,15 @@
 /area/tether_away/snowfields
 	name = "\improper Away Mission - Virgo 6 Snowfields"
 	icon_state = "away"
-	base_turf = /turf/simulated/floor/beach/sand //This is what the ground turns into if destroyed/bombed/etc
+	base_turf = /turf/simulated/floor/snow/snow2 //This is what the ground turns into if destroyed/bombed/etc
 	//Not going to do sunlight simulations here like virgo3b
 	//So we just make the whole snowfield fullbright all the time for now.
 	dynamic_lighting = 0
 
 //Some areas for the snowfields which are referenced by our init object to seed submaps.
-/area/tether_away/cave
+/area/tether_away/snowfields
 	flags = RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/cave
 
 /area/tether_away/snowfields/explored/near
 	name = "\improper Away Mission - Virgo 6 snowfields (E)"
