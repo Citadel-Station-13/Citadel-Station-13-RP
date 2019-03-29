@@ -8,7 +8,7 @@
 	anchored = 1
 	w_class = ITEMSIZE_LARGE
 	canhear_range = 2
-	flags = CONDUCT | NOBLOODY
+	flags = NOBLOODY
 	var/circuit = /obj/item/weapon/circuitboard/intercom
 	var/number = 0
 	var/last_tick //used to delay the powercheck
@@ -60,7 +60,11 @@
 
 /obj/item/device/radio/intercom/New()
 	..()
+<<<<<<< HEAD
 	processing_objects += src
+=======
+	START_PROCESSING(SSobj, src)
+>>>>>>> 12f9d4a... Merge pull request #4831 from VOREStation/upstream-merge-5987
 	circuit = new circuit(src)
 
 /obj/item/device/radio/intercom/department/medbay/New()
