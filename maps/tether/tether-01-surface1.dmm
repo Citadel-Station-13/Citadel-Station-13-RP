@@ -32445,6 +32445,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+<<<<<<< HEAD
+=======
+"jRG" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
+"jUH" = (
+/obj/effect/step_trigger/teleporter/to_plains,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+>>>>>>> 859d1e0... Merge pull request #4648 from Novacat/nova-basicfixes
 "kcR" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
@@ -43060,7 +43075,7 @@ aad
 aad
 aLH
 aLH
-aaa
+jUH
 "}
 (67,1,1) = {"
 aaa
@@ -43202,7 +43217,7 @@ aad
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (68,1,1) = {"
 aaa
@@ -43344,7 +43359,7 @@ aad
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (69,1,1) = {"
 aaa
@@ -43486,7 +43501,7 @@ aLH
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (70,1,1) = {"
 aaa
@@ -43628,7 +43643,7 @@ aLH
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (71,1,1) = {"
 aaa
@@ -43770,7 +43785,7 @@ aLH
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (72,1,1) = {"
 aaa
@@ -43912,7 +43927,7 @@ aLH
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (73,1,1) = {"
 aaa
@@ -44054,7 +44069,7 @@ aad
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (74,1,1) = {"
 aab
@@ -44196,7 +44211,7 @@ aad
 aLH
 aLH
 aLH
-aaa
+jUH
 "}
 (75,1,1) = {"
 aac
