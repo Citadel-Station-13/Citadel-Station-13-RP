@@ -1,0 +1,19 @@
+"a" = (/turf/simulated/floor/snow,/area/submap/snowfields/spatrol1)
+"b" = (/obj/structure/flora/tree/dead,/turf/simulated/floor/snow,/area/submap/snowfields/spatrol1)
+"c" = (/mob/living/simple_animal/hostile/syndicate/melee/space/poi,/turf/simulated/floor/snow,/area/submap/snowfields/spatrol1)
+"d" = (/obj/structure/flora/bush,/turf/simulated/floor/snow,/area/submap/snowfields/spatrol1)
+"e" = (/obj/structure/flora/tree/pine,/turf/simulated/floor/snow,/area/submap/snowfields/spatrol1)
+"f" = (/mob/living/simple_animal/hostile/syndicate/ranged/space/poi,/turf/simulated/floor/snow,/area/submap/snowfields/spatrol1)
+
+(1,1,1) = {"
+aaaaaaaaaa
+aaaaaaaaba
+aacadaaaaa
+aeaaaaafaa
+aaaaaaaaaa
+aaaaaaaaaa
+aaacaaaaea
+aaaaaaaada
+aaaaafaaaa
+adaaaaaaaa
+"}

@@ -6,7 +6,7 @@
 #include "DiyaabEpod.dmm"
 #include "Icecave1D.dmm"
 #include "QuarantineShuttleSnow.dmm"
-#include ".dmm"
+#include "SPatrol1.dmm"
 #endif
 
 //The snowfields are a wide open field coated in a blanket of snow, contains no caves, and is dangerous without proper heat insulation and armor.
@@ -25,32 +25,29 @@
 // 'Far' templates get used on the top half, and should be more dangerous and rewarding.
 /datum/map_template/surface/snowfields/far
 
-//near and far replacing deep and normal
 			//////////////////
 			//Near templates//
 			//////////////////
 
 /datum/map_template/surface/snowfields/near/
 
-
-
-			/////////////////
-			//Far templates//
-			/////////////////
-
-/datum/map_template/surface/snowfields/far/DestroyedPod
+/datum/map_template/surface/snowfields/near/DestroyedPod
 	name = "Destroyed Pod"
 	desc = "A pod smashed upon impact, its contents redused to piles of scrap."
 	mappath = 'maps/submaps/surface_submaps/snowfields/DestroyedPod.dmm'
 	cost = 5
 	allow_duplicates = FALSE
 
-/datum/map_template/surface/snowfields/far/DiyaabEpod
+/datum/map_template/surface/snowfields/near/DiyaabEpod
 	name = "Diyaab Epod"
 	desc = "An escape pod suffering a hard landing on the surface of the planet, its passenger food for a pack of ravenous Diyaabs."
 	mappath = 'maps/submaps/surface_submaps/snowfields/DiyaabEpod.dmm'
 	cost = 5
 	allow_duplicates = FALSE
+
+			/////////////////
+			//Far templates//
+			/////////////////
 
 /datum/map_template/surface/snowfields/far/IceCave1D
 	name = "Ice Cave"
@@ -64,3 +61,8 @@
 	mappath = 'maps/submaps/surface_submaps/snowfields/QuarantineShuttleSnow.dmm'
 	cost = 15
 
+/datum/map_template/surface/snowfields/far/Spatrol1
+	name = "Syndicate Patrol 1"
+	desc = "A Syndicate patrol, patrolling, of course."
+	mappath = 'maps/submaps/surface_submaps/snowfields/SPatrol1.dmm'
+	cost = 10
