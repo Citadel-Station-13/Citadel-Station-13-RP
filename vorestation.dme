@@ -2144,6 +2144,7 @@
 #include "code\modules\mob\living\carbon\human\species\station\human_subspecies.dm"
 #include "code\modules\mob\living\carbon\human\species\station\monkey.dm"
 #include "code\modules\mob\living\carbon\human\species\station\monkey_vr.dm"
+#include "code\modules\mob\living\carbon\human\species\station\plasmen.dm"
 #include "code\modules\mob\living\carbon\human\species\station\prometheans.dm"
 #include "code\modules\mob\living\carbon\human\species\station\prometheans_vr.dm"
 #include "code\modules\mob\living\carbon\human\species\station\seromi.dm"
