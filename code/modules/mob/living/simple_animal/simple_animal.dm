@@ -64,9 +64,9 @@
 	var/turf/home_turf				// Set when they spawned, they try to come back here sometimes.
 
 	//Mob interaction
-	var/response_help   = "tries to help"	// If clicked on help intent
-	var/response_disarm = "tries to disarm" // If clicked on disarm intent
-	var/response_harm   = "tries to hurt"	// If clicked on harm intent
+	var/response_help   = "gently pats"	// If clicked on help intent
+	var/response_disarm = "tries to shove" // If clicked on disarm intent
+	var/response_harm   = "violently attacks"	// If clicked on harm intent
 	var/harm_intent_damage = 3		// How much an unarmed harm click does to this mob.
 	var/meat_amount = 0				// How much meat to drop from this mob when butchered
 	var/obj/meat_type				// The meat object to drop
