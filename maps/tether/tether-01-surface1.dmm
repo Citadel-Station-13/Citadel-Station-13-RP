@@ -2094,6 +2094,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 10
 	},
+/obj/item/device/binoculars,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "adR" = (
@@ -2318,6 +2319,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/mineral/input,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aek" = (
@@ -2327,6 +2329,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
+/obj/machinery/mineral/mint,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "ael" = (
@@ -2335,7 +2338,11 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/random/trash_pile,
+/obj/machinery/mineral/output,
+/obj/item/weapon/moneybag{
+	anchored = 1;
+	name = "money bag"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aem" = (
@@ -2345,6 +2352,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "aen" = (
@@ -4811,6 +4819,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 1
 	},
@@ -6037,14 +6046,14 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 5
-	},
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold/visible/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "akO" = (
@@ -6331,6 +6340,12 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "alu" = (
@@ -7335,6 +7350,7 @@
 	name = "Atmospherics";
 	req_access = list(24)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "any" = (
@@ -9039,6 +9055,7 @@
 	name = "Atmospherics Substation";
 	req_access = list(24)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "aqS" = (
@@ -12941,7 +12958,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "ayd" = (
-/obj/machinery/meter,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -12949,6 +12965,7 @@
 	icon_state = "bordercolor";
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aye" = (
@@ -13250,7 +13267,6 @@
 	icon_state = "bordercolorcorner";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/green,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "ayJ" = (
@@ -13749,6 +13765,7 @@
 	dir = 1;
 	name = "West Hallway"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/monofloor,
 /area/tether/surfacebase/north_stairs_one)
 "azv" = (
@@ -15506,17 +15523,6 @@
 "aCI" = (
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site/east)
-"aCJ" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/yellow/border{
-	icon_state = "bordercolor";
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "aCK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/effect/floor_decal/borderfloor{
@@ -15730,15 +15736,16 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aDn" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/green{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow/bordercorner{
 	icon_state = "bordercolorcorner";
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	icon_state = "intact";
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -27869,7 +27876,6 @@
 "bOa" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
-/obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/effect/floor_decal/steeldecal/steel_decals8{
 	icon_state = "steel_decals8";
 	dir = 4
@@ -32312,8 +32318,8 @@
 "hND" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
-/obj/machinery/atmospherics/pipe/manifold/visible/green{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -32869,17 +32875,6 @@
 /obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
-"ptl" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/yellow/border{
-	icon_state = "bordercolor";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/green,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "pxT" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -44006,12 +44001,12 @@ aqT
 atv
 auD
 hND
-ptl
+atb
 ayI
-azY
-azY
+aqT
+aqT
 bOa
-aCJ
+atb
 aDn
 atN
 ewV
