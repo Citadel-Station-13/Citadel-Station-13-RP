@@ -147,6 +147,11 @@
 	name = "Away Mission - Snowfields"
 	z = Z_LEVEL_SNOWFIELDS
 
+/datum/map_template/tether_lateload/away_snowfields/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(Z_LEVEL_SNOWFIELDS), 50, /area/tether_away/snowfields/unexplored/near, /datum/map_template/surface/snowfields/near)
+	seed_submaps(list(Z_LEVEL_SNOWFIELDS), 50, /area/tether_away/snowfields/unexplored/far, /datum/map_template/surface/snowfields/far)
+
 /obj/effect/step_trigger/zlevel_fall/snowfields
 	var/static/target_z
 

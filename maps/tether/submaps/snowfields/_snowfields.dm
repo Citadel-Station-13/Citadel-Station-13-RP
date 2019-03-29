@@ -56,8 +56,9 @@
 	prob_fall = 25 //Chance goes down by this much each time it spawns one (not defining and prob_spawn 100 means they spawn as soon as one dies)
 	guard = 40 //They'll stay within this range when wandering, but will chase past this distance. (not defining this disables them staying nearby and they will wander the map (and through step teleports))
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/giant_spider/frost = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1
+		/mob/living/simple_animal/hostile/giant_spider/frost = 2,
+		/mob/living/simple_animal/hostile/giant_spider/lurker = 2,
+		/mob/living/simple_animal/hostile/shantak = 1
 	)
 
 /obj/tether_away_spawner/snowfields_medium
@@ -113,7 +114,9 @@
 	prob_spawn = 50
 	prob_fall = 50 //Guard undefined to allow for wandering.
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/mouse/white = 1
+		/mob/living/simple_animal/mouse/white = 1,
+		/mob/living/simple_animal/penguin = 1,
+		/mob/living/simple_animal/fox = 1
 	)
 
 // -- Areas -- //
