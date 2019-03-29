@@ -16,7 +16,14 @@
 	name = "stunsword"
 	desc = "A sleek, menacing-looking stunbaton fashioned to look like a sword, but isn't sharp. This model seems to belong to Pavel Marsk."
 	icon_state = "stunsword"
-	item_state_slots = list(slot_r_hand_str = "stunsword", slot_l_hand_str = "stunsword")
 	icon = 'modular_citadel/icons/obj/stunsword.dmi'
+<<<<<<< HEAD
 	item_state = 'modular_citadel/icons/obj/stunsword.dmi'
 	item_state_slots = list(slot_r_hand_str = "stunsword", slot_l_hand_str = "stunsword")
+=======
+	item_icons = list(
+			slot_l_hand_str = 'modular_citadel/icons/mob/inhands/stunsword_left.dmi',
+			slot_r_hand_str = 'modular_citadel/icons/mob/inhands/stunsword_right.dmi',
+			)
+	item_state_slots = list(slot_r_hand_str = "stunsword", slot_l_hand_str = "stunsword")
+>>>>>>> master
