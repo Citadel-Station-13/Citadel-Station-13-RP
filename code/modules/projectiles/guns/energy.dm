@@ -2,12 +2,19 @@
 	name = "energy gun"
 	desc = "A basic energy-based gun."
 	icon_state = "energy"
+<<<<<<< HEAD
 	fire_sound = 'sound/weapons/Taser.ogg'
+=======
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	fire_sound_text = "laser blast"
 
 	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 240 //How much energy is needed to fire.
 
+<<<<<<< HEAD
+=======
+	var/accept_cell_type = /obj/item/weapon/cell/device
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	var/cell_type = /obj/item/weapon/cell/device/weapon
 	projectile_type = /obj/item/projectile/beam/practice
 
@@ -27,7 +34,11 @@
 	..()
 	if(self_recharge)
 		power_supply = new /obj/item/weapon/cell/device/weapon(src)
+<<<<<<< HEAD
 		processing_objects.Add(src)
+=======
+		START_PROCESSING(SSobj, src)
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	else
 		if(cell_type)
 			power_supply = new cell_type(src)
@@ -38,7 +49,11 @@
 
 /obj/item/weapon/gun/energy/Destroy()
 	if(self_recharge)
+<<<<<<< HEAD
 		processing_objects.Remove(src)
+=======
+		STOP_PROCESSING(SSobj, src)
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	return ..()
 
 /obj/item/weapon/gun/energy/get_cell()
@@ -89,13 +104,22 @@
 		if(self_recharge || battery_lock)
 			user << "<span class='notice'>[src] does not have a battery port.</span>"
 			return
+<<<<<<< HEAD
 		if(istype(C, /obj/item/weapon/cell/device))
 			var/obj/item/weapon/cell/device/P = C
+=======
+		if(istype(C, accept_cell_type))
+			var/obj/item/weapon/cell/P = C
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 			if(power_supply)
 				user << "<span class='notice'>[src] already has a power cell.</span>"
 			else
 				user.visible_message("[user] is reloading [src].", "<span class='notice'>You start to insert [P] into [src].</span>")
+<<<<<<< HEAD
 				if(do_after(user, 10))
+=======
+				if(do_after(user, 5 * P.w_class))
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 					user.remove_from_mob(P)
 					power_supply = P
 					P.loc = src
@@ -149,10 +173,20 @@
 /obj/item/weapon/gun/energy/examine(mob/user)
 	. = ..()
 	if(power_supply)
+<<<<<<< HEAD
 		var/shots_remaining = round(power_supply.charge / charge_cost)
 		user << "Has [shots_remaining] shot\s remaining."
 	else
 		user << "Does not have a power cell."
+=======
+		if(charge_cost)
+			var/shots_remaining = round(power_supply.charge / max(1, charge_cost))	// Paranoia
+			to_chat(user, "Has [shots_remaining] shot\s remaining.")
+		else
+			to_chat(user, "Has infinite shots remaining.")
+	else
+		to_chat(user, "Does not have a power cell.")
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	return
 
 /obj/item/weapon/gun/energy/update_icon(var/ignore_inhands)
@@ -175,13 +209,27 @@
 			icon_state = "[modifystate][ratio]"
 		else
 			icon_state = "[initial(icon_state)][ratio]"
+<<<<<<< HEAD
+=======
+
+	else if(power_supply)
+		if(modifystate)
+			icon_state = "[modifystate]"
+		else
+			icon_state = "[initial(icon_state)]"
+
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	if(!ignore_inhands) update_held_icon()
 
 /obj/item/weapon/gun/energy/proc/start_recharge()
 	if(power_supply == null)
 		power_supply = new /obj/item/weapon/cell/device/weapon(src)
 	self_recharge = 1
+<<<<<<< HEAD
 	processing_objects.Add(src)
+=======
+	START_PROCESSING(SSobj, src)
+>>>>>>> cfc2b7b... Merge pull request #4757 from VOREStation/upstream-merge-5944
 	update_icon()
 
 /obj/item/weapon/gun/energy/get_description_interaction()
