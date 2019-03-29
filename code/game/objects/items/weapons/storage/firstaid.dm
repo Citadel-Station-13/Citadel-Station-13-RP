@@ -123,18 +123,10 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 	can_hold = list(
-		/obj/item/weapon/surgical/bonesetter,
-		/obj/item/weapon/surgical/cautery,
-		/obj/item/weapon/surgical/circular_saw,
-		/obj/item/weapon/surgical/hemostat,
-		/obj/item/weapon/surgical/retractor,
-		/obj/item/weapon/surgical/scalpel,
-		/obj/item/weapon/surgical/surgicaldrill,
-		/obj/item/weapon/surgical/bonegel,
-		/obj/item/weapon/surgical/FixOVein,
+		/obj/item/weapon/surgical,
 		/obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/stack/nanopaste,
-		///obj/item/device/healthanalyzer/advanced, //VOREStation Removal,
+		/obj/item/device/healthanalyzer,
 		/obj/item/weapon/autopsy_scanner
 		)
 

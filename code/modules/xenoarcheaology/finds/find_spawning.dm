@@ -25,8 +25,8 @@
 	source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 
 	var/talkative = 0
-	if(prob(5))
-		talkative = 1
+	/*if(prob(0))
+		talkative = 1*/ //no u
 
 	//for all items here:
 	//icon_state

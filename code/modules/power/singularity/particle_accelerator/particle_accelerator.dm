@@ -160,7 +160,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/structure/particle_accelerator/update_icon()
 	switch(construction_state)
-		if(0,1)
+		if(-1,0,1)
 			icon_state="[reference]"
 		if(2)
 			icon_state="[reference]w"

@@ -131,7 +131,7 @@
 	if(force_down)
 		attacker << "<span class='warning'>You are already pinning [target] to the ground.</span>"
 		return
-	if(size_difference(affecting, assailant) > 0)
+	if(size_difference(affecting, assailant) > 10)
 		attacker << "<span class='warning'>You are too small to do that!</span>"
 		return
 

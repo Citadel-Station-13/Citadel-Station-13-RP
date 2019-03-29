@@ -180,6 +180,8 @@
 					if(H.wear_suit)
 						if(istype(H.wear_suit, /obj/item/clothing/suit/space))
 							injtime = injtime * 2
+						else if(istype(H.wear_suit, /obj/item/clothing/suit/armor/pcarrier)) //cit edit - wheres the fucking caveman
+							injtime = injtime
 						else if(!H.can_inject(user, 1))
 							return
 

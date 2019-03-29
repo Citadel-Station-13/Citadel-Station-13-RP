@@ -123,7 +123,7 @@
 	desc = "A system that allows one to change their size, through drastic mass rearrangement. Causes significant wear when installed."
 	list_pos = NIF_SIZECHANGE
 	cost = 750
-	wear = 10
+	wear = 3
 
 	activate()
 		if((. = ..()))
