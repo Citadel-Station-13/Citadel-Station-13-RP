@@ -2,8 +2,11 @@
 // This is so Travis can validate PoIs, and ensure future changes don't break PoIs, as PoIs are loaded at runtime and the compiler can't catch errors.
 // When adding a new PoI, please add it to this list.
 #if MAP_TEST
+#include "DestroyedPod.dmm"
+#include "DiyaabEpod.dmm"
+#include "Icecave1D.dmm"
+#include "QuarantineShuttleSnow.dmm"
 #include ".dmm"
-
 #endif
 
 //The snowfields are a wide open field coated in a blanket of snow, contains no caves, and is dangerous without proper heat insulation and armor.
@@ -35,15 +38,29 @@
 			//Far templates//
 			/////////////////
 
+/datum/map_template/surface/snowfields/far/DestroyedPod
+	name = "Destroyed Pod"
+	desc = "A pod smashed upon impact, its contents redused to piles of scrap."
+	mappath = 'maps/submaps/surface_submaps/snowfields/DestroyedPod.dmm'
+	cost = 5
+	allow_duplicates = FALSE
+
+/datum/map_template/surface/snowfields/far/DiyaabEpod
+	name = "Diyaab Epod"
+	desc = "An escape pod suffering a hard landing on the surface of the planet, its passenger food for a pack of ravenous Diyaabs."
+	mappath = 'maps/submaps/surface_submaps/snowfields/DiyaabEpod.dmm'
+	cost = 5
+	allow_duplicates = FALSE
+
 /datum/map_template/surface/snowfields/far/IceCave1D
 	name = "Ice Cave"
 	desc = "An ice cave home to a pack of Savik and their previous meal."
 	mappath = 'maps/submaps/surface_submaps/snowfields/Icecave1D.dmm'
 	cost = 20
 
-/datum/map_template/surface/snowfields/far/quarantineshuttlesnow
-	name = "Ice Cave"
-	desc = "An ice cave home to a pack of Savik and their previous meal."
-	mappath = 'maps/submaps/surface_submaps/snowfields/quarantineshuttlesnow.dmm'
-	cost = 20
+/datum/map_template/surface/snowfields/far/QuarantineShuttleSnow
+	name = "Quarantined Shuttle(snow)"
+	desc = "A quarantined shuttle that holds a gruesome horror within."
+	mappath = 'maps/submaps/surface_submaps/snowfields/QuarantineShuttleSnow.dmm'
+	cost = 15
 
