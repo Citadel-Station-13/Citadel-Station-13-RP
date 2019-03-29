@@ -127,7 +127,9 @@
 
 	activate()
 		if((. = ..()))
-			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
+			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num|null
+			if(isnull(new_size))
+				return
 
 			if (!IsInRange(new_size,25,200))
 				to_chat(nif.human,"<span class='notice'>The safety features of the NIF Program prevent you from choosing this size.</span>")
