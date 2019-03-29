@@ -32,10 +32,10 @@
 #define ENERGY_GUN_SHOW_CHARGE			2		//cell charge
 
 //gun/ballistic bolt_type
-#define BOLT_TYPE_OPEN
-#define BOLT_TYPE_STANDARD
-#define BOLT_TYPE_NONE
-#define BOLT_TYPE_LOCKING
+#define BOLT_TYPE_OPEN						1
+#define BOLT_TYPE_STANDARD					2
+#define BOLT_TYPE_NONE						3
+#define BOLT_TYPE_LOCKING					4
 
 //Calibers
 #define CALIBER_ENERGY				"ENERGY"		//energy "lens" virtual casings for energy weapons.

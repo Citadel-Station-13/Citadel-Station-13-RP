@@ -98,12 +98,13 @@
 
 	src << S
 
-/proc/sound_to_playing_players(sound, volume = 100, vary)
-	sound = get_sfx(sound)
-	for(var/M in player_list)
-		if(ismob(M) && !isnewplayer(M))
-			var/mob/MO = M
-			MO.playsound_local(get_turf(MO), sound, volume, vary, pressure_affected = FALSE)
+/proc/sound_to_playing_players(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
+	if(!S)
+		S = sound(get_sfx(soundin))
+	for(var/m in GLOB.player_list)
+		if(ismob(m) && !isnewplayer(m))
+			var/mob/M = m
+			M.playsound_local(M, null, volume, vary, frequency, falloff, channel, pressure_affected, S)
 
 /proc/open_sound_channel()
 	var/static/next_channel = 1	//loop through the available 1024 - (the ones we reserve) channels and pray that its not still being used
@@ -144,6 +145,7 @@
 			if ("button") soundin = pick('sound/machines/button1.ogg','sound/machines/button2.ogg','sound/machines/button3.ogg','sound/machines/button4.ogg')
 			if ("switch") soundin = pick('sound/machines/switch1.ogg','sound/machines/switch2.ogg','sound/machines/switch3.ogg','sound/machines/switch4.ogg')
 			if ("casing_sound") soundin = pick('sound/weapons/casingfall1.ogg','sound/weapons/casingfall2.ogg','sound/weapons/casingfall3.ogg')
+			else soundin = null
 	return soundin
 
 //Are these even used?

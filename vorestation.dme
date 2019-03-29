@@ -2674,6 +2674,7 @@
 #include "code\modules\projectiles\gun.dm"
 #include "code\modules\projectiles\pins.dm"
 #include "code\modules\projectiles\projectile.dm"
+#include "code\modules\projectiles\suppressor.dm"
 #include "code\modules\projectiles\ammunition\energy.dm"
 #include "code\modules\projectiles\ammunition\magazines.dm"
 #include "code\modules\projectiles\ammunition\magazines_vr.dm"

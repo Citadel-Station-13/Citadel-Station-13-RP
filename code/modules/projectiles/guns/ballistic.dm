@@ -309,7 +309,7 @@
 	//BOLT_TYPE_LOCKING: Gun has a bolt, it locks back when empty. It can be released to chamber a round if a magazine is in.
 	//Example: Pistols with a slide lock, some SMGs
 	var/bolt_type = BOLT_TYPE_STANDARD
-	var/bolt_locked = FALSE //Used for locking bolt and open bolt guns. Set a bit differently for the two but prevents firing when true for both.
+	var/bolt_locked = FALSE		//Used for locking bolt and open bolt guns. Set a bit differently for the two but prevents firing when true for both.
 	var/bolt_wording = "bolt" //bolt, slide, etc.
 	var/semi_auto = TRUE //Whether the gun has to be racked each shot or not.
 	var/rack_delay = 5
