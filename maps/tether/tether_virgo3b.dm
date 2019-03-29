@@ -349,6 +349,16 @@ GLOBAL_DATUM(planet_virgo3b, /datum/planet/virgo3b)
 					to_chat(L, "<span class='warning'>A gust of wind yanks the umbrella from your hand!</span>")
 					L.drop_from_inventory(U)
 					U.safe_throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
+					if(show_message)
+						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+					continue
+			else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
+				var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
+				if(U.open)
+					if(show_message)
+						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+					continue
+
 
 			L.water_act(2)
 			if(show_message)
