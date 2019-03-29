@@ -137,7 +137,7 @@
 	var/list/first_names = file2list('config/names/first_name_skrell.txt')
 	var/list/last_names = file2list('config/names/last_name_skrell.txt')
 	return "[pick(first_names)] [pick(last_names)]"
- 
+
 /datum/language/human
 	name = LANGUAGE_SOL_COMMON
 	desc = "A bastardized hybrid of many languages, including Chinese, English, French, and more; it is the common language of the Sol system."
@@ -202,6 +202,23 @@
 /datum/language/seromi/get_random_name(gender)
 	return ..(gender, 1, 4, 1.5)
 
+<<<<<<< HEAD
+=======
+
+/datum/language/zaddat
+	name = LANGUAGE_ZADDAT
+	desc = "A harsh buzzing language created by the Zaddat following their exodus from their homeworld."
+	speech_verb = "buzzes"
+	ask_verb = "buzzes"
+	exclaim_verb = "croaks"
+	colour = "zaddat"
+	key = "z"
+	flags = WHITELISTED
+	space_chance = 20
+	syllables = list("z", "dz", "i", "iv", "ti", "az", "hix", "xo", "av", "xo", "x", "za", "at", "vi")
+
+
+>>>>>>> 8eddf7c... Merge pull request #4762 from VOREStation/upstream-merge-5951
 //Syllable Lists
 /*
 	This list really long, mainly because I can't make up my mind about which mandarin syllables should be removed,
