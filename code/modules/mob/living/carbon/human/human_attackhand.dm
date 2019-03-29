@@ -310,7 +310,10 @@
 				apply_effect(3, WEAKEN, armor_check)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
-					visible_message("<span class='danger'>[M] has pushed [src]!</span>")
+					if(M.zone_sel.selecting == BP_L_LEG || M.zone_sel.selecting == BP_R_LEG || M.zone_sel.selecting == BP_L_FOOT || M.zone_sel.selecting == BP_R_FOOT)
+						visible_message("<span class='danger'>[M] has leg swept [src]!</span>")
+					else
+						visible_message("<span class='danger'>[M] has pushed [src]!</span>")
 				else
 					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
 				return
@@ -376,6 +379,7 @@
 	if(do_after(user, 100))
 		organ.dislocate(1)
 		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		log_and_message_admins("has dislocated [src]'s [organ.joint]!")
 		return 1
 	return 0
 

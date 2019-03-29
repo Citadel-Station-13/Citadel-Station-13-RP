@@ -4,7 +4,7 @@
 
 // Tracks precooked food to stop deep fried baked grilled grilled grilled diona nymph cereal.
 /obj/item/weapon/reagent_containers/food/snacks
-	var/tmp/list/cooked = list()
+	var/tmp/list/cooked
 
 // Root type for cooking machines. See following files for specific implementations.
 /obj/machinery/appliance
@@ -223,7 +223,7 @@
 
 	// We're trying to cook something else. Check if it's valid.
 	var/obj/item/weapon/reagent_containers/food/snacks/check = I
-	if(istype(check) && islist(check.cooked) && (cook_type in check.cooked))
+	if(istype(check) && LAZYLEN(check.cooked) && (cook_type in check.cooked))
 		user << "<span class='warning'>\The [check] has already been [cook_type].</span>"
 		return 0
 	else if(istype(check, /obj/item/weapon/reagent_containers/glass))
@@ -370,7 +370,7 @@
 		//If cookwork has gone from above to below 0, then this item finished cooking
 		finish_cooking(CI)
 
-	else if (!CI.burned && CI.cookwork > CI.max_cookwork * CI.overcook_mult)
+	else if (can_burn_food && !CI.burned && CI.cookwork > CI.max_cookwork * CI.overcook_mult)
 		burn_food(CI)
 
 	// Gotta hurt.
@@ -422,6 +422,8 @@
 		for (var/r in results)
 			var/obj/item/weapon/reagent_containers/food/snacks/R = r
 			R.forceMove(C) //Move everything from the buffer back to the container
+			if(!LAZYLEN(R.cooked))
+				R.cooked = list()
 			R.cooked |= cook_type
 
 		QDEL_NULL(temp) //delete buffer object
@@ -448,7 +450,6 @@
 	var/cook_path = output_options[CI.combine_target]
 
 	var/list/words = list()
-	var/list/cooktypes = list()
 	var/datum/reagents/buffer = new /datum/reagents(1000)
 	var/totalcolour
 
@@ -462,8 +463,10 @@
 		if (!S)
 			continue
 
+		if(!S.reagents)
+			S.initialize()
+
 		words |= text2list(S.name," ")
-		cooktypes |= S.cooked
 
 		if (S.reagents && S.reagents.total_volume > 0)
 			if (S.filling_color)
@@ -475,7 +478,6 @@
 					totalcolour = BlendRGB(totalcolour, S.filling_color, t)
 					//Blend colours in order to find a good filling color
 
-
 			S.reagents.trans_to_holder(buffer, S.reagents.total_volume)
 		//Cleanup these empty husk ingredients now
 		if (I)
@@ -486,7 +488,9 @@
 	CI.container.reagents.trans_to_holder(buffer, CI.container.reagents.total_volume)
 
 	var/obj/item/weapon/reagent_containers/food/snacks/result = new cook_path(CI.container)
-	buffer.trans_to(result, buffer.total_volume)
+	if(!result.reagents)
+		result.initialize()
+	buffer.trans_to_holder(result.reagents, buffer.total_volume)
 
 	//Filling overlay
 	var/image/I = image(result.icon, "[result.icon_state]_filling")
@@ -526,6 +530,8 @@
 	if (!result)
 		return
 
+	if(!LAZYLEN(result.cooked))
+		result.cooked = list()
 	result.cooked |= cook_type
 
 	// Set icon and appearance.

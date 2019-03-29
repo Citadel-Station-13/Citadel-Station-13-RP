@@ -112,7 +112,6 @@
 	mutants = list("deathnettle")
 	chems = list("nutriment" = list(1,50), "sacid" = list(0,1))
 	kitchen_tag = "nettle"
-	kitchen_tag = "nettle"
 
 /datum/seed/nettle/New()
 	..()
@@ -576,6 +575,7 @@
 	display_name = "grapevines"
 	mutants = list("greengrapes")
 	chems = list("nutriment" = list(1,10), "sugar" = list(1,5), "grapejuice" = list(10,10))
+	kitchen_tag = "grape"
 
 /datum/seed/grapes/New()
 	..()
@@ -597,6 +597,7 @@
 	display_name = "green grapevines"
 	mutants = null
 	chems = list("nutriment" = list(1,10), "kelotane" = list(3,5), "grapejuice" = list(10,10))
+	kitchen_tag = "greengrapes"
 
 /datum/seed/grapes/green/New()
 	..()
@@ -608,6 +609,7 @@
 	seed_name = "peanut"
 	display_name = "peanut vines"
 	chems = list("nutriment" = list(1,10))
+	kitchen_tag = "peanut"
 
 /datum/seed/peanuts/New()
 	..()
@@ -971,6 +973,7 @@
 	seed_name = "cacao"
 	display_name = "cacao tree"
 	chems = list("nutriment" = list(1,10), "coco" = list(4,5))
+	kitchen_tag = "cacao"
 
 /datum/seed/cocoa/New()
 	..()
@@ -1029,7 +1032,7 @@
 	name = "diona"
 	seed_name = "diona"
 	seed_noun = "nodes"
-	display_name = "replicant pods"
+	display_name = "diona pods"
 	can_self_harvest = 1
 	has_mob_product = /mob/living/carbon/alien/diona
 

@@ -236,6 +236,8 @@
 ************************************/
 
 /obj/machinery/microwave/proc/cook()
+	if(src.operating)
+		return // no food duplication!
 	if(stat & (NOPOWER|BROKEN))
 		return
 	start()

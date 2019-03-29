@@ -472,6 +472,7 @@
 		/obj/item/weapon/storage/backpack/captain,
 		/obj/item/clothing/suit/captunic,
 		/obj/item/clothing/suit/captunic/capjacket,
+		/obj/item/clothing/suit/dress/expedition/command/cd,
 		/obj/item/clothing/head/caphat/cap,
 		/obj/item/clothing/under/rank/captain,
 		/obj/item/clothing/shoes/brown,

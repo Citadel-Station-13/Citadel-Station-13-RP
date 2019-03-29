@@ -71,6 +71,8 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
+	item_flags = AIRTIGHT //cit change
+	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
 /obj/item/clothing/glasses/meson/New()
@@ -190,6 +192,8 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
+	item_flags = AIRTIGHT //cit change
+	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
 /obj/item/clothing/glasses/material/New()

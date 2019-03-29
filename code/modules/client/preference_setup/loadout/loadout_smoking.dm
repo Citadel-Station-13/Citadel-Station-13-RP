@@ -39,6 +39,11 @@
 	display_name = "cigar"
 	path = /obj/item/clothing/mask/smokable/cigarette/cigar
 
+/datum/gear/cigarcase
+	display_name = "cigar case"
+	path = /obj/item/weapon/storage/fancy/cigar
+	cost = 3
+
 /datum/gear/cigarettes
 	display_name = "cigarette selection"
 	path = /obj/item/weapon/storage/fancy/cigarettes

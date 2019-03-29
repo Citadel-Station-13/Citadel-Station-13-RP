@@ -101,6 +101,30 @@
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_admin_icsubtle_message(mob/M as mob in mob_list)
+	set category = "Special Verbs"
+	set name = "Centcom Message"
+
+	if(!ismob(M))	return
+	if (!holder)
+		src << "Only administrators may use this command."
+		return
+
+	var/msg = input("Message:", text("Centcom PM to [M.key]")) as text
+
+	if (!msg)
+		return
+	if(usr)
+		if (usr.client)
+			if(usr.client.holder)
+				M << "<B>You hear a crackling in your headset...</B> <i>[msg]</i>"
+
+	log_admin("CentcomPM: [key_name(usr)] -> [key_name(M)] : [msg]")
+	msg = "<span class='adminnotice'><b> CentcomMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
+	message_admins(msg)
+	admin_ticket_log(M, msg)
+	feedback_add_details("admin_verb","ICS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set category = "Special Verbs"
 	set name = "Global Narrate"

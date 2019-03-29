@@ -658,6 +658,10 @@
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
 //Citadel changes starts here
+		if ("fguns")
+			message = "points some fingerguns."
+			m_type = 1
+
 		if("aslap", "aslaps")
 			m_type = 1
 			var/mob/living/carbon/human/H = src
