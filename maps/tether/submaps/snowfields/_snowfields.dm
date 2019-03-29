@@ -68,7 +68,7 @@
 	prob_fall = 40
 	guard = 40
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/shantak = 1,
+		/mob/living/simple_animal/hostile/shantak = 2,
 		/mob/living/simple_animal/hostile/tree = 1
 
 	)
@@ -81,12 +81,12 @@
 	prob_fall = 20
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/savik = 1,
+		/mob/living/simple_animal/hostile/savik = 2,
 		/mob/living/simple_animal/hostile/creature/strong = 1,
 	)
 
 /obj/tether_away_spawner/snowfields_boss
-	name = "Snowfield Spawner boss"
+	name = "Snowfield Spawner Boss"
 	faction = "Snowfields"
 	atmos_comp = TRUE
 	prob_spawn = 50
@@ -96,14 +96,24 @@
 	)
 
 /obj/tether_away_spawner/snowfields_diyaab
-	name = "Snowfield Spawner diyaab"
+	name = "Snowfield Spawner Diyaab"
 	faction = "Diyaab" //This will cause diyaabs to protect ONLY the herd if one is attacked, instead of sending them into a rage for attacking a different species.
 	atmos_comp = TRUE
 	prob_spawn = 50
 	prob_fall = 50
 	guard = 10 //Hopefully this will keep the herd close to one another.
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/diyaab = 1
+		/mob/living/simple_animal/retaliate/diyaab = 1
+	)
+
+/obj/tether_away_spawner/snowfields_passive
+	name = "Snowfield Spawner Passive"
+	faction = "Passive" //This allows for them to be attacked by anything it wanders into, hopefully.
+	atmos_comp = TRUE
+	prob_spawn = 50
+	prob_fall = 50 //Guard undefined to allow for wandering.
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/mouse/white = 1
 	)
 
 // -- Areas -- //

@@ -10,8 +10,8 @@
 
 	faction = "savik"
 
-	maxHealth = 150 //cit change, buffed from 125
-	health = 150 //cit change, buffed from 125
+	maxHealth = 175 //cit change, buffed from 125
+	health = 175 //cit change, buffed from 125
 	speed = 2
 	move_to_delay = 2
 
