@@ -558,7 +558,11 @@ item_path: /obj/item/weapon/implanter/reagent_generator/savannah
 {
 ckey: mewchild
 character_name: Phi Vietsi
+<<<<<<< HEAD
 item_path: /obj/item/weapon/storage/box/fluff/vietsi
+=======
+item_path: /obj/item/weapon/storage/box/fluff/phi
+>>>>>>> 44e3511... Merge pull request #4812 from TheFurryFeline/patch-1
 }
 
 {

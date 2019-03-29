@@ -228,7 +228,11 @@
 		/obj/item/clothing/under/fluff/morunder)
 
 // Mewchild: Phi Vietsi
+<<<<<<< HEAD
 /obj/item/weapon/storage/box/fluff/vietsi
+=======
+/obj/item/weapon/storage/box/fluff/phi
+>>>>>>> 44e3511... Merge pull request #4812 from TheFurryFeline/patch-1
 	name = "Phi's Personal Items"
 	has_items = list(
 		/obj/item/clothing/accessory/medal/bronze_heart,
