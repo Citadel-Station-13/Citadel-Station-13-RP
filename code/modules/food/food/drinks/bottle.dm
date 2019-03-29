@@ -383,7 +383,11 @@
 	icon_state = "space-up_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("space_up", 100)
 
@@ -393,7 +397,11 @@
 	icon_state = "space_mountain_wind_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("spacemountainwind", 100)
 

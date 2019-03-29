@@ -31,7 +31,11 @@
 	icon_state = "space_mountain_wind"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("spacemountainwind", 30)
 
@@ -51,7 +55,11 @@
 	icon_state = "dr_gibb"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 		..()
 		reagents.add_reagent("dr_gibb", 30)
 
@@ -71,7 +79,11 @@
 	icon_state = "space-up"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/space_up/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("space_up", 30)
 
@@ -81,7 +93,11 @@
 	icon_state = "lemon-lime"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/lemon_lime/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/lemon_lime/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("lemon_lime", 30)
 
@@ -91,7 +107,11 @@
 	icon_state = "ice_tea_can"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("icetea", 30)
 
@@ -101,7 +121,11 @@
 	icon_state = "purple_can"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice/Initialize()
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	..()
 	reagents.add_reagent("grapejuice", 30)
 

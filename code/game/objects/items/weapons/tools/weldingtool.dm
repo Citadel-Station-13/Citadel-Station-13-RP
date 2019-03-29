@@ -47,8 +47,12 @@
 	R.add_reagent("fuel", max_fuel)
 	update_icon()
 	if(always_process)
+<<<<<<< HEAD
 		processing_objects |= src
 	..()
+=======
+		START_PROCESSING(SSobj, src)
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 
 /obj/item/weapon/weldingtool/Destroy()
 	if(welding || always_process)

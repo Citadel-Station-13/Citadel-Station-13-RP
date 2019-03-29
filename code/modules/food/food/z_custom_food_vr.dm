@@ -19,7 +19,11 @@ var/global/ingredientLimit = 20
 	var/image/topping
 	var/image/filling
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/customizable/initialize(loc,ingredient)
+=======
+/obj/item/weapon/reagent_containers/food/snacks/customizable/Initialize(loc,ingredient)
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 	. = ..()
 	topping = image(icon,,"[initial(icon_state)]_top")
 	filling = image(icon,,"[initial(icon_state)]_filling")

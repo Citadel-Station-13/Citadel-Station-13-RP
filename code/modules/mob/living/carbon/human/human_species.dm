@@ -36,9 +36,14 @@
 /mob/living/carbon/human/promethean/New(var/new_loc)
 	..(new_loc, SPECIES_PROMETHEAN)
 
+<<<<<<< HEAD
 /mob/living/carbon/human/machine/New(var/new_loc)
 	h_style = "blue IPC screen"
 	..(new_loc, "Machine")
+=======
+/mob/living/carbon/human/zaddat/Initialize(var/new_loc) //VOREStation Edit - Fixes a Polaris bug
+	return ..(new_loc, SPECIES_ZADDAT)
+>>>>>>> eada143... Merge pull request #4877 from Novacat/nova-pathfinder
 
 /mob/living/carbon/human/monkey/New(var/new_loc)
 	..(new_loc, SPECIES_MONKEY)
