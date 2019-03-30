@@ -130,8 +130,8 @@
 	name = "\improper Away Mission - Virgo 6 Snowfields"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/snow/snow2 //This is what the ground turns into if destroyed/bombed/etc
-	//Not going to do sunlight simulations here like virgo3b
-	//So we just make the whole snowfield fullbright all the time for now.
+	//Not going to do sunlight/weather simulations here YET like on virgo3b.
+	//Make the whole snowfield fullbright all the time for now, untill some kind of dynamic weather is added, giving random snowstorms and lighting shifts.
 	dynamic_lighting = 0
 
 //Some areas for the snowfields which are referenced by our init object to seed submaps.
