@@ -92,13 +92,14 @@
 	atmos_comp = TRUE
 	prob_spawn = 50
 	prob_fall = 50
+	guard = 50
 	mobs_to_pick_from = list(
 		/mob/living/simple_animal/hostile/wolf = 1
 	)
 
 /obj/tether_away_spawner/snowfields_diyaab
 	name = "Snowfield Spawner Diyaab"
-	faction = "Diyaab" //This will cause diyaabs to protect ONLY the herd if one is attacked, instead of sending them into a rage for attacking a different species.
+	faction = "Snowfields"
 	atmos_comp = TRUE
 	prob_spawn = 50
 	prob_fall = 50

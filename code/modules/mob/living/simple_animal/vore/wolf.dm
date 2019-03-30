@@ -7,7 +7,7 @@
 	icon_living = "wolf"
 	icon_state = "wolf"
 
-	speed = 3 //cit change, saviks have 2 speed and they can catch up to anyone that dosnt have haste and major hearty, nerfed from 5 to 3 with the addition of snowfields.
+	speed = 5
 
 	run_at_them = 0
 	cooperative = 1

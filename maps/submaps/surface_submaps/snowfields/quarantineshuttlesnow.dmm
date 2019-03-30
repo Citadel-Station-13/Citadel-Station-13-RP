@@ -97,14 +97,11 @@
 "bS" = (/obj/item/weapon/contraband/poster,/turf/simulated/shuttle/floor{icon_state = "floor_yellow"},/area/submap/snowfields/qarantineshuttlesnow)
 "bT" = (/obj/structure/loot_pile/maint/technical,/turf/simulated/shuttle/floor{icon_state = "floor_yellow"},/area/submap/snowfields/qarantineshuttlesnow)
 "bU" = (/obj/structure/sign/biohazard,/turf/simulated/shuttle/wall/hard_corner,/area/submap/snowfields/qarantineshuttlesnow)
-"bV" = (/obj/item/tape/medical{icon_state = "tape_v_0"},/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
+"bV" = (/obj/structure/sign/warning/secure_area,/turf/simulated/wall/snowbrick,/area/submap/snowfields/qarantineshuttlesnow)
 "bW" = (/obj/item/taperoll/medical,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
-"bX" = (/obj/item/tape/medical{dir = 1; icon_state = "tape_dir_0"},/obj/item/tape/medical{dir = 4; icon_state = "tape_dir_0"},/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
-"bY" = (/obj/item/tape/medical{icon_state = "tape_h_0"},/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
+"bX" = (/obj/structure/sign/kiddieplaque{desc = "By order of the S.D.D.C, this site or craft is to be buried and not disturbed until such time that sterility can be confirmed. Dated: 20/12/2491 "; name = "\improper Sif Department of Disease Control notice"},/turf/simulated/wall/snowbrick,/area/submap/snowfields/qarantineshuttlesnow)
+"bY" = (/obj/structure/sign/warning,/turf/simulated/wall/snowbrick,/area/submap/snowfields/qarantineshuttlesnow)
 "bZ" = (/obj/structure/lattice,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
-"ca" = (/obj/structure/sign/warning/secure_area,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
-"cb" = (/obj/structure/sign/kiddieplaque{desc = "By order of the S.D.D.C, this site or craft is to be buried and not disturbed until such time that sterility can be confirmed. Dated: 20/12/2491 "; name = "\improper Sif Department of Disease Control notice"},/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
-"cc" = (/obj/structure/sign/warning,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
 "cd" = (/obj/item/bodybag,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
 "ce" = (/obj/structure/table/steel,/obj/item/weapon/storage/box/bodybags,/obj/item/clothing/suit/storage/snowsuit,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
 "cf" = (/obj/structure/table/steel,/obj/item/clothing/suit/bio_suit,/obj/random/medical/lite,/turf/simulated/floor/snow,/area/submap/snowfields/qarantineshuttlesnow)
@@ -136,9 +133,9 @@ aaabaiaJbobpadbqbrbsbtbubvbsaNbwaUbxaAbyaVbzaZabaa
 aaabadadadadadaDbAaAbBaAbCbDbEbFadbGaGbHadadbIabaa
 aaababadadbJbKbLbMadbNaQbOadbPbQadbRbSbTadagahabaa
 aaabacabadaiajakakbUaiadaiadadadadadadadadadadaaaa
-aaabababbVabaeaeafaeababababbWabababababadagahaaaa
-aaabababbXbYbYbYbYbYbYbYbYbYbYbYbYbYbYbYadadadaaaa
-aaaaababababababababbZcacbcccdcdcdabcecfcgabchaaaa
+aaabababababaeaeafaeababababbWabababababadagahaaaa
+aaabababababababababababababababababababadadadaaaa
+aaaaababababababababbZbVbXbYcdcdcdabcecfcgabchaaaa
 aaaaacababcicjckclcmcnababcoabcdcdababababababaaaa
 aaaaaaababcpcjababababababababaaaaaaaaaaababacaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
