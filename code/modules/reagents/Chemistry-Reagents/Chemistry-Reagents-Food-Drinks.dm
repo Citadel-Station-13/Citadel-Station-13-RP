@@ -34,19 +34,22 @@
 				data -= taste
 
 /datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	/* VOREStation Removal
-	if(!injectable && alien != IS_SLIME)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA) //VOREStation Edit
 		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
+<<<<<<< HEAD
 	*/ //VOREStation Removal End
 	if(injectable) //vorestation addition/replacement
 		affect_ingest(M, alien, removed)
+=======
+>>>>>>> 3882cb8... Merge pull request #4867 from Novacat/nova-survival
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5
+		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
 	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(M.species.gets_food_nutrition) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
@@ -61,6 +64,43 @@
 
 	injectable = 1
 
+<<<<<<< HEAD
+=======
+/datum/reagent/nutriment/protein // Bad for Skrell!
+	name = "animal protein"
+	id = "protein"
+	taste_description = "some sort of meat"
+	color = "#440000"
+
+/datum/reagent/nutriment/protein/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	switch(alien)
+		if(IS_SKRELL)
+			M.adjustToxLoss(0.5 * removed)
+			return
+		if(IS_TESHARI)
+			..(M, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
+			return
+		if(IS_UNATHI)
+			..(M, alien, removed*2.25) //Unathi get most of their nutrition from meat.
+		//VOREStation Edit Start
+		if(IS_CHIMERA)
+			..(M, alien, removed*4) //Xenochimera are obligate carnivores.
+		//VOREStation Edit End
+	..()
+
+/datum/reagent/nutriment/protein/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien && alien == IS_SKRELL)
+		M.adjustToxLoss(2 * removed)
+		return
+	..()
+
+/datum/reagent/nutriment/protein/egg // Also bad for skrell.
+	name = "egg yolk"
+	id = "egg"
+	taste_description = "egg"
+	color = "#FFFFAA"
+
+>>>>>>> 3882cb8... Merge pull request #4867 from Novacat/nova-survival
 /datum/reagent/nutriment/honey
 	name = "Honey"
 	id = "honey"
