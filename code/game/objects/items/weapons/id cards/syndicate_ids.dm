@@ -179,6 +179,8 @@
 					electronic_warfare = initial(electronic_warfare)
 					fingerprint_hash = initial(fingerprint_hash)
 					icon_state = initial(icon_state)
+					sprite_stack = list("")
+					update_icon()
 					name = initial(name)
 					registered_name = initial(registered_name)
 					unset_registered_user()
@@ -194,12 +196,12 @@
 	if(!id_card_states)
 		id_card_states = list()
 		for(var/path in typesof(/obj/item/weapon/card/id))
-			var/obj/item/weapon/card/id/ID = path
+			var/obj/item/weapon/card/id/ID = new path()
 			var/datum/card_state/CS = new()
 			CS.icon_state = initial(ID.icon_state)
 			CS.item_state = initial(ID.item_state)
-			CS.sprite_stack = initial(ID.initial_sprite_stack)
-			CS.name = initial(ID.name) + " - " + initial(ID.icon_state)
+			CS.sprite_stack = ID.initial_sprite_stack
+			CS.name = initial(ID.name)
 			id_card_states += CS
 		id_card_states = dd_sortedObjectList(id_card_states)
 

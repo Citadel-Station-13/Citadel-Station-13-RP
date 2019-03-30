@@ -21,7 +21,7 @@
 	var/associated_account_number = 0
 
 	var/list/initial_sprite_stack = list("")
-	var/list/base_icon = 'icons/obj/card_cit.dmi'
+	var/base_icon = "icons/obj/card_cit.dmi"
 	var/list/sprite_stack
 
 	var/list/files = list(  )
@@ -35,9 +35,9 @@
 	update_icon()
 
 /obj/item/weapon/card/update_icon()
-	if(!sprite_stack || sprite_stack == list(""))
-		icon_state = initial(icon_state)
+	if(!sprite_stack || !istype(sprite_stack) || sprite_stack == list(""))
 		icon = base_icon
+		icon_state = initial(icon_state)
 
 	var/icon/I = null
 	for(var/iconstate in sprite_stack)
