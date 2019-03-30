@@ -7,6 +7,7 @@
 #include "Icecave1D.dmm"
 #include "QuarantineShuttleSnow.dmm"
 #include "SPatrol1.dmm"
+#include "CrashedShuttleFront.dmm"
 #endif
 
 //The snowfields are a wide open field coated in a blanket of snow, contains no caves, and is dangerous without proper heat insulation and armor.
