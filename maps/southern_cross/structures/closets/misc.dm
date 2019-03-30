@@ -61,10 +61,15 @@
 		/obj/item/weapon/cell/device,
 		/obj/item/device/radio,
 		/obj/item/stack/marker_beacon/thirty,
+<<<<<<< HEAD
 		/obj/item/weapon/material/knife/tacknife/survival, //VOREStation Add,
 		/obj/item/weapon/material/knife/machete, //VOREStation Add,
 		/obj/item/clothing/accessory/holster/machete, //VOREStation Add,
 		/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 2) //VOREStation Add
+=======
+		/obj/item/device/cataloguer
+		)
+>>>>>>> 7d85810... Merge pull request #4888 from VOREStation/upstream-merge-6016
 
 /obj/structure/closet/secure_closet/explorer/initialize()
 	if(prob(50))
