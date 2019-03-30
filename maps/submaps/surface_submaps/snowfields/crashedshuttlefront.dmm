@@ -1,40 +1,40 @@
 "a" = (/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "b" = (/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "c" = (/obj/item/weapon/tool/wrench,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
-"d" = (/obj/structure/shuttle/window,/obj/structure/grille,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
+"d" = (/obj/structure/shuttle/window,/obj/structure/grille,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 "e" = (/obj/item/device/gps,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "f" = (/obj/item/ammo_magazine/m9mml/ap,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "g" = (/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "h" = (/obj/item/weapon/gun/projectile/pistol,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "i" = (/turf/simulated/wall/titanium,/area/submap/snowfields/crashedshuttlefront)
 "j" = (/obj/item/broken_device,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
-"k" = (/obj/structure/shuttle/window,/obj/structure/grille/broken,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
+"k" = (/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 "l" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/dirt,/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "m" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "n" = (/obj/effect/decal/cleanable/blood/drip,/obj/effect/decal/cleanable/dirt,/mob/living/simple_animal/hostile/russian/ranged,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "o" = (/obj/structure/table/reinforced,/obj/item/device/radio,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "p" = (/obj/item/weapon/tool/crowbar,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
-"q" = (/mob/living/simple_animal/hostile/russian/ranged,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
-"r" = (/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
-"s" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
+"q" = (/obj/structure/shuttle/window,/obj/structure/grille/broken,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
+"r" = (/mob/living/simple_animal/hostile/russian/ranged,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
+"s" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 "t" = (/obj/structure/safe/floor,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "u" = (/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "v" = (/obj/structure/table/reinforced,/obj/item/weapon/gun/energy/gun/burst,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "w" = (/obj/effect/decal/cleanable/generic,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "x" = (/obj/effect/decal/cleanable/ash,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "y" = (/obj/item/ammo_magazine/m9mml/ap,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
-"z" = (/obj/item/weapon/circuitboard/broken,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
+"z" = (/obj/item/weapon/circuitboard/broken,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 "A" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/generic,/mob/living/simple_animal/hostile/russian,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "B" = (/obj/structure/table/reinforced,/obj/machinery/recharger,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/white,/area/submap/snowfields/crashedshuttlefront)
 "C" = (/obj/item/weapon/material/wirerod,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "D" = (/obj/item/weapon/broken_bottle,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "E" = (/obj/effect/decal/remains/ribcage,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
-"F" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
-"G" = (/obj/effect/decal/cleanable/vomit,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
+"F" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/greenglow,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
+"G" = (/obj/effect/decal/cleanable/vomit,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 "H" = (/obj/item/device/flashlight/flare,/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "I" = (/obj/item/weapon/gun/projectile/automatic/pdw,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "J" = (/obj/item/weapon/cell/high/empty,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
-"K" = (/obj/effect/decal/cleanable/dirt,/mob/living/simple_animal/hostile/russian/ranged,/turf/simulated/floor/plating,/area/submap/snowfields/crashedshuttlefront)
+"K" = (/obj/effect/decal/cleanable/dirt,/mob/living/simple_animal/hostile/russian/ranged,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 "L" = (/obj/item/weapon/tool/screwdriver,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "M" = (/obj/item/weapon/coin/silver,/obj/effect/decal/cleanable/ash,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "N" = (/obj/effect/decal/remains/human,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
@@ -44,19 +44,21 @@
 "R" = (/obj/machinery/artifact,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "S" = (/obj/item/device/geiger,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
 "T" = (/obj/item/weapon/circuitboard/broken,/turf/template_noop,/area/submap/snowfields/crashedshuttlefront)
+"U" = (/obj/effect/decal/cleanable/ash,/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
+"V" = (/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/crashedshuttlefront)
 
 (1,1,1) = {"
 aaaaaaaaaaabaaa
 aacaadddddaaaea
-aaaaddfghddaiaa
-aajaklmnmodaiia
-paaaqrstuviiiia
-aawxyarzABiiiiC
-axaaaDEFrGiHiia
+aaaaddfghddakaa
+aajaqlmnmodaika
+paaarkstuviiika
+aawxyakzABiiiiC
+axaaaDEFkGiHiia
 aaaaaxIJbKsLiia
-aaaMaxaNxaaOiiO
-aPaaNaaaaxaOQiO
-aaaxRaxaaPOQOOO
+aaaMaxaNxakOiiO
+aPaaNaaaaxaOUiO
+aaaxRaxaaPOQOVO
 axaaaxaaaaaOOOO
 aaaaaaaaNaxxOOa
 axawxaaxaSaaaaa

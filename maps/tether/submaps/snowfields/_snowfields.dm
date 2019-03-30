@@ -155,3 +155,34 @@
 /area/tether_away/snowfields/unexplored/far
 	name = "\improper Away Mission - Virgo 6 snowfields far (UE)"
 	icon_state = "unexplored_deep"
+
+// -- Turfs -- //
+
+//Atmosphere properties
+//Atmosphere properties
+#define VIRGO6_ONE_ATMOSPHERE	103.5 //kPa
+#define VIRGO6_AVG_TEMP			249.5 //kelvin
+
+#define VIRGO6_PER_N2		80.00 //percent
+#define VIRGO6_PER_O2		20.00
+
+//Math only beyond this point
+#define VIRGO6_MOL_PER_TURF		(VIRGO6_ONE_ATMOSPHERE*CELL_VOLUME/(VIRGO6_AVG_TEMP*R_IDEAL_GAS_EQUATION))
+#define VIRGO6_MOL_N2			(VIRGO6_MOL_PER_TURF * VIRGO6_PER_N2)
+#define VIRGO6_MOL_O2			(VIRGO6_MOL_PER_TURF * VIRGO6_PER_O2)
+
+//Turfmakers
+#define VIRGO6_SET_ATMOS	nitrogen=VIRGO6_MOL_N2;oxygen=VIRGO6_MOL_O2;temperature=VIRGO6_AVG_TEMP
+#define VIRGO6_TURF_CREATE(x)	x/virgo6/nitrogen=VIRGO6_MOL_N2;x/virgo6/oxygen=VIRGO6_MOL_O2;x/virgo6/temperature=VIRGO6_AVG_TEMP
+
+VIRGO6_TURF_CREATE(/turf/unsimulated/wall/planetary)
+VIRGO6_TURF_CREATE(/turf/simulated/wall)
+VIRGO6_TURF_CREATE(/turf/simulated/wall/solidrock)
+VIRGO6_TURF_CREATE(/turf/simulated/floor/plating)
+VIRGO6_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
+VIRGO6_TURF_CREATE(/turf/simulated/floor/reinforced)
+VIRGO6_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
+VIRGO6_TURF_CREATE(/turf/simulated/floor/tiled/white)
+VIRGO6_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
+VIRGO6_TURF_CREATE(/turf/simulated/mineral/floor)
+VIRGO6_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
