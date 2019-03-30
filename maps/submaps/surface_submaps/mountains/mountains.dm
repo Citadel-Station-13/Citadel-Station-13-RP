@@ -237,6 +237,7 @@ datum/map_template/surface/mountains/normal/SwordCave
 	name = "Cave Lake"
 	desc = "A large underground lake."
 	mappath = 'maps/submaps/surface_submaps/mountains/Cavelake.dmm'
+//too big for anything less than 30, and getting it spawned instead of something thats not just open space kinda sucks.
 
 //Citadel change
 //Vaults 1-3 kept in the normal area, since they're basically just a box and two xenos.

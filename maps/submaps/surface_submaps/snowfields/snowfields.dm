@@ -54,6 +54,7 @@
 	desc = "An ice cave home to a pack of Savik and their previous meal."
 	mappath = 'maps/submaps/surface_submaps/snowfields/Icecave1D.dmm'
 	cost = 20
+	annihilate = TRUE
 
 /datum/map_template/surface/snowfields/far/QuarantineShuttleSnow
 	name = "Quarantined Shuttle(snow)"

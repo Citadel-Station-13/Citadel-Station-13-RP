@@ -70,8 +70,8 @@
 	guard = 40
 	mobs_to_pick_from = list(
 		/mob/living/simple_animal/hostile/shantak = 2,
-		/mob/living/simple_animal/hostile/tree = 1
-
+		/mob/living/simple_animal/hostile/tree = 1,
+		/mob/living/simple_animal/hostile/creature = 2
 	)
 
 /obj/tether_away_spawner/snowfields_hard
