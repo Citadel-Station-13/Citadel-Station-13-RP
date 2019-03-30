@@ -11,7 +11,11 @@
 	var/datum/seed/seed
 	var/potency = -1
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/grown/initialize(newloc,planttype)
+=======
+/obj/item/weapon/reagent_containers/food/snacks/grown/Initialize(newloc,planttype)
+>>>>>>> d40e58e... Merge pull request #4887 from Novacat/nova-pathfinder
 
 	..()
 	if(!dried_type)
