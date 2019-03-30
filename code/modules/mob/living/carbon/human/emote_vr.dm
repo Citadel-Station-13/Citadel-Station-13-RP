@@ -13,7 +13,7 @@
 				message = "[flapping ? "starts" : "stops"] flapping their wings."
 			else
 				return 1
-/*		if ("mlem")
+		if ("mlem")
 			message = "mlems [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] tongue up over [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] nose. Mlem."
 			m_type = 1
 ///////////////////////// EMOTES PORTED FROM MAIN START
@@ -45,7 +45,7 @@
 				var/obj/item/organ/external/E = get_organ(organ_name)
 				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
 					involved_parts -= organ_name
-					danger += 5 //Add 5% chance for each involved part
+					danger += 7 //Add 7% chance for each involved part
 
 
 			if(prob(danger))
@@ -56,7 +56,9 @@
 						src.Weaken(5)
 						E.droplimb(1,DROPLIMB_EDGE)
 						message += " <span class='danger'>And falls apart!</span>" //might be redundant, havent seen a synth die yet in testing
-						log_and_message_admins("spammed *awoo and lost their [breaking].", src)
+						log_and_message_admins("broke their [breaking] with *awoo and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
 					else
 						src.Weaken(5)
 						if(E.cannot_break) //Prometheans go splat
@@ -64,7 +66,9 @@
 						else
 							E.fracture()
 						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("spammed *awoo and broke their [breaking].", src) //idk why the other break messages laugh
+						log_and_message_admins("broke their [breaking] with *awoo and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
 		if ("nya")
 // added damage similar to snap/slap etc upon request
 			var/mob/living/carbon/human/H = src
@@ -104,7 +108,9 @@
 						src.Weaken(5)
 						E.droplimb(1,DROPLIMB_EDGE)
 						message += " <span class='danger'>And loses their [breaking]!</span>" //redundant unless a non-lethal limb is added to the parts list
-						log_and_message_admins("spammed *nya and lost their [breaking].", src)
+						log_and_message_admins("broke their [breaking] with *nya and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
 					else
 						src.Weaken(5)
 						if(E.cannot_break) //Prometheans go splat
@@ -112,9 +118,11 @@
 						else
 							E.fracture()
 						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("spammed *nya and broke their [breaking].", src) */
+						log_and_message_admins("broke their [breaking] with *nya and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
 ///////////////////////// EMOTES PORTED FROM MAIN END
-/*		if ("peep")
+		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
@@ -137,7 +145,7 @@
 		if ("hiss")
 			message = "lets out a hiss."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1) */
+			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE
@@ -177,7 +185,9 @@
 							src.Weaken(5)
 							E.droplimb(1,DROPLIMB_EDGE)
 							message += " <span class='danger'>And loses a limb!</span>"
-							log_and_message_admins("lost their [breaking] with *flip, ahahah.", src)
+							log_and_message_admins("broke their [breaking] with *flip and were kicked.", src)
+							to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+							Logout(src)
 						else
 							src.Weaken(5)
 							if(E.cannot_break) //Prometheans go splat
@@ -185,8 +195,9 @@
 							else
 								E.fracture()
 							message += " <span class='danger'>And breaks something!</span>"
-							log_and_message_admins("broke their [breaking] with *flip, ahahah.", src)
-
+							log_and_message_admins("broke their [breaking] with *flip and were kicked.", src)
+							to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+							Logout(src)
 	if (message)
 		custom_emote(m_type,message)
 		return 1
