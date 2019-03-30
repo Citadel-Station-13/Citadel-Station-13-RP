@@ -55,6 +55,7 @@
 	desc = "The remains of a research vessal now overtaken by stranded russians."
 	mappath = 'maps/submaps/surface_submaps/snowfields/CrashedShuttleFront.dmm'
 	cost = 10
+	annihilate = TRUE
 
 /datum/map_template/surface/snowfields/far/icecave1D
 	name = "Ice Cave"
@@ -68,6 +69,7 @@
 	desc = "A quarantined shuttle that holds a gruesome horror within."
 	mappath = 'maps/submaps/surface_submaps/snowfields/QuarantineShuttleSnow.dmm'
 	cost = 15
+	annihilate = TRUE
 
 /datum/map_template/surface/snowfields/far/spatrol1
 	name = "Syndicate Patrol 1"
