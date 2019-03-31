@@ -5,7 +5,7 @@
 	anchored = 0
 	buckle_movable = 1
 
-	var/last_move = 0
+	var/last_active_move = 0
 	var/driving = 0
 	var/mob/living/pulling = null
 	var/bloodiness
@@ -32,7 +32,7 @@
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
  	
-	if(world.time <= last_move + move_delay)
+	if(world.time <= last_active_move + move_delay)
 		return
 
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
@@ -64,7 +64,7 @@
 		return
 
 
- 	last_move = world.time
+ 	last_active_move = world.time
 
 
 	// Let's roll
