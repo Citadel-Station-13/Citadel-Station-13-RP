@@ -32,3 +32,10 @@
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "industrial hardsuit crate"
 	access = access_mining
+
+/datum/supply_pack/misc/looksir
+	name = "free crab"
+	contains = list(
+			/mob/living/simple_animal/crab = 1
+			)
+	cost = 7
