@@ -1,11 +1,11 @@
 var/const/PATHFINDER 		=(1<<13) //VOREStation Edit - Added Pathfinder
 
 /obj/item/weapon/card/id/science/head/pathfinder
+	name = "\improper Pathfinder's ID"
 	desc = "A card which represents discovery of the unknown."
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
 	job_access_type = /datum/job/pathfinder
-	initial_sprite_stack = list("", "top-science-explorer", "pips-gold")
 
 /datum/job/pathfinder
 	title = "Pathfinder"

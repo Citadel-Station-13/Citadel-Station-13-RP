@@ -138,7 +138,6 @@
 	assignment = "Command Secretary"
 	rank = "Command Secretary"
 	job_access_type = /datum/job/secretary
-	initial_sprite_stack = list("base-stamp", "top-command", "letter-n-command")
 
 /obj/item/weapon/card/id/silver/hop
 	name = "\improper HoP ID"
@@ -146,7 +145,6 @@
 	rank = "Head of Personnel"
 	desc = "A card which represents the balance between those that serve and those that are served."
 	job_access_type = /datum/job/hop
-	initial_sprite_stack = list("base-stamp-silver", "top-command", "letter-n-command", "pips-gold")
 
 /obj/item/weapon/card/id/gold
 	name = "gold identification card"
@@ -228,28 +226,24 @@
 	assignment = "Chemist"
 	rank = "Chemist"
 	job_access_type = /datum/job/chemist
-	initial_sprite_stack = list("", "pips-engineering")
 
 /obj/item/weapon/card/id/medical/geneticist
 	name = "geneticist ID"
 	assignment = "Geneticist"
 	rank = "Geneticist"
 	job_access_type = /datum/job/doctor	//geneticist
-	initial_sprite_stack = list("base-stamp", "top-medical", "letter-n-science", "pips-science")
 
 /obj/item/weapon/card/id/medical/psychiatrist
 	name = "psychiatrist ID"
 	assignment = "Psychiatrist"
 	rank = "Psychiatrist"
 	job_access_type = /datum/job/psychiatrist
-	//initial_sprite_stack = list("", "pips-mime")
 
 /obj/item/weapon/card/id/medical/paramedic
 	name = "paramedic ID"
 	assignment = "Paramedic"
 	rank = "Paramedic"
 	job_access_type = /datum/job/paramedic
-	//initial_sprite_stack = list("", "pips-security")
 
 /obj/item/weapon/card/id/medical/head
 	name = "\improper CMO ID"
@@ -259,7 +253,6 @@
 	assignment = "Chief Medical Officer"
 	rank = "Chief Medical Officer"
 	job_access_type = /datum/job/cmo
-	initial_sprite_stack = list("base-stamp-silver", "top-command-medical", "letter-n-command", "pips-medical")
 
 /obj/item/weapon/card/id/security
 	name = "security identification card"
@@ -285,7 +278,6 @@
 	assignment = "Warden"
 	rank = "Warden"
 	job_access_type = /datum/job/warden
-	initial_sprite_stack = list("", "pips-gold")
 
 /obj/item/weapon/card/id/security/head
 	name = "\improper HoS ID"
@@ -295,7 +287,6 @@
 	assignment = "Head of Security"
 	rank = "Head of Security"
 	job_access_type = /datum/job/hos
-	initial_sprite_stack = list("base-stamp-silver", "top-command-security", "letter-n-command", "pips-security")
 
 /obj/item/weapon/card/id/engineering
 	name = "engineering identification card"
@@ -315,7 +306,6 @@
 	assignment = "Atmospheric Technician"
 	rank = "Atmospheric Technician"
 	job_access_type = /datum/job/atmos
-	initial_sprite_stack = list("", "pips-medical")
 
 /obj/item/weapon/card/id/engineering/head
 	name = "\improper CE ID"
@@ -325,7 +315,6 @@
 	assignment = "Chief Engineer"
 	rank = "Chief Engineer"
 	job_access_type = /datum/job/chief_engineer
-	initial_sprite_stack = list("base-stamp-silver", "top-command-engineering", "letter-n-command", "pips-engineering")
 
 /obj/item/weapon/card/id/science
 	name = "science identification card"
@@ -360,7 +349,6 @@
 	assignment = "Research Director"
 	rank = "Research Director"
 	job_access_type = /datum/job/rd
-	initial_sprite_stack = list("base-stamp-silver", "top-command-science", "letter-n-command", "pips-science")
 
 /obj/item/weapon/card/id/cargo
 	name = "cargo identification card"
@@ -389,7 +377,6 @@
 	assignment = "Quartermaster"
 	rank = "Quartermaster"
 	job_access_type = /datum/job/qm
-	initial_sprite_stack = list("", "pips-gold")
 
 /obj/item/weapon/card/id/assistant
 	assignment = USELESS_JOB //VOREStation Edit - Visitor not Assistant
@@ -423,7 +410,6 @@
 	assignment = "Chaplain"
 	rank = "Chaplain"
 	job_access_type = /datum/job/chaplain
-	initial_sprite_stack = list("base-stamp-silver", "top-dark", "letter-cross", "pips-mime")
 
 /obj/item/weapon/card/id/civilian/chef
 	name = "chef ID"
@@ -436,7 +422,6 @@
 	assignment = "Internal Affairs Agent"
 	rank = "Internal Affairs Agent"
 	job_access_type = /datum/job/lawyer
-	initial_sprite_stack = list("base-stamp", "top-internal-affairs", "letter-n-command")
 
 /obj/item/weapon/card/id/civilian/janitor
 	name = "janitor ID"
@@ -455,21 +440,18 @@
 	assignment = "Clown"
 	rank = "Clown"
 	job_access_type = /datum/job/clown
-	initial_sprite_stack = list("base-stamp", "top-clown", "letter-n-clown")
 
 /obj/item/weapon/card/id/civilian/mime
 	name = "mime ID"
 	assignment = "Mime"
 	rank = "Mime"
 	job_access_type = /datum/job/mime
-	initial_sprite_stack = list("base-stamp", "top-mime", "letter-n-mime")
 
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "\improper Services Officer ID"
 	desc = "A card which represents common sense and responsibility."
 	primary_color = rgb(0,94,142)
 	secondary_color = rgb(255,223,127)
-	initial_sprite_stack = list("base-stamp-silver", "top-command", "letter-n-command", "pips-civilian")
 
 /obj/item/weapon/card/id/external
 	name = "external identification card"

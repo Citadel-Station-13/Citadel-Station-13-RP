@@ -21,22 +21,22 @@ var/const/access_explorer = 43
 //SC IDs
 
 /obj/item/weapon/card/id/medical/sar
+	name = "search and rescue ID"
 	assignment = "Search and Rescue"
 	rank = "Search and Rescue"
 	job_access_type = /datum/job/sar
-	initial_sprite_stack = list("", "pips-science")
 
 /obj/item/weapon/card/id/civilian/pilot
+	name = "pilot ID"
 	assignment = "Pilot"
 	rank = "Pilot"
 	job_access_type = /datum/job/pilot
-	initial_sprite_stack = list("", "pips-science")
 
 /obj/item/weapon/card/id/science/explorer
+	name = "explorer ID"
 	assignment = "Explorer"
 	rank = "Explorer"
 	job_access_type = /datum/job/explorer
-	initial_sprite_stack = list("", "top-science-explorer")
 
 //SC Jobs
 
