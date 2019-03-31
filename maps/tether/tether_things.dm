@@ -102,9 +102,24 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
+<<<<<<< HEAD
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/initialize()
+=======
+/obj/effect/step_trigger/teleporter/to_plains/New()
+	..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_PLAINS
+
+/obj/effect/step_trigger/teleporter/from_plains/New()
+	..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
+>>>>>>> 82c152c... Merge pull request #4892 from Novacat/nova-pathfinder
 	planet = planet_virgo3b
-	. = ..()
 
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
