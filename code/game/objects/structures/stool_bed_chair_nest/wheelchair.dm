@@ -5,10 +5,11 @@
 	anchored = 0
 	buckle_movable = 1
 
-	var/move_delay = null
+	var/last_move = 0
 	var/driving = 0
 	var/mob/living/pulling = null
 	var/bloodiness
+	var/move_delay = 2		//5 TPS
 
 /obj/structure/bed/chair/wheelchair/update_icon()
 	return
@@ -31,10 +32,7 @@
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
  	
-	var/calculated_move_delay
-	calculated_move_delay += 2 //TheFurryFeline: nerfs speed so you don't go like Sonic. >W>
-
-	if(world.time < move_delay)
+	if(world.time <= last_move + move_delay)
 		return
 
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
@@ -66,8 +64,7 @@
 		return
 
 
- 	move_delay = world.time
-	move_delay += calculated_move_delay
+ 	last_move = world.time
 
 
 	// Let's roll
