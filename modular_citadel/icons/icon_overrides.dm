@@ -201,3 +201,37 @@
 //code/game/objects/items/weapons/RSF.dm
 /obj/item/weapon/rsf
 	icon = 'icons/obj/tools.dmi'
+
+//code/modules/economy/atm.dm
+/obj/machinery/atm
+	icon = 'modular_citadel/icons/obj/terminals.dmi'
+
+//code/game/objects/items/weapons/storage/briefcase.dm
+/obj/item/weapon/storage/briefcase
+	icon = 'modular_citadel/icons/obj/storage.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'modular_citadel/icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'modular_citadel/icons/mob/items/righthand_storage.dmi',
+		)
+
+/obj/item/weapon/storage/briefcase/clutch
+	icon = 'icons/obj/storage.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+		)
+
+/obj/item/weapon/storage/briefcase/inflatable
+	icon = 'icons/obj/storage.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+		)
+
+//code/game/objects/items/weapons/storage/secure.dm
+/obj/item/weapon/storage/secure/briefcase
+	icon = 'modular_citadel/icons/obj/storage.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'modular_citadel/icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'modular_citadel/icons/mob/items/righthand_storage.dmi',
+		)

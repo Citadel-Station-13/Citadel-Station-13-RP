@@ -105,6 +105,7 @@
 
 	can_buckle = TRUE
 	buckle_lying = FALSE
+	circuit = /obj/item/weapon/circuitboard/grounding_rod
 
 /obj/machinery/power/grounding_rod/pre_mapped
 	anchored = TRUE

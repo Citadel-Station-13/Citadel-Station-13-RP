@@ -3,8 +3,8 @@
 	id_type = /obj/item/weapon/card/id/assistant
 
 /decl/hierarchy/outfit/job/assistant/visitor
-	name = OUTFIT_JOB_NAME("Visitor")
-	id_pda_assignment = "Visitor"
+	name = OUTFIT_JOB_NAME("Assistant")
+	id_pda_assignment = "Assistant"
 	uniform = /obj/item/clothing/under/assistantformal
 
 /decl/hierarchy/outfit/job/assistant/resident
