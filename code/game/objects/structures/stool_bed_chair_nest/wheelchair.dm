@@ -32,7 +32,7 @@
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
  	
-	if(world.time <= last_active_move + move_delay)
+	if(world.time < last_active_move + move_delay)
 		return
 
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
