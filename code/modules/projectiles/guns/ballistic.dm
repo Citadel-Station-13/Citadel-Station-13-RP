@@ -392,32 +392,40 @@
 /obj/item/gun/ballistic/can_shoot()
 	return chambered
 
-
-
-
-
-
-
-
-
-
-
-/obj/item/gun/ballistic/proc/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message = TRUE)
-	if(user.transferItemToLoc(AM, src))
-		magazine = AM
-		if (display_message)
-			to_chat(user, "<span class='notice'>You load a new [magazine_wording] into \the [src].</span>")
-		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+/obj/item/gun/ballistic/proc/prefire_empty_checks()
+	if (!chambered && !get_ammo())
 		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
-			chamber_round()
-		update_icon()
-		return TRUE
-	else
-		to_chat(user, "<span class='warning'>You cannot seem to get \the [src] out of your hands!</span>")
-		return FALSE
+			bolt_locked = TRUE
+			playsound(src, bolt_drop_sound, bolt_drop_sound_volume)
+			update_icon()
 
-/obj/item/gun/ballistic/proc/eject_magazine(mob/user, display_message = TRUE, obj/item/ammo_box/magazine/tac_load = null)
+/obj/item/gun/ballistic/proc/postfire_empty_checks()
+	if (!chambered && !get_ammo())
+		if (!alarmed && empty_alarm)
+			playsound(src, empty_alarm_sound, empty_alarm_volume, empty_alarm_vary)
+			alarmed = TRUE
+			update_icon()
+		if (bolt_type == BOLT_TYPE_LOCKING)
+			bolt_locked = TRUE
+			update_icon()
+
+/obj/item/gun/ballistic/proc/insert_magazine(obj/item/ammo_box/magazine/M, mob/user, display_message = TRUE)
+	if(user && !user.remove_from_mob(M))
+		to_chat(user, "<span class='warning'>[M] seems to be stuck to your hand!</span>")
+		return FALSE
+	M.forceMove(src)
+	if(magazine)
+		magazine.forceMove(drop_location())
+	magazine = M
+	playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+	if(bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
+		chamber_round()
+	update_icon()
+	return TRUE
+
+/obj/item/gun/ballistic/proc/eject_magazine(obj/item/ammo_box/magazine/tac_load, mob/user, display_message = TRUE)
 	if(bolt_type == BOLT_TYPE_OPEN)
+		chambered.forceMove(drop_location())
 		chambered = null
 	if (magazine.ammo_count())
 		playsound(src, load_sound, load_sound_volume, load_sound_vary)
@@ -425,17 +433,21 @@
 		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
 	magazine.forceMove(drop_location())
 	var/obj/item/ammo_box/magazine/old_mag = magazine
-	if (tac_load)
-		insert_magazine(user, tac_load, FALSE)
+	magazine = null
+	if(tac_load)
+		insert_magazine(tac_load, user, FALSE)
 		to_chat(user, "<span class='notice'>You perform a tactical reload on \the [src].")
 	user.put_in_hands(old_mag)
 	//besure to insert logic in here somewhere to drop the bullet chambered if bolt is open bolt!
 	old_mag.update_icon()
-	if (!tac_load)
-		magazine = null
 	if (display_message)
 		to_chat(user, "<span class='notice'>You pull the [magazine_wording] out of \the [src].</span>")
 	update_icon()
+
+
+
+
+
 
 
 
@@ -513,23 +525,6 @@
 			update_icon()
 			return
 
-/obj/item/gun/ballistic/proc/prefire_empty_checks()
-	if (!chambered && !get_ammo())
-		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
-			bolt_locked = TRUE
-			playsound(src, bolt_drop_sound, bolt_drop_sound_volume)
-			update_icon()
-
-
-/obj/item/gun/ballistic/proc/postfire_empty_checks()
-	if (!chambered && !get_ammo())
-		if (!alarmed && empty_alarm)
-			playsound(src, empty_alarm_sound, empty_alarm_volume, empty_alarm_vary)
-			alarmed = TRUE
-			update_icon()
-		if (bolt_type == BOLT_TYPE_LOCKING)
-			bolt_locked = TRUE
-			update_icon()
 
 /obj/item/gun/ballistic/afterattack()
 	prefire_empty_checks()
@@ -600,32 +595,6 @@
 	rounds.Add(magazine.ammo_list(drop_all))
 	return rounds
 
-#define BRAINS_BLOWN_THROW_RANGE 3
-#define BRAINS_BLOWN_THROW_SPEED 1
-/obj/item/gun/ballistic/suicide_act(mob/user)
-	var/obj/item/organ/brain/B = user.getorganslot(ORGAN_SLOT_BRAIN)
-	if (B && chambered && chambered.BB && can_trigger_gun(user) && !chambered.BB.nodamage)
-		user.visible_message("<span class='suicide'>[user] is putting the barrel of [src] in [user.p_their()] mouth.  It looks like [user.p_theyre()] trying to commit suicide!</span>")
-		sleep(25)
-		if(user.is_holding(src))
-			var/turf/T = get_turf(user)
-			process_fire(user, user, FALSE, null, BODY_ZONE_HEAD)
-			user.visible_message("<span class='suicide'>[user] blows [user.p_their()] brain[user.p_s()] out with [src]!</span>")
-			var/turf/target = get_ranged_target_turf(user, turn(user.dir, 180), BRAINS_BLOWN_THROW_RANGE)
-			B.Remove(user)
-			B.forceMove(T)
-			var/datum/callback/gibspawner = CALLBACK(GLOBAL_PROC, /proc/spawn_atom_to_turf, /obj/effect/gibspawner/generic, B, 1, FALSE, user)
-			B.throw_at(target, BRAINS_BLOWN_THROW_RANGE, BRAINS_BLOWN_THROW_SPEED, callback=gibspawner)
-			return(BRUTELOSS)
-		else
-			user.visible_message("<span class='suicide'>[user] panics and starts choking to death!</span>")
-			return(OXYLOSS)
-	else
-		user.visible_message("<span class='suicide'>[user] is pretending to blow [user.p_their()] brain[user.p_s()] out with [src]! It looks like [user.p_theyre()] trying to commit suicide!</b></span>")
-		playsound(src, dry_fire_sound, 30, TRUE)
-		return (OXYLOSS)
-#undef BRAINS_BLOWN_THROW_SPEED
-#undef BRAINS_BLOWN_THROW_RANGE
 
 
 
@@ -703,3 +672,37 @@
 					capacity_number = 100
 			if (capacity_number)
 				add_overlay("[icon_state]_mag_[capacity_number]")
+
+
+
+
+
+
+/*
+#define BRAINS_BLOWN_THROW_RANGE 3
+#define BRAINS_BLOWN_THROW_SPEED 1
+/obj/item/gun/ballistic/suicide_act(mob/user)
+	var/obj/item/organ/brain/B = user.getorganslot(ORGAN_SLOT_BRAIN)
+	if (B && chambered && chambered.BB && can_trigger_gun(user) && !chambered.BB.nodamage)
+		user.visible_message("<span class='suicide'>[user] is putting the barrel of [src] in [user.p_their()] mouth.  It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		sleep(25)
+		if(user.is_holding(src))
+			var/turf/T = get_turf(user)
+			process_fire(user, user, FALSE, null, BODY_ZONE_HEAD)
+			user.visible_message("<span class='suicide'>[user] blows [user.p_their()] brain[user.p_s()] out with [src]!</span>")
+			var/turf/target = get_ranged_target_turf(user, turn(user.dir, 180), BRAINS_BLOWN_THROW_RANGE)
+			B.Remove(user)
+			B.forceMove(T)
+			var/datum/callback/gibspawner = CALLBACK(GLOBAL_PROC, /proc/spawn_atom_to_turf, /obj/effect/gibspawner/generic, B, 1, FALSE, user)
+			B.throw_at(target, BRAINS_BLOWN_THROW_RANGE, BRAINS_BLOWN_THROW_SPEED, callback=gibspawner)
+			return(BRUTELOSS)
+		else
+			user.visible_message("<span class='suicide'>[user] panics and starts choking to death!</span>")
+			return(OXYLOSS)
+	else
+		user.visible_message("<span class='suicide'>[user] is pretending to blow [user.p_their()] brain[user.p_s()] out with [src]! It looks like [user.p_theyre()] trying to commit suicide!</b></span>")
+		playsound(src, dry_fire_sound, 30, TRUE)
+		return (OXYLOSS)
+#undef BRAINS_BLOWN_THROW_SPEED
+#undef BRAINS_BLOWN_THROW_RANGE
+*/

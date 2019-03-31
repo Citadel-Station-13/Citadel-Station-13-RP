@@ -80,7 +80,7 @@
 
 	dualwield_volatility = 0.5
 
-/datum/firemode/energy/apply_to_casing(obj/item/ammu_csaing/C)
+/datum/firemode/energy/apply_to_casing(obj/item/ammu_casing/C)
 	. = ..()
 	C.projectile_type = projectile_type
 	C.ammo_flags = casing_flags
