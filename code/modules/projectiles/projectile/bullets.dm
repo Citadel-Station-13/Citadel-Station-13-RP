@@ -369,7 +369,6 @@
 		to_chat(M, "<span class='warning'>Oh god, it burns!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
 		M.Blind(effective_strength)
-		M.Weaken(5)
 		M.apply_effect(6 * effective_strength, AGONY, 0)
 		if(alien != IS_SLIME)
 			return
@@ -383,7 +382,6 @@
 		to_chat(M, "<span class='warning'>Oh god, it burns!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
 		M.Blind(effective_strength * 4)
-		M.Weaken(10)
 		M.apply_effect(6 * effective_strength, AGONY, 0)
 		if(alien != IS_SLIME)
 			return
