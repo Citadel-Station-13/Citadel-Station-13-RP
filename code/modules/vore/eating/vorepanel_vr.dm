@@ -536,9 +536,28 @@
 		selected.mode_flags ^= selected.mode_flag_list[toggle_addon]
 		selected.items_preserved.Cut() //Re-evaltuate all items in belly on addon toggle
 
+<<<<<<< HEAD
 	if(href_list["b_cont_flavor"])
 		var/list/menu_list = cont_flavors.Copy()
 		var/new_flavor = input("Choose Contamination Mode (currently [selected.cont_flavor])") as null|anything in menu_list
+=======
+	if(href_list["b_item_mode"])
+		var/list/menu_list = selected.item_digest_modes.Copy()
+
+		var/new_mode = input("Choose Mode (currently [selected.item_digest_mode])") as null|anything in menu_list
+		if(!new_mode)
+			return 0
+
+		selected.item_digest_mode = new_mode
+		selected.items_preserved.Cut() //Re-evaltuate all items in belly on belly-mode change
+
+	if(href_list["b_contaminates"])
+		selected.contaminates = !selected.contaminates
+
+	if(href_list["b_contamination_flavor"])
+		var/list/menu_list = contamination_flavors.Copy()
+		var/new_flavor = input("Choose Contamination Flavor Text Type (currently [selected.contamination_flavor])") as null|anything in menu_list
+>>>>>>> 392ae0e... Merge pull request #4898 from Heroman3003/flavorful-typo-fix
 		if(!new_flavor)
 			return 0
 		selected.cont_flavor = new_flavor
