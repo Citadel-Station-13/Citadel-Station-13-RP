@@ -88,7 +88,7 @@
 "bJ" = (/obj/machinery/recharge_station,/turf/simulated/shuttle/floor,/area/submap/snowfields/qarantineshuttlesnow)
 "bK" = (/obj/machinery/door/airlock{name = "Charge Station"},/turf/simulated/shuttle/wall,/area/submap/snowfields/qarantineshuttlesnow)
 "bL" = (/obj/item/trash/tastybread,/obj/item/weapon/material/butterfly/boxcutter,/obj/effect/decal/cleanable/dirt,/turf/simulated/shuttle/floor{icon_state = "floor_white"},/area/submap/snowfields/qarantineshuttlesnow)
-"bM" = (/obj/effect/decal/cleanable/vomit,/obj/effect/decal/cleanable/mucus/mapped,/turf/simulated/shuttle/floor{icon_state = "floor_white"},/area/submap/snowfields/qarantineshuttlesnow)
+"bM" = (/obj/effect/decal/cleanable/vomit,/turf/simulated/shuttle/floor{icon_state = "floor_white"},/area/submap/snowfields/qarantineshuttlesnow)
 "bN" = (/obj/structure/bed/chair{dir = 1},/obj/effect/decal/remains/xeno,/turf/simulated/shuttle/floor{icon_state = "floor_white"},/area/submap/snowfields/qarantineshuttlesnow)
 "bO" = (/obj/structure/bed/chair{dir = 1},/obj/item/weapon/card/id/external{desc = "An identification card of some sort. Looks like this one was issued by the Vir Independent Mining Corp."; name = "VIMC identification card"; rank = "Miner"; registered_name = "Nadia Chu"},/turf/simulated/shuttle/floor{icon_state = "floor_white"},/area/submap/snowfields/qarantineshuttlesnow)
 "bP" = (/obj/structure/table/rack,/obj/item/weapon/storage/toolbox/emergency,/turf/simulated/shuttle/floor{icon_state = "floor_white"},/area/submap/snowfields/qarantineshuttlesnow)
