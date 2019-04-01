@@ -71,7 +71,7 @@
 			return
 		switch(input("Type of [arguments.len+1]\th variable", "argument [arguments.len+1]") as null|anything in list(
 				"finished", "null", "text", "num", "type", "obj reference", "mob reference",
-				"area/turf reference", "icon", "file", "client", "mob's area", "marked datum"))
+				"area/turf reference", "icon", "file", "client", "mob's area", "sound", "marked datum"))
 			if(null)
 				return
 
@@ -108,7 +108,15 @@
 			if("icon")
 				current = input("Provide icon for [arguments.len+1]\th argument") as null|icon
 				if(isnull(current)) return
-
+			
+			if("file")
+				current = input("Pick file:", "File") as null|file
+				if(isnull(current)) return
+			
+			if("sound")
+				current = input("Pick sound:", "Sound") as null|sound
+				if(isnull(current)) return
+			
 			if("client")
 				current = input("Select client for [arguments.len+1]\th argument") as null|anything in clients
 				if(isnull(current)) return

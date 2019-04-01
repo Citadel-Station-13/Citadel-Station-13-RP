@@ -17,19 +17,6 @@
 	var/list/resource_field = list()
 	var/obj/item/device/radio/intercom/faultreporter = new /obj/item/device/radio/intercom{channels=list("Supply")}(null)
 
-	var/ore_types = list(
-		"hematite" = /obj/item/weapon/ore/iron,
-		"uranium" = /obj/item/weapon/ore/uranium,
-		"gold" = /obj/item/weapon/ore/gold,
-		"silver" = /obj/item/weapon/ore/silver,
-		"diamond" = /obj/item/weapon/ore/diamond,
-		"phoron" = /obj/item/weapon/ore/phoron,
-		"osmium" = /obj/item/weapon/ore/osmium,
-		"hydrogen" = /obj/item/weapon/ore/hydrogen,
-		"silicates" = /obj/item/weapon/ore/glass,
-		"carbon" = /obj/item/weapon/ore/coal
-		)
-
 	//Upgrades
 	var/harvest_speed
 	var/capacity
@@ -96,7 +83,7 @@
 		var/total_harvest = harvest_speed //Ore harvest-per-tick.
 		var/found_resource = 0 //If this doesn't get set, the area is depleted and the drill errors out.
 
-		for(var/metal in ore_types)
+		for(var/metal in GLOB.ore_types)
 
 			if(contents.len >= capacity)
 				system_error("Insufficient storage space.")
@@ -124,7 +111,7 @@
 					harvesting.resources[metal] = 0
 
 				for(var/i=1, i <= create_ore, i++)
-					var/oretype = ore_types[metal]
+					var/oretype = GLOB.ore_types[metal]
 					new oretype(src)
 
 		if(!found_resource)
