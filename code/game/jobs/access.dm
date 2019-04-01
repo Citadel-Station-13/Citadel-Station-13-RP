@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/var/list/req_access
-/obj/var/list/req_one_access
+/obj/var/list/req_access = list()
+/obj/var/list/req_one_access = list()
 
 //returns 1 if this mob has sufficient access to use this object
 /obj/proc/allowed(mob/M)
@@ -28,20 +28,22 @@
 	return check_access_list(I ? I.GetAccess() : list())
 
 /obj/proc/check_access_list(var/list/L)
+	if(!req_access)		req_access = list()
+	if(!req_one_access)	req_one_access = list()
 	if(!L)	return 0
 	if(!istype(L, /list))	return 0
 	return has_access(req_access, req_one_access, L)
 
 /proc/has_access(var/list/req_access, var/list/req_one_access, var/list/accesses)
-	if(!LAZYLEN(req_access) && !LAZYLEN(req_one_access)) // requires no access at all
-		return TRUE
-	if(!LAZYLEN(accesses)) // we don't have any accesses but need them
-		return FALSE
-	if(LAZYLEN(req_access - accesses)) // we don't have all the accesses we need
-		return FALSE
-	if(LAZYLEN(req_one_access & accesses)) // if we have ANY from this list, succeed
-		return TRUE
-	return FALSE
+	for(var/req in req_access)
+		if(!(req in accesses)) //doesn't have this access
+			return 0
+	if(req_one_access.len)
+		for(var/req in req_one_access)
+			if(req in accesses) //has an access from the single access list
+				return 1
+		return 0
+	return 1
 
 /proc/get_centcom_access(job)
 	switch(job)

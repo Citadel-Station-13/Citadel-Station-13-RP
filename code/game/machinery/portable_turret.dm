@@ -120,8 +120,7 @@
 
 /obj/machinery/porta_turret/New()
 	..()
-	if(LAZYLEN(req_access))
-		req_access.Cut()
+	req_access.Cut()
 	req_one_access = list(access_security, access_heads)
 
 	//Sets up a spark system
@@ -133,14 +132,12 @@
 
 /obj/machinery/porta_turret/crescent/New()
 	..()
-	if(LAZYLEN(req_one_access))
-		req_one_access.Cut()
+	req_one_access.Cut()
 	req_access = list(access_cent_specops)
 
 /obj/machinery/porta_turret/alien/New()
 	..()
-	if(LAZYLEN(req_one_access))
-		req_one_access.Cut()
+	req_one_access.Cut()
 	req_access = list(access_alien)
 
 /obj/machinery/porta_turret/Destroy()
