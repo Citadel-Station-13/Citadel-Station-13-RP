@@ -170,57 +170,52 @@
 #define TEMPERATURE_SF 230.15 // -43C / -45.4F
 #define TEMPERATURE_ALTSF 205.15
 
-/turf/unsimulated/wall/planetary/virgo6
+/turf/unsimulated/wall/planetary/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/wall/virgo6
+/turf/simulated/wall/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/wall/solidrock/virgo6
+/turf/simulated/wall/solidrock/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/floor/plating/virgo6
+/turf/simulated/floor/plating/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/floor/outdoors/snow/virgo6
+/turf/simulated/floor/outdoors/snow/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/floor/reinforced/virgo6
+/turf/simulated/floor/reinforced/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/floor/outdoors/ice/virgo6
+/turf/simulated/floor/outdoors/ice/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/floor/tiled/white/virgo6
+/turf/simulated/floor/tiled/white/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/mineral/ignore_mapgen/virgo6
+/turf/simulated/mineral/ignore_mapgen/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF
 
-/turf/simulated/mineral/floor/virgo6
-	oxygen		= MOLES_O2SF
-	nitrogen	= MOLES_N2SF
-	temperature	= TEMPERATURE_SF
-
-/turf/simulated/mineral/floor/ignore_mapgen/virgo6
+/turf/simulated/mineral/floor/ignore_mapgen/snowfields
 	oxygen		= MOLES_O2SF
 	nitrogen	= MOLES_N2SF
 	temperature	= TEMPERATURE_SF

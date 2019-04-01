@@ -1,25 +1,24 @@
 "a" = (/turf/template_noop,/area/template_noop)
 "b" = (/turf/template_noop,/area/submap/snowfields/destroyedpod)
-"c" = (/turf/simulated/floor/plating,/area/submap/snowfields/destroyedpod)
+"c" = (/turf/simulated/floor/plating/snowfields,/area/submap/snowfields/destroyedpod)
 "d" = (/obj/structure/girder/displaced,/turf/template_noop,/area/submap/snowfields/destroyedpod)
 "e" = (/turf/simulated/wall/titanium,/area/submap/snowfields/destroyedpod)
-"f" = (/turf/simulated/floor/reinforced,/area/submap/snowfields/destroyedpod)
-"g" = (/obj/structure/loot_pile/maint/junk,/turf/simulated/floor/reinforced,/area/submap/snowfields/destroyedpod)
-"h" = (/obj/item/device/flashlight,/turf/simulated/floor/reinforced,/area/submap/snowfields/destroyedpod)
-"i" = (/obj/structure/loot_pile/maint/technical,/obj/item/device/gps/internal/poi,/obj/item/weapon/cell/device/weapon/empty,/obj/item/weapon/cell/device/weapon/empty,/turf/simulated/floor/plating,/area/submap/snowfields/destroyedpod)
-"j" = (/obj/structure/loot_pile/maint/technical,/turf/simulated/floor/reinforced,/area/submap/snowfields/destroyedpod)
-"k" = (/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/destroyedpod)
-"l" = (/obj/structure/loot_pile/maint/trash,/turf/simulated/floor/reinforced,/area/submap/snowfields/destroyedpod)
-"m" = (/obj/structure/loot_pile/maint/trash,/turf/simulated/floor/plating,/area/submap/snowfields/destroyedpod)
-"n" = (/obj/structure/girder,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/destroyedpod)
-"o" = (/obj/structure/girder/displaced,/turf/simulated/floor/plating/virgo6,/area/submap/snowfields/destroyedpod)
+"f" = (/turf/simulated/floor/reinforced/snowfields,/area/submap/snowfields/destroyedpod)
+"g" = (/obj/structure/loot_pile/maint/junk,/turf/simulated/floor/reinforced/snowfields,/area/submap/snowfields/destroyedpod)
+"h" = (/obj/item/device/flashlight,/turf/simulated/floor/reinforced/snowfields,/area/submap/snowfields/destroyedpod)
+"i" = (/obj/structure/loot_pile/maint/technical,/obj/item/device/gps/internal/poi,/obj/item/weapon/cell/device/weapon/empty,/obj/item/weapon/cell/device/weapon/empty,/turf/simulated/floor/plating/snowfields,/area/submap/snowfields/destroyedpod)
+"j" = (/obj/structure/loot_pile/maint/technical,/turf/simulated/floor/reinforced/snowfields,/area/submap/snowfields/destroyedpod)
+"k" = (/obj/structure/girder,/turf/simulated/floor/plating/snowfields,/area/submap/snowfields/destroyedpod)
+"l" = (/obj/structure/loot_pile/maint/trash,/turf/simulated/floor/reinforced/snowfields,/area/submap/snowfields/destroyedpod)
+"m" = (/obj/structure/girder/displaced,/turf/simulated/floor/plating/snowfields,/area/submap/snowfields/destroyedpod)
+"n" = (/obj/structure/loot_pile/maint/trash,/turf/simulated/floor/plating/snowfields,/area/submap/snowfields/destroyedpod)
 
 (1,1,1) = {"
 aabbcdbaa
-abbefkbba
+abbefcbba
 bbeegeebb
 bffhijfff
-bbencenbb
-abbnlobba
-aabbmbbaa
+bbekcekbb
+abbklmbba
+aabbnbbaa
 "}
