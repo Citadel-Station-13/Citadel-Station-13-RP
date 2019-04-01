@@ -13,16 +13,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()
-		if(!I)
-			H << "<span class='notice'>You are not holding anything to equip.</span>"
-			return
-		if(H.equip_to_appropriate_slot(I))
-			if(hand)
-				update_inv_l_hand(0)
-			else
-				update_inv_r_hand(0)
-		else
-			H << "<font color='red'>You are unable to equip that.</font>"
+		I.equip_to_best_slot(H)
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
