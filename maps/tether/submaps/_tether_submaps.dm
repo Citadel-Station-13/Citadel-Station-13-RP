@@ -65,13 +65,13 @@
 /datum/map_z_level/tether_lateload/away_beach
 	name = "Away Mission - Desert Beach"
 	z = Z_LEVEL_BEACH
-
+/* - Kevinz clean this up.
 /datum/map_template/tether_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
 	mappath = 'beach/cave.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
-
+*/
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(Z_LEVEL_BEACH_CAVE), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
