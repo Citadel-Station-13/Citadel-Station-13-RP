@@ -40,6 +40,7 @@
 #define Z_LEVEL_BEACH_CAVE					16
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
+#define Z_LEVEL_SNOWFIELDS					19
 
 /datum/map/tether
 	name = "Virgo"
@@ -124,7 +125,8 @@
 		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
+		list("Snow Planet - Z1 Snowfields")
 		)
 
 	lateload_single_pick = null //Nothing right now.
