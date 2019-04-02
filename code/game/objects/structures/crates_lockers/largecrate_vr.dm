@@ -41,6 +41,7 @@
 	name = "Predator carrier"
 	starts_with = list(/mob/living/simple_animal/catgirl)
 
+<<<<<<< HEAD
 /obj/structure/largecrate/animal/pred/initialize() //This is nessesary to get a random one each time.
 	starts_with = list(pick(/mob/living/simple_animal/retaliate/bee,
 						/mob/living/simple_animal/catgirl;3,
@@ -56,12 +57,30 @@
 						/mob/living/simple_animal/hostile/rat,
 						/mob/living/simple_animal/hostile/rat/passive,
 						/mob/living/simple_animal/otie;0.5))
+=======
+/obj/structure/largecrate/animal/pred/Initialize() //This is nessesary to get a random one each time.
+	starts_with = list(pick(/mob/living/simple_mob/vore/bee,
+						/mob/living/simple_mob/vore/catgirl;3,
+						/mob/living/simple_mob/vore/aggressive/frog,
+						/mob/living/simple_mob/vore/horse,
+						/mob/living/simple_mob/vore/aggressive/panther,
+						/mob/living/simple_mob/vore/aggressive/giant_snake,
+						/mob/living/simple_mob/animal/wolf,
+						/mob/living/simple_mob/animal/space/bear;0.5,
+						/mob/living/simple_mob/animal/space/carp,
+						/mob/living/simple_mob/animal/space/mimic,
+						/mob/living/simple_mob/vore/aggressive/rat,
+						/mob/living/simple_mob/vore/aggressive/rat/tame,
+//						/mob/living/simple_mob/otie;0.5
+						))
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	return ..()
 
 /obj/structure/largecrate/animal/dangerous
 	name = "Dangerous Predator carrier"
 	starts_with = list(/mob/living/simple_animal/hostile/alien)
 
+<<<<<<< HEAD
 /obj/structure/largecrate/animal/dangerous/initialize()
 	starts_with = list(pick(/mob/living/simple_animal/hostile/carp/pike,
 						/mob/living/simple_animal/hostile/deathclaw,
@@ -73,6 +92,19 @@
 						/mob/living/simple_animal/otie/feral,
 						/mob/living/simple_animal/otie/red,
 						/mob/living/simple_animal/hostile/corrupthound))
+=======
+/obj/structure/largecrate/animal/dangerous/Initialize()
+	starts_with = list(pick(/mob/living/simple_mob/animal/space/carp/large,
+						/mob/living/simple_mob/vore/aggressive/deathclaw,
+						/mob/living/simple_mob/vore/aggressive/dino,
+						/mob/living/simple_mob/animal/space/alien,
+						/mob/living/simple_mob/animal/space/alien/drone,
+						/mob/living/simple_mob/animal/space/alien/sentinel,
+						/mob/living/simple_mob/animal/space/alien/queen,
+//						/mob/living/simple_mob/otie/feral,
+//						/mob/living/simple_mob/otie/red,
+						/mob/living/simple_mob/vore/aggressive/corrupthound))
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	return ..()
 
 /obj/structure/largecrate/animal/guardbeast
@@ -127,9 +159,17 @@
 /obj/structure/largecrate/animal/fennec
 	name = "Fennec Crate"
 	desc = "Bounces around a lot. Looks messily packaged, were they in a hurry?"
+<<<<<<< HEAD
 	starts_with = list(/mob/living/simple_animal/fennec)
 
 /obj/structure/largecrate/animal/fennec/initialize()
 	starts_with = list(pick(/mob/living/simple_animal/fennec,
 						/mob/living/simple_animal/retaliate/fennix;0.5))
+=======
+	starts_with = list(/mob/living/simple_mob/vore/fennec)
+
+/obj/structure/largecrate/animal/fennec/Initialize()
+	starts_with = list(pick(/mob/living/simple_mob/vore/fennec,
+						/mob/living/simple_mob/vore/fennix;0.5))
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	return ..()

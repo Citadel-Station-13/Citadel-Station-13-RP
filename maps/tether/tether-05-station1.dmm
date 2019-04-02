@@ -10750,10 +10750,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+=======
+/mob/living/simple_mob/animal/passive/fox/renault,
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEu" = (
@@ -15903,7 +15907,11 @@
 /area/hallway/station/atrium)
 "bfT" = (
 /obj/structure/disposalpipe/segment,
+<<<<<<< HEAD
 /mob/living/simple_animal/snake/Noodle,
+=======
+/mob/living/simple_mob/animal/passive/snake/noodle,
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "bfW" = (

@@ -408,10 +408,17 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
+<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/jelly = 3,
 		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
 		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
 		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
+=======
+		/mob/living/simple_mob/animal/space/jelly = 3,
+		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
+		/mob/living/simple_mob/animal/giant_spider/phorogenic = 1,
+		/mob/living/simple_mob/animal/giant_spider/lurker = 1,
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	)
 
 /obj/tether_away_spawner/underdark_hard
@@ -422,9 +429,15 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
+<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/corrupthound = 1,
 		/mob/living/simple_animal/hostile/rat = 1,
 		/mob/living/simple_animal/hostile/mimic = 1
+=======
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1,
+		/mob/living/simple_mob/vore/aggressive/rat = 1,
+		/mob/living/simple_mob/animal/space/mimic = 1
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	)
 
 /obj/tether_away_spawner/underdark_boss
@@ -435,7 +448,11 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 100
 	guard = 70
 	mobs_to_pick_from = list(
+<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/dragon = 1
+=======
+		/mob/living/simple_mob/vore/aggressive/dragon = 1
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	)
 
 // Used at centcomm for the elevator

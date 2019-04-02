@@ -16,6 +16,11 @@
 	icon_living = "map_example"
 	faction = "shadekin"
 	ui_icons = 'icons/mob/shadekin_hud.dmi'
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
+=======
+	mob_class = MOB_CLASS_HUMANOID
+	mob_bump_flag = 0
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 
 	maxHealth = 200
 	health = 200

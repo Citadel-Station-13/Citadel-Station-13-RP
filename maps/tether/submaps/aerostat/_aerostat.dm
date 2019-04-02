@@ -64,10 +64,17 @@
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
+<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/hivebot/range = 3,
 		/mob/living/simple_animal/hostile/hivebot/range/ion = 3,
 		/mob/living/simple_animal/hostile/hivebot/range/laser = 3,
 		/mob/living/simple_animal/hostile/corrupthound = 1
+=======
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser = 3,
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	)
 
 /obj/tether_away_spawner/aerostat_surface
@@ -78,9 +85,15 @@
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
+<<<<<<< HEAD
 		/mob/living/simple_animal/hostile/jelly = 3,
 		/mob/living/simple_animal/hostile/viscerator = 2,
 		/mob/living/simple_animal/hostile/corrupthound = 1
+=======
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 3,
+		/mob/living/simple_mob/mechanical/viscerator = 2,
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 	)
 
 /obj/structure/old_roboprinter

@@ -55,7 +55,11 @@
 /turf/simulated/floor/water,
 /area/submap/spa)
 "ak" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/fox,
+=======
+/mob/living/simple_mob/animal/passive/fox,
+>>>>>>> 9c71233... Merge pull request #4899 from Heroman3003/fixing-the-swapparoo
 /turf/simulated/floor/grass,
 /area/submap/spa)
 "al" = (
