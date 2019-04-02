@@ -22,7 +22,7 @@
 #################################
 
 # Your name.  
-author: Mechoid
+author: Buffalowing
 
 # Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
 delete-after: True
@@ -33,4 +33,6 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - bugfix: "Slimes now respect slime colors as their faction when dealing with other slimes."
+  - bugfix: "Fixed an issue that prevented Terminus from being spoken."
+  - bugfix: "Fixed an issue that caused silicate to make windows entirely transparent."
+  - bugfix: "Fixed an issue that caused the entire volume of the silicate container to be consumed on use."
