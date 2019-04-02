@@ -60,184 +60,183 @@
 	name = "Abandoned Relay"
 	desc = "An unregistered comms relay, abandoned to the elements."
 	mappath = 'maps/submaps/surface_submaps/mountains/deadBeacon.dmm'
-	cost = 15
+	cost = 3
 
 /datum/map_template/surface/mountains/normal/prepper1
 	name = "Prepper Bunker"
 	desc = "A little hideaway for someone with more time and money than sense."
 	mappath = 'maps/submaps/surface_submaps/mountains/prepper1.dmm'
-	cost = 10
+	cost = 4
 
 /datum/map_template/surface/mountains/normal/qshuttle
 	name = "Quarantined Shuttle"
 	desc = "An emergency landing turned viral outbreak turned tragedy."
 	mappath = 'maps/submaps/surface_submaps/mountains/quarantineshuttle.dmm'
-	cost = 20
+	cost = 6
 
 /datum/map_template/surface/mountains/normal/Mineshaft1
 	name = "Abandoned Mineshaft 1"
 	desc = "An abandoned minning tunnel from a lost money making effort."
 	mappath = 'maps/submaps/surface_submaps/mountains/Mineshaft1.dmm'
-	cost = 25
+	cost = 1
 
 /datum/map_template/surface/mountains/normal/crystal1
 	name = "Crystal Cave 1"
 	desc = "A small cave with glowing gems and diamonds."
 	mappath = 'maps/submaps/surface_submaps/mountains/crystal1.dmm'
-	cost = 5
+	cost = 1
 	allow_duplicates = TRUE
 
 /datum/map_template/surface/mountains/normal/crystal2
 	name = "Crystal Cave 2"
 	desc = "A moderate sized cave with glowing gems and diamonds."
 	mappath = 'maps/submaps/surface_submaps/mountains/crystal2.dmm'
-	cost = 15
+	cost = 2
 	allow_duplicates = TRUE
 
-/datum/map_template/surface/mountains/normal/crystal3
+/datum/map_template/surface/mountains/normal/crystal2
 	name = "Crystal Cave 3"
 	desc = "A large spiral of crystals with diamonds in the center."
 	mappath = 'maps/submaps/surface_submaps/mountains/crystal3.dmm'
-	cost = 20
+	cost = 5
 
 /datum/map_template/surface/mountains/normal/lost_explorer
 	name = "Lost Explorer"
 	desc = "The remains of an explorer who rotted away ages ago, and their equipment."
 	mappath = 'maps/submaps/surface_submaps/mountains/lost_explorer.dmm'
-	cost = 5
-	allow_duplicates = FALSE //yeah lets just spawn 10 of these on the map every round, that's a good idea right?
+	cost = 2
+	allow_duplicates = TRUE
 
 /datum/map_template/surface/mountains/normal/Rockb1
 	name = "Rocky Base 1"
 	desc = "Someones underground hidey hole"
 	mappath = 'maps/submaps/surface_submaps/mountains/Rockb1.dmm'
-	cost = 20
+	cost = 5
 
 /datum/map_template/surface/mountains/normal/corgiritual
 	name = "Dark Ritual"
 	desc = "Who put all these plushies here? What are they doing?"
 	mappath = 'maps/submaps/surface_submaps/mountains/ritual.dmm'
-	cost = 10
-	allow_duplicates = FALSE
+	cost = 5
 
 /datum/map_template/surface/mountains/normal/abandonedtemple
 	name = "Abandoned Temple"
 	desc = "An ancient temple, long since abandoned. Perhaps alien in origin?"
 	mappath = 'maps/submaps/surface_submaps/mountains/temple.dmm'
-	cost = 30
+	cost = 6
 
 /datum/map_template/surface/mountains/normal/crashedmedshuttle
 	name = "Crashed Med Shuttle"
 	desc = "A medical response shuttle that went missing some time ago. So this is where they went."
 	mappath = 'maps/submaps/surface_submaps/mountains/CrashedMedShuttle1.dmm'
-	cost = 20
+	cost = 6
 
 /datum/map_template/surface/mountains/normal/digsite
 	name = "Dig Site"
 	desc = "A small abandoned dig site."
 	mappath = 'maps/submaps/surface_submaps/mountains/digsite.dmm'
-	cost = 15
+	cost = 3
 
 /datum/map_template/surface/mountains/normal/vault1
 	name = "Mine Vault 1"
 	desc = "A small vault with potential loot."
 	mappath = 'maps/submaps/surface_submaps/mountains/vault1.dmm'
-	cost = 5
-	allow_duplicates = FALSE
+	cost = 2
+	allow_duplicates = TRUE
 
 /datum/map_template/surface/mountains/normal/vault2
 	name = "Mine Vault 2"
 	desc = "A small vault with potential loot."
 	mappath = 'maps/submaps/surface_submaps/mountains/vault2.dmm'
-	cost = 5
-	allow_duplicates = FALSE
+	cost = 2
+	allow_duplicates = TRUE
 
 /datum/map_template/surface/mountains/normal/vault3
 	name = "Mine Vault 3"
 	desc = "A small vault with potential loot. Also a horrible suprise."
 	mappath = 'maps/submaps/surface_submaps/mountains/vault3.dmm'
-	cost = 15
-	allow_duplicates = FALSE
+	cost = 5
 
 /datum/map_template/surface/mountains/normal/IceCave1A
 	name = "Ice Cave 1A"
 	desc = "This cave's slippery ice makes it hard to navigate, but determined explorers will be rewarded."
 	mappath = 'maps/submaps/surface_submaps/mountains/IceCave1A.dmm'
-	cost = 10
+	cost = 3
 
 /datum/map_template/surface/mountains/normal/IceCave1B
 	name = "Ice Cave 1B"
 	desc = "This cave's slippery ice makes it hard to navigate, but determined explorers will be rewarded."
 	mappath = 'maps/submaps/surface_submaps/mountains/IceCave1B.dmm'
-	cost = 10
+	cost = 3
 
 /datum/map_template/surface/mountains/normal/IceCave1C
 	name = "Ice Cave 1C"
 	desc = "This cave's slippery ice makes it hard to navigate, but determined explorers will be rewarded."
 	mappath = 'maps/submaps/surface_submaps/mountains/IceCave1C.dmm'
-	cost = 10
+	cost = 3
 
-datum/map_template/surface/mountains/normal/SwordCave
+/datum/map_template/surface/mountains/normal/SwordCave
 	name = "Cursed Sword Cave"
 	desc = "An underground lake. The sword on the lake's island holds a terrible secret."
 	mappath = 'maps/submaps/surface_submaps/mountains/SwordCave.dmm'
-
+	cost = 8
 
 /datum/map_template/surface/mountains/normal/supplydrop1
 	name = "Supply Drop 1"
 	desc = "A drop pod that landed deep within the mountains."
 	mappath = 'maps/submaps/surface_submaps/mountains/SupplyDrop1.dmm'
-	cost = 5
-	allow_duplicates = FALSE
+	cost = 4
+	allow_duplicates = TRUE
 
 /datum/map_template/surface/mountains/normal/crashedcontainmentshuttle
 	name = "Crashed Cargo Shuttle"
 	desc = "A severely damaged military shuttle, its cargo seems to remain intact."
 	mappath = 'maps/submaps/surface_submaps/mountains/crashedcontainmentshuttle.dmm'
-	cost = 25
+	cost = 10
 
 /datum/map_template/surface/mountains/normal/deadspy
 	name = "Spy Remains"
 	desc = "W+M1 = Salt."
 	mappath = 'maps/submaps/surface_submaps/mountains/deadspy.dmm'
 	cost = 5
-	allow_duplicates = FALSE
+
 
 /**************
  * Deep Caves *
  **************/
 
-/datum/map_template/surface/mountains/deep/lost_explorer
-	name = "Lost Explorer, Deep"
-	desc = "The remains of an explorer who rotted away ages ago, and their equipment. Again."
-	mappath = 'maps/submaps/surface_submaps/mountains/lost_explorer.dmm'
-	cost = 5
-	allow_duplicates = FALSE //Citadel change; A million of these spawning instead of interesting stuff in the deep part sucks.
+///datum/map_template/surface/mountains/deep/lost_explorer
+//	name = "Lost Explorer, Deep"
+//	desc = "The remains of an explorer who rotted away ages ago, and their equipment. Again."
+//	mappath = 'maps/submaps/surface_submaps/mountains/lost_explorer.dmm'
+//	cost = 1
+//	allow_duplicates = FALSE //Citadel change; A million of these spawning instead of interesting stuff in the deep part sucks.
+//Cit change; Removal, with 3x high activity changes, there will already be quite a few scattered on the lower half, no need to waste space where space is needed.
 
 /datum/map_template/surface/mountains/deep/crashed_ufo
 	name = "Crashed UFO"
 	desc = "A (formerly) flying saucer that is now embedded into the mountain, yet it still seems to be running..."
 	mappath = 'maps/submaps/surface_submaps/mountains/crashed_ufo.dmm'
-	cost = 40
+	cost = 15
 	discard_prob = 50
 
 /datum/map_template/surface/mountains/deep/Scave1
 	name = "Spider Cave 1"
 	desc = "A minning tunnel home to an aggressive collection of spiders."
 	mappath = 'maps/submaps/surface_submaps/mountains/Scave1.dmm'
-	cost = 30
+	cost = 6
 
 /datum/map_template/surface/mountains/deep/CaveTrench
 	name = "Cave River"
 	desc = "A strange underground river."
 	mappath = 'maps/submaps/surface_submaps/mountains/CaveTrench.dmm'
-	cost = 30
+	cost = 6
 
 /datum/map_template/surface/mountains/deep/Cavelake
 	name = "Cave Lake"
 	desc = "A large underground lake."
 	mappath = 'maps/submaps/surface_submaps/mountains/Cavelake.dmm'
-//too big for anything less than 30, and getting it spawned instead of something thats not just open space kinda sucks.
+	cost = 6
 
 //Citadel change
 //Vaults 1-3 kept in the normal area, since they're basically just a box and two xenos.
@@ -245,44 +244,42 @@ datum/map_template/surface/mountains/normal/SwordCave
 	//name = "Mine Vault 1"
 	//desc = "A small vault with potential loot."
 	//mappath = 'maps/submaps/surface_submaps/mountains/vault1.dmm'
-	//cost = 5
+	//cost = 3
 	//allow_duplicates = TRUE
 
 //datum/map_template/surface/mountains/deep/vault2
 	//name = "Mine Vault 2"
 	//desc = "A small vault with potential loot."
 	//mappath = 'maps/submaps/surface_submaps/mountains/vault2.dmm'
-	//cost = 5
+	//cost = 3
 	//low_duplicates = TRUE
 
 //datum/map_template/surface/mountains/deep/vault3
 	//name = "Mine Vault 3"
 	//desc = "A small vault with potential loot. Also a horrible suprise."
 	//mappath = 'maps/submaps/surface_submaps/mountains/vault3.dmm'
-	//cost = 15
+	//cost = 5
 
 /datum/map_template/surface/mountains/deep/vault4
 	name = "Mine Vault 4"
 	desc = "A small xeno vault with potential loot. Also horrible suprises."
 	mappath = 'maps/submaps/surface_submaps/mountains/vault4.dmm'
-	cost = 10
-	allow_duplicates = FALSE
+	cost = 6
 
 /datum/map_template/surface/mountains/deep/vault5
 	name = "Mine Vault 5"
 	desc = "A small xeno vault with potential loot. Also major horrible suprises."
 	mappath = 'maps/submaps/surface_submaps/mountains/vault5.dmm'
-	cost = 10
-	allow_duplicates = FALSE
+	cost = 8
 
 /datum/map_template/surface/mountains/deep/BlastMine1
 	name = "Blast Mine 1"
 	desc = "An abandoned blast mining site, seems that local wildlife has moved in."
 	mappath = 'maps/submaps/surface_submaps/mountains/BlastMine1.dmm'
-	cost = 20
+	cost = 6
 
 /datum/map_template/surface/mountains/deep/cultmine
 	name = "Cult Mine"
 	desc = "A mining operation that found more than it bargained for."
 	mappath = 'maps/submaps/surface_submaps/mountains/cultmine.dmm'
-	cost = 35
+	cost = 10

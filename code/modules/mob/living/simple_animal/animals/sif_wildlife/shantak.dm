@@ -10,8 +10,8 @@
 
 	faction = "shantak"
 
-	maxHealth = 200 //cit change, buffed from 75
-	health = 200 //cit change, buffed from 75
+	maxHealth = 75
+	health = 75
 	speed = 1
 	move_to_delay = 1
 

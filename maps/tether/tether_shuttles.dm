@@ -175,7 +175,7 @@
 	shuttle_tag = "Excursion Shuttle"
 	req_access = list()
 	req_one_access = list(access_heads,access_explorer,access_pilot)
-	var/wait_time = 20 MINUTES
+	var/wait_time = 45 MINUTES
 
 /obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
 	if(world.time < wait_time)
