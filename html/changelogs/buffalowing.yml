@@ -34,4 +34,5 @@ delete-after: True
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
   - bugfix: "Fixed an issue that prevented Terminus from being spoken."
-
+  - bugfix: "Fixed an issue that caused silicate to make windows entirely transparent."
+  - bugfix: "Fixed an issue that caused the entire volume of the silicate container to be consumed on use."
