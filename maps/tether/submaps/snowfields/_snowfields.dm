@@ -156,6 +156,7 @@
 	name = "\improper Away Mission - Virgo 6 snowfields far (UE)"
 	icon_state = "unexplored_deep"
 
+
 // -- Turfs -- //
 
 //Atmosphere properties
