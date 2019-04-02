@@ -25,39 +25,41 @@
 	name = "V2 - Black Shuttle Down"
 	desc = "You REALLY shouldn't be near this."
 	mappath = 'Blackshuttledown.dmm'
-	cost = 30
+	cost = 35
 	allow_duplicates = FALSE
 
 /datum/map_template/virgo2/Boombase
 	name = "V2 - Boombase"
 	desc = "What happens when you don't follow SOP."
 	mappath = 'Boombase.dmm'
-	cost = 5
+	cost = 15
+	allow_duplicates = FALSE
 
 /datum/map_template/virgo2/CaveS
 	name = "V2 - CaveS"
 	desc = "Chitter chitter!"
 	mappath = 'CaveS.dmm'
-	cost = 20
+	cost = 25
 	allow_duplicates = FALSE
 
 /datum/map_template/virgo2/DecoupledEngine
 	name = "V2 - Decoupled Engine"
 	desc = "A damaged fission engine jettisoned from a starship long ago."
 	mappath = 'DecoupledEngine.dmm'
-	cost = 15
+	cost = 20
 
 /datum/map_template/virgo2/GovPatrol
 	name = "V2 - Government Patrol"
 	desc = "A long lost SifGuard ground survey patrol. Now they have you guys!"
 	mappath = 'GovPatrol.dmm'
-	cost = 5
+	cost = 10
 
 /datum/map_template/virgo2/Lab1
 	name = "V2 - Lab1"
 	desc = "An isolated small robotics lab."
 	mappath = 'Lab1.dmm'
-	cost = 5
+	cost = 15
+	allow_duplicates = FALSE
 
 /datum/map_template/virgo2/Mcamp1
 	name = "V2 - Military Camp 1"
@@ -75,7 +77,7 @@
 	name = "V2 - Mudpit"
 	desc = "What happens when someone is a bit too careless with gas.."
 	mappath = 'Mudpit.dmm'
-	cost = 15
+	cost = 10
 
 /datum/map_template/virgo2/Rockybase
 	name = "V2 - Rocky Base"
@@ -89,15 +91,16 @@
 	desc = "A small shack in the middle of nowhere, Your halloween murder happens here"
 	mappath = 'Shack1.dmm'
 	cost = 5
+	allow_duplicates = FALSE
 
 /datum/map_template/virgo2/Smol1
 	name = "V2 - Smol1"
 	desc = "A tiny grove of trees, The Nemesis of thicc"
 	mappath = 'Smol1.dmm'
-	cost = 5
+	cost = 10
 
 /datum/map_template/virgo2/Snowrock1
 	name = "V2 - Snowrock1"
 	desc = "A rocky snow covered area"
 	mappath = 'Snowrock1.dmm'
-	cost = 5
+	cost = 10

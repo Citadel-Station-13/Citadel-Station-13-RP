@@ -10,12 +10,12 @@
 
 	faction = "savik"
 
-	maxHealth = 125
-	health = 125
+	maxHealth = 150 //cit change, buffed from 125
+	health = 150 //cit change, buffed from 125
 	speed = 2
 	move_to_delay = 2
 
-	melee_damage_lower = 15
+	melee_damage_lower = 20 //cit change, buffed from 15
 	melee_damage_upper = 35
 	attack_armor_pen = 15
 	attack_sharp = 1
@@ -26,7 +26,7 @@
 
 	speak_chance = 5
 	speak = list("Hruuugh!","Hrunnph")
-	emote_see = list("paws the ground","shakes its mane","stomps")
+	emote_see = list("scratches at the ground","shakes its mane","stomps")
 	emote_hear = list("snuffles")
 
 /mob/living/simple_animal/hostile/savik/handle_stance(var/new_stance)
