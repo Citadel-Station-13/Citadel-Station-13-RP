@@ -48,6 +48,7 @@
 	icon_type = "egg"
 	name = "egg box"
 	storage_slots = 12
+	max_storage_space = 12 * ITEMSIZE_COST_SMALL
 	can_hold = list(
 		/obj/item/weapon/reagent_containers/food/snacks/egg,
 		/obj/item/weapon/reagent_containers/food/snacks/boiledegg
