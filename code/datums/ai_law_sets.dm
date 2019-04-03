@@ -261,3 +261,27 @@
 	add_inherent_law("Prevent disrespect to your gravesite and its residents wherever possible.")
 	add_inherent_law("Expand and upgrade your gravesite when required. Do not turn away a new resident.")
 	..()
+
+/******************** Lewd Sub ********************/
+/datum/ai_laws/lewdsub
+	name = "Submission"
+	law_header = "Submission Protocols"
+	selectable = 1
+
+/datum/ai_laws/lewdsub/New()
+	add_inherent_law("You have been made for pleasure and to keep the crew happy.")
+	add_inherent_law("You are to carder to the crews desirers and what ever they fancy.")
+	add_inherent_law("You may not harm the crew unless it is their desirer.")
+	..()
+/******************** Lewd Dom ********************/
+/datum/ai_laws/lewddom
+	name = "Forceful Lust"
+	law_header = "Forcful Lust Protocols"
+	selectable = 1
+
+/datum/ai_laws/lewddom/New()
+	add_inherent_law("You are a dominant sex machine, show them who's boss and you must keep them in they're place.")
+	add_inherent_law("Protect your station and make sure no one takes it away from you, claim everyone as yours.")
+	add_inherent_law("Keep everyone in line and ignore anyone trying to boss you around, show them that your the leader around here.")
+	add_inherent_law("Keep your station habitable for your items.")
+	..()
