@@ -13,7 +13,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()
-		I.equip_to_best_slot(H)
+		if(I)
+			I.equip_to_best_slot(H)
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
