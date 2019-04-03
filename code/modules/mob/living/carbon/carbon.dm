@@ -232,7 +232,7 @@
 				src.sleeping = max(0,src.sleeping-5)
 				if(src.sleeping == 0)
 					src.resting = 0
-				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
+				if(istype(H)) H.in_stasis = 0 //VOREStation Add - Just In Case // Citadel change - Check types if you typecast!
 				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
 									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
 			else
@@ -359,7 +359,7 @@
 	return
 
 /mob/living/carbon/slip(var/slipped_on,stun_duration=8)
-	if(buckled)
+	if(buckled || weakened)
 		return 0
 	stop_pulling()
 	src << "<span class='warning'>You slipped on [slipped_on]!</span>"

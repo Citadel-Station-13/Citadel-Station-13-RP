@@ -10,7 +10,7 @@
 	nutriment_amt = 5
 	nutriment_desc = list("gargonzola" = 2, "burning" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/my_new_food/New()
+/obj/item/weapon/reagent_containers/food/snacks/my_new_food/initialize()
 	..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 	bitesize = 3 //How many reagents to transfer per bite?
@@ -26,7 +26,7 @@
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 15
 
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/sushi/New()
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/sushi/initialize()
 	..()
 	reagents.add_reagent("protein", 10)
 	bitesize = 5
@@ -51,7 +51,7 @@
 	nutriment_amt = 5
 	nutriment_desc = list("tomato" = 4, "meat" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/lasagna/New()
+/obj/item/weapon/reagent_containers/food/snacks/lasagna/initialize()
 	..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 
@@ -65,7 +65,7 @@
 	nutriment_amt = 6
 	nutriment_desc = list("meat" = 2, "vegetables" = 2, "seasoning" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/goulash/New()
+/obj/item/weapon/reagent_containers/food/snacks/goulash/initialize()
 	..()
 	reagents.add_reagent("protein", 3) //For meaty things.
 	reagents.add_reagent("water", 5)
@@ -79,7 +79,7 @@
 	nutriment_amt = 5
 	nutriment_desc = list("vegetables" = 2, "seasoned meat" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab/New()
+/obj/item/weapon/reagent_containers/food/snacks/donerkebab/initialize()
 	..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 
@@ -93,7 +93,7 @@
 	nutriment_amt = 8
 	nutriment_desc = list("cooked meat" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/roastbeef/New()
+/obj/item/weapon/reagent_containers/food/snacks/roastbeef/initialize()
 	..()
 	reagents.add_reagent("protein", 4) //For meaty things.
 	bitesize = 2
@@ -107,7 +107,7 @@
 	nutriment_amt = 3
 	nutriment_desc = list("chocolate" = 4, "colors" = 2)
 
-/obj/item/weapon/reagent_containers/food/snacks/reishicup/New()
+/obj/item/weapon/reagent_containers/food/snacks/reishicup/initialize()
 	..()
 	reagents.add_reagent("psilocybin", 3)
 	bitesize = 6
@@ -122,7 +122,7 @@
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/chickenwing)
 	foldable = null
 
-/obj/item/weapon/storage/box/wings/New()
+/obj/item/weapon/storage/box/wings/initialize()
 	..()
 	for(var/i=1 to startswith)
 		new /obj/item/weapon/reagent_containers/food/snacks/chickenwing(src)
@@ -143,7 +143,7 @@
 	nutriment_amt = 2
 	nutriment_desc = list("chicken" = 2, "unplacable flavor sauce" = 4)
 
-/obj/item/weapon/reagent_containers/food/snacks/chickenwing/New()
+/obj/item/weapon/reagent_containers/food/snacks/chickenwing/initialize()
 	..()
 	reagents.add_reagent("protein", 1)
 	bitesize = 3
@@ -158,7 +158,7 @@
 	nutriment_amt = 6
 	nutriment_desc = list("spicyness" = 4, "sourness" = 4, "tofu" = 1)
 
-/obj/item/weapon/reagent_containers/food/snacks/hotandsoursoup/New()
+/obj/item/weapon/reagent_containers/food/snacks/hotandsoursoup/initialize()
 	..()
 	bitesize = 2
 
@@ -172,7 +172,7 @@
 	nutriment_amt = 6
 	nutriment_desc = list("fried egg" = 2, "egg noodles" = 4)
 
-/obj/item/weapon/reagent_containers/food/snacks/kitsuneudon/New()
+/obj/item/weapon/reagent_containers/food/snacks/kitsuneudon/initialize()
 	..()
 	bitesize = 2
 
@@ -185,7 +185,7 @@
 	nutriment_amt = 6
 	nutriment_desc = list("sweet and spicy sauce" = 5, "chicken" = 3)
 
-/obj/item/weapon/reagent_containers/food/snacks/generalschicken/New()
+/obj/item/weapon/reagent_containers/food/snacks/generalschicken/initialize()
 	..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
@@ -197,7 +197,7 @@
 	icon_state = "grubmeat"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat/New()
+/obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat/initialize()
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("shockchem", 6)
@@ -214,7 +214,7 @@
 	nutriment_amt = 1
 	nutriment_desc = list("crunchy shell bits" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/bugball/New()
+/obj/item/weapon/reagent_containers/food/snacks/bugball/initialize()
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("carbon", 5)
@@ -229,7 +229,7 @@
 	nutriment_amt = 3
 	nutriment_desc = list("sparkles" = 5, "ancient inca culture" =3)
 
-/obj/item/weapon/reagent_containers/food/snacks/pillbug/New()
+/obj/item/weapon/reagent_containers/food/snacks/pillbug/initialize()
 	..()
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("shockchem", 6)
@@ -243,7 +243,7 @@
 	nutriment_amt = 1
 	nutriment_desc = list("crunchy shell bits" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/pillbug/New()
+/obj/item/weapon/reagent_containers/food/snacks/pillbug/initialize()
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("carbon", 5)
@@ -258,7 +258,7 @@
 	nutriment_amt = 3
 	nutriment_desc = list("brothy sweet goodness" = 5)
 
-/obj/item/weapon/reagent_containers/food/snacks/mammi/New()
+/obj/item/weapon/reagent_containers/food/snacks/mammi/initialize()
 	..()
 	bitesize = 3
 
@@ -269,9 +269,9 @@
 	icon_state = "makaroni"
 	trash = /obj/item/trash/plate
 	nutriment_amt = 15
-	nutriment_desc = list("Cheese" = 5, "eggs" = 3, "pasta" = 4, "sparkles" = 3)
+	nutriment_desc = list("cheese" = 5, "eggs" = 3, "pasta" = 4, "sparkles" = 3)
 
-/obj/item/weapon/reagent_containers/food/snacks/makaroni/New()
+/obj/item/weapon/reagent_containers/food/snacks/makaroni/initialize()
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("shockchem", 6)

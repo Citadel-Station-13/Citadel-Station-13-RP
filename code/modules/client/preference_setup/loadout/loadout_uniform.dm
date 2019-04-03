@@ -463,3 +463,93 @@
 /datum/gear/uniform/circuitry
 	display_name = "jumpsuit, circuitry (empty)"
 	path = /obj/item/clothing/under/circuitry
+// NEW UNIFORMS BEGIN HERE
+/datum/gear/uniform/sifguard
+	display_name = "uniform, crew"
+	path = /obj/item/clothing/under/utility/sifguard
+
+/datum/gear/uniform/sifguard/medical
+	display_name = "uniform, crew (medical)"
+	path = /obj/item/clothing/under/utility/sifguard/medical
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
+
+/datum/gear/uniform/sifguard/engineering
+	display_name = "uniform, crew (engineering)"
+	path = /obj/item/clothing/under/utility/sifguard/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+
+/datum/gear/uniform/sifguard/supply
+	display_name = "uniform, crew (supply)"
+	path = /obj/item/clothing/under/utility/sifguard/supply
+	allowed_roles = list("Quartermaster","Cargo Technician","Shaft Miner")
+
+/datum/gear/uniform/sifguard/security
+	display_name = "uniform, crew (security)"
+	path = /obj/item/clothing/under/utility/sifguard/security
+	cost = 2
+	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
+
+/datum/gear/uniform/sifguard/command
+	display_name = "uniform, crew (command)"
+	path = /obj/item/clothing/under/utility/sifguard/command
+	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+
+/datum/gear/uniform/fleet/medical
+	display_name = "uniform, coveralls (medical)"
+	path = /obj/item/clothing/under/utility/fleet/medical
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
+
+/datum/gear/uniform/fleet/engineering
+	display_name = "uniform, coveralls (engineering)"
+	path = /obj/item/clothing/under/utility/fleet/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+
+/datum/gear/uniform/fleet/supply
+	display_name = "uniform, coveralls (supply)"
+	path = /obj/item/clothing/under/utility/fleet/supply
+	allowed_roles = list("Quartermaster","Cargo Technician","Shaft Miner")
+
+/datum/gear/uniform/fleet/security
+	display_name = "uniform, coveralls (security)"
+	path = /obj/item/clothing/under/utility/fleet/security
+	cost = 2
+	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
+
+/datum/gear/uniform/fleet/command
+	display_name = "uniform, coveralls (command)"
+	path = /obj/item/clothing/under/utility/fleet/command
+	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+
+/datum/gear/uniform/marine/medical
+	display_name = "uniform, fatigues (medical)"
+	path = /obj/item/clothing/under/utility/marine/medical
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
+
+/datum/gear/uniform/marine/engineering
+	display_name = "uniform, fatigues (engineering)"
+	path = /obj/item/clothing/under/utility/marine/engineering
+	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+
+/datum/gear/uniform/marine/supply
+	display_name = "uniform, fatigues (supply)"
+	path = /obj/item/clothing/under/utility/marine/supply
+	allowed_roles = list("Quartermaster","Cargo Technician","Shaft Miner")
+
+/datum/gear/uniform/marine/security
+	display_name = "uniform, fatigues (security)"
+	path = /obj/item/clothing/under/utility/marine/security
+	cost = 2
+	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
+
+/datum/gear/uniform/marine/command
+	display_name = "uniform, fatigues (command)"
+	path = /obj/item/clothing/under/utility/marine/command
+	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+
+/datum/gear/uniform/marine/green
+	display_name = "uniform, fatigues (green)"
+	path = /obj/item/clothing/under/utility/marine/green
+
+/datum/gear/uniform/marine/tan
+	display_name = "uniform, fatigues (tan)"
+	path = /obj/item/clothing/under/utility/marine/tan

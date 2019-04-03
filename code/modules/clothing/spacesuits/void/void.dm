@@ -63,6 +63,8 @@
 	var/obj/item/weapon/tank/tank = null              // Deployable tank, if any.
 	var/obj/item/device/suit_cooling_unit/cooler = null// Cooling unit, for FBPs.  Cannot be installed alongside a tank.
 
+	action_button_name = "Toggle Helmet"
+
 /obj/item/clothing/suit/space/void/examine(user)
 	..(user)
 	var/list/part_list = new
@@ -167,6 +169,7 @@
 
 	if(H.head == helmet)
 		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
+		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
 		helmet.canremove = 1
 		H.drop_from_inventory(helmet)
 		helmet.forceMove(src)
@@ -178,6 +181,40 @@
 			helmet.pickup(H)
 			helmet.canremove = 0
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
+			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+	helmet.update_light(H)
+// below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me
+/obj/item/clothing/suit/space/void/attack_self(mob/user)
+	if(!istype(src.loc,/mob/living)) return
+
+	if(!helmet)
+		to_chat(usr, "There is no helmet installed.")
+		return
+
+	var/mob/living/carbon/human/H = usr
+
+	if(!istype(H))
+		return
+	if(H.stat)
+		return
+	if(H.wear_suit != src)
+		return
+
+	if(H.head == helmet)
+		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
+		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+		helmet.canremove = 1
+		H.drop_from_inventory(helmet)
+		helmet.forceMove(src)
+	else
+		if(H.head)
+			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>")
+			return
+		if(H.equip_to_slot_if_possible(helmet, slot_head))
+			helmet.pickup(H)
+			helmet.canremove = 0
+			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
+			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
 
 /obj/item/clothing/suit/space/void/verb/eject_tank()
@@ -216,7 +253,7 @@
 	if(istype(W,/obj/item/clothing/accessory) || istype(W, /obj/item/weapon/hand_labeler))
 		return ..()
 
-	if(istype(src.loc,/mob/living))
+	if(user.get_inventory_slot(src) == slot_wear_suit)
 		to_chat(user, "<span class='warning'>You cannot modify \the [src] while it is being worn.</span>")
 		return
 

@@ -98,6 +98,18 @@
 				name = "Sugar"
 				desc = "Tastey space sugar!"
 				center_of_mass = list("x"=16, "y"=6)
+			if("spacespice") //BEGIN CITADEL CHANGE - AURORA KITCHEN PORT
+				name = "bottle of space spice"
+				desc = "An exotic blend of spices for cooking. Definitely not worms."
+				icon = 'icons/obj/food.dmi'
+				icon_state = "spacespicebottle"
+				center_of_mass = list("x"=16, "y"=6)
+			if("barbecue")
+				name = "barbecue sauce"
+				desc = "Barbecue sauce, it's labeled 'sweet and spicy'."
+				icon = 'icons/obj/food.dmi'
+				icon_state = "barbecue"
+				center_of_mass = list("x"=16, "y"=6) // END CITADEL CHANGE - AURORA KITCHEN PORT
 			else
 				name = "Misc Condiment Bottle"
 				if (reagents.reagent_list.len==1)
@@ -118,11 +130,11 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 
-/obj/item/weapon/reagent_containers/food/condiment/enzyme/New()
+/obj/item/weapon/reagent_containers/food/condiment/enzyme/initialize()
 	..()
 	reagents.add_reagent("enzyme", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/sugar/New()
+/obj/item/weapon/reagent_containers/food/condiment/sugar/initialize()
 	..()
 	reagents.add_reagent("sugar", 50)
 
@@ -140,7 +152,7 @@
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 
-/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/New()
+/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker/initialize()
 	..()
 	reagents.add_reagent("sodiumchloride", 20)
 
@@ -149,7 +161,7 @@
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
 
-/obj/item/weapon/reagent_containers/food/condiment/small/peppermill/New()
+/obj/item/weapon/reagent_containers/food/condiment/small/peppermill/initialize()
 	..()
 	reagents.add_reagent("blackpepper", 20)
 
@@ -158,7 +170,7 @@
 	desc = "Sweetness in a bottle"
 	icon_state = "sugarsmall"
 
-/obj/item/weapon/reagent_containers/food/condiment/small/sugar/New()
+/obj/item/weapon/reagent_containers/food/condiment/small/sugar/initialize()
 	..()
 	reagents.add_reagent("sugar", 20)
 
@@ -167,12 +179,29 @@
 	desc = "A big bag of flour. Good for baking!"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "flour"
+	volume = 220
 
 /obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
 	return
 
-/obj/item/weapon/reagent_containers/food/condiment/flour/New()
+/obj/item/weapon/reagent_containers/food/condiment/flour/initialize()
 	..()
-	reagents.add_reagent("flour", 30)
+	reagents.add_reagent("flour", 200)
 	src.pixel_x = rand(-10.0, 10)
 	src.pixel_y = rand(-10.0, 10)
+
+/obj/item/weapon/reagent_containers/food/condiment/spacespice
+	name = "space spices"
+	desc = "An exotic blend of spices for cooking. Definitely not worms."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "spacespicebottle"
+	possible_transfer_amounts = list(1,40) //for clown turning the lid off
+	amount_per_transfer_from_this = 1
+	volume = 40
+
+/obj/item/weapon/reagent_containers/food/condiment/spacespice/on_reagent_change()
+	return
+
+/obj/item/weapon/reagent_containers/food/condiment/spacespice/initialize()
+	..()
+	reagents.add_reagent("spacespice", 40)

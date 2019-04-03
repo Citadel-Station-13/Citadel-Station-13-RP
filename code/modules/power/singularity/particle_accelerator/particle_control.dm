@@ -127,7 +127,7 @@
 	if(assembled)
 		strength--
 		if(strength < 0)
-			strength = 0
+			strength = -1
 		else
 			message_admins("PA Control Computer decreased to [strength] by [key_name(usr, usr.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[usr]'>?</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 			log_game("PACCEL([x],[y],[z]) [key_name(usr)] decreased to [strength]")

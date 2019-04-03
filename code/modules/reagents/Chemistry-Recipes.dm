@@ -1254,7 +1254,7 @@
 	name = "Patron"
 	id = "patron"
 	result = "patron"
-	required_reagents = list("tequilla" = 10, "silver" = 1)
+	required_reagents = list("tequila" = 10, "silver" = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/bilk
@@ -1441,14 +1441,14 @@
 	name = "Brave Bull"
 	id = "bravebull"
 	result = "bravebull"
-	required_reagents = list("tequilla" = 2, "kahlua" = 1)
+	required_reagents = list("tequila" = 2, "kahlua" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/tequilla_sunrise
-	name = "Tequilla Sunrise"
-	id = "tequillasunrise"
-	result = "tequillasunrise"
-	required_reagents = list("tequilla" = 2, "orangejuice" = 1)
+/datum/chemical_reaction/drinks/tequila_sunrise
+	name = "tequila Sunrise"
+	id = "tequilasunrise"
+	result = "tequilasunrise"
+	required_reagents = list("tequila" = 2, "orangejuice" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/phoron_special
@@ -1518,21 +1518,21 @@
 	name = "Margarita"
 	id = "margarita"
 	result = "margarita"
-	required_reagents = list("tequilla" = 2, "limejuice" = 1)
+	required_reagents = list("tequila" = 2, "limejuice" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/longislandicedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequilla" = 1, "cubalibre" = 3)
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/icedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequilla" = 1, "cubalibre" = 3)
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/threemileisland
@@ -1848,7 +1848,7 @@
 	name = "Roy Rogers"
 	id = "roy_rogers"
 	result = "roy_rogers"
-	required_reagents = list("gingerale" = 4, "lemon_lime" = 2, "grenadine" = 1)
+	required_reagents = list("shirley_temple" = 5, "lemon_lime" = 2)
 	result_amount = 7
 
 /datum/chemical_reaction/drinks/collinsmix
@@ -1946,7 +1946,7 @@
 	name = "Erebus Moonrise"
 	id = "erebusmoonrise"
 	result = "erebusmoonrise"
-	required_reagents = list("whiskey" = 1, "vodka" = 1, "tequilla" = 1)
+	required_reagents = list("whiskey" = 1, "vodka" = 1, "tequila" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/balloon
@@ -1995,7 +1995,7 @@
 	name = "Binman Bliss"
 	id = "binmanbliss"
 	result = "binmanbliss"
-	required_reagents = list("sake" = 1, "tequilla" = 1)
+	required_reagents = list("sake" = 1, "tequila" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/chrysanthemum
@@ -2074,7 +2074,7 @@
 	name = "Screaming Viking"
 	id = "screamingviking"
 	result = "screamingviking"
-	required_reagents = list("vodka" = 1, "vermouth" = 1, "limejuice" = 1, "rum" = 1, "gin" = 1, "tonic" = 1)
+	required_reagents = list("martini" = 2, "vodkatonic" = 2, "limejuice" = 1, "rum" = 1)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/vilelemon
@@ -2186,7 +2186,7 @@
 	name = "Paloma"
 	id = "paloma"
 	result = "paloma"
-	required_reagents = list("orangejuice" = 1, "sodawater" = 1, "tequilla" = 1)
+	required_reagents = list("orangejuice" = 1, "sodawater" = 1, "tequila" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/mojito
@@ -2332,3 +2332,45 @@
 	result = "biomass"
 	required_reagents = list("protein" = 1, "sugar" = 1, "phoron" = 1)
 	result_amount = 6	// Roughly 120u per phoron sheet //VOREStation Edit
+
+/*
+====================
+	Aurora Food
+====================
+*/
+/datum/chemical_reaction/food/dough
+	inhibitors = list("water" = 1, "beer" = 1) //To prevent it messing with batter recipes
+
+/datum/chemical_reaction/coating/batter
+	name = "Batter"
+	id = "batter"
+	result = "batter"
+	required_reagents = list("egg" = 3, "flour" = 10, "water" = 5, "sodiumchloride" = 2)
+	result_amount = 20
+
+/datum/chemical_reaction/coating/beerbatter
+	name = "Beer Batter"
+	id = "beerbatter"
+	result = "beerbatter"
+	required_reagents = list("egg" = 3, "flour" = 10, "beer" = 5, "sodiumchloride" = 2)
+	result_amount = 20
+
+/datum/chemical_reaction/food/browniemix
+	name = "Brownie Mix"
+	id = "browniemix"
+	result = "browniemix"
+	required_reagents = list("flour" = 5, "coco" = 5, "sugar" = 5)
+	result_amount = 15
+
+/datum/chemical_reaction/food/butter
+	name = "Butter"
+	id = "butter"
+	result = null
+	required_reagents = list("cream" = 20, "sodiumchloride" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/food/butter/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/weapon/reagent_containers/food/snacks/spreads/butter(location)
+	return

@@ -31,3 +31,6 @@
 	set src in usr
 
 	adjust_mask(usr)
+
+/obj/item/clothing/mask/gas/half/AltClick()
+	adjust_mask(usr)

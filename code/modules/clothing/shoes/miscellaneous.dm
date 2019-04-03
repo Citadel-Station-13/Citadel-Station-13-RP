@@ -49,6 +49,7 @@
 	name = "magic shoes"
 	icon_state = "black"
 	body_parts_covered = FEET
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_ARCANE = 5)
 
 /obj/item/clothing/shoes/clown_shoes
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
@@ -76,6 +77,7 @@
 	item_state_slots = list(slot_r_hand_str = "cult", slot_l_hand_str = "cult")
 	force = 2
 	siemens_coefficient = 0.7
+	origin_tech = list(TECH_ARCANE = 2)
 
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE

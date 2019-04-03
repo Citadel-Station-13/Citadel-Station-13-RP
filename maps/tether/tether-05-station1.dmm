@@ -94,20 +94,19 @@
 "aaq" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/excursion/tether)
-"aas" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+006;
-	input_attempt = 1;
-	input_level = 100000;
-	output_level = 200000;
-	RCon_tag = "Engine - Core"
-	},
+"aar" = (
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/power/smes/buildable/engine,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"aas" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
 "aat" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/explored/upper_level)
@@ -158,6 +157,19 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_smes)
+"aaB" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/storage/photo_album{
+	pixel_y = -10
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/weapon/reagent_containers/food/drinks/flask{
+	pixel_x = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/captain)
 "aaC" = (
 /obj/machinery/power/grid_checker,
 /obj/structure/cable{
@@ -174,14 +186,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "aaG" = (
-/obj/machinery/power/smes/buildable{
-	charge = 2e+007;
-	cur_coils = 4;
-	input_attempt = 1;
-	input_level = 500000;
-	output_level = 1e+006;
-	RCon_tag = "Power - Main"
-	},
+/obj/machinery/power/smes/buildable/main,
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
@@ -2561,11 +2566,6 @@
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
-"afV" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/tether)
 "afX" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2677,6 +2677,7 @@
 "agE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/hallway/station/atrium)
 "agF" = (
@@ -7487,9 +7488,19 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "avs" = (
-/obj/structure/table/reinforced,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/weapon/tank/jetpack/carbondioxide,
+/obj/machinery/door/window/southleft{
+	name = "Jetpack Storage";
+	req_access = newlist();
+	req_one_access = list(11,24)
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "avw" = (
@@ -9507,16 +9518,15 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/southleft{
-	name = "Jetpack Storage";
-	req_access = newlist();
-	req_one_access = list(11,24)
-	},
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/weapon/tank/jetpack/carbondioxide,
+/obj/item/weapon/rig/eva/equipped,
+/obj/machinery/door/window/southleft{
+	name = "EVA RIGs";
+	req_one_access = list(11,24)
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aAT" = (
@@ -9548,6 +9558,14 @@
 	pixel_y = 24;
 	req_access = list()
 	},
+/obj/item/weapon/storage/briefcase/inflatable{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/weapon/storage/briefcase/inflatable{
+	pixel_y = 3
+	},
+/obj/item/weapon/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aAV" = (
@@ -9627,33 +9645,22 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/southright{
-	name = "Jetpack Storage";
-	req_one_access = list(11,24)
-	},
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/weapon/tank/jetpack/carbondioxide,
 /obj/machinery/status_display{
 	pixel_y = 32
+	},
+/obj/item/weapon/rig/eva/equipped,
+/obj/machinery/door/window/southright{
+	name = "EVA RIGs";
+	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aBm" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/briefcase/inflatable{
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/obj/item/weapon/storage/briefcase/inflatable{
-	pixel_y = 3
-	},
-/obj/item/weapon/storage/briefcase/inflatable{
-	pixel_x = -3;
-	pixel_y = 0
-	},
 /obj/machinery/camera/network/engineering,
 /obj/machinery/firealarm{
 	dir = 2;
@@ -9661,6 +9668,8 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
+/obj/item/device/suit_cooling_unit,
+/obj/item/device/suit_cooling_unit,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aBp" = (
@@ -9689,10 +9698,17 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aBq" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/cell/high{
-	charge = 100;
-	maxcharge = 15000
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/weapon/tank/jetpack/carbondioxide,
+/obj/machinery/door/window/southright{
+	name = "Jetpack Storage";
+	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
@@ -10200,6 +10216,10 @@
 	charge = 100;
 	maxcharge = 15000
 	},
+/obj/item/weapon/cell/high{
+	charge = 100;
+	maxcharge = 15000
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "aCQ" = (
@@ -10559,6 +10579,7 @@
 /obj/item/device/flashlight/lamp/green,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/woodentable,
+/obj/item/clothing/glasses/omnihud/all,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aDR" = (
@@ -10704,13 +10725,10 @@
 /area/tether/station/dock_two)
 "aEr" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue_captain,
-/obj/item/clothing/glasses/omnihud/all,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/item/weapon/stamp/captain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEs" = (
@@ -10732,7 +10750,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/mob/living/simple_animal/fox/fluff/Renault,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aEu" = (
@@ -10740,6 +10761,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -11107,20 +11131,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
-"aFw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "aFx" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aFz" = (
@@ -11342,16 +11361,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
-"aGc" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/storage/photo_album{
-	pixel_y = -10
-	},
-/obj/item/weapon/reagent_containers/food/drinks/flask{
-	pixel_x = 8
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "aGi" = (
 /obj/structure/displaycase,
 /turf/simulated/floor/wood,
@@ -14765,6 +14774,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/station/atrium)
 "bbq" = (
@@ -16997,7 +17007,8 @@
 "bnW" = (
 /obj/machinery/computer/communications,
 /obj/machinery/keycard_auth{
-	pixel_x = -28
+	pixel_x = -28;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -17019,6 +17030,21 @@
 	},
 /obj/item/weapon/storage/secure/safe{
 	pixel_x = -28
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "captaindoor";
+	name = "Office Doors";
+	pixel_x = -28;
+	pixel_y = 23;
+	req_access = list(20)
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "cap_office";
+	name = "Security Shutters";
+	pixel_x = -28;
+	pixel_y = 12
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -18688,20 +18714,20 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/item/device/megaphone,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/device/megaphone,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bza" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/melee/chainofcommand,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/item/weapon/melee/chainofcommand,
 /obj/item/weapon/coin/phoron{
 	desc = "The face of the coin shows a portrait of the explorer who discovered the Virgo-Erigone system. The back depicts a Zodiac symbol that represents Virgo.";
 	name = "limited edition phoron coin"
@@ -18993,9 +19019,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction{
+	icon_state = "pipe-j1";
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -19205,7 +19231,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "bDX" = (
-/obj/structure/bed/chair/comfy/brown,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/light_switch{
 	dir = 2;
@@ -19213,6 +19238,7 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
+/obj/structure/closet/secure_closet/captains,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bEa" = (
@@ -19474,15 +19500,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "bFP" = (
-/obj/item/weapon/bedsheet/captain,
-/obj/structure/bed/padded,
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
 	pixel_x = -22;
 	pixel_y = 0
 	},
-/turf/simulated/floor/wood,
+/obj/structure/bed/chair/comfy/brown,
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "bFQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19496,6 +19521,17 @@
 	name = "Colony Director's Quarters";
 	req_access = list(20)
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "cd-blast";
+	name = "Colony Director Lockdown";
+	opacity = 0
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bFT" = (
@@ -19505,6 +19541,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
 	pixel_y = 0
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
@@ -19614,28 +19653,22 @@
 /turf/simulated/floor/plating,
 /area/tether/station/dock_two)
 "bGQ" = (
-/obj/machinery/light/small,
-/obj/item/device/radio/intercom{
-	dir = 2;
-	pixel_y = -24
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/captain)
 "bGW" = (
-/obj/structure/closet/secure_closet/captains,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_x = 0;
-	pixel_y = -24
+/obj/structure/disposalpipe/segment,
+/obj/structure/dogbed{
+	desc = "A bed made just for the Colony Director's fox.";
+	name = "Renault's Bed"
 	},
+/mob/living/simple_animal/fox/fluff/Renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHe" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
 /obj/item/weapon/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -19645,16 +19678,12 @@
 	icon_state = "alarm0";
 	pixel_y = -22
 	},
+/obj/item/weapon/folder/blue_captain,
+/obj/item/weapon/stamp/captain,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHg" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/button/remote/blast_door{
-	id = "cap_office";
-	name = "Security Shutters";
-	pixel_x = 0;
-	pixel_y = -24
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHi" = (
@@ -21089,13 +21118,16 @@
 "bYz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/hallway/station/docks)
 "bYC" = (
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/hallway/station/docks)
 "bYD" = (
 /obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/hallway/station/docks)
 "bYE" = (
@@ -21598,6 +21630,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"fNy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/captain)
 "gcH" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -21634,6 +21675,13 @@
 "hCe" = (
 /turf/simulated/wall/r_wall,
 /area/tether/station/pathfinder_office)
+"hFL" = (
+/obj/machinery/button/remote/blast_door{
+	id = "cd-blast";
+	name = "Colony Director Lockdown"
+	},
+/turf/simulated/wall/r_wall,
+/area/crew_quarters/captain)
 "hJg" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper_bin{
@@ -21668,6 +21716,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"jag" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "jcG" = (
 /obj/machinery/door/window/brigdoor/westleft{
 	req_access = list();
@@ -21757,6 +21812,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/station/pathfinder_office)
+"knV" = (
+/obj/machinery/newscaster{
+	layer = 3.3;
+	pixel_x = -27;
+	pixel_y = 0
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/crew_quarters/captain)
+"kSN" = (
+/obj/machinery/suit_cycler/director,
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "kZI" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -21988,6 +22058,18 @@
 /obj/random/tech_supply,
 /turf/simulated/floor,
 /area/engineering/shaft)
+"nvn" = (
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "nxL" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
@@ -22307,6 +22389,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/pathfinder_office)
+"tsg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "twv" = (
 /obj/machinery/shuttle_sensor{
 	dir = 2;
@@ -22422,6 +22510,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"uFk" = (
+/obj/item/device/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/status_display{
+	layer = 4;
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "vrH" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22527,6 +22628,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"vWQ" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/captaindouble,
+/obj/machinery/light,
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "wbr" = (
 /obj/machinery/camera/network/northern_star,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -22594,6 +22701,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"wIg" = (
+/obj/structure/table/rack,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/brigdoor/eastright{
+	name = "Colony Director's Voidsuit";
+	req_access = list(20)
+	},
+/obj/item/clothing/suit/space/void/captain,
+/obj/item/clothing/head/helmet/space/void/captain,
+/obj/item/clothing/shoes/magboots,
+/obj/item/weapon/tank/oxygen,
+/obj/item/clothing/mask/breath,
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "wLj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -22663,6 +22790,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/station/excursion_dock)
+"xHs" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/wood,
+/area/crew_quarters/captain)
 "xMk" = (
 /obj/structure/cable/green{
 	icon_state = "16-0"
@@ -28959,7 +29090,7 @@ aaa
 aaa
 aaa
 acL
-aas
+aar
 aaR
 abr
 abD
@@ -31579,9 +31710,9 @@ aCO
 aCO
 aCO
 aCO
-aac
-aac
-aac
+aCO
+aCO
+aCO
 aac
 aac
 aac
@@ -31719,11 +31850,11 @@ bzI
 aCO
 aEP
 bFP
-aGc
+aaB
+knV
+kSN
+wIg
 aCO
-aac
-aac
-aac
 aac
 aac
 aac
@@ -31860,12 +31991,12 @@ aDq
 aDN
 bBr
 aEQ
-aFw
+fNy
 bGQ
+bGQ
+aDu
+aDu
 aCO
-aac
-aac
-aac
 aac
 aac
 aac
@@ -32004,10 +32135,10 @@ aCO
 bDX
 aFx
 bGW
-aCO
-aac
-aac
-aac
+nvn
+aDu
+aDu
+hFL
 aac
 aac
 aac
@@ -32147,9 +32278,9 @@ aCO
 bFQ
 aCO
 aCO
-aac
-aac
-aac
+aDu
+aDu
+aCO
 aac
 aac
 aac
@@ -32289,16 +32420,16 @@ bEe
 bFT
 bWH
 aCO
+uFk
+vWQ
+aCO
 aac
 aac
 aac
 aac
 aac
 aac
-aac
-aac
-aac
-aac
+aaa
 aaa
 aaa
 aaa
@@ -32428,8 +32559,11 @@ byV
 aDQ
 aEr
 bEa
-aDu
+tsg
 bHe
+aCO
+aCO
+aCO
 aCO
 aac
 aac
@@ -32437,10 +32571,7 @@ aac
 aac
 aac
 aac
-aac
-aac
-aac
-aac
+aaa
 aaa
 aaa
 aaa
@@ -32570,7 +32701,7 @@ aDu
 aDR
 aEs
 aDu
-aDu
+tsg
 aGi
 aCO
 aac
@@ -32711,8 +32842,8 @@ bxE
 aDu
 aDu
 aEt
-aDu
-aDu
+xHs
+jag
 bHg
 aCO
 aGK
@@ -33666,7 +33797,7 @@ aeo
 aaq
 aaq
 aau
-afV
+aas
 avK
 avN
 aad
@@ -33808,7 +33939,7 @@ amF
 avG
 adB
 aaq
-afV
+aas
 avK
 avN
 aad
@@ -33950,7 +34081,7 @@ amF
 avG
 adB
 aaq
-afV
+aas
 avK
 auH
 aad
@@ -34802,7 +34933,7 @@ aaD
 avG
 tIi
 aaq
-afV
+aas
 avK
 auQ
 aad
@@ -34944,7 +35075,7 @@ amL
 aob
 dbI
 aaq
-afV
+aas
 avK
 qgR
 aad
@@ -35086,7 +35217,7 @@ aep
 aeu
 aev
 aau
-afV
+aas
 avK
 qgR
 aad

@@ -36,7 +36,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "flashgun"
 	item_state = "lampgreen"
-	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3)
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
@@ -257,7 +257,7 @@
 					if(processing_objects.Find(src))
 						//scan radios in the world to try and find one
 						var/cur_dist = 999
-						for(var/obj/item/device/radio/beacon/R in all_beacons)
+						for(var/obj/item/device/radio/beacon/R in GLOB.all_beacons)
 							if(R.z == src.z && R.frequency == src.frequency)
 								var/check_dist = get_dist(src,R)
 								if(check_dist < cur_dist)
@@ -317,7 +317,7 @@
 	icon_state = "ano_scanner2"
 	item_state = "lampgreen"
 	icon = 'icons/obj/xenoarchaeology.dmi'
-	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2)
+	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2, TECH_ARCANE = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT

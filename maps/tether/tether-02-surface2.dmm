@@ -8169,6 +8169,12 @@
 	dir = 10
 	},
 /obj/structure/flora/pottedplant/subterranean,
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22;
+	pixel_y = 0
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/lobby)
 "ra" = (
@@ -10700,6 +10706,12 @@
 	dir = 9
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22;
+	pixel_y = 0
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/lower/atmos_eva)
 "vp" = (
@@ -10843,6 +10855,11 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
+/obj/machinery/alarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "vA" = (
@@ -10918,6 +10935,10 @@
 /obj/effect/floor_decal/corner/purple/border/shifted{
 	icon_state = "bordercolor_shifted";
 	dir = 1
+	},
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
@@ -15945,7 +15966,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Telecomms Substation";
+	req_access = list(10,61);
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
 /area/tcomsat{
 	name = "\improper Telecomms Lobby"
 	})
@@ -16291,7 +16317,7 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Foyer";
 	req_access = list(61);
-	req_one_access = list(12)
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -18047,7 +18073,7 @@
 "IO" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -18684,6 +18710,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Sc" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/shieldgen,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/storage)
 "Sv" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable{
@@ -18858,6 +18893,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/maintenance/lower/bar)
+"VA" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/wood,
+/area/engineering/lower/breakroom)
 "VM" = (
 /obj/machinery/reagentgrinder,
 /obj/structure/table/standard{
@@ -31008,7 +31050,7 @@ qe
 qQ
 rE
 sl
-te
+Sc
 tW
 uQ
 vC
@@ -31574,7 +31616,7 @@ oL
 oK
 qh
 oK
-oK
+VA
 sl
 tg
 tY
