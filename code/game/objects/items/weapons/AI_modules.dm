@@ -417,3 +417,19 @@ AI MODULES
 	desc = "An 'Antimov' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 4)
 	laws = new/datum/ai_laws/antimov()
+
+/******************** Lewdsub ********************/
+
+/obj/item/weapon/aiModule/lewdsub
+	name = "\improper 'L.U.S.T.F.U.L' core AI module"
+	desc = "A 'Lewd-Submission' Core AI Module: 'Reconfigures the AI's core laws.'"
+	origin_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 5)
+	laws = new/datum/ai_laws/lewdsub()
+
+/******************** Lewddom ********************/
+
+/obj/item/weapon/aiModule/lewddom
+	name = "\improper 'L.E.W.D D.O.M' core AI module"
+	desc = "A 'Lewd-Domination' Core AI Module: 'Reconfigures the AI's core laws.'"
+	origin_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 7) //AI ROUGE
+	laws = new/datum/ai_laws/lewddom()
