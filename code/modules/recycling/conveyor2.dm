@@ -25,15 +25,18 @@
 	// create a conveyor
 /obj/machinery/conveyor/initialize(mapload, newdir, on = 0)
 	. = ..()
+
+
 	if(newdir)
 		set_dir(newdir)
 
-	if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
-		forwards = turn(dir, 135)
-		backwards = turn(dir, 45)
-	else
-		forwards = dir
-		backwards = turn(dir, 180)
+	spawn(5)
+		if(src.dir & (src.dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
+			forwards = turn(src.dir, 135)
+			backwards = turn(src.dir, 45)
+		else
+			forwards = src.dir
+			backwards = turn(src.dir, 180)
 
 	if(on)
 		operating = 1
@@ -46,6 +49,8 @@
 	component_parts += new /obj/item/weapon/stock_parts/motor(src)
 	component_parts += new /obj/item/stack/cable_coil(src,5)
 	RefreshParts()
+
+
 
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == 1)
@@ -113,14 +118,16 @@
 			if(operating != 0)
 				to_chat(user, "<span class='notice'>Turn the conveyor off first!</span>")
 				return
-			else if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
-				forwards = turn(dir, 135)
-				backwards = turn(dir, 45)
 			else
-				forwards = dir
-				backwards = turn(dir, 180)
+				dir = turn(dir, 45)
+				if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
+					forwards = turn(dir, 135)
+					backwards = turn(dir, 45)
+				else
+					forwards = dir
+					backwards = turn(dir, 180)
 			playsound(src.loc, I.usesound, 50, 1)
-			to_chat(user, "<span class='notice'>You adjust the gears and motors to spin in the conveyor's direction.</span>")
+			to_chat(user, "<span class='notice'>You rotate the conveyor..</span>")
 			return
 
 	user.drop_item(get_turf(src))
