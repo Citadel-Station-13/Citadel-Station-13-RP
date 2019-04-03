@@ -47,6 +47,7 @@ List of things solar grubs should be able to do:
 	min_n2 = 0
 	max_n2 = 0
 
+	var/power_drained = 0
 	var/poison_per_bite = 5 //grubs cause a shock when they bite someone
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
@@ -60,13 +61,19 @@ List of things solar grubs should be able to do:
 		visible_message("<span class='danger'>The grub releases a powerful shock!</span>")
 	..()
 
+/mob/living/simple_animal/retaliate/solargrub/proc/expand_grub()
+    visible_message("<span class='warning'>\The [src] rips apart, and a moth emerges!</span>")
+    new /mob/living/simple_animal/retaliate/solarmoth(get_turf(src))
+    qdel(src)
+
+
 /mob/living/simple_animal/retaliate/solargrub/Life()
 	. = ..()
 	if(!. || ai_inactive) return
-	
-	    if(power_drained >= 10 MEGAWATTS && prob(10))
-        expand_grub()
-        return
+
+	if(power_drained >= 14 MEGAWATTS && prob(5))
+		expand_grub()
+		return
 
 	if(stance == STANCE_IDLE)
 			//first, check for potential cables nearby to powersink
@@ -82,6 +89,7 @@ List of things solar grubs should be able to do:
 			anchored = 1
 			PN = attached.powernet
 			PN.draw_power(100000) // previous value 150000
+			power_drained = power_drained + 100000
 			var/apc_drain_rate = 750 //Going to see if grubs are better as a minimal bother. previous value : 4000
 			for(var/obj/machinery/power/terminal/T in PN.nodes)
 				if(istype(T.master, /obj/machinery/power/apc))
@@ -121,9 +129,3 @@ List of things solar grubs should be able to do:
 	if(. == 0 && !is_dead())
 		set_light(2.5, 1, COLOR_YELLOW)
 		return 1
-
-/mob/living/simple_animal/solargrub/proc/expand_grub()
-    eject_from_machine()
-    visible_message("<span class='warning'>\The [src] rips apart, and a moth emerges!</span>")
-    new /mob/living/simple_animal/retaliate/solarmoth(get_turf(src))
-    qdel(src)
