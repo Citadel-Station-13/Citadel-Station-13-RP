@@ -71,7 +71,7 @@ List of things solar grubs should be able to do:
 	. = ..()
 	if(!. || ai_inactive) return
 
-	if(power_drained >= 14 MEGAWATTS && prob(5))
+	if(power_drained >= 14 MEGAWATTS && prob(5) && moth_amount.len <= 2)
 		expand_grub()
 		return
 
