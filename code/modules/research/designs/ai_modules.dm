@@ -106,6 +106,20 @@
 	build_path = /obj/item/weapon/aiModule/tyrant
 	sort_string = "XACAD"
 
+/datum/design/aimodule/lewddom
+	name = "L.E.W.D D.O.M"
+	id = "lewddom"
+	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_ARCANE = 2) //Love is magic
+	build_path = /obj/item/weapon/aiModule/lewddom
+	sort_string = "XABAE"
+
+/datum/design/aimodule/lewdsub
+	name = "L.U.S.T.F.U.L"
+	id = "lewdsub"
+	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_ARCANE = 2) //Love is magic
+	build_path = /obj/item/weapon/aiModule/lewdsub
+	sort_string = "XABAF"
+
 // AI file, AI tool
 /datum/design/item/intellicard
 	name = "'intelliCore', AI preservation and transportation system"
