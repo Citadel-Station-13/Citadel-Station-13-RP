@@ -12,7 +12,7 @@
 	move_to_delay = 5
 
 	melee_damage_lower = 1
-	melee_damage_upper = 5
+	melee_damage_upper = 7
 
 	speak_chance = 1
 	emote_see = list("flutters")
@@ -36,15 +36,15 @@
 	minbodytemp = 0
 	heat_damage_per_tick = 0 //Even if the atmos stuff doesn't work, at least it won't take any damage.
 
-	armor = list(			
+	armor = list(
 				"melee" = 50,
 				"bullet" = 90,
-				"laser" = 100,
-				"energy" = 100,
+				"laser" = 90,
+				"energy" = 90,
 				"bomb" = 100,
 				"bio" = 100,
 				"rad" = 100)
-	
+
 	var/set_temperature = T0C + 10000	//Sets the target point of 10k degrees celsius
 	var/heating_power = 100000		//This controls the strength at which it heats the environment.
 	var/emp_heavy = 2
@@ -55,10 +55,10 @@
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
 	var/emp_chance = 20 // Beware synths
-	isEdible = 0 //You can look, but you can't lick.
-	
-	
-	
+//	isEdible = 0 //You can look, but you can't lick.
+
+
+
 /mob/living/simple_animal/retaliate/solarmoth/PunchTarget()
 	if(target_mob&& prob(emp_chance))
 		target_mob.emp_act(4) //The weakest strength of EMP
@@ -85,17 +85,17 @@
 		if(heat_transfer > 0 && env.temperature < T0C + 200)	//This should start heating the room at a moderate pace up to 200 degrees celsius.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
 			removed.add_thermal_energy(heat_transfer)
-			
+
 		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 10,000 degrees celsius. So this thing will start cooking crazy hot between the temperatures of 200C and 10,000C.
 			heating_power = 9999999999999 //FLAME ON! This will make the moth heat up the room at an incredible rate.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater. Except it's hot, so yeah.
 			removed.add_thermal_energy(heat_transfer)
-			
+
 		else
 			return
 
 		env.merge(removed)
-		
+
 var/global/list/moth_amount = list() //global moth list for the solargrub to read. Maybe want to transfer this to global variables file??
 /mob/living/simple_animal/retaliate/solarmoth/New()
 	moth_amount += src //when this thing is created, it adds itself to the global list
@@ -111,11 +111,11 @@ var/global/list/moth_amount = list() //global moth list for the solargrub to rea
 /mob/living/simple_animal/retaliate/solarmoth/death()
 	explode()
 	..()
-	
+
 /mob/living/simple_animal/retaliate/solarmoth/gib() //This baby will explode no matter what you do to it.
 	explode()
 	..()
-	
+
 
 
 /mob/living/simple_animal/retaliate/solarmoth/handle_light()
