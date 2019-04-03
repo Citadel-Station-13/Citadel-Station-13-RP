@@ -1186,6 +1186,16 @@
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
+		if(synthbattery_icon)
+			switch(nutrition)
+				if(350 to INFINITY)				synthbattery_icon.icon_state = "blank"
+				if(275 to 350)					synthbattery_icon.icon_state = "charge4"
+				if(250 to 275)					synthbattery_icon.icon_state = "blank"
+				if(175 to 250)					synthbattery_icon.icon_state = "charge3"
+				if(100 to 175)					synthbattery_icon.icon_state = "charge2"
+				if(0 to 100)					synthbattery_icon.icon_state = "charge1"
+				else
+
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
 
