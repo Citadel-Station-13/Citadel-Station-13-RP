@@ -63,6 +63,10 @@ List of things solar grubs should be able to do:
 /mob/living/simple_animal/retaliate/solargrub/Life()
 	. = ..()
 	if(!. || ai_inactive) return
+	
+	    if(power_drained >= 10 MEGAWATTS && prob(10))
+        expand_grub()
+        return
 
 	if(stance == STANCE_IDLE)
 			//first, check for potential cables nearby to powersink
@@ -117,3 +121,9 @@ List of things solar grubs should be able to do:
 	if(. == 0 && !is_dead())
 		set_light(2.5, 1, COLOR_YELLOW)
 		return 1
+
+/mob/living/simple_animal/solargrub/proc/expand_grub()
+    eject_from_machine()
+    visible_message("<span class='warning'>\The [src] rips apart, and a moth emerges!</span>")
+    new /mob/living/simple_animal/retaliate/solarmoth(get_turf(src))
+    qdel(src)
