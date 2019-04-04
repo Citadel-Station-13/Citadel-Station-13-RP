@@ -60,7 +60,7 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/chemist
 	economic_modifier = 5
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	access = list(access_medical, access_medical_equip, access_chemistry, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
 	alt_titles = list("Pharmacist")
 
@@ -99,7 +99,7 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/psychiatrist
-	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
+	access = list(access_medical, access_medical_equip, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
 	alt_titles = list("Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist,
@@ -117,7 +117,7 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
 	economic_modifier = 4
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	alt_titles = list("Emergency Medical Technician" = /decl/hierarchy/outfit/job/medical/paramedic/emt)
