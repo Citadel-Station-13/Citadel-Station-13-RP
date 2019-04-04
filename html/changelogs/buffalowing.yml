@@ -36,3 +36,7 @@ changes:
   - bugfix: "Fixed an issue that prevented Terminus from being spoken."
   - bugfix: "Fixed an issue that caused silicate to make windows entirely transparent."
   - bugfix: "Synthetics now have a power cell meter instead of hunger icons."
+  - tweak: "Sythetics can now walk in space for a brief amount of time without dying immediately."
+  - tweak: "Synthetics are no longer affected by pressure. Because they are synthetic."
+  - rscadd: "Synthetics are now vulnerable to EMP blasts, and will react similarly to regular silicons."
+  - bugfix: "Fixed an issue that caused Synthetic eyes to be damaged by phoron."

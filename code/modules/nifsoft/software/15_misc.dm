@@ -40,7 +40,7 @@
 				deactivate()
 				return FALSE
 
-/datum/nifsoft/pressure
+/*/datum/nifsoft/pressure
 	name = "Pressure Seals"
 	desc = "Creates pressure seals around important synthetic components to protect them from vacuum. Almost impossible on organics."
 	list_pos = NIF_PRESSURE
@@ -48,7 +48,7 @@
 	a_drain = 0.5
 	wear = 3
 	applies_to = NIF_SYNTHETIC
-	other_flags = (NIF_O_PRESSURESEAL)
+	other_flags = (NIF_O_PRESSURESEAL)*/ // disables redundant NIF, synthetics no longer require this
 
 /datum/nifsoft/heatsinks
 	name = "Heat Sinks"
