@@ -118,6 +118,6 @@ var/const/access_explorer = 43
 	selection_color = "#013D3B" //VOREStation Edit
 	idtype = /obj/item/weapon/card/id/medical
 	economic_modifier = 6 //VOREStation Edit
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist, access_explorer)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist, access_explorer)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_explorer)
 	outfit_type = /decl/hierarchy/outfit/job/medical/sar
