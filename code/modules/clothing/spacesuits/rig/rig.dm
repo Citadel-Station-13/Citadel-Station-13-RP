@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #define ONLY_DEPLOY 1
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
@@ -2126,4 +2125,3 @@
 #undef ONLY_DEPLOY
 #undef ONLY_RETRACT
 #undef SEAL_DELAY
->>>>>>> 8a0b50e... Merge pull request #4882 from VOREStation/upstream-merge-6002
