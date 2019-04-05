@@ -104,6 +104,10 @@
 /obj/item/stolenpackageplus
 	name = "curated stolen package"
 	desc = "What's in this slightly more robust box?"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "deliverycrate5"
+	item_state = "table_parts"
+	w_class = ITEMSIZE_HUGE
 
 /obj/item/stolenpackageplus/attack_self(mob/user)
 		var/loot = pick(/obj/item/clothing/glasses/thermal,
