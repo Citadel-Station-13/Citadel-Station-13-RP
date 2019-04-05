@@ -1588,6 +1588,7 @@
 #include "code\modules\clothing\spacesuits\alien.dm"
 #include "code\modules\clothing\spacesuits\breaches.dm"
 #include "code\modules\clothing\spacesuits\miscellaneous.dm"
+#include "code\modules\clothing\spacesuits\plasman.dm"
 #include "code\modules\clothing\spacesuits\spacesuits.dm"
 #include "code\modules\clothing\spacesuits\syndi.dm"
 #include "code\modules\clothing\spacesuits\rig\rig.dm"
