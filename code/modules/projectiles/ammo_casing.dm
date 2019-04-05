@@ -25,6 +25,7 @@
 	var/recoil
 	var/fire_delay
 	var/one_handed_penalty
+	var/sawn_off_penalty
 
 	//ANY OF THESE BEING SET WILL OVERRIDE FIREMODE'S VARIABLES ON THESE! See firemode.dm for what they do/details.
 	var/vary_fire_sound = TRUE

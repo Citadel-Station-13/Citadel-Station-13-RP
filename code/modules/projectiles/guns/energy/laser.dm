@@ -21,6 +21,7 @@
 
 
 
+
 /obj/item/gun/energy/laser/mounted
 	self_recharge = TRUE
 	use_external_power = TRUE

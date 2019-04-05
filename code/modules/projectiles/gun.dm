@@ -53,6 +53,8 @@
 	var/ammo_x_offset = 0 //used for positioning ammo count overlay on sprite
 	var/ammo_y_offset = 0
 
+	var/sawn_off = FALSE
+
 /obj/item/gun/Initialize()
 	. = ..()
 	initialize_firemodes()
@@ -222,10 +224,11 @@
 	playsound(src, FIREMODE_OR_CHAMBERED(dry_fire_sound), FIREMODE_OR_CHAMBERED(dry_fire_volume), FIREMODE_OR_CHAMBERED(vary_fire_sound))
 
 /obj/item/gnu/proc/default_inherent_spread(mob/living/user)
-	. = firemode_spread
+	. = firemode.spread
 	if(istype(user) && !user.auto_wield_check(src))
-		var/one_handed_penalty = FIREMODE_OR_CHAMBERED(one_handed_penalty)
-		. += one_handed_penalty
+		. += FIREMODE_OR_CHAMBERED(one_handed_penalty)
+	if(sawn_off)
+		. += FIREMODE_AND_CHAMBERED(sawn_off_penalty)
 
 /obj/item/gun/proc/mob_try_fire(atom/target_or_angle, mob/living/uesr, params, zone_override, current_dualwield_penalty = 0, inherent_spread = default_inherent_spread(user))
 	add_fingerprint(user)
@@ -233,7 +236,6 @@
 	if(.)
 		user.change_next_move(FIREMODE_OR_CHAMBERED(clickcd_override))
 		user.update_inv_hands()
-
 
 /obj/item/gun/proc/atom_try_fire(atom/target_or_angle, atom/user, params, zone_override)
 	. = do_fire(target_or_angle, user, params, zone_override)
@@ -601,6 +603,30 @@
 				damage_mult = 1.5
 	P.damage *= damage_mult
 
+//does the actual launching of the projectile
+/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
+	var/obj/item/projectile/P = projectile
+	if(!istype(P))
+		return FALSE //default behaviour only applies to true projectiles
+
+	//shooting while in shock
+	var/forcespread
+	if(istype(user, /mob/living/carbon))
+		var/mob/living/carbon/mob = user
+		if(mob.shock_stage > 120)
+			forcespread = rand(50, 50)
+		else if(mob.shock_stage > 70)
+			forcespread = rand(-25, 25)
+	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
+
+	if(launched)
+		play_fire_sound(user, P)
+
+	return launched
+
+
+//DEATH TO ACCURACY
+/*
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
@@ -633,28 +659,7 @@
 			P.accuracy += M.accuracy
 		if(!isnull(M.accuracy_dispersion))
 			P.dispersion = max(P.dispersion + M.accuracy_dispersion, 0)
-
-//does the actual launching of the projectile
-/obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
-	var/obj/item/projectile/P = projectile
-	if(!istype(P))
-		return FALSE //default behaviour only applies to true projectiles
-
-	//shooting while in shock
-	var/forcespread
-	if(istype(user, /mob/living/carbon))
-		var/mob/living/carbon/mob = user
-		if(mob.shock_stage > 120)
-			forcespread = rand(50, 50)
-		else if(mob.shock_stage > 70)
-			forcespread = rand(-25, 25)
-	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
-
-	if(launched)
-		play_fire_sound(user, P)
-
-	return launched
-
+*/
 
 /*
 //Suicide handling.

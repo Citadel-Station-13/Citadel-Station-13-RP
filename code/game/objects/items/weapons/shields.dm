@@ -35,8 +35,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	preserve_item = 1
 	item_icons = list(
-				slot_l_hand_str = 'icons/mob/inhands/melee_lefthand.dmi',
-				slot_r_hand_str = 'icons/mob/inhands/melee_righthand.dmi',
+				slot_l_hand_str = 'icons/mob/inhands/weapons/melee_lefthand.dmi',
+				slot_r_hand_str = 'icons/mob/inhands/weapons/melee_righthand.dmi',
 				)
 
 /obj/item/weapon/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")

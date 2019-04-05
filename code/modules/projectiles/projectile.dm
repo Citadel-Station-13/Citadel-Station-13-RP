@@ -85,7 +85,7 @@
 	var/silenced = PROJECTILE_SILENCE_NORMAL	//Attack message
 	var/shot_from = "" // name of the object which shot us
 
-	var/accuracy = 0
+	//var/accuracy = 0		DEATH TO ACCURACY
 	var/dispersion = 0.0
 
 	var/damage = 10

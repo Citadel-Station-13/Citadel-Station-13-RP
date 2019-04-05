@@ -392,6 +392,19 @@
 /obj/item/gun/ballistic/can_shoot()
 	return chambered
 
+/obj/item/gun/ballistic/process_shot()
+	prefire_empty_checks()
+	. = ..() //The gun actually firing
+	postfire_empty_checks()
+
+/obj/item/gun/ballistic/proc/get_ammo(countchambered = TRUE)
+	var/boolets = 0 //mature var names for mature people
+	if (chambered && countchambered)
+		boolets++
+	if (magazine)
+		boolets += magazine.ammo_left()
+	return boolets
+
 /obj/item/gun/ballistic/proc/prefire_empty_checks()
 	if (!chambered && !get_ammo())
 		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
@@ -444,26 +457,35 @@
 		to_chat(user, "<span class='notice'>You pull the [magazine_wording] out of \the [src].</span>")
 	update_icon()
 
+//ATTACK HAND IGNORING PARENT RETURN VALUE
+/obj/item/gun/ballistic/attack_hand(mob/user)
+	if(!internal_magazine && loc == user && user.is_holding(src) && magazine)
+		eject_magazine(user)
+		return
+	return ..()
 
-
-
-
-
-
-
-
+/obj/item/gun/ballistic/examine(mob/user)
+	. = ..()
+	var/count_chambered = !((bolt_type == BOLT_TYPE_NO_BOLT) || (bolt_type == BOLT_TYPE_OPEN))
+	to_chat(user, "It has [get_ammo(count_chambered)] round\s remaining.")
+	if (!chambered)
+		to_chat(user, "It does not seem to have a round chambered.")
+	if (bolt_locked)
+		to_chat(user, "The [bolt_wording] is locked back and needs to be released before firing.")
+	if (suppressed)
+		to_chat(user, "It has a suppressor attached that can be removed with <b>alt+click</b>.")
 
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
-	..()
+	. = ..()
 	if (.)
 		return
 	if (!internal_magazine && istype(A, /obj/item/ammo_box/magazine))
 		var/obj/item/ammo_box/magazine/AM = A
 		if (!magazine && istype(AM, mag_type))
-			insert_magazine(user, AM)
+			insert_magazine(AM, user)
 		else if (magazine)
 			if(tac_reloads)
-				eject_magazine(user, FALSE, AM)
+				eject_magazine(AM, user, FALSE)
 			else
 				to_chat(user, "<span class='notice'>There's already a [magazine_wording] in \the [src].</span>")
 		return
@@ -498,16 +520,15 @@
 			return
 	return FALSE
 
-/obj/item/gun/ballistic/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if (sawn_off)
-		bonus_spread += SAWN_OFF_ACC_PENALTY
-	. = ..()
-
 /obj/item/gun/ballistic/proc/install_suppressor(obj/item/suppressor/S)
 	// this proc assumes that the suppressor is already inside src
 	suppressed = S
 	w_class += S.w_class //so pistols do not fit in pockets when suppressed
 	update_icon()
+
+
+
+
 
 /obj/item/gun/ballistic/AltClick(mob/user)
 	if (unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
@@ -526,17 +547,6 @@
 			return
 
 
-/obj/item/gun/ballistic/afterattack()
-	prefire_empty_checks()
-	. = ..() //The gun actually firing
-	postfire_empty_checks()
-
-//ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/gun/ballistic/attack_hand(mob/user)
-	if(!internal_magazine && loc == user && user.is_holding(src) && magazine)
-		eject_magazine(user)
-		return
-	return ..()
 
 /obj/item/gun/ballistic/attack_self(mob/living/user)
 	if(!internal_magazine && magazine)
@@ -567,24 +577,6 @@
 	return
 
 
-/obj/item/gun/ballistic/examine(mob/user)
-	..()
-	var/count_chambered = !((bolt_type == BOLT_TYPE_NO_BOLT) || (bolt_type == BOLT_TYPE_OPEN))
-	to_chat(user, "It has [get_ammo(count_chambered)] round\s remaining.")
-	if (!chambered)
-		to_chat(user, "It does not seem to have a round chambered.")
-	if (bolt_locked)
-		to_chat(user, "The [bolt_wording] is locked back and needs to be released before firing.")
-	if (suppressed)
-		to_chat(user, "It has a suppressor attached that can be removed with <b>alt+click</b>.")
-
-/obj/item/gun/ballistic/proc/get_ammo(countchambered = TRUE)
-	var/boolets = 0 //mature var names for mature people
-	if (chambered && countchambered)
-		boolets++
-	if (magazine)
-		boolets += magazine.ammo_count()
-	return boolets
 
 /obj/item/gun/ballistic/proc/get_ammo_list(countchambered = TRUE, drop_all = FALSE)
 	var/list/rounds = list()
