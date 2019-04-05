@@ -40,8 +40,13 @@
 		list("impedrezene" = 15)						= 2,
 		list("zombiepowder" = 10)						= 1)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/beaker/vial/random/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/glass/beaker/vial/random/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	if(is_open_container())
 		flags ^= OPENCONTAINER
 

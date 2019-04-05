@@ -5,9 +5,15 @@
 /obj/item/weapon/reagent_containers/glass/replenishing
 	var/spawning_id
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/replenishing/initialize()
 	..()
 	processing_objects.Add(src)
+=======
+/obj/item/weapon/reagent_containers/glass/replenishing/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
 /obj/item/weapon/reagent_containers/glass/replenishing/process()
@@ -22,7 +28,7 @@
 	var/max_stored_messages = 100
 
 /obj/item/clothing/mask/gas/poltergeist/New()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/gas/poltergeist/process()
 	if(heard_talk.len && istype(src.loc, /mob/living) && prob(10))
@@ -56,7 +62,7 @@
 
 /obj/item/weapon/vampiric/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/vampiric/process()
 	//see if we've identified anyone nearby
@@ -143,7 +149,7 @@
 
 /obj/effect/decal/cleanable/blood/splatter/animated/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	loc_last_process = src.loc
 
 /obj/effect/decal/cleanable/blood/splatter/animated/process()
@@ -173,7 +179,7 @@
 	density = 1
 
 /obj/effect/shadow_wight/New()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/process()
 	if(src.loc)
@@ -197,7 +203,7 @@
 			M.sleeping = max(M.sleeping,rand(5,10))
 			src.loc = null
 	else
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/Bump(var/atom/obstacle)
 	obstacle << "<font color='red'>You feel a chill run down your spine!</font>"

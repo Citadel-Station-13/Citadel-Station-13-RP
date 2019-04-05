@@ -34,19 +34,22 @@
 				data -= taste
 
 /datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	/* VOREStation Removal
-	if(!injectable && alien != IS_SLIME)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA) //VOREStation Edit
 		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
+<<<<<<< HEAD
 	*/ //VOREStation Removal End
 	if(injectable) //vorestation addition/replacement
 		affect_ingest(M, alien, removed)
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5
+		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
 	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(M.species.gets_food_nutrition) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
@@ -61,6 +64,43 @@
 
 	injectable = 1
 
+<<<<<<< HEAD
+=======
+/datum/reagent/nutriment/protein // Bad for Skrell!
+	name = "animal protein"
+	id = "protein"
+	taste_description = "some sort of meat"
+	color = "#440000"
+
+/datum/reagent/nutriment/protein/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	switch(alien)
+		if(IS_SKRELL)
+			M.adjustToxLoss(0.5 * removed)
+			return
+		if(IS_TESHARI)
+			..(M, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
+			return
+		if(IS_UNATHI)
+			..(M, alien, removed*2.25) //Unathi get most of their nutrition from meat.
+		//VOREStation Edit Start
+		if(IS_CHIMERA)
+			..(M, alien, removed*4) //Xenochimera are obligate carnivores.
+		//VOREStation Edit End
+	..()
+
+/datum/reagent/nutriment/protein/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien && alien == IS_SKRELL)
+		M.adjustToxLoss(2 * removed)
+		return
+	..()
+
+/datum/reagent/nutriment/protein/egg // Also bad for skrell.
+	name = "egg yolk"
+	id = "egg"
+	taste_description = "egg"
+	color = "#FFFFAA"
+
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 /datum/reagent/nutriment/honey
 	name = "Honey"
 	id = "honey"
@@ -2696,7 +2736,7 @@ End Citadel Change */
 
 /datum/reagent/ethanol/saketini
 	name = "Saketini"
-	id = "sakitini"
+	id = "saketini"
 	description = "For when you're too weeb for a real martini."
 	taste_description = "dry alcohol"
 	color = "#0064C8"
@@ -3182,6 +3222,7 @@ End Citadel Change */
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
 
+<<<<<<< HEAD
 /*
 	Coatings are used in cooking. Dipping food items in a reagent container with a coating in it
 	allows it to be covered in that, which will add a masked overlay to the sprite.
@@ -3390,3 +3431,48 @@ End Citadel Change */
 	description = "A dry mix for making delicious brownies."
 	reagent_state = SOLID
 	color = "#441a03"
+=======
+/datum/reagent/ethanol/schnapps_pep
+	name = "Peppermint Schnapps"
+	id = "schnapps_pep"
+	description = "Achtung, pfefferminze."
+	taste_description = "minty alcohol"
+	color = "#8FC468"
+	strength = 25
+
+	glass_name = "peppermint schnapps"
+	glass_desc = "A glass of peppermint schnapps. It seems like it'd be better, mixed."
+
+/datum/reagent/ethanol/schnapps_pea
+	name = "Peach Schnapps"
+	id = "schnapps_pea"
+	description = "Achtung, fruchtig."
+	taste_description = "peaches"
+	color = "#d67d4d"
+	strength = 25
+
+	glass_name = "peach schnapps"
+	glass_desc = "A glass of peach schnapps. It seems like it'd be better, mixed."
+
+/datum/reagent/ethanol/schnapps_lem
+	name = "Lemonade Schnapps"
+	id = "schnapps_lem"
+	description = "Childhood memories are not included."
+	taste_description = "sweet, lemon-y alcohol"
+	color = "#FFFF00"
+	strength = 25
+
+	glass_name = "lemonade schnapps"
+	glass_desc = "A glass of lemonade schnapps. It seems like it'd be better, mixed."
+
+/datum/reagent/ethanol/fusionnaire
+	name = "Fusionnaire"
+	id = "fusionnaire"
+	description = "A drink for the brave."
+	taste_description = "a painfully alcoholic lemon soda with an undertone of mint"
+	color = "#6BB486"
+	strength = 9
+
+	glass_name = "fusionnaire"
+	glass_desc = "A relatively new cocktail, mostly served in the bars of NanoTrasen owned stations."
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

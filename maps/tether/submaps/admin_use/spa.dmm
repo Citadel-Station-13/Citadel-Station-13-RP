@@ -55,7 +55,11 @@
 /turf/simulated/floor/water,
 /area/submap/spa)
 "ak" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/fox,
+=======
+/mob/living/simple_mob/animal/passive/fox,
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 /turf/simulated/floor/grass,
 /area/submap/spa)
 "al" = (

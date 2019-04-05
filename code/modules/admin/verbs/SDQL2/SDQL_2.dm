@@ -206,7 +206,10 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 	message_admins("[log_entry1] [query_log]")
 	query_log = "[log_entry2] [query_log]"
 	log_game(query_log)
+<<<<<<< HEAD
 	NOTICE(query_log)
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 	var/start_time_total = REALTIMEOFDAY
 
@@ -418,8 +421,13 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/msg = "[key_name(user)] has (re)started query #[id]"
 	message_admins(msg)
 	log_admin(msg)
+<<<<<<< HEAD
 	ARun()
 	show_next_to_key = user.ckey
+=======
+	show_next_to_key = user.ckey
+	ARun()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 /datum/SDQL2_query/proc/admin_del(user = usr)
 	var/msg = "[key_name(user)] has stopped + deleted query #[id]"
@@ -480,7 +488,11 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	finished = TRUE
 	. = TRUE
 	if(show_next_to_key)
+<<<<<<< HEAD
 		var/client/C = directory[show_next_to_key]
+=======
+		var/client/C = GLOB.directory[show_next_to_key]
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 		if(C)
 			var/mob/showmob = C.mob
 			to_chat(showmob, "<span class='admin'>SDQL query results: [get_query_text()]<br>\
@@ -491,7 +503,11 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				var/text = islist(select_text)? select_text.Join() : select_text
 				var/static/result_offset = 0
 				showmob << browse(text, "window=SDQL-result-[result_offset++]")
+<<<<<<< HEAD
 	show_next_to_key = null
+=======
+		show_next_to_key = null
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	if(qdel_on_finish)
 		qdel(src)
 
@@ -748,8 +764,13 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		new_args[++new_args.len] = SDQL_expression(source, arg)
 	if(object == GLOB) // Global proc.
 		procname = "/proc/[procname]"
+<<<<<<< HEAD
 		return call(procname)(arglist(new_args))
 	return call(object, procname)(arglist(new_args))
+=======
+		return superuser? (call(procname)(new_args)) : (WrapAdminProcCall(GLOBAL_PROC, procname, new_args))
+	return superuser? (call(object, procname)(new_args)) : (WrapAdminProcCall(object, procname, new_args))
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 /datum/SDQL2_query/proc/SDQL_function_async(datum/object, procname, list/arguments, source)
 	set waitfor = FALSE

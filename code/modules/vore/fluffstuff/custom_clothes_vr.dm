@@ -1691,10 +1691,16 @@ END OF CITADEL CHANGES */
 	item_state = "kilanosuit_p"
 
 //Mewchild: Phi Vietsi
+<<<<<<< HEAD
 /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
 	name = "Phi Vietsi's Bone Signet Ring"
 	desc = "A signet ring belonging to Phi Vietsi, carved from the bones of something long extinct, as a ward against bad luck."
 	var/signet_name = "Phi Vietsi"
+=======
+/obj/item/clothing/gloves/ring/seal/signet/fluff/phi
+	name = "Phi's Bone Signet Ring"
+	desc = "A signet ring belonging to Phi, carved from the bones of something long extinct, as a ward against bad luck."
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "vietsi_ring"
@@ -1820,4 +1826,19 @@ END OF CITADEL CHANGES */
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	w_class = ITEMSIZE_NORMAL
+<<<<<<< HEAD
 	slot = ACCESSORY_SLOT_OVER
+=======
+	slot = ACCESSORY_SLOT_OVER
+
+//Mr_Signmeup: Reshskakskakss Seekiseekis
+/obj/item/clothing/suit/security/navyhos
+	name = "head of security's jacket"
+	desc = "This piece of clothing was specifically designed for asserting superior authority."
+	
+	icon = 'icons/vore/custom_clothes_vr.dmi'
+	icon_state = "hosbluejacket"
+	
+	icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	item_state = "hosbluejacket"
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

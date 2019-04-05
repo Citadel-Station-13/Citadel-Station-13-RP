@@ -21,13 +21,18 @@
 	var/swallowsound = null				// What noise plays when you succeed in eating the mob.
 
 	var/vore_default_mode = DM_DIGEST	// Default bellymode (DM_DIGEST, DM_HOLD, DM_ABSORB)
-	var/vore_default_flags = DM_FLAG_ITEMWEAK // Itemweak by default
+	var/vore_default_flags = 0			// No flags
 	var/vore_digest_chance = 25			// Chance to switch to digest mode if resisted
 	var/vore_absorb_chance = 0			// Chance to switch to absorb mode if resisted
 	var/vore_escape_chance = 25			// Chance of resisting out of mob
 
 	var/vore_stomach_name				// The name for the first belly if not "stomach"
 	var/vore_stomach_flavor				// The flavortext for the first belly if not the default
+
+	var/vore_default_item_mode = IM_DIGEST_FOOD			//How belly will interact with items
+	var/vore_default_contaminates = TRUE				//Will it contaminate?
+	var/vore_default_contamination_flavor = "Generic"	//Contamination descriptors
+	var/vore_default_contamination_color = "green"		//Contamination color
 
 	var/vore_fullness = 0				// How "full" the belly is (controls icons)
 	var/vore_icons = 0					// Bitfield for which fields we have vore icons for.
@@ -56,6 +61,7 @@
 	new_fullness = round(new_fullness, 1) // Because intervals of 0.25 are going to make sprite artists cry.
 	vore_fullness = min(vore_capacity, new_fullness)
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 /mob/living/simple_animal/proc/update_vore_icon()
 	if(!vore_active)
 		return 0
@@ -68,6 +74,20 @@
 		return "[icon_dead]-[vore_fullness]"
 	else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
 		return "[icon_rest]-[vore_fullness]"
+=======
+/mob/living/simple_mob/update_icon()
+	. = ..()
+	if(vore_active)
+		update_fullness()
+		if(!vore_fullness)
+			return 0
+		else if((stat == CONSCIOUS) && (!icon_rest || !resting || !incapacitated(INCAPACITATION_DISABLED)) && (vore_icons & SA_ICON_LIVING))
+			icon_state = "[icon_living]-[vore_fullness]"
+		else if(stat >= DEAD && (vore_icons & SA_ICON_DEAD))
+			icon_state = "[icon_dead]-[vore_fullness]"
+		else if(((stat == UNCONSCIOUS) || resting || incapacitated(INCAPACITATION_DISABLED) ) && icon_rest && (vore_icons & SA_ICON_REST))
+			icon_state = "[icon_rest]-[vore_fullness]"
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 
 /mob/living/simple_animal/proc/will_eat(var/mob/living/M)
 	if(client) //You do this yourself, dick!
@@ -188,6 +208,10 @@
 	B.desc = vore_stomach_flavor ? vore_stomach_flavor : "Your surroundings are warm, soft, and slimy. Makes sense, considering you're inside \the [name]."
 	B.digest_mode = vore_default_mode
 	B.mode_flags = vore_default_flags
+	B.item_digest_mode = vore_default_item_mode
+	B.contaminates = vore_default_contaminates
+	B.contamination_flavor = vore_default_contamination_flavor
+	B.contamination_color = vore_default_contamination_color
 	B.escapable = vore_escape_chance > 0
 	B.escapechance = vore_escape_chance
 	B.digestchance = vore_digest_chance
@@ -223,6 +247,7 @@
 			if(tmob.canmove && prob(vore_pounce_chance)) //if they'd pounce for other noms, pounce for these too, otherwise still try and eat them if they hold still
 				tmob.Weaken(5)
 			tmob.visible_message("<span class='danger'>\the [src] [vore_bump_emote] \the [tmob]!</span>!")
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 			stop_automated_movement = 1
 			animal_nom(tmob)
 			update_icon()
@@ -237,6 +262,19 @@
 
 	if(istype(turf,/turf/unsimulated/floor/sky))
 		return TRUE //Mobs aren't that stupid, probably
+=======
+			set_AI_busy(TRUE)
+			animal_nom(tmob)
+			update_icon()
+			set_AI_busy(FALSE)
+	..()
+
+// Checks to see if mob doesn't like this kind of turf
+/mob/living/simple_mob/IMove(newloc)
+	if(istype(newloc,/turf/unsimulated/floor/sky))
+		return MOVEMENT_FAILED //Mobs aren't that stupid, probably
+	return ..() // Procede as normal.
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 
 //Grab = Nomf
 /mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)

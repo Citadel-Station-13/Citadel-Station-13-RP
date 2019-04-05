@@ -841,4 +841,7 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 ## Submap rotation is an experimental feature and can cause bugs and weirdness if certain objects inside the submap are coded poorly.
 ## Submaps can still be rotated when loading manually with the admin verbs, if desired.
 # RANDOM_SUBMAP_ORIENTATION
+<<<<<<< HEAD
 >>>>>>> 1b2116b... Merge pull request #4714 from VOREStation/upstream-merge-5898
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

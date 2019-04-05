@@ -181,10 +181,17 @@
 
 /obj/random/outside_mob/item_to_spawn() // Special version for mobs to have the same faction.
 	return pick(
+<<<<<<< HEAD
 				prob(50);/mob/living/simple_animal/retaliate/gaslamp,
 //				prob(50);/mob/living/simple_animal/otie/feral, // Removed until Otie code is unfucked.
 				prob(20);/mob/living/simple_animal/hostile/dino/virgo3b,
 				prob(1);/mob/living/simple_animal/hostile/dragon/virgo3b)
+=======
+				prob(50);/mob/living/simple_mob/animal/passive/gaslamp,
+//				prob(50);/mob/living/simple_mob/otie/feral, // Removed until Otie code is unfucked.
+				prob(20);/mob/living/simple_mob/vore/aggressive/dino/virgo3b,
+				prob(1);/mob/living/simple_mob/vore/aggressive/dragon/virgo3b)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 /obj/random/outside_mob/spawn_item()
 	. = ..()

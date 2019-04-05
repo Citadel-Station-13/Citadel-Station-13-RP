@@ -23,6 +23,7 @@
 #define CLAMP01(x) max(0, min(1, x))
 #define QUANTIZE(variable) (round(variable,0.0001))
 
+<<<<<<< HEAD
 #define INFINITY	1.#INF
 
 #define TICKS_IN_DAY 		24*60*60*10
@@ -30,3 +31,7 @@
 
 #define SIMPLE_SIGN(X) ((X) < 0 ? -1 : 1)
 #define SIGN(X)        ((X) ? SIMPLE_SIGN(X) : 0)
+=======
+#define TICKS_IN_DAY 		(TICKS_IN_SECOND * 60 * 60 * 24)
+#define TICKS_IN_SECOND 	(world.fps)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

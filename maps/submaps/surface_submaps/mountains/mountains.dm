@@ -32,7 +32,11 @@
 #include "BlastMine1.dmm"
 #include "crashedcontainmentshuttle.dmm"
 #include "deadspy.dmm"
+<<<<<<< HEAD
 #include "cultmine.dmm"
+=======
+#include "lava_trench.dmm"
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 #endif
 
 // The 'mountains' is the mining z-level, and has a lot of caves.
@@ -125,12 +129,15 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/temple.dmm'
 	cost = 6
 
+<<<<<<< HEAD
 /datum/map_template/surface/mountains/normal/crashedmedshuttle
 	name = "Crashed Med Shuttle"
 	desc = "A medical response shuttle that went missing some time ago. So this is where they went."
 	mappath = 'maps/submaps/surface_submaps/mountains/CrashedMedShuttle1.dmm'
 	cost = 6
 
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 /datum/map_template/surface/mountains/normal/digsite
 	name = "Dig Site"
 	desc = "A small abandoned dig site."
@@ -276,6 +283,7 @@
 	name = "Blast Mine 1"
 	desc = "An abandoned blast mining site, seems that local wildlife has moved in."
 	mappath = 'maps/submaps/surface_submaps/mountains/BlastMine1.dmm'
+<<<<<<< HEAD
 	cost = 6
 
 /datum/map_template/surface/mountains/deep/cultmine
@@ -283,3 +291,20 @@
 	desc = "A mining operation that found more than it bargained for."
 	mappath = 'maps/submaps/surface_submaps/mountains/cultmine.dmm'
 	cost = 10
+=======
+	cost = 20
+
+/datum/map_template/surface/mountains/deep/lava_trench
+	name = "lava trench"
+	desc = "A long stretch of lava underground, almost river-like, with a small crystal research outpost on the side."
+	mappath = 'maps/submaps/surface_submaps/mountains/lava_trench.dmm'
+	cost = 20
+	fixed_orientation = TRUE
+
+/datum/map_template/surface/mountains/deep/crashedmedshuttle
+	name = "Crashed Med Shuttle"
+	desc = "A medical response shuttle that went missing some time ago. So this is where they went."
+	mappath = 'maps/submaps/surface_submaps/mountains/CrashedMedShuttle1.dmm'
+	cost = 20
+	fixed_orientation = TRUE
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

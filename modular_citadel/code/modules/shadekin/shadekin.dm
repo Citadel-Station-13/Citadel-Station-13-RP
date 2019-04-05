@@ -16,6 +16,11 @@
 	icon_living = "map_example"
 	faction = "shadekin"
 	ui_icons = 'icons/mob/shadekin_hud.dmi'
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
+=======
+	mob_class = MOB_CLASS_HUMANOID
+	mob_bump_flag = 0
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 
 	maxHealth = 200
 	health = 200
@@ -94,7 +99,11 @@
 
 	var/list/shadekin_abilities
 
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
 /mob/living/simple_animal/shadekin/initialize()
+=======
+/mob/living/simple_mob/shadekin/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 
@@ -147,8 +156,13 @@
 
 	return ..()
 
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
 /mob/living/simple_animal/shadekin/Destroy()
 	QDEL_NULL_LIST(shadekin_abilities)
+=======
+/mob/living/simple_mob/shadekin/Destroy()
+	QDEL_LIST_NULL(shadekin_abilities)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 	. = ..()
 
 /mob/living/simple_animal/shadekin/init_vore()

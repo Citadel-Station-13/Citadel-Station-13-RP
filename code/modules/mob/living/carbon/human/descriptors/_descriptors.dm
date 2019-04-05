@@ -101,10 +101,18 @@
 
 /datum/mob_descriptor/proc/get_comparative_value_string_smaller(var/value, var/datum/gender/my_gender, var/datum/gender/other_gender)
 	var/maxval = LAZYLEN(comparative_value_descriptors_smaller)
+<<<<<<< HEAD
 	value = Clamp(ceil(value * maxval), 1, maxval)
+=======
+	value = CLAMP(CEILING(value * maxval, 1), 1, maxval)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	return comparative_value_descriptors_smaller[value]
 
 /datum/mob_descriptor/proc/get_comparative_value_string_larger(var/value, var/datum/gender/my_gender, var/datum/gender/other_gender)
 	var/maxval = LAZYLEN(comparative_value_descriptors_larger)
+<<<<<<< HEAD
 	value = Clamp(ceil(value * maxval), 1, maxval)
+=======
+	value = CLAMP(CEILING(value * maxval, 1), 1, maxval)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	return comparative_value_descriptors_larger[value]

@@ -14,8 +14,13 @@
 	var/rag_underlay = "rag"
 	on_reagent_change() return // To suppress price updating. Bottles have their own price tags.
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	if(isGlass) unacidable = 1
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/Destroy()
@@ -193,8 +198,13 @@
 	icon_state = "ginbottle"
 	center_of_mass = list("x"=16, "y"=4)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/gin/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/gin/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("gin", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey
@@ -203,8 +213,13 @@
 	icon_state = "whiskeybottle"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("whiskey", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey
@@ -213,8 +228,13 @@
 	icon_state = "whiskeybottle2"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("specialwhiskey", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka
@@ -223,8 +243,13 @@
 	icon_state = "vodkabottle"
 	center_of_mass = list("x"=17, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("vodka", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequila
@@ -233,9 +258,15 @@
 	icon_state = "tequilabottle"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequila/initialize()
 	..()
 	reagents.add_reagent("tequila", 100)
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla/Initialize()
+	. = ..()
+	reagents.add_reagent("tequilla", 100)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
@@ -243,8 +274,13 @@
 	icon_state = "bottleofnothing"
 	center_of_mass = list("x"=17, "y"=5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("nothing", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/patron
@@ -253,8 +289,13 @@
 	icon_state = "patronbottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/patron/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/patron/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("patron", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/rum
@@ -263,8 +304,13 @@
 	icon_state = "rumbottle"
 	center_of_mass = list("x"=16, "y"=8)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/rum/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("rum", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/holywater
@@ -273,8 +319,13 @@
 	icon_state = "holyflask"
 	center_of_mass = list("x"=17, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/holywater/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("holywater", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth
@@ -283,8 +334,13 @@
 	icon_state = "vermouthbottle"
 	center_of_mass = list("x"=17, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("vermouth", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua
@@ -293,8 +349,13 @@
 	icon_state = "kahluabottle"
 	center_of_mass = list("x"=17, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("kahlua", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager
@@ -303,8 +364,13 @@
 	icon_state = "goldschlagerbottle"
 	center_of_mass = list("x"=15, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("goldschlager", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cognac
@@ -313,8 +379,13 @@
 	icon_state = "cognacbottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cognac/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("cognac", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/wine
@@ -323,8 +394,13 @@
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/wine/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("wine", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe
@@ -333,8 +409,13 @@
 	icon_state = "absinthebottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("absinthe", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor
@@ -343,8 +424,13 @@
 	icon_state = "alco-green" //Placeholder.
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("melonliquor", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao
@@ -353,8 +439,13 @@
 	icon_state = "alco-blue" //Placeholder.
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("bluecuracao", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine
@@ -363,8 +454,13 @@
 	icon_state = "grenadinebottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("grenadine", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cola
@@ -373,8 +469,13 @@
 	icon_state = "colabottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cola/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cola/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("cola", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_up
@@ -383,7 +484,11 @@
 	icon_state = "space-up_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_up/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("space_up", 100)
 
@@ -393,7 +498,11 @@
 	icon_state = "space_mountain_wind_bottle"
 	center_of_mass = list("x"=16, "y"=6)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("spacemountainwind", 100)
 
@@ -403,8 +512,13 @@
 	icon_state = "pwinebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/pwine/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/pwine/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("pwine", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew
@@ -413,8 +527,13 @@
 	icon_state = "redeemersbrew"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("unathiliquor", 100)
 
 //////////////////////////JUICES AND STUFF ///////////////////////
@@ -427,8 +546,13 @@
 	center_of_mass = list("x"=16, "y"=7)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/orangejuice/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/orangejuice/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("orangejuice", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/applejuice
@@ -439,8 +563,13 @@
 	center_of_mass = list("x"=16, "y"=7)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/applejuice/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/applejuice/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("applejuice", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/milk
@@ -451,8 +580,13 @@
 	center_of_mass = list("x"=16, "y"=9)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/milk/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/milk/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("milk", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cream
@@ -463,8 +597,13 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cream/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cream/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("cream", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tomatojuice
@@ -475,8 +614,13 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tomatojuice/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tomatojuice/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("tomatojuice", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice
@@ -487,8 +631,13 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("limejuice", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice
@@ -499,8 +648,13 @@
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("lemonjuice", 100)
 
 //Small bottles
@@ -516,8 +670,13 @@
 	icon_state = "beer"
 	center_of_mass = list("x"=16, "y"=12)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("beer", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale
@@ -527,8 +686,13 @@
 	item_state = "beer"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("ale", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/sake
@@ -537,15 +701,57 @@
 	icon_state = "sakebottle"
 	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/sake/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/sake/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("sake", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/champagne
 	name = "Gilthari Luxury Champagne"
 	desc = "For those special occassions."
 	icon_state = "champagne"
+	center_of_mass = list("x"=16, "y"=3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/initialize()
 	..()
 	reagents.add_reagent("champagne", 100)
+=======
+/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/Initialize()
+	. = ..()
+	reagents.add_reagent("champagne", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peppermintschnapps
+	name = "Dr. Bone's Peppermint Schnapps"
+	desc = "A flavoured grain liqueur with a fresh, minty taste."
+	icon_state = "schnapps_pep"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peppermintschnapps/Initialize()
+	. = ..()
+	reagents.add_reagent("schnapps_pep", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peachschnapps
+	name = "Dr. Bone's Peach Schnapps"
+	desc = "A flavoured grain liqueur with a fruity peach taste."
+	icon_state = "schnapps_pea"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peachschnapps/Initialize()
+	. = ..()
+	reagents.add_reagent("schnapps_pea", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonadeschnapps
+	name = "Dr. Bone's Lemonade Schnapps"
+	desc = "A flavoured grain liqueur with a sweetish, lemon taste."
+	icon_state = "schnapps_lem"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonadeschnapps/Initialize()
+	. = ..()
+	reagents.add_reagent("schnapps_lem", 100)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

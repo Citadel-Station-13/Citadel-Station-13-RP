@@ -523,7 +523,11 @@
 	desc = ""
 	icon_state = "dragonfly"
 	color_blend_mode = ICON_MULTIPLY
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 /datum/sprite_accessory/wing/citheroniamoth
 	name = "citheronia wings"
 	desc = ""
@@ -702,6 +706,13 @@
 	name = "stripey taj, brown"
 	desc = ""
 	icon_state = "stripeytail-brown"
+
+/datum/sprite_accessory/tail/chameleon
+	name = "Chameleon, colorable"
+	desc = ""
+	icon_state = "chameleon"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/bunny
 	name = "bunny, colorable"

@@ -8,6 +8,11 @@
 	possible_transfer_amounts = list(5,10)
 	volume = 250
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/spray/luminol/initialize()
 	..()
+=======
+/obj/item/weapon/reagent_containers/spray/luminol/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("luminol", 250)

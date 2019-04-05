@@ -466,6 +466,12 @@ character_name: Harmony Pretchl
 item_path: /obj/item/device/modkit_conversion/fluff/harmonyspace
 }
 
+{
+ckey: jwguy
+character_name: Koyo Akimomi
+item_path: /obj/item/weapon/storage/box/fluff/koyoakimomi
+}
+
 # ######## K CKEYS
 {
 ckey: kazkin
@@ -558,7 +564,11 @@ item_path: /obj/item/weapon/implanter/reagent_generator/savannah
 {
 ckey: mewchild
 character_name: Phi Vietsi
+<<<<<<< HEAD
 item_path: /obj/item/weapon/storage/box/fluff/vietsi
+=======
+item_path: /obj/item/weapon/storage/box/fluff/phi
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 }
 
 {
@@ -864,6 +874,15 @@ item_path: /obj/item/weapon/grenade/spawnergrenade/spirit
 # ######## U CKEYS
 # ######## V CKEYS
 {
+ckey: vailthewolf
+character_name: Vakashi
+item_path: /obj/item/clothing/accessory/permit/gun/fluff/Vakashi
+}
+{
+ckey: vailthewolf
+character_name: Vakashi
+item_path: /obj/item/weapon/reagent_containers/spray/pepper
+}
 ckey: verkister
 character_name: Cameron Eggbert
 item_path: /obj/item/clothing/glasses/fluff/science_proper

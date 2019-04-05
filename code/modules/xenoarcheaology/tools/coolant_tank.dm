@@ -5,8 +5,13 @@
 	icon_state = "coolanttank"
 	amount_per_transfer_from_this = 10
 
+<<<<<<< HEAD
 /obj/structure/reagent_dispensers/coolanttank/initialize()
 	..()
+=======
+/obj/structure/reagent_dispensers/coolanttank/Initialize()
+	. = ..()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	reagents.add_reagent("coolant", 1000)
 
 /obj/structure/reagent_dispensers/coolanttank/bullet_act(var/obj/item/projectile/Proj)

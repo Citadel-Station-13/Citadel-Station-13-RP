@@ -71,8 +71,11 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
+<<<<<<< HEAD
 	item_flags = AIRTIGHT //cit change
 	body_parts_covered = EYES //cit change
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
 /obj/item/clothing/glasses/meson/New()
@@ -192,8 +195,11 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
+<<<<<<< HEAD
 	item_flags = AIRTIGHT //cit change
 	body_parts_covered = EYES //cit change
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	enables_planes = list(VIS_FULLBRIGHT)
 
 /obj/item/clothing/glasses/material/New()
@@ -236,6 +242,34 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	body_parts_covered = 0
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/glasses/regular/rimless
+	name = "prescription rimless glasses"
+	desc = "Sleek modern glasses with a single sculpted lens."
+	icon_state = "glasses_rimless"
+	prescription = 1
+
+/obj/item/clothing/glasses/rimless
+	name = "rimless glasses"
+	desc = "Sleek modern glasses with a single sculpted lens."
+	icon_state = "glasses_rimless"
+	prescription = 0
+
+/obj/item/clothing/glasses/regular/thin
+	name = "prescription thin-rimmed glasses"
+	desc = "Glasses with frames are so last century."
+	icon_state = "glasses_thin"
+	prescription = 1
+
+/obj/item/clothing/glasses/thin
+	name = "thin-rimmed glasses"
+	desc = "Glasses with frames are so last century."
+	icon_state = "glasses_thin"
+	prescription = 0
+
+
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."

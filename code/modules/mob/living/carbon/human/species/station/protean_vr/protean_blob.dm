@@ -289,7 +289,7 @@
 	temporary_form = blob
 
 	//Mail them to nullspace
-	forceMove(null)
+	moveToNullspace()
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")

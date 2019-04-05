@@ -68,7 +68,11 @@
 	var/attempt_open = 0
 
 // Pickup loot
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/mimic/crate/initialize()
+=======
+/mob/living/simple_animal/hostile/mimic/crate/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	. = ..()
 	for(var/obj/item/I in loc)
 		I.forceMove(src)

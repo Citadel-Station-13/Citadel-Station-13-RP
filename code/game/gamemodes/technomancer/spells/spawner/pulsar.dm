@@ -25,7 +25,33 @@
 /obj/item/weapon/spell/spawner/pulsar/on_throw_cast(atom/hit_atom, mob/user)
 	empulse(hit_atom, 1, 1, 1, 1, log=1)
 
+<<<<<<< HEAD
 /obj/effect/temporary_effect/pulsar
+=======
+// Does something every so often. Deletes itself when pulses_remaining hits zero.
+/obj/effect/temporary_effect/pulse
+	var/pulses_remaining = 3
+	var/pulse_delay = 2 SECONDS
+
+/obj/effect/temporary_effect/pulse/Initialize()
+	spawn(0)
+		pulse_loop()
+	return ..()
+
+/obj/effect/temporary_effect/pulse/proc/pulse_loop()
+	while(pulses_remaining)
+		sleep(pulse_delay)
+		on_pulse()
+		pulses_remaining--
+	qdel(src)
+
+// Override for specific effects.
+/obj/effect/temporary_effect/pulse/proc/on_pulse()
+
+
+
+/obj/effect/temporary_effect/pulse/pulsar
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	name = "pulsar"
 	desc = "Not a real pulsar, but still emits loads of EMP."
 	icon_state = "shield2"

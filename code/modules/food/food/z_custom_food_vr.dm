@@ -19,7 +19,11 @@ var/global/ingredientLimit = 20
 	var/image/topping
 	var/image/filling
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/customizable/initialize(loc,ingredient)
+=======
+/obj/item/weapon/reagent_containers/food/snacks/customizable/Initialize(loc,ingredient)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	. = ..()
 	topping = image(icon,,"[initial(icon_state)]_top")
 	filling = image(icon,,"[initial(icon_state)]_filling")
@@ -123,7 +127,7 @@ var/global/ingredientLimit = 20
 	return new_name
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/Destroy()
-	QDEL_NULL_LIST(ingredients)
+	QDEL_LIST_NULL(ingredients)
 	return ..()
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/proc/drawTopping()

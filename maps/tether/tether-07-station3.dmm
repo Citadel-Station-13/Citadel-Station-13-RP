@@ -1914,8 +1914,35 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/ai)
 "dd" = (
+<<<<<<< HEAD
 /obj/structure/cable{
 	icon_state = "1-2"
+=======
+/obj/structure/toilet,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/security_bathroom)
+"de" = (
+/obj/machinery/door/airlock/glass_security{
+	name = "Break Room";
+	req_one_access = list(1,38)
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
@@ -2539,6 +2566,7 @@
 /turf/simulated/wall,
 /area/maintenance/station/ai)
 "en" = (
+<<<<<<< HEAD
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper_bin{
 	pixel_x = -3;
@@ -2551,6 +2579,11 @@
 	icon_state = "secintercom";
 	pixel_x = 24;
 	pixel_y = 0
+=======
+/obj/machinery/camera/network/security{
+	icon_state = "camera";
+	dir = 8
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
@@ -7817,10 +7850,22 @@
 /turf/simulated/floor,
 /area/maintenance/cargo)
 "mW" = (
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+=======
+/obj/machinery/recharge_station,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/security_bathroom)
+"mX" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -11980,7 +12025,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green{
 	hard_corner = 1
 	},
-/area/hallway/station/upper)
+/area/tether/elevator)
 "to" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12586,7 +12631,7 @@
 /area/maintenance/station/elevator)
 "ui" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/hallway/station/upper)
+/area/tether/elevator)
 "uj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -12945,6 +12990,7 @@
 /turf/simulated/floor,
 /area/lawoffice)
 "uL" = (
+<<<<<<< HEAD
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d2 = 8;
@@ -12969,6 +13015,14 @@
 	},
 /turf/simulated/floor,
 /area/lawoffice)
+=======
+/obj/machinery/washing_machine,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/security_bathroom)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 "uM" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -13194,11 +13248,9 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/cargo,
 /obj/machinery/alarm{
-	breach_detection = 0;
 	dir = 8;
 	pixel_x = 25;
-	pixel_y = 0;
-	report_danger_level = 0
+	pixel_y = 0
 	},
 /obj/item/weapon/storage/box/lights/mixed,
 /obj/item/weapon/storage/box/lights/mixed,
@@ -13989,7 +14041,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green{
 	hard_corner = 1
 	},
-/area/hallway/station/upper)
+/area/tether/elevator)
 "ww" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -14073,7 +14125,7 @@
 	pixel_x = -27;
 	pixel_y = 0
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -14159,11 +14211,10 @@
 /area/quartermaster/office)
 "wL" = (
 /obj/machinery/camera/network/security{
-	c_tag = "SEC - Vault Exterior North";
-	dir = 1
+	c_tag = "SEC - Vault Exterior South"
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/mine/explored/upper_level)
+/area/security/nuke_storage)
 "wM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/reinforced,
@@ -14369,7 +14420,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -14672,12 +14723,22 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "xu" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
 	},
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 6
+	},
+/obj/item/device/defib_kit/loaded,
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "xv" = (
 /obj/structure/sign/warning/secure_area,
 /turf/simulated/wall/r_wall,
@@ -14686,13 +14747,12 @@
 /turf/simulated/wall/r_wall,
 /area/security/nuke_storage)
 "xx" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+/obj/machinery/camera/network/security{
+	c_tag = "SEC - Vault Exterior North";
+	dir = 1
 	},
 /turf/simulated/mineral/floor/vacuum,
-/area/mine/explored/upper_level)
+/area/security/nuke_storage)
 "xy" = (
 /obj/effect/floor_decal/spline/plain{
 	icon_state = "spline_plain";
@@ -14930,7 +14990,7 @@
 	pixel_x = -27;
 	pixel_y = 0
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -15410,7 +15470,7 @@
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 6
 	},
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/structure/table/bench/standard,
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
@@ -15663,7 +15723,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "yR" = (
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -16387,7 +16447,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "zY" = (
@@ -16573,7 +16633,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "Aj" = (
-/obj/machinery/camera/network/northern_star,
+/obj/machinery/camera/network/tether,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -17068,13 +17128,6 @@
 /area/supply/station{
 	dynamic_lighting = 0
 	})
-"AZ" = (
-/obj/machinery/camera/network/security{
-	c_tag = "SEC - Vault Exterior West";
-	dir = 8
-	},
-/turf/space,
-/area/space)
 "Ba" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -17794,7 +17847,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "Cg" = (
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -19119,7 +19172,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/camera/network/northern_star{
+/obj/machinery/camera/network/tether{
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -22253,6 +22306,7 @@
 /turf/simulated/wall,
 /area/quartermaster/warehouse)
 "JM" = (
+<<<<<<< HEAD
 /obj/structure/table/standard,
 /obj/item/weapon/hand_labeler,
 /obj/item/weapon/stamp{
@@ -22262,6 +22316,15 @@
 /obj/item/weapon/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+=======
+/obj/machinery/alarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallway)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 "JN" = (
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
@@ -22339,6 +22402,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "JW" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -22383,6 +22447,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
+=======
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/space,
+/area/security/nuke_storage)
+"JX" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/mineral/floor/vacuum,
+/area/security/nuke_storage)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 "JY" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -22594,6 +22674,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "Kq" = (
+<<<<<<< HEAD
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/white/border,
@@ -22604,6 +22685,14 @@
 /obj/item/stack/nanopaste,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+=======
+/obj/machinery/camera/network/security{
+	c_tag = "SEC - Vault Exterior West";
+	dir = 8
+	},
+/turf/space,
+/area/security/nuke_storage)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 "Kr" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/firstaid/surgery,
@@ -23159,23 +23248,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"Lo" = (
-/obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/paleblue/bordercorner2{
-	dir = 6
-	},
-/obj/item/device/defib_kit/loaded,
-/turf/simulated/floor/tiled/white,
-/area/space)
 "Lp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -27714,6 +27786,39 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
+<<<<<<< HEAD
+=======
+"VJ" = (
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/security_bathroom)
+"VK" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/keycard_auth{
+	pixel_y = 32
+	},
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/heads/hos)
+"VL" = (
+/obj/structure/grille,
+/obj/structure/lattice,
+/turf/space,
+/area/space)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 "VM" = (
 /turf/simulated/open,
 /area/ai/foyer)
@@ -31655,7 +31760,7 @@ aa
 aa
 ae
 aa
-AZ
+Kq
 aa
 ae
 aa
@@ -31793,7 +31898,7 @@ uG
 vs
 ae
 aa
-xu
+JW
 xv
 xw
 xw
@@ -31801,7 +31906,7 @@ xw
 xw
 xw
 xv
-xu
+JW
 aa
 ae
 aa
@@ -32218,7 +32323,7 @@ tJ
 qc
 vs
 vt
-wL
+xx
 xw
 xw
 zf
@@ -32228,7 +32333,7 @@ BW
 CU
 xw
 xw
-vt
+wL
 vt
 vt
 vt
@@ -32787,7 +32892,7 @@ qc
 vt
 vt
 vt
-xx
+JX
 xw
 zj
 xw
@@ -32795,7 +32900,7 @@ Bf
 xw
 zj
 xw
-xx
+JX
 vt
 ab
 ab
@@ -34477,7 +34582,7 @@ lC
 lC
 lC
 nO
-nN
+JM
 oz
 fo
 pK
@@ -35033,6 +35138,10 @@ bK
 cf
 cT
 jy
+<<<<<<< HEAD
+=======
+jk
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 jk
 jk
 jk
@@ -36070,7 +36179,7 @@ IC
 Jq
 Kf
 KL
-Lo
+xu
 LR
 Mj
 MG
@@ -37160,12 +37269,21 @@ bm
 bz
 bw
 cl
+<<<<<<< HEAD
 bm
 jq
 jq
 qU
 qU
 aI
+=======
+dS
+dd
+SX
+ST
+VJ
+UT
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 fb
 fq
 fG
@@ -37444,6 +37562,7 @@ bm
 bB
 by
 cz
+<<<<<<< HEAD
 cw
 dd
 dx
@@ -37453,6 +37572,18 @@ aI
 aI
 dA
 dw
+=======
+dS
+mW
+SX
+TX
+WB
+uL
+Uw
+UV
+fG
+af
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 fc
 fc
 eI

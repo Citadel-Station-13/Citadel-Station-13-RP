@@ -13,7 +13,7 @@
 
 	var/depth = 1 // Higher numbers indicates deeper water.
 
-/turf/simulated/floor/water/initialize()
+/turf/simulated/floor/water/Initialize()
 	. = ..()
 	update_icon()
 
@@ -102,6 +102,13 @@
 /mob/living/proc/check_submerged()
 	if(buckled)
 		return 0
+<<<<<<< HEAD
+=======
+	if(hovering)
+		return 0
+	if(locate(/obj/structure/catwalk) in loc)
+		return 0
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	var/turf/simulated/floor/water/T = loc
 	if(istype(T))
 		return T.depth

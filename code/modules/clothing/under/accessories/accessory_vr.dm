@@ -27,6 +27,26 @@
 	icon_state = "collar_bell"
 	item_state = "collar_bell_overlay"
 	overlay_state = "collar_bell_overlay"
+<<<<<<< HEAD
+=======
+	var/jingled = 0
+
+/obj/item/clothing/accessory/collar/bell/verb/jinglebell()
+	set name = "Jingle Bell"
+	set category = "Object"
+	set src in usr
+	if(!istype(usr, /mob/living)) return
+	if(usr.stat) return
+
+	if(!jingled)
+		usr.audible_message("[usr] jingles the [src]'s bell.")
+		jingled = 1
+		addtimer(CALLBACK(src, .proc/jingledreset), 50)
+	return
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
+
+/obj/item/clothing/accessory/collar/bell/proc/jingledreset()
+		jingled = 0
 
 /obj/item/clothing/accessory/collar/shock
 	name = "Shock collar"
@@ -164,6 +184,10 @@
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 
 
 /obj/item/clothing/accessory/collar/holo/attack_self(mob/user as mob)

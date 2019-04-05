@@ -213,4 +213,7 @@
 
 /proc/_step_away(ref, trg, max)
 	step_away(ref, trg, max)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

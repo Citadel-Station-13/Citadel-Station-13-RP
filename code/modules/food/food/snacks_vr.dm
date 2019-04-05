@@ -10,7 +10,11 @@
 	nutriment_amt = 5
 	nutriment_desc = list("gargonzola" = 2, "burning" = 2)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/my_new_food/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/my_new_food/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 	bitesize = 3 //How many reagents to transfer per bite?
@@ -26,7 +30,11 @@
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 15
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/sushi/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/sushi/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 10)
 	bitesize = 5
@@ -51,7 +59,11 @@
 	nutriment_amt = 5
 	nutriment_desc = list("tomato" = 4, "meat" = 2)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/lasagna/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/lasagna/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 
@@ -65,7 +77,11 @@
 	nutriment_amt = 6
 	nutriment_desc = list("meat" = 2, "vegetables" = 2, "seasoning" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/goulash/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/goulash/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 3) //For meaty things.
 	reagents.add_reagent("water", 5)
@@ -79,7 +95,11 @@
 	nutriment_amt = 5
 	nutriment_desc = list("vegetables" = 2, "seasoned meat" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/donerkebab/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/donerkebab/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 
@@ -93,7 +113,11 @@
 	nutriment_amt = 8
 	nutriment_desc = list("cooked meat" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/roastbeef/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/roastbeef/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 4) //For meaty things.
 	bitesize = 2
@@ -107,7 +131,11 @@
 	nutriment_amt = 3
 	nutriment_desc = list("chocolate" = 4, "colors" = 2)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/reishicup/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/reishicup/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("psilocybin", 3)
 	bitesize = 6
@@ -122,7 +150,11 @@
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/chickenwing)
 	foldable = null
 
+<<<<<<< HEAD
 /obj/item/weapon/storage/box/wings/initialize()
+=======
+/obj/item/weapon/storage/box/wings/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	for(var/i=1 to startswith)
 		new /obj/item/weapon/reagent_containers/food/snacks/chickenwing(src)
@@ -143,7 +175,11 @@
 	nutriment_amt = 2
 	nutriment_desc = list("chicken" = 2, "unplacable flavor sauce" = 4)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/chickenwing/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/chickenwing/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 1)
 	bitesize = 3
@@ -158,7 +194,11 @@
 	nutriment_amt = 6
 	nutriment_desc = list("spicyness" = 4, "sourness" = 4, "tofu" = 1)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/hotandsoursoup/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/hotandsoursoup/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	bitesize = 2
 
@@ -172,7 +212,11 @@
 	nutriment_amt = 6
 	nutriment_desc = list("fried egg" = 2, "egg noodles" = 4)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/kitsuneudon/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/kitsuneudon/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	bitesize = 2
 
@@ -185,7 +229,11 @@
 	nutriment_amt = 6
 	nutriment_desc = list("sweet and spicy sauce" = 5, "chicken" = 3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/generalschicken/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/generalschicken/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
@@ -197,7 +245,11 @@
 	icon_state = "grubmeat"
 	center_of_mass = list("x"=16, "y"=10)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("shockchem", 6)
@@ -214,7 +266,11 @@
 	nutriment_amt = 1
 	nutriment_desc = list("crunchy shell bits" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/bugball/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/bugball/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("carbon", 5)
@@ -229,7 +285,11 @@
 	nutriment_amt = 3
 	nutriment_desc = list("sparkles" = 5, "ancient inca culture" =3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/pillbug/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/pillbug/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("shockchem", 6)
@@ -243,7 +303,11 @@
 	nutriment_amt = 1
 	nutriment_desc = list("crunchy shell bits" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/pillbug/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/pillbug/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("carbon", 5)
@@ -258,7 +322,11 @@
 	nutriment_amt = 3
 	nutriment_desc = list("brothy sweet goodness" = 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/mammi/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/mammi/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	bitesize = 3
 
@@ -271,7 +339,11 @@
 	nutriment_amt = 15
 	nutriment_desc = list("cheese" = 5, "eggs" = 3, "pasta" = 4, "sparkles" = 3)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/makaroni/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/snacks/makaroni/Initialize()
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master
 	..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("shockchem", 6)
@@ -308,3 +380,198 @@
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube
 	name = "wolpin cube"
 	monkey_type = "Wolpin"
+<<<<<<< HEAD
+=======
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/margfrozen
+	name = "frozen margherita pizza"
+	desc = "It's frozen rock solid, better thaw it in a microwave."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "margharita_pizza_frozen"
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_amt = 15
+	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen cheese" = 5, "frozen tomato" = 5)
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/margfrozen/Initialize()
+	..()
+	bitesize = 20
+	//reagents.add_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margcargo
+	name = "Margherita"
+	desc = "The golden standard of pizzas, it looks drowned in tomato sauce."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "margharita_pizza_cargo"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/slice/margcargo
+	slices_num = 6
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_desc = list("pizza crust" = 10, "tomato" = 15, "cheese" = 5)
+	nutriment_amt = 10
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margcargo/Initialize()
+	..()
+	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("tomatojuice", 10)
+	bitesize = 2
+	//reagents.remove_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/margcargo
+	name = "Margherita slice"
+	desc = "A slice of the classic pizza, it's hard not to spill any tomato juice on yourself."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "margharita_pizza_slice_cargo"
+	filling_color = "#BAA14C"
+	bitesize = 2
+	center_of_mass = list("x"=16, "y"=13)
+	whole_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margcargo
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/margcargo/filled
+	filled = TRUE
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/meatfrozen
+	name = "frozen meat pizza"
+	desc = "It's frozen rock solid, better thaw it in a microwave."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "meat_pizza_frozen"
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_amt = 15
+	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen meat" = 5, "frozen cow screams" = 5)
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/meatfrozen/Initialize()
+	..()
+	bitesize = 20
+	//reagents.add_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatcargo
+	name = "Meatpizza"
+	desc = "A pizza with meat topping, some of it suspiciously pink."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "meat_pizza_cargo"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/slice/meatcargo
+	slices_num = 6
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_desc = list("meat" = 10, "beef" = 10, "squeaky pork" = 15, "longpig" = 5)
+	nutriment_amt = 10
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatcargo/Initialize()
+	..()
+	reagents.add_reagent("protein", 20)
+	reagents.add_reagent("tomatojuice", 6)
+	bitesize = 2
+	//reagents.remove_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/meatcargo
+	name = "Meatpizza slice"
+	desc = "A slice of a meaty pizza, there are some bits of supiciously pink meat."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "meat_pizza_slice_cargo"
+	filling_color = "#BAA14C"
+	bitesize = 2
+	center_of_mass = list("x"=16, "y"=13)
+	whole_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatcargo
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/meatcargo/filled
+	filled = TRUE
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/mushfrozen
+	name = "frozen mushroom pizza"
+	desc = "It's frozen rock solid, better thaw it in a microwave."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "mushroom_pizza_frozen"
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_amt = 15
+	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen mushrooms" = 5, "frozen cream" = 5)
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/mushfrozen/Initialize()
+	..()
+	bitesize = 20
+	//reagents.add_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushcargo
+	name = "Mushroompizza"
+	desc = "Very special pizza, it looks to be drowned in cream."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "mushroom_pizza_cargo"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/slice/mushcargo
+	slices_num = 6
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_desc = list("pizza crust" = 10, "cheese" = 5, "creamy sauce" = 5, "mushroom" = 5)
+	nutriment_amt = 10
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushcargo/Initialize()
+	..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 2
+	//reagents.remove_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/mushcargo
+	name = "Mushroompizza slice"
+	desc = "Very special pizza slice, it looks to be drowned in cream."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "mushroom_pizza_slice_cargo"
+	filling_color = "#BAA14C"
+	bitesize = 2
+	center_of_mass = list("x"=16, "y"=13)
+	whole_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushcargo
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/mushcargp/filled
+	filled = TRUE
+
+/obj/item/weapon/reagent_containers/food/snacks/pizza/vegfrozen
+	name = "frozen vegtable pizza"
+	desc = "It's frozen rock solid, better thaw it in a microwave."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "vegetable_pizza_frozen"
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_amt = 15
+	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen vegtable chunks" = 5)
+	
+/obj/item/weapon/reagent_containers/food/snacks/pizza/vegfrozen/Initialize()
+	..()
+	bitesize = 20
+	//reagents.add_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegcargo
+	name = "Vegetablepizza"
+	desc = "At least 10 of Tomato Sapiens were harmed during making this pizza."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "vegetable_pizza_cargo"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/slice/vegcargo
+	slices_num = 6
+	center_of_mass = list("x"=16, "y"=11)
+	nutriment_desc = list("pizza crust" = 10, "tomato" = 20, "cheese" = 5, "eggplant" = 5, "carrot" = 5, "corn" = 5)
+	nutriment_amt = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegcargo/Initialize()
+	..()
+	reagents.add_reagent("protein", 4)
+	reagents.add_reagent("tomatojuice", 15)
+	reagents.add_reagent("imidazoline", 10)
+	bitesize = 2
+	//reagents.remove_reagent("frostoil",3)
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/vegcargo
+	name = "Vegtablepizza slice"
+	desc = "At least 10 of Tomato Sapiens were harmed during making this pizza."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "vegetable_pizza_slice_cargo"
+	filling_color = "#BAA14C"
+	bitesize = 2
+	center_of_mass = list("x"=16, "y"=13)
+	whole_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegcargo
+
+/obj/item/weapon/reagent_containers/food/snacks/slice/vegcargo/filled
+	filled = TRUE
+
+/obj/item/pizzabox/margherita/Initialize()
+	pizza = new /obj/item/weapon/reagent_containers/food/snacks/pizza/margfrozen(src)
+
+/obj/item/pizzabox/vegetable/Initialize()
+	pizza = new /obj/item/weapon/reagent_containers/food/snacks/pizza/vegfrozen(src)
+
+/obj/item/pizzabox/mushroom/Initialize()
+	pizza = new /obj/item/weapon/reagent_containers/food/snacks/pizza/mushfrozen(src)
+
+/obj/item/pizzabox/meat/Initialize()
+	pizza = new /obj/item/weapon/reagent_containers/food/snacks/pizza/meatfrozen(src)
+>>>>>>> 8b08e45... Merge pull request #4838 from VOREStation/master

@@ -351,8 +351,8 @@
 	connected.check_supports()
 	connected = null
 
-/obj/machinery/mining/brace/verb/rotate()
-	set name = "Rotate"
+/obj/machinery/mining/brace/verb/rotate_clockwise()
+	set name = "Rotate Brace Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
@@ -362,5 +362,5 @@
 		to_chat(usr, "It is anchored in place!")
 		return 0
 
-	src.set_dir(turn(src.dir, 90))
+	src.set_dir(turn(src.dir, 270))
 	return 1
