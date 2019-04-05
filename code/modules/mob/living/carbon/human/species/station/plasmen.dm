@@ -6,7 +6,7 @@
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_BONES
 	num_alternate_languages = 3
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
 	blurb = "Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space. \
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
@@ -29,13 +29,13 @@
 
 	virus_immune = 1
 
-	brute_mod =     2
-	burn_mod =      1
-	oxy_mod =       1.5
-	toxins_mod =    1
+	brute_mod =     1
+	burn_mod =      1.2
+	oxy_mod =       1.2
+	toxins_mod =    0 // blackmajor "encouraged" it
 	radiation_mod = 1
-	flash_mod =     1
-	chemOD_mod =	2
+	flash_mod =     2
+	chemOD_mod =	8
 
 	breath_type = "phoron"
 	poison_type = "oxygen"
@@ -47,7 +47,6 @@
 	knockout_message = "falls over and stops moving!"
 
 	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart,
 		O_LUNGS =    /obj/item/organ/internal/lungs,
 		O_VOICE = 	/obj/item/organ/internal/voicebox,
 		O_LIVER =    /obj/item/organ/internal/liver,
