@@ -6,7 +6,7 @@
 	item_state = "table_parts"
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/stolenpackage/attack_self(mob/user as mob)
+/obj/item/stolenpackage/attack_self(mob/user)
 		// Another way of doing this. Commented out because the other method is better for this application.
 		/*var/spawn_chance = rand(1,100)
 		switch(spawn_chance)
@@ -85,7 +85,7 @@
 						/obj/random/contraband,
 						/obj/random/contraband,
 						/obj/random/weapon/guarenteed)
-		new loot(usr.loc)
+		new loot(user.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
 
@@ -104,7 +104,8 @@
 /obj/item/stolenpackageplus
 	name = "curated stolen package"
 	desc = "What's in this slightly more robust box?"
-/obj/item/stolenpackageplus/attack_self(mob/user as mob)
+
+/obj/item/stolenpackageplus/attack_self(mob/user)
 		var/loot = pick(/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat/advanced,
 						/obj/item/clothing/gloves/combat/advanced,
