@@ -213,9 +213,13 @@
 #include "code\controllers\Processes\emergencyShuttle.dm"
 #include "code\controllers\Processes\event.dm"
 #include "code\controllers\Processes\game_master.dm"
+<<<<<<< HEAD
 #include "code\controllers\Processes\inactivity.dm"
 #include "code\controllers\Processes\nanoui.dm"
 #include "code\controllers\Processes\obj.dm"
+=======
+#include "code\controllers\Processes\nanoui.dm"
+>>>>>>> 688e518... Merge pull request #4910 from Heroman3003/reverting-it-all-not-really
 #include "code\controllers\Processes\radiation.dm"
 #include "code\controllers\Processes\scheduler.dm"
 #include "code\controllers\Processes\sun.dm"
@@ -244,6 +248,14 @@
 #include "code\controllers\subsystems\transcore_vr.dm"
 #include "code\controllers\subsystems\vote.dm"
 #include "code\controllers\subsystems\xenoarch.dm"
+<<<<<<< HEAD
+=======
+#include "code\controllers\subsystems\processing\fastprocess.dm"
+#include "code\controllers\subsystems\processing\obj.dm"
+#include "code\controllers\subsystems\processing\processing.dm"
+#include "code\controllers\subsystems\processing\projectiles.dm"
+#include "code\controllers\subsystems\processing\turfs.dm"
+>>>>>>> 688e518... Merge pull request #4910 from Heroman3003/reverting-it-all-not-really
 #include "code\datums\ai_law_sets.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\beam.dm"
