@@ -439,5 +439,5 @@
 	icon_state = "sheath"
 	storage_slots = 1
 	can_hold = list(
-		/obj/item/weapon/material/sword/sabre,
+		/obj/item/weapon/melee/sabre,
 		)
