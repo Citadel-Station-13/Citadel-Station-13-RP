@@ -444,3 +444,14 @@
 	starts_with = list(
 		/obj/item/weapon/melee/sabre,
 		)
+
+/obj/item/weapon/storage/belt/sheath/update_icon()
+	icon_state = "sheath"
+	item_state = "sheath"
+	if(contents.len)
+		icon_state += "-sabre"
+		item_state += "-sabre"
+	if(loc && isliving(loc))
+		var/mob/living/L = loc
+		L.regenerate_icons()
+	..()
