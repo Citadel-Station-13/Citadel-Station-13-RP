@@ -1276,7 +1276,7 @@
 				src.take_organ_damage(0,5,emp=1)
 				Confuse(5)
 		flash_eyes(affect_human = 1)
-		src << "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>"
+		src << "<font align='center' face='fixedsys' size='10' color='red'><B>#4nd%;f4y6,>£%-BZZZZZZZT</B></font>"
 		src << "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>"
 		src << "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>"
 		..()
