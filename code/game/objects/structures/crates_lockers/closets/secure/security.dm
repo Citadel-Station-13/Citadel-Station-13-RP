@@ -21,6 +21,7 @@
 		new /obj/item/weapon/melee/telebaton(src)
 		new /obj/item/device/flash(src)
 		new /obj/item/weapon/storage/box/ids(src)
+		new /obj/item/weapon/storage/belt/sheath(src)
 		return
 
 
