@@ -33,18 +33,3 @@
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
-	
-/obj/item/weapon/material/sword/sabre
-	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
-	icon_state = "sabre"
-	hitsound = 'sound/weapons/rapierhit.ogg'
-	sharp = 1
-	edge = 1
-	force_divisor = 0.5
-	thrown_force_divisor = 0.5
-
-/obj/item/weapon/material/sword/sabre/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-	return(BRUTELOSS)
