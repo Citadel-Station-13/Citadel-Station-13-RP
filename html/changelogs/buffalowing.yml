@@ -40,3 +40,4 @@ changes:
   - tweak: "Synthetics are no longer affected by pressure. Because they are synthetic."
   - rscadd: "Synthetics are now vulnerable to EMP blasts, and will react similarly to regular silicons."
   - bugfix: "Fixed an issue that caused Synthetic eyes to be damaged by phoron."
+  - bugfix: "Fixed universal translators displaying gibberish."

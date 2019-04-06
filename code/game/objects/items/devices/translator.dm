@@ -73,8 +73,9 @@
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[message]</span>\"")
 
 		//They don't understand the output language
-		else
-			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")
+		/*else
+			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")*/
+			//not much of a 'universal translator' with this else clause.
 
 //Let's try an ear-worn version
 /obj/item/device/universal_translator/ear
