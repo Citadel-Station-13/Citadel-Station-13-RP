@@ -433,9 +433,10 @@
  	icon_state = "fannypack_yellow"
  	item_state = "fannypack_yellow"
 
-/obj/item/weapon/storage/belt/utility
+/obj/item/weapon/storage/belt/sheath
 	name = "sabre sheath" //Carn: utility belt is nicer, but it bamboozles the text parsing.
 	desc = "An ornate sheath designed to hold an officer's blade."
 	icon_state = "sheath"
+	storage_slots = 1
 	can_hold = list(
 		/obj/item/weapon/material/sword/sabre,
