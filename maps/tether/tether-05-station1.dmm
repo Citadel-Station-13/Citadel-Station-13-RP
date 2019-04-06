@@ -18262,7 +18262,6 @@
 /area/bridge)
 "bvW" = (
 /obj/structure/table/reinforced,
-/obj/structure/table/reinforced,
 /obj/item/weapon/storage/firstaid/regular,
 /obj/item/device/radio{
 	pixel_x = 2;

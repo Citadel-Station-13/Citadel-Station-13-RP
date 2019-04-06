@@ -30,4 +30,8 @@ var/datum/controller/process/chemistry/chemistryProcess
 
 	//Process once, right away. If we still need to continue then add to the active_holders list and continue later
 	if(holder.process_reactions())
+<<<<<<< HEAD
 		active_holders += holder
+=======
+		active_holders += holder
+>>>>>>> 7cef525... Merge pull request #4915 from VOREStation/master
