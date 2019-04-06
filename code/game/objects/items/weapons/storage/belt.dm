@@ -441,3 +441,6 @@
 	can_hold = list(
 		/obj/item/weapon/melee/sabre,
 		)
+	starts_with = list(
+		/obj/item/weapon/melee/sabre,
+		)
