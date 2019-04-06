@@ -37,7 +37,6 @@
 /obj/item/weapon/material/sword/sabre
 	name = "officer's sabre"
 	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
-	icon = "icons/obj/items.dmi"
 	icon_state = "sabre"
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	sharp = 1
