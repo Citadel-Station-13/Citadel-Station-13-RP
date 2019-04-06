@@ -30,7 +30,7 @@
 /obj/item/weapon/melee/sabre/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
-return(BRUTELOSS)
+	return(BRUTELOSS)
 		
 /obj/item/weapon/melee/umbrella
 	name = "umbrella"
