@@ -9775,9 +9775,15 @@
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	icon_state = "bordercolor";
+<<<<<<< HEAD
 	dir = 4
 	},
 /obj/item/weapon/storage/box/lights/mixed,
+=======
+	dir = 5
+	},
+/obj/fiftyspawner/steel,
+>>>>>>> 84f3fa0... Merge pull request #4912 from Heroman3003/fiftyspawners-use
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "asi" = (
@@ -33170,6 +33176,7 @@
 	use_power = 1;
 	pixel_y = 1
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
 "sFC" = (
@@ -33192,6 +33199,17 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+=======
+/obj/structure/table/standard,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"vad" = (
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	icon_state = "steel_decals_central6";
+>>>>>>> 84f3fa0... Merge pull request #4912 from Heroman3003/fiftyspawners-use
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
