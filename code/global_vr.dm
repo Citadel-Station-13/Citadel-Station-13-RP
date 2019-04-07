@@ -18,7 +18,10 @@ var/global/list/acceptable_fruit_types= list(
 											"cocoa",
 											"eggplant",
 											"grapes",
+<<<<<<< HEAD
 											"grass",
+=======
+>>>>>>> e654ad0... Merge pull request #4938 from Heroman3003/berries-and-grapes-get-your-ber
 											"greengrapes",
 											"lemon",
 											"lime",
