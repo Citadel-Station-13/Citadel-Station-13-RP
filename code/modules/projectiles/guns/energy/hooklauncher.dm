@@ -21,4 +21,4 @@
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge/alien
 	removable_battery = FALSE
 	automatic_charge_overlays = FALSE
-	firemodes = list(/datum/firemode/energy/hook, /datum/firemode/energy/beam/laser/xray/battlering)
+	firemodes = list(/datum/firemode/energy/hook, /datum/firemode/energy/laser/xray/battlering)

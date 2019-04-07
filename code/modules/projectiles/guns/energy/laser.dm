@@ -15,12 +15,9 @@
 //	one_handed_penalty = 30
 
 	firemodes = list(
-		list(mode_name="normal", fire_delay=8, projectile_type=/obj/item/projectile/beam/midlaser, charge_cost = 240),
-		list(mode_name="suppressive", fire_delay=5, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
+		/datum/firemode/energy/laser,
+		/datum/firemode/energy/laser/suppressive
 		)
-
-
-
 
 /obj/item/gun/energy/laser/mounted
 	self_recharge = TRUE

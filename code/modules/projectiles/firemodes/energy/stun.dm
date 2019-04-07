@@ -14,3 +14,10 @@
 	projectile_type = /obj/item/projectile/beam/disable
 	mode_icon_state = "disable"
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(24)
+
+/datum/firemode/energy/stun/egun
+	name = "stun"
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(10)
+
+/datum/firemode/energy/stun/pulse
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(20)

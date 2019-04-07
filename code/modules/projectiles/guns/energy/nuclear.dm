@@ -1,4 +1,4 @@
-/obj/item/gun/energy/gun/nuclear
+/obj/item/gun/energy/e_gun/nuclear
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized reactor."
 	icon_state = "nucgunstun"
@@ -16,6 +16,6 @@
 //	one_handed_penalty = 15 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="nucgunkill", charge_cost = 480),
+		/datum/firemode/energy/stun/egun,
+		/datum/firemode/energy/laser/egun
 		)

@@ -1,4 +1,4 @@
-/obj/item/gun/energy/gun
+/obj/item/gun/energy/e_gun
 	name = "energy gun"
 	desc = "Another bestseller of Lawson Arms and "+TSC_HEPH+", the LAEP90 Perun is a versatile energy based sidearm, capable of switching between low and high capacity projectile settings. In other words: Stun or Kill."
 	icon_state = "energystun100"
@@ -10,16 +10,16 @@
 	modifystate = "energystun"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun/med, modifystate="energystun", charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="energykill", charge_cost = 480),
+		/datum/firemode/energy/stun/egun,
+		/datum/firemode/energy/laser/egun
 		)
 
-/obj/item/gun/energy/gun/mounted
+/obj/item/gun/energy/e_gun/mounted
 	name = "mounted energy gun"
-	self_recharge = 1
-	use_external_power = 1
+	self_recharge = TRUE
+	use_external_power = ENERGY_GUN_EXTERNAL_CHARGE
 
-/obj/item/gun/energy/gun/burst
+/obj/item/gun/energy/e_gun/burst
 	name = "burst laser"
 	desc = "The FM-2t is a versatile energy based weapon, capable of switching between stun or kill with a three round burst option for both settings."
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley

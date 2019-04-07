@@ -7,9 +7,7 @@
 	item_state = "phasecarbine"
 	wielded_item_state = "phasecarbine-wielded"
 	slot_flags = SLOT_BACK|SLOT_BELT
-	charge_cost = 240
-	projectile_type = /obj/item/projectile/energy/phase
-	one_handed_penalty = 15
+	firemodes = /datum/firemode/energy/phase
 
 /obj/item/gun/energy/phasegun/pistol
 	name = "phase pistol"
@@ -18,20 +16,14 @@
 	item_state = "taser"	//I don't have an in-hand sprite, taser will be fine
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	charge_cost = 300
-	projectile_type = /obj/item/projectile/energy/phase/light
-	one_handed_penalty = 0
+	firemodes = /datum/firemode/energy/phase/pistol
 
 /obj/item/gun/energy/phasegun/pistol/mounted
 	name = "mounted phase pistol"
-	self_recharge = 1
-	use_external_power = 1
+	self_recharge = TRUE
+	use_external_power = ENERGY_GUN_EXTERNAL_CHARGE
 
-/obj/item/gun/energy/phasegun/pistol/mounted/cyborg
-	charge_cost = 400
-	recharge_time = 7
-
-obj/item/gun/energy/phasegun/rifle
+/obj/item/gun/energy/phasegun/rifle
 	name = "phase rifle"
 	desc = "The NT EW31 Orion is a specialist energy weapon, intended for use against hostile wildlife."
 	icon_state = "phaserifle"
@@ -39,10 +31,7 @@ obj/item/gun/energy/phasegun/rifle
 	wielded_item_state = "phaserifle-wielded"
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
-	charge_cost = 150
-	projectile_type = /obj/item/projectile/energy/phase/heavy
-	accuracy = 15
-	one_handed_penalty = 30
+	firemodes = /datum/firemode/energy/phase/rifle
 
 /obj/item/gun/energy/phasegun/cannon
 	name = "phase cannon"
@@ -52,7 +41,4 @@ obj/item/gun/energy/phasegun/rifle
 	wielded_item_state = "phasecannon-wielded"	//TODO: New Sprites
 	w_class = ITEMSIZE_HUGE		// This thing is big.
 	slot_flags = SLOT_BACK
-	charge_cost = 100
-	projectile_type = /obj/item/projectile/energy/phase/heavy/cannon
-	accuracy = 15
-	one_handed_penalty = 65
+	firemodes = /datum/firemode/energy/phase/cannon

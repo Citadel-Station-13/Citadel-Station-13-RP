@@ -5,28 +5,21 @@
 	item_state = null	//so the human update icon uses the icon_state instead.
 	slot_flags = SLOT_BELT|SLOT_BACK
 	force = 10
-	projectile_type = /obj/item/projectile/beam
-	charge_cost = 120
-	sel_mode = 2
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 120),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 120),
-		list(mode_name="DESTROY", projectile_type=/obj/item/projectile/beam/pulse, fire_delay=null, charge_cost = 240),
+		/datum/firemode/energy/stun/pulse,
+		/datum/firemode/energy/laser/pulse,
+		/datum/firemode/energy/pulse
 		)
 
 /obj/item/gun/energy/pulse_rifle/mounted
-	self_recharge = 1
-	use_external_power = 1
+	self_recharge = TRUE
+	use_external_power = ENERGY_GUN_EXTERNAL_CHARGE
 
 /obj/item/gun/energy/pulse_rifle/destroyer
 	name = "pulse destroyer"
 	desc = "A heavy-duty, pulse-based energy weapon. Because of its complexity and cost, it is rarely seen in use except by specialists."
-	projectile_type=/obj/item/projectile/beam/pulse
-	charge_cost = 120
-
-/obj/item/gun/energy/pulse_rifle/destroyer/attack_self(mob/living/user as mob)
-	user << "<span class='warning'>[src.name] has three settings, and they are all DESTROY.</span>"
+	firemodes = /datum/firemode/energy/pulse
 
 //WHY?
 /obj/item/gun/energy/pulse_rifle/M1911
@@ -34,10 +27,9 @@
 	desc = "It's not the size of the gun, it's the size of the hole it puts through people."
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	icon_state = "m1911-p"
-	charge_cost = 240
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_delay=null, charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_delay=null, charge_cost = 240),
-		list(mode_name="DESTROY", projectile_type=/obj/item/projectile/beam/pulse, fire_delay=null, charge_cost = 480),
+		/datum/firemode/energy/stun,
+		/datum/firemode/energy/laser,
+		/datum/firemode/energy/pulse/pistol
 		)
