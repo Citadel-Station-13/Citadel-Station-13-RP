@@ -154,6 +154,6 @@
 						/obj/item/weapon/storage/fancy/cigar/havana,
 						/obj/random/contraband,
 						/obj/random/weapon/guarenteed)
-		new loot(usr.loc)
+		new loot(usr.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
