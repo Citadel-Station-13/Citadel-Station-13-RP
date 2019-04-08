@@ -4747,7 +4747,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Workshop";
-	req_one_access = list(14,24)
+	req_one_access = list(10,24)
 	},
 /turf/simulated/floor/plating,
 /area/engineering/locker_room)
