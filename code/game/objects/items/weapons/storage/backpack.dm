@@ -54,15 +54,15 @@
 /obj/item/weapon/storage/backpack/holding/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/storage/backpack/holding))
 		user << "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>"
-		qdel(W)
+		//qdel(W) - fuck this holy shit
 		return
 	. = ..()
 
 //Please don't clutter the parent storage item with stupid hacks.
-/obj/item/weapon/storage/backpack/holding/can_be_inserted(obj/item/W as obj, stop_messages = 0)
+/*/obj/item/weapon/storage/backpack/holding/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(istype(W, /obj/item/weapon/storage/backpack/holding))
 		return 1
-	return ..()
+	return ..()*/ //- let's not
 
 /obj/item/weapon/storage/backpack/santabag
 	name = "\improper Santa's gift bag"

@@ -96,8 +96,13 @@
 
 	if(default_deconstruction_screwdriver(user, W))
 		return
-	if(default_deconstruction_crowbar(user, W))
+	if(W.is_wrench())
+		playsound(src, W.usesound, 100, 1)
+		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+		anchored = !anchored
 		return
+//	if(default_deconstruction_crowbar(user, W)) //NOTICE: NO CIRCUITBOARD
+//		return
 	if(istype(W,/obj/item/weapon/disk/botany))
 		if(loaded_disk)
 			to_chat(user, "There is already a data disk loaded.")

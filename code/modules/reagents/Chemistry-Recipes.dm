@@ -1230,7 +1230,7 @@
 	name = "Patron"
 	id = "patron"
 	result = "patron"
-	required_reagents = list("tequilla" = 10, "silver" = 1)
+	required_reagents = list("tequila" = 10, "silver" = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/drinks/bilk
@@ -1417,14 +1417,14 @@
 	name = "Brave Bull"
 	id = "bravebull"
 	result = "bravebull"
-	required_reagents = list("tequilla" = 2, "kahlua" = 1)
+	required_reagents = list("tequila" = 2, "kahlua" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/tequilla_sunrise
-	name = "Tequilla Sunrise"
-	id = "tequillasunrise"
-	result = "tequillasunrise"
-	required_reagents = list("tequilla" = 2, "orangejuice" = 1)
+/datum/chemical_reaction/drinks/tequila_sunrise
+	name = "tequila Sunrise"
+	id = "tequilasunrise"
+	result = "tequilasunrise"
+	required_reagents = list("tequila" = 2, "orangejuice" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/phoron_special
@@ -1494,21 +1494,21 @@
 	name = "Margarita"
 	id = "margarita"
 	result = "margarita"
-	required_reagents = list("tequilla" = 2, "limejuice" = 1)
+	required_reagents = list("tequila" = 2, "limejuice" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/longislandicedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequilla" = 1, "cubalibre" = 3)
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/icedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequilla" = 1, "cubalibre" = 3)
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 3)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/threemileisland
@@ -1922,7 +1922,7 @@
 	name = "Erebus Moonrise"
 	id = "erebusmoonrise"
 	result = "erebusmoonrise"
-	required_reagents = list("whiskey" = 1, "vodka" = 1, "tequilla" = 1)
+	required_reagents = list("whiskey" = 1, "vodka" = 1, "tequila" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/balloon
@@ -1971,7 +1971,7 @@
 	name = "Binman Bliss"
 	id = "binmanbliss"
 	result = "binmanbliss"
-	required_reagents = list("sake" = 1, "tequilla" = 1)
+	required_reagents = list("sake" = 1, "tequila" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/chrysanthemum
@@ -2162,7 +2162,7 @@
 	name = "Paloma"
 	id = "paloma"
 	result = "paloma"
-	required_reagents = list("orangejuice" = 1, "sodawater" = 1, "tequilla" = 1)
+	required_reagents = list("orangejuice" = 1, "sodawater" = 1, "tequila" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/mojito

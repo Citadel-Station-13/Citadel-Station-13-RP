@@ -113,6 +113,21 @@
 					C.conveyors |= src
 			return
 
+	if(istype(I, /obj/item/weapon/tool/wrench))
+		if(panel_open)
+			if(operating != 0)
+				to_chat(user, "<span class='notice'>Turn the conveyor off first!</span>")
+				return
+			else if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
+				forwards = turn(dir, 135)
+				backwards = turn(dir, 45)
+			else
+				forwards = dir
+				backwards = turn(dir, 180)
+			playsound(src.loc, I.usesound, 50, 1)
+			to_chat(user, "<span class='notice'>You adjust the gears and motors to spin in the conveyor's direction.</span>")
+			return
+
 	user.drop_item(get_turf(src))
 	return
 

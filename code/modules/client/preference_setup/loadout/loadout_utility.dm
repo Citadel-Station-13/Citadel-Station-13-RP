@@ -142,6 +142,11 @@
 	display_name = "Fountain Pen"
 	path = /obj/item/weapon/pen/fountain
 
+/datum/gear/utility/pen/click
+	display_name = "clicker pen"
+	path = /obj/item/weapon/pen/click
+	cost = 3
+
 /datum/gear/utility/wheelchair/color
 	display_name = "wheelchair"
 	path = /obj/item/wheelchair

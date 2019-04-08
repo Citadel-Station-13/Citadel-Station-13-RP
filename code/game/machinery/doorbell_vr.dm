@@ -47,8 +47,8 @@
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
-	else if(default_deconstruction_crowbar(user, W))
-		return
+//	else if(default_deconstruction_crowbar(user, W))  //NOTICE: NO CIRCUITBOARD
+//		return
 	else if(default_part_replacement(user, W))
 		return
 	else if(panel_open && istype(W, /obj/item/device/multitool))

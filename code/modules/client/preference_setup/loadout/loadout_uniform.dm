@@ -492,7 +492,7 @@
 /datum/gear/uniform/sifguard/medical
 	display_name = "uniform, crew (medical)"
 	path = /obj/item/clothing/under/utility/sifguard/medical
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist")
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
 
 /datum/gear/uniform/sifguard/engineering
 	display_name = "uniform, crew (engineering)"
@@ -518,7 +518,7 @@
 /datum/gear/uniform/fleet/medical
 	display_name = "uniform, coveralls (medical)"
 	path = /obj/item/clothing/under/utility/fleet/medical
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist")
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
 
 /datum/gear/uniform/fleet/engineering
 	display_name = "uniform, coveralls (engineering)"
@@ -544,7 +544,7 @@
 /datum/gear/uniform/marine/medical
 	display_name = "uniform, fatigues (medical)"
 	path = /obj/item/clothing/under/utility/marine/medical
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist")
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
 
 /datum/gear/uniform/marine/engineering
 	display_name = "uniform, fatigues (engineering)"
