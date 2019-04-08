@@ -15966,7 +15966,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Telecomms Substation";
+	req_access = list(10,61);
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
 /area/tcomsat{
 	name = "\improper Telecomms Lobby"
 	})
@@ -16312,7 +16317,7 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Foyer";
 	req_access = list(61);
-	req_one_access = list(12)
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -18068,7 +18073,7 @@
 "IO" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
