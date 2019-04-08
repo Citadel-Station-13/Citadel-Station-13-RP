@@ -17230,8 +17230,16 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "DW" = (
+<<<<<<< HEAD
 /obj/machinery/status_display{
 	pixel_y = 30
+=======
+/obj/machinery/computer/timeclock/premade/east,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+>>>>>>> 40be362... Merge pull request #4972 from Heroman3003/timeclocking
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
