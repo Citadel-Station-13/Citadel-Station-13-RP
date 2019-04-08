@@ -16,7 +16,10 @@
 
 	color_mult = 1
 	mob_size = MOB_MEDIUM //As of writing, original was MOB_SMALL - Allows normal swapping (good)
+<<<<<<< HEAD
 	num_alternate_languages = 2 // citadel change, not stuck with one other lang
+=======
+>>>>>>> 14d2f30... Merge pull request #4973 from Heroman3003/speaking-is-not-as-hard-for-goop
 	trashcan = 1 //They have goopy bodies. They can just dissolve things within them.
 
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
