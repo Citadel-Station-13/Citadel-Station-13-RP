@@ -22,7 +22,7 @@
 	desc = "The dominant language of the Sergal homeworld, Vilous. It consists of aggressive low-pitched hissing and throaty growling."
 	speech_verb = "snarls"
 	colour = "sergal"
-	key = "z"
+	key = "t"
 	syllables = list ("grr", "gah", "woof", "arf", "arra", "rah", "wor", "sarg")
 
 /datum/language/vulpkanin
@@ -66,10 +66,25 @@
 	ask_verb = "hums"
 	exclaim_verb = "loudly sings"
 	colour = "enochian" //So fancy
-	key = "a"
+	key = "i"
 	syllables = list("salve","sum","loqui","operatur","iusta","et","permittit","facere","effercio","pluribus","enim","hoc",
 	"mihi","wan","six","salve","tartu")
 	machine_understands = FALSE
+<<<<<<< HEAD
+=======
+
+/datum/language/bug
+    name = LANGUAGE_VESPINAE
+    desc = "A jarring and clicky language developed and used by Vasilissans, it is designed for use with mouthparts and as a result has become a common language for various arthropod species."
+    speech_verb = "clicks"
+    ask_verb = "chitters"
+    exclaim_verb = "rasps"
+    colour = "bug"
+    key = "x"
+    syllables = list("vaur","uyek","uyit","avek","sc'theth","k'ztak","teth","wre'ge","lii","dra'","zo'","ra'","kax'","zz","vh","ik","ak",
+    "uhk","zir","sc'orth","sc'er","thc'yek","th'zirk","th'esk","k'ayek","ka'mil","sc'","ik'yir","yol","kig","k'zit","'","'","zrk","krg","isk'yet","na'k",
+    "sc'azz","th'sc","nil","n'ahk","sc'yeth","aur'sk","iy'it","azzg","a'","i'","o'","u'","a","i","o","u","zz","kr","ak","nrk","tzzk","bz","xic'","k'lax'","histh")
+>>>>>>> 9c4365f... Merge pull request #4951 from Heroman3003/relanging
 
 /datum/language/unathi
 	flags = 0
@@ -84,3 +99,11 @@
 /datum/language/gutter
 	flags = WHITELISTED
 	machine_understands = FALSE
+/datum/language/human/monkey
+	flags = RESTRICTED
+/datum/language/skrell/monkey
+	flags = RESTRICTED
+/datum/language/unathi/monkey
+	flags = RESTRICTED
+/datum/language/tajaran/monkey
+	flags = RESTRICTED
