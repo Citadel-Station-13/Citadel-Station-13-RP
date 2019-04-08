@@ -10833,10 +10833,7 @@
 /area/crew_quarters/kitchen)
 "tc" = (
 /obj/structure/table/marble,
-/obj/machinery/appliance/mixer/cereal{
-	step_x = 1;
-	step_y = 7
-	},
+/obj/machinery/appliance/mixer/cereal,
 /obj/effect/floor_decal/borderfloor/full,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -10921,10 +10918,7 @@
 /area/crew_quarters/kitchen)
 "to" = (
 /obj/structure/table/marble,
-/obj/machinery/appliance/mixer/candy{
-	step_x = 0;
-	step_y = 10
-	},
+/obj/machinery/appliance/mixer/candy,
 /obj/effect/floor_decal/borderfloor/full,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
