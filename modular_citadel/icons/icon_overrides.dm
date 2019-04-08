@@ -202,10 +202,6 @@
 /obj/item/weapon/rsf
 	icon = 'icons/obj/tools.dmi'
 
-//code/modules/economy/atm.dm
-/obj/machinery/atm
-	icon = 'modular_citadel/icons/obj/terminals.dmi'
-
 //code/game/objects/items/weapons/storage/briefcase.dm
 /obj/item/weapon/storage/briefcase
 	icon = 'modular_citadel/icons/obj/storage.dmi'
