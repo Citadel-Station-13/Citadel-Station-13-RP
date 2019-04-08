@@ -3009,6 +3009,7 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness.dm"
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
+#include "maps\tether\submaps\snowfields\_snowfields.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
