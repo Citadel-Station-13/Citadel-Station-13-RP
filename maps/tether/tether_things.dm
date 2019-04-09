@@ -244,8 +244,7 @@
 
 	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
 	if(user && Adjacent(user) && choice == "Yes")
-		var/mob/observer/dead/newghost = user.ghostize()
-		newghost.timeofdeath = world.time
+		user.ghostize()
 		despawn_occupant(user)
 
 // Tram arrival point landmarks and datum
