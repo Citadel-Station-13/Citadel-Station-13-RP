@@ -164,7 +164,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/otie/security
 
 	var/check_records = 0 // If true, arrests people without a record.
-	var/check_arrest = 1 // If true, arrests people who are set to arrest.
+	var/check_arrest = 0 // If true, arrests people who are set to arrest. CITADEL CHANGE - Let's not have mauling Beepskies
 
 /mob/living/simple_mob/animal/otie/security/phoron
 	name = "mutated guard otie"
