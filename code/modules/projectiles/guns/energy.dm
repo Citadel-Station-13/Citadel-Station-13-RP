@@ -105,6 +105,10 @@
 	else
 		to_chat(user, "It does not seem to have a power cell.")
 
+/obj/item/gun/energy/process_chamber()
+	. = ..()
+	charge_chamber()
+
 /obj/item/gun/energy/process_shot()
 	charge_chamber()
 	return ..()
