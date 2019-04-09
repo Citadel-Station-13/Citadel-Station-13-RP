@@ -168,11 +168,7 @@
 	item_state = "tesh_uniform_brg"
 
 /obj/item/clothing/under/seromi/undercoat/jobs
-<<<<<<< HEAD
-	icon = 'icons/mob/species/seromi/deptjacket.dmi' //CITADEL FIX
-=======
 	icon = 'icons/mob/species/seromi/deptjacket.dmi'
->>>>>>> 7768216... Merge pull request #4801 from VOREStation/upstream-merge-5974
 	icon_override = 'icons/mob/species/seromi/deptjacket.dmi'
 
 /obj/item/clothing/under/seromi/undercoat/jobs/cargo
