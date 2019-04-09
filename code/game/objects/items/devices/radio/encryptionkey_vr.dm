@@ -17,4 +17,4 @@
 /obj/item/device/encryptionkey/heads/rd
 	name = "research director's encryption key"
 	icon_state = "rd_cypherkey"
-	channels = list("Command" = 1, "Science" = 1, "Explorer" = 1)
+	channels = list("Science" = 1, "Command" = 1, "Explorer" = 1)

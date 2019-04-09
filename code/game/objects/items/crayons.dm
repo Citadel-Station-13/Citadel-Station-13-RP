@@ -86,6 +86,7 @@
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
+			log_game("[key_name(user)] drew [target], [colour], [shadeColour], [drawtype] with a crayon.")
 			if(uses)
 				uses--
 				if(!uses)
