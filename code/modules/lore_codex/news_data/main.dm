@@ -4,8 +4,6 @@
 	region. Each is labled by date of publication and title. This list is self-updating, and from time to time the publisher will push new \
 	articles. You are encouraged to check back frequently."
 	children = list(
-<<<<<<< HEAD
-=======
 		/datum/lore/codex/page/article33,
 		/datum/lore/codex/page/article32,
 		/datum/lore/codex/page/bjornretirement,
@@ -27,7 +25,6 @@
 		/datum/lore/codex/page/article16,
 		/datum/lore/codex/page/article15,
 		/datum/lore/codex/page/article14,
->>>>>>> c734e63... Merge pull request #4731 from VOREStation/upstream-merge-5908
 		/datum/lore/codex/page/article13,
 		/datum/lore/codex/page/article12,
 		/datum/lore/codex/page/article11,
