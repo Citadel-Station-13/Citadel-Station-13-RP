@@ -94,23 +94,6 @@
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-<<<<<<< HEAD
-	Trigger(var/atom/movable/A)
-		if(teleport_x && teleport_y && teleport_z)
-			var/turf/T = locate(teleport_x, teleport_y, teleport_z)
-			if(isliving(A))
-				var/mob/living/L = A
-				if(L.pulling)
-					var/atom/movable/P = L.pulling
-					L.stop_pulling()
-					P.forceMove(T)
-					L.forceMove(T)
-					L.start_pulling(P)
-				else
-					A.forceMove(T)
-			else
-				A.forceMove(T)
-=======
 /obj/effect/step_trigger/teleporter/Trigger(atom/movable/AM)
 	if(teleport_x && teleport_y && teleport_z)
 		var/turf/T = locate(teleport_x, teleport_y, teleport_z)
@@ -161,8 +144,6 @@
 	move_object(AM, T)
 
 
->>>>>>> 4040039... Merge pull request #4730 from VOREStation/upstream-merge-5912
-
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 
 /obj/effect/step_trigger/teleporter/random
@@ -182,11 +163,8 @@
 	var/obj/effect/landmark/the_landmark = null
 	var/landmark_id = null
 
-<<<<<<< HEAD
-/obj/effect/step_trigger/teleporter/landmark/initialize()
-=======
+
 /obj/effect/step_trigger/teleporter/landmark/Initialize()
->>>>>>> 4040039... Merge pull request #4730 from VOREStation/upstream-merge-5912
 	. = ..()
 	for(var/obj/effect/landmark/teleport_mark/mark in tele_landmarks)
 		if(mark.landmark_id == landmark_id)
