@@ -3,12 +3,8 @@
 /obj/effect/step_trigger
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
-<<<<<<< HEAD
-	invisibility = 101 // nope cant see this shit
-=======
 	invisibility = 99 // nope cant see this shit
 	plane = ABOVE_PLANE
->>>>>>> 4040039... Merge pull request #4730 from VOREStation/upstream-merge-5912
 	anchored = 1
 
 /obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
