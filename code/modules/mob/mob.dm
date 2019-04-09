@@ -1098,6 +1098,9 @@ mob/proc/yank_out_object()
 /mob/proc/isSynthetic()
 	return 0
 
+/mob/proc/isPromethean()
+	return 0
+
 /mob/proc/is_muzzled()
 	return 0
 

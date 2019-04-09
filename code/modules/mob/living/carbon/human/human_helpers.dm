@@ -77,6 +77,8 @@
 
 	return 0
 
+/mob/living/carbon/human/isPromethean()
+	..()
 // Would an onlooker know this person is synthetic?
 // Based on sort of logical reasoning, 'Look at head, look at torso'
 /mob/living/carbon/human/proc/looksSynthetic()
