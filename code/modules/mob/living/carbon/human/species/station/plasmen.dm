@@ -78,8 +78,8 @@
 		H.adjust_fire_stacks(2)
 		enviroment_bad = 1
 		if(!H.on_fire && enviroment_bad)
-			H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!")
-			to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!")
+			H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>")
+			to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!</span>")
 			H.IgniteMob()
 		if(enviroment_bad && H.on_fire && H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/plasman) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space/plasman)) //If the enviroment is okay and they're wearing a suit, stop burning.
 			H.fire_stacks = 0
