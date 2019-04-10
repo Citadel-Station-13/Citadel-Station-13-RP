@@ -19,3 +19,4 @@
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Comes with a little light built in!"
 	item_flags = STOPPRESSUREDAMAGE | AIRTIGHT | FLEXIBLEMATERIAL
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
+	light_overlay = "plasmaman_overlay"
