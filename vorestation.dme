@@ -52,6 +52,7 @@
 #include "code\__defines\lighting.dm"
 #include "code\__defines\machinery.dm"
 #include "code\__defines\map.dm"
+#include "code\__defines\map_vr.dm"
 #include "code\__defines\math.dm"
 #include "code\__defines\math_physics.dm"
 #include "code\__defines\maths.dm"
@@ -3009,6 +3010,7 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+<<<<<<< HEAD
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\datums\supplypacks\contraband_cit.dm"
@@ -3114,4 +3116,7 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\maps\tether\tether_defines.dm"
+=======
+#include "maps\~map_system\maps_vr.dm"
+>>>>>>> af4b960... Merge pull request #4996 from Heroman3003/safety-first
 // END_INCLUDE
