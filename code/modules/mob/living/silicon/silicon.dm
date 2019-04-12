@@ -72,7 +72,7 @@
 			src.take_organ_damage(0,5,emp=1)
 			Confuse(2)
 	flash_eyes(affect_silicon = 1)
-	src << "<span class='danger'><B>*BZZZT*</B></span>"
+	src << "<span class='danger'><B>#4nd%;f4y6,>£%-BZZZZZZZT</B></span>"
 	src << "<span class='danger'>Warning: Electromagnetic pulse detected.</span>"
 	..()
 

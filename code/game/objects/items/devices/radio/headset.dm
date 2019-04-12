@@ -160,6 +160,12 @@
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/headset_com
 
+/obj/item/device/radio/headset/headset_adj //Citadel Add: Secretary headset with service and command.
+	name = "secretary radio headset"
+	desc = "A headset for those who serve command."
+	icon_state = "com_headset"
+	ks2type = /obj/item/device/encryptionkey/headset_adj
+
 /obj/item/device/radio/headset/headset_com/alt
 	name = "command bowman headset"
 	desc = "A headset with a commanding channel."

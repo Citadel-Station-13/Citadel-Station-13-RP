@@ -154,7 +154,7 @@ var/redspace_abduction_z
 	var/size_of_square = 26
 	var/halfbox = round(size_of_square*0.5)
 	target.transforming = TRUE
-	to_chat(target,"<span class='danger'>You feel a strange tug, deep inside. You're frozen in momentarily...</span>")
+	to_chat(target,"<span class='danger'>You feel a strange tug, deep inside. You're frozen in place momentarily...</span>")
 	to_chat(user,"<span class='notice'>Beginning vis_contents copy to abduction site, player mob is frozen.</span>")
 	sleep(1 SECOND)
 	//Lower left corner of a working box

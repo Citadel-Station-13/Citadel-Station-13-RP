@@ -36,6 +36,9 @@
 /mob/living/silicon/isSynthetic()
 	return 1
 
+/mob/living/carbon/human/isPromethean()
+	return 1
+
 /mob/proc/isMonkey()
 	return 0
 

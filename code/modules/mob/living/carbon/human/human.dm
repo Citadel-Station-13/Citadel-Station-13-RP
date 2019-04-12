@@ -1184,6 +1184,27 @@ v/mob/living/carbon/human
 		W.message = message
 		W.add_fingerprint(src)
 
+/mob/living/carbon/human/emp_act(severity)
+	if(isSynthetic())
+		switch(severity)
+			if(1)
+				src.take_organ_damage(0,20,emp=1)
+				Confuse(20)
+			if(2)
+				src.take_organ_damage(0,15,emp=1)
+				Confuse(15)
+			if(3)
+				src.take_organ_damage(0,10,emp=1)
+				Confuse(10)
+			if(4)
+				src.take_organ_damage(0,5,emp=1)
+				Confuse(5)
+		flash_eyes(affect_human = 1)
+		src << "<font align='center' face='fixedsys' size='10' color='red'><B>#4nd%;f4y6,>£%-BZZZZZZZT</B></font>"
+		src << "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>"
+		src << "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>"
+		..()
+
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	. = 1
 
