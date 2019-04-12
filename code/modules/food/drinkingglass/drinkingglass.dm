@@ -65,7 +65,11 @@
 				return 1
 	return 0
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/glass2/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/glass2/Initialize()
+>>>>>>> 7dd22d0... Merge pull request #5019 from Heroman3003/shaker-fix
 	..()
 	icon_state = base_icon
 

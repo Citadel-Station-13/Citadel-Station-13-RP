@@ -23,7 +23,11 @@
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake
 	name = "protein shake"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake/Initialize()
+>>>>>>> 7dd22d0... Merge pull request #5019 from Heroman3003/shaker-fix
 	..()
 	reagents.add_reagent("nutriment", 30)
 	reagents.add_reagent("iron", 10)
