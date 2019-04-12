@@ -3,6 +3,7 @@ var/const/PILOT 			=(1<<15)
 var/const/EXPLORER 			=(1<<12)
 var/const/PATHFINDER 		=(1<<13)
 
+<<<<<<< HEAD
 /obj/item/weapon/card/id/medical/sar
 	assignment = "Field Medic"
 	rank = "Field Medic"
@@ -30,6 +31,10 @@ var/const/PATHFINDER 		=(1<<13)
 
 /obj/item/weapon/card/id/explorer/head/
 	name = "identification card"
+=======
+/obj/item/weapon/card/id/science/head/pathfinder
+	name = "\improper Pathfinder's ID"
+>>>>>>> origin/master
 	desc = "A card which represents discovery of the unknown."
 	icon_state = "greenGold"
 	primary_color = rgb(47,189,0)
