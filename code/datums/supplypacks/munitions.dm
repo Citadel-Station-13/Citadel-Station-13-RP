@@ -18,7 +18,7 @@
 			/obj/item/weapon/melee/baton/loaded = 2,
 			/obj/item/gun/energy/taser = 2,
 			/obj/item/gun/projectile/colt/detective = 2,
-			/obj/item/weapon/gun/energy/taser = 2,
+			/obj/item/gun/energy/taser = 2,
 			/obj/item/gunbox = 2,
 			/obj/item/weapon/storage/box/flashbangs = 2
 			)

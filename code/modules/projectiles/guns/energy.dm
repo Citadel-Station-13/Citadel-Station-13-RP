@@ -278,15 +278,11 @@
 
 
 
-
-
-
-
 /obj/item/gun/energy/get_description_interaction()
 	var/list/results = list()
 
-	if(!battery_lock && !self_recharge)
-		if(power_supply)
+	if(removable_battery)
+		if(cell)
 			results += "[desc_panel_image("offhand")]to remove the weapon cell."
 		else
 			results += "[desc_panel_image("weapon cell")]to add a new weapon cell."

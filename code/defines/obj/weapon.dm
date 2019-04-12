@@ -82,8 +82,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "cane"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/weapons/melee_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/weapons/melee_righthand.dmi',
 			)
 	flags = CONDUCT
 	force = 5.0

@@ -82,3 +82,17 @@
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.name == SPECIES_PROMETHEAN)
 				agony = slime_agony							//WHY DOES THIS NOT DIRECTLY DO DAMAGE REFACTOR THIS LATER - KEV
+
+/obj/item/projectile/beam/stun/darkmatter
+	name = "dark matter wave"
+	icon_state = "darkt"
+	fire_sound = 'sound/weapons/eLuger.ogg'
+	nodamage = TRUE
+	taser_effect = TRUE
+	agony = 55
+	damage_type = HALLOSS
+	light_color = "#8837A3"
+
+	muzzle_type = /obj/effect/projectile/muzzle/darkmatterstun
+	tracer_type = /obj/effect/projectile/tracer/darkmatterstun
+	impact_type = /obj/effect/projectile/impact/darkmatterstun
