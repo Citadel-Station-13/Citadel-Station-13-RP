@@ -11,7 +11,11 @@
 	rim_pos = null // no fruit slices
 	var/lid_color = "black"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/Initialize()
+>>>>>>> 157f226... Merge pull request #5012 from Heroman3003/shakers-must-use-initialize-INITIALIZE
 	..()
 	lid_color = pick("black", "red", "blue")
 	update_icon()
