@@ -1,6 +1,6 @@
 // -------------- Protector -------------
 /obj/item/gun/energy/protector
-	name = "small energy gun"
+	name = "energy pistol"
 	desc = "The KHI-98a 'Protector' is the first firearm custom-designed for Nanotrasen by KHI. It features a powerful stun mode, and \
 	an alert-level-locked lethal mode, only usable on code blue and higher. It also features an integrated flashlight!"
 

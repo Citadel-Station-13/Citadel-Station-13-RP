@@ -27,6 +27,7 @@
 	var/recoil = 0			//screenshake when firing
 	var/one_handed_penalty = 0		//inherent firemode penalty for one-handing a gun
 	var/sawn_off_penalty = 0		//angular spread when the gun is sawn off.
+	var/unscoped_penalty = 0		//UNIMPLEMENTED - Penalty for not having a gun scoped.
 
 	//These are all overridden by the chambered casing if the casing doesn't have them as null!!
 	var/vary_fire_sound = TRUE

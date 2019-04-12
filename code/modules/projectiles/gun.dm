@@ -373,10 +373,6 @@
 	var/tmp/lock_time = -100
 
 //VOREStation Add - /tg/ icon system
-	var/charge_sections = 4
-	var/shaded_charge = FALSE
-	var/ammo_x_offset = 2
-	var/ammo_y_offset = 0
 	var/can_flashlight = FALSE
 	var/gun_light = FALSE
 	var/light_state = "flight"

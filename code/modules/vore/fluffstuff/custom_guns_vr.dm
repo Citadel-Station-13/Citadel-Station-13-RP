@@ -502,35 +502,8 @@ END OF CITADEL CHANGES */
 	overlays.Cut()
 	update_charge()
 
-//HoP gun
-/obj/item/gun/energy/gun/martin
-	name = "holdout energy gun"
-	desc = "The FS PDW E \"Martin\" is small holdout e-gun. Don't miss!"
-	icon = 'icons/obj/gun_vr.dmi'
-	icon_state = "PDW"
-	item_state = "gun"
-	w_class = ITEMSIZE_SMALL
-	projectile_type = /obj/item/projectile/beam/stun
-	charge_cost = 1200
-	charge_meter = 0
-	modifystate = null
-	battery_lock = 1
-	fire_sound = 'sound/weapons/Taser.ogg'
-	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, fire_sound='sound/weapons/Taser.ogg', charge_cost = 600),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
-		)
 
-/obj/item/gun/energy/gun/martin/proc/update_mode()
-	var/datum/firemode/current_mode = firemodes[sel_mode]
-	switch(current_mode.name)
-		if("stun") add_overlay("taser_pdw")
-		if("lethal") add_overlay("lazer_pdw")
 
-/obj/item/gun/energy/gun/martin/update_icon()
-	cut_overlays()
-	update_mode()
 
 /////////////////////////////////////////////////////
 //////////////////// Custom Ammo ////////////////////

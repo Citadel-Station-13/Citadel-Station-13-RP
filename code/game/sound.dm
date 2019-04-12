@@ -9,10 +9,10 @@
 	channel = channel || open_sound_channel()
 
  	// Looping through the player list has the added bonus of working for mobs inside containers
- 	var/sound/S
+ 	var/sound/SD
 	var/_S = get_sfx(soundin)
 	if(_S)
-		S = sound(_S)
+		SD = sound(_S)
 	else
 		stack_trace("Invalid sfx!")
 	var/maxdistance = (world.view + extrarange) * 3
@@ -28,18 +28,18 @@
 
 		if(distance <= maxdistance)
 			if(T && T.z == turf_source.z)
-				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, channel, pressure_affected, S, preference)
+				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, channel, pressure_affected, SD, preference)
 
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/S, preference)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/SD, preference)
 	if(!client || ear_deaf > 0)
 		return
 	if(preference && !client.is_preference_enabled(preference))
 		return
 
-	if(!S)
+	if(!SD)
 		var/_S = get_sfx(soundin)
 		if(_S)
-			S = sound(_S)
+			SD	 = sound(_S)
 		else
 			stack_trace("Invalid sfx!")
 

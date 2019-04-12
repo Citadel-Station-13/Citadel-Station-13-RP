@@ -1885,7 +1885,7 @@ END OF CITADEL CHANGES */
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
-	item_icons = list(slot_l_hand_str = 'icons/mob/inhands/melee_lefthand.dmi', slot_r_hand_str = 'icons/mob/inhands/melee_righthand.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(slot_l_hand_str = 'icons/mob/inhands/weapons/melee_lefthand.dmi', slot_r_hand_str = 'icons/mob/weapons/inhands/melee_righthand.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/weapon/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS

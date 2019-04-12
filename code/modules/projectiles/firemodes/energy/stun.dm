@@ -21,3 +21,17 @@
 
 /datum/firemode/energy/stun/pulse
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(20)
+
+/datum/firemode/energy/stun/martin
+	fire_sound = 'sound/weapons/taser.ogg'
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(4)
+
+//Xeno taser
+/datum/firemode/energy/stun/xeno
+	projectile_type = /obj/item/projectile/beam/stun/xeno
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(10)
+	fire_sound = 'sound/weapons/taser2.ogg'
+
+/datum/firemode/energy/stun/xeno/security
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(5)
+	projectile_type = /obj/item/projectile/beam/stun/xeno/weak

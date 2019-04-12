@@ -28,7 +28,7 @@
 #define ENERGY_GUN_EXTERNAL_CHARGE		2		//Use external power to charge during processing/selfcharging.
 
 //gun/energy show_cell_charge
-#define ENERGY_GUN_SHOT_SHOTS			1		//show shots left on examine
+#define ENERGY_GUN_SHOW_SHOTS			1		//show shots left on examine
 #define ENERGY_GUN_SHOW_CHARGE			2		//cell charge
 
 //gun/ballistic bolt_type

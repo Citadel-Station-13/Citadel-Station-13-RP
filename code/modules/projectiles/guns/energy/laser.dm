@@ -104,9 +104,9 @@
 	desc = "Standard issue weapon of the Imperial Guard"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
-	projectile_type = /obj/item/projectile/beam/lastertag/blue
+	firemodes = /datum/firemode/energy/lasertag
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge
-	battery_lock = 1
+	removable_battery = FALSE
 	var/required_vest
 
 /obj/item/gun/energy/lasertag/special_check(mob/living/carbon/human/M)
@@ -119,11 +119,11 @@
 /obj/item/gun/energy/lasertag/blue
 	icon_state = "bluetag"
 	item_state = "bluetag"
-	projectile_type = /obj/item/projectile/beam/lastertag/blue
+	firemodes = /datum/firemode/energy/lasertag/blue
 	required_vest = /obj/item/clothing/suit/bluetag
 
 /obj/item/gun/energy/lasertag/red
 	icon_state = "redtag"
 	item_state = "redtag"
-	projectile_type = /obj/item/projectile/beam/lastertag/red
+	firemodes = /datum/firemode/energy/lasretag/red
 	required_vest = /obj/item/clothing/suit/redtag

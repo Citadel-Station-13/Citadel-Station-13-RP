@@ -2,7 +2,7 @@
 	name = "energy gun"
 	desc = "A basic energy-based gun."
 	icon_state = "energy"
-	icon = 'icons/obj/item/guns/energy.dmi'
+	icon = 'icons/obj/item/guns/energy/misc.dmi'
 
 	//PENDING STOCK PART CELL REFACTOR AND STUFF.
 	var/obj/item/weapon/cell/cell
@@ -29,8 +29,8 @@
 	var/old_ratio = 0						//old ammo ratio to see if it needs to update icon
 	var/automatic_item_state = TRUE			//update item state too
 	var/icon_state_shaded_mod = FALSE		//when using shaded charge, append _mode where mode is firemode.mode_icon_state to the end of the state.
-	var/item_state_use_icon_key = TRUE		//use mode icon key, FALSE for use its own or none if it doesn't exist
 	var/item_state_shaded_charge = TRUE		//uses stateful ratio charges (like egun_kill_4, egun_kill_3, .., egun_kill_0)
+	var/item_state_use_icon_key = TRUE		//use mode icon key, FALSE for use its own or none if it doesn't exist
 	var/item_state_has_open = FALSE			//has _open state.
 
 /obj/item/gun/energy/Initialize()
@@ -132,14 +132,14 @@
 	C.use(amount)
 	return TRUE
 
-/obj/item/gun/energy/attack_hand(mob/user as mob)
+/obj/item/gun/energy/attack_hand(mob/user)
 	. = ..()
 	if(. & COMPONENT_NO_INTERACT)
 		return
 	if(user.get_inactive_hand() == src)
 		unload_ammo(user)
 
-/obj/item/gun/energy/AltClick(mob/uesr)
+/obj/item/gun/energy/AltClick(mob/user)
 	. = ..()
 	unload_ammo(user)
 
@@ -194,7 +194,7 @@
 		return insert_cell(C)
 	else
 		user.visible_message("<span class='notice'>[user] starts to slot [C] into [src]...</span>")
-		if(do_after(user, 5 * P.w_class))			//NEEDS TO BE CHANGED TO A LOAD SPEED OR SOMETHING SYSTEM LATER!
+		if(do_after(user, 5 * C.w_class))			//NEEDS TO BE CHANGED TO A LOAD SPEED OR SOMETHING SYSTEM LATER!
 			user.remove_from_mob(C)
 			load_cell(C)
 			user.visible_message("[user] inserts [C] into [src].")
@@ -244,7 +244,7 @@
 		if(item_state_has_open)
 			itemState += "_open"
 		if(itemState != oldItemState)
-			item_state = itemState()
+			item_state = itemState
 			update_held_icon()
 		return								//how do we have charge without a cell? don't bother.
 

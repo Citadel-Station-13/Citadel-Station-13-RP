@@ -88,3 +88,10 @@
 	muzzle_type = /obj/effect/projectile/muzzle/laser_greyscale
 	tracer_type = /obj/effect/projectile/tracer/laser_greyscale
 	impact_type = /obj/effect/projectile/impact/laser_greyscale
+
+/obj/item/projectile/beam/laser/dominator
+	name = "dominator lethal beam"
+	icon_state = "xray"
+	muzzle_type = /obj/effect/projectile/muzzle/xray
+	tracer_type = /obj/effect/projectile/tracer/xray
+	impact_type = /obj/effect/projectile/impact/xray

@@ -8,3 +8,10 @@
 //flags
 #define CONFIG_ENTRY_LOCKED 1	//can't edit
 #define CONFIG_ENTRY_HIDDEN 2	//can't see value
+
+
+
+
+//UNTIL TG CONFIG IS FULLY PORTED
+#define CONFIG_GET(X) config.X
+#define CONFIG_SET(X, y) config.X = Y

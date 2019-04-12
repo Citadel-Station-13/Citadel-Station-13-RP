@@ -236,6 +236,11 @@ var/list/gamemode_cache = list()
 
 	var/invoke_youtubedl
 
+	var/second_click_limit = 20
+	var/minute_topic_limit = 120
+	var/second_topic_limit = 5
+	var/minute_click_limit = 800
+
 /datum/controller/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)

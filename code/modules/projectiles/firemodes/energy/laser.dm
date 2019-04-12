@@ -20,7 +20,7 @@
 
 /datum/firemode/energy/laser/xray
 	name = "xray"
-	projectile_type = /obj/item/projectile/beam/xray
+	projectile_type = /obj/item/projectile/beam/laser/xray
 	mode_icon_state = null
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(12)
 
@@ -34,7 +34,7 @@
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(20)
 
 /datum/firemode/energy/laser/practice
-	projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/item/projectile/beam/laser/practice
 	e_cost = 12
 
 /datum/firemode/energy/laser/retro
@@ -58,3 +58,11 @@
 	projectile_type = /obj/item/projectile/beam/laser/heavy/cannon
 	fire_delay = 20
 	mode_icon_state = null
+
+/datum/firemode/energy/laser/martin
+	projectile_type = /obj/item/projectile/beam/laser
+	fire_sound = 'sound/weapons/laser.ogg'
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(2)
+
+/datum/firemode/energy/laser/dominator
+	fire_sound = 'sound/weapons/gauss_shoot.ogg'
