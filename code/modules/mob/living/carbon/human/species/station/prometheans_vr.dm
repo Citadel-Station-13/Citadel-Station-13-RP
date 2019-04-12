@@ -9,6 +9,7 @@
 		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
 		"Wolpin", "Saru", "Sparra")
 
+<<<<<<< HEAD
 	heal_rate = 0.35 //As of writing, original was 0.2 - speeds up regen
 	hunger_factor = 0.07 //As of writing, original was 0.1 - Slows hunger rate (some more)
 	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
@@ -17,6 +18,10 @@
 	color_mult = 1
 	mob_size = MOB_MEDIUM //As of writing, original was MOB_SMALL - Allows normal swapping (good)
 	num_alternate_languages = 2 // citadel change, not stuck with one other lang
+=======
+	color_mult = 1
+	mob_size = MOB_MEDIUM //As of writing, original was MOB_SMALL - Allows normal swapping
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	trashcan = 1 //They have goopy bodies. They can just dissolve things within them.
 
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR

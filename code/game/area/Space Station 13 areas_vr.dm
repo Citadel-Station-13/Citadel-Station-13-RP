@@ -49,6 +49,22 @@
 /area/security/nuke_storage
 	flags = BLUE_SHIELDED
 
+<<<<<<< HEAD
+=======
+/area/supply
+	flags = BLUE_SHIELDED
+
+// Add rad shielding to maintenance and construction sites
+/area/vacant
+	flags = RAD_SHIELDED
+
+/area/maintenance
+	flags = RAD_SHIELDED
+
+/area/rnd/research_storage	//Located entirely in maint under public access, so why not that too
+	flags = RAD_SHIELDED
+
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 // New shuttles
 /area/shuttle/administration/transit
 	name = "Deep Space (AS)"

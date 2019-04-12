@@ -11,7 +11,11 @@
 	rim_pos = null // no fruit slices
 	var/lid_color = "black"
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/initialize()
+=======
+/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/Initialize()
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	..()
 	lid_color = pick("black", "red", "blue")
 	update_icon()

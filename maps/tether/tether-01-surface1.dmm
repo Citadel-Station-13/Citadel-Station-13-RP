@@ -5070,6 +5070,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "ajf" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
@@ -5090,6 +5091,40 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
+=======
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/alarm{
+	breach_detection = 0;
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 25;
+	rcon_setting = 3;
+	report_danger_level = 0
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/engineering/atmos/intake)
+"ajg" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/engineering/atmos/intake)
+"ajh" = (
+/obj/machinery/atmospherics/unary/vent_scrubber{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/engineering/atmos/intake)
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 "aji" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -9775,9 +9810,15 @@
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	icon_state = "bordercolor";
+<<<<<<< HEAD
 	dir = 4
 	},
 /obj/item/weapon/storage/box/lights/mixed,
+=======
+	dir = 5
+	},
+/obj/fiftyspawner/steel,
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "asi" = (
@@ -28515,8 +28556,12 @@
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "rnd_s_airlock";
 	pixel_x = 25;
+<<<<<<< HEAD
 	pixel_y = -8;
 	req_access = list(47)
+=======
+	pixel_y = 0
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	},
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
@@ -29718,12 +29763,23 @@
 	pixel_y = -4;
 	specialfunctions = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/public_garden_maintenence)
+"gXh" = (
+/turf/simulated/wall,
+/area/tether/surfacebase/public_garden)
+"gZC" = (
+/obj/structure/closet,
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "cce" = (
@@ -29982,11 +30038,20 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 8
+=======
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/mining_main/airlock)
+"iDf" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+	icon_state = "intact";
+	dir = 10
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -30907,11 +30972,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/door/airlock{
 	name = "Restroom"
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"mnZ" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/light,
+/obj/structure/cable/green,
+/obj/machinery/power/apc{
+	dir = 2;
+	name = "south bump";
+	pixel_y = -32
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
@@ -33336,9 +33415,30 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+<<<<<<< HEAD
 "tRU" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/borderfloor{
+=======
+"uZy" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/newscaster{
+	pixel_y = 30
+	},
+/obj/structure/table/standard,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"vad" = (
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	icon_state = "steel_decals_central6";
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow/border{
@@ -42453,6 +42553,7 @@ aGc
 aHo
 aIv
 aJt
+<<<<<<< HEAD
 swM
 kdT
 eSo
@@ -42460,6 +42561,15 @@ aJd
 aJL
 aJL
 aJt
+=======
+dFd
+ajf
+ajg
+ajh
+rab
+rab
+erR
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 aJt
 aJt
 aah

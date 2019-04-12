@@ -18,7 +18,10 @@ var/global/list/acceptable_fruit_types= list(
 											"cocoa",
 											"eggplant",
 											"grapes",
+<<<<<<< HEAD
 											"grass",
+=======
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 											"greengrapes",
 											"lemon",
 											"lime",

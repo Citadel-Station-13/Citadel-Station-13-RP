@@ -70,6 +70,7 @@
 #define ROBOT_NOTIFICATION_NEW_NAME 2
 #define ROBOT_NOTIFICATION_NEW_MODULE 3
 #define ROBOT_NOTIFICATION_MODULE_RESET 4
+#define ROBOT_NOTIFICATION_AI_SHELL 5
 
 // Appearance change flags
 #define APPEARANCE_UPDATE_DNA  0x1
@@ -234,6 +235,16 @@
 #define FBP_POSI	"Positronic"
 #define FBP_DRONE	"Drone"
 
+<<<<<<< HEAD
+=======
+// Similar to above but for borgs.
+// Seperate defines are unfortunately required since borgs display the brain differently for some reason.
+#define BORG_BRAINTYPE_CYBORG	"Cyborg"
+#define BORG_BRAINTYPE_POSI		"Robot"
+#define BORG_BRAINTYPE_DRONE	"Drone"
+#define BORG_BRAINTYPE_AI_SHELL	"AI Shell"
+
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 // 'Regular' species.
 #define SPECIES_HUMAN			"Human"
 #define SPECIES_HUMAN_VATBORN	"Vatborn"

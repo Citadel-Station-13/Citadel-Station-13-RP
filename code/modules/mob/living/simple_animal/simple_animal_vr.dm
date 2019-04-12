@@ -103,10 +103,25 @@
 	if(!vore_active)
 		return ..()
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/simple_animal_vr.dm
 	// If target is standing we might pounce and knock them down instead of attacking
 	var/pouncechance = CanPounceTarget()
 	if(pouncechance)
 		return PounceTarget(pouncechance)
+=======
+		// If target is standing we might pounce and knock them down instead of attacking
+		var/pouncechance = CanPounceTarget(L)
+		if(pouncechance)
+			return PounceTarget(L, pouncechance)
+
+		// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
+		if(will_eat(L) && (!L.canmove || vore_standing_too))
+			return EatTarget(L)
+		else
+			return ..()
+	else
+		return ..()
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master:code/modules/mob/living/simple_mob/simple_mob_vr.dm
 
 	// We're not attempting a pounce, if they're down or we can eat standing, do it as long as they're edible. Otherwise, hit normally.
 	if(will_eat(target_mob) && (!target_mob.canmove || vore_standing_too))

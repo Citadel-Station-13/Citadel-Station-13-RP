@@ -254,9 +254,16 @@
 
 	return
 
+<<<<<<< HEAD
 /obj/item/weapon/deck/verb_pickup(mob/user as mob) // Snowflaked so pick up verb work as intended
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
 		if(!istype(usr, /mob/living/simple_animal))
+=======
+/obj/item/weapon/deck/verb_pickup() // Snowflaked so pick up verb work as intended
+	var/mob/user = usr
+	if((istype(user) && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))
+		if(!istype(usr, /mob/living/simple_mob))
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 			if( !usr.get_active_hand() )		//if active hand is empty
 				var/mob/living/carbon/human/H = user
 				var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]

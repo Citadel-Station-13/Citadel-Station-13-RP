@@ -17230,8 +17230,16 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "DW" = (
+<<<<<<< HEAD
 /obj/machinery/status_display{
 	pixel_y = 30
+=======
+/obj/machinery/computer/timeclock/premade/east,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -19686,41 +19694,15 @@
 /obj/structure/closet{
 	name = "materials"
 	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/material/glass{
-	amount = 50;
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/stack/material/glass{
-	amount = 50;
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/stack/material/glass{
-	amount = 50;
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/stack/material/glass{
-	amount = 50;
-	pixel_x = -2;
-	pixel_y = 2
-	},
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
 /obj/item/stack/material/plasteel{
 	amount = 10
 	},

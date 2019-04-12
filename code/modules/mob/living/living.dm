@@ -77,9 +77,58 @@ default behaviour is:
 			return 1
 		return 0
 
+<<<<<<< HEAD
 /mob/living/Bump(atom/movable/AM, yes)
 	spawn(0)
 		if ((!( yes ) || now_pushing) || !loc)
+=======
+/mob/living/Bump(atom/movable/AM)
+	if(now_pushing || !loc)
+		return
+	now_pushing = 1
+	if (istype(AM, /mob/living))
+		var/mob/living/tmob = AM
+
+		//Even if we don't push/swap places, we "touched" them, so spread fire
+		spread_fire(tmob)
+
+		for(var/mob/living/M in range(tmob, 1))
+			if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)) )
+				if ( !(world.time % 5) )
+					to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
+				now_pushing = 0
+				return
+			if( tmob.pulling == M && ( M.restrained() && !( tmob.restrained() ) && tmob.stat == 0) )
+				if ( !(world.time % 5) )
+					to_chat(src, "<span class='warning'>[tmob] is restraining [M], you cannot push past</span>")
+				now_pushing = 0
+				return
+
+		//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
+		var/can_swap = 1
+		if(loc.density || tmob.loc.density)
+			can_swap = 0
+		if(can_swap)
+			for(var/atom/movable/A in loc)
+				if(A == src)
+					continue
+				if(!A.CanPass(tmob, loc))
+					can_swap = 0
+				if(!can_swap) break
+		if(can_swap)
+			for(var/atom/movable/A in tmob.loc)
+				if(A == tmob)
+					continue
+				if(!A.CanPass(src, tmob.loc))
+					can_swap = 0
+				if(!can_swap) break
+
+		//Leaping mobs just land on the tile, no pushing, no anything.
+		if(status_flags & LEAPING)
+			loc = tmob.loc
+			status_flags &= ~LEAPING
+			now_pushing = 0
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 			return
 		now_pushing = 1
 		if (istype(AM, /mob/living))
@@ -114,10 +163,22 @@ default behaviour is:
 						dense = 1
 				if(dense) break
 
+<<<<<<< HEAD
 			//Leaping mobs just land on the tile, no pushing, no anything.
 			if(status_flags & LEAPING)
 				loc = tmob.loc
 				status_flags &= ~LEAPING
+=======
+		if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
+			var/turf/oldloc = loc
+			forceMove(tmob.loc)
+			//VOREstation Edit - Begin
+			if (istype(tmob, /mob/living/simple_mob)) //check bumpnom chance, if it's a simplemob that's bumped
+				tmob.Bumped(src)
+			else if(istype(src, /mob/living/simple_mob)) //otherwise, if it's a simplemob doing the bumping. Simplemob on simplemob doesn't seem to trigger but that's fine.
+				Bumped(tmob)
+			if (tmob.loc == src) //check if they got ate, and if so skip the forcemove
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 				now_pushing = 0
 				return
 

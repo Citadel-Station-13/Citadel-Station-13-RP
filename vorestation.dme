@@ -52,6 +52,7 @@
 #include "code\__defines\lighting.dm"
 #include "code\__defines\machinery.dm"
 #include "code\__defines\map.dm"
+#include "code\__defines\map_vr.dm"
 #include "code\__defines\math.dm"
 #include "code\__defines\math_physics.dm"
 #include "code\__defines\maths.dm"
@@ -209,13 +210,15 @@
 #include "code\controllers\verbs.dm"
 #include "code\controllers\observer_listener\atom\observer.dm"
 #include "code\controllers\Processes\alarm.dm"
-#include "code\controllers\Processes\chemistry.dm"
 #include "code\controllers\Processes\emergencyShuttle.dm"
 #include "code\controllers\Processes\event.dm"
 #include "code\controllers\Processes\game_master.dm"
+<<<<<<< HEAD
 #include "code\controllers\Processes\inactivity.dm"
 #include "code\controllers\Processes\nanoui.dm"
 #include "code\controllers\Processes\obj.dm"
+=======
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 #include "code\controllers\Processes\radiation.dm"
 #include "code\controllers\Processes\scheduler.dm"
 #include "code\controllers\Processes\sun.dm"
@@ -236,6 +239,7 @@
 #include "code\controllers\subsystems\machines.dm"
 #include "code\controllers\subsystems\mapping_vr.dm"
 #include "code\controllers\subsystems\mobs.dm"
+#include "code\controllers\subsystems\nanoui.dm"
 #include "code\controllers\subsystems\orbits.dm"
 #include "code\controllers\subsystems\overlays.dm"
 #include "code\controllers\subsystems\persist_vr.dm"
@@ -244,6 +248,15 @@
 #include "code\controllers\subsystems\transcore_vr.dm"
 #include "code\controllers\subsystems\vote.dm"
 #include "code\controllers\subsystems\xenoarch.dm"
+<<<<<<< HEAD
+=======
+#include "code\controllers\subsystems\processing\chemistry.dm"
+#include "code\controllers\subsystems\processing\fastprocess.dm"
+#include "code\controllers\subsystems\processing\obj.dm"
+#include "code\controllers\subsystems\processing\processing.dm"
+#include "code\controllers\subsystems\processing\projectiles.dm"
+#include "code\controllers\subsystems\processing\turfs.dm"
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 #include "code\datums\ai_law_sets.dm"
 #include "code\datums\ai_laws.dm"
 #include "code\datums\beam.dm"
@@ -265,6 +278,7 @@
 #include "code\datums\organs.dm"
 #include "code\datums\progressbar.dm"
 #include "code\datums\riding.dm"
+#include "code\datums\soul_link.dm"
 #include "code\datums\sun.dm"
 #include "code\datums\weakref.dm"
 #include "code\datums\autolathe\arms.dm"
@@ -2183,6 +2197,7 @@
 #include "code\modules\mob\living\silicon\subystems.dm"
 #include "code\modules\mob\living\silicon\ai\ai.dm"
 #include "code\modules\mob\living\silicon\ai\ai_movement.dm"
+#include "code\modules\mob\living\silicon\ai\ai_remote_control.dm"
 #include "code\modules\mob\living\silicon\ai\ai_vr.dm"
 #include "code\modules\mob\living\silicon\ai\death.dm"
 #include "code\modules\mob\living\silicon\ai\examine.dm"
@@ -2224,6 +2239,7 @@
 #include "code\modules\mob\living\silicon\robot\robot_damage.dm"
 #include "code\modules\mob\living\silicon\robot\robot_items.dm"
 #include "code\modules\mob\living\silicon\robot\robot_movement.dm"
+#include "code\modules\mob\living\silicon\robot\robot_remote_control.dm"
 #include "code\modules\mob\living\silicon\robot\robot_vr.dm"
 #include "code\modules\mob\living\silicon\robot\syndicate.dm"
 #include "code\modules\mob\living\silicon\robot\dogborg\dog_modules_vr.dm"
@@ -2234,7 +2250,6 @@
 #include "code\modules\mob\living\silicon\robot\drone\drone_damage.dm"
 #include "code\modules\mob\living\silicon\robot\drone\drone_items.dm"
 #include "code\modules\mob\living\silicon\robot\drone\drone_manufacturer.dm"
-#include "code\modules\mob\living\silicon\robot\drone\drone_remote_control.dm"
 #include "code\modules\mob\living\silicon\robot\drone\drone_say.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules\event.dm"
 #include "code\modules\mob\living\silicon\robot\robot_modules\station.dm"
@@ -2422,7 +2437,6 @@
 #include "code\modules\organs\subtypes\nano.dm"
 #include "code\modules\organs\subtypes\seromi.dm"
 #include "code\modules\organs\subtypes\slime.dm"
-#include "code\modules\organs\subtypes\slime_vr.dm"
 #include "code\modules\organs\subtypes\standard.dm"
 #include "code\modules\organs\subtypes\standard_vr.dm"
 #include "code\modules\organs\subtypes\unathi.dm"
@@ -2858,6 +2872,7 @@
 #include "code\modules\vore\eating\bellymodes_vr.dm"
 #include "code\modules\vore\eating\contaminate_vr.dm"
 #include "code\modules\vore\eating\digest_act_vr.dm"
+#include "code\modules\vore\eating\leave_remains_vr.dm"
 #include "code\modules\vore\eating\living_vr.dm"
 #include "code\modules\vore\eating\silicon_vr.dm"
 #include "code\modules\vore\eating\simple_animal_vr.dm"
@@ -3009,6 +3024,7 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+<<<<<<< HEAD
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\datums\supplypacks\contraband_cit.dm"
@@ -3114,4 +3130,7 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\maps\tether\tether_defines.dm"
+=======
+#include "maps\~map_system\maps_vr.dm"
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
 // END_INCLUDE

@@ -1820,4 +1820,8 @@ END OF CITADEL CHANGES */
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	w_class = ITEMSIZE_NORMAL
+<<<<<<< HEAD
 	slot = ACCESSORY_SLOT_OVER
+=======
+	slot = ACCESSORY_SLOT_OVER
+>>>>>>> 6e656c5... Merge pull request #5001 from VOREStation/master
