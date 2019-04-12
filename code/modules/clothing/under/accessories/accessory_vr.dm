@@ -163,6 +163,8 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
+	matter = list(DEFAULT_WALL_MATERIAL = 50)
+
 
 /obj/item/clothing/accessory/collar/holo/attack_self(mob/user as mob)
 	to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")

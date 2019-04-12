@@ -10,7 +10,9 @@
 	name = "service-hound module"
 	sprites = list(
 					"Blackhound" = "k50",
-					"Pinkhound" = "k69"
+					"Pinkhound" = "k69",
+					"ServicehoundV2" = "serve2",
+					"ServicehoundV2 Darkmode" = "servedark",
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0

@@ -345,7 +345,7 @@
 	Arielsson's governorship saw increased funding towards Sif's vererable ground-based transportation networks to the benefit of some of New Rekjavik's more remote neighbors, though opponents have criticised subsidies towards artificially heated fungal farms, arguing that the faciliies \"benefit a small minority of Skrellian residents to the detriment of already fragile local ecosystems.\"\
 	<br><br>\
 	The Sivian Shadow Coalition has yet to announce who is to take Arielsson's place on this year's ballot."
-
+  
 /datum/lore/codex/category/article31
 	name = "01/13/63 - Bjorn Arielsson Issues 'Farewell Address'"
 	data = "Veteran politician Bjorn Arielsson made an impromptu address from his Kalmar cabin, beseeching political unity in the face of the Almach Seccession and offering his own perspective on the conflict.  'It's republicanism versus autocracy,' he said, 'and we're not the autocracy.'\
