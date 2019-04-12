@@ -72,20 +72,15 @@
 	item_state = null
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
 	slot_flags = SLOT_BELT|SLOT_BACK
-	removeable_battery = FALSE
+	removable_battery = FALSE
 	w_class = ITEMSIZE_LARGE
 	firemodes = /datum/firemode/energy/laser/cannon
 
 /obj/item/gun/energy/lasercannon/mounted
 	name = "mounted laser cannon"
 	self_recharge = TRUE
-	use_external_power = 1
+	use_external_cell = ENERGY_GUN_EXTERNAL_CHARGE
 	recharge_time = 10
-	accuracy = 0 // Mounted cannons are just fine the way they are.
-	one_handed_penalty = 0 // Not sure if two-handing gets checked for mounted weapons, but better safe than sorry.
-	projectile_type = /obj/item/projectile/beam/heavylaser
-	charge_cost = 400
-	fire_delay = 20
 
 /obj/item/gun/energy/xray
 	name = "xray laser gun"
@@ -125,5 +120,5 @@
 /obj/item/gun/energy/lasertag/red
 	icon_state = "redtag"
 	item_state = "redtag"
-	firemodes = /datum/firemode/energy/lasretag/red
+	firemodes = /datum/firemode/energy/lasertag/red
 	required_vest = /obj/item/clothing/suit/redtag

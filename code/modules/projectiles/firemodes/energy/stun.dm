@@ -49,3 +49,7 @@
 /datum/firemode/energy/stun/hos
 	projectile_type = /obj/item/projectile/energy/electrode/goldenbolt
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(5)
+
+/datum/firemode/energy/stun/netgun
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(10)
+	projectile_type = /obj/item/projectile/beam/stun/blue
