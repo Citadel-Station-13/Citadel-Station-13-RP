@@ -54,7 +54,7 @@
 	mode_icon_state = null
 
 /datum/firemode/energy/laser/cannon
-	charge_cost = SCALE_ENERGY_WEAPON_NORMAL(4)
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(4)
 	projectile_type = /obj/item/projectile/beam/laser/heavy/cannon
 	fire_delay = 20
 	mode_icon_state = null
@@ -68,8 +68,12 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 
 /datum/firemode/energy/laser/burstlaser
-	burst = 3
+	burst_size = 3
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(12)
 	projectile_type = /obj/item/projectile/beam/laser/burstlaser
 	spread = 7
 	fire_delay = 6
+
+/datum/firemode/energy/laser/hos
+	projectile_type = /obj/item/projectile/beam/laser
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(10)

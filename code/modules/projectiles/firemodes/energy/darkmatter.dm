@@ -16,5 +16,5 @@
 
 /datum/firemode/energy/darkmatter/burst
 	spread = 15
-	burst = 8
+	burst_size = 8
 	name = "burst barrage"

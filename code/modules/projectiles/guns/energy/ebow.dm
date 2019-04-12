@@ -8,7 +8,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	suppressed = TRUE
-	selfcharge = TRUE
+	self_recharge = TRUE
 	charge_delay = 0
 	removable_battery = FALSE
 	automatic_charge_overlays = FALSE

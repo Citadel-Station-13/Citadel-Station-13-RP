@@ -36,6 +36,6 @@
 /datum/supply_pack/misc/looksir
 	name = "free crab"
 	contains = list(
-			/mob/living/simple_animal/crab = 1
+			/mob/living/simple_mob/animal/passive/crab = 1
 			)
 	cost = 7

@@ -4,9 +4,7 @@
 	icon_state = "energystun100"
 	icon = 'icons/obj/items/guns/energy/egun.dmi'
 	item_state = null	//so the human update icon uses the icon_state instead.
-	fire_delay = 10 // Handguns should be inferior to two-handed weapons.
 
-	projectile_type = /obj/item/projectile/beam/stun/med
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	modifystate = "energystun"
 
@@ -25,7 +23,6 @@
 	desc = "The FM-2t is a versatile energy based weapon, capable of switching between stun or kill with a three round burst option for both settings."
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
 	item_state = null	//so the human update icon uses the icon_state instead.
-	charge_cost = 100
 	force = 8
 	w_class = ITEMSIZE_LARGE	//Probably gonna make it a rifle sooner or later
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 3)
@@ -75,3 +72,19 @@
 		emagged = TRUE
 		to_chat(user,"<span class='warning'>You disable the alert level locking mechanism on \the [src]!</span>")
 	return TRUE
+
+/obj/item/gun/energy/gun/multiphase
+	name = "\improper X-01 MultiPhase Energy Gun"
+	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_POWER = 3)
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	force = 10 //for the HOS to lay down a good beating in desperate situations. Holdover from TG.
+	icon_state = "hoslaser"
+	w_class = ITEMSIZE_NORMAL
+	modifystate = null
+
+	firemodes = list(
+		/datum/firemode/energy/stun/hos,
+		/datum/firemode/energy/laser/hos,
+		/datum/firemode/energy/disable/hos
+		)

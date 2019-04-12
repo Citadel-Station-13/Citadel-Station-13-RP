@@ -1,3 +1,9 @@
+/datum/firemode/energy/kinetic_accelerator
+	projectile_type = /obj/item/projectile/kinetic
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(1)
+	fire_delay = 16
+	var/obj/item/gun/energy/kinetic_accelerator/accelerator
+
 /obj/item/gun/energy/kinetic_accelerator
 	name = "proto-kinetic accelerator"
 	desc = "A self recharging, ranged mining tool that does increased damage in low temperature. Capable of holding up to six slots worth of mod kits."
@@ -5,22 +11,34 @@
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/guns_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/guns_righthand.dmi'
+		slot_l_hand_str = 'icons/mob/inhands/weapons/guns_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 		)
-	projectile_type = /obj/item/projectile/kinetic
 	origin_tech = list(TECH_COMBAT = 3, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	can_flashlight = TRUE
 	flight_x_offset = 15
 	flight_y_offset = 9
-	charge_cost = 120 // 20 shots on weapon power cell
-	fire_delay = 16
-	self_recharge = TRUE
-	recharge_amount = SCALE_ENERGY_WEAPON_NORMAL(600)		//1 minute to full charge.
+	removable_battery = FALSE
+	firemodes = /datum/firemode/energy/kinetic_accelerator
 
 	var/max_mod_capacity = 100
 	var/list/modkits = list()
 	var/empty_state = "kineticgun_empty"
+
+/obj/item/gun/energy/kinetic_accelerator/proc/do_reload()
+	if(cell)
+		cell.give(cell.maxcharge)
+
+/obj/item/gun/energy/kinetic_accelerator/postfire_live()
+	. = ..()
+	if(cell)
+		cell.use(cell.return_charge())
+	addtimer(CALLBACK(src, .proc/do_reload), firemode.fire_delay)
+
+/obj/item/gun/energy/kinetic_accelerator/initialize_firemodes()
+	. = ..()
+	var/datum/firemode/energy/kinetic_accelerator/KAF = firemode
+	KAF.accelerator = src														//if this runtimes, let it. We need to know.
 
 /obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
 	if(..(user, 1))

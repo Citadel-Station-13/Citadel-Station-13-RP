@@ -226,7 +226,7 @@
 	if(QDELETED(src))
 		return
 	. = ..()
-	if(!automatic_charge_overlays)
+	if(!automatic_charge_overlays || !firemode)
 		return
 	var/ratio = cell? CEILING(CLAMP(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1) : 0
 	if(ratio == old_ratio && !force_update)
