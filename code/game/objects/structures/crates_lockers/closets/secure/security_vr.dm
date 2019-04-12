@@ -46,6 +46,7 @@
 		/obj/item/taperoll/police,
 		/obj/item/weapon/shield/riot/tele,
 		/obj/item/weapon/storage/box/holobadge/hos,
+		/obj/item/weapon/storage/box/trackimp,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/tool/crowbar/red,
