@@ -42,9 +42,9 @@
 		return FALSE
 	if(has_RA && length(req_access - accesses))			//we don't have every access we need
 		return FALSE
-	if(has_ROA && length(req_one_access & accesses))	//we have atleast one access from this list
-		return TRUE
-	return FALSE
+	if(has_ROA && !length(req_one_access & accesses))	//we have atleast one access from this list
+		return FALSE
+	return TRUE
 
 /proc/get_centcom_access(job)
 	switch(job)
