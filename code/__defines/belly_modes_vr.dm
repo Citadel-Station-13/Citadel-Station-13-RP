@@ -29,9 +29,15 @@
 #define DM_TRANSFORM_FEMALE_EGG						"Transform (Female) (EGG)"
 
 //Addon mode flags
+<<<<<<< HEAD
 #define DM_FLAG_NUMBING		0x1
 #define DM_FLAG_ITEMWEAK	0x2
 #define DM_FLAG_STRIPPING	0x4
+=======
+#define DM_FLAG_NUMBING			0x1
+#define DM_FLAG_STRIPPING		0x2
+#define DM_FLAG_LEAVEREMAINS	0x4
+>>>>>>> 16ee6b9... Merge pull request #4897 from Heroman3003/bone-zone
 
 // Stance for hostile mobs to be in while devouring someone.
 #define HOSTILE_STANCE_EATING	99

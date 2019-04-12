@@ -129,7 +129,24 @@ var/global/list/tf_egg_types = list(
 
 var/global/list/edible_trash = list(/obj/item/trash,
 				/obj/item/device/flashlight,
+<<<<<<< HEAD
 				/obj/item/toy/figure,
+=======
+				/obj/item/device/mmi/digital/posibrain,
+				/obj/item/device/paicard,
+				/obj/item/device/pda,
+				/obj/item/device/radio/headset,
+				/obj/item/inflatable/torn,
+				/obj/item/organ,
+				/obj/item/stack/material/cardboard,
+				/obj/item/toy,
+				/obj/item/trash,
+				/obj/item/weapon/digestion_remains,
+				/obj/item/weapon/bananapeel,
+				/obj/item/weapon/bone,
+				/obj/item/weapon/broken_bottle,
+				/obj/item/weapon/card/emag_broken,
+>>>>>>> 16ee6b9... Merge pull request #4897 from Heroman3003/bone-zone
 				/obj/item/weapon/cigbutt,
 				/obj/item/weapon/bananapeel,
 				/obj/item/stack/material/cardboard,
@@ -372,6 +389,46 @@ var/global/list/cont_flavors_musky = list("drenched",
 				"sticky",
 				"tainted")
 
+<<<<<<< HEAD
+=======
+var/global/list/contamination_colors = list("green",
+				"white",
+				"black",
+				"grey",
+				"yellow",
+				"red",
+				"blue",
+				"orange",
+				"purple",
+				"lime",
+				"brown",
+				"darkred",
+				"cyan",
+				"beige",
+				"pink")
+
+//For the mechanic of leaving remains. Ones listed below are basically ones that got no bones.
+var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
+				SPECIES_DIONA,
+				SPECIES_ALRAUNE,
+				SPECIES_PROTEAN,
+				SPECIES_MONKEY,					//Exclude all monkey subtypes, to prevent abuse of it. They aren't,
+				SPECIES_MONKEY_TAJ,				//set to have remains anyway, but making double sure,
+				SPECIES_MONKEY_SKRELL,
+				SPECIES_MONKEY_UNATHI,
+				SPECIES_MONKEY_AKULA,
+				SPECIES_MONKEY_NEVREAN,
+				SPECIES_MONKEY_SERGAL,
+				SPECIES_MONKEY_VULPKANIN,
+				SPECIES_XENO,					//Same for xenos,
+				SPECIES_XENO_DRONE,
+				SPECIES_XENO_HUNTER,
+				SPECIES_XENO_SENTINEL,
+				SPECIES_XENO_QUEEN,
+				SPECIES_SHADOW,
+				SPECIES_GOLEM)					//Some special species that may or may not be ever used in event too
+
+>>>>>>> 16ee6b9... Merge pull request #4897 from Heroman3003/bone-zone
 /hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
 
