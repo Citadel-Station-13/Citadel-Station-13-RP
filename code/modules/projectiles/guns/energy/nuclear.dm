@@ -7,13 +7,8 @@
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//Looks bigger than a pistol, too.
-	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge
-	battery_lock = 1
-	modifystate = null
-
-//	requires_two_hands = 1
-//	one_handed_penalty = 15 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
+	removable_battery = FALSE
 
 	firemodes = list(
 		/datum/firemode/energy/stun/egun,

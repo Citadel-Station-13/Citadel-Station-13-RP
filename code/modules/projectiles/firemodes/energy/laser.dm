@@ -66,3 +66,10 @@
 
 /datum/firemode/energy/laser/dominator
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
+
+/datum/firemode/energy/laser/burstlaser
+	burst = 3
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(12)
+	projectile_type = /obj/item/projectile/beam/laser/burstlaser
+	spread = 7
+	fire_delay = 6

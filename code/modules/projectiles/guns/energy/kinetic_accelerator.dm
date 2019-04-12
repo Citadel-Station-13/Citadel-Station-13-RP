@@ -6,7 +6,8 @@
 	item_state = "kineticgun"
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/inhands/guns_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/guns_righthand.dmi')
+		slot_r_hand_str = 'icons/mob/inhands/guns_righthand.dmi'
+		)
 	projectile_type = /obj/item/projectile/kinetic
 	origin_tech = list(TECH_COMBAT = 3, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	can_flashlight = TRUE

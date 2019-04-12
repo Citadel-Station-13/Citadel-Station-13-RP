@@ -2,7 +2,7 @@
 	name = "energy gun"
 	desc = "A basic energy-based gun."
 	icon_state = "energy"
-	icon = 'icons/obj/item/guns/energy/misc.dmi'
+	icon = 'icons/obj/items/guns/energy/misc.dmi'
 
 	//PENDING STOCK PART CELL REFACTOR AND STUFF.
 	var/obj/item/weapon/cell/cell

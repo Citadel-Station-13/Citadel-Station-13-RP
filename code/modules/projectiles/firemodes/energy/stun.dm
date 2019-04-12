@@ -35,3 +35,10 @@
 /datum/firemode/energy/stun/xeno/security
 	e_cost = SCALE_ENERGY_WEAPON_NORMAL(5)
 	projectile_type = /obj/item/projectile/beam/stun/xeno/weak
+
+/datum/firemode/energy/stun/burstlaser
+	burst = 3
+	projectile_type = /obj/item/projectile/beam/stun/weak
+	spread = 7
+	e_cost = SCALE_ENERGY_WEAPON_NORMAL(24)
+	fire_delay = 6

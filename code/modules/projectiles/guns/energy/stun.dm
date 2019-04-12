@@ -34,7 +34,7 @@
 
 /obj/item/gun/energy/taser/xeno/robot // Borg version
 	self_recharge = TRUE
-	use_external_power = ENERGY_GUN_EXTERNAL_CHARGE
+	use_external_cell = ENERGY_GUN_EXTERNAL_CHARGE
 
 /obj/item/gun/energy/taser/xeno/sec //NT's corner-cutting option for their on-station security.
 	desc = "An NT Mk30 NL retrofitted to fire beams for subduing non-humanoid slimy xeno life forms."
@@ -45,4 +45,4 @@
 
 /obj/item/gun/energy/taser/xeno/sec/robot //Cyborg variant of the security xeno-taser.
 	self_recharge = TRUE
-	use_external_power = ENERGY_GUN_EXTERNAL_CHARGE
+	use_external_cell = ENERGY_GUN_EXTERNAL_CHARGE
