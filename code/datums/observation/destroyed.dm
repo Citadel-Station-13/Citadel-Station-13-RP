@@ -11,5 +11,10 @@ var/decl/observ/destroyed/destroyed_event = new()
 	name = "Destroyed"
 
 /datum/Destroy()
+<<<<<<< HEAD
 	destroyed_event.raise_event(src)
+=======
+	if(GLOB.destroyed_event)
+		GLOB.destroyed_event.raise_event(src)
+>>>>>>> aa52895... Merge pull request #5014 from Heroman3003/fix-for-org-runtimes
 	. = ..()
