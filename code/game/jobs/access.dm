@@ -33,13 +33,16 @@
 	return has_access(req_access, req_one_access, L)
 
 /proc/has_access(var/list/req_access, var/list/req_one_access, var/list/accesses)
-	if(!LAZYLEN(req_access) && !LAZYLEN(req_one_access)) // requires no access at all
+	var/has_RA = LAZYLEN(req_access)
+	var/has_ROA = LAZYLEN(req_one_access)
+	var/has_A = LAZYLEN(accesses)
+	if(!has_RA && !has_ROA)		//we need none
 		return TRUE
-	if(!LAZYLEN(accesses)) // we don't have any accesses but need them
+	if(!has_A)					//we need them but don't have them
 		return FALSE
-	if(LAZYLEN(req_access - accesses)) // we don't have all the accesses we need
+	if(has_RA && length(req_access - accesses))			//we don't have every access we need
 		return FALSE
-	if(LAZYLEN(req_one_access & accesses)) // if we have ANY from this list, succeed
+	if(has_ROA && length(req_one_access & accesses))	//we have atleast one access from this list
 		return TRUE
 	return FALSE
 
