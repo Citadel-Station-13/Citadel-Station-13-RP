@@ -154,7 +154,10 @@
 
 /obj/item/gun/Destroy()
 	QDEL_NULL(chambered)
-	islist(firemodes)? QDEL_LIST(firemodes) : QDEL(firemodes)
+	if(islist(firemodes))
+		QDEL_LIST(firemodes)
+	else
+		QDEL(firemodes)
 	firemode = null			//already qdel list'd
 	return ..()
 
