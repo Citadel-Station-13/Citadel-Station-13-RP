@@ -14,7 +14,7 @@
 /obj/item/clothing/head/helmet/space/plasman
 	name = "Phoronoid containtment helmet"
 	icon = 'modular_citadel/icons/obj/plasmeme/hats.dmi'
-	icon_state = "plasmaman_helmet0"
+	icon_state = "plasmaman_helmet"
 	icon_override = 'modular_citadel/icons/mob/plasmeme/helmet.dmi'
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. Comes with a little light built in!"
 	item_flags = STOPPRESSUREDAMAGE | AIRTIGHT | FLEXIBLEMATERIAL

@@ -81,9 +81,6 @@
 			H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>")
 			to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!</span>")
 			H.IgniteMob()
-		if(enviroment_bad && H.on_fire && H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/plasman) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space/plasman)) //If the enviroment is okay and they're wearing a suit, stop burning.
-			H.fire_stacks = 0
-			H.ExtinguishMob()
 	enviroment_bad = 0
 
 /datum/species/plasmaman/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)
@@ -91,7 +88,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/plasman(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/plasman(H), slot_head)
-	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini(H), slot_r_store)
+	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_store)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
 		H.internal = H.back
