@@ -15,10 +15,10 @@
 /obj/item/gun/energy/netgun/update_icon()
 	. = ..()
 
-	if(power_supply)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+	if(cell)
+		var/ratio = cell.charge / cell.maxcharge
 
-		if(power_supply.charge < charge_cost)
+		if(cell.charge < charge_cost)
 			ratio = 0
 		else
 			ratio = max(round(ratio, 0.25) * 100, 25)

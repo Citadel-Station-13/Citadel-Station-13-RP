@@ -234,8 +234,8 @@
 	desc = "May the force be within you. Sorta."
 	icon_state = "sword0"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/inhands/melee_lefthand.dmi',
-			slot_r_hand_str = 'icons/mob/inhands/melee_righthand.dmi',
+			slot_l_hand_str = 'icons/mob/inhands/weapons/melee_lefthand.dmi',
+			slot_r_hand_str = 'icons/mob/inhands/weapons/melee_righthand.dmi',
 			)
 	force = 3.0
 	throw_speed = 1

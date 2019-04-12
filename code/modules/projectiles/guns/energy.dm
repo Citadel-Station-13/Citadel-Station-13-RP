@@ -122,6 +122,7 @@
 		return
 	var/spent = chambered.is_spent()
 	chambered.clear_projectile()
+	var/datum/firemode/energy/firemode = src.firemode		//:^)
 	if(!spent || drain_power(firemoode.e_cost))
 		chambered.initialize_projectile()
 
