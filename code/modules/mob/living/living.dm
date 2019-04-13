@@ -144,6 +144,20 @@ default behaviour is:
 				tmob.forceMove(oldloc)
 				now_pushing = 0
 				return
+<<<<<<< HEAD
+=======
+			// TODO - Check if we need to do something about the slime.UpdateFeed() we are skipping below.
+			// VOREStation Edit - End
+			tmob.forceMove(oldloc)
+			now_pushing = 0
+			return
+		//VOREStation Edit - Begin
+		else if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
+			forceMove(tmob.loc)
+			now_pushing = 0
+			return
+		//VOREStation Edit - End
+>>>>>>> 82978ca... Merge pull request #5021 from Heroman3003/steppy-steppy-on-the-meow
 
 			if(!can_move_mob(tmob, 0, 0))
 				now_pushing = 0
