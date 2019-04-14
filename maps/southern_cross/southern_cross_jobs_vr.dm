@@ -3,38 +3,8 @@ var/const/PILOT 			=(1<<15)
 var/const/EXPLORER 			=(1<<12)
 var/const/PATHFINDER 		=(1<<13)
 
-<<<<<<< HEAD
-/obj/item/weapon/card/id/medical/sar
-	assignment = "Field Medic"
-	rank = "Field Medic"
-	icon_state = "cyan"
-	primary_color = rgb(47,189,189)
-	secondary_color = rgb(127,223,223)
-	job_access_type = /datum/job/sar
-
-/obj/item/weapon/card/id/explorer
-	name = "identification card"
-	desc = "A card issued to station exploration staff."
-	icon_state = "green"
-	primary_color = rgb(47,189,0)
-	secondary_color = rgb(127,223,95)
-
-/obj/item/weapon/card/id/explorer/pilot
-	assignment = "Pilot"
-	rank = "Pilot"
-	job_access_type = /datum/job/pilot
-
-/obj/item/weapon/card/id/explorer/explorer
-	assignment = "Explorer"
-	rank = "Explorer"
-	job_access_type = /datum/job/explorer
-
-/obj/item/weapon/card/id/explorer/head/
-	name = "identification card"
-=======
 /obj/item/weapon/card/id/science/head/pathfinder
 	name = "\improper Pathfinder's ID"
->>>>>>> origin/master
 	desc = "A card which represents discovery of the unknown."
 	icon_state = "greenGold"
 	primary_color = rgb(47,189,0)

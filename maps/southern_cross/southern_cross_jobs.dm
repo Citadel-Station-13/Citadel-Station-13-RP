@@ -94,16 +94,6 @@ var/const/access_explorer = 43
 	department = "Civilian"
 	department_flag = CIVILIAN
 	faction = "Station"
-<<<<<<< HEAD
-	total_positions = 4
-	spawn_positions = 4
-	supervisors = "the explorer leader and the head of personnel"
-	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/explorer
-	economic_modifier = 4
-	access = list(access_explorer)
-	minimal_access = list(access_explorer)
-=======
 	total_positions = 2 //VOREStation Edit
 	spawn_positions = 2 //VOREStation Edit
 	supervisors = "the pathfinder and the research director" //VOREStation Edit
@@ -112,7 +102,6 @@ var/const/access_explorer = 43
 	economic_modifier = 6 //VOREStation Edit
 	access = list(access_pilot, access_explorer, access_research) //VOREStation Edit
 	minimal_access = list(access_pilot, access_explorer, access_research) //VOREStation Edit
->>>>>>> origin/master
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
 /*
 	alt_titles = list(

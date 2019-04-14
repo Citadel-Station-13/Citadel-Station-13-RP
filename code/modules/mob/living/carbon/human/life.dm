@@ -726,7 +726,6 @@ var/last_message = 0
 		pressure_alert = -1
 	else
 		if( !(COLD_RESISTANCE in mutations))
-<<<<<<< HEAD
 			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
 				take_overall_damage(brute = LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 				if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
@@ -743,13 +742,6 @@ var/last_message = 0
 
 					adjustOxyLoss(pressure_dam)
 				pressure_alert = -2
-=======
-			if(!isSynthetic() || !nif || !nif.flag_check(NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
-				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
-			if(getOxyLoss() < 55) // 11 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
-				adjustOxyLoss(4)  // 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
-			pressure_alert = -2
->>>>>>> origin/master
 		else
 			pressure_alert = -1
 
