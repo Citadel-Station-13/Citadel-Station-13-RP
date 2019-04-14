@@ -210,7 +210,7 @@
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
 /obj/machinery/cryopod/robot/door/tram
 	name = "\improper Tram Station"
-	icon = 'icons/obj/doors/Doorext.dmi'
+	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
@@ -229,7 +229,7 @@
 		time_till_despawn = 0
 		..()
 		var/turf/T = get_turf(src)
-		var/obj/machinery/door/airlock/external/door = new(T)
+		var/obj/machinery/door/airlock/glass_external/door = new(T)
 		door.req_access = null
 		door.req_one_access = null
 		qdel(src)
@@ -244,7 +244,8 @@
 
 	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
 	if(user && Adjacent(user) && choice == "Yes")
-		user.ghostize()
+		var/mob/observer/dead/newghost = user.ghostize()
+		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
 // Tram arrival point landmarks and datum
@@ -378,11 +379,11 @@ var/global/list/latejoin_tram   = list()
 	reagents.add_reagent("paracetamol", 5)
 
 //"Red" Armory Door
-/obj/machinery/door/airlock/multi_tile/metal/red
+/obj/machinery/door/airlock/security/armory
 	name = "Red Armory"
 	//color = ""
 
-/obj/machinery/door/airlock/multi_tile/metal/red/allowed(mob/user)
+/obj/machinery/door/airlock/security/armory/allowed(mob/user)
 	if(get_security_level() in list("green","blue"))
 		return FALSE
 
@@ -396,6 +397,8 @@ var/global/list/latejoin_tram   = list()
 	..()
 	for(var/i = 1 to 4)
 		new /obj/item/weapon/gun/energy/frontier/locked(src)
+	for(var/i = 1 to 4)
+		new /obj/item/weapon/gun/energy/frontier/locked/holdout(src)
 
 // Underdark mob spawners
 /obj/tether_away_spawner/underdark_normal

@@ -15,7 +15,7 @@
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/practice // For target practice
 	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with practice rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm rounds."
-	ammo_type = /obj/item/ammo_casing/a762p
+	ammo_type = /obj/item/ammo_casing/a762/practice
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial
 	name = "ceremonial bolt-action rifle"
@@ -37,7 +37,7 @@
 			icon_state = "sawnrifle"
 			w_class = ITEMSIZE_NORMAL
 			recoil = 2 // Owch
-			accuracy = -15 // You know damn well why.
+			//accuracy = -15 // You know damn well why.
 			item_state = "gun"
 			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
 			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
@@ -46,7 +46,6 @@
 			to_chat(user, "<span class='warning'>You shorten the barrel and stock of \the [src]!</span>")
 	else
 		..()
-
 
 //Lever actions are the same thing, but bigger.
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/lever
@@ -57,7 +56,11 @@
 	fire_sound = 'sound/weapons/rifleshot.ogg'
 	max_shells = 5
 	caliber = "7.62mm"
-	origin_tech = list(TECH_COMBAT = 1)// Old as shit rifle doesn't have very good tech.
-	ammo_type = /obj/item/ammo_casing/a762
-	load_method = SINGLE_CASING|SPEEDLOADER
-	action_sound = 'sound/weapons/riflebolt.ogg'
+	load_method = SINGLE_CASING
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/lever/vintage
+	name = "vintage repeater"
+	desc = "An iconic manually operated lever action rifle, offering adequate stopping power due to it's still powerful cartridge while at the same time having a rather respectable firing rate due to it's mechanism. It is very probable this is a replica instead of a museum piece, but rifles of this pattern still see usage as colonist guns in some far off regions. Uses 7.62mm rounds."
+	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
+	icon_state = "levercarabine"
+	animated_pump = 1

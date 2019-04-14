@@ -5,7 +5,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b/New()
 	..()
 	if(outdoors)
-		outdoor_turfs.Add(src)
+		SSplanets.addTurf(src)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
@@ -164,7 +164,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 /turf/space/bluespace
 	name = "bluespace"
 	icon_state = "bluespace"
-/turf/space/bluespace/New()
+/turf/space/bluespace/initialize()
 	..()
 	icon_state = "bluespace"
 
@@ -173,7 +173,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/New()
+/turf/space/sandyscroll/initialize()
 	..()
 	icon_state = "desert_ns"
 
@@ -183,7 +183,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	color = "#FFBBBB"
 
 /turf/simulated/sky/virgo3b/initialize()
-	outdoor_turfs.Add(src)
+	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 
 /turf/simulated/sky/virgo3b/north

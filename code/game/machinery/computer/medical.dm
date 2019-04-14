@@ -5,6 +5,7 @@
 	desc = "Used to view, edit and maintain medical records."
 	icon_keyboard = "med_key"
 	icon_screen = "medcomp"
+	density = TRUE			//Why does a laptop blocks peoples.		//Because this isn't a fucking laptop. - Citadel
 	light_color = "#315ab4"
 	req_one_access = list(access_medical, access_forensics_lockers, access_robotics)
 	circuit = /obj/item/weapon/circuitboard/med_data
@@ -122,7 +123,7 @@
 					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
 					dat += "<br><b>Medical Robots:</b>"
 					var/bdat = null
-					for(var/mob/living/bot/medbot/M in world)
+					for(var/mob/living/bot/medbot/M in mob_list)
 
 						if(M.z != src.z)	continue	//only find medibots on the same z-level as the computer
 						var/turf/bl = get_turf(M)
@@ -554,3 +555,4 @@
 	icon_keyboard = "laptop_key"
 	icon_screen = "medlaptop"
 	throwpass = 1 //VOREStation Edit - Really???
+	density = FALSE			//THIS IS A LAPTOP.	--CITADEL EDIT

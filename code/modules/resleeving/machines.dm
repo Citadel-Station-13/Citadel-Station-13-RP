@@ -8,6 +8,12 @@
 	name = "grower pod"
 	circuit = /obj/item/weapon/circuitboard/transhuman_clonepod
 
+//A full version of the pod
+/obj/machinery/clonepod/transhuman/full/initialize()
+	. = ..()
+	for(var/i = 1 to container_limit)
+		containers += new /obj/item/weapon/reagent_containers/glass/bottle/biomass(src)
+
 /obj/machinery/clonepod/transhuman/growclone(var/datum/transhuman/body_record/current_project)
 	//Manage machine-specific stuff.
 	if(mess || attempting)
@@ -17,6 +23,9 @@
 	eject_wait = 1
 	spawn(30)
 		eject_wait = 0
+
+	// Remove biomass when the cloning is started, rather than when the guy pops out
+	remove_biomass(CLONE_BIOMASS)
 
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = current_project.mydna
@@ -110,16 +119,6 @@
 	return 1
 
 /obj/machinery/clonepod/transhuman/process()
-
-	var/visible_message = 0
-	for(var/obj/item/weapon/reagent_containers/food/snacks/meat/meat in range(1, src))
-		qdel(meat)
-		biomass += 50
-		visible_message = 1 // Prevent chatspam if multiple meat are near
-
-	if(visible_message)
-		visible_message("[src] sucks in and processes the nearby biomass.")
-
 	if(stat & NOPOWER)
 		if(occupant)
 			locked = 0
@@ -489,6 +488,37 @@
 
 	return ..()
 
+/obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+	if(!istype(O))
+		return 0 //not a mob
+	if(user.incapacitated())
+		return 0 //user shouldn't be doing things
+	if(O.anchored)
+		return 0 //mob is anchored???
+	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
+	if(!ishuman(user) && !isrobot(user))
+		return 0 //not a borg or human
+	if(panel_open)
+		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		return 0 //panel open
+
+	if(O.buckled)
+		return 0
+	if(O.has_buckled_mobs())
+		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		return
+
+	if(put_mob(O))
+		if(O == user)
+			src.updateUsrDialog()
+			visible_message("[user] climbs into \the [src].")
+		else
+			src.updateUsrDialog()
+			visible_message("[user] puts [O] into \the [src].")
+
+	add_fingerprint(user)
+
 /obj/machinery/transhuman/resleever/proc/putmind(var/datum/transhuman/mind_record/MR, mode = 1, var/mob/living/carbon/human/override = null)
 	if((!occupant || !istype(occupant) || occupant.stat >= DEAD) && mode == 1)
 		return 0
@@ -539,21 +569,16 @@
 
 	//Give them a backup implant
 	var/obj/item/weapon/implant/backup/new_imp = new()
-	if(new_imp.implanted(occupant))
-		new_imp.loc = occupant
-		new_imp.imp_in = occupant
-		new_imp.implanted = 1
-		//Put it in the head! Makes sense.
-		var/obj/item/organ/external/affected = occupant.get_organ(BP_HEAD)
-		affected.implants += new_imp
-		new_imp.part = affected
+	if(new_imp.handle_implant(occupant, BP_HEAD))
+		new_imp.post_implant(occupant)
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)
-		occupant << "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Your new body feels comfortable already, however.</span>"
+	//cit change start
+		occupant << "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. </span>"
 	else
-		occupant << "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. It's disorienting, to say the least.</span>"
-
+		occupant << "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>"
+	//cit change end
 	occupant.confused = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
 

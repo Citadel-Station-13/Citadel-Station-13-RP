@@ -1,6 +1,6 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
-	
+
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
 	if (findtext(act, "-", 1, null))
@@ -14,9 +14,10 @@
 	var/muzzled = is_muzzled()
 	//var/m_type = 1
 
-	for (var/obj/item/weapon/implant/I in src)
-		if (I.implanted)
-			I.trigger(act, src)
+	for(var/obj/item/organ/O in src.organs)
+		for (var/obj/item/weapon/implant/I in O)
+			if (I.implanted)
+				I.trigger(act, src)
 
 	if(src.stat == 2.0 && (act != "deathgasp"))
 		return
@@ -80,10 +81,13 @@
 
 		//Promethean-only emotes
 		if("squish")
-			if(!species.bump_flag == SLIME) //That should do, yaya.
+			//Citadel changes start
+			///* VOREStation Removal Start - Eh. People can squish maybe.
+			if(species.bump_flag != SLIME) //This should definitely do it.
 				src << "<span class='warning'>You are not a slime thing!</span>"
 				return
-
+			//*/ //VOREStation Removal End
+			//Citadel changes end
 			playsound(src.loc, 'sound/effects/slime_squish.ogg', 50, 0) //Credit to DrMinky (freesound.org) for the sound.
 			message = "squishes."
 			m_type = 1
@@ -653,6 +657,75 @@
 					message = "<span class='danger'>slaps [T.himself]!</span>"
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
+//Citadel changes starts here
+		if ("fguns")
+			message = "points some fingerguns."
+			m_type = 1
+
+		if("aslap", "aslaps")
+			m_type = 1
+			var/mob/living/carbon/human/H = src
+			var/obj/item/organ/external/L = H.get_organ("l_hand")
+			var/obj/item/organ/external/R = H.get_organ("r_hand")
+			var/left_hand_good = 0
+			var/right_hand_good = 0
+			if(L && (!(L.status & ORGAN_DESTROYED)) && (!(L.splinted)) && (!(L.status & ORGAN_BROKEN)))
+				left_hand_good = 1
+			if(R && (!(R.status & ORGAN_DESTROYED)) && (!(R.splinted)) && (!(R.status & ORGAN_BROKEN)))
+				right_hand_good = 1
+
+			if(!left_hand_good && !right_hand_good)
+				to_chat(usr, "You need at least one hand in good working order to slap someone.")
+				return
+			if(!restrained())
+				var/M = null
+				if(param)
+					for(var/mob/A in view(1, null))
+						if(param == A.name)
+							M = A
+							break
+				if(M)
+					message = "<span class='danger'>slaps [M]'s butt.</span>"
+					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					add_attack_logs(src,M,"Buttslap")
+				else
+					message = "<span class='danger'>slaps [T.his] own butt!</span>"
+					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+					add_attack_logs(src,src,"Slapped own butt")
+					//adding damage for aslaps to stop the spam
+			emoteDanger =  min(1+(emoteDanger*2), 100)
+			var/danger = emoteDanger - 5
+			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Same dmg as snapping
+			for(var/organ_name in involved_parts)
+				var/obj/item/organ/external/E = get_organ(organ_name)
+				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
+					involved_parts -= organ_name
+					danger += 7
+
+
+			if(prob(danger))
+				spawn(10) //more copied snap dmg code
+					var/breaking = pick(involved_parts)
+					var/obj/item/organ/external/E = get_organ(breaking)
+					if(isSynthetic())
+						src.Weaken(5)
+						E.droplimb(1,DROPLIMB_EDGE)
+						message += " <span class='danger'>And loses a limb!</span>"
+						log_and_message_admins("lost their [breaking] with *aslap and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
+					else
+						src.Weaken(5)
+						if(E.cannot_break) //Prometheans go splat
+							E.droplimb(0,DROPLIMB_BLUNT)
+						else
+							E.fracture()
+						message += " <span class='danger'>And breaks something!</span>"
+						log_and_message_admins("broke their [breaking] with *aslap and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
+//Citadel changes ends here
+
 		if("scream", "screams")
 			if(miming)
 				message = "acts out a scream!"
@@ -690,6 +763,40 @@
 			message = "snaps [T.his] fingers."
 			playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
 
+
+			///////////////////////// CITADEL STATION ADDITIONS START
+			emoteDanger =  min(1+(emoteDanger*2), 100)
+			var/danger = emoteDanger - 5//Base chance to break something. Snapping is inherently less dangerous.
+			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Snapping is dangerous yo
+			for(var/organ_name in involved_parts)
+				var/obj/item/organ/external/E = get_organ(organ_name)
+				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
+					involved_parts -= organ_name
+					danger += 5 //Add 5% to the chance for each problem limb
+
+
+			if(prob(danger))
+				spawn(10) //Don't be so rough with your hands...
+					var/breaking = pick(involved_parts)
+					var/obj/item/organ/external/E = get_organ(breaking)
+					if(isSynthetic())
+						src.Weaken(5)
+						E.droplimb(1,DROPLIMB_EDGE)
+						message += " <span class='danger'>And loses a limb!</span>"
+						log_and_message_admins("lost their [breaking] with *snap and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
+					else
+						src.Weaken(5)
+						if(E.cannot_break) //Prometheans go splat
+							E.droplimb(0,DROPLIMB_BLUNT)
+						else
+							E.fracture()
+						message += " <span class='danger'>And breaks something!</span>"
+						log_and_message_admins("broke their [breaking] with *snap and were kicked.", src)
+						to_chat(usr, "<span class='danger'>You have been automatically logged out for spamming emotes.</span>")
+						Logout(src)
+			///////////////////////// CITADEL STATION ADDITIONS END
 		if("swish")
 			src.animate_tail_once()
 
@@ -727,7 +834,7 @@
 			src << "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hug-(none)/mob, laugh, look-(none)/mob, moan, mumble, nod, pale, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping"
+					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yess, no, rcough, rsneeze, ping"
 
 		else
 			src << "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>"
@@ -739,7 +846,7 @@
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
 	set category = "IC"
-	
+
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
 	pose =  sanitize(input(usr, "This is [src]. [T.he]...", "Pose", null)  as text)

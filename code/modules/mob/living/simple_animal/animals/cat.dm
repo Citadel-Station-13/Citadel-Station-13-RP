@@ -2,7 +2,7 @@
 /mob/living/simple_animal/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
-	tt_desc = "Felis catus"
+	tt_desc = "E Felis silvestris catus"
 	intelligence_level = SA_ANIMAL
 	icon_state = "cat2"
 	item_state = "cat2"
@@ -156,7 +156,7 @@
 /mob/living/simple_animal/cat/fluff/Runtime
 	name = "Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
-	tt_desc = "Felis medicalis"
+	tt_desc = "E Felis silvestris medicalis" //a hypoallergenic breed produced by NT for... medical purposes? Sure.
 	gender = FEMALE
 	icon_state = "cat"
 	item_state = "cat"
@@ -173,6 +173,7 @@
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
 	gender = NEUTER
+	holder_type = /obj/item/weapon/holder/cat/kitten //VOREStation Edit
 
 // Leaving this here for now.
 /obj/item/weapon/holder/cat/fluff/bones
@@ -196,3 +197,8 @@
 /mob/living/simple_animal/cat/kitten/New()
 	gender = pick(MALE, FEMALE)
 	..()
+
+// VOREStation Edit - Adds generic tactical kittens
+/obj/item/weapon/holder/cat/kitten
+	icon_state = "kitten"
+	w_class = ITEMSIZE_SMALL

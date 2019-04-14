@@ -33,7 +33,7 @@
 
 /decl/hierarchy/outfit/job/secretary
 	name = OUTFIT_JOB_NAME("Command Secretary")
-	l_ear = /obj/item/device/radio/headset/headset_com
+	l_ear = /obj/item/device/radio/headset/headset_adj //Citadel Edit: command secretaries get service on their headsets.
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/weapon/card/id/silver/secretary
 	pda_type = /obj/item/device/pda/heads/hop

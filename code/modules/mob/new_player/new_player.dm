@@ -28,7 +28,7 @@
 /mob/new_player/proc/new_player_panel_proc()
 	var/output = "<div align='center'>"
 	output +="<hr>"
-	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Character Setup</A></p>"
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
@@ -114,7 +114,7 @@
 
 	if(href_list["observe"])
 
-		if(alert(src,"Are you sure you wish to observe? You will have to wait 1 minute before being able to respawn!","Player Setup","Yes","No") == "Yes")
+		if(alert(src,"Are you sure you wish to observe? You will have to wait three minutes before being able to respawn!","Player Setup","Yes","No") == "Yes") //Citadelstation edit
 			if(!client)	return 1
 
 			//Make a new mannequin quickly, and allow the observer to take the appearance
@@ -169,6 +169,13 @@
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
+	
+		//Prevents people rejoining as same character.
+		for (var/mob/living/carbon/human/C in mob_list)
+			var/char_name = client.prefs.real_name
+			if(char_name == C.real_name)
+				usr << "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>" //VOREStation Edit
+				return
 
 		if(!config.enter_allowed)
 			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
@@ -358,7 +365,6 @@
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
 	character = job_master.EquipRank(character, rank, 1)					//equips the human
 	UpdateFactionList(character)
-	log_game("JOINED [key_name(character)] as \"[rank]\"")
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
@@ -407,7 +413,7 @@
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		global_announcer.autosay("A new[rank ? " [rank]" : " assistant" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
@@ -450,6 +456,13 @@
 
 /mob/new_player/proc/create_character(var/turf/T)
 	if (!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
+	//CITADEL EDITS START HERE - gives a big ol' "lol nope" to skids trying to spawn in as proteans
+	if(client.prefs.species)
+		var/datum/species/diosmio = all_species[client.prefs.species]
+		if(!is_alien_whitelisted(src, diosmio))
+			to_chat(src, "<span class='warning'>You aren't whitelisted for your selected species.</span>")
+			return
+	//END OF CIT CHANGES
 	spawning = 1
 	close_spawn_windows()
 
@@ -483,9 +496,10 @@
 
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
-		if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
-			new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
-			new_character.rename_self("clown")
+		// VOREStation edit to disable the destructive forced renaming for our responsible whitelist clowns.
+		//if(mind.assigned_role == "Clown")				//give them a clownname if they are a clown
+		//	new_character.real_name = pick(clown_names)	//I hate this being here of all places but unfortunately dna is based on real_name!
+		//	new_character.rename_self("clown")
 		mind.original = new_character
 		// VOREStation
 		mind.loaded_from_ckey = client.ckey

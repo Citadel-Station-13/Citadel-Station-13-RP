@@ -2,7 +2,7 @@
 	var/skip_gear = 0
 	var/skip_body = 0
 
-	if(alpha <= 50)
+	if(alpha <= EFFECTIVE_INVIS)
 		src.loc.examine(user)
 		return
 
@@ -128,7 +128,7 @@
 		var/tie_msg
 		if(istype(w_uniform,/obj/item/clothing/under) && !(skip_gear & EXAMINE_SKIPTIE))
 			var/obj/item/clothing/under/U = w_uniform
-			if(U.accessories.len)
+			if(LAZYLEN(U.accessories))
 				var/list/accessories_visible = list() //please let this fix the stupid fucking runtimes
 				if(skip_gear & EXAMINE_SKIPHOLSTER)
 					for(var/obj/item/clothing/accessory/A in U.accessories)
@@ -145,7 +145,7 @@
 		if(w_uniform.blood_DNA)
 			msg += "<span class='warning'>[T.He] [T.is] wearing \icon[w_uniform] [w_uniform.gender==PLURAL?"some":"a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [w_uniform.name]![tie_msg]</span><br>"
 		else
-			msg += "[T.He] [T.is] wearing \icon[w_uniform] \a [w_uniform][tie_msg].<br>"
+			msg += "[T.He] [T.is] wearing \icon[w_uniform] \a [w_uniform].[tie_msg]<br>"
 
 	//head
 	if(head && !(skip_gear & EXAMINE_SKIPHELMET) && head.show_examine)
@@ -159,7 +159,7 @@
 		var/tie_msg
 		if(istype(wear_suit,/obj/item/clothing/suit))
 			var/obj/item/clothing/suit/U = wear_suit
-			if(U.accessories.len)
+			if(LAZYLEN(U.accessories))
 				tie_msg += " Attached to it is [english_list(U.accessories)]."
 
 		if(wear_suit.blood_DNA)
@@ -329,7 +329,7 @@
 		else if(disconnect_time)
 			msg += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]\n"
 		//VOREStation Add End
-	
+
 	var/list/wound_flavor_text = list()
 	var/list/is_bleeding = list()
 	var/applying_pressure = ""
@@ -439,13 +439,21 @@
 	// VOREStation Start
 	if(ooc_notes)
 		msg += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>\n"
+
+	msg += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>\n"
+
 	// VOREStation End
 	msg += "*---------*</span><br>"
 	msg += applying_pressure
+
+	var/show_descs = show_descriptors_to(user)
+	if(show_descs)
+		msg += "<span class='notice'>[jointext(show_descs, "<br>")]</span>"
+
 	if(pose)
 		if(!findtext(pose, regex("\[.?!]$"))) // Will be zero if the last character is not a member of [.?!]
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		msg += "[T.He] [pose]"
+		msg += "<br>[T.He] [pose]"
 
 	to_chat(user, jointext(msg, null))
 

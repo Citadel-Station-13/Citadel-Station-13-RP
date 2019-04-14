@@ -47,7 +47,7 @@
 		/obj/machinery/radiocarbon_spectrometer
 		)
 
-/obj/item/weapon/reagent_containers/glass/New()
+/obj/item/weapon/reagent_containers/glass/initialize()
 	..()
 	if(LAZYLEN(prefill))
 		for(var/R in prefill)
@@ -150,7 +150,7 @@
 	item_state = "beaker"
 	matter = list("glass" = 500)
 
-/obj/item/weapon/reagent_containers/glass/beaker/New()
+/obj/item/weapon/reagent_containers/glass/beaker/initialize()
 	..()
 	desc += " Can hold up to [volume] units."
 
@@ -252,7 +252,7 @@
 	flags = OPENCONTAINER
 	unacidable = 0
 
-/obj/item/weapon/reagent_containers/glass/bucket/attackby(var/obj/D, mob/user as mob)
+/obj/item/weapon/reagent_containers/glass/bucket/attackby(var/obj/item/D, mob/user as mob)
 	if(isprox(D))
 		user << "You add [D] to [src]."
 		qdel(D)
@@ -260,7 +260,7 @@
 		user.drop_from_inventory(src)
 		qdel(src)
 		return
-	else if(istype(D, /obj/item/weapon/wirecutters))
+	else if(D.is_wirecutter())
 		to_chat(user, "<span class='notice'>You cut a big hole in \the [src] with \the [D].  It's kinda useless as a bucket now.</span>")
 		user.put_in_hands(new /obj/item/clothing/head/helmet/bucket)
 		user.drop_from_inventory(src)

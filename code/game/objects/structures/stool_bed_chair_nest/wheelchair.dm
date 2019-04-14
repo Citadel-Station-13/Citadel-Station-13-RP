@@ -5,9 +5,11 @@
 	anchored = 0
 	buckle_movable = 1
 
+	var/last_active_move = 0
 	var/driving = 0
 	var/mob/living/pulling = null
 	var/bloodiness
+	var/move_delay = 2		//5 TPS
 
 /obj/structure/bed/chair/wheelchair/update_icon()
 	return
@@ -23,12 +25,16 @@
 			L.set_dir(dir)
 
 /obj/structure/bed/chair/wheelchair/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench) || istype(W,/obj/item/stack) || istype(W, /obj/item/weapon/wirecutters))
+	if(W.is_wrench() || W.is_wirecutter() || istype(W,/obj/item/stack))
 		return
 	..()
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
+ 	
+	if(world.time < last_active_move + move_delay)
+		return
+
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
 		if(user==pulling)
 			pulling = null
@@ -56,6 +62,10 @@
 	if(pulling && has_buckled_mobs() && (user in buckled_mobs))
 		user << "<span class='warning'>You cannot drive while being pushed.</span>"
 		return
+
+
+ 	last_active_move = world.time
+
 
 	// Let's roll
 	driving = 1

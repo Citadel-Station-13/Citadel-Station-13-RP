@@ -14,18 +14,18 @@
 	var/recharge_time = 5 //Time it takes for shots to recharge (in seconds)
 	var/bypass_protection = FALSE // If true, can inject through things like spacesuits and armor.
 
-	var/list/reagent_ids = list("tricordrazine", "inaprovaline", "anti_toxin", "tramadol", "dexalin" ,"spaceacillin")
+	var/list/reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
 	var/list/reagent_volumes = list()
 	var/list/reagent_names = list()
 
 /obj/item/weapon/reagent_containers/borghypo/surgeon
-	reagent_ids = list("tricordrazine", "inaprovaline", "oxycodone", "dexalin" ,"spaceacillin")
+	reagent_ids = list( "tricordrazine", "dexalin", "inaprovaline", "oxycodone", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
 
 /obj/item/weapon/reagent_containers/borghypo/crisis
-	reagent_ids = list("tricordrazine", "inaprovaline", "anti_toxin", "tramadol", "dexalin" ,"spaceacillin")
+	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
 
 /obj/item/weapon/reagent_containers/borghypo/lost
-	reagent_ids = list("tricordrazine", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin")
+	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
 
 /obj/item/weapon/reagent_containers/borghypo/merc
 	name = "advanced cyborg hypospray"
@@ -34,7 +34,7 @@
 	bypass_protection = TRUE // Because mercs tend to be in spacesuits.
 	reagent_ids = list("healing_nanites", "hyperzine", "tramadol", "oxycodone", "spaceacillin", "peridaxon", "osteodaxon", "myelamine", "synthblood")
 
-/obj/item/weapon/reagent_containers/borghypo/New()
+/obj/item/weapon/reagent_containers/borghypo/initialize()
 	..()
 
 	for(var/T in reagent_ids)
@@ -132,7 +132,7 @@
 	recharge_time = 3
 	volume = 60
 	possible_transfer_amounts = list(5, 10, 20, 30)
-	reagent_ids = list("ale", "beer", "berryjuice", "bitters", "coffee", "cognac", "cola", "dr_gibb", "egg", "gin", "gingerale", "hot_coco", "ice", "icetea", "kahlua", "lemonjuice", "lemon_lime", "limejuice", "mead", "milk", "mint", "orangejuice", "rum", "sake", "sodawater", "soymilk", "space_up", "spacemountainwind", "specialwhiskey", "sugar", "tea", "tequilla", "tomatojuice", "tonic", "vermouth", "vodka", "water", "watermelonjuice", "whiskey", "wine")
+	reagent_ids = list("ale", "beer", "berryjuice", "bitters", "coffee", "cognac", "cola", "dr_gibb", "egg", "gin", "gingerale", "hot_coco", "ice", "icetea", "kahlua", "lemonjuice", "lemon_lime", "limejuice", "mead", "milk", "mint", "orangejuice", "rum", "sake", "sodawater", "soymilk", "space_up", "spacemountainwind", "specialwhiskey", "sugar", "tea", "tequila", "tomatojuice", "tonic", "vermouth", "vodka", "water", "watermelonjuice", "whiskey", "wine")
 
 /obj/item/weapon/reagent_containers/borghypo/service/attack(var/mob/M, var/mob/user)
 	return

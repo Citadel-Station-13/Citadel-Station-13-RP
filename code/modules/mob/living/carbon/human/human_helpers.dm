@@ -47,9 +47,15 @@
 	if(istype(l_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/L = l_ear
 		sum += L.ear_protection
+	if(istype(l_ear, /obj/item/device/radio/headset))		//CITADEL
+		var/obj/item/device/radio/headset/L = l_ear			//BOWNAN
+		sum += L.ear_protection								//CHANGE
 	if(istype(r_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/R = r_ear
 		sum += R.ear_protection
+	if(istype(r_ear, /obj/item/device/radio/headset))		//CITADEL
+		var/obj/item/device/radio/headset/R = r_ear			//BOWMAN
+		sum += R.ear_protection								//CHANGE
 	if(istype(head, /obj/item/clothing/head))
 		var/obj/item/clothing/head/H = head
 		sum += H.ear_protection
@@ -71,6 +77,8 @@
 
 	return 0
 
+/mob/living/carbon/human/isPromethean()
+	..()
 // Would an onlooker know this person is synthetic?
 // Based on sort of logical reasoning, 'Look at head, look at torso'
 /mob/living/carbon/human/proc/looksSynthetic()

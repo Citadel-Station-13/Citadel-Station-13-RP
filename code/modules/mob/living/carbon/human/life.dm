@@ -4,6 +4,7 @@
 #define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
 #define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
 
+#define HEAT_DAMAGE_SYNTH 1.5 //Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
 #define HEAT_DAMAGE_LEVEL_1 5 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 20 //Amount of damage applied when your body temperature passes the 1000K point
@@ -23,6 +24,8 @@
 
 #define RADIATION_SPEED_COEFFICIENT 0.1
 
+var/last_message = 0
+
 /mob/living/carbon/human
 	var/oxygen_alert = 0
 	var/phoron_alert = 0
@@ -36,6 +39,11 @@
 /mob/living/carbon/human/Life()
 	set invisibility = 0
 	set background = BACKGROUND_ENABLED
+
+
+	///////////////////////// CITADEL STATION ADDITIONS START
+	var/timeSinceLastTick = world.time - lastLifeProc
+	///////////////////////// CITADEL STATION ADDITIONS END
 
 	if (transforming)
 		return
@@ -95,6 +103,11 @@
 
 	pulse = handle_pulse()
 
+
+	///////////////////////// CITADEL STATION ADDITIONS START
+	emoteDanger = max(0, emoteDanger - (timeSinceLastTick / 10))
+	///////////////////////// CITADEL STATION ADDITIONS END
+
 /mob/living/carbon/human/proc/handle_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
 		return 0
@@ -134,6 +147,9 @@
 
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - ONE_ATMOSPHERE
+
+	if(isSynthetic())
+		pressure_difference = 0 //synthetics dont need pressure they're robutts
 
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
@@ -645,7 +661,10 @@
 				else
 					burn_dam = HEAT_DAMAGE_LEVEL_2
 			else
-				burn_dam = HEAT_DAMAGE_LEVEL_1
+				if(isSynthetic())
+					burn_dam = HEAT_DAMAGE_SYNTH
+				else
+					burn_dam = HEAT_DAMAGE_LEVEL_1
 
 		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
 		fire_alert = max(fire_alert, 2)
@@ -688,7 +707,7 @@
 		pressure_alert = -1
 	else
 		if( !(COLD_RESISTANCE in mutations))
-			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
+			if(!isSynthetic() || !nif || !nif.flag_check(NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
 				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 			if(getOxyLoss() < 55) // 11 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 				adjustOxyLoss(4)  // 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
@@ -832,7 +851,7 @@
 
 			var/total_phoronloss = 0
 			for(var/obj/item/I in src)
-				if(I.contaminated || I.gurgled) //VOREStation Edit
+				if(I.contaminated)
 					if(check_belly(I)) continue //VOREStation Edit
 					if(src.species && src.species.get_bodytype() != "Vox")
 						// This is hacky, I'm so sorry.
@@ -1041,7 +1060,7 @@
 			adjustHalLoss(-1)
 
 		if (drowsyness)
-			drowsyness--
+			drowsyness = max(0, drowsyness - 1)
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
 				sleeping += 1
@@ -1077,38 +1096,41 @@
 		var/obj/machinery/camera/cam = client.eye
 		client.screen |= cam.client_huds
 
-	if(stat != DEAD)
-		if(stat == UNCONSCIOUS && health <= 0)
-			//Critical damage passage overlay
+	if(stat == DEAD) //Dead
+		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
+
+	else if(stat == UNCONSCIOUS && health <= 0) //Crit
+		//Critical damage passage overlay
+		var/severity = 0
+		switch(health)
+			if(-20 to -10)			severity = 1
+			if(-30 to -20)			severity = 2
+			if(-40 to -30)			severity = 3
+			if(-50 to -40)			severity = 4
+			if(-60 to -50)			severity = 5
+			if(-70 to -60)			severity = 6
+			if(-80 to -70)			severity = 7
+			if(-90 to -80)			severity = 8
+			if(-95 to -90)			severity = 9
+			if(-INFINITY to -95)	severity = 10
+		overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
+	else //Alive
+		clear_fullscreen("crit")
+		//Oxygen damage overlay
+		if(oxyloss)
 			var/severity = 0
-			switch(health)
-				if(-20 to -10)			severity = 1
-				if(-30 to -20)			severity = 2
-				if(-40 to -30)			severity = 3
-				if(-50 to -40)			severity = 4
-				if(-60 to -50)			severity = 5
-				if(-70 to -60)			severity = 6
-				if(-80 to -70)			severity = 7
-				if(-90 to -80)			severity = 8
-				if(-95 to -90)			severity = 9
-				if(-INFINITY to -95)	severity = 10
-			overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
+			switch(oxyloss)
+				if(10 to 20)		severity = 1
+				if(20 to 25)		severity = 2
+				if(25 to 30)		severity = 3
+				if(30 to 35)		severity = 4
+				if(35 to 40)		severity = 5
+				if(40 to 45)		severity = 6
+				if(45 to INFINITY)	severity = 7
+			overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
 		else
-			clear_fullscreen("crit")
-			//Oxygen damage overlay
-			if(oxyloss)
-				var/severity = 0
-				switch(oxyloss)
-					if(10 to 20)		severity = 1
-					if(20 to 25)		severity = 2
-					if(25 to 30)		severity = 3
-					if(30 to 35)		severity = 4
-					if(35 to 40)		severity = 5
-					if(40 to 45)		severity = 6
-					if(45 to INFINITY)	severity = 7
-				overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
-			else
-				clear_fullscreen("oxy")
+			clear_fullscreen("oxy")
 
 		//Fire and Brute damage overlay (BSSR)
 		var/hurtdamage = src.getShockBruteLoss() + src.getShockFireLoss() + damageoverlaytemp	//Doesn't call the overlay if you can't actually feel it
@@ -1125,66 +1147,6 @@
 			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 		else
 			clear_fullscreen("brute")
-
-	if( stat == DEAD )
-		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-		see_in_dark = 8
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
-		if(client)
-			if(client.view != world.view) // If mob dies while zoomed in with device, unzoom them.
-				for(var/obj/item/item in contents)
-					if(item.zoom)
-						item.zoom()
-						break
-
-	else
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
-
-		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-
-		if(seer==1)
-			var/obj/effect/rune/R = locate() in loc
-			if(R && R.word1 == cultwords["see"] && R.word2 == cultwords["hell"] && R.word3 == cultwords["join"])
-				see_invisible = SEE_INVISIBLE_CULT
-			else
-				see_invisible = see_invisible_default
-				seer = 0
-
-		if(!seedarkness)
-			sight = species.get_vision_flags(src)
-			see_in_dark = 8
-			see_invisible = SEE_INVISIBLE_NOLIGHTING
-
-		else
-			sight = species.get_vision_flags(src)
-			see_in_dark = species.darksight
-			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
-
-		var/tmp/glasses_processed = 0
-		var/obj/item/weapon/rig/rig = back
-		if(istype(rig) && rig.visor)
-			if(!rig.helmet || (head && rig.helmet == head))
-				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-					glasses_processed = 1
-					process_glasses(rig.visor.vision.glasses)
-
-		if(glasses && !glasses_processed)
-			glasses_processed = 1
-			process_glasses(glasses)
-		if(XRAY in mutations)
-			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-
-		if(!glasses_processed && (species.get_vision_flags(src) > 0))
-			sight |= species.get_vision_flags(src)
-		if(!seer && !glasses_processed && seedarkness)
-			see_invisible = see_invisible_default
 
 		if(healths)
 			if (chem_effects[CE_PAINKILLER] > 100)
@@ -1233,6 +1195,15 @@
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
+		if(synthbattery_icon)
+			switch(nutrition)
+				if(450 to INFINITY)				synthbattery_icon.icon_state = "charge4"
+				if(300 to 450)					synthbattery_icon.icon_state = "blank"
+				if(200 to 300)					synthbattery_icon.icon_state = "charge4"
+				if(150 to 200)					synthbattery_icon.icon_state = "charge3"
+				if(100 to 150)					synthbattery_icon.icon_state = "charge2"
+				else							synthbattery_icon.icon_state = "charge1"
+
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
 
@@ -1262,6 +1233,13 @@
 					if(260 to 280)			bodytemp.icon_state = "temp-3"
 					else					bodytemp.icon_state = "temp-4"
 			else
+
+		if(bodytemperature >= 361)
+			if(isSynthetic())
+				if(world.time >= last_message || last_message == 0)
+					src << "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>"
+						last_message = world.time + 600
+
 				//TODO: precalculate all of this stuff when the species datum is created
 				var/base_temperature = species.body_temperature
 				if(base_temperature == null) //some species don't have a set metabolic temperature
@@ -1333,11 +1311,70 @@
 			if(found_welder)
 				client.screen |= global_hud.darkMask
 
+/mob/living/carbon/human/handle_vision()
+	if(stat == DEAD)
+		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+		see_in_dark = 8
+		if(client)
+			if(client.view != world.view) // If mob dies while zoomed in with device, unzoom them.
+				for(var/obj/item/item in contents)
+					if(item.zoom)
+						item.zoom()
+						break
+
+	else //We aren't dead
+		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+
+		if(XRAY in mutations)
+			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
+			see_in_dark = 8
+			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+
+		if(seer==1)
+			var/obj/effect/rune/R = locate() in loc
+			if(R && R.word1 == cultwords["see"] && R.word2 == cultwords["hell"] && R.word3 == cultwords["join"])
+				see_invisible = SEE_INVISIBLE_CULT
+			else
+				see_invisible = see_invisible_default
+				seer = 0
+
+		if(!seedarkness)
+			sight = species.get_vision_flags(src)
+			see_in_dark = 8
+			see_invisible = SEE_INVISIBLE_NOLIGHTING
+
+		else
+			sight = species.get_vision_flags(src)
+			see_in_dark = species.darksight
+			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
+
+		var/tmp/glasses_processed = 0
+		var/obj/item/weapon/rig/rig = back
+		if(istype(rig) && rig.visor) //&& !looking_elsewhere)
+			if(!rig.helmet || (head && rig.helmet == head))
+				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
+					glasses_processed = 1
+					process_glasses(rig.visor.vision.glasses)
+
+		if(glasses && !glasses_processed) // && !looking_elsewhere)
+			glasses_processed = 1
+			process_glasses(glasses)
+		if(XRAY in mutations)
+			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
+			see_in_dark = 8
+			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+
+		if(!glasses_processed && (species.get_vision_flags(src) > 0))
+			sight |= species.get_vision_flags(src)
+		if(!seer && !glasses_processed && seedarkness)
+			see_invisible = see_invisible_default
+
 		if(machine)
 			var/viewflags = machine.check_eye(src)
 			if(viewflags < 0)
 				reset_view(null, 0)
-			else if(viewflags)
+			else if(viewflags) //&& !looking_elsewhere)
 				sight |= viewflags
 		else if(eyeobj)
 			if(eyeobj.owner != src)

@@ -7,7 +7,7 @@
 	origin_tech = list(TECH_BIO = 4)
 	filled_reagents = list("inaprovaline" = 15)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/New()
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/initialize()
 	..()
 
 

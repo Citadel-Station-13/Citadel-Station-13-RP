@@ -18,6 +18,9 @@
 	// if you make a loud noise (screams etc), you'll be heard from 4 tiles over instead of two
 	return (copytext(message, length(message)) == "!") ? 4 : 2
 
+/datum/language/noise/can_speak_special(var/mob/speaker)
+	return TRUE	//Audible emotes
+
 // 'basic' language; spoken by default.
 /datum/language/common
 	name = LANGUAGE_GALCOM
@@ -55,15 +58,16 @@
 
 /datum/language/terminus
 	name = LANGUAGE_TERMINUS
-	desc = "A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region."
+	desc = "A group of languages spoken by the Zorren with a certain degree of mutual intelligibility under each other. Evidence shows it was a single lingua franca which has diverged into many sub languages due to isolation." // VOREstation edit. Original : A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region.
 	speech_verb = "mentions"
 	exclaim_verb = "insinuates"
 	colour = "terminus"
 	key = "4"
-	flags = WHITELISTED
-	syllables = list (".a", "spa", "pan", "blaif", "stra", "!u", "!ei", "!am", "by", ".y", "gry", "zbly", "!y", "fl",
- 	"sm", "rn", "cpi", "ku", "koi", "pr", "glau", "stu", "ved", "ki", "tsa", "xau", "jbu", "sny", "stro", "nu",
- 	"uan", "ju", "!i", "ge", "luk", "an", "ar", "at", "es", "et", "bel", "ki", "jaa", "ch", "ki", "gh", "ll", "uu", "wat")
+	// flags = WHITELISTED (VOREstation edit)
+	syllables = list (
+".a", "spa", "pan", "blaif", "stra", "!u", "!ei", "!am", "by", ".y", "gry", "zbly", "!y", "fl",
+"sm", "rn", "cpi", "ku", "koi", "pr", "glau", "stu", "ved", "ki", "tsa", "xau", "jbu", "sny", "stro", "nu",
+"uan", "ju", "!i", "ge", "luk", "an", "ar", "at", "es", "et", "bel", "ki", "jaa", "ch", "ki", "gh", "ll", "uu", "wat")
 
 // Criminal language.
 /datum/language/gutter
@@ -133,6 +137,6 @@
 	key = "s"
 	flags = SIGNLANG|NO_STUTTER|NONVERBAL
 
-/datum/language/sign/can_speak_special(var/mob/speaker)
+/datum/language/sign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
 	var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands
 	return (hands || !iscarbon(speaker))

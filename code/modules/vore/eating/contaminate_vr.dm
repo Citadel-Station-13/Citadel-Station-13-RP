@@ -25,8 +25,6 @@ var/image/gurgled_overlay = image('icons/effects/sludgeoverlay_vr.dmi')
 /obj/item/proc/can_gurgle()
 	if(flags & PHORONGUARD)
 		return FALSE
-	else if(phoronproof == TRUE)
-		return FALSE
 	else if(unacidable)
 		return FALSE
 	else
@@ -97,6 +95,9 @@ var/image/gurgled_overlay = image('icons/effects/sludgeoverlay_vr.dmi')
 /obj/item/weapon/card/id/gurgle_contaminate(var/atom/movable/item_storage = null)
 	digest_act(item_storage) //Digesting these anyway
 	return TRUE
+
+/obj/item/device/pda/gurgle_contaminate(var/atom/movable/item_storage = null)
+	return FALSE
 
 /obj/item/weapon/reagent_containers/food/gurgle_contaminate(var/atom/movable/item_storage = null)
 	digest_act(item_storage)

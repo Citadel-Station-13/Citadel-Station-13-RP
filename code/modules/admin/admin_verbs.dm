@@ -18,7 +18,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/set_tcrystals,
 	/datum/admins/proc/add_tcrystals,
 	/client/proc/invisimin,				//allows our mob to go invisible/visible,
-//	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind -Removed due to rare practical use. Moved to debug verbs ~Errorage,
+	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind.,
 	/datum/admins/proc/show_game_mode,  //Configuration window for the current game mode.,
 	/datum/admins/proc/force_mode_latespawn, //Force the mode to try a latespawn proc,
 	/datum/admins/proc/force_antag_latespawn, //Force a specific template to try a latespawn proc,
@@ -35,6 +35,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
 	/client/proc/cmd_admin_subtle_message,	//send an message to somebody as a 'voice in their head',
+	/client/proc/cmd_admin_icsubtle_message, //send a message to someone as a voice from centcom
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
 	/client/proc/cmd_admin_check_contents,	//displays the contents of an instance,
 	/datum/admins/proc/access_news_network,	//allows access of newscasters,
@@ -115,7 +116,9 @@ var/list/admin_verbs_ban = list(
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
-	/client/proc/play_server_sound
+	/client/proc/play_web_sound,
+	/client/proc/play_web_sound_manual,
+	/client/proc/stop_sounds
 	)
 
 var/list/admin_verbs_fun = list(
@@ -134,7 +137,10 @@ var/list/admin_verbs_fun = list(
 	/client/proc/editappear,
 	/client/proc/roll_dices,
 	/datum/admins/proc/call_supply_drop,
-	/datum/admins/proc/call_drop_pod
+	/datum/admins/proc/call_drop_pod,
+	/client/proc/smite_vr, //VOREStation Add,
+	/client/proc/smite,
+	/client/proc/admin_lightning_strike
 	)
 
 var/list/admin_verbs_spawn = list(
@@ -176,7 +182,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/nanomapgen_DumpImage,
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
-	/client/proc/panicbunker
+	/client/proc/panicbunker,
+	/client/proc/paranoia_logging
 	)
 
 var/list/admin_verbs_debug = list(
@@ -212,7 +219,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/callproc,
 	/client/proc/callproc_target,
 	/client/proc/debug_process,
-	/client/proc/SDQL_query,
 	/client/proc/SDQL2_query,
 	/client/proc/Jump,
 	/client/proc/debug_rogueminer,
@@ -261,6 +267,7 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/view_txt_log,
 	/datum/admins/proc/view_atk_log,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_icsubtle_message,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_call_shuttle,
@@ -270,7 +277,9 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
-	/client/proc/play_server_sound,
+	/client/proc/play_web_sound,
+	/client/proc/play_web_sound_manual,
+	/client/proc/stop_sounds,
 	/client/proc/object_talk,
 	/datum/admins/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
@@ -340,6 +349,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/jobbans,
 	/client/proc/toggle_attack_logs,
 	/client/proc/cmd_admin_subtle_message, 	//send an message to somebody as a 'voice in their head',
+	/client/proc/cmd_admin_icsubtle_message,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
@@ -358,6 +368,7 @@ var/list/admin_verbs_event_manager = list(
 	/datum/admins/proc/show_player_info,
 	/client/proc/dsay,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_icsubtle_message,
 	/client/proc/debug_variables,
 	/client/proc/check_antagonists,
 	/client/proc/aooc,
@@ -588,6 +599,25 @@ var/list/admin_verbs_event_manager = list(
 	feedback_add_details("admin_verb","OC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
+/client/proc/findStealthKey(txt)
+	if(txt)
+		for(var/P in GLOB.stealthminID)
+			if(GLOB.stealthminID[P] == txt)
+				return P
+	txt = GLOB.stealthminID[ckey]
+	return txt
+
+/client/proc/createStealthKey()
+	var/num = (rand(0,1000))
+	var/i = 0
+	while(i == 0)
+		i = 1
+		for(var/P in GLOB.stealthminID)
+			if(num == GLOB.stealthminID[P])
+				num++
+				i = 0
+	GLOB.stealthminID["[ckey]"] = "@[num2text(num)]"
+
 /client/proc/stealth()
 	set category = "Admin"
 	set name = "Stealth Mode"
@@ -598,10 +628,12 @@ var/list/admin_verbs_event_manager = list(
 				mob.name = capitalize(ckey)
 		else
 			var/new_key = ckeyEx(input("Enter your desired display name.", "Fake Key", key) as text|null)
-			if(!new_key)	return
+			if(!new_key)
+				return
 			if(length(new_key) >= 26)
 				new_key = copytext(new_key, 1, 26)
 			holder.fakekey = new_key
+			createStealthKey()
 			if(istype(mob, /mob/new_player))
 				mob.name = new_key
 		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
@@ -656,10 +688,12 @@ var/list/admin_verbs_event_manager = list(
 	set desc = "Cause an explosion of varying strength at your location."
 
 	var/turf/epicenter = mob.loc
-	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
+	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb", "Cancel")
 	var/choice = input("What size explosion would you like to produce?") in choices
 	switch(choice)
 		if(null)
+			return 0
+		if("Cancel")
 			return 0
 		if("Small Bomb")
 			explosion(epicenter, 1, 2, 3, 3)

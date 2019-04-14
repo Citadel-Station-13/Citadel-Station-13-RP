@@ -17,3 +17,13 @@
 		SPECIES_ZORREN_FLAT,
 		SPECIES_ZORREN_HIGH
 	)
+
+// Old Exploration is too WIP to use right now
+/obj/machinery/suit_cycler/exploration
+	req_access = list(access_explorer)
+	departments = list("Exploration")
+
+// Pilot Blue is still missing a few sprites on polaris end
+/obj/machinery/suit_cycler/pilot
+	req_access = list(access_pilot)
+	departments = list("Pilot")

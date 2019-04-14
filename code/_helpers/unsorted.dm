@@ -503,9 +503,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
-//	for(var/mob/living/silicon/hivebot/M in world)
+//	for(var/mob/living/silicon/hivebot/M in sortmob)
 //		mob_list.Add(M)
-//	for(var/mob/living/silicon/hive_mainframe/M in world)
+//	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
 //		mob_list.Add(M)
 	return moblist
 
@@ -518,6 +518,14 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	else if(powerused < 1000000000) //Less than a GW
 		return "[round((powerused * 0.000001),0.001)] MW"
 	return "[round((powerused * 0.000000001),0.0001)] GW"
+
+/proc/get_mob_by_ckey(key)
+	if(!key)
+		return
+	var/list/mobs = sortmobs()
+	for(var/mob/M in mobs)
+		if(M.ckey == key)
+			return M
 
 //Forces a variable to be posative
 /proc/modulus(var/M)
@@ -672,7 +680,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 //Returns: all the areas in the world
 /proc/return_areas()
 	var/list/area/areas = list()
-	for(var/area/A in world)
+	for(var/area/A in all_areas)
 		areas += A
 	return areas
 
@@ -690,7 +698,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/areas = new/list()
-	for(var/area/N in world)
+	for(var/area/N in all_areas)
 		if(istype(N, areatype)) areas += N
 	return areas
 
@@ -704,7 +712,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/turfs = new/list()
-	for(var/area/N in world)
+	for(var/area/N in all_areas)
 		if(istype(N, areatype))
 			for(var/turf/T in N) turfs += T
 	return turfs
@@ -719,7 +727,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/atoms = new/list()
-	for(var/area/N in world)
+	for(var/area/N in all_areas)
 		if(istype(N, areatype))
 			for(var/atom/A in N)
 				atoms += A
@@ -823,6 +831,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 					for(var/obj/O in T)
 						O.loc = X
+						O.update_light()
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
@@ -1054,62 +1063,21 @@ proc/get_mob_with_client_list()
 //Quick type checks for some tools
 var/global/list/common_tools = list(
 /obj/item/stack/cable_coil,
-/obj/item/weapon/wrench,
+/obj/item/weapon/tool/wrench,
 /obj/item/weapon/weldingtool,
-/obj/item/weapon/screwdriver,
-/obj/item/weapon/wirecutters,
+/obj/item/weapon/tool/screwdriver,
+/obj/item/weapon/tool/wirecutters,
 /obj/item/device/multitool,
-/obj/item/weapon/crowbar)
+/obj/item/weapon/tool/crowbar)
 
 /proc/istool(O)
 	if(O && is_type_in_list(O, common_tools))
 		return 1
 	return 0
 
-/proc/iswrench(O)
-	if(istype(O, /obj/item/weapon/wrench))
-		return 1
-	return 0
-
-/proc/iswelder(O)
-	if(istype(O, /obj/item/weapon/weldingtool))
-		return 1
-	return 0
-
-/proc/iscoil(O)
-	if(istype(O, /obj/item/stack/cable_coil))
-		return 1
-	return 0
-
-/proc/iswirecutter(O)
-	if(istype(O, /obj/item/weapon/wirecutters))
-		return 1
-	return 0
-
-/proc/isscrewdriver(O)
-	if(istype(O, /obj/item/weapon/screwdriver))
-		return 1
-	return 0
-
-/proc/ismultitool(O)
-	if(istype(O, /obj/item/device/multitool))
-		return 1
-	return 0
-
-/proc/iscrowbar(O)
-	if(istype(O, /obj/item/weapon/crowbar))
-		return 1
-	return 0
-
-/proc/iswire(O)
-	if(istype(O, /obj/item/stack/cable_coil))
-		return 1
-	return 0
 
 /proc/is_wire_tool(obj/item/I)
-	if(istype(I, /obj/item/device/multitool))
-		return TRUE
-	if(istype(I, /obj/item/weapon/wirecutters))
+	if(istype(I, /obj/item/device/multitool) || I.is_wirecutter())
 		return TRUE
 	if(istype(I, /obj/item/device/assembly/signaler))
 		return TRUE
@@ -1149,24 +1117,30 @@ proc/is_hot(obj/item/W as obj)
 
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)
-	if (!O) return 0
-	if (O.sharp) return 1
-	if (O.edge) return 1
-	return 0
+	if(!O)
+		return FALSE
+	if(O.sharp)
+		return TRUE
+	if(O.edge)
+		return TRUE
+	return FALSE
 
 //Whether or not the given item counts as cutting with an edge in terms of removing limbs
 /proc/has_edge(obj/O as obj)
-	if (!O) return 0
-	if (O.edge) return 1
-	return 0
+	if(!O)
+		return FALSE
+	if(O.edge)
+		return TRUE
+	return FALSE
 
 //Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 /proc/can_puncture(obj/item/W as obj)		// For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
-	if(!W) return 0
-	if(W.sharp) return 1
+	if(!W)
+		return FALSE
+	if(W.sharp)
+		return TRUE
 	return ( \
-		W.sharp													  || \
-		istype(W, /obj/item/weapon/screwdriver)                   || \
+		W.is_screwdriver()		     				              || \
 		istype(W, /obj/item/weapon/pen)                           || \
 		istype(W, /obj/item/weapon/weldingtool)					  || \
 		istype(W, /obj/item/weapon/flame/lighter/zippo)			  || \
@@ -1485,3 +1459,18 @@ var/mob/dview/dview_mob = new
 		return
 	var/datum/D = list_or_datum
 	D.vars[var_name] = var_value
+
+/proc/pass()
+	return
+
+GLOBAL_REAL_VAR(list/stack_trace_storage)
+/proc/gib_stack_trace()
+	stack_trace_storage = list()
+	stack_trace()
+	stack_trace_storage.Cut(1, min(3,stack_trace_storage.len))
+	. = stack_trace_storage
+	stack_trace_storage = null
+
+//gives us the stack trace from CRASH() without ending the current proc.
+/proc/stack_trace(msg)
+	CRASH(msg)

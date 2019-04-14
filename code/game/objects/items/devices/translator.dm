@@ -9,6 +9,7 @@
 	var/mult_icons = 1	//Changes sprite when it translates
 	var/visual = 1		//If you need to see to get the message
 	var/audio = 0		//If you need to hear to get the message
+	var/omni = 0		//cit change - if the language translated doesn't need machine_understands
 	var/listening = 0
 	var/datum/language/langset
 
@@ -53,7 +54,7 @@
 	if (language && (language.flags & NONVERBAL))
 		return //Not gonna translate sign language
 
-	if (!language.machine_understands)
+	if (!language.machine_understands & omni == 0) // cit change - omni check
 		return //Any other languages that it can't translate.
 
 	if (visual && ((L.sdisabilities & BLIND) || L.eye_blind))
@@ -72,8 +73,9 @@
 			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[message]</span>\"")
 
 		//They don't understand the output language
-		else
-			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")
+		/*else
+			to_chat(L, "<i><b>[src]</b> translates, </i>\"<span class='[langset.colour]'>[langset.scramble(message)]</span>\"")*/
+			//not much of a 'universal translator' with this else clause.
 
 //Let's try an ear-worn version
 /obj/item/device/universal_translator/ear

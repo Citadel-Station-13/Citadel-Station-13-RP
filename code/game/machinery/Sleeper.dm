@@ -109,7 +109,7 @@
 			break
 	data["stasis"] = stasis_level_name
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "sleeper.tmpl", "Sleeper UI", 600, 600, state = state)
 		ui.set_initial_data(data)
@@ -345,3 +345,9 @@
 			to_chat(user, "The subject has too many chemicals in their bloodstream.")
 	else
 		to_chat(user, "There's no suitable occupant in \the [src].")
+
+//Survival/Stasis sleepers
+/obj/machinery/sleeper/survival_pod
+	desc = "A limited functionality sleeper, all it can do is put patients into stasis. It lacks the medication and configuration of the larger units."
+	icon_state = "sleeper"
+	stasis_level = 100 //Just one setting

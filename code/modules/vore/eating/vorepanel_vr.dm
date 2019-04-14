@@ -2,7 +2,7 @@
 // Vore management panel for players
 //
 
-#define BELLIES_MAX 20
+#define BELLIES_MAX 30
 #define BELLIES_NAME_MIN 2
 #define BELLIES_NAME_MAX 12
 #define BELLIES_DESC_MAX 1024
@@ -287,9 +287,9 @@
 
 	switch(user.allowmobvore)
 		if(1)
-			dat += "<a href='?src=\ref[src];togglemv=1'>Toggle Mob Vore</a>"
+			dat += "<a href='?src=\ref[src];togglemv=1'>Toggle Consumption</a>"	//CIT CHANGE - changes "mob vore" to consumption
 		if(0)
-			dat += "<a href='?src=\ref[src];togglemv=1'><span style='color:green;'>Toggle Mob Vore</span></a>"
+			dat += "<a href='?src=\ref[src];togglemv=1'><span style='color:green;'>Toggle Consumption</span></a>"	//CIT CHANGE - changes "mob vore" to consumption
 
 	dat += "<br><a href='?src=\ref[src];toggle_dropnom_prey=1'>Toggle Drop-nom Prey</a>" //These two get their own, custom row, too.
 	dat += "<a href='?src=\ref[src];toggle_dropnom_pred=1'>Toggle Drop-nom Pred</a>"
@@ -804,16 +804,16 @@
 			user.client.prefs_vr.digestable = user.digestable
 
 	if(href_list["togglemv"])
-		var/choice = alert(user, "This button is for those who don't like being eaten by mobs. Messages admins when changed, so don't try to use it for mechanical benefit. Set it once and save it. Mobs are currently: [user.allowmobvore ? "Allowed to eat" : "Prevented from eating"] you.", "", "Allow Mob Predation", "Cancel", "Prevent Mob Predation")
+		var/choice = alert(user, "This button is for those who don't like the idea of diving down a gullet. Set it once and save it. Others are currently: [user.allowmobvore ? "Allowed to eat" : "Prevented from eating"] you.", "", "Allow Consumption", "Cancel", "Prevent Consumption")//CIT CHANGE - changes the flavor text for the mob vore preference to reflect its new status as a devourable toggle
 		switch(choice)
 			if("Cancel")
 				return 0
-			if("Allow Mob Predation")
+			if("Allow Consumption")
 				user.allowmobvore = TRUE
-			if("Prevent Mob Predation")
+			if("Prevent Consumption")
 				user.allowmobvore = FALSE
 
-		message_admins("[key_name(user)] toggled their mob vore preference to [user.allowmobvore] ([user ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[user.loc.];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>" : "null"])")
+		//message_admins("[key_name(user)] toggled their mob vore preference to [user.allowmobvore] ([user ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[user.loc.];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>" : "null"])") CIT CHANGE - We don't need this.
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.allowmobvore = user.allowmobvore

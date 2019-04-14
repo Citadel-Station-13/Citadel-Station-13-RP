@@ -75,6 +75,7 @@
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SKRELLIAN
+	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = 1
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
@@ -156,8 +157,8 @@
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SIIK)
-	name_language = LANGUAGE_SIIK
+	secondary_langs = list(LANGUAGE_TERMINUS)
+	name_language = LANGUAGE_TERMINUS
 
 	min_age = 18
 	max_age = 80
@@ -176,6 +177,7 @@
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
+	blood_color = "#240bc4"
 	color_mult = 1
 
 	heat_discomfort_strings = list(
@@ -194,8 +196,8 @@
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_SIIK)
-	name_language = LANGUAGE_SIIK
+	secondary_langs = list(LANGUAGE_TERMINUS)
+	name_language = LANGUAGE_TERMINUS
 
 	min_age = 18
 	max_age = 80
@@ -214,6 +216,7 @@
 
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
+	blood_color = "#240bc4"
 	color_mult = 1
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
@@ -304,6 +307,7 @@
 	tail_animation = 'icons/mob/species/unathi/tail_vr.dmi'
 	color_mult = 1
 	min_age = 18
+	gluttonous = 0
 	inherent_verbs = list(/mob/living/proc/shred_limb)
 
 /datum/species/tajaran
@@ -315,6 +319,7 @@
 	min_age = 18
 	gluttonous = 0 //Moving this here so I don't have to fix this conflict every time polaris glances at station.dm
 	inherent_verbs = list(/mob/living/proc/shred_limb)
+	heat_discomfort_level = 294 //Prevents heat discomfort spam at 20c
 
 /datum/species/skrell
 	spawn_flags = SPECIES_CAN_JOIN
@@ -322,6 +327,7 @@
 	deform = 'icons/mob/human_races/r_def_skrell_vr.dmi'
 	color_mult = 1
 	min_age = 18
+	reagent_tag = null
 
 /datum/species/diona
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
@@ -361,7 +367,7 @@
 	min_age = 18
 	icobase = 'icons/mob/human_races/r_vox_old.dmi'
 	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
-	inherent_verbs = list(/mob/living/proc/shred_limb)
+	inherent_verbs = list(/mob/living/proc/shred_limb, /mob/living/proc/eat_trash)
 
 datum/species/harpy
 	name = SPECIES_RAPALA
@@ -382,7 +388,7 @@ datum/species/harpy
 
 	blurb = "An Avian species, coming from a distant planet, the Rapalas are the very proud race.\
 	Sol researchers have commented on them having a very close resemblance to the mythical race called 'Harpies',\
-	who are known for having massive winged arms and talons as feet. They've been clocked at speeds of over 35 miler per hour chasing the planet's many fish-like fauna.\
+	who are known for having massive winged arms and talons as feet. They've been clocked at speeds of over 35 miles per hour chasing the planet's many fish-like fauna.\
 	The Rapalan's home-world 'Verita' is a strangely habitable gas giant, while no physical earth exists, there are fertile floating islands orbiting around the planet from past asteroid activity."
 
 	//primitive_form = "Saru"

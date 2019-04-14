@@ -60,6 +60,7 @@ BLIND     // can't see anything
 			to_chat(usr, "You activate the optical matrix on the [src].")
 		user.update_action_buttons()
 		user.recalculate_vis()
+	..()
 
 /obj/item/clothing/glasses/meson
 	name = "optical meson scanner"
@@ -70,6 +71,8 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
+	item_flags = AIRTIGHT //cit change
+	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
 /obj/item/clothing/glasses/meson/New()
@@ -145,7 +148,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"
 	species_restricted = list("Vox")
-	phoronproof = 1
+	flags = PHORONGUARD
 
 /obj/item/clothing/glasses/night/New()
 	..()
@@ -189,6 +192,8 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
+	item_flags = AIRTIGHT //cit change
+	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
 /obj/item/clothing/glasses/material/New()

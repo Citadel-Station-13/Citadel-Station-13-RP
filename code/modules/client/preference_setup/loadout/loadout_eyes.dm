@@ -57,7 +57,7 @@
 /datum/gear/eyes/medical
 	display_name = "Medical HUD (Medical)"
 	path = /obj/item/clothing/glasses/hud/health
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
 
 /datum/gear/eyes/medical/prescriptionmed
 	display_name = "Medical HUD, prescription (Medical)"
@@ -121,3 +121,7 @@
 /datum/gear/eyes/sun/prescriptionsun
 	display_name = "sunglasses, presciption (Security/Command)"
 	path = /obj/item/clothing/glasses/sunglasses/prescription
+
+/datum/gear/eyes/circuitry
+	display_name = "goggles, circuitry (empty)"
+	path = /obj/item/clothing/glasses/circuitry

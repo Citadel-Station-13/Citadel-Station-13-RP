@@ -187,6 +187,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	unique = 1
 	var/tomedat = ""
 	var/list/words = list("ire" = "ire", "ego" = "ego", "nahlizet" = "nahlizet", "certum" = "certum", "veri" = "veri", "jatkaa" = "jatkaa", "balaq" = "balaq", "mgar" = "mgar", "karazet" = "karazet", "geeri" = "geeri")
+	origin_tech = list(TECH_ARCANE = 6)
 
 	tomedat = {"<html>
 				<head>
@@ -319,7 +320,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 			runerandom()
 		if(iscultist(user))
 			var/C = 0
-			for(var/obj/effect/rune/N in world)
+			for(var/obj/effect/rune/N in rune_list)
 				C++
 			if (!istype(user.loc,/turf))
 				user << "<span class='warning'>You do not have enough space to write a proper rune.</span>"

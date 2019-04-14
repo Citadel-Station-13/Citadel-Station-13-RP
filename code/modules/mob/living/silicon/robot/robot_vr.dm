@@ -7,6 +7,8 @@
 	var/leap_at
 	var/dogborg = FALSE //Dogborg special features (overlays etc.)
 	var/wideborg = FALSE //When the borg simply doesn't use standard 32p size.
+	var/scrubbing = FALSE //Floor cleaning enabled
+	var/datum/matter_synth/water_res = null
 	var/notransform
 	var/original_icon = 'icons/mob/robots.dmi'
 	var/ui_style_vr = FALSE //Do we use our hud icons?
@@ -27,7 +29,14 @@
 					   "mechoid-Service",
 					   "mechoid-Janitor",
 					   "mechoid-Combat",
-					   "mechoid-Combat-roll"
+					   "mechoid-Combat-roll",
+					   "Noble-CLN",
+					   "Noble-SRV",
+					   "Noble-DIG",
+					   "Noble-MED",
+					   "Noble-SEC",
+					   "Noble-ENG",
+					   "Noble-STD"
 					   )					//List of all used sprites that are in robots_vr.dmi
 
 
@@ -64,13 +73,13 @@
 		add_overlay("wreck-overlay")
 
 /mob/living/silicon/robot/Move(a, b, flag)
-
 	. = ..()
-
-	if(module)
-		if(module.type == /obj/item/weapon/robot_module/robot/scrubpup)//no water reserve mechanics yet.
+	if(scrubbing)
+		var/datum/matter_synth/water = water_res
+		if(water && water.energy >= 1)
 			var/turf/tile = loc
 			if(isturf(tile))
+				water.use_charge(1)
 				tile.clean_blood()
 				if(istype(tile, /turf/simulated))
 					var/turf/simulated/T = tile
@@ -95,7 +104,6 @@
 								cleaned_human.update_inv_shoes(0)
 							cleaned_human.clean_blood(1)
 							cleaned_human << "<span class='warning'>[src] cleans your face!</span>"
-		return
 	return
 
 /mob/living/silicon/robot/proc/vr_sprite_check()
@@ -107,3 +115,129 @@
 		icon = 'icons/mob/robots_vr.dmi'
 	else if(!(icon_state in vr_icons))
 		icon = original_icon
+
+/mob/living/silicon/robot/proc/ex_reserve_refill()
+	set name = "Refill Extinguisher"
+	set category = "Object"
+	var/datum/matter_synth/water = water_res
+	for(var/obj/item/weapon/extinguisher/E in module.modules)
+		if(E.reagents.total_volume < E.max_water)
+			if(water && water.energy > 0)
+				var/amount = E.max_water - E.reagents.total_volume
+				if(water.energy < amount)
+					amount = water.energy
+				water.use_charge(amount)
+				E.reagents.add_reagent("water", amount)
+				to_chat(src, "You refill the extinguisher using your water reserves.")
+			else
+				to_chat(src, "Insufficient water reserves.")
+
+//RIDING
+/datum/riding/dogborg
+	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
+	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
+	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
+	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
+
+/datum/riding/dogborg/handle_vehicle_layer()
+	if(ridden.has_buckled_mobs())
+		if(ridden.dir != NORTH)
+			ridden.layer = ABOVE_MOB_LAYER
+		else
+			ridden.layer = initial(ridden.layer)
+	else
+		ridden.layer = initial(ridden.layer)
+
+/datum/riding/dogborg/ride_check(mob/living/M)
+	var/mob/living/L = ridden
+	if(L.stat)
+		force_dismount(M)
+		return FALSE
+	return TRUE
+
+/datum/riding/dogborg/force_dismount(mob/M)
+	. =..()
+	ridden.visible_message("<span class='notice'>[M] stops riding [ridden]!</span>")
+
+//Hoooo boy.
+/datum/riding/dogborg/get_offsets(pass_index) // list(dir = x, y, layer)
+	var/mob/living/L = ridden
+	var/scale = L.size_multiplier
+
+	var/list/values = list(
+		"[NORTH]" = list(0, 8*scale, ABOVE_MOB_LAYER),
+		"[SOUTH]" = list(0, 8*scale, BELOW_MOB_LAYER),
+		"[EAST]" = list(-5*scale, 8*scale, ABOVE_MOB_LAYER),
+		"[WEST]" = list(5*scale, 8*scale, ABOVE_MOB_LAYER))
+
+	return values
+
+//Human overrides for taur riding
+/mob/living/silicon/robot
+	max_buckled_mobs = 1 //Yeehaw
+	can_buckle = TRUE
+	buckle_movable = TRUE
+	buckle_lying = FALSE
+
+/mob/living/silicon/robot/New(loc,var/unfinished = 0)
+	..()
+	riding_datum = new /datum/riding/dogborg(src)
+
+/mob/living/silicon/robot/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
+	if(forced)
+		return ..() // Skip our checks
+	if(!dogborg)
+		return FALSE
+	if(lying)
+		return FALSE
+	if(!ishuman(M))
+		return FALSE
+	if(M in buckled_mobs)
+		return FALSE
+	if(M.size_multiplier > size_multiplier * 1.2)
+		to_chat(src,"<span class='warning'>This isn't a pony show! You need to be bigger for them to ride.</span>")
+		return FALSE
+
+	var/mob/living/carbon/human/H = M
+
+	if(isTaurTail(H.tail_style))
+		to_chat(src,"<span class='warning'>Too many legs. TOO MANY LEGS!!</span>")
+		return FALSE
+	if(M.loc != src.loc)
+		if(M.Adjacent(src))
+			M.forceMove(get_turf(src))
+
+	. = ..()
+	if(.)
+		buckled_mobs[M] = "riding"
+
+/mob/living/silicon/robot/MouseDrop_T(mob/living/M, mob/living/user) //Prevention for forced relocation caused by can_buckle. Base proc has no other use.
+	return
+
+/mob/living/silicon/robot/attack_hand(mob/user as mob)
+	if(LAZYLEN(buckled_mobs))
+		//We're getting off!
+		if(user in buckled_mobs)
+			riding_datum.force_dismount(user)
+		//We're kicking everyone off!
+		if(user == src)
+			for(var/rider in buckled_mobs)
+				riding_datum.force_dismount(rider)
+	else
+		. = ..()
+
+/mob/living/silicon/robot/proc/robot_mount(var/mob/living/M in living_mobs(1))
+	set name = "Robot Mount/Dismount"
+	set category = "Abilities"
+	set desc = "Let people ride on you."
+
+	if(LAZYLEN(buckled_mobs))
+		for(var/rider in buckled_mobs)
+			riding_datum.force_dismount(rider)
+		return
+	if (stat != CONSCIOUS)
+		return
+	if(!can_buckle || !istype(M) || !M.Adjacent(src) || M.buckled)
+		return
+	if(buckle_mob(M))
+		visible_message("<span class='notice'>[M] starts riding [name]!</span>")

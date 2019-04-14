@@ -47,8 +47,8 @@
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
-	else if(default_deconstruction_crowbar(user, W))
-		return
+//	else if(default_deconstruction_crowbar(user, W))  //NOTICE: NO CIRCUITBOARD
+//		return
 	else if(default_part_replacement(user, W))
 		return
 	else if(panel_open && istype(W, /obj/item/device/multitool))
@@ -136,7 +136,7 @@
 		var/obj/item/device/multitool/M = W
 		M.connectable = src
 		to_chat(user, "<span class='caution'>You save the data in \the [M]'s buffer.</span>")
-	else if(istype(W, /obj/item/weapon/wrench))
+	else if(W.is_wrench())
 		to_chat(user, "<span class='notice'>You start to unwrench \the [src].</span>")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		if(do_after(user, 15) && !QDELETED(src))

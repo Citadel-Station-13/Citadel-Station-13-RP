@@ -1,7 +1,7 @@
 var/global/datum/controller/gameticker/ticker
 
 /datum/controller/gameticker
-	var/const/restart_timeout = 2 MINUTES //One minute is 600. /CITADEL CHANGE - reduces the round end restart timer to 2 minutes
+	var/const/restart_timeout = 3 MINUTES //One minute is 600.
 	var/current_state = GAME_STATE_PREGAME
 
 	var/hide_mode = 0
@@ -44,30 +44,26 @@ var/global/datum/controller/gameticker/ticker
 	'sound/music/title2.ogg',\
 	'sound/music/clouds.s3m',\
 	'sound/music/space_oddity.ogg') //Ground Control to Major Tom, this song is cool, what's going on?
-	*/
+	*/ //VOREStation Edit End
 
 	send2mainirc("Server lobby is loaded and open at byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")
 
 	do
-		pregame_timeleft = 180
+		pregame_timeleft = 300
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
 		to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
 		while(current_state == GAME_STATE_PREGAME)
-			for(var/i=0, i<10, i++)
-				sleep(1)
-				vote.process()
 			if(round_progressing)
 				pregame_timeleft--
 			if(pregame_timeleft == config.vote_autogamemode_timeleft)
-				if(!vote.time_remaining)
-					vote.autogamemode()	//Quit calling this over and over and over and over.
-					while(vote.time_remaining)
-						for(var/i=0, i<10, i++)
-							sleep(1)
-							vote.process()
+				if(!SSvote.time_remaining)
+					SSvote.autogamemode()	//Quit calling this over and over and over and over.
+					while(SSvote.time_remaining)
+						sleep(1)
 			if(pregame_timeleft <= 0)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
+			sleep(10)
 	while (!setup())
 
 
@@ -377,7 +373,7 @@ var/global/datum/controller/gameticker/ticker
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
 					to_chat(world, "<span class='danger'>The round has ended!</span>")
 					round_end_announced = 1
-				vote.autotransfer()
+				SSvote.autotransfer()
 
 		return 1
 

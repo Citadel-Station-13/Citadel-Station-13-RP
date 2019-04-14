@@ -72,7 +72,7 @@
 			src.take_organ_damage(0,5,emp=1)
 			Confuse(2)
 	flash_eyes(affect_silicon = 1)
-	src << "<span class='danger'><B>*BZZZT*</B></span>"
+	src << "<span class='danger'><B>#4nd%;f4y6,>£%-BZZZZZZZT</B></span>"
 	src << "<span class='danger'>Warning: Electromagnetic pulse detected.</span>"
 	..()
 
@@ -173,13 +173,15 @@
 
 // this function displays the stations manifest in a separate window
 /mob/living/silicon/proc/show_station_manifest()
-	var/dat
-	dat += "<h4>Crew Manifest</h4>"
-	if(data_core)
-		dat += data_core.get_manifest(1) // make it monochrome
-	dat += "<br>"
-	src << browse(dat, "window=airoster")
-	onclose(src, "airoster")
+	var/dat = "<div align='center'>"
+	if(!data_core)
+		to_chat(src,"<span class='notice'>There is no data to form a manifest with. Contact your Nanotrasen administrator.</span>")
+		return
+	dat += data_core.get_manifest(1) //The 1 makes it monochrome.
+
+	var/datum/browser/popup = new(src, "Crew Manifest", "Crew Manifest", 370, 420, src)
+	popup.set_content(dat)
+	popup.open()
 
 //can't inject synths
 /mob/living/silicon/can_inject(var/mob/user, var/error_msg)
@@ -419,3 +421,6 @@
 
 	ghostize(0)
 	qdel(src)
+
+/mob/living/silicon/has_vision()
+	return 0 //NOT REAL EYES

@@ -33,6 +33,11 @@
 	movement_range = 25
 	energy = 50
 
+/obj/effect/accelerated_particle/reverse
+	icon_state = "particle3"
+	movement_range = 15
+	energy = -20
+
 /obj/effect/accelerated_particle/New(loc, dir = 2)
 	src.loc = loc
 	src.set_dir(dir)

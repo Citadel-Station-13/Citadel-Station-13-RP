@@ -81,6 +81,14 @@
 	charge = 0
 	should_be_mapped = 1
 
+/obj/machinery/power/smes/buildable/main
+	cur_coils = 4
+	RCon_tag = "Power - Main"
+	
+/obj/machinery/power/smes/buildable/engine
+	RCon_tag = "Power - Engine"
+	input_attempt = 1
+
 /obj/machinery/power/smes/buildable/Destroy()
 	qdel(wires)
 	wires = null
@@ -328,7 +336,7 @@
 			failure_probability = 0
 
 		// Crowbar - Disassemble the SMES.
-		if(istype(W, /obj/item/weapon/crowbar))
+		if(W.is_crowbar())
 			if (terminal)
 				to_chat(user, "<span class='warning'>You have to disassemble the terminal first!</span>")
 				return

@@ -7,6 +7,7 @@
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	origin_tech = list(TECH_ARCANE = 3)
 	edge = 1
 	sharp = 1
 
@@ -55,6 +56,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0
+	origin_tech = list(TECH_ARCANE = 2)
 
 /obj/item/clothing/head/culthood/cultify()
 	return
@@ -78,13 +80,13 @@
 	armor = list(melee = 50, bullet = 30, laser = 50, energy = 80, bomb = 25, bio = 10, rad = 0)
 	flags_inv = HIDEJUMPSUIT
 	siemens_coefficient = 0
+	origin_tech = list(TECH_ARCANE = 2)
 
 /obj/item/clothing/suit/cultrobes/cultify()
 	return
 
 /obj/item/clothing/suit/cultrobes/alt
 	icon_state = "cultrobesalt"
-	item_state = "cultrobes"
 
 /obj/item/clothing/suit/cultrobes/magusred
 	name = "magus robes"
@@ -92,6 +94,7 @@
 	icon_state = "magusred"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	origin_tech = list(TECH_ARCANE = 3)
 
 /obj/item/clothing/head/helmet/space/cult
 	name = "cult helmet"
@@ -99,6 +102,7 @@
 	icon_state = "cult_helmet"
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 80, bomb = 30, bio = 30, rad = 30)
 	siemens_coefficient = 0
+	origin_tech = list(TECH_ARCANE = 2)
 
 /obj/item/clothing/head/helmet/space/cult/cultify()
 	return
@@ -114,6 +118,7 @@
 	siemens_coefficient = 0
 	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS
+	origin_tech = list(TECH_ARCANE = 3)
 
 /obj/item/clothing/suit/space/cult/cultify()
 	return

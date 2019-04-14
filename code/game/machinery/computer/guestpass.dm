@@ -41,7 +41,7 @@
 
 /obj/item/weapon/card/id/guest/attack_self(mob/living/user as mob)
 	if(user.a_intent == I_HURT)
-		if(icon_state == "guest_invalid")
+		if(icon_state == "guest-invalid")
 			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
 			return
 
@@ -49,13 +49,14 @@
 		if(confirm == "Yes")
 			//rip guest pass </3
 			user.visible_message("<span class='notice'>\The [user] deactivates \the [src].</span>")
-			icon_state = "guest_invalid"
+			icon_state = "guest-invalid"
+			update_icon()
 			expiration_time = world.time
 			expired = 1
 	return ..()
 
 /obj/item/weapon/card/id/guest/initialize()
-	. = ..() 
+	. = ..()
 	processing_objects.Add(src)
 	update_icon()
 
@@ -66,7 +67,8 @@
 /obj/item/weapon/card/id/guest/process()
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
-		icon_state = "guest_invalid"
+		icon_state = "guest-invalid"
+		update_icon()
 		expired = 1
 		world.time = expiration_time
 		return
@@ -78,6 +80,8 @@
 /obj/machinery/computer/guestpass
 	name = "guest pass terminal"
 	icon_state = "guest"
+	plane = TURF_PLANE
+	layer = ABOVE_TURF_LAYER
 	icon_keyboard = null
 	icon_screen = "pass"
 	density = 0
@@ -102,7 +106,7 @@
 		if(!giver && user.unEquip(I))
 			I.forceMove(src)
 			giver = I
-			nanomanager.update_uis(src)
+			GLOB.nanomanager.update_uis(src)
 		else if(giver)
 			user << "<span class='warning'>There is already ID card inside.</span>"
 		return
@@ -148,7 +152,7 @@
 	data["log"] = internal_log
 	data["uid"] = uid
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "guest_pass.tmpl", src.name, 400, 520)
 		ui.set_initial_data(data)
@@ -240,4 +244,4 @@
 					usr << "<span class='warning'>Cannot issue pass without issuing ID.</span>"
 
 	src.add_fingerprint(usr)
-	nanomanager.update_uis(src)
+	GLOB.nanomanager.update_uis(src)

@@ -135,7 +135,6 @@
 					prob(4);/obj/item/clothing/head/hardhat,
 					prob(4);/obj/item/clothing/mask/breath,
 					prob(4);/obj/item/clothing/shoes/black,
-					prob(4);/obj/item/clothing/shoes/black,
 					prob(4);/obj/item/clothing/shoes/laceup,
 					prob(4);/obj/item/clothing/shoes/leather,
 					prob(4);/obj/item/clothing/suit/storage/hazardvest,
@@ -217,7 +216,8 @@
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
+	var/path = pick(prob(10);/obj/item/weapon/disk/nifsoft/compliance, //Citadel Override probability, 3.6%
+					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
 					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
 					prob(4);/obj/item/weapon/gun/energy/sizegun,
@@ -225,19 +225,31 @@
 					prob(3);/obj/item/weapon/material/butterfly/switchblade,
 					prob(3);/obj/item/clothing/gloves/knuckledusters,
 					prob(3);/obj/item/weapon/reagent_containers/syringe/drugs,
+					prob(2);/obj/item/weapon/storage/pill_bottle/citalopram, //happer pills
+					prob(2);/obj/item/weapon/storage/pill_bottle/iron,
+					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine, 
+					prob(2);/obj/item/weapon/storage/pill_bottle/antitox,
+					prob(2);/obj/item/weapon/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/weapon/handcuffs/fuzzy,
 				//	prob(2);/obj/item/weapon/legcuffs,
 					prob(2);/obj/item/weapon/storage/box/syndie_kit/spy,
 					prob(2);/obj/item/weapon/grenade/anti_photon,
+					prob(2);/obj/item/device/nif/bad, //Citadel Override probability, 0.7%
+					prob(2);/obj/item/device/bodysnatcher, //Citadel Override probability, 0.7%
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,
-					prob(1);/obj/item/device/nif/bad,
+					prob(1);/obj/item/clothing/head/helmet/medieval/crusader, //Citadel Addition
+					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark, //Citadel Addition
+				//	prob(1);/obj/item/device/nif/bad, // VORECode default probability, 0.2%
 					prob(1);/obj/item/device/radio_jammer,
 					prob(1);/obj/item/device/sleevemate,
-					prob(1);/obj/item/device/bodysnatcher,
+				//	prob(1);/obj/item/device/bodysnatcher, //VORECode default probability, 0.2%
 					prob(1);/obj/item/weapon/beartrap,
 					prob(1);/obj/item/weapon/cell/hyper/empty,
-					prob(1);/obj/item/weapon/disk/nifsoft/compliance,
+				//	prob(1);/obj/item/weapon/disk/nifsoft/compliance, //VORECode default probability, 0.2%
 					prob(1);/obj/item/weapon/material/knife/tacknife,
+					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
+					prob(1);/obj/item/clothing/accessory/storage/black_vest,
+					prob(1);/obj/item/clothing/accessory/storage/white_vest,
 					prob(1);/obj/item/weapon/reagent_containers/syringe/steroid)
 
 	var/obj/item/I = new path()

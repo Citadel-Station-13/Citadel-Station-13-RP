@@ -62,7 +62,7 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/rogue_drone] = 5 + 25 * active_with_role["Engineer"] + 25 * active_with_role["Security"]
 	possibleEvents[/datum/event/infestation] = 100 + 100 * active_with_role["Janitor"]
 
-	possibleEvents[/datum/event/communications_blackout] = 50 + 25 * active_with_role["AI"] + active_with_role["Scientist"] * 25
+	possibleEvents[/datum/event/communications_blackout] = 25 + 10 * active_with_role["AI"] + active_with_role["Scientist"] * 10
 	possibleEvents[/datum/event/ionstorm] = active_with_role["AI"] * 25 + active_with_role["Cyborg"] * 25 + active_with_role["Engineer"] * 10 + active_with_role["Scientist"] * 5
 	possibleEvents[/datum/event/grid_check] = 25 + 10 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Janitor"] + 5 * active_with_role["Engineer"]

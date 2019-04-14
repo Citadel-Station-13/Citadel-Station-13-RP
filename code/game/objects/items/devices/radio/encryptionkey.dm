@@ -65,6 +65,11 @@
 	icon_state = "com_cypherkey"
 	channels = list("Command" = 1)
 
+/obj/item/device/encryptionkey/headset_adj //Command Secretary's Headset Key
+	name = "secretary radio encryption key"
+	icon_state = "com_cypherkey"
+	channels = list("Command" = 1, "Service" = 0)
+
 /obj/item/device/encryptionkey/heads/captain
 	name = "colony director's encryption key"
 	icon_state = "cap_cypherkey"

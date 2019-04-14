@@ -20,9 +20,10 @@
 /datum/surgery_step/internal/remove_embryo
 	allowed_tools = list(
 	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/wirecutters = 75,	\
 	/obj/item/weapon/material/kitchen/utensil/fork = 20
 	)
+
+	allowed_procs = list(IS_WIRECUTTER = 75)
 	blood_level = 2
 
 	min_duration = 80
@@ -127,8 +128,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("<span class='warning'>[user]'s hand slips, getting mess and tearing the inside of [target]'s [affected.name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, getting mess and tearing the inside of [target]'s [affected.name] with \the [tool]!</span>")
+	user.visible_message("<span class='warning'>[user]'s hand slips, tearing the inside of [target]'s [affected.name] with \the [tool]!</span>", \
+	"<span class='warning'>Your hand slips, tearing the inside of [target]'s [affected.name] with \the [tool]!</span>")
 	var/dam_amt = 2
 
 	if (istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
@@ -212,9 +213,10 @@
 
 	allowed_tools = list(
 	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/wirecutters = 75,	\
 	/obj/item/weapon/material/kitchen/utensil/fork = 20
 	)
+
+	allowed_procs = list(IS_WIRECUTTER = 75)
 
 	min_duration = 60
 	max_duration = 80

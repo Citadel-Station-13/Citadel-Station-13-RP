@@ -65,7 +65,7 @@
 	parts &= ~flag
 	if(!parts)
 		qdel(src)
-
+/* CITADEL CHANGE - Removes this fluff stuff
 //JoanRisu:Joan Risu
 /obj/item/weapon/flame/lighter/zippo/fluff/joan
 	name = "Federation Zippo Lighter"
@@ -193,7 +193,7 @@
 	from_suit = /obj/item/clothing/suit/space/void
 	to_helmet = /obj/item/clothing/head/helmet/space/void/engineering/hazmat/fluff/screehelm
 	to_suit = /obj/item/clothing/suit/space/void/engineering/hazmat/fluff/screespess
-
+END OF CITADEL CHANGES */
 //General Use
 /obj/item/weapon/flag
 	name = "Nanotrasen Banner"
@@ -244,7 +244,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "flag_advent_mob"
 
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 //Vorrakul: Kaitlyn Fiasco
 /obj/item/toy/plushie/mouse/fluff
 	name = "Mouse Plushie"
@@ -285,14 +285,24 @@
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
-
+END OF CITADEL CHANGE */
 //General use
 /obj/item/weapon/melee/fluff/holochain/mass
-	desc = "A mass produced version of the original. It has faux leather and an aluminium base, but still stings like the original."
+	name = "holographic chain"
+	desc = "A mass produced holographic chain. It has faux leather and an aluminium base, but still stings like an original."
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_state = "holochain"
+	icon_override = 'icons/vore/custom_items_vr.dmi'
+	item_state = "holochain_mob"
+	flags = CONDUCT | NOBLOODY
+	slot_flags = SLOT_BELT
 	force = 8
+	throwforce = 3
+	w_class = ITEMSIZE_NORMAL
+	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "flayed")
 
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 // joey4298:Emoticon
 /obj/item/device/fluff/id_kit_mime
 	name = "Mime ID reprinter"
@@ -521,7 +531,7 @@
 	..()
 	new /obj/item/weapon/paper/khcrystal_manual(src)
 	new /obj/item/clothing/accessory/collar/khcrystal(src)
-
+END OF CITADEL CHANGES */
 /obj/item/weapon/cane/fluff
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."
@@ -535,7 +545,7 @@
 	w_class = ITEMSIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
-
+/* CITADEL CHANGE - Goodbye Virgo Fluff
 /obj/item/weapon/cane/fluff/tasald
 	name = "Ornate Walking Cane"
 	desc = "An elaborately made custom walking stick with a dark wooding core, a crimson red gemstone on its head and a steel cover around the bottom. you'd probably hear someone using this down the hall."
@@ -725,7 +735,7 @@
 	random_emote = list("hisses softly with a blush on his face", "yelps in embarrassment", "grunts a little")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_roiz
 
-/obj/item/weapon/implant/reagent_generator/roiz/implanted(mob/living/carbon/source)
+/obj/item/weapon/implant/reagent_generator/roiz/post_implant(mob/living/carbon/source)
 	processing_objects += src
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
@@ -793,7 +803,7 @@
 	random_emote = list("hisses softly with a blush on her face", "bites down on her lower lip", "lets out a light huff")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_jasmine
 
-/obj/item/weapon/implant/reagent_generator/jasmine/implanted(mob/living/carbon/source)
+/obj/item/weapon/implant/reagent_generator/jasmine/post_implant(mob/living/carbon/source)
 	processing_objects += src
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
@@ -861,7 +871,7 @@
 	random_emote = list("hisses softly with a blush on her face", "yelps in embarrassment", "grunts a little")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_yonra
 
-/obj/item/weapon/implant/reagent_generator/yonra/implanted(mob/living/carbon/source)
+/obj/item/weapon/implant/reagent_generator/yonra/post_implant(mob/living/carbon/source)
 	processing_objects += src
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
@@ -945,7 +955,7 @@
 	random_emote = list("trembles and huffs, panting from the exertion.", "sees what has happened and covers her face with both hands!", "whimpers softly, her legs shivering, knees pointed inward from the feeling.")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_rischi
 
-/obj/item/weapon/implant/reagent_generator/rischi/implanted(mob/living/carbon/source)
+/obj/item/weapon/implant/reagent_generator/rischi/post_implant(mob/living/carbon/source)
 	processing_objects += src
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
@@ -995,70 +1005,6 @@
 
 		rimplant.reagents.remove_any(rimplant.transfer_amount)
 
-/obj/item/weapon/implant/reagent_generator/pumila_apple
-	name = "apple laying implant"
-	desc = "This is an implant that allows the user to grow apples."
-	generated_reagents = list("sugar" = 2) //This actually allows them to.
-	usable_volume = 250 //Five apples. Let's not get /too/ crazy here.
-	transfer_amount = 50
-
-	empty_message = list("Your have no apples on you.", "You have a distinct lack of apples..")
-	full_message = list("You have multiple apples on you, ready for harvest!", "There are a multitude of apples awaiting harvest on you!")
-	emote_descriptor = list("an apple right off of Pumila!", "a large apple off Pumila!")
-	var/verb_descriptor = list("grabs", "snatches", "picks")
-	var/self_verb_descriptor = list("grab", "snatch", "pick")
-	var/short_emote_descriptor = list("picks", "grabs")
-	self_emote_descriptor = list("grab", "pick", "snatch")
-	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_pumila_apple
-
-/obj/item/weapon/implant/reagent_generator/pumila_apple/implanted(mob/living/carbon/source)
-	processing_objects += src
-	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
-	source.verbs |= assigned_proc
-	return 1
-
-/obj/item/weapon/implanter/reagent_generator/pumila_apple
-	implant_type = /obj/item/weapon/implant/reagent_generator/pumila_apple
-
-/mob/living/carbon/human/proc/use_reagent_implant_pumila_apple()
-	set name = "Grab Apple"
-	set desc = "Grab an apple off of Pumila."
-	set category = "Object"
-	set src in view(1)
-
-	//do_reagent_implant(usr)
-	if(!isliving(usr) || !usr.canClick())
-		return
-
-	if(usr.incapacitated() || usr.stat > CONSCIOUS)
-		return
-
-	var/obj/item/weapon/implant/reagent_generator/roiz/rimplant
-	for(var/I in contents)
-		if(istype(I, /obj/item/weapon/implant/reagent_generator))
-			rimplant = I
-			break
-	if (rimplant)
-		if(rimplant.reagents.total_volume < rimplant.transfer_amount)
-			to_chat(src, "<span class='notice'>[pick(rimplant.empty_message)]</span>")
-			return
-
-		var/datum/seed/S = plant_controller.seeds["apple"] //crosses fingers.
-		S.harvest(usr,0,0,1)
-
-		var/index = rand(0,2)
-
-		if (usr != src)
-			var/emote = rimplant.emote_descriptor[index]
-			var/verb_desc = rimplant.verb_descriptor[index]
-			var/self_verb_desc = rimplant.self_verb_descriptor[index]
-			usr.visible_message("<span class='notice'>[usr] [verb_desc] [emote]</span>",
-							"<span class='notice'>You [self_verb_desc] [emote]</span>")
-		else
-			visible_message("<span class='notice'>[src] [pick(rimplant.short_emote_descriptor)] an apple.</span>",
-								"<span class='notice'>You [pick(rimplant.self_emote_descriptor)] an apple.</span>")
-
-		rimplant.reagents.remove_any(rimplant.transfer_amount)
 /*
 /obj/item/weapon/implant/reagent_generator/pumila_nectar //Bugged. Two implants at once messes things up.
 	generated_reagents = list("honey" = 2)
@@ -1211,7 +1157,7 @@
 		qdel(I)
 		accessset = 1
 	..()
-
+END OF CITADEL CHANGES */
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/science_proper
 	name = "Aesthetic Science Goggles"
@@ -1242,7 +1188,7 @@
 	item_state = "tronket"
 	overlay_state = "tronket"
 	slot_flags = SLOT_TIE
-	slot = "over"
+	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/flops
 	name = "drop straps"
@@ -1253,12 +1199,12 @@
 	item_state = "flops"
 	overlay_state = "flops"
 	slot_flags = SLOT_TIE
-	slot = "over"
+	slot = ACCESSORY_SLOT_DECOR
 
 //The perfect adminboos device?
 /obj/item/device/perfect_tele
 	name = "personal translocator"
-	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
+	desc = "Seems absurd, doesn't it? Yet, here we are. This handheld device is capable of producing bluespace teleportation beacons, and can be activated to translocate the user or a target of their choice to any linked beacon."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
 	w_class = ITEMSIZE_SMALL
@@ -1289,8 +1235,8 @@
 	for(var/obj/item/device/perfect_tele_beacon/B in beacons)
 		B.tele_hand = null
 	beacons.Cut()
-	qdel_null(power_source)
-	qdel_null(spk)
+	QDEL_NULL(power_source)
+	QDEL_NULL(spk)
 	return ..()
 
 /obj/item/device/perfect_tele/update_icon()
@@ -1579,7 +1525,7 @@
 // A single-beacon variant for use by miners (or whatever)
 /obj/item/device/perfect_tele/one_beacon
 	name = "mini-translocator"
-	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of NanoTrasen interests, namely mining and exploration."
+	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally."
 	icon_state = "minitrans"
 	beacons_left = 1 //Just one
 	charge_cost = 2400 //One per
@@ -1590,7 +1536,7 @@
 		to_chat(user,"<span class='warning'>\The [src] is too far away from the beacon. Try getting closer first!</span>")
 		return FALSE
 	return ..()
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 //InterroLouis: Ruda Lizden
 /obj/item/clothing/accessory/badge/holo/detective/ruda
 	name = "Hisstective's Badge"
@@ -1662,10 +1608,10 @@
 			qdel(src) //One time use.
 	else //If not, do nothing.
 		to_chat(user,"<span class='warning'>You are unable to inject other people.</span>")
-
+		END OF CITADEL CHANGES */
 //For 2 handed fluff weapons.
 /obj/item/weapon/material/twohanded/fluff //Twohanded fluff items.
-	name = "fluff."
+	name = "fluff item"
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	item_icons = list(
@@ -1688,6 +1634,7 @@
 	base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")
+/* CITADEL CHANGE - Removes Virgo Fluff
 //1R1S: Malady Blanche
 /obj/item/weapon/material/twohanded/fluff/riding_crop/malady
 	name = "Malady's riding crop"
@@ -1704,7 +1651,7 @@
 	random_emote = list("hisses softly with a blush on his face", "yelps in embarrassment", "grunts a little")
 	assigned_proc = /mob/living/carbon/human/proc/use_reagent_implant_evian
 
-/obj/item/weapon/implant/reagent_generator/evian/implanted(mob/living/carbon/source)
+/obj/item/weapon/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
 	processing_objects += src
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
 	source.verbs |= assigned_proc
@@ -1860,7 +1807,7 @@
 /obj/item/weapon/storage/backpack/fluff/stunstaff/New()
 	..()
 	new /obj/item/weapon/melee/baton/fluff/stunstaff(src)
-
+END OF CITADEL CHANGES */
 
 /*
  * Awoo Sword
@@ -1923,11 +1870,11 @@
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [tempgender] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/melee/fluffstuff/awoosword
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword
 	name = "Wolfgirl Sword Replica"
 	desc = "A replica of a large, scimitar-like sword with a dull edge. Ceremonial... until it isn't."
 	icon = 'icons/obj/weapons_vr.dmi'
-	icon_state = "awoosword"
+	icon_state = "wolfgirlsword"
 	slot_flags = SLOT_BACK | SLOT_OCLOTHING
 	active_force = 15
 	active_throwforce = 7
@@ -1939,16 +1886,16 @@
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
-	var/active_state = "awoosword"
-	allowed = list(/obj/item/weapon/shield/fluff/awooshield)
+	var/active_state = "wolfgirlsword"
+	allowed = list(/obj/item/weapon/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS
 
-/obj/item/weapon/melee/fluffstuff/awoosword/dropped(var/mob/user)
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword/dropped(var/mob/user)
 	..()
 	if(!istype(loc,/mob))
 		deactivate(user)
 
-/obj/item/weapon/melee/fluffstuff/awoosword/activate(mob/living/user)
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword/activate(mob/living/user)
 	if(!active)
 		to_chat(user, "<span class='notice'>The [src] is now sharpened. It will cut!</span>")
 
@@ -1960,13 +1907,13 @@
 	damtype = BRUTE
 
 
-/obj/item/weapon/melee/fluffstuff/awoosword/deactivate(mob/living/user)
+/obj/item/weapon/melee/fluffstuff/wolfgirlsword/deactivate(mob/living/user)
 	if(active)
 		to_chat(user, "<span class='notice'>The [src] grows dull!</span>")
 	..()
 	attack_verb = list("bapped", "thwapped", "bonked", "whacked")
 	icon_state = initial(icon_state)
-
+/* CITADEL CHANGES - Removes Virgo Fluff
 //SilencedMP5A5 - Serdykov Antoz
 /obj/item/device/modkit_conversion/hasd
 	name = "HASD EVA modification kit"
@@ -1998,3 +1945,17 @@
 	KA.desc = initial(KA.desc)
 	KA.icon = initial(KA.icon)
 	..()
+
+//ArgobargSoup:Lynn Shady
+/obj/item/device/flashlight/pen/fluff/lynn
+	name = "Lynn's penlight"
+	desc = "A personalized penlight, a bit bulkier than the standard model.  Blue, with a medical cross on it, and the name Lynn Shady engraved in gold."
+
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_state = "penlightlynn"
+
+//Knightfall5:Ashley Kifer
+/obj/item/clothing/accessory/medal/nobel_science/fluff/ashley
+	name = "nobel sciences award"
+	desc = "A bronze medal which represents significant contributions to the field of science or engineering, this one has Ashley Kifer engraved on it."
+END OF CITADEL CHANGES */

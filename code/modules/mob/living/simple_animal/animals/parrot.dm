@@ -31,7 +31,7 @@
 /mob/living/simple_animal/parrot
 	name = "parrot"
 	desc = "The parrot squawks, \"It's a parrot! BAWWK!\""
-	tt_desc = "Poicephalus robustus"
+	tt_desc = "E Ara macao"
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
@@ -655,7 +655,7 @@
 		if(istype(held_item, /obj/item/weapon/grenade))
 			var/obj/item/weapon/grenade/G = held_item
 			G.forceMove(src.loc)
-			G.prime()
+			G.detonate()
 			to_chat(src, "You let go of the [held_item]!")
 			held_item = null
 			return 1

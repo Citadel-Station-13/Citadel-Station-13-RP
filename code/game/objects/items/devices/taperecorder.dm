@@ -363,14 +363,14 @@
 
 /obj/item/device/tape
 	name = "tape"
-	desc = "A magnetic tape that can hold up to ten minutes of content."
+	desc = "A magnetic tape that can hold up to ninety minutes of content."
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
 	matter = list(DEFAULT_WALL_MATERIAL=20, "glass"=5)
 	force = 1
 	throwforce = 0
-	var/max_capacity = 1800
+	var/max_capacity = 5400
 	var/used_capacity = 0
 	var/list/storedinfo = new/list()
 	var/list/timestamp = new/list()
@@ -414,7 +414,7 @@
 
 
 /obj/item/device/tape/attackby(obj/item/I, mob/user, params)
-	if(ruined && istype(I, /obj/item/weapon/screwdriver))
+	if(ruined && I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
 		playsound(src, I.usesound, 50, 1)
 		if(do_after(user, 120 * I.toolspeed, target = src))

@@ -2,7 +2,7 @@
 	var/includes_tail			//Cyberlimbs dmi includes a tail sprite to wear.
 	var/includes_wing			//Cyberlimbs dmi includes a wing sprite to wear.
 	var/list/whitelisted_to		//List of ckeys that are allowed to pick this in charsetup.
-
+/* CITADEL CHANGE - Removes these ckey whitelisted special snowflake limbs
 //////////////// For-specific-character fluff ones /////////////////
 // arokha : Aronai Kadigan
 /datum/robolimb/kitsuhana
@@ -31,7 +31,7 @@
 
 /obj/item/weapon/disk/limb/white_kryten
 	company = "White Kryten Cybernetics"
-
+END OF CITADEL CHANGES */
 // verkister : Rahwoof Boop
 /datum/robolimb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
@@ -86,6 +86,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Tajara"
 
 /obj/item/weapon/disk/limb/dsi_tajaran
@@ -99,6 +100,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Unathi"
 
 /obj/item/weapon/disk/limb/dsi_lizard
@@ -112,6 +114,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Sergal"
 
 /obj/item/weapon/disk/limb/dsi_sergal
@@ -125,6 +128,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Nevrean"
 
 /obj/item/weapon/disk/limb/dsi_nevrean
@@ -138,6 +142,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Vulpkanin"
 
 /obj/item/weapon/disk/limb/dsi_vulpkanin
@@ -151,6 +156,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Akula"
 
 /obj/item/weapon/disk/limb/dsi_akula
@@ -164,6 +170,7 @@
 	lifelike = 1
 	unavailable_to_build = 1
 	includes_tail = 1
+	skin_tone = 1
 	suggested_species = "Vasilissan"
 
 /obj/item/weapon/disk/limb/dsi_spider
@@ -174,6 +181,7 @@
 	desc = "This limb has a thin synthflesh casing with a few connection ports."
 	icon = 'icons/mob/human_races/cyberlimbs/DSITeshari/dsi_teshari.dmi'
 	lifelike = 1
+	skin_tone = 1
 	suggested_species = "Teshari"
 
 /datum/robolimb/dsi_teshari/New()
@@ -183,3 +191,24 @@
 
 /obj/item/weapon/disk/limb/dsi_teshari
 	company = "DSI - Teshari"
+
+
+/datum/robolimb/braincase
+	company = "cortexCases - MMI"
+	desc = "A solid, transparent case to hold your important bits in with style."
+	icon = 'icons/mob/human_races/cyberlimbs/cortex/braincase.dmi'
+	unavailable_to_build = 1
+	parts = list(BP_HEAD)
+
+/obj/item/weapon/disk/limb/braincase
+	company = "cortexCases - MMI"
+
+/datum/robolimb/posicase
+	company = "cortexCases - Posi"
+	desc = "A solid, transparent case to hold your important bits in with style."
+	icon = 'icons/mob/human_races/cyberlimbs/cortex/posicase.dmi'
+	unavailable_to_build = 1
+	parts = list(BP_HEAD)
+
+/obj/item/weapon/disk/limb/posicase
+	company = "cortexCases - Posi"

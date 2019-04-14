@@ -10,6 +10,20 @@
 		check_antagonists()
 		return
 
+	if(href_list["ahelp"])
+		if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
+			return
+
+		var/ahelp_ref = href_list["ahelp"]
+		var/datum/admin_help/AH = locate(ahelp_ref)
+		if(AH)
+			AH.Action(href_list["ahelp_action"])
+		else
+			to_chat(usr, "Ticket [ahelp_ref] has been deleted!")
+
+	else if(href_list["ahelp_tickets"])
+		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
+
 	if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
 
 		var/adminckey = href_list["dbsearchadmin"]
@@ -841,7 +855,9 @@
 					M << "<font color='red'>No ban appeals URL has been set.</font>"
 				log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 				message_admins("<font color='blue'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</font>")
-
+				var/datum/admin_help/AH = M.client ? M.client.current_ticket : null
+				if(AH)
+					AH.Resolve()
 				qdel(M.client)
 				//qdel(M)	// See no reason why to delete mob. Important stuff can be lost. And ban can be lifted before round ends.
 			if("No")
@@ -867,7 +883,9 @@
 				message_admins("<font color='blue'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.</font>")
 				feedback_inc("ban_perma",1)
 				DB_ban_record(BANTYPE_PERMA, M, -1, reason)
-
+				var/datum/admin_help/AH = M.client ? M.client.current_ticket : null
+				if(AH)
+					AH.Resolve()
 				qdel(M.client)
 				//qdel(M)
 			if("Cancel")
@@ -1325,6 +1343,16 @@
 		feedback_inc("admin_cookies_spawned",1)
 		H << "<font color='blue'>Your prayers have been answered!! You received the <b>best cookie</b>!</font>"
 
+	else if(href_list["adminsmite"])
+		if(!check_rights(R_ADMIN|R_FUN))	return
+
+		var/mob/living/carbon/human/H = locate(href_list["adminsmite"])
+		if(!ishuman(H))
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
+			return
+
+		owner.smite(H)
+
 	else if(href_list["BlueSpaceArtillery"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
 
@@ -1336,37 +1364,7 @@
 		if(alert(src.owner, "Are you sure you wish to hit [key_name(M)] with Blue Space Artillery?",  "Confirm Firing?" , "Yes" , "No") != "Yes")
 			return
 
-		if(BSACooldown)
-			src.owner << "Standby!  Reload cycle in progress!  Gunnary crews ready in five seconds!"
-			return
-
-		BSACooldown = 1
-		spawn(50)
-			BSACooldown = 0
-
-		M << "You've been hit by bluespace artillery!"
-		log_admin("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
-		message_admins("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
-
-		var/obj/effect/stop/S
-		S = new /obj/effect/stop
-		S.victim = M
-		S.loc = M.loc
-		spawn(20)
-			qdel(S)
-
-		var/turf/simulated/floor/T = get_turf(M)
-		if(istype(T))
-			if(prob(80))	T.break_tile_to_plating()
-			else			T.break_tile()
-
-		if(M.health == 1)
-			M.gib()
-		else
-			M.adjustBruteLoss( min( 99 , (M.health - 1) )    )
-			M.Stun(20)
-			M.Weaken(20)
-			M.stuttering = 20
+		bluespace_artillery(M,src)
 
 	else if(href_list["CentComReply"])
 		var/mob/living/L = locate(href_list["CentComReply"])

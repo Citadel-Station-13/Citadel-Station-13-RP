@@ -6,7 +6,7 @@
 		to_chat(src, "<span class='notice'>You move upwards.</span>")
 
 /mob/verb/down()
-	set name = "Move Down"
+	set name = "Move Downwards" //cit change - dumb name, "Move Down" -> "Move Downwards"
 	set category = "IC"
 
 	if(zMove(DOWN))
@@ -171,6 +171,9 @@
 
 	var/turf/below = GetBelow(src)
 	if(!below)
+		return
+
+	if(istype(below, /turf/space))
 		return
 
 	var/turf/T = loc
@@ -428,7 +431,7 @@
 
 /atom/movable/proc/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 10, var/silent = FALSE, var/planetary = FALSE)
 	if(!silent)
-		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
+		visible_message("\The [src] falls from above and into \the [hit_atom]!", "You hear something fall onto \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
 
@@ -451,7 +454,7 @@
 		if(!silent)
 			if(planetary)
 				visible_message("<span class='danger'><font size='3'>\A [src] falls out of the sky and crashes into \the [landing]!</font></span>", \
-					"<span class='danger'><font size='3'> You fall out of the skiy and crash into \the [landing]!</font></span>", \
+					"<span class='danger'><font size='3'> You fall out of the sky and crash into \the [landing]!</font></span>", \
 					"You hear something slam into \the [landing].")
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)

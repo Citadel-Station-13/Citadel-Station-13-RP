@@ -41,6 +41,9 @@
 		processing_objects -= src
 	return ..()
 
+/obj/item/weapon/cell/get_cell()
+	return src
+
 /obj/item/weapon/cell/process()
 	if(self_recharge)
 		if(world.time >= last_use + charge_delay)
@@ -102,6 +105,10 @@
 // checks if the power cell is able to provide the specified amount of charge
 /obj/item/weapon/cell/proc/check_charge(var/amount)
 	return (charge >= amount)
+
+// Returns how much charge is missing from the cell, useful to make sure not overdraw from the grid when recharging.
+/obj/item/weapon/cell/proc/amount_missing()
+	return max(maxcharge - charge, 0)
 
 // use power from a cell, returns the amount actually used
 /obj/item/weapon/cell/proc/use(var/amount)

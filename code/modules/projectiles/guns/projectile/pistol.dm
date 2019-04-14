@@ -65,7 +65,7 @@
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
 		unique_reskin = options[choice]
-		M << "Your gun is now sprited as [choice]. Say hello to your new friend."
+		M << "Your gun is now a(n) [choice]. Say hello to your new friend."
 		return 1
 
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
@@ -81,6 +81,7 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/m45)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -266,8 +267,8 @@
 
 	var/global/list/ammo_types = list(
 		/obj/item/ammo_casing/a357              = ".357",
-		/obj/item/ammo_casing/a9mmf             = "9mm",
-		/obj/item/ammo_casing/a45f              = ".45",
+		/obj/item/ammo_casing/a9mm		        = "9mm",
+		/obj/item/ammo_casing/a45				= ".45",
 		/obj/item/ammo_casing/a10mm             = "10mm",
 		/obj/item/ammo_casing/a12g              = "12g",
 		/obj/item/ammo_casing/a12g              = "12g",

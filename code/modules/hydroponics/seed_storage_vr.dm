@@ -35,9 +35,9 @@
 		/obj/item/seeds/towermycelium = 3,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
-		/obj/item/seeds/whitebeetseed = 3,
-		/obj/item/seeds/shrinkshroom = 3,
-		/obj/item/seeds/megashroom = 3)
+		/obj/item/seeds/whitebeetseed = 3)
+//	/obj/item/seeds/shrinkshroom = 3, CITADEL CHANGE - Disables size-changing chems
+//	/obj/item/seeds/megashroom = 3) CITADEL CHANGE - Disables size-changing chems
 
 /obj/machinery/seed_storage/xenobotany
 	name = "Xenobotany seed storage"
@@ -84,6 +84,6 @@
 		/obj/item/seeds/towermycelium = 3,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
-		/obj/item/seeds/whitebeetseed = 3,
-		/obj/item/seeds/shrinkshroom = 3,
-		/obj/item/seeds/megashroom = 3)
+		/obj/item/seeds/whitebeetseed = 3)
+//		/obj/item/seeds/shrinkshroom = 3, CITADEL CHANGE - Disables size-changing chems
+//		/obj/item/seeds/megashroom = 3) CITADEL CHANGE - Disables size-changing chems

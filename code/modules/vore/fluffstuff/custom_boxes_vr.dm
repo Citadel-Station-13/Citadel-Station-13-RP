@@ -1,3 +1,5 @@
+// ToDo: Alphabetize by ckey.
+
 // BEGIN - DO NOT EDIT PROTOTYPE
 /obj/item/weapon/storage/box/fluff
 	name = "Undefined Fluff Box"
@@ -27,7 +29,7 @@
 		/obj/item/clothing/suit/thing3,
 		/obj/item/clothing/under/thing4)
 */
-
+/* CITADEL CHANGES - Removes Virgo Fluff
 // BeyondMyLife:Cassandra Selones Spawn Kit
 /obj/item/weapon/storage/box/fluff/cassandra
 	name = "Cassandra Selone's Spawn Kit"
@@ -100,16 +102,14 @@
 		new /obj/item/clothing/suit/storage/fluff/modernfedcoat(src)
 		new /obj/item/clothing/head/caphat/formal/fedcover(src)
 		new /obj/item/weapon/card/id/centcom/station/fluff/joanbadge(src)
-		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
+//		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
-		new /obj/item/clothing/accessory/permit/gun/fluff/joanrisu(src)
-		new /obj/item/weapon/sword/fluff/joanaria(src)
+//		new /obj/item/clothing/accessory/permit/gun/fluff/joanrisu(src)
+//		new /obj/item/weapon/sword/fluff/joanaria(src)
 		new /obj/item/weapon/flame/lighter/zippo/fluff/joan(src)
 		new /obj/item/clothing/under/rank/internalaffairs/fluff/joan(src)
 		new /obj/item/clothing/head/helmet/space/fluff/joan(src)
 		new /obj/item/clothing/suit/space/fluff/joan(src)
-
-
 
 //joanrisu:Katarina Eine
 /obj/item/weapon/storage/backpack/dufflebag/sec/fluff/katarina
@@ -121,12 +121,9 @@
 		..()
 		new /obj/item/clothing/accessory/holster/hip(src)
 		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
+//		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
 		new /obj/item/clothing/accessory/storage/black_vest(src)
-		new /obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina(src)
-		new /obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina(src)
-		new /obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina(src)
 		new /obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina(src)
 		new /obj/item/clothing/under/rank/internalaffairs/fluff/joan(src)
 
@@ -140,6 +137,15 @@
 		/obj/item/clothing/head/caphat/formal/fedcover/fedcoversec,
 		/obj/item/clothing/gloves/white,
 		)
+
+// Draycu: Schae Yonra
+/obj/item/weapon/storage/box/fluff/yonra
+	name = "Yonra's Starting Kit"
+	desc = "A small box containing Yonra's personal effects"
+	has_items = list(
+		/obj/item/weapon/melee/fluff/holochain/mass,
+		/obj/item/weapon/implanter/reagent_generator/yonra,
+		/obj/item/clothing/accessory/medal/silver/unity)
 
 //Razerwing:Archer Maximus
 /obj/item/weapon/storage/box/fluff/archermaximus
@@ -172,7 +178,7 @@
 	can_hold = list(/obj/item/clothing/under/swimsuit/)
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/penelope)
 
-//Aerowing:Sebastian Aji
+// Aerowing:Sebastian Aji
 /obj/item/weapon/storage/box/fluff/sebastian_aji
 	name = "Sebastian's Lumoco Arms P3 Box"
 	has_items = list(
@@ -181,18 +187,22 @@
 		/obj/item/ammo_magazine/m9mm/compact/flash,
 		/obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji)
 
+/*
 /obj/item/weapon/storage/box/fluff/briana_moore
 	name = "Briana's Derringer Box"
 	has_items = list(
 		/obj/item/weapon/gun/projectile/derringer/fluff/briana,
 		/obj/item/clothing/accessory/permit/gun/fluff/briana_moore)
+*/
 
+/*
 //SilencedMP5A5:Serdykov Antoz
 /obj/item/weapon/storage/box/fluff/serdykov_antoz
 	name = "Serdy's Weapon Box"
 	has_items = list(
 		/obj/item/clothing/accessory/permit/gun/fluff/silencedmp5a5,
 		/obj/item/weapon/gun/projectile/colt/fluff/serdy)
+*/
 
 //BeyondMyLife: Ne'tra Ky'ram //Made a box because they have so many items that it'd spam the debug log.
 /obj/item/weapon/storage/box/fluff/kilano
@@ -217,7 +227,13 @@
 		/obj/item/clothing/gloves/fluff/morsleeves,
 		/obj/item/clothing/under/fluff/morunder)
 
-
+// Mewchild: Phi Vietsi
+/obj/item/weapon/storage/box/fluff/vietsi
+	name = "Phi's Personal Items"
+	has_items = list(
+		/obj/item/clothing/accessory/medal/bronze_heart,
+		/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi)
+END OF CITADEL CHANGES */
 /*
 Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 */

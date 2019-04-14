@@ -112,7 +112,7 @@
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 	projectile_type = /obj/item/projectile/beam/imperial
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 // jertheace : Jeremiah 'Ace' Acacius
 /obj/item/weapon/gun/projectile/shotgun/pump/USDF/fluff/ace
 	name = "Ace's tactical shotgun" // D-model holds half as many shells as the normal version so as not OP as shit. Better than normal shotgun, worse than combat shotgun.
@@ -214,7 +214,7 @@
 	desc = "It's a palm sized gun. One of the few things that won't break an angel's wrists. Uses 10mm rounds."
 	caliber = "10mm"
 	ammo_type = /obj/item/ammo_casing/a10mm
-
+END OF CITADEL CHANGES */
 // For general use
 /obj/item/weapon/gun/projectile/automatic/stg
 	name = "\improper Sturmgewehr"
@@ -330,7 +330,7 @@
 		list(mode_name="lethal burst", burst=3, fire_delay=null, move_delay=4, burst_accuracy=list(0,0,0), dispersion=list(0.0, 0.2, 0.5), projectile_type=/obj/item/projectile/beam/burstlaser, modifystate="g44ekill", fire_sound='sound/weapons/Laser.ogg'),
 		)*/
 
-
+/* CITADEL CHANGE - Removes Virgo Fluff
 // molenar:Kari Akiren
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
 	name = "clockwork rifle"
@@ -356,7 +356,7 @@
 	caliber = ".38"
 	ammo_type = /obj/item/ammo_casing/a38
 	preserve_item = FALSE
-
+END OF CITADEL CHANGES */
 //////////////////// Energy Weapons ////////////////////
 
 // ------------ Energy Luger ------------
@@ -520,11 +520,11 @@
 /obj/item/weapon/gun/energy/gun/martin/proc/update_mode()
 	var/datum/firemode/current_mode = firemodes[sel_mode]
 	switch(current_mode.name)
-		if("stun") overlays += "taser_pdw"
-		if("lethal") overlays += "lazer_pdw"
+		if("stun") add_overlay("taser_pdw")
+		if("lethal") add_overlay("lazer_pdw")
 
 /obj/item/weapon/gun/energy/gun/martin/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	update_mode()
 
 /////////////////////////////////////////////////////
@@ -541,6 +541,7 @@
 
 /obj/item/projectile/beam/imperial
 	name = "laser beam"
+	fire_sound = 'sound/weapons/mandalorian.ogg'
 	icon_state = "darkb"
 	light_color = "#8837A3"
 	muzzle_type = /obj/effect/projectile/darkmatter/muzzle
@@ -617,6 +618,7 @@
 	name = "\improper SMG magazine (9mm armor-piercing)"
 	ammo_type = /obj/item/ammo_casing/a9mm/ap
 
+/* Seems to have been de-coded?
 /obj/item/ammo_magazine/m9mml/flash
 	name = "\improper SMG magazine (9mm flash)"
 	ammo_type = /obj/item/ammo_casing/a9mmf
@@ -628,6 +630,7 @@
 /obj/item/ammo_magazine/m9mml/practice
 	name = "\improper SMG magazine (9mm practice)"
 	ammo_type = /obj/item/ammo_casing/a9mmp
+*/
 
 //.357 special ammo
 /obj/item/ammo_magazine/s357/stun
@@ -743,7 +746,7 @@
 	firemodes = list(
 		list(mode_name="normal", fire_delay=12, projectile_type=/obj/item/projectile/beam, charge_cost = 300),
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
-		)
+	)
 
 /obj/item/weapon/gun/energy/frontier/unload_ammo(var/mob/user)
 	if(recharging)
@@ -804,3 +807,33 @@
 			to_chat(user, "<span class='warning'>The safety device prevents the gun from firing this close to the facility.</span>")
 			return 0
 	return ..()
+
+//Expeditionary Holdout Phaser
+/obj/item/weapon/gun/energy/frontier/locked/holdout
+	name = "holdout frontier phaser"
+	desc = "A recently introduced weapon intended for self defense by expeditionary support. It includes the same crank charger as the frontier phaser."
+	icon = 'icons/obj/gun_vr.dmi'
+	icon_state = "PDW"
+	item_state = "gun"
+	w_class = ITEMSIZE_SMALL
+	charge_cost = 600
+	firemodes = list(
+		list(mode_name="normal", fire_delay=12, projectile_type=/obj/item/projectile/beam, charge_cost = 600),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 120),
+	)
+
+/obj/item/weapon/gun/energy/frontier/locked/holdout/proc/update_mode()
+	var/datum/firemode/current_mode = firemodes[sel_mode]
+	switch(current_mode.name)
+		if("low-power") add_overlay("taser_pdw")
+		if("normal") add_overlay("lazer_pdw")
+
+/obj/item/weapon/gun/energy/frontier/locked/holdout/update_icon()
+	cut_overlays()
+	if(recharging)
+		icon_state = "[initial(icon_state)]_pump"
+		update_held_icon()
+		return
+	else
+		icon_state = "[initial(icon_state)]"
+		update_mode()

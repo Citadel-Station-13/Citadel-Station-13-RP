@@ -239,8 +239,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/trash/waffles,
 		/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat,
 		/obj/item/weapon/reagent_containers/food/snacks/mysterysoup,
-		/obj/item/weapon/reagent_containers/food/snacks/hotdog/old,
-		/obj/item/pizzabox/old,
 		/obj/item/ammo_casing/spent,
 		/obj/item/stack/rods{amount = 5},
 		/obj/item/stack/material/steel{amount = 5},
@@ -365,9 +363,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/device/gps,
 		/obj/item/device/geiger,
 		/obj/item/device/mass_spectrometer,
-		/obj/item/weapon/wrench,
-		/obj/item/weapon/screwdriver,
-		/obj/item/weapon/wirecutters,
+		/obj/item/weapon/tool/wrench,
+		/obj/item/weapon/tool/screwdriver,
+		/obj/item/weapon/tool/wirecutters,
 		/obj/item/device/multitool,
 		/obj/item/mecha_parts/mecha_equipment/generator,
 		/obj/item/mecha_parts/mecha_equipment/tool/cable_layer,
@@ -450,11 +448,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	uncommon_loot = list(
 		/obj/item/device/multitool/alien,
 		/obj/item/stack/cable_coil/alien,
-		/obj/item/weapon/crowbar/alien,
-		/obj/item/weapon/screwdriver/alien,
+		/obj/item/weapon/tool/crowbar/alien,
+		/obj/item/weapon/tool/screwdriver/alien,
 		/obj/item/weapon/weldingtool/alien,
-		/obj/item/weapon/wirecutters/alien,
-		/obj/item/weapon/wrench/alien
+		/obj/item/weapon/tool/wirecutters/alien,
+		/obj/item/weapon/tool/wrench/alien
 	)
 	rare_loot = list(
 		/obj/item/weapon/storage/belt/utility/alien/full
@@ -496,11 +494,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	common_loot = list(
 		/obj/item/device/multitool/alien,
 		/obj/item/stack/cable_coil/alien,
-		/obj/item/weapon/crowbar/alien,
-		/obj/item/weapon/screwdriver/alien,
+		/obj/item/weapon/tool/crowbar/alien,
+		/obj/item/weapon/tool/screwdriver/alien,
 		/obj/item/weapon/weldingtool/alien,
-		/obj/item/weapon/wirecutters/alien,
-		/obj/item/weapon/wrench/alien,
+		/obj/item/weapon/tool/wirecutters/alien,
+		/obj/item/weapon/tool/wrench/alien,
 		/obj/item/weapon/surgical/FixOVein/alien,
 		/obj/item/weapon/surgical/bone_clamp/alien,
 		/obj/item/weapon/surgical/cautery/alien,
@@ -744,7 +742,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/mecha_parts/mecha_equipment/shocker,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
 		/obj/item/device/kit/paint/gygax,
@@ -784,7 +782,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/mecha_parts/mecha_equipment/shocker,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
 		/obj/item/device/kit/paint/durand,

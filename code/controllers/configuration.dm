@@ -6,6 +6,8 @@ var/list/gamemode_cache = list()
 
 	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
 
+	var/hub_visibility = FALSE				//CITADEL CHANGE - HUB CONFIG
+
 	var/log_ooc = 0						// log OOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say
@@ -60,6 +62,7 @@ var/list/gamemode_cache = list()
 	var/humans_need_surnames = 0
 	var/allow_random_events = 0			// enables random events mid-round when set to 1
 	var/allow_ai = 1					// allow ai job
+	var/allow_ai_drones = 0					// allow ai controlled drones
 	var/hostedby = null
 	var/respawn = 1
 	var/guest_jobban = 1
@@ -97,6 +100,7 @@ var/list/gamemode_cache = list()
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
+	var/paranoia_logging = 0
 
 	var/serverurl
 	var/server
@@ -218,7 +222,7 @@ var/list/gamemode_cache = list()
 
 	var/aggressive_changelog = 0
 
-	var/list/language_prefixes = list(",","#","-")//Default language prefixes
+	var/list/language_prefixes = list(",","#")//Default language prefixes
 
 	var/show_human_death_message = 1
 
@@ -278,6 +282,9 @@ var/list/gamemode_cache = list()
 
 				if ("ban_legacy_system")
 					config.ban_legacy_system = 1
+
+				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
+					config.hub_visibility = 1
 
 				if ("use_age_restriction_for_jobs")
 					config.use_age_restriction_for_jobs = 1
@@ -398,6 +405,9 @@ var/list/gamemode_cache = list()
 
 				if ("allow_ai")
 					config.allow_ai = 1
+
+				if ("allow_ai_drones")
+					config.allow_ai_drones = 1
 
 //				if ("authentication")
 //					config.enable_authentication = 1
@@ -737,6 +747,12 @@ var/list/gamemode_cache = list()
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
 
+				if ("panic_bunker")
+					config.panic_bunker = 1
+
+				if ("paranoia_logging")
+					config.paranoia_logging = 1
+
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
 
@@ -916,3 +932,4 @@ var/list/gamemode_cache = list()
 			config.python_path = "/usr/bin/env python2"
 		else //probably windows, if not this should work anyway
 			config.python_path = "python"
+	world.update_hub_visibility(hub_visibility)			//CITADEL CHANGE - HUB CONFIG

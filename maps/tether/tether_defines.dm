@@ -35,6 +35,11 @@
 #define Z_LEVEL_MISC						11
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
+#define Z_LEVEL_ALIENSHIP					14
+#define Z_LEVEL_BEACH						15
+#define Z_LEVEL_BEACH_CAVE					16
+#define Z_LEVEL_AEROSTAT					17
+#define Z_LEVEL_AEROSTAT_SURFACE			18
 
 /datum/map/tether
 	name = "Virgo"
@@ -44,8 +49,8 @@
 	zlevel_datum_type = /datum/map_z_level/tether
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("tether")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
+	lobby_screens = list("title1", "title2", "title3", "title4", "title5")
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_LOW,
@@ -159,14 +164,14 @@
 
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/tether/station
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
 	holomap_legend_y = 160
 
 /datum/map_z_level/tether/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
 	name = "Surface 1"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
@@ -174,7 +179,7 @@
 /datum/map_z_level/tether/station/surface_mid
 	z = Z_LEVEL_SURFACE_MID
 	name = "Surface 2"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/open
 	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
@@ -182,7 +187,7 @@
 /datum/map_z_level/tether/station/surface_high
 	z = Z_LEVEL_SURFACE_HIGH
 	name = "Surface 3"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/open
 	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
@@ -190,7 +195,7 @@
 /datum/map_z_level/tether/transit
 	z = Z_LEVEL_TRANSIT
 	name = "Transit"
-	flags = MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT
+	flags = MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
 /datum/map_z_level/tether/station/space_low
 	z = Z_LEVEL_SPACE_LOW
@@ -231,12 +236,12 @@
 /datum/map_z_level/tether/colony
 	z = Z_LEVEL_CENTCOM
 	name = "Colony"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
 /datum/map_z_level/tether/misc
 	z = Z_LEVEL_MISC
 	name = "Misc"
-	flags = MAP_LEVEL_ADMIN
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
 
 /*
 /datum/map_z_level/tether/wilderness

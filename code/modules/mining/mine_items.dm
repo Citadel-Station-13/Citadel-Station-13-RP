@@ -30,11 +30,6 @@
 
 	var/excavation_amount = 200
 
-/obj/item/weapon/pickaxe/hammer
-	name = "sledgehammer"
-	//icon_state = "sledgehammer" Waiting on sprite
-	desc = "A mining hammer made of reinforced metal. You feel like smashing your boss in the face with this."
-
 /obj/item/weapon/pickaxe/silver
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
@@ -217,7 +212,7 @@
 	var/obj/item/stack/flag/newflag = new src.type(T)
 	newflag.amount = 1
 	newflag.upright = 1
-	anchored = 1
+	newflag.anchored = 1
 	newflag.name = newflag.singular_name
 	newflag.icon_state = "[newflag.base_state]_open"
 	newflag.visible_message("<b>[user]</b> plants [newflag] firmly in the ground.")

@@ -81,6 +81,10 @@
 	icon_state = "dk_yellow"
 /area/vacant/vacant_site/east
 	name = "\improper East Base Vacant Site"
+/area/vacant/vacant_library
+	name = "\improper Atrium Construction Site"
+/area/vacant/vacant_bar
+	name = "\improper Vacant Bar"
 
 // /area/tether/surfacebase/east_stairs_three //This is just part of an upper hallway
 
@@ -122,8 +126,10 @@
 // Mining Underdark
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
+	base_turf = /turf/simulated/mineral/floor/virgo3b
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
+	base_turf = /turf/simulated/mineral/floor/virgo3b
 
 // Mining outpost areas
 /area/outpost/mining_main/passage
@@ -167,7 +173,7 @@
 /area/tether/surfacebase/security/common
 	name = "\improper Surface Security Room"
 /area/tether/surfacebase/security/armory
-	name = "\improper Surface Armoary"
+	name = "\improper Surface Armory"
 /area/tether/surfacebase/security/checkpoint
 	name = "\improper Surface Checkpoint Office"
 /area/tether/surfacebase/security/hallway
@@ -194,6 +200,8 @@
 	name = "\improper Tether Lower Service Corridor"
 /area/engineering/lower/atmos_lockers
 	name = "\improper Engineering Atmos Locker Room"
+/area/engineering/lower/atmos_eva
+	name = "\improper Engineering Atmos EVA"
 
 /area/gateway/prep_room
 	name = "\improper Gateway Prep Room"
@@ -228,11 +236,11 @@
 /area/maintenance/lower/trash_pit
 	name = "\improper Trash Pit"
 /area/maintenance/lower/solars
-	name = "\improper Solars maintenanceance"
+	name = "\improper Solars Maintenance"
 /area/maintenance/lower/mining_eva
 	name = "\improper Mining EVA Maintenance"
 /area/maintenance/lower/public_garden_maintenence
-	name = "\improper Public Garden Maintenence"
+	name = "\improper Public Garden Maintenance"
 
 // Research
 /area/rnd/xenobiology/xenoflora/lab_atmos
@@ -312,6 +320,26 @@
 	name = "\improper Dock Two"
 	icon_state = "dk_yellow"
 
+/area/crew_quarters/showers
+	name = "\improper Unisex Showers"
+	icon_state = "recreation_area_restroom"
+
+/area/crew_quarters/sleep/maintDorm1
+	name = "\improper Construction Dorm 1"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/maintDorm2
+	name = "\improper Construction Dorm 2"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/maintDorm3
+	name = "\improper Construction Dorm 3"
+	icon_state = "Sleep"
+
+/area/crew_quarters/sleep/maintDorm4
+	name = "\improper Construction Dorm 4"
+	icon_state = "Sleep"
+
 /area/crew_quarters/sleep/Dorm_1/holo
 	name = "\improper Dorm 1 Holodeck"
 	icon_state = "dk_yellow"
@@ -360,6 +388,9 @@
 /area/security/hallway
 	name = "\improper Security Hallway"
 	icon_state = "security"
+/area/security/hallwayaux
+	name = "\improper Security Armory Hallway"
+	icon_state = "security"
 /area/security/forensics
 	name = "\improper Forensics Lab"
 	icon_state = "security"
@@ -372,15 +403,21 @@
 /area/security/brig/bathroom
 	name = "\improper Brig Bathroom"
 	icon_state = "security"
-/area/security/armory/green
-	name = "\improper Armory - Green"
-	icon_state = "security_equip_storage"
 /area/security/armory/blue
 	name = "\improper Armory - Blue"
 	icon_state = "armory"
 /area/security/armory/red
 	name = "\improper Armory - Red"
 	icon_state = "red2"
+/area/security/observation
+	name = "\improper Brig Observation"
+	icon_state = "riot_control"
+/area/security/eva
+	name = "\improper Security EVA"
+	icon_state = "security_equip_storage"
+/area/security/recstorage
+	name = "\improper Brig Recreation Storage"
+	icon_state = "brig"
 
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
@@ -428,6 +465,11 @@
 	name = "\improper AI Maintenance"
 	sound_env = SEWER_PIPE
 
+/area/tether/station/public_meeting_room
+	name = "Public Meeting Room"
+	icon_state = "blue"
+	sound_env = SMALL_SOFTFLOOR
+
 /area/shuttle/tether/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
@@ -446,6 +488,9 @@
 
 /area/tether/station/explorer_meeting
 	name = "\improper Explorer Meeting Room"
+
+/area/tether/station/pathfinder_office
+	name = "\improper Pathfinder's Office"
 
 /area/shuttle/excursion
 	name = "\improper Excursion Shuttle"

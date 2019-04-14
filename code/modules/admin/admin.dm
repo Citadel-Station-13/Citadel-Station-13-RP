@@ -52,6 +52,11 @@ proc/admin_notice(var/message, var/rights)
 	else
 		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
 
+	if(M.client)
+		body += "<br><b>First connection:</b> [M.client.player_age] days ago"
+		body += "<br><b>BYOND account created:</b> [M.client.account_join_date]"
+		body += "<br><b>BYOND account age (days):</b> [M.client.account_age]"
+
 	body += {"
 		<br><br>\[
 		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
@@ -847,7 +852,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(!check_rights(R_ADMIN))
 		return
 
-	world.visibility = !(world.visibility)
+	world.update_hub_visibility(!world.visibility)				//CITADEL CHANGE - Use the ported from TG proc in hub.dm instead of setting visibility
 	log_admin("[key_name(usr)] toggled hub visibility.")
 	message_admins("[key_name_admin(usr)] toggled hub visibility.  The server is now [world.visibility ? "visible" : "invisible"] ([world.visibility]).", 1)
 	feedback_add_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc

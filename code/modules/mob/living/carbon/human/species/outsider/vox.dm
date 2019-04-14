@@ -7,7 +7,8 @@
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_VOX
 	num_alternate_languages = 1
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
+	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp) // CITADEL CHANGE - Disallows Vox from breaking handcuffs
 	rarity_value = 4
 	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
 	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
@@ -71,6 +72,7 @@
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart/vox,
 		O_LUNGS =    /obj/item/organ/internal/lungs/vox,
+		O_VOICE =	 /obj/item/organ/internal/voicebox,
 		O_LIVER =    /obj/item/organ/internal/liver/vox,
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys/vox,
 		O_BRAIN =    /obj/item/organ/internal/brain/vox,
@@ -78,6 +80,12 @@
 		)
 
 	genders = list(NEUTER)
+
+	descriptors = list(
+		/datum/mob_descriptor/height = -1,
+		/datum/mob_descriptor/build = 1,
+		/datum/mob_descriptor/vox_markings = 0
+		)
 
 /datum/species/vox/get_random_name(var/gender)
 	var/datum/language/species_language = all_languages[default_language]

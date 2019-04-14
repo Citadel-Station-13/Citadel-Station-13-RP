@@ -9,31 +9,27 @@
 	desc = "A mindstate backup implant that occasionally stores a copy of one's mind on a central server for backup purposes."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "backup_implant"
-
+//CITADEL CHANGE - ALTERING IMPLANT DATA
 /obj/item/weapon/implant/backup/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> [using_map.company_name] Employee Backup Implant<BR>
 <b>Life:</b> ~8 hours.<BR>
-<b>Important Notes:</b> Implant is life-limited due to KHI licensing restrictions. Dissolves into harmless biomaterial after around ~8 hours, the typical work shift.<BR>
+<b>Important Notes:</b> Implant is life-limited. Dissolves into harmless biomaterial after around ~8 hours, the typical work shift.<BR>
 <HR>
 <b>Implant Details:</b><BR>
-<b>Function:</b> Contains a small swarm of nanobots that perform neuron scanning to create mind-backups.<BR>
-<b>Special Features:</b> Will allow restoring of backups during the 8-hour period it is active.<BR>
-<b>Integrity:</b> Generally very survivable. Susceptible to being destroyed by acid."}
+<b>Function:</b> Contains a microchip that scans the brain to create identical backups.<BR>
+<b>Special Features:</b> Allows the restoration of employees within an eight hour period.<BR>
+<b>Integrity:</b> Sturdy, weak against acidic compounds."}
 	return dat
-
+//END OF CITADEL CHANGE
 /obj/item/weapon/implant/backup/Destroy()
 	SStranscore.implants -= src
 	return ..()
 
-/obj/item/weapon/implant/backup/implanted(var/mob/living/carbon/human/H)
-	..()
+/obj/item/weapon/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		var/obj/item/weapon/implant/backup/other_imp = locate(/obj/item/weapon/implant/backup,H)
-		if(other_imp && other_imp.imp_in == H)
-			qdel(other_imp) //implant fight
-
+		BITSET(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
 
 		return 1
@@ -107,18 +103,10 @@
 				M.visible_message("<span class='notice'>[M] has been backup implanted by [user].</span>")
 
 				var/obj/item/weapon/implant/backup/imp = imps[imps.len]
-				if(imp.implanted(M))
-					imp.forceMove(M)
+				if(imp.handle_implant(M,user.zone_sel.selecting))
+					imp.post_implant(M)
 					imps -= imp
-					imp.imp_in = M
-					imp.implanted = 1
 					add_attack_logs(user,M,"Implanted backup implant")
-					if (ishuman(M))
-						var/mob/living/carbon/human/H = M
-						var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)
-						affected.implants += imp
-						imp.part = affected
-						BITSET(H.hud_updateflag, BACKUP_HUD)
 
 				update()
 
@@ -145,8 +133,9 @@
 	for(var/i = 1 to 7)
 		new /obj/item/weapon/implantcase/backup(src)
 	new /obj/item/weapon/implanter(src)
-
+/* CITADEL CHANGE - Removes this useless shit
 //Purely for fluff
 /obj/item/weapon/implant/backup/full
 	name = "khi backup implant"
 	desc = "A normal KHI wireless cortical stack with neutrino and QE transmission for constant-stream consciousness upload."
+END OF CITADEL CHANGE */

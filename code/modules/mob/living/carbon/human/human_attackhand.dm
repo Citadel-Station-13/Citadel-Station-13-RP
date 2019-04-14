@@ -33,8 +33,8 @@
 
 	// Should this all be in Touch()?
 	if(istype(H))
-		if(get_accuracy_penalty(H) && H != src)	//Should only trigger if they're not aiming well
-			var/hit_zone = get_zone_with_miss_chance(H.zone_sel.selecting, src, get_accuracy_penalty(H))
+		if(H.get_accuracy_penalty() && H != src)	//Should only trigger if they're not aiming well
+			var/hit_zone = get_zone_with_miss_chance(H.zone_sel.selecting, src, H.get_accuracy_penalty())
 			if(!hit_zone)
 				H.do_attack_animation(src)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
@@ -251,7 +251,7 @@
 				H.visible_message("<span class='danger'>[attack_message]</span>")
 
 			playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
-			
+
 			add_attack_logs(H,src,"Melee attacked with fists (miss/block)")
 
 			if(miss_type)
@@ -315,7 +315,10 @@
 				apply_effect(3, WEAKEN, armor_check)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
-					visible_message("<span class='danger'>[M] has pushed [src]!</span>")
+					if(M.zone_sel.selecting == BP_L_LEG || M.zone_sel.selecting == BP_R_LEG || M.zone_sel.selecting == BP_L_FOOT || M.zone_sel.selecting == BP_R_FOOT)
+						visible_message("<span class='danger'>[M] has leg swept [src]!</span>")
+					else
+						visible_message("<span class='danger'>[M] has pushed [src]!</span>")
 				else
 					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
 				return
@@ -381,6 +384,7 @@
 	if(do_after(user, 100))
 		organ.dislocate(1)
 		src.visible_message("<span class='danger'>[src]'s [organ.joint] [pick("gives way","caves in","crumbles","collapses")]!</span>")
+		log_and_message_admins("has dislocated [src]'s [organ.joint]!")
 		return 1
 	return 0
 
