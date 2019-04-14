@@ -3009,6 +3009,7 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
 #include "maps\~map_system\maps.dm"
+<<<<<<< HEAD
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\datums\outfits\jobs\centcom.dm"
 #include "modular_citadel\code\datums\supplypacks\contraband_cit.dm"
@@ -3114,4 +3115,6 @@
 #include "modular_citadel\code\modules\vore\fluffstuff\guns\protector.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
 #include "modular_citadel\maps\tether\tether_defines.dm"
+=======
+>>>>>>> 629748f... Merge pull request #5048 from VOREStation/upstream-merge-6065
 // END_INCLUDE

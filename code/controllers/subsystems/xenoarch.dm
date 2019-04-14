@@ -31,7 +31,11 @@ SUBSYSTEM_DEF(xenoarch)
 
 /datum/controller/subsystem/xenoarch/proc/SetupXenoarch()
 	for(var/turf/simulated/mineral/M in turfs)
+<<<<<<< HEAD
 		if(!M.density)
+=======
+		if(!M.density || M.z in using_map.xenoarch_exempt_levels)
+>>>>>>> 629748f... Merge pull request #5048 from VOREStation/upstream-merge-6065
 			continue
 
 		if(isnull(M.geologic_data))
