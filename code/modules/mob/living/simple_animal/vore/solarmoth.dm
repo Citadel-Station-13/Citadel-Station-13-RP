@@ -45,12 +45,12 @@
 				"bio" = 100,
 				"rad" = 100)
 
-	var/set_temperature = T0C + 10000	//Sets the target point of 10k degrees celsius
-	var/heating_power = 100000		//This controls the strength at which it heats the environment.
-	var/emp_heavy = 2
-	var/emp_med = 4
-	var/emp_light = 7
-	var/emp_long = 10
+	var/set_temperature = T0C + 5000	//Sets the target point of 5k degrees celsius
+	var/heating_power = 50000		//This controls the strength at which it heats the environment.
+	var/emp_heavy = 1
+	var/emp_med = 2
+	var/emp_light = 4
+	var/emp_long = 5
 	var/poison_per_bite = 5 //grubs cause a shock when they bite someone
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
@@ -82,12 +82,12 @@
 		var/transfer_moles = 0.25 * env.total_moles //The bigger the room, the harder it is to heat the room.
 		var/datum/gas_mixture/removed = env.remove(transfer_moles)
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
-		if(heat_transfer > 0 && env.temperature < T0C + 200)	//This should start heating the room at a moderate pace up to 200 degrees celsius.
+		if(heat_transfer > 0 && env.temperature < T0C + 350)	//This should start heating the room at a moderate pace up to 350 degrees celsius.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
 			removed.add_thermal_energy(heat_transfer)
 
-		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 10,000 degrees celsius. So this thing will start cooking crazy hot between the temperatures of 200C and 10,000C.
-			heating_power = 9999999999999 //FLAME ON! This will make the moth heat up the room at an incredible rate.
+		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 5,000 degrees celsius. So this thing will start cooking crazy hot between the temperatures of 350C and 10,000C.
+			heating_power = 9999999999 //FLAME ON! This will make the moth heat up the room at an incredible rate.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater. Except it's hot, so yeah.
 			removed.add_thermal_energy(heat_transfer)
 
