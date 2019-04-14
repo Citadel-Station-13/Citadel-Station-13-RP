@@ -528,17 +528,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_state = "[base_state]on"
 		item_state = "[base_state]on"
 		if(istype(src, /obj/item/weapon/flame/lighter/zippo) )
-			user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
-		else
-			if(prob(95))
-				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
+			if(user.a_intent == I_GRAB)
+				user.visible_message("<span class='rose'>Without as much as a hint of difficulty, [user] spins [src] in their fingers, before lighting it. Smooth.</span>")
 			else
-				user << "<span class='warning'>You burn yourself while lighting the lighter.</span>"
-				if (user.get_left_hand() == src)
-					user.apply_damage(2,BURN,"l_hand")
-				else
-					user.apply_damage(2,BURN,"r_hand")
-				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
+				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
+			playsound(loc, "modular_citadel/sound/items/zippo_open.ogg", 75, 1, -1)
+		else
+			user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 
 		set_light(2)
 		processing_objects.Add(src)
@@ -547,7 +543,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_state = "[base_state]"
 		item_state = "[base_state]"
 		if(istype(src, /obj/item/weapon/flame/lighter/zippo) )
-			user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
+			if(user.a_intent == I_GRAB)
+				user.visible_message("<span class='rose'>You hear a pronounced click, as [user] spins [src] in their palm, before closing it with a flourish.</span>")
+			else
+				user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
+			playsound(loc, "modular_citadel/sound/items/zippo_close.ogg", 75, 1, -1)
 		else
 			user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
@@ -639,3 +639,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/weapon/flame/lighter/zippo/rainbow
 	name = "\improper rainbow Zippo lighter"
 	icon_state = "rainbowzippo"
+
+/obj/item/weapon/flame/lighter/zippo/bullet
+	name = "\improper bullet lighter"
+	desc = "A lighter fashioned out of an old bullet casing."
+	icon = 'modular_citadel/icons/obj/cigarettes.dmi'
+	icon_state = "bulletlighter"
