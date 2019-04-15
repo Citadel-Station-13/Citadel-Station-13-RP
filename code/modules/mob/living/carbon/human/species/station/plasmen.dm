@@ -10,9 +10,9 @@
 	blurb = "Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space. \
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
 	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
-	name_language = null // Use the first-name last-name generator rather than a language scrambler
+	name_language = null // name randomisers are fucking weird
 	min_age = 18
-	max_age = 110
+	max_age = 180
 	health_hud_intensity = 1.5
 	rarity_value = 5
 	blood_color = "#FC2BC5"
@@ -35,7 +35,7 @@
 	toxins_mod =    0 // blackmajor "encouraged" it
 	radiation_mod = 1
 	flash_mod =     2
-	chemOD_mod =	8
+	chemOD_mod =	1 // turns out this is just damage
 
 	breath_type = "phoron"
 	poison_type = "oxygen"
@@ -44,9 +44,10 @@
 	speech_bubble_appearance = "phoron"
 
 	death_message = "falls over and stops moving!"
-	knockout_message = "falls over and stops moving!"
+	knockout_message = "falls over!"
 
 	has_organ = list(
+		O_HEART =    /obj/item/organ/internal/heart,
 		O_LUNGS =    /obj/item/organ/internal/lungs,
 		O_VOICE = 	/obj/item/organ/internal/voicebox,
 		O_LIVER =    /obj/item/organ/internal/liver,
@@ -55,13 +56,17 @@
 		O_EYES =     /obj/item/organ/internal/eyes
 		)
 
-	cold_level_1 = 280 //Default 260 - Lower is better
-	cold_level_2 = 220 //Default 200
-	cold_level_3 = 130 //Default 120
+	cold_level_1 = 200 //Default 260 - Lower is better
+	cold_level_2 = 180 //Default 200
+	cold_level_3 = 120 //Default 120
 
-	heat_level_1 = 450 //Default 360
+	breath_cold_level_1 = 120		// so they can probably breathe outside?					.
+	breath_cold_level_2 = 80							.
+	breath_cold_level_3 = 60
+
+	heat_level_1 = 360 //Default 360
 	heat_level_2 = 500 //Default 400
-	heat_level_3 = 600 //Default 1000
+	heat_level_3 = 800 //Default 1000
 
 	body_temperature = T20C
 
@@ -183,3 +188,4 @@
 				H.ExtinguishMob()
 			H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_s_store)
 			H.internal = H.s_store
+			H.internals.icon_state = "internal1"
