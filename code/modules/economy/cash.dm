@@ -78,7 +78,13 @@
 
 /obj/item/weapon/spacecash/attack_self()
 	var/amount = input(usr, "How many Thalers do you want to take? (0 to [src.worth])", "Take Money", 20) as num
+<<<<<<< HEAD
 	amount = round(Clamp(amount, 0, src.worth))
+=======
+	if(!src || QDELETED(src))
+		return
+	amount = round(CLAMP(amount, 0, src.worth))
+>>>>>>> 160e2ca... Merge pull request #5065 from VOREStation/upstream-merge-6088
 
 	if(!amount)
 		return
