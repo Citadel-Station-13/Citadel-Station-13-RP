@@ -57,7 +57,11 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "ao" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/jelly,
+=======
+/mob/living/simple_mob/animal/space/jelly,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "ap" = (
@@ -96,7 +100,11 @@
 /area/submap/virgo2/BoomBase)
 "ax" = (
 /obj/effect/decal/cleanable/dirt,
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/jelly,
+=======
+/mob/living/simple_mob/animal/space/jelly,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "ay" = (

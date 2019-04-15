@@ -48,7 +48,11 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CaveS)
 "m" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/giant_spider/lurker,
+=======
+/mob/living/simple_mob/animal/giant_spider/lurker,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CaveS)
 "n" = (
@@ -61,7 +65,11 @@
 /area/submap/virgo2/CaveS)
 "q" = (
 /obj/effect/decal/cleanable/cobweb2,
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/giant_spider/lurker,
+=======
+/mob/living/simple_mob/animal/giant_spider/lurker,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CaveS)
 "r" = (
@@ -133,7 +141,11 @@
 /area/submap/virgo2/CaveS)
 "D" = (
 /obj/effect/spider/stickyweb,
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/giant_spider/lurker,
+=======
+/mob/living/simple_mob/animal/giant_spider/lurker,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CaveS)
 "E" = (

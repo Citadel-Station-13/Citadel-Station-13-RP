@@ -148,9 +148,15 @@
 	},
 /area/submap/virgo2/Blackshuttledown)
 "aB" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/viscerator,
 /mob/living/simple_animal/hostile/viscerator,
 /mob/living/simple_animal/hostile/viscerator,
+=======
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aC" = (
@@ -163,7 +169,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aD" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/syndicate/ranged/space,
+=======
+/mob/living/simple_mob/humanoid/merc/ranged/space,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aE" = (
@@ -242,11 +252,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "aT" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/syndicate/ranged{
 	desc = "Dosen't look friendly in the slightest.";
+=======
+/mob/living/simple_mob/humanoid/merc/ranged{
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 	name = "Unknown Individual";
-	say_got_target = list("Looks like trouble!","Contact!","We've got company!","Perimeter Breached!!");
-	speak = list("One day the'll fix that damn engine..","Next time, We're hidding on the tropical beach planet.","Wish I had better equipment...","I knew I should have been a line chef...","Fuckin' helmet keeps fogging up.","Hate this blocky ass ship.")
+	desc = "Dosen't look friendly in the slightest.";
+	say_list_type = /datum/say_list/merc/unknown_ind
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
@@ -374,7 +388,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bn" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/viscerator,
+=======
+/mob/living/simple_mob/mechanical/viscerator,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bo" = (
@@ -393,8 +411,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "bq" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/viscerator,
 /mob/living/simple_animal/hostile/viscerator,
+=======
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
 "br" = (
@@ -439,7 +462,11 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 "bz" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/syndicate/ranged/space,
+=======
+/mob/living/simple_mob/humanoid/merc/ranged/space,
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Blackshuttledown)
 

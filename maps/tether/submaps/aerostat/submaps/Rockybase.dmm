@@ -1,8 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/viscerator{
+=======
+/mob/living/simple_mob/mechanical/viscerator{
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 	maxbodytemp = 900;
-	returns_home = 1
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/returnhome
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/template_noop)
@@ -21,11 +25,15 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "af" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/malf_drone{
+=======
+/mob/living/simple_mob/mechanical/combat_drone{
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
 	maxbodytemp = 900;
-	returns_home = 1
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -357,11 +365,15 @@
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/Rockybase)
 "bl" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/malf_drone{
+=======
+/mob/living/simple_mob/mechanical/combat_drone{
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
 	maxbodytemp = 900;
-	returns_home = 1
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -664,7 +676,11 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "co" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/mecha/malf_drone{
+=======
+/mob/living/simple_mob/mechanical/combat_drone{
+>>>>>>> 880fd9f... Merge pull request #5054 from Heroman3003/mob-pathfix
 	faction = "syndicate"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
