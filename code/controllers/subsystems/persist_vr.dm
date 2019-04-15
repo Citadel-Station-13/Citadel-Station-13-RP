@@ -79,3 +79,14 @@ SUBSYSTEM_DEF(persist)
 	// Let's check the mind.
 	if(M.mind && M.mind.assigned_role)
 		. = job_master.GetJob(M.mind.assigned_role)
+<<<<<<< HEAD
+=======
+
+// This proc tries makes sure old Command PTO doesn't linger
+/datum/controller/subsystem/persist/proc/clear_unused_pto(var/mob/M)
+	var/client/C = M.client
+	LAZYINITLIST(C.department_hours)
+	if(C.department_hours["Command"])
+		C.department_hours["Command"] = null
+		C.department_hours.Remove("Command")
+>>>>>>> 9ad8597... Merge pull request #5058 from Heroman3003/defunct-pto
