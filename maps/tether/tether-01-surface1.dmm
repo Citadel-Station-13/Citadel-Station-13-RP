@@ -5112,6 +5112,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/eva)
 "ajj" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /obj/structure/table/rack,
 /obj/item/clothing/suit/suspenders,
@@ -5130,6 +5131,28 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
+=======
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"ajk" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 "ajl" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -5152,9 +5175,20 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "ajn" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
+=======
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/machinery/atmospherics/binary/pump{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos/processing)
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 "ajo" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -5193,11 +5227,25 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "ajr" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /obj/random/junk,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
+=======
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 "ajs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5271,6 +5319,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "ajw" = (
+<<<<<<< HEAD
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
@@ -5546,6 +5595,25 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
+=======
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/black/border,
+/obj/machinery/atmospherics/binary/pump/high_power/on,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"ajx" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/orange/border,
+/obj/machinery/atmospherics/binary/pump/high_power/on,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"ajy" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/white/border,
+/obj/machinery/atmospherics/binary/pump/high_power/on,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 "ajN" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -18603,6 +18671,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -18620,6 +18689,12 @@
 /area/tether/surfacebase/medical/first_aid_west)
 "aJq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"aKy" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18641,6 +18716,7 @@
 	name = "south bump";
 	pixel_y = -24
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/first_aid_west)
@@ -18661,6 +18737,11 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)
 "aJu" = (
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"aKP" = (
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -26512,6 +26593,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -26522,6 +26604,43 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"cbB" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/black/border,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"cbH" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/orange/border,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"cbK" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"cbN" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"cbP" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/white/border,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"cbT" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm1";
+	name = "Room 1 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -28841,6 +28960,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
 	dir = 2;
@@ -28858,6 +28978,18 @@
 	dir = 4;
 	pixel_x = 0;
 	pixel_y = 32
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos/processing)
+"dAV" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
+"dCw" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_6)
@@ -30002,6 +30134,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
+<<<<<<< HEAD
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
@@ -30016,6 +30149,19 @@
 "ceJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"ivg" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/showers)
+"iwJ" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 5
@@ -42431,6 +42577,7 @@ aBd
 aah
 aah
 aEU
+<<<<<<< HEAD
 anh
 aok
 agR
@@ -42451,6 +42598,28 @@ aEj
 aFm
 aGc
 aHo
+=======
+aFX
+rcO
+giF
+bEX
+bEX
+bEX
+bEX
+bEX
+bEX
+bEX
+bEX
+bEX
+iVW
+aJs
+aJT
+nuR
+oRG
+ajn
+vXn
+eyS
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 aIv
 aJt
 swM
@@ -43849,6 +44018,7 @@ aah
 aah
 aah
 aEU
+<<<<<<< HEAD
 ale
 alP
 ans
@@ -43875,6 +44045,34 @@ awR
 bCV
 whR
 anv
+=======
+bzL
+aFs
+clm
+xWo
+bEX
+pbE
+kwi
+aHO
+acv
+wPv
+wPv
+wPv
+wPv
+wPv
+kaj
+aJL
+kaj
+bZe
+cLz
+caH
+ajw
+vtZ
+uiB
+cet
+bEX
+aah
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 aah
 azI
 aIk
@@ -44417,6 +44615,7 @@ aah
 aah
 aah
 aEU
+<<<<<<< HEAD
 ale
 amg
 anv
@@ -44444,6 +44643,35 @@ sFC
 hyK
 anv
 aIk
+=======
+bzL
+jpd
+bEX
+dLD
+kwi
+kwi
+eCJ
+jQS
+sMv
+vvE
+xac
+bUK
+aIU
+aJi
+aJA
+bUH
+mks
+rNz
+kwi
+toY
+ajx
+vtZ
+uiB
+cet
+bEX
+spN
+aLC
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 azI
 azI
 azI
@@ -44986,6 +45214,7 @@ akd
 aEU
 aEU
 aEU
+<<<<<<< HEAD
 amr
 anv
 apX
@@ -45012,6 +45241,34 @@ giX
 iWU
 anv
 aJl
+=======
+cab
+bEX
+eQh
+lcg
+iuw
+sSk
+qlw
+iRv
+rNz
+kwi
+kwi
+kwi
+kwi
+beU
+bUH
+bpQ
+rNz
+kwi
+mgz
+ajy
+vtZ
+uiB
+cet
+bEX
+aLC
+hHW
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 azI
 aJU
 aKp
@@ -45981,6 +46238,7 @@ aEU
 aah
 aEU
 aEU
+<<<<<<< HEAD
 ajn
 aqg
 anv
@@ -46022,6 +46280,49 @@ aOf
 aOw
 aOb
 aOU
+=======
+sbo
+xve
+bEX
+vBY
+vBY
+kwi
+fZx
+jLF
+iRv
+kwi
+aJa
+jLF
+aJI
+aJQ
+aJQ
+aJQ
+ajk
+aKC
+sfF
+ccS
+bEX
+eUB
+eUB
+eUB
+eUB
+eUB
+eUB
+eUB
+aLE
+vBq
+wle
+pTB
+jkn
+jYN
+gcD
+pTB
+eFJ
+cHO
+nED
+ouI
+ckE
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 aad
 aad
 aad
@@ -46123,6 +46424,7 @@ aEU
 aah
 aah
 aEU
+<<<<<<< HEAD
 ajg
 amz
 anv
@@ -46164,6 +46466,49 @@ aLX
 aLX
 aLX
 aLX
+=======
+aCC
+aPU
+bEX
+vNJ
+kwi
+rfn
+lZz
+ylA
+wUq
+ajj
+rtj
+qpo
+nij
+qpo
+tfC
+grU
+tiP
+ajr
+rpg
+lZz
+bEX
+eUB
+myP
+toz
+toz
+toz
+lcu
+eUB
+aLE
+bQA
+cyE
+pTB
+pTB
+pTB
+pTB
+pTB
+pTB
+pTB
+pTB
+pTB
+pTB
+>>>>>>> 1fef84e... Merge pull request #5059 from Heroman3003/back-to-the-pumps
 aad
 aad
 aad
