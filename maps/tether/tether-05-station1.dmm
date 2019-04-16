@@ -907,9 +907,16 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "acl" = (
+<<<<<<< HEAD
 /obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
+=======
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 "acm" = (
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
@@ -1782,10 +1789,24 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "aeq" = (
+<<<<<<< HEAD
 /turf/simulated/shuttle/wall/voidcraft/green{
 	hard_corner = 1
 	},
 /area/hallway/station/atrium)
+=======
+/obj/machinery/computer/cryopod{
+	pixel_y = 32
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/effect/landmark{
+	name = "JoinLateCyborg"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/crew_quarters/sleep/cryo)
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 "aer" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -2674,12 +2695,43 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
+<<<<<<< HEAD
 "agE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/hallway/station/atrium)
+=======
+"agy" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/machinery/photocopier,
+/obj/machinery/camera/network/exploration{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/explorer_meeting)
+"agz" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = -24
+	},
+/obj/effect/landmark{
+	name = "JoinLateCyborg"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/crew_quarters/sleep/cryo)
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 "agF" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -7388,15 +7440,6 @@
 	},
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/crew_quarters/sleep/cryo)
-"avb" = (
-/obj/machinery/computer/cryopod{
-	pixel_y = 32
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
@@ -15818,17 +15861,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/techfloor,
-/area/crew_quarters/sleep/cryo)
-"bff" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 6
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_x = 0;
-	pixel_y = -24
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
 "bfk" = (
@@ -33796,7 +33828,11 @@ aeo
 aaq
 aaq
 aau
+<<<<<<< HEAD
 aas
+=======
+acl
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 avK
 avN
 aad
@@ -33938,7 +33974,11 @@ amF
 avG
 adB
 aaq
+<<<<<<< HEAD
 aas
+=======
+acl
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 avK
 avN
 aad
@@ -34080,7 +34120,11 @@ amF
 avG
 adB
 aaq
+<<<<<<< HEAD
 aas
+=======
+acl
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 avK
 auH
 aad
@@ -34932,7 +34976,11 @@ aaD
 avG
 tIi
 aaq
+<<<<<<< HEAD
 aas
+=======
+acl
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 avK
 auQ
 aad
@@ -35074,7 +35122,11 @@ amL
 aob
 dbI
 aaq
+<<<<<<< HEAD
 aas
+=======
+acl
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 avK
 qgR
 aad
@@ -35216,7 +35268,11 @@ aep
 aeu
 aev
 aau
+<<<<<<< HEAD
 aas
+=======
+acl
+>>>>>>> 4132b74... Merge pull request #5034 from Heroman3003/landmarkening
 avK
 qgR
 aad
@@ -36516,8 +36572,8 @@ asN
 asN
 asN
 asI
-avb
-bff
+aeq
+agz
 asI
 bhL
 aus
