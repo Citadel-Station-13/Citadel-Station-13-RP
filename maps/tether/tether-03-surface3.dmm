@@ -22713,6 +22713,54 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+<<<<<<< HEAD
+=======
+"Xr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass_external/public,
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
+"Xs" = (
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/structure/cable,
+/obj/machinery/power/smes/buildable{
+	charge = 0;
+	output_attempt = 0;
+	RCon_tag = "Substation - Surface Civilian"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/bar{
+	name = "\improper Surface Civilian Substation"
+	})
+"Xt" = (
+/obj/structure/bed/chair,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/shuttle_pad)
+"Xv" = (
+/obj/item/stack/tile/wood{
+	amount = 10
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_library)
+>>>>>>> 226dad7... Merge pull request #5029 from Heroman3003/solar-output-adjust
 "XG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4

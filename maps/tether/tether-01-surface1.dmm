@@ -6976,6 +6976,7 @@
 "amI" = (
 /obj/machinery/power/smes/buildable{
 	charge = 0;
+	output_attempt = 0;
 	RCon_tag = "Substation - Mining"
 	},
 /obj/structure/cable/green,
@@ -19075,10 +19076,25 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/crew_quarters/visitor_lodging)
 "aKi" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
+=======
+/area/hallway/lower/first_west)
+"aSM" = (
+/obj/machinery/power/smes/buildable{
+	charge = 0;
+	output_attempt = 0;
+	RCon_tag = "Substation - Civ West"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+>>>>>>> 226dad7... Merge pull request #5029 from Heroman3003/solar-output-adjust
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
