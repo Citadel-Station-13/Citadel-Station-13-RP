@@ -61,7 +61,7 @@
 	cold_level_3 = 120 //Default 120
 
 	breath_cold_level_1 = 120		// so they can probably breathe outside?					.
-	breath_cold_level_2 = 80							.
+	breath_cold_level_2 = 80
 	breath_cold_level_3 = 60
 
 	heat_level_1 = 360 //Default 360
@@ -164,7 +164,7 @@
 			helm=/obj/item/clothing/head/helmet/space/plasman/fancy
 	H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new helm(H), slot_head)
-	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_store)
+	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_hand)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
 		H.internal = H.back
