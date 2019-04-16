@@ -10,6 +10,7 @@
 	item_flags = STOPPRESSUREDAMAGE | AIRTIGHT
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
 	allowed = list(/obj/item/weapon/tank)
+	can_breach = 0 // w h y ?
 
 /obj/item/clothing/head/helmet/space/plasman
 	name = "Phoronoid containment helmet"
