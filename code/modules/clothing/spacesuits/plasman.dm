@@ -12,7 +12,7 @@
 	allowed = list(/obj/item/weapon/tank)
 
 /obj/item/clothing/head/helmet/space/plasman
-	name = "Phoronoid containtment helmet"
+	name = "Phoronoid containment helmet"
 	icon = 'modular_citadel/icons/obj/plasmeme/hats.dmi'
 	icon_state = "plasmaman_helmet"
 	icon_override = 'modular_citadel/icons/mob/plasmeme/helmet.dmi'
