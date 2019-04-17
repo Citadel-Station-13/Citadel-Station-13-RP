@@ -148,7 +148,7 @@
 	ai_log("vr/EatTarget() [target_mob]",2)
 	stop_automated_movement = 1
 	var/old_target = target_mob
-	handle_stance(STANCE_BUSY)
+	handle_stance(STANCE_DISABLED)
 	. = animal_nom(target_mob)
 	playsound(src, swallowsound, 50, 1)
 	update_icon()

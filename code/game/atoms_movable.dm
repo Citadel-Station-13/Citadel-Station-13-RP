@@ -128,6 +128,8 @@
 					continue
 				src.throw_impact(A,speed)
 
+#define safe_throw_at throw_at			//I'm lazy.
+
 /atom/movable/proc/throw_at(atom/target, range, speed, thrower)
 	if(!target || !src)
 		return 0
