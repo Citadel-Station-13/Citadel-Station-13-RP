@@ -103,7 +103,7 @@ steam.start() -- spawns the effect
 	if (istype(T, /turf))
 		T.hotspot_expose(1000,100)
 
-/obj/effect/effect/sparks/initialize()
+/obj/effect/effect/sparks/Initialize()
 	. = ..()
 	schedule_task_in(5 SECONDS, /proc/qdel, list(src))
 
@@ -333,7 +333,7 @@ steam.start() -- spawns the effect
 					if(isturf(T))
 						var/obj/effect/effect/ion_trails/I = new /obj/effect/effect/ion_trails(src.oldposition)
 						src.oldposition = T
-						I.set_dir(src.holder.dir)
+						I.setDir(src.holder.dir)
 						flick("ion_fade", I)
 						I.icon_state = "blank"
 						spawn( 20 )
@@ -380,7 +380,7 @@ steam.start() -- spawns the effect
 					var/obj/effect/effect/steam/I = new /obj/effect/effect/steam(src.oldposition)
 					src.number++
 					src.oldposition = get_turf(holder)
-					I.set_dir(src.holder.dir)
+					I.setDir(src.holder.dir)
 					spawn(10)
 						qdel(I)
 						src.number--
@@ -434,7 +434,7 @@ steam.start() -- spawns the effect
 			var/light = -1
 			var/flash = -1
 
-			// Clamp all values to fractions of max_explosion_range, following the same pattern as for tank transfer bombs
+			// CLAMP all values to fractions of max_explosion_range, following the same pattern as for tank transfer bombs
 			if (round(amount/12) > 0)
 				devst = devst + amount/12
 

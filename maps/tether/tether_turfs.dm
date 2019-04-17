@@ -2,8 +2,8 @@
 VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
-/turf/simulated/open/virgo3b/New()
-	..()
+/turf/simulated/open/virgo3b/Initialize()
+	. = ..()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
@@ -61,22 +61,22 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	var/mineral_name
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"uranium" = 10, 
-			"platinum" = 10, 
-			"hematite" = 20, 
-			"carbon" = 20, 
-			"diamond" = 1, 
-			"gold" = 8, 
-			"silver" = 8, 
+			"uranium" = 10,
+			"platinum" = 10,
+			"hematite" = 20,
+			"carbon" = 20,
+			"diamond" = 1,
+			"gold" = 8,
+			"silver" = 8,
 			"phoron" = 18))
 	else
 		mineral_name = pickweight(list(
-			"uranium" = 5, 
-			"platinum" = 5, 
-			"hematite" = 35, 
-			"carbon" = 35, 
-			"gold" = 3, 
-			"silver" = 3, 
+			"uranium" = 5,
+			"platinum" = 5,
+			"hematite" = 35,
+			"carbon" = 35,
+			"gold" = 3,
+			"silver" = 3,
 			"phoron" = 25))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
@@ -89,21 +89,21 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	var/mineral_name
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"uranium" = 10, 
-			"platinum" = 10, 
-			"hematite" = 10, 
-			"carbon" = 10, 
-			"diamond" = 4, 
-			"gold" = 15, 
+			"uranium" = 10,
+			"platinum" = 10,
+			"hematite" = 10,
+			"carbon" = 10,
+			"diamond" = 4,
+			"gold" = 15,
 			"silver" = 15))
 	else
 		mineral_name = pickweight(list(
-			"uranium" = 7, 
-			"platinum" = 7, 
-			"hematite" = 28, 
-			"carbon" = 28, 
-			"diamond" = 2, 
-			"gold" = 7, 
+			"uranium" = 7,
+			"platinum" = 7,
+			"hematite" = 28,
+			"carbon" = 28,
+			"diamond" = 2,
+			"gold" = 7,
 			"silver" = 7))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
@@ -164,7 +164,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 /turf/space/bluespace
 	name = "bluespace"
 	icon_state = "bluespace"
-/turf/space/bluespace/initialize()
+/turf/space/bluespace/Initialize()
 	..()
 	icon_state = "bluespace"
 
@@ -173,7 +173,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/initialize()
+/turf/space/sandyscroll/Initialize()
 	..()
 	icon_state = "desert_ns"
 
@@ -182,7 +182,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/initialize()
+/turf/simulated/sky/virgo3b/Initialize()
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

@@ -15,6 +15,9 @@
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
 
+	var/list/atom_colors	 //used to store the different colors on an atom
+							//its inherent color, the colored paint applied on it, special color effect etc...
+
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -22,31 +25,28 @@
 	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
 	///Chemistry.
 
-	// Overlays
-	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
+	var/list/remove_overlays // a very temporary list of overlays to remove
+	var/list/add_overlays // a very temporary list of overlays to add
+
+	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
 
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
-	// Track if we are already had initialize() called to prevent double-initialization.
-	var/initialized = FALSE
 
 /atom/New(loc, ...)
-	// Don't call ..() unless /datum/New() ever exists
-
 	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
 	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
-	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		_preloader.load(src)
+	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+		GLOB._preloader.load(src)
 
-	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload.
-	var/do_initialize = SSatoms && SSatoms.initialized // Workaround our non-ideal initialization order: SSatoms may not exist yet.
-	//var/do_initialize = SSatoms.initialized
-	if(do_initialize > INITIALIZATION_INSSATOMS)
-		args[1] = (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
+		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
 		if(SSatoms.InitAtom(src, args))
-			// We were deleted. No sense continuing
+			//we were deleted
 			return
+	// Don't call ..() unless /datum/New() ever exists
 
 	// Uncomment if anything ever uses the return value of SSatoms.InitializeAtoms ~Leshana
 	// If a map is being loaded, it might want to know about newly created objects so they can be handled.
@@ -63,17 +63,58 @@
 // Must not sleep!
 // Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
 // Must return an Initialize hint. Defined in code/__defines/subsystems.dm
-/atom/proc/initialize(mapload, ...)
-	if(QDELETED(src))
-		crash_with("GC: -- [type] had initialize() called after qdel() --")
-	if(initialized)
-		crash_with("Warning: [src]([type]) initialized multiple times!")
-	initialized = TRUE
+/atom/proc/Initialize(mapload, ...)
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+
+/*
+	//atom color stuff
+	if(color)
+		add_atom_color(color, FIXED_COLOR_PRIORITY)
+*/
+
+	if (light_power && light_range)
+		update_light()
+
+	if (opacity && isturf(loc))
+		var/turf/T = loc
+		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+
+/*
+	if (canSmoothWith)
+		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
+*/
+
+	ComponentInitialize()
+
 	return INITIALIZE_HINT_NORMAL
 
-// Called after all object's normal initialize() if initialize() returns INITIALIZE_HINT_LATELOAD
+//called if Initialize returns INITIALIZE_HINT_LATELOAD
 /atom/proc/LateInitialize()
 	return
+
+// Put your AddComponent() calls here
+/atom/proc/ComponentInitialize()
+	return
+
+/atom/Destroy()
+	/*if(alternate_appearances)
+		for(var/K in alternate_appearances)
+			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+			AA.remove_from_hud(src)*/
+
+	if(reagents)
+		QDEL_NULL(reagents)
+
+	//orbiters = null // The component is attached to us normaly and will be deleted elsewhere
+
+	LAZYCLEARLIST(overlays)
+	LAZYCLEARLIST(priority_overlays)
+
+	QDEL_NULL(light)
+
+	return ..()
 
 /atom/proc/reveal_blood()
 	return
@@ -97,11 +138,24 @@
 		return 0
 	return -1
 
-/atom/proc/on_reagent_change()
-	return
-
 /atom/proc/Bumped(AM as mob|obj)
-	return
+	set waitfor = FALSE
+
+/atom/Enter(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ENTER, AM, oldLoc) & COMPONENT_ATOM_BLOCK_ENTER)
+		return FALSE
+
+/atom/Entered(atom/movable/AM, atom/oldLoc)
+	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, AM, oldLoc)
+
+/atom/Exit(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, AM, newLoc) & COMPONENT_ATOM_BLOCK_EXIT)
+		return FALSE
+
+/atom/Exited(atom/movable/AM, atom/newLoc)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, newLoc)
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
@@ -129,10 +183,8 @@
 /atom/proc/emp_act(var/severity)
 	return
 
-
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
-	P.on_hit(src, 0, def_zone)
-	. = 0
+	. = P.on_hit(src, 0, def_zone)
 
 // Called when a blob expands onto the tile the atom occupies.
 /atom/proc/blob_act()
@@ -196,8 +248,10 @@
 	return
 
 //called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/set_dir(new_dir)
-	. = new_dir != dir
+/atom/proc/setDir(new_dir)
+	if(dir == new_dir)
+		return
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 	dir = new_dir
 
 /atom/proc/ex_act()
@@ -233,8 +287,10 @@
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
+	if(isnull(M))
+		return
+	if(isnull(M.key))
+		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
@@ -270,7 +326,7 @@
 		//He has no prints!
 		if (mFingerprints in M.mutations)
 			if(fingerprintslast != M.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
+				fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
 				fingerprintslast = M.key
 			return 0		//Now, lets get to the dirty work.
 		//First, make sure their DNA makes sense.
@@ -284,7 +340,7 @@
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
 			if(fingerprintslast != H.key)
-				fingerprintshidden += "[time_stamp()]: [key_name(H)] (Wearing [H.gloves])"
+				fingerprintshidden += text("\[[]\](Wearing gloves). Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 				fingerprintslast = H.key
 			H.gloves.add_fingerprint(M)
 
@@ -298,7 +354,7 @@
 
 		//More adminstuffz
 		if(fingerprintslast != H.key)
-			fingerprintshidden += "[time_stamp()]: [key_name(H)]"
+			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 			fingerprintslast = H.key
 
 		//Make the list if it does not exist.
@@ -351,7 +407,7 @@
 	else
 		//Smudge up dem prints some
 		if(fingerprintslast != M.key)
-			fingerprintshidden += "[time_stamp()]: [key_name(M)]"
+			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), M.real_name, M.key)
 			fingerprintslast = M.key
 
 	//Cleaning up shit.
@@ -443,6 +499,9 @@
 	else
 		return 0
 
+//REQUIRES REWORK!!
+
+
 // Show a message to all mobs and objects in sight of this atom
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
@@ -524,7 +583,7 @@
 	var/atom/L = loc
 	if(!L)
 		return null
-	return L.AllowDrop() ? L : get_turf(L)
+	return L.AllowDrop() ? L : L.drop_location()
 
 /atom/proc/AllowDrop()
 	return FALSE
@@ -534,3 +593,101 @@
 
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
+
+/atom/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_ATOM_EXPLODE, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_ATOM_EMP, "Emp Pulse")
+
+/atom/vv_do_topic(list/href_list)
+	. = ..()
+	IF_VV_OPTION(VV_HK_ATOM_EXPLODE)
+		if(!check_rights(R_DEBUG|R_FUN))
+			return
+		usr.client.cmd_admin_explosion(src)
+		href_list["datumrefresh"] = REF(src)
+	IF_VV_OPTION(VV_HK_ATOM_EMP)
+		if(!check_rights(R_DEBUG|R_FUN))
+			return
+		usr.client.cmd_admin_emp(src)
+		href_list["datumrefresh"] = REF(src)
+
+/atom/vv_get_header()
+	. = ..()
+	var/custom_edit_name
+	if(!isliving(src))
+		custom_edit_name = "<a href='?_src_=vars;datumedit=[REF(src)];varnameedit=name'><b>[src]</b></a>"
+	. += {"
+		[custom_edit_name]
+		<br><font size='1'>
+		<a href='?_src_=vars;rotatedatum=[REF(src)];rotatedir=left'><<</a>
+		<a href='?_src_=vars;datumedit=[REF(src)];varnameedit=dir'>[dir2text(dir)]</a>
+		<a href='?_src_=vars;rotatedatum=[REF(src)];rotatedir=right'>>></a>
+		</font>
+		"}
+
+//This proc is called on the location of an atom when the atom is Destroy()'d
+/atom/proc/handle_atom_del(atom/A)
+	SEND_SIGNAL(src, COMSIG_ATOM_CONTENTS_DEL, A)
+
+//called when the turf the atom resides on is ChangeTurfed
+/atom/proc/HandleTurfChange(turf/T)
+	for(var/a in src)
+		var/atom/A = a
+		A.HandleTurfChange(T)
+
+/*
+	Atom Colour Priority System
+	A System that gives finer control over which atom color to color the atom with.
+	The "highest priority" one is always displayed as opposed to the default of
+	"whichever was set last is displayed"
+*/
+
+/*
+	Adds an instance of color_type to the atom's atom_colors list
+*/
+/atom/proc/add_atom_color(coloration, color_priority)
+	if(!atom_colors || !atom_colors.len)
+		atom_colors = list()
+		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
+	if(!coloration)
+		return
+	if(color_priority > atom_colors.len)
+		return
+	atom_colors[color_priority] = coloration
+	update_atom_color()
+
+
+/*
+	Removes an instance of color_type from the atom's atom_colors list
+*/
+/atom/proc/remove_atom_color(color_priority, coloration)
+	if(!atom_colors)
+		atom_colors = list()
+		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
+	if(color_priority > atom_colors.len)
+		return
+	if(coloration && atom_colors[color_priority] != coloration)
+		return //if we don't have the expected color (for a specific priority) to remove, do nothing
+	atom_colors[color_priority] = null
+	update_atom_color()
+
+
+/*
+	Resets the atom's color to null, and then sets it to the highest priority
+	color available
+*/
+/atom/proc/update_atom_color()
+	if(!atom_colors)
+		atom_colors = list()
+		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
+	color = null
+	for(var/C in atom_colors)
+		if(islist(C))
+			var/list/L = C
+			if(L.len)
+				color = L
+				return
+		else if(C)
+			color = C
+			return

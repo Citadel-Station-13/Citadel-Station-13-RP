@@ -47,7 +47,7 @@ field_generator power level display
 	// Power level indicator
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
-	// Clamp between 0 and num_power_levels for out of range power values
+	// CLAMP between 0 and num_power_levels for out of range power values
 	level = between(0, level, num_power_levels)
 	if(level)
 		overlays += "+p[level]"
@@ -290,7 +290,7 @@ field_generator power level display
 			fields += CF
 			G.fields += CF
 			CF.loc = T
-			CF.set_dir(field_dir)
+			CF.setDir(field_dir)
 	var/listcheck = 0
 	for(var/obj/machinery/field_generator/FG in connected_gens)
 		if (isnull(FG))

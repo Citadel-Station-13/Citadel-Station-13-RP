@@ -87,8 +87,8 @@
 	var/icon/default_worn_icon	//Default on-mob icon
 	var/worn_layer				//Default on-mob layer
 
-/obj/item/New()
-	..()
+/obj/item/Initialize()
+	. = ..()
 	if(embed_chance < 0)
 		if(sharp)
 			embed_chance = max(5, round(force/w_class))

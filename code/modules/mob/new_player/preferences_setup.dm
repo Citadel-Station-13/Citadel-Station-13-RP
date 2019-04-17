@@ -1,5 +1,4 @@
-/datum/preferences
-	//The mob should have a gender you want before running this proc. Will run fine without H
+//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
 	var/datum/species/current_species = all_species[species ? species : "Human"]
 	set_biological_gender(pick(current_species.genders))
@@ -246,23 +245,3 @@
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
 		mannequin.job = previewJob.title
 		previewJob.equip_preview(mannequin, player_alt_titles[previewJob.title])
-
-/datum/preferences/proc/update_preview_icon()
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	mannequin.delete_inventory(TRUE)
-	dress_preview_mob(mannequin)
-	COMPILE_OVERLAYS(mannequin)
-
-	preview_icon = icon('icons/effects/128x48.dmi', bgstate)
-	preview_icon.Scale(48+32, 16+32)
-
-	var/icon/stamp = getFlatIcon(mannequin, defdir=NORTH)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
-
-	stamp = getFlatIcon(mannequin, defdir=WEST)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
-
-	stamp = getFlatIcon(mannequin, defdir=SOUTH)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
-
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.

@@ -14,7 +14,7 @@
 /obj/structure/bed/chair/wheelchair/update_icon()
 	return
 
-/obj/structure/bed/chair/wheelchair/set_dir()
+/obj/structure/bed/chair/wheelchair/setDir()
 	..()
 	overlays = null
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
@@ -22,7 +22,7 @@
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.set_dir(dir)
+			L.setDir(dir)
 
 /obj/structure/bed/chair/wheelchair/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(W.is_wrench() || W.is_wirecutter() || istype(W,/obj/item/stack))
@@ -87,7 +87,7 @@
 	if(has_buckled_mobs()) // Make sure it stays beneath the occupant
 		var/mob/living/L = buckled_mobs[1]
 		Move(L.loc)
-	set_dir(direction)
+	setDir(direction)
 	if(pulling) // Driver
 		if(pulling.loc == src.loc) // We moved onto the wheelchair? Revert!
 			pulling.forceMove(T)
@@ -96,7 +96,7 @@
 			if(get_dist(src, pulling) > 1) // We are too far away? Losing control.
 				pulling = null
 				user.pulledby = null
-			pulling.set_dir(get_dir(pulling, src)) // When everything is right, face the wheelchair
+			pulling.setDir(get_dir(pulling, src)) // When everything is right, face the wheelchair
 	if(bloodiness)
 		create_track()
 	driving = 0
@@ -145,7 +145,7 @@
 			user.pulledby = src
 			if(user.pulling)
 				user.stop_pulling()
-			user.set_dir(get_dir(user, src))
+			user.setDir(get_dir(user, src))
 			user << "You grip \the [name]'s handles."
 		else
 			usr << "You let go of \the [name]'s handles."
@@ -194,14 +194,14 @@
 	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
 	var/newdir = get_dir(get_step(loc, dir), loc)
 	if(newdir == dir)
-		B.set_dir(newdir)
+		B.setDir(newdir)
 	else
 		newdir = newdir | dir
 		if(newdir == 3)
 			newdir = 1
 		else if(newdir == 12)
 			newdir = 4
-		B.set_dir(newdir)
+		B.setDir(newdir)
 	bloodiness--
 
 /obj/structure/bed/chair/wheelchair/buckle_mob(mob/M as mob, mob/user as mob)

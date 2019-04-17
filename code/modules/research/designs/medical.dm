@@ -107,7 +107,7 @@
 	sort_string = "MBBAD"
 
 /datum/design/item/medical/bone_clamp
-	name = "Bone Clamp"
+	name = "Bone CLAMP"
 	desc = "A miracle of modern science, this tool rapidly knits together bone, without the need for bone gel."
 	id = "bone_clamp"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_DATA = 4)

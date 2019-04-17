@@ -14,11 +14,10 @@
 	var/image/turf_image
 	var/list/decals
 
-	New(var/location = null, var/turf/simulated/shuttle/turf)
-		..(null)
-		my_turf = turf
+/obj/landed_holder/Initialize(mapload, turf/simulated/shuttle/turf)
+	my_turf = turf
 
-/obj/landed_holder/proc/land_on(var/turf/T)
+/obj/landed_holder/proc/land_on(turf/T)
 	//Gather destination information
 	var/obj/landed_holder/new_holder = new(null)
 	new_holder.turf_type = T.type
@@ -30,9 +29,8 @@
 	new_holder.decals = T.decals ? T.decals.Copy() : null
 
 	//Set the destination to be like us
-	T.Destroy()
 	var/turf/simulated/shuttle/new_dest = T.ChangeTurf(my_turf.type,,1)
-	new_dest.set_dir(my_turf.dir)
+	new_dest.setDir(my_turf.dir)
 	new_dest.icon_state = my_turf.icon_state
 	new_dest.icon = my_turf.icon
 	new_dest.copy_overlays(my_turf, TRUE)
@@ -59,15 +57,15 @@
 	var/turf/new_source
 	//Change our source to whatever it was before
 	if(turf_type)
-		new_source = my_turf.ChangeTurf(turf_type,,1)
-		new_source.set_dir(dir)
+		new_source = my_turf.ChangeTurf(turf_type)
+		new_source.setDir(dir)
 		new_source.icon_state = icon_state
 		new_source.icon = icon
 		new_source.copy_overlays(src, TRUE)
 		new_source.underlays = underlays
 		new_source.decals = decals
 	else
-		new_source = my_turf.ChangeTurf(get_base_turf_by_area(my_turf),,1)
+		new_source = my_turf.ScrapeAway()
 
 	return new_source
 
@@ -126,7 +124,7 @@
 		else if(isfloor(T3) || istype(T3,/turf/space/transit))
 			under = T3
 		else
-			under = get_base_turf_by_area(src)
+			under = SSmapping.level_trait(z, ZTRAIT_BASETURF)
 
 	if(istype(under,/turf/simulated/shuttle))
 		interior_corner = 1 //Prevents us from 'landing on grass' and having interior corners update.
@@ -185,7 +183,7 @@
 	light_color = "#66ffff" // Bright cyan.
 	block_tele = TRUE
 
-/turf/simulated/shuttle/floor/alien/initialize()
+/turf/simulated/shuttle/floor/alien/Initialize()
 	. = ..()
 	icon_state = "alienpod[rand(1, 9)]"
 
@@ -213,8 +211,9 @@
 	takes_underlays = 1
 	blocks_air = 1 //I'd make these unsimulated but it just fucks with so much stuff so many other places.
 
-	initialize()
-		icon_state = "carry_ingame"
+/turf/simulated/shuttle/plating/carry/Initialize()
+	. = ..()
+	icon_state = "carry_ingame"
 
 /turf/simulated/shuttle/plating/airless/carry
 	name = "airless carry turf"
@@ -223,8 +222,9 @@
 	takes_underlays = 1
 	blocks_air = 1
 
-	initialize()
-		icon_state = "carry_ingame"
+/turf/simulated/shuttle/plating/airless/carry/Initialize()
+	. = ..()
+	icon_state = "carry_ingame"
 
 /turf/simulated/shuttle/plating/skipjack //Skipjack plating
 	oxygen = 0

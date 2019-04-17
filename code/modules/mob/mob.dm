@@ -756,9 +756,9 @@
 /mob/proc/facedir(var/ndir)
 	if(!canface() || (client && (client.moving || (world.time < client.move_delay))))
 		return 0
-	set_dir(ndir)
+	setDir(ndir)
 	if(buckled && buckled.buckle_movable)
-		buckled.set_dir(ndir)
+		buckled.setDir(ndir)
 	if(client)
 		client.move_delay += movement_delay()
 	return 1
@@ -896,10 +896,10 @@
 	return
 
 /mob/proc/AdjustLosebreath(amount)
-	losebreath = Clamp(0, losebreath + amount, 25)
+	losebreath = CLAMP(0, losebreath + amount, 25)
 
 /mob/proc/SetLosebreath(amount)
-	losebreath = Clamp(0, amount, 25)
+	losebreath = CLAMP(0, amount, 25)
 
 /mob/proc/get_species()
 	return ""
@@ -1038,15 +1038,15 @@ mob/proc/yank_out_object()
 	if(newdir == facing_dir)
 		facing_dir = null
 	else if(newdir)
-		set_dir(newdir)
+		setDir(newdir)
 		facing_dir = newdir
 	else if(facing_dir)
 		facing_dir = null
 	else
-		set_dir(dir)
+		setDir(dir)
 		facing_dir = dir
 
-/mob/set_dir()
+/mob/setDir()
 	if(facing_dir)
 		if(!canface() || lying || buckled || restrained())
 			facing_dir = null
@@ -1156,13 +1156,7 @@ mob/proc/yank_out_object()
 	var/obj/screen/zone_sel/selector = mob.zone_sel
 	selector.set_selected_zone(next_in_list(mob.zone_sel.selecting,zones))
 
-// This handles setting the client's color variable, which makes everything look a specific color.
-// This proc is here so it can be called without needing to check if the client exists, or if the client relogs.
-// This is for inheritence since /mob/living will serve most cases. If you need ghosts to use this you'll have to implement that yourself.
-/mob/proc/update_client_color()
-	if(client && client.color)
-		animate(client, color = null, time = 10)
-	return
+
 
 /mob/proc/swap_hand()
 	return

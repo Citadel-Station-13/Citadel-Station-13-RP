@@ -16,7 +16,7 @@ var/list/admin_datums = list()
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
+		stack_trace("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
 	admincaster_signature = "[using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
@@ -31,18 +31,18 @@ var/list/admin_datums = list()
 		owner = C
 		owner.holder = src
 		owner.add_admin_verbs()	//TODO
-		admins |= C
+		GLOB.admins |= C
 
 /datum/admins/proc/disassociate()
 	if(owner)
-		admins -= owner
+		GLOB.admins -= owner
 		owner.remove_admin_verbs()
 		owner.deadmin_holder = owner.holder
 		owner.holder = null
 
 /datum/admins/proc/reassociate()
 	if(owner)
-		admins += owner
+		GLOB.admins += owner
 		owner.holder = src
 		owner.deadmin_holder = null
 		owner.add_admin_verbs()

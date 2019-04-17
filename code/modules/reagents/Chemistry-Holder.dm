@@ -12,27 +12,23 @@
 	my_atom = A
 
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!chemical_reagents_list)
+	if(!SSchemistry.chemical_reagents)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 		var/paths = typesof(/datum/reagent) - /datum/reagent
-		chemical_reagents_list = list()
+		SSchemistry.chemical_reagents = list()
 		for(var/path in paths)
 			var/datum/reagent/D = new path()
 			if(!D.name)
 				continue
-			chemical_reagents_list[D.id] = D
+			SSchemistry.chemical_reagents[D.id] = D
 
 /datum/reagents/Destroy()
-	. = ..()
-	if(chemistryProcess)
-		chemistryProcess.active_holders -= src
-
 	for(var/datum/reagent/R in reagent_list)
 		qdel(R)
-	reagent_list.Cut()
 	reagent_list = null
 	if(my_atom && my_atom.reagents == src)
 		my_atom.reagents = null
+	return ..()
 
 /* Internal procs */
 
@@ -80,27 +76,20 @@
 	return
 
 /datum/reagents/proc/handle_reactions()
-	if(chemistryProcess)
-		chemistryProcess.mark_for_update(src)
-
-//returns 1 if the holder should continue reactiong, 0 otherwise.
-/datum/reagents/proc/process_reactions()
-	if(!my_atom) // No reactions in temporary holders
-		return 0
-	if(!my_atom.loc) //No reactions inside GC'd containers
-		return 0
+	if(QDELETED(my_atom))		//No container, no reaction.
+		return FALSE
 	if(my_atom.flags & NOREACT) // No reactions here
-		return 0
+		return FALSE
 
 	var/reaction_occured
 	var/list/effect_reactions = list()
 	var/list/eligible_reactions = list()
-	for(var/i in 1 to PROCESS_REACTION_ITER)
-		reaction_occured = 0
+	do
+		reaction_occured = FALSE
 
 		//need to rebuild this to account for chain reactions
 		for(var/datum/reagent/R in reagent_list)
-			eligible_reactions |= chemical_reactions_list[R.id]
+			eligible_reactions |= SSchemistry.chemical_reactions[R.id]
 
 		for(var/datum/chemical_reaction/C in eligible_reactions)
 			if(C.can_happen(src) && C.process(src))
@@ -109,8 +98,7 @@
 
 		eligible_reactions.Cut()
 
-		if(!reaction_occured)
-			break
+	while(reaction_occured)
 
 	for(var/datum/chemical_reaction/C in effect_reactions)
 		C.post_reaction(src)
@@ -138,7 +126,7 @@
 			if(my_atom)
 				my_atom.on_reagent_change()
 			return 1
-	var/datum/reagent/D = chemical_reagents_list[id]
+	var/datum/reagent/D = SSchemistry.chemical_reagents[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
 		reagent_list += R
@@ -152,7 +140,7 @@
 			my_atom.on_reagent_change()
 		return 1
 	else
-		warning("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
+		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0
 
 /datum/reagents/proc/remove_reagent(var/id, var/amount, var/safety = 0)

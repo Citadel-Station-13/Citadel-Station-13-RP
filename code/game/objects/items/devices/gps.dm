@@ -17,7 +17,7 @@ var/list/GPS_list = list()
 	var/hide_signal = FALSE		// If true, signal is not visible to other GPS devices.
 	var/can_hide_signal = FALSE	// If it can toggle the above var.
 
-/obj/item/device/gps/initialize()
+/obj/item/device/gps/Initialize()
 	. = ..()
 	GPS_list += src
 	name = "global positioning system ([gps_tag])"
@@ -104,8 +104,8 @@ var/list/GPS_list = list()
 			gps_data["area_name"] = "Unknown Area" // Avoid spoilers.
 
 		gps_data["z_name"] = using_map.get_zlevel_name(T.z)
-		gps_data["direction"] = get_adir(curr, T)
-		gps_data["degrees"] = round(Get_Angle(curr,T))
+		gps_data["direction"] = get_dir(curr, T)
+		gps_data["degrees"] = round(GET_ANGLE(curr,T), 1)
 		gps_data["distX"] = T.x - curr.x
 		gps_data["distY"] = T.y - curr.y
 		gps_data["distance"] = get_dist(curr, T)

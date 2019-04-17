@@ -295,7 +295,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	plane_holder.set_vis(VIS_CH_SPECIAL, antagHUD)
 	to_chat(src,"<font color='blue'><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
-/mob/observer/dead/proc/dead_tele(var/area/A in return_sorted_areas())
+/mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
 	set category = "Ghost"
 	set name = "Teleport"
 	set desc = "Teleport to a location"

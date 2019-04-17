@@ -161,7 +161,7 @@
 		. = ..()
 		if(direct != olddir)
 			dir = olddir
-			set_dir(direct)
+			setDir(direct)
 
 		src.move_speed = world.time - src.l_move_time
 		src.l_move_time = world.time
@@ -367,7 +367,7 @@
 
 		for (var/obj/item/weapon/grab/G in mob)
 			if (G.state == GRAB_NECK)
-				mob.set_dir(reverse_dir[direct])
+				mob.setDir(reverse_dir[direct])
 			G.adjust_position()
 		for (var/obj/item/weapon/grab/G in mob.grabbed_by)
 			G.adjust_position()

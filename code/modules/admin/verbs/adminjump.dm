@@ -4,7 +4,7 @@
 /mob/observer/dead/on_mob_jump()
 	following = null
 
-/client/proc/Jump(var/area/A in return_sorted_areas())
+/client/proc/Jump(var/area/A in GLOB.sortedAreas)
 	set name = "Jump to Area"
 	set desc = "Area to jump to"
 	set category = "Admin"
@@ -21,7 +21,7 @@
 	else
 		alert("Admin jumping disabled")
 
-/client/proc/jumptoturf(var/turf/T in turfs)
+/client/proc/jumptoturf(var/turf/T in world)
 	set name = "Jump to Turf"
 	set category = "Admin"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
@@ -154,7 +154,7 @@
 	set name = "Send Mob"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
-	var/area/A = input(usr, "Pick an area.", "Pick an area") in return_sorted_areas()
+	var/area/A = input(usr, "Pick an area.", "Pick an area") in GLOB.sortedAreas
 	if(A)
 		if(config.allow_admin_jump)
 			M.on_mob_jump()

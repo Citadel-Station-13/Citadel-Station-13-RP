@@ -86,7 +86,7 @@ var/global/list/grub_machine_overlays = list()
 
 	if(stance == STANCE_IDLE)
 		if(forced_out)
-			forced_out = Clamp(0, forced_out--, forced_out)
+			forced_out = CLAMP(0, forced_out--, forced_out)
 			return
 
 		if(target_vent)

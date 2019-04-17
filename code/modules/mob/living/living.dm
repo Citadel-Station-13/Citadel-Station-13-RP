@@ -664,7 +664,7 @@ default behaviour is:
 	ExtinguishMob()
 	fire_stacks = 0
 
-/mob/living/proc/rejuvenate()
+/mob/living/rejuvenate(fully_heal, admin_revive)
 	if(reagents)
 		reagents.clear_reagents()
 

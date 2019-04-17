@@ -97,7 +97,7 @@ var/list/organ_cache = list()
 		owner.can_defib = 0
 
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
-	germ_level = Clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
+	germ_level = CLAMP(germ_level + amount, 0, INFECTION_LEVEL_MAX)
 
 /obj/item/organ/process()
 
@@ -229,7 +229,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/remove_rejuv()
 	qdel(src)
 
-/obj/item/organ/proc/rejuvenate(var/ignore_prosthetic_prefs)
+/obj/item/organ/rejuvenate(ignore_prosthetic_prefs)
 	damage = 0
 	status = 0
 	germ_level = 0

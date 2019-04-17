@@ -64,7 +64,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	//still_recharging_msg = "<span class='notice'>[name] is still recharging.</span>"
 	charge_counter = charge_max
 
-/spell/proc/process()
+/spell/process()
 	spawn while(charge_counter < charge_max)
 		charge_counter++
 		sleep(1)
@@ -179,7 +179,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 /spell/proc/cast_check(skipcharge = 0,mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 
 	if(!(src in user.spell_list) && holder == user)
-		error("[user] utilized the spell '[src]' without having it.")
+		stack_trace("[user] utilized the spell '[src]' without having it.")
 		user << "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>"
 		return 0
 

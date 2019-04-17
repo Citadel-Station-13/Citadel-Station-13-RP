@@ -72,7 +72,7 @@
 	name = "away mission initializer - beachcave"
 
 //In our case, it initializes the ores and random submaps in the beach's cave, then deletes itself
-/obj/away_mission_init/beachcave/initialize()
+/obj/away_mission_init/beachcave/Initialize()
 	// Cave submaps are first.
 	/*seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
 	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/deep, /datum/map_template/surface/mountains/deep)
@@ -81,7 +81,7 @@
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_BEACH_CAVE, world.maxx, world.maxy)
 	new /datum/random_map/noise/ore/beachmine(null, 1, 1, Z_LEVEL_BEACH_CAVE, 64, 64)*/
 
-	initialized = TRUE
+	//initialized = TRUE
 	return INITIALIZE_HINT_QDEL
 
 // Two mob spawners that are placed on the map that spawn some mobs!
@@ -155,7 +155,7 @@
 //And some special areas, including our shuttle landing spot (must be unique)
 /area/shuttle/excursion/away_beach
 	name = "\improper Excursion Shuttle - Beach"
-	dynamic_lighting = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/tether_away/beach
 	name = "\improper Away Mission - Virgo 4 Beach"
@@ -163,7 +163,7 @@
 	base_turf = /turf/simulated/floor/beach/sand //This is what the ground turns into if destroyed/bombed/etc
 	//Not going to do sunlight simulations here like virgo3b
 	//So we just make the whole beach fullbright all the time
-	dynamic_lighting = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/tether_away/beach/powershed
 	name = "\improper Away Mission - Virgo 4 Coast PS"

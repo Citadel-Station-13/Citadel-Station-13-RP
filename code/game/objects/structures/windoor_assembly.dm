@@ -39,9 +39,9 @@ obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 		anchored = 0
 	switch(start_dir)
 		if(NORTH, SOUTH, EAST, WEST)
-			set_dir(start_dir)
+			setDir(start_dir)
 		else //If the user is facing northeast. northwest, southeast, southwest or north, default to north
-			set_dir(NORTH)
+			setDir(NORTH)
 	update_state()
 
 	update_nearby_tiles(need_rebuild=1)
@@ -82,7 +82,7 @@ obj/structure/windoor_assembly/Destroy()
 	|| istype(user.module,/obj/item/weapon/robot_module/drone))) //Only dron (and engiborg) needs this.
 		rename_door(user)
 
-/obj/structure/windoor_assembly/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/windoor_assembly/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/weapon/pen))
 		rename_door(user)
 		return
@@ -194,7 +194,7 @@ obj/structure/windoor_assembly/Destroy()
 				if(src.electronics && istype(src.electronics, /obj/item/weapon/circuitboard/broken))
 					to_chat(usr,"<span class='warning'>The assembly has broken airlock electronics.</span>")
 					return
-				to_chat(usr,browse(null, "window=windoor_access")) //Not sure what this actually does... -Ner
+				user << browse(null, "window=windoor_access")		//Not sure what this actually does... -Ner
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
 
@@ -213,7 +213,7 @@ obj/structure/windoor_assembly/Destroy()
 						else
 							windoor.icon_state = "rightsecureopen"
 							windoor.base_state = "rightsecure"
-						windoor.set_dir(src.dir)
+						windoor.setDir(src.dir)
 						windoor.density = 0
 						if(created_name)
 							windoor.name = created_name
@@ -235,7 +235,7 @@ obj/structure/windoor_assembly/Destroy()
 						else
 							windoor.icon_state = "rightopen"
 							windoor.base_state = "right"
-						windoor.set_dir(src.dir)
+						windoor.setDir(src.dir)
 						windoor.density = 0
 						if(created_name)
 							windoor.name = created_name
@@ -284,7 +284,7 @@ obj/structure/windoor_assembly/Destroy()
 	if(src.state != "01")
 		update_nearby_tiles(need_rebuild=1) //Compel updates before
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 	if(src.state != "01")
 		update_nearby_tiles(need_rebuild=1)

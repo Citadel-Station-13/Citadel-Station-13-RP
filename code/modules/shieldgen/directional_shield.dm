@@ -164,9 +164,9 @@
 	var/high_g = high_color_list[2]
 	var/high_b = high_color_list[3]
 
-	var/new_r = Interpolate(low_r, high_r, weight = lerp_weight)
-	var/new_g = Interpolate(low_g, high_g, weight = lerp_weight)
-	var/new_b = Interpolate(low_b, high_b, weight = lerp_weight)
+	var/new_r = LERP(low_r, high_r, lerp_weight)
+	var/new_g = LERP(low_g, high_g, lerp_weight)
+	var/new_b = LERP(low_b, high_b, lerp_weight)
 
 	var/new_color = rgb(new_r, new_g, new_b)
 
@@ -182,7 +182,7 @@
 
 		destroy_shields()
 	else
-		set_dir(user.dir) // Needed for linear shields.
+		setDir(user.dir) // Needed for linear shields.
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 
@@ -378,9 +378,9 @@
 		destroy_shields()
 	else
 		if(istype(user.loc, /obj/mecha))
-			set_dir(user.loc.dir)
+			setDir(user.loc.dir)
 		else
-			set_dir(user.dir)
+			setDir(user.dir)
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 

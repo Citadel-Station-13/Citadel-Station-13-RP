@@ -62,7 +62,7 @@
 	if(isanimal(user))
 		var/mob/living/simple_animal/S = user
 		playsound(src, S.attack_sound, 75, 1)
-		if(!(S.melee_damage_upper >= 10))
+		if(!(S.melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
 			to_chat(user, "<span class='notice'>You bounce against the wall.</span>")
 			return FALSE
 		damage_lower = S.melee_damage_lower
@@ -77,8 +77,7 @@
 	if(isanimal(user))
 		var/mob/living/simple_animal/S = user
 		playsound(src, S.attack_sound, 75, 1)
-	spawn(1)
-		dismantle_wall(1)
+	dismantle_wall(1)
 
 /turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
 
@@ -115,12 +114,12 @@
 
 	try_touch(user, rotting)
 
-/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message, var/wallbreaker)
+/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message)
 
 	radiate()
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if(!damage || !wallbreaker)
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD * 2)
 		try_touch(user, rotting)
 		return
 
@@ -128,7 +127,7 @@
 		return success_smash(user)
 
 	if(reinf_material)
-		if((wallbreaker == 2) || (damage >= max(material.hardness,reinf_material.hardness)))
+		if(damage >= max(material.hardness, reinf_material.hardness) )
 			return success_smash(user)
 	else if(damage >= material.hardness)
 		return success_smash(user)
@@ -165,7 +164,7 @@
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor, preserve_outdoors = TRUE)
+					T.ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
 					expended_tile = TRUE

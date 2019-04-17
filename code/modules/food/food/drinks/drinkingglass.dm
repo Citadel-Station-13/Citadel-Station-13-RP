@@ -97,17 +97,15 @@
 			return
 
 // for /obj/machinery/vending/sovietsoda
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/soda
-	initialize()
-		..()
-		reagents.add_reagent("sodawater", 50)
-		on_reagent_change()
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/soda/Initialize()
+	..()
+	reagents.add_reagent("sodawater", 50)
+	on_reagent_change()
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cola
-	initialize()
-		..()
-		reagents.add_reagent("cola", 50)
-		on_reagent_change()
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cola/Initialize()
+	. = ..()
+	reagents.add_reagent("cola", 50)
+	on_reagent_change()
 
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/shotglass
 	name = "shot glass"
@@ -141,7 +139,7 @@
 	volume = 100
 	matter = list("plastic" = 2000)
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/initialize()
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/Initialize()
 	..()
 	icon_state = pick("fitness-cup_black", "fitness-cup_red", "fitness-cup_black")
 
@@ -169,7 +167,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake
 	name = "protein shake"
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/initialize()
+/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/Initialize()
 	..()
 	reagents.add_reagent("nutriment", 30)
 	reagents.add_reagent("iron", 10)

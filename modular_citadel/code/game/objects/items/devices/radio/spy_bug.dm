@@ -11,7 +11,7 @@
 	qdel(src.radio)
 	radio = null
 
-/obj/item/device/camerabug/initialize()
+/obj/item/device/camerabug/Initialize()
 	. = ..()
 	radio = new(src)
 	radio.broadcasting = 0
@@ -43,7 +43,7 @@
 	. = ..()
 	listening_objects += src
 
-/obj/item/device/bug_monitor/initialize()
+/obj/item/device/bug_monitor/Initialize()
 	. = ..()
 	if(!freqblacklist)
 		for (var/chan in radiochannels)

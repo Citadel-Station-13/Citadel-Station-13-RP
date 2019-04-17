@@ -8,13 +8,13 @@ var/global/floorIsLava = 0
 	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	//log_adminwarn(msg) //log_and_message_admins is for this
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			C << msg
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
 				var/msg = rendered
@@ -239,7 +239,7 @@ proc/admin_notice(var/message, var/rights)
 
 		// Display the notes on the current page
 		var/number_pages = note_keys.len / PLAYER_NOTES_ENTRIES_PER_PAGE
-		// Emulate ceil(why does BYOND not have ceil)
+		// Emulate CEILING(why does BYOND not have ceil, 1)
 		if(number_pages != round(number_pages))
 			number_pages = round(number_pages) + 1
 		var/page_index = page - 1
@@ -286,7 +286,7 @@ proc/admin_notice(var/message, var/rights)
 	dat += "<body>"
 
 	var/p_age = "unknown"
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		if(C.ckey == key)
 			p_age = C.player_age
 			break
@@ -730,28 +730,28 @@ var/datum/announcement/minor/admin_min_announcer = new
 	//Split on pipe or \n
 	decomposed = splittext(message,regex("\\||$","m"))
 	decomposed += "0" //Tack on a final 0 sleep to make 3-per-message evenly
-	
+
 	//Time to find how they screwed up.
 	//Wasn't the right length
 	if((decomposed.len) % 3) //+1 to accomidate the lack of a wait time for the last message
 		to_chat(usr,"<span class='warning'>You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds.</span>")
 		return
-	
+
 	//Too long a conversation
 	if((decomposed.len / 3) > 20)
 		to_chat(usr,"<span class='warning'>This conversation is too long! 20 messages maximum, please.</span>")
 		return
-	
+
 	//Missed some sleeps, or sanitized to nothing.
 	for(var/i = 1; i < decomposed.len; i++)
-		
+
 		//Sanitize sender
 		var/clean_sender = sanitize(decomposed[i])
 		if(!clean_sender)
 			to_chat(usr,"<span class='warning'>One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message.</span>")
 			return
 		decomposed[i] = clean_sender
-		
+
 		//Sanitize message
 		var/clean_message = sanitize(decomposed[++i])
 		if(!clean_message)
@@ -1559,12 +1559,12 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 		src.owner << "<span class='notice'>Message reply to transmitted successfully.</span>"
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
-			for(var/client/C in admins)
+			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
 					C << "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>"
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
-			for(var/client/C in admins)
+			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
 					C << "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>"
 

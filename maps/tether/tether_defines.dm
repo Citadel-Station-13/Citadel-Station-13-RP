@@ -21,7 +21,6 @@
 #define VIRGO3B_TURF_CREATE(x)	x/virgo3b/nitrogen=VIRGO3B_MOL_N2;x/virgo3b/oxygen=VIRGO3B_MOL_O2;x/virgo3b/carbon_dioxide=VIRGO3B_MOL_CO2;x/virgo3b/phoron=VIRGO3B_MOL_PHORON;x/virgo3b/temperature=VIRGO3B_AVG_TEMP;x/virgo3b/outdoors=TRUE;x/virgo3b/update_graphic(list/graphic_add = null, list/graphic_remove = null) return 0
 #define VIRGO3B_TURF_CREATE_UN(x)	x/virgo3b/nitrogen=VIRGO3B_MOL_N2;x/virgo3b/oxygen=VIRGO3B_MOL_O2;x/virgo3b/carbon_dioxide=VIRGO3B_MOL_CO2;x/virgo3b/phoron=VIRGO3B_MOL_PHORON;x/virgo3b/temperature=VIRGO3B_AVG_TEMP
 
-//Normal map defs
 #define Z_LEVEL_SURFACE_LOW					1
 #define Z_LEVEL_SURFACE_MID					2
 #define Z_LEVEL_SURFACE_HIGH				3
@@ -32,6 +31,9 @@
 #define Z_LEVEL_SURFACE_MINE				8
 #define Z_LEVEL_SOLARS						9
 #define Z_LEVEL_CENTCOM						10
+
+/*
+//Normal map defs
 #define Z_LEVEL_MISC						11
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
@@ -40,6 +42,49 @@
 #define Z_LEVEL_BEACH_CAVE					16
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
+*/
+
+#define DEFAULT_MAP_TRAITS \
+	list(\
+	DECLARE_LEVEL("Surface 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	DECLARE_LEVEL("Surface 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/simulated/open)),\
+	DECLARE_LEVEL("Surface 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/simulated/open)),\
+	DECLARE_LEVEL("ELEVATOR MIDPOINT", list(ZTRAIT_BASETURF = /turf/simulated/floor/plating)),\
+	DECLARE_LEVEL("Station 1", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_BASETURF = /turf/space)),\
+	DECLARE_LEVEL("Station 2", list(ZTRAIT_STATION = TRUE, ZTRAIT_UP = 1, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_BASETURF = /turf/space)),\
+	DECLARE_LEVEL("Station 3", list(ZTRAIT_STATION = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_BASETURF = /turf/space)),\
+	DECLARE_LEVEL("Surface Mine", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 2.5, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	DECLARE_LEVEL("Surface Solars", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	DECLARE_LEVEL("CentComm", list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/outdoors/grass/sif/virgo3b)),\
+	)
+	/*
+	DECLARE_LEVEL("Misc", list(ZTRAIT_CENTCOM = TRUE)),\
+	DECLARE_LEVEL("Ships", list(ZTRAIT_CENTCOM = TRUE)),\
+	DECLARE_LEVEL("Underdark", list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5)),\
+	DECLARE_LEVEL("Alien Ship", list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING)),\
+	DECLARE_LEVEL("V2 Beach", list(ZTRAIT_AWAY = TRUE)),\
+	DECLARE_LEVEL("V2 Caves", list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE)),\
+	DECLARE_LEVEL("V4 Aerostat", list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1)),\
+	DECLARE_LEVEL("V4 Surface", list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1))\
+	*/
+
+//Doing an override like this does not make me happy but it makes things work until runtime maploading..
+/datum/controller/subsystem/mapping/InitializeDefaultZLevels()
+	if (z_list)  // subsystem/Recover or badminnery, no need
+		return
+
+	z_list = list()
+	var/list/default_map_traits = DEFAULT_MAP_TRAITS
+
+	if (default_map_traits.len != world.maxz)
+		stack_trace("More or less map attributes pre-defined ([default_map_traits.len]) than existent z-levels ([world.maxz]). Ignoring the larger.")
+		if (default_map_traits.len > world.maxz)
+			default_map_traits.Cut(world.maxz + 1)
+
+	for (var/I in 1 to default_map_traits.len)
+		var/list/features = default_map_traits[I]
+		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])
+		z_list += S
 
 /datum/map/tether
 	name = "Virgo"
@@ -121,13 +166,11 @@
 		/area/tether/surfacebase/emergency_storage/atrium)
 
 	lateload_z_levels = list(
-		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
-		list("Alien Ship - Z1 Ship"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("tether_misc" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space), "tether_ships" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space),"tether_underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5, ZTRAIT_BASETURF = /turf/simulated/mineral/virgo3b/rich)), //Stock Tether lateload maps
+		list("abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)),
+		list("v4_beach" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert),"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert)),
+		list("v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/unsimulated/floor/sky/virgo2_sky),"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/ignore_mapgen/virgo2))
 		)
-
-	lateload_single_pick = null //Nothing right now.
 
 /datum/map/tether/perform_map_generation()
 
@@ -239,7 +282,6 @@
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT
 
 /datum/map_z_level/tether/misc
-	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN
 
@@ -254,7 +296,7 @@
 	if(activated && isemptylist(frozen_mobs))
 		return
 	activated = 1
-	for(var/mob/living/simple_animal/M in frozen_mobs)
+	for(var/mob/living/simple_mob/M in frozen_mobs)
 		M.life_disabled = 0
 		frozen_mobs -= M
 	frozen_mobs.Cut()

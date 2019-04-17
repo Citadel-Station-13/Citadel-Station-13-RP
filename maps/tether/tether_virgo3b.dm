@@ -1,4 +1,5 @@
-var/datum/planet/virgo3b/planet_virgo3b = null
+//refactor this stuff soon!
+GLOBAL_DATUM(planet_virgo3b, /datum/planet/virgo3b)
 
 /datum/time/virgo3b
 	seconds_in_day = 3 HOURS
@@ -19,8 +20,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
 
 /datum/planet/virgo3b/New()
-	..()
-	planet_virgo3b = src
+	. = ..()
+	GLOB.planet_virgo3b = src
 	weather_holder = new /datum/weather_holder/virgo3b(src)
 
 /datum/planet/virgo3b/update_sun()
@@ -77,7 +78,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	if(weather_holder && weather_holder.current_weather)
 		weather_light_modifier = weather_holder.current_weather.light_modifier
 
-	var/new_brightness = (Interpolate(low_brightness, high_brightness, weight = lerp_weight) ) * weather_light_modifier
+	var/new_brightness = (LERP(low_brightness, high_brightness, lerp_weight) ) * weather_light_modifier
 
 	var/new_color = null
 	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)
@@ -93,9 +94,9 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		var/high_g = high_color_list[2]
 		var/high_b = high_color_list[3]
 
-		var/new_r = Interpolate(low_r, high_r, weight = lerp_weight)
-		var/new_g = Interpolate(low_g, high_g, weight = lerp_weight)
-		var/new_b = Interpolate(low_b, high_b, weight = lerp_weight)
+		var/new_r = LERP(low_r, high_r, lerp_weight)
+		var/new_g = LERP(low_g, high_g, lerp_weight)
+		var/new_b = LERP(low_b, high_b, lerp_weight)
 
 		new_color = rgb(new_r, new_g, new_b)
 
@@ -339,6 +340,15 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 			if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
 				var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
 				if(U.open)
+					to_chat(L, "<span class='warning'>A gust of wind yanks the umbrella from your hand!</span>")
+					L.drop_from_inventory(U)
+					U.safe_throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, src)
+			else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
+				var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
+				if(U.open)
+					to_chat(L, "<span class='warning'>A gust of wind yanks the umbrella from your hand!</span>")
+					L.drop_from_inventory(U)
+					U.safe_throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
 					if(show_message)
 						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
 					continue
@@ -406,7 +416,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				if(show_message)
 					to_chat(H, "<span class='notice'>Hail patters onto your umbrella.</span>")
 				continue
-		
+
 			var/target_zone = pick(BP_ALL)
 			var/amount_blocked = H.run_armor_check(target_zone, "melee")
 			var/amount_soaked = H.get_armor_soak(target_zone, "melee")

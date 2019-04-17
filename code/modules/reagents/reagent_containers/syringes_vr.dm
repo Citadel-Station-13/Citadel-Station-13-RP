@@ -8,12 +8,12 @@
 	var/list/targets
 	var/list/datum/disease2/disease/viruses
 
-/obj/item/weapon/reagent_containers/syringe/initialize()
+/obj/item/weapon/reagent_containers/syringe/Initialize()
 	. = ..()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/Destroy()
-	QDEL_NULL_LIST(viruses)
+	QDEL_LIST_NULL(viruses)
 	LAZYCLEARLIST(targets)
 	return ..()
 
@@ -68,7 +68,7 @@
 		var/obj/item/organ/external/found_limb = limb_ref.resolve()
 		if(istype(found_limb))
 			eo.germ_level += INFECTION_LEVEL_ONE+30
-	
+
 //Allow for capped syringe mode
 /obj/item/weapon/reagent_containers/syringe/attack_self(mob/user as mob)
 	switch(mode)
@@ -83,10 +83,10 @@
 			return
 	update_icon()
 
-//Allow for capped syringes 
+//Allow for capped syringes
 /obj/item/weapon/reagent_containers/syringe/update_icon()
 	cut_overlays(src)
-	
+
 	var/matrix/tf = matrix()
 	if(isstorage(loc))
 		tf.Turn(-90) //Vertical for storing compact-ly
@@ -116,7 +116,7 @@
 			if (SYRINGE_INJECT)
 				injoverlay = "inject"
 		new_overlays += injoverlay
-	
+
 	add_overlay(new_overlays)
 	icon_state = "[rounded_vol]"
 	item_state = "syringe_[rounded_vol]"

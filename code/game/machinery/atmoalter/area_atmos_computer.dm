@@ -18,7 +18,7 @@
 	..()
 	desc += "[range] meters."
 
-/obj/machinery/computer/area_atmos/initialize()
+/obj/machinery/computer/area_atmos/Initialize()
 	. = ..()
 	scanscrubbers()
 

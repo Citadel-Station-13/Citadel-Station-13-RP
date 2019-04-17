@@ -211,12 +211,12 @@
 		var/list/callbacks = global_listeners[listener]
 		for (var/proc_call in callbacks)
 
-			// If the callback crashes, record the error and remove it.
+			// If the callback crashes, record the stack_trace and remove it.
 			try
 				call(listener, proc_call)(arglist(args))
 			catch (var/exception/e)
-				error("[e.name] - [e.file] - [e.line]")
-				error(e.desc)
+				stack_trace("[e.name] - [e.file] - [e.line]")
+				stack_trace(e.desc)
 				unregister_global(listener, proc_call)
 
 	// Call the listeners for this specific event source, if they exist.
@@ -227,12 +227,12 @@
 			var/list/callbacks = listeners[listener]
 			for (var/proc_call in callbacks)
 
-				// If the callback crashes, record the error and remove it.
+				// If the callback crashes, record the stack_trace and remove it.
 				try
 					call(listener, proc_call)(arglist(args))
 				catch (var/exception/e)
-					error("[e.name] - [e.file] - [e.line]")
-					error(e.desc)
+					stack_trace("[e.name] - [e.file] - [e.line]")
+					stack_trace(e.desc)
 					unregister(source, listener, proc_call)
 
 	return TRUE

@@ -75,7 +75,7 @@ var/datum/planet/sif/planet_sif = null
 	if(weather_holder && weather_holder.current_weather)
 		weather_light_modifier = weather_holder.current_weather.light_modifier
 
-	var/new_brightness = (Interpolate(low_brightness, high_brightness, weight = lerp_weight) ) * weather_light_modifier
+	var/new_brightness = (LERP(low_brightness, high_brightness, lerp_weight) ) * weather_light_modifier
 
 	var/new_color = null
 	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)
@@ -91,9 +91,9 @@ var/datum/planet/sif/planet_sif = null
 		var/high_g = high_color_list[2]
 		var/high_b = high_color_list[3]
 
-		var/new_r = Interpolate(low_r, high_r, weight = lerp_weight)
-		var/new_g = Interpolate(low_g, high_g, weight = lerp_weight)
-		var/new_b = Interpolate(low_b, high_b, weight = lerp_weight)
+		var/new_r = LERP(low_r, high_r, lerp_weight)
+		var/new_g = LERP(low_g, high_g, lerp_weight)
+		var/new_b = LERP(low_b, high_b, lerp_weight)
 
 		new_color = rgb(new_r, new_g, new_b)
 
@@ -417,7 +417,7 @@ var/datum/planet/sif/planet_sif = null
 				if(show_message)
 					to_chat(H, "<span class='notice'>Hail patters onto your umbrella.</span>")
 				continue
-		
+
 			var/target_zone = pick(BP_ALL)
 			var/amount_blocked = H.run_armor_check(target_zone, "melee")
 			var/amount_soaked = H.get_armor_soak(target_zone, "melee")

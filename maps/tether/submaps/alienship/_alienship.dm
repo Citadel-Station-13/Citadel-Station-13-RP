@@ -16,7 +16,10 @@
 	name = "shuttle connector - alienship"
 	shuttle_name = "Excursion Shuttle"
 	destinations = list(/datum/shuttle_destination/excursion/alienship)
-	initialized = TRUE //Just don't.
+
+/obj/shuttle_connector/alienship/Initialize()
+	flags |= INITIALIZED
+	return INITIALIZE_HINT_NORMAL
 
 /obj/away_mission_init/alienship
 	name = "away mission initializer - alienship"
@@ -34,7 +37,7 @@
 	var/door_on_mode
 	var/teleport_on_mode
 
-/obj/away_mission_init/alienship/initialize()
+/obj/away_mission_init/alienship/Initialize()
 	. = ..()
 
 	if(!mission_mode) //WE ARE NUMBER ONE
@@ -120,7 +123,7 @@
 	var/area/dump_area
 	var/obj/shuttle_connector/shuttle_friend
 
-/area/shuttle/excursion/away_alienship/initialize()
+/area/shuttle/excursion/away_alienship/Initialize()
 	. = ..()
 	dump_area = locate(/area/tether_away/alienship/equip_dump)
 

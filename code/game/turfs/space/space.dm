@@ -1,20 +1,57 @@
 /turf/space
 	icon = 'icons/turf/space.dmi'
-	name = "\proper space"
 	icon_state = "0"
-	dynamic_lighting = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	can_build_into_floor = TRUE
 	var/keep_sprite = FALSE
 //	heat_capacity = 700000 No.
+	var/destination_z
+	var/destination_x
+	var/destination_y
 
-/turf/space/initialize()
-	. = ..()
+/turf/space/basic/New()	//Do not convert to Initialize
+	//This is used to optimize the map loader
+	return
+
+/turf/space/Initialize()
 	if(!keep_sprite)
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-	update_starlight()
+	/*Icon state commented until parallax
+	icon_state = SPACE_ICON_STATE
+	*/
+	//air = space_gas
+
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+
+	var/area/A = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+		add_overlay(/obj/effect/fullbright)
+
+	/*
+	if(requires_activation)
+		SSair.add_to_active(src)
+	*/
+
+	if (light_power && light_range)
+		update_light()
+
+	if (opacity)
+		has_opaque_atom = TRUE
+
+	ComponentInitialize()
+
+	return INITIALIZE_HINT_NORMAL
+
+//ATTACK GHOST IGNORING PARENT RETURN VALUE
+/turf/space/attack_ghost(mob/observer/user)
+	if(destination_z)
+		var/turf/T = locate(destination_x, destination_y, destination_z)
+		user.forceMove(T)
 
 /turf/space/is_space()
 	return 1
@@ -85,25 +122,6 @@
 		// Space shouldn't have weather of the sort planets with atmospheres do.
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
-
-
-// Ported from unstable r355
-
-/turf/space/Entered(atom/movable/A as mob|obj)
-	if(movement_disabled)
-		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
-		return
-	..()
-	if ((!(A) || src != A.loc))	return
-
-	inertial_drift(A)
-
-	if(ticker && ticker.mode)
-
-		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(ticker.mode.name == "mercenary")	return
-		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE + 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE + 1))
-			A.touch_map_edge()
 
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
 	var/cur_x

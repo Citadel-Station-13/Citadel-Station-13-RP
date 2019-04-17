@@ -71,7 +71,7 @@
 		riding_datum.restore_position(buckled_mob)
 		riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
 
-/obj/vehicle/set_dir(newdir)
+/obj/vehicle/setDir(newdir)
 	..(newdir)
 	if(riding_datum)
 		riding_datum.handle_vehicle_offsets()
@@ -100,7 +100,7 @@
 			anchored = init_anc
 			return 0
 
-		set_dir(get_dir(old_loc, loc))
+		setDir(get_dir(old_loc, loc))
 		anchored = init_anc
 
 		if(mechanical && on && powered)
@@ -110,7 +110,7 @@
 		//See load_object() proc in cargo_trains.dm for an example
 		if(load && !istype(load, /datum/vehicle_dummy_load))
 			load.forceMove(loc)
-			load.set_dir(dir)
+			load.setDir(dir)
 
 		return 1
 	else
@@ -193,7 +193,7 @@
 	pulse2.icon_state = "empdisable"
 	pulse2.name = "emp sparks"
 	pulse2.anchored = 1
-	pulse2.set_dir(pick(cardinal))
+	pulse2.setDir(pick(cardinal))
 
 	spawn(10)
 		qdel(pulse2)
@@ -340,7 +340,7 @@
 		crate.close()
 
 	C.forceMove(loc)
-	C.set_dir(dir)
+	C.setDir(dir)
 	C.anchored = 1
 
 	load = C
@@ -390,7 +390,7 @@
 		return 0
 
 	load.forceMove(dest)
-	load.set_dir(get_dir(loc, dest))
+	load.setDir(get_dir(loc, dest))
 	load.anchored = 0		//we can only load non-anchored items, so it makes sense to set this to false
 	load.pixel_x = initial(load.pixel_x)
 	load.pixel_y = initial(load.pixel_y)

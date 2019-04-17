@@ -22,7 +22,7 @@
 	turbolifts += src
 	..()
 
-/obj/turbolift_map_holder/initialize()
+/obj/turbolift_map_holder/Initialize()
 	. = ..()
 	// Create our system controller.
 	var/datum/turbolift/lift = new()
@@ -59,7 +59,7 @@
 
 		if(NORTH)
 
-			int_panel_x = ux + Floor(lift_size_x/2)
+			int_panel_x = ux + FLOOR(lift_size_x/2, 1)
 			int_panel_y = uy + (make_walls ? 1 : 0)
 			ext_panel_x = ux
 			ext_panel_y = ey + 2
@@ -76,7 +76,7 @@
 
 		if(SOUTH)
 
-			int_panel_x = ux + Floor(lift_size_x/2)
+			int_panel_x = ux + FLOOR(lift_size_x/2, 1)
 			int_panel_y = ey - (make_walls ? 1 : 0)
 			ext_panel_x = ex
 			ext_panel_y = uy - 2
@@ -94,7 +94,7 @@
 		if(EAST)
 
 			int_panel_x = ux + (make_walls ? 1 : 0)
-			int_panel_y = uy + Floor(lift_size_y/2)
+			int_panel_y = uy + FLOOR(lift_size_y/2, 1)
 			ext_panel_x = ex+2
 			ext_panel_y = ey
 
@@ -111,7 +111,7 @@
 		if(WEST)
 
 			int_panel_x = ex - (make_walls ? 1 : 0)
-			int_panel_y = uy + Floor(lift_size_y/2)
+			int_panel_y = uy + FLOOR(lift_size_y/2, 1)
 			ext_panel_x = ux-2
 			ext_panel_y = uy
 
@@ -190,7 +190,7 @@
 		var/turf/placing = locate(ext_panel_x, ext_panel_y, cz)
 		var/obj/structure/lift/button/panel_ext = new(placing, lift)
 		panel_ext.floor = cfloor
-		panel_ext.set_dir(udir)
+		panel_ext.setDir(udir)
 		cfloor.ext_panel = panel_ext
 
         // Place lights
@@ -199,11 +199,11 @@
 		var/obj/machinery/light/light1 = new(placing1, light)
 		var/obj/machinery/light/light2 = new(placing2, light)
 		if(udir == NORTH || udir == SOUTH)
-			light1.set_dir(WEST)
-			light2.set_dir(EAST)
+			light1.setDir(WEST)
+			light2.setDir(EAST)
 		else
-			light1.set_dir(SOUTH)
-			light2.set_dir(NORTH)
+			light1.setDir(SOUTH)
+			light2.setDir(NORTH)
 
 		// Update area.
 		if(az > areas_to_use.len)
@@ -221,7 +221,7 @@
 	// Place lift panel.
 	var/turf/T = locate(int_panel_x, int_panel_y, uz)
 	lift.control_panel_interior = new(T, lift)
-	lift.control_panel_interior.set_dir(udir)
+	lift.control_panel_interior.setDir(udir)
 	lift.current_floor = lift.floors[1]
 
 	lift.open_doors()

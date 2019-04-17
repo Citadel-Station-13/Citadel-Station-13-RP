@@ -35,5 +35,5 @@
 		.[decl_type] =  get_decl(decl_type)
 
 /decls/Destroy()
-	crash_with("Prevented attempt to delete a decl instance: [log_info_line(src)]")
+	stack_trace("Prevented attempt to delete a decl instance: [log_info_line(src)]")
 	return QDEL_HINT_LETMELIVE // Prevents Decl destruction

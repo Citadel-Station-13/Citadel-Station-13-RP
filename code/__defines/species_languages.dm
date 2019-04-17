@@ -1,7 +1,6 @@
 // Species flags.
 #define NO_MINOR_CUT      0x1    // Can step on broken glass with no ill-effects. Either thick skin (diona), cut resistant (slimes) or incorporeal (shadows)
 #define IS_PLANT          0x2    // Is a treeperson.
-#define IS_SLIME          0x51   // Is a slimeperson.
 #define NO_SCAN           0x4    // Cannot be scanned in a DNA machine/genome-stolen.
 #define NO_PAIN           0x8    // Cannot suffer halloss/recieves deceptive health indicator.
 #define NO_SLIP           0x10   // Cannot fall over.
@@ -52,6 +51,7 @@
 #define LANGUAGE_EVENT1 "Occursus"
 #define LANGUAGE_AKHANI "Akhani"
 #define LANGUAGE_ALAI "Alai"
+#define LANGUAGE_GIBBERISH "Babel"
 
 // Language flags.
 #define WHITELISTED  1   // Language is available if the speaker is whitelisted.

@@ -1,13 +1,34 @@
 // This causes tether submap maps to get 'checked' and compiled, when undergoing a unit test.
 // This is so Travis can validate PoIs, and ensure future changes don't break PoIs, as PoIs are loaded at runtime and the compiler can't catch errors.
 
+/datum/map_template/tether_lateload
+	abstract_type = /datum/map_template/tether_lateload
+	id = "tether"
+	var/associated_map_datum
+
+/datum/map_template/tether_lateload/on_map_loaded(z)
+	if(!associated_map_datum || !ispath(associated_map_datum))
+		log_game("Extra z-level [src] has no associated map datum")
+		return
+
+	new associated_map_datum(using_map, z)
+
+/datum/map_z_level/tether_lateload
+	z = 0
+	flags = MAP_LEVEL_SEALED
+
+/datum/map_z_level/tether_lateload/New(var/datum/map/map, mapZ)
+	if(mapZ)
+		z = mapZ
+	return ..(map)
+
 //////////////////////////////////////////////////////////////////////////////
 /// Static Load
 /datum/map_template/tether_lateload/tether_misc
 	name = "Tether - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
+	id = "tether_misc"
 	mappath = 'tether_misc.dmm'
-
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
 
 /datum/map_z_level/tether_lateload/misc
@@ -17,6 +38,7 @@
 /datum/map_template/tether_lateload/tether_ships
 	name = "Tether - Ships"
 	desc = "Ship transit map and whatnot."
+	id = "tether_ships"
 	mappath = 'tether_ships.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/ships
@@ -28,7 +50,8 @@
 #include "underdark_pois/_templates.dm"
 /datum/map_template/tether_lateload/tether_underdark
 	name = "Tether - Underdark"
-	desc = "Mining, but harder."
+	desc = "Lavaland for babies."
+	id = "tether_underdark"
 	mappath = 'tether_underdark.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
@@ -37,13 +60,12 @@
 	name = "Underdark"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/virgo3b
-	z = Z_LEVEL_UNDERDARK
 
 /datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_UNDERDARK), 100, /area/mine/unexplored/underdark, /datum/map_template/underdark)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_UNDERDARK, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_UNDERDARK, 64, 64)         // Create the mining ore distribution map.
+	seed_submaps(list(z), 100, /area/mine/unexplored/underdark, /datum/map_template/submap/underdark)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
 
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
@@ -59,74 +81,72 @@
 /datum/map_template/tether_lateload/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
+	id = "v4_beach"
 	mappath = 'beach/beach.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach
 
 /datum/map_z_level/tether_lateload/away_beach
 	name = "Away Mission - Desert Beach"
-	z = Z_LEVEL_BEACH
 
 /datum/map_template/tether_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
+	id = "v4_cave"
 	mappath = 'beach/cave.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_BEACH_CAVE), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
-	seed_submaps(list(Z_LEVEL_BEACH_CAVE), 50, /area/tether_away/cave/unexplored/deep, /datum/map_template/surface/mountains/deep)
+	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/surface/mountains/normal)
+	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/deep, /datum/map_template/submap/surface/mountains/deep)
 
 	// Now for the tunnels.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_BEACH_CAVE, world.maxx, world.maxy)
-	new /datum/random_map/noise/ore/beachmine(null, 1, 1, Z_LEVEL_BEACH_CAVE, 64, 64)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx, world.maxy)
+	new /datum/random_map/noise/ore/beachmine(null, 1, 1, z, 64, 64)
 
 /datum/map_z_level/tether_lateload/away_beach_cave
 	name = "Away Mission - Desert Cave"
-	z = Z_LEVEL_BEACH_CAVE
 
 /obj/effect/step_trigger/zlevel_fall/beach
 	var/static/target_z
-
 
 #include "alienship/_alienship.dm"
 /datum/map_template/tether_lateload/away_alienship
 	name = "Alien Ship - Z1 Ship"
 	desc = "The alien ship away mission."
+	id = "abductor_mothership"
 	mappath = 'alienship/alienship.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_alienship
 
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
-	z = Z_LEVEL_ALIENSHIP
-
 
 #include "aerostat/_aerostat.dm"
 /datum/map_template/tether_lateload/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
+	id = "v2_sky"
 	mappath = 'aerostat/aerostat.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat
 
 /datum/map_z_level/tether_lateload/away_aerostat
 	name = "Away Mission - Aerostat"
-	z = Z_LEVEL_AEROSTAT
 
 /datum/map_template/tether_lateload/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
 	desc = "The surface from the Virgo 2 Aerostat."
+	id = "v2_surface"
 	mappath = 'aerostat/surface.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat_surface
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_AEROSTAT_SURFACE), 50, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/virgo2)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, world.maxx, world.maxy)
-	new /datum/random_map/noise/ore/virgo2(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, 64, 64)
+	seed_submaps(list(z), 50, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/virgo2)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx, world.maxy)
+	new /datum/random_map/noise/ore/virgo2(null, 1, 1, z, 64, 64)
 
 /datum/map_z_level/tether_lateload/away_aerostat_surface
 	name = "Away Mission - Aerostat Surface"
-	z = Z_LEVEL_AEROSTAT_SURFACE
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -136,8 +156,13 @@
 #endif
 
 #include "admin_use/fun.dm"
+
+/datum/map_template/tether_lateload/fun
+	abstract_type = /datum/map_template/tether_lateload/fun
+
 /datum/map_template/tether_lateload/fun/spa
 	name = "Space Spa"
+	id = "tether_spa"
 	desc = "A pleasant spa located in a spaceship."
 	mappath = 'admin_use/spa.dmm'
 
@@ -147,28 +172,6 @@
 	name = "Spa"
 	flags = MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 
-//////////////////////////////////////////////////////////////////////////////////////
-// Code Shenanigans for Tether lateload maps
-/datum/map_template/tether_lateload
-	allow_duplicates = FALSE
-	var/associated_map_datum
-
-/datum/map_template/tether_lateload/on_map_loaded(z)
-	if(!associated_map_datum || !ispath(associated_map_datum))
-		log_game("Extra z-level [src] has no associated map datum")
-		return
-
-	new associated_map_datum(using_map, z)
-
-/datum/map_z_level/tether_lateload
-	z = 0
-	flags = MAP_LEVEL_SEALED
-
-/datum/map_z_level/tether_lateload/New(var/datum/map/map, mapZ)
-	if(mapZ && !z)
-		z = mapZ
-	return ..(map)
-
 /turf/unsimulated/wall/seperator //to block vision between transit zones
 	name = ""
 	icon = 'icons/effects/effects.dmi'
@@ -177,7 +180,7 @@
 /obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
 	affect_ghosts = 1
 
-/obj/effect/step_trigger/zlevel_fall/initialize()
+/obj/effect/step_trigger/zlevel_fall/Initialize()
 	. = ..()
 
 	if(istype(get_turf(src), /turf/simulated/floor))
@@ -240,12 +243,9 @@
 	var/mob/living/simple_animal/my_mob
 	var/depleted = FALSE
 
-/obj/tether_away_spawner/initialize()
-	. = ..()
-
+/obj/tether_away_spawner/Initialize(mapload)
 	if(!LAZYLEN(mobs_to_pick_from))
-		error("Mob spawner at [x],[y],[z] ([get_area(src)]) had no mobs_to_pick_from set on it!")
-		initialized = TRUE
+		stack_trace("Mob spawner at [x],[y],[z] ([get_area(src)]) had no mobs_to_pick_from set on it!")
 		return INITIALIZE_HINT_QDEL
 	processing_objects |= src
 

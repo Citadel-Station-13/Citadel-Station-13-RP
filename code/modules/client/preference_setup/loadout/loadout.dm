@@ -20,13 +20,13 @@ var/list/gear_datums = list()
 		var/use_category = initial(G.sort_category)
 
 		if(!use_name)
-			error("Loadout - Missing display name: [G]")
+			stack_trace("Loadout - Missing display name: [G]")
 			continue
 		if(isnull(initial(G.cost)))
-			error("Loadout - Missing cost: [G]")
+			stack_trace("Loadout - Missing cost: [G]")
 			continue
 		if(!initial(G.path))
-			error("Loadout - Missing path definition: [G]")
+			stack_trace("Loadout - Missing path definition: [G]")
 			continue
 
 		if(!loadout_categories[use_category])
@@ -57,8 +57,8 @@ var/list/gear_datums = list()
 
 /datum/category_item/player_setup_item/loadout/save_character(var/savefile/S)
 	pref.gear_list["[pref.gear_slot]"] = pref.gear
-	to_file(S["gear_list"], pref.gear_list)
-	to_file(S["gear_slot"], pref.gear_slot)
+	WRITE_FILE(S["gear_list"], pref.gear_list)
+	WRITE_FILE(S["gear_slot"], pref.gear_slot)
 
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
 	. = list()

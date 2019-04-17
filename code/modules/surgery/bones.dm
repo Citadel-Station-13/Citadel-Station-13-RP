@@ -170,7 +170,7 @@
 	"<font color='red'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</font>")
 
 ///////////////////////////////////////////////////////////////
-// Bone Clamp Surgery
+// Bone CLAMP Surgery
 ///////////////////////////////////////////////////////////////
 
 /datum/surgery_step/clamp_bone

@@ -94,7 +94,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_animal/shadekin/initialize()
+/mob/living/simple_animal/shadekin/Initialize()
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 
@@ -108,7 +108,6 @@
 		var/new_type = pickweight(sk_types)
 
 		new new_type(loc)
-		initialized = TRUE
 		return INITIALIZE_HINT_QDEL
 
 	if(icon_state == "map_example")
@@ -148,8 +147,8 @@
 	return ..()
 
 /mob/living/simple_animal/shadekin/Destroy()
-	QDEL_NULL_LIST(shadekin_abilities)
-	. = ..()
+	QDEL_LIST_NULL(shadekin_abilities)
+	return ..()
 
 /mob/living/simple_animal/shadekin/init_vore()
 	if(LAZYLEN(vore_organs))

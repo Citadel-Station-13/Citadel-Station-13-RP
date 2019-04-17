@@ -330,7 +330,7 @@
 	else if (istype(usr,/mob/observer/ghost) && !config.ghost_interaction)
 		return
 	else
-		src.set_dir(turn(src.dir, 90))
+		src.setDir(turn(src.dir, 90))
 		return
 
 /obj/structure/device/piano/attack_hand(mob/user)

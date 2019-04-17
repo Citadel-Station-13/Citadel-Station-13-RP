@@ -27,8 +27,8 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
-	..(newloc)
+/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
 		materialtype = DEFAULT_WALL_MATERIAL
@@ -39,13 +39,11 @@
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
 	update_material()
-
-	processing_turfs |= src
+	START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
-	processing_turfs -= src
-	dismantle_wall(null,null,1)
-	..()
+	STOP_PROCESSING(SSturfs, src)
+	return ..()
 
 /turf/simulated/wall/process()
 	// Calling parent will kill processing
@@ -91,14 +89,14 @@
 			Proj.redirect(new_x, new_y, curloc, null)
 
 	take_damage(damage)
-	return
+	return ..()
 
-/turf/simulated/wall/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
-	..()
+/turf/simulated/wall/hitby(atom/movable/AM, speed)	//)hitby(atom/movable/AM, datum/thrownthing/throwingdatum)
+	. = ..()
 	if(ismob(AM))
 		return
 
-	var/tforce = AM:throwforce * (speed/THROWFORCE_SPEED_DIVISOR)
+	var/tforce = AM.throwforce * speed	//(throwingdatum.speed/THROWFORCE_SPEED_DIVISOR)
 	if (tforce < 15)
 		return
 
@@ -115,9 +113,9 @@
 			plant.pixel_y = 0
 		plant.update_neighbors()
 
-/turf/simulated/wall/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
+/turf/simulated/wall/ChangeTurf()
 	clear_plants()
-	..(N, tell_universe, force_lighting_update, preserve_outdoors)
+	return ..()
 
 //Appearance
 /turf/simulated/wall/examine(mob/user)
@@ -144,7 +142,7 @@
 	if(!can_melt())
 		return
 
-	src.ChangeTurf(/turf/simulated/floor/plating)
+	ChangeTurf(/turf/simulated/floor/plating)
 
 	var/turf/simulated/floor/F = src
 	if(!F)
@@ -173,8 +171,6 @@
 	else
 		update_icon()
 
-	return
-
 /turf/simulated/wall/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)
 
@@ -185,8 +181,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
-
+/turf/simulated/wall/proc/dismantle_wall(devastated, explode, no_product = FALSE)
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
 		if(reinf_material)
@@ -198,12 +193,10 @@
 			if (!reinf_material)
 				material.place_dismantled_product(src)
 
-	for(var/obj/O in src.contents) //Eject contents!
+	for(var/obj/O in contents) //Eject contents!
 		if(istype(O,/obj/structure/sign/poster))
 			var/obj/structure/sign/poster/P = O
 			P.roll_and_drop(src)
-		else
-			O.loc = src
 
 	clear_plants()
 	material = get_material_by_name("placeholder")
@@ -218,7 +211,7 @@
 		if(1.0)
 			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
 				new /obj/structure/girder/displaced(src, girder_material.name)
-			src.ChangeTurf(get_base_turf_by_area(src))
+			ScrapeAway()
 		if(2.0)
 			if(prob(75))
 				take_damage(rand(150, 250))

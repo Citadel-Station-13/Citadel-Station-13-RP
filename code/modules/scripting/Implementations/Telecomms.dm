@@ -228,8 +228,7 @@ datum/signal
 		var/obj/item/device/radio/hradio = S.server_radio
 
 		if(!hradio)
-			error("[src] has no radio.")
-			return
+			CRASH("[src] has no radio.")
 
 		if((!message || message == "") && message != 0)
 			message = "*beep*"

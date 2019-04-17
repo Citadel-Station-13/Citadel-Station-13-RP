@@ -10,30 +10,35 @@
 /datum/map_template/engine
 	name = "Engine Content"
 	desc = "It would be boring to have the same engine every day right?"
+	abstract_type = /datum/map_template/engine
+	id = "engine"
+	autoinit = TRUE
 	// annihilate = TRUE - Would wipe out in a rectangular area unfortunately
-	allow_duplicates = FALSE
+	// allow_duplicates = FALSE
 
 /datum/map_template/engine/rust
 	name = "R-UST Engine"
 	desc = "R-UST Fusion Tokamak Engine"
+	id = "engine_rust"
 	mappath = 'maps/submaps/engine_submaps/engine_rust.dmm'
 
 /datum/map_template/engine/singulo
 	name = "Singularity Engine"
 	desc = "Lord Singuloth"
+	id = "engine_singulo"
 	mappath = 'maps/submaps/engine_submaps/engine_singulo.dmm'
 
 /datum/map_template/engine/supermatter
 	name = "Supermatter Engine"
 	desc = "Old Faithful Supermatter"
+	id = "engine_supermatter"
 	mappath = 'maps/submaps/engine_submaps/engine_sme.dmm'
 
 /datum/map_template/engine/tesla
 	name = "Edison's Bane"
-	desc = "The Telsa Engine"
+	desc = "The Tesla Engine"
+	id = "engine_tesla"
 	mappath = 'maps/submaps/engine_submaps/engine_tesla.dmm'
-
-
 
 // Landmark for where to load in the engine on permament map
 /obj/effect/landmark/engine_loader

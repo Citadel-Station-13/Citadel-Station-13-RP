@@ -359,7 +359,7 @@ var/global/datum/controller/occupations/job_master
 			// Moving wheelchair if they have one
 			if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
 				H.buckled.forceMove(H.loc)
-				H.buckled.set_dir(H.dir)
+				H.buckled.setDir(H.dir)
 
 		if(job)
 
@@ -489,7 +489,7 @@ var/global/datum/controller/occupations/job_master
 				var/obj/structure/bed/chair/wheelchair/W = new /obj/structure/bed/chair/wheelchair(H.loc)
 				W.buckle_mob(H)
 				H.update_canmove()
-				W.set_dir(H.dir)
+				W.setDir(H.dir)
 				W.add_fingerprint(H)
 				if(R)
 					W.color = R.color

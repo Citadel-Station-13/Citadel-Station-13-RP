@@ -1,25 +1,7 @@
-#define DEBUG
-// Turf-only flags.
-#define NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
-
-#define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
-
-// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
-#define INVISIBILITY_LIGHTING             20
-#define INVISIBILITY_LEVEL_ONE            35
-#define INVISIBILITY_LEVEL_TWO            45
-#define INVISIBILITY_OBSERVER             60
-#define INVISIBILITY_EYE		          61
-
-#define SEE_INVISIBLE_LIVING              25
-#define SEE_INVISIBLE_NOLIGHTING 15
-#define SEE_INVISIBLE_LEVEL_ONE           35
-#define SEE_INVISIBLE_LEVEL_TWO           45
-#define SEE_INVISIBLE_CULT		          60
-#define SEE_INVISIBLE_OBSERVER            61
-
-#define SEE_INVISIBLE_MINIMUM 5
-#define INVISIBILITY_MAXIMUM 100
+#define TEXT_NORTH	"[NORTH]"
+#define TEXT_SOUTH	"[SOUTH]"
+#define TEXT_EAST	"[EAST]"
+#define TEXT_WEST	"[WEST]"
 
 // Pseudo-Invis, like Ninja, Ling, Etc.
 #define EFFECTIVE_INVIS					  50		// Below this, can't be examined, may as well be invisible to the game
@@ -43,43 +25,6 @@
 #define  STATUS_HUD_OOC 9 // STATUS_HUD without virus DB check for someone being ill.
 #define 	  LIFE_HUD 10 // STATUS_HUD that only reports dead or alive
 #define     TOTAL_HUDS 10 // Total number of HUDs. Like body layers, and other things, it comes up sometimes.
-
-//some colors
-#define COLOR_WHITE   			"#FFFFFF"
-#define COLOR_SILVER  			"#C0C0C0"
-#define COLOR_GRAY    			"#808080"
-#define COLOR_BLACK   			"#000000"
-#define COLOR_RED     			"#FF0000"
-#define COLOR_MAROON 			"#800000"
-#define COLOR_YELLOW  			"#FFFF00"
-#define COLOR_OLIVE  			"#808000"
-#define COLOR_LIME   			"#00FF00"
-#define COLOR_GREEN   			"#008000"
-#define COLOR_CYAN    			"#00FFFF"
-#define COLOR_TEAL    			"#008080"
-#define COLOR_BLUE    			"#0000FF"
-#define COLOR_NAVY    			"#000080"
-#define COLOR_PINK    			"#FF00FF"
-#define COLOR_PURPLE  			"#800080"
-#define COLOR_ORANGE  			"#FF9900"
-#define COLOR_LUMINOL 			"#66FFFF"
-#define COLOR_BEIGE 			"#CEB689"
-#define COLOR_BLUE_GRAY 		"#6A97B0"
-#define COLOR_BROWN 			"#B19664"
-#define COLOR_DARK_BROWN 		"#917448"
-#define COLOR_DARK_ORANGE 		"#B95A00"
-#define COLOR_GREEN_GRAY 		"#8DAF6A"
-#define COLOR_RED_GRAY 			"#AA5F61"
-#define COLOR_PALE_BLUE_GRAY	"#8BBBD5"
-#define COLOR_PALE_GREEN_GRAY 	"#AED18B"
-#define COLOR_PALE_RED_GRAY		"#CC9090"
-#define COLOR_PALE_PURPLE_GRAY	"#BDA2BA"
-#define COLOR_PURPLE_GRAY 		"#A2819E"
-#define COLOR_RED_LIGHT         "#FF3333"
-#define COLOR_DEEP_SKY_BLUE     "#00e1ff"
-
-
-
 
 //	Shuttles.
 
@@ -182,11 +127,6 @@
 #define BOMBCAP_LIGHT_RADIUS max_explosion_range
 #define BOMBCAP_FLASH_RADIUS (max_explosion_range*1.5)
 
-// Special return values from bullet_act(). Positive return values are already used to indicate the blocked level of the projectile.
-#define PROJECTILE_CONTINUE   -1 //if the projectile should continue flying after calling bullet_act()
-#define PROJECTILE_FORCE_MISS -2 //if the projectile should treat the attack as a miss (suppresses attack and admin logs) - only applies to mobs.
-
-
 // Vending stuff
 #define CAT_NORMAL 1
 #define CAT_HIDDEN 2
@@ -258,7 +198,7 @@
 // If the GLOB system is ever ported, you can change this macro in one place and have less work to do than you otherwise would.
 #define GLOBAL_LIST_BOILERPLATE(LIST_NAME, PATH)\
 GLOBAL_LIST_EMPTY(##LIST_NAME);\
-##PATH/initialize(mapload, ...)\
+##PATH/Initialize(mapload, ...)\
 	{\
 	GLOB.##LIST_NAME += src;\
 	return ..();\
@@ -268,7 +208,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 	GLOB.##LIST_NAME -= src;\
 	return ..();\
 	}\
-
 
 //'Normal'ness						 v								 v								 v
 //Various types of colorblindness	R2R		R2G		R2B		G2R		G2G		G2B		B2R		B2G		B2B
@@ -290,6 +229,11 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define IS_WIRECUTTER		"wirecutter"
 #define IS_WRENCH			"wrench"
 
+
+// Diagonal movement
+#define FIRST_DIAG_STEP 1
+#define SECOND_DIAG_STEP 2
+
 // RCD modes. Used on the RCD, and gets passed to an object's rcd_act() when an RCD is used on it, to determine what happens.
 #define RCD_FLOORWALL		"Floor / Wall"		// Builds plating on space/ground/open tiles. Builds a wall when on floors. Finishes walls when used on girders.
 #define RCD_AIRLOCK			"Airlock"			// Builds an airlock on the tile if one isn't already there.
@@ -300,6 +244,28 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define RCD_VALUE_DELAY		"delay"
 #define RCD_VALUE_COST		"cost"
 
-
 #define RCD_SHEETS_PER_MATTER_UNIT	4	// Each physical material sheet is worth four matter units.
 #define RCD_MAX_CAPACITY			30 * RCD_SHEETS_PER_MATTER_UNIT
+
+// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
+#define RAD_LEVEL_LOW 0.01 // Around the level at which radiation starts to become harmful
+#define RAD_LEVEL_MODERATE 10
+#define RAD_LEVEL_HIGH 25
+#define RAD_LEVEL_VERY_HIGH 50
+
+// /atom/mouse_opacity
+#define MOUSE_OPACITY_TRANSPARENT 0
+#define MOUSE_OPACITY_ICON 1
+#define MOUSE_OPACITY_OPAQUE 2
+
+//generate_or_wait_for_human_dummy slot keys
+#define DUMMY_HUMAN_SLOT_PREFERENCES "PREFERENCE HUMAN RENDER"
+
+//different types of atom colorations
+#define ADMIN_COLOR_PRIORITY 		1 //only used by rare effects like greentext coloring mobs and when admins varedit color
+#define TEMPORARY_COLOR_PRIORITY 	2 //e.g. purple effect of the revenant on a mob, black effect when mob electrocuted
+#define WASHABLE_COLOR_PRIORITY 	3 //color splashed onto an atom (e.g. paint on turf)
+#define FIXED_COLOR_PRIORITY 		4 //color inherent to the atom (e.g. blob color)
+#define COLOR_PRIORITY_AMOUNT 4 //how many priority levels there are.
+
+#define NULL_EITHER_OR(thing1, thing2, __var) (isnull(thing1.__var)? thing2.__var : thing1.__var)

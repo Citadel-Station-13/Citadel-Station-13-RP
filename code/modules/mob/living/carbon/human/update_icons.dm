@@ -105,7 +105,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(QDESTROYING(src))
 		return
 
-	crash_with("CANARY: Old human update_icons was called.")
+	stack_trace("CANARY: Old human update_icons was called.")
 
 	update_hud()		//TODO: remove the need for this
 
@@ -113,13 +113,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	update_icon_special()
 
 /mob/living/carbon/human/update_icons_layers()
-	crash_with("CANARY: Old human update_icons_layers was called.")
+	stack_trace("CANARY: Old human update_icons_layers was called.")
 
 /mob/living/carbon/human/update_icons_all()
-	crash_with("CANARY: Old human update_icons_all was called.")
+	stack_trace("CANARY: Old human update_icons_all was called.")
 
 /mob/living/carbon/human/update_icons_huds()
-	crash_with("CANARY: Old human update_icons_huds was called.")
+	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
 	/* VOREStation Edit START - TODO - Consider switching to icon_scale
@@ -746,7 +746,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	apply_layer(SUIT_LAYER)
 
 /mob/living/carbon/human/update_inv_pockets()
-	crash_with("Someone called update_inv_pockets even though it's dumb")
+	stack_trace("Someone called update_inv_pockets even though it's dumb")
 
 /mob/living/carbon/human/update_inv_wear_mask()
 	if(QDESTROYING(src))

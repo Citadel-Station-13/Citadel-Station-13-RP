@@ -291,3 +291,11 @@
 /atom/movable/proc/adjust_rotation(new_rotation)
 	icon_rotation = new_rotation
 	update_transform()
+
+/atom/movable/vv_edit_var(var_name, var_value)
+	if(GLOB.pixel_movement[var_name])
+		return FALSE
+	return TRUE
+
+/atom/movable/proc/moveToNullspace()
+	return forceMove(null)

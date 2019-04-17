@@ -175,7 +175,7 @@
 			else
 				D = new /datum/admins(new_rank, rights, adm_ckey)
 
-			var/client/C = directory[adm_ckey]						//find the client with the specified ckey (if they are logged in)
+			var/client/C = GLOB.directory[adm_ckey]						//find the client with the specified ckey (if they are logged in)
 			D.associate(C)											//link up with the client and add verbs
 
 			message_admins("[key_name_admin(usr)] edited the admin rank of [adm_ckey] to [new_rank]")
@@ -1238,7 +1238,7 @@
 		var/mob/M = locate(href_list["take_question"])
 		if(ismob(M))
 			var/take_msg = "<span class='notice'><b>ADMINHELP</b>: <b>[key_name(usr.client)]</b> is attending to <b>[key_name(M)]'s</b> adminhelp, please don't dogpile them.</span>"
-			for(var/client/X in admins)
+			for(var/client/X in GLOB.admins)
 				if((R_ADMIN|R_MOD|R_EVENT|R_SERVER) & X.holder.rights)
 					to_chat(X, take_msg)
 			to_chat(M, "<span class='notice'><b>Your adminhelp is being attended to by [usr.client]. Thanks for your patience!</b></span>")
@@ -1624,7 +1624,7 @@
 					else
 						var/atom/O = new path(target)
 						if(O)
-							O.set_dir(obj_dir)
+							O.setDir(obj_dir)
 							if(obj_name)
 								O.name = obj_name
 								if(istype(O,/mob))

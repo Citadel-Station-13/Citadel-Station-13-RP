@@ -5,7 +5,7 @@
 /obj/item/weapon/reagent_containers/glass/replenishing
 	var/spawning_id
 
-/obj/item/weapon/reagent_containers/glass/replenishing/initialize()
+/obj/item/weapon/reagent_containers/glass/replenishing/Initialize()
 	..()
 	processing_objects.Add(src)
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")

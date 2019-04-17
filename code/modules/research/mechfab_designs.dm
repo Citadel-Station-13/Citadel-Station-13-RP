@@ -241,7 +241,7 @@
 	build_path = /obj/item/mecha_parts/mecha_tracking
 
 /datum/design/item/mecha/hydraulic_clamp
-	name = "Hydraulic Clamp"
+	name = "Hydraulic CLAMP"
 	id = "hydraulic_clamp"
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp
 

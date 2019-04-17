@@ -22,6 +22,8 @@ var/list/all_maps = list()
 	var/full_name = "Unnamed Map"
 	var/path
 
+	var/list/ztrait_define = list()	//ztraits soon to be changed to map configs
+
 	var/list/zlevels = list()
 	var/zlevel_datum_type			// If populated, all subtypes of this type will be instantiated and used to populate the *_levels lists.
 
@@ -33,7 +35,6 @@ var/list/all_maps = list()
 	var/list/empty_levels = null     // Empty Z-levels that may be used for various things (currently used by bluespace jump)
 
 	var/list/map_levels              // Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
-	var/list/base_turf_by_z = list() // Custom base turf by Z-level. Defaults to world.turf for unlisted Z-levels
 
 	//This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
 	var/list/accessible_z_levels = list()
@@ -123,8 +124,9 @@ var/list/all_maps = list()
 
 	// Update all turfs to ensure everything looks good post-generation. Yes,
 	// it's brute-forcey, but frankly the alternative is a mine turf rewrite.
-	for(var/turf/simulated/mineral/M in turfs) // Ugh.
+	for(var/turf/simulated/mineral/M in world) // Ugh.
 		M.update_icon()
+		CHECK_TICK
 
 /datum/map/proc/get_network_access(var/network)
 	return 0
@@ -137,12 +139,6 @@ var/list/all_maps = list()
 	if(!candidates.len)
 		return current_z_level
 	return text2num(pickweight(candidates))
-
-/datum/map/proc/get_empty_zlevel()
-	if(empty_levels == null)
-		world.maxz++
-		empty_levels = list(world.maxz)
-	return pick(empty_levels)
 
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
 // The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
@@ -191,8 +187,6 @@ var/list/all_maps = list()
 	if(flags & MAP_LEVEL_CONSOLES)
 		if (!map.map_levels) map.map_levels = list()
 		map.map_levels += z
-	if(base_turf)
-		map.base_turf_by_z["[z]"] = base_turf
 	if(transit_chance)
 		map.accessible_z_levels["[z]"] = transit_chance
 	// Holomaps
@@ -208,7 +202,7 @@ var/list/all_maps = list()
 	LIST_NUMERIC_SET(map.holomap_legend_y, z, holomap_legend_y)
 
 /datum/map_z_level/Destroy(var/force)
-	crash_with("Attempt to delete a map_z_level instance [log_info_line(src)]")
+	stack_trace("Attempt to delete a map_z_level instance [log_info_line(src)]")
 	if(!force)
 		return QDEL_HINT_LETMELIVE // No.
 	if (using_map.zlevels["[z]"] == src)

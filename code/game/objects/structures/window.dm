@@ -350,7 +350,7 @@
 		return 0
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 	updateSilicate()
 	update_nearby_tiles(need_rebuild=1)
 	return
@@ -372,7 +372,7 @@
 		return 0
 
 	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	set_dir(turn(dir, 270))
+	setDir(turn(dir, 270))
 	updateSilicate()
 	update_nearby_tiles(need_rebuild=1)
 	return
@@ -381,7 +381,7 @@
 	..()
 
 	if (start_dir)
-		set_dir(start_dir)
+		setDir(start_dir)
 
 	//player-constructed windows
 	if (constructed)
@@ -411,7 +411,7 @@
 	var/ini_dir = dir
 	update_nearby_tiles(need_rebuild=1)
 	..()
-	set_dir(ini_dir)
+	setDir(ini_dir)
 	update_nearby_tiles(need_rebuild=1)
 
 //checks if this window is full-tile one
@@ -458,7 +458,7 @@
 
 	// Damage overlays.
 	var/ratio = health / maxhealth
-	ratio = Ceiling(ratio * 4) * 25
+	ratio = CEILING(ratio * 4, 1) * 25
 
 	if(ratio > 75)
 		return

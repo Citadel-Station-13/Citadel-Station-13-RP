@@ -44,8 +44,7 @@
 
 
 	if(!note)
-		error("Hardware without description: [C]")
-		return
+		CRASH("Hardware without description: [C]")
 
 	var/confirmation = alert("[note] - Is this what you want?", "Hardware selection", "Yes", "No")
 	if(confirmation != "Yes")

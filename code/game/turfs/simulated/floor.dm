@@ -35,8 +35,8 @@
 /turf/simulated/floor/is_plating()
 	return !flooring
 
-/turf/simulated/floor/New(var/newloc, var/floortype)
-	..(newloc)
+/turf/simulated/floor/Initialize(mapload, floortype)
+	. = ..()
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
@@ -157,5 +157,5 @@
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			to_chat(user, span("notice", "You deconstruct \the [src]."))
-			ChangeTurf(get_base_turf_by_area(src), preserve_outdoors = TRUE)
+			ScrapeAway(null, CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE

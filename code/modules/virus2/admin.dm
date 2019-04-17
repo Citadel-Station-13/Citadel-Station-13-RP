@@ -15,14 +15,10 @@
 
 		return 1
 
-/datum/disease2/disease/get_view_variables_header()
-	. = list()
+/datum/disease2/disease/vv_get_header()
+	. = ..()
 	for(var/datum/disease2/effectholder/E in effects)
-		. += "[E.stage]: [E.effect.name]"
-	return {"
-		<b>[name()]</b><br><font size=1>
-		[jointext(., "<br>")]</font>
-	"}
+		. += "<br>[E.stage]: [E.effect.name]"
 
 /datum/disease2/disease/get_view_variables_options()
 	return ..() + {"
