@@ -2,32 +2,31 @@
 // parent class for pipes //
 ////////////////////////////
 obj/machinery/atmospherics/pipe/zpipe
-		icon = 'icons/obj/structures.dmi'
-		icon_state = "up"
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "up"
 
-		name = "upwards pipe"
-		desc = "A pipe segment to connect upwards."
+	name = "upwards pipe"
+	desc = "A pipe segment to connect upwards."
 
-		volume = 70
+	volume = 70
 
-		dir = SOUTH
-		initialize_directions = SOUTH
+	dir = SOUTH
+	initialize_directions = SOUTH
 
-		construction_type = /obj/item/pipe/directional
-		pipe_state = "cap"
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "cap"
 
-		// node1 is the connection on the same Z
-		// node2 is the connection on the other Z
+	// node1 is the connection on the same Z
+	// node2 is the connection on the other Z
 
-		var/minimum_temperature_difference = 300
-		var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
+	var/minimum_temperature_difference = 300
+	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
 
-		var/maximum_pressure = 70*ONE_ATMOSPHERE
-		var/fatigue_pressure = 55*ONE_ATMOSPHERE
-		alert_pressure = 55*ONE_ATMOSPHERE
+	var/maximum_pressure = 70*ONE_ATMOSPHERE
+	var/fatigue_pressure = 55*ONE_ATMOSPHERE
+	alert_pressure = 55*ONE_ATMOSPHERE
 
-
-		level = 1
+	level = 1
 
 /obj/machinery/atmospherics/pipe/zpipe/New()
 	..()
@@ -152,8 +151,12 @@ obj/machinery/atmospherics/pipe/zpipe/up/atmos_init()
 
 /*	Citadel change, why are upwards pipes capable of being hidden by tiles????
 	var/turf/T = src.loc			// hide if turf is not intact
+<<<<<<< HEAD
 	hide(!T.is_plating())
 */
+=======
+	if(level == 1 && !T.is_plating()) hide(1)	// but respect level
+>>>>>>> 484cc3d... Merge pull request #5079 from VOREStation/upstream-merge-6093
 
 ///////////////////////
 // and the down pipe //
@@ -190,7 +193,7 @@ obj/machinery/atmospherics/pipe/zpipe/down/atmos_init()
 
 
 	var/turf/T = src.loc			// hide if turf is not intact
-	hide(!T.is_plating())
+	if(level == 1 && !T.is_plating()) hide(1)	// but respect level
 
 ///////////////////////
 // supply/scrubbers  //
