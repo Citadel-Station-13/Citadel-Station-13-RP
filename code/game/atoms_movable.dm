@@ -293,7 +293,7 @@
 	update_transform()
 
 /atom/movable/vv_edit_var(var_name, var_value)
-	if(GLOB.pixel_movement[var_name])
+	if(GLOB.VVpixelmovement[var_name])
 		return FALSE
 	return TRUE
 
