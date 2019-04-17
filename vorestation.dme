@@ -1191,6 +1191,11 @@
 #include "code\game\objects\structures\door_assembly.dm"
 #include "code\game\objects\structures\electricchair.dm"
 #include "code\game\objects\structures\extinguisher.dm"
+<<<<<<< HEAD
+=======
+#include "code\game\objects\structures\fence.dm"
+#include "code\game\objects\structures\fireaxe.dm"
+>>>>>>> 01a7f10... Merge pull request #5080 from VOREStation/upstream-merge-6092
 #include "code\game\objects\structures\fitness.dm"
 #include "code\game\objects\structures\flora.dm"
 #include "code\game\objects\structures\flora_vr.dm"
@@ -1234,7 +1239,6 @@
 #include "code\game\objects\structures\crates_lockers\closets\coffin.dm"
 #include "code\game\objects\structures\crates_lockers\closets\crittercrate.dm"
 #include "code\game\objects\structures\crates_lockers\closets\egg_vr.dm"
-#include "code\game\objects\structures\crates_lockers\closets\fireaxe.dm"
 #include "code\game\objects\structures\crates_lockers\closets\fitness.dm"
 #include "code\game\objects\structures\crates_lockers\closets\gimmick.dm"
 #include "code\game\objects\structures\crates_lockers\closets\job_closets.dm"

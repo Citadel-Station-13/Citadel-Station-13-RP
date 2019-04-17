@@ -33384,9 +33384,47 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+<<<<<<< HEAD
 "ugx" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8
+=======
+"ubX" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/light_construct{
+	icon_state = "tube-construct-stage1";
+	dir = 1
+	},
+/obj/structure/table,
+/turf/simulated/floor/wood,
+/area/crew_quarters/sleep/maintDorm2)
+"udl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/wood,
+/area/crew_quarters/sleep/maintDorm3)
+"uep" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
+"ugE" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/fireaxecabinet{
+	pixel_y = 32
+	},
+/obj/structure/table/standard,
+/obj/item/device/pipe_painter{
+	pixel_x = 3;
+	pixel_y = 3
+>>>>>>> 01a7f10... Merge pull request #5080 from VOREStation/upstream-merge-6092
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/tiled,
