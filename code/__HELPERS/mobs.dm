@@ -213,7 +213,7 @@ Proc for attack log creation, because really why not
 			. = 0
 			break
 
-		if(target_zone && user.zone_sel.zone_selected != target_zone)
+		if(target_zone && user.zone_sel.selected != target_zone)
 			. = 0
 			break
 
