@@ -1,3 +1,10 @@
+/turf
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+	update_icon()
+
+///turf/proc/multiz_turf_del(turf/T, dir)
+
 /turf/proc/CanZPass(atom/A, direction)
 	if(z == A.z) //moving FROM this turf
 		return direction == UP //can't go below
