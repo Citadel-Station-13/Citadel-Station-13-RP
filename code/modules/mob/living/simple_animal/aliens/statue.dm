@@ -254,7 +254,7 @@
 			if(M != creator)
 				if(!(M.sdisabilities & BLIND) || !(M.blinded)) //if not blinded
 					if(M.has_vision() && !M.isSynthetic()) //is able to see the statue
-						if(T && destination && T.lighting_overlay)	// Check for darkness
+						if(T && destination && T.lighting_object)	// Check for darkness
 							if(T.get_lumcount() * 10 < 0.9 && destination.get_lumcount() * 10 < 0.9) // No one can see us in the darkness, right? WRONG! Damn cats.
 								if(M.see_in_dark > 5)
 									return M

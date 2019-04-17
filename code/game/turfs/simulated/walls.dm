@@ -96,7 +96,7 @@
 	if(ismob(AM))
 		return
 
-	var/tforce = AM.throwforce * speed	//(throwingdatum.speed/THROWFORCE_SPEED_DIVISOR)
+	var/tforce = AM.throw_force * speed	//(throwingdatum.speed/THROWFORCE_SPEED_DIVISOR)
 	if (tforce < 15)
 		return
 
