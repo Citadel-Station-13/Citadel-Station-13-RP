@@ -191,7 +191,7 @@
 
 	new /obj/item/weapon/flame/lighter/zippo(src)
 
-	calibrate_size()
+	//calibrate_size()
 
 /proc/fill_cigarre_package(var/obj/item/weapon/storage/fancy/cigarettes/C, var/list/reagents)
 	for(var/reagent in reagents)

@@ -158,6 +158,7 @@
 		/obj/item/clothing/accessory/badge/holo/warden,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/belt/security,
+		/obj/item/weapon/storage/box/trackimp,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/weapon/gun/energy/gun,
