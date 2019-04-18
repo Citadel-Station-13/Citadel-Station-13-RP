@@ -377,14 +377,16 @@ client/verb/character_setup()
 	*/
 
 /client/proc/generate_clickcatcher()
+	return			//fuck it!
 	if(!void)
 		void = new
 		screen += void
 
 /client/proc/apply_clickcatcher()
+	return			//fuck it we can get to this later!
 	generate_clickcatcher()
 	var/list/actualview = getviewsize(view)
-	void.UpdateGreed(actualview[1],actualview[2])
+	void.MakeGreed();actualview=actualview//UpdateGreed(actualview[1],actualview[2])
 
 GLOBAL_VAR_INIT(announce_prs, TRUE)
 /client/proc/AnnouncePR(announcement)
