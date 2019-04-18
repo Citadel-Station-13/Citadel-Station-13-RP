@@ -38,7 +38,7 @@
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
 /mob/proc/ClickOn(var/atom/A, var/params)
-	if(world.time <= next_click) // Hard check, before anything else, to avoid crashing
+	if(world.time < next_click) // Hard check, before anything else, to avoid crashing
 		return
 
 	next_click = world.time + 1
@@ -101,7 +101,7 @@
 	//Atoms on your person
 	// A is your location but is not a turf; or is on you (backpack); or is on something on you (box in backpack); sdepth is needed here because contents depth does not equate inventory storage depth.
 	var/sdepth = A.storage_depth(src)
-	if((!isturf(A) && A == loc) || (sdepth != -1 && sdepth <= 1))
+	if((!isturf(A) && A == loc) || (sdepth <= MAX_STORAGE_REACH))
 		if(W)
 			var/resolved = W.resolve_attackby(A, src)
 			if(!resolved && A && W)
@@ -120,7 +120,7 @@
 	//Atoms on turfs (not on your person)
 	// A is a turf or is on a turf, or in something on a turf (pen in a box); but not something in something on a turf (pen in a box in a backpack)
 	sdepth = A.storage_depth_turf()
-	if(isturf(A) || isturf(A.loc) || (sdepth != -1 && sdepth <= 1))
+	if(isturf(A) || isturf(A.loc) || (sdepth <= MAX_STORAGE_REACH))
 		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
@@ -168,10 +168,6 @@
 	return
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
-
-	if(!ticker)
-		src << "You cannot attack people before the game has started."
-		return 0
 
 	if(stat)
 		return 0

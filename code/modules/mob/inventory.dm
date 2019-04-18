@@ -84,6 +84,40 @@ var/list/slot_equipment_priority = list( \
 
 	return 0
 
+/obj/item/proc/equip_to_best_slot(mob/M)
+	if(src != M.get_active_hand())
+		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
+		return FALSE
+
+	if(M.equip_to_appropriate_slot(src))
+		M.update_inv_l_hand()
+		M.update_inv_r_hand()
+		return TRUE
+	//else
+		//if(equip_delay_self)
+		//	return
+
+	//I can't believe I'm using colon operators but this is needed until component storage is done or atleast the slot refactor..
+	var/list/obj/item/possible = list(M.s_active)
+	if(M.vars.Find("belt"))
+		possible += M:belt
+	if(M.vars.Find("back"))
+		possible += M:back
+	possible += M.get_inactive_hand()
+
+	for(var/i in possible)
+		if(!i)
+			continue
+		var/obj/item/weapon/storage/S = i
+		if(!istype(S))
+			continue
+		if(S.can_be_inserted(src, TRUE))
+			S.handle_item_insertion(src)
+			return TRUE
+
+	to_chat(M, "<span class='warning'>You are unable to equip that!</span>")
+	return FALSE
+
 /mob/proc/equip_to_storage(obj/item/newitem)
 	return 0
 
