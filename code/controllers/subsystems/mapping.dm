@@ -207,6 +207,7 @@ SUBSYSTEM_DEF(mapping)
 	setup_map_transitions()
 	generate_station_area_list()
 	initialize_reserved_level()
+
 	return ..()
 
 /*
