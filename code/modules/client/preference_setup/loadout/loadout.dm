@@ -66,12 +66,13 @@ var/list/gear_datums = list()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
 
-		if(G.whitelisted && !is_alien_whitelisted(preference_mob, all_species[G.whitelisted]))
-			continue
+		if(preference_mob)
+			if(G.whitelisted && !is_alien_whitelisted(preference_mob, all_species[G.whitelisted]))
+				continue
+			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))		//CITADEL CHANGE
+				continue		//CITADEL CHANGE
 		if(max_cost && G.cost > max_cost)
 			continue
-		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))		//CITADEL CHANGE
-			continue		//CITADEL CHANGE
 		. += gear_name
 
 /datum/category_item/player_setup_item/loadout/sanitize_character()
@@ -115,7 +116,7 @@ var/list/gear_datums = list()
 		fcolor = "#E67300"
 
 	. += "<table align = 'center' width = 100%>"
-	. += "<tr><td colspan=3><center><a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[MAX_GEAR_COST]</font> loadout points spent.</b> \[<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
+	. += "<tr><td colspan=3><center><a href='?src=[REF(src)];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=[REF(src)];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[MAX_GEAR_COST]</font> loadout points spent.</b> \[<a href='?src=[REF(src)];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
 
 	. += "<tr><td colspan=3><center><b>"
 	var/firstcat = 1
@@ -137,9 +138,9 @@ var/list/gear_datums = list()
 			. += " <span class='linkOn'>[category] - [category_cost]</span> "
 		else
 			if(category_cost)
-				. += " <a href='?src=\ref[src];select_category=[category]'><font color = '#E67300'>[category] - [category_cost]</font></a> "
+				. += " <a href='?src=[REF(src)];select_category=[category]'><font color = '#E67300'>[category] - [category_cost]</font></a> "
 			else
-				. += " <a href='?src=\ref[src];select_category=[category]'>[category] - 0</a> "
+				. += " <a href='?src=[REF(src)];select_category=[category]'>[category] - 0</a> "
 	. += "</b></center></td></tr>"
 
 	var/datum/loadout_category/LC = loadout_categories[current_tab]
@@ -151,13 +152,13 @@ var/list/gear_datums = list()
 		if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))	//CITADEL CHANGE
 			continue	//CITADEL CHANGE
 		var/ticked = (G.display_name in pref.gear)
-		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
+		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=[REF(src)];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
 		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
 		. += "<td><font size=2><i>[G.description]</i></font></td></tr>"
 		if(ticked)
 			. += "<tr><td colspan=3>"
 			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
-				. += " <a href='?src=\ref[src];gear=[G.display_name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
+				. += " <a href='?src=[REF(src)];gear=[G.display_name];tweak=[REF(tweak)]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 			. += "</td></tr>"
 	. += "</table>"
 	. = jointext(., null)

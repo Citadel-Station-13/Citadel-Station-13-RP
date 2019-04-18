@@ -70,9 +70,6 @@ datum/preferences
 	var/antag_faction = "None"			//Antag associated faction.
 	var/antag_vis = "Hidden"			//How visible antag association is to others.
 
-		//Mob preview
-	var/icon/preview_icon = null
-
 		//Jobs, uses bitflags
 	var/job_civilian_high = 0
 	var/job_civilian_med = 0
@@ -214,10 +211,10 @@ datum/preferences
 
 	if(path)
 		dat += "Slot - "
-		dat += "<a href='?src=\ref[src];load=1'>Load slot</a> - "
-		dat += "<a href='?src=\ref[src];save=1'>Save slot</a> - "
-		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "
-		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a>"
+		dat += "<a href='?src=[REF(src)];load=1'>Load slot</a> - "
+		dat += "<a href='?src=[REF(src)];save=1'>Save slot</a> - "
+		dat += "<a href='?src=[REF(src)];reload=1'>Reload slot</a> - "
+		dat += "<a href='?src=[REF(src)];resetslot=1'>Reset slot</a>"
 
 	else
 		dat += "Please create an account to save your preferences."
@@ -229,9 +226,11 @@ datum/preferences
 
 	dat += "</html></body>"
 	//user << browse(dat, "window=preferences;size=635x736")
-	var/datum/browser/popup = new(user, "Character Setup","Character Setup", 800, 800, src)
+	winshow(user, "preferences_window", TRUE)
+	var/datum/browser/popup = new(user, "preferences_browser", "Character Setup", 800, 800, src)
 	popup.set_content(dat)
-	popup.open()
+	popup.open(FALSE)
+	onclose(user, "preferences_window", src)
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	if(!user)	return
@@ -320,7 +319,7 @@ datum/preferences
 			if(!name)	name = "Character[i]"
 			if(i==default_slot)
 				name = "<b>[name]</b>"
-			dat += "<a href='?src=\ref[src];changeslot=[i]'>[name]</a><br>"
+			dat += "<a href='?src=[REF(src)];changeslot=[i]'>[name]</a><br>"
 
 	dat += "<hr>"
 	dat += "</center></tt>"
