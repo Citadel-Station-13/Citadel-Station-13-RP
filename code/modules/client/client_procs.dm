@@ -1,80 +1,16 @@
 	////////////
 	//SECURITY//
 	////////////
-#define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
 #define MIN_CLIENT_VERSION	0		//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
 									//I would just like the code ready should it ever need to be used.
+#define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
 
-//#define TOPIC_DEBUGGING 1
+GLOBAL_LIST_INIT(blacklisted_builds, list(
+	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
+	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
 
-	/*
-	When somebody clicks a link in game, this Topic is called first.
-	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
-	(if specified in the link). ie locate(hsrc).Topic()
-
-	Such links can be spoofed.
-
-	Because of this certain things MUST be considered whenever adding a Topic() for something:
-		- Can it be fed harmful values which could cause runtimes?
-		- Is the Topic call an admin-only thing?
-		- If so, does it have checks to see if the person who called it (usr.client) is an admin?
-		- Are the processes being called by Topic() particularly laggy?
-		- If so, is there any protection against somebody spam-clicking a link?
-	If you have any  questions about this stuff feel free to ask. ~Carn
-	*/
-/client/Topic(href, href_list, hsrc)
-	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
-		return
-
-	#if defined(TOPIC_DEBUGGING)
-	world << "[src]'s Topic: [href] destined for [hsrc]."
-
-	if(href_list["nano_err"]) //nano throwing errors
-		world << "## NanoUI, Subject [src]: " + html_decode(href_list["nano_err"]) //NANO DEBUG HOOK
-
-	#endif
-
-	//search the href for script injection
-	if( findtext(href,"<script",1,0) )
-		world.log << "Attempted use of scripts within a topic call, by [src]"
-		message_admins("Attempted use of scripts within a topic call, by [src]")
-		//del(usr)
-		return
-
-	//Admin PM
-	if(href_list["priv_msg"])
-		var/client/C = locate(href_list["priv_msg"])
-		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
-			var/mob/M = C
-			C = M.client
-		cmd_admin_pm(C,null)
-		return
-
-	if(href_list["irc_msg"])
-		if(!holder && received_irc_pm < world.time - 6000) //Worse they can do is spam IRC for 10 minutes
-			usr << "<span class='warning'>You are no longer able to use this, it's been more then 10 minutes since an admin on IRC has responded to you</span>"
-			return
-		if(mute_irc)
-			usr << "<span class='warning'You cannot use this as your client has been muted from sending messages to the admins on IRC</span>"
-			return
-		send2adminirc(href_list["irc_msg"])
-		return
-
-
-
-	//Logs all hrefs
-	if(config && config.log_hrefs && href_logfile)
-		log_href("[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]")
-
-	switch(href_list["_src_"])
-		if("holder")	hsrc = holder
-		if("usr")		hsrc = mob
-		if("prefs")		return prefs.process_link(usr,href_list)
-		if("vars")		return view_var_Topic(href,href_list,hsrc)
-		if("chat")
-			return chatOutput.Topic(href, href_list)
-
-	..()	//redirect to hsrc.Topic()
+	))
 
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
@@ -164,10 +100,7 @@
 	send_resources()
 	GLOB.nanomanager.send_resources(src)
 
-	if(!void)
-		void = new()
-		void.MakeGreed()
-	screen += void
+	apply_clickcatcher()
 
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		src << "<span class='info'>You have unread updates in the changelog.</span>"
@@ -193,10 +126,10 @@
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	char_render_holders = null
 	return ..()
 
 /client/Destroy()
-	..()
 	return QDEL_HINT_HARDDEL_NOW
 
 // here because it's similar to below
@@ -316,17 +249,6 @@
 	if(inactivity > duration)	return inactivity
 	return 0
 
-// Byond seemingly calls stat, each tick.
-// Calling things each tick can get expensive real quick.
-// So we slow this down a little.
-// See: http://www.byond.com/docs/ref/info.html#/client/proc/Stat
-/client/Stat()
-	. = ..()
-	if (holder)
-		sleep(1)
-	else
-		stoplag(5)
-
 /client/proc/last_activity_seconds()
 	return inactivity / 10
 
@@ -411,3 +333,80 @@ client/verb/character_setup()
 			. = R.group[1]
 		else
 			CRASH("Age check regex failed for [src.ckey]")
+
+//Hook, override it to run code when dir changes
+//Like for /atoms, but clients are their own snowflake FUCK
+/client/proc/setDir(newdir)
+	dir = newdir
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if ("holder")
+			return FALSE
+		if ("ckey")
+			return FALSE
+		if ("key")
+			return FALSE
+		if("view")
+			change_view(var_value)
+			return TRUE
+	. = ..()
+
+/client/proc/rescale_view(change, min, max)
+	var/viewscale = getviewsize(view)
+	var/x = viewscale[1]
+	var/y = viewscale[2]
+	x = CLAMP(x+change, min, max)
+	y = CLAMP(y+change, min,max)
+	change_view("[x]x[y]")
+
+//WIP: Make sure all view operations use this or the above
+/client/proc/change_view(new_size)
+	if (isnull(new_size))
+		CRASH("change_view called without argument.")
+
+	view = new_size
+	apply_clickcatcher()
+	mob.reload_fullscreen()
+	/*
+	if (isliving(mob))
+		var/mob/living/M = mob
+		M.update_damage_hud()
+	if (prefs.auto_fit_viewport)
+		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+	*/
+
+/client/proc/generate_clickcatcher()
+	if(!void)
+		void = new
+		screen += void
+
+/client/proc/apply_clickcatcher()
+	generate_clickcatcher()
+	var/list/actualview = getviewsize(view)
+	void.UpdateGreed(actualview[1],actualview[2])
+
+GLOBAL_VAR_INIT(announce_prs, TRUE)
+/client/proc/AnnouncePR(announcement)
+	if(GLOB.announce_prs)
+		to_chat(src, announcement)
+
+/client/proc/show_character_previews(mutable_appearance/MA)
+	var/pos = 0
+	for(var/D in GLOB.cardinals)
+		pos++
+		var/obj/screen/O = LAZYACCESS(char_render_holders, "[D]")
+		if(!O)
+			O = new
+			LAZYSET(char_render_holders, "[D]", O)
+		screen |= O									//UNFORTUNATELY, HUDs aren't SMART enough to wipe their stuff off the screen properly so everything is snowflaked so that screen just gets wiped. So we need to keep readding ourselves.
+		O.appearance = MA
+		O.dir = D
+		O.screen_loc = "preferences_render:0,[pos]"
+
+/client/proc/clear_character_previews()
+	for(var/index in char_render_holders)
+		var/obj/screen/S = char_render_holders[index]
+		screen -= S
+		qdel(S)
+	char_render_holders = null
