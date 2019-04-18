@@ -111,12 +111,12 @@
 		"filter_fuel" = ("volatile_fuel" in scrubbing_gas),
 		"sigtype" = "status"
 	)
-	if(!initial_loc.air_scrub_names[id_tag])
-		var/new_name = "[initial_loc.name] Air Scrubber #[initial_loc.air_scrub_names.len+1]"
-		initial_loc.air_scrub_names[id_tag] = new_name
-		src.name = new_name
-	initial_loc.air_scrub_info[id_tag] = signal.data
-	radio_connection.post_signal(src, signal, radio_filter_out)
+
+	var/area/A = get_area(src)
+	if(!A.air_scrub_names[id_tag])
+		name = "\improper [A.name] air scrubber #[A.air_scrub_names.len + 1]"
+		A.air_scrub_names[id_tag] = name
+	A.air_scrub_info[id_tag] = signal.data
 
 	return 1
 

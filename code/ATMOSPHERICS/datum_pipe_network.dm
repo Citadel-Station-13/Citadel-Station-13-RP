@@ -75,7 +75,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 
 		for(var/datum/pipeline/line_member in line_members)
 			gases += line_member.air
-		
+
 		for(var/datum/gas_mixture/air in gases)
 			volume += air.volume
 

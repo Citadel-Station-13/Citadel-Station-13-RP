@@ -260,11 +260,11 @@
 		"flow_rate" = last_flow_rate,
 	)
 
-	if(!initial_loc.air_vent_names[id_tag])
-		var/new_name = "[initial_loc.name] Vent Pump #[initial_loc.air_vent_names.len+1]"
-		initial_loc.air_vent_names[id_tag] = new_name
-		src.name = new_name
-	initial_loc.air_vent_info[id_tag] = signal.data
+	var/area/A = get_area(src)
+	if(!A.air_vent_names[id_tag])
+		name = "\improper [A.name] vent pump #[A.air_vent_names.len + 1]"
+		A.air_vent_names[id_tag] = name
+	A.air_vent_info[id_tag] = signal.data
 
 	radio_connection.post_signal(src, signal, radio_filter_out)
 
