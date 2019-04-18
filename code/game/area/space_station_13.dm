@@ -2120,6 +2120,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Server Room"
 	icon_state = "server"
 
+/area/rnd/outpost/testing
+	name = "RND Outpost Testing"
+	icon_state = "toxlab"
+
 //Storage
 
 /area/storage/tools
