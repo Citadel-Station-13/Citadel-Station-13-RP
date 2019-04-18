@@ -62,19 +62,18 @@
 
 
 /obj/machinery/vr_sleeper/MouseDrop_T(var/mob/target, var/mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !isliving(target))
 		return
 	go_in(target, user)
-
-
 
 /obj/machinery/sleeper/relaymove(var/mob/user)
 	..()
 	if(usr.incapacitated())
 		return
 	go_out()
-
-
 
 /obj/machinery/vr_sleeper/emp_act(var/severity)
 	if(stat & (BROKEN|NOPOWER))

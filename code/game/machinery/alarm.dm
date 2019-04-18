@@ -95,8 +95,8 @@
 /obj/machinery/alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/alarm/server/New()
-	..()
+/obj/machinery/alarm/server/Initialize()
+	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
@@ -115,10 +115,6 @@
 		elect_master(exclude_self = TRUE)
 	return ..()
 
-/obj/machinery/alarm/New()
-	..()
-	first_run()
-
 /obj/machinery/alarm/proc/first_run()
 	alarm_area = get_area(src)
 	area_uid = alarm_area.uid
@@ -136,9 +132,9 @@
 	TLV["pressure"] =		list(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE * 0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20) /* kpa */
 	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
 
-
 /obj/machinery/alarm/Initialize()
 	. = ..()
+	first_run()
 	set_frequency(frequency)
 	if(!master_is_operating())
 		elect_master()
@@ -326,46 +322,6 @@
 			new_color = "#DA0205"
 
 	set_light(l_range = 2, l_power = 0.25, l_color = new_color)
-
-/obj/machinery/alarm/receive_signal(datum/signal/signal)
-	if(stat & (NOPOWER|BROKEN))
-		return
-	if(alarm_area.master_air_alarm != src)
-		if(master_is_operating())
-			return
-		elect_master()
-		if(alarm_area.master_air_alarm != src)
-			return
-	if(!signal || signal.encryption)
-		return
-	var/id_tag = signal.data["tag"]
-	if(!id_tag)
-		return
-	if(signal.data["area"] != area_uid)
-		return
-	if(signal.data["sigtype"] != "status")
-		return
-
-	var/dev_type = signal.data["device"]
-	if(!(id_tag in alarm_area.air_scrub_names) && !(id_tag in alarm_area.air_vent_names))
-		register_env_machine(id_tag, dev_type)
-	if(dev_type == "AScr")
-		alarm_area.air_scrub_info[id_tag] = signal.data
-	else if(dev_type == "AVP")
-		alarm_area.air_vent_info[id_tag] = signal.data
-
-/obj/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
-	var/new_name
-	if(device_type == "AVP")
-		new_name = "[alarm_area.name] Vent Pump #[alarm_area.air_vent_names.len+1]"
-		alarm_area.air_vent_names[m_id] = new_name
-	else if(device_type == "AScr")
-		new_name = "[alarm_area.name] Air Scrubber #[alarm_area.air_scrub_names.len+1]"
-		alarm_area.air_scrub_names[m_id] = new_name
-	else
-		return
-	spawn(10)
-		send_signal(m_id, list("init" = new_name))
 
 /obj/machinery/alarm/proc/refresh_all()
 	for(var/id_tag in alarm_area.air_vent_names)
@@ -863,7 +819,8 @@ FIRE ALARM
 	return attack_hand(user)
 
 /obj/machinery/firealarm/bullet_act()
-	return alarm()
+	. = ..()
+	alarm()
 
 /obj/machinery/firealarm/emp_act(severity)
 	if(prob(50 / severity))
@@ -896,7 +853,7 @@ FIRE ALARM
 			alarm()
 			time = 0
 			timing = 0
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 		updateDialog()
 	last_process = world.timeofday
 
@@ -931,7 +888,7 @@ FIRE ALARM
 			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
 		var/second = round(time) % 60
 		var/minute = (round(time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>Fire alarm</B> [d1]\n<HR>The current alert level is: <b>[get_security_level()]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>Fire alarm</B> [d1]\n<HR>The current alert level is: <b>[get_security_level()]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=[REF(src)];tp=-30'>-</A> <A href='?src=[REF(src)];tp=-1'>-</A> <A href='?src=[REF(src)];tp=1'>+</A> <A href='?src=[REF(src)];tp=30'>+</A>\n</TT></BODY></HTML>"
 		user << browse(dat, "window=firealarm")
 		onclose(user, "firealarm")
 	else
@@ -946,7 +903,7 @@ FIRE ALARM
 			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
 		var/second = round(time) % 60
 		var/minute = (round(time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Fire alarm")]</B> [d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
+		var/dat = "<HTML><HEAD></HEAD><BODY><TT><B>[stars("Fire alarm")]</B> [d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? text("[]:", minute) : null)][second] <A href='?src=[REF(src)];tp=-30'>-</A> <A href='?src=[REF(src)];tp=-1'>-</A> <A href='?src=[REF(src)];tp=1'>+</A> <A href='?src=[REF(src)];tp=30'>+</A>\n</TT></BODY></HTML>"
 		user << browse(dat, "window=firealarm")
 		onclose(user, "firealarm")
 	return
@@ -965,7 +922,7 @@ FIRE ALARM
 		else if(href_list["time"])
 			timing = text2num(href_list["time"])
 			last_process = world.timeofday
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 		else if(href_list["tp"])
 			var/tp = text2num(href_list["tp"])
 			time += tp

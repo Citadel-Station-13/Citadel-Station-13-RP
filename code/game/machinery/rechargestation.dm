@@ -165,6 +165,9 @@
 	..()
 
 /obj/machinery/recharge_station/MouseDrop_T(var/mob/target, var/mob/user)
+	. = ..()
+	if(. & COMPONENT_NO_MOUSEDROP)
+		return
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user))
 		return
 

@@ -68,8 +68,8 @@
 	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
 
 
-/obj/machinery/vending/New()
-	..()
+/obj/machinery/vending/Initialize()
+	. = ..()
 	wires = new(src)
 	spawn(4)
 		if(product_slogans)
@@ -85,10 +85,6 @@
 
 		build_inventory()
 		power_change()
-
-		return
-
-	return
 
 /**
  *  Build produdct_records from the products lists
@@ -641,11 +637,10 @@
 			continue
 		break
 	if(!throw_item)
-		return 0
-	spawn(0)
-		throw_item.throw_at(target, 16, 3, src)
-	visible_message("<span class='warning'>\The [src] launches \a [throw_item] at \the [target]!</span>")
-	return 1
+		return FALSE
+	throw_item.safe_throw_at(target, 16, 3, src)
+	visible_message("<span class='warning'>[src] launches [throw_item] at [target]!</span>")
+	return TRUE
 
 /*
  * Vending machine types

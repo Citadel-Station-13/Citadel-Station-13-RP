@@ -69,7 +69,7 @@
 			material_bottom += "<td width = '25%' align = center>[stored_material[material]]<b>/[storage_capacity[material]]</b></td>"
 
 		dat += "[material_top.Join()]</tr>[material_bottom.Join()]</tr></table><hr>"
-		dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
+		dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=[REF(src)];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
 
 		for(var/datum/category_item/autolathe/R in current_category.items)
 			if(R.hidden && !hacked)
@@ -101,10 +101,10 @@
 						max_sheets = min(max_sheets, R.max_stack) // Limit to the max allowed by stack type.
 						multiplier_string += "<br>"
 						for(var/i = 5;i<max_sheets;i*=2) //5,10,20,40...
-							multiplier_string  += "<a href='?src=\ref[src];make=\ref[R];multiplier=[i]'>\[x[i]\]</a>"
-						multiplier_string += "<a href='?src=\ref[src];make=\ref[R];multiplier=[max_sheets]'>\[x[max_sheets]\]</a>"
+							multiplier_string  += "<a href='?src=[REF(src)];make=[REF(R)];multiplier=[i]'>\[x[i]\]</a>"
+						multiplier_string += "<a href='?src=[REF(src)];make=[REF(R)];multiplier=[max_sheets]'>\[x[max_sheets]\]</a>"
 
-			dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'>" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
+			dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=[REF(src)];make=[REF(R)];multiplier=1'>" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
 
 		dat += "</table><hr>"
 	//Hacking.

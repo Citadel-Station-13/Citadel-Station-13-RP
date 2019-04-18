@@ -23,7 +23,7 @@
 	var/dat
 	dat += "<B>Prisoner Implant Manager System</B><BR>"
 	if(screen == 0)
-		dat += "<HR><A href='?src=\ref[src];lock=1'>Unlock Console</A>"
+		dat += "<HR><A href='?src=[REF(src)];lock=1'>Unlock Console</A>"
 	else if(screen == 1)
 		dat += "<HR>Chemical Implants<BR>"
 		var/turf/Tr = null
@@ -34,9 +34,9 @@
 			if(!C.implanted)
 				continue
 			dat += "[C.imp_in.name] | Remaining Units: [C.reagents.total_volume] | Inject: "
-			dat += "<A href='?src=\ref[src];inject1=\ref[C]'>(<font color=red>(1)</font>)</A>"
-			dat += "<A href='?src=\ref[src];inject5=\ref[C]'>(<font color=red>(5)</font>)</A>"
-			dat += "<A href='?src=\ref[src];inject10=\ref[C]'>(<font color=red>(10)</font>)</A><BR>"
+			dat += "<A href='?src=[REF(src)];inject1=[REF(C)]'>(<font color=red>(1)</font>)</A>"
+			dat += "<A href='?src=[REF(src)];inject5=[REF(C)]'>(<font color=red>(5)</font>)</A>"
+			dat += "<A href='?src=[REF(src)];inject10=[REF(C)]'>(<font color=red>(10)</font>)</A><BR>"
 			dat += "********************************<BR>"
 		dat += "<HR>Tracking Implants<BR>"
 		for(var/obj/item/weapon/implant/tracking/T in GLOB.all_tracking_implants)
@@ -53,9 +53,9 @@
 			if(T.malfunction)
 				loc_display = pick(teleportlocs)
 			dat += "ID: [T.id] | Location: [loc_display]<BR>"
-			dat += "<A href='?src=\ref[src];warn=\ref[T]'>(<font color=red><i>Send Message</i></font>)</A> |<BR>"
+			dat += "<A href='?src=[REF(src)];warn=[REF(T)]'>(<font color=red><i>Send Message</i></font>)</A> |<BR>"
 			dat += "********************************<BR>"
-		dat += "<HR><A href='?src=\ref[src];lock=1'>Lock Console</A>"
+		dat += "<HR><A href='?src=[REF(src)];lock=1'>Lock Console</A>"
 
 	popup.width = 400
 	popup.height = 500

@@ -247,7 +247,7 @@
 		camera_list = "Network Key: [key.title] [topic_link(src,"keyselect","\[ Select key \]")]<hr>"
 		for(var/obj/machinery/camera/C in temp_list)
 			if(C.can_use())
-				camera_list += "[C.c_tag] - [topic_link(src,"show=\ref[C]","Show")]<br>"
+				camera_list += "[C.c_tag] - [topic_link(src,"show=[REF(C)]","Show")]<br>"
 			else
 				camera_list += "[C.c_tag] - <b>DEACTIVATED</b><br>"
 		//camera_list += "<br>" + topic_link(src,"close","Close")
