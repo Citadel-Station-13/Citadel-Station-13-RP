@@ -19,6 +19,13 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		log_world("The bug with recursion runtimes has been fixed. Please remove the snowflake check from world/Error in [__FILE__]:[__LINE__]")
 		return //this will never happen.
 
+	else if(copytext(E.name,1,18) == "Out of resources!")
+		log_world("BYOND out of memory. Restarting")
+		log_game("BYOND out of memory. Restarting")
+		TgsEndProcess()
+		Reboot(reason = 1)
+		return ..()
+
 	if (islist(stack_trace_storage))
 		for (var/line in splittext(E.desc, "\n"))
 			if (text2ascii(line) != 32)
@@ -46,10 +53,28 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	//Handle cooldowns and silencing spammy errors
 	var/silencing = FALSE
 
-	var/configured_error_cooldown = ERROR_COOLDOWN
-	var/configured_error_limit = ERROR_LIMIT
-	var/configured_error_silence_time = ERROR_SILENCE_TIME
+	var/configured_error_cooldown = 600
+	var/configured_error_limit = 50
+	var/configured_error_silence_time = 6000
 
+/*
+	// We can runtime before config is initialized because BYOND initialize objs/map before a bunch of other stuff happens.
+	// This is a bunch of workaround code for that. Hooray!
+	var/configured_error_cooldown
+	var/configured_error_limit
+	var/configured_error_silence_time
+	if(config && config.entries)
+		configured_error_cooldown = CONFIG_GET(number/error_cooldown)
+		configured_error_limit = CONFIG_GET(number/error_limit)
+		configured_error_silence_time = CONFIG_GET(number/error_silence_time)
+	else
+		var/datum/config_entry/CE = /datum/config_entry/number/error_cooldown
+		configured_error_cooldown = initial(CE.config_entry_value)
+		CE = /datum/config_entry/number/error_limit
+		configured_error_limit = initial(CE.config_entry_value)
+		CE = /datum/config_entry/number/error_silence_time
+		configured_error_silence_time = initial(CE.config_entry_value)
+*/
 
 	//Each occurence of a unique error adds to its cooldown time...
 	cooldown = max(0, cooldown - (world.time - last_seen)) + configured_error_cooldown
@@ -64,7 +89,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 			error_cooldown[erroruid] = 0
 			if(skipcount > 0)
 				SEND_TEXT(world.log, "\[[time_stamp()]] Skipped [skipcount] runtimes in [E.file],[E.line].")
-				error_cache.logError(E, skip_count = skipcount)
+				GLOB.error_cache.log_error(E, skip_count = skipcount)
 
 	error_last_seen[erroruid] = world.time
 	error_cooldown[erroruid] = cooldown
@@ -97,8 +122,8 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		desclines.Add(usrinfo)
 	if(silencing)
 		desclines += "  (This error will now be silenced for [DisplayTimeText(configured_error_silence_time)])"
-	if(error_cache)
-		error_cache.logError(E, desclines)
+	if(GLOB.error_cache)
+		GLOB.error_cache.log_error(E, desclines)
 
 	var/main_line = "\[[time_stamp()]] Runtime in [E.file],[E.line]: [E]"
 	SEND_TEXT(world.log, main_line)
@@ -111,6 +136,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		GLOB.current_test.Fail("[main_line]\n[desclines.Join("\n")]")
 #endif
 
+
 	// This writes the regular format (unwrapping newlines and inserting timestamps as needed).
-	log_error("runtime error: [E.name]\n[E.desc]")
+	log_runtime("runtime error: [E.name]\n[E.desc]")
 #endif

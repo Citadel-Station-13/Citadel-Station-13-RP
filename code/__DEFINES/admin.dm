@@ -22,26 +22,25 @@
 #define ROUNDSTART_LOGOUT_REPORT_TIME 6000 // Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
 
 // Admin permissions.
-#define R_BUILDMODE     0x1
-#define R_ADMIN         0x2
-#define R_BAN           0x4
-#define R_FUN           0x8
-#define R_SERVER        0x10
-#define R_DEBUG         0x20
-#define R_POSSESS       0x40
-#define R_PERMISSIONS   0x80
-#define R_STEALTH       0x100
-#define R_REJUVINATE    0x200
-#define R_VAREDIT       0x400
-#define R_SOUNDS        0x800
-#define R_SPAWN         0x1000
-#define R_MOD           0x2000
-#define R_EVENT	        0x4000
+#define R_BUILDMODE		(1<<0)
+#define R_ADMIN			(1<<1)
+#define R_BAN			(1<<2)
+#define R_FUN			(1<<3)
+#define R_SERVER		(1<<4)
+#define R_DEBUG			(1<<5)
+#define R_POSSESS		(1<<6)
+#define R_PERMISSIONS	(1<<7)
+#define R_STEALTH		(1<<8)
+#define R_REJUVINATE	(1<<9)
+#define R_VAREDIT		(1<<10)
+#define R_SOUNDS		(1<<11)
+#define R_SPAWN			(1<<12)
+#define R_MOD			(1<<13)
+#define R_EVENT			(1<<14)
 
 // Host permission (sum of all permissions above) is equal 32767 or 7FFF
-#define R_HOST          0x7FFF
-
-#define R_MAXPERMISSION 0x4000 // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
+#define R_HOST				ALL
+#define R_MAXPERMISSION		(1<<14)			// This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
 #define SMITE_BREAKLEGS				"Break Legs"
 #define SMITE_BLUESPACEARTILLERY	"Bluespace Artillery"
