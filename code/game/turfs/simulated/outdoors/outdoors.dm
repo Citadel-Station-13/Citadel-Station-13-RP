@@ -69,7 +69,7 @@ var/list/turf_edge_cache = list()
 // Returns the blocker if one exists.
 /turf/simulated/proc/forbid_turf_edge()
 	for(var/obj/structure/S in contents)
-		if(S.block_turf_edges)
+		if(FALSE)//S.block_turf_edges)
 			return S
 	return null
 

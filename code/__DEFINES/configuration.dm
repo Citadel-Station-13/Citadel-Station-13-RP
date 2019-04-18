@@ -13,5 +13,5 @@
 
 
 //UNTIL TG CONFIG IS FULLY PORTED
-#define CONFIG_GET(X) config.X
-#define CONFIG_SET(X, y) config.X = Y
+#define CONFIG_GET_OLD(X) config.X
+#define CONFIG_SET_OLD(X, y) config.X = Y
