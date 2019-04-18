@@ -1,18 +1,6 @@
-//Byond is a shit. That's why this is here.
-/*
-	The initialization of the game happens roughly like this:
-
-	1. All global variables are initialized (including the global_init instance).
-	2. The map is initialized, and map objects are created.
-	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
-	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameticker is created.
-
-*/
-
-
 #define RECOMMENDED_VERSION 501
 /world/New()
+	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	world.log << "Map Loading Complete"
 	//logs
 	log_path += time2text(world.realtime, "YYYY/MM-Month/DD-Day/round-hh-mm-ss")
@@ -26,7 +14,6 @@
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
-	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 
 	config.post_load()
 
@@ -72,13 +59,12 @@
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	Master.Initialize(10, FALSE)
-
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
 	processScheduler.deferSetupFor(/datum/controller/process/ticker)
 	processScheduler.setup()
+	Master.Initialize(10, FALSE)
 
 	spawn(1)
 		master_controller.setup()
@@ -98,7 +84,7 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	//TGS_TOPIC
+	TGS_TOPIC
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if (T == "ping")
@@ -393,25 +379,28 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "Database connection failed or not set up"
 
 
-/world/Reboot(var/reason)
+/world/Reboot(reason = 0, fast_track = FALSE)
+	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
-	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
-	if(reason && usr)//CITADEL CHANGE - Logs reboots done by debug functions
-		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+			world << "<span class='boldannounce'>[key_name_admin(usr)] has requested an immediate world restart via client side debugging tools</span>"
+
+		else
+			world << "<span class='boldannounce'>Rebooting world immediately due to host request</span>"
+	else
+		processScheduler.stop()
+		Master.Shutdown()	//run SS shutdowns
 		for(var/client/C in GLOB.clients)
-			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!</span>"
+			if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+				C << link("byond://[config.server]")
 
-	processScheduler.stop()
-	Master.Shutdown()	//run SS shutdowns
-
-	for(var/client/C in GLOB.clients)
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[config.server]")
-
-	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
-	..(reason)
+	log_world("World rebooted at [time_stamp()]")
+	..()
 
 /hook/startup/proc/loadMode()
 	world.load_mode()
@@ -440,6 +429,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
+
+
+/proc/load_configuration()
+	config = new /datum/controller/configuration()
+	config.load("config/config.txt")
+	config.load("config/game_options.txt","game_options")
+	config.loadsql("config/dbconfig.txt")
+	config.loadforumsql("config/forumdbconfig.txt")
 
 /hook/startup/proc/loadMods()
 	world.load_mods()
@@ -636,8 +633,17 @@ proc/establish_old_db_connection()
 	else
 		return 1
 
-#undef FAILED_DB_CONNECTION_CUTOFF
+// Things to do when a new z-level was just made.
+/world/proc/max_z_changed()
+	if(!islist(GLOB.players_by_zlevel))
+		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	while(GLOB.players_by_zlevel.len < world.maxz)
+		GLOB.players_by_zlevel.len++
+		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
 
+// Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/incrementMaxZ()
 	maxz++
-	return TRUE
+	max_z_changed()
+
+#undef FAILED_DB_CONNECTION_CUTOFF
