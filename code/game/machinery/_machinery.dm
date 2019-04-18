@@ -99,6 +99,9 @@ Class Procs:
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
 
+	var/global/gl_uid = 0
+	var/uid
+
 	var/stat = 0
 	var/emagged = 0
 	var/use_power = 1
@@ -109,29 +112,29 @@ Class Procs:
 	var/active_power_usage = 0
 	var/power_channel = EQUIP //EQUIP, ENVIRON or LIGHT
 	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
-	var/uid
 	var/panel_open = 0
-	var/global/gl_uid = 1
 	var/clicksound			// sound played on succesful interface. Just put it in the list of vars at the start.
 	var/clickvol = 40		// volume
 	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
 	var/obj/item/weapon/circuitboard/circuit = null
 
-/obj/machinery/New(l, d=0)
-	..(l)
-	if(d)
-		setDir(d)
-	if(circuit)
-		circuit = new circuit(src)
+	var/speed_process = FALSE			//If false, SSmachines. If true, SSfastprocess.
 
-/obj/machinery/Initialize()
+/obj/machinery/Initialize(mapload)
 	. = ..()
-	global.machines += src
-	START_MACHINE_PROCESSING(src)
+	GLOB.machines |= src
+	if(ispath(circuit))
+		circuit = new circuit(src)
+	if(!speed_process)
+		START_MACHINE_PROCESSING(src)
+	else
+		START_PROCESSING(SSfastprocess, src)
 
 /obj/machinery/Destroy()
-	STOP_MACHINE_PROCESSING(src)
-	global.machines -= src
+	if(!speed_process)
+		STOP_MACHINE_PROCESSING(src)
+	else
+		STOP_PROCESSING(SSfastprocess, src)
 	if(component_parts)
 		for(var/atom/A in component_parts)
 			if(A.loc == src) // If the components are inside the machine, delete them.
@@ -147,13 +150,12 @@ Class Procs:
 				H.loc = src.loc
 			else
 				qdel(A)
+	GLOB.machines -= src
 	return ..()
 
 /obj/machinery/process()//If you dont use process or power why are you here
 	if(!(use_power || idle_power_usage || active_power_usage))
 		return PROCESS_KILL
-
-	return
 
 /obj/machinery/emp_act(severity)
 	if(use_power && stat == 0)
@@ -258,8 +260,10 @@ Class Procs:
 	return
 
 /obj/machinery/proc/assign_uid()
-	uid = gl_uid
-	gl_uid++
+	if(!isnull(uid))
+		stack_trace("[src] ([type]) ordered to make UID when UID already made.")
+		return
+	uid = ++gl_uid
 
 /obj/machinery/proc/state(var/msg)
 	for(var/mob/O in hearers(src, null))
