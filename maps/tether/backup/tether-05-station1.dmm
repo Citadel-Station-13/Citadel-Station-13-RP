@@ -8666,7 +8666,11 @@
 /turf/simulated/floor/tiled,
 /area/bridge_hallway)
 "azy" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/corgi/Ian,
+=======
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "azz" = (

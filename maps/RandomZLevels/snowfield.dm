@@ -17,9 +17,16 @@
 	power_environ = 0
 	mobcountmax = 100
 	floracountmax = 7000
+<<<<<<< HEAD
 	valid_mobs = list(/mob/living/simple_animal/hostile/samak/polar, /mob/living/simple_animal/hostile/diyaab/polar,
 					/mob/living/simple_animal/hostile/shantak/polar, /mob/living/simple_animal/hostile/bear/polar,
 					/mob/living/simple_animal/hostile/wolf)
+=======
+	/*
+	valid_mobs = list(/mob/living/simple_mob/hostile/samak/polar, /mob/living/simple_mob/hostile/diyaab/polar,
+					/mob/living/simple_mob/hostile/shantak/polar, /mob/living/simple_mob/animal/space/bear/polar,
+					/mob/living/simple_mob/hostile/wolf)*/ //VORESTATION AI TEMPORARY REMOVAL
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
 					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
 					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
@@ -43,7 +50,11 @@
 
 // -- Mobs -- //
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/bear/polar // More aggressive than normal bears so none of that fancy life() stuff.
+=======
+/mob/living/simple_mob/animal/space/bear/polar // More aggressive than normal bears so none of that fancy life() stuff.
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 	name = "polar bear"
 	desc = "The real question is, why are you examining it, instead of running away?"
 	icon = 'icons/mob/vore.dmi'
@@ -80,7 +91,11 @@
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/bearmeat
 
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/bear/polar/death()
+=======
+/mob/living/simple_mob/animal/space/bear/polar/death()
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 	desc = "This bastard sure isn't drinking Space Cola anymore."
 	..()
 

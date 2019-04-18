@@ -2620,7 +2620,11 @@
 /area/awaymission/spacebattle/syndicate7)
 "hB" = (
 /obj/structure/largecrate,
+<<<<<<< HEAD
 /mob/living/simple_animal/corgi/puppy,
+=======
+/mob/living/simple_mob/animal/passive/dog/corgi/puppy,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "hC" = (

@@ -283,13 +283,22 @@
 				if(live_cargo) // Carp! Since Facehuggers got removed.
 					var/num = rand(1,3)
 					for(var/i=0,i<num,i++)
+<<<<<<< HEAD
 						new /mob/living/simple_animal/hostile/carp(C)
+=======
+						new /mob/living/simple_mob/animal/space/carp(C)
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 				else // Just a costume.
 					new /obj/item/clothing/suit/storage/hooded/carp_costume(C)
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
+<<<<<<< HEAD
 					var/spawn_type = pick(/mob/living/simple_animal/hostile/alien, /mob/living/simple_animal/hostile/alien/drone, /mob/living/simple_animal/hostile/alien/sentinel)
 					new spawn_type(C)
+=======
+					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/sentinel)
+					new spawn_type(C) 
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)
 					new /obj/item/clothing/suit/xenos(C)

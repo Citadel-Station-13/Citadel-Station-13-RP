@@ -210,7 +210,11 @@
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "L" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/crab,
+=======
+/mob/living/simple_mob/animal/passive/crab,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "M" = (
@@ -218,7 +222,11 @@
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "N" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/crab/Coffee,
+=======
+/mob/living/simple_mob/animal/passive/crab/Coffee,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "O" = (

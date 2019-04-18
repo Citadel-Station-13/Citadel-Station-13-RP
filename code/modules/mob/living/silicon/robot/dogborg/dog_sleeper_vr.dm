@@ -80,9 +80,14 @@
 					to_chat(user, "<span class='notice'>\The [target.name] added to cargo compartment slot: [delivery_tag].</span>")
 				update_patient()
 			return
+<<<<<<< HEAD
 
 		if(istype(target, /mob/living/simple_animal/mouse)) //Edible mice, dead or alive whatever. Mostly for carcass picking you cruel bastard :v
 			var/mob/living/simple_animal/trashmouse = target
+=======
+		if(istype(target, /mob/living/simple_mob/animal/passive/mouse)) //Edible mice, dead or alive whatever. Mostly for carcass picking you cruel bastard :v
+			var/mob/living/simple_mob/trashmouse = target
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashmouse] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashmouse] into your [src.name]...</span>")
 			if(do_after(user, 30, trashmouse) && length(contents) < max_item_count)
 				trashmouse.forceMove(src)
@@ -95,7 +100,10 @@
 					to_chat(user, "<span class='notice'>\The [trashmouse] added to cargo compartment slot: [delivery_tag].</span>")
 				update_patient()
 			return
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 		else if(ishuman(target))
 			var/mob/living/carbon/human/trashman = target
 			if(patient)

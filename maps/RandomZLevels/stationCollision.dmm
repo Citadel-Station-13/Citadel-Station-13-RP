@@ -549,7 +549,11 @@
 	},
 /area/awaymission/research)
 "bS" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/lizard,
+=======
+/mob/living/simple_mob/animal/passive/lizard,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/grass,
 /area/awaymission/research)
 "bT" = (
@@ -607,7 +611,7 @@
 	},
 /area/awaymission/research)
 "cc" = (
-/mob/living/carbon/alien/humanoid/sentinel{
+/mob/living/simple_mob/animal/space/alien/sentinel{
 	fireloss = 200;
 	stat = 2
 	},
@@ -709,7 +713,11 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/hivebot{
+=======
+/mob/living/simple_mob/mechanical/hivebot{
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 	opensdoors = 0
 	},
 /turf/simulated/floor{
@@ -858,7 +866,7 @@
 /area/awaymission/research)
 "cH" = (
 /obj/item/clothing/mask/facehugger,
-/mob/living/carbon/alien/humanoid/queen{
+/mob/living/simple_mob/animal/space/alien/queen{
 	fireloss = 300;
 	stat = 2
 	},
@@ -970,7 +978,7 @@
 	},
 /area/awaymission/research)
 "cU" = (
-/mob/living/carbon/alien/humanoid/hunter{
+/mob/living/simple_mob/animal/space/alien{
 	fireloss = 200;
 	stat = 2
 	},

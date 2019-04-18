@@ -13,7 +13,11 @@
 
 	if (stat != CONSCIOUS)
 		return
+<<<<<<< HEAD
 	if (istype(src,/mob/living/simple_animal/mouse) && T.ckey == null)
+=======
+	if (istype(src,/mob/living/simple_mob/animal/passive/mouse) && T.ckey == null)
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 		return
 	if (client && IsAdvancedToolUser())
 		to_chat(src,"<span class='warning'>Put your hands to good use instead!</span>")

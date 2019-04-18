@@ -1178,7 +1178,7 @@
 #include "code\game\objects\random\mapping.dm"
 #include "code\game\objects\random\misc.dm"
 #include "code\game\objects\random\mob.dm"
-#include "code\game\objects\random\random_vr.dm"
+#include "code\game\objects\random\mob_vr.dm"
 #include "code\game\objects\random\spacesuits.dm"
 #include "code\game\objects\structures\barsign.dm"
 #include "code\game\objects\structures\bedsheet_bin.dm"

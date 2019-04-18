@@ -4271,7 +4271,11 @@
 	name = "Beruang";
 	pixel_x = 32
 	},
+<<<<<<< HEAD
 /mob/living/simple_animal/corgi/tamaskan/spice,
+=======
+/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/trade/centcom)
 "kz" = (
@@ -5640,7 +5644,11 @@
 	},
 /area/wizard_station)
 "nm" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/mouse/gray{
+=======
+/mob/living/simple_mob/animal/passive/mouse/gray{
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 	desc = "He looks kingly.";
 	name = "Arthur"
 	},

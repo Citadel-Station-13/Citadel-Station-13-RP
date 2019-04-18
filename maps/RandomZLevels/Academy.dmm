@@ -2511,7 +2511,11 @@
 	},
 /area/awaymission/academy/classrooms)
 "gF" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/bear,
+=======
+/mob/living/simple_mob/animal/space/bear,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "gG" = (
@@ -2543,7 +2547,11 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/bear,
+=======
+/mob/living/simple_mob/animal/space/bear,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "gL" = (

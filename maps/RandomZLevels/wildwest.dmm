@@ -18,7 +18,11 @@
 	},
 /area/awaymission/wwvault)
 "af" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/faithless,
+=======
+/mob/living/simple_mob/faithless,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/engine/cult,
 /area/awaymission/wwvault)
 "ag" = (
@@ -52,7 +56,11 @@
 /turf/simulated/floor/engine/cult,
 /area/awaymission/wwvault)
 "am" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/faithless,
+=======
+/mob/living/simple_mob/faithless,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/shuttle/plating{
 	 icon_state = "bcircuitoff"
 	},
@@ -173,7 +181,11 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/wwvault)
 "aE" = (
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/faithless,
+=======
+/mob/living/simple_mob/faithless,
+>>>>>>> 17eadd4... Merge pull request #5069 from Sebbe9123/mobpathfix
 /turf/simulated/floor/carpet,
 /area/awaymission/wwvault)
 "aF" = (
