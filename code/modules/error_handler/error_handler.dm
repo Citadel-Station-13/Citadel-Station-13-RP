@@ -3,7 +3,6 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 
 #ifdef USE_CUSTOM_ERROR_HANDLER
 #define ERROR_USEFUL_LEN 2
-
 /world/Error(exception/E, datum/e_src)
 	GLOB.total_runtimes++
 
@@ -118,7 +117,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 				desclines += ("  " + line) // Pad any unpadded lines, so they look pretty
 			else
 				desclines += line
-	if(usrinfo) //If this info isn't null, it hasn't been added yet
+	if(usrinfo) //If thi	s info isn't null, it hasn't been added yet
 		desclines.Add(usrinfo)
 	if(silencing)
 		desclines += "  (This error will now be silenced for [DisplayTimeText(configured_error_silence_time)])"

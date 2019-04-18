@@ -35,6 +35,7 @@
 /proc/log_world(text)
 #ifdef USE_CUSTOM_ERROR_HANDLER
 	//WRITE_LOG(GLOB.world_runtime_log, text)		WIP
+	WRITE_LOG(error_log, text)
 #endif
 	SEND_TEXT(world.log, text)
 

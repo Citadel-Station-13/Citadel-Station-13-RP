@@ -37,10 +37,8 @@
 #define R_SPAWN			(1<<12)
 #define R_MOD			(1<<13)
 #define R_EVENT			(1<<14)
-
-// Host permission (sum of all permissions above) is equal 32767 or 7FFF
-#define R_HOST				ALL
-#define R_MAXPERMISSION		(1<<14)			// This holds the maximum value for a permission. It is used in iteration, so keep it updated.
+#define R_HOST			(1<<15)
+#define R_MAXPERMISSION		(1<<15)			// This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
 #define SMITE_BREAKLEGS				"Break Legs"
 #define SMITE_BLUESPACEARTILLERY	"Bluespace Artillery"
