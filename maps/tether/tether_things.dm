@@ -211,7 +211,7 @@
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
 /obj/machinery/cryopod/robot/door/tram
 	name = "\improper Tram Station"
-	icon = 'icons/obj/doors/Doorext.dmi'
+	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
@@ -393,9 +393,9 @@ var/global/list/latejoin_tram   = list()
 /obj/structure/closet/secure_closet/guncabinet/excursion/Initialize()
 	. = ..()
 	for(var/i = 1 to 4)
-		new /obj/item/gun/energy/frontier/locked(src)
+		new /obj/item/weapon/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)
-		new /obj/item/gun/energy/frontier/locked/holdout(src)
+		new /obj/item/weapon/gun/energy/frontier/locked/holdout(src)
 
 // Underdark mob spawners
 /obj/tether_away_spawner/underdark_normal
@@ -406,10 +406,10 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/jelly = 3,
-		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
-		/mob/living/simple_mob/animal/giant_spider/phorogenic = 1,
-		/mob/living/simple_mob/animal/giant_spider/lurker = 1,
+		/mob/living/simple_animal/hostile/jelly = 3,
+		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
+		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
+		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
 	)
 
 /obj/tether_away_spawner/underdark_hard
@@ -420,8 +420,8 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 50
 	guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/mechanical/corrupthound = 1,
-		/mob/living/simple_mob/animal/rat = 1,
+		/mob/living/simple_animal/hostile/corrupthound = 1,
+		/mob/living/simple_animal/hostile/rat = 1,
 		///mob/living/simple_mob/alien/mimic = 1
 	)
 
@@ -433,7 +433,7 @@ var/global/list/latejoin_tram   = list()
 	prob_fall = 100
 	guard = 70
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/dragon = 1
+		/mob/living/simple_animal/hostile/dragon = 1
 	)
 
 // Used at centcomm for the elevator
