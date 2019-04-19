@@ -1,5 +1,5 @@
-/mob/living/New()
-	..()
+/mob/living/Initialize()
+	. = ..()
 
 	//Prime this list if we need it.
 	if(has_huds)
@@ -9,7 +9,7 @@
 		make_hud_overlays()
 
 	//I'll just hang my coat up over here
-	dsoverlay = image('icons/mob/darksight.dmi',global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
+	dsoverlay = image('icons/mob/darksight.dmi',GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
 	var/mutable_appearance/dsma = new(dsoverlay) //Changing like ten things, might as well.
 	dsma.alpha = 0
 	dsma.plane = PLANE_LIGHTING

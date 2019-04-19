@@ -353,10 +353,10 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 /obj/machinery/camera/communicator
 	network = list(NETWORK_COMMUNICATORS)
 
-/obj/machinery/camera/communicator/New()
-	..()
-	client_huds |= global_hud.whitense
-	client_huds |= global_hud.darkMask
+/obj/machinery/camera/communicator/Initialize()
+	. = ..()
+	client_huds |= GLOB.global_hud.whitense
+	client_huds |= GLOB.global_hud.darkMask
 
 /obj/item/device/communicator/verb/verb_remove_cartridge()
 	set category = "Object"
