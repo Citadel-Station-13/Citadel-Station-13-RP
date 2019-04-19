@@ -5313,6 +5313,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/hallway/lower/first_west)
 "ajz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5546,6 +5547,55 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
+=======
+/area/engineering/atmos)
+"ajz" = (
+/obj/structure/table/woodentable,
+/obj/item/device/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/public_garden)
+"ajA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/item/device/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
+"ajB" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/item/device/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
+>>>>>>> 054f39d... Merge pull request #5102 from Heroman3003/outpost-intercoms
 "ajN" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -18082,6 +18132,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
+<<<<<<< HEAD
 "aIe" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18113,6 +18164,8 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)
+=======
+>>>>>>> 054f39d... Merge pull request #5102 from Heroman3003/outpost-intercoms
 "aIh" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -19813,6 +19866,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d1 = 4;
@@ -19832,6 +19886,13 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+=======
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
+"bbn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+>>>>>>> 054f39d... Merge pull request #5102 from Heroman3003/outpost-intercoms
 	},
 /obj/item/weapon/caution/cone,
 /obj/effect/decal/cleanable/dirt,
@@ -24814,6 +24875,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
 	req_access = list(55)
@@ -24842,6 +24904,17 @@
 "blx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
+"bMm" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+>>>>>>> 054f39d... Merge pull request #5102 from Heroman3003/outpost-intercoms
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
@@ -38743,7 +38816,7 @@ aFJ
 aAO
 aGt
 aGL
-bMl
+ajB
 bOi
 bQB
 bSI
@@ -40543,7 +40616,7 @@ fWK
 gDo
 gXh
 oOc
-baY
+ajz
 tPq
 gXh
 gXh
@@ -47375,7 +47448,7 @@ akF
 amv
 akF
 ann
-aIe
+ajA
 gek
 aov
 aoD
