@@ -233,6 +233,9 @@ var/list/gamemode_cache = list()
 	var/minute_click_limit = 600
 	var/second_click_limit = 10
 
+	var/minute_topic_limit = 600
+	var/second_topic_limit = 10
+
 	var/random_submap_orientation = TRUE
 
 /datum/controller/configuration/New()

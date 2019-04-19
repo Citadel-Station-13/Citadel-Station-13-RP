@@ -580,7 +580,7 @@
 	set name = "Debug Mob Lists"
 	set desc = "For when you just gotta know"
 
-	switch(input("Which list?") in list("Players","Living Mobs","Dead Mobs", "Clients"))
+	switch(input("Which list?") in list("Players","Living Mobs","Dead Mobs", "Mobs"))
 		if("Players")
 			usr << jointext(player_list,",")
 		if("Mobs")

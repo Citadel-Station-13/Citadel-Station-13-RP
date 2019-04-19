@@ -29,7 +29,7 @@
 			to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
 			src << browse("...", "window=asset_cache_browser")
 
-	var/mtl = CONFIG_GET(number/minute_topic_limit)
+	var/mtl = CONFIG_GET_OLD(minute_topic_limit)//number/minute_topic_limit)
 	if (!holder && mtl)
 		var/minute = round(world.time, 600)
 		if (!topiclimiter)
@@ -48,7 +48,7 @@
 			to_chat(src, "<span class='danger'>[msg]</span>")
 			return
 
-	var/stl = CONFIG_GET(number/second_topic_limit)
+	var/stl = CONFIG_GET_OLD(second_topic_limit)//number/second_topic_limit)
 	if (!holder && stl)
 		var/second = round(world.time, 10)
 		if (!topiclimiter)

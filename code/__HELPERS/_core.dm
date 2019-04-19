@@ -89,4 +89,4 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 				thing.datum_flags &= ~DF_USE_TAG
 			else
 				return "\[[url_encode(thing.tag)]\]"
-	return REF(input)
+	return "\ref[input]"

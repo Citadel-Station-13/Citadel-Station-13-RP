@@ -1,4 +1,4 @@
-bb	////////////
+	////////////
 	//SECURITY//
 	////////////
 #define MIN_CLIENT_VERSION	0		//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
