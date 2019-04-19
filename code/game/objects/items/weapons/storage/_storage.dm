@@ -9,8 +9,8 @@
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/storage_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/storage_righthand.dmi',
+		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
 	w_class = ITEMSIZE_NORMAL
 	show_messages = 1
@@ -35,7 +35,9 @@
 	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
-	var/list/starts_with //Things to spawn on the box on spawn
+
+	var/list/starts_with //Things to spawn on the box on spawn				//THIS IS A BANNED LIST. ALL NEW STORAGE MUST USE POPULATE_CONTENTS() TO MAKE THEIR ITEMS! - KEVINZ000
+
 	var/empty //Mapper override to spawn an empty version of a container that usually has stuff
 
 /obj/item/weapon/storage/Destroy()
@@ -527,7 +529,7 @@
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
 
-/obj/item/weapon/storage/Initialize()
+/obj/item/weapon/storage/initialize()
 	. = ..()
 
 	if(allow_quick_empty)
@@ -579,6 +581,11 @@
 	src.closer.hud_layerise()
 	orient2hud()
 
+	populate_contents()
+
+	//calibrate_size()			//Let's not!
+
+/obj/item/weapon/storage/proc/populate_contents()
 	if(LAZYLEN(starts_with) && !empty)
 		for(var/newtype in starts_with)
 			var/count = starts_with[newtype] || 1 //Could have left it blank.
@@ -586,8 +593,6 @@
 				count--
 				new newtype(src)
 		starts_with = null //Reduce list count.
-
-	calibrate_size()
 
 /obj/item/weapon/storage/proc/calibrate_size()
 	var/total_storage_space = 0
@@ -615,13 +620,13 @@
 
 	while (cur_atom && !(cur_atom in container.contents))
 		if (isarea(cur_atom))
-			return -1
+			return INFINITY
 		if (istype(cur_atom.loc, /obj/item/weapon/storage))
 			depth++
 		cur_atom = cur_atom.loc
 
 	if (!cur_atom)
-		return -1	//inside something with a null loc.
+		return INFINITY	//inside something with a null loc.
 
 	return depth
 
@@ -633,13 +638,13 @@
 
 	while (cur_atom && !isturf(cur_atom))
 		if (isarea(cur_atom))
-			return -1
+			return INFINITY
 		if (istype(cur_atom.loc, /obj/item/weapon/storage))
 			depth++
 		cur_atom = cur_atom.loc
 
 	if (!cur_atom)
-		return -1	//inside something with a null loc.
+		return INFINITY	//inside something with a null loc.
 
 	return depth
 

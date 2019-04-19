@@ -6,7 +6,7 @@
 	item_state = "table_parts"
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/stolenpackage/attack_self(mob/user as mob)
+/obj/item/stolenpackage/attack_self(mob/user)
 		// Another way of doing this. Commented out because the other method is better for this application.
 		/*var/spawn_chance = rand(1,100)
 		switch(spawn_chance)
@@ -24,6 +24,7 @@
 		var/loot = pick(/obj/effect/landmark/costume,
 						/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat,
+						/obj/item/clothing/gloves/combat/advanced,
 						/obj/item/clothing/head/bearpelt,
 						/obj/item/clothing/mask/balaclava,
 						/obj/item/clothing/mask/horsehead,
@@ -84,7 +85,7 @@
 						/obj/random/contraband,
 						/obj/random/contraband,
 						/obj/random/weapon/guarenteed)
-		new loot(usr.loc)
+		new loot(user.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
 
@@ -99,3 +100,60 @@
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
 	icon_type = "cigar"
+
+/obj/item/stolenpackageplus
+	name = "curated stolen package"
+	desc = "What's in this slightly more robust box?"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "deliverycrate5"
+	item_state = "table_parts"
+	w_class = ITEMSIZE_HUGE
+
+/obj/item/stolenpackageplus/attack_self(mob/user)
+		var/loot = pick(/obj/item/clothing/glasses/thermal,
+						/obj/item/clothing/gloves/combat/advanced,
+						/obj/item/clothing/gloves/combat/advanced,
+						/obj/item/clothing/suit/armor/heavy,
+						/obj/item/clothing/suit/armor/laserproof,
+						/obj/item/device/chameleon,
+						/obj/item/device/pda/syndicate,
+						/obj/item/mecha_parts/chassis/phazon,
+						/obj/item/mecha_parts/part/phazon_head,
+						/obj/item/mecha_parts/part/phazon_left_arm,
+						/obj/item/mecha_parts/part/phazon_left_leg,
+						/obj/item/mecha_parts/part/phazon_right_arm,
+						/obj/item/mecha_parts/part/phazon_right_leg,
+						/obj/item/mecha_parts/part/phazon_torso,
+						/obj/item/device/bodysnatcher,
+						/obj/item/weapon/bluespace_harpoon,
+						/obj/item/clothing/accessory/permit/gun,
+						/obj/item/device/perfect_tele,
+						/obj/item/weapon/disk/nifsoft/compliance,
+						/obj/item/seeds/ambrosiadeusseed,
+						/obj/item/seeds/ambrosiavulgarisseed,
+						/obj/item/seeds/libertymycelium,
+						/obj/fiftyspawner/platinum,
+						/obj/item/toy/nanotrasenballoon,
+						/obj/item/toy/syndicateballoon,
+						/obj/item/weapon/aiModule/syndicate,
+						/obj/item/weapon/card/emag,
+						/obj/item/weapon/card/id/syndicate,
+						/obj/item/weapon/disposable_teleporter,
+						/obj/item/weapon/grenade/flashbang/clusterbang,
+						/obj/item/weapon/grenade/flashbang/clusterbang,
+						/obj/item/weapon/grenade/spawnergrenade/spesscarp,
+						/obj/item/weapon/melee/energy/sword,
+						/obj/item/weapon/melee/telebaton,
+						/obj/item/weapon/pen/reagent/paralysis,
+						/obj/item/weapon/pickaxe/diamonddrill,
+						/obj/item/weapon/reagent_containers/glass/beaker/neurotoxin,
+						/obj/item/weapon/rig/combat,
+						/obj/item/weapon/shield/energy,
+						/obj/item/weapon/stamp/centcomm,
+						/obj/item/weapon/stamp/solgov,
+						/obj/item/weapon/storage/fancy/cigar/havana,
+						/obj/random/contraband,
+						/obj/random/weapon/guarenteed)
+		new loot(usr.drop_location())
+		to_chat(user, "You unwrap the package.")
+		qdel(src)
