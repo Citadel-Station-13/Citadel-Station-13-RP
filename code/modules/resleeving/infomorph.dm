@@ -83,7 +83,8 @@ var/list/infomorph_emotions = list(
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
-/mob/living/silicon/infomorph/New(var/obj/item/device/sleevecard/SC, var/name = "Unknown")
+/mob/living/silicon/infomorph/Initialize(mapload, name = "Unknown")
+	var/obj/item/device/sleevecard/SC = loc
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
 	src.forceMove(SC)

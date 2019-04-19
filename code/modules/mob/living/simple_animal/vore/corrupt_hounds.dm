@@ -105,9 +105,9 @@
 /mob/living/simple_animal/hostile/corrupthound/proc/remove_eyes()
 	cut_overlay(eye_layer)
 
-/mob/living/simple_animal/hostile/corrupthound/New()
+/mob/living/simple_animal/hostile/corrupthound/Initialize()
+	. = ..()
 	add_eyes()
-	..()
 
 /mob/living/simple_animal/hostile/corrupthound/death(gibbed, deathmessage = "shudders and collapses!")
 	.=..()

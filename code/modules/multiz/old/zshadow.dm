@@ -16,7 +16,7 @@
 /mob/zshadow/can_fall()
 	return FALSE
 
-/mob/zshadow/New(var/mob/L)
+/mob/zshadow/Initialize(var/mob/L)
 	if(!istype(L))
 		qdel(src)
 		return

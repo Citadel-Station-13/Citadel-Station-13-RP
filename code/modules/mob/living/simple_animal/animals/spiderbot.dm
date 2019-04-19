@@ -53,8 +53,8 @@
 	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
 
-/mob/living/simple_animal/spiderbot/New()
-	..()
+/mob/living/simple_animal/spiderbot/Initialize()
+	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	default_language = all_languages[LANGUAGE_GALCOM]
 	verbs |= /mob/living/proc/ventcrawl
@@ -195,16 +195,14 @@
 
 /mob/living/simple_animal/spiderbot/Destroy()
 	eject_brain()
-	..()
+	return ..()
 
-/mob/living/simple_animal/spiderbot/New()
-
+/mob/living/simple_animal/spiderbot/Initialize()
+	. = ..()
 	radio = new /obj/item/device/radio/borg(src)
 	camera = new /obj/machinery/camera(src)
 	camera.c_tag = "spiderbot-[real_name]"
 	camera.replace_networks(list("SS13"))
-
-	..()
 
 /mob/living/simple_animal/spiderbot/death()
 

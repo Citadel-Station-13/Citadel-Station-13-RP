@@ -17,9 +17,6 @@
 
 	anchored = 1	//  don't get pushed around
 
-/mob/new_player/New()
-	mob_list += src
-
 /mob/new_player/verb/new_player_panel()
 	set src = usr
 	new_player_panel_proc()
@@ -169,7 +166,7 @@
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
-	
+
 		//Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name

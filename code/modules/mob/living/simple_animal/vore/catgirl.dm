@@ -44,7 +44,8 @@
 		"catgirlbrown"
 	)
 
-/mob/living/simple_animal/catgirl/New()
+/mob/living/simple_animal/catgirl/Initialize()
+	. =
 	..()
 	if(random_skin)
 		icon_living = pick(skins)

@@ -227,8 +227,8 @@
 	type_on_death = /mob/living/simple_animal/slime/dark_blue // Otherwise infinite slimes might occur.
 	pixel_y = -10 // Since the base sprite isn't centered properly, the pixel auto-adjustment needs some help.
 
-/mob/living/simple_animal/slime/dark_blue/feral/New()
-	..()
+/mob/living/simple_animal/slime/dark_blue/feral/Initialize()
+	. = ..()
 	make_adult()
 
 /mob/living/simple_animal/slime/silver
@@ -365,8 +365,8 @@
 		/mob/living/simple_animal/slime/ruby
 	)
 
-/mob/living/simple_animal/slime/ruby/New()
-	..()
+/mob/living/simple_animal/slime/ruby/Initialize()
+	. = ..()
 	add_modifier(/datum/modifier/slime_strength, null, src) // Slime is always swole.
 
 /mob/living/simple_animal/slime/ruby/DoPunch(var/mob/living/L)
@@ -732,9 +732,9 @@
 		/mob/living/simple_animal/slime/rainbow
 	)
 
-/mob/living/simple_animal/slime/rainbow/New()
+/mob/living/simple_animal/slime/rainbow/Initialize()
+	. = ..()
 	unify()
-	..()
 
 // The RD's pet slime.
 /mob/living/simple_animal/slime/rainbow/kendrick
@@ -742,6 +742,6 @@
 	desc = "The Research Director's pet slime.  It shifts colors constantly."
 	rainbow_core_candidate = FALSE
 
-/mob/living/simple_animal/slime/rainbow/kendrick/New()
+/mob/living/simple_animal/slime/rainbow/kendrick/Initialize()
+	. = ..()
 	pacify()
-	..()

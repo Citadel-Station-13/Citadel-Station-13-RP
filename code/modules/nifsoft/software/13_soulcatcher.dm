@@ -395,9 +395,9 @@
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
 
-/mob/observer/eye/ar_soul/New(var/mob/brainmob, var/human)
+/mob/observer/eye/ar_soul/Initialize(var/mob/brainmob, var/human)
+	. = ..()
 	ASSERT(brainmob && brainmob.client)
-	..()
 
 	owner = brainmob				//Set eyeobj's owner
 	parent_human = human			//E-z reference to human
