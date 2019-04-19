@@ -122,7 +122,7 @@ Class Procs:
 
 /obj/machinery/Initialize(mapload)
 	. = ..()
-	GLOB.machines |= src
+	machines |= src
 	if(ispath(circuit))
 		circuit = new circuit(src)
 	if(!speed_process)
@@ -150,7 +150,7 @@ Class Procs:
 				H.loc = src.loc
 			else
 				qdel(A)
-	GLOB.machines -= src
+	machines -= src
 	return ..()
 
 /obj/machinery/process()//If you dont use process or power why are you here
