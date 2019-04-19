@@ -25,7 +25,7 @@ BLIND     // can't see anything
 	var/off_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/obj/screen/overlay = null
+	var/obj/screen/overlay = null											//REFACTOR POSTHASTE!!
 	var/list/away_planes //Holder for disabled planes
 
 	sprite_sheets = list(
@@ -75,8 +75,8 @@ BLIND     // can't see anything
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
-/obj/item/clothing/glasses/meson/New()
-	..()
+/obj/item/clothing/glasses/meson/Initialize()
+	. = ..()
 	overlay = global_hud.meson
 
 /obj/item/clothing/glasses/meson/prescription
@@ -120,8 +120,8 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	item_flags = AIRTIGHT
 
-/obj/item/clothing/glasses/science/New()
-	..()
+/obj/item/clothing/glasses/science/Initialize()
+	. = ..()
 	overlay = global_hud.science
 
 /obj/item/clothing/glasses/goggles
@@ -150,8 +150,8 @@ BLIND     // can't see anything
 	species_restricted = list("Vox")
 	flags = PHORONGUARD
 
-/obj/item/clothing/glasses/night/New()
-	..()
+/obj/item/clothing/glasses/night/Initialize()
+	. = ..()
 	overlay = global_hud.nvg
 
 /obj/item/clothing/glasses/eyepatch
@@ -196,8 +196,8 @@ BLIND     // can't see anything
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
-/obj/item/clothing/glasses/material/New()
-	..()
+/obj/item/clothing/glasses/material/Initialize()
+	. = ..()
 	overlay = global_hud.material
 
 /obj/item/clothing/glasses/material/prescription
@@ -413,8 +413,8 @@ BLIND     // can't see anything
 						M.disabilities &= ~NEARSIGHTED
 		..()
 
-/obj/item/clothing/glasses/thermal/New()
-	..()
+/obj/item/clothing/glasses/thermal/Initialize()
+	. = ..()
 	overlay = global_hud.thermal
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
