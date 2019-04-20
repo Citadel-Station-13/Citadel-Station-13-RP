@@ -664,11 +664,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "co" = (
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/mecha/malf_drone{
-=======
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced{
->>>>>>> 050abfa... Merge pull request #5070 from Heroman3003/advanced-dark-gygax-attacks
 	faction = "syndicate"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
