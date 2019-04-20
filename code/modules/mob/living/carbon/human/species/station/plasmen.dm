@@ -25,7 +25,7 @@
 
 	blood_volume = 560
 	hunger_factor = 0
-	metabolic_rate = 0
+	metabolic_rate = 1
 
 	virus_immune = 1
 
