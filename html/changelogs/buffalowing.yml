@@ -33,6 +33,6 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Lizards can now be held and interacted with similar to mice."
+  - tweak: "Lizards and solargrubs can now be held and interacted with similar to mice."
   - bugfix: ".45 pistols can now be stored in jackets that are capable of holding energy guns."
 
