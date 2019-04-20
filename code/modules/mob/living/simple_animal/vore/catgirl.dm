@@ -45,8 +45,7 @@
 	)
 
 /mob/living/simple_animal/catgirl/Initialize()
-	. =
-	..()
+	. = ..()
 	if(random_skin)
 		icon_living = pick(skins)
 		icon_rest = "[icon_living]asleep"
