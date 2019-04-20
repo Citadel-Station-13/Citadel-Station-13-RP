@@ -118,6 +118,13 @@ I said no!
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/mouseburger
 
+/datum/recipe/lizardburger
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/bun,
+		/obj/item/weapon/holder/micro
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/lizardburger
+
 /datum/recipe/hotdog
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/bun,

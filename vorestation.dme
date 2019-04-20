@@ -2274,6 +2274,7 @@
 #include "code\modules\mob\living\simple_animal\animals\giant_spider_vr.dm"
 #include "code\modules\mob\living\simple_animal\animals\goose.dm"
 #include "code\modules\mob\living\simple_animal\animals\lizard.dm"
+#include "code\modules\mob\living\simple_animal\animals\lizard_vr.dm"
 #include "code\modules\mob\living\simple_animal\animals\miscellaneous.dm"
 #include "code\modules\mob\living\simple_animal\animals\mouse.dm"
 #include "code\modules\mob\living\simple_animal\animals\mouse_vr.dm"
