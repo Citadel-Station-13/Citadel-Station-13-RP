@@ -5,7 +5,10 @@
 	anchored = 0
 	buckle_movable = 1
 
+<<<<<<< HEAD
 	var/last_active_move = 0
+=======
+>>>>>>> 8bb49a5... Merge pull request #5105 from VOREStation/upstream-merge-6112
 	var/driving = 0
 	var/mob/living/pulling = null
 	var/bloodiness
@@ -31,10 +34,13 @@
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
+<<<<<<< HEAD
  	
 	if(world.time < last_active_move + move_delay)
 		return
 
+=======
+>>>>>>> 8bb49a5... Merge pull request #5105 from VOREStation/upstream-merge-6112
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
 		if(user==pulling)
 			pulling = null
@@ -63,10 +69,13 @@
 		user << "<span class='warning'>You cannot drive while being pushed.</span>"
 		return
 
+<<<<<<< HEAD
 
  	last_active_move = world.time
 
 
+=======
+>>>>>>> 8bb49a5... Merge pull request #5105 from VOREStation/upstream-merge-6112
 	// Let's roll
 	driving = 1
 	var/turf/T = null
