@@ -1,7 +1,36 @@
 "a" = (/turf/space,/area/space)
 "b" = (/turf/simulated/mineral/floor/ignore_mapgen,/area/space)
 "c" = (/turf/simulated/wall/r_wall,/area/space)
-"d" = (/obj/machinery/door/blast/shutters{icon_state = "shutter1"; dir = 4},/turf/simulated/mineral/floor/ignore_mapgen,/area/space)
+"d" = (/turf/simulated/floor/tiled/techmaint,/area/space)
+"e" = (/turf/simulated/floor/tiled/techfloor,/area/space)
+"f" = (/turf/simulated/floor/tiled/asteroid_steel,/area/space)
+"g" = (/obj/effect/decal/cleanable/cobweb2,/turf/simulated/floor/tiled/techmaint,/area/space)
+"h" = (/obj/machinery/door/blast/shutters{icon_state = "shutter1"; dir = 4},/obj/machinery/door/firedoor,/turf/simulated/floor/tiled/techmaint,/area/space)
+"i" = (/turf/space,/area)
+"j" = (/obj/structure/extinguisher_cabinet{dir = 4; icon_state = "extinguisher_closed"; pixel_x = -30},/turf/simulated/floor/tiled/techmaint,/area/space)
+"k" = (/obj/vehicle/train/rover/engine{icon_state = "rover"; dir = 8},/turf/simulated/floor/tiled/techfloor,/area/space)
+"l" = (/turf/simulated/wall,/area/space)
+"m" = (/obj/effect/decal/remains/tajaran,/turf/simulated/floor/tiled/asteroid_steel,/area/space)
+"n" = (/obj/effect/decal/remains/posi,/turf/simulated/floor/tiled/asteroid_steel,/area/space)
+"o" = (/obj/structure/dispenser/phoron,/turf/simulated/floor/tiled/techmaint,/area/space)
+"p" = (/obj/item/integrated_circuit/input/button,/turf/simulated/floor/tiled/asteroid_steel,/area/space)
+"q" = (/obj/structure/table/rack/shelf/steel,/obj/item/weapon/tool/crowbar/power,/obj/item/weapon/stock_parts/motor,/obj/item/weapon/stock_parts/motor,/obj/item/weapon/stock_parts/spring,/obj/item/weapon/stock_parts/gear,/turf/simulated/floor/tiled/techmaint,/area/space)
+"r" = (/obj/structure/table/steel,/turf/simulated/floor/tiled/techmaint,/area/space)
+"s" = (/obj/effect/decal/remains/robot,/turf/simulated/mineral/floor/ignore_mapgen,/area/space)
+"t" = (/obj/structure/table/steel,/obj/item/weapon/storage/toolbox/mechanical,/turf/simulated/floor/tiled/techmaint,/area/space)
+"u" = (/obj/structure/sign/warning/emergence,/turf/simulated/wall,/area/space)
+"v" = (/obj/effect/decal/cleanable/liquid_fuel,/turf/simulated/floor/tiled/techfloor,/area/space)
+"w" = (/obj/effect/decal/cleanable/blood/gibs/robot/down,/turf/simulated/floor/tiled/asteroid_steel,/area/space)
+"x" = (/obj/item/weapon/stock_parts/spring,/turf/simulated/floor/tiled/techfloor,/area/space)
+"y" = (/obj/item/weapon/tool/wrench/power,/obj/item/clothing/glasses/welding,/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/tiled/techfloor,/area/space)
+"z" = (/obj/item/weapon/weldpack,/turf/simulated/floor/tiled/techfloor,/area/space)
+"A" = (/obj/effect/decal/remains/unathi,/turf/simulated/floor/tiled/asteroid_steel,/area/space)
+"B" = (/obj/item/weapon/stock_parts/gear,/turf/simulated/floor/tiled/techmaint,/area/space)
+"C" = (/obj/vehicle/train/trolley,/turf/simulated/floor/tiled/techfloor,/area/space)
+"D" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/tiled/techmaint,/area/space)
+"E" = (/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/tiled/techmaint,/area/space)
+"F" = (/turf/simulated/floor,/area/space)
+"G" = (/obj/machinery/button/remote/blast_door,/turf/simulated/wall,/area/space)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -81,22 +110,22 @@ aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaacbbbbbbdbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaccccccccbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacllullllllllllFFFFFFFFFllllllbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacdddddglfbbbbbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacddeeeehffffffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacddeeeehffffffffffmfbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacddeeeehffnfffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacdddddolpbbbbbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacdddddqlfbbbbbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacdddddrlfbbbsbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaicjddddtGfbbbbbbbbfffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacddeeevhfffffffffffwbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacddekCehffffffffffffbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacddexyzhffffffffffAfbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaacDdBddElfbbbbbbbbfffbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaccccccccccccccbbbfffbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbfffbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
