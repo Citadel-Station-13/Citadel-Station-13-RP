@@ -4424,6 +4424,10 @@ END CITADEL CHANGE */
 				result = new /obj/item/weapon/reagent_containers/food/snacks/mouseburger(src)
 				to_chat(user, "You make a mouse burger!")
 
+		switch (MF.kitchen_tag)
+			if ("lizard")
+				result = new /obj/item/weapon/reagent_containers/food/snacks/mouseburger(src)
+				to_chat(user, "You make a lizard burger!")
 	if (result)
 		if (W.reagents)
 			//Reagents of reuslt objects will be the sum total of both.  Except in special cases where nonfood items are used
