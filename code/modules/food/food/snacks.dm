@@ -3819,6 +3819,9 @@ END CITADEL CHANGE */
 /mob/living/simple_animal/mouse
 	kitchen_tag = "rodent"
 
+/mob/living/simple_animal/lizard
+	kitchen_tag = "lizard"
+
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel
 	slices_num = 8
 
@@ -3860,6 +3863,17 @@ END CITADEL CHANGE */
 	icon_state = "ratburger"
 
 /obj/item/weapon/reagent_containers/food/snacks/mouseburger/initialize()
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/lizardburger
+	name = "lizard burger"
+	desc = "Tastes like chicken."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "baconburger"
+
+/obj/item/weapon/reagent_containers/food/snacks/lizardburger/initialize()
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
@@ -4408,7 +4422,7 @@ END CITADEL CHANGE */
 		switch (MF.kitchen_tag)
 			if ("rodent")
 				result = new /obj/item/weapon/reagent_containers/food/snacks/mouseburger(src)
-				to_chat(user, "You make a mouseburger!")
+				to_chat(user, "You make a mouse burger!")
 
 	if (result)
 		if (W.reagents)
