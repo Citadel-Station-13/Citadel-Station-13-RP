@@ -278,7 +278,6 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = loc
 	if(!istype(powered_ai))
 		return
-	powered_ai = ai
 	powered_ai.psupply = src
 	if(istype(powered_ai,/mob/living/silicon/ai/announcer))	//Don't try to get a loc for a nullspace announcer mob, just put it into it
 		forceMove(powered_ai)
