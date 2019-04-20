@@ -11,6 +11,20 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
 	allowed = list(/obj/item/weapon/tank)
 	can_breach = 0 // w h y ?
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_UTILITY\
+		|ACCESSORY_SLOT_WEAPON\
+		|ACCESSORY_SLOT_ARMBAND\
+		|ACCESSORY_SLOT_DECOR\
+		|ACCESSORY_SLOT_MEDAL\
+		|ACCESSORY_SLOT_TIE\
+		|ACCESSORY_SLOT_OVER)
+	restricted_accessory_slots = (\
+		ACCESSORY_SLOT_UTILITY\
+		|ACCESSORY_SLOT_WEAPON\
+		|ACCESSORY_SLOT_ARMBAND\
+		|ACCESSORY_SLOT_TIE\
+		|ACCESSORY_SLOT_OVER) // snowflake decorating i guess
 
 /obj/item/clothing/head/helmet/space/plasman
 	name = "Phoronoid containment helmet"
