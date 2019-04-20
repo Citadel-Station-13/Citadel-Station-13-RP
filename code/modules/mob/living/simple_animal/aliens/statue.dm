@@ -79,8 +79,8 @@
 
 // No movement while seen code.
 
-/mob/living/simple_animal/hostile/statue/New(loc)
-	..()
+/mob/living/simple_animal/hostile/statue/Initialize()
+	. = ..()
 	// Give spells
 	add_spell(new/spell/aoe_turf/flicker_lights)
 	add_spell(new/spell/aoe_turf/blindness)

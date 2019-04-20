@@ -227,7 +227,7 @@
 					prob(3);/obj/item/weapon/reagent_containers/syringe/drugs,
 					prob(2);/obj/item/weapon/storage/pill_bottle/citalopram, //happer pills
 					prob(2);/obj/item/weapon/storage/pill_bottle/iron,
-					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine, 
+					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine,
 					prob(2);/obj/item/weapon/storage/pill_bottle/antitox,
 					prob(2);/obj/item/weapon/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/weapon/handcuffs/fuzzy,
@@ -282,8 +282,8 @@
 	destructible = 1
 	spawn_delay = 1 HOUR
 
-/obj/structure/mob_spawner/mouse_nest/New()
-	..()
+/obj/structure/mob_spawner/mouse_nest/Initialize()
+	. = ..()
 	last_spawn = rand(world.time - spawn_delay, world.time)
 	icon_state = pick(
 		"pile1",

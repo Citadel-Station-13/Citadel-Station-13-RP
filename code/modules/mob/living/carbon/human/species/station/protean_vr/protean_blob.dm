@@ -53,8 +53,8 @@
 	can_buckle = TRUE //Blobsurfing
 
 //Constructor allows passing the human to sync damages
-/mob/living/simple_animal/protean_blob/New(var/newloc, var/mob/living/carbon/human/H)
-	..()
+/mob/living/simple_animal/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
+	. = ..()
 	if(H)
 		humanform = H
 		updatehealth()
@@ -256,7 +256,7 @@
 	//Drop all our things
 	var/list/things_to_drop = contents.Copy()
 	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //And whatever else we decide for balancing.
-	
+
 	/* No for now, because insta-pepperspray or flash on unblob
 	if(l_hand && l_hand.w_class <= ITEMSIZE_SMALL) //Hands but only if small or smaller
 		things_to_not_drop += l_hand
@@ -267,7 +267,7 @@
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
-	
+
 	for(var/obj/item/I in things_to_drop) //rip hoarders
 		drop_from_inventory(I)
 

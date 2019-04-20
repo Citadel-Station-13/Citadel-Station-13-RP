@@ -181,8 +181,8 @@
 	////// ////// //////
 	var/life_disabled = 0           //VOREStation Edit -- For performance reasons
 
-/mob/living/simple_animal/New()
-	..()
+/mob/living/simple_animal/Initialize()
+	. = ..()
 	verbs -= /mob/verb/observe
 	home_turf = get_turf(src)
 	path_overlay = new(path_icon,path_icon_state)

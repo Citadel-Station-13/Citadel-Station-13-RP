@@ -43,10 +43,11 @@ var/list/ai_verbs_default = list(
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
-	density = 1
+	anchored = TRUE // -- TLE
+	density = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	shouldnt_see = list(/obj/effect/rune)
+	canmove = FALSE
 	var/list/network = list(NETWORK_DEFAULT)
 	var/obj/machinery/camera/camera = null
 	var/list/connected_robots = list()
@@ -96,7 +97,8 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/device/mmi/B, var/safety = 0)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/device/mmi/B, safety = FALSE)
+	. = ..()
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -115,10 +117,6 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
-	canmove = 0
-	density = 1
-	loc = loc
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/device/communicator/integrated(src)
@@ -132,6 +130,9 @@ var/list/ai_verbs_default = list(
 			laws = L
 	else
 		laws = new using_map.default_law_type
+
+	ai_list += src
+	new /obj/machinery/ai_powersupply(src)
 
 	aiMulti = new(src)
 	aiRadio = new(src)
@@ -172,13 +173,6 @@ var/list/ai_verbs_default = list(
 				B.brainmob.mind.transfer_to(src)
 
 			on_mob_init()
-
-	spawn(5)
-		new /obj/machinery/ai_powersupply(src)
-
-	ai_list += src
-	..()
-	return
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	src << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
@@ -279,7 +273,11 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/machinery/ai_powersupply/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/ai/powered_ai = loc
+	if(!istype(powered_ai))
+		return
 	powered_ai = ai
 	powered_ai.psupply = src
 	if(istype(powered_ai,/mob/living/silicon/ai/announcer))	//Don't try to get a loc for a nullspace announcer mob, just put it into it
@@ -287,7 +285,6 @@ var/list/ai_verbs_default = list(
 	else
 		forceMove(powered_ai.loc)
 
-	..()
 	use_power(1) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()

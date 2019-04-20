@@ -86,7 +86,8 @@
 		"Beepsky" = "secbot"
 		)
 
-/mob/observer/dead/New(mob/body)
+/mob/observer/dead/Initialize(mapload)
+	var/mob/body = loc
 	sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...

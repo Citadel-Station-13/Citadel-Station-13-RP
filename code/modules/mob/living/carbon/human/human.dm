@@ -27,7 +27,7 @@
 
 ///////////////////////// CITADEL STATION ADDITIONS END
 
-/mob/living/carbon/human/New(var/new_loc, var/new_species = null)
+/mob/living/carbon/human/Initialize(mapload, new_species)
 
 	if(!dna)
 		dna = new /datum/dna(null)
@@ -49,7 +49,7 @@
 
 	human_mob_list |= src
 
-	..()
+	. = ..()
 
 	hide_underwear.Cut()
 	for(var/category in global_underwear.categories_by_name)

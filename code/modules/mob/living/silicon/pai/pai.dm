@@ -86,8 +86,12 @@
 
 	var/current_pda_messaging = null
 
-/mob/living/silicon/pai/New(var/obj/item/device/paicard)
-	src.loc = paicard
+//refactor this siht.
+/mob/living/silicon/pai/Initialize(mapload)
+	. = ..()
+	var/obj/item/device/paicard/paicard = loc
+	if(!istype(paicard))
+		return
 	card = paicard
 	sradio = new(src)
 	communicator = new(src)
@@ -109,12 +113,10 @@
 
 	//PDA
 	pda = new(src)
-	spawn(5)
-		pda.ownjob = "Personal Assistant"
-		pda.owner = text("[]", src)
-		pda.name = pda.owner + " (" + pda.ownjob + ")"
-		pda.toff = 1
-	..()
+	pda.ownjob = "Personal Assistant"
+	pda.owner = text("[]", src)
+	pda.name = pda.owner + " (" + pda.ownjob + ")"
+	pda.toff = 1
 
 /mob/living/silicon/pai/Login()
 	..()

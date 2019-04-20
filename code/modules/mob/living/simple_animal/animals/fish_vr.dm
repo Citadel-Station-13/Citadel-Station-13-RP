@@ -3,8 +3,8 @@
 	health = 50
 	maxHealth = 50
 
-/mob/living/simple_animal/fish/koi/poisonous/New()
-	..()
+/mob/living/simple_animal/fish/koi/poisonous/Initialize()
+	. = ..()
 	create_reagents(60)
 	reagents.add_reagent("toxin", 45)
 	reagents.add_reagent("impedrezene", 15)

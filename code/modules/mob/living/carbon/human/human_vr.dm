@@ -1,7 +1,6 @@
 //Crazy alternate human stuff
-/mob/living/carbon/human/New()
+/mob/living/carbon/human/Initialize()
 	. = ..()
-
 	var/animal = pick("cow","chicken_brown", "chicken_black", "chicken_white", "chick", "mouse_brown", "mouse_gray", "mouse_white", "lizard", "cat2", "goose", "penguin")
 	var/image/img = image('icons/mob/animal.dmi', src, animal)
 	img.override = TRUE
@@ -9,5 +8,4 @@
 
 /mob/living/carbon/human/Destroy()
 	alt_farmanimals -= src
-
-	. = ..()
+	return ..()
