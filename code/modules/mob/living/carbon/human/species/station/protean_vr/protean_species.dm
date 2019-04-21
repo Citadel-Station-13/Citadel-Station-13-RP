@@ -15,7 +15,7 @@
 	flesh_color = "#505050"
 	base_color = "#FFFFFF" //Color mult, start out with this
 
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | IS_SLIME
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
 	health_hud_intensity = 2
@@ -290,7 +290,7 @@
 		var/obj/item/organ/O = organ
 		// Fix internal damage
 		if(O.damage > 0)
-			O.damage = max(0,O.damage-0.1)
+			O.damage = max(0,O.damage-0.5)
 		// If not damaged, but dead, fix it
 		else if(O.status & ORGAN_DEAD)
 			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
@@ -299,8 +299,8 @@
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"
 	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on NanoTrasen property. It must be renewed on a monthly basis."
-	icon = 'icons/mob/species/protean/protean.dmi'
-	icon_state = "permit_pan"
+	icon = 'icons/obj/card_cit.dmi'
+	icon_state = "permit-pan"
 /obj/item/clothing/accessory/permit/nanotech/set_name(var/new_name)
 	owner = 1
 	if(new_name)

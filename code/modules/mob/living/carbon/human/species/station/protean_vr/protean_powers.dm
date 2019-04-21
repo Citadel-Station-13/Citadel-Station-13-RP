@@ -234,7 +234,7 @@
 
 	//Blob form
 	if(temporary_form)
-		if(health < maxHealth*0.5)
+		if(health < maxHealth*0.3)
 			to_chat(temporary_form,"<span class='warning'>You need to regenerate more nanites first!</span>")
 		else if(temporary_form.stat)
 			to_chat(temporary_form,"<span class='warning'>You can only do this while not stunned.</span>")
