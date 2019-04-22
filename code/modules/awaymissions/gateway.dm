@@ -92,7 +92,7 @@ obj/machinery/gateway/centerstation/process()
 	if(world.time < wait)
 		user << "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>"
 		return
-	if(!awaygate.calibrated && !LAZYLEN(awaydestinations)) //VOREStation Edit
+	if(!awaygate.calibrated && !LAZYLEN(GLOB.awaydestinations)) //VOREStation Edit
 		user << "<span class='notice'>Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update.</span>"
 		return
 
@@ -135,7 +135,7 @@ obj/machinery/gateway/centerstation/process()
 		M.setDir(SOUTH)
 		return
 	else
-		var/obj/effect/landmark/dest = pick(awaydestinations)
+		var/obj/effect/landmark/dest = pick(GLOB.awaydestinations)
 		if(dest)
 			M.forceMove(dest.loc)
 			M.setDir(SOUTH)

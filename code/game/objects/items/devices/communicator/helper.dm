@@ -107,7 +107,7 @@
 // Medical records
 /obj/item/weapon/commcard/proc/get_med_records()
 	var/med_records[0]
-	for(var/datum/data/record/M in sortRecord(data_core.medical))
+	for(var/datum/data/record/M in sortRecord(GLOB.data_core.medical))
 		var/record[0]
 		record[++record.len] = list("tab" = "Name", "val" = M.fields["name"])
 		record[++record.len] = list("tab" = "ID", "val" = M.fields["id"])
@@ -128,7 +128,7 @@
 // Employment records
 /obj/item/weapon/commcard/proc/get_emp_records()
 	var/emp_records[0]
-	for(var/datum/data/record/G in sortRecord(data_core.general))
+	for(var/datum/data/record/G in sortRecord(GLOB.data_core.general))
 		var/record[0]
 		record[++record.len] = list("tab" = "Name", "val" = G.fields["name"])
 		record[++record.len] = list("tab" = "ID", "val" = G.fields["id"])
@@ -147,7 +147,7 @@
 // Security records
 /obj/item/weapon/commcard/proc/get_sec_records()
 	var/sec_records[0]
-	for(var/datum/data/record/G in sortRecord(data_core.general))
+	for(var/datum/data/record/G in sortRecord(GLOB.data_core.general))
 		var/record[0]
 		record[++record.len] = list("tab" = "Name", "val" = G.fields[""])
 		record[++record.len] = list("tab" = "Sex", "val" = G.fields[""])

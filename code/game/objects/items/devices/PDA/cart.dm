@@ -320,7 +320,7 @@ var/list/civilian_cartridges = list(
 
 	/*		General Records (Mode: 44 / 441 / 45 / 451)	*/
 	if(mode == 44 || mode == 441 || mode == 45 || mode ==451)
-		if(istype(active1, /datum/data/record) && (active1 in data_core.general))
+		if(istype(active1, /datum/data/record) && (active1 in GLOB.data_core.general))
 			values["general"] = active1.fields
 			values["general_exists"] = 1
 
@@ -333,11 +333,11 @@ var/list/civilian_cartridges = list(
 
 	if(mode == 44 || mode == 441)
 		var/medData[0]
-		for(var/datum/data/record/R in sortRecord(data_core.general))
+		for(var/datum/data/record/R in sortRecord(GLOB.data_core.general))
 			medData[++medData.len] = list(Name = R.fields["name"],"ref" = "\ref[R]")
 		values["medical_records"] = medData
 
-		if(istype(active2, /datum/data/record) && (active2 in data_core.medical))
+		if(istype(active2, /datum/data/record) && (active2 in GLOB.data_core.medical))
 			values["medical"] = active2.fields
 			values["medical_exists"] = 1
 		else
@@ -347,11 +347,11 @@ var/list/civilian_cartridges = list(
 
 	if(mode == 45 || mode == 451)
 		var/secData[0]
-		for (var/datum/data/record/R in sortRecord(data_core.general))
+		for (var/datum/data/record/R in sortRecord(GLOB.data_core.general))
 			secData[++secData.len] = list(Name = R.fields["name"], "ref" = "\ref[R]")
 		values["security_records"] = secData
 
-		if(istype(active3, /datum/data/record) && (active3 in data_core.security))
+		if(istype(active3, /datum/data/record) && (active3 in GLOB.data_core.security))
 			values["security"] = active3.fields
 			values["security_exists"] = 1
 		else
@@ -550,8 +550,8 @@ var/list/civilian_cartridges = list(
 			var/datum/data/record/M = locate(href_list["target"])
 			loc:mode = 441
 			mode = 441
-			if (R in data_core.general)
-				for (var/datum/data/record/E in data_core.medical)
+			if (R in GLOB.data_core.general)
+				for (var/datum/data/record/E in GLOB.data_core.medical)
 					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
 						M = E
 						break
@@ -563,8 +563,8 @@ var/list/civilian_cartridges = list(
 			var/datum/data/record/S = locate(href_list["target"])
 			loc:mode = 451
 			mode = 451
-			if (R in data_core.general)
-				for (var/datum/data/record/E in data_core.security)
+			if (R in GLOB.data_core.general)
+				for (var/datum/data/record/E in GLOB.data_core.security)
 					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
 						S = E
 						break

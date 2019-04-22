@@ -16,7 +16,7 @@
 			continue
 		if(ishuman(C.mob))
 			var/mob/living/carbon/human/H = C.mob
-			if(data_core && data_core.general)
+			if(GLOB.data_core && GLOB.data_core.general)
 				if(!find_general_record("name", H.real_name))
 					continue
 			curID++

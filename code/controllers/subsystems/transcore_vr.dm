@@ -162,9 +162,9 @@ SUBSYSTEM_DEF(transcore)
 /datum/controller/subsystem/transcore/proc/notify(var/name, var/repeated = FALSE)
 	ASSERT(name)
 	if(repeated)
-		global_announcer.autosay("This is a repeat notification that [name] is past-due for a mind backup.", "TransCore Oversight", "Medical")
+		GLOB.global_announcer.autosay("This is a repeat notification that [name] is past-due for a mind backup.", "TransCore Oversight", "Medical")
 	else
-		global_announcer.autosay("[name] is past-due for a mind backup.", "TransCore Oversight", "Medical")
+		GLOB.global_announcer.autosay("[name] is past-due for a mind backup.", "TransCore Oversight", "Medical")
 
 // Called from mind_record to add itself to the transcore.
 /datum/controller/subsystem/transcore/proc/add_backup(var/datum/transhuman/mind_record/MR)
@@ -197,8 +197,8 @@ SUBSYSTEM_DEF(transcore)
 // Moves all mind records from the databaes into the disk and shuts down all backup canary processing.
 /datum/controller/subsystem/transcore/proc/core_dump(var/obj/item/weapon/disk/transcore/disk)
 	ASSERT(disk)
-	global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Command")
-	global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Medical")
+	GLOB.global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Command")
+	GLOB.global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Medical")
 
 	disk.stored += backed_up
 	backed_up.Cut()

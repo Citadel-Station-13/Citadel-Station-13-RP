@@ -4,7 +4,6 @@
 #endif
 
 // Items that ask to be called every cycle.
-GLOBAL_DATUM(data_core, /datum/datacore)
 var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_objects       = list()
@@ -15,7 +14,6 @@ var/global/list/hud_icon_reference       = list()
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.
 
-GLOBAL_DATUM_INIT(universe, /datum/universal_state, new)
 
 var/global/list/global_map = null
 
@@ -88,9 +86,6 @@ var/list/OOClog    = list()
 var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
-
-GLOBAL_VAR_INIT(Debug2, FALSE)
-
 var/datum/moduletypes/mods = new()
 
 var/gravity_is_on = 1
@@ -98,10 +93,6 @@ var/gravity_is_on = 1
 var/join_motd = null
 
 var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
-GLOBAL_DATUM_INIT(game_master, /datum/game_master)
-GLOBAL_DATUM_INIT(metric, /datum/metric, new)
-
-GLOBAL_LIST_EMPTY(awaydestinations)
 
 // Forum MySQL configuration. (for use with forum account/key authentication)
 // These are all default values that will load should the forumdbconfig.txt file fail to read for whatever reason.
@@ -123,49 +114,13 @@ var/custom_event_msg = null
 var/DBConnection/dbcon     = new() // Feedback    database (New database)
 var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
 
-// Reference list for disposal sort junctions. Filled up by sorting junction's New()
-/var/list/tagger_locations = list()
 
 // Added for Xenoarchaeology, might be useful for other stuff.
 var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
 
-
-// Used by robots and robot preferences.
-var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
-	"Research"
-)
-
-// Some scary sounds.
-var/static/list/scarySounds = list(
-	'sound/weapons/thudswoosh.ogg',
-	'sound/weapons/Taser.ogg',
-	'sound/weapons/armbomb.ogg',
-	'sound/voice/hiss1.ogg',
-	'sound/voice/hiss2.ogg',
-	'sound/voice/hiss3.ogg',
-	'sound/voice/hiss4.ogg',
-	'sound/voice/hiss5.ogg',
-	'sound/voice/hiss6.ogg',
-	'sound/effects/Glassbr1.ogg',
-	'sound/effects/Glassbr2.ogg',
-	'sound/effects/Glassbr3.ogg',
-	'sound/items/Welder.ogg',
-	'sound/items/Welder2.ogg',
-	'sound/machines/airlock.ogg',
-	'sound/effects/clownstep1.ogg',
-	'sound/effects/clownstep2.ogg'
-)
-
 // Bomb cap!
 var/max_explosion_range = 14
 
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-//THIS IS BAD AND YOU SHOULD FEEL BAD - KEVINZ000 - WHY DON'T THINGS JUST SPEAK THEMSELVES DAMNIT AAAAAAAAAAAAAAAAAAA OR AT LEAST ANCHOR THIS TO THE STATION OR SOMETHING!!
-GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/intercom/omni, new(null)
-
-var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian")
 
 //Icons for in-game HUD glasses. Why don't we just share these a little bit?
 var/static/icon/ingame_hud = icon('icons/mob/hud.dmi')

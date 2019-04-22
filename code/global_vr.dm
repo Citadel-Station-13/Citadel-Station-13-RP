@@ -1,9 +1,9 @@
 /hook/startup/proc/modules_vr()
-	robot_module_types += "Medihound"
-	robot_module_types += "K9"
-	robot_module_types += "Janihound"
-	robot_module_types += "Sci-borg"
-	robot_module_types += "Pupdozer"
+	GLOB.robot_module_types += "Medihound"
+	GLOB.robot_module_types += "K9"
+	GLOB.robot_module_types += "Janihound"
+	GLOB.robot_module_types += "Sci-borg"
+	GLOB.robot_module_types += "Pupdozer"
 	return 1
 
 var/global/list/acceptable_fruit_types= list(

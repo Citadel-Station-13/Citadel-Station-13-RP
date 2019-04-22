@@ -529,11 +529,11 @@
 				solarcheck3 = FALSE
 
 	if(solarcheck1 && solarcheck2 && solarcheck3 == TRUE && solarcheckv1 > solarcheckv3 && world.time >= lastsolaralert)
-		global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge and seems to be discharging. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
+		GLOB.global_announcer.autosay("WARNING: Main Facility SMES unit now under 30 percent charge and seems to be discharging. Non-Engineering personnel are advised to set up solars if not already done.", "SMES Monitor")
 		lastsolaralert = world.time + 1800
 
 	if(enginecheck1 && enginecheck2 && enginecheck3 == TRUE && enginecheckv1 > enginecheckv3 && world.time >= lastenginealert)
-		global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge and seems to be discharging. Non-Engineering personnel are now advised to attempt engine startup procedures if not already being done.", "SMES Monitor")
+		GLOB.global_announcer.autosay("WARNING: Main Facility SMES unit now under 20 percent charge and seems to be discharging. Non-Engineering personnel are now advised to attempt engine startup procedures if not already being done.", "SMES Monitor")
 		lastenginealert = world.time + 1800
 
 	if(lastcheck <= world.time ||lastcheck == 0)

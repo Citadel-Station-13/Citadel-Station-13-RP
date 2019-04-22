@@ -125,7 +125,7 @@
 	WRITE_LOG(diary, "MISC: [text]")
 
 /proc/log_topic(text)
-	if(Debug2)
+	if(GLOB.Debug2)
 		WRITE_LOG(diary, "TOPIC: [text]")
 
 /proc/log_href(text)

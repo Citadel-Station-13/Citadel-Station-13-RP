@@ -1,5 +1,5 @@
 proc/createRandomZlevel()
-	if(awaydestinations.len || UNIT_TEST)	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
+	if(GLOB.awaydestinations.len || UNIT_TEST)	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
 		return
 
 	var/list/potentialRandomZlevels = list()
@@ -48,7 +48,7 @@ proc/createRandomZlevel()
 		for(var/obj/effect/landmark/L in landmarks_list)
 			if (L.name != "awaystart")
 				continue
-			awaydestinations.Add(L)
+			GLOB.awaydestinations.Add(L)
 		*/ //VOREStation Removal End
 		admin_notice("<font color='red'><B>Away mission loaded.</B></font>", R_DEBUG)
 
@@ -61,5 +61,5 @@ proc/createRandomZlevel()
 	name = "uncalibrated gateway destination"
 /obj/effect/landmark/gateway_scatter/Initialize()
 	. = ..()
-	awaydestinations += src
+	GLOB.awaydestinations += src
 //VOREStation Add End

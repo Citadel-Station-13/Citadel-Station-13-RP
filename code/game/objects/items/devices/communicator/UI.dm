@@ -82,7 +82,7 @@
 			weather[++weather.len] = W
 
 	// Update manifest
-	data_core.get_manifest_list()
+	GLOB.data_core.get_manifest_list()
 
 	//Modules for homescreen.
 	for(var/list/R in modules)

@@ -1,6 +1,6 @@
 
 /hook/startup/proc/createDatacore()
-	data_core = new /datum/datacore()
+	GLOB.data_core = new /datum/datacore()
 	return 1
 
 /datum/datacore
@@ -37,7 +37,7 @@
 	"}
 	var/even = 0
 	// sort mobs
-	for(var/datum/data/record/t in data_core.general)
+	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = t.fields["name"]
 		var/rank = t.fields["rank"]
 		var/real_rank = make_list_rank(t.fields["real_rank"])
@@ -152,7 +152,7 @@
 	var/datum/data/record/foundrecord
 	var/real_title = assignment
 
-	for(var/datum/data/record/t in data_core.general)
+	for(var/datum/data/record/t in GLOB.data_core.general)
 		if (t)
 			if(t.fields["name"] == name)
 				foundrecord = t
@@ -306,7 +306,7 @@
 	R.fields["ma_crim_d"]	= "No major crime convictions."
 	R.fields["notes"]		= "No notes."
 	R.fields["notes"] = "No notes."
-	data_core.security += R
+	GLOB.data_core.security += R
 
 	return R
 
@@ -329,7 +329,7 @@
 	M.fields["cdi"]			= "None"
 	M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
 	M.fields["notes"] = "No notes found."
-	data_core.medical += M
+	GLOB.data_core.medical += M
 
 	return M
 
@@ -338,13 +338,13 @@
 		PDA_Manifest.Cut()
 
 /proc/find_general_record(field, value)
-	return find_record(field, value, data_core.general)
+	return find_record(field, value, GLOB.data_core.general)
 
 /proc/find_medical_record(field, value)
-	return find_record(field, value, data_core.medical)
+	return find_record(field, value, GLOB.data_core.medical)
 
 /proc/find_security_record(field, value)
-	return find_record(field, value, data_core.security)
+	return find_record(field, value, GLOB.data_core.security)
 
 /proc/find_record(field, value, list/L)
 	for(var/datum/data/record/R in L)

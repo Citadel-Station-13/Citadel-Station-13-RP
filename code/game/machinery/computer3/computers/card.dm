@@ -180,7 +180,7 @@
 	// assume linked_db since called by interact()
 	var/crew = ""
 	var/list/L = list()
-	for (var/datum/data/record/t in data_core.general)
+	for (var/datum/data/record/t in GLOB.data_core.general)
 		var/R = t.fields["name"] + " - " + t.fields["rank"]
 		L += R
 	for(var/R in sortList(L))
@@ -278,7 +278,7 @@
 		var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( computer.loc )
 		P.info = "<B>Crew Manifest:</B><BR>"
 		var/list/L = list()
-		for (var/datum/data/record/t in data_core.general)
+		for (var/datum/data/record/t in GLOB.data_core.general)
 			var/R = t.fields["name"] + " - " + t.fields["rank"]
 			L += R
 		for(var/R in sortList(L))
@@ -312,14 +312,14 @@
 
 			writer.assignment = t1
 			writer.name = text("[writer.registered_name]'s ID Card ([writer.assignment])")
-			data_core.manifest_modify(writer.registered_name, writer.assignment)
+			GLOB.data_core.manifest_modify(writer.registered_name, writer.assignment)
 			callHook("reassign_employee", list(writer))
 
 	if("reg" in href_list)
 		if(auth)
 			writer.registered_name = href_list["reg"]
 			writer.name = text("[writer.registered_name]'s ID Card ([writer.assignment])")
-			data_core.manifest_modify(writer.registered_name, writer.assignment)
+			GLOB.data_core.manifest_modify(writer.registered_name, writer.assignment)
 			callHook("reassign_employee", list(writer))
 
 	computer.updateUsrDialog()

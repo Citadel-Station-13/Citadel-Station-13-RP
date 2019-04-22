@@ -52,19 +52,19 @@ GLOBAL_DATUM_INIT(command_announcement, /datum/announcement/priority/command, ne
 	Log(message, message_title)
 
 /datum/announcement/proc/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
+	GLOB.global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
 
 /datum/announcement/minor/Message(message as text, message_title as text)
-	global_announcer.autosay(message, announcer ? announcer : ANNOUNCER_NAME)
+	GLOB.global_announcer.autosay(message, announcer ? announcer : ANNOUNCER_NAME)
 
 /datum/announcement/priority/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
+	GLOB.global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
 
 /datum/announcement/priority/command/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME)
+	GLOB.global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME)
 
 /datum/announcement/priority/security/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME)
+	GLOB.global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME)
 
 /datum/announcement/proc/NewsCast(message as text, message_title as text)
 	if(!newscast)
@@ -117,4 +117,4 @@ GLOBAL_DATUM_INIT(command_announcement, /datum/announcement/priority/command, ne
 		AnnounceArrivalSimple(character.real_name, rank, join_message)
 
 /proc/AnnounceArrivalSimple(var/name, var/rank = "assistant", var/join_message = "will arrive at the station shortly") //VOREStation Edit - Remove shuttle reference
-	global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer")
+	GLOB.global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer")

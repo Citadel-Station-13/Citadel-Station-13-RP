@@ -3,7 +3,7 @@
 	set name = "Show GM Status"
 	set desc = "Shows you what the GM is thinking.  If only that existed in real life..."
 
-	game_master.interact(usr)
+	GLOB.game_master.interact(usr)
 
 /datum/game_master/proc/interact(var/client/user)
 	if(!user)

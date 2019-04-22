@@ -248,7 +248,7 @@
 	if(ishuman(prey))
 		vore_selected.digest_mode = DM_HOLD
 		if(check_threat(prey) >= 4)
-			global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
+			GLOB.global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
 	if(istype(prey,/mob/living/simple_animal/mouse))
 		vore_selected.digest_mode = DM_DIGEST
 	. = ..()
@@ -277,7 +277,7 @@
 		target_mob = M
 		last_target_time = world.time
 		if(check_threat(M) >= 4)
-			global_announcer.autosay("[src] is attempting to detain suspect <b>[target_name(M)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
+			GLOB.global_announcer.autosay("[src] is attempting to detain suspect <b>[target_name(M)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
 		return M
 	else if(investigates)
 		spawn(1)
