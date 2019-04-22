@@ -414,6 +414,9 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 ## Uncomment to enable the Panic Bunker by default. This will prevent all unseen-before players from connecting. Requires SQL.
 # PANIC_BUNKER
 
+## Set a custom panic bunker message for when people are blocked by it.
+# PANIC_BUNKER_MESSAGE Sorry, this server is not currently accepting connections from never seen before players.
+
 ## Uncomment to enable Paranoia Logging. This will notify admins and write to a file any time a new player (byond or your server) connects.
 # PARANOIA_LOGGING
 
