@@ -16,6 +16,7 @@
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
 	volume = 250
+	usesound = 'sound/effects/spray2.ogg'
 
 /obj/item/weapon/reagent_containers/spray/initialize()
 	..()
@@ -52,7 +53,7 @@
 	return
 
 /obj/item/weapon/reagent_containers/spray/proc/Spray_at(atom/A as mob|obj, mob/user as mob, proximity)
-	playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
+	playsound(src.loc, src.usesound, 50, 1, -6)
 	if (A.density && proximity)
 		A.visible_message("[usr] sprays [A] with [src].")
 		reagents.splash(A, amount_per_transfer_from_this)
@@ -199,3 +200,16 @@
 /obj/item/weapon/reagent_containers/spray/plantbgone/initialize()
 	..()
 	reagents.add_reagent("plantbgone", 100)
+
+// Citadel Edit I guess?
+/obj/item/weapon/reagent_containers/spray/cleaner/kitchengun
+	name = "kitchen gun"
+	desc = "I love you, kitchen gun!"
+	icon = 'icons/obj/gun.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		)
+	icon_state = "usp"
+	item_state = "pistol"
+	//usesound = 'sound/weapons/deagle.ogg' // The world probably isn't ready for kitchen gun in it's full glory.

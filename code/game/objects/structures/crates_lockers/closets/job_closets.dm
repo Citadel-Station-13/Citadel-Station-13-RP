@@ -47,7 +47,8 @@
 		/obj/item/weapon/storage/box/mousetraps = 2,
 		/obj/item/clothing/under/rank/chef,
 		/obj/item/clothing/head/chefhat,
-		/obj/item/weapon/storage/bag/food = 2)
+		/obj/item/weapon/storage/bag/food = 2,
+		/obj/item/weapon/reagent_containers/spray/cleaner/kitchengun)
 
 /*
  * Janitor
