@@ -12,7 +12,7 @@
 		A << "<br>"
 
 	if(prob(80))	//most of the time, we do want an announcement, because no one plays AI
-		command_announcement.Announce(alert, new_sound = sound('sound/misc/interference.ogg', volume=25))
+		GLOB.command_announcement.Announce(alert, new_sound = sound('sound/misc/interference.ogg', volume=25))
 
 
 /datum/event/communications_blackout/start()

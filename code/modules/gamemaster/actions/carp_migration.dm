@@ -19,7 +19,7 @@
 
 /datum/gm_action/carp_migration/announce()
 	var/announcement = "Unknown biological entities have been detected near [station_name()], please stand-by."
-	command_announcement.Announce(announcement, "Lifesign Alert")
+	GLOB.command_announcement.Announce(announcement, "Lifesign Alert")
 
 /datum/gm_action/carp_migration/set_up()
 	// Higher filled roles means more groups of fish.

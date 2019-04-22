@@ -4,7 +4,7 @@
 
 
 /datum/event/electrical_storm/announce()
-	command_announcement.Announce("An electrical issue has been detected in your area, please repair potential electronic overloads.", "Electrical Alert")
+	GLOB.command_announcement.Announce("An electrical issue has been detected in your area, please repair potential electronic overloads.", "Electrical Alert")
 
 
 /datum/event/electrical_storm/start()

@@ -15,7 +15,7 @@
 
 /datum/event/wallrot/announce()
 	if(center)
-		command_announcement.Announce("Harmful fungi detected on \the [station_name()] nearby [center.loc.name]. Station structures may be contaminated.", "Biohazard Alert")
+		GLOB.command_announcement.Announce("Harmful fungi detected on \the [station_name()] nearby [center.loc.name]. Station structures may be contaminated.", "Biohazard Alert")
 
 /datum/event/wallrot/start()
 	spawn()

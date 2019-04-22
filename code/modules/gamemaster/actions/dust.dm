@@ -5,7 +5,7 @@
 	reusable = TRUE
 
 /datum/gm_action/dust/announce()
-	command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching your colony.", "Dust Alert")
+	GLOB.command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching your colony.", "Dust Alert")
 
 /datum/gm_action/dust/get_weight()
 	var/engineers = metric.count_people_in_department(ROLE_ENGINEERING)

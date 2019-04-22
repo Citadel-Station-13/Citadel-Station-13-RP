@@ -38,7 +38,7 @@
 		if(5)
 			msg = "We're detecting a swarm of small objects approaching your station.  Most likely a bunch of drones.  Please exercise caution if you see any."
 
-	command_announcement.Announce(msg, "Rogue drone alert")
+	GLOB.command_announcement.Announce(msg, "Rogue drone alert")
 
 /datum/event/rogue_drone/end()
 	var/num_recovered = 0
@@ -53,6 +53,6 @@
 		num_recovered++
 
 	if(num_recovered > drones_list.len * 0.75)
-		command_announcement.Announce("The drones that were malfunctioning have been recovered safely.", "Rogue drone alert")
+		GLOB.command_announcement.Announce("The drones that were malfunctioning have been recovered safely.", "Rogue drone alert")
 	else
-		command_announcement.Announce("We're disappointed at the loss of the drones, but the survivors have been recovered.", "Rogue drone alert")
+		GLOB.command_announcement.Announce("We're disappointed at the loss of the drones, but the survivors have been recovered.", "Rogue drone alert")

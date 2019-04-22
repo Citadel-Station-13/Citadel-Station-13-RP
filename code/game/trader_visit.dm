@@ -60,7 +60,7 @@ proc/trigger_trader_visit()
 	if(send_beruang)
 		return
 
-	command_announcement.Announce("Incoming cargo hauler: Beruang (Reg: VRS 22EB1F11C2).", "[station_name()] Traffic Control")
+	GLOB.command_announcement.Announce("Incoming cargo hauler: Beruang (Reg: VRS 22EB1F11C2).", "[station_name()] Traffic Control")
 
 	can_call_traders = 0 // Only one call per round.
 	send_beruang = 1

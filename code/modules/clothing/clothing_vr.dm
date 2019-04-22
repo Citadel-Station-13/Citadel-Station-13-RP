@@ -105,7 +105,7 @@
 
 /obj/item/clothing/suit/equipped(var/mob/user, var/slot)
 	var/normalize = TRUE
-	
+
 	//Pyramid of doom-y. Improve somehow?
 	if(!taurized && slot == slot_wear_suit && ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -123,8 +123,8 @@
 	return ..()
 
 // Taur suits need to be shifted so its centered on their taur half.
-/obj/item/clothing/suit/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer = 0)
-	var/image/standing = ..()
+/obj/item/clothing/suit/build_worn_icon(body_type, slot_name, inhands, default_icon, default_layer)
+	var/mutable_appearance/standing = ..()
 	if(taurized) //Special snowflake var on suits
 		standing.pixel_x = -16
 		standing.layer = BODY_LAYER + 15 // 15 is above tail layer, so will not be covered by taurbody.

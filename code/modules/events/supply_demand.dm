@@ -63,7 +63,7 @@
 		send_console_message(message, dpt);
 
 	// Also announce over main comms so people know to look
-	command_announcement.Announce("An order for the station to deliver supplies to [command_name()] has been delivered to all supply Request Consoles", my_department)
+	GLOB.command_announcement.Announce("An order for the station to deliver supplies to [command_name()] has been delivered to all supply Request Consoles", my_department)
 
 /datum/event/supply_demand/tick()
 	if(required_items.len == 0)
@@ -78,11 +78,11 @@
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
 		msg += "[capitalize(pick(first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."
-		command_announcement.Announce(msg, my_department)
+		GLOB.command_announcement.Announce(msg, my_department)
 	else
 		// Fail!
 		var/datum/supply_demand_order/random = pick(required_items)
-		command_announcement.Announce("What happened? Accounting is here right now and they're already asking where that [random.name] is. Damn, I gotta go", my_department)
+		GLOB.command_announcement.Announce("What happened? Accounting is here right now and they're already asking where that [random.name] is. Damn, I gotta go", my_department)
 		var/message = "The delivery deadline was reached with the following needs outstanding:<hr>"
 		for (var/datum/supply_demand_order/req in required_items)
 			message += req.describe() + "<br>"

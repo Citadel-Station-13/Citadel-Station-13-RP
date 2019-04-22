@@ -4,8 +4,7 @@
 #endif
 
 // Items that ask to be called every cycle.
-var/global/datum/datacore/data_core = null
-var/global/list/all_areas                = list()
+GLOBAL_DATUM(data_core, /datum/datacore)
 var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_objects       = list()
@@ -16,7 +15,7 @@ var/global/list/hud_icon_reference       = list()
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.
 
-var/global/datum/universal_state/universe = new
+GLOBAL_DATUM_INIT(universe, /datum/universal_state, new)
 
 var/global/list/global_map = null
 
@@ -27,17 +26,8 @@ var/diary				= null
 var/error_log			= null
 var/debug_log			= null
 var/href_logfile		= null
-// var/station_name		= "Northern Star"
-// var/const/station_orig	= "Northern Star" //station_name can't be const due to event prefix/suffix
-// var/const/station_short	= "Northern Star"
-// var/const/dock_name		= "Vir Interstellar Spaceport"
-// var/const/boss_name		= "Central Command"
-// var/const/boss_short	= "CentCom"
-// var/const/company_name	= "NanoTrasen"
-// var/const/company_short	= "NT"
-// var/const/star_name		= "Vir"
-// var/const/starsys_name	= "Vir"
-var/const/game_version	= "VOREStation"
+
+var/game_version	= "VOREStation"
 var/changelog_hash		= ""
 var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 544)
 var/round_progressing = 1
@@ -99,8 +89,7 @@ var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
 
-var/Debug2 = 0
-var/datum/debug/debugobj
+GLOBAL_VAR_INIT(Debug2, FALSE)
 
 var/datum/moduletypes/mods = new()
 
@@ -109,10 +98,10 @@ var/gravity_is_on = 1
 var/join_motd = null
 
 var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
-var/datum/game_master/game_master = new() // Game Master, an AI for choosing events.
-var/datum/metric/metric = new() // Metric datum, used to keep track of the round.
+GLOBAL_DATUM_INIT(game_master, /datum/game_master)
+GLOBAL_DATUM_INIT(metric, /datum/metric, new)
 
-var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
+GLOBAL_LIST_EMPTY(awaydestinations)
 
 // Forum MySQL configuration. (for use with forum account/key authentication)
 // These are all default values that will load should the forumdbconfig.txt file fail to read for whatever reason.
@@ -173,7 +162,8 @@ var/static/list/scarySounds = list(
 var/max_explosion_range = 14
 
 // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/device/radio/intercom/omni/global_announcer = new /obj/item/device/radio/intercom/omni(null)
+//THIS IS BAD AND YOU SHOULD FEEL BAD - KEVINZ000 - WHY DON'T THINGS JUST SPEAK THEMSELVES DAMNIT AAAAAAAAAAAAAAAAAAA OR AT LEAST ANCHOR THIS TO THE STATION OR SOMETHING!!
+GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/intercom/omni, new(null)
 
 var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian")
 

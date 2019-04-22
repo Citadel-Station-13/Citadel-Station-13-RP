@@ -1,7 +1,10 @@
 //VOREStation Edit - Most of this file has been changed to use the Eris-style PA announcements.
 //You'll need to compare externally, or use your best judgement when merging.
-/var/datum/announcement/priority/priority_announcement = new(do_log = 0)
-/var/datum/announcement/priority/command/command_announcement = new(do_log = 0, do_newscast = 1)
+
+//this shit is terrible - kevinz000
+//refactor this sometime yikes
+GLOBAL_DATUM_INIT(priority_announcement, /datum/announcement/priority, new(do_log = FALSE))
+GLOBAL_DATUM_INIT(command_announcement, /datum/announcement/priority/command, new(do_log = FALSE, do_newscast = TRUE))
 
 /datum/announcement
 	var/title = "Attention"
@@ -48,22 +51,22 @@
 	Sound(message_sound)
 	Log(message, message_title)
 
-datum/announcement/proc/Message(message as text, message_title as text)
+/datum/announcement/proc/Message(message as text, message_title as text)
 	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
 
-datum/announcement/minor/Message(message as text, message_title as text)
+/datum/announcement/minor/Message(message as text, message_title as text)
 	global_announcer.autosay(message, announcer ? announcer : ANNOUNCER_NAME)
 
-datum/announcement/priority/Message(message as text, message_title as text)
+/datum/announcement/priority/Message(message as text, message_title as text)
 	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
 
-datum/announcement/priority/command/Message(message as text, message_title as text)
+/datum/announcement/priority/command/Message(message as text, message_title as text)
 	global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME)
 
-datum/announcement/priority/security/Message(message as text, message_title as text)
+/datum/announcement/priority/security/Message(message as text, message_title as text)
 	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME)
 
-datum/announcement/proc/NewsCast(message as text, message_title as text)
+/datum/announcement/proc/NewsCast(message as text, message_title as text)
 	if(!newscast)
 		return
 
@@ -75,24 +78,24 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	news.can_be_redacted = 0
 	announce_newscaster_news(news)
 
-datum/announcement/proc/PlaySound(var/message_sound)
+/datum/announcement/proc/PlaySound(var/message_sound)
 	if(!message_sound)
 		return
 	for(var/mob/M in player_list)
 		if(!istype(M,/mob/new_player) && !isdeaf(M))
 			M << message_sound
 
-datum/announcement/proc/Sound(var/message_sound)
+/datum/announcement/proc/Sound(var/message_sound)
 	PlaySound(message_sound)
 
-datum/announcement/priority/Sound(var/message_sound)
+/datum/announcement/priority/Sound(var/message_sound)
 	if(message_sound)
 		world << message_sound
 
-datum/announcement/priority/command/Sound(var/message_sound)
+/datum/announcement/priority/command/Sound(var/message_sound)
 	PlaySound(message_sound)
 
-datum/announcement/proc/Log(message as text, message_title as text)
+/datum/announcement/proc/Log(message as text, message_title as text)
 	if(log)
 		log_game("[key_name(usr)] has made \a [announcement_type]: [message_title] - [message] - [announcer]")
 		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)
@@ -102,10 +105,10 @@ datum/announcement/proc/Log(message as text, message_title as text)
 	return I.assignment ? "[I.registered_name] ([I.assignment])" : I.registered_name
 
 /proc/level_seven_announcement()
-	command_announcement.Announce("Confirmed outbreak of level 7 biohazard aboard \the [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
+	GLOB.command_announcement.Announce("Confirmed outbreak of level 7 biohazard aboard \the [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
 
 /proc/ion_storm_announcement()
-	command_announcement.Announce("It has come to our attention that \the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
+	GLOB.command_announcement.Announce("It has come to our attention that \the [station_name()] passed through an ion storm.  Please monitor all electronic equipment for malfunctions.", "Anomaly Alert")
 
 /proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)
 	if (ticker.current_state == GAME_STATE_PLAYING)

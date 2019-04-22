@@ -8,7 +8,7 @@
 
 /datum/gm_action/comms_blackout/announce()
 	if(prob(80))
-		command_announcement.Announce("Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you-BZZT", new_sound = 'sound/misc/interference.ogg')
+		GLOB.command_announcement.Announce("Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you-BZZT", new_sound = 'sound/misc/interference.ogg')
 	// AIs will always know if there's a comm blackout, rogue AIs could then lie about comm blackouts in the future while they shutdown comms
 	for(var/mob/living/silicon/ai/A in player_list)
 		A << "<br>"

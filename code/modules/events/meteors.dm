@@ -13,9 +13,9 @@
 /datum/event/meteor_wave/announce()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("Meteors have been detected on collision course with \the [station_name()].", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
+			GLOB.command_announcement.Announce("Meteors have been detected on collision course with \the [station_name()].", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
 		else
-			command_announcement.Announce("\The [station_name()] is now in a meteor shower.", "Meteor Alert")
+			GLOB.command_announcement.Announce("\The [station_name()] is now in a meteor shower.", "Meteor Alert")
 
 /datum/event/meteor_wave/tick()
 	if(waves && activeFor >= next_meteor)
@@ -32,9 +32,9 @@
 /datum/event/meteor_wave/end()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("\The [station_name()] has cleared the meteor storm.", "Meteor Alert")
+			GLOB.command_announcement.Announce("\The [station_name()] has cleared the meteor storm.", "Meteor Alert")
 		else
-			command_announcement.Announce("\The [station_name()] has cleared the meteor shower", "Meteor Alert")
+			GLOB.command_announcement.Announce("\The [station_name()] has cleared the meteor shower", "Meteor Alert")
 
 /datum/event/meteor_wave/proc/get_meteors()
 	if(EVENT_LEVEL_MAJOR)

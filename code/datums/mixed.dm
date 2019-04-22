@@ -39,8 +39,3 @@
 /datum/data/text
 	name = "text"
 	var/data = null
-
-
-
-/datum/debug
-	var/list/debuglist

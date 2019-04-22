@@ -30,7 +30,7 @@
 	ASSERT(istype(target))
 
 	// Blow up the target area?
-	//command_announcement.Announce(departure_message,(announcer ? announcer : "[using_map.boss_name]"))
+	//GLOB.command_announcement.Announce(departure_message,(announcer ? announcer : "[using_map.boss_name]"))
 
 	//What people are we dealing with here
 	var/list/victims = list()
@@ -59,7 +59,7 @@
 	var/boomsize = area_turfs.len / 10 // Bigger shuttle = bigger boom
 	explosion(epicenter, 0, boomsize, boomsize*2, boomsize*3)
 	moving_status = SHUTTLE_CRASHED
-	command_announcement.Announce("[crash_message]", "Shuttle Alert")
+	GLOB.command_announcement.Announce("[crash_message]", "Shuttle Alert")
 
 	// Put people back
 	for(var/living in victims)

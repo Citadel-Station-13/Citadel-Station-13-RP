@@ -29,17 +29,17 @@
 /datum/gm_action/meteor_defense/announce()
 	var/announcement = "Alert!  Two other asteroids have collided near [station_name()].  Chunks of it are expected to approach from the [dir_text] side.  ETA to arrival is \
 	approximately 10 minutes."
-	command_announcement.Announce(announcement, "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
+	GLOB.command_announcement.Announce(announcement, "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
 
 /datum/gm_action/meteor_defense/start()
 	..()
 	spawn(0)
 	//	sleep(5 MINUTES)
 		var/announcement = "The incoming debris are expected to approach from the [dir_text] side.  ETA to arrival is approximately 5 minutes."
-		command_announcement.Announce(announcement, "Meteor Alert - Update")
+		GLOB.command_announcement.Announce(announcement, "Meteor Alert - Update")
 	//	sleep(5 MINUTES)
 		announcement = "Incoming debris approaches from the [dir_text] side!"
-		command_announcement.Announce(announcement, "Meteor Alert - Update")
+		GLOB.command_announcement.Announce(announcement, "Meteor Alert - Update")
 		while(waves)
 			message_admins("[waves] more wave\s of meteors remain.")
 			spawn(1) // Dir is reversed because the direction describes where meteors are going, not what side it's gonna hit.
@@ -47,5 +47,5 @@
 			waves--
 			sleep(30 SECONDS)
 		announcement = "The colony has cleared the incoming debris."
-		command_announcement.Announce(announcement, "Meteor Alert - Update")
+		GLOB.command_announcement.Announce(announcement, "Meteor Alert - Update")
 		message_admins("Meteor defense event has ended.")

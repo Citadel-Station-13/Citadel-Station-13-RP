@@ -35,7 +35,7 @@
 			C.messagetitle.Add(args["title"])
 			C.messagetext.Add(P.info)
 
-	command_announcement.Announce(args["message"], args["title"])
+	GLOB.command_announcement.Announce(args["message"], args["title"])
 	return 1
 
 /datum/uplink_item/abstract/announcements/fake_crew_arrival
