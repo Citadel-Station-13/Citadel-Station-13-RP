@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 
 /decl/observ/destroyed/proc/cleanup_global_listener(listener, listen_count)
 	GLOB.global_listen_count -= listener
-	for(var/entry in all_observable_events.events)
+	for(var/entry in GLOB.all_observable_events.events)
 		var/decl/observ/event = entry
 		if(event.unregister_global(listener))
 			log_debug("[event] - [listener] was deleted while still registered to global events.")
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 
 /decl/observ/destroyed/proc/cleanup_source_listeners(event_source, source_listener_count)
 	GLOB.event_sources_count -= event_source
-	for(var/entry in all_observable_events.events)
+	for(var/entry in GLOB.all_observable_events.events)
 		var/decl/observ/event = entry
 		var/proc_owners = event.event_sources[event_source]
 		if(proc_owners)
@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 
 /decl/observ/destroyed/proc/cleanup_event_listener(listener, listener_count)
 	GLOB.event_listen_count -= listener
-	for(var/entry in all_observable_events.events)
+	for(var/entry in GLOB.all_observable_events.events)
 		var/decl/observ/event = entry
 		for(var/event_source in event.event_sources)
 			if(event.unregister(event_source, listener))

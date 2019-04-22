@@ -184,6 +184,7 @@
 	var/list/bounds
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 
+	/*
 	//default for SOUTH
 	var/xi = 1
 	var/yi = -1
@@ -200,6 +201,7 @@
 		if(WEST)
 			xi = -1
 			yi = -1
+	*/
 
 	for(var/I in gridSets)
 		var/datum/grid_set/gset = I

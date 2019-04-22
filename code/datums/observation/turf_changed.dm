@@ -24,4 +24,4 @@ GLOBAL_DATUM_INIT(turf_changed_event, /decl/observ/turf_changed, new)
 	var/old_opacity = opacity
 	. = ..(N, tell_universe, force_lighting_update, preserve_outdoors)
 	if(.)
-		turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)
+		GLOB.turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)

@@ -211,10 +211,9 @@
 
 
 ///////////////VORESTATION STUFF BELOW
-
-
+GLOBAL_VAR_INIT(kill_submap_seeding, FALSE)		//emergency kill for this long running proc
 // Very similar to the /tg/ version.
-/proc/seed_submaps(var/list/z_levels, var/budget = 0, var/whitelist = /area/space, var/desired_map_template_type = null)
+/proc/seed_submaps(var/list/z_levels, var/budget = 0, var/whitelist = /area/space, var/desired_map_template_type = null, overall_sanity = 250, default_specific_sanity = 250)
 	if(!z_levels || !z_levels.len)
 		admin_notice("seed_submaps() was not given any Z-levels.", R_DEBUG)
 		return
@@ -225,7 +224,6 @@
 			admin_notice("Z level [zl] does not exist - Not generating submaps", R_DEBUG)
 			return
 
-	var/overall_sanity = 500 // If the proc fails to place a submap more than this, the whole thing aborts.
 	var/list/potential_submaps = list() // Submaps we may or may not place.
 	var/list/priority_submaps = list() // Submaps that will always be placed.
 
@@ -266,6 +264,8 @@
 			break
 
 		CHECK_TICK
+		if(GLOB.kill_submap_seeding)
+			return
 
 		var/cache_normally = chosen_template.keep_cached_map
 
@@ -284,7 +284,7 @@
 		if(!cache_normally)
 			temp_cache += chosen_template.cached_map
 		// If so, try to place it.
-		var/specific_sanity = 500 // A hundred chances to place the chosen submap.
+		var/specific_sanity = default_specific_sanity // A hundred chances to place the chosen submap.
 		while(specific_sanity > 0)
 			specific_sanity--
 
@@ -310,6 +310,8 @@
 				CHECK_TICK
 
 			CHECK_TICK
+			if(GLOB.kill_submap_seeding)
+				return
 
 			if(!valid)
 				continue

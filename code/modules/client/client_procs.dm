@@ -305,17 +305,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		)
 
 
-mob/proc/MayRespawn()
+/mob/proc/MayRespawn()
 	return 0
 
-client/proc/MayRespawn()
+/client/proc/MayRespawn()
 	if(mob)
 		return mob.MayRespawn()
 
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
 
-client/verb/character_setup()
+/client/verb/character_setup()
 	set name = "Character Setup"
 	set category = "Preferences"
 	if(prefs)
@@ -377,16 +377,14 @@ client/verb/character_setup()
 	*/
 
 /client/proc/generate_clickcatcher()
-	return			//fuck it!
 	if(!void)
 		void = new
 		screen += void
 
 /client/proc/apply_clickcatcher()
-	return			//fuck it we can get to this later!
 	generate_clickcatcher()
 	var/list/actualview = getviewsize(view)
-	void.MakeGreed();actualview=actualview//UpdateGreed(actualview[1],actualview[2])
+	void.UpdateGreed(actualview[1],actualview[2])
 
 GLOBAL_VAR_INIT(announce_prs, TRUE)
 /client/proc/AnnouncePR(announcement)
