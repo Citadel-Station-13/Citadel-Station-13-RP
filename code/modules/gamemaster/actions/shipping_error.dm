@@ -4,7 +4,7 @@
 	reusable = TRUE
 
 /datum/gm_action/shipping_error/get_weight()
-	var/cargo = metric.count_people_in_department(ROLE_CARGO)
+	var/cargo = GLOB.metric.count_people_in_department(ROLE_CARGO)
 	var/weight = (cargo * 40)
 	return weight
 

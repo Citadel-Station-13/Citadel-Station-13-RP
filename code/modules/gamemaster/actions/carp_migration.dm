@@ -15,7 +15,7 @@
 		var/turf/T = get_turf(L)
 		if(istype(T, /turf/space) && istype(T.loc,/area/space))
 			people_in_space++
-	return 50 + (metric.count_people_in_department(ROLE_SECURITY) * 10) + (people_in_space * 20)
+	return 50 + (GLOB.metric.count_people_in_department(ROLE_SECURITY) * 10) + (people_in_space * 20)
 
 /datum/gm_action/carp_migration/announce()
 	var/announcement = "Unknown biological entities have been detected near [station_name()], please stand-by."
@@ -24,12 +24,12 @@
 /datum/gm_action/carp_migration/set_up()
 	// Higher filled roles means more groups of fish.
 	var/station_strength = 0
-	station_strength += (metric.count_people_in_department(ROLE_SECURITY) * 3)
-	station_strength += (metric.count_people_in_department(ROLE_ENGINEERING) * 2)
-	station_strength += metric.count_people_in_department(ROLE_MEDICAL)
+	station_strength += (GLOB.metric.count_people_in_department(ROLE_SECURITY) * 3)
+	station_strength += (GLOB.metric.count_people_in_department(ROLE_ENGINEERING) * 2)
+	station_strength += GLOB.metric.count_people_in_department(ROLE_MEDICAL)
 
 	// Less active emergency response departments tones the event down.
-	var/activeness = ((metric.assess_department(ROLE_SECURITY) + metric.assess_department(ROLE_ENGINEERING) + metric.assess_department(ROLE_MEDICAL)) / 3)
+	var/activeness = ((GLOB.metric.assess_department(ROLE_SECURITY) + GLOB.metric.assess_department(ROLE_ENGINEERING) + GLOB.metric.assess_department(ROLE_MEDICAL)) / 3)
 	activeness = max(activeness, 20)
 
 	carp_amount = CEILING(station_strength * (activeness / 100) + 1, 1)

@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/device/radio/Initialize()
 	. = ..()
 	wires = new(src)
-	internal_channels = default_internal_channels.Copy()
+	internal_channels = GLOB.default_internal_channels.Copy()
 	listening_objects += src
 
 /obj/item/device/radio/Destroy()
@@ -776,4 +776,4 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/device/radio/phone/medbay/Initialize()
 	. = ..()
-	internal_channels = default_medbay_channels.Copy()
+	internal_channels = GLOB.default_medbay_channels.Copy()

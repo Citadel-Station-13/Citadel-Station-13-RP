@@ -8,7 +8,7 @@
 	GLOB.command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching your colony.", "Dust Alert")
 
 /datum/gm_action/dust/get_weight()
-	var/engineers = metric.count_people_in_department(ROLE_ENGINEERING)
+	var/engineers = GLOB.metric.count_people_in_department(ROLE_ENGINEERING)
 	var/weight = 30 + (engineers * 25)
 	return weight
 

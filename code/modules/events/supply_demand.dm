@@ -22,9 +22,9 @@
 	running_demand_events += src
 	// Decide what items are requried!
 	// We base this on what departmets are most active, excluding departments we don't have
-	var/list/notHaveDeptList = metric.departments.Copy()
+	var/list/notHaveDeptList = GLOB.metric.departments.Copy()
 	notHaveDeptList.Remove(list(ROLE_ENGINEERING, ROLE_MEDICAL, ROLE_RESEARCH, ROLE_CARGO, ROLE_CIVILIAN))
-	var/deptActivity = metric.assess_all_departments(severity * 2, notHaveDeptList)
+	var/deptActivity = GLOB.metric.assess_all_departments(severity * 2, notHaveDeptList)
 	for(var/dept in deptActivity)
 		switch(dept)
 			if(ROLE_ENGINEERING)

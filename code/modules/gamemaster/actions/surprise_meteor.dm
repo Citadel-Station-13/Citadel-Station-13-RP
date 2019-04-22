@@ -6,7 +6,7 @@
 	chaotic = 25
 
 /datum/gm_action/surprise_meteors/get_weight()
-	var/engineers = metric.count_people_in_department(ROLE_ENGINEERING)
+	var/engineers = GLOB.metric.count_people_in_department(ROLE_ENGINEERING)
 	var/weight = (max(engineers - 1, 0) * 25) // If only one engineer exists, no meteors for now.
 	return weight
 

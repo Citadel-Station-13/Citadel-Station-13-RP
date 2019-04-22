@@ -27,18 +27,18 @@
 		HTML += "[action.name] ([english_list(action.departments)]) (weight: [action.get_weight()]) <a href='?src=\ref[action];force=1'>\[Force\]</a> <br>"
 
 	HTML += "<br>"
-	HTML += "All living mobs activity: [metric.assess_all_living_mobs()]%<br>"
-	HTML += "All ghost activity: [metric.assess_all_dead_mobs()]%<br>"
+	HTML += "All living mobs activity: [GLOB.metric.assess_all_living_mobs()]%<br>"
+	HTML += "All ghost activity: [GLOB.metric.assess_all_dead_mobs()]%<br>"
 
 	HTML += "<br>"
 	HTML += "Departmental activity;<br>"
-	for(var/department in metric.departments)
-		HTML += "    [department] : [metric.assess_department(department)]%<br>"
+	for(var/department in GLOB.metric.departments)
+		HTML += "    [department] : [GLOB.metric.assess_department(department)]%<br>"
 
 	HTML += "<br>"
 	HTML += "Activity of players;<br>"
 	for(var/mob/player in player_list)
-		HTML += "    [player] ([player.key]) : [metric.assess_player_activity(player)]%<br>"
+		HTML += "    [player] ([player.key]) : [GLOB.metric.assess_player_activity(player)]%<br>"
 
 
 

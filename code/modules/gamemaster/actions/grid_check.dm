@@ -10,7 +10,7 @@
 	chaotic = 20
 
 /datum/gm_action/grid_check/get_weight()
-	return 50 + (metric.count_people_in_department(ROLE_ENGINEERING) * 30)
+	return 50 + (GLOB.metric.count_people_in_department(ROLE_ENGINEERING) * 30)
 
 /datum/gm_action/grid_check/start()
 	..()

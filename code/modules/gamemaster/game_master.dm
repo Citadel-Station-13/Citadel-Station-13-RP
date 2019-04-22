@@ -28,7 +28,7 @@
 		adjust_danger(-1)
 		ticks_completed++
 
-		var/global_afk = metric.assess_all_living_mobs()
+		var/global_afk = GLOB.metric.assess_all_living_mobs()
 		global_afk -= 100
 		global_afk = abs(global_afk)
 		global_afk = round(global_afk / 100, 0.1)
@@ -64,7 +64,7 @@
 	if(!pre_action_checks()) // Make sure we're not doing last minute events, or early events.
 		return
 	log_debug("Game Master now starting action decision.")
-	var/list/most_active_departments = metric.assess_all_departments(3, list(last_department_used))
+	var/list/most_active_departments = GLOB.metric.assess_all_departments(3, list(last_department_used))
 	var/list/best_actions = decide_best_action(most_active_departments)
 
 	if(best_actions && best_actions.len)

@@ -8,7 +8,7 @@
 	chaotic = 20
 
 /datum/gm_action/canister_leak/get_weight()
-	return metric.count_people_in_department(ROLE_ENGINEERING) * 30
+	return GLOB.metric.count_people_in_department(ROLE_ENGINEERING) * 30
 
 /datum/gm_action/canister_leak/start()
 	..()

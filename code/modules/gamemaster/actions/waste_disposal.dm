@@ -6,4 +6,4 @@
 	chaotic = 0
 
 /datum/gm_action/waste_disposal/get_weight()
-	return metric.count_people_in_department(ROLE_CARGO) * 50
+	return GLOB.metric.count_people_in_department(ROLE_CARGO) * 50
