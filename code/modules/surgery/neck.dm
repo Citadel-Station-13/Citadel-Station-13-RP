@@ -92,7 +92,7 @@
 	target.AdjustParalysis(15)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs)
-			O.take_damage(rand(5,10))*/ // Citadel Edit: Make NIF surgeries not so deadly.
+			O.take_damage(rand(5,10))*/ // Citadel Edit: Make NIF surgeries not so deadly
 
 /////////////////////////////
 // Bone Cleaning
