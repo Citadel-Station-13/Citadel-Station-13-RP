@@ -427,7 +427,7 @@
 	if ((!( ticker ) || !emergency_shuttle.location()))
 		return
 
-	if(!universe.OnShuttleCall(usr))
+	if(!GLOB.universe.OnShuttleCall(usr))
 		user << "<span class='notice'>Cannot establish a bluespace connection.</span>"
 		return
 

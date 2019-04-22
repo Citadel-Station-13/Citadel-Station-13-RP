@@ -155,7 +155,7 @@
 	var/freq = input(usr, "What frequency would you like the sound to play at?",, 1) as null|num
 	if(!freq)
 		return
-	if(web_sound_input && !findtext(web_sound_input, is_http_protocol))
+	if(web_sound_input && !findtext(web_sound_input, GLOB.is_http_protocol))
 		to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>")
 		to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>")
 		return
