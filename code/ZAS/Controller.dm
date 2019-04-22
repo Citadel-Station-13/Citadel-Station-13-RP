@@ -168,12 +168,15 @@ Class Procs:
 	#ifdef ZASDBG
 	ASSERT(isturf(T))
 	#endif
-	if(T.needs_air_update) return
-	tiles_to_update |= T
+
+	if(T.needs_air_update)
+		return
+	tiles_to_update += T
+	T.needs_air_update = TRUE
+
 	#ifdef ZASDBG
 	T.overlays += mark
 	#endif
-	T.needs_air_update = 1
 
 /datum/controller/subsystem/air/proc/mark_zone_update(zone/Z)
 	#ifdef ZASDBG

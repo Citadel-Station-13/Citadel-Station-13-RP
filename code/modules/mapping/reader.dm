@@ -184,9 +184,22 @@
 	var/list/bounds
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 
-	// If it's not a single dir, default to SOUTH (Default dir for atoms)
-	if(!(orientation in GLOB.cardinals))
-		orientation = SOUTH
+	//default for SOUTH
+	var/xi = 1
+	var/yi = -1
+	switch(orientation)
+		if(NORTH)
+			xi = -1
+			yi = 1
+		if(SOUTH)
+			xi = 1
+			yi = -1
+		if(EAST)
+			xi = 1
+			yi = 1
+		if(WEST)
+			xi = -1
+			yi = -1
 
 	for(var/I in gridSets)
 		var/datum/grid_set/gset = I

@@ -9,8 +9,7 @@
 //			/new_density: Density after the change
 //			/old_opacity: Opacity before the change
 //			/new_opacity: Opacity after the change
-
-var/decl/observ/turf_changed/turf_changed_event = new()
+GLOBAL_DATUM_INIT(turf_changed_event, /decl/observ/turf_changed, new)
 
 /decl/observ/turf_changed
 	name = "Turf Changed"

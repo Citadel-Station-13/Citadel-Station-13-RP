@@ -94,7 +94,6 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/crystal1.dmm'
 	id = "mountain_crystal1"
 	cost = 1
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/surface/mountains/normal/crystal2
 	name = "Crystal Cave 2"
@@ -102,7 +101,6 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/crystal2.dmm'
 	id = "mountain_crystal2"
 	cost = 2
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/surface/mountains/normal/crystal2
 	name = "Crystal Cave 3"
@@ -117,7 +115,6 @@
 	id = "mountain_explorer_remains"
 	mappath = 'maps/submaps/surface_submaps/mountains/lost_explorer.dmm'
 	cost = 2
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/surface/mountains/normal/Rockb1
 	name = "Rocky Base 1"
@@ -160,7 +157,6 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/vault1.dmm'
 	id = "minevault1_s"
 	cost = 2
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/surface/mountains/normal/vault2
 	name = "Mine Vault 2"
@@ -168,7 +164,6 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/vault2.dmm'
 	id = "minevault2_s"
 	cost = 2
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/surface/mountains/normal/vault3
 	name = "Mine Vault 3"
@@ -211,7 +206,6 @@
 	mappath = 'maps/submaps/surface_submaps/mountains/SupplyDrop1.dmm'
 	id = "mountain_droppod"
 	cost = 4
-	allow_duplicates = TRUE
 
 /datum/map_template/submap/surface/mountains/normal/crashedcontainmentshuttle
 	name = "Crashed Cargo Shuttle"

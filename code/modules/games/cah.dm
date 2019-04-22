@@ -14,8 +14,8 @@
 	icon_state = "cag_black"
 	blanks = 0
 
-/obj/item/weapon/deck/cah/New()
-	..()
+/obj/item/weapon/deck/cah/Initialize()
+	. = ..()
 	var/datum/playingcard/P
 	for(var/cardtext in card_text_list)
 		P = new()
@@ -25,8 +25,8 @@
 		cards += P
 	if(!blanks)
 		return
-	for(var/x=1 to blanks)
-		P = new()
+	for(var/x in 1 to blanks)
+		P = new
 		P.name = "Blank Card"
 		P.card_icon = "[icon_state]_card_back"
 		P.back_icon = "[icon_state]_card_back"

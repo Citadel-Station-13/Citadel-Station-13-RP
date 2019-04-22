@@ -215,8 +215,6 @@
 
 // Very similar to the /tg/ version.
 /proc/seed_submaps(var/list/z_levels, var/budget = 0, var/whitelist = /area/space, var/desired_map_template_type = null)
-	set background = TRUE
-
 	if(!z_levels || !z_levels.len)
 		admin_notice("seed_submaps() was not given any Z-levels.", R_DEBUG)
 		return
@@ -227,7 +225,7 @@
 			admin_notice("Z level [zl] does not exist - Not generating submaps", R_DEBUG)
 			return
 
-	var/overall_sanity = 100 // If the proc fails to place a submap more than this, the whole thing aborts.
+	var/overall_sanity = 500 // If the proc fails to place a submap more than this, the whole thing aborts.
 	var/list/potential_submaps = list() // Submaps we may or may not place.
 	var/list/priority_submaps = list() // Submaps that will always be placed.
 
@@ -286,7 +284,7 @@
 		if(!cache_normally)
 			temp_cache += chosen_template.cached_map
 		// If so, try to place it.
-		var/specific_sanity = 100 // A hundred chances to place the chosen submap.
+		var/specific_sanity = 500 // A hundred chances to place the chosen submap.
 		while(specific_sanity > 0)
 			specific_sanity--
 
@@ -316,7 +314,7 @@
 			if(!valid)
 				continue
 
-			admin_notice("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n", R_DEBUG)
+			admin_notice("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])", R_DEBUG)
 
 			// Do loading here.
 			chosen_template.load(T, centered = TRUE, orientation = orientation)		// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.

@@ -1382,6 +1382,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/chapel
 	ambience = AMBIENCE_CHAPEL
 
+/area/chapel/LateInitialize()
+	. = ..()
+	for(var/turf/T in contents)
+		T.holy = TRUE
+
 /area/chapel/main
 	name = "\improper Chapel"
 	icon_state = "chapel"

@@ -88,7 +88,6 @@
 	desc = "More rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky2.dmm'
 	id = "surface_rocky2"
-	allow_duplicates = TRUE
 	cost = 5
 
 /datum/map_template/submap/surface/plains/PascalB

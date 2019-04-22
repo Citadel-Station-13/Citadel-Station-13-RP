@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(planets)
 		T.vis_contents -= P.weather_holder.visuals
 		T.vis_contents -= P.weather_holder.special_visuals
 
-/datum/controller/subsystem/planets/proc/allocateTurfs(var/initial = FALSE)
+/datum/controller/subsystem/planets/proc/allocateTurfs(initial = FALSE)
 	var/list/currentlist = new_outdoor_turfs
 	while(currentlist.len)
 		var/turf/simulated/OT = currentlist[currentlist.len]

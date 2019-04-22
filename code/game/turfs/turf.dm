@@ -273,20 +273,11 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	return 1 //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100
-/turf/Entered(atom/atom as mob|obj)
-
-	if(movement_disabled)
-		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
+/turf/Entered(atom/movable/AM)
 	..()
 
-	if(!istype(atom, /atom/movable))
-		return
-
-	var/atom/movable/A = atom
-
-	if(ismob(A))
-		var/mob/M = A
+	if(ismob(AM))
+		var/mob/M = AM
 		if(!M.lastarea)
 			M.lastarea = get_area(M.loc)
 		if(M.lastarea.has_gravity == 0)
@@ -300,18 +291,16 @@ var/const/enterloopsanity = 100
 		if(isliving(M))
 			var/mob/living/L = M
 			L.handle_footstep(src)
-	..()
 	var/objects = 0
-	if(A && (A.flags & PROXMOVE))
+	if(AM.flags & PROXMOVE)
 		for(var/atom/movable/thing in range(1))
-			if(objects > enterloopsanity) break
+			set waitfor = FALSE
+			if(objects++ > enterloopsanity || QDELETED(AM))
+				break
 			objects++
-			spawn(0)
-				if(A) //Runtime prevention
-					A.HasProximity(thing, 1)
-					if ((thing && A) && (thing.flags & PROXMOVE))
-						thing.HasProximity(A, 1)
-	return
+			AM.HasProximity(thing, 1)
+			if(thing.flags & PROXMOVE)
+				thing.HasProximity(AM, 1)
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return

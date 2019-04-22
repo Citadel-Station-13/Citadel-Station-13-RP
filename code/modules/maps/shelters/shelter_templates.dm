@@ -1,4 +1,5 @@
 /datum/map_template/shelter
+	id = "shelter_"
 	var/blacklisted_turfs
 	var/whitelisted_turfs
 	var/banned_areas

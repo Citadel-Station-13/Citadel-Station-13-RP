@@ -30,6 +30,9 @@
 
 #endif
 
+/datum/map_template/submap/surface
+	id = "surface_"
+
 // The 'wilderness' is the endgame for Explorers. Extremely dangerous and far away from help, but with vast shinies.
 // POIs here spawn in two different sections, the top half and bottom half of the map.
 // The top half connects to the outpost z-level, and is seperated from the bottom half by a river. It should provide a challenge to a well equiped Explorer team.
@@ -90,10 +93,9 @@
 
 /datum/map_template/submap/surface/wilderness/normal/Rocky2
 	name =  "Rocky2"
-	id = "surface_rocky2"
+	id = "surface_wild_rocky2"
 	desc = "More rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky2.dmm'
-	allow_duplicates = TRUE
 	cost = 1
 
 /datum/map_template/submap/surface/wilderness/normal/Rocky3

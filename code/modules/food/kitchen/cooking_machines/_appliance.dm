@@ -42,7 +42,7 @@
 
 	var/combine_first = 0//If 1, this appliance will do combinaiton cooking before checking recipes
 
-/obj/machinery/appliance/New()
+/obj/machinery/appliance/Initialize()
 	. = ..()
 	component_parts = list()
 	component_parts += /obj/item/weapon/circuitboard/cooking
@@ -691,7 +691,7 @@
 	var/oil = 0
 	var/max_oil = 0//Used for fryers.
 
-/datum/cooking_item/New(var/obj/item/I)
+/datum/cooking_item/New(obj/item/I)
 	container = I
 
 //This is called for containers whose contents are ejected without removing the container

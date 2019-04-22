@@ -18,6 +18,7 @@
 /turf/simulated/Initialize()
 	. = ..()
 	air_master.mark_for_update(src)			//Screw you ZAS.
+	levelupdate()
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
@@ -56,12 +57,6 @@
 	for(var/obj/effect/decal/cleanable/blood/B in contents)
 		B.clean_blood()
 	..()
-
-/turf/simulated/Initialize()
-	. = ..()
-	if(istype(loc, /area/chapel))
-		holy = 1
-	levelupdate()
 
 /turf/simulated/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
 	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src

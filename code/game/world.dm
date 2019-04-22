@@ -387,11 +387,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
-			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-			world << "<span class='boldannounce'>[key_name_admin(usr)] has requested an immediate world restart via client side debugging tools</span>"
+			to_chat(world, "<span class='boldannounce'>[usr.ckey] has requested an immediate world restart via client side debugging tools</span>")
 
 		else
-			world << "<span class='boldannounce'>Rebooting world immediately due to host request</span>"
+			to_chat(world, "<span class='boldannounce'>Rebooting world immediately due to host request</span>")
 	else
 		processScheduler.stop()
 		Master.Shutdown()	//run SS shutdowns

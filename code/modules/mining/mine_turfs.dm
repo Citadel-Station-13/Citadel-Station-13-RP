@@ -110,17 +110,18 @@ var/list/mining_overlay_cache = list()
 
 /turf/simulated/mineral/Initialize()
 	. = ..()
-	if(prob(20))
-		overlay_detail = "asteroid[rand(0,9)]"
-	update_icon(1)
 	if(density && mineral)
 		. = INITIALIZE_HINT_LATELOAD
 
 /turf/simulated/mineral/LateInitialize()
+	. = ..()
+	if(prob(20))
+		overlay_detail = "asteroid[rand(0,9)]"
 	if(density && mineral)
-		MineralSpread()
+		MineralSpread(FALSE)
+	update_icon(TRUE)
 
-/turf/simulated/mineral/update_icon(var/update_neighbors)
+/turf/simulated/mineral/update_icon(update_neighbors = FALSE)
 
 	cut_overlays()
 
@@ -227,22 +228,22 @@ var/list/mining_overlay_cache = list()
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
 
-/turf/simulated/mineral/proc/MineralSpread()
+/turf/simulated/mineral/proc/MineralSpread(update_icon = TRUE)
 	if(mineral && mineral.spread)
 		for(var/trydir in cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
 					target_turf.mineral = mineral
-					target_turf.UpdateMineral()
-					target_turf.MineralSpread()
+					target_turf.UpdateMineral(update_icon)
+					target_turf.MineralSpread(update_icon)
 
-
-/turf/simulated/mineral/proc/UpdateMineral()
+/turf/simulated/mineral/proc/UpdateMineral(update_icon = TRUE)
 	clear_ore_effects()
 	if(mineral)
 		new /obj/effect/mineral(src, mineral)
-	update_icon()
+	if(update_icon)
+		update_icon()
 
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/weapon/W as obj, mob/user as mob)

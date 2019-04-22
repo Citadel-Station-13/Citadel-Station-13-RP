@@ -97,8 +97,8 @@
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/surface/mountains/normal)
-	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/deep, /datum/map_template/submap/surface/mountains/deep)
+	seed_submaps(list(z), 125, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/surface/mountains/normal)
+	seed_submaps(list(z), 125, /area/tether_away/cave/unexplored/deep, /datum/map_template/submap/surface/mountains/deep)
 
 	// Now for the tunnels.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx, world.maxy)
@@ -141,7 +141,7 @@
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 50, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/virgo2)
+	seed_submaps(list(z), 250, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/virgo2)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx, world.maxy)
 	new /datum/random_map/noise/ore/virgo2(null, 1, 1, z, 64, 64)
 
