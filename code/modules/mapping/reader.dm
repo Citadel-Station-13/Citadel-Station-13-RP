@@ -3,8 +3,6 @@
 //////////////////////////////////////////////////////////////
 #define SPACE_KEY "space"
 
-//WIP: ORIENTATION AND BEING ABLE TO SET IT ONTO A CACHED MAP!
-
 /datum/grid_set
 	var/xcrd
 	var/ycrd
@@ -23,6 +21,8 @@
 	var/list/parsed_bounds
 	/// Offset bounds. Same as parsed_bounds until load().
 	var/list/bounds
+
+	var/datum/map_template/template_host
 
 	// raw strings used to represent regexes more accurately
 	// '' used to avoid confusing syntax highlighting
@@ -43,14 +43,33 @@
 /// - `no_changeturf`: When true, [turf/AfterChange] won't be called on loaded turfs
 /// - `x_lower`, `x_upper`, `y_lower`, `y_upper`: Coordinates (relative to the map) to crop to (Optional).
 /// - `placeOnTop`: Whether to use [turf/PlaceOnTop] rather than [turf/ChangeTurf] (Optional).
-/proc/load_map(dmm_file as file, x_offset as num, y_offset as num, z_offset as num, cropMap as num, measureOnly as num, no_changeturf as num, x_lower = -INFINITY as num, x_upper = INFINITY as num, y_lower = -INFINITY as num, y_upper = INFINITY as num, placeOnTop = FALSE as num, orientation = 0 as num)
-	var/datum/parsed_map/parsed = new(dmm_file, x_lower, x_upper, y_lower, y_upper, measureOnly, orientation)
+/proc/load_map(
+	dmm_file as file,
+	x_offset as num,
+	y_offset as num,
+	z_offset as num,
+	cropMap as num,
+	measureOnly as num,
+	no_changeturf as num,
+	x_lower = -INFINITY as num,
+	x_upper = INFINITY as num,
+	y_lower = -INFINITY as num,
+	y_upper = INFINITY as num,
+	placeOnTop = FALSE as num,
+	orientation = SOUTH as num,
+	annihilate_tiles = FALSE,
+	z_lower = -INFINITY as num,
+	z_upper = INFINITY as num
+	)
+	var/datum/parsed_map/parsed = new(dmm_file, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
 	if(parsed.bounds && !measureOnly)
-		parsed.load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation)
+		parsed.load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles)
 	return parsed
 
 /// Parse a map, possibly cropping it.
-/datum/parsed_map/New(tfile, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, measureOnly = FALSE, orientation = 0)
+//WHY THE HECK DO WE EVEN SUPPORT NEGATIVE COORDINATES, ALL IT IS IS A WASTE OF TIME AND CPU!!!???
+//DO NOT USE THIS TO TRIM MAPS UNLESS STRICTLY NEEDED! IT IS EXTREMELY EXPENSIVE TO DO SO!
+/datum/parsed_map/New(tfile, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, measureOnly = FALSE)
 	if(isfile(tfile))
 		original_path = "[tfile]"
 		tfile = file2text(tfile)
@@ -59,11 +78,10 @@
 		return
 
 	bounds = parsed_bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
+	ASSERT(x_upper >= x_lower)
+	ASSERT(y_upper >= y_lower)
+	ASSERT(z_upper >= z_lower)
 	var/stored_index = 1
-
-	// If it's not a single dir, default to 0 degrees rotation (Default orientation)
-	if(!(orientation in list(0, 90, 180, 270)))
-		orientation = 0
 
 	//multiz lool
 	while(dmmRegex.Find(tfile, stored_index))
@@ -88,20 +106,23 @@
 				CRASH("Coords before model definition in DMM")
 
 			var/curr_x = text2num(dmmRegex.group[3])
+			var/curr_y = text2num(dmmRegex.group[4])
+			var/curr_z = text2num(dmmRegex.group[5])
 
-			if(curr_x < x_lower || curr_x > x_upper)
+			if(curr_x < x_lower || curr_y < y_lower || curr_z < z_lower || curr_z > z_upper)
 				continue
 
 			var/datum/grid_set/gridSet = new
 
 			gridSet.xcrd = curr_x
-			//position of the currently processed square
-			gridSet.ycrd = text2num(dmmRegex.group[4])
-			gridSet.zcrd = text2num(dmmRegex.group[5])
+			gridSet.ycrd = curr_y
+			gridSet.zcrd = curr_z
 
-			bounds[MAP_MINX] = min(bounds[MAP_MINX], CLAMP(gridSet.xcrd, x_lower, x_upper))
-			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], gridSet.zcrd)
-			bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], gridSet.zcrd)
+			bounds[MAP_MINX] = min(bounds[MAP_MINX], curr_x)			//since down is up for y/gridlines, we now know the lower left corner.
+			bounds[MAP_MINY] = min(bounds[MAP_MINY], curr_y)
+			bounds[MAP_MINZ] = min(bounds[MAP_MINZ], curr_z)
+
+			bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], curr_z)			//we know max z now
 
 			var/list/gridLines = splittext(dmmRegex.group[6], "\n")
 			gridSet.gridLines = gridLines
@@ -111,23 +132,31 @@
 			if(leadingBlanks > 1)
 				gridLines.Cut(1, leadingBlanks) // Remove all leading blank lines.
 
-			if(!gridLines.len) // Skip it if only blank lines exist.
-				continue
-
 			gridSets += gridSet
 
-			if(gridLines.len && gridLines[gridLines.len] == "")
-				gridLines.Cut(gridLines.len) // Remove only one blank line at the end.
+			var/lines = length(gridLines)
+			if(lines)
+				if(gridLines[gridLines.len] == "")
+					gridLines.Cut(gridLines.len) // Remove only one blank line at the end.
+				var/right_length = y_upper - curr_y + 1
+				if(lines > right_length)
+					gridLines.len = right_length			//this can't be negative due to our ASSERTions above, hopefully.
 
-			bounds[MAP_MINY] = min(bounds[MAP_MINY], CLAMP(gridSet.ycrd, y_lower, y_upper))
+			if(!gridLines.len) // Skip it if there's no content.
+				continue
+
+			//do not use curr_y after this point, ycrd has changed. use it before because local var.
 			gridSet.ycrd += gridLines.len - 1 // Start at the top and work down
-			bounds[MAP_MAXY] = max(bounds[MAP_MAXY], CLAMP(gridSet.ycrd, y_lower, y_upper))
+			bounds[MAP_MAXY] = max(bounds[MAP_MAXY], gridSet.ycrd)			//we know max y now
 
-			var/maxx = gridSet.xcrd
-			if(gridLines.len) //Not an empty map
-				maxx = max(maxx, gridSet.xcrd + length(gridLines[1]) / key_len - 1)
+			var/linelength = length(gridLines[1])		//yes it only samples the first line, this is why you use TGM instead of DMM!
+			var/xlength = linelength / key_len
 
-			bounds[MAP_MAXX] = CLAMP(max(bounds[MAP_MAXX], maxx), x_lower, x_upper)
+			var/maxx = gridSet.xcrd + xlength - 1
+			if(maxx > x_upper)
+				for(var/i in 1 to length(gridLines))
+					gridLines[i] = copytext(gridLines[i], 1, key_len * (x_upper - curr_x + 1))
+			bounds[MAP_MAXX] = max(bounds[MAP_MAXX], maxx)
 		CHECK_TICK
 
 	// Indicate failure to parse any coordinates by nulling bounds
@@ -135,59 +164,29 @@
 		bounds = null
 	parsed_bounds = bounds
 
+/datum/parsed_map/Destroy()
+	if(template_host && template_host.cached_map == src)
+		template_host.cached_map = null
+	return ..()
+
 /// Load the parsed map into the world. See [/proc/load_map] for arguments.
-/datum/parsed_map/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation)
+/datum/parsed_map/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles)
 	//How I wish for RAII
 	Master.StartLoadingMap()
-	. = _load_impl(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation)
+	. = _load_impl(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles)
 	Master.StopLoadingMap()
 
 // Do not call except via load() above.
-/datum/parsed_map/proc/_load_impl(x_offset = 1, y_offset = 1, z_offset = world.maxz + 1, cropMap = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, placeOnTop = FALSE, orientation = 0)
+/datum/parsed_map/proc/_load_impl(x_offset = 1, y_offset = 1, z_offset = world.maxz + 1, cropMap = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, placeOnTop = FALSE, orientation = SOUTH, annihilate_tiles = FALSE)
 	var/list/areaCache = list()
 	var/list/modelCache = build_cache(no_changeturf)
 	var/space_key = modelCache[SPACE_KEY]
 	var/list/bounds
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 
-	// If it's not a single dir, default to 0 degrees rotation (Default orientation)
-	if(!(orientation in list(0, 90, 180, 270)))
-		orientation = 0
-
-/*
-			// Rotate the list according to orientation
-			if(orientation != 0)
-				var/num_cols = key_list[1].len
-				var/num_rows = key_list.len
-				var/list/new_key_list = list()
-				// If it's rotated 180 degrees, the dimensions are the same
-				if(orientation == 180)
-					new_key_list.len = num_rows
-					for(var/i = 1 to new_key_list.len)
-						new_key_list[i] = list()
-						new_key_list[i].len = num_cols
-				// Else, the dimensions are swapped
-				else
-					new_key_list.len = num_cols
-					for(var/i = 1 to new_key_list.len)
-						new_key_list[i] = list()
-						new_key_list[i].len = num_rows
-
-				num_rows++ // Buffering against the base index of 1
-				num_cols++
-				// Populate the new list
-				for(var/i = 1 to new_key_list.len)
-					for(var/j = 1 to new_key_list[i].len)
-						switch(orientation)
-							if(180)
-								new_key_list[i][j] = key_list[num_rows - i][num_cols - j]
-							if(270)
-								new_key_list[i][j] = key_list[num_rows - j][i]
-							if(90)
-								new_key_list[i][j] = key_list[j][num_cols - i]
-
-				key_list = new_key_list
-*/
+	// If it's not a single dir, default to SOUTH (Default dir for atoms)
+	if(!(orientation in GLOB.cardinals))
+		orientation = SOUTH
 
 	for(var/I in gridSets)
 		var/datum/grid_set/gset = I
@@ -228,7 +227,7 @@
 							var/list/cache = modelCache[model_key]
 							if(!cache)
 								CRASH("Undefined model key in DMM: [model_key]")
-							build_coordinate(areaCache, cache, locate(xcrd, ycrd, zcrd), no_afterchange, placeOnTop)
+							build_coordinate(areaCache, cache, locate(xcrd, ycrd, zcrd), no_afterchange, placeOnTop, annihilate_tiles)
 
 							// only bother with bounds that actually exist
 							bounds[MAP_MINX] = min(bounds[MAP_MINX], xcrd)
@@ -243,7 +242,7 @@
 						#endif
 						CHECK_TICK
 					++xcrd
-			--ycrd
+			ycrd--
 
 		CHECK_TICK
 
@@ -338,7 +337,7 @@
 
 		.[model_key] = list(members, members_attributes)
 
-/datum/parsed_map/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, orientation as num)
+/datum/parsed_map/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, orientation as num, annihilate_tiles = FALSE)
 	var/index
 	var/list/members = model[1]
 	var/list/members_attributes = model[2]
@@ -350,6 +349,8 @@
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 	//first instance the /area and remove it from the members list
 	index = members.len
+	if(annihilate_tiles && crds)
+		crds.empty(null)
 	if(members[index] != /area/template_noop)
 		var/atype = members[index]
 		GLOB._preloader.setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
@@ -398,7 +399,7 @@
 ////////////////
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
-/datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, orientation = 0)
+/datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, orientation = SOUTH)
 	GLOB._preloader.setup(attributes, path)
 
 	if(crds)
@@ -422,9 +423,9 @@
 		SSatoms.map_loader_begin()
 
 	// Rotate the atom now that it exists, rather than changing its orientation beforehand through the fields["dir"]
-	if(orientation != 0) // 0 means no rotation
+	if(orientation != SOUTH) // 0 means no rotation
 		var/atom/A = .
-		A.setDir(turn(A.dir, orientation))
+		A.setDir(orientation)
 
 /datum/parsed_map/proc/create_atom(path, crds)
 	set waitfor = FALSE

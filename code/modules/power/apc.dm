@@ -156,8 +156,8 @@
 
 	return drained_energy
 
-/obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
-	..()
+/obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
+	. = ..()
 	wires = new(src)
 
 	// offset 24 pixels in direction of dir
@@ -167,13 +167,13 @@
 
 	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
 	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
-	if (building==0)
+	if (!building)
 		init()
 	else
 		area = get_area(src)
 		area.apc = src
-		opened = 1
-		operating = 0
+		opened = TRUE
+		operating = FALSE
 		name = "[area.name] APC"
 		stat |= MAINT
 		src.update_icon()
@@ -234,8 +234,7 @@
 
 	make_terminal()
 
-	spawn(5)
-		src.update()
+	update()
 
 /obj/machinery/power/apc/examine(mob/user)
 	if(..(user, 1))
@@ -1332,8 +1331,6 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	if(is_critical)
 		return
 	grid_check = TRUE
-	spawn(15 MINUTES) // Protection against someone deconning the grid checker after a grid check happens, preventing infinte blackout.
-		if(src && grid_check == TRUE)
-			grid_check = FALSE
+	addtimer(VARSET_CALLBACK(src, grid_check, FALSE), 15 MINUTES)	//just incase someone deconned grid checker.
 
 #undef APC_UPDATE_ICON_COOLDOWN

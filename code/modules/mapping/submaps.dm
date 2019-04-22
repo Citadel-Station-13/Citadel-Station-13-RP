@@ -250,10 +250,12 @@
 	var/list/loaded_submap_names = list()
 	var/list/template_groups_used = list() // Used to avoid spawning three seperate versions of the same PoI.
 
+	var/list/datum/parsed_map/temp_cache = list()		//delete this after, we're forcing all maps to be cached rn.
+
 	// Now lets start choosing some.
 	while(budget > 0 && overall_sanity > 0)
 		overall_sanity--
-		var/datum/map_template/submap/chosen_template = null
+		var/datum/map_template/submap/chosen_template
 
 		if(potential_submaps.len)
 			if(priority_submaps.len) // Do these first.
@@ -267,6 +269,8 @@
 
 		CHECK_TICK
 
+		var/cache_normally = chosen_template.keep_cached_map
+
 		// Can we afford it?
 		if(chosen_template.cost > budget)
 			priority_submaps -= chosen_template
@@ -278,7 +282,9 @@
 			priority_submaps -= chosen_template
 			potential_submaps -= chosen_template
 			continue
-
+		chosen_template.preload_size(force_cache = TRUE)
+		if(!cache_normally)
+			temp_cache += chosen_template.cached_map
 		// If so, try to place it.
 		var/specific_sanity = 100 // A hundred chances to place the chosen submap.
 		while(specific_sanity > 0)
@@ -286,13 +292,13 @@
 
 			var/orientation
 			if(chosen_template.fixed_orientation || !config.random_submap_orientation)
-				orientation = 0
+				orientation = SOUTH
 			else
-				orientation = pick(list(0, 90, 180, 270))
+				orientation = pick(GLOB.cardinals)
 
-			chosen_template.preload_size(chosen_template.mappath, orientation)
-			var/width_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(((orientation%180) ? chosen_template.height : chosen_template.width) / 2) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
-			var/height_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(((orientation%180) ? chosen_template.width : chosen_template.height) / 2)
+			var/flip_45 = orientation & (NORTH|SOUTH)
+			var/width_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + FLOOR((flip_45? chosen_template.height : chosen_template.width) / 2, 1) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
+			var/height_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + FLOOR((flip_45 ? chosen_template.width : chosen_template.height) / 2, 1)
 			var/z_level = pick(z_levels)
 			var/turf/T = locate(rand(width_border, world.maxx - width_border), rand(height_border, world.maxy - height_border), z_level)
 			var/valid = TRUE
@@ -313,7 +319,7 @@
 			admin_notice("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n", R_DEBUG)
 
 			// Do loading here.
-			chosen_template.load(T, centered = TRUE, orientation=orientation) // This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
+			chosen_template.load(T, centered = TRUE, orientation = orientation)		// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
 
 			CHECK_TICK
 
@@ -338,7 +344,7 @@
 				potential_submaps -= chosen_template
 
 			break // Load the next submap.
-
+	QDEL_LIST(temp_cache)
 	var/list/pretty_submap_list = list()
 	for(var/submap_name in loaded_submap_names)
 		var/count = loaded_submap_names[submap_name]

@@ -3,6 +3,11 @@
 #define TEXT_EAST	"[EAST]"
 #define TEXT_WEST	"[WEST]"
 
+#define NORTH_DEGREES 0
+#define SOUTH_DEGREES 180
+#define EAST_DEGREES 90
+#define WEST_DEGREES 270
+
 // Pseudo-Invis, like Ninja, Ling, Etc.
 #define EFFECTIVE_INVIS					  50		// Below this, can't be examined, may as well be invisible to the game
 

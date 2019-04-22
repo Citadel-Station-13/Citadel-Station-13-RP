@@ -14,7 +14,7 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	var/charge = 0	// note %age conveted to actual charge in New
+	var/charge			// becomes maxcharge if null
 	var/maxcharge = 1000
 	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
@@ -29,16 +29,16 @@
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
 	var/last_overlay_state = null // Used to optimize update_icon() calls.
 
-/obj/item/weapon/cell/New()
-	..()
-	charge = maxcharge
+/obj/item/weapon/cell/Initialize()
+	. = ..()
+	if(isnull(charge))
+		charge = maxcharge
 	update_icon()
 	if(self_recharge)
-		processing_objects |= src
+		START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/cell/Destroy()
-	if(self_recharge)
-		processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/weapon/cell/get_cell()

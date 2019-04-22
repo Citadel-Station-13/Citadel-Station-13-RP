@@ -1,15 +1,15 @@
 #define SOLAR_MAX_DIST 40
 
-var/solar_gen_rate = 1500
-var/list/solars_list = list()
+GLOBAL_VAR_INIT(solar_gen_rate, 1500)
+GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar
 	name = "solar panel"
 	desc = "A solar electrical generator."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "sp_base"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	use_power = 0
 	idle_power_usage = 0
 	active_power_usage = 0
@@ -25,14 +25,14 @@ var/list/solars_list = list()
 /obj/machinery/power/solar/drain_power()
 	return -1
 
-/obj/machinery/power/solar/New(var/turf/loc, var/obj/item/solar_assembly/S)
-	..(loc)
+/obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
+	. = ..()
 	Make(S)
 	connect_to_network()
 
 /obj/machinery/power/solar/Destroy()
 	unset_control() //remove from control computer
-	..()
+	return ..()
 
 //set the control of the panel to a given computer if closer than SOLAR_MAX_DIST
 /obj/machinery/power/solar/proc/set_control(var/obj/machinery/power/solar_control/SC)
@@ -130,7 +130,7 @@ var/list/solars_list = list()
 		if(powernet == control.powernet)//check if the panel is still connected to the computer
 			if(obscured) //get no light from the sun, so don't generate power
 				return
-			var/sgen = solar_gen_rate * sunfrac
+			var/sgen = GLOB.solar_gen_rate * sunfrac
 			add_avail(sgen)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer
@@ -165,13 +165,8 @@ var/list/solars_list = list()
 				broken()
 	return
 
-
-/obj/machinery/power/solar/fake/New(var/turf/loc, var/obj/item/solar_assembly/S)
-	..(loc, S, 0)
-
 /obj/machinery/power/solar/fake/process()
 	. = PROCESS_KILL
-	return
 
 //trace towards sun to see if we're in shadow
 /obj/machinery/power/solar/proc/occlusion()
@@ -305,14 +300,13 @@ var/list/solars_list = list()
 	return ..()
 
 /obj/machinery/power/solar_control/disconnect_from_network()
-	..()
-	solars_list.Remove(src)
+	. = ..()
+	GLOB.solars_list -= src
 
 /obj/machinery/power/solar_control/connect_to_network()
-	var/to_return = ..()
-	if(powernet) //if connected and not already in solar_list...
-		solars_list |= src //... add it
-	return to_return
+	. = ..()
+	if(powernet)
+		GLOB.solars_list |= src
 
 //search for unconnected panels and trackers in the computer powernet and connect them
 /obj/machinery/power/solar_control/proc/search_for_connected()
@@ -532,13 +526,15 @@ var/list/solars_list = list()
 /obj/machinery/power/solar_control/autostart
 	track = 2 // Auto tracking mode
 
-/obj/machinery/power/solar_control/autostart/New()
-	..()
-	spawn(150) // Wait 15 seconds to ensure everything was set up properly (such as, powernets, solar panels, etc.
-		src.search_for_connected()
-		if(connected_tracker && track == 2)
-			connected_tracker.set_angle(sun.angle)
-		src.set_panels(cdir)
+/obj/machinery/power/solar_control/autostart/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/power/solar_control/autostart/LateInitialize()
+	search_for_connected()
+	if(connected_tracker && track == 2)
+		connected_tracker.set_angle(sun.angle)
+	set_panels(cdir)
 
 //
 // MISC

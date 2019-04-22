@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(blob_overminds)
 	if(pre_placed) //we already have a core!
 		placed = 1
 
-	GLOB.overminds += src
+	GLOB.blob_overminds += src
 	var/new_name = "[initial(name)] ([rand(1, 999)])"
 	name = new_name
 	real_name = new_name
@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(blob_overminds)
 			BM.overmind = null
 			BM.update_icons()
 
-	GLOB.overminds -= src
+	GLOB.blob_overminds -= src
 	return ..()
 
 /mob/observer/blob/Stat()

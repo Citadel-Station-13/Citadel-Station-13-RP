@@ -5,12 +5,12 @@
 	var/dx
 	var/dy
 	var/rate
-	var/list/solars			// for debugging purposes, references solars_list at the constructor
+	var/list/solars			// for debugging purposes, references GLOB.solars_list at the constructor
 	var/solar_next_update	// last time the sun position was checked and adjusted
 
 /datum/sun/New()
 
-	solars = solars_list
+	solars = GLOB.solars_list
 	rate = rand(50,200)/100			// 50% - 200% of standard rotation
 	if(prob(50))					// same chance to rotate clockwise than counter-clockwise
 		rate = -rate
@@ -51,8 +51,8 @@
 		dy = c / abs(s)
 
 	//now tell the solar control computers to update their status and linked devices
-	for(var/obj/machinery/power/solar_control/SC in solars_list)
+	for(var/obj/machinery/power/solar_control/SC in GLOB.solars_list)
 		if(!SC.powernet)
-			solars_list.Remove(SC)
+			GLOB.solars_list.Remove(SC)
 			continue
 		SC.update()

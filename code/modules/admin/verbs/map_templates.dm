@@ -13,15 +13,12 @@
 	if(!orientation)
 		return
 
-	// Convert dir to degrees rotation
-	orientation = dir2angle(orientation)
-
 	var/turf/T = get_turf(mob)
 	if(!T)
 		return
 
 	var/list/preview = list()
-	template.preload_size(template.mappath, orientation)
+	template.preload_size()
 	for(var/S in template.get_affected_turfs(T,centered = TRUE, orientation=orientation))
 		preview += image('icons/misc/debug_group.dmi',S ,"red")
 	usr.client.images += preview
@@ -80,7 +77,7 @@
 
 	var/datum/map_template/M = new(map, "[map]")
 	if(M.preload_size(map))
-		to_chat(usr, "Map template '[map]' ready to place ([M.width]x[M.height])")
+		to_chat(usr, "Map template '[map]' ready to place ([M.width]x[M.height]x[M.zdepth])")
 		SSmapping.map_templates[M.id] = M
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] has uploaded a map template [M] ([M.id])</span>")
 	else

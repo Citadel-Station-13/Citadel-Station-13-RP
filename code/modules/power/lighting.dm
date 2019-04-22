@@ -171,6 +171,7 @@
 	var/flickering = 0
 	var/light_type = /obj/item/weapon/light/tube		// the type of light item
 	var/fitting = "tube"
+	var/start_broken_chance = 2
 	var/switchcount = 0			// count of number of times switched on/off
 								// this is used to calc the probability the light burns out
 
@@ -185,6 +186,7 @@
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
+	start_broken_chance = 5
 	brightness_range = 5 //VOREStation Edit - 4->5
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
 	desc = "A small lighting fixture."
@@ -196,6 +198,7 @@
 	icon_state = "flamp1"
 	base_state = "flamp"
 	fitting = "bulb"
+	start_broken_chance = 5
 	brightness_range = 8 //VOREStation Edit - 4->8
 	plane = OBJ_PLANE
 	layer = OBJ_LAYER
@@ -217,43 +220,28 @@
 	brightness_range = 12
 	brightness_power = 0.9
 
-/obj/machinery/light/built/New()
+/obj/machinery/light/built
 	status = LIGHT_EMPTY
-	update(0)
-	..()
 
-/obj/machinery/light/small/built/New()
+/obj/machinery/light/small/built
 	status = LIGHT_EMPTY
-	update(0)
-	..()
 
-/obj/machinery/light/flamp/built/New()
+/obj/machinery/light/flamp/built
 	status = LIGHT_EMPTY
-	lamp_shade = 0
-	update(0)
-	..()
+	lamp_shade = FALSE
+
 //VOREStation Add - Shadeless!
-/obj/machinery/light/flamp/noshade/New()
-	lamp_shade = 0
-	update(0)
-	..()
+/obj/machinery/light/flamp/noshade
+	lamp_shade = FALSE
+
 //VOREStation Add End
 // create a new lighting fixture
-/obj/machinery/light/New()
-	..()
-
-	spawn(2)
-		on = has_power()
-
-		switch(fitting)
-			if("tube")
-				if(prob(2))
-					broken(1)
-			if("bulb")
-				if(prob(5))
-					broken(1)
-		spawn(1)
-			update(0)
+/obj/machinery/light/Initialize()
+	. = ..()
+	on = has_power()
+	if(prob(start_broken_chance))
+		broken(TRUE)
+	update(FALSE)
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
@@ -666,7 +654,7 @@
 
 // break the light and make sparks if was on
 
-/obj/machinery/light/proc/broken(var/skip_sound_and_sparks = 0)
+/obj/machinery/light/proc/broken(skip_sound_and_sparks = FALSE)
 	if(status == LIGHT_EMPTY)
 		return
 
