@@ -18,7 +18,6 @@
 #include "code\global.dm"
 #include "code\global_init.dm"
 #include "code\global_vr.dm"
-#include "code\hub.dm"
 #include "code\names.dm"
 #include "code\stylesheet.dm"
 #include "code\TGS_DMAPI.dm"
