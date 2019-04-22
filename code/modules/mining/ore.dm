@@ -24,6 +24,15 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	material = "carbon"
 
+<<<<<<< HEAD
+=======
+/obj/item/weapon/ore/marble
+	name = "recrystallized carbonate"
+	icon_state = "ore_marble"
+	origin_tech = list(TECH_MATERIAL = 1)
+	material = "marble"
+
+>>>>>>> f472b4c... Merge pull request #5122 from VOREStation/upstream-merge-6123
 /obj/item/weapon/ore/glass
 	name = "sand"
 	icon_state = "ore_glass"
