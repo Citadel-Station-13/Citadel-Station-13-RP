@@ -1475,7 +1475,15 @@
 #include "code\modules\busy_space\air_traffic.dm"
 #include "code\modules\busy_space\loremaster.dm"
 #include "code\modules\busy_space_vr\organizations.dm"
+<<<<<<< HEAD
 #include "code\modules\client\asset_cache.dm"
+=======
+#include "code\modules\catalogue\atoms.dm"
+#include "code\modules\catalogue\catalogue_data.dm"
+#include "code\modules\catalogue\catalogue_data_vr.dm"
+#include "code\modules\catalogue\cataloguer.dm"
+#include "code\modules\catalogue\cataloguer_visuals.dm"
+>>>>>>> a28944d... Merge pull request #5126 from Heroman3003/placeholder-galore
 #include "code\modules\client\client defines.dm"
 #include "code\modules\client\client procs.dm"
 #include "code\modules\client\movement.dm"

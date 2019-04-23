@@ -1,3 +1,4 @@
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
 /*TODO:
 
 	Get shadekins OFF the simple mobs and into something more stable like the human species template.
@@ -11,6 +12,17 @@
 /mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
 	desc = "A strange, undocumented creature. It doesn't look like anything you've seen before."
+=======
+/datum/category_item/catalogue/fauna/shadekin		//TODO: VIRGO_LORE_WRITING_WIP
+	name = "Sapients - Shadekin"
+	desc = ""
+	value = CATALOGUER_REWARD_EASY
+
+/mob/living/simple_mob/shadekin //Spawning the prototype spawns a random one, see initialize()
+	name = "shadekin"
+	desc = "Some sort of fluffer. Big ears, long tail."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
+>>>>>>> a28944d... Merge pull request #5126 from Heroman3003/placeholder-galore:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 	icon = 'icons/mob/vore_shadekin.dmi'
 	icon_state = "map_example"
 	icon_living = "map_example"

@@ -68,7 +68,13 @@
 	\
 	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they are selfish or unable to empathise with others.\
 	\
+<<<<<<< HEAD
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
+=======
+	However, after their discovery by the angels of Sanctum, many alraunes succumbed to their curiosity, and took the offer\
+	to learn of the world and venture out, whether it's to Sanctum, or elsewhere in the galaxy."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/alraune)
+>>>>>>> a28944d... Merge pull request #5126 from Heroman3003/placeholder-galore
 
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
