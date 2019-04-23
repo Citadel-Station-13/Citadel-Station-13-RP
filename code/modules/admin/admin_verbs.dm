@@ -358,7 +358,7 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/sendFax,
 	/client/proc/getserverlog,			//allows us to fetch server logs (diary) for other days,
 	/datum/admins/proc/view_txt_log,	//shows the server log (diary) for today,
-	/datum/admins/proc/view_atk_log		//shows the server combat-log, doesn't do anything presently,
+	/datum/admins/proc/view_atk_log,		//shows the server combat-log, doesn't do anything presently,
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass
 )
