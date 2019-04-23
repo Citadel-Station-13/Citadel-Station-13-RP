@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(PB_bypass)
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
-	GLOB.bunker_passthrough |= ckey(ckeytobypass)
+	GLOB.PB_bypass |= ckey(ckeytobypass)
 	log_admin("[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(PB_bypass)
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
-	GLOB.bunker_passthrough -= ckey(ckeytobypass)
+	GLOB.PB_bypass -= ckey(ckeytobypass)
 	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	send2irc("Panic Bunker", "[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
