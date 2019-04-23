@@ -12,7 +12,6 @@
 	name = "Citadel Station 13 RP"
 	status = "ERROR: Default status"
 	//visibility = TRUE
-	game_state = FALSE
 	fps = 20
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
