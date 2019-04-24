@@ -249,11 +249,8 @@
 				//var/delta_x = gridset.xcrd - x_offset + 1
 				xloop:
 					for(var/pos = 1 to length(line) - key_len + 1 step key_len)
-						var/placement_x = actual_x
-						var/placement_y = actual_y
-						if(swap_xy)
-							placement_x += delta_swap
-							placement_y -= delta_swap
+						var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
+						var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
 						/*
 							1-13	13-1	3-11
 							1-12	12-1	2-11
