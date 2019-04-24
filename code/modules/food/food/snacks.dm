@@ -3873,7 +3873,7 @@ END CITADEL CHANGE */
 	icon = 'icons/obj/food.dmi'
 	icon_state = "baconburger"
 
-/obj/item/weapon/reagent_containers/food/snacks/lizardburger/initialize()
+/obj/item/weapon/reagent_containers/food/snacks/lizardburger/Initialize()
 	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
