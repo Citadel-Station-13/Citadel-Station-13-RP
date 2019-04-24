@@ -41,16 +41,16 @@
 //
 /obj/item/clothing/suit/space/plasman/sec
 	icon_state = "plasmaman_suitsecurity"
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 0) // same as standard sec armour vest (not platecarriers)
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
+	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 0)
 
 /obj/item/clothing/suit/space/plasman/sec/warden
 	icon_state = "plasmaman_suitwarden"
 
 /obj/item/clothing/suit/space/plasman/sec/hos
 	icon_state = "plasmaman_suithos"
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 100, rad = 0) // same as standard hos armour vest
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for the Head of Security!"
+	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 100, rad = 0)
 
 /obj/item/clothing/suit/space/plasman/sec/hop
 	icon_state = "plasmaman_suithop"
