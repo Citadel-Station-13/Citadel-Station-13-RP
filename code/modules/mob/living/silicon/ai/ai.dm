@@ -808,9 +808,11 @@ var/list/ai_verbs_default = list(
 	// If that is ever fixed please update this proc.
 	return TRUE
 
+//this is shit when are we reworking announcements/autosay lmao
+INITIALIZE_IMMEDIATE(/mob/living/silicon/ai/announcer)
 //Special subtype kept around for global announcements
-/mob/living/silicon/ai/announcer/
-	is_dummy = 1
+/mob/living/silicon/ai/announcer
+	is_dummy = TRUE
 
 /mob/living/silicon/ai/announcer/Initialize()
 	. = ..()

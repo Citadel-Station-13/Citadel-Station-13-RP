@@ -95,12 +95,15 @@
 /obj/machinery/alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/alarm/server/Initialize()
+/obj/machinery/alarm/Initialize()
 	. = ..()
 	first_run()
 	set_frequency(frequency)
 	if(!master_is_operating())
 		elect_master()
+
+/obj/machinery/alarm/server/Initialize()
+	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa

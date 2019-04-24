@@ -232,6 +232,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(.)
 		GLOB.nanomanager.update_uis(src)
 
+GLOBAL_DATUM_INIT(announcer, /mob/living/silicon/ai/announcer, new(null, null, null, TRUE))
+
 /obj/item/device/radio/proc/autosay(var/message, var/from, var/channel) //BS12 EDIT
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
@@ -247,9 +249,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if (!connection)
 		return
 
-	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(src, null, null, 1)
-	A.SetName(from)
-	Broadcast_Message(connection, A,
+	GLOB.announcer.SetName(from)
+	Broadcast_Message(connection, GLOB.announcer,
 						0, "*garbled automated announcement*", src,
 						message, from, "Automated Announcement", from, "synthesized voice",
 						4, 0, list(0), connection.frequency, "states")

@@ -1,7 +1,6 @@
 /turf
 
 /turf/proc/multiz_turf_new(turf/T, dir)
-	update_icon()
 
 ///turf/proc/multiz_turf_del(turf/T, dir)
 
@@ -51,10 +50,14 @@
 	. = ..()
 	AM.fall()
 
+/turf/simulated/open/multiz_turf_new(turf/T, dir)
+	if(dir == DOWN)
+		update_icon()
+	return ..()
+
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	GLOB.turf_changed_event.register(below, src, /turf/simulated/open/update_icon)
 	levelupdate()
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)

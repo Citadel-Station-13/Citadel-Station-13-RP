@@ -15,7 +15,6 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 	if(GLOB.event_listen_count[source])
 		cleanup_event_listener(source, GLOB.event_listen_count[source])
 
-
 /decl/observ/register(var/datum/event_source, var/datum/listener, var/proc_call)
 	. = ..()
 	if(.)

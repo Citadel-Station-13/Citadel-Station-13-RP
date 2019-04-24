@@ -257,11 +257,7 @@
 	F.icon_state = "dmg[rand(1,4)]"
 	to_chat(user, "<span class='warning'>The thermite starts melting through the wall.</span>")
 
-	spawn(100)
-		if(O)
-			qdel(O)
-//	F.sd_LumReset()		//TODO: ~Carn
-	return
+	QDEL_IN(O, 10 SECONDS)
 
 /turf/simulated/wall/proc/radiate()
 	var/total_radiation = material.radioactivity + (reinf_material ? reinf_material.radioactivity / 2 : 0) + (girder_material ? girder_material.radioactivity / 2 : 0)

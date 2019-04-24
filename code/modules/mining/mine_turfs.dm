@@ -110,8 +110,7 @@ var/list/mining_overlay_cache = list()
 
 /turf/simulated/mineral/Initialize()
 	. = ..()
-	if(density && mineral)
-		. = INITIALIZE_HINT_LATELOAD
+	return INITIALIZE_HINT_LATELOAD
 
 /turf/simulated/mineral/LateInitialize()
 	. = ..()
@@ -119,7 +118,7 @@ var/list/mining_overlay_cache = list()
 		overlay_detail = "asteroid[rand(0,9)]"
 	if(density && mineral)
 		MineralSpread(FALSE)
-	update_icon(TRUE)
+	update_icon()
 
 /turf/simulated/mineral/update_icon(update_neighbors = FALSE)
 

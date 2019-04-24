@@ -3,8 +3,8 @@
 /turf/simulated/wall/dungeon
 	block_tele = TRUE // Anti-cheese.
 
-/turf/simulated/wall/dungeon/New(var/newloc)
-	..(newloc,"dungeonium")
+/turf/simulated/wall/dungeon/Initialize(mapload)
+	. = ..(mapload, "dungeonium")
 
 /turf/simulated/wall/dungeon/attackby()
 	return
@@ -33,6 +33,7 @@
 			T.add_overlay(mining_overlay_cache["rock_side_[place_dir]"])
 
 /turf/simulated/wall/solidrock/Initialize()
+	. = ..()
 	icon_state = base_state
 	update_icon(1)
 

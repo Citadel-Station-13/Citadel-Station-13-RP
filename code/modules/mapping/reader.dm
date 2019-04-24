@@ -229,9 +229,7 @@
 
 		var/parsed_y = gridset.ycrd + y_offset - 1
 		var/parsed_z = gridset.zcrd + z_offset - 1
-		var/lower_left_x = gridset.xcrd
-		var/lower_left_y = gridset.ycrd - length(gridset.gridLines)
-		var/delta_swap = lower_left_x - lower_left_y
+		var/lower_left_y = parsed_y - length(gridset.gridLines)
 		var/zexpansion = parsed_z > world.maxz
 		if(zexpansion)
 			if(cropMap)
@@ -246,7 +244,8 @@
 			for(var/line in gridset.gridLines)
 				var/parsed_x = gridset.xcrd + x_offset - 1
 				var/actual_x = invert_x? (parsed_x + width - 1) : parsed_x
-				//var/delta_x = gridset.xcrd - x_offset + 1
+				var/lower_left_x = parsed_x
+				var/delta_swap = lower_left_x - lower_left_y
 				xloop:
 					for(var/pos = 1 to length(line) - key_len + 1 step key_len)
 						var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
