@@ -247,7 +247,7 @@
 				var/lower_left_x = parsed_x
 				var/delta_swap = lower_left_x - lower_left_y
 				xloop:
-					for(var/pos = 1 to length(line) - key_len + 1 step key_len)
+					for(var/pos in 1 to (length(line) - key_len + 1) step key_len)
 						var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
 						var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
 						/*
