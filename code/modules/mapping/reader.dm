@@ -221,6 +221,10 @@
 			swap_xy = TRUE
 			xi = -1
 			yi = -1
+	var/lower_left_y = y_offset
+	var/lower_left_x = x_offset
+	var/delta_swap = lower_left_x - lower_left_y
+
 	for(var/__I in gridSets)
 		var/datum/grid_set/gridset = __I
 		//parsed = the spot on the world on a SOUTH/default orientation load it would load into
@@ -229,7 +233,10 @@
 
 		var/parsed_y = gridset.ycrd + y_offset - 1
 		var/parsed_z = gridset.zcrd + z_offset - 1
-		var/lower_left_y = parsed_y - length(gridset.gridLines)
+		//var/lower_left_y = parsed_y - length(gridset.gridLines)
+		//var/lower_left_x = x_offset + gridset.xcrd - 1
+		//var/delta_swap = lower_left_x - lower_left_y
+		//to_chat(world, "DEBUG: Delta swap is [delta_swap], swap_xy [swap_xy], lower left [lower_left_x]/[lower_left_y], parsed [gridset.xcrd + x_offset - 1]/[parsed_y], grid crds [gridset.xcrd]/[gridset.ycrd]")
 		var/zexpansion = parsed_z > world.maxz
 		if(zexpansion)
 			if(cropMap)
@@ -240,108 +247,104 @@
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
 		var/actual_y = invert_y? y_offset : parsed_y
-		yloop:
-			for(var/line in gridset.gridLines)
-				var/parsed_x = gridset.xcrd + x_offset - 1
-				var/actual_x = invert_x? (parsed_x + width - 1) : parsed_x
-				var/lower_left_x = parsed_x
-				var/delta_swap = lower_left_x - lower_left_y
-				xloop:
-					for(var/pos in 1 to (length(line) - key_len + 1) step key_len)
-						var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
-						var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
-						/*
-							1-13	13-1	3-11
-							1-12	12-1	2-11
-							1-11	11-1	1-11
-							2-13	13-2	3-12
-							2-12	12-2	2-12
-							2-11	11-2	1-12
-							3-13	13-3	3-13
-							3-12	12-3	2-13
-							3-11	11-3	1-13
-							x += -10
-							y += 10
+		for(var/line in gridset.gridLines)
+			var/parsed_x = gridset.xcrd + x_offset - 1
+			var/actual_x = invert_x? (parsed_x + width - 1) : parsed_x
+			for(var/pos = 1 to (length(line) - key_len + 1) step key_len)
+				var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
+				var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
+				/*
+					1-13	13-1	3-11
+					1-12	12-1	2-11
+					1-11	11-1	1-11
+					2-13	13-2	3-12
+					2-12	12-2	2-12
+					2-11	11-2	1-12
+					3-13	13-3	3-13
+					3-12	12-3	2-13
+					3-11	11-3	1-13
+					x += -10
+					y += 10
 
-							lower left x - y
+					lower left x - y
 
-							5-43	43-5	7-41
-							5-42	42-5	6-41
-							5-41	41-5	5-41
-							6-43	43-6	7-42
-							6-42	42-6	6-42
-							6-41	41-6	5-42
-							7-43	43-7	7-43
-							7-42	42-7	6-43
-							7-41	41-7	5-43
-							x += -36
-							y += 36
+					5-43	43-5	7-41
+					5-42	42-5	6-41
+					5-41	41-5	5-41
+					6-43	43-6	7-42
+					6-42	42-6	6-42
+					6-41	41-6	5-42
+					7-43	43-7	7-43
+					7-42	42-7	6-43
+					7-41	41-7	5-43
+					x += -36
+					y += 36
 
-							lower left x - y
+					lower left x - y
 
-							61-5	5-61	63-3
-							61-4	4-61	62-3
-							61-3	3-61	61-3
-							62-5	5-62	63-4
-							62-4	4-62	62-4
-							62-3	3-62	61-4
-							63-5	5-63	63-5
-							63-4	4-63	62-5
-							63-3	3-63	61-5
-							x += 58
-							y += -58
+					61-5	5-61	63-3
+					61-4	4-61	62-3
+					61-3	3-61	61-3
+					62-5	5-62	63-4
+					62-4	4-62	62-4
+					62-3	3-62	61-4
+					63-5	5-63	63-5
+					63-4	4-63	62-5
+					63-3	3-63	61-5
+					x += 58
+					y += -58
 
-							lower left x - y
+					lower left x - y
 
-						*/
+				*/
 
-						if(placement_x > world.maxx)
-							if(cropMap)
-								parsed_x++
-								actual_x += xi
-								continue xloop
-							else
-								world.maxx = placement_x
-						if(placement_y > world.maxy)
-							if(cropMap)
-								parsed_y--
-								actual_y += yi
-								continue yloop
-							else
-								world.maxy = placement_y
-						if(placement_x < 1)
-							parsed_x++
-							actual_x += xi
-							continue xloop
-						if(placement_y < 1)
-							parsed_y--
-							actual_y += yi
-							continue yloop
-						var/model_key = copytext(line, pos, pos + key_len)
-						var/no_afterchange = no_changeturf || zexpansion
-						if(!no_afterchange || (model_key != space_key))
-							var/list/cache = modelCache[model_key]
-							if(!cache)
-								CRASH("Undefined model key in DMM: [model_key]")
-							build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, annihilate_tiles)
-
-							// only bother with bounds that actually exist
-							bounds[MAP_MINX] = min(bounds[MAP_MINX], placement_x)
-							bounds[MAP_MINY] = min(bounds[MAP_MINY], placement_y)
-							bounds[MAP_MINZ] = min(bounds[MAP_MINZ], parsed_z)
-							bounds[MAP_MAXX] = max(bounds[MAP_MAXX], placement_x)
-							bounds[MAP_MAXY] = max(bounds[MAP_MAXY], placement_y)
-							bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], parsed_z)
-						#ifdef TESTING
-						else
-							++turfsSkipped
-						#endif
+				if(placement_x > world.maxx)
+					if(cropMap)
 						parsed_x++
 						actual_x += xi
-						CHECK_TICK
-				parsed_y--
-				actual_y += yi
+						continue
+					else
+						world.maxx = placement_x
+				if(placement_y > world.maxy)
+					if(cropMap)
+						parsed_y--
+						actual_y += yi
+						break
+					else
+						world.maxy = placement_y
+				if(placement_x < 1)
+					parsed_x++
+					actual_x += xi
+					continue
+				if(placement_y < 1)
+					parsed_y--
+					actual_y += yi
+					break
+				var/model_key = copytext(line, pos, pos + key_len)
+				var/no_afterchange = no_changeturf || zexpansion
+				if(!no_afterchange || (model_key != space_key))
+					var/list/cache = modelCache[model_key]
+					if(!cache)
+						CRASH("Undefined model key in DMM: [model_key]")
+					build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, annihilate_tiles)
+
+					// only bother with bounds that actually exist
+					bounds[MAP_MINX] = min(bounds[MAP_MINX], placement_x)
+					bounds[MAP_MINY] = min(bounds[MAP_MINY], placement_y)
+					bounds[MAP_MINZ] = min(bounds[MAP_MINZ], parsed_z)
+					bounds[MAP_MAXX] = max(bounds[MAP_MAXX], placement_x)
+					bounds[MAP_MAXY] = max(bounds[MAP_MAXY], placement_y)
+					bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], parsed_z)
+				#ifdef TESTING
+				else
+					++turfsSkipped
+				#endif
+				parsed_x++
+				actual_x += xi
 				CHECK_TICK
+			parsed_y--
+			actual_y += yi
+			CHECK_TICK
 
 	if(!no_changeturf)
 		for(var/t in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
