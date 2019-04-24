@@ -11,6 +11,7 @@ var/global/list/grub_machine_overlays = list()
 	health = 5
 	maxHealth = 5
 
+	holder_type = /obj/item/weapon/holder/micro
 	meat_amount = 2
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat
 
@@ -26,7 +27,7 @@ var/global/list/grub_machine_overlays = list()
 	can_pull_mobs = MOB_PULL_NONE
 	density = 0
 
-	stop_when_pulled = 0
+	stop_when_pulled = 1
 
 	var/static/list/ignored_machine_types = list(
 		/obj/machinery/atmospherics/unary/vent_pump,
