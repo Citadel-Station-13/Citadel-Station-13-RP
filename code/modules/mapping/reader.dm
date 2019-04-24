@@ -19,6 +19,8 @@
 
 	/// Unoffset bounds. Null on parse failure.
 	var/list/parsed_bounds
+	var/width
+	var/height
 	/// Offset bounds. Same as parsed_bounds until load().
 	var/list/bounds
 
@@ -162,6 +164,9 @@
 	// Indicate failure to parse any coordinates by nulling bounds
 	if(bounds[1] == 1.#INF)
 		bounds = null
+	else
+		width = bounds[MAP_MAXX] - bounds[MAP_MINX] + 1
+		height = bounds[MAP_MAXY] - bounds[MAP_MINY] + 1
 	parsed_bounds = bounds
 
 /datum/parsed_map/Destroy()
@@ -177,6 +182,7 @@
 	Master.StopLoadingMap()
 
 // Do not call except via load() above.
+// Lower/upper here refers to the actual map template's parsed coordinates, NOT ACTUAL COORDINATES! Figure it out yourself my head hurts too much to implement that too.
 /datum/parsed_map/proc/_load_impl(x_offset = 1, y_offset = 1, z_offset = world.maxz + 1, cropMap = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, placeOnTop = FALSE, orientation = SOUTH, annihilate_tiles = FALSE)
 	var/list/areaCache = list()
 	var/list/modelCache = build_cache(no_changeturf)
@@ -184,80 +190,162 @@
 	var/list/bounds
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 
-	//default for SOUTH
+	//Under normal: Y goes down, X goes up.
+	var/invert_y = FALSE
+	var/invert_x = FALSE
+	var/swap_xy = FALSE
 	var/xi = 1
 	var/yi = -1
 	switch(orientation)
 		if(NORTH)
+			invert_y = TRUE
+			invert_x = TRUE
+			swap_xy = FALSE
 			xi = -1
 			yi = 1
 		if(SOUTH)
+			invert_y = FALSE
+			invert_x = FALSE
+			swap_xy = FALSE
 			xi = 1
 			yi = -1
 		if(EAST)
+			invert_y = TRUE
+			invert_x = FALSE
+			swap_xy = TRUE
 			xi = 1
 			yi = 1
 		if(WEST)
+			invert_y = FALSE
+			invert_x = TRUE
+			swap_xy = TRUE
 			xi = -1
 			yi = -1
+	for(var/__I in gridSets)
+		var/datum/grid_set/gridset = __I
+		//parsed = the spot on the world on a SOUTH/default orientation load it would load into
+		//actual = after inversions for NORTH/SOUTH/flipping in general
+		//placement = after x/y swap for 90 degree rotation.
 
-	for(var/I in gridSets)
-		var/datum/grid_set/gset = I
-		var/ycrd = gset.ycrd + y_offset - 1
-		var/zcrd = gset.zcrd + z_offset - 1
-		if(!cropMap && ycrd > world.maxy)
-			world.maxy = ycrd // Expand Y here.  X is expanded in the loop below
-		var/zexpansion = zcrd > world.maxz
+		var/parsed_y = gridset.ycrd + y_offset - 1
+		var/parsed_z = gridset.zcrd + z_offset - 1
+		var/lower_left_x = gridset.xcrd
+		var/lower_left_y = gridset.ycrd - length(gridset.gridLines)
+		var/delta_swap = lower_left_x - lower_left_y
+		var/zexpansion = parsed_z > world.maxz
 		if(zexpansion)
 			if(cropMap)
 				continue
 			else
-				while (zcrd > world.maxz) //create a new z_level if needed
+				while(parsed_z > world.maxz)
 					world.incrementMaxZ()
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
+		var/actual_y = invert_y? y_offset : parsed_y
+		yloop:
+			for(var/line in gridset.gridLines)
+				var/parsed_x = gridset.xcrd + x_offset - 1
+				var/actual_x = invert_x? (parsed_x + width - 1) : parsed_x
+				//var/delta_x = gridset.xcrd - x_offset + 1
+				xloop:
+					for(var/pos = 1 to length(line) - key_len + 1 step key_len)
+						var/placement_x = actual_x
+						var/placement_y = actual_y
+						if(swap_xy)
+							placement_x += delta_swap
+							placement_y -= delta_swap
+						/*
+							1-13	13-1	3-11
+							1-12	12-1	2-11
+							1-11	11-1	1-11
+							2-13	13-2	3-12
+							2-12	12-2	2-12
+							2-11	11-2	1-12
+							3-13	13-3	3-13
+							3-12	12-3	2-13
+							3-11	11-3	1-13
+							x += -10
+							y += 10
 
-		for(var/line in gset.gridLines)
-			if((ycrd - y_offset + 1) < y_lower || (ycrd - y_offset + 1) > y_upper)				//Reverse operation and check if it is out of bounds of cropping.
-				--ycrd
-				continue
-			if(ycrd <= world.maxy && ycrd >= 1)
-				var/xcrd = gset.xcrd + x_offset - 1
-				for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
-					if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper)			//Same as above.
-						++xcrd
-						continue								//X cropping.
-					if(xcrd > world.maxx)
-						if(cropMap)
-							break
-						else
-							world.maxx = xcrd
+							lower left x - y
 
-					if(xcrd >= 1)
-						var/model_key = copytext(line, tpos, tpos + key_len)
+							5-43	43-5	7-41
+							5-42	42-5	6-41
+							5-41	41-5	5-41
+							6-43	43-6	7-42
+							6-42	42-6	6-42
+							6-41	41-6	5-42
+							7-43	43-7	7-43
+							7-42	42-7	6-43
+							7-41	41-7	5-43
+							x += -36
+							y += 36
+
+							lower left x - y
+
+							61-5	5-61	63-3
+							61-4	4-61	62-3
+							61-3	3-61	61-3
+							62-5	5-62	63-4
+							62-4	4-62	62-4
+							62-3	3-62	61-4
+							63-5	5-63	63-5
+							63-4	4-63	62-5
+							63-3	3-63	61-5
+							x += 58
+							y += -58
+
+							lower left x - y
+
+						*/
+
+						if(placement_x > world.maxx)
+							if(cropMap)
+								parsed_x++
+								actual_x += xi
+								continue xloop
+							else
+								world.maxx = placement_x
+						if(placement_y > world.maxy)
+							if(cropMap)
+								parsed_y--
+								actual_y += yi
+								continue yloop
+							else
+								world.maxy = placement_y
+						if(placement_x < 1)
+							parsed_x++
+							actual_x += xi
+							continue xloop
+						if(placement_y < 1)
+							parsed_y--
+							actual_y += yi
+							continue yloop
+						var/model_key = copytext(line, pos, pos + key_len)
 						var/no_afterchange = no_changeturf || zexpansion
 						if(!no_afterchange || (model_key != space_key))
 							var/list/cache = modelCache[model_key]
 							if(!cache)
 								CRASH("Undefined model key in DMM: [model_key]")
-							build_coordinate(areaCache, cache, locate(xcrd, ycrd, zcrd), no_afterchange, placeOnTop, annihilate_tiles)
+							build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, annihilate_tiles)
 
 							// only bother with bounds that actually exist
-							bounds[MAP_MINX] = min(bounds[MAP_MINX], xcrd)
-							bounds[MAP_MINY] = min(bounds[MAP_MINY], ycrd)
-							bounds[MAP_MINZ] = min(bounds[MAP_MINZ], zcrd)
-							bounds[MAP_MAXX] = max(bounds[MAP_MAXX], xcrd)
-							bounds[MAP_MAXY] = max(bounds[MAP_MAXY], ycrd)
-							bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], zcrd)
+							bounds[MAP_MINX] = min(bounds[MAP_MINX], placement_x)
+							bounds[MAP_MINY] = min(bounds[MAP_MINY], placement_y)
+							bounds[MAP_MINZ] = min(bounds[MAP_MINZ], parsed_z)
+							bounds[MAP_MAXX] = max(bounds[MAP_MAXX], placement_x)
+							bounds[MAP_MAXY] = max(bounds[MAP_MAXY], placement_y)
+							bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], parsed_z)
 						#ifdef TESTING
 						else
 							++turfsSkipped
 						#endif
+						parsed_x++
+						actual_x += xi
 						CHECK_TICK
-					++xcrd
-			ycrd--
-
-		CHECK_TICK
+				parsed_y--
+				actual_y += yi
+				CHECK_TICK
 
 	if(!no_changeturf)
 		for(var/t in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))

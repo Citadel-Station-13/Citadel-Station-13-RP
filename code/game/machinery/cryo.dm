@@ -46,8 +46,10 @@
 	update_icon()
 
 /obj/machinery/atmospherics/unary/cryo_cell/Destroy()
-	var/turf/T = src.loc
-	T.contents += contents
+	var/turf/T = get_turf(src)
+	for(var/i in contents)
+		var/atom/movable/AM = i
+		AM.forceMove(T)
 	if(beaker)
 		beaker.forceMove(get_step(loc, SOUTH)) //Beaker is carefully ejected from the wreckage of the cryotube
 		beaker = null

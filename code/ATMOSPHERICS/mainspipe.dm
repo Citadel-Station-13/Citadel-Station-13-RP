@@ -56,7 +56,7 @@ obj/machinery/atmospherics/mains_pipe
 	alert_pressure = 55*ONE_ATMOSPHERE
 
 	New()
-		..()
+		. = ..()
 
 		supply = new(src)
 		supply.volume = volume
@@ -122,7 +122,7 @@ obj/machinery/atmospherics/mains_pipe/simple
 
 	New()
 		nodes.len = 2
-		..()
+		. = ..()
 		switch(dir)
 			if(SOUTH || NORTH)
 				initialize_mains_directions = SOUTH|NORTH

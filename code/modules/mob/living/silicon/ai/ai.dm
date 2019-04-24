@@ -99,7 +99,7 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/device/mmi/B, safety = FALSE)
 	. = ..()
-	announcement = new()
+	announcement = new
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
 	announcement.newscast = 1
@@ -166,13 +166,16 @@ var/list/ai_verbs_default = list(
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
 			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
-			qdel(src)//Delete AI.
-			return
+			return INITIALIZE_HINT_QDEL
 		else
 			if (B.brainmob.mind)
 				B.brainmob.mind.transfer_to(src)
 
 			on_mob_init()
+
+	create_eyeobj()
+	if(eyeobj)
+		eyeobj.forceMove(loc)
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	src << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
@@ -217,7 +220,7 @@ var/list/ai_verbs_default = list(
 	QDEL_NULL(aiRadio)
 	QDEL_NULL(aiCamera)
 	hack = null
-
+	destroy_eyeobj()
 	return ..()
 
 /mob/living/silicon/ai/proc/setup_icon()
@@ -247,7 +250,7 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/SetName(pickedName as text)
-	..()
+	. = ..()
 	announcement.announcer = pickedName
 	if(eyeobj)
 		eyeobj.name = "[pickedName] (AI Eye)"

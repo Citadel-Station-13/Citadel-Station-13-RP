@@ -3,11 +3,11 @@
 	set name = "Map template - Place At Loc"
 
 	var/datum/map_template/template
-
-	var/map = input(usr, "Choose a Map Template to place at your CURRENT LOCATION","Place Map Template") as null|anything in SSmapping.map_templates
+	var/list/templates = SSmapping.map_template_name_list()
+	var/map = input(usr, "Choose a Map Template to place at your CURRENT LOCATION","Place Map Template") as null|anything in templates
 	if(!map)
 		return
-	template = SSmapping.get_map_template(map)
+	template = SSmapping.get_map_template(templates[map])
 
 	var/orientation = text2dir(input(usr, "Choose an orientation for this Map Template.", "Orientation") as null|anything in list("North", "South", "East", "West"))
 	if(!orientation)
@@ -19,7 +19,7 @@
 
 	var/list/preview = list()
 	template.preload_size()
-	for(var/S in template.get_affected_turfs(T,centered = TRUE, orientation=orientation))
+	for(var/S in template.get_affected_turfs(T,centered = TRUE, orientation = orientation))
 		preview += image('icons/misc/debug_group.dmi',S ,"red")
 	usr.client.images += preview
 	if(alert(usr,"Confirm location.", "Template Confirm","No","Yes") == "Yes")

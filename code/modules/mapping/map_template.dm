@@ -141,7 +141,7 @@
 	var/is_cached = cached_map
 	var/datum/parsed_map/parsed = is_cached || new(file(mappath))
 	cached_map = (force_cache || keep_cached_map) ? parsed : is_cached
-	if(!parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=TRUE))
+	if(!parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=TRUE, orientation = orientation))
 		return
 	var/list/bounds = parsed.bounds
 	if(!bounds)
@@ -183,7 +183,7 @@
 /datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE, orientation = SOUTH)
 	var/turf/placement = T
 	if(centered)
-		var/turf/corner = locate(placement.x - FLOOR(((orientation & (NORTH|SOUTH)) ? height : width) / 2, 1), placement.y - FLOOR(((orientation % 180) ? width : height) / 2, 1), placement.z) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
+		var/turf/corner = locate(placement.x - FLOOR(((orientation & (NORTH|SOUTH)) ? height : width) / 2, 1), placement.y - FLOOR(((orientation & (NORTH|SOUTH))? width : height) / 2, 1), placement.z) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
 		if(corner)
 			placement = corner
-	return block(placement, locate(placement.x + ((orientation & (NORTH|SOUTH)) ? height : width)-1, placement.y + ((orientation % 180) ? width : height) - 1, placement.z))
+	return block(placement, locate(placement.x + ((orientation & (NORTH|SOUTH)) ? height : width)-1, placement.y + ((orientation & (NORTH|SOUTH))? width : height) - 1, placement.z))

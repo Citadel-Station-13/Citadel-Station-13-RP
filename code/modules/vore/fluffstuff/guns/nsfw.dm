@@ -343,8 +343,8 @@
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	max_w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack/New()
-	..()
+/obj/item/weapon/storage/secure/briefcase/nsfw_pack/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/projectile/nsfw(src)
 	new /obj/item/ammo_magazine/nsfw_mag(src)
 	for(var/path in subtypesof(/obj/item/ammo_casing/nsfw_batt))
@@ -355,8 +355,8 @@
 	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	max_w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos/New()
-	..()
+/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/projectile/nsfw(src)
 	new /obj/item/ammo_magazine/nsfw_mag(src)
 	new /obj/item/ammo_casing/nsfw_batt/lethal(src)
