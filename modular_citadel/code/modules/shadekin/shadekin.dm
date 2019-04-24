@@ -260,7 +260,17 @@
 	if((. = ..()))
 		handle_shade()
 
+<<<<<<< HEAD:modular_citadel/code/modules/shadekin/shadekin.dm
 /mob/living/simple_animal/shadekin/proc/handle_shade()
+=======
+/mob/living/simple_mob/shadekin/handle_atmos()
+	if(ability_flags & AB_PHASE_SHIFTED)
+		return
+	else
+		return .=..()
+
+/mob/living/simple_mob/shadekin/proc/handle_shade()
+>>>>>>> 6ad6879... Merge pull request #5130 from Heroman3003/a-kin-fixing:code/modules/mob/living/simple_mob/subtypes/vore/shadekin/shadekin.dm
 	//Shifted kin don't gain/lose energy (and save time if we're at the cap)
 	var/darkness = 1
 
