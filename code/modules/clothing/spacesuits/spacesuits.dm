@@ -56,7 +56,11 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	flags = PHORONGUARD
+<<<<<<< HEAD
 	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL | PHORONGUARD
+=======
+	item_flags = THICKMATERIAL
+>>>>>>> c8f104b... Merge pull request #5134 from VOREStation/upstream-merge-6126
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen,/obj/item/device/suit_cooling_unit)
 	slowdown = 3
