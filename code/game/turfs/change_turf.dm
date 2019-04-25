@@ -97,6 +97,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_dangerous_objects = dangerous_objects
 	//END
 
+	//zas crap
+	if(connections)
+		connections.erase_all()
+	//end
+
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
@@ -172,12 +177,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	return W
 
+//zas crap
+/turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
+	if(zone)
+		zone.rebuild()
+	return ..()
+//end
+
+//more zas crap
 /turf/simulated/floor/ChangeTurf(path, list/new_baseturfs, flags)
 
 	//ZAS START
 	var/obj/fire/old_fire = fire
-	var/zone/old_zone = zone
-	var/connection_manager/old_connections = connections
 	//ZAS END
 
 	/*
@@ -197,22 +208,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	else
 		return ..()
 	*/
+
 	. = ..()
-	if(!. || . == src)
+	if(!. || !istype(src, /turf/simulated/floor))
 		return
 
 	//ZAS START
 	if(air_master)
 		air_master.mark_for_update(src)
-	if(old_connections)
-		old_connections.erase_all()
-	if(old_zone)
-		old_zone.rebuild()
-	var/is_floor = istype(., /turf/simulated/floor)
 	if(old_fire)
-		is_floor? (fire = old_fire) : fire.RemoveFire()
-		fire? update_icon() : NONE
+		fire = old_fire
 	//ZAS END
+//end
 
 // Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount = 1, flags)
@@ -355,7 +362,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	HandleTurfChange(src)
 
 /turf/open/AfterChange(flags)
-	..()
+	. = ..()
 	RemoveLattice()
 	if(!(flags & (CHANGETURF_IGNORE_AIR | CHANGETURF_INHERIT_AIR)))
 		Assimilate_Air()

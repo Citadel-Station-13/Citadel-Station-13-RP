@@ -207,7 +207,8 @@
 		else
 
 			//Postponing connections to tiles until a zone is assured.
-			if(!postponed) postponed = list()
+			if(!postponed)
+				postponed = list()
 			postponed.Add(unsim)
 
 	if(!air_master.has_valid_zone(src)) //Still no zone, make a new one.

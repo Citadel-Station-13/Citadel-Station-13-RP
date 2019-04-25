@@ -67,7 +67,6 @@ Class Procs:
 	ASSERT(istype(T))
 	ASSERT(!air_master.has_valid_zone(T))
 #endif
-
 	var/datum/gas_mixture/turf_air = T.return_air()
 	add_tile_air(turf_air)
 	T.zone = src
@@ -133,14 +132,15 @@ Class Procs:
 	#endif
 
 /zone/proc/rebuild()
-	if(invalid) return //Short circuit for explosions where rebuild is called many times over.
+	if(invalid)
+		return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	var/list/air_graphic = air.graphic // Cache for sanic speed
 	for(var/turf/simulated/T in contents)
 		if(air_graphic)
 			T.update_graphic(graphic_remove = air_graphic) //we need to remove the overlays so they're not doubled when the zone is rebuilt
 		//T.dbg(invalid_zone)
-		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
+		//T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
 		air_master.mark_for_update(T)
 
 /zone/proc/add_tile_air(datum/gas_mixture/tile_air)

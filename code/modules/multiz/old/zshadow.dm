@@ -16,7 +16,7 @@
 /mob/zshadow/can_fall()
 	return FALSE
 
-/mob/zshadow/Initialize(var/mob/L)
+/mob/zshadow/Initialize(mapload, mob/L)
 	if(!istype(L))
 		qdel(src)
 		return
@@ -68,28 +68,18 @@
 	. = ..()
 	check_shadow()
 
-/mob/living/on_mob_jump()
-	// We're about to be admin-jumped.
-	// Unfortuantely loc isn't set until after this proc is called. So we must spawn() so check_shadow executes with the new loc.
-	. = ..()
-	if(shadow)
-		spawn(0)
-			check_shadow()
-
 /mob/living/proc/check_shadow()
 	var/mob/M = src
 	if(isturf(M.loc))
 		var/turf/simulated/open/OS = GetAbove(src)
-		while(OS && istype(OS))
+		while(istype(OS))
 			if(!M.shadow)
-				M.shadow = new /mob/zshadow(M)
-			M.shadow.forceMove(OS)
+				M.shadow = new /mob/zshadow(OS, M)
 			M = M.shadow
 			OS = GetAbove(M)
 	// The topmost level does not need a shadow!
 	if(M.shadow)
-		qdel(M.shadow)
-		M.shadow = null
+		QDEL_NULL(M.shadow)
 
 //
 // Handle cases where the owner mob might have changed its icon or overlays.

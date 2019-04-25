@@ -192,32 +192,32 @@
 
 	//Under normal: Y goes down, X goes up.
 	var/invert_y = FALSE
-	var/invert_x = FALSE
+	//var/invert_x = FALSE
 	var/swap_xy = FALSE
 	var/xi = 1
 	var/yi = -1
 	switch(orientation)
 		if(NORTH)
 			invert_y = TRUE
-			invert_x = TRUE
+			//invert_x = TRUE
 			swap_xy = FALSE
 			xi = -1
 			yi = 1
 		if(SOUTH)
 			invert_y = FALSE
-			invert_x = FALSE
+			//invert_x = FALSE
 			swap_xy = FALSE
 			xi = 1
 			yi = -1
 		if(EAST)
 			invert_y = TRUE
-			invert_x = FALSE
+			//invert_x = FALSE
 			swap_xy = TRUE
 			xi = 1
 			yi = 1
 		if(WEST)
 			invert_y = FALSE
-			invert_x = TRUE
+			//invert_x = TRUE
 			swap_xy = TRUE
 			xi = -1
 			yi = -1
@@ -249,7 +249,7 @@
 		var/actual_y = invert_y? y_offset : parsed_y
 		for(var/line in gridset.gridLines)
 			var/parsed_x = gridset.xcrd + x_offset - 1
-			var/actual_x = invert_x? (parsed_x + width - 1) : parsed_x
+			var/actual_x = parsed_x
 			for(var/pos = 1 to (length(line) - key_len + 1) step key_len)
 				var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
 				var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
