@@ -4,6 +4,7 @@
 #define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
 #define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
 
+#define HEAT_DAMAGE_SYNTH 1.5 //Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
 #define HEAT_DAMAGE_LEVEL_1 5 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 20 //Amount of damage applied when your body temperature passes the 1000K point
@@ -22,6 +23,8 @@
 #define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
 
 #define RADIATION_SPEED_COEFFICIENT 0.1
+
+var/last_message = 0
 
 /mob/living/carbon/human
 	var/oxygen_alert = 0
@@ -144,6 +147,9 @@
 
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - ONE_ATMOSPHERE
+
+	if(isSynthetic())
+		pressure_difference = 0 //synthetics dont need pressure they're robutts
 
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
@@ -655,7 +661,10 @@
 				else
 					burn_dam = HEAT_DAMAGE_LEVEL_2
 			else
-				burn_dam = HEAT_DAMAGE_LEVEL_1
+				if(isSynthetic())
+					burn_dam = HEAT_DAMAGE_SYNTH
+				else
+					burn_dam = HEAT_DAMAGE_LEVEL_1
 
 		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
 		fire_alert = max(fire_alert, 2)
@@ -698,7 +707,7 @@
 		pressure_alert = -1
 	else
 		if( !(COLD_RESISTANCE in mutations))
-			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
+			if(!isSynthetic() || !nif || !nif.flag_check(NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
 				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 			if(getOxyLoss() < 55) // 11 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 				adjustOxyLoss(4)  // 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
@@ -1186,6 +1195,15 @@
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
+		if(synthbattery_icon)
+			switch(nutrition)
+				if(450 to INFINITY)				synthbattery_icon.icon_state = "charge4"
+				if(300 to 450)					synthbattery_icon.icon_state = "blank"
+				if(200 to 300)					synthbattery_icon.icon_state = "charge4"
+				if(150 to 200)					synthbattery_icon.icon_state = "charge3"
+				if(100 to 150)					synthbattery_icon.icon_state = "charge2"
+				else							synthbattery_icon.icon_state = "charge1"
+
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
 
@@ -1215,6 +1233,13 @@
 					if(260 to 280)			bodytemp.icon_state = "temp-3"
 					else					bodytemp.icon_state = "temp-4"
 			else
+
+		if(bodytemperature >= 361)
+			if(isSynthetic())
+				if(world.time >= last_message || last_message == 0)
+					src << "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>"
+						last_message = world.time + 600
+
 				//TODO: precalculate all of this stuff when the species datum is created
 				var/base_temperature = species.body_temperature
 				if(base_temperature == null) //some species don't have a set metabolic temperature
@@ -1326,13 +1351,13 @@
 
 		var/tmp/glasses_processed = 0
 		var/obj/item/weapon/rig/rig = back
-		if(istype(rig) && rig.visor && !looking_elsewhere)
+		if(istype(rig) && rig.visor) //&& !looking_elsewhere)
 			if(!rig.helmet || (head && rig.helmet == head))
 				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
 					glasses_processed = 1
 					process_glasses(rig.visor.vision.glasses)
 
-		if(glasses && !glasses_processed && !looking_elsewhere)
+		if(glasses && !glasses_processed) // && !looking_elsewhere)
 			glasses_processed = 1
 			process_glasses(glasses)
 		if(XRAY in mutations)
@@ -1349,7 +1374,7 @@
 			var/viewflags = machine.check_eye(src)
 			if(viewflags < 0)
 				reset_view(null, 0)
-			else if(viewflags && !looking_elsewhere)
+			else if(viewflags) //&& !looking_elsewhere)
 				sight |= viewflags
 		else if(eyeobj)
 			if(eyeobj.owner != src)

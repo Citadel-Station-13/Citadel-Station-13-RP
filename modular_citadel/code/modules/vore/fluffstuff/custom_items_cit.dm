@@ -16,7 +16,6 @@
 	..()
 	update_state(1)
 
-/* This is a miserable pile of code I tried and failed to make work. Just cosmetic for now.
 /obj/item/clothing/accessory/collar/lifecrystal/Destroy() //Waitwaitwait
 	if(state == 1)
 		process() //Nownownow
@@ -50,7 +49,7 @@
 	Broadcast_Message(connection, owner,
 				0, "*garbled alert*", null,
 				message, "[owner.real_name]'s Life Crystal", "Life Alert", "[owner.real_name]'s Life Crystal", "shrill synthetic voice",
-				0, 0, list(0), connection.frequency, "alarms", null)*/
+				0, 0, list(0), connection.frequency, "alarms", null)
 
 /obj/item/clothing/accessory/collar/lifecrystal/proc/update_state(var/tostate)
 	state = tostate

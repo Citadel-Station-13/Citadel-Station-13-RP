@@ -22,6 +22,7 @@
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/crowbar/red,
 		/obj/item/weapon/storage/box/flashbangs,
+		/obj/item/weapon/storage/box/trackimp,
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/baton/loaded,

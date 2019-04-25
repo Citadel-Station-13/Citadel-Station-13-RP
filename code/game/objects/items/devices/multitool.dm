@@ -33,6 +33,9 @@
 	else
 		..()
 
+/obj/item/device/multitool/is_multitool()
+	return TRUE
+
 /obj/item/device/multitool/cyborg
 	name = "multitool"
 	desc = "Optimised and stripped-down version of a regular multitool."
