@@ -99,9 +99,6 @@
 
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
-
-
-
 #define COMPILE_OVERLAYS(A)\
 	if (TRUE) {\
 		var/list/ad = A.add_overlays;\
@@ -120,3 +117,14 @@
 		}\
 		A.flags &= ~OVERLAY_QUEUED;\
 	}
+
+/atom/proc/debug_compile_overlays()
+	if(LAZYLEN(remove_overlays))
+		overlays -= remove_overlays
+		remove_overlays.Cut()
+	if(LAZYLEN(add_overlays))
+		overlays |= add_overlays
+		add_overlays.Cut()
+	if(LAZYLEN(priority_overlays))
+		overlays |= priority_overlays
+	flags &= ~OVERLAY_QUEUED
