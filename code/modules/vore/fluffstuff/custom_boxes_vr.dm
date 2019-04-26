@@ -42,13 +42,16 @@
 // bwoincognito:Tasald Corlethian
 /obj/item/weapon/storage/box/fluff/tasald
 	name = "Tasald's Kit"
-	desc = "A kit containing Talsald's equipment."
+	desc = "A kit containing Tasald's equipment."
 	has_items = list(
 		/obj/item/clothing/suit/storage/det_suit/fluff/tasald,
 		/obj/item/clothing/suit/storage/det_suit/fluff/tas_coat,
 		/obj/item/clothing/under/det/fluff/tasald,
+<<<<<<< HEAD
 		/obj/item/clothing/accessory/permit/gun/fluff/tasald_corlethian,
 		/obj/item/weapon/gun/projectile/revolver/mateba/fluff/tasald_corlethian,
+=======
+>>>>>>> cd19587... Merge pull request #5141 from Novacat/nova-survival
 		/obj/item/weapon/implanter/loyalty)
 
 //bwoincognito:Octavious Ward
@@ -102,10 +105,7 @@
 		new /obj/item/clothing/suit/storage/fluff/modernfedcoat(src)
 		new /obj/item/clothing/head/caphat/formal/fedcover(src)
 		new /obj/item/weapon/card/id/centcom/station/fluff/joanbadge(src)
-//		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
-//		new /obj/item/clothing/accessory/permit/gun/fluff/joanrisu(src)
-//		new /obj/item/weapon/sword/fluff/joanaria(src)
 		new /obj/item/weapon/flame/lighter/zippo/fluff/joan(src)
 		new /obj/item/clothing/under/rank/internalaffairs/fluff/joan(src)
 		new /obj/item/clothing/head/helmet/space/fluff/joan(src)
@@ -121,7 +121,6 @@
 		..()
 		new /obj/item/clothing/accessory/holster/hip(src)
 		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-//		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
 		new /obj/item/clothing/accessory/storage/black_vest(src)
 		new /obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina(src)
@@ -178,6 +177,7 @@
 	can_hold = list(/obj/item/clothing/under/swimsuit/)
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/penelope)
 
+<<<<<<< HEAD
 // Aerowing:Sebastian Aji
 /obj/item/weapon/storage/box/fluff/sebastian_aji
 	name = "Sebastian's Lumoco Arms P3 Box"
@@ -218,6 +218,8 @@
 		/obj/item/clothing/accessory/storage/black_vest/fluff/kilano
 		)
 
+=======
+>>>>>>> cd19587... Merge pull request #5141 from Novacat/nova-survival
 // JackNoir413: Mor Xaina
 /obj/item/weapon/storage/box/fluff/morxaina
 	name = "Fashionable clothes set"

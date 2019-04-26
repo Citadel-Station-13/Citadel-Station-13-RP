@@ -5,6 +5,7 @@
 /obj/item/clothing/accessory/permit/gun/fluff/emag_act(var/remaining_charges, var/mob/user)
 	to_chat(user, "You cannot reset the naming locks on [src]. It's issued by CentCom and totally tamper-proof!")
 	return
+<<<<<<< HEAD
 /* CITADEL CHANGE - Removes Virgo Fluff
 // aerowing:Sebastian Aji
 /obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji
@@ -28,12 +29,15 @@
 	name = "Dhaeleena M'iar's Sidearm Permit"
 	desc = "A card indicating that the owner is allowed to carry a sidearm that uses less-than-lethal munitions. It is issued by CentCom, so it is valid until it expires on March 1st, 2562."
 */
+=======
+>>>>>>> cd19587... Merge pull request #5141 from Novacat/nova-survival
 
 // jertheace:Jeremiah 'Ace' Acacius
 /obj/item/clothing/accessory/permit/gun/fluff/ace
 	name = "Ace's Shotgun Permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm. It is issued by CentCom, so it is valid until it expires on October 1st, 2562."
 
+<<<<<<< HEAD
 /* joanrisu:Joan Risu
 /obj/item/clothing/accessory/permit/gun/fluff/joanrisu
 	name = "Joan Risu's Sidearm Permit"
@@ -63,6 +67,13 @@
 	desc = "A card indicating that the owner is allowed to carry a sidearm. It is issued by CentCom, so it is valid until it expires on March 4, 2563."
 */
 END OF CITADEL CHANGES */
+=======
+// ValiTheWolf: Vakashi
+/obj/item/clothing/accessory/permit/gun/fluff/Vakashi
+	name = "Vakashi's Sidearm Permit"
+	desc = "A card indicating that the owner is allowed to carry a sidearm that uses less-than-lethal munitions. It is issued by CentCom, so it is valid until it expires on March 1st, 2564."
+
+>>>>>>> cd19587... Merge pull request #5141 from Novacat/nova-survival
 /* Legacy Permits
 // BEGIN - PROTOTYPE
 /obj/item/clothing/accessory/permit/gun/fluff
