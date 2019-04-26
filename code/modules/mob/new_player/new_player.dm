@@ -167,12 +167,17 @@
 
 	if(href_list["SelectedJob"])
 
+		//kevinz000: this is disabled for being garbage code, the correct way to do a single-join lock is just track joins and add joined names to the global datacore for admin logging and piggyback off that
+		//not fucking iterate through every mob in the world
+		//what the fuck/who the fuck thought this was a good idea?
+		/*
 		//Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
 				usr << "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>" //VOREStation Edit
 				return
+		*/
 
 		if(!config.enter_allowed)
 			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"

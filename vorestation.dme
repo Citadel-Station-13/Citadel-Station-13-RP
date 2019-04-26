@@ -23,7 +23,6 @@
 #include "code\names.dm"
 #include "code\stylesheet.dm"
 #include "code\world.dm"
-#include "code\__datastructures\globals.dm"
 #include "code\__DEFINES\_______TEMPORARY.dm"
 #include "code\__DEFINES\_globals.dm"
 #include "code\__DEFINES\_lists.dm"

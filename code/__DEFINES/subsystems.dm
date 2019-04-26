@@ -118,7 +118,7 @@
 		A.flags &= ~OVERLAY_QUEUED;\
 	}
 
-/atom/proc/debug_compile_overlays()
+/atom/proc/manual_compile_overlays()
 	if(LAZYLEN(remove_overlays))
 		overlays -= remove_overlays
 		remove_overlays.Cut()
