@@ -3,7 +3,11 @@
 //
 
 /datum/job/offduty_civilian
+<<<<<<< HEAD
 	title = "Off-Duty Employee"
+=======
+	title = "Off-duty Worker"
+>>>>>>> ad3e9fc... Merge pull request #5101 from Heroman3003/timeclock-finishing
 	latejoin_only = TRUE
 	timeoff_factor = 0
 	total_positions = -1
