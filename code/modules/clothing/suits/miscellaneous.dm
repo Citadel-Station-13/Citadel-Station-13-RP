@@ -384,14 +384,14 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/miljacket/alt
-	name = "military jacket"
+	name = "military jacket, badge"
 	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
 	icon_state = "militaryjacket_badge"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/miljacket/green
-	name = "military jacket"
+	name = "military jacket, dark green"
 	desc = "A dark green canvas jacket. Feels sturdy, yet comfortable."
 	icon_state = "militaryjacket_green"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
