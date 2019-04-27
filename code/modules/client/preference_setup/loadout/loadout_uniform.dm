@@ -553,3 +553,7 @@
 /datum/gear/uniform/marine/tan
 	display_name = "uniform, fatigues (tan)"
 	path = /obj/item/clothing/under/utility/marine/tan
+
+/datum/gear/uniform/marine
+	display_name = "uniform, fatigues (light grey)"
+	path = /obj/item/clothing/under/utility/marine
