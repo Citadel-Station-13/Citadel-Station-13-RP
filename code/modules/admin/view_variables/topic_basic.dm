@@ -1,50 +1,51 @@
-/client/proc/vv_do_basic(datum/target, href, href_list, hsrc)
-	if(href_list["varnameedit"] && href_list["datumedit"])
-		if(!check_rights(R_VAREDIT))
-			return
-
-		var/datum/D = locate(href_list["datumedit"])
-		if(!istype(D, /datum))
-			to_chat(usr, "This can only be used on datums")
-			return
-
-		if (!modify_variables(D, href_list["varnameedit"], 1))
-			return
-		switch(href_list["varnameedit"])
-			if("name")
-				vv_update_display(D, "name", "[D]")
-			if("dir")
-				var/atom/A = D
-				if(istype(A))
-					vv_update_display(D, "dir", dir2text(A.dir) || A.dir)
-			if("ckey")
-				var/mob/living/L = D
-				if(istype(L))
-					vv_update_display(D, "ckey", L.ckey || "No ckey")
-			if("real_name")
-				var/mob/living/L = D
-				if(istype(L))
-					vv_update_display(D, "real_name", L.real_name || "No real name")
-
-	else if(href_list["varnamechange"] && href_list["datumchange"])
-		if(!check_rights(R_VAREDIT))
-			return
-
-		var/D = locate(href_list["datumchange"])
-		if(!istype(D, /datum))
-			to_chat(usr, "This can only be used on datums")
-			return
-
-		modify_variables(D, href_list["varnamechange"], 0)
-
-	else if(href_list["varnamemass"] && href_list["datummass"])
-		if(!check_rights(R_VAREDIT))
-			return
-
-		var/datum/D = locate(href_list["datummass"])
-		if(!istype(D))
-			to_chat(usr, "This can only be used on instances of type /datum")
-			return
-
-		cmd_mass_modify_object_variables(D, href_list["varnamemass"])
-
+//Not using datum.vv_do_topic for very basic/low level debug things, incase the datum's vv_do_topic is runtiming/whatnot.
+/client/proc/vv_do_basic(datum/target, href_list)
+	var/target_var = GET_VV_VAR_TARGET
+	if(check_rights(R_VAREDIT))
+		if(target_var)
+			IF_VV_OPTION(VV_HK_BASIC_EDIT)
+				if(!modify_variables(target, target_var, 1))
+					return
+				switch(target_var)
+					if("name")
+						vv_update_display(target, "name", "[target]")
+					if("dir")
+						var/atom/A = target
+						if(istype(A))
+							vv_update_display(target, "dir", dir2text(A.dir) || A.dir)
+					if("ckey")
+						var/mob/living/L = target
+						if(istype(L))
+							vv_update_display(target, "ckey", L.ckey || "No ckey")
+					if("real_name")
+						var/mob/living/L = target
+						if(istype(L))
+							vv_update_display(target, "real_name", L.real_name || "No real name")
+			IF_VV_OPTION(VV_HK_BASIC_CHANGE)
+				modify_variables(target, target_var, 0)
+			IF_VV_OPTION(VV_HK_BASIC_MASSEDIT)
+				cmd_mass_modify_object_variables(target, target_var)
+	if(check_rights(R_ADMIN, FALSE))
+		IF_VV_OPTION(VV_HK_EXPOSE)
+			var/value = vv_get_value(VV_CLIENT)
+			if (value["class"] != VV_CLIENT)
+				return
+			var/client/C = value["value"]
+			if (!C)
+				return
+			if(!target)
+				to_chat(usr, "<span class='warning'>The object you tried to expose to [C] no longer exists (nulled or hard-deled)</span>")
+				return
+			message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;datumrefresh=[REF(target)]'>VV window</a>")
+			log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [target]")
+			to_chat(C, "[holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
+			C.debug_variables(target)
+	if(check_rights(R_DEBUG))
+		IF_VV_OPTION(VV_HK_DELETE)
+			usr.client.admin_delete(target)
+			if (isturf(src))	// show the turf that took its place
+				usr.client.debug_variables(src)
+	IF_VV_OPTION(VV_HK_MARK)
+		usr.client.mark_datum(target)
+	IF_VV_OPTION(VV_HK_CALLPROC)
+		usr.client.callproc_datum(target)

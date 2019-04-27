@@ -8,9 +8,9 @@
 				name = D[name] //name is really the index until this line
 			else
 				value = D[name]
-			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;listedit=[REF(D)];index=[index]'>E</a>) (<a href='?_src_=vars;listchange=[REF(D)];index=[index]'>C</a>) (<a href='?_src_=vars;listremove=[REF(D)];index=[index]'>-</a>) "
+			header = "<li style='backgroundColor:white'>([VV_HREF_TARGET_1V(D, VV_HK_LIST_EDIT, "E", index)]) ([VV_HREF_TARGET_1V(D, VV_HK_LIST_CHANGE, "C", index)]) ([VV_HREF_TARGET_1V(D, VV_HK_LIST_REMOVE, "-", index)]) "
 		else
-			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=[REF(D)];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=[REF(D)];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=[REF(D)];varnamemass=[name]'>M</a>) "
+			header = "<li style='backgroundColor:white'>([VV_HREF_TARGET_1V(D, VV_HK_BASIC_EDIT, "E", name)]) ([VV_HREF_TARGET_1V(D, VV_HK_BASIC_CHANGE, "C", name)]) ([VV_HREF_TARGET_1V(D, VV_HK_BASIC_MASSEDIT, "M", name)]) "
 	else
 		header = "<li>"
 

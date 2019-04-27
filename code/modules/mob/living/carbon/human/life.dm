@@ -37,9 +37,6 @@ var/last_message = 0
 	var/heartbeat = 0
 
 /mob/living/carbon/human/Life()
-	set invisibility = 0
-
-
 	///////////////////////// CITADEL STATION ADDITIONS START
 	var/timeSinceLastTick = world.time - lastLifeProc
 	///////////////////////// CITADEL STATION ADDITIONS END
