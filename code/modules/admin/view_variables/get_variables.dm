@@ -1,4 +1,4 @@
-/client/proc/vv_get_class(var/var_name, var/var_value)
+/client/proc/vv_get_class(var_name, var_value)
 	if(isnull(var_value))
 		. = VV_NULL
 

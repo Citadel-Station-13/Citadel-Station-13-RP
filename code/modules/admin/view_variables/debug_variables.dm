@@ -1,16 +1,16 @@
 #define VV_HTML_ENCODE(thing) ( sanitize ? html_encode(thing) : thing )
-/proc/debug_variable(name, value, level, datum/DA = null, sanitize = TRUE)
+/proc/debug_variable(name, value, level, datum/D, sanitize = TRUE)			//if D is a list, name will be index, and value will be assoc value.
 	var/header
-	if(DA)
-		if (islist(DA))
+	if(D)
+		if(islist(D))
 			var/index = name
 			if (value)
-				name = DA[name] //name is really the index until this line
+				name = D[name] //name is really the index until this line
 			else
-				value = DA[name]
-			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;listedit=[REF(DA)];index=[index]'>E</a>) (<a href='?_src_=vars;listchange=[REF(DA)];index=[index]'>C</a>) (<a href='?_src_=vars;listremove=[REF(DA)];index=[index]'>-</a>) "
+				value = D[name]
+			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;listedit=[REF(D)];index=[index]'>E</a>) (<a href='?_src_=vars;listchange=[REF(D)];index=[index]'>C</a>) (<a href='?_src_=vars;listremove=[REF(D)];index=[index]'>-</a>) "
 		else
-			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=[REF(DA)];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=[REF(DA)];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=[REF(DA)];varnamemass=[name]'>M</a>) "
+			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=[REF(D)];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=[REF(D)];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=[REF(D)];varnamemass=[name]'>M</a>) "
 	else
 		header = "<li>"
 
@@ -23,7 +23,7 @@
 
 	else if (isicon(value))
 		#ifdef VARSICON
-		var/icon/I = new/icon(value)
+		var/icon/I = icon(value)
 		var/rnd = rand(1,10000)
 		var/rname = "tmp[REF(I)][rnd].png"
 		usr << browse_rsc(I, rname)
@@ -36,11 +36,11 @@
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>'[value]'</span>"
 
 	else if (istype(value, /datum))
-		var/datum/D = value
-		if ("[D]" != "[D.type]") //if the thing as a name var, lets use it.
-			item = "<a href='?_src_=vars;Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [D] [D.type]"
+		var/datum/DV = value
+		if ("[DV]" != "[DV.type]") //if the thing as a name var, lets use it.
+			item = "<a href='?_src_=vars;Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [DV] [DV.type]"
 		else
-			item = "<a href='?_src_=vars;Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [D.type]"
+			item = "<a href='?_src_=vars;Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [DV.type]"
 
 	else if (islist(value))
 		var/list/L = value

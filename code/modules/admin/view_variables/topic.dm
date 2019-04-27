@@ -1,17 +1,25 @@
 //DO NOT ADD MORE TO THIS FILE.
-//Use vv_do_topic()!
+//Use vv_do_topic() for datums!
 /client/proc/view_var_Topic(href, href_list, hsrc)
 	if((usr.client != src) || !src.holder)
 		return
-	var/datum/target = locate(href_list["target"])
-	if(target)
-		target.vv_do_topic(href_list)
+	var/target = locate(href_list["target"])
 
+	if(isdatum(target))
+		var/datum/D = target
+		D.vv_do_topic(href_list)
+	else if(islist(target))
+		vv_do_list(target, href, href_list, hsrc)
+	vv_do_basic(target, href, href_list, hsrc)
 	if(href_list["Vars"])
 		debug_variables(locate(href_list["Vars"]))
 
+
+
+	//rest of this should proabbly be eventually moved to vv_do_topic in datums
+
 	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
-	else if(href_list["rename"])
+	if(href_list["rename"])
 		if(!check_rights(R_VAREDIT))	return
 
 		var/mob/M = locate(href_list["rename"])
@@ -26,6 +34,8 @@
 		M.fully_replace_character_name(M.real_name,new_name)
 		href_list["datumrefresh"] = href_list["rename"]
 
+/*
+//BASIC VV FUNCTIONS - KEEP IN THIS FILE!
 	else if(href_list["varnameedit"] && href_list["datumedit"])
 		if(!check_rights(R_VAREDIT))	return
 
@@ -51,10 +61,12 @@
 
 		var/atom/A = locate(href_list["datummass"])
 		if(!istype(A))
-			usr << "This can only be used on instances of type /atom"
+			to_chat(usr, "This can only be used on instances of type /atom")
 			return
 
 		cmd_mass_modify_object_variables(A, href_list["varnamemass"])
+//BASIC VV FUNCTIONS END
+*/
 
 	else if(href_list["mob_player_panel"])
 		if(!check_rights(0))	return

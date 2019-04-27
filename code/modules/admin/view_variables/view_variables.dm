@@ -12,7 +12,7 @@
 		return
 
 	var/islist = islist(D)
-	if (!islist && !istype(D))
+	if(!islist && !istype(D))
 		return
 
 	var/title = ""
@@ -20,17 +20,20 @@
 	var/icon/sprite
 	var/hash
 
-	var/type = /list
-	if (!islist)
-		type = D.type
+	var/type = islist? /list : D.type
 
 	if(istype(D, /atom))
-		var/atom/AT = D
+		sprite = getFlatIcon(D)
+		hash = md5(sprite)
+		src << browse_rsc(sprite, "vv[hash].png")
+
+		/*
 		if(AT.icon && AT.icon_state)
 			sprite = new /icon(AT.icon, AT.icon_state)
 			hash = md5(AT.icon)
 			hash = md5(hash + AT.icon_state)
 			src << browse_rsc(sprite, "vv[hash].png")
+		*/
 
 	title = "[D] ([REF(D)]) = [type]"
 	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
@@ -40,18 +43,17 @@
 		sprite_text = "<img src='vv[hash].png'></td><td>"
 	var/list/header = islist(D)? list("<b>/list</b>") : D.vv_get_header()
 
-	var/marked
+	var/marked_line
 	if(holder && holder.marked_datum && holder.marked_datum == D)
-		marked = VV_MSG_MARKED
-	var/varedited_line = ""
+		marked_line = VV_MSG_MARKED
+	var/varedited_line
 	if(!islist && (D.datum_flags & DF_VAR_EDITED))
 		varedited_line = VV_MSG_EDITED
 	var/deleted_line
 	if(!islist && D.gc_destroyed)
 		deleted_line = VV_MSG_DELETED
 
-	var/list/dropdownoptions = list()
-	var/autoconvert_dropdown = FALSE
+	var/list/dropdownoptions
 	if (islist)
 		dropdownoptions = list(
 			"---",
@@ -62,39 +64,34 @@
 			"Shuffle" = "?_src_=vars;listshuffle=[refid]",
 			"Show VV To Player" = "?_src_=vars;expose=[refid]"
 			)
-		autoconvert_dropdown = TRUE
+		for(var/i in 1 to length(dropdownoptions))
+			var/name = dropdownoptions[i]
+			var/link = dropdownoptions[name]
+			dropdownoptions[i] = "<option value[link? "='[link]'":""]>[name]</option>"
 	else
 		dropdownoptions = D.vv_get_dropdown()
-	var/list/dropdownoptions_html = list()
-	if(autoconvert_dropdown)
-		for (var/name in dropdownoptions)
-			var/link = dropdownoptions[name]
-			if (link)
-				dropdownoptions_html += "<option value='[link]'>[name]</option>"
-			else
-				dropdownoptions_html += "<option value>[name]</option>"
-	else
-		dropdownoptions_html = dropdownoptions + D.get_view_variables_options()
+		//LEGACY SUPPORT
+		dropdownoptions += D.get_view_variables_options()
+		//END
 
 	var/list/names = list()
-	if (!islist)
-		for (var/V in D.vars)
+	if(!islist)
+		for(var/V in D.vars)
 			names += V
-	sleep(1)//For some reason, without this sleep, VVing will cause client to disconnect on certain objects.
+	sleep(1)
 
 	var/list/variable_html = list()
-	if (islist)
+	if(islist)
 		var/list/L = D
-		for (var/i in 1 to L.len)
+		for(var/i in 1 to L.len)
 			var/key = L[i]
 			var/value
-			if (IS_NORMAL_LIST(L) && !isnum(key))
+			if(IS_NORMAL_LIST(L) && IS_VALID_ASSOC_KEY(key))
 				value = L[key]
-			variable_html += debug_variable(i, value, 0, D)
+			variable_html += debug_variable(i, value, 0, L)
 	else
-
 		names = sortList(names)
-		for (var/V in names)
+		for(var/V in names)
 			if(D.can_vv_get(V))
 				variable_html += D.vv_get_var(V)
 
@@ -225,7 +222,7 @@
 						</table>
 						<div align='center'>
 							<b><font size='1'>[formatted_type]</font></b>
-							<span id='marked'>[marked]</span>
+							<span id='marked'>[marked_line]</span>
 							<span id='varedited'>[varedited_line]</span>
 							<span id='deleted'>[deleted_line]</span>
 						</div>
@@ -239,7 +236,7 @@ datumrefresh=[refid]'>Refresh</a>
 									onchange="handle_dropdown(this)"
 									onmouseclick="this.focus()">
 									<option value selected>Select option</option>
-									[dropdownoptions_html.Join()]
+									[dropdownoptions.Join()]
 								</select>
 							</form>
 						</div>

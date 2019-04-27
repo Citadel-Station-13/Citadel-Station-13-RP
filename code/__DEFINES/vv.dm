@@ -29,7 +29,11 @@
 #define VV_NORMAL_LIST_NO_EXPAND_THRESHOLD 50
 #define VV_SPECIAL_LIST_NO_EXPAND_THRESHOLD 150
 
-#define IS_VALID_ASSOC_KEY(V) (istext(V) || isdatum(V) || islist(V))
+//#define IS_VALID_ASSOC_KEY(V) (istext(V) || ispath(V) || isdatum(V) || islist(V))
+#define IS_VALID_ASSOC_KEY(V) (!isnum(V))		//hhmmm..
+
+//General helpers
+#define VV_HREF_TARGET(target, href_key, text) "<a href='?_src_=vars;[href_key]=TRUE;target=[REF(target)]'>[text]</a>"
 
 //Helpers for vv_get_dropdown()
 #define VV_DROPDOWN_OPTION(href_key, name) . += "<option value='?_src_=vars;[href_key]=TRUE;target=[REF(src)]'>[name]</option>"

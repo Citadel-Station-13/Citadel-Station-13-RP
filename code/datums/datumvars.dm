@@ -56,7 +56,7 @@
 		if(!check_rights(R_DEBUG))
 			return
 		usr.client.admin_delete(src)
-		if (isturf(src))  // show the turf that took its place
+		if (isturf(src))	// show the turf that took its place
 			usr.client.debug_variables(src)
 	IF_VV_OPTION(VV_HK_MARK)
 		usr.client.mark_datum(src)
