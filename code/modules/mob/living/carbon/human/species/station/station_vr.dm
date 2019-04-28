@@ -329,6 +329,14 @@
 	min_age = 18
 	reagent_tag = null
 
+/datum/species/zaddat/equip_survival_gear(var/mob/living/carbon/human/H)
+	.=..()
+	var/obj/item/weapon/storage/toolbox/lunchbox/survival/zaddat/L = new(get_turf(H))
+	if(H.backbag == 1)
+		H.equip_to_slot_or_del(L, slot_r_hand)
+	else
+		H.equip_to_slot_or_del(L, slot_in_backpack)
+
 /datum/species/diona
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
 	min_age = 18
