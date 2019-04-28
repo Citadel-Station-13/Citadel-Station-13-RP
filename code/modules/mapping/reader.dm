@@ -227,9 +227,9 @@
 
 	for(var/__I in gridSets)
 		var/datum/grid_set/gridset = __I
-		//parsed = the spot on the world on a SOUTH/default orientation load it would load into
-		//actual = after inversions for NORTH/SOUTH/flipping in general
-		//placement = after x/y swap for 90 degree rotation.
+		//parsed - the maploader's sweep. always going to be sweeping down the map in the same direction, SOUTH and EAST in that order, to preserve init orders.
+		//actual - the "virtual" loading sweep - after transformations for inversions.
+		//placement - the real location of the placed atom
 
 		var/parsed_y = gridset.ycrd + y_offset - 1
 		var/parsed_z = gridset.zcrd + z_offset - 1
@@ -459,7 +459,7 @@
 		crds.empty(null)
 	if(members[index] != /area/template_noop)
 		var/atype = members[index]
-		GLOB._preloader.setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
+		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
 		var/atom/instance = areaCache[atype]
 		if (!instance)
 			instance = GLOB.areas_by_type[atype]
@@ -470,7 +470,7 @@
 			instance.contents.Add(crds)
 
 		if(GLOB.use_preloader && instance)
-			GLOB._preloader.load(instance)
+			world.preloader_load(instance)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
 
@@ -521,7 +521,7 @@
 		if(py)
 			attributes["pixel_y"] = py
 
-	GLOB._preloader.setup(attributes, path)
+	world.preloader_setup(attributes, path)
 
 	if(crds)
 		if(ispath(path, /turf))
@@ -535,7 +535,7 @@
 			. = create_atom(path, crds)//first preloader pass
 
 	if(GLOB.use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
-		GLOB._preloader.load(.)
+		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize
 	if(TICK_CHECK)
