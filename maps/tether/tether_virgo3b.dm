@@ -167,8 +167,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather/virgo3b/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
-	temp_high = 235
-	temp_low = 	225
+	temp_high = 235.15
+	temp_low = 	225.15
 	light_modifier = 0.7
 	transition_chances = list(
 		WEATHER_OVERCAST = 20,
@@ -185,8 +185,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather/virgo3b/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
-	temp_high = 230
-	temp_low = 220
+	temp_high = 230.15
+	temp_low = 220.15
+	wind_high = 2
+	wind_low = 0
 	light_modifier = 0.5
 	flight_failure_modifier = 5
 	transition_chances = list(
@@ -215,8 +217,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather/virgo3b/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
-	temp_high = 215
-	temp_low = 200
+	temp_high = 215.15
+	temp_low = 200.15
+	wind_high = 4
+	wind_low = 2
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	transition_chances = list(
@@ -244,6 +248,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather/virgo3b/rain
 	name = "rain"
 	icon_state = "rain"
+	wind_high = 2
+	wind_low = 1
 	light_modifier = 0.5
 	effect_message = "<span class='warning'>Rain falls on you.</span>"
 
@@ -288,6 +294,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 /datum/weather/virgo3b/storm
 	name = "storm"
 	icon_state = "storm"
+	wind_high = 4
+	wind_low = 2
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	effect_message = "<span class='warning'>Rain falls on you, drenching you in water.</span>"
@@ -317,23 +325,6 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
 				continue // They're indoors, so no need to rain on them.
-
-			// Lazy wind code
-			if(prob(10))
-				if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
-					var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
-					if(U.open)
-						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
-						L.Stun(20)	// This is not nearly as long as it seems
-						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
-				else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
-					var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
-					if(U.open)
-						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
-						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
-						L.drop_from_inventory(U)
-						U.toggle_umbrella()
-						U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
@@ -436,3 +427,111 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	transition_messages = list(
 		"The sky turns blood red!"
 	)
+<<<<<<< HEAD
+=======
+	outdoor_sounds_type = /datum/looping_sound/weather/wind
+	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+// Ash and embers fall forever, such as from a volcano or something.
+/datum/weather/virgo3b/emberfall
+	name = "emberfall"
+	icon_state = "ashfall_light"
+	light_modifier = 0.7
+	light_color = "#880000"
+	temp_high = 293.15	// 20c
+	temp_low = 283.15	// 10c
+	flight_failure_modifier = 20
+	transition_chances = list(
+		WEATHER_EMBERFALL = 100
+		)
+	observed_message = "Soot, ash, and embers float down from above."
+	transition_messages = list(
+		"Gentle embers waft down around you like grotesque snow."
+	)
+	outdoor_sounds_type = /datum/looping_sound/weather/wind
+	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+// Like the above but a lot more harmful.
+/datum/weather/virgo3b/ash_storm
+	name = "ash storm"
+	icon_state = "ashfall_heavy"
+	light_modifier = 0.1
+	light_color = "#FF0000"
+	temp_high = 323.15	// 50c
+	temp_low = 313.15	// 40c
+	wind_high = 6
+	wind_low = 3
+	flight_failure_modifier = 50
+	transition_chances = list(
+		WEATHER_ASH_STORM = 100
+		)
+	observed_message = "All that can be seen is black smoldering ash."
+	transition_messages = list(
+		"Smoldering clouds of scorching ash billow down around you!"
+	)
+	// Lets recycle.
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
+	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
+
+/datum/weather/virgo3b/ash_storm/process_effects()
+	..()
+	for(var/thing in living_mob_list)
+		var/mob/living/L = thing
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // They're indoors, so no need to burn them with ash.
+
+			L.inflict_heat_damage(rand(1, 3))
+
+
+// Totally radical.
+/datum/weather/virgo3b/fallout
+	name = "fallout"
+	icon_state = "fallout"
+	light_modifier = 0.7
+	light_color = "#CCFFCC"
+	flight_failure_modifier = 30
+	transition_chances = list(
+		WEATHER_FALLOUT = 100
+		)
+	observed_message = "Radioactive soot and ash rains down from the heavens."
+	transition_messages = list(
+		"Radioactive soot and ash start to float down around you, contaminating whatever they touch."
+	)
+	outdoor_sounds_type = /datum/looping_sound/weather/wind
+	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+	// How much radiation a mob gets while on an outside tile.
+	var/direct_rad_low = RAD_LEVEL_LOW
+	var/direct_rad_high = RAD_LEVEL_MODERATE
+
+	// How much radiation is bursted onto a random tile near a mob.
+	var/fallout_rad_low = RAD_LEVEL_HIGH
+	var/fallout_rad_high = RAD_LEVEL_VERY_HIGH
+
+/datum/weather/virgo3b/fallout/process_effects()
+	..()
+	for(var/thing in living_mob_list)
+		var/mob/living/L = thing
+		if(L.z in holder.our_planet.expected_z_levels)
+			irradiate_nearby_turf(L)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // They're indoors, so no need to irradiate them with fallout.
+
+			L.rad_act(rand(direct_rad_low, direct_rad_high))
+
+// This makes random tiles near people radioactive for awhile.
+// Tiles far away from people are left alone, for performance.
+/datum/weather/virgo3b/fallout/proc/irradiate_nearby_turf(mob/living/L)
+	if(!istype(L))
+		return
+	var/list/turfs = RANGE_TURFS(world.view, L)
+	var/turf/T = pick(turfs) // We get one try per tick.
+	if(!istype(T))
+		return
+	if(T.outdoors)
+		radiation_repository.radiate(T, rand(fallout_rad_low, fallout_rad_high))
+
+>>>>>>> 958a5b6... Merge pull request #5142 from VOREStation/upstream-merge-6058
