@@ -282,6 +282,7 @@
 			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
 			qdel(src)
 			return 0
+	player_age = 0		//math requires this to not be -1.
 
 	// VOREStation Edit Start - Department Hours
 	if(config.time_off)
