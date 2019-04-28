@@ -93,4 +93,4 @@
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	return
+	// return
