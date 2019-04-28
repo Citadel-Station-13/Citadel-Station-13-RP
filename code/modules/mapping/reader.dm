@@ -201,16 +201,7 @@
 
 	for(var/__I in gridSets)
 		var/datum/grid_set/gridset = __I
-		//parsed - the maploader's sweep. always going to be sweeping down the map in the same direction, SOUTH and EAST in that order, to preserve init orders.
-		//actual - the "virtual" loading sweep - after transformations for inversions.
-		//placement - the real location of the placed atom
-
-		var/parsed_y = gridset.ycrd + y_offset - 1
 		var/parsed_z = gridset.zcrd + z_offset - 1
-		//var/lower_left_y = parsed_y - length(gridset.gridLines)
-		//var/lower_left_x = x_offset + gridset.xcrd - 1
-		//var/delta_swap = lower_left_x - lower_left_y
-		//to_chat(world, "DEBUG: Delta swap is [delta_swap], swap_xy [swap_xy], lower left [lower_left_x]/[lower_left_y], parsed [gridset.xcrd + x_offset - 1]/[parsed_y], grid crds [gridset.xcrd]/[gridset.ycrd]")
 		var/zexpansion = parsed_z > world.maxz
 		if(zexpansion)
 			if(cropMap)
@@ -220,21 +211,19 @@
 					world.incrementMaxZ()
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
-		var/actual_y = invert_y? y_offset : parsed_y
-		var/edge_dist_x = gridset.xcrd - 1
+		//these values are the same until a new gridset is reached.
+		var/edge_dist_x = gridset.xcrd - 1											//from left side, 0 is right on the x_offset
+		var/edge_dist_y = gridset.ycrd - length(gridset.gridLines)					//from bottom, 0 is right on the y_offset
+		var/actual_x_starting = invert_x? (x_offset + width - edge_dist_x) : (x_offset + edge_dist_x)		//this value is not changed, cache.
+		//this value is changed
+		var/actual_y = invert_y? (y_offset + edge_dist_y) : (y_offset + gridset.ycrd - 1)
 		for(var/line in gridset.gridLines)
-			var/parsed_x = gridset.xcrd + x_offset - 1
-			var/actual_x = invert_x? (x_offset + width - edge_dist_x) : (x_offset + edge_dist_x)
+			var/actual_x = actual_x_starting
 			for(var/pos = 1 to (length(line) - key_len + 1) step key_len)
 				var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
 				var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
-
-				//invert y works
-
-
 				if(placement_x > world.maxx)
 					if(cropMap)
-						parsed_x++
 						actual_x += xi
 						continue
 					else
@@ -245,7 +234,6 @@
 					else
 						world.maxy = placement_y
 				if(placement_x < 1)
-					parsed_x++
 					actual_x += xi
 					continue
 				if(placement_y < 1)
@@ -256,7 +244,7 @@
 					var/list/cache = modelCache[model_key]
 					if(!cache)
 						CRASH("Undefined model key in DMM: [model_key]")
-					build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, turn_angle, annihilate_tiles, swap_xy, invert_y)
+					build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, turn_angle, annihilate_tiles, swap_xy, invert_y, invert_x)
 
 					// only bother with bounds that actually exist
 					bounds[MAP_MINX] = min(bounds[MAP_MINX], placement_x)
@@ -269,10 +257,8 @@
 				else
 					++turfsSkipped
 				#endif
-				parsed_x++
 				actual_x += xi
 				CHECK_TICK
-			parsed_y--
 			actual_y += yi
 			CHECK_TICK
 
@@ -367,7 +353,7 @@
 
 		.[model_key] = list(members, members_attributes)
 
-/datum/parsed_map/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, turn_angle as num, annihilate_tiles = FALSE, swap_xy, invert_y)
+/datum/parsed_map/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, turn_angle as num, annihilate_tiles = FALSE, swap_xy, invert_y, invert_x)
 	var/index
 	var/list/members = model[1]
 	var/list/members_attributes = model[2]
@@ -407,20 +393,20 @@
 	//instanciate the first /turf
 	var/turf/T
 	if(members[first_turf_index] != /turf/template_noop)
-		T = instance_atom(members[first_turf_index],members_attributes[first_turf_index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y)
+		T = instance_atom(members[first_turf_index],members_attributes[first_turf_index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
 
 	if(T)
 		//if others /turf are presents, simulates the underlays piling effect
 		index = first_turf_index + 1
 		while(index <= members.len - 1) // Last item is an /area
 			var/underlay = T.appearance
-			T = instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y)//instance new turf
+			T = instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)//instance new turf
 			T.underlays += underlay
 			index++
 
 	//finally instance all remainings objects/mobs
 	for(index in 1 to first_turf_index-1)
-		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y)
+		instance_atom(members[index],members_attributes[index],crds,no_changeturf,placeOnTop,turn_angle, swap_xy, invert_y, invert_x)
 	//Restore initialization to the previous value
 	SSatoms.map_loader_stop()
 
@@ -429,13 +415,15 @@
 ////////////////
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
-/datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y)
+/datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
 	if(turn_angle != 0)
 		attributes["dir"] = turn((attributes["dir"] || SOUTH), turn_angle)
 		var/px = attributes["pixel_x"] || 0
 		var/py = attributes["pixel_y"] || 0
-		if(invert_y)
+		if(invert_y)			//same order of operations as the load rotation, mirror and then x/y swapping.
 			py = -py
+		if(invert_x)
+			px = -px
 		if(swap_xy)
 			var/opx = px
 			px = py
