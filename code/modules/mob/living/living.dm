@@ -3,7 +3,6 @@
 
 	//Prime this list if we need it.
 	if(has_huds)
-		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679
 		hud_list = list()
 		hud_list.len = TOTAL_HUDS
 		make_hud_overlays()
@@ -38,8 +37,6 @@
 
 	if(AM.Adjacent(src))
 		src.start_pulling(AM)
-
-	return
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())

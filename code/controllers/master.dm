@@ -203,7 +203,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	sortTim(subsystems, /proc/cmp_subsystem_display)
 
 	// Set world options.
-	#ifdef UNIT_TEST
+	#if UNIT_TEST
 	world.sleep_offline = 0
 	#else
 	world.sleep_offline = 1

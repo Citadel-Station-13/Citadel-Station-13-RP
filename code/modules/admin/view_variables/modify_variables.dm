@@ -79,7 +79,6 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	return var_value
 
-
 /client/proc/mod_list_add(list/L, atom/O, original_name, objectvar)
 	var/list/LL = vv_get_value(restricted_classes = list(VV_RESTORE_DEFAULT))
 	var/class = LL["class"]

@@ -469,8 +469,8 @@
 			message_admins("<span class='notice'>[key_name(usr)] dealt [amount] amount of [Text] damage to [L]</span>")
 			href_list["datumrefresh"] = href_list["mobToDamage"]
 
+	//finally, handle the datum refresh request if it's set.
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locate(href_list["datumrefresh"])
-		if(istype(DAT, /datum) || istype(DAT, /client))
-			debug_variables(DAT)
+		debug_variables(DAT)
 

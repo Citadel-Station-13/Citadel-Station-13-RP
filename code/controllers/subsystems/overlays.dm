@@ -59,8 +59,6 @@ SUBSYSTEM_DEF(overlays)
 		count = 0
 
 /proc/iconstate2appearance(icon, iconstate)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: IconState2Appearance called: State [iconstate]")
 	var/static/image/stringbro = new
 	var/list/icon_states_cache = SSoverlays.overlay_icon_state_caches
 	var/list/cached_icon = icon_states_cache[icon]
@@ -78,8 +76,6 @@ SUBSYSTEM_DEF(overlays)
 	return cached_appearance
 
 /proc/icon2appearance(icon)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: Icon2Appearance called.")
 	var/static/image/iconbro = new
 	var/list/icon_cache = SSoverlays.overlay_icon_cache
 	. = icon_cache[icon]
@@ -91,8 +87,6 @@ SUBSYSTEM_DEF(overlays)
 	. = iconbro.appearance
 
 /atom/proc/build_appearance_list(old_overlays)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: build_appearance_list called.")
 	var/static/image/appearance_bro = new
 	var/list/new_overlays = list()
 	if (!islist(old_overlays))
@@ -116,8 +110,6 @@ SUBSYSTEM_DEF(overlays)
 			new_overlays += appearance_bro.appearance
 	return new_overlays
 
-/atom/var/list/our_overlays	//DEBUG
-
 #define NOT_QUEUED_ALREADY (!(flags & OVERLAY_QUEUED))
 #define QUEUE_FOR_COMPILE flags |= OVERLAY_QUEUED; SSoverlays.queue += src;
 /atom/proc/cut_overlays(priority = FALSE)
@@ -127,9 +119,6 @@ SUBSYSTEM_DEF(overlays)
 	remove_overlays = overlays.Copy()
 	add_overlays.Cut()
 
-	LAZYINITLIST(our_overlays)
-	our_overlays.Cut()
-
 	if(priority)
 		priority_overlays.Cut()
 
@@ -138,14 +127,9 @@ SUBSYSTEM_DEF(overlays)
 		QUEUE_FOR_COMPILE
 
 /atom/proc/cut_overlay(list/overlays, priority)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: Cutting overlays: list len [islist(overlays)? length(overlays) : "NOT A LIST: [overlays? "EXISTS" : "DOES NOT EXIST"]"].")
-		stack_trace("Cutting overlay!")
 	if(!overlays)
 		return
 	overlays = build_appearance_list(overlays)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: returned appearance list len [length(overlays)]")
 	LAZYINITLIST(add_overlays) //always initialized after this point
 	LAZYINITLIST(priority_overlays)
 	LAZYINITLIST(remove_overlays)
@@ -154,9 +138,6 @@ SUBSYSTEM_DEF(overlays)
 	var/p_len = priority_overlays.len
 	remove_overlays += overlays
 	add_overlays -= overlays
-
-	LAZYINITLIST(our_overlays)
-	our_overlays -= overlays
 
 	if(priority)
 		var/list/cached_priority = priority_overlays
@@ -170,25 +151,16 @@ SUBSYSTEM_DEF(overlays)
 	if(NOT_QUEUED_ALREADY && (fa_len != a_len || fr_len != r_len || fp_len != p_len))
 		QUEUE_FOR_COMPILE
 
-GLOBAL_VAR_INIT(overlay_debug, FALSE)
 /atom/proc/add_overlay(list/overlays, priority = FALSE)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: Adding overlays: list len [islist(overlays)? length(overlays) : "NOT A LIST: [overlays? "EXISTS" : "DOES NOT EXIST"]"].")
-		stack_trace("Adding overlay!")
 	if(!overlays)
 		return
 
 	overlays = build_appearance_list(overlays)
-	if(GLOB.overlay_debug && usr)
-		to_chat(world, "DEBUG: returned appearance list len [length(overlays)]")
 
 	LAZYINITLIST(add_overlays) //always initialized after this point
 	LAZYINITLIST(priority_overlays)
 	var/a_len = add_overlays.len
 	var/p_len = priority_overlays.len
-
-	LAZYINITLIST(our_overlays)
-	our_overlays += overlays
 
 	if(priority)
 		priority_overlays += overlays  //or in the image. Can we use [image] = image?

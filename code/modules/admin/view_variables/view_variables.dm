@@ -57,6 +57,7 @@
 	if (islist)
 		dropdownoptions = list(
 			"---",
+			"Mark List" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_MARK),
 			"Add Item" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
 			"Remove Nulls" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_NULLS),
 			"Remove Dupes" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_DUPES),

@@ -297,7 +297,7 @@
 /atom/movable/vv_edit_var(var_name, var_value)
 	if(GLOB.VVpixelmovement[var_name])
 		return FALSE
-	return TRUE
+	return ..()
 
 /atom/movable/proc/moveToNullspace()
 	return forceMove(null)

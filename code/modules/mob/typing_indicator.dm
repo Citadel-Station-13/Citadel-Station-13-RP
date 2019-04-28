@@ -30,7 +30,7 @@
 	set_typing_indicator(TRUE)
 	var/message = input("","say (text)") as text
 	set_typing_indicator(FALSE)
-	
+
 	if(message)
 		say_verb(message)
 
