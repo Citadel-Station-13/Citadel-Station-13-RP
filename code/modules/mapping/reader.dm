@@ -189,41 +189,15 @@
 	var/space_key = modelCache[SPACE_KEY]
 	var/list/bounds
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
-	var/turn_angle = 0
+	var/datum/map_orientation_pattern/mode = GLOB.map_orientation_patterns["[orientation]"] || GLOB.map_orientation_patterns["[SOUTH]"]
+	var/invert_y = mode.invert_y
+	var/invert_x = mode.invert_x
+	var/swap_xy = mode.swap_xy
+	var/xi = mode.xi
+	var/yi = mode.yi
+	var/turn_angle = mode.turn_angle
 
-	//Under normal: Y goes down, X goes up.
-	var/invert_y = FALSE
-	var/swap_xy = FALSE
-	var/xi = 1
-	var/yi = -1
-	switch(orientation)
-		if(NORTH)
-			invert_y = FALSE
-			swap_xy = TRUE
-			xi = -1
-			yi = 1
-			turn_angle = 180
-		if(SOUTH)
-			invert_y = FALSE
-			swap_xy = FALSE
-			xi = 1
-			yi = -1
-			turn_angle = 0
-		if(EAST)
-			invert_y = TRUE
-			swap_xy = TRUE
-			xi = 1
-			yi = 1
-			turn_angle = 90
-		if(WEST)
-			invert_y = TRUE
-			swap_xy = TRUE
-			xi = -1
-			yi = -1
-			turn_angle = 270
-	var/lower_left_y = y_offset
-	var/lower_left_x = x_offset
-	var/delta_swap = lower_left_x - lower_left_y
+	var/delta_swap = x_offset - y_offset
 
 	for(var/__I in gridSets)
 		var/datum/grid_set/gridset = __I
@@ -247,62 +221,16 @@
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
 		var/actual_y = invert_y? y_offset : parsed_y
+		var/edge_dist_x = gridset.xcrd - 1
 		for(var/line in gridset.gridLines)
 			var/parsed_x = gridset.xcrd + x_offset - 1
-			var/actual_x = parsed_x
+			var/actual_x = invert_x? (x_offset + width - edge_dist_x) : (x_offset + edge_dist_x)
 			for(var/pos = 1 to (length(line) - key_len + 1) step key_len)
 				var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
 				var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
 
-				//DEBUG: X shouldn't be inverted for north
-				//DEBUG: Y shouldn't be inverted for west
-				//DEBUG: SOUTH WORKS
-				//DEBUG: EAST WORKS
+				//invert y works
 
-				/*
-					1-13	13-1	3-11
-					1-12	12-1	2-11
-					1-11	11-1	1-11
-					2-13	13-2	3-12
-					2-12	12-2	2-12
-					2-11	11-2	1-12
-					3-13	13-3	3-13
-					3-12	12-3	2-13
-					3-11	11-3	1-13
-					x += -10
-					y += 10
-
-					lower left x - y
-
-					5-43	43-5	7-41
-					5-42	42-5	6-41
-					5-41	41-5	5-41
-					6-43	43-6	7-42
-					6-42	42-6	6-42
-					6-41	41-6	5-42
-					7-43	43-7	7-43
-					7-42	42-7	6-43
-					7-41	41-7	5-43
-					x += -36
-					y += 36
-
-					lower left x - y
-
-					61-5	5-61	63-3
-					61-4	4-61	62-3
-					61-3	3-61	61-3
-					62-5	5-62	63-4
-					62-4	4-62	62-4
-					62-3	3-62	61-4
-					63-5	5-63	63-5
-					63-4	4-63	62-5
-					63-3	3-63	61-5
-					x += 58
-					y += -58
-
-					lower left x - y
-
-				*/
 
 				if(placement_x > world.maxx)
 					if(cropMap)
@@ -313,8 +241,6 @@
 						world.maxx = placement_x
 				if(placement_y > world.maxy)
 					if(cropMap)
-						parsed_y--
-						actual_y += yi
 						break
 					else
 						world.maxy = placement_y
@@ -323,8 +249,6 @@
 					actual_x += xi
 					continue
 				if(placement_y < 1)
-					parsed_y--
-					actual_y += yi
 					break
 				var/model_key = copytext(line, pos, pos + key_len)
 				var/no_afterchange = no_changeturf || zexpansion
