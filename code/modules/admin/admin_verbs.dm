@@ -405,14 +405,6 @@ var/list/admin_verbs_event_manager = list(
 	/datum/admins/proc/call_drop_pod
 )
 
-/client/verb/test1()
-	to_chat(src, "your rights are [holder.rights]")
-	to_chat(src, "you [GLOB.admins.Find(src)? "are" : "are not"] in glob admins")
-	to_chat(src, "you [admin_datums[ckey]? "are" : "are not"] in admin_datums")
-
-/client/verb/test2()
-	return add_admin_verbs()
-
 /client/proc/add_admin_verbs()
 	if(holder)
 		verbs += admin_verbs_default
