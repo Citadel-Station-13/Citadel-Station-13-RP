@@ -33,14 +33,14 @@ GLOBAL_LIST_INIT(map_orientation_patterns, list(
 	invert_y = TRUE
 	invert_x = FALSE
 	swap_xy = TRUE
-	xi = -1
-	yi = -1
+	xi = 1
+	yi = 1
 	turn_angle = 90
 
 /datum/map_orientation_pattern/west
 	invert_y = FALSE
 	invert_x = TRUE
 	swap_xy = TRUE
-	xi = 1
-	yi = 1
+	xi = -1
+	yi = -1
 	turn_angle = 270
