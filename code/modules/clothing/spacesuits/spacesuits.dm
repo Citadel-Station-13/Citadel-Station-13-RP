@@ -7,7 +7,11 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	flags = PHORONGUARD
+<<<<<<< HEAD
 	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
+=======
+	item_flags = THICKMATERIAL | AIRTIGHT | ALLOW_SURVIVALFOOD
+>>>>>>> 76bf550... Merge pull request #5146 from VOREStation/upstream-merge-6129
 	permeability_coefficient = 0.01
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
