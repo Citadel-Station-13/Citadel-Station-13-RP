@@ -1448,6 +1448,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1462,6 +1463,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
+=======
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 "acO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5474,6 +5479,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/tether/surfacebase/north_stairs_one)
 "ajJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5546,6 +5552,79 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
+=======
+/area/rnd/xenobiology)
+"ajC" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"ajD" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"ajE" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"ajF" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/obj/structure/railing,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"ajG" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"ajH" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"ajI" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 "ajN" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -28694,11 +28773,20 @@
 	name = "south bump";
 	pixel_y = -32
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
+=======
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/public_garden)
+"cHO" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25;
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	pixel_y = 0
 	},
 /obj/structure/disposalpipe/segment{
@@ -29190,6 +29278,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 8
 	},
@@ -29197,6 +29286,12 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos/processing)
+"eAn" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple{
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	dir = 6
 	},
 /obj/structure/cable/green{
@@ -29352,6 +29447,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
+<<<<<<< HEAD
 /obj/machinery/camera/network/northern_star{
 	dir = 9
 	},
@@ -29367,6 +29463,13 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"frE" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 10
@@ -29401,6 +29504,7 @@
 	pixel_y = -4;
 	specialfunctions = 4
 	},
+<<<<<<< HEAD
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "bYO" = (
@@ -29422,6 +29526,13 @@
 /obj/machinery/door/airlock{
 	id_tag = "dorm3";
 	name = "Room 3 (Holo)"
+=======
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"fEe" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -30511,6 +30622,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -30521,6 +30633,28 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+=======
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/showers)
+"jRT" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/visible/supply,
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
+"jSm" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/iandouble,
+/turf/simulated/floor/plating,
+/area/crew_quarters/sleep/maintDorm2)
+"jUH" = (
+/obj/effect/step_trigger/teleporter/to_plains,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
+"jWP" = (
+/obj/structure/disposalpipe/segment{
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -31890,6 +32024,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /turf/simulated/floor/tiled,
+<<<<<<< HEAD
 /area/tether/surfacebase/public_garden)
 "ecp" = (
 /obj/machinery/atmospherics/omni/atmos_filter{
@@ -31904,6 +32039,12 @@
 "egX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
+=======
+/area/tether/surfacebase/public_garden_one)
+"oAC" = (
+/obj/structure/railing{
+	dir = 4
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -33253,6 +33394,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
 	icon_state = "extinguisher_closed";
@@ -33295,6 +33437,14 @@
 /obj/machinery/atmospherics/binary/pump/on{
 	dir = 1;
 	name = "Air to Distro"
+=======
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled/techfloor,
+/area/tether/surfacebase/public_garden_one)
+"tNq" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -33438,8 +33588,84 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
+<<<<<<< HEAD
 "vhj" = (
 /turf/simulated/floor/reinforced/n20,
+=======
+"uOc" = (
+/obj/item/weapon/bone/skull/unathi,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/research)
+"uPe" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"uSZ" = (
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/engineering/atmos/intake)
+"uZb" = (
+/obj/random/cash,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
+"uZy" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/newscaster{
+	pixel_y = 30
+	},
+/obj/structure/table/standard,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"vad" = (
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	icon_state = "steel_decals_central6";
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"vbQ" = (
+/obj/structure/table,
+/obj/item/frame,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/crew_quarters/sleep/maintDorm2)
+"vfu" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/green{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"vgd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 /area/engineering/atmos)
 "vkK" = (
 /turf/simulated/wall,
@@ -43632,6 +43858,7 @@ aaa
 "}
 (71,1,1) = {"
 aaa
+<<<<<<< HEAD
 aaV
 aad
 aad
@@ -43650,6 +43877,26 @@ aad
 aad
 aad
 aad
+=======
+acN
+aDx
+ajC
+ajC
+ajC
+ajC
+ajC
+ajC
+ajD
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
+ajF
+ajC
+ajG
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 aah
 aah
 aah
@@ -43791,7 +44038,11 @@ aad
 aad
 aad
 aad
+<<<<<<< HEAD
 aad
+=======
+ajH
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 aah
 aah
 aah
@@ -43933,7 +44184,11 @@ aad
 aad
 aad
 aad
+<<<<<<< HEAD
 aad
+=======
+ajH
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 aah
 aah
 aah
@@ -44075,7 +44330,11 @@ aad
 aFv
 aad
 aad
+<<<<<<< HEAD
 aad
+=======
+ajI
+>>>>>>> 8decf68... Merge pull request #5157 from Heroman3003/purple-flakes
 aah
 aao
 aao
