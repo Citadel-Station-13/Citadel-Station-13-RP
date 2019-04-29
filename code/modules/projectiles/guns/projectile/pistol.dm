@@ -347,3 +347,17 @@
 
 /obj/item/weapon/gun/projectile/p92x/large
 	magazine_type = /obj/item/ammo_magazine/m9mm/large // Spawns with illegal magazines.
+
+/obj/item/weapon/gun/projectile/ct091
+	name = "CT091 'Defender'"
+	desc = "The CT091 is a defense weapon used by Constellation security forces and some civil police forces. It uses .45 rounds."
+	icon_state = "ct091"
+	item_state = null
+	w_class = ITEMSIZE_SMALL
+	caliber = ".45"
+	silenced = 0
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m45
+	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	projectile_type = /obj/item/projectile/bullet/pistol

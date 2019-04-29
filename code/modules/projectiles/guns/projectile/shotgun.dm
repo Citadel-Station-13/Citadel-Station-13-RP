@@ -41,14 +41,14 @@
 		loaded -= AC //Remove casing from loaded list.
 		chambered = AC
 
-	if(animated_pump)//This affects all bolt action and shotguns. 
+	if(animated_pump)//This affects all bolt action and shotguns.
 		flick("[icon_state]-cycling", src)//This plays any pumping
 
 	update_icon()
 
 /obj/item/weapon/gun/projectile/shotgun/pump/update_icon()//This adds empty sprite capability for shotguns.
 	..()
-	if(!empty_sprite)//Just a dirty check 
+	if(!empty_sprite)//Just a dirty check
 		return
 	if((loaded.len) || (chambered))
 		icon_state = "[icon_state]"
@@ -136,3 +136,14 @@
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
 	force = 5
+
+/obj/item/weapon/gun/projectile/shotgun/pump/CTSL99
+	name = "CTSL99 'Holder'"
+	desc = "The CTST99 Holder is a combat shotgun designed and produced by Constellation Technologies for military uses. It can hold up to 11 Slugs with one in the chamber."
+	icon_state = "CTSL99"
+	item_state = "CTSL99"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 3)
+	max_shells = 11
+	ammo_type = /obj/item/ammo_casing/a12g
+	force = 15
+	load_method = SINGLE_CASING|SPEEDLOADER

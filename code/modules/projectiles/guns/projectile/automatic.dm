@@ -404,3 +404,28 @@
 		item_state = "bullpup-empty"
 	if(!ignore_inhands)
 		update_held_icon()
+
+/obj/item/weapon/gun/projectile/automatic/CTMM3V
+	name = "CTMM3V 'Cutter'"
+	desc = "The CTMM3V is a light machine gun that accepts 5.45 drums and magazines."
+	icon = 'icons/obj/gun64_vr.dmi'
+	icon_state = "CTMM3V"
+	w_class = ITEMSIZE_LARGE
+	force = 12
+	slot_flags = 0
+	max_shells = 50
+	caliber = "5.45mm"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
+	slot_flags = SLOT_BACK
+	fire_sound = 'sound/weapons/machinegun.ogg'
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/m545saw
+	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
+	projectile_type = /obj/item/projectile/bullet/rifle/a545
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-12,-13), dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="short bursts",	burst=5, move_delay=6, burst_accuracy = list(0,-15,-15,-30,-30), dispersion = list(0.6, 1.0, 1.0, 1.0, 1.2)),
+		list(mode_name="automatic",       burst=1, fire_delay=-1,    move_delay=null, burst_accuracy=null, dispersion=null, automatic = 1)
+		)
