@@ -213,10 +213,17 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/break_room)
+<<<<<<< HEAD
 "aM" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
 	dir = 1
+=======
+"aI" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+>>>>>>> 8bb5ec6... Merge pull request #5158 from Heroman3003/cooler-cooler
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
