@@ -241,6 +241,7 @@
 /obj/item/weapon/material/knife,
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
+<<<<<<< HEAD
 "aT" = (
 /mob/living/simple_animal/hostile/syndicate/ranged{
 	desc = "Dosen't look friendly in the slightest.";
@@ -250,6 +251,8 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/virgo2/Blackshuttledown)
+=======
+>>>>>>> fe41857... Merge pull request #5150 from Novacat/nova-heterochromia
 "aU" = (
 /obj/structure/table/steel,
 /obj/random/toolbox,
@@ -796,7 +799,7 @@ aq
 aq
 aq
 aq
-aT
+aD
 bk
 aF
 aj
