@@ -19175,6 +19175,25 @@
 	},
 /turf/simulated/floor/plating,
 /area/gateway)
+<<<<<<< HEAD
+=======
+"ZP" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/engineering/atmos)
+"ZR" = (
+/obj/machinery/ntnet_relay,
+/turf/simulated/floor/bluegrid{
+	name = "Mainframe Base";
+	nitrogen = 100;
+	oxygen = 0;
+	temperature = 80
+	},
+/area/tcommsat/chamber)
+>>>>>>> 30a6e8c... Merge pull request #5154 from VOREStation/upstream-merge-6031
 "ZT" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1;
@@ -33645,7 +33664,7 @@ GP
 Gz
 Hd
 Hn
-Gz
+ZR
 Hy
 HD
 HK

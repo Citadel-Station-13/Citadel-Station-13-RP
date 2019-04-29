@@ -753,3 +753,14 @@ proc/dd_sortedTextList(list/incoming)
 	for(var/i = 1 to l.len)
 		if(islist(.[i]))
 			.[i] = .(.[i])
+<<<<<<< HEAD:code/_helpers/lists.dm
+=======
+
+//Return a list with no duplicate entries
+/proc/uniqueList(list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+
+#define listequal(A, B) (A.len == B.len && !length(A^B))
+>>>>>>> 30a6e8c... Merge pull request #5154 from VOREStation/upstream-merge-6031:code/_helpers/_lists.dm
