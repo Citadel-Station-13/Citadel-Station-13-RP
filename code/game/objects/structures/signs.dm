@@ -803,3 +803,9 @@
 	name = "I.C.V."
 	desc = "The charred name of a cargo ship of some description."
 	icon_state = "poi_engine2"
+
+/obj/structure/sign/showid
+	name= "ID Notice"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "showid"
+	desc = "A notice reading, 'GA-02 or VA-01 access required. Please prepare to present your identification card."
