@@ -51,7 +51,7 @@
 	var/obj/item/device/radio/borg/radio = null
 	var/obj/item/device/communicator/integrated/communicator = null
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/weapon/cell/HiCap/cell = null
+	var/obj/item/weapon/cell/super/cell = null
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2
@@ -137,7 +137,7 @@
 		C.wrapped = new C.external_type
 
 	if(!cell)
-		cell = new /obj/item/weapon/cell/HiCap(src)
+		cell = new /obj/item/weapon/cell/super(src)
 		cell.maxcharge = 20000
 		cell.charge = 20000
 
