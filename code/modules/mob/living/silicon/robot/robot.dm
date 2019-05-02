@@ -138,8 +138,8 @@
 
 	if(!cell)
 		cell = new /obj/item/weapon/cell/high(src)
-		cell.maxcharge = 20000
-		cell.charge = 20000
+		cell.maxcharge = 15000
+		cell.charge = 15000
 
 	..()
 
