@@ -48,7 +48,7 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/structure/prop/brokendrncntrl
+/obj/structure/prop/Damagedbarrier
 	name = "damaged deployable barrier"
 	desc = "Looks like it has seen better days."
 	icon = 'icons/props/security.dmi'

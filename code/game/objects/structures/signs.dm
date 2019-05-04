@@ -809,3 +809,17 @@
 	icon = 'icons/obj/decals_vr.dmi'
 	icon_state = "showid"
 	desc = "A notice reading, 'GA-02 or VA-01 access required. Please prepare to present your identification card."
+
+/obj/structure/sign/evacuate
+	name= "Evacuation display"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "evac"
+	desc = "!!Containment breach!! A facility wide evacuation has been authorized, all personnel evacuate immediately.This is not a drill."
+
+/obj/structure/sign/scidepct
+	name= "Science Department"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "scidep"
+	desc = "A sign indicating the entrence to the science department."
+
+
