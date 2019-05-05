@@ -44,3 +44,8 @@
 				cur_command = null // the door will just keep trying otherwise
 				return 0
 	return ..()
+
+//prevents lift doors from being emagged
+/obj/machinery/door/airlock/lift/emag_act(var/uses_left, var/mob/user)
+    to_chat(user, "<span class='danger'>This door is internally controlled.</span>")
+    return FALSE // Prevents the cryptographic sequencer from using a charge fruitlessly

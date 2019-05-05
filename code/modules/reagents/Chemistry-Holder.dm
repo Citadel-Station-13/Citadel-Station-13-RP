@@ -94,7 +94,7 @@
 		for(var/datum/chemical_reaction/C in eligible_reactions)
 			if(C.can_happen(src) && C.process(src))
 				effect_reactions |= C
-				reaction_occured = 1
+				reaction_occured = TRUE
 
 		eligible_reactions.Cut()
 
