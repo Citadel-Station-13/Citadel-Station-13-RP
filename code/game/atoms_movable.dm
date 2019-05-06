@@ -55,7 +55,7 @@
 	..()
 	return
 
-/atom/movable/proc/forceMove(atom/destination)
+/atom/movable/proc/forceMove(atom/destination, step_x, step_y)
 	if(loc == destination)
 		return 0
 	var/is_origin_turf = isturf(loc)

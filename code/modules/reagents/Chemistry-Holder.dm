@@ -89,7 +89,7 @@
 
 		//need to rebuild this to account for chain reactions
 		for(var/datum/reagent/R in reagent_list)
-			eligible_reactions |= SSchemistry.chemical_reactions[R.id]
+			eligible_reactions |= SSchemistry.chemical_reactions_by_reagent[R.id]
 
 		for(var/datum/chemical_reaction/C in eligible_reactions)
 			if(C.can_happen(src) && C.process(src))

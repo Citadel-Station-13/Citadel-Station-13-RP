@@ -548,6 +548,7 @@
 /mob/Moved(atom/oldloc)
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
+	return ..()
 
 // Received from Moved(), useful for items that need to know that their loc just moved.
 /obj/proc/on_loc_moved(atom/oldloc)

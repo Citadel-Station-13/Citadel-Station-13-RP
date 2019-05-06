@@ -108,7 +108,6 @@
 		m.drop_from_inventory(src)
 		m.update_inv_r_hand()
 		m.update_inv_l_hand()
-		src.loc = null
 	return ..()
 
 // Check if target is reasonable for us to operate on.
@@ -183,11 +182,9 @@
 	if(!istype(src.loc, /turf) || usr.stat || usr.restrained() )
 		return
 
-	var/turf/T = src.loc
-
-	src.loc = null
-
-	src.loc = T
+	var/turf/T = loc
+	moveToNullspace()
+	forceMove(T)
 
 // See inventory_sizes.dm for the defines.
 /obj/item/examine(mob/user, var/distance = -1)

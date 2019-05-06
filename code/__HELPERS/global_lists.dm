@@ -184,16 +184,5 @@ var/global/list/string_slot_flags = list(
 
 	return 1
 
-/* // Uncomment to debug chemical reaction list.
-/client/verb/debug_chemical_list()
-
-	for (var/reaction in SSchemistry.chemical_reactions_by_reagent)
-		. += "SSchemistry.chemical_reactions_by_reagent\[\"[reaction]\"\] = \"[SSchemistry.chemical_reactions_by_reagent[reaction]]\"\n"
-		if(islist(SSchemistry.chemical_reactions_by_reagent[reaction]))
-			var/list/L = SSchemistry.chemical_reactions_by_reagent[reaction]
-			for(var/t in L)
-				. += "    has: [t]\n"
-	world << .
-*/
 //Hexidecimal numbers
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")

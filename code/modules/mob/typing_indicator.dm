@@ -12,10 +12,10 @@
 		typing_indicator.icon_state = "[speech_bubble_appearance()]_typing"
 
 	if(state && !typing)
-		add_overlay(typing_indicator, TRUE)
+		add_overlay(typing_indicator)
 		typing = TRUE
 	else if(typing)
-		cut_overlay(typing_indicator, TRUE)
+		cut_overlay(typing_indicator)
 		typing = FALSE
 
 	if(shadow) //Multi-Z above-me shadows

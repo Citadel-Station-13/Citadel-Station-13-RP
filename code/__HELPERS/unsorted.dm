@@ -781,9 +781,9 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		areatype = areatemp.type
 
 	var/list/turfs = new/list()
-	for(var/area/N in GLOB.sortedAreas)
-		if(istype(N, areatype))
-			for(var/turf/T in N) turfs += T
+	var/area/A = GLOB.sortedAreas[areatype]
+	for(var/turf/T in A)
+		turfs += T
 	return turfs
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -795,12 +795,8 @@ proc/GaussRandRound(var/sigma,var/roundto)
 		var/area/areatemp = areatype
 		areatype = areatemp.type
 
-	var/list/atoms = new/list()
-	for(var/area/N in GLOB.sortedAreas)
-		if(istype(N, areatype))
-			for(var/atom/A in N)
-				atoms += A
-	return atoms
+	var/area/A = GLOB.sortedAreas[areatype]
+	return A? A.contents : list()
 
 /datum/coords //Simple datum for storing coordinates.
 	var/x_pos = null

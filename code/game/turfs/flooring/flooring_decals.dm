@@ -1,38 +1,34 @@
 // These are objects that destroy themselves and add themselves to the
 // decal list of the floor under them. Use them rather than distinct icon_states
 // when mapping in interesting floor designs.
-var/list/floor_decals = list()
+GLOBAL_LIST_EMPTY(floor_decal_images)
 
 /obj/effect/floor_decal
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals_vr.dmi' // VOREStation Edit
 	plane = DECAL_PLANE
-	var/supplied_dir
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
-	supplied_dir = newdir
-	if(newcolour) color = newcolour
-	..(newloc)
-
-/obj/effect/floor_decal/Initialize()
+/obj/effect/floor_decal/Initialize(mapload, newdir, newcolor)
+	if(newdir)
+		setDir(newdir)
+	if(newcolor)
+		color = newcolor
 	add_to_turf_decals()
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_QDEL
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
 /obj/effect/floor_decal/proc/add_to_turf_decals()
-	if(supplied_dir)
-		setDir(supplied_dir) // TODO - Why can't this line be done in initialize/New()?
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor) || istype(T, /turf/simulated/shuttle/floor))
 		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
-		var/image/I = floor_decals[cache_key]
+		var/image/I = GLOB.floor_decal_images[cache_key]
 		if(!I)
 			I = image(icon = icon, icon_state = icon_state, dir = dir)
 			I.layer = T.layer
 			I.color = color
 			I.alpha = alpha
-			floor_decals[cache_key] = I
+			GLOB.floor_decal_images[cache_key] = I
 		LAZYADD(T.decals, I) // Add to its decals list (so it remembers to re-apply after it cuts overlays)
 		T.add_overlay(I) // Add to its current overlays too.
 		return T
