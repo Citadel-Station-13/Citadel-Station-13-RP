@@ -10114,6 +10114,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/weapon/tape_roll,
 /turf/simulated/floor/carpet,
 /area/library)
 "aCA" = (
@@ -10694,7 +10695,7 @@
 "aEh" = (
 /obj/structure/table/woodentable,
 /obj/machinery/photocopier/faxmachine{
-	department = "Head of Personnel's Office"
+	department = "Library"
 	},
 /turf/simulated/floor/carpet,
 /area/library)
@@ -19451,6 +19452,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/item/weapon/book/codex,
 /turf/simulated/floor/carpet,
 /area/library)
 "bFC" = (
@@ -22252,6 +22254,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/excursion_dock)
+"qiJ" = (
+/obj/machinery/photocopier,
+/turf/simulated/floor/wood,
+/area/library)
 "qzk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -35420,7 +35426,7 @@ aEe
 aEI
 bFr
 aFE
-aBx
+qiJ
 aGL
 aHm
 aHG
