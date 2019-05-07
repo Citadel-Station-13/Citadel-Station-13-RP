@@ -22759,7 +22759,6 @@
 /turf/simulated/floor/plating,
 /area/tether/station/explorer_meeting)
 "wUh" = (
-/obj/machinery/partyalarm,
 /turf/simulated/wall,
 /area/library_conference_room)
 "wZn" = (
