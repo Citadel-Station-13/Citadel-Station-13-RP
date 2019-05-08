@@ -24,14 +24,6 @@
 	density = FALSE
 	anchored = TRUE
 
-/obj/structure/prop/ambulance
-	name = "Ambulance"
-	desc = "A long abandoned ambulance, out of fuel and missing the keys... Perhaps you can find something in the back?"
-	icon = 'icons/props/ambulance.dmi'
-	icon_state = "ambulance"
-	density = TRUE
-	anchored = TRUE
-
 /obj/structure/prop/brokencomputer
 	name = "Unknown console"
 	desc = "The computers screen appears to be frozen."

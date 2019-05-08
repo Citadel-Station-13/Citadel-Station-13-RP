@@ -3008,6 +3008,8 @@
 #include "maps\submaps\surface_submaps\wilderness\wilderness.dm"
 #include "maps\submaps\surface_submaps\wilderness\wilderness_areas.dm"
 #include "maps\tether\tether.dm"
+#include "maps\WIP\Constellation Technoliges V3.dmm"
+#include "maps\WIP\OrbitalCatastrophe.dmm"
 #include "maps\WIP\shuttle.dmm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"

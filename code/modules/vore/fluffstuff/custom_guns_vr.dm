@@ -483,6 +483,26 @@ END OF CITADEL CHANGES */
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15),       dispersion=list(0.0, 0.6, 1.0)),
 		)
 
+/obj/item/weapon/gun/projectile/automatic/sol/Constrif
+	name = "CT-AT-11-99 'Force'"
+	desc = "The Constellation AT-11-99 'Force' is a rifle produced by Constellation Technologies. It uses 9mm rounds."
+	icon = 'icons/obj/gun_vr.dmi'
+	icon_state = "SMG-IS"
+	item_state = "wt550"
+	w_class = ITEMSIZE_LARGE
+	slot_flags = SLOT_BELT
+	caliber = "9mm"
+	magazine_type = /obj/item/ammo_magazine/m9mm
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm)
+	load_method = MAGAZINE
+	multi_aim = 1
+	burst_delay = 2
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15),       dispersion=list(0.0, 0.6, 1.0)),
+		)
+
 /obj/item/weapon/gun/projectile/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return

@@ -822,4 +822,25 @@
 	icon_state = "scidep"
 	desc = "A sign indicating the entrence to the science department."
 
+/obj/structure/sign/prop/Tele1
+	name= "Teleporter 1 status"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "Teleporter1"
+	desc = "It seems to be broken"
 
+/obj/structure/sign/prop/Tele2
+	name= "Teleporter 2 status"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "Teleporter2"
+	desc = "It seems to be broken"
+
+/obj/structure/sign/prop/Tramstatus
+	name= "Tram status board"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "cttramstatus"
+	desc = "Delayed... Delayed... Delayed"
+
+/obj/structure/sign/department/medescape
+	name= "Escape Pod"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "medescape"
