@@ -662,7 +662,7 @@
 	model_text = "Director"
 	req_access = list(access_captain)
 	departments = list("Director")
-	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ)
+	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, "Vulpkanin")
 
 /obj/machinery/suit_cycler/attack_ai(mob/user as mob)
 	return attack_hand(user)
