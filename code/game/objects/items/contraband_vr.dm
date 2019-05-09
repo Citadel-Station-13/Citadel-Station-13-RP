@@ -92,14 +92,8 @@
 /obj/item/weapon/storage/fancy/cigar/havana // Putting this here 'cuz fuck it. -Spades
 	name = "\improper Havana cigar case"
 	desc = "Save these for the fancy-pantses at the next CentCom black tie reception. You can't blow the smoke from such majestic stogies in just anyone's face."
-	icon_state = "cigarcase"
-	icon = 'icons/obj/cigarettes.dmi'
-	w_class = ITEMSIZE_TINY
-	throwforce = 2
-	slot_flags = SLOT_BELT
-	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
-	icon_type = "cigar"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 7)
 
 /obj/item/stolenpackageplus
 	name = "curated stolen package"
