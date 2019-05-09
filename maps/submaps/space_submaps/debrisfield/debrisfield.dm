@@ -5,8 +5,10 @@
 // #define "your_map_here.dmm"
 #endif
 
-/datum/map_template/debrisfield
-	name = "Space Content - Debrisfield"
-	desc = "Designed for space points of interest."
+/datum/map_template/submap/space/debrisfield
+	name = "Debris Field Content"
+	abstract_type = /datum/map_template/submap/space/debrisfield
+	id = "ruin_space_debris_"
+	desc = "A map template base.  In space."
 
 // No points of interest yet, but the infrastructure is there for people to add!

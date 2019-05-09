@@ -170,6 +170,8 @@
 		list("abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)),
 		list("v4_beach" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert),"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert)),
 		list("v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/unsimulated/floor/sky/virgo2_sky),"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/ignore_mapgen/virgo2))
+		list("tether_debrisfield" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)),
+		list("tether_plains" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/virgo3b))
 		)
 
 /datum/map/tether/perform_map_generation()

@@ -93,21 +93,21 @@
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-	Trigger(var/atom/movable/A)
-		if(teleport_x && teleport_y && teleport_z)
-			var/turf/T = locate(teleport_x, teleport_y, teleport_z)
-			if(isliving(A))
-				var/mob/living/L = A
-				if(L.pulling)
-					var/atom/movable/P = L.pulling
-					L.stop_pulling()
-					P.forceMove(T)
-					L.forceMove(T)
-					L.start_pulling(P)
-				else
-					A.forceMove(T)
+/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A)
+	if(teleport_x && teleport_y && teleport_z)
+		var/turf/T = locate(teleport_x, teleport_y, teleport_z)
+		if(isliving(A))
+			var/mob/living/L = A
+			if(L.pulling)
+				var/atom/movable/P = L.pulling
+				L.stop_pulling()
+				P.forceMove(T)
+				L.forceMove(T)
+				L.start_pulling(P)
 			else
 				A.forceMove(T)
+		else
+			A.forceMove(T)
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 
@@ -116,7 +116,7 @@
 	var/teleport_y_offset = 0
 	var/teleport_z_offset = 0
 
-	Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/random/Trigger(atom/movable/A)
 		if(teleport_x && teleport_y && teleport_z)
 			if(teleport_x_offset && teleport_y_offset && teleport_z_offset)
 				var/turf/T = locate(rand(teleport_x, teleport_x_offset), rand(teleport_y, teleport_y_offset), rand(teleport_z, teleport_z_offset))
@@ -125,33 +125,24 @@
 /* Teleporter that sends objects stepping on it to a specific landmark. */
 
 /obj/effect/step_trigger/teleporter/landmark
-	var/obj/effect/landmark/the_landmark = null
-	var/landmark_id = null
+	var/landmark_id
 
-/obj/effect/step_trigger/teleporter/landmark/Initialize()
+/obj/effect/step_trigger/teleporter/landmark/Initialize(mapload)
 	. = ..()
-	for(var/obj/effect/landmark/teleport_mark/mark in tele_landmarks)
-		if(mark.landmark_id == landmark_id)
-			the_landmark = mark
-			return
+	if(mapload)
+		if(!landmark_id)
+			stack_trace("Warning: Teleportation step trigger at [COORD(src)] that uses landmark ID target system does not have a set ID! Deleting!")
+			return INITIALIZE_HINT_QDEL
+		return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/step_trigger/teleporter/landmark/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/landmark/LateInitialize()
+	if(!GLOB.landmarks_id_target[landmark_id])
+		stack_trace("Warning: Teleportation step trigger at [COORD(src)] that uses landmark ID target system can't find its target landmark!")
+
+/obj/effect/step_trigger/teleporter/landmark/Trigger(atom/movable/A)
+	var/obj/effect/landmark/id_target/the_landmark = GLOB.landmarks_id_target[landmark_id]
 	if(the_landmark)
 		A.forceMove(get_turf(the_landmark))
-
-
-var/global/list/tele_landmarks = list() // Terrible, but the alternative is looping through world.
-
-/obj/effect/landmark/teleport_mark
-	var/landmark_id = null
-
-/obj/effect/landmark/teleport_mark/New()
-	..()
-	tele_landmarks += src
-
-/obj/effect/landmark/teleport_mark/Destroy()
-	tele_landmarks -= src
-	return ..()
 
 /* Teleporter which simulates falling out of the sky. */
 

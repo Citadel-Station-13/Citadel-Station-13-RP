@@ -8,7 +8,7 @@
 /datum/map_template/submap/space
 	name = "Space Content"
 	abstract_type = /datum/map_template/submap/space
-	id = "ruin_space"
+	id = "ruin_space_"
 	desc = "A map template base.  In space."
 
 // To be added: Templates for space exploration when they are made.

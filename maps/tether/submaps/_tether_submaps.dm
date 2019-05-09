@@ -75,6 +75,7 @@
 #include "alienship/alienship.dmm"
 #include "aerostat/aerostat.dmm"
 #include "aerostat/surface.dmm"
+#include "space/debrisfield.dmm"
 #endif
 
 #include "beach/_beach.dm"
@@ -306,3 +307,35 @@
 	mobs_to_pick_from = list(
 		/mob/living/simple_animal/shadekin
 	)
+
+//MOVE TO OWN FILES SOMETIME - PLAINS AND SPACE DEBRIS FIELD
+#include "space/_debrisfield.dm"
+/datum/map_template/tether_lateload/away_debrisfield
+	name = "Debris Field - Z1 Space"
+	desc = "The Virgo 3 Debris Field away mission."
+	mappath = 'space/debrisfield.dmm'
+	id = "tether_debrisfield"
+	associated_map_datum = /datum/map_z_level/tether_lateload/away_debrisfield
+
+/datum/map_template/tether_lateload/away_debrisfield/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 50, /area/tether_away/debrisfield/space/poi, /datum/map_template/debrisfield)
+
+/datum/map_z_level/tether_lateload/away_debrisfield
+	name = "Away Mission - Debris Field"
+
+/datum/map_template/tether_lateload/tether_plains
+	name = "Tether - Plains"
+	desc = "The Virgo 3B away mission."
+	mappath = 'tether_plains.dmm'
+	id = "tether_plains"
+	associated_map_datum = /datum/map_z_level/tether_lateload/tether_plains
+
+/datum/map_z_level/tether_lateload/tether_plains
+	name = "Away Mission - Plains"
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/mineral/floor/virgo3b
+
+/datum/map_template/tether_lateload/tether_plains/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 120, /area/tether/outpost/exploration_plains, /datum/map_template/surface/plains)

@@ -571,3 +571,10 @@
 	excluded |= /area/teleporter/departing
 	excluded |= /area/hallway/station/upper
 	..()
+
+// Exploration area - Plains
+/area/tether/outpost/exploration_plains
+	name = "\improper Plains Exploration Zone"
+	icon_state = "green"
+/area/tether/outpost/exploration_shed
+	name = "\improper Plains Entrance Shed"

@@ -1,4 +1,4 @@
-/obj/effect/map/ship
+ /obj/effect/map/ship
 	name = "generic ship"
 	desc = "Space faring vessel."
 	icon_state = "sheet-sandstone"
