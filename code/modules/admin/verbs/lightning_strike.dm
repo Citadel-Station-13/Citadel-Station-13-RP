@@ -65,7 +65,7 @@
 	var/sound = get_sfx("thunder")
 	for(var/mob/M in player_list)
 		if((P && M.z in P.expected_z_levels) || M.z == T.z)
-			if(!(M && M.is_preference_enabled(/datum/client_preference/play_ambiance)))	return
+			if(!(M && M.is_preference_enabled(/datum/client_preference/play_ambience)))	return
 			else
 				M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE, channel = CHANNEL_AMBIENCE)
 
