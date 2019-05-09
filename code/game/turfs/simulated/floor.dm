@@ -48,11 +48,13 @@
 	make_plating(defer_icon_update = 1)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
+	/*		This breaks shit.
 	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
 	var/tmp/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
 	// VOREStation Edit End
+	*/
 	update_icon(1)
 	levelupdate()
 
@@ -61,12 +63,14 @@
 /turf/simulated/floor/proc/make_plating(var/place_product, var/defer_icon_update)
 
 	cut_overlays()
+	/* This also breaks shit. Add floor painters if it's needed, this is a shit system.
 	// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
 	if(flooring)
 		var/tmp/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
 	// VOREStation Edit End
+	*/
 
 	name = base_name
 	desc = base_desc

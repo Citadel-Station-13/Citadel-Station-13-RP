@@ -55,3 +55,9 @@
 	if(entity && istype(other))
 		return entity.on_exit(other.entity)
 	return ..()
+
+/atom/movable/overmap_object/proc/setName(name)
+	src.name = name
+
+/atom/movable/overmap_object/proc/setDesc(desc)
+	src.desc = desc

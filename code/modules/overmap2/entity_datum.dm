@@ -4,6 +4,12 @@
 	var/desc = "Looks like an anomaly. A null anomaly. Report this to a coder!"
 	var/atom/movable/overmap_object/object
 
+	//Docking/etc system
+
+
+	//Structure/parts used for combat
+
+
 	//movement - UNIMPLEMENTED
 	var/velocity_x = 0		//pixel speed per decisecond
 	var/velocity_y = 0
