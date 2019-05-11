@@ -275,7 +275,7 @@
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
 	//Panic bunker code
-	if (player_age == -1) //first connection
+	if ((player_age == -1) && !(ckey in GLOB.PB_bypass)) //first connection
 		if (config.panic_bunker && !holder && !deadmin_holder)
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
