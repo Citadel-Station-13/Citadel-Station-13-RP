@@ -25,6 +25,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shuttle_templates = list()
 	*/
 
+	var/list/zlevels_by_id = list()		//id = zlevel datum
+
 	var/list/areas_in_z = list()
 
 	var/loading_ruins = FALSE

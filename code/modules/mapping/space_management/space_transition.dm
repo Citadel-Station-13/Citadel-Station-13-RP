@@ -1,9 +1,47 @@
-/datum/space_level/proc/set_linkage(new_linkage)
-	linkage = new_linkage
-	if(linkage == SELFLOOPING)
-		neigbours = list(TEXT_NORTH,TEXT_SOUTH,TEXT_EAST,TEXT_WEST)
-		for(var/A in neigbours)
-			neigbours[A] = src
+/datum/space_level/proc/set_linkage(new_linkage, defer_update = FALSE)
+	linkage = new_linkage || linkage
+	neighbours = (linkage == SELFLOOPING)? list(TEXT_NORTH = src, TEXT_SOUTH = src, TEXT_EAST = src, TEXT_WEST = src) : list(TEXT_NORTH, TEXT_SOUTH, TEXT_EAST, TEXT_WEST)
+	var/list/checking = list(
+		ZTRAIT_TRANSITION_ID_NORTH = NORTH,
+		ZTRAIT_TRANSITION_ID_SOUTH = SOUTH,
+		ZTRAIT_TRANSITION_ID_EAST = EAST,
+		ZTRAIT_TRANSITION_ID_WEST = WEST
+	)
+	var/list/affected = list()				//only update transitions we need to to conserve cpu cycles.
+	for(var/i in 1 to checking.len)
+		var/trait_id = checking[i]
+		var/link_id = traits[trait_id]
+		if(link_id)
+			var/dir = checking[trait_id]
+			var/datum/space_level/SL = SSmapping.zlevels_by_id[link_id]
+			if(SL)
+				var/list/returned = link_dir_to_z(dir, SL, TRUE)
+				if(length(returned))
+					affected += returned
+	if(!defer_updated)
+		for(var/i in affected)
+			var/list/L = affected[i]
+			var/datum/space_level/level = L[1]
+			level.update_transitions(L[2])
+	return affected
+
+/datum/space_level/proc/update_all_transitions()
+	for(var/i in GLOB.cardinals)
+		update_transitions(i)
+
+/datum/space_level/proc/link_dir_to_z(dir, datum/space_level/SL, defer_update = FALSE)
+	. = list()
+	var/turned_dir = turn(dir, 180)
+	if(SL.neighbours["[turned_dir]"] != src)
+		SL.neighbours["[turned_dir]"] = src
+		if(!defer_update)
+			SL.update_transitions(turned_dir)
+		. += list(SL, turned_dir)
+	if(neighbours["[dir]"] != SL)
+		neighbours["[dir]"] = SL
+		if(!defer_update)
+			update_transitions(dir)
+		. += list(src, dir)
 
 /datum/space_level/proc/set_neigbours(list/L)
 	for(var/datum/space_transition_point/P in L)
@@ -55,6 +93,13 @@
 		neigbours |= grid[x][y+1]
 	if(y-1 >= 1)
 		neigbours |= grid[x][y-1]
+
+/datum/controller/subsystem/mapping/proc/setup_map_transitions()
+	var/list/cached_z_list = z_list
+	var/list/zlevels_selflooping = list()
+	var/list/zlevels_crosslinked = list()
+	var/list/zlevels_staticlinked = list()
+
 
 /datum/controller/subsystem/mapping/proc/setup_map_transitions() //listamania
 	var/list/SLS = list()

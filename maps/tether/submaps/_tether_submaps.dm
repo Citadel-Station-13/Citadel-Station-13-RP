@@ -319,7 +319,7 @@
 
 /datum/map_template/tether_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 50, /area/tether_away/debrisfield/space/poi, /datum/map_template/debrisfield)
+	seed_submaps(list(z), 50, /area/tether_away/debrisfield/space/poi, /datum/map_template/submap/space/debrisfield)
 
 /datum/map_z_level/tether_lateload/away_debrisfield
 	name = "Away Mission - Debris Field"
@@ -338,4 +338,4 @@
 
 /datum/map_template/tether_lateload/tether_plains/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 120, /area/tether/outpost/exploration_plains, /datum/map_template/surface/plains)
+	seed_submaps(list(z), 120, /area/tether/outpost/exploration_plains, /datum/map_template/submap/surface/plains)

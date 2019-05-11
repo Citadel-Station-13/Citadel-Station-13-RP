@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(landmarks_id_target)
 		stack_trace("Warning: ID target landmark collision at [COORD(src)] with ID [landmark_id]!")
 		return INITIALIZE_HINT_QDEL
 	else
-		landmarks_id_target[landmark_id] = src
+		GLOB.landmarks_id_target[landmark_id] = src
 
 /obj/effect/landmark/id_target/Destroy()
 	GLOB.landmarks_id_target -= landmark_id

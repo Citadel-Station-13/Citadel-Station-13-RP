@@ -33,8 +33,9 @@ require only minor tweaks.
 
 #define RUIN_PLACEMENT_TRIES 100				//times to place a ruin before giving up
 
-#define SHUTTLE_TRANSIT_BORDER		7
-#define SPACE_TRANSITION_BORDER		7 // Default distance from edge to move to another z-level.
+#define SHUTTLE_TRANSIT_BORDER		DEFAULT_Z_EDGE_PADDING
+#define SPACE_TRANSITION_BORDER		DEFAULT_Z_EDGE_PADDING // Default distance from edge to move to another z-level.
+#define DEFAULT_Z_EDGE_PADDING 7
 
 #define FALLBACK_DEFAULT_ALLOWED_SPAWNPOINTS list(/datum/spawnpoint/arrivals, /datum/spawnpoint/gateway, /datum/spawnpoint/cryo, /datum/spawnpoint/cyborg)		//When spawnpoint laoding fails.
 
@@ -66,18 +67,21 @@ require only minor tweaks.
 	#define UNAFFECTED null
 	// SELFLOOPING - space transitions always self-loop
 	#define SELFLOOPING "Self"
-	// CROSSLINKED - mixed in with the cross-linked space pool
+	// CROSSLINKED - mixed in with the cross-linked space pool. Static ID overrides will still work!
 	#define CROSSLINKED "Cross"
-	// STATIC - Links to another zlevel with the same ID
+	// STATIC - Links to another zlevel with the same ID - This is the same as crosslinked but sides that don't have the ID specified will not be linked!
 	#define STATIC "Static"
 
-// string - id for static linkage as above.
+// string - id for static linkage as above. only one side across all maps can have the same unique ID, more will result in errors.
 #define ZTRAIT_TRANSITION_ID_NORTH "Transition ID North"
 #define ZTRAIT_TRANSITION_ID_SOUTH "Transition ID South"
 #define ZTRAIT_TRANSITION_ID_EAST "Transition ID East"
 #define ZTRAIT_TRANSITION_ID_WEST "Transition ID West"
 
-// number - tiles of padding on edge for transitions - defaults to SPACE_TRANSITION_BORDER
+// string - MUST BE UNIQUE! What the above ztrait transition IDs target. same as above, don't let this conflict.
+#define ZTRAIT_LEVEL_ID "Level ID"
+
+// number - tiles of padding on edge for transitions - defaults to DEFAULT_Z_EDGE_PADDING
 #define ZTRAIT_TRANSITION_PADDING "Transition Padding"
 
 // boolean - Enable transition mirage holders - defaults to false
@@ -169,5 +173,5 @@ require only minor tweaks.
 #define MAP_LEVEL_XENOARCH_EXEMPT 0x080	// Z-levels exempt from xenoarch digsite generation.
 
 // Misc map defines.
-#define SUBMAP_MAP_EDGE_PAD 15 // Automatically created submaps are forbidden from being this close to the main map's edge.
+#define SUBMAP_MAP_EDGE_PAD DEFAULT_Z_EDGE_PADDING // Automatically created submaps are forbidden from being this close to the main map's edge.
 #define TRANSITIONEDGE SPACE_TRANSITION_BORDER

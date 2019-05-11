@@ -166,13 +166,29 @@
 		/area/tether/surfacebase/emergency_storage/atrium)
 
 	lateload_z_levels = list(
-		list("tether_misc" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space), "tether_ships" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space),"tether_underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5, ZTRAIT_BASETURF = /turf/simulated/mineral/virgo3b/rich)), //Stock Tether lateload maps
-		list("abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)),
-		list("v4_beach" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert),"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert)),
-		list("v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/unsimulated/floor/sky/virgo2_sky),"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/ignore_mapgen/virgo2))
-		list("tether_debrisfield" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)),
-		list("tether_plains" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/virgo3b))
+		list(
+			"tether_misc" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space),
+			"tether_ships" = list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_BASETURF = /turf/space),
+			"tether_underdark" = list(ZTRAIT_STATION = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 3.5, ZTRAIT_BASETURF = /turf/simulated/mineral/virgo3b/rich)
+		),
+		list(
+			"abductor_mothership" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)
+		),
+		list(
+			"v4_beach" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert),
+			"v4_cave" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_MINE = TRUE, ZTRAIT_BASETURF = /turf/simulated/floor/beach/sand/desert)
+		),
+		list(
+			"v2_sky" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_DOWN = -1, ZTRAIT_BASETURF = /turf/unsimulated/floor/sky/virgo2_sky),
+			"v2_surface" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_UP = 1, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/ignore_mapgen/virgo2)
+		),
+		list(
+			"tether_debrisfield" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_BASETURF = /turf/space)
+		),
+		list(
+			"tether_plains" = list(ZTRAIT_AWAY = TRUE, ZTRAIT_BASETURF = /turf/simulated/mineral/floor/virgo3b)
 		)
+	)
 
 /datum/map/tether/perform_map_generation()
 
