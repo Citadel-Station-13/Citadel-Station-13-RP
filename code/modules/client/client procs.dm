@@ -279,7 +279,7 @@
 		if (config.panic_bunker && !holder && !deadmin_holder)
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
+			to_chat(src, config.panic_bunker_message)
 			qdel(src)
 			return 0
 		player_age = 0		//math requires this to not be -1.
