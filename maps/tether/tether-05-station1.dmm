@@ -595,6 +595,7 @@
 	layer = 2.9
 	},
 /obj/random/maintenance/medical,
+/obj/item/weapon/flame/lighter/zippo/gonzo,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "abC" = (
@@ -5563,7 +5564,7 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "apO" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant/smelly,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "apP" = (
@@ -7025,6 +7026,10 @@
 /obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
+"atV" = (
+/obj/item/weapon/bananapeel,
+/turf/simulated/floor,
+/area/tether/station/excursion_dock)
 "atW" = (
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
@@ -10109,6 +10114,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/weapon/tape_roll,
 /turf/simulated/floor/carpet,
 /area/library)
 "aCA" = (
@@ -10688,6 +10694,9 @@
 /area/library)
 "aEh" = (
 /obj/structure/table/woodentable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Library"
+	},
 /turf/simulated/floor/carpet,
 /area/library)
 "aEk" = (
@@ -11096,6 +11105,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/machinery/bookbinder,
 /turf/simulated/floor/carpet,
 /area/library)
 "aFq" = (
@@ -11693,10 +11703,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
-"aHH" = (
-/obj/structure/bed/chair/office/dark,
-/turf/simulated/floor/wood,
-/area/library_conference_room)
 "aHK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11761,19 +11767,11 @@
 /obj/machinery/teleport/station,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
-"aHW" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/library_conference_room)
 "aHX" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/pen,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "aHY" = (
@@ -11792,7 +11790,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_eva)
 "aIa" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/bed/chair/comfy/beige{
+	icon_state = "comfychair_preview";
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -11972,9 +11971,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aIw" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "aIy" = (
@@ -11994,9 +11992,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aIC" = (
-/obj/machinery/bookbinder{
-	pixel_y = 0
-	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/toy/character/wizard,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "aIE" = (
@@ -12010,10 +12007,11 @@
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "aIG" = (
-/obj/machinery/photocopier,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 25
 	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/toy/character/voidone,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "aIJ" = (
@@ -19454,6 +19452,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/item/weapon/book/codex,
 /turf/simulated/floor/carpet,
 /area/library)
 "bFC" = (
@@ -20021,15 +20020,12 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "bKh" = (
-/obj/structure/table/woodentable,
 /obj/machinery/ai_status_display{
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/obj/item/device/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bKi" = (
@@ -20049,7 +20045,6 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bKo" = (
@@ -20118,19 +20113,7 @@
 	},
 /turf/simulated/floor/wood,
 /area/library_conference_room)
-"bMm" = (
-/obj/structure/bed/chair/office/dark,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/wood,
-/area/library_conference_room)
 "bMn" = (
-/obj/structure/bed/chair/office/dark,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -20179,8 +20162,6 @@
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bMU" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/tape_roll,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -20192,19 +20173,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/recharger,
+/obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bMV" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/weapon/packageWrap,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bNK" = (
@@ -20280,16 +20256,19 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/toy/character/cleric,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOf" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/bed/chair/comfy/beige{
+	icon_state = "comfychair_preview";
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/library_conference_room)
@@ -20302,33 +20281,25 @@
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOk" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/book/codex,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOq" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/dice/d20,
-/obj/item/weapon/dice,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOr" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/deck/cards,
-/obj/item/device/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
-	},
+/obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOt" = (
@@ -20337,6 +20308,8 @@
 	icon_state = "alarm0";
 	pixel_x = 24
 	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/toy/character/lich,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOz" = (
@@ -20367,6 +20340,8 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/toy/character/thief,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bOU" = (
@@ -21044,10 +21019,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "bYa" = (
-/obj/structure/table/woodentable,
-/obj/machinery/photocopier/faxmachine{
-	department = "Library Conference Room"
-	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood,
 /area/library_conference_room)
 "bYf" = (
@@ -21148,7 +21121,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/heads/chief)
 "bYN" = (
-/obj/item/device/instrument/violin,
+/obj/structure/device/piano,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bYP" = (
@@ -21397,6 +21370,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"cPd" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/toy/character/warrior,
+/turf/simulated/floor/wood,
+/area/library_conference_room)
 "dbI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -21689,6 +21667,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"hOV" = (
+/obj/item/clothing/under/rank/clown,
+/turf/simulated/floor,
+/area/tether/station/excursion_dock)
 "hPi" = (
 /obj/machinery/light/small,
 /turf/simulated/floor,
@@ -21789,6 +21771,12 @@
 	},
 /turf/simulated/floor/carpet,
 /area/hallway/station/atrium)
+"jYf" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen/fountain,
+/turf/simulated/floor/wood,
+/area/library_conference_room)
 "jZN" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/polarized{
@@ -22151,6 +22139,13 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"oHM" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/clowndouble,
+/obj/effect/decal/remains,
+/obj/item/clothing/mask/gas/clown_hat,
+/turf/simulated/floor,
+/area/tether/station/excursion_dock)
 "oVP" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/wall_mounted{
 	dir = 1;
@@ -22259,6 +22254,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/excursion_dock)
+"qiJ" = (
+/obj/machinery/photocopier,
+/turf/simulated/floor/wood,
+/area/library)
 "qzk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -22365,6 +22364,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"sVb" = (
+/obj/structure/bed/chair/comfy/beige{
+	icon_state = "comfychair_preview";
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/library_conference_room)
 "sZd" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -22446,6 +22452,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"tOi" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/weapon/flame/lighter/zippo/red,
+/turf/simulated/floor/wood,
+/area/library_conference_room)
+"tOH" = (
+/obj/item/weapon/bikehorn,
+/turf/simulated/floor,
+/area/tether/station/excursion_dock)
 "tWI" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
@@ -22494,6 +22509,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
+"uoR" = (
+/obj/item/toy/figure/clown,
+/turf/simulated/floor,
+/area/tether/station/excursion_dock)
 "uzS" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/folder/blue,
@@ -22739,6 +22758,9 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/tether/station/explorer_meeting)
+"wUh" = (
+/turf/simulated/wall,
+/area/library_conference_room)
 "wZn" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/weapon/cell/super;
@@ -22788,6 +22810,10 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
+/area/tether/station/excursion_dock)
+"xkD" = (
+/obj/item/clothing/shoes/clown_shoes,
+/turf/simulated/floor,
 /area/tether/station/excursion_dock)
 "xHs" = (
 /obj/structure/disposalpipe/segment,
@@ -31939,7 +31965,7 @@ aad
 aae
 aae
 aae
-aae
+aad
 aae
 aae
 aae
@@ -32081,7 +32107,7 @@ aad
 aae
 aae
 aae
-aae
+aad
 aae
 aae
 aae
@@ -32223,7 +32249,7 @@ aad
 aae
 aae
 aae
-aae
+aad
 aae
 aae
 aae
@@ -32362,10 +32388,10 @@ aac
 aac
 aac
 aad
+hOV
 aae
-aae
-aae
-aae
+atV
+aad
 aae
 aae
 aae
@@ -32505,9 +32531,9 @@ aac
 aac
 aad
 aae
-aae
-aae
-aae
+oHM
+uoR
+aad
 aae
 aae
 aae
@@ -32646,10 +32672,10 @@ aac
 aac
 aac
 aad
+xkD
 aae
-aae
-aae
-aae
+tOH
+aad
 aae
 aae
 aae
@@ -32791,7 +32817,7 @@ aad
 aae
 aae
 aae
-aae
+aad
 aae
 aae
 aae
@@ -32933,7 +32959,7 @@ aad
 aae
 aae
 aae
-aae
+aad
 aae
 aae
 aae
@@ -33075,7 +33101,7 @@ aad
 aae
 aae
 aae
-aae
+aad
 aae
 aae
 aae
@@ -34979,7 +35005,7 @@ aGL
 aGL
 aGL
 aGL
-aGL
+wUh
 aGL
 aGL
 aac
@@ -35121,7 +35147,7 @@ aGL
 bMj
 bMT
 bOd
-aHn
+cPd
 aIC
 aGL
 aat
@@ -35399,13 +35425,13 @@ aEe
 aEI
 bFr
 aFE
-aBx
+qiJ
 aGL
 aHm
 aHG
-aHW
-bOf
 aHn
+bOf
+bYa
 aHn
 aIJ
 aat
@@ -35544,7 +35570,7 @@ aBx
 aBx
 aGM
 aHn
-aHH
+aHn
 aHX
 bOq
 aIw
@@ -35686,10 +35712,10 @@ bCj
 bCj
 bJk
 bKi
-bMm
+bKi
 bMU
 bOk
-aIw
+sVb
 aIE
 aIJ
 aat
@@ -35698,7 +35724,7 @@ aaa
 aaa
 aaa
 aaa
-aab
+aaa
 aaa
 aaa
 aaa
@@ -35831,8 +35857,8 @@ aHp
 bMn
 bMV
 bOr
-aIw
-aHn
+tOi
+jYf
 aIJ
 aat
 aat
@@ -35971,9 +35997,9 @@ bHq
 aGL
 bKn
 aHK
-aIa
-aIa
 aHn
+aIa
+bYa
 aHn
 aIJ
 aat

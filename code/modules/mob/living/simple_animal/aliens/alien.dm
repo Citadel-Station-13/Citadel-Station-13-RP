@@ -26,7 +26,7 @@
 	melee_damage_upper = 25
 	attack_sharp = 1
 	attack_edge = 1
-
+	rapid = 0
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	a_intent = I_HURT
@@ -100,7 +100,6 @@
 	move_to_delay = 3
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
-	rapid = 1
 	status_flags = 0
 
 /mob/living/simple_animal/hostile/alien/queen/empress

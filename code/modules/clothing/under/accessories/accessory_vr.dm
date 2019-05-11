@@ -180,16 +180,7 @@
 		name = initial(name) + " ([str])"
 		desc = initial(desc) + " The tag says \"[str]\"."
 
-//Machete Holsters
-/obj/item/clothing/accessory/holster/machete
-	name = "machete sheath"
-	desc = "A handsome synthetic leather sheath with matching belt."
-	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
-	concealed_holster = 0
-	can_hold = list(/obj/item/weapon/material/knife/machete)
-	//sound_in = 'sound/effects/holster/sheathin.ogg'
-	//sound_out = 'sound/effects/holster/sheathout.ogg'
+//Machete Holsters moved to holster.dm, where it belongs - peesh
 
 //Medals
 

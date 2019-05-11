@@ -56,6 +56,8 @@
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		A.fall()
+	for(var/obj/vehicle/B in src)
+		B.fall()
 	OS_controller.add_turf(src, 1)
 
 // override to make sure nothing is hidden

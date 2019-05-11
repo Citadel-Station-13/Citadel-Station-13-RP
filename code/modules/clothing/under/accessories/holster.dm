@@ -6,6 +6,8 @@
 	concealed_holster = 1
 	var/obj/item/holstered = null
 	var/list/can_hold //VOREStation Add
+	var/sound_in = 'sound/effects/holster/holsterin.ogg'
+	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
@@ -31,6 +33,7 @@
 	w_class = max(w_class, holstered.w_class)
 	user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
 	name = "occupied [initial(name)]"
+	playsound(user, "[sound_in]", 75, 0)
 
 /obj/item/clothing/accessory/holster/proc/clear_holster()
 	holstered = null
@@ -54,6 +57,7 @@
 				"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>"
 				)
 		user.put_in_hands(holstered)
+		playsound(user, "[sound_out]", 75, 0)
 		holstered.add_fingerprint(user)
 		w_class = initial(w_class)
 		clear_holster()
@@ -144,3 +148,13 @@
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0
+
+/obj/item/clothing/accessory/holster/machete
+	name = "machete sheath"
+	desc = "A handsome synthetic leather sheath with matching belt."
+	icon_state = "holster_machete"
+	slot = ACCESSORY_SLOT_WEAPON
+	concealed_holster = 0
+	can_hold = list(/obj/item/weapon/material/knife/machete)
+	sound_in = 'sound/effects/holster/sheathin.ogg'
+	sound_out = 'sound/effects/holster/sheathout.ogg'
