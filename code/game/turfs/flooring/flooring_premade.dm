@@ -69,7 +69,7 @@
 	initial_flooring = /decl/flooring/wood
 
 /turf/simulated/floor/wood/broken
-	icon_state = "wood_broken0" // This gets changed when spawned.
+	icon_state = "broken0" // This gets changed when spawned.
 
 /turf/simulated/floor/wood/broken/initialize()
 	break_tile()
