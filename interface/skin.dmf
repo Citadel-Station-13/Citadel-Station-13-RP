@@ -35,6 +35,7 @@ macro "borghotkeymode"
 	elem 
 		name = "NORTH+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -44,6 +45,7 @@ macro "borghotkeymode"
 	elem 
 		name = "EAST+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -53,6 +55,7 @@ macro "borghotkeymode"
 	elem 
 		name = "SOUTH+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -89,15 +92,19 @@ macro "borghotkeymode"
 	elem 
 		name = "A+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+A+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "D+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "F"
 		command = "a-intent left"
@@ -131,18 +138,22 @@ macro "borghotkeymode"
 	elem "s_key"
 		name = "S+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+S+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "T"
 		command = ".say"
 	elem "w_key"
 		name = "W+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "X"
 		command = ".northeast"
@@ -247,6 +258,7 @@ macro "macro"
 	elem 
 		name = "WEST+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "ALT+NORTH"
 		command = "northfaceperm"
@@ -256,6 +268,7 @@ macro "macro"
 	elem 
 		name = "NORTH+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -265,6 +278,7 @@ macro "macro"
 	elem 
 		name = "EAST+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -274,6 +288,7 @@ macro "macro"
 	elem 
 		name = "SOUTH+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -295,9 +310,11 @@ macro "macro"
 	elem 
 		name = "CTRL+A+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+E"
 		command = "quick-equip"
@@ -316,9 +333,11 @@ macro "macro"
 	elem 
 		name = "CTRL+S+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+X"
 		command = ".northeast"
@@ -414,6 +433,7 @@ macro "hotkeymode"
 	elem 
 		name = "WEST+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "ALT+NORTH"
 		command = "northfaceperm"
@@ -423,6 +443,7 @@ macro "hotkeymode"
 	elem 
 		name = "NORTH+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -432,6 +453,7 @@ macro "hotkeymode"
 	elem 
 		name = "EAST+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -441,6 +463,7 @@ macro "hotkeymode"
 	elem 
 		name = "SOUTH+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -480,15 +503,19 @@ macro "hotkeymode"
 	elem 
 		name = "A+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+A+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "D+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "E"
 		command = "quick-equip"
@@ -534,18 +561,22 @@ macro "hotkeymode"
 	elem "s_key"
 		name = "S+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+S+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "T"
 		command = ".say"
 	elem "w_key"
 		name = "W+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "X"
 		command = ".northeast"
@@ -650,6 +681,7 @@ macro "borgmacro"
 	elem 
 		name = "WEST+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "ALT+NORTH"
 		command = "northfaceperm"
@@ -659,6 +691,7 @@ macro "borgmacro"
 	elem 
 		name = "NORTH+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "ALT+EAST"
 		command = "eastfaceperm"
@@ -668,6 +701,7 @@ macro "borgmacro"
 	elem 
 		name = "EAST+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "ALT+SOUTH"
 		command = "southfaceperm"
@@ -677,6 +711,7 @@ macro "borgmacro"
 	elem 
 		name = "SOUTH+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "INSERT"
 		command = "a-intent right"
@@ -698,9 +733,11 @@ macro "borgmacro"
 	elem 
 		name = "CTRL+A+REP"
 		command = ".moveleft"
+		is-disabled = false
 	elem 
 		name = "CTRL+D+REP"
 		command = ".moveright"
+		is-disabled = false
 	elem 
 		name = "CTRL+F"
 		command = "a-intent left"
@@ -716,9 +753,11 @@ macro "borgmacro"
 	elem 
 		name = "CTRL+S+REP"
 		command = ".movedown"
+		is-disabled = false
 	elem 
 		name = "CTRL+W+REP"
 		command = ".moveup"
+		is-disabled = false
 	elem 
 		name = "CTRL+X"
 		command = ".northeast"
@@ -1096,7 +1135,6 @@ window "mainwindow"
 		size = 640x440
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-maximized = true
@@ -1109,7 +1147,6 @@ window "mainwindow"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = none
-		background-color = none
 		saved-params = ""
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
@@ -1120,7 +1157,6 @@ window "mainwindow"
 		size = 634x416
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1140,7 +1176,6 @@ window "mainwindow"
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -1151,7 +1186,6 @@ window "mainwindow"
 		size = 999x999
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = ""
 
@@ -1190,6 +1224,7 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1203,6 +1238,7 @@ window "outputwindow"
 		size = 640x28
 		anchor1 = 0,0
 		anchor2 = 0,5
+		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
@@ -1224,6 +1260,7 @@ window "rpane"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "rpanewindow"
@@ -1232,6 +1269,7 @@ window "rpane"
 		size = 640x499
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
@@ -1241,6 +1279,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
@@ -1251,6 +1290,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Map"
 		command = "map"
@@ -1261,6 +1301,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
@@ -1271,6 +1312,7 @@ window "rpane"
 		size = 67x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
@@ -1281,6 +1323,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
@@ -1291,6 +1334,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
@@ -1301,6 +1345,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -1314,6 +1359,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Browser"
@@ -1326,6 +1372,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
@@ -1338,6 +1385,7 @@ window "rpane"
 		size = 1x1
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = ""
 
 window "browserwindow"
