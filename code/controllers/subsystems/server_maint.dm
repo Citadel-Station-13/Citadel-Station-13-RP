@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(server_maint)
 				QDEL_IN(C, 1) //to ensure they get our message before getting disconnected
 				continue
 		*/
-		if(C.is_afk(afk_period) && !C.holder)
+		if(afk_period && C.is_afk(afk_period) && !C.holder)
 			do_inactivity_kick(C)
 /*
 		if (!(!C || world.time - C.connection_time < PING_BUFFER_TIME || C.inactivity >= (wait-1)))
