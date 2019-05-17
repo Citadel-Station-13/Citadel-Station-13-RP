@@ -1092,19 +1092,20 @@ window "chemdispenser_reagents"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 372,0
+		pos = 281,0
 		size = 640x440
 		anchor1 = none
 		anchor2 = none
 		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
+		is-maximized = true
 		icon = 'icons\\virgoicon.png'
 		macro = "macro"
 		menu = "menu"
 	elem "hotkey_toggle"
 		type = BUTTON
-		pos = -1360,-454
+		pos = 560,420
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1116,7 +1117,7 @@ window "mainwindow"
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
-		size = 637x462
+		size = 634x416
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -1125,8 +1126,8 @@ window "mainwindow"
 		is-vert = true
 	elem "input"
 		type = INPUT
-		pos = 3,-454
-		size = 637x20
+		pos = 3,420
+		size = 517x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = #d3b5b5
@@ -1135,7 +1136,7 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = -1400,-454
+		pos = 520,420
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1157,11 +1158,10 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 372,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1177,6 +1177,7 @@ window "mapwindow"
 		anchor2 = 100,100
 		font-family = "Arial Rounded MT Bold,Arial Black,Arial,sans-serif"
 		font-size = 7
+		text-color = none
 		is-default = true
 		saved-params = "icon-size"
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
@@ -1189,7 +1190,6 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1203,7 +1203,6 @@ window "outputwindow"
 		size = 640x28
 		anchor1 = 0,0
 		anchor2 = 0,5
-		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
@@ -1221,20 +1220,18 @@ window "outputwindow"
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 589,178
+		pos = 372,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,-3
-		size = 638x468
+		size = 640x499
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
@@ -1244,7 +1241,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
@@ -1255,7 +1251,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Map"
 		command = "map"
@@ -1266,7 +1261,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
@@ -1277,7 +1271,6 @@ window "rpane"
 		size = 67x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
@@ -1288,7 +1281,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
@@ -1299,7 +1291,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
@@ -1310,7 +1301,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -1324,7 +1314,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Browser"
@@ -1337,7 +1326,6 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
@@ -1350,7 +1338,6 @@ window "rpane"
 		size = 1x1
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = ""
 
 window "browserwindow"
