@@ -116,3 +116,9 @@
 	path = /obj/item/clothing/mask/red_mask
 	ckeywhitelist = list("figneugen")
 
+/datum/gear/donator/blackredgold
+	display_name = "Black, Red, and Gold Coat"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
+	ckeywhitelist = list("ttbnc")
+

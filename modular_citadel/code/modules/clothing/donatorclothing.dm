@@ -44,3 +44,11 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	body_parts_covered = HEAD
 	icon_state = "gas_mining"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
+	name = "Multicolor Coat"
+	desc = "An oddly special looking coat with black, red, and gold"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	item_state = "redgoldjacket"
+	icon_state = "redgoldjacket_w"
