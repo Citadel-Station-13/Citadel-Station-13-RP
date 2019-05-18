@@ -257,6 +257,12 @@
 	desc = "It vaguely like a star. It looks like something an alien captain might've worn. Probably."
 	icon_state = "alien_medal"
 
+/obj/item/clothing/accessory/medal/custom
+
+/obj/item/clothing/accessory/medal/custom/example
+	name = "example"
+	desc = "example"
+
 //Scarves
 
 /obj/item/clothing/accessory/scarf
