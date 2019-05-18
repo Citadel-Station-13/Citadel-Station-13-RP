@@ -216,8 +216,7 @@
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(prob(10);/obj/item/weapon/disk/nifsoft/compliance, //Citadel Override probability, 3.6%
-					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
+	var/path = pick(prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
 					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
 					prob(4);/obj/item/weapon/gun/energy/sizegun,
@@ -227,7 +226,7 @@
 					prob(3);/obj/item/weapon/reagent_containers/syringe/drugs,
 					prob(2);/obj/item/weapon/storage/pill_bottle/citalopram, //happer pills
 					prob(2);/obj/item/weapon/storage/pill_bottle/iron,
-					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine, 
+					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine,
 					prob(2);/obj/item/weapon/storage/pill_bottle/antitox,
 					prob(2);/obj/item/weapon/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/weapon/handcuffs/fuzzy,
@@ -245,7 +244,7 @@
 				//	prob(1);/obj/item/device/bodysnatcher, //VORECode default probability, 0.2%
 					prob(1);/obj/item/weapon/beartrap,
 					prob(1);/obj/item/weapon/cell/hyper/empty,
-				//	prob(1);/obj/item/weapon/disk/nifsoft/compliance, //VORECode default probability, 0.2%
+					prob(1);/obj/item/weapon/disk/nifsoft/compliance, //CIT CHANGE, BACK TO DEFAULT
 					prob(1);/obj/item/weapon/material/knife/tacknife,
 					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
 					prob(1);/obj/item/clothing/accessory/storage/black_vest,
