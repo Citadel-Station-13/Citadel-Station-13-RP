@@ -216,7 +216,7 @@
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(//prob(10);/obj/item/weapon/disk/nifsoft/compliance, // commented out 10 prob because thats mad rarted
+	var/path = pick(//prob(10);/obj/item/weapon/disk/nifsoft/compliance, // commented out 10 prob because fuck you
 					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
 					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
 					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
