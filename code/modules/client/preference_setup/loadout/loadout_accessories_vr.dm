@@ -59,4 +59,4 @@ END OF CITADEL CHANGE */
 	display_name = "USDF dogtags"
 	description = "A pair of USDF dogtags."
 	path = /obj/item/clothing/accessory/medal/custom/usdf_dogtags
-	ckeywhitelist = list("test")
+	ckeywhitelist = list("certifiedhyena")
