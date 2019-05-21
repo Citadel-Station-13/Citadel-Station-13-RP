@@ -57,7 +57,8 @@
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
-		/obj/item/device/flashlight/maglight)
+		/obj/item/device/flashlight/maglight,
+		/obj/item/gunbox/hos)
 
 //Custom NT Security Lockers, Only found at central command
 /obj/structure/closet/secure_closet/nanotrasen_security
