@@ -640,9 +640,28 @@ proc/establish_old_db_connection()
 		GLOB.players_by_zlevel.len++
 		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
 
+/world/proc/max_x_changed(old_max, new_max)
+	if(!SSmapping.transitions_initialized)
+		SSmapping.update_transitions_after_load = z_list.Copy()
+
+/world/proc/max_y_changed(old_max, new_max)
+	if(!SSmapping.transitions_initialized)
+		SSmapping.update_transitions_after_load = z_list.Copy()
+
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/incrementMaxZ()
 	maxz++
 	max_z_changed()
+
+//same for x/y
+/world/proc/set_maxx(new_maxx)
+	var/old_maxx = maxx
+	maxx = new_maxx
+	max_x_changed(old_maxx, maxx)
+
+/world/proc/set_maxy(new_maxy)
+	var/old_maxy = maxy
+	maxy = new_maxy
+	max_y_changed(old_maxy, maxy)
 
 #undef FAILED_DB_CONNECTION_CUTOFF

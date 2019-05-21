@@ -25,7 +25,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shuttle_templates = list()
 	*/
 
-	var/list/zlevels_by_id = list()		//id = zlevel datum
+	var/list/zlevels_by_id = list()			//id = zlevel datum
+	var/transitions_initialized = FALSE		//if this is not set, trait changes/hardsets will let setup_map_transitions() eventually set them up (so deferring updates.)
 
 	var/list/areas_in_z = list()
 
@@ -44,6 +45,8 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 	var/max_reserved_levels = 4		//Let's not let stuff OOM us.
+
+	var/list/datum/space_level/regenerate_transitions_after_load
 
 //Vorestation stuff start
 	var/obj/effect/landmark/engine_loader/engine_loader
@@ -290,6 +293,13 @@ SUBSYSTEM_DEF(mapping)
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
+
+/datum/controller/subsystem/mapping/StopLoadingMap()
+	for(var/i in regenerate_transitions_after_load)
+		var/datum/space_level/L = i
+		L.update_all_transitions()
+		CHECK_TICK
+	regenerate_transitions_after_load = null
 
 /*
 /datum/controller/subsystem/mapping/proc/loadWorld()

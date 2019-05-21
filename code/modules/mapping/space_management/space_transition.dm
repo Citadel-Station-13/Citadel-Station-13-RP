@@ -1,6 +1,12 @@
-/datum/space_level/proc/set_linkage(new_linkage, defer_update = FALSE)
-	linkage = new_linkage || linkage
-	neighbours = (linkage == SELFLOOPING)? list(TEXT_NORTH = src, TEXT_SOUTH = src, TEXT_EAST = src, TEXT_WEST = src) : list(TEXT_NORTH, TEXT_SOUTH, TEXT_EAST, TEXT_WEST)
+//Also sets up the transition IDs and such.
+/datum/space_level/proc/set_linkage(new_linkage = traits[ZTRAIT_LINKAGE], defer_update = FALSE, force_update = FALSE)
+	neighbours = neighbours || list(TEXT_NORTH, TEXT_SOUTH, TEXT_EAST, TEXT_WEST)
+	neighbour_static_ids = list(
+		TEXT_NORTH = traits[ZTRAIT_TRANSITION_ID_NORTH],
+		TEXT_SOUTH = traits[ZTRAIT_TRANSITION_ID_SOUTH],
+		TEXT_EAST = traits[ZTRAIT_TRANSITION_ID_EAST],
+		TEXT_WEST = traits[ZTRAIT_TRANSITION_ID_WEST])
+	var/selflooping = new_linkage == SELFLOOPING
 	var/list/checking = list(
 		ZTRAIT_TRANSITION_ID_NORTH = NORTH,
 		ZTRAIT_TRANSITION_ID_SOUTH = SOUTH,
@@ -16,8 +22,13 @@
 			var/datum/space_level/SL = SSmapping.zlevels_by_id[link_id]
 			if(SL)
 				var/list/returned = link_dir_to_z(dir, SL, TRUE)
-				if(length(returned))
+				if(length(returned) || force_update)
 					affected += returned
+		else if(selflooping)
+			var/dir = checking[trait_id]
+			var/list/returned = link_dir_to_z(dir, src, TRUE)
+			if(length(returned) || force_update)
+				affected += returned
 	if(!defer_updated)
 		for(var/i in affected)
 			var/list/L = affected[i]
@@ -32,7 +43,7 @@
 /datum/space_level/proc/link_dir_to_z(dir, datum/space_level/SL, defer_update = FALSE)
 	. = list()
 	var/turned_dir = turn(dir, 180)
-	if(SL.neighbours["[turned_dir]"] != src)
+	if(SL.neighbours["[turned_dir]"] != src && SL.neighbour_static_ids["[turned_dir]"] == src)		//support for one way transitions - only set theirs if their side is set to us too.
 		SL.neighbours["[turned_dir]"] = src
 		if(!defer_update)
 			SL.update_transitions(turned_dir)
@@ -43,64 +54,139 @@
 			update_transitions(dir)
 		. += list(src, dir)
 
-/datum/space_level/proc/set_neigbours(list/L)
-	for(var/datum/space_transition_point/P in L)
-		if(P.x == xi)
-			if(P.y == yi+1)
-				neigbours[TEXT_NORTH] = P.spl
-				P.spl.neigbours[TEXT_SOUTH] = src
-			else if(P.y == yi-1)
-				neigbours[TEXT_SOUTH] = P.spl
-				P.spl.neigbours[TEXT_NORTH] = src
-		else if(P.y == yi)
-			if(P.x == xi+1)
-				neigbours[TEXT_EAST] = P.spl
-				P.spl.neigbours[TEXT_WEST] = src
-			else if(P.x == xi-1)
-				neigbours[TEXT_WEST] = P.spl
-				P.spl.neigbours[TEXT_EAST] = src
-
-/datum/space_transition_point          //this is explicitly utilitarian datum type made specially for the space map generation and are absolutely unusable for anything else
-	var/list/neigbours = list()
-	var/x
-	var/y
-	var/datum/space_level/spl
-
-/datum/space_transition_point/New(nx, ny, list/point_grid)
-	if(!point_grid)
-		qdel(src)
+/datum/space_level/proc/update_transitions(dir)
+	if(!(dir in GLOB.cardinals))
 		return
-	var/list/L = point_grid[1]
-	if(nx > point_grid.len || ny > L.len)
-		qdel(src)
+	var/datum/space_level/target = neighbours["[dir]"]
+	if(!target)
 		return
-	x = nx
-	y = ny
-	if(point_grid[x][y])
-		return
-	point_grid[x][y] = src
+	var/our_z = z
+	var/padding = traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
+	var/target_padding = target.traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
+	var/target_z = target.z
 
-/datum/space_transition_point/proc/set_neigbours(list/grid)
-	var/max_X = grid.len
-	var/list/max_Y = grid[1]
-	max_Y = max_Y.len
-	neigbours.Cut()
-	if(x+1 <= max_X)
-		neigbours |= grid[x+1][y]
-	if(x-1 >= 1)
-		neigbours |= grid[x-1][y]
-	if(y+1 <= max_Y)
-		neigbours |= grid[x][y+1]
-	if(y-1 >= 1)
-		neigbours |= grid[x][y-1]
+	//Lists below are pre-calculated values arranged in the list in such a way to be easily accessable by direction.
+	//Its either this or madness with lotsa math.
+	var/x_lower_left
+	var/x_upper_right
+	var/y_lower_left
+	var/y_upper_right
+	var/x_transition
+	var/y_transition
+	switch(dir)
+		if(NORTH)
+			x_lower_left = 1
+			x_upper_right = world.maxx
+			y_lower_left = world.maxy - padding
+			y_upper_right = world.maxy
+			x_transition = null
+			y_transition = target_padding + 1
+		if(SOUTH)
+			x_lower_left = 1
+			x_upper_right = world.maxx
+			y_lower_left = 1
+			y_upper_right = padding
+			x_transition = null
+			y_transition = world.max - target_padding - 1
+		if(EAST)
+			x_lower_left = 1
+			x_upper_right = padding
+			y_lower_left = 1
+			y_upper_right = world.maxy
+			x_transition = target_padding
+			y_transition = null
+		if(WEST)
+			x_lower_left = world.maxx - padding
+			x_upper_right = world.maxx
+			y_lower_left = 1
+			y_upper_right = world.maxy
+			x_transition = world.maxx - target_padding - 1
+			y_transition = null
+	var/list/turf/turfs = block(locate(x_lower_left, y_lower_left, our_z), locate(x_upper_right, y_upper_right, our_z))
+	for(var/i in turfs)
+		var/turf/T = i
+
+
+
+	for(var/I in cached_z_list)
+		var/datum/space_level/D = I
+		if(!D.neigbours.len)
+			continue
+		var/zlevelnumber = D.z_value
+		for(var/side in 1 to 4)
+			var/turf/beginning = locate(x_pos_beginning[side], y_pos_beginning[side], zlevelnumber)
+			var/turf/ending = locate(x_pos_ending[side], y_pos_ending[side], zlevelnumber)
+			var/list/turfblock = block(beginning, ending)
+			var/dirside = 2**(side-1)
+			var/zdestination = zlevelnumber
+			if(D.neigbours["[dirside]"] && D.neigbours["[dirside]"] != D)
+				D = D.neigbours["[dirside]"]
+				zdestination = D.z_value
+			else
+				dirside = turn(dirside, 180)
+				while(D.neigbours["[dirside]"] && D.neigbours["[dirside]"] != D)
+					D = D.neigbours["[dirside]"]
+				zdestination = D.z_value
+			D = I
+			for(var/turf/space/S in turfblock)
+				S.destination_x = x_pos_transition[side] == 1 ? S.x : x_pos_transition[side]
+				S.destination_y = y_pos_transition[side] == 1 ? S.y : y_pos_transition[side]
+				S.destination_z = zdestination
+
+				// Mirage border code
+				var/mirage_dir
+				if(S.x == 1 + TRANSITIONEDGE)
+					mirage_dir |= WEST
+				else if(S.x == world.maxx - TRANSITIONEDGE)
+					mirage_dir |= EAST
+				if(S.y == 1 + TRANSITIONEDGE)
+					mirage_dir |= SOUTH
+				else if(S.y == world.maxy - TRANSITIONEDGE)
+					mirage_dir |= NORTH
+				if(!mirage_dir)
+					continue
+
+				var/turf/place = locate(S.destination_x, S.destination_y, S.destination_z)
+				S.AddComponent(/datum/component/mirage_border, place, mirage_dir)
+
+
+
+
+
+
+
+
+
 
 /datum/controller/subsystem/mapping/proc/setup_map_transitions()
+	transitions_initialized = TRUE
 	var/list/cached_z_list = z_list
 	var/list/zlevels_selflooping = list()
 	var/list/zlevels_crosslinked = list()
 	var/list/zlevels_staticlinked = list()
+	for(var/z in 1 to length(cached_z_list))
+		var/datum/space_level/zlevel = cached_z_list[z]
+		switch(zlevel.traits[ZTRAIT_LINKAGE])
+			if(CROSSLINKED)
+				zlevels_crosslinked += zlevel
+			if(STATIC)
+				zlevels_staticlinked += zlevel
+			if(SELFLOOPING)
+				zlevels_selflooping += zlevel
+		zlevel.neighbours = list()
+		zlevel.set_linkage(zlevel.traits[ZTRAIT_lINKAGE], TRUE, TRUE)		//force update every zlevel so their selflooping/staticlinking gets set
+		//but don't actually have them set up transitions (defer them, we'll do that later.)
+
+	//We don't need the rest of the code until we need random space, for now this only does static trnasitions.
+	//INSERT RANDOM TRANSITION SYSTEM HERE
+
+	//make all the zlevels force update.
+	for(var/i in 1 to length(cached_z_list))
+		var/datum/space_level/zlevel = cached_z_list[i]
+		zlevel.update_all_transitions()
 
 
+/*
 /datum/controller/subsystem/mapping/proc/setup_map_transitions() //listamania
 	var/list/SLS = list()
 	var/list/cached_z_list = z_list
@@ -126,7 +212,7 @@
 	grid.Cut()
 	while(SLS.len)
 		var/datum/space_level/D = pick_n_take(SLS)
-		D.xi = P.x
+		D.x	i = P.x
 		D.yi = P.y
 		P.spl = D
 		possible_points |= P.neigbours
@@ -186,3 +272,83 @@
 
 				var/turf/place = locate(S.destination_x, S.destination_y, S.destination_z)
 				S.AddComponent(/datum/component/mirage_border, place, mirage_dir)
+
+/datum/space_level/proc/set_neigbours(list/L)
+	for(var/datum/space_transition_point/P in L)
+		if(P.x == xi)
+			if(P.y == yi+1)
+				neigbours[TEXT_NORTH] = P.spl
+				P.spl.neigbours[TEXT_SOUTH] = src
+			else if(P.y == yi-1)
+				neigbours[TEXT_SOUTH] = P.spl
+				P.spl.neigbours[TEXT_NORTH] = src
+		else if(P.y == yi)
+			if(P.x == xi+1)
+				neigbours[TEXT_EAST] = P.spl
+				P.spl.neigbours[TEXT_WEST] = src
+			else if(P.x == xi-1)
+				neigbours[TEXT_WEST] = P.spl
+				P.spl.neigbours[TEXT_EAST] = src
+
+/datum/space_transition_point          //this is explicitly utilitarian datum type made specially for the space map generation and are absolutely unusable for anything else
+	var/list/neigbours = list()
+	var/x
+	var/y
+	var/datum/space_level/spl
+
+/datum/space_transition_point/New(nx, ny, list/point_grid)
+	if(!point_grid)
+		qdel(src)
+		return
+	var/list/L = point_grid[1]
+	if(nx > point_grid.len || ny > L.len)
+		qdel(src)
+		return
+	x = nx
+	y = ny
+	if(point_grid[x][y])
+		return
+	point_grid[x][y] = src
+
+/datum/space_transition_point/proc/set_neigbours(list/grid)
+	var/max_X = grid.len
+	var/list/max_Y = grid[1]
+	max_Y = max_Y.len
+	neigbours.Cut()
+	if(x+1 <= max_X)
+		neigbours |= grid[x+1][y]
+	if(x-1 >= 1)
+		neigbours |= grid[x-1][y]
+	if(y+1 <= max_Y)
+		neigbours |= grid[x][y+1]
+	if(y-1 >= 1)
+		neigbours |= grid[x][y-1]
+
+
+*/
+
+/turf/unsimulated/ztransition
+	density = FALSE
+	plane = TRANSITION_PLANE
+	var/destination_x
+	var/destination_y
+	var/destination_z
+	var/turf/target
+
+/turf/unsimulated/ztransition/Entered(atom/movable/AM)
+	var/turf/T = locate(destination_x, destination_y, destination_z)
+	if(T)
+		. = ..()
+		AM.forceMove(T)
+	else
+		return ..()
+
+/turf/unsimualted/ztransition/proc/link_to_turf(turf/other)
+	if(!other)
+		return
+	appearance = other
+	vis_contents = list(other)
+	target = other
+	destination_x = other.x
+	destination_y = other.y
+	destination_z = other.z

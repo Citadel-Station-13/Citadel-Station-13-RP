@@ -227,12 +227,12 @@
 						actual_x += xi
 						continue
 					else
-						world.maxx = placement_x
+						world.set_maxx(placement_x)
 				if(placement_y > world.maxy)
 					if(cropMap)
 						break
 					else
-						world.maxy = placement_y
+						world.set_maxy(placement_y)
 				if(placement_x < 1)
 					actual_x += xi
 					continue

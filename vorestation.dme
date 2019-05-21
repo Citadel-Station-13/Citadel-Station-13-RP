@@ -10,6 +10,9 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "_maps\aurelius\aurelius_1.dmm"
+#include "_maps\aurelius\aurelius_2.dmm"
+#include "_maps\aurelius\aurelius_3.dmm"
 #include "code\__compile_options.dm"
 #include "code\_away_mission_tests.dm"
 #include "code\_macros.dm"

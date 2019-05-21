@@ -67,12 +67,14 @@ require only minor tweaks.
 	#define UNAFFECTED null
 	// SELFLOOPING - space transitions always self-loop
 	#define SELFLOOPING "Self"
-	// CROSSLINKED - mixed in with the cross-linked space pool. Static ID overrides will still work!
+	// CROSSLINKED - mixed in with the cross-linked space pool. Static ID overrides will work, but expect weirdness.
 	#define CROSSLINKED "Cross"
-	// STATIC - Links to another zlevel with the same ID - This is the same as crosslinked but sides that don't have the ID specified will not be linked!
+	// STATIC - static transitions determined by IDs.
 	#define STATIC "Static"
 
 // string - id for static linkage as above. only one side across all maps can have the same unique ID, more will result in errors.
+// only works if the map is static.
+// IS BY DEFAULT, ONE WAY. You have to set it on both zlevels pointing to each other to be two way.
 #define ZTRAIT_TRANSITION_ID_NORTH "Transition ID North"
 #define ZTRAIT_TRANSITION_ID_SOUTH "Transition ID South"
 #define ZTRAIT_TRANSITION_ID_EAST "Transition ID East"
@@ -84,11 +86,15 @@ require only minor tweaks.
 // number - tiles of padding on edge for transitions - defaults to DEFAULT_Z_EDGE_PADDING
 #define ZTRAIT_TRANSITION_PADDING "Transition Padding"
 
-// boolean - Enable transition mirage holders - defaults to false
-#define ZTRAIT_TRANSITION_MIRAGE "Transition Mirage"
+// boolean - Disable transition mirage holders - defaults to false
+#define ZTRAIT_TRANSITION_NO_MIRAGE "No Transition Mirage"
 
-// boolean - Linkage uses step teleporters instead of space tiles only
-#define ZTRAIT_TRANSITION_FORCED "Transition forced"
+// enum - how transitions are made
+#define ZTRAIT_TRANSITION_MODE "Transition Mode"
+	#define ZTRANSITION_MODE_STEP_TELEPORTER "step_teleporter"
+	// Make step teleporters on the turfs. will not render without mirage borders.
+	#define ZTRANSITION_MODE_TURF "turf"
+	// EXPERIMENTAL: attempt to utilize turfs themselves, without step teleporters.
 
 // default trait definitions, used by SSmapping
 
