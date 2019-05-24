@@ -20,6 +20,6 @@
 	name = "USDF Dogtags"
  	desc = "United Sol Defense Force Standard Issue Dogtags, these ones in particular are rusted and worn from years or wear. They read: \"Nikolai Volkov, DOB 12/12/2537, Blood Type O+\". The serial number has faded away."
 	icon = 'icons/obj/clothing/ties.dmi'
-	icon_state = "crown"
-	item_state = "crown"
-	overlay_state = "crown"
+	icon_state = "holotags"
+	item_state = "holotags"
+	overlay_state = "holotags"
