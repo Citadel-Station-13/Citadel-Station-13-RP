@@ -55,8 +55,8 @@ END OF CITADEL CHANGE */
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/accessory/usdf_dogtags
+/datum/gear/accessory/holotags
 	display_name = "USDF dogtags"
 	description = "A pair of USDF dogtags."
-	path = /obj/item/clothing/accessory/medal/custom/usdf_dogtags
+	path = /obj/item/clothing/accessory/collar/holotags
 	ckeywhitelist = list("certifiedhyena")
