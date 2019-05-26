@@ -54,8 +54,8 @@
 	icon_state = "redgoldjacket_w"
 
 /obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
-	name = "CentComm Service Cloak"
-	desc = "Bee the true Queen!"
+	name = "Project: Zul-E"
+	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads Fleuret ...the rest is faded away."
 	icon_state = "zuliecloak_w"
 	item_state = "zuliecloak"
 	item_state_slots = list(slot_r_hand_str = "cloak", slot_l_hand_str = "cloak")
