@@ -52,3 +52,24 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	item_state = "redgoldjacket"
 	icon_state = "redgoldjacket_w"
+
+/obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
+	name = "CentComm Service Cloak"
+	desc = "Bee the true Queen!"
+	icon_state = "zuliecloak_w"
+	item_state = "zuliecloak"
+	item_state_slots = list(slot_r_hand_str = "cloak", slot_l_hand_str = "cloak")
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	hoodtype = /obj/item/clothing/head/donator/bee_hood
+
+/obj/item/clothing/head/donator/cloak_hood
+	name = "cloak hood"
+	desc = "A hood attached to a cloak."
+	icon_state = "zuliehood"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	item_state_slots = list(slot_r_hand_str = "cloak", slot_l_hand_str = "cloak") //Does not exist -S2-
+	body_parts_covered = HEAD
