@@ -1,21 +1,6 @@
+//wip: rework this file and sort it under ./step_triggers/
+
 /* Simple object type, calls a proc when "stepped" on by something */
-
-/obj/effect/step_trigger
-	var/affect_ghosts = 0
-	var/stopper = 1 // stops throwers
-	invisibility = 101 // nope cant see this shit
-	anchored = 1
-
-/obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
-	return 0
-
-/obj/effect/step_trigger/Crossed(H as mob|obj)
-	..()
-	if(!H)
-		return
-	if(istype(H, /mob/observer) && !affect_ghosts)
-		return
-	Trigger(H)
 
 
 
@@ -60,12 +45,14 @@
 			// Calculate if we should stop the process
 			if(!nostop)
 				for(var/obj/effect/step_trigger/T in get_step(AM, direction))
-					if(T.stopper && T != src)
+					if(T.stop_throw && T != src)
 						stopthrow = 1
+						break
 			else
 				for(var/obj/effect/step_trigger/teleporter/T in get_step(AM, direction))
-					if(T.stopper)
+					if(T.stop_throw)
 						stopthrow = 1
+						break
 
 			if(AM)
 				var/predir = AM.dir
@@ -86,64 +73,6 @@
 
 /obj/effect/step_trigger/stopper
 
-/* Instant teleporter */
-
-/obj/effect/step_trigger/teleporter
-	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
-	var/teleport_y = 0
-	var/teleport_z = 0
-
-/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A)
-	if(teleport_x && teleport_y && teleport_z)
-		var/turf/T = locate(teleport_x, teleport_y, teleport_z)
-		if(isliving(A))
-			var/mob/living/L = A
-			if(L.pulling)
-				var/atom/movable/P = L.pulling
-				L.stop_pulling()
-				P.forceMove(T)
-				L.forceMove(T)
-				L.start_pulling(P)
-			else
-				A.forceMove(T)
-		else
-			A.forceMove(T)
-
-/* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
-
-/obj/effect/step_trigger/teleporter/random
-	var/teleport_x_offset = 0
-	var/teleport_y_offset = 0
-	var/teleport_z_offset = 0
-
-/obj/effect/step_trigger/teleporter/random/Trigger(atom/movable/A)
-	if(teleport_x && teleport_y && teleport_z)
-		if(teleport_x_offset && teleport_y_offset && teleport_z_offset)
-			var/turf/T = locate(rand(teleport_x, teleport_x_offset), rand(teleport_y, teleport_y_offset), rand(teleport_z, teleport_z_offset))
-			A.forceMove(T)
-
-/* Teleporter that sends objects stepping on it to a specific landmark. */
-
-/obj/effect/step_trigger/teleporter/landmark
-	var/landmark_id
-
-/obj/effect/step_trigger/teleporter/landmark/Initialize(mapload)
-	. = ..()
-	if(mapload)
-		if(!landmark_id)
-			stack_trace("Warning: Teleportation step trigger at [COORD(src)] that uses landmark ID target system does not have a set ID! Deleting!")
-			return INITIALIZE_HINT_QDEL
-		return INITIALIZE_HINT_LATELOAD
-
-/obj/effect/step_trigger/teleporter/landmark/LateInitialize()
-	if(!GLOB.landmarks_id_target[landmark_id])
-		stack_trace("Warning: Teleportation step trigger at [COORD(src)] that uses landmark ID target system can't find its target landmark!")
-
-/obj/effect/step_trigger/teleporter/landmark/Trigger(atom/movable/A)
-	var/obj/effect/landmark/id_target/the_landmark = GLOB.landmarks_id_target[landmark_id]
-	if(the_landmark)
-		A.forceMove(get_turf(the_landmark))
-
 /* Teleporter which simulates falling out of the sky. */
 
 /obj/effect/step_trigger/teleporter/planetary_fall
@@ -153,7 +82,7 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/proc/find_planet()
 	return
 
-/obj/effect/step_trigger/teleporter/planetary_fall/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/planetary_fall/trigger(var/atom/movable/A)
 	if(!planet)
 		find_planet()
 

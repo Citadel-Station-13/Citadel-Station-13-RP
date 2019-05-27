@@ -973,6 +973,8 @@
 #include "code\game\objects\effects\landmarks\id_target.dm"
 #include "code\game\objects\effects\spawners\bombspawner.dm"
 #include "code\game\objects\effects\spawners\gibspawner.dm"
+#include "code\game\objects\effects\step_triggers\_step_trigger.dm"
+#include "code\game\objects\effects\step_triggers\teleporter.dm"
 #include "code\game\objects\effects\temporary_visuals\miscellaneous.dm"
 #include "code\game\objects\effects\temporary_visuals\temproary_visual.dm"
 #include "code\game\objects\items\antag_spawners.dm"

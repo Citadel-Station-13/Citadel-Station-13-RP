@@ -642,11 +642,11 @@ proc/establish_old_db_connection()
 
 /world/proc/max_x_changed(old_max, new_max)
 	if(!SSmapping.transitions_initialized)
-		SSmapping.update_transitions_after_load = z_list.Copy()
+		SSmapping.regenerate_transitions_after_load = SSmapping.z_list.Copy()
 
 /world/proc/max_y_changed(old_max, new_max)
 	if(!SSmapping.transitions_initialized)
-		SSmapping.update_transitions_after_load = z_list.Copy()
+		SSmapping.regenerate_transitions_after_load = SSmapping.z_list.Copy()
 
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/incrementMaxZ()

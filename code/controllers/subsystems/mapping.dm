@@ -295,6 +295,7 @@ SUBSYSTEM_DEF(mapping)
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/StopLoadingMap()
+	. = ..()
 	for(var/i in regenerate_transitions_after_load)
 		var/datum/space_level/L = i
 		L.update_all_transitions()

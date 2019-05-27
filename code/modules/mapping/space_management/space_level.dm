@@ -7,8 +7,8 @@
 	var/tmp/z_value = 1 //actual z placement
 	//var/xi		space grid/dynamic system, maybe later...
 	//var/yi   //imaginary placements on the grid
-	var/tmp/list/datum/transition_effects = list()		//holds the transition effects, wiped on transition change.
-	var/tmp/list/turf/transition_turfs = list()			//transition turfs set on transition set.
+	var/tmp/list/datum/transition_effects = list()		//"[dir]" = list() holds the transition effects, wiped on transition change.
+	var/tmp/list/turf/transition_turfs = list()			//"[dir]" = list() transition turfs set on transition set.
 
 /datum/space_level/New(new_z, new_name, list/new_traits = list())
 	z_value = new_z
@@ -18,13 +18,13 @@
 /datum/space_level/proc/set_traits(list/new_traits = list(), defer_transition_update = FALSE)
 	//Cleanup/cache old traits
 	SSmapping.zlevels_by_id -= id
-	var/old_linakge = traits[ZTRAIT_LINKAGE]
+	var/old_linkage = traits[ZTRAIT_LINKAGE]
 	var/old_idn = traits[ZTRAIT_TRANSITION_ID_NORTH]
 	var/old_ids = traits[ZTRAIT_TRANSITION_ID_SOUTH]
 	var/old_ide = traits[ZTRAIT_TRANSITION_ID_EAST]
 	var/old_idw = traits[ZTRAIT_TRANSITiON_ID_WEST]
 	var/old_padding = traits[ZTRAIT_TRANSITION_PADDING]
-	var/old_mirage = traits[ZTRAIT_TRANSITION_NO_IRAGE]
+	var/old_mirage = traits[ZTRAIT_TRANSITION_NO_MIRAGE]
 	var/old_mode = traits[ZTRAIT_TRANSITION_MODE]
 	//Set traits
 	traits = new_traits

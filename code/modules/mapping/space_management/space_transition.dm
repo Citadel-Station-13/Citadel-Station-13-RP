@@ -63,7 +63,7 @@
 	var/our_z = z
 	var/padding = traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
 	var/target_padding = target.traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
-	var/target_z = target.z
+	var/destination_z = target.z_value
 
 	//Lists below are pre-calculated values arranged in the list in such a way to be easily accessable by direction.
 	//Its either this or madness with lotsa math.
@@ -87,76 +87,62 @@
 			y_lower_left = 1
 			y_upper_right = padding
 			x_transition = null
-			y_transition = world.max - target_padding - 1
+			y_transition = world.maxy - target_padding - 1
 		if(EAST)
-			x_lower_left = 1
-			x_upper_right = padding
-			y_lower_left = 1
-			y_upper_right = world.maxy
-			x_transition = target_padding
-			y_transition = null
-		if(WEST)
 			x_lower_left = world.maxx - padding
 			x_upper_right = world.maxx
 			y_lower_left = 1
 			y_upper_right = world.maxy
+			x_transition = target_padding + 1
+			y_transition = null
+		if(WEST)
+			x_lower_left = 1
+			x_upper_right = padding
+			y_lower_left = 1
+			y_upper_right = world.maxy
 			x_transition = world.maxx - target_padding - 1
 			y_transition = null
+
+	LAZYINITLIST(transition_effects["[dir]"])
+	LAZYINITLIST(transition_turfs["[dir]"])
+	var/list/transit_effects = transition_effects["[dir]"]
+	var/list/transit_turfs = transition_turfs["[dir]"]
+	QDEL_LIST(transit_effects)
+	for(var/i in transit_turfs)
+		var/turf/T = i
+		qdel(T.GetComponent(/datum/component/mirage_border))
+	transit_turfs.Cut()
+
 	var/list/turf/turfs = block(locate(x_lower_left, y_lower_left, our_z), locate(x_upper_right, y_upper_right, our_z))
 	for(var/i in turfs)
 		var/turf/T = i
+		transit_turfs += T
+		var/destination_x = x_transition || T.x
+		var/destination_y = y_transition || T.y
+		switch(traits[ZTRAIT_TRANSITION_MODE])
+			if(ZTRANSITION_MODE_STEP_TELEPORTER)
+				var/obj/effect/step_trigger/teleporter/transition/ST = new(T)
+				ST.zlevel = src
+				ST.zdir = dir
+				ST.teleport_z = destination_z
+				ST.teleport_x = destination_x
+				ST.teleport_y = destination_y
+				transit_effects += ST
+			if(ZTRANSITION_MODE_TURF)
 
-
-
-	for(var/I in cached_z_list)
-		var/datum/space_level/D = I
-		if(!D.neigbours.len)
-			continue
-		var/zlevelnumber = D.z_value
-		for(var/side in 1 to 4)
-			var/turf/beginning = locate(x_pos_beginning[side], y_pos_beginning[side], zlevelnumber)
-			var/turf/ending = locate(x_pos_ending[side], y_pos_ending[side], zlevelnumber)
-			var/list/turfblock = block(beginning, ending)
-			var/dirside = 2**(side-1)
-			var/zdestination = zlevelnumber
-			if(D.neigbours["[dirside]"] && D.neigbours["[dirside]"] != D)
-				D = D.neigbours["[dirside]"]
-				zdestination = D.z_value
-			else
-				dirside = turn(dirside, 180)
-				while(D.neigbours["[dirside]"] && D.neigbours["[dirside]"] != D)
-					D = D.neigbours["[dirside]"]
-				zdestination = D.z_value
-			D = I
-			for(var/turf/space/S in turfblock)
-				S.destination_x = x_pos_transition[side] == 1 ? S.x : x_pos_transition[side]
-				S.destination_y = y_pos_transition[side] == 1 ? S.y : y_pos_transition[side]
-				S.destination_z = zdestination
-
-				// Mirage border code
-				var/mirage_dir
-				if(S.x == 1 + TRANSITIONEDGE)
-					mirage_dir |= WEST
-				else if(S.x == world.maxx - TRANSITIONEDGE)
-					mirage_dir |= EAST
-				if(S.y == 1 + TRANSITIONEDGE)
-					mirage_dir |= SOUTH
-				else if(S.y == world.maxy - TRANSITIONEDGE)
-					mirage_dir |= NORTH
-				if(!mirage_dir)
-					continue
-
-				var/turf/place = locate(S.destination_x, S.destination_y, S.destination_z)
-				S.AddComponent(/datum/component/mirage_border, place, mirage_dir)
-
-
-
-
-
-
-
-
-
+		if(traits[ZTRAIT_MIRAGE])
+			var/mirage_dir
+			if(T.x == padding)
+				mirage_dir |= WEST
+			else if(T.x == (world.maxx - padding))
+				mirage_dir |= EAST
+			if(T.y == padding)
+				mirage_dir |= SOUTH
+			else if(T.y == (world.maxy - padding))
+				mirage_dir |= NORTH
+			if(mirage_dir)
+				var/turf/destination = locate(destination_x, destination_y, destination_z)
+				T.AddComponent(/datum/component/mirage_border, destination, mirage_dir)
 
 /datum/controller/subsystem/mapping/proc/setup_map_transitions()
 	transitions_initialized = TRUE
@@ -343,7 +329,7 @@
 	else
 		return ..()
 
-/turf/unsimualted/ztransition/proc/link_to_turf(turf/other)
+/turf/unsimulated/ztransition/proc/link_to_turf(turf/other)
 	if(!other)
 		return
 	appearance = other
