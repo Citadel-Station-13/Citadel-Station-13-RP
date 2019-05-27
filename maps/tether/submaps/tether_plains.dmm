@@ -1,9 +1,7 @@
-"aa" = (/turf/unsimulated/wall/planetary/virgo3b,/area/space)
-"ab" = (/obj/effect/floor_decal/rust,/obj/effect/step_trigger/teleporter/landmark,/obj/effect/landmark/id_target,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
+"aa" = (/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_plains)
 "ac" = (/turf/unsimulated/mineral/virgo3b,/area/mine/explored)
 "ad" = (/turf/simulated/floor/outdoors/dirt/virgo3b,/area/tether/outpost/exploration_plains)
 "ae" = (/turf/simulated/mineral/virgo3b/rich,/area/mine/explored)
-"af" = (/obj/effect/floor_decal/rust,/obj/effect/step_trigger/teleporter/landmark{landmark_id = "tether_plains_exit_1"},/obj/effect/landmark/id_target,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
 "ag" = (/turf/simulated/wall/r_wall,/area/tether/outpost/exploration_shed)
 "ah" = (/obj/structure/sign/hostilefauna,/turf/simulated/wall/r_wall,/area/tether/outpost/exploration_shed)
 "ai" = (/obj/machinery/door/airlock/multi_tile/metal/mait{dir = 4},/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
@@ -12,15 +10,13 @@
 "al" = (/obj/effect/floor_decal/rust,/obj/machinery/power/apc{alarms_hidden = 1; dir = 4; name = "east bump"; pixel_x = 24},/obj/structure/cable/green{d2 = 2; icon_state = "0-2"},/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
 "am" = (/obj/effect/floor_decal/rust,/obj/structure/cable/green,/obj/machinery/power/port_gen/pacman,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
 "an" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_plains)
-"ao" = (/obj/effect/floor_decal/rust,/obj/effect/step_trigger/teleporter/landmark{landmark_id = "tether_plains_exit_2"},/obj/effect/landmark/id_target,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
-"ap" = (/obj/effect/floor_decal/rust,/obj/effect/step_trigger/teleporter/landmark{landmark_id = "tether_plains_exit_3"},/obj/effect/landmark/id_target,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
 "bj" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/steel_dirty/virgo3b,/area/tether/outpost/exploration_shed)
 "bF" = (/turf/simulated/mineral/virgo3b,/area/mine/unexplored)
 "BE" = (/turf/simulated/floor/outdoors/grass/sif/virgo3b,/area/tether/outpost/exploration_plains)
 "Em" = (/mob/living/simple_animal/retaliate/gaslamp,/turf/simulated/floor/outdoors/grass/sif/virgo3b,/area/tether/outpost/exploration_plains)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafaoapababababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+BEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEaaaaaaaaaaaaaaaaaaBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBE
 acaebFbFbFbFbFadadBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEadagbjbjbjbjbjbjbjbjbjagadadBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEadadbFbFbFbFaeac
 acaebFbFbFbFadadadadBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEadadagajbjbjbjbjbjbjbjakagadadBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEadbFbFbFbFaeac
 acaebFbFbFbFadadadadBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEadadagbjbjbjbjbjbjbjbjalagadadBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEadadbFbFbFbFaeac

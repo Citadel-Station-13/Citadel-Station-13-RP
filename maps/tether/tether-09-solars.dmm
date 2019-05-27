@@ -832,10 +832,8 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_outside)
 "bL" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/step_trigger/teleporter/from_solars,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/space)
+/turf/unsimulated/wall/planetary/virgo3b,
+/area/tether/outpost/solars_outside)
 "bM" = (
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/shuttle/tether/crash1)
@@ -4997,6 +4995,16 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/virgo3b,
+/area/tether/outpost/solars_outside)
+"jv" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/step_trigger/teleporter/from_solars,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/outpost/solars_outside)
+"jw" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/step_trigger/teleporter/from_solars,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/solars_outside)
 
 (1,1,1) = {"
@@ -11532,7 +11540,7 @@ ab
 aa
 "}
 (47,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -11674,7 +11682,7 @@ ab
 aa
 "}
 (48,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -11816,7 +11824,7 @@ ab
 aa
 "}
 (49,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -11958,7 +11966,7 @@ ab
 aa
 "}
 (50,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12100,7 +12108,7 @@ ab
 aa
 "}
 (51,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12242,7 +12250,7 @@ ab
 aa
 "}
 (52,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12384,7 +12392,7 @@ ab
 aa
 "}
 (53,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12526,7 +12534,7 @@ ab
 aa
 "}
 (54,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12668,7 +12676,7 @@ ab
 aa
 "}
 (55,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12810,7 +12818,7 @@ ab
 aa
 "}
 (56,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -12952,7 +12960,7 @@ ab
 aa
 "}
 (57,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13094,7 +13102,7 @@ ab
 aa
 "}
 (58,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13236,7 +13244,7 @@ ab
 aa
 "}
 (59,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13378,7 +13386,7 @@ ab
 aa
 "}
 (60,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13520,7 +13528,7 @@ ab
 aa
 "}
 (61,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13662,7 +13670,7 @@ ab
 aa
 "}
 (62,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13804,7 +13812,7 @@ ab
 aa
 "}
 (63,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -13946,7 +13954,7 @@ ab
 aa
 "}
 (64,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14088,7 +14096,7 @@ ab
 aa
 "}
 (65,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14230,7 +14238,7 @@ ab
 aa
 "}
 (66,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14372,7 +14380,7 @@ ab
 aa
 "}
 (67,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14514,7 +14522,7 @@ ab
 aa
 "}
 (68,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14656,7 +14664,7 @@ ab
 aa
 "}
 (69,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14798,7 +14806,7 @@ ab
 aa
 "}
 (70,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -14940,7 +14948,7 @@ ab
 aa
 "}
 (71,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15082,7 +15090,7 @@ ab
 aa
 "}
 (72,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15224,7 +15232,7 @@ ab
 aa
 "}
 (73,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15366,7 +15374,7 @@ ab
 aa
 "}
 (74,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15508,7 +15516,7 @@ ab
 aa
 "}
 (75,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15650,7 +15658,7 @@ ab
 aa
 "}
 (76,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15792,7 +15800,7 @@ ab
 aa
 "}
 (77,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -15934,7 +15942,7 @@ ab
 aa
 "}
 (78,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16076,7 +16084,7 @@ ab
 aa
 "}
 (79,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16218,7 +16226,7 @@ ab
 aa
 "}
 (80,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16360,7 +16368,7 @@ ab
 aa
 "}
 (81,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16502,7 +16510,7 @@ ab
 aa
 "}
 (82,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16644,7 +16652,7 @@ ab
 aa
 "}
 (83,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16786,7 +16794,7 @@ ab
 aa
 "}
 (84,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -16928,7 +16936,7 @@ ab
 aa
 "}
 (85,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17070,7 +17078,7 @@ ab
 aa
 "}
 (86,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17212,7 +17220,7 @@ ab
 aa
 "}
 (87,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17354,7 +17362,7 @@ ab
 aa
 "}
 (88,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17496,7 +17504,7 @@ ab
 aa
 "}
 (89,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17638,7 +17646,7 @@ ab
 aa
 "}
 (90,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17780,7 +17788,7 @@ ab
 aa
 "}
 (91,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -17922,7 +17930,7 @@ ab
 aa
 "}
 (92,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18064,7 +18072,7 @@ ab
 aa
 "}
 (93,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18206,7 +18214,7 @@ ab
 aa
 "}
 (94,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18348,7 +18356,7 @@ ab
 aa
 "}
 (95,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18490,7 +18498,7 @@ ab
 aa
 "}
 (96,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18632,7 +18640,7 @@ ab
 aa
 "}
 (97,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18774,7 +18782,7 @@ ab
 aa
 "}
 (98,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -18916,7 +18924,7 @@ ab
 aa
 "}
 (99,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19058,7 +19066,7 @@ ab
 aa
 "}
 (100,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19200,7 +19208,7 @@ ab
 aa
 "}
 (101,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19342,7 +19350,7 @@ ab
 aa
 "}
 (102,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19484,7 +19492,7 @@ ab
 aa
 "}
 (103,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19626,7 +19634,7 @@ ab
 aa
 "}
 (104,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19768,7 +19776,7 @@ ab
 aa
 "}
 (105,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -19910,7 +19918,7 @@ ab
 aa
 "}
 (106,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20052,7 +20060,7 @@ ab
 aa
 "}
 (107,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20194,7 +20202,7 @@ ab
 aa
 "}
 (108,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20336,7 +20344,7 @@ ab
 aa
 "}
 (109,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20478,7 +20486,7 @@ ab
 aa
 "}
 (110,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20620,7 +20628,7 @@ ab
 aa
 "}
 (111,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20762,7 +20770,7 @@ ab
 aa
 "}
 (112,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -20904,7 +20912,7 @@ ab
 aa
 "}
 (113,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21046,7 +21054,7 @@ ab
 aa
 "}
 (114,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21188,7 +21196,7 @@ ab
 aa
 "}
 (115,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21330,7 +21338,7 @@ ab
 aa
 "}
 (116,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21472,7 +21480,7 @@ ab
 aa
 "}
 (117,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21614,7 +21622,7 @@ ab
 aa
 "}
 (118,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21756,7 +21764,7 @@ ab
 aa
 "}
 (119,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -21898,7 +21906,7 @@ ab
 aa
 "}
 (120,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22040,7 +22048,7 @@ ab
 aa
 "}
 (121,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22182,7 +22190,7 @@ ab
 aa
 "}
 (122,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22324,7 +22332,7 @@ ab
 aa
 "}
 (123,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22466,7 +22474,7 @@ ab
 aa
 "}
 (124,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22608,7 +22616,7 @@ ab
 aa
 "}
 (125,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22750,7 +22758,7 @@ ab
 aa
 "}
 (126,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -22892,7 +22900,7 @@ ab
 aa
 "}
 (127,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -23034,7 +23042,7 @@ ab
 aa
 "}
 (128,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -23176,7 +23184,7 @@ ab
 aa
 "}
 (129,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -23318,7 +23326,7 @@ ab
 aa
 "}
 (130,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -23457,10 +23465,10 @@ ab
 ab
 ab
 ab
-aa
+bL
 "}
 (131,1,1) = {"
-aa
+bL
 ab
 ab
 ab
@@ -23599,10 +23607,10 @@ ab
 ab
 ab
 ab
-aa
+bL
 "}
 (132,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -23741,10 +23749,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (133,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -23883,10 +23891,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (134,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -24025,10 +24033,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (135,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -24167,10 +24175,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (136,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -24309,10 +24317,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (137,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -24451,10 +24459,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (138,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -24593,10 +24601,10 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (139,1,1) = {"
-aa
+ab
 ab
 ab
 ab
@@ -24735,147 +24743,147 @@ ab
 ab
 ab
 ab
-aa
+ab
 "}
 (140,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-bL
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+jv
+jv
+jv
+jv
+jv
+jv
+jv
+jv
+jw
+jw
+jw
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 "}

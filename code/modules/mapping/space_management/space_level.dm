@@ -3,7 +3,7 @@
 	var/id
 	var/tmp/list/neighbours = list()			//dir = datum
 	var/list/neighbour_static_ids = list()	//dir = id
-	var/list/traits
+	var/list/traits = list()
 	var/tmp/z_value = 1 //actual z placement
 	//var/xi		space grid/dynamic system, maybe later...
 	//var/yi   //imaginary placements on the grid
