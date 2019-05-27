@@ -122,3 +122,9 @@
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
 	ckeywhitelist = list("ttbnc")
 
+/datum/gear/donator/hoodedlcoak
+	display_name = "Project: Zul-E"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
+	ckeywhitelist = list("asky")
+
