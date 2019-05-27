@@ -22,7 +22,7 @@
 	var/old_idn = traits[ZTRAIT_TRANSITION_ID_NORTH]
 	var/old_ids = traits[ZTRAIT_TRANSITION_ID_SOUTH]
 	var/old_ide = traits[ZTRAIT_TRANSITION_ID_EAST]
-	var/old_idw = traits[ZTRAIT_TRANSITiON_ID_WEST]
+	var/old_idw = traits[ZTRAIT_TRANSITION_ID_WEST]
 	var/old_padding = traits[ZTRAIT_TRANSITION_PADDING]
 	var/old_mirage = traits[ZTRAIT_TRANSITION_NO_MIRAGE]
 	var/old_mode = traits[ZTRAIT_TRANSITION_MODE]

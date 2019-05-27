@@ -15,7 +15,7 @@
 	var/nostop = 0 // if 1: will only be stopped by teleporters
 	var/list/affecting = list()
 
-	Trigger(var/atom/A)
+	trigger(var/atom/A)
 		if(!A || !istype(A, /atom/movable))
 			return
 		var/atom/movable/AM = A

@@ -29,7 +29,7 @@
 			var/list/returned = link_dir_to_z(dir, src, TRUE)
 			if(length(returned) || force_update)
 				affected += returned
-	if(!defer_updated)
+	if(!defer_update)
 		for(var/i in affected)
 			var/list/L = affected[i]
 			var/datum/space_level/level = L[1]
@@ -60,7 +60,7 @@
 	var/datum/space_level/target = neighbours["[dir]"]
 	if(!target)
 		return
-	var/our_z = z
+	var/our_z = z_value
 	var/padding = traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
 	var/target_padding = target.traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
 	var/destination_z = target.z_value
@@ -129,8 +129,9 @@
 				ST.teleport_y = destination_y
 				transit_effects += ST
 			if(ZTRANSITION_MODE_TURF)
+				pass()				//not implemented
 
-		if(traits[ZTRAIT_MIRAGE])
+		if(!traits[ZTRAIT_TRANSITION_NO_MIRAGE])
 			var/mirage_dir
 			if(T.x == padding)
 				mirage_dir |= WEST
@@ -160,7 +161,7 @@
 			if(SELFLOOPING)
 				zlevels_selflooping += zlevel
 		zlevel.neighbours = list()
-		zlevel.set_linkage(zlevel.traits[ZTRAIT_lINKAGE], TRUE, TRUE)		//force update every zlevel so their selflooping/staticlinking gets set
+		zlevel.set_linkage(zlevel.traits[ZTRAIT_LINKAGE], TRUE, TRUE)		//force update every zlevel so their selflooping/staticlinking gets set
 		//but don't actually have them set up transitions (defer them, we'll do that later.)
 
 	//We don't need the rest of the code until we need random space, for now this only does static trnasitions.
