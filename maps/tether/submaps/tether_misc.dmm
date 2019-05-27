@@ -3110,7 +3110,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/unsimulated/floor/techfloor_grid{
@@ -3170,7 +3170,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/unsimulated/floor/techfloor_grid{
@@ -3249,7 +3249,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/unsimulated/floor/techfloor_grid{
@@ -3278,7 +3278,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/unsimulated/floor/techfloor_grid{
@@ -4623,7 +4623,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/unsimulated/floor/techfloor_grid{
@@ -4714,7 +4714,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/unsimulated/floor/maglev{

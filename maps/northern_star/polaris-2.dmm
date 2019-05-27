@@ -446,7 +446,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north,
@@ -817,7 +817,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/east,

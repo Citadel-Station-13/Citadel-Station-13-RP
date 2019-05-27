@@ -24,7 +24,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north,
@@ -155,7 +155,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/moving/east,
@@ -166,7 +166,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/east,
@@ -374,7 +374,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/east,
@@ -385,7 +385,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space,
@@ -572,7 +572,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/moving/north,
@@ -583,7 +583,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/north,
@@ -638,7 +638,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/moving/south,
@@ -649,7 +649,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/south,
@@ -739,7 +739,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/moving/north,
@@ -793,7 +793,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north,

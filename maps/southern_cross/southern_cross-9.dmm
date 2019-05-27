@@ -40,7 +40,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north,
@@ -72,7 +72,7 @@
 	direction = 2;
 	name = "thrower_throwdown";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/east,

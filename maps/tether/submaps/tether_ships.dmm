@@ -1837,7 +1837,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/sandyscroll,
@@ -2672,7 +2672,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/bluespace,
@@ -2707,7 +2707,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/simulated/sky/virgo3b/south,
@@ -2785,7 +2785,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/south,
@@ -2817,7 +2817,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space,
@@ -2856,7 +2856,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/east,

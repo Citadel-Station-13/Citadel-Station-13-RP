@@ -949,7 +949,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns14,
@@ -960,7 +960,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns6,
@@ -971,7 +971,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns8,
@@ -982,7 +982,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns12,
@@ -1183,7 +1183,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns13,
@@ -1279,7 +1279,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns1,
@@ -1290,7 +1290,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns11,
@@ -1682,7 +1682,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/east/shuttlespace_ew1,
@@ -1808,7 +1808,7 @@
 	affect_ghosts = 1;
 	direction = 2;
 	name = "thrower_throwdown";
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/east/shuttlespace_ew10,
@@ -1842,7 +1842,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns10,
@@ -2002,7 +2002,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns2,
@@ -2013,7 +2013,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns9,
@@ -2181,7 +2181,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns15,
@@ -2691,7 +2691,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns7,
@@ -2712,7 +2712,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns5,
@@ -2852,7 +2852,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns4,
@@ -2897,7 +2897,7 @@
 	direction = 2;
 	name = "thrower_throwdownside";
 	nostop = 1;
-	stopper = 0;
+	stop_throw = 0;
 	tiles = 0
 	},
 /turf/space/transit/north/shuttlespace_ns3,
