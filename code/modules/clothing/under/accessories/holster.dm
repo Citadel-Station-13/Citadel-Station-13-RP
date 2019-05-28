@@ -13,7 +13,7 @@
 	if(holstered && istype(user))
 		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
 		return
-	//VOREStation Edit - Machete sheath support
+	//VOREStation Edit - Machete scabbard support
 	if (LAZYLEN(can_hold))
 		if(!is_type_in_list(I,can_hold))
 			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
@@ -150,8 +150,8 @@
 	concealed_holster = 0
 
 /obj/item/clothing/accessory/holster/machete
-	name = "machete sheath"
-	desc = "A handsome synthetic leather sheath with matching belt."
+	name = "machete scabbard"
+	desc = "A handsome synthetic leather scabbard with matching belt."
 	icon_state = "holster_machete"
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
