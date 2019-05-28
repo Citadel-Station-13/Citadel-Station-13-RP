@@ -4,6 +4,12 @@
 	var/desc = "Looks like an anomaly. A null anomaly. Report this to a coder!"
 	var/atom/movable/overmap_object/object
 
+	var/overmap_entity_flags = NONE
+
+	//Maploading
+	var/datum/map_template/map_template		//the template to load from
+	var/datum/turf_bounds/loaded_bounds		//current loaded bounds of the map.
+
 	//Docking/etc system
 
 
@@ -11,11 +17,7 @@
 
 
 	//movement - UNIMPLEMENTED
-	var/velocity_x = 0		//pixel speed per decisecond
-	var/velocity_y = 0
-
-	var/overrun_px = 0		//used for preventing rounding from unfairly cutting off speed
-	var/overrun_py = 0
+	var/datum/point/vector/velocity
 
 	var/last_move = 0		//world.time of last movement tick
 
@@ -26,6 +28,8 @@
 
 /datum/overmap_entity/Destroy()
 	QDEL_NULL(object)
+	if(!CHECK_BITFIELD(overmap_entity_flags, OVERMAP_ENTITY_DESTROY_KEEP_ALIVE))
+		deinstantiate_map()
 	return ..()
 
 /datum/overmap_entity/proc/setName(name)
@@ -66,3 +70,7 @@
 
 /datum/overmap_entity/proc/on_uncross(datum/overmap_entity/other)
 	return
+
+/datum/overmap_entity/proc/instantiate_map()
+
+/datum/overmap_entity/proc/deinstantiate_map()

@@ -53,3 +53,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PASSBLOB				(1<<3)
 #define PASSMOB					(1<<4)
 #define LETPASSTHROW			(1<<5)
+
+// /datum/overmap_entity/var/overmap_entity_flags
+#define OVERMAP_ENTITY_CAN_INSTANTIATE				(1<<0)		//can be loaded in
+#define OVERMAP_ENTITY_INSTANTIATED					(1<<1)		//loaded into the world
+#define OVERMAP_ENTITY_DESTROY_KEEP_ALIVE			(1<<2)		//do not wipe on Destroy().
