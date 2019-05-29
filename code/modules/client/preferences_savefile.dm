@@ -33,6 +33,11 @@
 
 /datum/preferences/proc/load_preferences()
 	if(!path)				return 0
+	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
+		if(istype(client))
+			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
+		return 0
+	loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	if(!fexists(path))		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
@@ -52,6 +57,11 @@
 
 /datum/preferences/proc/save_preferences()
 	if(!path)				return 0
+	if(world.time < saveprefcooldown)
+		if(istype(client))
+			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
+		return 0
+	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
 	S.cd = "/"
@@ -62,6 +72,11 @@
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)				return 0
+	if(world.time < loadcharcooldown)
+		if(istype(client))
+			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
+		return 0
+	loadcharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	if(!fexists(path))		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
@@ -88,6 +103,11 @@
 
 /datum/preferences/proc/save_character()
 	if(!path)				return 0
+	if(world.time < savecharcooldown)
+		if(istype(client))
+			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
+		return 0
+	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
 	S.cd = "/character[default_slot]"
@@ -100,4 +120,3 @@
 	return 1
 
 #undef SAVEFILE_VERSION_MAX
-#undef SAVEFILE_VERSION_MIN
