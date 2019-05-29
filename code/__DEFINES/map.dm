@@ -92,9 +92,9 @@ require only minor tweaks.
 // enum - how transitions are made
 #define ZTRAIT_TRANSITION_MODE "Transition Mode"
 	#define ZTRANSITION_MODE_STEP_TELEPORTER "step_teleporter"
-	// Make step teleporters on the turfs. will not render without mirage borders.
+	// Make step teleporters on the turfs. will not render without mirage borders. IT IS HIGHLY RECOMMENDED THAT YOU USE PADDING 1 FOR THIS!
 	#define ZTRANSITION_MODE_TURF "turf"
-	// EXPERIMENTAL: attempt to utilize turfs themselves, without step teleporters.
+	// EXPERIMENTAL: attempt to utilize turfs themselves, without step teleporters. Planned to be similar to /tg/'s.
 
 // default trait definitions, used by SSmapping
 
