@@ -67,6 +67,7 @@
 #define INIT_ORDER_XENOARCH		-20
 #define INIT_ORDER_CIRCUIT		-21
 #define INIT_ORDER_AI			-22
+#define INIT_ORDER_SERVER_MAINT		-23
 
 
 // Subsystem fire priority, from lowest to highest priority
@@ -78,6 +79,7 @@
 #define FIRE_PRIORITY_VIS			10
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_THROWING		20
+#define FIRE_PRIORITY_SERVER_MAINT	20
 #define FIRE_PRIORITY_SPACEDRIFT	30
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35
