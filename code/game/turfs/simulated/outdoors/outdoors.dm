@@ -1,6 +1,6 @@
-var/list/turf_edge_cache = list()
+GLOBAL_LIST_EMPTY(turf_edge_cache)		//fucking icon smoothing subsystem WHEN
 
-/turf/
+/turf
 	// If greater than 0, this turf will apply edge overlays on top of other turfs cardinally adjacent to it, if those adjacent turfs are of a different icon_state,
 	// and if those adjacent turfs have a lower edge_blending_priority.
 	var/edge_blending_priority = 0
@@ -56,11 +56,11 @@ var/list/turf_edge_cache = list()
 			var/turf/simulated/T = get_step(src, checkdir)
 			if(istype(T) && T.edge_blending_priority && edge_blending_priority < T.edge_blending_priority && icon_state != T.icon_state && !T.forbid_turf_edge())
 				var/cache_key = "[T.get_edge_icon_state()]-[checkdir]"
-				if(!turf_edge_cache[cache_key])
+				if(!GLOB.turf_edge_cache[cache_key])
 					var/image/I = image(icon = 'icons/turf/outdoors_edge.dmi', icon_state = "[T.get_edge_icon_state()]-edge", dir = checkdir, layer = ABOVE_TURF_LAYER)
 					I.plane = TURF_PLANE
-					turf_edge_cache[cache_key] = I
-				add_overlay(turf_edge_cache[cache_key])
+					GLOB.turf_edge_cache[cache_key] = I
+				add_overlay(GLOB.turf_edge_cache[cache_key])
 
 /turf/simulated/proc/get_edge_icon_state()
 	return icon_state

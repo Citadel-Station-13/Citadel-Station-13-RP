@@ -9,9 +9,9 @@
 	if(teleport_x && teleport_y && teleport_z)
 		var/turf/T = locate(teleport_x, teleport_y, teleport_z)
 		if(T)
-			do_teleport(AM, T)
+			teleport_atom(AM, T)
 
-/obj/effect/step_trigger/teleported/proc/do_teleport(atom/movable/AM, turf/T)
+/obj/effect/step_trigger/teleporter/proc/teleport_atom(atom/movable/AM, turf/T)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.pulling)
@@ -42,7 +42,7 @@
 			rand(max(0, teleport_y - teleport_y_offset), min(world.maxy, teleport_y + teleport_y_offset)),
 			rand(max(0, teleport_z - teleport_z_offset), min(world.maxz, teleport_z + teleport_z_offset))
 		)
-		do_teleport(AM, T)
+		teleport_atom(AM, T)
 
 /* Teleporter that sends objects stepping on it to a specific landmark. */
 
@@ -64,7 +64,7 @@
 /obj/effect/step_trigger/teleporter/landmark/trigger(atom/movable/AM)
 	var/obj/effect/landmark/id_target/the_landmark = GLOB.landmarks_id_target[landmark_id]
 	if(the_landmark)
-		do_teleport(AM, get_turf(the_landmark))
+		teleport_atom(AM, get_turf(the_landmark))
 
 /obj/effect/step_trigger/teleporter/transition
 	var/datum/space_level/zlevel
