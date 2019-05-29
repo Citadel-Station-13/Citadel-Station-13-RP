@@ -19,9 +19,9 @@ SUBSYSTEM_DEF(server_maint)
 
 /datum/controller/subsystem/server_maint/fire(resumed = FALSE)
 	if(!resumed)
-		if(listclearnulls(clients))
+		if(listclearnulls(GLOB.clients))
 			log_world("Found a null in clients list!")
-		src.currentrun_clients = clients.Copy()
+		src.currentrun_clients = GLOB.clients.Copy()
 
 	var/list/currentrun_clients = src.currentrun_clients
 	//var/round_started = SSticker.HasRoundStarted()
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(server_maint)
 			if(isAI(C.mob))
 				var/mob/living/silicon/ai/A = C.mob
 				empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(A.loc)
-				global_announcer.autosay("[A] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
+				GLOB.global_announcer.autosay("[A] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 				A.clear_client()
 				information = " while an AI."
 
