@@ -19,6 +19,6 @@
 /obj/item/clothing/accessory/collar/donator/holotags
 	name = "USDF Dogtags"
 	desc = "United Sol Defense Force Standard Issue Dogtags, these ones in particular are rusted and worn from years of wear. They read: \"Nikolai Volkov, DOB 12/12/2537, Blood Type O+\". The serial number has faded away."
-	icon_state = "holotags_w"
-	item_state = "holotags"
-	overlay_state = "holotags"
+	icon_state = "holotags"
+	item_state = "holotags_w"
+	overlay_state = "holotags_w"

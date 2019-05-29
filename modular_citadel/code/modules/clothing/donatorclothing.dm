@@ -50,18 +50,18 @@
 	desc = "An oddly special looking coat with black, red, and gold"
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
-	item_state = "redgoldjacket"
-	icon_state = "redgoldjacket_w"
+	item_state = "redgoldjacket_w"
+	icon_state = "redgoldjacket"
 
 /obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
 	name = "Project: Zul-E"
 	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
 	item_state = "zuliecloak"
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "cloak")
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "zuliecloak"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	flags_inv = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/donator/cloak_hood
 
 /obj/item/clothing/head/donator/cloak_hood
@@ -70,5 +70,5 @@
 	icon_state = "zuliecap"
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "zuliecap", slot_l_hand_str = "zuliecap") //Does not exist -S2-
+	icon_state = "zuliecap"
 	body_parts_covered = HEAD
