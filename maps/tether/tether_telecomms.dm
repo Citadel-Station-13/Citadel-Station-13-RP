@@ -18,6 +18,12 @@
 	listening_level = Z_LEVEL_SURFACE_HIGH
 	autolinkers = list("tbh_relay")
 
+// cit edit - fuck you guys
+/obj/machinery/telecomms/relay/preset/tether/transit
+	id = "Tether Midpoint Relay"
+	listening_level = Z_LEVEL_TRANSIT
+	autolinkers = list("tmp_relay")
+
 // The station of course needs relays fluff-wise to connect to ground station. But again, no multi-z so, we need one for each z level.
 /obj/machinery/telecomms/relay/preset/tether/station_low
 	id = "Station Relay 1"
@@ -48,7 +54,7 @@
 	id = "Hub"
 	network = "tcommsat"
 	autolinkers = list("hub",
-		"tbl_relay", "tbm_relay", "tbh_relay", "tsl_relay", "tsm_relay", "tsh_relay",
+		"tbl_relay", "tbm_relay", "tbh_relay", "tmp_relay", "tsl_relay", "tsm_relay", "tsh_relay",
 		"c_relay", "m_relay", "r_relay", "sci_o_relay", "ud_relay",
 		"science", "medical", "supply", "service", "common", "command", "engineering", "security", "explorer", "unused",
 		"hb_relay", "receiverA", "broadcasterA"
@@ -116,7 +122,7 @@
 
 /obj/item/device/multitool/tether_buffered
 	name = "pre-linked multitool (tether hub)"
-	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to configure one (1) relay."
+	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
 
 /obj/item/device/multitool/tether_buffered/Initialize()
 	. = ..()

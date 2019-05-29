@@ -100,6 +100,7 @@ var/list/gamemode_cache = list()
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
+	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
 	var/paranoia_logging = 0
 
 	var/serverurl
@@ -757,6 +758,9 @@ var/list/gamemode_cache = list()
 
 				if ("panic_bunker")
 					config.panic_bunker = 1
+				
+				if ("panic_bunker_message")
+					config.panic_bunker_message = value
 
 				if ("paranoia_logging")
 					config.paranoia_logging = 1

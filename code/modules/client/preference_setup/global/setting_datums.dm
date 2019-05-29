@@ -68,11 +68,11 @@ var/list/_client_preferences_by_type
 	else
 		preference_mob.client.media.stop_music()
 
-/datum/client_preference/play_ambiance
+/datum/client_preference/play_ambience
 	description ="Play ambience"
 	key = "SOUND_AMBIENCE"
 
-/datum/client_preference/play_ambiance/toggled(var/mob/preference_mob, var/enabled)
+/datum/client_preference/play_ambience/toggled(var/mob/preference_mob, var/enabled)
 	if(!enabled)
 		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 1)
 		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)

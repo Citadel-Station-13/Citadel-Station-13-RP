@@ -1,5 +1,5 @@
 /**
- * Stuff having to do with inter-round persistence. 
+ * Stuff having to do with inter-round persistence.
  */
 
 // Minds represent IC characters.
@@ -250,7 +250,7 @@
 		prefs.nif_durability = null
 		prefs.nif_savedata = null
 
-	var/datum/category_group/player_setup_category/vore_cat = prefs.player_setup.categories_by_name["VORE"]
+	var/datum/category_group/player_setup_category/vore_cat = prefs.player_setup.categories_by_name["Species Customization"]
 	var/datum/category_item/player_setup_item/vore/nif/nif_prefs = vore_cat.items_by_name["NIF Data"]
 
 	var/savefile/S = new /savefile(prefs.path)

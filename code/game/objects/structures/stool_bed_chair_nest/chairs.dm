@@ -127,6 +127,19 @@
 /obj/structure/bed/chair/comfy/lime/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","lime")
 
+/obj/structure/bed/chair/sofa
+	desc = "A padded, comfy sofa. Great for lazing on."
+	icon_state = "sofamiddle"
+
+/obj/structure/bed/chair/sofa/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/corner
+	icon_state = "sofacorner"
+
 /obj/structure/bed/chair/office
 	anchored = 0
 	buckle_movable = 1

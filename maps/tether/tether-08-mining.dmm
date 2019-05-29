@@ -1513,6 +1513,11 @@
 /obj/effect/step_trigger/teleporter/from_mining,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
+"sc" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/telecomms/relay/preset/underdark,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
 
 (1,1,1) = {"
 aa
@@ -4054,7 +4059,7 @@ bg
 bs
 bH
 bW
-co
+sc
 cD
 ab
 cH
