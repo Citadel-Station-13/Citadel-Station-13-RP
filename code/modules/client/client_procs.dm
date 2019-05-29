@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	hook_vr("client_new",list(src)) //VOREStation Code
 
 	if(config.paranoia_logging)
-		if(isnum(player_age) && player_age == 0)
+		if(isnum(player_age) && player_age == -1)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/DBQuery/query = dbcon.NewQuery("SELECT id, datediff(Now(),firstseen) as age FROM erro_player WHERE ckey = '[sql_ckey]'")
 	query.Execute()
 	var/sql_id = 0
-	player_age = 0	// New players won't have an entry so knowing we have a connection we set this to zero to be updated if their is a record.
+	player_age = -1	// New players won't have an entry so knowing we have a connection we set this to zero to be updated if their is a record.
 	while(query.NextRow())
 		sql_id = query.item[1]
 		player_age = text2num(query.item[2])
@@ -208,13 +208,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
 	//Panic bunker code
-	if (isnum(player_age) && player_age == 0) //first connection
+	if ((player_age == -1) && !(ckey in GLOB.PB_bypass)) //first connection
 		if (config.panic_bunker && !holder && !deadmin_holder)
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
+			to_chat(src, config.panic_bunker_message)
 			qdel(src)
 			return 0
+		player_age = 0		//math requires this to not be -1.
 
 	// VOREStation Edit Start - Department Hours
 	if(config.time_off)

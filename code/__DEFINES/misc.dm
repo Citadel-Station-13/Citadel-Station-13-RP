@@ -239,3 +239,5 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define COLOR_PRIORITY_AMOUNT 4 //how many priority levels there are.
 
 #define NULL_EITHER_OR(thing1, thing2, __var) (isnull(thing1.__var)? thing2.__var : thing1.__var)
+//Preference save/load cooldown. This is in deciseconds.
+#define PREF_SAVELOAD_COOLDOWN 2 //Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.

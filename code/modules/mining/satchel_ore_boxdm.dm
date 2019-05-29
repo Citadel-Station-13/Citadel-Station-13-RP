@@ -40,8 +40,8 @@
 			stored_ore[O.name] = 1
 
 /obj/structure/ore_box/examine(mob/user)
-	user << "That's an [src]."
-	user << desc
+	to_chat(user,"That's [src].")
+	to_chat(user,desc)
 
 	// Borgs can now check contents too.
 	if((!istype(user, /mob/living/carbon/human)) && (!istype(user, /mob/living/silicon/robot)))
@@ -53,16 +53,16 @@
 	add_fingerprint(user)
 
 	if(!contents.len)
-		user << "It is empty."
+		to_chat(user,"It is empty.")
 		return
 
 	if(world.time > last_update + 10)
 		update_ore_count()
 		last_update = world.time
 
-	user << "It holds:"
+	to_chat(user,"It holds:")
 	for(var/ore in stored_ore)
-		user << "- [stored_ore[ore]] [ore]"
+		to_chat(user,"- [stored_ore[ore]] [ore]")
 	return
 
 /obj/structure/ore_box/verb/empty_box()
@@ -71,28 +71,39 @@
 	set src in view(1)
 
 	if(!istype(usr, /mob/living/carbon/human) && !istype(usr, /mob/living/silicon/robot)) //Only living, intelligent creatures with gripping aparatti can empty ore boxes.
-		usr << "<font color='red'>You are physically incapable of emptying the ore box.</font>"
+		to_chat(usr,"<span class='warning'>You are physically incapable of emptying the ore box.</span>")
 		return
 
 	if( usr.stat || usr.restrained() )
 		return
 
 	if(!Adjacent(usr)) //You can only empty the box if you can physically reach it
-		usr << "You cannot reach the ore box."
+		to_chat(usr,"You cannot reach the ore box.")
 		return
 
 	add_fingerprint(usr)
 
 	if(contents.len < 1)
-		usr << "<font color='red'>The ore box is empty.</font>"
+		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
 		return
 
-	for (var/obj/item/weapon/ore/O in contents)
-		contents -= O
-		O.loc = src.loc
-	usr << "<font color='blue'>You empty the ore box.</font>"
-
-	return
+	to_chat(usr,"<span class='notice'>You begin emptying the ore box.</span>")
+	if(do_after(usr,15,src))
+		var/i = 0
+		while(contents.len)
+			if(!do_after(usr,5,src))
+				to_chat(usr,"<span class='notice'>You stop emptying the ore box.</span>")
+				return
+			i = 0
+			for (var/obj/item/weapon/ore/O in contents)
+				contents -= O
+				O.loc = src.loc
+				i++
+				if (i>=10)
+					break
+			if(!contents.len)
+				to_chat(usr,"<span class='notice'>You empty the ore box.</span>")
+				return
 
 /obj/structure/ore_box/ex_act(severity)
 	if(severity == 1.0 || (severity < 3.0 && prob(50)))

@@ -51,7 +51,7 @@
 	var/obj/item/device/radio/borg/radio = null
 	var/obj/item/device/communicator/integrated/communicator = null
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/weapon/cell/high/cell = null
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2
@@ -138,9 +138,9 @@
 		C.wrapped = new C.external_type
 
 	if(!cell)
-		cell = new /obj/item/weapon/cell(src)
-		cell.maxcharge = 7500
-		cell.charge = 7500
+		cell = new /obj/item/weapon/cell/high(src)
+		cell.maxcharge = 15000
+		cell.charge = 15000
 
 	if(cell)
 		var/datum/robot_component/cell_component = components["power cell"]
