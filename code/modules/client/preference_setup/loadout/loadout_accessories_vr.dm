@@ -56,3 +56,8 @@
 /datum/gear/accessory/flops/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+/datum/gear/accessory/holotags
+	display_name = "USDF dogtags"
+	description = "A pair of USDF dogtags."
+	path = /obj/item/clothing/accessory/collar/donator/holotags
+	ckeywhitelist = list("certifiedhyena")
