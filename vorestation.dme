@@ -3076,6 +3076,7 @@
 #include "modular_citadel\code\modules\clothing\suits\storage.dm"
 #include "modular_citadel\code\modules\clothing\under\donatoruniform.dm"
 #include "modular_citadel\code\modules\clothing\under\miscellaneous_vr.dm"
+#include "modular_citadel\code\modules\clothing\under\accessories\accessory_cit.dm"
 #include "modular_citadel\code\modules\clothing\under\accessories\clothing_cit.dm"
 #include "modular_citadel\code\modules\clothing\under\accessories\donatoraccessory.dm"
 #include "modular_citadel\code\modules\clothing\under\accessories\holster.dm"
