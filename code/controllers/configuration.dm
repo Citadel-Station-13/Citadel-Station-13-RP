@@ -944,4 +944,3 @@ var/list/gamemode_cache = list()
 			config.python_path = "/usr/bin/env python2"
 		else //probably windows, if not this should work anyway
 			config.python_path = "python"
-	world.update_hub_visibility(hub_visibility)			//CITADEL CHANGE - HUB CONFIG

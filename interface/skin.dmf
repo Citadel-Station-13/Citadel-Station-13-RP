@@ -1099,7 +1099,6 @@ window "mainwindow"
 		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "VOREStation"
 		is-maximized = true
 		macro = "macro"
 		menu = "menu"
