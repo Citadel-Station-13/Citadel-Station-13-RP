@@ -2,7 +2,7 @@
 	can_transfer = TRUE
 	var/obj/effect/abstract/mirage_holder/holder
 
-/datum/component/mirage_border/Initialize(turf/target, direction, range=world.view)
+/datum/component/mirage_border/Initialize(turf/target, direction, range = world.view)
 	if(!isturf(parent))
 		return COMPONENT_INCOMPATIBLE
 	if(!target || !istype(target) || !direction)
@@ -35,6 +35,15 @@
 	if(!isturf(parent))
 		return COMPONENT_INCOMPATIBLE
 	holder.forceMove(parent)
+
+/datum/component/mirage_border/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_TURF_CHANGE, .proc/on_turf_change)
+
+/datum/component/mirage_border/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_TURF_CHANGE)
+
+/datum/component/mirage_border/proc/on_turf_change(path, list/new_baseturfs, flags, list/transfering_comps = list())
+	transfering_comps += src
 
 /obj/effect/abstract/mirage_holder
 	name = "Mirage holder"

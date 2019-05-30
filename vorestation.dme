@@ -315,6 +315,7 @@
 #include "code\datums\autolathe\tools.dm"
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\mirage_border.dm"
+#include "code\datums\components\signal_redirect.dm"
 #include "code\datums\helper_datums\construction_datum.dm"
 #include "code\datums\helper_datums\events.dm"
 #include "code\datums\helper_datums\getrev.dm"

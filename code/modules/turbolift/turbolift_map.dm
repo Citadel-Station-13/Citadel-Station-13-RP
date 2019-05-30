@@ -147,8 +147,9 @@
 						swap_to = wall_type
 					else
 						swap_to = floor_type
+					checking.PlaceOnTop(swap_to)
 
-				if(checking.type != swap_to)
+				if(checking.type != swap_to || cz == uz)
 					checking.ChangeTurf(swap_to)
 					// Let's make absolutely sure that we have the right turf.
 					checking = locate(tx,ty,cz)

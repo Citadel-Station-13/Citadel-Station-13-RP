@@ -24,8 +24,9 @@
 
 	if(istype(D, /atom))
 		sprite = getFlatIcon(D)
-		hash = md5(sprite)
-		src << browse_rsc(sprite, "vv[hash].png")
+		if(isicon(sprite))
+			hash = md5(sprite)
+			src << browse_rsc(sprite, "vv[hash].png")
 
 		/*
 		if(AT.icon && AT.icon_state)

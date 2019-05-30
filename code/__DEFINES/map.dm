@@ -89,6 +89,9 @@ require only minor tweaks.
 // boolean - Disable transition mirage holders - defaults to false
 #define ZTRAIT_TRANSITION_NO_MIRAGE "No Transition Mirage"
 
+// number - the range of mirage borders for transitions
+#define ZTRAIT_MIRAGE_DISTANCE "Mirage Distance"
+
 // enum - how transitions are made
 #define ZTRAIT_TRANSITION_MODE "Transition Mode"
 	#define ZTRANSITION_MODE_STEP_TELEPORTER "step_teleporter"

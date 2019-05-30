@@ -25,6 +25,7 @@
 	var/old_idw = traits[ZTRAIT_TRANSITION_ID_WEST]
 	var/old_padding = traits[ZTRAIT_TRANSITION_PADDING]
 	var/old_mirage = traits[ZTRAIT_TRANSITION_NO_MIRAGE]
+	var/old_mirage_dist = traits[ZTRAIT_MIRAGE_DISTANCE]
 	var/old_mode = traits[ZTRAIT_TRANSITION_MODE]
 	//Set traits
 	traits = new_traits
@@ -32,6 +33,8 @@
 	id = traits[ZTRAIT_LEVEL_ID]
 	if(id)
 		SSmapping.zlevels_by_id[id] = src
+	if(isnull(traits[ZTRAIT_MIRAGE_DISTANCE]))
+		traits[ZTRAIT_MIRAGE_DISTANCE] = traits[ZTRAIT_TRANSITION_PADDING] || 7
 	if(\
 		old_linkage != traits[ZTRAIT_LINKAGE] ||\
 		old_idn != traits[ZTRAIT_TRANSITION_ID_NORTH] ||\
@@ -40,7 +43,8 @@
 		old_idw != traits[ZTRAIT_TRANSITION_ID_WEST] ||\
 		old_padding != traits[ZTRAIT_TRANSITION_PADDING] ||\
 		old_mirage != traits[ZTRAIT_TRANSITION_NO_MIRAGE] ||\
-		old_mode != traits[ZTRAIT_TRANSITION_MODE]\
+		old_mode != traits[ZTRAIT_TRANSITION_MODE] ||\
+		old_mirage_dist != traits[ZTRAIT_MIRAGE_DISTANCE] \
 		)
 		set_linkage(new_traits[ZTRAIT_LINKAGE], defer_transition_update)
 

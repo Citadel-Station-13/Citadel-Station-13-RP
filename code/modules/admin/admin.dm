@@ -1116,7 +1116,8 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
 
-	if(!check_rights(R_SPAWN))	return
+	if(!check_rights(R_SPAWN))
+		return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()

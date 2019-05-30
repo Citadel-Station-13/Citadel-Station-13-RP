@@ -69,6 +69,20 @@
 /obj/effect/step_trigger/teleporter/transition
 	var/datum/space_level/zlevel
 	var/zdir
+	var/prevent_entomb = TRUE
+	var/catch_uncross = FALSE
+
+/obj/effect/step_trigger/teleporter/transition/teleport_atom(atom/movable/AM, turf/T)
+	if(prevent_entomb && T.density)
+		return
+	return ..()
+
+/obj/effect/step_trigger/teleporter/transition/Uncross(atom/movable/AM)
+	if(catch_uncross)
+		. = FALSE
+		trigger(AM)
+		return
+	return ..()
 
 /obj/effect/step_trigger/teleporter/transition/Destroy()
 	zlevel.transition_effects["[zdir]"] -= src

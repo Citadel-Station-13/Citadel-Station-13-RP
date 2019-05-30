@@ -64,9 +64,8 @@
 	var/padding = traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
 	var/target_padding = target.traits[ZTRAIT_TRANSITION_PADDING] || SPACE_TRANSITION_BORDER
 	var/destination_z = target.z_value
+	var/mirage_dist = traits[ZTRAIT_MIRAGE_DISTANCE]
 
-	//Lists below are pre-calculated values arranged in the list in such a way to be easily accessable by direction.
-	//Its either this or madness with lotsa math.
 	var/x_lower_left
 	var/x_upper_right
 	var/y_lower_left
@@ -128,6 +127,9 @@
 				ST.teleport_x = destination_x
 				ST.teleport_y = destination_y
 				transit_effects += ST
+				if(T.x == 1 || T.x == world.maxx || T.y == 1 || T.y == world.maxy)			//always allow the last tile to transit.
+					ST.prevent_entomb = FALSE
+					ST.catch_uncross = TRUE
 			if(ZTRANSITION_MODE_TURF)
 				pass()				//not implemented
 
@@ -143,7 +145,7 @@
 				mirage_dir |= NORTH
 			if(mirage_dir)
 				var/turf/destination = locate(destination_x, destination_y, destination_z)
-				T.AddComponent(/datum/component/mirage_border, destination, mirage_dir)
+				T.AddComponent(/datum/component/mirage_border, destination, mirage_dir, mirage_dist)
 
 /datum/controller/subsystem/mapping/proc/setup_map_transitions()
 	transitions_initialized = TRUE

@@ -415,23 +415,44 @@
 ////////////////
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
-/datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
+/datum/parsed_map/proc/instance_atom(path, list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
+	var/olddir
+	var/oldpx
+	var/oldpy
+	var/oldsx
+	var/oldsy
 	if(turn_angle != 0)
+		olddir = attributes["dir"]
+		oldpx = attributes["pixel_x"]
+		oldpy = attributes["pixel_y"]
+		oldsx = attributes["step_x"]
+		oldsy = attributes["step_y"]
 		attributes["dir"] = turn((attributes["dir"] || SOUTH), turn_angle)
-		var/px = attributes["pixel_x"] || 0
-		var/py = attributes["pixel_y"] || 0
+		var/px = oldpx
+		var/py = oldpy
+		var/sx = oldsx
+		var/sy = oldsy
 		if(invert_y)			//same order of operations as the load rotation, mirror and then x/y swapping.
 			py = -py
+			sy = -sy
 		if(invert_x)
 			px = -px
+			sx = -sx
 		if(swap_xy)
 			var/opx = px
 			px = py
 			py = opx
+			var/osx = sx
+			sx = sy
+			sy = osx
 		if(px)
 			attributes["pixel_x"] = px
 		if(py)
 			attributes["pixel_y"] = py
+		if(sx)
+			attributes["step_x"] = sx
+		if(sy)
+			attributes["step_y"] = sy
 
 	world.preloader_setup(attributes, path)
 
@@ -454,6 +475,17 @@
 		SSatoms.map_loader_stop()
 		stoplag()
 		SSatoms.map_loader_begin()
+
+	if(turn_angle != 0)
+		attributes["dir"] = olddir
+		if(oldsx)
+			attributes["step_x"] = oldsx
+		if(oldsy)
+			attributes["step_y"] = oldsy
+		if(oldpx)
+			attributes["pixel_x"] = oldpx
+		if(oldpy)
+			attributes["pixel_y"] = oldpy
 
 /datum/parsed_map/proc/create_atom(path, crds)
 	set waitfor = FALSE
