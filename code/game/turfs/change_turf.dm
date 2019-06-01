@@ -4,7 +4,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	/turf/baseturf_bottom,
 	)))
 
-/turf/proc/empty(turf_type=/turf/space, baseturf_type, list/ignore_typecache, flags)
+//Pass FALSE to turf_type to not change.
+/turf/proc/empty(turf_type = /turf/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
 	var/static/list/ignored_atoms = typecacheof(list(/mob/observer, /obj/effect/landmark, /atom/movable/lighting_object))	//obj/docking_port
 	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)

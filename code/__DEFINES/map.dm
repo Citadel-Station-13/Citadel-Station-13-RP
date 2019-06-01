@@ -20,6 +20,10 @@ Multi-Z stations are supported and multi-Z mining and away missions would
 require only minor tweaks.
 */
 
+#define TEMPLATE_NO_ANNIHILATE				0
+#define TEMPLATE_ANNIHILATE_BEFORE_LOAD		1
+#define TEMPLATE_ANNIHILATE_IN_LOAD			2
+
 #define STANDARD_RESERVED_TURF_TYPE		/turf/space/basic
 #define STANDARD_TRANSIT_TURF_TYPE		/turf/space
 

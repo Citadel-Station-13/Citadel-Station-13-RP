@@ -10,6 +10,7 @@ var/datum/controller/process/turbolift/turbolift_controller
 /datum/controller/process/turbolift/setup()
 	name = "turbolift controller"
 	schedule_interval = 10
+	sleep_interval = 10
 
 /datum/controller/process/turbolift/doWork()
 	for(var/liftref in moving_lifts)

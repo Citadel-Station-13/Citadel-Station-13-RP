@@ -11,7 +11,7 @@
 	var/loaded = 0 // Times loaded this round
 	var/datum/parsed_map/cached_map
 	var/keep_cached_map = FALSE
-	var/default_annihilate = FALSE
+	var/default_annihilate = TEMPLATE_NO_ANNIHILATE
 	var/list/ztraits				//zlevel traits for load_new_z
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE, set_id = null)
@@ -122,7 +122,7 @@
 /datum/map_template/proc/on_map_loaded(z, list/bounds)
 	loaded++
 
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, annihilate = annihilate, force_cache = FALSE)
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, annihilate = default_annihilate, force_cache = FALSE)
 	var/old_T = T
 	if(centered)
 		T = locate(T.x - FLOOR(((orientation & (NORTH|SOUTH))? width : height) / 2, 1) , T.y - FLOOR(((orientation & (NORTH|SOUTH)) ? height : width) / 2, 1) , T.z) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
@@ -133,7 +133,7 @@
 	if(T.y+height > world.maxy)
 		return
 
-	if(annihilate)
+	if(annihilate == TEMPLATE_ANNIHILATE_BEFORE_LOAD)
 		annihilate_bounds(old_T, centered, orientation)
 
 	// Accept cached maps, but don't save them automatically - we don't want
@@ -141,7 +141,7 @@
 	var/is_cached = cached_map
 	var/datum/parsed_map/parsed = is_cached || new(file(mappath))
 	cached_map = (force_cache || keep_cached_map) ? parsed : is_cached
-	if(!parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=TRUE, orientation = orientation))
+	if(!parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=TRUE, orientation = orientation, annihilate_tiles = (annihilate == TEMPLATE_ANNIHILATE_IN_LOAD)))
 		return
 	var/list/bounds = parsed.bounds
 	if(!bounds)
@@ -160,19 +160,12 @@
 
 //This, get_affected_turfs, and load() calculations for bounds/center can probably be optimized. Later.
 /datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
-	var/deleted_atoms = 0
 	log_world("Annihilating objects in submap loading locatation.")
 	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
 	if(turfs_to_clean.len)
-		var/list/kill_these = list()
 		for(var/i in turfs_to_clean)
 			var/turf/T = i
-			kill_these += T.contents
-		for(var/i in kill_these)
-			qdel(i)
-			CHECK_TICK
-			deleted_atoms++
-	log_world("Annihilated [deleted_atoms] objects.")
+			T.empty(FALSE)
 
 //for your ever biggening badminnery kevinz000
 //❤ - Cyberboss
