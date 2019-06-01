@@ -1,15 +1,10 @@
 //Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect
 
-
-
 /obj/effect/baseturf_helper //Set the baseturfs of every turf in the /area/ it is placed.
 	name = "baseturf editor"
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = ""
-
-	var/list/baseturf_to_replace
 	var/baseturf
-
 	layer = MAPPING_BASETURF_HELPER_LAYER
 
 /obj/effect/baseturf_helper/Initialize()
@@ -17,6 +12,25 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/baseturf_helper/LateInitialize()
+	setup()
+	for(var/i in get_affected())
+		act_on(i)
+	qdel(src)
+
+/obj/effect/baseturf_helper/proc/setup()
+	return
+
+/obj/effect/baseturf_helper/proc/get_affected()
+	return get_area_turfs(get_area(src), z)
+
+/obj/effect/baseturf_helper/proc/act_on(turf/thing)
+	return
+
+/obj/effect/baseturf_helper/replace_baseturfs
+	name = "baseturf editor: replace baseturfs"
+	var/list/baseturf_to_replace
+
+/obj/effect/baseturf_helper/replace_baseturfs/setup()
 	if(!baseturf_to_replace)
 		baseturf_to_replace = typecacheof(/turf/space)
 	else if(!length(baseturf_to_replace))
@@ -27,13 +41,7 @@
 			formatted[i] = TRUE
 		baseturf_to_replace = formatted
 
-	var/area/our_area = get_area(src)
-	for(var/i in get_area_turfs(our_area, z))
-		replace_baseturf(i)
-
-	qdel(src)
-
-/obj/effect/baseturf_helper/proc/replace_baseturf(turf/thing)
+/obj/effect/baseturf_helper/replace_baseturfs/act_on(turf/thing)
 	var/list/baseturf_cache = thing.baseturfs
 	if(length(baseturf_cache))
 		for(var/i in baseturf_cache)
@@ -48,9 +56,15 @@
 	else
 		thing.PlaceOnBottom(null, baseturf)
 
-/obj/effect/baseturf_helper/space
+/obj/effect/baseturf_helper/replace_baseturfs/space
 	name = "space baseturf editor"
 	baseturf = /turf/space
+
+/obj/effect/baseturf_helper/assemble_baseturfs_to
+	name = "baseturf editor: assemble baseturfs to"
+
+/obj/effect/baseturf_helper/assemble_baseturfs_to/act_on(turf/thing)
+	thing.assemble_baseturfs(baseturf)
 
 /*
 /obj/effect/baseturf_helper/asteroid

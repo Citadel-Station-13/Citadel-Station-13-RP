@@ -11,7 +11,7 @@
 	var/loaded = 0 // Times loaded this round
 	var/datum/parsed_map/cached_map
 	var/keep_cached_map = FALSE
-	var/default_annihilate = TEMPLATE_NO_ANNIHILATE
+	var/default_annihilate = TEMPLATE_NO_ANNIHILATE			//IMPORTANT: CHECK __DEFINES\map.dm FOR DETAILS!
 	var/list/ztraits				//zlevel traits for load_new_z
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE, set_id = null)

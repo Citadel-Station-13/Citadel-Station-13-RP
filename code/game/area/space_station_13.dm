@@ -31,6 +31,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	base_turf = /turf/space
 	ambience = AMBIENCE_SPACE
 
+//Not world.area for maploader to force load space areas.
+/area/space/forced
+
 /area/space/atmosalert()
 	return
 

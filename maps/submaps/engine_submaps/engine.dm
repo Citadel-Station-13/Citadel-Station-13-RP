@@ -59,14 +59,8 @@
 			. += block(locate(coords[1], coords[2], src.z), locate(coords[3], coords[4], src.z))
 
 /obj/effect/landmark/engine_loader/proc/annihilate_bounds()
-	var/deleted_atoms = 0
 	admin_notice("<span class='danger'>Annihilating objects in engine loading locatation.</span>", R_DEBUG)
 	var/list/turfs_to_clean = get_turfs_to_clean()
-	if(turfs_to_clean.len)
-		for(var/x in 1 to 2) // Requires two passes to get everything.
-			for(var/turf/T in turfs_to_clean)
-				for(var/atom/movable/AM in T)
-					++deleted_atoms
-					qdel(AM)
-	admin_notice("<span class='danger'>Annihilated [deleted_atoms] objects.</span>", R_DEBUG)
-
+	for(var/i in turfs_to_clean)
+		var/turf/T = i
+		T.empty()

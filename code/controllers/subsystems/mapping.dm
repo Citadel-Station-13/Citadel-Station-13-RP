@@ -75,7 +75,8 @@ SUBSYSTEM_DEF(mapping)
 	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
 
 	// Actually load it
-	chosen_type.load(T, annihilate = TRUE)
+	engine_loader.annihilate_bounds()
+	chosen_type.load(T, annihilate = TEMPLATE_NO_ANNIHILATE)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
 	var/list/deffo_load = using_map.lateload_z_levels

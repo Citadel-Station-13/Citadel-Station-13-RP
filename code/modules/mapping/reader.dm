@@ -365,8 +365,6 @@
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 	//first instance the /area and remove it from the members list
 	index = members.len
-	if(annihilate_tiles && crds)
-		crds.empty(FALSE)
 	if(members[index] != /area/template_noop)
 		var/atype = members[index]
 		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
@@ -387,6 +385,11 @@
 	var/first_turf_index = 1
 	while(!ispath(members[first_turf_index], /turf)) //find first /turf object in members
 		first_turf_index++
+
+	//var/op = members[first_turf_index] != /turf/template_noop
+
+	if(annihilate_tiles && crds)// && op)
+		crds.empty(FALSE)
 
 	//turn off base new Initialization until the whole thing is loaded
 	SSatoms.map_loader_begin()
