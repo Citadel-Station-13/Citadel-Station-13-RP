@@ -2,7 +2,7 @@
 
 /obj/item/clothing/accessory/plasman
 	name = "large labcoat"
-	icon = 'modular_citadel/icons/mob/plasmeme/suit.dmi'
+	icon = 'modular_citadel/icons/mob/plasmeme/accessories.dmi'
 	icon_state = "accessory_labcoat"
 	desc = "A slightly baggier labcoat, looks like it could take a bit more heat. Would fit well on a bodybuilder or a space suit."
 	slot = ACCESSORY_SLOT_OVER
@@ -28,7 +28,7 @@
 	desc = "A not-very-soft looking sweater. Almost looks a bit stretched."
 
 /obj/item/clothing/accessory/plasman/miljacket
-	name "large military jacket"
+	name = "large military jacket"
 	icon_state = "accessory_miljacket"
 	desc = "A canvas jacket in a military green. Why is it so big?"
 
