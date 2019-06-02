@@ -1,10 +1,13 @@
 /mob
-	density = 1
+	datum_flags = DF_USE_TAG
+	density = TRUE
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE
+
 	var/datum/mind/mind
+	var/static/next_mob_id = 0
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 
