@@ -12,7 +12,7 @@
 
 /datum/ghost_query/proc/query()
 	// First, ask all the ghosts who want to be asked.
-	for(var/mob/observer/dead/D in player_list)
+	for(var/mob/observer/dead/D in GLOB.player_list)
 		if(!D.MayRespawn())
 			continue // They can't respawn for whatever reason.
 		if(D.client)

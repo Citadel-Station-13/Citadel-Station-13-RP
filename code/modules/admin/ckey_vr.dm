@@ -8,7 +8,7 @@
 		return
 
 	var/list/keys = list()
-	for(var/mob/playerMob in player_list)
+	for(var/mob/playerMob in GLOB.player_list)
 		keys += playerMob.client
 	var/client/selection = input("Please, select a player!", "Set CKey", null, null) as null|anything in sortKey(keys)
 	if(!selection || !istype(selection))

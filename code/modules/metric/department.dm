@@ -66,7 +66,7 @@
 /datum/metric/proc/count_people_in_department(var/department)
 	if(!department)
 		return
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(guess_department(M) != department) // Ignore people outside the department we're counting.
 			continue
 		. += 1

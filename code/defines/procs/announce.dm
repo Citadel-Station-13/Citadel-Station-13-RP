@@ -81,7 +81,7 @@ GLOBAL_DATUM_INIT(command_announcement, /datum/announcement/priority/command, ne
 /datum/announcement/proc/PlaySound(var/message_sound)
 	if(!message_sound)
 		return
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(!istype(M,/mob/new_player) && !isdeaf(M))
 			M << message_sound
 

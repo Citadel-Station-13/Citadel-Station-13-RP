@@ -394,7 +394,7 @@ proc/is_blind(A)
 	if(subject && subject.forbid_seeing_deadchat && !subject.client.holder)
 		return // Can't talk in deadchat if you can't see it.
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
 			var/follow
 			var/lname

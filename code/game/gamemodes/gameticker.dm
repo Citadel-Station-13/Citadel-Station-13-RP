@@ -272,7 +272,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 	proc/create_characters()
-		for(var/mob/new_player/player in player_list)
+		for(var/mob/new_player/player in GLOB.player_list)
 			if(player && player.ready && player.mind)
 				if(player.mind.assigned_role=="AI")
 					player.close_spawn_windows()
@@ -285,14 +285,14 @@ var/global/datum/controller/gameticker/ticker
 
 
 	proc/collect_minds()
-		for(var/mob/living/player in player_list)
+		for(var/mob/living/player in GLOB.player_list)
 			if(player.mind)
 				ticker.minds += player.mind
 
 
 	proc/equip_characters()
 		var/captainless=1
-		for(var/mob/living/carbon/human/player in player_list)
+		for(var/mob/living/carbon/human/player in GLOB.player_list)
 			if(player && player.mind && player.mind.assigned_role)
 				if(player.mind.assigned_role == "Colony Director")
 					captainless=0
@@ -302,7 +302,7 @@ var/global/datum/controller/gameticker/ticker
 					equip_custom_items(player)
 					//player.apply_traits() //VOREStation Removal
 		if(captainless)
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player))
 					to_chat(M, "Colony Directorship not forced on anyone.")
 
@@ -379,7 +379,7 @@ var/global/datum/controller/gameticker/ticker
 
 /datum/controller/gameticker/proc/declare_completion()
 	world << "<br><br><br><H1>A round of [mode.name] has ended!</H1>"
-	for(var/mob/Player in player_list)
+	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
 				var/turf/playerTurf = get_turf(Player)

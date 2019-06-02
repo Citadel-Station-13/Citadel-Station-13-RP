@@ -32,7 +32,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 		far_dist += heavy_impact_range * 5
 		far_dist += devastation_range * 20
 		var/frequency = get_rand_frequency()
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.z == epicenter.z)
 				var/turf/M_turf = get_turf(M)
 				var/dist = get_dist(M_turf, epicenter)
@@ -46,7 +46,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 
 		var/close = range(world.view+round(devastation_range,1), epicenter)
 		// to all distanced mobs play a different sound
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.z == epicenter.z)
 				if(!(M in close))
 					// check if the mob can hear

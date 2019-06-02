@@ -117,7 +117,7 @@ var/global/list/map_sectors = list()
 
 /obj/effect/map/sector/temporary/proc/can_die(var/mob/observer)
 	testing("Checking if sector at [map_z] can die.")
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M != observer && M.z == map_z)
 			testing("There are people on it.")
 			return 0

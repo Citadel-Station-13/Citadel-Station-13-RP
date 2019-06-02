@@ -1,4 +1,4 @@
-/client/proc/smite(var/mob/living/carbon/human/target in player_list)
+/client/proc/smite(var/mob/living/carbon/human/target in GLOB.player_list)
 	set name = "Smite"
 	set desc = "Abuse a player with various 'special treatments' from a list."
 	set category = "Fun"
@@ -25,21 +25,21 @@
 				broken_legs++
 			if(!broken_legs)
 				to_chat(src,"[target] didn't have any breakable legs, sorry.")
-		
+
 		if(SMITE_BLUESPACEARTILLERY)
 			bluespace_artillery(target,src)
-		
+
 		if(SMITE_SPONTANEOUSCOMBUSTION)
 			target.adjust_fire_stacks(10)
 			target.IgniteMob()
 			target.visible_message("<span class='danger'>[target] bursts into flames!</span>")
-		
+
 		if(SMITE_LIGHTNINGBOLT)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.electrocute_act(75,def_zone = BP_HEAD)
 			target.visible_message("<span class='danger'>[target] is struck by lightning!</span>")
-		
+
 		else
 			return //Injection? Don't print any messages.
 

@@ -33,7 +33,7 @@
 	log_admin("[key_name(src)] played sound [S]")
 	message_admins("[key_name_admin(src)] played sound [S]")
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.is_preference_enabled(/datum/client_preference/play_admin_midis))
 			M << admin_sound
 
@@ -121,7 +121,7 @@
 			to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>")
 			return
 		if(web_sound_url || stop_web_sounds)
-			for(var/m in player_list)
+			for(var/m in GLOB.player_list)
 				var/mob/M = m
 				var/client/C = M.client
 				if((C.prefs.toggles & SOUND_MIDI) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
@@ -146,7 +146,7 @@
 	if(!length(web_sound_input))
 		log_admin("[key_name(src)] stopped web sound")
 		message_admins("[key_name(src)] stopped web sound")
-		for(var/m in player_list)
+		for(var/m in GLOB.player_list)
 			var/mob/M = m
 			var/client/C = M.client
 			if(M.is_preference_enabled(/datum/client_preference/play_admin_midis) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
@@ -163,7 +163,7 @@
 	feedback_add_details("admin_verb","PWSM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(src)] played web sound: [web_sound_input]")
 	message_admins("[key_name(src)] played web sound.")
-	for(var/m in player_list)
+	for(var/m in GLOB.player_list)
 		var/mob/M = m
 		var/client/C = M.client
 		if(M.is_preference_enabled(/datum/client_preference/play_admin_midis) && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
@@ -177,7 +177,7 @@
 
 	log_admin("[key_name(src)] stopped all currently playing sounds.")
 	message_admins("[key_name_admin(src)] stopped all currently playing sounds.")
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			M << sound(null)
 			var/client/C = M.client

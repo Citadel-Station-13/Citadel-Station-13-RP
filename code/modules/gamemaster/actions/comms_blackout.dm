@@ -10,7 +10,7 @@
 	if(prob(80))
 		GLOB.command_announcement.Announce("Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you-BZZT", new_sound = 'sound/misc/interference.ogg')
 	// AIs will always know if there's a comm blackout, rogue AIs could then lie about comm blackouts in the future while they shutdown comms
-	for(var/mob/living/silicon/ai/A in player_list)
+	for(var/mob/living/silicon/ai/A in GLOB.player_list)
 		A << "<br>"
 		A << "<span class='warning'><b>Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you-BZZT</b></span>"
 		A << "<br>"

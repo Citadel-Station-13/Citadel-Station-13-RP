@@ -398,7 +398,7 @@
 
 
 /obj/item/cursed_marble/proc/request_player(var/mob/user)
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.MayRespawn())
 			continue
 		if(O.client)

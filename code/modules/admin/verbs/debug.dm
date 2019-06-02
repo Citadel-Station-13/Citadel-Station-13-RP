@@ -582,7 +582,7 @@
 
 	switch(input("Which list?") in list("Players","Living Mobs","Dead Mobs", "Mobs"))
 		if("Players")
-			usr << jointext(player_list,",")
+			usr << jointext(GLOB.player_list,",")
 		if("Mobs")
 			usr << jointext(mob_list,",")
 		if("Living Mobs")
