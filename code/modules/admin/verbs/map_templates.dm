@@ -23,7 +23,7 @@
 		preview += image('icons/misc/debug_group.dmi',S ,"red")
 	usr.client.images += preview
 	if(alert(usr,"Confirm location.", "Template Confirm","No","Yes") == "Yes")
-		if(template.default_annihilate && alert(usr,"This template is set to annihilate everything in the red square.  \
+		if((template.default_annihilate != TEMPLATE_NO_ANNIHILATE) && alert(usr,"This template is set to annihilate everything in the red square.  \
 		\nEVERYTHING IN THE RED SQUARE WILL BE DELETED, ARE YOU ABSOLUTELY SURE?", "Template Confirm","No","Yes") == "No")
 			usr.client.images -= preview
 			return

@@ -8,6 +8,7 @@
 	href_logfile = start_log("[log_path]-hrefs.htm")
 	error_log = start_log("[log_path]-error.log")
 	debug_log = start_log("[log_path]-debug.log")
+	world.log = file("[log_path]-dd.log")
 
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 

@@ -3,6 +3,7 @@
 		//BLACK MAGIC THINGS//
 		//////////////////////
 	parent_type = /datum
+	dir = NORTH
 		////////////////
 		//ADMIN THINGS//
 		////////////////

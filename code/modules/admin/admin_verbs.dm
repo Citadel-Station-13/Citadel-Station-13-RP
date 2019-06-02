@@ -642,6 +642,7 @@ var/list/admin_verbs_event_manager = list(
 		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]", 1)
 	feedback_add_details("admin_verb","SM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+
 #define MAX_WARNS 3
 #define AUTOBANTIME 10
 
@@ -656,7 +657,7 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/preferences/D
 	var/client/C = GLOB.directory[warned_ckey]
 	if(C)	D = C.prefs
-	else	D = preferences_datums[warned_ckey]
+	else	D = GLOB.preferences_datums[warned_ckey]
 
 	if(!D)
 		src << "<font color='red'>Error: warn(): No such ckey found.</font>"
