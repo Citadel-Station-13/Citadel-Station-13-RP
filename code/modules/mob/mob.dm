@@ -1,5 +1,6 @@
 /mob/Initialize()
 	mob_list += src
+	GLOB.mob_directory[tag] = src
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
@@ -10,6 +11,7 @@
 
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	mob_list -= src
+	GLOB.mob_directory -= tag
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()

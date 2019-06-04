@@ -98,7 +98,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	log_client_to_db()
 
 	send_resources()
-	GLOB.nanomanager.send_resources(src)
 
 	apply_clickcatcher()
 

@@ -25,8 +25,6 @@
 		<option value='?_src_=vars;addorgan=[REF(src)]'>Add Organ</option>
 		<option value='?_src_=vars;remorgan=[REF(src)]'>Remove Organ</option>
 
-		<option value='?_src_=vars;fix_nano=[REF(src)]'>Fix NanoUI</option>
-
 		<option value='?_src_=vars;addverb=[REF(src)]'>Add Verb</option>
 		<option value='?_src_=vars;remverb=[REF(src)]'>Remove Verb</option>
 		<option>---</option>

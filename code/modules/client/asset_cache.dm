@@ -172,7 +172,6 @@ var/global/list/asset_datums = list()
 /datum/asset/proc/send(client)
 	return
 
-
 //If you don't need anything complicated.
 /datum/asset/simple
 	_abstract = /datum/asset/simple
@@ -185,7 +184,6 @@ var/global/list/asset_datums = list()
 
 /datum/asset/simple/send(client)
 	send_asset_list(client,assets,verify)
-
 
 // For registering or sending multiple others at once
 /datum/asset/group
@@ -377,6 +375,24 @@ var/global/list/asset_datums = list()
 		"fontawesome-webfont.ttf" = 'tgui/assets/fonts/fontawesome-webfont.ttf',
 		"fontawesome-webfont.svg" = 'tgui/assets/fonts/fontawesome-webfont.svg'
 	)
+
+//remove nanui not soon enough lmao
+/datum/asset/simple/nanoui/New()
+	assets = list()
+	var/list/nano_assetDirs = list(\
+		"nano/css/",\
+		"nano/images/",\
+		"nano/js/",\
+		"nano/templates/"\
+	)
+
+	var/list/filenames = null
+	for (var/path in nano_assetDirs)
+		filenames = flist(path)
+		for(var/filename in filenames)
+			if(copytext(filename, length(filename)) != "/") // filenames which end in "/" are actually directories, which we want to ignore
+				if(fexists(path + filename))
+					assets["[path + filename]"] = file(path + filename)
 
 /*
 /datum/asset/spritesheet/goonchat

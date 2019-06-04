@@ -3,6 +3,7 @@
 */
 
 /datum/species
+	var/id = SPECIES_ID_DEFAULT
 
 	// Descriptors and strings.
 	var/name												// Species name.
@@ -227,6 +228,9 @@
 		)
 
 /datum/species/New()
+	if(id == SPECIES_ID_DEFAULT)
+		id = name
+
 	if(hud_type)
 		hud = new hud_type()
 	else

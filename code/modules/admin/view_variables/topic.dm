@@ -414,22 +414,6 @@
 		rem_organ.removed()
 		qdel(rem_organ)
 
-	else if(href_list["fix_nano"])
-		if(!check_rights(R_DEBUG)) return
-
-		var/mob/H = locate(href_list["fix_nano"])
-
-		if(!istype(H) || !H.client)
-			usr << "This can only be done on mobs with clients"
-			return
-
-		GLOB.nanomanager.send_resources(H.client)
-
-		usr << "Resource files sent"
-		H << "Your NanoUI Resource files have been refreshed"
-
-		log_admin("[key_name(usr)] resent the NanoUI resource files to [key_name(H)] ")
-
 	else if(href_list["regenerateicons"])
 		if(!check_rights(0))	return
 
