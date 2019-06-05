@@ -149,21 +149,20 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 /proc/generate_asset_name(var/file)
 	return "asset.[md5(fcopy_rsc(file))]"
 
-
 //These datums are used to populate the asset cache, the proc "register()" does this.
 
 //all of our asset datums, used for referring to these later
-var/global/list/asset_datums = list()
+GLOBAL_LIST_EMPTY(asset_datums)
 
 //get an assetdatum or make a new one
 /proc/get_asset_datum(var/type)
-	return asset_datums[type] || new type()
+	return GLOB.asset_datums[type] || new type()
 
 /datum/asset
 	var/_abstract = /datum/asset
 
 /datum/asset/New()
-	asset_datums[type] = src
+	GLOB.asset_datums[type] = src
 	register()
 
 /datum/asset/proc/register()

@@ -1092,19 +1092,27 @@ window "chemdispenser_reagents"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 628,296
 		size = 640x440
 		anchor1 = none
 		anchor2 = none
 		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		is-maximized = true
 		macro = "macro"
 		menu = "menu"
+	elem "asset_cache_browser"
+		type = BROWSER
+		pos = 576,104
+		size = 200x200
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = ""
 	elem "hotkey_toggle"
 		type = BUTTON
-		pos = 560,420
+		pos = -1360,-454
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1116,7 +1124,7 @@ window "mainwindow"
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
-		size = 634x416
+		size = 0x0
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -1125,8 +1133,8 @@ window "mainwindow"
 		is-vert = true
 	elem "input"
 		type = INPUT
-		pos = 3,420
-		size = 517x20
+		pos = 3,-454
+		size = 0x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = #d3b5b5
@@ -1135,7 +1143,7 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 520,420
+		pos = -1400,-454
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1189,6 +1197,7 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1202,6 +1211,7 @@ window "outputwindow"
 		size = 640x28
 		anchor1 = 0,0
 		anchor2 = 0,5
+		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
@@ -1368,10 +1378,11 @@ window "rpane"
 window "browserwindow"
 	elem "browserwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 372,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true
@@ -1390,10 +1401,11 @@ window "browserwindow"
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
-		pos = 281,0
+		pos = 372,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
 		is-pane = true
@@ -1406,6 +1418,7 @@ window "infowindow"
 		is-default = true
 		saved-params = ""
 		highlight-color = #00aa00
+		tab-background-color = none
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 
