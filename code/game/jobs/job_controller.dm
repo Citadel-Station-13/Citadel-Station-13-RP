@@ -552,7 +552,7 @@ var/global/datum/controller/occupations/job_master
 			H.equip_to_slot_or_del(C, slot_wear_id)
 
 //		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
-		if(locate(/obj/item/device/pda,H))
+		if(locate(/obj/item/device/pda,H)) // NOTE: Modify /decl/hierarchy/outfit/proc/equip_pda(mob/living/carbon/human/H, rank, assignment) instead
 			var/obj/item/device/pda/pda = locate(/obj/item/device/pda,H)
 			pda.owner = H.real_name
 			pda.ownjob = C.assignment
