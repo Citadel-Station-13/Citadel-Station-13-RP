@@ -74,6 +74,7 @@
 	dir = 1
 	},
 /obj/effect/ceiling,
+/obj/machinery/telecomms/relay/preset/tether/transit,
 /turf/simulated/floor/tiled,
 /area/space)
 

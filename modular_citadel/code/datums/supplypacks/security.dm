@@ -142,3 +142,14 @@
 	containername = "Plate carrier heavy crate"
 	access = access_security
 	contraband = 1
+
+/datum/supply_pack/security/helmets
+	name = "Armor - Helmet pack"
+	contains = list(
+			/obj/item/clothing/head/helmet = 3,
+			/obj/item/clothing/head/helmet/warden = 1,
+			/obj/item/clothing/head/helmet/HoS = 1,
+			)
+	cost = 20
+	containertype = /obj/structure/closet/crate/secure
+	access = access_security
