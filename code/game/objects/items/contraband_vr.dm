@@ -82,6 +82,7 @@
 						/obj/item/weapon/stamp/centcomm,
 						/obj/item/weapon/stamp/solgov,
 						/obj/item/weapon/storage/fancy/cigar/havana,
+						/obj/item/weapon/storage/fancy/cigar/cohiba,
 						/obj/item/xenos_claw,
 						/obj/random/contraband,
 						/obj/random/contraband,
@@ -92,11 +93,17 @@
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
 
-/obj/item/weapon/storage/fancy/cigar/havana // Putting this here 'cuz fuck it. -Spades
+/obj/item/weapon/storage/fancy/cigar/havana
 	name = "\improper Havana cigar case"
 	desc = "Save these for the fancy-pantses at the next CentCom black tie reception. You can't blow the smoke from such majestic stogies in just anyone's face."
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 7)
+
+/obj/item/weapon/storage/fancy/cigar/cohiba
+	name = "\improper Cohiba Robusto cigar case"
+	desc = "If Havana cigars were meant for the black tie reception, then these are meant to be family heirlooms instead of being smoked. These are the pinnacle of smoking luxury, make no mistake."
+	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
 
 /obj/item/stolenpackageplus
 	name = "curated stolen package"
@@ -152,6 +159,7 @@
 						/obj/item/weapon/stamp/centcomm,
 						/obj/item/weapon/stamp/solgov,
 						/obj/item/weapon/storage/fancy/cigar/havana,
+						/obj/item/weapon/storage/fancy/cigar/cohiba,
 						/obj/random/contraband,
 						/obj/random/weapon/guarenteed)
 		new loot(usr.drop_location())
