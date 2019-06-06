@@ -121,6 +121,8 @@
 		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
 	if(alien == IS_SLIME)
 		M.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
+	if(alien == IS_NABBER) // TODO: ADD NOTES ON WHAT THIS DOES!
+		return
 	..()
 
 /datum/reagent/toxin/phoron/touch_turf(var/turf/simulated/T, var/amount)

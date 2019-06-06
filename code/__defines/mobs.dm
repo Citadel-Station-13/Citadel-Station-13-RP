@@ -244,6 +244,7 @@
 #define SPECIES_PROMETHEAN		"Promethean"
 #define SPECIES_DIONA			"Diona"
 #define SPECIES_VOX				"Vox"
+#define SPECIES_NABBER          "Giant Armoured Serpentids"
 
 // Monkey and alien monkeys.
 #define SPECIES_MONKEY			"Monkey"

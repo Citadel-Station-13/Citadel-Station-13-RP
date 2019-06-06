@@ -199,6 +199,20 @@
 	M.sleeping = 0
 	M.jitteriness = 0
 
+//Raw port from bay begin
+
+/datum/reagent/acetone
+	name = "Acetone"
+	description = "A colorless liquid solvent used in chemical synthesis."
+	taste_description = "acid"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolism = REM * 0.2
+
+/datum/reagent/acetone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_NABBER)
+		return
+
 /datum/reagent/gold
 	name = "Gold"
 	id = "gold"
