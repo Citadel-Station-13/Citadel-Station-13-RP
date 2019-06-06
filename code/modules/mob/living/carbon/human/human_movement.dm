@@ -220,11 +220,23 @@
 	if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
 		return // no feet = no footsteps
 
-	if(buckled || lying || throwing)
-		return // people flying, lying down or sitting do not step
+	if(buckled || lying || throwing || species.silent_steps)
+		return // people flying, lying down or sitting do not step -- Nylon: Now you can silent step overide with a Variable.
 
 	if(!has_gravity(src) && prob(75))
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)
 	return
+
+/mob/living/carbon/human/proc/has_footsteps()
+	if(species.silent_steps || buckled || lying || throwing)
+		return //people flying, lying down or sitting do not step
+
+	if(shoes && (shoes.item_flags & ITEM_FLAG_SILENT))
+		return // quiet shoes
+
+	if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
+		return //no feet no footsteps
+	
+	return TRUE

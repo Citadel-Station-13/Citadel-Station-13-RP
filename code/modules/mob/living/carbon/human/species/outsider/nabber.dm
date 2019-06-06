@@ -34,7 +34,7 @@
 	icon_template = 'icons/mob/human_races/species/template_tall.dmi'
 	icobase = 'icons/mob/human_races/species/nabber/body.dmi'
 	deform = 'icons/mob/human_races/species/nabber/body.dmi'
-	preview_icon = 'icons/mob/human_races/species/nabber/preview.dmi'
+	//preview_icon = 'icons/mob/human_races/species/nabber/preview.dmi'
 	blood_mask = 'icons/mob/human_races/species/nabber/blood_mask.dmi'
 
 	//limb_blend = ICON_MULTIPLY
@@ -45,23 +45,23 @@
 	rarity_value = 4
 	hud_type = /datum/hud_data/nabber
 	total_health = 200
-	brute_mod = 0.9
+	brute_mod = 0.70
 	burn_mod =  1.35
-	natural_armour_values = list(melee = 30, bullet = 15, laser = 0, energy = 0, bomb = 30, bio = 100, rad = 10)
+	//armor = list(melee = 30, bullet = 15, laser = 0, energy = 0, bomb = 30, bio = 100, rad = 10)
 
 	//gluttonous = GLUT_SMALLER
 	mob_size = MOB_LARGE
 	//strength = STR_HIGH
 	//breath_pressure = 25
 	blood_volume = 840
-	spawns_with_stack = 0
+	//spawns_with_stack = 0
 
 	heat_level_1 = 410 //Default 360 - Higher is better
 	heat_level_2 = 440 //Default 400
 	heat_level_3 = 800 //Default 1000
 
-	species_flags = NO_SLIP | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NEED_DIRECT_ABSORB
-	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_SKIN_TONE_NORMAL | HAS_BASE_SKIN_COLOURS
+	flags = NO_SLIP | NO_BLOCK | NO_MINOR_CUT
+	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN
 
 	bump_flag = HEAVY
@@ -78,7 +78,7 @@
 		BP_TRACH =    /obj/item/organ/internal/lungs/nabber,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_LIVER =    /obj/item/organ/internal/liver/nabber,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		//BP_STOMACH =  /obj/item/organ/internal/stomach,
 		BP_PHORON =   /obj/item/organ/internal/phoron,
 		BP_ACETONE =  /obj/item/organ/internal/acetone,
 		BP_VOICE =    /obj/item/organ/internal/voicebox/nabber
@@ -384,3 +384,20 @@
 		else			. = -4
 */
 //skill system not used in this fashion - Nylon
+
+//TODO: Sort these into their respective areas if these mechanics need to go global.
+
+//Breathing for Nabs
+/mob/living/carbon/human/nabber/breathe()
+	var/species_organ = species.breathing_organ
+
+	if(species_organ)
+		var/active_breaths = 0
+		var/obj/item/organ/internal/lungs/L = internal_organs_by_name[species_organ]
+		if(L)
+			active_breaths = L.active_breathing
+		..(active_breaths)
+
+//Organs exclusive to Nabbers
+/obj/item/organ/internal/heart/open
+	open = 1

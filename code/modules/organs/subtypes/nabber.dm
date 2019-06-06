@@ -193,4 +193,4 @@
 	name = "head"
 	eye_icon = "eyes_nabber"
 	eye_icon_location = 'icons/mob/nabber_face.dmi'
-has_lips = 0
+	has_lips = 0

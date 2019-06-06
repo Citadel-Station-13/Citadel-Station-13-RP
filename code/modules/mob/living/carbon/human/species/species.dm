@@ -27,7 +27,6 @@
 	var/flesh_color = "#FFC896"								// Pink.
 	var/base_color											// Used by changelings. Should also be used for icon previews.
 	var/blood_oxy = 1
-	var/base_color                        				    // Used by changelings. Should also be used for icon previes..
 	var/limb_blend = ICON_ADD
 
 	var/tail												// Name of tail state in species effects icon file.
@@ -46,6 +45,7 @@
 	var/bloodloss_rate = 1									// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/hunger_factor = 0.05								// Multiplier for hunger.
 	var/active_regen_mult = 1								// Multiplier for 'Regenerate' power speed, in human_powers.dm
+	var/silent_steps
 
 	var/taste_sensitivity = TASTE_NORMAL					// How sensitive the species is to minute tastes.
 
