@@ -6,7 +6,7 @@
 	var/latejoin_only = 0
 
 	//Every hour playing this role gains this much time off. (Can be negative for off duty jobs!)
-	var/timeoff_factor = 1
+	var/timeoff_factor = 3
 
 // Check client-specific availability rules.
 /datum/job/proc/player_has_enough_pto(client/C)

@@ -50,5 +50,35 @@
 	desc = "An oddly special looking coat with black, red, and gold"
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
-	item_state = "redgoldjacket"
-	icon_state = "redgoldjacket_w"
+	item_state = "redgoldjacket_w"
+	icon_state = "redgoldjacket"
+
+/obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
+	name = "Project: Zul-E"
+	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
+	item_state = "zuliecloak"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "zuliecloak"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEHOLSTER
+	hoodtype = /obj/item/clothing/head/donator/cloak_hood
+
+/obj/item/clothing/head/donator/cloak_hood
+	name = "cloak hood"
+	desc = "A hood attached to a cloak."
+	icon_state = "zuliecap"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "zuliecap"
+	body_parts_covered = HEAD
+
+/obj/item/clothing/under/donator/pinksuit
+	name = "pink latex jumpsuit"
+	desc = "A pink suit with a zipper in the middle made almost entirely of latex material."
+	icon_state = "pinklatex"
+	item_state = "pinklatex"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+
