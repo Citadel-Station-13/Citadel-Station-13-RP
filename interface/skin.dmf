@@ -1,63 +1,63 @@
 macro "borghotkeymode"
 	elem 
-		name = "TAB"
+		name = "Tab"
 		command = ".winset \"mainwindow.macro=borgmacro hotkey_toggle.is-checked=false input.focus=true input.background-color=#D3B5B5\""
 	elem 
-		name = "CENTER+REP"
+		name = "Center+REP"
 		command = ".center"
 	elem 
-		name = "NORTHEAST"
+		name = "Northeast"
 		command = ".northeast"
 	elem 
-		name = "SOUTHEAST"
+		name = "Southeast"
 		command = ".southeast"
 	elem 
-		name = "SOUTHWEST"
+		name = "Southwest"
 		command = ".southwest"
 	elem 
-		name = "NORTHWEST"
+		name = "Northwest"
 		command = ".northwest"
 	elem 
-		name = "ALT+WEST"
+		name = "ALT+West"
 		command = "westfaceperm"
 	elem 
-		name = "CTRL+WEST"
+		name = "CTRL+West"
 		command = "westface"
 	elem 
-		name = "WEST+REP"
+		name = "West+REP"
 		command = ".west"
 	elem 
-		name = "ALT+NORTH"
+		name = "ALT+North"
 		command = "northfaceperm"
 	elem 
-		name = "CTRL+NORTH"
+		name = "CTRL+North"
 		command = "northface"
 	elem 
-		name = "NORTH+REP"
+		name = "North+REP"
 		command = ".moveup"
 	elem 
-		name = "ALT+EAST"
+		name = "ALT+East"
 		command = "eastfaceperm"
 	elem 
-		name = "CTRL+EAST"
+		name = "CTRL+East"
 		command = "eastface"
 	elem 
-		name = "EAST+REP"
+		name = "East+REP"
 		command = ".moveright"
 	elem 
-		name = "ALT+SOUTH"
+		name = "ALT+South"
 		command = "southfaceperm"
 	elem 
-		name = "CTRL+SOUTH"
+		name = "CTRL+South"
 		command = "southface"
 	elem 
-		name = "SOUTH+REP"
+		name = "South+REP"
 		command = ".movedown"
 	elem 
-		name = "INSERT"
+		name = "Insert"
 		command = "a-intent right"
 	elem 
-		name = "DELETE"
+		name = "Delete"
 		command = "delete-key-pressed"
 	elem 
 		name = "1"
@@ -162,25 +162,25 @@ macro "borghotkeymode"
 		name = "CTRL+Z"
 		command = "Activate-Held-Object"
 	elem 
-		name = "NUMPAD1"
+		name = "Numpad1"
 		command = "body-r-leg"
 	elem 
-		name = "NUMPAD2"
+		name = "Numpad2"
 		command = "body-groin"
 	elem 
-		name = "NUMPAD3"
+		name = "Numpad3"
 		command = "body-l-leg"
 	elem 
-		name = "NUMPAD4"
+		name = "Numpad4"
 		command = "body-r-arm"
 	elem 
-		name = "NUMPAD5"
+		name = "Numpad5"
 		command = "body-chest"
 	elem 
-		name = "NUMPAD6"
+		name = "Numpad6"
 		command = "body-l-arm"
 	elem 
-		name = "NUMPAD8"
+		name = "Numpad8"
 		command = "body-toggle-head"
 	elem 
 		name = "F1"
@@ -221,64 +221,64 @@ macro "borghotkeymode"
 
 macro "macro"
 	elem 
-		name = "TAB"
+		name = "Tab"
 		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
 	elem 
-		name = "CENTER+REP"
+		name = "Center+REP"
 		command = ".center"
 	elem 
-		name = "NORTHEAST"
+		name = "Northeast"
 		command = ".northeast"
 	elem 
-		name = "SOUTHEAST"
+		name = "Southeast"
 		command = ".southeast"
 	elem 
-		name = "SOUTHWEST"
+		name = "Southwest"
 		command = ".southwest"
 	elem 
-		name = "NORTHWEST"
+		name = "Northwest"
 		command = ".northwest"
 	elem 
-		name = "ALT+WEST"
+		name = "ALT+West"
 		command = "westfaceperm"
 	elem 
-		name = "CTRL+WEST"
+		name = "CTRL+West"
 		command = "westface"
 	elem 
-		name = "WEST+REP"
+		name = "West+REP"
 		command = ".moveleft"
 	elem 
-		name = "ALT+NORTH"
+		name = "ALT+North"
 		command = "northfaceperm"
 	elem 
-		name = "CTRL+NORTH"
+		name = "CTRL+North"
 		command = "northface"
 	elem 
-		name = "NORTH+REP"
+		name = "North+REP"
 		command = ".moveup"
 	elem 
-		name = "ALT+EAST"
+		name = "ALT+East"
 		command = "eastfaceperm"
 	elem 
-		name = "CTRL+EAST"
+		name = "CTRL+East"
 		command = "eastface"
 	elem 
-		name = "EAST+REP"
+		name = "East+REP"
 		command = ".moveright"
 	elem 
-		name = "ALT+SOUTH"
+		name = "ALT+South"
 		command = "southfaceperm"
 	elem 
-		name = "CTRL+SOUTH"
+		name = "CTRL+South"
 		command = "southface"
 	elem 
-		name = "SOUTH+REP"
+		name = "South+REP"
 		command = ".movedown"
 	elem 
-		name = "INSERT"
+		name = "Insert"
 		command = "a-intent right"
 	elem 
-		name = "DELETE"
+		name = "Delete"
 		command = "delete-key-pressed"
 	elem 
 		name = "CTRL+1"
@@ -329,25 +329,25 @@ macro "macro"
 		name = "CTRL+Z"
 		command = "Activate-Held-Object"
 	elem 
-		name = "CTRL+NUMPAD1"
+		name = "CTRL+Numpad1"
 		command = "body-r-leg"
 	elem 
-		name = "CTRL+NUMPAD2"
+		name = "CTRL+Numpad2"
 		command = "body-groin"
 	elem 
-		name = "CTRL+NUMPAD3"
+		name = "CTRL+Numpad3"
 		command = "body-l-leg"
 	elem 
-		name = "CTRL+NUMPAD4"
+		name = "CTRL+Numpad4"
 		command = "body-r-arm"
 	elem 
-		name = "CTRL+NUMPAD5"
+		name = "CTRL+Numpad5"
 		command = "body-chest"
 	elem 
-		name = "CTRL+NUMPAD6"
+		name = "CTRL+Numpad6"
 		command = "body-l-arm"
 	elem 
-		name = "CTRL+NUMPAD8"
+		name = "CTRL+Numpad8"
 		command = "body-toggle-head"
 	elem 
 		name = "F1"
@@ -966,96 +966,14 @@ window "Telecomms IDE"
 		multi-line = true
 		no-command = true
 
-window "chemdispenser"
-	elem "chemdispenser"
+window "infowindow"
+	elem "infowindow"
 		type = MAIN
-		pos = 281,0
-		size = 340x480
+		pos = 372,0
+		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Chem Dispenser"
-		statusbar = false
-	elem "energy"
-		type = LABEL
-		pos = 8,24
-		size = 56x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = ""
-		text = "Energy: 25"
-	elem "eject"
-		type = BUTTON
-		pos = 264,4
-		size = 72x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "[Insert beaker]"
-		command = "skincmd \"chemdispenser;eject\""
-	elem "amountc"
-		type = BUTTON
-		pos = 208,4
-		size = 48x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "[Other]"
-		command = "skincmd \"chemdispenser;amountc\""
-	elem "amount3"
-		type = BUTTON
-		pos = 176,4
-		size = 24x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "[30]"
-		command = "skincmd \"chemdispenser;amount30\""
-	elem "amount2"
-		type = BUTTON
-		pos = 144,4
-		size = 24x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "[20]"
-		command = "skincmd \"chemdispenser;amount20\""
-	elem "amount1"
-		type = BUTTON
-		pos = 112,4
-		size = 24x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "[10]"
-		command = "skincmd \"chemdispenser;amount10\""
-	elem "amount"
-		type = LABEL
-		pos = 4,4
-		size = 100x20
-		anchor1 = none
-		anchor2 = none
-		font-size = 12
-		saved-params = ""
-		text = "Amount: 30"
-	elem "child1"
-		type = CHILD
-		pos = 0,40
-		size = 340x440
-		anchor1 = none
-		anchor2 = none
-		saved-params = "splitter"
-		left = "chemdispenser_reagents"
-		is-vert = false
-
-window "chemdispenser_reagents"
-	elem "chemdispenser_reagents"
-		type = MAIN
-		pos = 281,0
-		size = 340x448
-		anchor1 = none
-		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1063,37 +981,86 @@ window "chemdispenser_reagents"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		can-scroll = vertical
-	elem "template_dispense"
+	elem "info"
+		type = CHILD
+		pos = 0,20
+		size = 640x460
+		anchor1 = 0,4
+		anchor2 = 100,100
+		background-color = none
+		saved-params = "splitter"
+		left = "statwindow"
+		right = "outputwindow"
+		is-vert = false
+	elem "github"
 		type = BUTTON
-		pos = 256,8
-		size = 64x32
+		pos = 264,0
+		size = 96x16
 		anchor1 = none
 		anchor2 = none
-		is-visible = false
+		background-color = none
 		saved-params = "is-checked"
-		text = "Dispense"
-		image = 'icons\\dispensebutton_bg.png'
-		command = ""
-		is-flat = true
-	elem "template_name"
-		type = LABEL
-		pos = 18,8
-		size = 230x32
+		text = "GitHub"
+		command = "github"
+		group = "rpanemode"
+	elem "rulesb"
+		type = BUTTON
+		pos = 176,0
+		size = 88x16
 		anchor1 = none
 		anchor2 = none
-		font-size = 15
-		is-visible = false
+		background-color = none
+		saved-params = "is-checked"
+		text = "Rules"
+		command = "rules"
+		group = "rpanemode"
+	elem "changelog"
+		type = BUTTON
+		pos = 360,0
+		size = 104x16
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Changelog"
+		command = "Changelog"
+		group = "rpanemode"
+	elem "forumb"
+		type = BUTTON
+		pos = 84,0
+		size = 92x16
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Forum"
+		command = "forum"
+		group = "rpanemode"
+	elem "wikib"
+		type = BUTTON
+		pos = 0,0
+		size = 84x16
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Wiki"
+		command = "wiki"
+		group = "rpanemode"
+	elem "mediapanel"
+		type = BROWSER
+		pos = 392,25
+		size = 1x1
+		anchor1 = none
+		anchor2 = none
+		background-color = none
 		saved-params = ""
-		text = "Chloral Hydrate"
-		image = 'icons\\reagentname_bg.png'
-		image-mode = stretch
 
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 628,296
-		size = 640x440
+		pos = 372,0
+		size = 640x480
 		anchor1 = none
 		anchor2 = none
 		background-color = none
@@ -1103,7 +1070,7 @@ window "mainwindow"
 		menu = "menu"
 	elem "asset_cache_browser"
 		type = BROWSER
-		pos = 576,104
+		pos = 200,112
 		size = 200x200
 		anchor1 = none
 		anchor2 = none
@@ -1112,8 +1079,8 @@ window "mainwindow"
 		saved-params = ""
 	elem "hotkey_toggle"
 		type = BUTTON
-		pos = -1360,-454
-		size = 80x20
+		pos = 620,480
+		size = 20x20
 		anchor1 = 100,100
 		anchor2 = none
 		background-color = none
@@ -1121,20 +1088,21 @@ window "mainwindow"
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
 		button-type = pushbox
-	elem "mainvsplit"
+	elem "splitter"
 		type = CHILD
-		pos = 3,0
-		size = 0x0
+		pos = 0,0
+		size = 640x460
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
 		saved-params = "splitter"
-		right = "rpane"
+		left = "mapwindow"
+		right = "infowindow"
 		is-vert = true
 	elem "input"
 		type = INPUT
-		pos = 3,-454
-		size = 0x20
+		pos = 0,480
+		size = 600x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = #d3b5b5
@@ -1143,8 +1111,8 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = -1400,-454
-		size = 40x20
+		pos = 600,480
+		size = 20x20
 		anchor1 = 100,100
 		anchor2 = none
 		background-color = none
@@ -1165,10 +1133,11 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 281,0
+		pos = 372,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1184,7 +1153,6 @@ window "mapwindow"
 		anchor2 = 100,100
 		font-family = "Arial Rounded MT Bold,Arial Black,Arial,sans-serif"
 		font-size = 7
-		text-color = none
 		is-default = true
 		saved-params = "icon-size"
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
@@ -1193,7 +1161,7 @@ window "mapwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 372,0
+		pos = 591,116
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
@@ -1208,18 +1176,18 @@ window "outputwindow"
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 640x28
+		size = 640x480
 		anchor1 = 0,0
-		anchor2 = 0,5
+		anchor2 = 100,100
 		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
 	elem "output"
 		type = OUTPUT
-		pos = 0,28
-		size = 640x452
-		anchor1 = 0,5
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
 		saved-params = "max-lines"
@@ -1233,6 +1201,7 @@ window "preferences_window"
 		size = 1200x1000
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Preferences/Setup/Preview"
@@ -1243,6 +1212,7 @@ window "preferences_window"
 		size = 900x1000
 		anchor1 = 0,0
 		anchor2 = 75,100
+		background-color = none
 		saved-params = ""
 	elem "preferences_render"
 		type = MAP
@@ -1251,132 +1221,11 @@ window "preferences_window"
 		anchor1 = 75,0
 		anchor2 = 100,100
 		saved-params = "zoom;letterbox;zoom-mode"
+		icon-size = 32
+		zoom = 1
 
-window "rpane"
-	elem "rpane"
-		type = MAIN
-		pos = 372,0
-		size = 640x480
-		anchor1 = none
-		anchor2 = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		is-pane = true
-	elem "rpanewindow"
-		type = CHILD
-		pos = 0,-3
-		size = 640x499
-		anchor1 = 0,0
-		anchor2 = 100,100
-		saved-params = "splitter"
-		right = "outputwindow"
-		is-vert = false
-	elem "github"
-		type = BUTTON
-		pos = 392,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "GitHub"
-		command = "github"
-		group = "rpanemode"
-	elem "mapb"
-		type = BUTTON
-		pos = 332,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Map"
-		command = "map"
-		group = "rpanemode"
-	elem "rulesb"
-		type = BUTTON
-		pos = 272,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Rules"
-		command = "rules"
-		group = "rpanemode"
-	elem "changelog"
-		type = BUTTON
-		pos = 488,0
-		size = 67x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Changelog"
-		command = "Changelog"
-		group = "rpanemode"
-	elem "forumb"
-		type = BUTTON
-		pos = 212,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
-		group = "rpanemode"
-	elem "wikib"
-		type = BUTTON
-		pos = 152,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Wiki"
-		command = "wiki"
-		group = "rpanemode"
-	elem "textb"
-		type = BUTTON
-		pos = 0,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Text"
-		command = ".winset \"rpanewindow.left=;\""
-		is-checked = true
-		group = "rpanemode"
-		button-type = pushbox
-	elem "browseb"
-		type = BUTTON
-		pos = 560,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Browser"
-		command = ".winset \"rpanewindow.left=browserwindow\""
-		group = "rpanemode"
-		button-type = pushbox
-	elem "infob"
-		type = BUTTON
-		pos = 64,0
-		size = 60x16
-		anchor1 = none
-		anchor2 = none
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Info"
-		command = ".winset \"rpanewindow.left=infowindow\""
-		group = "rpanemode"
-		button-type = pushbox
-	elem "mediapanel"
-		type = BROWSER
-		pos = 392,25
-		size = 1x1
-		anchor1 = none
-		anchor2 = none
-		saved-params = ""
-
-window "browserwindow"
-	elem "browserwindow"
+window "statwindow"
+	elem "statwindow"
 		type = MAIN
 		pos = 372,0
 		size = 640x480
@@ -1384,41 +1233,19 @@ window "browserwindow"
 		anchor2 = none
 		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Browser"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
 		is-pane = true
-	elem "browser"
-		type = BROWSER
-		pos = 0,0
-		size = 640x499
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = #ffffff
-		is-default = true
-		saved-params = ""
-		on-show = ".winset\"rpane.infob.is-visible=true?rpane.infob.pos=130,0;rpane.textb.is-visible=true;rpane.browseb.is-visible=true;rpane.browseb.is-checked=true;rpane.rpanewindow.pos=0,30;rpane.rpanewindow.size=0x0;rpane.rpanewindow.left=browserwindow\""
-		on-hide = ".winset\"rpane.infob.is-visible=true?rpane.infob.is-checked=true rpane.infob.pos=65,0 rpane.rpanewindow.left=infowindow:rpane.rpanewindow.left=textwindow rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0\""
-
-window "infowindow"
-	elem "infowindow"
-		type = MAIN
-		pos = 372,0
-		size = 640x480
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Info"
-		is-pane = true
-	elem "info"
+	elem "stat"
 		type = INFO
 		pos = 0,0
-		size = 638x477
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
 		saved-params = ""
-		highlight-color = #00aa00
 		tab-background-color = none
-		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
-		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 

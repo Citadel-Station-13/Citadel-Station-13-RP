@@ -4,6 +4,7 @@
 	var/whitelisted_turfs
 	var/banned_areas
 	var/banned_objects
+	var/check_anchored_objects = TRUE
 	var/roof
 
 /datum/map_template/shelter/New()
@@ -21,13 +22,14 @@
 			return SHELTER_DEPLOY_BAD_AREA
 
 		var/banned = is_type_in_typecache(T, blacklisted_turfs)
-		var/permitted = is_type_in_typecache(T, whitelisted_turfs)
+		var/permitted = !length(whitelisted_turfs) || is_type_in_typecache(T, whitelisted_turfs)
 		if(banned && !permitted)
 			return SHELTER_DEPLOY_BAD_TURFS
 
-		for(var/obj/O in T)
-			if((O.density && O.anchored) || is_type_in_typecache(O, banned_objects))
-				return SHELTER_DEPLOY_ANCHORED_OBJECTS
+		if(check_anchored_objects)
+			for(var/obj/O in T)
+				if((O.density && O.anchored) || is_type_in_typecache(O, banned_objects))
+					return SHELTER_DEPLOY_ANCHORED_OBJECTS
 	return SHELTER_DEPLOY_ALLOWED
 
 /datum/map_template/shelter/alpha

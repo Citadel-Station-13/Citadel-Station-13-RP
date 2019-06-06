@@ -304,6 +304,29 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		'icons/spideros_icons/sos_14.png'
 		)
 
+#if (PRELOAD_RSC == 0)
+	var/static/next_external_rsc = 0
+	if(GLOB.external_rsc_urls && GLOB.external_rsc_urls.len)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, GLOB.external_rsc_urls.len+1)
+		preload_rsc = GLOB.external_rsc_urls[next_external_rsc]
+#endif
+	//get the common files
+	getFiles(
+		'html/search.js',
+		'html/panels.css',
+		'html/browser/common.css',
+		'html/browser/scannernew.css',
+		'html/browser/playeroptions.css',
+		)
+	spawn (10) //removing this spawn causes all clients to not get verbs.
+		//Precache the client with all other assets slowly, so as to not block other browse() calls
+		getFilesSlow(src, SSassets.preload, register_asset = FALSE)
+		#if (PRELOAD_RSC == 0)
+		for (var/name in GLOB.vox_sounds)
+			var/file = GLOB.vox_sounds[name]
+			Export("##action=load_rsc", file)
+			stoplag()
+		#endif
 
 /mob/proc/MayRespawn()
 	return 0
