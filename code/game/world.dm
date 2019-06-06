@@ -506,7 +506,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += "<br><small><i>Citadel's VOREStation-based server. Normie compatibility not guaranteed.</i></small><br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+	s += "<br><small>Roleplay focused 18+ server featuring furries and more. Based on heavily modified VOREstation code.</small><br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
 
 	s += ")"
 
