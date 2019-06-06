@@ -886,10 +886,10 @@ menu "menu"
 		saved-params = "is-checked"
 
 
-window "Telecomms IDE"
-	elem "Telecomms IDE"
+window "TelecommsIDE"
+	elem "TelecommsIDE"
 		type = MAIN
-		pos = 281,0
+		pos = 372,0
 		size = 569x582
 		anchor1 = none
 		anchor2 = none
@@ -905,6 +905,7 @@ window "Telecomms IDE"
 		size = 70x20
 		anchor1 = 37,80
 		anchor2 = 49,83
+		background-color = none
 		saved-params = "is-checked"
 		text = "Clear Memory"
 		command = "tcsclearmem"
@@ -914,6 +915,7 @@ window "Telecomms IDE"
 		size = 52x20
 		anchor1 = 28,80
 		anchor2 = 37,83
+		background-color = none
 		saved-params = "is-checked"
 		text = "Revert"
 		command = "tcsrevert"
@@ -923,6 +925,7 @@ window "Telecomms IDE"
 		size = 52x20
 		anchor1 = 18,80
 		anchor2 = 28,83
+		background-color = none
 		saved-params = "is-checked"
 		text = "Execute"
 		command = "tcsrun"
@@ -941,6 +944,7 @@ window "Telecomms IDE"
 		size = 52x20
 		anchor1 = 9,80
 		anchor2 = 18,83
+		background-color = none
 		saved-params = "is-checked"
 		text = "Compile"
 		command = "tcscompile"
@@ -950,6 +954,7 @@ window "Telecomms IDE"
 		size = 53x20
 		anchor1 = 0,80
 		anchor2 = 9,83
+		background-color = none
 		saved-params = "is-checked"
 		text = "Apply"
 		command = "tcssave"
@@ -983,9 +988,9 @@ window "infowindow"
 		is-pane = true
 	elem "info"
 		type = CHILD
-		pos = 0,20
-		size = 640x460
-		anchor1 = 0,4
+		pos = 0,16
+		size = 640x464
+		anchor1 = 0,3
 		anchor2 = 100,100
 		background-color = none
 		saved-params = "splitter"
@@ -994,10 +999,10 @@ window "infowindow"
 		is-vert = false
 	elem "github"
 		type = BUTTON
-		pos = 264,0
+		pos = 440,0
 		size = 96x16
-		anchor1 = none
-		anchor2 = none
+		anchor1 = 69,0
+		anchor2 = 84,3
 		background-color = none
 		saved-params = "is-checked"
 		text = "GitHub"
@@ -1005,10 +1010,10 @@ window "infowindow"
 		group = "rpanemode"
 	elem "rulesb"
 		type = BUTTON
-		pos = 176,0
+		pos = 88,0
 		size = 88x16
-		anchor1 = none
-		anchor2 = none
+		anchor1 = 14,0
+		anchor2 = 28,3
 		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
@@ -1016,10 +1021,10 @@ window "infowindow"
 		group = "rpanemode"
 	elem "changelog"
 		type = BUTTON
-		pos = 360,0
+		pos = 536,0
 		size = 104x16
-		anchor1 = none
-		anchor2 = none
+		anchor1 = 84,0
+		anchor2 = 100,3
 		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
@@ -1027,10 +1032,10 @@ window "infowindow"
 		group = "rpanemode"
 	elem "forumb"
 		type = BUTTON
-		pos = 84,0
+		pos = -4,0
 		size = 92x16
-		anchor1 = none
-		anchor2 = none
+		anchor1 = 0,0
+		anchor2 = 14,3
 		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
@@ -1038,10 +1043,10 @@ window "infowindow"
 		group = "rpanemode"
 	elem "wikib"
 		type = BUTTON
-		pos = 0,0
-		size = 84x16
-		anchor1 = none
-		anchor2 = none
+		pos = 176,0
+		size = 88x16
+		anchor1 = 28,0
+		anchor2 = 41,3
 		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
@@ -1077,10 +1082,29 @@ window "mainwindow"
 		background-color = none
 		is-visible = false
 		saved-params = ""
+	elem "tooltip"
+		type = BROWSER
+		pos = 0,0
+		size = 999x999
+		anchor1 = 0,100
+		anchor2 = 100,100
+		background-color = none
+		is-visible = false
+		saved-params = ""
+	elem "input"
+		type = INPUT
+		pos = 0,460
+		size = 520x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		background-color = #d3b5b5
+		is-default = true
+		border = sunken
+		saved-params = "command"
 	elem "hotkey_toggle"
 		type = BUTTON
-		pos = 620,480
-		size = 20x20
+		pos = 560,460
+		size = 80x20
 		anchor1 = 100,100
 		anchor2 = none
 		background-color = none
@@ -1099,20 +1123,10 @@ window "mainwindow"
 		left = "mapwindow"
 		right = "infowindow"
 		is-vert = true
-	elem "input"
-		type = INPUT
-		pos = 0,480
-		size = 600x20
-		anchor1 = 0,100
-		anchor2 = 100,100
-		background-color = #d3b5b5
-		is-default = true
-		border = sunken
-		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 600,480
-		size = 20x20
+		pos = 520,460
+		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
 		background-color = none
@@ -1120,15 +1134,6 @@ window "mainwindow"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
 		button-type = pushbox
-	elem "tooltip"
-		type = BROWSER
-		pos = 0,0
-		size = 999x999
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		is-visible = false
-		saved-params = ""
 
 window "mapwindow"
 	elem "mapwindow"
@@ -1161,7 +1166,7 @@ window "mapwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 591,116
+		pos = 372,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
@@ -1221,8 +1226,6 @@ window "preferences_window"
 		anchor1 = 75,0
 		anchor2 = 100,100
 		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 32
-		zoom = 1
 
 window "statwindow"
 	elem "statwindow"
