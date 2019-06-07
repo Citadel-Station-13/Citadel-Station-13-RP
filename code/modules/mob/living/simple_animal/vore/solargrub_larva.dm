@@ -136,11 +136,12 @@ GLOBAL_LIST_EMPTY(grub_machine_overlays)
 	forceMove(M)
 	powermachine.draining = 2
 	visible_message("<span class='warning'>\The [src] finds an opening and crawls inside \the [M].</span>")
-	if(!(M.type in GLOB.grub_machine_overlays))
-		generate_machine_effect(M)
+	var/icon/generated = GLOB.grub_machine_overlays[M.type]
+	if(!generated)
+		generated = generate_machine_effect(M)
 	machine_effect = image(GLOB.grub_machine_overlays[M.type], M) //Can't do this the reasonable way with an overlay,
 	for(var/mob/L in GLOB.player_list)				//because nearly every machine updates its icon by removing all overlays first
-		L << machine_effect
+		SEND_IMAGE(L, machine_effect)
 
 /mob/living/simple_animal/solargrub_larva/proc/generate_machine_effect(var/obj/machinery/M)
 	var/icon/I = new /icon(M.icon, M.icon_state)
@@ -157,6 +158,10 @@ GLOBAL_LIST_EMPTY(grub_machine_overlays)
 	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
+		for(var/mob/L in GLOB.player_list)			//this needs to be componentized ASAP. fuck this shit.
+			var/client/C = L.client
+			if(C)
+				C.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	forced_out += rand(5,15)
 	powermachine.draining = 1

@@ -255,9 +255,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
 
+	//polaris stuff
+
 	getFiles(
-		'html/search.js',
-		'html/panels.css',
 		'html/images/loading.gif',
 		'html/images/ntlogo.png',
 		'html/images/sglogo.png',
@@ -303,6 +303,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		'icons/spideros_icons/sos_13.png',
 		'icons/spideros_icons/sos_14.png'
 		)
+	//end
 
 #if (PRELOAD_RSC == 0)
 	var/static/next_external_rsc = 0

@@ -391,7 +391,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		for(var/filename in filenames)
 			if(copytext(filename, length(filename)) != "/") // filenames which end in "/" are actually directories, which we want to ignore
 				if(fexists(path + filename))
-					assets["[path + filename]"] = file(path + filename)
+					assets["[filename]"] = file(path + filename)
+	return ..()
 
 /*
 /datum/asset/spritesheet/goonchat

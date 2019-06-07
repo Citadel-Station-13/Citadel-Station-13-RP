@@ -21,11 +21,11 @@
 /obj/item/device/survivalcapsule/proc/get_template()
 	if(template)
 		return
-	template = SSmapping.shelter_templates[template_id]
-	template_roof = SSmapping.shelter_templates[template.roof]
+	template = SSmapping.get_map_template(template_id)
 	if(!template)
 		throw EXCEPTION("Shelter template ([template_id]) not found!")
 		qdel(src)
+	template_roof = SSmapping.get_map_template(template.roof)
 
 /obj/item/device/survivalcapsule/Destroy()
 	template = null // without this, capsules would be one use. per round.
