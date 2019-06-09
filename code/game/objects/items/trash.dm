@@ -82,7 +82,8 @@
 
 /obj/item/trash/skrellsnacks
 	name = "\improper SkrellSnax"
-	icon_state = "skrellsnacks"
+	icon = 'icons/obj/candle.dmi'
+	icon_state = "candle4"
 
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return

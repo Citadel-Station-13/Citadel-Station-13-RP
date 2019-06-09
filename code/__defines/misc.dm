@@ -303,3 +303,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 #define RCD_SHEETS_PER_MATTER_UNIT	4	// Each physical material sheet is worth four matter units.
 #define RCD_MAX_CAPACITY			30 * RCD_SHEETS_PER_MATTER_UNIT
+
+//Preference save/load cooldown. This is in deciseconds.
+#define PREF_SAVELOAD_COOLDOWN 2 //Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.

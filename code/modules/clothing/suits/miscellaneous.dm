@@ -378,20 +378,48 @@ obj/item/clothing/suit/storage/toggle/peacoat
 
 /obj/item/clothing/suit/storage/miljacket
 	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one's in the vintage olive drab."
 	icon_state = "militaryjacket_nobadge"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/miljacket/tan
+	name = "tan military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Now in sandy tans for desert fans."
+	icon_state = "militaryjacket_tan"
+	item_state_slots = list(slot_r_hand_str = "suit_orange", slot_l_hand_str = "suit_orange")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/grey
+	name = "grey military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one's in urban grey."
+	icon_state = "militaryjacket_grey"
+	item_state_slots = list(slot_r_hand_str = "suit_grey", slot_l_hand_str = "suit_grey")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/navy
+	name = "navy military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Dark navy, this one is."
+	icon_state = "militaryjacket_navy"
+	item_state_slots = list(slot_r_hand_str = "suit_navy", slot_l_hand_str = "suit_navy")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/black
+	name = "black military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Now in tactical black."
+	icon_state = "militaryjacket_black"
+	item_state_slots = list(slot_r_hand_str = "suit_black", slot_l_hand_str = "suit_black")
+	flags_inv = HIDEHOLSTER
+
 /obj/item/clothing/suit/storage/miljacket/alt
-	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	name = "military jacket, alternate"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one has a badge on the front."
 	icon_state = "militaryjacket_badge"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/miljacket/green
-	name = "military jacket"
+	name = "dark green military jacket"
 	desc = "A dark green canvas jacket. Feels sturdy, yet comfortable."
 	icon_state = "militaryjacket_green"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")

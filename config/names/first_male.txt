@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Abel
 Adolph
 Alan
@@ -2101,4 +2100,3 @@ German
 Sirius
 Castor
 Pollux
->>>>>>> 16f14ee... Merge pull request #4525 from VOREStation/upstream-merge-5732
