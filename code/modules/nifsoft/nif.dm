@@ -53,9 +53,11 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	var/global/list/look_messages = list(
 			"flicks their eyes around",
 			"looks at something unseen",
-			"reads some invisible text",
+			"seems to read something invisible",
 			"seems to be daydreaming",
-			"focuses elsewhere for a moment")
+			"focuses elsewhere for a moment"
+			"zones out for a moment"
+			"seems to lose interest in their surroundings for a bit")
 
 	var/list/save_data
 
@@ -190,11 +192,11 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	if(durability <= 0)
 		stat = NIF_TEMPFAIL
 		update_icon()
-		
+
 		if(human)
 			notify("Danger! General system insta#^!($",TRUE)
 			to_chat(human,"<span class='danger'>Your NIF vision overlays disappear and your head suddenly seems very quiet...</span>")
-		
+
 //Attackby proc, for maintenance
 /obj/item/device/nif/attackby(obj/item/weapon/W, mob/user as mob)
 	if(open == 0 && W.is_screwdriver())
@@ -253,10 +255,10 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	if(!install_done)
 		if(human.mind.name == owner)
 			install_done = world.time + 1 MINUTE
-			notify("Welcome back, [owner]! Performing quick-calibration...")
+			notify("Welcome back, [owner]! Performing quick-calibration, welcome back [owner]...")
 		else if(!owner)
-			install_done = world.time + 30 MINUTES
-			notify("Adapting to new user...")
+			install_done = world.time + 15 MINUTES
+			notify("Adapting to new user, this process may take upwards of fifteen minutes...")
 			sleep(5 SECONDS)
 			notify("Adjoining optic [human.isSynthetic() ? "interface" : "nerve"], please be patient.",TRUE)
 		else
@@ -265,7 +267,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 			stat = NIF_TEMPFAIL
 			return FALSE
 
-	var/percent_done = (world.time - (install_done - (30 MINUTES))) / (30 MINUTES)
+	var/percent_done = (world.time - (install_done - (15 MINUTES))) / (15 MINUTES)
 
 	if(human.client)
 		human.client.screen.Add(global_hud.whitense) //This is the camera static
@@ -282,11 +284,11 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 			switch(incident)
 				if(1)
 					var/message = pick(list(
-								"Your head throbs around your new implant!",
-								"The skin around your recent surgery itches!",
+								"Your skull throbs and aches!",
+								"You think there's something crawling around in your skull!",
 								"A wave of nausea overtakes you as the world seems to spin!",
 								"The floor suddenly seems to come up at you!",
-								"There's a throbbing lump of ice behind your eyes!",
+								"There's a throbbing lump of ice in your head!",
 								"A wave of pain shoots down your neck!"
 								))
 					human.adjustHalLoss(35)
@@ -309,7 +311,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 					comm.register_device(saved_name)
 				else if(human)
 					comm.register_device(human.name)
-			notify("Calibration complete! User data stored!")
+			notify("Calibration complete! User data stored! Welcome to your Nanite Implant Framework!")
 
 //Called each life() tick on the mob
 /obj/item/device/nif/proc/life()
