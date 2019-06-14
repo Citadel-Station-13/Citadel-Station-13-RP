@@ -55,8 +55,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 			"looks at something unseen",
 			"seems to read something invisible",
 			"seems to be daydreaming",
-			"focuses elsewhere for a moment"
-			"zones out for a moment"
+			"focuses elsewhere for a moment",
+			"zones out for a moment",
 			"seems to lose interest in their surroundings for a bit")
 
 	var/list/save_data
