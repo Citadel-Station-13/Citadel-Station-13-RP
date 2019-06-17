@@ -58,5 +58,5 @@ END OF CITADEL CHANGE */
 /datum/gear/accessory/holotags
 	display_name = "USDF dogtags"
 	description = "A pair of USDF dogtags."
-	path = /obj/item/clothing/accessory/collar/holotags
+	path = /obj/item/clothing/accessory/collar/donator/holotags
 	ckeywhitelist = list("certifiedhyena")
