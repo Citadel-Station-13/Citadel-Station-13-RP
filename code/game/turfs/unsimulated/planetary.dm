@@ -67,3 +67,9 @@
 	nitrogen = MOLES_N2STANDARD
 	temperature = 310.92 // About 37.7C / 100F
 
+/turf/unsimulated/wall/planetary/penumbra
+	oxygen = 0.22
+	nitrogen = 0.75
+	carbon_dioxide = 0.03
+	temperature = 234
+	blocks_air = 1
