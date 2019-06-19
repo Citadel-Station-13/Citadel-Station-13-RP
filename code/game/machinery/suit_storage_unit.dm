@@ -1136,8 +1136,8 @@
 				suit.name = "exploration voidsuit"
 				suit.icon_state = "void_explorer"
 				suit.item_state = "void_explorer"
-				suit.item_state_slots[slot_r_hand_str] = "wiz_voidsuit"
-				suit.item_state_slots[slot_l_hand_str] = "wiz_voidsuit"
+				suit.item_state_slots[slot_r_hand_str] = "skrell_suit_black"
+				suit.item_state_slots[slot_l_hand_str] = "skrell_suit_black"
 		if("Old Exploration")
 			if(helmet)
 				helmet.name = "exploration voidsuit helmet"
@@ -1147,8 +1147,8 @@
 				suit.name = "exploration voidsuit"
 				suit.icon_state = "void_explorer2"
 				suit.item_state = "void_explorer2"
-				suit.item_state_slots[slot_r_hand_str] = "wiz_voidsuit"
-				suit.item_state_slots[slot_l_hand_str] = "wiz_voidsuit"
+				suit.item_state_slots[slot_r_hand_str] = "skrell_suit_black"
+				suit.item_state_slots[slot_l_hand_str] = "skrell_suit_black"
 		if("Pilot")
 			if(helmet)
 				helmet.name = "pilot voidsuit helmet"
