@@ -320,7 +320,6 @@
 				to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
 				return
 
-
 	else
 		if (istype(W, /obj/item/device/core_sampler))
 			geologic_data.UpdateNearbyArtifactInfo(src)

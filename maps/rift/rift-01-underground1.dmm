@@ -1,4 +1,4 @@
-"a" = (/turf/simulated/mineral/icerock,/area/rift/surfacebase/outside/under1)
+"a" = (/turf/simulated/icerock,/area/rift/surfacebase/outside/under1)
 "b" = (/turf/simulated/floor/plating,/area/rift/surfacebase/outside/under1)
 "c" = (/obj/effect/landmark/start,/turf/simulated/floor/plating,/area/rift/surfacebase/outside/under1)
 "d" = (/obj/item/weapon/pickaxe,/turf/simulated/floor/plating,/area/rift/surfacebase/outside/under1)
