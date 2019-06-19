@@ -25,7 +25,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 		/turf/simulated/floor/outdoors/ice/lythios43c
 		)
 
-/turf/simulated/mineral/icerock
+/turf/simulated/icerock
 	oxygen = 0
 	nitrogen = 0
 	temperature	= TCMB

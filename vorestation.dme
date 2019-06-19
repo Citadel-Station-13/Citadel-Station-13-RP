@@ -1956,7 +1956,7 @@
 #include "code\modules\mining\mine_items.dm"
 #include "code\modules\mining\mine_items_vr.dm"
 #include "code\modules\mining\mine_turfs.dm"
-#include "code\modules\mining\mine_turfs_icerock.dm"
+#include "code\modules\mining\mine_turfs_cit.dm"
 #include "code\modules\mining\mineral_effect.dm"
 #include "code\modules\mining\mint.dm"
 #include "code\modules\mining\money_bag.dm"
