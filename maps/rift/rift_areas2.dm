@@ -113,13 +113,13 @@
 /area/tether/surfacebase/mining_main/lobby
 	name = "\improper Mining Lobby"
 
-// Mining Underdark
+// Mining Underdark // ???? Fix this.
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/floor/lythios43c
+	base_turf = /turf/simulated/icerock/floor/lythios43c
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/floor/lythios43c
+	base_turf = /turf/simulated/icerock/floor/lythios43c
 
 // Mining outpost areas
 /area/outpost/mining_main/passage

@@ -1,5 +1,3 @@
-var/list/mining_overlay_cache = list()
-
 /**********************Mineral deposits**************************/
 /turf/unsimulated/icerock
 	name = "impassable rock"
@@ -44,7 +42,7 @@ var/list/mining_overlay_cache = list()
 
 /turf/simulated/icerock/floor
 	name = "ice"
-	icon = 'icons/turf/outdoors'
+	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "ice"
 	density = 0
 	opacity = 0
@@ -149,7 +147,7 @@ var/list/mining_overlay_cache = list()
 	//We are an ice floor
 	else
 		name = "ice"
-		icon = 'icons/turf/outdoors'
+		icon = 'icons/turf/outdoors.dmi'
 		icon_state = "ice"
 
 		if(ice_dug)
