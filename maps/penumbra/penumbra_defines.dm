@@ -1,6 +1,6 @@
 //Atmosphere properties
 #define NERADA8_ONE_ATMOSPHERE	126.8 //kPa
-#define NERADA8_AVG_TEMP	234 //kelvin
+#define NERADA8_AVG_TEMP	240 //kelvin
 
 #define NERADA8_PER_N2		0.75 //percent
 #define NERADA8_PER_O2		0.22
@@ -23,7 +23,7 @@
 
 //Normal map defs
 #define Z_LEVEL_SURFACE_MAIN				1
-#define Z_LEVEL_TRANSIT						2 //for now
+#define Z_LEVEL_ABDUCTION					2
 #define Z_LEVEL_CENTCOM						3
 
 /datum/map/penumbra
@@ -37,13 +37,8 @@
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
 
-	/*holomap_smoosh = list(list(
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_MID,
-		Z_LEVEL_SPACE_HIGH))*/
+	holomap_smoosh = list(list(
+		Z_LEVEL_SURFACE_MAIN))
 
 	station_name  = "NSB Adephagia"
 	station_short = "Tether"
@@ -141,93 +136,18 @@
 	z = Z_LEVEL_SURFACE_MAIN
 	name = "Surface"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/rocks
-
-/* 													No maps yet, obviously
-// For making the 6-in-1 holomap, we calculate some offsets
-#define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
-#define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2) // 100
-#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 60
-
-// We have a bunch of stuff common to the station z levels
-/datum/map_z_level/tether/station
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	base_turf = /turf/simulated/floor/outdoors/rocks/nerada8
 	holomap_legend_x = 220
 	holomap_legend_y = 160
 
-/datum/map_z_level/tether/station/surface_low
-	z = Z_LEVEL_SURFACE_LOW
-	name = "Surface 1"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
-/datum/map_z_level/tether/station/surface_mid
-	z = Z_LEVEL_SURFACE_MID
-	name = "Surface 2"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
-/datum/map_z_level/tether/station/surface_high
-	z = Z_LEVEL_SURFACE_HIGH
-	name = "Surface 3"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
-
-/datum/map_z_level/tether/transit
-	z = Z_LEVEL_TRANSIT
-	name = "Transit"
-	flags = MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/tether/station/space_low
-	z = Z_LEVEL_SPACE_LOW
-	name = "Asteroid 1"
-	base_turf = /turf/space
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
-
-/datum/map_z_level/tether/station/space_mid
-	z = Z_LEVEL_SPACE_MID
-	name = "Asteroid 2"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
-/datum/map_z_level/tether/station/space_high
-	z = Z_LEVEL_SPACE_HIGH
-	name = "Asteroid 3"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
-
-/datum/map_z_level/tether/mine
-	z = Z_LEVEL_SURFACE_MINE
-	name = "Mining Outpost"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-
-/datum/map_z_level/tether/solars
-	z = Z_LEVEL_SOLARS
-	name = "Solar Field"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+// For making the 6-in-1 holomap, we calculate some offsets
+#define PENUMBRA_MAP_SIZE 140 // Width and height of compiled in tether z levels.
+#define PENUMBRA_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
+#define PENUMBRA_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*PENUMBRA_MAP_SIZE) - PENUMBRA_HOLOMAP_CENTER_GUTTER) / 2) // 100
+#define PENUMBRA_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*PENUMBRA_MAP_SIZE)) / 2) // 60
 
 /datum/map_z_level/tether/colony
 	z = Z_LEVEL_CENTCOM
 	name = "Colony"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/tether/misc
-	z = Z_LEVEL_MISC
-	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
-*/

@@ -1,7 +1,7 @@
 #if !defined(USING_MAP_DATUM)
 
 	#include "penumbra_defines.dm"
-	//#include "penumbra_turfs.dm"
+	#include "penumbra_turfs.dm"
 	#include "penumbra_areas.dm"
 	#include "penumbra_shuttles.dm"
 	//#include "penumbra_shuttle_defs.dm"
