@@ -121,12 +121,12 @@ var/list/shoreline_icon_cache = list()
 /turf/simulated/floor/water/shoreline
 	name = "shoreline"
 	desc = "The waves look calm and inviting."
-	icon_state = "shoreline"
-	water_state = "rock" // Water gets generated as an overlay in update_icon()
+	icon_state = "beach"
+	water_state = "sand" // Water gets generated as an overlay in update_icon()
 	depth = 0
 
 /turf/simulated/floor/water/shoreline/corner
-	icon_state = "shorelinecorner"
+	icon_state = "beachcorner"
 
 // Water sprites are really annoying, so let BYOND sort it out.
 /turf/simulated/floor/water/shoreline/update_icon()

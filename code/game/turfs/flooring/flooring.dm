@@ -201,6 +201,12 @@ var/list/flooring_types
 /decl/flooring/tiling/new_tile/monofloor
 	icon_base = "monofloor"
 
+/decl/flooring/tiling/new_tile/monodark
+	icon_base = "monodark"
+
+/decl/flooring/tiling/new_tile/monowhite
+	icon_base = "monowhite"
+
 /decl/flooring/tiling/new_tile/monotile
 	icon_base = "monotile"
 

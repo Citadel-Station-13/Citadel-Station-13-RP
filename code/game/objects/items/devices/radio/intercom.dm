@@ -209,3 +209,13 @@
 /obj/item/device/radio/intercom/locked/confessional
 	name = "confessional intercom"
 	frequency = 1480
+
+/obj/item/device/radio/intercom/department/engineering
+	name = "station intercom (Engineering)"
+	icon_state = "engintercom"
+	frequency = ENG_FREQ
+
+/obj/item/device/radio/intercom/department/science
+	name = "station intercom (Science)"
+	icon_state = "scintercom"
+	frequency = SCI_FREQ

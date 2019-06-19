@@ -99,3 +99,8 @@
 	mouse_opacity = FALSE
 	anchored = TRUE
 	plane = ABOVE_PLANE
+
+/obj/effect/overlay/snow/maintlock
+	icon_state = "snowmaintlock"
+	layer = DOOR_CLOSED_LAYER+0.01
+

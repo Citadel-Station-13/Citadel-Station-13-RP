@@ -1162,3 +1162,12 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/grass_edge/corner
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
+
+/obj/effect/floor_decal/industrial/halfstair
+	name = "halfstair"
+	icon = 'icons/obj/decals_vr.dmi'
+	icon_state = "halfstair"
+
+/obj/effect/floor_decal/industrial/warning/orange
+	name = "hazard stripes"
+	icon_state = "orangewarning"

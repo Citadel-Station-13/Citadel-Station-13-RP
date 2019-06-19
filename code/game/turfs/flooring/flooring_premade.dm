@@ -124,6 +124,18 @@
 	icon_state = "monotile"
 	initial_flooring = /decl/flooring/tiling/new_tile/monotile
 
+/turf/simulated/floor/tiled/monotile/monodark
+	name = "floor"
+	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon_state = "monodark"
+	initial_flooring = /decl/flooring/tiling/new_tile/monodark
+
+/turf/simulated/floor/tiled/monotile/monowhite
+	name = "floor"
+	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon_state = "monowhite"
+	initial_flooring = /decl/flooring/tiling/new_tile/monowhite
+
 /turf/simulated/floor/tiled/steel_grid
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
