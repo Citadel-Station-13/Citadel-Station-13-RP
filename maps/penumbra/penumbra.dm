@@ -3,7 +3,8 @@
 	#include "penumbra_defines.dm"
 	//#include "penumbra_turfs.dm"
 	#include "penumbra_areas.dm"
-	//#include "penumbra_shuttles.dm"
+	#include "penumbra_shuttles.dm"
+	#include "penumbra_shuttle_defs.dm"
 	#include "penumbra_nerada8.dm"
 
 	#include "penumbra_station01.dmm"
