@@ -46,9 +46,14 @@
 /turf/simulated/floor/outdoors/ice
 	name = "ice"
 	icon_state = "ice"
+	desc = "Looks safe to walk on."
+
+/turf/simulated/floor/outdoors/ice/slippery
+	name = "ice"
+	icon_state = "ice"
 	desc = "Looks slippery."
 
-/turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
+/turf/simulated/floor/outdoors/ice/slippery/Entered(var/mob/living/M)
 	sleep(1 * world.tick_lag)
 	if(istype(M, /mob/living))
 		if(M.stunned == 0)
