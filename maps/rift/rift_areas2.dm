@@ -6,13 +6,14 @@
 /area/rift/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
 
-
+/area/rift/surfacebase/underground
+	name = "Outside - Underground"
+/area/rift/surfacebase/underground/under2
+	icon_state = "under2"
+/area/rift/surfacebase/underground/under1
+	icon_state = "under1"
 /area/rift/surfacebase/outside
 	name = "Outside - Surface"
-/area/rift/surfacebase/outside/under2
-	icon_state = "under1"
-/area/rift/surfacebase/outside/under1
-	icon_state = "under1"
 /area/rift/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/rift/surfacebase/outside/outside2
@@ -180,6 +181,8 @@
 	icon_state = "atmos"
 	sound_env = MOUNTAINS
 
+/area/engineering/engine_core
+	name = "\improper Supermatter Engine Core"
 /area/engineering/atmos/hallway
 	name = "\improper Atmospherics Main Hallway"
 /area/engineering/lower/lobby
@@ -294,11 +297,11 @@
 //
 // Note: Fore is NORTH
 
-/area/tether/station/stairs_one
-	name = "\improper Station Stairwell First Floor"
+/area/rift/station/stairs_one
+	name = "\improper Engineering Stairwell First Floor"
 	icon_state = "dk_yellow"
-/area/tether/station/stairs_two
-	name = "\improper Station Stairwell Second Floor"
+/area/rift/station/stairs_two
+	name = "\improper Engineering Stairwell Second Floor"
 	icon_state = "dk_yellow"
 /area/tether/station/stairs_three
 	name = "\improper Station Stairwell Third Floor"

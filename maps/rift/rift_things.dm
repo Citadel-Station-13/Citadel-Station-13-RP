@@ -30,18 +30,7 @@
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
-/obj/effect/step_trigger/teleporter/to_mining/New()
-	..()
-	teleport_x = src.x
-	teleport_y = 2
-	teleport_z = Z_LEVEL_SURFACE_MINE
-
-/obj/effect/step_trigger/teleporter/from_mining/New()
-	..()
-	teleport_x = src.x
-	teleport_y = world.maxy - 1
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
+/*
 /obj/effect/step_trigger/teleporter/to_solars/New()
 	..()
 	teleport_x = world.maxx - 1
@@ -53,6 +42,7 @@
 	teleport_x = 2
 	teleport_y = src.y
 	teleport_z = Z_LEVEL_SURFACE_LOW
+*/
 
 /obj/effect/step_trigger/teleporter/wild/New()
 	..()

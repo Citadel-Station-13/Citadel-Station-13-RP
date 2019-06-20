@@ -11,9 +11,10 @@
 	#include "rift_telecomms.dm"
 	#include "rift_lythios-43c.dm"
 
-	#include "rift-01-underground1.dmm"
-	#include "rift-01-surface1.dmm"
-	#include "rift-02-surface2.dmm"
+	#include "rift-01-underground2.dmm"
+	#include "rift-02-underground1.dmm"
+	#include "rift-03-surface1.dmm"
+	#include "rift-04-surface2.dmm"
 
 	#define USING_MAP_DATUM /datum/map/rift
 

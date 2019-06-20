@@ -26,21 +26,7 @@
 #define Z_LEVEL_UNDERGROUND					2
 #define Z_LEVEL_SURFACE_LOW					3
 #define Z_LEVEL_SURFACE_MID					4
-#define Z_LEVEL_TRANSIT						5
-#define Z_LEVEL_SPACE_LOW					6
-#define Z_LEVEL_SPACE_MID					7
-#define Z_LEVEL_SPACE_HIGH					8
-#define Z_LEVEL_SURFACE_MINE				9
-#define Z_LEVEL_SOLARS						10
-#define Z_LEVEL_CENTCOM						11
-#define Z_LEVEL_MISC						12
-#define Z_LEVEL_SHIPS						13
-#define Z_LEVEL_UNDERDARK					14
-#define Z_LEVEL_ALIENSHIP					15
-#define Z_LEVEL_BEACH						16
-#define Z_LEVEL_BEACH_CAVE					17
-#define Z_LEVEL_AEROSTAT					18
-#define Z_LEVEL_AEROSTAT_SURFACE			19
+#define Z_LEVEL_TRANSIT						1
 
 /datum/map/rift
 	name = "Rift"
@@ -62,7 +48,7 @@
 		Z_LEVEL_SPACE_HIGH))
 */
 	station_name  = "NSB Atlas"
-	station_short = "Rift"
+	station_short = "NT Rift"
 	dock_name     = "Lythios-43 Orbital Colony"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
@@ -140,24 +126,23 @@
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
-
+*/
 // Short range computers see only the six main levels, others can see the surrounding surface levels.
-/datum/map/tether/get_map_levels(var/srcz, var/long_range = TRUE)
+/datum/map/rift/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels
 	else if (srcz == Z_LEVEL_TRANSIT)
 		return list() // Nothing on transit!
-	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SPACE_HIGH)
+	else if (srcz >= Z_LEVEL_UNDERGROUND_DEEP && srcz <= Z_LEVEL_SURFACE_MID)
 		return list(
+			Z_LEVEL_UNDERGROUND_DEEP,
+			Z_LEVEL_UNDERGROUND,
 			Z_LEVEL_SURFACE_LOW,
-			Z_LEVEL_SURFACE_MID,
-			Z_LEVEL_SURFACE_HIGH,
-			Z_LEVEL_SPACE_LOW,
-			Z_LEVEL_SPACE_MID,
-			Z_LEVEL_SPACE_HIGH)
+			Z_LEVEL_SURFACE_MID
+			)
 	else
 		return ..()
-
+/*
 // For making the 6-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
 #define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
@@ -174,18 +159,21 @@
 	z = Z_LEVEL_UNDERGROUND_DEEP
 	name = "Underground 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	transit_chance = 25
 	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
 
-/datum/map_z_level/rift/station/surface_low
+/datum/map_z_level/rift/station/underground_shallow
 	z = Z_LEVEL_UNDERGROUND
 	name = "Underground 1"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
+	transit_chance = 25
+	base_turf = /turf/simulated/open
 
 /datum/map_z_level/rift/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
 	name = "Surface 1"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	transit_chance = 25
 	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
@@ -194,6 +182,7 @@
 	z = Z_LEVEL_SURFACE_MID
 	name = "Surface 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	transit_chance = 25
 	base_turf = /turf/simulated/open
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
