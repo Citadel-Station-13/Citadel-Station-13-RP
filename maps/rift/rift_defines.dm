@@ -26,7 +26,7 @@
 #define Z_LEVEL_UNDERGROUND					2
 #define Z_LEVEL_SURFACE_LOW					3
 #define Z_LEVEL_SURFACE_MID					4
-#define Z_LEVEL_TRANSIT						1
+#define Z_LEVEL_TRANSIT						5
 
 /datum/map/rift
 	name = "Rift"
