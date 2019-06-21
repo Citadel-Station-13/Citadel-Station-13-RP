@@ -1,12 +1,18 @@
-/area/shuttle/penumbra/excursion/tether
+/*/area/shuttle/penumbra/excursion/tether
 
 /datum/shuttle_destination/excursion/docked_penumbra
 	name = "Place Docking Arm"
 	my_area = /area/shuttle/penumbra/excursion/tether
-
 	dock_target = "d1a2_dock"
 	radio_announce = 1
 	announcer = "Excursion Shuttle"
+*/
+
+/datum/shuttle/ferry/emergency
+	var/tag_door_station = "escape_shuttle_hatch_station"
+	var/tag_door_offsite = "escape_shuttle_hatch_offsite"
+	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
+	var/datum/radio_frequency/radio_connection
 
 //////////////////////////////////////////////////////////////
 // Escape shuttle
@@ -17,9 +23,9 @@
 	area_offsite = /area/shuttle/escape/centcom
 	area_station = /area/shuttle/escape/station
 	area_transition = /area/shuttle/escape/transit
-	docking_controller_tag = "escape_shuttle"
+	/*docking_controller_tag = "escape_shuttle"
 	dock_target_station = "escape_dock"
-	dock_target_offsite = "centcom_dock"
+	dock_target_offsite = "centcom_dock"*/ //TURNS OUT THESE JUST GET FUCKING OVERRIDEN GOOD JOB VIRGO
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
@@ -34,94 +40,153 @@
 	dock_target_station = "cargo_bay"
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
 
-//////////////////////////////////////////////////////////////
-// Trade Ship
-/*
-/datum/shuttle/ferry/trade
-	name = "Trade"
-	location = 1
-	warmup_time = 10	//want some warmup time so people can cancel.
-	area_offsite = /area/shuttle/trade/centcom
-	area_station = /area/shuttle/trade/station
-	docking_controller_tag = "trade_shuttle"
-	dock_target_station = "trade_shuttle_dock_airlock"
-	dock_target_offsite = "trade_shuttle_bay"
-*/
+//
+// Emergency Shuttler
+// Becuase the tram only has its own doors and no corresponding station doors, a docking controller is overkill.
+// Just open the gosh darn doors!  Also we avoid having a physical docking controller obj for gameplay reasons.
 
-//////////////////////////////////////////////////////////////
-// Antag Space "Proto Shuttle" Shuttle
-/*
-/datum/shuttle/multi_shuttle/protoshuttle
-	name = "Proto"
-	warmup_time = 8
-	move_time = 60
-	origin = /area/shuttle/antag_space/base
-	interim = /area/shuttle/antag_space/transit
-	start_location = "Home Base"
-	destinations = list(
-		"Nearby" = /area/shuttle/antag_space/north,
-		"Docks" =  /area/shuttle/antag_space/docks
-	)
-	docking_controller_tag = "antag_space_shuttle"
-	destination_dock_targets = list("Home Base" = "antag_space_dock")
-*/
 
-//////////////////////////////////////////////////////////////
-// Antag Surface "Land Crawler" Shuttle
-/*
-/datum/shuttle/multi_shuttle/landcrawler
-	name = "Land Crawler"
-	warmup_time = 8
-	move_time = 60
-	origin = /area/shuttle/antag_ground/base
-	interim = /area/shuttle/antag_ground/transit
-	start_location = "Home Base"
-	destinations = list(
-		"Solar Array" = /area/shuttle/antag_ground/solars,
-		"Mining Outpost" =  /area/shuttle/antag_ground/mining
-	)
-	docking_controller_tag = "antag_ground_shuttle"
-	destination_dock_targets = list("Home Base" = "antag_ground_dock")
-*/
-
-//////////////////////////////////////////////////////////////
-// Mercenary Shuttle
-/*
-/datum/shuttle/multi_shuttle/mercenary
-	name = "Mercenary"
-	warmup_time = 8
-	move_time = 60
-	origin = /area/syndicate_station/start
-	//interim = /area/syndicate_station/transit // Disabled until this even exists.
-	start_location = "Mercenary base"
-	destinations = list(
-		"Tether spaceport" = /area/syndicate_station/arrivals_dock
-		)
-	docking_controller_tag = "merc_shuttle"
-	destination_dock_targets = list(
-		"Mercenary base" = "merc_base",
-		"Tether spaceport" = "nuke_shuttle_dock_airlock",
-		)
-	announcer = "Automated Traffic Control"
-
-/datum/shuttle/multi_shuttle/mercenary/New()
-	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."
-	departure_message = "Attention. A unregistered vessel is now leaving Virgo-3B."
+/datum/shuttle/ferry/emergency/init_docking_controllers()
+	docking_controller_tag = null
+	dock_target_station = null
+	dock_target_offsite = null
+	radio_connection = radio_controller.add_object(src, frequency, null)
 	..()
-*/
 
-//////////////////////////////////////////////////////////////
-//ERT
+/datum/shuttle/ferry/emergency/dock()
+	..()
+	// Open Doorsunes
+	var/datum/signal/signal = new
+	signal.data["tag"] = location ? tag_door_offsite : tag_door_station
+	signal.data["command"] = "secure_open"
+	post_signal(signal)
+
+/datum/shuttle/ferry/emergency/undock()
+	..()
+	// Close Doorsunes
+	var/datum/signal/signal = new
+	signal.data["tag"] = location ? tag_door_offsite : tag_door_station
+	signal.data["command"] = "secure_close"
+	post_signal(signal)
+
+/datum/shuttle/ferry/emergency/proc/post_signal(datum/signal/signal, var/filter = null)
+	signal.transmission_method = TRANSMISSION_RADIO
+	if(radio_connection)
+		return radio_connection.post_signal(src, signal, filter)
+	else
+		qdel(signal)
 /*
-/datum/shuttle/ferry/multidock/specops/ert
-	name = "Special Operations"
-	location = 0
-	warmup_time = 10
-	area_offsite = /area/shuttle/specops/station	//centcom is the home station, the Exodus is offsite
-	area_station = /area/shuttle/specops/centcom
-	docking_controller_tag = "specops_shuttle_port"
-	docking_controller_tag_station = "specops_shuttle_port"
-	docking_controller_tag_offsite = "specops_shuttle_fore"
-	dock_target_station = "specops_centcom_dock"
-	dock_target_offsite = "specops_dock_airlock"
+////////////////////////////////////////
+//////// Excursion Shuttle /////////////
+////////////////////////////////////////
+/obj/machinery/computer/shuttle_control/web/excursion
+	name = "shuttle control console"
+	shuttle_tag = "Excursion Shuttle"
+	req_access = list()
+	req_one_access = list(access_heads,access_explorer,access_pilot)
+	var/wait_time = 45 MINUTES
+
+/obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
+	if(world.time < wait_time)
+		to_chat(usr,"<span class='warning'>The console is locked while the shuttle refuels. It will be complete in [round((wait_time - world.time)/10/60)] minute\s.</span>")
+		return FALSE
+
+	. = ..()
+
+/datum/shuttle/web_shuttle/excursion
+	name = "Excursion Shuttle"
+	warmup_time = 0
+	current_area = /area/shuttle/excursion/tether
+	docking_controller_tag = "expshuttle_docker"
+	web_master_type = /datum/shuttle_web_master/excursion
+	var/abduct_chance = 0.5 //Prob
+
+/datum/shuttle/web_shuttle/excursion/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
+	if(prob(abduct_chance))
+		abduct_chance = 0
+		var/list/occupants = list()
+		for(var/mob/living/L in departing)
+			occupants += key_name(L)
+		log_and_message_admins("Shuttle abduction occuring with (only mobs on turfs): [english_list(occupants)]")
+		//Build the route to the alien ship
+		var/obj/shuttle_connector/alienship/ASC = new /obj/shuttle_connector/alienship(null)
+		ASC.setup_routes()
+
+		//Redirect us onto that route instead
+		var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[name]
+		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
+		WS.web_master.future_destination = ASD
+		. = ..(departing,ASD.my_area,interim,travel_time,direction)
+	else
+		. = ..()
+
+/datum/shuttle_web_master/excursion
+	destination_class = /datum/shuttle_destination/excursion
+	starting_destination = /datum/shuttle_destination/excursion/tether
+
+/datum/shuttle_destination/excursion/tether
+	name = "NSB Adephagia Excursion Hangar"
+	my_area = /area/shuttle/excursion/tether
+
+	dock_target = "expshuttle_dock"
+	radio_announce = 1
+	announcer = "Excursion Shuttle"
+
+	routes_to_make = list(
+		/datum/shuttle_destination/excursion/outside_tether = 0,
+	)
+
+/datum/shuttle_destination/excursion/tether/get_arrival_message()
+	return "Attention, [master.my_shuttle.visible_name] has arrived at the Excursion Hangar."
+
+/datum/shuttle_destination/excursion/tether/get_departure_message()
+	return "Attention, [master.my_shuttle.visible_name] has departed from the Excursion Hangar."
+
+
+/datum/shuttle_destination/excursion/outside_tether
+	name = "Nearby NSB Adephagia"
+	my_area = /area/shuttle/excursion/tether_nearby
+	preferred_interim_area = /area/shuttle/excursion/space_moving
+
+	routes_to_make = list(
+		/datum/shuttle_destination/excursion/docked_tether = 0,
+		/datum/shuttle_destination/excursion/virgo3b_orbit = 30 SECONDS
+	)
+
+
+/datum/shuttle_destination/excursion/docked_tether
+	name = "NSB Adephagia Docking Arm"
+	my_area = /area/shuttle/excursion/tether_dockarm
+
+	dock_target = "d1a2_dock"
+	radio_announce = 1
+	announcer = "Excursion Shuttle"
+
+/datum/shuttle_destination/excursion/docked_tether/get_arrival_message()
+	return "Attention, [master.my_shuttle.visible_name] has arrived at Docking Arm One."
+
+/datum/shuttle_destination/excursion/docked_tether/get_departure_message()
+	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
+
+
+/datum/shuttle_destination/excursion/virgo3b_orbit
+	name = "Virgo 3B Orbit"
+	my_area = /area/shuttle/excursion/space
+	preferred_interim_area = /area/shuttle/excursion/space_moving
+
+	routes_to_make = list(
+		/datum/shuttle_destination/excursion/virgo3b_sky = 30 SECONDS,
+		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
+	)
+
+
+/datum/shuttle_destination/excursion/virgo3b_sky
+	name = "Skies of Virgo 3B"
+	my_area = /area/shuttle/excursion/virgo3b_sky
+
+////////// Distant Destinations
+/datum/shuttle_destination/excursion/bluespace
+	name = "Bluespace Jump"
+	my_area = /area/shuttle/excursion/bluespace
+	preferred_interim_area = /area/shuttle/excursion/space_moving
 */

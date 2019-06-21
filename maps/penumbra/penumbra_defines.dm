@@ -1,6 +1,6 @@
 //Atmosphere properties
 #define NERADA8_ONE_ATMOSPHERE	126.8 //kPa
-#define NERADA8_AVG_TEMP	240 //kelvin
+#define NERADA8_AVG_TEMP	200 //kelvin
 
 #define NERADA8_PER_N2		0.75 //percent
 #define NERADA8_PER_O2		0.22

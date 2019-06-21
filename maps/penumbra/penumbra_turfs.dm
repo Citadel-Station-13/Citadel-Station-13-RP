@@ -133,14 +133,22 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
+*/
 
 //Unsimulated
 /turf/unsimulated/wall/planetary/nerada8
-	name = "facility wall"
-	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
+	name = "impassable rock"
+	desc = "A deep bedrock of frozen stone. There's no way you could dig through this.."
 	alpha = 0xFF
+	icon_state = "rock"
 	NERADA8_SET_ATMOS
 
+/turf/unsimulated/wall/planetary/nerada8/aberrant
+	name = "thick aberrant mass"
+	desc = "Dormant, tough aberrant mass. Seems impossible to cut through."
+	icon_state = "alienvault"
+
+/*
 /turf/unsimulated/mineral/nerada8
 	blocks_air = TRUE
 
