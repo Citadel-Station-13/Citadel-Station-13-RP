@@ -11,6 +11,7 @@ var/list/mining_overlay_cache = list()
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
+	var/icon_side = "rock_side"
 	oxygen = 0
 	nitrogen = 0
 	opacity = 1
@@ -138,7 +139,7 @@ var/list/mining_overlay_cache = list()
 		for(var/direction in cardinal)
 			var/turf/T = get_step(src,direction)
 			if(istype(T) && !T.density)
-				add_overlay(get_cached_border("rock_side",direction,icon,"rock_side"))
+				add_overlay(get_cached_border(icon_side,direction,icon,icon_side))
 
 			if(archaeo_overlay)
 				add_overlay(archaeo_overlay)
@@ -164,7 +165,7 @@ var/list/mining_overlay_cache = list()
 			else
 				var/turf/T = get_step(src, direction)
 				if(istype(T) && T.density)
-					add_overlay(get_cached_border("rock_side",direction,'icons/turf/walls.dmi',"rock_side"))
+					add_overlay(get_cached_border(icon_side,direction,'icons/turf/walls.dmi',icon_side))
 
 		if(overlay_detail)
 			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)

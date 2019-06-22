@@ -2,10 +2,19 @@
 NERADA8_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/nerada8
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
+
 /turf/simulated/open/nerada8/New()
 	..()
 	if(outdoors)
 		SSplanets.addTurf(src)
+
+/turf/simulated/mineral/nerada8
+	icon_state = "icerock"
+	icon_side = "ice_side"
+
+/turf/simulated/mineral/nerada8/snow
+	icon_state = "snowrock"
+	icon_side = "snow_side"
 
 NERADA8_TURF_CREATE(/turf/simulated/floor)
 
@@ -140,7 +149,7 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "impassable rock"
 	desc = "A deep bedrock of frozen stone. There's no way you could dig through this.."
 	alpha = 0xFF
-	icon_state = "rock"
+	icon_state = "icerock"
 	NERADA8_SET_ATMOS
 
 /turf/unsimulated/wall/planetary/nerada8/aberrant

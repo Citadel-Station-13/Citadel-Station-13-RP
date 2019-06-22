@@ -1,7 +1,7 @@
 /area/penumbra
-	name = "\improper Generic"
+	name = "\improper Mountain caves"
 	icon_state = "cave"
-	requires_power = 0
+	requires_power = 1
 
 /area/penumbra/perimeter
 	icon_state = "invi"
@@ -18,6 +18,8 @@
 	name = "Station Mountain"
 
 /area/penumbra/station/engineering
+
+/area/penumbra/station/engineering/engine
 
 /area/penumbra/station/medical
 
