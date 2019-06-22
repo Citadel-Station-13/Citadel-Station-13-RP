@@ -68,3 +68,12 @@
 		/obj/item/weapon/spacecash/c1000 = 3,
 		/obj/item/weapon/spacecash/c500 = 4,
 		/obj/item/weapon/spacecash/c200 = 5)
+
+/obj/structure/closet/secure_closet/freezer/publicempty
+	name = "refrigerator"
+	icon_state = "fridge1"
+	icon_closed = "fridge"
+	icon_locked = "fridge1"
+	icon_opened = "fridgeopen"
+	icon_broken = "fridgebroken"
+	icon_off = "fridge1"
