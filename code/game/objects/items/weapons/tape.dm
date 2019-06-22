@@ -10,7 +10,6 @@
 /obj/item/weapon/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))
 
-
 		//Freshly cribbed and adjusted from the /obj/stacks/medical area, to allow its use as a ghetto first aid kit.
 		//This has to come after the handler for synth repairs because otherwise you get bandages being applied to robolimbs and the game doesn't like that.
 
@@ -19,6 +18,7 @@
 
 			if (affecting && (affecting.robotic >= ORGAN_ROBOT))
 				affecting.robo_repair(5, "omni", "some damage", src, user)
+				playsound(src, 'sound/effects/tape.ogg',25)
 				return
 
 			///For organics
@@ -63,15 +63,7 @@
 					playsound(src, 'sound/effects/tape.ogg',25)
 					affecting.update_damages()
 
-
-
-
-
-
-
 	//Pre-Existing functionality. Kinda funny that Duct-Tape may be one of the largest item files in the game, and yet almost none of it is really that useful.
-
-
 
 		if(user.a_intent != I_HELP)
 			return
