@@ -41,10 +41,6 @@
 	lift_floor_name = "Level 1"
 	lift_announce_str = "Arriving at surface level one."
 
-/area/engineering/engineering_airlock
-	name = "\improper Engineering Airlock"
-	icon_state = "engine_eva"
-
 /*
 /area/turbolift/t_station/level1
 	name = "asteroid (level 1)"

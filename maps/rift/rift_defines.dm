@@ -138,10 +138,29 @@
 			Z_LEVEL_UNDERGROUND_DEEP,
 			Z_LEVEL_UNDERGROUND,
 			Z_LEVEL_SURFACE_LOW,
-			Z_LEVEL_SURFACE_MID
-			)
+			Z_LEVEL_SURFACE_MID)
 	else
 		return ..()
+/*
+/datum/map/southern_cross/get_map_levels(var/srcz, var/long_range = TRUE)
+	if (long_range && (srcz in map_levels))
+		return map_levels
+	else if (srcz == Z_LEVEL_TRANSIT)
+		return list() // Nothing on transit!
+	else if (srcz >= Z_LEVEL_STATION_ONE && srcz <= Z_LEVEL_STATION_THREE) // Station can see other decks.
+		return list(
+			Z_LEVEL_STATION_ONE,
+			Z_LEVEL_STATION_TWO,
+			Z_LEVEL_STATION_THREE)
+	else if(srcz in list(Z_LEVEL_SURFACE, Z_LEVEL_SURFACE_MINE, Z_LEVEL_SURFACE_WILD)) // Being on the surface lets you see other surface Zs.
+		return list(
+			Z_LEVEL_SURFACE,
+			Z_LEVEL_SURFACE_MINE,
+			Z_LEVEL_SURFACE_WILD)
+	else
+		return ..()
+*/
+
 /*
 // For making the 6-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
@@ -159,21 +178,19 @@
 	z = Z_LEVEL_UNDERGROUND_DEEP
 	name = "Underground 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	transit_chance = 25
 	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
 
 /datum/map_z_level/rift/station/underground_shallow
 	z = Z_LEVEL_UNDERGROUND
 	name = "Underground 1"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	transit_chance = 25
 	base_turf = /turf/simulated/open
 
 /datum/map_z_level/rift/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
 	name = "Surface 1"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	transit_chance = 25
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	transit_chance = 100
 	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
@@ -182,7 +199,6 @@
 	z = Z_LEVEL_SURFACE_MID
 	name = "Surface 2"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	transit_chance = 25
 	base_turf = /turf/simulated/open
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
