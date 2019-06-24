@@ -22,11 +22,11 @@
 	name = "large duster"
 	icon_state = "accessory_duster"
 	desc = "A duster with wider sleeves. Only for the most ripped cowboys. Or space cowboys."
-
+/*
 /obj/item/clothing/accessory/plasman/sweater
 	name = "large sweater"
 	icon_state = "accessory_sweater"
-	desc = "A not-very-soft looking sweater. Almost looks a bit stretched."
+	desc = "A not-very-soft looking sweater. Almost looks a bit stretched." */
 
 /obj/item/clothing/accessory/plasman/miljacket
 	name = "large military jacket"
