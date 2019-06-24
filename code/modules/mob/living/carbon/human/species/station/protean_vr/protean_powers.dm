@@ -1,4 +1,4 @@
-#define PER_LIMB_STEEL_COST SHEET_MATERIAL_AMOUNT
+#define  PER_LIMB_PLASTIC_COST SHEET_MATERIAL_AMOUNT
 ////
 //  One-part Refactor
 ////
@@ -25,13 +25,13 @@
 
 	//Organ is missing, needs restoring
 	if(!organs_by_name[choice] || istype(organs_by_name[choice], /obj/item/organ/external/stump)) //allows limb stumps to regenerate like removed limbs.
-		if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < PER_LIMB_STEEL_COST)
-			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it.</span>")
+		if(refactory.get_stored_material(DEFAULT_TABLE_MATERIAL) < PER_LIMB_PLASTIC_COST)
+			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_PLASTIC_COST] plastic to regenerate it.</span>")
 			return
-		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_STEEL_COST] steel?","Regenerate limb?","Yes","No")
+		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_PLASTIC_COST] plastic?","Regenerate limb?","Yes","No")
 		if(regen != "Yes")
 			return
-		if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
+		if(!refactory.use_stored_material(DEFAULT_TABLE_MATERIAL,PER_LIMB_PLASTIC_COST))
 			return
 		if(organs_by_name[choice])
 			var/obj/item/organ/external/oldlimb = organs_by_name[choice]
@@ -140,8 +140,8 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,refactory.max_storage))
-		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+	if(!refactory.use_stored_material(DEFAULT_TABLE_MATERIAL,refactory.max_storage))
+		to_chat(src, "<span class='warning'>You need to be maxed out on plastic to do this!</span>")
 		return
 
 	var/delay_length = round(active_regen_delay * species.active_regen_mult)
@@ -200,7 +200,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.name
-	var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+	var/list/edible_materials = list("plastic", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE
@@ -281,7 +281,7 @@
 		to_chat(user,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes metal, downsizing returns metal."
+	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes pleastic., downsizing returns plastic.."
 	var/new_size = input(user, nagmessage, "Pick a Size", user.size_multiplier*100) as num|null
 	if(!new_size || !IsInRange(new_size,25,200))
 		return
@@ -294,21 +294,21 @@
 	//Negative if shrinking, positive if growing
 	//Will be (PLSC*2)*-1.75 to 1.75
 	//For 2000 PLSC that's -7000 to 7000
-	var/cost = (PER_LIMB_STEEL_COST*2)*sizediff
+	var/cost = (PER_LIMB_PLASTIC_COST*2)*sizediff
 
 	//Sizing up
 	if(cost > 0)
-		if(refactory.use_stored_material("steel",cost))
+		if(refactory.use_stored_material("plastic",cost))
 			user.resize(size_factor)
 		else
-			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
+			to_chat(user,"<span class='warning'>That size change would cost [cost] plastic, which you don't have.</span>")
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
-		var/actually_added = refactory.add_stored_material("steel",cost)
+		var/actually_added = refactory.add_stored_material("plastic",cost)
 		user.resize(size_factor)
 		if(actually_added != cost)
-			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
+			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] plastic was lost due to lack of storage space.</span>")
 
 	user.visible_message("<span class='notice'>Black mist swirls around [user] as they change size.</span>")
 
@@ -364,32 +364,32 @@
 /// The actual abilities
 /obj/effect/protean_ability/into_blob
 	ability_name = "Toggle Blobform"
-	desc = "Discard your shape entirely, changing to a low-energy blob that can fit into small spaces. You'll consume steel to repair yourself in this form."
+	desc = "Discard your shape entirely, changing to a low-energy blob that can fit into small spaces. You'll consume plastic to repair yourself in this form."
 	icon_state = "blob"
 	to_call = /mob/living/carbon/human/proc/nano_blobform
 
 /obj/effect/protean_ability/change_volume
 	ability_name = "Change Volume"
-	desc = "Alter your size by consuming steel to produce additional nanites, or regain steel by reducing your size and reclaiming them."
+	desc = "Alter your size by consuming plastic to produce additional nanites, or regain plastic by reducing your size and reclaiming them."
 	icon_state = "volume"
 	to_call = /mob/living/carbon/human/proc/nano_set_size
 
 /obj/effect/protean_ability/reform_limb
 	ability_name = "Ref - Single Limb"
-	desc = "Rebuild or replace a single limb, assuming you have 2000 steel."
+	desc = "Rebuild or replace a single limb, assuming you have 2000 plastic."
 	icon_state = "limb"
 	to_call = /mob/living/carbon/human/proc/nano_partswap
 
 /obj/effect/protean_ability/reform_body
 	ability_name = "Ref - Whole Body"
-	desc = "Rebuild your entire body into whatever design you want, assuming you have 10,000 metal."
+	desc = "Rebuild your entire body into whatever design you want, assuming you have 10,000 plastic."
 	icon_state = "body"
 	to_call = /mob/living/carbon/human/proc/nano_regenerate
 
 /obj/effect/protean_ability/metal_nom
-	ability_name = "Ref - Store Metals"
-	desc = "Store the metal you're holding. Your refactory can only store steel, and all other metals will be converted into nanites ASAP for various effects."
+	ability_name = "Ref - Store Materials"
+	desc = "Store the materials you're holding. Your refactory can only store plastic, and all other metals will be converted into nanites ASAP for various effects."
 	icon_state = "metal"
 	to_call = /mob/living/carbon/human/proc/nano_metalnom
 
-#undef PER_LIMB_STEEL_COST
+#undef PER_LIMB_PLASTIC_COST

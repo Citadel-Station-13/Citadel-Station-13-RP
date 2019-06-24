@@ -1,13 +1,14 @@
 #define DAM_SCALE_FACTOR 0.01
-#define METAL_PER_TICK 150
+#define PLASTIC_PER_TICK 150
 /datum/species/protean
 	name =             SPECIES_PROTEAN
 	name_plural =      "Proteans"
-	blurb =            "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
-						<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
-						of millions of tiny nanites working in concert to maintain cohesion."
+	blurb =            "Proteans are the extreme application of physics at the nanite level. Expensive and slow to construct, \
+						they are made of massive amounts of nanites constructed from carbon, or in-game, plastic. \
+						Protean circuitry is based off of graphene and is highly conductive. Fullerene is the structure that holds the shape togeather,\
+						and has a low melting point but high resistance to pressure."
 	show_ssd =         "totally quiescent"
-	death_message =    "rapidly loses cohesion, dissolving into a cloud of gray dust..."
+	death_message =    "rapidly loses cohesion, dissolving into a cloud of colorful liquids..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
 
@@ -30,34 +31,41 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
-	brute_mod =		0.2 //Brute isn't very effective, they're made of dust
-	burn_mod =		2.0 //Burn, however, is
+	brute_mod =		0.40 //Brute isn't very effective, they're made of dust
+	burn_mod =		1.2 //Burn, is more effective due to grahpine conduits. Hard to move to fill missing areas.
 	oxy_mod =		0
 
 	cold_level_1 = 280 //Default 260 - Lower is better
 	cold_level_2 = 220 //Default 200
 	cold_level_3 = 130 //Default 120
 
-	heat_level_1 = 320 //Default 360
-	heat_level_2 = 370 //Default 400
-	heat_level_3 = 600 //Default 1000
+	heat_level_1 = 552 //Default 360
+	heat_level_2 = 553 //Default 400
+	heat_level_3 = 570 //Default 1000
+	heat_discomfort_level = 552
+
+	//melting point of Fullerene is 553K. Proteans take minor damage slightly below it. They start taking massive damage VERY fast above it,
+	//Proteans start melting literally >553K on the inside
+	//Graphine has an insane melting point but there's nothing holding them in place.
+
 
 	//Space doesn't bother them
 	hazard_low_pressure = -1
-	hazard_high_pressure = 200 //They can cope with slightly higher pressure
+	hazard_high_pressure = 1000 //Proteans laugh at high pressures other synths cant. Fullerene is highly fluid and graphine would shift along with it.
+	//I would code in something like pressure causing slowdown.
 
-	//Cold/heat does affect them, but it's done in special ways below
+	//Cold does  affect them, but it's done in special ways below
 	cold_level_1 = -INFINITY
 	cold_level_2 = -INFINITY
 	cold_level_3 = -INFINITY
-	heat_level_1 = INFINITY
-	heat_level_2 = INFINITY
-	heat_level_3 = INFINITY
 
-	body_temperature =      290
 
-	siemens_coefficient =   3 //Very bad zappy times
-	rarity_value =          5
+	body_temperature =      283 //10C
+
+	siemens_coefficient =   1.5 //Very bad zappy times, balance from 2.0 to insta perma lock. This is to compensate for the fact we can the theroetical graphite circuits are embedded very close on the surface of the body and everywhere.
+	rarity_value =          5 //antag use.
+
+	genders = list(MALE, FEMALE, NEUTER, PLURAL)
 
 	darksight = 3 // Equivalent to the minor trait
 
@@ -80,8 +88,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
 
-	heat_discomfort_strings = list("You feel too warm.")
-	cold_discomfort_strings = list("You feel too cool.")
+	heat_discomfort_strings = list("A sensor reminds you are nearing the  maximum safe operation tempature is below 553 Kelvin")
+	cold_discomfort_strings = list("A warning regarding your efficency in these low tempatures is displayed.")
 
 	//These verbs are hidden, for hotkey use only
 	inherent_verbs = list(
@@ -131,8 +139,8 @@
 	H.synth_color = TRUE
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/stack/material/steel/metal_stack = new()
-	metal_stack.amount = 3
+	var/obj/item/stack/material/plastic/metal_stack = new()
+	metal_stack.amount = 10
 
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new()
 	permit.set_name(H.real_name)
@@ -175,15 +183,15 @@
 	if(refactory && !(refactory.status & ORGAN_DEAD))
 
 		//MHydrogen adds speeeeeed
-		if(refactory.get_stored_material("mhydrogen") >= METAL_PER_TICK)
+		if(refactory.get_stored_material("mhydrogen") >= PLASTIC_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
 
 		//Plasteel adds brute armor
-		if(refactory.get_stored_material("plasteel") >= METAL_PER_TICK)
+		if(refactory.get_stored_material("plasteel") >= PLASTIC_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/plasteel, origin = refactory)
 
 		//Diamond adds burn armor
-		if(refactory.get_stored_material("diamond") >= METAL_PER_TICK)
+		if(refactory.get_stored_material("diamond") >= PLASTIC_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/diamond, origin = refactory)
 
 	return ..()
@@ -212,8 +220,8 @@
 // Various modifiers
 /datum/modifier/protean
 	stacks = MODIFIER_STACK_FORBID
-	var/material_use = METAL_PER_TICK
-	var/material_name = DEFAULT_WALL_MATERIAL
+	var/material_use = PLASTIC_PER_TICK
+	var/material_name = DEFAULT_TABLE_MATERIAL
 
 /datum/modifier/protean/on_applied()
 	. = ..()
@@ -272,16 +280,16 @@
 
 	incoming_fire_damage_percent = 0.2
 
-/datum/modifier/protean/steel
-	name = "Protean Effect - Steel"
-	desc = "You're affected by the presence of steel."
+/datum/modifier/protean/plastic
+	name = "Protean Effect - Plastic"
+	desc = "You're affected by the presence of plastic."
 
-	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of steel, healing you slowly.</span>"
-	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
+	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of plastic, healing you slowly.</span>"
+	on_expired_text = "<span class='notice'>Your plastic supply has either run out, or is no longer needed, and your healing stops.</span>"
 
-	material_name = "steel"
+	material_name = "plastic"
 
-/datum/modifier/protean/steel/tick()
+/datum/modifier/protean/plastic/tick()
 	..()
 	holder.adjustBruteLoss(-10,include_robo = TRUE) //Looks high, but these ARE modified by species resistances, so this is really 20% of this
 	holder.adjustFireLoss(-1,include_robo = TRUE) //And this is really double this
@@ -298,14 +306,14 @@
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"
-	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on NanoTrasen property. It must be renewed on a monthly basis."
+	desc = "This is a 'Permit for Advanced Nanotechnology' card. It allows the owner to possess and operate advanced nanotechnology on NanoTrasen property. It must be renewed on a bi-yearly basis."
 	icon = 'icons/obj/card_cit.dmi'
 	icon_state = "permit-pan"
 /obj/item/clothing/accessory/permit/nanotech/set_name(var/new_name)
 	owner = 1
 	if(new_name)
 		src.name += " ([new_name])"
-		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+544)]\nREGISTRANT: [new_name]"
+		desc += "\nRenew before: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+546)]\nREGISTRANT: [new_name]"
 
 #undef DAM_SCALE_FACTOR
-#undef METAL_PER_TICK
+#undef PLASTIC_PER_TICK
