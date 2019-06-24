@@ -162,6 +162,12 @@
 		if("Internal Affairs Agent","Command Secretary")
 			suit=/obj/item/clothing/suit/space/plasman/fancy
 			helm=/obj/item/clothing/head/helmet/space/plasman/fancy
+		if("Clown")
+			suit=/obj/item/clothing/suit/space/plasman/clown
+			helm=/obj/item/clothing/head/helmet/space/plasman/clown
+		if("Mime")
+			suit=/obj/item/clothing/suit/space/plasman/mime
+			helm=/obj/item/clothing/head/helmet/space/plasman/mime
 	H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new helm(H), slot_head)
 	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_hand)
