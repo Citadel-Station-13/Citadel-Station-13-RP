@@ -200,7 +200,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.name
-	var/list/edible_materials = list("plastic", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+	var/list/edible_materials = list("plastic", "diamond", "mhydrogen") //Can't eat all materials, just useful ones. Uranium or other heavy metal?
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE
@@ -281,7 +281,7 @@
 		to_chat(user,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes pleastic., downsizing returns plastic.."
+	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes plastic, downsizing returns plastic.."
 	var/new_size = input(user, nagmessage, "Pick a Size", user.size_multiplier*100) as num|null
 	if(!new_size || !IsInRange(new_size,25,200))
 		return

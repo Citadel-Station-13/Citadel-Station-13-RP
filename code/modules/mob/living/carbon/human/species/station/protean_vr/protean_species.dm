@@ -31,8 +31,8 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
-	brute_mod =		0.40 //Brute isn't very effective, they're made of dust
-	burn_mod =		1.2 //Burn, is more effective due to grahpine conduits. Hard to move to fill missing areas.
+	brute_mod =		0.40 //Brute isn't very effective, they're made of dust, bump down to 0.2 after revive coded
+	burn_mod =		1.5 //Burn, is more effective due to Graphene conduits. Until revive is coded in, then may bump proteans back to original 2 value
 	oxy_mod =		0
 
 	cold_level_1 = 280 //Default 260 - Lower is better
@@ -46,7 +46,7 @@
 
 	//melting point of Fullerene is 553K. Proteans take minor damage slightly below it. They start taking massive damage VERY fast above it,
 	//Proteans start melting literally >553K on the inside
-	//Graphine has an insane melting point but there's nothing holding them in place.
+	//Graphene has an insane melting point but there's nothing holding them in place.
 
 
 	//Space doesn't bother them
@@ -62,7 +62,7 @@
 
 	body_temperature =      283 //10C
 
-	siemens_coefficient =   1.5 //Very bad zappy times, balance from 2.0 to insta perma lock. This is to compensate for the fact we can the theroetical graphite circuits are embedded very close on the surface of the body and everywhere.
+	siemens_coefficient =   1.7 //Very bad zappy times, balance from 2.0 to insta perma lock. Compromise due to the fact that one would assume the 'wiring' would be more like human nerves.
 	rarity_value =          5 //antag use.
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
@@ -186,15 +186,20 @@
 		if(refactory.get_stored_material("mhydrogen") >= PLASTIC_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
 
-		//Plasteel adds brute armor
-		if(refactory.get_stored_material("plasteel") >= PLASTIC_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/plasteel, origin = refactory)
+		//Platinum reduces burn damage, but slows down slightly to comp
+		if(refactory.get_stored_material("platinum") >= PLASTIC_PER_TICK)
+			H.add_modifier(/datum/modifier/protean/platinum, origin = refactory)
+		//plasteel mark two. Electrifying bogaloo
+		if(refactory.get_stored_material("uranium") >= PLASTIC_PER_TICK)
+			H.add_modifier(/datum/modifier/protean/platinum, origin = refactory)
 
 		//Diamond adds burn armor
 		if(refactory.get_stored_material("diamond") >= PLASTIC_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/diamond, origin = refactory)
 
 	return ..()
+
+
 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
@@ -255,19 +260,44 @@
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the metallic hydrogen, and you return to normal speed.</span>"
 
 	material_name = "mhydrogen"
-
+	//slight buff. Mhydrogen very rare, usually miners have to go out of their way to get it with the large drill.
 	slowdown = -1
+	disable_duration_percent = 0.80
 
-/datum/modifier/protean/plasteel
-	name = "Protean Effect - Plasteel"
-	desc = "You're affected by the presence of plasteel."
 
-	on_created_text = "<span class='notice'>You feel yourself become nearly impervious to physical attacks as plasteel nanites are made.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the plasteel, and you return to your normal nanites.</span>"
+ /datum/modifier/protean/platinum // first balance attempt. Trying to make this like previous plasteel without the broken 50% brute mod on 0.2 base brute damaage.
+	name = "Protean Effect - Platinum"
+	desc = "You're affected by the presence of platinum."
 
-	material_name = "plasteel"
+	on_created_text = "<span class='notice'>You feel yourself become slightly more resistant to causes of system instability.</span>"
+	on_expired_text = "<span class='notice'>Your refactory finishes consuming the platinum, and you return to your normal nanites.</span>"
 
-	incoming_brute_damage_percent = 0.5
+	material_name = "platinum"
+
+	slowdown = 0.3						//itsss heavyy, may change to 1... Need to test slowdown more
+	incoming_tox_damage_percent	= 0.7		//shielding due to atomic weight.
+	incoming_fire_damage_percent = 1.5 //see below.
+	disable_duration_percent = 2 // You just covered yourself with fucking conductive metal dumbass. Nice job. Compensate for lack of siemens coefficent mod in modifiers
+
+
+/datum/modifier/protean/uranium // New damage modifier. Is has lots of drawbacks. Good luck hunting in the zone stalker (No its just a nerfed plasteel)
+	name = "Protean Effect - Uranium"
+	desc = "You're affected by the presence of uranium."
+
+	on_created_text = "<span class='notice'>You feel yourself become slightly heavier.</span>"
+	on_expired_text = "<span class='notice'>Your refactory finishes consuming the uranium, and you return to your normal nanites.</span>"
+
+	material_name = "uranium"
+	slowdown = 1.5					//itsss heavyy, may change to 1 or 2... Need to test slowdown more
+	incoming_tox_damage_percent	= 2		//You just ate a radioactive item. Good job.
+	attack_speed_percent = 0.66			// Attack at 2/3 the normal delay.
+	outgoing_melee_damage_percent = 1.5		// 50% more damage from melee.
+	disable_duration_percent = 1.25			// Disables only last 125% as long.
+	evasion = -45	//Can't dodge if you can't move.
+	slowdown = 1					//itsss heavyy,
+
+
+
 
 /datum/modifier/protean/diamond
 	name = "Protean Effect - Diamond"
@@ -278,7 +308,8 @@
 
 	material_name = "diamond"
 
-	incoming_fire_damage_percent = 0.2
+	incoming_fire_damage_percent = 0.5
+	//nerf due to changes of base burn %
 
 /datum/modifier/protean/plastic
 	name = "Protean Effect - Plastic"

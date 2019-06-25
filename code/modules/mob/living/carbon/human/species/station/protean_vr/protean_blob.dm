@@ -203,7 +203,7 @@
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
 		var/substance = S.material.name
-		var/list/edible_materials = list("plastic", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+		var/list/edible_materials = list("plastic", "platinum", "diamond", "uranium", "mhydrogen") //Can't eat all materials, just useful ones.
 		var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE
@@ -218,7 +218,7 @@
 	if(refactory && istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
-		var/list/edible_materials = list("plastic", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+		var/list/edible_materials = list("plastic", "platinum", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
 		var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE
