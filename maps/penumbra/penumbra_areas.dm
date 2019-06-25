@@ -18,8 +18,20 @@
 	name = "Station Mountain"
 
 /area/penumbra/station/engineering
+	name = "Engineering Foyer"
+	icon_state = "engineering_foyer"
 
 /area/penumbra/station/engineering/engine
+	name = "Engineering"
+	icon_state = "engineering"
+
+/area/penumbra/station/engineering/engine/supermatter
+	name = "Engineering"
+	icon_state = "engineering"
+
+/area/penumbra/station/engineering/engine/tesla
+	name = "Engineering"
+	icon_state = "engineering"
 
 /area/penumbra/station/medical
 
