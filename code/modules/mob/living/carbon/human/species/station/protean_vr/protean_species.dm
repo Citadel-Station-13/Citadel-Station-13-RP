@@ -35,15 +35,22 @@
 	burn_mod =		1.5 //Burn, is more effective due to Graphene conduits. Until revive is coded in, then may bump proteans back to original 2 value
 	oxy_mod =		0
 
+//	cold_level_1 = 280 //Default 260 - Lower is better
+//	cold_level_2 = 220 //Default 200
+//	cold_level_3 = 130 //Default 120
+
+//	heat_level_1 = 552 //Default 360 old 320
+//	heat_level_2 = 553 //Default 400 old 370
+//	heat_level_3 = 570 //Default 1000 old 1000
+//	heat_discomfort_level = 552
+// Above reverted due to bug with simple mobs and protean interactions making it extremely hard to put fires out.- Remind me to code in a removal of fire if your in blob form. Unless you're above the melting temp. Then Qdel time.
 	cold_level_1 = 280 //Default 260 - Lower is better
 	cold_level_2 = 220 //Default 200
 	cold_level_3 = 130 //Default 120
 
-	heat_level_1 = 552 //Default 360
-	heat_level_2 = 553 //Default 400
-	heat_level_3 = 570 //Default 1000
-	heat_discomfort_level = 552
-
+	heat_level_1 = 320 //Default 360
+	heat_level_2 = 370 //Default 400
+	heat_level_3 = 600 //Default 1000
 	//melting point of Fullerene is 553K. Proteans take minor damage slightly below it. They start taking massive damage VERY fast above it,
 	//Proteans start melting literally >553K on the inside
 	//Graphene has an insane melting point but there's nothing holding them in place.
@@ -54,15 +61,16 @@
 	hazard_high_pressure = 1000 //Proteans laugh at high pressures other synths cant. Fullerene is highly fluid and graphine would shift along with it.
 	//I would code in something like pressure causing slowdown.
 
-	//Cold does  affect them, but it's done in special ways below
+	//Cold and heat does  affect them, but it's done in special ways below
 	cold_level_1 = -INFINITY
 	cold_level_2 = -INFINITY
 	cold_level_3 = -INFINITY
-
-
+	heat_level_1 = INFINITY
+	heat_level_2 = INFINITY
+	heat_level_3 = INFINITY
 	body_temperature =      283 //10C
 
-	siemens_coefficient =   1.7 //Very bad zappy times, balance from 2.0 to insta perma lock. Compromise due to the fact that one would assume the 'wiring' would be more like human nerves.
+	siemens_coefficient =   1.8 //Very bad zappy times, balance from 2.0 to less of an insta perma lock.
 	rarity_value =          5 //antag use.
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
@@ -88,9 +96,9 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
 
-	heat_discomfort_strings = list("A sensor reminds you are nearing the  maximum safe operation tempature is below 553 Kelvin")
-	cold_discomfort_strings = list("A warning regarding your efficency in these low tempatures is displayed.")
-
+//	heat_discomfort_strings = list("A sensor reminds you are nearing the  maximum safe operation tempature is below 553 Kelvin")
+//	cold_discomfort_strings = list("A warning regarding your efficency in these low tempatures is displayed.")
+// removed
 	//These verbs are hidden, for hotkey use only
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nano_regenerate, //These verbs are hidden so you can macro them,
@@ -263,6 +271,10 @@
 	//slight buff. Mhydrogen very rare, usually miners have to go out of their way to get it with the large drill.
 	slowdown = -1
 	disable_duration_percent = 0.80
+	incoming_tox_damage_percent	= 1.1
+	incoming_fire_damage_percent = 1.5
+	incoming_brute_damage_percent = 2.0
+	//You're allowing a liquid hydrogen to be burnt... it needs to escape somehow. Balance this by raising other damages a bit.
 
 
  /datum/modifier/protean/platinum // first balance attempt. Trying to make this like previous plasteel without the broken 50% brute mod on 0.2 base brute damaage.
@@ -292,10 +304,10 @@
 	incoming_tox_damage_percent	= 2		//You just ate a radioactive item. Good job.
 	attack_speed_percent = 0.66			// Attack at 2/3 the normal delay.
 	outgoing_melee_damage_percent = 1.5		// 50% more damage from melee.
-	disable_duration_percent = 1.25			// Disables only last 125% as long.
+	disable_duration_percent = 1.50			// Disables only last 125% as long.
 	evasion = -45	//Can't dodge if you can't move.
 	slowdown = 1					//itsss heavyy,
-
+	incoming_brute_damage_percent = 0.5
 
 
 
@@ -308,8 +320,9 @@
 
 	material_name = "diamond"
 
-	incoming_fire_damage_percent = 0.5
-	//nerf due to changes of base burn %
+	incoming_fire_damage_percent = 0.6
+	max_health_percent = 0.8 //when diamonds break, this is going to hurt a lot more.
+	evasion = -25 //nerf due to MUH SHINY, much easier to hit. Still not as hard as being a slowpoke.
 
 /datum/modifier/protean/plastic
 	name = "Protean Effect - Plastic"
