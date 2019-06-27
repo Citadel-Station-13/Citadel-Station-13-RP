@@ -4,8 +4,8 @@
 	maxhealth = 80
 
 //Special map objects
-/obj/effect/landmark/map_data/virgo3b
-    height = 7
+/obj/effect/landmark/map_data/lythios43c
+    height = 4
 
 /obj/turbolift_map_holder/rift
 	name = "Atlas Lift"

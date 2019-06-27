@@ -1,11 +1,13 @@
 
 //
-// Surface Base Z Levels
+// Rift Snowflake Areas
 //
+
+/area/maintenance/substation/atmos
+	name = "\improper Atmospherics Substation"
 
 /area/rift/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
-
 /area/rift/surfacebase/underground
 	name = "Outside - Underground"
 /area/rift/surfacebase/underground/under2
@@ -183,6 +185,8 @@
 
 /area/engineering/engine_core
 	name = "\improper Supermatter Engine Core"
+/area/engineering/turbine_room
+	name = "\improper Gas Turbine Engine Room"
 /area/engineering/atmos/hallway
 	name = "\improper Atmospherics Main Hallway"
 /area/engineering/lower/lobby
