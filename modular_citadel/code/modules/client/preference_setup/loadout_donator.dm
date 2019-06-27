@@ -132,5 +132,5 @@
 	display_name = "Pink Latex"
 	sort_category = "Donator"
 	path = /obj/item/clothing/under/donator/pinksuit
-	ckeywhitelist = list("asky")
+	ckeywhitelist = list("tippler")
 
