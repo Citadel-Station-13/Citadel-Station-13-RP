@@ -99,29 +99,7 @@
 	alt_titles = list("Comedian","Jester")
 	whitelist_only = 1
 	latejoin_only = 1
-
-	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/clown(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(H), slot_wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/clown(H), slot_belt)
-
-		if(H.backbag > 0)
-			H.equip_to_slot_or_del(new /obj/item/weapon/stamp/clown(H.back), slot_in_backpack)
-			H.equip_to_slot_or_del(new /obj/item/weapon/bikehorn(H.back), slot_in_backpack) //VOREStation Edit
-		else
-			H.equip_to_slot_or_del(new /obj/item/weapon/stamp/clown(H), slot_l_hand)
-			H.equip_to_slot_or_del(new /obj/item/weapon/bikehorn(H.back), slot_l_hand) //VOREStation Edit
-
-		return 1
-
-/datum/job/clown/get_access()
-	if(config.assistant_maint)
-		return list(access_maint_tunnels)
-	else
-		return list()
+	outfit_type = /decl/hierarchy/outfit/job/clown
 
 /datum/job/mime
 	title = "Mime"
@@ -140,25 +118,4 @@
 	alt_titles = list("Performer","Interpretive Dancer")
 	whitelist_only = 1
 	latejoin_only = 1
-
-	equip(var/mob/living/carbon/human/H)
-		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/mime(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/mime(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/mime(H), slot_head)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/mime(H), slot_wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/mime(H), slot_belt)
-
-		if(H.backbag > 0)
-			H.equip_to_slot_or_del(new /obj/item/weapon/pen/crayon/mime(H.back), slot_in_backpack)
-		else
-			H.equip_to_slot_or_del(new /obj/item/weapon/pen/crayon/mime(H), slot_l_hand)
-
-		return 1
-
-/datum/job/mime/get_access()
-	if(config.assistant_maint)
-		return list(access_maint_tunnels)
-	else
-		return list()
+	outfit_type = /decl/hierarchy/outfit/job/mime
