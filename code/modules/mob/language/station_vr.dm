@@ -46,6 +46,8 @@
 	exclaim_verb = "chitters"
 	key = "9"
 	syllables = list("sque","sqah","boo","beh","nweh","boopa","nah","wah","een","sweh")
+/*
+//// Citadel change. Yikes.
 
 /datum/language/demon
 	name = LANGUAGE_DAEMON
@@ -70,7 +72,7 @@
 	syllables = list("salve","sum","loqui","operatur","iusta","et","permittit","facere","effercio","pluribus","enim","hoc",
 	"mihi","wan","six","salve","tartu")
 	machine_understands = FALSE
-
+*/
 /datum/language/bones
 	name = LANGUAGE_BONES
 	desc = "The language of skeletons, characterised by clunks and clatters. Native language of Phoronoids."

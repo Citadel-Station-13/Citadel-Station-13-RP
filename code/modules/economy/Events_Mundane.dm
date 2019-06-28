@@ -135,8 +135,8 @@
 	var/body = pick(
 	"Tree stuck in tajaran; firefighters baffled.",\
 	"Armadillos want aardvarks removed from dictionary claims 'here first'.",\
-	"Angel found dancing on pinhead ordered to stop; cited for public nuisance.",\
-	"Letters claim they are better than number; 'Always have been'.",\
+/*	"Angel found dancing on pinhead ordered to stop; cited for public nuisance.",\
+*/	"Letters claim they are better than number; 'Always have been'.",\
 	"Pens proclaim pencils obsolete, 'lead is dead'.",\
 	"Rock and paper sues scissors for discrimination.",\
 	"Steak tell-all book reveals he never liked sitting by potato.",\
