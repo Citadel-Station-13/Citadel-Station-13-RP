@@ -116,3 +116,21 @@
 	path = /obj/item/clothing/mask/red_mask
 	ckeywhitelist = list("figneugen")
 
+/datum/gear/donator/blackredgold
+	display_name = "Black, Red, and Gold Coat"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
+	ckeywhitelist = list("ttbnc")
+
+/datum/gear/donator/hoodedlcoak
+	display_name = "Project: Zul-E"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
+	ckeywhitelist = list("asky")
+
+/datum/gear/donator/pinklatex
+	display_name = "Pink Latex"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/pinksuit
+	ckeywhitelist = list("tippler")
+

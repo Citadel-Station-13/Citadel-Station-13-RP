@@ -65,7 +65,9 @@
 	var/sound = get_sfx("thunder")
 	for(var/mob/M in player_list)
 		if((P && M.z in P.expected_z_levels) || M.z == T.z)
-			M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE)
+			if(!(M && M.is_preference_enabled(/datum/client_preference/play_ambience)))	return
+			else
+				M.playsound_local(get_turf(M), soundin = sound, vol = 70, vary = FALSE, is_global = TRUE, channel = CHANNEL_AMBIENCE)
 
 	if(cosmetic) // Everything beyond here involves potentially damaging things. If we don't want to do that, stop now.
 		return
@@ -82,7 +84,7 @@
 
 	// Some extra effects.
 	// Some apply to those within zap range, others if they were a bit farther away.
-	for(var/mob/living/L in view(5, T))
+	for(var/mob/living/L in view(2, T))
 		if(get_dist(L, T) <= LIGHTNING_ZAP_RANGE) // They probably got zapped.
 			// The actual damage/electrocution is handled by tesla_zap().
 			L.Paralyse(5)

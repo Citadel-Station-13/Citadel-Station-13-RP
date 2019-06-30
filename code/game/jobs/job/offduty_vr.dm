@@ -3,9 +3,9 @@
 //
 
 /datum/job/offduty_civilian
-	title = "Off-Duty Employee"
+	title = "Off-Duty Worker"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Civilian"
@@ -18,7 +18,7 @@
 /datum/job/offduty_cargo
 	title = "Off-duty Cargo"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Cargo"
@@ -31,7 +31,7 @@
 /datum/job/offduty_engineering
 	title = "Off-duty Engineer"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Engineering"
@@ -44,7 +44,7 @@
 /datum/job/offduty_medical
 	title = "Off-duty Medic"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Medical"
@@ -57,7 +57,7 @@
 /datum/job/offduty_science
 	title = "Off-duty Scientist"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Science"
@@ -70,7 +70,7 @@
 /datum/job/offduty_security
 	title = "Off-duty Officer"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Security"
@@ -84,7 +84,7 @@
 /datum/job/offduty_command
 	title = "Off-duty CO"
 	latejoin_only = TRUE
-	timeoff_factor = 0
+	timeoff_factor = -1
 	total_positions = -1
 	faction = "Station"
 	department = "Command"

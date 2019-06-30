@@ -34,6 +34,11 @@
 	spray_particles = 3
 	sprite_name = "miniFE"
 
+/obj/item/weapon/extinguisher/mini/plasman
+	name = "emergency phoronoid extinguisher"
+	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
+	max_water = 300
+
 /obj/item/weapon/extinguisher/New()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
