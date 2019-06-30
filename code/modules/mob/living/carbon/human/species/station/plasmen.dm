@@ -76,18 +76,19 @@
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 
 	if(environment.gas["oxygen"] > 1)
-		if (H.wear_suit && H.head && istype(H.wear_suit, /obj/item/clothing) && istype(H.head, /obj/item/clothing))
+		if(H.wear_suit && H.head && istype(H.wear_suit, /obj/item/clothing) && istype(H.head, /obj/item/clothing))
 			var/obj/item/clothing/wear_suit = H.wear_suit
 			var/obj/item/clothing/head = H.head
 			if (head.item_flags & wear_suit.item_flags & STOPPRESSUREDAMAGE)
 				return
-		H.adjust_fire_stacks(2)
-		enviroment_bad = 1
-		if(!H.on_fire && enviroment_bad)
-			H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>")
-			to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!</span>")
-			H.IgniteMob()
-	enviroment_bad = 0
+		else
+			H.adjust_fire_stacks(2)
+			enviroment_bad = 1
+			if(!H.on_fire && enviroment_bad)
+				H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>")
+				to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!</span>")
+				H.IgniteMob()
+		enviroment_bad = 0
 
 /datum/species/plasmaman/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)
 	. = ..()
