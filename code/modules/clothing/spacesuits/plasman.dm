@@ -11,6 +11,9 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
 	allowed = list(/obj/item/weapon/tank)
 	can_breach = 0 // w h y ?
+	var/next_extinguish = 0
+	var/extinguish_cooldown = 100
+	var/extinguishes_left = 10
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_UTILITY\
 		|ACCESSORY_SLOT_WEAPON\
@@ -25,6 +28,25 @@
 		|ACCESSORY_SLOT_ARMBAND\
 		|ACCESSORY_SLOT_TIE\
 		|ACCESSORY_SLOT_OVER) // snowflake decorating i guess
+
+/obj/item/clothing/suit/space/plasman/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>There [extinguishes_left == 1 ? "is" : "are"] [extinguishes_left] extinguisher charge\s left in this suit.</span>"
+
+
+/obj/item/clothing/suit/space/plasman/proc/Extinguish(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	if(H.fire_stacks)
+		if(extinguishes_left)
+			if(next_extinguish > world.time)
+				return
+			next_extinguish = world.time + extinguish_cooldown
+			extinguishes_left--
+			H.visible_message("<span class='warning'>[H]'s suit automatically extinguishes them!</span>","<span class='warning'>Your suit automatically extinguishes you.</span>")
+			H.ExtinguishMob()
+			new/obj/effect/effect/water/chempuff(get_turf(src))
 
 /obj/item/clothing/head/helmet/space/plasman
 	name = "Phoronoid containment helmet"
