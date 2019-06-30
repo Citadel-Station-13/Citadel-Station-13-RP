@@ -6,6 +6,12 @@
 /area/maintenance/substation/atmos
 	name = "\improper Atmospherics Substation"
 
+/area/engineering/atmos/atmos_lobby
+	name = "\improper Atmospherics Lobby"
+
+/area/crew_quarters/panic_shelter
+	name = "\improper Panic Shelter"
+
 /area/rift/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
 /area/rift/surfacebase/underground
@@ -83,8 +89,6 @@
 
 /area/tether/surfacebase/emergency_storage
 	icon_state = "emergencystorage"
-/area/tether/surfacebase/emergency_storage/panic_shelter
-	name = "\improper Panic Shelter Emergency Storage"
 /area/tether/surfacebase/emergency_storage/rnd
 	name = "\improper RnD Emergency Storage"
 /area/tether/surfacebase/emergency_storage/atmos
@@ -291,10 +295,6 @@
 	name = "\improper Vacant Site"
 /area/crew_quarters/freezer
 	name = "\improper Kitchen Freezer"
-/area/crew_quarters/panic_shelter
-	name = "\improper Panic Shelter"
-
-
 
 //
 // Station Z Levels

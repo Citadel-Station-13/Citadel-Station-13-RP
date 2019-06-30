@@ -8,6 +8,10 @@
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "c_flesh_floor_edges"
 
+/obj/effect/floor_decal/industrial/halfstair
+	name = "half stair"
+	icon_state = "halfstair"
+
 /obj/effect/floor_decal/industrial/outline/red
 	name = "red outline"
 	color = COLOR_RED
