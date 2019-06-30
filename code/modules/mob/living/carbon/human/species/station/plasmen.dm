@@ -15,11 +15,10 @@
 	max_age = 180
 	health_hud_intensity = 1.5
 	rarity_value = 5
-	blood_color = "#FC2BC5"
+	blood_color = null
 
 	flags = NO_SCAN | NO_MINOR_CUT | NO_BLOOD
 	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"
 
@@ -91,6 +90,29 @@
 				P.Extinguish(H)
 		else
 	H.update_fire()
+
+/datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)
+	var/turf/T = H.loc
+	if(!T) return
+	var/datum/gas_mixture/environment = T.return_air()
+	if(!environment) return
+	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
+
+	if(environment.gas["oxygen"] > 1)
+		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space)) // now any airtight spessuit works for them. which means exploration voidsuits work :O
+			return
+		if (H.wear_suit && H.head && istype(H.wear_suit, /obj/item/clothing) && istype(H.head, /obj/item/clothing))
+			var/obj/item/clothing/wear_suit = H.wear_suit
+			var/obj/item/clothing/head = H.head
+			if (head.item_flags & wear_suit.item_flags & STOPPRESSUREDAMAGE)
+				return
+		H.adjust_fire_stacks(2)
+		enviroment_bad = 1
+		if(!H.on_fire && enviroment_bad)
+			H.visible_message("<span class='danger'>[H]'s body reacts with the atmosphere and bursts into flames!</span>")
+			to_chat(H, "<span class='danger'>Your body reacts with the atmosphere and bursts into flames!</span>")
+			H.IgniteMob()
+	enviroment_bad = 0
 
 /datum/species/plasmaman/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)
 	. = ..()
