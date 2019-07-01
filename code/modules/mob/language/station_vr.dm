@@ -92,5 +92,5 @@
 /datum/language/seromi
 	flags = 0
 /datum/language/gutter
-	flags = WHITELISTED
+	flags = 0
 	machine_understands = FALSE
