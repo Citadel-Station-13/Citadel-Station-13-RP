@@ -70,7 +70,7 @@
 
 	body_temperature = T20C
 
-/datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/plasmaman/handle_environment_special(var/mob/living/carbon/human/H) // HEY THIS IS THE THING I NEED HELP WITH HELLO
 	var/turf/T = H.loc
 	if(!T) return
 	var/datum/gas_mixture/environment = T.return_air()
