@@ -200,7 +200,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.name
-	var/list/edible_materials = list("plastic", "diamond", "mhydrogen") //Can't eat all materials, just useful ones. Uranium or other heavy metal?
+	var/list/edible_materials = list("plastic", "borosilicate glass", "mhydrogen", "platinum", "uranium") //Can't eat all materials, just useful ones. Uranium or other heavy metal?
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE

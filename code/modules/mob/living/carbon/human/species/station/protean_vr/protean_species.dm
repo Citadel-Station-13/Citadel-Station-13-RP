@@ -31,8 +31,8 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
-	brute_mod =		0.40 //Brute isn't very effective, they're made of dust, bump down to 0.2 after revive coded
-	burn_mod =		1.5 //Burn, is more effective due to Graphene conduits. Until revive is coded in, then may bump proteans back to original 2 value
+	brute_mod =		0.25 //Brute isn't very effective, they're made of dust, bump down to 0.2 after revive coded
+	burn_mod =		1.75 //Burn, is more effective due to Graphene conduits. Until revive is coded in, then may bump proteans back to original 2 value
 	oxy_mod =		0
 
 //	cold_level_1 = 280 //Default 260 - Lower is better
@@ -58,7 +58,7 @@
 
 	//Space doesn't bother them
 	hazard_low_pressure = -1
-	hazard_high_pressure = 1000 //Proteans laugh at high pressures other synths cant. Fullerene is highly fluid and graphine would shift along with it.
+	hazard_high_pressure = 400 //Proteans laugh at high pressures other synths cant. Fullerene is highly fluid and graphine would shift along with it.
 	//I would code in something like pressure causing slowdown.
 
 	//Cold and heat does  affect them, but it's done in special ways below
@@ -148,7 +148,7 @@
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
 	var/obj/item/stack/material/plastic/metal_stack = new()
-	metal_stack.amount = 10
+	metal_stack.amount = 30 //is balance change. Can tweak since nobody has plastic 90% of the time GREYTIDE WORLDWIDE THOSE  TABLES BBY
 
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new()
 	permit.set_name(H.real_name)
@@ -201,9 +201,9 @@
 		if(refactory.get_stored_material("uranium") >= PLASTIC_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/platinum, origin = refactory)
 
-		//Diamond adds burn armor
-		if(refactory.get_stored_material("diamond") >= PLASTIC_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/diamond, origin = refactory)
+		//borosilicate glass adds burn armor
+		if(refactory.get_stored_material("borosilicate glass") >= PLASTIC_PER_TICK)
+			H.add_modifier(/datum/modifier/protean/borosilicate , origin = refactory)
 
 	return ..()
 
@@ -272,11 +272,11 @@
 	slowdown = -1
 	disable_duration_percent = 0.80
 	incoming_tox_damage_percent	= 1.1
-	incoming_fire_damage_percent = 1.5
+	incoming_fire_damage_percent = 1.1
 	incoming_brute_damage_percent = 2.0
 	//You're allowing a liquid hydrogen to be burnt... it needs to escape somehow. Balance this by raising other damages a bit.
 
-
+	//Platinum not useful until hardsync and EMP rework
  /datum/modifier/protean/platinum // first balance attempt. Trying to make this like previous plasteel without the broken 50% brute mod on 0.2 base brute damaage.
 	name = "Protean Effect - Platinum"
 	desc = "You're affected by the presence of platinum."
@@ -311,17 +311,17 @@
 
 
 
-/datum/modifier/protean/diamond
-	name = "Protean Effect - Diamond"
-	desc = "You're affected by the presence of diamond."
+/datum/modifier/protean/borosilicate
+	name = "Protean Effect - Borosilicate"
+	desc = "You're affected by the presence of borosilicate."
 
 	on_created_text = "<span class='notice'>You feel yourself become more reflective, able to resist heat and fire better for a time.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the diamond, and you return to your normal nanites.</span>"
+	on_expired_text = "<span class='notice'>Your refactory finishes consuming the borosilicate, and you return to your normal nanites.</span>"
 
-	material_name = "diamond"
+	material_name = "borosilicate glass"
 
-	incoming_fire_damage_percent = 0.6
-	max_health_percent = 0.8 //when diamonds break, this is going to hurt a lot more.
+	incoming_fire_damage_percent = 0.5
+	incoming_fire_damage_percent = 1.5//when borosilicate glass breaks, this is going to hurt a lot more.
 	evasion = -25 //nerf due to MUH SHINY, much easier to hit. Still not as hard as being a slowpoke.
 
 /datum/modifier/protean/plastic
