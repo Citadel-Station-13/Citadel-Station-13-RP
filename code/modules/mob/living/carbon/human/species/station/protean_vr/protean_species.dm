@@ -321,7 +321,7 @@
 	material_name = "borosilicate glass"
 
 	incoming_fire_damage_percent = 0.5
-	incoming_fire_damage_percent = 1.5//when borosilicate glass breaks, this is going to hurt a lot more.
+	incoming_brute_damage_percent = 6 //when borosilicate glass breaks, this is going to hurt a lot more. Currently for balance
 	evasion = -25 //nerf due to MUH SHINY, much easier to hit. Still not as hard as being a slowpoke.
 
 /datum/modifier/protean/plastic
