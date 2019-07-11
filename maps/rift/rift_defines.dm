@@ -48,17 +48,17 @@
 		Z_LEVEL_SPACE_HIGH))
 */
 	station_name  = "NSB Atlas"
-	station_short = "NT Rift"
-	dock_name     = "Lythios-43 Orbital Colony"
+	station_short = "Raytheon"
+	dock_name     = "NSC Raytheon Orbital Relay"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
 	company_name  = "NanoTrasen"
 	company_short = "NT"
 	starsys_name  = "Lythios-43"
 
-	shuttle_docked_message = "The scheduled NSV Raytheon spaceplane flight to the %dock_name% has arrived. It will depart in approximately %ETD%."
-	shuttle_leaving_dock = "The NSV Raytheon has left the station. Estimate %ETA% until the spaceplane arrives at %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The spaceplane will be arriving shortly. Those departing should proceed to the NSV Raytheon landing pad within %ETA%."
+	shuttle_docked_message = "The scheduled NSV Herra spaceplane flight to the %dock_name% has arrived. It will depart in approximately %ETD%."
+	shuttle_leaving_dock = "The NSV Herra has left the station. Estimate %ETA% until the spaceplane arrives at the %dock_name%."
+	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The NSV Herra will be arriving shortly. Those departing should proceed to departures within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer flight has been cancelled."
 	emergency_shuttle_docked_message = "The evacuation flight has landed at the landing pad. You have approximately %ETD% to board the vessel."
 	emergency_shuttle_leaving_dock = "The emergency flight has left the station. Estimate %ETA% until the vessel arrives at %dock_name%."

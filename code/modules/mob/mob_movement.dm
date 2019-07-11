@@ -502,6 +502,9 @@
 	if(!dense_object && (locate(/obj/structure/lattice) in oview(1, src)))
 		dense_object++
 
+	if(!dense_object && (locate(/obj/structure/ventcover) in oview(1, src)))
+		dense_object++
+
 	if(!dense_object && (locate(/obj/structure/catwalk) in oview(1, src)))
 		dense_object++
 

@@ -121,8 +121,8 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 /datum/weather/lythios43c
 	name = "lythios-43c base"
-	temp_high = 116.15 // -157c
-	temp_low = 141.15  // -132c
+	temp_high = 131.15  // -142c
+	temp_low = 116.15 // -157c
 
 /datum/weather/lythios43c/clear
 	name = "clear"
