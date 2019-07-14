@@ -45,7 +45,7 @@ strictly a hold out pistol to use in an emergency. -Kazkin
 	item_state = "oldlaser"
 	wielded_item_state = "laser"
 	fire_delay = 6
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = ITEMSIZE_NORMAL
 	force = 8
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 1)
@@ -182,7 +182,7 @@ time to pause and reload. It's definately the weakest of any weapon and therefor
 	caliber = ".38"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	handle_casings = CYCLE_CASINGS
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a38
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
@@ -200,7 +200,7 @@ damage as the revoler per shot and can alternatively use a burst mode for close 
 	safety lock."
 	icon_state = "mini-uzi"
 	w_class = ITEMSIZE_NORMAL
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	load_method = MAGAZINE
 	caliber = "9mm"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1, TECH_ILLEGAL = 1)
@@ -233,7 +233,7 @@ rifle options. Virtually identical to standard forty five pistols that security 
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "olivawcivil"
 	item_state = "olivawcivil"
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
 	load_method = MAGAZINE
@@ -384,7 +384,7 @@ being pocket sized for quick draws. Due to being a hidden weapon its design is a
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "makarov"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 1)
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEMSIZE_SMALL|SLOT_HOLSTER
 	caliber = "9mm"
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact
@@ -412,7 +412,7 @@ per reload and requires some tricky clicks to be used with any effectiveness out
 	item_state = "revolver"
 	caliber = ".357"
 	handle_casings = HOLD_CASINGS
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = ITEMSIZE_NORMAL
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a357

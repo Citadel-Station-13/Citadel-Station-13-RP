@@ -20,7 +20,7 @@
 "aat" = (/turf/simulated/mineral/floor/vacuum,/area/mine/explored/upper_level)
 "aau" = (/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/shuttle/excursion/tether)
 "aav" = (/obj/structure/flight_left,/turf/simulated/shuttle/floor/black,/area/shuttle/excursion/tether)
-"aaw" = (/obj/machinery/computer/shuttle_control/web/excursion{icon = 'icons/obj/computer.dmi'; my_doors = list("expshuttle_door_L" = "Port Cargo", "expshuttle_door_Ro" = "Airlock Outer", "expshuttle_door_Ri" = "Airlock Inner", "expshuttle_door_cargo" = "Cargo Hatch"); my_sensors = list("shuttlesens_exp" = "Exterior Environment", "shuttlesens_exp_int" = "Cargo Area", "shuttlesens_exp_psg" = "Passenger Area")},/turf/simulated/shuttle/floor/black,/area/shuttle/excursion/tether)
+"aaw" = (/obj/machinery/computer/shuttle_control/web/excursion{icon = 'icons/obj/computer.dmi'; my_doors = list("expshuttle_door_L" = "Port Cargo", "expshuttle_door_Ro" = "Airlock Outer", "expshuttle_door_Ri" = "Airlock Inner", "expshuttle_door_cargo" = "Cargo Hatch"); my_sensors = list("shuttlesens_exp" = "Exterior Environment", "shuttlesens_exp_int" = "Cargo Area", "shuttlesens_exp_psg" = "Passenger Area"); wait_time = 13500},/turf/simulated/shuttle/floor/black,/area/shuttle/excursion/tether)
 "aax" = (/obj/structure/flight_right,/turf/simulated/shuttle/floor/black,/area/shuttle/excursion/tether)
 "aay" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/turf/simulated/floor/tiled/monotile,/area/tether/station/excursion_dock)
 "aaz" = (/obj/machinery/power/terminal{dir = 4},/obj/structure/cable/yellow{d2 = 2; icon_state = "0-2"},/obj/machinery/camera/network/engineering,/turf/simulated/floor,/area/engineering/engine_smes)
