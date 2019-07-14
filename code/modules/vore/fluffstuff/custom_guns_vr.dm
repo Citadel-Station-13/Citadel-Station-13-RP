@@ -728,7 +728,8 @@ END OF CITADEL CHANGES */
 //Expedition pistol
 /obj/item/weapon/gun/energy/frontier
 	name = "frontier phaser"
-	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
+	desc = "An extraordinarily rugged laser weapon with a built in crank for charging away from civilization. \
+	Sadly it is quite weak compared to most weapons even if it is reliable."
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "phaser"
 	item_state = "phaser"
@@ -736,17 +737,13 @@ END OF CITADEL CHANGES */
 	item_state_slots = list(slot_r_hand_str = "phaser", slot_l_hand_str = "phaser", "slot_belt" = "phaser")
 	fire_sound = 'sound/weapons/laser2.ogg'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
+	projectile_type = /obj/item/projectile/beam/weaklaser
 
 	battery_lock = 1
 	unacidable = 1
 
 	var/recharging = 0
 
-	projectile_type = /obj/item/projectile/beam
-	firemodes = list(
-		list(mode_name="normal", fire_delay=12, projectile_type=/obj/item/projectile/beam, charge_cost = 300),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
-	)
 
 /obj/item/weapon/gun/energy/frontier/unload_ammo(var/mob/user)
 	if(recharging)
@@ -779,7 +776,9 @@ END OF CITADEL CHANGES */
 	return
 
 /obj/item/weapon/gun/energy/frontier/locked
-	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
+	desc = "An extraordinarily rugged laser weapon with a built in crank for charging away from civilization. \
+	Sadly it is quite weak compared to most weapons even if it is reliable. This one has a safety interlock that \
+	prevents firing while in proximity to the facility."
 	req_access = list(access_armory) //for toggling safety
 	var/locked = 1
 
@@ -811,16 +810,16 @@ END OF CITADEL CHANGES */
 //Expeditionary Holdout Phaser
 /obj/item/weapon/gun/energy/frontier/locked/holdout
 	name = "holdout frontier phaser"
-	desc = "A recently introduced weapon intended for self defense by expeditionary support. It includes the same crank charger as the frontier phaser."
+	desc = "An extraordinarily rugged laser weapon with a built in crank for charging away from civilization. \
+	Sadly it is quite weak compared to most weapons even if it is reliable. This model is compactly designed, sacrificing \
+	ammo capacity for smaller size."
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "PDW"
 	item_state = "gun"
 	w_class = ITEMSIZE_SMALL
 	charge_cost = 600
-	firemodes = list(
-		list(mode_name="normal", fire_delay=12, projectile_type=/obj/item/projectile/beam, charge_cost = 600),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 120),
-	)
+	projectile_type = /obj/item/projectile/beam/weaklaser
+
 
 /obj/item/weapon/gun/energy/frontier/locked/holdout/proc/update_mode()
 	var/datum/firemode/current_mode = firemodes[sel_mode]

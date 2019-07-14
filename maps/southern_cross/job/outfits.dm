@@ -17,7 +17,8 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	id_type = /obj/item/weapon/card/id/science/explorer
 	id_pda_assignment = "Explorer"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1,
+								/obj/item/weapon/spacecash/expedition_voucher = 1)
 
 /decl/hierarchy/outfit/job/explorer2/post_equip(mob/living/carbon/human/H)
 	..()
@@ -50,6 +51,8 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	id_type = /obj/item/weapon/card/id/civilian/pilot
 	id_pda_assignment = "Pilot"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
+	backpack_contents = list(/obj/item/weapon/spacecash/expedition_voucher/pilot = 1)
+
 
 /decl/hierarchy/outfit/job/medical/sar
 	name = OUTFIT_JOB_NAME("Search and Rescue")
@@ -63,3 +66,5 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	id_type = /obj/item/weapon/card/id/medical/sar
 	id_pda_assignment = "Search and Rescue"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
+	backpack_contents = list(/obj/item/weapon/spacecash/expedition_voucher = 1)
+

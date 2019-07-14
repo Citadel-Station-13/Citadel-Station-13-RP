@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/metalhead
-	name = "metal-head"
+	name = "Metal-Head"
 	desc = "What happens when malware uploads to wetware."
-	tt_desc = "E Homo sapiens"
+	tt_desc = "E Homo sapien "
 	icon_state = "clown"
 	icon_living = "clown"
 	icon_dead = "clown_dead"
@@ -13,7 +13,7 @@
 	health = 100
 	speed = 4
 
-	run_at_them = 1
+	run_at_them = 0
 	cooperative = 1
 	investigates = 1
 	firing_lines = 1
@@ -67,7 +67,7 @@
 	var/corpse = /obj/effect/landmark/mobcorpse/syndicatesoldier // Likely the left over body when it dies, this will need to be tested before editing.
 																	// Might be able to get away with doing nothing here.
 
-/mob/living/simple_animal/hostile/syndicate/death()
+/mob/living/simple_animal/hostile/metalhead/death()
 	if(corpse)
 		..()
 		new corpse (src.loc)
@@ -78,19 +78,21 @@
 	qdel(src)
 	return
 
-/mob/living/simple_animal/hostile/syndicate/ranged/laser
-	icon_state = "syndicateranged_laser"
-	icon_living = "syndicateranged_laser"
+/mob/living/simple_animal/hostile/metalhead/ranged/laser
+	icon_state = "clown"
+	icon_living = "clown"
+
+	ranged = 1
 	rapid = 0
 	projectiletype = /obj/item/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
 
-/mob/living/simple_animal/hostile/syndicate/ranged/ionrifle
-	icon_state = "syndicateranged_ionrifle"
-	icon_living = "syndicateranged_ionrifle"
-	rapid = 0
-	projectiletype = /obj/item/projectile/ion
-	projectilesound = 'sound/weapons/Laser.ogg'
+/mob/living/simple_animal/hostile/metalhead/ranged/rapidlaser
+	icon_state = "clown"
+	icon_living = "clown"
 
-	// return
+	ranged = 1
+	rapid = 1
+	projectiletype = /obj/item/projectile/beam/midlaser
+	projectilesound = 'sound/weapons/Laser.ogg'

@@ -9,7 +9,8 @@
 	id_type = /obj/item/weapon/card/id/science/head/pathfinder
 	id_pda_assignment = "Pathfinder"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1,
+								/obj/item/weapon/spacecash/expedition_voucher = 1)
 
 /decl/hierarchy/outfit/job/pathfinder/post_equip(mob/living/carbon/human/H)
 	..()
