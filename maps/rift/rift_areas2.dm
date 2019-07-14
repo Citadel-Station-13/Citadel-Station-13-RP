@@ -12,6 +12,9 @@
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
 
+/area/maintenance/panic_shelter
+	name = "\improper Panic Shelter Maintenance"
+
 /area/rift/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
 /area/rift/surfacebase/underground

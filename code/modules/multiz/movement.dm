@@ -38,7 +38,7 @@
 		return 0
 
 	var/area/area = get_area(src)
-	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
+	if(direction == UP && area.has_gravity() && can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
@@ -50,7 +50,7 @@
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
 		var/obj/structure/ventcover/ventcover = locate() in destination.contents
-		if(ventcover && item_state == "open")
+		if(ventcover)
 			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [ventcover] and start pulling yourself upward...</span>")
 			destination.audible_message("<span class='notice'>You hear something climbing up \the vent.</span>")
@@ -316,6 +316,21 @@
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
+	return falling_atom.fall_impact(src)
+
+/obj/structure/ventcover/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
+	if(target.z >= z)
+		return TRUE // We don't block sideways or upward movement.
+	else if(istype(mover) && mover.checkpass(PASSGRILLE))
+		return TRUE // Anything small enough to pass a grille will pass through a vent
+	if(!isturf(mover.loc))
+		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
+	else
+		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
+
+/obj/structure/ventcover/CheckFall(var/atom/movable/falling_atom)
+	if(istype(falling_atom) && falling_atom.checkpass(PASSGRILLE))
+		return FALSE
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)

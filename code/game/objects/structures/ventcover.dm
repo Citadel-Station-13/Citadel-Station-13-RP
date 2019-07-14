@@ -6,6 +6,7 @@
 	item_state = "closed"
 	density = 0
 	anchored = 1.0
+	var/open = FALSE
 	w_class = ITEMSIZE_NORMAL
 	plane = PLATING_PLANE
 	//	flags = CONDUCT
@@ -29,7 +30,7 @@
 				O.update()
 	. = ..()
 
-/obj/structure/lattice/ex_act(severity)
+/obj/structure/ventcover/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -58,24 +59,13 @@
 			qdel(src)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
-			return
 		return
-	if (item_state == "closed" && W.is_crowbar())
-		user << "<span class='notice'>You start prying open the vent cover...</span>"
+	if(W.is_crowbar())
+		to_chat(user, "<span class='notice'>You start prying [open? "closed":"open"] the vent cover...</span>")
 		playsound(src, W.usesound, 100, 1)
-		if(do_after(user,5 SECONDS * W.toolspeed))
-			icon_state = "ventopen"
-			item_state = "open"
+		if(do_after(user, 5 SECONDS * W.toolspeed))
+			open = !open
+			to_chat(user, "<span class='notice'>You [open? "open":"close"] the cover.</span>")
+			icon_state = open? "ventopen":"vent"
 			update_icon()
-			to_chat(user, "<span class='notice'>You pry open the cover.</span>")
-		return
-	if (item_state == "open" && W.is_crowbar())
-		user << "<span class='notice'>You start closing the vent cover...</span>"
-		playsound(src, W.usesound, 100, 1)
-		if(do_after(user,5 SECONDS * W.toolspeed))
-			icon_state = "vent"
-			item_state = "closed"
-			update_icon()
-			to_chat(user, "<span class='notice'>You close the cover.</span>")
-		return
 	return

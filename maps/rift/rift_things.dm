@@ -3,6 +3,18 @@
 	icon_state = "fwindow"
 	maxhealth = 80
 
+//Meme shit for the map
+
+/obj/item/weapon/reagent_containers/food/condiment/cursed
+
+/obj/item/weapon/reagent_containers/food/condiment/cursed/initialize()
+	..()
+	reagents.add_reagent(pick("uranium", "phoron", "hydrophoron"), 50)
+	name = "\improper cursed condiment bottle"
+	desc = "Used in cooking?"
+	icon_state = "ketchup"
+
+
 //Special map objects
 /obj/effect/landmark/map_data/lythios43c
     height = 4
