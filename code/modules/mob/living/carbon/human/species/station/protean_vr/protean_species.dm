@@ -290,7 +290,7 @@
 		var/obj/item/organ/O = organ
 		// Fix internal damage
 		if(O.damage > 0)
-			O.damage = max(0,O.damage-0.1)
+			O.damage = max(0,O.damage-1)
 		// If not damaged, but dead, fix it
 		else if(O.status & ORGAN_DEAD)
 			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely

@@ -85,14 +85,14 @@
 	affected.fracture() //Does not apply damage, simply breaks it if it wasn't already. Doesn't stop a defib on its own.
 
 /datum/surgery_step/brainstem/drill_vertebrae/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='red'>[user]'s hand slips, shredding [target]'s brainstem with \the [tool]!</font>" , \
-	"<font color='red'>Your hand slips, shredding [target]'s brainstem with \the [tool]!</font>" )
-	affected.createwound(PIERCE, 10)
+	//var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	user.visible_message("<font color='red'>[user] almost loses their grip on the [tool]!</font>" , \
+	"<font color='red'>Your hand slips and nearly shreds [target]'s brainstem with \the [tool]!</font>" )
+	/*affected.createwound(PIERCE, 10)
 	target.AdjustParalysis(15)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs)
-			O.take_damage(rand(5,10))
+			O.take_damage(rand(5,10))*/ // Citadel Edit: Make NIF surgeries not so deadly
 
 /////////////////////////////
 // Bone Cleaning
@@ -124,14 +124,14 @@
 	target.op_stage.brainstem = 3
 
 /datum/surgery_step/brainstem/clean_chips/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	//var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, gouging [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, gouging [target]'s brainstem with \the [tool]!</font>" )
-	affected.createwound(CUT, 5)
+	/*affected.createwound(CUT, 5)
 	target.AdjustParalysis(10)
 	spawn()
 		for(var/obj/item/organ/internal/brain/O in affected.internal_organs) //If there's more than one...
-			O.take_damage(rand(1,10))
+			O.take_damage(rand(1,10))*/
 
 /////////////////////////////
 // Spinal Cord Repair

@@ -308,7 +308,7 @@ obj/item/clothing/suit/kimono
 	desc = "A rugged canvas trenchcoat, designed and created by TX Fabrication Corp. The coat appears to have its kevlar lining removed."
 	icon_state = "detective"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder,/obj/item/device/uv_light)
+	allowed = list(/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder,/obj/item/device/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/trench/grey
@@ -330,7 +330,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	desc = "A duster commonly seen on cowboys from Earth's late 1800's."
 	icon_state = "duster"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter)
+	allowed = list(/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter)
 	flags_inv = HIDEHOLSTER
 /*
  * stripper
@@ -378,23 +378,58 @@ obj/item/clothing/suit/storage/toggle/peacoat
 
 /obj/item/clothing/suit/storage/miljacket
 	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one's in the vintage olive drab."
 	icon_state = "militaryjacket_nobadge"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/miljacket/tan
+	name = "tan military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Now in sandy tans for desert fans."
+	icon_state = "militaryjacket_tan"
+	item_state_slots = list(slot_r_hand_str = "suit_orange", slot_l_hand_str = "suit_orange")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/grey
+	name = "grey military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one's in urban grey."
+	icon_state = "militaryjacket_grey"
+	item_state_slots = list(slot_r_hand_str = "suit_grey", slot_l_hand_str = "suit_grey")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/navy
+	name = "navy military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Dark navy, this one is."
+	icon_state = "militaryjacket_navy"
+	item_state_slots = list(slot_r_hand_str = "suit_navy", slot_l_hand_str = "suit_navy")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/black
+	name = "black military jacket"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. Now in tactical black."
+	icon_state = "militaryjacket_black"
+	item_state_slots = list(slot_r_hand_str = "suit_black", slot_l_hand_str = "suit_black")
+	flags_inv = HIDEHOLSTER
+
 /obj/item/clothing/suit/storage/miljacket/alt
-	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	name = "military jacket, alternate"
+	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable. This one has a badge on the front."
 	icon_state = "militaryjacket_badge"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/miljacket/green
-	name = "military jacket"
+	name = "dark green military jacket"
 	desc = "A dark green canvas jacket. Feels sturdy, yet comfortable."
 	icon_state = "militaryjacket_green"
 	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/miljacket/white
+	name = "white military jacket"
+	desc = "A white canvas jacket. Don't wear this for walks in the snow, it won't keep you warm."
+	icon_state = "militaryjacket_white"
+	item_state_slots = list(slot_r_hand_str = "med_dep_jacket", slot_l_hand_str = "med_dep_jacket")
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/bomber
@@ -402,7 +437,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	desc = "A thick, well-worn WW2 leather bomber jacket."
 	icon_state = "bomber"
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
-	allowed = list (/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|ARMS
@@ -424,7 +459,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	name = "leather jacket"
 	desc = "A black leather coat."
 	icon_state = "leather_jacket"
-	allowed = list (/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 
@@ -801,7 +836,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	allowed = list (/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+	allowed = list (/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
 
 /obj/item/clothing/suit/storage/snowsuit/command
 	name = "command snowsuit"
