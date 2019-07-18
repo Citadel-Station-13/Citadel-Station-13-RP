@@ -9,13 +9,13 @@
 
 /datum/map_template/shelter/New()
 	. = ..()
-	blacklisted_turfs = typecacheof(/turf/unsimulated)
+	blacklisted_turfs = typecacheof(/turf/unsimulated, /turf/simulated/wall)
 	whitelisted_turfs = list()
 	banned_areas = typecacheof(/area/shuttle)
 	banned_objects = list()
 
 /datum/map_template/shelter/proc/check_deploy(turf/deploy_location)
-	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
+	var/affected = get_affected_turfs(deploy_location, centered = TRUE)
 	for(var/turf/T in affected)
 		var/area/A = get_area(T)
 		if(is_type_in_typecache(A, banned_areas))
@@ -48,7 +48,6 @@
 
 /datum/map_template/shelter/alpha/New()
 	. = ..()
-	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
 	banned_objects = list()
 
 /datum/map_template/shelter/beta

@@ -58,6 +58,7 @@ GLOBAL_LIST_EMPTY(grub_machine_overlays)
 	return ..()
 
 /mob/living/simple_animal/solargrub_larva/Destroy()
+	eject_from_machine()
 	QDEL_NULL(powermachine)
 	QDEL_NULL(sparks)
 	QDEL_NULL(machine_effect)

@@ -61,7 +61,6 @@
 		return list(height, width, zdepth)
 	return list(width, height, zdepth)
 
-
 /datum/parsed_map/proc/initTemplateBounds()
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/obj/structure/cable/cables = list()
@@ -174,6 +173,7 @@
 	template.load_new_z(orientation, ztraits)
 
 /datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE, orientation = SOUTH)
+	get_size(orientation)
 	var/turf/placement = T
 	if(centered)
 		var/turf/corner = locate(placement.x - FLOOR(((orientation & (NORTH|SOUTH))? width : height) / 2, 1), placement.y - FLOOR(((orientation & (NORTH|SOUTH))? height : width) / 2, 1), placement.z) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false

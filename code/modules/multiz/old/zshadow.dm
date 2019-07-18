@@ -25,8 +25,7 @@
 
 /mob/zshadow/Destroy()
 	owner = null
-	..() //But we don't return because the hint is wrong
-	return QDEL_HINT_QUEUE
+	return ..()
 
 /mob/Destroy()
 	QDEL_NULL(shadow)
@@ -47,18 +46,9 @@
 		verb += " from above"
 	return owner.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
 
-/mob/zshadow/proc/sync_icon(var/mob/M)
-	name = M.name
-	icon = M.icon
-	icon_state = M.icon_state
-	//color = M.color
-	color = "#848484"
-	overlays = M.overlays
-	transform = M.transform
-	dir = M.dir
-	invisibility = M.invisibility
-	if(shadow)
-		shadow.sync_icon(src)
+/mob/zshadow/proc/sync_icon(mob/M)
+	appearance = M
+	shadow?.sync_icon(src)
 
 /mob/living/Move()
 	. = ..()
