@@ -134,3 +134,9 @@
 	path = /obj/item/clothing/under/donator/pinksuit
 	ckeywhitelist = list("tippler")
 
+/datum/gear/donator/peltcloak
+	display_name = "Pelt Cloak"
+	sort_category = "Donator"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/peltcloak
+	ckeywhitelist = list("irkallaepsilon")
+
