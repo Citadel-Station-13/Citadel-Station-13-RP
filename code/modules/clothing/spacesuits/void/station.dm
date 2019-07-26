@@ -321,13 +321,13 @@
 
 //Head of Security - update to the snowflake suit
 /obj/item/clothing/head/helmet/space/void/headofsecurity
-	desc = "Shiny blue helmet, complete with far-too-big golden visor. It probably doesn't protects from bright flashes."
+	desc = "A customized security voidsuit helmet. Has additional composite armor."
 	name = "head of security protosuit helmet"
 	icon_state = "hosproto"
 	armor = list(melee = 60, bullet = 35, laser = 35,energy = 15, bomb = 50, bio = 100, rad = 10)
 
 /obj/item/clothing/suit/space/void/headofsecurity
-	desc = "Sleek, blue and gold suit, fitted with spaceproofing and protective inserts. Fits like an oversized, shiny glove."
+	desc = "A customized security voidsuit. Has additional composite armor."
 	name = "head of security protosuit"
 	icon_state = "hosproto_void"
 	armor = list(melee = 60, bullet = 35, laser = 35,energy = 15, bomb = 50, bio = 100, rad = 50)
