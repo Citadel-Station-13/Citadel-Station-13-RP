@@ -78,7 +78,7 @@
 	var/enviroment_bad = 0 //In case they're ever set on fire while wearing a spacesuit, we don't want the message that they're reacting with the atmosphere.
 
 	if(environment.gas["oxygen"] > 0.5)
-		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/plasman) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space/plasman))
+		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space) && H.head && istype(H.head,/obj/item/clothing/head/helmet/space)) // now any airtight spessuit works for them. which means exploration voidsuits work :O
 			return
 		H.adjust_fire_stacks(2)
 		enviroment_bad = 1
@@ -162,6 +162,12 @@
 		if("Internal Affairs Agent","Command Secretary")
 			suit=/obj/item/clothing/suit/space/plasman/fancy
 			helm=/obj/item/clothing/head/helmet/space/plasman/fancy
+		if("Clown")
+			suit=/obj/item/clothing/suit/space/plasman/clown
+			helm=/obj/item/clothing/head/helmet/space/plasman/clown
+		if("Mime")
+			suit=/obj/item/clothing/suit/space/plasman/mime
+			helm=/obj/item/clothing/head/helmet/space/plasman/mime
 	H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new helm(H), slot_head)
 	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_hand)

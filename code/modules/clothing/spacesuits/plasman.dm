@@ -250,3 +250,41 @@
 
 /obj/item/clothing/head/helmet/space/plasman/janitor
 	icon_state = "plasmaman_helmetjanitor"
+
+//
+// CLOWN AND MIME (im separating these because i made these a while after the rest 4head)
+//
+
+/obj/item/clothing/suit/space/plasman/clown
+	icon_state = "plasmaman_suitclown"
+	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is violently neon-colored, with giant shoes."
+
+/obj/item/clothing/head/helmet/space/plasman/clown
+	icon_state = "plasmaman_helmetclown"
+	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one has had its visor painted over, and a giant orange wig attached."
+	light_overlay = "plasmaman_overlay_clown"
+
+/obj/item/clothing/suit/space/plasman/mime
+	icon_state = "plasmaman_suitmime"
+	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is black and white, and compels you to be quiet."
+
+/obj/item/clothing/head/helmet/space/plasman/mime
+	icon_state = "plasmaman_helmetmime"
+	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one has had its visor painted over in the visage of a mime."
+	light_overlay = "plasmaman_overlay_mime"
+
+//
+// ALT LOADOUT HELMETS (YKNOW I HAD TO OK)
+//
+
+/obj/item/clothing/head/helmet/space/plasman/sec/captain/alt
+	icon_state = "plasmaman_helmetcaptain_alt"
+	light_overlay = "plasmaman_overlay_alt"
+
+/obj/item/clothing/head/helmet/space/plasman/sec/hos/alt1
+	icon_state = "plasmaman_helmethos_alt"
+	light_overlay = "plasmaman_overlay_alt"
+
+/obj/item/clothing/head/helmet/space/plasman/sec/hos/alt2
+	icon_state = "plasmaman_helmetspook"
+	light_overlay = "plasmaman_overlay_FLAMEON" // look its fire ok i had to
