@@ -48,7 +48,7 @@
 			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 	user.do_attack_animation(src)
 
-/obj/machinery/door/New()
+/obj/machinery/door/Initialize(mapload)
 	. = ..()
 	if(density)
 		layer = closed_layer
@@ -57,7 +57,6 @@
 	else
 		layer = open_layer
 		explosion_resistance = 0
-
 
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -70,8 +69,7 @@
 	health = maxhealth
 	update_icon()
 
-	update_nearby_tiles(need_rebuild=1)
-	return
+	update_nearby_tiles(need_rebuild = TRUE)
 
 /obj/machinery/door/Destroy()
 	density = 0

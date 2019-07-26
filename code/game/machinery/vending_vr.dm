@@ -3,25 +3,25 @@
 //	products += list(/obj/item/seeds/shrinkshroom = 3,/obj/item/seeds/megashroom = 3)
 //	..()
 
-/obj/machinery/vending/security/New()
+/obj/machinery/vending/security/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/weapon/gun/energy/taser = 8,/obj/item/weapon/gun/energy/stunrevolver = 4,
 					/obj/item/weapon/reagent_containers/spray/pepper = 6,/obj/item/taperoll/police = 6,
 					/obj/item/weapon/gun/projectile/sec/flash = 4, /obj/item/ammo_magazine/m45/pepperball = 12,
 					/obj/item/clothing/glasses/omnihud/sec = 6)
-	..()
 
-/obj/machinery/vending/tool/New()
+/obj/machinery/vending/tool/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/weapon/reagent_containers/spray/windowsealant = 5)
-	..()
 
-/obj/machinery/vending/engivend/New()
+/obj/machinery/vending/engivend/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/clothing/glasses/omnihud/eng = 6)
-	..()
 
-/obj/machinery/vending/medical/New()
+/obj/machinery/vending/medical/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/weapon/backup_implanter = 3,
 				/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/device/glasses_kit = 1,  /obj/item/weapon/storage/quickdraw/syringe_case = 4)	//CITADEL CHANGE - Removes Life Crystals
-	..()
 
 //Custom vendors
 /obj/machinery/vending/dinnerware

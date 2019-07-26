@@ -134,7 +134,8 @@
 /obj/effect/spider/spiderling/frost
 	grow_as = list(/mob/living/simple_animal/hostile/giant_spider/frost)
 
-/obj/effect/spider/spiderling/New(var/location, var/atom/parent)
+/obj/effect/spider/spiderling/Initialize(mapload, parent)
+	. = ..()
 	pixel_x = rand(6,-6)
 	pixel_y = rand(6,-6)
 	processing_objects |= src
@@ -142,7 +143,6 @@
 	if(prob(50))
 		amount_grown = 1
 	get_light_and_color(parent)
-	..()
 
 /obj/effect/spider/spiderling/Destroy()
 	processing_objects -= src

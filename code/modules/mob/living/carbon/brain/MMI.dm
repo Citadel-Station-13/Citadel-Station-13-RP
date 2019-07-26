@@ -19,7 +19,8 @@
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/obj/item/device/radio/headset/mmi_radio/radio = null//Let's give it a radio.
 
-/obj/item/device/mmi/New()
+/obj/item/device/mmi/Initialize(mapload)
+	. = ..()
 	radio = new(src)//Spawns a radio inside the MMI.
 
 /obj/item/device/mmi/verb/toggle_radio()

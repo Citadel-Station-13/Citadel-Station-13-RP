@@ -9,14 +9,14 @@
 	var/air_frequency = 1437
 	autoclose = 0
 
-/obj/machinery/door/airlock/alarmlock/New()
-	..()
+/obj/machinery/door/airlock/alarmlock/Initialize()
+	. = ..()
 	air_connection = new
 
 /obj/machinery/door/airlock/alarmlock/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,air_frequency)
-	..()
+	return ..()
 
 /obj/machinery/door/airlock/alarmlock/Initialize()
 	. = ..()

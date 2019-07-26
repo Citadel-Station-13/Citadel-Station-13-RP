@@ -50,13 +50,13 @@
 		"cold"
 	)
 
-/obj/machinery/door/firedoor/New()
+/obj/machinery/door/firedoor/Initialize(mapload)
 	. = ..()
-	for(var/obj/machinery/door/firedoor/F in loc)
-		if(F != src)
-			spawn(1)
-				qdel(src)
-			return .
+	if(mapload)
+		for(var/obj/machinery/door/firedoor/F in loc)
+			if(F != src)
+				. = INITIALIZE_HINT_QDEL
+				CRASH("WARNING: Duplicate firedoor deleted at mapload.")
 	var/area/A = get_area(src)
 	ASSERT(istype(A))
 

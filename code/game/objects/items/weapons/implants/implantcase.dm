@@ -67,11 +67,9 @@
 	desc = "A case containing a tracking implant."
 	icon_state = "implantcase-b"
 
-/obj/item/weapon/implantcase/tracking/New()
-	src.imp = new /obj/item/weapon/implant/tracking( src )
-	..()
-	return
-
+/obj/item/weapon/implantcase/tracking/Initialize(mapload)
+	. = ..()
+	imp = new /obj/item/weapon/implant/tracking( src )
 
 /obj/item/weapon/implantcase/explosive
 	name = "glass case - 'explosive'"

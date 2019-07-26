@@ -11,7 +11,8 @@
 	var/panel_open = 0
 	var/datum/wires/mines/wires = null
 
-/obj/effect/mine/New()
+/obj/effect/mine/Initialize(mapload)
+	. = ..()
 	icon_state = "uglyminearmed"
 	wires = new(src)
 

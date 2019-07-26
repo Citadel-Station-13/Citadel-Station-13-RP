@@ -336,14 +336,13 @@
 /obj/item/weapon/storage/bag/circuits/mini/arithmetic/all // Don't believe this will ever be needed.
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/weapon/storage/bag/circuits/mini/arithmetic/New()
-	..()
+/obj/item/weapon/storage/bag/circuits/mini/arithmetic/Initialize(mapload)
+	. = ..()
 	for(var/obj/item/integrated_circuit/arithmetic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/weapon/storage/bag/circuits/mini/trig
 	name = "trig circuit box"

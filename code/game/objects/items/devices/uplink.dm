@@ -220,8 +220,8 @@
 // Includes normal radio uplink, multitool uplink,
 // implant uplink (not the implant tool) and a preset headset uplink.
 
-/obj/item/device/radio/uplink/New(atom/loc, datum/mind/target_mind, telecrystals)
-	..(loc)
+/obj/item/device/radio/uplink/Initialize(mapload, datum/mind/target_mind, telecrystals)
+	. = ..()
 	hidden_uplink = new(src, target_mind, telecrystals)
 	icon_state = "radio"
 

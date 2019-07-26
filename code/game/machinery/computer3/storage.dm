@@ -21,14 +21,14 @@
 
 	var/list/spawnfiles = list()// For mappers, special drives, and data disks
 
-/obj/item/part/computer/storage/New()
-	..()
+/obj/item/part/computer/storage/Initialize()
+	. = ..()
 	if(islist(spawnfiles))
 		if(removeable && spawnfiles.len)
 			var/obj/item/part/computer/storage/removable/R = src
 			R.inserted = new(src)
 			if(writeprotect)
-				R.inserted.writeprotect = 1
+				R.inserted.writeprotect = TRUE
 		for(var/typekey in spawnfiles)
 			addfile(new typekey(),1)
 

@@ -12,8 +12,8 @@
 	force_divisor = 0
 	unbreakable = 1
 
-/obj/item/weapon/material/sword/foam/New(var/newloc)
-	..(newloc,"foam")
+/obj/item/weapon/material/sword/foam/Initialize(mapload)
+	..(mapload, "foam")
 
 /obj/item/weapon/material/twohanded/spear/foam
 	attack_verb = list("bonked","whacked")
