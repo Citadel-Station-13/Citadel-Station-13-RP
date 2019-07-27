@@ -340,22 +340,22 @@
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
 // Begin Citadel Changes - New advanced kit sprites
-/obj/item/stack/medical/advanced/New()
-	..()
+/obj/item/stack/medical/advanced/initialize()
+	. = ..()
 	update_icon()
-	return
 
 /obj/item/stack/medical/advanced/update_icon()
-	if(amount <= 2)
-		icon_state = initial(icon_state)
-	else if (amount <= 4)
-		icon_state = "[initial(icon_state)]_4"
-	else if (amount <= 6)
-		icon_state = "[initial(icon_state)]_6"
-	else if (amount <= 8)
-		icon_state = "[initial(icon_state)]_8"
-	else if (amount <= 9)
-		icon_state = "[initial(icon_state)]_9"
-	else
-		icon_state = "[initial(icon_state)]_10"
+	switch(amount)
+		if(1 to 2)
+			icon_state = initial(icon_state)
+		if(3 to 4)
+			icon_state = "[initial(icon_state)]_4"
+		if(5 to 6)
+			icon_state = "[initial(icon_state)]_6"
+		if(7 to 8)
+			icon_state = "[initial(icon_state)]_8"
+		if(9)
+			icon_state = "[initial(icon_state)]_9"
+		else
+			icon_state = "[initial(icon_state)]_10"
 // End Citadel Changes
