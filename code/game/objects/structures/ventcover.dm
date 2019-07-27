@@ -55,17 +55,26 @@
 		if(WT.welding == 1)
 			if(WT.remove_fuel(0,user))
 				user << "<span class='notice'>Slicing off plating...</span>"
-			new /obj/item/stack/rods(src.loc)
+			new /obj/item/stack/rods
+			new /obj/item/stack/rods
 			qdel(src)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
-		return
 	if(W.is_crowbar())
 		to_chat(user, "<span class='notice'>You start prying [open? "closed":"open"] the vent cover...</span>")
 		playsound(src, W.usesound, 100, 1)
 		if(do_after(user, 5 SECONDS * W.toolspeed))
 			open = !open
-			to_chat(user, "<span class='notice'>You [open? "open":"close"] the cover.</span>")
-			icon_state = open? "ventopen":"vent"
+			to_chat(user, "<span class='notice'>You pry [open? "open":"close"] the cover.</span>")
 			update_icon()
-	return
+	if(W.is_screwdriver())
+		to_chat(user, "<span class='notice'>You start to [open? "closed":"open"] the vent cover...</span>")
+		playsound(src, W.usesound, 20, 1)
+		if(do_after(user, 10 SECONDS * W.toolspeed))
+			open = !open
+			to_chat(user, "<span class='notice'>You [open? "open":"close"] the cover.</span>")
+			update_icon()
+
+/obj/structure/ventcover/update_icon()
+	. = ..()
+	icon_state = open? "vent-open" : "vent"

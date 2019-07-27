@@ -140,7 +140,7 @@
 			Z_LEVEL_SURFACE_LOW,
 			Z_LEVEL_SURFACE_MID)
 	else
-		return ..()
+		return list(srcz)
 /*
 /datum/map/southern_cross/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))

@@ -38,8 +38,9 @@
 		return 0
 
 	var/area/area = get_area(src)
-	if(direction == UP && area.has_gravity() && can_overcome_gravity())
+	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
+		var/obj/structure/ventcover/ventcover = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [lattice] and start pulling yourself upward...</span>")
@@ -49,17 +50,20 @@
 			else
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
-		var/obj/structure/ventcover/ventcover = locate() in destination.contents
-		if(ventcover)
+		if(ventcover && ventcover?.open)
 			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [ventcover] and start pulling yourself upward...</span>")
+			do_after(src, pull_up_time)
+			to_chat(src, "<span class='notice'>You pull yourself up.</span>")
 			destination.audible_message("<span class='notice'>You hear something climbing up \the vent.</span>")
-			if(do_after(src, pull_up_time))
-				to_chat(src, "<span class='notice'>You pull yourself up.</span>")
-			else
-				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
-				return 0
-		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
+			return
+		if(ventcover && !ventcover?.open)
+			to_chat(src, "<span class='warning'>The vent is closed, you cannot climb up.</span>")
+			return 0
+		else
+			to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
+			return 0
+		if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
 			var/mob/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
@@ -81,20 +85,6 @@
 		else
 			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
 			return 0
-
-	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
-		var/obj/structure/ventcover/ventcover = locate() in destination.contents
-		if(ventcover && item_state == "open")
-			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
-			to_chat(src, "<span class='notice'>You grab \the [ventcover] and start pulling yourself upward...</span>")
-			destination.audible_message("<span class='notice'>You hear something climbing up \the vent.</span>")
-			if(do_after(src, pull_up_time))
-				to_chat(src, "<span class='notice'>You pull yourself up.</span>")
-			else
-				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
-				return 0
-		return
-	return
 
 	for(var/atom/A in destination)
 		if(!A.CanPass(src, start, 1.5, 0))

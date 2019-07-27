@@ -76,6 +76,7 @@
 	sound_env = SMALL_SOFTFLOOR
 
 
+
 // /area/tether/surfacebase/east_stairs_one //This is just part of a lower hallway
 
 /area/tether/surfacebase/east_stairs_two
@@ -172,9 +173,9 @@
 	name = "\improper Surface Security Lobby"
 /area/tether/surfacebase/security/common
 	name = "\improper Surface Security Room"
-/area/tether/surfacebase/security/armory
+/area/rift/surfacebase/security/armory
 	name = "\improper Surface Armory"
-/area/tether/surfacebase/security/checkpoint
+/area/rift/surfacebase/security/checkpoint
 	name = "\improper Surface Checkpoint Office"
 /area/tether/surfacebase/security/hallway
 	name = "\improper Surface Checkpoint Hallway"
