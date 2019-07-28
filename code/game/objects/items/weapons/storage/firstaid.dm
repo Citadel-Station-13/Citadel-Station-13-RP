@@ -71,7 +71,7 @@
 	name = "oxygen deprivation first aid kit"
 	desc = "A box full of oxygen goodies."
 	icon_state = "o2"
-	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2") 
+	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2")
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/pill/dexalin,
 		/obj/item/weapon/reagent_containers/pill/dexalin,
@@ -171,8 +171,11 @@
 	max_w_class = ITEMSIZE_TINY
 
 	var/label_text = ""
+	var/labeled = 0 // Citadel Change - Used in labeling
 	var/base_name = " "
 	var/base_desc = " "
+	var/base_icon = "pill_canister" // Citadel Change - Used in recoloring
+	var/bottle_color = "orange" // Citadel Change - Used in recoloring
 
 /obj/item/weapon/storage/pill_bottle/New()
 	..()
@@ -192,6 +195,8 @@
 			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
+			labeled = 1 // Citadel Change - Overlay for labels
+			update_icon() // Citadel Change - Overlay for labels
 	else
 		..()
 
@@ -207,62 +212,119 @@
 		name = "[base_name] ([label_text])"
 	desc = "[base_desc] It is labeled \"[label_text]\"."
 
+/obj/item/weapon/storage/pill_bottle/verb/choose_color() // BEGIN Citadel Changes - Bottle recoloring
+	set name = "Recolor bottle"
+	set category = "Object"
+	set desc = "Click to choose a color for the pill bottle."
+
+	var/mob/M = usr
+	var/list/options = list()
+	options["red"] = "red"
+	options["orange"] = "orange"
+	options["yellow"] = "yellow"
+	options["green"] = "green"
+	options["blue"] = "blue"
+	options["purple"] = "purple"
+	options["pink"] = "pink"
+	options["black"] = "black"
+	options["white"] = "white"
+	var/choice = input(M,"Choose a color!","Recolor Bottle") in options
+	if(src && choice && !M.stat && in_range(M,src))
+		bottle_color = "[choice]"
+		to_chat(usr,"<span class='notice'>The bottle is now [choice]. How [pick("pretty","professional","informative","creative","appropriate","bold")]!</span>")
+		update_icon()
+		return 1
+
+/obj/item/weapon/storage/pill_bottle/update_icon()
+	..()
+	if(labeled == 1)
+		add_overlay(image(icon = 'icons/obj/chemical.dmi', icon_state = "pill_canister_label"))
+	if(bottle_color == "orange")
+		icon_state = "[base_icon]"
+	else
+		icon_state = "[base_icon]_[bottle_color]"
+
+/obj/item/weapon/storage/pill_bottle/initialize()
+	. = ..()
+	update_icon() // END Citadel Changes - Bottle recoloring
+
 /obj/item/weapon/storage/pill_bottle/antitox
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to counter toxins."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "green" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/antitox = 7)
 
 /obj/item/weapon/storage/pill_bottle/bicaridine
 	name = "bottle of Bicaridine pills"
 	desc = "Contains pills used to stabilize the severely injured."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "red" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/bicaridine = 7)
 
 /obj/item/weapon/storage/pill_bottle/dexalin_plus
 	name = "bottle of Dexalin Plus pills"
 	desc = "Contains pills used to treat extreme cases of oxygen deprivation."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "blue" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dexalin_plus = 7)
 
 /obj/item/weapon/storage/pill_bottle/dermaline
 	name = "bottle of Dermaline pills"
 	desc = "Contains pills used to treat burn wounds."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dermaline = 7)
 
 /obj/item/weapon/storage/pill_bottle/dylovene
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to treat toxic substances in the blood."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "green" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/dylovene = 7)
 
 /obj/item/weapon/storage/pill_bottle/inaprovaline
 	name = "bottle of Inaprovaline pills"
 	desc = "Contains pills used to stabilize patients."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "blue" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/inaprovaline = 7)
 
 /obj/item/weapon/storage/pill_bottle/kelotane
 	name = "bottle of kelotane pills"
 	desc = "Contains pills used to treat burns."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/kelotane = 7)
 
 /obj/item/weapon/storage/pill_bottle/spaceacillin
 	name = "bottle of Spaceacillin pills"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "white" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/spaceacillin = 7)
 
 /obj/item/weapon/storage/pill_bottle/tramadol
 	name = "bottle of Tramadol pills"
 	desc = "Contains pills used to relieve pain."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "purple" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/tramadol = 7)
 
 /obj/item/weapon/storage/pill_bottle/citalopram
 	name = "bottle of Citalopram pills"
 	desc = "Contains pills used to stabilize a patient's mood."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/citalopram = 7)
 
 /obj/item/weapon/storage/pill_bottle/carbon
 	name = "bottle of Carbon pills"
 	desc = "Contains pills used to neutralise chemicals in the stomach."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "black" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/carbon = 7)
 
 /obj/item/weapon/storage/pill_bottle/iron
 	name = "bottle of Iron pills"
 	desc = "Contains pills used to aid in blood regeneration."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "black" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/weapon/reagent_containers/pill/iron = 7)
