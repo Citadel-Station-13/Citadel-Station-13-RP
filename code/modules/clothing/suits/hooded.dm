@@ -181,3 +181,27 @@
 		/obj/item/weapon/pickaxe,
 		/obj/item/weapon/gun/projectile/sec/flash
 		)
+
+/obj/item/clothing/suit/storage/hooded/explorer
+	name = "explorer suit"
+	desc = "An armoured suit for exploring harsh environments."
+	icon_state = "explorer"
+	item_state = "explorer"
+	flags = THICKMATERIAL
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	hoodtype = /obj/item/clothing/head/hood/explorer
+	siemens_coefficient = 0.9
+	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35) // Inferior to sec vests in bullet/laser but better for environmental protection.
+	allowed = list(
+		/obj/item/device/flashlight,
+		/obj/item/weapon/gun,
+		/obj/item/ammo_magazine,
+		/obj/item/weapon/melee,
+		/obj/item/weapon/material/knife,
+		/obj/item/weapon/tank,
+		/obj/item/device/radio,
+		/obj/item/weapon/pickaxe,
+		/obj/item/weapon/gun/projectile/sec/flash
+		)
