@@ -10,7 +10,7 @@
 	var/model_info
 	dir = SOUTH
 
-/obj/item/robot_parts/setDir()
+/obj/item/robot_parts/set_dir()
 	return
 
 /obj/item/robot_parts/New(var/newloc, var/model)
@@ -113,6 +113,18 @@
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of metal to arm the robot frame.</span>")
+	if(istype(W, /obj/item/stack/material) && W.get_material_name() == "plastic" && !l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
+		var/obj/item/stack/material/M = W
+		if (M.use(1))
+			var/obj/item/weapon/secbot_assembly/edCLN_assembly/B = new /obj/item/weapon/secbot_assembly/edCLN_assembly
+			B.loc = get_turf(src)
+			to_chat(user, "<span class='notice'>You add a plastic covering to the robot frame.</span>")
+			if (user.get_inactive_hand()==src)
+				user.remove_from_mob(src)
+				user.put_in_inactive_hand(B)
+			qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need one sheet of plastic to cover the robot frame.</span>")
 	if(istype(W, /obj/item/robot_parts/l_leg))
 		if(src.l_leg)	return
 		user.drop_item()
@@ -175,7 +187,7 @@
 			if(!M.brainmob.key)
 				var/ghost_can_reenter = 0
 				if(M.brainmob.mind)
-					for(var/mob/observer/dead/G in GLOB.player_list)
+					for(var/mob/observer/dead/G in player_list)
 						if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
 							ghost_can_reenter = 1 //May come in use again at another point.
 							to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; though it may be able to auto-resuscitate.</span>") //Jamming a ghosted brain into a borg is likely detrimental, and may result in some problems.
