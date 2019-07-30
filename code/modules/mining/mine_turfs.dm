@@ -20,7 +20,7 @@ var/list/mining_overlay_cache = list()
 
 	can_dirty = FALSE
 
-	var/ore/mineral
+	var/datum/ore/mineral
 	var/sand_dug
 	var/mined_ore = 0
 	var/last_act = 0
@@ -188,10 +188,10 @@ var/list/mining_overlay_cache = list()
 
 	if(severity <= 2) // Now to expose the ore lying under the sand.
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
-			for(var/ore in resources)
+			for(var/datum/ore in resources)
 				var/amount_to_give = rand(CEILING(resources[ore]/2, 1), resources[ore])  // Should result in at least one piece of ore.
 				for(var/i=1, i <= amount_to_give, i++)
-					var/oretype = GLOB.ore_types[ore]
+					var/datum/oretype = GLOB.ore_types[ore]
 					new oretype(src)
 				resources[ore] = 0
 

@@ -363,7 +363,7 @@
 			recipie.name = I.name
 			recipie.path = type
 			recipie.resources = list()
-			for(var/material in I.matter)
+			for(var/datum/material in I.matter)
 				recipie.resources[material] = I.matter[material]*1.25 // More expensive to produce than they are to recycle.
 			partslathe_recipies[type] = recipie
 			qdel(I)

@@ -5,7 +5,7 @@ var/datum/category_collection/autolathe/autolathe_recipes
 	var/obj/item/I = new path()
 	if(I.matter && !resources)
 		resources = list()
-		for(var/material in I.matter)
+		for(var/datum/material in I.matter)
 			resources[material] = I.matter[material]*1.25 // More expensive to produce than they are to recycle.
 	if(is_stack && istype(I, /obj/item/stack))
 		var/obj/item/stack/IS = I

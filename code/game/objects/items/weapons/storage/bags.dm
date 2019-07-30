@@ -157,7 +157,7 @@
 		last_update = world.time
 
 	to_chat(user, "<span class='notice'>It holds:</span>")
-	for(var/ore in stored_ore)
+	for(var/datum/ore in stored_ore)
 		to_chat(user, "<span class='notice'>- [stored_ore[ore]] [ore]</span>")
 	return
 

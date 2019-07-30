@@ -264,7 +264,7 @@
 
 	else if(istype(W, /obj/item/stack/material) && !glass)
 		var/obj/item/stack/S = W
-		var/material_name = S.get_material_name()
+		var/datum/material_name = S.get_material_name()
 		if (S)
 			if (S.get_amount() >= 1)
 				if(material_name == "rglass")

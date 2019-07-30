@@ -64,7 +64,7 @@
 		var/list/material_top = list("<tr>")
 		var/list/material_bottom = list("<tr>")
 
-		for(var/material in stored_material)
+		for(var/datum/material in stored_material)
 			material_top += "<td width = '25%' align = center><b>[material]</b></td>"
 			material_bottom += "<td width = '25%' align = center>[stored_material[material]]<b>/[storage_capacity[material]]</b></td>"
 
@@ -83,7 +83,7 @@
 				material_string += "No resources required.</td>"
 			else
 				//Make sure it's buildable and list requires resources.
-				for(var/material in R.resources)
+				for(var/datum/material in R.resources)
 					var/sheets = round(stored_material[material]/round(R.resources[material]*mat_efficiency))
 					if(isnull(max_sheets) || max_sheets > sheets)
 						max_sheets = sheets
@@ -171,7 +171,7 @@
 	var/total_used = 0     // Amount of material used.
 	var/mass_per_sheet = 0 // Amount of material constituting one sheet.
 
-	for(var/material in eating.matter)
+	for(var/datum/material in eating.matter)
 
 		if(isnull(stored_material[material]) || isnull(storage_capacity[material]))
 			continue
@@ -252,13 +252,13 @@
 		update_use_power(2)
 
 		//Check if we still have the materials.
-		for(var/material in making.resources)
+		for(var/datum/material in making.resources)
 			if(!isnull(stored_material[material]))
 				if(stored_material[material] < round(making.resources[material] * mat_efficiency) * multiplier)
 					return
 
 		//Consume materials.
-		for(var/material in making.resources)
+		for(var/datum/material in making.resources)
 			if(!isnull(stored_material[material]))
 				stored_material[material] = max(0, stored_material[material] - round(making.resources[material] * mat_efficiency) * multiplier)
 
@@ -308,7 +308,7 @@
 
 /obj/machinery/autolathe/dismantle()
 	for(var/mat in stored_material)
-		var/material/M = get_material_by_name(mat)
+		var/datum/material/M = get_material_by_name(mat)
 		if(!istype(M))
 			continue
 		var/obj/item/stack/material/S = new M.stack_type(get_turf(src))

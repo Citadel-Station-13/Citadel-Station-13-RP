@@ -44,7 +44,7 @@ var/list/name_to_material
 
 //mostly for convenience
 /obj/proc/get_material_name()
-	var/material/material = get_material()
+	var/datum/material/material = get_material()
 	if(material)
 		return material.name
 
@@ -53,7 +53,7 @@ var/list/name_to_material
 	if(name_to_material && !force_remake) return // Already set up!
 	name_to_material = list()
 	for(var/type in typesof(/material) - /material)
-		var/material/new_mineral = new type
+		var/datum/material/new_mineral = new type
 		if(!new_mineral.name)
 			continue
 		name_to_material[lowertext(new_mineral.name)] = new_mineral
@@ -66,7 +66,7 @@ var/list/name_to_material
 	return name_to_material[name]
 
 /proc/material_display_name(name)
-	var/material/material = get_material_by_name(name)
+	var/datum/material/material = get_material_by_name(name)
 	if(material)
 		return material.display_name
 	return null
@@ -203,7 +203,7 @@ var/list/name_to_material
 	name = "placeholder"
 
 // Places a girder object when a wall is dismantled, also applies reinforced material.
-/datum/material/proc/place_dismantled_girder(var/turf/target, var/material/reinf_material, var/material/girder_material)
+/datum/material/proc/place_dismantled_girder(var/turf/target, var/datum/material/reinf_material, var/datum/material/girder_material)
 	var/obj/structure/girder/G = new(target)
 	if(reinf_material)
 		G.reinf_material = reinf_material
@@ -387,7 +387,7 @@ var/list/name_to_material
 	integrity = 600
 	icon_base = "diona"
 	icon_reinf = "noreinf"
-
+ 
 /datum/material/diona/place_dismantled_product()
 	return
 
