@@ -25,14 +25,14 @@
 	var/datum/wires/smartfridge/wires = null
 
 /obj/machinery/smartfridge/secure
-	is_secure = 1
+	is_secure = TRUE
 
-/obj/machinery/smartfridge/New()
-	..()
+/obj/machinery/smartfridge/Initialize(mapload)
+	. = ..()
 	if(is_secure)
-		wires = new/datum/wires/smartfridge/secure(src)
+		wires = new /datum/wires/smartfridge/secure(src)
 	else
-		wires = new/datum/wires/smartfridge(src)
+		wires = new /datum/wires/smartfridge(src)
 
 /obj/machinery/smartfridge/Destroy()
 	qdel(wires)

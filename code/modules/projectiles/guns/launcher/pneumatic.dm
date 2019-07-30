@@ -13,7 +13,7 @@
 	var/fire_pressure                                   // Used in fire checks/pressure checks.
 	var/max_w_class = ITEMSIZE_NORMAL                   // Hopper intake size.
 	var/max_storage_space = ITEMSIZE_COST_NORMAL * 5    // Total internal storage size.
-	var/obj/item/weapon/tank/tank = null                // Tank of gas for use in firing the cannon.
+	var/obj/item/weapon/tank/tank		                // Tank of gas for use in firing the cannon.
 
 	var/obj/item/weapon/storage/item_storage
 	var/pressure_setting = 10                           // Percentage of the gas in the tank used to fire the projectile.
@@ -21,8 +21,9 @@
 	var/force_divisor = 400                             // Force equates to speed. Speed/5 equates to a damage multiplier for whoever you hit.
 	                                                    // For reference, a fully pressurized oxy tank at 50% gas release firing a health
 	                                                    // analyzer with a force_divisor of 10 hit with a damage multiplier of 3000+.
-/obj/item/weapon/gun/launcher/pneumatic/New()
-	..()
+														
+/obj/item/weapon/gun/launcher/pneumatic/Initialize(mapload)
+	. = ..()
 	item_storage = new(src)
 	item_storage.name = "hopper"
 	item_storage.max_w_class = max_w_class

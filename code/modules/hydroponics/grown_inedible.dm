@@ -8,7 +8,7 @@
 	var/plantname
 	var/potency = 1
 
-/obj/item/weapon/grown/New(newloc,planttype)
+/obj/item/weapon/grown/New(newloc, planttype)
 
 	..()
 

@@ -48,9 +48,9 @@
 	var/obj/item/weapon/implant/backup/list/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 
-/obj/item/weapon/backup_implanter/New()
-	..()
-	for(var/i = 1 to max_implants)
+/obj/item/weapon/backup_implanter/Initialize(mapload)
+	. = ..()
+	for(var/i in 1 to max_implants)
 		var/obj/item/weapon/implant/backup/imp = new(src)
 		imps |= imp
 		imp.germ_level = 0
@@ -116,10 +116,9 @@
 	desc = "A case containing a backup implant."
 	icon_state = "implantcase-b"
 
-/obj/item/weapon/implantcase/backup/New()
-	src.imp = new /obj/item/weapon/implant/backup(src)
-	..()
-	return
+/obj/item/weapon/implantcase/backup/Initialize(mapload)
+	. = ..()
+	imp = new /obj/item/weapon/implant/backup(src)
 
 //The box of backup implants
 /obj/item/weapon/storage/box/backup_kit
@@ -128,11 +127,12 @@
 	icon_state = "implant"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 
-/obj/item/weapon/storage/box/backup_kit/New()
-	..()
-	for(var/i = 1 to 7)
+/obj/item/weapon/storage/box/backup_kit/PopulateContents()
+	. = ..()
+	for(var/i in 1 to 7)
 		new /obj/item/weapon/implantcase/backup(src)
 	new /obj/item/weapon/implanter(src)
+
 /* CITADEL CHANGE - Removes this useless shit
 //Purely for fluff
 /obj/item/weapon/implant/backup/full

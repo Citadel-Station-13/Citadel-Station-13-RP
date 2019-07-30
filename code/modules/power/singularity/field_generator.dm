@@ -28,14 +28,13 @@ field_generator power level display
 	var/power = 30000  // Current amount of power
 	var/state = 0
 	var/warming_up = 0
-	var/list/obj/machinery/containment_field/fields
-	var/list/obj/machinery/field_generator/connected_gens
+	var/list/obj/machinery/containment_field/fields = list()
+	var/list/obj/machinery/field_generator/connected_gens = list()
 	var/clean_up = 0
 
 	//If keeping field generators powered is hard then increase the emitter active power usage.
 	var/gen_power_draw = 5500	//power needed per generator
 	var/field_power_draw = 2000	//power needed per field object
-
 
 /obj/machinery/field_generator/update_icon()
 	overlays.Cut()
@@ -51,15 +50,6 @@ field_generator power level display
 	level = between(0, level, num_power_levels)
 	if(level)
 		overlays += "+p[level]"
-
-	return
-
-
-/obj/machinery/field_generator/New()
-	..()
-	fields = list()
-	connected_gens = list()
-	return
 
 /obj/machinery/field_generator/process()
 	if(Varedit_start == 1)

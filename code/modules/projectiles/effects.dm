@@ -3,10 +3,6 @@
 	icon_state = "bolt"
 	plane = ABOVE_PLANE
 
-/obj/effect/projectile/New(var/turf/location)
-	if(istype(location))
-		loc = location
-
 /obj/effect/projectile/proc/set_transform(var/matrix/M)
 	if(istype(M))
 		transform = M

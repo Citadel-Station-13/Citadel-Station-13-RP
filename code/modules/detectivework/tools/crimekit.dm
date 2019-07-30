@@ -6,8 +6,8 @@
 	icon_state = "case"
 	storage_slots = 14
 
-/obj/item/weapon/storage/briefcase/crimekit/New()
-	..()
+/obj/item/weapon/storage/briefcase/crimekit/PopulateContents()
+	. = ..()
 	new /obj/item/weapon/storage/box/swabs(src)
 	new /obj/item/weapon/storage/box/fingerprints(src)
 	new /obj/item/weapon/reagent_containers/spray/luminol(src)

@@ -39,8 +39,8 @@
 	var/lockdown = 0
 	var/datum/wires/seedstorage/wires = null
 
-/obj/machinery/seed_storage/New()
-	..()
+/obj/machinery/seed_storage/Initialize()
+	. = ..()
 	wires = new(src)
 	if(!contraband_seeds.len)
 		contraband_seeds = pick(list(
@@ -77,7 +77,6 @@
 					/obj/item/seeds/random = 6
 					)
 			))
-	return
 
 /obj/machinery/seed_storage/process()
 	..()

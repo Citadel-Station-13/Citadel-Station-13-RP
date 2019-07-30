@@ -15,8 +15,8 @@
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
 //	var/spent_icon = null
 
-/obj/item/ammo_casing/New()
-	..()
+/obj/item/ammo_casing/Initialize(mapload)
+	. = ..()
 	if(ispath(projectile_type))
 		BB = new projectile_type(src)
 	pixel_x = rand(-10, 10)
@@ -93,10 +93,8 @@
 	var/list/icon_keys = list()		//keys
 	var/list/ammo_states = list()	//values
 
-/obj/item/ammo_magazine/New()
-	..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+/obj/item/ammo_magazine/Initialize(mapload)
+	. = ..()
 	if(multiple_sprites)
 		initialize_magazine_icondata(src)
 

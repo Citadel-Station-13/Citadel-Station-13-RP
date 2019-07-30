@@ -8,7 +8,8 @@
 	var/result = 6
 	attack_verb = list("diced")
 
-/obj/item/weapon/dice/New()
+/obj/item/weapon/dice/Initialize(mapload)
+	. = ..()
 	icon_state = "[name][rand(1,sides)]"
 
 /obj/item/weapon/dice/d4
@@ -81,10 +82,10 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicebag"
 
-/obj/item/weapon/storage/pill_bottle/dice/New()
-	..()
-	for(var/i = 1 to 7)
-		new /obj/item/weapon/dice( src )
+/obj/item/weapon/storage/pill_bottle/dice/PopulateContents()
+	. = ..()
+	for(var/i in 1 to 7)
+		new /obj/item/weapon/dice(src)
 
 /obj/item/weapon/storage/pill_bottle/dice_nerd	//DnD dice
 	name = "bag of gaming dice"
@@ -92,8 +93,8 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "magicdicebag"
 
-/obj/item/weapon/storage/pill_bottle/dice_nerd/New()
-	..()
+/obj/item/weapon/storage/pill_bottle/dice_nerd/PopulateContents()
+	. = ..()
 	new /obj/item/weapon/dice/d4( src )
 	new /obj/item/weapon/dice( src )
 	new /obj/item/weapon/dice/d8( src )
@@ -151,7 +152,6 @@
 		revealDice(player)
 
 
-/obj/item/weapon/storage/dicecup/loaded/New()
-	..()
-	for(var/i = 1 to 5)
-		new /obj/item/weapon/dice( src )
+/obj/item/weapon/storage/dicecup/loaded/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/weapon/dice(src)

@@ -3,15 +3,16 @@
 	desc = "This box contains blood packs."
 	icon_state = "sterile"
 
-/obj/item/weapon/storage/box/bloodpacks/New()
-		..()
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
-		new /obj/item/weapon/reagent_containers/blood/empty(src)
+/obj/item/weapon/storage/box/bloodpacks/PopulateContents()
+	. = ..()
+	for(var/i in 1 to 7)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
+	new /obj/item/weapon/reagent_containers/blood/empty(src)
 
 /obj/item/weapon/reagent_containers/blood
 	name = "IV pack"

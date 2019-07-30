@@ -17,7 +17,6 @@
 	item_state = "camera"
 	w_class = ITEMSIZE_TINY
 
-
 /********
 * photo *
 ********/
@@ -36,10 +35,9 @@ var/global/photo_count = 0
 	var/cursed = 0
 	var/photo_size = 3
 
-/obj/item/weapon/photo/New()
+/obj/item/weapon/photo/Initialize(mapload)
+	. = ..()
 	id = photo_count++
-
-
 
 /obj/item/weapon/photo/attack_self(mob/user as mob)
 	user.examinate(src)

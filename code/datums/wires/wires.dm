@@ -26,8 +26,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	var/window_x = 370
 	var/window_y = 470
 
-/datum/wires/New(var/atom/holder)
-	..()
+/datum/wires/New(atom/holder)
 	src.holder = holder
 	if(!istype(holder, holder_type))
 		CRASH("Our holder is null/the wrong type!")

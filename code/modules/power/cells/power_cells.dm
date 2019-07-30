@@ -4,9 +4,6 @@
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 500
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
-
-/obj/item/weapon/cell/crap/empty/New()
-	..()
 	charge = 0
 
 /obj/item/weapon/cell/secborg
@@ -14,9 +11,6 @@
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
-
-/obj/item/weapon/cell/secborg/empty/New()
-	..()
 	charge = 0
 
 /obj/item/weapon/cell/apc
@@ -31,9 +25,6 @@
 	icon_state = "hcell"
 	maxcharge = 10000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 60)
-
-/obj/item/weapon/cell/high/empty/New()
-	..()
 	charge = 0
 
 /obj/item/weapon/cell/super
@@ -42,9 +33,6 @@
 	icon_state = "scell"
 	maxcharge = 20000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 70)
-
-/obj/item/weapon/cell/super/empty/New()
-	..()
 	charge = 0
 
 /obj/item/weapon/cell/hyper
@@ -53,9 +41,6 @@
 	icon_state = "hpcell"
 	maxcharge = 30000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
-
-/obj/item/weapon/cell/hyper/empty/New()
-	..()
 	charge = 0
 
 /obj/item/weapon/cell/infinite
@@ -66,10 +51,10 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
 
 /obj/item/weapon/cell/infinite/check_charge()
-	return 1
+	return TRUE
 
 /obj/item/weapon/cell/infinite/use()
-	return 1
+	return TRUE
 
 /obj/item/weapon/cell/potato
 	name = "potato battery"

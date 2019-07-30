@@ -32,9 +32,10 @@
 	icon_state = "electric_hand"
 	show_examine = FALSE
 
-/obj/item/weapon/finger_lockpick/New()
+/obj/item/weapon/finger_lockpick/Initialize(mapload)
+	. = ..()
 	if(ismob(loc))
-		loc << "<span class='notice'>We shape our finger to fit inside electronics, and are ready to force them open.</span>"
+		to_chat(loc, "<span class='notice'>We shape our finger to fit inside electronics, and are ready to force them open.</span>")
 
 /obj/item/weapon/finger_lockpick/dropped(mob/user)
 	user << "<span class='notice'>We discreetly shape our finger back to a less suspicious form.</span>"

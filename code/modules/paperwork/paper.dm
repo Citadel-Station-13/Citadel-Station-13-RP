@@ -68,8 +68,8 @@
 	desc = "A gift card with a heart on the cover."
 	icon_state = "greetingcard_heart"
 
-/obj/item/weapon/paper/card/New()
-	..()
+/obj/item/weapon/paper/card/Initialize(mapload)
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = null
@@ -78,7 +78,6 @@
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
-		return
 
 /obj/item/weapon/paper/alien
 	name = "alien tablet"
@@ -100,8 +99,8 @@
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
-/obj/item/weapon/paper/New()
-	..()
+/obj/item/weapon/paper/Initialize(mapload)
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
@@ -114,11 +113,9 @@
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 
-	spawn(2)
-		update_icon()
-		update_space(info)
-		updateinfolinks()
-		return
+	update_icon()
+	update_space(info)
+	updateinfolinks()
 
 /obj/item/weapon/paper/update_icon()
 	if(icon_state == "paper_talisman")

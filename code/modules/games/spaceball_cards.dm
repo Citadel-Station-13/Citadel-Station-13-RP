@@ -4,13 +4,13 @@
 	icon_state = "card_pack_spaceball"
 	parentdeck = "spaceball"
 
-/obj/item/weapon/pack/spaceball/New()
-	..()
+/obj/item/weapon/pack/spaceball/Initialize(mapload)
+	. = ..()
 	var/datum/playingcard/P
 	var/i
 	var/year = 554 + text2num(time2text(world.timeofday, "YYYY"))
 	for(i=0;i<5;i++)
-		P = new()
+		P = new
 		if(prob(1))
 			P.name = "Spaceball Jones, [year] Brickburn Galaxy Trekers"
 			P.card_icon = "spaceball_jones"

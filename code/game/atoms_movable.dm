@@ -215,6 +215,9 @@
 	fall()
 
 
+//the overlay code below is dumb - kevinz000
+//remove post haste
+
 //Overlays
 /atom/movable/overlay
 	var/atom/master = null

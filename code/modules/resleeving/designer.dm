@@ -384,9 +384,9 @@
 	desc = "A box of body record disks, apparently."
 	icon_state = "disk_kit"
 
-/obj/item/weapon/storage/box/body_record_disk/New()
-	..()
-	for(var/i = 0 to 7)
+/obj/item/weapon/storage/box/body_record_disk/PopulateContents()
+	. = ..()
+	for(var/i in 1 to 8)
 		new /obj/item/weapon/disk/body_record(src)
 
 #undef MOB_HEX_COLOR

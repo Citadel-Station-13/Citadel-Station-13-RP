@@ -93,12 +93,7 @@
 	icon_state = "sneksnakbox"
 	storage_slots = 7
 
-/obj/item/weapon/storage/box/snakesnackbox/New()
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	..()
+/obj/item/weapon/storage/box/snakesnackbox/PopulateContents()
+	. = ..()
+	for(var/i in 1 to 7)
+		new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)

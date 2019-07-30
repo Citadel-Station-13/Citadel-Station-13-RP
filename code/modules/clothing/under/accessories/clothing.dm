@@ -234,7 +234,8 @@
 /obj/item/clothing/accessory/hawaii/random
 	name = "flower-pattern shirt"
 
-/obj/item/clothing/accessory/hawaii/random/New()
+/obj/item/clothing/accessory/hawaii/random/Initialize(mapload)
+	. = ..()
 	if(prob(50))
 		icon_state = "hawaii2"
 	color = color_rotation(rand(-11,12)*15)

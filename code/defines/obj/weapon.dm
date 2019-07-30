@@ -92,8 +92,8 @@
 /obj/item/weapon/cane/concealed
 	var/concealed_blade
 
-/obj/item/weapon/cane/concealed/New()
-	..()
+/obj/item/weapon/cane/concealed/Initialize(mapload)
+	. = ..()
 	var/obj/item/weapon/material/butterfly/switchblade/temp_blade = new(src)
 	concealed_blade = temp_blade
 	temp_blade.attack_self()
@@ -405,10 +405,10 @@
 	w_class = ITEMSIZE_SMALL
 	var/rating = 1
 
-/obj/item/weapon/stock_parts/New()
-	src.pixel_x = rand(-5.0, 5)
-	src.pixel_y = rand(-5.0, 5)
-	..()
+/obj/item/weapon/stock_parts/Initialize(mapload)
+	. = ..()
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
 
 //Rank 1
 
@@ -429,7 +429,7 @@
 	var/charge = 0
 	var/max_charge = 1000
 
-/obj/item/weapon/stock_parts/capacitor/New()
+/obj/item/weapon/stock_parts/capacitor/Initialize(mapload)
 	. = ..()
 	max_charge *= rating
 

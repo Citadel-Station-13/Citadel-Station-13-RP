@@ -89,21 +89,18 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/New()
-	..()
+/obj/structure/cable/Initialize(mapload)
+	. = ..()
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
-
 	var/dash = findtext(icon_state, "-")
-
 	d1 = text2num( copytext( icon_state, 1, dash ) )
-
 	d2 = text2num( copytext( icon_state, dash+1 ) )
 
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1) hide(!T.is_plating())
 	cable_list += src //add it to the global cable list
-
+	var/turf/T = loc			// hide if turf is not intact
+	if(level == 1)
+		hide(!T.is_plating())
 
 /obj/structure/cable/Destroy()					// called when a cable is deleted
 	if(powernet)

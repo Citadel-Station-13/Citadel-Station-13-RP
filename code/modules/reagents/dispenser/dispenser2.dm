@@ -3,7 +3,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "dispenser"
 
-	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
+	var/list/spawn_cartridges			// Set to a list of types to spawn one of each on New()
 
 	var/list/cartridges = list() // Associative, label -> cartridge
 	var/obj/item/weapon/reagent_containers/container = null
@@ -17,9 +17,8 @@
 	idle_power_usage = 100
 	anchored = 1
 
-/obj/machinery/chemical_dispenser/Initialize()
-	..()
-
+/obj/machinery/chemical_dispenser/Initialize(mapload)
+	. = ..()
 	if(spawn_cartridges)
 		for(var/type in spawn_cartridges)
 			add_cartridge(new type(src))

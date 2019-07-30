@@ -31,18 +31,17 @@
 	var/bogus = TRUE		// set to 0 when you initialize the station map on a zLevel that has its own icon formatted for use by station holomaps.
 	var/datum/station_holomap/holomap_datum
 
-/obj/machinery/station_map/New()
-	..()
+/obj/machinery/station_map/Initialize(mapload)
+	. = ..()
 	holomap_datum = new()
 	original_zLevel = loc.z
 	SSholomaps.station_holomaps += src
 	flags |= ON_BORDER // Why? It doesn't help if its not density
-
-/obj/machinery/station_map/Initialize()
-	. = ..()
 	if(SSholomaps.holomaps_initialized)
-		spawn(1) // Tragically we need to spawn this in order to give the frame construcing us time to set pixel_x/y
-			setup_holomap()
+		return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/station_map/LateInitialize()
+	setup_holomap()
 
 /obj/machinery/station_map/Destroy()
 	SSholomaps.station_holomaps -= src
