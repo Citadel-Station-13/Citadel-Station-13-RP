@@ -6,6 +6,7 @@
 #define LANGUAGE_ENOCHIAN "Enochian"
 #define LANGUAGE_VESPINAE "Vespinae"
 #define LANGUAGE_BONES "Clattish"
+#define LANGUAGE_BONES "Echorus"
 
 #define LANGUAGE_CHIMPANZEE "Chimpanzee"
 #define LANGUAGE_NEAERA "Neaera"

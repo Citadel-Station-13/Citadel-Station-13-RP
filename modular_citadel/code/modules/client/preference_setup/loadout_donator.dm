@@ -128,3 +128,9 @@
 	path = /obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
 	ckeywhitelist = list("asky")
 
+/datum/gear/donator/pinklatex
+	display_name = "Pink Latex"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/pinksuit
+	ckeywhitelist = list("tippler")
+

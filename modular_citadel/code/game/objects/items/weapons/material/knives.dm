@@ -49,5 +49,8 @@
 /obj/item/weapon/material/knife/machete/durasteel
   default_material = "durasteel"
 
+/obj/item/weapon/material/knife/machete/deluxe/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/tacknife/survival/durasteel
   default_material = "durasteel"

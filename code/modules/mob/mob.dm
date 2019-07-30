@@ -310,6 +310,9 @@
 	if (sane)
 		msg = sanitize(msg)
 
+	if((length(memory) + length(msg)) > MAX_MESSAGE_LEN)
+		return
+
 	if (length(memory) == 0)
 		memory += msg
 	else

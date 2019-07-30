@@ -19,6 +19,7 @@
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/flash,
+		/obj/item/weapon/storage/belt/sheath,
 		/obj/item/weapon/storage/box/ids)
 
 

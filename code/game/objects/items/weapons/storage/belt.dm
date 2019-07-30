@@ -434,3 +434,25 @@
  	icon_state = "fannypack_yellow"
  	item_state = "fannypack_yellow"
 
+/obj/item/weapon/storage/belt/sheath
+	name = "sabre sheath"
+	desc = "An ornate sheath designed to hold an officer's blade."
+	icon_state = "sheath-sabre"
+	storage_slots = 1
+	can_hold = list(
+		/obj/item/weapon/melee/sabre,
+		)
+	starts_with = list(
+		/obj/item/weapon/melee/sabre,
+		)
+
+/obj/item/weapon/storage/belt/sheath/update_icon()
+	icon_state = "sheath"
+	item_state = "sheath"
+	if(contents.len)
+		icon_state += "-sabre"
+		item_state += "-sabre"
+	if(loc && isliving(loc))
+		var/mob/living/L = loc
+		L.regenerate_icons()
+	..()

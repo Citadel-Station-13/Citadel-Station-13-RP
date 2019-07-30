@@ -72,3 +72,13 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	icon_state = "zuliecap"
 	body_parts_covered = HEAD
+
+/obj/item/clothing/under/donator/pinksuit
+	name = "pink latex jumpsuit"
+	desc = "A pink suit with a zipper in the middle made almost entirely of latex material."
+	icon_state = "pinklatex"
+	item_state = "pinklatex"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+
