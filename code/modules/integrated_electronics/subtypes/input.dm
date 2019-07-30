@@ -559,7 +559,7 @@
 		if(istype(A, /obj/item/weapon/storage))
 			return FALSE
 
-	set_pin_data(IC_OUTPUT, 1, weakref(A))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	activate_pin(1)
 	return TRUE
@@ -587,7 +587,7 @@
 	set_pin_data(IC_OUTPUT, 1, null)
 	set_pin_data(IC_OUTPUT, 2, null)
 	set_pin_data(IC_OUTPUT, 3, null)
-	set_pin_data(IC_OUTPUT, 4, weakref(assembly))
+	set_pin_data(IC_OUTPUT, 4, WEAKREF(assembly))
 	if(assembly)
 		if(assembly.battery)
 
