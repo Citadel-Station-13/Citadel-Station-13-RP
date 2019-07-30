@@ -70,7 +70,7 @@
 
 /datum/callback/proc/Invoke(...)
 	if(!usr)
-		var/weakref/W = user
+		var/datum/weakref/W = user
 		if(W)
 			var/mob/M = W.resolve()
 			if(M)

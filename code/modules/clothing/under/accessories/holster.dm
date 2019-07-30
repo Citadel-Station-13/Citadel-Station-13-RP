@@ -162,7 +162,8 @@
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/weapon/material/knife/machete
 
-/obj/item/clothing/accessory/holster/machete/occupied/initialize()
+/obj/item/clothing/accessory/holster/machete/occupied/Initialize(mapload)
+	. = ..()
 	holstered = new holstered_spawn
 
 /obj/item/clothing/accessory/holster/machete/occupied/deluxe

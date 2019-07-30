@@ -269,7 +269,7 @@
 	lcolor = "#00FF00"
 
 /obj/item/weapon/melee/energy/blade/Initialize(mapload)
-	. - ..()
+	. = ..()
 	spark_system = new /datum/effect/effect/system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)

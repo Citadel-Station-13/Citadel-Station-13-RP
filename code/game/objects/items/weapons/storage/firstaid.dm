@@ -245,7 +245,7 @@
 	else
 		icon_state = "[base_icon]_[bottle_color]"
 
-/obj/item/weapon/storage/pill_bottle/initialize()
+/obj/item/weapon/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	update_icon() // END Citadel Changes - Bottle recoloring
 

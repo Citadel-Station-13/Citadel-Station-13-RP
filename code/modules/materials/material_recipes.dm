@@ -1,4 +1,4 @@
-/material/proc/get_recipes()
+/datum/material/proc/get_recipes()
 	if(!recipes)
 		generate_recipes()
 	return recipes

@@ -61,9 +61,10 @@
 	if(!used)
 		processing_objects |= src
 
-/obj/item/weapon/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
+//this is shitcode remove posthaste and replace with a proc on limb + timer, ugh.
+/obj/item/weapon/reagent_containers/syringe/proc/infect_limb(obj/item/organ/external/eo)
 	src = null
-	var/weakref/limb_ref = WEAKREF(eo)
+	var/datum/weakref/limb_ref = WEAKREF(eo)
 	spawn(rand(5 MINUTES,10 MINUTES))
 		var/obj/item/organ/external/found_limb = limb_ref.resolve()
 		if(istype(found_limb))

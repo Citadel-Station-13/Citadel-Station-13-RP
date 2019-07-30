@@ -57,4 +57,4 @@
 
 /obj/item/clothing/accessory/collar/lifecrystal/update_icon()
 	. = ..()
-	icon_state = "[initial(icon_state)][tostate]"
+	icon_state = "[initial(icon_state)][state]"
