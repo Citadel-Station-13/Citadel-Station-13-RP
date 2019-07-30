@@ -1,4 +1,4 @@
-/material/flesh
+/datum/material/flesh
 	name = "flesh"
 	display_name = "chunk of flesh"
 	icon_colour = "#dd90aa"

@@ -11,7 +11,7 @@
 	var/list/comp_lookup //it used to be for looking up components which had registered a signal but now anything can register
 	var/list/signal_procs
 	var/signal_enabled = FALSE
-	var/weakref/weakref // Holder of weakref instance pointing to this datum
+	var/datum/weakref/weak_reference // Holder of weakref instance pointing to this datum
 	var/datum_flags = NONE
 
 #ifdef TESTING

@@ -44,7 +44,7 @@
 	var/datum/object = GLOBAL_PROC
 	var/delegate
 	var/list/arguments
-	var/weakref/user
+	var/datum/weakref/user
 
 /datum/callback/New(thingtocall, proctocall, ...)
 	if (thingtocall)
@@ -94,7 +94,7 @@
 	set waitfor = FALSE
 
 	if(!usr)
-		var/weakref/W = user
+		var/datum/weakref/W = user
 		if(W)
 			var/mob/M = W.resolve()
 			if(M)

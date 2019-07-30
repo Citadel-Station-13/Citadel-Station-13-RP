@@ -29,7 +29,7 @@ var/global/list/ore_data = list()
 	smelts_to = "uranium"
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/datum/ore/uranium
+	ore = /obj/item/weapon/ore/uranium
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -44,7 +44,7 @@ var/global/list/ore_data = list()
 	alloy = 1
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/datum/ore/iron
+	ore = /obj/item/weapon/ore/iron
 	scan_icon = "mineral_common"
 
 /datum/ore/coal
@@ -54,7 +54,7 @@ var/global/list/ore_data = list()
 	alloy = 1
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/datum/ore/coal
+	ore = /obj/item/weapon/ore/coal
 	scan_icon = "mineral_common"
 
 /datum/ore/glass
@@ -71,7 +71,7 @@ var/global/list/ore_data = list()
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/datum/ore/phoron
+	ore = /obj/item/weapon/ore/phoron
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -87,7 +87,7 @@ var/global/list/ore_data = list()
 	smelts_to = "silver"
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/datum/ore/silver
+	ore = /obj/item/weapon/ore/silver
 	scan_icon = "mineral_uncommon"
 
 /datum/ore/gold
@@ -96,7 +96,7 @@ var/global/list/ore_data = list()
 	display_name = "native gold"
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/datum/ore/gold
+	ore = /obj/item/weapon/ore/gold
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -112,7 +112,7 @@ var/global/list/ore_data = list()
 	compresses_to = "diamond"
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/datum/ore/diamond
+	ore = /obj/item/weapon/ore/diamond
 	scan_icon = "mineral_rare"
 	xarch_source_mineral = "nitrogen"
 
@@ -124,7 +124,7 @@ var/global/list/ore_data = list()
 	alloy = 1
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/datum/ore/osmium
+	ore = /obj/item/weapon/ore/osmium
 	scan_icon = "mineral_rare"
 
 /datum/ore/hydrogen

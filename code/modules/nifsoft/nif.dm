@@ -106,7 +106,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 //Destructor cleans up references
 /obj/item/device/nif/Destroy()
 	human = null
-	QDEL_NULL_LIST(nifsofts)
+	QDEL_LIST_NULL(nifsofts)
 	QDEL_NULL(comm)
 	nifsofts_life.Cut()
 	return ..()
@@ -156,7 +156,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 /obj/item/device/nif/proc/unimplant(var/mob/living/carbon/human/H)
 	var/datum/nifsoft/soulcatcher/SC = imp_check(NIF_SOULCATCHER)
 	if(SC) //Clean up stored people, this is dirty but the easiest way.
-		QDEL_NULL_LIST(SC.brainmobs)
+		QDEL_LIST_NULL(SC.brainmobs)
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
