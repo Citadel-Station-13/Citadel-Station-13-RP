@@ -12,9 +12,9 @@
 	var/client/owner_c = null //They'll be dead when we message them probably.
 	var/state = 0 //0 - New, 1 - Dead, 2 - Signaling, 3 - Recovering (same as iconstates)
 
-/obj/item/clothing/accessory/collar/lifecrystal/New()
-	..()
-	update_state(1)
+/obj/item/clothing/accessory/collar/lifecrystal/Initialize()
+	. = ..()
+	update_state(TRUE)
 
 /obj/item/clothing/accessory/collar/lifecrystal/Destroy() //Waitwaitwait
 	if(state == 1)
@@ -51,7 +51,10 @@
 				message, "[owner.real_name]'s Life Crystal", "Life Alert", "[owner.real_name]'s Life Crystal", "shrill synthetic voice",
 				0, 0, list(0), connection.frequency, "alarms", null)
 
-/obj/item/clothing/accessory/collar/lifecrystal/proc/update_state(var/tostate)
+/obj/item/clothing/accessory/collar/lifecrystal/proc/update_state(tostate)
 	state = tostate
-	icon_state = "[initial(icon_state)][tostate]"
 	update_icon()
+
+/obj/item/clothing/accessory/collar/lifecrystal/update_icon()
+	. = ..()
+	icon_state = "[initial(icon_state)][tostate]"

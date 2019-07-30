@@ -17,17 +17,15 @@
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
 
-/obj/item/stack/material/New()
-	..()
-	pixel_x = rand(0,4)-4
-	pixel_y = rand(0,4)-4
+/obj/item/stack/material/Initialize()
+	. = ..()
 
 	if(!default_type)
 		default_type = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name("[default_type]")
 	if(!material)
-		qdel(src)
-		return 0
+		. = INITIALIZE_HINT_QDEL
+		CRASH("Material stack made with invalid material name \"[default_type]\"")
 
 	recipes = material.get_recipes()
 	stacktype = material.stack_type
@@ -42,7 +40,6 @@
 
 	matter = material.get_matter()
 	update_strings()
-	return 1
 
 /obj/item/stack/material/get_material()
 	return material
