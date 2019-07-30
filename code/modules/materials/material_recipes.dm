@@ -3,7 +3,7 @@
 		generate_recipes()
 	return recipes
 
-/material/proc/generate_recipes()
+/datum/material/proc/generate_recipes()
 	recipes = list()
 
 	// If is_brittle() returns true, these are only good for a single strike.
@@ -29,7 +29,7 @@
 		recipes += new/datum/stack_recipe("[display_name] knife", /obj/item/weapon/material/knife/plastic, 1, on_floor = 1, supplied_material = "[name]")
 		recipes += new/datum/stack_recipe("[display_name] blade", /obj/item/weapon/material/butterflyblade, 6, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]")
 
-/material/steel/generate_recipes()
+/datum/material/steel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe_list("office chairs",list( \
 		new/datum/stack_recipe("dark office chair", /obj/structure/bed/chair/office/dark, 5, one_per_turf = 1, on_floor = 1), \
@@ -105,7 +105,7 @@
 		new/datum/stack_recipe("chest drawer", /obj/structure/filingcabinet/chestdrawer, 4, time = 20, one_per_turf = 1, on_floor = 1), \
 		))
 
-/material/plasteel/generate_recipes()
+/datum/material/plasteel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("AI core", /obj/structure/AIcore, 4, time = 50, one_per_turf = 1)
 	recipes += new/datum/stack_recipe("Metal crate", /obj/structure/closet/crate, 10, time = 50, one_per_turf = 1)
@@ -114,11 +114,11 @@
 	recipes += new/datum/stack_recipe("roller bed", /obj/item/roller, 5, time = 30, on_floor = 1)
 	recipes += new/datum/stack_recipe("whetstone", /obj/item/weapon/whetstone, 2, time = 10)
 
-/material/sandstone/generate_recipes()
+/datum/material/sandstone/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
 
-/material/plastic/generate_recipes()
+/datum/material/plastic/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("plastic bag", /obj/item/weapon/storage/bag/plasticbag, 3, on_floor = 1)
@@ -135,7 +135,7 @@
 	recipes += new/datum/stack_recipe("water-cooler", /obj/structure/reagent_dispensers/water_cooler, 4, time = 10, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("lampshade", /obj/item/weapon/lampshade, 1, time = 1)
 
-/material/wood/generate_recipes()
+/datum/material/wood/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("oar", /obj/item/weapon/oar, 2, time = 30, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("boat", /obj/vehicle/boat, 20, time = 10 SECONDS, supplied_material = "[name]")
@@ -155,11 +155,11 @@
 	recipes += new/datum/stack_recipe("wooden bucket", /obj/item/weapon/reagent_containers/glass/bucket/wood, 2, time = 4, one_per_turf = 0, on_floor = 0)
 	recipes += new/datum/stack_recipe("coilgun stock", /obj/item/weapon/coilgun_assembly, 5)
 
-/material/wood/log/generate_recipes()
+/datum/material/wood/log/generate_recipes()
 	recipes = list()
 	recipes += new/datum/stack_recipe("bonfire", /obj/structure/bonfire, 5, time = 50, supplied_material = "[name]")
 
-/material/cardboard/generate_recipes()
+/datum/material/cardboard/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("box", /obj/item/weapon/storage/box)
 	recipes += new/datum/stack_recipe("donut box", /obj/item/weapon/storage/box/donut/empty)
@@ -178,7 +178,7 @@
 		new/datum/stack_recipe("yellow folder", /obj/item/weapon/folder/yellow), \
 		))
 
-/material/snow/generate_recipes()
+/datum/material/snow/generate_recipes()
 	recipes = list()
 	recipes += new/datum/stack_recipe("snowball", /obj/item/weapon/material/snow/snowball, 1, time = 10)
 	recipes += new/datum/stack_recipe("snow brick", /obj/item/stack/material/snowbrick, 2, time = 10)
@@ -186,7 +186,7 @@
 	recipes += new/datum/stack_recipe("snow robot", /obj/structure/snowman/borg, 2, time = 10)
 	recipes += new/datum/stack_recipe("snow spider", /obj/structure/snowman/spider, 3, time = 20)
 
-/material/snowbrick/generate_recipes()
+/datum/material/snowbrick/generate_recipes()
 	recipes = list()
 	recipes += new/datum/stack_recipe("[display_name] door", /obj/structure/simple_door, 10, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("[display_name] barricade", /obj/structure/barricade, 5, time = 50, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
@@ -197,7 +197,7 @@
 	recipes += new/datum/stack_recipe("[display_name] wall girders", /obj/structure/girder, 2, time = 50, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("[display_name] ashtray", /obj/item/weapon/material/ashtray, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
 
-/material/wood/sif/generate_recipes()
+/datum/material/wood/sif/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("alien wood floor tile", /obj/item/stack/tile/wood/sif, 1, 4, 20)
 	recipes -= new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20)

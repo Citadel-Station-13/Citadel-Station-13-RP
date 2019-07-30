@@ -274,7 +274,7 @@
 		to_chat(user, "<span class='warning'>\The [src] cannot hold more [S.name].</span>")
 	return 1
 
-/material/algae
+/datum/material/algae
 	name = MATERIAL_ALGAE
 	stack_type = /obj/item/stack/material/algae
 	icon_colour = "#557722"
@@ -293,7 +293,7 @@
 /obj/item/stack/material/algae/ten
 	amount = 10
 
-/material/carbon
+/datum/material/carbon
 	name = MATERIAL_CARBON
 	stack_type = /obj/item/stack/material/carbon
 	icon_colour = "#303030"
