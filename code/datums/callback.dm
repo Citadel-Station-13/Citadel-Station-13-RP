@@ -53,7 +53,7 @@
 	if (length(args) > 2)
 		arguments = args.Copy(3)
 	if(usr)
-		user = weakref(usr)
+		user = WEAKREF(usr)
 
 /world/proc/ImmediateInvokeAsync(thingtocall, proctocall, ...)
 	set waitfor = FALSE

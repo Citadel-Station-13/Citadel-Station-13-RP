@@ -82,7 +82,7 @@ list[](
 		return result
 
 	if(isweakref(input))
-		var/weakref/w = input
+		var/datum/weakref/w = input
 		var/atom/A = w.resolve()
 		//return A ? "([A.name] \[Ref\])" : "(null)" // For refs, we want just the name displayed.
 		return A ? "(\ref[A] \[Ref\])" : "(null)"
