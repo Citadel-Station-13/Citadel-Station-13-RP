@@ -179,5 +179,6 @@
 		/obj/item/weapon/tank,
 		/obj/item/device/radio,
 		/obj/item/weapon/pickaxe,
-		/obj/item/weapon/gun/projectile/sec/flash
+		/obj/item/weapon/gun/projectile/sec/flash,
+		/obj/item/device/suit_cooling_unit // somehow this was forgotten.
 		)
