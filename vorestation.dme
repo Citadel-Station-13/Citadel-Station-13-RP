@@ -946,6 +946,7 @@
 #include "code\game\objects\items\gunbox.dm"
 #include "code\game\objects\items\gunbox_vr.dm"
 #include "code\game\objects\items\latexballoon.dm"
+#include "code\game\objects\items\motion_detector.dm"
 #include "code\game\objects\items\paintkit.dm"
 #include "code\game\objects\items\poi_items.dm"
 #include "code\game\objects\items\shooting_range.dm"

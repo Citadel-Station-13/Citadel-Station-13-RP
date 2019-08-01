@@ -14,10 +14,10 @@
 	economic_modifier = 10
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels, access_iff_station)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
-			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
+			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels, access_iff_station)
 
 	minimum_character_age = 25
 	minimal_player_age = 10
@@ -37,8 +37,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/doctor
 	economic_modifier = 7
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva, access_iff_station)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva, access_iff_station)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
 	alt_titles = list(
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
@@ -60,8 +60,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/chemist
 	economic_modifier = 5
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_iff_station)
+	minimal_access = list(access_medical, access_medical_equip, access_chemistry, access_iff_station)
 	alt_titles = list("Pharmacist")
 
 	minimal_player_age = 3
@@ -81,8 +81,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/geneticist
 	economic_modifier = 7
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research)
-	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research, access_iff)
+	minimal_access = list(access_medical, access_morgue, access_genetics, access_research, access_iff)
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/geneticist
 */
@@ -99,8 +99,8 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/psychiatrist
-	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
+	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist, access_iff_station)
+	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist, access_iff_station)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
 	alt_titles = list("Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist,
 			  "Therapist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
@@ -117,7 +117,7 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
 	economic_modifier = 4
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist, access_iff_station)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks, access_iff_station)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	alt_titles = list("Emergency Medical Technician" = /decl/hierarchy/outfit/job/medical/paramedic/emt)

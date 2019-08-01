@@ -6,6 +6,7 @@
 	// var/elevation = 2    - not used anywhere
 	var/move_speed = 10
 	var/l_move_time = 1
+	var/last_move_time = 0 // Need this for some TGMC code to work nicely. Totally not l_move_time :^)
 	var/m_flag = 1
 	var/throwing = 0
 	var/thrower
@@ -86,6 +87,9 @@
 				destination.loc.Entered(src, origin)
 
 	Moved(origin)
+
+	last_move_time = world.time
+
 	return 1
 
 //called when src is thrown into hit_atom

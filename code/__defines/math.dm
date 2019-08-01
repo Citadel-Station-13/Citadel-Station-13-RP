@@ -14,5 +14,7 @@
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
+// Used for restricting values to within a certain range. Ported from TGMC for compatibility, might prove useful elsewhere.
+#define CLAMP(CLVALUE,CLMIN,CLMAX) ( max( (CLMIN), min((CLVALUE), (CLMAX)) ) )
 // Check if a BYOND dir var is a cardinal direction (power of two)
 #define IS_CARDINAL(x) ((x & (x - 1)) == 0)

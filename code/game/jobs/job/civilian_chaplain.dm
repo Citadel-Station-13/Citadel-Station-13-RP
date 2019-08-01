@@ -10,8 +10,8 @@
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/chaplain
-	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
-	minimal_access = list(access_chapel_office, access_crematorium)
+	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels, access_iff_station)
+	minimal_access = list(access_chapel_office, access_crematorium, access_iff_station)
 	alt_titles = list("Counselor")
 
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
