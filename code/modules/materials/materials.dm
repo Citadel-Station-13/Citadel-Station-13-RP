@@ -52,7 +52,7 @@ var/list/name_to_material
 /proc/populate_material_list(force_remake=0)
 	if(name_to_material && !force_remake) return // Already set up!
 	name_to_material = list()
-	for(var/type in typesof(/material) - /material)
+	for(var/type in typesof(/datum/material) - /datum/material)
 		var/datum/material/new_mineral = new type
 		if(!new_mineral.name)
 			continue
@@ -209,7 +209,7 @@ var/list/name_to_material
 		G.reinf_material = reinf_material
 		G.reinforce_girder()
 	if(girder_material)
-		if(istype(girder_material, /material))
+		if(istype(girder_material, /datum/material))
 			girder_material = girder_material.name
 		G.set_material(girder_material)
 
@@ -387,7 +387,7 @@ var/list/name_to_material
 	integrity = 600
 	icon_base = "diona"
 	icon_reinf = "noreinf"
- 
+
 /datum/material/diona/place_dismantled_product()
 	return
 
