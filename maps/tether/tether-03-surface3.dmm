@@ -57,7 +57,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/random/trash_pile,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_site2)
 "ak" = (
@@ -538,7 +537,6 @@
 /area/vacant/vacant_site2)
 "bo" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -546,6 +544,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/vacant/vacant_site2)
 "bp" = (
@@ -2354,6 +2353,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/vacant/vacant_site2)
 "eD" = (
