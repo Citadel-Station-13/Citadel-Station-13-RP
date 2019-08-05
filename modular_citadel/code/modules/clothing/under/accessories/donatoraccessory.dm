@@ -22,3 +22,11 @@
 	icon_state = "holotags"
 	item_state = "holotags_w"
 	overlay_state = "holotags_w"
+
+/obj/item/clothing/accessory/poncho/roles/cloak/peltcloak
+	name = "Dyed Pelt Cloak"
+	desc = "This is a cloak made by various rare pelts all sewn together, dyed in  expensive dyes and covered with various noble metal strands. There is a small mark on it saying From the Silc clan to the Szi clan, as a marriage gift."
+	icon = 'modular_citadel/icons/obj/clothing/ties_cit.dmi'
+	icon_override = 'modular_citadel/icons/mob/ties_cit.dmi'
+	icon_state = "peltcloak"
+	item_state = "peltcloak"
