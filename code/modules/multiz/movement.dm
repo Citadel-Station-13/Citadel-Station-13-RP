@@ -191,7 +191,7 @@
 		var/mob/H = src //VOREStation Edit Start. Flight on mobs.
 		if(H.flying) //Some other checks are done in the wings_toggle proc
 			if(H.nutrition > 2)
-				H.nutrition -= 0.5 //You use up 0.4 nutrition per TILE and tick of flying above open spaces. If people wanna flap their wings in the hallways, shouldn't penalize them for it. Lowered to make winged people less sad.
+				H.nutrition -= 0.5 //You use up 0.5 nutrition per TILE and tick of flying above open spaces. If people wanna flap their wings in the hallways, shouldn't penalize them for it. Lowered to make winged people less sad.
 			if(H.incapacitated(INCAPACITATION_ALL))
 				H.stop_flying()
 				//Just here to see if the person is KO'd, stunned, etc. If so, it'll move onto can_fall.
@@ -200,7 +200,7 @@
 				H.stop_flying() //womp womp.
 			else if(H.nutrition < 300 && H.nutrition > 299.4) //290 would be risky, as metabolism could mess it up. Let's do 289.
 				to_chat(H, "<span class='danger'>You are starting to get fatigued... You probably have a good minute left in the air, if that. Even less if you continue to fly around! You should get to the ground soon!</span>") //Ticks are, on average, 3 seconds. So this would most likely be 90 seconds, but lets just say 60.
-				H.nutrition -= 0.5
+				H.nutrition -= 0.5 //Fixed the evilness to have 10 nutrition drained per tick and tile below 300 nutrition too
 				return
 			else if(H.nutrition < 100 && H.nutrition > 99.4)
 				to_chat(H, "<span class='danger'>You're seriously fatigued! You need to get to the ground immediately and eat before you fall!</span>")
