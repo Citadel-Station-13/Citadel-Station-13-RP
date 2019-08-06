@@ -27810,10 +27810,6 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
 /obj/machinery/door/window/northleft{
 	name = "Prototype Hardsuit Storage";
 	req_access = list(58)
@@ -27823,6 +27819,9 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/headofsecurity,
 /obj/item/clothing/head/helmet/space/void/headofsecurity,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "ZO" = (
