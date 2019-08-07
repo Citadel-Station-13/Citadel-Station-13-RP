@@ -11,7 +11,7 @@
   */
 /atom/vv_edit_var(var_name, var_value)
 	if(!GLOB.Debug2)
-		flags_1 |= ADMIN_SPAWNED_1
+		flags |= ADMIN_SPAWNED
 	. = ..()
 	switch(var_name)
 		if("color")
