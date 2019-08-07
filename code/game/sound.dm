@@ -37,6 +37,7 @@
 	S.wait = 0 //No queue
 	S.channel = channel || open_sound_channel()
 	S.volume = vol
+	S.environment = 7
 
 	if(vary)
 		if(frequency)
@@ -76,18 +77,17 @@
 			return //No sound
 
 		//Apply a sound environment.
-		if(!is_global)
-			S.environment = get_sound_env(pressure_factor)
+		//if(!is_global)
+		//	S.environment = get_sound_env(pressure_factor)
 
-		var/dx = turf_source.x - T.x // Hearing from the right/left
-		S.x = dx
-		var/dz = turf_source.y - T.y // Hearing from infront/behind
-		S.z = dz
-		// The y value is for above your head, but there is no ceiling in 2d spessmens.
-		S.y = 1
+		S.x = turf_source.x - T.x		//east/west
+		S.z = turf_source.y - T.y		//north/south
+		S.y = turf_source.z - T.z		//above/below
 		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
 
-	src << S
+	//to_chat(world, "DEBUG: SOUND PLAYED VOLUME [S.volume] ENVIRONMENT [S.environment]")
+
+	SEND_SOUND(src, S)
 
 /proc/sound_to_playing_players(sound, volume = 100, vary)
 	sound = get_sfx(sound)

@@ -6,22 +6,20 @@
 	name = "shadow"
 	desc = "Z-level shadow"
 	status_flags = GODMODE
-	anchored = 1
-	unacidable = 1
-	density = 0
-	opacity = 0					// Don't trigger lighting recalcs gah! TODO - consider multi-z lighting.
-	//auto_init = FALSE 			// We do not need to be initialize()d
+	anchored = TRUE
+	unacidable = TRUE
+	density = FALSE
+	opacity = FALSE					// Don't trigger lighting recalcs gah! TODO - consider multi-z lighting.
 	var/mob/owner = null		// What we are a shadow of.
 
 /mob/zshadow/can_fall()
 	return FALSE
 
-/mob/zshadow/Initialize(mapload, mob/L)
-	if(!istype(L))
-		qdel(src)
-		return
-	owner = L
-	sync_icon(L)
+/mob/zshadow/Initialize(mapload, mob/living/owner)
+	if(!istype(owner))
+		return INITIALIZE_HINT_QDEL
+	src.owner = owner
+	sync_icon(owner)
 
 /mob/zshadow/Destroy()
 	owner = null
@@ -59,17 +57,18 @@
 	check_shadow()
 
 /mob/living/proc/check_shadow()
-	var/mob/M = src
-	if(isturf(M.loc))
+	if(isturf(loc))
+		var/mob/checking = src
 		var/turf/simulated/open/OS = GetAbove(src)
-		while(istype(OS))
-			if(!M.shadow)
-				M.shadow = new /mob/zshadow(OS, M)
-			M = M.shadow
-			OS = GetAbove(M)
-	// The topmost level does not need a shadow!
-	if(M.shadow)
-		QDEL_NULL(M.shadow)
+		while(istype(checking))
+			if(!istype(OS))
+				QDEL_NULL(checking.shadow)
+				return
+			if(!checking.shadow)
+				checking.shadow = new /mob/zshadow(OS, checking)
+			checking.shadow.forceMove(OS)
+			checking = checking.shadow
+			OS = GetAbove(OS)
 
 //
 // Handle cases where the owner mob might have changed its icon or overlays.
@@ -98,7 +97,7 @@
 	if(shadow)
 		shadow.visible_message(message, self_message, blind_message)
 
-/mob/zshadow/set_typing_indicator(var/state)
+/mob/zshadow/set_typing_indicator(state)
 	if(!typing_indicator)
 		typing_indicator = new
 		typing_indicator.icon = 'icons/mob/talk_vr.dmi' // Looks better on the right with job icons. //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
