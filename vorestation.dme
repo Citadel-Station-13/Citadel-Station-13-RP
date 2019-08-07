@@ -150,6 +150,7 @@
 #include "code\_global_vars\mobs.dm"
 #include "code\_global_vars\regexes.dm"
 #include "code\_global_vars\sensitive.dm"
+#include "code\_global_vars\traits.dm"
 #include "code\_global_vars\lists\atoms.dm"
 #include "code\_global_vars\lists\mapping.dm"
 #include "code\_global_vars\lists\mobs.dm"

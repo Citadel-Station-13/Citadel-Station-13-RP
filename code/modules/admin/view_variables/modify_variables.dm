@@ -38,7 +38,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if (subtypes)
 		types = typesof(type)
 
-	var/list/fancytypes = get_typepath_shortnames(types)
+	var/list/fancytypes = get_fancy_types(types)
 
 	for(var/fancytype in fancytypes) //swap the assoication
 		types[fancytypes[fancytype]] = fancytype

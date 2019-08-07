@@ -1,4 +1,4 @@
-/datum/admins/proc/auto_aghost_follow(atom/target)
+/datum/admins/proc/auto_aghost_orbit(atom/target)
 	if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))
 		return
 	var/client/C = usr.client
