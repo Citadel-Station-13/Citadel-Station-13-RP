@@ -74,7 +74,7 @@
 /*
 	//atom color stuff
 	if(color)
-		add_atom_color(color, FIXED_COLOR_PRIORITY)
+		add_atom_colour(color, FIXED_COLOR_PRIORITY)
 */
 
 	if (light_power && light_range)
@@ -617,7 +617,7 @@
 /*
 	Adds an instance of color_type to the atom's atom_colors list
 */
-/atom/proc/add_atom_color(coloration, color_priority)
+/atom/proc/add_atom_colour(coloration, color_priority)
 	if(!atom_colors || !atom_colors.len)
 		atom_colors = list()
 		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
@@ -626,13 +626,13 @@
 	if(color_priority > atom_colors.len)
 		return
 	atom_colors[color_priority] = coloration
-	update_atom_color()
+	update_atom_colour()
 
 
 /*
 	Removes an instance of color_type from the atom's atom_colors list
 */
-/atom/proc/remove_atom_color(color_priority, coloration)
+/atom/proc/remove_atom_colour(color_priority, coloration)
 	if(!atom_colors)
 		atom_colors = list()
 		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
@@ -641,14 +641,14 @@
 	if(coloration && atom_colors[color_priority] != coloration)
 		return //if we don't have the expected color (for a specific priority) to remove, do nothing
 	atom_colors[color_priority] = null
-	update_atom_color()
+	update_atom_colour()
 
 
 /*
 	Resets the atom's color to null, and then sets it to the highest priority
 	color available
 */
-/atom/proc/update_atom_color()
+/atom/proc/update_atom_colour()
 	if(!atom_colors)
 		atom_colors = list()
 		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
