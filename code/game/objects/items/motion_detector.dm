@@ -29,7 +29,7 @@
 	identifier = MOTION_DETECTOR_FUBAR
 
 /obj/item/motiondetector
-	name = "VeyMed LifeSense sensor"
+	name = "BioScanner"
 	desc = "A device that searches for life signs through an array of short range sensors to detect breathing, body temperature, sound, and approximate cross-section. Crew with the correct IFF signature appear as green, their bodies as blue, unrecoverable bodies as dark blue, all other life signs appear as red blips. It has a mode selection interface."
 	icon = 'icons/obj/detector.dmi'
 	icon_state = "detector_off"
