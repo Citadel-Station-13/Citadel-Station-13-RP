@@ -32,8 +32,9 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PROXMOVE				(1<<7)	// Does this object require proximity checking in Enter()?
 #define OVERLAY_QUEUED			(1<<8)	// Atom queued to SSoverlay for COMPILE_OVERLAYS
 #define INITIALIZED				(1<<9)	// Initialize() has ran already
-#define HEAR					(1<<10)	// Should hear sound and/or audible messages of any sort
-#define SEE						(1<<11)	// Should see flash effects and/or visible messages of any sort
+#define HEAR					(1<<10)	// Should hear sound and/or audible messages of any sort - NOT PROPERLY REFACTORED/USED!!
+#define SEE						(1<<11)	// Should see flash effects and/or visible messages of any sort - UNUSED!!
+#define ADMIN_SPAWNED			(1<<12)
 
 //Turf flags
 #define UNUSED_RESERVATION_TURF	(1<<22)
