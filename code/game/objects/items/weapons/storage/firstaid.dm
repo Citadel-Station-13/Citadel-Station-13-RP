@@ -213,7 +213,7 @@
 		name = "[base_name] ([label_text])"
 	desc = "[base_desc] It is labeled \"[label_text]\"."
 
-/obj/item/weapon/storage/pill_bottle/verb/choose_color() // BEGIN Citadel Changes - Bottle recoloring
+/obj/item/weapon/storage/pill_bottle/proc/choose_color() // BEGIN Citadel Changes - Bottle recoloring
 	set name = "Recolor bottle"
 	set category = "Object"
 	set desc = "Click to choose a color for the pill bottle."
@@ -240,13 +240,16 @@
 	..()
 	if(labeled == 1)
 		add_overlay(image(icon = 'icons/obj/chemical.dmi', icon_state = "pill_canister_label"))
-	if(bottle_color == "orange")
-		icon_state = "[base_icon]"
-	else
-		icon_state = "[base_icon]_[bottle_color]"
+	if(base_icon == "pill_canister")
+		if(bottle_color == "orange")
+			icon_state = "[base_icon]"
+		else
+			icon_state = "[base_icon]_[bottle_color]"
 
 /obj/item/weapon/storage/pill_bottle/initialize()
 	. = ..()
+	if(base_icon == "pill_canister")
+		verbs += /obj/item/weapon/storage/pill_bottle/proc/choose_color
 	update_icon() // END Citadel Changes - Bottle recoloring
 
 /obj/item/weapon/storage/pill_bottle/antitox
