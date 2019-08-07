@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "_maps\holder_file.dm"
 #include "code\_away_mission_tests.dm"
 #include "code\_compile_options.dm"
 #include "code\_macros.dm"
@@ -73,6 +74,7 @@
 #include "code\__DEFINES\planets.dm"
 #include "code\__DEFINES\powercells.dm"
 #include "code\__DEFINES\process_scheduler.dm"
+#include "code\__DEFINES\procpath.dm"
 #include "code\__DEFINES\profile.dm"
 #include "code\__DEFINES\projectiles.dm"
 #include "code\__DEFINES\qdel.dm"
@@ -82,6 +84,7 @@
 #include "code\__DEFINES\rust_g.dm"
 #include "code\__DEFINES\sight.dm"
 #include "code\__DEFINES\sound.dm"
+#include "code\__DEFINES\spaceman_dmm.dm"
 #include "code\__DEFINES\species.dm"
 #include "code\__DEFINES\species_languages.dm"
 #include "code\__DEFINES\species_languages_vr.dm"
@@ -458,6 +461,8 @@
 #include "code\game\atoms.dm"
 #include "code\game\atoms_movable.dm"
 #include "code\game\atoms_movable_vr.dm"
+#include "code\game\atoms_movable_vv.dm"
+#include "code\game\atoms_vv.dm"
 #include "code\game\periodic_news.dm"
 #include "code\game\response_team.dm"
 #include "code\game\shuttle_engines.dm"
@@ -1386,6 +1391,7 @@
 #include "code\modules\admin\create_object.dm"
 #include "code\modules\admin\create_turf.dm"
 #include "code\modules\admin\holder2.dm"
+#include "code\modules\admin\holder_procs.dm"
 #include "code\modules\admin\IsBanned.dm"
 #include "code\modules\admin\map_capture.dm"
 #include "code\modules\admin\NewBan.dm"
@@ -1473,6 +1479,7 @@
 #include "code\modules\admin\view_variables\debug_variables.dm"
 #include "code\modules\admin\view_variables\get_variables.dm"
 #include "code\modules\admin\view_variables\helpers_deprecated.dm"
+#include "code\modules\admin\view_variables\mark_datum.dm"
 #include "code\modules\admin\view_variables\mass_edit_variables.dm"
 #include "code\modules\admin\view_variables\modify_variables.dm"
 #include "code\modules\admin\view_variables\topic.dm"

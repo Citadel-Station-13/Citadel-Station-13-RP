@@ -4,7 +4,7 @@
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
-	if(!usr.client || !usr.client.holder) //The usr vs src abuse in this proc is intentional and must not be changed
+	if(!usr.client || !usr.client.holder)		//This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
 		to_chat(usr, "<span class='danger'>You need to be an administrator to access this.</span>")
 		return
 
@@ -24,17 +24,8 @@
 
 	if(istype(D, /atom))
 		sprite = getFlatIcon(D)
-		if(isicon(sprite))
-			hash = md5(sprite)
-			src << browse_rsc(sprite, "vv[hash].png")
-
-		/*
-		if(AT.icon && AT.icon_state)
-			sprite = new /icon(AT.icon, AT.icon_state)
-			hash = md5(AT.icon)
-			hash = md5(hash + AT.icon_state)
-			src << browse_rsc(sprite, "vv[hash].png")
-		*/
+		hash = md5(sprite)
+		src << browse_rsc(sprite, "vv[hash].png")
 
 	title = "[D] ([REF(D)]) = [type]"
 	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
@@ -58,7 +49,6 @@
 	if (islist)
 		dropdownoptions = list(
 			"---",
-			"Mark List" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_MARK),
 			"Add Item" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
 			"Remove Nulls" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_NULLS),
 			"Remove Dupes" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ERASE_DUPES),
@@ -233,7 +223,7 @@
 					<td width='50%'>
 						<div align='center'>
 							<a id='refresh_link' href='?_src_=vars;
-datumrefresh=[refid]'>Refresh</a>
+datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 							<form>
 								<select name="file" size="1"
 									onchange="handle_dropdown(this)"

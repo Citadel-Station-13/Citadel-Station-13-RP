@@ -1219,16 +1219,7 @@
 		C.jumptomob(M)
 
 	else if(href_list["adminplayerobservefollow"])
-		if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))
-			return
-
-		var/mob/M = locate(href_list["adminplayerobservefollow"])
-
-		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
-		var/mob/observer/dead/G = C.mob
-		sleep(2)
-		G.ManualFollow(M)
+		auto_aghost_orbit(locate(href_list["adminplayerobservefollow"]))
 
 	else if(href_list["check_antagonist"])
 		check_antagonists()
