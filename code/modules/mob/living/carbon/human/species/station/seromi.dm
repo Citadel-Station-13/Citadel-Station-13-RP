@@ -41,14 +41,13 @@
 
 	fire_icon_state = "generic" // Humanoid is too big for them and spriting a new one is really annoying.
 
-	slowdown = -1
+	slowdown = -0.5 //half the old.
 	snow_movement = -2	// Ignores light snow
 	item_slowdown_mod = 2	// Tiny birds don't like heavy things
 	total_health = 50
 	brute_mod = 1.35
 	burn_mod =  1.35
 	mob_size = MOB_SMALL
-	pass_flags = PASSTABLE
 	holder_type = /obj/item/weapon/holder/human
 //	short_sighted = 1
 	gluttonous = 1

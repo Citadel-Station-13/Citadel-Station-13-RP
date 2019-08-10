@@ -347,7 +347,7 @@
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table
+		//mob/living/proc/toggle_pass_table // perish.
 		)
 
 /datum/species/shapeshifter/promethean
