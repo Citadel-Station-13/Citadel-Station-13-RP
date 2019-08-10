@@ -37,20 +37,18 @@
 	deform = 'icons/mob/human_races/r_def_lizard.dmi'
 	tail = "sogtail"
 	tail_animation = 'icons/mob/species/unathi/tail.dmi'
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	primitive_form = SPECIES_MONKEY_UNATHI
-	darksight = 3
 	ambiguous_genders = TRUE
 	gluttonous = 1
 	slowdown = 0.5
 	total_health = 125
 	brute_mod = 0.85
-	burn_mod = 0.85
+	burn_mod = 1
 	metabolic_rate = 0.85
 	item_slowdown_mod = 0.25
 	mob_size = MOB_LARGE
 	blood_volume = 840
-	bloodloss_rate = 0.75
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_UNATHI)
 	name_language = LANGUAGE_UNATHI
@@ -60,7 +58,7 @@
 	min_age = 32
 	max_age = 260
 
-	economic_modifier = 7
+	economic_modifier = 10
 
 	blurb = "A heavily reptillian species, Unathi hail from the \
 	Uuosa-Eso system, which roughly translates to 'burning mother'.<br/><br/>Coming from a harsh, inhospitable \
@@ -171,7 +169,7 @@
 	min_age = 17
 	max_age = 80
 
-	economic_modifier = 7
+	economic_modifier = 10
 
 	blurb = "The Tajaran are a mammalian species resembling roughly felines, hailing from Meralar in the Rarkajar system. \
 	While reaching to the stars independently from outside influences, the humans engaged them in peaceful trade contact \
@@ -256,7 +254,7 @@
 	min_age = 19
 	max_age = 130
 
-	economic_modifier = 12
+	economic_modifier = 10
 
 	darksight = 4
 	flash_mod = 1.2
