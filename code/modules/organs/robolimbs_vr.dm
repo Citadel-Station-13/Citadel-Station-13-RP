@@ -183,7 +183,7 @@ END OF CITADEL CHANGES */
 	lifelike = 1
 	skin_tone = 1
 	suggested_species = "Teshari"
-
+/*
 /datum/robolimb/dsi_teshari/New()
 	species_cannot_use = all_species.Copy()
 	species_cannot_use -= SPECIES_TESHARI
@@ -191,7 +191,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/weapon/disk/limb/dsi_teshari
 	company = "DSI - Teshari"
-
+*/
 
 /datum/robolimb/braincase
 	company = "cortexCases - MMI"

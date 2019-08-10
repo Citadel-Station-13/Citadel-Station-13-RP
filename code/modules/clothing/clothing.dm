@@ -481,7 +481,7 @@
 	slowdown = SHOES_SLOWDOWN
 	force = 2
 	var/overshoes = 0
-	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
+	species_restricted = list("exclude",/*SPECIES_TESHARI,*/ SPECIES_VOX)
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/seromi/shoes.dmi',
 		SPECIES_VOX = 'icons/mob/species/vox/shoes.dmi'

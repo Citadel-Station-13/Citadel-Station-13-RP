@@ -795,7 +795,7 @@
 		name = "Shaved"
 		icon_state = "bald"
 		gender = NEUTER
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_TAJ,SPECIES_SKRELL, "Machine", SPECIES_TESHARI, SPECIES_TESHARI,SPECIES_PROMETHEAN)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_TAJ,SPECIES_SKRELL, "Machine", /*SPECIES_TESHARI, SPECIES_TESHARI,*/SPECIES_PROMETHEAN)
 
 	watson
 		name = "Watson Mustache"
@@ -1084,7 +1084,7 @@
 		icon_state = "hair_fingerwave"
 		species_allowed = list(SPECIES_TAJ)
 
-//Teshari things
+/*//Teshari things
 	teshari
 		name = "Teshari Default"
 		icon_state = "teshari_default"
@@ -1180,7 +1180,7 @@
 		name = "Quill Mohawk"
 		icon_state = "vox_mohawk"
 		species_allowed = list(SPECIES_VOX)
-
+*/
 /datum/sprite_accessory/facial_hair
 
 	taj_sideburns
@@ -1235,7 +1235,7 @@
 		icon_state = "facial_dorsalfrill"
 		species_allowed = list(SPECIES_UNATHI)
 
-
+/*
 //Teshari things
 	teshari_beard
 		name = "Teshari Beard"
@@ -1254,7 +1254,7 @@
 		icon_state = "teshari_gap"
 		species_allowed = list(SPECIES_TESHARI)
 		gender = NEUTER
-
+*/
 /*
 ////////////////////////////
 /  =--------------------=  /

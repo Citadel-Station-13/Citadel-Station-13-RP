@@ -28,11 +28,11 @@
 
 /mob/living/carbon/human/diona/New(var/new_loc)
 	..(new_loc, SPECIES_DIONA)
-
+/*
 /mob/living/carbon/human/teshari/New(var/new_loc)
 	h_style = "Teshari Default"
 	..(new_loc, SPECIES_TESHARI)
-
+*/
 /mob/living/carbon/human/promethean/New(var/new_loc)
 	..(new_loc, SPECIES_PROMETHEAN)
 

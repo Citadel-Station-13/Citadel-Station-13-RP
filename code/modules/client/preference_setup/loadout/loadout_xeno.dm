@@ -91,7 +91,7 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/uniform/smock
+/*/datum/gear/uniform/smock
 	display_name = "smock selection (Teshari)"
 	path = /obj/item/clothing/under/seromi/smock
 	whitelisted = SPECIES_TESHARI
@@ -132,7 +132,7 @@
 		var/obj/item/clothing/suit/storage/seromi/cloak/standard/cloak_type = cloak
 		cloaks[initial(cloak_type.name)] = cloak_type
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(cloaks))
-
+*/
 /datum/gear/mask/ipc_monitor
 	display_name = "display monitor (Full Body Prosthetic)"
 	path = /obj/item/clothing/mask/monitor
@@ -161,7 +161,7 @@
 		var/obj/item/clothing/under/cohesion/cohesion_type = cohesionsuit
 		cohesionsuits[initial(cohesion_type.name)] = cohesion_type
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(cohesionsuits))
-
+/*
 /datum/gear/uniform/dept
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
@@ -360,3 +360,4 @@
 	display_name = "Teshari IAA Cloak"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/iaa
 	allowed_roles = list("Internal Affairs Agent")
+*/

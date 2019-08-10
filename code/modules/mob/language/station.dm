@@ -95,7 +95,7 @@
 	flags = WHITELISTED | SIGNLANG | NO_STUTTER | NONVERBAL
 
 /datum/language/tajsign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
-	var/list/allowed_species = list(SPECIES_TAJ, SPECIES_TESHARI)	// Need a tail and ears and such to use this.
+	var/list/allowed_species = list(SPECIES_TAJ/*, SPECIES_TESHARI*/)	// Need a tail and ears and such to use this.
 	if(iscarbon(speaker))
 		var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands
 		if(!hands)
@@ -137,7 +137,7 @@
 	var/list/first_names = file2list('config/names/first_name_skrell.txt')
 	var/list/last_names = file2list('config/names/last_name_skrell.txt')
 	return "[pick(first_names)] [pick(last_names)]"
- 
+
 /datum/language/human
 	name = LANGUAGE_SOL_COMMON
 	desc = "A bastardized hybrid of many languages, including Chinese, English, French, and more; it is the common language of the Sol system."
