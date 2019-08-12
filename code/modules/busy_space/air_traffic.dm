@@ -59,9 +59,14 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/prefix = pick(source.ship_prefixes)			//Pick a random prefix
 	var/mission = source.ship_prefixes[prefix]		//The value of the prefix is the mission type that prefix does
 	var/shipname = pick(source.ship_names)			//Pick a random ship name to go with it
-	var/destname = pick(dest.destination_names)			//Pick a random holding from the destination
+	var/destname = pick(dest.destination_names)		//Pick a random holding from the destination
+	if(source.roaming == FALSE)				//Check they're system-limited or no; if yes, reroute them to "home" destinations
+		destname = pick(dest.destination_names)			
+	else							//Maybe redundant but whatever
+		destname = pick(source.destination_names)
 
 	var/combined_name = "[owner] [prefix] [shipname]"
+	var/scan_exempt = source.scan_exempt
 	var/alt_atc_names = list("[using_map.station_short] TraCon","[using_map.station_short] Control","[using_map.station_short] STC","[using_map.station_short] StarCon")
 	var/wrong_atc_names = list("Sol Command","New Reykjavik StarCon", "[using_map.dock_name]")
 	var/mission_noun = list("flight","mission","route","operation")
@@ -89,7 +94,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
 	else
-		chatter_type = pick(2;"emerg",5;"wrong_freq","policescan","policeflee","pathwarning","dockingrequestgeneric","dockingrequestdenied","dockingrequestsupply","dockingrequestrepair","dockingrequestmedical","dockingrequestsecurity","undockingrequest","normal") //Be nice to have wrong_lang...
+		chatter_type = pick(2;"emerg",5;"wrong_freq",2;"policescan",2;"policeflee",2;"pathwarning",2;"dockingrequestgeneric",2;"dockingrequestdenied",2;"dockingrequestsupply",2;"dockingrequestrepair",2;"dockingrequestmedical",2;"dockingrequestsecurity",2;"undockingrequest","normal") //Be nice to have wrong_lang...
 
 	var/yes = prob(90) //Chance for them to say yes vs no
 
@@ -116,7 +121,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			msg("[combined_name], this is [using_map.station_short] Control, copy. Switch to emergency responder channel [rand(700,999)].[rand(1,9)].")
 			sleep(5 SECONDS)
 			msg("Understood [using_map.station_short] Control, switching now.","[prefix] [shipname]")
-		if("policescan")
+		if("policescan" && !scan_exempt)
 			var/confirm = pick("Understood","Roger that","Affirmative")
 			var/complain = pick("I hope this doesn't take too long.","Can we hurry this up?","Make it quick.","This better not take too long.")
 			var/completed = pick("You're free to proceed.","Everything looks fine, carry on.","Apologies for the delay, you're clear.","Switch to [rand(700,999)].[rand(1,9)] and await further instruction.")
@@ -126,10 +131,10 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			sleep(5 SECONDS)
 			msg("Your compliance is appreciated, [combined_name]. Scan commencing.")
 			sleep(10 SECONDS)
-			msg("[complain] We're on a [mission] [pick(mission_noun)] to [destname].","[prefix] [shipname]")
+			msg(complain,"[prefix] [shipname]")
 			sleep(15 SECONDS)
 			msg("[combined_name], this is [using_map.station_short] Control. Scan complete. [completed]")
-		if("policeflee")
+		if("policeflee" && !scan_exempt)
 			var/uhoh = pick("No can do chief, we got places to be.","Sorry but we've got places to be.","Not happening.","Ah fuck, who ratted us out this time?!","You'll never take me alive!")
 			msg("[combined_name], this is [using_map.station_short] Control, your ship has been flagged for routine inspection. Hold position and prepare to be scanned.")
 			sleep(5 SECONDS)
@@ -150,33 +155,33 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
 			msg("[callname], this is [combined_name], requesting permission to dock.","[prefix] [shipname]")
 			sleep(5 SECONDS)
-			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,24)]. Follow the green lights on your way in.")
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,42)]. Follow the green lights on your way in.")
 			sleep(5 SECONDS)
 			msg("[appreciation], [using_map.station_short] Control. [dockingplan]","[prefix] [shipname]")		
 		if("dockingrequestdenied")
-			var/reason = pick("don't have any free landing pads right now","don't have any landing pads large enough for your vessel","don't have the necessary facilities for your vessel type or class","can't verify your credentials")
+			var/reason = pick("we don't have any free landing pads right now","we don't have any landing pads large enough for your vessel","we don't have the necessary facilities for your vessel type or class","we can't verify your credentials","you're too far away, please close to ten thousand meters and resubmit your request")
 			msg("[callname], this is [combined_name], requesting permission to dock.","[prefix] [shipname]")
 			sleep(5 SECONDS)
-			msg("[combined_name], this is [using_map.station_short] Control. Permission denied, we [reason].")
+			msg("[combined_name], this is [using_map.station_short] Control. Permission denied, [reason].")
 			sleep(5 SECONDS)
 			msg("Understood, [using_map.station_short] Control.","[prefix] [shipname]")		
 		if("dockingrequestsupply")
-			var/intensifier = pick("very","pretty","critically","extremely","dangerously","desperately","kinda")
+			var/intensifier = pick("very","pretty","critically","extremely","dangerously","desperately","kinda","a little","rather","terribly","dreadfully")
 			var/low_thing = pick("ammunition","oxygen","water","food","medical supplies","reaction mass","hydrogen fuel","phoron fuel","fuel","beans","air freshener","booze","beer")
 			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver")
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
 			msg("[callname], this is [combined_name]. We're [intensifier] low on [low_thing] and need to resupply. Requesting permission to dock.","[prefix] [shipname]")
 			sleep(5 SECONDS)
-			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,24)]. Follow the green lights on your way in.")
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,42)]. Follow the green lights on your way in.")
 			sleep(5 SECONDS)
 			msg("[appreciation], [using_map.station_short] Control. [dockingplan]","[prefix] [shipname]")
 		if("dockingrequestrepair")
-			var/damagestate = pick("a little banged up","missing some paint","suffering minor system malfunctions","having some technical issues","overdue maintenance","hearing some weird noises from the engines")
+			var/damagestate = pick(" We're showing some hull damage","We're suffering minor system malfunctions","We're having some technical issues","We're overdue maintenance","We have several minor space debris impacts","We've got some battle damage here","We're hearing some weird noises from the engines","Our artificial gravity generator has failed","Our life support is failing","Our water recycling system has shorted out","Our systems are glitching out","We got hit by a solar flare","We had a close call with an asteroid","We have a fuel leak","We have depressurized compartments")
 			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver")
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
-			msg("[callname], this is [combined_name]. We're [damagestate]. Requesting permission to dock for repairs.","[prefix] [shipname]")
+			msg("[callname], this is [combined_name]. [damagestate]. Requesting permission to dock for repairs.","[prefix] [shipname]")
 			sleep(5 SECONDS)
-			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,24)]. Follow the green lights on your way in. Repair crews are standing by.")
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,42)]. Follow the green lights on your way in. Repair crews are standing by, contact them on channel [rand(700,999)].[rand(1,9)].")
 			sleep(5 SECONDS)
 			msg("[appreciation], [using_map.station_short] Control. [dockingplan]","[prefix] [shipname]")
 		if("dockingrequestmedical")
@@ -185,7 +190,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
 			msg("[callname], this is [combined_name]. We have [medicalstate] on board. Requesting permission to dock for medical assistance.","[prefix] [shipname]")
 			sleep(5 SECONDS)
-			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,24)]. Follow the green lights on your way in. Medtechs are standing by. Please follow standard quarantine procedures.")
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,42)]. Follow the green lights on your way in. Medtechs are standing by, contact them on channel [rand(700,999)].[rand(1,9)].")
 			sleep(5 SECONDS)
 			msg("[appreciation], [using_map.station_short] Control. [dockingplan]","[prefix] [shipname]")
 		if("dockingrequestsecurity")
@@ -194,7 +199,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
 			msg("[callname], this is [combined_name]. We have [securitystate] on board and require security assistance. Requesting permission to dock.","[prefix] [shipname]")
 			sleep(5 SECONDS)
-			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,24)]. Follow the green lights on your way in. Security teams are standing by for your arrival.")
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,42)]. Follow the green lights on your way in. Security teams are standing by, contact them on channel [rand(700,999)].[rand(1,9)].")
 			sleep(5 SECONDS)
 			msg("[appreciation], [using_map.station_short] Control. [dockingplan]","[prefix] [shipname]")
 		if("undockingrequest")

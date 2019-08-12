@@ -42,6 +42,8 @@
 		"Ishtar's Grace"
 		)
 	var/list/destination_names = list()	//Names of static holdings that the organization's ships visit regularly.
+	var/roaming = TRUE //am I allowed to roam out of system?
+	var/scan_exempt = FALSE //am I exempt from routine scans?
 	var/autogenerate_destination_names = TRUE
 
 /datum/lore/organization/New()
@@ -49,12 +51,10 @@
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(6, 10)
 		var/list/star_names = list(
-			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha",
-			"Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul",
-			"Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble" )
-		var/list/destination_types = list("dockyard", "station", "vessel", "waystation", "telecommunications satellite", "spaceport", "anomaly", "colony", "outpost", "debris field", "asteroid base", "research facility", "corporate installation", "freeport")
+			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble" )
+		var/list/destination_types = list("a dockyard", "a station", "a vessel", "a waystation", "a telecommunications satellite", "a spaceport", "a colony", "an outpost", "a settlement", "a research facility", "a corporate installation", "a freeport", "an independent holding", "an asteroid base", "an orbital refinery")
 		while(i)
-			destination_names.Add("a [pick(destination_types)] in [pick(star_names)]")
+			destination_names.Add("[pick(destination_types)] in [pick(star_names)]")
 			i--
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@
 	headquarters = "Luna, Sol"
 	motto = ""
 
-	ship_prefixes = list("NSV" = "exploration", "NTV" = "hauling", "NDV" = "patrol", "NRV" = "emergency response", "NDV" = "asset protection")
+	ship_prefixes = list("NSV" = "an exploration", "NTV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
 	//Scientist naming scheme
 	ship_names = list(
 		"Bardeen",
@@ -150,7 +150,7 @@
 	headquarters = "Luna, Sol"
 	motto = ""
 
-	ship_prefixes = list("HTV" = "freight", "HLV" = "munitions resupply", "HDV" = "asset protection", "HDV" = "preemptive deployment")
+	ship_prefixes = list("HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
 	//War God/Soldier Theme
 	ship_names = list(
 		"Ares",
@@ -207,7 +207,7 @@
 	headquarters = "Toledo, New Ohio"
 	motto = ""
 
-	ship_prefixes = list("VTV" = "transportation", "VMV" = "medical resupply", "VSV" = "research mission", "VRV" = "emergency medical support")
+	ship_prefixes = list("VTV" = "a transportation", "VMV" = "a medical resupply", "VSV" = "a research mission", "VRV" = "an emergency medical support")
 	// Diona names
 	ship_names = list(
 		"Wind That Stirs The Waves",
@@ -251,7 +251,7 @@
 	headquarters = "Earth, Sol"
 	motto = ""
 
-	ship_prefixes = list("ZTV" = "transportation", "ZMV" = "medical resupply")
+	ship_prefixes = list("ZTV" = "a transportation", "ZMV" = "a medical resupply")
 	destination_names = list()
 
 /datum/lore/organization/tsc/ward_takahashi
@@ -269,7 +269,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("WFV" = "freight", "WTV" = "transport", "WDV" = "asset protection")
+	ship_prefixes = list("WFV" = "a freight", "WTV" = "a transport", "WDV" = "an asset protection")
 	ship_names = list(
 		"Comet",
 		"Aurora",
@@ -309,7 +309,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("BTV" = "transportation", "BSV" = "research exchange")
+	ship_prefixes = list("BCTV" = "a transportation", "BCSV" = "a research exchange")
 	destination_names = list(
 	"A medical facility in Angessa's Pearl"
 	)
@@ -328,7 +328,7 @@
 	headquarters = "Shelf"
 	motto = ""
 
-	ship_prefixes = list("MTV" = "freight")
+	ship_prefixes = list("MTV" = "a freight")
 	// Culture names, because Anewbe told me so.
 	ship_names = list(
 		"Nervous Energy",
@@ -447,7 +447,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("XTV" = "hauling", "XFV" = "bulk transport", "XIV" = "resupply")
+	ship_prefixes = list("XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
 	destination_names = list()
 	
 /datum/lore/organization/tsc/antares
@@ -460,7 +460,7 @@
 	headquarters = ""
 	motto = ""
 	
-	ship_prefixes = list("ATV" = "transport", "ARV" = "research", "ADV" = "routine patrol", "AEV" = "raw materials acquisition")
+	ship_prefixes = list("ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
 	destination_names = list()
 
 /datum/lore/organization/tsc/mbt
@@ -473,7 +473,7 @@
 	headquarters = "Mars, Sol"
 	motto = ""
 
-	ship_prefixes = list("TTV" = "transport", "TTV" = "luxury transit", "TTV" = "priority transit")
+	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit")
 	destination_names = list()
 
 /datum/lore/organization/tsc/independent
@@ -486,8 +486,54 @@
 	headquarters = "N/A"
 	motto = "N/A"
 
-	ship_prefixes = list("IEV" = "prospecting", "IEC" = "prospecting", "IFV" = "bulk freight", "ITV" = "passenger transport", "ITC" = "just-in-time delivery", "IPV" = "patrol", "IHV" = "bounty hunting")
+	ship_prefixes = list("IEV" = "a prospecting", "IEC" = "a prospecting", "IFV" = "a bulk freight", "ITV" = "a passenger transport", "ITC" = "a just-in-time delivery", "IPV" = "a patrol", "IHV" = "a bounty hunting")
 	destination_names = list()
+
+// Other
+
+/datum/lore/organization/sysdef
+	name = "System Defense Force"
+	short_name = "SysDef"
+	acronym = "SDF"
+	desc = "Localized militias are used to secure systems throughout inhabited space. By levying and maintaining these local militia forces, governments can use their fleets for more important matters. System Defense Forces tend to be fairly poorly trained and modestly equipped compared to genuine military fleets, but are more than capable of contending with small-time pirates, and can generally stall greater threats long enough for reinforcements to arrive."
+	history = ""
+	work = "local security"
+	headquarters = ""
+	motto = ""
+	roaming = FALSE
+	scan_exempt = TRUE
+	autogenerate_destination_names = FALSE
+	
+	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort")
+	//TODO: optimistic names
+	destination_names = list(
+						"the outer system",
+						"the inner system",
+						"Waypoint Alpha",
+						"Waypoint Beta",
+						"Waypoint Gamma",
+						"Waypoint Delta",
+						"Waypoint Epsilon",
+						"Waypoint Zeta",
+						"Waypoint Eta",
+						"Waypoint Theta",
+						"Waypoint Iota",
+						"Waypoint Kappa",
+						"Waypoint Lambda",
+						"Waypoint Mu",
+						"Waypoint Nu",
+						"Waypoint Xi",
+						"Waypoint Omicron",
+						"Waypoint Pi",
+						"Waypoint Rho",
+						"Waypoint Sigma",
+						"Waypoint Tau",
+						"Waypoint Upsilon",
+						"Waypoint Phi",
+						"Waypoint Chi",
+						"Waypoint Psi",
+						"Waypoint Omega",	
+						)
 
 // Governments
 
@@ -503,7 +549,7 @@
 	motto = ""
 	autogenerate_destination_names = FALSE
 
-	ship_prefixes = list("SGA" = "hauling", "SGA" = "energy relay")
+	ship_prefixes = list("SGA" = "a hauling", "SGA" = "an energy relay")
 	destination_names = list(
 						"New Reykjavik on Sif",
 						"Radiance Energy Chain",
@@ -526,7 +572,7 @@
 	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'.
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("SCG-T" = "transportation", "SCG-D" = "diplomatic", "SCG-F" = "freight")
+	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight")
 	destination_names = list(
 						"Venus",
 						"Earth",
@@ -551,7 +597,8 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("WPF" = "secure freight", "WPS" = "logistics", "WPV" = "patrol", "WPH" = "bounty hunting", "WPX" = "experimental", "WPC" = "command", "WPI" = "mercy")
+	ship_prefixes = list("WPF" = "a secure freight", "WPS" = "a logistics", "WPV" = "a patrol", "WPH" = "a bounty hunting", "WPX" = "an experimental", "WPC" = "a command", "WPI" = "a mercy")
+	//TODO: animal names
 	destination_names = list(
 						"Wolfpack Command",
 						"a WPS patrol fleet",
@@ -569,6 +616,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("BSF" = "secure freight", "BSS" = "logistics", "BSV" = "patrol", "BSH" = "security", "BSX" = "experimental", "BSC" = "command")
+	ship_prefixes = list("BSF" = "a secure freight", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command")
+	//TODO: edgy names
 	destination_names = list()
 
