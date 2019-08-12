@@ -207,7 +207,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			sleep(5 SECONDS)
 			msg("[combined_name], this is [using_map.station_short] Control. Permission granted. Docking clamps released. [safetravels].")
 		else
-			msg("[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request].","[prefix] [shipname]")
+			msg("[callname], this is [combined_name] on [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request].","[prefix] [shipname]")
 			sleep(5 SECONDS)
 			msg("[combined_name], this is [using_map.station_short] Control, [response].")
 			sleep(5 SECONDS)
