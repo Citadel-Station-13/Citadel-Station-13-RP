@@ -77,7 +77,7 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(wcoats))
 
 /datum/gear/accessory/holster
-	display_name = "holster selection (Security, CD, HoP)"
+	display_name = "holster selection"
 	path = /obj/item/clothing/accessory/holster
 	allowed_roles = list("Colony Director","Head of Personnel","Security Officer","Warden","Head of Security","Detective","Search and Rescue","Explorer","Pathfinder")
 
@@ -131,6 +131,11 @@
 /datum/gear/accessory/suitvest
 	display_name = "suit vest"
 	path = /obj/item/clothing/accessory/vest
+
+/datum/gear/accessory/lifecrystal
+	display_name = "Life Crystal"
+	path = /obj/item/clothing/accessory/collar/lifecrystal
+	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
 
 /datum/gear/accessory/brown_vest
 	display_name = "webbing, brown"
