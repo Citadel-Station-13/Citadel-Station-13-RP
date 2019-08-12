@@ -52,7 +52,7 @@
 			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha",
 			"Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul",
 			"Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble" )
-		var/list/destination_types = list("dockyard", "station", "vessel", "waystation", "telecommunications satellite", "spaceport", "anomaly", "colony", "outpost")
+		var/list/destination_types = list("dockyard", "station", "vessel", "waystation", "telecommunications satellite", "spaceport", "anomaly", "colony", "outpost", "debris field", "asteroid base", "research facility", "corporate installation", "freeport")
 		while(i)
 			destination_names.Add("a [pick(destination_types)] in [pick(star_names)]")
 			i--
@@ -118,7 +118,7 @@
 	destination_names = list(
 		"NSS Exodus in Nyx",
 		"NCS Northern Star in Vir",
-		//"NLS Southern Cross in Vir",
+		"NLS Southern Cross in Vir",
 		"NAS Vir Central Command",
 		"a dockyard orbiting Sif",
 		"an asteroid orbiting Kara",
@@ -309,7 +309,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("ITV" = "transportation", "ISV" = "research exchange") //Bishop can't afford / doesn't care enough to afford its own prefixes
+	ship_prefixes = list("BTV" = "transportation", "BSV" = "research exchange")
 	destination_names = list(
 	"A medical facility in Angessa's Pearl"
 	)
@@ -428,8 +428,7 @@
 		"Normal Ship Name",
 		"Define Offensive",
 		"Tiffany",
-		"My Other Ship is A Gestalt",
-		"NTV HTV WTV ITV ZTV"
+		"My Other Ship is A Gestalt"
 		)
 	destination_names = list(
 		"a trade outpost in Shelf"
@@ -438,6 +437,7 @@
 /datum/lore/organization/tsc/xion
 	name = "Xion Manufacturing Group"
 	short_name = "Xion"
+	acronym = "XMG"
 	desc = "Xion, quietly, controls most of the market for industrial equipment. Their portfolio includes mining exosuits, \
 	factory equipment, rugged positronic chassis, and other pieces of equipment vital to the function of the economy. Xion \
 	keeps its control of the market by leasing, not selling, their equipment, and through infamous and bloody patent protection \
@@ -449,29 +449,44 @@
 
 	ship_prefixes = list("XTV" = "hauling", "XFV" = "bulk transport", "XIV" = "resupply")
 	destination_names = list()
+	
+/datum/lore/organization/tsc/antares
+	name = "Antares Robotics Group"
+	short_name = "Antares"
+	acronym = "ARG"
+	desc = "A relative newcomer to the prosthetics and cybernetics market, the Antares Robotics Group builds sturdy, reliable hardware supremely suited to frontier life. They're in direct (and aggressive) competition with Hephaestus Industries, though it remains to be seen what HI will make of these newcomers trying to muscle in on their share of the frontier markets."
+	history = ""
+	work = "cybernetics manufacturer"
+	headquarters = ""
+	motto = ""
+	
+	ship_prefixes = list("ATV" = "transport", "ARV" = "research", "ADV" = "routine patrol", "AEV" = "raw materials acquisition")
+	destination_names = list()
 
 /datum/lore/organization/tsc/mbt
 	name = "Major Bill's Transportation"
 	short_name = "Major Bill's"
+	acronym = "MBT"
 	desc = "The most popular courier service and starliner, Major Bill's is an unassuming corporation whose greatest asset is their low cost and brand recognition. Major Bill’s is known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouts quotable slogans. Their motto is \"With Major Bill's, you won't pay major bills!\", an earworm much of the galaxy longs to forget."
 	history = ""
 	work = "courier and passenger transit"
 	headquarters = "Mars, Sol"
 	motto = ""
 
-	ship_prefixes = list("TTV" = "transport", "TTV" = "luxury transit")
+	ship_prefixes = list("TTV" = "transport", "TTV" = "luxury transit", "TTV" = "priority transit")
 	destination_names = list()
 
 /datum/lore/organization/tsc/independent
-	name = "Free Traders"
-	short_name = "Free Trader"
-	desc = "Though less common now than they were in the decades before the Sol Economic Organization took power, independent traders remain an important part of the galactic economy, owing in no small part to protective tarrifs established by the Free Trade Union in the late twenty-forth century."
+	name = "Independent Pilots Association"
+	short_name = "Independent"
+	acronym = "IPA"
+	desc = "Though less common now than they were in the decades before the Sol Economic Organization took power, independent traders remain an important part of the galactic economy, owing in no small part to protective tariffs established by the Free Trade Union in the late twenty-fourth century. Further out on the frontier, independent pilots are often the only people keeping freight and supplies moving."
 	history = ""
 	work = "trade and transit"
 	headquarters = "N/A"
 	motto = "N/A"
 
-	ship_prefixes = list("IEV" = "prospecting", "IEC" = "prospecting", "IFV" = "bulk freight", "ITV" = "passenger transport", "ITC" = "just-in-time delivery")
+	ship_prefixes = list("IEV" = "prospecting", "IEC" = "prospecting", "IFV" = "bulk freight", "ITV" = "passenger transport", "ITC" = "just-in-time delivery", "IPV" = "patrol", "IHV" = "bounty hunting")
 	destination_names = list()
 
 // Governments
@@ -517,7 +532,8 @@
 						"Earth",
 						"Luna",
 						"Mars",
-						"Titan"
+						"Titan",
+						"the Jovian subcluster", 
 						)// autogen will add a lot of other places as well.
 
 
@@ -525,26 +541,34 @@
 
 // Military
 
-/datum/lore/organization/mil/sif_guard
-	name = "Sif Defense Force" // Todo: Get better name from lorepeople.
-	short_name = "SifGuard"
-	desc = ""
+/datum/lore/organization/mil/wolfpack
+	name = "Wolfpack Security"
+	short_name = "WolfSec"
+	acronym = "WPS"
+	desc = "Wolfpack Security is a merging of several much smaller freelance companies, and operates throughout civilized space. Unlike some companies, it operates no planetside facilities whatsoever, opting instead for larger flotillas that are serviced by innumerable smallcraft. As with any PMC there's no small amount of controversy surrounding them, but they try to keep their operations cleaner than their competitors."
 	history = ""
-	work = "Sif Governmental Authority's military"
-	headquarters = "New Reykjavik, Sif"
+	work = "mercenary contractors"
+	headquarters = ""
 	motto = ""
-	autogenerate_destination_names = FALSE // Kinda weird if SifGuard goes to Nyx.
 
-	ship_prefixes = list("SGSC" = "military", "SGSC" = "patrol", "SGSC" = "rescue", "SGSC" = "emergency response") // Todo: Replace prefix with better one.
+	ship_prefixes = list("WPF" = "secure freight", "WPS" = "logistics", "WPV" = "patrol", "WPH" = "bounty hunting", "WPX" = "experimental", "WPC" = "command", "WPI" = "mercy")
 	destination_names = list(
-						"a classified location in SolGov territory",
-						"Sif orbit",
-						"the rings of Kara",
-						"the rings of Rota",
-						"Firnir orbit",
-						"Tyr orbit",
-						"Magni orbit",
-						"a wreck in SifGov territory",
-						"a military outpost",
+						"Wolfpack Command",
+						"a WPS patrol fleet",
+						"a WPS flotilla",
+						"a WPS training fleet",
 						)
+
+/datum/lore/organization/mil/blackstar
+	name = "Blackstar Legion"
+	short_name = "Blackstar"
+	acronym = "BSL"
+	desc = "Shrouded in mystery and controversy, Blackstar Legion is said to have its roots in pre-FTL Sol private military contractors. Their reputation means that most upstanding corporations and governments are hesitant to call upon them, whilst their prices put them out of the reach of most private individuals. As a result, they're mostly seen as the hired thugs of frontier governments that don't (or won't) answer to SolGov."
+	history = ""
+	work = "mercenary contractors"
+	headquarters = ""
+	motto = ""
+
+	ship_prefixes = list("BSF" = "secure freight", "BSS" = "logistics", "BSV" = "patrol", "BSH" = "security", "BSX" = "experimental", "BSC" = "command")
+	destination_names = list()
 
