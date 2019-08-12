@@ -15,6 +15,8 @@
 		"Beacon",
 		"Signal",
 		"Freedom",
+		"Liberty",
+		"Enterprise",
 		"Glory",
 		"Axiom",
 		"Eternal",
@@ -43,8 +45,8 @@
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(6, 10)
 		var/list/star_names = list(
-			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble" )
-		var/list/destination_types = list("a dockyard", "a station", "a vessel", "a waystation", "a telecommunications satellite", "a spaceport", "a colony", "an outpost", "a settlement", "a research facility", "a corporate installation", "a freeport", "an independent holding", "an asteroid base", "an orbital refinery")
+			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble", "Shelf")
+		var/list/destination_types = list("a dockyard", "a station", "a vessel", "a waystation", "a telecommunications satellite", "a spaceport", "a colony", "an outpost", "a settlement", "a research facility", "a corporate installation", "a freeport", "an independent holding", "an asteroid base", "an orbital refinery", "a trade outpost")
 		while(i)
 			destination_names.Add("[pick(destination_types)] in [pick(star_names)]")
 			i--
@@ -125,8 +127,6 @@
 		var/string_to_test = "[using_map.station_name] in [using_map.starsys_name]"
 		if(string_to_test in destination_names)
 			destination_names.Remove(string_to_test)
-
-
 
 /datum/lore/organization/tsc/hephaestus
 	name = "Hephaestus Industries"
@@ -244,6 +244,64 @@
 	motto = ""
 
 	ship_prefixes = list("ZTV" = "a transportation", "ZMV" = "a medical resupply", "ZRV" = "a medical research")
+	//ship names: a selection of famous physicians who advanced the cause of medicine
+	ship_names = list(
+			"Averroes",
+			"Avicenna",
+			"Banting",
+			"Billroth",
+			"Blackwell",
+			"Blalock",
+			"Charaka",
+			"Chauliac",
+			"Cushing",
+			"Domagk",
+			"Galen",
+			"Fauchard",
+			"Favaloro",
+			"Fleming",
+			"Fracastoro",
+			"Goodfellow",
+			"Gray",
+			"Harvey",
+			"Heimlich",
+			"Hippocrates",
+			"Hunter",
+			"Isselbacher",
+			"Jenner",
+			"Joslin",
+			"Kocher",
+			"Laennec",
+			"Lane-Claypon",
+			"Lister",
+			"Lower",
+			"Madhav",
+			"Maimonides",
+			"Marshall",
+			"Mayo",
+			"Meyerhof",
+			"Minot",
+			"Morton",
+			"Needleman",
+			"Nicolle",
+			"Osler",
+			"Penfield",
+			"Raichle",
+			"Ransohoff",
+			"Rhazes",
+			"Semmelweis",
+			"Starzl",
+			"Still",
+			"Susruta",
+			"Urbani",
+			"Vesalius",
+			"Vidius",
+			"Whipple",
+			"White",
+			"Worcestor",
+			"Yegorov",
+			"Xichun"
+			)
 	destination_names = list()
 
 /datum/lore/organization/tsc/ward_takahashi
@@ -305,7 +363,7 @@
 
 	ship_prefixes = list("BCTV" = "a transportation", "BCSV" = "a research exchange")
 	destination_names = list(
-	"A medical facility in Angessa's Pearl"
+		"a medical facility in Angessa's Pearl"
 	)
 
 /datum/lore/organization/tsc/morpheus
@@ -323,8 +381,64 @@
 	motto = ""
 
 	ship_prefixes = list("MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
-	// Culture names removed! TODO: find new ones
-	//ship_names = list()
+	ship_names = list(
+				"Hydrogen",
+				"Helium",
+				"Lithium",
+				"Beryllium",
+				"Boron",
+				"Carbon",
+				"Nitrogen",
+				"Oxygen",
+				"Fluorine",
+				"Neon",
+				"Sodium",
+				"Magnesium",
+				"Aluminium",
+				"Silicon",
+				"Phosphorus",
+				"Sulfur",
+				"Chlorine",
+				"Argon",
+				"Potassium",
+				"Calcium",
+				"Scandium",
+				"Titanium",
+				"Vanadium",
+				"Chromium",
+				"Manganese",
+				"Iron",
+				"Cobalt",
+				"Nickel",
+				"Copper",
+				"Zinc",
+				"Gallium",
+				"Germanium",
+				"Arsenic",
+				"Selenium",
+				"Bromine",
+				"Krypton",
+				"Rubidium",
+				"Strontium",
+				"Yttrium",
+				"Zirconium",
+				"Niobium",
+				"Molybdenum",
+				"Technetium",
+				"Ruthenium",
+				"Rhodium",
+				"Palladium",
+				"Silver",
+				"Cadmium",
+				"Indium",
+				"Tin",
+				"Antimony",
+				"Tellurium",
+				"Iodine",
+				"Xenon",
+				"Caesium",
+				"Barium"						
+				)
 	destination_names = list(
 		"a trade outpost in Shelf"
 		)
@@ -345,6 +459,7 @@
 	ship_prefixes = list("XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
 	destination_names = list()
 
+//Keek&Allakai&Peesh's new TSC
 /datum/lore/organization/tsc/antares
 	name = "Antares Robotics Group"
 	short_name = "Antares"
@@ -356,19 +471,110 @@
 	motto = ""
 
 	ship_prefixes = list("ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
+	//ship names: rocks! no rolling
+	ship_names = list(
+			"Adakite",
+			"Andesite",
+			"Basalt",
+			"Basanite",
+			"Diorite",
+			"Dunite",
+			"Gabbro",
+			"Granite",
+			"Harzburgite",
+			"Ignimbrite",
+			"Kimberlite",
+			"Komatiite",
+			"Norite",
+			"Obsidian",
+			"Pegmatite",
+			"Picrite",
+			"Pumice",
+			"Rhyolite",
+			"Scoria",
+			"Syenite",
+			"Tachylyte",
+			"Wehrlite",
+			"Arkose",
+			"Chert",
+			"Dolomite",
+			"Flint",
+			"Laterite",
+			"Marl",
+			"Oolite",
+			"Sandstone",
+			"Shale",
+			"Anthracite",
+			"Gneiss",
+			"Granulite",
+			"Mylonite",
+			"Schist",
+			"Skarn",
+			"Slate"
+			)
 	destination_names = list()
 
 /datum/lore/organization/tsc/mbt
 	name = "Major Bill's Transportation"
 	short_name = "Major Bill's"
 	acronym = "MBT"
-	desc = "The most popular courier service and starliner, Major Bill's is an unassuming corporation whose greatest asset is their low cost and brand recognition. Major Bill’s is known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouts quotable slogans. Their motto is \"With Major Bill's, you won't pay major bills!\", an earworm much of the galaxy longs to forget."
+	desc = "The most popular courier service and starliner, Major Bill's is an unassuming corporation whose greatest asset is their low cost and brand recognition. Major Bill’s is known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouts quotable slogans. Their motto is \"With Major Bill's, you won't pay major bills!\", an earworm much of the galaxy longs to forget. Their ships are named after some of Earth's greatest rivers."
 	history = ""
 	work = "courier and passenger transit"
 	headquarters = "Mars, Sol"
 	motto = ""
 
 	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit")
+	//ship names: big rivers
+	ship_names = list (			
+						"Nile",
+						"Kagera",
+						"Nyabarongo",
+						"Mwogo",
+						"Rukarara",
+						"Amazon",
+						"Ucayali",
+						"Tambo",
+						"Ene",
+						"Mantaro",
+						"Yangtze",
+						"Mississippi",
+						"Missouri",
+						"Jefferson",
+						"Beaverhead",
+						"Red Rock",
+						"Hell Roaring",
+						"Yenisei",
+						"Angara",
+						"Yelenge",
+						"Ider",
+						"Ob",
+						"Irtysh",
+						"Rio de la Plata",
+						"Parana",
+						"Rio Grande",
+						"Congo",
+						"Chambeshi",
+						"Amur",
+						"Argun",
+						"Kherlen",
+						"Lena",
+						"Mekong",
+						"Mackenzie",
+						"Peace",
+						"Finlay",
+						"Niger",
+						"Brahmaputra",
+						"Tsangpo",
+						"Murray",
+						"Darling",
+						"Culgoa",
+						"Balonne",
+						"Condamine",
+						"Tocantins",
+						"Araguaia",
+						"Volga"
+						)
 	destination_names = list()
 
 /datum/lore/organization/tsc/independent
@@ -386,7 +592,8 @@
 
 // Other
 
-/datum/lore/organization/sysdef
+//SPACE LAW
+/datum/lore/organization/other/sysdef
 	name = "System Defense Force"
 	short_name = "SysDef"
 	acronym = "SDF"
@@ -400,6 +607,7 @@
 	autogenerate_destination_names = FALSE
 
 	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort")
+	//ship names: weapons
 	ship_names = list(
 						"Sword",
 						"Saber",
@@ -434,6 +642,7 @@
 						"Arbalest",
 						"Catapult",
 						"Trebuchet",
+						"Longbow",
 						"Pike",
 						"Glaive",
 						"Halberd",
@@ -469,8 +678,28 @@
 						"Waypoint Omega"
 						)
 
+/* //placeholder for a religious-themed faction
+/datum/lore/organization/other/starchurch
+	name = "Church of the Stars"
+	short_name = "Church of the Stars" //shortnames are for heathens and heretics!
+	acronym = "CotS"
+	desc = ""
+	history = ""
+	work = "spreading the good word"
+	headquarters = ""
+	motto = ""
+	roaming = TRUE
+	autogenerate_destination_names = TRUE
+
+	ship_prefixes = list ("CSO" = "an outreach", "CSM" = "a mercy", "CSA" = "an aid", "CSP" = "a pilgramage")
+	//ship names: prophets?
+	destination_names = list(
+				)
+*/
+
 // Governments
 
+/*
 /datum/lore/organization/gov/sifgov
 	name = "Sif Governmental Authority"
 	short_name = "SifGov"
@@ -491,6 +720,7 @@
 						"a telecommunications satellite",
 						"Vir Interstellar Spaceport"
 						)
+*/
 
 /datum/lore/organization/gov/solgov
 	name = "Solar Confederate Government"
@@ -585,9 +815,8 @@
 						)// autogen will add a lot of other places as well.
 
 
-// To be expanded upon later, once the military lore gets sorted out.
-
 // Military
+// Used for Para-Military groups right now! Pair of placeholder-ish PMCs.
 
 /datum/lore/organization/mil/wolfpack
 	name = "Wolfpack Security"
@@ -643,6 +872,7 @@
 						"a contract location"
 						) //some basics, padded with autogen
 
+//intentionally edgy a.f.
 /datum/lore/organization/mil/blackstar
 	name = "Blackstar Legion"
 	short_name = "Blackstar"
