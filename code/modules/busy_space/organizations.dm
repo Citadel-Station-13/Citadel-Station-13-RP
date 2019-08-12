@@ -31,20 +31,12 @@
 		"Hawk",
 		"Haste",
 		"Radiant",
-		"Luminous",
-		"Princess of Sol",
-		"King of the Mountain",
-		"Words and Changes",
-		"Katerina's Silhouette",
-		"Castle of Water",
-		"Jade Leviathan",
-		"Sword of Destiny",
-		"Ishtar's Grace"
+		"Luminous"
 		)
 	var/list/destination_names = list()	//Names of static holdings that the organization's ships visit regularly.
-	var/roaming = TRUE //am I allowed to roam out of system?
-	var/scan_exempt = FALSE //am I exempt from routine scans?
-	var/autogenerate_destination_names = TRUE
+	var/roaming = TRUE //am I allowed to roam out of system? if FALSE, pull from own destination list, not a second faction's
+	var/scan_exempt = FALSE //am I exempt from routine scans? currently unused
+	var/autogenerate_destination_names = TRUE //Pad the destination lists with some extra random ones?
 
 /datum/lore/organization/New()
 	..()
@@ -199,7 +191,7 @@
 	Despite the suspicion and prejudice leveled at them for their alien origin, Vey-Med has obtained market dominance in \
 	the sale of medical equipment-- from surgical tools to large medical devices to the Oddyseus trauma response mecha \
 	and everything in between. Their equipment tends to be top-of-the-line, most obviously shown by their incredibly \
-	human-like FBP designs. Vey's rise to stardom came from their introduction of ressurective cloning, although in \
+	human-like FBP designs. Vey's rise to stardom came from their introduction of resurrective cloning, although in \
 	recent years they've been forced to diversify as their patents expired and NanoTrasen-made medications became \
 	essential to modern cloning."
 	history = ""
@@ -251,7 +243,7 @@
 	headquarters = "Earth, Sol"
 	motto = ""
 
-	ship_prefixes = list("ZTV" = "a transportation", "ZMV" = "a medical resupply")
+	ship_prefixes = list("ZTV" = "a transportation", "ZMV" = "a medical resupply", "ZRV" = "a medical research")
 	destination_names = list()
 
 /datum/lore/organization/tsc/ward_takahashi
@@ -283,14 +275,16 @@
 		"Void",
 		"Asteroid",
 		"Wormhole",
-		"Sunspots",
+		"Sunspot",
 		"Supercluster",
 		"Moon",
+		"Supermoon",
 		"Anomaly",
 		"Drift",
 		"Stream",
 		"Rift",
-		"Curtain"
+		"Curtain",
+		"Binary"
 		)
 	destination_names = list()
 
@@ -328,108 +322,9 @@
 	headquarters = "Shelf"
 	motto = ""
 
-	ship_prefixes = list("MTV" = "a freight")
-	// Culture names, because Anewbe told me so.
-	ship_names = list(
-		"Nervous Energy",
-		"Prosthetic Conscience",
-		"Revisionist",
-		"Trade Surplus",
-		"Flexible Demeanour",
-		"Just Read The Instructions",
-		"Limiting Factor",
-		"Cargo Cult",
-		"Gunboat Diplomat",
-		"A Ship With A View",
-		"Cantankerous",
-		"I Thought He Was With You",
-		"Never Talk To Strangers",
-		"Sacrificial Victim",
-		"Unwitting Accomplice",
-		"Witting Accomplice",
-		"Bad For Business",
-		"Just Testing",
-		"Size Isn't Everything",
-		"Yawning Angel",
-		"Liveware Problem",
-		"Very Little Gravitas Indeed",
-		"Zero Gravitas",
-		"Gravitas Free Zone",
-		"Absolutely No You-Know-What",
-		"Existence Is Pain",
-		"I'm Walking Here",
-		"Screw Loose",
-		"Of Course I Still Love You",
-		"Limiting Factor",
-		"So Much For Subtley",
-		"Unfortunate Conflict Of Evidence",
-		"Prime Mover",
-		"It's One Of Ours",
-		"Thank You And Goodnight",
-		"Boo!",
-		"Reasonable Excuse",
-		"Honest Mistake",
-		"Appeal To Reason",
-		"My First Ship II",
-		"Hidden Income",
-		"Anything Legal Considered",
-		"New Toy",
-		"Me, I'm Always Counting",
-		"Just Five More Minutes",
-		"Are You Feeling It",
-		"Great White Snark",
-		"No Shirt No Shoes",
-		"Callsign",
-		"Three Ships in a Trenchcoat",
-		"Not Wearing Pants",
-		"Ridiculous Naming Convention",
-		"God Dammit Morpheus",
-		"It Seemed Like a Good Idea",
-		"Legs All the Way Up",
-		"Purchase Necessary",
-		"Some Assembly Required",
-		"Buy One Get None Free",
-		"BRB",
-		"SHIP NAME HERE",
-		"Questionable Ethics",
-		"Accept Most Substitutes",
-		"I Blame the Government",
-		"Garbled Gibberish",
-		"Thinking Emoji",
-		"Is This Thing On?",
-		"Make My Day",
-		"No Vox Here",
-		"Savings and Values",
-		"Secret Name",
-		"Can't Find My Keys",
-		"Look Over There!",
-		"Made You Look!",
-		"Take Nothing Seriously",
-		"It Comes In Lime, Too",
-		"Loot Me",
-		"Nothing To Declare",
-		"Sneaking Suspicion",
-		"Bass Ackwards",
-		"Good Things Come to Those Who Freight",
-		"Redundant Morality",
-		"Synthetic Goodwill",
-		"Your Ad Here",
-		"What Are We Plotting?",
-		"Set Phasers To Stun",
-		"Preemptive Defensive Strike",
-		"This Ship Is Spiders",
-		"Legitimate Trade Vessel",
-		"Please Don't Explode II",
-		"Get Off the Air",
-		"Definitely Unsinkable",
-		"We Didn't Do It!",
-		"Unrelated To That Other Ship",
-		"Not Reflecting The Opinons Of The Shareholders",
-		"Normal Ship Name",
-		"Define Offensive",
-		"Tiffany",
-		"My Other Ship is A Gestalt"
-		)
+	ship_prefixes = list("MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
+	// Culture names removed! TODO: find new ones
+	//ship_names = list()
 	destination_names = list(
 		"a trade outpost in Shelf"
 		)
@@ -449,7 +344,7 @@
 
 	ship_prefixes = list("XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
 	destination_names = list()
-	
+
 /datum/lore/organization/tsc/antares
 	name = "Antares Robotics Group"
 	short_name = "Antares"
@@ -459,7 +354,7 @@
 	work = "cybernetics manufacturer"
 	headquarters = ""
 	motto = ""
-	
+
 	ship_prefixes = list("ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
 	destination_names = list()
 
@@ -503,9 +398,48 @@
 	roaming = FALSE
 	scan_exempt = TRUE
 	autogenerate_destination_names = FALSE
-	
+
 	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort")
-	//TODO: optimistic names
+	ship_names = list(
+						"Sword",
+						"Saber",
+						"Cutlass",
+						"Broadsword",
+						"Katar",
+						"Shamshir",
+						"Shashka",
+						"Epee",
+						"Estoc",
+						"Longsword",
+						"Katana",
+						"Baselard",
+						"Gladius",
+						"Kukri",
+						"Pick",
+						"Mattock",
+						"Hatchet",
+						"Machete",
+						"Axe",
+						"Tomahawk",
+						"Dirk",
+						"Dagger",
+						"Maul",
+						"Mace",
+						"Flail",
+						"Morningstar",
+						"Shillelagh",
+						"Cudgel",
+						"Truncheon",
+						"Hammer",
+						"Arbalest",
+						"Catapult",
+						"Trebuchet",
+						"Pike",
+						"Glaive",
+						"Halberd",
+						"Scythe",
+						"Spear"
+						)
 	destination_names = list(
 						"the outer system",
 						"the inner system",
@@ -532,7 +466,7 @@
 						"Waypoint Phi",
 						"Waypoint Chi",
 						"Waypoint Psi",
-						"Waypoint Omega",	
+						"Waypoint Omega"
 						)
 
 // Governments
@@ -573,13 +507,81 @@
 	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight")
+	//earth's biggest impact craters
+	ship_names = list(
+						"Wabar",
+						"Kaali",
+						"Campo del Cielo",
+						"Henbury",
+						"Morasko",
+						"Boxhole",
+						"Macha",
+						"Rio Cuarto",
+						"Ilumetsa",
+						"Tenoumer",
+						"Xiuyan",
+						"Lonar",
+						"Agoudal",
+						"Tswaing",
+						"Zhamanshin",
+						"Bosumtwi",
+						"Elgygytgyn",
+						"Bigach",
+						"Karla",
+						"Karakul",
+						"Vredefort",
+						"Chicxulub",
+						"Sudbury",
+						"Popigai",
+						"Manicougan",
+						"Acraman",
+						"Morokweng",
+						"Kara",
+						"Beaverhead",
+						"Tookoonooka",
+						"Charlevoix",
+						"Siljan Ring",
+						"Montagnais",
+						"Araguinha",
+						"Chesapeake",
+						"Mjolnir",
+						"Puchezh-Katunki",
+						"Saint Martin",
+						"Woodleigh",
+						"Carswell",
+						"Clearwater West",
+						"Clearwater East",
+						"Manson",
+						"Slate",
+						"Yarrabubba",
+						"Keurusselka",
+						"Shoemaker",
+						"Mistastin",
+						"Kamensk",
+						"Steen",
+						"Strangways",
+						"Tunnunik",
+						"Boltysh",
+						"Nordlinger Ries",
+						"Presqu'ile",
+						"Haughton",
+						"Lappajarvi",
+						"Rochechouart",
+						"Gosses Bluff",
+						"Amelia Creek",
+						"Logancha",
+						"Obolon'",
+						"Nastapoka",
+						"Ishim",
+						"Bedout"
+						)
 	destination_names = list(
 						"Venus",
 						"Earth",
 						"Luna",
 						"Mars",
 						"Titan",
-						"the Jovian subcluster", 
+						"the Jovian subcluster"
 						)// autogen will add a lot of other places as well.
 
 
@@ -591,20 +593,55 @@
 	name = "Wolfpack Security"
 	short_name = "WolfSec"
 	acronym = "WPS"
-	desc = "Wolfpack Security is a merging of several much smaller freelance companies, and operates throughout civilized space. Unlike some companies, it operates no planetside facilities whatsoever, opting instead for larger flotillas that are serviced by innumerable smallcraft. As with any PMC there's no small amount of controversy surrounding them, but they try to keep their operations cleaner than their competitors."
+	desc = "Wolfpack Security is a merging of several much smaller freelance companies, and operates throughout civilized space. Unlike some companies, it operates no planetside facilities whatsoever, opting instead for larger flotillas that are serviced by innumerable smallcraft. As with any PMC there's no small amount of controversy surrounding them, but they try to keep their operations cleaner than their competitors. They're fairly well known for running 'mercy' operations, which are low-cost no-strings-attached contracts for those in dire need."
 	history = ""
 	work = "mercenary contractors"
 	headquarters = ""
 	motto = ""
+	roaming = FALSE
+	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("WPF" = "a secure freight", "WPS" = "a logistics", "WPV" = "a patrol", "WPH" = "a bounty hunting", "WPX" = "an experimental", "WPC" = "a command", "WPI" = "a mercy")
-	//TODO: animal names
+	ship_names = list(
+						"Wolf",
+						"Bear",
+						"Eagle",
+						"Falcon",
+						"Shark",
+						"Fox",
+						"Mongoose",
+						"Bloodhound",
+						"Rhino",
+						"Tiger",
+						"Leopard",
+						"Lion",
+						"Piranha",
+						"Crocodile",
+						"Alligator",
+						"Recluse",
+						"Tarantula",
+						"Scorpion",
+						"Orca",
+						"Coyote",
+						"Jackal",
+						"Hyena",
+						"Hornet",
+						"Wasp",
+						"Sealion",
+						"Viper",
+						"Cobra",
+						"Python",
+						"Anaconda",
+						"Rattlesnake"
+						)
 	destination_names = list(
 						"Wolfpack Command",
 						"a WPS patrol fleet",
 						"a WPS flotilla",
 						"a WPS training fleet",
-						)
+						"a WPS logistics fleet",
+						"a contract location"
+						) //some basics, padded with autogen
 
 /datum/lore/organization/mil/blackstar
 	name = "Blackstar Legion"
@@ -615,8 +652,57 @@
 	work = "mercenary contractors"
 	headquarters = ""
 	motto = ""
+	roaming = FALSE
+	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("BSF" = "a secure freight", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command")
-	//TODO: edgy names
-	destination_names = list()
+	//edgy mythological critters!
+	ship_names = list(
+						"Dragon",
+						"Chimera",
+						"Titan",
+						"Hekatonchires",
+						"Gorgon",
+						"Scylla",
+						"Minotaur",
+						"Banshee",
+						"Basilisk",
+						"Black Dog",
+						"Centaur",
+						"Cerberus",
+						"Charybdis",
+						"Cyclops",
+						"Cynocephalus",
+						"Demon",
+						"Daemon",
+						"Echidna",
+						"Goblin",
+						"Golem",
+						"Griffin",
+						"Hobgoblin",
+						"Hydra",
+						"Imp",
+						"Ladon",
+						"Manticore",
+						"Medusa",
+						"Ogre",
+						"Pegasus",
+						"Sasquatch",
+						"Shade",
+						"Siren",
+						"Sphinx",
+						"Typhon",
+						"Valkyrie",
+						"Vampir",
+						"Wendigo",
+						"Werewolf",
+						"Wraith"
+						)
+	destination_names = list(
+						"Blackstar Command",
+						"a Blackstar training site",
+						"a Blackstar logistical depot",
+						"a Blackstar-held shipyard",
+						"a contract location"
+						)
 

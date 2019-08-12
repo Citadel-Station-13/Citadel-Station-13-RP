@@ -93,7 +93,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
 	else
-		chatter_type = pick(5;"emerg",5;"wrong_freq",25;"policescan",25;"policeflee",50;"pathwarning",50;"dockingrequestgeneric",50;"dockingrequestdenied",50;"dockingrequestsupply",50;"dockingrequestrepair",50;"dockingrequestmedical",50;"dockingrequestsecurity",50;"undockingrequest","normal") //Be nice to have wrong_lang...
+		chatter_type = pick(5;"emerg",5;"wrong_freq",25;"policescan",25;"policeflee",50;"pathwarning",50;"dockingrequestgeneric",50;"dockingrequestdenied",50;"dockingrequestsupply",50;"dockingrequestrepair",50;"dockingrequestmedical",50;"dockingrequestsecurity",50;"undockingrequest",50;"undockingdenied","normal") //Be nice to have wrong_lang...
 
 	var/yes = prob(90) //Chance for them to say yes vs no
 
@@ -152,7 +152,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 		if("dockingrequestgeneric")
 			var/appreciation = pick("Much appreciated","Many thanks","Understood")
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
-			msg("[callname], this is [combined_name], requesting permission to dock.","[prefix] [shipname]")
+			msg("[callname], this is [combined_name], stopping by on our way to [destname], requesting permission to dock.","[prefix] [shipname]")
 			sleep(5 SECONDS)
 			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,42)]. Follow the green lights on your way in.")
 			sleep(5 SECONDS)
@@ -206,6 +206,11 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			msg("[callname], this is [combined_name], requesting permission to depart from pad [rand(1,24)].","[prefix] [shipname]")
 			sleep(5 SECONDS)
 			msg("[combined_name], this is [using_map.station_short] Control. Permission granted. Docking clamps released. [safetravels].")
+		if("undockingdenied")
+			var/denialreason = pick("Complete preflight checklist","Docking clamp malfunction, please hold","Fuel lines have not been secured","Ground crew are still on the pad","Loose containers are on the pad","Security is requesting a full cargo inspection","Your ship has been impounded for multiple security violations","You need to pass a quick engineering inspection","Your ship is currently under quarantine","Exhaust deflectors are not yet in position, please hold")
+			msg("[callname], this is [combined_name], requesting permission to depart from pad [rand(1,24)].","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("Negative [combined_name], permission denied. [denialreason].")
 		else
 			msg("[callname], this is [combined_name] on [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request].","[prefix] [shipname]")
 			sleep(5 SECONDS)
