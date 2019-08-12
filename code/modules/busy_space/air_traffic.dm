@@ -3,8 +3,8 @@
 var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 
 /datum/lore/atc_controller
-	var/delay_max = 25 MINUTES			//How long between ATC traffic, max.  Default is 25 mins.
-	var/delay_min = 40 MINUTES			//How long between ATC traffic, min.  Default is 40 mins.
+	var/delay_max = 2 MINUTES			//How long between ATC traffic, max.  Default is 25 mins.
+	var/delay_min = 4 MINUTES			//How long between ATC traffic, min.  Default is 40 mins.
 	var/backoff_delay = 5 MINUTES		//How long to back off if we can't talk and want to.  Default is 5 mins.
 	var/next_message					//When the next message should happen in world.time
 	var/force_chatter_type				//Force a specific type of messages
@@ -77,10 +77,11 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 						"refueling information" = list("sending refueling information now", "no fuel for your ship class in this sector"),
 						"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
 						"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now"),
-						"permission to engage FTL" = list("permission to engage FTL granted, good day", "permission denied, wait for current traffic to pass"),
+						//STC can't possibly oversee every single jump into and out of the system, nor should they try to
+/*						"permission to engage FTL" = list("permission to engage FTL granted, good day", "permission denied, wait for current traffic to pass"),
 						"permission to transit system" = list("permission to transit granted, good day", "permission denied, wait for current traffic to pass"),
 						"permission to depart system" = list("permission to depart granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to enter system" = list("good day, permission to enter granted", "permission denied, wait for current traffic to pass"),
+						"permission to enter system" = list("good day, permission to enter granted", "permission denied, wait for current traffic to pass"),*/
 						)
 
 	//Random chance things for variety
@@ -88,7 +89,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
 	else
-		chatter_type = pick(2;"emerg",5;"wrong_freq","normal") //Be nice to have wrong_lang...
+		chatter_type = pick(2;"emerg",5;"wrong_freq","normal","policescan","dockingrequest","undockingrequest") //Be nice to have wrong_lang...
 
 	var/yes = prob(90) //Chance for them to say yes vs no
 
@@ -96,30 +97,63 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/callname = pick(alt_atc_names)
 	var/response = requests[request][yes ? 1 : 2] //1 is yes, 2 is no
 
-	var/full_request
-	var/full_response
-	var/full_closure
+	//	var/full_request
+	//	var/full_response
+	//	var/full_closure
 
 	switch(chatter_type)
 		if("wrong_freq")
 			callname = pick(wrong_atc_names)
-			full_request = "[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
-			full_response = "[combined_name], this is [using_map.station_short] TraCon, wrong frequency. Switch to [rand(700,999)].[rand(1,9)]."
-			full_closure = "[using_map.station_short] TraCon, understood, apologies."
-		if("wrong_lang")
-			//Can't implement this until autosay has language support
+			msg("[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request].","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("[combined_name], this is [using_map.station_short] Control, wrong frequency. Switch to [rand(700,999)].[rand(1,9)].")
+			sleep(5 SECONDS)
+			msg("[using_map.station_short] Control, understood, apologies.","[prefix] [shipname]")
 		if("emerg")
-			var/problem = pick("hull breaches on multiple decks","unknown life forms on board","a drive about to go critical","asteroids impacting the hull","a total loss of engine power","people trying to board the ship")
-			full_request = "This is [combined_name] declaring an emergency! We have [problem]!"
-			full_response = "[combined_name], this is [using_map.station_short] TraCon, copy. Switch to emergency responder channel [rand(700,999)].[rand(1,9)]."
-			full_closure = "[using_map.station_short] TraCon, okay, switching now."
+			var/problem = pick("hull breaches on multiple decks","unknown life forms on board","a drive about to go critical","asteroids impacting the hull","a total loss of engine power","hostile ships closing fast","unidentified boarders")
+			msg("This is [combined_name] declaring an emergency! We have [problem]!","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("[combined_name], this is [using_map.station_short] Control, copy. Switch to emergency responder channel [rand(700,999)].[rand(1,9)].")
+			sleep(5 SECONDS)
+			msg("Understood [using_map.station_short] Control, switching now.","[prefix] [shipname]")
+		if("policescan")
+			var/confirm = pick("Understood","Roger that","Affirmative")
+			var/complain = pick("I hope this doesn't take too long.","Can we hurry this up?","Any day now...")
+			var/completed = pick("You're free to proceed.","Everything looks fine, carry on.","Apologies for the delay, you're clear.","Switch to [rand(700,999)].[rand(1,9)] and await further instruction.")
+			msg("[combined_name], this is [using_map.station_short] Control, your ship has been flagged for routine inspection.")
+			sleep(5 SECONDS)
+			msg("[confirm] [using_map.station_short] Control, holding position.","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("Your compliance is appreciated, [combined_name]. Scan commencing.")
+			sleep(10 SECONDS)
+			msg(complain,"[prefix] [shipname]")
+			sleep(15 SECONDS)
+			msg("[combined_name], this is [using_map.station_short] Control. Scan complete. [completed]")
+		if("dockingrequest")
+			var/intensifier = pick("very","pretty","critically","extremely","dangerously")
+			var/low_thing = pick("ammunition","oxygen","water","food","medical supplies","reaction mass","hydrogen fuel","phoron fuel","fuel")
+			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver")
+			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
+			msg("[callname], this is [combined_name]. We're [intensifier] low on [low_thing] and need to resupply. Requesting permission to dock.","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted, proceed to landing pad [rand(1,24)]. Follow the green lights on your way in.")
+			sleep(5 SECONDS)
+			msg("[appreciation], [using_map.station_short] Control. [dockingplan]","[prefix] [shipname]")
+		if("undockingrequest")
+			var/safetravels = pick("Fly safe out there","Good luck","Safe travels","See you next week")
+			msg("[callname], this is [combined_name], requesting permission to depart from pad [rand(1,24)].","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("[combined_name], this is [using_map.station_short] Control. Permission granted. Docking clamps released. [safetravels].")
 		else
-			full_request = "[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request]."
-			full_response = "[combined_name], this is [using_map.station_short] TraCon, [response]." //Station TraCon always calls themselves TraCon
-			full_closure = "[using_map.station_short] TraCon, [yes ? "thank you" : "understood"], good day." //They always copy what TraCon called themselves in the end when they realize they said it wrong
+			msg("[callname], this is [combined_name] on a [mission] [pick(mission_noun)] to [destname], [pick(request_verb)] [request].","[prefix] [shipname]")
+			sleep(5 SECONDS)
+			msg("[combined_name], this is [using_map.station_short] Control, [response].")
+			sleep(5 SECONDS)
+			msg("[using_map.station_short] Control, [yes ? "thank you" : "understood"], good day.","[prefix] [shipname]")
 
+/*	//OLD BLOCK, for reference
 	//Ship sends request to ATC
-	msg(full_request,"[prefix] [shipname]")
+	msg(full_request,"[prefix] [shipname]"
 	sleep(5 SECONDS)
 	//ATC sends response to ship
 	msg(full_response)
@@ -127,3 +161,4 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	//Ship sends response to ATC
 	msg(full_closure,"[prefix] [shipname]")
 	return
+*/
