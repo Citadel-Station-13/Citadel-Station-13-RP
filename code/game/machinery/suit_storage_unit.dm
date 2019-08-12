@@ -586,7 +586,7 @@
 	var/electrified = 0
 
 	//Departments that the cycler can paint suits to look like.
-	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director")
+	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security")
 	//Species that the suits can be configured to fit.
 	var/list/species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_TESHARI, "Nevrean", "Akula", "Sergal", "Flatland Zorren", "Highlander Zorren", "Vulpkanin", "Promethean", "Xenomorph Hybrid", "Xenochimera","Vasilissan", "Rapala") //VORESTATION EDIT
 
@@ -663,6 +663,13 @@
 	req_access = list(access_captain)
 	departments = list("Director")
 	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, "Vulpkanin")
+
+/obj/machinery/suit_cycler/headofsecurity
+	name = "Head of Security suit cycler"
+	model_text = "Head of Security"
+	req_access = list(access_hos)
+	departments = list("Head of Security")
+	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, "Vulpkanin")
 
 /obj/machinery/suit_cycler/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -1180,6 +1187,17 @@
 				suit.name = "colony director's voidsuit"
 				suit.icon_state = "capsuit_void"
 				suit.item_state = "capsuit_void"
+				suit.item_state_slots[slot_r_hand_str] = "sec_voidsuitTG"
+				suit.item_state_slots[slot_l_hand_str] = "sec_voidsuitTG"
+		if("Head of Security")
+			if(helmet)
+				helmet.name = "head of security's protosuit helmet"
+				helmet.icon_state = "hosproto"
+				helmet.item_state= "hosproto"
+			if(suit)
+				suit.name = "head of security's protosuit"
+				suit.icon_state = "hosproto_void"
+				suit.item_state = "hosproto_void"
 				suit.item_state_slots[slot_r_hand_str] = "sec_voidsuitTG"
 				suit.item_state_slots[slot_l_hand_str] = "sec_voidsuitTG"
 
