@@ -375,7 +375,7 @@
 
 	ship_prefixes = list("BCTV" = "a transportation", "BCSV" = "a research exchange")
 	//famous mechanical engineers
-	ship_names = (
+	ship_names = list(
 			"Al-Jazari",
 			"Al-Muradi",
 			"Al-Zarqali",
@@ -427,7 +427,7 @@
 			"Vishweswarayya",
 			"Wankel",
 			"Watt",
-			"Wiberg"			
+			"Wiberg"
 			)
 	destination_names = list(
 			"a medical facility in Angessa's Pearl"
@@ -505,7 +505,7 @@
 			"Iodine",
 			"Xenon",
 			"Caesium",
-			"Barium"						
+			"Barium"
 			)
 	//some hebrew alphabet destinations for a little extra unusualness
 	destination_names = list(
@@ -642,7 +642,7 @@
 
 	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit")
 	//ship names: big rivers
-	ship_names = list (			
+	ship_names = list (
 			"Nile",
 			"Kagera",
 			"Nyabarongo",
