@@ -11,39 +11,37 @@
 
 	var/list/ship_prefixes = list()	//Some might have more than one! Like NanoTrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
 	var/list/ship_names = list(		//Names of spaceships.  This is a mostly generic list that all the other organizations inherit from if they don't have anything better.
-		"Kestrel",
-		"Beacon",
-		"Signal",
-		"Freedom",
-		"Liberty",
-		"Enterprise",
-		"Glory",
-		"Axiom",
-		"Eternal",
-		"Harmony",
-		"Light",
-		"Discovery",
-		"Endeavour",
-		"Explorer",
-		"Swift",
-		"Dragonfly",
-		"Ascendant",
-		"Tenacious",
-		"Pioneer",
-		"Hawk",
-		"Haste",
-		"Radiant",
-		"Luminous"
-		)
+			"Kestrel",
+			"Beacon",
+			"Signal",
+			"Freedom",
+			"Liberty",
+			"Enterprise",
+			"Glory",
+			"Axiom",
+			"Eternal",
+			"Harmony",
+			"Light",
+			"Discovery",
+			"Endeavour",
+			"Explorer",
+			"Swift",
+			"Dragonfly",
+			"Ascendant",
+			"Tenacious",
+			"Pioneer",
+			"Hawk",
+			"Haste",
+			"Radiant",
+			"Luminous"
+			)
 	var/list/destination_names = list()	//Names of static holdings that the organization's ships visit regularly.
-	var/roaming = TRUE //am I allowed to roam out of system? if FALSE, pull from own destination list, not a second faction's
-	var/scan_exempt = FALSE //am I exempt from routine scans? currently unused
 	var/autogenerate_destination_names = TRUE //Pad the destination lists with some extra random ones?
 
 /datum/lore/organization/New()
 	..()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
-		var/i = rand(6, 10)
+		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially in 'starved' lists
 		var/list/star_names = list(
 			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble", "Shelf")
 		var/list/destination_types = list("a dockyard", "a station", "a vessel", "a waystation", "a telecommunications satellite", "a spaceport", "a colony", "an outpost", "a settlement", "a research facility", "a corporate installation", "a freeport", "an independent holding", "an asteroid base", "an orbital refinery", "a trade outpost")
@@ -77,48 +75,49 @@
 	ship_prefixes = list("NSV" = "an exploration", "NTV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
 	//Scientist naming scheme
 	ship_names = list(
-		"Bardeen",
-		"Einstein",
-		"Feynman",
-		"Sagan",
-		"Tyson",
-		"Galilei",
-		"Jans",
-		"Fhriede",
-		"Franklin",
-		"Tesla",
-		"Curie",
-		"Darwin",
-		"Newton",
-		"Pasteur",
-		"Bell",
-		"Mendel",
-		"Kepler",
-		"Edision",
-		"Cavendish",
-		"Nye",
-		"Hawking",
-		"Aristotle",
-		"Von Braun",
-		"Kaku",
-		"Oppenheimer",
-		"Renwick",
-		"Hubble",
-		"Alcubierre",
-		"Robineau",
-		"Glass"
-		)
+			"Bardeen",
+			"Einstein",
+			"Feynman",
+			"Sagan",
+			"Tyson",
+			"Galilei",
+			"Jans",
+			"Fhriede",
+			"Franklin",
+			"Tesla",
+			"Curie",
+			"Darwin",
+			"Newton",
+			"Pasteur",
+			"Bell",
+			"Mendel",
+			"Kepler",
+			"Edision",
+			"Cavendish",
+			"Nye",
+			"Hawking",
+			"Aristotle",
+			"Von Braun",
+			"Kaku",
+			"Oppenheimer",
+			"Renwick",
+			"Hubble",
+			"Alcubierre",
+			"Robineau",
+			"Glass"
+			)
 	// Note that the current station being used will be pruned from this list upon being instantiated
 	destination_names = list(
-		"NSS Exodus in Nyx",
-		"NCS Northern Star in Vir",
-		"NLS Southern Cross in Vir",
-		"NAS Vir Central Command",
-		"a dockyard orbiting Sif",
-		"an asteroid orbiting Kara",
-		"an asteroid orbiting Rota",
-		"Vir Interstellar Spaceport"
-		)
+			"NT HQ on Luna",
+			"NSS Exodus in Nyx",
+			"NCS Northern Star in Vir",
+			"NLS Southern Cross in Vir",
+			"NAS Vir Central Command",
+			"a dockyard orbiting Sif",
+			"an asteroid orbiting Kara",
+			"an asteroid orbiting Rota",
+			"Vir Interstellar Spaceport"
+			)
 
 /datum/lore/organization/tsc/nanotrasen/New()
 	..()
@@ -145,43 +144,44 @@
 	ship_prefixes = list("HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
 	//War God/Soldier Theme
 	ship_names = list(
-		"Ares",
-		"Athena",
-		"Grant",
-		"Custer",
-		"Puller",
-		"Nike",
-		"Bellona",
-		"Leonides",
-		"Bast",
-		"Jackson",
-		"Lee",
-		"Annan",
-		"Chi Yu",
-		"Shiva",
-		"Tyr",
-		"Nobunaga",
-		"Xerxes",
-		"Alexander",
-		"McArthur",
-		"Samson",
-		"Oya",
-		"Nemain",
-		"Caesar",
-		"Augustus",
-		"Sekhmet",
-		"Ku",
-		"Indra",
-		"Innana",
-		"Ishtar",
-		"Qamaits",
-		"'Oro",
-		)
+			"Ares",
+			"Athena",
+			"Grant",
+			"Custer",
+			"Puller",
+			"Nike",
+			"Bellona",
+			"Leonides",
+			"Bast",
+			"Jackson",
+			"Lee",
+			"Annan",
+			"Chi Yu",
+			"Shiva",
+			"Tyr",
+			"Nobunaga",
+			"Xerxes",
+			"Alexander",
+			"McArthur",
+			"Samson",
+			"Oya",
+			"Nemain",
+			"Caesar",
+			"Augustus",
+			"Sekhmet",
+			"Ku",
+			"Indra",
+			"Innana",
+			"Ishtar",
+			"Qamaits",
+			"'Oro",
+			)
 	destination_names = list(
-		"a SolGov dockyard on Luna",
-		"a Fleet outpost in the Almach Rim",
-		"a Fleet outpost on the Moghes border"
-		)
+			"our headquarters on Luna",
+			"a SolGov dockyard on Luna",
+			"a Fleet outpost in the Almach Rim",
+			"a Fleet outpost on the Moghes border"
+			)
 
 /datum/lore/organization/tsc/vey_med
 	name = "Vey-Medical" //The Wiki displays them as Vey-Medical.
@@ -202,31 +202,32 @@
 	ship_prefixes = list("VTV" = "a transportation", "VMV" = "a medical resupply", "VSV" = "a research mission", "VRV" = "an emergency medical support")
 	// Diona names
 	ship_names = list(
-		"Wind That Stirs The Waves",
-		"Sustained Note Of Metal",
-		"Bright Flash Reflecting Off Glass",
-		"Veil Of Mist Concealing The Rock",
-		"Thin Threads Intertwined",
-		"Clouds Drifting Amid Storm",
-		"Loud Note And Breaking",
-		"Endless Vistas Expanding Before The Void",
-		"Fire Blown Out By Wind",
-		"Star That Fades From View",
-		"Eyes Which Turn Inwards",
-		"Joy Without Which The World Would Come Undone",
-		"A Thousand Thousand Planets Dangling From Branches",
-		"Light Streaming Through Interminable Branches",
-		"Smoke Brought Up From A Terrible Fire",
-		"Light of Qerr'Valis",
-		"King Xae'uoque",
-		"Memory of Kel'xi",
-		"Xi'Kroo's Herald"
-		)
+			"Wind That Stirs The Waves",
+			"Sustained Note Of Metal",
+			"Bright Flash Reflecting Off Glass",
+			"Veil Of Mist Concealing The Rock",
+			"Thin Threads Intertwined",
+			"Clouds Drifting Amid Storm",
+			"Loud Note And Breaking",
+			"Endless Vistas Expanding Before The Void",
+			"Fire Blown Out By Wind",
+			"Star That Fades From View",
+			"Eyes Which Turn Inwards",
+			"Joy Without Which The World Would Come Undone",
+			"A Thousand Thousand Planets Dangling From Branches",
+			"Light Streaming Through Interminable Branches",
+			"Smoke Brought Up From A Terrible Fire",
+			"Light of Qerr'Valis",
+			"King Xae'uoque",
+			"Memory of Kel'xi",
+			"Xi'Kroo's Herald"
+			)
 	destination_names = list(
-		"a research facility in Samsara",
-		"a SDTF near Ue-Orsi",
-		"a sapientarian mission in the Almach Rim"
-		)
+			"our headquarters on Toledo, New Ohio",
+			"a research facility in Samsara",
+			"an SDTF near Ue-Orsi",
+			"a sapientarian mission in the Almach Rim"
+			)
 
 /datum/lore/organization/tsc/zeng_hu
 	name = "Zeng-Hu pharmaceuticals"
@@ -302,7 +303,9 @@
 			"Yegorov",
 			"Xichun"
 			)
-	destination_names = list()
+	destination_names = list(
+			"our headquarters on Earth"
+			)
 
 /datum/lore/organization/tsc/ward_takahashi
 	name = "Ward-Takahashi General Manufacturing Conglomerate"
@@ -321,29 +324,29 @@
 
 	ship_prefixes = list("WFV" = "a freight", "WTV" = "a transport", "WDV" = "an asset protection")
 	ship_names = list(
-		"Comet",
-		"Aurora",
-		"Supernova",
-		"Nebula",
-		"Galaxy",
-		"Starburst",
-		"Constellation",
-		"Pulsar",
-		"Quark",
-		"Void",
-		"Asteroid",
-		"Wormhole",
-		"Sunspot",
-		"Supercluster",
-		"Moon",
-		"Supermoon",
-		"Anomaly",
-		"Drift",
-		"Stream",
-		"Rift",
-		"Curtain",
-		"Binary"
-		)
+			"Comet",
+			"Aurora",
+			"Supernova",
+			"Nebula",
+			"Galaxy",
+			"Starburst",
+			"Constellation",
+			"Pulsar",
+			"Quark",
+			"Void",
+			"Asteroid",
+			"Wormhole",
+			"Sunspot",
+			"Supercluster",
+			"Moon",
+			"Supermoon",
+			"Anomaly",
+			"Drift",
+			"Stream",
+			"Rift",
+			"Curtain",
+			"Binary"
+			)
 	destination_names = list()
 
 /datum/lore/organization/tsc/bishop
@@ -363,7 +366,7 @@
 
 	ship_prefixes = list("BCTV" = "a transportation", "BCSV" = "a research exchange")
 	destination_names = list(
-		"a medical facility in Angessa's Pearl"
+			"a medical facility in Angessa's Pearl"
 	)
 
 /datum/lore/organization/tsc/morpheus
@@ -382,65 +385,66 @@
 
 	ship_prefixes = list("MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
 	ship_names = list(
-				"Hydrogen",
-				"Helium",
-				"Lithium",
-				"Beryllium",
-				"Boron",
-				"Carbon",
-				"Nitrogen",
-				"Oxygen",
-				"Fluorine",
-				"Neon",
-				"Sodium",
-				"Magnesium",
-				"Aluminium",
-				"Silicon",
-				"Phosphorus",
-				"Sulfur",
-				"Chlorine",
-				"Argon",
-				"Potassium",
-				"Calcium",
-				"Scandium",
-				"Titanium",
-				"Vanadium",
-				"Chromium",
-				"Manganese",
-				"Iron",
-				"Cobalt",
-				"Nickel",
-				"Copper",
-				"Zinc",
-				"Gallium",
-				"Germanium",
-				"Arsenic",
-				"Selenium",
-				"Bromine",
-				"Krypton",
-				"Rubidium",
-				"Strontium",
-				"Yttrium",
-				"Zirconium",
-				"Niobium",
-				"Molybdenum",
-				"Technetium",
-				"Ruthenium",
-				"Rhodium",
-				"Palladium",
-				"Silver",
-				"Cadmium",
-				"Indium",
-				"Tin",
-				"Antimony",
-				"Tellurium",
-				"Iodine",
-				"Xenon",
-				"Caesium",
-				"Barium"						
-				)
+			"Hydrogen",
+			"Helium",
+			"Lithium",
+			"Beryllium",
+			"Boron",
+			"Carbon",
+			"Nitrogen",
+			"Oxygen",
+			"Fluorine",
+			"Neon",
+			"Sodium",
+			"Magnesium",
+			"Aluminium",
+			"Silicon",
+			"Phosphorus",
+			"Sulfur",
+			"Chlorine",
+			"Argon",
+			"Potassium",
+			"Calcium",
+			"Scandium",
+			"Titanium",
+			"Vanadium",
+			"Chromium",
+			"Manganese",
+			"Iron",
+			"Cobalt",
+			"Nickel",
+			"Copper",
+			"Zinc",
+			"Gallium",
+			"Germanium",
+			"Arsenic",
+			"Selenium",
+			"Bromine",
+			"Krypton",
+			"Rubidium",
+			"Strontium",
+			"Yttrium",
+			"Zirconium",
+			"Niobium",
+			"Molybdenum",
+			"Technetium",
+			"Ruthenium",
+			"Rhodium",
+			"Palladium",
+			"Silver",
+			"Cadmium",
+			"Indium",
+			"Tin",
+			"Antimony",
+			"Tellurium",
+			"Iodine",
+			"Xenon",
+			"Caesium",
+			"Barium"						
+			)
 	destination_names = list(
-		"a trade outpost in Shelf"
+			"our headquarters in Shelf",
+			"a trade outpost in Shelf"
 		)
 
 /datum/lore/organization/tsc/xion
@@ -527,54 +531,54 @@
 	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit")
 	//ship names: big rivers
 	ship_names = list (			
-						"Nile",
-						"Kagera",
-						"Nyabarongo",
-						"Mwogo",
-						"Rukarara",
-						"Amazon",
-						"Ucayali",
-						"Tambo",
-						"Ene",
-						"Mantaro",
-						"Yangtze",
-						"Mississippi",
-						"Missouri",
-						"Jefferson",
-						"Beaverhead",
-						"Red Rock",
-						"Hell Roaring",
-						"Yenisei",
-						"Angara",
-						"Yelenge",
-						"Ider",
-						"Ob",
-						"Irtysh",
-						"Rio de la Plata",
-						"Parana",
-						"Rio Grande",
-						"Congo",
-						"Chambeshi",
-						"Amur",
-						"Argun",
-						"Kherlen",
-						"Lena",
-						"Mekong",
-						"Mackenzie",
-						"Peace",
-						"Finlay",
-						"Niger",
-						"Brahmaputra",
-						"Tsangpo",
-						"Murray",
-						"Darling",
-						"Culgoa",
-						"Balonne",
-						"Condamine",
-						"Tocantins",
-						"Araguaia",
-						"Volga"
-						)
+			"Nile",
+			"Kagera",
+			"Nyabarongo",
+			"Mwogo",
+			"Rukarara",
+			"Amazon",
+			"Ucayali",
+			"Tambo",
+			"Ene",
+			"Mantaro",
+			"Yangtze",
+			"Mississippi",
+			"Missouri",
+			"Jefferson",
+			"Beaverhead",
+			"Red Rock",
+			"Hell Roaring",
+			"Yenisei",
+			"Angara",
+			"Yelenge",
+			"Ider",
+			"Ob",
+			"Irtysh",
+			"Rio de la Plata",
+			"Parana",
+			"Rio Grande",
+			"Congo",
+			"Chambeshi",
+			"Amur",
+			"Argun",
+			"Kherlen",
+			"Lena",
+			"Mekong",
+			"Mackenzie",
+			"Peace",
+			"Finlay",
+			"Niger",
+			"Brahmaputra",
+			"Tsangpo",
+			"Murray",
+			"Darling",
+			"Culgoa",
+			"Balonne",
+			"Condamine",
+			"Tocantins",
+			"Araguaia",
+			"Volga"
+			)
 	destination_names = list()
 
 /datum/lore/organization/tsc/independent
@@ -602,81 +606,79 @@
 	work = "local security"
 	headquarters = ""
 	motto = ""
-	roaming = FALSE
-	scan_exempt = TRUE
 	autogenerate_destination_names = FALSE
 
 	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort")
 	//ship names: weapons
 	ship_names = list(
-						"Sword",
-						"Saber",
-						"Cutlass",
-						"Broadsword",
-						"Katar",
-						"Shamshir",
-						"Shashka",
-						"Epee",
-						"Estoc",
-						"Longsword",
-						"Katana",
-						"Baselard",
-						"Gladius",
-						"Kukri",
-						"Pick",
-						"Mattock",
-						"Hatchet",
-						"Machete",
-						"Axe",
-						"Tomahawk",
-						"Dirk",
-						"Dagger",
-						"Maul",
-						"Mace",
-						"Flail",
-						"Morningstar",
-						"Shillelagh",
-						"Cudgel",
-						"Truncheon",
-						"Hammer",
-						"Arbalest",
-						"Catapult",
-						"Trebuchet",
-						"Longbow",
-						"Pike",
-						"Glaive",
-						"Halberd",
-						"Scythe",
-						"Spear"
-						)
+			"Sword",
+			"Saber",
+			"Cutlass",
+			"Broadsword",
+			"Katar",
+			"Shamshir",
+			"Shashka",
+			"Epee",
+			"Estoc",
+			"Longsword",
+			"Katana",
+			"Baselard",
+			"Gladius",
+			"Kukri",
+			"Pick",
+			"Mattock",
+			"Hatchet",
+			"Machete",
+			"Axe",
+			"Tomahawk",
+			"Dirk",
+			"Dagger",
+			"Maul",
+			"Mace",
+			"Flail",
+			"Morningstar",
+			"Shillelagh",
+			"Cudgel",
+			"Truncheon",
+			"Hammer",
+			"Arbalest",
+			"Catapult",
+			"Trebuchet",
+			"Longbow",
+			"Pike",
+			"Glaive",
+			"Halberd",
+			"Scythe",
+			"Spear"
+			)
 	destination_names = list(
-						"the outer system",
-						"the inner system",
-						"Waypoint Alpha",
-						"Waypoint Beta",
-						"Waypoint Gamma",
-						"Waypoint Delta",
-						"Waypoint Epsilon",
-						"Waypoint Zeta",
-						"Waypoint Eta",
-						"Waypoint Theta",
-						"Waypoint Iota",
-						"Waypoint Kappa",
-						"Waypoint Lambda",
-						"Waypoint Mu",
-						"Waypoint Nu",
-						"Waypoint Xi",
-						"Waypoint Omicron",
-						"Waypoint Pi",
-						"Waypoint Rho",
-						"Waypoint Sigma",
-						"Waypoint Tau",
-						"Waypoint Upsilon",
-						"Waypoint Phi",
-						"Waypoint Chi",
-						"Waypoint Psi",
-						"Waypoint Omega"
-						)
+			"the outer system",
+			"the inner system",
+			"Waypoint Alpha",
+			"Waypoint Beta",
+			"Waypoint Gamma",
+			"Waypoint Delta",
+			"Waypoint Epsilon",
+			"Waypoint Zeta",
+			"Waypoint Eta",
+			"Waypoint Theta",
+			"Waypoint Iota",
+			"Waypoint Kappa",
+			"Waypoint Lambda",
+			"Waypoint Mu",
+			"Waypoint Nu",
+			"Waypoint Xi",
+			"Waypoint Omicron",
+			"Waypoint Pi",
+			"Waypoint Rho",
+			"Waypoint Sigma",
+			"Waypoint Tau",
+			"Waypoint Upsilon",
+			"Waypoint Phi",
+			"Waypoint Chi",
+			"Waypoint Psi",
+			"Waypoint Omega"
+			)
 
 /* //placeholder for a religious-themed faction
 /datum/lore/organization/other/starchurch
@@ -688,7 +690,6 @@
 	work = "spreading the good word"
 	headquarters = ""
 	motto = ""
-	roaming = TRUE
 	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list ("CSO" = "an outreach", "CSM" = "a mercy", "CSA" = "an aid", "CSP" = "a pilgramage")
@@ -714,12 +715,12 @@
 
 	ship_prefixes = list("SGA" = "a hauling", "SGA" = "an energy relay")
 	destination_names = list(
-						"New Reykjavik on Sif",
-						"Radiance Energy Chain",
-						"a dockyard orbiting Sif",
-						"a telecommunications satellite",
-						"Vir Interstellar Spaceport"
-						)
+			"New Reykjavik on Sif",
+			"Radiance Energy Chain",
+			"a dockyard orbiting Sif",
+			"a telecommunications satellite",
+			"Vir Interstellar Spaceport"
+			)
 */
 
 /datum/lore/organization/gov/solgov
@@ -739,80 +740,81 @@
 	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight")
 	//earth's biggest impact craters
 	ship_names = list(
-						"Wabar",
-						"Kaali",
-						"Campo del Cielo",
-						"Henbury",
-						"Morasko",
-						"Boxhole",
-						"Macha",
-						"Rio Cuarto",
-						"Ilumetsa",
-						"Tenoumer",
-						"Xiuyan",
-						"Lonar",
-						"Agoudal",
-						"Tswaing",
-						"Zhamanshin",
-						"Bosumtwi",
-						"Elgygytgyn",
-						"Bigach",
-						"Karla",
-						"Karakul",
-						"Vredefort",
-						"Chicxulub",
-						"Sudbury",
-						"Popigai",
-						"Manicougan",
-						"Acraman",
-						"Morokweng",
-						"Kara",
-						"Beaverhead",
-						"Tookoonooka",
-						"Charlevoix",
-						"Siljan Ring",
-						"Montagnais",
-						"Araguinha",
-						"Chesapeake",
-						"Mjolnir",
-						"Puchezh-Katunki",
-						"Saint Martin",
-						"Woodleigh",
-						"Carswell",
-						"Clearwater West",
-						"Clearwater East",
-						"Manson",
-						"Slate",
-						"Yarrabubba",
-						"Keurusselka",
-						"Shoemaker",
-						"Mistastin",
-						"Kamensk",
-						"Steen",
-						"Strangways",
-						"Tunnunik",
-						"Boltysh",
-						"Nordlinger Ries",
-						"Presqu'ile",
-						"Haughton",
-						"Lappajarvi",
-						"Rochechouart",
-						"Gosses Bluff",
-						"Amelia Creek",
-						"Logancha",
-						"Obolon'",
-						"Nastapoka",
-						"Ishim",
-						"Bedout"
-						)
+			"Wabar",
+			"Kaali",
+			"Campo del Cielo",
+			"Henbury",
+			"Morasko",
+			"Boxhole",
+			"Macha",
+			"Rio Cuarto",
+			"Ilumetsa",
+			"Tenoumer",
+			"Xiuyan",
+			"Lonar",
+			"Agoudal",
+			"Tswaing",
+			"Zhamanshin",
+			"Bosumtwi",
+			"Elgygytgyn",
+			"Bigach",
+			"Karla",
+			"Karakul",
+			"Vredefort",
+			"Chicxulub",
+			"Sudbury",
+			"Popigai",
+			"Manicougan",
+			"Acraman",
+			"Morokweng",
+			"Kara",
+			"Beaverhead",
+			"Tookoonooka",
+			"Charlevoix",
+			"Siljan Ring",
+			"Montagnais",
+			"Araguinha",
+			"Chesapeake",
+			"Mjolnir",
+			"Puchezh-Katunki",
+			"Saint Martin",
+			"Woodleigh",
+			"Carswell",
+			"Clearwater West",
+			"Clearwater East",
+			"Manson",
+			"Slate",
+			"Yarrabubba",
+			"Keurusselka",
+			"Shoemaker",
+			"Mistastin",
+			"Kamensk",
+			"Steen",
+			"Strangways",
+			"Tunnunik",
+			"Boltysh",
+			"Nordlinger Ries",
+			"Presqu'ile",
+			"Haughton",
+			"Lappajarvi",
+			"Rochechouart",
+			"Gosses Bluff",
+			"Amelia Creek",
+			"Logancha",
+			"Obolon'",
+			"Nastapoka",
+			"Ishim",
+			"Bedout"
+			)
 	destination_names = list(
-						"Venus",
-						"Earth",
-						"Luna",
-						"Mars",
-						"Titan",
-						"the Jovian subcluster"
-						)// autogen will add a lot of other places as well.
+			"Venus",
+			"Earth",
+			"Luna",
+			"Mars",
+			"Titan",
+			"the Jovian subcluster"
+			)
+			// autogen will add a lot of other places as well.
 
 
 // Military
@@ -827,50 +829,50 @@
 	work = "mercenary contractors"
 	headquarters = ""
 	motto = ""
-	roaming = FALSE
 	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("WPF" = "a secure freight", "WPS" = "a logistics", "WPV" = "a patrol", "WPH" = "a bounty hunting", "WPX" = "an experimental", "WPC" = "a command", "WPI" = "a mercy")
 	ship_names = list(
-						"Wolf",
-						"Bear",
-						"Eagle",
-						"Falcon",
-						"Shark",
-						"Fox",
-						"Mongoose",
-						"Bloodhound",
-						"Rhino",
-						"Tiger",
-						"Leopard",
-						"Lion",
-						"Piranha",
-						"Crocodile",
-						"Alligator",
-						"Recluse",
-						"Tarantula",
-						"Scorpion",
-						"Orca",
-						"Coyote",
-						"Jackal",
-						"Hyena",
-						"Hornet",
-						"Wasp",
-						"Sealion",
-						"Viper",
-						"Cobra",
-						"Python",
-						"Anaconda",
-						"Rattlesnake"
+			"Wolf",
+			"Bear",
+			"Eagle",
+			"Falcon",
+			"Shark",
+			"Fox",
+			"Mongoose",
+			"Bloodhound",
+			"Rhino",
+			"Tiger",
+			"Leopard",
+			"Lion",
+			"Piranha",
+			"Crocodile",
+			"Alligator",
+			"Recluse",
+			"Tarantula",
+			"Scorpion",
+			"Orca",
+			"Coyote",
+			"Jackal",
+			"Hyena",
+			"Hornet",
+			"Wasp",
+			"Sealion",
+			"Viper",
+			"Cobra",
+			"Python",
+			"Anaconda",
+			"Rattlesnake"
 						)
 	destination_names = list(
-						"Wolfpack Command",
-						"a WPS patrol fleet",
-						"a WPS flotilla",
-						"a WPS training fleet",
-						"a WPS logistics fleet",
-						"a contract location"
-						) //some basics, padded with autogen
+			"Wolfpack Command",
+			"a WPS patrol fleet",
+			"a WPS flotilla",
+			"a WPS training fleet",
+			"a WPS logistics fleet",
+			"a contract location"
+			)
+			//some basics, padded with autogen
 
 //intentionally edgy a.f.
 /datum/lore/organization/mil/blackstar
@@ -882,57 +884,56 @@
 	work = "mercenary contractors"
 	headquarters = ""
 	motto = ""
-	roaming = FALSE
 	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("BSF" = "a secure freight", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command")
 	//edgy mythological critters!
 	ship_names = list(
-						"Dragon",
-						"Chimera",
-						"Titan",
-						"Hekatonchires",
-						"Gorgon",
-						"Scylla",
-						"Minotaur",
-						"Banshee",
-						"Basilisk",
-						"Black Dog",
-						"Centaur",
-						"Cerberus",
-						"Charybdis",
-						"Cyclops",
-						"Cynocephalus",
-						"Demon",
-						"Daemon",
-						"Echidna",
-						"Goblin",
-						"Golem",
-						"Griffin",
-						"Hobgoblin",
-						"Hydra",
-						"Imp",
-						"Ladon",
-						"Manticore",
-						"Medusa",
-						"Ogre",
-						"Pegasus",
-						"Sasquatch",
-						"Shade",
-						"Siren",
-						"Sphinx",
-						"Typhon",
-						"Valkyrie",
-						"Vampir",
-						"Wendigo",
-						"Werewolf",
-						"Wraith"
-						)
+			"Dragon",
+			"Chimera",
+			"Titan",
+			"Hekatonchires",
+			"Gorgon",
+			"Scylla",
+			"Minotaur",
+			"Banshee",
+			"Basilisk",
+			"Black Dog",
+			"Centaur",
+			"Cerberus",
+			"Charybdis",
+			"Cyclops",
+			"Cynocephalus",
+			"Demon",
+			"Daemon",
+			"Echidna",
+			"Goblin",
+			"Golem",
+			"Griffin",
+			"Hobgoblin",
+			"Hydra",
+			"Imp",
+			"Ladon",
+			"Manticore",
+			"Medusa",
+			"Ogre",
+			"Pegasus",
+			"Sasquatch",
+			"Shade",
+			"Siren",
+			"Sphinx",
+			"Typhon",
+			"Valkyrie",
+			"Vampir",
+			"Wendigo",
+			"Werewolf",
+			"Wraith"
+			)
 	destination_names = list(
-						"Blackstar Command",
-						"a Blackstar training site",
-						"a Blackstar logistical depot",
-						"a Blackstar-held shipyard",
-						"a contract location"
-						)
+			"Blackstar Command",
+			"a Blackstar training site",
+			"a Blackstar logistical depot",
+			"a Blackstar-held shipyard",
+			"a contract location"
+			)
 
