@@ -43,7 +43,7 @@
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially in 'starved' lists
 		var/list/star_names = list(
-			"Sol", "Alpha Centauri", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble", "Shelf")
+			"Sol", "Alpha Centauri", "Sirius", "Vega", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Vazzend", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble", "Shelf")
 		var/list/destination_types = list("a dockyard", "a station", "a vessel", "a waystation", "a telecommunications satellite", "a spaceport", "a colony", "an outpost", "a settlement", "a research facility", "a corporate installation", "a freeport", "an independent holding", "an asteroid base", "an orbital refinery", "a trade outpost")
 		while(i)
 			destination_names.Add("[pick(destination_types)] in [pick(star_names)]")
@@ -365,9 +365,64 @@
 	motto = ""
 
 	ship_prefixes = list("BCTV" = "a transportation", "BCSV" = "a research exchange")
+	//famous mechanical engineers
+	ship_names = (
+			"Al-Jazari",
+			"Al-Muradi",
+			"Al-Zarqali",
+			"Archimedes",
+			"Arkwright",
+			"Armstrong",
+			"Babbage",
+			"Barsanti",
+			"Benz",
+			"Bessemer",
+			"Bramah",
+			"Brunel",
+			"Cardano",
+			"Cartwright",
+			"Cayley",
+			"Clement",
+			"Leonardo da Vinci",
+			"Diesel",
+			"Drebbel",
+			"Fairbairn",
+			"Fontana",
+			"Fourneyron",
+			"Fulton",
+			"Fung",
+			"Gantt",
+			"Garay",
+			"Hackworth",
+			"Harrison",
+			"Hornblower",
+			"Jacquard",
+			"Jendrassik",
+			"Leibniz",
+			"Ma Jun",
+			"Maudslay",
+			"Metzger",
+			"Murdoch",
+			"Nasmyth",
+			"Parsons",
+			"Rankine",
+			"Reynolds",
+			"Roberts",
+			"Scheutz",
+			"Sikorsky",
+			"Somerset",
+			"Stephenson",
+			"Stirling",
+			"Tesla",
+			"Vaucanson",
+			"Vishweswarayya",
+			"Wankel",
+			"Watt",
+			"Wiberg"			
+			)
 	destination_names = list(
 			"a medical facility in Angessa's Pearl"
-	)
+			)
 
 /datum/lore/organization/tsc/morpheus
 	name = "Morpheus Cyberkinetics"
@@ -384,6 +439,7 @@
 	motto = ""
 
 	ship_prefixes = list("MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
+	//periodic elements; something 'unusual' for the posibrain TSC without being full on 'quirky' culture ship names (much as I love them, they're done to death)
 	ship_names = list(
 			"Hydrogen",
 			"Helium",
@@ -442,9 +498,15 @@
 			"Caesium",
 			"Barium"						
 			)
+	//some hebrew alphabet destinations for a little extra unusualness
 	destination_names = list(
 			"our headquarters in Shelf",
-			"a trade outpost in Shelf"
+			"a trade outpost in Shelf",
+			"research outpost Aleph",
+			"logistics depot Dalet",
+			"research installation Zayin",
+			"research base Tsadi",
+			"manufacturing facility Samekh"
 		)
 
 /datum/lore/organization/tsc/xion
@@ -461,6 +523,38 @@
 	motto = ""
 
 	ship_prefixes = list("XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
+	//engineering terms
+	/*
+	ship_names = list(
+			"Absorbance",
+			"Acceleration",
+			"Actuator",
+			"Adhesion",
+			"Albedo",
+			"Alkane",
+			"Alloy",
+			"Ampere",
+			"Amplitude",
+			"Anion",
+			"Anode",
+			"Barometer",
+			"Battery",
+			"Baud",
+			"Beam",
+			"Belt",
+			"Biocatalysis",
+			"Boiler",
+			"Boltzmann",
+			"Boson",
+			"Bromide",
+			"Capacitance",
+			"Cartesian",
+			"Cathode",
+			"Centroid",
+			"Chromate",
+			"Cohesion",
+			)
+	*/
 	destination_names = list()
 
 //Keek&Allakai&Peesh's new TSC
@@ -601,14 +695,14 @@
 	name = "System Defense Force"
 	short_name = "SysDef"
 	acronym = "SDF"
-	desc = "Localized militias are used to secure systems throughout inhabited space. By levying and maintaining these local militia forces, governments can use their fleets for more important matters. System Defense Forces tend to be fairly poorly trained and modestly equipped compared to genuine military fleets, but are more than capable of contending with small-time pirates, and can generally stall greater threats long enough for reinforcements to arrive."
+	desc = "Localized militias are used to secure systems throughout inhabited space. By levying and maintaining these local militia forces, governments can use their fleets for more important matters. System Defense Forces tend to be fairly poorly trained and modestly equipped compared to genuine military fleets, but are more than capable of contending with small-time pirates, and can generally stall greater threats long enough for reinforcements to arrive. They're also typically responsible for space-based SAR operations in their system."
 	history = ""
 	work = "local security"
 	headquarters = ""
 	motto = ""
 	autogenerate_destination_names = FALSE
 
-	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort")
+	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort", "SAR" = "a search and rescue", "SDT" = "a logistics", "SDT" = "a resupply") //b = boat, f = fleet, v = vessel, t = tender
 	//ship names: weapons
 	ship_names = list(
 			"Sword",
@@ -812,6 +906,7 @@
 			"Luna",
 			"Mars",
 			"Titan",
+			"Europa",
 			"the Jovian subcluster"
 			)
 			// autogen will add a lot of other places as well.
