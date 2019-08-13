@@ -44,7 +44,7 @@
 	slowdown = -0.5 //half the old.
 	snow_movement = -2	// Ignores light snow
 	item_slowdown_mod = 2	// Tiny birds don't like heavy things
-	total_health = 50
+	total_health = 75
 	brute_mod = 1.35
 	burn_mod =  1.35
 	mob_size = MOB_SMALL
