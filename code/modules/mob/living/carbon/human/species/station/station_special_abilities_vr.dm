@@ -839,7 +839,7 @@
 			C.anchored = 0
 	else
 		return
-/* cit edit: go fuck yourself tesh agility
+/* cit edit: agility is bad
 /mob/living/proc/toggle_pass_table()
 	set name = "Toggle Agility" //Dunno a better name for this. You have to be pretty agile to hop over stuff!!!
 	set desc = "Allows you to start/stop hopping over things such as hydroponics trays, tables, and railings."
