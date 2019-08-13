@@ -325,7 +325,11 @@
 	ship_prefixes = list("WFV" = "a freight", "WTV" = "a transport", "WDV" = "an asset protection")
 	ship_names = list(
 			"Comet",
+			"Meteor",
+			"Heliosphere",
+			"Bolide",
 			"Aurora",
+			"Nova",
 			"Supernova",
 			"Nebula",
 			"Galaxy",
@@ -338,6 +342,9 @@
 			"Wormhole",
 			"Sunspot",
 			"Supercluster",
+			"Supergiant",
+			"Protostar",
+			"Magnetar",
 			"Moon",
 			"Supermoon",
 			"Anomaly",
@@ -345,6 +352,8 @@
 			"Stream",
 			"Rift",
 			"Curtain",
+			"Planetar",
+			"Quasar",
 			"Binary"
 			)
 	destination_names = list()
@@ -523,38 +532,47 @@
 	motto = ""
 
 	ship_prefixes = list("XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
-	//engineering terms
-	/*
+	//martian mountains
 	ship_names = list(
-			"Absorbance",
-			"Acceleration",
-			"Actuator",
-			"Adhesion",
-			"Albedo",
-			"Alkane",
-			"Alloy",
-			"Ampere",
-			"Amplitude",
-			"Anion",
-			"Anode",
-			"Barometer",
-			"Battery",
-			"Baud",
-			"Beam",
-			"Belt",
-			"Biocatalysis",
-			"Boiler",
-			"Boltzmann",
-			"Boson",
-			"Bromide",
-			"Capacitance",
-			"Cartesian",
-			"Cathode",
-			"Centroid",
-			"Chromate",
-			"Cohesion",
+			"Olympus Mons",
+			"Ascraeus Mons",
+			"Arsia Mons",
+			"Pavonis Mons",
+			"Elysium Mons",
+			"Hecates Tholus",
+			"Albor Tholus",
+			"Tharsis Tholus",
+			"Biblis Tholus",
+			"Alba Mons",
+			"Ulysses Tholus",
+			"Mount Sharp",
+			"Uranius Mons",
+			"Anseris Mons",
+			"Hadriacus Mons",
+			"Euripus Mons",
+			"Tyrrhenus Mons",
+			"Promethei Mons",
+			"Chronius Mons",
+			"Apollinaris Mons",
+			"Gonnus Mons",
+			"Syrtis Major Planum",
+			"Amphitrites Patera",
+			"Nili Patera",
+			"Pityusa Patera",
+			"Malea Patera",
+			"Peneus Patera",
+			"Labeatis Mons",
+			"Issidon Paterae",
+			"Pindus Mons",
+			"Meroe Patera",
+			"Orcus Patera",
+			"Oceanidum Mons",
+			"Horarum Mons",
+			"Peraea Mons",
+			"Octantis Mons",
+			"Galaxius Mons",
+			"Hellas Planitia",
 			)
-	*/
 	destination_names = list()
 
 //Keek&Allakai&Peesh's new TSC
