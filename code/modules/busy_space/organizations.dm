@@ -11,7 +11,7 @@
 
 	var/list/ship_prefixes = list()	//Some might have more than one! Like NanoTrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
 	var/list/ship_names = list(		//Names of spaceships.  This is a mostly generic list that all the other organizations inherit from if they don't have anything better.
-			"Kestrel",
+			"Scout",
 			"Beacon",
 			"Signal",
 			"Freedom",
@@ -30,24 +30,27 @@
 			"Ascendant",
 			"Tenacious",
 			"Pioneer",
-			"Hawk",
+			"Surveyor",
 			"Haste",
 			"Radiant",
 			"Luminous"
 			)
 	var/list/destination_names = list()	//Names of static holdings that the organization's ships visit regularly.
+	var/scan_exempt = FALSE			//Are we exempt from routine inspections? to avoid incidents where SysDef appears to go rogue
 	var/autogenerate_destination_names = TRUE //Pad the destination lists with some extra random ones?
 
 /datum/lore/organization/New()
 	..()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially in 'starved' lists
-		var/list/star_names = list(
-			"Sol", "Alpha Centauri", "Sirius", "Vega", "Tau Ceti", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "Altair", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Vazzend", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble", "Shelf")
-		var/list/destination_types = list("a dockyard", "a station", "a vessel", "a waystation", "a telecommunications satellite", "a spaceport", "a colony", "an outpost", "a settlement", "a research facility", "a corporate installation", "a freeport", "an independent holding", "an asteroid base", "an orbital refinery", "a trade outpost")
+		var/list/star_names = list(		
+			"in Sol", "in Alpha Centauri", "in Sirius", "in Vega", "in Tau Ceti", "in Altair", "in Zhu Que", "in Oasis", "in Vir", "in Gavel", "in Ganesha", "in Saint Columbia", "in Altair", "in Sidhe", "in New Ohio", "in Parvati", "in Mahi-Mahi", "in Nyx", "in New Seoul", "in Kess-Gendar", "in Raphael", "in Phact", "in Altair", "in El", "in Eutopia", "in Qerr'valis", "in Qerrna-Lakirr", "in Rarkajar", "in Vazzend", "in Thoth", "in Jahan's Post", "in Kauq'xum", "in Silk", "in New Singapore", "in Stove", "in Viola", "in Love", "in Isavau's Gamble", "in Shelf", "in deep space", "on the frontier")
+		var/list/owners = list("a government", "a civilian", "a corporate", "a private", "an independent", "a mercenary", "a military")
+		var/list/destination_types = list("[pick(owners)] shipyard", "[pick(owners)] dockyard", "[pick(owners)] station", "[pick(owners)] vessel", "a waystation", "[pick(owners)] telecommunications satellite", "a spaceport", "a colony", "[pick(owners)] outpost", "a settlement", "[pick(owners)] research facility", "[pick(owners)] installation", "a freeport", "[pick(owners)] holding", "[pick(owners)] asteroid base", "an orbital refinery", "a classified location", "a trade outpost", "[pick(owners)] supply depot", "[pick(owners)] fuel depot")
 		while(i)
-			destination_names.Add("[pick(destination_types)] in [pick(star_names)]")
+			destination_names.Add("[pick(destination_types)] [pick(star_names)]")
 			i--
+	//refactored slightly to improve flexibility; we can now have different owners for a destination (but only for some destinations), and 'stars' can include other star-like destinations
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -92,7 +95,7 @@
 			"Bell",
 			"Mendel",
 			"Kepler",
-			"Edision",
+			"Edison",
 			"Cavendish",
 			"Nye",
 			"Hawking",
@@ -230,7 +233,7 @@
 			)
 
 /datum/lore/organization/tsc/zeng_hu
-	name = "Zeng-Hu pharmaceuticals"
+	name = "Zeng-Hu Pharmaceuticals"
 	short_name = "Zeng-Hu"
 	acronym = "ZH"
 	desc = "Zeng-Hu is an old TSC, based in the Sol system. Until the discovery of Phoron, Zeng-Hu maintained a stranglehold \
@@ -511,6 +514,7 @@
 	destination_names = list(
 			"our headquarters in Shelf",
 			"a trade outpost in Shelf",
+			"one of our factory complexes on Root",
 			"research outpost Aleph",
 			"logistics depot Dalet",
 			"research installation Zayin",
@@ -580,67 +584,88 @@
 	name = "Antares Robotics Group"
 	short_name = "Antares"
 	acronym = "ARG"
-	desc = "A relative newcomer to the prosthetics and cybernetics market, the Antares Robotics Group builds sturdy, reliable hardware supremely suited to frontier life. They're in direct (and aggressive) competition with Hephaestus Industries, though it remains to be seen what HI will make of these newcomers trying to muscle in on their share of the frontier markets."
+	desc = "A heavy competitor in the mining industries to Hephaestus Industries, Antares Robotics sets its vision grand.<br><br>The ARU (Antares Robotics Unit) was the first step to creating a heavy frame synthetic that can take even the harshest of punishment from any foreign origin!<br><br>After rigorous studies (all of which successful of course!) Antares Robotics paired with several outsourced help took its first step into Prosthetics for those that need a reliable limb that can take and give a punch!"
 	history = ""
 	work = "cybernetics manufacturer"
 	headquarters = ""
 	motto = ""
 
 	ship_prefixes = list("ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
-	//ship names: rocks! no rolling
-	ship_names = list(
-			"Adakite",
-			"Andesite",
-			"Basalt",
-			"Basanite",
-			"Diorite",
-			"Dunite",
-			"Gabbro",
-			"Granite",
-			"Harzburgite",
-			"Ignimbrite",
-			"Kimberlite",
-			"Komatiite",
-			"Norite",
-			"Obsidian",
-			"Pegmatite",
-			"Picrite",
-			"Pumice",
-			"Rhyolite",
-			"Scoria",
-			"Syenite",
-			"Tachylyte",
-			"Wehrlite",
-			"Arkose",
-			"Chert",
-			"Dolomite",
-			"Flint",
-			"Laterite",
-			"Marl",
-			"Oolite",
-			"Sandstone",
-			"Shale",
-			"Anthracite",
-			"Gneiss",
-			"Granulite",
-			"Mylonite",
-			"Schist",
-			"Skarn",
-			"Slate"
-			)
+	//ship names: blank, because we get some autogenned for us
+	ship_names = list()
 	destination_names = list()
+
+/datum/lore/organization/tsc/antares/New()
+	..()
+	var/i = 20 //give us twenty random names, antares has snowflake rng-ids
+	var/list/numbers = list(
+			"One",
+			"Two",
+			"Three",
+			"Four",
+			"Five",
+			"Six",
+			"Seven",
+			"Eight",
+			"Nine",
+			"Zero"
+			)
+	while(i)
+		ship_names.Add("[pick(numbers)] [pick(numbers)] [pick(numbers)] [pick(numbers)]")
+		i--
+
+/datum/lore/organization/tsc/ftu
+	name = "Free Trade Union"
+	short_name = "Trade Union"
+	acronym = "FTU"
+	desc = "The Free Trade Union is different from other tran-stellars in that they are not just a company, but they are a big conglomerate of various traders and merchants from all over the galaxy. They control a sizable fleet of vessels of various sizes which are given autonomy from the central command to engage in trading. They also host a fleet of combat vessels which respond directly to the central command for defending traders when necessary. They are in control of many large scale trade stations across the known galaxy, even in non-human space. Generally, they are multi-purpose stations but they always keep areas filled with duty-free shops. Almost anything is sold there and products that are forbidden or have insanely high taxes in other places are generally sold in the duty-free shops at very cheap and low prices.<br><br>They are the creators of the Tradeband language, created specially for being a lingua franca where every merchant can understand each other independent of language or nationality."
+	history = "The Free Trade Union was created in 2410 by Issac Adler, a merchant, economist, and owner of a small fleet of ships. At this time the \"Free Merchants\" were in decay because of the high taxes and tariffs that were generally applied on the products that they tried to import or export. Another issue was that big trans-stellar corporations were constantly blocking their products to prospective buyers in order to form their monopolies. Issac decided to organize the \"Free Merchants\" into a legitimate organization to lobby and protest against the unfair practices of the major corporations and the governments that were in their pocket. At the same time, they wanted to organize and sell their things at better prices. The organization started relatively small but by 2450 it became one of the biggest conglomerates with a significant amount of the merchants of the galaxy being a part of the FTU. At the same time, the Free Trade Union started to popularize tradeband in the galaxy as the language of business. Around 2500, the majority of independent merchants were part of the FTU with significant influence on the galactic scale. They have started to invest in colonization efforts in order to take early claim of the frontier systems as the best choice for frontier traders."
+	work = ""
+	headquarters = ""
+	motto = ""
+	
+	ship_prefixes = list("FTRP" = "a route protection", "FTRR" = "a piracy suppression", "FTLV" = "a logistical support", "FTTV" = "a mercantile", "FTDV" = "a market establishment")
+	//famous merchants and traders, taken from Civ6's Great Merchants
+	ship_names = list(
+			"Isaac Adler",
+			"Colaeus",
+			"Marcus Licinius Crassus",
+			"Zhang Qian",
+			"Irene of Athens",
+			"Marco Polo",
+			"Piero de' Bardi",
+			"Giovanni de' Medici",
+			"Jakob Fugger",
+			"Raja Todar Mal",
+			"Adam Smith",
+			"John Jacob Astor",
+			"John Spilsbury",
+			"John Rockefeller",
+			"Sarah Breedlove",
+			"Mary Katherine Goddard",
+			"Helena Rubenstein",
+			"Levi Strauss",
+			"Melitta Bentz",
+			"Estee Lauder",
+			"Jamsetji Tata",
+			"Masaru Ibuka",
+			)
+	destination_names = list(
+			"a Free Trade Union office",
+			"FTU HQ"
+			)
 
 /datum/lore/organization/tsc/mbt
 	name = "Major Bill's Transportation"
 	short_name = "Major Bill's"
 	acronym = "MBT"
-	desc = "The most popular courier service and starliner, Major Bill's is an unassuming corporation whose greatest asset is their low cost and brand recognition. Major Bill’s is known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouts quotable slogans. Their motto is \"With Major Bill's, you won't pay major bills!\", an earworm much of the galaxy longs to forget. Their ships are named after some of Earth's greatest rivers."
+	desc = "The most popular courier service and starliner, Major Bill's is an unassuming corporation whose greatest asset is their low cost and brand recognition. Major Bill's is known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouts quotable slogans. Their motto is \"With Major Bill's, you won't pay major bills!\", an earworm much of the galaxy longs to forget. Their ships are named after some of Earth's greatest rivers."
 	history = ""
 	work = "courier and passenger transit"
 	headquarters = "Mars, Sol"
 	motto = ""
 
-	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit")
+	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit", "TTV" = "a secure data courier")
 	//ship names: big rivers
 	ship_names = list (
 			"Nile",
@@ -691,7 +716,175 @@
 			"Araguaia",
 			"Volga"
 			)
-	destination_names = list()
+	destination_names = list(
+			"Major Bill's Transportation HQ on Mars",
+			"a Major Bill's warehouse",
+			"a Major Bill's distribution center",
+			"a Major Bill's supply deplot"
+			)
+
+/datum/lore/organization/tsc/grayson
+	name = "Grayson Manufactories Ltd."
+	short_name = "Grayson"
+	acronym = "GM"
+	desc = "Grayson Manufactories Ltd., true to its name, mines, refines, and produces iron, steel, aluminum, and other metals for use in casing and other production before selling them. They are also known for reviving their old traditions of supplying general materials ready for assembly for construction projects. These parts are interchangeable and considered somewhat cheap, but have proven to be generally and consecutively reliable.<br><br>As of current, Grayson Manufactories has a fairly neutral stance on the other major corporations, though has a history of maintaining a monopoly on specific trades through heavy competition and even rumors of industrial sabotage and use of strikebreakers."
+	history = ""
+	work = ""
+	headquarters = "Mars"
+	motto = ""
+	
+	ship_prefixes = list("GMT" = "a transport", "GMR" = "a resourcing", "GMS" = "a surveying", "GMH" = "a bulk transit")
+	//rocks
+	ship_names = list(
+			"Adakite",
+			"Andesite",
+			"Basalt",
+			"Basanite",
+			"Diorite",
+			"Dunite",
+			"Gabbro",
+			"Granite",
+			"Harzburgite",
+			"Ignimbrite",
+			"Kimberlite",
+			"Komatiite",
+			"Norite",
+			"Obsidian",
+			"Pegmatite",
+			"Picrite",
+			"Pumice",
+			"Rhyolite",
+			"Scoria",
+			"Syenite",
+			"Tachylyte",
+			"Wehrlite",
+			"Arkose",
+			"Chert",
+			"Dolomite",
+			"Flint",
+			"Laterite",
+			"Marl",
+			"Oolite",
+			"Sandstone",
+			"Shale",
+			"Anthracite",
+			"Gneiss",
+			"Granulite",
+			"Mylonite",
+			"Schist",
+			"Skarn",
+			"Slate"
+			)
+	destination_names = list(
+			"our headquarters on Mars",
+			"one of our manufacturing complexes",
+			"one of our mining installations"
+			)
+
+/datum/lore/organization/tsc/aether
+	name = "Aether Atmospherics & Recycling"
+	short_name = "Aether"
+	acronym = "AAR"
+	desc = "Aether Atmospherics and Recycling is the prime maintainer and provider of atmospherics systems across both the many ships that navigate the vast expanses of space, and the life support on current and future Human colonies. The byproducts from the filtration of atmospheres across the galaxy are then resold for a variety of uses to those willing to buy. With the nature of their services, most work they do is contracted for construction of these systems, or staffing to maintain them for colonies across human space."
+	history = ""
+	work = ""
+	headquarters = ""
+	motto = ""
+	
+	ship_prefixes = list("AARE" = "a resource extraction", "AARG" = "a gas transport", "AART" = "a transport")
+	//weather systems/patterns
+	ship_names = list (
+			"Cloud",
+			"Nimbus",
+			"Fog",
+			"Vapor",
+			"Haze",
+			"Smoke",
+			"Thunderhead",
+			"Veil",
+			"Steam",
+			"Mist",
+			"Noctilucent",
+			"Nacreous",
+			"Cirrus",
+			"Cirrostratus",
+			"Cirrocumulus",
+			"Aviaticus",
+			"Altostratus",
+			"Altocumulus",
+			"Stratus",
+			"Stratocumulus",
+			"Cumulus",
+			"Fractus",
+			"Asperitas",
+			"Nimbostratus",
+			"Cumulonimbus",
+			"Pileus",
+			"Arcus"
+			)
+	destination_names = list(
+			"Aether HQ",
+			"a gas mining orbital",
+			"a liquid extraction plant"
+			)
+
+/datum/lore/organization/tsc/focalpoint
+	name = "Focal Point Energistics"
+	short_name = "Focal"
+	acronym = "FPE"
+	desc = "Focal Point Energistics is an electrical engineering solutions firm originally formed as a conglomerate of Earth power companies and affiliates. Focal Point manufactures and distributes vital components in modern power grids, such as TEGs, PSUs and their specialty product, the SMES. The company is often consulted and contracted by larger organisations due to their expertise in their field."
+	history = ""
+	work = ""
+	headquarters = ""
+	motto = ""
+	
+	ship_prefixes = list("FPH" = "a transport", "FPC" = "an energy relay", "FPT" = "a fuel transport")
+	//famous electrical engineers
+	ship_names = list (
+			"Erlang",
+			"Blumlein",
+			"Taylor",
+			"Bell",
+			"Reeves",
+			"Bennett",
+			"Volta",
+			"Blondel",
+			"Beckman",
+			"Hirst",
+			"Lamme",
+			"Bright",
+			"Armstrong",
+			"Ayrton",
+			"Bardeen",
+			"Fuller",
+			"Boucherot",
+			"Brown",
+			"Brush",
+			"Burgess",
+			"Camras",
+			"Crompton",
+			"Deprez",
+			"Elwell",
+			"Entz",
+			"Faraday",
+			"Halas",
+			"Hounsfield",
+			"Immink",
+			"Laithwaite",
+			"McKenzie",
+			"Moog",
+			"Moore",
+			"Pierce",
+			"Ronalds",
+			"Shallenberger",
+			"Siemens",
+			"Spencer",
+			"Tesla",
+			"Yablochkov",
+			)
+	destination_names = list(
+			"Focal Point HQ"
+			)
 
 /datum/lore/organization/tsc/independent
 	name = "Independent Pilots Association"
@@ -703,8 +896,8 @@
 	headquarters = "N/A"
 	motto = "N/A"
 
-	ship_prefixes = list("IEV" = "a prospecting", "IEC" = "a prospecting", "IFV" = "a bulk freight", "ITV" = "a passenger transport", "ITC" = "a just-in-time delivery", "IPV" = "a patrol", "IHV" = "a bounty hunting")
-	destination_names = list()
+	ship_prefixes = list("IEV" = "a prospecting", "IEC" = "a prospecting", "IFV" = "a bulk freight", "ITV" = "a passenger transport", "ITC" = "a just-in-time delivery", "IPV" = "a patrol", "IHV" = "a bounty hunting", "ICC" = "an escort")
+	destination_names = list() //we have no hqs or facilities of our own
 
 // Other
 
@@ -718,6 +911,7 @@
 	work = "local security"
 	headquarters = ""
 	motto = ""
+	scan_exempt = TRUE //we're the laaaaaw, we don't impersonate people and stuff
 	autogenerate_destination_names = FALSE
 
 	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort", "SAR" = "a search and rescue", "SDT" = "a logistics", "SDT" = "a resupply") //b = boat, f = fleet, v = vessel, t = tender
@@ -792,48 +986,7 @@
 			"Waypoint Omega"
 			)
 
-/* //placeholder for a religious-themed faction
-/datum/lore/organization/other/starchurch
-	name = "Church of the Stars"
-	short_name = "Church of the Stars" //shortnames are for heathens and heretics!
-	acronym = "CotS"
-	desc = ""
-	history = ""
-	work = "spreading the good word"
-	headquarters = ""
-	motto = ""
-	autogenerate_destination_names = TRUE
-
-	ship_prefixes = list ("CSO" = "an outreach", "CSM" = "a mercy", "CSA" = "an aid", "CSP" = "a pilgramage")
-	//ship names: prophets?
-	destination_names = list(
-				)
-*/
-
 // Governments
-
-/*
-/datum/lore/organization/gov/sifgov
-	name = "Sif Governmental Authority"
-	short_name = "SifGov"
-	desc = "SifGov is the sole governing administration for the Vir system, based in New Reykjavik, Sif.  It is a representative \
-	democratic government, and a fully recognized member of the Solar Central Government.  Anyone operating inside of Vir must \
-	comply with SifGov's legislation and regulations." // Vorestation Edit. Confederate -> Central
-	history = "" // Todo like the rest of them
-	work = "governing body of Sif"
-	headquarters = "New Reykjavik, Sif, Vir"
-	motto = ""
-	autogenerate_destination_names = FALSE
-
-	ship_prefixes = list("SGA" = "a hauling", "SGA" = "an energy relay")
-	destination_names = list(
-			"New Reykjavik on Sif",
-			"Radiance Energy Chain",
-			"a dockyard orbiting Sif",
-			"a telecommunications satellite",
-			"Vir Interstellar Spaceport"
-			)
-*/
 
 /datum/lore/organization/gov/solgov
 	name = "Solar Confederate Government"
@@ -847,6 +1000,7 @@
 	work = "governing polity of humanity's Confederation"
 	headquarters = "Luna, Sol"
 	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'.
+	scan_exempt = TRUE //it would look pretty weird if the SCG were caught impersonating other people
 	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight")
@@ -933,31 +1087,90 @@
 // Military
 // Used for Para-Military groups right now! Pair of placeholder-ish PMCs.
 
-/datum/lore/organization/mil/wolfpack
-	name = "Wolfpack Security"
-	short_name = "WolfSec"
-	acronym = "WPS"
-	desc = "Wolfpack Security is a merging of several much smaller freelance companies, and operates throughout civilized space. Unlike some companies, it operates no planetside facilities whatsoever, opting instead for larger flotillas that are serviced by innumerable smallcraft. As with any PMC there's no small amount of controversy surrounding them, but they try to keep their operations cleaner than their competitors. They're fairly well known for running 'mercy' operations, which are low-cost no-strings-attached contracts for those in dire need."
+/datum/lore/organization/mil/pcrc
+	name = "Proxima Centauri Risk Control"
+	short_name = "Proxima Centauri"
+	acronym = "PCRC"
+	desc = "Not a whole lot is known about the private security company known as PCRC, but it is known that they're irregularly contracted by the larger TSCs for certain delicate matters. Much of the company's inner workings are shrouded in mystery, and most citizens have never even heard of them."
+	history = ""
+	work = "risk control and private security"
+	headquarters = "Proxima Centauri"
+	motto = ""
+	scan_exempt = TRUE //we're not the best guys, but we're not actually shady
+	autogenerate_destination_names = TRUE
+	
+	ship_prefixes = list("PCRC" = "a risk control", "PCRC" = "a private security")
+	//law/protection terms
+	ship_names = list(
+			"Detective",
+			"Constable",
+			"Judge",
+			"Adjudicator",
+			"Magistrate",
+			"Marshal",
+			"Warden",
+			"Peacemaker",
+			"Arbiter",
+			"Justice",
+			"Order",
+			"Jury",
+			"Inspector",
+			"Bluecoat",
+			"Gendarme",
+			"Gumshoe",
+			"Patrolman",
+			"Sentinel",
+			"Shield",
+			"Aegis",
+			"Auditor",
+			"Monitor",
+			"Investigator",
+			"Agent",
+			"Prosecutor",
+			"Sergeant",
+			)
+			
+	destination_names = list(
+			"PCRC HQ, in Proxima Centauri",
+			"a PCRC training installation",
+			"a PCRC supply depot"
+			)
+
+//I'm covered in beeeeeeees!
+/datum/lore/organization/mil/hive
+	name = "HIVE Security"
+	short_name = "HIVE"
+	acronym = "HVS"
+	desc = "HIVE Security is a merging of several much smaller freelance companies, and operates throughout civilized space. Unlike some companies, it operates no planetside facilities whatsoever, opting instead for larger flotillas that are serviced by innumerable smallcraft. As with any PMC there's no small amount of controversy surrounding them, but they try to keep their operations cleaner than their competitors. They're fairly well known for running 'mercy' operations, which are low-cost no-strings-attached contracts for those in dire need."
 	history = ""
 	work = "mercenary contractors"
 	headquarters = ""
-	motto = ""
+	motto = "Strength in Numbers"
+	scan_exempt = TRUE //we're technically kinda-good guys, so we don't do shady stuff
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("WPF" = "a secure freight", "WPS" = "a logistics", "WPV" = "a patrol", "WPH" = "a bounty hunting", "WPX" = "an experimental", "WPC" = "a command", "WPI" = "a mercy")
+	ship_prefixes = list("HPF" = "a secure freight", "HPS" = "a logistics", "HPV" = "a patrol", "HPH" = "a bounty hunting", "HPX" = "an experimental", "HPC" = "a command", "HPI" = "a mercy")
+	//animals, preferably predators, all factual/extant critters
 	ship_names = list(
 			"Wolf",
 			"Bear",
 			"Eagle",
+			"Condor",
 			"Falcon",
+			"Hawk",
+			"Kestrel",
 			"Shark",
 			"Fox",
+			"Weasel",
 			"Mongoose",
 			"Bloodhound",
 			"Rhino",
 			"Tiger",
 			"Leopard",
+			"Panther",
+			"Cheetah",
 			"Lion",
+			"Vulture",
 			"Piranha",
 			"Crocodile",
 			"Alligator",
@@ -973,16 +1186,28 @@
 			"Sealion",
 			"Viper",
 			"Cobra",
+			"Sidewinder",
+			"Asp",
 			"Python",
 			"Anaconda",
+			"Krait",
+			"Diamondback",
+			"Mamba",
+			"Fer de Lance",
+			"Keelback",
+			"Adder",
+			"Constrictor",
+			"Boa",
+			"Moray",
+			"Taipan",
 			"Rattlesnake"
-						)
+			)
 	destination_names = list(
-			"Wolfpack Command",
-			"a WPS patrol fleet",
-			"a WPS flotilla",
-			"a WPS training fleet",
-			"a WPS logistics fleet",
+			"HIVE Command",
+			"a HIVE patrol fleet",
+			"a HIVE flotilla",
+			"a HIVE training fleet",
+			"a HIVE logistics fleet",
 			"a contract location"
 			)
 			//some basics, padded with autogen
