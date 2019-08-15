@@ -34,8 +34,8 @@
 	access = access_mining
 
 /datum/supply_pack/misc/looksir
-	name = "free crab"
-	contains = list(
-			/mob/living/simple_animal/crab = 1
-			)
+	name = "free crabs"
+	contains = list()
 	cost = 7
+	containertype = /obj/structure/largecrate/animal/crab
+	containername = "Crab Crate"
