@@ -10,6 +10,13 @@
 	var/motto = ""				// A motto/jingle/whatever, if they have one.  Currently unused.
 
 	var/list/ship_prefixes = list()	//Some might have more than one! Like NanoTrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
+	var/list/flight_types = list(		//operations and flights - we can override this if we want to remove the military-sounding ones or add our own
+			"flight",
+			"mission",
+			"route",
+			"operation",
+			"assignment"
+			)
 	var/list/ship_names = list(		//Names of spaceships.  This is a mostly generic list that all the other organizations inherit from if they don't have anything better.
 			"Scout",
 			"Beacon",
@@ -57,7 +64,7 @@
 // TSCs
 /datum/lore/organization/tsc/nanotrasen
 	name = "NanoTrasen Incorporated"
-	short_name = "NanoTrasen"
+	short_name = "NanoTrasen "
 	acronym = "NT"
 	desc = "NanoTrasen is one of the foremost research and development companies in SolGov space. \
 	Originally focused on consumer products, their swift move into the field of Phoron has lead to \
@@ -132,7 +139,7 @@
 
 /datum/lore/organization/tsc/hephaestus
 	name = "Hephaestus Industries"
-	short_name = "Hephaestus"
+	short_name = "Hephaestus "
 	acronym = "HI"
 	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles in Sol space. \
 	Hephaestus products have a reputation for reliability, and the corporation itself has a noted tendency to stay removed \
@@ -188,7 +195,7 @@
 
 /datum/lore/organization/tsc/vey_med
 	name = "Vey-Medical" //The Wiki displays them as Vey-Medical.
-	short_name = "Vey-Med"
+	short_name = "Vey-Med "
 	acronym = "VM"
 	desc = "Vey-Med is one of the newer TSCs on the block and is notable for being largely owned and opperated by Skrell. \
 	Despite the suspicion and prejudice leveled at them for their alien origin, Vey-Med has obtained market dominance in \
@@ -234,7 +241,7 @@
 
 /datum/lore/organization/tsc/zeng_hu
 	name = "Zeng-Hu Pharmaceuticals"
-	short_name = "Zeng-Hu"
+	short_name = "Zeng-Hu "
 	acronym = "ZH"
 	desc = "Zeng-Hu is an old TSC, based in the Sol system. Until the discovery of Phoron, Zeng-Hu maintained a stranglehold \
 	on the market for medications, and many household names are patentted by Zeng-Hu-- Bicaridyne, Dylovene, Tricordrizine, \
@@ -312,7 +319,7 @@
 
 /datum/lore/organization/tsc/ward_takahashi
 	name = "Ward-Takahashi General Manufacturing Conglomerate"
-	short_name = "Ward-Takahashi"
+	short_name = "Ward-Takahashi "
 	acronym = "WT"
 	desc = "Ward-Takahashi focuses on the sale of small consumer electronics, with its computers, communicators, \
 	and even mid-class automobiles a fixture of many households. Less famously, Ward-Takahashi also supplies most \
@@ -363,7 +370,7 @@
 
 /datum/lore/organization/tsc/bishop
 	name = "Bishop Cybernetics"
-	short_name = "Bishop"
+	short_name = "Bishop "
 	acronym = "BC"
 	desc = "Bishop's focus is on high-class, stylish cybernetics. A favorite among transhumanists (and a bête noire for \
 	bioconservatives), Bishop manufactures not only prostheses but also brain augmentation, synthetic organ replacements, \
@@ -438,7 +445,7 @@
 
 /datum/lore/organization/tsc/morpheus
 	name = "Morpheus Cyberkinetics"
-	short_name = "Morpheus"
+	short_name = "Morpheus "
 	acronym = "MC"
 	desc = "The only large corporation run by positronic intelligences, Morpheus caters almost exclusively to their sensibilities \
 	and needs. A product of the synthetic colony of Shelf, Morpheus eschews traditional advertising to keep their prices low and \
@@ -524,7 +531,7 @@
 
 /datum/lore/organization/tsc/xion
 	name = "Xion Manufacturing Group"
-	short_name = "Xion"
+	short_name = "Xion "
 	acronym = "XMG"
 	desc = "Xion, quietly, controls most of the market for industrial equipment. Their portfolio includes mining exosuits, \
 	factory equipment, rugged positronic chassis, and other pieces of equipment vital to the function of the economy. Xion \
@@ -582,7 +589,7 @@
 //Keek&Allakai&Peesh's new TSC
 /datum/lore/organization/tsc/antares
 	name = "Antares Robotics Group"
-	short_name = "Antares"
+	short_name = "Antares "
 	acronym = "ARG"
 	desc = "A heavy competitor in the mining industries to Hephaestus Industries, Antares Robotics sets its vision grand.<br><br>The ARU (Antares Robotics Unit) was the first step to creating a heavy frame synthetic that can take even the harshest of punishment from any foreign origin!<br><br>After rigorous studies (all of which successful of course!) Antares Robotics paired with several outsourced help took its first step into Prosthetics for those that need a reliable limb that can take and give a punch!"
 	history = ""
@@ -616,7 +623,7 @@
 
 /datum/lore/organization/tsc/ftu
 	name = "Free Trade Union"
-	short_name = "Trade Union"
+	short_name = "Trade Union "
 	acronym = "FTU"
 	desc = "The Free Trade Union is different from other tran-stellars in that they are not just a company, but they are a big conglomerate of various traders and merchants from all over the galaxy. They control a sizable fleet of vessels of various sizes which are given autonomy from the central command to engage in trading. They also host a fleet of combat vessels which respond directly to the central command for defending traders when necessary. They are in control of many large scale trade stations across the known galaxy, even in non-human space. Generally, they are multi-purpose stations but they always keep areas filled with duty-free shops. Almost anything is sold there and products that are forbidden or have insanely high taxes in other places are generally sold in the duty-free shops at very cheap and low prices.<br><br>They are the creators of the Tradeband language, created specially for being a lingua franca where every merchant can understand each other independent of language or nationality."
 	history = "The Free Trade Union was created in 2410 by Issac Adler, a merchant, economist, and owner of a small fleet of ships. At this time the \"Free Merchants\" were in decay because of the high taxes and tariffs that were generally applied on the products that they tried to import or export. Another issue was that big trans-stellar corporations were constantly blocking their products to prospective buyers in order to form their monopolies. Issac decided to organize the \"Free Merchants\" into a legitimate organization to lobby and protest against the unfair practices of the major corporations and the governments that were in their pocket. At the same time, they wanted to organize and sell their things at better prices. The organization started relatively small but by 2450 it became one of the biggest conglomerates with a significant amount of the merchants of the galaxy being a part of the FTU. At the same time, the Free Trade Union started to popularize tradeband in the galaxy as the language of business. Around 2500, the majority of independent merchants were part of the FTU with significant influence on the galactic scale. They have started to invest in colonization efforts in order to take early claim of the frontier systems as the best choice for frontier traders."
@@ -657,13 +664,13 @@
 
 /datum/lore/organization/tsc/mbt
 	name = "Major Bill's Transportation"
-	short_name = "Major Bill's"
+	short_name = "Major Bill's "
 	acronym = "MBT"
 	desc = "The most popular courier service and starliner, Major Bill's is an unassuming corporation whose greatest asset is their low cost and brand recognition. Major Bill's is known, perhaps unfavorably, for its mascot, Major Bill, a cartoonish military figure that spouts quotable slogans. Their motto is \"With Major Bill's, you won't pay major bills!\", an earworm much of the galaxy longs to forget. Their ships are named after some of Earth's greatest rivers."
 	history = ""
 	work = "courier and passenger transit"
 	headquarters = "Mars, Sol"
-	motto = ""
+	motto = "With Major Bill's, you won't pay major bills!"
 
 	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit", "TTV" = "a secure data courier")
 	//ship names: big rivers
@@ -725,7 +732,7 @@
 
 /datum/lore/organization/tsc/grayson
 	name = "Grayson Manufactories Ltd."
-	short_name = "Grayson"
+	short_name = "Grayson "
 	acronym = "GM"
 	desc = "Grayson Manufactories Ltd., true to its name, mines, refines, and produces iron, steel, aluminum, and other metals for use in casing and other production before selling them. They are also known for reviving their old traditions of supplying general materials ready for assembly for construction projects. These parts are interchangeable and considered somewhat cheap, but have proven to be generally and consecutively reliable.<br><br>As of current, Grayson Manufactories has a fairly neutral stance on the other major corporations, though has a history of maintaining a monopoly on specific trades through heavy competition and even rumors of industrial sabotage and use of strikebreakers."
 	history = ""
@@ -783,7 +790,7 @@
 
 /datum/lore/organization/tsc/aether
 	name = "Aether Atmospherics & Recycling"
-	short_name = "Aether"
+	short_name = "Aether "
 	acronym = "AAR"
 	desc = "Aether Atmospherics and Recycling is the prime maintainer and provider of atmospherics systems across both the many ships that navigate the vast expanses of space, and the life support on current and future Human colonies. The byproducts from the filtration of atmospheres across the galaxy are then resold for a variety of uses to those willing to buy. With the nature of their services, most work they do is contracted for construction of these systems, or staffing to maintain them for colonies across human space."
 	history = ""
@@ -830,7 +837,7 @@
 
 /datum/lore/organization/tsc/focalpoint
 	name = "Focal Point Energistics"
-	short_name = "Focal"
+	short_name = "Focal "
 	acronym = "FPE"
 	desc = "Focal Point Energistics is an electrical engineering solutions firm originally formed as a conglomerate of Earth power companies and affiliates. Focal Point manufactures and distributes vital components in modern power grids, such as TEGs, PSUs and their specialty product, the SMES. The company is often consulted and contracted by larger organisations due to their expertise in their field."
 	history = ""
@@ -885,10 +892,66 @@
 	destination_names = list(
 			"Focal Point HQ"
 			)
+			
+/datum/lore/organization/tsc/starlanes
+	name = "StarFlight Inc."
+	short_name = "StarFlight "
+	acronym = "SFI"
+	desc = "Founded in 2437 by Astara Junea, StarFlight Incorporated is now one of the biggest passenger liner businesses in human-occupied space and has even begun breaking into alien markets -  all despite a rocky start, and several high-profile ship disappearances and shipjackings. With space traffic at an all-time high, it's a depressing reality that SFI's incidents are just a tiny drop in the bucket compared to everything else going on."
+	history = ""
+	work = "luxury, business, and economy passenger flights"
+	headquarters = "Spin Aerostat, Jupiter"
+	motto = "Sic itur ad astra"
+	scan_exempt = TRUE
+	
+	ship_prefixes = list("SFI-X" = "a VIP liner", "SFI-L" = "a luxury liner", "SFI-B" = "a business liner", "SFI-E" = "an economy liner", "SFI-M" = "a mixed class liner", "SFI-S" = "a sightseeing")
+	flight_types = list(		//no military-sounding ones here	
+			"flight",
+			"route",
+			"tour"
+			)
+	ship_names = list(
+			"Rhea",
+			"Ostritch",
+			"Cassowary",
+			"Emu",
+			"Kiwi",
+			"Duck",
+			"Swan",
+			"Chachalaca",
+			"Curassow",
+			"Guan",
+			"Guineafowl",
+			"Pheasant",
+			"Turkey",
+			"Francolin",
+			"Loon",
+			"Penguin",
+			"Grebe",
+			"Flamingo",
+			"Stork",
+			"Ibis",
+			"Heron",
+			"Pelican",
+			"Spoonbill",
+			"Shoebill",
+			"Gannet",
+			"Cormorant",
+			"Osprey",
+			"Kite",
+			"Hawk",
+			"Falcon",
+			"Caracara"
+			)
+	destination_names = list(
+			"a resort planet",
+			"a beautiful ring system",
+			"a ski-resort world"
+			)
 
 /datum/lore/organization/tsc/independent
 	name = "Independent Pilots Association"
-	short_name = "Independent"
+	short_name = "Independent "
 	acronym = "IPA"
 	desc = "Though less common now than they were in the decades before the Sol Economic Organization took power, independent traders remain an important part of the galactic economy, owing in no small part to protective tariffs established by the Free Trade Union in the late twenty-fourth century. Further out on the frontier, independent pilots are often the only people keeping freight and supplies moving."
 	history = ""
@@ -897,6 +960,14 @@
 	motto = "N/A"
 
 	ship_prefixes = list("IEV" = "a prospecting", "IEC" = "a prospecting", "IFV" = "a bulk freight", "ITV" = "a passenger transport", "ITC" = "a just-in-time delivery", "IPV" = "a patrol", "IHV" = "a bounty hunting", "ICC" = "an escort")
+	flight_types = list(		
+			"flight",
+			"mission",
+			"route",
+			"operation",
+			"assignment",
+			"contract"
+			)
 	destination_names = list() //we have no hqs or facilities of our own
 
 // Other
@@ -904,7 +975,7 @@
 //SPACE LAW
 /datum/lore/organization/other/sysdef
 	name = "System Defense Force"
-	short_name = "SysDef"
+	short_name = "SysDef "
 	acronym = "SDF"
 	desc = "Localized militias are used to secure systems throughout inhabited space. By levying and maintaining these local militia forces, governments can use their fleets for more important matters. System Defense Forces tend to be fairly poorly trained and modestly equipped compared to genuine military fleets, but are more than capable of contending with small-time pirates, and can generally stall greater threats long enough for reinforcements to arrive. They're also typically responsible for space-based SAR operations in their system."
 	history = ""
@@ -914,7 +985,7 @@
 	scan_exempt = TRUE //we're the laaaaaw, we don't impersonate people and stuff
 	autogenerate_destination_names = FALSE
 
-	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort", "SAR" = "a search and rescue", "SDT" = "a logistics", "SDT" = "a resupply") //b = boat, f = fleet, v = vessel, t = tender
+	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort", "SAR" = "a search and rescue", "SDT" = "a logistics", "SDT" = "a resupply", "SDJ" = "a prisoner transport") //b = boat, f = fleet, v = vessel, t = tender
 	//ship names: weapons
 	ship_names = list(
 			"Sword",
@@ -990,7 +1061,7 @@
 
 /datum/lore/organization/gov/solgov
 	name = "Solar Confederate Government"
-	short_name = "SolGov"
+	short_name = "SolGov "
 	acronym = "SCG"
 	desc = "SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.  \
 	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate \
@@ -1003,7 +1074,7 @@
 	scan_exempt = TRUE //it would look pretty weird if the SCG were caught impersonating other people
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight")
+	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight", "SCG-J" = "a prisoner transfer")
 	//earth's biggest impact craters
 	ship_names = list(
 			"Wabar",
@@ -1079,7 +1150,8 @@
 			"Mars",
 			"Titan",
 			"Europa",
-			"the Jovian subcluster"
+			"the Jovian subcluster",
+			"a SolGov embassy"
 			)
 			// autogen will add a lot of other places as well.
 
@@ -1087,9 +1159,97 @@
 // Military
 // Used for Para-Military groups right now! Pair of placeholder-ish PMCs.
 
+/datum/lore/organization/mil/usdf
+	name = "United Sol Defense Force"
+	short_name = "" //Doesn't cause whitespace any more, with a little sneaky low-effort workaround
+	acronym = "USDF"
+	desc = "The USDF is the dedicated military force of SolGov, originally formed by the United Nations. It is the dominant superpower of the Orion Spur, and is able to project its influence well into parts of the Perseus and Sagittarius arms of the galaxy. However, regions beyond that are too far for the USDF to be a major player."
+	history = ""
+	work = "peacekeeping and piracy suppression"
+	headquarters = "Paris, Earth"
+	motto = ""
+	scan_exempt = TRUE
+	autogenerate_destination_names = TRUE
+	
+	ship_prefixes = list ("USDF" = "a logistical", "USDF" = "a training", "USDF" = "a patrol", "USDF" = "a piracy suppression", "USDF" = "a peacekeeping", "USDF" = "a relief", "USDF" = "an escort", "USDF" = "a search and rescue")
+	ship_names = list(
+			"Aphrodite",
+			"Apollo",
+			"Ares",
+			"Artemis",
+			"Athena",
+			"Demeter",
+			"Dionysus",
+			"Hades",
+			"Hephaestus",
+			"Hera",
+			"Hermes",
+			"Hestia",
+			"Poseidon",
+			"Zeus",
+			"Achlys",
+			"Aether",
+			"Aion",
+			"Ananke",
+			"Chaos",
+			"Chronos",
+			"Erebus",
+			"Eros",
+			"Gaia",
+			"Hemera",
+			"Hypnos",
+			"Nemesis",
+			"Nyx",
+			"Phanes",
+			"Pontus",
+			"Tartarus",
+			"Thalassa",
+			"Thanatos",
+			"Uranus",
+			"Coeus",
+			"Crius",
+			"Cronus",
+			"Hyperion",
+			"Iapetus",
+			"Mnemosyne",
+			"Oceanus",
+			"Phoebe",
+			"Rhea",
+			"Tethys",
+			"Theia",
+			"Themis",
+			"Asteria",
+			"Astraeus",
+			"Atlas",
+			"Aura",
+			"Clymene",
+			"Dione",
+			"Helios",
+			"Selene",
+			"Eos",
+			"Epimetheus",
+			"Eurybia",
+			"Eurynome",
+			"Lelantos",
+			"Leto",
+			"Menoetius",
+			"Metis",
+			"Ophion",
+			"Pallas",
+			"Perses",
+			"Prometheus",
+			"Styx",
+			)
+	destination_names = list(
+			"USDF HQ",
+			"a USDF staging facility on the edge of SolGov territory",
+			"a USDF resupply depot",
+			"a USDF shipyard in Sol"
+			)
+
 /datum/lore/organization/mil/pcrc
 	name = "Proxima Centauri Risk Control"
-	short_name = "Proxima Centauri"
+	short_name = "Proxima Centauri "
 	acronym = "PCRC"
 	desc = "Not a whole lot is known about the private security company known as PCRC, but it is known that they're irregularly contracted by the larger TSCs for certain delicate matters. Much of the company's inner workings are shrouded in mystery, and most citizens have never even heard of them."
 	history = ""
@@ -1100,6 +1260,14 @@
 	autogenerate_destination_names = TRUE
 	
 	ship_prefixes = list("PCRC" = "a risk control", "PCRC" = "a private security")
+	flight_types = list(		
+			"flight",
+			"mission",
+			"route",
+			"operation",
+			"assignment",
+			"contract"
+			)
 	//law/protection terms
 	ship_names = list(
 			"Detective",
@@ -1139,7 +1307,7 @@
 //I'm covered in beeeeeeees!
 /datum/lore/organization/mil/hive
 	name = "HIVE Security"
-	short_name = "HIVE"
+	short_name = "HIVE "
 	acronym = "HVS"
 	desc = "HIVE Security is a merging of several much smaller freelance companies, and operates throughout civilized space. Unlike some companies, it operates no planetside facilities whatsoever, opting instead for larger flotillas that are serviced by innumerable smallcraft. As with any PMC there's no small amount of controversy surrounding them, but they try to keep their operations cleaner than their competitors. They're fairly well known for running 'mercy' operations, which are low-cost no-strings-attached contracts for those in dire need."
 	history = ""
@@ -1149,7 +1317,15 @@
 	scan_exempt = TRUE //we're technically kinda-good guys, so we don't do shady stuff
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("HPF" = "a secure freight", "HPS" = "a logistics", "HPV" = "a patrol", "HPH" = "a bounty hunting", "HPX" = "an experimental", "HPC" = "a command", "HPI" = "a mercy")
+	ship_prefixes = list("HPF" = "a secure freight", "HPT" = "a training", "HPS" = "a logistics", "HPV" = "a patrol", "HPH" = "a bounty hunting", "HPX" = "an experimental", "HPC" = "a command", "HPI" = "a mercy")
+	flight_types = list(		
+			"flight",
+			"mission",
+			"route",
+			"operation",
+			"assignment",
+			"contract"
+			)
 	//animals, preferably predators, all factual/extant critters
 	ship_names = list(
 			"Wolf",
@@ -1215,7 +1391,7 @@
 //intentionally edgy a.f.
 /datum/lore/organization/mil/blackstar
 	name = "Blackstar Legion"
-	short_name = "Blackstar"
+	short_name = "Blackstar "
 	acronym = "BSL"
 	desc = "Shrouded in mystery and controversy, Blackstar Legion is said to have its roots in pre-FTL Sol private military contractors. Their reputation means that most upstanding corporations and governments are hesitant to call upon them, whilst their prices put them out of the reach of most private individuals. As a result, they're mostly seen as the hired thugs of frontier governments that don't (or won't) answer to SolGov."
 	history = ""
@@ -1224,7 +1400,15 @@
 	motto = ""
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("BSF" = "a secure freight", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command")
+	ship_prefixes = list("BSF" = "a secure freight", "BST" = "a training", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command")
+	flight_types = list(		
+			"flight",
+			"mission",
+			"route",
+			"operation",
+			"assignment",
+			"contract"
+			)
 	//edgy mythological critters!
 	ship_names = list(
 			"Dragon",

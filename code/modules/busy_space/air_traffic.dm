@@ -56,7 +56,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/datum/lore/organization/fakeiff = loremaster.organizations[two] //repurposed for new fun stuff
 
 	//Let's get some mission parameters
-	var/owner = source.short_name					//Use the short name
+	var/owner = source.short_name				//Use the short name
 	var/prefix = pick(source.ship_prefixes)			//Pick a random prefix
 	var/mission = source.ship_prefixes[prefix]		//The value of the prefix is the mission type that prefix does
 	var/shipname = pick(source.ship_names)			//Pick a random ship name
@@ -66,12 +66,12 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/fakeowner = fakeiff.short_name
 	var/fakeprefix = pick(fakeiff.ship_prefixes)			//Pick a random prefix
 	var/fakeshipname = pick(fakeiff.ship_names)			//Pick a random ship name
-	var/combined_fake_name = "[fakeowner] [fakeprefix] [fakeshipname]"
 
-	var/combined_name = "[owner] [prefix] [shipname]"
+	var/combined_name = "[owner][prefix] [shipname]"
+	var/combined_fake_name = "[fakeowner][fakeprefix] [fakeshipname]"
 	var/alt_atc_names = list("[using_map.station_short] TraCon","[using_map.station_short] Control","[using_map.station_short] STC","[using_map.station_short] StarCon")
 	var/wrong_atc_names = list("Sol Command","New Reykjavik StarCon", "[using_map.dock_name]")
-	var/mission_noun = list("flight","mission","route","operation","assignment")
+	var/mission_noun = pick(source.flight_types)		//pull from a list of owner-specific flight ops, to allow an extra dash of flavor
 	var/request_verb = list("requesting","calling for","asking for")
 
 	//First response is 'yes', second is 'no'
@@ -231,7 +231,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			sleep(5 SECONDS)
 			msg("[combined_name], this is [using_map.station_short] Space Control. Permission granted. Docking clamps released. [safetravels].")
 			sleep(5 SECONDS)
-			msg("[thanks], [using_map.station_short] Space Control. This is the [prefix] [shipname] setting course for [destname], over and out.","[prefix] [shipname]")
+			msg("[thanks], [using_map.station_short] Space Control. This is [combined_name] setting course for [destname], over and out.","[prefix] [shipname]")
 		if("undockingdenied")
 			var/denialreason = pick("Docking clamp malfunction, please hold","Fuel lines have not been secured","Ground crew are still on the pad","Loose containers are on the pad","Security is requesting a full cargo inspection","Your ship has been impounded for multiple security violations","You need to pass a quick engineering inspection","Your ship is currently under quarantine lockdown","Exhaust deflectors are not yet in position, please hold")
 			msg("[callname], this is [combined_name], requesting permission to depart from pad [rand(1,42)].","[prefix] [shipname]")

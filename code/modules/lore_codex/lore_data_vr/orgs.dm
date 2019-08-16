@@ -34,6 +34,6 @@
 
 
 /datum/lore/codex/category/auto_org/mil
-	name = "Para-Militaries & Private Security"
+	name = "Military Forces & Private Security"
 	auto_keywords = list("Mil","Military","Militaries","Security")
 	desired_type = /datum/lore/organization/mil
