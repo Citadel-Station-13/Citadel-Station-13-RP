@@ -33,7 +33,7 @@
 	containername = "industrial hardsuit crate"
 	access = access_mining
 
-/datum/supply_pack/misc/looksir
+/datum/supply_pack/misc/looksir // CIT Change: Adds a crab crate, that isn't free
 	name = "free crabs"
 	contains = list()
 	cost = 7
