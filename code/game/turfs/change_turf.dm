@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.icon != icon)
 		T.icon = icon
 	if(color)
-		T.atom_colors = atom_colors.Copy()
+		T.atom_colours = atom_colours.Copy()
 		T.update_atom_colour()
 	if(T.dir != dir)
 		T.setDir(dir)

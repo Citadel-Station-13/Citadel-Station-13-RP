@@ -15,7 +15,7 @@
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
 
-	var/list/atom_colors	 //used to store the different colors on an atom
+	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 
 	///Chemistry.
@@ -615,45 +615,43 @@
 */
 
 /*
-	Adds an instance of color_type to the atom's atom_colors list
+	Adds an instance of color_type to the atom's atom_colours list
 */
 /atom/proc/add_atom_colour(coloration, color_priority)
-	if(!atom_colors || !atom_colors.len)
-		atom_colors = list()
-		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
+	if(!atom_colours || !atom_colours.len)
+		atom_colours = list()
+		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
 	if(!coloration)
 		return
-	if(color_priority > atom_colors.len)
+	if(color_priority > atom_colours.len)
 		return
-	atom_colors[color_priority] = coloration
+	atom_colours[color_priority] = coloration
 	update_atom_colour()
-
 
 /*
-	Removes an instance of color_type from the atom's atom_colors list
+	Removes an instance of color_type from the atom's atom_colours list
 */
 /atom/proc/remove_atom_colour(color_priority, coloration)
-	if(!atom_colors)
-		atom_colors = list()
-		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
-	if(color_priority > atom_colors.len)
+	if(!LAZYLEN(atom_colours))
 		return
-	if(coloration && atom_colors[color_priority] != coloration)
+	if(color_priority > atom_colours.len)
+		return
+	if(coloration && atom_colours[color_priority] != coloration)
 		return //if we don't have the expected color (for a specific priority) to remove, do nothing
-	atom_colors[color_priority] = null
+	atom_colours[color_priority] = null
 	update_atom_colour()
-
+	if(color == null)	//this means there's no colors
+		atom_colours = null		//null the list.
 
 /*
 	Resets the atom's color to null, and then sets it to the highest priority
 	color available
 */
 /atom/proc/update_atom_colour()
-	if(!atom_colors)
-		atom_colors = list()
-		atom_colors.len = COLOR_PRIORITY_AMOUNT //four priority levels currently.
 	color = null
-	for(var/C in atom_colors)
+	if(!LAZYLEN(atom_colours))
+		return
+	for(var/C in atom_colours)
 		if(islist(C))
 			var/list/L = C
 			if(L.len)
