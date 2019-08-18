@@ -30,3 +30,13 @@
 	icon_override = 'modular_citadel/icons/mob/ties_cit.dmi'
 	icon_state = "peltcloak"
 	item_state = "peltcloak"
+
+/obj/item/clothing/glasses/sunglasses/double
+	name = "Double Sunglasses"
+	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	icon_state = "double"
+	item_state_slots = list(slot_r_hand_str = "double", slot_l_hand_str = "double")
+	darkness_view = -1
+	flash_protection = FLASH_PROTECTION_NONE
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
