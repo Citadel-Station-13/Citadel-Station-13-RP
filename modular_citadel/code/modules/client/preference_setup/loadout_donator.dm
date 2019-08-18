@@ -140,3 +140,8 @@
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/peltcloak
 	ckeywhitelist = list("irkallaepsilon")
 
+/datum/gear/donator/doubleglasses
+	display_name = "Double Sunglasses"
+	sort_category = "Donator"
+	path = /obj/item/clothing/glasses/sunglasses/double
+	ckeywhitelist = list("jglitch")
