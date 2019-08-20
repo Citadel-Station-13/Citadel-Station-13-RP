@@ -1,4 +1,4 @@
-/obj/effect/shadekin_ability
+/*/obj/effect/shadekin_ability
 	name = ""
 	desc = ""
 	icon = 'icons/mob/screen_spells.dmi'
@@ -162,4 +162,5 @@
 /obj/effect/shadekin_ability/energy_feast/do_ability()
 	if(!..())
 		return
+*/
 */

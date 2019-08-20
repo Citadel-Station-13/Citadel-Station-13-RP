@@ -1,4 +1,4 @@
-/obj/screen/proc/Click_vr(location, control, params)
+/*/obj/screen/proc/Click_vr(location, control, params)
 	if(!usr)	return 1
 	switch(name)
 
@@ -17,4 +17,4 @@
 		else
 			return 0
 
-	return 1
+	return 1*/

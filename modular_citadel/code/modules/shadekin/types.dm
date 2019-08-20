@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////
-/mob/living/simple_animal/shadekin/red
+/*/mob/living/simple_animal/shadekin/red
 	name = "red-eyed shadekin"
 	eye_state = RED_EYES
 	hostile = TRUE
@@ -254,3 +254,4 @@
 	you to curl up a bit. You can feel her rub at you some through the layers of flesh and fluff, while aches \
 	and pains begin to fade away across your body."
 	player_msg = "Mar? Mar mar. Mar mar mar. Mar. Mar mar? Mar! Mar. Marrrr."
+*/

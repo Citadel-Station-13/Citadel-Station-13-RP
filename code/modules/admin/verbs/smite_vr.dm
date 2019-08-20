@@ -1,4 +1,4 @@
-/client/proc/smite_vr(var/mob/living/carbon/human/target in player_list)
+/*/client/proc/smite_vr(var/mob/living/carbon/human/target in player_list)
 	set name = "Smite (Vore)"
 	set desc = "Abuse a player with various 'special Vore-brand treatments' from a list."
 	set category = "Fun"
@@ -123,7 +123,7 @@
 
 		else
 			return //Injection? Don't print any messages.
-
+*/
 var/redspace_abduction_z
 
 /area/redspace_abduction

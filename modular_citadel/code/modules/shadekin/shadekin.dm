@@ -7,7 +7,7 @@
 	Pray every night that Verysoft doesn't get mad for messing with the shadekins to the degree we might be doing.
 
 */
-
+/*
 /mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
 	desc = "A strange, undocumented creature. It doesn't look like anything you've seen before."
@@ -456,3 +456,4 @@
 	key = "m"
 	machine_understands = 0
 	flags = RESTRICTED | HIVEMIND
+*/

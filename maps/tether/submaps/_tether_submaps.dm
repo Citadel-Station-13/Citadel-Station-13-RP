@@ -291,7 +291,7 @@
 		processing_objects -= src
 		depleted = TRUE
 		return
-
+/*
 //Shadekin spawner. Could have them show up on any mission, so it's here.
 //Make sure to put them away from others, so they don't get demolished by rude mobs.
 /obj/tether_away_spawner/shadekin
@@ -306,3 +306,4 @@
 	mobs_to_pick_from = list(
 		/mob/living/simple_animal/shadekin
 	)
+*/
