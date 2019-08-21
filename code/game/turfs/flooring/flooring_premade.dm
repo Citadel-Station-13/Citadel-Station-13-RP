@@ -432,3 +432,8 @@
             add_overlay(image(icon, "footprint[i]", text2num(d)))
 
 //**** Here ends snow ****
+
+/turf/simulated/floor/tiled/phoron
+	oxygen = 0
+	nitrogen = 0
+	phoron = ATMOSTANK_PHORON

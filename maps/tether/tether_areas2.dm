@@ -296,8 +296,8 @@
 	name = "\improper Kitchen Freezer"
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
-
-
+/area/crew_quarters/breathingroom
+	name = "\improper Breathing Room"
 
 //
 // Station Z Levels
