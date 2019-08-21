@@ -130,8 +130,12 @@
 		MouseDrop(usr)
 	else
 		if(has_buckled_mobs())
-			for(var/A in buckled_mobs)
-				user_unbuckle_mob(A, user)
+			user.visible_message("<span class='warning'>[user] starts undoing the straps of the wheelchair</span>")
+			if(do_mob(user,src, 20))
+				for(var/A in buckled_mobs)
+					user_unbuckle_mob(A, user)
+			else
+				user.visible_message("<span class='warning'>[user] has stopped undoing the straps of the wheelchair</span>")
 	return
 
 /obj/structure/bed/chair/wheelchair/CtrlClick(var/mob/user)
