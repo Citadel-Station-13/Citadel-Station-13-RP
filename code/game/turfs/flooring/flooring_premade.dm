@@ -436,4 +436,4 @@
 /turf/simulated/floor/tiled/phoron
 	oxygen = 0
 	nitrogen = 0
-	phoron = ATMOSTANK_PHORON
+	phoron = MOLES_CELLSTANDARD
