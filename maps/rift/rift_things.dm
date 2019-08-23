@@ -14,10 +14,17 @@
 	desc = "Used in cooking?"
 	icon_state = "ketchup"
 
-
 //Special map objects
 /obj/effect/landmark/map_data/lythios43c
-    height = 4
+	height = 4
+
+/obj/structure/metal_edge
+	name = "metal underside"
+	desc = "A metal wall that extends downwards."
+	icon = 'icons/turf/cliff.dmi'
+	icon_state = "metal"
+	anchored = TRUE
+	density = FALSE
 
 /obj/turbolift_map_holder/rift
 	name = "Atlas Lift"

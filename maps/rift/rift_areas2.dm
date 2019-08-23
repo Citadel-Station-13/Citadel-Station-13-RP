@@ -15,6 +15,87 @@
 /area/maintenance/panic_shelter
 	name = "\improper Panic Shelter Maintenance"
 
+/area/maintenance/maint_bar
+	name = "\improper Maintenance Bar"
+	icon_state = "fsmaint"
+
+/area/rift/surfaceeva
+	name = "\improper Primary Surface EVA"
+
+/area/rift/surfaceeva/cargodock
+	name = "\improper Cargo Dock"
+	icon_state = "quart"
+
+//
+// Elevator Maint
+//
+
+/area/rift/turbolift/maint
+	name = "\improper Elevator Maintenance"
+	icon_state = "maint_engineering"
+
+//
+// Central heating
+//
+
+/area/maintenance/central_heating/surface_one
+	name = "\improper Central Heating - Surface One"
+	icon_state = "maint_engineering"
+
+//
+// Substations
+//
+
+/area/maintenance/substation/surface_one
+	name = "\improper Surface One Substation"
+	icon_state = "substation"
+
+//
+// Hallways
+//
+
+/area/hallway/primary/undertwo
+	name = "\improper Central Primary Hallway - Underground Two"
+	icon_state = "hallC"
+/area/hallway/primary/underone
+	name = "\improper Central Primary Hallway - Underground One"
+	icon_state = "hallC"
+/area/hallway/primary/surfaceone
+	name = "\improper Central Primary Hallway - Surface One"
+	icon_state = "hallC"
+/area/hallway/primary/surfacetwo
+	name = "\improper Central Primary Hallway - Surface Two"
+	icon_state = "hallC"
+/area/hallway/primary/surfacethree
+	name = "\improper Central Primary Hallway - Surface Three"
+	icon_state = "hallC"
+/area/hallway/primary/surfacefour
+	name = "\improper Central Primary Hallway - Surface Four"
+	icon_state = "hallC"
+
+//
+// Stairwells
+//
+
+/area/rift/stairwell/primary/undertwo
+	name = "\improper Central Primary Stairwell - Underground Two"
+	icon_state = "dk_yellow"
+/area/rift/stairwell/primary/underone
+	name = "\improper Central Primary Stairwell - Underground One"
+	icon_state = "dk_yellow"
+/area/rift/stairwell/primary/surfaceone
+	name = "\improper Central Primary Stairwell - Surface One"
+	icon_state = "dk_yellow"
+/area/rift/stairwell/primary/surfacetwo
+	name = "\improper Central Primary Stairwell - Surface Two"
+	icon_state = "dk_yellow"
+/area/rift/stairwell/primary/surfacethree
+	name = "\improper Central Primary Stairwell - Surface Three"
+	icon_state = "dk_yellow"
+/area/rift/stairwell/primary/surfacefour
+	name = "\improper Central Primary Stairwell - Surface Four"
+	icon_state = "dk_yellow"
+
 /area/rift/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
 /area/rift/surfacebase/underground
@@ -33,20 +114,6 @@
 	icon_state = "outside3"
 /area/rift/surfacebase/outside/empty
 	name = "Outside - Empty Area"
-
-/area/tether/surfacebase/pad
-	name = "\improper Landing Pad"
-	icon_state = "dk_yellow"
-
-/area/tether/surfacebase/atrium_one
-	name = "\improper Atrium First Floor"
-	icon_state = "dk_yellow"
-/area/tether/surfacebase/atrium_two
-	name = "\improper Atrium Second Floor"
-	icon_state = "dk_yellow"
-/area/tether/surfacebase/atrium_three
-	name = "\improper Atrium Third Floor"
-	icon_state = "dk_yellow"
 
 /area/tether/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
