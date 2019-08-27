@@ -145,3 +145,15 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/glasses/sunglasses/double
 	ckeywhitelist = list("jglitch")
+
+/datum/gear/donator/huni
+	display_name = "KHI Uniform"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/huni
+	ckeywhitelist = list("certifiedhyena")
+
+/datum/gear/donator/hberet
+	display_name = "USDF Beret"
+	sort_category = "Donator"
+	path = /obj/item/clothing/head/donator/hberet
+	ckeywhitelist = list("certifiedhyena")
