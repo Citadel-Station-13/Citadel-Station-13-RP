@@ -1148,7 +1148,7 @@
 /area/holodeck/source_basketball)
 "dv" = (
 /turf/simulated/wall/rshull,
-/area/virtual_reality/yacht)
+/area/endeavour_vr/yacht)
 "dw" = (
 /obj/machinery/status_display/supply_display,
 /turf/unsimulated/wall,
@@ -1191,11 +1191,17 @@
 /turf/simulated/shuttle/floor/white,
 /area/supply/dock)
 "dE" = (
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
+/turf/unsimulated/wall/fakeglass{
+	icon_state = "fakewindows";
+	dir = 8
+	},
+/area/endeavour_vr/yacht)
 "dF" = (
-/turf/unsimulated/floor/steel,
-/area/centcom/suppy)
+/turf/unsimulated/wall/fakeglass{
+	icon_state = "fakewindows2";
+	dir = 4
+	},
+/area/endeavour_vr/yacht)
 "dG" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/white,
@@ -1222,7 +1228,6 @@
 /turf/simulated/shuttle/plating,
 /area/supply/dock)
 "dJ" = (
-/mob/living/simple_mob/animal/space/mimic,
 /turf/unsimulated/floor/steel,
 /area/centcom/suppy)
 "dK" = (
@@ -1246,152 +1251,115 @@
 /turf/simulated/shuttle/floor/white,
 /area/supply/dock)
 "dM" = (
-/turf/unsimulated/wall,
-/area/virtual_reality/hub)
-"dN" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor"
-	},
-/area/virtual_reality/hub)
-"dO" = (
 /turf/unsimulated/wall/fakeglass{
-	icon_state = "fakewindows2"
+	icon_state = "fakewindows";
+	dir = 4
 	},
-/area/virtual_reality/yacht)
+/area/endeavour_vr/yacht)
+"dN" = (
+/obj/structure/closet/wardrobe/suit,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dO" = (
+/obj/structure/closet/wardrobe/mixed,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
 "dP" = (
 /turf/unsimulated/wall/seperator,
 /area/space)
 "dQ" = (
+/obj/structure/closet/wardrobe/yellow,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dR" = (
+/obj/structure/closet/wardrobe/green,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor"
-	},
-/area/virtual_reality/hub)
-"dR" = (
-/obj/effect/floor_decal/industrial/loading{
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dS" = (
+/obj/structure/closet/wardrobe/grey,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dT" = (
+/obj/structure/closet/wardrobe/black,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dU" = (
+/obj/structure/closet/wardrobe/white,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dV" = (
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"dW" = (
+/turf/simulated/floor/tiled/steel_ridged,
+/area/endeavour_vr/yacht)
+"dX" = (
+/turf/simulated/floor/tiled/monofloor{
+	icon_state = "monofloor";
 	dir = 1
 	},
-/turf/unsimulated/floor/steel,
-/area/virtual_reality/hub)
-"dS" = (
-/turf/unsimulated/floor/steel,
-/area/virtual_reality/hub)
-"dT" = (
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"dU" = (
+/area/endeavour_vr/yacht)
+"dY" = (
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"dZ" = (
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"ea" = (
+/turf/simulated/floor/tiled/monofloor{
+	icon_state = "monofloor";
+	dir = 8
+	},
+/area/endeavour_vr/yacht)
+"eb" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/tiled/monotile,
+/area/endeavour_vr/yacht)
+"ec" = (
+/turf/simulated/floor/tiled/monofloor{
+	icon_state = "monofloor";
+	dir = 4
+	},
+/area/endeavour_vr/yacht)
+"ed" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"ee" = (
+/turf/simulated/floor/tiled/monofloor,
+/area/endeavour_vr/yacht)
+"ef" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"dV" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor";
-	dir = 4
-	},
-/area/virtual_reality/hub)
-"dW" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 8
-	},
-/turf/unsimulated/floor/steel,
-/area/virtual_reality/hub)
-"dX" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"dY" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 4
-	},
-/turf/unsimulated/floor/steel,
-/area/virtual_reality/hub)
-"dZ" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor";
-	dir = 8
-	},
-/area/virtual_reality/hub)
-"ea" = (
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor";
-	dir = 4
-	},
-/area/virtual_reality/hub)
-"eb" = (
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor";
-	dir = 8
-	},
-/area/virtual_reality/hub)
-"ec" = (
-/obj/machinery/light,
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"ed" = (
-/obj/effect/step_trigger/message{
-	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
-	name = "VR Hub Welcome";
-	once = 0
-	},
-/obj/effect/floor_decal/industrial/loading{
-	dir = 1
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"ee" = (
-/obj/effect/landmark/virtual_reality{
-	name = "VR Hub"
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"ef" = (
-/obj/effect/floor_decal/industrial/loading,
-/turf/unsimulated/floor/steel,
-/area/virtual_reality/hub)
+/area/endeavour_vr/yacht)
 "eg" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor";
-	dir = 1
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Locker Room"
 	},
-/area/virtual_reality/hub)
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
 "eh" = (
-/obj/machinery/light,
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor";
+/obj/structure/table/bench/wooden,
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"ei" = (
+/obj/effect/mist/mapped/moving,
+/obj/machinery/light/small{
+	icon_state = "bulb1";
 	dir = 1
 	},
-/area/virtual_reality/hub)
-"ei" = (
-/obj/effect/landmark/virtual_reality{
-	name = "VR Hub"
-	},
-/obj/machinery/light,
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
 "ej" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/wall/rshull,
-/turf/space/transit/north,
-/area/virtual_reality/yacht)
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
 "ek" = (
 /obj/effect/step_trigger/lost_in_space{
 	deathmessage = "You suddenly dematerialize after crossing out of the playable area. Game over.";
@@ -1403,165 +1371,18 @@
 /turf/space/transit/north,
 /area/space)
 "em" = (
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/water/pool{
+	name = "hot tub"
+	},
+/area/endeavour_vr/yacht)
 "en" = (
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eo" = (
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"ep" = (
-/obj/machinery/shower{
-	dir = 4
-	},
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"eq" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	id_tag = "vr_yacht_dorm_1";
-	name = "Dorm 1"
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"er" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Janitor's Closet"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"es" = (
-/obj/structure/table/steel,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"et" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	id_tag = "vr_yacht_dorm_2";
-	name = "Dorm 2"
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eu" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	id_tag = "vr_yacht_dorm_3";
-	name = "Dorm 3"
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"ev" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	id_tag = "vr_yacht_dorm_5";
-	name = "Dorm 5"
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"ew" = (
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"ex" = (
-/obj/structure/toilet{
-	icon_state = "toilet00";
-	dir = 8
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"ey" = (
-/obj/structure/sink{
-	dir = 4;
-	icon_state = "sink";
-	pixel_x = 12;
-	pixel_y = 2
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"ez" = (
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eA" = (
-/obj/structure/bed/chair/wood{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eB" = (
-/obj/structure/table/steel,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"eC" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eD" = (
-/obj/structure/bed/chair/wood{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eE" = (
-/obj/structure/table/marble,
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eF" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"eG" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Kitchen"
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"eH" = (
-/obj/item/weapon/stool/padded,
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eI" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Bar Back Room"
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eJ" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/dough,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/obj/item/weapon/reagent_containers/food/snacks/doughslice,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"eK" = (
+/area/endeavour_vr/yacht)
+"eo" = (
 /obj/structure/table/woodentable,
 /obj/random/cash,
 /obj/random/cash,
@@ -1574,314 +1395,8 @@
 /obj/item/weapon/spacecash/c100,
 /obj/item/weapon/spacecash/c500,
 /turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"eL" = (
-/obj/structure/table/steel,
-/obj/item/device/flashlight,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"eM" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"eN" = (
-/obj/machinery/space_heater,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"eO" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Bar"
-	},
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eP" = (
-/obj/machinery/vending/boozeomat{
-	req_access = newlist()
-	},
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eQ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"eR" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"eS" = (
-/obj/machinery/vending/food,
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eT" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eU" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"eV" = (
-/turf/simulated/floor/tiled/steel_ridged,
-/area/virtual_reality/yacht)
-"eW" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full,
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
-	},
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eX" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full,
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"eY" = (
-/obj/structure/closet/wardrobe/suit,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"eZ" = (
-/obj/structure/closet/wardrobe/mixed,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fa" = (
-/obj/structure/closet/wardrobe/yellow,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fb" = (
-/obj/structure/closet/wardrobe/green,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fc" = (
-/obj/structure/closet/wardrobe/grey,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fd" = (
-/obj/structure/closet/wardrobe/black,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fe" = (
-/obj/structure/closet/wardrobe/white,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"ff" = (
-/obj/machinery/vending/shoevendor,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fg" = (
-/obj/machinery/vending/clothingvendor,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fh" = (
-/obj/machinery/vending/suitvendor,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fi" = (
-/obj/machinery/vending/hatvendor,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fj" = (
-/turf/simulated/floor/tiled/monofloor{
-	icon_state = "monofloor";
-	dir = 1
-	},
-/area/virtual_reality/yacht)
-"fk" = (
-/turf/simulated/floor/tiled/monofloor{
-	icon_state = "monofloor";
-	dir = 8
-	},
-/area/virtual_reality/yacht)
-"fl" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/tiled/monotile,
-/area/virtual_reality/yacht)
-"fm" = (
-/turf/simulated/floor/tiled/monofloor{
-	icon_state = "monofloor";
-	dir = 4
-	},
-/area/virtual_reality/yacht)
-"fn" = (
-/turf/simulated/floor/tiled/monofloor,
-/area/virtual_reality/yacht)
-"fo" = (
-/obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/orangedouble,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fp" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Stall"
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fq" = (
-/obj/effect/mist/mapped/moving,
-/obj/machinery/shower{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fr" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Restroom"
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fs" = (
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"ft" = (
-/obj/structure/bed/chair/janicart{
-	name = "janicart prime"
-	},
-/obj/item/key,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"fu" = (
-/turf/unsimulated/wall/fakeglass{
-	icon_state = "fakewindows";
-	dir = 1
-	},
-/area/virtual_reality/yacht)
-"fv" = (
-/turf/unsimulated/wall/fakeglass,
-/area/virtual_reality/yacht)
-"fw" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass{
-	name = "Bar"
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fx" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
-	},
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fy" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fz" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"fA" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
-	},
-/turf/simulated/floor/holofloor/lino,
-/area/virtual_reality/yacht)
-"fB" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fC" = (
-/obj/structure/table/bench/padded,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fD" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/barricade,
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"fE" = (
-/obj/effect/step_trigger/message{
-	message = "This is the Deathmatch simulation. Through this teleporter, you'll enter an arena-style fight against everyone else within. The only goal is to survive against other players by any means. There are no rules within this simulation.";
-	name = "VR Deathmatch Welcome";
-	once = 0
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/barricade,
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"fF" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/step_trigger/message{
-	message = "This is the VR Yacht simulation. Here, you can pretend to be whoever you'd like while mingling with other guests aboard a small, privately owned yacht. Hang out at the bar, take a dip in the pool, or hit the bunks. Players in this simulation should avoid acting out of character. There are no hostile players or enemies in this simulation. Troublemakers will be forcefully removed from the play area.";
-	name = "Yacht";
-	once = 0
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "techmaint"
-	},
-/area/virtual_reality/hub)
-"fG" = (
-/turf/simulated/floor/water/pool,
-/area/virtual_reality/yacht)
-"fH" = (
-/obj/structure/table/bench/wooden,
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fI" = (
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fJ" = (
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/water/pool{
-	name = "hot tub"
-	},
-/area/virtual_reality/yacht)
-"fK" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fL" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
-	},
-/turf/simulated/floor/water/pool,
-/area/virtual_reality/yacht)
-"fM" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
-	},
-/turf/simulated/floor/water/pool,
-/area/virtual_reality/yacht)
-"fN" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	name = "Locker Room"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fO" = (
+/area/endeavour_vr/yacht)
+"ep" = (
 /obj/structure/table/woodentable,
 /obj/random/cash,
 /obj/random/cash,
@@ -1894,33 +1409,8 @@
 /obj/item/weapon/spacecash/c1000,
 /obj/item/weapon/spacecash/c500,
 /turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fP" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass{
-	name = "Pool"
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fQ" = (
-/obj/machinery/door/airlock{
-	name = "Sauna"
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fR" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/spacecash/c1000,
-/obj/item/weapon/spacecash/c1000,
-/obj/item/weapon/spacecash/c500,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fS" = (
+/area/endeavour_vr/yacht)
+"eq" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass{
 	name = "Vault"
@@ -1931,302 +1421,156 @@
 	once = 0
 	},
 /turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"fT" = (
-/obj/effect/mist/mapped/moving,
-/obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fU" = (
-/obj/effect/step_trigger/teleporter{
-	name = "to yacht";
-	teleport_x = 174;
-	teleport_y = 74;
-	teleport_z = 10
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor"
-	},
-/area/virtual_reality/hub)
-"fV" = (
-/obj/machinery/door/airlock{
-	name = "Kitchen"
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fW" = (
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fX" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"fY" = (
+/area/endeavour_vr/yacht)
+"er" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"fZ" = (
-/obj/structure/undies_wardrobe,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"ga" = (
-/obj/structure/closet/cabinet,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gb" = (
+/obj/item/weapon/spacecash/c1000,
+/obj/item/weapon/spacecash/c1000,
+/obj/item/weapon/spacecash/c500,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 4;
+	pixel_y = 0
 	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gc" = (
-/obj/effect/mist/mapped/moving,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gd" = (
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"es" = (
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"ge" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gf" = (
-/obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 4
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"et" = (
+/obj/machinery/door/airlock{
+	name = "Sauna"
 	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gg" = (
-/obj/machinery/light/small{
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"eu" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"ev" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"ew" = (
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"ex" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass{
+	name = "Pool"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"ey" = (
+/turf/unsimulated/wall/fakeglass{
+	icon_state = "fakewindows";
+	dir = 1
+	},
+/area/endeavour_vr/yacht)
+"ez" = (
+/turf/simulated/floor/water/pool,
+/area/endeavour_vr/yacht)
+"eA" = (
+/turf/unsimulated/wall/fakeglass{
+	icon_state = "fakewindows2"
+	},
+/area/endeavour_vr/yacht)
+"eB" = (
+/obj/machinery/light{
 	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/water/pool,
+/area/endeavour_vr/yacht)
+"eC" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
 	pixel_x = 0
 	},
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gh" = (
+/turf/simulated/floor/water/pool,
+/area/endeavour_vr/yacht)
+"eD" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"eE" = (
+/turf/unsimulated/wall/fakeglass,
+/area/endeavour_vr/yacht)
+"eF" = (
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"eG" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/dough,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/obj/item/weapon/reagent_containers/food/snacks/doughslice,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"eH" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/simulated/floor/tiled/white,
+/area/endeavour_vr/yacht)
+"eI" = (
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	req_access = newlist()
+	},
+/turf/simulated/floor/tiled/white,
+/area/endeavour_vr/yacht)
+"eJ" = (
 /obj/structure/table/standard,
 /obj/item/weapon/material/knife/plastic,
 /obj/item/weapon/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gi" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/condiment/small/peppermill,
-/obj/item/weapon/material/kitchen/utensil/fork,
-/obj/item/weapon/material/kitchen/utensil/spoon,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gj" = (
-/obj/machinery/vending/fitness,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"gk" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"gl" = (
-/obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"gm" = (
-/turf/unsimulated/wall/fakeglass{
-	icon_state = "fakewindows";
-	dir = 8
-	},
-/area/virtual_reality/yacht)
-"gn" = (
-/turf/unsimulated/wall/fakeglass{
-	icon_state = "fakewindows2";
-	dir = 4
-	},
-/area/virtual_reality/yacht)
-"go" = (
-/turf/unsimulated/wall/fakeglass{
-	icon_state = "fakewindows";
-	dir = 4
-	},
-/area/virtual_reality/yacht)
-"gp" = (
-/obj/machinery/vending/dinnerware,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gq" = (
-/obj/machinery/vending/kink,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"gr" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/steel,
-/area/virtual_reality/yacht)
-"gs" = (
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gt" = (
+/area/endeavour_vr/yacht)
+"eK" = (
 /obj/structure/table/standard,
 /obj/structure/sink/kitchen{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gu" = (
+/area/endeavour_vr/yacht)
+"eL" = (
 /obj/structure/table/standard,
-/obj/machinery/microwave,
 /turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gv" = (
-/obj/structure/closet/secure_closet/freezer/meat,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gw" = (
-/obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = newlist()
-	},
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gx" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gy" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gz" = (
-/obj/structure/bed/chair/janicart{
-	name = "janicart alpha"
-	},
-/obj/item/key,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gA" = (
-/obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gB" = (
-/obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gC" = (
-/obj/structure/janitorialcart,
-/obj/item/weapon/mop,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gD" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/plating,
-/area/virtual_reality/yacht)
-"gE" = (
-/obj/structure/closet/jcloset,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gF" = (
-/obj/machinery/light/small,
-/obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gG" = (
-/obj/structure/table/steel,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gH" = (
-/obj/machinery/door/airlock{
-	name = "Shower"
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gI" = (
-/obj/structure/table/standard,
-/obj/item/weapon/soap/deluxe,
-/obj/effect/mist/mapped/moving,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gJ" = (
-/obj/structure/table/standard,
-/obj/item/weapon/soap/deluxe,
-/obj/effect/mist/mapped/moving,
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gK" = (
-/obj/structure/closet/jcloset,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/soap/deluxe,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/turf/simulated/floor/tiled/techmaint,
-/area/virtual_reality/yacht)
-"gL" = (
-/obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/reddouble,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gM" = (
-/obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/browndouble,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gN" = (
-/obj/structure/bed/double/padded,
-/obj/item/weapon/bedsheet/bluedouble,
-/turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
-"gO" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/step_trigger/teleporter{
-	name = "to yacht";
-	teleport_x = 174;
-	teleport_y = 74;
-	teleport_z = 10
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "monofloor"
-	},
-/area/virtual_reality/hub)
-"gP" = (
+/area/endeavour_vr/yacht)
+"eM" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"eN" = (
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -2251,8 +1595,65 @@
 /obj/item/weapon/reagent_containers/food/snacks/meat,
 /obj/item/weapon/reagent_containers/food/snacks/meat,
 /turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gQ" = (
+/area/endeavour_vr/yacht)
+"eO" = (
+/obj/machinery/door/airlock{
+	name = "Kitchen"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"eP" = (
+/turf/simulated/floor/tiled/white,
+/area/endeavour_vr/yacht)
+"eQ" = (
+/obj/structure/table/standard,
+/obj/machinery/microwave,
+/turf/simulated/floor/tiled/white,
+/area/endeavour_vr/yacht)
+"eR" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"eS" = (
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"eT" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"eU" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/endeavour_vr/yacht)
+"eV" = (
 /obj/structure/table/standard,
 /obj/machinery/microwave,
 /obj/machinery/light{
@@ -2260,83 +1661,902 @@
 	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gR" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+/area/endeavour_vr/yacht)
+"eW" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"eX" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"eY" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"eZ" = (
+/obj/machinery/light/small{
+	dir = 1
 	},
-/obj/machinery/cooker/cereal,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fa" = (
+/turf/unsimulated/wall/fakeglass{
+	icon_state = "fakewindows2";
+	dir = 1
+	},
+/area/endeavour_vr/yacht)
+"fb" = (
+/obj/machinery/light/small{
+	icon_state = "bulb1";
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"fc" = (
+/obj/machinery/vending/dinnerware,
 /turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gS" = (
-/obj/machinery/cooker/oven,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gT" = (
-/obj/machinery/cooker/fryer,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gU" = (
-/obj/machinery/cooker/grill,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gV" = (
-/obj/machinery/cooker/candy,
-/turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gW" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
-/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+/area/endeavour_vr/yacht)
+"fd" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"fe" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"ff" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fg" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Bar Back Room"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"fh" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Kitchen"
+	},
 /turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gX" = (
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
-/turf/simulated/floor/tiled/freezer,
-/area/virtual_reality/yacht)
-"gY" = (
+/area/endeavour_vr/yacht)
+"fi" = (
 /obj/structure/table/marble,
 /obj/machinery/door/window/northright{
 	name = "Kitchen"
 	},
 /obj/item/weapon/reagent_containers/food/snacks/sugarcookie,
 /turf/simulated/floor/tiled/white,
-/area/virtual_reality/yacht)
-"gZ" = (
-/turf/unsimulated/wall/fakeglass{
-	icon_state = "fakewindows2";
+/area/endeavour_vr/yacht)
+"fj" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Janitor's Closet"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fk" = (
+/obj/machinery/vending/food,
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fl" = (
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fm" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fn" = (
+/obj/item/weapon/stool/padded,
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fo" = (
+/obj/machinery/light{
 	dir = 1
 	},
-/area/virtual_reality/yacht)
-"ha" = (
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fp" = (
+/obj/structure/bed/chair/janicart{
+	name = "janicart prime"
+	},
+/obj/item/key,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fq" = (
+/obj/structure/bed/chair/janicart{
+	name = "janicart alpha"
+	},
+/obj/item/key,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fr" = (
+/obj/structure/bed/chair/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"fs" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/reagent_containers/food/condiment/small/peppermill,
+/obj/item/weapon/material/kitchen/utensil/fork,
+/obj/item/weapon/material/kitchen/utensil/spoon,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"ft" = (
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"fu" = (
+/obj/machinery/light/small{
+	dir = 8;
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fv" = (
+/obj/machinery/light/small{
+	icon_state = "bulb1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fw" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_soft/full,
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fx" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker,
 /obj/item/weapon/material/kitchen/utensil/fork,
 /obj/item/weapon/material/kitchen/utensil/spoon,
 /turf/simulated/floor/wood,
-/area/virtual_reality/yacht)
+/area/endeavour_vr/yacht)
+"fy" = (
+/obj/structure/janitorialcart,
+/obj/item/weapon/mop,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fz" = (
+/obj/structure/closet/jcloset,
+/obj/item/device/lightreplacer,
+/obj/item/device/lightreplacer,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fA" = (
+/obj/structure/table/steel,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fB" = (
+/obj/machinery/light/small,
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fC" = (
+/obj/structure/closet/jcloset,
+/obj/item/device/lightreplacer,
+/obj/item/device/lightreplacer,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/soap/deluxe,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled/techmaint,
+/area/endeavour_vr/yacht)
+"fD" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_alc/full,
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fE" = (
+/obj/machinery/vending/boozeomat{
+	req_access = newlist()
+	},
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fF" = (
+/obj/machinery/light/small{
+	dir = 8;
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fG" = (
+/obj/structure/toilet{
+	icon_state = "toilet00";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fH" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fI" = (
+/obj/effect/mist/mapped/moving,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fJ" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fK" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Bar"
+	},
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fL" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/floor/holofloor/lino,
+/area/endeavour_vr/yacht)
+"fM" = (
+/obj/structure/sink{
+	dir = 4;
+	icon_state = "sink";
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fN" = (
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fO" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass{
+	name = "Bar"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"fP" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Stall"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fQ" = (
+/obj/effect/mist/mapped/moving,
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fR" = (
+/turf/unsimulated/wall,
+/area/endeavour_vr)
+"fS" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
+	pixel_x = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"fT" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Restroom"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fU" = (
+/obj/machinery/door/airlock{
+	name = "Shower"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fV" = (
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"fW" = (
+/obj/effect/step_trigger/teleporter{
+	name = "to yacht";
+	teleport_x = 174;
+	teleport_y = 74;
+	teleport_z = 10
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"fX" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fY" = (
+/obj/structure/table/standard,
+/obj/item/weapon/soap/deluxe,
+/obj/effect/mist/mapped/moving,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"fZ" = (
+/obj/structure/table/standard,
+/obj/item/weapon/soap/deluxe,
+/obj/effect/mist/mapped/moving,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/freezer,
+/area/endeavour_vr/yacht)
+"ga" = (
+/turf/simulated/floor/water,
+/area/endeavour_vr)
+"gb" = (
+/obj/structure/barricade,
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 1
+	},
+/area/endeavour_vr)
+"gc" = (
+/obj/effect/step_trigger/message{
+	message = "This is the VR Yacht simulation. Here, you can pretend to be whoever you'd like while mingling with other guests aboard a small, privately owned yacht. Hang out at the bar, take a dip in the pool, or hit the bunks. Players in this simulation should avoid acting out of character. There are no hostile players or enemies in this simulation. Troublemakers will be forcefully removed from the play area.";
+	name = "Yacht";
+	once = 0
+	},
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 1
+	},
+/area/endeavour_vr)
+"gd" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"ge" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gf" = (
+/obj/effect/floor_decal/spline/plain{
+	icon_state = "spline_plain";
+	dir = 1
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gg" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gh" = (
+/turf/simulated/floor/grass,
+/area/endeavour_vr)
+"gi" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/steel,
+/area/endeavour_vr/yacht)
+"gj" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gk" = (
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gl" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gm" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	id_tag = "vr_yacht_dorm_1";
+	name = "Dorm 1"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gn" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	id_tag = "vr_yacht_dorm_2";
+	name = "Dorm 2"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"go" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gp" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	id_tag = "vr_yacht_dorm_3";
+	name = "Dorm 3"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gq" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	id_tag = "vr_yacht_dorm_5";
+	name = "Dorm 5"
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gr" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gs" = (
+/obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gt" = (
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gu" = (
+/obj/effect/floor_decal/spline/plain{
+	icon_state = "spline_plain";
+	dir = 6
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gv" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/beach/sand,
+/area/endeavour_vr)
+"gw" = (
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/grass,
+/area/endeavour_vr)
+"gx" = (
+/obj/machinery/light/small{
+	dir = 8;
+	pixel_x = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gy" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/orangedouble,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gz" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/reddouble,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gA" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/browndouble,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gB" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/bluedouble,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gC" = (
+/turf/simulated/floor/water/shoreline/corner,
+/area/endeavour_vr)
+"gD" = (
+/turf/simulated/floor/water/shoreline,
+/area/endeavour_vr)
+"gE" = (
+/turf/simulated/floor/water/shoreline/corner{
+	icon_state = "shorelinecorner";
+	dir = 1
+	},
+/area/endeavour_vr)
+"gF" = (
+/obj/structure/closet/cabinet,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gG" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/flame/candle,
+/turf/simulated/floor/wood,
+/area/endeavour_vr/yacht)
+"gH" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gI" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gJ" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gK" = (
+/obj/structure/table/steel,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/weapon/storage/box/lights/mixed,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gL" = (
+/obj/structure/table/steel,
+/obj/item/device/flashlight,
+/turf/simulated/floor/plating,
+/area/endeavour_vr/yacht)
+"gM" = (
+/obj/structure/barricade,
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 4
+	},
+/area/endeavour_vr)
+"gN" = (
+/obj/structure/barricade,
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 8
+	},
+/area/endeavour_vr)
+"gO" = (
+/obj/structure/railing,
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"gP" = (
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/endeavour_vr)
+"gQ" = (
+/obj/structure/railing,
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 8
+	},
+/area/endeavour_vr)
+"gR" = (
+/obj/effect/step_trigger/teleporter{
+	name = "to yacht";
+	teleport_x = 174;
+	teleport_y = 74;
+	teleport_z = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"gS" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"gT" = (
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/obj/structure/closet/wardrobe/mixed,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"gU" = (
+/obj/structure/closet/wardrobe/black,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"gV" = (
+/obj/structure/closet/wardrobe/yellow,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"gW" = (
+/obj/structure/closet/wardrobe/suit,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"gX" = (
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/obj/structure/closet/wardrobe/green,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"gY" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"gZ" = (
+/obj/structure/railing,
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 4
+	},
+/area/endeavour_vr)
+"ha" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hb" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hc" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hd" = (
+/obj/effect/landmark/virtual_reality{
+	name = "VR Hub"
+	},
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"he" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 9
+	},
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hf" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hg" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hh" = (
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hi" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 4
+	},
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hj" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 8
+	},
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hk" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hl" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hm" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hn" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 6
+	},
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"ho" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 10
+	},
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hp" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	icon_state = "spline_fancy";
+	dir = 6
+	},
+/turf/simulated/floor/wood,
+/area/endeavour_vr)
+"hq" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 8
+	},
+/area/endeavour_vr)
+"hr" = (
+/obj/structure/railing,
+/turf/simulated/floor/water,
+/area/endeavour_vr)
+"hs" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"ht" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"hu" = (
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/obj/structure/closet/wardrobe/pjs,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"hv" = (
+/obj/structure/closet/wardrobe/pink,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"hw" = (
+/obj/structure/closet/wardrobe/orange,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"hx" = (
+/obj/structure/closet/wardrobe/grey,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"hy" = (
+/obj/effect/step_trigger/message{
+	message = "Welcome to the Endeavor VR Hub. The warp zones here will send you to different VR experiences within the simulation. Each simulation has its own theme, rules, and guidelines to follow while inside. Above all, we hope you have a great time within the simulation of your choice. To return here, simply respawn. Step into a doorway to receive a short description of where that warp zone will bring you.";
+	name = "VR Hub Welcome";
+	once = 0
+	},
+/obj/structure/closet/wardrobe/white,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"hz" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/water/deep,
+/area/endeavour_vr)
+"hA" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 4
+	},
+/area/endeavour_vr)
+"hB" = (
+/turf/simulated/floor/water/shoreline/corner{
+	icon_state = "shorelinecorner";
+	dir = 8
+	},
+/area/endeavour_vr)
+"hC" = (
+/turf/simulated/floor/water/shoreline/corner{
+	icon_state = "shorelinecorner";
+	dir = 4
+	},
+/area/endeavour_vr)
+"hD" = (
+/turf/simulated/floor/water/shoreline{
+	icon_state = "shoreline";
+	dir = 1
+	},
+/area/endeavour_vr)
+"hE" = (
+/obj/structure/barricade,
+/turf/simulated/floor/water/shoreline,
+/area/endeavour_vr)
+"hF" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/water,
+/area/endeavour_vr)
+"hG" = (
+/obj/effect/landmark/virtual_reality{
+	name = "VR Hub"
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/greengrid,
+/area/endeavour_vr)
+"hH" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/wall/rshull,
+/turf/space/transit/north,
+/area/endeavour_vr/yacht)
 
 (1,1,1) = {"
 aa
@@ -19923,19 +20143,19 @@ aa
 aa
 aa
 dw
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 dw
 aa
 aa
@@ -20125,19 +20345,19 @@ aa
 aa
 aa
 bY
-dF
 dJ
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -20327,19 +20547,19 @@ aa
 aa
 aa
 bY
-dF
 dJ
-dF
-dF
-dF
-dF
-dF
-dF
-dF
 dJ
-dF
-dF
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -20529,19 +20749,19 @@ aa
 aa
 aa
 bY
-dF
 dJ
-dF
-dF
-dF
-dF
-dF
-dF
-dF
 dJ
-dF
 dJ
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -20731,19 +20951,19 @@ aa
 aa
 aa
 bY
-dF
 dJ
-dF
-dF
-dF
 dJ
-dF
-dF
-dF
-dF
-dF
 dJ
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -20933,19 +21153,19 @@ aa
 aa
 aa
 bY
-dF
-dF
-dF
-dF
-dF
 dJ
-dF
-dF
 dJ
-dF
-dF
-dF
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -21135,19 +21355,19 @@ aa
 aa
 aa
 bY
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
 dJ
-dF
-dF
-dF
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -21337,19 +21557,19 @@ aa
 aa
 aa
 bY
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
-dF
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
+dJ
 bY
 aa
 aa
@@ -25131,17 +25351,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -25333,17 +25553,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+fV
+fV
+fR
+fR
+fR
+fV
+fV
+fV
+fR
 aa
 aa
 aa
@@ -25535,17 +25755,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+ga
+ga
+ga
+fR
+fR
+fR
+ga
+ga
+ga
+fR
 aa
 aa
 aa
@@ -25737,17 +25957,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+gM
+gM
+gM
+fR
+fR
+fR
+gM
+gM
+gM
+fR
 aa
 aa
 aa
@@ -25938,19 +26158,19 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+ge
+gj
+gv
+gh
+gP
+gh
+ge
+gj
+gv
+fR
+fR
 aa
 aa
 aa
@@ -26139,21 +26359,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gh
+gf
+gk
+gk
+gj
+gj
+gj
+gk
+gk
+gr
+gh
+fR
+fR
 aa
 aa
 aa
@@ -26340,23 +26560,23 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gh
+ge
+gk
+gl
+gl
+gk
+gk
+gk
+gl
+gl
+gk
+gv
+gh
+fR
+fR
 aa
 aa
 aa
@@ -26541,25 +26761,25 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gP
+ge
+gk
+gu
+gh
+gP
+gf
+gk
+gr
+gP
+gh
+gg
+gk
+gv
+gP
+fR
+fR
 aa
 aa
 aa
@@ -26742,27 +26962,27 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gh
+ge
+gk
+gu
+gh
+gh
+gh
+gg
+gl
+gu
+gh
+gh
+gh
+gg
+gk
+gv
+gh
+fR
+fR
 aa
 aa
 aa
@@ -26940,35 +27160,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+fR
+gh
+ge
+gk
+gu
+gh
+gh
+gC
+gQ
+ha
+hg
+hl
+hq
+hB
+gh
+gh
+gg
+gk
+gv
+gh
+fR
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -27142,35 +27362,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+ga
+gb
+ge
+gj
+gk
+gu
+gh
+gh
+gC
+ga
+hr
+hb
+hh
+hm
+hF
+ga
+hB
+gh
+gh
+gg
+gk
+gj
+gv
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -27344,35 +27564,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+ga
+gb
+gf
+gk
+gr
+gP
+gw
+gC
+ga
+ga
+gO
+hb
+hh
+hm
+hs
+ga
+ga
+hB
+gw
+gP
+gf
+gk
+gr
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -27546,35 +27766,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+ga
+gb
+gg
+gk
+gr
+gh
+gw
+gD
+ga
+fV
+gO
+hb
+hh
+hm
+hs
+fV
+ga
+hD
+gw
+gh
+gf
+gk
+gu
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -27748,35 +27968,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+gh
+gf
+gr
+gh
+gw
+gD
+ga
+fV
+gS
+hb
+hh
+hm
+ht
+fV
+ga
+hD
+gw
+gh
+gf
+gr
+gh
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -27950,35 +28170,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+gh
+gf
+gr
+gh
+gh
+gD
+ga
+gO
+gT
+hc
+hi
+hn
+hu
+hs
+ga
+hD
+gh
+gh
+gf
+gr
+gh
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -28152,35 +28372,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+ga
+gb
+ge
+gk
+gr
+gh
+gh
+gD
+ga
+gO
+gU
+hd
+hd
+hd
+hv
+hs
+ga
+hD
+gh
+gh
+gf
+gk
+gv
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -28354,35 +28574,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+ga
+gb
+gf
+gk
+gr
+gP
+gh
+gD
+ga
+gO
+gV
+hd
+hG
+hd
+hw
+hs
+ga
+hD
+gh
+gP
+gf
+gk
+gr
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -28556,35 +28776,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+ga
+gb
+gg
+gk
+gr
+gh
+gh
+gD
+ga
+gO
+gW
+hd
+hd
+hd
+hx
+hs
+ga
+hD
+gh
+gh
+gf
+gk
+gu
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -28758,35 +28978,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+gh
+gf
+gr
+gh
+gh
+gD
+ga
+gO
+gX
+he
+hj
+ho
+hy
+hs
+ga
+hD
+gh
+gh
+gf
+gr
+gh
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -28960,35 +29180,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+gh
+gf
+gr
+gh
+gw
+gD
+ga
+fV
+gY
+hb
+hh
+hm
+hz
+fV
+ga
+hD
+gw
+gh
+gf
+gr
+gh
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -29162,35 +29382,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fW
+ga
+gc
+ge
+gk
+gr
+gh
+gw
+gD
+ga
+fV
+gO
+hb
+hh
+hm
+hs
+fV
+ga
+hD
+gw
+gh
+gf
+gk
+gv
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -29364,35 +29584,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+gR
+ga
+gc
+gf
+gk
+gr
+gP
+gw
+gE
+ga
+ga
+gO
+hb
+hh
+hm
+hs
+ga
+ga
+hC
+gw
+gP
+gf
+gk
+gr
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -29566,35 +29786,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fW
+ga
+gc
+gg
+gl
+gk
+gv
+gh
+gh
+gE
+ga
+hr
+hb
+hh
+hm
+hF
+ga
+hC
+gh
+gh
+ge
+gk
+gk
+gu
+hE
+ga
+fV
+fR
 aa
 aa
 aa
@@ -29768,35 +29988,35 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+fR
+gh
+gg
+gk
+gv
+gh
+gh
+gE
+gZ
+hf
+hk
+hp
+hA
+hC
+gh
+gh
+ge
+gk
+gu
+gh
+fR
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -29974,27 +30194,27 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gh
+gg
+gk
+gv
+gh
+gh
+gh
+ge
+gj
+gv
+gh
+gh
+gh
+ge
+gk
+gu
+gh
+fR
+fR
 aa
 aa
 aa
@@ -30177,25 +30397,25 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gP
+gg
+gk
+gv
+gh
+gP
+gf
+gk
+gr
+gP
+gh
+ge
+gk
+gu
+gP
+fR
+fR
 aa
 aa
 aa
@@ -30380,23 +30600,23 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gh
+gg
+gk
+gj
+gj
+gk
+gk
+gk
+gj
+gj
+gk
+gu
+gh
+fR
+fR
 aa
 aa
 aa
@@ -30583,21 +30803,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gh
+gf
+gk
+gk
+gl
+gl
+gl
+gk
+gk
+gr
+gh
+fR
+fR
 aa
 aa
 aa
@@ -30786,19 +31006,19 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+gg
+gl
+gu
+gh
+gP
+gh
+gg
+gl
+gu
+fR
+fR
 aa
 aa
 aa
@@ -30989,17 +31209,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+gN
+gN
+gN
+fR
+fR
+fR
+gN
+gN
+gN
+fR
 aa
 aa
 aa
@@ -31191,17 +31411,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+ga
+ga
+ga
+fR
+fR
+fR
+ga
+ga
+ga
+fR
 aa
 aa
 aa
@@ -31393,17 +31613,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fV
+fV
+fV
+fR
+fR
+fR
+fV
+fV
+fV
+fR
 aa
 aa
 aa
@@ -31595,17 +31815,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
+fR
 aa
 aa
 aa
@@ -33019,8 +33239,8 @@ al
 al
 al
 al
-al
-al
+aa
+aa
 aa
 aa
 aa
@@ -33221,22 +33441,22 @@ dP
 dP
 dP
 dP
-dP
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -33423,22 +33643,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dM
-dM
-dM
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -33625,22 +33845,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dV
-ea
-dV
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -33827,22 +34047,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dW
-dW
-dW
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -34029,22 +34249,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dS
-dS
-dS
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -34231,22 +34451,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dM
-fD
-dM
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -34433,22 +34653,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dM
-dM
-dM
-dM
-dX
-dX
-dX
-dM
-dM
-dM
-dM
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -34635,22 +34855,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dN
-dR
-dS
-dM
-dX
-dX
-dX
-dM
-dS
-ef
-eg
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -34810,10 +35030,10 @@ el
 el
 dv
 dv
-fu
-dO
-dO
-fv
+ey
+eA
+eA
+eE
 dv
 dv
 el
@@ -34821,8 +35041,8 @@ el
 el
 el
 dv
-fu
-fv
+ey
+eE
 dv
 el
 el
@@ -34837,22 +35057,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dQ
-dR
-dS
-fD
-dX
-dX
-dX
-fD
-dS
-ef
-eh
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -34998,33 +35218,33 @@ el
 el
 el
 dv
-fu
-dO
-dO
-fv
-dv
-dv
-dv
-dv
-dv
-fu
-gZ
-fv
-dv
-eS
+ey
+eA
+eA
 eE
-eW
+dv
+dv
+dv
+dv
+dv
+ey
+fa
 eE
-eX
-eP
+dv
+fk
+fm
+fw
+fm
+fD
+fE
 dv
 dv
 dv
 dv
 dv
 dv
-dE
-gq
+dV
+dV
 dv
 dv
 dv
@@ -35039,22 +35259,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dN
-dR
-dS
-dM
-dX
-dX
-ec
-dM
-dS
-ef
-eg
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -35200,40 +35420,40 @@ dv
 dv
 dv
 dv
-fG
-fL
-fG
-fG
-dv
-eJ
-gP
-gW
-dv
-eC
-eC
-en
-dv
 ez
-ez
-ez
-ez
+eB
 ez
 ez
 dv
-ez
-en
-en
-en
+eG
+eN
+eR
 dv
-dE
-dE
+eW
+eW
+dZ
 dv
-en
-en
-gg
-ga
+fl
+fl
+fl
+fl
+fl
+fl
 dv
-ej
+fl
+dZ
+dZ
+dZ
+dv
+dV
+dV
+dv
+dZ
+dZ
+gx
+gF
+dv
+hH
 el
 el
 el
@@ -35241,22 +35461,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dM
-dM
-dM
-dM
-dX
-dX
-dX
-dM
-dM
-dM
-dM
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -35399,43 +35619,43 @@ dv
 dv
 dv
 dv
-fW
-eo
-eo
-fG
-fG
-fG
-fG
+eu
+ew
+ew
+ez
+ez
+ez
+ez
 dv
-eo
-eo
-eo
+ew
+ew
+ew
 dv
-en
-en
-en
-eI
-ez
-ez
-ez
-ez
-ez
-ez
-eO
-ez
-en
-eA
-eA
+dZ
+dZ
+dZ
+fg
+fl
+fl
+fl
+fl
+fl
+fl
+fK
+fl
+dZ
+fr
+fr
 dv
-dE
-dE
-eq
-en
-en
-en
-en
+dV
+dV
+gm
+dZ
+dZ
+dZ
+dZ
 dv
-ej
+hH
 el
 el
 el
@@ -35443,22 +35663,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dN
-dR
-dS
-dM
-dX
-dX
-dX
-dM
-ee
-ee
-ee
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -35598,46 +35818,46 @@ el
 dv
 dv
 dv
-fH
-fH
+eh
+eh
 dv
-fW
-eo
-eo
-fG
-fG
-fG
-fG
-dv
-eo
-eo
-gX
-dv
-eT
-gf
-eU
-dv
-eE
-eE
-eE
-eE
-eE
-eE
-dv
+eu
+ew
+ew
 ez
-en
-gi
-ha
+ez
+ez
+ez
 dv
-dE
-dE
+ew
+ew
+eS
 dv
-en
-en
-fo
-fY
+eX
+fb
+fe
 dv
-ej
+fm
+fm
+fm
+fm
+fm
+fm
+dv
+fl
+dZ
+fs
+fx
+dv
+dV
+dV
+dv
+dZ
+dZ
+gy
+gG
+dv
+hH
 el
 el
 el
@@ -35645,22 +35865,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dQ
-dR
-dS
-fE
-dX
-dX
-dX
-ed
-ee
-ee
-ei
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -35799,40 +36019,40 @@ el
 dv
 dv
 dv
-fH
-fI
-fI
+eh
+ej
+ej
 dv
-fW
-eo
-eo
-fG
-fG
-fG
-fG
-dv
-dv
-fV
-dv
-dv
-dv
-dv
-dv
-dv
-eH
-eH
-eH
-eH
-eH
-eH
-fA
+eu
+ew
+ew
 ez
-en
-eD
-eD
+ez
+ez
+ez
 dv
-fB
-dE
+dv
+eO
+dv
+dv
+dv
+dv
+dv
+dv
+fn
+fn
+fn
+fn
+fn
+fn
+fL
+fl
+dZ
+ft
+ft
+dv
+gd
+dV
 dv
 dv
 dv
@@ -35847,22 +36067,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dN
-dR
-dS
-dM
-dX
-dX
-dX
-dM
-ee
-ee
-ee
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -36001,47 +36221,47 @@ dv
 dv
 dv
 dv
-fH
-fI
-fI
-dv
-fK
-eo
-eo
-fG
-fG
-fG
-fG
-dv
-gv
-dT
-dT
-gR
-gV
-gp
-dT
-dv
-fz
-ez
-ez
-ez
-ez
-ez
-ez
-ez
-en
-en
-en
-dv
-dE
-dE
-dv
-en
-en
-gg
-en
-dv
+eh
 ej
+ej
+dv
+ev
+ew
+ew
+ez
+ez
+ez
+ez
+dv
+eH
+eP
+eP
+eU
+eP
+fc
+eP
+dv
+fo
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+dZ
+dZ
+dZ
+dv
+dV
+dV
+dv
+dZ
+dZ
+gx
+dZ
+dv
+hH
 el
 el
 el
@@ -36049,22 +36269,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dM
-dM
-dM
-dM
-dX
-dX
-dX
-dM
-dM
-dM
-dM
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -36199,51 +36419,51 @@ el
 el
 dv
 dv
-fC
-fZ
-fC
+dY
+ed
+dY
 dv
-fT
-fI
-fI
-fQ
-eo
-eo
-eo
-fG
-fG
-fG
-fG
-dv
-gw
-dT
-dT
-dT
-dT
-dT
-dT
-eG
-en
-en
-en
-en
-en
-en
-en
-en
-en
-eA
-eA
-dv
-dE
-dE
-et
-en
-en
-en
-en
-dv
+ei
 ej
+ej
+et
+ew
+ew
+ew
+ez
+ez
+ez
+ez
+dv
+eI
+eP
+eP
+eP
+eP
+eP
+eP
+fh
+dZ
+dZ
+dZ
+dZ
+dZ
+dZ
+dZ
+dZ
+dZ
+fr
+fr
+dv
+dV
+dV
+gn
+dZ
+dZ
+dZ
+dZ
+dv
+hH
 el
 el
 el
@@ -36251,22 +36471,22 @@ el
 el
 el
 el
-dP
-al
-dM
-fU
-dR
-dS
-dM
-dX
-dX
-ec
-dM
-dS
-ef
-eg
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -36400,52 +36620,52 @@ el
 el
 dv
 dv
-ff
-en
-en
-en
-dv
-fI
-fI
-fI
-dv
-eo
-eo
-eo
-fG
-fG
-fG
-fG
-dv
-gh
-dT
-dT
-dT
-dT
-dT
-dT
-gY
-en
-eA
-eA
-en
-eA
-eA
-en
-en
-en
-gi
-ha
-dv
-dE
-dE
-dv
-en
-en
-gL
-fY
+dV
+dZ
+dZ
+dZ
 dv
 ej
+ej
+ej
+dv
+ew
+ew
+ew
+ez
+ez
+ez
+ez
+dv
+eJ
+eP
+eP
+eP
+eP
+eP
+eP
+fi
+dZ
+fr
+fr
+dZ
+fr
+fr
+dZ
+dZ
+dZ
+fs
+fx
+dv
+dV
+dV
+dv
+dZ
+dZ
+gz
+gG
+dv
+hH
 el
 el
 el
@@ -36453,22 +36673,22 @@ el
 el
 el
 el
-dP
-al
-dM
-gO
-dR
-dS
-fF
-dX
-dX
-dX
-fD
-dS
-ef
-eh
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -36601,76 +36821,76 @@ el
 el
 dv
 dv
-fh
-dE
-dE
-dE
-dU
-dv
-fJ
-fJ
-fJ
-dv
-eo
-eo
-eo
-fG
-fG
-fG
-fG
-dv
-gt
-dT
-dT
-dT
-dT
-dT
-dT
-dv
-en
-gi
-ha
-en
-gi
-ha
-en
-en
-en
-eD
-eD
-dv
-dE
-dE
-dv
-dv
-dv
-dv
-dv
-dv
-dv
-el
-el
-el
-el
-el
-el
-el
-dP
-al
-dM
-fU
-dR
-dS
-dM
-dX
-dX
-dX
-dM
-dS
+dV
+dV
+dV
+dV
 ef
-eg
-dM
-al
+dv
+em
+em
+em
+dv
+ew
+ew
+ew
+ez
+ez
+ez
+ez
+dv
+eK
+eP
+eP
+eP
+eP
+eP
+eP
+dv
+dZ
+fs
+fx
+dZ
+fs
+fx
+dZ
+dZ
+dZ
+ft
+ft
+dv
+dV
+dV
+dv
+dv
+dv
+dv
+dv
+dv
+dv
+el
+el
+el
+el
+el
+el
+el
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -36802,52 +37022,52 @@ el
 el
 el
 dv
-eY
-dE
-dE
-dE
-dE
-dE
+dN
+dV
+dV
+dV
+dV
+dV
 dv
-fJ
-fJ
-fJ
+em
+em
+em
 dv
-eo
-eo
-eo
-fG
-fM
-fG
-fG
+ew
+ew
+ew
+ez
+eC
+ez
+ez
+dv
+eL
+eQ
+eL
+eV
+eP
+eP
+eP
+dv
+dZ
+ft
+ft
+dZ
+ft
+ft
+dZ
+dZ
+dZ
+fS
+dZ
+dv
+dV
+dV
 dv
 gs
-gu
 gs
-gQ
-gS
-gT
-gU
-dv
-en
-eD
-eD
-en
-eD
-eD
-en
-en
-en
-gd
-en
-dv
-dE
-dE
-dv
-eM
-eM
-eM
-eN
+gs
+gH
 dv
 dv
 el
@@ -36857,22 +37077,22 @@ el
 el
 el
 el
-dP
-al
-dM
-dM
-dM
-dM
-dM
-dX
-dX
-dX
-dM
-dM
-dM
-dM
-dM
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -37003,29 +37223,21 @@ el
 el
 el
 el
-gm
-eZ
 dE
-dE
-dE
-dE
-dE
+dO
+dV
+dV
+dV
+dV
+dV
 dv
 dv
 dv
 dv
 dv
-eF
-fP
-eF
-dv
-dv
-dv
-dv
-dv
-dv
-dv
-dv
+en
+ex
+en
 dv
 dv
 dv
@@ -37037,19 +37249,27 @@ dv
 dv
 dv
 dv
-eF
-fw
-eF
 dv
 dv
 dv
-dE
-dE
 dv
-em
-em
-em
-gD
+dv
+dv
+dv
+dv
+en
+fO
+en
+dv
+dv
+dv
+dV
+dV
+dv
+gt
+gt
+gt
+gI
 dv
 dv
 el
@@ -37059,22 +37279,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dM
-fD
-dM
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -37205,55 +37425,55 @@ el
 el
 el
 el
-gn
-fa
-dE
-eV
-fk
-eV
-dE
+dF
+dQ
+dV
+dW
+ea
+dW
+dV
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-fy
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-fy
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+eD
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+eD
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-em
-em
-em
-es
+gt
+gt
+gt
+gJ
 dv
-ej
+hH
 el
 el
 el
@@ -37261,22 +37481,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dS
-dS
-dS
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -37407,55 +37627,55 @@ el
 el
 el
 el
-gn
-fb
-dE
-fj
-fl
-fn
-dE
-fN
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-eQ
-em
-em
-em
-eB
+dF
+dR
+dV
+dX
+eb
+ee
+dV
+eg
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+go
+gt
+gt
+gt
+gK
 dv
-ej
+hH
 el
 el
 el
@@ -37463,22 +37683,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dY
-dY
-dY
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -37609,55 +37829,55 @@ el
 el
 el
 el
-gn
-fc
-dE
-eV
-fm
-eV
-dE
+dF
+dS
+dV
+dW
+ec
+dW
+dV
 dv
-dE
-dE
-fx
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-fx
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dU
+dV
+dV
+es
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+es
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+ef
 dv
-em
-em
-em
-eL
+gt
+gt
+gt
+gL
 dv
-ej
+hH
 el
 el
 el
@@ -37665,22 +37885,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dZ
-eb
-dZ
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -37811,32 +38031,32 @@ el
 el
 el
 el
-gn
+dF
+dT
+dV
+dV
+dV
+dV
+dV
+dv
+en
+eq
+en
+dv
+dv
+dv
+dv
+dv
+dv
+dv
+dv
+eF
+eM
+dV
+eT
+dv
+dv
 fd
-dE
-dE
-dE
-dE
-dE
-dv
-eF
-fS
-eF
-dv
-dv
-dv
-dv
-dv
-dv
-dv
-dv
-gj
-gk
-dE
-gl
-dv
-dv
-eR
 dv
 dv
 dv
@@ -37848,16 +38068,16 @@ dv
 dv
 dv
 dv
-fr
+fT
 dv
 dv
-dE
-dE
+dV
+dV
 dv
-em
-em
-em
-gD
+gt
+gt
+gt
+gI
 dv
 dv
 el
@@ -37867,22 +38087,22 @@ el
 el
 el
 el
-dP
-al
 aa
 aa
 aa
 aa
-dM
-dM
-dM
-dM
-dM
 aa
 aa
 aa
 aa
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -38013,53 +38233,53 @@ el
 el
 el
 el
-go
-fe
-dE
-dE
-dE
-dE
-dE
+dM
+dU
+dV
+dV
+dV
+dV
+dV
 dv
-eK
-dE
-eK
-dv
-dE
-dE
-dE
-dE
-dE
-dE
-dv
-dv
-dv
-dv
-dv
-dv
-fs
-fs
-fs
-dv
-ft
-gA
-gC
-gC
-dv
-gb
 eo
+dV
+eo
+dv
+dV
+dV
+dV
+dV
+dV
+dV
+dv
+dv
+dv
+dv
+dv
+dv
+eY
+eY
+eY
+dv
 fp
-eo
-eo
-eo
+fu
+fy
+fy
 dv
-dE
-dE
+fF
+ew
+fP
+ew
+ew
+ew
 dv
-eM
-eM
-eM
-eM
+dV
+dV
+dv
+gs
+gs
+gs
+gs
 dv
 dv
 el
@@ -38069,22 +38289,22 @@ el
 el
 el
 el
-dP
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -38217,46 +38437,46 @@ el
 el
 dv
 dv
-fg
-dE
-dE
-dE
-dU
+dV
+dV
+dV
+dV
+ef
 dv
-fO
-dE
-fO
+ep
+dV
+ep
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-fs
-fs
-gy
+eY
+eY
+ff
 dv
-fs
-fs
-fs
-fs
+eY
+eY
+eY
+eY
 dv
-ex
-ey
+fG
+fM
 dv
-eo
-eo
-ge
+ew
+ew
+fX
 dv
-dE
-dE
+dV
+dV
 dv
 dv
 dv
@@ -38271,8 +38491,8 @@ el
 el
 el
 el
-dP
-al
+aa
+aa
 aa
 aa
 aa
@@ -38420,52 +38640,52 @@ el
 el
 dv
 dv
-fi
-en
-en
-en
-dv
-eK
-fR
-eK
-dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dv
-fs
-fs
-fs
-dv
-fs
-fs
-fs
-gE
-dv
-dv
-dv
+dV
+dZ
+dZ
+dZ
 dv
 eo
+er
 eo
-eo
-fr
-dE
-dE
 dv
-en
-en
-gg
-ga
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-ej
+eY
+eY
+eY
+dv
+eY
+eY
+eY
+fz
+dv
+dv
+dv
+dv
+ew
+ew
+ew
+fT
+dV
+dV
+dv
+dZ
+dZ
+gx
+gF
+dv
+hH
 el
 el
 el
@@ -38473,8 +38693,8 @@ el
 el
 el
 el
-dP
-al
+aa
+aa
 aa
 aa
 aa
@@ -38623,51 +38843,51 @@ el
 el
 dv
 dv
-fC
-fZ
-fC
+dY
+ed
+dY
 dv
 dv
 dv
 dv
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-fs
-fs
-fs
+eY
+eY
+eY
 dv
-fs
-fs
-fs
-gG
+eY
+eY
+eY
+fA
 dv
-gb
-eo
-fp
-eo
-eo
-eo
+fF
+ew
+fP
+ew
+ew
+ew
 dv
-dE
-dE
-eu
-en
-en
-en
-en
+dV
+dV
+gp
+dZ
+dZ
+dZ
+dZ
 dv
-ej
+hH
 el
 el
 el
@@ -38829,47 +39049,47 @@ dv
 dv
 dv
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-fs
-fs
-fs
-er
-fs
-fs
-fs
-gF
+eY
+eY
+eY
+fj
+eY
+eY
+eY
+fB
 dv
-ex
-ey
+fG
+fM
 dv
-eo
-eo
-eo
+ew
+ew
+ew
 dv
-dE
-dE
+dV
+dV
 dv
-en
-en
-gM
-fY
+dZ
+dZ
+gA
+gG
 dv
-ej
+hH
 el
 el
 el
@@ -39031,40 +39251,40 @@ el
 dv
 dv
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-fs
-fs
-fs
+eY
+eY
+eY
 dv
-fs
-fs
-fs
-gG
-dv
-dv
+eY
+eY
+eY
+fA
 dv
 dv
 dv
-gH
 dv
 dv
-fB
-dE
+fU
+dv
+dv
+gd
+dV
 dv
 dv
 dv
@@ -39234,46 +39454,46 @@ el
 dv
 dv
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-fs
-fs
-fs
+eY
+eY
+eY
 dv
-fs
-fs
-fs
-gK
+eY
+eY
+eY
+fC
 dv
-ep
-ep
-fq
-ew
-ew
-gI
+fH
+fH
+fQ
+fN
+fN
+fY
 dv
-dE
-dE
+dV
+dV
 dv
-en
-en
-gg
-ga
+dZ
+dZ
+gx
+gF
 dv
-ej
+hH
 el
 el
 el
@@ -39439,43 +39659,43 @@ dv
 dv
 dv
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-gx
-fs
-fs
+eZ
+eY
+eY
 dv
-fs
-fs
-fs
-fs
+eY
+eY
+eY
+eY
 dv
-gc
-ew
-ew
-ew
-ew
-gJ
+fI
+fN
+fN
+fN
+fN
+fZ
 dv
-dE
-dE
-ev
-en
-en
-en
-en
+dV
+dV
+gq
+dZ
+dZ
+dZ
+dZ
 dv
-ej
+hH
 el
 el
 el
@@ -39644,40 +39864,40 @@ dv
 dv
 dv
 dv
-dE
-dE
-dE
-dE
-dE
-dE
-dE
-dE
+dV
+dV
+dV
+dV
+dV
+dV
+dV
+dV
 dv
-fs
-fs
-fs
+eY
+eY
+eY
 dv
-gz
-gB
-gC
-gC
+fq
+fv
+fy
+fy
 dv
-fX
-fX
-fX
-ew
-ew
-gI
-dv
-dE
-dE
-dv
-en
-en
-gN
+fJ
+fJ
+fJ
+fN
+fN
 fY
 dv
-ej
+dV
+dV
+dv
+dZ
+dZ
+gB
+gG
+dv
+hH
 el
 el
 el
@@ -39859,10 +40079,10 @@ dv
 dv
 dv
 dv
-fu
-gZ
-gZ
-fv
+ey
+fa
+fa
+eE
 dv
 dv
 dv
@@ -39871,8 +40091,8 @@ dv
 dv
 dv
 dv
-fg
-gr
+dV
+gi
 dv
 dv
 dv
@@ -40073,8 +40293,8 @@ el
 el
 el
 dv
-fu
-fv
+ey
+eE
 dv
 el
 el

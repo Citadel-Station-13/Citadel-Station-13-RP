@@ -1,22 +1,3 @@
-//Full tile windows
-/obj/structure/window/reinforced/full
-	fulltile = TRUE
-	icon = 'icons/obj/structures_vr.dmi'
-	icon_state = "fwindow"
-	dir = SOUTHWEST
-
-/obj/structure/window/reinforced/polarized/full
-	dir = SOUTHWEST
-	icon_state = "fwindow"
-	maxhealth = 80
-	fulltile = TRUE
-
-/obj/structure/window/phoronreinforced/full
-	dir = SOUTHWEST
-	maxhealth = 160
-	icon_state = "phoronwindow0"
-	fulltile = TRUE
-
 //Exterior hull looks different in the map editor
 /turf/simulated/wall/rshull
 	icon_state = "hull"
@@ -431,8 +412,9 @@
 
 /obj/effect/mist/mapped
 	name = "mist"
-	icon = 'content_arfs/icons/misc/effects.dmi'
-	icon_state = "mist"
+//	icon = 'content_arfs/icons/misc/effects.dmi'
+//	icon_state = "mist"
+//FIX LATER
 /obj/effect/mist/mapped/moving
 	icon_state = "mist_moving"
 
@@ -454,7 +436,21 @@
 	spawn_nothing_percentage = 0
 	spawn_object = /obj/effect/alien/egg
 
-/obj/machinery/door/Bumped(atom/AM)
-	if(istype(AM, /mob/living/simple_mob/animal/passive/mouse))//Mice stay in maintenance unless let out.
-		return
-	. = ..()
+/obj/machinery/chemical_dispenser/bar_coffee/endeavour
+	name = "old coffee dispenser"
+	desc = "Yellowed and ancient, this thing is ... probably older than you. Still makes an excellent mug of brew though."
+	icon_state = "coffee_dispenser"
+	ui_title = "Coffee Dispenser"
+	accept_drinking = 1
+
+	spawn_cartridges = list(
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/coffee,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cafe_latte,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/soy_latte,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hot_coco,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/milk,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cream,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tea,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ice,
+
+		)

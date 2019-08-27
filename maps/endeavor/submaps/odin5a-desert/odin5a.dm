@@ -74,7 +74,7 @@
 	name = "away mission initializer - beachcave"
 
 //In our case, it initializes the ores and random submaps in the beach's cave, then deletes itself
-/obj/away_mission_init/beachcave/Initialize()
+/obj/away_mission_init/beachcave/initialize()
 	new /datum/random_map/noise/ore/beachmine(null, 1, 1, Z_LEVEL_ODIN5A_CAVE, 64, 64)
 
 	initialized = TRUE
@@ -90,8 +90,9 @@
 	prob_spawn = 50 //Chance of this spawner spawning a mob (once this is missed, the spawner is 'depleted' and won't spawn anymore)
 	prob_fall = 25 //Chance goes down by this much each time it spawns one (not defining and prob_spawn 100 means they spawn as soon as one dies)
 	guard = 40 //They'll stay within this range (not defining this disables them staying nearby and they will wander the map (and through step teleports))
+
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/vore/aggressive/giant_snake
+		/mob/living/simple_animal/hostile/giant_snake
 	)
 
 /obj/endeavor_away_spawner/beach_outside_friendly
@@ -101,8 +102,9 @@
 	prob_spawn = 100
 	prob_fall = 25
 	guard = 40
+
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/vore/fennec
+		/mob/living/simple_animal/fennec
 	)
 
 /obj/endeavor_away_spawner/beach_cave
@@ -112,14 +114,14 @@
 	prob_spawn = 100
 	prob_fall = 40
 	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_mob/vore/aggressive/frog = 3, //Frogs are 3x more likely to spawn than,
-		/mob/living/simple_mob/vore/aggressive/deathclaw = 1, //these deathclaws are, with these values,
-		/mob/living/simple_mob/animal/giant_spider = 3,
-		/mob/living/simple_mob/vore/aggressive/giant_snake = 1,
-		/mob/living/simple_mob/animal/giant_spider/ion = 2
-	)
 
+	mobs_to_pick_from = list(
+		/mob/living/simple_animal/hostile/frog = 3, //Frogs are 3x more likely to spawn than,
+		/mob/living/simple_animal/hostile/deathclaw = 1, //these deathclaws are, with these values,
+		/mob/living/simple_animal/hostile/giant_spider = 3,
+		/mob/living/simple_animal/hostile/giant_snake = 1,
+		/mob/living/simple_animal/hostile/giant_spider/ion = 2
+	)
 // These are step-teleporters, for map edge transitions
 // This top one goes INTO the cave
 /obj/effect/step_trigger/teleporter/away_beach_tocave/New()

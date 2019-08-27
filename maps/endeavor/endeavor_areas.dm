@@ -289,4 +289,104 @@ area/security/hallway
 	name = "\improper Excursion Shuttle - Virgo3b Sky"
 	base_turf = /turf/simulated/sky
 
+//Deck One Maint
 
+/area/maintenance/endeavour/d1
+
+/area/maintenance/endeavour/d1/forestarboard
+	name = "First Deck Fore Starboard Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d1/foreport
+	name = "First Deck Fore Port Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d1/amidshipstarboard
+	icon_state = "maintcentral"
+	name = "First Deck Amidship Starboard Maintenance"
+
+/area/maintenance/endeavour/d1/aftstarboard
+	name = "First Deck Aft Starboard Maintenance"
+	icon_state = "amaint"
+
+/area/maintenance/endeavour/d1/aftport
+	name = "First Deck Aft Port Maintenance"
+	icon_state = "amaint"
+
+//Deck Two Maint
+
+/area/maintenance/endeavour/d2/foreport
+	name = "Second Deck Fore Port Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d2/forestarboard
+	name = "First Deck Fore Starboard Maintenance"
+	icon_state = "fmaint"
+
+//Deck Three
+
+/area/maintenance/endeavour/d3/forestarboard
+	name = "Third Deck Fore Starboard Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d3/foreport
+	name = "Third Deck Fore Port Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d3/amidshipport
+	icon_state = "maintcentral"
+	name = "Third Deck Amidship Port Maintenance"
+
+/area/maintenance/endeavour/d3/aftstarboard
+	name = "Third Deck Aft Starboard Maintenance"
+	icon_state = "amaint"
+
+/area/maintenance/endeavour/d3/aftport
+	name = "Third Deck Aft Port Maintenance"
+	icon_state = "amaint"
+
+//Deck Four
+
+/area/maintenance/endeavour/d4/forestarboard
+	name = "Fourth Deck Fore Starboard Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d4/foreport
+	name = "Fourth Deck Fore Port Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d4/aftstarboard
+	name = "Fourth Deck Aft Starboard Maintenance"
+	icon_state = "amaint"
+
+//Deck Five
+/area/maintenance/endeavour/d5/forestarboard
+	name = "Fifth Deck Fore Starboard Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d5/foreport
+	name = "Fifth Deck Fore Port Maintenance"
+	icon_state = "fmaint"
+
+/area/maintenance/endeavour/d5/amidshipstarboard
+	icon_state = "maintcentral"
+	name = "Fifth Deck Amidship Starboard Maintenance"
+
+/area/maintenance/endeavour/d5/aftstarboard
+	name = "Fifth Deck Aft Starboard Maintenance"
+	icon_state = "amaint"
+
+/area/maintenance/endeavour/d5/aftport
+	name = "Fifth Deck Aft Port Maintenance"
+	icon_state = "amaint"
+
+//VR Areas.
+
+/area/endeavour_vr
+	name = "\improper Virtual Reality"
+	icon_state = "centcom"
+	requires_power = 0
+	dynamic_lighting = 1
+
+/area/endeavour_vr/yacht
+	name = "\improper VR Yacht"

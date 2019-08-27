@@ -26,22 +26,22 @@
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
-	station_name  = "SEV Endeavor"
+	station_name  = "NSV Endeavour"
 	station_short = "Endeavor"
-	dock_name     = "SEV Phoenix"
+	dock_name     = "NSC Gargantua"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
 	company_name  = "NanoTrasen"
 	company_short = "NT"
 	starsys_name  = "Odin"
 
-	shuttle_docked_message = "The automated crew transfer ferry has docked at the SEV Endeavor. It will depart for the %dock_name% in approximately %ETD%."
-	shuttle_leaving_dock = "The automated crew transfer ferry has left the SEV Endeavor. Estimate %ETA% until the tram arrives at the %dock_name%."
-	shuttle_called_message = "An automated crew transfer ferry is en route to the SEV Endeavor. It will arrive in approximately %ETA%"
+	shuttle_docked_message = "The automated crew transfer ferry has docked at the NSV Endeavor. It will depart for the %dock_name% in approximately %ETD%."
+	shuttle_leaving_dock = "The automated crew transfer ferry has left the NSV Endeavor. Estimate %ETA% until the tram arrives at the %dock_name%."
+	shuttle_called_message = "An automated crew transfer ferry is en route to the NSV Endeavor. It will arrive in approximately %ETA%"
 	shuttle_recall_message = "The automated crew transfer has been cancelled."
-	emergency_shuttle_docked_message = "The emergency ferry has arrived at the SEV Endeavor's dock on deck 4. You have approximately %ETD% to board the ferry."
-	emergency_shuttle_leaving_dock = "The emergency ferry has left the SEV Endeavor. Estimate %ETA% until the ferry arrives at the %dock_name%."
-	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule ferry has been called from the %dock_name%. It will arrive at the evacuation dock on deck 4 in approximately %ETA%."
+	emergency_shuttle_docked_message = "The emergency ferry has arrived at the NSV Endeavor's dock on deck 4. You have approximately %ETD% to board the ferry."
+	emergency_shuttle_leaving_dock = "The emergency ferry has left the NSV Endeavor. Estimate %ETA% until the ferry arrives at the %dock_name%."
+	emergency_shuttle_called_message = "Attention! Emergency evacuation proceedures are now in effect. An emergency evacuation has begun, and an off-schedule ferry has been called from the %dock_name%. It will arrive at the evacuation dock on deck 4 in approximately %ETA%."
 	emergency_shuttle_recall_message = "The emergency ferry has been recalled."
 
 /*

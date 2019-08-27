@@ -397,10 +397,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
-"bk" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/steel,
-/area/outpost/mining_main/main)
 "bl" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/steel,
@@ -516,11 +512,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main/main)
-"bv" = (
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/grey/diagonal,
-/turf/simulated/floor/tiled/white,
-/area/outpost/mining_main/main)
 "bw" = (
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
@@ -565,10 +556,6 @@
 /area/outpost/mining_main/main)
 "bD" = (
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/black/diagonal,
-/turf/simulated/floor/tiled/white,
-/area/outpost/mining_main/main)
-"bE" = (
 /obj/effect/floor_decal/corner/black/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
@@ -665,25 +652,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
-"bT" = (
-/obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/cooker/fryer,
-/turf/simulated/floor/tiled/white,
-/area/outpost/mining_main/main)
-"bU" = (
-/obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/cooker/oven,
-/turf/simulated/floor/tiled/white,
-/area/outpost/mining_main/main)
 "bV" = (
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/machinery/cooker/grill,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "bW" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/item/pizzabox/old,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "bX" = (
@@ -2813,10 +2788,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/outpost/research/bathroom)
-"hk" = (
-/obj/structure/table/standard,
-/turf/simulated/floor/wood,
-/area/outpost/research/dorms)
 "hl" = (
 /obj/structure/shuttle/engine/heater{
 	icon_state = "heater";
@@ -6556,19 +6527,10 @@
 /area/outpost/research/hallway)
 "pd" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/nifsofts_arfs_mining_synth{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/weapon/storage/box/nifsofts_arfs_mining,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "pe" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/nifsofts_arfs_science_synth{
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "pf" = (
@@ -18927,7 +18889,7 @@ ag
 af
 ey
 dF
-bk
+pd
 dF
 eO
 dF
@@ -19733,7 +19695,7 @@ ag
 bK
 eB
 af
-bv
+bW
 bz
 cO
 df
@@ -19742,7 +19704,7 @@ eg
 eh
 eh
 ek
-bE
+bV
 bQ
 ap
 ae
@@ -19941,11 +19903,11 @@ de
 bA
 bA
 af
-bE
-bE
+bV
+bV
 el
-bE
-bT
+bV
+bV
 ap
 ae
 ae
@@ -20143,11 +20105,11 @@ en
 du
 bz
 bD
-bE
+bV
 ei
 em
-bE
-bU
+bV
+bV
 gM
 ae
 ae
@@ -20345,10 +20307,10 @@ jg
 bA
 bz
 bD
-bE
-bE
-bE
-bE
+bV
+bV
+bV
+bV
 bV
 gM
 ae
@@ -20547,10 +20509,10 @@ dg
 bA
 bz
 eW
-bE
-bE
-bE
-bE
+bV
+bV
+bV
+bV
 bR
 ap
 ae
@@ -20749,7 +20711,7 @@ dg
 bA
 bz
 bD
-bE
+bV
 bR
 bS
 cc
@@ -23362,7 +23324,7 @@ ag
 pd
 cw
 ec
-bk
+pd
 eb
 af
 bJ
@@ -23774,7 +23736,7 @@ bK
 ag
 ag
 af
-bk
+pd
 bI
 bI
 fQ
@@ -24989,7 +24951,7 @@ af
 cK
 bi
 bi
-bk
+pd
 af
 ah
 dq
@@ -32699,7 +32661,7 @@ gn
 gn
 hq
 ic
-hk
+pe
 hX
 hX
 hX
@@ -33106,7 +33068,7 @@ hX
 jW
 la
 mI
-hk
+pe
 nW
 nB
 oc
