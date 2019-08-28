@@ -5050,7 +5050,22 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "jW" = (
-/obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "jX" = (
@@ -20466,6 +20481,16 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"ND" = (
+/obj/machinery/light/small,
+/obj/structure/cable/green,
+/obj/machinery/power/apc{
+	dir = 2;
+	name = "south bump";
+	pixel_y = -24
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 
 (1,1,1) = {"
 aa
@@ -42161,8 +42186,8 @@ mf
 pq
 mj
 pn
-gn
 jW
+ND
 ab
 ab
 ab

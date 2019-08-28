@@ -249,13 +249,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "aJ" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/tcommsat/computer)
+/turf/simulated/floor/tiled/dark{
+	nitrogen = 100;
+	oxygen = 0;
+	temperature = 80
+	},
+/area/tcommsat/chamber)
 "aK" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_x = -32;
@@ -4055,19 +4057,16 @@
 /turf/simulated/floor/wood,
 /area/hallway/secondary/entry/aft)
 "hN" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+	icon_state = "intact-scrubbers";
+	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
-/area/tcommsat/computer)
+/turf/simulated/floor/tiled/dark{
+	nitrogen = 100;
+	oxygen = 0;
+	temperature = 80
+	},
+/area/tcommsat/chamber)
 "hO" = (
 /obj/machinery/light{
 	dir = 4;
@@ -7034,6 +7033,10 @@
 	},
 /obj/structure/mirror{
 	pixel_x = -27
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	icon_state = "map_scrubber_on";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/rnd/research_restroom)
@@ -23169,6 +23172,64 @@
 	temperature = 80
 	},
 /area/tcommsat/chamber)
+"Rx" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 8
+	},
+/turf/simulated/floor/bluegrid{
+	name = "Mainframe Base";
+	nitrogen = 100;
+	oxygen = 0;
+	temperature = 80
+	},
+/area/tcommsat/chamber)
+"Ry" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
+"Rz" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tcommsat/computer)
+"RA" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tcommsat/computer)
 
 (1,1,1) = {"
 aa
@@ -40886,7 +40947,7 @@ aN
 bf
 aW
 yt
-bX
+aJ
 bX
 bX
 bX
@@ -41088,7 +41149,7 @@ bX
 bX
 aX
 bp
-bX
+hN
 co
 ct
 cC
@@ -41290,7 +41351,7 @@ bX
 bX
 bX
 bp
-bX
+hN
 cp
 cu
 cD
@@ -41492,7 +41553,7 @@ dr
 bP
 cy
 bq
-dr
+Rx
 bP
 bP
 bP
@@ -41694,7 +41755,7 @@ by
 by
 aG
 BR
-BU
+Ry
 BU
 BU
 BU
@@ -41896,7 +41957,7 @@ am
 am
 aG
 bs
-aJ
+Rz
 aI
 yu
 aI
@@ -42098,7 +42159,7 @@ Fp
 HX
 aG
 aD
-hN
+RA
 qx
 qy
 qx
