@@ -8548,11 +8548,7 @@
 /area/hydroponics)
 "qR" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/item/device/radio/intercom{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/appliance/grill,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "qS" = (
@@ -16375,6 +16371,26 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d3/aftstarboard)
+"HD" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/appliance/mixer/cereal,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/kitchen)
+"HE" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/item/device/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/machinery/appliance/cooker/oven,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/kitchen)
+"HF" = (
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/appliance/cooker/fryer,
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/kitchen)
 
 (1,1,1) = {"
 aa
@@ -36495,11 +36511,11 @@ bw
 nN
 yS
 yW
-wD
-wG
 qR
+wG
+HE
 yZ
-wD
+HF
 bw
 cO
 xl
@@ -36697,7 +36713,7 @@ kh
 sH
 yT
 yV
-wD
+HD
 bw
 bw
 yY

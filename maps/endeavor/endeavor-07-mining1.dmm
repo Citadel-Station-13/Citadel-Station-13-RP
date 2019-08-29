@@ -647,6 +647,10 @@
 "bT" = (
 /turf/space/cracked_asteroid,
 /area/mine/explored/low)
+"bU" = (
+/obj/machinery/telecomms/relay/preset/endeavor/mining_low,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/main)
 
 (1,1,1) = {"
 aa
@@ -17943,7 +17947,7 @@ aH
 aH
 ac
 aN
-aj
+bU
 aj
 aj
 aj

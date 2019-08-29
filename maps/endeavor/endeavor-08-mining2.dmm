@@ -397,6 +397,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
+"bk" = (
+/obj/machinery/telecomms/relay/preset/endeavor/mining_high,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/main)
 "bl" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/steel,
@@ -26753,7 +26757,7 @@ ah
 cm
 av
 aw
-ah
+bk
 eG
 aJ
 ap
