@@ -390,3 +390,7 @@ area/security/hallway
 
 /area/endeavour_vr/yacht
 	name = "\improper VR Yacht"
+
+/area/endeavour_vr/combat_sim
+	name = "\improper VR Combat Sim"
+	dynamic_lighting = 0

@@ -454,3 +454,19 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ice,
 
 		)
+
+/obj/machinery/vending/endeavour_vr/
+	name = "Arms O Matic"
+	icon_state = "sec"
+
+/obj/machinery/vending/endeavour_vr/mecha
+	name = "Mech O Matic"
+	products = list(/obj/mecha/combat/gorilla = 10, /obj/mecha/combat/gygax/dark = 10, /obj/mecha/combat/marauder/seraph = 10, /obj/mecha/combat/marauder/mauler = 10, /obj/item/weapon/cell/infinite = 10)
+
+/obj/machinery/vending/endeavour_vr/guns
+	name = "Gun O Matic"
+	products = list(
+	/obj/item/weapon/gun/magnetic/railgun/automatic = 10, /obj/item/weapon/gun/magnetic/railgun/flechette = 10, /obj/item/weapon/gun/projectile/automatic/l6_saw = 10,
+	/obj/item/weapon/gun/projectile/automatic/sts35= 10, /obj/item/weapon/gun/projectile/automatic/z8 = 10, /obj/item/weapon/gun/energy/lasercannon= 10, /obj/item/weapon/gun/energy/laser = 10,
+	/obj/item/weapon/gun/energy/dakkalaser= 10, /obj/item/weapon/gun/energy/sniperrifle = 10, /obj/item/weapon/gun/energy/pulse_rifle= 10, /obj/item/ammo_magazine/m762 = 100, /obj/item/ammo_magazine/m545 = 100,
+	/obj/item/ammo_magazine/m545saw = 100, /obj/item/weapon/cell/device/weapon/recharge/alien = 100)
