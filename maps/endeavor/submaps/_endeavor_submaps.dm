@@ -8,25 +8,25 @@
 /// Static Load
 #include "endeavor_ships.dmm"
 #include "endeavor_misc.dmm"
-/*
+
 /datum/map_template/endeavor_lateload/endeavor_misc
 	name = "Endeavor - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
 	mappath = 'endeavor_misc.dmm'
 
 	associated_map_datum = /datum/map_z_level/endeavor_lateload/ships
-*/
+
 /datum/map_z_level/endeavor_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
-/*
+
 /datum/map_template/endeavor_lateload/Endeavor_ships
 	name = "Endeavor - Ships"
 	desc = "Ship transit map and whatnot."
 	mappath = 'endeavor_ships.dmm'
 
 	associated_map_datum = /datum/map_z_level/endeavor_lateload/ships
-*/
+
 /datum/map_z_level/endeavor_lateload/ships
 	name = "Ships"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED
@@ -144,7 +144,7 @@
 /obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
 	affect_ghosts = 1
 
-/obj/effect/step_trigger/zlevel_fall/Initialize()
+/obj/effect/step_trigger/zlevel_fall/initialize()
 	. = ..()
 
 	if(istype(get_turf(src), /turf/simulated/floor))
@@ -207,57 +207,14 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/endeavor_away_spawner/Initialize()
+/obj/endeavor_away_spawner/initialize()
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))
 		error("Mob spawner at [x],[y],[z] ([get_area(src)]) had no mobs_to_pick_from set on it!")
 		initialized = TRUE
 		return INITIALIZE_HINT_QDEL
-	START_PROCESSING(SSobj, src)
 
-/obj/endeavor_away_spawner/process()
-	if(my_mob && my_mob.stat != DEAD)
-		return //No need
-
-	if(LAZYLEN(loc.human_mobs(world.view)))
-		return //I'll wait.
-
-	if(prob(prob_spawn))
-		prob_spawn -= prob_fall
-		var/picked_type = pickweight(mobs_to_pick_from)
-		my_mob = new picked_type(get_turf(src))
-		my_mob.low_priority = TRUE
-
-		if(faction)
-			my_mob.faction = faction
-
-		if(atmos_comp)
-			var/turf/T = get_turf(src)
-			var/datum/gas_mixture/env = T.return_air()
-			if(env)
-				my_mob.minbodytemp = env.temperature * 0.8
-				my_mob.maxbodytemp = env.temperature * 1.2
-
-				var/list/gaslist = env.gas
-				my_mob.min_oxy = gaslist["oxygen"] * 0.8
-				my_mob.min_tox = gaslist["phoron"] * 0.8
-				my_mob.min_n2 = gaslist["nitrogen"] * 0.8
-				my_mob.min_co2 = gaslist["carbon_dioxide"] * 0.8
-				my_mob.max_oxy = gaslist["oxygen"] * 1.2
-				my_mob.max_tox = gaslist["phoron"] * 1.2
-				my_mob.max_n2 = gaslist["nitrogen"] * 1.2
-				my_mob.max_co2 = gaslist["carbon_dioxide"] * 1.2
-/* //VORESTATION AI TEMPORARY REMOVAL
-		if(guard)
-			my_mob.returns_home = TRUE
-			my_mob.wander_distance = guard
-*/
-		return
-	else
-		STOP_PROCESSING(SSobj, src)
-		depleted = TRUE
-		return
 
 //Shadekin spawner. Could have them show up on any mission, so it's here.
 //Make sure to put them away from others, so they don't get demolished by rude mobs.
@@ -270,8 +227,9 @@
 	prob_spawn = 1
 	prob_fall = 1
 	guard = 10 //Don't wander too far, to stay alive.
+
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/shadekin
+		/mob/living/simple_animal/shadekin/blue
 	)
 
 // Underdark mob spawners
@@ -282,11 +240,12 @@
 	prob_spawn = 100
 	prob_fall = 50
 	guard = 20
+
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/space/jelly = 3,
-		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
-		/mob/living/simple_mob/animal/giant_spider/phorogenic = 1,
-		/mob/living/simple_mob/animal/giant_spider/lurker = 1,
+		/mob/living/simple_animal/hostile/jelly = 3,
+		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
+		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
+		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
 	)
 
 /obj/endeavor_away_spawner/underdark_hard
@@ -296,10 +255,11 @@
 	prob_spawn = 100
 	prob_fall = 50
 	guard = 20
+
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/vore/aggressive/corrupthound = 1,
-		/mob/living/simple_mob/vore/aggressive/rat = 1,
-		/mob/living/simple_mob/animal/space/mimic = 1
+		/mob/living/simple_animal/hostile/corrupthound = 1,
+		/mob/living/simple_animal/hostile/rat = 1,
+		/mob/living/simple_animal/hostile/mimic = 1
 	)
 
 /obj/endeavor_away_spawner/underdark_boss
@@ -309,6 +269,8 @@
 	prob_spawn = 100
 	prob_fall = 100
 	guard = 70
+
+
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/vore/aggressive/dragon = 1
+		/mob/living/simple_animal/hostile/dragon = 1
 	)

@@ -1,22 +1,3 @@
-//Full tile windows
-/obj/structure/window/reinforced/full
-	fulltile = TRUE
-	icon = 'icons/obj/structures_vr.dmi'
-	icon_state = "fwindow"
-	dir = SOUTHWEST
-
-/obj/structure/window/reinforced/polarized/full
-	dir = SOUTHWEST
-	icon_state = "fwindow"
-	maxhealth = 80
-	fulltile = TRUE
-
-/obj/structure/window/phoronreinforced/full
-	dir = SOUTHWEST
-	maxhealth = 160
-	icon_state = "phoronwindow0"
-	fulltile = TRUE
-
 //Exterior hull looks different in the map editor
 /turf/simulated/wall/rshull
 	icon_state = "hull"
@@ -431,8 +412,9 @@
 
 /obj/effect/mist/mapped
 	name = "mist"
-	icon = 'content_arfs/icons/misc/effects.dmi'
-	icon_state = "mist"
+//	icon = 'content_arfs/icons/misc/effects.dmi'
+//	icon_state = "mist"
+//FIX LATER
 /obj/effect/mist/mapped/moving
 	icon_state = "mist_moving"
 
@@ -454,7 +436,37 @@
 	spawn_nothing_percentage = 0
 	spawn_object = /obj/effect/alien/egg
 
-/obj/machinery/door/Bumped(atom/AM)
-	if(istype(AM, /mob/living/simple_mob/animal/passive/mouse))//Mice stay in maintenance unless let out.
-		return
-	. = ..()
+/obj/machinery/chemical_dispenser/bar_coffee/endeavour
+	name = "old coffee dispenser"
+	desc = "Yellowed and ancient, this thing is ... probably older than you. Still makes an excellent mug of brew though."
+	icon_state = "coffee_dispenser"
+	ui_title = "Coffee Dispenser"
+	accept_drinking = 1
+
+	spawn_cartridges = list(
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/coffee,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cafe_latte,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/soy_latte,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hot_coco,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/milk,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cream,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tea,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ice,
+
+		)
+
+/obj/machinery/vending/endeavour_vr/
+	name = "Arms O Matic"
+	icon_state = "sec"
+
+/obj/machinery/vending/endeavour_vr/mecha
+	name = "Mech O Matic"
+	products = list(/obj/mecha/combat/gorilla = 10, /obj/mecha/combat/gygax/dark = 10, /obj/mecha/combat/marauder/seraph = 10, /obj/mecha/combat/marauder/mauler = 10, /obj/item/weapon/cell/infinite = 10)
+
+/obj/machinery/vending/endeavour_vr/guns
+	name = "Gun O Matic"
+	products = list(
+	/obj/item/weapon/gun/magnetic/railgun/automatic = 10, /obj/item/weapon/gun/magnetic/railgun/flechette = 10, /obj/item/weapon/gun/projectile/automatic/l6_saw = 10,
+	/obj/item/weapon/gun/projectile/automatic/sts35= 10, /obj/item/weapon/gun/projectile/automatic/z8 = 10, /obj/item/weapon/gun/energy/lasercannon= 10, /obj/item/weapon/gun/energy/laser = 10,
+	/obj/item/weapon/gun/energy/dakkalaser= 10, /obj/item/weapon/gun/energy/sniperrifle = 10, /obj/item/weapon/gun/energy/pulse_rifle= 10, /obj/item/ammo_magazine/m762 = 100, /obj/item/ammo_magazine/m545 = 100,
+	/obj/item/ammo_magazine/m545saw = 100, /obj/item/weapon/cell/device/weapon/recharge/alien = 100)

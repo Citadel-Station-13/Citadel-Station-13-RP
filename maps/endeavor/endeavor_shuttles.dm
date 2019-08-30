@@ -108,7 +108,7 @@
 ///// VARIOUS EXCURSION SHUTTLE LOCATIONS /////
 //Right in the hangar
 /datum/shuttle_destination/excursion/endeavor
-	name = "ARFS Endeavor Excursion Hangar"
+	name = "NSV Endeavor Excursion Hangar"
 	my_area = /area/shuttle/excursion/endeavor
 
 	dock_target = "expshuttle_dock"
@@ -127,7 +127,7 @@
 
 //Just outside the ship on Z4
 /datum/shuttle_destination/excursion/outside_endeavor
-	name = "Nearby ARFS Endeavor"
+	name = "Nearby NSV Endeavor"
 	my_area = /area/shuttle/excursion/endeavor_nearby
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 
@@ -142,12 +142,11 @@
 	my_area = /area/shuttle/excursion/space
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 
-	routes_to_make = list(
+/*	routes_to_make = list(
 		/datum/shuttle_destination/excursion/odin5a_orbit = 30 SECONDS,
-		/datum/shuttle_destination/excursion/outside_endeavor = 30 SECONDS,
 		/datum/shuttle_destination/excursion/bluespace = 45 SECONDS
 	)
-
+*/
 ////////// Jump here if you're trying to go far in a hurry. Allows you to skip between star systems and between
 ////////// planets that are more than 1 jump away from one another
 /datum/shuttle_destination/excursion/bluespace
