@@ -4222,6 +4222,9 @@
 "jr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
 "js" = (
@@ -4319,9 +4322,7 @@
 /area/maintenance/endeavour/d4/aftstarboard)
 "jE" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 10;
-	icon_state = "4-10"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
@@ -5029,9 +5030,7 @@
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	d1 = 6;
-	d2 = 8;
-	icon_state = "6-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
@@ -6306,11 +6305,6 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 10;
-	icon_state = "4-10"
-	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
 "ny" = (
@@ -6353,8 +6347,8 @@
 	RCon_tag = "Deck 4 - Port Solars"
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
+	icon_state = "0-4";
+	d2 = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
@@ -10448,6 +10442,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "uZ" = (
@@ -10465,9 +10460,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 5;
-	icon_state = "2-5"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
@@ -10853,12 +10849,18 @@
 "vG" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "vH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/random/junk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "vI" = (
@@ -11572,8 +11574,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -11581,39 +11581,18 @@
 	name = "Deck 4 Starboard Solars"
 	})
 "wJ" = (
-/obj/effect/floor_decal/rust,
 /obj/structure/cable{
-	d1 = 6;
-	d2 = 9;
-	icon_state = "6-9"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"wK" = (
-/obj/effect/floor_decal/borderfloor/corner{
-	icon_state = "borderfloorcorner";
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lime/bordercorner{
-	icon_state = "bordercolorcorner";
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 6;
-	d2 = 8;
-	icon_state = "6-8"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
 "wL" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 5;
-	icon_state = "2-5"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "wM" = (
@@ -11741,6 +11720,9 @@
 /obj/structure/disposalpipe/segment{
 	icon_state = "pipe-s";
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
@@ -12080,6 +12062,9 @@
 	icon_state = "bordercolor";
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
 "xH" = (
@@ -12092,6 +12077,9 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
 "xI" = (
@@ -12135,23 +12123,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
-"xM" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 9;
-	icon_state = "4-9"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
 "xN" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 6;
-	icon_state = "1-6"
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "xO" = (
@@ -12228,16 +12206,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/explorer/explorer_prep)
-"xT" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
 "xU" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -12300,16 +12268,11 @@
 /turf/simulated/floor/tiled,
 /area/explorer/explorer_prep)
 "xY" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/green{
 	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 9;
-	icon_state = "2-9"
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
@@ -13053,7 +13016,9 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/excursion/endeavor)
 "zh" = (
-/obj/random/trash_pile,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
 "zi" = (
@@ -13076,16 +13041,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
-"zk" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
 "zl" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate,
@@ -13112,16 +13067,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"zo" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 10;
-	icon_state = "1-10"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
 "zp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
@@ -13142,20 +13087,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/explorer/pathfinder_office)
-"zs" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 5;
-	d2 = 6;
-	icon_state = "5-6"
-	},
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
 "zt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
@@ -13705,11 +13636,6 @@
 	icon_state = "pipe-s";
 	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 6;
-	d2 = 9;
-	icon_state = "6-9"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Ax" = (
@@ -13755,10 +13681,10 @@
 /area/maintenance/endeavour/d4/aftstarboard)
 "Az" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 9;
-	icon_state = "2-9"
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
@@ -13774,26 +13700,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"AC" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 9;
-	icon_state = "4-9"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
 "AD" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
-"AE" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "AF" = (
@@ -13812,8 +13721,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
@@ -13843,7 +13754,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
@@ -13924,66 +13835,57 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "AQ" = (
-/obj/effect/floor_decal/rust,
-/obj/random/maintenance/cargo,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "AR" = (
 /obj/random/junk,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "AS" = (
-/obj/structure/cable{
-	d1 = 6;
+/obj/structure/cable/green{
+	d1 = 4;
 	d2 = 8;
-	icon_state = "6-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "AT" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 10;
-	icon_state = "4-10"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
-"AU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/cargo)
-"AV" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
-/obj/random/trash,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
 	},
-/obj/structure/cable{
-	d1 = 2;
+/obj/structure/cable/green{
+	d1 = 4;
 	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/endeavour/d4/aftstarboard)
+"AV" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "AW" = (
 /obj/random/junk,
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "AX" = (
@@ -13997,6 +13899,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "AZ" = (
@@ -14057,28 +13962,24 @@
 	name = "Deck 4 Starboard Solars"
 	})
 "Bf" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d2 = 6;
-	icon_state = "0-6"
-	},
 /obj/machinery/light/small{
 	dir = 8;
 	pixel_y = 0
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
 	name = "Deck 4 Starboard Solars"
 	})
 "Bg" = (
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Deck 4 - Starboard Solars"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
@@ -14103,35 +14004,29 @@
 "Bj" = (
 /turf/simulated/floor/airless,
 /area/space)
-"Bk" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 9;
-	icon_state = "2-9"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
 "Bl" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
 	name = "Deck 4 Starboard Solars"
 	})
 "Bm" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/machinery/power/terminal{
+	icon_state = "term";
+	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 9;
-	icon_state = "4-9"
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
@@ -14339,26 +14234,15 @@
 /area/maintenance/auxsolarstarboard{
 	name = "Deck 4 Starboard Solars"
 	})
-"BE" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
 "BF" = (
-/obj/structure/cable/yellow{
-	d2 = 10;
-	icon_state = "0-10"
-	},
-/obj/machinery/power/terminal{
-	dir = 8
-	},
 /obj/machinery/light/small{
 	icon_state = "bulb1";
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard{
@@ -14378,10 +14262,21 @@
 	name = "Deck 4 Starboard Solars"
 	})
 "BH" = (
+/obj/machinery/power/terminal{
+	icon_state = "term";
+	dir = 1
+	},
 /obj/structure/cable/yellow{
-	d1 = 5;
 	d2 = 8;
-	icon_state = "5-8"
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/auxsolarstarboard{
+	name = "Deck 4 Starboard Solars"
+	})
+"BI" = (
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -14392,21 +14287,13 @@
 /area/maintenance/auxsolarstarboard{
 	name = "Deck 4 Starboard Solars"
 	})
-"BI" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/auxsolarstarboard{
-	name = "Deck 4 Starboard Solars"
-	})
 "BJ" = (
 /obj/random/junk,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "BK" = (
@@ -14689,37 +14576,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
-"Ce" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
 "Cf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
-"Cg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 6;
-	icon_state = "1-6"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
-"Ch" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 9;
-	icon_state = "4-9"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
 "Ci" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -14736,27 +14596,21 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Cl" = (
 /obj/machinery/status_display,
 /turf/simulated/wall/r_wall,
 /area/security/breakroom)
-"Cm" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
 "Cn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
@@ -14766,9 +14620,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
@@ -14785,29 +14636,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/deck_four/central)
-"Cq" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lime/border{
-	icon_state = "bordercolor";
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 6;
-	d2 = 8;
-	icon_state = "6-8"
-	},
 /turf/simulated/floor/tiled,
 /area/hallway/deck_four/central)
 "Cr" = (
@@ -14815,6 +14643,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
@@ -14826,6 +14657,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Ct" = (
@@ -14834,6 +14668,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Cu" = (
@@ -14841,14 +14678,12 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/wall,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Cv" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -14860,48 +14695,41 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Cw" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/segment{
 	icon_state = "pipe-c";
 	dir = 2
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
-"Cx" = (
 /obj/structure/cable{
-	d1 = 6;
-	d2 = 8;
-	icon_state = "6-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/security_starboard)
+/area/maintenance/endeavour/d4/aftstarboard)
 "Cy" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
+/obj/machinery/door/airlock/multi_tile/glass{
+	icon_state = "door_closed";
+	dir = 2
+	},
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/common,
-/obj/structure/cable{
-	d1 = 5;
-	d2 = 9;
-	icon_state = "5-9"
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
 "Cz" = (
-/obj/structure/cable/green{
+/obj/structure/cable{
 	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
@@ -15421,15 +15249,15 @@
 /turf/simulated/floor/reinforced/airless,
 /area/space)
 "DU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
 /obj/structure/disposalpipe/segment{
 	icon_state = "pipe-c";
 	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 5;
-	icon_state = "2-5"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
@@ -15482,12 +15310,12 @@
 /area/maintenance/endeavour/d4/aftstarboard)
 "Eb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 9;
-	icon_state = "4-9"
-	},
 /obj/random/trash,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
 "Ec" = (
@@ -15896,19 +15724,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d4/aftstarboard)
-"Fc" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 10;
-	icon_state = "1-10"
-	},
-/obj/machinery/alarm{
-	dir = 8;
-	icon_state = "alarm0";
-	pixel_x = 25
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/endeavour/d4/aftstarboard)
 "Fd" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -16232,6 +16047,135 @@
 /obj/machinery/vending/nifsoft_shop,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/vr_lounge)
+"GI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"Ho" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"Ij" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"Kz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"KW" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"Ld" = (
+/obj/structure/disposalpipe/segment{
+	icon_state = "pipe-c";
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/endeavour/d4/aftstarboard)
+"Ls" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"Ma" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lime/border,
+/obj/effect/floor_decal/corner/lime/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/deck_four/central)
+"QM" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"So" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"UF" = (
+/obj/machinery/alarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 25
+	},
+/obj/random/trash_pile{
+	step_y = 0
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security_starboard)
+"Xq" = (
+/obj/random/junk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/cargo)
+"Zc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/endeavour/d4/aftstarboard)
+"Zg" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/endeavour/d4/aftstarboard)
+"Zr" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/endeavour/d4/aftstarboard)
 
 (1,1,1) = {"
 aa
@@ -32724,7 +32668,7 @@ lS
 bD
 bD
 bD
-bD
+QM
 wJ
 AQ
 aD
@@ -32928,7 +32872,7 @@ rM
 eo
 bD
 bj
-xM
+AB
 aD
 dq
 cN
@@ -34545,16 +34489,16 @@ wF
 wT
 ac
 AJ
-bD
+Ij
 xa
-rN
+Xq
 vG
-rO
-rO
-ff
+KW
+KW
+GI
 vH
-AU
-ff
+GI
+Kz
 fH
 nF
 bY
@@ -34756,7 +34700,7 @@ zl
 cU
 zi
 dZ
-bD
+AB
 sB
 sY
 dQ
@@ -34958,7 +34902,7 @@ ac
 ac
 ac
 ac
-bD
+AB
 sB
 nH
 kr
@@ -35148,7 +35092,7 @@ BX
 fa
 wt
 wG
-wK
+dR
 ga
 iQ
 eg
@@ -35160,7 +35104,7 @@ eg
 ga
 xu
 ac
-ff
+AH
 sB
 nG
 ks
@@ -35351,18 +35295,18 @@ BW
 Cc
 Cd
 ad
-Bk
-Ce
-BE
-BE
-BE
-BE
-BE
-Cg
+ad
+aq
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 xJ
 ac
-vG
+Ls
 sB
 CO
 kr
@@ -35561,7 +35505,7 @@ zV
 hr
 dS
 xn
-Ch
+ad
 xJ
 ac
 AR
@@ -35763,10 +35707,10 @@ af
 af
 af
 wt
-Cm
+ad
 xJ
 ac
-zz
+Ho
 sB
 kA
 kt
@@ -35965,10 +35909,10 @@ aj
 aj
 af
 wt
-Cm
+ad
 xJ
 ac
-fH
+So
 sB
 nC
 kt
@@ -36167,7 +36111,7 @@ aj
 aj
 af
 xo
-Cm
+ad
 xK
 eg
 xG
@@ -36574,7 +36518,7 @@ xq
 Co
 ye
 dS
-xg
+Ma
 cR
 nC
 kt
@@ -37180,7 +37124,7 @@ xr
 Co
 yp
 ac
-Cf
+Zc
 sB
 bX
 ks
@@ -37382,7 +37326,7 @@ xd
 Cp
 xV
 ac
-Cf
+Zc
 sB
 CP
 kr
@@ -37581,10 +37525,10 @@ As
 Ar
 At
 Ar
-Cq
+Ap
 Au
 Av
-Cj
+Ld
 sB
 ds
 ks
@@ -37987,7 +37931,7 @@ ki
 nb
 iZ
 Ax
-AC
+jD
 Cr
 sB
 ds
@@ -38391,7 +38335,7 @@ xy
 xA
 iZ
 Ax
-AE
+jD
 Ct
 sB
 dr
@@ -38593,7 +38537,7 @@ jv
 xB
 iZ
 Ax
-AE
+jD
 Cu
 sB
 sB
@@ -39199,7 +39143,7 @@ iZ
 iZ
 iZ
 uZ
-uZ
+Zg
 Cy
 CD
 uZ
@@ -39393,14 +39337,14 @@ jr
 vb
 wV
 fe
-rL
+Zr
 rL
 rL
 xN
-xT
-zk
-zs
-vc
+xN
+xN
+xN
+xN
 AT
 Cz
 DU
@@ -39600,11 +39544,11 @@ vc
 vd
 xP
 xY
-zo
-uZ
+vd
+vd
 Az
 AV
-Fc
+Fb
 va
 Ec
 aF
@@ -39793,7 +39737,7 @@ zc
 aJ
 aR
 nz
-Cx
+jE
 rG
 dd
 Fa
@@ -39994,7 +39938,7 @@ aM
 hb
 aJ
 aS
-EU
+UF
 zh
 Eb
 dd

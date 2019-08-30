@@ -81,4 +81,21 @@
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 
+/obj/item/clothing/under/donator/huni
+	name = "KHI Uniform"
+	desc = "Free Trade Union attire for one not specialized in a particular role. Durable and stylish."
+	icon_state = "blackuni"
+	item_state = "blackuni"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/head/donator/hberet
+	name = "USDF Beret"
+	desc = "United Sol Defense Force headwear for formal occasions, this one is quite battered, much like its wearer."
+	icon_state = "blackberet"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
+	body_parts_covered = HEAD
+
 
