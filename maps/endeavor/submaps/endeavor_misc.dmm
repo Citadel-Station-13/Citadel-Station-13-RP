@@ -44,11 +44,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "ak" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
-	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
+/turf/simulated/shuttle/floor,
 /area/supply/dock)
 "al" = (
 /obj/effect/step_trigger/lost_in_space{
@@ -58,17 +54,12 @@
 /turf/space,
 /area/space)
 "am" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "supply_shuttle";
-	layer = 3.3;
-	name = "cargo bay hatch controller";
-	pixel_x = 25;
-	req_one_access = list(13,31);
-	tag_door = "supply_shuttle_hatch"
+/obj/structure/closet/crate,
+/turf/unsimulated/floor{
+	icon_state = "vault";
+	dir = 1
 	},
-/turf/simulated/shuttle/floor/white,
-/area/supply/dock)
+/area/centcom/suppy)
 "an" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
@@ -576,11 +567,10 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "bX" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 4
+/turf/unsimulated/floor{
+	icon_state = "dark"
 	},
-/turf/simulated/shuttle/floor/white,
-/area/supply/dock)
+/area/centcom/suppy)
 "bY" = (
 /turf/unsimulated/wall,
 /area/centcom/suppy)
@@ -1157,30 +1147,20 @@
 /turf/simulated/shuttle/wall,
 /area/supply/dock)
 "dy" = (
-/turf/simulated/shuttle/wall/hard_corner,
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/simulated/shuttle/floor,
 /area/supply/dock)
 "dz" = (
-/turf/simulated/shuttle/floor/white,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor,
 /area/supply/dock)
 "dA" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor/white,
-/area/supply/dock)
-"dB" = (
-/obj/structure/grille,
-/obj/structure/shuttle/window,
-/turf/simulated/shuttle/plating,
-/area/supply/dock)
-"dC" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "QMLoad"
-	},
-/turf/simulated/shuttle/floor/white,
-/area/supply/dock)
-"dD" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
 	icon_state = "door_locked";
@@ -1188,8 +1168,38 @@
 	locked = 1;
 	name = "Shuttle Hatch"
 	},
-/turf/simulated/shuttle/floor/white,
+/turf/simulated/shuttle/plating,
 /area/supply/dock)
+"dB" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
+	name = "Shuttle Hatch"
+	},
+/turf/simulated/shuttle/floor,
+/area/supply/dock)
+"dC" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "supply_shuttle";
+	pixel_x = -25;
+	pixel_y = 0;
+	req_one_access = list(13,31);
+	tag_door = "supply_shuttle_hatch"
+	},
+/turf/simulated/shuttle/floor,
+/area/supply/dock)
+"dD" = (
+/obj/item/weapon/paper{
+	info = "You're not supposed to be here.";
+	name = "unnerving letter"
+	},
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/suppy)
 "dE" = (
 /turf/unsimulated/wall/fakeglass{
 	icon_state = "fakewindows";
@@ -1203,53 +1213,42 @@
 	},
 /area/endeavour_vr/yacht)
 "dG" = (
-/obj/machinery/light,
-/turf/simulated/shuttle/floor/white,
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "burst_l"
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
+	},
 /area/supply/dock)
 "dH" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad2"
+/obj/structure/shuttle/engine/propulsion,
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
 	},
-/turf/simulated/shuttle/floor/white,
 /area/supply/dock)
 "dI" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "supply_shuttle_hatch";
-	locked = 1;
-	name = "Shuttle Hatch"
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "burst_r"
 	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad2"
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
 	},
-/turf/simulated/shuttle/plating,
 /area/supply/dock)
 "dJ" = (
-/turf/unsimulated/floor/steel,
-/area/centcom/suppy)
+/obj/structure/shuttle/engine/heater,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/supply/dock)
 "dK" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "supply_shuttle_hatch";
-	locked = 1;
-	name = "Shuttle Hatch"
-	},
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "QMLoad"
-	},
-/turf/simulated/shuttle/plating,
-/area/supply/dock)
-"dL" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/white,
-/area/supply/dock)
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/wall/rshull,
+/turf/space/transit/north,
+/area/endeavour_vr/yacht)
 "dM" = (
 /turf/unsimulated/wall/fakeglass{
 	icon_state = "fakewindows";
@@ -2588,11 +2587,6 @@
 	},
 /turf/simulated/floor/greengrid,
 /area/endeavour_vr/combat_sim)
-"hO" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/wall/rshull,
-/turf/space/transit/north,
-/area/endeavour_vr/yacht)
 "hQ" = (
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
@@ -18874,17 +18868,17 @@ aa
 aa
 aa
 aa
-ak
-dx
-dx
-dx
-dB
-dB
-dB
-dx
-dx
-dx
-ak
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19076,17 +19070,17 @@ aa
 aa
 aa
 aa
-dx
-dy
-dz
-dz
-dz
-dz
-dz
-dz
-dz
-dy
-dx
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19278,17 +19272,17 @@ aa
 aa
 aa
 aa
-dx
-dz
-dz
-dz
-dz
-dz
-dz
-dz
-dz
-dz
-dx
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19480,17 +19474,17 @@ aa
 aa
 aa
 aa
-dx
-dA
-dz
-bX
-dz
-dz
-dz
-dL
-dz
-dG
-dx
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19682,17 +19676,17 @@ aa
 aa
 aa
 aa
-dx
-dz
-dz
-dH
-dz
-dz
-dz
-dC
-dz
-dz
-dx
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19884,17 +19878,17 @@ aa
 aa
 aa
 aa
-dx
-dz
-dz
-dH
-dz
-dz
-am
-dC
-dz
-dz
-dx
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20084,21 +20078,21 @@ aa
 aa
 aa
 aa
-bY
-bY
-dx
-dB
-dB
-dI
-dx
-dD
-dx
-dK
-dB
-dB
-dx
-bY
-bY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -20286,21 +20280,21 @@ aa
 aa
 aa
 aa
-dw
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dw
+aa
+aa
+dx
+dx
+dx
+dx
+dx
+dx
+dx
+dx
+dx
+dx
+dx
+aa
+aa
 aa
 aa
 aa
@@ -20488,21 +20482,21 @@ aa
 aa
 aa
 aa
-bY
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-bY
+aa
+aa
+dx
+ak
+dy
+ak
+ak
+dC
+ak
+ak
+dy
+dx
+dx
+dG
+aa
 aa
 aa
 aa
@@ -20690,21 +20684,21 @@ aa
 aa
 aa
 aa
-bY
+aa
+aa
+dx
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-bY
+dH
+aa
 aa
 aa
 aa
@@ -20892,21 +20886,21 @@ aa
 aa
 aa
 aa
-bY
+aa
+aa
+dx
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-bY
+dH
+aa
 aa
 aa
 aa
@@ -21094,21 +21088,21 @@ aa
 aa
 aa
 aa
-bY
+aa
+aa
+dx
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-bY
+dH
+aa
 aa
 aa
 aa
@@ -21296,21 +21290,21 @@ aa
 aa
 aa
 aa
-bY
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-bY
+aa
+aa
+dx
+ak
+dz
+ak
+ak
+ak
+ak
+ak
+dz
+dx
+dx
+dI
+aa
 aa
 aa
 aa
@@ -21498,21 +21492,21 @@ aa
 aa
 aa
 aa
-bY
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-bY
+aa
+aa
+dx
+dx
+dx
+dA
+dB
+dx
+dB
+dA
+dx
+dx
+dx
+aa
+aa
 aa
 aa
 aa
@@ -21700,21 +21694,21 @@ aa
 aa
 aa
 aa
+aa
+aa
 bY
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
-dJ
+am
+am
+bX
+am
+am
+am
+bX
+am
+am
 bY
+aa
+aa
 aa
 aa
 aa
@@ -21902,21 +21896,21 @@ aa
 aa
 aa
 aa
+aa
+aa
 bY
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
 bY
-bY
-bY
-bY
-bY
-bY
-dw
-bY
-bY
-bY
-bY
-bY
-bY
-bY
+aa
+aa
 aa
 aa
 aa
@@ -22106,17 +22100,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bY
+am
+am
+bX
+am
+am
+am
+bX
+am
+am
+bY
 aa
 aa
 aa
@@ -22308,17 +22302,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bY
+bX
+bX
+bX
+bX
+dD
+bX
+bX
+bX
+bX
+bY
 aa
 aa
 aa
@@ -22510,17 +22504,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bY
+am
+am
+bX
+am
+am
+am
+bX
+am
+am
+bY
 aa
 aa
 aa
@@ -22712,17 +22706,17 @@ ai
 ai
 ai
 ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
-ai
+dw
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+dw
 ai
 ai
 ai
@@ -22914,17 +22908,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
+bY
 aa
 aa
 aa
@@ -35597,7 +35591,7 @@ dZ
 gx
 gF
 dv
-hO
+dK
 el
 el
 el
@@ -35799,7 +35793,7 @@ dZ
 dZ
 dZ
 dv
-hO
+dK
 el
 el
 el
@@ -36001,7 +35995,7 @@ dZ
 gy
 gG
 dv
-hO
+dK
 el
 el
 el
@@ -36405,7 +36399,7 @@ dZ
 gx
 dZ
 dv
-hO
+dK
 el
 el
 el
@@ -36607,7 +36601,7 @@ dZ
 dZ
 dZ
 dv
-hO
+dK
 el
 el
 el
@@ -36809,7 +36803,7 @@ dZ
 gz
 gG
 dv
-hO
+dK
 el
 el
 el
@@ -37617,7 +37611,7 @@ gt
 gt
 gJ
 dv
-hO
+dK
 el
 el
 el
@@ -37819,7 +37813,7 @@ gt
 gt
 gK
 dv
-hO
+dK
 el
 el
 el
@@ -38021,7 +38015,7 @@ gt
 gt
 gL
 dv
-hO
+dK
 el
 el
 el
@@ -38829,7 +38823,7 @@ dZ
 gx
 gF
 dv
-hO
+dK
 el
 el
 el
@@ -39031,7 +39025,7 @@ dZ
 dZ
 dZ
 dv
-hO
+dK
 el
 el
 el
@@ -39233,7 +39227,7 @@ dZ
 gA
 gG
 dv
-hO
+dK
 el
 el
 el
@@ -39637,7 +39631,7 @@ dZ
 gx
 gF
 dv
-hO
+dK
 el
 el
 el
@@ -39839,7 +39833,7 @@ dZ
 dZ
 dZ
 dv
-hO
+dK
 el
 el
 el
@@ -40041,7 +40035,7 @@ dZ
 gB
 gG
 dv
-hO
+dK
 el
 el
 el

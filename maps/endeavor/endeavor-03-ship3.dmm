@@ -17,6 +17,13 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "meeting_room_windows"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "ad" = (
@@ -41,6 +48,12 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "meeting_room_windows"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "ag" = (
@@ -57,6 +70,16 @@
 	},
 /obj/structure/window/reinforced/polarized/full{
 	id = "meeting_room_windows"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
@@ -151,8 +174,9 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "aq" = (
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/bridge_hallway)
+/area/maintenance/endeavour/d3/forestarboard)
 "ar" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
@@ -189,6 +213,10 @@
 	},
 /obj/structure/window/reinforced/polarized/full{
 	id = "meeting_room_windows"
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
@@ -485,6 +513,14 @@
 /obj/structure/window/reinforced/polarized/full{
 	id = "meeting_room_windows"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green,
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "aU" = (
@@ -627,15 +663,13 @@
 "be" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/window/reinforced/polarized/full{
 	id = "meeting_room_windows"
 	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "bf" = (
@@ -649,19 +683,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d3/aftstarboard)
 "bh" = (
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 9
-	},
-/obj/machinery/camera/network/command{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/bridge_hallway)
 "bi" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -783,6 +809,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/storage/emergency_storage/deckthree)
 "bs" = (
+/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -790,13 +817,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 5
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/bridge_hallway)
 "bt" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -806,14 +832,17 @@
 "bu" = (
 /obj/effect/floor_decal/corner/blue{
 	icon_state = "corner_white";
-	dir = 6
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	icon_state = "corner_white";
-	dir = 5
+	dir = 9
+	},
+/obj/machinery/camera/network/command{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/bridge_hallway)
 "bv" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/endeavour/d3/aftstarboard)
@@ -970,6 +999,40 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bK" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/bridge_hallway)
+"bL" = (
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge_hallway)
+"bM" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "meeting_room_windows"
+	},
+/turf/simulated/floor/plating,
+/area/bridge/meeting_room)
+"bN" = (
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -983,41 +1046,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
-"bL" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 10
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
-"bM" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "meeting_room_windows"
-	},
-/turf/simulated/floor/plating,
-/area/bridge/meeting_room)
-"bN" = (
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/bridge_hallway)
 "bO" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	icon_state = "map_vent_out";
@@ -1905,7 +1934,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "di" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -1913,12 +1941,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/command{
-	name = "Bridge"
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
-/area/bridge)
+/area/bridge_hallway)
 "dj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
@@ -3365,7 +3394,7 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "fS" = (
-/obj/machinery/chem_master,
+/obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/kitchen)
 "fT" = (
@@ -3668,6 +3697,11 @@
 	pixel_x = -30
 	},
 /obj/machinery/computer/prisoner,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "gx" = (
@@ -3842,7 +3876,17 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "gW" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Command Secretary"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "gX" = (
@@ -3902,22 +3946,30 @@
 /turf/simulated/floor/wood,
 /area/library)
 "hc" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Command Secretary"
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "hd" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Command Secretary"
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/turf/simulated/floor/wood,
+/obj/structure/window/reinforced/polarized/full{
+	id = "meeting_room_windows"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "he" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3926,6 +3978,9 @@
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 8
+	},
+/obj/structure/closet/fireaxecabinet{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge_hallway)
@@ -5848,6 +5903,11 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "lh" = (
@@ -6480,11 +6540,10 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "mM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -6669,8 +6728,17 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/captain)
 "ni" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "nj" = (
@@ -6835,9 +6903,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -7579,8 +7647,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "pg" = (
-/obj/structure/ladder,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/sign/endeavourdecks/three,
 /turf/simulated/floor/plating,
 /area/maintenance/endeavour/d3/amidshipport)
@@ -8711,6 +8777,11 @@
 /area/storage/emergency_storage/deckthree)
 "rg" = (
 /obj/machinery/hologram/holopad,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "rh" = (
@@ -9217,11 +9288,16 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "sd" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/bridge)
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark,
+/area/bridge_hallway)
 "se" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -11562,7 +11638,6 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/rig/breacher,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "wJ" = (
@@ -14421,9 +14496,20 @@
 /turf/simulated/floor/tiled,
 /area/hallway/deck_three/fore)
 "Da" = (
-/obj/random/trash_pile,
-/turf/simulated/floor/plating,
-/area/bridge_hallway)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 "Db" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
@@ -16285,12 +16371,6 @@
 /turf/simulated/floor/wood,
 /area/chapel/main)
 "Hu" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/maintenance/endeavour/d3/amidshipport)
-"Hv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/grille,
@@ -16307,13 +16387,16 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/endeavour/d3/amidshipport)
-"Hw" = (
+/area/chapel/main)
+"Hv" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/maintenance/endeavour/d3/amidshipport)
+/area/chapel/main)
+"Hw" = (
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "Hx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -16323,7 +16406,7 @@
 	},
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/wood,
-/area/maintenance/endeavour/d3/amidshipport)
+/area/chapel/main)
 "Hy" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/grille,
@@ -16340,7 +16423,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/endeavour/d3/amidshipport)
+/area/chapel/main)
 "Hz" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	icon_state = "map_vent_out";
@@ -16351,7 +16434,7 @@
 	},
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/wood,
-/area/maintenance/endeavour/d3/amidshipport)
+/area/chapel/main)
 "HA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
@@ -16391,6 +16474,30 @@
 /obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
+"HG" = (
+/obj/structure/ladder,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/maintenance/endeavour/d3/amidshipport)
+"HH" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Command Secretary"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 
 (1,1,1) = {"
 aa
@@ -32851,9 +32958,9 @@ AR
 jc
 gC
 Hr
-Hu
+GQ
 Hx
-jg
+Af
 Fq
 Fq
 Fx
@@ -33053,7 +33160,7 @@ Hb
 Hd
 Hq
 Hs
-Hv
+Hu
 Hy
 Af
 jg
@@ -33083,7 +33190,7 @@ Fn
 Fn
 Fo
 jg
-Fn
+pg
 Fu
 nO
 jg
@@ -33233,7 +33340,7 @@ lK
 lK
 lK
 lK
-CR
+lK
 lK
 qV
 wt
@@ -33255,7 +33362,7 @@ AR
 jc
 gC
 Ht
-Hw
+Hv
 Hz
 Af
 FB
@@ -33285,7 +33392,7 @@ kJ
 kJ
 kJ
 kJ
-pg
+HG
 iL
 Fu
 jg
@@ -33457,8 +33564,8 @@ AY
 CV
 He
 Af
-jg
-jg
+Af
+Af
 Af
 CJ
 CK
@@ -33633,7 +33740,7 @@ ly
 ly
 Dk
 DI
-CR
+lK
 to
 tB
 tJ
@@ -33659,8 +33766,8 @@ gC
 gC
 Hh
 Af
-Fn
-Fn
+Hw
+Hw
 Af
 Fo
 iL
@@ -33835,7 +33942,7 @@ vw
 ly
 Dk
 DJ
-CR
+lK
 CR
 tz
 CR
@@ -34037,7 +34144,7 @@ DF
 De
 De
 DN
-CR
+lK
 zW
 tQ
 iv
@@ -34239,7 +34346,7 @@ vw
 ly
 ly
 DR
-CR
+lK
 tq
 tX
 tI
@@ -34437,11 +34544,11 @@ Do
 ly
 De
 DA
-CR
-CR
-CR
-CR
-CR
+lK
+lK
+lK
+lK
+lK
 pt
 fz
 eN
@@ -34639,11 +34746,11 @@ xJ
 De
 Du
 De
-CR
+lK
 tw
 tx
 tx
-CR
+lK
 CR
 tP
 CR
@@ -34841,7 +34948,7 @@ ly
 ly
 Dx
 DC
-CR
+lK
 hA
 hl
 tx
@@ -35043,7 +35150,7 @@ aj
 aj
 aj
 aj
-CR
+lK
 tC
 eJ
 tF
@@ -35636,7 +35743,7 @@ lW
 ac
 aT
 gw
-hc
+gW
 yH
 yH
 yH
@@ -35838,7 +35945,7 @@ ue
 af
 zV
 yH
-gW
+hc
 ln
 ch
 yH
@@ -36040,7 +36147,7 @@ vw
 af
 mX
 yH
-yH
+mM
 lo
 lq
 sh
@@ -36242,7 +36349,7 @@ ww
 af
 yF
 zV
-yH
+mM
 mB
 lr
 lr
@@ -36255,10 +36362,10 @@ ad
 ad
 le
 tT
-sd
 bh
-bK
-sd
+bu
+bN
+bh
 bP
 bS
 bV
@@ -36457,10 +36564,10 @@ ad
 gv
 lE
 tW
+bs
+bK
 di
 bs
-bL
-di
 ck
 ft
 gh
@@ -36646,7 +36753,7 @@ wC
 af
 Ae
 zV
-yH
+mM
 mB
 lr
 lr
@@ -36659,10 +36766,10 @@ fi
 eS
 lM
 tT
+bh
+bL
 sd
-bu
-bN
-sd
+bh
 bR
 bU
 bW
@@ -36848,7 +36955,7 @@ wC
 af
 um
 yH
-yH
+mM
 lo
 ls
 si
@@ -37050,7 +37157,7 @@ xF
 af
 zV
 yH
-gW
+hc
 mL
 ch
 yH
@@ -37067,8 +37174,8 @@ mx
 bE
 mF
 my
-mz
-mz
+my
+my
 yO
 mz
 nb
@@ -37250,12 +37357,12 @@ GK
 jE
 wC
 ah
-aT
+be
 lg
-hd
-mM
+HH
 ni
 nC
+Da
 sa
 aZ
 eU
@@ -37269,8 +37376,8 @@ bd
 bG
 rW
 my
-rQ
-rQ
+my
+my
 rQ
 rQ
 rQ
@@ -37452,7 +37559,7 @@ GK
 jE
 wC
 wC
-be
+hd
 lc
 lu
 fW
@@ -37858,11 +37965,11 @@ jF
 xG
 wC
 wC
+wC
+wC
+xL
 aq
 aq
-ad
-Da
-Da
 aj
 aj
 aj

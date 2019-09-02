@@ -516,6 +516,13 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main/main)
+"bv" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock{
+	name = "Bathroom"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/outpost/mining_main/main)
 "bw" = (
 /turf/simulated/floor/plating/external,
 /area/outpost/mining_main/main)
@@ -562,6 +569,18 @@
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/black/diagonal,
 /turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/main)
+"bE" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "mdorm4";
+	name = "Door Bolt Control";
+	pixel_x = -23;
+	pixel_y = 0;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "bF" = (
 /turf/simulated/floor/tiled/white,
@@ -655,6 +674,27 @@
 	pixel_x = 15
 	},
 /turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/main)
+"bT" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "intact-supply";
+	dir = 8
+	},
+/obj/machinery/door/airlock{
+	id_tag = "mdorm4";
+	name = "Mining Dorm Four"
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/main)
+"bU" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/freezer,
 /area/outpost/mining_main/main)
 "bV" = (
 /obj/effect/floor_decal/corner/black/diagonal,
@@ -945,8 +985,16 @@
 /turf/simulated/floor/tiled/freezer,
 /area/outpost/mining_main/main)
 "cF" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/freezer,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "mdorm3";
+	name = "Door Bolt Control";
+	pixel_x = -23;
+	pixel_y = 0;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "cG" = (
 /obj/structure/sink{
@@ -1132,16 +1180,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "dc" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	icon_state = "intact-supply";
-	dir = 8
-	},
-/turf/simulated/floor/wood,
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/item/weapon/storage/box/glasses/meta,
+/turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "dd" = (
 /obj/machinery/door/firedoor/glass,
@@ -1296,10 +1338,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "dt" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "du" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
@@ -1613,6 +1657,7 @@
 	icon_state = "intact-supply";
 	dir = 8
 	},
+/obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "em" = (
@@ -1621,6 +1666,7 @@
 	icon_state = "map_scrubber_on";
 	dir = 8
 	},
+/obj/machinery/appliance/grill,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "en" = (
@@ -1846,9 +1892,18 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "eR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	icon_state = "map_scrubber_on";
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "intact-supply";
+	dir = 8
+	},
+/obj/machinery/door/airlock{
+	id_tag = "mdorm3";
+	name = "Mining Dorm 3"
 	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
@@ -1889,13 +1944,14 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/main)
 "eX" = (
-/obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/item/weapon/storage/box/glasses/meta,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	pixel_x = 28
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock{
+	id_tag = "mdorm1";
+	name = "Mining Dorm One"
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/wood,
 /area/outpost/mining_main/main)
 "eY" = (
 /obj/structure/bed/double/padded,
@@ -2792,6 +2848,16 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/outpost/research/bathroom)
+"hk" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock{
+	id_tag = "mdorm2";
+	name = "Mining Dorm 2"
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/main)
 "hl" = (
 /obj/structure/shuttle/engine/heater{
 	icon_state = "heater";
@@ -6646,6 +6712,50 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/exp_prep)
+"po" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	icon_state = "map_scrubber_on";
+	dir = 4
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "mdorm1";
+	name = "Door Bolt Control";
+	pixel_x = -23;
+	pixel_y = 0;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/main)
+"pp" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	icon_state = "map_scrubber_on";
+	dir = 4
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 4;
+	id = "mdorm2";
+	name = "Door Bolt Control";
+	pixel_x = -23;
+	pixel_y = 0;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/outpost/mining_main/main)
+"pq" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/machinery/appliance/cooker/fryer,
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/main)
+"pr" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/main)
+"ps" = (
+/obj/structure/closet/secure_closet/freezer/kitchen/mining,
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/main)
 
 (1,1,1) = {"
 ab
@@ -18277,7 +18387,7 @@ cB
 cQ
 cB
 cB
-cF
+bv
 bt
 bt
 bt
@@ -18287,7 +18397,7 @@ bt
 bt
 bt
 bt
-cF
+bU
 cB
 cB
 cB
@@ -19911,7 +20021,7 @@ bV
 bV
 el
 bV
-bV
+pr
 ap
 ae
 ae
@@ -20113,7 +20223,7 @@ bV
 ei
 em
 bV
-bV
+pr
 gM
 ae
 ae
@@ -20313,9 +20423,9 @@ bz
 bD
 bV
 bV
+pq
 bV
-bV
-bV
+ps
 gM
 ae
 ae
@@ -20714,7 +20824,7 @@ bA
 dg
 bA
 bz
-bD
+dc
 bV
 bR
 bS
@@ -20916,7 +21026,7 @@ bA
 dg
 bA
 bA
-eX
+dt
 af
 af
 af
@@ -21120,7 +21230,7 @@ ao
 af
 af
 af
-eR
+po
 bt
 bt
 bZ
@@ -21321,7 +21431,7 @@ dI
 di
 cX
 dH
-dt
+eX
 eS
 bt
 bt
@@ -21928,7 +22038,7 @@ fn
 ed
 ef
 af
-eR
+pp
 bt
 bt
 bZ
@@ -22129,7 +22239,7 @@ jh
 dy
 ag
 dD
-dt
+hk
 eS
 bt
 bt
@@ -22528,11 +22638,11 @@ dJ
 ag
 af
 af
-dc
+bT
 af
 af
 af
-dc
+eR
 af
 af
 af
@@ -22729,11 +22839,11 @@ ag
 bK
 eB
 af
-dz
+bE
 eQ
 dC
 af
-dz
+cF
 eQ
 dC
 af

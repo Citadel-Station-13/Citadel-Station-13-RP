@@ -1169,6 +1169,14 @@
 "dh" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"di" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	id = "armory_shutters";
+	name = "Armory"
+	},
+/turf/simulated/floor/tiled,
+/area/security/armoury)
 "dj" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -1324,14 +1332,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "dD" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/floor_decal/corner/blue{
-	icon_state = "corner_white";
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/ai/foyer)
+/obj/machinery/turretid/stun,
+/turf/simulated/wall/r_wall,
+/area/ai_upload)
 "dE" = (
 /obj/random/junk,
 /obj/random/junk,
@@ -1580,13 +1583,17 @@
 /turf/simulated/floor/tiled,
 /area/security/hallway)
 "eq" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/blast/regular{
-	id = "bluearmory";
-	name = "Armory"
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/effect/floor_decal/corner/blue{
+	icon_state = "corner_white";
+	dir = 10
 	},
-/turf/simulated/floor/tiled,
-/area/security/armoury)
+/obj/machinery/turretid/stun{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ai/foyer)
 "er" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -30622,7 +30629,7 @@ cm
 hR
 kQ
 bW
-dD
+eq
 cd
 hY
 mW
@@ -30822,7 +30829,7 @@ hp
 hu
 hw
 cg
-hp
+dD
 bX
 dH
 cd
@@ -33446,7 +33453,7 @@ dX
 sc
 dA
 pl
-ed
+be
 ed
 ed
 ee
@@ -33648,7 +33655,7 @@ dX
 sd
 dA
 pj
-ed
+be
 ed
 ed
 ef
@@ -33850,7 +33857,7 @@ dX
 rZ
 dA
 pg
-ed
+be
 ed
 ed
 ee
@@ -34052,7 +34059,7 @@ pf
 dA
 dA
 jT
-ed
+be
 ed
 ed
 ef
@@ -34254,7 +34261,7 @@ iN
 jm
 be
 jT
-ed
+be
 ed
 ed
 ee
@@ -34456,7 +34463,7 @@ be
 be
 pg
 pj
-ed
+be
 ed
 ed
 ef
@@ -35109,8 +35116,8 @@ ad
 ad
 ax
 at
-eq
-eq
+di
+di
 at
 at
 at
