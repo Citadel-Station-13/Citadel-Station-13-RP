@@ -106,7 +106,7 @@
 
 	if(istype(W,/obj/item/weapon/reagent_containers/glass/beaker))
 		if(beaker)
-			user << "<span class='notice'>There appears to already be a beaker loaded in [src]!</span>"
+			user << "<span class='notice'>There is a beaker already loaded!!</span>"
 			return
 		user.drop_item()
 		beaker = W
