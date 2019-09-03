@@ -1091,6 +1091,9 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/steeldecal/steel_decals5
 	icon_state = "steel_decals5"
 
+/obj/effect/floor_decal/steeldecal/steel_decals5white
+	icon_state = "steel_decals5white"
+
 /obj/effect/floor_decal/steeldecal/steel_decals6
 	icon_state = "steel_decals6"
 

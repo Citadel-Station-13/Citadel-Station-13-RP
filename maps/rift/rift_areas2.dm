@@ -12,6 +12,9 @@
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
 
+/area/crew_quarters/maint_dorm
+	name = "\improper Maintenance - Unknown"
+
 /area/maintenance/panic_shelter
 	name = "\improper Panic Shelter Maintenance"
 
@@ -49,6 +52,23 @@
 /area/maintenance/substation/surface_one
 	name = "\improper Surface One Substation"
 	icon_state = "substation"
+
+/area/maintenance/substation/surface_two
+	name = "\improper Surface Two Substation"
+	icon_state = "substation"
+
+//
+// Medbay
+//
+
+/area/rift/surfacebase/medical
+	icon_state = "medical"
+/area/rift/surfacebase/medical/lobby
+	name = "\improper Emergency Medical Triage Lobby"
+/area/rift/surfacebase/medical/triage
+	name = "\improper Emergency Medical Triage"
+/area/rift/surfacebase/medical/first_aid
+	name = "\improper First Aid Post"
 
 //
 // Hallways
@@ -220,17 +240,6 @@
 	name = "\improper Surface Atmos Substation"
 /area/maintenance/substation/civ_west
 	name = "\improper Civilian West Substation"
-
-
-/area/tether/surfacebase/medical
-	icon_state = "medical"
-/area/tether/surfacebase/medical/lobby
-	name = "\improper Surface Medical Lobby"
-/area/tether/surfacebase/medical/triage
-	name = "\improper Surface Triage"
-/area/tether/surfacebase/medical/first_aid_west
-	name = "\improper First Aid West"
-
 
 /area/tether/surfacebase/security
 	icon_state = "security"
