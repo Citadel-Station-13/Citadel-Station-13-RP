@@ -350,14 +350,23 @@
 /obj/machinery/power/fission/proc/anchor()
 	if(!anchored)
 		anchored = 1
+		var/list/datum/pipeline/pipelines = new()
 		for(var/obj/machinery/atmospherics/pipe/simple/pipe in loc)
-			pipes += pipe
+			if (!(pipe.parent in pipelines))
+				pipes += pipe
+				pipelines += pipe.parent
 		for(var/obj/machinery/atmospherics/pipe/manifold/pipe in loc)
-			pipes += pipe
+			if (!(pipe.parent in pipelines))
+				pipes += pipe
+				pipelines += pipe.parent
 		for(var/obj/machinery/atmospherics/pipe/manifold4w/pipe in loc)
-			pipes += pipe
+			if (!(pipe.parent in pipelines))
+				pipes += pipe
+				pipelines += pipe.parent
 		for(var/obj/machinery/atmospherics/pipe/cap/pipe in loc)
-			pipes += pipe
+			if (!(pipe.parent in pipelines))
+				pipes += pipe
+				pipelines += pipe.parent
 	else
 		anchored = 0
 		pipes = new()
@@ -386,8 +395,8 @@
 		var/turf/L = get_turf(src)
 		if(!istype(L))
 			return
-		message_admins("[name] exploding in 15 seconds at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-		log_game("[name] exploded at ([x],[y],[z])")
+		message_admins("[name] exploding in 15 seconds at ([L.x],[L.y],[L.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[L.x];Y=[L.y];Z=[L.z]'>JMP</a>)",0,1)
+		log_game("[name] exploded at ([L.x],[L.y],[L.z])")
 		exploded = 1
 		if(!anchored)
 			anchor()
@@ -405,7 +414,7 @@
 			for(var/a in player_list)
 				var/mob/M = a
 				var/turf/T = get_turf(M)
-				if(T.z == z)
+				if(T.z == L.z)
 					M.playsound_local(T, soundin = sound, vol = 50, vary = FALSE, is_global = TRUE)
 			spawn(1 SECONDS)
 				radio.autosay("Danger! Fission core has breached!", "Nuclear Monitor")
@@ -417,10 +426,10 @@
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
-			radiation_repository.z_radiate(locate(1, 1, z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
+			radiation_repository.z_radiate(locate(1, 1, L.z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
 			for(var/mob/living/mob in living_mob_list)
 				var/turf/T = get_turf(mob)
-				if(T && (loc.z == T.z))
+				if(T && (L.z == T.z))
 					var/root_distance = sqrt(1 / (get_dist(mob, src) + 1))
 					var/rads = rad_power * root_distance
 					if(mob.loc != T) // Not on turf, ergo, sheltered.
