@@ -134,3 +134,26 @@
 	path = /obj/item/clothing/under/donator/pinksuit
 	ckeywhitelist = list("tippler")
 
+/datum/gear/donator/peltcloak
+	display_name = "Pelt Cloak"
+	sort_category = "Donator"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/peltcloak
+	ckeywhitelist = list("irkallaepsilon")
+
+/datum/gear/donator/doubleglasses
+	display_name = "Double Sunglasses"
+	sort_category = "Donator"
+	path = /obj/item/clothing/glasses/sunglasses/double
+	ckeywhitelist = list("jglitch")
+
+/datum/gear/donator/huni
+	display_name = "KHI Uniform"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/huni
+	ckeywhitelist = list("certifiedhyena")
+
+/datum/gear/donator/hberet
+	display_name = "USDF Beret"
+	sort_category = "Donator"
+	path = /obj/item/clothing/head/donator/hberet
+	ckeywhitelist = list("certifiedhyena")

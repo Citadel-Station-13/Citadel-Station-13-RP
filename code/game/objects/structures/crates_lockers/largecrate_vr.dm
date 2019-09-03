@@ -133,3 +133,7 @@
 	starts_with = list(pick(/mob/living/simple_animal/fennec,
 						/mob/living/simple_animal/retaliate/fennix;0.5))
 	return ..()
+
+/obj/structure/largecrate/animal/crab // CIT Change: Adds a crab crate, containing 3 crabs
+	name = "Crab Crate"
+	starts_with = list(/mob/living/simple_animal/crab = 3)

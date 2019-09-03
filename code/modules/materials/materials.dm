@@ -415,6 +415,7 @@ var/list/name_to_material
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	radiation_resistance = 14
 
 /datum/material/plasteel/hull
 	name = MAT_PLASTEELHULL
