@@ -4,7 +4,7 @@
 	icon_state = "teg"
 	density = 1
 	anchored = 0
-
+	flags = OPENCONTAINER
 	use_power = 1
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.
 
@@ -22,12 +22,20 @@
 	var/lastgen2 = 0
 	var/effective_gen = 0
 	var/lastgenlev = 0
+	var/lubricated = 0
+
 
 /obj/machinery/power/generator/New()
 	..()
+	create_reagents(120)
 	desc = initial(desc) + " Rated for [round(max_power/1000)] kW."
 	spawn(1)
 		reconnect()
+
+/obj/machinery/power/generator/examine(mob/user)
+	..()
+	to_chat(user, "It appears to have [reagents.total_volume] units of lubricating fluid left.")
+
 
 //generators connect in dir and reverse_dir(dir) directions
 //mnemonic to determine circulator/generator directions: the cirulators orbit clockwise around the generator
@@ -114,7 +122,12 @@
 		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
-		stored_energy *= 0.5
+		if(!lubricated) // only suffer energy loss when TEGS aren't lubricated.
+			stored_energy *= 0.5
+		if(effective_gen > 10000000) //if it's producing a TRULY ABSURD amount of power, things get somewhat interesting.
+			var/zap_power = stored_energy * 0.5
+			stored_energy *= 0.5
+			tesla_zap(src, 7, zap_power , explosive = FALSE, stun_mobs = FALSE)
 
 	//Power
 	last_circ1_gen = circ1.return_stored_energy()
@@ -132,6 +145,15 @@
 		lastgenlev = genlev
 		updateicon()
 	add_avail(effective_gen)
+
+	lubricated = 0
+	thermal_efficiency = 0.65
+	if(reagents.has_reagent("lube", 0.01))
+		reagents.remove_reagent(/datum/reagent/lube, 0.01)
+		thermal_efficiency = 0.80
+		lubricated = 1
+	else
+		reagents.remove_any(1)
 
 /obj/machinery/power/generator/attack_ai(mob/user)
 	attack_hand(user)
