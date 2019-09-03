@@ -57,6 +57,7 @@
 #define ADMIN_SYNDICATE_REPLY(user) "(<a href='?_src_=holder;SyndicateReply=[REF(user)]'>RPLY</a>)"
 #define ADMIN_SC(user) "(<a href='?_src_=holder;adminspawncookie=[REF(user)]'>SC</a>)"
 #define ADMIN_SMITE(user) "(<a href='?_src_=holder;adminsmite=[REF(user)]'>SMITE</a>)"
+#define ADMIN_ST(user) "(<a href='?_src_=holder;adminspawntreat=\ref[user]'>ST</a>)"
 #define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUE(user)]"
 #define ADMIN_VERBOSEJMP(src) "[src ? "[AREACOORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
 #define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]"
