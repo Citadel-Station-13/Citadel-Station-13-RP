@@ -288,12 +288,12 @@
 	filling_color = "#468C00"
 	nutriment_amt = 8
 	nutriment_desc = list("apples" = 3,"salad" = 5)
+	bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/aesirsalad/Initialize()
 	. = ..()
 	reagents.add_reagent("doctorsdelight", 8)
 	reagents.add_reagent("tricordrazine", 8)
-	bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/candy
 	name = "candy"
@@ -303,11 +303,11 @@
 	filling_color = "#7D5F46"
 	nutriment_amt = 1
 	nutriment_desc = list("candy" = 1)
+	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/candy/Initialize()
 	. = ..()
 	reagents.add_reagent("sugar", 3)
-	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar
 	name = "protein bar"
@@ -329,11 +329,11 @@
 	trash = /obj/item/trash/candy
 	nutriment_amt = 9
 	nutriment_desc = list("candy" = 10)
+	bitesize = 5
 
 /obj/item/weapon/reagent_containers/food/snacks/candy/donor/Initialize()
 	. = ..()
 	reagents.add_reagent("sugar", 3)
-	bitesize = 5
 
 /obj/item/weapon/reagent_containers/food/snacks/candy_corn
 	name = "candy corn"
@@ -356,9 +356,6 @@
 	filling_color = "#E8C31E"
 	nutriment_amt = 3
 	nutriment_desc = list("salt" = 1, "chips" = 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/chips/Initialize()
-	. = ..()
 	bitesize = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/cookie
@@ -368,9 +365,6 @@
 	filling_color = "#DBC94F"
 	nutriment_amt = 5
 	nutriment_desc = list("sweetness" = 3, "cookie" = 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/cookie/Initialize()
-	. = ..()
 	bitesize = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/dtreat
@@ -382,10 +376,8 @@
 	nutriment_desc = list("sugar" = 3, "protein" = 2)
 	slot_flags = SLOT_MASK
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/masks_vr.dmi', SPECIES_VOX = 'icons/mob/species/vox/masks.dmi', SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi', SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi', SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi', SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi', SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi', SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi', SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi', SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi', SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi')
-
-/obj/item/weapon/reagent_containers/food/snacks/dtreat/initialize()
-	. = ..()
 	bitesize = 1
+
 
 /obj/item/weapon/reagent_containers/food/snacks/chocolatebar
 	name = "Chocolate Bar"
