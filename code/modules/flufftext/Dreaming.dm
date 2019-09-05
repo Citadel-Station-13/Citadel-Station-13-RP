@@ -18,7 +18,7 @@ var/list/dreams = list(
 
 	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!
 
-	"more dakka","something indescribable","a tiny prick","family"//other misc. things
+	"more dakka","something indescribable","a tiny prick","family","a collar", "time stopping","a sweet liquid","a compliance disk","love","war"//other misc. things
 	)
 
 mob/living/carbon/proc/dream()
