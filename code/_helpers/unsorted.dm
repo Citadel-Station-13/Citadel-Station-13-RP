@@ -1440,37 +1440,3 @@ var/mob/dview/dview_mob = new
 			return "Northwest"
 		if(337.5)
 			return "North-Northwest"
-
-//This is used to force compiletime errors if you incorrectly supply variable names. Crafty!
-#define NAMEOF(datum, X) (#X || ##datum.##X)
-
-//Creates a callback with the specific purpose of setting a variable
-#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, weakref(##datum), NAMEOF(##datum, ##var), ##var_value)
-
-//Helper for the above
-/proc/___callbackvarset(list_or_datum, var_name, var_value)
-	if(isweakref(list_or_datum))
-		var/weakref/wr = list_or_datum
-		list_or_datum = wr.resolve()
-	if(!list_or_datum)
-		return
-	if(length(list_or_datum))
-		list_or_datum[var_name] = var_value
-		return
-	var/datum/D = list_or_datum
-	D.vars[var_name] = var_value
-
-/proc/pass()
-	return
-
-GLOBAL_REAL_VAR(list/stack_trace_storage)
-/proc/gib_stack_trace()
-	stack_trace_storage = list()
-	stack_trace()
-	stack_trace_storage.Cut(1, min(3,stack_trace_storage.len))
-	. = stack_trace_storage
-	stack_trace_storage = null
-
-//gives us the stack trace from CRASH() without ending the current proc.
-/proc/stack_trace(msg)
-	CRASH(msg)

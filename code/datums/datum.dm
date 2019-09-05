@@ -33,7 +33,7 @@
 	var/datum_flags = NONE
 
 	/// A weak reference to another datum
-	var/datum/weakref/weakref
+	var/datum/weakref/weak_reference
 
 #ifdef TESTING
 	var/running_find_references
@@ -50,7 +50,7 @@
 // This should be overridden to remove all references pointing to the object being destroyed.
 // Return the appropriate QDEL_HINT; in most cases this is QDEL_HINT_QUEUE.
 /datum/proc/Destroy(force=FALSE)
-	weakref = null // Clear this reference to ensure it's kept for as brief duration as possible.
+	weak_reference = null // Clear this reference to ensure it's kept for as brief duration as possible.
 	tag = null
 	GLOB.nanomanager.close_uis(src)
 	var/list/timers = active_timers
