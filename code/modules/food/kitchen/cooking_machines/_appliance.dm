@@ -459,9 +459,6 @@
 		if (!S)
 			continue
 
-		if(!S.reagents)
-			S.initialize()
-
 		words |= text2list(S.name," ")
 
 		if (S.reagents && S.reagents.total_volume > 0)
