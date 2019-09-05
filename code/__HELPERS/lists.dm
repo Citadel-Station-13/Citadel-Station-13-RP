@@ -27,9 +27,6 @@
 			return list[index]
 	return
 
-/proc/islist(list/L)
-	return istype(L)
-
 //Return either pick(list) or null if list is not of type /list or is empty
 /proc/safepick(list/list)
 	if(!islist(list) || !list.len)
