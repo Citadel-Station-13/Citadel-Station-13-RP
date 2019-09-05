@@ -33,7 +33,7 @@
 	var/datum_flags = NONE
 
 	/// A weak reference to another datum
-	var/datum/weakref/weak_reference
+	var/datum/weakref/weakref
 
 #ifdef TESTING
 	var/running_find_references
