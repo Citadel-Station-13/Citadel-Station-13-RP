@@ -46,7 +46,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	l_ear = /obj/item/device/radio/headset/pilot/alt
 	id_slot = slot_wear_id
 	pda_slot = slot_belt
-	pda_type = /obj/item/device/pda
+	pda_type = /obj/item/device/pda/cargo // Brown looks more rugged
 	id_type = /obj/item/weapon/card/id/civilian/pilot
 	id_pda_assignment = "Pilot"
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
