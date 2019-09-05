@@ -138,7 +138,7 @@
 	name = "k9 robot module"
 	sprites = list(
 					"K9 hound" = "k9",
-					"K9 Alternative (Static)" = "k92",
+					"K9 Alternative" = "k92",
 					"Secborg model V-2" = "secborg"
 					)
 	channels = list("Security" = 1)
@@ -210,7 +210,7 @@
 	can_be_pushed = 0
 	sprites = list(
 					"Medical Hound" = "medihound",
-					"Dark Medical Hound (Static)" = "medihounddark",
+					"Dark Medical Hound" = "medihounddark",
 					"Mediborg model V-2" = "vale",
 					)
 
