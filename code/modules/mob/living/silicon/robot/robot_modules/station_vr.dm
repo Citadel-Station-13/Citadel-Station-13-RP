@@ -181,6 +181,11 @@
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+
+	if(R.client && R.client.ckey in list("nezuli"))
+		sprites += "Alina"
+		sprites["Alina"] = "alina-sec"
+
 	..()
 
 /obj/item/weapon/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -268,6 +273,10 @@
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+
+	if(R.client && R.client.ckey in list("nezuli"))
+		sprites += "Alina"
+		sprites["Alina"] = "alina-med"
 	..()
 
 /obj/item/weapon/robot_module/robot/ert
@@ -461,7 +470,6 @@
 /obj/item/weapon/robot_module/robot/engiedog
 	name = "Pupdozer"
 	sprites = list(
-					"V2 Engidog" = "thottbot",
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot"
 					)
@@ -587,6 +595,11 @@
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+
+	if(R.client && R.client.ckey in list("nezuli"))
+		sprites += "Alina"
+		sprites["Alina"] = "alina-eng"
+
 	..()
 
 // Uses modified K9 sprites.
