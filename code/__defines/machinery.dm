@@ -109,19 +109,19 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 // Fancy-pants START/STOP_PROCESSING() macros that lets us custom define what the list is.
 #define START_PROCESSING_IN_LIST(DATUM, LIST) \
 if (DATUM.is_processing) {\
-	if(DATUM.is_processing != #LIST)\
+	if(DATUM.datum_flags & DF_ISPROCESSING)\
 	{\
-		crash_with("Failed to start processing. [log_info_line(DATUM)] is already being processed by [DATUM.is_processing] but queue attempt occured on [#LIST]."); \
+		crash_with("Failed to start processing. [log_info_line(DATUM)] is already being processed but queue attempt occured on [#LIST]."); \
 	}\
 } else {\
-	DATUM.is_processing = #LIST;\
+	DATUM.datum_flags |= DF_ISPROCESSING;\
 	LIST += DATUM;\
 }
 
 #define STOP_PROCESSING_IN_LIST(DATUM, LIST) \
-if(DATUM.is_processing) {\
+if(DATUM.datum_flags & DF_ISPROCESSING) {\
 	if(LIST.Remove(DATUM)) {\
-		DATUM.is_processing = null;\
+		DATUM.datum_flags &= (~DF_ISPROCESSING)\
 	} else {\
 		crash_with("Failed to stop processing. [log_info_line(DATUM)] is being processed by [is_processing] and not found in SSmachines.[#LIST]"); \
 	}\
