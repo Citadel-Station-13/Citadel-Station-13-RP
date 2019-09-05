@@ -648,8 +648,8 @@
 	src.modules += B
 */
 
-	R.icon 		 = 'modular_citadel/icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'modular_citadel/icons/mob/screen1_robot_vr.dmi'
+	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
+	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
 	R.ui_style_vr = TRUE
 	R.pixel_x 	 = -16
 	R.old_x 	 = -16
