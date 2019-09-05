@@ -11,7 +11,14 @@ var/list/dreams = list(
 	"the quartermaster","a cargo technician","the botanist","a shaft miner","the psychologist","the chemist","the geneticist",
 	"the virologist","the roboticist","the chef","the bartender","the chaplain","the librarian","a mouse","an ert member",
 	"a beach","the holodeck","a smokey room","a voice","the cold","a mouse","an operating table","the bar","the rain","a skrell",
-	"an unathi","a tajaran","the ai core","the mining station","the research station","a beaker of strange liquid"
+	"an unathi","a tajaran","the ai core","the mining station","the research station","a beaker of strange liquid",
+
+	//Cit dream text!
+	"a teshari","an alarune","a promethean","a vox","a sergal","an akula","a zorren","a nevrean","a chimera","a vasilissan", //actual races not covered in the defaults
+
+	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!
+
+	"more dakka","something indescribable","a tiny prick","family"//other misc. things
 	)
 
 mob/living/carbon/proc/dream()
