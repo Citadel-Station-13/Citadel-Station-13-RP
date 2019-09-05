@@ -22596,7 +22596,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
 	name = "Pathfinder's Office";
-	req_access = list(44)
+	req_access = list(62)
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -22758,6 +22758,9 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/tether/station/explorer_meeting)
+"wUh" = (
+/turf/simulated/wall,
+/area/library_conference_room)
 "wZn" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/weapon/cell/super;
@@ -35002,7 +35005,7 @@ aGL
 aGL
 aGL
 aGL
-aGL
+wUh
 aGL
 aGL
 aac

@@ -56,7 +56,7 @@ END OF CITADEL CHANGE */
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/accessory/holotags
-	display_name = "USDF Holotags"
-	description = "United Sol Defense Force issued ID, Belonging to Nikolai Volkov, DOB 12/12/2537, Blood Type O+"
+	display_name = "USDF dogtags"
+	description = "A pair of USDF dogtags."
 	path = /obj/item/clothing/accessory/collar/donator/holotags
 	ckeywhitelist = list("certifiedhyena")

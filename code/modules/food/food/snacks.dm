@@ -373,20 +373,6 @@
 	. = ..()
 	bitesize = 1
 
-/obj/item/weapon/reagent_containers/food/snacks/dtreat
-	name = "pet treat"
-	desc = "TREAT?!!?!"
-	icon_state = "TREAT!!!"
-	filling_color = "#DBC94F"
-	nutriment_amt = 5
-	nutriment_desc = list("sugar" = 3, "protein" = 2)
-	slot_flags = SLOT_MASK
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/masks_vr.dmi', SPECIES_VOX = 'icons/mob/species/vox/masks.dmi', SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi', SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi', SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi', SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi', SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi', SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi', SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi', SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi', SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi')
-
-/obj/item/weapon/reagent_containers/food/snacks/dtreat/initialize()
-	. = ..()
-	bitesize = 1
-
 /obj/item/weapon/reagent_containers/food/snacks/chocolatebar
 	name = "Chocolate Bar"
 	desc = "Such sweet, fattening food."

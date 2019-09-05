@@ -1,12 +1,5 @@
 var/const/PATHFINDER 		=(1<<13) //VOREStation Edit - Added Pathfinder
 
-var/const/access_pathfinder = 44
-
-/datum/access/pathfinder
-	id = access_pathfinder
-	desc = "Pathfinder"
-	region = ACCESS_REGION_GENERAL
-
 /obj/item/weapon/card/id/science/head/pathfinder
 	name = "\improper Pathfinder's ID"
 	desc = "A card which represents discovery of the unknown."
@@ -28,6 +21,6 @@ var/const/access_pathfinder = 44
 	economic_modifier = 7
 	minimal_player_age = 7
 
-	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_pathfinder, access_tox, access_research, access_gateway)
-	minimal_access = list(access_eva, access_pilot, access_explorer, access_pathfinder, access_tox, access_research, access_gateway)
+	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway)
+	minimal_access = list(access_eva, access_pilot, access_explorer, access_research, access_gateway)
 	outfit_type = /decl/hierarchy/outfit/job/pathfinder

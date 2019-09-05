@@ -1343,30 +1343,6 @@
 		feedback_inc("admin_cookies_spawned",1)
 		H << "<font color='blue'>Your prayers have been answered!! You received the <b>best cookie</b>!</font>"
 
-	else if(href_list["adminspawntreat"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
-
-		var/mob/living/carbon/human/H = locate(href_list["adminspawntreat"])
-		if(!ishuman(H))
-			usr << "This can only be used on instances of type /mob/living/carbon/human"
-			return
-
-		H.equip_to_slot_or_del( new /obj/item/weapon/reagent_containers/food/snacks/dtreat(H), slot_l_hand )
-		if(!(istype(H.l_hand,/obj/item/weapon/reagent_containers/food/snacks/dtreat)))
-			H.equip_to_slot_or_del( new /obj/item/weapon/reagent_containers/food/snacks/dtreat(H), slot_r_hand )
-			if(!(istype(H.r_hand,/obj/item/weapon/reagent_containers/food/snacks/dtreat)))
-				log_admin("[key_name(H)] has their hands full, so they did not receive their treat, spawned by [key_name(src.owner)].")
-				message_admins("[key_name(H)] has their hands full, so they did not receive their treat, spawned by [key_name(src.owner)].")
-				return
-			else
-				H.update_inv_r_hand()//To ensure the icon appears in the HUD
-		else
-			H.update_inv_l_hand()
-		log_admin("[key_name(H)] got their treat, spawned by [key_name(src.owner)]")
-		message_admins("[key_name(H)] got their treat, spawned by [key_name(src.owner)]")
-		feedback_inc("admin_cookies_spawned",1)
-		H << "<font color='blue'>Your prayers have been answered!! You are the <b>bestest</b>!</font>"
-
 	else if(href_list["adminsmite"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
 

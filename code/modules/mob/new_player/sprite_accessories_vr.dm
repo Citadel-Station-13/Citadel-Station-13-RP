@@ -90,67 +90,6 @@
 		icon_state = "hair_ponytail6"
 		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA,SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE)
 
-	messy_1a
-		name = "Messy 1"
-		icon_state = "boyish1"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-//	messy_2a
-//		name = "Messy 2"
-//		icon_state = "boyish2"
-//		icon = 'icons/mob/human_face_vr.dmi'
-//		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	messy_2
-		name = "Messy 2"
-		icon_state = "boyish2b"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	messy_4a
-		name = "Messy 3"
-		icon_state = "boyish4"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	messy_5a
-		name = "Messy 4"
-		icon_state = "boyish5"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	messy_3a
-		name = "Messy 5"
-		icon_state = "boyish3"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	messy_3b
-		name = "Messy 5b"
-		icon_state = "boyish3b"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	blinded
-		name = "Myopia" //another suggestion was 'fringe beliefs'
-		icon_state = "overeyebowl"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	messy_6
-		name = "Bedhead 4"
-		icon_state = "lem"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-	shorthair_2_beta
-		name = "Short Hair 2 (Alternate)"
-		icon_state = "shorthair2beta"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-
-
 	una_hood
 		name = "Cobra Hood"
 		icon = 'icons/mob/human_face_vr.dmi'

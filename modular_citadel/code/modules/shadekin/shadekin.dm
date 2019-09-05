@@ -23,7 +23,7 @@
 	move_to_delay = 2
 	speed = -1
 	see_in_dark = 10 //SHADEkin
-	has_hands = TRUE //paws
+	has_hands = TRUE //Pawbs
 	seedarkness = FALSE //SHAAAADEkin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
@@ -57,7 +57,7 @@
 	response_disarm = "bops the"
 	response_harm = "hits the"
 	attacktext = list("mauled","slashed","clawed")
-	friendly = list("boops", "paws", "mars softly at", "sniffs on")
+	friendly = list("boops", "pawbs", "mars softly at", "sniffs on")
 	reactions = list("Mar?" = "Marrr!", "Mar!" = "Marrr???", "Mar." = "Marrr.")
 
 	vore_active = TRUE

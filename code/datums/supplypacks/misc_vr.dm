@@ -33,9 +33,9 @@
 	containername = "industrial hardsuit crate"
 	access = access_mining
 
-/datum/supply_pack/misc/looksir // CIT Change: Adds a crab crate, that isn't free
-	name = "free crabs"
-	contains = list()
+/datum/supply_pack/misc/looksir
+	name = "free crab"
+	contains = list(
+			/mob/living/simple_animal/crab = 1
+			)
 	cost = 7
-	containertype = /obj/structure/largecrate/animal/crab
-	containername = "Crab Crate"
