@@ -4539,10 +4539,9 @@ END CITADEL CHANGE */
 	bitesize = 1
 	nutriment_amt = 10
 
-/obj/item/weapon/reagent_containers/food/snacks/chipplate/attack_hand(mob/user as mob)
+/obj/item/weapon/reagent_containers/food/snacks/chipplate/attack_hand(mob/user)
+	. = ..()
 	var/obj/item/weapon/reagent_containers/food/snacks/returningitem = new vendingobject(loc)
-	if(!returningitem.reagents)
-		returningitem.initialize()
 	returningitem.reagents.clear_reagents()
 	reagents.trans_to_holder(returningitem.reagents, bitesize)
 	returningitem.bitesize = bitesize/2
