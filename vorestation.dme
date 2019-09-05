@@ -93,6 +93,7 @@
 #include "code\_global_vars\lists\mapping.dm"
 #include "code\_globals\regexes.dm"
 #include "code\_helpers\_core.dm"
+#include "code\_helpers\_global_objects.dm"
 #include "code\_helpers\_global_objects_old.dm"
 #include "code\_helpers\_logging.dm"
 #include "code\_helpers\atmospherics.dm"

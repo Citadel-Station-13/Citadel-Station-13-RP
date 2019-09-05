@@ -7,7 +7,7 @@
 	var/desc = null						// Ditto.
 	var/icon_state = null				// See above.
 	var/mob/living/holder = null		// The mob that this datum is affecting.
-	var/weakref/origin = null			// A weak reference to whatever caused the modifier to appear.  THIS NEEDS TO BE A MOB/LIVING.  It's a weakref to not interfere with qdel().
+	var/datum/weakref/origin = null			// A weak reference to whatever caused the modifier to appear.  THIS NEEDS TO BE A MOB/LIVING.  It's a weakref to not interfere with qdel().
 	var/expire_at = null				// world.time when holder's Life() will remove the datum.  If null, it lasts forever or until it gets deleted by something else.
 	var/on_created_text = null			// Text to show to holder upon being created.
 	var/on_expired_text = null			// Text to show to holder when it expires.

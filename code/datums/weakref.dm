@@ -4,10 +4,10 @@
 			return input
 
 		if(!input.weak_reference)
-			input.weak_reference = new /datum/WEAKREF(input)
+			input.weak_reference = new /datum/weakref(input)
 		return input.weak_reference
 
-/datum/proc/create_WEAKREF()		//Forced creation for admin proccalls
+/datum/proc/create_weakref()		//Forced creation for admin proccalls
 	return WEAKREF(src)
 
 /datum/weakref

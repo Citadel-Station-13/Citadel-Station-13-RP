@@ -47,7 +47,7 @@ D [1]/  ||
 /datum/integrated_io/proc/data_as_type(var/as_type)
 	if(!isweakref(data))
 		return
-	var/weakref/w = data
+	var/datum/weakref/w = data
 	var/output = w.resolve()
 	return istype(output, as_type) ? output : null
 
@@ -82,7 +82,7 @@ list[](
 		return result
 
 	if(isweakref(input))
-		var/weakref/w = input
+		var/datum/weakref/w = input
 		var/atom/A = w.resolve()
 		//return A ? "([A.name] \[Ref\])" : "(null)" // For refs, we want just the name displayed.
 		return A ? "(\ref[A] \[Ref\])" : "(null)"
