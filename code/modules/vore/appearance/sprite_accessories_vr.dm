@@ -386,6 +386,13 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "tesharilowinner"
 
+/datum/sprite_accessory/ears/swooped_bunny
+	name = "Swooped bunny ears (colorable)"
+	desc = ""
+	icon_state = "swooped_bunny"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 
 // Special snowflake ears go below here.
 
@@ -523,7 +530,7 @@
 	desc = ""
 	icon_state = "dragonfly"
 	color_blend_mode = ICON_MULTIPLY
-	
+
 /datum/sprite_accessory/wing/citheroniamoth
 	name = "citheronia wings"
 	desc = ""
