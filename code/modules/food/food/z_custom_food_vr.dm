@@ -123,7 +123,7 @@ var/global/ingredientLimit = 20
 	return new_name
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/Destroy()
-	QDEL_NULL_LIST(ingredients)
+	QDEL_LIST_NULL(ingredients)
 	return ..()
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/proc/drawTopping()
