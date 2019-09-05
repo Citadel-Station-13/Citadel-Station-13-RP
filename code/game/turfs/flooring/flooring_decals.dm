@@ -16,7 +16,6 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/Initialize()
 	add_to_turf_decals()
-	initialized = TRUE
 	return INITIALIZE_HINT_QDEL
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
@@ -45,7 +44,6 @@ var/list/floor_decals = list()
 	if(T.decals && T.decals.len)
 		T.decals.Cut()
 		T.update_icon()
-	initialized = TRUE
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/floor_decal/corner
