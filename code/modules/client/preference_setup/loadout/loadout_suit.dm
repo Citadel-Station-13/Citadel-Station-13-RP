@@ -105,7 +105,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/duster/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/suit/hazard_vest
 	display_name = "hazard vest selection"
@@ -434,7 +434,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/miscellaneous/kimono/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/suit/miscellaneous/sec_dep_jacket
 	display_name = "department jacket, security"
@@ -462,7 +462,7 @@ datum/gear/suit/duster
 
 /datum/gear/suit/miscellaneous/peacoat/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/suit/snowsuit
 	display_name = "snowsuit"

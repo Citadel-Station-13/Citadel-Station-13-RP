@@ -1,3 +1,4 @@
+
 /datum/gear/accessory
 	display_name = "accessory"
 	slot = slot_tie
@@ -24,7 +25,7 @@
 
 /datum/gear/accessory/armband/colored/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/accessory/wallet
 	display_name = "wallet, orange"
@@ -43,7 +44,7 @@
 
 /datum/gear/accessory/wallet/womens/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/accessory/clutch
 	display_name = "clutch bag"
@@ -52,7 +53,7 @@
 
 /datum/gear/accessory/clutch/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/accessory/purse
 	display_name = "purse"
@@ -61,7 +62,7 @@
 
 /datum/gear/accessory/purse/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/accessory/wcoat
 	display_name = "waistcoat selection"

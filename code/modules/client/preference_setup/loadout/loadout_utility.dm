@@ -154,7 +154,7 @@
 
 /datum/gear/utility/wheelchair/color/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/utility/umbrella
 	display_name = "Umbrella"
@@ -163,4 +163,4 @@
 
 /datum/gear/utility/umbrella/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)

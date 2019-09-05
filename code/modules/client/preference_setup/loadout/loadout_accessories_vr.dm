@@ -53,7 +53,7 @@ END OF CITADEL CHANGE */
 
 /datum/gear/accessory/flops/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/accessory/holotags
 	display_name = "USDF Holotags"

@@ -88,7 +88,7 @@
 
 /datum/gear/towel/New()
 	..()
-	gear_tweaks = list(gear_tweak_free_color_choice)
+	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
 
 /datum/gear/cahwhite
 	display_name = "Cards Against The Galaxy (white deck)"
