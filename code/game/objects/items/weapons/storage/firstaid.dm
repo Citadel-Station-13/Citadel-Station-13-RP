@@ -17,7 +17,7 @@
 	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
 //	var/list/icon_variety // VOREStation edit
 
-/obj/item/weapon/storage/firstaid/initialize()
+/obj/item/weapon/storage/firstaid/Initialize()
 	. = ..()
 //	if(icon_variety) // VOREStation edit
 //		icon_state = pick(icon_variety)
@@ -246,7 +246,7 @@
 		else
 			icon_state = "[base_icon]_[bottle_color]"
 
-/obj/item/weapon/storage/pill_bottle/initialize()
+/obj/item/weapon/storage/pill_bottle/Initialize()
 	. = ..()
 	if(base_icon == "pill_canister")
 		verbs += /obj/item/weapon/storage/pill_bottle/proc/choose_color

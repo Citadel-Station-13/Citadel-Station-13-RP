@@ -484,8 +484,6 @@
 	CI.container.reagents.trans_to_holder(buffer, CI.container.reagents.total_volume)
 
 	var/obj/item/weapon/reagent_containers/food/snacks/result = new cook_path(CI.container)
-	if(!result.reagents)
-		result.initialize()
 	buffer.trans_to_holder(result.reagents, buffer.total_volume)
 
 	//Filling overlay

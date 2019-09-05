@@ -258,7 +258,7 @@
 // If the GLOB system is ever ported, you can change this macro in one place and have less work to do than you otherwise would.
 #define GLOBAL_LIST_BOILERPLATE(LIST_NAME, PATH)\
 GLOBAL_LIST_EMPTY(##LIST_NAME);\
-##PATH/initialize(mapload, ...)\
+##PATH/Initialize(mapload, ...)\
 	{\
 	GLOB.##LIST_NAME += src;\
 	return ..();\

@@ -17,7 +17,7 @@
 	idle_power_usage = 100
 	anchored = 1
 
-/obj/machinery/chemical_dispenser/initialize()
+/obj/machinery/chemical_dispenser/Initialize()
 	..()
 
 	if(spawn_cartridges)
