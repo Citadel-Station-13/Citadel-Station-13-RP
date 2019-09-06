@@ -30,6 +30,8 @@
 	var/max_queue_len = 3						// How many songs are we allowed to queue up?
 	var/list/queue = list()
 	//VOREStation Add End
+	var/current_genre = "Electronic" //What is our current genre?
+	var/list/genres = list("Electronic", "Rock", "Orchestral", "Folk", "Jazz", "Western") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
@@ -53,10 +55,8 @@
 	)
 
 /obj/machinery/media/jukebox/New()
-	..()
+	. = ..()
 	default_apply_parts()
-	wires = new/datum/wires/jukebox(src)
-	update_icon()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
@@ -66,10 +66,14 @@
 // On initialization, copy our tracks from the global list
 /obj/machinery/media/jukebox/Initialize()
 	. = ..()
+	wires = new/datum/wires/jukebox(src)
+	update_icon()
 	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
 		tracks.Cut()
 		secret_tracks.Cut()
 		for(var/datum/track/T in all_jukebox_tracks) //Load them
+			if(!T.jukebox)
+				continue
 			if(T.secret)
 				secret_tracks |= T
 			else
@@ -203,6 +207,9 @@
 		if(istype(T))
 			current_track = T
 			StartPlaying()
+	else if(href_list["change_genre"])
+		var/new_genre = input("Choose Genre", "Genre Selection") in genres
+		current_genre = new_genre
 	else if(href_list["loopmode"])
 		var/newval = text2num(href_list["loopmode"])
 		loop_mode = sanitize_inlist(newval, list(JUKEMODE_NEXT, JUKEMODE_RANDOM, JUKEMODE_REPEAT_SONG, JUKEMODE_PLAY_ONCE), loop_mode)
@@ -259,8 +266,12 @@
 			data["current_track"] = current_track.toNanoList()
 		data["percent"] = playing ? min(100, round(world.time - media_start_time) / current_track.duration) : 0;
 
+		data["current_genre"] = current_genre
+
 		var/list/nano_tracks = new
 		for(var/datum/track/T in tracks)
+			if(T.genre != current_genre)
+				continue
 			nano_tracks[++nano_tracks.len] = T.toNanoList()
 		data["tracks"] = nano_tracks
 
