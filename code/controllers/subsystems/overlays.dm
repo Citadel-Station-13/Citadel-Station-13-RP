@@ -10,10 +10,6 @@ SUBSYSTEM_DEF(overlays)
 	var/list/overlay_icon_state_caches	// Cache thing
 	var/list/overlay_icon_cache			// Cache thing
 
-var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
-
 /datum/controller/subsystem/overlays/PreInit()
 	overlay_icon_state_caches = list()
 	overlay_icon_cache = list()

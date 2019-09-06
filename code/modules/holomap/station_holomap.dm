@@ -114,18 +114,18 @@
 	// TODO - This part!! ~Leshana
 	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
 		if(user.client)
-			holomap_datum.station_map.loc = global_hud.holomap  // Put the image on the holomap hud
+			holomap_datum.station_map.loc = GLOB.global_hud.holomap  // Put the image on the holomap hud
 			holomap_datum.station_map.alpha = 0 // Set to transparent so we can fade in
 			animate(holomap_datum.station_map, alpha = 255, time = 5, easing = LINEAR_EASING)
 			flick("station_map_activate", src)
 			// Wait, if wea re not modifying the holomap_obj... can't it be part of the global hud?
-			user.client.screen |= global_hud.holomap // TODO - HACK! This should be there permenently really.
+			user.client.screen |= GLOB.global_hud.holomap // TODO - HACK! This should be there permenently really.
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
 			GLOB.moved_event.register(watching_mob, src, /obj/machinery/station_map/proc/checkPosition)
 			GLOB.dir_set_event.register(watching_mob, src, /obj/machinery/station_map/proc/checkPosition)
-			destroyed_event.register(watching_mob, src, /obj/machinery/station_map/proc/stopWatching)
+			GLOB.destroyed_event.register(watching_mob, src, /obj/machinery/station_map/proc/stopWatching)
 			update_use_power(2)
 
 			if(bogus)
@@ -154,7 +154,7 @@
 				M.client.images -= holomap_datum.station_map
 		GLOB.moved_event.unregister(watching_mob, src)
 		GLOB.dir_set_event.unregister(watching_mob, src)
-		destroyed_event.unregister(watching_mob, src)
+		GLOB.destroyed_event.unregister(watching_mob, src)
 	watching_mob = null
 	update_use_power(1)
 

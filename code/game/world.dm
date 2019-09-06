@@ -643,3 +643,17 @@ proc/establish_old_db_connection()
 		return 1
 
 #undef FAILED_DB_CONNECTION_CUTOFF
+
+/world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
+	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
+		new_value = TRUE
+	else
+		new_value = FALSE
+	if(new_value == visibility)
+		return
+
+	visibility = new_value
+	if(visibility)
+		hub_password = "kMZy3U5jJHSiBQjr"
+	else
+		hub_password = "SORRYNOPASSWORD"

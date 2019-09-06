@@ -1,5 +1,8 @@
 var/list/admin_datums = list()
 
+GLOBAL_VAR_INIT(href_token, GenerateToken())
+GLOBAL_PROTECT(href_token)
+
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
@@ -13,6 +16,7 @@ var/list/admin_datums = list()
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
 	var/admincaster_signature	//What you'll sign the newsfeeds as
 
+	var/href_token
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
@@ -102,3 +106,41 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		holder.disassociate()
 		//qdel(holder)
 	return 1
+
+/proc/GenerateToken()
+	. = ""
+	for(var/I in 1 to 32)
+		. += "[rand(10)]"
+
+/proc/RawHrefToken(forceGlobal = FALSE)
+	var/tok = GLOB.href_token
+	if(!forceGlobal && usr)
+		var/client/C = usr.client
+		if(!C)
+			CRASH("No client for HrefToken()!")
+		var/datum/admins/holder = C.holder
+		if(holder)
+			tok = holder.href_token
+	return tok
+
+/proc/HrefToken(forceGlobal = FALSE)
+	return "admin_token=[RawHrefToken(forceGlobal)]"
+
+/proc/HrefTokenFormField(forceGlobal = FALSE)
+	return "<input type='hidden' name='admin_token' value='[RawHrefToken(forceGlobal)]'>"
+
+/datum/admins/proc/CheckAdminHref(href, href_list)
+	return TRUE
+	/*			Disabled
+	var/auth = href_list["admin_token"]
+	. = auth && (auth == href_token || auth == GLOB.href_token)
+	if(.)
+		return
+	var/msg = !auth ? "no" : "a bad"
+	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
+	if(CONFIG_GET(flag/debug_admin_hrefs))
+		message_admins("Debug mode enabled, call not blocked. Please ask your coders to review this round's logs.")
+		log_world("UAH: [href]")
+		return TRUE
+	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
+	*/

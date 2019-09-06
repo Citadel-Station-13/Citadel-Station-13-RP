@@ -17,7 +17,7 @@
 	shuttle_name = "Excursion Shuttle"
 	destinations = list(/datum/shuttle_destination/excursion/alienship)
 
-/obj/shuttle_connector/alienship
+/obj/shuttle_connector/alienship/Initialize(mapload)
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 

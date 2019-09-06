@@ -61,7 +61,7 @@
 
 /proc/log_access_in(client/new_client)
 	if (config.log_access)
-		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"			
+		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"
 		WRITE_LOG(diary, "ACCESS IN: [message]")
 
 /proc/log_access_out(mob/last_mob)
@@ -108,6 +108,10 @@
 /proc/log_eventsay(text, mob/speaker)
 	if (config.log_adminchat)
 		WRITE_LOG(diary, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
+
+/* Log to the logfile only. */
+/proc/log_runtime(text)
+	WRITE_LOG(error_log, text)
 
 /proc/log_ghostsay(text, mob/speaker)
 	if (config.log_say)
@@ -222,7 +226,7 @@
 
 			if(include_link && is_special_character(M) && highlight_special_characters)
 				name = "<font color='#FFA500'>[name]</font>" //Orange
-		
+
 		. += "/([name])"
 
 	return .
