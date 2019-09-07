@@ -62,7 +62,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/shipname = pick(source.ship_names)			//Pick a random ship name
 	var/destname = pick(source.destination_names)		//destination is where?
 	var/scan_exempted = source.scan_exempt			//am I exempted from routine scans and certain other events?
-	
+
 	var/fakeowner = fakeiff.short_name
 	var/fakeprefix = pick(fakeiff.ship_prefixes)			//Pick a random prefix
 	var/fakeshipname = pick(fakeiff.ship_names)			//Pick a random ship name
@@ -100,7 +100,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 		//a few groups won't be scanned, won't trigger wrong-frequency messages, can be faked, won't report unusual activity, won't receive course warnings, and won't be denied docks or undocks ("hey SDF?" "yeah?" "we impounded you for security violations" "what the fuck steve")
 	else
 		chatter_type = pick(5;"emerg",5;"wrong_freq",25;"policescan",25;"policeflee",10;"strangeactivity",25;"traveladvisory",30;"pathwarning",30;"dockingrequestgeneric",30;"dockingrequestdenied",30;"dockingrequestsupply",30;"dockingrequestrepair",30;"dockingrequestmedical",30;"dockingrequestsecurity",30;"undockingrequest",30;"undockingdenied","normal") //Be nice to have wrong_lang...
-	
+
 	var/yes = prob(90) //Chance for them to say yes vs no
 
 	var/request = pick(requests)

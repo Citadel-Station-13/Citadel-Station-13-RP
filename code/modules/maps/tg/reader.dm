@@ -302,11 +302,11 @@
 						if(istext(value))
 							fields[I] = apply_text_macros(value)
 
-			// Rotate dir if orientation isn't south (default)
+			/*// Rotate dir if orientation isn't south (default)
 			if(fields["dir"])
 				fields["dir"] = turn(fields["dir"], dir2angle(orientation) + 180)
 			else
-				fields["dir"] = turn(SOUTH, dir2angle(orientation) + 180)
+				fields["dir"] = turn(SOUTH, dir2angle(orientation) + 180)*/
 
 			//then fill the members_attributes list with the corresponding variables
 			members_attributes.len++
