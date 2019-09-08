@@ -853,3 +853,6 @@
 	name = "hazard cohesion suit"
 	desc = "An orange cohesion suit with yellow hazard stripes intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit_hazard"
+
+/obj/item/clothing/under/permit
+	desc = "This permit entitles the bearer to conduct their duties without a uniform, so long as they are furred or have no visible genitalia."

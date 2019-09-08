@@ -9,6 +9,7 @@
 	canhear_range = 0 // can't hear headsets from very far away
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ears.dmi')
+	var/ear_protection = 0
 
 	var/translate_binary = 0
 	var/translate_hive = 0
@@ -111,6 +112,7 @@
 	desc = "This is used by your elite security force."
 	icon_state = "sec_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/headset_sec
+	ear_protection = 2
 
 /obj/item/device/radio/headset/headset_eng
 	name = "engineering radio headset"
@@ -160,6 +162,7 @@
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/headset_com
 
+
 /obj/item/device/radio/headset/headset_adj //Citadel Add: Secretary headset with service and command.
 	name = "secretary radio headset"
 	desc = "A headset for those who serve command."
@@ -171,6 +174,7 @@
 	desc = "A headset with a commanding channel."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/headset_com
+	ear_protection = 2
 
 
 /obj/item/device/radio/headset/heads/captain
@@ -184,6 +188,7 @@
 	desc = "The headset of the boss."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/heads/captain
+	ear_protection = 2
 
 /obj/item/device/radio/headset/heads/captain/sfr
 	name = "SFR headset"

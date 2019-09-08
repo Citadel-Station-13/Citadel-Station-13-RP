@@ -807,11 +807,11 @@ END OF CITADEL CHANGE */
 		var/mob/living/carbon/human/H = user
 		if(H.head == src)
 			H.update_inv_head()
-
+*/
 /obj/item/weapon/rig/light/hacker/fluff/aronai
-	name = "KHI-99-AAR suit module"
+	name = "FTU Suit Module"
 	suit_type = "nano"
-	desc = "A thin collapsable spacesuit for synths from Kitsuhana Heavy Industries."
+	desc = "A collapsible void-suit for synthetics from the Free Trade Union."
 	airtight = 1 //Not because it should be airtight but because suit coolers don't work w/o it.
 	armor = list(melee = 25, bullet = 15, laser = 15, energy = 60, bomb = 30, bio = 70, rad = 100)
 	air_type = null //No O2 tank, why would it have one?
@@ -823,7 +823,7 @@ END OF CITADEL CHANGE */
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/teleporter
 		)
-
+/*
 //Viveret:Keturah
 /obj/item/clothing/under/dress/maid
 	name = "Maid Outfit"
@@ -915,40 +915,40 @@ END OF CITADEL CHANGES */
 	item_state = ""
 
 /obj/item/clothing/under/rank/khi/cmd //Command version
-	name = "KHI command suit"
-	desc = "Kitsuhana Heavy Industries uniform. An extra-comfortable command one, at that. I guess if you DON'T want anarchy for some reason."
+	name = "FTU Command Suit"
+	desc = "Comfortable, seamless, exactly what a master of trade deserves. You've earned this uniform."
 	icon_state = "khi_uniform_cmd_i"
 	item_state = "khi_uniform_cmd"
 	worn_state = "khi_uniform_cmd"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/khi/sec //Security version
-	name = "KHI security suit"
-	desc = "Kitsuhana Heavy Industries uniform. This one has angry red security stripes. Keepin' the peace in style."
+	name = "FTU security suit"
+	desc = "A light weave allows the wearer to stay agile. Nobody breaches the vault on your watch."
 	icon_state = "khi_uniform_sec_i"
 	item_state = "khi_uniform_sec"
 	worn_state = "khi_uniform_sec"
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/khi/med //Medical version
-	name = "KHI medical suit"
-	desc = "Kitsuhana Heavy Industries uniform. The medical version. Why not just get a new body, anyway?"
+	name = "FTU medical suit"
+	desc = "A pound of flesh, a common down payment in the space of the Free Trade Union. Those in need are in no position to haggle."
 	icon_state = "khi_uniform_med_i"
 	item_state = "khi_uniform_med"
 	worn_state = "khi_uniform_med"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/rank/khi/eng //Engineering version
-	name = "KHI engineering suit"
-	desc = "Kitsuhana Heavy Industries uniform. One fit for an engineer, by the looks of it. Building the future, one disaster at a time."
+	name = "FTU engineering suit"
+	desc = "The various ships and stations of the Free Trade Union require constant maintenance, and such a service does not come cheap."
 	icon_state = "khi_uniform_eng_i"
 	item_state = "khi_uniform_eng"
 	worn_state = "khi_uniform_eng"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10)
 
 /obj/item/clothing/under/rank/khi/sci //Science version
-	name = "KHI science suit"
-	desc = "Kitsuhana Heavy Industries uniform. For performing science in, based on the color! Only SCIENCE can save us now."
+	name = "FTU science suit"
+	desc = "In the constantly changing field of the Free Trade Union, plots and schemes change by the hour. Yet nobody heeds the alchemist in the lab."
 	icon_state = "khi_uniform_sci_i"
 	item_state = "khi_uniform_sci"
 	worn_state = "khi_uniform_sci"
@@ -1808,8 +1808,8 @@ END OF CITADEL CHANGES */
 END OF CITADEL CHANGES */
 //Nepox:Annie Rose
 /obj/item/clothing/accessory/sweater/fluff/annie
-	name = "Lazy Annie's Lazy Sweater"
-	desc = "A cozy sweater that's probably far too long for it's owner.  She's too lazy to care though."
+	name = "Lazy Sweater"
+	desc = "A cozy sweater that's probably far too long for its' owner. Really."
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "sweater_annie"

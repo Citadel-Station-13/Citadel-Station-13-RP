@@ -219,6 +219,20 @@
 	SA_bonus_damage = 45	// 50 total on animals
 	SA_vulnerability = SA_ANIMAL
 
+/obj/item/projectile/beam/stun/disabler	//pseudo disabler
+	name = "disabler beam"
+	icon_state = "stun"
+	taser_effect = 0
+	agony = 20
+
+	muzzle_type = /obj/effect/projectile/lightning/tracer
+	tracer_type = /obj/effect/projectile/lightning/muzzle
+	impact_type = /obj/effect/projectile/lightning/impact
+
+/obj/item/projectile/energy/electrode/goldenbolt	//MIGHTY GOLDEN BOLT
+	name = "taser bolt"
+	agony = 80
+
 /obj/item/projectile/energy/phase/light
 	kill_count = 4
 	SA_bonus_damage = 35	// 40 total on animals

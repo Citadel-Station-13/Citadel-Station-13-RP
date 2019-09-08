@@ -6,7 +6,7 @@
 //The backup implant itself
 /obj/item/weapon/implant/backup
 	name = "backup implant"
-	desc = "A mindstate backup implant that occasionally stores a copy of one's mind on a central server for backup purposes."
+	desc = "An implant that stores a copy of the brainwaves on a central server."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "backup_implant"
 //CITADEL CHANGE - ALTERING IMPLANT DATA
@@ -37,7 +37,7 @@
 //New, modern implanter instead of old style implanter.
 /obj/item/weapon/backup_implanter
 	name = "backup implanter"
-	desc = "After discovering that Nanotrasen was just re-using the same implanters over and over again on organics, leading to cross-contamination, Kitsuhana Heavy industries designed this self-cleaning model. Holds four backup implants at a time."
+	desc = "A self-cleaning device from Vey-Med, the backup implanter can safely be used on various crew without the need to change needles. Holds four backup implants."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "bimplant"
 	item_state = "syringe_0"
@@ -124,7 +124,7 @@
 //The box of backup implants
 /obj/item/weapon/storage/box/backup_kit
 	name = "backup implant kit"
-	desc = "Box of stuff used to implant backup implants."
+	desc = "A standard Vey-Med case of backup implants."
 	icon_state = "implant"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 

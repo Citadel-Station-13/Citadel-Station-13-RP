@@ -71,6 +71,18 @@
 							 "<span class='notice'>You throw [src]. It lands on a [result]. [comment]</span>", \
 							 "<span class='notice'>You hear [src] landing on a [result]. [comment]</span>")
 
+/obj/item/weapon/dice/throw_impact(atom/hit_atom)
+	result = rand(1, sides)
+	icon_state = "[name][result]"
+
+	var/comment = ""
+	if(sides == 20 && result == 20)
+		comment = "Nat 20!"
+	else if(sides == 20 && result == 1)
+		comment = "Ouch, bad luck."
+
+	visible_message("<span class='notice'>The [src] lands on [result]. [comment]</span>", "", "")
+
 /*
  * Dice packs
  */

@@ -388,6 +388,8 @@
 	icon_state = "beanie"
 	addblends = "beanie_a"
 	body_parts_covered = 0
+	..()
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -395,6 +397,9 @@
 	icon_state = "beanie_hang"
 	addblends = "beanie_hang_a"
 	body_parts_covered = 0
+	..()
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+
 
 /obj/item/clothing/head/beretg
 	name = "beret"

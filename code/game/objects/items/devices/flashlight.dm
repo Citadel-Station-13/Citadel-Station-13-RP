@@ -475,3 +475,6 @@
 
 /obj/item/device/flashlight/slime/attack_self(mob/user)
 	return //Bio-luminescence does not toggle.
+
+/obj/item/device/flashlight/AltClick(mob/user)//citadel edit
+	attack_self(user)

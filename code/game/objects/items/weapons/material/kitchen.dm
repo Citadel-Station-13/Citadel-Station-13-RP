@@ -63,6 +63,12 @@
 /obj/item/weapon/material/kitchen/utensil/fork/plastic
 	default_material = "plastic"
 
+/obj/item/weapon/material/kitchen/utensil/fork/plasteel
+	default_material = "plasteel"
+
+/obj/item/weapon/material/kitchen/utensil/fork/durasteel
+	default_material = "durasteel"
+
 /obj/item/weapon/material/kitchen/utensil/spoon
 	name = "spoon"
 	desc = "It's a spoon. You can see your own upside-down face in it."
@@ -74,6 +80,12 @@
 
 /obj/item/weapon/material/kitchen/utensil/spoon/plastic
 	default_material = "plastic"
+
+/obj/item/weapon/material/kitchen/utensil/spoon/plasteel
+	default_material = "plasteel"
+
+/obj/item/weapon/material/kitchen/utensil/spoon/durasteel
+	default_material = "durasteel"
 
 /*
  * Knives
@@ -90,6 +102,13 @@
 /obj/item/weapon/material/knife/plastic
 	default_material = "plastic"
 
+/obj/item/weapon/material/knife/plasteel
+	default_material = "plasteel"
+
+/obj/item/weapon/material/knife/durasteel
+	default_material = "durasteel"
+
+
 /*
  * Rolling Pins
  */
@@ -103,6 +122,12 @@
 	force_divisor = 0.7 // 10 when wielded with weight 15 (wood)
 	dulled_divisor = 0.75	// Still a club
 	thrown_force_divisor = 1 // as above
+
+/obj/item/weapon/material/kitchen/rollingpin/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/kitchen/rollingpin/durasteel
+  default_material = "durasteel"
 
 /obj/item/weapon/material/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))

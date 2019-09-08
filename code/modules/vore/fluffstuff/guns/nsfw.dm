@@ -1,12 +1,10 @@
 // -------------- NSFW -------------
 /obj/item/weapon/gun/projectile/nsfw
-	name = "KHI-102b \'NSFW\'"
-	desc = "Variety is the spice of life! The 'Nanotech Selectable-Fire Weapon' is an unholy hybrid of an ammo-driven \
-	energy weapon that allows the user to mix and match their own fire modes. Up to three combinations of \
-	energy beams can be configured at once. Ammo not included."
+	name = "Hephaestus Hydra"
+	desc = "The Hydra is a recent product from Hephaestus Industries, offering such a variety of fire modes that combatants will not know what to expect."
 
-	description_info = "This gun is an energy weapon that uses interchangable microbatteries in a magazine. Each battery is a different beam type, and up to three can be loaded in the magazine. Each battery usually provides four discharges of that beam type, and multiple from the same type may be loaded to increase the number of shots for that type."
-	description_fluff = "The Kitsuhana 'Nanotech Selectable Fire Weapon' allows one to customize their loadout in the field, or before deploying, to achieve various results in a weapon they are already familiar with wielding."
+	description_info = "The Hydra is an energy weapon that uses various special Hydra Batteries in its magazine. Each battery has different results, up to three fitting in a magazine. Each battery is good for four shots, adding up to a total of twelve possible shots in a magazine."
+	description_fluff = "The Hephaestus Industries \'Hydra\' allows the mercenary on-the-go to change their approach when needed, with only a single weapon."
 	description_antag = ""
 
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -143,10 +141,10 @@
 
 // The Magazine //
 /obj/item/ammo_magazine/nsfw_mag
-	name = "microbattery magazine"
-	desc = "A microbattery holder for the \'NSFW\'"
+	name = "hydra battery magazine"
+	desc = "A microbattery holder for the \'Hydra\'"
 
-	description_info = "This magazine holds NSFW microbatteries to power the NSFW handgun. Up to three can be loaded at once, and each provides four shots of their respective energy type. Loading multiple of the same type will provide additional shots of that type. The batteries can be recharged in a normal recharger."
+	description_info = "This magazine holds Hydra microbatteries. Up to three can be loaded at once, each providing four shots. Hydra microbatteries are rechargeable."
 
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_mag"
@@ -184,7 +182,7 @@
 
 // The Casing //
 /obj/item/ammo_casing/nsfw_batt
-	name = "\'NSFW\' microbattery - UNKNOWN"
+	name = "Hydra microbattery - UNKNOWN"
 	desc = "A miniature battery for an energy weapon."
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_batt"
@@ -218,31 +216,31 @@
 
 // Specific batteries //
 /obj/item/ammo_casing/nsfw_batt/lethal
-	name = "\'NSFW\' microbattery - LETHAL"
+	name = "Hydra microbattery - LETHAL"
 	type_color = "#bf3d3d"
 	type_name = "<span style='color:#bf3d3d;font-weight:bold;'>LETHAL</span>"
 	projectile_type = /obj/item/projectile/beam
 
 /obj/item/ammo_casing/nsfw_batt/stun
-	name = "\'NSFW\' microbattery - STUN"
+	name = "Hydra microbattery - STUN"
 	type_color = "#0f81bc"
 	type_name = "<span style='color:#0f81bc;font-weight:bold;'>STUN</span>"
 	projectile_type = /obj/item/projectile/beam/stun/blue
 
 /obj/item/ammo_casing/nsfw_batt/net
-	name = "\'NSFW\' microbattery - NET"
+	name = "Hydra microbattery - NET"
 	type_color = "#43f136"
 	type_name = "<span style='color:#43d136;font-weight:bold;'>NET</span>"
 	projectile_type = /obj/item/projectile/beam/energy_net
 
 /obj/item/ammo_casing/nsfw_batt/xray
-	name = "\'NSFW\' microbattery - XRAY"
+	name = "Hydra microbattery - XRAY"
 	type_color = "#32c025"
 	type_name = "<span style='color:#32c025;font-weight:bold;'>XRAY</span>"
 	projectile_type = /obj/item/projectile/beam/xray
 
 /obj/item/ammo_casing/nsfw_batt/shotstun
-	name = "\'NSFW\' microbattery - SCATTERSTUN"
+	name = "Hydra microbattery - SCATTERSTUN"
 	type_color = "#88ffff"
 	type_name = "<span style='color:#88ffff;font-weight:bold;'>SCATTERSTUN</span>"
 	projectile_type = /obj/item/projectile/bullet/pellet/e_shot_stun
@@ -260,13 +258,13 @@
 	check_armour = "melee"
 
 /obj/item/ammo_casing/nsfw_batt/ion
-	name = "\'NSFW\' microbattery - ION"
+	name = "Hydra microbattery - ION"
 	type_color = "#d084d6"
 	type_name = "<span style='color:#d084d6;font-weight:bold;'>ION</span>"
 	projectile_type = /obj/item/projectile/ion/small
 
 /obj/item/ammo_casing/nsfw_batt/stripper
-	name = "\'NSFW\' microbattery - STRIPPER"
+	name = "Hydra microbattery - STRIPPER"
 	type_color = "#fc8d0f"
 	type_name = "<span style='color:#fc8d0f;font-weight:bold;'>STRIPPER</span>"
 	projectile_type = /obj/item/projectile/bullet/stripper
@@ -296,7 +294,7 @@
 	..()
 
 /obj/item/ammo_casing/nsfw_batt/final
-	name = "\'NSFW\' microbattery - FINAL OPTION"
+	name = "Hydra microbattery - FINAL OPTION"
 	type_color = "#fcfc0f"
 	type_name = "<span style='color:#000000;font-weight:bold;'>FINAL OPTION</span>" //Doesn't look good in yellow in chat
 	projectile_type = /obj/item/projectile/beam/final_option
@@ -339,8 +337,8 @@
 	projectile_type = /obj/item/projectile/beam/growlaser
 */
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack
-	name = "\improper KHI-102b \'NSFW\' gun kit"
-	desc = "A storage case for a multi-purpose handgun. Variety hour!"
+	name = "\improper Hephaestus Hydra gun kit"
+	desc = "A gun case for the Hephaestus Hydra."
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack/New()
@@ -351,8 +349,8 @@
 		new path(src)
 
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos
-	name = "\improper KHI-102b \'NSFW\' gun kit"
-	desc = "A storage case for a multi-purpose handgun. Variety hour!"
+	name = "\improper Hephaestus Hydra gun kit"
+	desc = "A gun case for the Hephaestus Hydra."
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos/New()

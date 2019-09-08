@@ -15,9 +15,9 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 //Nanotech Implant Foundation
 /obj/item/device/nif
 	name = "nanite implant framework"
-	desc = "A somewhat diminished knockoff of a Kitsuhana nano working surface, in a box. Can print new \
-	implants inside living hosts on the fly based on software uploads. Must be surgically \
-	implanted in the head to work. May eventually wear out and break."
+	desc = "A standard Nanotrasen nanotechnology fabricator, now the size of an antique stamp. Prints new \
+	implants inside hosts based on software uploads. Must be surgically \
+	implanted in the head to work. Being on the bleeding edge of knockoff technology, it will likely wear out and break."
 
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "nif_0"
@@ -563,9 +563,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	durability = 10
 
 /obj/item/device/nif/authentic
-	name = "\improper Kitsuhana NIF"
-	desc = "An actual Kitsuhana working surface, in a box. From a society slightly less afraid \
-	of self-replicating nanotechnology. Basically just a high-endurance NIF."
+	name = "\improper Vey-Med NIF"
+	desc = "A genuine Vey-Med nanotechnology fabricator, now the size of a shiny antique stamp. Far more durable than any knockoffs on the market."
 	durability = 1000
 
 /obj/item/device/nif/bioadap

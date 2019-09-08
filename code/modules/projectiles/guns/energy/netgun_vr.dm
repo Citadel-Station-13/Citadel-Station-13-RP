@@ -1,7 +1,6 @@
 /obj/item/weapon/gun/energy/netgun
-	name = "\improper KHI \"Hunter\" capture gun"
-	desc = "A Kitsuhana-designed 'non-lethal capture device' stunner and energy net launcher, \
-			for when you want criminals to stop acting like they're on a 20th century British comedy sketch show."
+	name = "Hephaestus \'Retiarius\'"
+	desc = "The Hephaestus Industries 'Retiarius' stuns targets, immobilizing them in an energized net field."
 	icon = 'icons/obj/gun_vr.dmi'
 	icon_state = "hunter"
 	item_state = "gun" // Placeholder

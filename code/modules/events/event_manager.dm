@@ -21,7 +21,9 @@
 	var/datum/event_meta/new_event = new
 
 /datum/event_manager/New()
+	..()
 	allEvents = typesof(/datum/event) - /datum/event
+	report_at_round_end = 1 //So people can see what admins have been up to regarding events. Can be disabled by admins for a round.
 
 /datum/event_manager/proc/process()
 	for(var/datum/event/E in event_manager.active_events)

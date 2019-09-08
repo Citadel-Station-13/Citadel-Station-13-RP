@@ -8,6 +8,12 @@
 	force_divisor = 0.3 // 18 with hardness 60 (steel)
 	attack_verb = list("jabbed","stabbed","ripped")
 
+/obj/item/weapon/material/harpoon/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/harpoon/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/machete/hatchet
 	name = "hatchet"
 	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
@@ -22,6 +28,9 @@
 	attack_verb = list("chopped", "torn", "cut")
 	applies_material_colour = 0
 
+/obj/item/weapon/material/knife/machete/hatchet/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
@@ -30,6 +39,9 @@
 	attack_verb = list("ripped", "torn", "cut")
 	can_cleave = FALSE
 	var/hits = 0
+
+/obj/item/weapon/material/knife/machete/hatchet/unathiknife/durasteel
+  default_material = "durasteel"
 
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
 	if(hits > 0)
@@ -56,6 +68,13 @@
 	dulled_divisor = 0.75	//Still metal on a long pole
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
+
+/obj/item/weapon/material/minihoe/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/minihoe/durasteel
+  default_material = "durasteel"
+
 
 /obj/item/weapon/material/snow/snowball
 	name = "loose packed snowball"

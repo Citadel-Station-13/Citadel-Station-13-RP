@@ -15,6 +15,8 @@
 	throw_speed = 2
 	throw_range = 8
 	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
+	slot_flags = SLOT_BELT
+
 //	var/list/icon_variety // VOREStation edit
 
 /obj/item/weapon/storage/firstaid/initialize()

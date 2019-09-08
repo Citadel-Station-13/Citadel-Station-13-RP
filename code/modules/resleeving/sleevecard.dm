@@ -3,7 +3,7 @@
 
 /obj/item/device/sleevecard
 	name = "sleevecard"
-	desc = "This KHI-upgraded pAI module has enough capacity to run a whole mind of human-level intelligence."
+	desc = "This Vey-Med upgraded pAI module has enough capacity to run a whole mind of human-level intelligence."
 
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pai"

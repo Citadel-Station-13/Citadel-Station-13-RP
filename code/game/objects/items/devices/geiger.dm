@@ -58,6 +58,9 @@
 	update_icon()
 	to_chat(user, "<span class='notice'>\icon[src] You switch [scanning ? "on" : "off"] \the [src].</span>")
 
+/obj/item/device/geiger/AltClick(var/mob/user)//citadel edit
+	attack_self(user)
+
 /obj/item/device/geiger/update_icon()
 	if(!scanning)
 		icon_state = "geiger_off"

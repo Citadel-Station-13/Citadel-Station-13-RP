@@ -10,8 +10,14 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
+/obj/item/weapon/material/sword/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/sword/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	
+
 	if(default_parry_check(user, attacker, damage_source) && prob(50))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
@@ -28,6 +34,13 @@
 	desc = "Woefully underpowered in D20. This one looks pretty sharp."
 	icon_state = "katana"
 	slot_flags = SLOT_BELT | SLOT_BACK
+
+/obj/item/weapon/material/sword/katana/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/sword/katana/durasteel
+  default_material = "durasteel"
+
 
 /obj/item/weapon/material/sword/katana/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

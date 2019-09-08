@@ -96,6 +96,13 @@
 	applies_material_colour = 0
 	can_cleave = TRUE
 
+/obj/item/weapon/material/twohanded/fireaxe/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/twohanded/fireaxe/durasteel
+  default_material = "durasteel"
+
+
 /obj/item/weapon/material/twohanded/fireaxe/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
@@ -134,6 +141,12 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
+/obj/item/weapon/material/twohanded/fireaxe/scythe/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/twohanded/fireaxe/scythe/durasteel
+  default_material = "durasteel"
+
 //spears, bay edition
 /obj/item/weapon/material/twohanded/spear
 	icon_state = "spearglass0"
@@ -157,3 +170,10 @@
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 14
+
+/obj/item/weapon/material/twohanded/spear/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/twohanded/spear/durasteel
+  default_material = "durasteel"
+

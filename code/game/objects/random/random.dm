@@ -3,8 +3,6 @@
 	desc = "This item type is used to spawn random objects at round-start"
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "rup"
-	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
-
 
 // creates a new object and deletes itself
 /obj/random/New()
@@ -17,14 +15,8 @@
 			spawn_item()
 		qdel(src)
 
-
-// this function should return a specific item to spawn
-/obj/random/proc/item_to_spawn()
-	return 0
-
-
 // creates the random item
-/obj/random/proc/spawn_item()
+
 	var/build_path = item_to_spawn()
 
 	var/atom/A = new build_path(src.loc)
@@ -37,7 +29,6 @@
 	name = "randomly spawned object"
 	desc = "This item type is used to randomly spawn a given object at round-start"
 	icon_state = "x3"
-	var/spawn_object = null
 
 /obj/random/single/item_to_spawn()
 	return ispath(spawn_object) ? spawn_object : text2path(spawn_object)
@@ -305,7 +296,7 @@
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/gin,
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-				/obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
+				/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila,
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
 				/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac,
@@ -1008,9 +999,9 @@ something, make sure it's not in one of the other lists.*/
 				prob(10);/obj/effect/mine/stun,
 				prob(10);/obj/effect/mine/incendiary,)
 
-var/list/random_junk_
-var/list/random_useful_
-/proc/get_random_useful_type()
+
+
+
 	if(!random_useful_)
 		random_useful_ = subtypesof(/obj/item/weapon/pen/crayon)
 		random_useful_ += /obj/item/weapon/pen
@@ -1021,7 +1012,7 @@ var/list/random_useful_
 		random_useful_ += /obj/item/stack/material/cardboard
 	return pick(random_useful_)
 
-/proc/get_random_junk_type()
+
 	if(prob(20)) // Misc. clutter
 		return /obj/effect/decal/cleanable/generic
 	if(prob(70)) // Misc. junk
@@ -1047,7 +1038,6 @@ var/list/random_useful_
 /*
 	Selects one spawn point out of a group of points with the same ID and asks it to generate its items
 */
-var/list/multi_point_spawns
 
 /obj/random_multi
 	name = "random object spawn point"
@@ -1055,8 +1045,6 @@ var/list/multi_point_spawns
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "x3"
 	invisibility = INVISIBILITY_MAXIMUM
-	var/id     // Group id
-	var/weight // Probability weight for this spawn point
 
 /obj/random_multi/initialize()
 	. = ..()
@@ -1077,11 +1065,7 @@ var/list/multi_point_spawns
 		multi_point_spawns -= id
 	. = ..()
 
-/obj/random_multi/proc/generate_items()
-	return
-
 /obj/random_multi/single_item
-	var/item_path  // Item type to spawn
 
 /obj/random_multi/single_item/generate_items()
 	//VOREStation Edit - Make this proc check for a closet and spawn in that. This happens after closets are init'd so otherwise it spawns on top
@@ -1091,7 +1075,7 @@ var/list/multi_point_spawns
 	else
 		new item_path(loc)
 
-/hook/roundstart/proc/generate_multi_spawn_items()
+
 	for(var/id in multi_point_spawns)
 		var/list/spawn_points = multi_point_spawns[id]
 		var/obj/random_multi/rm = pickweight(spawn_points)
@@ -1634,3 +1618,68 @@ var/list/multi_point_spawns
 				prob(5);/mob/living/simple_animal/hostile/hivebot/range/laser,
 				prob(5);/mob/living/simple_animal/hostile/hivebot/range/strong,
 				prob(5);/mob/living/simple_animal/hostile/hivebot/range/guard)
+
+// Citadel-specific RNG item picker.
+
+// Saxon - Crusader.mp3
+/obj/random/great_helm
+	name = "random great helm"
+	desc = "This is a random great helm."
+	icon = 'icons/obj/clothing/medieval_helmet.dmi'
+	icon_state = "crusader"
+
+/obj/random/great_helm/item_to_spawn()
+	return pick(prob(10);/obj/item/clothing/head/helmet/medieval/crusader,
+				prob(5);/obj/item/clothing/head/helmet/medieval/crusader/templar,
+				prob(2);/obj/item/clothing/head/helmet/medieval/crusader/horned,
+				prob(2);/obj/item/clothing/head/helmet/medieval/crusader/winged)
+
+/obj/random/crusader_armor
+	name = "random crusader armour"
+	desc = "This is a random crusader armour."
+	icon = 'icons/obj/clothing/medieval_armor.dmi'
+	icon_state = "crusader"
+
+/obj/random/crusader_armor/item_to_spawn()
+	return pick(prob(10);/obj/item/clothing/suit/armor/medieval/crusader/cross,
+				prob(2);/obj/item/clothing/suit/armor/medieval/crusader/cross/teutonic,
+				prob(2);/obj/item/clothing/suit/armor/medieval/crusader/cross/templar,
+				prob(2);/obj/item/clothing/suit/armor/medieval/crusader/cross/hospitaller)
+
+// Replica version
+/obj/random/great_helm_replica
+	name = "random great helm replica"
+	desc = "This is a replica of random great helm."
+	icon = 'icons/obj/clothing/medieval_helmet.dmi'
+	icon_state = "crusader"
+
+/obj/random/great_helm_replica/item_to_spawn()
+	return pick(prob(10);/obj/item/clothing/head/medievalfake/crusader,
+				prob(5);/obj/item/clothing/head/medievalfake/crusader/templar,
+				prob(2);/obj/item/clothing/head/medievalfake/crusader/horned,
+				prob(2);/obj/item/clothing/head/medievalfake/crusader/winged)
+
+/obj/random/crusader_armor_replica
+	name = "random crusader armour replica"
+	desc = "This is a replica of random crusader armour."
+	icon = 'icons/obj/clothing/medieval_armor.dmi'
+	icon_state = "crusader"
+
+/obj/random/crusader_armor_replica/item_to_spawn()
+	return pick(prob(10);/obj/item/clothing/suit/medievalfake/crusader/cross,
+				prob(2);/obj/item/clothing/suit/medievalfake/crusader/cross/teutonic,
+				prob(2);/obj/item/clothing/suit/medievalfake/crusader/cross/templar,
+				prob(2);/obj/item/clothing/suit/medievalfake/crusader/cross/hospitaller)
+
+// Finally, related cloaks.
+/obj/random/crusader_cloak
+	name = "random crusader cloak"
+	desc = "This is a random crusader cloak."
+	icon = 'icons/obj/clothing/ties_cit.dmi'
+	icon_state = "cloak_crusader"
+
+/obj/random/crusader_cloak/item_to_spawn()
+	return pick(prob(10);/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade,
+				prob(2);/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic,
+				prob(2);/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar,
+				prob(2);/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller)

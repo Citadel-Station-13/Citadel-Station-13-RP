@@ -10,6 +10,12 @@
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
 
+/obj/item/weapon/material/butterfly/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/butterfly/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/butterfly/update_force()
 	if(active)
 		edge = 1
@@ -34,12 +40,24 @@
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
 
+/obj/item/weapon/material/butterfly/switchblade/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/butterfly/switchblade/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/butterfly/boxcutter
 	name = "box cutter"
 	desc = "A thin, inexpensive razor-blade knife designed to open cardboard boxes."
 	icon_state = "boxcutter"
 	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
 	thrown_force_divisor = 0.2 // 4 when thrown with weight 20 (steel)
+
+/obj/item/weapon/material/butterfly/boxcutter/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/butterfly/boxcutter/durasteel
+  default_material = "durasteel"
 
 /obj/item/weapon/material/butterfly/attack_self(mob/user)
 	active = !active
@@ -85,6 +103,12 @@
 	attack_verb = list("stabbed", "chopped", "cut")
 	applies_material_colour = 1
 
+/obj/item/weapon/material/knife/tacknife/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/knife/tacknife/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/tacknife/combatknife
 	name = "combat knife"
 	desc = "If only you had a boot to put it in."
@@ -95,6 +119,13 @@
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1
+
+/obj/item/weapon/material/knife/tacknife/combatknife/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/knife/tacknife/combatknife/durasteel
+  default_material = "durasteel"
+
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -112,6 +143,12 @@
 	desc = "A sharp, metal hook what sticks into things."
 	icon_state = "hook_knife"
 
+/obj/item/weapon/material/knife/hook/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/knife/hook/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/ritual
 	name = "ritual knife"
 	desc = "The unearthly energies that once powered this blade are now dormant."
@@ -119,12 +156,25 @@
 	icon_state = "render"
 	applies_material_colour = 0
 
+/obj/item/weapon/material/knife/ritual/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/knife/ritual/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/butch
 	name = "butcher's cleaver"
 	icon_state = "butch"
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/butch/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/knife/butch/durasteel
+  default_material = "durasteel"
+
 
 /obj/item/weapon/material/knife/machete
 	name = "machete"
@@ -136,6 +186,12 @@
 	slot_flags = SLOT_BELT
 	default_material = "plasteel" //VOREStation Edit
 
+/obj/item/weapon/material/knife/machete/durasteel
+  default_material = "durasteel"
+
+/obj/item/weapon/material/knife/machete/deluxe/durasteel
+  default_material = "durasteel"
+
 /obj/item/weapon/material/knife/tacknife/survival
 	name = "survival knife"
 	desc = "A hunting grade survival knife."
@@ -145,3 +201,6 @@
 	applies_material_colour = FALSE
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/obj/item/weapon/material/knife/tacknife/survival/durasteel
+  default_material = "durasteel"

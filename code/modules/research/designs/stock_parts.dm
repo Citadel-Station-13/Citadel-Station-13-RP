@@ -4,6 +4,8 @@
 
 /datum/design/item/stock_part
 	build_type = PROTOLATHE
+	time = 3
+
 
 /datum/design/item/stock_part/AssembleDesignName()
 	..()

@@ -9,6 +9,13 @@
 	sharp = 1
 	edge =  1
 
+/obj/item/weapon/material/star/plasteel
+  default_material = "plasteel"
+
+/obj/item/weapon/material/star/durasteel
+  default_material = "durasteel"
+
+
 /obj/item/weapon/material/star/New()
 	..()
 	src.pixel_x = rand(-12, 12)

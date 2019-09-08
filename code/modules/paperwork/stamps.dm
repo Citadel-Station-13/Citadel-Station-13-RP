@@ -1,4 +1,12 @@
 /obj/item/weapon/stamp
+	var/list/stamp_sounds = list(
+		'sound/items/stamp1.ogg',
+		'sound/items/stamp2.ogg',
+		'sound/items/stamp3.ogg'
+		)
+/obj/item/weapon/stamp/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+	. = ..()
+	playsound(M, pick(stamp_sounds), 30, 1, -1)
 	name = "rubber stamp"
 	desc = "A rubber stamp for stamping important documents."
 	icon = 'icons/obj/bureaucracy.dmi'
