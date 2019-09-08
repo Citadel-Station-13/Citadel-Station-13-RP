@@ -20,7 +20,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 		gases.Cut()  // Do not qdel the gases, we don't own them
 		return ..()
 
-	proc/process()
+	process()
 		//Equalize gases amongst pipe if called for
 		if(update)
 			update = 0

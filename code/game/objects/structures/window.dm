@@ -377,8 +377,8 @@
 	update_nearby_tiles(need_rebuild=1)
 	return
 
-/obj/structure/window/New(Loc, start_dir=null, constructed=0)
-	..()
+/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
+	. = ..()
 
 	if (start_dir)
 		set_dir(start_dir)

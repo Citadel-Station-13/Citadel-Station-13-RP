@@ -1,7 +1,7 @@
 /atom
 	layer = TURF_LAYER //This was here when I got here. Why though?
 	var/level = 2
-	var/flags = 0
+	var/flags = NONE
 	var/list/fingerprints
 	var/list/fingerprintshidden
 	var/fingerprintslast = null
@@ -9,11 +9,14 @@
 	var/was_bloodied
 	var/blood_color
 	var/last_bumped = 0
-	var/pass_flags = 0
+	var/pass_flags = NONE
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
+
+	var/list/atom_colours	 //used to store the different colors on an atom
+							//its inherent color, the colored paint applied on it, special color effect etc...
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -22,31 +25,37 @@
 	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
 	///Chemistry.
 
+/*		New overlay system
+	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
+	var/list/remove_overlays // a very temporary list of overlays to remove
+	var/list/add_overlays // a very temporary list of overlays to add
+
+	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
+*/
+
+	//Detective Work, used for the duplicate data points kept in the scanners
+	var/list/original_atom
+
 	// Overlays
 	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 
-	//Detective Work, used for the duplicate data points kept in the scanners
-	var/list/original_atom
-	// Track if we are already had initialize() called to prevent double-initialization.
-	var/initialized = FALSE
-
 /atom/New(loc, ...)
-	// Don't call ..() unless /datum/New() ever exists
-
 	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
 	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
-	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		_preloader.load(src)
+	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
+		world.preloader_load(src)
 
-	// Pass our arguments to InitAtom so they can be passed to initialize(), but replace 1st with if-we're-during-mapload.
-	var/do_initialize = SSatoms && SSatoms.initialized // Workaround our non-ideal initialization order: SSatoms may not exist yet.
-	//var/do_initialize = SSatoms.initialized
-	if(do_initialize > INITIALIZATION_INSSATOMS)
-		args[1] = (do_initialize == INITIALIZATION_INNEW_MAPLOAD)
+	if(datum_flags & DF_USE_TAG)
+		GenerateTag()
+
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
+		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
 		if(SSatoms.InitAtom(src, args))
-			// We were deleted. No sense continuing
+			//we were deleted
 			return
+	// Don't call ..() unless /datum/New() ever exists
 
 	// Uncomment if anything ever uses the return value of SSatoms.InitializeAtoms ~Leshana
 	// If a map is being loaded, it might want to know about newly created objects so they can be handled.
@@ -63,16 +72,41 @@
 // Must not sleep!
 // Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
 // Must return an Initialize hint. Defined in code/__defines/subsystems.dm
-/atom/proc/initialize(mapload, ...)
-	if(QDELETED(src))
-		crash_with("GC: -- [type] had initialize() called after qdel() --")
-	if(initialized)
-		crash_with("Warning: [src]([type]) initialized multiple times!")
-	initialized = TRUE
+/atom/proc/Initialize(mapload, ...)
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+
+/*
+	//atom color stuff
+	if(color)
+		add_atom_colour(color, FIXED_COLOR_PRIORITY)
+*/
+
+/*
+	if (light_power && light_range)
+		update_light()
+
+	if (opacity && isturf(loc))
+		var/turf/T = loc
+		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+*/
+
+/*
+	if (canSmoothWith)
+		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
+*/
+
+	ComponentInitialize()
+
 	return INITIALIZE_HINT_NORMAL
 
-// Called after all object's normal initialize() if initialize() returns INITIALIZE_HINT_LATELOAD
+//called if Initialize returns INITIALIZE_HINT_LATELOAD
 /atom/proc/LateInitialize()
+	return
+
+// Put your AddComponent() calls here
+/atom/proc/ComponentInitialize()
 	return
 
 /atom/proc/reveal_blood()
@@ -534,3 +568,7 @@
 
 /atom/proc/get_nametag_desc(mob/user)
 	return "" //Desc itself is often too long to use
+
+
+/atom/proc/GenerateTag()
+	return

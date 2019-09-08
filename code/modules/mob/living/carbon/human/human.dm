@@ -52,7 +52,7 @@
 	..()
 
 	hide_underwear.Cut()
-	for(var/category in global_underwear.categories_by_name)
+	for(var/category in GLOB.global_underwear.categories_by_name)
 		hide_underwear[category] = FALSE
 
 	if(dna)
@@ -65,7 +65,7 @@
 	for(var/organ in organs)
 		qdel(organ)
 	QDEL_NULL(nif)	//VOREStation Add
-	QDEL_NULL_LIST(vore_organs) //VOREStation Add
+	QDEL_LIST_NULL(vore_organs) //VOREStation Add
 	return ..()
 
 /mob/living/carbon/human/Stat()
@@ -1521,7 +1521,7 @@
 	set category = "Object"
 
 	if(stat) return
-	var/datum/category_group/underwear/UWC = input(usr, "Choose underwear:", "Show/hide underwear") as null|anything in global_underwear.categories
+	var/datum/category_group/underwear/UWC = input(usr, "Choose underwear:", "Show/hide underwear") as null|anything in GLOB.global_underwear.categories
 	if(!UWC) return
 	var/datum/category_item/underwear/UWI = all_underwear[UWC.name]
 	if(!UWI || UWI.name == "None")

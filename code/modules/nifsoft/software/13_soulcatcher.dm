@@ -26,7 +26,7 @@
 		load_settings()
 
 	Destroy()
-		QDEL_NULL_LIST(brainmobs)
+		QDEL_LIST_NULL(brainmobs)
 		return ..()
 
 	activate()
@@ -49,7 +49,7 @@
 			nif.human.verbs |= /mob/living/carbon/human/proc/nme
 
 	uninstall()
-		QDEL_NULL_LIST(brainmobs)
+		QDEL_LIST_NULL(brainmobs)
 		if((. = ..()) && nif && nif.human) //Sometimes NIFs are deleted outside of a human
 			nif.human.verbs -= /mob/living/carbon/human/proc/nsay
 			nif.human.verbs -= /mob/living/carbon/human/proc/nme
@@ -311,12 +311,12 @@
 	//If they're blinded
 	if(ext_blind)
 		eye_blind = 5
-		client.screen.Remove(global_hud.whitense)
+		client.screen.Remove(GLOB.global_hud.whitense)
 		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 	else
 		eye_blind = 0
 		clear_fullscreens()
-		client.screen.Add(global_hud.whitense)
+		client.screen.Add(GLOB.global_hud.whitense)
 
 	//If they're deaf
 	if(ext_deaf)

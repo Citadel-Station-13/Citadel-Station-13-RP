@@ -26,7 +26,7 @@
 
 	var/blood_type = null
 
-/obj/item/weapon/reagent_containers/blood/initialize()
+/obj/item/weapon/reagent_containers/blood/Initialize()
 	..()
 	base_name = name
 	base_desc = desc

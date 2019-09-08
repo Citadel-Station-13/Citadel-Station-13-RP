@@ -1,3 +1,4 @@
+
 /datum/gear/accessory
 	display_name = "accessory"
 	slot = slot_tie

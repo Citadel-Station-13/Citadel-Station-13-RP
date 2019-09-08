@@ -7,7 +7,6 @@
 //			/atom/dir_changer: The instance that changed direction
 //			/old_dir: The dir before the change.
 //			/new_dir: The dir after the change.
-
 GLOBAL_DATUM_INIT(dir_set_event, /decl/observ/dir_set, new)
 
 /decl/observ/dir_set

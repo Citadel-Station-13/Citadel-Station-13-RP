@@ -77,7 +77,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/meson/New()
 	..()
-	overlay = global_hud.meson
+	overlay = GLOB.global_hud.meson
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription mesons"
@@ -122,7 +122,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/science/New()
 	..()
-	overlay = global_hud.science
+	overlay = GLOB.global_hud.science
 
 /obj/item/clothing/glasses/goggles
 	name = "goggles"
@@ -152,7 +152,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/night/New()
 	..()
-	overlay = global_hud.nvg
+	overlay = GLOB.global_hud.nvg
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
@@ -198,7 +198,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/material/New()
 	..()
-	overlay = global_hud.material
+	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/material/prescription
 	name = "prescription optical material scanner"
@@ -415,7 +415,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/thermal/New()
 	..()
-	overlay = global_hud.thermal
+	overlay = GLOB.global_hud.thermal
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "optical meson scanner"

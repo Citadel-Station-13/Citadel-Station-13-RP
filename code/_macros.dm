@@ -50,7 +50,9 @@
 
 #define isopenspace(A) istype(A, /turf/simulated/open)
 
-#define isweakref(A) istype(A, /weakref)
+#define isweakref(A) istype(A, /datum/weakref)
+
+#define islist(L) istype(L, /list)
 
 #define RANDOM_BLOOD_TYPE pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
 
@@ -64,10 +66,6 @@
 
 
 #define CanInteract(user, state) (CanUseTopic(user, state) == STATUS_INTERACTIVE)
-
-#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
-
-#define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 

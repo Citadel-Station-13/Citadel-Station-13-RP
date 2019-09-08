@@ -332,7 +332,7 @@
 	name = "Syringe (inaprovaline)"
 	desc = "Contains inaprovaline - used to stabilize patients."
 
-/obj/item/weapon/reagent_containers/syringe/inaprovaline/initialize()
+/obj/item/weapon/reagent_containers/syringe/inaprovaline/Initialize()
 	..()
 	reagents.add_reagent("inaprovaline", 15)
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
@@ -342,7 +342,7 @@
 	name = "Syringe (anti-toxin)"
 	desc = "Contains anti-toxins."
 
-/obj/item/weapon/reagent_containers/syringe/antitoxin/initialize()
+/obj/item/weapon/reagent_containers/syringe/antitoxin/Initialize()
 	..()
 	reagents.add_reagent("anti_toxin", 15)
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
@@ -352,7 +352,7 @@
 	name = "Syringe (spaceacillin)"
 	desc = "Contains antiviral agents."
 
-/obj/item/weapon/reagent_containers/syringe/antiviral/initialize()
+/obj/item/weapon/reagent_containers/syringe/antiviral/Initialize()
 	..()
 	reagents.add_reagent("spaceacillin", 15)
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
@@ -362,7 +362,7 @@
 	name = "Syringe (drugs)"
 	desc = "Contains aggressive drugs meant for torture."
 
-/obj/item/weapon/reagent_containers/syringe/drugs/initialize()
+/obj/item/weapon/reagent_containers/syringe/drugs/Initialize()
 	..()
 	reagents.add_reagent("space_drugs",  5)
 	reagents.add_reagent("mindbreaker",  5)
@@ -370,7 +370,7 @@
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
 	//update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/ld50_syringe/choral/initialize()
+/obj/item/weapon/reagent_containers/syringe/ld50_syringe/choral/Initialize()
 	..()
 	reagents.add_reagent("chloralhydrate", 50)
 	mode = SYRINGE_INJECT
@@ -380,7 +380,7 @@
 	name = "Syringe (anabolic steroids)"
 	desc = "Contains drugs for muscle growth."
 
-/obj/item/weapon/reagent_containers/syringe/steroid/initialize()
+/obj/item/weapon/reagent_containers/syringe/steroid/Initialize()
 	..()
 	//reagents.add_reagent("adrenaline",5) //VOREStation Edit - No thanks.
 	reagents.add_reagent("hyperzine",10)
