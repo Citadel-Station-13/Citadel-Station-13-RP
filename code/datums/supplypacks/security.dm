@@ -144,16 +144,34 @@
 
 /datum/supply_pack/randomised/security/holster
 	name = "Gear - Holsters"
-	num_contained = 4
+	num_contained = 5
 	contains = list(
 			/obj/item/clothing/accessory/holster,
 			/obj/item/clothing/accessory/holster/armpit,
 			/obj/item/clothing/accessory/holster/waist,
-			/obj/item/clothing/accessory/holster/hip
+			/obj/item/clothing/accessory/holster/hip,
+			/obj/item/clothing/accessory/holster/leg
 			)
 	cost = 15
 	containertype = /obj/structure/closet/crate
 	containername = "Holster crate"
+
+/datum/supply_pack/security/kevlarkit
+	name = "Misc - Kevlar Upgrade Kits"
+	contains = list(
+			/obj/item/kevlarupgrade = 5,
+			)
+	cost = 35
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Kevlar Upgrade Kits"
+	access = access_security
+
+/datum/supply_pack/security/pcarriers //time 2 get modular up in this bitch -hatterhat
+	name = "Armor - Empty plate carriers"
+	contains = list(
+			/obj/item/clothing/suit/armor/pcarrier = 3,
+			)
+	cost = 15
 
 /datum/supply_pack/security/extragear
 	name = "Gear - Security surplus equipment"

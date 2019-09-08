@@ -96,15 +96,6 @@
 		return 0
 	return 1
 
-/mob/living/simple_animal/will_eat(var/mob/living/M)
-	. = ..()
-	if(.)	//insanely negligible performance buff
-		if(istype(M) && hostile && !M.incapacitated(INCAPACITATION_ALL))
-			ai_log("vr/wont eat [M] because i lust for blood", 3)
-			return FALSE
-	return
-
-
 /mob/living/simple_animal/PunchTarget()
 	ai_log("vr/PunchTarget() [target_mob]", 3)
 
@@ -339,3 +330,11 @@
 		return
 	if(buckle_mob(M))
 		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
+
+/mob/living/simple_animal/will_eat(var/mob/living/M)
+	. = ..()
+	if(.)	//insanely negligible performance buff
+		if(istype(M) && hostile && !M.incapacitated(INCAPACITATION_ALL))
+			ai_log("vr/wont eat [M] because i lust for blood", 3)
+			return FALSE
+	return

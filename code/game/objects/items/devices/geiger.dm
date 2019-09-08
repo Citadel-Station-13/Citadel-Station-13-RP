@@ -16,6 +16,9 @@
 	var/scanning = 0
 	var/radiation_count = 0
 
+/obj/item/device/geiger/AltClick(var/mob/user)//citadel edit
+	attack_self(user)
+
 /obj/item/device/geiger/New()
 	processing_objects |= src
 
@@ -57,9 +60,6 @@
 	scanning = !scanning
 	update_icon()
 	to_chat(user, "<span class='notice'>\icon[src] You switch [scanning ? "on" : "off"] \the [src].</span>")
-
-/obj/item/device/geiger/AltClick(var/mob/user)//citadel edit
-	attack_self(user)
 
 /obj/item/device/geiger/update_icon()
 	if(!scanning)

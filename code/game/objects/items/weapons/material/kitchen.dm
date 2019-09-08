@@ -108,7 +108,6 @@
 /obj/item/weapon/material/knife/durasteel
 	default_material = "durasteel"
 
-
 /*
  * Rolling Pins
  */

@@ -24,6 +24,16 @@
 	var/can_be_drop_prey = 0
 	var/can_be_drop_pred = 1			// Mobs are pred by default.
 
+/mob/living/perform_the_nom(var/mob/living/user, var/mob/living/prey, var/mob/living/pred, var/obj/belly/belly, var/delay)
+	if(istype(prey) && istype(user))
+		if(!prey.allowmobvore)
+			if(user == pred)
+				to_chat(user, "<span class='warning'>[prey] doesn't look very appetizing.</span>")
+			else
+				to_chat(user, "<span class='warning'>It doesn't seem like you're able to fit [prey] into [pred].</span>")
+			return FALSE
+	. = ..()
+
 //
 // Hook for generic creation of stuff on new creatures
 //
@@ -633,14 +643,3 @@
 	user << browse("<html><head><title>Vore prefs: [src]</title></head><body><center>[dispvoreprefs]</center></body></html>", "window=[name];size=200x300;can_resize=0;can_minimize=0")
 	onclose(user, "[name]")
 	return
-
-/mob/living/perform_the_nom(var/mob/living/user, var/mob/living/prey, var/mob/living/pred, var/obj/belly/belly, var/delay)
-	if(istype(prey) && istype(user))
-		if(!prey.allowmobvore)
-			if(user == pred)
-				to_chat(user, "<span class='warning'>[prey] doesn't look very appetizing.</span>")
-			else
-				to_chat(user, "<span class='warning'>It doesn't seem like you're able to fit [prey] into [pred].</span>")
-			return FALSE
-	. = ..()
-

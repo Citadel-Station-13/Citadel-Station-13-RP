@@ -26,6 +26,11 @@
 	var/fields		//Amount of user created fields
 	var/free_space = MAX_PAPER_MESSAGE_LEN
 	var/list/stamped
+	var/list/stamp_sounds = list(
+		'sound/items/stamp1.ogg',
+		'sound/items/stamp2.ogg',
+		'sound/items/stamp3.ogg'
+		)
 	var/list/ico[0]      //Icons and
 	var/list/offset_x[0] //offsets stored for later
 	var/list/offset_y[0] //usage by the photocopier
@@ -35,11 +40,7 @@
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
-	var/list/stamp_sounds = list(
-		'sound/items/stamp1.ogg',
-		'sound/items/stamp2.ogg',
-		'sound/items/stamp3.ogg'
-		)
+
 
 /obj/item/weapon/paper/card
 	name = "blank card"
@@ -228,6 +229,7 @@
 										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
 					H.update_icons_body()
+
 
 /obj/item/weapon/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
@@ -470,12 +472,10 @@
 	return ..()
 
 /obj/item/weapon/paper/attackby(obj/item/weapon/P as obj, mob/user as mob)
-	..()
-	if(istype(P, /obj/item/weapon/stamp))
-		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/weapon/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
-			return
-		playsound(P, pick(stamp_sounds), 30, 1, -1)
-	return
+	if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/weapon/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
+		return
+			playsound(P, pick(stamp_sounds), 30, 1, -1)
+		return
 	var/clown = 0
 	if(user.mind && (user.mind.assigned_role == "Clown"))
 		clown = 1

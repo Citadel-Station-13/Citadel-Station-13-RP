@@ -58,6 +58,18 @@
 	battery_lock = 1
 	modifystate = null
 
+//	requires_two_hands = 1
+//	one_handed_penalty = 15 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
+
+	firemodes = list(
+		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),
+		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="nucgunkill", charge_cost = 480),
+		)
+
+/*
+	egun stuff goes here
+*/
+
 /obj/item/weapon/gun/energy/gun/multiphase
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
@@ -81,12 +93,3 @@
 		list(mode_name="stun", burst=1, projectile_type=/obj/item/projectile/energy/electrode/goldenbolt, modifystate="multiphasestun", charge_cost = 480),
 		list(mode_name="lethal", burst=1, projectile_type=/obj/item/projectile/beam, modifystate="multiphasekill", charge_cost = 240),
 		)
-
-//	requires_two_hands = 1
-//	one_handed_penalty = 15 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
-
-	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),
-		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="nucgunkill", charge_cost = 480),
-		)
-

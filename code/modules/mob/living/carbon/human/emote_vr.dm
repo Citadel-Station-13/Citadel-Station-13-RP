@@ -35,7 +35,7 @@
 
 			m_type = 2
 			message = "lets out an awoo."
-			playsound(loc, 'modular_citadel/sound/voice/awoo.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/awoo.ogg', 50, 1, -1)
 
 
 			emoteDanger =  min(1+(emoteDanger*2), 100)
@@ -87,7 +87,7 @@
 
 			message = "lets out a nya."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/nya.ogg', 50, 1, -1)
 
 
 			emoteDanger =  min(1+(emoteDanger*2), 100)
@@ -125,7 +125,7 @@
 		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/peep.ogg', 50, 1, -1)
 		if("chirp")
 			message = "<B>The [src.name]</B> chirps!"
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
@@ -133,19 +133,19 @@
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/weh.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/weh.ogg', 50, 1, -1)
 		if ("merp")
 			message = "lets out a merp."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/merp.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/merp.ogg', 50, 1, -1)
 		if ("bark")
 			message = "lets out a bark."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
 		if ("hiss")
 			message = "lets out a hiss."
 			m_type = 2
-			playsound(loc, 'modular_citadel/sound/voice/hiss.ogg', 50, 1, -1)
+			playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
 		if ("nsay")
 			nsay()
 			return TRUE

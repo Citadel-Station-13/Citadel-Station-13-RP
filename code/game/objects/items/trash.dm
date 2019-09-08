@@ -101,6 +101,5 @@
 	name = "empty basket"
 	icon_state = "waffles"
 
-
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return

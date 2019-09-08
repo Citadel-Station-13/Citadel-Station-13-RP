@@ -117,8 +117,6 @@
 	icon_state = "cargoponcho"
 	item_state = "cargoponcho"
 
-
-
 /*
  * Cloak
  */
@@ -172,84 +170,52 @@
 	item_state = "capcloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/cargo
-	name = "cargo cloak"
+	name = "brown cloak"
 	desc = "A simple brown and black cloak."
 	icon_state = "cargocloak"
 	item_state = "cargocloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/mining
-	name = "trimmed mining cloak"
+	name = "trimmed purple cloak"
 	desc = "A trimmed purple and brown cloak."
 	icon_state = "miningcloak"
 	item_state = "miningcloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/security
-	name = "security cloak"
+	name = "red cloak"
 	desc = "A simple red and black cloak."
 	icon_state = "seccloak"
 	item_state = "seccloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/service
-	name = "service cloak"
+	name = "green cloak"
 	desc = "A simple green and blue cloak."
 	icon_state = "servicecloak"
 	item_state = "servicecloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/engineer
-	name = "engineering cloak"
+	name = "gold cloak"
 	desc = "A simple gold and brown cloak."
 	icon_state = "engicloak"
 	item_state = "engicloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/atmos
-	name = "atmospherics cloak"
+	name = "yellow cloak"
 	desc = "A trimmed yellow and blue cloak."
 	icon_state = "atmoscloak"
 	item_state = "atmoscloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/research
-	name = "science cloak"
+	name = "purple cloak"
 	desc = "A simple purple and white cloak."
 	icon_state = "scicloak"
 	item_state = "scicloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/medical
-	name = "medical cloak"
+	name = "blue cloak"
 	desc = "A simple blue and white cloak."
 	icon_state = "medcloak"
 	item_state = "medcloak"
-
-// Custom cloak.
-
-/obj/item/clothing/accessory/poncho/roles/cloak/custom
-	name = "cloak"
-	desc = "A simple, bland cloak."
-	icon = 'icons/obj/clothing/ties_cit.dmi'
-	icon_override = 'icons/mob/ties_cit.dmi'
-	icon_state = "cloak"
-	item_state = "cloak"
-
-// Now this is time for another crusade.
-/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade
-	name = "crusader cloak"
-	desc = "A simple cloak for crusaders."
-	icon_state = "cloak_crusader"
-	item_state = "cloak_crusader"
-
-/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic
-	name = "teutonic cloak"
-	icon_state = "cloak_crusader_teutonic"
-	item_state = "cloak_crusader_teutonic"
-
-/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar
-	name = "templar cloak"
-	icon_state = "cloak_crusader_templar"
-	item_state = "cloak_crusader_templar"
-
-/obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller
-	name = "hospitaller cloak"
-	icon_state = "cloak_crusader_hospitaller"
-	item_state = "cloak_crusader_hospitaller"
 
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"

@@ -176,4 +176,3 @@
 
 /obj/item/weapon/material/twohanded/spear/durasteel
   default_material = "durasteel"
-

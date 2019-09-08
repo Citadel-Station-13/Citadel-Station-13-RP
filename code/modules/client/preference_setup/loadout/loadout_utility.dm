@@ -123,6 +123,11 @@
 	display_name = "implant, tracking"
 	path = /obj/item/weapon/implant/tracking/weak
 	cost = 0 //VOREStation Edit. Changed cost to 0
+/* VOREStation Edit - Make languages great again
+/datum/gear/utility/implant/language
+	cost = 2
+	exploitable = 0
+*/
 
 // Re-adds the EAL implant to loadout, but doubles the point cost, since the VORE removal was absolutely overkill.
 /datum/gear/utility/implant/eal //This does nothing if you don't actually know EAL.

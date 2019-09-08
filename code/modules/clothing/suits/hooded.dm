@@ -44,6 +44,9 @@
 /obj/item/clothing/suit/storage/hooded/dropped()
 	RemoveHood()
 
+/obj/item/clothing/suit/storage/hooded/AltClick()
+	ToggleHood()
+
 /obj/item/clothing/suit/storage/hooded/proc/ToggleHood()
 	if(!hood_up)
 		if(ishuman(loc))

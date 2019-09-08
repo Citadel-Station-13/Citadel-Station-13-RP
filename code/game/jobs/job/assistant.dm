@@ -7,7 +7,7 @@
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the staff from the department you're interning in"
+	supervisors = "the staff from the departmen you're interning in"
 	selection_color = "#555555"
 	economic_modifier = 2
 	access = list()			//See /datum/job/assistant/get_access()
@@ -39,9 +39,7 @@
 	access = list()
 	minimal_access = list()
 	outfit_type = /decl/hierarchy/outfit/job/assistant
-	alt_titles = list("Entertainer","Morale Officer")
 	timeoff_factor = 0
-
 /datum/job/assistant/New()
 	..()
 	if(config)

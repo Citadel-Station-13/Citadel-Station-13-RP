@@ -923,7 +923,7 @@ END OF CITADEL CHANGES */
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/khi/sec //Security version
-	name = "FTU security suit"
+	name = "FTU Security Suit"
 	desc = "A light weave allows the wearer to stay agile. Nobody breaches the vault on your watch."
 	icon_state = "khi_uniform_sec_i"
 	item_state = "khi_uniform_sec"
@@ -931,7 +931,7 @@ END OF CITADEL CHANGES */
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/khi/med //Medical version
-	name = "FTU medical suit"
+	name = "FTU Medical Suit"
 	desc = "A pound of flesh, a common down payment in the space of the Free Trade Union. Those in need are in no position to haggle."
 	icon_state = "khi_uniform_med_i"
 	item_state = "khi_uniform_med"
@@ -939,7 +939,7 @@ END OF CITADEL CHANGES */
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /obj/item/clothing/under/rank/khi/eng //Engineering version
-	name = "FTU engineering suit"
+	name = "FTU Engineering Suit"
 	desc = "The various ships and stations of the Free Trade Union require constant maintenance, and such a service does not come cheap."
 	icon_state = "khi_uniform_eng_i"
 	item_state = "khi_uniform_eng"
@@ -947,7 +947,7 @@ END OF CITADEL CHANGES */
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10)
 
 /obj/item/clothing/under/rank/khi/sci //Science version
-	name = "FTU science suit"
+	name = "FTU Science Suit"
 	desc = "In the constantly changing field of the Free Trade Union, plots and schemes change by the hour. Yet nobody heeds the alchemist in the lab."
 	icon_state = "khi_uniform_sci_i"
 	item_state = "khi_uniform_sci"
@@ -1810,7 +1810,6 @@ END OF CITADEL CHANGES */
 /obj/item/clothing/accessory/sweater/fluff/annie
 	name = "Lazy Sweater"
 	desc = "A cozy sweater that's probably far too long for its' owner. Really."
-
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "sweater_annie"
 

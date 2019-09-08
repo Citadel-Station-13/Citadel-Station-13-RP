@@ -75,7 +75,6 @@
 /obj/item/weapon/material/minihoe/durasteel
   default_material = "durasteel"
 
-
 /obj/item/weapon/material/snow/snowball
 	name = "loose packed snowball"
 	desc = "A fun snowball. Throw it at your friends!"

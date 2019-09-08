@@ -115,15 +115,6 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
-// The things folks do for fashion...
-/obj/item/clothing/under/rank/janitor/starcon
-	name = "janitor's uniform"
-	desc = "It's the official uniform of the station's janitor with minor modifications. It has minor protection from biohazards, but not from the harshness of space."
-	icon = 'icons/obj/clothing/uniforms_cit.dmi'
-	icon_override = 'icons/mob/uniform_cit.dmi'
-	icon_state = "janitor_sc"
-
-
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."
 	name = "lawyer suit"

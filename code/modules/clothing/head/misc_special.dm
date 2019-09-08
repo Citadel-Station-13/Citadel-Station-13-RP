@@ -6,7 +6,7 @@
  *		Pumpkin head
  *		Kitty ears
  *		Holiday hats
- *		Crown of Wrath
+ 		Crown of Wrath
  */
 
 /*
@@ -143,10 +143,6 @@
  * Ushanka
  */
 /obj/item/clothing/head/ushanka
-	..()
-		min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-
-	icon = 'icons/obj/clothing/hats_cit.dmi'
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"

@@ -519,6 +519,11 @@
 
 	add_fingerprint(user)
 
+/obj/machinery/transhuman/resleever/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to put people into resleeving without external assistance
+	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
+		return
+	put_mob(target)
+
 /obj/machinery/transhuman/resleever/proc/putmind(var/datum/transhuman/mind_record/MR, mode = 1, var/mob/living/carbon/human/override = null)
 	if((!occupant || !istype(occupant) || occupant.stat >= DEAD) && mode == 1)
 		return 0

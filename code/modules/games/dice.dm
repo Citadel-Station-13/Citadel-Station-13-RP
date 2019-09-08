@@ -83,6 +83,7 @@
 
 	visible_message("<span class='notice'>The [src] lands on [result]. [comment]</span>", "", "")
 
+
 /*
  * Dice packs
  */

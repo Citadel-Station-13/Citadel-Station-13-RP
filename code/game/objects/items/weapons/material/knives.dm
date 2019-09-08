@@ -175,7 +175,6 @@
 /obj/item/weapon/material/knife/butch/durasteel
   default_material = "durasteel"
 
-
 /obj/item/weapon/material/knife/machete
 	name = "machete"
 	desc = "A sharp machete often found in survival kits."
@@ -191,6 +190,7 @@
 
 /obj/item/weapon/material/knife/machete/deluxe/durasteel
   default_material = "durasteel"
+
 
 /obj/item/weapon/material/knife/tacknife/survival
 	name = "survival knife"

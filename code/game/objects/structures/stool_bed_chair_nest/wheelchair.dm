@@ -31,7 +31,7 @@
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
- 	
+
 	if(world.time < last_active_move + move_delay)
 		return
 
@@ -237,3 +237,9 @@
 		spawn(0)
 			qdel(src)
 		return
+
+/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
+	if(issilicon(M)) // No abusing wheelchairs.
+		return
+	..()
+

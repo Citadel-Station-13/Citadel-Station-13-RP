@@ -884,6 +884,11 @@ var/global/list/robot_modules = list(
 	P.synths = list(plastic)
 	src.modules += P
 
+/obj/item/weapon/robot_module/drone/New(mob/living/silicon/robot/robot)
+  ..()
+  modules += new /obj/item/device/t_scanner(src)
+  modules += new /obj/item/device/analyzer(src)
+
 /obj/item/weapon/robot_module/drone/construction
 	name = "construction drone module"
 	hide_on_manifest = 1

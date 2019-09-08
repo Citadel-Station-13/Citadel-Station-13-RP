@@ -31,7 +31,7 @@ other types of metals and chemistry for reagents).
 	var/time = 10					//How many ticks it requires to build
 	var/category = null 			//Primarily used for Mech Fabricators, but can be used for anything.
 	var/sort_string = "ZZZZZ"		//Sorting order
-	time = 6 						//drops research print time
+	time = 6 //drops research print time
 
 /datum/design/New()
 	..()

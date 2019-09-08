@@ -325,13 +325,13 @@
 	..()
 /*
 /obj/item/ammo_casing/nsfw_batt/shrink
-	name = "\'NSFW\' microbattery - SHRINK"
+	name = "Hydra microbattery - SHRINK"
 	type_color = "#910ffc"
 	type_name = "<span style='color:#910ffc;font-weight:bold;'>SHRINK</span>"
 	projectile_type = /obj/item/projectile/beam/shrinklaser
 
 /obj/item/ammo_casing/nsfw_batt/grow
-	name = "\'NSFW\' microbattery - GROW"
+	name = "Hydra microbattery - GROW"
 	type_color = "#fc0fdc"
 	type_name = "<span style='color:#fc0fdc;font-weight:bold;'>GROW</span>"
 	projectile_type = /obj/item/projectile/beam/growlaser
@@ -349,8 +349,8 @@
 		new path(src)
 
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos
-	name = "\improper Hephaestus Hydra gun kit"
-	desc = "A gun case for the Hephaestus Hydra."
+	name = "\improper KHI-102b \'NSFW\' gun kit"
+	desc = "A storage case for a multi-purpose handgun. Variety hour!"
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos/New()

@@ -19,13 +19,13 @@
 
 	var/global/list/overlay_cache = list() //cache recent overlays
 
+/obj/item/device/t_scanner/AltClick()//citadel edit
+	set_active(!on)
+
 /obj/item/device/t_scanner/update_icon()
 	icon_state = "t-ray[on]"
 
 /obj/item/device/t_scanner/attack_self(mob/user)
-	set_active(!on)
-
-/obj/item/device/t_scanner/AltClick()//citadel edit
 	set_active(!on)
 
 /obj/item/device/t_scanner/proc/set_active(var/active)

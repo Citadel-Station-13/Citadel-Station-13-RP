@@ -6,7 +6,6 @@
 	build_type = PROTOLATHE
 	time = 3
 
-
 /datum/design/item/stock_part/AssembleDesignName()
 	..()
 	name = "Component design ([item_name])"

@@ -9,7 +9,7 @@
 	canhear_range = 0 // can't hear headsets from very far away
 	slot_flags = SLOT_EARS
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ears.dmi')
-	var/ear_protection = 0
+	var/ear_protection = 0		//CITADEL ADDITION - HEADSET FLASHBANG PROTECTION
 
 	var/translate_binary = 0
 	var/translate_hive = 0
@@ -162,7 +162,6 @@
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/headset_com
 
-
 /obj/item/device/radio/headset/headset_adj //Citadel Add: Secretary headset with service and command.
 	name = "secretary radio headset"
 	desc = "A headset for those who serve command."
@@ -175,7 +174,6 @@
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/headset_com
 	ear_protection = 2
-
 
 /obj/item/device/radio/headset/heads/captain
 	name = "colony director's headset"
