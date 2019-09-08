@@ -79,7 +79,7 @@
 
 /datum/gear/ears/skrell/colored/band/New()
 	..()
-	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
+	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/ears/skrell/colored/chain
 	display_name = "Colored chain (Skrell)"
@@ -89,7 +89,7 @@
 
 /datum/gear/ears/skrell/colored/chain/New()
 	..()
-	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
+	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/uniform/smock
 	display_name = "smock selection (Teshari)"

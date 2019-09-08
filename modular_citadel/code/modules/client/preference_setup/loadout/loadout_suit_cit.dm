@@ -6,4 +6,4 @@
 
 /datum/gear/suit/roles/poncho/cloak/custom/New()
 	..()
-	gear_tweaks = list(GLOB.gear_tweak_free_color_choice)
+	gear_tweaks = list(gear_tweak_free_color_choice)

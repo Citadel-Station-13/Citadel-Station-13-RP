@@ -2,4 +2,5 @@ GLOBAL_VAR_INIT(timezoneOffset, 0) // The difference betwen midnight (of the hos
 
 GLOBAL_VAR_INIT(TAB, "&nbsp;&nbsp;&nbsp;&nbsp;")
 
-GLOBAL_DATUM_INIT(gear_tweak_free_color_choice, /datum/gear_tweak/color, new)
+//Loadout stuff
+GLOBAL_DATUM_INIT(global_underwear, /datum/category_collection/underwear, new)
