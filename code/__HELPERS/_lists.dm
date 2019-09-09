@@ -232,7 +232,7 @@ proc/listclearnulls(list/list)
 		L.Swap(i,rand(i,L.len))
 
 //Return a list with no duplicate entries
-/proc/uniquelist(var/list/L)
+/proc/uniqueList(var/list/L)
 	. = list()
 	for(var/i in L)
 		. |= i

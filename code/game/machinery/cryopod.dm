@@ -116,7 +116,7 @@
 			dat += "[person]<br/>"
 		dat += "<hr/>"
 
-		to_chat(user, browse(dat, "window=cryolog"))
+		user << browse(dat, "window=cryolog")
 
 	if(href_list["view"])
 		if(!allow_items) return
@@ -128,7 +128,7 @@
 		//VOREStation Edit End
 		dat += "<hr/>"
 
-		to_chat(user, browse(dat, "window=cryoitems"))
+		user<< browse(dat, "window=cryoitems")
 
 	else if(href_list["item"])
 		if(!allow_items) return

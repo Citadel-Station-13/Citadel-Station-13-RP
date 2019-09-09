@@ -8,11 +8,11 @@
 			/obj/effect/decal/cleanable = "CLEANABLE",
 			/obj/item/radio/headset = "HEADSET",
 			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
-			/obj/item/book/manual = "MANUAL",
-			/obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
-			/obj/item/reagent_containers/food = "FOOD",
-			/obj/item/reagent_containers = "REAGENT_CONTAINERS",
-			/obj/machinery/atmospherics = "ATMOS_MECH",
+//			/obj/item/book/manual = "MANUAL",
+//			/obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
+//			/obj/item/reagent_containers/food = "FOOD",
+//			/obj/item/reagent_containers = "REAGENT_CONTAINERS",
+			/obj/machinery/atmospherics = "ATMOS_MACH",
 			/obj/machinery/portable_atmospherics = "PORT_ATMOS",
 			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack = "MECHA_MISSILE_RACK",
 			/obj/item/mecha_parts/mecha_equipment = "MECHA_EQUIP",
@@ -57,3 +57,25 @@
 		if(findtext("[key]", filter) || findtext("[value]", filter))
 			matches[key] = value
 	return matches
+
+/proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
+	if (value == FALSE) //nothing should be calling us with a number, so this is safe
+		value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
+		if (isnull(value))
+			return
+	value = trim(value)
+	if(!isnull(value) && value != "")
+		matches = filter_fancy_list(matches, value)
+
+	if(matches.len==0)
+		return
+
+	var/chosen
+	if(matches.len==1)
+		chosen = matches[1]
+	else
+		chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in matches
+		if(!chosen)
+			return
+	chosen = matches[chosen]
+	return chosen

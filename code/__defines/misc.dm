@@ -306,3 +306,5 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Preference save/load cooldown. This is in deciseconds.
 #define PREF_SAVELOAD_COOLDOWN 2 //Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.
+
+#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
