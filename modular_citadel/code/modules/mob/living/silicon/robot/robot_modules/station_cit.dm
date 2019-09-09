@@ -56,10 +56,6 @@
 
 	ASSERT(istype(R))
 
-	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
-	T.water = water
-	src.modules += T
-
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
 	water.recharge_rate = 0
@@ -67,6 +63,10 @@
 	water.energy = 0
 	R.water_res = water
 	synths += water
+
+	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	T.water = water
+	src.modules += T
 
 	R.icon 		 = 'modular_citadel/icons/mob/widerobot_cit.dmi'
 	R.hands.icon = 'modular_citadel/icons/mob/screen1_robot_cit.dmi'
