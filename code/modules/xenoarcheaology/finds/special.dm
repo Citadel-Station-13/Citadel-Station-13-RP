@@ -31,8 +31,7 @@
 		heard_talk.Remove(pick(heard_talk))
 	heard_talk.Add(text)
 	if(istype(loc, /mob/living) && world.time - last_twitch > 50)
-		last_twitch = world.tim
-
+		last_twitch = world.time
 
 //a vampiric statuette
 //todo: cult integration

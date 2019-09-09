@@ -27,7 +27,7 @@
 	var/outdoors_speed_mod = 0.7 //The general 'outdoors' speed. I.E., the general difference you'll be at when driving outside.
 
 /obj/vehicle/train/engine/quadbike/built
-	cell_type = null
+	cell = null
 
 /obj/vehicle/train/engine/quadbike/random/Initialize(mapload)
 	. = ..()

@@ -529,7 +529,7 @@
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
 
-/obj/item/weapon/storage/Initialize()
+/obj/item/weapon/storage/Initialize(mapload)
 	. = ..()
 
 	if(allow_quick_empty)
@@ -583,8 +583,11 @@
 
 	populate_contents()
 
+	PopulateContents()
+
 	//calibrate_size()			//Let's not!
 
+//old
 /obj/item/weapon/storage/proc/populate_contents()
 	if(LAZYLEN(starts_with) && !empty)
 		for(var/newtype in starts_with)
@@ -734,3 +737,6 @@
 
 /obj/item/weapon/storage/AllowDrop()
 	return TRUE
+
+/obj/item/weapon/storage/proc/PopulateContents()
+	return

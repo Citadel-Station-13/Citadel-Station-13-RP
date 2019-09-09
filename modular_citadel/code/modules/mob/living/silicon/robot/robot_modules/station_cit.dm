@@ -35,10 +35,6 @@
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
 
-	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
-	T.water = water
-	src.modules += T
-
 	var/obj/item/weapon/rsf/M = new /obj/item/weapon/rsf(src)
 	M.stored_matter = 30
 	src.modules += M
@@ -59,6 +55,10 @@
 */
 
 	ASSERT(istype(R))
+
+	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	T.water = water
+	src.modules += T
 
 	var/datum/matter_synth/water = new /datum/matter_synth()
 	water.name = "Water reserves"
