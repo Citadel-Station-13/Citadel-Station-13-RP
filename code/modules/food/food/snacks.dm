@@ -3670,7 +3670,7 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/macncheese
 	name = "macaroni and cheese"
 	desc = "The perfect combination of noodles and dairy."
-	icon = 'modular_citadel/icons/obj/food_cit.dmi'
+	icon = 'icons/obj/food_cit.dmi'
 	icon_state = "macncheese"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 9

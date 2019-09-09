@@ -2,6 +2,7 @@ var/global/list/robot_modules = list(
 	"Standard"		= /obj/item/weapon/robot_module/robot/standard,
 	"Service" 		= /obj/item/weapon/robot_module/robot/clerical/butler,
 	"Clerical" 		= /obj/item/weapon/robot_module/robot/clerical/general,
+	"Service-Hound"	= /obj/item/weapon/robot_module/robot/clerical/brodog,
 	"Research" 		= /obj/item/weapon/robot_module/robot/research,
 	"Miner" 		= /obj/item/weapon/robot_module/robot/miner,
 	"Crisis" 		= /obj/item/weapon/robot_module/robot/medical/crisis,
@@ -10,7 +11,7 @@ var/global/list/robot_modules = list(
 	"Combat" 		= /obj/item/weapon/robot_module/robot/security/combat,
 	"Engineering"	= /obj/item/weapon/robot_module/robot/engineering/general,
 //	"Construction"	= /obj/item/weapon/robot_module/robot/engineering/construction,
-	"Janitor" 		= /obj/item/weapon/robot_module/robot/janitor
+	"Janitor" 		= /obj/item/weapon/robot_module/robot/janitor,
 	)
 
 /obj/item/weapon/robot_module
@@ -609,7 +610,7 @@ var/global/list/robot_modules = list(
 					"Rich" = "maximillion",
 					"Drone - Service" = "drone-service",
 					"Drone - Hydro" = "drone-hydro"
-				  	)
+					)
 
 /obj/item/weapon/robot_module/robot/clerical/butler/New()
 	..()
@@ -643,6 +644,77 @@ var/global/list/robot_modules = list(
 	R.my_atom = src.emag
 	R.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
+
+/obj/item/weapon/robot_module/robot/clerical/brodog
+	name = "service-hound module"
+	sprites = list(
+					"Blackhound" = "k50",
+					"Pinkhound" = "k69",
+					"ServicehoundV2" = "serve2",
+					"ServicehoundV2 Darkmode" = "servedark",
+					)
+	channels = list("Service" = 1)
+	can_be_pushed = 0
+
+/obj/item/weapon/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
+	src.modules += new /obj/item/weapon/gripper/service(src)
+	src.modules += new /obj/item/weapon/reagent_containers/glass/bucket(src)
+	src.modules += new /obj/item/weapon/material/minihoe(src)
+	src.modules += new /obj/item/weapon/material/knife/machete/hatchet(src)
+	src.modules += new /obj/item/device/analyzer/plant_analyzer(src)
+	src.modules += new /obj/item/weapon/storage/bag/plants(src)
+	src.modules += new /obj/item/weapon/robot_harvester(src)
+	src.modules += new /obj/item/weapon/material/knife(src)
+	src.modules += new /obj/item/weapon/material/kitchen/rollingpin(src)
+	src.modules += new /obj/item/device/multitool(src) //to freeze trays
+	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
+	src.modules += new /obj/item/device/dogborg/boop_module(src)
+	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
+
+	var/datum/matter_synth/water = new /datum/matter_synth()
+	water.name = "Water reserves"
+	water.recharge_rate = 0
+	water.max_energy = 1000
+	water.energy = 0
+	R.water_res = water
+	synths += water
+
+	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	T.water = water
+	src.modules += T
+
+	var/obj/item/weapon/rsf/M = new /obj/item/weapon/rsf(src)
+	M.stored_matter = 30
+	src.modules += M
+
+	src.modules += new /obj/item/weapon/reagent_containers/dropper/industrial(src)
+
+	var/obj/item/weapon/flame/lighter/zippo/L = new /obj/item/weapon/flame/lighter/zippo(src)
+	L.lit = 1
+	src.modules += L
+
+	src.modules += new /obj/item/weapon/tray/robotray(src)
+	src.modules += new /obj/item/weapon/reagent_containers/borghypo/service(src)
+
+/* // I don't know what kind of sleeper to put here, but also no need if you already have "Robot Nom" verb.
+	var/obj/item/device/dogborg/sleeper/K9/B = new /obj/item/device/dogborg/sleeper/K9(src)
+	B.water = water
+	src.modules += B
+*/
+
+	R.icon 		 = 'icons/mob/widerobot_cit.dmi'
+	R.hands.icon = 'icons/mob/screen1_robot_cit.dmi'
+	R.ui_style_vr = TRUE
+	R.pixel_x 	 = -16
+	R.old_x 	 = -16
+	R.default_pixel_x = -16
+	R.dogborg = TRUE
+	R.wideborg = TRUE
+	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
+	..()
+
+
 
 /obj/item/weapon/robot_module/robot/clerical/general
 	name = "clerical robot module"
@@ -823,6 +895,9 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
 	src.modules += new /obj/item/device/assembly/signaler(src)
+	modules += new /obj/item/device/t_scanner(src)
+	modules += new /obj/item/device/analyzer(src)
+
 
 	robot.internals = new/obj/item/weapon/tank/jetpack/carbondioxide(src)
 	src.modules += robot.internals
@@ -883,11 +958,6 @@ var/global/list/robot_modules = list(
 	var/obj/item/stack/material/cyborg/plastic/P = new (src)
 	P.synths = list(plastic)
 	src.modules += P
-
-/obj/item/weapon/robot_module/drone/New(mob/living/silicon/robot/robot)
-  ..()
-  modules += new /obj/item/device/t_scanner(src)
-  modules += new /obj/item/device/analyzer(src)
 
 /obj/item/weapon/robot_module/drone/construction
 	name = "construction drone module"

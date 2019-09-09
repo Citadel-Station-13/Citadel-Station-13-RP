@@ -87,7 +87,7 @@
 	reagents.add_reagent("sugar", 2)
 
 /obj/item/weapon/storage/box/snakesnackbox
-	name = "box of Snake Snax"
+	name = "box of Snek Snaks"
 	desc = "A box containing Noodle's special sugermouse treats."
 	icon = 'icons/mob/snake_vr.dmi'
 	icon_state = "sneksnakbox"

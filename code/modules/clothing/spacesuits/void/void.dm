@@ -46,11 +46,19 @@
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
-		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/suits.dmi',
-		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/suits.dmi',
-		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/suits.dmi'
+		"Tajara"			= 'icons/obj/clothing/species/tajaran/suits.dmi', // Copied from void.dm
+		"Skrell"			= 'icons/obj/clothing/species/skrell/suits.dmi',  // Copied from void.dm
+		"Unathi"			= 'icons/obj/clothing/species/unathi/suits.dmi',  // Copied from void.dm
+		"Teshari"			= 'icons/obj/clothing/species/seromi/suits.dmi',  // Copied from void.dm
+		"Nevrean"			= 'icons/obj/clothing/species/nevrean/suits.dmi',
+		"Akula"				= 'icons/obj/clothing/species/akula/suits.dmi', // We have to update it if upstream adds more spacesuits.
+		"Sergal"			= 'icons/obj/clothing/species/sergal/suits.dmi',
+		"Flatland Zorren"	= 'icons/obj/clothing/species/fennec/suits.dmi',
+		"Highlander Zorren"	= 'icons/obj/clothing/species/fox/suits.dmi',
+		"Vulpkanin"			= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
+		"Promethean"		= 'icons/obj/clothing/species/skrell/suits.dmi'
 		)
+
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
 	//With 0.2 resiliance, will reach 10 breach damage after 3 laser carbine blasts or 8 smg hits.

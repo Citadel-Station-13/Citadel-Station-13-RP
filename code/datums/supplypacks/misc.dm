@@ -10,7 +10,7 @@
 /datum/supply_pack/randomised/misc
 	group = "Miscellaneous"
 
-	/datum/supply_pack/misc/rations
+/datum/supply_pack/misc/rations
 	name = "Emergency LiquidFood Rations"
 	contains = list(
 	/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 10
