@@ -98,7 +98,7 @@
 	valid_names += nicknames
 	valid_names += special_mentions()
 	for(var/name in valid_names)
-		if(findtext(message, regex("\\b[name]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
+		if(findtext(message, regex(@"\b[name]\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
 			return TRUE
 	return FALSE
 
