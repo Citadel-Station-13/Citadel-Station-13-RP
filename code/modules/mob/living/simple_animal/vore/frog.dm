@@ -14,11 +14,11 @@
 	melee_damage_upper = 25
 
 // Pepe is love, not hate.
-/mob/living/simple_animal/hostile/frog/New()
+/mob/living/simple_animal/hostile/frog/Initialize(mapload)
+	. = ..()
 	if(rand(1,1000000) == 1)
 		name = "rare Pepe"
 		desc = "You found a rare Pepe. Screenshot for good luck."
-	..()
 
 // Activate Noms!
 /mob/living/simple_animal/hostile/frog

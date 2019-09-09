@@ -94,8 +94,8 @@
 	var/obj/item/held_item = null
 
 
-/mob/living/simple_animal/parrot/New()
-	..()
+/mob/living/simple_animal/parrot/Initialize(mapload)
+	. = ..()
 	if(!ears)
 		var/headset = pick(/obj/item/device/radio/headset/headset_sec, \
 						/obj/item/device/radio/headset/headset_eng, \

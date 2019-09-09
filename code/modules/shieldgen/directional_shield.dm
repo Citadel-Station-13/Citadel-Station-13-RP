@@ -16,7 +16,8 @@
 	var/x_offset = 0 // Offset from the 'center' of where the projector is, so that if it moves, the shield can recalc its position.
 	var/y_offset = 0 // Ditto.
 
-/obj/effect/directional_shield/New(var/newloc, var/new_projector)
+/obj/effect/directional_shield/Initialize(mapload, new_projector)
+	. = ..()
 	if(new_projector)
 		projector = new_projector
 		var/turf/us = get_turf(src)
@@ -26,7 +27,6 @@
 			y_offset = us.y - them.y
 	else
 		update_color()
-	..(newloc)
 
 /obj/effect/directional_shield/proc/relocate()
 	if(!projector)
@@ -99,11 +99,11 @@
 	var/high_color = "#0099FF"			// Color the shield will be when at max health.  A light blue.
 	var/low_color = "#FF0000"			// Color the shield will drift towards as health is lowered.  Deep red.
 
-/obj/item/shield_projector/New()
+/obj/item/shield_projector/Initialize(mapload)
+	. = ..()
 	processing_objects += src
 	if(always_on)
 		create_shields()
-	..()
 
 /obj/item/shield_projector/Destroy()
 	destroy_shields()

@@ -12,8 +12,8 @@
 	var/client/owner_c = null //They'll be dead when we message them probably.
 	var/state = 0 //0 - New, 1 - Dead, 2 - Signaling, 3 - Recovering (same as iconstates)
 
-/obj/item/clothing/accessory/collar/lifecrystal/New()
-	..()
+/obj/item/clothing/accessory/collar/lifecrystal/Initialize(mapload)
+	. = ..()
 	update_state(1)
 
 /obj/item/clothing/accessory/collar/lifecrystal/Destroy() //Waitwaitwait

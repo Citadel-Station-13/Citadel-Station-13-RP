@@ -59,8 +59,8 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/train/rover/engine/New()
-	..()
+/obj/vehicle/train/rover/engine/Initialize(mapload)
+	. = ..()
 	cell = new /obj/item/weapon/cell/high(src)
 	key = new(src)
 	turn_off()	//so engine verbs are correctly set

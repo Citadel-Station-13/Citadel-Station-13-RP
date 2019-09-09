@@ -27,15 +27,14 @@
 	var/need_update_field = 0
 	var/need_player_check = 0
 
-/obj/machinery/mining/drill/New()
-
-	..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/cell/high(src)
-
+/obj/machinery/mining/drill/Initialize(mapload)
+	. = ..()
+	component_parts = list(
+		new /obj/item/weapon/stock_parts/matter_bin(src),
+		new /obj/item/weapon/stock_parts/capacitor(src),
+		new /obj/item/weapon/stock_parts/micro_laser(src),
+		new /obj/item/weapon/cell/high(src)
+	)
 	RefreshParts()
 
 /obj/machinery/mining/drill/process()

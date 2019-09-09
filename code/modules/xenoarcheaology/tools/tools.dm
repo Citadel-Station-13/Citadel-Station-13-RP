@@ -23,8 +23,8 @@
 	name = "sample bag box"
 	desc = "A box claiming to contain sample bags."
 
-/obj/item/weapon/storage/box/samplebags/New()
-	..()
+/obj/item/weapon/storage/box/samplebags/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 7)
 		var/obj/item/weapon/evidencebag/S = new(src)
 		S.name = "sample bag"
@@ -227,13 +227,13 @@
 	var/scan_ticks = 0
 	var/obj/item/device/radio/target_radio
 
-/obj/item/device/beacon_locator/New()
-	..()
+/obj/item/device/beacon_locator/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 
 /obj/item/device/beacon_locator/Destroy()
 	processing_objects.Remove(src)
-	..()
+	return ..()
 
 /obj/item/device/beacon_locator/process()
 	if(target_radio)
@@ -258,7 +258,7 @@
 						//scan radios in the world to try and find one
 						var/cur_dist = 999
 						for(var/obj/item/device/radio/beacon/R in GLOB.all_beacons)
-							if(R.z == src.z && R.frequency == src.frequency)
+							if(R.z == z && R.frequency == frequency)
 								var/check_dist = get_dist(src,R)
 								if(check_dist < cur_dist)
 									cur_dist = check_dist
@@ -274,7 +274,7 @@
 			icon_state = "pinoff"
 
 /obj/item/device/beacon_locator/attack_self(var/mob/user as mob)
-	return src.interact(user)
+	return interact(user)
 
 /obj/item/device/beacon_locator/interact(var/mob/user as mob)
 	var/dat = "<b>Radio frequency tracker</b><br>"
@@ -325,7 +325,8 @@
 	var/obj/item/device/ano_scanner/anomaly_scanner = null
 	var/obj/item/device/depth_scanner/depth_scanner = null
 
-/obj/item/device/xenoarch_multi_tool/New()
+/obj/item/device/xenoarch_multi_tool/Initialize(mapload)
+	. = ..()
 	anomaly_scanner = new/obj/item/device/ano_scanner(src)
 	depth_scanner = new/obj/item/device/depth_scanner(src)
 

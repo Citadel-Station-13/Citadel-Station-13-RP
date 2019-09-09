@@ -18,7 +18,9 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/weapon/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
+/obj/item/weapon/robot_module/robot/clerical/brodog/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/weapon/gripper/service(src)
 	src.modules += new /obj/item/weapon/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/weapon/material/minihoe(src)
@@ -32,14 +34,6 @@
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
-
-	var/datum/matter_synth/water = new /datum/matter_synth()
-	water.name = "Water reserves"
-	water.recharge_rate = 0
-	water.max_energy = 1000
-	water.energy = 0
-	R.water_res = water
-	synths += water
 
 	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
 	T.water = water
@@ -64,6 +58,16 @@
 	src.modules += B
 */
 
+	ASSERT(istype(R))
+
+	var/datum/matter_synth/water = new /datum/matter_synth()
+	water.name = "Water reserves"
+	water.recharge_rate = 0
+	water.max_energy = 1000
+	water.energy = 0
+	R.water_res = water
+	synths += water
+
 	R.icon 		 = 'modular_citadel/icons/mob/widerobot_cit.dmi'
 	R.hands.icon = 'modular_citadel/icons/mob/screen1_robot_cit.dmi'
 	R.ui_style_vr = TRUE
@@ -74,4 +78,3 @@
 	R.wideborg = TRUE
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
-	..()

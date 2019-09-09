@@ -43,8 +43,8 @@ var/global/list/grub_machine_overlays = list()
 	var/power_drained = 0
 	var/forced_out = 0
 
-/mob/living/simple_animal/solargrub_larva/New()
-	..()
+/mob/living/simple_animal/solargrub_larva/Initialize(mapload)
+	. = ..()
 	powermachine = new(src)
 	sparks = new(src)
 	sparks.set_up()
@@ -207,12 +207,11 @@ var/global/list/grub_machine_overlays = list()
 	var/draining = 1
 	var/mob/living/simple_animal/solargrub_larva/grub
 
-/obj/machinery/abstract_grub_machine/New()
-	..()
+/obj/machinery/abstract_grub_machine/Initialize(mapload)
+	. = ..()
 	shuffle_power_usages()
 	grub = loc
 	if(!istype(grub))
-		grub = null
 		qdel(src)
 
 /obj/machinery/abstract_grub_machine/Destroy()

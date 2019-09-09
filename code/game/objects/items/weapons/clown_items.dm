@@ -19,7 +19,7 @@
 	..()
 	create_reagents(5)
 	wet()
- 
+
 /obj/item/weapon/soap/proc/wet()
 	reagents.add_reagent("cleaner", 5)
 

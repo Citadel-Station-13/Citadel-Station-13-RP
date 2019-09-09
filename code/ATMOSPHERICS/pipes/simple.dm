@@ -1,6 +1,6 @@
 //
 // Simple Pipes - Just a tube, maybe bent
-// 
+//
 /obj/machinery/atmospherics/pipe/simple
 	icon = 'icons/atmos/pipes.dmi'
 	icon_state = ""

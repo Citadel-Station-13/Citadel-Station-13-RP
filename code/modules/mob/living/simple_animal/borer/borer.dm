@@ -43,15 +43,15 @@
 	if(mind)
 		borers.add_antagonist(mind)
 
-/mob/living/simple_animal/borer/New()
-	..()
-
+/mob/living/simple_animal/borer/Initialize(mapload)
+	. = ..()
 	add_language("Cortical Link")
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
 
 	truename = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
-	if(!roundstart) request_player()
+	if(!roundstart)
+		request_player()
 
 /mob/living/simple_animal/borer/Life()
 

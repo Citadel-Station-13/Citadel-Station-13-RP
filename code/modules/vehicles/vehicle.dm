@@ -47,9 +47,6 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/New()
-	..()
-	//spawn the cell you want in each vehicle
 
 /obj/vehicle/Destroy()
 	QDEL_NULL(riding_datum)
