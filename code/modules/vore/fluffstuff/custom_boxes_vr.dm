@@ -312,7 +312,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "wolpin cube box"
 	desc = "Drymate brand wolpin cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/wolpincubes/PouplateContents()
+/obj/item/weapon/storage/box/monkeycubes/wolpincubes/PopulateContents()
 	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube(src)
