@@ -15,8 +15,8 @@
 /*
  * Soap
  */
-/obj/item/weapon/soap/New()
-	..()
+/obj/item/weapon/soap/Initialize()
+	. = ..()
 	create_reagents(5)
 	wet()
 

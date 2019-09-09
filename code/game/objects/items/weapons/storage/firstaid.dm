@@ -246,7 +246,7 @@
 		else
 			icon_state = "[base_icon]_[bottle_color]"
 
-/obj/item/weapon/storage/pill_bottle/Initialize()
+/obj/item/weapon/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	if(base_icon == "pill_canister")
 		verbs += /obj/item/weapon/storage/pill_bottle/proc/choose_color

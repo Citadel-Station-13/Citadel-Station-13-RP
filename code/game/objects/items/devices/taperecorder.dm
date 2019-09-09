@@ -19,8 +19,8 @@
 	throw_speed = 4
 	throw_range = 20
 
-/obj/item/device/taperecorder/New()
-	..()
+/obj/item/device/taperecorder/Initialize(mapload)
+	. = ..()
 	if(ispath(mytape))
 		mytape = new mytape(src)
 		update_icon()
