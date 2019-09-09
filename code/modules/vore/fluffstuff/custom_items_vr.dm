@@ -414,68 +414,64 @@ END OF CITADEL CHANGE */
 	icon_state = "amp"
 	body_parts_covered = 0
 
-//Lots of people are using this now.
-/obj/item/clothing/accessory/collar/khcrystal
-	name = "life crystal"
-	desc = "A small crystal with four little dots in it. It feels slightly warm to the touch. \
-	Read manual before use! Can be worn, held, or attached to uniform. NOTE: Device contains antimatter."
+*/obj/item/clothing/accessory/collar/lifecrystal
+	name = "\improper Vey-Med Life-Alert"
+	desc = "A small crystal with a single light on its surface. It's supposed to notify an offsite facility if you're dead for too long."
 	w_class = ITEMSIZE_SMALL
-
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_items_vr.dmi'
-
 	icon_state = "khlife"
 	item_state = "khlife_overlay"
 	overlay_state = "khlife_overlay"
-
 	slot_flags = SLOT_TIE
-
 	var/mob/owner = null
 	var/client/owner_c = null //They'll be dead when we message them probably.
-	var/state = 0 //0 - New, 1 - Paired, 2 - Breaking, 3 - Broken (same as iconstates)
+	var/state = 0 //0 - New, 1 - Dead, 2 - Signaling, 3 - Recovering (same as iconstates)
 
-/obj/item/clothing/accessory/collar/khcrystal/New()
+/obj/item/clothing/accessory/collar/lifecrystal/New()
 	..()
-	update_state(0)
+	update_state(1)
 
-/obj/item/clothing/accessory/collar/khcrystal/Destroy() //Waitwaitwait
+/obj/item/clothing/accessory/collar/lifecrystal/Destroy() //Waitwaitwait
 	if(state == 1)
 		process() //Nownownow
 	return ..() //Okfine
 
-/obj/item/clothing/accessory/collar/khcrystal/process()
+/obj/item/clothing/accessory/collar/lifecrystal/process()
 	check_owner()
 	if((state > 1) || !owner)
 		processing_objects.Remove(src)
 
-/obj/item/clothing/accessory/collar/khcrystal/attack_self(mob/user as mob)
-	if(state > 0) //Can't re-pair, one time only, for security reasons.
-		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
-		return 0
-
+/obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user as mob)
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
-	update_state(1)
+	check_owner()
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
 	processing_objects.Add(src)
 
-/obj/item/clothing/accessory/collar/khcrystal/proc/check_owner()
+/obj/item/clothing/accessory/collar/lifecrystal/proc/check_owner()
 	//He's dead, jim
-	if((state == 1) && owner && (owner.stat == DEAD))
+	if(owner && (owner.stat == DEAD))
 		update_state(2)
-		audible_message("<span class='warning'>The [name] begins flashing red.</span>")
-		sleep(30)
-		visible_message("<span class='warning'>The [name] shatters into dust!</span>")
-		if(owner_c)
-			to_chat(owner_c, "<span class='notice'>The HAVENS system is notified of your demise via \the [name].</span>")
-		update_state(3)
-		name = "broken [initial(name)]"
-		desc = "This seems like a necklace, but the actual pendant is missing."
+		sleep(60)
+		if(owner.stat == DEAD)
+			ebroadcast("Alert! [owner.real_name] is in critical condition in [get_area(owner).name]!")
+			update_state(3)
 
-/obj/item/clothing/accessory/collar/khcrystal/proc/update_state(var/tostate)
+
+/obj/item/clothing/accessory/collar/lifecrystal/proc/ebroadcast(var/message)
+	var/list/datum/radio_frequency/secure_radio_connections = new
+	var/datum/radio_frequency/connection = secure_radio_connections["Medical"]
+	Broadcast_Message(connection, owner,
+				0, "*garbled alert*", null,
+				message, "[owner.real_name]'s Life Crystal", "Life Alert", "[owner.real_name]'s Life Crystal", "shrill synthetic voice",
+				0, 0, list(0), connection.frequency, "alarms", null)
+
+/obj/item/clothing/accessory/collar/lifecrystal/proc/update_state(var/tostate)
 	state = tostate
 	icon_state = "[initial(icon_state)][tostate]"
 	update_icon()
+/*
 
 /obj/item/weapon/paper/khcrystal_manual
 	name = "KH-LC91-1 manual"
