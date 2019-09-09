@@ -10,7 +10,7 @@
   * the object has been admin edited
   */
 /atom/vv_edit_var(var_name, var_value)
-	if(!GLOB.Debug2)
+	if(!Debug2)
 		flags |= ADMIN_SPAWNED
 	. = ..()
 	switch(var_name)

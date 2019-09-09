@@ -26,6 +26,11 @@
 #define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
 #define reverseList(L) reverseRange(L.Copy())
 
+#define SAFEPICK(L) (length(L)? pick(L) : null)
+#define SAFEACCESS(L, I) ((isnum(I) && ISINRANGE(I, 1, length(L))? L[I] : null)
+//Picks from the list, with some safeties, and returns the "default" arg if it fails
+#define DEFAULTPICK(L, default) ((islist(L) && length(L)) ? pick(L) : default)
+
 // binary search sorted insert
 // IN: Object to be inserted
 // LIST: List to insert object into

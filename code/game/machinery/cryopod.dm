@@ -97,7 +97,7 @@
 		//dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>" //VOREStation Removal - Just log them.
 		//dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>" //VOREStation Removal
 
-	to_chat(user, browse(dat, "window=cryopod_console"))
+	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
 
 /obj/machinery/computer/cryopod/Topic(href, href_list)

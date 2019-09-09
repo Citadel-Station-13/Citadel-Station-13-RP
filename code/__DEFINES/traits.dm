@@ -189,8 +189,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define DISEASE_TRAIT "disease"
 #define SPECIES_TRAIT "species"
 #define ORGAN_TRAIT "organ"
+*/
 #define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
 #define JOB_TRAIT "job"
+/*
 #define CYBORG_ITEM_TRAIT "cyborg-item"
 */
 #define ADMIN_TRAIT "admin" // (B)admins only.

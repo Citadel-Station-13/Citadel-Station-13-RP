@@ -310,5 +310,5 @@
 		if(C.can_transfer)
 			target.TakeComponent(comps)
 
-/datum/component/ui_host()
+/datum/component/nano_host()
 	return parent

@@ -15,7 +15,7 @@
 
 		return 1
 
-/datum/disease2/disease/get_view_variables_header()
+/datum/disease2/disease/get_view_variables_header_legacy()
 	. = list()
 	for(var/datum/disease2/effectholder/E in effects)
 		. += "[E.stage]: [E.effect.name]"
@@ -24,7 +24,7 @@
 		[jointext(., "<br>")]</font>
 	"}
 
-/datum/disease2/disease/get_view_variables_options()
+/datum/disease2/disease/get_view_variables_options_legacy()
 	return ..() + {"
 		<option value='?src=\ref[src];info=1'>Show info</option>
 	"}

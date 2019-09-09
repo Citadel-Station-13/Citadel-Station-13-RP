@@ -206,7 +206,7 @@
 	if(length(results) == 3)
 		for(var/I in 1 to 3)
 			to_chat(usr, results[I])
-	SSblackbox.record_feedback("nested tally", "SDQL query", 1, list(ckey, query_text))
+	//SSblackbox.record_feedback("nested tally", "SDQL query", 1, list(ckey, query_text))
 
 /world/proc/SDQL2_query(query_text, log_entry1, log_entry2)
 	var/query_log = "executed SDQL query(s): \"[query_text]\"."
@@ -1105,7 +1105,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		else if(expression[start + 1] == "\[" && islist(v))
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
-			if(isnum(index) && (!ISINTEGER(index) || L.len < index))
+			if(isnum(index) && (!IsInteger(index) || L.len < index))
 				to_chat(usr, "<span class='danger'>Invalid list index: [index]</span>")
 				return null
 			return L[index]

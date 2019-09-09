@@ -649,7 +649,7 @@
 	else if(href_list["call_proc"])
 		var/datum/D = locate(href_list["call_proc"])
 		if(istype(D) || istype(D, /client)) // can call on clients too, not just datums
-			callproc_targetpicked(1, D)
+			callproc_datum(D)
 
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locate(href_list["datumrefresh"])

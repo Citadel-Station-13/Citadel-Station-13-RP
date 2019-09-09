@@ -131,9 +131,6 @@
 		return 0
 	return -1
 
-/atom/proc/on_reagent_change()
-	return
-
 /atom/proc/Bumped(AM as mob|obj)
 	return
 

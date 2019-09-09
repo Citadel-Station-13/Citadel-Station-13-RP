@@ -88,11 +88,13 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_OIL_FRIED" = TRAIT_OIL_FRIED
 		*/
 	),
+	/*
 	/obj/item/bodypart = list(
 		/*
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS
 		*/
 		),
+	*/
 	/obj/item = list(
 		/*
 		"TRAIT_NODROP" = TRAIT_NODROP,

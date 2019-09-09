@@ -6,7 +6,7 @@
 		var/typename = "[type]"
 		var/static/list/TYPES_SHORTCUTS = list(
 			/obj/effect/decal/cleanable = "CLEANABLE",
-			/obj/item/radio/headset = "HEADSET",
+			/obj/item/device/radio/headset = "HEADSET",
 			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
 //			/obj/item/book/manual = "MANUAL",
 //			/obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first
@@ -22,8 +22,8 @@
 			/obj/effect = "EFFECT",
 			/obj = "O",
 			/datum = "D",
-			/turf/open = "OPEN",
-			/turf/closed = "CLOSED",
+//			/turf/open = "OPEN",
+//			/turf/closed = "CLOSED",
 			/turf = "T",
 			/mob/living/carbon = "CARBON",
 			/mob/living/simple_animal = "SIMPLE",
