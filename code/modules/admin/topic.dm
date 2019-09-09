@@ -1208,6 +1208,31 @@
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
 
+	else if(href_list["adminplayerobservefollow"])
+		if(!isobserver(usr) && !check_rights(R_ADMIN))
+			return
+
+		var/atom/movable/AM = locate(href_list["adminplayerobservefollow"])
+
+		var/client/C = usr.client
+		var/can_ghost = TRUE
+		if(!isobserver(usr))
+			can_ghost = C.admin_ghost()
+
+		if(!can_ghost)
+			return
+		var/mob/dead/observer/A = C.mob
+		A.ManualFollow(AM)
+
+	else if(href_list["admingetmovable"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/atom/movable/AM = locate(href_list["admingetmovable"])
+		if(QDELETED(AM))
+			return
+		AM.forceMove(get_turf(usr))
+
 	else if(href_list["adminplayerobservejump"])
 		if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))	return
 
@@ -1217,18 +1242,6 @@
 		if(!isobserver(usr))	C.admin_ghost()
 		sleep(2)
 		C.jumptomob(M)
-
-	else if(href_list["adminplayerobservefollow"])
-		if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))
-			return
-
-		var/mob/M = locate(href_list["adminplayerobservefollow"])
-
-		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
-		var/mob/observer/dead/G = C.mob
-		sleep(2)
-		G.ManualFollow(M)
 
 	else if(href_list["check_antagonist"])
 		check_antagonists()

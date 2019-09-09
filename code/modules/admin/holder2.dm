@@ -144,3 +144,6 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return TRUE
 	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
 	*/
+
+/datum/admins/vv_edit_var(var_name, var_value)
+	return FALSE //nice try trialmin
