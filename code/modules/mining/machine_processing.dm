@@ -186,8 +186,8 @@
 
 	// TODO - Initializing this here is insane. Put it in global lists init or something. ~Leshana
 	if(!ore_data || !ore_data.len)
-		for(var/oretype in typesof(/ore)-/ore)
-			var/ore/OD = new oretype()
+		for(var/oretype in typesof(/datum/ore)-/datum/ore)
+			var/datum/ore/OD = new oretype()
 			ore_data[OD.name] = OD
 			ores_processing[OD.name] = 0
 			ores_stored[OD.name] = 0
