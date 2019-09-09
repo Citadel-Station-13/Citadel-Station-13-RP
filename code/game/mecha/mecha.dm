@@ -320,7 +320,7 @@
 	if(dir_to_target && !(dir_to_target & src.dir))//wrong direction
 		return
 	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
-		target = safepick(view(3,target))
+		target = SAFEPICK(view(3,target))
 		if(!target)
 			return
 	if(istype(target, /obj/machinery))
@@ -480,12 +480,12 @@
 			for(var/T in possible_int_damage)
 				if(internal_damage & T)
 					possible_int_damage -= T
-			var/int_dam_flag = safepick(possible_int_damage)
+			var/int_dam_flag = SAFEPICK(possible_int_damage)
 			if(int_dam_flag)
 				setInternalDamage(int_dam_flag)
 	if(prob(5))
 		if(ignore_threshold || src.health*100/initial(src.health)<src.internal_damage_threshold)
-			var/obj/item/mecha_parts/mecha_equipment/destr = safepick(equipment)
+			var/obj/item/mecha_parts/mecha_equipment/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
 	return

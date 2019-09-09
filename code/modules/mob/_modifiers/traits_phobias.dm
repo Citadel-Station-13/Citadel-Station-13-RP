@@ -28,22 +28,22 @@
 	var/last_fear = current_fear
 	current_fear = between(0, current_fear + amount, max_fear)
 
-	// Handle messages.  safepick() is used so that if no messages are defined, it just does nothing, verses runtiming.
+	// Handle messages.  SAFEPICK() is used so that if no messages are defined, it just does nothing, verses runtiming.
 	var/message = null
 	if(amount > 0) // Increase in spooks.
 		if(current_fear == max_fear && last_fear < max_fear)
-			message = safepick(full_fear_up)
+			message = SAFEPICK(full_fear_up)
 		else if(current_fear >= (max_fear / 2) && last_fear < (max_fear / 2))
-			message = safepick(half_fear_up)
+			message = SAFEPICK(half_fear_up)
 		else if(current_fear > 0 && last_fear == 0)
-			message = safepick(zero_fear_up)
+			message = SAFEPICK(zero_fear_up)
 	else if(amount < 0) // Decrease in spooks.
 		if(last_fear == max_fear && current_fear < max_fear)
-			message = safepick(full_fear_down)
+			message = SAFEPICK(full_fear_down)
 		else if(last_fear >= (max_fear / 2) && current_fear < (max_fear / 2))
-			message = safepick(half_fear_down)
+			message = SAFEPICK(half_fear_down)
 		else if(last_fear > 0 && current_fear == 0)
-			message = safepick(zero_fear_down)
+			message = SAFEPICK(zero_fear_down)
 
 	if(message)
 		to_chat(holder, message)
