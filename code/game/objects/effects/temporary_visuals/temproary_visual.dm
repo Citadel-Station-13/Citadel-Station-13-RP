@@ -11,7 +11,7 @@
 /obj/effect/temp_visual/Initialize()
 	. = ..()
 	if(randomdir)
-		set_dir(pick(cardinal))
+		setDir(pick(cardinal))
 
 	spawn(duration)
 		qdel(src)
@@ -29,8 +29,8 @@
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
-/obj/effect/temp_visual/dir_setting/Initialize(mapload, set_dir)
-	if(set_dir)
-		setDir(set_dir)
+/obj/effect/temp_visual/dir_setting/Initialize(mapload, setDir)
+	if(setDir)
+		setDir(setDir)
 	. = ..()
 */		//More tg stuff that might be useful later

@@ -230,7 +230,7 @@
 	return
 
 //called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/set_dir(new_dir)
+/atom/proc/setDir(new_dir)
 	. = new_dir != dir
 	dir = new_dir
 

@@ -125,7 +125,7 @@
 		if (usr.stat || usr.restrained() || anchored)
 			return
 
-		src.set_dir(turn(src.dir, -90))
+		src.setDir(turn(src.dir, -90))
 
 
 	verb/rotate_anticlockwise()
@@ -136,7 +136,7 @@
 		if (usr.stat || usr.restrained() || anchored)
 			return
 
-		src.set_dir(turn(src.dir, 90))
+		src.setDir(turn(src.dir, 90))
 
 //Goddamn copypaste from binary base class because atmospherics machinery API is not damn flexible
 	get_neighbor_nodes_for_init()
@@ -276,7 +276,7 @@
 		if (usr.stat || usr.restrained()  || anchored)
 			return
 
-		src.set_dir(turn(src.dir, -90))
+		src.setDir(turn(src.dir, -90))
 
 	verb/rotate_anticlock()
 		set category = "Object"
@@ -286,4 +286,4 @@
 		if (usr.stat || usr.restrained()  || anchored)
 			return
 
-		src.set_dir(turn(src.dir, 90))
+		src.setDir(turn(src.dir, 90))

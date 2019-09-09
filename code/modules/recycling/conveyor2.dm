@@ -26,7 +26,7 @@
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
 	if(newdir)
-		set_dir(newdir)
+		setDir(newdir)
 
 	if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
 		forwards = turn(dir, 135)

@@ -230,7 +230,7 @@
 	to_chat(user, "<span class='notice'>You start adding cable to the [src].</span>")
 	if(do_after(user, 50))
 		terminal = new /obj/machinery/power/terminal(tempLoc)
-		terminal.set_dir(tempDir)
+		terminal.setDir(tempDir)
 		terminal.master = src
 		terminal.connect_to_network()
 		return 0

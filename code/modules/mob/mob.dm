@@ -776,9 +776,9 @@
 /mob/proc/facedir(var/ndir)
 	if(!canface() || (client && (client.moving || (world.time < client.move_delay))))
 		return 0
-	set_dir(ndir)
+	setDir(ndir)
 	if(buckled && buckled.buckle_movable)
-		buckled.set_dir(ndir)
+		buckled.setDir(ndir)
 	if(client)
 		client.move_delay += movement_delay()
 	return 1
@@ -1058,15 +1058,15 @@ mob/proc/yank_out_object()
 	if(newdir == facing_dir)
 		facing_dir = null
 	else if(newdir)
-		set_dir(newdir)
+		setDir(newdir)
 		facing_dir = newdir
 	else if(facing_dir)
 		facing_dir = null
 	else
-		set_dir(dir)
+		setDir(dir)
 		facing_dir = dir
 
-/mob/set_dir()
+/mob/setDir()
 	if(facing_dir)
 		if(!canface() || lying || buckled || restrained())
 			facing_dir = null
