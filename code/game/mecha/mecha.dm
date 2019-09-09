@@ -532,7 +532,7 @@
 	return call((proc_res["dynabsorbdamage"]||src), "dynabsorbdamage")(damage,damage_type)
 
 /obj/mecha/proc/dynabsorbdamage(damage,damage_type)
-	return damage*(listgetindex(damage_absorption,damage_type) || 1)
+	return damage*(SAFEACCESS(damage_absorption,damage_type) || 1)
 
 /obj/mecha/airlock_crush(var/crush_damage)
 	..()

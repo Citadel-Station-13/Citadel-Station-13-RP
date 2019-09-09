@@ -1221,7 +1221,7 @@
 
 		if(!can_ghost)
 			return
-		var/mob/dead/observer/A = C.mob
+		var/mob/observer/dead/A = C.mob
 		A.ManualFollow(AM)
 
 	else if(href_list["admingetmovable"])
