@@ -383,6 +383,18 @@
 		'icons/spideros_icons/sos_14.png'
 		)
 
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if ("holder")
+			return FALSE
+		if ("ckey")
+			return FALSE
+		if ("key")
+			return FALSE
+		if("view")
+			change_view(var_value)
+			return TRUE
+	. = ..()
 
 mob/proc/MayRespawn()
 	return 0
