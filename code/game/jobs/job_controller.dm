@@ -515,9 +515,9 @@ var/global/datum/controller/occupations/job_master
 				var/obj/item/clothing/glasses/G = H.glasses
 				G.prescription = 1
 
-		BITSET(H.hud_updateflag, ID_HUD)
-		BITSET(H.hud_updateflag, IMPLOYAL_HUD)
-		BITSET(H.hud_updateflag, SPECIALROLE_HUD)
+		ENABLE_BITFIELD(H.hud_updateflag, ID_HUD)
+		ENABLE_BITFIELD(H.hud_updateflag, IMPLOYAL_HUD)
+		ENABLE_BITFIELD(H.hud_updateflag, SPECIALROLE_HUD)
 		return H
 
 
