@@ -195,7 +195,7 @@
 						src.ears = headset_to_add
 						to_chat(usr, "You fit the headset onto [src].")
 
-						clearlist(available_channels)
+						available_channels.len = 0
 						for(var/ch in headset_to_add.channels)
 							switch(ch)
 								if("Engineering")
@@ -302,7 +302,7 @@
 			speak.Remove(pick(speak))
 
 		speak.Add(pick(speech_buffer))
-		clearlist(speech_buffer)
+		speech_buffer.len = 0
 
 
 //-----SLEEPING

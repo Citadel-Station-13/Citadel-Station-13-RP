@@ -251,7 +251,7 @@
 	var/list/frozen_mobs = list()
 
 /datum/map_z_level/tether/wilderness/proc/activate_mobs()
-	if(activated && isemptylist(frozen_mobs))
+	if(activated && !length(frozen_mobs))
 		return
 	activated = 1
 	for(var/mob/living/simple_animal/M in frozen_mobs)

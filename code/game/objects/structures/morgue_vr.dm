@@ -14,7 +14,7 @@
 			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
 			return
 	else
-		if(!isemptylist(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
+		if(!!length(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
 			usr << "You get the feeling that you shouldn't cremate one of the items in the cremator."
 			return
 

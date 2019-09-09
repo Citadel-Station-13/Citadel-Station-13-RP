@@ -289,7 +289,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			return
 
 	else
-		if(!isemptylist(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
+		if(!!length(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
 			to_chat(user,"You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 
