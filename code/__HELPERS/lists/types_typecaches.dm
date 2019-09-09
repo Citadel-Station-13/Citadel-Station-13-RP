@@ -1,3 +1,19 @@
+//Checks for specific types in a list
+/proc/is_type_in_list(atom/A, list/L)
+	for(var/type in L)
+		if(istype(A, type))
+			return TRUE
+	return FALSE
+
+//Checks for specific types in a list
+/proc/is_path_in_list(path, list/L)
+	for(var/P in L)
+		if(ispath(path, P))
+			return TRUE
+	return FALSE
+
+//Typecaches, specially formatted lists used to check for types with priority to speed rather than memory efficiency.
+
 //Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')
 #define is_type_in_typecache(A, L) (A && length(L) && L[(ispath(A) ? A : A:type)])
 

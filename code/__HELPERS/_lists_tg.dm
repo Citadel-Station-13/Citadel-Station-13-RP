@@ -1,15 +1,4 @@
 
-
-//Checks for specific types in a list
-/proc/is_type_in_list(atom/A, list/L)
-	if(!LAZYLEN(L) || !A)
-		return FALSE
-	for(var/type in L)
-		if(istype(A, type))
-			return TRUE
-	return FALSE
-
-
 //Removes any null entries from the list
 //Returns TRUE if the list had nulls, FALSE otherwise
 /proc/listclearnulls(list/L)
@@ -56,25 +45,6 @@
 		pos--
 	L.Insert(pos+1, thing)
 
-// Returns the next item in a list
-/proc/next_list_item(item, list/L)
-	var/i
-	i = L.Find(item)
-	if(i == L.len)
-		i = 1
-	else
-		i++
-	return L[i]
-
-// Returns the previous item in a list
-/proc/previous_list_item(item, list/L)
-	var/i
-	i = L.Find(item)
-	if(i == 1)
-		i = L.len
-	else
-		i--
-	return L[i]
 
 //for sorting clients or mobs by ckey
 /proc/sortKey(list/L, order=1)
@@ -94,25 +64,6 @@
 	return sortTim(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
 
 
-//Converts a bitfield to a list of numbers (or words if a wordlist is provided)
-/proc/bitfield2list(bitfield = 0, list/wordlist)
-	var/list/r = list()
-	if(islist(wordlist))
-		var/max = min(wordlist.len,16)
-		var/bit = 1
-		for(var/i=1, i<=max, i++)
-			if(bitfield & bit)
-				r += wordlist[i]
-			bit = bit << 1
-	else
-		for(var/bit=1, bit<=65535, bit = bit << 1)
-			if(bitfield & bit)
-				r += bit
-
-	return r
-
-// Returns the key based on the index
-#define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
 
 /proc/count_by_type(list/L, type)
 	var/i = 0
@@ -225,51 +176,3 @@
 	while(L.Remove(null))
 		continue
 	return L
-
-
-
-/* Definining a counter as a series of key -> numeric value entries
-
- * All these procs modify in place.
-*/
-
-/proc/counterlist_scale(list/L, scalar)
-	var/list/out = list()
-	for(var/key in L)
-		out[key] = L[key] * scalar
-	. = out
-
-/proc/counterlist_sum(list/L)
-	. = 0
-	for(var/key in L)
-		. += L[key]
-
-/proc/counterlist_normalise(list/L)
-	var/avg = counterlist_sum(L)
-	if(avg != 0)
-		. = counterlist_scale(L, 1 / avg)
-	else
-		. = L
-
-/proc/counterlist_combine(list/L1, list/L2)
-	for(var/key in L2)
-		var/other_value = L2[key]
-		if(key in L1)
-			L1[key] += other_value
-		else
-			L1[key] = other_value
-
-
-
-/proc/compare_list(list/l,list/d)
-	if(!islist(l) || !islist(d))
-		return FALSE
-
-	if(l.len != d.len)
-		return FALSE
-
-	for(var/i in 1 to l.len)
-		if(l[i] != d[i])
-			return FALSE
-
-	return TRUE

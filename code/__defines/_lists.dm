@@ -28,8 +28,8 @@
 
 #define SAFEPICK(L) (length(L)? pick(L) : null)
 #define SAFEACCESS(L, I) ((isnum(I) && ISINRANGE(I, 1, length(L))? L[I] : null)
-//Picks from the list, with some safeties, and returns the "default" arg if it fails
-#define DEFAULTPICK(L, default) ((islist(L) && length(L)) ? pick(L) : default)
+// Returns the key based on the index
+#define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
 
 // binary search sorted insert
 // IN: Object to be inserted
