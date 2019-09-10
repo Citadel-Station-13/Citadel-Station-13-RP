@@ -743,5 +743,5 @@
 	rainbow_core_candidate = FALSE
 
 /mob/living/simple_animal/slime/rainbow/kendrick/Initialize(mapload)
-	. = ..()
 	pacify()
+	. = ..()
