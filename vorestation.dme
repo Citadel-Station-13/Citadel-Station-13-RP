@@ -3090,7 +3090,6 @@
 #include "modular_citadel\code\modules\games\dice.dm"
 #include "modular_citadel\code\modules\mob\living\carbon\human\species\station\traits\neutral.dm"
 #include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station.dm"
-#include "modular_citadel\code\modules\mob\living\silicon\robot\robot_modules\station_cit.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\simple_animal_vr.dm"
 #include "modular_citadel\code\modules\mob\living\simple_animal\animals\snake_cit.dm"
