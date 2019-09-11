@@ -496,28 +496,18 @@
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
 	src.modules += new /obj/item/weapon/gripper(src)
+	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
 
-	//Painfully slow charger regen but high capacity. Also starts with low amount.
-	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
+	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
 	metal.name = "Steel reserves"
-	metal.recharge_rate = 50
-	metal.max_energy = 50000
-	metal.energy = 5000
-	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
+	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
 	glass.name = "Glass reserves"
-	glass.recharge_rate = 50
-	glass.max_energy = 50000
-	glass.energy = 5000
-	var/datum/matter_synth/wood = new /datum/matter_synth/wood()
+	var/datum/matter_synth/wood = new /datum/matter_synth/wood(40000)
 	wood.name = "Wood reserves"
-	wood.recharge_rate = 50
-	wood.max_energy = 50000
-	wood.energy = 5000
-	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic()
+	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic(40000)
 	plastic.name = "Plastic reserves"
-	plastic.recharge_rate = 50
-	plastic.max_energy = 50000
-	plastic.energy = 5000
+	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel(20000)
+	plasteel.name = "Plasteel reserves"
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
 	water.recharge_rate = 0
@@ -526,6 +516,7 @@
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
 	synths += metal
 	synths += glass
+	synths += plasteel
 	synths += wood
 	synths += plastic
 	synths += wire
@@ -562,6 +553,10 @@
 	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
 	C.synths = list(wire)
 	src.modules += C
+
+	var/obj/item/stack/material/cyborg/plasteel/PS = new (src)
+	PS.synths = list(plasteel)
+	src.modules += PS
 
 	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
 	S.synths = list(metal)
