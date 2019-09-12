@@ -97,7 +97,7 @@
 		data["cooldown"] = max(0, min(100, round(teleport_cooldown - world.time) / 10))
 		data["crystalCount"] = crystals.len
 		data["maxCrystals"] = max_crystals
-		data["maxPossibleDistance"] = Floor(max_crystals * powerCoefficient * 6); // max efficiency is 6
+		data["maxPossibleDistance"] = FLOOR(max_crystals * powerCoefficient * 6, 1); // max efficiency is 6
 		data["maxAllowedDistance"] = get_max_allowed_distance()
 		data["distance"] = distance
 
@@ -328,7 +328,7 @@
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
 		distance = CLAMP(new_pow, 1, get_max_allowed_distance())
-		distance = Floor(distance)
+		distance = FLOOR(distance, 1)
 
 	if(href_list["setz"])
 		var/new_z = text2num(href_list["setz"])

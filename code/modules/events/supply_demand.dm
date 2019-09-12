@@ -213,7 +213,7 @@
 	var/amount_to_take = min(I.reagents.get_reagent_amount(reagent_id), qty_need)
 	if(amount_to_take >= 1)
 		I.reagents.remove_reagent(reagent_id, amount_to_take, safety = 1)
-		qty_need = Ceiling(qty_need - amount_to_take)
+		qty_need = CEILING(qty_need - amount_to_take, 1)
 		return 1
 	else
 		log_debug("supply_demand event: not taking reagent '[reagent_id]': [amount_to_take]")

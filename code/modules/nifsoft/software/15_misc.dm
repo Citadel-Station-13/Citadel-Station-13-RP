@@ -71,7 +71,7 @@
 				return FALSE
 
 	stat_text()
-		return "[active ? "Active" : "Disabled"] (Stored Heat: [Floor(used/20)]%)"
+		return "[active ? "Active" : "Disabled"] (Stored Heat: [FLOOR(used/20, 1)]%)"
 
 	life()
 		if((. = ..()))

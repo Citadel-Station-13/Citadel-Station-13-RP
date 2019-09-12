@@ -85,7 +85,7 @@
 		return
 	
 	var/length = length(message)
-	var/posts = Ceiling(length/MAX_MESSAGE_LEN)
+	var/posts = CEILING(length/MAX_MESSAGE_LEN, 1)
 	to_chat(user,message)
 	to_chat(user,"<span class='danger'>^ This message was NOT SENT ^ -- It was [length] characters, and the limit is [MAX_MESSAGE_LEN]. It would fit in [posts] separate messages.</span>")
 #undef MAX_HUGE_MESSAGE_LEN

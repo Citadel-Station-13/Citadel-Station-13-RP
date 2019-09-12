@@ -207,7 +207,9 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 
 	if(islist(target))
 		// Do the double-encoding outside the loop to save nanoseconds
+#if GOONCHAT_ENABLED
 		var/twiceEncoded = url_encode(url_encode(message))
+#endif
 		for(var/I in target)
 			var/client/C = CLIENT_FROM_VAR(I) //Grab us a client if possible
 
