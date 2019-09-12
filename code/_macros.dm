@@ -1,6 +1,3 @@
-#define CLAMP(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
-
-#define CLAMP01(x) 		(CLAMP(x, 0, 1))
 
 #define span(class, text) ("<span class='[class]'>[text]</span>")
 
