@@ -107,10 +107,10 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/set_dir(new_dir)
+/mob/setDir(new_dir)
 	. = ..()
 	if(shadow)
-		shadow.set_dir(new_dir)
+		shadow.setDir(new_dir)
 
 // Transfer messages about what we are doing to upstairs
 /mob/visible_message(var/message, var/self_message, var/blind_message)

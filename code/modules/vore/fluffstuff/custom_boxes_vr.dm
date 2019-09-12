@@ -7,14 +7,13 @@
 	storage_slots = 7
 	var/list/has_items = list()
 
-/obj/item/weapon/storage/box/fluff/New()
+/obj/item/weapon/storage/box/fluff/PopulateContents()
+	. = ..()
 	storage_slots = has_items.len
 	allowed = list()
 	for(var/P in has_items)
 		allowed += P
 		new P(src)
-	..()
-	return
 // END - DO NOT EDIT PROTOTYPE
 
 
@@ -286,8 +285,8 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "sobaka cube box"
 	desc = "Drymate brand sobaka cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/sobakacubes/New()
-	..()
+/obj/item/weapon/storage/box/monkeycubes/sobakacubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sobakacube(src)
 
@@ -295,8 +294,8 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "saru cube box"
 	desc = "Drymate brand saru cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/sarucubes/New()
-	..()
+/obj/item/weapon/storage/box/monkeycubes/sarucubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sarucube(src)
 
@@ -304,8 +303,8 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "sparra cube box"
 	desc = "Drymate brand sparra cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/sparracubes/New()
-	..()
+/obj/item/weapon/storage/box/monkeycubes/sparracubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sparracube(src)
 
@@ -313,7 +312,7 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "wolpin cube box"
 	desc = "Drymate brand wolpin cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/wolpincubes/New()
-	..()
+/obj/item/weapon/storage/box/monkeycubes/wolpincubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube(src)

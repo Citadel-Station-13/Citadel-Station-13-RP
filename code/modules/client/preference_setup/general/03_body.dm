@@ -778,7 +778,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["cycle_bg"])
-		pref.bgstate = next_in_list(pref.bgstate, pref.bgstate_options)
+		pref.bgstate = next_list_item(pref.bgstate, pref.bgstate_options)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	return ..()

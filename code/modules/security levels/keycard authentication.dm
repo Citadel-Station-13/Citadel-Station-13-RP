@@ -52,7 +52,7 @@
 			A.need_circuit = 0
 			A.pixel_x = pixel_x
 			A.pixel_y = pixel_y
-			A.set_dir(dir)
+			A.setDir(dir)
 			A.circuit = M
 			A.anchored = 1
 			for (var/obj/C in src)

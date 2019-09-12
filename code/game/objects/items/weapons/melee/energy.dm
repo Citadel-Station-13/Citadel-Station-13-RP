@@ -133,26 +133,31 @@
 	if(!istype(loc,/mob))
 		deactivate(user)
 
-/obj/item/weapon/melee/energy/sword/New()
+/obj/item/weapon/melee/energy/sword/Initialize(mapload)
+	. = ..()
 	if(random_color)
 		blade_color = pick("red","blue","green","purple")
 		lcolor = blade_color
 
-/obj/item/weapon/melee/energy/sword/green/New()
+/obj/item/weapon/melee/energy/sword/green
 	blade_color = "green"
 	lcolor = "#008000"
+	random_color = FALSE
 
-/obj/item/weapon/melee/energy/sword/red/New()
+/obj/item/weapon/melee/energy/sword/red
 	blade_color = "red"
 	lcolor = "#FF0000"
+	random_color = FALSE
 
-/obj/item/weapon/melee/energy/sword/blue/New()
+/obj/item/weapon/melee/energy/sword/blue
 	blade_color = "blue"
 	lcolor = "#0000FF"
+	random_color = FALSE
 
-/obj/item/weapon/melee/energy/sword/purple/New()
+/obj/item/weapon/melee/energy/sword/purple
 	blade_color = "purple"
 	lcolor = "#800080"
+	random_color = FALSE
 
 /obj/item/weapon/melee/energy/sword/activate(mob/living/user)
 	if(!active)
@@ -263,8 +268,8 @@
 	var/datum/effect/effect/system/spark_spread/spark_system
 	lcolor = "#00FF00"
 
-/obj/item/weapon/melee/energy/blade/New()
-
+/obj/item/weapon/melee/energy/blade/Initialize(mapload)
+	. = ..()
 	spark_system = new /datum/effect/effect/system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -322,24 +327,29 @@
  	var/tip_color = ""
  	var/active_state = "espear"
 
-/obj/item/weapon/melee/energy/spear/New()
+/obj/item/weapon/melee/energy/spear/Initialize(mapload)
+	. = ..()
 	if(random_color)
 		tip_color = pick("red","blue","green","purple")
 		lcolor = tip_color
 
-/obj/item/weapon/melee/energy/spear/green/New()
+/obj/item/weapon/melee/energy/spear/green
+	random_color = FALSE
 	tip_color = "green"
 	lcolor = "#008000"
 
-/obj/item/weapon/melee/energy/spear/red/New()
+/obj/item/weapon/melee/energy/spear/red
+	random_color = FALSE
 	tip_color = "red"
 	lcolor = "#FF0000"
 
-/obj/item/weapon/melee/energy/spear/blue/New()
+/obj/item/weapon/melee/energy/spear/blue
+	random_color = FALSE
 	tip_color = "blue"
 	lcolor = "#0000FF"
 
-/obj/item/weapon/melee/energy/spear/purple/New()
+/obj/item/weapon/melee/energy/spear/purple
+	random_color = FALSE
 	tip_color = "purple"
 	lcolor = "#800080"
 

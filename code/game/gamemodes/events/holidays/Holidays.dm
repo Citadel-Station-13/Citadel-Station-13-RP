@@ -252,7 +252,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 
 //Nested in the random events loop. Will be triggered every 2 minutes
 /proc/Holiday_Random_Event()
-	if(isemptylist(Holiday))
+	if(!length(Holiday))
 		return 0
 	switch(Holiday)			//special holidays
 		if("Easter")		//I'll make this into some helper procs at some point

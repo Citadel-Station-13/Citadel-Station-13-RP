@@ -71,8 +71,8 @@
 /obj/item/weapon/reagent_containers/spray/attack_self(var/mob/user)
 	if(!possible_transfer_amounts)
 		return
-	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
-	spray_size = next_in_list(spray_size, spray_sizes)
+	amount_per_transfer_from_this = next_list_item(amount_per_transfer_from_this, possible_transfer_amounts)
+	spray_size = next_list_item(spray_size, spray_sizes)
 	user << "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>"
 
 /obj/item/weapon/reagent_containers/spray/examine(mob/user)

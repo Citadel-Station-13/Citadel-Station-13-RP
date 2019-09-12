@@ -735,8 +735,8 @@ END OF CITADEL CHANGE */
 
 	storage_slots = 9
 
-/obj/item/weapon/storage/belt/utility/fluff/vulpine/New()
-	..()
+/obj/item/weapon/storage/belt/utility/fluff/vulpine/PopulateContents()
+	. = ..()
 	new /obj/item/weapon/tool/screwdriver(src)
 	new /obj/item/weapon/tool/wrench(src)
 	new /obj/item/weapon/weldingtool(src)
@@ -744,6 +744,7 @@ END OF CITADEL CHANGE */
 	new /obj/item/weapon/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
 	new /obj/item/stack/cable_coil(src, 30, "red")
+
 /* CITADEL CHANGE - Removes Virgo Fluff
 // molenar:Giliana Gamish
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar

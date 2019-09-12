@@ -17,7 +17,7 @@
 
 /obj/mecha/micro/melee_action(target as obj|mob|turf)
 	if(internal_damage&MECHA_INT_CONTROL_LOST)
-		target = safepick(oview(1,src))
+		target = SAFEPICK(oview(1,src))
 	if(!melee_can_hit || !istype(target, /atom)) return
 	if(istype(target, /mob/living))
 		var/mob/living/M = target
@@ -122,7 +122,7 @@
 // override move/turn procs so they play more appropriate sounds. Placeholder sounds for now, but mechmove04 at least sounds like tracks for the poleat.
 
 /obj/mecha/micro/mechturn(direction)
-	set_dir(direction)
+	setDir(direction)
 	playsound(src,'sound/mecha/mechmove03.ogg',40,1)
 	return 1
 

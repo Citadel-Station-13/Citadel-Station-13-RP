@@ -68,7 +68,7 @@ var/list/uristrune_cache = list()
 	var/icon/I = icon('icons/effects/uristrunes.dmi', "blank")
 
 	for(var/i = 0, i < 10, i++)
-		if(BITTEST(symbol_bits, i))
+		if(CHECK_BITFIELD(symbol_bits, i))
 			I.Blend(icon('icons/effects/uristrunes.dmi', "rune-[1 << i]"), ICON_OVERLAY)
 
 

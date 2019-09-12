@@ -171,7 +171,7 @@
 	//latch with src as the follower
 	lead = T
 	T.tow = src
-	set_dir(lead.dir)
+	setDir(lead.dir)
 
 	if(user)
 		user << "<font color='blue'>You hitch [src] to [T].</font>"

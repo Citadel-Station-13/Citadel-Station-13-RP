@@ -1,10 +1,6 @@
 /obj/item/device/camerabug
 	var/obj/item/device/radio/radio
 
-/obj/item/device/camerabug/New()
-	. = ..()
-	listening_objects += src
-
 /obj/item/device/camerabug/Destroy()
 	. = ..()
 	listening_objects -= src
@@ -13,6 +9,7 @@
 
 /obj/item/device/camerabug/Initialize()
 	. = ..()
+	listening_objects += src
 	radio = new(src)
 	radio.broadcasting = 0
 	radio.listening = 0
@@ -39,12 +36,9 @@
 	var/obj/item/device/radio/radio
 	var/global/list/freqblacklist
 
-/obj/item/device/bug_monitor/New()
+/obj/item/device/bug_monitor/Initialize(mapload)
 	. = ..()
 	listening_objects += src
-
-/obj/item/device/bug_monitor/Initialize()
-	. = ..()
 	if(!freqblacklist)
 		for (var/chan in radiochannels)
 			freqblacklist |= radiochannels[chan]

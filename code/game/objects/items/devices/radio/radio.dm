@@ -1,5 +1,5 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
-var/global/list/default_internal_channels = list(
+GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(PUB_FREQ) = list(),
 	num2text(AI_FREQ)  = list(access_synth),
 	num2text(ENT_FREQ) = list(),
@@ -13,13 +13,13 @@ var/global/list/default_internal_channels = list(
 	num2text(SCI_FREQ) = list(access_tox,access_robotics,access_xenobiology),
 	num2text(SUP_FREQ) = list(access_cargo),
 	num2text(SRV_FREQ) = list(access_janitor, access_hydroponics)
-)
+))
 
-var/global/list/default_medbay_channels = list(
+GLOBAL_LIST_INIT(default_medbay_channels, list(
 	num2text(PUB_FREQ) = list(),
 	num2text(MED_FREQ) = list(access_medical_equip),
 	num2text(MED_I_FREQ) = list(access_medical_equip)
-)
+))
 
 /obj/item/device/radio
 	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit
@@ -61,11 +61,17 @@ var/global/list/default_medbay_channels = list(
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 
-/obj/item/device/radio/New()
-	..()
+/obj/item/device/radio/Initialize(mapload)
+	. = ..()
 	wires = new(src)
-	internal_channels = default_internal_channels.Copy()
+	internal_channels = GLOB.default_internal_channels.Copy()
 	listening_objects += src
+	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
+		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+	set_frequency(frequency)
+
+	for (var/ch_name in channels)
+		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/Destroy()
 	qdel(wires)
@@ -76,16 +82,6 @@ var/global/list/default_medbay_channels = list(
 		for (var/ch_name in channels)
 			radio_controller.remove_object(src, radiochannels[ch_name])
 	return ..()
-
-
-/obj/item/device/radio/Initialize()
-	. = ..()
-	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
-		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
-	set_frequency(frequency)
-
-	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -774,6 +770,6 @@ var/global/list/default_medbay_channels = list(
 /obj/item/device/radio/phone/medbay
 	frequency = MED_I_FREQ
 
-/obj/item/device/radio/phone/medbay/New()
-	..()
-	internal_channels = default_medbay_channels.Copy()
+/obj/item/device/radio/phone/medbay/Initialize(mapload)
+	. = ..()
+	internal_channels = GLOB.default_medbay_channels.Copy()

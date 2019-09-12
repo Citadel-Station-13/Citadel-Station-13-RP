@@ -195,7 +195,7 @@
 		update_use_power(new_use_power)
 	if(!on)
 		return
-	
+
 	var/power_draw = -1
 
 	var/datum/gas_mixture/environment = loc.return_air()

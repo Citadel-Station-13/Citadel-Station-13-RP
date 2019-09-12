@@ -26,6 +26,12 @@
 #define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
 #define reverseList(L) reverseRange(L.Copy())
 
+#define SAFEPICK(L) (length(L)? pick(L) : null)
+#define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
+#define SAFEINDEXACCESS(L, I) (IsInRange(I, 1, length(L))? L[I] : null)
+// Returns the key based on the index
+#define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
+
 // binary search sorted insert
 // IN: Object to be inserted
 // LIST: List to insert object into

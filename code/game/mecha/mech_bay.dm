@@ -53,7 +53,7 @@
 		stop_charging()
 		return
 	var/done = FALSE
-	if(charging.cell)	
+	if(charging.cell)
 		var/t = min(charge, charging.cell.maxcharge - charging.cell.charge)
 		if(t > 0)
 			charging.give_power(t)

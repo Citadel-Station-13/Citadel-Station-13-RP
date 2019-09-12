@@ -812,7 +812,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 						var/old_decals = T.decals ? T.decals.Copy() : null
 
 						X = B.ChangeTurf(T.type)
-						X.set_dir(old_dir1)
+						X.setDir(old_dir1)
 						X.icon_state = old_icon_state1
 						X.icon = old_icon1
 						X.copy_overlays(T, TRUE)
@@ -938,7 +938,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 
 					var/turf/X = B
 					X.ChangeTurf(T.type)
-					X.set_dir(old_dir1)
+					X.setDir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
 					X.overlays = old_overlays

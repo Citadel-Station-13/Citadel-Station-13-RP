@@ -512,7 +512,7 @@
 				var/list/mobs = new
 				for(var/mob/living/carbon/M in S.loc)
 					mobs += M
-				var/mob/living/carbon/M = safepick(mobs)
+				var/mob/living/carbon/M = SAFEPICK(mobs)
 				if(M)
 					S.icon_state = initial(S.icon_state)
 					S.icon = initial(S.icon)

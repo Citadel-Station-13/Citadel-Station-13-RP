@@ -69,7 +69,7 @@
 
 	M.buckled = src
 	M.facing_dir = null
-	M.set_dir(buckle_dir ? buckle_dir : dir)
+	M.setDir(buckle_dir ? buckle_dir : dir)
 	M.update_canmove()
 	M.update_floating( M.Check_Dense_Object() )
 //	buckled_mob = M
@@ -193,7 +193,7 @@
 				L.inertia_dir = last_move
 				return FALSE
 			else
-				L.set_dir(dir)
+				L.setDir(dir)
 	return TRUE
 
 /atom/movable/Move(atom/newloc, direct = 0)

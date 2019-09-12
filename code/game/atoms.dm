@@ -131,9 +131,6 @@
 		return 0
 	return -1
 
-/atom/proc/on_reagent_change()
-	return
-
 /atom/proc/Bumped(AM as mob|obj)
 	return
 
@@ -230,7 +227,7 @@
 	return
 
 //called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/set_dir(new_dir)
+/atom/proc/setDir(new_dir)
 	. = new_dir != dir
 	dir = new_dir
 
@@ -453,7 +450,7 @@
 		return 1
 
 /atom/proc/get_global_map_pos()
-	if(!islist(global_map) || isemptylist(global_map)) return
+	if(!islist(global_map) || !length(global_map)) return
 	var/cur_x = null
 	var/cur_y = null
 	var/list/y_arr = null

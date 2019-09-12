@@ -42,7 +42,6 @@ script:
   #- md5sum -c - <<< "88490b460c26947f5ec1ab1bb9fa9f17 *html/changelogs/example.yml"
   - (num=`grep -E '\\\\(red|blue|green|black|b|i[^mc])' **/*.dm | wc -l`; echo "$num escapes (expecting ${MACRO_COUNT} or less)"; [ $num -le ${MACRO_COUNT} ])
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
-  - python tools/TagMatcher/tag-matcher.py ../..
   # Run our test
   - cp config/example/* config/
   - echo "#define ${TEST_DEFINE} 1" > ${TEST_FILE}

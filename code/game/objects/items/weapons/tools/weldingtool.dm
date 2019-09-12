@@ -39,7 +39,8 @@
 	var/always_process = FALSE // If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
 	toolspeed = 1
 
-/obj/item/weapon/weldingtool/New()
+/obj/item/weapon/weldingtool/Initialize()
+	. = ..()
 //	var/random_fuel = min(rand(10,20),max_fuel)
 	var/datum/reagents/R = new/datum/reagents(max_fuel)
 	reagents = R
@@ -48,7 +49,6 @@
 	update_icon()
 	if(always_process)
 		processing_objects |= src
-	..()
 
 /obj/item/weapon/weldingtool/Destroy()
 	if(welding || always_process)
@@ -441,10 +441,10 @@
 	always_process = TRUE
 	var/obj/item/weapon/weldpack/mounted_pack = null
 
-/obj/item/weapon/weldingtool/tubefed/New(location)
-	..()
-	if(istype(location, /obj/item/weapon/weldpack))
-		var/obj/item/weapon/weldpack/holder = location
+/obj/item/weapon/weldingtool/tubefed/Initialize()
+	. = ..()
+	if(istype(loc, /obj/item/weapon/weldpack))
+		var/obj/item/weapon/weldpack/holder = loc
 		mounted_pack = holder
 	else
 		qdel(src)
@@ -496,11 +496,11 @@
 	acti_sound = 'sound/effects/sparks4.ogg'
 	deac_sound = 'sound/effects/sparks4.ogg'
 
-/obj/item/weapon/weldingtool/electric/unloaded/New()
+/obj/item/weapon/weldingtool/electric/unloaded
 	cell_type = null
 
-/obj/item/weapon/weldingtool/electric/New()
-	..()
+/obj/item/weapon/weldingtool/electric/Initialize()
+	. = ..()
 	if(cell_type == null)
 		update_icon()
 	else if(cell_type)

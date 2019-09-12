@@ -11,6 +11,7 @@
 	load_offset_x = 0
 	mob_offset_y = 7
 
+	cell = /obj/item/weapon/cell/high
 	var/speed_mod = 1.1
 	var/car_limit = 3		//how many cars an engine can pull before performance degrades
 	active_engines = 1
@@ -40,9 +41,10 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/train/engine/New()
-	..()
-	cell = new /obj/item/weapon/cell/high(src)
+/obj/vehicle/train/engine/Initialize(mapload)
+	. = ..()
+	if(cell)
+		cell = new cell(src)
 	key = new key_type(src)
 	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I

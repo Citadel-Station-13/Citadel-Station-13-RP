@@ -62,7 +62,7 @@
 
 		playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 
-		set_dir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
+		setDir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
 
 		for (var/ball in orbiting_balls)
 			var/range = rand(1, Clamp(orbiting_balls.len, 3, 7))
@@ -86,7 +86,7 @@
 		var/turf/T = get_step(src, move_dir)
 		if(can_move(T))
 			forceMove(T)
-			set_dir(move_dir)
+			setDir(move_dir)
 			for(var/mob/living/carbon/C in loc)
 				dust_mobs(C)
 			sleep(1) // So movement is smooth

@@ -32,7 +32,7 @@
 	//  Returns: null
 	proc/fireEvent()
 		//world << "Events in [args[1]] called"
-		var/list/event = listgetindex(events,args[1])
+		var/list/event = SAFEACCESS(events,args[1])
 		if(istype(event))
 			spawn(-1)
 				for(var/datum/event/E in event)
@@ -45,7 +45,7 @@
 	proc/clearEvent(event_type as text, datum/event/E)
 		if(!event_type || !E)
 			return
-		var/list/event = listgetindex(events,event_type)
+		var/list/event = SAFEACCESS(events, event_type)
 		event -= E
 		return 1
 
