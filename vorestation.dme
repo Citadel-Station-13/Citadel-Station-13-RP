@@ -101,7 +101,6 @@
 #include "code\__HELPERS\icons_vr.dm"
 #include "code\__HELPERS\logging.dm"
 #include "code\__HELPERS\logging_vr.dm"
-#include "code\__HELPERS\maths.dm"
 #include "code\__HELPERS\matrices.dm"
 #include "code\__HELPERS\mobs.dm"
 #include "code\__HELPERS\names.dm"
