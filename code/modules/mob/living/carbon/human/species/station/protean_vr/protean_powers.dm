@@ -213,7 +213,7 @@
 		return //Quietly fail
 
 	var/actually_added = refactory.add_stored_material(substance,howmuch*matstack.perunit)
-	matstack.use(Ceiling(actually_added/matstack.perunit))
+	matstack.use(CEILING(actually_added/matstack.perunit, 1))
 	if(actually_added && actually_added < howmuch)
 		to_chat(src,"<span class='warning'>Your refactory module is now full, so only [actually_added] units were stored.</span>")
 		visible_message("<span class='notice'>[src] nibbles some of the [substance] right off the stack!</span>")
