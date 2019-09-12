@@ -283,7 +283,7 @@
 
 	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes metal, downsizing returns metal."
 	var/new_size = input(user, nagmessage, "Pick a Size", user.size_multiplier*100) as num|null
-	if(!new_size || !IsInRange(new_size,25,200))
+	if(!new_size || !ISINRANGE(new_size,25,200))
 		return
 
 	var/size_factor = new_size/100

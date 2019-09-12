@@ -342,6 +342,6 @@
 		var/datum/alloy/A = pick(types)
 		types -= A // Don't pick the same thing twice
 		var/chosen_path = initial(A.product)
-		var/chosen_qty = Floor(rand(5, 100) * initial(A.product_mod))
+		var/chosen_qty = FLOOR(rand(5, 100) * initial(A.product_mod))
 		required_items += new /datum/supply_demand_order/thing(chosen_qty, chosen_path)
 	return

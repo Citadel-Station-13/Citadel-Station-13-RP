@@ -171,8 +171,8 @@
 		use_power = light_max_power
 	else
 		var/temp_mod = ((plasma_temperature-5000)/20000)
-		use_range = light_min_range + Ceiling((light_max_range-light_min_range)*temp_mod)
-		use_power = light_min_power + Ceiling((light_max_power-light_min_power)*temp_mod)
+		use_range = light_min_range + CEILING((light_max_range-light_min_range)*temp_mod, 1)
+		use_power = light_min_power + CEILING((light_max_power-light_min_power)*temp_mod, 1)
 
 	if(last_range != use_range || last_power != use_power)
 		set_light(use_range,use_power)
