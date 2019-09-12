@@ -231,6 +231,8 @@ var/list/gamemode_cache = list()
 	var/radiation_resistance_multiplier = 8.5 //VOREstation edit
 	var/radiation_lower_limit = 0.35 //If the radiation level for a turf would be below this, ignore it.
 
+	var/comms_key = "default_password"
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -388,6 +390,9 @@ var/list/gamemode_cache = list()
 
 				if ("vote_delay")
 					config.vote_delay = text2num(value)
+
+				if("comms_key")
+					config.comms_key = value
 
 				if ("vote_period")
 					config.vote_period = text2num(value)
@@ -750,7 +755,7 @@ var/list/gamemode_cache = list()
 
 				if ("panic_bunker")
 					config.panic_bunker = 1
-				
+
 				if ("panic_bunker_message")
 					config.panic_bunker_message = value
 

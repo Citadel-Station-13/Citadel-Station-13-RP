@@ -445,3 +445,7 @@ client/verb/character_setup()
 			. = R.group[1]
 		else
 			CRASH("Age check regex failed for [src.ckey]")
+
+/client/proc/AnnouncePR(announcement)
+	//if(prefs && prefs.chat_toggles & CHAT_PULLR)
+	to_chat(src, announcement)
