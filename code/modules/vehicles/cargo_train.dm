@@ -11,6 +11,7 @@
 	load_offset_x = 0
 	mob_offset_y = 7
 
+	cell = /obj/item/weapon/cell/high
 	var/speed_mod = 1.1
 	var/car_limit = 3		//how many cars an engine can pull before performance degrades
 	active_engines = 1

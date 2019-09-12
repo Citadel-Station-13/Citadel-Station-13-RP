@@ -21,6 +21,7 @@
 	load_offset_x = 0
 	pixel_x = -8
 	pixel_y = -8
+	cell = /obj/item/weapon/cell/high
 
 
 	var/car_limit = 0	//how many cars an engine can pull before performance degrades. This should be 0 to prevent trailers from unhitching.
