@@ -169,7 +169,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(isnull(argnum))
 		return
 
-	. = list()
+	var/list/retval = list()
 	var/list/named_args = list()
 	while(argnum--)
 		var/named_arg = input("Leave blank for positional argument. Positional arguments will be considered as if they were added first.", "Named argument") as text|null
@@ -179,9 +179,11 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		if(named_arg)
 			named_args[named_arg] = value["value"]
 		else
-			. += value["value"]
+			retval.len++
+			retval[retval.len] = value["value"]
 	if(LAZYLEN(named_args))
-		. += named_args
+		retval += named_args
+	return retval
 
 /client/proc/get_callproc_returnval(returnval,procname)
 	. = ""
