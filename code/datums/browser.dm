@@ -608,7 +608,7 @@
 			if ("boolean")
 				settings["mainsettings"][setting]["value"] = input(user, "[settings["mainsettings"][setting]["desc"]]?") in list("Yes","No")
 			if ("ckey")
-				settings["mainsettings"][setting]["value"] = input(user, "[settings["mainsettings"][setting]["desc"]]?") in list("none") + GLOB.directory
+				settings["mainsettings"][setting]["value"] = input(user, "[settings["mainsettings"][setting]["desc"]]?") in list("none") + directory
 		if (settings["mainsettings"][setting]["callback"])
 			var/datum/callback/callback = settings["mainsettings"][setting]["callback"]
 			settings = callback.Invoke(settings)

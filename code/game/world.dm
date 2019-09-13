@@ -138,7 +138,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			break
 
 	if(handler)
-		handler = new
+		handler = new handler
 		. = handler.TryRun(input)
 
 //END
