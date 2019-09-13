@@ -635,28 +635,6 @@ proc/admin_notice(var/message, var/rights)
 //i.e. buttons/verbs
 
 
-/datum/admins/proc/restart()
-	set category = "Server"
-	set name = "Restart"
-	set desc="Restarts the world"
-	if (!usr.client.holder)
-		return
-	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
-	if(confirm == "Cancel")
-		return
-	if(confirm == "Yes")
-		world << "<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</span>"
-		log_admin("[key_name(usr)] initiated a reboot.")
-
-		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
-		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
-		sleep(50)
-		world.Reboot()
-
 
 /datum/admins/proc/announce()
 	set category = "Special Verbs"
@@ -730,28 +708,28 @@ var/datum/announcement/minor/admin_min_announcer = new
 	//Split on pipe or \n
 	decomposed = splittext(message,regex("\\||$","m"))
 	decomposed += "0" //Tack on a final 0 sleep to make 3-per-message evenly
-	
+
 	//Time to find how they screwed up.
 	//Wasn't the right length
 	if((decomposed.len) % 3) //+1 to accomidate the lack of a wait time for the last message
 		to_chat(usr,"<span class='warning'>You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds.</span>")
 		return
-	
+
 	//Too long a conversation
 	if((decomposed.len / 3) > 20)
 		to_chat(usr,"<span class='warning'>This conversation is too long! 20 messages maximum, please.</span>")
 		return
-	
+
 	//Missed some sleeps, or sanitized to nothing.
 	for(var/i = 1; i < decomposed.len; i++)
-		
+
 		//Sanitize sender
 		var/clean_sender = sanitize(decomposed[i])
 		if(!clean_sender)
 			to_chat(usr,"<span class='warning'>One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message.</span>")
 			return
 		decomposed[i] = clean_sender
-		
+
 		//Sanitize message
 		var/clean_message = sanitize(decomposed[++i])
 		if(!clean_message)
@@ -986,24 +964,6 @@ var/datum/announcement/minor/admin_min_announcer = new
 	config.allow_admin_rev = !(config.allow_admin_rev)
 	message_admins("<font color='blue'>Toggled reviving to [config.allow_admin_rev].</font>")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/immreboot()
-	set category = "Server"
-	set desc="Reboots the server post haste"
-	set name="Immediate Reboot"
-	if(!usr.client.holder)	return
-	if( alert("Reboot server?",,"Yes","No") == "No")
-		return
-	world << "<font color='red'><b>Rebooting world!</b></font> <font color='blue'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</font>"
-	log_admin("[key_name(usr)] initiated an immediate reboot.")
-
-	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
-	feedback_add_details("admin_verb","IR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	if(blackbox)
-		blackbox.save_all_data_to_sql()
-
-	world.Reboot()
 
 /datum/admins/proc/unprison(var/mob/M in mob_list)
 	set category = "Admin"
