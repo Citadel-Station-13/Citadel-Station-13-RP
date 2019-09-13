@@ -54,7 +54,7 @@
 	all_params.Cut(1, 2)
 	var/id = text2num(target)
 	if(id != null)
-		var/datum/admin_help/AH = ahelp_tickets.TicketByID(id)
+		var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(id)
 		if(AH)
 			target = AH.initiator_ckey
 		else
@@ -92,10 +92,11 @@ GLOBAL_LIST(round_end_notifiees)
 	admin_only = TRUE
 
 /datum/tgs_chat_command/endnotify/Run(datum/tgs_chat_user/sender, params)
-	if(!SSticker.IsRoundInProgress() && SSticker.HasRoundStarted())
+	//if(!SSticker.IsRoundInProgress() && SSticker.HasRoundStarted())
+	if(ticker.current_state == GAME_STATE_FINISHED)
 		return "[sender.mention], the round has already ended!"
-	LAZYINITLIST(round_end_notifiees)
-	round_end_notifiees[sender.mention] = TRUE
+	LAZYINITLIST(GLOB.round_end_notifiees)
+	GLOB.round_end_notifiees[sender.mention] = TRUE
 	return "I will notify [sender.mention] when the round ends."
 
 /datum/tgs_chat_command/sdql
