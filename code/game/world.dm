@@ -416,10 +416,13 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	TgsReboot()
 
+/*
 	if(TEST_RUN_PARAMETER in params)
 		FinishTestRun()
 		return
+*/
 
+/*
 	if(TgsAvailable())
 		var/do_hard_reboot
 		// check the hard reboot counter
@@ -440,6 +443,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			log_world("World hard rebooted at [time_stamp()]")
 			shutdown_logging() // See comment below.
 			TgsEndProcess()
+*/
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
