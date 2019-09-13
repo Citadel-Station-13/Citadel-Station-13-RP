@@ -24,6 +24,11 @@ em						{font-style: normal;font-weight: bold;}
 .ooc .moderator			{color: #184880;}
 .ooc .developer			{color: #1b521f;}
 .ooc .admin				{color: #b82e00;}
+.adminobserverooc		{color: #0099cc;	font-weight: bold;}
+.adminooc				{color: #700038;	font-weight: bold;}
+
+.adminsay				{color:	#FF4500;	font-weight: bold;}
+.admin					{color: #386aff;	font-weight: bold;}
 .ooc .event_manager		{color: #660033;}
 .ooc .aooc				{color: #960018;}
 
