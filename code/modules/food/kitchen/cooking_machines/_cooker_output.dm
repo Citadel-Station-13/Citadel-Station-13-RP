@@ -26,7 +26,7 @@
 		var/ratio = reagents.total_volume / size
 
 		scale = ratio**(1/3) //Scaling factor is square root of desired area
-		scale = Clamp(scale, min_scale, max_scale)
+		scale = CLAMP(scale, min_scale, max_scale)
 	else
 		scale = min_scale
 

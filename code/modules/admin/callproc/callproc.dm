@@ -68,7 +68,7 @@
 		returnval = WrapAdminProcCall(GLOBAL_PROC, procname, lst) // Pass the lst as an argument list to the proc
 	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Advanced ProcCall") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(get_retval)
-		get_retval += returnval
+		get_retval["VALUE"] = returnval
 	. = get_callproc_returnval(returnval, procname)
 	if(.)
 		to_chat(usr, .)
@@ -119,7 +119,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 //adv proc call this, ya nerds
 /world/proc/WrapAdminProcCall(datum/target, procname, list/arguments)
 	if(target == GLOBAL_PROC)
-		return call(procname)(arglist(arguments))
+		return call(text2path("/proc/[procname]"))(arglist(arguments))
 	else if(target != world)
 		return call(target, procname)(arglist(arguments))
 	else
@@ -169,7 +169,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(isnull(argnum))
 		return
 
-	. = list()
+	var/list/retval = list()
 	var/list/named_args = list()
 	while(argnum--)
 		var/named_arg = input("Leave blank for positional argument. Positional arguments will be considered as if they were added first.", "Named argument") as text|null
@@ -179,9 +179,11 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		if(named_arg)
 			named_args[named_arg] = value["value"]
 		else
-			. += value["value"]
+			retval.len++
+			retval[retval.len] = value["value"]
 	if(LAZYLEN(named_args))
-		. += named_args
+		retval += named_args
+	return retval
 
 /client/proc/get_callproc_returnval(returnval,procname)
 	. = ""

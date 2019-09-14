@@ -95,7 +95,8 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if (O)
 		L = L.Copy()
 
-	L += var_value
+	L.len++
+	L[L.len] = var_value
 
 	switch(alert("Would you like to associate a value with the list entry?",,"Yes","No"))
 		if("Yes")

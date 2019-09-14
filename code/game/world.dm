@@ -107,6 +107,43 @@ var/world_topic_spam_protect_time = world.timeofday
 	//TGS_TOPIC
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
+/*		for when we have handlers replacing all of our stuff.
+	var/static/list/topic_handlers = TopicHandlers()
+
+	var/list/input = params2list(T)
+	var/datum/world_topic/handler
+	for(var/I in topic_handlers)
+		if(I in input)
+			handler = topic_handlers[I]
+			break
+
+	if((!handler || initial(handler.log)) && config && CONFIG_GET(flag/log_world_topic))
+		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
+
+	if(!handler)
+		return
+
+	handler = new handler()
+	return handler.TryRun(input)
+*/
+
+//temporary compatibility patch start
+	var/static/list/topic_handlers = TopicHandlers()
+
+	var/list/input = params2list(T)
+	var/datum/world_topic/handler
+	for(var/I in topic_handlers)
+		if(I in input)
+			handler = topic_handlers[I]
+			break
+
+	if(handler)
+		handler = new handler
+		. = handler.TryRun(input)
+
+//END
+
+/*
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)
@@ -397,7 +434,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				return "Ckey not found"
 		else
 			return "Database connection failed or not set up"
-
+*/
 
 /world/Reboot(var/reason)
 	/*spawn(0)
