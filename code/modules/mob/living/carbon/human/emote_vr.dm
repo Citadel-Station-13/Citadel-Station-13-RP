@@ -123,7 +123,7 @@
 						Logout(src)
 ///////////////////////// EMOTES PORTED FROM MAIN END
 		if ("peep")
-			message = "peeps like a bird."
+			message = "lets out a peep."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
 		if("chirp")
