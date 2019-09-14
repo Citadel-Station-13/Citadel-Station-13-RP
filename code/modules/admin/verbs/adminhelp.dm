@@ -479,7 +479,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(!msg)
 		return
-	
+
 	msg = sanitize(msg)
 
 	//remove out adminhelp verb temporarily to prevent spamming of admins.

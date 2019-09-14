@@ -65,7 +65,7 @@
 				return 1
 	return 0
 
-/obj/item/weapon/reagent_containers/food/drinks/glass2/initialize()
+/obj/item/weapon/reagent_containers/food/drinks/glass2/Initialize()
 	..()
 	icon_state = base_icon
 

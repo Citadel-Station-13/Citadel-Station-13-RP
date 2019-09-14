@@ -23,7 +23,7 @@
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
-/obj/structure/railing/initialize()
+/obj/structure/railing/Initialize()
 	. = ..()
 	if(src.anchored)
 		update_icon(0)
@@ -141,7 +141,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 	update_icon()
 	return
 
@@ -160,7 +160,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, -90))
+	setDir(turn(dir, -90))
 	update_icon()
 	return
 
@@ -185,7 +185,7 @@
 		return 0
 
 	src.loc = get_step(src, src.dir)
-	set_dir(turn(dir, 180))
+	setDir(turn(dir, 180))
 	update_icon()
 	return
 

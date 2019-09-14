@@ -515,6 +515,30 @@
 	unset_machine()
 	reset_view(null)
 
+GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
+
+//suppress the .click/dblclick macros so people can't use them to identify the location of items or aimbot
+/mob/verb/DisClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
+	set name = ".click"
+	set hidden = TRUE
+	set category = null
+	if(GLOB.exploit_warn_spam_prevention < world.time)
+		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .click macro!"
+		log_admin(msg)
+		message_admins(msg)
+		GLOB.exploit_warn_spam_prevention = world.time + 10
+
+/mob/verb/DisDblClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
+	set name = ".dblclick"
+	set hidden = TRUE
+	set category = null
+	if(GLOB.exploit_warn_spam_prevention < world.time)
+		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .dblclick macro!"
+		log_admin(msg)
+		message_admins(msg)
+		GLOB.exploit_warn_spam_prevention = world.time + 10
+
+
 /mob/Topic(href, href_list)
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
@@ -759,9 +783,9 @@
 /mob/proc/facedir(var/ndir)
 	if(!canface() || (client && (client.moving || (world.time < client.move_delay))))
 		return 0
-	set_dir(ndir)
+	setDir(ndir)
 	if(buckled && buckled.buckle_movable)
-		buckled.set_dir(ndir)
+		buckled.setDir(ndir)
 	if(client)
 		client.move_delay += movement_delay()
 	return 1
@@ -899,10 +923,10 @@
 	return
 
 /mob/proc/AdjustLosebreath(amount)
-	losebreath = Clamp(0, losebreath + amount, 25)
+	losebreath = CLAMP(0, losebreath + amount, 25)
 
 /mob/proc/SetLosebreath(amount)
-	losebreath = Clamp(0, amount, 25)
+	losebreath = CLAMP(0, amount, 25)
 
 /mob/proc/get_species()
 	return ""
@@ -1041,15 +1065,15 @@ mob/proc/yank_out_object()
 	if(newdir == facing_dir)
 		facing_dir = null
 	else if(newdir)
-		set_dir(newdir)
+		setDir(newdir)
 		facing_dir = newdir
 	else if(facing_dir)
 		facing_dir = null
 	else
-		set_dir(dir)
+		setDir(dir)
 		facing_dir = dir
 
-/mob/set_dir()
+/mob/setDir()
 	if(facing_dir)
 		if(!canface() || lying || buckled || restrained())
 			facing_dir = null
@@ -1157,7 +1181,7 @@ mob/proc/yank_out_object()
 	if(!check_has_body_select())
 		return
 	var/obj/screen/zone_sel/selector = mob.zone_sel
-	selector.set_selected_zone(next_in_list(mob.zone_sel.selecting,zones))
+	selector.set_selected_zone(next_list_item(mob.zone_sel.selecting,zones))
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.

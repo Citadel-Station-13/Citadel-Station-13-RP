@@ -219,7 +219,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
-	/client/proc/callproc_target,
+	/client/proc/callproc_datum,
 	/client/proc/debug_process,
 	/client/proc/SDQL2_query,
 	/client/proc/Jump,
@@ -239,7 +239,7 @@ var/list/admin_verbs_debug = list(
 
 var/list/admin_verbs_paranoid_debug = list(
 	/client/proc/callproc,
-	/client/proc/callproc_target,
+	/client/proc/callproc_datum,
 	/client/proc/debug_process,
 	/client/proc/debug_controller
 	)
@@ -311,7 +311,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/callproc,
-	/client/proc/callproc_target,
+	/client/proc/callproc_datum,
 	/client/proc/debug_process,
 	/client/proc/Debug2,
 	/client/proc/reload_admins,
@@ -384,7 +384,7 @@ var/list/admin_verbs_event_manager = list(
 	/proc/possess,
 	/proc/release,
 	/client/proc/callproc,
-	/client/proc/callproc_target,
+	/client/proc/callproc_datum,
 	/client/proc/debug_controller,
 	/client/proc/show_gm_status,
 	/datum/admins/proc/change_weather,

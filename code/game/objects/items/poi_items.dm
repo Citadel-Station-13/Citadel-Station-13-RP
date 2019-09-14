@@ -8,9 +8,9 @@
 	name = "misshapen manhole cover"
 	desc = "The top of this twisted chunk of metal is faintly stamped with a five pointed star. 'Property of US Army, Pascal B - 1957'."
 
-/obj/item/poi/pascalb/New()
+/obj/item/poi/pascalb/Initialize()
+	. = ..()
 	processing_objects += src
-	return ..()
 
 /obj/item/poi/pascalb/process()
 	radiation_repository.radiate(src, 5)
@@ -36,9 +36,9 @@
 	name = "ruptured fission reactor rack"
 	desc = "This broken hunk of machinery looks extremely dangerous."
 
-/obj/item/poi/brokenoldreactor/New()
+/obj/item/poi/brokenoldreactor/Initialize(mapload)
+	. = ..()
 	processing_objects += src
-	return ..()
 
 /obj/item/poi/brokenoldreactor/process()
 	radiation_repository.radiate(src, 25)
@@ -53,7 +53,7 @@
 /obj/structure/largecrate/animal/crashedshuttle
 	name = "SCP"
 
-/obj/structure/largecrate/animal/crashedshuttle/initialize()
+/obj/structure/largecrate/animal/crashedshuttle/Initialize()
 	starts_with  = list(pick(/mob/living/simple_animal/hostile/statue, /obj/item/cursed_marble, /obj/item/weapon/deadringer)) // Starts_with has to be a list
 	name = pick("Spicy Crust Pizzeria", "Soap and Care Products", "Sally's Computer Parts", "Steve's Chocolate Pastries", "Smith & Christian's Plastics","Standard Containers & Packaging Co.", "Sanitary Chemical Purgation (LTD)")
 	name += " delivery crate"

@@ -19,10 +19,11 @@
 	var/datatype=0
 	var/value=0
 
-/obj/item/weapon/dnainjector/New()
+/obj/item/weapon/dnainjector/Initialize(mapload)
+	. = ..()
 	if(datatype && block)
-		buf=new
-		buf.dna=new
+		buf = new
+		buf.dna = new
 		buf.types = datatype
 		buf.dna.ResetSE()
 		//testing("[name]: DNA2 SE blocks prior to SetValue: [english_list(buf.dna.SE)]")
@@ -67,7 +68,7 @@
 	if(istype(M,/mob/living))
 		var/mob/living/L = M
 		L.apply_effect(rand(5,20), IRRADIATE, check_protection = 0)
-		L.apply_damage(max(2,L.getCloneLoss()), CLONE) 
+		L.apply_damage(max(2,L.getCloneLoss()), CLONE)
 
 	if (!(NOCLONE in M.mutations)) // prevents drained people from having their DNA changed
 		if (buf.types & DNA2_BUF_UI)

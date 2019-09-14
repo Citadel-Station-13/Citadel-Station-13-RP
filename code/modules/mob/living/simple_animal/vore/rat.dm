@@ -81,7 +81,7 @@
 
 	if(food_dist > world.view) //Lose interest on this person.
 		food = null
-		hunger = Clamp(hunger+5, 0, 25)
+		hunger = CLAMP(hunger+5, 0, 25)
 
 	if(food_dist > 1)
 		if(stance == STANCE_IDLE)

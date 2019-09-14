@@ -123,9 +123,9 @@
 
 /obj/machinery/atmospherics/valve/proc/normalize_dir()
 	if(dir==3)
-		set_dir(1)
+		setDir(1)
 	else if(dir==12)
-		set_dir(4)
+		setDir(4)
 
 /obj/machinery/atmospherics/valve/attack_ai(mob/user as mob)
 	return
@@ -263,7 +263,7 @@
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/valve/digital/initialize()
+/obj/machinery/atmospherics/valve/digital/Initialize()
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)

@@ -23,10 +23,10 @@
 	id = "round_end_belt"
 
 	// create a conveyor
-/obj/machinery/conveyor/initialize(mapload, newdir, on = 0)
+/obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
 	if(newdir)
-		set_dir(newdir)
+		setDir(newdir)
 
 	if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
 		forwards = turn(dir, 135)
@@ -198,7 +198,7 @@
 
 
 
-/obj/machinery/conveyor_switch/initialize()
+/obj/machinery/conveyor_switch/Initialize()
 	..()
 	update()
 	return INITIALIZE_HINT_LATELOAD

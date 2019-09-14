@@ -7,7 +7,6 @@ var/global/datum/global_init/init = new ()
 	log_world("global init datum started")
 
 	makeDatumRefLists()
-	load_configuration()
 
 	initialize_chemical_reagents()
 	initialize_chemical_reactions()

@@ -8,12 +8,12 @@
 	var/list/targets
 	var/list/datum/disease2/disease/viruses
 
-/obj/item/weapon/reagent_containers/syringe/initialize()
+/obj/item/weapon/reagent_containers/syringe/Initialize()
 	. = ..()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/Destroy()
-	QDEL_NULL_LIST(viruses)
+	QDEL_LIST_NULL(viruses)
 	LAZYCLEARLIST(targets)
 	return ..()
 
@@ -63,7 +63,7 @@
 
 /obj/item/weapon/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
 	src = null
-	var/weakref/limb_ref = weakref(eo)
+	var/datum/weakref/limb_ref = WEAKREF(eo)
 	spawn(rand(5 MINUTES,10 MINUTES))
 		var/obj/item/organ/external/found_limb = limb_ref.resolve()
 		if(istype(found_limb))

@@ -1,3 +1,4 @@
+
 /datum/gear/accessory
 	display_name = "accessory"
 	slot = slot_tie
@@ -249,3 +250,8 @@
 /datum/gear/accessory/locket
 	display_name = "locket"
 	path = /obj/item/clothing/accessory/locket
+
+/datum/gear/accessory/treatbox
+	display_name = "box of treats"
+	path = /obj/item/weapon/storage/box/treats
+	cost = 2

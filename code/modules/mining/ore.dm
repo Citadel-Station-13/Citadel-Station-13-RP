@@ -83,7 +83,8 @@
 	icon_state = "slag"
 	material = null
 
-/obj/item/weapon/ore/New()
+/obj/item/weapon/ore/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 

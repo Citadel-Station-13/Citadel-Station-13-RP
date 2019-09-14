@@ -14,9 +14,9 @@
 	var/global/damage_overlays[16]
 	var/active
 	var/can_open = 0
-	var/material/girder_material
-	var/material/material
-	var/material/reinf_material
+	var/datum/material/girder_material
+	var/datum/material/material
+	var/datum/material/reinf_material
 	var/last_state
 	var/construction_stage
 
@@ -38,14 +38,17 @@
 	girder_material = get_material_by_name(girdertype)
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
-	update_material()
 
 	processing_turfs |= src
+
+/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+	. = ..()
+	update_material()
 
 /turf/simulated/wall/Destroy()
 	processing_turfs -= src
 	dismantle_wall(null,null,1)
-	..()
+	return ..()
 
 /turf/simulated/wall/process()
 	// Calling parent will kill processing

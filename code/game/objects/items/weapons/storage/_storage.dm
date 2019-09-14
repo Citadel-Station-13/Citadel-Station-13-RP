@@ -529,7 +529,7 @@
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
 
-/obj/item/weapon/storage/initialize()
+/obj/item/weapon/storage/Initialize()
 	. = ..()
 
 	if(allow_quick_empty)
@@ -581,11 +581,13 @@
 	src.closer.hud_layerise()
 	orient2hud()
 
-	populate_contents()
+	populate_contents_legacy()
+
+	PopulateContents()
 
 	//calibrate_size()			//Let's not!
 
-/obj/item/weapon/storage/proc/populate_contents()
+/obj/item/weapon/storage/proc/populate_contents_legacy()
 	if(LAZYLEN(starts_with) && !empty)
 		for(var/newtype in starts_with)
 			var/count = starts_with[newtype] || 1 //Could have left it blank.
@@ -593,6 +595,8 @@
 				count--
 				new newtype(src)
 		starts_with = null //Reduce list count.
+
+/obj/item/weapon/storage/proc/PopulateContents()
 
 /obj/item/weapon/storage/proc/calibrate_size()
 	var/total_storage_space = 0
@@ -714,12 +718,12 @@
 	else
 		icon_state = closed_state
 
-/obj/item/weapon/storage/trinketbox/New()
+/obj/item/weapon/storage/trinketbox/Initialize()
 	if(!open_state)
 		open_state = "[initial(icon_state)]_open"
 	if(!closed_state)
 		closed_state = "[initial(icon_state)]"
-	..()
+	. = ..()
 
 /obj/item/weapon/storage/trinketbox/attack_self()
 	open = !open

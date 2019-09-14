@@ -234,7 +234,7 @@
 	O.data = null
 	if(assembly)
 		if(istype(assembly.loc, /mob/living)) // Now check if someone's holding us.
-			O.data = weakref(assembly.loc)
+			O.data = WEAKREF(assembly.loc)
 
 	O.push_data()
 
@@ -271,7 +271,7 @@
 			continue
 		valid_things.Add(thing)
 	if(valid_things.len)
-		O.data = weakref(pick(valid_things))
+		O.data = WEAKREF(pick(valid_things))
 		activate_pin(2)
 	else
 		activate_pin(3)
@@ -296,7 +296,7 @@
 /obj/item/integrated_circuit/input/advanced_locator/on_data_written()
 	var/rad = get_pin_data(IC_INPUT, 2)
 	if(isnum(rad))
-		rad = Clamp(rad, 0, 7)
+		rad = CLAMP(rad, 0, 7)
 		radius = rad
 
 /obj/item/integrated_circuit/input/advanced_locator/do_work()
@@ -319,7 +319,7 @@
 			if(findtext(addtext(thing.name," ",thing.desc), DT, 1, 0) )
 				valid_things.Add(thing)
 	if(valid_things.len)
-		O.data = weakref(pick(valid_things))
+		O.data = WEAKREF(pick(valid_things))
 		O.push_data()
 		activate_pin(2)
 	else
@@ -353,7 +353,7 @@
 	var/code = 30
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integrated_circuit/input/signaler/initialize()
+/obj/item/integrated_circuit/input/signaler/Initialize()
 	. = ..()
 	set_frequency(frequency)
 	// Set the pins so when someone sees them, they won't show as null
@@ -559,7 +559,7 @@
 		if(istype(A, /obj/item/weapon/storage))
 			return FALSE
 
-	set_pin_data(IC_OUTPUT, 1, weakref(A))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	activate_pin(1)
 	return TRUE
@@ -587,7 +587,7 @@
 	set_pin_data(IC_OUTPUT, 1, null)
 	set_pin_data(IC_OUTPUT, 2, null)
 	set_pin_data(IC_OUTPUT, 3, null)
-	set_pin_data(IC_OUTPUT, 4, weakref(assembly))
+	set_pin_data(IC_OUTPUT, 4, WEAKREF(assembly))
 	if(assembly)
 		if(assembly.battery)
 

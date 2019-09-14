@@ -20,7 +20,7 @@
 	var/detail_color = COLOR_ASSEMBLY_BLACK
 
 
-/obj/item/device/electronic_assembly/initialize()
+/obj/item/device/electronic_assembly/Initialize()
 	battery = new(src)
 	processing_objects |= src
 	return ..()
@@ -228,7 +228,7 @@
 	if(proximity)
 		var/scanned = FALSE
 		for(var/obj/item/integrated_circuit/input/sensor/S in contents)
-//			S.set_pin_data(IC_OUTPUT, 1, weakref(target))
+//			S.set_pin_data(IC_OUTPUT, 1, WEAKREF(target))
 //			S.check_then_do_work()
 			if(S.scan(target))
 				scanned = TRUE

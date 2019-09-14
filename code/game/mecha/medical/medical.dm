@@ -7,7 +7,7 @@
 
 	cargo_capacity = 1
 
-/obj/mecha/medical/initialize()
+/obj/mecha/medical/Initialize()
 	. = ..()
 	var/turf/T = get_turf(src)
 	if(isPlayerLevel(T.z))
@@ -15,7 +15,7 @@
 
 
 /obj/mecha/medical/mechturn(direction)
-	set_dir(direction)
+	setDir(direction)
 	playsound(src,'sound/mecha/mechmove01.ogg',40,1)
 	return 1
 

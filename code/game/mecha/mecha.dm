@@ -320,7 +320,7 @@
 	if(dir_to_target && !(dir_to_target & src.dir))//wrong direction
 		return
 	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
-		target = safepick(view(3,target))
+		target = SAFEPICK(view(3,target))
 		if(!target)
 			return
 	if(istype(target, /obj/machinery))
@@ -431,7 +431,7 @@
 	return
 
 /obj/mecha/proc/mechturn(direction)
-	set_dir(direction)
+	setDir(direction)
 	playsound(src,'sound/mecha/mechturn.ogg',40,1)
 	return 1
 
@@ -474,18 +474,18 @@
 ///////////////////////////////////
 
 /obj/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
-	if(!islist(possible_int_damage) || isemptylist(possible_int_damage)) return
+	if(!islist(possible_int_damage) || !length(possible_int_damage)) return
 	if(prob(20))
 		if(ignore_threshold || src.health*100/initial(src.health)<src.internal_damage_threshold)
 			for(var/T in possible_int_damage)
 				if(internal_damage & T)
 					possible_int_damage -= T
-			var/int_dam_flag = safepick(possible_int_damage)
+			var/int_dam_flag = SAFEPICK(possible_int_damage)
 			if(int_dam_flag)
 				setInternalDamage(int_dam_flag)
 	if(prob(5))
 		if(ignore_threshold || src.health*100/initial(src.health)<src.internal_damage_threshold)
-			var/obj/item/mecha_parts/mecha_equipment/destr = safepick(equipment)
+			var/obj/item/mecha_parts/mecha_equipment/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
 	return
@@ -532,7 +532,7 @@
 	return call((proc_res["dynabsorbdamage"]||src), "dynabsorbdamage")(damage,damage_type)
 
 /obj/mecha/proc/dynabsorbdamage(damage,damage_type)
-	return damage*(listgetindex(damage_absorption,damage_type) || 1)
+	return damage*(SAFEACCESS(damage_absorption,damage_type) || 1)
 
 /obj/mecha/airlock_crush(var/crush_damage)
 	..()
@@ -936,7 +936,7 @@
 		src.Entered(mmi_as_oc)
 		src.Move(src.loc)
 		src.icon_state = src.reset_icon()
-		set_dir(dir_in)
+		setDir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
 		if(!hasInternalDamage())
 			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
@@ -1174,7 +1174,7 @@
 		src.verbs += /obj/mecha/verb/eject
 		src.log_append_to_last("[H] moved in as pilot.")
 		src.icon_state = src.reset_icon()
-		set_dir(dir_in)
+		setDir(dir_in)
 		playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 		if(!hasInternalDamage())
 			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
@@ -1262,7 +1262,7 @@
 			src.occupant.canmove = 0
 		src.occupant = null
 		src.icon_state = src.reset_icon()+"-open"
-		src.set_dir(dir_in)
+		src.setDir(dir_in)
 		src.verbs -= /obj/mecha/verb/eject
 	return
 

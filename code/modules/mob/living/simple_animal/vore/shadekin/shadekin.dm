@@ -15,7 +15,7 @@
 	move_to_delay = 2
 	speed = -1
 	see_in_dark = 10 //SHADEkin
-	has_hands = TRUE //Pawbs
+	has_hands = TRUE //paws
 	seedarkness = FALSE //SHAAAADEkin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
@@ -49,7 +49,7 @@
 	response_disarm = "bops the"
 	response_harm = "hits the"
 	attacktext = list("mauled","slashed","clawed")
-	friendly = list("boops", "pawbs", "mars softly at", "sniffs on")
+	friendly = list("boops", "paws", "mars softly at", "sniffs on")
 	reactions = list("Mar?" = "Marrr!", "Mar!" = "Marrr???", "Mar." = "Marrr.")
 
 	vore_active = TRUE
@@ -86,7 +86,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_animal/shadekin/initialize()
+/mob/living/simple_animal/shadekin/Initialize()
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 
@@ -140,7 +140,7 @@
 	return ..()
 
 /mob/living/simple_animal/shadekin/Destroy()
-	QDEL_NULL_LIST(shadekin_abilities)
+	QDEL_LIST_NULL(shadekin_abilities)
 	. = ..()
 
 /mob/living/simple_animal/shadekin/init_vore()
