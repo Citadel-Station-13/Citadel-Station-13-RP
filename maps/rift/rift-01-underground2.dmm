@@ -791,7 +791,7 @@
 "pk" = (/obj/machinery/computer/cryopod{pixel_x = -32},/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/shuttle/cryo)
 "pl" = (/obj/effect/floor_decal/techfloor{icon_state = "techfloor_edges"; dir = 6},/obj/machinery/camera/network/civilian{icon_state = "camera"; dir = 10},/turf/simulated/floor/tiled/techfloor,/area/shuttle/cryo)
 "pm" = (/obj/structure/catwalk,/obj/structure/cable/green{d1 = 1; d2 = 2; dir = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/maintenance/substation/atmos)
-"pn" = (/obj/structure/cable/green{d1 = 2; d2 = 4; dir = 2; icon_state = "2-4"},/turf/simulated/floor/plating,/area/maintenance/substation/atmos)
+"pn" = (/obj/structure/cable/green{d1 = 2; d2 = 4; dir = 2; icon_state = "2-4"},/obj/machinery/light/small{icon_state = "bulb1"; dir = 1},/turf/simulated/floor/plating,/area/maintenance/substation/atmos)
 "po" = (/obj/machinery/power/smes/buildable{charge = 2e+006; input_level = 100000; output_level = 100000; RCon_tag = "Substation - Atmospherics"},/obj/structure/cable/green{d2 = 8; dir = 2; icon_state = "0-8"},/turf/simulated/floor/plating,/area/maintenance/substation/atmos)
 "pp" = (/obj/effect/floor_decal/borderfloor{icon_state = "borderfloor"; dir = 4},/obj/machinery/firealarm{dir = 8; icon_state = "fire0"; pixel_x = 24},/obj/effect/floor_decal/steeldecal/steel_decals5{icon_state = "steel_decals5"; dir = 8},/turf/simulated/floor/tiled/steel,/area/rift/station/stairs_one)
 "pq" = (/obj/structure/cable{d1 = 1; d2 = 2; dir = 2; icon_state = "1-2"},/obj/effect/floor_decal/borderfloor{icon_state = "borderfloor"; dir = 8},/obj/structure/cable/green{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/tiled,/area/engineering/atmos)
