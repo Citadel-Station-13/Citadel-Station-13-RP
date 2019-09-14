@@ -69,8 +69,9 @@
 		dropdownoptions = D.vv_get_dropdown()
 
 	//VORECODE START
-	dropdownoptions += D.get_view_variables_options_legacy()
-	header += D.get_view_variables_header_legacy()
+	if(!islist)
+		dropdownoptions += D.get_view_variables_options_legacy()
+		header += D.get_view_variables_header_legacy()
 	//VORECODE END
 
 
