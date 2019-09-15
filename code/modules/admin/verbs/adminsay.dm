@@ -62,3 +62,7 @@
 		C << "<span class='event_channel'>" + create_text_tag("event", "EVENT:", C) + " <span class='name'>[sender_name]</span>([admin_jump_link(mob, C.holder)]): <span class='message'>[msg]</span></span>"
 
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/get_admin_say()
+	var/msg = input(src, null, "asay \"text\"") as text|null
+	cmd_admin_say(msg)

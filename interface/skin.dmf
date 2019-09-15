@@ -1,68 +1,4 @@
-macro "borghotkeymode"
-	elem 
-		name = "1"
-	elem 
-		name = "CTRL+1"
-	elem 
-		name = "2"
-	elem 
-		name = "CTRL+2"
-	elem 
-		name = "3"
-	elem 
-		name = "CTRL+3"
-	elem 
-		name = "4"
-	elem 
-		name = "CTRL+4"
-	elem 
-		name = "5"
-	elem 
-		name = "J"
-		command = "toggle-gun-mode"
-	elem 
-		name = "CTRL+J"
-		command = "toggle-gun-mode"
-	elem 
-		name = "Q"
-	elem 
-		name = "CTRL+Q"
-	elem "s_key"
-		name = "S+REP"
-	elem "w_key"
-		name = "W+REP"
-
 macro "default"
-
-macro "hotkeymode"
-	elem 
-		name = "5"
-		command = ".me"
-	elem 
-		name = "6"
-		command = "subtle"
-	elem 
-		name = "H"
-		command = "holster"
-	elem 
-		name = "CTRL+H"
-		command = "holster"
-	elem 
-		name = "J"
-		command = "toggle-gun-mode"
-	elem 
-		name = "CTRL+J"
-		command = "toggle-gun-mode"
-	elem "s_key"
-		name = "S+REP"
-	elem "w_key"
-		name = "W+REP"
-	elem 
-		name = "Y"
-		command = "whisper"
-	elem 
-		name = "CTRL+Y"
-		command = "whisper"
 
 
 menu "menu"
@@ -85,68 +21,15 @@ menu "menu"
 		command = ""
 		category = "&File"
 		saved-params = "is-checked"
+	elem "reconnectbutton"
+		name = "&Reconnect"
+		command = ".reconnect"
+		category = "&File"
+		saved-params = "is-checked"
 	elem 
 		name = "&Quit"
 		command = ".quit"
 		category = "&File"
-		saved-params = "is-checked"
-	elem 
-		name = "&Icons"
-		command = ""
-		saved-params = "is-checked"
-	elem "stretch"
-		name = "&Stretch to fit"
-		command = ".winset \"mapwindow.map.icon-size=0\""
-		category = "&Icons"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon128"
-		name = "&128x128"
-		command = ".winset \"mapwindow.map.icon-size=128\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon96"
-		name = "&96x96"
-		command = ".winset \"mapwindow.map.icon-size=96\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&64x64"
-		command = ".winset \"mapwindow.map.icon-size=64\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon48"
-		name = "&48x48"
-		command = ".winset \"mapwindow.map.icon-size=48\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon32"
-		name = "&32x32"
-		command = ".winset \"mapwindow.map.icon-size=32\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem 
-		name = ""
-		command = ""
-		category = "&Icons"
-		saved-params = "is-checked"
-	elem "textmode"
-		name = "&Text"
-		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-		category = "&Icons"
-		can-check = true
 		saved-params = "is-checked"
 	elem 
 		name = "&Help"
@@ -376,7 +259,6 @@ window "mainwindow"
 		anchor2 = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "VOREStation"
 		is-maximized = true
 		icon = 'icons\\virgoicon.png'
 		macro = "macro"
@@ -454,6 +336,7 @@ window "mapwindow"
 		text-color = none
 		is-default = true
 		saved-params = "icon-size"
+		zoom-mode = distort
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
 		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
 

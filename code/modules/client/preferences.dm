@@ -131,7 +131,7 @@ datum/preferences
 
 	// Communicator identity data
 	var/communicator_visibility = 0
-	
+
 	// Default ringtone for character; if blank, use job default
 	var/ringtone = null
 
@@ -140,7 +140,10 @@ datum/preferences
 
 	var/lastnews // Hash of last seen lobby news content.
 
+	var/list/menuoptions
+
 /datum/preferences/New(client/C)
+	menuoptions = list()
 	player_setup = new(src)
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender,species)
@@ -158,6 +161,7 @@ datum/preferences
 			if(load_preferences())
 				if(load_character())
 					return
+
 
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
