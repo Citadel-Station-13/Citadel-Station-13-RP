@@ -149,6 +149,9 @@
 		add_admin_verbs()
 		admin_memo_show()
 
+	if(SSinput.initialized)
+		set_macros()
+
 	chatOutput.start() // Starts the chat
 
 	// Forcibly enable hardware-accelerated graphics, as we need them for the lighting overlays.
@@ -182,6 +185,22 @@
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
+
+	var/list/topmenus = GLOB.menulist[/datum/verbs/menu]
+	for (var/thing in topmenus)
+		var/datum/verbs/menu/topmenu = thing
+		var/topmenuname = "[topmenu]"
+		if (topmenuname == "[topmenu.type]")
+			var/list/tree = splittext(topmenuname, "/")
+			topmenuname = tree[tree.len]
+		winset(src, "[topmenu.type]", "parent=menu;name=[url_encode(topmenuname)]")
+		var/list/entries = topmenu.Generate_list(src)
+		for (var/child in entries)
+			winset(src, "[child]", "[entries[child]]")
+			if (!ispath(child, /datum/verbs/menu))
+				var/procpath/verbpath = child
+				if (copytext(verbpath.name,1,2) != "@")
+					new child(src)
 
 	for (var/thing in prefs.menuoptions)
 		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]

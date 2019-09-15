@@ -1,5 +1,3 @@
-#define NUKE_USER_MACROS FALSE
-
 /client
 	var/list/keys_held = list() // A list of any keys held currently
 	// These next two vars are to apply movement for keypresses and releases made while move delayed.
@@ -33,9 +31,7 @@
 /client/proc/set_macros()
 	set waitfor = FALSE
 
-#if NUKE_USER_MACROS
 	erase_all_macros()
-#endif
 
 	var/list/macro_sets = SSinput.macro_sets
 	for(var/i in 1 to macro_sets.len)

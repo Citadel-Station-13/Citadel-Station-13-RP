@@ -52,7 +52,7 @@
 		if(!(key in client_preference_keys))
 			pref.preferences_disabled -= key
 
-	pref.hotkeys		= sanitize_integer(pref.hotkeys, 0, 1, initial(hotkeys))
+	pref.hotkeys		= sanitize_integer(pref.hotkeys, 0, 1, initial(pref.hotkeys))
 	pref.lastchangelog	= sanitize_text(pref.lastchangelog, initial(pref.lastchangelog))
 	pref.lastnews		= sanitize_text(pref.lastnews, initial(pref.lastnews))
 	pref.default_slot	= sanitize_integer(pref.default_slot, 1, config.character_slots, initial(pref.default_slot))

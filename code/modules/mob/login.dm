@@ -44,12 +44,7 @@
 	sight |= SEE_SELF
 	..()
 
-	if(loc && !isturf(loc))
-		client.eye = loc
-		client.perspective = EYE_PERSPECTIVE
-	else
-		client.eye = src
-		client.perspective = MOB_PERSPECTIVE
+	reset_perspective(loc)
 	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 	add_click_catcher()
 	update_client_color()
@@ -71,4 +66,3 @@
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
-	

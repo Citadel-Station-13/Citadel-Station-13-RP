@@ -95,7 +95,11 @@
 
 	if(moving)	return 0
 
-	if(world.time < move_delay)	return
+	if(world.time < move_delay)
+		return
+	else
+		next_move_dir_add = 0
+		next_move_dir_sub = 0
 
 	if(locate(/obj/effect/stop/, mob.loc))
 		for(var/obj/effect/stop/S in mob.loc)
