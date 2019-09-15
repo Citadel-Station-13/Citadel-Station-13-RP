@@ -1,9 +1,6 @@
 /mob/proc/on_mob_jump()
 	return
 
-/mob/observer/dead/on_mob_jump()
-	following = null
-
 /client/proc/Jump(var/area/A in return_sorted_areas())
 	set name = "Jump to Area"
 	set desc = "Area to jump to"

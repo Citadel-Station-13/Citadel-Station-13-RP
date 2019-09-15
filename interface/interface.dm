@@ -88,7 +88,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tShift+e = Put held item into belt(or belt slot) or take out most recent item added.
 \tShift+b = Put held item into backpack(or back slot) or take out most recent item added.
 \tH = Holster/Unholster gun (if you have a holster)
-\J = Toggle gun mode from take aim vs fire on click
+\tJ = Toggle gun mode from take aim vs fire on click
 \tf = cycle-intents-left
 \tg = cycle-intents-right
 \t1 = help-intent
@@ -148,7 +148,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tt = say
 \to = OOC
 \tx = cycle active modules
-\J = Toggle gun mode from take aim vs fire on click
+\tJ = Toggle gun mode from take aim vs fire on click
 \tb = resist
 \tz = activate held object (or y)
 \tf = cycle-intents-left
