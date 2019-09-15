@@ -421,7 +421,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 /obj/item/device/pda/New(var/mob/living/carbon/human/H)
 	..()
 	PDAs += src
-	PDAs = sortAtom(PDAs)
+	PDAs = sortList(PDAs)
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/weapon/pen(src)

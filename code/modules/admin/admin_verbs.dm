@@ -233,7 +233,10 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
-	/client/proc/simple_DPS
+	/client/proc/simple_DPS,
+	/client/proc/start_line_profiling,
+	/client/proc/stop_line_profiling,
+	/client/proc/show_line_profiling
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

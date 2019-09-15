@@ -80,7 +80,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 /obj/item/device/communicator/New()
 	..()
 	all_communicators += src
-	all_communicators = sortAtom(all_communicators)
+	all_communicators = sortList(all_communicators)
 	node = get_exonet_node()
 	processing_objects |= src
 	camera = new(src)

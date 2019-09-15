@@ -388,7 +388,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/pois = list()
 	for(var/mob/M in mobs)
 		if(skip_mindless && (!M.mind && !M.ckey))
-			if(!isbot(M) && !iscameramob(M) && !ismegafauna(M))
+			if(!isbot(M) && !iscameramob(M))	// && !ismegafauna(M))
 				continue
 		if(M.client && M.client.holder && M.client.holder.fakekey) //stealthmins
 			continue
@@ -750,7 +750,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 //Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
-	return sortAtom(return_areas())
+	return sortList(return_areas())
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all areas of that type in the world.

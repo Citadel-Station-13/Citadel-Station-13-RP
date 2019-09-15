@@ -51,106 +51,11 @@ proc/listclearnulls(list/list)
 
 
 
-//Mergesort: divides up the list into halves to begin the sort
-/proc/sortKey(var/list/client/L, var/order = 1)
-	if(isnull(L) || L.len < 2)
-		return L
-	var/middle = L.len / 2 + 1
-	return mergeKey(sortKey(L.Copy(0,middle)), sortKey(L.Copy(middle)), order)
-
-//Mergsort: does the actual sorting and returns the results back to sortAtom
-/proc/mergeKey(var/list/client/L, var/list/client/R, var/order = 1)
-	var/Li=1
-	var/Ri=1
-	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
-		var/client/rL = L[Li]
-		var/client/rR = R[Ri]
-		if(sorttext(rL.ckey, rR.ckey) == order)
-			result += L[Li++]
-		else
-			result += R[Ri++]
-
-	if(Li <= L.len)
-		return (result + L.Copy(Li, 0))
-	return (result + R.Copy(Ri, 0))
-
-//Mergesort: divides up the list into halves to begin the sort
-/proc/sortAtom(var/list/atom/L, var/order = 1)
-	if(isnull(L) || L.len < 2)
-		return L
-	var/middle = L.len / 2 + 1
-	return mergeAtoms(sortAtom(L.Copy(0,middle)), sortAtom(L.Copy(middle)), order)
-
-//Mergsort: does the actual sorting and returns the results back to sortAtom
-/proc/mergeAtoms(var/list/atom/L, var/list/atom/R, var/order = 1)
-	var/Li=1
-	var/Ri=1
-	var/list/result = new()
-	while(Li <= L.len && Ri <= R.len)
-		var/atom/rL = L[Li]
-		var/atom/rR = R[Ri]
-		if(sorttext(rL.name, rR.name) == order)
-			result += L[Li++]
-		else
-			result += R[Ri++]
-
-	if(Li <= L.len)
-		return (result + L.Copy(Li, 0))
-	return (result + R.Copy(Ri, 0))
 
 
 
 
-//Mergesort: Specifically for record datums in a list.
-/proc/sortRecord(var/list/datum/data/record/L, var/field = "name", var/order = 1)
-	if(isnull(L))
-		return list()
-	if(L.len < 2)
-		return L
-	var/middle = L.len / 2 + 1
-	return mergeRecordLists(sortRecord(L.Copy(0, middle), field, order), sortRecord(L.Copy(middle), field, order), field, order)
 
-//Mergsort: does the actual sorting and returns the results back to sortRecord
-/proc/mergeRecordLists(var/list/datum/data/record/L, var/list/datum/data/record/R, var/field = "name", var/order = 1)
-	var/Li=1
-	var/Ri=1
-	var/list/result = new()
-	if(!isnull(L) && !isnull(R))
-		while(Li <= L.len && Ri <= R.len)
-			var/datum/data/record/rL = L[Li]
-			if(isnull(rL))
-				L -= rL
-				continue
-			var/datum/data/record/rR = R[Ri]
-			if(isnull(rR))
-				R -= rR
-				continue
-			if(sorttext(rL.fields[field], rR.fields[field]) == order)
-				result += L[Li++]
-			else
-				result += R[Ri++]
-
-		if(Li <= L.len)
-			return (result + L.Copy(Li, 0))
-	return (result + R.Copy(Ri, 0))
-
-
-
-
-//Mergesort: any value in a list
-/proc/sortList(var/list/L)
-	if(L.len < 2)
-		return L
-	var/middle = L.len / 2 + 1 // Copy is first,second-1
-	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
-
-//Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sortNames(var/list/L)
-	var/list/Q = new()
-	for(var/atom/x in L)
-		Q[x.name] = x
-	return sortList(Q)
 
 /proc/mergeLists(var/list/L, var/list/R)
 	var/Li=1
