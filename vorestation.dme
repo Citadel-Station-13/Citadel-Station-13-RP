@@ -291,6 +291,7 @@
 #include "code\datums\progressbar.dm"
 #include "code\datums\riding.dm"
 #include "code\datums\sun.dm"
+#include "code\datums\verbs.dm"
 #include "code\datums\weakref.dm"
 #include "code\datums\world_topic.dm"
 #include "code\datums\autolathe\arms.dm"

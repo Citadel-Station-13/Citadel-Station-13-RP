@@ -7,18 +7,22 @@
 	sort_order = 2
 
 /datum/category_item/player_setup_item/player_global/settings/load_preferences(var/savefile/S)
-	S["lastchangelog"]        >> pref.lastchangelog
-	S["lastnews"]             >> pref.lastnews
-	S["default_slot"]	      >> pref.default_slot
-	S["preferences"]          >> pref.preferences_enabled
-	S["preferences_disabled"] >> pref.preferences_disabled
+	S["lastchangelog"]			>> pref.lastchangelog
+	S["lastnews"]				>> pref.lastnews
+	S["default_slot"]			>> pref.default_slot
+	S["preferences"]			>> pref.preferences_enabled
+	S["preferences_disabled"]	>> pref.preferences_disabled
+	S["menuoptions"]			>> pref.menuoptions
+	S["hotkeys"]				>> pref.hotkeys
 
 /datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
-	S["lastchangelog"]        << pref.lastchangelog
-	S["lastnews"]             << pref.lastnews
-	S["default_slot"]         << pref.default_slot
-	S["preferences"]          << pref.preferences_enabled
-	S["preferences_disabled"] << pref.preferences_disabled
+	S["lastchangelog"]			<< pref.lastchangelog
+	S["lastnews"]				<< pref.lastnews
+	S["default_slot"]			<< pref.default_slot
+	S["preferences"]			<< pref.preferences_enabled
+	S["preferences_disabled"]	<< pref.preferences_disabled
+	S["menuoptions"]			<< pref.menuoptions
+	S["hotkeys"]				<< pref.hotkeys
 
 /datum/category_item/player_setup_item/player_global/settings/sanitize_preferences()
 	// Ensure our preferences are lists.
@@ -48,9 +52,11 @@
 		if(!(key in client_preference_keys))
 			pref.preferences_disabled -= key
 
+	pref.hotkeys		= sanitize_integer(pref.hotkeys, 0, 1, initial(hotkeys))
 	pref.lastchangelog	= sanitize_text(pref.lastchangelog, initial(pref.lastchangelog))
 	pref.lastnews		= sanitize_text(pref.lastnews, initial(pref.lastnews))
 	pref.default_slot	= sanitize_integer(pref.default_slot, 1, config.character_slots, initial(pref.default_slot))
+	pref.menuoptions		= SANITIZE_LIST(pref.menuoptions)
 
 /datum/category_item/player_setup_item/player_global/settings/content(var/mob/user)
 	. = list()

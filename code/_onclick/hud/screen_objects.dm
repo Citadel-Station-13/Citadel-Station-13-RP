@@ -369,7 +369,7 @@
 				usr:toggle_throw_mode()
 		if("drop")
 			if(usr.client)
-				usr.client.drop_item()
+				usr.drop_item()
 
 		if("module")
 			if(isrobot(usr))

@@ -54,6 +54,8 @@
 	log_unit_test("If you did not intend to enable this please check code/__defines/unit_testing.dm")
 #endif
 
+	LoadVerbs(/datum/verbs/menu)
+
 	// Set up roundstart seed list.
 	plant_controller = new()
 

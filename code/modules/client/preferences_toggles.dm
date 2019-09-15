@@ -13,8 +13,7 @@
 		winset(C, "[verbpath]", "is-checked = [!checked]")
 
 /datum/verbs/menu/Settings/verb/setup_character()
-	set name = "Game Preferences"
+	set name = "Show Preferences"
 	set category = "Preferences"
-	set desc = "Open Game Preferences Window"
-	usr.client.prefs.current_tab = 1
+	set desc = "Open Preferences Window"
 	usr.client.prefs.ShowChoices(usr)
