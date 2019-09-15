@@ -35,6 +35,7 @@ SUBSYSTEM_DEF(input)
 			"T" = "say",
 			"M" = "me",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
+			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 			"H" = "Holster",
@@ -44,6 +45,7 @@ SUBSYSTEM_DEF(input)
 			"Tab" = "\".winset \\\"mainwindow.macro=old_hotkeys map.focus=true input.background-color=[COLOR_INPUT_DISABLED]\\\"\"",
 			"Ctrl+T" = "say",
 			"Ctrl+O" = "ooc",
+			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 			"H" = "Holster",
 			"J" = "Toggle Gun Mode"
 			),
@@ -55,6 +57,7 @@ SUBSYSTEM_DEF(input)
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
+			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 			"H" = "Holster",
 			"J" = "Toggle Gun Mode"
 			),
