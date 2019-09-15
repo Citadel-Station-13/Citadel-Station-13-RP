@@ -323,7 +323,7 @@ var/list/tape_roll_applications = list()
 		add_fingerprint(M)
 		if (!allowed(M))	//only select few learn art of not crumpling the tape
 			M << "<span class='warning'>You are not supposed to go past [src]...</span>"
-			if(M.a_intent == I_HELP && !(istype(M, /mob/living/simple_animal)))
+			if(M.a_intent == INTENT_HELP && !(istype(M, /mob/living/simple_animal)))
 				return 0
 			crumple()
 	return ..(mover)
@@ -332,7 +332,7 @@ var/list/tape_roll_applications = list()
 	breaktape(user)
 
 /obj/item/tape/attack_hand(mob/user as mob)
-	if (user.a_intent == I_HELP && src.allowed(user))
+	if (user.a_intent == INTENT_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
 		for(var/obj/item/tape/T in gettapeline())
 			T.lift(100) //~10 seconds
@@ -374,7 +374,7 @@ var/list/tape_roll_applications = list()
 	return tapeline
 
 /obj/item/tape/proc/breaktape(mob/user)
-	if(user.a_intent == I_HELP)
+	if(user.a_intent == INTENT_HELP)
 		to_chat(user, "<span class='warning'>You refrain from breaking \the [src].</span>")
 		return
 	user.visible_message("<span class='notice'>\The [user] breaks \the [src]!</span>","<span class='notice'>You break \the [src].</span>")

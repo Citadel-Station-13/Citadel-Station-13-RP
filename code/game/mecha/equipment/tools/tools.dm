@@ -55,7 +55,7 @@
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == I_HURT || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
+		if(chassis.occupant.a_intent == INTENT_HURT || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.take_overall_damage(dam_force)
 			M.adjustOxyLoss(round(dam_force/2))
 			M.updatehealth()
@@ -1070,10 +1070,10 @@
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == I_HURT)
+		if(chassis.occupant.a_intent == INTENT_HURT)
 			chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
 			chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
-		if(chassis.occupant.a_intent == I_DISARM)
+		if(chassis.occupant.a_intent == INTENT_DISARM)
 			chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
 			chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
 		else

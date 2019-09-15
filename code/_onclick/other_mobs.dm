@@ -32,7 +32,7 @@
 	if(!gloves && !mutations.len && !spitting)
 		return
 	var/obj/item/clothing/gloves/G = gloves
-	if((LASER in mutations) && a_intent == I_HURT)
+	if((LASER in mutations) && a_intent == INTENT_HURT)
 		LaserEyes(A) // moved into a proc below
 
 	else if(istype(G) && G.Touch(A,0)) // for magic gloves
@@ -78,16 +78,16 @@
 
 	setClickCooldown(get_attack_speed())
 
-	if(has_hands && istype(A,/obj) && a_intent != I_HURT)
+	if(has_hands && istype(A,/obj) && a_intent != INTENT_HURT)
 		var/obj/O = A
 		return O.attack_hand(src)
 
 	switch(a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 			if(isliving(A))
 				custom_emote(1,"[pick(friendly)] [A]!")
 
-		if(I_HURT)
+		if(INTENT_HURT)
 			if(prob(spattack_prob))
 				if(spattack_min_range <= 1)
 					SpecialAtkTarget()
@@ -100,11 +100,11 @@
 			else
 				DoPunch(A)
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if(has_hands)
 				A.attack_hand(src)
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			if(has_hands)
 				A.attack_hand(src)
 

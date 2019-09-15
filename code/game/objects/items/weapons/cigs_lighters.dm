@@ -311,7 +311,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user as mob)
 	if(lit == 1)
-		if(user.a_intent == I_HURT)
+		if(user.a_intent == INTENT_HURT)
 			user.visible_message("<span class='notice'>[user] drops and treads on the lit [src], putting it out instantly.</span>")
 			die(1)
 		else
@@ -404,7 +404,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/pipe/attack_self(mob/user as mob)
 	if(lit == 1)
-		if(user.a_intent == I_HURT)
+		if(user.a_intent == INTENT_HURT)
 			user.visible_message("<span class='notice'>[user] empties the lit [src] on the floor!.</span>")
 			die(1)
 		else
@@ -528,7 +528,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_state = "[base_state]on"
 		item_state = "[base_state]on"
 		if(istype(src, /obj/item/weapon/flame/lighter/zippo) )
-			if(user.a_intent == I_GRAB)
+			if(user.a_intent == INTENT_GRAB)
 				user.visible_message("<span class='rose'>Without as much as a hint of difficulty, [user] spins [src] in their fingers, before lighting it. Smooth.</span>")
 			else
 				user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
@@ -543,7 +543,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_state = "[base_state]"
 		item_state = "[base_state]"
 		if(istype(src, /obj/item/weapon/flame/lighter/zippo) )
-			if(user.a_intent == I_GRAB)
+			if(user.a_intent == INTENT_GRAB)
 				user.visible_message("<span class='rose'>You hear a pronounced click, as [user] spins [src] in their palm, before closing it with a flourish.</span>")
 			else
 				user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")

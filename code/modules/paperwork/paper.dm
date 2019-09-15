@@ -170,7 +170,7 @@
 	return
 
 /obj/item/weapon/paper/attack_self(mob/living/user as mob)
-	if(user.a_intent == I_HURT)
+	if(user.a_intent == INTENT_HURT)
 		if(icon_state == "scrap")
 			user.show_message("<span class='warning'>\The [src] is already crumpled.</span>")
 			return

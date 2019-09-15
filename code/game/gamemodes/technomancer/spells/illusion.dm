@@ -166,21 +166,21 @@
 	else
 		switch(M.a_intent)
 
-			if(I_HELP)
+			if(INTENT_HELP)
 				var/datum/gender/T = gender_datums[src.get_visible_gender()]
 				M.visible_message("<span class='notice'>[M] hugs [src] to make [T.him] feel better!</span>", \
 				"<span class='notice'>You hug [src] to make [T.him] feel better!</span>") // slightly redundant as at the moment most mobs still use the normal gender var, but it works and future-proofs it
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				visible_message("<span class='danger'>[M] attempted to disarm [src]!</span>")
 				M.do_attack_animation(src)
 
-			if(I_GRAB)
+			if(INTENT_GRAB)
 				..()
 
-			if(I_HURT)
+			if(INTENT_HURT)
 				adjustBruteLoss(harm_intent_damage)
 				M.visible_message("<font color='red'>[M] [response_harm] \the [src]</font>")
 				M.do_attack_animation(src)

@@ -849,7 +849,7 @@
 	if(!proximity) return
 	if(istype(target, /obj/machinery/light))
 		return
-	if(user.a_intent != I_HURT)
+	if(user.a_intent != INTENT_HURT)
 		return
 
 	shatter()

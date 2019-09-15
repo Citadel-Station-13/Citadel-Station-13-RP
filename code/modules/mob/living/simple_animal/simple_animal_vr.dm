@@ -242,7 +242,7 @@
 /mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
 	. = ..()
 
-	if(a_intent == I_GRAB && isliving(A) && !has_hands)
+	if(a_intent == INTENT_GRAB && isliving(A) && !has_hands)
 		animal_nom(A)
 
 // Riding

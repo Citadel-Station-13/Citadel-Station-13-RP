@@ -182,7 +182,7 @@
 		user.do_attack_animation(src)
 		shatter()
 
-	else if (usr.a_intent == I_HURT)
+	else if (usr.a_intent == INTENT_HURT)
 
 		if (istype(usr,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr
@@ -220,7 +220,7 @@
 	if(!istype(W)) return//I really wish I did not need this
 
 	// Fixing.
-	if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)
+	if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == INTENT_HELP)
 		var/obj/item/weapon/weldingtool/WT = W
 		if(health < maxhealth)
 			if(WT.remove_fuel(1 ,user))

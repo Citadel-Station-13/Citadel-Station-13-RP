@@ -121,7 +121,7 @@
 /obj/machinery/door/blast/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(istype(C, /obj/item/weapon)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
-		if(C.pry == 1 && (user.a_intent != I_HURT || (stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
+		if(C.pry == 1 && (user.a_intent != INTENT_HURT || (stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
 			if(istype(C,/obj/item/weapon/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
 				var/obj/item/weapon/material/twohanded/fireaxe/F = C
 				if(!F.wielded)
@@ -137,7 +137,7 @@
 			return
 
 
-		else if(src.density && (user.a_intent == I_HURT)) //If we can't pry it open and it's a weapon, let's hit it.
+		else if(src.density && (user.a_intent == INTENT_HURT)) //If we can't pry it open and it's a weapon, let's hit it.
 			var/obj/item/weapon/W = C
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
@@ -167,7 +167,7 @@
 			else
 				to_chat(user, "<span class='warning'>You don't have enough sheets to repair this! You need at least [amt] sheets.</span>")
 
-	else if(src.density && (user.a_intent == I_HURT)) //If we can't pry it open and it's not a weapon.... Eh, let's attack it anyway.
+	else if(src.density && (user.a_intent == INTENT_HURT)) //If we can't pry it open and it's not a weapon.... Eh, let's attack it anyway.
 		var/obj/item/weapon/W = C
 		user.setClickCooldown(user.get_attack_speed(W))
 		if(W.damtype == BRUTE || W.damtype == BURN)

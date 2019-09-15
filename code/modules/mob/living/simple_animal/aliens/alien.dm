@@ -29,7 +29,7 @@
 	rapid = 0
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	a_intent = I_HURT
+	a_intent = INTENT_HURT
 
 	environment_smash = 2
 	status_flags = CANPUSH

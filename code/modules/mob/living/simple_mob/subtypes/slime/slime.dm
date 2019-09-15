@@ -153,7 +153,7 @@
 
 // Clicked on by empty hand.
 /mob/living/simple_mob/slime/attack_hand(mob/living/L)
-	if(L.a_intent == I_GRAB && hat)
+	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else
 		..()

@@ -78,7 +78,7 @@
 		C.spread_disease_to(src, "Contact")
 
 	switch(M.a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 
 			// VOREStation Edit - Begin
 			if (istype(H) && attempt_to_scoop(H))
@@ -122,7 +122,7 @@
 				help_shake_act(M)
 			return 1
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if(M == src || anchored)
 				return 0
 			for(var/obj/item/weapon/grab/G in src.grabbed_by)
@@ -148,7 +148,7 @@
 			//VORESTATION END END
 			return 1
 
-		if(I_HURT)
+		if(INTENT_HURT)
 
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
 				var/obj/item/weapon/grenade/G = wear_mask
@@ -175,11 +175,11 @@
 				return 1
 
 			switch(src.a_intent)
-				if(I_HELP)
+				if(INTENT_HELP)
 					// We didn't see this coming, so we get the full blow
 					rand_damage = 5
 					accurate = 1
-				if(I_HURT, I_GRAB)
+				if(INTENT_HURT, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1
@@ -282,7 +282,7 @@
 			// Finally, apply damage to target
 			apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp=attack.sharp, edge=attack.edge)
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			add_attack_logs(H,src,"Disarmed")
 
 			M.do_attack_animation(src)

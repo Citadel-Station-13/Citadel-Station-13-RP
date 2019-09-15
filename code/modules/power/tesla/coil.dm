@@ -65,7 +65,7 @@
 	return ..()
 
 /obj/machinery/power/tesla_coil/attack_hand(mob/user)
-	if(user.a_intent == I_GRAB && user_buckle_mob(user.pulling, user))
+	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
 
@@ -129,7 +129,7 @@
 	return ..()
 
 /obj/machinery/power/grounding_rod/attack_hand(mob/user)
-	if(user.a_intent == I_GRAB && user_buckle_mob(user.pulling, user))
+	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
 

@@ -226,7 +226,7 @@
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return
 
-	if(user && user.a_intent == I_HELP && user.is_preference_enabled(/datum/client_preference/safefiring)) //regardless of what happens, refuse to shoot if help intent is on
+	if(user && user.a_intent == INTENT_HELP && user.is_preference_enabled(/datum/client_preference/safefiring)) //regardless of what happens, refuse to shoot if help intent is on
 		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
 		return
 
@@ -255,7 +255,7 @@
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
 	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
 		handle_suicide(user)
-	else if(user.a_intent == I_HURT) //point blank shooting
+	else if(user.a_intent == INTENT_HURT) //point blank shooting
 		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
