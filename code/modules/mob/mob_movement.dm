@@ -283,11 +283,6 @@
 /mob/proc/special_move_check()
 	return TRUE
 
-/mob/Move()
-	. = ..()
-	if(.)
-		update_following()
-
 ///Process_Incorpmove
 ///Called by client/Move()
 ///Allows mobs to run though walls
@@ -448,6 +443,7 @@
 /mob/Moved(atom/oldloc)
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
+	update_following()
 
 // Received from Moved(), useful for items that need to know that their loc just moved.
 /obj/proc/on_loc_moved(atom/oldloc)

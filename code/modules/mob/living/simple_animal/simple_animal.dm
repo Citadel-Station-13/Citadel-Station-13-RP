@@ -715,9 +715,9 @@
 		react_to_attack(attacker)
 
 /mob/living/simple_animal/movement_delay()
-	var/tally = 0 //Incase I need to add stuff other than "speed" later
+	. = ..()
 
-	tally = speed
+	. += speed
 
 	if(force_max_speed)
 		return -3
@@ -726,17 +726,14 @@
 		if(!isnull(M.haste) && M.haste == TRUE)
 			return -3
 		if(!isnull(M.slowdown))
-			tally += M.slowdown
+			. += M.slowdown
 
 	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
 		if(tally <= 0)
-			tally = 1
-		tally *= purge
+			. = 1
+		. *= purge
 
-	if(m_intent == "walk")
-		tally *= 1.5
-
-	return tally+config.animal_delay
+	. += config.animal_delay
 
 /mob/living/simple_animal/Stat()
 	..()

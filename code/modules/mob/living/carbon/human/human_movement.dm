@@ -4,7 +4,7 @@
 	var/item_tally = 0
 
 	if(species.slowdown)
-		. = species.slowdown
+		. += species.slowdown
 
 	if (istype(loc, /turf/space)) return -1 // It's hard to be slowed down in space by... anything
 
@@ -82,7 +82,7 @@
 	. += max(2 * stance_damage, 0) //damaged/missing feet or legs is slow
 
 	if(mRun in mutations)
-		. = 0
+		. = min(., 1)
 
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
