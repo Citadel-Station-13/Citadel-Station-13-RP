@@ -1,6 +1,6 @@
 /obj/item/weapon/mining_scanner
 	name = "ore detector"
-	desc = "A complex device used to locate ore deep underground in a 3x3 area."
+	desc = "A complex device used to locate ore deep underground in a 3 by 3 area around you."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic0-old" //GET A BETTER SPRITE.
 	item_state = "electronic"
@@ -51,10 +51,10 @@
 
 /obj/item/weapon/mining_scanner/advanced
 	name = "advanced ore detector"
-	desc = "A complex device used to quickly locate ore deep underground in a 5x5 meter area."
+	desc = "A compact, complex device used to quickly locate ore deep underground in a 5 by 5 area around you."
 	icon_state = "mining-scanner" //thank you eris spriters
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 1000)
+	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
 
 /obj/item/weapon/mining_scanner/advanced/attack_self(mob/user)
 	to_chat(user,"You sweep \the [src] about, quickly pinging for ore deposits.")
@@ -103,12 +103,4 @@
 	for(var/ore_type in metals)
 		var/result = "no sign"
 		result = metals[ore_type]
-
-		/*
-		switch(metals[ore_type])
-			if(1 to 25) result = "trace amounts"
-			if(26 to 75) result = "significant amounts"
-			if(76 to INFINITY) result = "huge quantities"
-		*/
-
-		to_chat(user,"- [result] of [ore_type].")
+		to_chat(user,"- [result] [ore_type].")
