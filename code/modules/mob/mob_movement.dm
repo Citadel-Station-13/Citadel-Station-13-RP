@@ -270,7 +270,7 @@
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= 2
-	move_delay += add_delay
+	move_delay += min(add_delay, 1000)		//if this is more than 10 seconds something has gone horribly wrong.
 
 	for (var/obj/item/weapon/grab/G in mob)
 		if (G.state == GRAB_NECK)

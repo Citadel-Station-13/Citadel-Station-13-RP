@@ -67,18 +67,7 @@
 		src << "<span class='danger'>The GitHub URL is not set in the server configuration.</span>"
 	return
 
-/client/verb/hotkeys_help()
-	set name = "hotkeys-help"
-	set category = "OOC"
-
-	var/admin = {"<font color='purple'>
-Admin:
-\tF5 = Aghost (admin-ghost)
-\tF6 = player-panel-new
-\tF7 = admin-pm
-\tF8 = Invisimin
-</font>"}
-
+/mob/proc/hotkey_help()
 	var/hotkey_mode = {"<font color='purple'>
 Hotkey-Mode: (hotkey-mode must be on)
 \tTAB = toggle hotkey-mode
@@ -89,19 +78,25 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tq = drop
 \te = equip
 \tr = throw
+\tm = me
 \tt = say
-\t5 = emote
+\to = OOC
+\tb = resist
+\t<B></B>h = stop pulling
 \tx = swap-hand
 \tz = activate held object (or y)
-\tj = toggle-aiming-mode
+\tShift+e = Put held item into belt(or belt slot) or take out most recent item added.
+\tShift+b = Put held item into backpack(or back slot) or take out most recent item added.
+\tH = Holster/Unholster gun (if you have a holster)
+\J = Toggle gun mode from take aim vs fire on click
 \tf = cycle-intents-left
 \tg = cycle-intents-right
 \t1 = help-intent
 \t2 = disarm-intent
 \t3 = grab-intent
 \t4 = harm-intent
-\tCtrl+Click = pull
-\tShift+Click = examine
+\tNumpad = Body target selection (Press 8 repeatedly for Head->Eyes->Mouth)
+\tAlt(HOLD) = Alter movement intent
 </font>"}
 
 	var/other = {"<font color='purple'>
@@ -113,6 +108,9 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+q = drop
 \tCtrl+e = equip
 \tCtrl+r = throw
+\tCtrl+b = resist
+\tCtrl+h = stop pulling
+\tCtrl+o = OOC
 \tCtrl+x = swap-hand
 \tCtrl+z = activate held object (or Ctrl+y)
 \tCtrl+f = cycle-intents-left
@@ -121,19 +119,23 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+2 = disarm-intent
 \tCtrl+3 = grab-intent
 \tCtrl+4 = harm-intent
-\tF1 = adminhelp
-\tF2 = ooc
-\tF3 = say
-\tF4 = emote
+\tCtrl+'+/-' OR
+\tShift+Mousewheel = Ghost zoom in/out
 \tDEL = stop pulling
 \tINS = cycle-intents-right
 \tHOME = drop
 \tPGUP = swap-hand
 \tPGDN = activate held object
 \tEND = throw
+\tCtrl+Numpad = Body target selection (Press 8 repeatedly for Head->Eyes->Mouth)
 </font>"}
 
-	var/robot_hotkey_mode = {"<font color='purple'>
+	to_chat(src, hotkey_mode)
+	to_chat(src, other)
+
+/mob/living/silicon/robot/hotkey_help()
+	//h = talk-wheel has a nonsense tag in it because \th is an escape sequence in BYOND.
+	var/hotkey_mode = {"<font color='purple'>
 Hotkey-Mode: (hotkey-mode must be on)
 \tTAB = toggle hotkey-mode
 \ta = left
@@ -141,8 +143,13 @@ Hotkey-Mode: (hotkey-mode must be on)
 \td = right
 \tw = up
 \tq = unequip active module
+\t<B></B>h = stop pulling
+\tm = me
 \tt = say
+\to = OOC
 \tx = cycle active modules
+\J = Toggle gun mode from take aim vs fire on click
+\tb = resist
 \tz = activate held object (or y)
 \tf = cycle-intents-left
 \tg = cycle-intents-right
@@ -150,12 +157,9 @@ Hotkey-Mode: (hotkey-mode must be on)
 \t2 = activate module 2
 \t3 = activate module 3
 \t4 = toggle intents
-\t5 = emote
-\tCtrl+Click = pull
-\tShift+Click = examine
 </font>"}
 
-	var/robot_other = {"<font color='purple'>
+	var/other = {"<font color='purple'>
 Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+a = left
 \tCtrl+s = down
@@ -163,6 +167,9 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+w = up
 \tCtrl+q = unequip active module
 \tCtrl+x = cycle active modules
+\tCtrl+b = resist
+\tCtrl+h = stop pulling
+\tCtrl+o = OOC
 \tCtrl+z = activate held object (or Ctrl+y)
 \tCtrl+f = cycle-intents-left
 \tCtrl+g = cycle-intents-right
@@ -170,21 +177,11 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+2 = activate module 2
 \tCtrl+3 = activate module 3
 \tCtrl+4 = toggle intents
-\tF1 = adminhelp
-\tF2 = ooc
-\tF3 = say
-\tF4 = emote
 \tDEL = stop pulling
 \tINS = toggle intents
 \tPGUP = cycle active modules
 \tPGDN = activate held object
 </font>"}
 
-	if(isrobot(src.mob))
-		src << robot_hotkey_mode
-		src << robot_other
-	else
-		src << hotkey_mode
-		src << other
-	if(holder)
-		src << admin
+	to_chat(src, hotkey_mode)
+	to_chat(src, other)
