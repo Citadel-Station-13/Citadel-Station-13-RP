@@ -6,7 +6,7 @@
 	PROFILE_START
 
 	message_admins("<span class='adminnotice'>[key_name_admin(src)] started line by line profiling.</span>")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Line Profiling")
+	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Line Profiling")
 	log_admin("[key_name(src)] started line by line profiling.")
 
 /client/proc/stop_line_profiling()
@@ -17,7 +17,7 @@
 	PROFILE_STOP
 
 	message_admins("<span class='adminnotice'>[key_name_admin(src)] stopped line by line profiling.</span>")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop Line Profiling")
+	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop Line Profiling")
 	log_admin("[key_name(src)] stopped line by line profiling.")
 
 /client/proc/show_line_profiling()

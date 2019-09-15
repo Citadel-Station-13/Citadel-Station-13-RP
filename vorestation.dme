@@ -292,6 +292,7 @@
 #include "code\datums\modules.dm"
 #include "code\datums\mutable_appearance.dm"
 #include "code\datums\organs.dm"
+#include "code\datums\profiling.dm"
 #include "code\datums\progressbar.dm"
 #include "code\datums\riding.dm"
 #include "code\datums\sun.dm"
