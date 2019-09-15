@@ -21,6 +21,7 @@
 	var/old_y = 0
 	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
+	var/datum/component/orbiter/orbiting
 
 /atom/movable/Destroy()
 	. = ..()
@@ -33,7 +34,7 @@
 	if(opacity && isturf(loc))
 		un_opaque = loc
 
-	loc = null
+	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
 	if (pulledby)
@@ -41,6 +42,9 @@
 			pulledby.pulling = null
 		pulledby = null
 	QDEL_NULL(riding_datum) //VOREStation Add
+	if(orbiting)
+		orbiting.end_orbit(src)
+		orbiting = null
 
 /atom/movable/Bump(var/atom/A, yes)
 	if(src.throwing)

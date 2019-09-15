@@ -68,9 +68,10 @@
 			Moved(A, direct)
 	return
 
-// Called on a successful Move().
-/atom/movable/proc/Moved(atom/oldloc)
-	return
+//Called after a successful Move(). By this point, we've already moved
+/atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
+	return TRUE
 
 /client/proc/Move_object(direct)
 	if(mob && mob.control_object)

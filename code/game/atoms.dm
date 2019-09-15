@@ -40,6 +40,10 @@
 	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 
+	//List of datums orbiting this atom
+	var/datum/component/orbiter/orbiters
+
+
 /atom/New(loc, ...)
 	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
 	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
@@ -108,6 +112,36 @@
 // Put your AddComponent() calls here
 /atom/proc/ComponentInitialize()
 	return
+
+/**
+  * Top level of the destroy chain for most atoms
+  *
+  * Cleans up the following:
+  * * Removes alternate apperances from huds that see them
+  * * qdels the reagent holder from atoms if it exists
+  * * clears the orbiters list
+  * * clears overlays and priority overlays
+  * * clears the light object
+  */
+/atom/Destroy()
+/*
+	if(alternate_appearances)
+		for(var/K in alternate_appearances)
+			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+			AA.remove_from_hud(src)
+*/
+
+	if(reagents)
+		qdel(reagents)
+
+	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
+
+	LAZYCLEARLIST(our_overlays)
+	LAZYCLEARLIST(priority_overlays)
+
+	//QDEL_NULL(light)
+
+	return ..()
 
 /atom/proc/reveal_blood()
 	return

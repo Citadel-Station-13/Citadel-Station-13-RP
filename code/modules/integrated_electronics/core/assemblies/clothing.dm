@@ -69,10 +69,9 @@
 		..()
 
 /obj/item/clothing/Moved(oldloc)
+	. = ..()
 	if(IC)
 		IC.on_loc_moved(oldloc)
-	else
-		..()
 
 /obj/item/clothing/on_loc_moved(oldloc)
 	if(IC)

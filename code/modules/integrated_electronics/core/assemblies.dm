@@ -348,7 +348,8 @@
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
-/obj/item/device/electronic_assembly/Moved(var/oldloc)
+/obj/item/device/electronic_assembly/Moved(oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

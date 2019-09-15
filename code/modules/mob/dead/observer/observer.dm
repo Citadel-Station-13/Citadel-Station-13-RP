@@ -14,7 +14,7 @@
 	stat = DEAD
 	canmove = 0
 	blinded = 0
-	anchored = 1	//  don't get pushed around
+	anchored = TRUE	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	var/can_reenter_corpse
 	var/datum/hud/living/carbon/hud = null // hud
@@ -26,11 +26,11 @@
 	var/medHUD = 0
 	var/antagHUD = 0
 	universal_speak = 1
-	var/atom/movable/following = null
 	var/admin_ghosted = 0
 	var/anonsay = 0
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	incorporeal_move = 1
+	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 
 	var/is_manifest = 0 //If set to 1, the ghost is able to whisper. Usually only set if a cultist drags them through the veil.
 	var/ghost_sprite = null
@@ -131,6 +131,10 @@
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	real_name = name
 	..()
+
+/mob/observer/dead/Initialize(mapload)
+	. = ..()
+	animate(src, pixel_y = 2, time = 10, loop = -1)
 
 /mob/observer/dead/Topic(href, href_list)
 	if (href_list["track"])
@@ -307,74 +311,51 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.forceMove(pick(get_area_turfs(A)))
 	usr.on_mob_jump()
 
-/mob/observer/dead/verb/follow(input in getmobs())
+/mob/observer/dead/verb/follow()
 	set category = "Ghost"
-	set name = "Follow" // "Haunt"
-	set desc = "Follow and haunt a mob."
+	set name = "Orbit" // "Haunt"
+	set desc = "Follow and orbit a mob."
 
-	var/target = getmobs()[input]
-	if(!target)
-		return
+	var/list/mobs = getpois(skip_mindless=1)
+	var/input = input("Please, select a mob!", "Haunt", null, null) as null|anything in mobs
+	var/mob/target = mobs[input]
 	ManualFollow(target)
 
 // This is the ghost's follow verb with an argument
-/mob/observer/dead/proc/ManualFollow(var/atom/movable/target)
-	if(!target)
+/mob/observer/dead/proc/ManualFollow(atom/movable/target)
+	if (!istype(target))
 		return
 
-	var/turf/targetloc = get_turf(target)
-	if(check_holy(targetloc))
-		usr << "<span class='warning'>You cannot follow a mob standing on holy grounds!</span>"
-		return
-	if(target != src)
-		if(following && following == target)
-			return
-		following = target
-		src << "<span class='notice'>Now following [target]</span>"
-		if(ismob(target))
-			forceMove(get_turf(target))
-			var/mob/M = target
-			M.following_mobs += src
-		else
-			spawn(0)
-				while(target && following == target && client)
-					var/turf/T = get_turf(target)
-					if(!T)
-						break
-					// To stop the ghost flickering.
-					if(loc != T)
-						forceMove(T)
-					sleep(15)
+	var/icon/I = icon(target.icon,target.icon_state,target.dir)
 
-/mob/proc/update_following()
-	. = get_turf(src)
-	for(var/mob/observer/dead/M in following_mobs)
-		if(M.following != src)
-			following_mobs -= M
-		else
-			if(M.loc != .)
-				M.forceMove(.)
+	var/orbitsize = (I.Width()+I.Height())*0.5
+	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
-/mob
-	var/list/following_mobs = list()
+	var/rot_seg
 
-/mob/Destroy()
-	for(var/mob/observer/dead/M in following_mobs)
-		M.following = null
-	following_mobs = null
+	switch(ghost_orbit)
+		if(GHOST_ORBIT_TRIANGLE)
+			rot_seg = 3
+		if(GHOST_ORBIT_SQUARE)
+			rot_seg = 4
+		if(GHOST_ORBIT_PENTAGON)
+			rot_seg = 5
+		if(GHOST_ORBIT_HEXAGON)
+			rot_seg = 6
+		else //Circular
+			rot_seg = 36 //360/10 bby, smooth enough aproximation of a circle
+
+	orbit(target,orbitsize, FALSE, 20, rot_seg)
+
+/mob/observer/dead/orbit()
+	setDir(2)//reset dir so the right directional sprites show up
 	return ..()
 
-/mob/observer/dead/Destroy()
-	if(ismob(following))
-		var/mob/M = following
-		M.following_mobs -= src
-	following = null
-	return ..()
-
-/mob/Life()
-	// to catch teleports etc which directly set loc
-	update_following()
-	return ..()
+/mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	//restart our floating animation after orbit is done.
+	pixel_y = 0
+	animate(src, pixel_y = 2, time = 10, loop = -1)
 
 /mob/proc/check_holy(var/turf/T)
 	return 0
@@ -426,9 +407,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/add_memory()
 	set hidden = 1
 	src << "<font color='red'>You are dead! You have no mind to store memory!</font>"
-
-/mob/observer/dead/Post_Incorpmove()
-	following = null
 
 /mob/observer/dead/verb/analyze_air()
 	set name = "Analyze Air"
