@@ -27,11 +27,12 @@
 			mode()					// attack_self(). No idea who came up with "mode()"
 			return
 		if("Q", "Northwest") // Northwest is Home
-			var/obj/item/I = get_active_held_item()
+			var/obj/item/I = get_active_hand()
 			if(!I)
 				to_chat(src, "<span class='warning'>You have nothing to drop in your hand!</span>")
 			else
-				dropItemToGround(I)
+				drop_item()
+				//dropItemToGround(I)
 			return
 		if("E")
 			quick_equip()

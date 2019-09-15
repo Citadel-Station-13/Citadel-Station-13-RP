@@ -453,19 +453,21 @@
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
-/client/verb/moveup()
-	set name = ".moveup"
-	set instant = 1
-	Move(get_step(mob, NORTH), NORTH)
-/client/verb/movedown()
-	set name = ".movedown"
-	set instant = 1
-	Move(get_step(mob, SOUTH), SOUTH)
-/client/verb/moveright()
-	set name = ".moveright"
-	set instant = 1
-	Move(get_step(mob, EAST), EAST)
-/client/verb/moveleft()
-	set name = ".moveleft"
-	set instant = 1
-	Move(get_step(mob, WEST), WEST)
+/**
+  * Toggle the move intent of the mob
+  *
+  * triggers an update the move intent hud as well
+  */
+/mob/proc/toggle_move_intent(mob/user)
+	if(m_intent == MOVE_INTENT_RUN)
+		m_intent = MOVE_INTENT_WALK
+	else
+		m_intent = MOVE_INTENT_RUN
+	/*
+	if(hud_used && hud_used.static_inventory)
+		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
+			selector.update_icon(src)
+	*/
+
+	//My lord, I hate having to snowflake code, but until HUDs are refactored to not be ass this is what we have to do.
+	hud_used.move_intent.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"

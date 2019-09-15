@@ -1,4 +1,4 @@
-x/mob/living/carbon/key_down(_key, client/user)
+/mob/living/carbon/key_down(_key, client/user)
 	switch(_key)
 		if("R", "Southwest") // Southwest is End
 			toggle_throw_mode()

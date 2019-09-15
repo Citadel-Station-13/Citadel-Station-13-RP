@@ -1,3 +1,11 @@
+/*ALL MOB-RELATED DEFINES THAT DON'T BELONG IN ANOTHER FILE GO HERE*/
+
+//Misc mob defines
+
+//movement intent defines for the m_intent var
+#define MOVE_INTENT_WALK "walk"
+#define MOVE_INTENT_RUN  "run"
+
 // /mob/var/stat things.
 #define CONSCIOUS   0
 #define UNCONSCIOUS 1
