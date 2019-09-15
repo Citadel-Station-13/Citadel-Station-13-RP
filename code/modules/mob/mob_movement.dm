@@ -283,6 +283,11 @@
 /mob/proc/special_move_check()
 	return TRUE
 
+/mob/Move()
+	. = ..()
+	if(.)
+		update_following()
+
 ///Process_Incorpmove
 ///Called by client/Move()
 ///Allows mobs to run though walls
