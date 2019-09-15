@@ -224,12 +224,7 @@
 		// We spawn here to let the current move operation complete before we start falling. fall() is normally called from
 		// Entered() which is part of Move(), by spawn()ing we let that complete.  But we want to preserve if we were in client movement
 		// or normal movement so other move behavior can continue.
-		var/mob/M = src
-		var/is_client_moving = (ismob(M) && M.client && M.client.moving)
-		spawn(0)
-			if(is_client_moving) M.client.moving = 1
-			handle_fall(below)
-			if(is_client_moving) M.client.moving = 0
+		handle_fall(below)
 		// TODO - handle fall on damage!
 
 //For children to override

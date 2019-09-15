@@ -782,7 +782,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 
 /mob/proc/facedir(var/ndir)
-	if(!canface() || (client && (client.moving || (world.time < client.move_delay))))
+	if(!canface() || (client && (world.time < client.move_delay)))
 		return 0
 	setDir(ndir)
 	if(buckled && buckled.buckle_movable)
@@ -790,7 +790,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(client)
 		client.move_delay += movement_delay()
 	return 1
-
 
 /mob/verb/eastface()
 	set hidden = 1

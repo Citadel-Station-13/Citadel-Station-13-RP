@@ -146,7 +146,8 @@
 						b.zoom()
 				*/
 
-	if(Process_Grab())	return
+	if(Process_Grab())
+		return
 
 	if(!mob.canmove || !mob.special_move_check())
 		return
@@ -222,10 +223,9 @@
 			return mob.buckled.relaymove(mob,direct)
 
 	//We are now going to move
-	moving = 1
 	//Something with pulling things
 	if(locate(/obj/item/weapon/grab, mob))
-		add_delay = max(add_delay, world.time + 7)
+		add_delay = max(add_delay, 7)
 		var/list/L = mob.ret_grab()
 		if(istype(L, /list))
 			if(L.len == 2)

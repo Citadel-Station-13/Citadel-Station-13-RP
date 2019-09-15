@@ -729,7 +729,7 @@
 			. += M.slowdown
 
 	if(purge)//Purged creatures will move more slowly. The more time before their purge stops, the slower they'll move.
-		if(tally <= 0)
+		if(. <= 0)
 			. = 1
 		. *= purge
 
