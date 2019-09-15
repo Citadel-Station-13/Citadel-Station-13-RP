@@ -23,7 +23,7 @@
 	return tally+config.robot_delay
 
 // NEW: Use power while moving.
-/mob/living/silicon/robot/SelfMove(turf/n, direct)
+/mob/living/silicon/robot/special_move_check()
 	if (!is_component_functioning("actuator"))
 		return 0
 
