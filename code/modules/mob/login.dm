@@ -62,7 +62,6 @@
 	plane_holder.set_ao(VIS_MOBS, ao_enabled)
 
 	//set macro to normal incase it was overriden (like cyborg currently does)
-	client.set_hotkeys_macro("macro", "hotkeymode")
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
