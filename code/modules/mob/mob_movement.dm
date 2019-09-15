@@ -474,4 +474,5 @@
 	*/
 
 	//My lord, I hate having to snowflake code, but until HUDs are refactored to not be ass this is what we have to do.
-	hud_used.move_intent.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
+	if(hud_used && hud_used.move_intent)
+		hud_used.move_intent.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"

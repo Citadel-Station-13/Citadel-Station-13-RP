@@ -1,4 +1,5 @@
 /mob/living/carbon/human/movement_delay()
+	. = ..()
 
 	var/tally = 0
 

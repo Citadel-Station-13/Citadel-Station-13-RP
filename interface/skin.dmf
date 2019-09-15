@@ -130,7 +130,7 @@ window "Telecomms IDE"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 429,22
+		pos = 418,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
@@ -152,7 +152,7 @@ window "mainwindow"
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
-		size = 637x450
+		size = 634x460
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -161,8 +161,8 @@ window "mainwindow"
 		is-vert = true
 	elem "input"
 		type = INPUT
-		pos = 0,450
-		size = 580x30
+		pos = 0,460
+		size = 580x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		font-family = "Times New Roman,serif,monospace,sans-serif"
@@ -172,8 +172,8 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 580,450
-		size = 60x30
+		pos = 580,460
+		size = 60x20
 		anchor1 = 100,100
 		anchor2 = none
 		background-color = none
