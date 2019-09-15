@@ -135,6 +135,9 @@
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
+	if(SSinput.initialized)
+		set_macros()
+
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
 
@@ -148,10 +151,6 @@
 	if(holder)
 		add_admin_verbs()
 		admin_memo_show()
-
-	if(SSinput.initialized)
-		set_macros()
-
 	chatOutput.start() // Starts the chat
 
 	// Forcibly enable hardware-accelerated graphics, as we need them for the lighting overlays.

@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(input)
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 			"H" = "Holster",
-			"J" = "Toggle Gun Mode"
+			"J" = "Toggle-gun-mode"
 			),
 		"old_default" = list(
 			"Tab" = "\".winset \\\"mainwindow.macro=old_hotkeys map.focus=true input.background-color=[COLOR_INPUT_DISABLED]\\\"\"",
@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(input)
 			"Ctrl+O" = "ooc",
 			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 			"H" = "Holster",
-			"J" = "Toggle Gun Mode"
+			"J" = "Toggle-gun-mode"
 			),
 		"old_hotkeys" = list(
 			"Tab" = "\".winset \\\"mainwindow.macro=old_default input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(input)
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 			"H" = "Holster",
-			"J" = "Toggle Gun Mode"
+			"J" = "Toggle-gun-mode"
 			),
 		)
 
