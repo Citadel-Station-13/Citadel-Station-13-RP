@@ -178,7 +178,7 @@ window "mainwindow"
 		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
-		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
+		command = ".winset \"saybutton.is-checked=true ? input.command=\"!say \\\"\" :input.command = \"\""
 		button-type = pushbox
 
 window "mapwindow"
