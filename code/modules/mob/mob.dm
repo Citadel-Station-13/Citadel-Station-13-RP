@@ -763,14 +763,17 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 							continue
 						stat(A)
 
-
 // facing verbs
 /mob/proc/canface()
-	if(!canmove)						return 0
-	if(stat)							return 0
-	if(anchored)						return 0
-	if(transforming)						return 0
-	return 1
+	if(!canmove)
+		return FALSE
+	if(stat)
+		return FALSE
+	if(anchored)
+		return FALSE
+	if(transforming)
+		return FALSE
+	return TRUE
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -782,13 +785,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 
 /mob/proc/facedir(var/ndir)
-	if(!canface() || (client && (world.time < client.move_delay)))
+	if(!canface())
 		return 0
 	setDir(ndir)
 	if(buckled && buckled.buckle_movable)
 		buckled.setDir(ndir)
-	if(client)
-		client.move_delay += movement_delay()
 	return 1
 
 /mob/verb/eastface()

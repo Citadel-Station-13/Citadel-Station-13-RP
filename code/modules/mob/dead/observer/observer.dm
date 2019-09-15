@@ -336,6 +336,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!istype(target))
 		return
 
+	if(!isloc(target.loc))
+		to_chat(src, "<span class='warning'>Error: Target is not in a valid location.</span>")
+		return
+
 	var/icon/I = icon(target.icon,target.icon_state,target.dir)
 
 	var/orbitsize = (I.Width()+I.Height())*0.5
