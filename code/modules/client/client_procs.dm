@@ -391,6 +391,9 @@
 		// unfocus the text bar. This removes the red color from the text bar
 		// so that the visual focus indicator matches reality.
 		winset(src, null, "input.background-color=[COLOR_INPUT_DISABLED]")
+	else
+		// If hotkey mode is disabled, force focus to stay on input.
+		winset(src, null, "mainwindow.macro=old_default? input.background-color=[COLOR_INPUT_ENABLED] input.focus=true : input.background-color=[COLOR_INPUT_DISABLED] map.focus=true")
 
 	..()
 
