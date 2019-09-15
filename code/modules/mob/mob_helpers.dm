@@ -327,17 +327,14 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 			else			return I_HURT
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
-/mob/verb/a_intent_change(input as text)
-	set name = "a-intent"
-	set hidden = 1
-
+/mob/proc/a_intent_change(input as text)
 	if(isliving(src) && !isrobot(src))
 		switch(input)
 			if(I_HELP,I_DISARM,I_GRAB,I_HURT)
 				a_intent = input
-			if("right")
+			if(INTENT_HOTKEY_RIGHT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+1) % 4)
-			if("left")
+			if(INTENT_HOTKEY_LEFT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+3) % 4)
 		if(hud_used && hud_used.action_intent)
 			hud_used.action_intent.icon_state = "intent_[a_intent]"
@@ -348,7 +345,7 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 				a_intent = I_HELP
 			if(I_HURT)
 				a_intent = I_HURT
-			if("right","left")
+			if(INTENT_HOTKEY_RIGHT, INTENT_HOTKEY_LEFT)
 				a_intent = intent_numeric(intent_numeric(a_intent) - 3)
 		if(hud_used && hud_used.action_intent)
 			if(a_intent == I_HURT)

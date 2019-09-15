@@ -6,15 +6,11 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human
 	var/list/worn_clothing = list()	//Contains all CLOTHING items worn
 
-/mob/living/carbon/human/verb/quick_equip()
-	set name = "quick-equip"
-	set hidden = 1
 
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		var/obj/item/I = H.get_active_hand()
-		if(I)
-			I.equip_to_best_slot(H)
+/mob/living/carbon/human/quick_equip()
+	var/obj/item/I = get_active_hand()
+	if(I)
+		I.equip_to_best_slot(src)
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)

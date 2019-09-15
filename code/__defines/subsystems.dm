@@ -57,21 +57,22 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
+#define INIT_ORDER_INPUT			85
 #define INIT_ORDER_GARBAGE		70
 #define INIT_ORDER_TIMER		60
-#define INIT_ORDER_MAPPING	20  // VOREStation Edit
-#define INIT_ORDER_DECALS	16
-#define INIT_ORDER_ATOMS	15
-#define INIT_ORDER_MACHINES 10
-#define INIT_ORDER_SHUTTLES 3
-#define INIT_ORDER_DEFAULT	0
-#define INIT_ORDER_LIGHTING 0
-#define INIT_ORDER_AIR		-1
-#define INIT_ORDER_PLANETS	-4
-#define INIT_ORDER_HOLOMAPS	-5
-#define INIT_ORDER_OVERLAY	-6
-#define INIT_ORDER_XENOARCH	-20
-#define INIT_ORDER_CIRCUIT	-21
+#define INIT_ORDER_MAPPING		20  // VOREStation Edit
+#define INIT_ORDER_DECALS		16
+#define INIT_ORDER_ATOMS		15
+#define INIT_ORDER_MACHINES 	10
+#define INIT_ORDER_SHUTTLES 	3
+#define INIT_ORDER_DEFAULT		0
+#define INIT_ORDER_LIGHTING 	0
+#define INIT_ORDER_AIR			-1
+#define INIT_ORDER_PLANETS		-4
+#define INIT_ORDER_HOLOMAPS		-5
+#define INIT_ORDER_OVERLAY		-6
+#define INIT_ORDER_XENOARCH		-20
+#define INIT_ORDER_CIRCUIT		-21
 
 
 // Subsystem fire priority, from lowest to highest priority
@@ -87,6 +88,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_MACHINES		100
 #define FIRE_PRIORITY_OVERLAYS		500
+#define FIRE_PRIORITY_INPUT			1000 // This must always always be the max highest priority. Player input must never be lost.
 
 // Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
 // TODO - I don't really like the location of this macro define.  Consider it. ~Leshana
