@@ -4,42 +4,6 @@
 
 /mob/key_down(_key, client/user)
 	switch(_key)
-		if("Delete", "H")
-			if(!pulling)
-				to_chat(src, "<span class='warning'>You are not pulling anything!</span>")
-			else
-				stop_pulling()
-			return
-		if("Insert", "G")
-			a_intent_change(INTENT_HOTKEY_RIGHT)
-			return
-		if("`", ",")
-			up()
-		if("~", ".")
-			down()
-		if("F")
-			a_intent_change(INTENT_HOTKEY_LEFT)
-			return
-		if("X", "Northeast") // Northeast is Page-up
-			swap_hand()
-			return
-		if("Y", "Z", "Southeast")	// Southeast is Page-down
-			mode()					// attack_self(). No idea who came up with "mode()"
-			return
-		if("Q", "Northwest") // Northwest is Home
-			var/obj/item/I = get_active_hand()
-			if(!I)
-				to_chat(src, "<span class='warning'>You have nothing to drop in your hand!</span>")
-			else
-				drop_item()
-				//dropItemToGround(I)
-			return
-		if("E")
-			quick_equip()
-			return
-		if("Alt")
-			toggle_move_intent()
-			return
 		//Bodypart selections
 		if("Numpad8")
 			user.body_toggle_head()

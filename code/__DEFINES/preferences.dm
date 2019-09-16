@@ -1,0 +1,4 @@
+//Keybinds
+#define KEYBIND_PRIMARY 1
+#define KEYBIND_SECONDARY 2
+#define KEYBIND_TERTIARY 3

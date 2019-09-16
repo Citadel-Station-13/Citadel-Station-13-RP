@@ -15,10 +15,12 @@ SUBSYSTEM_DEF(input)
 	var/list/keybind_datums_by_type		//type = datum, where datums are instanciated
 	var/list/keybind_categories			//category_name = list(typepath1, typepath2)
 
-/datum/controller/subsystem/input/Initialize()
+/datum/controller/subsystem/input/PreInit()
+	. = ..()
 	setup_keybind_datums()
 	setup_valid_keys()
 
+/datum/controller/subsystem/input/Initialize()
 	setup_default_macro_sets()
 
 	setup_default_movement_keys()

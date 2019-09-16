@@ -1,5 +1,3 @@
-
-
 /proc/input_sanity_check(client/C, key)
 	if(SSinput.valid_keys[key])
 		return FALSE
@@ -11,6 +9,14 @@
 		log_admin_private("[key_name(C)] just attempted to send an invalid keypress - \"[key]\", possibly malicious.")
 		message_admins("[ADMIN_TPMONTY(C.mob)][ADMINKICK(C)] just attempted to send an invalid keypress - \"[key]\", possibly malicious.")
 	return TRUE
+
+/client/proc/hotkey_keystring_to_signal(keystring, key_up = FALSE)
+	var/datum/keybind/KB = SSinput.keybind_by_path(prefs.hotkey_keybindings_by_keystring[keystring] || SSinput.default_hotkey_keybindings_by_keystring[keystring])
+	return key_up? KB.keyup_signal : KB.keydown_signal
+
+/client/proc/classic_keystring_to_signal(keystring, key_up = FALSE)
+	var/datum/keybind/KB = SSinput.keybind_by_path(prefs.classic_keybindings_by_keystring[keystring] || SSinput.default_classic_keybindings_by_keystring[keystring])
+	return key_up? KB.keyup_signal : KB.keydown_signal
 
 // Clients aren't datums so we have to define these procs indpendently.
 // These verbs are called for all key press and release events
@@ -25,6 +31,10 @@
 	var/movement = SSinput.movement_keys[_key]
 	if(!(next_move_dir_sub & movement) && !keys_held["Ctrl"])
 		next_move_dir_add |= movement
+
+	//Moonwalking!
+	if(movement && !(movement & (movement - 1)) && keys_held["Alt"])
+		mob.permfacedir(movement)
 
 	// Client-level keybindings are ones anyone should be able to do at any time
 	// Things like taking screenshots, hitting tab, and adminhelps.
@@ -43,6 +53,7 @@
 		if("Return")	//no enter key please!
 			return
 
+	//SEND_SIGNAL(mob,
 
 
 	if(holder)

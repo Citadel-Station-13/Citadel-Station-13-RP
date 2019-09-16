@@ -7,15 +7,103 @@
 	var/list/keybindings_classic_secondary
 	var/list/keybindings_classic_tertiary
 	//This is generated from the above and stored as keystring = /datum/keybind/path/to/keybind
-	var/list/hotkey_keybindings_by_keystring
-	var/list/classic_keybindings_by_keystring
+	var/list/hotkey_keybindings_by_keystring = list()
+	var/list/classic_keybindings_by_keystring = list()
+	//This is generated from the above and is stored as keybind_path = mode
+	var/list/keybind_paths_to_mode = list()
+	//During keybind sets
+	var/current_set_keybind_path
+	var/current_set_keybind_position
+	var/current_set_keybind_hotkey
 
 //DOES NOT CHECK FOR DUPLICATES!
+//"Dumb" refresh, use sparingly and whenever possible use the update variables.
 /datum/preferences/proc/generate_keybindings_by_keystring()
 	var/list/hotkey_bindings = keybindings_hotkey_primary | keybindings_hotkey_secondary | keybindings_hotkey_tertiary
 	var/list/classic_bindings = keybindings_classic_primary | keybindings_classic_secondary | keybindings_classic_tertiary
+	hotkey_keybindings_by_keystring = list()
+	classic_keybindings_by_keystring = list()
+	for(var/path in hotkey_bindings)
+		if(!path)
+			continue
+		var/keystring = hotkey_bindings[path]
+		hotkey_keybindings_by_keystring[keystring] = path
+	for(var/path in classic_bindings)
+		if(!path)
+			continue
+		var/keystring = classic_bindings[path]
+		classic_keybindings_by_keystring[keystring] = path
+	keybind_paths_to_mode = list()
+	for(var/path in hotkey_bindings | classic_bindings)
+		if(!path)
+			continue
+		var/datum/keybind/KB = SSinput.keybind_by_path(path)
+		keybind_paths_to_mode[path] = KB.mode
 
+/datum/category_group/player_setup_category/keybindings/content(mob/user)
+	for(var/datum/category_item/player_setup_item/PI in items)
+		. += "<h3>[PI.name]</h3><br>[PI.content(user)]<br>"
 
+/datum/preferences/proc/get_primary_hotkey_key(keybind_path)
+	return keybindings_hotkey_primary[keybind_path] || KEYBIND_KEY_NONE
+
+/datum/preferences/proc/get_secondary_hotkey_key(keybind_path)
+	return keybindings_hotkey_secondary[keybind_path] || KEYBIND_KEY_NONE
+
+/datum/preferences/proc/get_tertiary_hotkey_key(keybind_path)
+	return keybindings_hotkey_tertiary[keybind_path] || KEYBIND_KEY_NONE
+
+/datum/preferences/proc/get_primary_classic_key(keybind_path)
+	return keybindings_classic_primary[keybind_path] || KEYBIND_KEY_NONE
+
+/datum/preferences/proc/get_secondary_classic_key(keybind_path)
+	return keybindings_classic_secondary[keybind_path] || KEYBIND_KEY_NONE
+
+/datum/preferences/proc/get_tertiary_classic_key(keybind_path)
+	return keybindings_classic_tertiary[keybind_path] || KEYBIND_KEY_NONE
+
+/datum/preferences/proc/get_keybind_path_by_keystring_hotkey(keystring)
+	return hotkey_keybindings_by_keystring[keystring]
+
+/datum/preferences/proc/get_keybind_path_by_keystring_classic(keystring)
+	return classic_keybindings_by_keystring[keystring]
+
+//These procs do check for dupes.
+/datum/preferences/proc/set_primary_hotkey_key(keybind_path, keystring, force = FALSE)
+	if(!force && (get_keybind_path_by_keystring_hotkey(keystring) != keybind_path))
+		return FALSE
+	LAZYSET(keybindings_hotkey_primary, keybind_path, keystring)
+	hotkey_keybindings_by_keystring[keystring] = keybind_path
+
+/datum/preferences/proc/set_secondary_hotkey_key(keybind_path, keystring, force = FALSE)
+	if(!force && (get_keybind_path_by_keystring_hotkey(keystring) != keybind_path))
+		return FALSE
+	LAZYSET(keybindings_hotkey_secondary, keybind_path, keystring)
+	hotkey_keybindings_by_keystring[keystring] = keybind_path
+
+/datum/preferences/proc/set_tertiary_hotkey_key(keybind_path, keystring, force = FALSE)
+	if(!force && (get_keybind_path_by_keystring_hotkey(keystring) != keybind_path))
+		return FALSE
+	LAZYSET(keybindings_hotkey_tertiary, keybind_path, keystring)
+	hotkey_keybindings_by_keystring[keystring] = keybind_path
+
+/datum/preferences/proc/set_primary_classic_key(keybind_path, keystring, force = FALSE)
+	if(!force && (get_keybind_path_by_keystring_classic(keystring) != keybind_path))
+		return FALSE
+	LAZYSET(keybindings_classic_primary, keybind_path, keystring)
+	classic_keybindings_by_keystring[keystring] = keybind_path
+
+/datum/preferences/proc/set_secondary_classic_key(keybind_path, keystring, force = FALSE)
+	if(!force && (get_keybind_path_by_keystring_classic(keystring) != keybind_path))
+		return FALSE
+	LAZYSET(keybindings_classic_secondary, keybind_path, keystring)
+	classic_keybindings_by_keystring[keystring] = keybind_path
+
+/datum/preferences/proc/set_tertiary_classic_key(keybind_path, keystring, force = FALSE)
+	if(!force && (get_keybind_path_by_keystring_classic(keystring) != keybind_path))
+		return FALSE
+	LAZYSET(keybindings_classic_tertiary, keybind_path, keystring)
+	classic_keybindings_by_keystring[keystring] = keybind_path
 
 /datum/category_group/player_setup_category/keybindings
 	name = "Keybindings"
@@ -29,10 +117,30 @@
 		items += I
 		items_by_name[I.name] = I
 
+/datum/category_group/player_setup_category/keybindings/save_preferences(savefile/S)
+	S["keybindings_hotkey_primary"] << prefs.keybindings_hotkey_primary
+	S["keybindings_hotkey_secondary"] << prefs.keybindings_hotkey_secondary
+	S["keybindings_hotkey_tertiary"] << prefs.keybindings_hotkey_tertiary
+	S["keybindings_classic_primary"] << prefs.keybindings_classic_primary
+	S["keybindings_classic_secondary"] << prefs.keybindings_classic_secondary
+	S["keybindings_classic_tertiary"] << prefs.keybindings_classic_tertiary
+
+/datum/category_group/player_setup_category/keybindings/load_preferences(savefile/S)
+	S["keybindings_hotkey_primary"] >> prefs.keybindings_hotkey_primary
+	S["keybindings_hotkey_secondary"] >> prefs.keybindings_hotkey_secondary
+	S["keybindings_hotkey_tertiary"] >> prefs.keybindings_hotkey_tertiary
+	S["keybindings_classic_primary"] >> prefs.keybindings_classic_primary
+	S["keybindings_classic_secondary"] >> prefs.keybindings_classic_secondary
+	S["keybindings_classic_tertiary"] >> prefs.keybindings_classic_tertiary
+	prefs.generate_keybindings_by_keystring()
+
+
+
 /datum/category_item/player_setup_item/keybinding_category/content(mob/user)
 
 	for(var/i in SSinput.keybind_categories[name])
-
+		var/datum/keybind/KB = i
+		var/
 
 
 
@@ -50,62 +158,6 @@
 #define TOPIC_REFRESH_UPDATE_PREVIEW (TOPIC_REFRESH|TOPIC_UPDATE_PREVIEW)
 
 
-/**************************
-* Category Category Setup *
-**************************/
-/datum/category_group/player_setup_category
-	var/sort_order = 0
-
-/datum/category_group/player_setup_category/dd_SortValue()
-	return sort_order
-
-/datum/category_group/player_setup_category/proc/sanitize_setup()
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.sanitize_preferences()
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.sanitize_character()
-
-/datum/category_group/player_setup_category/proc/load_character(var/savefile/S)
-	// Load all data, then sanitize it.
-	// Need due to, for example, the 01_basic module relying on species having been loaded to sanitize correctly but that isn't loaded until module 03_body.
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.load_character(S)
-
-/datum/category_group/player_setup_category/proc/save_character(var/savefile/S)
-	// Sanitize all data, then save it
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.sanitize_character()
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.save_character(S)
-
-/datum/category_group/player_setup_category/proc/load_preferences(var/savefile/S)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.load_preferences(S)
-
-/datum/category_group/player_setup_category/proc/save_preferences(var/savefile/S)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.sanitize_preferences()
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.save_preferences(S)
-
-/datum/category_group/player_setup_category/proc/copy_to_mob(var/mob/living/carbon/human/C)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.copy_to_mob(C)
-
-/datum/category_group/player_setup_category/proc/content(var/mob/user)
-	. = "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"
-	var/current = 0
-	var/halfway = items.len / 2
-	for(var/datum/category_item/player_setup_item/PI in items)
-		if(halfway && current++ >= halfway)
-			halfway = 0
-			. += "</td><td></td><td style='width:50%'>"
-		. += "[PI.content(user)]<br>"
-	. += "</td></tr></table>"
-
-/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		. += "[PI.content(user)]<br>"
 
 /**********************
 * Category Item Setup *
@@ -280,52 +332,3 @@
 		return TOPIC_REFRESH
 
 	return ..()
-
-/client/proc/is_preference_enabled(var/preference)
-	var/datum/client_preference/cp = get_client_preference(preference)
-	return cp && (cp.key in prefs.preferences_enabled)
-
-/client/proc/set_preference(var/preference, var/set_preference)
-	var/datum/client_preference/cp = get_client_preference(preference)
-	if(!cp)
-		return FALSE
-	preference = cp.key
-
-	if(set_preference && !(preference in prefs.preferences_enabled))
-		return toggle_preference(cp)
-	else if(!set_preference && (preference in prefs.preferences_enabled))
-		return toggle_preference(cp)
-
-/client/proc/toggle_preference(var/preference, var/set_preference)
-	var/datum/client_preference/cp = get_client_preference(preference)
-	if(!cp)
-		return FALSE
-	preference = cp.key
-
-	var/enabled
-	if(preference in prefs.preferences_disabled)
-		prefs.preferences_enabled  |= preference
-		prefs.preferences_disabled -= preference
-		enabled = TRUE
-		. = TRUE
-	else if(preference in prefs.preferences_enabled)
-		prefs.preferences_enabled  -= preference
-		prefs.preferences_disabled |= preference
-		enabled = FALSE
-		. = TRUE
-	if(.)
-		cp.toggled(mob, enabled)
-
-/mob/proc/is_preference_enabled(var/preference)
-	if(!client)
-		return FALSE
-	return client.is_preference_enabled(preference)
-
-/mob/proc/set_preference(var/preference, var/set_preference)
-	if(!client)
-		return FALSE
-	if(!client.prefs)
-		log_debug("Client prefs found to be null for mob [src] and client [ckey], this should be investigated.")
-		return FALSE
-
-	return client.set_preference(preference, set_preference)
