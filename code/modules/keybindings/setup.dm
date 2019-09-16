@@ -9,8 +9,10 @@
 
 /datum/proc/key_down(key, client/user) // Called when a key is pressed down initially
 	return
+
 /datum/proc/key_up(key, client/user) // Called when a key is released
 	return
+
 /datum/proc/keyLoop(client/user) // Called once every frame
 	set waitfor = FALSE
 	return
@@ -44,7 +46,11 @@
 			var/command = macro_set[key]
 			winset(src, "[setname]-[REF(key)]", "parent=[setname];name=[key];command=[command]")
 
-	if(prefs.hotkeys)
+	if(is_preference_enabled(/datum/client_preference/hotkey_input_mode))
 		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED] mainwindow.macro=default")
 	else
 		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED] mainwindow.macro=old_default")
+
+
+
+

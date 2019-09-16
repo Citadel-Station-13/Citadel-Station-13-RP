@@ -387,7 +387,7 @@
 
 	. = ..()
 
-	if (prefs.hotkeys)
+	if(is_preference_enabled(/datum/client_preference/hotkey_input_mode))
 		// If hotkey mode is enabled, then clicking the map will automatically
 		// unfocus the text bar. This removes the red color from the text bar
 		// so that the visual focus indicator matches reality.

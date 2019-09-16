@@ -128,6 +128,13 @@ var/list/_client_preferences_by_type
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
+/datum/client_preference/hotkey_input_mode
+	description = "Hotkey Input Mode"
+	key = "HOTKEY_INPUT_MODE"
+	enabled_description = "Hotkey Override"
+	disabled_description = "Default"
+	enabled_by_default = FALSE
+
 /datum/client_preference/attack_icons
 	description ="Attack icons"
 	key = "ATTACK_ICONS"

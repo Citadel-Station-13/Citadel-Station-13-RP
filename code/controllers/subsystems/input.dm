@@ -8,8 +8,17 @@ SUBSYSTEM_DEF(input)
 
 	var/list/macro_sets
 	var/list/movement_keys
+	var/list/valid_keys
+	var/list/valid_custom_keys
+
+	var/list/keybind_datums				//plain list of datums
+	var/list/keybind_datums_by_type		//type = datum, where datums are instanciated
+	var/list/keybind_categories			//category_name = list(typepath1, typepath2)
 
 /datum/controller/subsystem/input/Initialize()
+	setup_keybind_datums()
+	setup_valid_keys()
+
 	setup_default_macro_sets()
 
 	setup_default_movement_keys()
@@ -20,6 +29,20 @@ SUBSYSTEM_DEF(input)
 
 	return ..()
 
+/datum/controller/subsystem/input/proc/keybind_datum_by_type(_type)
+	return keybind_datums_by_type[_type]
+
+/datum/controller/subsystem/input/proc/setup_keybind_datums()
+	keybind_datums = all_keybind_datums()
+	keybind_datums_by_type = list()
+	for(var/i in keybind_datums)
+		var/datum/keybind/K = i
+		keybind_datums_by_type[K.type] = K
+
+/datum/controller/subsystem/input/proc/setup_valid_keys()
+	vaild_keys = default_valid_keyboard_keys()
+	valid_ustom_keys = valid_keys.Copy() - list("Return", "F1", "F2", "Escape"))
+
 // This is for when macro sets are eventualy datumized
 /datum/controller/subsystem/input/proc/setup_default_macro_sets()
 	var/list/static/default_macro_sets
@@ -28,38 +51,25 @@ SUBSYSTEM_DEF(input)
 		macro_sets = default_macro_sets
 		return
 
+	//Hardcoded keybinds.
 	default_macro_sets = list(
 		"default" = list(
 			"Tab" = "\".winset \\\"input.focus=true?map.focus=true input.background-color=[COLOR_INPUT_DISABLED]:input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
-			"O" = "ooc",
-			"T" = "say",
-			"M" = "me",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
-			"H" = "Holster",
-			"J" = "Toggle-gun-mode"
 			),
 		"old_default" = list(
 			"Tab" = "\".winset \\\"mainwindow.macro=old_hotkeys map.focus=true input.background-color=[COLOR_INPUT_DISABLED]\\\"\"",
-			"Ctrl+T" = "say",
-			"Ctrl+O" = "ooc",
 			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
-			"H" = "Holster",
-			"J" = "Toggle-gun-mode"
 			),
 		"old_hotkeys" = list(
 			"Tab" = "\".winset \\\"mainwindow.macro=old_default input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
-			"O" = "ooc",
-			"T" = "say",
-			"M" = "me",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 			"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
-			"H" = "Holster",
-			"J" = "Toggle-gun-mode"
 			),
 		)
 
@@ -118,7 +128,22 @@ SUBSYSTEM_DEF(input)
 		user.set_macros()
 
 /datum/controller/subsystem/input/fire()
+	set waitfor = FALSE
 	//var/list/clients = GLOB.clients // Let's sing the list cache song
 	for(var/i in 1 to clients.len)
 		var/client/C = clients[i]
 		C.keyLoop()
+
+/datum/controller/subsystem/input/proc/default_valid_keyboard_keys()
+	return make_list_assoc(list(
+	"F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
+	"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+	"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+	"-", "=", "\[", "\]", "\\", ".", "/", "`", "Capslock",
+	"Numpad0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7", "Numpad8", "Numpad9",
+	"North", "South", "East", "West", "Northwest", "Southwest", "Northeast", "Southeast",
+	"Center", "Return", "Escape", "Tab", "Space", "Back", "Insert", "Delete", "Pause", "Snapshot",
+	"LWin", "RWin", "Apps", "Multiply", "Add", "Subtract", "Divide", "Separator", "Decimal",
+	"Shift", "Ctrl", "Numlock", "Scroll", "Alt"
+	))

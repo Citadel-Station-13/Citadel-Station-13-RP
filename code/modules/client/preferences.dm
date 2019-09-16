@@ -27,7 +27,6 @@ datum/preferences
 	var/UI_style = "Midnight"
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
-	var/hotkeys = TRUE
 	var/tooltipstyle = "Midnight"		//Style for popup tooltips
 	var/client_fps = 0
 

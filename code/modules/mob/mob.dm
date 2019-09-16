@@ -1,22 +1,3 @@
-/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
-	mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
-	unset_machine()
-	qdel(hud_used)
-	clear_fullscreen()
-	if(client)
-		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
-			qdel(spell_master)
-		remove_screen_obj_references()
-		client.screen = list()
-	if(mind && mind.current == src)
-		spellremove(src)
-	ghostize()
-	QDEL_NULL(plane_holder)
-	..()
-	return QDEL_HINT_HARDDEL_NOW
-
 /mob/proc/remove_screen_obj_references()
 	hands = null
 	pullin = null
@@ -47,8 +28,32 @@
 		living_mob_list += src
 	hook_vr("mob_new",list(src)) //VOREStation Code
 	update_transform() // Some mobs may start bigger or smaller than normal.
-	set_focus(src)
 	..()
+
+/mob/Initialize(mapload)
+	set_focus(src)
+	. = ..()
+	RegisterKeybindSignals()
+
+/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
+	mob_list -= src
+	dead_mob_list -= src
+	living_mob_list -= src
+	unset_machine()
+	qdel(hud_used)
+	clear_fullscreen()
+	if(client)
+		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
+			qdel(spell_master)
+		remove_screen_obj_references()
+		client.screen = list()
+	if(mind && mind.current == src)
+		spellremove(src)
+	ghostize()
+	QDEL_NULL(plane_holder)
+	CleanupKeybindSignals()
+	..()
+	return QDEL_HINT_HARDDEL_NOW
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 

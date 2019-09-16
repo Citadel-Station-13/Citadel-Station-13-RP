@@ -35,10 +35,12 @@
 	var/datum/category_collection/collection    // The collection this group belongs to
 
 /datum/category_group/New(var/datum/category_collection/cc)
-	..()
 	collection = cc
 	items = new()
 	items_by_name = new()
+	init_items()
+
+/datum/category_group/proc/init_items()
 
 	for(var/item_type in typesof(category_item_type))
 		var/datum/category_item/item = item_type

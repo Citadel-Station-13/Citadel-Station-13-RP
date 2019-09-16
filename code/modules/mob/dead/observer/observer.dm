@@ -313,7 +313,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/verb/follow()
 	set category = "Ghost"
-	set name = "Orbit" // "Haunt"
+	set name = "Follow"
+	set desc = "Alias for Orbit-Mob"
+
+	return orbit_allmobs(arglist(args))
+
+/mob/observer/dead/verb/orbit_player()
+	set category = "Ghost"
+	set name = "Orbit Player" // "Haunt"
 	set desc = "Follow and orbit a player mob."
 
 	var/list/mobs = getpois(skip_mindless = TRUE)
@@ -321,9 +328,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/mob/target = mobs[input]
 	ManualFollow(target)
 
-/mob/observer/dead/verb/follow_allmobs()
+/mob/observer/dead/verb/orbit_allmobs()
 	set category = "Ghost"
-	set name = "Orbit (Allmobs)" // "Haunt"
+	set name = "Orbit Mob" // "Haunt"
 	set desc = "Follow and orbit a mob, including mindless ones."
 
 	var/list/mobs = getpois(skip_mindless = FALSE)
