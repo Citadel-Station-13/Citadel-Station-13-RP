@@ -1,74 +1,90 @@
-#define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	11
+/datum/preferences/proc/savefile_update(savefile/S)
+	. = do_savefile_migration(S)
+	if(. == SAVEFILE_MIGRATION_CATASTROPHIC_FAIL)		//Fatal. Delete data.
+		var/delpath = "[PLAYER_SAVE_PATH(player_ckey)]/"
+		if(fexists(delpath))
+			fdel(delpath)
+	else
+		save_all()
 
-//handles converting savefiles to new formats
-//MAKE SURE YOU KEEP THIS UP TO DATE!
-//If the sanity checks are capable of handling any issues. Only increase SAVEFILE_VERSION_MAX,
-//this will mean that savefile_version will still be over SAVEFILE_VERSION_MIN, meaning
-//this savefile update doesn't run everytime we load from the savefile.
-//This is mainly for format changes, such as the bitflags in toggles changing order or something.
-//if a file can't be updated, return 0 to delete it and start again
-//if a file was updated, return 1
-/datum/preferences/proc/savefile_update()
-	if(savefile_version < 8)	//lazily delete everything + additional files so they can be saved in the new format
-		for(var/ckey in preferences_datums)
-			var/datum/preferences/D = preferences_datums[ckey]
-			if(D == src)
-				var/delpath = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/"
-				if(delpath && fexists(delpath))
-					fdel(delpath)
-				break
-		return 0
+/datum/preferences/proc/save_all()
+	save_preferences()
+	save_character()
 
-	if(savefile_version == SAVEFILE_VERSION_MAX)	//update successful.
-		save_preferences()
-		save_character()
-		return 1
-	return 0
+/datum/preferences/proc/load_all()
+	load_preferences()
+	load_character()
 
-/datum/preferences/proc/load_path(ckey,filename="preferences.sav")
-	if(!ckey)	return
-	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
-	savefile_version = SAVEFILE_VERSION_MAX
+/datum/preferences/proc/initialize_ckey(ckey, load = TRUE)
+	if(player_ckey)
+		if(player_ckey == ckey)
+			return TRUE
+		else
+			CRASH("CATASTROPHIC SAVE DATA FAIL: [type]/initialize_ckey([ckey]) call resulted in ckey mismatch. PREFERENCE DATUMS CAN NOT BE REUSED!")
+	player_ckey = ckey
+	path = "[PLAYER_SAVE_PATH(ckey)]/[PLAYER_SAVE_FILENAME]"
+	if(load)
+		load_all()
 
 /datum/preferences/proc/load_preferences()
-	if(!path)				return 0
-	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
-		if(istype(client))
-			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
-		return 0
+	if(!path)
+		to_chat(player_client, "<span class='danger'>Preferences load failed - Null path. If you are seeing this message, something has gone horribly wrong.</span>")
+		return FALSE
+	if(world.time < loadprefcooldown)			//Ensure server doesn't hang from too many reads/writes
+		to_chat(player_client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
+		return FALSE
 	loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
-	if(!fexists(path))		return 0
-	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
-	S.cd = "/"
-
-	S["version"] >> savefile_version
-	//Conversion
-	if(!savefile_version || !isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN || savefile_version > SAVEFILE_VERSION_MAX)
-		if(!savefile_update())  //handles updates
-			savefile_version = SAVEFILE_VERSION_MAX
-			save_preferences()
-			save_character()
-			return 0
-
-	player_setup.load_preferences(S)
-	return 1
+	if(!fexists(path))
+		to_chat(player_client, "<span class='danger'>Preferences load failed - Unable to find file. If you are seeing this message, something has gone horribly wrong.</span>")
+		return FALSE
+	var/savefile/S = new(path)
+	if(!S)
+		to_chat(player_client, "<span class='danger'>Preferences load failed - Savefile initialization failure. If you are seeing this message, something has gone horribly wrong.</span>")
+		return FALSE
+	var/update_results = savefile_update(S)
+	var/msg
+	if(update_results != SAVEFILE_MIGRATION_NOT_NEEDED)
+		to_chat(player_client, "<span class='boldnotice'>Your preferences/character save data is being automatically updated to the latest version.</span>")
+		switch(update_results)
+			if(SAVEFILE_MIGRATION_SUCCESSFUL)
+				to_chat(player_client, "<span class='boldnotice'>Your preferences/character save data has been successfully updated to the latest version.</span>")
+			if(SAVEFILE_MIGRATION_FAIL)
+				to_chat(player_client, "<span class='danger'>Your preferences/character save data could not be successfully updated. You should re-check all preferences and character data for corruption.</span>")
+			if(SAVEFILE_MIGRATION_CATASTROPHIC_FAIL)
+				to_chat(player_client, "<span class='danger'><font size='5'>Catastrophic failure encountered during savefile loading. Your preferences and characters have been wiped.</span>")
+				return FALSE
+	player_setup.load_preferences(src, S)
+	return TRUE
 
 /datum/preferences/proc/save_preferences()
-	if(!path)				return 0
+	if(!path)
+		to_chat(player_client, "<span class='danger'>Preferences save failed - Null path. If you are seeing this message, something has gone horribly wrong.</span>")
+		return FALSE
 	if(world.time < saveprefcooldown)
-		if(istype(client))
-			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		to_chat(player_client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
+		return FALSE
 	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
-	S.cd = "/"
+	if(!S)
+		to_chat(player_client, "<span class='danger'>Preferences save failed - Savefile initialization failure. If you are seeing this message, something has gone horribly wrong.</span>")
+		return FALSE
+	player_setup.save_preferences(src, S)
+	return TRUE
 
-	S["version"] << savefile_version
-	player_setup.save_preferences(S)
-	return 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)				return 0
@@ -117,6 +133,3 @@
 /datum/preferences/proc/sanitize_preferences()
 	player_setup.sanitize_setup()
 	return 1
-
-#undef SAVEFILE_VERSION_MAX
-#undef SAVEFILE_VERSION_MIN

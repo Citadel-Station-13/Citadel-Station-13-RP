@@ -3,10 +3,15 @@
 GLOBAL_LIST_EMPTY(preference_datums)
 
 /datum/preferences
-	//doohickeys for savefiles
-	var/path
+	//Basics
+	var/client/player_client		//If our player is here, set this.
+	var/player_ckey					//Our player's ckey
+
+	//Savefile metainformation
+	var/path						//Path to primary preferences.sav for this player
+	var/savefile_version = 0		//Savefile version
+
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
-	var/savefile_version = 0
 
 	//non-preference stuff
 	var/warns = 0
@@ -126,8 +131,6 @@ GLOBAL_LIST_EMPTY(preference_datums)
 	var/metadata = ""
 	var/list/ignored_players = list()
 
-	var/client/client = null
-	var/client_ckey = null
 
 	// Communicator identity data
 	var/communicator_visibility = 0
