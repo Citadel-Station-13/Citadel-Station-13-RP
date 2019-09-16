@@ -1,8 +1,8 @@
 #define SAVE_RESET -1
 
-var/list/preferences_datums = list()
+GLOBAL_LIST_EMPTY(preference_datums)
 
-datum/preferences
+/datum/preferences
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -131,7 +131,7 @@ datum/preferences
 
 	// Communicator identity data
 	var/communicator_visibility = 0
-	
+
 	// Default ringtone for character; if blank, use job default
 	var/ringtone = null
 
