@@ -10,11 +10,16 @@
 	move_delay = 3 // Rather slow, but still faster than swimming, and won't get you wet.
 	max_buckled_mobs = 2
 	anchored = FALSE
-	var/datum/material/material = null
+	var/datum/material/primary_material = MATERIAL_ID_WOOD
 	var/riding_datum_type = /datum/riding/boat/small
 
-/obj/vehicle/boat/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/vehicle/boat/sifwood/Initialize(mapload)
+	. = ..()
+	AutoSetMaterial(primary_material)
+	riding_datum = new riding_datum_type(src)
+
+/obj/vehicle/boat/sifwood
+	priamry_material = MATERIAL_ID_SIFWOOD
 
 /obj/vehicle/boat/dragon
 	name = "dragon boat"
@@ -27,13 +32,20 @@
 	max_buckled_mobs = 5
 	riding_datum_type = /datum/riding/boat/big
 
-/obj/vehicle/boat/dragon/New(newloc, material_name)
-	..(newloc, material_name)
+/obj/vehicle/boat/dragon/Initialize(mapload)
 	var/image/I = image(icon, src, "dragon_boat_underlay", BELOW_MOB_LAYER)
 	underlays += I
 
-/obj/vehicle/boat/dragon/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/vehicle/boat/dragon/sifwood
+	primary_material = MATERIAL_ID_SIFWOOD
+
+/obj/vehicle/boat/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY)
+	. = ..()
+	primary_material = M
+
+/obj/vehicle/boat/update_icon()
+	. = ..()
+	add_atom_colour(material.icon_color, FIXED_COLOR_PRIORITY)
 
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/weapon/oar
@@ -43,31 +55,22 @@
 	icon_state = "oar"
 	item_state = "oar"
 	force = 12
-	var/datum/material/material = null
+	var/datum/material/primary_material = MATERIAL_ID_WOOD
 
-/obj/item/weapon/oar/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/item/weapon/oar/sifwood
+	primary_material = MATERIAL_ID_SIFWOOD
 
-/obj/item/weapon/oar/New(newloc, material_name)
-	..(newloc)
-	if(!material_name)
-		material_name = "wood"
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
-	color = material.icon_colour
+/obj/item/weapon/oar/Initialize(mapload)
+	. = ..()
+	AutoSetMaterial(primary_material)
 
-/obj/vehicle/boat/New(newloc, material_name)
-	..(newloc)
-	if(!material_name)
-		material_name = "wood"
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
-	color = material.icon_colour
-	riding_datum = new riding_datum_type(src)
+/obj/item/weapon/oar/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY)
+	. = ..()
+	primary_material = M
+
+/obj/item/weapon/oar/update_icon()
+	. = ..()
+	add_atom_colour(material.icon_color, FIXED_COLOR_PRIORITY)
 
 // Boarding.
 /obj/vehicle/boat/MouseDrop_T(var/atom/movable/C, mob/user)

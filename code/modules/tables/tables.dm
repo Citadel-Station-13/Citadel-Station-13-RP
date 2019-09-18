@@ -20,8 +20,9 @@ var/list/table_icon_cache = list()
 	var/can_plate = 1
 
 	var/manipulating = 0
-	var/datum/material/material = null
-	var/datum/material/reinforced = null
+
+	var/datum/material/primary_material = MATERIAL_ID_STEEL
+	var/datum/material/reinforcing_material = MATERIAL_ID_STEEL
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
@@ -30,61 +31,6 @@ var/list/table_icon_cache = list()
 	var/list/connections = list("nw0", "ne0", "sw0", "se0")
 
 	var/item_place = 1 //allows items to be placed on the table, but not on benches.
-
-/obj/structure/table/proc/update_material()
-	var/old_maxhealth = maxhealth
-	if(!material)
-		maxhealth = 10
-	else
-		maxhealth = material.integrity / 2
-
-		if(reinforced)
-			maxhealth += reinforced.integrity / 2
-
-	health += maxhealth - old_maxhealth
-
-/obj/structure/table/proc/take_damage(amount)
-	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	if(material && material.is_brittle())
-		if(reinforced)
-			if(reinforced.is_brittle())
-				amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-		else
-			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		return break_to_parts() // if we break and form shards, return them to the caller to do !FUN! things with
-
-/obj/structure/table/blob_act()
-	take_damage(100)
-
-/obj/structure/table/Initialize()
-	. = ..()
-
-	// One table per turf.
-	for(var/obj/structure/table/T in loc)
-		if(T != src)
-			// There's another table here that's not us, break to metal.
-			// break_to_parts calls qdel(src)
-			break_to_parts(full_return = 1)
-			return
-
-	// reset color/alpha, since they're set for nice map previews
-	color = "#ffffff"
-	alpha = 255
-	update_connections(ticker && ticker.current_state == GAME_STATE_PLAYING)
-	update_icon()
-	update_desc()
-	update_material()
-
-/obj/structure/table/Destroy()
-	material = null
-	reinforced = null
-	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
-	for(var/obj/structure/table/T in oview(src, 1))
-		T.update_icon()
-	. = ..()
 
 /obj/structure/table/examine(mob/user)
 	. = ..()
@@ -101,21 +47,17 @@ var/list/table_icon_cache = list()
 
 	if(reinforced && W.is_screwdriver())
 		remove_reinforced(W, user)
-		if(!reinforced)
-			update_desc()
-			update_icon()
-			update_material()
 		return 1
 
 	if(carpeted && W.is_crowbar())
 		user.visible_message("<span class='notice'>\The [user] removes the carpet from \the [src].</span>",
 		                              "<span class='notice'>You remove the carpet from \the [src].</span>")
 		new /obj/item/stack/tile/carpet(loc)
-		carpeted = 0
+		carpeted = FALSE
 		update_icon()
 		return 1
 
-	if(!carpeted && material && istype(W, /obj/item/stack/tile/carpet))
+	if(!carpeted &&  material && istype(W, /obj/item/stack/tile/carpet))
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
@@ -130,11 +72,8 @@ var/list/table_icon_cache = list()
 		remove_material(W, user)
 		if(!material)
 			update_connections(1)
-			update_icon()
-			for(var/obj/structure/table/T in oview(src, 1))
+			for(var/obj/structure/table/T in range(src, 1))
 				T.update_icon()
-			update_desc()
-			update_material()
 		return 1
 
 	if(!carpeted && !reinforced && !material && W.is_wrench())
@@ -154,48 +93,12 @@ var/list/table_icon_cache = list()
 			return 1
 
 	if(!material && can_plate && istype(W, /obj/item/stack/material))
-		material = common_material_add(W, user, "plat")
+		AutoSetMaterial(common_material_add(W, user, "plat"), MATERIAL_INDEX_PRIAMRY)
 		if(material)
 			update_connections(1)
-			update_icon()
-			update_desc()
-			update_material()
 		return 1
 
 	return ..()
-
-/obj/structure/table/attack_hand(mob/user as mob)
-	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
-			src.attack_alien(user)
-			return
-	..()
-
-/obj/structure/table/attack_alien(mob/user as mob)
-	visible_message("<span class='danger'>\The [user] tears apart \the [src]!</span>")
-	src.break_to_parts()
-
-/obj/structure/table/attack_generic(mob/user as mob, var/damage)
-	if(damage >= 10)
-		if(reinforced && prob(70))
-			visible_message("<span class='danger'>\The [user] smashes against \the [src]!</span>")
-			take_damage(damage/2)
-			user.do_attack_animation(src)
-			..()
-		else
-			visible_message("<span class='danger'>\The [user] tears apart \the [src]!</span>")
-			src.break_to_parts()
-			user.do_attack_animation(src)
-			return 1
-	visible_message("<span class='notice'>\The [user] scratches at \the [src]!</span>")
-	return ..()
-
-/obj/structure/table/MouseDrop_T(obj/item/stack/material/what)
-	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_hand() == what && Adjacent(usr))
-		reinforce_table(what, usr)
-	else
-		return ..()
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)
@@ -214,23 +117,7 @@ var/list/table_icon_cache = list()
 		to_chat(user, "<span class='warning'>Put \the [src] back in place before reinforcing it!</span>")
 		return
 
-	reinforced = common_material_add(S, user, "reinforc")
-	if(reinforced)
-		update_desc()
-		update_icon()
-		update_material()
-
-/obj/structure/table/proc/update_desc()
-	if(material)
-		name = "[material.display_name] table"
-	else
-		name = "table frame"
-
-	if(reinforced)
-		name = "reinforced [name]"
-		desc = "[initial(desc)] This one seems to be reinforced with [reinforced.display_name]."
-	else
-		desc = initial(desc)
+	AutoSetMaterial(common_material_add(S, user, "reinforc"), MATERIAL_INDEX_REINFORCING)
 
 // Returns the material to set the table to.
 /obj/structure/table/proc/common_material_add(obj/item/stack/material/S, mob/user, verb) // Verb is actually verb without 'e' or 'ing', which is added. Works for 'plate'/'plating' and 'reinforce'/'reinforcing'.
@@ -253,9 +140,10 @@ var/list/table_icon_cache = list()
 /obj/structure/table/proc/common_material_remove(mob/user, datum/material/M, delay, what, type_holding, sound)
 	if(!M.stack_type)
 		to_chat(user, "<span class='warning'>You are unable to remove the [what] from this [src]!</span>")
-		return M
+		return FALSe
 
-	if(manipulating) return M
+	if(manipulating)
+		return FALSE
 	manipulating = 1
 	user.visible_message("<span class='notice'>\The [user] begins removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>",
 	                              "<span class='notice'>You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>")
@@ -263,18 +151,55 @@ var/list/table_icon_cache = list()
 		playsound(src.loc, sound, 50, 1)
 	if(!do_after(user, delay))
 		manipulating = 0
-		return M
+		return FALSE
 	user.visible_message("<span class='notice'>\The [user] removes the [M.display_name] [what] from \the [src].</span>",
 	                              "<span class='notice'>You remove the [M.display_name] [what] from \the [src].</span>")
 	new M.stack_type(src.loc)
 	manipulating = 0
-	return null
+	return TRUE
 
 /obj/structure/table/proc/remove_reinforced(obj/item/weapon/S, mob/user)
-	reinforced = common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound)
+	if(common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound)))
+		RemoveMaterial(MATERIAL_INDEX_REINFORCING)
 
 /obj/structure/table/proc/remove_material(obj/item/weapon/W, mob/user)
-	material = common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound)
+	if(common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound))
+		RemoveMaterial(MATERIAL_INDEX_PRIMARY)
+
+/obj/structure/table/attack_generic(mob/living/user, damage)
+	if(damage >= 10)
+		if(reinforced && prob(70))
+			visible_message("<span class='danger'>\The [user] smashes against \the [src]!</span>")
+			take_damage(damage/2)
+			user.do_attack_animation(src)
+			..()
+		else
+			visible_message("<span class='danger'>\The [user] tears apart \the [src]!</span>")
+			break_to_parts()
+			user.do_attack_animation(src)
+			return 1
+	visible_message("<span class='notice'>\The [user] scratches at \the [src]!</span>")
+	return ..()
+
+/obj/structure/table/MouseDrop_T(obj/item/stack/material/what)
+	if(can_reinforce && isliving(usr) && (!usr.stat) && istype(what) && usr.get_active_hand() == what && Adjacent(usr))
+		reinforce_table(what, usr)
+	else
+		return ..()
+
+
+/obj/structure/table/proc/update_desc()
+	if(primary_material)
+		name = "[primary_material.display_name] table"
+	else
+		name = "table frame"
+
+	if(reinforcing_material)
+		name = "reinforced [name]"
+		desc = "[initial(desc)] This one seems to be reinforced with [reinforcing_material.display_name]."
+	else
+		desc = initial(desc)
+
 
 /obj/structure/table/proc/dismantle(obj/item/W, mob/user)
 	if(manipulating)
@@ -288,7 +213,7 @@ var/list/table_icon_cache = list()
 		return
 	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
 	                              "<span class='notice'>You dismantle \the [src].</span>")
-	new /obj/item/stack/material/steel(src.loc)
+	new /obj/item/stack/material/steel(loc)
 	qdel(src)
 
 // Returns a list of /obj/item/weapon/material/shard objects that were created as a result of this table's breakage.
@@ -299,21 +224,23 @@ var/list/table_icon_cache = list()
 //     if(S) shards += S
 // is to avoid filling the list with nulls, as place_shard won't place shards of certain materials (holo-wood, holo-steel)
 
-/obj/structure/table/proc/break_to_parts(full_return = 0)
+/obj/structure/table/proc/break_to_parts(full_return = FALSE)
 	var/list/shards = list()
 	var/obj/item/weapon/material/shard/S = null
-	if(reinforced)
-		if(reinforced.stack_type && (full_return || prob(20)))
-			reinforced.place_sheet(loc)
+	if(reinforcing_material)
+		if(reinforcing_material.stack_type && (full_return || prob(20)))
+			reinforcing_material.place_sheet(loc)
 		else
-			S = reinforced.place_shard(loc)
-			if(S) shards += S
-	if(material)
-		if(material.stack_type && (full_return || prob(20)))
-			material.place_sheet(loc)
+			S = reinforcing_material.place_shard(loc)
+			if(S)
+				shards += S
+	if(primary_material)
+		if(primary_material.stack_type && (full_return || prob(20)))
+			primary_material.place_sheet(loc)
 		else
-			S = material.place_shard(loc)
-			if(S) shards += S
+			S = primary_material.place_shard(loc)
+			if(S)
+				shards += S
 	if(carpeted && (full_return || prob(50))) // Higher chance to get the carpet back intact, since there's no non-intact option
 		new /obj/item/stack/tile/carpet(src.loc)
 	if(full_return || prob(20))
@@ -321,7 +248,8 @@ var/list/table_icon_cache = list()
 	else
 		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
 		S = M.place_shard(loc)
-		if(S) shards += S
+		if(S)
+			shards += S
 	qdel(src)
 	return shards
 
@@ -400,9 +328,104 @@ var/list/table_icon_cache = list()
 		if(carpeted)
 			overlays += "carpet_flip[type]"
 
+#define CORNER_NONE 0
+#define CORNER_COUNTERCLOCKWISE 1
+#define CORNER_DIAGONAL 2
+#define CORNER_CLOCKWISE 4
+
+/*
+  turn() is weird:
+    turn(icon, angle) turns icon by angle degrees clockwise
+    turn(matrix, angle) turns matrix by angle degrees clockwise
+    turn(dir, angle) turns dir by angle degrees counter-clockwise
+*/
+
+/proc/dirs_to_corner_states(list/dirs)
+	if(!istype(dirs))
+		return
+
+	var/list/ret = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)
+
+	for(var/i = 1 to ret.len)
+		var/dir = ret[i]
+		. = CORNER_NONE
+		if(dir in dirs)
+			. |= CORNER_DIAGONAL
+		if(turn(dir,45) in dirs)
+			. |= CORNER_COUNTERCLOCKWISE
+		if(turn(dir,-45) in dirs)
+			. |= CORNER_CLOCKWISE
+		ret[i] = "[.]"
+
+	return ret
+
+#undef CORNER_NONE
+#undef CORNER_COUNTERCLOCKWISE
+#undef CORNER_DIAGONAL
+#undef CORNER_CLOCKWISE
+
+/obj/structure/table/UpdateMaterials()
+	. = ..()
+	if(!primary_material)
+		maxhealth = 10
+	else
+		maxhealth = primary_material.integrity / 2
+
+		if(reinforcing_material)
+			maxhealth += reinforcing_material.integrity / 2
+
+	health = min(health, maxhealth)
+	update_desc()
+
+/obj/structure/table/proc/take_damage(amount)
+	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
+	if(primary_material?.is_brittle() && !reinforcing_material?.is_brittle())
+		amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
+	health -= amount
+	if(health <= 0)
+		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		return break_to_parts() // if we break and form shards, return them to the caller to do !FUN! things with
+
+/obj/structure/table/blob_act()
+	take_damage(100)
+
+/obj/structure/table/Initialize()
+	. = ..()
+
+	// One table per turf.
+	for(var/obj/structure/table/T in loc)
+		if(T != src)
+			// There's another table here that's not us, break to metal.
+			// break_to_parts calls qdel(src)
+			break_to_parts(full_return = 1)
+			return
+
+	// reset color/alpha, since they're set for nice map previews
+	color = "#ffffff"
+	alpha = 255
+	update_connections(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	AutoSetMaterial(primary_material, MATERIAL_INDEX_PRIMARY, FALSE)
+	AutoSetMaterial(reinforcing_material, MATERIAL_INDEX_REINFORCING, FALSE)
+	UpdateMaterials()
+
+/obj/structure/table/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY, updating)
+	if(index == MATERIAL_INDEX_PRIMARY)
+		primary_material = M
+	else if(index == MATERIAL_INDEX_REINFORCING)
+		reinforcing_material = M
+	return ..()
+
+/obj/structure/table/Destroy()
+	primary_material = null
+	reinforcing_material = null
+	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
+	for(var/obj/structure/table/T in oview(src, 1))
+		T.update_icon()
+	return ..()
+
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
-/obj/structure/table/proc/update_connections(propagate=0)
-	if(!material)
+/obj/structure/table/proc/update_connections(propagate = FALSE)
+	if(!primary_material)
 		connections = list("0", "0", "0", "0")
 
 		if(propagate)
@@ -446,7 +469,7 @@ var/list/table_icon_cache = list()
 	for(var/obj/structure/table/T in orange(src, 1))
 		var/T_dir = get_dir(src, T)
 		if(T_dir in blocked_dirs) continue
-		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
+		if(primary_material?.can_icon_smooth_with(T.primary_material) && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
 			spawn(0)
@@ -455,38 +478,15 @@ var/list/table_icon_cache = list()
 
 	connections = dirs_to_corner_states(connection_dirs)
 
-#define CORNER_NONE 0
-#define CORNER_COUNTERCLOCKWISE 1
-#define CORNER_DIAGONAL 2
-#define CORNER_CLOCKWISE 4
+/obj/structure/table/attack_hand(mob/living/user)
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/X = user
+		if(istype(X.species, /datum/species/xenos))
+			attack_alien(user)
+			return
+	return ..()
 
-/*
-  turn() is weird:
-    turn(icon, angle) turns icon by angle degrees clockwise
-    turn(matrix, angle) turns matrix by angle degrees clockwise
-    turn(dir, angle) turns dir by angle degrees counter-clockwise
-*/
-
-/proc/dirs_to_corner_states(list/dirs)
-	if(!istype(dirs))
-		return
-
-	var/list/ret = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)
-
-	for(var/i = 1 to ret.len)
-		var/dir = ret[i]
-		. = CORNER_NONE
-		if(dir in dirs)
-			. |= CORNER_DIAGONAL
-		if(turn(dir,45) in dirs)
-			. |= CORNER_COUNTERCLOCKWISE
-		if(turn(dir,-45) in dirs)
-			. |= CORNER_CLOCKWISE
-		ret[i] = "[.]"
-
-	return ret
-
-#undef CORNER_NONE
-#undef CORNER_COUNTERCLOCKWISE
-#undef CORNER_DIAGONAL
-#undef CORNER_CLOCKWISE
+/obj/structure/table/attack_alien(mob/living/user)
+	. = ..()
+	visible_message("<span class='danger'>[user] tears apart [src]!</span>")
+	break_to_parts()

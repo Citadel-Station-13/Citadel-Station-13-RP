@@ -36,6 +36,9 @@
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
 
+	var/list/atom_colours	 //used to store the different colors on an atom
+							//its inherent color, the colored paint applied on it, special color effect etc...
+
 	// Overlays
 	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
@@ -77,11 +80,9 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
-/*
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOR_PRIORITY)
-*/
 
 /*
 	if (light_power && light_range)
@@ -572,11 +573,72 @@
 
 //MATERIALS SYSTEM
 //Hey this'll be weird because instead of different procs I'm going to make 3 procs, get, set, and update, with arguments for which material to set.
-/atom/proc/GetMaterial(material_id, index = MATERIAL_PRIMARY)
+//Use AutoSetMaterial whenever possible with material IDs. Objects as of the time of writing still directly reference materials, but we'd like to minimize that so materials can eventually be made to properly GC.
+/atom/proc/GetMaterial(material_id, index = MATERIAL_INDEX_PRIMARY)
 	return
 
-/atom/proc/SetMaterial(material_id, index = MATERIAL_PRIMARY)
-	UpdateMaterial(index)
+/atom/proc/AutoSetMaterial(material_id, index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
+	if(istype(material_id, /datum/material))
+		return SetMaterial(material_id, index)
+	var/datum/material/M = SSmaterials.material_by_id(material_id)
+	if(!M)
+		CRASH("Invalid material ID [material_id] given to AutoSetMaterial.")
+	return SetMaterial(M, index)
 
-/atom/proc/UpdateMaterial(index = MATERIAL_PRIMARY)
+/atom/proc/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
+	if(updating)
+		UpdateMaterial(index)
+
+/atom/proc/RemoveMaterial(index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
+	return SetMaterial(null, index, updating)
+
+/atom/proc/UpdateMaterials()
 	update_icon()
+
+/*
+	Adds an instance of colour_type to the atom's atom_colours list
+*/
+/atom/proc/add_atom_colour(coloration, colour_priority)
+	if(!coloration)
+		return
+	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
+		return
+	if(!length(atom_colours))
+		atom_colours = list()
+		atom_colours.len = COLOUR_PRIORITY_AMOUNT
+	atom_colours[colour_priority] = coloration
+	update_atom_colour()
+
+/*
+	Removes an instance of colour_type from the atom's atom_colours list
+*/
+/atom/proc/remove_atom_colour(colour_priority, coloration)
+	if(!length(atom_colours))
+		return
+	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
+		return
+	if(coloration && atom_colours[colour_priority] != coloration)
+		return //if we don't have the expected color (for a specific priority) to remove, do nothing
+	atom_colours[colour_priority] = null
+	update_atom_colour()
+
+
+/*
+	Resets the atom's color to null, and then sets it to the highest priority
+	colour available
+*/
+/atom/proc/update_atom_colour()
+	if(!length(atom_colours))
+		return
+	color = null
+	for(var/C in atom_colours)
+		if(islist(C))
+			var/list/L = C
+			if(L.len)
+				color = L
+				return
+		else if(C)
+			color = C
+			return
+	if(!color)
+		atom_colours = null			//At this point if color isn't set the list can just be nulled.
