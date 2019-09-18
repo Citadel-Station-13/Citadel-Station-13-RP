@@ -573,10 +573,10 @@
 //MATERIALS SYSTEM
 //Hey this'll be weird because instead of different procs I'm going to make 3 procs, get, set, and update, with arguments for which material to set.
 /atom/proc/GetMaterial(material_id, index = MATERIAL_PRIMARY)
-	return UpdateMaterial(index)
+	return
 
 /atom/proc/SetMaterial(material_id, index = MATERIAL_PRIMARY)
-	return UpdateMaterial(index)
+	UpdateMaterial(index)
 
 /atom/proc/UpdateMaterial(index = MATERIAL_PRIMARY)
-	return
+	update_icon()
