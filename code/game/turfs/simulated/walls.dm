@@ -44,6 +44,8 @@
 
 /turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	. = ..()
+	//toDO: MAT CODE
+
 	update_material()
 
 /turf/simulated/wall/Destroy()

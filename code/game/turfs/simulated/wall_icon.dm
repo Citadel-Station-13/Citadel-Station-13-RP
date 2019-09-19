@@ -30,16 +30,6 @@
 	update_connections(1)
 	update_icon()
 
-
-/turf/simulated/wall/proc/set_material(var/datum/material/newmaterial, var/datum/material/newrmaterial, var/datum/material/newgmaterial)
-	material = newmaterial
-	reinf_material = newrmaterial
-	if(!newgmaterial)
-		girder_material = DEFAULT_WALL_MATERIAL
-	else
-		girder_material = newgmaterial
-	update_material()
-
 /turf/simulated/wall/update_icon()
 	if(!material)
 		return
