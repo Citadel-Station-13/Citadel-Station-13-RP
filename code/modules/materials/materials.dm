@@ -251,30 +251,6 @@
 /datum/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
 	new /obj/item/stack/material/plasteel(target)
 
-// Very rare alloy that is reflective, should be used sparingly.
-/datum/material/durasteel
-	name = "durasteel"
-	stack_type = /obj/item/stack/material/durasteel
-	integrity = 600
-	melting_point = 7000
-	icon_base = "metal"
-	icon_reinf = "reinf_metal"
-	icon_colour = "#6EA7BE"
-	explosion_resistance = 75
-	hardness = 100
-	weight = 28
-	protectiveness = 60 // 75%
-	reflectivity = 0.7 // Not a perfect mirror, but close.
-	stack_origin_tech = list(TECH_MATERIAL = 8)
-	composite_material = list("plasteel" = SHEET_MATERIAL_AMOUNT, "diamond" = SHEET_MATERIAL_AMOUNT) //shrug
-
-/datum/material/durasteel/hull //The 'Hardball' of starship hulls.
-	name = MAT_DURASTEELHULL
-	icon_base = "hull"
-	icon_reinf = "reinf_mesh"
-	icon_colour = "#45829a"
-	explosion_resistance = 90
-	reflectivity = 0.9
 
 /datum/material/plasteel/titanium
 	name = "titanium"
@@ -544,64 +520,6 @@
 	destruction_desc = "crumples"
 	radiation_resistance = 1
 
-/datum/material/snow
-	name = MAT_SNOW
-	stack_type = /obj/item/stack/material/snow
-	material_flags = MATERIAL_BRITTLE
-	icon_base = "solid"
-	icon_reinf = "reinf_over"
-	icon_colour = "#FFFFFF"
-	integrity = 1
-	hardness = 1
-	weight = 1
-	protectiveness = 0 // 0%
-	stack_origin_tech = list(TECH_MATERIAL = 1)
-	melting_point = T0C+1
-	destruction_desc = "crumples"
-	sheet_singular_name = "pile"
-	sheet_plural_name = "pile" //Just a bigger pile
-	radiation_resistance = 1
-
-/datum/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
-	name = "packed snow"
-	material_flags = MATERIAL_BRITTLE
-	stack_type = /obj/item/stack/material/snowbrick
-	icon_base = "stone"
-	icon_reinf = "reinf_stone"
-	icon_colour = "#D8FDFF"
-	integrity = 50
-	weight = 2
-	hardness = 2
-	protectiveness = 0 // 0%
-	stack_origin_tech = list(TECH_MATERIAL = 1)
-	melting_point = T0C+1
-	destruction_desc = "crumbles"
-	sheet_singular_name = "brick"
-	sheet_plural_name = "bricks"
-	radiation_resistance = 1
-
-/datum/material/cult
-	name = "cult"
-	display_name = "disturbing stone"
-	icon_base = "cult"
-	icon_colour = "#402821"
-	icon_reinf = "reinf_cult"
-	shard_type = SHARD_STONE_PIECE
-	sheet_singular_name = "brick"
-	sheet_plural_name = "bricks"
-
-/datum/material/cult/place_dismantled_girder(var/turf/target)
-	new /obj/structure/girder/cult(target, "cult")
-
-/datum/material/cult/place_dismantled_product(var/turf/target)
-	new /obj/effect/decal/cleanable/blood(target)
-
-/datum/material/cult/reinf
-	name = "cult2"
-	display_name = "human remains"
-
-/datum/material/cult/reinf/place_dismantled_product(var/turf/target)
-	new /obj/effect/decal/remains/human(target)
 
 //TODO PLACEHOLDERS:
 /datum/material/leather

@@ -1,86 +1,128 @@
 /turf/simulated/wall/r_wall
 	icon_state = "rgeneric"
-/turf/simulated/wall/r_wall/New(var/newloc)
-	..(newloc, "plasteel","plasteel") //3strong
+	material_primary = MATERIAL_ID_PLASTEEL
+	material_reinforcing = MATERIAL_ID_PLASTEEL
 
-/turf/simulated/wall/shull/New(var/newloc) //Spaaaace ship.
-	..(newloc, MAT_STEELHULL, null, MAT_STEELHULL)
-/turf/simulated/wall/rshull/New(var/newloc)
-	..(newloc, MAT_STEELHULL, MAT_STEELHULL, MAT_STEELHULL)
-/turf/simulated/wall/pshull/New(var/newloc) //Spaaaace-er ship.
-	..(newloc, MAT_PLASTEELHULL, null, MAT_PLASTEELHULL)
-/turf/simulated/wall/rpshull/New(var/newloc)
-	..(newloc, MAT_PLASTEELHULL, MAT_PLASTEELHULL, MAT_PLASTEELHULL)
-/turf/simulated/wall/dshull/New(var/newloc) //Spaaaace-est ship.
-	..(newloc, MAT_DURASTEELHULL, null, MAT_DURASTEELHULL)
-/turf/simulated/wall/rdshull/New(var/newloc)
-	..(newloc, MAT_DURASTEELHULL, MAT_DURASTEELHULL, MAT_DURASTEELHULL)
-/turf/simulated/wall/thull/New(var/newloc)
-	..(newloc, MAT_TITANIUMHULL, null, MAT_TITANIUMHULL)
-/turf/simulated/wall/rthull/New(var/newloc)
-	..(newloc, MAT_TITANIUMHULL, MAT_TITANIUMHULL, MAT_TITANIUMHULL)
+/turf/simulated/wall/shull
+	material_primary = MATERIAL_ID_STEEL_HULL
+	material_girder = MATERIAL_ID_STEEL_HULL
+
+/turf/simulated/wall/rshull
+	material_primary = MATERIAL_ID_STEEL_HULL
+	material_reinforcing = MATERIAL_ID_STEEL_HULL
+	material_girder = MATERIAL_ID_STEEL_HULL
+
+/turf/simulated/wall/pshull
+	material_primary = MATERIAL_ID_PLASTEEL_HULL
+	material_girder = MATERIAL_ID_PLASTEEL_HULL
+
+/turf/simulated/wall/pshull
+	material_primary = MATERIAL_ID_PLASTEEL_HULL
+	material_girder = MATERIAL_ID_PLASTEEL_HULL
+	material_reinforcing = MATERIAL_ID_PLASTEEL_HULL
+
+/turf/simulated/wall/dshull
+	material_primary = MATERIAL_ID_DURASTEEL_HULL
+	material_girder = MATERIAL_ID_DURASTEEL_HULL
+
+/turf/simulated/wall/dshull
+	material_primary = MATERIAL_ID_DURASTEEL_HULL
+	material_girder = MATERIAL_ID_DURASTEEL_HULL
+	material_reinforcing = MATERIAL_ID_DURASTEEL_HULL
+
+/turf/simulated/wall/thull
+	material_primary = MATERIAL_ID_TITANIUM_HULL
+	material_girder = MATERIAL_ID_TITANIUM_HULL
+
+/turf/simulated/wall/thull
+	material_primary = MATERIAL_ID_TITANIUM_HULL
+	material_girder = MATERIAL_ID_TITANIUM_HULL
+	material_reinforcing = MATERIAL_ID_TITANIUM_HULL
 
 /turf/simulated/wall/cult
 	icon_state = "cult"
-/turf/simulated/wall/cult/New(var/newloc)
-	..(newloc,"cult","cult2","cult")
+	material_primary = MATERIAL_ID_CULT
+	material_reinforcing = MATERIAL_ID_CULT_REINFORCED
+	material_girder = MATERIAL_ID_CULT
+
 /turf/unsimulated/wall/cult
 	name = "cult wall"
 	desc = "Hideous images dance beneath the surface."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "cult"
 
-/turf/simulated/wall/iron/New(var/newloc)
-	..(newloc,"iron")
-/turf/simulated/wall/uranium/New(var/newloc)
-	..(newloc,"uranium")
-/turf/simulated/wall/diamond/New(var/newloc)
-	..(newloc,"diamond")
-/turf/simulated/wall/gold/New(var/newloc)
-	..(newloc,"gold")
-/turf/simulated/wall/silver/New(var/newloc)
-	..(newloc,"silver")
-/turf/simulated/wall/lead/New(var/newloc)
-	..(newloc,"lead")
-/turf/simulated/wall/r_lead/New(var/newloc)
-	..(newloc,"lead", "lead")
-/turf/simulated/wall/phoron/New(var/newloc)
-	..(newloc,"phoron")
-/turf/simulated/wall/sandstone/New(var/newloc)
-	..(newloc,"sandstone")
-/turf/simulated/wall/ironphoron/New(var/newloc)
-	..(newloc,"iron","phoron")
-/turf/simulated/wall/golddiamond/New(var/newloc)
-	..(newloc,"gold","diamond")
-/turf/simulated/wall/silvergold/New(var/newloc)
-	..(newloc,"silver","gold")
-/turf/simulated/wall/sandstonediamond/New(var/newloc)
-	..(newloc,"sandstone","diamond")
-/turf/simulated/wall/snowbrick/New(var/newloc)
-	..(newloc,"packed snow")
+/turf/simulated/wall/iron
+	material_primary = MATERIAL_ID_IRON
 
-// Kind of wondering if this is going to bite me in the butt.
-/turf/simulated/wall/skipjack/New(var/newloc)
-	..(newloc,"alienalloy")
+/turf/simulated/wall/uranium
+	material_primary = MATERIAL_ID_URANIUM
+
+/turf/simulated/wall/diamond
+	material_primary = MATERIAL_ID_DIAMOND
+
+/turf/simulated/wall/gold
+	material_primary = MATERIAL_ID_GOLD
+
+/turf/simulated/wall/silver
+	material_primary = MATERIAL_ID_SILVER
+
+/turf/simulated/wall/lead
+	material_primary = MATERIAL_ID_LEAD
+
+/turf/simulated/wall/r_lead
+	material_primary = MATERIAL_ID_LEAD
+	material_reinforcing = MATERIAL_ID_LEAD
+
+/turf/simulated/wall/phoron
+	material_primary = MATERIAL_ID_PHORON
+
+/turf/simulated/wall/sandstone
+	material_primary = MATERIAL_ID_SANDSTONE
+
+/turf/simulated/wall/ironphoron
+	material_primary = MATERIAL_ID_IRON
+	material_reinforcing = MATERIAL_ID_PHORON
+
+/turf/simulated/wall/golddiamond
+	material_primary = MATERIAL_ID_GOLD
+	material_reinforcing = MATERIAL_ID_DIAMOND
+
+/turf/simulated/wall/silvergold
+	material_primary = MATERIAL_ID_SILVER
+	material_reinforcing = MATERIAL_ID_GOLD
+
+/turf/simulated/wall/sandstonediamond
+	material_priamry = MATERIAL_ID_SANDSTONE
+	material_reinforcing = MATERIAL_ID_DIAMOND
+
+/turf/simulated/wall/snowbrick
+	material_primary = MATERIAL_ID_SNOWBRICK
+
+//this is shitcode, remove posthaste.
 /turf/simulated/wall/skipjack/attackby()
 	return
-/turf/simulated/wall/titanium/New(var/newloc)
-	..(newloc,"titanium")
 
-/turf/simulated/wall/durasteel/New(var/newloc)
-	..(newloc,"durasteel", "durasteel")
+/turf/simulated/wall/skipjack
+	material_primary = MATERIAL_ID_ALIEN_ALLOY
 
-/turf/simulated/wall/wood/New(var/newloc)
-	..(newloc, MAT_WOOD)
+/turf/simulated/wall/titanium
+	material_primary = MATERIAL_ID_TITANIUM
 
-/turf/simulated/wall/sifwood/New(var/newloc)
-	..(newloc, MAT_SIFWOOD)
+/turf/simualted/wall/durasteel
+	material_primary = MATERIAL_ID_DURASTEEL
+	material_reinforcing = MATERIAL_ID_DURASTEEL
 
-/turf/simulated/wall/log/New(var/newloc)
-	..(newloc, MAT_LOG)
+/turf/simulated/wall/wood
+	material_primary = MATERIAL_ID_WOOD
 
-/turf/simulated/wall/log_sif/New(var/newloc)
-	..(newloc, MAT_SIFLOG)
+/turf/simulated/wall/sifwood
+	material_primary = MATERIAL_ID_SIFWOOD
+
+/turf/simulated/wall/log
+	mateiral_primary = MATERIAL_ID_LOG
+
+/turf/simulated/wall/log_sif
+	material_priamry = MATERIAL_ID_SIFLOG
 
 // Shuttle Walls
 /turf/simulated/shuttle/wall
