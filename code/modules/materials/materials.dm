@@ -34,49 +34,13 @@
 			wood
 */
 
-// Assoc list containing all material datums indexed by name.
-var/list/name_to_material
-
-//Returns the material the object is made of, if applicable.
-//Will we ever need to return more than one value here? Or should we just return the "dominant" material.
-/obj/proc/get_material()
-	return null
-
-//mostly for convenience
-/obj/proc/get_material_name()
-	var/datum/material/material = get_material()
-	if(material)
-		return material.name
-
-// Builds the datum list above.
-/proc/populate_material_list(force_remake=0)
-	if(name_to_material && !force_remake) return // Already set up!
-	name_to_material = list()
-	for(var/type in typesof(/datum/material) - /datum/material)
-		var/datum/material/new_mineral = new type
-		if(!new_mineral.name)
-			continue
-		name_to_material[lowertext(new_mineral.name)] = new_mineral
-	return 1
-
-// Safety proc to make sure the material list exists before trying to grab from it.
-/proc/get_material_by_name(name)
-	if(!name_to_material)
-		populate_material_list()
-	return name_to_material[name]
-
-/proc/material_display_name(name)
-	var/datum/material/material = get_material_by_name(name)
-	if(material)
-		return material.display_name
-	return null
-
 // Material definition and procs follow.
 /datum/material
-	var/name	                          // Unique name for use in indexing the list.
+	var/id									//Unique name for code lookup
+
 	var/display_name                      // Prettier name for display.
 	var/use_name
-	var/flags = 0                         // Various status modifiers.
+	var/material_flags = 0                         // Various status modifiers.
 	var/sheet_singular_name = "sheet"
 	var/sheet_plural_name = "sheets"
 	var/is_fusion_fuel
@@ -105,7 +69,7 @@ var/list/name_to_material
 	var/opacity = 1              // Is the material transparent? 0.5< makes transparent walls/doors.
 	var/reflectivity = 0         // How reflective to light is the material?  Currently used for laser reflection and defense.
 	var/explosion_resistance = 5 // Only used by walls currently.
-	var/conductive = 1           // Objects with this var add CONDUCTS to flags on spawn.
+	var/conductive = 1           // Objects with this var add CONDUCTS to material_flags on spawn.
 	var/conductivity = null      // How conductive the material is. Iron acts as the baseline, at 10.
 	var/list/composite_material  // If set, object matter var will be a list containing these values.
 	var/luminescence
@@ -160,9 +124,8 @@ var/list/name_to_material
 
 // Make sure we have a display name and shard icon even if they aren't explicitly set.
 /datum/material/New()
-	..()
 	if(!display_name)
-		display_name = name
+		display_name = id
 	if(!use_name)
 		use_name = display_name
 	if(!shard_icon)
@@ -231,154 +194,13 @@ var/list/name_to_material
 
 // Used by walls and weapons to determine if they break or not.
 /datum/material/proc/is_brittle()
-	return !!(flags & MATERIAL_BRITTLE)
+	return !!(material_flags & MATERIAL_BRITTLE)
 
 /datum/material/proc/combustion_effect(var/turf/T, var/temperature)
 	return
 
-// Datum definitions follow.
-/datum/material/uranium
-	name = "uranium"
-	stack_type = /obj/item/stack/material/uranium
-	radioactivity = 12
-	icon_base = "stone"
-	icon_reinf = "reinf_stone"
-	icon_colour = "#007A00"
-	weight = 22
-	stack_origin_tech = list(TECH_MATERIAL = 5)
-	door_icon_base = "stone"
-
-/datum/material/diamond
-	name = "diamond"
-	stack_type = /obj/item/stack/material/diamond
-	flags = MATERIAL_UNMELTABLE
-	cut_delay = 60
-	icon_colour = "#00FFE1"
-	opacity = 0.4
-	reflectivity = 0.6
-	conductivity = 1
-	shard_type = SHARD_SHARD
-	tableslam_noise = 'sound/effects/Glasshit.ogg'
-	hardness = 100
-	stack_origin_tech = list(TECH_MATERIAL = 6)
-
-/datum/material/gold
-	name = "gold"
-	stack_type = /obj/item/stack/material/gold
-	icon_colour = "#EDD12F"
-	weight = 24
-	hardness = 40
-	conductivity = 41
-	stack_origin_tech = list(TECH_MATERIAL = 4)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-/datum/material/gold/bronze //placeholder for ashtrays
-	name = "bronze"
-	icon_colour = "#EDD12F"
-
-/datum/material/silver
-	name = "silver"
-	stack_type = /obj/item/stack/material/silver
-	icon_colour = "#D1E6E3"
-	weight = 22
-	hardness = 50
-	conductivity = 63
-	stack_origin_tech = list(TECH_MATERIAL = 3)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-//R-UST port
-/datum/material/supermatter
-	name = "supermatter"
-	icon_colour = "#FFFF00"
-	radioactivity = 20
-	stack_type = null
-	luminescence = 3
-	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = "stone"
-	shard_type = SHARD_SHARD
-	hardness = 30
-	door_icon_base = "stone"
-	sheet_singular_name = "crystal"
-	sheet_plural_name = "crystals"
-	is_fusion_fuel = 1
-
-/datum/material/phoron
-	name = "phoron"
-	stack_type = /obj/item/stack/material/phoron
-	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = "stone"
-	icon_colour = "#FC2BC5"
-	shard_type = SHARD_SHARD
-	hardness = 30
-	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_PHORON = 2)
-	door_icon_base = "stone"
-	sheet_singular_name = "crystal"
-	sheet_plural_name = "crystals"
-
-/*
-// Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
-/datum/material/phoron/combustion_effect(var/turf/T, var/temperature, var/effect_multiplier)
-	if(isnull(ignition_point))
-		return 0
-	if(temperature < ignition_point)
-		return 0
-	var/totalPhoron = 0
-	for(var/turf/simulated/floor/target_tile in range(2,T))
-		var/phoronToDeduce = (temperature/30) * effect_multiplier
-		totalPhoron += phoronToDeduce
-		target_tile.assume_gas("phoron", phoronToDeduce, 200+T0C)
-		spawn (0)
-			target_tile.hotspot_expose(temperature, 400)
-	return round(totalPhoron/100)
-*/
-
-/datum/material/stone
-	name = "sandstone"
-	stack_type = /obj/item/stack/material/sandstone
-	icon_base = "stone"
-	icon_reinf = "reinf_stone"
-	icon_colour = "#D9C179"
-	shard_type = SHARD_STONE_PIECE
-	weight = 22
-	hardness = 55
-	protectiveness = 5 // 20%
-	conductivity = 5
-	door_icon_base = "stone"
-	sheet_singular_name = "brick"
-	sheet_plural_name = "bricks"
-
-/datum/material/stone/marble
-	name = "marble"
-	icon_colour = "#AAAAAA"
-	weight = 26
-	hardness = 30 //VOREStation Edit - Please.
-	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
-	stack_type = /obj/item/stack/material/marble
 
 
-/datum/material/steel
-	name = DEFAULT_WALL_MATERIAL
-	stack_type = /obj/item/stack/material/steel
-	integrity = 150
-	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
-	protectiveness = 10 // 33%
-	icon_base = "solid"
-	icon_reinf = "reinf_over"
-	icon_colour = "#666666"
-
-/datum/material/steel/hull
-	name = MAT_STEELHULL
-	stack_type = /obj/item/stack/material/steel/hull
-	integrity = 250
-	explosion_resistance = 10
-	icon_base = "hull"
-	icon_reinf = "reinf_mesh"
-	icon_colour = "#666677"
-
-/datum/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
-	new /obj/item/stack/material/steel(target)
 
 /datum/material/diona
 	name = "biomass"
@@ -472,7 +294,7 @@ var/list/name_to_material
 /datum/material/glass
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
 	opacity = 0.3
 	integrity = 100
@@ -564,7 +386,7 @@ var/list/name_to_material
 	name = "rglass"
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	icon_colour = "#00E1FF"
 	opacity = 0.3
 	integrity = 100
@@ -583,7 +405,7 @@ var/list/name_to_material
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	integrity = 100
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)
@@ -609,7 +431,7 @@ var/list/name_to_material
 /datum/material/plastic
 	name = "plastic"
 	stack_type = /obj/item/stack/material/plastic
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#CCCCCC"
@@ -689,44 +511,6 @@ var/list/name_to_material
 	sheet_plural_name = "ingots"
 	radiation_resistance = 25 // Lead is Special and so gets to block more radiation than it normally would with just weight, totalling in 48 protection.
 
-// Adminspawn only, do not let anyone get this.
-/datum/material/alienalloy
-	name = "alienalloy"
-	display_name = "durable alloy"
-	stack_type = null
-	icon_colour = "#6C7364"
-	integrity = 1200
-	melting_point = 6000       // Hull plating.
-	explosion_resistance = 200 // Hull plating.
-	hardness = 500
-	weight = 500
-	protectiveness = 80 // 80%
-
-// Likewise.
-/datum/material/alienalloy/elevatorium
-	name = "elevatorium"
-	display_name = "elevator panelling"
-	icon_colour = "#666666"
-
-// Ditto.
-/datum/material/alienalloy/dungeonium
-	name = "dungeonium"
-	display_name = "ultra-durable"
-	icon_base = "dungeon"
-	icon_colour = "#FFFFFF"
-
-/datum/material/alienalloy/bedrock
-	name = "bedrock"
-	display_name = "impassable rock"
-	icon_base = "rock"
-	icon_colour = "#FFFFFF"
-
-/datum/material/alienalloy/alium
-	name = "alium"
-	display_name = "alien"
-	icon_base = "alien"
-	icon_colour = "#FFFFFF"
-
 /datum/material/resin
 	name = "resin"
 	icon_colour = "#35343a"
@@ -742,58 +526,10 @@ var/list/name_to_material
 		return 1
 	return 0
 
-
-/datum/material/wood
-	name = MAT_WOOD
-	stack_type = /obj/item/stack/material/wood
-	icon_colour = "#9c5930"
-	integrity = 50
-	icon_base = "wood"
-	explosion_resistance = 2
-	shard_type = SHARD_SPLINTER
-	shard_can_repair = 0 // you can't weld splinters back into planks
-	hardness = 15
-	weight = 18
-	protectiveness = 8 // 28%
-	conductivity = 1
-	melting_point = T0C+300 //okay, not melting in this case, but hot enough to destroy wood
-	ignition_point = T0C+288
-	stack_origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	dooropen_noise = 'sound/effects/doorcreaky.ogg'
-	door_icon_base = "wood"
-	destruction_desc = "splinters"
-	sheet_singular_name = "plank"
-	sheet_plural_name = "planks"
-
-/datum/material/wood/log
-	name = MAT_LOG
-	icon_base = "log"
-	stack_type = /obj/item/stack/material/log
-	sheet_singular_name = null
-	sheet_plural_name = "pile"
-
-/datum/material/wood/log/sif
-	name = MAT_SIFLOG
-	icon_colour = "#0099cc" // Cyan-ish
-	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
-	stack_type = /obj/item/stack/material/log/sif
-
-/datum/material/wood/holographic
-	name = "holowood"
-	display_name = "wood"
-	stack_type = null
-	shard_type = SHARD_NONE
-
-/datum/material/wood/sif
-	name = MAT_SIFWOOD
-//	stack_type = /obj/item/stack/material/wood/sif
-	icon_colour = "#0099cc" // Cyan-ish
-	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
-
 /datum/material/cardboard
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	integrity = 10
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
@@ -811,7 +547,7 @@ var/list/name_to_material
 /datum/material/snow
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#FFFFFF"
@@ -828,7 +564,7 @@ var/list/name_to_material
 
 /datum/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
 	name = "packed snow"
-	flags = MATERIAL_BRITTLE
+	material_flags = MATERIAL_BRITTLE
 	stack_type = /obj/item/stack/material/snowbrick
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
@@ -843,15 +579,6 @@ var/list/name_to_material
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
 	radiation_resistance = 1
-
-/datum/material/cloth //todo
-	name = "cloth"
-	stack_origin_tech = list(TECH_MATERIAL = 2)
-	door_icon_base = "wood"
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-	flags = MATERIAL_PADDING
 
 /datum/material/cult
 	name = "cult"
@@ -881,7 +608,7 @@ var/list/name_to_material
 	name = "leather"
 	icon_colour = "#5C4831"
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	flags = MATERIAL_PADDING
+	material_flags = MATERIAL_PADDING
 	ignition_point = T0C+300
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
@@ -891,7 +618,7 @@ var/list/name_to_material
 	display_name = "comfy"
 	use_name = "red upholstery"
 	icon_colour = "#DA020A"
-	flags = MATERIAL_PADDING
+	material_flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	sheet_singular_name = "tile"
@@ -902,78 +629,7 @@ var/list/name_to_material
 	name = "cotton"
 	display_name ="cotton"
 	icon_colour = "#FFFFFF"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-// This all needs to be OOP'd and use inheritence if its ever used in the future.
-/datum/material/cloth_teal
-	name = "teal"
-	display_name ="teal"
-	use_name = "teal cloth"
-	icon_colour = "#00EAFA"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-/datum/material/cloth_black
-	name = "black"
-	display_name = "black"
-	use_name = "black cloth"
-	icon_colour = "#505050"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-/datum/material/cloth_green
-	name = "green"
-	display_name = "green"
-	use_name = "green cloth"
-	icon_colour = "#01C608"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-/datum/material/cloth_puple
-	name = "purple"
-	display_name = "purple"
-	use_name = "purple cloth"
-	icon_colour = "#9C56C4"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-/datum/material/cloth_blue
-	name = "blue"
-	display_name = "blue"
-	use_name = "blue cloth"
-	icon_colour = "#6B6FE3"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-/datum/material/cloth_beige
-	name = "beige"
-	display_name = "beige"
-	use_name = "beige cloth"
-	icon_colour = "#E8E7C8"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-
-/datum/material/cloth_lime
-	name = "lime"
-	display_name = "lime"
-	use_name = "lime cloth"
-	icon_colour = "#62E36C"
-	flags = MATERIAL_PADDING
+	material_flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	protectiveness = 1 // 4%
@@ -982,7 +638,7 @@ var/list/name_to_material
 	name = "foam"
 	display_name = "foam"
 	use_name = "foam"
-	flags = MATERIAL_PADDING
+	material_flags = MATERIAL_PADDING
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	icon_colour = "#ff9900"
