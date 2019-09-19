@@ -1,6 +1,7 @@
 /datum/category_item/autolathe/general/cable
 	name = "cable"
 	path =/obj/item/stack/cable_coil
+	is_stack =1
 
 /datum/category_item/autolathe/tools/crowbar
 	name = "crowbar"
