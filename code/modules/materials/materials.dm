@@ -212,57 +212,6 @@
 /datum/material/diona/place_dismantled_girder(var/turf/target)
 	spawn_diona_nymph(target)
 
-/datum/material/steel/holographic
-	name = "holo" + DEFAULT_WALL_MATERIAL
-	display_name = DEFAULT_WALL_MATERIAL
-	stack_type = null
-	shard_type = SHARD_NONE
-
-/datum/material/plasteel
-	name = "plasteel"
-	stack_type = /obj/item/stack/material/plasteel
-	integrity = 400
-	melting_point = 6000
-	icon_base = "solid"
-	icon_reinf = "reinf_over"
-	icon_colour = "#777777"
-	explosion_resistance = 25
-	hardness = 80
-	weight = 23
-	protectiveness = 20 // 50%
-	conductivity = 13 // For the purposes of balance.
-	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
-	radiation_resistance = 14
-
-/datum/material/plasteel/hull
-	name = MAT_PLASTEELHULL
-	stack_type = /obj/item/stack/material/plasteel/hull
-	integrity = 600
-	icon_base = "hull"
-	icon_reinf = "reinf_mesh"
-	icon_colour = "#777788"
-	explosion_resistance = 40
-
-/datum/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
-	new /obj/item/stack/material/plasteel(target)
-
-
-/datum/material/plasteel/titanium
-	name = "titanium"
-	stack_type = null
-	conductivity = 2.38
-	icon_base = "metal"
-	door_icon_base = "metal"
-	icon_colour = "#D1E6E3"
-	icon_reinf = "reinf_metal"
-
-/datum/material/plasteel/titanium/hull
-	name = MAT_TITANIUMHULL
-	stack_type = null
-	icon_base = "hull"
-	icon_reinf = "reinf_mesh"
-
 /datum/material/glass
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
@@ -420,68 +369,6 @@
 	stack_type = null
 	shard_type = SHARD_NONE
 
-/datum/material/osmium
-	name = "osmium"
-	stack_type = /obj/item/stack/material/osmium
-	icon_colour = "#9999FF"
-	stack_origin_tech = list(TECH_MATERIAL = 5)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-/datum/material/tritium
-	name = "tritium"
-	stack_type = /obj/item/stack/material/tritium
-	icon_colour = "#777777"
-	stack_origin_tech = list(TECH_MATERIAL = 5)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-	is_fusion_fuel = 1
-
-/datum/material/deuterium
-	name = "deuterium"
-	stack_type = /obj/item/stack/material/deuterium
-	icon_colour = "#999999"
-	stack_origin_tech = list(TECH_MATERIAL = 3)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-	is_fusion_fuel = 1
-
-/datum/material/mhydrogen
-	name = "mhydrogen"
-	stack_type = /obj/item/stack/material/mhydrogen
-	icon_colour = "#E6C5DE"
-	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
-	conductivity = 100
-	is_fusion_fuel = 1
-
-/datum/material/platinum
-	name = "platinum"
-	stack_type = /obj/item/stack/material/platinum
-	icon_colour = "#9999FF"
-	weight = 27
-	conductivity = 9.43
-	stack_origin_tech = list(TECH_MATERIAL = 2)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-/datum/material/iron
-	name = "iron"
-	stack_type = /obj/item/stack/material/iron
-	icon_colour = "#5C5454"
-	weight = 22
-	conductivity = 10
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-/datum/material/lead
-	name = "lead"
-	stack_type = /obj/item/stack/material/lead
-	icon_colour = "#273956"
-	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
-	conductivity = 10
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-	radiation_resistance = 25 // Lead is Special and so gets to block more radiation than it normally would with just weight, totalling in 48 protection.
 
 /datum/material/resin
 	name = "resin"
