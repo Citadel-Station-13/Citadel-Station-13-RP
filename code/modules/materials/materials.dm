@@ -161,10 +161,6 @@
 /datum/material/proc/products_need_process()
 	return (radioactivity>0) //todo
 
-// Used by walls when qdel()ing to avoid neighbor merging.
-/datum/material/placeholder
-	name = "placeholder"
-
 // Places a girder object when a wall is dismantled, also applies reinforced material.
 /datum/material/proc/place_dismantled_girder(var/turf/target, var/datum/material/reinf_material, var/datum/material/girder_material)
 	var/obj/structure/girder/G = new(target)

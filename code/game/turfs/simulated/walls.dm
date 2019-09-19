@@ -28,25 +28,15 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
-	..(newloc)
-	icon_state = "blank"
-	if(!materialtype)
-		materialtype = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name(materialtype)
-	if(!girdertype)
-		girdertype = DEFAULT_WALL_MATERIAL
-	girder_material = get_material_by_name(girdertype)
-	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
-
-	processing_turfs |= src
-
 /turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	. = ..()
-	//toDO: MAT CODE
+	icon_state = "blank"		//We use overlays.. for whatever reason.
+	AutoSetMaterial(materialtype || material_primary, MATERIAL_PRIMARY, FALSE)
+	AutoSetMaterial(rmaterialtype || material_reinforcing, MATERIAL_REINFORCING, FALSE)
+	AutoSetMaterial(girdertype || material_girder, MATERIAL_GIRDER, FALSE)
+	UpdateMaterials()
 
-	update_material()
+	processing_turfs |= src		//shitcode, refactor posthaste.
 
 /turf/simulated/wall/Destroy()
 	processing_turfs -= src
@@ -57,9 +47,6 @@
 	// Calling parent will kill processing
 	if(!radiate())
 		return PROCESS_KILL
-
-/turf/simulated/wall/proc/get_material()
-	return material
 
 /turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))
@@ -77,7 +64,7 @@
 			thermitemelt()
 
 	if(istype(Proj,/obj/item/projectile/beam))
-		if(material && material.reflectivity >= 0.5) // Time to reflect lasers.
+		if(material_primary?.reflectivity >= 0.5) // Time to reflect lasers.
 			var/new_damage = damage * material.reflectivity
 			var/outgoing_damage = damage - new_damage
 			damage = new_damage
@@ -132,7 +119,7 @@
 	if(!damage)
 		to_chat(user, "<span class='notice'>It looks fully intact.</span>")
 	else
-		var/dam = damage / material.integrity
+		var/dam = damage / (material_primary.integrity || 100)
 		if(dam <= 0.3)
 			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
 		else if(dam <= 0.6)
@@ -167,9 +154,8 @@
 	return
 
 /turf/simulated/wall/proc/update_damage()
-	var/cap = material.integrity
-	if(reinf_material)
-		cap += reinf_material.integrity
+	var/cap = material_primary.integrity
+	cap += material_reinforcing?.integrity
 
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		cap = cap / 10
@@ -186,8 +172,8 @@
 
 /turf/simulated/wall/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
 	burn(adj_temp)
-	if(adj_temp > material.melting_point)
-		take_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material.melting_point)))
+	if(adj_temp > material_primary.melting_point)
+		take_damage(log(RAND_F(0.9, 1.1) * (adj_temp - material_primary.melting_point)))
 
 	return ..()
 
@@ -195,14 +181,14 @@
 
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
-		if(reinf_material)
-			reinf_material.place_dismantled_girder(src, reinf_material, girder_material)
+		if(material_reinforcing)
+			material_reinforcing.place_dismantled_girder(src, reinf_material, girder_material)
 		else
-			material.place_dismantled_girder(src, null, girder_material)
+			material_primary?.place_dismantled_girder(src, null, girder_material)
 		if(!devastated)
-			material.place_dismantled_product(src)
+			material_primary?.place_dismantled_product(src)
 			if (!reinf_material)
-				material.place_dismantled_product(src)
+				material_primary?.place_dismantled_product(src)
 
 	for(var/obj/O in src.contents) //Eject contents!
 		if(istype(O,/obj/structure/sign/poster))
@@ -212,9 +198,9 @@
 			O.loc = src
 
 	clear_plants()
-	material = get_material_by_name("placeholder")
-	reinf_material = null
-	girder_material = null
+	RemoveMaterial(MATERIAL_PRIMARY)
+	RemoveMaterial(MATERIAL_REINFORCING)
+	RemoveMaterial(MATERIAL_GIRDER)
 	update_connections(1)
 
 	ChangeTurf(/turf/simulated/floor/plating)

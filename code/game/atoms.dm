@@ -574,9 +574,14 @@
 //MATERIALS SYSTEM
 //Hey this'll be weird because instead of different procs I'm going to make 3 procs, get, set, and update, with arguments for which material to set.
 //Use AutoSetMaterial whenever possible with material IDs. Objects as of the time of writing still directly reference materials, but we'd like to minimize that so materials can eventually be made to properly GC.
-/atom/proc/GetMaterial(material_id, index = MATERIAL_INDEX_PRIMARY)
+
+//IMPORTANT: Nothing other than these procs should DIRECTLY access any material variables, like material_primary and other things you might set! Getters and setters are here for a reason!
+
+//Get the material DATUM of the material with that index in the atom.
+/atom/proc/GetMaterial(index = MATERIAL_INDEX_PRIMARY)
 	return
 
+//Set atom material. Accepts datum or ID.
 /atom/proc/AutoSetMaterial(material_id, index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
 	if(istype(material_id, /datum/material))
 		return SetMaterial(material_id, index)
@@ -585,13 +590,16 @@
 		CRASH("Invalid material ID [material_id] given to AutoSetMaterial.")
 	return SetMaterial(M, index)
 
+//Set atom material directly to datum without checks. DO NOT DIRECTLY CALL.
 /atom/proc/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
 	if(updating)
 		UpdateMaterial(index)
 
+//Set atom material of index to null
 /atom/proc/RemoveMaterial(index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
 	return SetMaterial(null, index, updating)
 
+//Update everything involving materials including health/anything being implemented with overriding this proc.
 /atom/proc/UpdateMaterials()
 	update_icon()
 

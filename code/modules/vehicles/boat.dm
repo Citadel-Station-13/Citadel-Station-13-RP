@@ -43,6 +43,9 @@
 	. = ..()
 	primary_material = M
 
+/obj/vehicle/boat/GetMaterial(index)
+	return primary_material
+
 /obj/vehicle/boat/update_icon()
 	. = ..()
 	add_atom_colour(material.icon_color, FIXED_COLOR_PRIORITY)
@@ -63,6 +66,9 @@
 /obj/item/weapon/oar/Initialize(mapload)
 	. = ..()
 	AutoSetMaterial(primary_material)
+
+/obj/item/weapon/oar/GetMaterial(index)
+	return primary_material
 
 /obj/item/weapon/oar/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY)
 	. = ..()
