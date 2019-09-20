@@ -12,62 +12,48 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	var/default_type = DEFAULT_WALL_MATERIAL
-	var/datum/material/material
-	var/perunit = SHEET_MATERIAL_AMOUNT
-	var/apply_colour //temp pending icon rewrite
+	material_primary = DEFAULT_WALL_MATERIAL_ID
 
-/obj/item/stack/material/New()
-	..()
+	var/perunit = SHEET_MATERIAL_AMOUNT
+
+/obj/item/stack/material/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-	if(!default_type)
-		default_type = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name("[default_type]")
-	if(!material)
-		qdel(src)
-		return 0
-
-	recipes = material.get_recipes()
-	stacktype = material.stack_type
+/obj/item/stack/material/UpdateMaterials()
+	. = ..()
+	recipes = material_primary?.get_recipes()
+	stacktype = material_primary?.stack_type
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
 
-	if(apply_colour)
-		color = material.icon_colour
-
-	if(material.conductive)
+	if(material_primary?.conductive)
 		flags |= CONDUCT
 
-	matter = material.get_matter()
+	matter = material_primary.get_matter()
 	update_strings()
-	return 1
-
-/obj/item/stack/material/get_material()
-	return material
 
 /obj/item/stack/material/proc/update_strings()
 	// Update from material datum.
-	singular_name = material.sheet_singular_name
+	singular_name = material_primary?.sheet_singular_name || "sheet"
 
 	if(amount>1)
-		name = "[material.use_name] [material.sheet_plural_name]"
-		desc = "A stack of [material.use_name] [material.sheet_plural_name]."
+		name = "[material_primary?.use_name] [material_primary?.sheet_plural_name || "undefined sheets"]"
+		desc = "A stack of [material_primary?.use_name] [material_primary.sheet_plural_name || "broken code. Contact a coder!"]."
 		gender = PLURAL
 	else
-		name = "[material.use_name] [material.sheet_singular_name]"
-		desc = "A [material.sheet_singular_name] of [material.use_name]."
+		name = "[material_primary?.use_name] [material_primary?.sheet_singular_name || "undefined sheets"]"
+		desc = "A stack of [material_primary?.use_name] [material_primary.sheet_singular_name || "broken code. Contact a coder!"]."
 		gender = NEUTER
 
-/obj/item/stack/material/use(var/used)
+/obj/item/stack/material/use(used)
 	. = ..()
 	update_strings()
-	return
 
 /obj/item/stack/material/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	var/obj/item/stack/material/M = S
-	if(!istype(M) || material.name != M.material.name)
+	if(!istype(M) || material.id != M.material_primary.id)
 		return 0
 	var/transfer = ..(S,tamount,1)
 	if(src) update_strings()
@@ -75,15 +61,15 @@
 	return transfer
 
 /obj/item/stack/material/attack_self(var/mob/user)
-	if(!material.build_windows(user, src))
+	if(!material_primary?.build_windows(user, src))
 		..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
-		material.build_wired_product(user, W, src)
+		material_primary?.build_wired_product(user, W, src)
 		return
 	else if(istype(W, /obj/item/stack/rods))
-		material.build_rod_product(user, W, src)
+		material_primary?.build_rod_product(user, W, src)
 		return
 	return ..()
 

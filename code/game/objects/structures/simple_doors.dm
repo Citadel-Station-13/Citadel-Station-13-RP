@@ -3,10 +3,10 @@
 	density = 1
 	anchored = 1
 
-	icon = 'icons/obj/doors/material_doors.dmi'
+	icon = 'icons/obj/doors/material_primary_doors.dmi'
 	icon_state = "metal"
 
-	var/datum/material/material
+	material_primary = DEFAULT_WALL_material_primary
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
 	var/hardness = 1
@@ -16,26 +16,24 @@
 	TemperatureAct(exposed_temperature)
 
 /obj/structure/simple_door/proc/TemperatureAct(temperature)
-	hardness -= material.combustion_effect(get_turf(src),temperature, 0.3)
+	hardness -= material_primary.combustion_effect(get_turf(src),temperature, 0.3)
 	CheckHardness()
 
-/obj/structure/simple_door/New(var/newloc, var/material_name)
-	..()
-	if(!material_name)
-		material_name = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name(material_name)
-	if(!material)
-		qdel(src)
-		return
-	hardness = max(1,round(material.integrity/10))
-	icon_state = material.door_icon_base
-	name = "[material.display_name] door"
-	color = material.icon_colour
-	if(material.opacity < 0.5)
+/obj/structure/simple_door/Initialize(mapload, primary_material_primary)
+	if(primary_material_primary)
+		material_primary = primary_material_primary
+	. = ..()
+
+/obj/structure/simple_door/Updatematerial_primarys()
+	. = ..()
+	hardness = max(1,round(material_primary?.integrity/10))
+	icon_state = material_primary?.door_icon_base || initial(icon_state)
+	name = "[material_primary?.display_name] door"
+	if(material_primary.opacity < 0.5)
 		set_opacity(0)
 	else
 		set_opacity(1)
-	if(material.products_need_process())
+	if(material_primary.products_need_process())
 		processing_objects |= src
 	update_nearby_tiles(need_rebuild=1)
 
@@ -43,9 +41,6 @@
 	processing_objects -= src
 	update_nearby_tiles()
 	return ..()
-
-/obj/structure/simple_door/get_material()
-	return material
 
 /obj/structure/simple_door/Bumped(atom/user)
 	..()
@@ -73,7 +68,7 @@
 	if(isSwitchingStates) return
 	if(ismob(user))
 		var/mob/M = user
-		if(!material.can_open_material_door(user))
+		if(material_primary && !material_primary.can_open_material_primary_door(user))
 			return
 		if(world.time - user.last_bumped <= 60)
 			return
@@ -95,8 +90,8 @@
 
 /obj/structure/simple_door/proc/Open()
 	isSwitchingStates = 1
-	playsound(loc, material.dooropen_noise, 100, 1)
-	flick("[material.door_icon_base]opening",src)
+	playsound(loc, material_primary?.dooropen_noise, 100, 1)
+	flick("[material_primary? material_primary.door_icon_base : initial(icon_state)]opening",src)
 	sleep(10)
 	density = 0
 	set_opacity(0)
@@ -107,8 +102,8 @@
 
 /obj/structure/simple_door/proc/Close()
 	isSwitchingStates = 1
-	playsound(loc, material.dooropen_noise, 100, 1)
-	flick("[material.door_icon_base]closing",src)
+	playsound(loc, material_primary?.dooropen_noise, 100, 1)
+	flick("[material_primary? material_primary.door_icon_base : initial(icon_state)]closing",src)
 	sleep(10)
 	density = 1
 	set_opacity(1)
@@ -118,10 +113,11 @@
 	update_nearby_tiles()
 
 /obj/structure/simple_door/update_icon()
+	. = ..()
 	if(state)
-		icon_state = "[material.door_icon_base]open"
+		icon_state = "[material_primary? material_primary.door_icon_base : initial(icon_state)]open"
 	else
-		icon_state = material.door_icon_base
+		icon_state = material_primary?.door_icon_base || initial(icon_state)
 
 /obj/structure/simple_door/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/pickaxe))
@@ -136,7 +132,7 @@
 		CheckHardness()
 	else if(istype(W,/obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
-		if(material.ignition_point && WT.remove_fuel(0, user))
+		if(material_primary?.ignition_point && WT.remove_fuel(0, user))
 			TemperatureAct(150)
 	else
 		attack_hand(user)
@@ -147,7 +143,7 @@
 		Dismantle(1)
 
 /obj/structure/simple_door/proc/Dismantle(devastated = 0)
-	material.place_dismantled_product(get_turf(src))
+	material_primary?.place_dismantled_product(get_turf(src))
 	qdel(src)
 
 /obj/structure/simple_door/ex_act(severity = 1)
@@ -166,42 +162,42 @@
 	return
 
 /obj/structure/simple_door/process()
-	if(!material.radioactivity)
+	if(!material_primary?.radioactivity)
 		return
-	radiation_repository.radiate(src, round(material.radioactivity/3))
+	radiation_repository.radiate(src, round(material_primary?.radioactivity/3))
 
-/obj/structure/simple_door/iron/New(var/newloc,var/material_name)
-	..(newloc, "iron")
+/obj/structure/simple_door/iron
+	material_primary = MATERIAL_ID_IRON
 
-/obj/structure/simple_door/silver/New(var/newloc,var/material_name)
-	..(newloc, "silver")
+/obj/structure/simple_door/silver
+	material_primary = MATERIAL_ID_SILVER
 
-/obj/structure/simple_door/gold/New(var/newloc,var/material_name)
-	..(newloc, "gold")
+/obj/structure/simple_door/gold
+	material_primary = MATERIAL_ID_GOLD
 
-/obj/structure/simple_door/uranium/New(var/newloc,var/material_name)
-	..(newloc, "uranium")
+/obj/structure/simple_door/uranium
+	material_primary = MATERIAL_ID_URANIUM
 
-/obj/structure/simple_door/sandstone/New(var/newloc,var/material_name)
-	..(newloc, "sandstone")
+/obj/structure/simple_door/sandstone
+	material_primary = MATERIAL_ID_SANDSTONE
 
-/obj/structure/simple_door/phoron/New(var/newloc,var/material_name)
-	..(newloc, "phoron")
+/obj/structure/simple_door/phoron
+	material_primary = MATERIAL_ID_PHORON
 
-/obj/structure/simple_door/diamond/New(var/newloc,var/material_name)
-	..(newloc, "diamond")
+/obj/structure/simple_door/diamond
+	material_primary = MATERIAL_ID_DIAMOND
 
-/obj/structure/simple_door/wood/New(var/newloc,var/material_name)
-	..(newloc, MAT_WOOD)
+/obj/structure/simple_door/wood
+	material_primary = MATERIAL_ID_WOOD
 
-/obj/structure/simple_door/sifwood/New(var/newloc,var/material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/simple_door/sifwood
+	material_primary = MATERIAL_ID_SIFWOOD
 
-/obj/structure/simple_door/resin/New(var/newloc,var/material_name)
-	..(newloc, "resin")
+/obj/structure/simple_door/resin
+	material_primary = MATERIAL_ID_RESIN
 
-/obj/structure/simple_door/cult/New(var/newloc,var/material_name)
-	..(newloc, "cult")
+/obj/structure/simple_door/cult
+	material_primary = MATERIAL_ID_CULT
 
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))

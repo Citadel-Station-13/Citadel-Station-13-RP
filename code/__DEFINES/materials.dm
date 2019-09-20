@@ -1,15 +1,17 @@
 //Material "index"
-#define MATERIAL_ALL				"ALL"
-#define MATERIAL_PRIMARY			"PRIMARY"
-#define MATERIAL_REINFORCING		"REINFORCING"
-#define MATERIAL_GIRDER				"GIRDER"
+#define MATINDEX_OBJ_PRIMARY		"OBJ_PRIMARY"		//generic primary material for object
+#define MATINDEX_OBJ_REINFORCING	"OBJ_REINFORCING"	//generic primary reinforcing material for object
+
+#define MATINDEX_WALL_PRIMARY		"WALL_PRIMARY"		//primary plating of wall
+#define MATINDEX_WALL_REINFORCING	"WALL_REINFORCING"	//reinforcement of wall
+#define MATINDEX_WALL_GIRDER		"WALL_GIRDER"		//internal girder of wall
 
 //Defaults
 #define DEFAULT_WALL_MATERIAL_ID MATERIAL_ID_STEEL
 #define DEFAULT_TABLE_MATERIAL_ID MATERIAL_ID_PLASTIC
 
 //MATERIAL IDS
-#define MATERIAL_ID_ABSTRACT "INVALID_MATERIAL"
+#define MATERIAL_ID_ABSTRACT		"INVALID_MATERIAL"
 
 //Metals
 #define MATERIAL_ID_IRON		"IRON"
@@ -44,6 +46,8 @@
 
 //Misc
 #define MATERIAL_ID_SNOWBRICK		"SNOWBRICK"
+#define MATERIAL_ID_ALGAE			"ALGAE"
+#define MATERIAL_ID_CARBON			"CARBON"
 
 //Cloth
 #define MATERIAL_ID_CLOTH_BASIC		"CLOTH"

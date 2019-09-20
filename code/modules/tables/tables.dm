@@ -21,7 +21,7 @@ var/list/table_icon_cache = list()
 
 	var/manipulating = 0
 
-	var/datum/material/primary_material = MATERIAL_ID_STEEL
+	material_primary = MATERIAL_ID_STEEL
 	var/datum/material/reinforcing_material = MATERIAL_ID_STEEL
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
@@ -189,8 +189,8 @@ var/list/table_icon_cache = list()
 
 
 /obj/structure/table/proc/update_desc()
-	if(primary_material)
-		name = "[primary_material.display_name] table"
+	if(material_primary)
+		name = "[material_primary.display_name] table"
 	else
 		name = "table frame"
 
@@ -234,11 +234,11 @@ var/list/table_icon_cache = list()
 			S = reinforcing_material.place_shard(loc)
 			if(S)
 				shards += S
-	if(primary_material)
-		if(primary_material.stack_type && (full_return || prob(20)))
-			primary_material.place_sheet(loc)
+	if(material_primary)
+		if(material_primary.stack_type && (full_return || prob(20)))
+			material_primary.place_sheet(loc)
 		else
-			S = primary_material.place_shard(loc)
+			S = material_primary.place_shard(loc)
 			if(S)
 				shards += S
 	if(carpeted && (full_return || prob(50))) // Higher chance to get the carpet back intact, since there's no non-intact option
@@ -366,10 +366,10 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table/UpdateMaterials()
 	. = ..()
-	if(!primary_material)
+	if(!material_primary)
 		maxhealth = 10
 	else
-		maxhealth = primary_material.integrity / 2
+		maxhealth = material_primary.integrity / 2
 
 		if(reinforcing_material)
 			maxhealth += reinforcing_material.integrity / 2
@@ -379,7 +379,7 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table/proc/take_damage(amount)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
-	if(primary_material?.is_brittle() && !reinforcing_material?.is_brittle())
+	if(material_primary?.is_brittle() && !reinforcing_material?.is_brittle())
 		amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
 	health -= amount
 	if(health <= 0)
@@ -404,20 +404,14 @@ var/list/table_icon_cache = list()
 	color = "#ffffff"
 	alpha = 255
 	update_connections(ticker && ticker.current_state == GAME_STATE_PLAYING)
-	AutoSetMaterial(primary_material, MATERIAL_INDEX_PRIMARY, FALSE)
-	AutoSetMaterial(reinforcing_material, MATERIAL_INDEX_REINFORCING, FALSE)
-	UpdateMaterials()
+	AutoSetMaterial(reinforcing_material, MATERIAL_INDEX_REINFORCING)
 
 /obj/structure/table/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY, updating)
-	if(index == MATERIAL_INDEX_PRIMARY)
-		primary_material = M
 	else if(index == MATERIAL_INDEX_REINFORCING)
 		reinforcing_material = M
 	return ..()
 
 /obj/structure/table/Destroy()
-	primary_material = null
-	reinforcing_material = null
 	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
 	for(var/obj/structure/table/T in oview(src, 1))
 		T.update_icon()
@@ -425,7 +419,7 @@ var/list/table_icon_cache = list()
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/proc/update_connections(propagate = FALSE)
-	if(!primary_material)
+	if(!material_primary)
 		connections = list("0", "0", "0", "0")
 
 		if(propagate)
@@ -469,7 +463,7 @@ var/list/table_icon_cache = list()
 	for(var/obj/structure/table/T in orange(src, 1))
 		var/T_dir = get_dir(src, T)
 		if(T_dir in blocked_dirs) continue
-		if(primary_material?.can_icon_smooth_with(T.primary_material) && flipped == T.flipped)
+		if(material_primary?.can_icon_smooth_with(T.material_primary) && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
 			spawn(0)

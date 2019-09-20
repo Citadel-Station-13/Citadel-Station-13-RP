@@ -16,7 +16,7 @@
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
-	var/datum/material/implicit_material
+	material_primary = MATERIAL_ID_PLASTEEL
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
 	var/icon_state_opening = null
@@ -31,13 +31,6 @@
 	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
 	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
 	block_air_zones = 0
-
-/obj/machinery/door/blast/Initialize()
-	. = ..()
-	implicit_material = get_material_by_name("plasteel")
-
-/obj/machinery/door/blast/get_material()
-	return implicit_material
 
 // Proc: Bumped()
 // Parameters: 1 (AM - Atom that tried to walk through this object)
@@ -150,7 +143,7 @@
 					take_damage(W.force*0.35) //it's a blast door, it should take a while. -Luke
 				return
 
-	else if(istype(C, /obj/item/stack/material) && C.get_material_name() == "plasteel") // Repairing.
+	else if(istype(C, /obj/item/stack/material) && C.get_material_name() == MATERIAL_ID_PLASTEEL) // Repairing.
 		var/amt = CEILING((maxhealth - health)/150, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")

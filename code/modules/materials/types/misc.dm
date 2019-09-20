@@ -35,3 +35,28 @@
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
 	radiation_resistance = 1
+
+/datum/material/algae
+	id = MATERIAL_ID_ALGAE
+	display_name = "algae"
+	stack_type = /obj/item/stack/material/algae
+	icon_colour = "#557722"
+	shard_type = SHARD_STONE_PIECE
+	weight = 10
+	hardness = 10
+	sheet_singular_name = "sheet"
+	sheet_plural_name = "sheets"
+
+/datum/material/carbon
+	id = MATERIAL_ID_CARBON
+	display_name = "carbon"
+	stack_type = /obj/item/stack/material/carbon
+	icon_colour = "#303030"
+	shard_type = SHARD_SPLINTER
+	weight = 5
+	hardness = 20
+	icon_base = "stone"
+	icon_reinf = "reinf_stone"
+	door_icon_base = "stone"
+	sheet_singular_name = "sheet"
+	sheet_plural_name = "sheets"

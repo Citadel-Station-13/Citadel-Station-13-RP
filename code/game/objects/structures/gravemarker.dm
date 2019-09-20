@@ -17,17 +17,6 @@
 	var/epitaph = ""		//A quick little blurb
 //	var/dir_locked = 0		//Can it be spun?	Not currently implemented
 
-	var/datum/material/material_primary
-
-/obj/structure/gravemarker/Initialize(mapload, primary_material)
-	. = ..()
-	AutoSetMaterial(primary_material || material_primary)
-
-/obj/structure/gravemarker/SetMaterial(datum/material/M, index, updating)
-	if(index == MATERIAL_PRIMARY)
-		material_primary = M
-	return ..()
-
 /obj/structure/gravemarker/update_icon()
 	color = material_primary.icon_colour
 	return ..()

@@ -258,7 +258,6 @@
 /atom/proc/update_icon()
 	return
 
-
 /atom/proc/hitby(atom/movable/AM as mob|obj)
 	if (density)
 		AM.throwing = 0
@@ -578,11 +577,13 @@
 //IMPORTANT: Nothing other than these procs should DIRECTLY access any material variables, like material_primary and other things you might set! Getters and setters are here for a reason!
 
 //Get the material DATUM of the material with that index in the atom.
-/atom/proc/GetMaterial(index = MATERIAL_INDEX_PRIMARY)
+/atom/proc/GetMaterial(index = MATINDEX_OBJ_PRIMARY)
 	return
 
 //Set atom material. Accepts datum or ID.
-/atom/proc/AutoSetMaterial(material_id, index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
+/atom/proc/AutoSetMaterial(material_id, index = MATINDEX_OBJ_PRIMARY, updating = TRUE)
+	if(isnull(material_id))
+		return
 	if(istype(material_id, /datum/material))
 		return SetMaterial(material_id, index)
 	var/datum/material/M = SSmaterials.material_by_id(material_id)
@@ -591,12 +592,12 @@
 	return SetMaterial(M, index)
 
 //Set atom material directly to datum without checks. DO NOT DIRECTLY CALL.
-/atom/proc/SetMaterial(datum/material/M, index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
+/atom/proc/SetMaterial(datum/material/M, index = MATINDEX_OBJ_PRIMARY, updating = TRUE)
 	if(updating)
-		UpdateMaterial(index)
+		UpdateMaterials()
 
 //Set atom material of index to null
-/atom/proc/RemoveMaterial(index = MATERIAL_INDEX_PRIMARY, updating = TRUE)
+/atom/proc/RemoveMaterial(index = MATINDEX_OBJ_PRIMARY, updating = TRUE)
 	return SetMaterial(null, index, updating)
 
 //Update everything involving materials including health/anything being implemented with overriding this proc.

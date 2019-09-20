@@ -9,30 +9,25 @@
 	var/burning = FALSE
 	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
 	var/grill = FALSE
-	var/datum/material/material
+	material_primary = MATERIAL_ID_WOOD
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
-/obj/structure/bonfire/New(newloc, material_name)
-	..(newloc)
-	if(!material_name)
-		material_name = MAT_WOOD
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
-	color = material.icon_colour
+/obj/structure/bonfire/Initialize(mapload, primary_material)
+	if(primary_material)
+		material_primary = primary_material
+	return ..()
 
 // Blue wood.
-/obj/structure/bonfire/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/bonfire/sifwood
+	material_primary = MATERIAL_ID_SIFWOOD
 
-/obj/structure/bonfire/permanent/New(newloc, material_name)
-	..()
+/obj/structure/bonfire/permanent/Initialize(mapload)
+	. = ..()
 	ignite()
 
-/obj/structure/bonfire/permanent/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/bonfire/permanent/sifwood
+	material_primary = MATERIAL_ID_SIFWOOD
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
@@ -79,7 +74,7 @@
 		user.visible_message("[user] starts dismantling \the [src].", "You start dismantling \the [src].")
 		if(do_after(user, 5 SECONDS))
 			for(var/i = 1 to 5)
-				material.place_dismantled_product(get_turf(src))
+				material_primary?.place_dismantled_product(get_turf(src))
 			user.visible_message("[user] dismantles down \the [src].", "You dismantle \the [src].")
 			qdel(src)
 	else

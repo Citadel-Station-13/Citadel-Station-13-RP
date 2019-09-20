@@ -65,7 +65,7 @@
 
 	if(istype(Proj,/obj/item/projectile/beam))
 		if(material_primary?.reflectivity >= 0.5) // Time to reflect lasers.
-			var/new_damage = damage * material.reflectivity
+			var/new_damage = damage * material_primary?.reflectivity
 			var/outgoing_damage = damage - new_damage
 			damage = new_damage
 			Proj.damage = outgoing_damage
@@ -263,7 +263,7 @@
 	return
 
 /turf/simulated/wall/proc/radiate()
-	var/total_radiation = material.radioactivity + (reinf_material ? reinf_material.radioactivity / 2 : 0) + (girder_material ? girder_material.radioactivity / 2 : 0)
+	var/total_radiation = material_primary?.radioactivity + (material_reinforcing?.radioactivity / 2) + (material_girder?.radioactivity / 2)
 	if(!total_radiation)
 		return
 
@@ -271,9 +271,9 @@
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)
-	if(material.combustion_effect(src, temperature, 0.7))
+	if(material_primary?.combustion_effect(src, temperature, 0.7))
 		spawn(2)
-			new /obj/structure/girder(src, girder_material.name)
+			new /obj/structure/girder(src, material_girder?.id)
 			src.ChangeTurf(/turf/simulated/floor)
 			for(var/turf/simulated/wall/W in range(3,src))
 				W.burn((temperature/4))
@@ -281,15 +281,15 @@
 				D.ignite(temperature/4)
 
 /turf/simulated/wall/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
-	if(material.integrity > 1000) // Don't decon things like elevatorium.
+	if(material_primary?.integrity > 1000) // Don't decon things like elevatorium.
 		return FALSE
 	if(reinf_material && !the_rcd.can_remove_rwalls) // Gotta do it the old fashioned way if your RCD can't.
 		return FALSE
 
 	if(passed_mode == RCD_DECONSTRUCT)
-		var/delay_to_use = material.integrity / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
+		var/delay_to_use = material_primary?.integrity / 3 // Steel has 150 integrity, so it'll take five seconds to down a regular wall.
 		if(reinf_material)
-			delay_to_use += reinf_material.integrity / 3
+			delay_to_use += material_reinforcing?.integrity / 3
 		return list(
 			RCD_VALUE_MODE = RCD_DECONSTRUCT,
 			RCD_VALUE_DELAY = delay_to_use,

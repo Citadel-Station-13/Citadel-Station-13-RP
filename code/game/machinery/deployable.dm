@@ -60,34 +60,27 @@ for reference:
 	density = 1.0
 	var/health = 100
 	var/maxhealth = 100
-	var/datum/material/primary_material = MATERIAL_ID_WOOD
+	material_primary = MATERIAL_ID_WOOD
 
-/obj/structure/barricade/Initialize(mapload, primary_material)
+/obj/structure/barricade/Initialize(mapload, material_primary)
+	if(!src.material_primary && material_primary)
+		src.material_primary = material_primary
 	. = ..()
-	AutoSetMaterial(primary_material || src.primary_material, MATERIAL_PRIMARY)
 	health = maxhealth
 
 /obj/structure/barricade/UpdateMaterial()
 	name = "[material.display_name] barricade"
 	desc = "This space is blocked off by a barricade made of [material.display_name]."
-	maxhealth = primary_material.integrity
+	maxhealth = material_primary.integrity
 	return ..()
 
 /obj/structure/barricade/update_icon()
 	add_atom_colour(material.icon_colour, COLOUR_PRIORITY_FIXED)
 
-/obj/structure/barricade/GetMaterial()
-	return primary_material
-
-/obj/structure/barricade/SetMaterial(datum/material/M, index, updating)
-	if(index == MATERIAL_PRIMARY)
-		primary_material = M
-	return ..()
-
 /obj/structure/barricade/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
-		if(D.get_material_id() != primary_material.id)
+		if(D.get_material_id() != material_primary.id)
 			return //hitting things with the wrong type of stack usually doesn't produce messages, and probably doesn't need to.
 		if(health < maxhealth)
 			if(D.get_amount() < 1)
@@ -116,9 +109,8 @@ for reference:
 		..()
 
 /obj/structure/barricade/proc/dismantle()
-	material.place_dismantled_product(get_turf(src))
+	material_primary?.place_dismantled_product(get_turf(src))
 	qdel(src)
-	return
 
 /obj/structure/barricade/ex_act(severity)
 	switch(severity)

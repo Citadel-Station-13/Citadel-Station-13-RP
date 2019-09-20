@@ -19,6 +19,13 @@
 
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 
+	var/datum/material/material_primary
+	var/use_primary_material_color = TRUE			//could use being a flag later. DO NOT DYNAMICALLY ASSIGN UNLESS ABSOLUTELY NEEDED, RATHER THAN COMPILE TIME ASSIGNING.
+
+/obj/Initialize(mapload)
+	. = ..()
+	AutoSetMaterial(material_primary, MATINDEX_OBJ_PRIMARY)
+
 /obj/Destroy()
 	processing_objects -= src
 	return ..()
@@ -166,3 +173,18 @@
 
 /obj/proc/get_cell()
 	return
+
+/obj/SetMaterial(datum/material/M, index = MATINDEX_OBJ_PRIMARY, updating)
+	if(index == MATINDEX_OBJ_PRIMARY)
+		material_primary = M
+	return ..()
+
+/obj/GetMaterial(index = MATINDEX_OBJ_PRIMARY)
+	if(index == MATINDEX_OBJ_PRIMARY)
+		return material_primary
+	return ..()
+
+/obj/update_icon()
+	. = ..()
+	if(use_primary_material_color)
+		add_atom_colour(material_primary.icon_color, FIXED_COLOR_PRIORITY)
