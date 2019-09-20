@@ -127,7 +127,7 @@
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
 		if("chirp")
-			message = "lets out a chirp."
+			message = "chirps!"
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
 			m_type = 2
 		if ("weh")
