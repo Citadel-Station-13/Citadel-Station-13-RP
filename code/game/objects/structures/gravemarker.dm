@@ -17,17 +17,20 @@
 	var/epitaph = ""		//A quick little blurb
 //	var/dir_locked = 0		//Can it be spun?	Not currently implemented
 
-	var/datum/material/material
+	var/datum/material/material_primary
 
-/obj/structure/gravemarker/New(var/newloc, var/material_name)
-	..(newloc)
-	if(!material_name)
-		material_name = "wood"
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
-	color = material.icon_colour
+/obj/structure/gravemarker/Initialize(mapload, primary_material)
+	. = ..()
+	AutoSetMaterial(primary_material || material_primary)
+
+/obj/structure/gravemarker/SetMaterial(datum/material/M, index, updating)
+	if(index == MATERIAL_PRIMARY)
+		material_primary = M
+	return ..()
+
+/obj/structure/gravemarker/update_icon()
+	color = material_primary.icon_colour
+	return ..()
 
 /obj/structure/gravemarker/examine(mob/user)
 	..()
@@ -60,21 +63,21 @@
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.toolspeed))
+			if(do_after(user, (material_primary?.hardness || 1) * W.toolspeed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				grave_name += carving_1
 				update_icon()
 		var/carving_2 = sanitizeSafe(input(user, "What message should \the [src.name] have?", "Epitaph Carving", null)  as text, MAX_NAME_LEN)
 		if(carving_2)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.toolspeed))
+			if(do_after(user, (material_priamry?.hardness || 1) * W.toolspeed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				epitaph += carving_2
 				update_icon()
 		return
 	if(W.is_wrench())
 		user.visible_message("[user] starts taking down \the [src.name].", "You start taking down \the [src.name].")
-		if(do_after(user, material.hardness * W.toolspeed))
+		if(do_after(user, (material_primary?.hardness || 1) * W.toolspeed))
 			user.visible_message("[user] takes down \the [src.name].", "You take down \the [src.name].")
 			dismantle()
 	..()
@@ -110,7 +113,7 @@
 		dismantle()
 
 /obj/structure/gravemarker/proc/dismantle()
-	material.place_dismantled_product(get_turf(src))
+	material_primary?.place_dismantled_product(get_turf(src))
 	qdel(src)
 	return
 

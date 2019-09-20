@@ -10,8 +10,8 @@
 	active_power_usage = 2000
 	circuit = /obj/item/weapon/circuitboard/autolathe
 	var/datum/category_collection/autolathe/machine_recipes
-	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
+	var/list/stored_material =  list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
+	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
 	var/datum/category_group/autolathe/current_category
 
 	var/hacked = 0
@@ -301,8 +301,8 @@
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
-	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 25000
-	storage_capacity["glass"] = mb_rating  * 12500
+	storage_capacity[MATERIAL_ID_STEEL] = mb_rating  * 25000
+	storage_capacity[MATERIAL_ID_GLASS] = mb_rating  * 12500
 	build_time = 50 / man_rating
 	mat_efficiency = 1.1 - man_rating * 0.1// Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.8. Maximum rating of parts is 3
 

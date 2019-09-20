@@ -60,29 +60,34 @@ for reference:
 	density = 1.0
 	var/health = 100
 	var/maxhealth = 100
-	var/datum/material/material
+	var/datum/material/primary_material = MATERIAL_ID_WOOD
 
-/obj/structure/barricade/New(var/newloc, var/material_name)
-	..(newloc)
-	if(!material_name)
-		material_name = "wood"
-	material = get_material_by_name("[material_name]")
-	if(!material)
-		qdel(src)
-		return
-	name = "[material.display_name] barricade"
-	desc = "This space is blocked off by a barricade made of [material.display_name]."
-	color = material.icon_colour
-	maxhealth = material.integrity
+/obj/structure/barricade/Initialize(mapload, primary_material)
+	. = ..()
+	AutoSetMaterial(primary_material || src.primary_material, MATERIAL_PRIMARY)
 	health = maxhealth
 
-/obj/structure/barricade/get_material()
-	return material
+/obj/structure/barricade/UpdateMaterial()
+	name = "[material.display_name] barricade"
+	desc = "This space is blocked off by a barricade made of [material.display_name]."
+	maxhealth = primary_material.integrity
+	return ..()
+
+/obj/structure/barricade/update_icon()
+	add_atom_colour(material.icon_colour, COLOUR_PRIORITY_FIXED)
+
+/obj/structure/barricade/GetMaterial()
+	return primary_material
+
+/obj/structure/barricade/SetMaterial(datum/material/M, index, updating)
+	if(index == MATERIAL_PRIMARY)
+		primary_material = M
+	return ..()
 
 /obj/structure/barricade/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
-		if(D.get_material_name() != material.name)
+		if(D.get_material_id() != primary_material.id)
 			return //hitting things with the wrong type of stack usually doesn't produce messages, and probably doesn't need to.
 		if(health < maxhealth)
 			if(D.get_amount() < 1)

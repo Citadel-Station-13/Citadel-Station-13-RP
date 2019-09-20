@@ -13,7 +13,8 @@
 
 	var/speed = 1
 	var/mat_efficiency = 1
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0, "plasteel" = 0)
+	var/list/materials = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0, MATERIAL_ID_PLASTIC = 0, MATERIAL_ID_GOLD= 0, MATERIAL_ID_SILVER = 0, MATERIAL_ID_OSMIUM = 0, MATERIAL_ID_DIAMOND = 0,
+		MATERIAL_ID_PHORON = 0, MATERIAL_ID_URANIUM = 0, MATERIAL_ID_PLASTEEL= 0)
 	var/res_max_amount = 200000
 
 	var/datum/research/files
@@ -174,7 +175,7 @@
 
 	if(istype(I,/obj/item/stack/material))
 		var/obj/item/stack/material/S = I
-		if(!(S.material.name in materials))
+		if(!(S.material.id in materials))
 			to_chat(user, "<span class='warning'>The [src] doesn't accept [S.material]!</span>")
 			return
 

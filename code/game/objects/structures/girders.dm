@@ -10,18 +10,51 @@
 	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
-	var/default_material = DEFAULT_WALL_MATERIAL
-	var/datum/material/girder_material
-	var/datum/material/reinf_material
+	var/datum/material/material_girder = DEFAULT_WALL_MATERIAL_ID
+	var/datum/material/material_reinforcing
 	var/reinforcing = 0
 	var/applies_material_colour = 1
 
-/obj/structure/girder/New(var/newloc, var/material_key)
-	..(newloc)
-	if(!material_key)
-		material_key = default_material
-	set_material(material_key)
-	update_icon()
+/obj/structure/girder/Initialize(mapload, priamry_material)
+	. = ..()
+	AutoSetMaterial(material_girder || primary_material, MATERIAL_PRIMARY)
+
+/obj/structure/girder/SetMaterial(datum/material/M, index, updating)
+	if(index == MATERIAL_PRIMARY)
+		material_girder = M
+	else if(index == MATERIAL_REINFORCING)
+		material_reinforcing = M
+	return ..()
+
+/obj/structure/girder/UpdateMaterials()
+	name = "[girder_material.display_name] [initial(name)]"
+	max_health = round(girder_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
+	health = max_health
+	displaced_health = round(max_health/4)
+	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
+		processing_objects |= src
+	else if(src in processing_objects) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
+		processing_objects -= src
+	return ..()
+
+/obj/structure/girder/GetMaterial(index)
+	switch(index)
+		if(MATERIAL_PRIMARY)
+			return material_girder
+		if(MATERIAL_REINFORCING)
+			return material_reinforcing
+	CRASH("Invalid index!")
+
+/obj/structure/girder/update_icon()
+	if(applies_material_colour)
+		add_atom_colour(material_girder.icon_colour, COLOUR_PRIORITY_FIXED)
+	else
+		remove_atom_colour(COLOUR_PRIORITY_FIXED)
+	if(anchored)
+		icon_state = "girder"
+	else
+		icon_state = "displaced"
+	return ..()
 
 /obj/structure/girder/Destroy()
 	if(girder_material.products_need_process())
@@ -40,31 +73,6 @@
 
 	radiation_repository.radiate(src, total_radiation)
 	return total_radiation
-
-
-/obj/structure/girder/proc/set_material(var/new_material)
-	girder_material = get_material_by_name(new_material)
-	if(!girder_material)
-		qdel(src)
-	name = "[girder_material.display_name] [initial(name)]"
-	max_health = round(girder_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
-	health = max_health
-	displaced_health = round(max_health/4)
-	if(applies_material_colour)
-		color = girder_material.icon_colour
-	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
-		processing_objects |= src
-	else if(src in processing_objects) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
-		processing_objects -= src
-
-/obj/structure/girder/get_material()
-	return girder_material
-
-/obj/structure/girder/update_icon()
-	if(anchored)
-		icon_state = "girder"
-	else
-		icon_state = "displaced"
 
 /obj/structure/girder/displaced
 	icon_state = "displaced"
