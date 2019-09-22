@@ -142,6 +142,7 @@
 	new /obj/effect/gibspawner/human/xenochimera(T)
 
 	reviving = REVIVING_COOLDOWN
+	addtimer(VARSET_CALLBACK(src, reviving, 0), 1 HOUR)
 	schedule_callback_in(1 HOUR, VARSET_CALLBACK(src, reviving, 0))
 
 /obj/effect/gibspawner/human/xenochimera
