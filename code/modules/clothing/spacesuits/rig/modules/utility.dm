@@ -88,7 +88,7 @@
 /obj/item/rig_module/device/orescanner/advanced
 	name = "advanced ore scanner module"
 	desc = "A sleeker, yet still somewhat clunky ore scanner."
-	interface_name "adv. ore detector"
+	interface_name = "adv. ore detector"
 	device_type = /obj/item/weapon/mining_scanner/advanced
 
 /obj/item/rig_module/device/rcd
