@@ -22,8 +22,6 @@
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
-	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
-		return null
 
 	if(!config.guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
@@ -39,10 +37,12 @@
 	GLOB.ahelp_tickets.ClientLogin(src)
 
 	//Admin Authorisation
+	var/connecting_admin = FALSE
 	holder = admin_datums[ckey]
 	if(holder)
 		admins += src
 		holder.owner = src
+		connecting_admin = TRUE
 
 	// Localhost connections get full admin rights and a special rank
 	else if(isnull(address) || (address in list("127.0.0.1", "::1")))
@@ -58,6 +58,25 @@
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
 	. = ..()	//calls mob.Login()
+
+	if (byond_version >= 512)
+		if (!byond_build || byond_build < 1386)
+			message_admins("<span class='adminnotice'>[key_name(src)] has been detected as spoofing their byond version. Connection rejected.</span>")
+			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
+			log_access("Failed Login: [key] - Spoofed byond version")
+			qdel(src)
+
+		if (num2text(byond_build) in GLOB.blacklisted_builds)
+			log_access("Failed login: [key] - blacklisted byond version")
+			to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
+			to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
+			to_chat(src, "<span class='danger'>Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
+			if(connecting_admin)
+				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
+			else
+				qdel(src)
+				return
+
 	prefs.sanitize_preferences()
 
 	if(custom_event_msg && custom_event_msg != "")
@@ -122,6 +141,33 @@
 	return QDEL_HINT_HARDDEL_NOW
 
 // here because it's similar to below
+
+/client/proc/add_system_note(system_ckey, message)
+	notes_add(ckey, message)
+/*
+	var/sql_system_ckey = sanitizeSQL(system_ckey)
+	var/sql_ckey = sanitizeSQL(ckey)
+	//check to see if we noted them in the last day.
+	var/datum/DBQuery/query_get_notes = SSdbcore.NewQuery("SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = '[sql_ckey]' AND adminckey = '[sql_system_ckey]' AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND expire_timestamp > NOW()")
+	if(!query_get_notes.Execute())
+		qdel(query_get_notes)
+		return
+	if(query_get_notes.NextRow())
+		qdel(query_get_notes)
+		return
+	qdel(query_get_notes)
+	//regardless of above, make sure their last note is not from us, as no point in repeating the same note over and over.
+	query_get_notes = SSdbcore.NewQuery("SELECT adminckey FROM [format_table_name("messages")] WHERE targetckey = '[sql_ckey]' AND deleted = 0 AND expire_timestamp > NOW() ORDER BY timestamp DESC LIMIT 1")
+	if(!query_get_notes.Execute())
+		qdel(query_get_notes)
+		return
+	if(query_get_notes.NextRow())
+		if (query_get_notes.item[1] == system_ckey)
+			qdel(query_get_notes)
+			return
+	qdel(query_get_notes)
+	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
+*/
 
 // Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
 
