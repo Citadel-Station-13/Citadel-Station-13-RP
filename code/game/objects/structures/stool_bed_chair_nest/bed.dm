@@ -17,29 +17,28 @@
 	can_buckle = 1
 	buckle_dir = SOUTH
 	buckle_lying = 1
-	var/datum/material/material
-	var/datum/material/padding_material
+	var/datum/material/material_padding
 	var/base_icon = "bed"
-	var/applies_material_colour = 1
 
-/obj/structure/bed/New(var/newloc, var/new_material, var/new_padding_material)
-	..(newloc)
-	color = null
-	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name(new_material)
-	if(!istype(material))
-		qdel(src)
-		return
-	if(new_padding_material)
-		padding_material = get_material_by_name(new_padding_material)
-	update_icon()
+/obj/structure/bed/Initialize(mapload, primary_material, padding_material)
+	if(primary_material)
+		material_primary = primary_material
+	. = ..()
+	AutoSetMaterial(padding_material || material_padding, MATINDEX_OBJ_PADDING)
 
-/obj/structure/bed/get_material()
-	return material
+/obj/structure/bed/GetMaterial(index)
+	if(index == MATINDEX_OBJ_PADDING)
+		return material_padding
+	return ..()
+
+/obj/structure/bed/SetMaterial(datum/material/M, index, updating)
+	if(index == MATINDEX_OBJ_PADDING)
+		material_padding = M
+	return ..()
 
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
+	. = ..()
 	// Prep icon.
 	icon_state = ""
 	overlays.Cut()
@@ -49,7 +48,7 @@
 		var/image/I = image(icon, base_icon) //VOREStation Edit
 		//var/image/I = image('icons/obj/furniture.dmi', base_icon) //From Polaris Sync. Not sure if this is a better way of doing it or not. Uncomment if so.
 		if(applies_material_colour) //VOREStation Add - Goes with added var
-			I.color = material.icon_colour
+			I.color = material_primary.icon_colour
 		stool_cache[cache_key] = I
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
@@ -57,17 +56,17 @@
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding")
-			I.color = padding_material.icon_colour
+			I.color = material_padding.icon_colour
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
 	// Strings.
 	desc = initial(desc)
 	if(padding_material)
-		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
-		desc += " It's made of [material.use_name] and covered with [padding_material.use_name]."
+		name = "[material_padding.display_name] [initial(name)]" //this is not perfect but it will do for now.
+		desc += " It's made of [material_primary.use_name] and covered with [material_padding.use_name]."
 	else
-		name = "[material.display_name] [initial(name)]"
-		desc += " It's made of [material.use_name]."
+		name = "[material_primary.display_name] [initial(name)]"
+		desc += " It's made of [material_primary.use_name]."
 
 /obj/structure/bed/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
@@ -95,7 +94,7 @@
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
-		if(padding_material)
+		if(material_padding)
 			to_chat(user, "\The [src] is already padded.")
 			return
 		var/obj/item/stack/C = W
@@ -105,19 +104,19 @@
 			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
 		if(istype(W,/obj/item/stack/tile/carpet))
-			padding_type = "carpet"
+			padding_type = MATERIAL_ID_CARPET
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
-				padding_type = "[M.material.name]"
+				padding_type = M.material.id
 		if(!padding_type)
-			to_chat(user, "You cannot pad \the [src] with that.")
+			to_chat(user, "You cannot pad [src] with that.")
 			return
 		C.use(1)
-		if(!istype(src.loc, /turf))
+		if(!isturf(loc))
 			user.drop_from_inventory(src)
-			src.loc = get_turf(src)
-		to_chat(user, "You add padding to \the [src].")
+			forceMove(get_turf(src)
+		to_chat(user, "You add padding to [src].")
 		add_padding(padding_type)
 		return
 
@@ -149,39 +148,35 @@
 		..()
 
 /obj/structure/bed/proc/remove_padding()
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
-		padding_material = null
-	update_icon()
+	if(material_padding)
+		material_padding.place_sheet(get_turf(src))
+		RemoveMaterial(MATINDEX_OBJ_PADDING)
 
-/obj/structure/bed/proc/add_padding(var/padding_type)
-	padding_material = get_material_by_name(padding_type)
-	update_icon()
+/obj/structure/bed/proc/add_padding(padding_type)
+	AutoSetMaterial(padding_type, MATINDEX_OBJ_PADDING)
 
 /obj/structure/bed/proc/dismantle()
-	material.place_sheet(get_turf(src))
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
+	material_primary?.place_sheet(get_turf(src))
+	padding_material?.place_sheet(get_turf(src))
 
 /obj/structure/bed/psych
 	name = "psychiatrist's couch"
 	desc = "For prime comfort during psychiatric evaluations."
 	icon_state = "psychbed"
 	base_icon = "psychbed"
+	material_primary = MATERIAL_ID_WOOD
+	material_padding = MATERIAL_ID_LEATHER
 
-/obj/structure/bed/psych/New(var/newloc)
-	..(newloc,"wood","leather")
-
-/obj/structure/bed/padded/New(var/newloc)
-	..(newloc,"plastic","cotton")
+/obj/structure/bed/padded
+	material_primary = MATERIAL_ID_PLASTIC
+	material_padding = MATERIAL_ID_COTTON
 
 /obj/structure/bed/double
 	name = "double bed"
 	icon_state = "doublebed"
 	base_icon = "doublebed"
-
-/obj/structure/bed/double/padded/New(var/newloc)
-	..(newloc,"wood","cotton")
+	material_primary = MATERIAL_ID_WOOD
+	material_padding = MATERIAL_ID_COTTON
 
 /obj/structure/bed/double/post_buckle_mob(mob/living/M as mob)
 	if(M.buckled == src)
@@ -194,6 +189,7 @@
 /*
  * Roller beds
  */
+
 /obj/structure/bed/roller
 	name = "roller bed"
 	desc = "A portable bed-on-wheels made for transporting medical patients."
@@ -210,6 +206,7 @@
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
 	surgery_odds = 85
+
 /obj/structure/bed/roller/update_icon()
 	return
 

@@ -9,29 +9,32 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 	force = 10
 	throwforce = 10
 	w_class = ITEMSIZE_HUGE
+	material_primary = MATERIAL_ID_STEEL
 	var/base_icon = "stool_base"
 	var/datum/material/material_padding
 
 /obj/item/weapon/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
+	material_padding = MATERIAL_ID_CARPET
 
-/obj/item/weapon/stool/New(var/newloc, var/new_material, var/new_padding_material)
-	..(newloc)
-	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name(new_material)
-	if(new_padding_material)
-		padding_material = get_material_by_name(new_padding_material)
-	if(!istype(material))
-		qdel(src)
-		return
-	force = round(material.get_blunt_damage()*0.4)
-	update_icon()
+/obj/item/weapon/stool/Initialize(mapload, primary_material, padding_material)
+	if(primary_material)
+		material_primary = primary_material
+	. = ..()
+	AutoSetMaterial(padding_material || material_padding, MATINDEX_OBJ_PADDING)
 
-/obj/item/weapon/stool/padded/New(var/newloc, var/new_material)
-	..(newloc, "steel", "carpet")
+/obj/structure/bed/GetMaterial(index)
+	if(index == MATINDEX_OBJ_PADDING)
+		return material_padding
+	return ..()
+
+/obj/structure/bed/SetMaterial(datum/material/M, index, updating)
+	if(index == MATINDEX_OBJ_PADDING)
+		material_padding = M
+	return ..()
 
 /obj/item/weapon/stool/update_icon()
+	. = ..()
 	// Prep icon.
 	icon_state = ""
 	overlays.Cut()
@@ -39,7 +42,7 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 	var/cache_key = "stool-[material.name]"
 	if(isnull(GLOB.stool_icon_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
-		I.color = material.icon_colour
+		I.color = material_primary.icon_colour
 		GLOB.stool_icon_cache[cache_key] = I
 	overlays |= GLOB.stool_icon_cache[cache_key]
 	// Padding overlay.
@@ -47,26 +50,23 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 		var/padding_cache_key = "stool-padding-[padding_material.name]"
 		if(isnull(GLOB.stool_icon_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
-			I.color = padding_material.icon_colour
+			I.color = material_padding.icon_colour
 			GLOB.stool_icon_cache[padding_cache_key] = I
 		overlays |= GLOB.stool_icon_cache[padding_cache_key]
 	// Strings.
-	if(padding_material)
-		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
-		desc = "A padded stool. Apply butt. It's made of [material.use_name] and covered with [padding_material.use_name]."
+	if(material_padding)
+		name = "[material_padding.display_name] [initial(name)]" //this is not perfect but it will do for now.
+		desc = "A padded stool. Apply butt. It's made of [material_primary.use_name] and covered with [material_padding.use_name]."
 	else
-		name = "[material.display_name] [initial(name)]"
-		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
+		name = "[material_primary.display_name] [initial(name)]"
+		desc = "A stool. Apply butt with care. It's made of [material_primary.use_name]."
 
-/obj/item/weapon/stool/proc/add_padding(var/padding_type)
-	padding_material = get_material_by_name(padding_type)
-	update_icon()
+/obj/item/weapon/stool/proc/add_padding(padding_type)
+	AutoSetMaterial(padding_type, MATINDEX_OBJ_PADDING)
 
 /obj/item/weapon/stool/proc/remove_padding()
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
-		padding_material = null
-	update_icon()
+	material_padding?.place_sheet(drop_location())
+	RemoveMaterial(material_padding)
 
 /obj/item/weapon/stool/attack(mob/M as mob, mob/user as mob)
 	if (prob(5) && istype(M,/mob/living))
@@ -100,10 +100,8 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 				return
 
 /obj/item/weapon/stool/proc/dismantle()
-	if(material)
-		material.place_sheet(get_turf(src))
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
+	material_primary?.place_sheet(get_turf(src))
+	padding_material?.place_sheet(get_turf(src))
 	qdel(src)
 
 /obj/item/weapon/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
@@ -112,8 +110,8 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
-		if(padding_material)
-			user << "\The [src] is already padded."
+		if(material_padding)
+			to_chat(user, "<span class='notice'>[src] is already padded.</span>")
 			return
 		var/obj/item/stack/C = W
 		if(C.get_amount() < 1) // How??
@@ -122,27 +120,27 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 			return
 		var/padding_type //This is awful but it needs to be like this until tiles are given a material var.
 		if(istype(W,/obj/item/stack/tile/carpet))
-			padding_type = "carpet"
+			padding_type = MATERIAL_ID_CARPET
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
-				padding_type = "[M.material.name]"
+				padding_type = [M.material.name
 		if(!padding_type)
-			user << "You cannot pad \the [src] with that."
+			to_chat(user, "<span class='warning'>You cannot pad [src] with that.</span>")
 			return
 		C.use(1)
-		if(!istype(src.loc, /turf))
+		if(!isturf(loc))
 			user.drop_from_inventory(src)
-			src.loc = get_turf(src)
-		user << "You add padding to \the [src]."
+			forceMove(get_turf(src))
+		to_chat(user, "<span class='notice'>You add padding to [src].</span>")
 		add_padding(padding_type)
 		return
 	else if (W.is_wirecutter())
-		if(!padding_material)
-			user << "\The [src] has no padding to remove."
+		if(!material_padding)
+			to_chat(user, "<span class='warning'>[src] has no padding to remove.</span>")
 			return
-		user << "You remove the padding from \the [src]."
-		playsound(src.loc, W.usesound, 50, 1)
+		to_chat(user, "<span class='notice'>You remove the padding from [src].</span>")
+		playsound(src, W.usesound, 50, 1)
 		remove_padding()
 	else
-		..()
+		return ..()

@@ -1,6 +1,7 @@
 //Material "index"
 #define MATINDEX_OBJ_PRIMARY		"OBJ_PRIMARY"		//generic primary material for object
 #define MATINDEX_OBJ_REINFORCING	"OBJ_REINFORCING"	//generic primary reinforcing material for object
+#define MATINDEX_OBJ_PADDING		"OBJ_PADDING"		//generic padding material for stuff like beds/stools/chairs/sofas.
 
 #define MATINDEX_WALL_PRIMARY		"WALL_PRIMARY"		//primary plating of wall
 #define MATINDEX_WALL_REINFORCING	"WALL_REINFORCING"	//reinforcement of wall

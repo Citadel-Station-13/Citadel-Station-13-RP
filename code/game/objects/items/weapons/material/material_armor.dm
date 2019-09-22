@@ -27,39 +27,27 @@ Protectiveness | Armor %
 
 // Putting these at /clothing/ level saves a lot of code duplication in armor/helmets/gauntlets/etc
 /obj/item/clothing
-	var/datum/material/material = null // Why isn't this a datum?
-	var/applies_material_color = TRUE
 	var/unbreakable = FALSE
-	var/default_material = null // Set this to something else if you want material attributes on init.
 	var/material_armor_modifer = 1 // Adjust if you want seperate types of armor made from the same material to have different protectiveness (e.g. makeshift vs real armor)
 
-/obj/item/clothing/New(var/newloc, var/material_key)
-	..(newloc)
-	if(!material_key)
-		material_key = default_material
-	if(material_key) // May still be null if a material was not specified as a default.
-		set_material(material_key)
+/obj/item/clothing/Initialize(mapload, primary_material)
+	if(primary_material)
+		material_primary = primary_material
+	return ..()
 
 /obj/item/clothing/Destroy()
 	processing_objects -= src
 	return ..()
 
-/obj/item/clothing/get_material()
-	return material
 
 // Debating if this should be made an /obj/item/ proc.
-/obj/item/clothing/proc/set_material(var/new_material)
-	material = get_material_by_name(new_material)
-	if(!material)
-		qdel(src)
-	else
-		name = "[material.display_name] [initial(name)]"
-		health = round(material.integrity/10)
-		if(applies_material_color)
-			color = material.icon_colour
-		if(material.products_need_process())
-			processing_objects |= src
-		update_armor()
+/obj/item/clothing/UpdateMaterials()
+	. = ..()
+	name = "[material.display_name] [initial(name)]"
+	health = round(material.integrity/10)
+	if(material.products_need_process())
+		processing_objects |= src
+	update_armor()
 
 // This is called when someone wearing the object gets hit in some form (melee, bullet_act(), etc).
 // Note that this cannot change if someone gets hurt, as it merely reacts to being hit.
@@ -177,10 +165,10 @@ Protectiveness | Armor %
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/suit/armor/material/makeshift/durasteel
-	default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
 
 /obj/item/clothing/suit/armor/material/makeshift/glass
-	default_material = "glass"
+	material_primary = MATERIAL_ID_GLASS
 
 // Used to craft sheet armor, and possibly other things in the Future(tm).
 /obj/item/weapon/material/armor_plating
@@ -255,7 +243,7 @@ Protectiveness | Armor %
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
-	default_material = DEFAULT_WALL_MATERIAL
+	material_primary = MATERIAL_ID_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"
@@ -264,4 +252,4 @@ Protectiveness | Armor %
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/head/helmet/material/makeshift/durasteel
-	default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
