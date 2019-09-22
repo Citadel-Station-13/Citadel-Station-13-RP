@@ -3,8 +3,6 @@
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "fuel_assembly"
 
-	var/material_name
-
 	var/percent_depleted = 1
 	var/list/rod_quantities = list()
 	var/fuel_type = "composite"
@@ -53,14 +51,14 @@
 	return ..()
 
 // Mapper shorthand.
-/obj/item/weapon/fuel_assembly/deuterium/New(var/newloc)
-	..(newloc, "deuterium")
+/obj/item/weapon/fuel_assembly/deuterium
+	material_primary = MATERIAL_ID_DEUTERIUM
 
-/obj/item/weapon/fuel_assembly/tritium/New(var/newloc)
-	..(newloc, "tritium")
+/obj/item/weapon/fuel_assembly/tritium
+	material_primary = MATERIAL_ID_TRITIUM
 
-/obj/item/weapon/fuel_assembly/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/weapon/fuel_assembly/phoron
+	material_primary = MATERIAL_ID_PHORON
 
-/obj/item/weapon/fuel_assembly/supermatter/New(var/newloc)
-	..(newloc, "supermatter")
+/obj/item/weapon/fuel_assembly/supermatter
+	material_primary = MATERIAL_ID_SUPERMATTER

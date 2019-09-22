@@ -1,5 +1,5 @@
 //Todo: add leather and cloth for arbitrary coloured stools.
-var/global/list/stool_cache = list() //haha stool
+GLOBAL_LIST_EMPTY(stool_icon_cache)
 
 /obj/item/weapon/stool
 	name = "stool"
@@ -10,8 +10,7 @@ var/global/list/stool_cache = list() //haha stool
 	throwforce = 10
 	w_class = ITEMSIZE_HUGE
 	var/base_icon = "stool_base"
-	var/datum/material/material
-	var/datum/material/padding_material
+	var/datum/material/material_padding
 
 /obj/item/weapon/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
@@ -38,19 +37,19 @@ var/global/list/stool_cache = list() //haha stool
 	overlays.Cut()
 	// Base icon.
 	var/cache_key = "stool-[material.name]"
-	if(isnull(stool_cache[cache_key]))
+	if(isnull(GLOB.stool_icon_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		I.color = material.icon_colour
-		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+		GLOB.stool_icon_cache[cache_key] = I
+	overlays |= GLOB.stool_icon_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "stool-padding-[padding_material.name]"
-		if(isnull(stool_cache[padding_cache_key]))
+		if(isnull(GLOB.stool_icon_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
 			I.color = padding_material.icon_colour
-			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
+			GLOB.stool_icon_cache[padding_cache_key] = I
+		overlays |= GLOB.stool_icon_cache[padding_cache_key]
 	// Strings.
 	if(padding_material)
 		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
