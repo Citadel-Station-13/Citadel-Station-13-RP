@@ -149,6 +149,6 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 #ifdef TESTING
 	return ..()
 #endif
-	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(rights))
+	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(src, rights))
 		return FALSE
 	return ..()
