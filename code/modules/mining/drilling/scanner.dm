@@ -53,7 +53,6 @@
 	name = "advanced ore detector"
 	desc = "A compact, complex device used to quickly locate ore deep underground in a 5 by 5 area around you."
 	icon_state = "mining-scanner" //thank you eris spriters
-	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
 
@@ -92,7 +91,7 @@
 				if("silver")	ore_type = "silver"
 				if("gold")	ore_type = "gold"
 				if("diamond")	ore_type = "diamond"
-				if("osmium")	ore_type = "platinum"
+				if("platinum")	ore_type = "platinum"
 				if("phoron")	ore_type = "phoron"
 				if("uranium")	ore_type = "uranium"
 				if("hydrogen")	ore_type = "hydrogen"
