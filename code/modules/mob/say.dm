@@ -1,27 +1,27 @@
 /mob/proc/say()
 	return
 
-/mob/verb/whisper(message as text)
+/mob/verb/whisper(message as text|null)
 	set name = "Whisper"
 	set category = "IC"
 
 	usr.say(message,whispering=1)
 
-/mob/verb/say_verb(message as text)
+/mob/verb/say_verb(message as text|null)
 	set name = "Say"
 	set category = "IC"
 
 	set_typing_indicator(FALSE)
 	usr.say(message)
 
-/mob/verb/me_verb(message as text)
+/mob/verb/me_verb(message as message|null)
 	set name = "Me"
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<font color='red'>Speech is currently admin-disabled.</font>"
 		return
-	
+
 	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
 
 	set_typing_indicator(FALSE)
