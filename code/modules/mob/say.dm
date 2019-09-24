@@ -1,20 +1,20 @@
 /mob/proc/say()
 	return
 
-/mob/verb/whisper(message as text|null)
+/mob/verb/whisper(message as text)
 	set name = "Whisper"
 	set category = "IC"
 
 	usr.say(message,whispering=1)
 
-/mob/verb/say_verb(message as text|null)
+/mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
 
 	set_typing_indicator(FALSE)
 	usr.say(message)
 
-/mob/verb/me_verb(message as message|null)
+/mob/verb/me_verb(message as message)
 	set name = "Me"
 	set category = "IC"
 
