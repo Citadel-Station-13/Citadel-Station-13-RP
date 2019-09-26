@@ -87,6 +87,7 @@ NERADA8_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 
 NERADA8_TURF_CREATE(/turf/simulated/mineral)
 NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
+*/
 	//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/nerada8/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
@@ -142,7 +143,65 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
-*/
+
+
+//GROSS COPY PASTED CODE FOR TESTING SHIT, FIX IT LATER OR YOU HAVE LIGMA
+
+/turf/simulated/mineral/update_icon(var/update_neighbors)
+
+	cut_overlays()
+
+	//We are a wall (why does this system work like this??)
+	if(density)
+		if(mineral)
+			name = "[mineral.display_name] deposit"
+		else
+			name = "rock"
+
+		icon = 'icons/turf/walls.dmi'
+		icon_state = "icerock"
+
+		//Apply overlays if we should have borders
+		for(var/direction in cardinal)
+			var/turf/T = get_step(src,direction)
+			if(istype(T) && !T.density)
+				add_overlay(get_cached_border("ice_side",direction,icon,"ice_side"))
+
+			if(archaeo_overlay)
+				add_overlay(archaeo_overlay)
+
+			if(excav_overlay)
+				add_overlay(excav_overlay)
+
+	//We are a sand floor
+	else
+		name = "frosty ground"
+		icon = 'icons/turf/flooring/asteroid.dmi'
+		icon_state = "snowrock"
+
+		if(sand_dug)
+			add_overlay("dug_overlay")
+
+		//Apply overlays if there's space
+		for(var/direction in cardinal)
+			if(istype(get_step(src, direction), /turf/space) && !istype(get_step(src, direction), /turf/space/cracked_asteroid))
+				add_overlay(get_cached_border("asteroid_edge",direction,icon,"asteroid_edges", 0))
+
+			//Or any time
+			else
+				var/turf/T = get_step(src, direction)
+				if(istype(T) && T.density)
+					add_overlay(get_cached_border("ice_side",direction,'icons/turf/walls.dmi',"ice_side"))
+
+		if(overlay_detail)
+			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
+
+		if(update_neighbors)
+			for(var/direction in alldirs)
+				if(istype(get_step(src, direction), /turf/simulated/mineral))
+					var/turf/simulated/mineral/M = get_step(src, direction)
+					M.update_icon()
+
 
 //Unsimulated
 /turf/unsimulated/wall/planetary/nerada8
