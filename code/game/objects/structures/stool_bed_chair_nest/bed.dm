@@ -115,7 +115,7 @@
 		C.use(1)
 		if(!isturf(loc))
 			user.drop_from_inventory(src)
-			forceMove(get_turf(src)
+			forceMove(get_turf(src))
 		to_chat(user, "You add padding to [src].")
 		add_padding(padding_type)
 		return
@@ -125,7 +125,7 @@
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
-		playsound(src.loc, W.usesound, 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		remove_padding()
 
 	else if(istype(W, /obj/item/weapon/grab))

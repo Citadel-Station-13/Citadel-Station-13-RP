@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
-				padding_type = [M.material.name
+				padding_type = [M.material.name]
 		if(!padding_type)
 			to_chat(user, "<span class='warning'>You cannot pad [src] with that.</span>")
 			return
