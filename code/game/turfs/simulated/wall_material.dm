@@ -11,9 +11,9 @@
 /turf/simulated/wall/GetMaterial(index)
 	switch(index)
 		if(MATINDEX_WALL_PRIMARY)
-			return material_primary)
+			return material_primary
 		if(MATINDEX_WALL_REINFORCING)
-			return material_reinforcing)
+			return material_reinforcing
 		if(MATINDEX_WALL_GIRDER)
 			return material_girder
 	return ..()

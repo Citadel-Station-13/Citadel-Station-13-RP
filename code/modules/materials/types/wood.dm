@@ -44,7 +44,7 @@
 
 /datum/material/wood/sif
 	id = MATERIAL_ID_SIFWOOD
-	display_name = "wood
+	display_name = "wood"
 //	stack_type = /obj/item/stack/material/wood/sif
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.

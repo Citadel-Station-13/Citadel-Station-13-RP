@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(table_icon_cache)
 	return TRUE
 
 /obj/structure/table/proc/remove_reinforced(obj/item/weapon/S, mob/user)
-	if(common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound)))
+	if(common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound))
 		RemoveMaterial(MATERIAL_INDEX_REINFORCING)
 
 /obj/structure/table/proc/remove_material(obj/item/weapon/W, mob/user)
