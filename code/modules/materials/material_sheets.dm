@@ -12,12 +12,13 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	material_primary = DEFAULT_WALL_MATERIAL_ID
+	var/material_id = DEFAULT_WALL_MATERIAL_ID		//What it starts out as. INTENTIONALLY NOT MATERIAL_PRIMARY.
 
 	var/perunit = SHEET_MATERIAL_AMOUNT
 
 /obj/item/stack/material/Initialize(mapload)
 	. = ..()
+	AutoSetMaterial(material_id, MATINDEX_OBJ_PRIMARY)
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
@@ -62,7 +63,7 @@
 
 /obj/item/stack/material/attack_self(var/mob/user)
 	if(!material_primary?.build_windows(user, src))
-		..()
+		return ..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -76,90 +77,90 @@
 /obj/item/stack/material/iron
 	name = "iron"
 	icon_state = "sheet-silver"
-	default_type = "iron"
+	material_id = MATERIAL_ID_IRON
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/lead
 	name = "lead"
 	icon_state = "sheet-adamantine"
-	default_type = "lead"
+	material_id = MATERIAL_ID_LEAD
 	apply_colour = 1
 	no_variants = TRUE
 
 /obj/item/stack/material/sandstone
 	name = "sandstone brick"
 	icon_state = "sheet-sandstone"
-	default_type = "sandstone"
+	material_id = MATERIAL_ID_SANDSTONE
 	no_variants = FALSE
 
 /obj/item/stack/material/marble
 	name = "marble brick"
 	icon_state = "sheet-marble"
-	default_type = "marble"
+	material_id = MATERIAL_ID_MARBLE
 	no_variants = FALSE
 
 /obj/item/stack/material/diamond
 	name = "diamond"
 	icon_state = "sheet-diamond"
-	default_type = "diamond"
+	material_id = MATERIAL_ID_DIAMOND
 
 /obj/item/stack/material/uranium
 	name = "uranium"
 	icon_state = "sheet-uranium"
-	default_type = "uranium"
+	material_id = MATERIAL_ID_URANIUM
 	no_variants = FALSE
 
 /obj/item/stack/material/phoron
 	name = "solid phoron"
 	icon_state = "sheet-phoron"
-	default_type = "phoron"
+	material_id = MATERIAL_ID_PHORON
 	no_variants = FALSE
 
 /obj/item/stack/material/plastic
 	name = "plastic"
 	icon_state = "sheet-plastic"
-	default_type = "plastic"
+	material_id = MATERIAL_ID_PLASTIC
 	no_variants = FALSE
 
 /obj/item/stack/material/gold
 	name = "gold"
 	icon_state = "sheet-gold"
-	default_type = "gold"
+	material_id = MATERIAL_ID_GOLD
 	no_variants = FALSE
 
 /obj/item/stack/material/silver
 	name = "silver"
 	icon_state = "sheet-silver"
-	default_type = "silver"
+	material_id = MATERIAL_ID_SILVER
 	no_variants = FALSE
 
 //Valuable resource, cargo can sell it.
 /obj/item/stack/material/platinum
 	name = "platinum"
 	icon_state = "sheet-adamantine"
-	default_type = "platinum"
+	material_id = MATERIAL_ID_PLATNIUM
 	no_variants = FALSE
 
 //Extremely valuable to Research.
 /obj/item/stack/material/mhydrogen
 	name = "metallic hydrogen"
 	icon_state = "sheet-mythril"
-	default_type = "mhydrogen"
+	material_id = MATERIAL_ID_MHYDROGEN
 	no_variants = FALSE
 
 //Fuel for MRSPACMAN generator.
 /obj/item/stack/material/tritium
 	name = "tritium"
 	icon_state = "sheet-silver"
-	default_type = "tritium"
+	material_id = MATERIAL_ID_TRITIUM
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/osmium
 	name = "osmium"
 	icon_state = "sheet-silver"
-	default_type = "osmium"
+	material_id = MATERIAL_ID_OSMIUM
 	apply_colour = 1
 	no_variants = FALSE
 
@@ -168,54 +169,55 @@
 /obj/item/stack/material/deuterium
 	name = "deuterium"
 	icon_state = "sheet-silver"
-	default_type = "deuterium"
+	material_id = MATERIAL_ID_DEUTERIUM
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = "steel"
 	icon_state = "sheet-metal"
-	default_type = DEFAULT_WALL_MATERIAL
+	material_id = MATERIAL_ID_STEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
-	name = MAT_STEELHULL
-	default_type = MAT_STEELHULL
+	name = "steel hull"
+	material_id = MATERIAL_ID_STEEL_HULL
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"
 	icon_state = "sheet-plasteel"
-	default_type = "plasteel"
+	material_id = MATERIAL_ID_PLASTEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/plasteel/hull
-	name = MAT_PLASTEELHULL
-	default_type = MAT_PLASTEELHULL
+	name = "plasteel hull"
+	material_id = MATERIAL_ID_PLASTEEL_HULL
 
 /obj/item/stack/material/durasteel
 	name = "durasteel"
 	icon_state = "sheet-durasteel"
 	item_state = "sheet-metal"
-	default_type = "durasteel"
+	material_id = MATERIAL_ID_DURASTEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/durasteel/hull
-	name = "MAT_DURASTEELHULL"
+	name = "durasteel hull"
+	material_id = MATERIAL_ID_DURASTEEL_HULL
 
 /obj/item/stack/material/wood
 	name = "wooden plank"
 	icon_state = "sheet-wood"
-	default_type = MAT_WOOD
+	material_id = MATERIAL_ID_WOOD
 
 /obj/item/stack/material/wood/sif
 	name = "alien wooden plank"
 	color = "#0099cc"
-	default_type = MAT_SIFWOOD
+	material_id = MATERIAL_ID_SIFWOOD
 
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
-	default_type = MAT_LOG
+	material_id = MATERIAL_ID_LOG
 	no_variants = FALSE
 	color = "#824B28"
 	max_amount = 25
@@ -225,7 +227,7 @@
 
 /obj/item/stack/material/log/sif
 	name = "alien log"
-	default_type = MAT_SIFLOG
+	material_id = MATERIAL_ID_SIFLOG
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
 
@@ -255,44 +257,44 @@
 /obj/item/stack/material/cloth
 	name = "cloth"
 	icon_state = "sheet-cloth"
-	default_type = "cloth"
+	material_id = MATERIAL_ID_CLOTH
 	no_variants = FALSE
 
 /obj/item/stack/material/cardboard
 	name = "cardboard"
 	icon_state = "sheet-card"
-	default_type = "cardboard"
+	material_id = MATERIAL_ID_CARDBOARD
 	no_variants = FALSE
 
 /obj/item/stack/material/snow
 	name = "snow"
 	desc = "The temptation to build a snowman rises."
 	icon_state = "sheet-snow"
-	default_type = "snow"
+	material_id = MATERIAL_ID_SNOW
 
 /obj/item/stack/material/snowbrick
 	name = "snow brick"
 	desc = "For all of your igloo building needs."
 	icon_state = "sheet-snowbrick"
-	default_type = "packed snow"
+	material_id = MATERIAL_ID_SNOWBRICK
 
 /obj/item/stack/material/leather
 	name = "leather"
 	desc = "The by-product of mob grinding."
 	icon_state = "sheet-leather"
-	default_type = "leather"
+	material_id = MATERIAL_ID_LEATHER
 	no_variants = FALSE
 
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"
-	default_type = "glass"
+	material_id = MATERIAL_ID_GLASS
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/reinforced
 	name = "reinforced glass"
 	icon_state = "sheet-rglass"
-	default_type = "rglass"
+	material_id = MATERIAL_ID_RGLASS
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronglass
@@ -300,7 +302,7 @@
 	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures"
 	singular_name = "borosilicate glass sheet"
 	icon_state = "sheet-phoronglass"
-	default_type = "borosilicate glass"
+	material_id = MATERIAL_ID_PHORON_GLASS
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronrglass
@@ -308,5 +310,5 @@
 	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
 	singular_name = "reinforced borosilicate glass sheet"
 	icon_state = "sheet-phoronrglass"
-	default_type = "reinforced borosilicate glass"
+	material_id = MATERIAL_ID_PHORON_RGLASS
 	no_variants = FALSE

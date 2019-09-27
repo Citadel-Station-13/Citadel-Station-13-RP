@@ -83,10 +83,11 @@
 /turf/simulated/wall/proc/try_touch(var/mob/user, var/rotting)
 
 	if(rotting)
-		if(reinf_material)
-			to_chat(user, "<span class='danger'>\The [reinf_material.display_name] feels porous and crumbly.</span>")
+		if(material_reinforcing)
+			to_chat(user, "<span class='danger'>[material_reinforcing.display_name] feels porous and crumbly.</span>")
 		else
-			to_chat(user, "<span class='danger'>\The [material.display_name] crumbles under your touch!</span>")
+			if(material_primary)
+				to_chat(user, "<span class='danger'>[material_primary.display_name] crumbles under your touch!</span>")
 			dismantle_wall()
 			return 1
 
@@ -107,7 +108,7 @@
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
 	if (HULK in user.mutations)
-		if (rotting || !prob(material.hardness))
+		if (rotting || !prob(material_primary?.hardness))
 			success_smash(user)
 		else
 			fail_smash(user)
@@ -127,10 +128,10 @@
 	if(rotting)
 		return success_smash(user)
 
-	if(reinf_material)
-		if((wallbreaker == 2) || (damage >= max(material.hardness,reinf_material.hardness)))
+	if(material_reinforcing)
+		if((wallbreaker == 2) || (damage >= max(material_primary?.hardness,material_reinforcing.hardness)))
 			return success_smash(user)
-	else if(damage >= material.hardness)
+	else if(damage >= material_primary?.hardness)
 		return success_smash(user)
 	return fail_smash(user)
 
@@ -242,9 +243,9 @@
 		return
 
 	// Basic dismantling.
-	if(isnull(construction_stage) || !reinf_material)
+	if(isnull(construction_stage) || !material_reinforcing)
 
-		var/cut_delay = 60 - material.cut_delay
+		var/cut_delay = 60 - material_primary?.cut_delay
 		var/dismantle_verb
 		var/dismantle_sound
 

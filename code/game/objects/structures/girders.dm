@@ -10,28 +10,26 @@
 	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
-	var/datum/material/material_girder = DEFAULT_WALL_MATERIAL_ID
+	material_primary = DEFAULT_WALL_MATERIAL_ID
 	var/datum/material/material_reinforcing
 	var/reinforcing = 0
-	var/applies_material_colour = 1
 
-/obj/structure/girder/Initialize(mapload, priamry_material)
+/obj/structure/girder/Initialize(mapload, primary_material)
+	if(primary_material)
+		material_primary = primary_material
 	. = ..()
-	AutoSetMaterial(material_girder || primary_material, MATERIAL_PRIMARY)
 
 /obj/structure/girder/SetMaterial(datum/material/M, index, updating)
-	if(index == MATERIAL_PRIMARY)
-		material_girder = M
 	else if(index == MATERIAL_REINFORCING)
 		material_reinforcing = M
 	return ..()
 
 /obj/structure/girder/UpdateMaterials()
 	name = "[girder_material.display_name] [initial(name)]"
-	max_health = round(girder_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
+	max_health = round(material_primary?.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
 	health = max_health
 	displaced_health = round(max_health/4)
-	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
+	if(material_priamry?.products_need_process()) //Am I radioactive or some other? Process me!
 		processing_objects |= src
 	else if(src in processing_objects) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
 		processing_objects -= src
@@ -39,17 +37,11 @@
 
 /obj/structure/girder/GetMaterial(index)
 	switch(index)
-		if(MATERIAL_PRIMARY)
-			return material_girder
 		if(MATERIAL_REINFORCING)
 			return material_reinforcing
-	CRASH("Invalid index!")
+	return ..()
 
 /obj/structure/girder/update_icon()
-	if(applies_material_colour)
-		add_atom_colour(material_girder.icon_colour, COLOUR_PRIORITY_FIXED)
-	else
-		remove_atom_colour(COLOUR_PRIORITY_FIXED)
 	if(anchored)
 		icon_state = "girder"
 	else
@@ -57,7 +49,7 @@
 	return ..()
 
 /obj/structure/girder/Destroy()
-	if(girder_material.products_need_process())
+	if(material_primary?.products_need_process())
 		processing_objects -= src
 	. = ..()
 
@@ -67,7 +59,9 @@
 		return
 
 /obj/structure/girder/proc/radiate()
-	var/total_radiation = girder_material.radioactivity + (reinf_material ? reinf_material.radioactivity / 2 : 0)
+	if(!material_primary)
+		return
+	var/total_radiation = material_primary.radioactivity + (material_reinforcing?.radioactivity / 2)
 	if(!total_radiation)
 		return
 
@@ -80,12 +74,12 @@
 	health = 50
 	cover = 25
 
-/obj/structure/girder/displaced/New(var/newloc, var/material_key)
-	..(newloc, material_key)
+/obj/structure/girder/displaced/Initialize(mapload, material_primary)
+	. = ..()
 	displace()
 
 /obj/structure/girder/proc/displace()
-	name = "displaced [girder_material.display_name] [initial(name)]"
+	name = "displaced [material_primary.display_name] [initial(name)]"
 	icon_state = "displaced"
 	anchored = 0
 	health = (displaced_health - round(current_damage / 4))
@@ -96,7 +90,7 @@
 		return 0
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
-	spawn(1) dismantle()
+	dismantle()
 	return 1
 
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
@@ -111,8 +105,8 @@
 	if(!istype(Proj, /obj/item/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
 
-	else if(girder_material && girder_material.reflectivity >= 0.5) // Reflect lasers.
-		var/new_damage = damage * girder_material.reflectivity
+	else if(material_primary?.reflectivity >= 0.5) // Reflect lasers.
+		var/new_damage = damage * material_primary.reflectivity
 		var/outgoing_damage = damage - new_damage
 		damage = round(new_damage)
 		Proj.damage = outgoing_damage
@@ -141,19 +135,19 @@
 	dismantle()
 
 /obj/structure/girder/proc/reset_girder()
-	name = "[girder_material.display_name] [initial(name)]"
+	UpdateMaterials()
 	anchored = 1
 	cover = initial(cover)
 	health = min(max_health - current_damage,max_health)
 	state = 0
 	icon_state = initial(icon_state)
 	reinforcing = 0
-	if(reinf_material)
+	if(material_reinforcing)
 		reinforce_girder()
 
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && state == 0)
-		if(anchored && !reinf_material)
+		if(anchored && !material_reinforcing)
 			playsound(src, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 			if(do_after(user,(35 + round(max_health/50)) * W.toolspeed))
@@ -186,7 +180,7 @@
 				if(!src) return
 				to_chat(user, "<span class='notice'>You unsecured the support struts!</span>")
 				state = 1
-		else if(anchored && !reinf_material)
+		else if(anchored && !material_reinforcing)
 			playsound(src, W.usesound, 100, 1)
 			reinforcing = !reinforcing
 			to_chat(user, "<span class='notice'>\The [src] can now be [reinforcing? "reinforced" : "constructed"]!</span>")
@@ -197,8 +191,8 @@
 		if(do_after(user,40 * W.toolspeed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
-			reinf_material.place_dismantled_product(get_turf(src))
-			reinf_material = null
+			material_reinforcing.place_dismantled_product(get_turf(src))
+			RemoveMaterial(MATINDEX_OBJ_REINFORCING)
 			reset_girder()
 
 	else if(W.is_crowbar() && state == 0 && anchored)
@@ -210,7 +204,7 @@
 			displace()
 
 	else if(istype(W, /obj/item/stack/material))
-		if(reinforcing && !reinf_material)
+		if(reinforcing && !material_reinforcing)
 			if(!reinforce_with_material(W, user))
 				return ..()
 		else
@@ -229,7 +223,7 @@
 
 
 /obj/structure/girder/proc/construct_wall(obj/item/stack/material/S, mob/user)
-	var/amount_to_use = reinf_material ? 1 : 2
+	var/amount_to_use = material_reinforcing ? 1 : 2
 	if(S.get_amount() < amount_to_use)
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
@@ -259,7 +253,7 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.ChangeTurf(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_material(M, reinf_material, girder_material)
+	T.SetAllWallMaterials(material_primary, material_reinforcing, M)
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -267,7 +261,7 @@
 	return 1
 
 /obj/structure/girder/proc/reinforce_with_material(obj/item/stack/material/S, mob/user) //if the verb is removed this can be renamed.
-	if(reinf_material)
+	if(GetMaterial(MATINDEX_OBJ_REINFORCING))
 		to_chat(user, "<span class='notice'>\The [src] is already reinforced.</span>")
 		return 0
 
@@ -285,19 +279,19 @@
 		return 1 //don't call parent attackby() past this point
 	to_chat(user, "<span class='notice'>You added reinforcement!</span>")
 
-	reinf_material = M
+	SetMaterial(M, MATINDEX_OBJ_REINFORCING)
 	reinforce_girder()
 	return 1
 
 /obj/structure/girder/proc/reinforce_girder()
-	cover = reinf_material.hardness
-	health = health + round(reinf_material.integrity/2)
+	cover = material_reinforcing.hardness
+	health = health + round(material_reinforcing.integrity/2)
 	state = 2
 	icon_state = "reinforced"
 	reinforcing = 0
 
 /obj/structure/girder/proc/dismantle()
-	girder_material.place_dismantled_product(get_turf(src))
+	material_primary?.place_dismantled_product(get_turf(src))
 	qdel(src)
 
 /obj/structure/girder/attack_hand(mob/user as mob)
@@ -330,10 +324,11 @@
 	icon_state= "cultgirder"
 	health = 250
 	cover = 70
-	girder_material = "cult"
+	material_primary = MATERIAL_ID_CULT
 	applies_material_colour = 0
 
 /obj/structure/girder/cult/update_icon()
+	. = ..()
 	if(anchored)
 		icon_state = "cultgirder"
 	else
@@ -402,7 +397,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = name_to_material[the_rcd.material_to_use]
-			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
+			new_T.SetAllWallMaterials(material_primary, the_rcd.make_rwalls? M : null, M)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

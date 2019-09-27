@@ -198,9 +198,10 @@
 			O.loc = src
 
 	clear_plants()
-	RemoveMaterial(MATERIAL_PRIMARY)
-	RemoveMaterial(MATERIAL_REINFORCING)
-	RemoveMaterial(MATERIAL_GIRDER)
+	RemoveMaterial(MATINDEX_WALL_PRIMARY, FALSE)
+	RemoveMaterial(MATINDEX_WALL_REINFORCING, FALSE)
+	RemoveMaterial(MATINDEX_WALL_GIRDER, FALSE)
+	UpdateMaterials()
 	update_connections(1)
 
 	ChangeTurf(/turf/simulated/floor/plating)

@@ -1,25 +1,25 @@
 /turf/simulated/wall/SetMaterial(datum/material/D, index, updating)
 	switch(index)
-		if(MATERIAL_PRIMARY)
+		if(MATINDEX_WALL_PRIMARY)
 			material_primary = D
-		if(MATERIAL_REINFORCING)
+		if(MATINDEX_WALL_REINFORCING)
 			material_reinforcing = D
-		if(MATERIAL_GIRDER)
+		if(MATINDEX_WALL_GIRDER)
 			material_girder = D
 	return ..()
 
 /turf/simulated/wall/GetMaterial(index)
 	switch(index)
-		if(MATERIAL_PRIMARY)
+		if(MATINDEX_WALL_PRIMARY)
 			return material_primary)
-		if(MATERIAL_REINFORCING)
+		if(MATINDEX_WALL_REINFORCING)
 			return material_reinforcing)
-		if(MATERIAL_GIRDER)
+		if(MATINDEX_WALL_GIRDER)
 			return material_girder
-	CRASH("Invalid index")
+	return ..()
 
 /turf/simulated/wall/UpdateMaterials()
-1	if(material_reinforcing)
+	if(material_reinforcing)
 		construction_stage = 6
 	else
 		construction_stage = null
@@ -45,3 +45,9 @@
 	radiation_repository.resistance_cache.Remove(src)
 	update_connections(1)
 	return ..()
+
+/turf/simulated/wall/SetAllWallMaterials(primary, reinforcing, girder)
+	AutoSetMaterial(primary, MATINDEX_WALL_PRIMARY, FALSE)
+	AutoSetMaterial(reinforcing, MATINDEX_WALL_REINFORCING, FALSE)
+	AutoSetMaterial(girder, MATINDEX_WALL_GIRDER, FALSE)
+	UpdateMaterials()
