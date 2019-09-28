@@ -28,8 +28,8 @@
 	active_power_usage = 5000
 
 	// Amount of materials we can store total
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
+	var/list/materials = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
+	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
 
 	var/obj/item/weapon/circuitboard/copy_board // Inserted board
 
@@ -61,8 +61,8 @@
 	var/mb_rating = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		mb_rating += M.rating
-	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 16000
-	storage_capacity["glass"] = mb_rating  * 8000
+	storage_capacity[MATERIAL_ID_STEEL] = mb_rating  * 16000
+	storage_capacity[MATERIAL_ID_GLASS] = mb_rating  * 8000
 	var/T = 0
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		T += M.rating
@@ -209,9 +209,9 @@
 	material = lowertext(material)
 	var/mattype
 	switch(material)
-		if(DEFAULT_WALL_MATERIAL)
+		if(MATERIAL_ID_STEEL)
 			mattype = /obj/item/stack/material/steel
-		if("glass")
+		if(MATERIAL_ID_GLASS)
 			mattype = /obj/item/stack/material/glass
 		else
 			return

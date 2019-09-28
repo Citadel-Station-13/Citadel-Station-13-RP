@@ -36,7 +36,7 @@
 
 // Material definition and procs follow.
 /datum/material
-	var/id = MATERIAL_ID_DEFAULT									//Unique name for code lookup
+	var/id = MATERIAL_ID_ABSTRACT									//Unique name for code lookup
 
 	var/display_name                      // Prettier name for display.
 	var/use_name
