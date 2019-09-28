@@ -10,7 +10,7 @@
 	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
-	material_primary = DEFAULT_WALL_MATERIAL_ID
+	material_primary = MATERIAL_ID_STEEL_ID
 	var/datum/material/material_reinforcing
 	var/reinforcing = 0
 

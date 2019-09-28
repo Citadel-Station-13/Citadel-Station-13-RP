@@ -3,14 +3,14 @@
 	desc = "Cheaper than whiny non-digital assistants."
 	id = "pda"
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	materials = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 	build_path = /obj/item/device/pda
 	sort_string = "VAAAA"
 
 // Cartridges
 /datum/design/item/pda_cartridge
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	materials = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /datum/design/item/pda_cartridge/AssembleDesignName()
 	..()

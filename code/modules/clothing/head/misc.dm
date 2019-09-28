@@ -40,7 +40,7 @@
 	name = "magnetic 'pin'"
 	addblends = null
 	desc = "Finally, a hair pin even a Morpheus chassis can use."
-	matter = list(DEFAULT_WALL_MATERIAL = 10)
+	matter = list(MATERIAL_ID_STEEL = 10)
 
 /obj/item/clothing/head/pin/flower
 	name = "red flower pin"

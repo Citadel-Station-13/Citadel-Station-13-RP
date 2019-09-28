@@ -9,8 +9,8 @@
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 
-	var/datum/material/material_primary = DEFAULT_WALL_MATERIAL_ID
-	var/datum/material/material_girder = DEFAULT_WALL_MATERIAL_ID
+	var/datum/material/material_primary = MATERIAL_ID_STEEL_ID
+	var/datum/material/material_girder = MATERIAL_ID_STEEL_ID
 	var/datum/material/material_reinforcing
 
 	var/damage = 0

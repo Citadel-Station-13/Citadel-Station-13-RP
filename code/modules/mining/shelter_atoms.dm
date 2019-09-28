@@ -147,7 +147,7 @@
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/New()
-	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	material = get_material_by_name(MATERIAL_ID_STEEL)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	..()

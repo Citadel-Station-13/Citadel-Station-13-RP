@@ -40,7 +40,7 @@
 	item_state = "gun"
 	flags =  CONDUCT
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MATERIAL_ID_STEEL = 2000)
 	w_class = ITEMSIZE_NORMAL
 	throwforce = 5
 	throw_speed = 4

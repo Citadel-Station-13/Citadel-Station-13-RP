@@ -22,7 +22,7 @@
 	var/force_divisor = 0.5
 	var/thrown_force_divisor = 0.5
 	var/dulled_divisor = 0.5	//Just drops the damage by half
-	material_primary = DEFAULT_WALL_MATERIAL
+	material_primary = MATERIAL_ID_STEEL
 	var/drops_debris = 1
 
 /obj/item/weapon/material/Initialize(mapload, primary_material)

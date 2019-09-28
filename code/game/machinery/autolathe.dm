@@ -154,7 +154,7 @@
 			to_chat(user, "\The [speedloader] is too hazardous to put back into the autolathe while there's ammunition inside of it!")
 			return
 		else
-			speedloader.matter = list(DEFAULT_WALL_MATERIAL = 75) // It's just a hunk of scrap metal now.
+			speedloader.matter = list(MATERIAL_ID_STEEL = 75) // It's just a hunk of scrap metal now.
 	if(istype(O,/obj/item/ammo_magazine)) // This was just for immersion consistency with above.
 		var/obj/item/ammo_magazine/mag = O
 		if(mag.stored_ammo)

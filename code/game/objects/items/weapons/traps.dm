@@ -9,7 +9,7 @@
 	throwforce = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 18750)
+	matter = list(MATERIAL_ID_STEEL = 18750)
 	var/deployed = 0
 
 /obj/item/weapon/beartrap/suicide_act(mob/user)

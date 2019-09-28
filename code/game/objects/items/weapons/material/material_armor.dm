@@ -157,7 +157,7 @@ Protectiveness | Armor %
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MATERIAL_ID_STEEL
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"

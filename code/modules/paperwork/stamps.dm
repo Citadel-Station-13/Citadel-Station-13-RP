@@ -9,7 +9,7 @@
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 7
 	throw_range = 15
-	matter = list(DEFAULT_WALL_MATERIAL = 60)
+	matter = list(MATERIAL_ID_STEEL = 60)
 	pressure_resistance = 2
 	attack_verb = list("stamped")
 

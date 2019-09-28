@@ -246,7 +246,7 @@ GLOBAL_LIST_EMPTY(table_icon_cache)
 	if(full_return || prob(20))
 		new /obj/item/stack/material/steel(src.loc)
 	else
-		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
+		var/datum/material/M = get_material_by_name(MATERIAL_ID_STEEL)
 		S = M.place_shard(loc)
 		if(S)
 			shards += S

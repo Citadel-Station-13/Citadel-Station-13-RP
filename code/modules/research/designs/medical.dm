@@ -1,5 +1,5 @@
 /datum/design/item/medical
-	materials = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 20)
+	materials = list(MATERIAL_ID_STEEL = 30, MATERIAL_ID_GLASS = 20)
 
 /datum/design/item/medical/AssembleDesignName()
 	..()
@@ -9,7 +9,7 @@
 	desc = "A hand-held scanner able to diagnose robotic injuries."
 	id = "robot_scanner"
 	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 2, TECH_ENGINEERING = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
+	materials = list(MATERIAL_ID_STEEL = 500, MATERIAL_ID_GLASS = 200)
 	build_path = /obj/item/device/robotanalyzer
 	sort_string = "MACFA"
 
@@ -49,7 +49,7 @@
 	desc = "A cryostasis beaker that allows for chemical storage without reactions. Can hold up to 50 units."
 	id = "splitbeaker"
 	req_tech = list(TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000)
+	materials = list(MATERIAL_ID_STEEL = 3000)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/noreact
 	sort_string = "MADAA"
 
@@ -58,7 +58,7 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology and Element Cuban combined with the Compound Pete. Can hold up to 300 units."
 	id = "bluespacebeaker"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, "phoron" = 3000, "diamond" = 500)
+	materials = list(MATERIAL_ID_STEEL = 3000, MATERIAL_ID_PHORON = 3000, MATERIAL_ID_DIAMOND = 500)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/bluespace
 	sort_string = "MADAB"
 
@@ -66,7 +66,7 @@
 	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
 	id = "nanopaste"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 7000)
+	materials = list(MATERIAL_ID_STEEL = 7000, MATERIAL_ID_GLASS = 7000)
 	build_path = /obj/item/stack/nanopaste
 	sort_string = "MBAAA"
 
@@ -75,7 +75,7 @@
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks basic and could be improved."
 	id = "scalpel_laser1"
 	req_tech = list(TECH_BIO = 2, TECH_MATERIAL = 2, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500)
+	materials = list(MATERIAL_ID_STEEL = 12500, MATERIAL_ID_GLASS = 7500)
 	build_path = /obj/item/weapon/surgical/scalpel/laser1
 	sort_string = "MBBAA"
 
@@ -84,7 +84,7 @@
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks somewhat advanced."
 	id = "scalpel_laser2"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 4, TECH_MAGNET = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2500)
+	materials = list(MATERIAL_ID_STEEL = 12500, MATERIAL_ID_GLASS = 7500, MATERIAL_ID_SILVER = 2500)
 	build_path = /obj/item/weapon/surgical/scalpel/laser2
 	sort_string = "MBBAB"
 
@@ -93,7 +93,7 @@
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks to be the pinnacle of precision energy cutlery!"
 	id = "scalpel_laser3"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2000, "gold" = 1500)
+	materials = list(MATERIAL_ID_STEEL = 12500, MATERIAL_ID_GLASS = 7500, MATERIAL_ID_SILVER = 2000, MATERIAL_ID_GOLD = 1500)
 	build_path = /obj/item/weapon/surgical/scalpel/laser3
 	sort_string = "MBBAC"
 
@@ -102,7 +102,7 @@
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
 	id = "scalpel_manager"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 7, TECH_MAGNET = 5, TECH_DATA = 4)
-	materials = list (DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 1500, "gold" = 1500, "diamond" = 750)
+	materials = list (MATERIAL_ID_STEEL = 12500, MATERIAL_ID_GLASS = 7500, MATERIAL_ID_SILVER = 1500, MATERIAL_ID_GOLD = 1500, MATERIAL_ID_DIAMOND = 750)
 	build_path = /obj/item/weapon/surgical/scalpel/manager
 	sort_string = "MBBAD"
 
@@ -111,7 +111,7 @@
 	desc = "A miracle of modern science, this tool rapidly knits together bone, without the need for bone gel."
 	id = "bone_clamp"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_DATA = 4)
-	materials = list (DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2500)
+	materials = list (MATERIAL_ID_STEEL = 12500, MATERIAL_ID_GLASS = 7500, MATERIAL_ID_SILVER = 2500)
 	build_path = /obj/item/weapon/surgical/bone_clamp
 	sort_string = "MBBAE"
 
@@ -120,7 +120,7 @@
 	desc = "A more advanced version of the regular roller bed, with inbuilt surgical stabilisers and an improved folding system."
 	id = "roller_bed"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 3, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "phoron" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 2000, MATERIAL_ID_PHORON = 2000)
 	build_path = /obj/item/roller/adv
 	sort_string = "MBBAF"
 
@@ -129,7 +129,7 @@
 	desc = "A prototype version of the regular health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels."
 	id = "improved_analyzer"
 	req_tech = list(TECH_MAGNET = 5, TECH_BIO = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 1500)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1000, MATERIAL_ID_GOLD = 1500)
 	build_path = /obj/item/device/healthanalyzer/improved
 	sort_string = "MBBAG"
 
@@ -138,7 +138,7 @@
 	desc = "A prototype version of the improved health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites"
 	id = "advanced_analyzer"
 	req_tech = list(TECH_MAGNET = 6, TECH_BIO = 7, TECH_PHORON = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1250, "gold" = 1750, "uranium" = 1000, "plastic" = 500)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1250, MATERIAL_ID_GOLD = 1750, MATERIAL_ID_URANIUM = 1000, "plastic" = 500)
 	build_path = /obj/item/device/healthanalyzer/advanced
 	sort_string = "MBBAH"
 
@@ -147,12 +147,12 @@
 	desc = "A prototype version of the advanced health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites. This analyzer even picks up chemicals in the patient's stomach."
 	id = "phasic_analyzer"
 	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1500, "gold" = 2000, "uranium" = 1250, "diamond" = 750, "phoron" = 500, "plastic" = 1000, "osmium" = 500)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1500, MATERIAL_ID_GOLD = 2000, MATERIAL_ID_URANIUM = 1250, MATERIAL_ID_DIAMOND = 750, MATERIAL_ID_PHORON = 500, "plastic" = 1000, MATERIAL_ID_OSMIUM = 500)
 	build_path = /obj/item/device/healthanalyzer/phasic
 	sort_string = "MBBAI"
 
 /datum/design/item/implant
-	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	materials = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /datum/design/item/implant/AssembleDesignName()
 	..()
@@ -178,7 +178,7 @@
 	id = "dronebrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 5, TECH_DATA = 4)
 	build_type = PROTOLATHE | PROSFAB
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 500)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1000, MATERIAL_ID_GOLD = 500)
 	build_path = /obj/item/device/mmi/digital/robot
 	category = "Misc"
 	sort_string = "VACAC"
@@ -188,7 +188,7 @@
 	id = "posibrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 6, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	build_type = PROTOLATHE | PROSFAB
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 500, "phoron" = 500, "diamond" = 100)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1000, MATERIAL_ID_GOLD = 500, MATERIAL_ID_PHORON = 500, MATERIAL_ID_DIAMOND = 100)
 	build_path = /obj/item/device/mmi/digital/posibrain
 	category = "Misc"
 	sort_string = "VACAB"
@@ -198,7 +198,7 @@
 	id = "mmi"
 	req_tech = list(TECH_DATA = 2, TECH_BIO = 3)
 	build_type = PROTOLATHE | PROSFAB
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
+	materials = list(MATERIAL_ID_STEEL = 1000, MATERIAL_ID_GLASS = 500)
 	build_path = /obj/item/device/mmi
 	category = "Misc"
 	sort_string = "VACBA"

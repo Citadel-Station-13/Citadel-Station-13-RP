@@ -24,7 +24,7 @@
 	else
 		construction_stage = null
 	if(!material_primary)
-		AutoSetMaterial(DEFAULT_WALL_MATERIAL_ID, updating = FALSE)
+		AutoSetMaterial(MATERIAL_ID_STEEL_ID, updating = FALSE)
 	if(material_primary)
 		explosion_resistance = material_primary.explosion_resistance
 	if(material_reinforcing && material_reinforcing.explosion_resistance > explosion_resistance)
