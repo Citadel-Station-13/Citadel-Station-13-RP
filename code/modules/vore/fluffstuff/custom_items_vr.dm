@@ -1629,8 +1629,8 @@ END OF CITADEL CHANGES */
 	//force_wielded = 0.05 //Stings, but does jack shit for damage, provided you don't hit someone 100 times. 1 damage with hardness of 60.
 	force_divisor = 0.05 //Required in order for the X attacks Y message to pop up.
 	unwielded_force_divisor = 1 // One here, too.
-	applies_material_colour = 0
-	unbreakable = 1
+	material_usage_flags = NONE
+	unbreakable = TRUE
 	base_icon = "riding_crop"
 	icon_state = "riding_crop0"
 	attack_verb = list("cropped","spanked","swatted","smacked","peppered")

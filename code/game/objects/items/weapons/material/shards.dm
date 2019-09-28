@@ -13,6 +13,8 @@
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
 	default_material = "glass"
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR | USE_PRIMARY_MATERIAL_OPACITY
+	var/shard_visual_size = "large"
 	unbreakable = 1 //It's already broken.
 	drops_debris = 0
 
@@ -22,35 +24,33 @@
 	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>")
 	return (BRUTELOSS)
 
-/obj/item/weapon/material/shard/set_material(var/new_material)
-	..(new_material)
-	if(!istype(material))
-		return
-
-	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
+/obj/item/ewapon/material/shard/Initialize(mapload)
+	. = ..()
+	size = pick("large", "medium", "small")
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
-	update_icon()
 
-	if(material.shard_type)
-		name = "[material.display_name] [material.shard_type]"
-		desc = "A small piece of [material.display_name]. It looks sharp, you wouldn't want to step on it barefoot. Could probably be used as ... a throwing weapon?"
-		switch(material.shard_type)
+/obj/item/weapon/material/shard/UpdateMaterials()
+	. = ..()
+	if(material_primary)
+		if(material_primary.shard_icon)
+			icon_state = "[material_primary.shard_icon][shard_visual_size]"
+		else
+			icon_state = initial(icon_state)
+
+/obj/item/weapon/material/shard/UpdateDescriptions()
+	. = ..()
+	if(material_primary)
+		name = "[material_primary.display_name] [material_primary.shard_type || "shard"]"
+		desc = "A small piece of [material_primary.display_name]. It looks sharp, you wouldn't want to step on it barefoot. Could probably be used as a ... a throwing weapon?"
+		switch(material_primary.shard_type)
 			if(SHARD_SPLINTER, SHARD_SHRAPNEL)
 				gender = PLURAL
 			else
 				gender = NEUTER
 	else
-		qdel(src)
-
-/obj/item/weapon/material/shard/update_icon()
-	if(material)
-		color = material.icon_colour
-		// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
-		alpha = 255 * (1 - (1 - material.opacity)*(1 - material.opacity))
-	else
-		color = "#ffffff"
-		alpha = 255
+		name = initial(name)
+		desc = initial(desc)
 
 /obj/item/weapon/material/shard/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/weldingtool) && material.shard_can_repair)
@@ -101,8 +101,8 @@
 			return
 
 // Preset types - left here for the code that uses them
-/obj/item/weapon/material/shard/shrapnel/New(loc)
-	..(loc, "steel")
+/obj/item/weapon/material/shard/shrapnel
+	material_primary = MATERIAL_ID_STEEL
 
-/obj/item/weapon/material/shard/phoron/New(loc)
-	..(loc, "phglass")
+/obj/item/weapon/material/shard/phoron
+	material_id = MATERIAL_ID_PHORONGLASS

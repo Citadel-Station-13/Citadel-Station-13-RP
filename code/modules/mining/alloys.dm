@@ -9,7 +9,7 @@
 	var/metaltag
 
 /datum/alloy/durasteel
-	metaltag = "durasteel"
+	metaltag = MATERIAL_ID_DURASTEEL
 	requires = list(
 		"diamond" = 1,
 		"platinum" = 1,
@@ -20,7 +20,7 @@
 	product = /obj/item/stack/material/durasteel
 
 /datum/alloy/plasteel
-	metaltag = "plasteel"
+	metaltag = MATERIAL_ID_PLASTEEL
 	requires = list(
 		"platinum" = 1,
 		"carbon" = 2,
@@ -30,7 +30,7 @@
 	product = /obj/item/stack/material/plasteel
 
 /datum/alloy/steel
-	metaltag = DEFAULT_WALL_MATERIAL
+	metaltag = MATERIAL_ID_STEEL
 	requires = list(
 		"carbon" = 1,
 		"hematite" = 1
@@ -38,7 +38,7 @@
 	product = /obj/item/stack/material/steel
 
 /datum/alloy/borosilicate
-	metaltag = "borosilicate glass"
+	metaltag = MATERIAL_ID_PHORONGLASS
 	requires = list(
 		"platinum" = 1,
 		"sand" = 2

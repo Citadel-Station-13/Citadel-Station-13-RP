@@ -23,7 +23,7 @@
 
 /datum/material/wood/log
 	id = MATERIAL_ID_LOG
-	display_name "wood logs"
+	display_name = "wood logs"
 	icon_base = "log"
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null

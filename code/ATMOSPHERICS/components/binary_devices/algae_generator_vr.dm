@@ -71,11 +71,11 @@
 
 	// STEP 1 - Check material resources
 	if(stored_material[MATERIAL_ID_ALGAE] < algae_per_mole)
-		ui_error = "Insufficient [material_display_name(MATERIAL_ID_ALGAE)] to process."
+		ui_error = "Insufficient [SSmaterials.material_display_name_by_id(MATERIAL_ID_ALGAE)] to process."
 		update_icon()
 		return
 	if(stored_material[MATERIAL_ID_CARBON] + carbon_per_mole > storage_capacity[MATERIAL_ID_CARBON])
-		ui_error = "[material_display_name(MATERIAL_ID_CARBON)] output storage is full."
+		ui_error = "[SSmaterials.material_display_name_by_id(MATERIAL_ID_CARBON)] output storage is full."
 		update_icon()
 		return
 	var/moles_to_convert = min(moles_per_tick,\
@@ -240,7 +240,7 @@
 // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 /obj/machinery/atmospherics/binary/algae_farm/proc/eject_materials(var/material_name, var/amount)
 	var/recursive = amount == -1 ? 1 : 0
-	var/datum/material/matdata = get_material_by_name(material_name)
+	var/datum/material/matdata = SSmaterials.material_by_id(material_name)
 	var/stack_type = matdata.stack_type
 	var/obj/item/stack/material/S = new stack_type(loc)
 	if(amount <= 0)

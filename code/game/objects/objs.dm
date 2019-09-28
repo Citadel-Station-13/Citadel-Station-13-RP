@@ -20,7 +20,7 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 
 	var/datum/material/material_primary
-	var/use_primary_material_color = TRUE			//could use being a flag later. DO NOT DYNAMICALLY ASSIGN UNLESS ABSOLUTELY NEEDED, RATHER THAN COMPILE TIME ASSIGNING.
+	var/material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 
 /obj/Initialize(mapload)
 	. = ..()
@@ -186,5 +186,14 @@
 
 /obj/update_icon()
 	. = ..()
-	if(use_primary_material_color)
-		add_atom_colour(material_primary.icon_color, FIXED_COLOR_PRIORITY)
+	if(material_usage_flags & USE_PRIMARY_MATERIAL_COLOR)
+		if(material)
+			add_atom_colour(material_primary.icon_color, FIXED_COLOR_PRIORITY)
+		else
+			remove_atom_colour(FIXED_COLOR_PRIORITY)
+	if(material_usage_flags & USE_PRIMARY_MATERIAL_OPACITY)
+		if(material)
+			//Shit scaling system, maybe replace later.. Ugh.
+			alpha = 255 * (1 - (1 - material.opacity) * (1 - material_opacity))
+		else
+			alpha = 255

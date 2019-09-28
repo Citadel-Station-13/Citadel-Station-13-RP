@@ -2,7 +2,7 @@
 	material_primary = MATERIAL_ID_PLASTEEL
 
 /obj/item/weapon/material/twohanded/fireaxe/durasteel
-	material_primary = MATERIAL_ID_DUARSTEEL
+	material_primary = MATERIAL_ID_DURASTEEL
 
 /obj/item/weapon/material/twohanded/fireaxe/scythe/plasteel
 	material_primary = MATERIAL_ID_PLASTEEL

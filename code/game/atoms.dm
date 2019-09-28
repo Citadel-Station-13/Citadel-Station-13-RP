@@ -600,6 +600,11 @@
 //Update everything involving materials including health/anything being implemented with overriding this proc.
 /atom/proc/UpdateMaterials()
 	update_icon()
+	UpdateDescriptions()
+
+//Auto update name/descriptions.
+/atom/proc/UpdateDescriptions()
+	return
 
 /*
 	Adds an instance of colour_type to the atom's atom_colours list

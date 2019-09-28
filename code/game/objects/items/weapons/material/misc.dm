@@ -62,7 +62,7 @@
 	desc = "A fun snowball. Throw it at your friends!"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "snowball"
-	default_material = MAT_SNOW
+	material_primary = MATERIAL_ID_SNOW
 	health = 1
 	fragile = 1
 	force_divisor = 0.01

@@ -1,17 +1,17 @@
 /obj/item/weapon/material/harpoon/plasteel
-  default_material = "plasteel"
+	material_primary = MATERIAL_ID_PLASTEEL
 
 /obj/item/weapon/material/harpoon/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
 
 /obj/item/weapon/material/knife/machete/hatchet/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
 
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
 
 /obj/item/weapon/material/minihoe/plasteel
-  default_material = "plasteel"
+	material_primary = MATERIAL_ID_PLASTEEL
 
 /obj/item/weapon/material/minihoe/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
