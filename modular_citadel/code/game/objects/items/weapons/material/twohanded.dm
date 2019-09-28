@@ -1,17 +1,17 @@
 /obj/item/weapon/material/twohanded/fireaxe/plasteel
-  default_material = "plasteel"
+	material_primary = MATERIAL_ID_PLASTEEL
 
 /obj/item/weapon/material/twohanded/fireaxe/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DUARSTEEL
 
 /obj/item/weapon/material/twohanded/fireaxe/scythe/plasteel
-  default_material = "plasteel"
+	material_primary = MATERIAL_ID_PLASTEEL
 
 /obj/item/weapon/material/twohanded/fireaxe/scythe/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL
 
 /obj/item/weapon/material/twohanded/spear/plasteel
-  default_material = "plasteel"
+	material_primary = MATERIAL_ID_PLASTEEL
 
 /obj/item/weapon/material/twohanded/spear/durasteel
-  default_material = "durasteel"
+	material_primary = MATERIAL_ID_DURASTEEL

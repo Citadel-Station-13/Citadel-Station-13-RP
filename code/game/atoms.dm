@@ -15,9 +15,6 @@
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
 
-	var/list/atom_colours	 //used to store the different colors on an atom
-							//its inherent color, the colored paint applied on it, special color effect etc...
-
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -82,7 +79,7 @@
 
 	//atom color stuff
 	if(color)
-		add_atom_colour(color, FIXED_COLOR_PRIORITY)
+		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
 /*
 	if (light_power && light_range)

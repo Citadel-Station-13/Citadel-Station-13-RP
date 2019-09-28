@@ -58,7 +58,7 @@
 	edge = 0
 
 /obj/item/weapon/material/kitchen/utensil/fork/plastic
-	default_material = "plastic"
+	material_primary = MATERIAL_ID_PLASTIC
 
 /obj/item/weapon/material/kitchen/utensil/spoon
 	name = "spoon"
@@ -70,7 +70,7 @@
 	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
 
 /obj/item/weapon/material/kitchen/utensil/spoon/plastic
-	default_material = "plastic"
+	material_primary = MATERIAL_ID_PLASTIC
 
 /*
  * Knives
@@ -85,7 +85,7 @@
 	return ..()
 */
 /obj/item/weapon/material/knife/plastic
-	default_material = "plastic"
+	material_primary = MATERIAL_ID_PLASTIC
 
 /*
  * Rolling Pins
