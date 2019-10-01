@@ -113,6 +113,6 @@
 	desc = "The 'Protector' is an advanced energy gun that cannot be fired in lethal mode on low security alert levels, but features DNA locking and a powerful stun."
 	id = "protector"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "silver" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 2000, MATERIAL_ID_SILVER = 1000)
 	build_path = /obj/item/weapon/gun/energy/protector
 	sort_string = "TAADA"

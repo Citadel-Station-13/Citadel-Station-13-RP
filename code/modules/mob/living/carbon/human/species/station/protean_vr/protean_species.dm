@@ -183,7 +183,7 @@
 			H.add_modifier(/datum/modifier/protean/plasteel, origin = refactory)
 
 		//Diamond adds burn armor
-		if(refactory.get_stored_material("diamond") >= METAL_PER_TICK)
+		if(refactory.get_stored_material(MATERIAL_ID_DIAMOND) >= METAL_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/diamond, origin = refactory)
 
 	return ..()
@@ -268,7 +268,7 @@
 	on_created_text = "<span class='notice'>You feel yourself become more reflective, able to resist heat and fire better for a time.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the diamond, and you return to your normal nanites.</span>"
 
-	material_name = "diamond"
+	material_name = MATERIAL_ID_DIAMOND
 
 	incoming_fire_damage_percent = 0.2
 

@@ -302,7 +302,7 @@
 /obj/item/clothing/accessory/bracelet/material/New(var/newloc, var/new_material)
 	..(newloc)
 	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
+		new_material = MATERIAL_ID_STEEL
 	material = get_material_by_name(new_material)
 	if(!istype(material))
 		qdel(src)
@@ -318,7 +318,7 @@
 	..(newloc, "wood")
 
 /obj/item/clothing/accessory/bracelet/material/plastic/New(var/newloc)
-	..(newloc, "plastic")
+	..(newloc, MATERIAL_ID_PLASTIC)
 
 /obj/item/clothing/accessory/bracelet/material/iron/New(var/newloc)
 	..(newloc, "iron")
@@ -327,18 +327,18 @@
 	..(newloc, "steel")
 
 /obj/item/clothing/accessory/bracelet/material/silver/New(var/newloc)
-	..(newloc, "silver")
+	..(newloc, MATERIAL_ID_SILVER)
 
 /obj/item/clothing/accessory/bracelet/material/gold/New(var/newloc)
-	..(newloc, "gold")
+	..(newloc, MATERIAL_ID_GOLD)
 
 /obj/item/clothing/accessory/bracelet/material/platinum/New(var/newloc)
-	..(newloc, "platinum")
+	..(newloc, MATERIAL_ID_PLATINUM)
 
 /obj/item/clothing/accessory/bracelet/material/phoron/New(var/newloc)
-	..(newloc, "phoron")
+	..(newloc, MATERIAL_ID_PHORON)
 
 /obj/item/clothing/accessory/bracelet/material/glass/New(var/newloc)
-	..(newloc, "glass")
+	..(newloc, MATERIAL_ID_GLASS)
 
 	..()

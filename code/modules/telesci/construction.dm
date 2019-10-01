@@ -52,7 +52,7 @@
 	name = "GPS device"
 	id = "telesci_gps"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 500, MATERIAL_ID_GLASS = 1000)
 	build_path = /obj/item/device/gps/advanced
 	sort_string = "HAAEB"
 */
@@ -67,6 +67,6 @@
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)
-	materials = list("diamond" = 1500, "phoron" = 1500)
+	materials = list(MATERIAL_ID_DIAMOND = 1500, MATERIAL_ID_PHORON = 1500)
 	build_path = /obj/item/weapon/ore/bluespace_crystal/artificial
 	sort_string = "HAAED"

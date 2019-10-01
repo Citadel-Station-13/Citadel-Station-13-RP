@@ -138,7 +138,7 @@
 	desc = "A prototype version of the improved health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites"
 	id = "advanced_analyzer"
 	req_tech = list(TECH_MAGNET = 6, TECH_BIO = 7, TECH_PHORON = 4)
-	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1250, MATERIAL_ID_GOLD = 1750, MATERIAL_ID_URANIUM = 1000, "plastic" = 500)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1250, MATERIAL_ID_GOLD = 1750, MATERIAL_ID_URANIUM = 1000, MATERIAL_ID_PLASTIC = 500)
 	build_path = /obj/item/device/healthanalyzer/advanced
 	sort_string = "MBBAH"
 
@@ -147,7 +147,7 @@
 	desc = "A prototype version of the advanced health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites. This analyzer even picks up chemicals in the patient's stomach."
 	id = "phasic_analyzer"
 	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
-	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1500, MATERIAL_ID_GOLD = 2000, MATERIAL_ID_URANIUM = 1250, MATERIAL_ID_DIAMOND = 750, MATERIAL_ID_PHORON = 500, "plastic" = 1000, MATERIAL_ID_OSMIUM = 500)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000, MATERIAL_ID_SILVER = 1500, MATERIAL_ID_GOLD = 2000, MATERIAL_ID_URANIUM = 1250, MATERIAL_ID_DIAMOND = 750, MATERIAL_ID_PHORON = 500, MATERIAL_ID_PLASTIC = 1000, MATERIAL_ID_OSMIUM = 500)
 	build_path = /obj/item/device/healthanalyzer/phasic
 	sort_string = "MBBAI"
 
