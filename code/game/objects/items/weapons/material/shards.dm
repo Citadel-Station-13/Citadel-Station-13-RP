@@ -12,7 +12,7 @@
 	thrown_force_divisor = 0.5
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
-	default_material = "glass"
+	default_material = MATERIAL_ID_GLASS
 	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR | USE_PRIMARY_MATERIAL_OPACITY
 	var/shard_visual_size = "large"
 	unbreakable = 1 //It's already broken.

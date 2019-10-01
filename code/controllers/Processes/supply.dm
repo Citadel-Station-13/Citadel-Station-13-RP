@@ -45,11 +45,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/movetime = 1200
 	var/datum/shuttle/ferry/supply/shuttle
 	var/list/material_points_conversion = list( // Any materials not named in this list are worth 0 points
-			"phoron" = 5,
-			"platinum" = 5,
-			"gold" = 2,// CIT CHANGE: Gold is now worth 2 cargo points per sheet
-			"silver" = 2,// CIT CHANGE: Silver is now worth 2 cargo points per sheet
-			"uranium" = 1 // CIT CHANGE: Uranium is now worth 1 cargo point per sheet
+			MATERIAL_ID_PHORON = 5,
+			MATERIAL_ID_PLATINUM = 5,
+			MATERIAL_ID_GOLD = 2,// CIT CHANGE: Gold is now worth 2 cargo points per sheet
+			MATERIAL_ID_SILVER = 2,// CIT CHANGE: Silver is now worth 2 cargo points per sheet
+			MATERIAL_ID_URANIUM = 1 // CIT CHANGE: Uranium is now worth 1 cargo point per sheet
 		)
 
 /datum/controller/supply/New()

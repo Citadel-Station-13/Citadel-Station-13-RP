@@ -17,13 +17,13 @@
 	..(newloc,"steel")
 
 /obj/item/weapon/material/twohanded/baseballbat/uranium/New(var/newloc)
-	..(newloc,"uranium")
+	..(newloc,MATERIAL_ID_URANIUM)
 
 /obj/item/weapon/material/twohanded/baseballbat/gold/New(var/newloc)
-	..(newloc,"gold")
+	..(newloc,MATERIAL_ID_GOLD)
 
 /obj/item/weapon/material/twohanded/baseballbat/platinum/New(var/newloc)
-	..(newloc,"platinum")
+	..(newloc,MATERIAL_ID_PLATINUM)
 
 /obj/item/weapon/material/twohanded/baseballbat/diamond/New(var/newloc)
-	..(newloc,"diamond")
+	..(newloc,MATERIAL_ID_DIAMOND)
