@@ -91,12 +91,12 @@
 		stack_paths[S.name] = stacktype
 		qdel(S)
 
-	stack_storage["glass"] = 0
-	stack_paths["glass"] = /obj/item/stack/material/glass
-	stack_storage[DEFAULT_WALL_MATERIAL] = 0
-	stack_paths[DEFAULT_WALL_MATERIAL] = /obj/item/stack/material/steel
-	stack_storage["plasteel"] = 0
-	stack_paths["plasteel"] = /obj/item/stack/material/plasteel
+	stack_storage[MATERIAL_ID_GLASS] = 0
+	stack_paths[MATERIAL_ID_GLASS] = /obj/item/stack/material/glass
+	stack_storage[MATERIAL_ID_STEEL] = 0
+	stack_paths[MATERIAL_ID_STEEL] = /obj/item/stack/material/steel
+	stack_storage[MATERIAL_ID_PLASTEEL] = 0
+	stack_paths[MATERIAL_ID_PLASTEEL] = /obj/item/stack/material/plasteel
 
 	spawn( 5 )
 		for (var/dir in cardinal)

@@ -175,11 +175,11 @@
 	if(refactory && !(refactory.status & ORGAN_DEAD))
 
 		//MHydrogen adds speeeeeed
-		if(refactory.get_stored_material("mhydrogen") >= METAL_PER_TICK)
+		if(refactory.get_stored_material(MATERIAL_ID_MHYDROGEN) >= METAL_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
 
 		//Plasteel adds brute armor
-		if(refactory.get_stored_material("plasteel") >= METAL_PER_TICK)
+		if(refactory.get_stored_material(MATERIAL_ID_PLASTEEL) >= METAL_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/plasteel, origin = refactory)
 
 		//Diamond adds burn armor
@@ -246,7 +246,7 @@
 	on_created_text = "<span class='notice'>You feel yourself accelerate, the metallic hydrogen increasing your speed temporarily.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the metallic hydrogen, and you return to normal speed.</span>"
 
-	material_name = "mhydrogen"
+	material_name = MATERIAL_ID_MHYDROGEN
 
 	slowdown = -1
 
@@ -257,7 +257,7 @@
 	on_created_text = "<span class='notice'>You feel yourself become nearly impervious to physical attacks as plasteel nanites are made.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the plasteel, and you return to your normal nanites.</span>"
 
-	material_name = "plasteel"
+	material_name = MATERIAL_ID_PLASTEEL
 
 	incoming_brute_damage_percent = 0.5
 
@@ -279,7 +279,7 @@
 	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of steel, healing you slowly.</span>"
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
-	material_name = "steel"
+	material_name = MATERIAL_ID_STEEL
 
 /datum/modifier/protean/steel/tick()
 	..()

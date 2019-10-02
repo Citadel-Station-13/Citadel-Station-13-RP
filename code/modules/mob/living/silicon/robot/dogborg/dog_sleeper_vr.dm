@@ -592,14 +592,14 @@
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= (0.5 * stack.get_amount())
-							if(material == DEFAULT_WALL_MATERIAL)
+							if(material == MATERIAL_ID_STEEL)
 								metal.add_charge(total_material)
-							if(material == "glass")
+							if(material == MATERIAL_ID_GLASS)
 								glass.add_charge(total_material)
 							if(decompiler)
-								if(material == "plastic")
+								if(material == MATERIAL_ID_PLASTIC)
 									plastic.add_charge(total_material)
-								if(material == "wood")
+								if(material == MATERIAL_ID_WOOD)
 									wood.add_charge(total_material)
 					else
 						drain(-50 * digested)

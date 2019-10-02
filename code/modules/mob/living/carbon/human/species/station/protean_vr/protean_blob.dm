@@ -171,7 +171,7 @@
 /mob/living/simple_animal/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!healing && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100)
+		if(!healing && health < maxHealth && refactory.get_stored_material(MATERIAL_ID_STEEL) >= 100)
 			healing = humanform.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 		else if(healing && health == maxHealth)
 			healing.expire()
@@ -203,7 +203,7 @@
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
 		var/substance = S.material.name
-		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+		var/list/edible_materials = list(MATERIAL_ID_STEEL, MATERIAL_ID_PLASTEEL, MATERIAL_ID_DIAMOND, MATERIAL_ID_MHYDROGEN) //Can't eat all materials, just useful ones.
 		var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE
@@ -218,7 +218,7 @@
 	if(refactory && istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		var/substance = S.material.name
-		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+		var/list/edible_materials = list(MATERIAL_ID_STEEL, MATERIAL_ID_PLASTEEL, MATERIAL_ID_DIAMOND, MATERIAL_ID_MHYDROGEN) //Can't eat all materials, just useful ones.
 		var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE

@@ -17,7 +17,7 @@
 	var/amt_uranium = 0
 	var/newCoins = 0   //how many coins the machine made in it's last load
 	var/processing = 0
-	var/chosen = DEFAULT_WALL_MATERIAL //which material will be used to make coins
+	var/chosen = MATERIAL_ID_STEEL //which material will be used to make coins
 	var/coinsToProduce = 10
 
 /obj/machinery/mineral/mint/Initialize(mapload)
@@ -42,17 +42,17 @@
 		if(O)
 			var/processed = 1
 			switch(O.get_material_name())
-				if("gold")
+				if(MATERIAL_ID_GOLD)
 					amt_gold += 100 * O.get_amount()
-				if("silver")
+				if(MATERIAL_ID_SILVER)
 					amt_silver += 100 * O.get_amount()
-				if("diamond")
+				if(MATERIAL_ID_DIAMOND)
 					amt_diamond += 100 * O.get_amount()
-				if("phoron")
+				if(MATERIAL_ID_PHORON)
 					amt_phoron += 100 * O.get_amount()
-				if("uranium")
+				if(MATERIAL_ID_URANIUM)
 					amt_uranium += 100 * O.get_amount()
-				if(DEFAULT_WALL_MATERIAL)
+				if(MATERIAL_ID_STEEL)
 					amt_iron += 100 * O.get_amount()
 				else
 					processed = 0

@@ -34,7 +34,7 @@
 	return ..()
 
 /obj/machinery/door/proc/attackby_vr(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/stack/material) && I.get_material_name() == "plasteel") // Add heat shielding if it isn't already.
+	if(istype(I, /obj/item/stack/material) && I.get_material_name() == MATERIAL_ID_PLASTEEL) // Add heat shielding if it isn't already.
 		if(!heat_proof)
 			var/obj/item/stack/stack = I
 			var/transfer
