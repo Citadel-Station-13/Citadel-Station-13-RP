@@ -65,11 +65,6 @@
 
 ////////////////////////STAGE 4/////////////////////////////////
 
-/datum/disease2/effect/nothing
-	name = "Nil Syndrome"
-	stage = 4
-	badness = 1
-	chance_maxm = 0
 
 /datum/disease2/effect/gibbingtons
 	name = "Gibbington's Syndrome"
@@ -249,6 +244,60 @@
 			H.adjust_fire_stacks(2)
 			H.IgniteMob()
 
+//Ported from bay 2019 Oct 1 are below
+/datum/disease2/effect/killertoxins
+	name = "Toxification Syndrome"
+	stage = 4
+	badness = 3
+	activate(var/mob/living/carbon/human/mob,var/multiplier)
+		mob.adjustToxLoss(15*multiplier)
+
+/datum/disease2/effect/dna
+	name = "Reverse Pattern Syndrome"
+	stage = 4
+	badness = 3
+	activate(var/mob/living/carbon/human/mob,var/multiplier)
+		mob.bodytemperature = max(mob.bodytemperature, 350)
+		scramble(0,mob,10)
+		mob.apply_damage(10, CLONE)
+//Longevity commented out until I figure out what its trying to call on baycode
+///datum/disease2/effect/immortal
+//	name = "Longevity Syndrome"
+//	stage = 4
+//	badness = 3
+//	activate(var/mob/living/carbon/human/mob,var/multiplier)
+//		for (var/external in mob.organs)
+///			var/obj/item/organ/external/E = external
+	//		if (E.status & ORGAN_BROKEN && prob(30))
+	///			to_chat(mob, "<span class='notice'>Your [E.name] suddenly feels much better!</span>")
+		//		E.status ^= ORGAN_BROKEN
+		//		break
+//		for (var/internal in mob.internal_organs)
+//			var/obj/item/organ/internal/I = internal
+///			if (I.damage && prob(30))
+//				to_chat(mob, "<span class='notice'>Your [mob.get_organ(I.parent_organ)] feels a bit warm...</span>")
+//				I.take_internal_damage(-2*multiplier)
+//				break
+//		var/heal_amt = -5*multiplier
+//		mob.apply_damages(heal_amt,heal_amt,heal_amt,heal_amt)
+//
+//	deactivate(var/mob/living/carbon/human/mob,var/multiplier)
+//		to_chat(mob, "<span class='notice'>You suddenly feel hurt and old...</span>")
+//		mob.age += 8
+//		var/backlash_amt = 5*multiplier
+//		mob.apply_damages(backlash_amt,backlash_amt,backlash_amt,backlash_amt)
+
+/datum/disease2/effect/bones
+	name = "Fragile Bones Syndrome"
+	stage = 4
+	badness = 4
+	activate(var/mob/living/carbon/human/mob,var/multiplier)
+		for (var/obj/item/organ/external/E in mob.organs)
+			E.min_broken_damage = max(5, E.min_broken_damage - 30)
+
+	deactivate(var/mob/living/carbon/human/mob,var/multiplier)
+		for (var/obj/item/organ/external/E in mob.organs)
+			E.min_broken_damage = initial(E.min_broken_damage)
 
 ////////////////////////STAGE 3/////////////////////////////////
 
@@ -288,6 +337,7 @@
 			B.take_damage(5)
 	else
 		mob.setBrainLoss(10)
+
 
 /datum/disease2/effect/hallucinations
 	name = "Hallucination"
@@ -372,6 +422,16 @@
 		for (var/organ in H.organs_by_name)
 			if (O.robotic != ORGAN_ROBOT)
 				O.rejecting = 0
+
+//Ported from bay 2019 Oct 1
+/datum/disease2/effect/telepathic
+	name = "Telepathy Syndrome"
+	stage = 3
+	activate(var/mob/living/carbon/human/mob,var/multiplier)
+		mob.dna.SetSEState(REMOTETALKBLOCK,1)
+		domutcheck(mob, null, MUTCHK_FORCED)
+
+
 
 
 ////////////////////////STAGE 2/////////////////////////////////
@@ -479,6 +539,7 @@
 	if (prob(50))
 		mob.say("*vomit")
 
+
 ////////////////////////STAGE 1/////////////////////////////////
 
 /datum/disease2/effect/sneeze
@@ -532,3 +593,5 @@
 
 /datum/disease2/effect/headache/activate(var/mob/living/carbon/mob,var/multiplier)
 		mob << "<span class='warning'>Your head hurts a bit.</span>"
+
+
