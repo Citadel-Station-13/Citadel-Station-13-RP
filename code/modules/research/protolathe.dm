@@ -15,7 +15,7 @@
 	var/mat_efficiency = 1
 	var/speed = 1
 
-	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0)
+	materials = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0, MATERIAL_ID_PLASTIC = 0, MATERIAL_ID_GOLD = 0, MATERIAL_ID_SILVER = 0, MATERIAL_ID_OSMIUM = 0, MATERIAL_ID_PHORON = 0, MATERIAL_ID_URANIUM = 0, MATERIAL_ID_DIAMOND = 0)
 
 /obj/machinery/r_n_d/protolathe/Initialize()
 	..()
@@ -209,23 +209,23 @@
 	material = lowertext(material)
 	var/mattype
 	switch(material)
-		if(DEFAULT_WALL_MATERIAL)
+		if(MATERIAL_ID_STEEL)
 			mattype = /obj/item/stack/material/steel
-		if("glass")
+		if(MATERIAL_ID_GLASS)
 			mattype = /obj/item/stack/material/glass
-		if("plastic")
+		if(MATERIAL_ID_PLASTIC)
 			mattype = /obj/item/stack/material/plastic
-		if("gold")
+		if(MATERIAL_ID_GOLD)
 			mattype = /obj/item/stack/material/gold
-		if("silver")
+		if(MATERIAL_ID_SILVER)
 			mattype = /obj/item/stack/material/silver
-		if("osmium")
+		if(MATERIAL_ID_OSMIUM)
 			mattype = /obj/item/stack/material/osmium
-		if("diamond")
+		if(MATERIAL_ID_DIAMOND)
 			mattype = /obj/item/stack/material/diamond
-		if("phoron")
+		if(MATERIAL_ID_PHORON)
 			mattype = /obj/item/stack/material/phoron
-		if("uranium")
+		if(MATERIAL_ID_URANIUM)
 			mattype = /obj/item/stack/material/uranium
 		else
 			return

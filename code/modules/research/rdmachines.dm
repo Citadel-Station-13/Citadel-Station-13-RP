@@ -18,46 +18,46 @@
 
 /obj/machinery/r_n_d/proc/getMaterialType(var/name)
 	switch(name)
-		if(DEFAULT_WALL_MATERIAL)
+		if(MATERIAL_ID_STEEL)
 			return /obj/item/stack/material/steel
-		if("glass")
+		if(MATERIAL_ID_GLASS)
 			return /obj/item/stack/material/glass
-		if("plastic")
+		if(MATERIAL_ID_PLASTIC)
 			return /obj/item/stack/material/plastic
-		if("gold")
+		if(MATERIAL_ID_GOLD)
 			return /obj/item/stack/material/gold
-		if("silver")
+		if(MATERIAL_ID_SILVER)
 			return /obj/item/stack/material/silver
-		if("osmium")
+		if(MATERIAL_ID_OSMIUM)
 			return /obj/item/stack/material/osmium
-		if("phoron")
+		if(MATERIAL_ID_PHORON)
 			return /obj/item/stack/material/phoron
-		if("uranium")
+		if(MATERIAL_ID_URANIUM)
 			return /obj/item/stack/material/uranium
-		if("diamond")
+		if(MATERIAL_ID_DIAMOND)
 			return /obj/item/stack/material/diamond
 	return null
 
 /obj/machinery/r_n_d/proc/getMaterialName(var/type)
 	switch(type)
 		if(/obj/item/stack/material/steel)
-			return DEFAULT_WALL_MATERIAL
+			return MATERIAL_ID_STEEL
 		if(/obj/item/stack/material/glass)
-			return "glass"
+			return MATERIAL_ID_GLASS
 		if(/obj/item/stack/material/plastic)
-			return "plastic"
+			return MATERIAL_ID_PLASTIC
 		if(/obj/item/stack/material/gold)
-			return "gold"
+			return MATERIAL_ID_GOLD
 		if(/obj/item/stack/material/silver)
-			return "silver"
+			return MATERIAL_ID_SILVER
 		if(/obj/item/stack/material/osmium)
-			return "osmium"
+			return MATERIAL_ID_OSMIUM
 		if(/obj/item/stack/material/phoron)
-			return "phoron"
+			return MATERIAL_ID_PHORON
 		if(/obj/item/stack/material/uranium)
-			return "uranium"
+			return MATERIAL_ID_URANIUM
 		if(/obj/item/stack/material/diamond)
-			return "diamond"
+			return MATERIAL_ID_DIAMOND
 
 /obj/machinery/r_n_d/proc/eject(var/material, var/amount)
 	if(!(material in materials))

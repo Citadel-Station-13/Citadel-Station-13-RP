@@ -46,7 +46,7 @@
 	color = "#824B28"
 
 /obj/structure/table/wooden_reinforced/New()
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MATERIAL_ID_WOOD)
 	reinforced = get_material_by_name(MATERIAL_ID_STEEL)
 	..()
 
@@ -55,14 +55,14 @@
 	color = "#824B28"
 
 /obj/structure/table/woodentable/New()
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MATERIAL_ID_WOOD)
 	..()
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
 /obj/structure/table/gamblingtable/New()
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MATERIAL_ID_WOOD)
 	carpeted = 1
 	..()
 
@@ -156,7 +156,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden_reinforced/New()
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MATERIAL_ID_WOOD)
 	reinforced = get_material_by_name(MATERIAL_ID_STEEL)
 	..()
 */
@@ -165,7 +165,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden/New()
-	material = get_material_by_name("wood")
+	material = get_material_by_name(MATERIAL_ID_WOOD)
 	..()
 
 /obj/structure/table/bench/padded

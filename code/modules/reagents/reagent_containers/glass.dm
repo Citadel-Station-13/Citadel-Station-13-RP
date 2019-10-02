@@ -300,7 +300,7 @@ obj/item/weapon/reagent_containers/glass/bucket/wood
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "woodbucket"
 	item_state = "woodbucket"
-	matter = list("wood" = 50)
+	matter = list(MATERIAL_ID_WOOD = 50)
 	w_class = ITEMSIZE_LARGE
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
