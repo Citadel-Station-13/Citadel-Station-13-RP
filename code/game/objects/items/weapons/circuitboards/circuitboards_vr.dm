@@ -52,4 +52,4 @@
 	name = T_BOARD("timeclock")
 	build_path = /obj/machinery/computer/timeclock
 	board_type = new /datum/frame/frame_types/timeclock_terminal
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)

@@ -139,14 +139,14 @@
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MATERIAL_ID_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/steel
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MATERIAL_ID_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/white
@@ -167,7 +167,7 @@
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MATERIAL_ID_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/freezer
