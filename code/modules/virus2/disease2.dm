@@ -36,7 +36,7 @@
 
 	antigen = list(pick(ALL_ANTIGENS))
 	antigen |= pick(ALL_ANTIGENS)
-	spreadtype = prob(70) ? "Airborne" : "Contact"
+	spreadtype = prob(66) ? "Airborne" : "Contact"
 	resistance = rand(15,70)
 
 	if(all_species.len)
@@ -81,12 +81,14 @@
 		if(prob(1))
 			majormutate()
 
-	//Space antibiotics have a good chance to stop disease completely
+	//Space antibiotics have a good chance to stop disease completely - chances changed from 70 to 50
 	if(mob.chem_effects[CE_ANTIBIOTIC])
-		if(stage == 1 && prob(70-resistance))
+		if(stage == 1 && prob(50-resistance))
 			src.cure(mob)
 		else
 			resistance += rand(1,9)
+
+
 
 	//Resistance is capped at 90 without being manually set to 100
 	if(resistance > 90 && resistance < 100)

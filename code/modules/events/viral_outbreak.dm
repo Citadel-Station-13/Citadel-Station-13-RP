@@ -1,6 +1,6 @@
 
 /datum/event/viral_outbreak
-	var/oseverity = 1
+	severity = 1
 //Changed from severeity since it was causing mutiple_definition errors!
 datum/event/viral_outbreak/setup()
 	announceWhen = rand(0, 3000)
@@ -8,7 +8,7 @@ datum/event/viral_outbreak/setup()
 	severity = rand(2, 4)
 
 datum/event/viral_outbreak/announce()
-	command_announcement.Announce ("Confirmed outbreak of biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert")
+	command_announcement.Announce ("Confirmed level seven outbreak aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert")
 	world << sound('sound/AI/outbreak7.ogg')
 
 datum/event/viral_outbreak/start()
@@ -19,7 +19,7 @@ datum/event/viral_outbreak/start()
 	if(!candidates.len)	return
 	candidates = shuffle(candidates)//Incorporating Donkie's list shuffle
 
-	while(oseverity > 0 && candidates.len)
+	while(severity > 0 && candidates.len)
 		if(prob(33))
 			infect_mob_random_lesser(candidates[1])
 		else

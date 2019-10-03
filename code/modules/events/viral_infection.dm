@@ -21,9 +21,10 @@ datum/event/viral_infection/setup()
 datum/event/viral_infection/announce()
 	var/level
 	if (severity == EVENT_LEVEL_MUNDANE)
+		level = pick("zero", "one")
 		return
 	else if (severity == EVENT_LEVEL_MODERATE)
-		level = pick("one", "two", "three", "four")
+		level = pick("two", "three", "four")
 	else
 		level = "five"
 
