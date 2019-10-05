@@ -8,7 +8,7 @@
 	activate(var/mob/living/carbon/mob,var/multiplier)
 		mob.say("[pick("Mlem.","MLEM!","Mlem?")]")
 */
-/datum/disease2/effect/spin
+/*/datum/disease2/effect/spin
 	name = "Spyndrome"
 	stage = 1
 	chance_maxm = 7
@@ -23,6 +23,7 @@
 				mob.dir = D
 				sleep(1)
 			mob.dir = pick(2,4,1,8) //For that added annoyance
+	*/
 
 ///////////////////////////////////////////////
 /////////////////// Stage 2 ///////////////////

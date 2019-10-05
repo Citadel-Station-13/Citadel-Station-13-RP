@@ -76,7 +76,7 @@
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Xenobiology Breach",		/datum/event/prison_break/xenobiology,	0,		list(ASSIGNMENT_SCIENCE = 100), 1),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Grub Infestation",			/datum/event/grub_infestation,			40,		list(ASSIGNMENT_SECURITY = 50, ASSIGNMENT_ENGINEER = 50), 1),
 		//Evil grubs that drain station power slightly
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Biological Outbreak",			/datum/event/viral_outbreak, 		20,	list(ASSIGNMENT_MEDICAL = 40), 1)
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Biological Outbreak",			/datum/event/viral_outbreak, 		0,	list(ASSIGNMENT_MEDICAL = 15), 1)
 		//One outbreak.
 	)
 	add_disabled_events(list(
@@ -97,7 +97,7 @@
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Nothing",				/datum/event/nothing,			900),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Atmos Leak",			/datum/event/atmos_leak, 		30,		list(ASSIGNMENT_ENGINEER = 25), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Meteor Strike",		/datum/event/meteor_strike,		0,		list(ASSIGNMENT_ENGINEER = 15)	,1), //Meteor Strike weight set to 0, Citadel Override. Something's not working right.
-		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Biological Infection",			/datum/event/viral_infection, 		10,	list(ASSIGNMENT_MEDICAL = 20), 1)
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Biological Infection",			/datum/event/viral_infection, 		5,	list(ASSIGNMENT_MEDICAL = 25), 1)
 	)
 	add_disabled_events(list(
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob",				/datum/event/blob, 				10,	list(ASSIGNMENT_ENGINEER = 60), 1),
