@@ -260,7 +260,7 @@ var/list/mining_overlay_cache = list()
 			/obj/item/weapon/pickaxe/borgdrill
 			)
 
-		var/valid_tool
+		var/shovelspeed = W.shovelspeed
 		for(var/valid_type in usable_tools)
 			if(istype(W,valid_type))
 				valid_tool = 1
@@ -277,8 +277,7 @@ var/list/mining_overlay_cache = list()
 
 			to_chat(user, "<span class='notice'>You start digging.</span>")
 			playsound(user.loc, 'sound/effects/rustle1.ogg', 50, 1)
-
-			if(!do_after(user,20)) return
+			if(!do_after(user,shovelspeed)) return
 
 			to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			GetDrilled()
