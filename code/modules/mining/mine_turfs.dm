@@ -253,7 +253,7 @@ var/list/mining_overlay_cache = list()
 	if(!density)
 		if(istype(W,/obj/item/weapon/pickaxe))
 			var/obj/item/weapon/pickaxe/P = W
-			if(P.digspeed == -1)
+			if(P.shovelspeed == -1)
 				return
 			if(sand_dug)
 				to_chat(user, "<span class='warning'>This area has already been dug.</span>")
