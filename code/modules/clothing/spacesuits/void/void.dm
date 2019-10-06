@@ -186,12 +186,12 @@
 	helmet.update_light(H)
 
 /obj/item/clothing/suit/space/void/verb/toggle_magboots()
-
 	set name = "Toggle Magboots"
 	set category = "Object"
 	set src in usr
 
-	if(!istype(src.loc,/mob/living)) return
+	if(!istype(src.loc,/mob/living))
+		return
 
 	if(!boots)
 		to_chat(usr, "There are no magboots installed.")
