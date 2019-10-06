@@ -22,7 +22,7 @@
 	w_class = ITEMSIZE_LARGE
 	matter = list(DEFAULT_WALL_MATERIAL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
-	var/shovelspeed = 0
+	var/shovelspeed = -1 // ooga dig. -1 = cant drill, 4head
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
@@ -44,7 +44,7 @@
 	icon_state = "handdrill"
 	item_state = "jackhammer"
 	digspeed = 30
-	shovelspeed = 11
+	shovelspeed = 15
 	origin_tech = list(TECH_MATERIAL = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
@@ -111,31 +111,31 @@
 
 /*****************************Shovel********************************/
 
-/obj/item/weapon/shovel
+/obj/item/weapon/pickaxe/shovel
 	name = "shovel"
 	desc = "A large tool for digging and moving dirt."
-	icon = 'icons/obj/items.dmi'
 	icon_state = "shovel"
-	flags = CONDUCT
-	slot_flags = SLOT_BELT
 	force = 8.0
 	throwforce = 4.0
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
-	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
-	var/shovelspeed = 20
+	digspeed = 50
+	shovelspeed = 20
+	drill_verb = "violently bashing" // dont mine with a shovel 4head
 	sharp = 0
 	edge = 1
 
-/obj/item/weapon/shovel/spade
+/obj/item/weapon/pickaxe/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"
 	item_state = "spade"
 	force = 5.0
 	throwforce = 7.0
+	digspeed = 120
+	drill_verb = "violently chipping away"
+	matter = list(DEFAULT_WALL_MATERIAL = 50)
 	w_class = ITEMSIZE_SMALL
 
 

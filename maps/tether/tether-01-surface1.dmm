@@ -2134,7 +2134,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/effect/floor_decal/borderfloor/corner2,
@@ -2146,7 +2146,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -14512,8 +14512,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/weapon/shovel,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/item/weapon/soap,
 /obj/item/device/radio/intercom{
 	dir = 1;
