@@ -37,9 +37,6 @@ var/last_message = 0
 	var/heartbeat = 0
 
 /mob/living/carbon/human/Life()
-	set invisibility = 0
-	set background = BACKGROUND_ENABLED
-
 
 	///////////////////////// CITADEL STATION ADDITIONS START
 	var/timeSinceLastTick = world.time - lastLifeProc
@@ -243,7 +240,7 @@ var/last_message = 0
 			if(gene.is_active(src))
 				gene.OnMobLife(src)
 
-	radiation = Clamp(radiation,0,250)
+	radiation = CLAMP(radiation,0,250)
 
 	if(!radiation)
 		if(species.appearance_flags & RADIATION_GLOWS)
@@ -502,7 +499,7 @@ var/last_message = 0
 	if(toxins_pp > safe_toxins_max)
 		var/ratio = (poison/safe_toxins_max) * 10
 		if(reagents)
-			reagents.add_reagent("toxin", Clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
+			reagents.add_reagent("toxin", CLAMP(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
 			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
 		phoron_alert = max(phoron_alert, 1)
 	else
@@ -1090,7 +1087,7 @@ var/last_message = 0
 
 	..()
 
-	client.screen.Remove(global_hud.blurry, global_hud.druggy, global_hud.vimpaired, global_hud.darkMask, global_hud.nvg, global_hud.thermal, global_hud.meson, global_hud.science, global_hud.material, global_hud.whitense)
+	client.screen.Remove(GLOB.global_hud.blurry, GLOB.global_hud.druggy, GLOB.global_hud.vimpaired, GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.whitense)
 
 	if(istype(client.eye,/obj/machinery/camera))
 		var/obj/machinery/camera/cam = client.eye
@@ -1309,7 +1306,7 @@ var/last_message = 0
 							found_welder = 1
 				if(absorbed) found_welder = 1 //VOREStation Code
 			if(found_welder)
-				client.screen |= global_hud.darkMask
+				client.screen |= GLOB.global_hud.darkMask
 
 /mob/living/carbon/human/handle_vision()
 	if(stat == DEAD)
@@ -1602,7 +1599,7 @@ var/last_message = 0
 	This proc below is only called when those HUD elements need to change as determined by the mobs hud_updateflag.
 */
 /mob/living/carbon/human/proc/handle_hud_list()
-	if (BITTEST(hud_updateflag, HEALTH_HUD))
+	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
 		var/image/holder = grab_hud(HEALTH_HUD)
 		if(stat == DEAD)
 			holder.icon_state = "-100" 	// X_X
@@ -1610,7 +1607,7 @@ var/last_message = 0
 			holder.icon_state = RoundHealth((health-config.health_threshold_crit)/(getMaxHealth()-config.health_threshold_crit)*100)
 		apply_hud(HEALTH_HUD, holder)
 
-	if (BITTEST(hud_updateflag, LIFE_HUD))
+	if (CHECK_BITFIELD(hud_updateflag, LIFE_HUD))
 		var/image/holder = grab_hud(LIFE_HUD)
 		if(isSynthetic())
 			holder.icon_state = "hudrobo"
@@ -1620,7 +1617,7 @@ var/last_message = 0
 			holder.icon_state = "hudhealthy"
 		apply_hud(LIFE_HUD, holder)
 
-	if (BITTEST(hud_updateflag, STATUS_HUD))
+	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
 		var/foundVirus = 0
 		for (var/ID in virus2)
 			if (ID in virusDB)
@@ -1653,7 +1650,7 @@ var/last_message = 0
 		apply_hud(STATUS_HUD, holder)
 		apply_hud(STATUS_HUD_OOC, holder2)
 
-	if (BITTEST(hud_updateflag, ID_HUD))
+	if (CHECK_BITFIELD(hud_updateflag, ID_HUD))
 		var/image/holder = grab_hud(ID_HUD)
 		if(wear_id)
 			var/obj/item/weapon/card/id/I = wear_id.GetID()
@@ -1666,7 +1663,7 @@ var/last_message = 0
 
 		apply_hud(ID_HUD, holder)
 
-	if (BITTEST(hud_updateflag, WANTED_HUD))
+	if (CHECK_BITFIELD(hud_updateflag, WANTED_HUD))
 		var/image/holder = grab_hud(WANTED_HUD)
 		holder.icon_state = "hudblank"
 		var/perpname = name
@@ -1693,9 +1690,9 @@ var/last_message = 0
 
 		apply_hud(WANTED_HUD, holder)
 
-	if (  BITTEST(hud_updateflag, IMPLOYAL_HUD) \
-	   || BITTEST(hud_updateflag,  IMPCHEM_HUD) \
-	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
+	if (  CHECK_BITFIELD(hud_updateflag, IMPLOYAL_HUD) \
+	   || CHECK_BITFIELD(hud_updateflag,  IMPCHEM_HUD) \
+	   || CHECK_BITFIELD(hud_updateflag, IMPTRACK_HUD))
 
 		var/image/holder1 = grab_hud(IMPTRACK_HUD)
 		var/image/holder2 = grab_hud(IMPLOYAL_HUD)
@@ -1719,7 +1716,7 @@ var/last_message = 0
 		apply_hud(IMPLOYAL_HUD, holder2)
 		apply_hud(IMPCHEM_HUD, holder3)
 
-	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
+	if (CHECK_BITFIELD(hud_updateflag, SPECIALROLE_HUD))
 		var/image/holder = grab_hud(SPECIALROLE_HUD)
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)

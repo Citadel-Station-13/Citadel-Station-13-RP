@@ -7,8 +7,9 @@
 	var/stored_charge = 0
 	var/effect_id = ""
 
-/obj/item/weapon/anobattery/New()
-	battery_effect = new()
+/obj/item/weapon/anobattery/Initialize(mapload)
+	. = ..()
+	battery_effect = new
 
 /obj/item/weapon/anobattery/proc/UpdateSprite()
 	var/p = (stored_charge/capacity)*100
@@ -32,8 +33,8 @@
 	var/turf/archived_loc
 	var/energy_consumed_on_touch = 100
 
-/obj/item/weapon/anodevice/New()
-	..()
+/obj/item/weapon/anodevice/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 
 /obj/item/weapon/anodevice/attackby(var/obj/I as obj, var/mob/user as mob)
@@ -48,7 +49,7 @@
 		return ..()
 
 /obj/item/weapon/anodevice/attack_self(var/mob/user as mob)
-	return src.interact(user)
+	return interact(user)
 
 /obj/item/weapon/anodevice/interact(var/mob/user)
 	var/dat = "<b>Anomalous Materials Energy Utiliser</b><br>"
@@ -93,8 +94,8 @@
 
 			//if someone is holding the device, do the effect on them
 			var/mob/holder
-			if(ismob(src.loc))
-				holder = src.loc
+			if(ismob(loc))
+				holder = loc
 
 			//handle charge
 			if(world.time - last_activation > interval)
@@ -104,7 +105,7 @@
 						if(holder)
 							holder << "the \icon[src] [src] held by [holder] shudders in your grasp."
 						else
-							src.loc.visible_message("the \icon[src] [src] shudders.")
+							loc.visible_message("the \icon[src] [src] shudders.")
 						inserted_battery.battery_effect.DoEffectTouch(holder)
 
 						//consume power
@@ -130,13 +131,13 @@
 
 			//work out if we need to shutdown
 			if(inserted_battery.stored_charge <= 0)
-				src.loc.visible_message("<font color='blue'>\icon[src] [src] buzzes.</font>", "<font color='blue'>\icon[src] You hear something buzz.</font>")
+				loc.visible_message("<font color='blue'>\icon[src] [src] buzzes.</font>", "<font color='blue'>\icon[src] You hear something buzz.</font>")
 				shutdown_emission()
 			else if(world.time > time_end)
-				src.loc.visible_message("<font color='blue'>\icon[src] [src] chimes.</font>", "<font color='blue'>\icon[src] You hear something chime.</font>")
+				loc.visible_message("<font color='blue'>\icon[src] [src] chimes.</font>", "<font color='blue'>\icon[src] You hear something chime.</font>")
 				shutdown_emission()
 		else
-			src.visible_message("<font color='blue'>\icon[src] [src] buzzes.</font>", "<font color='blue'>\icon[src] You hear something buzz.</font>")
+			visible_message("<font color='blue'>\icon[src] [src] buzzes.</font>", "<font color='blue'>\icon[src] You hear something buzz.</font>")
 			shutdown_emission()
 		last_process = world.time
 
@@ -163,7 +164,7 @@
 	if(href_list["startup"])
 		if(inserted_battery && inserted_battery.battery_effect && (inserted_battery.stored_charge > 0) )
 			activated = 1
-			src.visible_message("<font color='blue'>\icon[src] [src] whirrs.</font>", "\icon[src]<font color='blue'>You hear something whirr.</font>")
+			visible_message("<font color='blue'>\icon[src] [src] whirrs.</font>", "\icon[src]<font color='blue'>You hear something whirr.</font>")
 			if(!inserted_battery.battery_effect.activated)
 				inserted_battery.battery_effect.ToggleActivate(1)
 			time_end = world.time + duration
@@ -176,9 +177,9 @@
 		UpdateSprite()
 	if(href_list["close"])
 		usr << browse(null, "window=anodevice")
-	else if(ismob(src.loc))
-		var/mob/M = src.loc
-		src.interact(M)
+	else if(ismob(loc))
+		var/mob/M = loc
+		interact(M)
 	..()
 
 /obj/item/weapon/anodevice/proc/UpdateSprite()
@@ -191,7 +192,7 @@
 
 /obj/item/weapon/anodevice/Destroy()
 	processing_objects.Remove(src)
-	..()
+	return ..()
 
 /obj/item/weapon/anodevice/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
 	if (!istype(M))

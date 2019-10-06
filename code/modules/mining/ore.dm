@@ -6,6 +6,9 @@
 	var/datum/geosample/geologic_data
 	var/material
 
+/obj/item/weapon/ore/ex_act(severity)
+	return
+
 /obj/item/weapon/ore/uranium
 	name = "pitchblende"
 	icon_state = "ore_uranium"
@@ -83,7 +86,8 @@
 	icon_state = "slag"
 	material = null
 
-/obj/item/weapon/ore/New()
+/obj/item/weapon/ore/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 

@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(nanomanager, /datum/nanomanager, new) // NanoManager, the mana
   * @return /nanomanager new nanomanager object
   */
 /datum/nanomanager/New()
-	var/list/nano_asset_dirs = list(\
+	var/list/nano_assetDirs = list(\
 		"nano/css/",\
 		"nano/images/",\
 		"nano/js/",\
@@ -25,7 +25,7 @@ GLOBAL_DATUM_INIT(nanomanager, /datum/nanomanager, new) // NanoManager, the mana
 	)
 
 	var/list/filenames = null
-	for (var/path in nano_asset_dirs)
+	for (var/path in nano_assetDirs)
 		filenames = flist(path)
 		for(var/filename in filenames)
 			if(copytext(filename, length(filename)) != "/") // filenames which end in "/" are actually directories, which we want to ignore

@@ -48,6 +48,7 @@
 		new /datum/data/mining_equipment("Industrial Hardsuit - Material Scanner",	/obj/item/rig_module/vision/material,					500),
 		new /datum/data/mining_equipment("Industrial Hardsuit - Maneuvering Jets",	/obj/item/rig_module/maneuvering_jets,					1250),
 		new /datum/data/mining_equipment("Diamond Pickaxe",				/obj/item/weapon/pickaxe/diamond,									2000),
+		new /datum/data/mining_equipment("Advanced Ore Scanner",				/obj/item/weapon/mining_scanner/advanced,										2000),
 		new /datum/data/mining_equipment("Super Resonator",				/obj/item/resonator/upgraded,										2500),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,										2500),
 		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/device/survivalcapsule/luxury,							3100),
@@ -72,7 +73,7 @@
 	src.equipment_path = path
 	src.cost = cost
 
-/obj/machinery/power/quantumpad/initialize() //anewbe/leshana put this here and im mad
+/obj/machinery/power/quantumpad/Initialize() //anewbe/leshana put this here and im mad
 	. = ..()
 	default_apply_parts()
 

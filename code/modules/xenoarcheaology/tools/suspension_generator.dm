@@ -11,9 +11,10 @@
 	var/power_use = 5
 	var/obj/effect/suspension_field/suspension_field
 
-/obj/machinery/suspension_gen/New()
-	..()
-	src.cell = new /obj/item/weapon/cell/high(src)
+/obj/machinery/suspension_gen/Initialize(mapload)
+	. = ..()
+	qdel(cell)
+	cell = new /obj/item/weapon/cell/high(src)
 
 /obj/machinery/suspension_gen/process()
 	if(suspension_field)
@@ -185,7 +186,7 @@
 		M.visible_message("<font color='blue'>\icon[M] [M] begins to float in the air!</font>","You feel tingly and light, but it is difficult to move.")
 
 	suspension_field = new(T)
-	src.visible_message("<font color='blue'>\icon[src] [src] activates with a low hum.</font>")
+	visible_message("<font color='blue'>\icon[src] [src] activates with a low hum.</font>")
 	icon_state = "suspension3"
 
 	for(var/obj/item/I in T)
@@ -195,7 +196,7 @@
 	if(collected)
 		suspension_field.icon_state = "energynet"
 		suspension_field.overlays += "shield2"
-		src.visible_message("<font color='blue'>\icon[suspension_field] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"].</font>")
+		visible_message("<font color='blue'>\icon[suspension_field] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"].</font>")
 	else
 		if(istype(T,/turf/simulated/mineral) || istype(T,/turf/simulated/wall))
 			suspension_field.icon_state = "shieldsparkles"
@@ -210,7 +211,7 @@
 		to_chat(M, "<span class='info'>You no longer feel like floating.</span>")
 		M.weakened = min(M.weakened, 3)
 
-	src.visible_message("<font color='blue'>\icon[src] [src] deactivates with a gentle shudder.</font>")
+	visible_message("<font color='blue'>\icon[src] [src] deactivates with a gentle shudder.</font>")
 	qdel(suspension_field)
 	suspension_field = null
 	icon_state = "suspension2"
@@ -227,7 +228,7 @@
 	if(anchored)
 		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
 	else
-		set_dir(turn(dir, 90))
+		setDir(turn(dir, 90))
 
 /obj/machinery/suspension_gen/verb/rotate_cw()
 	set src in view(1)
@@ -237,7 +238,7 @@
 	if(anchored)
 		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
 	else
-		set_dir(turn(dir, -90))
+		setDir(turn(dir, -90))
 
 /obj/effect/suspension_field
 	name = "energy field"

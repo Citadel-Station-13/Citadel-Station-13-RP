@@ -72,7 +72,7 @@ var/global/list/sparring_attack_cache = list()
 					else
 						target.visible_message("<span class='danger'>[target] slams into [T]!</span>")
 					if(prob(50))
-						target.set_dir(reverse_dir[target.dir])
+						target.setDir(reverse_dir[target.dir])
 					target.apply_effect(attack_damage * 0.4, WEAKEN, armour)
 			if(BP_GROIN)
 				target.visible_message("<span class='warning'>[target] looks like [TT.he] [TT.is] in pain!</span>", "<span class='warning'>[(target.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>") // I see no easy way to fix this for non-organic or neuter characters.
@@ -139,7 +139,7 @@ var/global/list/sparring_attack_cache = list()
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
 
-	attack_damage = Clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
+	attack_damage = CLAMP(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
 	if(target == user)
 		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [TU.himself] in the [organ]!</span>")
@@ -213,7 +213,7 @@ var/global/list/sparring_attack_cache = list()
 	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
 
-	attack_damage = Clamp(attack_damage, 1, 5)
+	attack_damage = CLAMP(attack_damage, 1, 5)
 
 	switch(attack_damage)
 		if(1 to 2)	user.visible_message("<span class='danger'>[user] threw [target] a glancing [pick(attack_noun)] to the [organ]!</span>") //it's not that they're kicking lightly, it's that the kick didn't quite connect
@@ -259,7 +259,7 @@ var/global/list/sparring_attack_cache = list()
 	var/obj/item/clothing/shoes = user.shoes
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 
-	attack_damage = Clamp(attack_damage, 1, 5)
+	attack_damage = CLAMP(attack_damage, 1, 5)
 
 	switch(attack_damage)
 		if(1 to 4)	user.visible_message("<span class='danger'>[pick("[user] stomped on", "[user] slammed [TU.his] [shoes ? copytext(shoes.name, 1, -1) : "foot"] down onto")] [target]'s [organ]!</span>")

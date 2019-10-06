@@ -1,7 +1,8 @@
-//#define TESTING
-#if DM_VERSION < 506
-#warn This compiler is out of date. You may experience issues with projectile animations.
-#endif
+
+//duck you byond
+var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
+var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
+var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null

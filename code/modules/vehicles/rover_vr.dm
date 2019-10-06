@@ -21,6 +21,7 @@
 	load_offset_x = 0
 	pixel_x = -8
 	pixel_y = -8
+	cell = /obj/item/weapon/cell/high
 
 
 	var/car_limit = 0	//how many cars an engine can pull before performance degrades. This should be 0 to prevent trailers from unhitching.
@@ -59,8 +60,8 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/train/rover/engine/New()
-	..()
+/obj/vehicle/train/rover/engine/Initialize(mapload)
+	. = ..()
 	cell = new /obj/item/weapon/cell/high(src)
 	key = new(src)
 	turn_off()	//so engine verbs are correctly set

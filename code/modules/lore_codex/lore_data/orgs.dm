@@ -30,6 +30,6 @@
 
 /*
 /datum/lore/codex/category/auto_org/mil
-	name = "Militaries"
+	name = "Para-Militaries & Private Security"
 	desired_type = /datum/lore/organization/mil
 */

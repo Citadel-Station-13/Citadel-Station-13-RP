@@ -220,6 +220,7 @@
 				W.heal_damage(heal_brute)
 				playsound(src, pick(apply_sounds), 25)
 				used = 1 //VOREStation Edit
+				update_icon() // Citadel Change
 			affecting.update_damages()
 			if(used == amount)
 				if(affecting.is_bandaged())
@@ -266,6 +267,7 @@
 			use(1)
 			affecting.salve()
 			playsound(src, pick(apply_sounds), 25)
+			update_icon() // Citadel Change
 
 /obj/item/stack/medical/splint
 	name = "medical splints"
@@ -336,3 +338,24 @@
 	icon_state = "tape-splint"
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
+
+// Begin Citadel Changes - New advanced kit sprites
+/obj/item/stack/medical/advanced/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+/obj/item/stack/medical/advanced/update_icon()
+	switch(amount)
+		if(1 to 2)
+			icon_state = initial(icon_state)
+		if(3 to 4)
+			icon_state = "[initial(icon_state)]_4"
+		if(5 to 6)
+			icon_state = "[initial(icon_state)]_6"
+		if(7 to 8)
+			icon_state = "[initial(icon_state)]_8"
+		if(9)
+			icon_state = "[initial(icon_state)]_9"
+		else
+			icon_state = "[initial(icon_state)]_10"
+// End Citadel Changes

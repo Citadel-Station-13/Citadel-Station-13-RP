@@ -8,7 +8,7 @@
 	var/active = 0
 
 
-/obj/machinery/gateway/initialize()
+/obj/machinery/gateway/Initialize()
 	update_icon()
 	if(dir == SOUTH)
 		density = 0
@@ -34,7 +34,7 @@
 	var/wait = 0				//this just grabs world.time at world start
 	var/obj/machinery/gateway/centeraway/awaygate = null
 
-/obj/machinery/gateway/centerstation/initialize()
+/obj/machinery/gateway/centerstation/Initialize()
 	update_icon()
 	wait = world.time + config.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)
@@ -130,13 +130,13 @@ obj/machinery/gateway/centerstation/process()
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 	if(awaygate.calibrated)
 		M.forceMove(get_step(awaygate.loc, SOUTH))
-		M.set_dir(SOUTH)
+		M.setDir(SOUTH)
 		return
 	else
 		var/obj/effect/landmark/dest = pick(awaydestinations)
 		if(dest)
 			M.forceMove(dest.loc)
-			M.set_dir(SOUTH)
+			M.setDir(SOUTH)
 		return
 
 /obj/machinery/gateway/centerstation/attackby(obj/item/device/W as obj, mob/user as mob)
@@ -164,7 +164,7 @@ obj/machinery/gateway/centerstation/process()
 	var/obj/machinery/gateway/centeraway/stationgate = null
 
 
-/obj/machinery/gateway/centeraway/initialize()
+/obj/machinery/gateway/centeraway/Initialize()
 	update_icon()
 	stationgate = locate(/obj/machinery/gateway/centerstation)
 	. = ..()
@@ -241,7 +241,7 @@ obj/machinery/gateway/centerstation/process()
 				M << "<font color='black'>The station gate has detected your exile implant and is blocking your entry.</font>"
 				return
 	M.forceMove(get_step(stationgate.loc, SOUTH))
-	M.set_dir(SOUTH)
+	M.setDir(SOUTH)
 	M << 'sound/effects/phasein.ogg'
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 

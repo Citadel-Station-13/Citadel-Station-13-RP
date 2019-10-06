@@ -25,7 +25,7 @@
 /obj/effect/wingrille_spawn/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 	return FALSE
 
-/obj/effect/wingrille_spawn/initialize()
+/obj/effect/wingrille_spawn/Initialize()
 	. = ..()
 	if(!win_path)
 		return
@@ -50,7 +50,7 @@
 						qdel(W)
 			if(!found_connection)
 				var/obj/structure/window/new_win = new win_path(src.loc)
-				new_win.set_dir(dir)
+				new_win.setDir(dir)
 				handle_window_spawn(new_win)
 		else
 			neighbours |= other

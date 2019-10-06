@@ -66,8 +66,8 @@
 	var/datum/effect/effect/system/spark_spread/sparks
 	var/wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark
 
-/mob/living/simple_animal/hostile/mecha/New()
-	..()
+/mob/living/simple_animal/hostile/mecha/Initialize(mapload)
+	. = ..()
 	sparks = new (src)
 	sparks.set_up(3, 1, src)
 

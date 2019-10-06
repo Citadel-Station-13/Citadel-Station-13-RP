@@ -1208,6 +1208,31 @@
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
 
+	else if(href_list["adminplayerobservefollow"])
+		if(!isobserver(usr) && !check_rights(R_ADMIN))
+			return
+
+		var/atom/movable/AM = locate(href_list["adminplayerobservefollow"])
+
+		var/client/C = usr.client
+		var/can_ghost = TRUE
+		if(!isobserver(usr))
+			can_ghost = C.admin_ghost()
+
+		if(!can_ghost)
+			return
+		var/mob/observer/dead/A = C.mob
+		A.ManualFollow(AM)
+
+	else if(href_list["admingetmovable"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/atom/movable/AM = locate(href_list["admingetmovable"])
+		if(QDELETED(AM))
+			return
+		AM.forceMove(get_turf(usr))
+
 	else if(href_list["adminplayerobservejump"])
 		if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))	return
 
@@ -1217,18 +1242,6 @@
 		if(!isobserver(usr))	C.admin_ghost()
 		sleep(2)
 		C.jumptomob(M)
-
-	else if(href_list["adminplayerobservefollow"])
-		if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))
-			return
-
-		var/mob/M = locate(href_list["adminplayerobservefollow"])
-
-		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
-		var/mob/observer/dead/G = C.mob
-		sleep(2)
-		G.ManualFollow(M)
 
 	else if(href_list["check_antagonist"])
 		check_antagonists()
@@ -1342,6 +1355,30 @@
 		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		feedback_inc("admin_cookies_spawned",1)
 		H << "<font color='blue'>Your prayers have been answered!! You received the <b>best cookie</b>!</font>"
+
+	else if(href_list["adminspawntreat"])
+		if(!check_rights(R_ADMIN|R_FUN))	return
+
+		var/mob/living/carbon/human/H = locate(href_list["adminspawntreat"])
+		if(!ishuman(H))
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
+			return
+
+		H.equip_to_slot_or_del( new /obj/item/weapon/reagent_containers/food/snacks/dtreat(H), slot_l_hand )
+		if(!(istype(H.l_hand,/obj/item/weapon/reagent_containers/food/snacks/dtreat)))
+			H.equip_to_slot_or_del( new /obj/item/weapon/reagent_containers/food/snacks/dtreat(H), slot_r_hand )
+			if(!(istype(H.r_hand,/obj/item/weapon/reagent_containers/food/snacks/dtreat)))
+				log_admin("[key_name(H)] has their hands full, so they did not receive their treat, spawned by [key_name(src.owner)].")
+				message_admins("[key_name(H)] has their hands full, so they did not receive their treat, spawned by [key_name(src.owner)].")
+				return
+			else
+				H.update_inv_r_hand()//To ensure the icon appears in the HUD
+		else
+			H.update_inv_l_hand()
+		log_admin("[key_name(H)] got their treat, spawned by [key_name(src.owner)]")
+		message_admins("[key_name(H)] got their treat, spawned by [key_name(src.owner)]")
+		feedback_inc("admin_cookies_spawned",1)
+		H << "<font color='blue'>Your prayers have been answered!! You are the <b>bestest</b>!</font>"
 
 	else if(href_list["adminsmite"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
@@ -1624,7 +1661,7 @@
 					else
 						var/atom/O = new path(target)
 						if(O)
-							O.set_dir(obj_dir)
+							O.setDir(obj_dir)
 							if(obj_name)
 								O.name = obj_name
 								if(istype(O,/mob))
@@ -1874,6 +1911,17 @@
 
 		var/client/C = usr.client
 		C.despawn_player(M)
+
+	else if(href_list["viewruntime"])
+		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
+		if(!istype(error_viewer))
+			to_chat(usr, "<span class='warning'>That runtime viewer no longer exists.</span>")
+			return
+
+		if(href_list["viewruntime_backto"])
+			error_viewer.show_to(owner, locate(href_list["viewruntime_backto"]), href_list["viewruntime_linear"])
+		else
+			error_viewer.show_to(owner, null, href_list["viewruntime_linear"])
 
 	// player info stuff
 

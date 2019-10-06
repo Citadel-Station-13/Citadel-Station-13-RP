@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(transcore)
 			continue
 
 		//In a human
-		BITSET(H.hud_updateflag, BACKUP_HUD)
+		ENABLE_BITFIELD(H.hud_updateflag, BACKUP_HUD)
 
 		if(H == imp.imp_in && H.mind && H.stat < DEAD)
 			SStranscore.m_backup(H.mind,H.nif)

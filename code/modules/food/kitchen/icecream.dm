@@ -51,7 +51,7 @@
 		else
 			return "vanilla"
 
-/obj/machinery/icecream_vat/initialize()
+/obj/machinery/icecream_vat/Initialize()
 	. = ..()
 	create_reagents(100)
 	while(product_types.len < 6)
@@ -177,7 +177,7 @@
 	var/ice_creamed = 0
 	var/cone_type
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream/initialize()
+/obj/item/weapon/reagent_containers/food/snacks/icecream/Initialize()
 	create_reagents(20)
 	reagents.add_reagent("nutriment", 5)
 

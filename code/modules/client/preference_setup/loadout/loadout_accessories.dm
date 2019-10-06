@@ -1,3 +1,4 @@
+
 /datum/gear/accessory
 	display_name = "accessory"
 	slot = slot_tie
@@ -77,9 +78,9 @@
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(wcoats))
 
 /datum/gear/accessory/holster
-	display_name = "holster selection (Security, CD, HoP)"
+	display_name = "holster selection"
 	path = /obj/item/clothing/accessory/holster
-	allowed_roles = list("Colony Director", "Head of Personnel", "Security Officer", "Warden", "Head of Security","Detective")
+	allowed_roles = list("Colony Director","Head of Personnel","Security Officer","Warden","Head of Security","Detective","Search and Rescue","Explorer","Pathfinder")
 
 /datum/gear/accessory/holster/New()
 	..()
@@ -132,35 +133,40 @@
 	display_name = "suit vest"
 	path = /obj/item/clothing/accessory/vest
 
+/datum/gear/accessory/lifecrystal
+	display_name = "Life Crystal"
+	path = /obj/item/clothing/accessory/collar/lifecrystal
+	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
+
 /datum/gear/accessory/brown_vest
 	display_name = "webbing, brown"
 	path = /obj/item/clothing/accessory/storage/brown_vest
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/black_vest
 	display_name = "webbing, black"
 	path = /obj/item/clothing/accessory/storage/black_vest
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/white_vest
 	display_name = "webbing, white"
 	path = /obj/item/clothing/accessory/storage/white_vest
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/brown_drop_pouches
 	display_name = "drop pouches, brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/black_drop_pouches
 	display_name = "drop pouches, black"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/white_drop_pouches
 	display_name = "drop pouches, white"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Search and Rescue","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/fannypack
 	display_name = "fannypack selection"
@@ -244,3 +250,8 @@
 /datum/gear/accessory/locket
 	display_name = "locket"
 	path = /obj/item/clothing/accessory/locket
+
+/datum/gear/accessory/treatbox
+	display_name = "box of treats"
+	path = /obj/item/weapon/storage/box/treats
+	cost = 2

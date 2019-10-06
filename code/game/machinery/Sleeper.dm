@@ -23,7 +23,7 @@
 			if(sleepernew)
 				sleeper = sleepernew
 				sleepernew.console = src
-				set_dir(get_dir(src, sleepernew))
+				setDir(get_dir(src, sleepernew))
 				return
 		return
 
@@ -181,7 +181,7 @@
 
 	RefreshParts()
 
-/obj/machinery/sleeper/initialize()
+/obj/machinery/sleeper/Initialize()
 	. = ..()
 	update_icon()
 

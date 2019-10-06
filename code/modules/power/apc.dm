@@ -163,7 +163,7 @@
 	// offset 24 pixels in direction of dir
 	// this allows the APC to be embedded in a wall, yet still inside an area
 	if (building)
-		set_dir(ndir)
+		setDir(ndir)
 
 	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
 	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
@@ -206,7 +206,7 @@
 	// create a terminal object at the same position as original turf loc
 	// wires will attach to this
 	terminal = new/obj/machinery/power/terminal(src.loc)
-	terminal.set_dir(dir)
+	terminal.setDir(dir)
 	terminal.master = src
 
 /obj/machinery/power/apc/proc/init()

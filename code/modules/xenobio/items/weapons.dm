@@ -29,12 +29,10 @@
 			H.apply_damage(agony_to_apply, HALLOSS)
 	..()
 
-/obj/item/weapon/melee/baton/slime/loaded/New()
-	..()
-	bcell = new/obj/item/weapon/cell/device(src)
+/obj/item/weapon/melee/baton/slime/loaded/Initialize(mapload)
+	. = ..()
+	bcell = new /obj/item/weapon/cell/device(src)
 	update_icon()
-	return
-
 
 // Research borg's version
 /obj/item/weapon/melee/baton/slime/robot
@@ -49,7 +47,6 @@
 
 /obj/item/weapon/melee/baton/slime/robot/attackby(obj/item/weapon/W, mob/user)
 	return
-
 
 // Xeno stun gun + projectile
 /obj/item/weapon/gun/energy/taser/xeno

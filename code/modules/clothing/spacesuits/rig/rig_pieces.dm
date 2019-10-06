@@ -5,6 +5,7 @@
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
 	item_flags = THICKMATERIAL
+	flags = PHORONGUARD
 	flags_inv = 		 HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection =    HEAD|FACE|EYES
@@ -22,6 +23,7 @@
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
 	item_flags = THICKMATERIAL
+	flags = PHORONGUARD
 	body_parts_covered = HANDS
 	heat_protection =    HANDS
 	cold_protection =    HANDS
@@ -30,6 +32,7 @@
 
 /obj/item/clothing/shoes/magboots/rig
 	name = "boots"
+	flags = PHORONGUARD
 	body_parts_covered = FEET
 	cold_protection = FEET
 	heat_protection = FEET
@@ -39,6 +42,7 @@
 
 /obj/item/clothing/suit/space/rig
 	name = "chestpiece"
+	flags = PHORONGUARD
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -113,7 +117,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection =    HEAD|FACE|EYES
 	cold_protection =    HEAD|FACE|EYES
-	flags =              THICKMATERIAL|AIRTIGHT
+	flags =              THICKMATERIAL|AIRTIGHT|PHORONGUARD
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"
@@ -122,13 +126,14 @@
 	heat_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv =          HIDEJUMPSUIT
-	flags =              THICKMATERIAL
+	flags =              THICKMATERIAL|PHORONGUARD
 
 /obj/item/clothing/shoes/lightrig
 	name = "boots"
 	body_parts_covered = FEET
 	cold_protection = FEET
 	heat_protection = FEET
+	flags = PHORONGUARD
 	species_restricted = null
 	gender = PLURAL
 
@@ -138,5 +143,6 @@
 	body_parts_covered = HANDS
 	heat_protection =    HANDS
 	cold_protection =    HANDS
+	flags = PHORONGUARD
 	species_restricted = null
 	gender = PLURAL

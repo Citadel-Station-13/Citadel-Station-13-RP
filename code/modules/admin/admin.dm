@@ -239,7 +239,7 @@ proc/admin_notice(var/message, var/rights)
 
 		// Display the notes on the current page
 		var/number_pages = note_keys.len / PLAYER_NOTES_ENTRIES_PER_PAGE
-		// Emulate ceil(why does BYOND not have ceil)
+		// Emulate CEILING(why does BYOND not have ceil, 1)
 		if(number_pages != round(number_pages))
 			number_pages = round(number_pages) + 1
 		var/page_index = page - 1
@@ -362,7 +362,7 @@ proc/admin_notice(var/message, var/rights)
 			"}
 		if(1)
 			dat+= "Station Feed Channels<HR>"
-			if( isemptylist(news_network.network_channels) )
+			if( !length(news_network.network_channels) )
 				dat+="<I>No active channels found...</I>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
@@ -427,7 +427,7 @@ proc/admin_notice(var/message, var/rights)
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
-				if( isemptylist(src.admincaster_feed_channel.messages) )
+				if( !length(src.admincaster_feed_channel.messages) )
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
 					var/i = 0
@@ -449,7 +449,7 @@ proc/admin_notice(var/message, var/rights)
 				Keep in mind that users attempting to view a censored feed will instead see the \[REDACTED\] tag above it.</FONT>
 				<HR>Select Feed channel to get Stories from:<BR>
 			"}
-			if(isemptylist(news_network.network_channels))
+			if(!length(news_network.network_channels))
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
@@ -462,7 +462,7 @@ proc/admin_notice(var/message, var/rights)
 				morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed
 				stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>
 			"}
-			if(isemptylist(news_network.network_channels))
+			if(!length(news_network.network_channels))
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
@@ -474,7 +474,7 @@ proc/admin_notice(var/message, var/rights)
 				<B>[src.admincaster_feed_channel.channel_name]: </B><FONT SIZE=1>\[ created by: <FONT COLOR='maroon'>[src.admincaster_feed_channel.author]</FONT> \]</FONT><BR>
 				<FONT SIZE=2><A href='?src=\ref[src];ac_censor_channel_author=\ref[src.admincaster_feed_channel]'>[(src.admincaster_feed_channel.author=="\[REDACTED\]") ? ("Undo Author censorship") : ("Censor channel Author")]</A></FONT><HR>
 			"}
-			if( isemptylist(src.admincaster_feed_channel.messages) )
+			if( !length(src.admincaster_feed_channel.messages) )
 				dat+="<I>No feed messages found in channel...</I><BR>"
 			else
 				for(var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
@@ -494,7 +494,7 @@ proc/admin_notice(var/message, var/rights)
 					No further feed story additions are allowed while the D-Notice is in effect.<BR><BR>
 				"}
 			else
-				if( isemptylist(src.admincaster_feed_channel.messages) )
+				if( !length(src.admincaster_feed_channel.messages) )
 					dat+="<I>No feed messages found in channel...</I><BR>"
 				else
 					for(var/datum/feed_message/MESSAGE in src.admincaster_feed_channel.messages)
@@ -635,28 +635,6 @@ proc/admin_notice(var/message, var/rights)
 //i.e. buttons/verbs
 
 
-/datum/admins/proc/restart()
-	set category = "Server"
-	set name = "Restart"
-	set desc="Restarts the world"
-	if (!usr.client.holder)
-		return
-	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
-	if(confirm == "Cancel")
-		return
-	if(confirm == "Yes")
-		world << "<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</span>"
-		log_admin("[key_name(usr)] initiated a reboot.")
-
-		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
-		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
-		sleep(50)
-		world.Reboot()
-
 
 /datum/admins/proc/announce()
 	set category = "Special Verbs"
@@ -730,28 +708,28 @@ var/datum/announcement/minor/admin_min_announcer = new
 	//Split on pipe or \n
 	decomposed = splittext(message,regex("\\||$","m"))
 	decomposed += "0" //Tack on a final 0 sleep to make 3-per-message evenly
-	
+
 	//Time to find how they screwed up.
 	//Wasn't the right length
 	if((decomposed.len) % 3) //+1 to accomidate the lack of a wait time for the last message
 		to_chat(usr,"<span class='warning'>You passed [decomposed.len] segments (senders+messages+pauses). You must pass a multiple of 3, minus 1 (no pause after the last message). That means a sender and message on every other line (starting on the first), separated by a pipe character (|), and a number every other line that is a pause in seconds.</span>")
 		return
-	
+
 	//Too long a conversation
 	if((decomposed.len / 3) > 20)
 		to_chat(usr,"<span class='warning'>This conversation is too long! 20 messages maximum, please.</span>")
 		return
-	
+
 	//Missed some sleeps, or sanitized to nothing.
 	for(var/i = 1; i < decomposed.len; i++)
-		
+
 		//Sanitize sender
 		var/clean_sender = sanitize(decomposed[i])
 		if(!clean_sender)
 			to_chat(usr,"<span class='warning'>One part of your conversation was not able to be sanitized. It was the sender of the [(i+2)/3]\th message.</span>")
 			return
 		decomposed[i] = clean_sender
-		
+
 		//Sanitize message
 		var/clean_message = sanitize(decomposed[++i])
 		if(!clean_message)
@@ -986,24 +964,6 @@ var/datum/announcement/minor/admin_min_announcer = new
 	config.allow_admin_rev = !(config.allow_admin_rev)
 	message_admins("<font color='blue'>Toggled reviving to [config.allow_admin_rev].</font>")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/immreboot()
-	set category = "Server"
-	set desc="Reboots the server post haste"
-	set name="Immediate Reboot"
-	if(!usr.client.holder)	return
-	if( alert("Reboot server?",,"Yes","No") == "No")
-		return
-	world << "<font color='red'><b>Rebooting world!</b></font> <font color='blue'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</font>"
-	log_admin("[key_name(usr)] initiated an immediate reboot.")
-
-	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
-	feedback_add_details("admin_verb","IR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	if(blackbox)
-		blackbox.save_all_data_to_sql()
-
-	world.Reboot()
 
 /datum/admins/proc/unprison(var/mob/M in mob_list)
 	set category = "Admin"

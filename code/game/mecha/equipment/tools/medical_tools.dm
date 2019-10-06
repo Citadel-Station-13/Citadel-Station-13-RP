@@ -452,7 +452,7 @@
 	create_reagents(max_volume)
 	synth = new (list(src),0)
 
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize()
 	. = ..()
 	//Wow nice, firsties
 	if(LAZYLEN(allowed_reagents) && !istext(allowed_reagents[1]))
@@ -512,7 +512,7 @@
 				var/list/mobs = new
 				for(var/mob/living/carbon/M in S.loc)
 					mobs += M
-				var/mob/living/carbon/M = safepick(mobs)
+				var/mob/living/carbon/M = SAFEPICK(mobs)
 				if(M)
 					S.icon_state = initial(S.icon_state)
 					S.icon = initial(S.icon)

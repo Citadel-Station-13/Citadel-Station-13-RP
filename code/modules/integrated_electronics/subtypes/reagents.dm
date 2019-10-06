@@ -32,7 +32,7 @@
 
 
 /obj/item/integrated_circuit/reagent/smoke/interact(mob/user)
-	set_pin_data(IC_OUTPUT, 2, weakref(src))
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 	..()
 
@@ -66,7 +66,7 @@
 	var/transfer_amount = 10
 
 /obj/item/integrated_circuit/reagent/injector/interact(mob/user)
-	set_pin_data(IC_OUTPUT, 2, weakref(src))
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 	..()
 
@@ -83,7 +83,7 @@
 	else
 		direc = 1
 	if(isnum(new_amount))
-		new_amount = Clamp(new_amount, 0, volume)
+		new_amount = CLAMP(new_amount, 0, volume)
 		transfer_amount = new_amount
 
 
@@ -132,7 +132,7 @@
 		if(!TS.Adjacent(TT))
 			activate_pin(3)
 			return
-		var/tramount = Clamp(min(transfer_amount, reagents.maximum_volume - reagents.total_volume), 0, reagents.maximum_volume)
+		var/tramount = CLAMP(min(transfer_amount, reagents.maximum_volume - reagents.total_volume), 0, reagents.maximum_volume)
 		if(ismob(target))//Blood!
 			if(istype(target, /mob/living/carbon))
 				var/mob/living/carbon/T = target
@@ -207,7 +207,7 @@
 	else
 		direc = 1
 	if(isnum(new_amount))
-		new_amount = Clamp(new_amount, 0, 50)
+		new_amount = CLAMP(new_amount, 0, 50)
 		transfer_amount = new_amount
 
 /obj/item/integrated_circuit/reagent/pump/do_work()
@@ -252,7 +252,7 @@
 
 
 /obj/item/integrated_circuit/reagent/storage/interact(mob/user)
-	set_pin_data(IC_OUTPUT, 2, weakref(src))
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 	..()
 
@@ -329,7 +329,7 @@
 	else
 		direc = 1
 	if(isnum(new_amount))
-		new_amount = Clamp(new_amount, 0, 50)
+		new_amount = CLAMP(new_amount, 0, 50)
 		transfer_amount = new_amount
 
 /obj/item/integrated_circuit/reagent/filter/do_work()

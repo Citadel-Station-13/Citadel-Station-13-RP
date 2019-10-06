@@ -43,6 +43,7 @@
 	robot_modules["Janihound"] = /obj/item/weapon/robot_module/robot/scrubpup
 	robot_modules["Sci-borg"] = /obj/item/weapon/robot_module/robot/science
 	robot_modules["Pupdozer"] = /obj/item/weapon/robot_module/robot/engiedog
+	robot_modules["Service-Hound"] = /obj/item/weapon/robot_module/robot/clerical/brodog
 	return 1
 
 //Just add a new proc with the robot_module type if you wish to run some other vore code
@@ -137,7 +138,7 @@
 	name = "k9 robot module"
 	sprites = list(
 					"K9 hound" = "k9",
-					"K9 Alternative (Static)" = "k92",
+					"K9 Alternative" = "k92",
 					"Secborg model V-2" = "secborg"
 					)
 	channels = list("Security" = 1)
@@ -179,6 +180,12 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+
+	if(R.client && R.client.ckey in list("nezuli"))
+		sprites += "Alina"
+		sprites["Alina"] = "alina-sec"
+
 	..()
 
 /obj/item/weapon/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -208,7 +215,7 @@
 	can_be_pushed = 0
 	sprites = list(
 					"Medical Hound" = "medihound",
-					"Dark Medical Hound (Static)" = "medihounddark",
+					"Dark Medical Hound" = "medihounddark",
 					"Mediborg model V-2" = "vale",
 					)
 
@@ -217,7 +224,7 @@
 	src.modules += new /obj/item/device/dogborg/boop_module(src) //Boop the crew.
 	src.modules += new /obj/item/device/healthanalyzer(src) // See who's hurt specificially.
 	src.modules += new /obj/item/weapon/reagent_containers/syringe(src) //In case the chemist is nice!
-	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker(src)//For holding the chemicals when the chemist is nice
+	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker/large(src)//For holding the chemicals when the chemist is nice
 	src.modules += new /obj/item/device/sleevemate(src) //Lets them scan people.
 	src.modules += new /obj/item/weapon/shockpaddles/robot/hound(src) //Paws of life
 	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
@@ -265,6 +272,11 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+
+	if(R.client && R.client.ckey in list("nezuli"))
+		sprites += "Alina"
+		sprites["Alina"] = "alina-med"
 	..()
 
 /obj/item/weapon/robot_module/robot/ert
@@ -310,6 +322,7 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 	..()
 
 /obj/item/weapon/robot_module/robot/scrubpup
@@ -389,6 +402,7 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 	..()
 
 /obj/item/weapon/robot_module/robot/science
@@ -450,12 +464,12 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 	..()
 
 /obj/item/weapon/robot_module/robot/engiedog
 	name = "Pupdozer"
 	sprites = list(
-					"V2 Engidog" = "thottbot",
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot"
 					)
@@ -472,6 +486,7 @@
 	src.modules += new /obj/item/weapon/tool/wirecutters/cyborg(src)
 	src.modules += new /obj/item/device/multitool(src)
 	src.modules += new /obj/item/device/t_scanner(src)
+	src.modules += new /obj/item/device/analyzer(src)
 	src.modules += new /obj/item/taperoll/engineering(src)
 	src.modules += new /obj/item/weapon/inflatable_dispenser/robot(src)
 	src.modules += new /obj/item/weapon/pickaxe(src)
@@ -482,28 +497,18 @@
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
 	src.modules += new /obj/item/weapon/gripper(src)
+	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
 
-	//Painfully slow charger regen but high capacity. Also starts with low amount.
-	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
+	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
 	metal.name = "Steel reserves"
-	metal.recharge_rate = 50
-	metal.max_energy = 50000
-	metal.energy = 5000
-	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
+	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
 	glass.name = "Glass reserves"
-	glass.recharge_rate = 50
-	glass.max_energy = 50000
-	glass.energy = 5000
-	var/datum/matter_synth/wood = new /datum/matter_synth/wood()
+	var/datum/matter_synth/wood = new /datum/matter_synth/wood(40000)
 	wood.name = "Wood reserves"
-	wood.recharge_rate = 50
-	wood.max_energy = 50000
-	wood.energy = 5000
-	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic()
+	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic(40000)
 	plastic.name = "Plastic reserves"
-	plastic.recharge_rate = 50
-	plastic.max_energy = 50000
-	plastic.energy = 5000
+	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel(20000)
+	plasteel.name = "Plasteel reserves"
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
 	water.recharge_rate = 0
@@ -512,6 +517,7 @@
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
 	synths += metal
 	synths += glass
+	synths += plasteel
 	synths += wood
 	synths += plastic
 	synths += wire
@@ -549,6 +555,10 @@
 	C.synths = list(wire)
 	src.modules += C
 
+	var/obj/item/stack/material/cyborg/plasteel/PS = new (src)
+	PS.synths = list(plasteel)
+	src.modules += PS
+
 	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
 	S.synths = list(metal)
 	src.modules += S
@@ -580,6 +590,84 @@
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+
+	if(R.client && R.client.ckey in list("nezuli"))
+		sprites += "Alina"
+		sprites["Alina"] = "alina-eng"
+
+	..()
+
+// Uses modified K9 sprites.
+/obj/item/weapon/robot_module/robot/clerical/brodog
+	name = "service-hound module"
+	sprites = list(
+					"Blackhound" = "k50",
+					"Pinkhound" = "k69",
+					"ServicehoundV2" = "serve2",
+					"ServicehoundV2 Darkmode" = "servedark",
+					)
+	channels = list("Service" = 1)
+	can_be_pushed = 0
+
+// In a nutshell, basicly service/butler robot but in dog form.
+/obj/item/weapon/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
+	src.modules += new /obj/item/weapon/gripper/service(src)
+	src.modules += new /obj/item/weapon/reagent_containers/glass/bucket(src)
+	src.modules += new /obj/item/weapon/material/minihoe(src)
+	src.modules += new /obj/item/weapon/material/knife/machete/hatchet(src)
+	src.modules += new /obj/item/device/analyzer/plant_analyzer(src)
+	src.modules += new /obj/item/weapon/storage/bag/plants(src)
+	src.modules += new /obj/item/weapon/robot_harvester(src)
+	src.modules += new /obj/item/weapon/material/knife(src)
+	src.modules += new /obj/item/weapon/material/kitchen/rollingpin(src)
+	src.modules += new /obj/item/device/multitool(src) //to freeze trays
+	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
+	src.modules += new /obj/item/device/dogborg/boop_module(src)
+	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
+
+	var/datum/matter_synth/water = new /datum/matter_synth()
+	water.name = "Water reserves"
+	water.recharge_rate = 0
+	water.max_energy = 1000
+	water.energy = 0
+	R.water_res = water
+	synths += water
+
+	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	T.water = water
+	src.modules += T
+
+	var/obj/item/weapon/rsf/M = new /obj/item/weapon/rsf(src)
+	M.stored_matter = 30
+	src.modules += M
+
+	src.modules += new /obj/item/weapon/reagent_containers/dropper/industrial(src)
+
+	var/obj/item/weapon/flame/lighter/zippo/L = new /obj/item/weapon/flame/lighter/zippo(src)
+	L.lit = 1
+	src.modules += L
+
+	src.modules += new /obj/item/weapon/tray/robotray(src)
+	src.modules += new /obj/item/weapon/reagent_containers/borghypo/service(src)
+
+/* // I don't know what kind of sleeper to put here, but also no need if you already have "Robot Nom" verb.
+	var/obj/item/device/dogborg/sleeper/K9/B = new /obj/item/device/dogborg/sleeper/K9(src)
+	B.water = water
+	src.modules += B
+*/
+
+	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
+	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
+	R.ui_style_vr = TRUE
+	R.pixel_x 	 = -16
+	R.old_x 	 = -16
+	R.default_pixel_x = -16
+	R.dogborg = TRUE
+	R.wideborg = TRUE
+	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 	..()
 
 /obj/item/weapon/robot_module/Reset(var/mob/living/silicon/robot/R)
@@ -594,4 +682,5 @@
 	R.verbs -= /mob/living/silicon/robot/proc/ex_reserve_refill
 	R.verbs -= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs -= /mob/living/proc/shred_limb
+	R.verbs -= /mob/living/silicon/robot/proc/rest_style
 	..()

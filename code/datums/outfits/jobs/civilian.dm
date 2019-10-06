@@ -106,3 +106,31 @@
 	pda_type = /obj/item/device/pda/cargo // Brown looks more rugged
 	r_pocket = /obj/item/device/gps/explorer
 	id_pda_assignment = "Explorer"
+
+/decl/hierarchy/outfit/job/clown
+	name = OUTFIT_JOB_NAME("Clown")
+	shoes = /obj/item/clothing/shoes/clown_shoes
+	uniform = /obj/item/clothing/under/rank/clown
+	mask = /obj/item/clothing/mask/gas/clown_hat
+	l_ear = /obj/item/device/radio/headset
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/civilian
+	pda_slot = slot_belt
+	pda_type = /obj/item/device/pda/clown
+	backpack = /obj/item/weapon/storage/backpack/clown
+	r_pocket = /obj/item/weapon/bikehorn
+	id_pda_assignment = "Clown"
+
+/decl/hierarchy/outfit/job/mime
+	name = OUTFIT_JOB_NAME("Mime")
+	shoes = /obj/item/clothing/shoes/mime
+	uniform = /obj/item/clothing/under/mime
+	mask = /obj/item/clothing/mask/gas/mime
+	l_ear = /obj/item/device/radio/headset
+	id_slot = slot_wear_id
+	id_type = /obj/item/weapon/card/id/civilian
+	pda_slot = slot_belt
+	pda_type = /obj/item/device/pda/mime
+	backpack = /obj/item/weapon/storage/backpack
+	r_pocket = /obj/item/weapon/pen/crayon/mime
+	id_pda_assignment = "Mime"

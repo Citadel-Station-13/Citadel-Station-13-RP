@@ -291,3 +291,26 @@
 	containername = "Tritium crate"
 	containertype = /obj/structure/closet/crate/engineering
 	contains = list(/obj/fiftyspawner/tritium)
+
+/datum/supply_pack/eng/engine/fission
+	name = "Fission Starter crate"
+	contains = list(/obj/machinery/power/fission,
+			/obj/item/weapon/circuitboard/fission_monitor,
+			/obj/item/weapon/storage/briefcase/fission/fuelmixed,
+			/obj/item/weapon/storage/briefcase/fission/reflectormixed,
+			/obj/item/weapon/storage/briefcase/fission/controlmixed)
+	cost = 20
+	containertype = /obj/structure/closet/crate/secure/engineering
+	containername = "fission core crate"
+	access = access_ce
+
+/datum/supply_pack/eng/engine/fission/expansion
+	name = "Fission Expansion crate"
+	contains = list(/obj/item/weapon/circuitboard/fission_monitor,
+			/obj/item/weapon/storage/briefcase/fission/uranium,
+			/obj/item/weapon/storage/briefcase/fission/tungstencarbide,
+			/obj/item/weapon/storage/briefcase/fission/boron)
+	cost = 20
+	containertype = /obj/structure/closet/crate/secure/engineering
+	containername = "fission expansion crate"
+	access = access_ce

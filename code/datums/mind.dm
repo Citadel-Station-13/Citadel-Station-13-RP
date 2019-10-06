@@ -99,7 +99,8 @@
 		new_character.key = key		//now transfer the key to link the client to our new body
 
 /datum/mind/proc/store_memory(new_text)
-	memory += "[new_text]<BR>"
+	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
+		memory += "[new_text]<BR>"
 
 /datum/mind/proc/show_memory(mob/recipient)
 	var/output = "<B>[current.real_name]'s Memory</B><HR>"
@@ -335,7 +336,7 @@
 	else if(href_list["implant"])
 		var/mob/living/carbon/human/H = current
 
-		BITSET(H.hud_updateflag, IMPLOYAL_HUD)   // updates that players HUD images so secHUD's pick up they are implanted or not.
+		ENABLE_BITFIELD(H.hud_updateflag, IMPLOYAL_HUD)   // updates that players HUD images so secHUD's pick up they are implanted or not.
 
 		switch(href_list["implant"])
 			if("remove")
@@ -352,7 +353,7 @@
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
 			else
 	else if (href_list["silicon"])
-		BITSET(current.hud_updateflag, SPECIALROLE_HUD)
+		ENABLE_BITFIELD(current.hud_updateflag, SPECIALROLE_HUD)
 		switch(href_list["silicon"])
 
 			if("unemag")

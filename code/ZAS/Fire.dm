@@ -187,7 +187,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		qdel(src)
 		return
 
-	set_dir(pick(cardinal))
+	setDir(pick(cardinal))
 
 	var/datum/gas_mixture/air_contents = loc.return_air()
 	color = fire_color(air_contents.temperature)
