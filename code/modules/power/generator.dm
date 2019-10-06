@@ -223,7 +223,7 @@
 	if (usr.stat || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 
 /obj/machinery/power/generator/verb/rotate_anticlock()
 	set category = "Object"
@@ -233,7 +233,7 @@
 	if (usr.stat || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, -90))
+	src.setDir(turn(src.dir, -90))
 
 /obj/machinery/power/generator/power_spike()
 //	if(!effective_gen >= max_power / 2 && powernet) // Don't make a spike if we're not making a whole lot of power.

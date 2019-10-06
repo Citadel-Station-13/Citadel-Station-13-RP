@@ -60,8 +60,8 @@
 
 		animate_movement = SLIDE_STEPS
 
-		New(var/location, var/segments = 6)
-			..()
+		Initialize(mapload, segments = 6)
+			. = ..()
 
 			var/mob/living/simple_animal/space_worm/current = src
 
@@ -74,7 +74,7 @@
 			if(stat == CONSCIOUS || stat == UNCONSCIOUS)
 				icon_state = "spacewormhead[previous?1:0]"
 				if(previous)
-					set_dir(get_dir(previous,src))
+					setDir(get_dir(previous,src))
 			else
 				icon_state = "spacewormheaddead"
 
@@ -128,7 +128,7 @@
 				icon_state = "spaceworm[get_dir(src,previous) | get_dir(src,next)]" //see 3 lines below
 			else //tail
 				icon_state = "spacewormtail"
-				set_dir(get_dir(src,next)) //next will always be present since it's not a head and if it's dead, it goes in the other if branch
+				setDir(get_dir(src,next)) //next will always be present since it's not a head and if it's dead, it goes in the other if branch
 		else
 			icon_state = "spacewormdead"
 

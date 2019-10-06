@@ -28,7 +28,7 @@
 	character.all_underwear_metadata.Cut()
 
 	for(var/underwear_category_name in pref.all_underwear)
-		var/datum/category_group/underwear/underwear_category = global_underwear.categories_by_name[underwear_category_name]
+		var/datum/category_group/underwear/underwear_category = GLOB.global_underwear.categories_by_name[underwear_category_name]
 		if(underwear_category)
 			var/underwear_item_name = pref.all_underwear[underwear_category_name]
 			character.all_underwear[underwear_category_name] = underwear_category.items_by_name[underwear_item_name]
@@ -42,7 +42,7 @@
 		pref.backbag = 1 //Same as above
 	character.backbag = pref.backbag
 
-	if(pref.pdachoice > 4 || pref.pdachoice < 1)
+	if(pref.pdachoice > 5 || pref.pdachoice < 1)
 		pref.pdachoice = 1
 	character.pdachoice = pref.pdachoice
 
@@ -52,7 +52,7 @@
 	if(!istype(pref.all_underwear))
 		pref.all_underwear = list()
 
-		for(var/datum/category_group/underwear/WRC in global_underwear.categories)
+		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			for(var/datum/category_item/underwear/WRI in WRC.items)
 				if(WRI.is_default(pref.identifying_gender ? pref.identifying_gender : MALE))
 					pref.all_underwear[WRC.name] = WRI.name
@@ -62,7 +62,7 @@
 		pref.all_underwear_metadata = list()
 
 	for(var/underwear_category in pref.all_underwear)
-		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[underwear_category]
+		var/datum/category_group/underwear/UWC = GLOB.global_underwear.categories_by_name[underwear_category]
 		if(!UWC)
 			pref.all_underwear -= underwear_category
 		else
@@ -80,7 +80,7 @@
 /datum/category_item/player_setup_item/general/equipment/content()
 	. = list()
 	. += "<b>Equipment:</b><br>"
-	for(var/datum/category_group/underwear/UWC in global_underwear.categories)
+	for(var/datum/category_group/underwear/UWC in GLOB.global_underwear.categories)
 		var/item_name = pref.all_underwear[UWC.name] ? pref.all_underwear[UWC.name] : "None"
 		. += "[UWC.name]: <a href='?src=\ref[src];change_underwear=[UWC.name]'><b>[item_name]</b></a>"
 		var/datum/category_item/underwear/UWI = UWC.items_by_name[item_name]
@@ -127,7 +127,7 @@
 			return TOPIC_REFRESH
 
 	else if(href_list["change_underwear"])
-		var/datum/category_group/underwear/UWC = global_underwear.categories_by_name[href_list["change_underwear"]]
+		var/datum/category_group/underwear/UWC = GLOB.global_underwear.categories_by_name[href_list["change_underwear"]]
 		if(!UWC)
 			return
 		var/datum/category_item/underwear/selected_underwear = input(user, "Choose underwear:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items

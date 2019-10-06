@@ -80,6 +80,7 @@
 	desc = "It's a small bag with dice inside."
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicebag"
+	base_icon = "dicebag"
 
 /obj/item/weapon/storage/pill_bottle/dice/New()
 	..()
@@ -91,6 +92,7 @@
 	desc = "It's a small bag with gaming dice inside."
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "magicdicebag"
+	base_icon = "magicdicebag"
 
 /obj/item/weapon/storage/pill_bottle/dice_nerd/New()
 	..()

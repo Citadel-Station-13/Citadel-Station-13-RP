@@ -1222,8 +1222,8 @@ END OF CITADEL CHANGES */
 	var/list/warned_users = list()
 	var/list/logged_events = list()
 
-/obj/item/device/perfect_tele/New()
-	..()
+/obj/item/device/perfect_tele/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 	power_source = new (src)
 	spk = new(src)
@@ -1487,8 +1487,8 @@ END OF CITADEL CHANGES */
 	var/creator
 	var/warned_users = list()
 
-/obj/item/device/perfect_tele_beacon/New()
-	..()
+/obj/item/device/perfect_tele_beacon/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/device/perfect_tele_beacon/Destroy()

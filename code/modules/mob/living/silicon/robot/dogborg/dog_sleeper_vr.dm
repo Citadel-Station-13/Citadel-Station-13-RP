@@ -37,8 +37,8 @@
 	var/digest_brute = 2
 	var/digest_burn = 3
 
-/obj/item/device/dogborg/sleeper/New()
-	..()
+/obj/item/device/dogborg/sleeper/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 	files = new /datum/research/techonly(src)
 

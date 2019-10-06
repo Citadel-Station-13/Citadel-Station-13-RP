@@ -161,7 +161,7 @@
 		. = ..()
 		if(direct != olddir)
 			dir = olddir
-			set_dir(direct)
+			setDir(direct)
 
 		src.move_speed = world.time - src.l_move_time
 		src.l_move_time = world.time
@@ -282,7 +282,7 @@
 				move_delay += config.walk_speed
 		move_delay += mob.movement_delay()
 
-		if(istype(mob.buckled))// VOREStation Removal - , /obj/vehicle))
+		if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.
 			//manually set move_delay for vehicles so we don't inherit any mob movement penalties
 			//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
 			move_delay = world.time
@@ -367,7 +367,7 @@
 
 		for (var/obj/item/weapon/grab/G in mob)
 			if (G.state == GRAB_NECK)
-				mob.set_dir(reverse_dir[direct])
+				mob.setDir(reverse_dir[direct])
 			G.adjust_position()
 		for (var/obj/item/weapon/grab/G in mob.grabbed_by)
 			G.adjust_position()

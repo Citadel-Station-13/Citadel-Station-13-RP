@@ -1,6 +1,6 @@
 var/global/list/ore_data = list()
 
-/ore
+/datum/ore
 	var/name
 	var/display_name
 	var/alloy
@@ -18,12 +18,12 @@ var/global/list/ore_data = list()
 		)
 	var/xarch_source_mineral = "iron"
 
-/ore/New()
+/datum/ore/New()
 	. = ..()
 	if(!display_name)
 		display_name = name
 
-/ore/uranium
+/datum/ore/uranium
 	name = "uranium"
 	display_name = "pitchblende"
 	smelts_to = "uranium"
@@ -37,7 +37,7 @@ var/global/list/ore_data = list()
 		)
 	xarch_source_mineral = "potassium"
 
-/ore/hematite
+/datum/ore/hematite
 	name = "hematite"
 	display_name = "hematite"
 	smelts_to = "iron"
@@ -47,7 +47,7 @@ var/global/list/ore_data = list()
 	ore = /obj/item/weapon/ore/iron
 	scan_icon = "mineral_common"
 
-/ore/coal
+/datum/ore/coal
 	name = "carbon"
 	display_name = "raw carbon"
 	smelts_to = "plastic"
@@ -57,14 +57,14 @@ var/global/list/ore_data = list()
 	ore = /obj/item/weapon/ore/coal
 	scan_icon = "mineral_common"
 
-/ore/glass
+/datum/ore/glass
 	name = "sand"
 	display_name = "sand"
 	smelts_to = "glass"
 	alloy = 1
 	compresses_to = "sandstone"
 
-/ore/phoron
+/datum/ore/phoron
 	name = "phoron"
 	display_name = "phoron crystals"
 	compresses_to = "phoron"
@@ -81,7 +81,7 @@ var/global/list/ore_data = list()
 		)
 	xarch_source_mineral = "phoron"
 
-/ore/silver
+/datum/ore/silver
 	name = "silver"
 	display_name = "native silver"
 	smelts_to = "silver"
@@ -90,7 +90,7 @@ var/global/list/ore_data = list()
 	ore = /obj/item/weapon/ore/silver
 	scan_icon = "mineral_uncommon"
 
-/ore/gold
+/datum/ore/gold
 	smelts_to = "gold"
 	name = "gold"
 	display_name = "native gold"
@@ -105,7 +105,7 @@ var/global/list/ore_data = list()
 		"billion_lower" = 3
 		)
 
-/ore/diamond
+/datum/ore/diamond
 	name = "diamond"
 	display_name = "diamond"
 	alloy = 1
@@ -116,7 +116,7 @@ var/global/list/ore_data = list()
 	scan_icon = "mineral_rare"
 	xarch_source_mineral = "nitrogen"
 
-/ore/platinum
+/datum/ore/platinum
 	name = "platinum"
 	display_name = "raw platinum"
 	smelts_to = "platinum"
@@ -127,7 +127,7 @@ var/global/list/ore_data = list()
 	ore = /obj/item/weapon/ore/osmium
 	scan_icon = "mineral_rare"
 
-/ore/hydrogen
+/datum/ore/hydrogen
 	name = "mhydrogen"
 	display_name = "metallic hydrogen"
 	smelts_to = "tritium"

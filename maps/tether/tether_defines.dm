@@ -154,7 +154,7 @@
 			Z_LEVEL_SPACE_MID,
 			Z_LEVEL_SPACE_HIGH)
 	else
-		return ..()
+		return list(srcz) //may prevent runtimes, but more importantly gives gps units a shortwave-esque function
 
 // For making the 6-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
@@ -251,7 +251,7 @@
 	var/list/frozen_mobs = list()
 
 /datum/map_z_level/tether/wilderness/proc/activate_mobs()
-	if(activated && isemptylist(frozen_mobs))
+	if(activated && !length(frozen_mobs))
 		return
 	activated = 1
 	for(var/mob/living/simple_animal/M in frozen_mobs)

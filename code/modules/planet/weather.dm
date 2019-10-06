@@ -40,7 +40,7 @@
 		our_planet.update_sun()
 	log_debug("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F).")
 
-/datum/weather_holder/proc/process()
+/datum/weather_holder/process()
 	if(world.time >= next_weather_shift)
 		if(!current_weather) // Roundstart (hopefully).
 			initialize_weather()
@@ -98,7 +98,7 @@
 	visuals.icon_state = current_weather.icon_state
 
 /datum/weather_holder/proc/update_temperature()
-	temperature = Interpolate(current_weather.temp_low, current_weather.temp_high, weight = our_planet.sun_position)
+	temperature = LERP(current_weather.temp_low, current_weather.temp_high, our_planet.sun_position)
 	our_planet.needs_work |= PLANET_PROCESS_TEMP
 
 /datum/weather_holder/proc/get_weather_datum(desired_type)

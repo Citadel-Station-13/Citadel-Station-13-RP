@@ -30,7 +30,7 @@
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()
 
-/obj/machinery/appliance/grill/initialize()
+/obj/machinery/appliance/grill/Initialize()
 	. = ..()
 	cooking_objs += new /datum/cooking_item(new /obj/item/weapon/reagent_containers/cooking_container(src))
 	cooking = 0

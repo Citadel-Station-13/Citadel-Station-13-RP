@@ -38,10 +38,10 @@
 	if (src.anchored || usr:stat)
 		usr << "It is fastened to the floor!"
 		return 0
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 	return 1
 
-/obj/machinery/power/emitter/initialize()
+/obj/machinery/power/emitter/Initialize()
 	. = ..()
 	if(state == 2 && anchored)
 		connect_to_network()
@@ -207,7 +207,7 @@
 		return
 
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
-		var/amt = Ceiling(( initial(integrity) - integrity)/10)
+		var/amt = CEILING(( initial(integrity) - integrity)/10, 1)
 		if(!amt)
 			to_chat(user, "<span class='notice'>\The [src] is already fully repaired.</span>")
 			return

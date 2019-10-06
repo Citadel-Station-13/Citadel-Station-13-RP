@@ -14,7 +14,7 @@
 	var/obj/machinery/computer/helm/nav_control
 	var/obj/machinery/computer/engines/eng_control
 
-/obj/effect/map/ship/initialize()
+/obj/effect/map/ship/Initialize()
 	. = ..()
 	for(var/obj/machinery/computer/engines/E in machines)
 		if (E.z == map_z)
@@ -53,8 +53,8 @@
 	return res
 
 /obj/effect/map/ship/proc/adjust_speed(n_x, n_y)
-	speed[1] = Clamp(speed[1] + n_x, -default_delay, default_delay)
-	speed[2] = Clamp(speed[2] + n_y, -default_delay, default_delay)
+	speed[1] = CLAMP(speed[1] + n_x, -default_delay, default_delay)
+	speed[2] = CLAMP(speed[2] + n_y, -default_delay, default_delay)
 	if(is_still())
 		toggle_move_stars(map_z)
 	else

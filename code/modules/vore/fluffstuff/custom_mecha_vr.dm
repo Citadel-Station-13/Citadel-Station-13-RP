@@ -7,13 +7,12 @@
 	icon = 'icons/mecha/mecha_vr.dmi'
 
 
-/obj/mecha/combat/phazon/scree/New()
-	..()
+/obj/mecha/combat/phazon/scree/Initialize(mapload)
+	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 	ME.attach(src)
-	return
 
 /obj/effect/decal/mecha_wreckage/phazon/scree
 	name = "Scuttlebug wreckage"

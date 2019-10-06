@@ -247,7 +247,7 @@
 	equip_type = EQUIP_SPECIAL
 	var/obj/item/weapon/rcd/electric/mounted/mecha/my_rcd = null
 
-/obj/item/mecha_parts/mecha_equipment/tool/rcd/initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/rcd/Initialize()
 	my_rcd = new(src)
 	return ..()
 
@@ -1289,7 +1289,7 @@
 	if(chassis.hasInternalDamage(MECHA_INT_CONTROL_LOST))
 		move_result = step_rand(chassis)
 	else if(chassis.dir!=direction)
-		chassis.set_dir(direction)
+		chassis.setDir(direction)
 		move_result = 1
 	else
 		move_result	= step(chassis,direction)

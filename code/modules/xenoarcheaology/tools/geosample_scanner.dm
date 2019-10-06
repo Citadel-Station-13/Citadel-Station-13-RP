@@ -43,8 +43,8 @@
 	var/t_left_radspike = 0
 	var/rad_shield = 0
 
-/obj/machinery/radiocarbon_spectrometer/New()
-	..()
+/obj/machinery/radiocarbon_spectrometer/Initialize(mapload)
+	. = ..()
 	create_reagents(500)
 	coolant_reagents_purity["water"] = 0.5
 	coolant_reagents_purity["icecoffee"] = 0.6
@@ -80,14 +80,14 @@
 				return
 			var/choice = alert("What do you want to do with the container?","Radiometric Scanner","Add coolant","Empty coolant","Scan container")
 			if(choice == "Add coolant")
-				var/amount_transferred = min(src.reagents.maximum_volume - src.reagents.total_volume, G.reagents.total_volume)
+				var/amount_transferred = min(reagents.maximum_volume - reagents.total_volume, G.reagents.total_volume)
 				var/trans = G.reagents.trans_to_obj(src, amount_transferred)
 				user << "<span class='info'>You empty [trans ? trans : 0]u of coolant into [src].</span>"
 				update_coolant()
 				return
 			else if(choice == "Empty coolant")
-				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, src.reagents.total_volume)
-				var/trans = src.reagents.trans_to(G, amount_transferred)
+				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, reagents.total_volume)
+				var/trans = reagents.trans_to(G, amount_transferred)
 				user << "<span class='info'>You remove [trans ? trans : 0]u of coolant from [src].</span>"
 				update_coolant()
 				return
@@ -104,7 +104,7 @@
 	fresh_coolant = 0
 	coolant_purity = 0
 	var/num_reagent_types = 0
-	for (var/datum/reagent/current_reagent in src.reagents.reagent_list)
+	for (var/datum/reagent/current_reagent in reagents.reagent_list)
 		if (!current_reagent)
 			continue
 		var/cur_purity = coolant_reagents_purity[current_reagent.id]
@@ -234,16 +234,16 @@
 			//emergency stop if seal integrity reaches 0
 			if(scanner_seal_integrity <= 0 || (scanner_temperature >= 1273 && !rad_shield))
 				stop_scanning()
-				src.visible_message("<font color='blue'>\icon[src] buzzes unhappily. It has failed mid-scan!</font>", 2)
+				visible_message("<font color='blue'>\icon[src] buzzes unhappily. It has failed mid-scan!</font>", 2)
 
 			if(prob(5))
-				src.visible_message("<font color='blue'>\icon[src] [pick("whirrs","chuffs","clicks")][pick(" excitedly"," energetically"," busily")].</font>", 2)
+				visible_message("<font color='blue'>\icon[src] [pick("whirrs","chuffs","clicks")][pick(" excitedly"," energetically"," busily")].</font>", 2)
 	else
 		//gradually cool down over time
 		if(scanner_temperature > 0)
 			scanner_temperature = max(scanner_temperature - 5 - 10 * rand(), 0)
 		if(prob(0.75))
-			src.visible_message("<font color='blue'>\icon[src] [pick("plinks","hisses")][pick(" quietly"," softly"," sadly"," plaintively")].</font>", 2)
+			visible_message("<font color='blue'>\icon[src] [pick("plinks","hisses")][pick(" quietly"," softly"," sadly"," plaintively")].</font>", 2)
 	last_process_worldtime = world.time
 
 /obj/machinery/radiocarbon_spectrometer/proc/stop_scanning()
@@ -257,11 +257,11 @@
 	radiation = 0
 	t_left_radspike = 0
 	if(used_coolant)
-		src.reagents.remove_any(used_coolant)
+		reagents.remove_any(used_coolant)
 		used_coolant = 0
 
 /obj/machinery/radiocarbon_spectrometer/proc/complete_scan()
-	src.visible_message("<font color='blue'>\icon[src] makes an insistent chime.</font>", 2)
+	visible_message("<font color='blue'>\icon[src] makes an insistent chime.</font>", 2)
 
 	if(scanned_item)
 		//create report
@@ -318,9 +318,9 @@
 		P.info = "<b>[src] analysis report #[report_num]</b><br>"
 		P.info += "<b>Scanned item:</b> [scanned_item.name]<br><br>" + data
 		last_scan_data = P.info
-		P.loc = src.loc
+		P.loc = loc
 
-		scanned_item.loc = src.loc
+		scanned_item.loc = loc
 		scanned_item = null
 
 /obj/machinery/radiocarbon_spectrometer/Topic(href, href_list)
@@ -356,7 +356,7 @@
 
 	if(href_list["ejectItem"])
 		if(scanned_item)
-			scanned_item.loc = src.loc
+			scanned_item.loc = loc
 			scanned_item = null
 
 	add_fingerprint(usr)

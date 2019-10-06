@@ -112,7 +112,7 @@
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.connected.loc)
 		src.connected.icon_state = "morguet"
-		src.connected.set_dir(src.dir)
+		src.connected.setDir(src.dir)
 	else
 		qdel(src.connected)
 		src.connected = null
@@ -289,7 +289,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			return
 
 	else
-		if(!isemptylist(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
+		if(!!length(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
 			to_chat(user,"You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 

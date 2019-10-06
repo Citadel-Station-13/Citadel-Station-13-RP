@@ -5,7 +5,7 @@
 	icon_state = "coolanttank"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/coolanttank/initialize()
+/obj/structure/reagent_dispensers/coolanttank/Initialize()
 	..()
 	reagents.add_reagent("coolant", 1000)
 

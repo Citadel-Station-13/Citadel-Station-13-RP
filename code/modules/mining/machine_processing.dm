@@ -16,7 +16,7 @@
 	var/obj/machinery/mineral/processing_unit/machine = null
 	var/show_all_ores = FALSE
 
-/obj/machinery/mineral/processing_unit_console/initialize()
+/obj/machinery/mineral/processing_unit_console/Initialize()
 	. = ..()
 	src.machine = locate(/obj/machinery/mineral/processing_unit) in range(5, src)
 	if (machine)
@@ -69,9 +69,11 @@
 
 	for(var/ore in machine.ores_processing)
 
-		if(!machine.ores_stored[ore] && !show_all_ores) continue
-		var/ore/O = ore_data[ore]
-		if(!O) continue
+		if(!machine.ores_stored[ore] && !show_all_ores)
+			continue
+		var/datum/ore/O = ore_data[ore]
+		if(!O)
+			continue
 		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
 		if(machine.ores_processing[ore])
 			switch(machine.ores_processing[ore])
@@ -186,13 +188,13 @@
 
 	// TODO - Initializing this here is insane. Put it in global lists init or something. ~Leshana
 	if(!ore_data || !ore_data.len)
-		for(var/oretype in typesof(/ore)-/ore)
-			var/ore/OD = new oretype()
+		for(var/oretype in typesof(/datum/ore)-/datum/ore)
+			var/datum/ore/OD = new oretype()
 			ore_data[OD.name] = OD
 			ores_processing[OD.name] = 0
 			ores_stored[OD.name] = 0
 
-/obj/machinery/mineral/processing_unit/initialize()
+/obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
 	// TODO - Eschew input/output machinery and just use dirs ~Leshana
 	//Locate our output and input machinery.
@@ -234,7 +236,7 @@
 
 		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
 
-			var/ore/O = ore_data[metal]
+			var/datum/ore/O = ore_data[metal]
 
 			if(!O) continue
 
@@ -273,10 +275,10 @@
 
 			else if(ores_processing[metal] == PROCESS_COMPRESS && O.compresses_to) //Compressing.
 
-				var/can_make = Clamp(ores_stored[metal],0,sheets_per_tick-sheets)
+				var/can_make = CLAMP(ores_stored[metal],0,sheets_per_tick-sheets)
 				if(can_make%2>0) can_make--
 
-				var/material/M = get_material_by_name(O.compresses_to)
+				var/datum/material/M = get_material_by_name(O.compresses_to)
 
 				if(!istype(M) || !can_make || ores_stored[metal] < 1)
 					continue
@@ -288,9 +290,9 @@
 
 			else if(ores_processing[metal] == PROCESS_SMELT && O.smelts_to) //Smelting.
 
-				var/can_make = Clamp(ores_stored[metal],0,sheets_per_tick-sheets)
+				var/can_make = CLAMP(ores_stored[metal],0,sheets_per_tick-sheets)
 
-				var/material/M = get_material_by_name(O.smelts_to)
+				var/datum/material/M = get_material_by_name(O.smelts_to)
 				if(!istype(M) || !can_make || ores_stored[metal] < 1)
 					continue
 

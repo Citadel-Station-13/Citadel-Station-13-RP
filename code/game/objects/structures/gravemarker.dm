@@ -17,7 +17,7 @@
 	var/epitaph = ""		//A quick little blurb
 //	var/dir_locked = 0		//Can it be spun?	Not currently implemented
 
-	var/material/material
+	var/datum/material/material
 
 /obj/structure/gravemarker/New(var/newloc, var/material_name)
 	..(newloc)
@@ -123,7 +123,7 @@
 	if(anchored)
 		return
 	if(config.ghost_interaction)
-		src.set_dir(turn(src.dir, 90))
+		src.setDir(turn(src.dir, 90))
 		return
 	else
 		if(istype(usr,/mob/living/simple_animal/mouse))
@@ -133,5 +133,5 @@
 		if(usr.stat || usr.restrained())
 			return
 
-		src.set_dir(turn(src.dir, 90))
+		src.setDir(turn(src.dir, 90))
 		return
