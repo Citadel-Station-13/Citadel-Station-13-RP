@@ -2208,6 +2208,7 @@
 /area/tether/surfacebase/mining_main/eva)
 "aea" = (
 /obj/structure/table/rack,
+/obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
@@ -2218,6 +2219,7 @@
 /area/tether/surfacebase/mining_main/eva)
 "aeb" = (
 /obj/structure/table/rack,
+/obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
