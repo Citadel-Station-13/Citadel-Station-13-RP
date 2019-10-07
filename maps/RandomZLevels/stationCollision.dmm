@@ -4643,7 +4643,7 @@
 /area/awaymission/arrivalblock)
 "lQ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/shovel/spade,
+/obj/item/weapon/pickaxe/shovel/spade,
 /obj/item/weapon/reagent_containers/spray/plantbgone,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
