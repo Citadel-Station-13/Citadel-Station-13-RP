@@ -42,7 +42,7 @@
 	protectiveness = 60 // 75%
 	reflectivity = 0.7 // Not a perfect mirror, but close.
 	stack_origin_tech = list(TECH_MATERIAL = 8)
-	composite_material = list("plasteel" = SHEET_MATERIAL_AMOUNT, "diamond" = SHEET_MATERIAL_AMOUNT) //shrug
+	composite_material = list(MATERIAL_ID_PLASTEEL = SHEET_MATERIAL_AMOUNT, MATERIAL_ID_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = MATERIAL_ID_DURASTEEL_HULL
@@ -66,7 +66,7 @@
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(MATERIAL_ID_STEEL = SHEET_MATERIAL_AMOUNT, MATERIAL_ID_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull

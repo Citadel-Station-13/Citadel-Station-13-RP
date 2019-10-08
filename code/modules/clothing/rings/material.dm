@@ -20,16 +20,16 @@
 	return material
 
 /obj/item/clothing/gloves/ring/material/wood/New(var/newloc)
-	..(newloc, "wood")
+	..(newloc, MATERIAL_ID_WOOD)
 
 /obj/item/clothing/gloves/ring/material/plastic/New(var/newloc)
 	..(newloc, MATERIAL_ID_PLASTIC)
 
 /obj/item/clothing/gloves/ring/material/iron/New(var/newloc)
-	..(newloc, "iron")
+	..(newloc, MATERIAL_ID_IRON)
 
 /obj/item/clothing/gloves/ring/material/steel/New(var/newloc)
-	..(newloc, "steel")
+	..(newloc, MATERIAL_ID_STEEL)
 
 /obj/item/clothing/gloves/ring/material/silver/New(var/newloc)
 	..(newloc, MATERIAL_ID_SILVER)
@@ -53,4 +53,4 @@
 	..(newloc, MATERIAL_ID_OSMIUM)
 
 /obj/item/clothing/gloves/ring/material/mhydrogen/New(var/newloc)
-	..(newloc, "mhydrogen")
+	..(newloc, MATERIAL_ID_MHYDROGEN)

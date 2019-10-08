@@ -315,16 +315,16 @@
 	return material
 
 /obj/item/clothing/accessory/bracelet/material/wood/New(var/newloc)
-	..(newloc, "wood")
+	..(newloc, MATERIAL_ID_WOOD)
 
 /obj/item/clothing/accessory/bracelet/material/plastic/New(var/newloc)
 	..(newloc, MATERIAL_ID_PLASTIC)
 
 /obj/item/clothing/accessory/bracelet/material/iron/New(var/newloc)
-	..(newloc, "iron")
+	..(newloc, MATERIAL_ID_IRON)
 
 /obj/item/clothing/accessory/bracelet/material/steel/New(var/newloc)
-	..(newloc, "steel")
+	..(newloc, MATERIAL_ID_STEEL)
 
 /obj/item/clothing/accessory/bracelet/material/silver/New(var/newloc)
 	..(newloc, MATERIAL_ID_SILVER)
