@@ -9,11 +9,9 @@
 	buckle_lying = 0 //force people to sit up in chairs when buckled
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
 
-/obj/structure/bed/chair/New()
-	..() //Todo make metal/stone chairs display as thrones
-	spawn(3)	//sorry. i don't think there's a better way to do this.
-		update_layer()
-	return
+/obj/structure/bed/chair/Initialize(mapload)
+	. = ..()
+	update_layer()
 
 /obj/structure/bed/chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
@@ -40,21 +38,22 @@
 
 /obj/structure/bed/chair/post_buckle_mob()
 	update_icon()
+	return ..()
 
 /obj/structure/bed/chair/update_icon()
-	..()
-	if(has_buckled_mobs() && padding_material)
-		var/cache_key = "[base_icon]-armrest-[padding_material.name]"
+	. = ..()
+	if(has_buckled_mobs() && material_padding)
+		var/cache_key = "[base_icon]-armrest-[material_padding.name]"
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon]_armrest")
 			I.layer = MOB_LAYER + 0.1
 			I.plane = MOB_PLANE
-			I.color = padding_material.icon_colour
+			I.color = material_padding.icon_colour
 			stool_cache[cache_key] = I
 		overlays |= stool_cache[cache_key]
 
 /obj/structure/bed/chair/proc/update_layer()
-	if(src.dir == NORTH)
+	if(dir == NORTH)
 		plane = MOB_PLANE
 		layer = MOB_LAYER + 0.1
 	else
@@ -100,32 +99,32 @@
 	desc = "It's a chair. It looks comfy."
 	icon_state = "comfychair_preview"
 
-/obj/structure/bed/chair/comfy/brown/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL, MATERIAL_ID_LEATHER)
+/obj/structure/bed/chair/comfy/brown
+	material_padding = MATERAIL_ID_LETAHER
 
-/obj/structure/bed/chair/comfy/red/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL, MATERIAL_ID_CARPET)
+/obj/structure/bed/chair/comfy/red
+	material_padding = MATERIAL_ID_CARPET
 
-/obj/structure/bed/chair/comfy/teal/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL, MATERIAL_ID_TEAL)
+/obj/structure/bed/chair/comfy/teal
+	material_padding = MATERIAL_ID_CLOTH_TEAL
 
-/obj/structure/bed/chair/comfy/black/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL,MATERIAL_ID_BLACK)
+/obj/structure/bed/chair/comfy/black
+	material_padding = MATERIAL_ID_CLOTH_BLACK
 
-/obj/structure/bed/chair/comfy/green/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL,MATERIAL_ID_GREEN)
+/obj/structure/bed/chair/comfy/green
+	material_padding = MATERAIL_ID_CLOTH_GREEN
 
-/obj/structure/bed/chair/comfy/purp/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL,MATERIAL_ID_PURPLE)
+/obj/structure/bed/chair/comfy/purp
+	material_padding = MATERIAL_ID_CLOTH_PURPLE
 
-/obj/structure/bed/chair/comfy/blue/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL,MATERIAL_ID_BLUE)
+/obj/structure/bed/chair/comfy/blue
+	material_padding = MATERIAL_ID_CLOTH_BLUE
 
-/obj/structure/bed/chair/comfy/beige/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL,MATERIAL_ID_BEIGE)
+/obj/structure/bed/chair/comfy/beige
+	material_padding = MATERIAL_ID_CLOTH_BEIGE
 
-/obj/structure/bed/chair/comfy/lime/New(var/newloc,var/newmaterial)
-	..(newloc,MATERIAL_ID_STEEL,MATERIAL_ID_LIME)
+/obj/structure/bed/chair/comfy/lime
+	material_padding = MATERAIL_ID_CLOTH_LIME
 
 /obj/structure/bed/chair/sofa
 	name = "sofa"
@@ -215,6 +214,7 @@
 	name = "wooden chair"
 	desc = "Old is never too old to not be in fashion."
 	icon_state = "wooden_chair"
+	material_primary = MATERIAL_ID_WOOD
 
 /obj/structure/bed/chair/wood/update_icon()
 	return
@@ -222,10 +222,7 @@
 /obj/structure/bed/chair/wood/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
-	..()
-
-/obj/structure/bed/chair/wood/New(var/newloc)
-	..(newloc, MATERIAL_ID_WOOD)
+	return ..()
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"

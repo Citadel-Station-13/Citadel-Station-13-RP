@@ -175,7 +175,7 @@
 	if(refactory && !(refactory.status & ORGAN_DEAD))
 
 		//MHydrogen adds speeeeeed
-		if(refactory.get_stored_material(MATERIAL_ID_MHYDROGEN) >= METAL_PER_TICK)
+		if(refactory.get_stored_material(MATERIAL_ID_METALLIC_HYDROGEN) >= METAL_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
 
 		//Plasteel adds brute armor
@@ -246,7 +246,7 @@
 	on_created_text = "<span class='notice'>You feel yourself accelerate, the metallic hydrogen increasing your speed temporarily.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the metallic hydrogen, and you return to normal speed.</span>"
 
-	material_name = MATERIAL_ID_MHYDROGEN
+	material_name = MATERIAL_ID_METALLIC_HYDROGEN
 
 	slowdown = -1
 

@@ -31,7 +31,7 @@
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 0
-	applies_material_colour = 1
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 	base_icon = "fireaxe_mask"
 	icon_state = "fireaxe_mask0"
 	unbreakable = 1

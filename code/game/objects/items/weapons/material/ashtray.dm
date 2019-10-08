@@ -1,4 +1,4 @@
-var/global/list/ashtray_cache = list()
+GLOBAL_LIST_EMPTY(GLOB.ashtray_cache)
 
 /obj/item/weapon/material/ashtray
 	name = "ashtray"
@@ -9,36 +9,34 @@ var/global/list/ashtray_cache = list()
 	var/image/base_image
 	var/max_butts = 10
 
-/obj/item/weapon/material/ashtray/New(var/newloc, var/material_name)
-	..(newloc, material_name)
-	if(!material)
-		qdel(src)
-		return
-	max_butts = round(material.hardness/5) //This is arbitrary but whatever.
-	src.pixel_y = rand(-5, 5)
-	src.pixel_x = rand(-6, 6)
-	update_icon()
-	return
+/obj/item/weapon/material/ashtray/Initialize(mapload, primary_material)
+	. = ..()
+	pixel_y = rand(-5, 5)
+	pixel_x = rand(-6, 6)
+
+/obj/item/weapon/material/ashtray/UpdateMaterials()
+	. = ..()
+	max_butts = material_primary? round(material_primary.hardness / 5) : 10
 
 /obj/item/weapon/material/ashtray/update_icon()
-	color = null
+	. = ..()
 	overlays.Cut()
-	var/cache_key = "base-[material.name]"
-	if(!ashtray_cache[cache_key])
+	var/cache_key = "base-[material_primary.name]"
+	if(!GLOB.ashtray_cache[cache_key])
 		var/image/I = image('icons/obj/objects.dmi',"ashtray")
-		I.color = material.icon_colour
-		ashtray_cache[cache_key] = I
-	overlays |= ashtray_cache[cache_key]
+		I.color = material_primary.icon_colour
+		GLOB.ashtray_cache[cache_key] = I
+	overlays |= GLOB.ashtray_cache[cache_key]
 
 	if (contents.len == max_butts)
-		if(!ashtray_cache["full"])
-			ashtray_cache["full"] = image('icons/obj/objects.dmi',"ashtray_full")
-		overlays |= ashtray_cache["full"]
+		if(!GLOB.ashtray_cache["full"])
+			GLOB.ashtray_cache["full"] = image('icons/obj/objects.dmi',"ashtray_full")
+		overlays |= GLOB.ashtray_cache["full"]
 		desc = "It's stuffed full."
 	else if (contents.len > max_butts/2)
-		if(!ashtray_cache["half"])
-			ashtray_cache["half"] = image('icons/obj/objects.dmi',"ashtray_half")
-		overlays |= ashtray_cache["half"]
+		if(!GLOB.ashtray_cache["half"])
+			GLOB.ashtray_cache["half"] = image('icons/obj/objects.dmi',"ashtray_half")
+		overlays |= GLOB.ashtray_cache["half"]
 		desc = "It's half-filled."
 	else
 		desc = "An ashtray made of [material.display_name]."
@@ -51,7 +49,7 @@ var/global/list/ashtray_cache = list()
 			user << "\The [src] is full."
 			return
 		user.remove_from_mob(W)
-		W.loc = src
+		W.forceMove(src)
 
 		if (istype(W,/obj/item/clothing/mask/smokable/cigarette))
 			var/obj/item/clothing/mask/smokable/cigarette/cig = W
@@ -92,11 +90,11 @@ var/global/list/ashtray_cache = list()
 		update_icon()
 	return ..()
 
-/obj/item/weapon/material/ashtray/plastic/New(var/newloc)
-	..(newloc, MATERIAL_ID_PLASTIC)
+/obj/item/weapon/material/ashtray/plastic
+	material_primary = MATERIAL_ID_PLASTIC
 
-/obj/item/weapon/material/ashtray/bronze/New(var/newloc)
-	..(newloc, "bronze")
+/obj/item/weapon/material/ashtray/bronze
+	material_primray = MATERIAL_ID_BRONZE
 
-/obj/item/weapon/material/ashtray/glass/New(var/newloc)
-	..(newloc, MATERIAL_ID_GLASS)
+/obj/item/weapon/material/ashtray/glass
+	material_primary = MATERIAL_ID_GLASS
