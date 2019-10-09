@@ -150,7 +150,7 @@
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
-			to_chat(user, "<span class='notice'>You refill the [src]</span>")
+			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
 		else if(!welding)
