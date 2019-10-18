@@ -206,13 +206,15 @@
 	access = access_ce
 
 /datum/supply_pack/eng/teg
-	contains = list(/obj/machinery/power/generator)
-	name = "Mark I Thermoelectric Generator"
-	cost = 20
+	contains = list(
+		/obj/machinery/power/generator,
+		/obj/machinery/atmospherics/binary/circulator = 2)
+	name = "Mark I TEG + Circulators"
+	cost = 35
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "Mk1 TEG crate"
 	access = access_engine
-
+/*
 /datum/supply_pack/eng/circulator
 	contains = list(/obj/machinery/atmospherics/binary/circulator = 2)
 	name = "Binary atmospheric circulators"
@@ -220,7 +222,7 @@
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "Atmospheric circulators crate"
 	access = access_engine
-
+*/
 /datum/supply_pack/eng/radsuit
 	contains = list(
 			/obj/item/clothing/suit/radiation = 3,
@@ -313,7 +315,7 @@
 			/obj/item/weapon/storage/briefcase/fission/fuelmixed,
 			/obj/item/weapon/storage/briefcase/fission/reflectormixed,
 			/obj/item/weapon/storage/briefcase/fission/controlmixed)
-	cost = 20
+	cost = 50
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "fission core crate"
 	access = access_ce
@@ -324,7 +326,7 @@
 			/obj/item/weapon/storage/briefcase/fission/uranium,
 			/obj/item/weapon/storage/briefcase/fission/tungstencarbide,
 			/obj/item/weapon/storage/briefcase/fission/boron)
-	cost = 20
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "fission expansion crate"
 	access = access_ce
