@@ -149,7 +149,7 @@
 	icon_state = "carp"
 
 /obj/random/mob/carp/item_to_spawn()
-	return pick(prob(80);/mob/living/simple_animal/hostile/carp/,
+	return pick(prob(80);/mob/living/simple_animal/hostile/carp,
 				prob(17);/mob/living/simple_animal/hostile/carp/large,
 				prob(3);/mob/living/simple_animal/hostile/carp/large/huge)
 	
