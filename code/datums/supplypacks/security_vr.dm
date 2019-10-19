@@ -117,7 +117,7 @@
 /datum/supply_pack/security/pcarriers/riot
 	name = "Armor - Plate carrier kit - riot control attachments"
 	contains = list(
-			/obj/item/clothing/accessory/armor/armorplate/medium = 3,
+			/obj/item/clothing/accessory/armor/armorplate/riot = 3,
 			/obj/item/clothing/accessory/armor/armguards/riot = 3,
 			/obj/item/clothing/accessory/armor/legguards/riot = 3,
 			)
@@ -129,7 +129,7 @@
 /datum/supply_pack/security/pcarriers/bulletproof
 	name = "Armor - Plate carrier kit - ballistics-resistant attachments"
 	contains = list(
-			/obj/item/clothing/accessory/armor/armorplate/medium = 3,
+			/obj/item/clothing/accessory/armor/armorplate/bulletproof = 3,
 			/obj/item/clothing/accessory/armor/armguards/bulletproof = 3,
 			/obj/item/clothing/accessory/armor/legguards/bulletproof = 3,
 			)
@@ -141,7 +141,7 @@
 /datum/supply_pack/security/pcarriers/laserproof
 	name = "Armor - Plate carrier kit - energy-resistant attachments"
 	contains = list(
-			/obj/item/clothing/accessory/armor/armorplate/tactical = 3,
+			/obj/item/clothing/accessory/armor/armorplate/laserproof = 3,
 			/obj/item/clothing/accessory/armor/armguards/laserproof = 3,
 			/obj/item/clothing/accessory/armor/legguards/laserproof = 3,
 			)
