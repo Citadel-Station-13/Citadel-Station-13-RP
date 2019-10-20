@@ -22,7 +22,7 @@
 			return
 
 	var/nutrition_used = nutrition * 0.5
-	var/time = (40+360/(1 + nutrition_used/65))
+	var/time = (40+360/(1 + nutrition_used/70))
 
 	//Clicked regen while dead.
 	if(stat == DEAD)
