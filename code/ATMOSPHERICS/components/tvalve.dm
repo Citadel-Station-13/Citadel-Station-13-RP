@@ -329,8 +329,8 @@
 /obj/machinery/atmospherics/tvalve/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-	if (istype(src, /obj/machinery/atmospherics/tvalve/digital))
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], it's too complicated.</span>")
+	if (istype(src, /obj/machinery/atmospherics/tvalve/digital) && !src.allowed(user))
+		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
 	if(!can_unwrench())
 		to_chat(user, "<span class='warnng'>You cannot unwrench \the [src], it too exerted due to internal pressure.</span>")

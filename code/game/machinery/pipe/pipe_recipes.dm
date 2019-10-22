@@ -3,6 +3,8 @@
 //
 
 var/global/list/atmos_pipe_recipes = null
+var/global/list/disposal_pipe_recipes = null
+var/global/list/all_pipe_recipes = null
 
 /hook/startup/proc/init_pipe_recipes()
 	global.atmos_pipe_recipes = list(
@@ -44,6 +46,19 @@ var/global/list/atmos_pipe_recipes = null
 			new /datum/pipe_recipe/pipe("Pipe",				/obj/machinery/atmospherics/pipe/simple/insulated),
 		)
 	)
+	global.disposal_pipe_recipes = list(
+		"Disposal Pipes" = list(
+			new /datum/pipe_recipe/disposal("Pipe",			/obj/structure/disposalpipe/segment, PIPE_BENDABLE),
+			new /datum/pipe_recipe/disposal("Junction",		/obj/structure/disposalpipe/junction, PIPE_TRIN_M),
+			new /datum/pipe_recipe/disposal("Y-Junction",		/obj/structure/disposalpipe/junction/yjunction),
+			new /datum/pipe_recipe/disposal("Sort Junction",	/obj/structure/disposalpipe/sortjunction, PIPE_TRIN_M),
+			new /datum/pipe_recipe/disposal("Trunk",			/obj/structure/disposalpipe/trunk),
+			new /datum/pipe_recipe/disposal("Bin",			/obj/machinery/disposal, PIPE_ONEDIR),
+			new /datum/pipe_recipe/disposal("Outlet",			/obj/structure/disposaloutlet),
+			new /datum/pipe_recipe/disposal("Chute",			/obj/machinery/disposal/deliveryChute),
+		)
+	)
+	global.all_pipe_recipes = disposal_pipe_recipes + atmos_pipe_recipes
 	return TRUE
 
 //
@@ -54,6 +69,7 @@ var/global/list/atmos_pipe_recipes = null
 /datum/pipe_recipe
 	var/name = "Abstract Pipe (fixme)"	// Recipe name
 	var/dirtype					// If using an RPD, this tells more about what previews to show.
+	var/pipe_type	// The type PATH of what actual pipe the fitting becomes, used by RCD to print the pipe.
 
 // Render an HTML link to select this pipe type. Returns text.
 /datum/pipe_recipe/proc/Render(dispenser)
@@ -68,7 +84,6 @@ var/global/list/atmos_pipe_recipes = null
 //
 /datum/pipe_recipe/pipe
 	var/obj/item/pipe/construction_type 		// The type PATH to the type of pipe fitting object the recipe makes.
-	var/obj/machinery/atmospherics/pipe_type	// The type PATH of what actual pipe the fitting becomes.
 
 /datum/pipe_recipe/pipe/New(var/label, var/obj/machinery/atmospherics/path)
 	name = label
@@ -100,3 +115,23 @@ var/global/list/atmos_pipe_recipes = null
 
 /datum/pipe_recipe/meter/Params()
 	return "makemeter=1"
+
+//
+// Subtype for disposal pipes
+//
+/datum/pipe_recipe/disposal/New(var/label, var/obj/path, dt=PIPE_DIRECTIONAL)
+	name = label
+	pipe_type = path
+	dirtype = dt
+
+// Render an HTML link to select this pipe type
+/datum/pipe_recipe/disposal/Render(dispenser)
+	var/dat = ..(dispenser)
+
+	// Blah blah, add corner pipes because dispensers have no directional information. Look up for more info.
+	if(istype(dispenser, /obj/machinery/pipedispenser) && (dirtype == PIPE_BENDABLE))
+		dat += "<A href='?src=\ref[dispenser]&[Params()]&dir=[NORTHEAST]'>Bent [name]</A><BR>"
+	return dat
+
+/datum/pipe_recipe/pipe/Params()
+	return "makepipe=[pipe_type]"
