@@ -61,9 +61,9 @@
 	populate_material_list()
 
 	if(config.generate_map)
+		load_map_templates() // Loads all the pre-made submap templates.
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs() // Generates mining turfs.
-			load_map_templates() // Loads all the pre-made submap templates.
 
 	// Create frame types.
 	populate_frame_types()
