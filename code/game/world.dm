@@ -60,12 +60,10 @@
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
-	// Loads all the pre-made submap templates.
-	load_map_templates()
-
 	if(config.generate_map)
 		if(using_map.perform_map_generation())
-			using_map.refresh_mining_turfs()
+			using_map.refresh_mining_turfs() // Generates mining turfs.
+			load_map_templates() // Loads all the pre-made submap templates.
 
 	// Create frame types.
 	populate_frame_types()
