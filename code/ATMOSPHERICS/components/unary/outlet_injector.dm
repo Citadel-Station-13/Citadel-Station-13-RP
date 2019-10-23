@@ -167,11 +167,40 @@
 	update_icon()
 
 /obj/machinery/atmospherics/unary/outlet_injector/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if (!W.is_wrench())
+	if(istype(W, /obj/item/weapon/airlock_electronics))
+		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
+			to_chat(user, "<span class='warning'>Access denied.</span>")
+			return 1
+		to_chat(user, "<span class='notice'>You begin to upload access data to \the [src]...</span>")
+		if (do_after(user, 20))
+			var/obj/item/weapon/airlock_electronics/E = W
+			if(E.one_access)
+				req_access = null
+				req_one_access = E.conf_access
+			else
+				req_access = E.conf_access
+				req_one_access = null
+			user.visible_message( \
+				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
+				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
+				"You hear a faint beep.")
+		return 0
+
+	if(!W.is_wrench())
 		return ..()
-	if (!src.allowed(user)) // Same as above, don't let any dingus with a wrench pull this thing up.
+
+	if(!(stat & NOPOWER) && use_power)
+		to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first.</span>")
+		return 1
+
+	if(!src.allowed(user)) // Same as above, don't let any dingus with a wrench pull this thing up.
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
+
+	if(!can_unwrench())
+		to_chat(user, "<span class='warning'>You cannot unwrench this [src], it is too exerted due to internal pressure.</span>")
+		return 1
+
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))

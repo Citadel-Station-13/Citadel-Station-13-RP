@@ -1337,7 +1337,8 @@
 	dir = 4;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1371,7 +1372,8 @@
 	dir = 8;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2542,7 +2544,8 @@
 	dir = 4;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2571,7 +2574,8 @@
 	dir = 8;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
