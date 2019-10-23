@@ -27,7 +27,7 @@
 	var/datum/material/material
 	var/drops_debris = 1
 
-/obj/item/weapon/material/New(var/newloc, var/material_key)
+/obj/item/weapon/material/Initialize(var/newloc, var/material_key)
 	..(newloc)
 	if(!material_key)
 		material_key = default_material
@@ -83,10 +83,13 @@
 			health--
 		check_health()
 
-/obj/item/weapon/material/attackby(obj/item/weapon/W, mob/user as mob)
+/obj/item/weapon/material/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/whetstone))
 		var/obj/item/weapon/whetstone/whet = W
 		repair(whet.repair_amount, whet.repair_time, user)
+	if(istype(W, /obj/item/weapon/material/sharpeningkit))
+		var/obj/item/weapon/material/sharpeningkit/SK = W
+		repair(SK.repair_amount, SK.repair_time, user)
 	..()
 
 /obj/item/weapon/material/proc/check_health(var/consumed)
@@ -131,7 +134,19 @@
 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 		return
 
-
+/obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/usr)
+	if(!fragile)
+		if(health < initial(health))
+			to_chat(usr, "You should repair \the [src] first. Try using \the [kit] on it.")
+			return FALSE
+		usr.visible_message("[usr] begins to replace parts of \the [src] with \the [kit].", "You begin to replace parts of \the [src] with \the [kit].")
+		if(do_after(usr, sharpen_time))
+			usr.visible_message("[usr] has finished replacing parts of \the [src].", "You finish replacing parts of \the [src].")
+			src.set_material(material)
+			return TRUE
+	else
+		to_chat(usr, "<span class = 'warning'>You can't sharpen and re-edge \the [src].</span>")
+		return FALSE
 
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
