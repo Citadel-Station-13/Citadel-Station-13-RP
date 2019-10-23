@@ -158,6 +158,9 @@
 	update_underlays()
 
 /obj/machinery/atmospherics/unary/outlet_injector/attack_hand(mob/user as mob)
+	if (!src.allowed(user)) // ID check, to prevent randos from switching off secure atmos equipment.
+		to_chat(user, "<span class='warning'>Access denied.</span>")
+		return 1
 	to_chat(user, "<span class='notice'>You toggle \the [src].</span>")
 	injecting = !injecting
 	use_power = injecting
@@ -166,7 +169,9 @@
 /obj/machinery/atmospherics/unary/outlet_injector/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if (!W.is_wrench())
 		return ..()
-
+	if (!src.allowed(user)) // Same as above, don't let any dingus with a wrench pull this thing up.
+		to_chat(user, "<span class='warning'>Access denied.</span>")
+		return 1
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))
