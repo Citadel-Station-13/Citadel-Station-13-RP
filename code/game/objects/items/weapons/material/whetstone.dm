@@ -63,16 +63,20 @@
 			S.use(1)
 			uses += 1
 			to_chat(usr, "You add a [S.material.name] [S.material.sheet_singular_name] to \the [src].")
+			return
 
 	if(istype(W, /obj/item/weapon/material))
 		if(istype(W, /obj/item/weapon/material/sharpeningkit))
 			to_chat(usr, "You can't sharpen \the [W], you goofball.")
+			return
 		var/obj/item/weapon/material/M = W
 		if(uses >= M.w_class*2)
 			if(M.sharpen(src.material.name, sharpen_time, src, usr))
 				uses -= M.w_class*2
+				return
 		else
 			to_chat(usr, "Not enough material to sharpen \the [M]. You need [M.w_class*2] [M.material.sheet_plural_name].")
+			return
 	else
 		to_chat(usr, "You can't sharpen \the [W] with \the [src]!")
-	..()
+		return
