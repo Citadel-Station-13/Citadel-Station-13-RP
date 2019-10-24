@@ -675,7 +675,7 @@
 			if(I_DISARM)
 				H.do_attack_animation(src)
 				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
-				visible_message("<span class='warning'>[H] lightly struck [src].</span>")
+				visible_message("<span class='warning'>[H] taps [src].</span>")
 				return
 
 	if(opened && !wiresexposed && (!istype(user, /mob/living/silicon)))
