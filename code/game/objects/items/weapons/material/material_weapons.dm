@@ -28,7 +28,7 @@
 	var/drops_debris = 1
 
 /obj/item/weapon/material/Initialize(var/newloc, var/material_key)
-	..(newloc)
+	. = ..()
 	if(!material_key)
 		material_key = default_material
 	set_material(material_key)
@@ -134,18 +134,18 @@
 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 		return
 
-/obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/usr)
+/obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/dumbass)
 	if(!fragile)
 		if(health < initial(health))
-			to_chat(usr, "You should repair \the [src] first. Try using \the [kit] on it.")
+			to_chat(dumbass, "You should repair [src] first. Try using [kit] on it.")
 			return FALSE
-		usr.visible_message("[usr] begins to replace parts of \the [src] with \the [kit].", "You begin to replace parts of \the [src] with \the [kit].")
+		dumbass.visible_message("[dumbass] begins to replace parts of [src] with [kit].", "You begin to replace parts of [src] with [kit].")
 		if(do_after(usr, sharpen_time))
-			usr.visible_message("[usr] has finished replacing parts of \the [src].", "You finish replacing parts of \the [src].")
+			dumbass.visible_message("[dumbass] has finished replacing parts of [src].", "You finish replacing parts of [src].")
 			src.set_material(material)
 			return TRUE
 	else
-		to_chat(usr, "<span class = 'warning'>You can't sharpen and re-edge \the [src].</span>")
+		to_chat(dumbass, "<span class = 'warning'>You can't sharpen and re-edge [src].</span>")
 		return FALSE
 
 /*
