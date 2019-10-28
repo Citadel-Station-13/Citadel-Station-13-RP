@@ -129,3 +129,21 @@ GLOBAL_LIST(round_end_notifiees)
 /datum/tgs_chat_command/reload_admins/proc/ReloadAsync()
 	set waitfor = FALSE
 	load_admins()
+
+/datum/tgs_chat_command/whitelist
+	name = "whitelist"
+	help_text = "Whitelists a ckey for the panic bunker"
+	admin_only = TRUE
+
+/datum/tgs_chat_command/whitelist/Run(datum/tgs_chat_user/sender, params)
+	GLOB.PB_bypass |= ckey(params)
+	return "Added [ckey(params)] to the bypass list."
+
+/datum/tgs_chat_command/dewhitelist
+	name = "dewhitelist"
+	help_text = "Cancel a bunker bypass for a ckey."
+	admin_only = TRUE
+
+/datum/tgs_chat_command/dewhitelist/Run(datum/tgs_chat_user/sender, params)
+	GLOB.PB_bypass -= ckey(params)
+	return "Removed [ckey(params)] from the bypass list if they were on it."
