@@ -146,6 +146,9 @@
 	can_be_pushed = 0
 
 /obj/item/weapon/robot_module/robot/knine/New(var/mob/living/silicon/robot/R)
+
+	supported_upgrades = list(/obj/item/borg/upgrade/tasercooler)
+
 	src.modules += new /obj/item/weapon/handcuffs/cyborg(src) //You need cuffs to be a proper sec borg!
 	src.modules += new /obj/item/weapon/dogborg/jaws/big(src) //In case there's some kind of hostile mob.
 	src.modules += new /obj/item/weapon/melee/baton/robot(src) //Since the pounce module refused to work, they get a stunbaton instead.
