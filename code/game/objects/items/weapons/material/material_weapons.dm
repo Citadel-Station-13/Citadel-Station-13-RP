@@ -63,7 +63,7 @@
 	if(!unbreakable)
 		if(material_primary?.is_brittle())
 			health = 0
-		else if(!prob(material?.hardness))
+		else if(!prob(material_primary?.hardness))
 			health--
 		check_health()
 
@@ -82,7 +82,7 @@
 
 /obj/item/weapon/material/proc/shatter(var/consumed)
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] [material? material.destruction_desc : "breaks"]!</span>")
+	T.visible_message("<span class='danger'>\The [src] [material_primary? material_primary.destruction_desc : "breaks"]!</span>")
 	if(istype(loc, /mob/living))
 		var/mob/living/M = loc
 		M.drop_from_inventory(src)

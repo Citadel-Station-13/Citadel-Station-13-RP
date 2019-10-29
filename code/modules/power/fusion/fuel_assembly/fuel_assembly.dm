@@ -27,13 +27,13 @@
 		name = "[material.use_name] fuel rod assembly"
 		desc = "A fuel rod for a fusion reactor. This one is made from [M.use_name]."
 		fuel_colour = material.icon_colour
-		fuel_type = material.id
+		fuel_type = material_primary.id
 		if(M.radioactivity)
 			radioactivity = material.radioactivity
 			desc += " It is warm to the touch."
 			processing_objects += src
-		if(material.luminescence)
-			set_light(material.luminescence, material.luminescence, material.icon_colour)
+		if(material_primary.luminescence)
+			set_light(material_primary.luminescence, material_primary.luminescence, material_primary.icon_colour)
 	else
 		name = "[M] fuel rod assembly"
 		desc = "A fuel rod for a fusion reactor. This one is made from [fuel_type]."

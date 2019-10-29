@@ -278,7 +278,7 @@
 	name = "algae sheet"
 	icon_state = "sheet-uranium"
 	color = "#557722"
-	default_type = MATERIAL_ALGAE
+	material_id = MATERIAL_ID_ALGAE
 
 /obj/item/stack/material/algae/ten
 	amount = 10
@@ -287,7 +287,7 @@
 	name = "carbon sheet"
 	icon_state = "sheet-metal"
 	color = "#303030"
-	default_type = MATERIAL_CARBON
+	material_id = MATERIAL_ID_CARBON
 
 #undef MATERIAL_ALGAE
 #undef MATERIAL_CARBON

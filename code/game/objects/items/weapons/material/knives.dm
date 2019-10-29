@@ -83,7 +83,7 @@
 	item_state = "knife"
 	force_divisor = 0.25 //15 when hardness 60 (steel)
 	attack_verb = list("stabbed", "chopped", "cut")
-	use_primary_material_color = TRUE
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 
 /obj/item/weapon/material/knife/tacknife/combatknife
 	name = "combat knife"
@@ -94,7 +94,7 @@
 	force_divisor = 0.34 // 20 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
-	use_primary_material_color = TRUE
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -105,7 +105,7 @@
 	icon_state = "tacknife"
 	item_state = "knife"
 	force_divisor = 0.15
-	use_primary_material_color = FALSE
+	material_usage_flags = NONE
 
 /obj/item/weapon/material/knife/hook
 	name = "meat hook"
@@ -117,7 +117,7 @@
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
-	use_primary_material_color = FALSE
+	material_usage_flags = NONE
 
 /obj/item/weapon/material/knife/butch
 	name = "butcher's cleaver"
@@ -142,6 +142,6 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
-	applies_material_colour = FALSE
+	material_usage_flags = NONE
 	material_primary = MATERIAL_ID_PLASTEEL
 	toolspeed = 2 // Use a real axe if you want to chop logs.
