@@ -498,6 +498,7 @@
 	src.modules += new /obj/item/device/floor_painter(src)
 	src.modules += new /obj/item/weapon/gripper(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
+	src.modules += new /obj/item/weapon/pipe_dispenser(src)
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
 	metal.name = "Steel reserves"

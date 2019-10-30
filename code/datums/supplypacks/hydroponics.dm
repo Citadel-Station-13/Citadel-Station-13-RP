@@ -149,3 +149,14 @@
 	contains = list(/obj/machinery/portable_atmospherics/hydroponics{anchored = 0} = 3)
 	access = access_hydroponics
 
+/datum/supply_pack/hydro/diycarpotox
+	name = "Gather-It-Yourself Carpotoxin"
+	cost = 30
+	containertype = /obj/structure/largecrate/animal/carp
+	containername = "DIY carpotoxin crate"
+
+/datum/supply_pack/hydro/diyspidertox
+	name = "Gather-It-Yourself Spider Toxin"
+	cost = 30
+	containertype = /obj/structure/largecrate/animal/spiders
+	containername = "DIY spider toxin crate"

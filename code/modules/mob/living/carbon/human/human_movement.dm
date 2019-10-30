@@ -121,7 +121,8 @@
 		var/obj/item/pulled = pulling
 		item_tally += max(pulled.slowdown, 0)
 
-	item_tally *= species.item_slowdown_mod
+	if(item_tally >= 0)
+		item_tally *= species.item_slowdown_mod
 
 	tally += item_tally
 

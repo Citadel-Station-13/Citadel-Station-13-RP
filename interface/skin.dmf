@@ -1250,9 +1250,7 @@ window "outputwindow"
 		anchor1 = 0,5
 		anchor2 = 100,100
 		is-default = true
-		saved-params = "max-lines"
-		style = ".system {color:#ff0000;}"
-		max-lines = 0
+		saved-params = ""
 
 window "rpane"
 	elem "rpane"

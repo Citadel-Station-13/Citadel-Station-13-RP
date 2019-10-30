@@ -18887,7 +18887,8 @@
 	frequency = 1441;
 	icon_state = "map_injector";
 	id = "atmos_out";
-	use_power = 1
+	use_power = 1;
+	req_access = list(24)
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)

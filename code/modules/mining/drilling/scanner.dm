@@ -11,8 +11,7 @@
 
 /obj/item/weapon/mining_scanner/examine()
 	. = ..()
-	var/rangesteps = scanrange - 1
-	to_chat(usr, "Current scan range is [rangesteps] step(s) from user's current location, including current location. Alt-Click to change scan range.")
+	to_chat(usr, "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range.")
 
 /obj/item/weapon/mining_scanner/AltClick(mob/user)
 	var/newscan = text2num(input(usr,"What would you like to set the scan range to? Maximum of [maxscanrange].","New Scan Range",maxscanrange))

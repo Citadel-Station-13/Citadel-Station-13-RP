@@ -233,6 +233,11 @@ var/list/gamemode_cache = list()
 
 	var/comms_key = "default_password"
 
+	var/minute_click_limit = 500		//default: 7+ clicks per second
+	var/second_click_limit = 15
+	var/minute_topic_limit = 500
+	var/second_topic_limit = 10
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -761,6 +766,18 @@ var/list/gamemode_cache = list()
 
 				if ("paranoia_logging")
 					config.paranoia_logging = 1
+
+				if("minute_click_limit")
+					config.minute_click_limit = text2num(value)
+
+				if("second_click_limit")
+					config.second_click_limit = text2num(value)
+
+				if("minute_topic_limit")
+					config.minute_topic_limit = text2num(value)
+
+				if("second_topic_limit")
+					config.second_topic_limit = text2num(value)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
