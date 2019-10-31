@@ -24,7 +24,7 @@
 			b_skin = rand (0,255)
 	if(current_species.appearance_flags & HAS_UNDERWEAR)
 		all_underwear.Cut()
-		for(var/datum/category_group/underwear/WRC in global_underwear.categories)
+		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
 			all_underwear[WRC.name] = WRI.name
 

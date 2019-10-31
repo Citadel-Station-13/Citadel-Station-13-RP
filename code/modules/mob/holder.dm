@@ -1,5 +1,3 @@
-var/list/holder_mob_icon_cache = list()
-
 //Helper object for picking dionaea (and other creatures) up.
 /obj/item/weapon/holder
 	name = "holder"
@@ -19,10 +17,11 @@ var/list/holder_mob_icon_cache = list()
 		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
+	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
-/obj/item/weapon/holder/New()
-	..()
+/obj/item/weapon/holder/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 
 /obj/item/weapon/holder/Destroy()

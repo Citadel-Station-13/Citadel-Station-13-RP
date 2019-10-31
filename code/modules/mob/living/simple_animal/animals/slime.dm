@@ -27,7 +27,7 @@
 	icon_living = "rainbow baby slime"
 	icon_dead = "rainbow baby slime dead"
 
-/mob/living/simple_animal/old_slime/science/initialize()
+/mob/living/simple_animal/old_slime/science/Initialize()
 	. = ..()
 	overlays.Cut()
 	overlays += "aslime-:33"
@@ -52,8 +52,8 @@
 
 	var/colour = "grey"
 
-/mob/living/simple_animal/adultslime/New()
-	..()
+/mob/living/simple_animal/adultslime/Initialize(mapload)
+	. = ..()
 	overlays += "aslime-:33"
 
 /mob/living/simple_animal/adultslime/death()

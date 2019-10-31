@@ -2134,7 +2134,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/effect/floor_decal/borderfloor/corner2,
@@ -2146,7 +2146,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -2208,6 +2208,7 @@
 /area/tether/surfacebase/mining_main/eva)
 "aea" = (
 /obj/structure/table/rack,
+/obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
@@ -2218,6 +2219,7 @@
 /area/tether/surfacebase/mining_main/eva)
 "aeb" = (
 /obj/structure/table/rack,
+/obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
@@ -14512,8 +14514,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/weapon/shovel,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/item/weapon/soap,
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -18885,7 +18887,8 @@
 	frequency = 1441;
 	icon_state = "map_injector";
 	id = "atmos_out";
-	use_power = 1
+	use_power = 1;
+	req_access = list(24)
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)

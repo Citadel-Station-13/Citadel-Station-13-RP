@@ -93,6 +93,7 @@
 
 	if(boots)
 		if (H.equip_to_slot_if_possible(boots, slot_shoes))
+			to_chat(M, "Your suit's magboots deploy with a click.")
 			boots.canremove = 0
 
 	if(helmet)
@@ -183,12 +184,17 @@
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
 			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
-// below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me
-/obj/item/clothing/suit/space/void/attack_self(mob/user)
-	if(!istype(src.loc,/mob/living)) return
 
-	if(!helmet)
-		to_chat(usr, "There is no helmet installed.")
+/obj/item/clothing/suit/space/void/verb/toggle_magboots()
+	set name = "Toggle Magboots"
+	set category = "Object"
+	set src in usr
+
+	if(!istype(src.loc,/mob/living))
+		return
+
+	if(!boots)
+		to_chat(usr, "There are no magboots installed.")
 		return
 
 	var/mob/living/carbon/human/H = usr
@@ -200,22 +206,21 @@
 	if(H.wear_suit != src)
 		return
 
-	if(H.head == helmet)
-		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
-		helmet.canremove = 1
-		H.drop_from_inventory(helmet)
-		helmet.forceMove(src)
+	if(H.shoes == boots)
+		to_chat(H, "<span class='notice'>You retract your magboots.</span>")
+		boots.canremove = 1
+		H.drop_from_inventory(boots)
+		boots.forceMove(src)
 	else
-		if(H.head)
-			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>")
-			return
-		if(H.equip_to_slot_if_possible(helmet, slot_head))
-			helmet.pickup(H)
-			helmet.canremove = 0
-			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
-			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
-	helmet.update_light(H)
+		if(H.equip_to_slot_if_possible(boots, slot_shoes))
+			boots.pickup(H)
+			boots.canremove = 0
+			to_chat(H, "<span class='info'>You deploy your magboots.</span>")
+
+// below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
+/obj/item/clothing/suit/space/void/attack_self(mob/user)
+	toggle_helmet()
+	return
 
 /obj/item/clothing/suit/space/void/verb/eject_tank()
 
@@ -223,7 +228,8 @@
 	set category = "Object"
 	set src in usr
 
-	if(!istype(src.loc,/mob/living)) return
+	if(!istype(src.loc,/mob/living))
+		return
 
 	if(!tank && !cooler)
 		to_chat(usr, "There is no tank or cooling unit inserted.")

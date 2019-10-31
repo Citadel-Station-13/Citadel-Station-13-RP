@@ -14,4 +14,3 @@
 	desc = "The headset of a Nanotrasen corporate employee."
 	icon_state = "nt_headset"
 	ks2type = /obj/item/device/encryptionkey/ert
-

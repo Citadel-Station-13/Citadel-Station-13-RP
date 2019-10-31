@@ -6,7 +6,7 @@
 	filling_color = "#FF1C1C"
 	center_of_mass = list("x"=16, "y"=14)
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/initialize()
+/obj/item/weapon/reagent_containers/food/snacks/meat/Initialize()
 	..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("triglyceride", 2)
@@ -54,7 +54,7 @@
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/chicken/initialize()
+/obj/item/weapon/reagent_containers/food/snacks/meat/chicken/Initialize()
 		..()
 		reagents.remove_reagent("triglyceride", INFINITY)
 		//Chicken is low fat. Less total calories than other meats

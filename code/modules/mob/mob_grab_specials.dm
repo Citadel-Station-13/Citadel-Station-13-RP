@@ -61,7 +61,7 @@
 		target << "<span class='danger'>You feel extreme pain!</span>"
 
 		var/max_halloss = round(target.species.total_health * 0.8) //up to 80% of passing out
-		affecting.adjustHalLoss(Clamp(0, max_halloss - affecting.halloss, 30))
+		affecting.adjustHalLoss(CLAMP(0, max_halloss - affecting.halloss, 30))
 
 /obj/item/weapon/grab/proc/attack_eye(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
 	if(!istype(attacker))
@@ -146,8 +146,8 @@
 	target.Weaken(3)
 	target.lying = 1
 	step_to(attacker, target)
-	attacker.set_dir(EAST) //face the victim
-	target.set_dir(SOUTH) //face up
+	attacker.setDir(EAST) //face the victim
+	target.setDir(SOUTH) //face up
 
 /obj/item/weapon/grab/proc/devour(mob/target, mob/user)
 	var/can_eat

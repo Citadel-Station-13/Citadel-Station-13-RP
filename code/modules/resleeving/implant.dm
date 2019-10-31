@@ -29,7 +29,7 @@
 
 /obj/item/weapon/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		BITSET(H.hud_updateflag, BACKUP_HUD)
+		ENABLE_BITFIELD(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
 
 		return 1

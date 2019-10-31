@@ -6,7 +6,7 @@
 	density = 1
 	var/list/starts_with
 
-/obj/structure/largecrate/initialize()
+/obj/structure/largecrate/Initialize()
 	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
@@ -63,7 +63,7 @@
 	desc = "It comes in a box for the consumer's sake. ..How is this lighter?"
 	icon_state = "vehiclecrate"
 
-/obj/structure/largecrate/vehicle/initialize()
+/obj/structure/largecrate/vehicle/Initialize()
 	..()
 	spawn(1)
 		for(var/obj/O in contents)
@@ -110,3 +110,11 @@
 /obj/structure/largecrate/animal/chick
 	name = "chicken crate"
 	starts_with = list(/mob/living/simple_animal/chick = 5)
+
+/obj/structure/largecrate/animal/carp
+	name = "space carp crate"
+	starts_with = list(/obj/random/mob/carp = 3)
+
+/obj/structure/largecrate/animal/spiders
+	name = "spider crate"
+	starts_with = list(/obj/random/mob/spider = 3)

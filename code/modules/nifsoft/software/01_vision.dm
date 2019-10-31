@@ -111,7 +111,7 @@
 			var/mob/living/carbon/human/H = nif.human
 			H.sight |= SEE_TURFS
 			if(H.client)
-				H.client.screen |= global_hud.meson
+				H.client.screen |= GLOB.global_hud.meson
 
 /datum/nifsoft/material
 	name = "Material Scanner"
@@ -130,7 +130,7 @@
 			var/mob/living/carbon/human/H = nif.human
 			H.sight |= SEE_OBJS
 			if(H.client)
-				H.client.screen |= global_hud.material
+				H.client.screen |= GLOB.global_hud.material
 
 /datum/nifsoft/thermals
 	name = "Thermal Scanner"
@@ -150,7 +150,7 @@
 			var/mob/living/carbon/human/H = nif.human
 			H.sight |= SEE_MOBS
 			if(H.client)
-				H.client.screen |= global_hud.thermal
+				H.client.screen |= GLOB.global_hud.thermal
 
 /datum/nifsoft/nightvis
 	name = "Low-Light Amp"
@@ -169,4 +169,4 @@
 			var/mob/living/carbon/human/H = nif.human
 			H.see_in_dark += 7
 			if(H.client)
-				H.client.screen |= global_hud.nvg
+				H.client.screen |= GLOB.global_hud.nvg

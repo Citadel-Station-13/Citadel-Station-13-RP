@@ -40,7 +40,7 @@
 		list("impedrezene" = 15)						= 2,
 		list("zombiepowder" = 10)						= 1)
 
-/obj/item/weapon/reagent_containers/glass/beaker/vial/random/initialize()
+/obj/item/weapon/reagent_containers/glass/beaker/vial/random/Initialize()
 	..()
 	if(is_open_container())
 		flags ^= OPENCONTAINER

@@ -94,8 +94,8 @@
 	var/obj/item/held_item = null
 
 
-/mob/living/simple_animal/parrot/New()
-	..()
+/mob/living/simple_animal/parrot/Initialize(mapload)
+	. = ..()
 	if(!ears)
 		var/headset = pick(/obj/item/device/radio/headset/headset_sec, \
 						/obj/item/device/radio/headset/headset_eng, \
@@ -195,7 +195,7 @@
 						src.ears = headset_to_add
 						to_chat(usr, "You fit the headset onto [src].")
 
-						clearlist(available_channels)
+						available_channels.len = 0
 						for(var/ch in headset_to_add.channels)
 							switch(ch)
 								if("Engineering")
@@ -302,7 +302,7 @@
 			speak.Remove(pick(speak))
 
 		speak.Add(pick(speech_buffer))
-		clearlist(speech_buffer)
+		speech_buffer.len = 0
 
 
 //-----SLEEPING

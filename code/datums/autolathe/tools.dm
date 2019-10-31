@@ -1,3 +1,7 @@
+/datum/category_item/autolathe/general/cable
+	name = "cable"
+	path =/obj/item/stack/cable_coil
+
 /datum/category_item/autolathe/tools/crowbar
 	name = "crowbar"
 	path =/obj/item/weapon/tool/crowbar

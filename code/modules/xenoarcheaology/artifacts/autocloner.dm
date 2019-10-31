@@ -14,9 +14,8 @@
 	active_power_usage = 2000
 	idle_power_usage = 1000
 
-/obj/machinery/auto_cloner/New()
-	..()
-
+/obj/machinery/auto_cloner/Initialize(mapload)
+	. = ..()
 	time_per_spawn = rand(1200,3600)
 
 	//33% chance to spawn nasties
@@ -47,21 +46,21 @@
 		if(!previous_power_state)
 			previous_power_state = 1
 			icon_state = "cellold1"
-			src.visible_message("<span class='notice'>\icon[src] [src] suddenly comes to life!</span>")
+			visible_message("<span class='notice'>\icon[src] [src] suddenly comes to life!</span>")
 
 		//slowly grow a mob
 		if(prob(5))
-			src.visible_message("<span class='notice'>\icon[src] [src] [pick("gloops","glugs","whirrs","whooshes","hisses","purrs","hums","gushes")].</span>")
+			visible_message("<span class='notice'>\icon[src] [src] [pick("gloops","glugs","whirrs","whooshes","hisses","purrs","hums","gushes")].</span>")
 
 		//if we've finished growing...
 		if(time_spent_spawning >= time_per_spawn)
 			time_spent_spawning = 0
 			use_power = 1
-			src.visible_message("<span class='notice'>\icon[src] [src] pings!</span>")
+			visible_message("<span class='notice'>\icon[src] [src] pings!</span>")
 			icon_state = "cellold1"
 			desc = "It's full of a bubbling viscous liquid, and is lit by a mysterious glow."
 			if(spawn_type)
-				new spawn_type(src.loc)
+				new spawn_type(loc)
 
 		//if we're getting close to finished, kick into overdrive power usage
 		if(time_spent_spawning / time_per_spawn > 0.75)
@@ -78,7 +77,7 @@
 		if(previous_power_state)
 			previous_power_state = 0
 			icon_state = "cellold0"
-			src.visible_message("<span class='notice'>\icon[src] [src] suddenly shuts down.</span>")
+			visible_message("<span class='notice'>\icon[src] [src] suddenly shuts down.</span>")
 
 		//cloned mob slowly breaks down
 		time_spent_spawning = max(time_spent_spawning + last_process - world.time, 0)

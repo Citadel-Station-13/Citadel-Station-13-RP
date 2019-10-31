@@ -1,0 +1,73 @@
+{{if data.not_connected}}
+	<h3>No Connection!</h3>
+{{else}}
+	<h3>Core</h3>
+	<span class="itemLabel">
+		Integrity:
+	</span>
+	<span class="itemContent">
+		{{:helper.displayBar(data.integrity_percentage, 0, 100, (data.integrity_percentage >= 90) ? 'good' : (data.integrity_percentage >= 50) ? 'average' : 'bad')}}
+		<b>{{:data.integrity_percentage}} %</b>
+	</span>
+	<span class="itemLabel">
+		Temperature:
+	</span>
+	<span class="itemContent">
+		{{:helper.displayBar(data.core_temp, 0, data.max_temp, (data.core_temp >= (data.max_temp / 2)) ? 'bad' : (data.core_temp >= (data.max_temp / 2.5)) ? 'average' : 'good')}}
+		<b>{{:data.core_temp}} K</b>
+	</span>
+	{{if data.powered}}
+		<span class="itemLabel">
+			Cutoff Temperature:
+		</span>
+		<span class="itemContent">
+			<b>{{:data.cutoff_point}} K</b><br>{{:helper.link('SET', null, {'cutoff_point' : 0}, null)}}
+		</span>
+		<h3>Environment</h3>
+		<span class="itemLabel">
+			Pressure:
+		</span>
+		<span class="itemContent">
+			<b>{{:data.ambient_pressure}} kPa</b>
+		</span>
+		<span class="itemLabel">
+			Temperature:
+		</span>
+		<span class="itemContent">
+			{{:helper.displayBar(data.ambient_temp, 0, data.max_temp, (data.ambient_temp >= (data.max_temp / 2)) ? 'bad' : (data.ambient_temp >= (data.max_temp / 2.5)) ? 'average' : 'good')}}
+			<b>{{:data.ambient_temp}} K</b>
+		</span>
+		{{for data.rods}}
+			<h3>{{:value.name}}</h3>
+			<span class="itemLabel">
+				Integrity:
+			</span>
+			<span class="itemContent">
+				{{:helper.displayBar(value.integrity_percentage, 0, 100, (value.integrity_percentage >= 90) ? 'good' : (value.integrity_percentage >= 50) ? 'average' : 'bad')}}
+				<b>{{:value.integrity_percentage}} %</b>
+			</span>
+			<span class="itemLabel">
+				Lifespan:
+			</span>
+			<span class="itemContent">
+				{{:helper.displayBar(value.life_percentage, 0, 100, (value.life_percentage >= 90) ? 'good' : (value.life_percentage >= 50) ? 'average' : 'bad')}}
+				<b>{{:value.life_percentage}} %</b>
+			</span>
+			<span class="itemLabel">
+				Temperature:
+			</span>
+			<span class="itemContent">
+				{{:helper.displayBar(value.heat, 0, value.melting_point, (value.heat >= (value.melting_point / 1.33)) ? 'bad' : (value.heat >= (value.melting_point / 2)) ? 'average' : 'good')}}
+				<b>{{:value.heat}} K</b>
+			</span>
+			<span class="itemLabel">
+				Insertion:
+			</span>
+			<span class="itemContent">
+				<b>{{:value.insertion}} %</b><br>{{:helper.link('SET', null, {'rod_insertion' : value.rod}, null)}}
+			</span>
+		{{/for}}
+	{{else}}
+		<h3>No Power!</h3>
+	{{/if}}
+{{/if}}

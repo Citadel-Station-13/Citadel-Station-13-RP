@@ -21,9 +21,8 @@
 	icon_state = "strange"
 	origin_tech = list(TECH_MATERIAL = 5)
 
-/obj/item/weapon/ore/strangerock/New(loc, var/inside_item_type = 0)
-	..(loc)
-
+/obj/item/weapon/ore/strangerock/Initialize(mapload, inside_item_type = 0)
+	. = ..()
 	if(inside_item_type)
 		new /obj/item/weapon/archaeological_find(src, new_item_type = inside_item_type)
 
@@ -63,5 +62,5 @@
 	..()
 
 	if(prob(33))
-		src.visible_message("<span class='warning'>[src] crumbles away, leaving some dust and gravel behind.</span>")
+		visible_message("<span class='warning'>[src] crumbles away, leaving some dust and gravel behind.</span>")
 		qdel(src)

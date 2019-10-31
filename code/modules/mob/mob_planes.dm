@@ -44,7 +44,7 @@
 
 /datum/plane_holder/Destroy()
 	my_mob = null
-	QDEL_NULL_LIST(plane_masters) //Goodbye my children, be free
+	QDEL_LIST_NULL(plane_masters) //Goodbye my children, be free
 	return ..()
 
 /datum/plane_holder/proc/set_vis(var/which = null, var/state = FALSE)
@@ -112,9 +112,6 @@
 	var/desired_alpha = 255	//What we go to when we're enabled
 	var/invis_toggle = FALSE
 	var/list/sub_planes
-
-/obj/screen/plane_master/New()
-	..(null) //Never be in anything ever.
 
 /obj/screen/plane_master/proc/set_desired_alpha(var/new_alpha)
 	if(new_alpha != alpha && new_alpha > 0 && new_alpha <= 255)

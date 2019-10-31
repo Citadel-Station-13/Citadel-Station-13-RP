@@ -147,7 +147,7 @@
 			O = new recipe.result_type(user.loc, recipe.use_material)
 		else
 			O = new recipe.result_type(user.loc)
-		O.set_dir(user.dir)
+		O.setDir(user.dir)
 		O.add_fingerprint(user)
 
 		if (istype(O, /obj/item/stack))

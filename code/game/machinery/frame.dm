@@ -236,7 +236,7 @@
 		state = FRAME_PLACED
 
 		if(dir)
-			set_dir(dir)
+			setDir(dir)
 
 		if(loc)
 			src.loc = loc
@@ -374,7 +374,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -388,7 +388,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -401,7 +401,7 @@
 				var/obj/machinery/B = new circuit.build_path(src.loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.set_dir(dir)
+				B.setDir(dir)
 				circuit.construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -581,7 +581,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 
 	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
 
@@ -600,7 +600,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 270))
+	setDir(turn(dir, 270))
 
 	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
 

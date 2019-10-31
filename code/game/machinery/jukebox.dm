@@ -55,10 +55,8 @@
 	)
 
 /obj/machinery/media/jukebox/New()
-	..()
+	. = ..()
 	default_apply_parts()
-	wires = new/datum/wires/jukebox(src)
-	update_icon()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
@@ -66,8 +64,10 @@
 	..()
 
 // On initialization, copy our tracks from the global list
-/obj/machinery/media/jukebox/initialize()
+/obj/machinery/media/jukebox/Initialize()
 	. = ..()
+	wires = new/datum/wires/jukebox(src)
+	update_icon()
 	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
 		tracks.Cut()
 		secret_tracks.Cut()

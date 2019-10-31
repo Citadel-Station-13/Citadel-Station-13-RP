@@ -28,7 +28,7 @@
 
 	var/global/list/allocated_gamma = list()
 
-/obj/structure/trash_pile/initialize()
+/obj/structure/trash_pile/Initialize()
 	. = ..()
 	icon_state = pick(
 		"pile1",
@@ -226,7 +226,7 @@
 					prob(3);/obj/item/weapon/reagent_containers/syringe/drugs,
 					prob(2);/obj/item/weapon/storage/pill_bottle/citalopram, //happer pills
 					prob(2);/obj/item/weapon/storage/pill_bottle/iron,
-					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine, 
+					prob(2);/obj/item/weapon/storage/pill_bottle/bicaridine,
 					prob(2);/obj/item/weapon/storage/pill_bottle/antitox,
 					prob(2);/obj/item/weapon/storage/pill_bottle/kelotane,
 					prob(2);/obj/item/weapon/handcuffs/fuzzy,

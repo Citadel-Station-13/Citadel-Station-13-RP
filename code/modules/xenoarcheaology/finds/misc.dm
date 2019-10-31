@@ -9,7 +9,8 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/machinery/crystal/New()
+/obj/machinery/crystal/Initialize(mapload)
+	. = ..()
 	if(prob(30))
 		icon_state = "crystal2"
 		set_light(3, 3, "#CC00CC")

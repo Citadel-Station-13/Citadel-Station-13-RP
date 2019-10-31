@@ -256,10 +256,10 @@
 							src.active1.fields["fingerprint"] = t1
 					if("sex")
 						if (istype(src.active1, /datum/data/record))
-							src.active1.fields["sex"] = next_in_list(src.active1.fields["sex"], all_genders_text_list)
+							src.active1.fields["sex"] = next_list_item(src.active1.fields["sex"], all_genders_text_list)
 					if("id_gender")
 						if (istype(src.active2, /datum/data/record))
-							src.active2.fields["id_gender"] = next_in_list(src.active2.fields["id_gender"], all_genders_text_list)
+							src.active2.fields["id_gender"] = next_list_item(src.active2.fields["id_gender"], all_genders_text_list)
 					if("age")
 						if (istype(src.active1, /datum/data/record))
 							var/t1 = input("Please input age:", "Med. records", src.active1.fields["age"], null)  as num

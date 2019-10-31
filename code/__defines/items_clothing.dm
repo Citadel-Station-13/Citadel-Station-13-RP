@@ -50,6 +50,8 @@
 #define	NOREACT            0x40 // Reagents don't react inside this container.
 #define PROXMOVE           0x80  // Does this object require proximity checking in Enter()?
 #define OVERLAY_QUEUED     0x100 // Atom queued to SSoverlay for COMPILE_OVERLAYS
+#define INITIALIZED			0x200
+#define ADMIN_SPAWNED		0x400
 
 //Flags for items (equipment) - Used in /obj/item/var/item_flags
 #define THICKMATERIAL          0x1  // Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.

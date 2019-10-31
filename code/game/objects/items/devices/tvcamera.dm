@@ -5,12 +5,12 @@
 	item_state = "camcorder"
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BELT
-	var/channel = "NCS Northern Star News Feed"
+	var/channel = "Tether News Feed"
 	var/obj/machinery/camera/network/thunder/camera
 	var/obj/item/device/radio/radio
 
-/obj/item/device/tvcamera/New()
-	..()
+/obj/item/device/tvcamera/Initialize()
+	. = ..()
 	listening_objects += src
 
 /obj/item/device/tvcamera/Destroy()
@@ -26,7 +26,7 @@
 	to_chat(usr, "Video feed is [camera.status ? "on" : "off"]")
 	to_chat(usr, "Audio feed is [radio.broadcasting ? "on" : "off"]")
 
-/obj/item/device/tvcamera/initialize()
+/obj/item/device/tvcamera/Initialize()
 	. = ..()
 	camera = new(src)
 	camera.c_tag = channel

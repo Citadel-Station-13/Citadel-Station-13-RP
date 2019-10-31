@@ -39,7 +39,8 @@
 	var/always_process = FALSE // If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
 	toolspeed = 1
 
-/obj/item/weapon/weldingtool/New()
+/obj/item/weapon/weldingtool/Initialize()
+	. = ..()
 //	var/random_fuel = min(rand(10,20),max_fuel)
 	var/datum/reagents/R = new/datum/reagents(max_fuel)
 	reagents = R
@@ -48,7 +49,6 @@
 	update_icon()
 	if(always_process)
 		processing_objects |= src
-	..()
 
 /obj/item/weapon/weldingtool/Destroy()
 	if(welding || always_process)
@@ -75,7 +75,16 @@
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 			return 1
-
+	if(user.a_intent != I_HELP)
+		if(welding)
+			remove_fuel(1, user, 0)
+		if(isliving(A))
+			var/mob/living/L = A
+			L.IgniteMob()
+/*		if(istype(A, /turf)) // cant get this to work smh -hatterhat
+			var/turf/T = get_turf(A)
+			T.hotspot_expose(700, 50, 1)
+*/
 	return ..()
 
 /obj/item/weapon/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -121,9 +130,6 @@
 		++burned_fuel_for
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
 			remove_fuel(1)
-
-
-
 		if(get_fuel() < 1)
 			setWelding(0)
 
@@ -139,11 +145,12 @@
 
 
 /obj/item/weapon/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(!proximity)
+		return
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
-			to_chat(user, "<span class='notice'>Welder refueled</span>")
+			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
 		else if(!welding)
@@ -156,14 +163,6 @@
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 			return
-	if (src.welding)
-		remove_fuel(1)
-		var/turf/location = get_turf(user)
-		if(isliving(O))
-			var/mob/living/L = O
-			L.IgniteMob()
-		if (istype(location, /turf))
-			location.hotspot_expose(700, 50, 1)
 	return
 
 
@@ -179,7 +178,7 @@
 	return max_fuel
 
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/weapon/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/weapon/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null, var/eyecheck = 1)
 	if(!welding)
 		return 0
 	if(amount)
@@ -187,7 +186,8 @@
 	if(get_fuel() >= amount)
 		reagents.remove_reagent("fuel", amount)
 		if(M)
-			eyecheck(M)
+			if(eyecheck)
+				eyecheck(M)
 		update_icon()
 		return 1
 	else
@@ -214,7 +214,7 @@
 	// Fuel counter overlay.
 	if(change_icons && get_max_fuel())
 		var/ratio = get_fuel() / get_max_fuel()
-		ratio = Ceiling(ratio*4) * 25
+		ratio = CEILING(ratio*4, 1) * 25
 		var/image/I = image(icon, src, "[icon_state][ratio]")
 		overlays.Add(I)
 
@@ -441,10 +441,10 @@
 	always_process = TRUE
 	var/obj/item/weapon/weldpack/mounted_pack = null
 
-/obj/item/weapon/weldingtool/tubefed/New(location)
-	..()
-	if(istype(location, /obj/item/weapon/weldpack))
-		var/obj/item/weapon/weldpack/holder = location
+/obj/item/weapon/weldingtool/tubefed/Initialize()
+	. = ..()
+	if(istype(loc, /obj/item/weapon/weldpack))
+		var/obj/item/weapon/weldpack/holder = loc
 		mounted_pack = holder
 	else
 		qdel(src)
@@ -496,11 +496,11 @@
 	acti_sound = 'sound/effects/sparks4.ogg'
 	deac_sound = 'sound/effects/sparks4.ogg'
 
-/obj/item/weapon/weldingtool/electric/unloaded/New()
+/obj/item/weapon/weldingtool/electric/unloaded
 	cell_type = null
 
-/obj/item/weapon/weldingtool/electric/New()
-	..()
+/obj/item/weapon/weldingtool/electric/Initialize()
+	. = ..()
 	if(cell_type == null)
 		update_icon()
 	else if(cell_type)

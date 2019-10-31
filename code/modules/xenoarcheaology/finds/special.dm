@@ -1,19 +1,14 @@
-
-
-
 //endless reagents!
 /obj/item/weapon/reagent_containers/glass/replenishing
 	var/spawning_id
 
-/obj/item/weapon/reagent_containers/glass/replenishing/initialize()
-	..()
+/obj/item/weapon/reagent_containers/glass/replenishing/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
 /obj/item/weapon/reagent_containers/glass/replenishing/process()
 	reagents.add_reagent(spawning_id, 0.3)
-
-
 
 //a talking gas mask!
 /obj/item/clothing/mask/gas/poltergeist
@@ -21,12 +16,13 @@
 	var/last_twitch = 0
 	var/max_stored_messages = 100
 
-/obj/item/clothing/mask/gas/poltergeist/New()
+/obj/item/clothing/mask/gas/poltergeist/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 
 /obj/item/clothing/mask/gas/poltergeist/process()
-	if(heard_talk.len && istype(src.loc, /mob/living) && prob(10))
-		var/mob/living/M = src.loc
+	if(heard_talk.len && istype(loc, /mob/living) && prob(10))
+		var/mob/living/M = loc
 		M.say(pick(heard_talk))
 
 /obj/item/clothing/mask/gas/poltergeist/hear_talk(mob/M as mob, text)
@@ -34,10 +30,8 @@
 	if(heard_talk.len > max_stored_messages)
 		heard_talk.Remove(pick(heard_talk))
 	heard_talk.Add(text)
-	if(istype(src.loc, /mob/living) && world.time - last_twitch > 50)
+	if(istype(loc, /mob/living) && world.time - last_twitch > 50)
 		last_twitch = world.time
-
-
 
 //a vampiric statuette
 //todo: cult integration
@@ -54,8 +48,8 @@
 	var/wight_check_index = 1
 	var/list/shadow_wights = list()
 
-/obj/item/weapon/vampiric/New()
-	..()
+/obj/item/weapon/vampiric/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 
 /obj/item/weapon/vampiric/process()
@@ -77,7 +71,7 @@
 				charges += 0.25
 			else
 				charges += 1
-				playsound(src.loc, 'sound/effects/splat.ogg', 50, 1, -3)
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1, -3)
 
 	//use up stored charges
 	if(charges >= 10)
@@ -89,17 +83,17 @@
 			charges -= 1
 			var/spawn_type = pick(/mob/living/simple_animal/hostile/creature/vore)  // Vorestation Edit
 			new spawn_type(pick(view(1,src)))
-			playsound(src.loc, pick('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg'), 50, 1, -3)
+			playsound(loc, pick('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg'), 50, 1, -3)
 
 	if(charges >= 1)
 		if(shadow_wights.len < 5 && prob(5))
-			shadow_wights.Add(new /obj/effect/shadow_wight(src.loc))
-			playsound(src.loc, 'sound/effects/ghost.ogg', 50, 1, -3)
+			shadow_wights.Add(new /obj/effect/shadow_wight(loc))
+			playsound(loc, 'sound/effects/ghost.ogg', 50, 1, -3)
 			charges -= 0.1
 
 	if(charges >= 0.1)
 		if(prob(5))
-			src.visible_message("<font color='red'>\icon[src] [src]'s eyes glow ruby red for a moment!</font>")
+			visible_message("<font color='red'>\icon[src] [src]'s eyes glow ruby red for a moment!</font>")
 			charges -= 0.1
 
 	//check on our shadow wights
@@ -124,7 +118,7 @@
 /obj/item/weapon/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
 	last_bloodcall = world.time
 	if(istype(M))
-		playsound(src.loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
+		playsound(loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
 		nearby_mobs.Add(M)
 
 		var/target = pick(M.organs_by_name)
@@ -141,28 +135,28 @@
 	var/turf/target_turf
 	var/loc_last_process
 
-/obj/effect/decal/cleanable/blood/splatter/animated/New()
-	..()
+/obj/effect/decal/cleanable/blood/splatter/animated/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
-	loc_last_process = src.loc
+	loc_last_process = loc
 
 /obj/effect/decal/cleanable/blood/splatter/animated/process()
-	if(target_turf && src.loc != target_turf)
+	if(target_turf && loc != target_turf)
 		step_towards(src,target_turf)
-		if(src.loc == loc_last_process)
+		if(loc == loc_last_process)
 			target_turf = null
-		loc_last_process = src.loc
+		loc_last_process = loc
 
 		//leave some drips behind
 		if(prob(50))
-			var/obj/effect/decal/cleanable/blood/drip/D = new(src.loc)
-			D.blood_DNA = src.blood_DNA.Copy()
+			var/obj/effect/decal/cleanable/blood/drip/D = new(loc)
+			D.blood_DNA = blood_DNA.Copy()
 			if(prob(50))
-				D = new(src.loc)
-				D.blood_DNA = src.blood_DNA.Copy()
+				D = new(loc)
+				D.blood_DNA = blood_DNA.Copy()
 				if(prob(50))
-					D = new(src.loc)
-					D.blood_DNA = src.blood_DNA.Copy()
+					D = new(loc)
+					D.blood_DNA = blood_DNA.Copy()
 	else
 		..()
 
@@ -172,15 +166,16 @@
 	icon_state = "shade"
 	density = 1
 
-/obj/effect/shadow_wight/New()
+/obj/effect/shadow_wight/Initialize(mapload)
+	. = ..()
 	processing_objects.Add(src)
 
 /obj/effect/shadow_wight/process()
-	if(src.loc)
-		src.loc = get_turf(pick(orange(1,src)))
-		var/mob/living/carbon/M = locate() in src.loc
+	if(loc)
+		loc = get_turf(pick(orange(1,src)))
+		var/mob/living/carbon/M = locate() in loc
 		if(M)
-			playsound(src.loc, pick('sound/hallucinations/behind_you1.ogg',\
+			playsound(loc, pick('sound/hallucinations/behind_you1.ogg',\
 			'sound/hallucinations/behind_you2.ogg',\
 			'sound/hallucinations/i_see_you1.ogg',\
 			'sound/hallucinations/i_see_you2.ogg',\
@@ -195,9 +190,10 @@
 			'sound/hallucinations/turn_around2.ogg',\
 			), 50, 1, -3)
 			M.sleeping = max(M.sleeping,rand(5,10))
-			src.loc = null
+			loc = null
 	else
 		processing_objects.Remove(src)
 
-/obj/effect/shadow_wight/Bump(var/atom/obstacle)
-	obstacle << "<font color='red'>You feel a chill run down your spine!</font>"
+/obj/effect/shadow_wight/Bump(atom/obstacle)
+	. = ..()
+	to_chat(obstacle, "<font color='red'>You feel a chill run down your spine!</font>")

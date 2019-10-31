@@ -105,7 +105,7 @@
 
 /obj/item/clothing/suit/equipped(var/mob/user, var/slot)
 	var/normalize = TRUE
-	
+
 	//Pyramid of doom-y. Improve somehow?
 	if(!taurized && slot == slot_wear_suit && ishuman(user))
 		var/mob/living/carbon/human/H = user

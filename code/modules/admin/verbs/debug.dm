@@ -627,7 +627,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	error_cache.showTo(usr)
+	GLOB.error_cache.show_to(usr)
 
 /datum/admins/proc/change_weather()
 	set category = "Debug"

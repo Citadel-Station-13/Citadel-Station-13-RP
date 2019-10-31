@@ -23,7 +23,7 @@
 /datum/category_item/player_setup_item/vore/vantag/copy_to_mob(var/mob/living/carbon/human/character)
 	if(character && !istype(character,/mob/living/carbon/human/dummy))
 		character.vantag_pref = pref.vantag_preference
-		BITSET(character.hud_updateflag, VANTAG_HUD)
+		ENABLE_BITFIELD(character.hud_updateflag, VANTAG_HUD)
 
 /datum/category_item/player_setup_item/vore/vantag/content(var/mob/user)
 	. += "<br>"
