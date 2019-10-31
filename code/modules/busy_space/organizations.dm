@@ -14,7 +14,6 @@
 			"flight",
 			"mission",
 			"route",
-			"operation",
 			"assignment"
 			)
 	var/list/ship_names = list(		//Names of spaceships.  This is a mostly generic list that all the other organizations inherit from if they don't have anything better.
@@ -40,24 +39,60 @@
 			"Surveyor",
 			"Haste",
 			"Radiant",
-			"Luminous"
+			"Luminous",
+			"Calypso",
+			"Eclipse",
+			"Maverick",
+			"Polaris",
+			"Orion",
+			"Odyssey",
+			"Relentless",
+			"Valor",
+			"Zodiac",
+			"Avenger",
+			"Defiant",
+			"Dauntless",
+			"Interceptor",
+			"Providence",
+			"Thunderchild",
+			"Defender",
+			"Ranger",
+			"River",
+			"Jubilee"
 			)
 	var/list/destination_names = list()	//Names of static holdings that the organization's ships visit regularly.
-	var/scan_exempt = FALSE			//Are we exempt from routine inspections? to avoid incidents where SysDef appears to go rogue
+	var/lawful = TRUE			//Are we exempt from routine inspections? to avoid incidents where SysDef appears to go rogue -- defaults to TRUE now
+	var/sysdef = FALSE			//Are we the space cops?
 	var/autogenerate_destination_names = TRUE //Pad the destination lists with some extra random ones?
 
 /datum/lore/organization/New()
 	..()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
-		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially in 'starved' lists
-		var/list/star_names = list(		
-			"in Sol", "in Alpha Centauri", "in Sirius", "in Vega", "in Tau Ceti", "in Altair", "in Zhu Que", "in Oasis", "in Vir", "in Gavel", "in Ganesha", "in Saint Columbia", "in Altair", "in Sidhe", "in New Ohio", "in Parvati", "in Mahi-Mahi", "in Nyx", "in New Seoul", "in Kess-Gendar", "in Raphael", "in Phact", "in Altair", "in El", "in Eutopia", "in Qerr'valis", "in Qerrna-Lakirr", "in Rarkajar", "in Vazzend", "in Thoth", "in Jahan's Post", "in Kauq'xum", "in Silk", "in New Singapore", "in Stove", "in Viola", "in Love", "in Isavau's Gamble", "in Shelf", "in deep space", "on the frontier")
-		var/list/owners = list("a government", "a civilian", "a corporate", "a private", "an independent", "a mercenary", "a military")
-		var/list/destination_types = list("[pick(owners)] shipyard", "[pick(owners)] dockyard", "[pick(owners)] station", "[pick(owners)] vessel", "a waystation", "[pick(owners)] telecommunications satellite", "a spaceport", "a colony", "[pick(owners)] outpost", "a settlement", "[pick(owners)] research facility", "[pick(owners)] installation", "a freeport", "[pick(owners)] holding", "[pick(owners)] asteroid base", "an orbital refinery", "a classified location", "a trade outpost", "[pick(owners)] supply depot", "[pick(owners)] fuel depot")
+		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially 'starved' lists
+		
+		//known planets and exoplanets, plus fictional ones
+		var/list/planets = list("Earth", "Luna", "Mars", "Titan", "Europa", "Sif", "Kara", "Rota", "Root", "Toledo, New Ohio", "Meralar", "Adhomai", "Arion", "Arkas", "Orbitar", "Galileo", "Brahe", "Janssen", "Harriot", "Aegir", "Amateru", "Dagon", "Meztli", "Hypatia", "Dulcinea", "Rocinante", "Sancho", "Thestias", "Saffar", "Samh", "Majriti", "Draugr")
+		
+		//existing systems, pruned for duplicates, includes systems that contain suspected or confirmed exoplanets
+		var/list/systems = list(		
+			"Sol", "Alpha Centauri", "Sirius", "Vega", "Tau Ceti", "Altair", "Zhu Que", "Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair", "Sidhe", "New Ohio", "Parvati", "Mahi-Mahi", "Nyx", "New Seoul", "Kess-Gendar", "Raphael", "Phact", "El", "Eutopia", "Qerr'valis", "Qerrna-Lakirr", "Rarkajar", "Vazzend", "Thoth", "Jahan's Post", "Kauq'xum", "Silk", "New Singapore", "Stove", "Viola", "Love", "Isavau's Gamble", "Shelf", "deep space", "Epsilon Eridani", "Fomalhaut", "Mu Arae", "Pollux", "Wolf 359", "Ross 128", "Gliese 1061", "Luyten's Star", "Teegarden's Star", "Kapteyn", "Wolf 1061", "Aldebaran", "Proxima Centauri", "Kepler-90", "HD 10180", "HR 8832", "TRAPPIST-1", "55 Cancri", "Gliese 876", "Upsilon Andromidae", "Mu Arae", "WASP-47", "82 G. Eridani", "Rho Coronae Borealis", "Pi Mensae", "Beta Pictoris", "Gamma Librae", "Gliese 667 C", "Kapteyn", "LHS 1140", "New Ohio", "Samsara", "Angessa's Pearl")
+		var/list/owners = list("a government", "a civilian", "a corporate", "a private", "an independent", "a mercenary", "a military", "a contracted")
+		var/list/purpose = list("an exploration", "a trade", "a research", "a survey", "a military", "a mercenary", "a corporate", "a civilian", "an independent")
+		
+		//unique or special locations
+		var/list/unique = list("the Jovian subcluster")
+		
+		var/list/orbitals = list("[pick(owners)] shipyard","[pick(owners)] dockyard","[pick(owners)] station","[pick(owners)] vessel","a habitat","[pick(owners)] refinery","[pick(owners)] research facility","an industrial platform","[pick(owners)] installation")
+		var/list/surface = list("a colony","a settlement","a trade outpost","[pick(owners)] supply depot","a fuel depot","[pick(owners)] installation","[pick(owners)] research facility")
+		var/list/deepspace = list("[pick(owners)] asteroid base","a freeport","[pick(owners)] shipyard","[pick(owners)] dockyard","[pick(owners)] station","[pick(owners)] vessel","[pick(owners)] orbital habitat","an orbital refinery","a colony","a settlement","a trade outpost","[pick(owners)] supply depot","a fuel depot","[pick(owners)] installation","[pick(owners)] research facility")
+		var/list/frontier = list("[pick(purpose)] [pick("ship","vessel","outpost")]","a waystation","an outpost","a settlement","a colony")
+		
+		//patterns; orbital ("an x orbiting y"), surface ("an x on y"), deep space ("an x in y"), the frontier ("an x on the frontier")
+		//biased towards inhabited space sites
 		while(i)
-			destination_names.Add("[pick(destination_types)] [pick(star_names)]")
+			destination_names.Add("[pick("[pick(orbitals)] orbiting [pick(planets)]","[pick(surface)] on [pick(planets)]","[pick(deepspace)] in [pick(systems)]",20;"[pick(unique)]",30;"[pick(frontier)] on the frontier")]")
 			i--
-	//refactored slightly to improve flexibility; we can now have different owners for a destination (but only for some destinations), and 'stars' can include other star-like destinations
+	//extensive rework for a much greater degree of variety compared to the old system, lists now include known exoplanets and star systems currently suspected or confirmed to have exoplanets
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -82,7 +117,7 @@
 	headquarters = "Luna, Sol"
 	motto = ""
 
-	ship_prefixes = list("NSV" = "an exploration", "NTV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
+	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
 	//Scientist naming scheme
 	ship_names = list(
 			"Bardeen",
@@ -151,40 +186,84 @@
 	headquarters = "Luna, Sol"
 	motto = ""
 
-	ship_prefixes = list("HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
-	//War God/Soldier Theme
+	ship_prefixes = list("HIV" = "a general operations", "HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
+	//War God Theme, updated
 	ship_names = list(
-			"Ares",
-			"Athena",
-			"Grant",
-			"Custer",
-			"Puller",
-			"Nike",
-			"Bellona",
-			"Leonides",
+			"Anhur",
 			"Bast",
-			"Jackson",
-			"Lee",
-			"Annan",
-			"Chi Yu",
-			"Shiva",
-			"Tyr",
-			"Nobunaga",
-			"Xerxes",
-			"Alexander",
-			"McArthur",
-			"Samson",
-			"Oya",
-			"Nemain",
-			"Caesar",
-			"Augustus",
+			"Horus",
+			"Maahes",
+			"Neith",
+			"Pakhet",
 			"Sekhmet",
-			"Ku",
-			"Indra",
-			"Innana",
+			"Set",
+			"Sobek",
+			"Maher",
+			"Kokou",
+			"Ogoun",
+			"Oya",
+			"Kovas",
+			"Agrona",
+			"Andraste",
+			"Anann",
+			"Badb",
+			"Belatucadros",
+			"Cicolluis",
+			"Macha",
+			"Neit",
+			"Nemain",
+			"Rudianos",
+			"Chiyou",
+			"Guan Yu",
+			"Jinzha",
+			"Nezha",
+			"Zhao Lang",
+			"Laran",
+			"Menrva",
+			"Tyr",
+			"Woden",
+			"Freya",
+			"Odin",
+			"Ullr",
+			"Ares",
+			"Deimos",
+			"Enyo",
+			"Kratos",
+			"Kartikeya",
+			"Mangala",
+			"Parvati",
+			"Shiva",
+			"Vishnu",
+			"Shaushka",
+			"Wurrukatte",
+			"Hadur",
+			"Futsunushi",
+			"Sarutahiko",
+			"Takemikazuchi",
+			"Neto",
+			"Agasaya",
+			"Belus",
 			"Ishtar",
+			"Shala",
+			"Huitzilopochtli",
+			"Tlaloc",
+			"Xipe-Totec",
 			"Qamaits",
 			"'Oro",
+			"Rongo",
+			"Ku",
+			"Pele",
+			"Maru",
+			"Tumatauenga",
+			"Bellona",
+			"Juno",
+			"Mars",
+			"Minerva",
+			"Victoria",
+			"Anat",
+			"Astarte",
+			"Perun",
+			"Cao Lo"
 			)
 	destination_names = list(
 			"our headquarters on Luna",
@@ -209,7 +288,7 @@
 	headquarters = "Toledo, New Ohio"
 	motto = ""
 
-	ship_prefixes = list("VTV" = "a transportation", "VMV" = "a medical resupply", "VSV" = "a research mission", "VRV" = "an emergency medical support")
+	ship_prefixes = list("VMV" = "a general operations", "VTV" = "a transportation", "VHV" = "a medical resupply", "VSV" = "a research", "VRV" = "an emergency medical support")
 	// Diona names
 	ship_names = list(
 			"Wind That Stirs The Waves",
@@ -235,7 +314,6 @@
 	destination_names = list(
 			"our headquarters on Toledo, New Ohio",
 			"a research facility in Samsara",
-			"an SDTF near Ue-Orsi",
 			"a sapientarian mission in the Almach Rim"
 			)
 
@@ -254,7 +332,7 @@
 	headquarters = "Earth, Sol"
 	motto = ""
 
-	ship_prefixes = list("ZTV" = "a transportation", "ZMV" = "a medical resupply", "ZRV" = "a medical research")
+	ship_prefixes = list("ZHV" = "a general operations", "ZTV" = "a transportation", "ZMV" = "a medical resupply", "ZRV" = "a medical research")
 	//ship names: a selection of famous physicians who advanced the cause of medicine
 	ship_names = list(
 			"Averroes",
@@ -332,7 +410,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("WFV" = "a freight", "WTV" = "a transport", "WDV" = "an asset protection")
+	ship_prefixes = list("WTV" = "a general operations", "WTFV" = "a freight", "WTGV" = "a transport", "WTDV" = "an asset protection")
 	ship_names = list(
 			"Comet",
 			"Meteor",
@@ -383,7 +461,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("BCTV" = "a transportation", "BCSV" = "a research exchange")
+	ship_prefixes = list("BCV" = "a general operations", "BCTV" = "a transportation", "BCSV" = "a research exchange")
 	//famous mechanical engineers
 	ship_names = list(
 			"Al-Jazari",
@@ -457,7 +535,7 @@
 	headquarters = "Shelf"
 	motto = ""
 
-	ship_prefixes = list("MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
+	ship_prefixes = list("MCV" = "a general operations", "MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
 	//periodic elements; something 'unusual' for the posibrain TSC without being full on 'quirky' culture ship names (much as I love them, they're done to death)
 	ship_names = list(
 			"Hydrogen",
@@ -542,7 +620,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
+	ship_prefixes = list("XMV" = "a general operations", "XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
 	//martian mountains
 	ship_names = list(
 			"Olympus Mons",
@@ -582,7 +660,7 @@
 			"Peraea Mons",
 			"Octantis Mons",
 			"Galaxius Mons",
-			"Hellas Planitia",
+			"Hellas Planitia"
 			)
 	destination_names = list()
 
@@ -597,7 +675,7 @@
 	headquarters = ""
 	motto = ""
 
-	ship_prefixes = list("ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
+	ship_prefixes = list("AGV" = "a general operations", "ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
 	//ship names: blank, because we get some autogenned for us
 	ship_names = list()
 	destination_names = list()
@@ -631,8 +709,8 @@
 	headquarters = ""
 	motto = ""
 	
-	ship_prefixes = list("FTRP" = "a route protection", "FTRR" = "a piracy suppression", "FTLV" = "a logistical support", "FTTV" = "a mercantile", "FTDV" = "a market establishment")
-	//famous merchants and traders, taken from Civ6's Great Merchants
+	ship_prefixes = list("FTV" = "a general operations", "FTRP" = "a trade protection", "FTRR" = "a piracy suppression", "FTLV" = "a logistical support", "FTTV" = "a mercantile", "FTDV" = "a market establishment")
+	//famous merchants and traders, taken from Civ6's Great Merchants, plus the TSC's founder
 	ship_names = list(
 			"Isaac Adler",
 			"Colaeus",
@@ -672,7 +750,7 @@
 	headquarters = "Mars, Sol"
 	motto = "With Major Bill's, you won't pay major bills!"
 
-	ship_prefixes = list("TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit", "TTV" = "a secure data courier")
+	ship_prefixes = list("TTV" = "a general operations", "TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit", "TTV" = "a secure data courier")
 	//ship names: big rivers
 	ship_names = list (
 			"Nile",
@@ -727,20 +805,20 @@
 			"Major Bill's Transportation HQ on Mars",
 			"a Major Bill's warehouse",
 			"a Major Bill's distribution center",
-			"a Major Bill's supply deplot"
+			"a Major Bill's supply depot"
 			)
 
 /datum/lore/organization/tsc/grayson
 	name = "Grayson Manufactories Ltd."
 	short_name = "Grayson "
 	acronym = "GM"
-	desc = "Grayson Manufactories Ltd., true to its name, mines, refines, and produces iron, steel, aluminum, and other metals for use in casing and other production before selling them. They are also known for reviving their old traditions of supplying general materials ready for assembly for construction projects. These parts are interchangeable and considered somewhat cheap, but have proven to be generally and consecutively reliable.<br><br>As of current, Grayson Manufactories has a fairly neutral stance on the other major corporations, though has a history of maintaining a monopoly on specific trades through heavy competition and even rumors of industrial sabotage and use of strikebreakers."
+	desc = "Grayson Manufactories Ltd. is one of the oldest surviving TSCs, having been in 'the biz' almost since mankind began to colonize the rest of the Sol system and thus exploit abundant 'extraterrestrial' resources. Where many choose to go into the high end markets, however, Grayson makes their money by providing foundations for other businesses; they run some of the largest mining and refining operations in all of human-inhabited space. Ore is hauled out of Grayson-owned mines, transported on Grayson-owned ships, and processed in Grayson-owned refineries, then sold by Grayson-licensed vendors to other industries. Several of their relatively newer ventures include heavy industrial equipment, which has earned a reputation for being surprisingly reliable.<br><br>Grayson may maintain a neutral stance towards their fellow TSCs, but can be quite aggressive in the markets that it already holds. A steady stream of rumors suggests they're not shy about engaging in industrial sabotage or calling in strikebreakers, either."
 	history = ""
 	work = ""
-	headquarters = "Mars"
+	headquarters = "Mars, Sol"
 	motto = ""
 	
-	ship_prefixes = list("GMT" = "a transport", "GMR" = "a resourcing", "GMS" = "a surveying", "GMH" = "a bulk transit")
+	ship_prefixes = list("GMV" = "a general operations", "GMT" = "a transport", "GMR" = "a resourcing", "GMS" = "a surveying", "GMH" = "a bulk transit")
 	//rocks
 	ship_names = list(
 			"Adakite",
@@ -796,9 +874,9 @@
 	history = ""
 	work = ""
 	headquarters = ""
-	motto = ""
+	motto = "Dum spiro spero"
 	
-	ship_prefixes = list("AARE" = "a resource extraction", "AARG" = "a gas transport", "AART" = "a transport")
+	ship_prefixes = list("AARV" = "a general operations", "AARE" = "a resource extraction", "AARG" = "a gas transport", "AART" = "a transport")
 	//weather systems/patterns
 	ship_names = list (
 			"Cloud",
@@ -845,7 +923,7 @@
 	headquarters = ""
 	motto = ""
 	
-	ship_prefixes = list("FPH" = "a transport", "FPC" = "an energy relay", "FPT" = "a fuel transport")
+	ship_prefixes = list("FPV" = "a general operations", "FPH" = "a transport", "FPC" = "an energy relay", "FPT" = "a fuel transport")
 	//famous electrical engineers
 	ship_names = list (
 			"Erlang",
@@ -902,17 +980,16 @@
 	work = "luxury, business, and economy passenger flights"
 	headquarters = "Spin Aerostat, Jupiter"
 	motto = "Sic itur ad astra"
-	scan_exempt = TRUE
 	
-	ship_prefixes = list("SFI-X" = "a VIP liner", "SFI-L" = "a luxury liner", "SFI-B" = "a business liner", "SFI-E" = "an economy liner", "SFI-M" = "a mixed class liner", "SFI-S" = "a sightseeing")
+	ship_prefixes = list("SFI-X" = "a VIP liner", "SFI-L" = "a luxury liner", "SFI-B" = "a business liner", "SFI-E" = "an economy liner", "SFI-M" = "a mixed class liner", "SFI-S" = "a sightseeing", "SFI-M" = "a wedding", "SFI-O" = "a marketing", "SFI-S" = "a safari", "SFI-A" = "an aquatic adventure")
 	flight_types = list(		//no military-sounding ones here	
 			"flight",
 			"route",
 			"tour"
 			)
-	ship_names = list(
+	ship_names = list(	//birbs
 			"Rhea",
-			"Ostritch",
+			"Ostrich",
 			"Cassowary",
 			"Emu",
 			"Kiwi",
@@ -946,20 +1023,23 @@
 	destination_names = list(
 			"a resort planet",
 			"a beautiful ring system",
-			"a ski-resort world"
+			"a ski-resort world",
+			"an ocean resort planet",
+			"a desert resort world",
+			"an arctic retreat"
 			)
 
 /datum/lore/organization/tsc/independent
 	name = "Independent Pilots Association"
-	short_name = "Independent "
+	short_name = "" //using the same whitespace hack as USDF
 	acronym = "IPA"
 	desc = "Though less common now than they were in the decades before the Sol Economic Organization took power, independent traders remain an important part of the galactic economy, owing in no small part to protective tariffs established by the Free Trade Union in the late twenty-fourth century. Further out on the frontier, independent pilots are often the only people keeping freight and supplies moving."
 	history = ""
-	work = "trade and transit"
+	work = "everything under the sun"
 	headquarters = "N/A"
 	motto = "N/A"
 
-	ship_prefixes = list("IEV" = "a prospecting", "IEC" = "a prospecting", "IFV" = "a bulk freight", "ITV" = "a passenger transport", "ITC" = "a just-in-time delivery", "IPV" = "a patrol", "IHV" = "a bounty hunting", "ICC" = "an escort")
+	ship_prefixes = list("ISV" = "a general", "IEV" = "a prospecting", "IEC" = "a prospecting", "IFV" = "a bulk freight", "ITV" = "a passenger transport", "ITC" = "a just-in-time delivery", "IPV" = "a patrol", "IHV" = "a bounty hunting", "ICC" = "an escort")
 	flight_types = list(		
 			"flight",
 			"mission",
@@ -969,20 +1049,21 @@
 			"contract"
 			)
 	destination_names = list() //we have no hqs or facilities of our own
+	//ship names: blank, because we use the universal list
 
 // Other
 
 //SPACE LAW
 /datum/lore/organization/other/sysdef
 	name = "System Defense Force"
-	short_name = "SysDef "
+	short_name = "" //whitespace hack again
 	acronym = "SDF"
-	desc = "Localized militias are used to secure systems throughout inhabited space. By levying and maintaining these local militia forces, governments can use their fleets for more important matters. System Defense Forces tend to be fairly poorly trained and modestly equipped compared to genuine military fleets, but are more than capable of contending with small-time pirates, and can generally stall greater threats long enough for reinforcements to arrive. They're also typically responsible for space-based SAR operations in their system."
+	desc = "Localized militias are used to secure systems throughout inhabited space, but are especially common on the frontier. By levying and maintaining these local militia forces, governments can use their fleets for more important matters. System Defense Forces tend to be fairly poorly trained and modestly equipped compared to genuine military fleets, but are more than capable of contending with small-time pirates and can generally stall greater threats long enough for reinforcements to arrive. They're also typically responsible for most search-and-rescue operations in their system."
 	history = ""
 	work = "local security"
 	headquarters = ""
-	motto = ""
-	scan_exempt = TRUE //we're the laaaaaw, we don't impersonate people and stuff
+	motto = "Serve, Protect, Survive"
+	sysdef = TRUE //we're the space law, we don't impersonate people and stuff
 	autogenerate_destination_names = FALSE
 
 	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort", "SAR" = "a search and rescue", "SDT" = "a logistics", "SDT" = "a resupply", "SDJ" = "a prisoner transport") //b = boat, f = fleet, v = vessel, t = tender
@@ -1054,7 +1135,10 @@
 			"Waypoint Phi",
 			"Waypoint Chi",
 			"Waypoint Psi",
-			"Waypoint Omega"
+			"Waypoint Omega",
+			"an SDF correctional facility",
+			"an SDF processing center",
+			"an SDF outpost"
 			)
 
 // Governments
@@ -1066,15 +1150,14 @@
 	desc = "SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.  \
 	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate \
 	in the Colonial Assembly.  The majority, but not all human territories are members of SolGov.  As such, SolGov is a major power and \
-	defacto represents humanity on the galactic stage."
+	defacto represents humanity on the galactic stage. Military flight operations fall under the banner of the USDF."
 	history = "" // Todo
 	work = "governing polity of humanity's Confederation"
 	headquarters = "Luna, Sol"
-	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'.
-	scan_exempt = TRUE //it would look pretty weird if the SCG were caught impersonating other people
+	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight", "SCG-J" = "a prisoner transfer")
+	ship_prefixes = list("SCG-A" = "an administrative", "SCG-T" = "a transportation", "SCG-D" = "a diplomatic", "SCG-F" = "a freight", "SCG-J" = "a prisoner transfer")
 	//earth's biggest impact craters
 	ship_names = list(
 			"Wabar",
@@ -1151,11 +1234,90 @@
 			"Titan",
 			"Europa",
 			"the Jovian subcluster",
-			"a SolGov embassy"
+			"a SolGov embassy",
+			"a classified location"
 			)
 			// autogen will add a lot of other places as well.
 
+/*
+/datum/lore/organization/gov/tajara_rakar
+	name = "Rakar Empire"
+	short_name = "Rakar "
+	acronym = "TRE"
+	desc = ""
+	history = ""
+	work = ""
+	headquarters = ""
+	motto = ""
+	autogenerate_destination_names = FALSE //big list of own holdings to come
+	
+	ship_prefixes = list("" = "")
+	ship_names = list(
+			"",
+			)
+	destination_names = list(
+			"",
+			)
 
+
+/datum/lore/organization/gov/tajara_selem
+	name = "Selem Hegemony"
+	short_name = "Selem "
+	acronym = "TSH"
+	desc = ""
+	history = ""
+	work = ""
+	headquarters = ""
+	motto = ""
+	autogenerate_destination_names = FALSE //big list of own holdings to come
+	
+	ship_prefixes = list("" = "")
+	ship_names = list(
+			"",
+			)
+	destination_names = list(
+			"",
+			)
+
+
+/datum/lore/organization/gov/tajara_najrir
+	name = "Najrir Republic"
+	short_name = "Republic "
+	acronym = "TNR"
+	desc = ""
+	history = ""
+	work = ""
+	headquarters = ""
+	motto = ""
+	autogenerate_destination_names = FALSE //big list of own holdings to come
+	
+	ship_prefixes = list("" = "")
+	ship_names = list(
+			"",
+			)
+	destination_names = list(
+			"",
+			)
+
+/datum/lore/organization/gov/unathi
+	name = "Moghes Hegemony"
+	short_name = "Hegemony "
+	acronym = "MGH"
+	desc = ""
+	history = ""
+	work = ""
+	headquarters = "Moghes"
+	motto = ""
+	autogenerate_destination_names = FALSE //big list of own holdings to come
+	
+	ship_prefixes = list("" = "")
+	ship_names = list(
+			"",
+			)
+	destination_names = list(
+			"",
+			)
+*/
 // Military
 // Used for Para-Military groups right now! Pair of placeholder-ish PMCs.
 
@@ -1167,11 +1329,10 @@
 	history = ""
 	work = "peacekeeping and piracy suppression"
 	headquarters = "Paris, Earth"
-	motto = ""
-	scan_exempt = TRUE
+	motto = "Si Vis Pacem Para Bellum"
 	autogenerate_destination_names = TRUE
 	
-	ship_prefixes = list ("USDF" = "a logistical", "USDF" = "a training", "USDF" = "a patrol", "USDF" = "a piracy suppression", "USDF" = "a peacekeeping", "USDF" = "a relief", "USDF" = "an escort", "USDF" = "a search and rescue")
+	ship_prefixes = list ("USDF" = "a logistical", "USDF" = "a training", "USDF" = "a patrol", "USDF" = "a piracy suppression", "USDF" = "a peacekeeping", "USDF" = "a relief", "USDF" = "an escort", "USDF" = "a search and rescue", "USDF" = "a classified")
 	ship_names = list(
 			"Aphrodite",
 			"Apollo",
@@ -1238,13 +1399,14 @@
 			"Pallas",
 			"Perses",
 			"Prometheus",
-			"Styx",
+			"Styx"
 			)
 	destination_names = list(
 			"USDF HQ",
 			"a USDF staging facility on the edge of SolGov territory",
 			"a USDF resupply depot",
-			"a USDF shipyard in Sol"
+			"a USDF shipyard in Sol",
+			"a classified location"
 			)
 
 /datum/lore/organization/mil/pcrc
@@ -1256,7 +1418,6 @@
 	work = "risk control and private security"
 	headquarters = "Proxima Centauri"
 	motto = ""
-	scan_exempt = TRUE //we're not the best guys, but we're not actually shady
 	autogenerate_destination_names = TRUE
 	
 	ship_prefixes = list("PCRC" = "a risk control", "PCRC" = "a private security")
@@ -1295,7 +1456,7 @@
 			"Investigator",
 			"Agent",
 			"Prosecutor",
-			"Sergeant",
+			"Sergeant"
 			)
 			
 	destination_names = list(
@@ -1314,7 +1475,6 @@
 	work = "mercenary contractors"
 	headquarters = ""
 	motto = "Strength in Numbers"
-	scan_exempt = TRUE //we're technically kinda-good guys, so we don't do shady stuff
 	autogenerate_destination_names = TRUE
 
 	ship_prefixes = list("HPF" = "a secure freight", "HPT" = "a training", "HPS" = "a logistics", "HPV" = "a patrol", "HPH" = "a bounty hunting", "HPX" = "an experimental", "HPC" = "a command", "HPI" = "a mercy")
@@ -1379,7 +1539,7 @@
 			"Rattlesnake"
 			)
 	destination_names = list(
-			"HIVE Command",
+			"the HIVE Command fleet",
 			"a HIVE patrol fleet",
 			"a HIVE flotilla",
 			"a HIVE training fleet",
@@ -1397,10 +1557,11 @@
 	history = ""
 	work = "mercenary contractors"
 	headquarters = ""
-	motto = ""
+	motto = "Neca Ne Necaris"
+	lawful = FALSE
 	autogenerate_destination_names = TRUE
 
-	ship_prefixes = list("BSF" = "a secure freight", "BST" = "a training", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command")
+	ship_prefixes = list("BSF" = "a secure freight", "BST" = "a training", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command", "BSK" = "a classified")
 	flight_types = list(		
 			"flight",
 			"mission",
