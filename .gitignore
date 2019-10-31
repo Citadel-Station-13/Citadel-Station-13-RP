@@ -14,3 +14,7 @@ code/game/gamemodes/technomancer/spells/projectile/overload.dm
 code/game/gamemodes/technomancer/spells/projectile/overload.dm
 code/modules/client/preference_setup/loadout/loadout_xeno.dm
 temp.dmi
+tools/mapmerge2/mapmerge.bat
+tools/mapmerge2/Prepare Maps.bat
+tools/mapmerge2/mapmerge.bat
+*.before
