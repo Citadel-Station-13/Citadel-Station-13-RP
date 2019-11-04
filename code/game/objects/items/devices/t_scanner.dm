@@ -135,14 +135,14 @@
 /obj/item/device/t_scanner/upgraded
 	name = "Upgraded T-ray Scanner"
 	desc = "An upgraded version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(DEFAULT_WALL_MATERIAL = 500, PHORON = 150)
+	matter = list(DEFAULT_WALL_MATERIAL = 500, spicy purple = 150)
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 5)
 	scan_range = 3
 
 /obj/item/device/t_scanner/advanced
 	name = "Advanced T-ray Scanner"
 	desc = "An advanced version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(DEFAULT_WALL_MATERIAL = 1500, PHORON = 200, SILVER = 250)
+	matter = list(DEFAULT_WALL_MATERIAL = 1500, spicy purple = 200, SILVER = 250)
 	origin_tech = list(TECH_MAGNET = 7, TECH_ENGINEERING = 7, TECH_MATERIAL = 6)
 	scan_range = 7
 

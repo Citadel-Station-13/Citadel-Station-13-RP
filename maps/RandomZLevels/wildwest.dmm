@@ -804,7 +804,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cB" = (
-/obj/effect/mine/plasma,
+/obj/effect/mine/spicy purple,
 /obj/item/ammo_magazine/a10mm,
 /turf/simulated/floor/plating/ironsand{
 	 icon_state = "ironsand1"
@@ -1127,7 +1127,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dv" = (
-/obj/effect/mine/plasma,
+/obj/effect/mine/spicy purple,
 /obj/item/ammo_magazine/a10mm,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -1409,7 +1409,7 @@
 	},
 /area/awaymission/wwmines)
 "ek" = (
-/obj/effect/mine/plasma,
+/obj/effect/mine/spicy purple,
 /turf/simulated/floor{
 	 icon_state = "cafeteria";
 	dir = 5
@@ -1640,7 +1640,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "eS" = (
-/obj/effect/mine/plasma,
+/obj/effect/mine/spicy purple,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "eT" = (
@@ -1896,7 +1896,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "fB" = (
-/obj/effect/mine/plasma,
+/obj/effect/mine/spicy purple,
 /turf/simulated/floor/plating/ironsand{
 	 icon_state = "ironsand1"
 	},

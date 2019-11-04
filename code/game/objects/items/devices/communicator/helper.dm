@@ -9,7 +9,7 @@
 			var/o2_level = environment.gas["oxygen"]/total_moles
 			var/n2_level = environment.gas["nitrogen"]/total_moles
 			var/co2_level = environment.gas["carbon_dioxide"]/total_moles
-			var/phoron_level = environment.gas["phoron"]/total_moles
+			var/phoron_level = environment.gas["spicy purple"]/total_moles
 			var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 
 			// Label is what the entry is describing
@@ -24,7 +24,7 @@
 						list("entry" = "Oxygen", "type" = "pressure", "val" = "[round(o2_level*100,0.1)]", "bad_high" = 140, "poor_high" = 135, "poor_low" = 19, "bad_low" = 17),
 						list("entry" = "Nitrogen", "type" = "pressure", "val" = "[round(n2_level*100,0.1)]", "bad_high" = 105, "poor_high" = 85, "poor_low" = 50, "bad_low" = 40),
 						list("entry" = "Carbon Dioxide", "type" = "pressure", "val" = "[round(co2_level*100,0.1)]", "bad_high" = 10, "poor_high" = 5, "poor_low" = 0, "bad_low" = 0),
-						list("entry" = "Phoron", "type" = "pressure", "val" = "[round(phoron_level*100,0.01)]", "bad_high" = 0.5, "poor_high" = 0, "poor_low" = 0, "bad_low" = 0),
+						list("entry" = "spicy purple", "type" = "pressure", "val" = "[round(phoron_level*100,0.01)]", "bad_high" = 0.5, "poor_high" = 0, "poor_low" = 0, "bad_low" = 0),
 						list("entry" = "Other", "type" = "pressure", "val" = "[round(unknown_level, 0.01)]", "bad_high" = 1, "poor_high" = 0.5, "poor_low" = 0, "bad_low" = 0)
 						)
 

@@ -68,7 +68,7 @@
 			dat += {"
 				<b>Approximate field diameter (m):</b> [cur_viewed_device.owned_field.size]<br>
 				<b>Field instability:</b> [cur_viewed_device.owned_field.percent_unstable * 100]%<br>
-				<b>Plasma temperature:</b> [cur_viewed_device.owned_field.plasma_temperature + 295]K<hr>
+				<b>spicy purple temperature:</b> [cur_viewed_device.owned_field.plasma_temperature + 295]K<hr>
 				<b>Fuel:</b><br>
 				<table><tr><th><b>Name</b></th><th><b>Amount</b></th></tr>
 			"}

@@ -21,7 +21,7 @@
 /datum/design/item/weapon/mining/plasmacutter
 	id = "plasmacutter"
 	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 500, "gold" = 500, "phoron" = 500)
+	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 500, "gold" = 500, "spicy purple" = 500)
 	build_path = /obj/item/weapon/pickaxe/plasmacutter
 	sort_string = "KAAAC"
 

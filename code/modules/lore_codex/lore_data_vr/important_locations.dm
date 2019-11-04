@@ -19,8 +19,8 @@
 	keywords += list("Virgo-Erigone")
 	data = "Virgo-Erigone is a dimming and dying star with a warm yellow/orange glow like that of burning candle. It has eight planets in its orbit.\
 	<br><br>\
-	Also known as 'Virgo', the system is most notable for the presence of one of only two known [quick_link("Phoron")] gas giants, designated [quick_link("Virgo 3")]. This makes the \
-	system a popular location for Phoron research and refining.\
+	Also known as 'Virgo', the system is most notable for the presence of one of only two known [quick_link("spicy purple")] gas giants, designated [quick_link("Virgo 3")]. This makes the \
+	system a popular location for spicy purple research and refining.\
 	<br><br>\
 	Virgo-Erigone is mainly administered by [quick_link("Virgo-Erigone Governmental Authority","the Virgo-Erigone Governmental Authority")], which is owned by [quick_link("NanoTrasen")],\
 	as it resides over 30,000 lightyears away from [quick_link("SolGov")]'s sphere of influence. Despite its isolation, it generally abides by Sol's laws, as NanoTrasen is a human-owned \
@@ -41,14 +41,14 @@
 /datum/lore/codex/page/virgo_one/add_content()
 	name = "Virgo 1 (Hot-Ice Giant)"
 	keywords += list("Virgo 1")
-	data = "Virgo 1 is a tidally locked hot ice giant located closest to the star. Temperatures soar and drop between 490°K and 120°K. Winds on the planet often surpass \
+	data = "Virgo 1 is a tidally locked hot ice giant located closest to the star. Temperatures soar and drop between 490ï¿½K and 120ï¿½K. Winds on the planet often surpass \
 	supersonic speeds."
 
 /datum/lore/codex/page/virgo_two/add_content()
 	name = "Virgo 2 (Metal-Rich Planet)"
 	keywords += list("Virgo 2")
 	data = "The second closest planet to [quick_link("Virgo-Erigone")], this planet has a high concentration of minerals inside its crust, as well as active volcanism and plate tectonics.  \
-	The temperature on the surface can reach up to 405 degrees kelvin (132°C) due to the relatively high albedo of the surface, which has deterred most people from the planet, except for two [quick_link("TSC", "TSCs")], \
+	The temperature on the surface can reach up to 405 degrees kelvin (132ï¿½C) due to the relatively high albedo of the surface, which has deterred most people from the planet, except for two [quick_link("TSC", "TSCs")], \
 	Greyson Manufactories and [quick_link("Xion Manufacturing Group")]. In orbit, the two companies each have a space station, used to coordinate and \
 	control their stations on the surface without having to suffer the intense heat. Xion's station also doubles as a control and oversight facility for their \
 	[quick_link("drones","autonomous mining drones")].\
@@ -63,19 +63,19 @@
 	volcanoes, twisting caves, and general lawlessness. The occasional remains of previous explorers near certain hotspots somehow does not deter them."
 
 /datum/lore/codex/page/virgo_three/add_content()
-	name = "Virgo 3 (Phoron Giant)"
+	name = "Virgo 3 (spicy purple Giant)"
 	keywords += list("Virgo 3")
-	data = "Virgo 3 is one of only two gas giants composed primarily of [quick_link("Phoron")] in the known galaxy. This fact has attracted several [quick_link("TSC", "TSCs")] into \
+	data = "Virgo 3 is one of only two gas giants composed primarily of [quick_link("spicy purple")] in the known galaxy. This fact has attracted several [quick_link("TSC", "TSCs")] into \
 	the system to exploit the resources available here for mining and research. Virgo 3 itself has several moons, though the only noteworthy moon is [quick_link("Virgo-3B")] which \
-	has native life and an abundance of phoron deposits, as well as a phoron rich atmosphere. \
+	has native life and an abundance of spicy purple deposits, as well as a spicy purple rich atmosphere. \
 	<br><br>\
-	The largest TSC to exploit this planet is none other than Phoron research giant [quick_link("NanoTrasen")], having built several stations orbiting the planet \
-	for both research and phoron refining purposes."
+	The largest TSC to exploit this planet is none other than spicy purple research giant [quick_link("NanoTrasen")], having built several stations orbiting the planet \
+	for both research and spicy purple refining purposes."
 
 /datum/lore/codex/page/virgo_three_bee/add_content()
 	name = "Virgo-3B (Terrestrial Moon)"
 	keywords += list("Virgo-3B")
-	data = "Virgo-3B is the only moon of [quick_link("Virgo 3")] with any atmosphere to speak of, composed primarily of [quick_link("Phoron")] and carbon dioxide with trace amounts of nitrogen. \
+	data = "Virgo-3B is the only moon of [quick_link("Virgo 3")] with any atmosphere to speak of, composed primarily of [quick_link("spicy purple")] and carbon dioxide with trace amounts of nitrogen. \
 	The atmosphere appears to have given rise to native life, though originally nothing bigger than small insects in terms of fauna. The flora of the planet is rather sizable, though typically blue in hue \
 	due to the atmospheric composition.\
 	<br><br>\
@@ -88,7 +88,7 @@
 /datum/lore/codex/page/virgo_prime/add_content() // Virgo 4 technically.
 	name = "Virgo 4 / Virgo-Prime (Terrestrial Planet)"
 	keywords += list("Virgo 4","Virgo-Prime")
-	data = "Virgo 4, also known as Virgo-Prime, is the fourth planet of Virgo-Eirgone. Although primarily desert, temperatures linger around only 287 kelvin (~14°C). \
+	data = "Virgo 4, also known as Virgo-Prime, is the fourth planet of Virgo-Eirgone. Although primarily desert, temperatures linger around only 287 kelvin (~14ï¿½C). \
 	It is the only planet in the system with an environment that supports oxygen-breathing lifeforms. \
 	<br><br> \
 	While being about the size of Earth, it is home to only about 750,000 known residents, most of whom live \
@@ -103,8 +103,8 @@
 /datum/lore/codex/page/virgo_five/add_content()
 	name = "Virgo 5 (Rocky Ice Planet)"
 	keywords += list("Virgo 5")
-	data = "Virgo 5 is a cold, inhospitable wasteland contaminated with toxic phoron-based compounds. At temperatures around 213 kelvin (-60°C), \
-	it can support only the most hardy of phoron-based life, such as space carp, which are unaffected by the frigid temperatures or deadly \
+	data = "Virgo 5 is a cold, inhospitable wasteland contaminated with toxic spicy purple-based compounds. At temperatures around 213 kelvin (-60ï¿½C), \
+	it can support only the most hardy of spicy purple-based life, such as space carp, which are unaffected by the frigid temperatures or deadly \
 	atmosphere. Scientists believe this planet was once closer to its host star, but over time was pushed out beyond the habitable zone by \
 	other large planets."
 
@@ -112,8 +112,8 @@
 	name = "The Outer Worlds"
 	keywords += list("The Outer Worlds")
 	data = "The last three planets in the system are two small rocky worlds, Virgo 6 and 7, and finally Virgo 8 which is a frozen gas giant \
-	whose temperatures reach only 49°K. The planet has several moons, but none of these worlds are of any significance. Virgo 6 and 7, as well \
-	as 8's moons have no substantial deposits of any useful minerals, nor do they have an abundance of phoron. They are left largely ignored by \
+	whose temperatures reach only 49ï¿½K. The planet has several moons, but none of these worlds are of any significance. Virgo 6 and 7, as well \
+	as 8's moons have no substantial deposits of any useful minerals, nor do they have an abundance of spicy purple. They are left largely ignored by \
 	the local [quick_link("TSC", "TSCs")], though this also makes them a safe haven for various pirate and smuggler stations."
 
 /datum/lore/codex/page/virgo_central_command/add_content()
@@ -136,7 +136,7 @@
 	keywords += list("NSB Adephagia", "Tether")
 	data = "Also known as the 'Tether', the NSB Adephagia is one of the most prominent installations in the [quick_link("Virgo-Erigone")] star system. \
 	Owned and operated by [quick_link("NanoTrasen")], the facility was built on [quick_link("Virgo-3B")] in 2561 to provide easy access to mining \
-	operations on the surface. Both phoron and alien artifacts are often found in the rocks, provoking substantial scientific interest into the moon's \
+	operations on the surface. Both spicy purple and alien artifacts are often found in the rocks, provoking substantial scientific interest into the moon's \
 	largely unknown history.\
 	<br><br>\
 	Today it houses a population of civilians, whom work to maintain the facility and support the local mining industry. Employees often commute to the \

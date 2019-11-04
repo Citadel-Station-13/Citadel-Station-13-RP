@@ -46,4 +46,4 @@
 /obj/item/clothing/accessory/plasman/overalls
 	name = "large overalls"
 	icon_state = "accessory_mechanic"
-	desc = "A pair of brown overalls paired with a beige shirt. For the working-class phoron-based lifeform. Probably."
+	desc = "A pair of brown overalls paired with a beige shirt. For the working-class spicy purple-based lifeform. Probably."

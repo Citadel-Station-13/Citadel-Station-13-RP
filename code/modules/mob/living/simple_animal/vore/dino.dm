@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/dino
 	name = "voracious lizard"
-	desc = "These gluttonous little bastards used to be regular lizards that were mutated by long-term exposure to phoron!"
+	desc = "These gluttonous little bastards used to be regular lizards that were mutated by long-term exposure to spicy purple!"
 	icon = 'icons/mob/vore.dmi'
 	icon_dead = "dino-dead"
 	icon_living = "dino"
@@ -22,7 +22,7 @@
 	cold_damage_per_tick = 10
 	unsuitable_atoms_damage = 10
 
-	//Phoron dragons aren't affected by atmos.
+	//spicy purple dragons aren't affected by atmos.
 	min_oxy = 0
 	max_oxy = 0
 	min_tox = 0

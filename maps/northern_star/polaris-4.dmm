@@ -249,7 +249,7 @@
 	},
 /obj/structure/window/phoronreinforced,
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel,
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/main)
 "bf" = (
 /obj/machinery/compressor{
@@ -264,7 +264,7 @@
 	 icon_state = "phoronrwindow";
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/main)
 "bg" = (
 /obj/item/device/gps,
@@ -303,7 +303,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bo" = (
-/obj/effect/wingrille_spawn/phoron,
+/obj/effect/wingrille_spawn/spicy purple,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/main)
 "bp" = (
@@ -418,7 +418,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel,
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/main)
 "bK" = (
 /obj/machinery/compressor{
@@ -433,7 +433,7 @@
 	 icon_state = "phoronrwindow";
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/main)
 "bL" = (
 /obj/structure/largecrate,
@@ -1435,13 +1435,13 @@
 /area/outpost/abandoned)
 "ei" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 10
 	},
 /obj/random/powercell,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 10
 	},
 /turf/simulated/floor/tiled,

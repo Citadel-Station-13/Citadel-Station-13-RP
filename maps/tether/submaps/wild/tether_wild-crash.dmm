@@ -535,7 +535,7 @@
 	carbon_dioxide = 12.7125;
 	nitrogen = 16.95;
 	oxygen = 0;
-	phoron = 76.2751
+	spicy purple = 76.2751
 	},
 /area/tether/surfacebase/crash)
 "bu" = (
@@ -543,7 +543,7 @@
 	carbon_dioxide = 12.7125;
 	nitrogen = 16.95;
 	oxygen = 0;
-	phoron = 76.2751
+	spicy purple = 76.2751
 	},
 /area/tether/surfacebase/crash)
 "bv" = (
@@ -553,7 +553,7 @@
 	carbon_dioxide = 12.7125;
 	nitrogen = 16.95;
 	oxygen = 0;
-	phoron = 76.2751
+	spicy purple = 76.2751
 	},
 /area/tether/surfacebase/crash)
 "bw" = (
@@ -834,7 +834,7 @@
 	carbon_dioxide = 12.7125;
 	nitrogen = 16.95;
 	oxygen = 0;
-	phoron = 76.2751
+	spicy purple = 76.2751
 	},
 /area/tether/surfacebase/crash)
 "cl" = (
@@ -844,7 +844,7 @@
 	carbon_dioxide = 12.7125;
 	nitrogen = 16.95;
 	oxygen = 0;
-	phoron = 76.2751
+	spicy purple = 76.2751
 	},
 /area/tether/surfacebase/crash)
 "cm" = (

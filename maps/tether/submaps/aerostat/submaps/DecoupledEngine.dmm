@@ -17,7 +17,7 @@
 /turf/template_noop,
 /area/submap/virgo2/DecoupledEngine)
 "af" = (
-/obj/item/weapon/material/shard/phoron,
+/obj/item/weapon/material/shard/spicy purple,
 /turf/template_noop,
 /area/submap/virgo2/DecoupledEngine)
 "ag" = (
@@ -193,7 +193,7 @@
 	icon_state = "phoronrwindow";
 	dir = 4
 	},
-/obj/item/weapon/material/shard/phoron,
+/obj/item/weapon/material/shard/spicy purple,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/submap/virgo2/DecoupledEngine)
@@ -510,7 +510,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/DecoupledEngine)
 "bC" = (
-/obj/item/weapon/material/shard/phoron,
+/obj/item/weapon/material/shard/spicy purple,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/DecoupledEngine)
 "bD" = (

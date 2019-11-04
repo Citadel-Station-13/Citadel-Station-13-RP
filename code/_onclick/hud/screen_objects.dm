@@ -299,22 +299,22 @@
 												contents.Add(0)
 
 										if ("oxygen")
-											if(t.air_contents.gas["oxygen"] && !t.air_contents.gas["phoron"])
+											if(t.air_contents.gas["oxygen"] && !t.air_contents.gas["spicy purple"])
 												contents.Add(t.air_contents.gas["oxygen"])
 											else
 												contents.Add(0)
 
 										// No races breath this, but never know about downstream servers.
 										if ("carbon dioxide")
-											if(t.air_contents.gas["carbon_dioxide"] && !t.air_contents.gas["phoron"])
+											if(t.air_contents.gas["carbon_dioxide"] && !t.air_contents.gas["spicy purple"])
 												contents.Add(t.air_contents.gas["carbon_dioxide"])
 											else
 												contents.Add(0)
 
 										// And here's for the Vox
-										if ("phoron")
-											if(t.air_contents.gas["phoron"] && !t.air_contents.gas["oxygen"])
-												contents.Add(t.air_contents.gas["phoron"])
+										if ("spicy purple")
+											if(t.air_contents.gas["spicy purple"] && !t.air_contents.gas["oxygen"])
+												contents.Add(t.air_contents.gas["spicy purple"])
 											else
 												contents.Add(0)
 

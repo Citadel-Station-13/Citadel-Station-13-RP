@@ -30,13 +30,13 @@
 /turf/simulated/wall/r_wall,
 /area/submap/BoomBase)
 "ai" = (
-/obj/structure/closet/crate/secure/phoron,
-/obj/fiftyspawner/phoron,
+/obj/structure/closet/crate/secure/spicy purple,
+/obj/fiftyspawner/spicy purple,
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "aj" = (
-/obj/structure/closet/crate/secure/phoron,
-/obj/fiftyspawner/phoron,
+/obj/structure/closet/crate/secure/spicy purple,
+/obj/fiftyspawner/spicy purple,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "ak" = (
@@ -70,13 +70,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aq" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "steel_dirty"
 	},
 /area/submap/BoomBase)
 "ar" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /obj/item/weapon/material/shard,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "steel_dirty"
@@ -179,8 +179,8 @@
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
-/obj/item/weapon/fuel_assembly/phoron,
+/obj/item/weapon/tank/spicy purple,
+/obj/item/weapon/fuel_assembly/spicy purple,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aO" = (

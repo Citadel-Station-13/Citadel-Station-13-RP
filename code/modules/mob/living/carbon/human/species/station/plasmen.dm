@@ -9,7 +9,7 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
 	blurb = "Phoronoids are a race rarely seen by most, tending to keep to themselves throughout known space. \
 	These curious skeleton-folk react violently with oxygen, catching alight in the normal concentration needed for humans. \
-	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and phoron in."
+	Luckily, with the help of NT, they come equipped with specialised suits, keeping oxygen out and spicy purple in."
 	name_language = null // name randomisers are fucking weird
 	min_age = 18
 	max_age = 180
@@ -37,11 +37,11 @@
 	flash_mod =     2
 	chemOD_mod =	1 // turns out this is just damage
 
-	breath_type = "phoron"
+	breath_type = "spicy purple"
 	poison_type = "oxygen"
 	siemens_coefficient = 1
 
-	speech_bubble_appearance = "phoron"
+	speech_bubble_appearance = "spicy purple"
 
 	death_message = "falls over and stops moving!"
 	knockout_message = "falls over!"

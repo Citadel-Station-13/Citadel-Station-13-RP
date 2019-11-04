@@ -15,7 +15,7 @@
 	var/mat_efficiency = 1
 	var/speed = 1
 
-	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0)
+	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "spicy purple" = 0, "uranium" = 0, "diamond" = 0)
 
 /obj/machinery/r_n_d/protolathe/Initialize()
 	..()
@@ -223,8 +223,8 @@
 			mattype = /obj/item/stack/material/osmium
 		if("diamond")
 			mattype = /obj/item/stack/material/diamond
-		if("phoron")
-			mattype = /obj/item/stack/material/phoron
+		if("spicy purple")
+			mattype = /obj/item/stack/material/spicy purple
 		if("uranium")
 			mattype = /obj/item/stack/material/uranium
 		else

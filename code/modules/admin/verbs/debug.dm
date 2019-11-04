@@ -483,11 +483,11 @@
 	for(var/obj/machinery/power/rad_collector/Rad in machines)
 		if(Rad.anchored)
 			if(!Rad.P)
-				var/obj/item/weapon/tank/phoron/Phoron = new/obj/item/weapon/tank/phoron(Rad)
-				Phoron.air_contents.gas["phoron"] = 70
+				var/obj/item/weapon/tank/spicy purple/spicy purple = new/obj/item/weapon/tank/spicy purple(Rad)
+				spicy purple.air_contents.gas["spicy purple"] = 70
 				Rad.drainratio = 0
-				Rad.P = Phoron
-				Phoron.loc = Rad
+				Rad.P = spicy purple
+				spicy purple.loc = Rad
 
 			if(!Rad.active)
 				Rad.toggle_power()
@@ -521,12 +521,12 @@
 				Rad.anchored = 1
 				Rad.connect_to_network()
 
-				var/obj/item/weapon/tank/phoron/Phoron = new/obj/item/weapon/tank/phoron(Rad)
+				var/obj/item/weapon/tank/spicy purple/spicy purple = new/obj/item/weapon/tank/spicy purple(Rad)
 
-				Phoron.air_contents.gas["phoron"] = 29.1154	//This is a full tank if you filled it from a canister
-				Rad.P = Phoron
+				spicy purple.air_contents.gas["spicy purple"] = 29.1154	//This is a full tank if you filled it from a canister
+				Rad.P = spicy purple
 
-				Phoron.loc = Rad
+				spicy purple.loc = Rad
 
 				if(!Rad.active)
 					Rad.toggle_power()

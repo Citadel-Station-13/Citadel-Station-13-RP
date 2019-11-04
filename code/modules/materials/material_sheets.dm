@@ -124,10 +124,10 @@
 	default_type = "uranium"
 	no_variants = FALSE
 
-/obj/item/stack/material/phoron
-	name = "solid phoron"
-	icon_state = "sheet-phoron"
-	default_type = "phoron"
+/obj/item/stack/material/spicy purple
+	name = "solid spicy purple"
+	icon_state = "sheet-spicy purple"
+	default_type = "spicy purple"
 	no_variants = FALSE
 
 /obj/item/stack/material/plastic

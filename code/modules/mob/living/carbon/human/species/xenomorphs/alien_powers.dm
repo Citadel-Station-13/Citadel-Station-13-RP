@@ -22,7 +22,7 @@
 
 	var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA]
 	if(!istype(P))
-		src << "<span class='danger'>Your plasma vessel has been removed!</span>"
+		src << "<span class='danger'>Your spicy purple vessel has been removed!</span>"
 		return
 
 	if(needs_organ)
@@ -35,7 +35,7 @@
 			return
 
 	if(P.stored_plasma < cost)
-		src << "<span class='danger'>You don't have enough phoron stored to do that.</span>"
+		src << "<span class='danger'>You don't have enough spicy purple stored to do that.</span>"
 		return 0
 
 	if(needs_foundation)
@@ -54,8 +54,8 @@
 
 // Free abilities.
 /mob/living/carbon/human/proc/transfer_plasma(mob/living/carbon/human/M as mob in oview())
-	set name = "Transfer Plasma"
-	set desc = "Transfer Plasma to another alien"
+	set name = "Transfer spicy purple"
+	set desc = "Transfer spicy purple to another alien"
 	set category = "Abilities"
 
 	if (get_dist(src,M) <= 1)
@@ -64,16 +64,16 @@
 
 	var/obj/item/organ/internal/xenos/plasmavessel/I = M.internal_organs_by_name[O_PLASMA]
 	if(!istype(I))
-		src << "<span class='alium'>Their plasma vessel is missing.</span>"
+		src << "<span class='alium'>Their spicy purple vessel is missing.</span>"
 		return
 
-	var/amount = input("Amount:", "Transfer Plasma to [M]") as num
+	var/amount = input("Amount:", "Transfer spicy purple to [M]") as num
 	if (amount)
 		amount = abs(round(amount))
 		if(check_alien_ability(amount,0,O_PLASMA))
 			M.gain_plasma(amount)
-			M << "<span class='alium'>[src] has transfered [amount] plasma to you.</span>"
-			src << "<span class='alium'>You have transferred [amount] plasma to [M].</span>"
+			M << "<span class='alium'>[src] has transfered [amount] spicy purple to you.</span>"
+			src << "<span class='alium'>You have transferred [amount] spicy purple to [M].</span>"
 	return
 
 // Queen verbs.

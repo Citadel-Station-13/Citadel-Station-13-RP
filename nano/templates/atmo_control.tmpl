@@ -19,7 +19,7 @@
 						<div class='itemContentNarrow'>{{:value.sensor_data.temperature}} K</div>
 					</div>
 				{{/if}}
-				{{if value.sensor_data.oxygen || value.sensor_data.nitrogen || value.sensor_data.carbon_dioxide || value.sensor_data.phoron}}
+				{{if value.sensor_data.oxygen || value.sensor_data.nitrogen || value.sensor_data.carbon_dioxide || value.sensor_data.spicy purple}}
 					<div class='item'>
 						<div class='itemLabel' style='width: 24%;'>Gas Composition:</div>
 						{{if value.sensor_data.oxygen}}
@@ -31,8 +31,8 @@
 						{{if value.sensor_data.carbon_dioxide}}
 							<div class='itemContent' style='width: 19%;'>{{:value.sensor_data.carbon_dioxide}}% CO2</div>
 						{{/if}}
-						{{if value.sensor_data.phoron}}
-							<div class='itemContent' style='width: 19%;'>{{:value.sensor_data.phoron}}% TX</div>
+						{{if value.sensor_data.spicy purple}}
+							<div class='itemContent' style='width: 19%;'>{{:value.sensor_data.spicy purple}}% TX</div>
 						{{/if}}
 					</div>
 				{{/if}}

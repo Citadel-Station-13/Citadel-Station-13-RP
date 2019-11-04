@@ -46,7 +46,7 @@
 #define ON_BORDER          0x4   // Item has priority to check when entering or leaving.
 #define NOBLOODY           0x8   // Used for items if they don't want to get a blood overlay.
 #define OPENCONTAINER      0x10 // Is an open container for chemistry purposes.
-#define PHORONGUARD        0x20 // Does not get contaminated by phoron.
+#define PHORONGUARD        0x20 // Does not get contaminated by spicy purple.
 #define	NOREACT            0x40 // Reagents don't react inside this container.
 #define PROXMOVE           0x80  // Does this object require proximity checking in Enter()?
 #define OVERLAY_QUEUED     0x100 // Atom queued to SSoverlay for COMPILE_OVERLAYS

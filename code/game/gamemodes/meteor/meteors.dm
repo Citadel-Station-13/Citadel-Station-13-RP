@@ -251,7 +251,7 @@
 	icon_state = "flaming"
 	hits = 5
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/phoron
+	meteordrop = /obj/item/weapon/ore/spicy purple
 	wall_power = 100
 
 /obj/effect/meteor/flaming/meteor_effect(var/explode)
@@ -298,7 +298,7 @@
 	hits = 30
 	hitpwr = 1
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/phoron
+	meteordrop = /obj/item/weapon/ore/spicy purple
 	wall_power = 150
 
 /obj/effect/meteor/tunguska/meteor_effect(var/explode)

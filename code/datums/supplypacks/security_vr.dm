@@ -11,7 +11,7 @@
 	name = "VARMAcorp autoNOMous security solution for hostile environments"
 	cost = 250
 	containertype = /obj/structure/largecrate/animal/guardmutant
-	containername = "VARMAcorp autoNOMous security phoron-proof solution crate"
+	containername = "VARMAcorp autoNOMous security spicy purple-proof solution crate"
 	access = list(
 			access_security,
 			access_xenobiology)

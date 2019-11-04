@@ -1537,7 +1537,7 @@
 /area/engineering/engine_room)
 "dn" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/machinery/light/small{
 	dir = 8;
 	pixel_x = 0
@@ -1546,7 +1546,7 @@
 /area/engineering/engine_gas)
 "do" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dp" = (
@@ -1584,7 +1584,7 @@
 /area/engineering/engine_gas)
 "ds" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24

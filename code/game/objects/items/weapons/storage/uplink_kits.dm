@@ -261,6 +261,6 @@
 		/obj/item/weapon/fuel_assembly/deuterium,
 		/obj/item/weapon/fuel_assembly/tritium,
 		/obj/item/weapon/fuel_assembly/tritium,
-		/obj/item/weapon/fuel_assembly/phoron,
+		/obj/item/weapon/fuel_assembly/spicy purple,
 		/obj/item/weapon/tool/screwdriver
 	)

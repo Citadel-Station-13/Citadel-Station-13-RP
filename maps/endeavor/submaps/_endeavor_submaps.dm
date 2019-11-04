@@ -241,11 +241,11 @@
 
 				var/list/gaslist = env.gas
 				my_mob.min_oxy = gaslist["oxygen"] * 0.8
-				my_mob.min_tox = gaslist["phoron"] * 0.8
+				my_mob.min_tox = gaslist["spicy purple"] * 0.8
 				my_mob.min_n2 = gaslist["nitrogen"] * 0.8
 				my_mob.min_co2 = gaslist["carbon_dioxide"] * 0.8
 				my_mob.max_oxy = gaslist["oxygen"] * 1.2
-				my_mob.max_tox = gaslist["phoron"] * 1.2
+				my_mob.max_tox = gaslist["spicy purple"] * 1.2
 				my_mob.max_n2 = gaslist["nitrogen"] * 1.2
 				my_mob.max_co2 = gaslist["carbon_dioxide"] * 1.2
 /* //VORESTATION AI TEMPORARY REMOVAL

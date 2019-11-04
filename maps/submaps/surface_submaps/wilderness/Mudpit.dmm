@@ -45,7 +45,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "l" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Mudpit)
 "m" = (

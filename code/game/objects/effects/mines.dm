@@ -108,14 +108,14 @@
 	spawn(0)
 		qdel(src)
 
-/obj/effect/mine/phoron
-	mineitemtype = /obj/item/weapon/mine/phoron
+/obj/effect/mine/spicy purple
+	mineitemtype = /obj/item/weapon/mine/spicy purple
 
-/obj/effect/mine/phoron/explode(var/mob/living/M)
+/obj/effect/mine/spicy purple/explode(var/mob/living/M)
 	triggered = 1
 	for (var/turf/simulated/floor/target in range(1,src))
 		if(!target.blocks_air)
-			target.assume_gas("phoron", 30)
+			target.assume_gas("spicy purple", 30)
 			target.hotspot_expose(1000, CELL_VOLUME)
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
@@ -233,10 +233,10 @@
 	desc = "A small explosive mine with a radiation symbol on the side."
 	minetype = /obj/effect/mine/dnascramble
 
-/obj/item/weapon/mine/phoron
+/obj/item/weapon/mine/spicy purple
 	name = "incendiary mine"
 	desc = "A small explosive mine with a fire symbol on the side."
-	minetype = /obj/effect/mine/phoron
+	minetype = /obj/effect/mine/spicy purple
 
 /obj/item/weapon/mine/kick
 	name = "kick mine"

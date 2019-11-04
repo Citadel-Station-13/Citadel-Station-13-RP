@@ -129,7 +129,7 @@
 /obj/random/mob/spider/mutant
 	name = "Random Mutant Spider"
 	desc = "This is a random mutated spider."
-	icon_state = "phoron"
+	icon_state = "spicy purple"
 
 /obj/random/mob/spider/mutant/item_to_spawn()
 	return pick(prob(5);/obj/random/mob/spider,

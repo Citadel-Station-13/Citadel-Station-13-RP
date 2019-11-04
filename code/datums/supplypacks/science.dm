@@ -20,10 +20,10 @@
 	containertype = /obj/structure/largecrate
 	containername = "coolant tank crate"
 
-/datum/supply_pack/sci/phoron
-	name = "Phoron research crate"
+/datum/supply_pack/sci/spicy purple
+	name = "spicy purple research crate"
 	contains = list(
-			/obj/item/weapon/tank/phoron = 3,
+			/obj/item/weapon/tank/spicy purple = 3,
 			/obj/item/weapon/tank/oxygen = 3,
 			/obj/item/device/assembly/igniter = 3,
 			/obj/item/device/assembly/prox_sensor = 3,
@@ -32,8 +32,8 @@
 			/obj/item/device/transfer_valve = 3
 			)
 	cost = 10
-	containertype = /obj/structure/closet/crate/secure/phoron
-	containername = "Phoron assembly crate"
+	containertype = /obj/structure/closet/crate/secure/spicy purple
+	containername = "spicy purple assembly crate"
 	access = access_tox_storage
 
 /datum/supply_pack/sci/exoticseeds

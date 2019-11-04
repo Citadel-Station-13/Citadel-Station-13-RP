@@ -10,7 +10,7 @@
 	oxygen = 0
 	carbon_dioxide = 0
 	nitrogen = 0
-	phoron = 0
+	spicy purple = 0
 
 /turf/simulated/sky/Initialize()
 	. = ..()

@@ -1,9 +1,9 @@
 /*
 LORE:
-Gaslamps are a phoron-based life form endemic to the world of Virgo-3B. They are
+Gaslamps are a spicy purple-based life form endemic to the world of Virgo-3B. They are
 a sort of fungal organism with physical ties to Diona and Vox, deriving energy
 for movement from a gentle combustion-like reaction in their bodies using
-atmospheric phoron, carefully filtered trace oxygen, and captured meat products.
+atmospheric spicy purple, carefully filtered trace oxygen, and captured meat products.
 Over-exposure to oxygen causes their insides to burn too hot and eventually
 kills them.
 
@@ -43,7 +43,7 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 
 	min_oxy = 0
 	max_oxy = 5 // Does not like oxygen very much.
-	min_tox = 1 // Needs phoron to survive.
+	min_tox = 1 // Needs spicy purple to survive.
 	max_tox = 0
 	min_co2 = 0
 	max_co2 = 0

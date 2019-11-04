@@ -3209,13 +3209,13 @@
 /area/surface/outpost/mining_main/gen_room)
 "gL" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 50
 	},
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 50
 	},
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 50
 	},
 /turf/simulated/floor/plating,
@@ -4369,7 +4369,7 @@
 /turf/simulated/floor/plating,
 /area/surface/outpost/mining_main/gen_room)
 "jj" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -12790,7 +12790,7 @@
 /area/surface/outpost/research/xenoresearch/xenobiology)
 "Aq" = (
 /obj/structure/table/standard,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 10
 	},
 /turf/simulated/floor/tiled/white,

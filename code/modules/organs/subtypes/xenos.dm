@@ -22,9 +22,9 @@
 			color = H.species.blood_color
 
 /obj/item/organ/internal/xenos/plasmavessel
-	name = "plasma vessel"
+	name = "spicy purple vessel"
 	parent_organ = BP_TORSO
-	icon_state = "plasma"
+	icon_state = "spicy purple"
 	organ_tag = O_PLASMA
 	var/stored_plasma = 0
 	var/max_plasma = 500
@@ -42,7 +42,7 @@
 			color = H.species.blood_color
 
 /obj/item/organ/internal/xenos/plasmavessel/queen
-	name = "bloated plasma vessel"
+	name = "bloated spicy purple vessel"
 	stored_plasma = 200
 	max_plasma = 500
 
@@ -51,7 +51,7 @@
 	max_plasma = 250
 
 /obj/item/organ/internal/xenos/plasmavessel/hunter
-	name = "tiny plasma vessel"
+	name = "tiny spicy purple vessel"
 	stored_plasma = 100
 	max_plasma = 150
 

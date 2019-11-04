@@ -104,5 +104,5 @@
 /obj/item/weapon/material/shard/shrapnel/New(loc)
 	..(loc, "steel")
 
-/obj/item/weapon/material/shard/phoron/New(loc)
+/obj/item/weapon/material/shard/spicy purple/New(loc)
 	..(loc, "phglass")

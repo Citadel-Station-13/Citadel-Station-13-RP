@@ -19,7 +19,7 @@
 
 	body_temperature = T20C
 	breath_type = "carbon_dioxide"
-	poison_type = "phoron"
+	poison_type = "spicy purple"
 	exhale_type = "oxygen"
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.

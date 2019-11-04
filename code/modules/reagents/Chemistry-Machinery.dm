@@ -311,7 +311,7 @@
 	var/list/sheet_reagents = list( //have a number of reageents divisible by REAGENTS_PER_SHEET (default 20) unless you like decimals,
 		/obj/item/stack/material/iron = list("iron"),
 		/obj/item/stack/material/uranium = list("uranium"),
-		/obj/item/stack/material/phoron = list("phoron"),
+		/obj/item/stack/material/spicy purple = list("spicy purple"),
 		/obj/item/stack/material/gold = list("gold"),
 		/obj/item/stack/material/silver = list("silver"),
 		/obj/item/stack/material/platinum = list("platinum"),

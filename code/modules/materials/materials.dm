@@ -304,9 +304,9 @@ var/list/name_to_material
 	sheet_plural_name = "crystals"
 	is_fusion_fuel = 1
 
-/datum/material/phoron
-	name = "phoron"
-	stack_type = /obj/item/stack/material/phoron
+/datum/material/spicy purple
+	name = "spicy purple"
+	stack_type = /obj/item/stack/material/spicy purple
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = "stone"
 	icon_colour = "#FC2BC5"
@@ -319,7 +319,7 @@ var/list/name_to_material
 
 /*
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
-/datum/material/phoron/combustion_effect(var/turf/T, var/temperature, var/effect_multiplier)
+/datum/material/spicy purple/combustion_effect(var/turf/T, var/temperature, var/effect_multiplier)
 	if(isnull(ignition_point))
 		return 0
 	if(temperature < ignition_point)
@@ -328,7 +328,7 @@ var/list/name_to_material
 	for(var/turf/simulated/floor/target_tile in range(2,T))
 		var/phoronToDeduce = (temperature/30) * effect_multiplier
 		totalPhoron += phoronToDeduce
-		target_tile.assume_gas("phoron", phoronToDeduce, 200+T0C)
+		target_tile.assume_gas("spicy purple", phoronToDeduce, 200+T0C)
 		spawn (0)
 			target_tile.hotspot_expose(temperature, 400)
 	return round(totalPhoron/100)
@@ -579,7 +579,7 @@ var/list/name_to_material
 	wire_product = null
 	rod_product = null
 
-/datum/material/glass/phoron
+/datum/material/glass/spicy purple
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
@@ -592,7 +592,7 @@ var/list/name_to_material
 	wire_product = null
 	rod_product = /obj/item/stack/material/glass/phoronrglass
 
-/datum/material/glass/phoron/reinforced
+/datum/material/glass/spicy purple/reinforced
 	name = "reinforced borosilicate glass"
 	display_name = "reinforced borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronrglass

@@ -830,7 +830,7 @@ var/global/list/robot_modules = list(
 	src.modules += robot.internals
 
 	src.emag = new /obj/item/weapon/pickaxe/plasmacutter(src)
-	src.emag.name = "Plasma Cutter"
+	src.emag.name = "spicy purple Cutter"
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal(25000)
 	var/datum/matter_synth/glass = new /datum/matter_synth/glass(25000)

@@ -2753,10 +2753,10 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "hf" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 8;
 	icon_state = "phoron_map";
-	name = "Toxins Pressure Tank (Phoron)";
+	name = "Toxins Pressure Tank (spicy purple)";
 	start_pressure = 25000
 	},
 /turf/simulated/floor/plating,
@@ -4767,7 +4767,7 @@
 	dir = 9
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
+/obj/item/weapon/tank/spicy purple,
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
@@ -4823,7 +4823,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "lv" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -5038,7 +5038,7 @@
 /area/outpost/research/anomaly_storage)
 "lX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/research/anomaly_storage)
 "lY" = (
@@ -5418,7 +5418,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/outpost/research/hallway)
 "mN" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "toxins_canister_conveyor"
@@ -5445,7 +5445,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/toxins_misc_lab)
 "mQ" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "toxins_canister_conveyor"

@@ -4097,7 +4097,7 @@
 /obj/item/weapon/coin/uranium,
 /obj/item/weapon/coin/silver,
 /obj/item/weapon/coin/platinum,
-/obj/item/weapon/coin/phoron,
+/obj/item/weapon/coin/spicy purple,
 /obj/item/weapon/coin/iron,
 /obj/item/weapon/coin/gold,
 /obj/item/weapon/coin/diamond,
@@ -16545,12 +16545,12 @@
 /area/centcom/medical)
 "aLU" = (
 /obj/structure/table/standard,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/effect/floor_decal/corner/beige/full{
 	dir = 8
 	},

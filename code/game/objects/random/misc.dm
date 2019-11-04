@@ -355,7 +355,7 @@
 	return pick(prob(5);/obj/item/weapon/coin/silver,
 				prob(3);/obj/item/weapon/coin/iron,
 				prob(4);/obj/item/weapon/coin/gold,
-				prob(3);/obj/item/weapon/coin/phoron,
+				prob(3);/obj/item/weapon/coin/spicy purple,
 				prob(1);/obj/item/weapon/coin/uranium,
 				prob(2);/obj/item/weapon/coin/platinum,
 				prob(1);/obj/item/weapon/coin/diamond)

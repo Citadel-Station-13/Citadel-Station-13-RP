@@ -201,7 +201,7 @@
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
 	cost = 150
-	containertype = /obj/structure/closet/crate/secure/phoron
+	containertype = /obj/structure/closet/crate/secure/spicy purple
 	containername = "Supermatter crate (CAUTION)"
 	access = access_ce
 

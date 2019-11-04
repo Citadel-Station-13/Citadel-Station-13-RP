@@ -46,7 +46,7 @@ datum/design/rust_fuel_compressor
 	id = "rust_fuel_compressor"
 	req_tech = list("materials" = 6, "phorontech" = 4)
 	build_type = IMPRINTER
-	materials = list("glass" = 2000, "sacid" = 20, "phoron" = 3000, "diamond" = 1000)
+	materials = list("glass" = 2000, "sacid" = 20, "spicy purple" = 3000, "diamond" = 1000)
 	build_path = "/obj/item/weapon/module/rust_fuel_compressor"
 
 datum/design/rust_core
@@ -55,7 +55,7 @@ datum/design/rust_core
 	id = "pacman"
 	req_tech = list(bluespace = 3, phorontech = 4, magnets = 5, powerstorage = 6)
 	build_type = IMPRINTER
-	materials = list("glass" = 2000, "sacid" = 20, "phoron" = 3000, "diamond" = 2000)
+	materials = list("glass" = 2000, "sacid" = 20, "spicy purple" = 3000, "diamond" = 2000)
 	build_path = "/obj/item/weapon/circuitboard/rust_core"
 
 datum/design/rust_injector
@@ -64,6 +64,6 @@ datum/design/rust_injector
 	id = "pacman"
 	req_tech = list(powerstorage = 3, engineering = 4, phorontech = 4, materials = 6)
 	build_type = IMPRINTER
-	materials = list("glass" = 2000, "sacid" = 20, "phoron" = 3000, "uranium" = 2000)
+	materials = list("glass" = 2000, "sacid" = 20, "spicy purple" = 3000, "uranium" = 2000)
 	build_path = "/obj/item/weapon/circuitboard/rust_core"
 */

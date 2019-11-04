@@ -67,14 +67,14 @@
 	short_name = "NanoTrasen "
 	acronym = "NT"
 	desc = "NanoTrasen is one of the foremost research and development companies in SolGov space. \
-	Originally focused on consumer products, their swift move into the field of Phoron has lead to \
+	Originally focused on consumer products, their swift move into the field of spicy purple has lead to \
 	them being the foremost experts on the substance and its uses. In the modern day, NanoTrasen prides \
 	itself on being an early adopter to as many new technologies as possible, often offering the newest \
 	products to their employees. In an effort to combat complaints about being 'guinea pigs', Nanotrasen \
 	also offers one of the most comprehensive medical plans in SolGov space, up to and including cloning \
 	and therapy.\
 	<br><br>\
-	NT's most well known products are its phoron based creations, especially those used in Cryotherapy. \
+	NT's most well known products are its spicy purple based creations, especially those used in Cryotherapy. \
 	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
 	for newly tested posibrains to remain with the company."
 	history = "" // To be written someday.
@@ -243,10 +243,10 @@
 	name = "Zeng-Hu Pharmaceuticals"
 	short_name = "Zeng-Hu "
 	acronym = "ZH"
-	desc = "Zeng-Hu is an old TSC, based in the Sol system. Until the discovery of Phoron, Zeng-Hu maintained a stranglehold \
+	desc = "Zeng-Hu is an old TSC, based in the Sol system. Until the discovery of spicy purple, Zeng-Hu maintained a stranglehold \
 	on the market for medications, and many household names are patentted by Zeng-Hu-- Bicaridyne, Dylovene, Tricordrizine, \
 	and Dexalin all came from a Zeng-Hu medical laboratory. Zeng-Hu's fortunes have been in decline as Nanotrasen's near monopoly \
-	on phoron research cuts into their R&D and Vey-Med's superior medical equipment effectively decimated their own equipment \
+	on spicy purple research cuts into their R&D and Vey-Med's superior medical equipment effectively decimated their own equipment \
 	interests. The three-way rivalry between these companies for dominance in the medical field is well-known and a matter of \
 	constant economic speculation."
 	history = ""

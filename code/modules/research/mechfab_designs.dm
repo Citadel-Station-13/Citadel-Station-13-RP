@@ -366,14 +366,14 @@
 	id = "mech_laser_xray"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray
-	materials = list(DEFAULT_WALL_MATERIAL = 9000, "glass" = 3000, "phoron" = 1000, "silver" = 1500, "gold" = 2500, "plastic" = 2000)
+	materials = list(DEFAULT_WALL_MATERIAL = 9000, "glass" = 3000, "spicy purple" = 1000, "silver" = 1500, "gold" = 2500, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/rigged_laser_xray
 	name = "Jury-Rigged Xray Rifle"
 	id = "mech_laser_xray-r"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray/rigged
-	materials = list(DEFAULT_WALL_MATERIAL = 8500, "glass" = 2500, "phoron" = 1000, "silver" = 1250, "gold" = 2000, "plastic" = 2000)
+	materials = list(DEFAULT_WALL_MATERIAL = 8500, "glass" = 2500, "spicy purple" = 1000, "silver" = 1250, "gold" = 2000, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/phase
 	name = "NT-PE \"Scorpio\" Phase-Emitter"
@@ -437,7 +437,7 @@
 	desc = "A weapon that violates the CCWC at two hundred gallons per minute."
 	id = "mech_flamer_full"
 	req_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 6, TECH_PHORON = 4, TECH_ILLEGAL = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, "gold" = 2000, "uranium" = 3000, "phoron" = 8000)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "gold" = 2000, "uranium" = 3000, "spicy purple" = 8000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer
 
 /datum/design/item/mecha/weapon/flamer_rigged
@@ -445,7 +445,7 @@
 	desc = "A weapon that accidentally violates the CCWC at one hundred gallons per minute."
 	id = "mech_flamer_rigged"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_ILLEGAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 1500, "silver" = 1500, "uranium" = 2000, "phoron" = 6000)
+	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 1500, "silver" = 1500, "uranium" = 2000, "spicy purple" = 6000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged
 
 /datum/design/item/mecha/weapon/flame_mg
@@ -453,7 +453,7 @@
 	desc = "A weapon that violates the CCWC at sixty rounds a minute."
 	id = "mech_lmg_flamer"
 	req_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 5, TECH_PHORON = 2, TECH_ILLEGAL = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 2000, "silver" = 1750, "uranium" = 1500, "phoron" = 4000)
+	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 2000, "silver" = 1750, "uranium" = 1500, "spicy purple" = 4000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/incendiary
 
 // *** Nonweapon modules
@@ -476,7 +476,7 @@
 	desc = "An exosuit-mounted rapid construction device."
 	id = "mech_rcd"
 	time = 120
-	materials = list(DEFAULT_WALL_MATERIAL = 20000, "plastic" = 10000, "phoron" = 18750, "silver" = 15000, "gold" = 15000)
+	materials = list(DEFAULT_WALL_MATERIAL = 20000, "plastic" = 10000, "spicy purple" = 18750, "silver" = 15000, "gold" = 15000)
 	req_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_POWER = 4, TECH_ENGINEERING = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/rcd
 
@@ -500,7 +500,7 @@
 	desc = "Manual shield drone. Deploys a large, familiar, and rectangular shield in one direction at a time."
 	id = "mech_shield_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 2000, "silver" = 3000, "phoron" = 5000, "glass" = 3750)
+	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 2000, "silver" = 3000, "spicy purple" = 5000, "glass" = 3750)
 	build_path = /obj/item/mecha_parts/mecha_equipment/combat_shield
 
 /datum/design/item/mecha/jetpack
@@ -512,7 +512,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 7500, "silver" = 300, "glass" = 600)
 
 /datum/design/item/mecha/phoron_generator
-	desc = "Phoron Reactor"
+	desc = "spicy purple Reactor"
 	id = "mech_phoron_generator"
 	req_tech = list(TECH_PHORON = 2, TECH_POWER= 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/mecha_parts/mecha_equipment/generator
@@ -580,7 +580,7 @@
 	desc = "A space-bike's un-assembled frame."
 	id = "vehicle_chassis_spacebike"
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6, TECH_BLUESPACE = 3, TECH_PHORON = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 12000, "silver" = 3000, "phoron" = 3000, "osmium" = 1000)
+	materials = list(DEFAULT_WALL_MATERIAL = 12000, "silver" = 3000, "spicy purple" = 3000, "osmium" = 1000)
 	build_path = /obj/item/weapon/vehicle_assembly/spacebike
 
 /datum/design/item/mechfab/vehicle/quadbike_chassis

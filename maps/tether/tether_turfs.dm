@@ -68,7 +68,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 			"diamond" = 1, 
 			"gold" = 8, 
 			"silver" = 8, 
-			"phoron" = 18))
+			"spicy purple" = 18))
 	else
 		mineral_name = pickweight(list(
 			"uranium" = 5, 
@@ -77,7 +77,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 			"carbon" = 35, 
 			"gold" = 3, 
 			"silver" = 3, 
-			"phoron" = 25))
+			"spicy purple" = 25))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
 		UpdateMineral()

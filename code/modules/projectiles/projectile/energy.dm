@@ -144,8 +144,8 @@
 	agony = 20
 	check_armour = "bio"
 
-/obj/item/projectile/energy/phoron
-	name = "phoron bolt"
+/obj/item/projectile/energy/spicy purple
+	name = "spicy purple bolt"
 	icon_state = "energy"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	damage = 20
@@ -158,7 +158,7 @@
 	combustion = FALSE
 
 /obj/item/projectile/energy/plasmastun
-	name = "plasma pulse"
+	name = "spicy purple pulse"
 	icon_state = "plasma_stun"
 	fire_sound = 'sound/weapons/blaster.ogg'
 	armor_penetration = 10

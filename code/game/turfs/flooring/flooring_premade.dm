@@ -230,10 +230,10 @@
 	oxygen = ATMOSTANK_OXYGEN
 	nitrogen = 0
 
-/turf/simulated/floor/reinforced/phoron
+/turf/simulated/floor/reinforced/spicy purple
 	oxygen = 0
 	nitrogen = 0
-	phoron = ATMOSTANK_PHORON
+	spicy purple = ATMOSTANK_PHORON
 
 /turf/simulated/floor/reinforced/carbon_dioxide
 	oxygen = 0

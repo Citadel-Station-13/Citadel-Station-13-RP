@@ -227,8 +227,8 @@
 				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
 			else if(rod.fuel_type == "tritium")
 				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/tritium
-			else if(rod.fuel_type == "phoron")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/phoron
+			else if(rod.fuel_type == "spicy purple")
+				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/spicy purple
 			else if(rod.fuel_type == "supermatter")
 				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/supermatter
 				visible_message("<span class='danger'>The barrel of \the [src] glows a blinding white!</span>")

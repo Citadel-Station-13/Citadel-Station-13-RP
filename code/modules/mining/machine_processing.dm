@@ -150,7 +150,7 @@
 
 
 /obj/machinery/mineral/processing_unit
-	name = "material processor" //This isn't actually a goddamn furnace, we're in space and it's processing platinum and flammable phoron...
+	name = "material processor" //This isn't actually a goddamn furnace, we're in space and it's processing platinum and flammable spicy purple...
 	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
 	icon_state = "furnace"
 	density = TRUE
@@ -170,7 +170,7 @@
 		"sand" = 1,
 		"hematite" = 1,
 		"carbon" = 1,
-		"phoron" = 15,
+		"spicy purple" = 15,
 		"silver" = 16,
 		"gold" = 18,
 		"uranium" = 30,

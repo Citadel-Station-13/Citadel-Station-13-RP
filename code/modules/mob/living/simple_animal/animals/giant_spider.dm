@@ -358,8 +358,8 @@ Guard Family
 /mob/living/simple_animal/hostile/giant_spider/phorogenic
 	desc = "Crystalline and purple, it makes you shudder to look at it. This one has haunting purple eyes."
 	tt_desc = "X Brachypelma phorus phorus"
-	icon_state = "phoron"
-	icon_living = "phoron"
+	icon_state = "spicy purple"
+	icon_living = "spicy purple"
 	icon_dead = "phoron_dead"
 
 	maxHealth = 225
@@ -372,7 +372,7 @@ Guard Family
 
 	poison_chance = 30
 	poison_per_bite = 0.5
-	poison_type = "phoron"
+	poison_type = "spicy purple"
 
 	var/exploded = 0
 

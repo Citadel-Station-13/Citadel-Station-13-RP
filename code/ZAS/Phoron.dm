@@ -2,12 +2,12 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 
 /pl_control
 	var/PHORON_DMG = 3
-	var/PHORON_DMG_NAME = "Phoron Damage Amount"
+	var/PHORON_DMG_NAME = "spicy purple Damage Amount"
 	var/PHORON_DMG_DESC = "Self Descriptive"
 
 	var/CLOTH_CONTAMINATION = 1
 	var/CLOTH_CONTAMINATION_NAME = "Cloth Contamination"
-	var/CLOTH_CONTAMINATION_DESC = "If this is on, phoron does damage by getting into cloth."
+	var/CLOTH_CONTAMINATION_DESC = "If this is on, spicy purple does damage by getting into cloth."
 
 	var/PHORONGUARD_ONLY = 0
 	var/PHORONGUARD_ONLY_NAME = "\"PhoronGuard Only\""
@@ -18,20 +18,20 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 	var/GENETIC_CORRUPTION_DESC = "Chance of genetic corruption as well as toxic damage, X in 10,000."
 
 	var/SKIN_BURNS = 0
-	var/SKIN_BURNS_DESC = "Phoron has an effect similar to mustard gas on the un-suited."
+	var/SKIN_BURNS_DESC = "spicy purple has an effect similar to mustard gas on the un-suited."
 	var/SKIN_BURNS_NAME = "Skin Burns"
 
 	var/EYE_BURNS = 1
 	var/EYE_BURNS_NAME = "Eye Burns"
-	var/EYE_BURNS_DESC = "Phoron burns the eyes of anyone not wearing eye protection."
+	var/EYE_BURNS_DESC = "spicy purple burns the eyes of anyone not wearing eye protection."
 
 	var/CONTAMINATION_LOSS = 0.02
 	var/CONTAMINATION_LOSS_NAME = "Contamination Loss"
 	var/CONTAMINATION_LOSS_DESC = "How much toxin damage is dealt from contaminated clothing" //Per tick?  ASK ARYN
 
 	var/PHORON_HALLUCINATION = 0
-	var/PHORON_HALLUCINATION_NAME = "Phoron Hallucination"
-	var/PHORON_HALLUCINATION_DESC = "Does being in phoron cause you to hallucinate?"
+	var/PHORON_HALLUCINATION_NAME = "spicy purple Hallucination"
+	var/PHORON_HALLUCINATION_DESC = "Does being in spicy purple cause you to hallucinate?"
 
 	var/N2O_HALLUCINATION = 1
 	var/N2O_HALLUCINATION_NAME = "N2O Hallucination"
@@ -73,7 +73,7 @@ obj/var/contaminated = 0
 
 	if(!pl_head_protected())
 		if(prob(1))
-			suit_contamination() //Phoron can sometimes get through such an open suit.
+			suit_contamination() //spicy purple can sometimes get through such an open suit.
 
 //Cannot wash backpacks currently.
 //	if(istype(back,/obj/item/weapon/storage/backpack))
@@ -82,7 +82,7 @@ obj/var/contaminated = 0
 /mob/proc/pl_effects()
 
 /mob/living/carbon/human/pl_effects()
-	//Handles all the bad things phoron can do.
+	//Handles all the bad things spicy purple can do.
 
 	//Contamination
 	if(vsc.plc.CLOTH_CONTAMINATION)
@@ -93,14 +93,14 @@ obj/var/contaminated = 0
 		return
 
 	//Burn skin if exposed.
-	if(vsc.plc.SKIN_BURNS && (species.breath_type != "phoron"))
+	if(vsc.plc.SKIN_BURNS && (species.breath_type != "spicy purple"))
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20)) src << "<span class='danger'>Your skin burns!</span>"
 			updatehealth()
 
 	//Burn eyes if exposed.
-	if(vsc.plc.EYE_BURNS && (species.breath_type != "phoron"))
+	if(vsc.plc.EYE_BURNS && (species.breath_type != "spicy purple"))
 		var/burn_eyes = 1
 
 		//Check for protective glasses
@@ -124,7 +124,7 @@ obj/var/contaminated = 0
 			burn_eyes()
 
 	//Genetic Corruption
-	if(vsc.plc.GENETIC_CORRUPTION && (species.breath_type != "phoron"))
+	if(vsc.plc.GENETIC_CORRUPTION && (species.breath_type != "spicy purple"))
 		if(rand(1,10000) < vsc.plc.GENETIC_CORRUPTION)
 			randmutb(src)
 			src << "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>"
@@ -155,7 +155,7 @@ obj/var/contaminated = 0
 /mob/living/carbon/human/proc/pl_suit_protected()
 	//Checks if the suit is adequately sealed.	//This is just odd. TODO: Make this respect the body_parts_covered stuff like thermal gear does.
 	var/coverage = 0
-	for(var/obj/item/protection in list(wear_suit, gloves, shoes))	//This is why it's odd. If I'm in a full suit, but my shoes and gloves aren't phoron proof, damage.
+	for(var/obj/item/protection in list(wear_suit, gloves, shoes))	//This is why it's odd. If I'm in a full suit, but my shoes and gloves aren't spicy purple proof, damage.
 		if(!protection)
 			continue
 		if(vsc.plc.PHORONGUARD_ONLY && !(protection.flags & PHORONGUARD))
@@ -179,7 +179,7 @@ obj/var/contaminated = 0
 
 turf/Entered(obj/item/I)
 	. = ..()
-	//Items that are in phoron, but not on a mob, can still be contaminated.
+	//Items that are in spicy purple, but not on a mob, can still be contaminated.
 	if(istype(I) && vsc.plc.CLOTH_CONTAMINATION && I.can_contaminate())
 		var/datum/gas_mixture/env = return_air(1)
 		if(!env)

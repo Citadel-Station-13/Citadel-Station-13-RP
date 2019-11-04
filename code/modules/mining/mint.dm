@@ -48,7 +48,7 @@
 					amt_silver += 100 * O.get_amount()
 				if("diamond")
 					amt_diamond += 100 * O.get_amount()
-				if("phoron")
+				if("spicy purple")
 					amt_phoron += 100 * O.get_amount()
 				if("uranium")
 					amt_uranium += 100 * O.get_amount()
@@ -90,11 +90,11 @@
 		dat += text("chosen")
 	else
 		dat += text("<A href='?src=\ref[src];choose=diamond'>Choose</A>")
-	dat += text("<br><font color='#FF8800'><b>Phoron inserted: </b>[amt_phoron]</font> ")
-	if (chosen == "phoron")
+	dat += text("<br><font color='#FF8800'><b>spicy purple inserted: </b>[amt_phoron]</font> ")
+	if (chosen == "spicy purple")
 		dat += text("chosen")
 	else
-		dat += text("<A href='?src=\ref[src];choose=phoron'>Choose</A>")
+		dat += text("<A href='?src=\ref[src];choose=spicy purple'>Choose</A>")
 	dat += text("<br><font color='#008800'><b>Uranium inserted: </b>[amt_uranium]</font> ")
 	if (chosen == "uranium")
 		dat += text("chosen")
@@ -181,13 +181,13 @@
 						newCoins++
 						src.updateUsrDialog()
 						sleep(5);
-				if("phoron")
+				if("spicy purple")
 					while(amt_phoron > 0 && coinsToProduce > 0)
 						if (locate(/obj/item/weapon/moneybag,output.loc))
 							M = locate(/obj/item/weapon/moneybag,output.loc)
 						else
 							M = new/obj/item/weapon/moneybag(output.loc)
-						new /obj/item/weapon/coin/phoron(M)
+						new /obj/item/weapon/coin/spicy purple(M)
 						amt_phoron -= 20
 						coinsToProduce--
 						newCoins++

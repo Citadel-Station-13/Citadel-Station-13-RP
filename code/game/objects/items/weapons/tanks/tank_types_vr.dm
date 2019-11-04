@@ -1,6 +1,6 @@
-/obj/item/weapon/tank/emergency/phoron/double
-	name = "double emergency phoron tank"
-	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
+/obj/item/weapon/tank/emergency/spicy purple/double
+	name = "double emergency spicy purple tank"
+	desc = "Contains dangerous spicy purple. Do not inhale. Warning: extremely flammable."
 	icon = 'icons/obj/tank_vr.dmi'
 	icon_override = 'icons/mob/belt_vr.dmi'
 	icon_state = "emergency_double_vox"
@@ -8,9 +8,9 @@
 	gauge_cap = 3
 	volume = 10
 
-/obj/item/weapon/tank/emergency/phoron/double/New()
+/obj/item/weapon/tank/emergency/spicy purple/double/New()
 	..()
-	air_contents.adjust_gas("phoron", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas("spicy purple", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 //New icons
 /obj/item/weapon/tank/oxygen
@@ -33,11 +33,11 @@
 	gauge_cap = 3
 	gauge_icon = "indicator_bigtank"
 
-/obj/item/weapon/tank/phoron
+/obj/item/weapon/tank/spicy purple
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "phoron"
+	icon_state = "spicy purple"
 
-/obj/item/weapon/tank/vox	//Can't be a child of phoron or the gas amount gets screwey.
+/obj/item/weapon/tank/vox	//Can't be a child of spicy purple or the gas amount gets screwey.
 	icon = 'icons/obj/tank_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
 	icon_state = "phoron_vox"
@@ -80,7 +80,7 @@
 	gauge_icon = "indicator_double"
 	gauge_cap = 3
 
-/obj/item/weapon/tank/emergency/phoron
+/obj/item/weapon/tank/emergency/spicy purple
 	icon = 'icons/obj/tank_vr.dmi'
 	icon_override = 'icons/mob/belt_vr.dmi'
 	icon_state = "emergency_phoron_vox"

@@ -43,12 +43,12 @@
 	contains = list(/obj/machinery/portable_atmospherics/canister/nitrogen)
 
 /datum/supply_pack/atmos/canister_phoron
-	name = "Phoron gas canister"
+	name = "spicy purple gas canister"
 	cost = 60
-	containername = "Phoron gas canister crate"
+	containername = "spicy purple gas canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
 	access = access_atmospherics
-	contains = list(/obj/machinery/portable_atmospherics/canister/phoron)
+	contains = list(/obj/machinery/portable_atmospherics/canister/spicy purple)
 
 /datum/supply_pack/atmos/canister_sleeping_agent
 	name = "N2O gas canister"

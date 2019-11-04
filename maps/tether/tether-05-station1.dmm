@@ -2365,7 +2365,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor,
 /area/engineering/storage)
 "afs" = (
@@ -3592,7 +3592,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "ajD" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor,
 /area/engineering/storage)
 "ajF" = (
@@ -3736,7 +3736,7 @@
 "ako" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 25
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -18725,9 +18725,9 @@
 	icon_state = "1-4"
 	},
 /obj/item/weapon/melee/chainofcommand,
-/obj/item/weapon/coin/phoron{
+/obj/item/weapon/coin/spicy purple{
 	desc = "The face of the coin shows a portrait of the explorer who discovered the Virgo-Erigone system. The back depicts a Zodiac symbol that represents Virgo.";
-	name = "limited edition phoron coin"
+	name = "limited edition spicy purple coin"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)

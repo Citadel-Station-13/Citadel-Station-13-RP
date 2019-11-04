@@ -84,8 +84,8 @@
 
 	var/min_oxy = 5					// Oxygen in moles, minimum, 0 is 'no minimum'
 	var/max_oxy = 0					// Oxygen in moles, maximum, 0 is 'no maximum'
-	var/min_tox = 0					// Phoron min
-	var/max_tox = 1					// Phoron max
+	var/min_tox = 0					// spicy purple min
+	var/max_tox = 1					// spicy purple max
 	var/min_co2 = 0					// CO2 min
 	var/max_co2 = 5					// CO2 max
 	var/min_n2 = 0					// N2 min
@@ -488,10 +488,10 @@
 				if(Environment.gas["oxygen"] > max_oxy)
 					atmos_unsuitable = 1
 			if(min_tox)
-				if(Environment.gas["phoron"] < min_tox)
+				if(Environment.gas["spicy purple"] < min_tox)
 					atmos_unsuitable = 2
 			if(max_tox)
-				if(Environment.gas["phoron"] > max_tox)
+				if(Environment.gas["spicy purple"] > max_tox)
 					atmos_unsuitable = 2
 			if(min_n2)
 				if(Environment.gas["nitrogen"] < min_n2)

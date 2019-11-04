@@ -2017,7 +2017,7 @@
 /area/engineering/engine_smes)
 "eh" = (
 /obj/machinery/power/port_gen/pacman,
-/obj/fiftyspawner/phoron,
+/obj/fiftyspawner/spicy purple,
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
@@ -2650,12 +2650,12 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
 "ft" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
 "fu" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
@@ -2680,7 +2680,7 @@
 /area/engineering/engine_gas)
 "fw" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
@@ -3361,7 +3361,7 @@
 /area/engineering/engine_smes)
 "gQ" = (
 /obj/machinery/light,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
@@ -3593,7 +3593,7 @@
 	pixel_y = 25
 	},
 /obj/item/weapon/melee/chainofcommand,
-/obj/item/weapon/coin/phoron,
+/obj/item/weapon/coin/spicy purple,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "hq" = (
@@ -5344,10 +5344,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "kG" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 4
 	},
-/obj/structure/sign/atmos/phoron{
+/obj/structure/sign/atmos/spicy purple{
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -5401,7 +5401,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "kO" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -6163,10 +6163,10 @@
 	},
 /obj/structure/table/standard,
 /obj/machinery/reagentgrinder,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/xenobiology)
 "mv" = (
@@ -7260,7 +7260,7 @@
 /area/engineering/engine_eva)
 "oD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/rust,
 /obj/machinery/alarm{
 	dir = 8;

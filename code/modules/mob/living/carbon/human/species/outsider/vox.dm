@@ -41,7 +41,7 @@
 
 	gluttonous = 1
 
-	breath_type = "phoron"
+	breath_type = "spicy purple"
 	poison_type = "oxygen"
 	siemens_coefficient = 0.2
 

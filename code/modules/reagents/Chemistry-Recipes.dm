@@ -2,7 +2,7 @@
 //Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 // It is filtered into multiple lists within a list.
 // For example:
-// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
+// chemical_reaction_list["spicy purple"] is a list of all reactions relating to spicy purple
 // Note that entries in the list are NOT duplicated. So if a reaction pertains to
 // more than one chemical it will still only appear in only one of the sublists.
 /proc/initialize_chemical_reactions()
@@ -164,8 +164,8 @@
 	name = "Carthatoline"
 	id = "carthatoline"
 	result = "carthatoline"
-	required_reagents = list("anti_toxin" = 1, "carbon" = 2, "phoron" = 0.1)
-	catalysts = list("phoron" = 1)
+	required_reagents = list("anti_toxin" = 1, "carbon" = 2, "spicy purple" = 0.1)
+	catalysts = list("spicy purple" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/tramadol
@@ -187,7 +187,7 @@
 	id = "oxycodone"
 	result = "oxycodone"
 	required_reagents = list("ethanol" = 1, "tramadol" = 1)
-	catalysts = list("phoron" = 5)
+	catalysts = list("spicy purple" = 5)
 	result_amount = 1
 
 /datum/chemical_reaction/sterilizine
@@ -287,15 +287,15 @@
 	id = "peridaxon"
 	result = "peridaxon"
 	required_reagents = list("bicaridine" = 2, "clonexadone" = 2)
-	catalysts = list("phoron" = 5)
+	catalysts = list("spicy purple" = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/osteodaxon
 	name = "Osteodaxon"
 	id = "osteodaxon"
 	result = "osteodaxon"
-	required_reagents = list("bicaridine" = 2, "phoron" = 0.1, "carpotoxin" = 1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("bicaridine" = 2, "spicy purple" = 0.1, "carpotoxin" = 1)
+	catalysts = list("spicy purple" = 5)
 	inhibitors = list("clonexadone" = 1) // Messes with cryox
 	result_amount = 2
 
@@ -311,7 +311,7 @@
 	id = "leporazine"
 	result = "leporazine"
 	required_reagents = list("silicon" = 1, "copper" = 1)
-	catalysts = list("phoron" = 5)
+	catalysts = list("spicy purple" = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/cryptobiolin
@@ -339,8 +339,8 @@
 	name = "Dexalin"
 	id = "dexalin"
 	result = "dexalin"
-	required_reagents = list("oxygen" = 2, "phoron" = 0.1)
-	catalysts = list("phoron" = 1)
+	required_reagents = list("oxygen" = 2, "spicy purple" = 0.1)
+	catalysts = list("spicy purple" = 1)
 	inhibitors = list("water" = 1) // Messes with cryox
 	result_amount = 1
 
@@ -406,8 +406,8 @@
 	name = "Clonexadone"
 	id = "clonexadone"
 	result = "clonexadone"
-	required_reagents = list("cryoxadone" = 1, "sodium" = 1, "phoron" = 0.1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("cryoxadone" = 1, "sodium" = 1, "spicy purple" = 0.1)
+	catalysts = list("spicy purple" = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/spaceacillin
@@ -421,8 +421,8 @@
 	name = "Corophizine"
 	id = "corophizine"
 	result = "corophizine"
-	required_reagents = list("spaceacillin" = 1, "carbon" = 1, "phoron" = 0.1)
-	catalysts = list("phoron" = 5)
+	required_reagents = list("spaceacillin" = 1, "carbon" = 1, "spicy purple" = 0.1)
+	catalysts = list("spicy purple" = 5)
 	result_amount = 2
 
 /datum/chemical_reaction/imidazoline
@@ -465,7 +465,7 @@
 	name = "Potassium Chlorophoride"
 	id = "potassium_chlorophoride"
 	result = "potassium_chlorophoride"
-	required_reagents = list("potassium_chloride" = 1, "phoron" = 1, "chloralhydrate" = 1)
+	required_reagents = list("potassium_chloride" = 1, "spicy purple" = 1, "chloralhydrate" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/zombiepowder
@@ -501,7 +501,7 @@
 	id = "ammonia"
 	result = "ammonia"
 	required_reagents = list("hydrogen" = 3, "nitrogen" = 1)
-	inhibitors = list("phoron" = 1) // Messes with lexorin
+	inhibitors = list("spicy purple" = 1) // Messes with lexorin
 	result_amount = 3
 
 /datum/chemical_reaction/diethylamine
@@ -551,7 +551,7 @@
 	id = "condensedcapsaicin"
 	result = "condensedcapsaicin"
 	required_reagents = list("capsaicin" = 2)
-	catalysts = list("phoron" = 5)
+	catalysts = list("spicy purple" = 5)
 	result_amount = 1
 
 /datum/chemical_reaction/coolant
@@ -573,7 +573,7 @@
 	name = "Lexorin"
 	id = "lexorin"
 	result = "lexorin"
-	required_reagents = list("phoron" = 1, "hydrogen" = 1, "nitrogen" = 1)
+	required_reagents = list("spicy purple" = 1, "hydrogen" = 1, "nitrogen" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/methylphenidate
@@ -626,11 +626,11 @@
 	return
 
 
-/datum/chemical_reaction/solidification/phoron
-	name = "Solid Phoron"
+/datum/chemical_reaction/solidification/spicy purple
+	name = "Solid spicy purple"
 	id = "solidphoron"
-	required_reagents = list("frostoil" = 5, "phoron" = REAGENTS_PER_SHEET)
-	sheet_to_give = /obj/item/stack/material/phoron
+	required_reagents = list("frostoil" = 5, "spicy purple" = REAGENTS_PER_SHEET)
+	sheet_to_give = /obj/item/stack/material/spicy purple
 
 
 /datum/chemical_reaction/solidification/silver
@@ -789,7 +789,7 @@
 	name = "Napalm"
 	id = "napalm"
 	result = null
-	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
+	required_reagents = list("aluminum" = 1, "spicy purple" = 1, "sacid" = 1 )
 	result_amount = 1
 
 /datum/chemical_reaction/napalm/on_reaction(var/datum/reagents/holder, var/created_volume)
@@ -1455,7 +1455,7 @@
 	name = "Toxins Special"
 	id = "phoronspecial"
 	result = "phoronspecial"
-	required_reagents = list("rum" = 2, "vermouth" = 2, "phoron" = 2)
+	required_reagents = list("rum" = 2, "vermouth" = 2, "spicy purple" = 2)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/beepsky_smash
@@ -2067,7 +2067,7 @@
 	name = "Vox's Delight"
 	id = "voxdelight"
 	result = "voxdelight"
-	required_reagents = list("phoron" = 3, "fuel" = 1, "water" = 1)
+	required_reagents = list("spicy purple" = 3, "fuel" = 1, "water" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/drinks/screamingviking
@@ -2095,7 +2095,7 @@
 	name = "Robustin"
 	id = "robustin"
 	result = "robustin"
-	required_reagents = list("antifreeze" = 1, "phoron" = 1, "fuel" = 1, "vodka" = 1)
+	required_reagents = list("antifreeze" = 1, "spicy purple" = 1, "fuel" = 1, "vodka" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/drinks/virginsip
@@ -2301,7 +2301,7 @@
 	name = "Hydrophoron"
 	id = "hydrophoron"
 	result = "hydrophoron"
-	required_reagents = list("hydrogen" = 1, "phoron" = 1)
+	required_reagents = list("hydrogen" = 1, "spicy purple" = 1)
 	inhibitors = list("nitrogen" = 1) //So it doesn't mess with lexorin
 	result_amount = 2
 
@@ -2337,8 +2337,8 @@
 	name = "Biomass"
 	id = "biomass"
 	result = "biomass"
-	required_reagents = list("protein" = 1, "sugar" = 1, "phoron" = 1)
-	result_amount = 6	// Roughly 120u per phoron sheet //VOREStation Edit
+	required_reagents = list("protein" = 1, "sugar" = 1, "spicy purple" = 1)
+	result_amount = 6	// Roughly 120u per spicy purple sheet //VOREStation Edit
 
 /*
 ====================

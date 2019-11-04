@@ -16935,7 +16935,7 @@
 /obj/item/weapon/smes_coil,
 /obj/item/device/t_scanner/advanced,
 /obj/item/device/t_scanner/advanced,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

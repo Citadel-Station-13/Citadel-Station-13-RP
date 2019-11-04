@@ -20,7 +20,7 @@
 	for (var/obj/item/weapon/coin/C in contents)
 		if (istype(C,/obj/item/weapon/coin/diamond))
 			amt_diamond++;
-		if (istype(C,/obj/item/weapon/coin/phoron))
+		if (istype(C,/obj/item/weapon/coin/spicy purple))
 			amt_phoron++;
 		if (istype(C,/obj/item/weapon/coin/iron))
 			amt_iron++;
@@ -41,7 +41,7 @@
 	if (amt_diamond)
 		dat += text("Diamond coins: [amt_diamond] <A href='?src=\ref[src];remove=diamond'>Remove one</A><br>")
 	if (amt_phoron)
-		dat += text("Phoron coins: [amt_phoron] <A href='?src=\ref[src];remove=phoron'>Remove one</A><br>")
+		dat += text("spicy purple coins: [amt_phoron] <A href='?src=\ref[src];remove=spicy purple'>Remove one</A><br>")
 	if (amt_uranium)
 		dat += text("Uranium coins: [amt_uranium] <A href='?src=\ref[src];remove=uranium'>Remove one</A><br>")
 	user << browse("[dat]", "window=moneybag")
@@ -76,8 +76,8 @@
 				COIN = locate(/obj/item/weapon/coin/iron,src.contents)
 			if("diamond")
 				COIN = locate(/obj/item/weapon/coin/diamond,src.contents)
-			if("phoron")
-				COIN = locate(/obj/item/weapon/coin/phoron,src.contents)
+			if("spicy purple")
+				COIN = locate(/obj/item/weapon/coin/spicy purple,src.contents)
 			if("uranium")
 				COIN = locate(/obj/item/weapon/coin/uranium,src.contents)
 		if(!COIN)

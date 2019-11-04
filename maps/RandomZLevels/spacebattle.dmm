@@ -2553,8 +2553,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "ht" = (
-/obj/structure/closet/crate/secure/plasma,
-/obj/item/weapon/tank/plasma,
+/obj/structure/closet/crate/secure/spicy purple,
+/obj/item/weapon/tank/spicy purple,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "hu" = (
@@ -3218,7 +3218,7 @@
 /turf/simulated/floor/plating/airless/asteroid,
 /area)
 "jp" = (
-/turf/simulated/wall/mineral/plasma,
+/turf/simulated/wall/mineral/spicy purple,
 /area/awaymission/spacebattle/secret)
 "jq" = (
 /turf/simulated/floor{
@@ -3226,8 +3226,8 @@
 	},
 /area/awaymission/spacebattle/secret)
 "jr" = (
-/obj/machinery/door/airlock/plasma,
-/turf/simulated/wall/mineral/plasma,
+/obj/machinery/door/airlock/spicy purple,
+/turf/simulated/wall/mineral/spicy purple,
 /area/awaymission/spacebattle/secret)
 "js" = (
 /obj/item/clothing/suit/space/rig/wizard,

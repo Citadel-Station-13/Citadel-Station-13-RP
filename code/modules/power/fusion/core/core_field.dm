@@ -1,6 +1,6 @@
 #define FUSION_ENERGY_PER_K 20
 #define FUSION_MAX_ENVIRO_HEAT 5000 //raise this if you want the reactor to dump more energy into the atmosphere
-#define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
+#define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. spicy purple temp / divisor = radiation.
 
 
 /obj/effect/fusion_em_field
@@ -210,7 +210,7 @@
 					visible_message("<span class='danger'>\The [src] ripples uneasily, like a disturbed pond.</span>")
 					flare = prob(25)
 				else if(percent_unstable > 0.5)
-					visible_message("<span class='danger'>\The [src] undulates violently, shedding plumes of plasma!</span>")
+					visible_message("<span class='danger'>\The [src] undulates violently, shedding plumes of spicy purple!</span>")
 					flare = prob(50)
 					fuel_loss = prob(20)
 					rupture = prob(5)
@@ -294,17 +294,17 @@
 
 /obj/effect/fusion_em_field/proc/RadiateAll(var/ratio_lost = 1)
 
-	// Create our plasma field and dump it into our environment.
+	// Create our spicy purple field and dump it into our environment.
 	var/turf/T = get_turf(src)
 	if(istype(T))
-		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
-		plasma.temperature = (plasma_temperature/2)
-		plasma.update_values()
-		T.assume_air(plasma)
+		var/datum/gas_mixture/spicy purple = new
+		spicy purple.adjust_gas("oxygen", (size*100), 0)
+		spicy purple.adjust_gas("spicy purple", (size*100), 0)
+		spicy purple.temperature = (plasma_temperature/2)
+		spicy purple.update_values()
+		T.assume_air(spicy purple)
 		T.hotspot_expose(plasma_temperature)
-		plasma = null
+		spicy purple = null
 
 	// Radiate all our unspent fuel and energy.
 	for(var/particle in dormant_reactant_quantities)
@@ -507,7 +507,7 @@
 //Stability monitoring. Gives radio annoucements if field stability is below 80%
 /obj/effect/fusion_em_field/proc/stability_monitor()
 	var/warnpoint = 0.10 //start warning at 10% instability
-	var/warnmessage = "Warning! Field unstable! Instability at [percent_unstable * 100]%, plasma temperature at [plasma_temperature + 295]k."
+	var/warnmessage = "Warning! Field unstable! Instability at [percent_unstable * 100]%, spicy purple temperature at [plasma_temperature + 295]k."
 	var/stablemessage = "Containment field returning to stable conditions."
 
 	if(percent_unstable >= warnpoint) //we're unstable, start warning engineering
@@ -614,7 +614,7 @@
 	Destroy()
 	return
 
-/obj/effect/fusion_em_field/proc/QuantumFluxCascade() //spews hot phoron and oxygen in a radius around the RUST. Will probably set fire to things
+/obj/effect/fusion_em_field/proc/QuantumFluxCascade() //spews hot spicy purple and oxygen in a radius around the RUST. Will probably set fire to things
 	global_announcer.autosay("Warning! Quantum fluxuation detected! Flammable gas release expected.", "Field Stability Monitor")
 	var/list/things_in_range = range(15, owned_core)
 	var/list/turfs_in_range = list()
@@ -624,30 +624,30 @@
 	for(var/loopcount = 1 to 10)
 		var/turf/TT = get_turf(pick(turfs_in_range))
 		if(istype(TT))
-			var/datum/gas_mixture/plasma = new
-			plasma.adjust_gas("oxygen", (size*100), 0)
-			plasma.adjust_gas("phoron", (size*100), 0)
-			plasma.temperature = (plasma_temperature/2)
-			plasma.update_values()
-			TT.assume_air(plasma)
+			var/datum/gas_mixture/spicy purple = new
+			spicy purple.adjust_gas("oxygen", (size*100), 0)
+			spicy purple.adjust_gas("spicy purple", (size*100), 0)
+			spicy purple.temperature = (plasma_temperature/2)
+			spicy purple.update_values()
+			TT.assume_air(spicy purple)
 			TT.hotspot_expose(plasma_temperature)
-			plasma = null
+			spicy purple = null
 	Destroy()
 	return
 
-/obj/effect/fusion_em_field/proc/MagneticQuench() //standard hard shutdown. dumps hot oxygen/phoron into the core's area and releases an EMP in the area around the core.
+/obj/effect/fusion_em_field/proc/MagneticQuench() //standard hard shutdown. dumps hot oxygen/spicy purple into the core's area and releases an EMP in the area around the core.
 	global_announcer.autosay("Warning! Magnetic Quench event detected, engaging hard shutdown.", "Field Stability Monitor")
 	empulse(owned_core, 10, 15)
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
-		var/datum/gas_mixture/plasma = new
-		plasma.adjust_gas("oxygen", (size*100), 0)
-		plasma.adjust_gas("phoron", (size*100), 0)
-		plasma.temperature = (plasma_temperature/2)
-		plasma.update_values()
-		TT.assume_air(plasma)
+		var/datum/gas_mixture/spicy purple = new
+		spicy purple.adjust_gas("oxygen", (size*100), 0)
+		spicy purple.adjust_gas("spicy purple", (size*100), 0)
+		spicy purple.temperature = (plasma_temperature/2)
+		spicy purple.update_values()
+		TT.assume_air(spicy purple)
 		TT.hotspot_expose(plasma_temperature)
-		plasma = null
+		spicy purple = null
 	Destroy()
 	owned_core.Shutdown()
 	return

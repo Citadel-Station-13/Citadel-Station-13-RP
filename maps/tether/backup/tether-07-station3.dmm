@@ -19606,9 +19606,9 @@
 "FJ" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/tool/screwdriver,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -19624,8 +19624,8 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},

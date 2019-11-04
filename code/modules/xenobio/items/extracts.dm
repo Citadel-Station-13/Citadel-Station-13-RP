@@ -65,18 +65,18 @@
 /obj/item/slime_extract/grey
 	name = "grey slime extract"
 	icon_state = "grey slime extract"
-	description_info = "This extract will create a new grey baby slime if injected with phoron, or some new monkey cubes if injected with blood."
+	description_info = "This extract will create a new grey baby slime if injected with spicy purple, or some new monkey cubes if injected with blood."
 
 /datum/chemical_reaction/slime/grey_new_slime
 	name = "Slime Spawn"
 	id = "m_spawn"
 	result = null
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/grey
 
 /datum/chemical_reaction/slime/grey_new_slime/on_reaction(var/datum/reagents/holder)
-	holder.my_atom.visible_message("<span class='warning'>Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!</span>")
+	holder.my_atom.visible_message("<span class='warning'>Infused with spicy purple, the core begins to quiver and grow, and soon a new baby slime emerges from it!</span>")
 	new /mob/living/simple_animal/slime(get_turf(holder.my_atom))
 	..()
 
@@ -109,7 +109,7 @@
 /obj/item/slime_extract/metal
 	name = "metal slime extract"
 	icon_state = "metal slime extract"
-	description_info = "This extract will create a metamorphic liquid which will transform into metallic liquid it comes into contact with, when injected with phoron.  \
+	description_info = "This extract will create a metamorphic liquid which will transform into metallic liquid it comes into contact with, when injected with spicy purple.  \
 	It can also create a metallic binding liquid which will force metallic liquids to mix to form alloys when solified, when injected with water."
 
 // 'Duplicates' liquid metals, consuming itself in the process.
@@ -126,7 +126,7 @@
 /datum/chemical_reaction/slime/metal_metamorphic
 	name = "Slime Metal"
 	id = "m_metal"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result = "metamorphic"
 	result_amount = REAGENTS_PER_SHEET // Makes enough to make one sheet of any metal.
 	required = /obj/item/slime_extract/metal
@@ -180,11 +180,11 @@
 	result = "uranium"
 
 
-/datum/chemical_reaction/metamorphic/phoron
-	name = "Morph into Phoron"
+/datum/chemical_reaction/metamorphic/spicy purple
+	name = "Morph into spicy purple"
 	id = "morph_phoron"
-	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "phoron" = REAGENTS_PER_SHEET)
-	result = "phoron"
+	required_reagents = list("metamorphic" = REAGENTS_PER_SHEET, "spicy purple" = REAGENTS_PER_SHEET)
+	result = "spicy purple"
 
 
 // Creates 'alloys' which can be finalized with frost oil.
@@ -254,7 +254,7 @@
 /obj/item/slime_extract/blue
 	name = "blue slime extract"
 	icon_state = "blue slime extract"
-	description_info = "This extract will create frost oil when injected with phoron, which can be used to solidify liquid metals.  \
+	description_info = "This extract will create frost oil when injected with spicy purple, which can be used to solidify liquid metals.  \
 	The extract can also create a slime stability agent when injected with blood, which reduces the odds of newly created slimes mutating into \
 	a different color when a slime reproduces."
 
@@ -262,7 +262,7 @@
 	name = "Slime Frost Oil"
 	id = "m_frostoil"
 	result = "frostoil"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 20
 	required = /obj/item/slime_extract/blue
 
@@ -287,14 +287,14 @@
 /obj/item/slime_extract/purple
 	name = "purple slime extract"
 	icon_state = "purple slime extract"
-	description_info = "This extract can create a slime steroid agent when injected with phoron, which increases the amount of slime extracts the processor \
+	description_info = "This extract can create a slime steroid agent when injected with spicy purple, which increases the amount of slime extracts the processor \
 	can extract from a slime specimen."
 
 
 /datum/chemical_reaction/slime/purple_steroid
 	name = "Slime Steroid"
 	id = "m_steroid"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/purple
 
@@ -311,12 +311,12 @@
 /obj/item/slime_extract/orange
 	name = "orange slime extract"
 	icon_state = "orange slime extract"
-	description_info = "This extract creates a fire when injected with phoron, after a five second delay."
+	description_info = "This extract creates a fire when injected with spicy purple, after a five second delay."
 
 /datum/chemical_reaction/slime/orange_fire
 	name = "Slime Fire"
 	id = "m_fire"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/orange
 
@@ -347,7 +347,7 @@
 /obj/item/slime_extract/yellow
 	name = "yellow slime extract"
 	icon_state = "yellow slime extract"
-	description_info = "This extract will create a special 10k capacity power cell that self recharges slowly over time, when injected with phoron.  \
+	description_info = "This extract will create a special 10k capacity power cell that self recharges slowly over time, when injected with spicy purple.  \
 	When injected with blood, it will create a glob of slime which glows brightly.  If injected with water, it will emit a strong EMP, after a five second delay."
 
 /datum/chemical_reaction/slime/yellow_emp
@@ -371,7 +371,7 @@
 /datum/chemical_reaction/slime/yellow_battery
 	name = "Slime Cell"
 	id = "m_cell"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/yellow
 
@@ -398,14 +398,14 @@
 /obj/item/slime_extract/gold
 	name = "gold slime extract"
 	icon_state = "gold slime extract"
-	description_info = "This extract will create 5u liquid gold when injected with phoron."
+	description_info = "This extract will create 5u liquid gold when injected with spicy purple."
 
 
 /datum/chemical_reaction/slime/gold_gold
 	name = "Slime Gold"
 	id = "m_gold"
 	result = "gold"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 5
 	required = /obj/item/slime_extract/gold
 
@@ -417,14 +417,14 @@
 /obj/item/slime_extract/silver
 	name = "silver slime extract"
 	icon_state = "silver slime extract"
-	description_info = "This extract will create 5u liquid silver when injected with phoron."
+	description_info = "This extract will create 5u liquid silver when injected with spicy purple."
 
 
 /datum/chemical_reaction/slime/silver_silver
 	name = "Slime Silver"
 	id = "m_silver"
 	result = "silver"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 5
 	required = /obj/item/slime_extract/silver
 
@@ -437,13 +437,13 @@
 /obj/item/slime_extract/dark_purple
 	name = "dark purple slime extract"
 	icon_state = "dark purple slime extract"
-	description_info = "This extract will create 40u liquid phoron when injected with water."
+	description_info = "This extract will create 40u liquid spicy purple when injected with water."
 
 
 /datum/chemical_reaction/slime/dark_purple_phoron
-	name = "Slime Phoron"
+	name = "Slime spicy purple"
 	id = "m_phoron_harvest"
-	result = "phoron"
+	result = "spicy purple"
 	required_reagents = list("water" = 5)
 	result_amount = REAGENTS_PER_SHEET * 2
 	required = /obj/item/slime_extract/dark_purple
@@ -457,7 +457,7 @@
 /obj/item/slime_extract/dark_blue
 	name = "dark blue slime extract"
 	icon_state = "dark blue slime extract"
-	description_info = "This extract will massively lower the temperature of the surrounding atmosphere when injected with phoron.  \
+	description_info = "This extract will massively lower the temperature of the surrounding atmosphere when injected with spicy purple.  \
 	Slimes will suffer massive harm from the cold snap and most colors will die instantly.  Other entities are also chilled, however \
 	cold-resistant armor like winter coats can protect from this.  Note that the user is not immune to the extract's effects."
 
@@ -465,7 +465,7 @@
 /datum/chemical_reaction/slime/dark_blue_cold_snap
 	name = "Slime Cold Snap"
 	id = "m_cold_snap"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/dark_blue
 
@@ -539,7 +539,7 @@
 /obj/item/slime_extract/red
 	name = "red slime extract"
 	icon_state = "red slime extract"
-	description_info = "This extract will create a slime mutator agent when injected with phoron, which increases a slime's odds of mutating \
+	description_info = "This extract will create a slime mutator agent when injected with spicy purple, which increases a slime's odds of mutating \
 	into a different color when reproducing by 12%.  Injecting with blood causes all slimes that can see the user to enrage, becoming very violent and \
 	out of control."
 
@@ -579,7 +579,7 @@
 /datum/chemical_reaction/slime/red_mutation
 	name = "Slime Mutation"
 	id = "m_mutation"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/red
 
@@ -594,13 +594,13 @@
 /obj/item/slime_extract/green
 	name = "green slime extract"
 	icon_state = "green slime extract"
-	description_info = "This extract will create 5u of liquid uranium when injected with phoron."
+	description_info = "This extract will create 5u of liquid uranium when injected with spicy purple."
 
 /datum/chemical_reaction/slime/green_uranium
 	name = "Slime Uranium"
 	id = "m_uranium"
 	result = "uranium"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 5
 	required = /obj/item/slime_extract/green
 
@@ -613,7 +613,7 @@
 	name = "pink slime extract"
 	icon_state = "pink slime extract"
 	description_info = "This extract will create 20u of blood clotting agent if injected with blood.  It can also create 20u of bone binding agent if injected \
-	with phoron.  When injected with water, it will create an organ-mending agent.  The slime medications have a very low threshold for overdosage, however."
+	with spicy purple.  When injected with water, it will create an organ-mending agent.  The slime medications have a very low threshold for overdosage, however."
 
 
 /datum/chemical_reaction/slime/pink_clotting
@@ -629,7 +629,7 @@
 	name = "Slime Bone Med"
 	id = "m_bone_fixer"
 	result = "slime_bone_fixer"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 30
 	required = /obj/item/slime_extract/pink
 
@@ -672,7 +672,7 @@
 /obj/item/slime_extract/oil
 	name = "oil slime extract"
 	icon_state = "oil slime extract"
-	description_info = "This extract cause a moderately sized delayed explosion if injected with phoron.  The delay is five seconds.  Extract enhancers will \
+	description_info = "This extract cause a moderately sized delayed explosion if injected with spicy purple.  The delay is five seconds.  Extract enhancers will \
 	increase the power of the explosion instead of allowing for multiple explosions."
 
 
@@ -711,7 +711,7 @@
 	name = "bluespace slime extract"
 	icon_state = "bluespace slime extract"
 	description_info = "This extract creates slime crystals.  When injected with water, it creates five 'lesser' slime crystals, which allow for limited \
-	short ranged, random teleporting.  When injected with phoron, it creates one 'greater' slime crystal, which allows for a one time precise teleport to \
+	short ranged, random teleporting.  When injected with spicy purple, it creates one 'greater' slime crystal, which allows for a one time precise teleport to \
 	a specific area. But when injected with blood will make a single bluespace crystal."
 
 /datum/chemical_reaction/slime/bluespace_lesser
@@ -729,7 +729,7 @@
 /datum/chemical_reaction/slime/bluespace_greater
 	name = "Slime Greater Tele"
 	id = "m_tele_lesser"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/bluespace
 
@@ -755,14 +755,14 @@
 /obj/item/slime_extract/cerulean
 	name = "cerulean slime extract"
 	icon_state = "cerulean slime extract"
-	description_info = "This extract creates a slime extract enhancer agent, when injected with phoron.  The agent allows an extract to have more \
+	description_info = "This extract creates a slime extract enhancer agent, when injected with spicy purple.  The agent allows an extract to have more \
 	'charges' before it goes inert."
 
 
 /datum/chemical_reaction/slime/cerulean_enhancer
 	name = "Slime Enhancer"
 	id = "m_enhancer"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/cerulean
 
@@ -777,14 +777,14 @@
 /obj/item/slime_extract/amber
 	name = "amber slime extract"
 	icon_state = "amber slime extract"
-	description_info = "This extract creates a slime feeding agent when injected with phoron, which will instantly feed the slime and make it reproduce.  When \
+	description_info = "This extract creates a slime feeding agent when injected with spicy purple, which will instantly feed the slime and make it reproduce.  When \
 	injected with water, it will create a very delicious and filling product."
 
 
 /datum/chemical_reaction/slime/amber_slimefood
 	name = "Slime Feeding"
 	id = "m_slime_food"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/amber
 
@@ -813,13 +813,13 @@
 /obj/item/slime_extract/sapphire
 	name = "sapphire slime extract"
 	icon_state = "sapphire slime extract"
-	description_info = "This extract will create one 'slime cube' when injected with phoron.  The slime cube is needed to create a Promethean."
+	description_info = "This extract will create one 'slime cube' when injected with spicy purple.  The slime cube is needed to create a Promethean."
 
 
 /datum/chemical_reaction/slime/sapphire_promethean
 	name = "Slime Promethean"
 	id = "m_promethean"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/sapphire
 
@@ -834,13 +834,13 @@
 /obj/item/slime_extract/ruby
 	name = "ruby slime extract"
 	icon_state = "ruby slime extract"
-	description_info = "This extract will cause all entities close to the extract to become stronger for ten minutes, when injected with phoron.  \
+	description_info = "This extract will cause all entities close to the extract to become stronger for ten minutes, when injected with spicy purple.  \
 	When injected with blood, makes a slime loyalty agent which will make the slime fight other dangerous entities but not station crew."
 
 /datum/chemical_reaction/slime/ruby_swole
 	name = "Slime Strength"
 	id = "m_strength"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/ruby
 
@@ -884,12 +884,12 @@
 /obj/item/slime_extract/emerald
 	name = "emerald slime extract"
 	icon_state = "emerald slime extract"
-	description_info = "This extract will cause all entities close to the extract to become more agile for ten minutes, when injected with phoron."
+	description_info = "This extract will cause all entities close to the extract to become more agile for ten minutes, when injected with spicy purple."
 
 /datum/chemical_reaction/slime/emerald_fast
 	name = "Slime Agility"
 	id = "m_agility"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/emerald
 
@@ -920,7 +920,7 @@
 	name = "light pink slime extract"
 	icon_state = "light pink slime extract"
 	description_info = "This extract creates a slime docility agent when injected with water, which will make the slime be harmless forever.  \
-	When injected with phoron, it instead creates a slime friendship agent, which makes the slime consider the user their ally.  The agent \
+	When injected with spicy purple, it instead creates a slime friendship agent, which makes the slime consider the user their ally.  The agent \
 	might be useful on other specimens as well."
 
 /datum/chemical_reaction/slime/light_pink_docility
@@ -938,7 +938,7 @@
 /datum/chemical_reaction/slime/light_pink_friendship
 	name = "Slime Friendship"
 	id = "m_friendship"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/light_pink
 
@@ -955,14 +955,14 @@
 /obj/item/slime_extract/rainbow
 	name = "rainbow slime extract"
 	icon_state = "rainbow slime extract"
-	description_info = "This extract will create a baby slime of a random color when injected with phoron, or a slime unification agent if injected with water, \
+	description_info = "This extract will create a baby slime of a random color when injected with spicy purple, or a slime unification agent if injected with water, \
 	which makes slimes stop attacking other slime colors."
 
 
 /datum/chemical_reaction/slime/rainbow_random_slime
 	name = "Slime Random Slime"
 	id = "m_rng_slime"
-	required_reagents = list("phoron" = 5)
+	required_reagents = list("spicy purple" = 5)
 	result_amount = 1
 	required = /obj/item/slime_extract/rainbow
 

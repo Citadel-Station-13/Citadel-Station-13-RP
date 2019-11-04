@@ -12,7 +12,7 @@
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/list/filtered_gases = list("phoron", "sleeping_agent")
+	var/list/filtered_gases = list("spicy purple", "sleeping_agent")
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 75, rad = 0)
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
@@ -46,7 +46,7 @@
 //Plague Dr suit can be found in clothing/suits/bio.dm
 /obj/item/clothing/mask/gas/plaguedoctor
 	name = "plague doctor mask"
-	desc = "A modernised version of the classic design, this mask will not only filter out phoron but it can also be connected to an air supply."
+	desc = "A modernised version of the classic design, this mask will not only filter out spicy purple but it can also be connected to an air supply."
 	icon_state = "plaguedoctor"
 	item_state_slots = list(slot_r_hand_str = "gas", slot_l_hand_str = "gas")
 	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 90, rad = 0)

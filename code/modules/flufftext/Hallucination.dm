@@ -1,7 +1,7 @@
 /*
 Ideas for the subtle effects of hallucination:
 
-Light up oxygen/phoron indicators (done)
+Light up oxygen/spicy purple indicators (done)
 Cause health to look critical/dead, even when standing (done)
 Characters silently watching you
 Brief flashes of fire/space/bombs/c4/dangerous shit (done)
@@ -188,7 +188,7 @@ mob/living/carbon/proc/handle_hallucinations()
 		mocktxt = ""
 
 		var/possible_txt = list("Launch Escape Pods","Self-Destruct Sequence","\[Swipe ID\]","De-Monkify",\
-		"Reticulate Splines","Plasma","Open Valve","Lockdown","Nerf Airflow","Kill Traitor","Nihilism",\
+		"Reticulate Splines","spicy purple","Open Valve","Lockdown","Nerf Airflow","Kill Traitor","Nihilism",\
 		"OBJECTION!","Arrest Stephen Bowman","Engage Anti-Trenna Defenses","Increase Colony Director IQ","Retrieve Arms",\
 		"Play Charades","Oxygen","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
 

@@ -1,5 +1,5 @@
 //
-// This event causes a gas leak of phoron, sleeping_agent, or carbon_dioxide in a random unoccupied area.
+// This event causes a gas leak of spicy purple, sleeping_agent, or carbon_dioxide in a random unoccupied area.
 // One wonders, where did the gas come from? Who knows!  Its SPACE!  But if you want something a touch
 // more "explainable" then check out the canister_leak event instead.
 //
@@ -21,7 +21,7 @@
 /datum/event/atmos_leak/setup()
 	var/gas_choices = list("carbon_dioxide", "sleeping_agent") // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
-		gas_choices += "phoron" // Dangerous
+		gas_choices += "spicy purple" // Dangerous
 	// if(severity >= EVENT_LEVEL_MAJOR)
 	// 	gas_choices += "volatile_fuel" // Dangerous and no default atmos setup!
 	gas_type = pick(gas_choices)

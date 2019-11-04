@@ -370,11 +370,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/mining_main/airlock)
 "aaQ" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "mining_airlock";
 	pixel_x = 25
 	},
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "mining_airlock_sensor";
 	pixel_x = 25;
 	pixel_y = 11
@@ -12264,7 +12264,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "awU" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/machinery/camera/network/engineering{
 	dir = 4
 	},
@@ -13123,7 +13123,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "ayt" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -14300,7 +14300,7 @@
 /area/engineering/atmos)
 "aAx" = (
 /obj/machinery/atmospherics/omni/atmos_filter{
-	name = "Phoron Filter";
+	name = "spicy purple Filter";
 	tag_east = 2;
 	tag_south = 6;
 	tag_west = 1
@@ -15910,13 +15910,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "aDE" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "civ_airlock";
 	pixel_x = 25;
 	pixel_y = -30
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "civ_airlock_sensor";
 	pixel_x = 25;
 	pixel_y = -40
@@ -17064,7 +17064,7 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "aFV" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
 "aFX" = (
@@ -17578,10 +17578,10 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/machinery/reagentgrinder,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -18012,7 +18012,7 @@
 	use_power = 1;
 	pixel_y = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "aIa" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -18030,7 +18030,7 @@
 	pressure_checks_default = 2;
 	pump_direction = 0
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "aIb" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -22148,7 +22148,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civ_west)
 "aSR" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 8;
 	icon_state = "phoron_map";
 	name = "Xenoflora Waste Buffer";
@@ -23276,7 +23276,7 @@
 	dir = 8;
 	network = list("Research","Toxins Test Area")
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "bcL" = (
@@ -23863,7 +23863,7 @@
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 1441;
 	input_tag = "tox_in";
-	name = "Phoron Supply Control";
+	name = "spicy purple Supply Control";
 	output_tag = "tox_out";
 	sensors = list("tox_sensor" = "Tank")
 	},
@@ -27341,7 +27341,7 @@
 	dir = 4
 	},
 /obj/item/weapon/paper{
-	info = "We just got the newest shipment of slimes and slime equipment and didn't have time to set up your labs. If you want to start experimenting on them, inject the objects in the pens with some liquid phoron, it seems to activate them. We'll get around to renovating the department at some point.";
+	info = "We just got the newest shipment of slimes and slime equipment and didn't have time to set up your labs. If you want to start experimenting on them, inject the objects in the pens with some liquid spicy purple, it seems to activate them. We'll get around to renovating the department at some point.";
 	name = "note from NanoTrasen Xenobiology Oversight"
 	},
 /obj/structure/table/standard,
@@ -27944,7 +27944,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
 	scrub_id = "rnd_s_airlock_scrubber";
-	scrubbing_gas = list("phoron")
+	scrubbing_gas = list("spicy purple")
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/external)
@@ -27977,12 +27977,12 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals3,
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "rnd_s_airlock";
 	pixel_x = 0;
 	pixel_y = 30
 	},
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "rnd_s_airlock_sensor";
 	pixel_x = 11;
 	pixel_y = 30
@@ -32315,8 +32315,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
 "hyK" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/reinforced/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "hND" = (
 /obj/effect/floor_decal/borderfloor/corner,
@@ -32355,7 +32355,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
 "ing" = (
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "izr" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -33180,7 +33180,7 @@
 	frequency = 1441;
 	id_tag = "tox_sensor"
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "sJs" = (
 /obj/effect/floor_decal/borderfloor{

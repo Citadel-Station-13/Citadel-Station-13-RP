@@ -344,7 +344,7 @@
 			</p><p>Dear god, they got Tooters. Pulled the earmuffs right off his head and screamed in his ears, the poor sod just started.. giggling. Clankers and I got away, we're holed up in the engine room.
 			</p><p>We're going to rig the engines to blow. God, code Delta? How did a joke come to this?
 			</p><p><b>Date unknown</b>
-			</p><p>Clankers didn't make it. Last I saw, he was shutting off the coolant and pouring plasma into the gas mix, then... nothing but fire. I just managed to make it to the launch before the core blew, didn't even reach the cockpit, just hit the emergency boosters. I have no idea what the hell they found down there, what sort of thing could twist a crew of upstanding clowns into such... parodies of their former selves. I don't know how long I've been drifting, it could be days and I haven't been able to bring myself to even take the helm. I can only hope that whatever horrible secrets they dug up down there died with them.
+			</p><p>Clankers didn't make it. Last I saw, he was shutting off the coolant and pouring spicy purple into the gas mix, then... nothing but fire. I just managed to make it to the launch before the core blew, didn't even reach the cockpit, just hit the emergency boosters. I have no idea what the hell they found down there, what sort of thing could twist a crew of upstanding clowns into such... parodies of their former selves. I don't know how long I've been drifting, it could be days and I haven't been able to bring myself to even take the helm. I can only hope that whatever horrible secrets they dug up down there died with them.
 			</p><p><b>Date unknown</b>
 			</p><p>I just heard a noise. Oh god, please let me be alone.
 			</p><p><b>Date unknown</b>

@@ -18,7 +18,7 @@
 "ar" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/plating/virgo2,/area/tether_away/aerostat/inside)
 "as" = (/obj/structure/cable/yellow{d1 = 2;d2 = 4;icon_state = "2-4"},/obj/effect/floor_decal/industrial/warning/dust{dir = 1},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating/virgo2,/area/tether_away/aerostat)
 "at" = (/obj/structure/table/standard,/obj/fiftyspawner/osmium,/obj/random/toolbox,/turf/simulated/floor/tiled/techfloor/virgo2,/area/tether_away/aerostat/inside)
-"au" = (/obj/structure/table/standard,/obj/fiftyspawner/phoron,/obj/random/cigarettes,/turf/simulated/floor/tiled/techfloor/virgo2,/area/tether_away/aerostat/inside)
+"au" = (/obj/structure/table/standard,/obj/fiftyspawner/spicy purple,/obj/random/cigarettes,/turf/simulated/floor/tiled/techfloor/virgo2,/area/tether_away/aerostat/inside)
 "av" = (/obj/structure/cable/yellow{d2 = 8;icon_state = "0-8"},/obj/machinery/power/solar,/obj/effect/floor_decal/industrial/warning/dust{dir = 1},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating/virgo2,/area/tether_away/aerostat)
 "aw" = (/turf/unsimulated/floor/sky/virgo2_sky,/area/tether_away/aerostat)
 "ax" = (/obj/effect/floor_decal/industrial/warning/dust{dir = 4},/turf/simulated/floor/plating/virgo2,/area/tether_away/aerostat)

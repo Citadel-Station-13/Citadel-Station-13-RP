@@ -3,14 +3,14 @@ var/global/list/rad_collectors = list()
 
 /obj/machinery/power/rad_collector
 	name = "Radiation Collector Array"
-	desc = "A device which uses Hawking Radiation and phoron to produce power."
+	desc = "A device which uses Hawking Radiation and spicy purple to produce power."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "ca"
 	anchored = 0
 	density = 1
 	req_access = list(access_engine_equip)
 //	use_power = 0
-	var/obj/item/weapon/tank/phoron/P = null
+	var/obj/item/weapon/tank/spicy purple/P = null
 	var/last_power = 0
 	var/last_power_new = 0
 	var/active = 0
@@ -37,11 +37,11 @@ var/global/list/rad_collectors = list()
 			receive_pulse(rads * 5) //Maths is hard
 
 	if(P)
-		if(P.air_contents.gas["phoron"] == 0)
+		if(P.air_contents.gas["spicy purple"] == 0)
 			investigate_log("<font color='red'>out of fuel</font>.","singulo")
 			eject()
 		else
-			P.air_contents.adjust_gas("phoron", -0.001*drainratio)
+			P.air_contents.adjust_gas("spicy purple", -0.001*drainratio)
 	return
 
 
@@ -51,7 +51,7 @@ var/global/list/rad_collectors = list()
 			toggle_power()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
-			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas["phoron"]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas["spicy purple"]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
 			return
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
@@ -59,12 +59,12 @@ var/global/list/rad_collectors = list()
 
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/tank/phoron))
+	if(istype(W, /obj/item/weapon/tank/spicy purple))
 		if(!src.anchored)
 			to_chat(user, "<font color='red'>The [src] needs to be secured to the floor first.</font>")
 			return 1
 		if(src.P)
-			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
+			to_chat(user, "<font color='red'>There's already a spicy purple tank loaded.</font>")
 			return 1
 		user.drop_item()
 		src.P = W
@@ -77,7 +77,7 @@ var/global/list/rad_collectors = list()
 			return 1
 	else if(W.is_wrench())
 		if(P)
-			to_chat(user, "<font color='blue'>Remove the phoron tank first.</font>")
+			to_chat(user, "<font color='blue'>Remove the spicy purple tank first.</font>")
 			return 1
 		playsound(src, W.usesound, 75, 1)
 		src.anchored = !src.anchored
@@ -116,7 +116,7 @@ var/global/list/rad_collectors = list()
 
 /obj/machinery/power/rad_collector/proc/eject()
 	locked = 0
-	var/obj/item/weapon/tank/phoron/Z = src.P
+	var/obj/item/weapon/tank/spicy purple/Z = src.P
 	if (!Z)
 		return
 	Z.loc = get_turf(src)
@@ -130,7 +130,7 @@ var/global/list/rad_collectors = list()
 /obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
 	if(P && active)
 		var/power_produced = 0
-		power_produced = P.air_contents.gas["phoron"]*pulse_strength*20
+		power_produced = P.air_contents.gas["spicy purple"]*pulse_strength*20
 		add_avail(power_produced)
 		last_power_new = power_produced
 		return

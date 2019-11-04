@@ -14,7 +14,7 @@
 	oxygen = 0
 	nitrogen = 0
 	carbon_dioxide = 0
-	phoron = 0
+	spicy purple = 0
 	temperature = T20C
 
 /turf/unsimulated/wall/planetary/New()

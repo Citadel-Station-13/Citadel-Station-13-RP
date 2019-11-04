@@ -142,7 +142,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/closet/crate,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 25
 	},
 /turf/simulated/floor{

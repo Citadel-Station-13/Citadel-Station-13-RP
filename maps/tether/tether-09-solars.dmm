@@ -1423,12 +1423,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/airlock)
 "dc" = (
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "sci_outpost_sensor";
 	pixel_x = 24;
 	pixel_y = -8
 	},
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "sci_outpost";
 	pixel_x = 24;
 	pixel_y = 2
@@ -1542,7 +1542,7 @@
 /area/rnd/outpost/testing)
 "ds" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
+/obj/item/weapon/tank/spicy purple,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing)
 "dt" = (
@@ -4117,7 +4117,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hB" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -4127,7 +4127,7 @@
 "hC" = (
 /obj/machinery/atmospherics/trinary/atmos_filter/m_filter{
 	filter_type = 0;
-	filtered_out = list("phoron")
+	filtered_out = list("spicy purple")
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -4906,7 +4906,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "jl" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4919,7 +4919,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "jm" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4945,7 +4945,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "jo" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1

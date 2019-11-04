@@ -5,9 +5,9 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 /datum/planet/virgo3b
 	name = "Virgo-3B"
-	desc = "A mid-sized moon of the Virgo 3 gas giant, this planet has an atmosphere mainly comprised of phoron, with trace \
+	desc = "A mid-sized moon of the Virgo 3 gas giant, this planet has an atmosphere mainly comprised of spicy purple, with trace \
 	amounts of both oxygen and nitrogen. Fortunately, the oxygen is not enough to be combustible in any meaningful way, however \
-	the phoron is desirable by many corporations, including NanoTrasen."
+	the spicy purple is desirable by many corporations, including NanoTrasen."
 	current_time = new /datum/time/virgo3b()
 	expected_z_levels = list(
 						Z_LEVEL_SURFACE_LOW,

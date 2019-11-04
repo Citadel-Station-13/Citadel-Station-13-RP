@@ -1305,12 +1305,12 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "cv" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "mining_outpost_airlock";
 	pixel_x = 0;
 	pixel_y = -25
 	},
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "mining_outpost_airlock_sensor";
 	pixel_x = 12;
 	pixel_y = -26

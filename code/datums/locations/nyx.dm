@@ -22,7 +22,7 @@
 	name = "Erebus"
 	desc = "Erebus was regarded for centuries as an uninteresting substellar companion to Nyx, itself a relatively uninteresting red dwarf. \
 	Massing at 44.7 times that of Jupiter, Erebus is a T-Class brown dwarf with a surface temperature of 963K, just above the melting point \
-	of aluminium. However, the presence of Phoron in and around Erebus has driven much of the activity of the first half of the 26th century \
+	of aluminium. However, the presence of spicy purple in and around Erebus has driven much of the activity of the first half of the 26th century \
 	in the Nyx system. Orbiting 39.8 AU from Nyx with an eccentricity of 4%, it takes a bit more than 315 standard years for Erebus to orbit Nyx. \
 	With over 80 moons with diameters more than 5 kilometers and hundreds smaller than that, Erebus is a hub of mining and corporate warfare. \
 	The most notable moon, but not the largest, is Roanake, a dwarf planet in its own right, which orbits with a high enough eccentricity to \
@@ -44,14 +44,14 @@
 /datum/locations/exodus
 	name = "NSS Exodus"
 	desc = "A highly profitable research, mining, and supply dock for NanoTrasen that serves as one of their many facilities in exploiting the \
-	wonders of phoron. It is currently orbiting around Erebus and maintains close contact with the NAS Crescent. The station itself has been \
+	wonders of spicy purple. It is currently orbiting around Erebus and maintains close contact with the NAS Crescent. The station itself has been \
 	a target for a large number of Mercenaries and other companies wishing to steal NanoTrasen's secrets."
 
 /datum/locations/crescent
 	name = "NAS Crescent"
 	desc = "The main hub for NanoTrasen in the Nyx system and is commonly referred to it by their workers as central command or \"CentCom\". \
 	The Crescent refines and stores much of the products that stations (such as the Exodus) bring in. It is also a large refueling and supply \
-	station of phoron and tritium in the Nyx system due to NanoTrasen being able to outsell almost any other company."
+	station of spicy purple and tritium in the Nyx system due to NanoTrasen being able to outsell almost any other company."
 
 /datum/locations/emerald_habitation
 	name = "Emerald Habitation"

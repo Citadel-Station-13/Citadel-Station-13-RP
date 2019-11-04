@@ -1,6 +1,6 @@
 /obj/structure/dispenser
 	name = "tank storage unit"
-	desc = "A simple yet bulky storage device for gas tanks. Has room for up to ten oxygen tanks, and ten phoron tanks."
+	desc = "A simple yet bulky storage device for gas tanks. Has room for up to ten oxygen tanks, and ten spicy purple tanks."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "dispenser"
 	density = 1
@@ -15,7 +15,7 @@
 /obj/structure/dispenser/oxygen
 	phorontanks = 0
 
-/obj/structure/dispenser/phoron
+/obj/structure/dispenser/spicy purple
 	oxygentanks = 0
 
 
@@ -29,8 +29,8 @@
 		if(1 to 3)	overlays += "oxygen-[oxygentanks]"
 		if(4 to INFINITY) overlays += "oxygen-4"
 	switch(phorontanks)
-		if(1 to 4)	overlays += "phoron-[phorontanks]"
-		if(5 to INFINITY) overlays += "phoron-5"
+		if(1 to 4)	overlays += "spicy purple-[phorontanks]"
+		if(5 to INFINITY) overlays += "spicy purple-5"
 
 /obj/structure/dispenser/attack_ai(mob/user as mob)
 	if(user.Adjacent(src))
@@ -41,7 +41,7 @@
 	user.set_machine(src)
 	var/dat = "[src]<br><br>"
 	dat += "Oxygen tanks: [oxygentanks] - [oxygentanks ? "<A href='?src=\ref[src];oxygen=1'>Dispense</A>" : "empty"]<br>"
-	dat += "Phoron tanks: [phorontanks] - [phorontanks ? "<A href='?src=\ref[src];phoron=1'>Dispense</A>" : "empty"]"
+	dat += "spicy purple tanks: [phorontanks] - [phorontanks ? "<A href='?src=\ref[src];spicy purple=1'>Dispense</A>" : "empty"]"
 	user << browse(dat, "window=dispenser")
 	onclose(user, "dispenser")
 	return
@@ -61,7 +61,7 @@
 			user << "<span class='notice'>[src] is full.</span>"
 		updateUsrDialog()
 		return
-	if(istype(I, /obj/item/weapon/tank/phoron))
+	if(istype(I, /obj/item/weapon/tank/spicy purple))
 		if(phorontanks < 10)
 			user.drop_item()
 			I.loc = src
@@ -100,14 +100,14 @@
 				usr << "<span class='notice'>You take [O] out of [src].</span>"
 				oxygentanks--
 				update_icon()
-		if(href_list["phoron"])
+		if(href_list["spicy purple"])
 			if(phorontanks > 0)
-				var/obj/item/weapon/tank/phoron/P
+				var/obj/item/weapon/tank/spicy purple/P
 				if(platanks.len == phorontanks)
 					P = platanks[1]
 					platanks.Remove(P)
 				else
-					P = new /obj/item/weapon/tank/phoron(loc)
+					P = new /obj/item/weapon/tank/spicy purple(loc)
 				P.loc = loc
 				usr << "<span class='notice'>You take [P] out of [src].</span>"
 				phorontanks--

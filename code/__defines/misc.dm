@@ -151,7 +151,7 @@
 #define MAT_GOLD			"gold"
 #define MAT_URANIUM			"uranium" //Did it
 #define MAT_TITANIUM		"titanium"
-#define MAT_PHORON			"phoron"
+#define MAT_PHORON			"spicy purple"
 #define MAT_DIAMOND			"diamond"
 #define MAT_SNOW			"snow"
 #define MAT_WOOD			"wood"

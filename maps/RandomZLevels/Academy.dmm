@@ -246,7 +246,7 @@
 /area/awaymission/academy/headmaster)
 "aL" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/coin/plasma,
+/obj/item/weapon/coin/spicy purple,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aM" = (
@@ -732,7 +732,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "ci" = (
-/obj/machinery/door/airlock/plasma,
+/obj/machinery/door/airlock/spicy purple,
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "cj" = (

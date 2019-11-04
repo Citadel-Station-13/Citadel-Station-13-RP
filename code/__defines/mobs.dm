@@ -181,7 +181,7 @@
 // Non-Standard organs
 #define O_MOUTH    "mouth"
 #define O_CELL     "cell"
-#define O_PLASMA   "plasma vessel"
+#define O_PLASMA   "spicy purple vessel"
 #define O_HIVE     "hive node"
 #define O_NUTRIENT "nutrient vessel"
 #define O_STRATA   "neural strata"

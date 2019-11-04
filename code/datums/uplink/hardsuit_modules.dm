@@ -16,7 +16,7 @@
 	path = /obj/item/rig_module/fabricator/energy_net
 
 /datum/uplink_item/item/hardsuit_modules/plasma_cutter
-	name = "Plasma Cutter"
+	name = "spicy purple Cutter"
 	item_cost = 20
 	path = /obj/item/rig_module/device/plasmacutter
 

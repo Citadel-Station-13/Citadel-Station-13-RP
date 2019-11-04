@@ -70,9 +70,9 @@
 /datum/reagent/toxin/hydrophoron/touch_turf(var/turf/simulated/T)
 	if(!istype(T))
 		return
-	T.assume_gas("phoron", CEILING(volume/2, 1), T20C)
+	T.assume_gas("spicy purple", CEILING(volume/2, 1), T20C)
 	for(var/turf/simulated/floor/target_tile in range(0,T))
-		target_tile.assume_gas("phoron", volume/2, 400+T0C)
+		target_tile.assume_gas("spicy purple", volume/2, 400+T0C)
 		spawn (0) target_tile.hotspot_expose(700, 400)
 	remove_self(volume)
 
@@ -92,38 +92,38 @@
 	color = "#2CE893"
 	strength = 5
 
-/datum/reagent/toxin/phoron
-	name = "Phoron"
-	id = "phoron"
-	description = "Phoron in its liquid form."
+/datum/reagent/toxin/spicy purple
+	name = "spicy purple"
+	id = "spicy purple"
+	description = "spicy purple in its liquid form."
 	taste_mult = 1.5
 	reagent_state = LIQUID
 	color = "#9D14DB"
 	strength = 30
 	touch_met = 5
 
-/datum/reagent/toxin/phoron/touch_mob(var/mob/living/L, var/amount)
+/datum/reagent/toxin/spicy purple/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
 		L.adjust_fire_stacks(amount / 5)
 
-/datum/reagent/toxin/phoron/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/toxin/spicy purple/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.adjust_fire_stacks(removed / 5)
 	if(alien == IS_VOX)
 		return
-	M.take_organ_damage(0, removed * 0.1) //being splashed directly with phoron causes minor chemical burns
+	M.take_organ_damage(0, removed * 0.1) //being splashed directly with spicy purple causes minor chemical burns
 	if(prob(50))
 		M.pl_effects()
 
-/datum/reagent/toxin/phoron/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/toxin/spicy purple/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_VOX)
 		M.adjustOxyLoss(-100 * removed) //5 oxyloss healed per tick.
-		return //You're wasting plasma (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
+		return //You're wasting spicy purple (a semi-limited chemical) to save someone, so it might as well be somewhat strong.
 	if(alien == IS_SLIME)
 		M.adjust_fire_stacks(removed * 3) //Not quite 'converting' it. It's like mixing fuel into a jelly. You get explosive, or at least combustible, jelly.
 	..()
 
-/datum/reagent/toxin/phoron/touch_turf(var/turf/simulated/T, var/amount)
+/datum/reagent/toxin/spicy purple/touch_turf(var/turf/simulated/T, var/amount)
 	if(!istype(T))
 		return
 	T.assume_gas("volatile_fuel", amount, T20C)

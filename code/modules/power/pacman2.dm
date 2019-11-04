@@ -1,33 +1,33 @@
 //This file was auto-corrected by findeclaration.exe on 29/05/2012 15:03:05
 
 
-//PACMAN variant that can run on the small plasma tanks.
+//PACMAN variant that can run on the small spicy purple tanks.
 /obj/machinery/power/port_gen/pacman2
 	name = "Pacman II"
-	desc = "P.A.C.M.A.N. type II portable generator. Uses liquid phoron as a fuel source."
+	desc = "P.A.C.M.A.N. type II portable generator. Uses liquid spicy purple as a fuel source."
 	power_gen = 4500
-	var/obj/item/weapon/tank/phoron/P = null
+	var/obj/item/weapon/tank/spicy purple/P = null
 	var/board_path = "/obj/item/weapon/circuitboard/pacman2"
 	var/emagged = 0
 	var/heat = 0
 /*
 	process()
 		if(P)
-			if(P.air_contents.phoron <= 0)
-				P.air_contents.phoron = 0
+			if(P.air_contents.spicy purple <= 0)
+				P.air_contents.spicy purple = 0
 				eject()
 			else
-				P.air_contents.phoron -= 0.001
+				P.air_contents.spicy purple -= 0.001
 		return
 */
 
 	HasFuel()
-		if(P.air_contents.phoron >= 0.1)
+		if(P.air_contents.spicy purple >= 0.1)
 			return 1
 		return 0
 
 	UseFuel()
-		P.air_contents.phoron -= 0.01
+		P.air_contents.spicy purple -= 0.01
 		return
 
 	New()
@@ -52,7 +52,7 @@
 
 	examine(mob/user)
 		..(user)
-		to_chat(user, "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>")
+		to_chat(user, "<font color='blue'>The generator has [P.air_contents.spicy purple] units of fuel left, producing [power_gen] per cycle.</font>")
 
 	handleInactive()
 		heat -= 2
@@ -68,14 +68,14 @@
 			explosion(get_turf(src), 2, 5, 2, -1)
 
 	attackby(var/obj/item/O as obj, var/mob/user as mob)
-		if(istype(O, /obj/item/weapon/tank/phoron))
+		if(istype(O, /obj/item/weapon/tank/spicy purple))
 			if(P)
-				to_chat(user, "<font color='red'>The generator already has a phoron tank loaded!</font>")
+				to_chat(user, "<font color='red'>The generator already has a spicy purple tank loaded!</font>")
 				return
 			P = O
 			user.drop_item()
 			O.loc = src
-			to_chat(user, "<font color='blue'>You add the phoron tank to the generator.</font>")
+			to_chat(user, "<font color='blue'>You add the spicy purple tank to the generator.</font>")
 		else if(!active)
 			if(O.is_wrench())
 				anchored = !anchored
@@ -130,9 +130,9 @@
 			else
 				dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
 			if(P)
-				dat += text("Currently loaded phoron tank: [P.air_contents.phoron]<br>")
+				dat += text("Currently loaded spicy purple tank: [P.air_contents.spicy purple]<br>")
 			else
-				dat += text("No phoron tank currently loaded.<br>")
+				dat += text("No spicy purple tank currently loaded.<br>")
 			dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>")
 			dat += text("Heat: [heat]<br>")
 			dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"

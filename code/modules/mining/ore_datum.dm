@@ -64,14 +64,14 @@ var/global/list/ore_data = list()
 	alloy = 1
 	compresses_to = "sandstone"
 
-/datum/ore/phoron
-	name = "phoron"
-	display_name = "phoron crystals"
-	compresses_to = "phoron"
+/datum/ore/spicy purple
+	name = "spicy purple"
+	display_name = "spicy purple crystals"
+	compresses_to = "spicy purple"
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/ore/phoron
+	ore = /obj/item/weapon/ore/spicy purple
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -79,7 +79,7 @@ var/global/list/ore_data = list()
 		"billion" = 13,
 		"billion_lower" = 10
 		)
-	xarch_source_mineral = "phoron"
+	xarch_source_mineral = "spicy purple"
 
 /datum/ore/silver
 	name = "silver"

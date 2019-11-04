@@ -251,7 +251,7 @@
 	<br>\
 	<h3>Toxins Safety</h3>\
 	Toxins potentially has the greatest capability to harm the experimentor as well as their co-workers, so always be vigilent.  \
-	The incinerator is designed to withstand phoron fires, however extremely hot fires can cause damage to the incinerator.  \
+	The incinerator is designed to withstand spicy purple fires, however extremely hot fires can cause damage to the incinerator.  \
 	The experimentor and anyone inside the Toxins section should wear protective clothing while the incinerator is active, and \
 	<b>the incinerator should NEVER be left unattended while in use.</b>  If damage to the walls of the incinerator are observed, \
 	the chamber should be vented into space immediately, to abort the burn, then vacating the lab until the flames are extinguished.\

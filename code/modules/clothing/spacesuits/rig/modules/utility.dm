@@ -31,11 +31,11 @@
 	var/obj/item/device
 
 /obj/item/rig_module/device/plasmacutter
-	name = "hardsuit plasma cutter"
+	name = "hardsuit spicy purple cutter"
 	desc = "A lethal-looking industrial cutter."
 	icon_state = "plasmacutter"
-	interface_name = "plasma cutter"
-	interface_desc = "A self-sustaining plasma arc capable of cutting through walls."
+	interface_name = "spicy purple cutter"
+	interface_desc = "A self-sustaining spicy purple arc capable of cutting through walls."
 	suit_overlay_active = "plasmacutter"
 	suit_overlay_inactive = "plasmacutter"
 	use_power_cost = 0.5

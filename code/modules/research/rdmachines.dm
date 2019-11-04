@@ -30,8 +30,8 @@
 			return /obj/item/stack/material/silver
 		if("osmium")
 			return /obj/item/stack/material/osmium
-		if("phoron")
-			return /obj/item/stack/material/phoron
+		if("spicy purple")
+			return /obj/item/stack/material/spicy purple
 		if("uranium")
 			return /obj/item/stack/material/uranium
 		if("diamond")
@@ -52,8 +52,8 @@
 			return "silver"
 		if(/obj/item/stack/material/osmium)
 			return "osmium"
-		if(/obj/item/stack/material/phoron)
-			return "phoron"
+		if(/obj/item/stack/material/spicy purple)
+			return "spicy purple"
 		if(/obj/item/stack/material/uranium)
 			return "uranium"
 		if(/obj/item/stack/material/diamond)

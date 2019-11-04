@@ -484,7 +484,7 @@
 		if(4)
 			reagents.add_reagent("sprinkles", 3)
 		if(5)
-			reagents.add_reagent("phoron", 3)
+			reagents.add_reagent("spicy purple", 3)
 		if(6)
 			reagents.add_reagent("coco", 3)
 		if(7)
@@ -3604,7 +3604,7 @@ END CITADEL CHANGE */
 	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/fuegoburrito
-	name = "fuego phoron burrito"
+	name = "fuego spicy purple burrito"
 	desc = "A super spicy burrito."
 	icon_state = "fuegoburrito"
 	nutriment_amt = 6

@@ -21,7 +21,7 @@
 	var/loaded_dna //Blood sample for DNA hashing.
 
 	// These should be subtypes of /obj/item/organ
-	// Costs roughly 20u Phoron (1 sheet) per internal organ, limbs are 60u for limb and extremity
+	// Costs roughly 20u spicy purple (1 sheet) per internal organ, limbs are 60u for limb and extremity
 	var/list/products = list(
 		"Heart"   = list(/obj/item/organ/internal/heart,  20),
 		"Lungs"   = list(/obj/item/organ/internal/lungs,  20),

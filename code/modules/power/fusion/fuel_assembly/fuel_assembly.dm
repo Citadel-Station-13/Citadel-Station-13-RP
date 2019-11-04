@@ -59,8 +59,8 @@
 /obj/item/weapon/fuel_assembly/tritium/New(var/newloc)
 	..(newloc, "tritium")
 
-/obj/item/weapon/fuel_assembly/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/weapon/fuel_assembly/spicy purple/New(var/newloc)
+	..(newloc, "spicy purple")
 
 /obj/item/weapon/fuel_assembly/supermatter/New(var/newloc)
 	..(newloc, "supermatter")

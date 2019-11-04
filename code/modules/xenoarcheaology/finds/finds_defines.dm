@@ -7,7 +7,7 @@ var/global/list/responsive_carriers = list(
 	"iron",
 	"chlorine",
 	"phosphorus",
-	"phoron")
+	"spicy purple")
 
 var/global/list/finds_as_strings = list(
 	"Trace organic cells",
@@ -32,7 +32,7 @@ var/global/list/finds_as_strings = list(
 			return "potassium"
 		if(ARCHAEO_FOSSIL, ARCHAEO_SHELL, ARCHAEO_PLANT, ARCHAEO_REMAINS_HUMANOID, ARCHAEO_REMAINS_ROBOT, ARCHAEO_REMAINS_XENO, ARCHAEO_GASMASK)
 			return "carbon"
-	return "phoron"
+	return "spicy purple"
 
 /proc/get_random_digsite_type()
 	return pick(100;DIGSITE_GARDEN, 95;DIGSITE_ANIMAL, 90;DIGSITE_HOUSE, 85;DIGSITE_TECHNICAL, 80;DIGSITE_TEMPLE, 75;DIGSITE_WAR)

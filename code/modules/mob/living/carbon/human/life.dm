@@ -428,7 +428,7 @@ var/last_message = 0
 	if(species.poison_type)
 		poison_type = species.poison_type
 	else
-		poison_type = "phoron"
+		poison_type = "spicy purple"
 	poison = breath.gas[poison_type]
 
 	if(species.exhale_type)
@@ -592,7 +592,7 @@ var/last_message = 0
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
 	if(!environment)
 		return
-	//Stuff like the xenomorph's plasma regen happens here.
+	//Stuff like the xenomorph's spicy purple regen happens here.
 	species.handle_environment_special(src)
 
 	//Moved pressure calculations here for use in skip-processing check.

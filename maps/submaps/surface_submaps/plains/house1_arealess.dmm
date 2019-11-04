@@ -104,7 +104,7 @@
 "ax" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
-/obj/item/weapon/coin/phoron,
+/obj/item/weapon/coin/spicy purple,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "ay" = (

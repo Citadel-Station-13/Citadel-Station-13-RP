@@ -168,7 +168,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
 "aD" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light{
 	dir = 1
@@ -176,7 +176,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
 "aE" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/tox_store)
@@ -4136,8 +4136,8 @@
 	},
 /obj/structure/table/standard,
 /obj/machinery/reagentgrinder,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
 "hW" = (
@@ -10655,7 +10655,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/eva)
 "uw" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/outpost/research/anomaly)
@@ -12667,7 +12667,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/engineering/mining/atmospherics)
 "yn" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/machinery/atmospherics/pipe/tank/spicy purple,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/mining/atmospherics)
 "yo" = (
@@ -14642,13 +14642,13 @@
 /area/outpost/mining_main/refinery)
 "Cr" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 50
 	},
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 50
 	},
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 50
 	},
 /turf/simulated/floor/plating,
@@ -17391,13 +17391,13 @@
 /area/outpost/engineering/solars)
 "HX" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 10
 	},
 /obj/random/powercell,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 10
 	},
 /turf/simulated/floor/tiled,

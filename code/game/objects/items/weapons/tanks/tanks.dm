@@ -42,14 +42,14 @@ var/list/global/tank_gauge_cache = list()
 	description_info = "These tanks are utilised to store any of the various types of gaseous substances. \
 	They can be attached to various portable atmospheric devices to be filled or emptied. <br>\
 	<br>\
-	Each tank is fitted with an emergency relief valve. This relief valve will open if the tank is pressurised to over ~3000kPa or heated to over 173ºC. \
+	Each tank is fitted with an emergency relief valve. This relief valve will open if the tank is pressurised to over ~3000kPa or heated to over 173ï¿½C. \
 	The valve itself will close after expending most or all of the contents into the air.<br>\
 	<br>\
 	Filling a tank such that experiences ~4000kPa of pressure will cause the tank to rupture, spilling out its contents and destroying the tank. \
 	Tanks filled over ~5000kPa will rupture rather violently, exploding with significant force."
 
-	description_antag = "Each tank may be incited to burn by attaching wires and an igniter assembly, though the igniter can only be used once and the mixture only burn if the igniter pushes a flammable gas mixture above the minimum burn temperature (126ºC). \
-	Wired and assembled tanks may be disarmed with a set of wirecutters. Any exploding or rupturing tank will generate shrapnel, assuming their relief valves have been welded beforehand. Even if not, they can be incited to expel hot gas on ignition if pushed above 173ºC. \
+	description_antag = "Each tank may be incited to burn by attaching wires and an igniter assembly, though the igniter can only be used once and the mixture only burn if the igniter pushes a flammable gas mixture above the minimum burn temperature (126ï¿½C). \
+	Wired and assembled tanks may be disarmed with a set of wirecutters. Any exploding or rupturing tank will generate shrapnel, assuming their relief valves have been welded beforehand. Even if not, they can be incited to expel hot gas on ignition if pushed above 173ï¿½C. \
 	Relatively easy to make, the single tank bomb requries no tank transfer valve, and is still a fairly formidable weapon that can be manufactured from any tank."
 
 /obj/item/weapon/tank/proc/init_proxy()
@@ -352,7 +352,7 @@ var/list/global/tank_gauge_cache = list()
 
 /obj/item/weapon/tank/process()
 	//Allow for reactions
-	air_contents.react() //cooking up air tanks - add phoron and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
+	air_contents.react() //cooking up air tanks - add spicy purple and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
 	if(gauge_icon)
 		update_gauge()
 	check_status()
@@ -534,7 +534,7 @@ var/list/global/tank_gauge_cache = list()
 ///Prewelded tanks
 /////////////////////////////////
 
-/obj/item/weapon/tank/phoron/welded
+/obj/item/weapon/tank/spicy purple/welded
 	valve_welded = 1
 /obj/item/weapon/tank/oxygen/welded
 	valve_welded = 1
@@ -556,7 +556,7 @@ var/list/global/tank_gauge_cache = list()
 		oxygen_amt = 4.5
 
 
-	src.air_contents.gas["phoron"] = phoron_amt
+	src.air_contents.gas["spicy purple"] = phoron_amt
 	src.air_contents.gas["oxygen"] = oxygen_amt
 	src.air_contents.update_values()
 	src.valve_welded = 1
@@ -573,7 +573,7 @@ var/list/global/tank_gauge_cache = list()
 	src.overlays += "bomb_assembly"
 
 
-/obj/item/weapon/tank/phoron/onetankbomb/New()
+/obj/item/weapon/tank/spicy purple/onetankbomb/New()
 	..()
 	src.onetankbomb()
 
@@ -582,7 +582,7 @@ var/list/global/tank_gauge_cache = list()
 	src.onetankbomb()
 
 
-/obj/item/weapon/tank/phoron/onetankbomb/full/New()
+/obj/item/weapon/tank/spicy purple/onetankbomb/full/New()
 	..()
 	src.onetankbomb(2)
 
@@ -590,7 +590,7 @@ var/list/global/tank_gauge_cache = list()
 	..()
 	src.onetankbomb(2)
 
-/obj/item/weapon/tank/phoron/onetankbomb/small/New()
+/obj/item/weapon/tank/spicy purple/onetankbomb/small/New()
 	..()
 	src.onetankbomb(0)
 

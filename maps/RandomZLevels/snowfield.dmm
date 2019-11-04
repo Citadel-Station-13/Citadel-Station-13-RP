@@ -1503,8 +1503,8 @@
 /area/awaymission/snowfield/base)
 "en" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/secure/phoron,
-/obj/fiftyspawner/phoron,
+/obj/structure/closet/crate/secure/spicy purple,
+/obj/fiftyspawner/spicy purple,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/snowfield/base)
 "eo" = (

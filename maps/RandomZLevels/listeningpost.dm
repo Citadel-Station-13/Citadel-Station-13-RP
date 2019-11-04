@@ -1,7 +1,7 @@
 /obj/item/weapon/paper/listneningpost/mission
 	name = "\improper Operation: Watchtower"
 	info = {"<b>Mission Details</b>: You have been assigned to a newly constructed listening post
-			constructed within an asteroid in Nanotrasen space to monitor their plasma mining operations.
+			constructed within an asteroid in Nanotrasen space to monitor their spicy purple mining operations.
 			Accurate intel is crucial to the success of our operatives onboard, do not fail us."}
 
 /obj/item/weapon/paper/listneningpost/reciept

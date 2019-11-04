@@ -280,7 +280,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000)
 
 /datum/design/item/rig_module/plasma_cutter
-	name = "rig module - plasma cutter"
+	name = "rig module - spicy purple cutter"
 	id = "rigmod_plasmacutter"
 	build_path = /obj/item/rig_module/device/plasmacutter
 	sort_string = "HCAAE"

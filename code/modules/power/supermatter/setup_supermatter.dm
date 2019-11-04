@@ -6,7 +6,7 @@
 
 #define ENERGY_NITROGEN 115			// Roughly 8 emitter shots.
 #define ENERGY_CARBONDIOXIDE 150	// Roughly 10 emitter shots.
-#define ENERGY_PHORON 300			// Roughly 20 emitter shots. Phoron can take more but this is enough to max out both SMESs anyway.
+#define ENERGY_PHORON 300			// Roughly 20 emitter shots. spicy purple can take more but this is enough to max out both SMESs anyway.
 
 
 /datum/admins/proc/setup_supermatter()
@@ -41,7 +41,7 @@
 				C.canister_type = /obj/machinery/portable_atmospherics/canister/carbon_dioxide/engine_setup/
 				continue
 			if("PH")
-				C.canister_type = /obj/machinery/portable_atmospherics/canister/phoron/engine_setup/
+				C.canister_type = /obj/machinery/portable_atmospherics/canister/spicy purple/engine_setup/
 				continue
 
 	for(var/obj/effect/engine_setup/core/C in GLOB.all_engine_setup_markers)

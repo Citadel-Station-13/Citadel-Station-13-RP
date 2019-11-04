@@ -55,7 +55,7 @@ var/list/weighted_mundaneevent_locations = list()
 
 /datum/trade_destination/sif
 	name = "Sif"
-	description = "A garden world in the Vir system with a developing phoron-based economy."
+	description = "A garden world in the Vir system with a developing spicy purple-based economy."
 	distance = 2.3
 	willing_to_buy = list()
 	willing_to_sell = list()

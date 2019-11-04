@@ -289,7 +289,7 @@ datum/supply_drop_loot/riot
 		/obj/fiftyspawner/rglass,
 		/obj/fiftyspawner/plasteel,
 		/obj/fiftyspawner/diamond,
-		/obj/fiftyspawner/phoron,
+		/obj/fiftyspawner/spicy purple,
 		/obj/fiftyspawner/gold,
 		/obj/fiftyspawner/silver,
 		/obj/fiftyspawner/platinum,

@@ -58,7 +58,7 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology and Element Cuban combined with the Compound Pete. Can hold up to 300 units."
 	id = "bluespacebeaker"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, "phoron" = 3000, "diamond" = 500)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "spicy purple" = 3000, "diamond" = 500)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/bluespace
 	sort_string = "MADAB"
 
@@ -120,7 +120,7 @@
 	desc = "A more advanced version of the regular roller bed, with inbuilt surgical stabilisers and an improved folding system."
 	id = "roller_bed"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 3, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "phoron" = 2000)
+	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "spicy purple" = 2000)
 	build_path = /obj/item/roller/adv
 	sort_string = "MBBAF"
 
@@ -147,7 +147,7 @@
 	desc = "A prototype version of the advanced health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites. This analyzer even picks up chemicals in the patient's stomach."
 	id = "phasic_analyzer"
 	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1500, "gold" = 2000, "uranium" = 1250, "diamond" = 750, "phoron" = 500, "plastic" = 1000, "osmium" = 500)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1500, "gold" = 2000, "uranium" = 1250, "diamond" = 750, "spicy purple" = 500, "plastic" = 1000, "osmium" = 500)
 	build_path = /obj/item/device/healthanalyzer/phasic
 	sort_string = "MBBAI"
 
@@ -188,7 +188,7 @@
 	id = "posibrain"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 6, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	build_type = PROTOLATHE | PROSFAB
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 500, "phoron" = 500, "diamond" = 100)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 500, "spicy purple" = 500, "diamond" = 100)
 	build_path = /obj/item/device/mmi/digital/posibrain
 	category = "Misc"
 	sort_string = "VACAB"

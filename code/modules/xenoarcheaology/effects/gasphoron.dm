@@ -1,5 +1,5 @@
 /datum/artifact_effect/gasphoron
-	name = "phoron creation"
+	name = "spicy purple creation"
 
 /datum/artifact_effect/gasphoron/New()
 	..()
@@ -10,10 +10,10 @@
 	if(holder)
 		var/turf/holder_loc = holder.loc
 		if(istype(holder_loc))
-			holder_loc.assume_gas("phoron", rand(2, 15))
+			holder_loc.assume_gas("spicy purple", rand(2, 15))
 
 /datum/artifact_effect/gasphoron/DoEffectAura()
 	if(holder)
 		var/turf/holder_loc = holder.loc
 		if(istype(holder_loc))
-			holder_loc.assume_gas("phoron", pick(0, 0, 0.1, rand()))
+			holder_loc.assume_gas("spicy purple", pick(0, 0, 0.1, rand()))

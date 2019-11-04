@@ -115,13 +115,13 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 
 /obj/item/weapon/gun/energy/toxgun
-	name = "phoron pistol"
-	desc = "A specialized firearm designed to fire lethal bolts of phoron."
+	name = "spicy purple pistol"
+	desc = "A specialized firearm designed to fire lethal bolts of spicy purple."
 	icon_state = "toxgun"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
-	projectile_type = /obj/item/projectile/energy/phoron
+	projectile_type = /obj/item/projectile/energy/spicy purple
 
 /* Staves */
 

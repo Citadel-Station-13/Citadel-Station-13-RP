@@ -129,7 +129,7 @@ datum/design/item/laserpointer
 	desc = "A welding tool that generate fuel for itself."
 	id = "expwelder"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3, TECH_MATERIAL = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 120, "phoron" = 100)
+	materials = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 120, "spicy purple" = 100)
 	build_path = /obj/item/weapon/weldingtool/experimental
 	sort_string = "VASCA"
 
@@ -156,7 +156,7 @@ datum/design/item/laserpointer
 	desc = "An upgraded version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	id = "upgradedtscanner"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 150)
+	materials = list(DEFAULT_WALL_MATERIAL = 500, "spicy purple" = 150)
 	build_path = /obj/item/device/t_scanner/upgraded
 	sort_string = "VASSA"
 
@@ -165,7 +165,7 @@ datum/design/item/laserpointer
 	desc = "An advanced version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	id = "advancedtscanner"
 	req_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6, TECH_MATERIAL = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 1250, "phoron" = 500, "silver" = 50)
+	materials = list(DEFAULT_WALL_MATERIAL = 1250, "spicy purple" = 500, "silver" = 50)
 	build_path = /obj/item/device/t_scanner/advanced
 	sort_string = "VASSB"
 
@@ -190,7 +190,7 @@ datum/design/item/laserpointer
 	id = "xenoarch_multitool"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 3, TECH_ARCANE = 1)
 	build_path = /obj/item/device/xenoarch_multi_tool
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "uranium" = 500, "phoron" = 500)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "uranium" = 500, "spicy purple" = 500)
 	sort_string = "HABQC"
 
 /datum/design/item/excavationdrill

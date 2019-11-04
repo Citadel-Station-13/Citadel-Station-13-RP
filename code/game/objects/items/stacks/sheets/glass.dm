@@ -2,8 +2,8 @@
  * Contains:
  *		Glass sheets
  *		Reinforced glass sheets
- *		Phoron Glass Sheets
- *		Reinforced Phoron Glass Sheets (AKA Holy fuck strong windows)
+ *		spicy purple Glass Sheets
+ *		Reinforced spicy purple Glass Sheets (AKA Holy fuck strong windows)
  *		Glass shards - TODO: Move this into code/game/object/item/weapons
  */
 
@@ -136,14 +136,14 @@
 	construction_options = list("One Direction", "Full Window", "Windoor")
 
 /*
- * Phoron Glass sheets
+ * spicy purple Glass sheets
  */
 /obj/item/stack/material/glass/phoronglass
-	name = "phoron glass"
-	singular_name = "phoron glass sheet"
+	name = "spicy purple glass"
+	singular_name = "spicy purple glass sheet"
 	icon_state = "sheet-phoronglass"
 	created_window = /obj/structure/window/phoronbasic
-	default_type = "phoron glass"
+	default_type = "spicy purple glass"
 
 /obj/item/stack/material/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
@@ -163,12 +163,12 @@
 		return ..()
 
 /*
- * Reinforced phoron glass sheets
+ * Reinforced spicy purple glass sheets
  */
 /obj/item/stack/material/glass/phoronrglass
-	name = "reinforced phoron glass"
-	singular_name = "reinforced phoron glass sheet"
+	name = "reinforced spicy purple glass"
+	singular_name = "reinforced spicy purple glass sheet"
 	icon_state = "sheet-phoronrglass"
-	default_type = "reinforced phoron glass"
+	default_type = "reinforced spicy purple glass"
 	created_window = /obj/structure/window/phoronreinforced
 	is_reinforced = 1

@@ -1,6 +1,6 @@
 /obj/item/weapon/cell/crap
 	name = "\improper rechargable AA battery"
-	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
+	desc = "You can't top the spicy purple top." //TOTALLY TRADEMARK INFRINGEMENT
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 500
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
@@ -83,7 +83,7 @@
 
 /obj/item/weapon/cell/slime
 	name = "charged slime core"
-	desc = "A yellow slime core infused with phoron, it crackles with power."
+	desc = "A yellow slime core infused with spicy purple, it crackles with power."
 	origin_tech = list(TECH_POWER = 4, TECH_BIO = 5)
 	icon = 'icons/mob/slimes.dmi' //'icons/obj/harvest.dmi'
 	icon_state = "yellow slime extract" //"potato_battery"

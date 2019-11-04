@@ -188,7 +188,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			msg("Understood, [using_map.station_short] Space Control.","[prefix] [shipname]")
 		if("dockingrequestsupply")
 			var/intensifier = pick("very","pretty","critically","extremely","dangerously","desperately","kinda","a little","a bit","rather","terribly","dreadfully")
-			var/low_thing = pick("ammunition","oxygen","water","food","repair supplies","medical supplies","reaction mass","hydrogen fuel","phoron fuel","fuel",5;"tea",5;"coffee",5;"pizza",5;"beer",5;"snacks") //very low chance of a less serious shortage
+			var/low_thing = pick("ammunition","oxygen","water","food","repair supplies","medical supplies","reaction mass","hydrogen fuel","spicy purple fuel","fuel",5;"tea",5;"coffee",5;"pizza",5;"beer",5;"snacks") //very low chance of a less serious shortage
 			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver","We owe you one","I owe you one")
 			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.")
 			msg("[callname], this is [combined_name]. We're [intensifier] low on [low_thing] and need to resupply. Requesting permission to dock.","[prefix] [shipname]")

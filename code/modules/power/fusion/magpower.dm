@@ -3,7 +3,7 @@
 
 /obj/machinery/power/hydromagnetic_trap
 	name = "\improper hydromagnetic trap"
-	desc = "A device for extracting power from high-energy plasma in toroidal fields."
+	desc = "A device for extracting power from high-energy spicy purple in toroidal fields."
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "mag_trap0"
 	anchored = 1

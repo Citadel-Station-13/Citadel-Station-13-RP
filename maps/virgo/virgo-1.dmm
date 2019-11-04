@@ -49780,11 +49780,11 @@
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_two)
 "bOf" = (
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/structure/table/reinforced,
 /obj/machinery/button/remote/blast_door{
 	id = "chemcounter";
@@ -90631,7 +90631,7 @@
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 1441;
 	input_tag = "tox_in";
-	name = "Phoron Supply Control";
+	name = "spicy purple Supply Control";
 	output_tag = "tox_out";
 	sensors = list("tox_sensor" = "Tank")
 	},
@@ -90650,7 +90650,7 @@
 "dnE" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 1;
-	name = "Phoron to Connector"
+	name = "spicy purple to Connector"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -91957,14 +91957,14 @@
 	use_power = 1;
 	pixel_y = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "dqc" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
 	id_tag = "tox_sensor"
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "dqd" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -91982,7 +91982,7 @@
 	pressure_checks_default = 2;
 	pump_direction = 0
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "dqe" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -92509,11 +92509,11 @@
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
 "dri" = (
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "drj" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/reinforced/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "drk" = (
 /turf/simulated/floor/reinforced/n20,
@@ -93149,10 +93149,10 @@
 "dsn" = (
 /obj/machinery/light/small,
 /obj/machinery/camera/network/engineering{
-	c_tag = "Atmospherics Tank - Phoron";
+	c_tag = "Atmospherics Tank - spicy purple";
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "dso" = (
 /obj/machinery/light/small,
@@ -93321,7 +93321,7 @@
 	icon_state = "alarm0";
 	pixel_x = 24
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor,
 /area/engineering/storage)
 "dsF" = (
@@ -93972,7 +93972,7 @@
 /area/engineering/storage)
 "dtU" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 25
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,

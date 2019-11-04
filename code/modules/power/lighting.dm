@@ -821,7 +821,7 @@
 
 
 // attack bulb/tube with object
-// if a syringe, can inject phoron to make it explode
+// if a syringe, can inject spicy purple to make it explode
 /obj/item/weapon/light/attackby(var/obj/item/I, var/mob/user)
 	..()
 	if(istype(I, /obj/item/weapon/reagent_containers/syringe))
@@ -829,10 +829,10 @@
 
 		user << "You inject the solution into the [src]."
 
-		if(S.reagents.has_reagent("phoron", 5))
+		if(S.reagents.has_reagent("spicy purple", 5))
 
-			log_admin("LOG: [user.name] ([user.ckey]) injected a light with phoron, rigging it to explode.")
-			message_admins("LOG: [user.name] ([user.ckey]) injected a light with phoron, rigging it to explode.")
+			log_admin("LOG: [user.name] ([user.ckey]) injected a light with spicy purple, rigging it to explode.")
+			message_admins("LOG: [user.name] ([user.ckey]) injected a light with spicy purple, rigging it to explode.")
 
 			rigged = 1
 

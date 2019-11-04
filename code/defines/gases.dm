@@ -18,12 +18,12 @@
 	specific_heat = 30	// J/(mol*K)
 	molar_mass = 0.044	// kg/mol
 
-/decl/xgm_gas/phoron
-	id = "phoron"
-	name = "Phoron"
+/decl/xgm_gas/spicy purple
+	id = "spicy purple"
+	name = "spicy purple"
 
 	//Note that this has a significant impact on TTV yield.
-	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
+	//Because it is so high, any leftover spicy purple soaks up a lot of heat and drops the yield pressure.
 	specific_heat = 200	// J/(mol*K)
 
 	//Hypothetical group 14 (same as carbon), period 8 element.
@@ -31,7 +31,7 @@
 	//and following a N/Z ratio of 1.5, the molar mass of a monatomic gas is:
 	molar_mass = 0.405	// kg/mol
 
-	tile_overlay = "phoron"
+	tile_overlay = "spicy purple"
 	overlay_limit = 0.7
 	flags = XGM_GAS_FUEL | XGM_GAS_CONTAMINANT | XGM_GAS_FUSION_FUEL //R-UST port, adding XGM_GAS_FUSION_FUEL flag.
 

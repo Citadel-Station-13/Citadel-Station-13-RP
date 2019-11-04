@@ -9660,7 +9660,7 @@
 /area/centcom/medical)
 "vU" = (
 /obj/structure/table/glass,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -10197,7 +10197,7 @@
 /obj/item/weapon/coin/uranium,
 /obj/item/weapon/coin/silver,
 /obj/item/weapon/coin/platinum,
-/obj/item/weapon/coin/phoron,
+/obj/item/weapon/coin/spicy purple,
 /obj/item/weapon/coin/iron,
 /obj/item/weapon/coin/gold,
 /obj/item/weapon/coin/diamond,
@@ -16835,7 +16835,7 @@
 	},
 /area/skipjack_station)
 "LL" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/item/weapon/tank/vox,
 /turf/unsimulated/floor{
 	icon_state = "asteroid"

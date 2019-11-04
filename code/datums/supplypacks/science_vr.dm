@@ -33,6 +33,6 @@
 /datum/supply_pack/sci/phoronotie
 	name = "VARMAcorp adaptive beta subject (Experimental)"
 	cost = 200
-	containertype = /obj/structure/largecrate/animal/otie/phoron
+	containertype = /obj/structure/largecrate/animal/otie/spicy purple
 	containername = "VARMAcorp adaptive beta subject (Experimental)"
 	access = access_xenobiology

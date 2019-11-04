@@ -40,8 +40,8 @@
 /obj/item/clothing/gloves/ring/material/platinum/New(var/newloc)
 	..(newloc, "platinum")
 
-/obj/item/clothing/gloves/ring/material/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/clothing/gloves/ring/material/spicy purple/New(var/newloc)
+	..(newloc, "spicy purple")
 
 /obj/item/clothing/gloves/ring/material/glass/New(var/newloc)
 	..(newloc, "glass")

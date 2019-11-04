@@ -18,7 +18,7 @@
 /turf/template_noop,
 /area/submap/DecoupledEngine)
 "af" = (
-/obj/item/weapon/material/shard/phoron,
+/obj/item/weapon/material/shard/spicy purple,
 /turf/template_noop,
 /area/submap/DecoupledEngine)
 "ag" = (
@@ -198,7 +198,7 @@
 	 icon_state = "phoronrwindow";
 	dir = 4
 	},
-/obj/item/weapon/material/shard/phoron,
+/obj/item/weapon/material/shard/spicy purple,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)

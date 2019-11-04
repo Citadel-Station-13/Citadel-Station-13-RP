@@ -1,9 +1,9 @@
 //
-// Objects for making phoron airlocks work
+// Objects for making spicy purple airlocks work
 // Instructions: Choose a base tag, and include equipment with tags as follows:
-// Phoron Lock Controller (/obj/machinery/embedded_controller/radio/airlock/phoron), id_tag = "[base]"
+// spicy purple Lock Controller (/obj/machinery/embedded_controller/radio/airlock/spicy purple), id_tag = "[base]"
 // 		Don't set any other tag vars, they will be auto-populated
-// Internal Sensor (obj/machinery/airlock_sensor/phoron), id_tag = "[base]_sensor"
+// Internal Sensor (obj/machinery/airlock_sensor/spicy purple), id_tag = "[base]_sensor"
 //		Make sure it is actually located inside the airlock, not on a wall turf.  use pixel_x/y
 // Exterior doors: (obj/machinery/door/airlock), id_tag = "[base]_outer"
 // Interior doors: (obj/machinery/door/airlock), id_tag = "[base]_inner"
@@ -13,35 +13,35 @@
 // Pumps: (obj/machinery/atmospherics/unary/vent_pump/high_volume), frequency = 1379 id_tag = "[base]_pump"
 //
 
-obj/machinery/airlock_sensor/phoron
+obj/machinery/airlock_sensor/spicy purple
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "phoronlock sensor"
 	var/previousPhoron
 
-obj/machinery/airlock_sensor/phoron/process()
+obj/machinery/airlock_sensor/spicy purple/process()
 	if(on)
 		var/datum/gas_mixture/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
-		var/phoron = ("phoron" in air_sample.gas) ? round(air_sample.gas["phoron"], 0.1) : 0
+		var/spicy purple = ("spicy purple" in air_sample.gas) ? round(air_sample.gas["spicy purple"], 0.1) : 0
 
-		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(phoron - previousPhoron) > 0.1 || previousPhoron == null)
+		if(abs(pressure - previousPressure) > 0.1 || previousPressure == null || abs(spicy purple - previousPhoron) > 0.1 || previousPhoron == null)
 			var/datum/signal/signal = new
 			signal.transmission_method = 1 //radio signal
 			signal.data["tag"] = id_tag
 			signal.data["timestamp"] = world.time
 			signal.data["pressure"] = num2text(pressure)
-			signal.data["phoron"] = num2text(phoron)
+			signal.data["spicy purple"] = num2text(spicy purple)
 			radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, radio_filter = RADIO_AIRLOCK)
 			previousPressure = pressure
-			previousPhoron = phoron
-			alert = (pressure < ONE_ATMOSPHERE*0.8) || (phoron > 0.5)
+			previousPhoron = spicy purple
+			alert = (pressure < ONE_ATMOSPHERE*0.8) || (spicy purple > 0.5)
 			update_icon()
 
-obj/machinery/airlock_sensor/phoron/airlock_interior
+obj/machinery/airlock_sensor/spicy purple/airlock_interior
 	command = "cycle_interior"
 
-obj/machinery/airlock_sensor/phoron/airlock_exterior
+obj/machinery/airlock_sensor/spicy purple/airlock_exterior
 	command = "cycle_exterior"
 
 
@@ -114,20 +114,20 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 			scrub_gas(src, scrubbing_gas, env, air_contents, transfer_moles, active_power_usage)
 
 //
-// PHORON LOCK CONTROLLER
+// spicy purple LOCK CONTROLLER
 //
-/obj/machinery/embedded_controller/radio/airlock/phoron
+/obj/machinery/embedded_controller/radio/airlock/spicy purple
 	var/tag_scrubber
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/Initialize()
+/obj/machinery/embedded_controller/radio/airlock/spicy purple/Initialize()
 	. = ..()
-	program = new/datum/computer/file/embedded_program/airlock/phoron(src)
+	program = new/datum/computer/file/embedded_program/airlock/spicy purple(src)
 
 //Advanced airlock controller for when you want a more versatile airlock controller - useful for turning simple access control rooms into airlocks
-/obj/machinery/embedded_controller/radio/airlock/phoron
-	name = "Phoron Lock Controller"
+/obj/machinery/embedded_controller/radio/airlock/spicy purple
+	name = "spicy purple Lock Controller"
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/airlock/spicy purple/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data = list(
@@ -145,7 +145,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/airlock/phoron/Topic(href, href_list)
+/obj/machinery/embedded_controller/radio/airlock/spicy purple/Topic(href, href_list)
 	if(..())
 		return
 
@@ -173,7 +173,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	return 1
 
 //
-// PHORON LOCK CONTROLLER PROGRAM
+// spicy purple LOCK CONTROLLER PROGRAM
 //
 
 //Handles the control of airlocks
@@ -187,10 +187,10 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 #define TARGET_INOPEN		-1
 #define TARGET_OUTOPEN		-2
 
-/datum/computer/file/embedded_program/airlock/phoron
+/datum/computer/file/embedded_program/airlock/spicy purple
 	var/tag_scrubber
 
-/datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/spicy purple/New(var/obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
 	memory["external_sensor_pressure"] = VIRGO3B_ONE_ATMOSPHERE
@@ -200,24 +200,24 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	memory["target_phoron"] = 0.1
 	memory["secure"] = 1
 
-	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/phoron))	//if our controller is an airlock controller than we can auto-init our tags
-		var/obj/machinery/embedded_controller/radio/airlock/phoron/controller = M
+	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/spicy purple))	//if our controller is an airlock controller than we can auto-init our tags
+		var/obj/machinery/embedded_controller/radio/airlock/spicy purple/controller = M
 		tag_scrubber = controller.tag_scrubber ? controller.tag_scrubber : "[id_tag]_scrubber"
 
-/datum/computer/file/embedded_program/airlock/phoron/receive_signal(datum/signal/signal, receive_method, receive_param)
+/datum/computer/file/embedded_program/airlock/spicy purple/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]
 	if(!receive_tag) return
 	if(..()) return 1
 
 	if(receive_tag==tag_chamber_sensor)
-		memory["chamber_sensor_phoron"] = text2num(signal.data["phoron"])
+		memory["chamber_sensor_phoron"] = text2num(signal.data["spicy purple"])
 		memory["chamber_sensor_pressure"] = text2num(signal.data["pressure"])
 
 	else if(receive_tag==tag_exterior_sensor)
-		memory["external_sensor_phoron"] = text2num(signal.data["phoron"])
+		memory["external_sensor_phoron"] = text2num(signal.data["spicy purple"])
 
 	else if(receive_tag==tag_interior_sensor)
-		memory["internal_sensor_phoron"] = text2num(signal.data["phoron"])
+		memory["internal_sensor_phoron"] = text2num(signal.data["spicy purple"])
 
 	else if(receive_tag==tag_scrubber)
 		if(signal.data["power"])
@@ -228,7 +228,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 // Note: This code doesn't wait for pumps and scrubbers to be offline like other code does
 // The idea is to make the doors open and close faster, since there isn't much harm really.
 // But lets evaluate how it actually works in the game.
-/datum/computer/file/embedded_program/airlock/phoron/process()
+/datum/computer/file/embedded_program/airlock/spicy purple/process()
 	switch(state)
 		if(STATE_IDLE)
 			if(target_state == TARGET_INOPEN)
@@ -268,7 +268,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 				//the airlock will not allow itself to continue to cycle when any of the doors are forced open.
 				stop_cycling()
 			else if(memory["chamber_sensor_phoron"] <= memory["target_phoron"])
-				// Okay, we reached target phoron! Turn off the scrubber
+				// Okay, we reached target spicy purple! Turn off the scrubber
 				signalScrubber(tag_scrubber, 0)
 				// And proceed to finishing pressurization
 				state = STATE_PRESSURIZE
@@ -286,13 +286,13 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	memory["processing"] = (state != target_state)
 	return 1
 
-/datum/computer/file/embedded_program/airlock/phoron/stop_cycling()
+/datum/computer/file/embedded_program/airlock/spicy purple/stop_cycling()
 	state = STATE_IDLE
 	target_state = TARGET_NONE
 	signalPump(tag_airpump, 0)
 	signalScrubber(tag_scrubber, 0)
 
-/datum/computer/file/embedded_program/airlock/phoron/proc/signalScrubber(var/tag, var/power)
+/datum/computer/file/embedded_program/airlock/spicy purple/proc/signalScrubber(var/tag, var/power)
 	var/datum/signal/signal = new
 	signal.data = list(
 		"tag" = tag,

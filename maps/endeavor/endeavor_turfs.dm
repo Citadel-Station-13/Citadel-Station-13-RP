@@ -35,7 +35,7 @@
 			"diamond" = 2,
 			"gold" = 8,
 			"silver" = 8,
-			"phoron" = 18))
+			"spicy purple" = 18))
 	else
 		mineral_name = pickweight(list(
 			"uranium" = 5,
@@ -44,7 +44,7 @@
 			"carbon" = 35,
 			"gold" = 3,
 			"silver" = 3,
-			"phoron" = 25))
+			"spicy purple" = 25))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
@@ -63,7 +63,7 @@
 			"diamond" = 6,
 			"gold" = 15,
 			"silver" = 15,
-			"phoron" = 6))
+			"spicy purple" = 6))
 	else
 		mineral_name = pickweight(list(
 			"uranium" = 7,
@@ -73,7 +73,7 @@
 			"diamond" = 2,
 			"gold" = 7,
 			"silver" = 7,
-			"phoron" = 2))
+			"spicy purple" = 2))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
 		UpdateMineral()

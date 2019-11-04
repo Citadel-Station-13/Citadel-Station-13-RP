@@ -52,4 +52,4 @@
 	spawn_positions = 3
 	
 /datum/job/scientist
-	alt_titles = list("Xenoarcheologist", "Anomalist", "Phoron Researcher", "Circuit Designer","Junior Scientist")
+	alt_titles = list("Xenoarcheologist", "Anomalist", "spicy purple Researcher", "Circuit Designer","Junior Scientist")

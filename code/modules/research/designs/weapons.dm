@@ -34,7 +34,7 @@
 /datum/design/item/weapon/phoronpistol
 	id = "ppistol"
 	req_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1000, "phoron" = 3000)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1000, "spicy purple" = 3000)
 	build_path = /obj/item/weapon/gun/energy/toxgun
 	sort_string = "TAAAD"
 
@@ -137,7 +137,7 @@
 /datum/design/item/weapon/fuelrod
 	id = "fuelrod_gun"
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 4, TECH_PHORON = 4, TECH_ILLEGAL = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 2000, "gold" = 500, "silver" = 500, "uranium" = 1000, "phoron" = 3000, "diamond" = 1000)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 2000, "gold" = 500, "silver" = 500, "uranium" = 1000, "spicy purple" = 3000, "diamond" = 1000)
 	build_path = /obj/item/weapon/gun/magnetic/fuelrod
 	sort_string = "TACBA"
 

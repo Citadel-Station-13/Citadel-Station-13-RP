@@ -314,7 +314,7 @@
 			to_chat(user, "\The [src] already has an airtank installed.")
 		else if(cooler)
 			to_chat(user, "\The [src]'s suit cooling unit is in the way.  Remove it first.")
-		else if(istype(W,/obj/item/weapon/tank/phoron))
+		else if(istype(W,/obj/item/weapon/tank/spicy purple))
 			to_chat(user, "\The [W] cannot be inserted into \the [src]'s storage compartment.")
 		else
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")

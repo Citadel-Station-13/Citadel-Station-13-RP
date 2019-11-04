@@ -87,7 +87,7 @@
 	desc = "The VARMAcorp bioengineering division flagship product on trained optimal snowflake guard dogs. This one can survive hostile atmosphere."
 	icon = 'icons/obj/storage_vr.dmi'
 	icon_state = "sotiecrate"
-	starts_with = list(/mob/living/simple_animal/otie/security/phoron)
+	starts_with = list(/mob/living/simple_animal/otie/security/spicy purple)
 
 /obj/structure/largecrate/animal/otie
 	name = "VARMAcorp adoptable reject (Dangerous!)"
@@ -97,13 +97,13 @@
 	starts_with = list(/mob/living/simple_animal/otie/cotie)
 	var/taped = 1
 
-/obj/structure/largecrate/animal/otie/phoron
+/obj/structure/largecrate/animal/otie/spicy purple
 	name = "VARMAcorp adaptive beta subject (Experimental)"
 	desc = "VARMAcorp experimental hostile environment adaptive breeding development kit. WARNING, DO NOT RELEASE IN WILD!"
-	starts_with = list(/mob/living/simple_animal/otie/cotie/phoron)
+	starts_with = list(/mob/living/simple_animal/otie/cotie/spicy purple)
 
-/obj/structure/largecrate/animal/otie/phoron/Initialize()
-	starts_with = list(pick(/mob/living/simple_animal/otie/cotie/phoron;2,
+/obj/structure/largecrate/animal/otie/spicy purple/Initialize()
+	starts_with = list(pick(/mob/living/simple_animal/otie/cotie/spicy purple;2,
 						/mob/living/simple_animal/otie/red/friendly;0.5))
 	return ..()
 

@@ -29,13 +29,13 @@
 /turf/simulated/wall/virgo2,
 /area/submap/virgo2/BoomBase)
 "ai" = (
-/obj/structure/closet/crate/secure/phoron,
-/obj/fiftyspawner/phoron,
+/obj/structure/closet/crate/secure/spicy purple,
+/obj/fiftyspawner/spicy purple,
 /turf/simulated/floor/plating,
 /area/submap/virgo2/BoomBase)
 "aj" = (
-/obj/structure/closet/crate/secure/phoron,
-/obj/fiftyspawner/phoron,
+/obj/structure/closet/crate/secure/spicy purple,
+/obj/fiftyspawner/spicy purple,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "ak" = (
@@ -61,11 +61,11 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "ap" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "aq" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /obj/item/weapon/material/shard,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
@@ -106,8 +106,8 @@
 "az" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
-/obj/item/weapon/fuel_assembly/phoron,
+/obj/item/weapon/tank/spicy purple,
+/obj/item/weapon/fuel_assembly/spicy purple,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/BoomBase)
 "aA" = (

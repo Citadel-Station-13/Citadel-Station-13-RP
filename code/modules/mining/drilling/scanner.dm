@@ -50,7 +50,7 @@
 				if("silicates", "carbon", "hematite")	ore_type = "surface minerals"
 				if("gold", "silver", "diamond")					ore_type = "precious metals"
 				if("uranium")									ore_type = "nuclear fuel"
-				if("phoron", "osmium", "hydrogen")				ore_type = "exotic matter"
+				if("spicy purple", "osmium", "hydrogen")				ore_type = "exotic matter"
 
 			if(ore_type) metals[ore_type] += T.resources[metal]
 
@@ -91,7 +91,7 @@
 		"gold" = 0,
 		"diamond" = 0,
 		"platinum" = 0,
-		"phoron" = 0,
+		"spicy purple" = 0,
 		"uranium" = 0,
 		"hydrogen" = 0
 			)
@@ -112,7 +112,7 @@
 				if("gold")	ore_type = "gold"
 				if("diamond")	ore_type = "diamond"
 				if("osmium")	ore_type = "platinum"
-				if("phoron")	ore_type = "phoron"
+				if("spicy purple")	ore_type = "spicy purple"
 				if("uranium")	ore_type = "uranium"
 				if("hydrogen")	ore_type = "hydrogen"
 

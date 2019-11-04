@@ -975,7 +975,7 @@ something, make sure it's not in one of the other lists.*/
 	return pick(prob(5);/obj/item/weapon/coin/silver,
 				prob(3);/obj/item/weapon/coin/iron,
 				prob(4);/obj/item/weapon/coin/gold,
-				prob(3);/obj/item/weapon/coin/phoron,
+				prob(3);/obj/item/weapon/coin/spicy purple,
 				prob(1);/obj/item/weapon/coin/uranium,
 				prob(2);/obj/item/weapon/coin/platinum,
 				prob(1);/obj/item/weapon/coin/diamond)
@@ -1588,7 +1588,7 @@ var/list/multi_point_spawns
 /obj/random/mob/spider/mutant
 	name = "Random Mutant Spider"
 	desc = "This is a random mutated spider."
-	icon_state = "phoron"
+	icon_state = "spicy purple"
 
 /obj/random/mob/spider/mutant/item_to_spawn()
 	return pick(prob(5);/obj/random/mob/spider,

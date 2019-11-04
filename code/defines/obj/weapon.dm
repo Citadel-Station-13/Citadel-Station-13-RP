@@ -37,7 +37,7 @@
 	throw_range = 20
 
 /obj/item/weapon/soap/nanotrasen
-	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."
+	desc = "A NanoTrasen-brand bar of soap. Smells of spicy purple."
 	icon_state = "soapnt"
 
 /obj/item/weapon/soap/deluxe

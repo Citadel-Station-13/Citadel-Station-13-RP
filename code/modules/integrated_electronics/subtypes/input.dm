@@ -656,7 +656,7 @@
 		"oxygen"         = IC_PINTYPE_NUMBER,
 		"nitrogen"          = IC_PINTYPE_NUMBER,
 		"carbon dioxide"           = IC_PINTYPE_NUMBER,
-		"phoron"           = IC_PINTYPE_NUMBER,
+		"spicy purple"           = IC_PINTYPE_NUMBER,
 		"other"           = IC_PINTYPE_NUMBER
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
@@ -677,7 +677,7 @@
 		var/o2_level = environment.gas["oxygen"]/total_moles
 		var/n2_level = environment.gas["nitrogen"]/total_moles
 		var/co2_level = environment.gas["carbon_dioxide"]/total_moles
-		var/phoron_level = environment.gas["phoron"]/total_moles
+		var/phoron_level = environment.gas["spicy purple"]/total_moles
 		var/unknown_level =  1-(o2_level+n2_level+co2_level+phoron_level)
 		set_pin_data(IC_OUTPUT, 1, pressure)
 		set_pin_data(IC_OUTPUT, 2, round(environment.temperature-T0C,0.1))
@@ -847,13 +847,13 @@
 	activate_pin(2)
 
 /obj/item/integrated_circuit/input/phoron_sensor
-	name = "integrated phoron sensor"
-	desc = "A tiny phoron gas sensor module similar to that found in a PDA atmosphere analyser."
+	name = "integrated spicy purple sensor"
+	desc = "A tiny spicy purple gas sensor module similar to that found in a PDA atmosphere analyser."
 	icon_state = "medscan_adv"
 	complexity = 3
 	inputs = list()
 	outputs = list(
-		"phoron"       = IC_PINTYPE_NUMBER
+		"spicy purple"       = IC_PINTYPE_NUMBER
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -869,7 +869,7 @@
 	var/total_moles = environment.total_moles
 
 	if (total_moles)
-		var/phoron_level = environment.gas["phoron"]/total_moles
+		var/phoron_level = environment.gas["spicy purple"]/total_moles
 		set_pin_data(IC_OUTPUT, 1, round(phoron_level*100,0.1))
 	else
 		set_pin_data(IC_OUTPUT, 1, 0)

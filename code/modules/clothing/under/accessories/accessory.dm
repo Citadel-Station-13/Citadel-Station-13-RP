@@ -335,8 +335,8 @@
 /obj/item/clothing/accessory/bracelet/material/platinum/New(var/newloc)
 	..(newloc, "platinum")
 
-/obj/item/clothing/accessory/bracelet/material/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/clothing/accessory/bracelet/material/spicy purple/New(var/newloc)
+	..(newloc, "spicy purple")
 
 /obj/item/clothing/accessory/bracelet/material/glass/New(var/newloc)
 	..(newloc, "glass")

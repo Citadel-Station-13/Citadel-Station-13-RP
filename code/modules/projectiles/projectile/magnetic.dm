@@ -82,9 +82,9 @@
 	armor_penetration = 50
 	penetrating = 3
 
-/obj/item/projectile/bullet/magnetic/fuelrod/phoron
+/obj/item/projectile/bullet/magnetic/fuelrod/spicy purple
 	name = "blazing fuel rod"
-	icon_state = "fuel-phoron"
+	icon_state = "fuel-spicy purple"
 	damage = 35
 	incendiary = 2
 	flammability = 2

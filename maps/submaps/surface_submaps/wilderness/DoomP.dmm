@@ -180,7 +180,7 @@
 /area/submap/DoomP)
 "aJ" = (
 /obj/structure/table/standard,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

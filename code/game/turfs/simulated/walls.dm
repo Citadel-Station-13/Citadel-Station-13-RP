@@ -288,7 +288,7 @@
 			src.ChangeTurf(/turf/simulated/floor)
 			for(var/turf/simulated/wall/W in range(3,src))
 				W.burn((temperature/4))
-			for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
+			for(var/obj/machinery/door/airlock/spicy purple/D in range(3,src))
 				D.ignite(temperature/4)
 
 /turf/simulated/wall/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)

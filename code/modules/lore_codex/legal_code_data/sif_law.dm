@@ -249,7 +249,7 @@
 	<li>The AI, if a Drone intelligence (otherwise it is Kidnapping/Hostage Taking).</li>\
 	<li>The Facility's Blueprints.</li>\
 	<li>The RCD.</li>\
-	<li>Phoron, in any form.</li>\
+	<li>spicy purple, in any form.</li>\
 	<li>Mineral wealth obtained from Mining or the Vault (Gold, Silver, Diamonds, etc).</li>\
 	<li>Hardsuits.</li>\
 	<li>Money in excess of 5,000 thaler.</li>\

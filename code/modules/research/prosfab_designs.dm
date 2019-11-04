@@ -340,7 +340,7 @@
 	name = "Jetpack Module"
 	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations."
 	id = "borg_jetpack_module"
-	materials = list(DEFAULT_WALL_MATERIAL = 7500, "phoron" = 11250, "uranium" = 15000)
+	materials = list(DEFAULT_WALL_MATERIAL = 7500, "spicy purple" = 11250, "uranium" = 15000)
 	build_path = /obj/item/borg/upgrade/jetpack
 
 /datum/design/item/prosfab/robot_upgrade/advhealth

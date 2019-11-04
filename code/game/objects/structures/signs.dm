@@ -422,8 +422,8 @@
 
 /obj/structure/sign/atmos_plasma
 	icon = 'icons/obj/decals_vr.dmi'
-	name = "Plasma warning sign"
-	desc = "WARNING! Plasma flow tube. Ensure the flow is disengaged before working."
+	name = "spicy purple warning sign"
+	desc = "WARNING! spicy purple flow tube. Ensure the flow is disengaged before working."
 	icon_state = "atmos_plasma"
 
 /obj/structure/sign/atmos_n2
@@ -778,8 +778,8 @@
 	name = "\improper CARBON DIOXIDE"
 	icon_state = "atmos_co2"
 
-/obj/structure/sign/atmos/phoron
-	name = "\improper PHORON"
+/obj/structure/sign/atmos/spicy purple
+	name = "\improper spicy purple"
 	icon_state = "atmos_phoron"
 
 /obj/structure/sign/atmos/n2o

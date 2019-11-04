@@ -136,9 +136,9 @@
 	faction = "neutral"
 	tamed = 1
 
-/mob/living/simple_animal/otie/cotie/phoron //friendly phoron pup with collar
+/mob/living/simple_animal/otie/cotie/spicy purple //friendly spicy purple pup with collar
 	name = "mutated otie"
-	desc = "Looks like someone did manage to domesticate one of those wild phoron mutants. What a badass."
+	desc = "Looks like someone did manage to domesticate one of those wild spicy purple mutants. What a badass."
 	tt_desc = "Otus phoronis"
 	icon_state = "pcotie"
 	icon_living = "pcotie"
@@ -174,9 +174,9 @@
 	var/check_records = 0 // If true, arrests people without a record.
 	var/check_arrest = 0 // If true, arrests people who are set to arrest. CITADEL CHANGE - Let's not have mauling Beepskies
 
-/mob/living/simple_animal/otie/security/phoron
+/mob/living/simple_animal/otie/security/spicy purple
 	name = "mutated guard otie"
-	desc = "An extra rare phoron resistant version of the VARMAcorp trained snowflake guard dogs."
+	desc = "An extra rare spicy purple resistant version of the VARMAcorp trained snowflake guard dogs."
 	tt_desc = "Otus phoronis"
 	icon_state = "sifguard"
 	icon_living = "sifguard"

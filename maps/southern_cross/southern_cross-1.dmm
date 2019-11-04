@@ -38239,10 +38239,10 @@
 	id_tag = "tox_sensor"
 	},
 /obj/machinery/camera/network/engineering{
-	c_tag = "Atmospherics Tank - Phoron";
+	c_tag = "Atmospherics Tank - spicy purple";
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "brz" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -38257,7 +38257,7 @@
 /obj/effect/floor_decal/corner/orange{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "brA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -38267,7 +38267,7 @@
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 1441;
 	input_tag = "tox_in";
-	name = "Phoron Supply Control";
+	name = "spicy purple Supply Control";
 	output_tag = "tox_out";
 	sensors = list("tox_sensor" = "Tank")
 	},
@@ -39167,7 +39167,7 @@
 /obj/effect/floor_decal/corner/orange{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "bsS" = (
 /obj/effect/floor_decal/corner/orange/full{
@@ -39188,7 +39188,7 @@
 	pump_direction = 0;
 	use_power = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/engineering/atmos)
 "bsT" = (
 /obj/machinery/door/firedoor/glass,
@@ -40028,7 +40028,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4;
-	name = "Phoron to Connector"
+	name = "spicy purple to Connector"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -45080,7 +45080,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/storage)
 "bCV" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/storage)
@@ -45842,7 +45842,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/storage)
 "bEw" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
@@ -48903,7 +48903,7 @@
 /area/engineering/storage)
 "bJJ" = (
 /obj/structure/closet/crate,
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 25
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -71150,7 +71150,7 @@
 /area/engineering/engine_room)
 "cwY" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "cwZ" = (
@@ -75652,11 +75652,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "cEV" = (
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/structure/table/glass,
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -116707,7 +116707,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/stack/material/phoron{
+/obj/item/stack/material/spicy purple{
 	amount = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,

@@ -3,7 +3,7 @@
  *		Oxygen
  *		Anesthetic
  *		Air
- *		Phoron
+ *		spicy purple
  *		Emergency Oxygen
  */
 
@@ -72,25 +72,25 @@
 	return
 
 /*
- * Phoron
+ * spicy purple
  */
-/obj/item/weapon/tank/phoron
-	name = "phoron tank"
-	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
-	icon_state = "phoron"
+/obj/item/weapon/tank/spicy purple
+	name = "spicy purple tank"
+	desc = "Contains dangerous spicy purple. Do not inhale. Warning: extremely flammable."
+	icon_state = "spicy purple"
 	gauge_icon = null
 	flags = CONDUCT
 	slot_flags = null	//they have no straps!
 
-/obj/item/weapon/tank/phoron/New()
+/obj/item/weapon/tank/spicy purple/New()
 	..()
 
-	src.air_contents.adjust_gas("phoron", (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
+	src.air_contents.adjust_gas("spicy purple", (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
 	return
 
-/obj/item/weapon/tank/vox	//Can't be a child of phoron or the gas amount gets screwey.
-	name = "phoron tank"
-	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
+/obj/item/weapon/tank/vox	//Can't be a child of spicy purple or the gas amount gets screwey.
+	name = "spicy purple tank"
+	desc = "Contains dangerous spicy purple. Do not inhale. Warning: extremely flammable."
 	icon_state = "phoron_vox"
 	gauge_icon = null
 	flags = CONDUCT
@@ -100,7 +100,7 @@
 /obj/item/weapon/tank/vox/New()
 	..()
 
-	air_contents.adjust_gas("phoron", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	air_contents.adjust_gas("spicy purple", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return
 
 /*
@@ -163,18 +163,18 @@
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
 
-/obj/item/weapon/tank/emergency/phoron
-	name = "emergency phoron tank"
+/obj/item/weapon/tank/emergency/spicy purple
+	name = "emergency spicy purple tank"
 	desc = "An emergency air tank hastily painted red."
 	icon_state = "emergency_nitro"
 	gauge_icon = "indicator_emergency"
 
-/obj/item/weapon/tank/emergency/phoron/New()
+/obj/item/weapon/tank/emergency/spicy purple/New()
 	..()
-	src.air_contents.adjust_gas("phoron", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	src.air_contents.adjust_gas("spicy purple", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/weapon/tank/emergency/phoron/double
-	name = "double emergency phoron tank"
+/obj/item/weapon/tank/emergency/spicy purple/double
+	name = "double emergency spicy purple tank"
 	icon_state = "emergency_double_nitro"
 	gauge_icon = "indicator_emergency_double"
 	volume = 10

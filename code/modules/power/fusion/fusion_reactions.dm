@@ -34,7 +34,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 // Material fuels
 //  deuterium
 //  tritium
-//  phoron
+//  spicy purple
 //  supermatter
 
 // Virtual fuels
@@ -94,7 +94,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 
 /decl/fusion_reaction/phoron_hydrogen
 	p_react = "hydrogen"
-	s_react = "phoron"
+	s_react = "spicy purple"
 	energy_consumption = 10
 	energy_production = 0
 	instability = 5
@@ -104,7 +104,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 // VERY UNIDEAL REACTIONS.
 /decl/fusion_reaction/phoron_supermatter
 	p_react = "supermatter"
-	s_react = "phoron"
+	s_react = "spicy purple"
 	energy_consumption = 0
 	energy_production = 5
 	radiation = 20

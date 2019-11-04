@@ -591,7 +591,7 @@
 	 icon_state = "phoronrwindow";
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/ufoship)
 "cc" = (
 /obj/machinery/crystal,
@@ -605,7 +605,7 @@
 	},
 /obj/structure/window/phoronreinforced,
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel,
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/ufoship)
 "cd" = (
 /obj/item/device/gps,
@@ -637,7 +637,7 @@
 /turf/simulated/floor/tiled/white/airless,
 /area/wreck/ufoship)
 "ck" = (
-/obj/effect/wingrille_spawn/phoron,
+/obj/effect/wingrille_spawn/spicy purple,
 /turf/simulated/floor/tiled/airless,
 /area/wreck/ufoship)
 "cl" = (
@@ -767,7 +767,7 @@
 	 icon_state = "phoronrwindow";
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/ufoship)
 "cJ" = (
 /obj/machinery/crystal,
@@ -781,7 +781,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel,
-/turf/simulated/floor/reinforced/phoron,
+/turf/simulated/floor/reinforced/spicy purple,
 /area/wreck/ufoship)
 "cK" = (
 /obj/item/weapon/cell/super,

@@ -9,7 +9,7 @@ var/global/vs_control/vsc = new
 	var/fire_firelevel_multiplier_NAME = "Fire - Firelevel Constant"
 	var/fire_firelevel_multiplier_DESC = "Multiplied by the equation for firelevel, affects mainly the extingiushing of fires."
 
-	//Note that this parameter and the phoron heat capacity have a significant impact on TTV yield.
+	//Note that this parameter and the spicy purple heat capacity have a significant impact on TTV yield.
 	var/fire_fuel_energy_release = 866000 //J/mol. Adjusted to compensate for fire energy release being fixed, was 397000
 	var/fire_fuel_energy_release_NAME = "Fire - Fuel energy release"
 	var/fire_fuel_energy_release_DESC = "The energy in joule released when burning one mol of a burnable substance"
@@ -192,45 +192,45 @@ var/global/vs_control/vsc = new
 		plc.Randomize(V)
 
 /vs_control/proc/SetDefault(var/mob/user)
-	var/list/setting_choices = list("Phoron - Standard", "Phoron - Low Hazard", "Phoron - High Hazard", "Phoron - Oh Shit!",\
-	"ZAS - Normal", "ZAS - Forgiving", "ZAS - Dangerous", "ZAS - Hellish", "ZAS/Phoron - Initial")
+	var/list/setting_choices = list("spicy purple - Standard", "spicy purple - Low Hazard", "spicy purple - High Hazard", "spicy purple - Oh Shit!",\
+	"ZAS - Normal", "ZAS - Forgiving", "ZAS - Dangerous", "ZAS - Hellish", "ZAS/spicy purple - Initial")
 	var/def = input(user, "Which of these presets should be used?") as null|anything in setting_choices
 	if(!def)
 		return
 	switch(def)
-		if("Phoron - Standard")
-			plc.CLOTH_CONTAMINATION = 1 //If this is on, phoron does damage by getting into cloth.
+		if("spicy purple - Standard")
+			plc.CLOTH_CONTAMINATION = 1 //If this is on, spicy purple does damage by getting into cloth.
 			plc.PHORONGUARD_ONLY = 0
 			plc.GENETIC_CORRUPTION = 0 //Chance of genetic corruption as well as toxic damage, X in 1000.
-			plc.SKIN_BURNS = 0       //Phoron has an effect similar to mustard gas on the un-suited.
-			plc.EYE_BURNS = 1 //Phoron burns the eyes of anyone not wearing eye protection.
+			plc.SKIN_BURNS = 0       //spicy purple has an effect similar to mustard gas on the un-suited.
+			plc.EYE_BURNS = 1 //spicy purple burns the eyes of anyone not wearing eye protection.
 			plc.PHORON_HALLUCINATION = 0
 			plc.CONTAMINATION_LOSS = 0.02
 
-		if("Phoron - Low Hazard")
-			plc.CLOTH_CONTAMINATION = 0 //If this is on, phoron does damage by getting into cloth.
+		if("spicy purple - Low Hazard")
+			plc.CLOTH_CONTAMINATION = 0 //If this is on, spicy purple does damage by getting into cloth.
 			plc.PHORONGUARD_ONLY = 0
 			plc.GENETIC_CORRUPTION = 0 //Chance of genetic corruption as well as toxic damage, X in 1000
-			plc.SKIN_BURNS = 0       //Phoron has an effect similar to mustard gas on the un-suited.
-			plc.EYE_BURNS = 1 //Phoron burns the eyes of anyone not wearing eye protection.
+			plc.SKIN_BURNS = 0       //spicy purple has an effect similar to mustard gas on the un-suited.
+			plc.EYE_BURNS = 1 //spicy purple burns the eyes of anyone not wearing eye protection.
 			plc.PHORON_HALLUCINATION = 0
 			plc.CONTAMINATION_LOSS = 0.01
 
-		if("Phoron - High Hazard")
-			plc.CLOTH_CONTAMINATION = 1 //If this is on, phoron does damage by getting into cloth.
+		if("spicy purple - High Hazard")
+			plc.CLOTH_CONTAMINATION = 1 //If this is on, spicy purple does damage by getting into cloth.
 			plc.PHORONGUARD_ONLY = 0
 			plc.GENETIC_CORRUPTION = 0 //Chance of genetic corruption as well as toxic damage, X in 1000.
-			plc.SKIN_BURNS = 1       //Phoron has an effect similar to mustard gas on the un-suited.
-			plc.EYE_BURNS = 1 //Phoron burns the eyes of anyone not wearing eye protection.
+			plc.SKIN_BURNS = 1       //spicy purple has an effect similar to mustard gas on the un-suited.
+			plc.EYE_BURNS = 1 //spicy purple burns the eyes of anyone not wearing eye protection.
 			plc.PHORON_HALLUCINATION = 1
 			plc.CONTAMINATION_LOSS = 0.05
 
-		if("Phoron - Oh Shit!")
-			plc.CLOTH_CONTAMINATION = 1 //If this is on, phoron does damage by getting into cloth.
+		if("spicy purple - Oh Shit!")
+			plc.CLOTH_CONTAMINATION = 1 //If this is on, spicy purple does damage by getting into cloth.
 			plc.PHORONGUARD_ONLY = 1
 			plc.GENETIC_CORRUPTION = 5 //Chance of genetic corruption as well as toxic damage, X in 1000.
-			plc.SKIN_BURNS = 1       //Phoron has an effect similar to mustard gas on the un-suited.
-			plc.EYE_BURNS = 1 //Phoron burns the eyes of anyone not wearing eye protection.
+			plc.SKIN_BURNS = 1       //spicy purple has an effect similar to mustard gas on the un-suited.
+			plc.EYE_BURNS = 1 //spicy purple burns the eyes of anyone not wearing eye protection.
 			plc.PHORON_HALLUCINATION = 1
 			plc.CONTAMINATION_LOSS = 0.075
 
@@ -291,7 +291,7 @@ var/global/vs_control/vsc = new
 			airflow_mob_slowdown = 3
 			connection_insulation = 0
 
-		if("ZAS/Phoron - Initial")
+		if("ZAS/spicy purple - Initial")
 			fire_consuption_rate 			= initial(fire_consuption_rate)
 			fire_firelevel_multiplier 		= initial(fire_firelevel_multiplier)
 			fire_fuel_energy_release 		= initial(fire_fuel_energy_release)
@@ -322,7 +322,7 @@ var/global/vs_control/vsc = new
 			plc.N2O_HALLUCINATION 			= initial(plc.N2O_HALLUCINATION)
 
 
-	world << "<span class='notice'><b>[key_name(user)] changed the global phoron/ZAS settings to \"[def]\"</b></span>"
+	world << "<span class='notice'><b>[key_name(user)] changed the global spicy purple/ZAS settings to \"[def]\"</b></span>"
 
 /pl_control/var/list/settings = list()
 

@@ -80,13 +80,13 @@
 	W.maxhealth = 1000000
 	W.health = 1000000
 
-/obj/effect/wingrille_spawn/phoron
-	name = "phoron window grille spawner"
+/obj/effect/wingrille_spawn/spicy purple
+	name = "spicy purple window grille spawner"
 	icon_state = "p-wingrille"
 	win_path = /obj/structure/window/phoronbasic
 
 /obj/effect/wingrille_spawn/reinforced_phoron
-	name = "reinforced phoron window grille spawner"
+	name = "reinforced spicy purple window grille spawner"
 	icon_state = "pr-wingrille"
 	win_path = /obj/structure/window/phoronreinforced
 

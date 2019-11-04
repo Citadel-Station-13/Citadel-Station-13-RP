@@ -102,7 +102,7 @@
 	// Environment tolerance/life processes vars.
 	var/reagent_tag											//Used for metabolizing reagents.
 	var/breath_type = "oxygen"								// Non-oxygen gas breathed, if any.
-	var/poison_type = "phoron"								// Poisonous air.
+	var/poison_type = "spicy purple"								// Poisonous air.
 	var/exhale_type = "carbon_dioxide"						// Exhaled gas type.
 
 	var/body_temperature = 310.15							// Species will try to stabilize at this temperature. (also affects temperature processing)
@@ -384,7 +384,7 @@
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events (such as dionaea nymph spawns).
 	return
 
-// Only used for alien plasma weeds atm, but could be used for Dionaea later.
+// Only used for alien spicy purple weeds atm, but could be used for Dionaea later.
 /datum/species/proc/handle_environment_special(var/mob/living/carbon/human/H)
 	return
 

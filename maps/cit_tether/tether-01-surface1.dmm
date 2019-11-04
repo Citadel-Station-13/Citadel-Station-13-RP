@@ -372,11 +372,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/mining_main/airlock)
 "aaQ" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "mining_airlock";
 	pixel_x = 25
 	},
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "mining_airlock_sensor";
 	pixel_x = 25;
 	pixel_y = 11
@@ -12518,13 +12518,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/storage/surface_eva/external)
 "aDE" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "civ_airlock";
 	pixel_x = 25;
 	pixel_y = -30
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "civ_airlock_sensor";
 	pixel_x = 25;
 	pixel_y = -40
@@ -13481,7 +13481,7 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "aFV" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
 "aFX" = (
@@ -13908,10 +13908,10 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
+/obj/item/stack/material/spicy purple,
 /obj/machinery/reagentgrinder,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -14871,7 +14871,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/processing)
 "aJQ" = (
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/portable_atmospherics/canister/empty/spicy purple,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
 "aJR" = (
@@ -15949,7 +15949,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civ_west)
 "aSR" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 8;
 	icon_state = "phoron_map";
 	name = "Xenoflora Waste Buffer";
@@ -17158,7 +17158,7 @@
 	dir = 8;
 	network = list("Research","Toxins Test Area")
 	},
-/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/portable_atmospherics/canister/spicy purple,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "bcL" = (
@@ -21782,7 +21782,7 @@
 	dir = 4
 	},
 /obj/item/weapon/paper{
-	info = "We just got the newest shipment of slimes and slime equipment and didn't have time to set up your labs. If you want to start experimenting on them, inject the objects in the pens with some liquid phoron, it seems to activate them. We'll get around to renovating the department at some point.";
+	info = "We just got the newest shipment of slimes and slime equipment and didn't have time to set up your labs. If you want to start experimenting on them, inject the objects in the pens with some liquid spicy purple, it seems to activate them. We'll get around to renovating the department at some point.";
 	name = "note from NanoTrasen Xenobiology Oversight"
 	},
 /obj/structure/table/standard,
@@ -22452,7 +22452,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
 	scrub_id = "rnd_s_airlock_scrubber";
-	scrubbing_gas = list("phoron")
+	scrubbing_gas = list("spicy purple")
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/external)
@@ -22478,12 +22478,12 @@
 	icon_state = "warning";
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/airlock/phoron{
+/obj/machinery/embedded_controller/radio/airlock/spicy purple{
 	id_tag = "rnd_s_airlock";
 	pixel_x = -25;
 	pixel_y = 30
 	},
-/obj/machinery/airlock_sensor/phoron{
+/obj/machinery/airlock_sensor/spicy purple{
 	id_tag = "rnd_s_airlock_sensor";
 	pixel_x = -35;
 	pixel_y = 30
@@ -22497,7 +22497,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
 	scrub_id = "rnd_s_airlock_scrubber";
-	scrubbing_gas = list("phoron")
+	scrubbing_gas = list("spicy purple")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -22755,7 +22755,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	frequency = 1379;
 	scrub_id = "rnd_s_airlock_scrubber";
-	scrubbing_gas = list("phoron")
+	scrubbing_gas = list("spicy purple")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/external)
@@ -24026,7 +24026,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/processing)
 "bXA" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/machinery/atmospherics/pipe/tank/spicy purple{
 	dir = 8;
 	start_pressure = 1215.9
 	},

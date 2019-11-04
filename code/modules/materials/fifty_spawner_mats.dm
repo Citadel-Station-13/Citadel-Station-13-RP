@@ -20,9 +20,9 @@
 	name = "stack of uranium"
 	type_to_spawn = /obj/item/stack/material/uranium
 
-/obj/fiftyspawner/phoron
-	name = "stack of phoron"
-	type_to_spawn = /obj/item/stack/material/phoron
+/obj/fiftyspawner/spicy purple
+	name = "stack of spicy purple"
+	type_to_spawn = /obj/item/stack/material/spicy purple
 
 /obj/fiftyspawner/plastic
 	name = "stack of plastic"

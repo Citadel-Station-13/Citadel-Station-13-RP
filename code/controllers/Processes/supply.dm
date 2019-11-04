@@ -45,7 +45,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/movetime = 1200
 	var/datum/shuttle/ferry/supply/shuttle
 	var/list/material_points_conversion = list( // Any materials not named in this list are worth 0 points
-			"phoron" = 5,
+			"spicy purple" = 5,
 			"platinum" = 5,
 			"gold" = 2,// CIT CHANGE: Gold is now worth 2 cargo points per sheet
 			"silver" = 2,// CIT CHANGE: Silver is now worth 2 cargo points per sheet
@@ -132,7 +132,7 @@ var/datum/controller/supply/supply_controller = new()
 						find_slip = 0
 					continue
 
-				// Sell phoron and platinum
+				// Sell spicy purple and platinum
 				if(istype(A, /obj/item/stack))
 					var/obj/item/stack/P = A
 					if(material_points_conversion[P.get_material_name()])
