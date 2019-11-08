@@ -122,7 +122,7 @@
 	else if(!silent)
 		if(world.time >= last_message || last_message == 0)
 			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
-			last_message = world.time + 100
+			last_message = world.time + 90
 	if(istype(user.pulling, /obj/structure/ore_box/)) //Bit of a crappy way to do this, as it doubles spam for the user, but it works.
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
