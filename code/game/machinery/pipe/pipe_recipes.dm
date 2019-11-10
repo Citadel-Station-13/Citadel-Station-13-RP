@@ -9,17 +9,17 @@ var/global/list/all_pipe_recipes = null
 /hook/startup/proc/init_pipe_recipes()
 	global.atmos_pipe_recipes = list(
 		"Pipes" = list(
-			new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple),
-			new /datum/pipe_recipe/pipe("Manifold",				/obj/machinery/atmospherics/pipe/manifold),
+			new /datum/pipe_recipe/pipe("Pipe",					/obj/machinery/atmospherics/pipe/simple, TRUE),
+			new /datum/pipe_recipe/pipe("Manifold",				/obj/machinery/atmospherics/pipe/manifold, TRUE),
 			new /datum/pipe_recipe/pipe("Manual Valve",			/obj/machinery/atmospherics/valve),
 			new /datum/pipe_recipe/pipe("Digital Valve",		/obj/machinery/atmospherics/valve/digital),
-			new /datum/pipe_recipe/pipe("Pipe cap",				/obj/machinery/atmospherics/pipe/cap),
-			new /datum/pipe_recipe/pipe("4-Way Manifold",		/obj/machinery/atmospherics/pipe/manifold4w),
+			new /datum/pipe_recipe/pipe("Pipe cap",				/obj/machinery/atmospherics/pipe/cap, TRUE),
+			new /datum/pipe_recipe/pipe("4-Way Manifold",		/obj/machinery/atmospherics/pipe/manifold4w, TRUE),
 			new /datum/pipe_recipe/pipe("Manual T-Valve",		/obj/machinery/atmospherics/tvalve),
 			new /datum/pipe_recipe/pipe("Digital T-Valve",		/obj/machinery/atmospherics/tvalve/digital),
-			new /datum/pipe_recipe/pipe("Upward Pipe",			/obj/machinery/atmospherics/pipe/zpipe/up),
-			new /datum/pipe_recipe/pipe("Downward Pipe",		/obj/machinery/atmospherics/pipe/zpipe/down),
-			new /datum/pipe_recipe/pipe("Universal Pipe Adaptor",/obj/machinery/atmospherics/pipe/simple/visible/universal),
+			new /datum/pipe_recipe/pipe("Upward Pipe",			/obj/machinery/atmospherics/pipe/zpipe/up, TRUE),
+			new /datum/pipe_recipe/pipe("Downward Pipe",		/obj/machinery/atmospherics/pipe/zpipe/down, TRUE),
+			new /datum/pipe_recipe/pipe("Universal Pipe Adaptor",/obj/machinery/atmospherics/pipe/simple/visible/universal, TRUE),
 		),
 		"Devices" = list(
 			new /datum/pipe_recipe/pipe("Connector",			/obj/machinery/atmospherics/portables_connector),
@@ -81,6 +81,7 @@ var/global/list/all_pipe_recipes = null
 	var/icon_state_m						// This stores the mirrored version of the regular state (if available).
 	var/dirtype								// If using an RPD, this tells more about what previews to show.
 	var/subtype = 0							// Used for certain disposals pipes types.
+	var/paintable = FALSE					// If TRUE, allow the RPD to paint this pipe.
 
 // Render an HTML link to select this pipe type. Returns text.
 /datum/pipe_recipe/proc/Render(dispenser)
@@ -96,7 +97,7 @@ var/global/list/all_pipe_recipes = null
 /datum/pipe_recipe/pipe
 	var/obj/item/pipe/construction_type 		// The type PATH to the type of pipe fitting object the recipe makes.
 
-/datum/pipe_recipe/pipe/New(var/label, var/obj/machinery/atmospherics/path)
+/datum/pipe_recipe/pipe/New(var/label, var/obj/machinery/atmospherics/path, var/colorable=FALSE)
 	name = label
 	pipe_type = path
 	construction_type = initial(path.construction_type)
@@ -104,6 +105,7 @@ var/global/list/all_pipe_recipes = null
 	dirtype = initial(construction_type.dispenser_class)
 	if (dirtype == PIPE_TRIN_M)
 		icon_state_m = "[icon_state]m"
+	paintable = colorable
 
 // Render an HTML link to select this pipe type
 /datum/pipe_recipe/pipe/Render(dispenser)
