@@ -135,7 +135,7 @@
 	lines += "<a class='[screen == ATMOS_MODE ? "linkOn" : ""]' href='?src=\ref[src];screen=[ATMOS_MODE]'>Atmospherics</a>"
 	lines += "<a class='[screen == DISPOSALS_MODE ? "linkOn" : ""]' href='?src=\ref[src];screen=[DISPOSALS_MODE]'>Disposals</a>"
 	//lines += "<a class='[screen == TRANSIT_MODE ? "linkOn" : ""]' href='?src=\ref[src];screen=[TRANSIT_MODE]'>Transit Tube</a>"
-	lines += "<br><a class='[wrench_mode ? "linkOn" : "linkOff"]' href='?src=\ref[src];switch_wrench=1;wrench_mode=[!wrench_mode]'>Wrench Mode</a>"
+	lines += "<br><a class='[wrench_mode ? "linkOn" : ""]' href='?src=\ref[src];switch_wrench=1;wrench_mode=[!wrench_mode]'>Wrench Mode</a>"
 	lines += "</div>"
 
 	if(screen == ATMOS_MODE)
@@ -230,12 +230,7 @@
 	var/queued_p_dir = p_dir
 	var/queued_p_flipped = p_flipped
 	var/queued_p_subtype = recipe.subtype
-
-	// clicking on an existing component puts the new one on the same layer
-	if(mode == ATMOS_MODE && istype(A, /obj/machinery/atmospherics))
-		var/obj/machinery/atmospherics/AM = A
-		queued_piping_layer = AM.piping_layer
-		A = get_turf(user)
+	var/queued_p_paintable = recipe.paintable
 
 	//make sure what we're clicking is valid for the current mode
 	var/static/list/make_pipe_whitelist // This should probably be changed to be in line with polaris standards. Oh well.
@@ -286,7 +281,8 @@
 					P.update()
 					P.add_fingerprint(usr)
 					P.setPipingLayer(queued_piping_layer)
-					P.color = pipe_colors[paint_color]
+					if (queued_p_paintable)
+						P.color = pipe_colors[paint_color]
 					if(queued_p_flipped)
 						P.do_a_flip()
 					if(wrench_mode)
