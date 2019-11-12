@@ -71,6 +71,9 @@
 	if(istype(W, /obj/item/weapon/whetstone))
 		var/obj/item/weapon/whetstone/whet = W
 		repair(whet.repair_amount, whet.repair_time, user)
+	if(istype(W, /obj/item/weapon/material/sharpeningkit))
+		var/obj/item/weapon/material/sharpeningkit/SK = W
+		repair(SK.repair_amount, SK.repair_time, user)
 	..()
 
 /obj/item/weapon/material/proc/check_health(var/consumed)
@@ -116,7 +119,19 @@
 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 		return
 
-
+/obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/dumbass)
+	if(!fragile)
+		if(health < initial(health))
+			to_chat(dumbass, "You should repair [src] first. Try using [kit] on it.")
+			return FALSE
+		dumbass.visible_message("[dumbass] begins to replace parts of [src] with [kit].", "You begin to replace parts of [src] with [kit].")
+		if(do_after(usr, sharpen_time))
+			dumbass.visible_message("[dumbass] has finished replacing parts of [src].", "You finish replacing parts of [src].")
+			src.set_material(material)
+			return TRUE
+	else
+		to_chat(dumbass, "<span class = 'warning'>You can't sharpen and re-edge [src].</span>")
+		return FALSE
 
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
