@@ -1,5 +1,6 @@
 // Yeah yeah, vague file name. Basically a misc folder for antag things that RnD can make.
 
+/*
 /datum/design/item/binaryencrypt
 	name = "Binary encryption key"
 	desc = "Allows for deciphering the binary channel on-the-fly."
@@ -8,6 +9,7 @@
 	materials = list(MATERIAL_ID_STEEL = 300, MATERIAL_ID_GLASS = 300)
 	build_path = /obj/item/device/encryptionkey/binary
 	sort_string = "VASAA"
+*/
 
 /datum/design/item/chameleon
 	name = "Holographic equipment kit"
