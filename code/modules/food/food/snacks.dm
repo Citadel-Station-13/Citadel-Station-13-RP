@@ -5068,7 +5068,7 @@ END CITADEL CHANGE */
 	gender = PLURAL
 	desc = "A plate of spiced and steamed chicken dumplings. The style originates from south Asia."
 	icon = 'icons/obj/food.dmi'
-	icon_state = "momo"
+	icon_state = "tajaran_soup"
 	trash = /obj/item/trash/snacktray
 	filling_color = "#edd7d7"
 	nutriment_amt = 9
@@ -5084,7 +5084,7 @@ END CITADEL CHANGE */
 	gender = PLURAL
 	desc = "A plate of spiced and steamed vegetable dumplings. The style originates from south Asia."
 	icon = 'icons/obj/food.dmi'
-	icon_state = "momo"
+	icon_state = "tajaran_soup"
 	trash = /obj/item/trash/snacktray
 	filling_color = "#edd7d7"
 	nutriment_amt = 13

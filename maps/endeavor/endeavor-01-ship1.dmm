@@ -17772,14 +17772,14 @@
 /area/maintenance/research)
 "Hd" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/shovel{
+/obj/item/weapon/pickaxe/shovel{
 	pixel_x = 10
 	},
-/obj/item/weapon/shovel{
+/obj/item/weapon/pickaxe/shovel{
 	pixel_x = 5
 	},
-/obj/item/weapon/shovel,
-/obj/item/weapon/shovel{
+/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/pickaxe/shovel{
 	pixel_x = -5
 	},
 /obj/item/stack/flag/blue{

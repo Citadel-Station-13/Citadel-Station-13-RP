@@ -1,0 +1,6 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - rscadd: "Added a couple of new space chatter events, and added a lot of new destinations."
+  - rscdel: "Removed wrong-frequency event, it was super-rare anyway. Might readd later."
+  - tweak: "Various other space chatter event adjustments such as most TSCs being lawful, space con->flight con, protocol observance, etc."

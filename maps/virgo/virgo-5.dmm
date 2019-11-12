@@ -15091,7 +15091,7 @@
 /obj/item/weapon/pickaxe/hammer,
 /obj/item/weapon/wrench,
 /obj/item/weapon/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
 "Dg" = (
@@ -15099,7 +15099,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/wrench,
 /obj/item/weapon/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)

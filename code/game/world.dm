@@ -144,7 +144,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 //END
 
+	if (T == "ping")
+		var/x = 1
+		for (var/client/C)
+			x++
+		return x
+
 /*
+
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)

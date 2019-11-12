@@ -88,8 +88,8 @@
 /obj/item/weapon/material/knife/tacknife/combatknife
 	name = "combat knife"
 	desc = "If only you had a boot to put it in."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "tacknife"
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "buckknife"
 	item_state = "knife"
 	force_divisor = 0.34 // 20 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)

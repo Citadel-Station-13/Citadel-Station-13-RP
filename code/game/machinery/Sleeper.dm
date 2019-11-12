@@ -181,6 +181,10 @@
 
 	RefreshParts()
 
+/obj/machinery/sleeper/Destroy()
+	go_out()
+	return ..()
+
 /obj/machinery/sleeper/Initialize()
 	. = ..()
 	update_icon()

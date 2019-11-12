@@ -466,7 +466,7 @@
 /area/submap/cave/qShuttle)
 "bk" = (
 /obj/structure/table/rack,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /turf/simulated/shuttle/floor{
 	 icon_state = "floor_yellow"
 	},

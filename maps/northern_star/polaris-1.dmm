@@ -60540,7 +60540,7 @@
 /obj/item/weapon/pickaxe{
 	pixel_x = 5
 	},
-/obj/item/weapon/shovel{
+/obj/item/weapon/pickaxe/shovel{
 	pixel_x = -5
 	},
 /obj/structure/table/rack{
