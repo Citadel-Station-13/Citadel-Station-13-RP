@@ -46,3 +46,17 @@
 	materials = list(MATERIAL_ID_STEEL = 1000,MATERIAL_ID_GLASS = 1000)
 	build_path = /obj/item/device/depth_scanner
 	sort_string = "KAAAF"
+
+/datum/design/item/device/mining_scanner
+	id = "mining_scanner"
+	req_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
+	materials = list(DEFAULT_WALL_MATERIAL = 150)
+	build_path = /obj/item/weapon/mining_scanner
+	sort_string = "KAAAF"
+
+/datum/design/item/device/mining_scanner_adv
+	id = "mining_scanner_adv"
+	req_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	build_path = /obj/item/weapon/mining_scanner/advanced
+	sort_string = "KAAAG"
