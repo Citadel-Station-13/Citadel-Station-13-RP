@@ -42,9 +42,9 @@
 	if(!..(user, 5))
 		return
 
-	to_chat(user, "[charging ? "[charging]" : "Nothing" is in [src].")
+	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		to_chat(user, "Currenct charge: [charging.charge] / [charging.maxcharge].")
+		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
 
 /obj/machinery/cell_charger/attackby(obj/item/weapon/W, mob/user)
 	if(stat & BROKEN)
@@ -55,7 +55,7 @@
 			to_chat(user, "<span class='warning'>\The [src] isn't fitted for that type of cell.</span>")
 			return
 		if(charging)
-						to_chat(user, "<span class='warning'>There is already [charging] in [src].</span>")
+			to_chat(user, "<span class='warning'>There is already [charging] in [src].</span>")
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
