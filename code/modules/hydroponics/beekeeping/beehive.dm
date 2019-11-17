@@ -247,7 +247,7 @@
 	recipes = wax_recipes
 
 /datum/material/wax
-	name = "wax"
+	id = MATERIAL_ID_WAX
 	stack_type = /obj/item/stack/material/wax
 	icon_colour = "#fff343"
 	melting_point = T0C+300

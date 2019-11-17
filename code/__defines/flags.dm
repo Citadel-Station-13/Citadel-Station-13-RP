@@ -28,3 +28,4 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 // /obj material_usage_flags var
 #define USE_PRIMARY_MATERIAL_COLOR		(1<<0)			//change color to primary material on updatei con
 #define USE_PRIMARY_MATERIAL_OPACITY	(1<<1)			//above but for opacity
+#define USE_PRIMARY_MATERIAL_PREFIX		(1<<2)			//Use primary material get_prefix() before name. See UpdateDescriptions() on /atom.

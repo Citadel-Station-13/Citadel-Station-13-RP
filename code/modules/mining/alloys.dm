@@ -38,7 +38,7 @@
 	product = /obj/item/stack/material/steel
 
 /datum/alloy/borosilicate
-	metaltag = MATERIAL_ID_PHORONGLASS
+	metaltag = MATERIAL_ID_PHORON_GLASS
 	requires = list(
 		"platinum" = 1,
 		"sand" = 2

@@ -20,7 +20,7 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 
 	var/datum/material/material_primary
-	var/material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
+	var/material_usage_flags = USE_PRIMARY_MATERIAL_COLOR | USE_PRIMARY_MATERIAL_PREFIX
 
 /obj/Initialize(mapload)
 	. = ..()
@@ -197,3 +197,8 @@
 			alpha = 255 * (1 - (1 - material.opacity) * (1 - material_opacity))
 		else
 			alpha = 255
+
+/obj/GetNamePrefix()
+	. = ..()
+	if(material_primary && CHECK_BITFIELD(material_usage_flags, USE_PRIMARY_MATERIAL_PREFIX))
+		. += material_primary.get_prefix()

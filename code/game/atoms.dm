@@ -1,5 +1,6 @@
 /atom
 	layer = TURF_LAYER //This was here when I got here. Why though?
+	var/override_base_name			//override initial(name) on GetBaseName().
 	var/level = 2
 	var/flags = NONE
 	var/list/fingerprints
@@ -604,7 +605,20 @@
 
 //Auto update name/descriptions.
 /atom/proc/UpdateDescriptions()
-	return
+	var/list/prefixes = GetNamePrefixes()
+	var/base = GetNameBase()
+	var/list/suffixes = GetNameSuffixes()
+	name = "[length(prefixes)? "[prefixes.Join(" ")] " : ""][base][length(suffixes)? " [suffixes.Join(" ")]" : ""]"
+
+//Returns a list.
+/atom/proc/GetNamePrefix()
+	return list()
+
+/atom/proc/GetNameBase()
+	return override_base_name || initial(name)
+
+/atom/proc/GetNameSuffixes()
+	return list()
 
 /*
 	Adds an instance of colour_type to the atom's atom_colours list

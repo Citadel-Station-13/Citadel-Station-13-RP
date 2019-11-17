@@ -194,3 +194,6 @@
 
 /datum/material/proc/combustion_effect(var/turf/T, var/temperature)
 	return
+
+/datum/material/proc/get_prefix()
+	return display_name

@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(GLOB.ashtray_cache)
+GLOBAL_LIST_EMPTY(ashtray_cache)
 
 /obj/item/weapon/material/ashtray
 	name = "ashtray"

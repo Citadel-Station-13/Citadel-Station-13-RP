@@ -39,11 +39,12 @@ Protectiveness | Armor %
 	processing_objects -= src
 	return ..()
 
+/obj/item/clothing/UpdateDescriptions()
+	. = ..()
 
 // Debating if this should be made an /obj/item/ proc.
 /obj/item/clothing/UpdateMaterials()
 	. = ..()
-	name = "[material.display_name] [initial(name)]"
 	health = round(material.integrity/10)
 	if(material.products_need_process())
 		processing_objects |= src
