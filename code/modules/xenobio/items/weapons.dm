@@ -38,7 +38,15 @@
 /obj/item/weapon/melee/baton/slime/robot
 	hitcost = 200
 
-	use_external_power = TRUE
+/obj/item/weapon/melee/baton/slime/robot/attack_self(mob/user)
+	//try to find our power cell
+	var/mob/living/silicon/robot/R = loc
+	if (istype(R))
+		bcell = R.cell
+	return ..()
+
+/obj/item/weapon/melee/baton/slime/robot/attackby(obj/item/weapon/W, mob/user)
+	return
 
 // Xeno stun gun + projectile
 /obj/item/weapon/gun/energy/taser/xeno
