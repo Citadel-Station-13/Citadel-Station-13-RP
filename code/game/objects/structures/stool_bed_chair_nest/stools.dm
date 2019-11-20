@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 	icon_state = ""
 	overlays.Cut()
 	// Base icon.
-	var/cache_key = "stool-[material.name]"
+	var/cache_key = "stool-[material_primary?.id]"
 	if(isnull(GLOB.stool_icon_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		I.color = material_primary.icon_colour
@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 	overlays |= GLOB.stool_icon_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
-		var/padding_cache_key = "stool-padding-[padding_material.name]"
+		var/padding_cache_key = "stool-padding-[material_padding.id]"
 		if(isnull(GLOB.stool_icon_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
 			I.color = material_padding.icon_colour
@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(stool_icon_cache)
 
 /obj/item/weapon/stool/proc/dismantle()
 	material_primary?.place_sheet(get_turf(src))
-	padding_material?.place_sheet(get_turf(src))
+	material_padding?.place_sheet(get_turf(src))
 	qdel(src)
 
 /obj/item/weapon/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)

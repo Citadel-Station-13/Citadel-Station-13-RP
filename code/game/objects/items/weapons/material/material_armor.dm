@@ -39,69 +39,63 @@ Protectiveness | Armor %
 	processing_objects -= src
 	return ..()
 
-/obj/item/clothing/UpdateDescriptions()
-	. = ..()
-
 // Debating if this should be made an /obj/item/ proc.
 /obj/item/clothing/UpdateMaterials()
 	. = ..()
 	health = round(material.integrity/10)
-	if(material.products_need_process())
+	if(material_primary?.products_need_process())
 		processing_objects |= src
 	update_armor()
 
 // This is called when someone wearing the object gets hit in some form (melee, bullet_act(), etc).
 // Note that this cannot change if someone gets hurt, as it merely reacts to being hit.
-/obj/item/clothing/proc/clothing_impact(var/obj/source, var/damage)
-	if(material && damage)
+/obj/item/clothing/proc/clothing_impact(obj/source, damage)
+	if(material_primary && damage)
 		material_impact(source, damage)
 
-/obj/item/clothing/proc/material_impact(var/obj/source, var/damage)
-	if(!material || unbreakable)
+/obj/item/clothing/proc/material_impact(obj/source, damage)
+	if(!material_primary || unbreakable)
 		return
 
 	if(istype(source, /obj/item/projectile))
 		var/obj/item/projectile/P = source
 		if(P.pass_flags & PASSGLASS)
-			if(material.opacity - 0.3 <= 0)
+			if(material_primary.opacity - 0.3 <= 0)
 				return // Lasers ignore 'fully' transparent material.
 
-	if(material.is_brittle())
+	if(material_primary.is_brittle())
 		health = 0
-	else if(!prob(material.hardness))
+	else if(!prob(material_primary.hardness))
 		health--
 
 	if(health <= 0)
 		shatter()
 
 /obj/item/clothing/proc/shatter()
-	if(!material)
+	if(!material_primary)
 		return
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
+	T.visible_message("<span class='danger'>[src] [material_primary.destruction_desc]!</span>")
 	if(istype(loc, /mob/living))
 		var/mob/living/M = loc
 		M.drop_from_inventory(src)
-		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-			var/obj/item/weapon/material/shard/S = material.place_shard(T)
+		if(material_primary.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+			var/obj/item/weapon/material/shard/S = material_primary.place_shard(T)
 			M.embed(S)
 
 	playsound(src, "shatter", 70, 1)
 	qdel(src)
 
 // Might be best to make ablative vests a material armor using a new material to cut down on this copypaste.
-/obj/item/clothing/suit/armor/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(!material) // No point checking for reflection.
-		return ..()
-
-	if(material.reflectivity)
+/obj/item/clothing/suit/armor/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
+	if(material_primary?.reflectivity)
 		if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
 			var/obj/item/projectile/P = damage_source
 
 			if(P.reflected) // Can't reflect twice
 				return ..()
 
-			var/reflectchance = (40 * material.reflectivity) - round(damage/3)
+			var/reflectchance = (40 * material_primary.reflectivity) - round(damage/3)
 			reflectchance *= material_armor_modifer
 			if(!(def_zone in list(BP_TORSO, BP_GROIN)))
 				reflectchance /= 2
@@ -118,6 +112,8 @@ Protectiveness | Armor %
 				P.reflected = 1
 
 				return PROJECTILE_CONTINUE // complete projectile permutation
+	else
+		return ..()
 
 /proc/calculate_material_armor(amount)
 	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))
@@ -127,20 +123,20 @@ Protectiveness | Armor %
 
 
 /obj/item/clothing/proc/update_armor()
-	if(material)
+	if(material_primary)
 		var/melee_armor = 0, bullet_armor = 0, laser_armor = 0, energy_armor = 0, bomb_armor = 0
 
-		melee_armor = calculate_material_armor(material.protectiveness * material_armor_modifer)
+		melee_armor = calculate_material_armor(material_primary.protectiveness * material_armor_modifer)
 
-		bullet_armor = calculate_material_armor((material.protectiveness * (material.hardness / 100) * material_armor_modifer) * 0.7)
+		bullet_armor = calculate_material_armor((material_primary.protectiveness * (material_primary.hardness / 100) * material_armor_modifer) * 0.7)
 
-		laser_armor = calculate_material_armor((material.protectiveness * (material.reflectivity + 1) * material_armor_modifer) * 0.7)
-		if(material.opacity != 1)
-			laser_armor *= max(material.opacity - 0.3, 0) // Glass and such has an opacity of 0.3, but lasers should go through glass armor entirely.
+		laser_armor = calculate_material_armor((material_primary.protectiveness * (material_primary.reflectivity + 1) * material_armor_modifer) * 0.7)
+		if(material_primary.opacity != 1)
+			laser_armor *= max(material_primary.opacity - 0.3, 0) // Glass and such has an opacity of 0.3, but lasers should go through glass armor entirely.
 
-		energy_armor = calculate_material_armor((material.protectiveness * material_armor_modifer) * 0.4)
+		energy_armor = calculate_material_armor((material_primary.protectiveness * material_armor_modifer) * 0.4)
 
-		bomb_armor = calculate_material_armor((material.protectiveness * material_armor_modifer) * 0.5)
+		bomb_armor = calculate_material_armor((material_primary.protectiveness * material_armor_modifer) * 0.5)
 
 		// Makes sure the numbers stay capped.
 		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
@@ -152,9 +148,9 @@ Protectiveness | Armor %
 		armor["energy"] = energy_armor
 		armor["bomb"] = bomb_armor
 
-		if(!isnull(material.conductivity))
-			siemens_coefficient = between(0, material.conductivity / 10, 10)
-		slowdown = between(0, round(material.weight / 10, 0.1), 6)
+		if(!isnull(material_primary.conductivity))
+			siemens_coefficient = between(0, material_primary.conductivity / 10, 10)
+		slowdown = between(0, round(material_primary.weight / 10, 0.1), 6)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
@@ -201,12 +197,12 @@ Protectiveness | Armor %
 		if(!wired && !second_plate.wired)
 			to_chat(user, "<span class='warning'>You need something to hold the two pieces of plating together.</span>")
 			return
-		if(second_plate.material != src.material)
+		if(second_plate.material_primary != material_primary)
 			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
 			return
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(second_plate)
-		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, src.material.name)
+		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, material_primary.id)
 		user.put_in_hands(new_armor)
 		qdel(second_plate)
 		qdel(src)
@@ -230,8 +226,8 @@ Protectiveness | Armor %
 	if(istype(O, /obj/item/stack/material))
 		var/obj/item/stack/material/S = O
 		if(S.use(2))
-			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
-			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.name)
+			to_chat(user, "<span class='notice'>You apply some [S] to [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
+			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material_primary.id)
 			user.put_in_hands(helmet)
 			user.drop_from_inventory(src)
 			qdel(src)

@@ -48,14 +48,14 @@
 	setrepair()
 
 /obj/item/weapon/material/sharpeningkit/proc/setrepair()
-	repair_amount = material.hardness * 0.1
-	repair_time = material.weight * 0.5
-	sharpen_time = material.weight * 3
+	repair_amount = material_primary.hardness * 0.1
+	repair_time = material_primary.weight * 0.5
+	sharpen_time = material_primary.weight * 3
 
 /obj/item/weapon/material/sharpeningkit/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/stack/material))
 		var/obj/item/stack/material/S = W
-		if(S.material == material)
+		if(S.material_primary.equivalent_to(material_primary))
 			S.use(1)
 			uses += 1
 			to_chat(user, "You add a [S.material.name] [S.material.sheet_singular_name] to [src].")

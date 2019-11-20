@@ -16,6 +16,8 @@
 
 	var/perunit = SHEET_MATERIAL_AMOUNT
 
+	material_usage_flags = NONE
+
 /obj/item/stack/material/Initialize(mapload)
 	. = ..()
 	AutoSetMaterial(material_id, MATINDEX_OBJ_PRIMARY)
@@ -78,14 +80,14 @@
 	name = "iron"
 	icon_state = "sheet-silver"
 	material_id = MATERIAL_ID_IRON
-	apply_colour = 1
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 	no_variants = FALSE
 
 /obj/item/stack/material/lead
 	name = "lead"
 	icon_state = "sheet-adamantine"
 	material_id = MATERIAL_ID_LEAD
-	apply_colour = 1
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 	no_variants = TRUE
 
 /obj/item/stack/material/sandstone
@@ -146,7 +148,7 @@
 /obj/item/stack/material/mhydrogen
 	name = "metallic hydrogen"
 	icon_state = "sheet-mythril"
-	material_id = MATERIAL_ID_MHYDROGEN
+	material_id = MATERIAL_ID_METALLIC_HYDROGEN
 	no_variants = FALSE
 
 //Fuel for MRSPACMAN generator.
@@ -154,14 +156,14 @@
 	name = "tritium"
 	icon_state = "sheet-silver"
 	material_id = MATERIAL_ID_TRITIUM
-	apply_colour = 1
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 	no_variants = FALSE
 
 /obj/item/stack/material/osmium
 	name = "osmium"
 	icon_state = "sheet-silver"
 	material_id = MATERIAL_ID_OSMIUM
-	apply_colour = 1
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 	no_variants = FALSE
 
 //R-UST port
@@ -170,7 +172,7 @@
 	name = "deuterium"
 	icon_state = "sheet-silver"
 	material_id = MATERIAL_ID_DEUTERIUM
-	apply_colour = 1
+	material_usage_flags = USE_PRIMARY_MATERIAL_COLOR
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
@@ -257,7 +259,7 @@
 /obj/item/stack/material/cloth
 	name = "cloth"
 	icon_state = "sheet-cloth"
-	material_id = MATERIAL_ID_CLOTH
+	material_id = MATERIAL_ID_CLOTH_BASIC
 	no_variants = FALSE
 
 /obj/item/stack/material/cardboard

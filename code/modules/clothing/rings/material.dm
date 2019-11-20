@@ -43,4 +43,4 @@
 	material_primary = MATERIAL_ID_OSMIUM
 
 /obj/item/clothing/gloves/ring/material/mhydrogen
-	material_primary = MATERIAL_ID_MHYDROGEN
+	material_primary = MATERIAL_ID_METALLIC_HYDROGEN

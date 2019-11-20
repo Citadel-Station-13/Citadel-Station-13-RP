@@ -197,3 +197,6 @@
 
 /datum/material/proc/get_prefix()
 	return display_name
+
+/datum/material/proc/equivalent_to(datum/material/M)
+	return (M == src) || (M.id == id)
