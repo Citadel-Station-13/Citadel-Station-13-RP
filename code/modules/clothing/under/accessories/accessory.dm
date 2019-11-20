@@ -298,47 +298,38 @@
 
 /obj/item/clothing/accessory/bracelet/material
 	icon_state = "materialbracelet"
+	material_primary = MATERIAL_ID_STEEL
 
-/obj/item/clothing/accessory/bracelet/material/New(var/newloc, var/new_material)
-	..(newloc)
-	if(!new_material)
-		new_material = MATERIAL_ID_STEEL
-	material = get_material_by_name(new_material)
-	if(!istype(material))
-		qdel(src)
-		return
-	name = "[material.display_name] bracelet"
+/obj/item/clothing/accessory/bracelet/material/UpdateDescriptions()
+	. = ..()
 	desc = "A bracelet made from [material.display_name]."
-	color = material.icon_colour
 
 /obj/item/clothing/accessory/bracelet/material/get_material()
 	return material
 
-/obj/item/clothing/accessory/bracelet/material/wood/New(var/newloc)
-	..(newloc, MATERIAL_ID_WOOD)
+/obj/item/clothing/accessory/bracelet/material/wood
+	material_primary = MATERIAL_ID_WOOD
 
-/obj/item/clothing/accessory/bracelet/material/plastic/New(var/newloc)
-	..(newloc, MATERIAL_ID_PLASTIC)
+/obj/item/clothing/accessory/bracelet/material/plastic
+	material_primary = MATERIAL_ID_PLASTIC
 
-/obj/item/clothing/accessory/bracelet/material/iron/New(var/newloc)
-	..(newloc, MATERIAL_ID_IRON)
+/obj/item/clothing/accessory/bracelet/material/iron
+	material_primary = MATERIAL_ID_IRON
 
-/obj/item/clothing/accessory/bracelet/material/steel/New(var/newloc)
-	..(newloc, MATERIAL_ID_STEEL)
+/obj/item/clothing/accessory/bracelet/material/steel
+	material_primary = MATERIAL_ID_STEEL
 
-/obj/item/clothing/accessory/bracelet/material/silver/New(var/newloc)
-	..(newloc, MATERIAL_ID_SILVER)
+/obj/item/clothing/accessory/bracelet/material/silver
+	material_primary = MATERIAL_ID_SILVER
 
-/obj/item/clothing/accessory/bracelet/material/gold/New(var/newloc)
-	..(newloc, MATERIAL_ID_GOLD)
+/obj/item/clothing/accessory/bracelet/material/gold
+	material_primary = MATERIAL_ID_GOLD
 
-/obj/item/clothing/accessory/bracelet/material/platinum/New(var/newloc)
-	..(newloc, MATERIAL_ID_PLATINUM)
+/obj/item/clothing/accessory/bracelet/material/platinum
+	material_primary = MATERIAL_ID_PLATINUM
 
-/obj/item/clothing/accessory/bracelet/material/phoron/New(var/newloc)
-	..(newloc, MATERIAL_ID_PHORON)
+/obj/item/clothing/accessory/bracelet/material/phoron
+	material_primary = MATERIAL_ID_PHORON
 
-/obj/item/clothing/accessory/bracelet/material/glass/New(var/newloc)
-	..(newloc, MATERIAL_ID_GLASS)
-
-	..()
+/obj/item/clothing/accessory/bracelet/material/glass
+	material_primary = MATERIAL_ID_GLASS

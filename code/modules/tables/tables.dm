@@ -187,19 +187,17 @@ GLOBAL_LIST_EMPTY(table_icon_cache)
 	else
 		return ..()
 
+/obj/structure/table/GetNamePrefix()
+	. = ..()
+	if(material_reinforcing)
+		. += "reinforced"
 
-/obj/structure/table/proc/update_desc()
-	if(material_primary)
-		name = "[material_primary.display_name] table"
-	else
-		name = "table frame"
-
-	if(reinforcing_material)
-		name = "reinforced [name]"
+/obj/structure/table/UpdateDescriptions()
+	. = ..()
+	if(material_reinforcing)
 		desc = "[initial(desc)] This one seems to be reinforced with [reinforcing_material.display_name]."
 	else
 		desc = initial(desc)
-
 
 /obj/structure/table/proc/dismantle(obj/item/W, mob/user)
 	if(manipulating)
@@ -376,6 +374,8 @@ GLOBAL_LIST_EMPTY(table_icon_cache)
 
 	health = min(health, maxhealth)
 	update_desc()
+	update_icon()
+	update_connections(TRUE)
 
 /obj/structure/table/proc/take_damage(amount)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
