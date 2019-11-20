@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(chair_icon_cache)
 	icon_state = "comfychair_preview"
 
 /obj/structure/bed/chair/comfy/brown
-	material_padding = MATERAIL_ID_LETAHER
+	material_padding = MATERIAL_ID_LETAHER
 
 /obj/structure/bed/chair/comfy/red
 	material_padding = MATERIAL_ID_CARPET
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(chair_icon_cache)
 	material_padding = MATERIAL_ID_CLOTH_BLACK
 
 /obj/structure/bed/chair/comfy/green
-	material_padding = MATERAIL_ID_CLOTH_GREEN
+	material_padding = MATERIAL_ID_CLOTH_GREEN
 
 /obj/structure/bed/chair/comfy/purp
 	material_padding = MATERIAL_ID_CLOTH_PURPLE
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(chair_icon_cache)
 	material_padding = MATERIAL_ID_CLOTH_BEIGE
 
 /obj/structure/bed/chair/comfy/lime
-	material_padding = MATERAIL_ID_CLOTH_LIME
+	material_padding = MATERIAL_ID_CLOTH_LIME
 
 /obj/structure/bed/chair/sofa
 	name = "sofa"

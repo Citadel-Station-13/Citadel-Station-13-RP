@@ -109,7 +109,7 @@
 	flags &= ~ON_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/table/T = locate() in get_step(src.loc,D)
-		if(T && T.flipped == 1 && T.dir == src.dir && material && T.material&& T.material.name == material.name)
+		if(T && T.flipped == 1 && T.dir == src.dir && material_primary && T.material_primary && T.material_primary.equivalent_to(material_primary))
 			T.unflip()
 
 	update_connections(1)
