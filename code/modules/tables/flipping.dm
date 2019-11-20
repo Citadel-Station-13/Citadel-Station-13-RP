@@ -5,7 +5,7 @@
 	var/obj/structure/table/T
 	for(var/angle in list(-90,90))
 		T = locate() in get_step(src.loc,turn(direction,angle))
-		if(T && T.flipped == 0 && T.material.name == material.name)
+		if(T && T.flipped == 0 && T.material_primary?.equivalent_to(material_primary))
 			return 0
 	T = locate() in get_step(src.loc,direction)
 	if (!T || T.flipped == 1 || T.material != material)
@@ -91,7 +91,7 @@
 	flags |= ON_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
 		var/obj/structure/table/T = locate() in get_step(src,D)
-		if(T && T.flipped == 0 && material && T.material && T.material.name == material.name)
+		if(T && T.flipped == 0 && T.material_primary?.equivalent_to(material_primary))
 			T.flip(direction)
 	take_damage(rand(5, 10))
 	update_connections(1)

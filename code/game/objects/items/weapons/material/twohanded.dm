@@ -93,7 +93,7 @@
 	slot_flags = SLOT_BACK
 	force_wielded = 30
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	applies_material_colour = 0
+	material_usage_flags = USE_PRIMARY_MATERIAL_PREFIX
 	can_cleave = TRUE
 
 /obj/item/weapon/material/twohanded/fireaxe/update_held_icon()

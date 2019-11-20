@@ -199,4 +199,4 @@
 	return display_name
 
 /datum/material/proc/equivalent_to(datum/material/M)
-	return (M == src) || (M.id == id)
+	return M && ((M == src) || (M.id == id))

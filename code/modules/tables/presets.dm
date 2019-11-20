@@ -2,93 +2,60 @@
 /obj/structure/table/standard
 	icon_state = "plain_preview"
 	color = "#EEEEEE"
-
-/obj/structure/table/standard/New()
-	material = get_material_by_name(DEFAULT_TABLE_MATERIAL)
-	..()
+	material_primary = DEFAULT_TABLE_MATERIAL_ID
 
 /obj/structure/table/steel
 	icon_state = "plain_preview"
 	color = "#666666"
-
-/obj/structure/table/steel/New()
-	material = get_material_by_name(MATERIAL_ID_STEEL)
-	..()
+	material_primary = MATERIAL_ID_STEEL
 
 /obj/structure/table/marble
 	icon_state = "stone_preview"
 	color = "#CCCCCC"
-
-/obj/structure/table/marble/New()
-	material = get_material_by_name("marble")
-	..()
+	material_primary = MATERIAL_ID_MARBLE
 
 /obj/structure/table/reinforced
 	icon_state = "reinf_preview"
 	color = "#EEEEEE"
-
-/obj/structure/table/reinforced/New()
-	material = get_material_by_name(DEFAULT_TABLE_MATERIAL)
-	reinforced = get_material_by_name(MATERIAL_ID_STEEL)
-	..()
+	material_primary = DEFAULT_TABLE_MATERIAL_ID
+	material_reinforcing = MATERIAL_ID_STEEL
 
 /obj/structure/table/steel_reinforced
 	icon_state = "reinf_preview"
 	color = "#666666"
-
-/obj/structure/table/steel_reinforced/New()
-	material = get_material_by_name(MATERIAL_ID_STEEL)
-	reinforced = get_material_by_name(MATERIAL_ID_STEEL)
-	..()
+	material_primary = MATERIAL_ID_STEEL
+	material_reinforced = MATERIAL_ID_REINFORCED
 
 /obj/structure/table/wooden_reinforced
 	icon_state = "reinf_preview"
 	color = "#824B28"
-
-/obj/structure/table/wooden_reinforced/New()
-	material = get_material_by_name(MATERIAL_ID_WOOD)
-	reinforced = get_material_by_name(MATERIAL_ID_STEEL)
-	..()
+	material_primary = MATERIAL_ID_WOOD
+	material_reinforcing = MATERIAL_ID_STEEL
 
 /obj/structure/table/woodentable
 	icon_state = "plain_preview"
 	color = "#824B28"
-
-/obj/structure/table/woodentable/New()
-	material = get_material_by_name(MATERIAL_ID_WOOD)
-	..()
+	material_primary = MATERIAL_ID_WOOD
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
-
-/obj/structure/table/gamblingtable/New()
-	material = get_material_by_name(MATERIAL_ID_WOOD)
-	carpeted = 1
-	..()
+	material_primary = MATERIAL_ID_WOOD
+	carpeted = TRUE
 
 /obj/structure/table/glass
 	icon_state = "plain_preview"
 	color = "#00E1FF"
 	alpha = 77 // 0.3 * 255
-
-/obj/structure/table/glass/New()
-	material = get_material_by_name(MATERIAL_ID_GLASS)
-	..()
+	material_primary = MATERIAL_ID_GLASS
 
 /obj/structure/table/holotable
 	icon_state = "holo_preview"
 	color = "#EEEEEE"
-
-/obj/structure/table/holotable/New()
-	material = get_material_by_name("holo[DEFAULT_TABLE_MATERIAL]")
-	..()
+	material_primary = MATERIAL_ID_STEEL_HOLO
 
 /obj/structure/table/woodentable/holotable
 	icon_state = "holo_preview"
-
-/obj/structure/table/woodentable/holotable/New()
-	material = get_material_by_name("holowood")
-	..()
+	material_primary = MATERIAL_ID_WOOD_HOLO
 
 /obj/structure/table/alien
 	name = "alien table"
@@ -104,7 +71,7 @@
 	..()
 
 /obj/structure/table/alien/dismantle(obj/item/weapon/wrench/W, mob/user)
-	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
+	to_chat(user, "<span class='warning'>You cannot dismantle [src].</span>")
 	return
 
 //BENCH PRESETS

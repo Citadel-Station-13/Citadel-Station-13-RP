@@ -123,24 +123,24 @@ GLOBAL_LIST_EMPTY(table_icon_cache)
 /obj/structure/table/proc/common_material_add(obj/item/stack/material/S, mob/user, verb) // Verb is actually verb without 'e' or 'ing', which is added. Works for 'plate'/'plating' and 'reinforce'/'reinforcing'.
 	var/datum/material/M = S.get_material()
 	if(!istype(M))
-		to_chat(user, "<span class='warning'>You cannot [verb]e \the [src] with \the [S].</span>")
+		to_chat(user, "<span class='warning'>You cannot [verb]e [src] with [S].</span>")
 		return null
 
 	if(manipulating) return M
 	manipulating = 1
-	to_chat(user, "<span class='notice'>You begin [verb]ing \the [src] with [M.display_name].</span>")
+	to_chat(user, "<span class='notice'>You begin [verb]ing [src] with [M.display_name].</span>")
 	if(!do_after(user, 20) || !S.use(1))
 		manipulating = 0
 		return null
-	user.visible_message("<span class='notice'>\The [user] [verb]es \the [src] with [M.display_name].</span>", "<span class='notice'>You finish [verb]ing \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] [verb]es [src] with [M.display_name].</span>", "<span class='notice'>You finish [verb]ing [src].</span>")
 	manipulating = 0
 	return M
 
 // Returns the material to set the table to.
 /obj/structure/table/proc/common_material_remove(mob/user, datum/material/M, delay, what, type_holding, sound)
 	if(!M.stack_type)
-		to_chat(user, "<span class='warning'>You are unable to remove the [what] from this [src]!</span>")
-		return FALSe
+		to_chat(user, "<span class='warning'>You are unable to [what] from [src]!</span>")
+		return FALSE
 
 	if(manipulating)
 		return FALSE
