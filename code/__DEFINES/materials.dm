@@ -97,3 +97,7 @@
 #define MATERIAL_ID_DUNGEON_WALL		"DUNGEONIUM"
 #define MATERIAL_ID_BEDROCK				"BEDROCK"
 #define MATERIAL_ID_ALIEN_STEEL			"ALIEN_STEEL"
+
+//Vorecode materials that exist because ???
+#define MATERIAL_ID_FLESH				"FLESH"
+#define MATERIAL_ID_FLUFF				"FLUFF"

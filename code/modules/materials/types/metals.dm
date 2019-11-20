@@ -94,7 +94,7 @@
 	is_fusion_fuel = 1
 
 /datum/material/platinum
-	id = MATERIAL_ID_PLATNIUM
+	id = MATERIAL_ID_PLATINUM
 	display_name = "platnium"
 	stack_type = /obj/item/stack/material/platinum
 	icon_colour = "#9999FF"

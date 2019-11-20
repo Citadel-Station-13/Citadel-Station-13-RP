@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(bed_icon_cache)
+
 /* Beds... get your mind out of the gutter, they're for sleeping!
  * Contains:
  * 		Beds
@@ -44,24 +46,24 @@
 	overlays.Cut()
 	// Base icon.
 	var/cache_key = "[base_icon]-[material.name]"
-	if(isnull(stool_cache[cache_key]))
+	if(isnull(GLOB.bed_icon_cache[cache_key]))
 		var/image/I = image(icon, base_icon) //VOREStation Edit
 		//var/image/I = image('icons/obj/furniture.dmi', base_icon) //From Polaris Sync. Not sure if this is a better way of doing it or not. Uncomment if so.
 		if(applies_material_colour) //VOREStation Add - Goes with added var
 			I.color = material_primary.icon_colour
-		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+		GLOB.bed_icon_cache[cache_key] = I
+	overlays |= GLOB.bed_icon_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
-		if(isnull(stool_cache[padding_cache_key]))
+		if(isnull(GLOB.bed_icon_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding")
 			I.color = material_padding.icon_colour
-			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
+			GLOB.bed_icon_cache[padding_cache_key] = I
+		overlays |= GLOB.bed_icon_cache[padding_cache_key]
 	// Strings.
 	desc = initial(desc)
-	if(padding_material)
+	if(material_padding)
 		name = "[material_padding.display_name] [initial(name)]" //this is not perfect but it will do for now.
 		desc += " It's made of [material_primary.use_name] and covered with [material_padding.use_name]."
 	else
@@ -121,7 +123,7 @@
 		return
 
 	else if(W.is_wirecutter())
-		if(!padding_material)
+		if(!material_padding)
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
@@ -157,7 +159,7 @@
 
 /obj/structure/bed/proc/dismantle()
 	material_primary?.place_sheet(get_turf(src))
-	padding_material?.place_sheet(get_turf(src))
+	material_padding?.place_sheet(get_turf(src))
 
 /obj/structure/bed/psych
 	name = "psychiatrist's couch"

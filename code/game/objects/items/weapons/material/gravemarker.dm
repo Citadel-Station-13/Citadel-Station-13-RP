@@ -16,21 +16,21 @@
 		var/carving_1 = sanitizeSafe(input(user, "Who is \the [src.name] for?", "Gravestone Naming", null)  as text, MAX_NAME_LEN)
 		if(carving_1)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.toolspeed))
+			if(do_after(user, material_primary?.hardness * W.toolspeed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				grave_name += carving_1
 				update_icon()
 		var/carving_2 = sanitizeSafe(input(user, "What message should \the [src.name] have?", "Epitaph Carving", null)  as text, MAX_NAME_LEN)
 		if(carving_2)
 			user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-			if(do_after(user, material.hardness * W.toolspeed))
+			if(do_after(user, material_primary?.hardness * W.toolspeed))
 				user.visible_message("[user] carves something into \the [src.name].", "You carve your message into \the [src.name].")
 				epitaph += carving_2
 				update_icon()
 	if(W.is_wrench())
 		user.visible_message("[user] starts carving \the [src.name].", "You start carving \the [src.name].")
-		if(do_after(user, material.hardness * W.toolspeed))
-			material.place_dismantled_product(get_turf(src))
+		if(do_after(user, material_primary?.hardness * W.toolspeed))
+			material_primary?.place_dismantled_product(get_turf(src))
 			user.visible_message("[user] dismantles down \the [src.name].", "You dismantle \the [src.name].")
 			qdel(src)
 	..()
@@ -58,7 +58,7 @@
 	..()
 
 /obj/item/weapon/material/gravemarker/attack_self(mob/user)
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
 	if(!isturf(user.loc))
 		return 0
@@ -77,4 +77,3 @@
 		G.add_fingerprint(usr)
 		G.dir = user.dir
 		QDEL_NULL(src)
-	return

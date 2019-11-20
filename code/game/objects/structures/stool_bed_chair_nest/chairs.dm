@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(chair_icon_cache)
+
 /obj/structure/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
@@ -44,13 +46,13 @@
 	. = ..()
 	if(has_buckled_mobs() && material_padding)
 		var/cache_key = "[base_icon]-armrest-[material_padding.name]"
-		if(isnull(stool_cache[cache_key]))
+		if(isnull(GLOB.chair_icon_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon]_armrest")
 			I.layer = MOB_LAYER + 0.1
 			I.plane = MOB_PLANE
 			I.color = material_padding.icon_colour
-			stool_cache[cache_key] = I
-		overlays |= stool_cache[cache_key]
+			GLOB.chair_icon_cache[cache_key] = I
+		overlays |= GLOB.chair_icon_cache[cache_key]
 
 /obj/structure/bed/chair/proc/update_layer()
 	if(dir == NORTH)
