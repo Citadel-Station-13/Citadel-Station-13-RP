@@ -77,11 +77,9 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
-/*
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOR_PRIORITY)
-*/
 
 /*
 	if (light_power && light_range)
@@ -569,3 +567,64 @@
 
 /atom/proc/GenerateTag()
 	return
+
+///Adds an instance of colour_type to the atom's atom_colours list
+/atom/proc/add_atom_colour(coloration, colour_priority)
+	if(!coloration)
+		return
+	if(colour_priority > atom_colours.len)
+		return
+	if(!LAZYLEN(atom_colours))
+		atom_colours = list()
+		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
+	atom_colours[colour_priority] = coloration
+	update_atom_colour()
+
+///Removes an instance of colour_type from the atom's atom_colours list
+/atom/proc/remove_atom_colour(colour_priority, coloration)
+	if(colour_priority > atom_colours.len)
+		return
+	if(!atom_colours)
+		return
+	if(coloration && atom_colours[colour_priority] != coloration)
+		return //if we don't have the expected color (for a specific priority) to remove, do nothing
+	atom_colours[colour_priority] = null
+	update_atom_colour()
+
+///Resets the atom's color to null, and then sets it to the highest priority colour available
+/atom/proc/update_atom_colour()
+	LAZYCLEARLIST(atom_colours)
+	color = null
+	for(var/C in atom_colours)
+		if(islist(C))
+			var/list/L = C
+			if(L.len)
+				color = L
+				return
+		else if(C)
+			color = C
+			return
+
+//Atomo serialization procs. Intentionally does NOT serialize things like layer/plane/icon_state, all of which are generally not the best idea to be serializing until someone figures out a good way to handle it.
+
+/atom/serialize_list(list/options)
+	. = ..()
+	if(options[SERIALIZE_PIXEL_OFFSETS])
+		SERIALIZE_VAR_INTO(., pixel_x)
+		SERIALIZE_VAR_INIT(., pixel_y)
+	if(!options[SERIALIZE_IGNORE_NAME])
+		SERIALIZE_VAR_INTO(., name)
+	if(options[SERIALIZE_DIR])
+		SERIALIZE_VAR_INTO(., dir)
+	if(!options[SERIALIZE_IGNORE_COLOR])
+		SERIALIZE_VAR_INTO(., atom_colours)
+
+/atom/deserialize_list(list/L, list/options)
+	. = ..()
+	DESERIALIZE_VAR_FROM(., pixel_x)
+	DESERIALIZE_VAR_FROM(., pixel_y)
+	DESERIALIZE_VAR_FROM(., name)
+	DESERIALIZE_VAR_FROM(., dir)
+	if(.[NAMEOF(src, atom_colours)])
+		atom_colours = .[NAMEOF(src, atom_colours)]
+		update_atom_colours()

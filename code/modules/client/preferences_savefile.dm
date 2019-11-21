@@ -70,9 +70,9 @@
 	player_setup.save_preferences(S)
 	return 1
 
-/datum/preferences/proc/load_character(slot)
+/datum/preferences/proc/load_character(slot, bypass_cooldown = FALSE)
 	if(!path)				return 0
-	if(world.time < loadcharcooldown)
+	if(!bypass_cooldown && (world.time < loadcharcooldown))
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
 		return 0
@@ -81,7 +81,8 @@
 	var/savefile/S = new /savefile(path)
 	if(!S)					return 0
 	S.cd = "/"
-	if(!slot)	slot = default_slot
+	if(!slot)
+		slot = default_slot
 	if(slot != SAVE_RESET) // SAVE_RESET will reset the slot as though it does not exist, but keep the current slot for saving purposes.
 		slot = sanitize_integer(slot, 1, config.character_slots, initial(default_slot))
 		if(slot != default_slot)
@@ -100,9 +101,9 @@
 	player_setup.load_character(S)
 	return 1
 
-/datum/preferences/proc/save_character()
+/datum/preferences/proc/save_character(bypass_cooldown = FALSE)
 	if(!path)				return 0
-	if(world.time < savecharcooldown)
+	if(!bypass_cooldown && (world.time < savecharcooldown))
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
 		return 0

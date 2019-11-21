@@ -260,6 +260,7 @@
 #include "code\controllers\subsystems\orbits.dm"
 #include "code\controllers\subsystems\overlays.dm"
 #include "code\controllers\subsystems\persist_vr.dm"
+#include "code\controllers\subsystems\persistence.dm"
 #include "code\controllers\subsystems\planets.dm"
 #include "code\controllers\subsystems\shuttles.dm"
 #include "code\controllers\subsystems\timer.dm"

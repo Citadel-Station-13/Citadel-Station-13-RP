@@ -149,12 +149,21 @@
 #endif
 
 ///Return a LIST for serialize_datum to encode! Not the actual json!
+///options is a typecache-style list for performance (eg: OPTION = TRUE, OPTION2 = TRUE)
 /datum/proc/serialize_list(list/options)
-	CRASH("Attempted to serialize datum [src] of type [type] without serialize_list being implemented!")
+	. = list()
+	if(CHECK_BITFIELD(datum_flags, DF_VAR_EDITED))
+		.["VAREDITED"] = TRUE
+	.["DATUM_TYPE"] = type
+	return .
 
 ///Accepts a LIST from deserialize_datum. Should return src or another datum.
-/datum/proc/deserialize_list(json, list/options)
-	CRASH("Attempted to deserialize datum [src] of type [type] without deserialize_list being implemented!")
+/datum/proc/deserialize_list(list/data, list/options)
+	if(data["DATUM_TYPE"] != type)
+		CRASH("Incorrect datum type in list during deserialize_list!")
+	if(data["VAREDITED"])
+		ENABLE_BITFIELD(datum_flags, DF_VAR_EDITED)
+	return src
 
 ///Serializes into JSON. Does not encode type.
 /datum/proc/serialize_json(list/options)
@@ -177,11 +186,10 @@
 		return
 	var/list/jsonlist = D.serialize_list(options)
 	if(islist(jsonlist))
-		jsonlist["DATUM_TYPE"] = D.type
-	return json_encode(jsonlist)
+		return json_encode(jsonlist)
 
 /// Convert a list of json to datum
-/proc/json_deserialize_datum(list/jsonlist, list/options, target_type, strict_target_type = FALSE)
+/proc/json_deserialize_datum(list/jsonlist, list/options, target_type, strict_target_type = FALSE, new_loc)
 	if(!islist(jsonlist))
 		if(!istext(jsonlist))
 			CRASH("Invalid JSON")
@@ -207,7 +215,11 @@
 		else if(!ispath(jsonlist["DATUM_TYPE"], target_type))
 			return
 	var/typeofdatum = jsonlist["DATUM_TYPE"]			//BYOND won't directly read if this is just put in the line below, and will instead runtime because it thinks you're trying to make a new list?
-	var/datum/D = new typeofdatum
+	var/datum/D
+	if(ispath(typeofdatum, /atom))
+		D = new typeofdatum(new_loc)
+	else
+		D = new typeofdatum
 	var/datum/returned = D.deserialize_list(jsonlist, options)
 	if(!istype(returned, /datum))
 		qdel(D)

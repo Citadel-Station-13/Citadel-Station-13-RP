@@ -194,7 +194,7 @@
 	var/list/serialized = list()
 	for(var/belly in src.vore_organs)
 		var/obj/belly/B = belly
-		serialized += list(B.serialize()) //Can't add a list as an object to another list in Byond. Thanks.
+		serialized += list(json_serialize_datum(B))
 
 	P.belly_prefs = serialized
 
@@ -219,7 +219,7 @@
 	release_vore_contents(silent = TRUE)
 	vore_organs.Cut()
 	for(var/entry in P.belly_prefs)
-		list_to_object(entry,src)
+		json_deserialize_datum(entry, new_loc = src)
 
 	return 1
 

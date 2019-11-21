@@ -13,11 +13,9 @@
 	if(!Debug2)
 		flags |= ADMIN_SPAWNED
 	. = ..()
-		/*
 	switch(var_name)
 		if("color")
 			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
-		*/
 
 /**
   * Return the markup to for the dropdown list for the VV panel for this atom

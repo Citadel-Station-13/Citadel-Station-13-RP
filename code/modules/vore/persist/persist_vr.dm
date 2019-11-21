@@ -223,37 +223,17 @@
 * towards future shenanigans such as upgradable NIFs or different types or things of that nature,
 * without invoking the need for a bunch of different save file variables.
 */
-/proc/persist_nif_data(var/mob/living/carbon/human/H,var/datum/preferences/prefs)
+/proc/persist_nif_data(mob/living/carbon/human/H, datum/preferences/prefs)
 	if(!istype(H))
 		crash_with("Persist (NIF): Given a nonhuman: [H]")
 		return
 
-	if(!prefs)
-		prefs = prep_for_persist(H)
-
-	if(!prefs)
-		WARNING("Persist (NIF): [H] has no prefs datum, skipping")
-		return
+	if(!H.mind || !H.mind.loaded_from_ckey || !H.mind_loaded_from_slot)
+		CRASH("No ckey or slot stored in mind")
 
 	var/obj/item/device/nif/nif = H.nif
-
-	//If they have one, and if it's not installing without an owner, because
-	//Someone who joins and immediately leaves again (wrong job choice, maybe)
-	//should keep it even though it was probably doing the quick-calibrate, and their
-	//owner will have been pre-set during the constructor.
 	if(nif && !(nif.stat == NIF_INSTALLING && !nif.owner))
-		prefs.nif_path = nif.type
-		prefs.nif_durability = nif.durability
-		prefs.nif_savedata = nif.save_data.Copy()
-	else
-		prefs.nif_path = null
-		prefs.nif_durability = null
-		prefs.nif_savedata = null
-
-	var/datum/category_group/player_setup_category/vore_cat = prefs.player_setup.categories_by_name["Species Customization"]
-	var/datum/category_item/player_setup_item/vore/nif/nif_prefs = vore_cat.items_by_name["NIF Data"]
-
-	var/savefile/S = new /savefile(prefs.path)
-	if(!S) WARNING ("Persist (NIF): Couldn't load NIF save savefile? [prefs.real_name]")
-	S.cd = "/character[prefs.default_slot]"
-	nif_prefs.save_character(S)
+		var/datum/character_persistence_entry/entry = get_character_persistence_entry(H.mind.loaded_from_ckey, H.mind.loaded_from_slot)
+		entry.nif_path = nif.type
+		entry.nif_durability = nif.durability
+		entry.nif_savedata = nif.save_data.Copy()
