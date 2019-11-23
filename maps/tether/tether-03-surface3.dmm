@@ -11347,7 +11347,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/freezer{
 	name = "Kitchen";
-	req_access = list(28)
+	req_access = list(28);
+	req_one_access = newlist()
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -20859,6 +20860,14 @@
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"Mk" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Ml" = (
 /obj/structure/sink{
 	dir = 4;
@@ -20898,13 +20907,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
-"ME" = (
-/obj/structure/table/marble,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
 "MO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -20960,32 +20962,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
-"Ns" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Nv" = (
 /obj/item/weapon/stool/padded,
 /obj/machinery/alarm{
@@ -21121,11 +21097,6 @@
 "On" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -21135,7 +21106,8 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Bar Backroom";
-	req_access = list(25)
+	req_access = list(25);
+	req_one_access = list(25)
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
@@ -21313,6 +21285,32 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"PT" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "PV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -21364,6 +21362,32 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
+"Qe" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Qf" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -21920,6 +21944,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
+"Ua" = (
+/obj/structure/table/marble,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
+"Ub" = (
+/obj/effect/landmark{
+	name = "Observer-Start"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "Uf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -22150,12 +22187,18 @@
 /area/tether/surfacebase/public_garden_three)
 "Wd" = (
 /obj/machinery/computer/arcade/orion_trail,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22;
+	pixel_y = 0
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "We" = (
 /obj/machinery/door/window/westright{
 	name = "Bar";
-	req_access = list(25)
+	req_access = list(25);
+	req_one_access = list(25)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22233,14 +22276,6 @@
 /obj/item/weapon/reagent_containers/glass/rag,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
-"Xf" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Xh" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/northern_star,
@@ -22497,32 +22532,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
-"Zm" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Zn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -22552,12 +22561,6 @@
 "Zq" = (
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/public_garden_three)
-"Zt" = (
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
 "ZG" = (
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -36726,10 +36729,10 @@ vn
 wU
 xw
 ye
-Ns
-Xf
+PT
+Mk
 Ay
-Zm
+Qe
 xw
 xw
 CH
@@ -37424,7 +37427,7 @@ pc
 rL
 sk
 sH
-ME
+Ua
 th
 Zc
 KX
@@ -37566,7 +37569,7 @@ oJ
 rM
 sl
 sH
-ME
+Ua
 ti
 Az
 tO
@@ -37722,7 +37725,7 @@ Az
 Az
 Az
 Az
-Zt
+Ub
 Az
 DZ
 Ld
