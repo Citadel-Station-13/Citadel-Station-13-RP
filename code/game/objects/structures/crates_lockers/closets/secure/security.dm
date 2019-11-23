@@ -19,6 +19,7 @@
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/flash,
+		/obj/item/device/gps/command,
 		/obj/item/weapon/storage/belt/sheath,
 		/obj/item/weapon/storage/box/ids)
 
@@ -41,6 +42,7 @@
 		/obj/item/device/radio/headset/heads/hop/alt,
 		/obj/item/weapon/storage/box/ids = 2,
 		/obj/item/weapon/gun/energy/gun,
+		/obj/item/device/gps/command,
 		/obj/item/weapon/gun/energy/gun/martin, //VOREStation Add,
 		///obj/item/weapon/gun/projectile/sec/flash, //VOREStation Removal,
 		/obj/item/device/flash)
@@ -119,6 +121,7 @@
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/device/gps/security/hos,
 		/obj/item/device/flashlight/maglight,
 		/obj/item/clothing/mask/gas/half)
 
@@ -168,6 +171,7 @@
 		/obj/item/clothing/head/beret/sec/corporate/warden,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/device/gps/security,
 		/obj/item/device/flashlight/maglight,
 		/obj/item/device/megaphone,
 		/obj/item/clothing/mask/gas/half)
@@ -212,6 +216,7 @@
 		///obj/item/ammo_magazine/m45/rubber, //VOREStation Removal,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/weapon/cell/device/weapon,
+		/obj/item/device/gps/security,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/device/flashlight/maglight)

@@ -4,12 +4,12 @@ var/list/GPS_list = list()
 	name = "global positioning system"
 	desc = "Triangulates the approximate co-ordinates using a nearby satellite network. Alt+click to toggle power."
 	icon = 'icons/obj/gps.dmi'
-	icon_state = "gps-c"
+	icon_state = "gps-gen"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
-	var/gps_tag = "COM0"
+	var/gps_tag = "GEN0"
 	var/emped = FALSE
 	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.
 	var/long_range = FALSE		// If true, can see farther, depending on get_map_levels().
@@ -171,12 +171,45 @@ var/list/GPS_list = list()
 /obj/item/device/gps/on // Defaults to off to avoid polluting the signal list with a bunch of GPSes without owners. If you need to spawn active ones, use these.
 	tracking = TRUE
 
+/obj/item/device/gps/command
+	icon_state = "gps-c"
+	gps_tag = "COM0"
+
+/obj/item/device/gps/command/on
+	tracking = TRUE
+
 /obj/item/device/gps/science
 	icon_state = "gps-s"
 	gps_tag = "SCI0"
 
 /obj/item/device/gps/science/on
 	tracking = TRUE
+	
+/obj/item/device/gps/science/rd
+	icon_state = "gps-rd"
+	gps_tag = "RD0"
+
+/obj/item/device/gps/security
+	icon_state = "gps-sec"
+	gps_tag = "SEC0"
+
+/obj/item/device/gps/security/on
+	tracking = TRUE
+
+/obj/item/device/gps/security/hos
+	icon_state = "gps-hos"
+	gps_tag = "HOS0"
+
+/obj/item/device/gps/medical
+	icon_state = "gps-med"
+	gps_tag = "MED0"
+
+/obj/item/device/gps/medical/on
+	tracking = TRUE
+
+/obj/item/device/gps/medical/cmo
+	icon_state = "gps-cmo"
+	gps_tag = "CMO0"
 
 /obj/item/device/gps/engineering
 	icon_state = "gps-e"
@@ -184,6 +217,14 @@ var/list/GPS_list = list()
 
 /obj/item/device/gps/engineering/on
 	tracking = TRUE
+	
+/obj/item/device/gps/engineering/ce
+	icon_state = "gps-ce"
+	gps_tag = "CE0"
+	
+/obj/item/device/gps/engineering/atmos
+	icon_state = "gps-atm"
+	gps_tag = "ATM0"
 
 /obj/item/device/gps/mining
 	icon_state = "gps-m"
