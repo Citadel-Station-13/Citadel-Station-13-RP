@@ -13704,6 +13704,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"yf" = (
+/obj/effect/landmark{
+	name = "Observer-Start"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "yg" = (
 /obj/structure/table/marble,
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker{
@@ -20834,6 +20840,32 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"LR" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "LW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -20860,14 +20892,6 @@
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
-"Mk" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Ml" = (
 /obj/structure/sink{
 	dir = 4;
@@ -21221,11 +21245,11 @@
 "Px" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
-/obj/structure/window/reinforced/polarized{
-	dir = 1;
+/obj/structure/window/reinforced/polarized/full{
 	id = "BRBKRTN"
 	},
-/obj/structure/window/reinforced/polarized/full{
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
 	id = "BRBKRTN"
 	},
 /turf/simulated/floor/plating,
@@ -21285,32 +21309,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
-"PT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "PV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -21362,32 +21360,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
-"Qe" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Qf" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -21829,6 +21801,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"SU" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "SX" = (
 /obj/effect/floor_decal/corner/beige{
 	dir = 10
@@ -21944,19 +21924,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
-"Ua" = (
-/obj/structure/table/marble,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
-"Ub" = (
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
 "Uf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -22023,6 +21990,13 @@
 /obj/item/weapon/storage/pill_bottle/dice,
 /obj/item/weapon/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/wood,
+/area/crew_quarters/bar)
+"UJ" = (
+/obj/structure/table/marble,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "UL" = (
 /obj/machinery/light,
@@ -22599,6 +22573,32 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
+"ZS" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 
 (1,1,1) = {"
 aa
@@ -36729,10 +36729,10 @@ vn
 wU
 xw
 ye
-PT
-Mk
+ZS
+SU
 Ay
-Qe
+LR
 xw
 xw
 CH
@@ -37427,7 +37427,7 @@ pc
 rL
 sk
 sH
-Ua
+UJ
 th
 Zc
 KX
@@ -37569,7 +37569,7 @@ oJ
 rM
 sl
 sH
-Ua
+UJ
 ti
 Az
 tO
@@ -37725,7 +37725,7 @@ Az
 Az
 Az
 Az
-Ub
+yf
 Az
 DZ
 Ld
