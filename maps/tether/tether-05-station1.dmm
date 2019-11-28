@@ -123,6 +123,9 @@
 	my_doors = list("expshuttle_door_L" = "Port Cargo", "expshuttle_door_Ro" = "Airlock Outer", "expshuttle_door_Ri" = "Airlock Inner", "expshuttle_door_cargo" = "Cargo Hatch");
 	my_sensors = list("shuttlesens_exp" = "Exterior Environment", "shuttlesens_exp_int" = "Cargo Area", "shuttlesens_exp_psg" = "Passenger Area")
 	},
+/obj/item/device/gps/internal/poi{
+	gps_tag = "Excursion Shuttle"
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "aax" = (
@@ -21638,6 +21641,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/station/explorer_meeting)
+"gDa" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "shuttle_blast";
+	name = "Blast Shields";
+	pixel_x = 27;
+	pixel_y = 35
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/excursion/tether)
 "gUt" = (
 /obj/structure/table/steel,
 /obj/item/clothing/head/pilot,
@@ -21680,6 +21693,12 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "shuttle_blast";
+	layer = 3.1;
+	name = "Shuttle Blast Shields"
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/tether)
@@ -21997,6 +22016,12 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "shuttle_blast";
+	layer = 3.1;
+	name = "Shuttle Blast Shields"
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/tether)
@@ -22664,6 +22689,12 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "shuttle_blast";
+	layer = 3.1;
+	name = "Shuttle Blast Shields"
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/tether)
@@ -34518,7 +34549,7 @@ aad
 aal
 ibX
 aaw
-aaD
+gDa
 aaK
 aaD
 aaD
