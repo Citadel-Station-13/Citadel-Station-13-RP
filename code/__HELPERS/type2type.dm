@@ -243,47 +243,6 @@
 /proc/isLeap(y)
 	return ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))
 
-/proc/type2parent(child)
-	var/string_type = "[child]"
-	var/last_slash = findlasttext(string_type, "/")
-	if(last_slash == 1)
-		switch(child)
-			if(/datum)
-				return null
-			if(/obj || /mob)
-				return /atom/movable
-			if(/area || /turf)
-				return /atom
-			else
-				return /datum
-	return text2path(copytext(string_type, 1, last_slash))
-
-//returns a string the last bit of a type, without the preceeding '/'
-/proc/type2top(the_type)
-	//handle the builtins manually
-	if(!ispath(the_type))
-		return
-	switch(the_type)
-		if(/datum)
-			return "datum"
-		if(/atom)
-			return "atom"
-		if(/obj)
-			return "obj"
-		if(/mob)
-			return "mob"
-		if(/area)
-			return "area"
-		if(/turf)
-			return "turf"
-		else //regex everything else (works for /proc too)
-			return lowertext(replacetext("[the_type]", "[type2parent(the_type)]/", ""))
-
-//This is a weird one:
-//It returns a list of all var names found in the string
-//These vars must be in the [var_name] format
-//It's only a proc because it's used in more than one place
-
 //Takes a string and a datum
 //The string is well, obviously the string being checked
 //The datum is used as a source for var names, to check validity
@@ -314,3 +273,11 @@
 				for(var/A in value)
 					if(var_source.vars.Find(A))
 						. += A
+
+/proc/get_end_section_of_type(type)
+	var/strtype = "[type]"
+	var/delim_pos = findlasttext(strtype, "/")
+	if(delim_pos == 0)
+		return strtype
+	return copytext(strtype, delim_pos)
+

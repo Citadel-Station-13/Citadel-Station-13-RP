@@ -55,6 +55,12 @@
 			return 1
 	return 0
 
+/proc/in_range(source, user)
+	if(get_dist(source, user) <= 1)
+		return 1
+
+	return 0 //not in range and not telekinetic
+
 // Like view but bypasses luminosity check
 
 /proc/hear(var/range, var/atom/source)
@@ -426,7 +432,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 
 /proc/Show2Group4Delay(obj/O, list/group, delay=0)
 	if(!isobj(O))	return
-	if(!group)	group = clients
+	if(!group)	group = GLOB.clients
 	for(var/client/C in group)
 		C.screen += O
 	if(delay)

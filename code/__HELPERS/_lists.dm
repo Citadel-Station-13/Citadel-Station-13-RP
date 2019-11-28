@@ -1,3 +1,126 @@
+/*
+ * Holds procs to help with list operations
+ * Contains groups:
+ *			Misc
+ *			Sorting
+ */
+
+/*
+ * Misc
+ */
+
+//Returns a list in plain english as a string
+/proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
+	switch(input.len)
+		if(0) return nothing_text
+		if(1) return "[input[1]]"
+		if(2) return "[input[1]][and_text][input[2]]"
+		else  return "[jointext(input, comma_text, 1, -1)][final_comma_text][and_text][input[input.len]]"
+
+//Returns list element or null. Should prevent "index out of bounds" error.
+proc/listgetindex(var/list/list,index)
+	if(istype(list) && list.len)
+		if(isnum(index))
+			if(InRange(index,1,list.len))
+				return list[index]
+		else if(index in list)
+			return list[index]
+	return
+
+//Return either pick(list) or null if list is not of type /list or is empty
+proc/safepick(list/list)
+	if(!islist(list) || !list.len)
+		return
+	return pick(list)
+
+//Checks if the list is empty
+proc/isemptylist(list/list)
+	if(!list.len)
+		return 1
+	return 0
+
+//Checks for specific types in a list
+/proc/is_type_in_list(var/atom/A, var/list/L)
+	for(var/type in L)
+		if(istype(A, type))
+			return 1
+	return 0
+
+//Checks for specific paths in a list
+/proc/is_path_in_list(var/atom/A, var/list/L)
+	for(var/path in L)
+		if(ispath(A, path))
+			return 1
+	return 0
+
+//////////////////////////////////////////////////////
+// "typecache" utilities - Making and searching them
+//////////////////////////////////////////////////////
+
+//Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')
+/proc/is_type_in_typecache(atom/A, list/L)
+	if(!LAZYLEN(L) || !A)
+		return FALSE
+	return L[A.type]
+
+//returns a new list with only atoms that are in typecache L
+/proc/typecache_filter_list(list/atoms, list/typecache)
+	. = list()
+	for(var/thing in atoms)
+		var/atom/A = thing
+		if(typecache[A.type])
+			. += A
+
+/proc/typecache_filter_list_reverse(list/atoms, list/typecache)
+	. = list()
+	for(var/thing in atoms)
+		var/atom/A = thing
+		if(!typecache[A.type])
+			. += A
+
+/proc/typecache_filter_multi_list_exclusion(list/atoms, list/typecache_include, list/typecache_exclude)
+	. = list()
+	for(var/thing in atoms)
+		var/atom/A = thing
+		if(typecache_include[A.type] && !typecache_exclude[A.type])
+			. += A
+
+//Like typesof() or subtypesof(), but returns a typecache instead of a list
+/proc/typecacheof(path, ignore_root_path, only_root_path = FALSE)
+	if(ispath(path))
+		var/list/types = list()
+		if(only_root_path)
+			types = list(path)
+		else
+			types = ignore_root_path ? subtypesof(path) : typesof(path)
+		var/list/L = list()
+		for(var/T in types)
+			L[T] = TRUE
+		return L
+	else if(islist(path))
+		var/list/pathlist = path
+		var/list/L = list()
+		if(ignore_root_path)
+			for(var/P in pathlist)
+				for(var/T in subtypesof(P))
+					L[T] = TRUE
+		else
+			for(var/P in pathlist)
+				if(only_root_path)
+					L[P] = TRUE
+				else
+					for(var/T in typesof(P))
+						L[T] = TRUE
+		return L
+
+//////////////////////////////////////////////////////
+
+//Empties the list by setting the length to 0. Hopefully the elements get garbage collected
+proc/clearlist(list/list)
+	if(istype(list))
+		list.len = 0
+	return
+
 //Removes any null entries from the list
 proc/listclearnulls(list/list)
 	if(istype(list))
@@ -37,6 +160,46 @@ proc/listclearnulls(list/list)
 		result = first ^ second
 	return result
 
+//Pretends to pick an element based on its weight but really just seems to pick a random element.
+/proc/pickweight(list/L)
+	var/total = 0
+	var/item
+	for (item in L)
+		if (!L[item])
+			L[item] = 1
+		total += L[item]
+
+	total = rand(1, total)
+	for (item in L)
+		total -=L [item]
+		if (total <= 0)
+			return item
+
+	return null
+
+//Pick a random element from the list and remove it from the list.
+/proc/pick_n_take(list/listfrom)
+	if (listfrom.len > 0)
+		var/picked = pick(listfrom)
+		listfrom -= picked
+		return picked
+	return null
+
+//Returns the top(last) element from the list and removes it from the list (typical stack function)
+/proc/pop(list/listfrom)
+	if (listfrom.len > 0)
+		var/picked = listfrom[listfrom.len]
+		listfrom.len--
+		return picked
+	return null
+
+//Returns the next element in parameter list after first appearance of parameter element. If it is the last element of the list or not present in list, returns first element.
+/proc/next_in_list(element, list/L)
+	for(var/i=1, i<L.len, i++)
+		if(L[i] == element)
+			return L[i+1]
+	return L[1]
+
 /*
  * Sorting
  */
@@ -49,6 +212,40 @@ proc/listclearnulls(list/list)
 			output += L[i]
 	return output
 
+//Randomize: Return the list in a random order
+/proc/shuffle(var/list/L)
+	if(!L)
+		return
+
+	L = L.Copy()
+
+	for(var/i=1; i<L.len; i++)
+		L.Swap(i, rand(i,L.len))
+	return L
+
+//same, but returns nothing and acts on list in place
+/proc/shuffle_inplace(list/L)
+	if(!L)
+		return
+
+	for(var/i=1, i<L.len, ++i)
+		L.Swap(i,rand(i,L.len))
+
+//Return a list with no duplicate entries
+/proc/uniquelist(var/list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+
+//same, but returns nothing and acts on list in place (also handles associated values properly)
+/proc/uniqueList_inplace(list/L)
+	var/temp = L.Copy()
+	L.len = 0
+	for(var/key in temp)
+		if (isnum(key))
+			L |= key
+		else
+			L[key] = temp[key]
 
 
 //Mergesort: divides up the list into halves to begin the sort
@@ -212,6 +409,38 @@ proc/listclearnulls(list/list)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
+
+// Macros to test for bits in a bitfield. Note, that this is for use with indexes, not bit-masks!
+#define BITTEST(bitfield,index)  ((bitfield)  &   (1 << (index)))
+#define BITSET(bitfield,index)   (bitfield)  |=  (1 << (index))
+#define BITRESET(bitfield,index) (bitfield)  &= ~(1 << (index))
+#define BITFLIP(bitfield,index)  (bitfield)  ^=  (1 << (index))
+
+//Converts a bitfield to a list of numbers (or words if a wordlist is provided)
+/proc/bitfield2list(bitfield = 0, list/wordlist)
+	var/list/r = list()
+	if(istype(wordlist,/list))
+		var/max = min(wordlist.len,16)
+		var/bit = 1
+		for(var/i=1, i<=max, i++)
+			if(bitfield & bit)
+				r += wordlist[i]
+			bit = bit << 1
+	else
+		for(var/bit=1, bit<=65535, bit = bit << 1)
+			if(bitfield & bit)
+				r += bit
+
+	return r
+
+// Returns the key based on the index
+/proc/get_key_by_index(var/list/L, var/index)
+	var/i = 1
+	for(var/key in L)
+		if(index == i)
+			return key
+		i++
+	return null
 
 // Returns the key based on the index
 /proc/get_key_by_value(var/list/L, var/value)
@@ -512,3 +741,25 @@ proc/dd_sortedTextList(list/incoming)
 
 	return L
 
+//Copies a list, and all lists inside it recusively
+//Does not copy any other reference type
+/proc/deepCopyList(list/l)
+	if(!islist(l))
+		return l
+	. = l.Copy()
+	for(var/i = 1 to l.len)
+		if(islist(.[i]))
+			.[i] = .(.[i])
+
+//Return a list with no duplicate entries
+/proc/uniqueList(list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+
+#define listequal(A, B) (A.len == B.len && !length(A^B))
+
+/proc/popleft(list/L)
+	if(L.len)
+		. = L[1]
+		L.Cut(1,2) 

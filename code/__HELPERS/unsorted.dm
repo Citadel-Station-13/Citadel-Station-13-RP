@@ -358,7 +358,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 			if(newname)
 				break	//That's a suitable name!
-			src << "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken."
+			to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
 
 		if(!newname)	//we'll stick with the oldname then
 			return
@@ -501,7 +501,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		moblist.Add(M)
 	for(var/mob/new_player/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/simple_animal/M in sortmob)
+	for(var/mob/living/simple_mob/M in sortmob)
 		moblist.Add(M)
 //	for(var/mob/living/silicon/hivebot/M in sortmob)
 //		mob_list.Add(M)
@@ -586,6 +586,10 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
 /proc/between(var/low, var/middle, var/high)
 	return max(min(middle, high), low)
+
+proc/arctan(x)
+	var/y=arcsin(x/sqrt(1+x*x))
+	return y
 
 //returns random gauss number
 proc/GaussRand(var/sigma)
@@ -808,7 +812,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 						var/old_decals = T.decals ? T.decals.Copy() : null
 
 						X = B.ChangeTurf(T.type)
-						X.setDir(old_dir1)
+						X.set_dir(old_dir1)
 						X.icon_state = old_icon_state1
 						X.icon = old_icon1
 						X.copy_overlays(T, TRUE)
@@ -824,15 +828,25 @@ proc/GaussRandRound(var/sigma,var/roundto)
 						SX.air.copy_from(ST.zone.air)
 						ST.zone.remove(ST)
 
+					var/z_level_change = FALSE
+					if(T.z != X.z)
+						z_level_change = TRUE
+
 					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 					for(var/obj/O in T)
 						O.loc = X
 						O.update_light()
+						if(z_level_change) // The objects still need to know if their z-level changed.
+							O.onTransitZ(T.z, X.z)
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
 						if(istype(M, /mob/observer/eye)) continue // If we need to check for more mobs, I'll add a variable
 						M.loc = X
+
+						if(z_level_change) // Same goes for mobs.
+							M.onTransitZ(T.z, X.z)
+
 						if(istype(M, /mob/living))
 							var/mob/living/LM = M
 							LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
@@ -934,7 +948,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 
 					var/turf/X = B
 					X.ChangeTurf(T.type)
-					X.setDir(old_dir1)
+					X.set_dir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
 					X.overlays = old_overlays
@@ -1142,7 +1156,7 @@ proc/is_hot(obj/item/W as obj)
 		istype(W, /obj/item/weapon/flame/lighter/zippo)			  || \
 		istype(W, /obj/item/weapon/flame/match)            		  || \
 		istype(W, /obj/item/clothing/mask/smokable/cigarette) 		      || \
-		istype(W, /obj/item/weapon/pickaxe/shovel) \
+		istype(W, /obj/item/weapon/shovel) \
 	)
 
 /proc/is_surgery_tool(obj/item/W as obj)
@@ -1202,7 +1216,7 @@ var/list/WALLITEMS = list(
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button/remote,
 	/obj/machinery/computer/security/telescreen, /obj/machinery/embedded_controller/radio,
 	/obj/item/weapon/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
-	/obj/structure/mirror, /obj/structure/closet/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment
+	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
@@ -1256,19 +1270,25 @@ var/list/WALLITEMS = list(
 			colour += temp_col
 	return colour
 
-GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
+var/mob/dview/dview_mob = new
 
 //Version of view() which ignores darkness, because BYOND doesn't have it.
 /proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
 	if(!center)
 		return
 
-	GLOB.dview_mob.loc = center
+	//VOREStation Add - Emergency Backup
+	if(!dview_mob)
+		dview_mob = new()
+		WARNING("dview mob was lost, and had to be recreated!")
+	//VOREStation Add End
 
-	GLOB.dview_mob.see_invisible = invis_flags
+	dview_mob.loc = center
 
-	. = view(range, GLOB.dview_mob)
-	GLOB.dview_mob.loc = null
+	dview_mob.see_invisible = invis_flags
+
+	. = view(range, dview_mob)
+	dview_mob.loc = null
 
 /mob/dview
 	invisibility = 101
@@ -1297,7 +1317,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	crash_with("Attempt to delete the dview_mob: [log_info_line(src)]")
 	if (!force)
 		return QDEL_HINT_LETMELIVE
-	GLOB.dview_mob = new
+	global.dview_mob = new
 	return ..()
 
 // call to generate a stack trace and print to runtime logs
@@ -1395,6 +1415,20 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 #undef NOT_FLAG
 #undef HAS_FLAG
 
+//datum may be null, but it does need to be a typed var
+#define NAMEOF(datum, X) (#X || ##datum.##X)
+
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##target, ##var_name, ##var_value)
+//dupe code because dm can't handle 3 level deep macros
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+
+/proc/___callbackvarset(list_or_datum, var_name, var_value)
+	if(length(list_or_datum))
+		list_or_datum[var_name] = var_value
+		return
+	var/datum/D = list_or_datum
+	D.vars[var_name] = var_value
+
 // Returns direction-string, rounded to multiples of 22.5, from the first parameter to the second
 // N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW
 /proc/get_adir(var/turf/A, var/turf/B)
@@ -1432,3 +1466,118 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			return "Northwest"
 		if(337.5)
 			return "North-Northwest"
+
+/proc/pass()
+	return
+
+#define NAMEOF(datum, X) (#X || ##datum.##X)
+
+/proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
+	if (value == FALSE) //nothing should be calling us with a number, so this is safe
+		value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
+		if (isnull(value))
+			return
+	value = trim(value)
+	if(!isnull(value) && value != "")
+		matches = filter_fancy_list(matches, value)
+
+	if(matches.len==0)
+		return
+
+	var/chosen
+	if(matches.len==1)
+		chosen = matches[1]
+	else
+		chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in matches
+		if(!chosen)
+			return
+	chosen = matches[chosen]
+	return chosen
+
+/proc/get_fancy_list_of_atom_types()
+	var/static/list/pre_generated_list
+	if (!pre_generated_list) //init
+		pre_generated_list = make_types_fancy(typesof(/atom))
+	return pre_generated_list
+
+/proc/get_fancy_list_of_datum_types()
+	var/static/list/pre_generated_list
+	if (!pre_generated_list) //init
+		pre_generated_list = make_types_fancy(sortList(typesof(/datum) - typesof(/atom)))
+	return pre_generated_list
+
+/proc/filter_fancy_list(list/L, filter as text)
+	var/list/matches = new
+	for(var/key in L)
+		var/value = L[key]
+		if(findtext("[key]", filter) || findtext("[value]", filter))
+			matches[key] = value
+	return matches
+
+/proc/make_types_fancy(var/list/types)
+	if (ispath(types))
+		types = list(types)
+	. = list()
+	for(var/type in types)
+		var/typename = "[type]"
+		var/static/list/TYPES_SHORTCUTS = list(
+			/obj/effect/decal/cleanable = "CLEANABLE",
+			/obj/item/device/radio/headset = "HEADSET",
+			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
+			/obj/item/weapon/book/manual = "MANUAL",
+			/obj/item/weapon/reagent_containers/food/drinks = "DRINK",
+			/obj/item/weapon/reagent_containers/food = "FOOD",
+			/obj/item/weapon/reagent_containers = "REAGENT_CONTAINERS",
+			/obj/machinery/atmospherics = "ATMOS_MECH",
+			/obj/machinery/portable_atmospherics = "PORT_ATMOS",
+			/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack = "MECHA_MISSILE_RACK",
+			/obj/item/mecha_parts/mecha_equipment = "MECHA_EQUIP",
+			/obj/item/organ = "ORGAN",
+			/obj/item = "ITEM",
+			/obj/machinery = "MACHINERY",
+			/obj/effect = "EFFECT",
+			/obj = "O",
+			/datum = "D",
+			/turf/simulated/wall = "S-WALL",
+			/turf/simulated/floor = "S-FLOOR",
+			/turf/simulated = "SIMULATED",
+			/turf/unsimulated/wall = "US-WALL",
+			/turf/unsimulated/floor = "US-FLOOR",
+			/turf/unsimulated = "UNSIMULATED",
+			/turf = "T",
+			/mob/living/carbon = "CARBON",
+			/mob/living/simple_mob = "SIMPLE",
+			/mob/living = "LIVING",
+			/mob = "M"
+		)
+		for (var/tn in TYPES_SHORTCUTS)
+			if (copytext(typename,1, length("[tn]/")+1)=="[tn]/" /*findtextEx(typename,"[tn]/",1,2)*/ )
+				typename = TYPES_SHORTCUTS[tn]+copytext(typename,length("[tn]/"))
+				break
+		.[typename] = type
+
+/proc/IsValidSrc(datum/D)
+	if(istype(D))
+		return !QDELETED(D)
+	return FALSE
+
+//gives us the stack trace from CRASH() without ending the current proc.
+/proc/stack_trace(msg)
+	CRASH(msg)
+
+/datum/proc/stack_trace(msg)
+	CRASH(msg)
+
+// \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
+// If it ever becomes necesary to get a more performant REF(), this lies here in wait
+// #define REF(thing) (thing && istype(thing, /datum) && (thing:datum_flags & DF_USE_TAG) && thing:tag ? "[thing:tag]" : "\ref[thing]")
+/proc/REF(input)
+	if(istype(input, /datum))
+		var/datum/thing = input
+		if(thing.datum_flags & DF_USE_TAG)
+			if(!thing.tag)
+				thing.datum_flags &= ~DF_USE_TAG
+				stack_trace("A ref was requested of an object with DF_USE_TAG set but no tag: [thing]")
+			else
+				return "\[[url_encode(thing.tag)]\]"
+	return "\ref[input]"
