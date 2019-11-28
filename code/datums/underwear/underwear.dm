@@ -50,11 +50,8 @@ datum/category_group/underwear/dd_SortValue()
 	var/icon_state                   // And the particular item state
 	var/list/tweaks = list()         // Underwear customizations.
 	var/has_color = FALSE
-	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice
 
 /datum/category_item/underwear/New()
-	if(!gear_tweak_free_color_choice)
-		gear_tweak_free_color_choice = new
 	if(has_color)
 		tweaks += gear_tweak_free_color_choice
 

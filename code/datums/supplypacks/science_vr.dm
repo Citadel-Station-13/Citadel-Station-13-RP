@@ -4,7 +4,7 @@
 	contains = list(
 			/obj/vehicle/train/rover/engine/dunebuggy
 			)
-	cost = 200
+	cost = 100
 	containertype = /obj/structure/largecrate
 	containername = "Exploration Dune Buggy Crate"
 

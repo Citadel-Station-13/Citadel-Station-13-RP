@@ -38,3 +38,7 @@
 	name = "Camera Network Access - Floppy"
 	item_cost = 15
 	path = /obj/item/weapon/disk/file/cameras/syndicate
+/datum/uplink_item/item/stealth_items/makeover
+	name = "Makeover Kit"
+	item_cost = 5
+	path = /obj/item/weapon/makeover
