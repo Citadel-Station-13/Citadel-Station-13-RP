@@ -21,4 +21,3 @@
 	desc = "A rustic cotton knapsack with leathre straps. It's got a cozy looking blanket strapped to it."
 	icon_state = "knapsack"
 	item_state = "knapsack"
-	starts_with = list(/obj/item/clothing/shoes/boots/winter/explorer,	/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar)
