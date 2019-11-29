@@ -217,7 +217,8 @@
 	the ferocity of other apex predators in this region of Sif. As such, it is a very invasive species."
 	description_info = "This slime makes other entities near it feel much colder, and is more resilient to the cold. It also has learned advanced combat tactics from \
 	having to endure the harsh world outside its lab. Note that processing this large slime will give six cores."
-	icon_scale = 2
+	icon_scale_x = 2
+	icon_scale_y = 2
 	optimal_combat = TRUE // Gotta be sharp to survive out there.
 	rabid = TRUE
 	rainbow_core_candidate = FALSE
@@ -499,7 +500,7 @@
 	..()
 
 /mob/living/simple_animal/slime/green/proc/irradiate()
-	radiation_repository.radiate(src, rads)
+	SSradiation.radiate(src, rads)
 
 
 /mob/living/simple_animal/slime/pink
