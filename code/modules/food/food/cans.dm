@@ -12,7 +12,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/cola/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("cola", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle
@@ -22,7 +22,7 @@
 	center_of_mass = list("x"=15, "y"=8)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("water", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind
@@ -42,7 +42,7 @@
 	center_of_mass = list("x"=16, "y"=8)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("thirteenloko", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb
@@ -62,7 +62,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/starkist/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("brownstar", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up
@@ -112,7 +112,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/tonic/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("tonic", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/sodawater
@@ -122,7 +122,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/sodawater/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("sodawater", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/gingerale
@@ -132,5 +132,5 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/gingerale/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("gingerale", 30)
