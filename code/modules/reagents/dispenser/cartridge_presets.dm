@@ -30,6 +30,7 @@
 	ethanol		spawn_reagent = "ethanol"
 	sacid		spawn_reagent = "sacid"
 	tungsten	spawn_reagent = "tungsten"
+	calcium		spawn_reagent = "calcium"
 
 	// Bar, alcoholic
 	beer		spawn_reagent = "beer"
@@ -39,12 +40,13 @@
 	vodka		spawn_reagent = "vodka"
 	gin			spawn_reagent = "gin"
 	rum			spawn_reagent = "rum"
-	tequila		spawn_reagent = "tequila"
+	tequila		spawn_reagent = "tequilla"
 	vermouth	spawn_reagent = "vermouth"
 	cognac		spawn_reagent = "cognac"
 	ale			spawn_reagent = "ale"
 	mead		spawn_reagent = "mead"
 	bitters		spawn_reagent = "bitters"
+	cider		spawn_reagent = "cider"
 
 	// Bar, soft
 	ice			spawn_reagent = "ice"
