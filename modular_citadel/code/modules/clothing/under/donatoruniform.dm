@@ -19,3 +19,14 @@
 	item_state = "hungrycricket_opd"
 	rolled_sleeves = 0
 	rolled_down = 0
+
+
+/obj/item/clothing/under/donator/mountaineer
+	name = "mountaineer's clothing"
+	desc = "Smells of moonshine and moist underbrush."
+	icon_state = "mountaineer"
+	item_state = "mountaineer"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	rolled_sleeves = 0
+	rolled_down = 0

@@ -15,3 +15,10 @@
 	desc = "It's a very robust backpack. This one bears a blue cross, and has been modified for use in a sterile environment."
 	icon_state = "cameronbackpack"
 	item_state = "cameronbackpack"
+
+/obj/item/weapon/storage/backpack/satchel/donator/knapsack
+	name = "mountaineer's knapsack"
+	desc = "A rustic cotton knapsack with leathre straps. It's got a cozy looking blanket strapped to it."
+	icon_state = "knapsack"
+	item_state = "knapsack"
+	starts_with = list(/obj/item/clothing/shoes/boots/winter/explorer,	/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar)

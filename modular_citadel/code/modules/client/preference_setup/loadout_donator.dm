@@ -163,3 +163,16 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/head/donator/woolhat
 	ckeywhitelist = list("vfivesix")
+
+/datum/gear/donator/mountaineer
+	display_name = "Mountaineer's Clothing"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/mountaineer
+	ckeywhitelist = list("pireamaineach")
+
+
+/datum/gear/donator/knapsack
+	display_name = "Mountaineer's Knapsack"
+	sort_category = "Donator"
+	path = /obj/item/weapon/storage/backpack/satchel/donator/knapsack
+	ckeywhitelist = list("pireamaineach")
