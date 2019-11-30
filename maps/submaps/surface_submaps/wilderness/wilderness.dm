@@ -14,6 +14,7 @@
 #include "Snowrock1.dmm"
 #include "Boombase.dmm"
 #include "Blackshuttledown.dmm"
+#include "Blueshuttledown.dmm"
 #include "Lab1.dmm"
 #include "Rocky4.dmm"
 #include "DJOutpost1.dmm"
@@ -27,6 +28,11 @@
 #include "Drugden.dmm"
 #include "Musk.dmm"
 #include "Manor1.dmm"
+#include "Epod3.dmm"
+#include "Epod4.dmm"
+#include "ButcherShack.dmm"
+#include "Chapel.dmm"
+#include "Shelter.dmm"
 
 #endif
 
@@ -34,7 +40,6 @@
 // POIs here spawn in two different sections, the top half and bottom half of the map.
 // The top half connects to the outpost z-level, and is seperated from the bottom half by a river. It should provide a challenge to a well equiped Explorer team.
 // The bottom half should be even more dangerous, where only the robust, fortunate, or lucky can survive.
-// Cit change: This seems to control V2 now for whatever reason, though the stuff said above applies for spawning, as the lower half still houses the dangerous stuff.
 
 /datum/map_template/surface/wilderness
 	name = "Surface Content - Wildy"
@@ -53,163 +58,212 @@
 	desc = "A small spider nest, in the forest."
 	mappath = 'maps/submaps/surface_submaps/wilderness/spider1.dmm'
 	allow_duplicates = TRUE
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Flake
 	name = "Forest Lake"
 	desc = "A serene lake sitting amidst the surface."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Flake.dmm'
-	cost = 3
+	cost = 10
 
 /datum/map_template/surface/wilderness/normal/Mcamp1
 	name = "Military Camp 1"
 	desc = "A derelict military camp host to some unsavory dangers"
 	mappath = 'maps/submaps/surface_submaps/wilderness/MCamp1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Mudpit
 	name = "Mudpit"
 	desc = "What happens when someone is a bit too careless with gas.."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Mudpit.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky1
 	name = "Rocky1"
 	desc = "DununanununanununuNAnana"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky1.dmm'
 	allow_duplicates = TRUE
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky2
 	name =  "Rocky2"
 	desc = "More rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky2.dmm'
 	allow_duplicates = TRUE
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky3
 	name = "Rocky3"
 	desc = "More and more and more rocks."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky3.dmm'
 	desc = "DununanununanununuNAnana"
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Shack1
 	name = "Shack1"
 	desc = "A small shack in the middle of nowhere, Your halloween murder happens here"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Shack1.dmm'
-	allow_duplicates = FALSE //Cit change; these spawn everywhere, cluttering the place with pretty much nothing, and wasting points
-	cost = 3
+	cost = 5
 
-///datum/map_template/surface/wilderness/normal/Smol1
-//	name = "Smol1"
-//	desc = "A tiny grove of trees, The Nemesis of thicc"
-//	mappath = 'maps/submaps/surface_submaps/wilderness/Smol1.dmm'
-//	cost = 2
-//cit change; this dosnt even spawn in v2, or anywhere else and eats up a fuckton of init time, disabled.
+/datum/map_template/surface/wilderness/normal/Smol1
+	name = "Smol1"
+	desc = "A tiny grove of trees, The Nemesis of thicc"
+	mappath = 'maps/submaps/surface_submaps/wilderness/Smol1.dmm'
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Snowrock1
 	name = "Snowrock1"
 	desc = "A rocky snow covered area"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Snowrock1.dmm'
-	cost = 3
+	cost = 5
 
-///datum/map_template/surface/wilderness/normal/Cragzone1
-//	name = "Cragzone1"
-//	desc = "Rocks and more rocks."
-//	mappath = 'maps/submaps/surface_submaps/wilderness/Cragzone1.dmm'
-//	cost = 5
-//	allow_duplicates = TRUE
-//Cit change; I dunno why this is here it takes up a massive space with no loot, a default cost of 5, and it ALLOWS FOR MORE THAN ONE??
+/datum/map_template/surface/wilderness/normal/Cragzone1
+	name = "Cragzone1"
+	desc = "Rocks and more rocks."
+	mappath = 'maps/submaps/surface_submaps/wilderness/Cragzone1.dmm'
+	cost = 5
+	allow_duplicates = TRUE
 
 /datum/map_template/surface/wilderness/normal/Lab1
 	name = "Lab1"
 	desc = "An isolated small robotics lab."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Lab1.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/Rocky4
 	name = "Rocky4"
 	desc = "An interesting geographic formation."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rocky4.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/DJOutpost1
 	name = "DJOutpost1"
 	desc = "Home of Sif Free Radio, the best - and only - radio station for miles around."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DJOutpost1.dmm'
 	template_group = "Sif Free Radio"
-	cost = 2
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/DJOutpost2
 	name = "DJOutpost2"
 	desc = "The cratered remains of Sif Free Radio, the best - and only - radio station for miles around."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DJOutpost2.dmm'
 	template_group = "Sif Free Radio"
-	cost = 2
+	cost = 5
+
+/datum/map_template/surface/wilderness/deep/DJOutpost3
+	name = "DJOutpost3"
+	desc = "The surprisingly high-tech home of Sif Free Radio, the best - and only - radio station for miles around."
+	mappath = 'maps/submaps/surface_submaps/wilderness/DJOutpost3.dmm'
+	template_group = "Sif Free Radio"
+	cost = 10
+
+/datum/map_template/surface/wilderness/deep/DJOutpost4
+	name = "DJOutpost4"
+	desc = "The surprisingly high-tech home of Sif Free Radio, the only radio station run by mindless clones."
+	mappath = 'maps/submaps/surface_submaps/wilderness/DJOutpost4.dmm'
+	template_group = "Sif Free Radio"
+	cost = 10
 
 /datum/map_template/surface/wilderness/deep/Boombase
 	name = "Boombase"
 	desc = "What happens when you don't follow SOP."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Boombase.dmm'
-	cost = 2
+	cost = 5
 
 /datum/map_template/surface/wilderness/deep/BSD
 	name = "Black Shuttle Down"
 	desc = "You REALLY shouldn't be near this."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Blackshuttledown.dmm'
-	cost = 10
+	cost = 30
+	template_group = "Shuttle Down"
+
+/datum/map_template/surface/wilderness/deep/BluSD
+	name = "Blue Shuttle Down"
+	desc = "You REALLY shouldn't be near this. Mostly because they're Police."
+	mappath = 'maps/submaps/surface_submaps/wilderness/Blueshuttledown.dmm'
+	cost = 50
+	template_group = "Shuttle Down"
 
 /datum/map_template/surface/wilderness/deep/Rockybase
 	name = "Rocky Base"
 	desc = "A guide to upsetting Icarus and the EIO"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Rockybase.dmm'
-	cost = 12
+	cost = 35
 
 /datum/map_template/surface/wilderness/deep/MHR
 	name = "Manhack Rock"
 	desc = "A rock filled with nasty Synthetics."
 	mappath = 'maps/submaps/surface_submaps/wilderness/MHR.dmm'
-	cost = 2
+	cost = 15
 
 /datum/map_template/surface/wilderness/normal/GovPatrol
 	name = "Government Patrol"
 	desc = "A long lost SifGuard ground survey patrol. Now they have you guys!"
 	mappath = 'maps/submaps/surface_submaps/wilderness/GovPatrol.dmm'
-	cost = 1
+	cost = 5
 
 /datum/map_template/surface/wilderness/normal/DecoupledEngine
 	name = "Decoupled Engine"
 	desc = "A damaged fission engine jettisoned from a starship long ago."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DecoupledEngine.dmm'
-	cost = 3
+	cost = 15
 
 /datum/map_template/surface/wilderness/deep/DoomP
 	name = "DoomP"
 	desc = "Witty description here."
 	mappath = 'maps/submaps/surface_submaps/wilderness/DoomP.dmm'
-	cost = 10
+	cost = 30
 
 /datum/map_template/surface/wilderness/deep/Cave
 	name = "CaveS"
 	desc = "Chitter chitter!"
 	mappath = 'maps/submaps/surface_submaps/wilderness/CaveS.dmm'
-	cost = 6
+	cost = 20
 
 /datum/map_template/surface/wilderness/normal/Drugden
 	name = "Drugden"
 	desc = "The remains of ill thought out whims."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Drugden.dmm'
-	cost = 6
+	cost = 20
 
 /datum/map_template/surface/wilderness/normal/Musk
 	name = "Musk"
 	desc = "0 to 60 in 1.9 seconds."
 	mappath = 'maps/submaps/surface_submaps/wilderness/Musk.dmm'
-	cost = 3
+	cost = 10
 
 /datum/map_template/surface/wilderness/deep/Manor1
 	name = "Manor1"
 	desc = "Whodunit"
 	mappath = 'maps/submaps/surface_submaps/wilderness/Manor1.dmm'
-	cost = 6
+	cost = 20
+
+/datum/map_template/surface/wilderness/deep/Epod3
+	name = "Emergency Pod 3"
+	desc = "A webbed Emergency pod in the middle of nowhere."
+	mappath = 'maps/submaps/surface_submaps/wilderness/Epod3.dmm'
+	cost = 5
+
+/datum/map_template/surface/wilderness/normal/Epod4
+	name = "Emergency Pod 4"
+	desc = "A flooded Emergency pod in the middle of nowhere."
+	mappath = 'maps/submaps/surface_submaps/wilderness/Epod4.dmm'
+	cost = 5
+
+/datum/map_template/surface/wilderness/normal/ButcherShack
+	name = "Butcher Shack"
+	desc = "An old, bloody butcher's shack. Get your meat here!"
+	mappath = 'maps/submaps/surface_submaps/wilderness/ButcherShack.dmm'
+	cost = 5
+
+/datum/map_template/surface/wilderness/deep/Chapel1
+	name = "Chapel1"
+	desc = "The chapel of lights and a robot."
+	mappath = 'maps/submaps/surface_submaps/wilderness/Chapel.dmm'
+	cost = 20
+
+/datum/map_template/surface/wilderness/normal/Shelter1
+	name = "Shelter1"
+	desc = "The remains of a resourceful, but prideful explorer."
+	mappath = 'maps/submaps/surface_submaps/wilderness/Shelter.dmm'
+	cost = 10

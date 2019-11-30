@@ -98,7 +98,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "ap" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map"
@@ -111,7 +110,10 @@
 	icon_state = "alarm0";
 	pixel_x = 24
 	},
-/obj/structure/dispenser/phoron,
+/obj/structure/table/standard,
+/obj/item/stack/cable_coil/random,
+/obj/item/weapon/tool/wrench,
+/obj/item/weapon/tool/screwdriver,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "ar" = (
@@ -286,18 +288,13 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/circuitboard/tesla_coil{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/weapon/circuitboard/tesla_coil{
+/obj/item/weapon/circuitboard/grounding_rod{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/stock_parts/capacitor,
-/obj/item/weapon/stock_parts/capacitor{
+/obj/item/weapon/circuitboard/grounding_rod{
 	pixel_x = -2;
-	pixel_y = 2
+	pixel_y = -2
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -347,6 +344,7 @@
 	},
 /obj/machinery/door/airlock/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "aG" = (
@@ -373,16 +371,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "aI" = (
-/obj/machinery/power/tesla_coil,
-/obj/structure/cable/yellow{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/airless,
+/obj/item/weapon/extinguisher,
+/turf/space,
 /area/space)
 "aJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -692,6 +682,10 @@
 "bf" = (
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
+"bg" = (
+/obj/machinery/power/grounding_rod,
+/turf/simulated/floor/airless,
+/area/space)
 "bh" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
@@ -706,14 +700,18 @@
 /turf/simulated/wall/r_wall,
 /area/submap/pa_room)
 "bj" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering,
-/turf/simulated/floor/tiled,
-/area/submap/pa_room)
+/obj/machinery/power/tesla_coil,
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "bk" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -779,6 +777,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/pa_room)
+"bp" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/item/clothing/head/hardhat,
+/turf/simulated/floor/airless,
+/area/space)
 "bq" = (
 /obj/effect/floor_decal/steeldecal,
 /turf/simulated/floor/tiled,
@@ -870,11 +877,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/pa_room)
 "bA" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 5
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/item/stack/cable_coil/random,
-/turf/simulated/floor/tiled/techfloor,
+/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "bB" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -1142,6 +1152,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
+"bZ" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/tesla_coil,
+/turf/simulated/floor/airless,
+/area/space)
 "ca" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -1386,15 +1409,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "cs" = (
-/obj/machinery/power/emitter{
-	anchored = 1;
-	dir = 1;
-	state = 1
-	},
-/obj/structure/cable/cyan{
-	d2 = 2;
-	icon_state = "0-2"
-	},
+/obj/item/weapon/weldingtool,
 /turf/simulated/floor/airless,
 /area/space)
 "ct" = (
@@ -1559,6 +1574,12 @@
 "cC" = (
 /turf/simulated/wall/r_wall,
 /area/space)
+"cD" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
 "cE" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -1579,11 +1600,13 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cF" = (
-/obj/machinery/power/emitter{
-	anchored = 1;
-	state = 1
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/structure/cable/cyan,
+/obj/structure/cable/yellow,
+/obj/machinery/power/tesla_coil,
 /turf/simulated/floor/airless,
 /area/space)
 "cG" = (
@@ -1601,6 +1624,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "cI" = (
@@ -1611,11 +1635,27 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
+"cJ" = (
+/obj/item/weapon/tool/wirecutters,
+/turf/simulated/floor/airless,
+/area/space)
 "cK" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/turf/simulated/floor/airless,
+/area/space)
+"cL" = (
+/obj/structure/cable/cyan{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/emitter{
+	dir = 1;
+	anchored = 1;
+	state = 1
 	},
 /turf/simulated/floor/airless,
 /area/space)
@@ -1638,30 +1678,12 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"zh" = (
-/obj/machinery/power/grounding_rod,
-/turf/simulated/floor/airless,
-/area/space)
-"DC" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/machinery/power/tesla_coil,
-/obj/structure/cable/yellow{
-	dir = 1
-	},
-/turf/simulated/floor/airless,
-/area/space)
-"KR" = (
+"cQ" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/power/tesla_coil,
-/obj/structure/cable/yellow,
 /turf/simulated/floor/airless,
 /area/space)
 
@@ -1744,13 +1766,13 @@ ab
 ab
 ab
 ab
-ab
-ab
-ad
-ab
 ad
 ab
 ab
+ab
+ab
+ab
+ad
 ab
 ab
 ab
@@ -1776,13 +1798,13 @@ ab
 ab
 ab
 ab
-ab
-ab
-ad
-ab
 ad
 ab
 ab
+ab
+ab
+ab
+ad
 ab
 ab
 ab
@@ -1806,15 +1828,15 @@ aj
 ab
 ab
 ab
+aI
+ab
+ad
+ab
 ab
 ab
 ab
 ab
 ad
-ab
-ad
-ab
-ab
 ab
 ab
 ab
@@ -1839,19 +1861,19 @@ aj
 ab
 ab
 ab
-ab
-ab
-ab
-ad
-ab
-ad
-ab
-ab
-ab
-ab
-ab
-ab
+bg
 aj
+aj
+aj
+aj
+aj
+aj
+aj
+bg
+ab
+ab
+ab
+cJ
 aj
 cC
 ab
@@ -1866,25 +1888,25 @@ ab
 ab
 ab
 ac
+ak
+ar
+ad
+ad
+ad
 aj
+aX
+ab
+ad
+ab
+ad
+ab
+aX
 aj
-ab
-ab
-ab
-ab
-zh
 ad
 ad
 ad
-ad
-ad
-zh
-ab
-ab
-ab
-ab
-aj
-aj
+cL
+cy
 cC
 ab
 aa
@@ -1898,25 +1920,25 @@ ab
 ab
 ab
 ac
+al
 aj
-aj
 ab
 ab
 ab
-ab
-aj
 co
+ab
+ab
 ad
+ab
 ad
-ad
+ab
+ab
 co
-aj
-ab
 ab
 ab
 ab
 aj
-aj
+al
 cC
 ab
 aa
@@ -1930,25 +1952,25 @@ ab
 ab
 ab
 ac
-ak
-cF
-ad
-ad
-ad
-ad
-ad
-cK
-aX
+al
 aj
-aX
+ab
+ab
+ab
 cK
-ad
-ad
-ad
 ad
 ad
 cs
-cy
+aj
+aj
+ad
+ad
+cK
+ab
+ab
+ab
+aj
+al
 cC
 ab
 aa
@@ -1964,21 +1986,21 @@ ab
 ac
 al
 aj
-ab
-ab
-ab
-ab
 ad
-aI
+ad
+ad
+cK
+ab
+ab
 aj
 bE
 aj
-aI
+ab
+ab
+cK
 ad
-ab
-ab
-ab
-ab
+ad
+ad
 aj
 al
 cC
@@ -1994,25 +2016,25 @@ ab
 ab
 ab
 ac
-am
-ar
-ad
-ad
-ad
-ad
-ad
-cK
-aX
+al
 aj
-aX
+ab
+ab
+ab
 cK
 ad
 ad
+aj
+aj
+aj
 ad
 ad
-ad
-cs
-cz
+cK
+ab
+ab
+ab
+aj
+al
 cC
 aa
 aa
@@ -2031,15 +2053,15 @@ aj
 ab
 ab
 ab
+bj
 ab
-aj
-DC
-cN
-aP
-cN
-KR
-aj
 ab
+ad
+ab
+ad
+ab
+ab
+bj
 ab
 ab
 ab
@@ -2058,25 +2080,25 @@ ab
 ab
 ab
 ac
-al
-aj
-ab
-ab
-ab
-ab
-zh
+am
+ar
+ad
 ad
 ad
 cK
+aX
+ab
+ad
+ab
+ad
+ab
+aX
+cK
 ad
 ad
-zh
-ab
-ab
-ab
-ab
-aj
-al
+ad
+cL
+cz
 cC
 aa
 aa
@@ -2094,17 +2116,17 @@ al
 aj
 ab
 ab
-ab
-ab
-ab
-ab
 ad
-cK
+bp
+cN
+bZ
+cN
+aP
+cN
+cF
+cN
+cQ
 ad
-ab
-ab
-ab
-ab
 ab
 ab
 aj
@@ -2126,17 +2148,17 @@ al
 ad
 ab
 ab
-ab
-ab
-ab
-ab
+bg
+ad
+ad
+ad
 ad
 cK
 ad
-ab
-ab
-ab
-ab
+ad
+ad
+ad
+bg
 ab
 ab
 ad
@@ -2320,9 +2342,9 @@ aE
 aK
 aR
 ba
-bj
-bs
 bA
+bs
+cD
 bJ
 bU
 cG
