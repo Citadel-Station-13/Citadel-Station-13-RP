@@ -7,7 +7,7 @@
 	if(can_open == WALL_OPENING)
 		return
 
-	radiation_repository.resistance_cache.Remove(src)
+	SSradiation.resistance_cache.Remove(src)
 
 	if(density)
 		can_open = WALL_OPENING
@@ -60,9 +60,9 @@
 	var/damage_lower = 25
 	var/damage_upper = 75
 	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_mob/S = user
 		playsound(src, S.attack_sound, 75, 1)
-		if(!(S.melee_damage_upper >= 10))
+		if(!(S.melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
 			to_chat(user, "<span class='notice'>You bounce against the wall.</span>")
 			return FALSE
 		damage_lower = S.melee_damage_lower
@@ -75,7 +75,7 @@
 	to_chat(user, "<span class='danger'>You smash through the wall!</span>")
 	user.do_attack_animation(src)
 	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_mob/S = user
 		playsound(src, S.attack_sound, 75, 1)
 	spawn(1)
 		dismantle_wall(1)
@@ -93,8 +93,9 @@
 	if(..()) return 1
 
 	if(!can_open)
-		to_chat(user, "<span class='notice'>You push the wall, but nothing happens.</span>")
-		playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
+		if(!material.wall_touch_special(src, user))
+			to_chat(user, "<span class='notice'>You push the wall, but nothing happens.</span>")
+			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 	else
 		toggle_open(user)
 	return 0
@@ -115,12 +116,12 @@
 
 	try_touch(user, rotting)
 
-/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message, var/wallbreaker)
+/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message)
 
 	radiate()
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if(!damage || !wallbreaker)
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD * 2)
 		try_touch(user, rotting)
 		return
 
@@ -128,7 +129,7 @@
 		return success_smash(user)
 
 	if(reinf_material)
-		if((wallbreaker == 2) || (damage >= max(material.hardness,reinf_material.hardness)))
+		if(damage >= max(material.hardness, reinf_material.hardness) )
 			return success_smash(user)
 	else if(damage >= material.hardness)
 		return success_smash(user)
