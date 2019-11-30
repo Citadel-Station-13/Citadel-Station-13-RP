@@ -53,11 +53,9 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	var/global/list/look_messages = list(
 			"flicks their eyes around",
 			"looks at something unseen",
-			"seems to read something invisible",
+			"reads some invisible text",
 			"seems to be daydreaming",
-			"focuses elsewhere for a moment",
-			"zones out for a moment",
-			"seems to lose interest in their surroundings for a bit")
+			"focuses elsewhere for a moment")
 
 	var/list/save_data
 
@@ -284,11 +282,11 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 			switch(incident)
 				if(1)
 					var/message = pick(list(
-								"Your skull throbs and aches!",
-								"You think there's something crawling around in your skull!",
+								"Your head throbs around your new implant!",
+								"The skin around your recent surgery itches!",
 								"A wave of nausea overtakes you as the world seems to spin!",
 								"The floor suddenly seems to come up at you!",
-								"There's a throbbing lump of ice in your head!",
+								"There's a throbbing lump of ice behind your eyes!",
 								"A wave of pain shoots down your neck!"
 								))
 					human.adjustHalLoss(35)

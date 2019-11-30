@@ -10,7 +10,6 @@
 		return
 	var/datum/random_map/M = random_maps[choice]
 	if(istype(M))
-		log_game("[key_name(usr)] has displayed map [choice]")
 		M.display_map(usr)
 
 /client/proc/delete_random_map()
@@ -26,8 +25,8 @@
 	var/datum/random_map/M = random_maps[choice]
 	random_maps[choice] = null
 	if(istype(M))
-		log_game("[key_name(usr)] has deleted map [choice]")
 		message_admins("[key_name_admin(usr)] has deleted [M.name].")
+		log_admin("[key_name(usr)] has deleted [M.name].")
 		qdel(M)
 
 /client/proc/create_random_map()
@@ -46,10 +45,8 @@
 		var/seed = input("Seed? (blank for none)")       as text|null
 		var/lx =   input("X-size? (blank for default)")  as num|null
 		var/ly =   input("Y-size? (blank for default)")  as num|null
-		log_game("[key_name(usr)] has initiated random map creation")
 		M = new map_datum(seed,null,null,null,lx,ly,1)
 	else
-		log_game("[key_name(usr)] has initiated random map creation")
 		M = new map_datum(null,null,null,null,null,null,1)
 
 	if(M)

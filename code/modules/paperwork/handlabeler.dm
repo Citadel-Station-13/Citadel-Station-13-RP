@@ -3,7 +3,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler0"
 	var/label = null
-	var/labels_left = 60
+	var/labels_left = 30
 	var/mode = 0	//off or on.
 	w_class = ITEMSIZE_SMALL
 
