@@ -374,10 +374,10 @@
 /mob/living/simple_mob/otie/proc/remove_eyes()
 	cut_overlay(eye_layer)
 
-/mob/living/simple_animal/otie/Initialize(mapload)
-	. = ..()
+/mob/living/simple_mob/otie/New()
 	if(glowyeyes)
 		add_eyes()
+	..()
 
 /mob/living/simple_mob/otie/update_icon()
 	. = ..()

@@ -40,7 +40,7 @@
 
 	if(!src.client.holder)
 		if(!config.dsay_allowed)
-			src << "<span class='danger'>Deadchat is globally muted.</span>"
+			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
@@ -139,6 +139,7 @@
 //returns the language object only if the code corresponds to a language that src can speak, otherwise null.
 /mob/proc/parse_language(var/message)
 	var/prefix = copytext(message,1,2)
+	// This is for audible emotes
 	if(length(message) >= 1 && prefix == "!")
 		return all_languages["Noise"]
 
@@ -147,5 +148,6 @@
 		var/datum/language/L = language_keys[language_prefix]
 		if (can_speak(L))
 			return L
-
+		else
+			return all_languages[LANGUAGE_GIBBERISH]
 	return null

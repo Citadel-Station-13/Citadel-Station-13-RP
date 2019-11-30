@@ -152,10 +152,11 @@
 		var/mob/living/silicon/robot/R = loc
 		if(R && R.cell)
 			for(var/T in reagent_ids)
-				if(reagent_volumes[T] < volume)
+				if(reagent_volumes[T] < volume && water.energy >= charge_cost)
 					R.cell.use(charge_cost)
-					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
-	return 1 // END CITADEL CHANGES
+					water.use_charge(charge_cost)
+					reagent_volumes[T] = min(reagent_volumes[T] + 1, volume)
+	return 1
 
 /obj/item/weapon/reagent_containers/borghypo/hound/lost
 	name = "Hound hypospray"

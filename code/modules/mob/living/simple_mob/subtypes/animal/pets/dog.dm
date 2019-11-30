@@ -35,7 +35,7 @@
 					M.show_message("<font color='blue'>[user] baps [name] on the nose with the rolled up [O]</font>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
-					set_dir(i)
+					setDir(i)
 					sleep(1)
 	else
 		..()
@@ -144,15 +144,15 @@
 
 				if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
 					if (movement_target.loc.x < src.x)
-						set_dir(WEST)
+						setDir(WEST)
 					else if (movement_target.loc.x > src.x)
-						set_dir(EAST)
+						setDir(EAST)
 					else if (movement_target.loc.y < src.y)
-						set_dir(SOUTH)
+						setDir(SOUTH)
 					else if (movement_target.loc.y > src.y)
-						set_dir(NORTH)
+						setDir(NORTH)
 					else
-						set_dir(SOUTH)
+						setDir(SOUTH)
 
 					if(isturf(movement_target.loc) )
 						UnarmedAttack(movement_target)
@@ -163,7 +163,7 @@
 			visible_emote(pick("dances around","chases their tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
-					set_dir(i)
+					setDir(i)
 					sleep(1)
 
 //LISA! SQUEEEEEEEEE~
@@ -216,7 +216,7 @@
 			visible_emote(pick("dances around","chases her tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
-					set_dir(i)
+					setDir(i)
 					sleep(1)
 
 // Tamaskans

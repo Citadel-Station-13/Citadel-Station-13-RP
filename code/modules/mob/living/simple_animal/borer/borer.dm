@@ -43,8 +43,9 @@
 	if(mind)
 		borers.add_antagonist(mind)
 
-/mob/living/simple_animal/borer/Initialize(mapload)
-	. = ..()
+/mob/living/simple_mob/animal/borer/New()
+	..()
+
 	add_language("Cortical Link")
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide

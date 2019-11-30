@@ -102,7 +102,7 @@
 		icon_state = "[icon_living][previous ? 1 : 0]"
 
 	if(previous)
-		set_dir(get_dir(previous,src))
+		setDir(get_dir(previous,src))
 
 	if(stat)
 		icon_state = "[icon_state]_dead"
@@ -244,7 +244,7 @@
 		icon_state = "spacewormtail"
 		if(stat)
 			icon_state = "[icon_state]_dead"
-		set_dir(get_dir(src,next))
+		setDir(get_dir(src,next))
 
 	if(next)
 		color = next.color
