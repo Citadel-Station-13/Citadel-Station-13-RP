@@ -4,7 +4,6 @@
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "handcuff"
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	throwforce = 5
 	w_class = ITEMSIZE_SMALL
@@ -141,7 +140,6 @@ var/last_chew = 0
 	name = "fuzzy cuffs"
 	icon_state = "fuzzycuff"
 	desc = "Use this to keep... 'prisoners' in line."
-	breakouttime = 30 //3sec breakout time. why did this not exist before. bruh moment.
 
 /obj/item/weapon/handcuffs/cable
 	name = "cable restraints"
@@ -199,6 +197,9 @@ var/last_chew = 0
 	breakouttime = 200
 	cuff_type = "duct tape"
 
+/obj/item/weapon/handcuffs/cable/tape/cyborg
+	dispenser = TRUE
+
 //Legcuffs. Not /really/ handcuffs, but its close enough.
 /obj/item/weapon/handcuffs/legcuffs
 	name = "legcuffs"
@@ -206,7 +207,6 @@ var/last_chew = 0
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "legcuff"
-	flags = CONDUCT
 	throwforce = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)

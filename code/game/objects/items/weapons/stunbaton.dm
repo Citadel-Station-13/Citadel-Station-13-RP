@@ -9,6 +9,7 @@
 	sharp = 0
 	edge = 0
 	throwforce = 7
+	flags = NOCONDUCT
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
@@ -18,7 +19,7 @@
 	var/status = 0		//whether the thing is on or not
 	var/obj/item/weapon/cell/bcell = null
 	var/hitcost = 240
-	var/use_external_power = FALSE
+	var/use_external_power = FALSE //only used to determine if it's a cyborg baton
 
 /obj/item/weapon/melee/baton/New()
 	..()
@@ -139,9 +140,10 @@
 		return ..()
 
 /obj/item/weapon/melee/baton/attack_self(mob/user)
-	if(use_external_power) // try to find the borg's cell
+	if(use_external_power)
+		//try to find our power cell
 		var/mob/living/silicon/robot/R = loc
-		if(istype(R))
+		if (istype(R))
 			bcell = R.cell
 	if(bcell && bcell.charge > hitcost)
 		status = !status
@@ -210,6 +212,7 @@
 
 //secborg stun baton module
 /obj/item/weapon/melee/baton/robot
+	hitcost = 500
 	use_external_power = TRUE
 
 //Makeshift stun baton. Replacement for stun gloves.
@@ -266,9 +269,8 @@
 
 /obj/item/weapon/melee/baton/shocker/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	..(target, user, hit_zone)
-	if(istype(target, /mob/living/simple_animal) && status)
-		var/mob/living/simple_animal/SA = target
-		SA.taunt(user)
+	if(status && target.has_AI())
+		target.taunt(user)
 
 // Borg version, for the lost module.
 /obj/item/weapon/melee/baton/shocker/robot
