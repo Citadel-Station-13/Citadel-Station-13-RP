@@ -107,6 +107,12 @@ proc/get_radio_key_from_channel(var/channel)
 		message = stutter(message)
 		verb = pick("stammers","stutters")
 		. = 1
+	//VOREStation Edit Start
+	if(muffled)
+		verb = pick("muffles")
+		whispering = 1
+		. = 1
+	//VOREStation Edit End
 
 	message_data[1] = message
 	message_data[2] = verb
@@ -138,7 +144,7 @@ proc/get_radio_key_from_channel(var/channel)
 		if(message)
 			client.handle_spam_prevention(MUTE_IC)
 			if((client.prefs.muted & MUTE_IC) || say_disabled)
-				src << "<span class='warning'>You cannot speak in IC (Muted).</span>"
+				to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
 				return
 
 	//Redirect to say_dead if talker is dead
@@ -172,10 +178,22 @@ proc/get_radio_key_from_channel(var/channel)
 	//Parse the language code and consume it
 	if(!speaking)
 		speaking = parse_language(message)
+
+	if(!speaking)
+		speaking = get_default_language()
+
+	if(!can_speak(speaking))
+		speaking = all_languages[LANGUAGE_GIBBERISH]
+		var/babble_key = ",r"
+		message = babble_key + message
+
+	if(speaking == get_default_language())
+		var/new_message = ",[speaking.key]"
+		new_message += message
+		message = new_message
+
 	if(speaking)
 		message = copytext(message,2+length(speaking.key))
-	else
-		speaking = get_default_language()
 
 	//HIVEMIND languages always send to all people with that language
 	if(speaking && (speaking.flags & HIVEMIND))
@@ -184,7 +202,7 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//Self explanatory.
 	if(is_muzzled() && !(speaking && (speaking.flags & SIGNLANG)))
-		src << "<span class='danger'>You're muzzled and cannot speak!</span>"
+		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
 		return
 
 	//Clean up any remaining junk on the left like spaces.
@@ -262,6 +280,20 @@ proc/get_radio_key_from_channel(var/channel)
 		italics = 1
 		message_range = 1
 		sound_vol *= 0.5
+
+	//VOREStation edit - allows for custom say verbs, overriding all other say-verb types- e.g. "says loudly" instead of "shouts"
+	//You'll still stammer if injured or slur if drunk, but it won't have those specific words
+	var/ending = copytext(message, length(message))
+
+	if(custom_whisper && whispering)
+		verb = "[custom_whisper]"
+	else if(custom_exclaim && ending=="!")
+		verb = "[custom_exclaim]"
+	else if(custom_ask && ending=="?")
+		verb = "[custom_ask]"
+	else if(custom_say)
+		verb = "[custom_say]"
+	//VOREStation edit ends
 
 	//Handle nonverbal and sign languages here
 	if (speaking)
@@ -387,6 +419,10 @@ proc/get_radio_key_from_channel(var/channel)
 		for(var/hearer in mobs)
 			var/mob/M = hearer
 			M.hear_signlang(message, verb, language, src)
+		var/list/objs = potentials["objs"]
+		for(var/hearer in objs)
+			var/obj/O = hearer
+			O.hear_signlang(message, verb, language, src)
 	return 1
 
 /obj/effect/speech_bubble

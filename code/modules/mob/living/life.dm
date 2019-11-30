@@ -1,4 +1,6 @@
 /mob/living/Life()
+	set invisibility = 0
+	set background = BACKGROUND_ENABLED
 
 	..()
 
@@ -7,6 +9,10 @@
 	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
 	if(!loc)
 		return
+
+	if(machine && !CanMouseDrop(machine, src))
+		machine = null
+
 	var/datum/gas_mixture/environment = loc.return_air()
 
 	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
@@ -62,10 +68,6 @@
 
 	handle_vision()
 
-///////////////////////// CITADEL STATION ADDITIONS START
-	lastLifeProc = world.time
-///////////////////////// CITADEL STATION ADDITIONS END
-
 /mob/living/proc/handle_breathing()
 	return
 
@@ -112,6 +114,7 @@
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
+	handle_confused()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
@@ -147,6 +150,11 @@
 	if(paralysis)
 		AdjustParalysis(-1)
 	return paralysis
+
+/mob/living/proc/handle_confused()
+	if(confused)
+		AdjustConfused(-1)
+	return confused
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
