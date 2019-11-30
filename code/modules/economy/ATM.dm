@@ -15,7 +15,7 @@ log transactions
 /obj/item/weapon/card/id/var/money = 2000
 
 /obj/machinery/atm
-	name = "Automated Teller Machine"
+	name = "Automatic Teller Machine"
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
@@ -130,7 +130,7 @@ log transactions
 	if(get_dist(src,user) <= 1)
 
 		//js replicated from obj/machinery/computer/card
-		var/dat = "<h1>Automated Teller Machine</h1>"
+		var/dat = "<h1>Automatic Teller Machine</h1>"
 		dat += "For all your monetary needs!<br>"
 		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting IT Support</i><br/>"
 
@@ -380,7 +380,7 @@ log transactions
 						R.stamped = new
 					R.stamped += /obj/item/weapon/stamp
 					R.overlays += stampoverlay
-					R.stamps += "<HR><i>This paper has been stamped by the Automated Teller Machine.</i>"
+					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				if(prob(50))
 					playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)
@@ -422,7 +422,7 @@ log transactions
 						R.stamped = new
 					R.stamped += /obj/item/weapon/stamp
 					R.overlays += stampoverlay
-					R.stamps += "<HR><i>This paper has been stamped by the Automated Teller Machine.</i>"
+					R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				if(prob(50))
 					playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)

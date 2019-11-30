@@ -34,6 +34,6 @@
 
 
 /datum/lore/codex/category/auto_org/mil
-	name = "Military Forces & Private Security"
-	auto_keywords = list("Mil","Military","Militaries","Security")
+	name = "Militaries"
+	auto_keywords = list("Mil","Military", "Militaries")
 	desired_type = /datum/lore/organization/mil
