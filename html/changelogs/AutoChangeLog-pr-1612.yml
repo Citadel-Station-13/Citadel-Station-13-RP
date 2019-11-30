@@ -1,0 +1,7 @@
+author: "Tename"
+delete-after: True
+changes: 
+  - bugfix: "Lack of hiders in the bar backroom"
+  - bugfix: "Lack of Guest pass terminal"
+  - bugfix: "Some weird looking windows"
+  - bugfix: "Observer spawn"
