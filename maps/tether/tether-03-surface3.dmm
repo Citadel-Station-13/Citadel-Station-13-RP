@@ -10717,7 +10717,6 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/structure/window/reinforced/tinted/frosted,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "sI" = (
@@ -11348,7 +11347,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/freezer{
 	name = "Kitchen";
-	req_access = list(28)
+	req_access = list(28);
+	req_one_access = newlist()
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -11939,7 +11939,7 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
 	pixel_x = 0;
-	pixel_y = 32
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
@@ -13704,6 +13704,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"yf" = (
+/obj/effect/landmark{
+	name = "Observer-Start"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "yg" = (
 /obj/structure/table/marble,
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker{
@@ -14893,26 +14899,14 @@
 /area/maintenance/lower/atrium)
 "Ay" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -20626,6 +20620,12 @@
 	pixel_x = -7;
 	pixel_y = -26
 	},
+/obj/machinery/computer/guestpass{
+	icon_state = "guest";
+	dir = 8;
+	pixel_x = 27;
+	pixel_y = 0
+	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "KM" = (
@@ -20718,6 +20718,11 @@
 "Ld" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/light,
+/obj/machinery/computer/security/telescreen/entertainment{
+	icon_state = "frame";
+	pixel_x = 0;
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Lf" = (
@@ -20835,6 +20840,32 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"LR" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "LW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -21090,11 +21121,6 @@
 "On" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -21103,7 +21129,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock{
-	name = "Bar Backroom"
+	name = "Bar Backroom";
+	req_access = list(25);
+	req_one_access = list(25)
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
@@ -21216,10 +21244,13 @@
 /area/tether/surfacebase/atrium_three)
 "Px" = (
 /obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/structure/window/reinforced/polarized/full{
+	id = "BRBKRTN"
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "BRBKRTN"
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/bar_backroom)
@@ -21770,6 +21801,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"SU" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "SX" = (
 /obj/effect/floor_decal/corner/beige{
 	dir = 10
@@ -21952,6 +21991,13 @@
 /obj/item/weapon/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"UJ" = (
+/obj/structure/table/marble,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "UL" = (
 /obj/machinery/light,
 /obj/structure/table/bench/wooden,
@@ -22115,11 +22161,18 @@
 /area/tether/surfacebase/public_garden_three)
 "Wd" = (
 /obj/machinery/computer/arcade/orion_trail,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22;
+	pixel_y = 0
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "We" = (
 /obj/machinery/door/window/westright{
-	name = "Bar"
+	name = "Bar";
+	req_access = list(25);
+	req_one_access = list(25)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22268,6 +22321,10 @@
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 9
+	},
+/obj/machinery/button/windowtint{
+	id = "BRBKRTN";
+	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
@@ -22516,6 +22573,32 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
+"ZS" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 
 (1,1,1) = {"
 aa
@@ -36646,10 +36729,10 @@ vn
 wU
 xw
 ye
-xw
-xw
+ZS
+SU
 Ay
-xw
+LR
 xw
 xw
 CH
@@ -37344,7 +37427,7 @@ pc
 rL
 sk
 sH
-sk
+UJ
 th
 Zc
 KX
@@ -37486,7 +37569,7 @@ oJ
 rM
 sl
 sH
-sk
+UJ
 ti
 Az
 tO
@@ -37642,7 +37725,7 @@ Az
 Az
 Az
 Az
-Az
+yf
 Az
 DZ
 Ld
