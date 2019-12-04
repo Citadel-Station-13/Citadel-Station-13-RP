@@ -5,7 +5,7 @@
 /obj/item/trash
 	icon = 'icons/obj/trash.dmi'
 	w_class = ITEMSIZE_SMALL
-	desc = "General waste material, refuse or litter. Dispose responsibly."
+	desc = "This is rubbish."
 
 /obj/item/trash/raisins
 	name = "\improper 4no raisins"
@@ -76,14 +76,17 @@
 	name = "\improper \"LiquidFood\" ration"
 	icon_state = "liquidfood"
 
+/obj/item/trash/liquidprotein
+	name = "\improper \"LiquidProtein\" ration"
+	icon_state = "liquidprotein"
+
+/obj/item/trash/liquidvitamin
+	name = "\improper \"VitaPaste\" ration"
+	icon_state = "liquidvitamin"
+
 /obj/item/trash/tastybread
 	name = "bread tube"
 	icon_state = "tastybread"
-
-/obj/item/trash/skrellsnacks
-	name = "\improper SkrellSnax"
-	icon = 'icons/obj/candle.dmi'
-	icon_state = "candle4"
 
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return
