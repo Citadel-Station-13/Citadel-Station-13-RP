@@ -14,7 +14,7 @@
 	id = "[rand(1000, 9999)]"
 	..()
 	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "telecomp-wires")
+	underlays += image('icons/obj/stationobjs_vr.dmi', icon_state = "telecomp-wires")	//VOREStation Edit: different direction for wires to account for dirs
 	return
 
 /obj/machinery/computer/teleporter/Initialize()
@@ -69,7 +69,7 @@
 				for(var/obj/machinery/teleport/hub/H in range(1))
 					var/amount = rand(2,5)
 					for(var/i=0;i<amount;i++)
-						new /mob/living/simple_animal/hostile/carp(get_turf(H))
+						new /mob/living/simple_mob/animal/space/carp(get_turf(H))
 				//
 			else
 				for(var/mob/O in hearers(src, null))
@@ -95,7 +95,7 @@
 	var/list/L = list()
 	var/list/areaindex = list()
 
-	for(var/obj/item/device/radio/beacon/R in GLOB.all_beacons)
+	for(var/obj/item/device/radio/beacon/R in all_beacons)
 		var/turf/T = get_turf(R)
 		if(!T)
 			continue
@@ -108,7 +108,7 @@
 			areaindex[tmpname] = 1
 		L[tmpname] = R
 
-	for (var/obj/item/weapon/implant/tracking/I in GLOB.all_tracking_implants)
+	for (var/obj/item/weapon/implant/tracking/I in all_tracking_implants)
 		if(!I.implanted || !ismob(I.loc))
 			continue
 		else

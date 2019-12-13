@@ -9,7 +9,9 @@
 	reagent_state = LIQUID
 	color = "#CF3600"
 	metabolism = REM * 0.25 // 0.05 by default. Hopefully enough to get some help, or die horribly, whatever floats your boat
+	filtered_organs = list(O_LIVER, O_KIDNEYS)
 	var/strength = 4 // How much damage it deals per unit
+	var/skin_danger = 0.2 // The multiplier for how effective the toxin is when making skin contact.
 
 /datum/reagent/toxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(strength && alien != IS_DIONA)
@@ -21,6 +23,9 @@
 			else
 				M.heal_organ_damage((10/strength) * removed, (10/strength) * removed) //Doses of toxins below 10 units, and 10 strength, are capable of providing useful compounds for repair.
 		M.adjustToxLoss(strength * removed)
+
+/datum/reagent/toxin/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	affect_blood(M, alien, removed * 0.2)
 
 /datum/reagent/toxin/plasticide
 	name = "Plasticide"
@@ -48,6 +53,26 @@
 	reagent_state = LIQUID
 	color = "#003333"
 	strength = 10
+
+/datum/reagent/toxin/neurotoxic_protein
+	name = "toxic protein"
+	id = "neurotoxic_protein"
+	description = "A weak neurotoxic chemical commonly found in Sivian fish meat."
+	taste_description = "fish"
+	reagent_state = LIQUID
+	color = "#005555"
+	strength = 8
+	skin_danger = 0.4
+
+/datum/reagent/toxin/neurotoxic_protein/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien != IS_DIONA)
+		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+			step(M, pick(cardinal))
+		if(prob(5))
+			M.emote(pick("twitch", "drool", "moan"))
+		if(prob(20))
+			M.adjustBrainLoss(0.1)
 
 //R-UST port
 // Produced during deuterium synthesis. Super poisonous, SUPER flammable (doesn't need oxygen to burn).
@@ -101,6 +126,7 @@
 	color = "#9D14DB"
 	strength = 30
 	touch_met = 5
+	skin_danger = 1
 
 /datum/reagent/toxin/phoron/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
@@ -159,6 +185,24 @@
 	if(prob(5))
 		M.vomit()
 
+/datum/reagent/toxin/expired_medicine
+	name = "Expired Medicine"
+	id = "expired_medicine"
+	description = "Some form of liquid medicine that is well beyond its shelf date. Administering it now would cause illness."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	strength = 5
+	filtered_organs = list(O_SPLEEN)
+
+/datum/reagent/toxin/expired_medicine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(prob(5))
+		M.vomit()
+
+/datum/reagent/toxin/expired_medicine/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	affect_blood(M, alien, removed * 0.66)
+
+
 /datum/reagent/toxin/stimm	//Homemade Hyperzine
 	name = "Stimm"
 	id = "stimm"
@@ -190,6 +234,7 @@
 	color = "#FFFFFF"
 	strength = 0
 	overdose = REAGENTS_OVERDOSE
+	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chloride/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -215,6 +260,7 @@
 	color = "#FFFFFF"
 	strength = 10
 	overdose = 20
+	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chlorophoride/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -237,6 +283,7 @@
 	color = "#669900"
 	metabolism = REM
 	strength = 3
+	mrate_static = TRUE
 
 /datum/reagent/toxin/zombiepowder/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -249,6 +296,35 @@
 	M.tod = stationtime2text()
 
 /datum/reagent/toxin/zombiepowder/Destroy()
+	if(holder && holder.my_atom && ismob(holder.my_atom))
+		var/mob/M = holder.my_atom
+		M.status_flags &= ~FAKEDEATH
+	return ..()
+
+/datum/reagent/toxin/lichpowder
+	name = "Lich Powder"
+	id = "lichpowder"
+	description = "A stablized nerve agent that puts the subject into a strange state of un-death."
+	reagent_state = SOLID
+	color = "#666666"
+	metabolism = REM * 0.75
+	strength = 2
+	mrate_static = TRUE
+
+/datum/reagent/toxin/lichpowder/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_DIONA)
+		return
+	M.status_flags |= FAKEDEATH
+	M.adjustOxyLoss(1 * removed)
+	M.silent = max(M.silent, 10)
+	M.tod = stationtime2text()
+
+	if(prob(1))
+		M.visible_message("[M] wheezes.", "You wheeze sharply... it's cold.")
+		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C - 10)
+
+/datum/reagent/toxin/lichpowder/Destroy()
 	if(holder && holder.my_atom && ismob(holder.my_atom))
 		var/mob/M = holder.my_atom
 		M.status_flags &= ~FAKEDEATH
@@ -321,6 +397,35 @@
 
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
+/datum/reagent/toxin/sifslurry
+	name = "Sivian Sap"
+	id = "sifsap"
+	description = "A natural slurry comprised of fluorescent bacteria native to Sif, in the Vir system."
+	taste_description = "sour"
+	reagent_state = LIQUID
+	color = "#C6E2FF"
+	strength = 2
+	overdose = 20
+
+/datum/reagent/toxin/sifslurry/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_DIONA) // Symbiotic bacteria.
+		M.nutrition += strength * removed
+		return
+	else
+		M.add_modifier(/datum/modifier/slow_pulse, 30 SECONDS)
+	..()
+
+/datum/reagent/toxin/sifslurry/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
+	if(alien == IS_DIONA)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		overdose_mod *= H.species.chemOD_mod
+	M.apply_effect(2 * removed,IRRADIATE, 0, 0)
+	M.apply_effect(5 * removed,DROWSY, 0, 0)
+
+/datum/reagent/toxin/sifslurry/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	affect_blood(M, alien, removed * 0.7)
 
 /datum/reagent/acid/polyacid
 	name = "Polytrinic acid"
@@ -331,6 +436,16 @@
 	color = "#8E18A9"
 	power = 10
 	meltdose = 4
+
+/datum/reagent/acid/digestive
+	name = "Digestive acid"
+	id = "stomacid"
+	description = "Some form of digestive slurry."
+	taste_description = "vomit"
+	reagent_state = LIQUID
+	color = "#664330"
+	power = 2
+	meltdose = 30
 
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
@@ -360,6 +475,7 @@
 	description = "A biological agent that acts similarly to pepperspray. This compound seems to be particularly cruel, however, capable of permeating the barriers of blood vessels."
 	taste_description = "fire"
 	color = "#B31008"
+	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/condensedcapsaicin/venom/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -658,6 +774,7 @@
 	id = "serotrotium_v"
 	description = "A chemical compound that promotes concentrated production of the serotonin neurotransmitter in humans. This appears to be a biologically produced form, resulting in a specifically toxic nature."
 	taste_description = "chalky bitterness"
+	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/serotrotium/venom/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -700,6 +817,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
+	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/impedrezene/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -905,7 +1023,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	metabolism = REM * 4
 
 /datum/reagent/irradiated_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	radiation_repository.radiate(get_turf(M), 20)	// Irradiate people around you.
+	SSradiation.radiate(get_turf(M), 20)	// Irradiate people around you.
 	M.radiation = max(M.radiation + 5 * removed, 0)	// Irradiate you. Because it's inside you.
 
 /datum/reagent/neurophage_nanites
@@ -916,6 +1034,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = SOLID
 	color = "#555555"
 	metabolism = REM * 4
+	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/neurophage_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.

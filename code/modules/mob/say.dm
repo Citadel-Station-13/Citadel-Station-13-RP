@@ -22,7 +22,11 @@
 		usr << "<font color='red'>Speech is currently admin-disabled.</font>"
 		return
 
+	//VOREStation Edit Start
+	if(muffled)
+		return me_verb_subtle(message)
 	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
+	//VOREStation Edit End
 
 	set_typing_indicator(FALSE)
 	if(use_me)

@@ -4,7 +4,7 @@
 	icon_state = "mecha_uac2"
 	equip_cooldown = 60 // 6 seconds
 	projectile = /obj/item/projectile/bullet/cannon
-	fire_sound = 'sound/weapons/cannon.ogg'
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 1000
 	salvageable = 0 // We don't want players ripping this off a dead mech. Could potentially be a prize for beating it if Devs bless me and someone offers a nerf idea.
@@ -87,7 +87,7 @@
 	max_universal_equip = 5
 	max_special_equip = 2
 
-/obj/mecha/combat/gorilla/New()
+/obj/mecha/combat/gorilla/Initialize()
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src) // This thing basically cannot function without an external power supply.
 	ME.attach(src)

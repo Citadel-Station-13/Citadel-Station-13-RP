@@ -13,6 +13,7 @@
 	var/implant_color = "b"
 	var/allow_reagents = 0
 	var/malfunction = 0
+	var/initialize_loc = BP_TORSO
 	show_messages = 1
 
 /obj/item/weapon/implant/proc/trigger(emote, source as mob)
@@ -110,10 +111,10 @@ GLOBAL_LIST_BOILERPLATE(all_tracking_implants, /obj/item/weapon/implant/tracking
 	id = rand(1, 1000)
 
 /obj/item/weapon/implant/tracking/post_implant(var/mob/source)
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/implant/tracking/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/weapon/implant/tracking/process()
@@ -126,7 +127,7 @@ GLOBAL_LIST_BOILERPLATE(all_tracking_implants, /obj/item/weapon/implant/tracking
 				desc = "Charred circuit in melted plastic case. Wonder what that used to be..."
 				icon_state = "implant_melted"
 				malfunction = MALFUNCTION_PERMANENT
-				processing_objects.Remove(src)
+				STOP_PROCESSING(SSobj, src)
 	return 1
 
 /obj/item/weapon/implant/tracking/get_data()

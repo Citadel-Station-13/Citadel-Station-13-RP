@@ -41,7 +41,7 @@
 
 /obj/item/weapon/card/id/guest/attack_self(mob/living/user as mob)
 	if(user.a_intent == I_HURT)
-		if(icon_state == "guest-invalid")
+		if(icon_state == "guest_invalid")
 			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
 			return
 
@@ -49,26 +49,24 @@
 		if(confirm == "Yes")
 			//rip guest pass </3
 			user.visible_message("<span class='notice'>\The [user] deactivates \the [src].</span>")
-			icon_state = "guest-invalid"
-			update_icon()
+			icon_state = "guest_invalid"
 			expiration_time = world.time
 			expired = 1
 	return ..()
 
 /obj/item/weapon/card/id/guest/Initialize()
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	update_icon()
 
 /obj/item/weapon/card/id/guest/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/weapon/card/id/guest/process()
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
-		icon_state = "guest-invalid"
-		update_icon()
+		icon_state = "guest_invalid"
 		expired = 1
 		world.time = expiration_time
 		return
@@ -106,7 +104,7 @@
 		if(!giver && user.unEquip(I))
 			I.forceMove(src)
 			giver = I
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 		else if(giver)
 			user << "<span class='warning'>There is already ID card inside.</span>"
 		return
@@ -152,7 +150,7 @@
 	data["log"] = internal_log
 	data["uid"] = uid
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "guest_pass.tmpl", src.name, 400, 520)
 		ui.set_initial_data(data)
@@ -244,4 +242,4 @@
 					usr << "<span class='warning'>Cannot issue pass without issuing ID.</span>"
 
 	src.add_fingerprint(usr)
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
