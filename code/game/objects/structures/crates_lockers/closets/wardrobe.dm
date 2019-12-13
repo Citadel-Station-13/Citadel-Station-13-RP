@@ -12,6 +12,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/security = 3,
 		/obj/item/clothing/under/rank/security2 = 3,
+		/obj/item/clothing/under/rank/security/turtleneck = 3,
 		/obj/item/clothing/under/rank/security/skirt = 2,
 		/obj/item/clothing/shoes/boots/jackboots = 3,
 		/obj/item/clothing/head/soft/sec = 3,
@@ -101,6 +102,9 @@
 		/obj/item/clothing/under/wedding/bride_white,
 		/obj/item/weapon/storage/backpack/cultpack,
 		/obj/item/weapon/storage/fancy/candle_box = 2,
+		/obj/item/weapon/storage/fancy/whitecandle_box,
+		/obj/item/weapon/storage/fancy/blackcandle_box,
+		/obj/item/godfig = 2,
 		/obj/item/weapon/deck/tarot)
 
 
@@ -136,7 +140,7 @@
 	icon_closed = "orange"
 
 	starts_with = list(
-		/obj/item/clothing/under/color/orange = 3,
+		/obj/item/clothing/under/color/prison = 3,
 		/obj/item/clothing/shoes/orange = 3)
 
 
@@ -175,6 +179,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/engineer = 3,
 		/obj/item/clothing/under/rank/engineer/skirt = 3,
+		/obj/item/clothing/under/rank/engineer/turtleneck = 3,
 		/obj/item/clothing/shoes/orange = 3,
 		/obj/item/clothing/head/hardhat = 3,
 		/obj/item/clothing/head/beret/engineering = 3,
@@ -215,6 +220,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist = 3,
 		/obj/item/clothing/under/rank/scientist/skirt = 2,
+		/obj/item/clothing/under/rank/scientist/turtleneck = 3,
 		/obj/item/clothing/suit/storage/toggle/labcoat = 3,
 		/obj/item/clothing/shoes/white = 3,
 		/obj/item/clothing/shoes/slippers = 3,
@@ -310,6 +316,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/medical = 2,
 		/obj/item/clothing/under/rank/medical/skirt = 2,
+		/obj/item/clothing/under/rank/medical/turtleneck = 2,
 		/obj/item/clothing/under/rank/medical/scrubs,
 		/obj/item/clothing/under/rank/medical/scrubs/green,
 		/obj/item/clothing/under/rank/medical/scrubs/purple,
@@ -469,7 +476,6 @@
 		/obj/item/weapon/storage/backpack/captain,
 		/obj/item/clothing/suit/captunic,
 		/obj/item/clothing/suit/captunic/capjacket,
-		/obj/item/clothing/suit/dress/expedition/command/cd,
 		/obj/item/clothing/head/caphat/cap,
 		/obj/item/clothing/under/rank/captain,
 		/obj/item/clothing/shoes/brown,

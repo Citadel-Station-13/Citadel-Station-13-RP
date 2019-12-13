@@ -30,10 +30,10 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "no", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
 
 			if(!isSynthetic())
-				src << "<span class='warning'>You are not a synthetic.</span>"
+				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
 				return
 
 			var/M = null
@@ -53,7 +53,7 @@
 			else if(act == "ping")
 				display_msg = "pings"
 				use_sound = 'sound/machines/ping.ogg'
-			else if(act == "yes")
+			else if(act == "yes" || act == "ye")
 				display_msg = "emits an affirmative blip"
 				use_sound = 'sound/machines/synth_yes.ogg'
 			else if(act == "no")
@@ -141,7 +141,7 @@
 
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					src << "<font color='red'>You cannot send IC messages (muted).</font>"
+					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
 					return
 			if (stat)
 				return
@@ -811,7 +811,7 @@
 
 		if("vomit")
 			if(isSynthetic())
-				src << "<span class='warning'>You are unable to vomit.</span>"
+				to_chat(src, "<span class='warning'>You are unable to vomit.</span>")
 				return
 			vomit()
 			return
@@ -831,13 +831,13 @@
 				message = "makes a light spitting noise, a poor attempt at a whistle."
 
 		if ("help")
-			src << "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+			to_chat(src, "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hug-(none)/mob, laugh, look-(none)/mob, moan, mumble, nod, pale, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yess, no, rcough, rsneeze, ping"
+					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping")
 
 		else
-			src << "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>"
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
 
 	if (message)
 		custom_emote(m_type,message)

@@ -39,6 +39,9 @@
 	spreadtype = prob(70) ? "Airborne" : "Contact"
 	resistance = rand(15,70)
 
+	if(severity >= 2 && prob(33))
+		resistance += 10
+
 	if(all_species.len)
 		affected_species = get_infectable_species()
 
@@ -87,6 +90,13 @@
 			src.cure(mob)
 		else
 			resistance += rand(1,9)
+
+	//VOREStation Add Start - Corophazine can treat higher stages
+	var/antibiotics = mob.chem_effects[CE_ANTIBIOTIC]
+	if(antibiotics == ANTIBIO_SUPER)
+		if(prob(70))
+			src.cure(mob)
+	//VOREStation Add End
 
 	//Resistance is capped at 90 without being manually set to 100
 	if(resistance > 90 && resistance < 100)
