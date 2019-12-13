@@ -85,7 +85,7 @@
 //Other
 #define NIF_O_COMMLINK			0x1
 #define NIF_O_APCCHARGE			0x2
-// #define NIF_O_PRESSURESEAL		0x4
+#define NIF_O_PRESSURESEAL		0x4
 #define NIF_O_HEATSINKS			0x8
 #define NIF_O_SCMYSELF			0x10 //Soulcatcher stuff
 #define NIF_O_SCOTHERS			0x20
