@@ -22,7 +22,7 @@
 	R.my_atom = src
 	if (!possible_transfer_amounts)
 		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
-	..()
+	. = ..()
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	if(!..(user, 2))
@@ -74,7 +74,7 @@
 	amount_per_transfer_from_this = 10
 
 /obj/structure/reagent_dispensers/watertank/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("water", 1000)
 
 /obj/structure/reagent_dispensers/watertank/high
@@ -83,7 +83,7 @@
 	icon_state = "watertank_high"
 
 /obj/structure/reagent_dispensers/watertank/high/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("water", 4000)
 
 /obj/structure/reagent_dispensers/fueltank
@@ -96,7 +96,7 @@
 	var/obj/item/device/assembly_holder/rig = null
 
 /obj/structure/reagent_dispensers/fueltank/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("fuel",1000)
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
@@ -158,7 +158,7 @@
 			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 			log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 
-		if(!istype(Proj ,/obj/item/projectile/beam/lastertag) && !istype(Proj ,/obj/item/projectile/beam/practice) )
+		if(!istype(Proj ,/obj/item/projectile/beam/lasertag) && !istype(Proj ,/obj/item/projectile/beam/practice) )
 			explode()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
@@ -206,7 +206,7 @@
 	amount_per_transfer_from_this = 45
 
 /obj/structure/reagent_dispensers/peppertank/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("condensedcapsaicin",1000)
 
 
@@ -228,7 +228,7 @@
 	cups = 10
 
 /obj/structure/reagent_dispensers/water_cooler/Initialize()
-	..()
+	. = ..()
 	if(bottle)
 		reagents.add_reagent("water",120)
 	update_icon()
@@ -353,7 +353,7 @@
 	amount_per_transfer_from_this = 10
 
 /obj/structure/reagent_dispensers/beerkeg/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("beer",1000)
 
 /obj/structure/reagent_dispensers/beerkeg/fakenuke
@@ -371,7 +371,7 @@
 	anchored = 1
 
 /obj/structure/reagent_dispensers/virusfood/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("virusfood", 1000)
 
 /obj/structure/reagent_dispensers/acid
@@ -383,7 +383,7 @@
 	anchored = 1
 
 /obj/structure/reagent_dispensers/acid/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("sacid", 1000)
 
 //Cooking oil refill tank
