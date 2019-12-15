@@ -16,6 +16,7 @@
 			stone
 			metal
 			solid
+			resin
 			ONLY WALLS
 				cult
 				hull
@@ -94,6 +95,7 @@ var/list/name_to_material
 	var/door_icon_base = "metal"                         // Door base icon tag. See header.
 	var/icon_reinf = "reinf_metal"                       // Overlay used
 	var/list/stack_origin_tech = list(TECH_MATERIAL = 1) // Research level for stacks.
+	var/pass_stack_colors = FALSE                        // Will stacks made from this material pass their colors onto objects?
 
 	// Attributes
 	var/cut_delay = 0            // Delay in ticks when cutting through this wall.
@@ -105,7 +107,9 @@ var/list/name_to_material
 	var/opacity = 1              // Is the material transparent? 0.5< makes transparent walls/doors.
 	var/reflectivity = 0         // How reflective to light is the material?  Currently used for laser reflection and defense.
 	var/explosion_resistance = 5 // Only used by walls currently.
-	var/conductive = 1           // Objects with this var add CONDUCTS to flags on spawn.
+	var/negation = 0             // Objects that respect this will randomly absorb impacts with this var as the percent chance.
+	var/spatial_instability = 0  // Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
+	var/conductive = 1           // Objects without this var add NOCONDUCT to flags on spawn.
 	var/conductivity = null      // How conductive the material is. Iron acts as the baseline, at 10.
 	var/list/composite_material  // If set, object matter var will be a list containing these values.
 	var/luminescence
@@ -113,6 +117,7 @@ var/list/name_to_material
 
 	// Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
 	var/created_window
+	var/created_fulltile_window
 	var/rod_product
 	var/wire_product
 	var/list/window_options = list()
@@ -344,6 +349,7 @@ var/list/name_to_material
 	weight = 22
 	hardness = 55
 	protectiveness = 5 // 20%
+	conductive = 0
 	conductivity = 5
 	door_icon_base = "stone"
 	sheet_singular_name = "brick"
@@ -454,9 +460,12 @@ var/list/name_to_material
 	explosion_resistance = 90
 	reflectivity = 0.9
 
-/datum/material/plasteel/titanium
-	name = "titanium"
-	stack_type = null
+/material/durasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal durasteel sheets.
+	new /obj/item/stack/material/durasteel(target)
+
+/material/plasteel/titanium
+	name = MAT_TITANIUM
+	stack_type = /obj/item/stack/material/titanium
 	conductivity = 2.38
 	icon_base = "metal"
 	door_icon_base = "metal"
