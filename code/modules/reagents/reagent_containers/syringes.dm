@@ -333,7 +333,7 @@
 	desc = "Contains inaprovaline - used to stabilize patients."
 
 /obj/item/weapon/reagent_containers/syringe/inaprovaline/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("inaprovaline", 15)
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
 	//update_icon()
@@ -343,7 +343,7 @@
 	desc = "Contains anti-toxins."
 
 /obj/item/weapon/reagent_containers/syringe/antitoxin/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
 	//update_icon()
@@ -353,7 +353,7 @@
 	desc = "Contains antiviral agents."
 
 /obj/item/weapon/reagent_containers/syringe/antiviral/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("spaceacillin", 15)
 	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
 	//update_icon()
@@ -363,7 +363,7 @@
 	desc = "Contains aggressive drugs meant for torture."
 
 /obj/item/weapon/reagent_containers/syringe/drugs/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("space_drugs",  5)
 	reagents.add_reagent("mindbreaker",  5)
 	reagents.add_reagent("cryptobiolin", 5)
@@ -371,7 +371,7 @@
 	//update_icon()
 
 /obj/item/weapon/reagent_containers/syringe/ld50_syringe/choral/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("chloralhydrate", 50)
 	mode = SYRINGE_INJECT
 	update_icon()

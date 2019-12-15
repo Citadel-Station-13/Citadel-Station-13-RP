@@ -58,6 +58,8 @@
 	return FALSE
 /obj/item/device/perfect_tele_beacon/digest_act(var/atom/movable/item_storage = null)
 	return FALSE //Sorta important to not digest your own beacons.
+/obj/item/organ/internal/brain/slime/digest_act(var/atom/movable/item_storage = null)
+	return FALSE //so prometheans can be recovered
 
 /////////////
 // Some special treatment
@@ -65,15 +67,20 @@
 //PDAs need to lose their ID to not take it with them, so we can get a digested ID
 /obj/item/device/pda/digest_act(var/atom/movable/item_storage = null)
 	if(id)
-		id = null
-
+		if(istype(item_storage,/obj/item/device/dogborg/sleeper) || (!isnull(digest_stage) && digest_stage <= 0))
+			id = null
 	. = ..()
+
+/obj/item/weapon/card/id
+	var/lost_access = list()
 
 /obj/item/weapon/card/id/digest_act(var/atom/movable/item_storage = null)
 	desc = "A partially digested card that has seen better days. The damage appears to be only cosmetic, but the access codes need to be reprogrammed at the HoP office."
 	icon = 'icons/obj/card_vr.dmi'
 	icon_state = "[initial(icon_state)]_digested"
-	access = list() // No access
+	if(!(LAZYLEN(lost_access)) && LAZYLEN(access))
+		lost_access = access	//Do not forget what access we lose
+	access = list()			// Then lose it
 	return FALSE
 
 /obj/item/weapon/reagent_containers/food/digest_act(var/atom/movable/item_storage = null)
@@ -85,7 +92,8 @@
 		else if(isrobot(B.owner))
 			var/mob/living/silicon/robot/R = B.owner
 			R.cell.charge += 150
-
+		qdel(src)
+		return w_class
 	. = ..()
 
 /obj/item/weapon/holder/digest_act(var/atom/movable/item_storage = null)
@@ -100,9 +108,9 @@
 	if((. = ..()))
 		if(isbelly(item_storage))
 			var/obj/belly/B = item_storage
-			. += 5 * (B.digest_brute + B.digest_burn)
+			. += 2 * (B.digest_brute + B.digest_burn)
 		else
-			. += 70 //Organs give a little more
+			. += 30 //Organs give a little more
 
 /obj/item/weapon/storage/digest_act(var/atom/movable/item_storage = null)
 	for(var/obj/item/I in contents)

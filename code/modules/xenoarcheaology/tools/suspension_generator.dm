@@ -220,25 +220,25 @@
 	deactivate()
 	..()
 
-/obj/machinery/suspension_gen/verb/rotate_ccw()
+/obj/machinery/suspension_gen/verb/rotate_counterclockwise()
 	set src in view(1)
-	set name = "Rotate suspension gen (counter-clockwise)"
+	set name = "Rotate suspension gen Counterclockwise"
 	set category = "Object"
 
 	if(anchored)
 		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
-	else
-		setDir(turn(dir, 90))
+		return
+	src.setDir(turn(src.dir, 90))
 
-/obj/machinery/suspension_gen/verb/rotate_cw()
+/obj/machinery/suspension_gen/verb/rotate_clockwise()
 	set src in view(1)
-	set name = "Rotate suspension gen (clockwise)"
+	set name = "Rotate suspension gen Clockwise"
 	set category = "Object"
 
 	if(anchored)
 		to_chat(usr, "<font color='red'>You cannot rotate [src], it has been firmly fixed to the floor.</font>")
-	else
-		setDir(turn(dir, -90))
+		return
+	src.setDir(turn(src.dir, 270))
 
 /obj/effect/suspension_field
 	name = "energy field"
