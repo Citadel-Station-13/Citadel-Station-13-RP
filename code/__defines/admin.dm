@@ -57,6 +57,7 @@
 #define ADMIN_CENTCOM_REPLY(user) "(<a href='?_src_=holder;CentcommReply=\ref[user]'>RPLY</a>)"
 #define ADMIN_SYNDICATE_REPLY(user) "(<a href='?_src_=holder;SyndicateReply=\ref[user]'>RPLY</a>)"
 #define ADMIN_SC(user) "(<a href='?_src_=holder;adminspawncookie=\ref[user]'>SC</a>)"
+#define ADMIN_ST(user) "(<a href='?_src_=holder;adminspawntreat=\ref[user]'>ST</a>)"
 #define ADMIN_SMITE(user) "(<a href='?_src_=holder;adminsmite=\ref[user]'>SMITE</a>)"
 #define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUE(user)]"
 #define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]"
@@ -65,6 +66,7 @@
 #define ADMIN_JMP(src) "(<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)"
 #define COORD(src) "[src ? "([src.x],[src.y],[src.z])" : "nonexistent location"]"
 #define ADMIN_COORDJMP(src) "[src ? "[COORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
+#define AREACOORD(src) "[src ? "[get_area_name(src, TRUE)] ([src.x], [src.y], [src.z])" : "nonexistent location"]"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
