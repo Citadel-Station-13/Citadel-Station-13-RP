@@ -20,8 +20,8 @@ var/const/access_explorer = 43
 //SC IDs
 
 /obj/item/weapon/card/id/medical/sar
-	assignment = "Search and Rescue"
-	rank = "Search and Rescue"
+	assignment = "Field Medic"
+	rank = "Field Medic"
 	job_access_type = /datum/job/sar
 
 /obj/item/weapon/card/id/civilian/pilot
@@ -106,7 +106,7 @@ var/const/access_explorer = 43
 */
 
 /datum/job/sar
-	title = "Search and Rescue"
+	title = "Field Medic"
 	flag = SAR
 	department = "Medical"
 	department_flag = MEDSCI
