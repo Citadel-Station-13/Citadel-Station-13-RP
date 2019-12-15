@@ -11,7 +11,7 @@
 var/global/datum/controller/process/alarm/alarm_manager // citadel change, please don't break
 
 /datum/controller/process/alarm
-	var/list/datum/alarm/all_handlers
+	var/list/datum/alarm/all_handlers = list()
 
 /datum/controller/process/alarm/setup()
 	name = "alarm"

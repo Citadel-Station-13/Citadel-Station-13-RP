@@ -1,5 +1,5 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-obj/machinery/recharger
+/obj/machinery/recharger
 	name = "recharger"
 	desc = "A standard recharger for all devices that use power."
 	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Edit
@@ -8,9 +8,9 @@ obj/machinery/recharger
 	use_power = 1
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
-	var/efficiency = 40000 //modified power rate when upgraded
+	var/efficiency = 40000 //will provide the modified power rate when upgraded
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/ammo_casing/nsfw_batt) //VOREStation Add - NSFW Batteries
+	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/modular_computer, /obj/item/weapon/computer_hardware/battery_module, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/device/flash, /obj/item/ammo_casing/microbattery) //VOREStation Add - NSFW Batteries
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -35,9 +35,6 @@ obj/machinery/recharger
 		to_chat(user, "Current charge: [C.charge] / [C.maxcharge]")
 
 /obj/machinery/recharger/attackby(obj/item/weapon/G as obj, mob/user as mob)
-	if(istype(user,/mob/living/silicon))
-		return
-
 	var/allowed = 0
 	for (var/allowed_type in allowed_devices)
 		if(istype(G, allowed_type)) allowed = 1
@@ -55,20 +52,27 @@ obj/machinery/recharger
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
 				return
+		if(istype(G, /obj/item/modular_computer))
+			var/obj/item/modular_computer/C = G
+			if(!C.battery_module)
+				to_chat(user, "<span class='notice'>\The [C] does not have a battery installed. </span>")
+				return
 		if(istype(G, /obj/item/weapon/melee/baton))
 			var/obj/item/weapon/melee/baton/B = G
 			if(B.use_external_power)
 				to_chat(user, "<span class='notice'>\The [B] has no recharge port.</span>")
+				return
+		if(istype(G, /obj/item/device/flash))
+			var/obj/item/device/flash/F = G
+			if(F.use_external_power)
+				to_chat(user, "<span class='notice'>\The [F] has no recharge port.</span>")
 				return
 		if(istype(G, /obj/item/weapon/weldingtool/electric))
 			var/obj/item/weapon/weldingtool/electric/EW = G
 			if(EW.use_external_power)
 				to_chat(user, "<span class='notice'>\The [EW] has no recharge port.</span>")
 				return
-		else if(!G.get_cell())
-			to_chat(user, "\The [G] does not have a battery installed.")
-			return
-		if(!G.get_cell() && !istype(G, /obj/item/ammo_casing/nsfw_batt))	//VOREStation Edit: NSFW charging
+		else if(!G.get_cell() && !istype(G, /obj/item/ammo_casing/microbattery))	//VOREStation Edit: NSFW charging
 			to_chat(user, "\The [G] does not have a battery installed.")
 			return
 
@@ -77,6 +81,7 @@ obj/machinery/recharger
 		charging = G
 		update_icon()
 		user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")
+
 	else if(portable && G.is_wrench())
 		if(charging)
 			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")
@@ -92,9 +97,6 @@ obj/machinery/recharger
 		return
 
 /obj/machinery/recharger/attack_hand(mob/user as mob)
-	if(istype(user,/mob/living/silicon))
-		return
-
 	add_fingerprint(user)
 
 	if(charging)
@@ -113,7 +115,6 @@ obj/machinery/recharger
 			charging = null
 			update_icon()
 
-
 /obj/machinery/recharger/process()
 	if(stat & (NOPOWER|BROKEN) || !anchored)
 		update_use_power(0)
@@ -124,19 +125,40 @@ obj/machinery/recharger
 		update_use_power(1)
 		icon_state = icon_state_idle
 	else
+		if(istype(charging, /obj/item/modular_computer))
+			var/obj/item/modular_computer/C = charging
+			if(!C.battery_module.battery.fully_charged())
+				icon_state = icon_state_charging
+				C.battery_module.battery.give(CELLRATE*efficiency)
+				update_use_power(2)
+			else
+				icon_state = icon_state_charged
+				update_use_power(1)
+			return
+		else if(istype(charging, /obj/item/weapon/computer_hardware/battery_module))
+			var/obj/item/weapon/computer_hardware/battery_module/BM = charging
+			if(!BM.battery.fully_charged())
+				icon_state = icon_state_charging
+				BM.battery.give(CELLRATE*efficiency)
+				update_use_power(2)
+			else
+				icon_state = icon_state_charged
+				update_use_power(1)
+			return
+
 		var/obj/item/weapon/cell/C = charging.get_cell()
 		if(istype(C))
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
-				C.give(efficiency*CELLRATE)
+				C.give(CELLRATE*efficiency)
 				update_use_power(2)
 			else
 				icon_state = icon_state_charged
 				update_use_power(1)
 
 		//VOREStation Add - NSFW Batteries
-		else if(istype(charging, /obj/item/ammo_casing/nsfw_batt))
-			var/obj/item/ammo_casing/nsfw_batt/batt = charging
+		else if(istype(charging, /obj/item/ammo_casing/microbattery))
+			var/obj/item/ammo_casing/microbattery/batt = charging
 			if(batt.shots_left >= initial(batt.shots_left))
 				icon_state = icon_state_charged
 				update_use_power(1)
@@ -165,6 +187,12 @@ obj/machinery/recharger
 	else
 		icon_state = icon_state_idle
 
+/obj/machinery/recharger/RefreshParts()
+	var/E = 0
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+		E += C.rating
+	efficiency = active_power_usage * (1+ (E - 1)*0.5)
+
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"
 	desc = "A more powerful recharger designed for energy weapons."
@@ -172,22 +200,11 @@ obj/machinery/recharger
 	icon_state = "wrecharger0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
+	active_power_usage = 60000	//60 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
+	efficiency = 60000
 	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"
 	portable = 0
 	circuit = /obj/item/weapon/circuitboard/recharger/wrecharger
-
-/obj/machinery/recharger/RefreshParts()
-	var/E = 0
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
-		E += C.rating
-	efficiency = active_power_usage * (1+(E-1)*0.5)
-
-/obj/machinery/recharger/wallcharger/RefreshParts()
-	var/E = 0
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
-		E += C.rating
-	efficiency = (active_power_usage * (1+(E-1)*0.5))*2 //extra efficiency because wallcharger
