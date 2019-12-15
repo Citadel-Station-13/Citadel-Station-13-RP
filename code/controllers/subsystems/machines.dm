@@ -42,10 +42,10 @@ SUBSYSTEM_DEF(machines)
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	var/timer = TICK_USAGE
 
+	INTERNAL_PROCESS_STEP(SSMACHINES_POWER_OBJECTS,FALSE,process_power_objects,cost_power_objects,SSMACHINES_PIPENETS) // Higher priority, damnit
 	INTERNAL_PROCESS_STEP(SSMACHINES_PIPENETS,TRUE,process_pipenets,cost_pipenets,SSMACHINES_MACHINERY)
 	INTERNAL_PROCESS_STEP(SSMACHINES_MACHINERY,FALSE,process_machinery,cost_machinery,SSMACHINES_POWERNETS)
 	INTERNAL_PROCESS_STEP(SSMACHINES_POWERNETS,FALSE,process_powernets,cost_powernets,SSMACHINES_POWER_OBJECTS)
-	INTERNAL_PROCESS_STEP(SSMACHINES_POWER_OBJECTS,FALSE,process_power_objects,cost_power_objects,SSMACHINES_PIPENETS)
 
 // rebuild all power networks from scratch - only called at world creation or by the admin verb
 // The above is a lie. Turbolifts also call this proc.
@@ -108,7 +108,8 @@ SUBSYSTEM_DEF(machines)
 			PN.process(wait)
 		else
 			global.pipe_networks.Remove(PN)
-			PN.datum_flags &= (~DF_ISPROCESSING)
+			if(!QDELETED(PN))
+				DISABLE_BITFIELD(PN.datum_flags, DF_ISPROCESSING)
 		if(MC_TICK_CHECK)
 			return
 
@@ -125,7 +126,8 @@ SUBSYSTEM_DEF(machines)
 				M.auto_use_power()
 		else
 			global.processing_machines.Remove(M)
-			M.datum_flags &= (~DF_ISPROCESSING)
+			if(!QDELETED(M))
+				DISABLE_BITFIELD(M.datum_flags, DF_ISPROCESSING)
 		if(MC_TICK_CHECK)
 			return
 
@@ -140,7 +142,9 @@ SUBSYSTEM_DEF(machines)
 		if(istype(PN) && !QDELETED(PN))
 			PN.reset(wait)
 		else
-			PN.datum_flags &= (~DF_ISPROCESSING)
+			global.powernets.Remove(PN)
+			if(!QDELETED(PN))
+				DISABLE_BITFIELD(PN.datum_flags, DF_ISPROCESSING)
 		if(MC_TICK_CHECK)
 			return
 
@@ -156,7 +160,7 @@ SUBSYSTEM_DEF(machines)
 		current_run.len--
 		if(!I.pwr_drain(wait)) // 0 = Process Kill, remove from processing list.
 			global.processing_power_items.Remove(I)
-			I.datum_flags &= (~DF_ISPROCESSING)
+			DISABLE_BITFIELD(I.datum_flags, DF_ISPROCESSING)
 		if(MC_TICK_CHECK)
 			return
 
