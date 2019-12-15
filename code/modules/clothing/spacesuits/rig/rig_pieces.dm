@@ -4,8 +4,8 @@
 
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
-	item_flags = THICKMATERIAL
 	flags = PHORONGUARD
+	item_flags = THICKMATERIAL|ALLOW_SURVIVALFOOD
 	flags_inv = 		 HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection =    HEAD|FACE|EYES
