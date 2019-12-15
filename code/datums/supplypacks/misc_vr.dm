@@ -21,7 +21,11 @@
 	cost = 150
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "eva hardsuit crate"
-	access = access_mining
+	access = list(access_mining,
+				  access_eva,
+				  access_explorer,
+				  access_pilot)
+	one_access = TRUE
 
 /datum/supply_pack/misc/mining_rig
 	name = "industrial hardsuit (empty)"
@@ -31,7 +35,9 @@
 	cost = 150
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "industrial hardsuit crate"
-	access = access_mining
+	access = list(access_mining,
+				  access_eva)
+	one_access = TRUE
 
 /datum/supply_pack/misc/looksir // CIT Change: Adds a crab crate, that isn't free
 	name = "free crabs"
@@ -39,6 +45,15 @@
 	cost = 7
 	containertype = /obj/structure/largecrate/animal/crab
 	containername = "Crab Crate"
+/datum/supply_pack/misc/medical_rig
+	name = "medical hardsuit (empty)"
+	contains = list(
+			/obj/item/weapon/rig/medical = 1
+			)
+	cost = 150
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "medical hardsuit crate"
+	access = access_medical
 
 /datum/supply_pack/misc/rations
 	name = "Emergency LiquidFood Rations"
@@ -58,4 +73,12 @@
 	/obj/item/weapon/tank/vox = 3,
 	)
 	cost = 40
-	containername = "spare phoronoid suits"
+	containername = "spare phoronoid suits"/datum/supply_pack/misc/ce_rig
+	name = "advanced voidsuit (empty)"
+	contains = list(
+			/obj/item/weapon/rig/ce = 1
+			)
+	cost = 150
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "advanced voidsuit crate"
+	access = access_ce
