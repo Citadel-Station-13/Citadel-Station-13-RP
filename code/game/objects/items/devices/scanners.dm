@@ -15,7 +15,6 @@ HALOGEN COUNTER	- Radcount on mobs
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
 	icon_state = "health"
 	item_state = "healthanalyzer"
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	throwforce = 3
 	w_class = ITEMSIZE_SMALL
