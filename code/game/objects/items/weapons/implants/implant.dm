@@ -31,7 +31,7 @@
 		var/mob/living/carbon/human/H = source
 		var/obj/item/organ/external/affected = H.get_organ(target_zone)
 		if(affected)
-			affected.implants += src
+			affected.implants |= src
 			part = affected
 	if(part)
 		forceMove(part)
@@ -66,8 +66,8 @@
 
 /obj/item/weapon/implant/proc/implant_loadout(var/mob/living/carbon/human/H)
 	if(H)
-		var/obj/item/organ/external/affected = H.organs_by_name[BP_HEAD]
-		if(handle_implant(H, affected))
+		if(handle_implant(H, initialize_loc))
+			invisibility = initial(invisibility)
 			post_implant(H)
 
 /obj/item/weapon/implant/Destroy()
@@ -530,7 +530,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 //				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Security")
 //				a.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm", "Medical")
 			qdel(a)
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 		if ("emp")
 			var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset/heads/captain(null)
 			var/name = prob(50) ? t.name : pick(teleportlocs)
@@ -544,7 +544,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 //			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Security")
 //			a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm", "Medical")
 			qdel(a)
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/implant/death_alarm/emp_act(severity)			//for some reason alarms stop going off in case they are emp'd, even without this
 	if (malfunction)		//so I'm just going to add a meltdown chance here
@@ -557,14 +557,14 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			meltdown()
 		else if (prob(60))	//but more likely it will just quietly die
 			malfunction = MALFUNCTION_PERMANENT
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 	spawn(20)
 		malfunction--
 
 /obj/item/weapon/implant/death_alarm/post_implant(mob/source as mob)
 	mobname = source.real_name
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 //////////////////////////////
 //	Compressed Matter Implant
