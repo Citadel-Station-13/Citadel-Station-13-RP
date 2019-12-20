@@ -226,7 +226,8 @@ datum/preferences
 		dat += "<a href='?src=\ref[src];load=1'>Load slot</a> - "
 		dat += "<a href='?src=\ref[src];save=1'>Save slot</a> - "
 		dat += "<a href='?src=\ref[src];reload=1'>Reload slot</a> - "
-		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a>"
+		dat += "<a href='?src=\ref[src];resetslot=1'>Reset slot</a> - "
+		dat += "<a href='?src=\ref[src];copy=1'>Copy slot</a>"
 
 	else
 		dat += "Please create an account to save your preferences."
