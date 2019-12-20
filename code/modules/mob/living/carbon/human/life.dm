@@ -100,11 +100,6 @@ var/last_message = 0
 
 	pulse = handle_pulse()
 
-
-	///////////////////////// CITADEL STATION ADDITIONS START
-	emoteDanger = max(0, emoteDanger - (timeSinceLastTick / 10))
-	///////////////////////// CITADEL STATION ADDITIONS END
-
 /mob/living/carbon/human/proc/handle_some_updates()
 	if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > 6000))	//We are long dead, or we're junk mobs spawned like the clowns on the clown shuttle
 		return 0
