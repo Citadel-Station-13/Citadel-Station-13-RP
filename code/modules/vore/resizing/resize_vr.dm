@@ -132,7 +132,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(!istype(M))
 		return 0
 	if(isanimal(M))
-		var/mob/living/simple_animal/SA = M
+		var/mob/living/simple_mob/SA = M
 		if(!SA.has_hands)
 			return 0
 	if(M.buckled)
@@ -218,10 +218,16 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/mob/living/carbon/human/H
 	if(ishuman(src))
 		H = src
+	else
+		//If we're not human, can't do the steppy
+		return FALSE
 
 	var/mob/living/carbon/human/Ht
 	if(ishuman(tmob))
 		Ht = tmob
+	else
+		//If they're not human, steppy shouldn't happen
+		return FALSE
 
 	//Depending on intent...
 	switch(a_intent)

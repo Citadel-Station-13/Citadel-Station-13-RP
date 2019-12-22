@@ -44,6 +44,9 @@
 	if(!T || T.check_density())
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
+	if(get_area(A).flags & BLUE_SHIELDED)
+		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
+		return
 
 	last_fire = current_fire
 	playsound(user, 'sound/weapons/wave.ogg', 60, 1)
