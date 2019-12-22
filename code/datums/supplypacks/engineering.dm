@@ -12,28 +12,28 @@
 	contains = list(/obj/item/weapon/storage/box/lights/mixed = 3)
 	cost = 10
 	containertype = /obj/structure/closet/crate
-	containername = "replacement lights"
+	containername = "Replacement lights"
 
 /datum/supply_pack/eng/smescoil
-	name = "Superconductive Magnetic Coil"
+	name = "Superconducting Magnetic Coil"
 	contains = list(/obj/item/weapon/smes_coil)
 	cost = 20
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "superconductive magnetic coil crate"
+	containername = "Superconducting Magnetic Coil crate"
 
-/datum/supply_pack/eng/smescoilsupercap
-	name = "Superconductive Capacitance Coil"
+/datum/supply_pack/eng/smescoil/super_capacity
+	name = "Superconducting Capacitance Coil"
 	contains = list(/obj/item/weapon/smes_coil/super_capacity)
 	cost = 25
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "superconductive capacitance coil crate"
+	containername = "Superconducting Capacitance Coil crate"
 
-/datum/supply_pack/eng/smescoilsuperio
-	name = "Superconductive Transmission Coil"
+/datum/supply_pack/eng/smescoil/super_io
+	name = "Superconducting Transmission Coil"
 	contains = list(/obj/item/weapon/smes_coil/super_io)
 	cost = 25
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "superconductive transmission coil crate"
+	containername = "Superconducting Transmission Coil crate"
 
 /datum/supply_pack/eng/shield_capacitor
 	name = "Shield Capacitor"
@@ -87,7 +87,7 @@
 			)
 	cost = 10
 	containertype = /obj/structure/closet/crate/engineering/electrical
-	containername = "electrical maintenance crate"
+	containername = "Electrical maintenance crate"
 
 /datum/supply_pack/eng/e_welders
 	name = "Electric welder crate"
@@ -96,7 +96,7 @@
 			)
 	cost = 15
 	containertype = /obj/structure/closet/crate/engineering/electrical
-	containername = "electric welder crate"
+	containername = "Electric welder crate"
 
 /datum/supply_pack/eng/mechanical
 	name = "Mechanical maintenance crate"
@@ -108,7 +108,7 @@
 			)
 	cost = 10
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "mechanical maintenance crate"
+	containername = "Mechanical maintenance crate"
 
 /datum/supply_pack/eng/fueltank
 	name = "Fuel tank crate"
@@ -127,35 +127,35 @@
 			)
 	cost = 20
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "solar pack crate"
+	containername = "Solar pack crate"
 
 /datum/supply_pack/eng/engine
 	name = "Emitter crate"
 	contains = list(/obj/machinery/power/emitter = 2)
 	cost = 10
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "emitter crate"
+	containername = "Emitter crate"
 	access = access_ce
 
 /datum/supply_pack/eng/engine/field_gen
 	name = "Field Generator crate"
 	contains = list(/obj/machinery/field_generator = 2)
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "field Generator crate"
+	containername = "Field Generator crate"
 	access = access_ce
 
 /datum/supply_pack/eng/engine/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "singularity generator crate"
+	containername = "Singularity Generator crate"
 	access = access_ce
 
 /datum/supply_pack/eng/engine/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector = 3)
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "collector crate"
+	containername = "Collector crate"
 
 /datum/supply_pack/eng/engine/PA
 	name = "Particle Accelerator crate"

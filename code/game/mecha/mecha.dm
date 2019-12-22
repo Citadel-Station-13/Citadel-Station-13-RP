@@ -7,6 +7,11 @@
 #define MELEE 1
 #define RANGED 2
 
+
+#define MECH_FACTION_NT "nano"
+#define MECH_FACTION_SYNDI "syndi"
+#define MECH_FACTION_NONE "none"
+
 /obj/mecha
 	name = "Mecha"
 	desc = "Exosuit"
@@ -40,6 +45,12 @@
 	var/lights = 0
 	var/lights_power = 6
 	var/force = 0
+
+	var/mech_faction = null
+	var/firstactivation = 0 //It's simple. If it's 0, no one entered it yet. Otherwise someone entered it at least once.
+
+	var/stomp_sound = 'sound/mecha/mechstep.ogg'
+	var/swivel_sound = 'sound/mecha/mechturn.ogg'
 
 	//inner atmos
 	var/use_internal_tank = 0
@@ -308,7 +319,7 @@
 //		return ..()
 */
 
-/obj/mecha/proc/click_action(atom/target,mob/user)
+/obj/mecha/proc/click_action(atom/target,mob/user, params)
 	if(!src.occupant || src.occupant != user ) return
 	if(user.stat) return
 	if(state)
@@ -330,7 +341,7 @@
 		if(selected && selected.is_ranged())
 			selected.action(target)
 	else if(selected && selected.is_melee())
-		selected.action(target)
+		selected.action(target, params)
 	else
 		src.melee_action(target)
 	return
@@ -373,8 +384,15 @@
 /obj/mecha/Move()
 	. = ..()
 	if(.)
-		events.fireEvent("onMove",get_turf(src))
+		MoveAction()
 	return
+
+/obj/mecha/proc/MoveAction() //Allows mech equipment to do an action once the mech moves
+	if(!equipment.len)
+		return
+
+	for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
+		ME.MoveAction()
 
 /obj/mecha/relaymove(mob/user,direction)
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
@@ -432,21 +450,24 @@
 
 /obj/mecha/proc/mechturn(direction)
 	setDir(direction)
-	playsound(src,'sound/mecha/mechturn.ogg',40,1)
+	if(swivel_sound)
+		playsound(src,swivel_sound,40,1)
 	return 1
 
 /obj/mecha/proc/mechstep(direction)
-	var/result = step(src,direction)
-	if(result)
-		playsound(src,"mechstep",40,1)
+	var/result = get_step(src,direction)
+	if(result && Move(result))
+		if(stomp_sound)
+			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
 	return result
 
 
 /obj/mecha/proc/mechsteprand()
-	var/result = step_rand(src)
-	if(result)
-		playsound(src,"mechstep",40,1)
+	var/result = get_step_rand(src)
+	if(result && Move(result))
+		if(stomp_sound)
+			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
 	return result
 
@@ -466,7 +487,7 @@
 	else if(istype(obstacle, /mob))
 		step(obstacle,src.dir)
 	else
-		obstacle.Bumped(src)
+		. = ..(obstacle)
 	return
 
 ///////////////////////////////////
@@ -500,7 +521,7 @@
 	internal_damage |= int_dam_flag
 	pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
-	occupant << sound('sound/machines/warning-buzzer.ogg',wait=0)
+	occupant << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
 	return
 
 /obj/mecha/proc/clearInternalDamage(int_dam_flag)
@@ -520,7 +541,7 @@
 ////////  Health related procs  ////////
 ////////////////////////////////////////
 
-/obj/mecha/proc/take_damage(amount, type="brute")
+/obj/mecha/take_damage(amount, type="brute")
 	if(amount)
 		var/damage = absorbDamage(amount,type)
 		health -= damage
@@ -606,6 +627,11 @@
 
 
 /obj/mecha/bullet_act(var/obj/item/projectile/Proj) //wrapper
+	if(istype(Proj, /obj/item/projectile/test))
+		var/obj/item/projectile/test/Test = Proj
+		Test.hit |= occupant // Register a hit on the occupant, for things like turrets, or in simple-mob cases stopping friendly fire in firing line mode.
+		return
+
 	src.log_message("Hit by projectile. Type: [Proj.name]([Proj.check_armour]).",1)
 	call((proc_res["dynbulletdamage"]||src), "dynbulletdamage")(Proj) //calls equipment
 	..()
@@ -1008,6 +1034,7 @@
 	if(network && !(internal_tank.return_air() in network.gases))
 		network.gases += internal_tank.return_air()
 		network.update = 1
+	playsound(src, 'sound/mecha/gasconnected.ogg', 50, 1)
 	log_message("Connected to gas port.")
 	return 1
 
@@ -1021,6 +1048,7 @@
 
 	connected_port.connected_device = null
 	connected_port = null
+	playsound(src, 'sound/mecha/gasdisconnected.ogg', 50, 1)
 	src.log_message("Disconnected from gas port.")
 	return 1
 
@@ -1078,6 +1106,7 @@
 	else		set_light(light_range - lights_power)
 	src.occupant_message("Toggled lights [lights?"on":"off"].")
 	log_message("Toggled lights [lights?"on":"off"].")
+	playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
 	return
 
 
@@ -1142,10 +1171,12 @@
 		to_chat(usr,"<span class='warning'>Access denied</span>")
 		src.log_append_to_last("Permission denied.")
 		return
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			to_chat(usr,"You're too busy getting your life sucked out of you.")
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
+
 //	usr << "You start climbing into [src.name]"
 
 	visible_message("<span class='notice'>\The [usr] starts to climb into [src.name]</span>")
@@ -1176,8 +1207,22 @@
 		src.icon_state = src.reset_icon()
 		setDir(dir_in)
 		playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
-		if(!hasInternalDamage())
-			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
+		if(!hasInternalDamage()) //Otherwise it's not nominal!
+			switch(mech_faction)
+				if(MECH_FACTION_NT)//The good guys category
+					if(firstactivation)//First time = long activation sound
+						firstactivation = 1
+						src.occupant << sound('sound/mecha/LongNanoActivation.ogg',volume=50)
+					else
+						src.occupant << sound('sound/mecha/nominalnano.ogg',volume=50)
+				if(MECH_FACTION_SYNDI)//Bad guys
+					if(firstactivation)
+						firstactivation = 1
+						src.occupant << sound('sound/mecha/LongSyndiActivation.ogg',volume=50)
+					else
+						src.occupant << sound('sound/mecha/nominalsyndi.ogg',volume=50)
+				else//Everyone else gets the normal noise
+					src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
 		return 1
 	else
 		return 0

@@ -76,7 +76,7 @@
 	var/T = 0
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		T += M.rating
-	mat_efficiency = 1 - (T - 1) / 4 // 1 -> 0.5
+	mat_efficiency = max(1 - (T - 1) / 4, 0.2) // 1 -> 0.2
 	for(var/obj/item/weapon/stock_parts/micro_laser/M in component_parts) // Not resetting T is intended; speed is affected by both
 		T += M.rating
 	speed = T / 2 // 1 -> 3
