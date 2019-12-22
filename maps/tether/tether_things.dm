@@ -1,8 +1,3 @@
-/obj/structure/window/reinforced/polarized/full
-	dir = SOUTHWEST
-	icon_state = "fwindow"
-	maxhealth = 80
-
 //Special map objects
 /obj/effect/landmark/map_data/virgo3b
     height = 7
@@ -102,9 +97,20 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/Initialize()
+/obj/effect/step_trigger/teleporter/to_plains/New()
+	..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_PLAINS
+
+/obj/effect/step_trigger/teleporter/from_plains/New()
+	..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
 	planet = planet_virgo3b
-	. = ..()
 
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
@@ -127,6 +133,9 @@
 		new /datum/teleport/instant(A, destturf, 0, 1, null, null, null, 'sound/effects/phasein.ogg')
 	else
 		return ..()
+
+/obj/effect/step_trigger/lost_in_space/tram
+	deathmessage = "You fly down the tunnel of the tram at high speed for a few moments before impact kills you with sheer concussive force."
 
 
 // Invisible object that blocks z transfer to/from its turf and the turf above.
@@ -212,6 +221,7 @@
 	name = "\improper Tram Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
+	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
 	desc = "The tram station you might've came in from.  You could leave the base easily using this."
@@ -222,7 +232,6 @@
 	on_store_visible_message_2 = "to the colony"
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
-
 /obj/machinery/cryopod/robot/door/tram/process()
 	if(emergency_shuttle.online() || emergency_shuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
@@ -320,22 +329,22 @@ var/global/list/latejoin_tram   = list()
 	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
 	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,
 													list(
-														'sound/effects/wind/wind_2_1.ogg',
-											 			'sound/effects/wind/wind_2_2.ogg',
-											 			'sound/effects/wind/wind_3_1.ogg',
-											 			'sound/effects/wind/wind_4_1.ogg',
-											 			'sound/effects/wind/wind_4_2.ogg',
-											 			'sound/effects/wind/wind_5_1.ogg'
+														'sound/effects/weather/wind/wind_2_1.ogg',
+											 			'sound/effects/weather/wind/wind_2_2.ogg',
+											 			'sound/effects/weather/wind/wind_3_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_2.ogg',
+											 			'sound/effects/weather/wind/wind_5_1.ogg'
 												 		)
 		 											),
 	"Snowfield" 		= new/datum/holodeck_program(/area/houseboat/holodeck/snow,
 													list(
-														'sound/effects/wind/wind_2_1.ogg',
-											 			'sound/effects/wind/wind_2_2.ogg',
-											 			'sound/effects/wind/wind_3_1.ogg',
-											 			'sound/effects/wind/wind_4_1.ogg',
-											 			'sound/effects/wind/wind_4_2.ogg',
-											 			'sound/effects/wind/wind_5_1.ogg'
+														'sound/effects/weather/wind/wind_2_1.ogg',
+											 			'sound/effects/weather/wind/wind_2_2.ogg',
+											 			'sound/effects/weather/wind/wind_3_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_2.ogg',
+											 			'sound/effects/weather/wind/wind_5_1.ogg'
 												 		)
 		 											),
 	"Space" 			= new/datum/holodeck_program(/area/houseboat/holodeck/space,
@@ -391,58 +400,66 @@ var/global/list/latejoin_tram   = list()
 
 /obj/structure/closet/secure_closet/guncabinet/excursion
 	name = "expedition weaponry cabinet"
-	req_one_access = list(access_explorer,access_brig)
+	req_one_access = list(access_explorer,access_armory)
 
 /obj/structure/closet/secure_closet/guncabinet/excursion/New()
 	..()
-	for(var/i = 1 to 4)
+	for(var/i = 1 to 3)
 		new /obj/item/weapon/gun/energy/frontier/locked(src)
-	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked/holdout(src)
-
-// Underdark mob spawners
-/obj/tether_away_spawner/underdark_normal
-	name = "Underdark Normal Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
-	)
-
-/obj/tether_away_spawner/underdark_hard
-	name = "Underdark Hard Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/corrupthound = 1,
-		/mob/living/simple_animal/hostile/rat = 1,
-		/mob/living/simple_animal/hostile/mimic = 1
-	)
-
-/obj/tether_away_spawner/underdark_boss
-	name = "Underdark Boss Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 100
-	guard = 70
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/dragon = 1
-	)
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
 
+//Tether-unique network cameras
+/obj/machinery/camera/network/tether
+	network = list(NETWORK_TETHER)
+
+/obj/machinery/camera/network/tcomms
+	network = list(NETWORK_TCOMMS)
+
+/obj/machinery/camera/network/outside
+	network = list(NETWORK_OUTSIDE)
+
+/obj/machinery/camera/network/exploration
+	network = list(NETWORK_EXPLORATION)
+
+/obj/machinery/camera/network/research/xenobio
+	network = list(NETWORK_RESEARCH, NETWORK_XENOBIO)
+
+//Camera monitors
+/obj/machinery/computer/security/xenobio
+	name = "xenobiology camera monitor"
+	desc = "Used to access the xenobiology cell cameras."
+	icon_keyboard = "mining_key"
+	icon_screen = "mining"
+	network = list(NETWORK_XENOBIO)
+	circuit = /obj/item/weapon/circuitboard/security/xenobio
+	light_color = "#F9BBFC"
+
+/obj/item/weapon/circuitboard/security/xenobio
+	name = T_BOARD("xenobiology camera monitor")
+	build_path = /obj/machinery/computer/security/xenobio
+	network = list(NETWORK_XENOBIO)
+	req_access = list()
+
+//Dance pole
+/obj/structure/dancepole
+	name = "dance pole"
+	desc = "Engineered for your entertainment"
+	icon = 'icons/obj/objects_vr.dmi'
+	icon_state = "dancepole"
+	density = 0
+	anchored = 1
+
+/obj/structure/dancepole/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(O.is_wrench())
+		anchored = !anchored
+		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
+		if(anchored)
+			to_chat(user, "<font color='blue'>You secure \the [src].</font>")
+		else
+			to_chat(user, "<font color='blue'>You unsecure \the [src].</font>")
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window

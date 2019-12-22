@@ -63,6 +63,7 @@
 //
 // The backup tether shuttle uses experimental engines and can degrade and/or crash!
 //
+/* //Disabling the crash mechanics per request
 /datum/shuttle/ferry/tether_backup
 	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
 	category = /datum/shuttle/ferry/tether_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
@@ -166,7 +167,7 @@
 	wear = 20
 	update_icon()
 	return 1
-
+*/
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
@@ -280,3 +281,180 @@
 	name = "Bluespace Jump"
 	my_area = /area/shuttle/excursion/bluespace
 	preferred_interim_area = /area/shuttle/excursion/space_moving
+
+// Heist
+/obj/machinery/computer/shuttle_control/web/heist
+	name = "skipjack control console"
+	req_access = list(access_syndicate)
+	shuttle_tag = "Skipjack"
+
+/datum/shuttle/web_shuttle/heist
+	name = "Skipjack"
+	warmup_time = 0
+	can_cloak = TRUE
+	cloaked = TRUE
+	current_area = /area/skipjack_station/start
+//	docking_controller_tag = "skipjack_shuttle"
+	web_master_type = /datum/shuttle_web_master/heist
+
+/datum/shuttle_web_master/heist
+	destination_class = /datum/shuttle_destination/heist
+	starting_destination = /datum/shuttle_destination/heist/root
+
+/datum/shuttle_destination/heist/root
+	name = "Raider Outpost"
+	my_area = /area/skipjack_station/start
+	preferred_interim_area = /area/skipjack_station/transit
+
+//	dock_target = "skipjack_base"
+
+	routes_to_make = list(
+		/datum/shuttle_destination/heist/outside_Tether = 1 MINUTE,
+		// /datum/shuttle_destination/heist/docked_Tether = 1 MINUTE
+	)
+
+/datum/shuttle_destination/heist/outside_Tether
+	name = "NSB Adephagia - Nearby"
+	my_area = /area/skipjack_station/orbit
+	preferred_interim_area = /area/skipjack_station/transit
+
+	routes_to_make = list(
+		/datum/shuttle_destination/heist/root = 1 MINUTE,
+		// /datum/shuttle_destination/heist/docked_Tether = 0
+	)
+
+/*
+/datum/shuttle_destination/heist/docked_Tether
+	name = "NSB Adephagia - Arrivals Docking Port"
+	my_area = /area/skipjack_station/arrivals_dock
+	preferred_interim_area = /area/skipjack_station/transit
+
+//	dock_target = "skipjack_shuttle_dock_airlock"
+	announcer = "NSB Adephagia Docking Computer"
+
+	routes_to_make = list(
+		/datum/shuttle_destination/heist/root = 1 MINUTE,
+		/datum/shuttle_destination/heist/outside_Tether = 0
+	)
+
+/datum/shuttle_destination/heist/docked_SC/get_arrival_message()
+	return "Attention, [master.my_shuttle.visible_name] has arrived to the Arrivals Dock."
+
+/datum/shuttle_destination/heist/docked_SC/get_departure_message()
+	return "Attention, [master.my_shuttle.visible_name] has departed the Arrivals Dock."
+*/
+
+// Ninja
+/obj/machinery/computer/shuttle_control/web/ninja
+	name = "stealth shuttle control console"
+	req_access = list(access_syndicate)
+	shuttle_tag = "Ninja"
+
+/datum/shuttle/web_shuttle/ninja
+	name = "Ninja"
+	visible_name = "Unknown Vessel"
+	warmup_time = 0
+	can_cloak = TRUE
+	cloaked = TRUE
+	current_area = /area/ninja_dojo/start
+	docking_controller_tag = "ninja_shuttle"
+	web_master_type = /datum/shuttle_web_master/ninja
+
+/datum/shuttle_web_master/ninja
+	destination_class = /datum/shuttle_destination/ninja
+	starting_destination = /datum/shuttle_destination/ninja/root
+
+/datum/shuttle_destination/ninja/root
+	name = "Dojo Outpost"
+	my_area = /area/ninja_dojo/start
+	preferred_interim_area = /area/ninja_dojo/transit
+
+	dock_target = "ninja_base"
+
+	routes_to_make = list(
+		/datum/shuttle_destination/ninja/outside_Tether = 30 SECONDS,
+		// /datum/shuttle_destination/ninja/docked_Tether = 30 SECONDS
+	)
+
+/datum/shuttle_destination/ninja/outside_Tether
+	name = "NSB Adephagia - Nearby"
+	my_area = /area/ninja_dojo/orbit
+	preferred_interim_area = /area/ninja_dojo/transit
+
+	routes_to_make = list(
+		/datum/shuttle_destination/ninja/root = 30 SECONDS,
+		// /datum/shuttle_destination/ninja/docked_Tether = 0
+	)
+/*
+/datum/shuttle_destination/ninja/docked_Tether
+	name = "NSB Adephagia - Arrivals Docking Port"
+	my_area = /area/ninja_dojo/arrivals_dock
+	preferred_interim_area = /area/ninja_dojo/transit
+
+	dock_target = "ninja_shuttle_dock_airlock"
+	announcer = "NSB Adephagia Docking Computer"
+
+	routes_to_make = list(
+		/datum/shuttle_destination/ninja/root = 30 SECONDS,
+		/datum/shuttle_destination/ninja/outside_Tether = 0
+	)
+
+/datum/shuttle_destination/syndie/docked_SC/get_arrival_message()
+	return "Attention, [master.my_shuttle.visible_name] has arrived to the Arrivals Dock."
+
+/datum/shuttle_destination/syndie/docked_SC/get_departure_message()
+	return "Attention, [master.my_shuttle.visible_name] has departed the Arrivals Dock."
+*/
+
+////////////////////////////////////
+//////// Specops Shuttle ///////////
+////////////////////////////////////
+
+/obj/machinery/computer/shuttle_control/web/specialops
+	name = "shuttle control console"
+	shuttle_tag = "Special Operations Shuttle"
+	req_access = list()
+	req_one_access = list(access_cent_specops)
+
+/datum/shuttle/web_shuttle/specialops
+	name = "Special Operations Shuttle"
+	visible_name = "Special Operations Shuttle"
+	current_area = /area/shuttle/specialops/centcom
+	docking_controller_tag = "specops_shuttle_hatch"
+	web_master_type = /datum/shuttle_web_master/specialops
+	can_rename = FALSE
+	can_cloak = TRUE
+	cloaked = FALSE
+
+/datum/shuttle_web_master/specialops
+	destination_class = /datum/shuttle_destination/specialops
+	starting_destination = /datum/shuttle_destination/specialops/centcom
+
+/datum/shuttle_destination/specialops/tether
+	name = "NSB Adephagia Docking Arm 2"
+	my_area = /area/shuttle/specialops/tether
+	preferred_interim_area = /area/shuttle/specialops/transit
+
+	dock_target = "specops_dock"
+	radio_announce = 1
+	announcer = "A.L.I.C.E."
+
+	routes_to_make = list(
+		/datum/shuttle_destination/specialops/centcom = 15,
+	)
+
+/datum/shuttle_destination/specialops/tether/get_arrival_message()
+	return "Attention, [master.my_shuttle.visible_name] has arrived at the Docking Arm 2."
+
+/datum/shuttle_destination/specialops/tether/get_departure_message()
+	return "Attention, [master.my_shuttle.visible_name] has departed from the Docking Arm 2."
+
+
+/datum/shuttle_destination/specialops/centcom
+	name = "Central Command"
+	my_area = /area/shuttle/specialops/centcom
+	preferred_interim_area = /area/shuttle/specialops/transit
+
+	routes_to_make = list(
+		/datum/shuttle_destination/specialops/tether = 15
+	)
