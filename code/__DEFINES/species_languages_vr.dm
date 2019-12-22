@@ -7,7 +7,6 @@
 #define LANGUAGE_ECUREUILIAN "Ecureuilian"
 #define LANGUAGE_DAEMON "Daemon"
 #define LANGUAGE_ENOCHIAN "Enochian"
-#define LANGUAGE_BONES "Echorus"
 #define LANGUAGE_VESPINAE "Vespinae"
 
 #define LANGUAGE_CHIMPANZEE "Chimpanzee"
