@@ -74,6 +74,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_tie)
 			return 1
 
+/obj/item/var/suitlink = 1 //makes belt items require a jumpsuit- set individual items to suitlink = 0 to allow wearing on belt slot without suit
+
 /mob/living/carbon/human/u_equip(obj/W as obj)
 	if(!W)	return 0
 
@@ -90,7 +92,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			drop_from_inventory(l_store)
 		if (wear_id)
 			drop_from_inventory(wear_id)
-		if (belt)
+		if (belt && belt.suitlink == 1)
 			worn_clothing -= belt
 			drop_from_inventory(belt)
 		worn_clothing -= w_uniform
@@ -317,7 +319,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 					if(C.attempt_attach_accessory(A, src))
 						return
 		else
-			src << "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>"
+			to_chat(src, "<font color='red'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</font>")
 			return
 
 	if((W == src.l_hand) && (slot != slot_l_hand))
