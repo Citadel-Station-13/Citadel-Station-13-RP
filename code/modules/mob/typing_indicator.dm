@@ -28,9 +28,9 @@
 	set hidden = 1
 
 	set_typing_indicator(TRUE)
-	var/message = input("","say (text)") as text
+	var/message = input("","say (text)") as text|null
 	set_typing_indicator(FALSE)
-	
+
 	if(message)
 		say_verb(message)
 
@@ -39,7 +39,7 @@
 	set hidden = 1
 
 	set_typing_indicator(TRUE)
-	var/message = input("","me (text)") as text
+	var/message = input("","me (text)") as message|null
 	set_typing_indicator(FALSE)
 
 	if(message)

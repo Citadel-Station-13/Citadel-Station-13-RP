@@ -395,7 +395,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bC" = (
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bD" = (

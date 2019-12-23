@@ -73,6 +73,19 @@
 	icon_state = "blackutility_medcom"
 	worn_state = "blackutility_medcom"
 
+/obj/item/clothing/under/utility/sifguard/science
+	name = "science crew uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has silver trim and purple blazes."
+	icon_state = "blackutility_sci"
+	worn_state = "blackutility_sci"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+
+/obj/item/clothing/under/utility/sifguard/science/command
+	name = "science command uniform"
+	desc = "A black utility uniform, designed for prolonged use. This one has gold trim and purple blazes."
+	icon_state = "blackutility_scicom"
+	worn_state = "blackutility_scicom"
+
 /obj/item/clothing/under/utility/sifguard/engineering
 	name = "engineering crew uniform"
 	desc = "A black utility uniform, designed for prolonged use. This one has silver trim and organge blazes."
@@ -128,6 +141,13 @@
 	worn_state = "navyutility_med"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
+/obj/item/clothing/under/utility/fleet/science
+	name = "science coveralls"
+	desc = "A blue utility uniform. This one has purple cuffs."
+	icon_state = "navyutility_sci"
+	worn_state = "navyutility_sci"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+
 /obj/item/clothing/under/utility/fleet/engineering
 	name = "engineering coveralls"
 	desc = "A blue utility uniform. This one has orange cuffs."
@@ -180,6 +200,13 @@
 	icon_state = "greyutility_med"
 	worn_state = "greyutility_med"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
+/obj/item/clothing/under/utility/marine/science
+	name = "science fatigues"
+	desc = "Light grey fatigues vaguely based off of military design, for corporate use. This one has purple markings."
+	icon_state = "greyutility_sci"
+	worn_state = "greyutility_sci"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/under/utility/marine/engineering
 	name = "engineering fatigues"

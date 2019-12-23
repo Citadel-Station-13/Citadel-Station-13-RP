@@ -893,7 +893,7 @@
 /turf/simulated/floor/cult,
 /area/submap/cave/cultmine)
 "dn" = (
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "do" = (

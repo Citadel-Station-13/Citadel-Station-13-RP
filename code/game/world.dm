@@ -26,7 +26,7 @@
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
-	TgsNew()	//CITADEL CHANGE - Adds hooks for TGS3 integration
+	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
 
 	config.post_load()
 
@@ -104,7 +104,8 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	//TGS_TOPIC
+	TGS_TOPIC
+
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 /*		for when we have handlers replacing all of our stuff.
@@ -143,7 +144,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 //END
 
+	if (T == "ping")
+		var/x = 1
+		for (var/client/C)
+			x++
+		return x
+
 /*
+
 	if (T == "ping")
 		var/x = 1
 		for (var/client/C)
@@ -436,25 +444,55 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "Database connection failed or not set up"
 */
 
-/world/Reboot(var/reason)
-	/*spawn(0)
-		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
-		*/
-	TgsReboot()	//CITADEL CHANGE - Adds hooks for TGS3 integration
-	if(reason && usr)//CITADEL CHANGE - Logs reboots done by debug functions
-		log_admin("[key_name_admin(usr)] has hard rebooted the server via client side debugging tools!")
-		for(var/client/C in clients)
-			C << "<span class='boldwarning'>[key_name_admin(usr)] has triggered a hard reboot via client side debugging tools!</span>"
+/world/Reboot(reason = 0, fast_track = FALSE)
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
+	else
+		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
+		//POLARIS START
+		processScheduler.stop()
+		if(blackbox)
+			blackbox.save_all_data_to_sql()
+		//END
+		Master.Shutdown()	//run SS shutdowns
 
-	processScheduler.stop()
-	Master.Shutdown()	//run SS shutdowns
+	TgsReboot()
 
-	for(var/client/C in clients)
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[config.server]")
+/*
+	if(TEST_RUN_PARAMETER in params)
+		FinishTestRun()
+		return
+*/
 
+/*
+	if(TgsAvailable())
+		var/do_hard_reboot
+		// check the hard reboot counter
+		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
+		switch(ruhr)
+			if(-1)
+				do_hard_reboot = FALSE
+			if(0)
+				do_hard_reboot = TRUE
+			else
+				if(GLOB.restart_counter >= ruhr)
+					do_hard_reboot = TRUE
+				else
+					text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
+					do_hard_reboot = FALSE
+
+		if(do_hard_reboot)
+			log_world("World hard rebooted at [time_stamp()]")
+			shutdown_logging() // See comment below.
+			TgsEndProcess()
+*/
+
+	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
-	..(reason)
+	..()
 
 /hook/startup/proc/loadMode()
 	world.load_mode()

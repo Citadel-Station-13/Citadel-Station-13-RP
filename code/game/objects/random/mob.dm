@@ -143,6 +143,16 @@
 				prob(1);/mob/living/simple_animal/hostile/giant_spider/phorogenic,
 				prob(40);/mob/living/simple_animal/hostile/giant_spider/frost)
 
+/obj/random/mob/carp
+	name = "Random Carp Spawner"
+	desc = "This is a random carp."
+	icon_state = "carp"
+
+/obj/random/mob/carp/item_to_spawn()
+	return pick(prob(80);/mob/living/simple_animal/hostile/carp,
+				prob(17);/mob/living/simple_animal/hostile/carp/large,
+				prob(3);/mob/living/simple_animal/hostile/carp/large/huge)
+	
 /obj/random/mob/robotic
 	name = "Random Robot Mob"
 	desc = "This is a random robot."

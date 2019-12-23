@@ -1,0 +1,4 @@
+author: "ForFoxSake"
+delete-after: True
+changes: 
+  - tweak: "Modified the telsa engine submap to be faster to set up."
