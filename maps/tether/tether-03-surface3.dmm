@@ -16847,6 +16847,14 @@
 /area/maintenance/substation/bar{
 	name = "\improper Surface Civilian Substation"
 	})
+"CV" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_alc/full{
+	icon_state = "booze_dispenser";
+	dir = 8
+	},
+/turf/simulated/floor/lino,
+/area/assembly/robotics)
 "CY" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -21973,10 +21981,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
-"Nh" = (
-/obj/machinery/door/airlock/glass,
-/turf/simulated/floor/wood,
-/area/tether/surfacebase/outside/outside3)
 "Nv" = (
 /obj/item/weapon/stool/padded,
 /obj/machinery/alarm{
@@ -22317,32 +22321,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
-"Qa" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/beige/bordercorner2{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Qb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
@@ -22616,6 +22594,32 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"Ru" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Rw" = (
 /turf/simulated/open,
 /area/tether/surfacebase/public_garden_three)
@@ -22732,14 +22736,6 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
-"Si" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full{
-	icon_state = "booze_dispenser";
-	dir = 8
-	},
-/turf/simulated/floor/lino,
-/area/assembly/robotics)
 "SI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23373,6 +23369,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
+"Ym" = (
+/obj/machinery/door/airlock/glass{
+	name = "The Game Den"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/tether/surfacebase/outside/outside3)
 "Yq" = (
 /obj/structure/closet/toolcloset,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -37757,7 +37759,7 @@ ye
 ZS
 SU
 Ay
-Qa
+Ru
 xw
 xw
 CH
@@ -37903,7 +37905,7 @@ rJ
 vK
 vK
 rJ
-Nh
+Ym
 rJ
 vK
 vK
@@ -40311,7 +40313,7 @@ Tb
 Xc
 NI
 LY
-Si
+CV
 Vf
 Hb
 rJ
