@@ -3696,10 +3696,13 @@
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "ahp" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/excursion/tether)
+/obj/machinery/status_display{
+	layer = 4;
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/lounge)
 "ahq" = (
 /obj/random/trash_pile,
 /turf/simulated/floor,
@@ -4219,6 +4222,11 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
+"aii" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/excursion/tether)
 "aij" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/break_room)
@@ -4245,6 +4253,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+"ain" = (
+/obj/machinery/status_display,
+/turf/simulated/wall,
+/area/crew_quarters/lounge)
 "aio" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/disposalpipe/segment{
@@ -33601,7 +33613,7 @@ afu
 afu
 afu
 agA
-agG
+ahp
 agS
 ahh
 ahl
@@ -33612,7 +33624,7 @@ ahe
 ahi
 agG
 ahz
-agj
+ain
 ahN
 aaT
 azI
@@ -34603,7 +34615,7 @@ aeo
 aaq
 aaq
 aau
-ahp
+aii
 avK
 avN
 aci
@@ -34745,7 +34757,7 @@ amF
 avG
 adB
 aaq
-ahp
+aii
 avK
 avN
 aci
@@ -34887,7 +34899,7 @@ amF
 avG
 adB
 aaq
-ahp
+aii
 avK
 abq
 acl
@@ -35739,7 +35751,7 @@ aaD
 avG
 tIi
 aaq
-ahp
+aii
 avK
 auQ
 aad
@@ -35881,7 +35893,7 @@ amL
 aob
 dbI
 aaq
-ahp
+aii
 avK
 qgR
 aad
@@ -36023,7 +36035,7 @@ aep
 aeu
 aev
 aau
-ahp
+aii
 avK
 qgR
 aad
