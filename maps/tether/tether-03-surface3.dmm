@@ -11612,6 +11612,12 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22;
+	pixel_y = 0
+	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "ul" = (
@@ -21967,6 +21973,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"Nh" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/outside/outside3)
 "Nv" = (
 /obj/item/weapon/stool/padded,
 /obj/machinery/alarm{
@@ -22307,6 +22317,32 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"Qa" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Qb" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
@@ -22696,6 +22732,14 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
+"Si" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_alc/full{
+	icon_state = "booze_dispenser";
+	dir = 8
+	},
+/turf/simulated/floor/lino,
+/area/assembly/robotics)
 "SI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -37713,7 +37757,7 @@ ye
 ZS
 SU
 Ay
-xw
+Qa
 xw
 xw
 CH
@@ -37859,7 +37903,7 @@ rJ
 vK
 vK
 rJ
-BW
+Nh
 rJ
 vK
 vK
@@ -40267,7 +40311,7 @@ Tb
 Xc
 NI
 LY
-Ma
+Si
 Vf
 Hb
 rJ
