@@ -9,7 +9,7 @@
 	active_power_usage = 200
 	anchored = 1
 	var/id_tag = null
-	var/chime_sound = 'sound/machines/doorbell.ogg'
+	var/chime_sound = 'sound/machines/boobeebeep.ogg'
 
 /obj/machinery/doorbell_chime/Initialize()
 	. = ..()
