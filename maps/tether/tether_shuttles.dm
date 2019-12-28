@@ -260,6 +260,20 @@
 	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
 
 
+/datum/shuttle_destination/excursion/tether_surface
+	name = "NSB Adephagia Surface Landing Pad"
+	my_area = /area/shuttle/excursion/tether_surface
+
+	radio_announce = 1
+	announcer = "Excursion Shuttle"
+
+/datum/shuttle_destination/excursion/tether_surface/get_arrival_message()
+	return "Attention, [master.my_shuttle.visible_name] has arrived at Surface 3 Landing Pad."
+
+/datum/shuttle_destination/excursion/tether_surface/get_departure_message()
+	return "Attention, [master.my_shuttle.visible_name] has departed from Surface 3 Landing Pad."
+
+
 /datum/shuttle_destination/excursion/virgo3b_orbit
 	name = "Virgo 3B Orbit"
 	my_area = /area/shuttle/excursion/space
@@ -274,6 +288,11 @@
 /datum/shuttle_destination/excursion/virgo3b_sky
 	name = "Skies of Virgo 3B"
 	my_area = /area/shuttle/excursion/virgo3b_sky
+	preferred_interim_area = /area/shuttle/excursion/virgo3b_moving
+
+	routes_to_make = list(
+		/datum/shuttle_destination/excursion/tether_surface = 30 SECONDS
+	)
 
 ////////// Distant Destinations
 /datum/shuttle_destination/excursion/bluespace

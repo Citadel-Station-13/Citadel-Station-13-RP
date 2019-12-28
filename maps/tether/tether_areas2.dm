@@ -525,6 +525,14 @@
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Virgo3b Sky"
 	base_turf = /turf/simulated/sky
+
+/area/shuttle/excursion/virgo3b_moving
+	name = "\improper Excursion Shuttle - Virgo3b Transit"
+	base_turf = /turf/simulated/sky
+
+/area/shuttle/excursion/tether_surface
+	name = "\improper Excursion Shuttle - Tether Surface"
+	base_turf = /turf/simulated/floor/reinforced
 //////////////////////////////////
 
 /area/antag/antag_base
