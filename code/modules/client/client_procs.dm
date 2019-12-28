@@ -250,6 +250,7 @@
 			to_chat(src, config.panic_bunker_message)
 			qdel(src)
 			return 0
+	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 
 	// VOREStation Edit Start - Department Hours

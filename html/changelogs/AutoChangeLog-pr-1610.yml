@@ -1,0 +1,6 @@
+author: "Tename"
+delete-after: True
+changes: 
+  - tweak: "Reduces ATV trailer cost from 250 to 50"
+  - tweak: "Reduces bike cost from cargo from 350 to 200"
+  - balance: "Increase bike speed"
