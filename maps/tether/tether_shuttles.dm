@@ -15,10 +15,12 @@
 	name = "protoshuttle control console"
 	shuttle_tag = "Proto"
 
+/*
 /obj/machinery/computer/shuttle_control/cruiser_shuttle
 	name = "cruiser shuttle control console"
 	shuttle_tag = "Cruiser Shuttle"
 	req_one_access = list(access_heads)
+*/
 
 //
 // "Tram" Emergency Shuttler
