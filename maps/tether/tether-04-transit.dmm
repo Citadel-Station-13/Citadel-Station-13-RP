@@ -171,6 +171,19 @@
 "s" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/substation)
+"t" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/midpoint)
 "u" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b,
@@ -365,18 +378,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/midpoint)
-"V" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	icon_state = "intact-scrubbers";
-	dir = 5
-	},
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "W" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10291,7 +10292,7 @@ u
 u
 y
 Y
-V
+t
 l
 r
 r
