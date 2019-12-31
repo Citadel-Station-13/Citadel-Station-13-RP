@@ -152,6 +152,8 @@
 	name = "\improper Surface Atmos Substation"
 /area/maintenance/substation/civ_west
 	name = "\improper Civilian West Substation"
+/area/maintenance/tether_midpoint
+	name = "\improper Tether Midpoint Maint"
 
 
 /area/tether/surfacebase/medical
@@ -526,6 +528,10 @@
 	name = "\improper Excursion Shuttle - Virgo3b Sky"
 	base_turf = /turf/simulated/sky
 
+
+/area/tether/midpoint
+	name = "\improper Tether Midpoint"
+
 /area/shuttle/excursion/virgo3b_moving
 	name = "\improper Excursion Shuttle - Virgo3b Transit"
 	base_turf = /turf/simulated/sky
@@ -533,7 +539,7 @@
 /area/shuttle/excursion/tether_surface
 	name = "\improper Excursion Shuttle - Tether Surface"
 	base_turf = /turf/simulated/floor/reinforced
-//////////////////////////////////
+
 
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"
