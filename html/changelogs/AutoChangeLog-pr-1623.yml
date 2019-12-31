@@ -1,0 +1,5 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - rscdel: "Removed the unused small cruiser/\"houseboat\"."
+  - bugfix: "Fixed \"map testing power source\" warnings during init."
