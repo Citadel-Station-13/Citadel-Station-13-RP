@@ -102,9 +102,8 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/Initialize()
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
 	planet = planet_virgo3b
-	. = ..()
 
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
