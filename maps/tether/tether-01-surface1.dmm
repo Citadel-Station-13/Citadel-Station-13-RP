@@ -7109,13 +7109,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "amW" = (
-/obj/machinery/artifact_scanpad,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_one)
-"amX" = (
-/obj/machinery/artifact_analyser,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_one)
+/turf/simulated/wall/r_wall,
+/area/tether/surfacebase/outside/outside1)
 "amY" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -7130,14 +7125,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
-"amZ" = (
-/obj/machinery/artifact_scanpad,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_two)
-"ana" = (
-/obj/machinery/artifact_analyser,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_two)
 "anb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -7324,9 +7311,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_atmos)
-"ant" = (
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_two)
 "anu" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -7639,12 +7623,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
-"aoh" = (
-/turf/simulated/mineral,
-/area/rnd/anomaly_lab)
-"aoi" = (
-/turf/simulated/mineral,
-/area/rnd/anomaly_lab/containment_one)
 "aoj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -7664,9 +7642,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
-"aol" = (
-/turf/simulated/mineral,
-/area/rnd/anomaly_lab/containment_two)
 "aom" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled,
@@ -17224,21 +17199,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"aGn" = (
-/obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 28
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_one)
 "aGo" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	icon_state = "intact";
@@ -17248,21 +17208,6 @@
 /obj/effect/floor_decal/corner/yellow/border,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"aGp" = (
-/obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_x = 0;
-	pixel_y = 28
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_two)
 "aGq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -17649,17 +17594,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/processing)
-"aHg" = (
-/obj/machinery/camera/network/research{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_one)
 "aHh" = (
 /turf/simulated/wall,
 /area/rnd/external)
@@ -17687,20 +17621,6 @@
 /obj/machinery/portable_atmospherics/canister/sleeping_agent,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/xenobiology/xenoflora_storage)
-"aHm" = (
-/obj/machinery/alarm/monitor/isolation{
-	alarm_id = "isolation_one";
-	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_one)
 "aHn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -17740,34 +17660,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
-"aHs" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_one)
-"aHt" = (
-/obj/machinery/camera/network/research{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_two)
-"aHu" = (
-/obj/machinery/alarm/monitor/isolation{
-	alarm_id = "isolation_two";
-	dir = 8;
-	pixel_x = 22;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/anomaly_lab/containment_two)
 "aHv" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -18323,17 +18215,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/showers)
-"aIH" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	use_power = 0
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab/containment_one)
 "aII" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -18347,21 +18228,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/showers)
-"aIK" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab/containment_one)
 "aIL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18388,32 +18254,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
-"aIO" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab/containment_one)
-"aIR" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	use_power = 0
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab/containment_two)
 "aIV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/green{
@@ -18510,16 +18350,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_lodging)
-"aJc" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab/containment_two)
 "aJd" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
@@ -18563,16 +18393,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/processing)
-"aJg" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/anomaly_lab/containment_two)
 "aJh" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/effect/decal/cleanable/dirt,
@@ -36062,10 +35882,10 @@ aah
 aah
 aah
 aah
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
 axf
 arG
 arG
@@ -36200,14 +36020,14 @@ aah
 aah
 aah
 aah
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 bhk
 azp
@@ -36337,19 +36157,19 @@ akb
 aah
 aah
 aah
-amU
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 bhs
 azr
@@ -36479,19 +36299,19 @@ akb
 aah
 aah
 aah
-amU
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 bhp
 azr
@@ -36619,21 +36439,21 @@ akH
 akH
 alZ
 amD
-amU
-amU
-amU
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 bhp
 azr
@@ -36761,21 +36581,21 @@ aCb
 aDD
 aiy
 amD
-aGn
-aHg
-aIH
-aoi
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 asg
 azr
@@ -36903,21 +36723,21 @@ aCe
 alv
 aEn
 amD
-amW
-aHs
-aIO
-aoi
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 bhp
 azr
@@ -37045,21 +36865,21 @@ aCd
 aDE
 aEl
 amD
-amX
-aHm
-aIK
-aoi
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 axf
 bhw
 azr
@@ -37187,14 +37007,14 @@ aCg
 aDF
 aiy
 amD
-amU
-amU
-amU
-aoh
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 amU
 amU
 amU
@@ -37329,14 +37149,14 @@ aCf
 aly
 amc
 amE
-aGp
-aHt
-aIR
-aol
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 amU
 aoM
 aqf
@@ -37471,14 +37291,14 @@ aCi
 alz
 aEo
 amE
-amZ
-ant
-aJg
-aol
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 amU
 aoN
 aqI
@@ -37613,14 +37433,14 @@ aCh
 aDG
 agU
 amE
-ana
-aHu
-aJc
-aol
-aoh
-aoh
-aoh
-aoh
+aah
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 amU
 apl
 aqJ
@@ -37755,9 +37575,9 @@ aCk
 aDO
 aEr
 amE
-amU
-amU
-amU
+amW
+amW
+amW
 amU
 amU
 amU
