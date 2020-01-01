@@ -18875,10 +18875,20 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Fc" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "Fd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19451,6 +19461,11 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"FQ" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "FT" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light{
@@ -20230,12 +20245,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/shuttle_pad)
-"Hy" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/simulated/floor/lino,
-/area/assembly/robotics)
 "Hz" = (
 /obj/machinery/cryopod/robot,
 /obj/machinery/light{
@@ -32583,7 +32592,7 @@ Ig
 Iz
 Lz
 LN
-Hy
+Fc
 HN
 HR
 Ib
@@ -37417,7 +37426,7 @@ Jr
 Js
 Jv
 JE
-Fc
+FQ
 IY
 JH
 JJ
@@ -37559,7 +37568,7 @@ Js
 Js
 Jz
 JE
-Fc
+FQ
 IY
 JH
 JJ
@@ -37701,7 +37710,7 @@ Jt
 Js
 Jz
 JE
-Fc
+FQ
 IY
 JH
 JJ
