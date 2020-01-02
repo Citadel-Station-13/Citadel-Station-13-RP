@@ -113,7 +113,7 @@
 		I.forceMove(src)
 		success = 1
 	if(success && !failure && !silent)
-		if(world.time >= last_message || last_message == 0)
+		if(world.time >= last_message == 0)
 			to_chat(user, "<span class='notice'>You put everything in [src].</span>")
 			last_message = world.time + 10
 	else if(success && (!silent || (silent && contents.len >= max_storage_space)))
@@ -123,7 +123,7 @@
 		if(world.time >= last_message || last_message == 0)
 			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
 			last_message = world.time + 90
-	if(istype(user.pulling, /obj/structure/ore_box/)) //Bit of a crappy way to do this, as it doubles spam for the user, but it works.
+	if(istype(user.pulling, /obj/structure/ore_box/)) // buffy fix with last_message, no more spam
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
 /obj/item/weapon/storage/bag/ore/equipped(mob/user)
