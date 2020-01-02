@@ -120,7 +120,7 @@
 		to_chat(user, "<span class='notice'>You fill the [src].</span>")
 		last_message = world.time + 10
 	else if(!silent)
-		if(world.time >= last_message || last_message == 0)
+		if(world.time >= last_message == 0)
 			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
 			last_message = world.time + 90
 	if(istype(user.pulling, /obj/structure/ore_box/)) // buffy fix with last_message, no more spam
