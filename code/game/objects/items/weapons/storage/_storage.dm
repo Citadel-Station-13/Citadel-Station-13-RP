@@ -503,7 +503,9 @@
 	else if(success)
 		to_chat(user, "<span class='notice'>You put some things in [src].</span>")
 	else
-		to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+		if(world.time >= last_message || last_message == 0)
+			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+			last_message = world.time + 200
 
 /obj/item/weapon/storage/verb/toggle_gathering_mode()
 	set name = "Switch Gathering Method"
