@@ -1,5 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - rscadd: "Miners now get magboots. They're not required, but you might as well have them anyway."
-  - tweak: "There is now a toggle magboots verb for voidsuits - right-click on your voidsuit or access the objects tab to use it."

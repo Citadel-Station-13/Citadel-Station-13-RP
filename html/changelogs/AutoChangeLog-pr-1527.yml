@@ -1,4 +1,0 @@
-author: "yourdoom9898"
-delete-after: True
-changes: 
-  - bugfix: "fixed the chirp emote saying a human mob's name twice"

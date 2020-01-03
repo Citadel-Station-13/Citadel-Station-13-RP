@@ -1,4 +1,0 @@
-author: "BonniePandora"
-delete-after: True
-changes: 
-  - tweak: "\"Say\" and \"Whisper\" now have a cancel button on their pop-up box. \"Me\" and \"Subtle\" also have this, in addition to being a multiline text box now instead of the old single line one."

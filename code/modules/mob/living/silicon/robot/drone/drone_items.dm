@@ -94,10 +94,12 @@
 	desc = "A simple grasping tool used to perform tasks in the service sector, such as handling food, drinks, and seeds."
 
 	can_hold = list(
-		/obj/item/weapon/reagent_containers/glass,
-		/obj/item/weapon/reagent_containers/food,
+		/obj/item/weapon/reagent_containers, //simplifies a lot of redundant categorization and spaghetti with reagents
+		/obj/item/weapon/glass_extra,
 		/obj/item/seeds,
-		/obj/item/weapon/grown
+		/obj/item/weapon/grown,
+		/obj/item/weapon/tray,
+		/obj/item/weapon/plantspray
 		)
 
 /obj/item/weapon/gripper/gravekeeper	//Used for handling grave things, flowers, etc.

@@ -1,6 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - rscadd: "Advanced ore scanners; scan in a 5x5 area, work in 1 second, gives numbers of ores in the scanned area."
-  - rscadd: "Ore scanners and advanced ore scanners are printable from R&D now. Advanced scanners can be obtained from the mining vendor, too."
-  - tweak: "Ore is no longer affected (read: deleted) by explosions."
