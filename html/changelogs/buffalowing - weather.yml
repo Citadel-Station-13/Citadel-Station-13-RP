@@ -1,0 +1,9 @@
+author: Buffalowing
+
+delete-after: True
+
+
+changes: 
+  - rscadd: "Added more immersive weather messages to replace the old 'Rain falls on you' types. More yet may come."
+  - tweak: "Significantly increased delay between weather update messages to prevent clutter."
+  - rscdel: "Removed damage from hail altogether as it only served to increase lag and spam the victim."

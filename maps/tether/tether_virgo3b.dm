@@ -177,10 +177,27 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		WEATHER_HAIL = 5
 		)
 	observed_message = "It is snowing lightly."
+	effect_message = list(
+		"<I>The gentle breeze lifts tiny particles of falling snow past you.</I>",
+		"<I>Cool wind rushes over your senses as the breeze softly stirs and spirals around you.</I>",
+		"<I>A momentary pause in wind leaves the air still before it finds it's peaceful rythm again.</I>",
+		"<I>Blanketed cold envelops you as the wind carries it's chilled embrace.</I>"
+	)
 	transition_messages = list(
 		"Small snowflakes begin to fall from above.",
 		"It begins to snow lightly.",
 		)
+
+/datum/weather/virgo3b/light_snow/process_effects()
+	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // Are they indoors?
+
+			if(show_message)
+				to_chat(L, pick(effect_message))
 
 /datum/weather/virgo3b/snow
 	name = "moderate snow"
@@ -197,6 +214,12 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		WEATHER_OVERCAST = 5
 		)
 	observed_message = "It is snowing."
+	effect_message = list(
+		"<I>Snow falls gently around you with a quiet pattering song.</I>",
+		"<I>Cool wind rushes over your senses as the breeze softly stirs and spirals around you.</I>",
+		"<I>A momentary pause in wind leaves the air still before it finds it's peaceful rythm again.</I>",
+		"<I>Blanketed cold envelops you as the wind carries it's chilled embrace.</I>"
+	)
 	transition_messages = list(
 		"It's starting to snow.",
 		"The air feels much colder as snowflakes fall from above."
@@ -204,6 +227,15 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 /datum/weather/virgo3b/snow/process_effects()
 	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // Are they indoors?
+
+			if(show_message)
+				to_chat(L, pick(effect_message))
+
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in cardinal)
@@ -226,6 +258,11 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		WEATHER_OVERCAST = 5
 		)
 	observed_message = "A blizzard blows snow everywhere."
+	effect_message = list(
+		"<I>Distant howling wind swirls up to meet you as the blizzard tempers and flares.</I>",
+		"<I>Cool wind rushes over your senses as the strong wing stirs and spirals around you.</I>",
+		"<I>A strong gust of wind rushes past you.</I>"
+	)
 	transition_messages = list(
 		"Strong winds howl around you as a blizzard appears.",
 		"It starts snowing heavily, and it feels extremly cold now."
@@ -233,6 +270,15 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 /datum/weather/virgo3b/blizzard/process_effects()
 	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // Are they indoors?
+
+			if(show_message)
+				to_chat(L, pick(effect_message))
+
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in cardinal)
@@ -245,7 +291,11 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	name = "rain"
 	icon_state = "rain"
 	light_modifier = 0.5
-	effect_message = "<span class='warning'>Rain falls on you.</span>"
+	effect_message = list(
+		"<I>A gentle white noise of rain taps away a restless song.</I>",
+		"<I>Stray droplets of rain momentarily obscure your vision.</I>",
+		"<I>The rainfall lessens for the span of a breath, stirring your mind from the ambience of it.</I>"
+	)
 
 	transition_chances = list(
 		WEATHER_OVERCAST = 25,
@@ -256,7 +306,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		)
 	observed_message = "It is raining."
 	transition_messages = list(
-		"The sky is dark, and rain falls down upon you."
+		"The sky is dark, and rain falls down upon you.",
+		"Billowing clouds seem to hasten overhead as stray rain droplets form more consistent patterns from above."
 	)
 
 /datum/weather/virgo3b/rain/process_effects()
@@ -265,7 +316,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
-				continue // They're indoors, so no need to rain on them.
+				continue // Are they indoors?
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
@@ -283,21 +334,25 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 			L.water_act(1)
 			if(show_message)
-				to_chat(L, effect_message)
+				to_chat(L, pick(effect_message))
 
 /datum/weather/virgo3b/storm
 	name = "storm"
 	icon_state = "storm"
 	light_modifier = 0.3
 	flight_failure_modifier = 10
-	effect_message = "<span class='warning'>Rain falls on you, drenching you in water.</span>"
+	effect_message = list(
+		"<I>A gentle white noise of rain taps away a restless song.</I>",
+		"<I>Showering rain from above intesifies for a moment and briefly obscures your vision.</I>",
+		"<I>Gusting winds sweep past you and carry harsher rainfall before returning to it's previous intensity.</I>"
+	)
 
 	var/next_lightning_strike = 0 // world.time when lightning will strike.
 	var/min_lightning_cooldown = 5 SECONDS
 	var/max_lightning_cooldown = 1 MINUTE
 	observed_message = "An intense storm pours down over the region."
 	transition_messages = list(
-		"You feel intense winds hit you as the weather takes a turn for the worst.",
+		"You feel intense winds hit you as a few droplets of water spatter the ground.",
 		"Loud thunder is heard in the distance.",
 		"A bright flash heralds the approach of a storm."
 	)
@@ -316,7 +371,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
-				continue // They're indoors, so no need to rain on them.
+				continue // Are they indoors?
 
 			// Lazy wind code
 			if(prob(10))
@@ -340,19 +395,19 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+						to_chat(L, pick(effect_message))
 					continue
 			else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
 				var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
 				if(U.open)
 					if(show_message)
-						to_chat(L, "<span class='notice'>Rain showers loudly onto your umbrella!</span>")
+						to_chat(L, pick(effect_message))
 					continue
 
 
 			L.water_act(2)
 			if(show_message)
-				to_chat(L, effect_message)
+				to_chat(L, pick(effect_message))
 
 	handle_lightning()
 
@@ -372,7 +427,11 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	flight_failure_modifier = 15
 	timer_low_bound = 2
 	timer_high_bound = 5
-	effect_message = "<span class='warning'>The hail smacks into you!</span>"
+	effect_message = list(
+		"<I>Small chunks of ice clatter to the ground around you.</I>",
+		"<I>Little pellets of ice sweep at you seemingly from all sides.</I>",
+		"<I>The stream of hail thickens for a moment and temporarily obscures your vision.</I>"
+	)
 
 	transition_chances = list(
 		WEATHER_RAIN = 45,
@@ -384,13 +443,13 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	transition_messages = list(
 		"Ice begins to fall from the sky.",
 		"It begins to hail.",
-		"An intense chill is felt, and chunks of ice start to fall from the sky, towards you."
+		"An intense chill washes over you as chunks of ice start to fall from the sky."
 	)
 
 /datum/weather/virgo3b/hail/process_effects()
 	..()
-	for(var/humie in human_mob_list)
-		var/mob/living/carbon/human/H = humie
+	for(var/humie in living_mob_list)
+		var/mob/living/H = humie
 		if(H.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(H)
 			if(!T.outdoors)
@@ -404,25 +463,13 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				U = H.get_inactive_hand()
 			if(U && U.open)
 				if(show_message)
-					to_chat(H, "<span class='notice'>Hail patters onto your umbrella.</span>")
+					to_chat(H, pick(effect_message))
 				continue
 
-			var/target_zone = pick(BP_ALL)
-			var/amount_blocked = H.run_armor_check(target_zone, "melee")
-			var/amount_soaked = H.get_armor_soak(target_zone, "melee")
+//removed needless damage code that spammed the user. if they're outside on this planet, they can withstand the useless damage that was here.
 
-			var/damage = rand(1,3)
-
-			if(amount_blocked >= 30)
-				continue // No need to apply damage. Hardhats are 30. They should probably protect you from hail on your head.
-				//Voidsuits are likewise 40, and riot, 80. Clothes are all less than 30.
-
-			if(amount_soaked >= damage)
-				continue // No need to apply damage.
-
-			H.apply_damage(damage, BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
 			if(show_message)
-				to_chat(H, effect_message)
+				to_chat(H, pick(effect_message))
 
 /datum/weather/virgo3b/blood_moon
 	name = "blood moon"
