@@ -208,7 +208,7 @@
 		if(do_after (user, 50))
 			water.add_charge(50)
 	else if(water.energy < 5)
-		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink up some water .</span>")
+		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
 		return
 	else if(istype(target,/obj/effect/decal/cleanable))
 		user.visible_message("[user] begins to lick off \the [target.name].", "<span class='notice'>You begin to lick off \the [target.name]...</span>")

@@ -1,6 +1,0 @@
-author: "ForFoxSake"
-delete-after: True
-changes: 
-  - rscadd: "Added the Rapid Piping Device!"
-  - tweak: "Made digital T-valves and air injectors deconstructable."
-  - tweak: "Changed security's air injectors to require armoury access to deconstruct. (Remote control remains as it was.)"
