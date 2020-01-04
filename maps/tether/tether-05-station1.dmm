@@ -1618,7 +1618,6 @@
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "adA" = (
-/obj/machinery/portable_atmospherics/powered/pump/filled,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/excursion/tether)
@@ -1958,7 +1957,6 @@
 /area/crew_quarters/loungekitchen)
 "aem" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/space_heater,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/excursion/tether)
 "aen" = (
@@ -8244,6 +8242,10 @@
 /area/tether/station/excursion_dock)
 "auT" = (
 /obj/machinery/sleep_console,
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
 "auU" = (
@@ -22317,6 +22319,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"ehL" = (
+/obj/machinery/portable_atmospherics/powered/pump/filled,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled,
+/area/tether/station/excursion_dock)
 "ekp" = (
 /obj/structure/table/rack/shelf,
 /obj/item/weapon/tank/oxygen,
@@ -22476,6 +22483,10 @@
 	name = "Blast Shields";
 	pixel_x = 27;
 	pixel_y = 35
+	},
+/obj/machinery/light_switch{
+	pixel_x = -29;
+	pixel_y = 32
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/excursion/tether)
@@ -22755,6 +22766,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
+"lSA" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/excursion/tether)
 "mcn" = (
 /obj/machinery/light{
 	dir = 4;
@@ -23184,6 +23203,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/station/pathfinder_office)
+"sMC" = (
+/obj/machinery/space_heater,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled,
+/area/tether/station/excursion_dock)
 "sSn" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -34212,8 +34236,8 @@ aad
 wbr
 aah
 akC
-aah
-aah
+ehL
+sMC
 aaP
 aad
 txl
@@ -35350,7 +35374,7 @@ aaD
 aaK
 aaD
 aaD
-avG
+lSA
 aaD
 aap
 aap
