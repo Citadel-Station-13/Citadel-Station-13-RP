@@ -14540,7 +14540,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
-/turf/simulated/floor/tiled
+/turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "zh" = (
 /obj/machinery/space_heater,
