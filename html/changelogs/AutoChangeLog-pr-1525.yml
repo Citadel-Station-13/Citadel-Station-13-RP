@@ -1,4 +1,0 @@
-author: "Nethaufer"
-delete-after: True
-changes: 
-  - rscadd: "Cable coils to be printable from the autolathe in a single wire or 5 wire increments up to 30."

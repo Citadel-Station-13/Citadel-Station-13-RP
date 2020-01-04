@@ -1,6 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - rscadd: "Shovels are now capable of hitting rockwalls for mining! This does not work very well."
-  - rscadd: "Some tools dig sand up faster than others."
-  - code_imp: "Shovels are now pickaxe subtypes."

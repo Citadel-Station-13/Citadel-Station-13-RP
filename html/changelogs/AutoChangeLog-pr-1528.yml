@@ -1,5 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - tweak: "Hardsuit pieces (gauntlets, boots, chestpiece, helmet) now have PHORONGUARD."
-  - code_imp: "PHORONGUARD is supposed to be a flag and not an item_flag. Adjustments made. Probably."

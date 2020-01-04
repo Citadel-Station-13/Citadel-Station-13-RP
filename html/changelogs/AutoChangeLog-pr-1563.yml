@@ -1,6 +1,0 @@
-author: "DiscordWizard"
-delete-after: True
-changes: 
-  - rscadd: "Added trashcan ability to xenochimera"
-  - balance: "Lowered xenochimera timer for reconstituting related to available nutrition"
-  - code_imp: "Deleted cooldown code"
