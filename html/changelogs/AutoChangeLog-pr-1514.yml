@@ -1,4 +1,0 @@
-author: "deathride58"
-delete-after: True
-changes: 
-  - bugfix: "Added a sanity check to the add() proc in zone datums, which should hopefully fix the issue where unsimulated turfs get added to ZAS zones and cause runtimes that make travis fail"

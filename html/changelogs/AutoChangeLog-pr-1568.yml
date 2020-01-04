@@ -1,4 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - code_imp: "Disabling the GENERATE_MAP setting in config.txt now prevents submaps from generating. This prevents the use of shuttles, but also makes the whole map initialize really, really fast."

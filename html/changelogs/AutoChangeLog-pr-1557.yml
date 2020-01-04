@@ -1,5 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - rscadd: "Ore scanners can now have their range switched around with an alt-click!"
-  - tweak: "Ore boxes no longer explode and drop all their contents on ex_act(), meaning that they probably shouldn't crash servers when they get broken. I hope."

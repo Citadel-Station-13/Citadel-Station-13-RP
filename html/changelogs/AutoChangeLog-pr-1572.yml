@@ -1,5 +1,0 @@
-author: "Anonymous"
-delete-after: True
-changes: 
-  - rscadd: "Depending on intent, robots are now can be petted or punched (without damage). Grab intent should preform default actions."
-  - tweak: "Species with \"can_shred\" tag will now have to be on harm intent to deal damage to borgs."
