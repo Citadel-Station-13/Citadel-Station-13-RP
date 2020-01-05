@@ -57,6 +57,7 @@
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/device/gps/security/hos,
 		/obj/item/device/flashlight/maglight)
 
 //Custom NT Security Lockers, Only found at central command

@@ -118,7 +118,7 @@
 		/obj/item/weapon/storage/box/freezer,
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/taperoll/medical,
-		/obj/item/device/gps,
+		/obj/item/device/gps/medical,
 		/obj/item/device/geiger,
 		/obj/item/bodybag/cryobag)
 

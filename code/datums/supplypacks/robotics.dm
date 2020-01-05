@@ -189,7 +189,7 @@
 /datum/supply_pack/robotics/bike
 	name = "Spacebike Crate"
 	contains = list()
-	cost = 350
+	cost = 200
 	containertype = /obj/structure/largecrate/vehicle/bike
 	containername = "Spacebike Crate"
 
@@ -203,6 +203,6 @@
 /datum/supply_pack/robotics/quadtrailer
 	name = "ATV Trailer Crate"
 	contains = list()
-	cost = 250
+	cost = 50
 	containertype = /obj/structure/largecrate/vehicle/quadtrailer
 	containername = "ATV Trailer Crate"

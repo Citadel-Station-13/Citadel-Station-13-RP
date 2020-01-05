@@ -184,3 +184,12 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	access = access_security
+
+/datum/supply_pack/security/wardengear
+	name = "Tracking Implants"
+	contains = list(
+			/obj/item/weapon/storage/box/trackimp = 1
+			)
+	cost = 30
+	containertype = /obj/structure/closet/crate/secure
+	access = access_armory

@@ -1,0 +1,4 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - rscadd: "You can now fly the excursion shuttle down to the surface and back to orbit again."

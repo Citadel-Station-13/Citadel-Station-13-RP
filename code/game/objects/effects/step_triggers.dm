@@ -5,6 +5,8 @@
 	var/stopper = 1 // stops throwers
 	invisibility = 101 // nope cant see this shit
 	anchored = 1
+	icon = 'icons/mob/screen1.dmi' //VS PORT
+	icon_state = "centermarker" //VS PORT
 
 /obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
 	return 0
