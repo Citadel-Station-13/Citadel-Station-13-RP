@@ -245,6 +245,14 @@
 				m_type = 2
 			else
 				src << "You're not a dog!"
+		if("arfe")
+			if (istype(module,/obj/item/weapon/robot_module/robot/knine) || istype(module,/obj/item/weapon/robot_module/robot/medihound) || istype(module,/obj/item/weapon/robot_module/robot/scrubpup) || istype(module,/obj/item/weapon/robot_module/robot/ert) || istype(module,/obj/item/weapon/robot_module/robot/science) || istype(module,/obj/item/weapon/robot_module/robot/engiedog) || istype(module,/obj/item/weapon/robot_module/robot/clerical/brodog))
+				message = "lets out an A R F E."
+
+				playsound(loc, 'modular_citadel/sound/voice/arfe.ogg', 50, 1, -1)
+				m_type = 2
+			else
+				src << "You're not a dog!"
 
 		if ("help")
 			src << "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, \nbuzz, law, halt, yes, no"

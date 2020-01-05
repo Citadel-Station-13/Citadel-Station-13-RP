@@ -113,15 +113,19 @@
 		I.forceMove(src)
 		success = 1
 	if(success && !failure && !silent)
-		to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+		if(world.time >= last_message == 0)
+			to_chat(user, "<span class='notice'>You put everything in [src].</span>")
+			last_message = world.time + 10
 	else if(success && (!silent || (silent && contents.len >= max_storage_space)))
 		to_chat(user, "<span class='notice'>You fill the [src].</span>")
+		last_message = world.time + 10
 	else if(!silent)
-		to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
-	if(istype(user.pulling, /obj/structure/ore_box/)) //Bit of a crappy way to do this, as it doubles spam for the user, but it works.
+		if(world.time >= last_message == 0)
+			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+			last_message = world.time + 90
+	if(istype(user.pulling, /obj/structure/ore_box/)) // buffy fix with last_message, no more spam
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
-
 /obj/item/weapon/storage/bag/ore/equipped(mob/user)
 	..()
 	if(user.get_inventory_slot(src) == slot_wear_suit || slot_l_hand || slot_l_hand || slot_belt) //Basically every place they can go. Makes sure it doesn't unregister if moved to other slots.
@@ -372,3 +376,15 @@
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks,/obj/item/weapon/reagent_containers/food/condiment)
+
+/obj/item/weapon/storage/bag/dogborg
+	name = "dog bag"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "foodbag"
+	desc = "A bag for storing things of all kinds."
+	max_storage_space = ITEMSIZE_COST_NORMAL * 25
+	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_SMALL
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks,/obj/item/weapon/reagent_containers/food/condiment,
+	/obj/item/weapon/reagent_containers/glass/beaker,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/weapon/coin,/obj/item/weapon/spacecash,
+	/obj/item/weapon/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/weapon/grown,/obj/item/weapon/reagent_containers/pill)
