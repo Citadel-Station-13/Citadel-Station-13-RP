@@ -21016,6 +21016,9 @@
 	},
 /area/vacant/vacant_library)
 "ID" = (
+/turf/simulated/wall,
+/area/tether/surfacebase/outside/outside3)
+"IE" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/carry,
@@ -23598,12 +23601,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
-"Ym" = (
-/obj/machinery/door/airlock/glass{
-	name = "The Game Den"
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/tether/surfacebase/outside/outside3)
 "Yq" = (
 /obj/structure/closet/toolcloset,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -37725,7 +37722,7 @@ Jr
 Js
 Jv
 JE
-ID
+IE
 IY
 JH
 JJ
@@ -37867,7 +37864,7 @@ Js
 Js
 Jz
 JE
-ID
+IE
 IY
 JH
 JJ
@@ -38009,7 +38006,7 @@ Jt
 Js
 Jz
 JE
-ID
+IE
 IY
 JH
 JJ
@@ -38134,7 +38131,7 @@ rJ
 vK
 vK
 rJ
-Ym
+ID
 rJ
 vK
 vK

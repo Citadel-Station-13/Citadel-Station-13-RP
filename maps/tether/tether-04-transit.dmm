@@ -47,7 +47,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/ceiling,
-/obj/structure/disposalpipe/junction,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -57,6 +56,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/supply{
 	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	icon_state = "conpipe-j2";
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation)
@@ -208,6 +211,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
+"x" = (
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation)
 "y" = (
 /turf/simulated/wall/r_wall,
 /area/tether/midpoint)
@@ -286,6 +297,10 @@
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"G" = (
+/obj/machinery/telecomms/relay/preset/tether/transit,
+/turf/simulated/floor/plating,
+/area/maintenance/substation)
 "H" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -9162,7 +9177,7 @@ I
 I
 I
 I
-I
+x
 s
 u
 u
@@ -9304,7 +9319,7 @@ g
 h
 i
 j
-I
+G
 s
 u
 u
