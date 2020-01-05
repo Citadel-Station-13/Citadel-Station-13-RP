@@ -208,6 +208,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
+"x" = (
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation)
 "y" = (
 /turf/simulated/wall/r_wall,
 /area/tether/midpoint)
@@ -286,6 +294,10 @@
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"G" = (
+/obj/machinery/telecomms/relay/preset/tether/transit,
+/turf/simulated/floor/plating,
+/area/maintenance/substation)
 "H" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -9162,7 +9174,7 @@ I
 I
 I
 I
-I
+x
 s
 u
 u
@@ -9446,7 +9458,7 @@ d
 d
 d
 d
-I
+G
 s
 u
 u
