@@ -11587,6 +11587,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"uk" = (
+/obj/machinery/light_construct{
+	icon_state = "tube-construct-stage1";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/turf/simulated/floor/wood/broken,
+/area/vacant/vacant_library)
 "ul" = (
 /obj/machinery/camera/network/civilian{
 	dir = 9
@@ -11924,6 +11932,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"uO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/turf/simulated/floor/wood/broken,
+/area/vacant/vacant_library)
+"uP" = (
+/obj/item/stack/material/wood{
+	amount = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/broken,
+/area/vacant/vacant_library)
 "uQ" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -12117,10 +12138,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "vj" = (
-/obj/machinery/light_construct{
-	icon_state = "tube-construct-stage1";
-	dir = 1
-	},
+/obj/machinery/light_construct,
 /turf/simulated/floor/plating,
 /turf/simulated/floor/wood/broken,
 /area/vacant/vacant_library)
@@ -12335,6 +12353,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"vF" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "vG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12711,11 +12734,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
-"wo" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/turf/simulated/floor/wood/broken,
-/area/vacant/vacant_library)
 "wp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
@@ -20809,24 +20827,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"Lz" = (
-/obj/item/stack/material/wood{
-	amount = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
-/turf/simulated/floor/wood/broken,
-/area/vacant/vacant_library)
-"LA" = (
-/obj/machinery/light_construct,
-/turf/simulated/floor/plating,
-/turf/simulated/floor/wood/broken,
-/area/vacant/vacant_library)
-"LB" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
 "LL" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -20918,13 +20918,6 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/public_garden_three)
-"My" = (
-/obj/machinery/door/airlock/glass{
-	name = "Game Den"
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/steel_grid,
-/area/crew_quarters/bar)
 "MB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -33758,9 +33751,9 @@ vh
 vE
 Pu
 wK
-vj
+uk
 yx
-wo
+uO
 zS
 zX
 AD
@@ -33768,7 +33761,7 @@ AD
 zj
 Ch
 CN
-LA
+vj
 wK
 Fk
 Gb
@@ -34191,7 +34184,7 @@ yy
 Af
 xi
 Bt
-Lz
+uP
 yx
 yz
 Di
@@ -36482,7 +36475,7 @@ Jr
 Js
 Jv
 JE
-LB
+vF
 IY
 JH
 JJ
@@ -36624,7 +36617,7 @@ Js
 Js
 Jz
 JE
-LB
+vF
 IY
 JH
 JJ
@@ -36766,7 +36759,7 @@ Jt
 Js
 Jz
 JE
-LB
+vF
 IY
 JH
 JJ
@@ -36891,7 +36884,7 @@ rJ
 vK
 vK
 rJ
-My
+rJ
 rJ
 vK
 vK
