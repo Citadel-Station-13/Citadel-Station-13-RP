@@ -180,8 +180,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	effect_message = list(
 		"<I>The gentle breeze lifts tiny particles of falling snow past you.</I>",
 		"<I>Cool wind rushes over your senses as the breeze softly stirs and spirals around you.</I>",
-		"<I>A momentary pause in wind leaves the air still before it finds it's peaceful rythm again.</I>",
-		"<I>Blanketed cold envelops you as the wind carries it's chilled embrace.</I>"
+		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
+		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
 	)
 	transition_messages = list(
 		"Small snowflakes begin to fall from above.",
@@ -217,8 +217,8 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	effect_message = list(
 		"<I>Snow falls gently around you with a quiet pattering song.</I>",
 		"<I>Cool wind rushes over your senses as the breeze softly stirs and spirals around you.</I>",
-		"<I>A momentary pause in wind leaves the air still before it finds it's peaceful rythm again.</I>",
-		"<I>Blanketed cold envelops you as the wind carries it's chilled embrace.</I>"
+		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
+		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
 	)
 	transition_messages = list(
 		"It's starting to snow.",
@@ -344,7 +344,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	effect_message = list(
 		"<I>A gentle white noise of rain taps away a restless song.</I>",
 		"<I>Showering rain from above intesifies for a moment and briefly obscures your vision.</I>",
-		"<I>Gusting winds sweep past you and carry harsher rainfall before returning to it's previous intensity.</I>"
+		"<I>Gusting winds sweep past you and carry harsher rainfall before returning to its previous intensity.</I>"
 	)
 
 	var/next_lightning_strike = 0 // world.time when lightning will strike.
