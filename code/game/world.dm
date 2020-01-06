@@ -12,6 +12,9 @@
 
 
 #define RECOMMENDED_VERSION 501
+#define TOPIC_LENGTH_LIMIT 1024 //The reason why this is so large is to allow TGS topic calls to function without issue.
+#define TOPIC_COOLDOWN 1 //90% sure there isnt anything that does multiple topic calls in a single decisecond.
+
 /world/New()
 	world.log << "Map Loading Complete"
 	//logs
@@ -104,6 +107,24 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
+	var/static/list/bannedsourceaddrs = list()
+	var/static/list/lasttimeaddr = list()
+
+	if(addr in bannedsourceaddrs)
+		return
+
+	if(length(T) >= TOPIC_LENGTH_LIMIT)
+		log_topic("Oversized topic, banning address. from:[addr]")
+		bannedsourceaddrs |= addr
+		return
+
+	if(addr in lasttimeaddr && world.time < (lasttimeaddr["[addr]"] + TOPIC_COOLDOWN))
+		log_topic("Too many topic calls from address in [TOPIC_COOLDOWN] ds, banning address. from:[addr]")
+		bannedsourceaddrs |= addr
+		return
+
+	lasttimeaddr["[addr]"] = world.time
+
 	TGS_TOPIC
 
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
