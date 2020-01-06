@@ -212,17 +212,6 @@
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
 "x" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation)
-"y" = (
-/turf/simulated/wall/r_wall,
-/area/tether/midpoint)
-"z" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -238,6 +227,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	icon_state = "intact-scrubbers";
 	dir = 5
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation)
+"y" = (
+/turf/simulated/wall/r_wall,
+/area/tether/midpoint)
+"z" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation)
@@ -311,6 +316,15 @@
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
 "I" = (
+/turf/simulated/floor/plating,
+/area/maintenance/substation)
+"J" = (
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/maintenance/substation)
 "K" = (
@@ -9172,12 +9186,12 @@ u
 s
 b
 X
-z
-I
-I
-I
-I
 x
+z
+z
+z
+z
+J
 s
 u
 u

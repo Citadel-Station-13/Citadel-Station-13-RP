@@ -11975,7 +11975,7 @@
 "uP" = (
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/outside/outside3)
+/area/crew_quarters/bar)
 "uQ" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -20420,11 +20420,11 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "Hv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside3)
+/obj/machinery/door/airlock/glass{
+	name = "Game Den"
+	},
+/turf/space,
+/area/crew_quarters/bar)
 "Hw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -21016,9 +21016,6 @@
 	},
 /area/vacant/vacant_library)
 "ID" = (
-/turf/simulated/wall,
-/area/tether/surfacebase/outside/outside3)
-"IE" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/carry,
@@ -37722,7 +37719,7 @@ Jr
 Js
 Jv
 JE
-IE
+ID
 IY
 JH
 JJ
@@ -37864,7 +37861,7 @@ Js
 Js
 Jz
 JE
-IE
+ID
 IY
 JH
 JJ
@@ -38006,7 +38003,7 @@ Jt
 Js
 Jz
 JE
-IE
+ID
 IY
 JH
 JJ
@@ -38131,7 +38128,7 @@ rJ
 vK
 vK
 rJ
-ID
+Hv
 rJ
 vK
 vK
@@ -38279,7 +38276,7 @@ KW
 sX
 sX
 sX
-Hv
+vK
 ac
 ac
 IR
@@ -38421,7 +38418,7 @@ QG
 NU
 NU
 sX
-Hv
+vK
 ac
 ac
 IR
