@@ -4172,7 +4172,7 @@ END CITADEL CHANGE */
 
 /obj/item/weapon/reagent_containers/food/snacks/meat_pocket/Initialize()
 	. = ..()
-	reagents.add_reagent("protein", 3)
+	reagents.add_reagent("protein", 2) //lowered from 3 to avoid infinite meatballs from the chem recipe -buffy
 
 /obj/item/weapon/reagent_containers/food/snacks/fish_taco
 	name = "carp taco"

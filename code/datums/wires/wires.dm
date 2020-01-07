@@ -222,11 +222,15 @@ var/const/POWER = 8
 	var/t = sanitizeSafe(input(usr, "Enter a new name.", holder.name), MAX_NAME_LEN)
 	holder.name = t
 	holder.update_icon()
+	message_admins("[usr]([usr.ckey]) renamed a door to ''[t]'' at [holder.x],[holder.y],[holder.z].")
+	log_admin("[usr]([usr.ckey]) renamed a door to ''[t]'' at [holder.x],[holder.y],[holder.z].")
 
 /datum/wires/proc/DescribeDoor(var/obj/machinery/door/airlock/A = holder)
-	var/t = sanitizeSafe(input(usr, "Enter a new description.", holder.desc), MAX_MESSAGE_LEN) // max len values are in misc.dm for reference
+	var/t = sanitizeSafe(input(usr, "Enter a new description.", holder.desc), MAX_MESSAGE_LEN) // max len values are in misc.dm for reference, can be set to MAX_NAME_LEN to reduce length allowance
 	holder.desc = t
 	holder.update_icon()
+	message_admins("[usr]([usr.key]) described a door as ''[t]'' at [holder.x],[holder.y],[holder.z].")
+	log_admin("([usr]([usr.ckey]) described a door as ''[t]'' at [holder.x],[holder.y],[holder.z].")
 
 /datum/wires/proc/GetIndex(var/colour)
 	if(wires[colour])

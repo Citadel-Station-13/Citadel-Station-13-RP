@@ -145,6 +145,11 @@ var/list/gear_datums = list()
 	var/datum/loadout_category/LC = loadout_categories[current_tab]
 	. += "<tr><td colspan=3><hr></td></tr>"
 	. += "<tr><td colspan=3><b><center>[LC.category]</center></b></td></tr>"
+	//Category description section. To add a new category description, follow the format below.
+	var/Contraband = "Contraband"
+	if(LC.category == Contraband) // buffy is of simple taste, and thus, a simple check to see if the current tab is the contraband tab will do just fine
+		. += "<tr><td colspan=3><center>These items are illegal IC, and possessing any of these things may get your character in trouble. It should go without saying that abusing any of these will result in administrative action.</center></td></tr>"
+	//End category description section.
 	. += "<tr><td colspan=3><hr></td></tr>"
 	for(var/gear_name in LC.gear)
 		var/datum/gear/G = LC.gear[gear_name]
