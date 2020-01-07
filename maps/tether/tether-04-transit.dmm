@@ -59,6 +59,7 @@
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 1;
+	dpdir = 11;
 	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/plating,

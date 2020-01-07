@@ -12441,6 +12441,7 @@
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 1;
+	dpdir = 11;
 	icon_state = "pipe-j2"
 	},
 /obj/machinery/hologram/holopad,
@@ -14417,9 +14418,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "yL" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -14436,6 +14434,10 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -14556,6 +14558,9 @@
 	},
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
@@ -15480,10 +15485,6 @@
 /area/hallway/lower/third_south)
 "Av" = (
 /obj/machinery/bookbinder{
-	pixel_y = 0
-	},
-/obj/machinery/light/small{
-	dir = 8;
 	pixel_y = 0
 	},
 /turf/simulated/floor/wood,
@@ -19187,25 +19188,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
-"Fk" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
 "Fl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19555,6 +19537,11 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	icon_state = "extinguisher_closed";
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -22179,6 +22166,24 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"MV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "MW" = (
 /obj/structure/closet/secure_closet/bar{
 	req_access = list(25)
@@ -23547,6 +23552,11 @@
 /obj/machinery/camera/network/northern_star,
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside3)
+"Xm" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Xo" = (
 /obj/structure/bed/chair/wood,
 /obj/structure/window/basic{
@@ -35069,7 +35079,7 @@ zl
 zl
 Iu
 vT
-Fk
+Ff
 Gb
 wf
 Gj
@@ -35353,8 +35363,8 @@ zl
 zl
 Iw
 wO
-Ff
-Gb
+MV
+Xm
 wf
 Gj
 Gv
