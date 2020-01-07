@@ -20423,7 +20423,7 @@
 /obj/machinery/door/airlock/glass{
 	name = "Game Den"
 	},
-/turf/space,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "Hw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
