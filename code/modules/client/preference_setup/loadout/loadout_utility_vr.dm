@@ -55,3 +55,8 @@
     display_name = "science dufflebag"
     path = /obj/item/weapon/storage/backpack/dufflebag/sci
     allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist","Explorer")
+
+/datum/gear/utility/compliance //CITADEL EDIT: Adds Compliannce disk to loadout. Probably a terrible fucking idea, but #YOLO
+    display_name = "NIFSoft Disk (Compliance)"
+    path = /obj/item/weapon/disk/nifsoft/compliance
+    cost = 1
