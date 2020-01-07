@@ -75,7 +75,7 @@
 /obj/item/organ/external/arm
 	organ_tag = BP_L_ARM
 	name = "left arm"
-	icon_name = "r_arm"
+	icon_name = "l_arm"
 	max_damage = 80
 	min_broken_damage = 30
 	w_class = ITEMSIZE_NORMAL
