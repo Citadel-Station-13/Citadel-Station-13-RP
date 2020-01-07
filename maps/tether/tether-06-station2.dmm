@@ -3564,16 +3564,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "gG" = (
-/obj/structure/lattice,
-/obj/structure/cable/pink{
-	icon_state = "32-4"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/open,
+/obj/structure/cable/pink{
+	icon_state = "2-8";
+	dir = 4
+	},
+/turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "gH" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -17608,6 +17607,24 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"LE" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
+/obj/structure/cable/pink{
+	icon_state = "32-4";
+	dir = 4
+	},
+/turf/simulated/open,
+/area/maintenance/station/sec_lower)
+"LG" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/pink{
+	icon_state = "1-2";
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/maintenance/station/sec_lower)
 "LL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -29306,8 +29323,8 @@ YU
 fN
 RS
 gG
-SI
-SI
+LG
+LE
 SI
 SI
 SI
