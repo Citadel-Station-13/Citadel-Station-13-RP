@@ -12688,11 +12688,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "wj" = (
-/obj/machinery/computer/guestpass{
-	dir = 1;
-	icon_state = "guest";
-	pixel_y = -28
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -12704,6 +12699,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "wk" = (
@@ -12732,6 +12728,11 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/computer/guestpass{
+	dir = 1;
+	icon_state = "guest";
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "wm" = (
@@ -18743,6 +18744,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "ED" = (
@@ -19215,24 +19221,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/tiled,
-/area/hallway/lower/third_south)
-"Fm" = (
 /obj/machinery/light{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -20419,12 +20409,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
-"Hv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside3)
 "Hw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -21020,6 +21004,16 @@
 /turf/simulated/floor/reinforced,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/tether/surface)
+"IF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "IH" = (
 /obj/machinery/optable{
 	name = "Robotics Operating Table"
@@ -21858,6 +21852,26 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"La" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Lc" = (
 /obj/structure/table/gamblingtable,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22814,6 +22828,27 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"Rm" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "Rt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23603,7 +23638,7 @@
 	name = "The Game Den"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/tether/surfacebase/outside/outside3)
+/area/crew_quarters/bar)
 "Yq" = (
 /obj/structure/closet/toolcloset,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -23715,6 +23750,20 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/bar)
+"YR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/lower/third_south)
 "YV" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -35297,7 +35346,7 @@ zl
 zl
 Iw
 wO
-Fm
+Ff
 Gb
 wf
 Gj
@@ -35423,8 +35472,8 @@ lY
 lY
 lY
 uI
-vk
-jM
+La
+IF
 wj
 xf
 xT
@@ -35439,8 +35488,8 @@ zQ
 zQ
 zQ
 IC
-DO
-Gb
+Rm
+YR
 GO
 Gj
 Gv
@@ -35582,7 +35631,7 @@ zl
 Ix
 wK
 DW
-Gb
+Fp
 GO
 ts
 Gv
@@ -35724,7 +35773,7 @@ wK
 wK
 wK
 Eu
-Gb
+Fp
 GO
 Gj
 Gv
@@ -35866,7 +35915,7 @@ wK
 tH
 DL
 DO
-Gb
+Fp
 GO
 Gj
 Gv
@@ -38282,7 +38331,7 @@ KW
 sX
 sX
 sX
-Hv
+vK
 ac
 ac
 IR
@@ -38424,7 +38473,7 @@ QG
 NU
 NU
 sX
-Hv
+vK
 ac
 ac
 IR

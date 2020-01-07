@@ -19,7 +19,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "c" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -35,7 +35,7 @@
 /obj/structure/disposalpipe/down,
 /obj/effect/ceiling,
 /turf/simulated/open,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "d" = (
 /turf/simulated/shuttle/wall/voidcraft/green{
 	hard_corner = 1
@@ -47,7 +47,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/ceiling,
-/obj/structure/disposalpipe/junction,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -58,8 +57,12 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "f" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/tether/midpoint)
@@ -82,16 +85,16 @@
 /obj/structure/cable,
 /obj/effect/ceiling,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "h" = (
 /obj/effect/ceiling,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "i" = (
 /obj/structure/disposalpipe/up,
 /obj/effect/ceiling,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "j" = (
 /obj/structure/disposalpipe/down{
 	dir = 1
@@ -102,7 +105,7 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "k" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -170,7 +173,7 @@
 /area/tether/midpoint)
 "s" = (
 /turf/simulated/wall/r_wall,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "t" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -208,6 +211,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
+"x" = (
+/turf/simulated/floor/plating,
+/area/maintenance/tether_midpoint)
 "y" = (
 /turf/simulated/wall/r_wall,
 /area/tether/midpoint)
@@ -228,12 +234,18 @@
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "A" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "B" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -250,7 +262,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "C" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -268,12 +280,12 @@
 	},
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "D" = (
 /obj/structure/closet,
 /obj/random/plushie,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "E" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -296,8 +308,15 @@
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
 "I" = (
+/obj/structure/cable,
+/obj/machinery/power/apc{
+	cell_type = /obj/item/weapon/cell/super;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "K" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -313,6 +332,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"M" = (
+/obj/machinery/telecomms/relay/preset/tether/transit,
+/turf/simulated/floor/plating,
+/area/maintenance/tether_midpoint)
 "N" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -384,6 +407,9 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
+/obj/machinery/camera/network/northern_star{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "X" = (
@@ -397,7 +423,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
-/area/maintenance/substation)
+/area/maintenance/tether_midpoint)
 "Y" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -9159,10 +9185,10 @@ b
 X
 z
 I
-I
-I
-I
-I
+x
+x
+x
+M
 s
 u
 u
@@ -9304,7 +9330,7 @@ g
 h
 i
 j
-I
+x
 s
 u
 u
@@ -9446,7 +9472,7 @@ d
 d
 d
 d
-I
+x
 s
 u
 u
@@ -9730,7 +9756,7 @@ f
 f
 f
 d
-I
+x
 s
 u
 u
@@ -9872,7 +9898,7 @@ f
 f
 f
 d
-I
+x
 s
 u
 u

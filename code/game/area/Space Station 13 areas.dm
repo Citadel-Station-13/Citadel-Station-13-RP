@@ -1374,8 +1374,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "bar"
 	sound_env = LARGE_SOFTFLOOR
 
-/area/crew_quarters/loungekitchen
+/area/crew_quarters/lounge/kitchen
 	name = "\improper Lounge Kitchen"
+	icon_state = "kitchen"
+
+/area/crew_quarters/lounge/kitchen_freezer
+	name = "\improper Lounge Kitchen Freezer"
 	icon_state = "kitchen"
 
 /area/library
