@@ -22477,6 +22477,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"Pw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside3)
 "Px" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
@@ -32488,7 +32495,7 @@ ac
 ac
 ac
 ac
-ac
+Pw
 tD
 tV
 tY
