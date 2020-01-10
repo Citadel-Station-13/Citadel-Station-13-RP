@@ -516,7 +516,7 @@
 	req_one_access = list(26,48)
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "abh" = (
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/refinery)
@@ -695,8 +695,12 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "abx" = (
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside1)
+/area/maintenance)
 "aby" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -6318,7 +6322,7 @@
 /area/maintenance/lower/research)
 "alr" = (
 /turf/simulated/wall,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "als" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6610,7 +6614,7 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "alV" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
@@ -6628,18 +6632,18 @@
 /obj/random/maintenance/cargo,
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "alX" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "alY" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "alZ" = (
 /obj/machinery/camera/network/civilian{
 	dir = 9
@@ -6895,14 +6899,14 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amy" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amz" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -6940,7 +6944,7 @@
 /obj/structure/catwalk,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amD" = (
 /turf/simulated/wall/r_wall,
 /area/storage/surface_eva/external)
@@ -7060,7 +7064,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amQ" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -7079,13 +7083,13 @@
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amS" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amT" = (
 /obj/structure/railing{
 	dir = 1
@@ -7095,7 +7099,7 @@
 	},
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "amU" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/anomaly_lab)
@@ -7278,7 +7282,7 @@
 "ano" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "anp" = (
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -7462,7 +7466,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "anJ" = (
 /obj/structure/railing,
 /obj/structure/closet/crate,
@@ -16156,7 +16160,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "aCQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16164,7 +16168,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "aCR" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/sleep/Dorm_3)
@@ -17505,7 +17509,7 @@
 	pixel_x = 0
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "aFx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -17552,7 +17556,7 @@
 	},
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "aFE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17577,7 +17581,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "aFI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -17785,7 +17789,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/vacant_site)
+/area/maintenance)
 "aGc" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /turf/simulated/floor/tiled,
@@ -31986,6 +31990,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
+"eZc" = (
+/turf/simulated/floor/plating,
+/area/maintenance)
 "fbF" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -50039,10 +50046,10 @@ alr
 alr
 abg
 alr
-adK
-adK
-adK
-adK
+alr
+alr
+alr
+alr
 apP
 aeX
 acs
@@ -50175,16 +50182,16 @@ aad
 aad
 aad
 aad
-aad
 aah
 aah
 aah
+alr
 abx
-abx
-abx
-abx
-abx
-abx
+eZc
+eZc
+eZc
+eZc
+eZc
 abB
 afx
 arm
@@ -50319,14 +50326,14 @@ aad
 aad
 aad
 aad
-aad
 aah
-adK
-adK
-adK
-adK
-adK
-adK
+alr
+alr
+alr
+alr
+alr
+alr
+alr
 apQ
 aga
 aqC
@@ -50461,14 +50468,14 @@ aad
 aad
 aad
 aad
-aad
 aah
 aah
 aah
 aah
 aah
 aah
-aad
+aah
+aah
 apR
 aco
 act

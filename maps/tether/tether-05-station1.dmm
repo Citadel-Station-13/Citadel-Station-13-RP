@@ -22175,6 +22175,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/pathfinder_office)
+"dKO" = (
+/turf/simulated/wall/r_wall,
+/area/crew_quarters/lounge/kitchen_freezer)
 "dMN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -32805,7 +32808,7 @@ aaa
 aaa
 aaa
 aaa
-hry
+dKO
 hry
 hry
 hry
@@ -32947,7 +32950,7 @@ aaa
 aaa
 aaa
 aaa
-hry
+dKO
 aae
 aaE
 adT
@@ -33089,7 +33092,7 @@ aaa
 aaa
 aaa
 aaa
-hry
+dKO
 uvx
 acs
 adX
@@ -33231,7 +33234,7 @@ aaa
 aaa
 aaa
 aaa
-hry
+dKO
 xMl
 acs
 jIu
@@ -33373,7 +33376,7 @@ aaa
 aaa
 aaa
 aaa
-hry
+dKO
 pxY
 adR
 aec
@@ -33515,12 +33518,12 @@ aaa
 aaa
 aaa
 aaa
-hry
-hry
-hry
-hry
-hry
-hry
+dKO
+dKO
+dKO
+dKO
+dKO
+dKO
 uRe
 biB
 afl
