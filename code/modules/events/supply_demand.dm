@@ -23,12 +23,10 @@
 	// Decide what items are requried!
 	// We base this on what departmets are most active, excluding departments we don't have
 	var/list/notHaveDeptList = metric.departments.Copy()
-	notHaveDeptList.Remove(list(ROLE_ENGINEERING, ROLE_MEDICAL, ROLE_RESEARCH, ROLE_CARGO, ROLE_CIVILIAN))
+	notHaveDeptList.Remove(list(ROLE_MEDICAL, ROLE_RESEARCH, ROLE_CARGO, ROLE_CIVILIAN))
 	var/deptActivity = metric.assess_all_departments(severity * 2, notHaveDeptList)
 	for(var/dept in deptActivity)
 		switch(dept)
-			if(ROLE_ENGINEERING)
-				choose_atmos_items(severity + 1)
 			if(ROLE_MEDICAL)
 				choose_chemistry_items(roll(severity, 2))
 			if(ROLE_RESEARCH) // Would be nice to differentiate between research diciplines
@@ -320,7 +318,7 @@
 		types -= T // Don't pick the same thing twice
 		required_items += new /datum/supply_demand_order/thing(rand(1, 2), T)
 	return
-
+/*
 /datum/event/supply_demand/proc/choose_atmos_items(var/differentTypes)
 	var/datum/gas_mixture/mixture = new
 	mixture.temperature = T20C
@@ -335,7 +333,7 @@
 	O.mixture = mixture
 	required_items += O
 	return
-
+*/
 /datum/event/supply_demand/proc/choose_alloy_items(var/differentTypes)
 	var/list/types = typesof(/datum/alloy) - /datum/alloy
 	for(var/i in 1 to differentTypes)
