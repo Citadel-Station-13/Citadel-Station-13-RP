@@ -285,6 +285,18 @@
 	icon_state = "cargo_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
+/obj/item/device/radio/headset/heads/qm
+	name = "quartermaster's headset"
+	desc = "The headset of the one keeping Cargonia from forming"
+	icon_state = "com_headset"
+	ks2type = /obj/item/device/encryptionkey/heads/qm
+
+/obj/item/device/radio/headset/heads/qm/alt
+	name = "quartermaster's bowman headset"
+	desc = "The headset of the guy keeping Cargonia from forming"
+	icon_state = "com_headset_alt"
+	ks2type = /obj/item/device/encryptionkey/heads/qm
+
 /obj/item/device/radio/headset/headset_service
 	name = "service radio headset"
 	desc = "Headset used by the service staff, tasked with keeping the station full, happy and clean."

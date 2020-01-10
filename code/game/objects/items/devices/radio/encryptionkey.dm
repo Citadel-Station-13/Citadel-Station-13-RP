@@ -110,12 +110,12 @@
 	name = "mining radio encryption key"
 	icon_state = "mine_cypherkey"
 	channels = list("Mining" = 1)
-
+*/
 /obj/item/device/encryptionkey/heads/qm
 	name = "quartermaster's encryption key"
 	icon_state = "qm_cypherkey"
-	channels = list("Cargo" = 1, "Mining" = 1)
-*/
+	channels = list("Supply" = 1, "Command" = 1)
+
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	icon_state = "cargo_cypherkey"
