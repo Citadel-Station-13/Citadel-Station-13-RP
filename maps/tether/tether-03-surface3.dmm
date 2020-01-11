@@ -19858,7 +19858,12 @@
 /area/crew_quarters/bar)
 "Gq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/door/window/brigdoor/southleft,
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 2;
+	icon_state = "rightsecure";
+	name = "Firing Range Door";
+	req_access = list(47)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "Gr" = (
