@@ -1,7 +1,0 @@
-author: "Tename"
-delete-after: True
-changes: 
-  - rscadd: "A bet bird for the tender"
-  - rscadd: "New Gambling room"
-  - rscadd: "New bar design"
-  - bugfix: "Missing cameras outside surface 3"

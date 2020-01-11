@@ -89,10 +89,11 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	popup.open()
 
 /datum/wires/proc/GetInteractWindow()
-	var/html = "<div class='block'>"
+	var/html = "<A href='?src=\ref[src];action=1;rename=[holder]'>Rename</A>" //kicking off the html with this set of buttons that will affect any object with the wires interface
+	html += "<A href='?src=\ref[src];action=1;description=[holder]'>Describe</A>"
+	html += "<div class='block'>"
 	html += "<h3>Exposed Wires</h3>"
 	html += "<table[table_options]>"
-
 	for(var/colour in wires)
 		html += "<tr>"
 		html += "<td[row_options1]><font color='[colour]'>[capitalize(colour)]</font></td>"
@@ -148,7 +149,17 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 					else
 						L << "<span class='error'>You need a remote signaller!</span>"
 
+			else if(href_list["rename"]) //add the ability to rename doors via multitool
+				if(istype(I, /obj/item/device/multitool))
+					RenameDoor(src)
+				else
+					L << "<span class='error'>You need a multitool!</span>"
 
+			else if(href_list["description"]) // and describe them!
+				if(istype(I, /obj/item/device/multitool))
+					DescribeDoor(src)
+				else
+					L << "<span class='error'>You need a multitool!</span>"
 
 
 		// Update Window
@@ -207,6 +218,16 @@ var/const/POWER = 8
 		return
 	UpdatePulsed(index)
 
+/datum/wires/proc/RenameDoor(var/obj/machinery/door/airlock/A = holder)
+	var/t = sanitizeSafe(input(usr, "Enter a new name.", holder.name), MAX_NAME_LEN)
+	holder.name = t
+	holder.update_icon()
+
+/datum/wires/proc/DescribeDoor(var/obj/machinery/door/airlock/A = holder)
+	var/t = sanitizeSafe(input(usr, "Enter a new description.", holder.desc), MAX_MESSAGE_LEN) // max len values are in misc.dm for reference
+	holder.desc = t
+	holder.update_icon()
+
 /datum/wires/proc/GetIndex(var/colour)
 	if(wires[colour])
 		var/index = wires[colour]
@@ -255,7 +276,6 @@ var/const/POWER = 8
 			S.connected = null
 			S.loc = holder.loc
 			return S
-
 
 /datum/wires/proc/Pulse(var/obj/item/device/assembly/signaler/S)
 

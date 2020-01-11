@@ -1,6 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - bugfix: "stasis bags dont kill you and bodybags are less shitty to use"
-  - tweak: "cell chargers and rechargers can now be upgraded"
-  - rscadd: "cell chargers can now be constructed but cell charger kits still exist so *shrug"

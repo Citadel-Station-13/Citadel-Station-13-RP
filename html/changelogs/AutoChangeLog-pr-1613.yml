@@ -1,6 +1,0 @@
-author: "KillianKirilenko"
-delete-after: True
-changes: 
-  - rscadd: "adds a slew of new GPS units, new sprites are a mix of Polaris variants (med/sec/generic) and kitbashed by me."
-  - bugfix: "fixed a lack of gps units in lockers (now available from; mining, research/rd, security/hos, medical/cmo, eng/ce/atm, hop/cd. original sources: explo/sar/PF/xenoarch)"
-  - bugfix: "fixed mining capsule shelter computers not broadcasting by default, and not having their own tag (they will now show as \"SHELTER\")"

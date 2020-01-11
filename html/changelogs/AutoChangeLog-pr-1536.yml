@@ -1,5 +1,0 @@
-author: "DiscordWizard"
-delete-after: True
-changes: 
-  - rscadd: "Updated wings_vr.dmi to have the new wings"
-  - code_imp: "Updated sprite_accessories_vr.dmi to show the new wings"

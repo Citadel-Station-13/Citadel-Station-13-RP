@@ -1,4 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - tweak: "Wearing equipment with negative slowdown values (i.e. alien enhancement vests) will no longer be useless if you've taken an equipment-slowdown-affecting trait such as Major Hardy."
