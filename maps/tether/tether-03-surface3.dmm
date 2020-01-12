@@ -13397,6 +13397,8 @@
 /obj/item/clothing/head/hardhat/red,
 /obj/item/clothing/glasses/meson,
 /obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/device/t_scanner,
+/obj/random/maintenance/medical,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
 "xn" = (
@@ -14294,6 +14296,7 @@
 /obj/item/weapon/storage/box/lights/mixed,
 /obj/item/weapon/storage/box/lights/mixed,
 /obj/effect/decal/cleanable/dirt,
+/obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
 "yC" = (
@@ -14709,6 +14712,10 @@
 "zh" = (
 /obj/machinery/space_heater,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
 "zi" = (
@@ -14787,14 +14794,6 @@
 /turf/simulated/floor/carpet,
 /area/vacant/vacant_library)
 "zp" = (
-/obj/structure/table/standard,
-/obj/random/maintenance/clean,
-/obj/random/maintenance/medical,
-/obj/item/device/t_scanner,
-/obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
@@ -19859,7 +19858,12 @@
 /area/crew_quarters/bar)
 "Gq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/door/window/brigdoor/southleft,
+/obj/machinery/door/window/brigdoor/westright{
+	dir = 2;
+	icon_state = "rightsecure";
+	name = "Firing Range Door";
+	req_access = list(47)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "Gr" = (
