@@ -1236,7 +1236,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/explorer_prep)
+/area/tether/station/excursion_dock)
 "acO" = (
 /obj/machinery/power/smes/buildable{
 	charge = 0;
