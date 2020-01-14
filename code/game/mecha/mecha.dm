@@ -1541,7 +1541,7 @@
 /////// Messages and Log ///////
 ////////////////////////////////
 
-/obj/mecha/proc/occupant_message(message as text)
+/obj/mecha/proc/occupant_message(message as text|null)
 	if(message)
 		if(src.occupant && src.occupant.client)
 			src.occupant << "\icon[src] [message]"

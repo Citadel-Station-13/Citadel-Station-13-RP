@@ -16924,7 +16924,7 @@
 /obj/item/weapon/pickaxe{
 	pixel_x = 5
 	},
-/obj/item/weapon/shovel{
+/obj/item/weapon/pickaxe/shovel{
 	pixel_x = -5
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{

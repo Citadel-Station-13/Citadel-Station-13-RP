@@ -132,7 +132,7 @@
 /area/submap/cave/digsite)
 "E" = (
 /obj/structure/table/rack,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "F" = (

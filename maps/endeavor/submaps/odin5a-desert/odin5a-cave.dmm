@@ -106,7 +106,7 @@
 "x" = (
 /obj/structure/table/steel,
 /obj/item/weapon/pickaxe,
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /turf/simulated/floor/plating,
 /area/endeavor_away/cave/unexplored/normal)
 "y" = (

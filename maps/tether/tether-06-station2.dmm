@@ -1337,7 +1337,8 @@
 	dir = 4;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1371,7 +1372,8 @@
 	dir = 8;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2542,7 +2544,8 @@
 	dir = 4;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -2571,7 +2574,8 @@
 	dir = 8;
 	frequency = 1442;
 	icon_state = "map_injector";
-	id = "riot_inject"
+	id = "riot_inject";
+	req_access = list(3)
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3560,25 +3564,23 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "gG" = (
-/obj/structure/lattice,
 /obj/structure/cable/pink{
-	icon_state = "32-4"
+	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "gH" = (
 /obj/machinery/door/airlock/maintenance/common,
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/chapel/main)
@@ -17604,6 +17606,24 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"LE" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
+/obj/structure/cable/pink{
+	d1 = 32;
+	dir = 2;
+	icon_state = "32-1"
+	},
+/turf/simulated/open,
+/area/maintenance/station/sec_lower)
+"LG" = (
+/obj/structure/cable/pink{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor,
+/area/maintenance/station/sec_lower)
 "LL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -29302,8 +29322,8 @@ YU
 fN
 RS
 gG
-SI
-SI
+LG
+LE
 SI
 SI
 SI

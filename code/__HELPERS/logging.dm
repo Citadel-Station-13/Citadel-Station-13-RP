@@ -89,6 +89,9 @@
 	if (config.log_whisper)
 		WRITE_LOG(diary, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
 
+/proc/log_access(text)
+	WRITE_LOG(diary, "ACCESS: [text]")
+
 /proc/log_emote(text, mob/speaker)
 	if (config.log_emote)
 		WRITE_LOG(diary, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")

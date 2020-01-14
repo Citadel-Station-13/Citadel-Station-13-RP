@@ -157,3 +157,9 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/head/donator/hberet
 	ckeywhitelist = list("certifiedhyena")
+
+/datum/gear/donator/woolhat
+	display_name = "Army Garrison Cap"
+	sort_category = "Donator"
+	path = /obj/item/clothing/head/donator/woolhat
+	ckeywhitelist = list("vfivesix")

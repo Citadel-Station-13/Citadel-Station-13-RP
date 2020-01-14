@@ -57,4 +57,7 @@
 
 	var/global/obj/screen/click_catcher/void
 
+	var/list/topiclimiter
+	var/list/clicklimiter
+
 	var/datum/chatOutput/chatOutput

@@ -39,10 +39,24 @@
 	build_path = /obj/item/weapon/pickaxe/diamonddrill
 	sort_string = "KAAAE"
 
+/datum/design/item/device/mining_scanner
+	id = "mining_scanner"
+	req_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
+	materials = list(DEFAULT_WALL_MATERIAL = 150)
+	build_path = /obj/item/weapon/mining_scanner
+	sort_string = "KAAAF"
+
+/datum/design/item/device/mining_scanner_adv
+	id = "mining_scanner_adv"
+	req_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	build_path = /obj/item/weapon/mining_scanner/advanced
+	sort_string = "KAAAG"
+
 /datum/design/item/device/depth_scanner
 	desc = "Used to check spatial depth and density of rock outcroppings."
 	id = "depth_scanner"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 1000)
 	build_path = /obj/item/device/depth_scanner
-	sort_string = "KAAAF"
+	sort_string = "KAAAH"

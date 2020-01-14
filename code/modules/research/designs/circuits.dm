@@ -287,6 +287,13 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/solar_control
 	sort_string = "JAAAF"
 
+/datum/design/circuit/fission_monitor
+	name = "fission monitoring console"
+	id = "fission_monitor"
+	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 2)
+	build_path = /obj/item/weapon/circuitboard/fission_monitor
+	sort_string = "JAABA"
+
 /datum/design/circuit/pacman
 	name = "PACMAN-type generator"
 	id = "pacman"

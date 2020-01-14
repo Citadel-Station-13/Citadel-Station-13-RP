@@ -1,12 +1,14 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 obj/machinery/recharger
 	name = "recharger"
+	desc = "A standard recharger for all devices that use power."
 	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Edit
 	icon_state = "recharger0"
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
+	var/efficiency = 40000 //modified power rate when upgraded
 	var/obj/item/charging = null
 	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/device/laptop, /obj/item/weapon/cell, /obj/item/device/flashlight, /obj/item/device/electronic_assembly, /obj/item/weapon/weldingtool/electric, /obj/item/ammo_magazine/smart, /obj/item/ammo_casing/nsfw_batt) //VOREStation Add - NSFW Batteries
 	var/icon_state_charged = "recharger2"
@@ -23,6 +25,15 @@ obj/machinery/recharger
 	..()
 	return
 
+/obj/machinery/recharger/examine(mob/user)
+	if(!..(user, 5))
+		return
+
+	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
+	if(charging)
+		var/obj/item/weapon/cell/C = charging.get_cell()
+		to_chat(user, "Current charge: [C.charge] / [C.maxcharge]")
+
 /obj/machinery/recharger/attackby(obj/item/weapon/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
@@ -37,31 +48,47 @@ obj/machinery/recharger
 			return
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
 		if(!powered())
-			to_chat(user, "<span class='warning'>The [name] blinks red as you try to insert the item!</span>")
+			to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert [G]!</span>")
 			return
 		if(istype(G, /obj/item/weapon/gun/energy))
 			var/obj/item/weapon/gun/energy/E = G
 			if(E.self_recharge)
-				to_chat(user, "<span class='notice'>Your gun has no recharge port.</span>")
+				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
 				return
+		if(istype(G, /obj/item/weapon/melee/baton))
+			var/obj/item/weapon/melee/baton/B = G
+			if(B.use_external_power)
+				to_chat(user, "<span class='notice'>\The [B] has no recharge port.</span>")
+				return
+		if(istype(G, /obj/item/weapon/weldingtool/electric))
+			var/obj/item/weapon/weldingtool/electric/EW = G
+			if(EW.use_external_power)
+				to_chat(user, "<span class='notice'>\The [EW] has no recharge port.</span>")
+				return
+		else if(!G.get_cell())
+			to_chat(user, "\The [G] does not have a battery installed.")
+			return
 		if(!G.get_cell() && !istype(G, /obj/item/ammo_casing/nsfw_batt))	//VOREStation Edit: NSFW charging
-			to_chat(user, "This device does not have a battery installed.")
+			to_chat(user, "\The [G] does not have a battery installed.")
 			return
 
 		user.drop_item()
 		G.loc = src
 		charging = G
 		update_icon()
+		user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")
 	else if(portable && G.is_wrench())
 		if(charging)
 			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")
 			return
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")
+		to_chat(user, "You [anchored ? "attached" : "detached"] [src].")
 		playsound(loc, G.usesound, 75, 1)
 	else if(default_deconstruction_screwdriver(user, G))
 		return
 	else if(default_deconstruction_crowbar(user, G))
+		return
+	else if(default_part_replacement(user, G))
 		return
 
 /obj/machinery/recharger/attack_hand(mob/user as mob)
@@ -71,10 +98,21 @@ obj/machinery/recharger
 	add_fingerprint(user)
 
 	if(charging)
+		user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")
 		charging.update_icon()
 		user.put_in_hands(charging)
 		charging = null
 		update_icon()
+
+/obj/machinery/cell_charger/attack_ai(mob/user)
+	if(istype(user, /mob/living/silicon/robot) && Adjacent(user)) // Borgs can remove the cell if they are near enough
+		if(charging)
+			user.visible_message("[user] removes [charging] from [src].", "You remove [charging] from [src].")
+			charging.update_icon()
+			charging.loc = src.loc
+			charging = null
+			update_icon()
+
 
 /obj/machinery/recharger/process()
 	if(stat & (NOPOWER|BROKEN) || !anchored)
@@ -90,7 +128,7 @@ obj/machinery/recharger
 		if(istype(C))
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
-				C.give(active_power_usage*CELLRATE)
+				C.give(efficiency*CELLRATE)
 				update_use_power(2)
 			else
 				icon_state = icon_state_charged
@@ -129,6 +167,7 @@ obj/machinery/recharger
 
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"
+	desc = "A more powerful recharger designed for energy weapons."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	plane = TURF_PLANE
@@ -140,3 +179,15 @@ obj/machinery/recharger
 	icon_state_idle = "wrecharger0"
 	portable = 0
 	circuit = /obj/item/weapon/circuitboard/recharger/wrecharger
+
+/obj/machinery/recharger/RefreshParts()
+	var/E = 0
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+		E += C.rating
+	efficiency = active_power_usage * (1+(E-1)*0.5)
+
+/obj/machinery/recharger/wallcharger/RefreshParts()
+	var/E = 0
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+		E += C.rating
+	efficiency = (active_power_usage * (1+(E-1)*0.5))*2 //extra efficiency because wallcharger

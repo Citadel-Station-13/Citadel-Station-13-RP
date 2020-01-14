@@ -49,6 +49,8 @@
 	move_to_delay = 2
 	mob_size = MOB_LARGE
 
+	meat_amount = 3
+
 	pixel_x = -16
 	old_x = -16
 

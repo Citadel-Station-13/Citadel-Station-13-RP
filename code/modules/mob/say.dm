@@ -14,14 +14,14 @@
 	set_typing_indicator(FALSE)
 	usr.say(message)
 
-/mob/verb/me_verb(message as text)
+/mob/verb/me_verb(message as message)
 	set name = "Me"
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<font color='red'>Speech is currently admin-disabled.</font>"
 		return
-	
+
 	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
 
 	set_typing_indicator(FALSE)

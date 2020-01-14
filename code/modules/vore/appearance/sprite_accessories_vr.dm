@@ -614,6 +614,71 @@
 	name = "moth antenna and wings"
 	desc = ""
 	icon_state = "moth_full"
+	
+/datum/sprite_accessory/wing/moth_royal
+	name = "royal moth antenna and wings"
+	desc = ""
+	icon_state = "moth_royal"
+	
+/datum/sprite_accessory/wing/moth_red
+	name = "red moth antenna and wings"
+	desc = ""
+	icon_state = "moth_red"
+	
+/datum/sprite_accessory/wing/moth_gothic
+	name = "gothic moth antenna and wings"
+	desc = ""
+	icon_state = "moth_gothic"
+	
+/datum/sprite_accessory/wing/moth_lover
+	name = "lover moth antenna and wings"
+	desc = ""
+	icon_state = "moth_lover"
+	
+/datum/sprite_accessory/wing/moth_monarch
+	name = "monarch moth antenna and wings"
+	desc = ""
+	icon_state = "moth_monarch"
+	
+/datum/sprite_accessory/wing/moth_burned
+	name = "burned moth antenna and wings"
+	desc = ""
+	icon_state = "moth_burned"
+	
+/datum/sprite_accessory/wing/moth_white
+	name = "white moth antenna and wings"
+	desc = ""
+	icon_state = "moth_white"
+	
+/datum/sprite_accessory/wing/moth_firewatch
+	name = "firewatch moth antenna and wings"
+	desc = ""
+	icon_state = "moth_firewatch"
+
+/datum/sprite_accessory/wing/moth_deathhead
+	name = "death moth antenna and wings"
+	desc = ""
+	icon_state = "moth_deathhead"
+	
+/datum/sprite_accessory/wing/moth_poison
+	name = "poison antenna and wings"
+	desc = ""
+	icon_state = "moth_poison"
+
+/datum/sprite_accessory/wing/moth_ragged
+	name = "ragged moth antenna and wings"
+	desc = ""
+	icon_state = "moth_ragged"
+
+/datum/sprite_accessory/wing/moth_moonfly
+	name = "moonfly moth antenna and wings"
+	desc = ""
+	icon_state = "moth_moonfly"
+
+/datum/sprite_accessory/wing/moth_snowy
+	name = "snowy moth antenna and wings"
+	desc = ""
+	icon_state = "moth_snowy"
 
 /datum/sprite_accessory/wing/kerena
 	name = "wingwolf wings (Kerena)"

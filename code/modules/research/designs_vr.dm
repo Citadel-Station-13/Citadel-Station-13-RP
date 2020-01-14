@@ -308,3 +308,9 @@
 	id = "rigmod_orescanner"
 	build_path = /obj/item/rig_module/device/orescanner
 	sort_string = "HCAAI"
+
+/datum/design/item/rig_module/orescanneradv
+	name = "rig module - adv. ore scanner"
+	id = "rigmod_orescanner_adv"
+	build_path = /obj/item/rig_module/device/orescanner/advanced
+	sort_string = "HCAAJ"

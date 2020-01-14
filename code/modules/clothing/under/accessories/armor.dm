@@ -86,11 +86,33 @@
 	icon_state = "armor_tactical"
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
+/obj/item/clothing/accessory/armor/armorplate/laserproof
+	name = "ablative armor plate"
+	desc = "An ablative armor plate that will protect your body from energy weapons. Attaches to a plate carrier."
+	icon_state = "ablative"
+	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.1
+
+/obj/item/clothing/accessory/armor/armorplate/bulletproof
+	name = "ballistic armor plate"
+	desc = "A ballistic armor plate that will protect your body from ballistic weapons. Attaches to a plate carrier."
+	icon_state = "ballistic"
+	siemens_coefficient = 0.7
+	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/accessory/armor/armorplate/riot
+	name = "riot armor chestpiece"
+	desc = "A riot armor chestpiece that will protect your body from close combat weapons. Attaches to a plate carrier."
+	icon_state = "riot"
+	siemens_coefficient = 0.5
+	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+
 /obj/item/clothing/accessory/armor/armorplate/merc
 	name = "heavy armor plate"
 	desc = "A ceramics-reinforced synthetic armor plate, providing state of of the art protection. Attaches to a plate carrier."
 	icon_state = "armor_merc"
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	siemens_coefficient = 0.5
 
 //////////////
 //Arm guards
@@ -125,31 +147,32 @@
 	name = "heavy arm guards"
 	desc = "A pair of red-trimmed black arm pads reinforced with heavy armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_merc"
+	siemens_coefficient = 0.5
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/armguards/laserproof
 	name = "ablative arm guards"
-	desc = "These arm guards will protect your arms from energy weapons."
+	desc = "These arm guards will protect your arms from energy weapons. Attaches to a plate carrier."
 	icon_state = "armguards_ablative"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/armguards/bulletproof
-	name = "bullet resistant arm guards"
-	desc = "These arm guards will protect your arms from ballistic weapons."
+	name = "ballistic arm guards"
+	desc = "These arm guards will protect your arms from ballistic weapons. Attaches to a plate carrier."
 	icon_state = "armguards_ballistic"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	siemens_coefficient = 0.7
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/armguards/riot
 	name = "riot arm guards"
-	desc = "These arm guards will protect your arms from close combat weapons."
+	desc = "These arm guards will protect your arms from close combat weapons. Attaches to a plate carrier."
 	icon_state = "armguards_riot"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	siemens_coefficient = 0.5
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 //////////////
 //Leg guards
@@ -184,6 +207,7 @@
 	name = "heavy leg guards"
 	desc = "A pair of heavily armored leg pads in red-trimmed black. Attaches to a plate carrier."
 	icon_state = "legguards_merc"
+	siemens_coefficient = 0.5
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/legguards/laserproof
@@ -195,7 +219,7 @@
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/legguards/bulletproof
-	name = "bullet resistant leg guards"
+	name = "ballistic leg guards"
 	desc = "These will protect your legs from ballistic weapons."
 	icon_state = "legguards_ballistic"
 	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")

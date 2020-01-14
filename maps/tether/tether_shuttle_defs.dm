@@ -210,6 +210,8 @@
 
 //////////////////////////////////////////////////////////////
 // CC Lewdship shuttle
+// DISABLED - cruiser has been removed entirely
+/*
 /datum/shuttle/ferry/cruiser_shuttle
 	name = "Cruiser Shuttle"
 	location = 1
@@ -219,3 +221,4 @@
 	docking_controller_tag = "cruiser_shuttle"
 	dock_target_station = "d1a1_dock"
 	dock_target_offsite = "cruiser_shuttle_bay"
+*/
