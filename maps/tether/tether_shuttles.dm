@@ -266,6 +266,7 @@
 	name = "NSB Adephagia Surface Landing Pad"
 	my_area = /area/shuttle/excursion/tether_surface
 
+	dock_target = "expshuttle_surface3pad"
 	radio_announce = 1
 	announcer = "Excursion Shuttle"
 
