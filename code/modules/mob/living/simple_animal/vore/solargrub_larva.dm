@@ -31,7 +31,7 @@ var/global/list/grub_machine_overlays = list()
 	var/static/list/ignored_machine_types = list(
 		/obj/machinery/atmospherics/unary/vent_pump,
 		/obj/machinery/atmospherics/unary/vent_scrubber,
-		/obj/machinery/light_switch
+		/obj/machinery/light_switch,
 		/obj/machinery/door/firedoor
 		)
 
