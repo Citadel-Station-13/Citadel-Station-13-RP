@@ -23638,6 +23638,16 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"XQ" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "expshuttle_surface3pad";
+	pixel_x = 0;
+	pixel_y = 28;
+	tag_door = "tether_pad_hatch"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/shuttle_pad)
 "Ya" = (
 /obj/structure/railing{
 	dir = 4
@@ -36510,7 +36520,7 @@ ts
 GP
 GP
 IR
-GR
+XQ
 GN
 IR
 GN
