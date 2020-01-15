@@ -26,7 +26,8 @@
 		return //Don't ghostport, very annoying
 	if(AM.throwing)
 		return //Being thrown over, not fallen yet
-
+	if(!(AM.can_fall()))
+		return // Phased shifted kin should not fall
 	var/mob/living/L
 	if(isliving(AM))
 		L = AM
