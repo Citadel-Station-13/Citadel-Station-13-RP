@@ -143,13 +143,14 @@
 /datum/map/tether/get_map_levels(var/srcz, var/long_range = TRUE)
 	if (long_range && (srcz in map_levels))
 		return map_levels
-	else if (srcz == Z_LEVEL_TRANSIT)
-		return list() // Nothing on transit!
+	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
+		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but 
 	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SPACE_HIGH)
 		return list(
 			Z_LEVEL_SURFACE_LOW,
 			Z_LEVEL_SURFACE_MID,
 			Z_LEVEL_SURFACE_HIGH,
+			Z_LEVEL_TRANSIT,
 			Z_LEVEL_SPACE_LOW,
 			Z_LEVEL_SPACE_MID,
 			Z_LEVEL_SPACE_HIGH)
@@ -194,8 +195,8 @@
 
 /datum/map_z_level/tether/transit
 	z = Z_LEVEL_TRANSIT
-	name = "Transit"
-	flags = MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+	name = "Midpoint"
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 
 /datum/map_z_level/tether/station/space_low
 	z = Z_LEVEL_SPACE_LOW
@@ -237,6 +238,11 @@
 	z = Z_LEVEL_CENTCOM
 	name = "Colony"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/tether/ships
+	z = Z_LEVEL_SHIPS
+	name = "Misc"
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
 
 /datum/map_z_level/tether/misc
 	z = Z_LEVEL_MISC
