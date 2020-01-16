@@ -11889,6 +11889,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
+"xq" = (
+/obj/machinery/light_construct{
+	icon_state = "tube-construct-stage1";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar_upper)
 "xs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -14204,6 +14212,9 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
+"BT" = (
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "BU" = (
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -17577,35 +17588,37 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "IO" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/tequila,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
+/obj/structure/closet/secure_closet/personal,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "IP" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
+/area/vacant/vacant_bar_upper)
 "IQ" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/cola,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "IR" = (
-/obj/structure/closet/crate,
-/obj/random/contraband,
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
+/area/vacant/vacant_bar_upper)
 "IS" = (
-/obj/item/weapon/contraband/poster,
-/obj/structure/table/steel,
-/turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar_upper)
 "IT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -17621,14 +17634,12 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "IU" = (
-/obj/structure/table/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/cream,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/orangejuice,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
+/obj/structure/table/rack/shelf/steel,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "IV" = (
 /obj/structure/closet,
 /obj/structure/catwalk,
@@ -17659,19 +17670,19 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "Ja" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
-"Jb" = (
-/obj/structure/ladder_assembly,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
-"Jc" = (
-/obj/structure/table/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
+/area/vacant/vacant_bar_upper)
+"Jc" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/space_mountain_wind,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cola,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "Jd" = (
 /obj/random/junk,
 /obj/item/weapon/broken_bottle,
@@ -17679,24 +17690,34 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "Je" = (
-/obj/machinery/light/small{
+/obj/machinery/light_construct{
+	icon_state = "tube-construct-stage1";
 	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
-"Jf" = (
-/obj/item/weapon/contraband/poster,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
+/area/vacant/vacant_bar_upper)
+"Jf" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar_upper)
 "Jg" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/patron,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/sake,
-/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/orangejuice,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/cream,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/limejuice,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonjuice,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 4
+	},
 /turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
+/area/vacant/vacant_bar_upper)
 "Jh" = (
 /obj/structure/railing{
 	dir = 1
@@ -17723,10 +17744,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "Jl" = (
-/obj/random/obstruction,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/maintenance/lower/atmos)
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar_upper)
 "Jm" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -17748,13 +17768,18 @@
 /turf/simulated/open,
 /area/maintenance/lower/atmos)
 "Jp" = (
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/double,
+/obj/structure/curtain/open/privacy,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "Jq" = (
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/maintenance/lower/atmos)
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/double,
+/obj/structure/curtain/open/privacy,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "Jr" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -17768,15 +17793,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
-"Jt" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
-"Ju" = (
-/obj/structure/ladder_assembly,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
 "Jv" = (
 /obj/structure/catwalk,
 /obj/structure/table/steel,
@@ -17786,10 +17802,6 @@
 	pixel_y = 0
 	},
 /obj/random/junk,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/atmos)
-"Jw" = (
-/obj/item/weapon/reagent_containers/food/drinks/bottle/gin,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "Jx" = (
@@ -17964,6 +17976,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"LQ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "Mf" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
@@ -17992,6 +18012,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"MY" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "Na" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -18047,6 +18075,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Oh" = (
+/turf/simulated/wall,
+/area/vacant/vacant_bar_upper)
 "Ow" = (
 /obj/machinery/telecomms/relay/preset/tether/transit,
 /turf/simulated/floor/tiled/dark{
@@ -18109,6 +18140,14 @@
 /obj/item/weapon/newspaper,
 /turf/simulated/floor,
 /area/maintenance/lower/bar)
+"Pl" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/vacant/vacant_bar_upper)
 "Po" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -18137,6 +18176,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"PF" = (
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "PI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -18284,6 +18330,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
+"Se" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/sake,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/patron,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey,
+/obj/item/weapon/storage/box/lights/mixed,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "Sv" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable{
@@ -18303,6 +18361,15 @@
 /obj/structure/sign/poster,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
+"SC" = (
+/obj/structure/simple_door/wood,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "SE" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -18329,6 +18396,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"SI" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "SS" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -18392,6 +18467,20 @@
 /obj/structure/symbol/gu,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
+"Ul" = (
+/obj/structure/bed/double/padded,
+/obj/item/weapon/bedsheet/double,
+/obj/structure/curtain/open/privacy,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
+"Up" = (
+/obj/structure/cable/green{
+	icon_state = "32-1"
+	},
+/obj/structure/ladder,
+/turf/simulated/floor/wood,
+/area/vacant/vacant_bar_upper)
 "UB" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -18718,6 +18807,11 @@
 /obj/effect/floor_decal/corner/yellow/border,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
+"Zy" = (
+/turf/simulated/wall{
+	can_open = 1
+	},
+/area/vacant/vacant_bar_upper)
 "ZF" = (
 /obj/machinery/seed_extractor,
 /obj/effect/floor_decal/borderfloor{
@@ -29526,18 +29620,18 @@ Cy
 Iw
 By
 BU
-By
-By
-By
-By
-By
-By
-By
-By
-By
-By
-By
-By
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
 By
 ac
 ac
@@ -29668,18 +29762,18 @@ By
 By
 By
 BV
-By
+Oh
 IO
-BV
+IO
 Je
-Dk
-By
+IO
+Oh
 Jp
-BV
-BU
-By
-ac
-ac
+BT
+Jq
+Jl
+Jp
+Oh
 ac
 ac
 ac
@@ -29810,18 +29904,18 @@ If
 BU
 ID
 BU
-By
+Oh
 IP
-Ja
-Ja
+IP
+BT
 Jl
-ID
-BV
-Jt
-Jw
-IH
-ac
-ac
+Zy
+PF
+Jl
+IP
+BT
+BT
+Oh
 ac
 ab
 ab
@@ -29952,18 +30046,18 @@ Ij
 Ix
 By
 By
-By
+Oh
 IQ
 Ja
 Jf
-Dk
-By
+SI
+Oh
 Jq
-BU
-BV
-By
-ac
-ac
+BT
+Jp
+BT
+Ul
+Oh
 ac
 ab
 ab
@@ -30094,18 +30188,18 @@ Im
 Iy
 By
 IH
-By
+Oh
 IR
-Jb
-Ja
-BV
-By
-Jo
-Jq
-BU
-IH
-ac
-ac
+IS
+BT
+LQ
+Oh
+BT
+BT
+Jl
+Jl
+BT
+Oh
 ac
 ab
 ab
@@ -30236,18 +30330,18 @@ In
 BV
 By
 IH
-By
+Oh
 IS
-BU
-If
-Ja
-By
-Cx
-Ju
-BU
-By
-ac
-ac
+BT
+BT
+Pl
+SC
+MY
+MY
+Jf
+MY
+Up
+Oh
 ac
 ab
 ab
@@ -30378,18 +30472,18 @@ BU
 BU
 By
 IH
-By
+Oh
 IU
 Jc
 Jg
-Dk
-By
-By
-By
-IH
-IH
-ac
-ac
+Se
+Oh
+BT
+IP
+xq
+BT
+IS
+Oh
 ac
 ac
 ac
@@ -30520,18 +30614,18 @@ By
 By
 By
 By
-By
-By
-By
-By
-By
-By
-ac
-ac
-ac
-ac
-ac
-ac
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
+Oh
 ac
 ac
 ac
