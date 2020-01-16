@@ -11972,10 +11972,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
-"uP" = (
-/obj/item/weapon/stool/padded,
-/turf/simulated/floor/lino,
-/area/tether/surfacebase/outside/outside3)
 "uQ" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -12401,12 +12397,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "vH" = (
@@ -21909,6 +21901,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"Lj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Ln" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/glass,
@@ -22415,6 +22413,24 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
+"Or" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Ou" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -22560,6 +22576,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/bar_backroom)
+"Pz" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left";
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "PA" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -23020,6 +23049,8 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-10"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/atrium_three)
 "RO" = (
@@ -23337,6 +23368,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
+"TZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
+"Ua" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Ub" = (
 /obj/structure/window/basic{
 	dir = 8
@@ -23404,6 +23446,12 @@
 /obj/machinery/light/flamp/built,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
+"UE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "UF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -23452,6 +23500,19 @@
 	},
 /obj/structure/window/basic,
 /obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
+"UP" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right";
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "US" = (
@@ -23653,6 +23714,15 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"Wl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "Wm" = (
 /obj/machinery/camera/network/northern_star,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -23718,6 +23788,15 @@
 	},
 /turf/simulated/open,
 /area/tether/surfacebase/atrium_three)
+"WZ" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "Xc" = (
 /obj/structure/table/marble,
 /obj/item/weapon/reagent_containers/glass/rag,
@@ -23748,6 +23827,11 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
+"Xw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet,
 /area/tether/surfacebase/atrium_three)
 "Xx" = (
 /obj/structure/disposalpipe/segment,
@@ -23839,6 +23923,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_three)
+"Yj" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right";
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Ym" = (
 /obj/machinery/door/airlock/glass{
 	name = "The Game Den"
@@ -24067,6 +24164,19 @@
 /obj/structure/table/woodentable,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
+"ZC" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left";
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "ZG" = (
 /obj/item/device/radio/intercom{
@@ -36273,13 +36383,13 @@ lY
 lY
 uI
 Ux
-Rp
+ZC
 ZK
 OZ
 US
 Rp
 ZK
-OZ
+UP
 UY
 Yw
 lY
@@ -36415,13 +36525,13 @@ lZ
 lZ
 Ya
 TJ
+UE
 lq
 lq
 lq
 lq
 lq
-lq
-lq
+Lj
 SS
 Uc
 lZ
@@ -36557,13 +36667,13 @@ Ub
 Ub
 Ub
 lq
-lq
+UE
 lq
 Ul
 RX
 Ul
 lq
-lq
+Lj
 lq
 Ub
 Ub
@@ -36699,21 +36809,21 @@ Nk
 Nk
 Nk
 Nk
-Nk
-Nk
-RX
+Wl
+Xw
+Ua
 RI
-RX
-Nk
-Nk
-Nk
-Nk
-Nk
-Nk
-Nk
-Nk
-lq
-Li
+Ua
+Xw
+WZ
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+TZ
+Or
 vG
 kx
 wJ
@@ -36841,13 +36951,13 @@ MY
 MY
 MY
 lq
-lq
+Lj
 lq
 Zu
 RX
 Ul
 lq
-lq
+UE
 lq
 MY
 MY
@@ -36983,13 +37093,13 @@ lX
 lX
 uH
 TJ
+Lj
 lq
 lq
 lq
 lq
 lq
-lq
-lq
+UE
 SS
 Yo
 lX
@@ -37125,13 +37235,13 @@ lY
 lY
 uI
 Se
-Nm
+Yj
 PW
 Mi
 Nt
 Nm
 PW
-Mi
+Pz
 UO
 Yw
 lY
@@ -40554,7 +40664,7 @@ Ta
 YG
 Tc
 UF
-uP
+RO
 Qr
 Qr
 Ai
