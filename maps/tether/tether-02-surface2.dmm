@@ -11282,6 +11282,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
+"wD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	icon_state = "intact";
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "wG" = (
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
@@ -14489,6 +14496,20 @@
 	},
 /turf/simulated/open,
 /area/engineering/atmos)
+"CI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4;
+	icon_state = "intact"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Telecoms Control Room";
+	req_access = list(61)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tcommsat/computer)
 "CJ" = (
 /obj/structure/table/steel,
 /obj/item/clothing/mask/balaclava,
@@ -15423,15 +15444,14 @@
 	name = "\improper Telecomms Lobby"
 	})
 "EN" = (
-/obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/computer/telecomms/monitor,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "EO" = (
-/obj/structure/filingcabinet,
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/machinery/computer/telecomms/server,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "EP" = (
@@ -15462,6 +15482,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/structure/filingcabinet,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "ES" = (
@@ -15534,39 +15555,36 @@
 	name = "\improper Telecomms Lobby"
 	})
 "EZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Fa" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Fb" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Fc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Fd" = (
-/obj/machinery/computer/telecomms/monitor{
-	dir = 8;
-	network = "tcommsat"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Fe" = (
@@ -15701,15 +15719,15 @@
 	name = "\improper Telecomms Lobby"
 	})
 "Fq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
 /obj/machinery/camera/network/telecom{
 	dir = 4
 	},
 /obj/item/device/radio/intercom{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -15727,16 +15745,21 @@
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Fu" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "Fv" = (
-/obj/machinery/computer/telecomms/server{
-	dir = 8;
-	network = "tcommsat"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -16072,11 +16095,11 @@
 	name = "east bump";
 	pixel_x = 28
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
 "FR" = (
@@ -16229,16 +16252,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Gh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
-	},
 /obj/machinery/airlock_sensor/airlock_exterior{
 	frequency = 1381;
 	id_tag = "server_access_ex_sensor";
 	master_tag = "server_access_airlock";
 	pixel_x = 25;
 	pixel_y = 22
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/computer)
@@ -16251,8 +16274,9 @@
 	name = "Telecoms Server Access";
 	req_access = list(61)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/tiled,
 /area/tcommsat/chamber)
@@ -17887,6 +17911,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Lg" = (
+/obj/machinery/telecomms/relay/preset/tether/transit,
+/turf/simulated/floor/tiled/dark{
+	nitrogen = 100;
+	oxygen = 0;
+	temperature = 80
+	},
+/area/tcommsat/chamber)
 "Lp" = (
 /obj/structure/frame{
 	anchored = 1
@@ -17997,6 +18029,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar_upper)
+"NU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	icon_state = "intact";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "NV" = (
 /obj/structure/sign/nanotrasen,
 /turf/simulated/wall,
@@ -18021,6 +18063,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Og" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "OG" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor{
@@ -18075,6 +18121,12 @@
 /obj/item/weapon/newspaper,
 /turf/simulated/floor,
 /area/maintenance/lower/bar)
+"Ph" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "Po" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -18127,6 +18179,12 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"PX" = (
+/obj/machinery/atmospherics/binary/passive_gate/on{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "Qp" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood,
@@ -18228,6 +18286,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
+"Sr" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "Sv" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/cable{
@@ -18479,6 +18543,10 @@
 "VR" = (
 /turf/simulated/floor/outdoors/rocks/virgo3b,
 /area/tether/surfacebase/outside/outside2)
+"Wd" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "Wr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -18497,6 +18565,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
+"WA" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	icon_state = "map";
+	dir = 4
+	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tcommsat/computer)
 "WO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -29545,7 +29624,6 @@ Cy
 Iw
 By
 BU
-By
 QY
 QY
 QY
@@ -29558,6 +29636,7 @@ QY
 QY
 QY
 QY
+ac
 ac
 ac
 ac
@@ -29687,7 +29766,6 @@ By
 By
 By
 BV
-By
 QY
 Qp
 Qp
@@ -29700,6 +29778,7 @@ LA
 Mk
 YJ
 QY
+ac
 ac
 ac
 ab
@@ -29829,7 +29908,6 @@ If
 BU
 ID
 BU
-By
 QY
 Ja
 Ja
@@ -29842,6 +29920,7 @@ Ja
 ZN
 ZN
 QY
+ac
 ab
 ab
 ab
@@ -29971,7 +30050,6 @@ Ij
 Ix
 By
 By
-By
 QY
 Vc
 Jf
@@ -29984,6 +30062,7 @@ YJ
 ZN
 Nv
 QY
+ac
 ab
 ab
 ab
@@ -30113,7 +30192,6 @@ Im
 Iy
 By
 IH
-By
 QY
 Jb
 Ko
@@ -30126,6 +30204,7 @@ Mk
 Mk
 ZN
 QY
+ac
 ab
 ab
 ab
@@ -30255,7 +30334,6 @@ In
 BV
 By
 IH
-By
 QY
 Ko
 ZN
@@ -30268,6 +30346,7 @@ NL
 Ju
 Ty
 QY
+ac
 ab
 ab
 ab
@@ -30397,7 +30476,6 @@ BU
 BU
 By
 IH
-By
 QY
 Jc
 Jg
@@ -30410,6 +30488,7 @@ VI
 ZN
 Ko
 QY
+ac
 ac
 ac
 ab
@@ -30539,7 +30618,6 @@ By
 By
 By
 By
-By
 QY
 QY
 QY
@@ -30552,6 +30630,7 @@ QY
 QY
 QY
 QY
+ac
 ac
 ac
 ac
@@ -32819,7 +32898,7 @@ GI
 GW
 GI
 Hl
-GI
+Lg
 GI
 HB
 HJ
@@ -33377,7 +33456,7 @@ rg
 ac
 EF
 EQ
-Fa
+Fb
 Ft
 FP
 Fs
@@ -33804,7 +33883,7 @@ ac
 EF
 EF
 EF
-EF
+CI
 FR
 Gj
 FR
@@ -33943,10 +34022,10 @@ rg
 rg
 rg
 ac
-ac
-ac
-ac
-ac
+EF
+Sr
+Ph
+NU
 FR
 Gk
 Gt
@@ -34085,10 +34164,10 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
+EF
+Og
+Wd
+PX
 FR
 FR
 FR
@@ -34227,11 +34306,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+EF
+Og
+WA
+wD
+EF
 ac
 FR
 FR
@@ -34369,11 +34448,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+EF
+EF
+EF
+EF
+EF
 ac
 ac
 ac
