@@ -131,15 +131,19 @@
 	name = "sofa"
 	desc = "A padded, comfy sofa. Great for lazing on."
 	base_icon = "sofamiddle"
+	icon_state = "sofamiddle"
 
 /obj/structure/bed/chair/sofa/left
 	base_icon = "sofaend_left"
+	icon_state = "sofaend_left"
 
 /obj/structure/bed/chair/sofa/right
 	base_icon = "sofaend_right"
+	icon_state = "sofaend_right"
 
 /obj/structure/bed/chair/sofa/corner
 	base_icon = "sofacorner"
+	icon_state = "sofacorner"
 
 /obj/structure/bed/chair/sofa/corner/update_layer()
 	if(src.dir == NORTH || src.dir == WEST)

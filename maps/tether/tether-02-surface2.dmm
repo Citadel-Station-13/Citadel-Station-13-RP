@@ -17919,6 +17919,10 @@
 	temperature = 80
 	},
 /area/tcommsat/chamber)
+"Lh" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_two)
 "Lp" = (
 /obj/structure/frame{
 	anchored = 1
@@ -31275,9 +31279,9 @@ gw
 gw
 gw
 gw
-gw
-gw
-gw
+ld
+Lh
+ld
 gw
 gw
 gw
@@ -31417,9 +31421,9 @@ gw
 gw
 gw
 gw
-gw
-gw
-gw
+Lh
+Lh
+Lh
 gw
 gw
 gw
@@ -31559,9 +31563,9 @@ gw
 gw
 gw
 gw
-gw
-gw
-gw
+ld
+Lh
+ld
 gw
 gw
 gw
