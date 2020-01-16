@@ -12925,9 +12925,11 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/structure/disposalpipe/junction{
-	icon_state = "pipe-j2";
-	dir = 4
+/obj/structure/disposalpipe/sortjunction{
+	name = "Primary Tool Storage";
+	icon_state = "pipe-j1s";
+	dir = 8;
+	sortType = "Primary Tool Storage"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
@@ -13226,7 +13228,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
-/obj/structure/disposalpipe/junction,
+/obj/structure/disposalpipe/sortjunction{
+	dir = 2;
+	icon_state = "pipe-j1s";
+	name = "Primary Tool Storage";
+	sortType = "Primary Tool Storage"
+	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "axR" = (
@@ -26458,6 +26465,18 @@
 /turf/simulated/floor,
 /area/maintenance/lower/xenoflora)
 "bym" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 10
+	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -26467,12 +26486,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/computer/timeclock/premade/west,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "byo" = (
@@ -26649,20 +26662,20 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bAR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "bAT" = (

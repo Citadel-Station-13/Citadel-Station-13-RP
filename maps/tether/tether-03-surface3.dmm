@@ -11975,7 +11975,7 @@
 "uP" = (
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/lino,
-/area/crew_quarters/bar)
+/area/tether/surfacebase/outside/outside3)
 "uQ" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -17413,7 +17413,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/crew_quarters/bar)
+/area/assembly/robotics)
 "CW" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
