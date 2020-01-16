@@ -26,8 +26,8 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
-	if(join_motd)
-		src << "<div class=\"motd\">[join_motd]</div>"
+	if(GLOB.join_motd)
+		to_chat(src, "<span class='motd'>[GLOB.join_motd]</span>")
 
 	if(!mind)
 		mind = new /datum/mind(key)
