@@ -10,6 +10,10 @@
 	name = "Tether Debug Space"
 	requires_power = 0
 
+/area/maintenance/bar/catwalk
+	name = "Bar Maintenance Catwalk"
+	icon_state = "maint_bar"
+
 // Tether Areas itself
 /area/tether/surfacebase/tether
 	icon = 'icons/turf/areas_vr.dmi'

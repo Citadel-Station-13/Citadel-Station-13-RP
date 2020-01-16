@@ -3630,14 +3630,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
-"hW" = (
-/obj/structure/ladder{
-	layer = 3.3;
-	pixel_y = 16
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
 "hX" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
@@ -34964,7 +34956,7 @@ du
 du
 du
 du
-hW
+hP
 hP
 iu
 iM
