@@ -333,6 +333,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
+"M" = (
+/obj/machinery/telecomms/relay/preset/tether/transit,
+/turf/simulated/floor/plating,
+/area/maintenance/tether_midpoint)
 "N" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -9185,7 +9189,7 @@ I
 x
 x
 x
-x
+M
 s
 u
 u
