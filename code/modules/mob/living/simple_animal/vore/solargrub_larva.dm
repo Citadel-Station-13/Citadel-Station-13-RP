@@ -46,6 +46,7 @@ var/global/list/grub_machine_overlays = list()
 
 /mob/living/simple_animal/solargrub_larva/Initialize(mapload)
 	. = ..()
+	existing_solargrubs += src
 	powermachine = new(src)
 	sparks = new(src)
 	sparks.set_up()
@@ -58,6 +59,7 @@ var/global/list/grub_machine_overlays = list()
 	return ..()
 
 /mob/living/simple_animal/solargrub_larva/Destroy()
+	existing_solargrubs -= src
 	QDEL_NULL(powermachine)
 	QDEL_NULL(sparks)
 	QDEL_NULL(machine_effect)
