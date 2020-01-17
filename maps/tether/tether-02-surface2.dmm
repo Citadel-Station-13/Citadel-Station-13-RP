@@ -2972,12 +2972,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
-"gC" = (
-/obj/structure/catwalk,
-/obj/structure/ladder/up,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
 "gD" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -3628,6 +3622,13 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/bar)
+"hW" = (
+/obj/structure/ladder{
+	pixel_y = 16
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "hX" = (
@@ -33957,7 +33958,7 @@ fw
 fw
 fw
 go
-gC
+ee
 du
 gW
 du
@@ -34956,7 +34957,7 @@ du
 du
 du
 du
-hP
+hW
 hP
 iu
 iM
