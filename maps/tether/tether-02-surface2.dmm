@@ -18383,8 +18383,9 @@
 /obj/structure/cable/green{
 	icon_state = "32-1"
 	},
-/obj/structure/ladder,
-/turf/simulated/floor/wood,
+/obj/structure/ladder_assembly,
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/vacant/vacant_bar_upper)
 "TH" = (
 /obj/effect/floor_decal/borderfloor,

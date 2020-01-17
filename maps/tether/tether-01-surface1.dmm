@@ -33089,11 +33089,11 @@
 /area/engineering/atmos/processing)
 "tuV" = (
 /obj/machinery/light,
-/obj/structure/ladder/up,
 /obj/structure/cable/green{
 	icon_state = "16-0"
 	},
 /obj/structure/cable/green,
+/obj/structure/ladder_assembly,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
 "tzX" = (
