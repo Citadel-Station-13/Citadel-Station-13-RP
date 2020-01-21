@@ -1,0 +1,6 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - rscadd: "New exterior catwalk area by the bar, to power the external lighting."
+  - tweak: "Removed the old fire shelter, replaced it with a bigger hydroponics bay."
+  - tweak: "Old hydroponics is an ugly empty area for now."
