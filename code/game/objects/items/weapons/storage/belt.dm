@@ -222,6 +222,59 @@
 		/obj/item/weapon/gun/projectile/colt/detective
 		)
 
+/obj/item/weapon/storage/belt/explorer
+	name = "pathfinder's bandolier"
+	desc = "A versatile bandolier fitted with eight pouches that can hold a wide variety of items such as tools, small melee weapons, batteries, ammunition, and more; ideal for any pathfinder who has too much stuff and not enough pockets."
+	icon_state = "bandolier"
+	storage_slots = 7
+	max_storage_space = ITEMSIZE_COST_NORMAL * 7
+	show_above_suit = 1
+	can_hold = list(
+		/obj/item/weapon/grenade,
+		/obj/item/weapon/tool/crowbar,
+		/obj/item/weapon/tool/screwdriver,
+		/obj/item/weapon/weldingtool,
+		/obj/item/weapon/tool/wirecutters,
+		/obj/item/weapon/tool/wrench,
+		/obj/item/weapon/pickaxe/,
+		/obj/item/device/multitool,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/t_scanner,
+		/obj/item/device/analyzer,
+		/obj/item/device/flashlight,
+		/obj/item/weapon/cell/device,
+		/obj/item/weapon/cell/device/weapon,
+		/obj/item/weapon/material/butterfly,
+		/obj/item/weapon/material/knife,
+		/obj/item/weapon/melee/energy/sword,
+		/obj/item/weapon/shield/energy,
+		/obj/item/ammo_casing/,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/storage/box/beanbags,
+		/obj/item/weapon/storage/box/shotgunammo,
+		/obj/item/weapon/storage/box/shotgunshells,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/robotanalyzer,
+		/obj/item/weapon/reagent_containers/glass/beaker,
+		/obj/item/weapon/reagent_containers/glass/bottle,
+		/obj/item/weapon/reagent_containers/syringe,
+		/obj/item/weapon/reagent_containers/hypospray,
+		/obj/item/weapon/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/stack/marker_beacon,
+		/obj/item/device/flashlight,
+		/obj/item/weapon/extinguisher/mini,
+		/obj/item/weapon/storage/quickdraw/syringe_case,
+		/obj/item/weapon/photo,
+		/obj/item/device/camera_film,
+		/obj/item/device/camera,
+		/obj/item/device/taperecorder,
+		/obj/item/device/tape,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/geiger,
+		/obj/item/device/ano_scanner
+		)
+
 /obj/item/weapon/storage/belt/soulstone
 	name = "soul stone belt"
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"

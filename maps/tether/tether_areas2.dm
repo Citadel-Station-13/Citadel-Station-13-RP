@@ -490,8 +490,14 @@
 /area/tether/station/explorer_prep
 	name = "\improper Explorer Prep Room"
 
+/area/tether/station/explorer_ready
+	name = "\improper Explorer Ready Room"
+
 /area/tether/station/explorer_meeting
 	name = "\improper Explorer Meeting Room"
+
+/area/tether/station/explorer_showers
+	name = "\improper Explorer Showers"
 
 /area/tether/station/pathfinder_office
 	name = "\improper Pathfinder's Office"
