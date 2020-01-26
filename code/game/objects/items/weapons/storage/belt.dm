@@ -272,6 +272,7 @@
 		/obj/item/device/tape,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/geiger,
+		/obj/item/device/gps,
 		/obj/item/device/ano_scanner
 		)
 
