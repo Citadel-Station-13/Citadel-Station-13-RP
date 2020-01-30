@@ -21239,6 +21239,7 @@
 /obj/machinery/camera/network/mining{
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "MB" = (
@@ -21254,6 +21255,7 @@
 "MK" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/mining,
+/obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "MO" = (
@@ -21719,6 +21721,7 @@
 /area/tether/surfacebase/bar_backroom)
 "Pz" = (
 /obj/structure/catwalk,
+/obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/maintenance/bar/catwalk)
 "PA" = (
@@ -21900,6 +21903,7 @@
 	icon_state = "tube1";
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/maintenance/bar/catwalk)
 "Qu" = (
@@ -22164,7 +22168,8 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/turf/simulated/open/virgo3b,
+/obj/structure/lattice,
+/turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "RB" = (
 /turf/simulated/wall,
@@ -22802,6 +22807,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
+/obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/maintenance/bar/catwalk)
 "VF" = (
@@ -23016,6 +23022,7 @@
 "Xh" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/northern_star,
+/obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/maintenance/bar/catwalk)
 "Xm" = (
@@ -23104,6 +23111,11 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"XM" = (
+/obj/structure/catwalk,
+/obj/structure/lattice,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside3)
 "XQ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -30120,14 +30132,14 @@ ac
 ac
 ac
 ac
-dG
-dG
+XM
+XM
 Mw
-dG
-dG
-dG
-dG
-dG
+XM
+XM
+XM
+XM
+XM
 Pi
 ab
 ab
@@ -30269,7 +30281,7 @@ Dx
 Dx
 Dx
 Dx
-dG
+XM
 Pi
 ab
 ab
@@ -30411,7 +30423,7 @@ Hk
 Dx
 Dx
 Dx
-dG
+XM
 Pi
 ab
 ab
@@ -30553,7 +30565,7 @@ Hk
 Dx
 Dx
 Dx
-dG
+XM
 Pi
 ab
 ab
@@ -30695,7 +30707,7 @@ Il
 Dx
 Dx
 Dx
-dG
+XM
 Pi
 ab
 ab
@@ -30837,7 +30849,7 @@ Hk
 Dx
 Dx
 Dx
-dG
+XM
 Pi
 ab
 ab
@@ -31121,7 +31133,7 @@ Hk
 Dx
 Dx
 Dx
-dG
+XM
 Pi
 ab
 ab
