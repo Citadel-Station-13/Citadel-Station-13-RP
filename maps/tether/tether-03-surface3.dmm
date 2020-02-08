@@ -7473,6 +7473,12 @@
 /obj/machinery/smartfridge,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"nS" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "nT" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
@@ -11501,6 +11507,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
+"uP" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right";
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "uQ" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -12914,6 +12930,12 @@
 "xo" = (
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
+"xs" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "xv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13689,6 +13711,16 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
+"yD" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left";
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "yG" = (
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -19494,6 +19526,14 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/assembly/chargebay)
+"HC" = (
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "HD" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -20821,6 +20861,16 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
+"KI" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa{
+	icon_state = "sofamiddle";
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "KM" = (
 /obj/item/weapon/stool/padded,
 /obj/structure/disposalpipe/segment{
@@ -20980,6 +21030,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"Lk" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right";
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Ln" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/glass,
@@ -21035,6 +21098,16 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
+"Ly" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Lz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -21108,6 +21181,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"LK" = (
+/obj/structure/table/woodentable,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "LL" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -21248,6 +21326,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"ME" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_three)
 "MI" = (
 /obj/machinery/camera/network/mining,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -21382,6 +21469,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"Ns" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_three)
 "Nv" = (
 /obj/item/weapon/stool/padded,
 /obj/machinery/alarm{
@@ -21540,6 +21634,24 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"Oo" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
 "Op" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -21601,6 +21713,12 @@
 /obj/item/clothing/accessory/permit/gun/bar,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"OL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "OM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/power/apc{
@@ -21612,6 +21730,12 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"OQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "OR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -21677,6 +21801,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"Pt" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_three)
 "Pu" = (
 /obj/machinery/camera/network/northern_star{
 	dir = 1
@@ -21731,6 +21865,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"PB" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "PC" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
@@ -21779,6 +21919,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"PN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "PV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -21912,6 +22057,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"Qv" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Qw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -22171,6 +22323,11 @@
 /obj/structure/lattice,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
+"Rz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "RB" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/bar_backroom)
@@ -22223,6 +22380,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
+"RR" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "RS" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/reagent_containers/glass/bucket,
@@ -22300,6 +22461,10 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_three)
+"Sk" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Sl" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
@@ -22313,6 +22478,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"Sr" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa{
+	icon_state = "sofamiddle";
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Sz" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/weapon/cell/super;
@@ -22441,6 +22616,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
+"SZ" = (
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "Ta" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	icon_state = "map-scrubbers";
@@ -22524,6 +22702,16 @@
 	},
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside3)
+"TE" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_three)
 "TG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22557,6 +22745,32 @@
 /area/tether/surfacebase/public_garden_three)
 "TS" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
+"TZ" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left";
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
+"Ub" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left";
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "Uf" = (
@@ -22846,6 +23060,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"VK" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right";
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "VL" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -22871,6 +23095,15 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/public_garden_three)
+"Wc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "Wd" = (
 /obj/machinery/computer/arcade/orion_trail,
 /obj/machinery/alarm{
@@ -22916,6 +23149,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"Wi" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/window/basic,
+/obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "Wm" = (
 /obj/machinery/camera/network/northern_star,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -22961,6 +23202,16 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
+"WK" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left";
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "WL" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 10
@@ -23025,6 +23276,13 @@
 /obj/structure/lattice,
 /turf/simulated/open/virgo3b,
 /area/maintenance/bar/catwalk)
+"Xk" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_three)
 "Xm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -23042,6 +23300,22 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_three)
+"Xv" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
+"Xw" = (
+/obj/structure/window/basic,
+/obj/structure/flora/pottedplant{
+	icon_state = "plant-10"
+	},
+/turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "Xx" = (
 /obj/structure/disposalpipe/segment,
@@ -23063,6 +23337,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"XC" = (
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "XF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23111,6 +23392,16 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
+"XL" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/machinery/light/flamp/built,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "XM" = (
 /obj/structure/catwalk,
 /obj/structure/lattice,
@@ -23321,6 +23612,19 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/bar)
+"YQ" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right";
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "YR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -23382,6 +23686,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"Zh" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/atrium_three)
 "Zn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -23428,6 +23741,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"ZA" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "plant-10"
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/atrium_three)
 "ZD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -23440,6 +23762,14 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"ZE" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "plant-10"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/carpet,
+/area/tether/surfacebase/atrium_three)
 "ZG" = (
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -35488,15 +35818,15 @@ lY
 lY
 lY
 lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
+lZ
+lZ
+lZ
+lZ
+lZ
+lZ
+lZ
+lZ
+lZ
 lY
 lY
 lY
@@ -35629,17 +35959,17 @@ lY
 lY
 lY
 lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
+uI
+XL
+TZ
+Sr
+uP
+XC
+yD
+Sr
+Lk
+HC
+Ns
 lY
 lY
 lY
@@ -35766,27 +36096,27 @@ if
 jb
 jT
 kG
-lk
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-uI
+ME
+lZ
+lZ
+lZ
+lZ
+Ya
+ZA
+OL
+lq
+lq
+lq
+lq
+lq
+OQ
+Xw
+Pt
+lZ
+lZ
+lZ
+lZ
+uJ
 vk
 jM
 wi
@@ -35907,29 +36237,29 @@ hK
 eG
 jc
 jU
-kG
-lk
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-uI
-vk
+kn
+PB
+PB
+PB
+PB
+PB
+PB
+lq
+OL
+lq
+RR
+Sk
+RR
+lq
+OQ
+lq
+PB
+PB
+PB
+PB
+PB
+PB
+Li
 QO
 SR
 wM
@@ -36049,29 +36379,29 @@ hK
 ig
 jd
 jV
-kG
-lk
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-uI
-vk
+kn
+lq
+SZ
+SZ
+SZ
+SZ
+SZ
+SZ
+Wc
+PN
+xs
+ZE
+xs
+PN
+Xv
+PN
+PN
+PN
+PN
+PN
+PN
+Rz
+Oo
 vG
 kx
 wJ
@@ -36191,29 +36521,29 @@ hL
 ig
 je
 jW
-kG
-lk
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-uI
-vk
+kn
+nS
+nS
+nS
+nS
+nS
+nS
+lq
+OQ
+lq
+LK
+Sk
+RR
+lq
+OL
+lq
+nS
+nS
+nS
+nS
+nS
+nS
+Li
 jR
 wh
 pc
@@ -36334,27 +36664,27 @@ ih
 jf
 jX
 kG
-lk
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-uI
+Zh
+lX
+lX
+lX
+lX
+uH
+ZA
+OQ
+lq
+lq
+lq
+lq
+lq
+OL
+Xw
+TE
+lX
+lX
+lX
+lX
+Xk
 vk
 jR
 Ts
@@ -36481,17 +36811,17 @@ lY
 lY
 lY
 lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
+uI
+Ly
+YQ
+KI
+WK
+Qv
+VK
+KI
+Ub
+Wi
+Ns
 lY
 lY
 lY
@@ -36624,15 +36954,15 @@ lY
 lY
 lY
 lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
-lY
+lX
+lX
+lX
+lX
+lX
+lX
+lX
+lX
+lX
 lY
 lY
 lY
