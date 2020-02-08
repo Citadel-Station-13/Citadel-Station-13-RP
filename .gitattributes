@@ -9,5 +9,5 @@
 # force changelog merging to use union
 html/changelog.html merge=union
 
-# make all .dm files completely ignore eol conversion
-*.dm text
+# enforced LF
+* text=auto
