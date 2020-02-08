@@ -72,7 +72,7 @@
 #include "alienship/alienship.dmm"
 #include "aerostat/aerostat.dmm"
 #include "aerostat/surface.dmm"
-#include "space/debrisfield.dmm"
+// #include "space/debrisfield.dmm"
 #endif
 
 #include "beach/_beach.dm"

@@ -19536,7 +19536,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
-/obj/machinery/light/flamp/built,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "HD" = (
@@ -21105,7 +21105,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/machinery/light/flamp/built,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "Lz" = (
@@ -22061,7 +22061,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/machinery/light/flamp/built,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "Qw" = (
@@ -23154,7 +23154,7 @@
 	dir = 4
 	},
 /obj/structure/window/basic,
-/obj/machinery/light/flamp/built,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "Wm" = (
@@ -23341,7 +23341,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
-/obj/machinery/light/flamp/built,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "XF" = (
@@ -23399,7 +23399,7 @@
 /obj/structure/window/basic{
 	dir = 8
 	},
-/obj/machinery/light/flamp/built,
+/obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "XM" = (
