@@ -7436,15 +7436,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/mining_main/ore)
-"anF" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
-/area/tether/surfacebase/atrium_one)
-"anG" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
-/area/tether/surfacebase/atrium_one)
 "anH" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -19808,14 +19799,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
-"aKB" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
-	},
-/turf/simulated/floor/grass,
-/area/tether/surfacebase/atrium_one)
 "aKC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -29614,13 +29597,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_lodging)
-"cdL" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/grass,
-/area/tether/surfacebase/atrium_one)
 "cdN" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 6
@@ -45955,9 +45931,9 @@ alS
 alS
 alS
 anm
-anF
-aKB
-anG
+atj
+ajU
+atj
 alo
 alS
 alS
@@ -46091,21 +46067,21 @@ agM
 awl
 axY
 ajU
-akE
+atj
 alo
 alS
 alS
 alS
 anm
-anF
+ajU
 akD
-anF
+ajU
 alo
 alS
 alS
 alS
 anm
-akE
+atj
 ajU
 aub
 auO
@@ -46239,9 +46215,9 @@ alS
 alS
 alS
 anm
-anG
-cdL
-anG
+atj
+ajU
+atj
 alo
 alS
 alS
