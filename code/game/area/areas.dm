@@ -267,7 +267,7 @@
 			used_environ += amount
 
 
-var/list/mob/living/forced_ambience_list = new
+var/list/mob/living/forced_ambiance_list = new
 
 /area/Entered(A)
 	if(!istype(A,/mob/living))	return
@@ -288,20 +288,20 @@ var/list/mob/living/forced_ambience_list = new
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambience)))	return
+	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambiance)))	return
 
-	// If we previously were in an area with force-played ambience, stop it.
-	if(L in forced_ambience_list)
+	// If we previously were in an area with force-played ambiance, stop it.
+	if(L in forced_ambiance_list)
 		L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
-		forced_ambience_list -= L
+		forced_ambiance_list -= L
 
 	if(forced_ambience)
 		if(forced_ambience.len)
-			forced_ambience_list |= L
-			var/sound/chosen_ambience = pick(forced_ambience)
-			if(!istype(chosen_ambience))
-				chosen_ambience = sound(chosen_ambience, repeat = 1, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE_FORCED)
-			L << chosen_ambience
+			forced_ambiance_list |= L
+			var/sound/chosen_ambiance = pick(forced_ambience)
+			if(!istype(chosen_ambiance))
+				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE_FORCED)
+			L << chosen_ambiance
 		else
 			L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
 	else if(src.ambience.len && prob(35))
@@ -387,7 +387,7 @@ var/list/teleportlocs = list()
 			teleportlocs += AR.name
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = sortAssoc(teleportlocs)
+	teleportlocs = sortTim(teleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
 
@@ -404,6 +404,6 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = sortAssoc(ghostteleportlocs)
+	ghostteleportlocs = sortTim(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1

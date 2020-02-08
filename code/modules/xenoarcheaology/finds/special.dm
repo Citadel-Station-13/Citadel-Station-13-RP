@@ -4,7 +4,7 @@
 
 /obj/item/weapon/reagent_containers/glass/replenishing/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
 /obj/item/weapon/reagent_containers/glass/replenishing/process()
@@ -18,7 +18,7 @@
 
 /obj/item/clothing/mask/gas/poltergeist/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/gas/poltergeist/process()
 	if(heard_talk.len && istype(loc, /mob/living) && prob(10))
@@ -50,7 +50,7 @@
 
 /obj/item/weapon/vampiric/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/vampiric/process()
 	//see if we've identified anyone nearby
@@ -81,7 +81,7 @@
 	if(charges >= 3)
 		if(prob(5))
 			charges -= 1
-			var/spawn_type = pick(/mob/living/simple_animal/hostile/creature/vore)  // Vorestation Edit
+			var/spawn_type = pick(/mob/living/simple_mob/creature)
 			new spawn_type(pick(view(1,src)))
 			playsound(loc, pick('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg'), 50, 1, -3)
 
@@ -137,8 +137,8 @@
 
 /obj/effect/decal/cleanable/blood/splatter/animated/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
 	loc_last_process = loc
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/decal/cleanable/blood/splatter/animated/process()
 	if(target_turf && loc != target_turf)
@@ -168,7 +168,7 @@
 
 /obj/effect/shadow_wight/Initialize(mapload)
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/process()
 	if(loc)
@@ -192,7 +192,7 @@
 			M.sleeping = max(M.sleeping,rand(5,10))
 			loc = null
 	else
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/effect/shadow_wight/Bump(atom/obstacle)
 	. = ..()

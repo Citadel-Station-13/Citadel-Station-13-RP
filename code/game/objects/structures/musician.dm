@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 #define MUSICIAN_HEARCHECK_MINDELAY 4
-#define INSTRUMENT_MAX_LINE_LENGTH 300
-#define INSTRUMENT_MAX_LINE_NUMBER 50
+#define INSTRUMENT_MAX_LINE_LENGTH 50
+#define INSTRUMENT_MAX_LINE_NUMBER 300
 
 /datum/song
 	var/name = "Untitled"
@@ -103,12 +103,12 @@
 					if(!playing || shouldStopPlaying(user))//If the instrument is playing, or special case
 						playing = 0
 						return
-					if(lentext(note) == 0)
+					if(length(note) == 0)
 						continue
 					var/cur_note = text2ascii(note) - 96
 					if(cur_note < 1 || cur_note > 7)
 						continue
-					for(var/i=2 to lentext(note))
+					for(var/i=2 to length(note))
 						var/ni = copytext(note,i,i+1)
 						if(!text2num(ni))
 							if(ni == "#" || ni == "b" || ni == "n")
@@ -196,11 +196,11 @@
 			t = html_encode(input(usr, "Please paste the entire song, formatted:", text("[]", name), t)  as message)
 			if(!in_range(instrumentObj, usr))
 				return
-			if(lentext(t) >= INSTRUMENT_MAX_LINE_LENGTH*INSTRUMENT_MAX_LINE_NUMBER)
+			if(length(t) >= INSTRUMENT_MAX_LINE_LENGTH*INSTRUMENT_MAX_LINE_NUMBER)
 				var/cont = input(usr, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
 				if(cont == "no")
 					break
-		while(lentext(t) > INSTRUMENT_MAX_LINE_LENGTH*INSTRUMENT_MAX_LINE_NUMBER)
+		while(length(t) > INSTRUMENT_MAX_LINE_LENGTH*INSTRUMENT_MAX_LINE_NUMBER)
 		//split into lines
 		spawn()
 			lines = splittext(t, "\n")
@@ -210,12 +210,12 @@
 			else
 				tempo = sanitize_tempo(5) // default 120 BPM
 			if(lines.len > INSTRUMENT_MAX_LINE_NUMBER)
-				usr << "Too many lines!"
+				to_chat(usr, "Too many lines!")
 				lines.Cut(INSTRUMENT_MAX_LINE_NUMBER+1)
 			var/linenum = 1
 			for(var/l in lines)
-				if(lentext(l) > INSTRUMENT_MAX_LINE_LENGTH)
-					usr << "Line [linenum] too long!"
+				if(length(l) > INSTRUMENT_MAX_LINE_LENGTH)
+					to_chat(usr, "Line [linenum] too long!")
 					lines.Remove(l)
 				else
 					linenum++
@@ -244,7 +244,7 @@
 			return
 		if(lines.len > INSTRUMENT_MAX_LINE_NUMBER)
 			return
-		if(lentext(newline) > INSTRUMENT_MAX_LINE_LENGTH)
+		if(length(newline) > INSTRUMENT_MAX_LINE_LENGTH)
 			newline = copytext(newline, 1, INSTRUMENT_MAX_LINE_LENGTH)
 		lines.Add(newline)
 	else if(href_list["deleteline"])
@@ -257,7 +257,7 @@
 		var/content = html_encode(input("Enter your line: ", instrumentObj.name, lines[num]) as text|null)
 		if(!content || !in_range(instrumentObj, usr))
 			return
-		if(lentext(content) > INSTRUMENT_MAX_LINE_LENGTH)
+		if(length(content) > INSTRUMENT_MAX_LINE_LENGTH)
 			content = copytext(content, 1, INSTRUMENT_MAX_LINE_LENGTH)
 		if(num > lines.len || num < 1)
 			return
@@ -316,22 +316,18 @@
 	song = null
 	..()
 
-/obj/structure/device/piano/verb/rotate()
-	set name = "Rotate Piano"
+/obj/structure/device/piano/verb/rotate_clockwise()
+	set name = "Rotate Piano Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
-	if(istype(usr,/mob/living/simple_animal/mouse))
+	if(ismouse(usr))
 		return
-	else if(!usr || !isturf(usr.loc))
+	if(!usr || !isturf(usr.loc) || usr.stat || usr.restrained())
 		return
-	else if(usr.stat || usr.restrained())
+	if (isobserver(usr) && !config.ghost_interaction)
 		return
-	else if (istype(usr,/mob/observer/ghost) && !config.ghost_interaction)
-		return
-	else
-		src.setDir(turn(src.dir, 90))
-		return
+	src.setDir(turn(src.dir, 270))
 
 /obj/structure/device/piano/attack_hand(mob/user)
 	if(!user.IsAdvancedToolUser())
@@ -350,7 +346,7 @@
 	if(O.is_wrench())
 		if(anchored)
 			playsound(src.loc, O.usesound, 50, 1)
-			user << "<span class='notice'>You begin to loosen \the [src]'s casters...</span>"
+			to_chat(user, "<span class='notice'>You begin to loosen \the [src]'s casters...</span>")
 			if (do_after(user, 40 * O.toolspeed))
 				user.visible_message( \
 					"[user] loosens \the [src]'s casters.", \
@@ -359,7 +355,7 @@
 				src.anchored = 0
 		else
 			playsound(src.loc, O.usesound, 50, 1)
-			user << "<span class='notice'>You begin to tighten \the [src] to the floor...</span>"
+			to_chat(user, "<span class='notice'>You begin to tighten \the [src] to the floor...</span>")
 			if (do_after(user, 20 * O.toolspeed))
 				user.visible_message( \
 					"[user] tightens \the [src]'s casters.", \

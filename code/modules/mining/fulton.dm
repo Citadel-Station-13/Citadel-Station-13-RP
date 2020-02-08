@@ -9,7 +9,7 @@ var/global/list/total_extraction_beacons = list()
 	var/obj/structure/extraction_point/beacon
 	var/list/beacon_networks = list("station")
 	var/uses_left = 3
-	var/can_use_indoors
+	var/can_use_indoors = FALSE
 	var/safe_for_living_creatures = 1
 	var/stuntime = 15
 

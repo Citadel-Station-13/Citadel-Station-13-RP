@@ -78,20 +78,22 @@
 /obj/machinery/power/smes/batteryrack/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
 	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
-
 		if(W.is_crowbar())
-			if(charge < (capacity/100))
-				if(output_attempt || input_attempt)
-					to_chat(user, "<span class='warning'>Turn off \the [src] before dismantling it.</span>")
-					return
-				if(terminal)
-					to_chat(user, "<span class='warning'>You have to disassemble the terminal first!</span>")
-					return
-				return dismantle()
+			if (charge < (capacity / 100))
+				if (!output_attempt && !input_attempt)
+					playsound(src, W.usesound, 50, 1)
+					var/obj/structure/frame/M = new /obj/structure/frame(src.loc)
+					M.frame_type = "machine"
+					M.state = 2
+					M.icon_state = "machine_1"
+					for(var/obj/I in component_parts)
+						I.loc = src.loc
+					qdel(src)
+					return 1
+				else
+					to_chat(user, "<span class='warning'>Turn off the [src] before dismantling it.</span>")
 			else
-				to_chat(user, "<span class='warning'>Better let \the [src] discharge before dismantling it.</span>")
-				return
-
+				to_chat(user, "<span class='warning'>Better let [src] discharge before dismantling it.</span>")
 		else if ((istype(W, /obj/item/weapon/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/weapon/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)

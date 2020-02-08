@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(atoms)
 	init_order = INIT_ORDER_ATOMS
 	flags = SS_NO_FIRE
 
-	var/old_initialized
+	var/old_subsystem_initialized
 
 	var/list/late_loaders = list()
 
@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/Initialize(timeofday)
 	//GLOB.fire_overlay.appearance_flags = RESET_COLOR
 	//setupGenetics() //to set the mutations' sequence
-	initialized = INITIALIZATION_INNEW_MAPLOAD
+	subsystem_initialized = INITIALIZATION_INNEW_MAPLOAD
 	InitializeAtoms()
 	/* compatibility/vorestation
 	setupgenetics() //to set the mutations' place in structural enzymes, so initializers know where to put mutations.
@@ -25,10 +25,10 @@ SUBSYSTEM_DEF(atoms)
 	return ..()
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
-	if(initialized == INITIALIZATION_INSSATOMS)
+	if(subsystem_initialized == INITIALIZATION_INSSATOMS)
 		return
 
-	initialized = INITIALIZATION_INNEW_MAPLOAD
+	subsystem_initialized = INITIALIZATION_INNEW_MAPLOAD
 
 	var/count
 	var/list/mapload_arg = list(TRUE)
@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(atoms)
 	testing("Initialized [count] atoms")
 	pass(count)
 
-	initialized = INITIALIZATION_INNEW_REGULAR
+	subsystem_initialized = INITIALIZATION_INNEW_REGULAR
 
 	if(late_loaders.len)
 		for(var/I in late_loaders)
@@ -89,23 +89,23 @@ SUBSYSTEM_DEF(atoms)
 
 	if(!A)	//possible harddel
 		qdeleted = TRUE
-	else if(!(A.flags & INITIALIZED))
+	else if(!(A.flags & subsystem_initialized))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 
 	return qdeleted || QDELING(A)
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
-	old_initialized = initialized
-	initialized = INITIALIZATION_INSSATOMS
+	old_subsystem_initialized = subsystem_initialized
+	subsystem_initialized = INITIALIZATION_INSSATOMS
 
 /datum/controller/subsystem/atoms/proc/map_loader_stop()
-	initialized = old_initialized
+	subsystem_initialized = old_subsystem_initialized
 
 /datum/controller/subsystem/atoms/Recover()
-	initialized = SSatoms.initialized
-	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
+	subsystem_initialized = SSatoms.subsystem_initialized
+	if(subsystem_initialized == INITIALIZATION_INNEW_MAPLOAD)
 		InitializeAtoms()
-	old_initialized = SSatoms.old_initialized
+	old_subsystem_initialized = SSatoms.old_subsystem_initialized
 	BadInitializeCalls = SSatoms.BadInitializeCalls
 
 

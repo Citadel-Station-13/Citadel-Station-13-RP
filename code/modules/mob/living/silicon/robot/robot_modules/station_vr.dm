@@ -65,14 +65,16 @@
 /obj/item/weapon/robot_module/robot/medical/surgeon //VOREStation sprites
 	vr_sprites = list(
 						"Acheron" = "mechoid-Medical",
-						"Shellguard Noble" = "Noble-MED"
+						"Shellguard Noble" = "Noble-MED",
+						"ZOOM-BA" = "zoomba-medical"
 					 )
 
 /obj/item/weapon/robot_module/robot/medical/crisis //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-med",
 						"Acheron" = "mechoid-Medical",
-						"Shellguard Noble" = "Noble-MED"
+						"Shellguard Noble" = "Noble-MED",
+						"ZOOM-BA" = "zoomba-crisis"
 					 )
 
 /obj/item/weapon/robot_module/robot/clerical/butler //VOREStation sprites
@@ -80,66 +82,76 @@
 						"Handy - Service" = "handy-service",
 						"Handy - Hydro" = "handy-hydro",
 						"Acheron" = "mechoid-Service",
-						"Shellguard Noble" = "Noble-SRV"
+						"Shellguard Noble" = "Noble-SRV",
+						"ZOOM-BA" = "zoomba-service"
 					 )
 
 /obj/item/weapon/robot_module/robot/clerical/general //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-clerk",
 						"Acheron" = "mechoid-Service",
-						"Shellguard Noble" = "Noble-SRV"
+						"Shellguard Noble" = "Noble-SRV",
+						"ZOOM-BA" = "zoomba-clerical"
 					 )
 
 /obj/item/weapon/robot_module/robot/janitor //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-janitor",
 						"Acheron" = "mechoid-Janitor",
-						"Shellguard Noble" = "Noble-CLN"
+						"Shellguard Noble" = "Noble-CLN",
+						"ZOOM-BA" = "zoomba-janitor"
 					 )
 
 /obj/item/weapon/robot_module/robot/security/general //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-sec",
 						"Acheron" = "mechoid-Security",
-						"Shellguard Noble" = "Noble-SEC"
+						"Shellguard Noble" = "Noble-SEC",
+						"ZOOM-BA" = "zoomba-security"
 					 )
 
 /obj/item/weapon/robot_module/robot/miner //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-miner",
 						"Acheron" = "mechoid-Miner",
-						"Shellguard Noble" = "Noble-DIG"
+						"Shellguard Noble" = "Noble-DIG",
+						"ZOOM-BA" = "zoomba-miner"
 					 )
 
 /obj/item/weapon/robot_module/robot/standard //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-standard",
 						"Acheron" = "mechoid-Standard",
-						"Shellguard Noble" = "Noble-STD"
+						"Shellguard Noble" = "Noble-STD",
+						"ZOOM-BA" = "zoomba-standard"
 					 )
 
 /obj/item/weapon/robot_module/robot/engineering/general //VOREStation sprites
 	vr_sprites = list(
 						"Acheron" = "mechoid-Engineering",
-						"Shellguard Noble" = "Noble-ENG"
+						"Shellguard Noble" = "Noble-ENG",
+						"ZOOM-BA" = "zoomba-engineering"
 					 )
 
 /obj/item/weapon/robot_module/robot/research //VOREStation sprites
 	vr_sprites = list(
-						"Acheron" = "mechoid-Science"
+						"Acheron" = "mechoid-Science",
+						"ZOOM-BA" = "zoomba-research"
 					 )
 
 /obj/item/weapon/robot_module/robot/security/combat //VOREStation sprites
 	vr_sprites = list(
-						"Acheron" = "mechoid-Combat"
+						"Acheron" = "mechoid-Combat",
+						"ZOOM-BA" = "zoomba-combat"
 					 )
 
 /obj/item/weapon/robot_module/robot/knine
 	name = "k9 robot module"
 	sprites = list(
 					"K9 hound" = "k9",
-					"K9 Alternative" = "k92",
-					"Secborg model V-2" = "secborg"
+					"K9 Alternative (Static)" = "k92",
+					"Secborg model V-2" = "secborg",
+					"Borgi" = "borgi-sec"
 					)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
@@ -218,8 +230,9 @@
 	can_be_pushed = 0
 	sprites = list(
 					"Medical Hound" = "medihound",
-					"Dark Medical Hound" = "medihounddark",
+					"Dark Medical Hound (Static)" = "medihounddark",
 					"Mediborg model V-2" = "vale",
+					"Borgi" = "borgi-medi"
 					)
 
 /obj/item/weapon/robot_module/robot/medihound/New(var/mob/living/silicon/robot/R)
@@ -288,7 +301,8 @@
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
 	sprites = list(
-					"Standard" = "ert"
+					"Standard" = "ert",
+					"Borgi" = "borgi"
 					)
 
 /obj/item/weapon/robot_module/robot/ert/New(var/mob/living/silicon/robot/R)
@@ -332,6 +346,7 @@
 	name = "Custodial Hound module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
+					"Borgi" = "borgi-jani"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
@@ -412,6 +427,7 @@
 	name = "Research Hound Module"
 	sprites = list(
 					"Research Hound" = "science",
+					"Borgi" = "borgi-sci"
 					)
 	channels = list("Science" = 1)
 	can_be_pushed = 0
@@ -472,10 +488,11 @@
 	..()
 
 /obj/item/weapon/robot_module/robot/engiedog
-	name = "Pupdozer"
+	name = "Construction Hound module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
-					"V2 Engidog" = "thottbot"
+					"V2 Engidog" = "thottbot",
+					"Borgi" = "borgi-eng"
 					)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
@@ -496,24 +513,32 @@
 	src.modules += new /obj/item/weapon/pickaxe(src)
 	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
 	src.modules += new /obj/item/device/dogborg/boop_module(src)
-	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src)
 	src.modules += new /obj/item/device/geiger(src)
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
 	src.modules += new /obj/item/weapon/gripper(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
 	src.modules += new /obj/item/weapon/pipe_dispenser(src)
+	src.modules += new /obj/item/weapon/gripper/circuit(src)
+	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src)
 
-	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
+	//Painfully slow charger regen but high capacity. Also starts with low amount.
+	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
 	metal.name = "Steel reserves"
-	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
+	metal.max_energy = 50000
+	metal.energy = 10000
+	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
 	glass.name = "Glass reserves"
-	var/datum/matter_synth/wood = new /datum/matter_synth/wood(40000)
+	glass.max_energy = 50000
+	glass.energy = 10000
+	var/datum/matter_synth/wood = new /datum/matter_synth/wood()
 	wood.name = "Wood reserves"
-	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic(40000)
+	wood.max_energy = 50000
+	wood.energy = 10000
+	var/datum/matter_synth/plastic = new /datum/matter_synth/plastic()
 	plastic.name = "Plastic reserves"
-	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel(20000)
-	plasteel.name = "Plasteel reserves"
+	plastic.max_energy = 50000
+	plastic.energy = 10000
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
 	water.recharge_rate = 0
@@ -522,7 +547,7 @@
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
 	synths += metal
 	synths += glass
-	synths += plasteel
+	//synths += plasteel
 	synths += wood
 	synths += plastic
 	synths += wire
@@ -559,10 +584,6 @@
 	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)
 	C.synths = list(wire)
 	src.modules += C
-
-	var/obj/item/stack/material/cyborg/plasteel/PS = new (src)
-	PS.synths = list(plasteel)
-	src.modules += PS
 
 	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
 	S.synths = list(metal)

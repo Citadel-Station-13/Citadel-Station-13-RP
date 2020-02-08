@@ -3,7 +3,6 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "jaws"
 	desc = "The jaws of the law."
-	flags = CONDUCT
 	force = 10
 	throwforce = 0
 	hitsound = 'sound/weapons/bite.ogg'
@@ -15,7 +14,6 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
-	flags = CONDUCT
 	force = 5
 	throwforce = 0
 	hitsound = 'sound/weapons/bite.ogg'
@@ -32,7 +30,6 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "jaws"
 			desc = "The jaws of the law."
-			flags = CONDUCT
 			force = 10
 			throwforce = 0
 			hitsound = 'sound/weapons/bite.ogg'
@@ -43,7 +40,6 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
-			flags = CONDUCT
 			force = 5
 			throwforce = 0
 			hitsound = 'sound/weapons/bite.ogg'
@@ -57,11 +53,14 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
-	flags = CONDUCT | NOBLUDGEON
 	force = 0
 	throwforce = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
+
+/obj/item/device/dogborg/boop_module/New()
+	..()
+	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/device/dogborg/boop_module/attack_self(mob/user)
 	if (!( istype(user.loc, /turf) ))
@@ -148,15 +147,22 @@
 	charge_cost = 10
 	var/datum/matter_synth/water = null
 
-/obj/item/weapon/reagent_containers/borghypo/hound/process() // BEGIN CITADEL CHANGES - Removes water cost and make the reagent generation not nerfed.
+/obj/item/weapon/reagent_containers/borghypo/hound/process() //Recharges in smaller steps and uses the water reserves as well.
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(R && R.cell)
 			for(var/T in reagent_ids)
-				if(reagent_volumes[T] < volume)
+				if(reagent_volumes[T] < volume && water.energy >= charge_cost)
 					R.cell.use(charge_cost)
-					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
-	return 1 // END CITADEL CHANGES
+					water.use_charge(charge_cost)
+					reagent_volumes[T] = min(reagent_volumes[T] + 1, volume)
+	return 1
+
+/obj/item/weapon/reagent_containers/borghypo/hound/lost
+	name = "Hound hypospray"
+	desc = "An advanced chemical synthesizer and injection system utilizing carrier's reserves."
+	reagent_ids = list("tricordrazine", "inaprovaline", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin")
+
 
 //Tongue stuff
 /obj/item/device/dogborg/tongue
@@ -168,8 +174,8 @@
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
-/obj/item/device/dogborg/tongue/Initialize(mapload)
-	. = ..()
+/obj/item/device/dogborg/tongue/New()
+	..()
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/device/dogborg/tongue/examine(user)
@@ -287,8 +293,8 @@
 	icon_state = "scrub0"
 	var/enabled = FALSE
 
-/obj/item/pupscrubber/Initialize(mapload)
-	. = ..()
+/obj/item/pupscrubber/New()
+	..()
 	flags |= NOBLUDGEON
 
 /obj/item/pupscrubber/attack_self(mob/user)
@@ -318,7 +324,6 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
-	flags = CONDUCT
 	force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
@@ -406,12 +411,12 @@
 
 	last_special = world.time + 10
 	status_flags |= LEAPING
-	pixel_y = 10
+	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
 	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
 	playsound(src.loc, 'sound/mecha/mechstep2.ogg', 50, 1)
-	pixel_y = 0
+	pixel_y = default_pixel_y
 	cell.charge -= 750
 
 	sleep(5)

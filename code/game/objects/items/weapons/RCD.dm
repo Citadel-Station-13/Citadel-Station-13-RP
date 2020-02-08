@@ -5,7 +5,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcd"
 	item_state = "rcd"
-	flags = CONDUCT | NOBLUDGEON
+	flags = NOBLUDGEON
 	force = 10
 	throwforce = 10
 	throw_speed = 1
@@ -242,6 +242,13 @@
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity, drawing directly from your cell."
 	electric_cost_coefficent = 41.66 // Twice as efficent, out of pity.
 	toolspeed = 0.5 // Twice as fast, since borg versions typically have this.
+
+/obj/item/weapon/rcd/electric/mounted/borg/swarm
+	can_remove_rwalls = FALSE
+	name = "Rapid Assimilation Device"
+	ranged = TRUE
+	toolspeed = 0.7
+	material_to_use = MAT_STEELHULL
 
 /obj/item/weapon/rcd/electric/mounted/borg/lesser
 	can_remove_rwalls = FALSE

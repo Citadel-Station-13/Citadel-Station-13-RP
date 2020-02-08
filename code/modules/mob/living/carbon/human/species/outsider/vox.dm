@@ -8,7 +8,7 @@
 	species_language = LANGUAGE_VOX
 	num_alternate_languages = 1
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp) // CITADEL CHANGE - Disallows Vox from breaking handcuffs
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
 	rarity_value = 4
 	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
 	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
@@ -16,6 +16,7 @@
 	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
 	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
 	dealing with their traders and merchants; those that do rarely enjoy the experience."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
 
 //	taste_sensitivity = TASTE_DULL
 

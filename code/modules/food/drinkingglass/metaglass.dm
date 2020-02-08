@@ -262,7 +262,7 @@ Drinks Data
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/tequila
-	glass_icon_state = "tequilaglass"
+	glass_icon_state = "tequillaglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/thirteenloko
@@ -312,7 +312,7 @@ Drinks Data
 	glass_icon_state = "atomicbombglass"
 	glass_center_of_mass = list("x"=15, "y"=7)
 
-/datum/reagent/ethanol/b52
+/datum/reagent/ethanol/coffee/b52
 	glass_icon_state = "b52glass"
 
 /datum/reagent/ethanol/bahama_mama
@@ -486,8 +486,8 @@ Drinks Data
 	glass_icon_state = "syndicatebomb"
 	glass_center_of_mass = list("x"=16, "y"=4)
 
-/datum/reagent/ethanol/tequila_sunrise
-	glass_icon_state = "tequilasunriseglass"
+/datum/reagent/ethanol/tequilla_sunrise
+	glass_icon_state = "tequillasunriseglass"
 
 /datum/reagent/ethanol/threemileisland
 	glass_icon_state = "threemileislandglass"
@@ -545,4 +545,8 @@ Drinks Data
 
 /datum/reagent/drink/eggnog
 	glass_icon_state = "eggnog"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/cider
+	glass_icon_state = "ciderglass"
 	glass_center_of_mass = list("x"=16, "y"=8)

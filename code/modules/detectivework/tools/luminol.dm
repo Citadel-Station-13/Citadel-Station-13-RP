@@ -9,5 +9,5 @@
 	volume = 250
 
 /obj/item/weapon/reagent_containers/spray/luminol/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("luminol", 250)

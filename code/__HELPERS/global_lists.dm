@@ -1,6 +1,4 @@
-var/list/clients = list()							//list of all clients
 var/list/admins = list()							//list of all clients whom are admins
-var/list/directory = list()							//list of all ckeys with associated client
 
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
@@ -15,8 +13,6 @@ var/global/list/dead_mob_list = list()				//List of all dead mobs, including cli
 var/global/list/listening_objects = list()			//List of all objects which care about receiving messages (communicators, radios, etc)
 
 var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
-var/global/list/chemical_reactions_list				//list of all /datum/chemical_reaction datums. Used during chemical reactions
-var/global/list/chemical_reagents_list				//list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 var/global/list/landmarks_list = list()				//list of all landmarks created
 var/global/list/surgery_steps = list()				//list of all surgery steps  |BS12
 var/global/list/side_effects = list()				//list of all medical sideeffects types by thier names |BS12
@@ -39,6 +35,7 @@ var/list/mannequins_
 
 // Posters
 var/global/list/poster_designs = list()
+var/global/list/NT_poster_designs = list()
 
 // Uplinks
 var/list/obj/item/device/uplink/world_uplinks = list()
@@ -53,6 +50,8 @@ var/global/list/facial_hair_styles_male_list = list()
 var/global/list/facial_hair_styles_female_list = list()
 var/global/list/skin_styles_female_list = list()		//unused
 var/global/list/body_marking_styles_list = list()		//stores /datum/sprite_accessory/marking indexed by name
+	//Underwear
+var/datum/category_collection/underwear/global_underwear = new()
 
 	//Backpacks
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag")
@@ -193,9 +192,15 @@ var/global/list/string_slot_flags = list(
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
+	paths -= typesof(/datum/poster/nanotrasen)
 	for(var/T in paths)
 		var/datum/poster/P = new T
 		poster_designs += P
+
+	paths = typesof(/datum/poster/nanotrasen)
+	for(var/T in paths)
+		var/datum/poster/P = new T
+		NT_poster_designs += P
 
 	return 1
 

@@ -41,6 +41,13 @@
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
 
+//Camera networks
+#define NETWORK_TETHER "Tether"
+#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+#define NETWORK_OUTSIDE "Outside"
+#define NETWORK_EXPLORATION "Exploration"
+#define NETWORK_XENOBIO "Xenobiology"
+
 /datum/map/tether
 	name = "Virgo"
 	full_name = "NSB Adephagia"
@@ -80,22 +87,34 @@
 
 	station_networks = list(
 							NETWORK_CARGO,
+							NETWORK_CIRCUITS,
 							NETWORK_CIVILIAN,
 							NETWORK_COMMAND,
 							NETWORK_ENGINE,
 							NETWORK_ENGINEERING,
-							NETWORK_ENGINEERING_OUTPOST,
-							NETWORK_DEFAULT,
+							NETWORK_EXPLORATION,
+							//NETWORK_DEFAULT,  //Is this even used for anything? Robots show up here, but they show up in ROBOTS network too,
 							NETWORK_MEDICAL,
 							NETWORK_MINE,
-							NETWORK_NORTHERN_STAR,
+							NETWORK_OUTSIDE,
 							NETWORK_RESEARCH,
 							NETWORK_RESEARCH_OUTPOST,
 							NETWORK_ROBOTS,
-							NETWORK_PRISON,
 							NETWORK_SECURITY,
-							NETWORK_INTERROGATION
+							NETWORK_TCOMMS,
+							NETWORK_TETHER
 							)
+	secondary_networks = list(
+							NETWORK_ERT,
+							NETWORK_MERCENARY,
+							NETWORK_THUNDER,
+							NETWORK_COMMUNICATORS,
+							NETWORK_ALARM_ATMOS,
+							NETWORK_ALARM_POWER,
+							NETWORK_ALARM_FIRE
+							)
+
+	bot_patrolling = FALSE
 
 	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage")
 	spawnpoint_died = /datum/spawnpoint/tram
@@ -125,6 +144,23 @@
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+	)
+
+	ai_shell_restricted = TRUE
+	ai_shell_allowed_levels = list(
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_TRANSIT,
+		Z_LEVEL_SPACE_LOW,
+		Z_LEVEL_SPACE_MID,
+		Z_LEVEL_SPACE_HIGH,
+		Z_LEVEL_SURFACE_MINE,
+		Z_LEVEL_SOLARS,
+		Z_LEVEL_CENTCOM,
+		Z_LEVEL_MISC,
+		Z_LEVEL_SHIPS,
+		Z_LEVEL_BEACH
 		)
 
 	lateload_single_pick = null //Nothing right now.
@@ -138,6 +174,16 @@
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
+
+/datum/planet/virgo3b
+	expected_z_levels = list(
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_SURFACE_MINE,
+		Z_LEVEL_SOLARS//,
+		//Z_LEVEL_PLAINS
+	)
 
 // Short range computers see only the six main levels, others can see the surrounding surface levels.
 /datum/map/tether/get_map_levels(var/srcz, var/long_range = TRUE)
@@ -260,7 +306,7 @@
 	if(activated && !length(frozen_mobs))
 		return
 	activated = 1
-	for(var/mob/living/simple_animal/M in frozen_mobs)
+	for(var/mob/living/simple_mob/M in frozen_mobs)
 		M.life_disabled = 0
 		frozen_mobs -= M
 	frozen_mobs.Cut()

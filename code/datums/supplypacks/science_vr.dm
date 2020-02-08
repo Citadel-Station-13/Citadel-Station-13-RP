@@ -4,7 +4,7 @@
 	contains = list(
 			/obj/vehicle/train/rover/engine/dunebuggy
 			)
-	cost = 200
+	cost = 100
 	containertype = /obj/structure/largecrate
 	containername = "Exploration Dune Buggy Crate"
 
@@ -22,7 +22,7 @@
 	containername = "EXTREMELY Dangerous Predator crate"
 	access = access_xenobiology
 	contraband = 1
-
+/*
 /datum/supply_pack/sci/otie
 	name = "VARMAcorp adoptable reject (Dangerous!)"
 	cost = 100
@@ -36,3 +36,4 @@
 	containertype = /obj/structure/largecrate/animal/otie/phoron
 	containername = "VARMAcorp adaptive beta subject (Experimental)"
 	access = access_xenobiology
+*/ //VORESTATION AI TEMPORARY REMOVAL. Oties commented out cuz broke.

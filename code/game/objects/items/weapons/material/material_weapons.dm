@@ -42,6 +42,9 @@
 			if(!isnull(matter[material_type]))
 				matter[material_type] *= force_divisor // May require a new var instead.
 
+	if(!(material.conductive))
+		src.flags |= NOCONDUCT
+
 /obj/item/weapon/material/get_material()
 	return material
 
@@ -67,11 +70,11 @@
 		if(applies_material_colour)
 			color = material.icon_colour
 		if(material.products_need_process())
-			processing_objects |= src
+			START_PROCESSING(SSobj, src)
 		update_force()
 
 /obj/item/weapon/material/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/weapon/material/apply_hit_effect()
@@ -134,18 +137,18 @@
 		to_chat(user, "<span class='warning'>You can't repair \the [src].</span>")
 		return
 
-/obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/dumbass)
+/obj/item/weapon/material/proc/sharpen(var/material, var/sharpen_time, var/kit, mob/living/M)
 	if(!fragile)
 		if(health < initial(health))
-			to_chat(dumbass, "You should repair [src] first. Try using [kit] on it.")
+			to_chat(M, "You should repair [src] first. Try using [kit] on it.")
 			return FALSE
-		dumbass.visible_message("[dumbass] begins to replace parts of [src] with [kit].", "You begin to replace parts of [src] with [kit].")
+		M.visible_message("[M] begins to replace parts of [src] with [kit].", "You begin to replace parts of [src] with [kit].")
 		if(do_after(usr, sharpen_time))
-			dumbass.visible_message("[dumbass] has finished replacing parts of [src].", "You finish replacing parts of [src].")
+			M.visible_message("[M] has finished replacing parts of [src].", "You finish replacing parts of [src].")
 			src.set_material(material)
 			return TRUE
 	else
-		to_chat(dumbass, "<span class = 'warning'>You can't sharpen and re-edge [src].</span>")
+		to_chat(M, "<span class = 'warning'>You can't sharpen and re-edge [src].</span>")
 		return FALSE
 
 /*

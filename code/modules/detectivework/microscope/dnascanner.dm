@@ -12,7 +12,7 @@
 	var/closed = 0
 	var/scanning = 0
 	var/scanner_progress = 0
-	var/scanner_rate = 2.50
+	var/scanner_rate = 5
 	var/last_process_worldtime = 0
 	var/report_num = 0
 
@@ -61,7 +61,7 @@
 	data["bloodsamp_desc"] = (bloodsamp ? (bloodsamp.desc ? bloodsamp.desc : "No information on record.") : "")
 	data["lidstate"] = closed
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
 		ui = new(user, src, ui_key, "dnaforensics.tmpl", "QuikScan DNA Analyzer", 540, 326)
 		ui.set_initial_data(data)

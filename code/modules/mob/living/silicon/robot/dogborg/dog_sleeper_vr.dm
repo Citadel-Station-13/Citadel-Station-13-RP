@@ -11,7 +11,7 @@
 	var/min_health = -100
 	var/cleaning = 0
 	var/patient_laststat = null
-	var/list/injection_chems = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Brings the sleeper in line with the standard borg hypospray.
+	var/list/injection_chems = list("inaprovaline", "dexalin", "bicaridine", "kelotane","anti_toxin", "alkysine", "imidazoline", "spaceacillin", "paracetamol") //The borg is able to heal every damage type. As a nerf, they use 750 charge per injection.
 	var/eject_port = "ingestion"
 	var/list/items_preserved = list()
 	var/UI_open = FALSE
@@ -36,11 +36,16 @@
 	var/datum/matter_synth/water = null
 	var/digest_brute = 2
 	var/digest_burn = 3
+	var/recycles = FALSE
 
 /obj/item/device/dogborg/sleeper/Initialize(mapload)
 	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 	files = new /datum/research/techonly(src)
+
+/obj/item/device/dogborg/sleeper/Destroy()
+	go_out()
+	..()
 
 /obj/item/device/dogborg/sleeper/Exit(atom/movable/O)
 	return 0
@@ -60,6 +65,9 @@
 		return
 
 	if(compactor)
+		if(is_type_in_list(target,item_vore_blacklist))
+			to_chat(user, "<span class='warning'>You are hard-wired to not ingest this item.</span>")
+			return
 		if(istype(target, /obj/item) || istype(target, /obj/effect/decal/remains))
 			var/obj/target_obj = target
 			if(target_obj.w_class > ITEMSIZE_LARGE)
@@ -80,9 +88,8 @@
 					to_chat(user, "<span class='notice'>\The [target.name] added to cargo compartment slot: [delivery_tag].</span>")
 				update_patient()
 			return
-
-		if(istype(target, /mob/living/simple_animal/mouse)) //Edible mice, dead or alive whatever. Mostly for carcass picking you cruel bastard :v
-			var/mob/living/simple_animal/trashmouse = target
+		if(istype(target, /mob/living/simple_mob/animal/passive/mouse)) //Edible mice, dead or alive whatever. Mostly for carcass picking you cruel bastard :v
+			var/mob/living/simple_mob/trashmouse = target
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashmouse] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashmouse] into your [src.name]...</span>")
 			if(do_after(user, 30, trashmouse) && length(contents) < max_item_count)
 				trashmouse.forceMove(src)
@@ -95,7 +102,6 @@
 					to_chat(user, "<span class='notice'>\The [trashmouse] added to cargo compartment slot: [delivery_tag].</span>")
 				update_patient()
 			return
-
 		else if(ishuman(target))
 			var/mob/living/carbon/human/trashman = target
 			if(patient)
@@ -108,7 +114,7 @@
 			if(do_after(user, 30, trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
 				trashman.forceMove(src)
 				trashman.reset_view(src)
-				processing_objects |= src
+				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashman] slips inside.</span>")
 				message_admins("[key_name(hound)] has eaten [key_name(patient)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
 				playsound(hound, gulpsound, vol = 100, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
@@ -139,7 +145,7 @@
 				H.forceMove(src)
 				H.reset_view(src)
 				update_patient()
-				processing_objects |= src
+				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] lights up as [H.name] slips inside.</span>", "<span class='notice'>Your [src] lights up as [H] slips inside. Life support functions engaged.</span>")
 				message_admins("[key_name(hound)] has eaten [key_name(patient)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
 				playsound(hound, gulpsound, vol = 100, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
@@ -167,6 +173,8 @@
 
 /obj/item/device/dogborg/sleeper/proc/drain(var/amt = 3) //Slightly reduced cost (before, it was always injecting inaprov)
 	hound = src.loc
+	if(istype(hound,/obj/item/weapon/robot_module))
+		hound = hound.loc
 	hound.cell.charge = hound.cell.charge - amt
 
 /obj/item/device/dogborg/sleeper/attack_self(mob/user)
@@ -181,12 +189,12 @@
 		dat += "<h3>Injector</h3>"
 		if(patient)// && patient.health > min_health) //Not necessary, leave the buttons on, but the feedback during injection will give more information.
 			for(var/re in injection_chems)
-				var/datum/reagent/C = chemical_reagents_list[re]
+				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
 				if(C)
 					dat += "<A href='?src=\ref[src];inject=[C.id]'>Inject [C.name]</A><BR>"
 		else
 			for(var/re in injection_chems)
-				var/datum/reagent/C = chemical_reagents_list[re]
+				var/datum/reagent/C = SSchemistry.chemical_reagents[re]
 				if(C)
 					dat += "<span class='linkOff'>Inject [C.name]</span><BR>"
 
@@ -308,7 +316,7 @@
 				else
 					cleaning = 1
 					drain(startdrain)
-					processing_objects |= src
+					START_PROCESSING(SSobj, src)
 					update_patient()
 					if(patient)
 						to_chat(patient, "<span class='danger'>[hound.name]'s [src.name] fills with caustic enzymes around you!</span>")
@@ -381,20 +389,22 @@
 /obj/item/device/dogborg/sleeper/proc/inject_chem(mob/user, chem)
 	if(patient && patient.reagents)
 		if(chem in injection_chems + "inaprovaline")
-			if(hound.cell.charge < 150) //CITADEL CHANGE - Brings this value down to 150 from 800, to match the new lowered energy cost.
+			if(hound.cell.charge < 800) //This is so borgs don't kill themselves with it.
 				to_chat(hound, "<span class='notice'>You don't have enough power to synthesize fluids.</span>")
 				return
 			else if(patient.reagents.get_reagent_amount(chem) + 10 >= 20) //Preventing people from accidentally killing themselves by trying to inject too many chemicals!
 				to_chat(hound, "<span class='notice'>Your stomach is currently too full of fluids to secrete more fluids of this kind.</span>")
 			else if(patient.reagents.get_reagent_amount(chem) + 10 <= 20) //No overdoses for you
 				patient.reagents.add_reagent(chem, inject_amount)
-				drain(100) // CITADEL CHANGE - Brings this value down to 100 from 750 to match the drain of the standard borg hypospray.
+				drain(750) //-750 charge per injection
 			var/units = round(patient.reagents.get_reagent_amount(chem))
-			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [chemical_reagents_list[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
+			to_chat(hound, "<span class='notice'>Injecting [units] unit\s of [SSchemistry.chemical_reagents[chem]] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
 
 //For if the dogborg's existing patient uh, doesn't make it.
 /obj/item/device/dogborg/sleeper/proc/update_patient()
 	hound = src.loc
+	if(!istype(hound,/mob/living/silicon/robot))
+		return
 	if(UI_open == TRUE)
 		sleeperUI(hound)
 
@@ -586,12 +596,12 @@
 						drain(-50 * digested)
 					if(volume)
 						water.add_charge(volume)
-					if(!analyzer && !delivery && compactor && T.matter)
+					if(recycles && T.matter)
 						for(var/material in T.matter)
 							var/total_material = T.matter[material]
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
-								total_material *= (0.5 * stack.get_amount())
+								total_material *= stack.get_amount()
 							if(material == DEFAULT_WALL_MATERIAL)
 								metal.add_charge(total_material)
 							if(material == "glass")
@@ -612,6 +622,8 @@
 	return
 
 /obj/item/device/dogborg/sleeper/process()
+	if(!istype(src.loc,/mob/living/silicon/robot))
+		return
 
 	if(cleaning) //We're cleaning, return early after calling this as we don't care about the patient.
 		clean_cycle()
@@ -630,7 +642,7 @@
 
 	if(!patient && !cleaning) //We think we're done working.
 		if(!update_patient()) //One last try to find someone
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 			return
 
 /obj/item/device/dogborg/sleeper/K9 //The K9 portabrig
@@ -645,6 +657,7 @@
 	icon_state = "compactor"
 	injection_chems = null //So they don't have all the same chems as the medihound!
 	compactor = TRUE
+	recycles = TRUE
 	max_item_count = 25
 
 /obj/item/device/dogborg/sleeper/compactor/analyzer //sci-borg gut.
@@ -661,6 +674,7 @@
 	icon_state = "decompiler"
 	max_item_count = 10
 	decompiler = TRUE
+	recycles = TRUE
 
 /obj/item/device/dogborg/sleeper/compactor/delivery //Unfinished and unimplemented, still testing.
 	name = "Cargo Belly"

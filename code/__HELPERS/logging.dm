@@ -62,7 +62,7 @@
 /proc/log_access_in(client/new_client)
 	if (config.log_access)
 		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"
-		WRITE_LOG(diary, "ACCESS IN: [message]")
+		WRITE_LOG(diary, "ACCESS IN: [message]") //VOREStation Edit
 
 /proc/log_access_out(mob/last_mob)
 	if (config.log_access)
@@ -73,28 +73,45 @@
 	if (config.log_say)
 		WRITE_LOG(diary, "SAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
+	//Log the message to in-game dialogue logs, as well.
+	if(speaker.client)
+		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:#32cd32\">[text]</span>"
+		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:#32cd32\">[text]</span>"
+
 /proc/log_ooc(text, client/user)
 	if (config.log_ooc)
 		WRITE_LOG(diary, "OOC: [user.simple_info_line()]: [html_decode(text)]")
+
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>OOC:</u> - <span style=\"color:blue\"><b>[text]</b></span>"
 
 /proc/log_aooc(text, client/user)
 	if (config.log_ooc)
 		WRITE_LOG(diary, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
 
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>AOOC:</u> - <span style=\"color:red\"><b>[text]</b></span>"
+
 /proc/log_looc(text, client/user)
 	if (config.log_ooc)
 		WRITE_LOG(diary, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
+
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style=\"color:orange\"><b>[text]</b></span>"
 
 /proc/log_whisper(text, mob/speaker)
 	if (config.log_whisper)
 		WRITE_LOG(diary, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
 
-/proc/log_access(text)
-	WRITE_LOG(diary, "ACCESS: [text]")
+	if(speaker.client)
+		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:gray\"><i>[text]</i></span>"
+		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:gray\"><i>[text]</i></span>"
+
 
 /proc/log_emote(text, mob/speaker)
 	if (config.log_emote)
 		WRITE_LOG(diary, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
+
+	if(speaker.client)
+		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>EMOTE:</u> - <span style=\"color:#CCBADC\">[text]</span>"
+		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>EMOTE:</u> - <span style=\"color:#CCBADC\">[text]</span>"
 
 /proc/log_attack(attacker, defender, message)
 	if (config.log_attack)
@@ -112,13 +129,13 @@
 	if (config.log_adminchat)
 		WRITE_LOG(diary, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
-/* Log to the logfile only. */
-/proc/log_runtime(text)
-	WRITE_LOG(error_log, text)
-
 /proc/log_ghostsay(text, mob/speaker)
 	if (config.log_say)
 		WRITE_LOG(diary, "DEADCHAT: [speaker.simple_info_line()]: [html_decode(text)]")
+
+	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>DEADSAY:</u> - <span style=\"color:green\">[text]</span>"
+	GLOB.round_text_log += "<font size=1><span style=\"color:#7e668c\"><b>([time_stamp()])</b> (<b>[src]/[speaker.client]</b>) <u>DEADSAY:</u> - [text]</span></font>"
+
 
 /proc/log_ghostemote(text, mob/speaker)
 	if (config.log_emote)
@@ -131,6 +148,10 @@
 /proc/log_pda(text, mob/speaker)
 	if (config.log_pda)
 		WRITE_LOG(diary, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
+
+	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
+	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
+
 
 /proc/log_to_dd(text)
 	world.log << text //this comes before the config check because it can't possibly runtime
@@ -145,7 +166,7 @@
 	WRITE_LOG(diary, "MISC: [text]")
 
 /proc/log_topic(text)
-	if(Debug2)
+	if(config.log_topic)
 		WRITE_LOG(diary, "TOPIC: [text]")
 
 /proc/log_href(text)
@@ -154,6 +175,13 @@
 
 /proc/log_unit_test(text)
 	world.log << "## UNIT_TEST: [text]"
+
+/proc/log_access(text)
+	WRITE_LOG(diary, "ACCESS: [text]")
+
+/* Log to the logfile only. */
+/proc/log_runtime(text)
+	WRITE_LOG(error_log, text)
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)

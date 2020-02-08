@@ -39,11 +39,6 @@ Used In File(s): \code\game\machinery\jukebox.dm
 	</div>
 </div>
 
-<H3><span class="white">Current Genre:</span> <span class="average">{{:data.current_genre}}</span></H3>
-<div>
-    {{:helper.link('Change Genre' , 'play', {'change_genre' : 1}, data.genre == 1 ? 'disabled' : null, null)}}
-</div>
-
 <H3><span class="white">Available tracks:</span></H3>
 <div class="itemContent">
     {{for data.tracks}}

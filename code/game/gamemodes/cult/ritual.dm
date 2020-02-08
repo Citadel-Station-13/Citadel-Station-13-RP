@@ -187,7 +187,6 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	unique = 1
 	var/tomedat = ""
 	var/list/words = list("ire" = "ire", "ego" = "ego", "nahlizet" = "nahlizet", "certum" = "certum", "veri" = "veri", "jatkaa" = "jatkaa", "balaq" = "balaq", "mgar" = "mgar", "karazet" = "karazet", "geeri" = "geeri")
-	origin_tech = list(TECH_ARCANE = 6)
 
 	tomedat = {"<html>
 				<head>

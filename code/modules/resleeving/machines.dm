@@ -6,6 +6,8 @@
 /////// Grower Pod ///////
 /obj/machinery/clonepod/transhuman
 	name = "grower pod"
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
+						/datum/category_item/catalogue/technology/resleeving)
 	circuit = /obj/item/weapon/circuitboard/transhuman_clonepod
 
 //A full version of the pod
@@ -83,7 +85,7 @@
 		H.add_modifier(modifier_type)
 
 	//Apply damage
-	H.adjustCloneLoss((H.getMaxHealth() - config.health_threshold_dead)*0.75)
+	H.adjustCloneLoss((H.getMaxHealth() - config.health_threshold_dead)*-0.75)
 	H.Paralyse(4)
 	H.updatehealth()
 
@@ -138,7 +140,7 @@
 			occupant.adjustCloneLoss(-2 * heal_rate)
 
 			//Premature clones may have brain damage.
-			occupant.adjustBrainLoss(-(CEILING(0.5*heal_rate, 1)))
+			occupant.adjustBrainLoss(-(CEILING((0.5*heal_rate), 1)))
 
 			//So clones don't die of oxyloss in a running pod.
 			if(occupant.reagents.get_reagent_amount("inaprovaline") < 30)
@@ -170,6 +172,8 @@
 /obj/machinery/transhuman/synthprinter
 	name = "SynthFab 3000"
 	desc = "A rapid fabricator for synthetic bodies."
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
+						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/synthpod.dmi'
 	icon_state = "pod_0"
 	circuit = /obj/item/weapon/circuitboard/transhuman_synthprinter
@@ -395,6 +399,8 @@
 /obj/machinery/transhuman/resleever
 	name = "resleeving pod"
 	desc = "Used to combine mind and body into one unit."
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
+						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
 	circuit = /obj/item/weapon/circuitboard/transhuman_resleever

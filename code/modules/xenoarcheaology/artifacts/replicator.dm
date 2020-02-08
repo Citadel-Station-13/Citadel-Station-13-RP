@@ -26,9 +26,8 @@
 	/obj/item/roller,
 	/obj/structure/closet/crate,
 	/obj/structure/closet/acloset,
-	/mob/living/simple_animal/hostile/mimic/crate,
-	/mob/living/simple_animal/hostile/viscerator,
-	/mob/living/simple_animal/hostile/hivebot,
+	/mob/living/simple_mob/mechanical/viscerator,
+	/mob/living/simple_mob/mechanical/hivebot,
 	/obj/item/device/analyzer,
 	/obj/item/device/camera,
 	/obj/item/device/flash,
@@ -57,7 +56,7 @@
 	/obj/item/weapon/light/bulb,
 	/obj/item/weapon/light/tube,
 	/obj/item/weapon/pickaxe,
-	/obj/item/weapon/pickaxe/shovel,
+	/obj/item/weapon/shovel,
 	/obj/item/weapon/weldingtool,
 	/obj/item/weapon/tool/wirecutters,
 	/obj/item/weapon/tool/wrench,
@@ -65,6 +64,7 @@
 	/obj/item/weapon/grenade/chem_grenade/cleaner,
 	/obj/item/weapon/grenade/chem_grenade/metalfoam)
 
+//	/mob/living/simple_mob/mimic/crate,	// Vorestation edit //VORESTATION AI TEMPORARY REMOVAL, REPLACE BACK IN LIST WHEN FIXED
 	var/quantity = rand(5, 15)
 	for(var/i=0, i<quantity, i++)
 		var/button_desc = "a [pick("yellow","purple","green","blue","red","orange","white")], "
@@ -92,9 +92,9 @@
 			var/spawn_type = pop(spawning_types)
 			var/obj/spawned_obj = new spawn_type(loc)
 			if(source_material)
-				if(lentext(source_material.name) < MAX_MESSAGE_LEN)
+				if(length(source_material.name) < MAX_MESSAGE_LEN)
 					spawned_obj.name = "[source_material] " +  spawned_obj.name
-				if(lentext(source_material.desc) < MAX_MESSAGE_LEN * 2)
+				if(length(source_material.desc) < MAX_MESSAGE_LEN * 2)
 					if(spawned_obj.desc)
 						spawned_obj.desc += " It is made of [source_material]."
 					else

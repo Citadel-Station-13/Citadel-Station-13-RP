@@ -286,7 +286,7 @@ proc/admin_notice(var/message, var/rights)
 	dat += "<body>"
 
 	var/p_age = "unknown"
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		if(C.ckey == key)
 			p_age = C.player_age
 			break
@@ -1265,7 +1265,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc = "Should fix any mob sprite update errors."
 
 	if (!holder)
-		src << "Only administrators may use this command."
+		to_chat(src, "Only administrators may use this command.")
 		return
 
 	if(istype(H))

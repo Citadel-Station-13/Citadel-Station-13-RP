@@ -36,9 +36,6 @@
 /mob/living/silicon/isSynthetic()
 	return 1
 
-/mob/living/carbon/human/isPromethean()
-	return 1
-
 /mob/proc/isMonkey()
 	return 0
 
@@ -56,6 +53,9 @@ proc/isdeaf(A)
 
 /mob/proc/break_cloak()
 	return
+
+/mob/proc/is_cloaked()
+	return FALSE
 
 proc/hasorgans(A) // Fucking really??
 	return ishuman(A)
@@ -147,6 +147,8 @@ proc/getsensorlevel(A)
 	var/miss_chance = 10
 	if (zone in base_miss_chance)
 		miss_chance = base_miss_chance[zone]
+	if (zone == "eyes" || zone == "mouth")
+		miss_chance = base_miss_chance["head"]
 	miss_chance = max(miss_chance + miss_chance_mod, 0)
 	if(prob(miss_chance))
 		if(prob(70))
@@ -158,7 +160,7 @@ proc/getsensorlevel(A)
 /proc/stars(n, pr)
 	if (pr == null)
 		pr = 25
-	if (pr <= 0)
+	if (pr < 0)
 		return null
 	else
 		if (pr >= 100)
@@ -184,8 +186,8 @@ proc/getsensorlevel(A)
 
 proc/slur(phrase)
 	phrase = html_decode(phrase)
-	var/leng=lentext(phrase)
-	var/counter=lentext(phrase)
+	var/leng=length(phrase)
+	var/counter=length(phrase)
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)
@@ -423,6 +425,20 @@ proc/is_blind(A)
 				lname = "<span class='name'>[lname]</span> "
 			M << "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [lname][follow][message]</span>"
 
+/proc/say_dead_object(var/message, var/obj/subject = null)
+	for(var/mob/M in player_list)
+		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
+			var/follow
+			var/lname = "Game Master"
+			if(M.forbid_seeing_deadchat && !M.client.holder)
+				continue
+
+			if(subject)
+				lname = "[subject.name] ([subject.x],[subject.y],[subject.z])"
+
+			lname = "<span class='name'>[lname]</span> "
+			M << "<span class='deadsay'>" + create_text_tag("event_dead", "EVENT:", M.client) + " [lname][follow][message]</span>"
+
 //Announces that a ghost has joined/left, mainly for use with wizards
 /proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
 	var/client/C
@@ -537,19 +553,17 @@ proc/is_blind(A)
 
 	return threatcount
 
-/mob/living/simple_animal/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
+/mob/living/simple_mob/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	var/threatcount = ..()
 	if(. == SAFE_PERP)
 		return SAFE_PERP
 
-	if(!istype(src, /mob/living/simple_animal/retaliate/goat))
-		if(hostile)
-			if(faction != "neutral") // Otherwise Runtime gets killed.
-				threatcount += 4
+	if(has_AI() && ai_holder.hostile && faction != "neutral") // Otherwise Runtime gets killed.
+		threatcount += 4
 	return threatcount
 
 // Beepsky will (try to) only beat 'bad' slimes.
-/mob/living/simple_animal/slime/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
+/mob/living/simple_mob/slime/xenobio/assess_perp(var/obj/access_obj, var/check_access, var/auth_weapons, var/check_records, var/check_arrest)
 	var/threatcount = 0
 
 	if(stat == DEAD)
@@ -568,8 +582,10 @@ proc/is_blind(A)
 	if(victim)
 		threatcount += 4
 */
-	if(rabid)
-		threatcount = 10
+	if(has_AI())
+		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		if(AI.rabid)
+			threatcount = 10
 
 	return threatcount
 

@@ -46,18 +46,16 @@
 	icon_state = "detective"
 	caliber = ".38"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	fire_sound = 'sound/weapons/gunshot3.ogg'
 	ammo_type = /obj/item/ammo_casing/a38
 
 /obj/item/weapon/gun/projectile/revolver/detective/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
-	set desc = "Rename your gun. If you're Security."
+	set desc = "Click to rename your gun. If you're the detective."
 
 	var/mob/M = usr
 	if(!M.mind)	return 0
-	var/job = M.mind.assigned_role
-	if(job != "Detective" && job != "Security Officer" && job != "Warden" && job != "Head of Security")
+	if(!M.mind.assigned_role == "Detective")
 		M << "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>"
 		return 0
 
@@ -74,7 +72,6 @@
 	icon_state = "detective"
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	fire_sound = 'sound/weapons/gunshot_heavy.ogg'
 	ammo_type = /obj/item/ammo_casing/a45/rubber
 	max_shells = 7
 
@@ -112,6 +109,8 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 	options["H&K PT"] = "detective_panther"
 	options["Vintage LeMat"] = "lemat_old"
 	options["Webley MKVI "] = "webley"
+	options["Lombardi Buzzard"] = "detective_buzzard"
+	options["Constable Deluxe 2502"] = "detective_constable"
 	var/choice = input(M,"Choose your sprite!","Resprite Gun") in options
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
@@ -126,7 +125,6 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 	icon_state = "deckard-empty"
 	caliber = ".38"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
-	fire_sound = 'sound/weapons/gunshot3.ogg'
 	ammo_type = /obj/item/ammo_casing/a38
 
 /obj/item/weapon/gun/projectile/revolver/deckard/emp

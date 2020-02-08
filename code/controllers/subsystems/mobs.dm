@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(mobs)
 					continue
 				M.Life(times_fired)
 			catch(var/exception/e)
-				world.Error(e, M, "Caught by [name] subsystem")
+				log_runtime(e, M, "Caught by [name] subsystem")
 
 		if (MC_TICK_CHECK)
 			return

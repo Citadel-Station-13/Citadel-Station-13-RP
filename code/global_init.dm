@@ -8,8 +8,6 @@ var/global/datum/global_init/init = new ()
 
 	makeDatumRefLists()
 
-	initialize_chemical_reagents()
-	initialize_chemical_reactions()
 	initialize_integrated_circuits_list()
 	log_world("global init datum finished")
 	qdel(src) //we're done

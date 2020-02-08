@@ -55,9 +55,9 @@
 	// Sanity checks - Better to generate a helpful error message now than have DrawBox() runtime
 	var/icon/canvas = icon(HOLOMAP_ICON, "blank")
 	if(world.maxx + offset_x > canvas.Width())
-		crash_with("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
+		stack_trace("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
 	if(world.maxy + offset_y > canvas.Height())
-		crash_with("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
+		stack_trace("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
 
 	for(var/x = 1 to world.maxx)
 		for(var/y = 1 to world.maxy)
@@ -85,9 +85,9 @@
 	// Sanity checks - Better to generate a helpful error message now than have DrawBox() runtime
 	var/icon/canvas = icon(HOLOMAP_ICON, "blank")
 	if(world.maxx + offset_x > canvas.Width())
-		crash_with("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
+		stack_trace("Minimap for z=[zLevel] : world.maxx ([world.maxx]) + holomap_offset_x ([offset_x]) must be <= [canvas.Width()]")
 	if(world.maxy + offset_y > canvas.Height())
-		crash_with("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
+		stack_trace("Minimap for z=[zLevel] : world.maxy ([world.maxy]) + holomap_offset_y ([offset_y]) must be <= [canvas.Height()]")
 
 	for(var/x = 1 to world.maxx)
 		for(var/y = 1 to world.maxy)

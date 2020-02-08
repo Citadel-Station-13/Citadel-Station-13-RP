@@ -46,7 +46,7 @@
 
 /datum/world_topic/ping/Run(list/input)
 	. = 0
-	for (var/client/C in clients)
+	for (var/client/C in GLOB.clients)
 		++.
 
 /datum/world_topic/playing
@@ -55,7 +55,6 @@
 
 /datum/world_topic/playing/Run(list/input)
 	return player_list.len
-
 
 /datum/world_topic/pr_announce
 	keyword = "announce"
@@ -73,7 +72,7 @@
 			return
 
 	var/final_composed = "<span class='announce'>PR: [input[keyword]]</span>"
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
 /*

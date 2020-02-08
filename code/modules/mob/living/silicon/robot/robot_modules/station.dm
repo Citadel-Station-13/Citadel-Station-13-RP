@@ -19,11 +19,10 @@ var/global/list/robot_modules = list(
 	icon_state = "std_module"
 	w_class = ITEMSIZE_NO_CONTAINER
 	item_state = "std_mod"
-	flags = CONDUCT
 	var/hide_on_manifest = 0
 	var/channels = list()
 	var/networks = list()
-	var/languages = list(LANGUAGE_SOL_COMMON = 1, LANGUAGE_TRADEBAND = 1, LANGUAGE_UNATHI = 0, LANGUAGE_SIIK = 0, LANGUAGE_AKHANI = 0, LANGUAGE_SKRELLIAN = 0, LANGUAGE_GUTTER = 0, LANGUAGE_SCHECHI = 0, LANGUAGE_SIGN = 0, LANGUAGE_TERMINUS = 1)
+	var/languages = list(LANGUAGE_SOL_COMMON = 1, LANGUAGE_TRADEBAND = 1, LANGUAGE_UNATHI = 0, LANGUAGE_SIIK = 0, LANGUAGE_AKHANI = 0, LANGUAGE_SKRELLIAN = 0, LANGUAGE_GUTTER = 0, LANGUAGE_SCHECHI = 0, LANGUAGE_SIGN = 0, LANGUAGE_TERMINUS = 1, LANGUAGE_ZADDAT = 0)
 	var/sprites = list()
 	var/can_be_pushed = 1
 	var/no_slip = 0
@@ -49,6 +48,8 @@ var/global/list/robot_modules = list(
 	apply_status_flags(R)
 
 	if(R.radio)
+		if(R.shell)
+			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
 	vr_add_sprites() //Vorestation Edit: For vorestation only sprites
@@ -155,11 +156,10 @@ var/global/list/robot_modules = list(
 // Cyborgs (non-drones), default loadout. This will be given to every module.
 /obj/item/weapon/robot_module/robot/New()
 	..()
-	src.modules += new /obj/item/device/flash(src)
+	src.modules += new /obj/item/device/flash/robot(src)
 	src.modules += new /obj/item/weapon/tool/crowbar/cyborg(src)
 	src.modules += new /obj/item/weapon/extinguisher(src)
 	src.modules += new /obj/item/device/gps/robot(src)
-	src.modules += new /obj/item/device/assembly/signaler(src)
 	vr_new() // Vorestation Edit: For modules in robot_modules_vr.dm
 
 /obj/item/weapon/robot_module/robot/standard
@@ -418,6 +418,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/device/analyzer(src)
 	src.modules += new /obj/item/taperoll/engineering(src)
 	src.modules += new /obj/item/weapon/gripper(src)
+	src.modules += new /obj/item/weapon/gripper/circuit(src)
 	src.modules += new /obj/item/device/lightreplacer(src)
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
@@ -427,7 +428,6 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/rcd/electric/mounted/borg(src)
 	src.modules += new /obj/item/weapon/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
-	src.modules += new /obj/item/weapon/pipe_dispenser(src)
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
 	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
@@ -471,6 +471,10 @@ var/global/list/robot_modules = list(
 	var/obj/item/stack/tile/floor/cyborg/S = new /obj/item/stack/tile/floor/cyborg(src)
 	S.synths = list(metal)
 	src.modules += S
+
+	var/obj/item/stack/tile/roofing/cyborg/CT = new /obj/item/stack/tile/roofing/cyborg(src)
+	CT.synths = list(metal)
+	src.modules += CT
 
 	var/obj/item/stack/material/cyborg/glass/reinforced/RG = new (src)
 	RG.synths = list(metal, glass)
@@ -522,6 +526,7 @@ var/global/list/robot_modules = list(
 	// src.modules += new /obj/item/weapon/gun/energy/taser/xeno/sec/robot(src) // VOREStation Edit - We don't need these
 	src.modules += new /obj/item/taperoll/police(src)
 	src.modules += new /obj/item/weapon/reagent_containers/spray/pepper(src)
+	src.modules += new /obj/item/weapon/gripper/security(src)
 	src.emag = new /obj/item/weapon/gun/energy/laser/mounted(src)
 
 /obj/item/weapon/robot_module/robot/security/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -589,7 +594,8 @@ var/global/list/robot_modules = list(
 					LANGUAGE_SCHECHI	= 1,
 					LANGUAGE_EAL		= 1,
 					LANGUAGE_TERMINUS	= 1,
-					LANGUAGE_SIGN		= 0
+					LANGUAGE_SIGN		= 0,
+					LANGUAGE_ZADDAT		= 1,
 					)
 
 /obj/item/weapon/robot_module/robot/clerical/butler
@@ -732,6 +738,7 @@ var/global/list/robot_modules = list(
 	..()
 	src.modules += new /obj/item/weapon/portable_destructive_analyzer(src)
 	src.modules += new /obj/item/weapon/gripper/research(src)
+	src.modules += new /obj/item/weapon/gripper/circuit(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/organ/robotics(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/mech(src)
 	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
@@ -823,8 +830,6 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/extinguisher(src)
 	src.modules += new /obj/item/device/pipe_painter(src)
 	src.modules += new /obj/item/device/floor_painter(src)
-	src.modules += new /obj/item/device/assembly/signaler(src)
-	src.modules += new /obj/item/weapon/pipe_dispenser(src)
 
 	robot.internals = new/obj/item/weapon/tank/jetpack/carbondioxide(src)
 	src.modules += robot.internals

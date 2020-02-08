@@ -6001,7 +6001,7 @@
 	icon_state = "bordercolor";
 	dir = 8
 	},
-/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/shovel,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -24;
 	pixel_y = 0
@@ -10251,7 +10251,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge_hallway)
 "azy" = (
-/mob/living/simple_animal/corgi/Ian,
+/obj/structure/plushie/ian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "azz" = (
@@ -17078,7 +17078,7 @@
 /area/hallway/station/atrium)
 "bfT" = (
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_animal/snake/Noodle,
+/mob/living/simple_mob/animal/passive/snake/noodle,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "bfW" = (
@@ -20544,7 +20544,7 @@
 	desc = "A bed made just for the Colony Director's fox.";
 	name = "Renault's Bed"
 	},
-/mob/living/simple_animal/fox/fluff/Renault,
+/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "bHe" = (
@@ -23739,7 +23739,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/excursion_dock)
 "nZS" = (
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/bridge)
 "oaO" = (

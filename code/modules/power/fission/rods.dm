@@ -20,9 +20,13 @@
 	var/melting_point = 3000 // Entering the danger zone.
 	var/decay_heat = 0 // MJ/mol (Yes, using MegaJoules per Mole. Techincally reduces power, but that reflects reduced lifespan.)
 
-/obj/item/weapon/fuelrod/New()
-	..()
-	processing_objects.Add(src)
+/obj/item/weapon/fuelrod/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/weapon/fuelrod/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/weapon/fuelrod/process()
 	if(isnull(loc))
@@ -38,7 +42,7 @@
 				insertion_multiplier = 1
 			var/power = (tick_life(0, insertion_multiplier) / REACTOR_RADS_TO_MJ)
 			add_thermal_energy(power)
-			radiation_repository.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
+			SSradiation.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
 /obj/item/weapon/fuelrod/proc/equalize(var/E, var/efficiency)
 	var/our_heatcap = heat_capacity()

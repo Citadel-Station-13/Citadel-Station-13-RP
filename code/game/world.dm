@@ -206,7 +206,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/list/players = list()
 			var/list/admins = list()
 
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.holder)
 					if(C.holder.fakekey)
 						continue
@@ -224,7 +224,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/n = 0
 			var/admins = 0
 
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.holder)
 					if(C.holder.fakekey)
 						continue	//so stealthmins aren't revealed by the hub
@@ -246,6 +246,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				"med" = medical_positions,
 				"sci" = science_positions,
 				"car" = cargo_positions,
+				"pla" = planet_positions, //VOREStation Edit,
 				"civ" = civilian_positions,
 				"bot" = nonhuman_positions
 			)
@@ -273,7 +274,9 @@ var/world_topic_spam_protect_time = world.timeofday
 				positions["bot"] = list()
 			positions["bot"][ai.name] = "Artificial Intelligence"
 		for(var/mob/living/silicon/robot/robot in mob_list)
-			// No combat/syndicate cyborgs, no drones.
+			// No combat/syndicate cyborgs, no drones, and no AI shells.
+			if(robot.shell)
+				continue
 			if(robot.module && robot.module.hide_on_manifest)
 				continue
 			if(!positions["bot"])
@@ -395,7 +398,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/client/C
 		var/req_ckey = ckey(input["adminmsg"])
 
-		for(var/client/K in clients)
+		for(var/client/K in GLOB.clients)
 			if(K.ckey == req_ckey)
 				C = K
 				break
@@ -567,7 +570,7 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/load_mentors()
 	if(config.admin_legacy_system)
@@ -587,7 +590,7 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
 	var/s = ""
@@ -753,3 +756,16 @@ proc/establish_old_db_connection()
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
+
+// Things to do when a new z-level was just made.
+/world/proc/max_z_changed()
+	if(!istype(GLOB.players_by_zlevel, /list))
+		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	while(GLOB.players_by_zlevel.len < world.maxz)
+		GLOB.players_by_zlevel.len++
+		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+
+// Call this to make a new blank z-level, don't modify maxz directly.
+/world/proc/increment_max_z()
+	maxz++
+	max_z_changed()

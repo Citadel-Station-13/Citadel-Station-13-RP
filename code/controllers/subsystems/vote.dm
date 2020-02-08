@@ -31,6 +31,24 @@ SUBSYSTEM_DEF(vote)
 			reset()
 
 /datum/controller/subsystem/vote/proc/autotransfer()
+	// Before doing the vote, see if anyone is playing.
+	// If not, just do the transfer.
+	var/players_are_in_round = FALSE
+	for(var/a in player_list) // Mobs with clients attached.
+		var/mob/living/L = a
+		if(!istype(L)) // Exclude ghosts and other weird things.
+			continue
+		if(L.stat == DEAD) // Dead mobs aren't playing.
+			continue
+		// Everything else is, however.
+		players_are_in_round = TRUE
+		break
+
+	if(!players_are_in_round)
+		log_debug("The crew transfer shuttle was automatically called at vote time due to no players being present.")
+		init_shift_change(null, 1)
+		return
+
 	initiate_vote(VOTE_CREW_TRANSFER, "the server", 1)
 	log_debug("The server has called a crew transfer vote.")
 
@@ -61,7 +79,7 @@ SUBSYSTEM_DEF(vote)
 			greatest_votes = votes
 
 	if(!config.vote_no_default && choices.len) // Default-vote for everyone who didn't vote
-		var/non_voters = (clients.len - total_votes)
+		var/non_voters = (GLOB.clients.len - total_votes)
 		if(non_voters > 0)
 			if(mode == VOTE_RESTART)
 				choices["Continue Playing"] += non_voters
@@ -87,7 +105,7 @@ SUBSYSTEM_DEF(vote)
 						factor = 1.4
 				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
 				world << "<font color='purple'>Crew Transfer Factor: [factor]</font>"
-				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //Citadel change in line with player vote.
+				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //VOREStation Edit
 
 	. = list() // Get all options with that many votes and return them in a list
 	if(greatest_votes)
@@ -202,8 +220,8 @@ SUBSYSTEM_DEF(vote)
 					if(ticker.current_state <= GAME_STATE_SETTING_UP)
 						initiator_key << "The crew transfer button has been disabled!"
 						return 0
-				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //Citadel change in line with player vote.
-				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //Citadel change in line with player vote.
+				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
+				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0

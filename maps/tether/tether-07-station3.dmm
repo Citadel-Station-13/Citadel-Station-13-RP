@@ -2823,7 +2823,7 @@
 /obj/item/weapon/coin/gold,
 /obj/item/weapon/coin/silver,
 /obj/item/weapon/bone/skull,
-/mob/living/simple_animal/hostile/mimic/crate,
+/mob/living/simple_mob/vore/aggressive/mimic,
 /turf/simulated/mineral/floor/cave,
 /area/maintenance/station/ai)
 "eN" = (
@@ -18057,7 +18057,7 @@
 	dir = 9;
 	pixel_y = 0
 	},
-/mob/living/simple_animal/fluffy,
+/mob/living/simple_mob/animal/sif/fluffy,
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "CG" = (
@@ -24802,7 +24802,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/mob/living/simple_animal/cat/fluff/Runtime,
+/mob/living/simple_mob/animal/passive/cat/runtime,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "NB" = (

@@ -34,15 +34,15 @@
 			if(!Ts)
 				return //Didn't find shadekin spawn turf
 
-			var/mob/living/simple_animal/shadekin/red/shadekin = new(Ts)
+			var/mob/living/simple_mob/shadekin/red/ai/shadekin = new(Ts)
 			//Abuse of shadekin
 			shadekin.real_name = shadekin.name
 			shadekin.init_vore()
 			shadekin.ability_flags |= 0x1
-			shadekin.specific_targets = TRUE //Don't attack others
 			shadekin.phase_shift()
-			shadekin.target_mob = target
-			shadekin.stance = STANCE_ATTACK
+			shadekin.ai_holder.give_target(target)
+			shadekin.ai_holder.hostile = FALSE
+			shadekin.ai_holder.mauling = TRUE
 			shadekin.Life()
 			//Remove when done
 			spawn(10 SECONDS)
@@ -51,28 +51,29 @@
 
 		if(SMITE_SHADEKIN_NOMF)
 			var/list/kin_types = list(
-				"Red Eyes (Dark)" =	/mob/living/simple_animal/shadekin/red/dark,
-				"Red Eyes (Light)" = /mob/living/simple_animal/shadekin/red/white,
-				"Red Eyes (Brown)" = /mob/living/simple_animal/shadekin/red/brown,
-				"Blue Eyes (Dark)" = /mob/living/simple_animal/shadekin/blue/dark,
-				"Blue Eyes (Light)" = /mob/living/simple_animal/shadekin/blue/white,
-				"Blue Eyes (Brown)" = /mob/living/simple_animal/shadekin/blue/brown,
-				"Purple Eyes (Dark)" = /mob/living/simple_animal/shadekin/purple/dark,
-				"Purple Eyes (Light)" = /mob/living/simple_animal/shadekin/purple/white,
-				"Purple Eyes (Brown)" = /mob/living/simple_animal/shadekin/purple/brown,
-				"Yellow Eyes (Dark)" = /mob/living/simple_animal/shadekin/yellow/dark,
-				"Yellow Eyes (Light)" = /mob/living/simple_animal/shadekin/yellow/white,
-				"Yellow Eyes (Brown)" = /mob/living/simple_animal/shadekin/yellow/brown,
-				"Green Eyes (Dark)" = /mob/living/simple_animal/shadekin/green/dark,
-				"Green Eyes (Light)" = /mob/living/simple_animal/shadekin/green/white,
-				"Green Eyes (Brown)" = /mob/living/simple_animal/shadekin/green/brown,
-				"Orange Eyes (Dark)" = /mob/living/simple_animal/shadekin/orange/dark,
-				"Orange Eyes (Light)" = /mob/living/simple_animal/shadekin/orange/white,
-				"Orange Eyes (Brown)" = /mob/living/simple_animal/shadekin/orange/brown,
-				"Rivyr (Unique)" = /mob/living/simple_animal/shadekin/blue/rivyr)
+				"Red Eyes (Dark)" =	/mob/living/simple_mob/shadekin/red/dark,
+				"Red Eyes (Light)" = /mob/living/simple_mob/shadekin/red/white,
+				"Red Eyes (Brown)" = /mob/living/simple_mob/shadekin/red/brown,
+				"Blue Eyes (Dark)" = /mob/living/simple_mob/shadekin/blue/dark,
+				"Blue Eyes (Light)" = /mob/living/simple_mob/shadekin/blue/white,
+				"Blue Eyes (Brown)" = /mob/living/simple_mob/shadekin/blue/brown,
+				"Purple Eyes (Dark)" = /mob/living/simple_mob/shadekin/purple/dark,
+				"Purple Eyes (Light)" = /mob/living/simple_mob/shadekin/purple/white,
+				"Purple Eyes (Brown)" = /mob/living/simple_mob/shadekin/purple/brown,
+				"Yellow Eyes (Dark)" = /mob/living/simple_mob/shadekin/yellow/dark,
+				"Yellow Eyes (Light)" = /mob/living/simple_mob/shadekin/yellow/white,
+				"Yellow Eyes (Brown)" = /mob/living/simple_mob/shadekin/yellow/brown,
+				"Green Eyes (Dark)" = /mob/living/simple_mob/shadekin/green/dark,
+				"Green Eyes (Light)" = /mob/living/simple_mob/shadekin/green/white,
+				"Green Eyes (Brown)" = /mob/living/simple_mob/shadekin/green/brown,
+				"Orange Eyes (Dark)" = /mob/living/simple_mob/shadekin/orange/dark,
+				"Orange Eyes (Light)" = /mob/living/simple_mob/shadekin/orange/white,
+				"Orange Eyes (Brown)" = /mob/living/simple_mob/shadekin/orange/brown,
+				"Rivyr (Unique)" = /mob/living/simple_mob/shadekin/blue/rivyr)
 			var/kin_type = input("Select the type of shadekin for [target] nomf","Shadekin Type Choice") as null|anything in kin_types
 			if(!kin_type || !target)
 				return
+
 
 			kin_type = kin_types[kin_type]
 
@@ -87,11 +88,10 @@
 
 			//Begin abuse
 			target.transforming = TRUE //Cheap hack to stop them from moving
-			var/mob/living/simple_animal/shadekin/shadekin = new kin_type(Tt)
+			var/mob/living/simple_mob/shadekin/shadekin = new kin_type(Tt)
 			shadekin.real_name = shadekin.name
 			shadekin.init_vore()
 			shadekin.can_be_drop_pred = TRUE
-			shadekin.ai_inactive = TRUE
 			shadekin.dir = SOUTH
 			shadekin.ability_flags |= 0x1
 			shadekin.phase_shift() //Homf
@@ -117,6 +117,7 @@
 				target.ghostize()
 				qdel(target)
 				qdel(shadekin)
+
 
 		if(SMITE_REDSPACE_ABDUCT)
 			redspace_abduction(target, src)
@@ -154,7 +155,7 @@ var/redspace_abduction_z
 	var/size_of_square = 26
 	var/halfbox = round(size_of_square*0.5)
 	target.transforming = TRUE
-	to_chat(target,"<span class='danger'>You feel a strange tug, deep inside. You're frozen in place momentarily...</span>")
+	to_chat(target,"<span class='danger'>You feel a strange tug, deep inside. You're frozen in momentarily...</span>")
 	to_chat(user,"<span class='notice'>Beginning vis_contents copy to abduction site, player mob is frozen.</span>")
 	sleep(1 SECOND)
 	//Lower left corner of a working box

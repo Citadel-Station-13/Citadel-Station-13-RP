@@ -11,6 +11,7 @@
 	var/slices_num
 	var/dried_type = null
 	var/dry = 0
+	var/survivalfood = FALSE
 	var/nutriment_amt = 0
 	var/list/nutriment_desc = list("food" = 1)
 	var/datum/reagent/nutriment/coating/coating = null
@@ -50,7 +51,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/attack(mob/M as mob, mob/user as mob, def_zone)
 	if(reagents && !reagents.total_volume)
-		user << "<span class='danger'>None of [src] left!</span>"
+		to_chat(user, "<span class='danger'>None of [src] left!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 		return 0
@@ -63,11 +64,15 @@
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(!H.check_has_mouth())
-					user << "Where do you intend to put \the [src]? You don't have a mouth!"
+					to_chat(user, "Where do you intend to put \the [src]? You don't have a mouth!")
 					return
-				var/obj/item/blocked = H.check_mouth_coverage()
+				var/obj/item/blocked = null
+				if(survivalfood)
+					blocked = H.check_mouth_coverage_survival()
+				else
+					blocked = H.check_mouth_coverage()
 				if(blocked)
-					user << "<span class='warning'>\The [blocked] is in the way!</span>"
+					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
 			 // Vorestation edits in this section.
@@ -695,16 +700,35 @@
 	bitesize = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat
-	name = "carp fillet"
-	desc = "A fillet of spess carp meat"
+	name = "fillet"
+	desc = "A fillet of carp meat"
 	icon_state = "fishfillet"
 	filling_color = "#FFDEFE"
+	center_of_mass = list("x"=17, "y"=13)
+
+	var/toxin_type = "carpotoxin"
+	var/toxin_amount = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat/Initialize()
 	. = ..()
 	reagents.add_reagent("protein", 3)
-	reagents.add_reagent("carpotoxin", 3)
+	reagents.add_reagent(toxin_type, toxin_amount)
 	src.bitesize = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif
+	desc = "A fillet of sivian fish meat."
+	filling_color = "#2c2cff"
+	color = "#2c2cff"
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif/murkfish
+	toxin_type = "murk_protein"
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/fish
+	desc = "A fillet of fish meat."
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -3357,19 +3381,50 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/rawsticks/Initialize()
 	. = ..()
 
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood
-	name = "\improper LiquidFood Ration"
-	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
-	icon_state = "liquidfood"
-	trash = /obj/item/trash/liquidfood
+/obj/item/weapon/reagent_containers/food/snacks/liquidprotein
+	name = "\improper LiquidProtein Ration"
+	desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
+	icon_state = "liquidprotein"
+	trash = /obj/item/trash/liquidprotein
 	filling_color = "#A8A8A8"
-	nutriment_amt = 20
-	nutriment_desc = list("chalk" = 6)
+	survivalfood = TRUE
+	center_of_mass = list("x"=16, "y"=15)
 
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/liquidprotein/Initialize()
+	..()
+	reagents.add_reagent("protein", 30)
 	reagents.add_reagent("iron", 3)
 	bitesize = 4
+
+/obj/item/weapon/reagent_containers/food/snacks/liquidvitamin
+	name = "\improper VitaPaste Ration"
+	desc = "A variant of the liquidfood ration, designed for any carbon-based life. Somehow worse than regular liquidfood. Should this be crunchy?"
+	icon_state = "liquidvitamin"
+	trash = /obj/item/trash/liquidvitamin
+	filling_color = "#A8A8A8"
+	survivalfood = TRUE
+	center_of_mass = list("x"=16, "y"=15)
+
+/obj/item/weapon/reagent_containers/food/snacks/liquidvitamin/Initialize()
+	..()
+	reagents.add_reagent("flour", 20)
+	reagents.add_reagent("tricordrazine", 5)
+	reagents.add_reagent("paracetamol", 5)
+	reagents.add_reagent("enzyme", 1)
+	reagents.add_reagent("iron", 3)
+	bitesize = 4
+
+/obj/item/weapon/reagent_containers/food/snacks/meatcube
+	name = "cubed meat"
+	desc = "Fried, salted lean meat compressed into a cube. Not very appetizing."
+	icon_state = "meatcube"
+	filling_color = "#7a3d11"
+	center_of_mass = list("x"=16, "y"=16)
+
+/obj/item/weapon/reagent_containers/food/snacks/meatcube/Initialize()
+	. = ..()
+	reagents.add_reagent("protein", 15)
+	bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/tastybread
 	name = "bread tube"
@@ -3377,6 +3432,7 @@ END CITADEL CHANGE */
 	icon_state = "tastybread"
 	trash = /obj/item/trash/tastybread
 	filling_color = "#A66829"
+	center_of_mass = list("x"=17, "y"=16)
 	nutriment_amt = 6
 	nutriment_desc = list("bread" = 2, "sweetness" = 3)
 
@@ -3387,7 +3443,6 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/skrellsnacks
 	name = "\improper SkrellSnax"
 	desc = "Cured fungus shipped all the way from Qerr'balak, almost like jerky! Almost."
-	trash = /obj/item/trash/skrellsnacks
 	icon_state = "skrellsnacks"
 	filling_color = "#A66829"
 	nutriment_amt = 10
@@ -5309,3 +5364,66 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/cosmicbrowniesslice/filled/Initialize()
 	. = ..()
 	reagents.add_reagent("protein", 1)
+
+
+/obj/item/weapon/reagent_containers/food/snacks/wormsickly
+	name = "sickly worm"
+	desc = "A worm, it doesn't look particularily healthy, but it will still serve as good fishing bait."
+	icon_state = "worm_sickly"
+	nutriment_amt = 1
+	nutriment_desc = list("bugflesh" = 1)
+	w_class = ITEMSIZE_TINY
+
+/obj/item/weapon/reagent_containers/food/snacks/wormsickly/Initialize()
+	. = ..()
+	reagents.add_reagent("fishbait", 10)
+	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/worm
+	name = "strange worm"
+	desc = "A peculiar worm, freshly plucked from the earth."
+	icon_state = "worm"
+	nutriment_amt = 1
+	nutriment_desc = list("bugflesh" = 1)
+	w_class = ITEMSIZE_TINY
+
+/obj/item/weapon/reagent_containers/food/snacks/worm/Initialize()
+	. = ..()
+	reagents.add_reagent("fishbait", 20)
+	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/wormdeluxe
+	name = "deluxe worm"
+	desc = "A fancy worm, genetically engineered to appeal to fish."
+	icon_state = "worm_deluxe"
+	nutriment_amt = 5
+	nutriment_desc = list("bugflesh" = 1)
+	w_class = ITEMSIZE_TINY
+
+/obj/item/weapon/reagent_containers/food/snacks/wormdeluxe/Initialize()
+	. = ..()
+	reagents.add_reagent("fishbait", 40)
+	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/siffruit
+	name = "pulsing fruit"
+	desc = "A blue-ish sac encased in a tough black shell."
+	icon = 'icons/obj/flora/foraging.dmi'
+	icon_state = "siffruit"
+	nutriment_amt = 2
+	nutriment_desc = list("tart" = 1)
+	w_class = ITEMSIZE_TINY
+
+/obj/item/weapon/reagent_containers/food/snacks/siffruit/Initialize()
+	. = ..()
+	reagents.add_reagent("sifsap", 2)
+
+/obj/item/weapon/reagent_containers/food/snacks/siffruit/afterattack(obj/O as obj, mob/user as mob, proximity)
+	if(istype(O,/obj/machinery/microwave))
+		return ..()
+	if(!(proximity && O.is_open_container()))
+		return
+	to_chat(user, "<span class='notice'>You tear \the [src]'s sac open, pouring it into \the [O].</span>")
+	reagents.trans_to(O, reagents.total_volume)
+	user.drop_from_inventory(src)
+	qdel(src)

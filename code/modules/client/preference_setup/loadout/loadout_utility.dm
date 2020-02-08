@@ -24,7 +24,7 @@
 	for(var/communicator in typesof(/obj/item/device/communicator) - list(/obj/item/device/communicator/integrated,/obj/item/device/communicator/commlink)) //VOREStation Edit - Remove Commlink
 		var/obj/item/device/communicator_type = communicator
 		communicators[initial(communicator_type.name)] = communicator_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(communicators))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(communicators, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/utility/camera
 	display_name = "camera"
@@ -123,7 +123,25 @@
 	display_name = "implant, tracking"
 	path = /obj/item/weapon/implant/tracking/weak
 	cost = 0 //VOREStation Edit. Changed cost to 0
-/* VOREStation Edit - Make languages great again
+
+/datum/gear/utility/implant/neural
+	display_name = "implant, neural assistance web"
+	description = "A complex web implanted into the subject, medically in order to compensate for neurological disease."
+	path = /obj/item/weapon/implant/neural
+	cost = 6
+
+/datum/gear/utility/implant/dud1
+	display_name = "implant, head"
+	description = "An implant with no obvious purpose."
+	path = /obj/item/weapon/implant/dud
+	cost = 1
+
+/datum/gear/utility/implant/dud2
+	display_name = "implant, torso"
+	description = "An implant with no obvious purpose."
+	path = /obj/item/weapon/implant/dud/torso
+	cost = 1
+
 /datum/gear/utility/implant/language
 	cost = 2
 	exploitable = 0
@@ -137,7 +155,7 @@
 	display_name = "vocal synthesizer, Skrellian"
 	description = "A surgically implanted vocal synthesizer which allows the owner to speak Common Skrellian, if they know it."
 	path = /obj/item/weapon/implant/language/skrellian
-*/
+
 /datum/gear/utility/pen
 	display_name = "Fountain Pen"
 	path = /obj/item/weapon/pen/fountain
@@ -164,3 +182,48 @@
 /datum/gear/utility/umbrella/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/****************
+modular computers
+****************/
+
+/datum/gear/utility/cheaptablet
+	display_name = "tablet computer: cheap"
+	display_name = "tablet computer, cheap"
+	path = /obj/item/modular_computer/tablet/preset/custom_loadout/cheap
+	cost = 3
+
+/datum/gear/utility/normaltablet
+	display_name = "tablet computer: advanced"
+	display_name = "tablet computer, advanced"
+	path = /obj/item/modular_computer/tablet/preset/custom_loadout/advanced
+	cost = 4
+
+/datum/gear/utility/customtablet
+	display_name = "tablet computer: custom"
+	display_name = "tablet computer, custom"
+	path = /obj/item/modular_computer/tablet
+	cost = 4
+
+/datum/gear/utility/customtablet/New()
+	..()
+	gear_tweaks += new /datum/gear_tweak/tablet()
+
+/datum/gear/utility/cheaplaptop
+	display_name = "laptop computer, cheap"
+	path = /obj/item/modular_computer/laptop/preset/custom_loadout/cheap
+	cost = 4
+
+/datum/gear/utility/normallaptop
+	display_name = "laptop computer, advanced"
+	path = /obj/item/modular_computer/laptop/preset/custom_loadout/advanced
+	cost = 5
+
+/datum/gear/utility/customlaptop
+	display_name = "laptop computer, custom"
+	path = /obj/item/modular_computer/laptop/preset/
+	cost = 6 //VOREStation Edit
+
+/datum/gear/utility/customlaptop/New()
+	..()
+	gear_tweaks += new /datum/gear_tweak/laptop()

@@ -172,14 +172,28 @@ var/list/GPS_list = list()
 	tracking = TRUE
 
 /obj/item/device/gps/command
-	icon_state = "gps-c"
+	icon_state = "gps-com"
 	gps_tag = "COM0"
 
 /obj/item/device/gps/command/on
 	tracking = TRUE
 
+/obj/item/device/gps/security
+	icon_state = "gps-sec"
+	gps_tag = "SEC0"
+
+/obj/item/device/gps/security/on
+	tracking = TRUE
+
+/obj/item/device/gps/medical
+	icon_state = "gps-med"
+	gps_tag = "MED0"
+
+/obj/item/device/gps/medical/on
+	tracking = TRUE
+
 /obj/item/device/gps/science
-	icon_state = "gps-s"
+	icon_state = "gps-sci"
 	gps_tag = "SCI0"
 
 /obj/item/device/gps/science/on
@@ -212,7 +226,7 @@ var/list/GPS_list = list()
 	gps_tag = "CMO0"
 
 /obj/item/device/gps/engineering
-	icon_state = "gps-e"
+	icon_state = "gps-eng"
 	gps_tag = "ENG0"
 
 /obj/item/device/gps/engineering/on
@@ -227,7 +241,7 @@ var/list/GPS_list = list()
 	gps_tag = "ATM0"
 
 /obj/item/device/gps/mining
-	icon_state = "gps-m"
+	icon_state = "gps-mine"
 	gps_tag = "MINE0"
 	desc = "A positioning system helpful for rescuing trapped or injured miners, keeping one on you at all times while mining might just save your life. Alt+click to toggle power."
 
@@ -235,15 +249,15 @@ var/list/GPS_list = list()
 	tracking = TRUE
 
 /obj/item/device/gps/explorer
-	icon_state = "gps-ex"
-	gps_tag = "EX0"
+	icon_state = "gps-exp"
+	gps_tag = "EXP0"
 	desc = "A positioning system helpful for rescuing trapped or injured explorers, keeping one on you at all times while exploring might just save your life. Alt+click to toggle power."
 
 /obj/item/device/gps/explorer/on
 	tracking = TRUE
 
 /obj/item/device/gps/robot
-	icon_state = "gps-b"
+	icon_state = "gps-borg"
 	gps_tag = "SYNTH0"
 	desc = "A synthetic internal positioning system. Used as a recovery beacon for damaged synthetic assets, or a collaboration tool for mining or exploration teams. \
 	Alt+click to toggle power."

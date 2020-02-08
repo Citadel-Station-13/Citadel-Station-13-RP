@@ -2920,6 +2920,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/reading_room)
+"fI" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "fK" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/weapon/cell/super;
@@ -20035,11 +20040,6 @@
 	dir = 4
 	},
 /area/library)
-"ID" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
 "IF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22734,7 +22734,7 @@
 /area/tether/surfacebase/public_garden_three)
 "Vf" = (
 /obj/machinery/vending/boozeomat,
-/obj/machinery/computer3/wall_comp/telescreen/entertainment{
+/obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = 31
 	},
 /turf/simulated/floor/lino,
@@ -22785,7 +22785,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/mob/living/simple_animal/bird/commonblackbird{
+/mob/living/simple_mob/animal/passive/bird/black_bird{
 	desc = "The Bartenders beloved pet bird.";
 	name = "Fried Chicken"
 	},
@@ -37379,7 +37379,7 @@ Jr
 Js
 Jv
 JE
-ID
+fI
 IY
 JH
 JJ
@@ -37521,7 +37521,7 @@ Js
 Js
 Jz
 JE
-ID
+fI
 IY
 JH
 JJ
@@ -37663,7 +37663,7 @@ Jt
 Js
 Jz
 JE
-ID
+fI
 IY
 JH
 JJ

@@ -67,7 +67,7 @@
 	force_update()
 	if(source_atom)
 		if(!source_atom.light_sources)
-			world.Error(EXCEPTION("Atom [source_atom] was a light source, but lacked a light source list!\n"), source_atom)
+			log_runtime(EXCEPTION("Atom [source_atom] was a light source, but lacked a light source list!\n"), source_atom)
 		else
 			source_atom.light_sources -= src
 
@@ -189,7 +189,7 @@
 	);
 
 // This is the define used to calculate falloff.
-#define LUM_FALLOFF(C, T)(1 - CLAMP01(sqrt((C.x - T.x) ** 2 +(C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
+#define LUM_FALLOFF(C, T)(1 - CLAMP01(((C.x - T.x) ** 2 +(C.y - T.y) ** 2 + LIGHTING_HEIGHT) ** 0.6 / max(1, light_range)))
 
 /datum/light_source/proc/apply_lum()
 	var/static/update_gen = 1
