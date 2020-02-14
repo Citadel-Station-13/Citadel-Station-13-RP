@@ -11163,8 +11163,9 @@
 	dir = 8
 	},
 /obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = -24
+	dir = 4;
+	icon_state = "intercom";
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -17846,8 +17847,9 @@
 /obj/item/clothing/gloves/sterile/latex,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = -24
+	dir = 4;
+	icon_state = "intercom";
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
@@ -18778,8 +18780,9 @@
 	dir = 9
 	},
 /obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = -24
+	dir = 4;
+	icon_state = "intercom";
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
@@ -22892,6 +22895,11 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
+	},
+/obj/item/device/radio/intercom{
+	dir = 4;
+	icon_state = "intercom";
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden)
