@@ -45,7 +45,7 @@
 
 /proc/log_debug(text)
 	if (config_legacy.log_debug)
-		WRITE_LOG(debug_log, "DEBUG: [text]")
+		WRITE_LOG(GLOB.world_runtime_log, "DEBUG: [text]")
 
 	for(var/client/C in admins)
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
@@ -130,7 +130,7 @@
 
 /proc/log_error(text)
 	world.log << text
-	WRITE_LOG(error_log, "RUNTIME: [text]")
+	WRITE_LOG(GLOB.world_runtime_log, "RUNTIME: [text]")
 
 /proc/log_misc(text)
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")

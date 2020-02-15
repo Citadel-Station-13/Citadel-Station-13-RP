@@ -31,6 +31,9 @@
 /proc/log_href(text)
 	WRITE_LOG(GLOB.world_href_log, "HREF: [text]")
 
+/proc/log_qdel(text)
+	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 

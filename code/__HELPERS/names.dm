@@ -92,7 +92,7 @@ var/religion_name = null
 			new_station_name += pick("13","XIII","Thirteen")
 
 
-	if (config && config_legacy.server_name)
+	if(config_legacy?.server_name)
 		world.name = "[config_legacy.server_name]: [name]"
 	else
 		world.name = new_station_name
@@ -104,7 +104,7 @@ var/religion_name = null
 
 	using_map.station_name = name
 
-	if (config && config_legacy.server_name)
+	if(config_legacy?.server_name)
 		world.name = "[config_legacy.server_name]: [name]"
 	else
 		world.name = name

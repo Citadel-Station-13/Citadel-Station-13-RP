@@ -168,10 +168,12 @@
 	.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
 	if(key_valid)
-		.["active_players"] = get_active_player_count()
+		//.["active_players"] = get_active_player_count()
+		/*
 		if(SSticker.HasRoundStarted())
 			.["real_mode"] = SSticker.mode.name
 			// Key-authed callers may know the truth behind the "secret"
+		*/
 
 	.["security_level"] = get_security_level()
 //	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
@@ -185,11 +187,13 @@
 	.["time_dilation_avg_slow"] = SStime_track.time_dilation_avg_slow
 	.["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
 
+	/*
 	if(SSshuttle && SSshuttle.emergency)
 		.["shuttle_mode"] = SSshuttle.emergency.mode
 		// Shuttle status, see /__DEFINES/stat.dm
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
+	*/
 
 	if(!key_valid)
 		GLOB.topic_status_cache = .

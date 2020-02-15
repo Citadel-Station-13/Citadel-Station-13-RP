@@ -108,7 +108,7 @@
 
 	return
 
-/world/proc/SetupExternalRSC()
+/world/proc/SetupExternalRsc()
 #if (PRELOAD_RSC == 0)
 	GLOB.external_rsc_urls = world.file2list("[global.config.directory]/external_rsc_urls.txt","\n")
 	var/i=1

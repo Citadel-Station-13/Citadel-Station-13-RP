@@ -8,9 +8,12 @@
 	var/list/entries
 	var/list/entries_by_type
 
+	/*
 	var/list/maplist
 	var/datum/map_config/defaultmap
+	*/
 
+	/*
 	var/list/modes			// allowed modes
 	var/list/gamemode_cache
 	var/list/votable_modes		// votable modes
@@ -18,6 +21,7 @@
 	var/list/mode_names
 	var/list/mode_reports
 	var/list/mode_false_report_weight
+	*/
 
 	var/motd
 
@@ -58,9 +62,11 @@
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
 	entries = null
+	/*
 	QDEL_LIST_ASSOC_VAL(maplist)
 	maplist = null
 	QDEL_NULL(defaultmap)
+	*/
 
 /datum/controller/configuration/Destroy()
 	full_wipe()
