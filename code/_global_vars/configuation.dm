@@ -1,1 +1,1 @@
-//GLOBAL_REAL(config, /datum/controller/configuration)
+GLOBAL_REAL(config, /datum/controller/configuration)

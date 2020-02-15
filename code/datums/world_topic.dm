@@ -155,7 +155,7 @@
 	.["ai"] = config_legacy.allow_ai
 	.["host"] = host || null
 	.["round_id"] = GLOB.round_id
-	.["players"] = GLOB.clients.len
+	.["players"] = clients.len
 	.["revision"] = GLOB.revdata.commit
 	.["revision_date"] = GLOB.revdata.date
 
@@ -165,7 +165,7 @@
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	.["gamestate"] = SSticker.current_state
 
-	.["map_name"] = SSmapping.config?.map_name || "Loading..."
+	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
 	if(key_valid)
 		//.["active_players"] = get_active_player_count()

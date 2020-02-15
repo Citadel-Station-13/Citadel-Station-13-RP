@@ -186,7 +186,6 @@ var/list/admin_verbs_server = list(
 	)
 
 var/list/admin_verbs_debug = list(
-	/client/proc/getruntimelog,                     //allows us to access runtime logs to somebody,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
 	/client/proc/kill_air,
@@ -352,9 +351,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
 	/datum/admins/proc/sendFax,
-	/client/proc/getserverlog,			//allows us to fetch server logs (diary) for other days,
-	/datum/admins/proc/view_txt_log,	//shows the server log (diary) for today,
-	/datum/admins/proc/view_atk_log,		//shows the server combat-log, doesn't do anything presently,
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass
 )
@@ -835,18 +831,6 @@ var/list/admin_verbs_event_manager = list(
 			src << "<span class='interface'>You are now a normal player.</span>"
 			verbs |= /client/proc/readmin_self
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/toggle_log_hrefs()
-	set name = "Toggle href logging"
-	set category = "Server"
-	if(!holder)	return
-	if(config)
-		if(config_legacy.log_hrefs)
-			config_legacy.log_hrefs = 0
-			src << "<b>Stopped logging hrefs</b>"
-		else
-			config_legacy.log_hrefs = 1
-			src << "<b>Started logging hrefs</b>"
 
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"

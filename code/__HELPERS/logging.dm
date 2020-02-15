@@ -38,6 +38,11 @@
 	if (config_legacy.log_admin)
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
 
+/proc/log_admin_private(text)
+	admin_log.Add(text)
+	if (config_legacy.log_admin)
+		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: [text]")
+
 /proc/log_adminpm(text, client/source, client/dest)
 	admin_log.Add(text)
 	if (config_legacy.log_admin)

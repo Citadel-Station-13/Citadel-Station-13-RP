@@ -188,7 +188,7 @@
 			handler = topic_handlers[I]
 			break
 
-	if((!handler || initial(handler.log)) && config_legacy.log_topic)
+	if(!handler || initial(handler.log))
 		log_topic("\"[T]\", from:[addr], aster:[master], key:[key]")
 
 	if(!handler)
