@@ -54,8 +54,7 @@
 	log = FALSE
 
 /datum/world_topic/playing/Run(list/input)
-	return player_list.len
-
+	return length(player_list)
 
 /datum/world_topic/pr_announce
 	keyword = "announce"
@@ -137,13 +136,19 @@
 /datum/world_topic/adminwho/Run(list/input)
 	return ircadminwho()
 
+*/
+
 /datum/world_topic/status
 	keyword = "status"
 
-/datum/world_topic/status/Run(list/input)
+/datum/world_topic/status/Run(list/input, addr)
+	if(!key_valid) //If we have a key, then it's safe to trust that this isn't a malicious packet. Also prevents the extra info from leaking
+		if(GLOB.topic_status_lastcache >= world.time)
+			return GLOB.topic_status_cache
+		GLOB.topic_status_lastcache = world.time + 5
 	. = list()
 	.["version"] = GLOB.game_version
-	.["mode"] = GLOB.master_mode
+	.["mode"] = "hidden"	//CIT CHANGE - hides the gamemode in topic() calls to prevent meta'ing the gamemode
 	.["respawn"] = config ? !CONFIG_GET(flag/norespawn) : FALSE
 	.["enter"] = GLOB.enter_allowed
 	.["vote"] = CONFIG_GET(flag/allow_vote_mode)
@@ -178,16 +183,11 @@
 	.["time_dilation_avg_slow"] = SStime_track.time_dilation_avg_slow
 	.["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
 
-	//pop cap stats
-	.["soft_popcap"] = CONFIG_GET(number/soft_popcap) || 0
-	.["hard_popcap"] = CONFIG_GET(number/hard_popcap) || 0
-	.["extreme_popcap"] = CONFIG_GET(number/extreme_popcap) || 0
-	.["popcap"] = max(CONFIG_GET(number/soft_popcap), CONFIG_GET(number/hard_popcap), CONFIG_GET(number/extreme_popcap)) //generalized field for this concept for use across ss13 codebases
-
 	if(SSshuttle && SSshuttle.emergency)
 		.["shuttle_mode"] = SSshuttle.emergency.mode
 		// Shuttle status, see /__DEFINES/stat.dm
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
 
-*/
+	if(!key_valid)
+		GLOB.topic_status_cache = .

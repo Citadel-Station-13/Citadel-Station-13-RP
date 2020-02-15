@@ -222,6 +222,7 @@
 		return
 	return E.ValidateAndSet("[new_val]")
 
+/*
 /datum/controller/configuration/proc/LoadModes()
 	gamemode_cache = typecacheof(/datum/game_mode, TRUE)
 	modes = list()
@@ -249,6 +250,7 @@
 					votable_modes += M.config_tag
 		qdel(M)
 	votable_modes += "secret"
+*/
 
 /datum/controller/configuration/proc/LoadMOTD()
 	motd = file2text("[directory]/motd.txt")
@@ -313,6 +315,7 @@
 				log_config("Unknown command in map vote config: '[command]'")
 */
 
+/*
 /datum/controller/configuration/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up
 	// their information, but it is the only way (at least that I know of).
@@ -387,7 +390,6 @@
 		runnable_storytellers[S] = final_weight
 	return runnable_storytellers
 
-
 /datum/controller/configuration/proc/get_runnable_midround_modes(crew)
 	var/list/datum/game_mode/runnable_modes = new
 	var/list/probabilities = Get(/datum/config_entry/keyed_list/probability)
@@ -410,3 +412,4 @@
 				continue
 			runnable_modes[M] = probabilities[M.config_tag]
 	return runnable_modes
+*/
