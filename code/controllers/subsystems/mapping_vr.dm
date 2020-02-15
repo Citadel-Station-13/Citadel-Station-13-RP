@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(mapping)
 		var/chosen_name = pick(config_legacy.engine_map)
 		chosen_type = map_templates[chosen_name]
 		if(!istype(chosen_type))
-			error("Configured engine map [chosen_name] is not a valid engine map name!")
+			log_world("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
 		var/list/engine_types = list()
 		for(var/map in map_templates)
@@ -62,12 +62,12 @@ SUBSYSTEM_DEF(mapping)
 
 	for(var/list/maplist in deffo_load)
 		if(!islist(maplist))
-			error("Lateload Z level [maplist] is not a list! Must be in a list!")
+			log_world("Lateload Z level [maplist] is not a list! Must be in a list!")
 			continue
 		for(var/mapname in maplist)
 			var/datum/map_template/MT = map_templates[mapname]
 			if(!istype(MT))
-				error("Lateload Z level \"[mapname]\" is not a valid map!")
+				log_world("Lateload Z level \"[mapname]\" is not a valid map!")
 				continue
 			MT.load_new_z(centered = FALSE)
 			CHECK_TICK
@@ -79,13 +79,13 @@ SUBSYSTEM_DEF(mapping)
 			return
 
 		if(!islist(picklist)) //So you can have a 'chain' of z-levels that make up one away mission
-			error("Randompick Z level [picklist] is not a list! Must be in a list!")
+			log_world("Randompick Z level [picklist] is not a list! Must be in a list!")
 			return
 
 		for(var/map in picklist)
 			var/datum/map_template/MT = map_templates[map]
 			if(!istype(MT))
-				error("Randompick Z level \"[map]\" is not a valid map!")
+				log_world("Randompick Z level \"[map]\" is not a valid map!")
 			else
 				MT.load_new_z(centered = FALSE)
 

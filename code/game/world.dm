@@ -277,7 +277,7 @@
 	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
-			error("Failed to load config/mods.txt")
+			log_world("Failed to load config/mods.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -298,7 +298,7 @@
 	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/mentors.txt")
 		if (!text)
-			error("Failed to load config/mentors.txt")
+			log_world("Failed to load config/mentors.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
