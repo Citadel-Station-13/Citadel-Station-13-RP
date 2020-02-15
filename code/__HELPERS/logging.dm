@@ -1,37 +1,3 @@
-//print an error message to world.log
-
-// Fall back to using old format if we are not using rust-g
-#ifdef RUST_G
-	#define WRITE_LOG(log, text) call(RUST_G, "log_write")(log, text)
-#else
-	#define WRITE_LOG(log, text) log << "\[[time_stamp()]][text]"
-#endif
-
-/* For logging round startup. */
-/proc/start_log(log)
-	#ifndef RUST_G
-	log = file(log)
-	#endif
-	WRITE_LOG(log, "START: Starting up [log_path].")
-	return log
-
-/* Close open log handles. This should be called as late as possible, and no logging should hapen after. */
-/proc/shutdown_logging()
-	#ifdef RUST_G
-	call(RUST_G, "log_close_all")()
-	#endif
-
-/proc/error(msg)
-	world.log << "## ERROR: [msg]"
-
-#define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
-//print a warning message to world.log
-/proc/warning(msg)
-	world.log << "## WARNING: [msg]"
-
-//print a testing-mode debug message to world.log
-/proc/testing(msg)
-	world.log << "## TESTING: [msg]"
 
 /proc/log_admin(text)
 	admin_log.Add(text)
