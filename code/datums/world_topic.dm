@@ -147,13 +147,13 @@
 			return GLOB.topic_status_cache
 		GLOB.topic_status_lastcache = world.time + 5
 	. = list()
-	.["version"] = GLOB.game_version
-	.["mode"] = "hidden"	//CIT CHANGE - hides the gamemode in topic() calls to prevent meta'ing the gamemode
-	.["respawn"] = config ? !CONFIG_GET(flag/norespawn) : FALSE
-	.["enter"] = GLOB.enter_allowed
-	.["vote"] = CONFIG_GET(flag/allow_vote_mode)
-	.["ai"] = CONFIG_GET(flag/allow_ai)
-	.["host"] = world.host ? world.host : null
+	.["version"] = game_version
+	.["mode"] = master_mode
+	.["respawn"] = config_legacy.abandon_allowed
+	.["enter"] = config_legacy.enter_allowed
+	.["vote"] = config_legacy.allow_vote_mode
+	.["ai"] = config_legacy.allow_ai
+	.["host"] = host || null
 	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
 	.["revision"] = GLOB.revdata.commit
@@ -174,8 +174,10 @@
 			// Key-authed callers may know the truth behind the "secret"
 
 	.["security_level"] = get_security_level()
-	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
-	// Amount of world's ticks in seconds, useful for calculating round duration
+//	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+//	// Amount of world's ticks in seconds, useful for calculating round duration
+	.["stationtime"] = stationtime2text()
+	.["roundduration"] = roundduration2text()
 
 	//Time dilation stats.
 	.["time_dilation_current"] = SStime_track.time_dilation_current

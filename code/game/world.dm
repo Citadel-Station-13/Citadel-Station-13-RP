@@ -189,7 +189,7 @@
 			break
 
 	if((!handler || initial(handler.log)) && config_legacy.log_topic)
-		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
+		log_topic("\"[T]\", from:[addr], aster:[master], key:[key]")
 
 	if(!handler)
 		return
@@ -316,7 +316,7 @@
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config_legacy.server_name)
+	if (config_legacy?.server_name)
 		s += "<b>[config_legacy.server_name]</b> &#8212; "
 
 	s += "<b>[station_name()]</b>";

@@ -19,7 +19,7 @@
 //VOREStation Add
 /datum/job/intern/New()
 	..()
-	if(config)
+	if(config_legacy)
 		total_positions = config_legacy.limit_interns
 		spawn_positions = config_legacy.limit_interns
 //VOREStation Add End
@@ -42,7 +42,7 @@
 	timeoff_factor = 0
 /datum/job/assistant/New()
 	..()
-	if(config)
+	if(config_legacy)
 		total_positions = config_legacy.limit_visitors
 		spawn_positions = config_legacy.limit_visitors
 /datum/job/assistant/get_access()

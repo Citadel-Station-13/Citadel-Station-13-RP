@@ -25,3 +25,13 @@ GLOBAL_PROTECT(config_error_log)
 /// datum/controller/subsystem logging in general
 GLOBAL_VAR(subsystem_log)
 GLOBAL_PROTECT(subsystem_log)
+
+/////Picture logging
+GLOBAL_VAR(picture_log_directory)
+GLOBAL_PROTECT(picture_log_directory)
+
+GLOBAL_VAR_INIT(picture_logging_id, 1)
+GLOBAL_PROTECT(picture_logging_id)
+GLOBAL_VAR(picture_logging_prefix)
+GLOBAL_PROTECT(picture_logging_prefix)
+/////
