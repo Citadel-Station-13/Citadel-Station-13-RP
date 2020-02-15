@@ -216,7 +216,7 @@
 				call(listener, proc_call)(arglist(args))
 			catch (var/exception/e)
 				log_world("[e.name] - [e.file] - [e.line]")
-				log_worlde.desc)
+				log_world(e.desc)
 				unregister_global(listener, proc_call)
 
 	// Call the listeners for this specific event source, if they exist.
@@ -232,7 +232,7 @@
 					call(listener, proc_call)(arglist(args))
 				catch (var/exception/e)
 					log_world("[e.name] - [e.file] - [e.line]")
-					log_worlde.desc)
+					log_world(e.desc)
 					unregister(source, listener, proc_call)
 
 	return TRUE
