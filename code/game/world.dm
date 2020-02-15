@@ -570,14 +570,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	fdel(F)
 	F << the_mode
 
-GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
-/hook/startup/proc/loadMOTD()
-	load_motd()
-	return 1
-
-/proc/load_motd()
-	GLOB.join_motd = file2text("config/motd.txt")
-
 /hook/startup/proc/loadMods()
 	world.load_mods()
 	world.load_mentors() // no need to write another hook.

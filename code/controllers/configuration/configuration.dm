@@ -256,6 +256,7 @@
 	if(motd || tm_info)
 		motd = motd ? "[motd]<br>[tm_info]" : tm_info
 
+/*
 /datum/controller/configuration/proc/loadmaplist(filename)
 	log_config("Loading config file [filename]...")
 	filename = "[directory]/[filename]"
@@ -310,7 +311,7 @@
 				currentmap = null
 			else
 				log_config("Unknown command in map vote config: '[command]'")
-
+*/
 
 /datum/controller/configuration/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up
