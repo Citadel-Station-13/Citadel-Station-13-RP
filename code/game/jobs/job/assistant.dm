@@ -20,8 +20,8 @@
 /datum/job/intern/New()
 	..()
 	if(config)
-		total_positions = config.limit_interns
-		spawn_positions = config.limit_interns
+		total_positions = config_legacy.limit_interns
+		spawn_positions = config_legacy.limit_interns
 //VOREStation Add End
 
 // VOREStation Add
@@ -43,10 +43,10 @@
 /datum/job/assistant/New()
 	..()
 	if(config)
-		total_positions = config.limit_visitors
-		spawn_positions = config.limit_visitors
+		total_positions = config_legacy.limit_visitors
+		spawn_positions = config_legacy.limit_visitors
 /datum/job/assistant/get_access()
-	if(config.assistant_maint)
+	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels)
 	else
 		return list()

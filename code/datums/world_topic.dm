@@ -26,7 +26,7 @@
 	var/require_comms_key = FALSE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = config && config.comms_key == input["key"] && (config.comms_key != initial(config.comms_key))		//no fucking defaults allowed.
+	key_valid = config && config_legacy.comms_key == input["key"] && (config_legacy.comms_key != initial(config_legacy.comms_key))		//no fucking defaults allowed.
 	//key_valid = config && (CONFIG_GET(string/comms_key) == input["key"])
 	if(require_comms_key && !key_valid)
 		return "Bad Key"

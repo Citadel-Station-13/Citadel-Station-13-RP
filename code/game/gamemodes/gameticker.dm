@@ -46,7 +46,7 @@ var/global/datum/controller/gameticker/ticker
 	'sound/music/space_oddity.ogg') //Ground Control to Major Tom, this song is cool, what's going on?
 	*/ //VOREStation Edit End
 
-	send2mainirc("Server lobby is loaded and open at byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")
+	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 
 	do
 		pregame_timeleft = 300
@@ -55,7 +55,7 @@ var/global/datum/controller/gameticker/ticker
 		while(current_state == GAME_STATE_PREGAME)
 			if(round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft)
+			if(pregame_timeleft == config_legacy.vote_autogamemode_timeleft)
 				if(!SSvote.time_remaining)
 					SSvote.autogamemode()	//Quit calling this over and over and over and over.
 					while(SSvote.time_remaining)
@@ -72,7 +72,7 @@ var/global/datum/controller/gameticker/ticker
 	if(master_mode=="secret")
 		src.hide_mode = 1
 
-	var/list/runnable_modes = config.get_runnable_modes()
+	var/list/runnable_modes = config_legacy.get_runnable_modes()
 	if((master_mode=="random") || (master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
@@ -80,14 +80,14 @@ var/global/datum/controller/gameticker/ticker
 			to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pregame lobby.")
 			return 0
 		if(secret_force_mode != "secret")
-			src.mode = config.pick_mode(secret_force_mode)
+			src.mode = config_legacy.pick_mode(secret_force_mode)
 		if(!src.mode)
 			var/list/weighted_modes = list()
 			for(var/datum/game_mode/GM in runnable_modes)
-				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
+				weighted_modes[GM.config_tag] = config_legacy.probabilities[GM.config_tag]
 			src.mode = gamemode_cache[pickweight(weighted_modes)]
 	else
-		src.mode = config.pick_mode(master_mode)
+		src.mode = config_legacy.pick_mode(master_mode)
 
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
@@ -161,7 +161,7 @@ var/global/datum/controller/gameticker/ticker
 	processScheduler.start()
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
-	if(config.sql_enabled)
+	if(config_legacy.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
@@ -317,7 +317,7 @@ var/global/datum/controller/gameticker/ticker
 
 		var/game_finished = 0
 		var/mode_finished = 0
-		if (config.continous_rounds)
+		if (config_legacy.continous_rounds)
 			game_finished = (emergency_shuttle.returned() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())
 		else

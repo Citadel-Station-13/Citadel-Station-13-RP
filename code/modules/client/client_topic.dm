@@ -32,7 +32,7 @@
 			src << browse("...", "window=asset_cache_browser")
 */
 
-	var/mtl = config.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
+	var/mtl = config_legacy.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
 	if (!holder && mtl)
 		var/minute = round(world.time, 600)
 		if (!topiclimiter)
@@ -51,7 +51,7 @@
 			to_chat(src, "<span class='danger'>[msg]</span>")
 			return
 
-	var/stl = config.second_topic_limit		//CONFIG_GET(number/second_topic_limit)
+	var/stl = config_legacy.second_topic_limit		//CONFIG_GET(number/second_topic_limit)
 	if (!holder && stl)
 		var/second = round(world.time, 10)
 		if (!topiclimiter)
@@ -93,7 +93,7 @@
 
 
 	//Logs all hrefs
-	if(config && config.log_hrefs && href_logfile)
+	if(config && config_legacy.log_hrefs && href_logfile)
 		log_href("[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]")
 
 	switch(href_list["_src_"])

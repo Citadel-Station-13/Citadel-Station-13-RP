@@ -64,9 +64,9 @@
 		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
 		if(DPS > 0)
 			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config.health_threshold_softcrit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config.health_threshold_crit) / DPS] seconds to hardcrit you. ([config.health_threshold_crit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config.health_threshold_dead) / DPS] seconds to kill you. ([config.health_threshold_dead] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)</span>")
 
 	else
 		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")
@@ -202,9 +202,9 @@
 	set category = "Server"
 	set name = "Toggle Aliens"
 
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].")
-	message_admins("[key_name_admin(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].", 0)
+	config_legacy.aliens_allowed = !config_legacy.aliens_allowed
+	log_admin("[key_name(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].")
+	message_admins("[key_name_admin(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].", 0)
 	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_display_del_log()

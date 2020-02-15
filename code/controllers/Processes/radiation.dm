@@ -20,8 +20,8 @@
 			sources.Remove(S)
 			continue
 		if(S.decay)
-			S.update_rad_power(S.rad_power - config.radiation_decay_rate)
-		if(S.rad_power <= config.radiation_lower_limit)
+			S.update_rad_power(S.rad_power - config_legacy.radiation_decay_rate)
+		if(S.rad_power <= config_legacy.radiation_lower_limit)
 			sources.Remove(S)
 		SCHECK // This scheck probably just wastes resources, but better safe than sorry in this case.
 

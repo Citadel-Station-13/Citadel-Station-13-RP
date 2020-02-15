@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(persist)
 
 // Do PTO Accruals
 /datum/controller/subsystem/persist/proc/update_department_hours(var/resumed = FALSE)
-	if(!config.time_off)
+	if(!config_legacy.time_off)
 		return
 
 	establish_db_connection()
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(persist)
 			dept_hours[J.department] = wait_in_hours
 
 		//Cap it
-		dept_hours[J.department] = min(config.pto_cap, dept_hours[J.department])
+		dept_hours[J.department] = min(config_legacy.pto_cap, dept_hours[J.department])
 
 
 		// Okay we figured it out, lets update database!

@@ -419,7 +419,7 @@ var/list/admin_verbs_event_manager = list(
 		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
 		if(holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
-			if(config.debugparanoid && !(holder.rights & R_ADMIN))
+			if(config_legacy.debugparanoid && !(holder.rights & R_ADMIN))
 				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
 		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
@@ -553,7 +553,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Display Job bans"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(config_legacy.ban_legacy_system)
 			holder.Jobbans()
 		else
 			holder.DB_ban_panel()
@@ -564,7 +564,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(config_legacy.ban_legacy_system)
 			holder.unbanpanel()
 		else
 			holder.DB_ban_panel()
@@ -843,11 +843,11 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-		if(config.log_hrefs)
-			config.log_hrefs = 0
+		if(config_legacy.log_hrefs)
+			config_legacy.log_hrefs = 0
 			src << "<b>Stopped logging hrefs</b>"
 		else
-			config.log_hrefs = 1
+			config_legacy.log_hrefs = 1
 			src << "<b>Started logging hrefs</b>"
 
 /client/proc/check_ai_laws()
@@ -1041,12 +1041,12 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-		if(config.cult_ghostwriter)
-			config.cult_ghostwriter = 0
+		if(config_legacy.cult_ghostwriter)
+			config_legacy.cult_ghostwriter = 0
 			src << "<b>Disallowed ghost writers.</b>"
 			message_admins("Admin [key_name_admin(usr)] has disabled ghost writers.", 1)
 		else
-			config.cult_ghostwriter = 1
+			config_legacy.cult_ghostwriter = 1
 			src << "<b>Enabled ghost writers.</b>"
 			message_admins("Admin [key_name_admin(usr)] has enabled ghost writers.", 1)
 
@@ -1055,12 +1055,12 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-		if(config.allow_drone_spawn)
-			config.allow_drone_spawn = 0
+		if(config_legacy.allow_drone_spawn)
+			config_legacy.allow_drone_spawn = 0
 			src << "<b>Disallowed maint drones.</b>"
 			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
 		else
-			config.allow_drone_spawn = 1
+			config_legacy.allow_drone_spawn = 1
 			src << "<b>Enabled maint drones.</b>"
 			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)
 

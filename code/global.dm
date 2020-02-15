@@ -115,7 +115,7 @@ var/datum/metric/metric = new() // Metric datum, used to keep track of the round
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
 
 // Forum MySQL configuration. (for use with forum account/key authentication)
-// These are all default values that will load should the forumdbconfig.txt file fail to read for whatever reason.
+// These are all default values that will load should the forumdbconfig_legacy.txt file fail to read for whatever reason.
 var/forumsqladdress = "localhost"
 var/forumsqlport    = "3306"
 var/forumsqldb      = "tgstation"

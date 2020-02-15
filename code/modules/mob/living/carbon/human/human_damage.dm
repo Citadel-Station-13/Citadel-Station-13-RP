@@ -17,7 +17,7 @@
 	health = getMaxHealth() - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute
 
 	//TODO: fix husking
-	if( ((getMaxHealth() - total_burn) < config.health_threshold_dead) && stat == DEAD)
+	if( ((getMaxHealth() - total_burn) < config_legacy.health_threshold_dead) && stat == DEAD)
 		ChangeToHusk()
 	return
 

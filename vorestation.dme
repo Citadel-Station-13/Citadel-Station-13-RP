@@ -76,7 +76,7 @@
 #include "code\__DEFINES\subsystems_vr.dm"
 #include "code\__DEFINES\supply.dm"
 #include "code\__DEFINES\targeting.dm"
-#include "code\__DEFINES\tgs.config.dm"
+#include "code\__DEFINES\tgs.config_legacy.dm"
 #include "code\__DEFINES\tgs.dm"
 #include "code\__DEFINES\time.dm"
 #include "code\__DEFINES\traits.dm"
