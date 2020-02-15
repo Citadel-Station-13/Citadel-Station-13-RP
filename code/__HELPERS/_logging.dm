@@ -24,3 +24,8 @@
 		return "([AREACOORD(T)])"
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
+
+/* Rarely gets called; just here in case the config breaks. */
+/proc/log_config(text)
+	WRITE_LOG(GLOB.config_error_log, text)
+	SEND_TEXT(world.log, text)

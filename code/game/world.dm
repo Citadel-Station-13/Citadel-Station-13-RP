@@ -16,13 +16,9 @@
 #define TOPIC_COOLDOWN 1 //90% sure there isnt anything that does multiple topic calls in a single decisecond.
 
 /world/New()
-	world.log << "Map Loading Complete"
-	//logs
-	log_path += time2text(world.realtime, "YYYY/MM-Month/DD-Day/round-hh-mm-ss")
-	diary = start_log("[log_path].log")
-	href_logfile = start_log("[log_path]-hrefs.htm")
-	error_log = start_log("[log_path]-error.log")
-	debug_log = start_log("[log_path]-debug.log")
+	enable_debugger()
+
+	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
@@ -30,6 +26,13 @@
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
+	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+
+	SetupLogs()
+
+#ifndef USE_CUSTOM_ERROR_HANDLER
+	world.log = file("[GLOB.log_directory]/dd.log")
+#endif
 
 	config_legacy.post_load()
 
@@ -102,6 +105,38 @@
 #undef RECOMMENDED_VERSION
 
 	return
+
+/world/proc/SetupLogs()
+	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
+	if(!override_dir)
+		var/realtime = world.realtime
+		var/texttime = time2text(realtime, "YYYY/MM/DD")
+		GLOB.log_directory = "data/logs/[texttime]/round-"
+		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
+		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
+		if(GLOB.round_id)
+			GLOB.log_directory += "[GLOB.round_id]"
+			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
+			GLOB.picture_log_directory += "[GLOB.round_id]"
+		else
+			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
+			GLOB.log_directory += "[timestamp]"
+			GLOB.picture_log_directory += "[timestamp]"
+			GLOB.picture_logging_prefix += "T_[timestamp]_"
+	else
+		GLOB.log_directory = "data/logs/[override_dir]"
+		GLOB.picture_logging_prefix = "O_[override_dir]_"
+		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
+
+
+
+
+
+
+
+
+
+
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
