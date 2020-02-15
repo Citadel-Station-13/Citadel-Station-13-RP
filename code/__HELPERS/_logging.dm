@@ -25,6 +25,26 @@
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
 
+/proc/log_topic(text)
+	WRITE_LOG(GLOB.world_game_log, "TOPIC: [text]")
+
+/proc/log_href(text)
+	WRITE_LOG(GLOB.world_href_log, "HREF: [text]")
+
+/proc/log_subsystem(subsystem, text)
+	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
+
+/* Log to both DD and the logfile. */
+/proc/log_world(text)
+#ifdef USE_CUSTOM_ERROR_HANDLER
+	WRITE_LOG(GLOB.world_runtime_log, text)
+#endif
+	SEND_TEXT(world.log, text)
+
+/* Log to the logfile only. */
+/proc/log_runtime(text)
+	WRITE_LOG(GLOB.world_runtime_log, text)
+
 /* Rarely gets called; just here in case the config breaks. */
 /proc/log_config(text)
 	WRITE_LOG(GLOB.config_error_log, text)

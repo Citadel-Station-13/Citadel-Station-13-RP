@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(mapping)
 
 	var/turf/T = get_turf(engine_loader)
 	if(!isturf(T))
-		to_world_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
+		subsystem_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
 		return
 
 	// Choose an engine type
@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(mapping)
 			if(istype(MT))
 				engine_types += MT
 		chosen_type = pick(engine_types)
-	to_world_log("Chose Engine Map: [chosen_type.name]")
+	subsystem_log("Chose Engine Map: [chosen_type.name]")
 	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
 
 	// Annihilate movable atoms

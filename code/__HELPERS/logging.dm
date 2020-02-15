@@ -36,12 +36,12 @@
 /proc/log_admin(text)
 	admin_log.Add(text)
 	if (config_legacy.log_admin)
-		WRITE_LOG(diary, "ADMIN: [text]")
+		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
 
 /proc/log_adminpm(text, client/source, client/dest)
 	admin_log.Add(text)
 	if (config_legacy.log_admin)
-		WRITE_LOG(diary, "ADMINPM: [key_name(source)]->[key_name(dest)]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "ADMINPM: [key_name(source)]->[key_name(dest)]: [html_decode(text)]")
 
 /proc/log_debug(text)
 	if (config_legacy.log_debug)
@@ -53,104 +53,87 @@
 
 /proc/log_game(text)
 	if (config_legacy.log_game)
-		WRITE_LOG(diary, "GAME: [text]")
+		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
 
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
-		WRITE_LOG(diary, "VOTE: [text]")
+		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
 
 /proc/log_access_in(client/new_client)
 	if (config_legacy.log_access)
 		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"
-		WRITE_LOG(diary, "ACCESS IN: [message]")
+		WRITE_LOG(GLOB.world_game_log, "ACCESS IN: [message]")
 
 /proc/log_access_out(mob/last_mob)
 	if (config_legacy.log_access)
 		var/message = "[key_name(last_mob)] - IP:[last_mob.lastKnownIP] - CID:Logged Out - BYOND Logged Out"
-		WRITE_LOG(diary, "ACCESS OUT: [message]")
+		WRITE_LOG(GLOB.world_game_log, "ACCESS OUT: [message]")
 
 /proc/log_say(text, mob/speaker)
 	if (config_legacy.log_say)
-		WRITE_LOG(diary, "SAY: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "SAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_ooc(text, client/user)
 	if (config_legacy.log_ooc)
-		WRITE_LOG(diary, "OOC: [user.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "OOC: [user.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_aooc(text, client/user)
 	if (config_legacy.log_ooc)
-		WRITE_LOG(diary, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_looc(text, client/user)
 	if (config_legacy.log_ooc)
-		WRITE_LOG(diary, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_whisper(text, mob/speaker)
 	if (config_legacy.log_whisper)
-		WRITE_LOG(diary, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_access(text)
-	WRITE_LOG(diary, "ACCESS: [text]")
+	WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
 
 /proc/log_emote(text, mob/speaker)
 	if (config_legacy.log_emote)
-		WRITE_LOG(diary, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_attack(attacker, defender, message)
 	if (config_legacy.log_attack)
-		WRITE_LOG(diary, "ATTACK: [attacker] against [defender]: [message]")
+		WRITE_LOG(GLOB.world_attack_log, "ATTACK: [attacker] against [defender]: [message]")
 
 /proc/log_adminsay(text, mob/speaker)
 	if (config_legacy.log_adminchat)
-		WRITE_LOG(diary, "ADMINSAY: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "ADMINSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_modsay(text, mob/speaker)
 	if (config_legacy.log_adminchat)
-		WRITE_LOG(diary, "MODSAY: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "MODSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_eventsay(text, mob/speaker)
 	if (config_legacy.log_adminchat)
-		WRITE_LOG(diary, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
-
-/* Log to the logfile only. */
-/proc/log_runtime(text)
-	WRITE_LOG(error_log, text)
+		WRITE_LOG(GLOB.world_game_log, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_ghostsay(text, mob/speaker)
 	if (config_legacy.log_say)
-		WRITE_LOG(diary, "DEADCHAT: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "DEADCHAT: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_ghostemote(text, mob/speaker)
 	if (config_legacy.log_emote)
-		WRITE_LOG(diary, "DEADEMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "DEADEMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_adminwarn(text)
 	if (config_legacy.log_adminwarn)
-		WRITE_LOG(diary, "ADMINWARN: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "ADMINWARN: [html_decode(text)]")
 
 /proc/log_pda(text, mob/speaker)
 	if (config_legacy.log_pda)
-		WRITE_LOG(diary, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
-
-/proc/log_to_dd(text)
-	world.log << text //this comes before the config check because it can't possibly runtime
-	if(config_legacy.log_world_output)
-		WRITE_LOG(diary, "DD_OUTPUT: [text]")
+		WRITE_LOG(GLOB.world_game_log, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_error(text)
 	world.log << text
 	WRITE_LOG(error_log, "RUNTIME: [text]")
 
 /proc/log_misc(text)
-	WRITE_LOG(diary, "MISC: [text]")
-
-/proc/log_topic(text)
-	if(Debug2)
-		WRITE_LOG(diary, "TOPIC: [text]")
-
-/proc/log_href(text)
-	// Configs are checked by caller
-	WRITE_LOG(href_logfile, "HREF: [text]")
+	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
 /proc/log_unit_test(text)
 	world.log << "## UNIT_TEST: [text]"

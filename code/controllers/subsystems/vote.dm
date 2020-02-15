@@ -32,11 +32,11 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/autotransfer()
 	initiate_vote(VOTE_CREW_TRANSFER, "the server", 1)
-	log_debug("The server has called a crew transfer vote.")
+	subsystem_log("The server has called a crew transfer vote.")
 
 /datum/controller/subsystem/vote/proc/autogamemode()
 	initiate_vote(VOTE_GAMEMODE, "the server", 1)
-	log_debug("The server has called a gamemode vote.")
+	subsystem_log("The server has called a gamemode vote.")
 
 /datum/controller/subsystem/vote/proc/reset()
 	initiator = null
