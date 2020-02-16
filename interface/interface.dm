@@ -59,10 +59,10 @@
 	set desc = "Visit the GitHub"
 	set hidden = 1
 
-	if(config_legacy.githuburl)
+	if(CONFIG_GET(string/githuburl))
 		if(alert("This will open the GitHub in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config_legacy.githuburl)
+		src << link(CONFIG_GET(string/githuburl))
 	else
 		src << "<span class='danger'>The GitHub URL is not set in the server configuration.</span>"
 	return

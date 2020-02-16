@@ -696,72 +696,81 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/Stat()
 	..()
-	. = (is_client_active(10 MINUTES))
 
-	if(.)
-		if(statpanel("Status") && ticker && ticker.current_state != GAME_STATE_PREGAME)
-			stat("Station Time", stationtime2text())
-			stat("Station Date", stationdate2text())
-			stat("Round Duration", roundduration2text())
+	//This is only called from client/Stat(), let's assume client exists.
 
-		if(client.holder)
-			if(statpanel("Status"))
-				stat("Location:", "([x], [y], [z]) [loc]")
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
+	if(statpanel("Status"))
+		var/list/L = list()
+		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		//L += SSmapping.stat_map_name
+		//L += "Round ID: [GLOB.round_id || "NULL"]"
+		// VIRGO START
+		stat("Station Time", stationtime2text())
+		stat("Station Date", stationdate2text())
+		stat("Round Duration", roundduration2text())
+		// VIRGO END
+		stat("Time dilation", SStime_track.stat_time_text)
+		//L += SSshuttle.emergency_shuttle_stat_text
+		//stat(null, "[L.Join("\n\n")]")
 
-			if(statpanel("Processes"))
-				if(processScheduler)
-					processScheduler.statProcesses()
-
-			if(statpanel("MC"))
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
-				stat(null)
-				if(Master)
-					Master.stat_entry()
-				else
-					stat("Master Controller:", "ERROR")
-				if(Failsafe)
-					Failsafe.stat_entry()
-				else
-					stat("Failsafe Controller:", "ERROR")
-				if(GLOB)
-					GLOB.stat_entry()
-				else
-					stat("Globals:", "ERROR")
-				if(Master)
-					stat(null)
-					for(var/datum/controller/subsystem/SS in Master.subsystems)
-						SS.stat_entry()
-
-			if(statpanel("Tickets"))
-				GLOB.ahelp_tickets.stat_entry()
-
-			if(length(GLOB.sdql2_queries))
-				if(statpanel("SDQL2"))
-					stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-					for(var/i in GLOB.sdql2_queries)
-						var/datum/SDQL2_query/Q = i
-						Q.generate_stat()
-
-		if(listed_turf && client)
-			if(!TurfAdjacent(listed_turf))
-				listed_turf = null
+	if(client.holder)
+		if(statpanel("MC"))
+			var/turf/T = get_turf(client.eye)
+			stat("Location:", COORD(T))
+			stat("CPU:", "[world.cpu]")
+			stat("Instances:", "[num2text(world.contents.len, 10)]")
+			stat("World Time:", "[world.time]")
+			GLOB.stat_entry()
+			config.stat_entry()
+			stat(null)
+			if(Master)
+				Master.stat_entry()
 			else
-				if(statpanel("Turf"))
-					stat("\icon[listed_turf]", listed_turf.name)
-					for(var/atom/A in listed_turf)
-						if(!A.mouse_opacity)
-							continue
-						if(A.invisibility > see_invisible)
-							continue
-						if(is_type_in_list(A, shouldnt_see))
-							continue
-						if(A.plane > plane)
-							continue
-						stat(A)
+				stat("Master Controller:", "ERROR")
+			if(Failsafe)
+				Failsafe.stat_entry()
+			else
+				stat("Failsafe Controller:", "ERROR")
+			if(Master)
+				stat(null)
+				for(var/datum/controller/subsystem/SS in Master.subsystems)
+					SS.stat_entry()
+			GLOB.cameranet.stat_entry()
+		if(statpanel("Tickets"))
+			GLOB.ahelp_tickets.stat_entry()
+		if(length(GLOB.sdql2_queries))
+			if(statpanel("SDQL2"))
+				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
+				for(var/i in GLOB.sdql2_queries)
+					var/datum/SDQL2_query/Q = i
+					Q.generate_stat()
+		if(statpanel("Processes"))
+			if(processScheduler)
+				processScheduler.statProcesses()
 
+	if(listed_turf && client)
+		if(!TurfAdjacent(listed_turf))
+			listed_turf = null
+		else if(statpanel(listed_turf.name))
+			statnull, listed_turf)
+			var/list/overrides = list()
+			for(var/image/I in client.images)
+				if(I.loc && I.loc.loc == listed_turf && I.override)
+					overrides += I.loc
+			for(var/atom/A in listed_turf)
+				if(!A.mouse_opacity)
+					continue
+				if(A.invisibility > see_invisible)
+					continue
+				if(overrides.len && (A in overrides))
+					continue
+				/*
+				if(A.IsObscured())
+					continue
+				*/
+				if(A.plane > plane)
+					continue
+				stat(null, A)
 
 // facing verbs
 /mob/proc/canface()

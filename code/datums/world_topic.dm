@@ -167,7 +167,7 @@
 
 	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
-	if(key_valid)
+	//if(key_valid)
 		//.["active_players"] = get_active_player_count()
 		/*
 		if(SSticker.HasRoundStarted())

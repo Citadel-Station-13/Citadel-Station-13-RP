@@ -69,7 +69,7 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 		var/ckeytext = ckey
 
 		if(!establish_db_connection())
-			error("Ban database connection failure. Key [ckeytext] not checked")
+			log_world("Ban database connection failure. Key [ckeytext] not checked")
 			log_misc("Ban database connection failure. Key [ckeytext] not checked")
 			key_cache[key] = 0
 			return

@@ -12,7 +12,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	var/known_icon_states = icon_states(icon)
 	for(var/lobby_screen in using_map.lobby_screens)
 		if(!(lobby_screen in known_icon_states))
-			error("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
+			log_world("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
 			using_map.lobby_screens -= lobby_screen
 
 	if(using_map.lobby_screens.len)
