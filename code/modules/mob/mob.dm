@@ -432,8 +432,8 @@
 		'html/changelog.html'
 		)
 	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
 		winset(src, "rpane.changelog", "background-color=none;font-style=;")
 

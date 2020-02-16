@@ -109,7 +109,6 @@ var/list/gamemode_cache = list()
 	var/wikiurl
 	var/wikisearchurl
 	var/forumurl
-	var/githuburl
 	var/rulesurl
 	var/mapurl
 
@@ -462,8 +461,6 @@ var/list/gamemode_cache = list()
 				if ("mapurl")
 					config_legacy.mapurl = value
 
-				if ("githuburl")
-					config_legacy.githuburl = value
 				if ("guest_jobban")
 					config_legacy.guest_jobban = 1
 

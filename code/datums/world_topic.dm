@@ -163,7 +163,7 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	.["gamestate"] = SSticker.current_state
+	//.["gamestate"] = SSticker.current_state
 
 	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
 

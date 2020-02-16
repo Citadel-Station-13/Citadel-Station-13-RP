@@ -10,10 +10,8 @@
 
 */
 
-
-#define RECOMMENDED_VERSION 501
-#define TOPIC_LENGTH_LIMIT 1024 //The reason why this is so large is to allow TGS topic calls to function without issue.
-#define TOPIC_COOLDOWN 1 //90% sure there isnt anything that does multiple topic calls in a single decisecond.
+GLOBAL_VAR(topic_status_lastcache)
+GLOBAL_LIST(topic_status_cache)
 
 /world/New()
 	enable_debugger()
@@ -25,10 +23,11 @@
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
-	if(byond_version < RECOMMENDED_VERSION)
-		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
+
+	GLOB.revdata = new
+
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	SetupLogs()
@@ -93,6 +92,7 @@
 
 	processScheduler.deferSetupFor(/datum/controller/process/ticker)
 	processScheduler.setup()
+
 	Master.Initialize(10, FALSE)
 
 	spawn(1)
