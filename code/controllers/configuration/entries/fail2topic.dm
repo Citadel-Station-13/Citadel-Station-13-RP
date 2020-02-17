@@ -12,7 +12,7 @@
 	config_entry_value = TRUE
 
 /datum/config_entry/number/topic_max_size
-	config_entry_value = 8192
+	config_entry_value = 1048576
 
 /datum/config_entry/keyed_list/topic_rate_limit_whitelist
 	key_mode = KEY_MODE_TEXT
