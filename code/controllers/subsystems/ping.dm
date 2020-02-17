@@ -8,12 +8,11 @@ SUBSYSTEM_DEF(ping)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/ping/stat_entry()
-	..("P:[GLOB.clients.len]")
-
+	..("P:[clients.len]")
 
 /datum/controller/subsystem/ping/fire(resumed = 0)
 	if (!resumed)
-		src.currentrun = GLOB.clients.Copy()
+		src.currentrun = clients.Copy()
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun

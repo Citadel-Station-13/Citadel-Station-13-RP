@@ -700,7 +700,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	//This is only called from client/Stat(), let's assume client exists.
 
 	if(statpanel("Status"))
-		var/list/L = list()
+		//var/list/L = list()
 		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 		//L += SSmapping.stat_map_name
 		//L += "Round ID: [GLOB.round_id || "NULL"]"

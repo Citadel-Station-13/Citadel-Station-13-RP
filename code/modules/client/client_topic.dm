@@ -93,7 +93,7 @@
 
 
 	//Logs all hrefs
-	if(config && config_legacy.log_hrefs && href_logfile)
+	if(config_legacy?.log_hrefs)
 		log_href("[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]")
 
 	switch(href_list["_src_"])

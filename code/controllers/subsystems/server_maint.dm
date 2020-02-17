@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(server_maint)
 	world.hub_password = "" //quickly! before the hubbies see us.
 
 /datum/controller/subsystem/server_maint/Initialize(timeofday)
-	if (CONFIG_GET(flag/hub))
+	if(config_legacy.hub_visibility)
 		world.update_hub_visibility(TRUE)
 	return ..()
 
