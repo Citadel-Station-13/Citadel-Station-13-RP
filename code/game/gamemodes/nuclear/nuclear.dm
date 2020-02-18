@@ -33,7 +33,7 @@ var/list/nuke_disks = list()
 	return 0
 
 /datum/game_mode/nuclear/declare_completion()
-	if(config.objectives_disabled)
+	if(config_legacy.objectives_disabled)
 		..()
 		return
 	var/disk_rescued = 1

@@ -3,7 +3,7 @@
 	var/list/L = params2list(params)
 	if (object && object == middragatom && L["left"])
 		ab = max(0, 5 SECONDS-(world.time-middragtime)*0.1)
-	var/mcl = config.minute_click_limit		//CONFIG_GET(number/minute_click_limit)
+	var/mcl = config_legacy.minute_click_limit		//CONFIG_GET(number/minute_click_limit)
 	if (!holder && mcl)
 		var/minute = round(world.time, 600)
 		if (!clicklimiter)
@@ -28,7 +28,7 @@
 			to_chat(src, "<span class='danger'>[msg]</span>")
 			return
 
-	var/scl = config.second_click_limit		//CONFIG_GET(number/second_click_limit)
+	var/scl = config_legacy.second_click_limit		//CONFIG_GET(number/second_click_limit)
 	if (!holder && scl)
 		var/second = round(world.time, 10)
 		if (!clicklimiter)

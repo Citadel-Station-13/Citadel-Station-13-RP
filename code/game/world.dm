@@ -31,14 +31,14 @@
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
 
-	config.post_load()
+	config_legacy.post_load()
 
-	if(config && config.server_name != null && config.server_suffix && world.port > 0)
+	if(config_legacy?.server_name != null && config_legacy.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
-		config.server_name += " #[(world.port % 1000) / 100]"
+		config_legacy.server_name += " #[(world.port % 1000) / 100]"
 
 	// TODO - Figure out what this is. Can you assign to world.log?
-	// if(config && config.log_runtime)
+	// if(config_legacy?.log_runtime)
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
@@ -66,7 +66,7 @@
 	// Loads all the pre-made submap templates.
 	load_map_templates()
 
-	if(config.generate_map)
+	if(config_legacy.generate_map)
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()
 
@@ -96,7 +96,7 @@
 #endif
 
 	spawn(3000)		//so we aren't adding to the round-start lag
-		if(config.ToRban)
+		if(config_legacy.ToRban)
 			ToRban_autoupdate()
 
 #undef RECOMMENDED_VERSION
@@ -191,10 +191,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/list/s = list()
 		s["version"] = game_version
 		s["mode"] = master_mode
-		s["respawn"] = config.abandon_allowed
-		s["enter"] = config.enter_allowed
-		s["vote"] = config.allow_vote_mode
-		s["ai"] = config.allow_ai
+		s["respawn"] = config_legacy.abandon_allowed
+		s["enter"] = config_legacy.enter_allowed
+		s["vote"] = config_legacy.allow_vote_mode
+		s["ai"] = config_legacy.allow_ai
 		s["host"] = host ? host : null
 
 		// This is dumb, but spacestation13.com's banners break if player count isn't the 8th field of the reply, so... this has to go here.
@@ -293,7 +293,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,5) == "info")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != config_legacy.comms_password)
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -380,7 +380,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != config_legacy.comms_password)
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -430,7 +430,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				2. validationkey = the key the bot has, it should match the gameservers commspassword in it's configuration.
 		*/
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != config_legacy.comms_password)
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 
 				spawn(50)
@@ -445,7 +445,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(copytext(T,1,4) == "age")
 		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
+		if(input["key"] != config_legacy.comms_password)
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
@@ -549,7 +549,7 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 	return 1
 
 /world/proc/load_mods()
-	if(config.admin_legacy_system)
+	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
 			error("Failed to load config/mods.txt")
@@ -570,7 +570,7 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 				D.associate(directory[ckey])
 
 /world/proc/load_mentors()
-	if(config.admin_legacy_system)
+	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/mentors.txt")
 		if (!text)
 			error("Failed to load config/mentors.txt")
@@ -592,8 +592,8 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+	if (config_legacy?.server_name)
+		s += "<b>[config_legacy.server_name]</b> &#8212; "
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
@@ -614,15 +614,15 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 	else
 		features += "<b>STARTING</b>"
 
-	/*if (!config.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
+	/*if (!config_legacy.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
 		features += "closed"
 
-	features += config.abandon_allowed ? "respawn" : "no respawn"
+	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
 
-	if (config && config.allow_vote_mode)
+	if (config_legacy?.allow_vote_mode)
 		features += "vote"
 
-	if (config && config.allow_ai)
+	if (config_legacy?.allow_ai)
 		features += "AI allowed"*/
 
 	var/n = 0
@@ -636,8 +636,8 @@ GLOBAL_VAR_INIT(join_motd, "ERROR: MOTD MISSING")
 		features += "~[n] player"
 
 
-	if (config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
+	if (config_legacy?.hostedby)
+		features += "hosted by <b>[config_legacy.hostedby]</b>"
 
 	if (features)
 		s += "\[[jointext(features, ", ")]"	//CITADEL CHANGE - replaces colon with left bracket to make the hub entry a little fancier
@@ -651,8 +651,8 @@ var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
-	if(!config.sql_enabled)
-		world.log << "SQL connection disabled in config."
+	if(!config_legacy.sql_enabled)
+		world.log << "SQL connection disabled in config_legacy."
 	else if(!setup_database_connection())
 		world.log << "Your server failed to establish a connection with the feedback database."
 	else
@@ -695,8 +695,8 @@ proc/establish_db_connection()
 
 
 /hook/startup/proc/connectOldDB()
-	if(!config.sql_enabled)
-		world.log << "SQL connection disabled in config."
+	if(!config_legacy.sql_enabled)
+		world.log << "SQL connection disabled in config_legacy."
 	else if(!setup_old_database_connection())
 		world.log << "Your server failed to establish a connection with the SQL database."
 	else

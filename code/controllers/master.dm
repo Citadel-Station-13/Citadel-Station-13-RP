@@ -184,7 +184,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
-	current_ticklimit = config.tick_limit_mc_init
+	current_ticklimit = config_legacy.tick_limit_mc_init
 	for (var/datum/controller/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
@@ -210,7 +210,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	world.sleep_offline = 1
 	#endif
 
-	world.fps = config.fps
+	world.fps = config_legacy.fps
 	var/initialized_tod = REALTIMEOFDAY
 /*
 	if(sleep_offline_after_initializations)

@@ -301,8 +301,8 @@
 					else if(pod.mess)
 						temp = "Error: Growpod malfunction."
 
-					//Disabled in config.
-					else if(!config.revival_cloning)
+					//Disabled in config_legacy.
+					else if(!config_legacy.revival_cloning)
 						temp = "Error: Unable to initiate growing cycle."
 
 					//Do the cloning!

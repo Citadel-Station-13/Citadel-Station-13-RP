@@ -327,7 +327,7 @@
 		return
 	else if(usr.stat || usr.restrained())
 		return
-	else if (istype(usr,/mob/observer/ghost) && !config.ghost_interaction)
+	else if (istype(usr,/mob/observer/ghost) && !config_legacy.ghost_interaction)
 		return
 	else
 		src.setDir(turn(src.dir, 90))

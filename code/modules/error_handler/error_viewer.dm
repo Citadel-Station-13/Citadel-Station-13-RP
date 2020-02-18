@@ -119,7 +119,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		//log_debug("Runtime in <b>[e.file]</b>, line <b>[e.line]</b>: <b>[html_encode(e.name)]</b> [error_entry.make_link(viewtext)]")
 		/*
 		var/err_msg_delay
-		if(config)
+		if(config_legacy)
 			err_msg_delay = CONFIG_GET(number/error_msg_delay)
 		else
 			var/datum/config_entry/CE = /datum/config_entry/number/error_msg_delay

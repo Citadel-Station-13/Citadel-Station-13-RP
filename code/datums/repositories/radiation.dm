@@ -30,7 +30,7 @@ var/global/repository/radiation/radiation_repository = new()
 	else
 		rad_power = new_power
 		if(!flat)
-			range = min(round(sqrt(rad_power / config.radiation_lower_limit)), 31)  // R = rad_power / dist**2 - Solve for dist
+			range = min(round(sqrt(rad_power / config_legacy.radiation_lower_limit)), 31)  // R = rad_power / dist**2 - Solve for dist
 
 // Ray trace from all active radiation sources to T and return the strongest effect.
 /repository/radiation/proc/get_rads_at_turf(var/turf/T)
@@ -61,7 +61,7 @@ var/global/repository/radiation/radiation_repository = new()
 			origin = get_step_towards(origin, T) //Raytracing
 			if(!(origin in resistance_cache)) //Only get the resistance if we don't already know it.
 				origin.calc_rad_resistance()
-			working = max((working - (origin.cached_rad_resistance * config.radiation_resistance_multiplier)), 0)
+			working = max((working - (origin.cached_rad_resistance * config_legacy.radiation_resistance_multiplier)), 0)
 			if(working <= .)
 				break // Already affected by a stronger source (or its zero...)
 		. = max((working * (1 / (dist ** 2))), .) //Butchered version of the inverse square law. Works for this purpose

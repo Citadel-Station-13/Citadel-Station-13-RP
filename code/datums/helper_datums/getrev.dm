@@ -45,8 +45,8 @@ client/verb/showrevinfo()
 
 	if(revdata.revision)
 		src << "<b>Server revision:</b> [revdata.branch] - [revdata.date]"
-		if(config.githuburl)
-			src << "<a href='[config.githuburl]/commit/[revdata.revision]'>[revdata.revision]</a>"
+		if(config_legacy.githuburl)
+			src << "<a href='[config_legacy.githuburl]/commit/[revdata.revision]'>[revdata.revision]</a>"
 			if(revdata.testmerge.len)	//CITADEL CHANGE - TGS3 testmerge display
 				src << revdata.GetTestMergeInfo()	//CITADEL CHANGE - ditto
 		else
@@ -65,5 +65,5 @@ client/verb/showrevinfo()
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext(cm, 1, min(length(cm), 11)))
 		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.holder))
 			continue
-		. += "<a href=\"[config.githuburl]/pull/[tm.number]\">#[tm.number][details]</a><br>"
+		. += "<a href=\"[config_legacy.githuburl]/pull/[tm.number]\">#[tm.number][details]</a><br>"
 //END OF CITADEL CHANGES

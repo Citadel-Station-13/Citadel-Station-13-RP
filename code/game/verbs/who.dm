@@ -170,17 +170,17 @@
 				eventMmsg += "\t[C] is a [C.holder.rank]\n"
 				num_event_managers_online++
 
-	if(config.admin_irc)
+	if(config_legacy.admin_irc)
 		src << "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>"
 	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
-	if(config.show_mods)
+	if(config_legacy.show_mods)
 		msg += "\n<b> Current Moderators ([num_mods_online]):</b>\n" + modmsg
 
-	if(config.show_devs)
+	if(config_legacy.show_devs)
 		msg += "\n<b> Current Developers ([num_devs_online]):</b>\n" + devmsg
 
-	if(config.show_event_managers)
+	if(config_legacy.show_event_managers)
 		msg += "\n<b> Current Event Managers ([num_event_managers_online]):</b>\n" + eventMmsg
 
 	src << msg

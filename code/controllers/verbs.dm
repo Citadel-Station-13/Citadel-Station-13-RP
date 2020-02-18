@@ -139,7 +139,7 @@
 	set desc = "Debug the process scheduler itself. For vulpine use only."
 
 	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(config_legacy.debugparanoid && !check_rights(R_ADMIN)) return
 	debug_variables(processScheduler)
 	feedback_add_details("admin_verb", "DProcSchd")
 	message_admins("Admin [key_name_admin(usr)] is debugging the process scheduler.")
@@ -150,7 +150,7 @@
 	set desc = "Debug one of the periodic loop background task controllers for the game (be careful!)"
 
 	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(config_legacy.debugparanoid && !check_rights(R_ADMIN)) return
 	var/datum/controller/process/P = processScheduler.nameToProcessMap[controller]
 	debug_variables(P)
 	feedback_add_details("admin_verb", "DProcCtrl")

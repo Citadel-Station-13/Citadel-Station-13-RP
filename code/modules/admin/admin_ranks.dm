@@ -69,7 +69,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		C.holder = null
 	admins.Cut()
 
-	if(config.admin_legacy_system)
+	if(config_legacy.admin_legacy_system)
 		load_admin_ranks()
 
 		//load text from file
@@ -109,7 +109,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		if(!dbcon.IsConnected())
 			error("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			log_misc("Failed to connect to database in load_admins(). Reverting to legacy system.")
-			config.admin_legacy_system = 1
+			config_legacy.admin_legacy_system = 1
 			load_admins()
 			return
 
@@ -129,7 +129,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		if(!admin_datums)
 			error("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
 			log_misc("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
-			config.admin_legacy_system = 1
+			config_legacy.admin_legacy_system = 1
 			load_admins()
 			return
 

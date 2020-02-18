@@ -270,7 +270,7 @@ var/global/list/additional_antag_types = list()
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
 				return 0
-		if(config.continous_rounds)
+		if(config_legacy.continous_rounds)
 			emergency_shuttle.auto_recall = 0
 			return 0
 		return 1
@@ -432,7 +432,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/create_antagonists()
 
-	if(!config.traitor_scaling)
+	if(!config_legacy.traitor_scaling)
 		antag_scaling_coeff = 0
 
 	if(antag_tags && antag_tags.len)

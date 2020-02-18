@@ -25,10 +25,10 @@
 		O.hide(0)
 
 /turf/space/proc/update_starlight()
-	if(!config.starlight)
+	if(!config_legacy.starlight)
 		return
 	if(locate(/turf/simulated) in orange(src,1))
-		set_light(config.starlight)
+		set_light(config_legacy.starlight)
 	else
 		set_light(0)
 
