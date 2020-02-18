@@ -2,7 +2,7 @@
 // Lets read our settings from the configuration file on startup too!
 //
 
-/datum/configuration
+/datum/configuration_legacy
 	var/list/engine_map	// Comma separated list of engines to choose from.  Blank means fully random.
 	var/time_off = FALSE
 	var/pto_job_change = FALSE

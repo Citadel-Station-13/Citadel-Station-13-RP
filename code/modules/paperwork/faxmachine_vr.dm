@@ -51,7 +51,7 @@
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
 //
-/datum/configuration
+/datum/configuration_legacy
 	var/chat_webhook_url = ""		// URL of the webhook for sending announcements/faxes to discord chat.
 	var/chat_webhook_key = ""		// Shared secret for authenticating to the chat webhook
 	var/fax_export_dir = "data/faxes"	// Directory in which to write exported fax HTML files.
