@@ -122,5 +122,5 @@
 			if(probabilities[ctag] > 0)
 				var/percentage = round(probabilities[ctag] / sum * 100, 0.1)
 				msg += "[ctag] [percentage]%"
-	to_chat(src, msg.Join("<br>"))
 */
+	to_chat(src, msg.Join("<br>"))
