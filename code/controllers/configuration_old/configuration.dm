@@ -1,5 +1,3 @@
-var/list/gamemode_cache = list()
-
 /datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
 	var/server_suffix = 0				// generate numeric suffix based on server port
@@ -237,8 +235,10 @@ var/list/gamemode_cache = list()
 	var/minute_topic_limit = 500
 	var/second_topic_limit = 10
 
+	var/list/gamemode_cache = list()
+
 /datum/configuration_legacy/New()
-	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
+	var/list/L = subtypesof(/datum/game_mode)
 	for (var/T in L)
 		// I wish I didn't have to instance the game modes in order to look up
 		// their information, but it is the only way (at least that I know of).

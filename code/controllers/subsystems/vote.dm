@@ -188,7 +188,7 @@ SUBSYSTEM_DEF(vote)
 					return 0
 				choices.Add(config_legacy.votable_modes)
 				for(var/F in choices)
-					var/datum/game_mode/M = gamemode_cache[F]
+					var/datum/game_mode/M = config_legacy.gamemode_cache[F]
 					if(!M)
 						continue
 					gamemode_names[M.config_tag] = capitalize(M.name) //It's ugly to put this here but it works

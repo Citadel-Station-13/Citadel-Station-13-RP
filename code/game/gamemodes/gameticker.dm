@@ -85,7 +85,7 @@ var/global/datum/controller/gameticker/ticker
 			var/list/weighted_modes = list()
 			for(var/datum/game_mode/GM in runnable_modes)
 				weighted_modes[GM.config_tag] = config_legacy.probabilities[GM.config_tag]
-			src.mode = gamemode_cache[pickweight(weighted_modes)]
+			src.mode = config_legacy.gamemode_cache[pickweight(weighted_modes)]
 	else
 		src.mode = config_legacy.pick_mode(master_mode)
 
