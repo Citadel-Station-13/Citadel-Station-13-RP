@@ -101,7 +101,7 @@
 			debug_variables(emergency_shuttle)
 			feedback_add_details("admin_verb","DEmergency")
 		if("Configuration")
-			debug_variables(config)
+			debug_variables(config_legacy)
 			feedback_add_details("admin_verb","DConf")
 		if("pAI")
 			debug_variables(paiController)

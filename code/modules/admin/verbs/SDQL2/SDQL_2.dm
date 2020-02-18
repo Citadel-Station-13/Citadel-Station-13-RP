@@ -1052,7 +1052,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			if("FS")
 				v = Failsafe
 			if("CFG")
-				v = config
+				v = config_legacy
 /*
 			//Subsystem switches
 			if("SSgarbage")
