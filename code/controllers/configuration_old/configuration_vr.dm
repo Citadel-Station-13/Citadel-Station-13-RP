@@ -11,7 +11,7 @@
 	var/pto_cap = 100 //Hours
 
 /hook/startup/proc/read_vs_config()
-	var/list/Lines = file2list("config/config.txt")
+	var/list/Lines = file2list("config/legacy/config.txt")
 	for(var/t in Lines)
 		if(!t)	continue
 
