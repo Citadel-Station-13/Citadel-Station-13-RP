@@ -181,8 +181,8 @@
 				//always play non-admin recipients the adminhelp sound
 				recipient << 'sound/effects/adminhelp.ogg'
 
-				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
-				if(config.popup_admin_pm)
+				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config_legacy.txt ~Carn
+				if(config_legacy.popup_admin_pm)
 					spawn()	//so we don't hold the caller proc up
 						var/sender = src
 						var/sendername = key

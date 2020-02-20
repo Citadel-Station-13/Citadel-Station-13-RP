@@ -17,7 +17,7 @@
 		if(S && pref.alternate_languages.len > S.num_alternate_languages)
 			pref.alternate_languages.len = S.num_alternate_languages // Truncate to allowed length
 	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
-		pref.language_prefixes = config.language_prefixes.Copy()
+		pref.language_prefixes = config_legacy.language_prefixes.Copy()
 
 /datum/category_item/player_setup_item/general/language/content()
 	. += "<b>Languages</b><br>"
@@ -91,7 +91,7 @@
 			pref.language_prefixes = keys
 			return TOPIC_REFRESH
 	else if(href_list["reset_prefix"])
-		pref.language_prefixes = config.language_prefixes.Copy()
+		pref.language_prefixes = config_legacy.language_prefixes.Copy()
 		return TOPIC_REFRESH
 
 	return ..()

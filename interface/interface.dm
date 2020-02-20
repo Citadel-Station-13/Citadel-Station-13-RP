@@ -3,15 +3,15 @@
 	set name = "wiki"
 	set desc = "Type what you want to know about.  This will open the wiki on your web browser."
 	set category = "OOC"
-	if(config.wikiurl)
+	if(config_legacy.wikiurl)
 		if(query)
-			if(config.wikisearchurl)
-				var/output = replacetext(config.wikisearchurl, "%s", url_encode(query))
+			if(config_legacy.wikisearchurl)
+				var/output = replacetext(config_legacy.wikisearchurl, "%s", url_encode(query))
 				src << link(output)
 			else
 				src << "<span class='warning'> The wiki search URL is not set in the server configuration.</span>"
 		else
-			src << link(config.wikiurl)
+			src << link(config_legacy.wikiurl)
 	else
 		src << "<span class='warning'>The wiki URL is not set in the server configuration.</span>"
 		return
@@ -20,10 +20,10 @@
 	set name = "forum"
 	set desc = "Visit the forum."
 	set hidden = 1
-	if( config.forumurl )
+	if( config_legacy.forumurl )
 		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.forumurl)
+		src << link(config_legacy.forumurl)
 	else
 		src << "<span class='warning'>The forum URL is not set in the server configuration.</span>"
 		return
@@ -33,10 +33,10 @@
 	set desc = "Show Server Rules."
 	set hidden = 1
 
-	if(config.rulesurl)
+	if(config_legacy.rulesurl)
 		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.rulesurl)
+		src << link(config_legacy.rulesurl)
 	else
 		src << "<span class='danger'>The rules URL is not set in the server configuration.</span>"
 	return
@@ -46,10 +46,10 @@
 	set desc = "See the map."
 	set hidden = 1
 
-	if(config.mapurl)
+	if(config_legacy.mapurl)
 		if(alert("This will open the map in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.mapurl)
+		src << link(config_legacy.mapurl)
 	else
 		src << "<span class='danger'>The map URL is not set in the server configuration.</span>"
 	return
@@ -59,10 +59,10 @@
 	set desc = "Visit the GitHub"
 	set hidden = 1
 
-	if(config.githuburl)
+	if(CONFIG_GET(string/githuburl))
 		if(alert("This will open the GitHub in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.githuburl)
+		src << link(CONFIG_GET(string/githuburl))
 	else
 		src << "<span class='danger'>The GitHub URL is not set in the server configuration.</span>"
 	return

@@ -2,7 +2,7 @@
 // Lets read our settings from the configuration file on startup too!
 //
 
-/datum/configuration
+/datum/configuration_legacy
 	var/list/engine_map	// Comma separated list of engines to choose from.  Blank means fully random.
 	var/time_off = FALSE
 	var/pto_job_change = FALSE
@@ -11,7 +11,7 @@
 	var/pto_cap = 100 //Hours
 
 /hook/startup/proc/read_vs_config()
-	var/list/Lines = file2list("config/config.txt")
+	var/list/Lines = file2list("config/legacy/config.txt")
 	for(var/t in Lines)
 		if(!t)	continue
 
@@ -36,23 +36,23 @@
 
 		switch (name)
 			if ("chat_webhook_url")
-				config.chat_webhook_url = value
+				config_legacy.chat_webhook_url = value
 			if ("chat_webhook_key")
-				config.chat_webhook_key = value
+				config_legacy.chat_webhook_key = value
 			if ("engine_map")
-				config.engine_map = splittext(value, ",")
+				config_legacy.engine_map = splittext(value, ",")
 			if ("fax_export_dir")
-				config.fax_export_dir = value
+				config_legacy.fax_export_dir = value
 			if ("items_survive_digestion")
-				config.items_survive_digestion = 1
+				config_legacy.items_survive_digestion = 1
 			if ("limit_interns")
-				config.limit_interns = text2num(value)
+				config_legacy.limit_interns = text2num(value)
 			if ("limit_visitors")
-				config.limit_visitors = text2num(value)
+				config_legacy.limit_visitors = text2num(value)
 			if ("pto_cap")
-				config.pto_cap = text2num(value)
+				config_legacy.pto_cap = text2num(value)
 			if ("time_off")
-				config.time_off = TRUE
+				config_legacy.time_off = TRUE
 			if ("pto_job_change")
-				config.pto_job_change = TRUE
+				config_legacy.pto_job_change = TRUE
 	return 1

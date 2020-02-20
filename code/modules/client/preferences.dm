@@ -131,7 +131,7 @@ datum/preferences
 
 	// Communicator identity data
 	var/communicator_visibility = 0
-	
+
 	// Default ringtone for character; if blank, use job default
 	var/ringtone = null
 
@@ -248,8 +248,8 @@ datum/preferences
 	if(!istype(user, /mob/new_player))	return
 
 	if(href_list["preference"] == "open_whitelist_forum")
-		if(config.forumurl)
-			user << link(config.forumurl)
+		if(config_legacy.forumurl)
+			user << link(config_legacy.forumurl)
 		else
 			user << "<span class='danger'>The forum URL is not set in the server configuration.</span>"
 			return
@@ -323,7 +323,7 @@ datum/preferences
 	if(S)
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
-		for(var/i=1, i<= config.character_slots, i++)
+		for(var/i=1, i<= config_legacy.character_slots, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"

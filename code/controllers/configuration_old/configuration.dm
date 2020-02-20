@@ -1,6 +1,4 @@
-var/list/gamemode_cache = list()
-
-/datum/configuration
+/datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
 	var/server_suffix = 0				// generate numeric suffix based on server port
 
@@ -109,7 +107,6 @@ var/list/gamemode_cache = list()
 	var/wikiurl
 	var/wikisearchurl
 	var/forumurl
-	var/githuburl
 	var/rulesurl
 	var/mapurl
 
@@ -166,8 +163,8 @@ var/list/gamemode_cache = list()
 
 	var/footstep_volume = 0
 
-	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in config.txt
-	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config.txt
+	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in
+	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config_legacy.txt
 	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
 	var/use_age_restriction_for_antags = 0 //Do antags use account age restrictions? --requires database
 
@@ -238,8 +235,10 @@ var/list/gamemode_cache = list()
 	var/minute_topic_limit = 500
 	var/second_topic_limit = 10
 
-/datum/configuration/New()
-	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
+	var/list/gamemode_cache = list()
+
+/datum/configuration_legacy/New()
+	var/list/L = subtypesof(/datum/game_mode)
 	for (var/T in L)
 		// I wish I didn't have to instance the game modes in order to look up
 		// their information, but it is the only way (at least that I know of).
@@ -255,7 +254,7 @@ var/list/gamemode_cache = list()
 					src.votable_modes += M.config_tag
 	src.votable_modes += "secret"
 
-/datum/configuration/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
+/datum/configuration_legacy/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
 	var/list/Lines = file2list(filename)
 
 	for(var/t in Lines)
@@ -283,25 +282,25 @@ var/list/gamemode_cache = list()
 		if(type == "config")
 			switch (name)
 				if ("resource_urls")
-					config.resource_urls = splittext(value, " ")
+					config_legacy.resource_urls = splittext(value, " ")
 
 				if ("admin_legacy_system")
-					config.admin_legacy_system = 1
+					config_legacy.admin_legacy_system = 1
 
 				if ("ban_legacy_system")
-					config.ban_legacy_system = 1
+					config_legacy.ban_legacy_system = 1
 
 				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
-					config.hub_visibility = 1
+					config_legacy.hub_visibility = 1
 
 				if ("use_age_restriction_for_jobs")
-					config.use_age_restriction_for_jobs = 1
+					config_legacy.use_age_restriction_for_jobs = 1
 
 				if ("use_age_restriction_for_antags")
-					config.use_age_restriction_for_antags = 1
+					config_legacy.use_age_restriction_for_antags = 1
 
 				if ("jobs_have_minimal_access")
-					config.jobs_have_minimal_access = 1
+					config_legacy.jobs_have_minimal_access = 1
 
 				if ("use_recursive_explosions")
 					use_recursive_explosions = 1
@@ -310,205 +309,203 @@ var/list/gamemode_cache = list()
 					multi_z_explosion_scalar = text2num(value)
 
 				if ("log_ooc")
-					config.log_ooc = 1
+					config_legacy.log_ooc = 1
 
 				if ("log_access")
-					config.log_access = 1
+					config_legacy.log_access = 1
 
 				if ("sql_enabled")
-					config.sql_enabled = 1
+					config_legacy.sql_enabled = 1
 
 				if ("log_say")
-					config.log_say = 1
+					config_legacy.log_say = 1
 
 				if ("debug_paranoid")
-					config.debugparanoid = 1
+					config_legacy.debugparanoid = 1
 
 				if ("log_admin")
-					config.log_admin = 1
+					config_legacy.log_admin = 1
 
 				if ("log_debug")
-					config.log_debug = text2num(value)
+					config_legacy.log_debug = text2num(value)
 
 				if ("log_game")
-					config.log_game = 1
+					config_legacy.log_game = 1
 
 				if ("log_vote")
-					config.log_vote = 1
+					config_legacy.log_vote = 1
 
 				if ("log_whisper")
-					config.log_whisper = 1
+					config_legacy.log_whisper = 1
 
 				if ("log_attack")
-					config.log_attack = 1
+					config_legacy.log_attack = 1
 
 				if ("log_emote")
-					config.log_emote = 1
+					config_legacy.log_emote = 1
 
 				if ("log_adminchat")
-					config.log_adminchat = 1
+					config_legacy.log_adminchat = 1
 
 				if ("log_adminwarn")
-					config.log_adminwarn = 1
+					config_legacy.log_adminwarn = 1
 
 				if ("log_pda")
-					config.log_pda = 1
+					config_legacy.log_pda = 1
 
 				if ("log_world_output")
-					config.log_world_output = 1
+					config_legacy.log_world_output = 1
 
 				if ("log_hrefs")
-					config.log_hrefs = 1
+					config_legacy.log_hrefs = 1
 
 				if ("log_runtime")
-					config.log_runtime = 1
+					config_legacy.log_runtime = 1
 
 				if ("generate_map")
-					config.generate_map = 1
+					config_legacy.generate_map = 1
 
 				if ("no_click_cooldown")
-					config.no_click_cooldown = 1
+					config_legacy.no_click_cooldown = 1
 
 				if("allow_admin_ooccolor")
-					config.allow_admin_ooccolor = 1
+					config_legacy.allow_admin_ooccolor = 1
 
 				if ("allow_vote_restart")
-					config.allow_vote_restart = 1
+					config_legacy.allow_vote_restart = 1
 
 				if ("allow_vote_mode")
-					config.allow_vote_mode = 1
+					config_legacy.allow_vote_mode = 1
 
 				if ("allow_admin_jump")
-					config.allow_admin_jump = 1
+					config_legacy.allow_admin_jump = 1
 
 				if("allow_admin_rev")
-					config.allow_admin_rev = 1
+					config_legacy.allow_admin_rev = 1
 
 				if ("allow_admin_spawning")
-					config.allow_admin_spawning = 1
+					config_legacy.allow_admin_spawning = 1
 
 				if ("no_dead_vote")
-					config.vote_no_dead = 1
+					config_legacy.vote_no_dead = 1
 
 				if ("default_no_vote")
-					config.vote_no_default = 1
+					config_legacy.vote_no_default = 1
 
 				if ("vote_delay")
-					config.vote_delay = text2num(value)
+					config_legacy.vote_delay = text2num(value)
 
 				if("comms_key")
-					config.comms_key = value
+					config_legacy.comms_key = value
 
 				if ("vote_period")
-					config.vote_period = text2num(value)
+					config_legacy.vote_period = text2num(value)
 
 				if ("vote_autotransfer_initial")
-					config.vote_autotransfer_initial = text2num(value)
+					config_legacy.vote_autotransfer_initial = text2num(value)
 
 				if ("vote_autotransfer_interval")
-					config.vote_autotransfer_interval = text2num(value)
+					config_legacy.vote_autotransfer_interval = text2num(value)
 
 				if ("vote_autogamemode_timeleft")
-					config.vote_autogamemode_timeleft = text2num(value)
+					config_legacy.vote_autogamemode_timeleft = text2num(value)
 
 				if("ert_admin_only")
-					config.ert_admin_call_only = 1
+					config_legacy.ert_admin_call_only = 1
 
 				if ("allow_ai")
-					config.allow_ai = 1
+					config_legacy.allow_ai = 1
 
 				if ("allow_ai_drones")
-					config.allow_ai_drones = 1
+					config_legacy.allow_ai_drones = 1
 
 //				if ("authentication")
-//					config.enable_authentication = 1
+//					config_legacy.enable_authentication = 1
 
 				if ("norespawn")
-					config.respawn = 0
+					config_legacy.respawn = 0
 
 				if ("servername")
-					config.server_name = value
+					config_legacy.server_name = value
 
 				if ("serversuffix")
-					config.server_suffix = 1
+					config_legacy.server_suffix = 1
 
 				if ("nudge_script_path")
-					config.nudge_script_path = value
+					config_legacy.nudge_script_path = value
 
 				if ("hostedby")
-					config.hostedby = value
+					config_legacy.hostedby = value
 
 				if ("serverurl")
-					config.serverurl = value
+					config_legacy.serverurl = value
 
 				if ("server")
-					config.server = value
+					config_legacy.server = value
 
 				if ("banappeals")
-					config.banappeals = value
+					config_legacy.banappeals = value
 
 				if ("wikiurl")
-					config.wikiurl = value
+					config_legacy.wikiurl = value
 
 				if ("wikisearchurl")
-					config.wikisearchurl = value
+					config_legacy.wikisearchurl = value
 
 				if ("forumurl")
-					config.forumurl = value
+					config_legacy.forumurl = value
 
 				if ("rulesurl")
-					config.rulesurl = value
+					config_legacy.rulesurl = value
 
 				if ("mapurl")
-					config.mapurl = value
+					config_legacy.mapurl = value
 
-				if ("githuburl")
-					config.githuburl = value
 				if ("guest_jobban")
-					config.guest_jobban = 1
+					config_legacy.guest_jobban = 1
 
 				if ("guest_ban")
-					config.guests_allowed = 0
+					config_legacy.guests_allowed = 0
 
 				if ("disable_ooc")
-					config.ooc_allowed = 0
-					config.looc_allowed = 0
+					config_legacy.ooc_allowed = 0
+					config_legacy.looc_allowed = 0
 
 				if ("disable_entry")
-					config.enter_allowed = 0
+					config_legacy.enter_allowed = 0
 
 				if ("disable_dead_ooc")
-					config.dooc_allowed = 0
+					config_legacy.dooc_allowed = 0
 
 				if ("disable_dsay")
-					config.dsay_allowed = 0
+					config_legacy.dsay_allowed = 0
 
 				if ("disable_respawn")
-					config.abandon_allowed = 0
+					config_legacy.abandon_allowed = 0
 
 				if ("usewhitelist")
-					config.usewhitelist = 1
+					config_legacy.usewhitelist = 1
 
 				if ("feature_object_spell_system")
-					config.feature_object_spell_system = 1
+					config_legacy.feature_object_spell_system = 1
 
 				if ("allow_metadata")
-					config.allow_Metadata = 1
+					config_legacy.allow_Metadata = 1
 
 				if ("traitor_scaling")
-					config.traitor_scaling = 1
+					config_legacy.traitor_scaling = 1
 
 				if ("aliens_allowed")
-					config.aliens_allowed = 1
+					config_legacy.aliens_allowed = 1
 
 				if ("ninjas_allowed")
-					config.ninjas_allowed = 1
+					config_legacy.ninjas_allowed = 1
 
 				if ("objectives_disabled")
-					config.objectives_disabled = 1
+					config_legacy.objectives_disabled = 1
 
 				if("protect_roles_from_antagonist")
-					config.protect_roles_from_antagonist = 1
+					config_legacy.protect_roles_from_antagonist = 1
 
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
@@ -518,66 +515,66 @@ var/list/gamemode_cache = list()
 					if (prob_pos)
 						prob_name = lowertext(copytext(value, 1, prob_pos))
 						prob_value = copytext(value, prob_pos + 1)
-						if (prob_name in config.modes)
-							config.probabilities[prob_name] = text2num(prob_value)
+						if (prob_name in config_legacy.modes)
+							config_legacy.probabilities[prob_name] = text2num(prob_value)
 						else
 							log_misc("Unknown game mode probability configuration definition: [prob_name].")
 					else
 						log_misc("Incorrect probability configuration definition: [prob_name]  [prob_value].")
 
 				if("allow_random_events")
-					config.allow_random_events = 1
+					config_legacy.allow_random_events = 1
 
 				if("kick_inactive")
-					config.kick_inactive = text2num(value)
+					config_legacy.kick_inactive = text2num(value)
 
 				if("show_mods")
-					config.show_mods = 1
+					config_legacy.show_mods = 1
 
 				if("show_devs")
-					config.show_devs = 1
+					config_legacy.show_devs = 1
 
 				if("show_event_managers")
-					config.show_event_managers = 1
+					config_legacy.show_event_managers = 1
 
 				if("mods_can_tempban")
-					config.mods_can_tempban = 1
+					config_legacy.mods_can_tempban = 1
 
 				if("mods_can_job_tempban")
-					config.mods_can_job_tempban = 1
+					config_legacy.mods_can_job_tempban = 1
 
 				if("mod_tempban_max")
-					config.mod_tempban_max = text2num(value)
+					config_legacy.mod_tempban_max = text2num(value)
 
 				if("mod_job_tempban_max")
-					config.mod_job_tempban_max = text2num(value)
+					config_legacy.mod_job_tempban_max = text2num(value)
 
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1
 
 				if("alert_red_upto")
-					config.alert_desc_red_upto = value
+					config_legacy.alert_desc_red_upto = value
 
 				if("alert_red_downto")
-					config.alert_desc_red_downto = value
+					config_legacy.alert_desc_red_downto = value
 
 				if("alert_blue_downto")
-					config.alert_desc_blue_downto = value
+					config_legacy.alert_desc_blue_downto = value
 
 				if("alert_blue_upto")
-					config.alert_desc_blue_upto = value
+					config_legacy.alert_desc_blue_upto = value
 
 				if("alert_green")
-					config.alert_desc_green = value
+					config_legacy.alert_desc_green = value
 
 				if("alert_delta")
-					config.alert_desc_delta = value
+					config_legacy.alert_desc_delta = value
 
 				if("forbid_singulo_possession")
 					forbid_singulo_possession = 1
 
 				if("popup_admin_pm")
-					config.popup_admin_pm = 1
+					config_legacy.popup_admin_pm = 1
 
 				if("allow_holidays")
 					Holiday = 1
@@ -589,7 +586,7 @@ var/list/gamemode_cache = list()
 					use_node_bot = 1
 
 				if("irc_bot_port")
-					config.irc_bot_port = value
+					config_legacy.irc_bot_port = value
 
 				if("irc_bot_export")
 					irc_bot_export = 1
@@ -603,9 +600,9 @@ var/list/gamemode_cache = list()
 					tick_limit_mc_init = text2num(value)
 
 				if("allow_antag_hud")
-					config.antag_hud_allowed = 1
+					config_legacy.antag_hud_allowed = 1
 				if("antag_hud_restricted")
-					config.antag_hud_restricted = 1
+					config_legacy.antag_hud_restricted = 1
 
 				if("socket_talk")
 					socket_talk = text2num(value)
@@ -630,65 +627,65 @@ var/list/gamemode_cache = list()
 					alien_to_human_ratio = text2num(value)
 
 				if("assistant_maint")
-					config.assistant_maint = 1
+					config_legacy.assistant_maint = 1
 
 				if("gateway_delay")
-					config.gateway_delay = text2num(value)
+					config_legacy.gateway_delay = text2num(value)
 
 				if("continuous_rounds")
-					config.continous_rounds = 1
+					config_legacy.continous_rounds = 1
 
 				if("ghost_interaction")
-					config.ghost_interaction = 1
+					config_legacy.ghost_interaction = 1
 
 				if("disable_player_mice")
-					config.disable_player_mice = 1
+					config_legacy.disable_player_mice = 1
 
 				if("uneducated_mice")
-					config.uneducated_mice = 1
+					config_legacy.uneducated_mice = 1
 
 				if("comms_password")
-					config.comms_password = value
+					config_legacy.comms_password = value
 
 				if("irc_bot_host")
-					config.irc_bot_host = value
+					config_legacy.irc_bot_host = value
 
 				if("main_irc")
-					config.main_irc = value
+					config_legacy.main_irc = value
 
 				if("admin_irc")
-					config.admin_irc = value
+					config_legacy.admin_irc = value
 
 				if("python_path")
 					if(value)
-						config.python_path = value
+						config_legacy.python_path = value
 
 				if("use_lib_nudge")
-					config.use_lib_nudge = 1
+					config_legacy.use_lib_nudge = 1
 
 				if("allow_cult_ghostwriter")
-					config.cult_ghostwriter = 1
+					config_legacy.cult_ghostwriter = 1
 
 				if("req_cult_ghostwriter")
-					config.cult_ghostwriter_req_cultists = text2num(value)
+					config_legacy.cult_ghostwriter_req_cultists = text2num(value)
 
 				if("character_slots")
-					config.character_slots = text2num(value)
+					config_legacy.character_slots = text2num(value)
 
 				if("loadout_slots")
-					config.loadout_slots = text2num(value)
+					config_legacy.loadout_slots = text2num(value)
 
 				if("allow_drone_spawn")
-					config.allow_drone_spawn = text2num(value)
+					config_legacy.allow_drone_spawn = text2num(value)
 
 				if("drone_build_time")
-					config.drone_build_time = text2num(value)
+					config_legacy.drone_build_time = text2num(value)
 
 				if("max_maint_drones")
-					config.max_maint_drones = text2num(value)
+					config_legacy.max_maint_drones = text2num(value)
 
 				if("use_overmap")
-					config.use_overmap = 1
+					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
 					using_map.station_levels = text2numlist(value, ";")
@@ -703,52 +700,52 @@ var/list/gamemode_cache = list()
 					using_map.player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
-					config.expected_round_length = MinutesToTicks(text2num(value))
+					config_legacy.expected_round_length = MinutesToTicks(text2num(value))
 
 				if("disable_welder_vision")
-					config.welder_vision = 0
+					config_legacy.welder_vision = 0
 
 				if("allow_extra_antags")
-					config.allow_extra_antags = 1
+					config_legacy.allow_extra_antags = 1
 
 				if("event_custom_start_mundane")
 					var/values = text2numlist(value, ";")
-					config.event_first_run[EVENT_LEVEL_MUNDANE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
+					config_legacy.event_first_run[EVENT_LEVEL_MUNDANE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
 
 				if("event_custom_start_moderate")
 					var/values = text2numlist(value, ";")
-					config.event_first_run[EVENT_LEVEL_MODERATE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
+					config_legacy.event_first_run[EVENT_LEVEL_MODERATE] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
 
 				if("event_custom_start_major")
 					var/values = text2numlist(value, ";")
-					config.event_first_run[EVENT_LEVEL_MAJOR] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
+					config_legacy.event_first_run[EVENT_LEVEL_MAJOR] = list("lower" = MinutesToTicks(values[1]), "upper" = MinutesToTicks(values[2]))
 
 				if("event_delay_lower")
 					var/values = text2numlist(value, ";")
-					config.event_delay_lower[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
-					config.event_delay_lower[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
-					config.event_delay_lower[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
+					config_legacy.event_delay_lower[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
+					config_legacy.event_delay_lower[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
+					config_legacy.event_delay_lower[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
 
 				if("event_delay_upper")
 					var/values = text2numlist(value, ";")
-					config.event_delay_upper[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
-					config.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
-					config.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
+					config_legacy.event_delay_upper[EVENT_LEVEL_MUNDANE] = MinutesToTicks(values[1])
+					config_legacy.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
+					config_legacy.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
 
 				if("starlight")
 					value = text2num(value)
-					config.starlight = value >= 0 ? value : 0
+					config_legacy.starlight = value >= 0 ? value : 0
 
 				if("ert_species")
-					config.ert_species = splittext(value, ";")
-					if(!config.ert_species.len)
-						config.ert_species += SPECIES_HUMAN
+					config_legacy.ert_species = splittext(value, ";")
+					if(!config_legacy.ert_species.len)
+						config_legacy.ert_species += SPECIES_HUMAN
 
 				if("law_zero")
 					law_zero = value
 
 				if("aggressive_changelog")
-					config.aggressive_changelog = 1
+					config_legacy.aggressive_changelog = 1
 
 				if("default_language_prefixes")
 					var/list/values = splittext(value, " ")
@@ -759,25 +756,25 @@ var/list/gamemode_cache = list()
 					radiation_lower_limit = text2num(value)
 
 				if ("panic_bunker")
-					config.panic_bunker = 1
+					config_legacy.panic_bunker = 1
 
 				if ("panic_bunker_message")
-					config.panic_bunker_message = value
+					config_legacy.panic_bunker_message = value
 
 				if ("paranoia_logging")
-					config.paranoia_logging = 1
+					config_legacy.paranoia_logging = 1
 
 				if("minute_click_limit")
-					config.minute_click_limit = text2num(value)
+					config_legacy.minute_click_limit = text2num(value)
 
 				if("second_click_limit")
-					config.second_click_limit = text2num(value)
+					config_legacy.second_click_limit = text2num(value)
 
 				if("minute_topic_limit")
-					config.minute_topic_limit = text2num(value)
+					config_legacy.minute_topic_limit = text2num(value)
 
 				if("second_topic_limit")
-					config.second_topic_limit = text2num(value)
+					config_legacy.second_topic_limit = text2num(value)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
@@ -789,64 +786,64 @@ var/list/gamemode_cache = list()
 
 			switch(name)
 				if("health_threshold_crit")
-					config.health_threshold_crit = value
+					config_legacy.health_threshold_crit = value
 				if("health_threshold_softcrit")
-					config.health_threshold_softcrit = value
+					config_legacy.health_threshold_softcrit = value
 				if("health_threshold_dead")
-					config.health_threshold_dead = value
+					config_legacy.health_threshold_dead = value
 				if("show_human_death_message")
-					config.show_human_death_message = 1
+					config_legacy.show_human_death_message = 1
 				if("revival_pod_plants")
-					config.revival_pod_plants = value
+					config_legacy.revival_pod_plants = value
 				if("revival_cloning")
-					config.revival_cloning = value
+					config_legacy.revival_cloning = value
 				if("revival_brain_life")
-					config.revival_brain_life = value
+					config_legacy.revival_brain_life = value
 				if("organ_health_multiplier")
-					config.organ_health_multiplier = value / 100
+					config_legacy.organ_health_multiplier = value / 100
 				if("organ_regeneration_multiplier")
-					config.organ_regeneration_multiplier = value / 100
+					config_legacy.organ_regeneration_multiplier = value / 100
 				if("organ_damage_spillover_multiplier")
-					config.organ_damage_spillover_multiplier = value / 100
+					config_legacy.organ_damage_spillover_multiplier = value / 100
 				if("organs_can_decay")
-					config.organs_decay = 1
+					config_legacy.organs_decay = 1
 				if("default_brain_health")
-					config.default_brain_health = text2num(value)
-					if(!config.default_brain_health || config.default_brain_health < 1)
-						config.default_brain_health = initial(config.default_brain_health)
+					config_legacy.default_brain_health = text2num(value)
+					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
+						config_legacy.default_brain_health = initial(config_legacy.default_brain_health)
 				if("bones_can_break")
-					config.bones_can_break = value
+					config_legacy.bones_can_break = value
 				if("limbs_can_break")
-					config.limbs_can_break = value
+					config_legacy.limbs_can_break = value
 
 				if("run_speed")
-					config.run_speed = value
+					config_legacy.run_speed = value
 				if("walk_speed")
-					config.walk_speed = value
+					config_legacy.walk_speed = value
 
 				if("human_delay")
-					config.human_delay = value
+					config_legacy.human_delay = value
 				if("robot_delay")
-					config.robot_delay = value
+					config_legacy.robot_delay = value
 				if("monkey_delay")
-					config.monkey_delay = value
+					config_legacy.monkey_delay = value
 				if("alien_delay")
-					config.alien_delay = value
+					config_legacy.alien_delay = value
 				if("slime_delay")
-					config.slime_delay = value
+					config_legacy.slime_delay = value
 				if("animal_delay")
-					config.animal_delay = value
+					config_legacy.animal_delay = value
 
 				if("footstep_volume")
-					config.footstep_volume = text2num(value)
+					config_legacy.footstep_volume = text2num(value)
 
 				if("use_loyalty_implants")
-					config.use_loyalty_implants = 1
+					config_legacy.use_loyalty_implants = 1
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
 
-/datum/configuration/proc/loadsql(filename)  // -- TLE
+/datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
 	var/list/Lines = file2list(filename)
 	for(var/t in Lines)
 		if(!t)	continue
@@ -892,7 +889,7 @@ var/list/gamemode_cache = list()
 			else
 				log_misc("Unknown setting in configuration: '[name]'")
 
-/datum/configuration/proc/loadforumsql(filename)  // -- TLE
+/datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
 	var/list/Lines = file2list(filename)
 	for(var/t in Lines)
 		if(!t)	continue
@@ -934,7 +931,7 @@ var/list/gamemode_cache = list()
 			else
 				log_misc("Unknown setting in configuration: '[name]'")
 
-/datum/configuration/proc/pick_mode(mode_name)
+/datum/configuration_legacy/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up
 	// their information, but it is the only way (at least that I know of).
 	for (var/game_mode in gamemode_cache)
@@ -943,19 +940,19 @@ var/list/gamemode_cache = list()
 			return M
 	return gamemode_cache["extended"]
 
-/datum/configuration/proc/get_runnable_modes()
+/datum/configuration_legacy/proc/get_runnable_modes()
 	var/list/runnable_modes = list()
 	for(var/game_mode in gamemode_cache)
 		var/datum/game_mode/M = gamemode_cache[game_mode]
-		if(M && M.can_start() && !isnull(config.probabilities[M.config_tag]) && config.probabilities[M.config_tag] > 0)
+		if(M && M.can_start() && !isnull(config_legacy.probabilities[M.config_tag]) && config_legacy.probabilities[M.config_tag] > 0)
 			runnable_modes |= M
 	return runnable_modes
 
-/datum/configuration/proc/post_load()
-	//apply a default value to config.python_path, if needed
-	if (!config.python_path)
+/datum/configuration_legacy/proc/post_load()
+	//apply a default value to config_legacy.python_path, if needed
+	if (!config_legacy.python_path)
 		if(world.system_type == UNIX)
-			config.python_path = "/usr/bin/env python2"
+			config_legacy.python_path = "/usr/bin/env python2"
 		else //probably windows, if not this should work anyway
-			config.python_path = "python"
+			config_legacy.python_path = "python"
 	world.update_hub_visibility(hub_visibility)			//CITADEL CHANGE - HUB CONFIG

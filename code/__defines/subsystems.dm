@@ -57,9 +57,11 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
+#define INIT_ORDER_FAIL2TOPIC	101
 #define INIT_ORDER_GARBAGE		70
 #define INIT_ORDER_TIMER		60
 #define INIT_ORDER_MAPPING	20  // VOREStation Edit
+#define INIT_ORDER_SERVER_MAINT		17
 #define INIT_ORDER_DECALS	16
 #define INIT_ORDER_ATOMS	15
 #define INIT_ORDER_MACHINES 10
@@ -79,6 +81,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
+#define FIRE_PRIORITY_PING			10
+#define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35
