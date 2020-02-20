@@ -11490,6 +11490,7 @@
 	name = "Engineering Starboard External Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "aCC" = (
@@ -20613,6 +20614,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bHu" = (
@@ -20700,6 +20702,7 @@
 	pixel_y = -26;
 	req_one_access = list(13)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bHN" = (
@@ -21096,6 +21099,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bPq" = (
@@ -21173,6 +21177,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
 "bPx" = (
@@ -21523,6 +21528,7 @@
 	locked = 1;
 	name = "Dock One External Access"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQz" = (
@@ -21533,6 +21539,7 @@
 	locked = 1;
 	name = "Dock One External Access"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQC" = (
@@ -21552,6 +21559,7 @@
 	pixel_y = -6;
 	req_one_access = list(13)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQD" = (
@@ -21579,6 +21587,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bVu" = (

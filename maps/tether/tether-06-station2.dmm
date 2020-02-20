@@ -3109,6 +3109,10 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
+"fy" = (
+/obj/structure/grille,
+/turf/simulated/mineral/floor/vacuum,
+/area/mine/explored/upper_level)
 "fB" = (
 /obj/structure/stairs/south,
 /turf/simulated/floor/tiled,
@@ -11465,6 +11469,7 @@
 	pixel_y = -26;
 	req_access = list(18)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "uP" = (
@@ -15954,6 +15959,7 @@
 	name = "Large Escape Pod 1"
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "BM" = (
@@ -17540,6 +17546,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"Lr" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/mine/explored/upper_level)
 "Lx" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/weapon/cell/super;
@@ -18351,6 +18361,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
+"Rj" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "Rl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/apc,
@@ -18539,6 +18553,10 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+"SM" = (
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/mine/explored/upper_level)
 "ST" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/catwalk,
@@ -19432,6 +19450,9 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"Zo" = (
+/turf/simulated/floor/plating,
+/area/mine/explored/upper_level)
 "Zr" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/techfloor{
@@ -27800,7 +27821,7 @@ aa
 aa
 aa
 aa
-ab
+Rj
 ab
 IO
 Mq
@@ -32792,7 +32813,7 @@ ac
 ac
 ac
 aP
-aP
+Zo
 aP
 aP
 aP
@@ -32933,9 +32954,9 @@ ac
 ac
 ac
 aP
-aP
-aP
-aP
+fy
+Zo
+fy
 aP
 aP
 aP
@@ -33073,16 +33094,16 @@ ac
 ac
 ac
 ac
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
+Zo
 OJ
 OJ
 OJ
@@ -33217,9 +33238,9 @@ ac
 ac
 aP
 aP
-aP
-aP
-aP
+fy
+Zo
+fy
 aP
 aP
 aP
@@ -33360,7 +33381,7 @@ aP
 aP
 aP
 aP
-aP
+Zo
 aP
 aP
 aP
@@ -33501,9 +33522,9 @@ aP
 aP
 aP
 aP
-aP
-aP
-aP
+fy
+Zo
+fy
 aP
 aP
 aP
@@ -33644,7 +33665,7 @@ aP
 aP
 aP
 aP
-aP
+Zo
 aP
 aP
 aP
@@ -33783,16 +33804,16 @@ Yw
 Yw
 Yw
 Yw
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
+Zo
+Zo
+SM
+Zo
+SM
+Zo
+Zo
+Zo
+Zo
+Zo
 Zx
 Ta
 JL
@@ -33928,7 +33949,7 @@ aa
 aP
 aP
 aP
-aP
+Zo
 aP
 aP
 aP
@@ -34069,9 +34090,9 @@ aa
 aa
 aa
 aa
-aP
-aP
-aP
+fy
+Lr
+fy
 aP
 aP
 aP

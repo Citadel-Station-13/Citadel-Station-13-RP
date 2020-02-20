@@ -6895,6 +6895,7 @@
 /obj/machinery/door/airlock/external{
 	locked = 1
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "lu" = (
@@ -12702,24 +12703,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "uv" = (
-/obj/structure/table/steel,
-/obj/item/weapon/wrapping_paper,
-/obj/item/weapon/wrapping_paper,
-/obj/item/weapon/wrapping_paper,
-/obj/item/device/destTagger{
-	pixel_x = 4;
-	pixel_y = 3
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 4
-	},
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/packageWrap,
-/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "uw" = (
@@ -13257,22 +13241,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
-"vi" = (
-/obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 4
-	},
-/obj/machinery/photocopier/faxmachine{
-	department = "Mailing-Room"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/delivery)
 "vj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13756,24 +13724,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/turf/simulated/floor/tiled,
-/area/quartermaster/delivery)
-"vY" = (
-/obj/structure/table/steel,
-/obj/item/weapon/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/machinery/camera/network/cargo{
-	dir = 1;
-	name = "security camera"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 6
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "vZ" = (
@@ -27631,6 +27581,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"RC" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "cargo_bay_door";
+	locked = 1;
+	name = "Cargo Docking Hatch"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad2"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/quartermaster/storage)
 "RU" = (
 /obj/machinery/suit_cycler/headofsecurity,
 /turf/simulated/floor/wood,
@@ -27642,6 +27608,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/eva)
+"Sp" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "cargo_bay_door";
+	locked = 1;
+	name = "Cargo Docking Hatch"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled,
+/area/quartermaster/storage)
 "SD" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -27651,6 +27629,14 @@
 /area/ai/foyer)
 "SW" = (
 /turf/simulated/mineral/vacuum,
+/area/space)
+"Tv" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/wall,
+/area/quartermaster/delivery)
+"TE" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
 /area/space)
 "TL" = (
 /obj/machinery/ai_slipper{
@@ -27709,6 +27695,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/eva)
+"UJ" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "UK" = (
 /obj/random/trash_pile,
 /obj/structure/railing{
@@ -27765,6 +27755,22 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
+"Xg" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "cargo_bay_door";
+	locked = 1;
+	name = "Cargo Docking Hatch"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/quartermaster/storage)
 "Xv" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -27824,6 +27830,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+"ZH" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/quartermaster/delivery)
 "ZO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -37087,7 +37097,7 @@ aa
 aa
 aa
 ed
-gg
+TE
 gg
 aU
 aU
@@ -37229,7 +37239,7 @@ aa
 aa
 aa
 ed
-gg
+TE
 gj
 gl
 gx
@@ -37371,7 +37381,7 @@ aa
 aa
 aa
 ed
-gg
+TE
 gg
 ac
 ag
@@ -37513,8 +37523,8 @@ aa
 aa
 aa
 ed
-gg
-gg
+TE
+TE
 aU
 aU
 aU
@@ -40106,9 +40116,9 @@ rN
 sz
 ty
 uv
-vi
-vY
-wD
+uv
+uv
+ZH
 xm
 ya
 yS
@@ -40250,8 +40260,8 @@ qr
 uw
 uw
 uw
-qr
-xm
+Tv
+UJ
 ya
 yT
 zL
@@ -42388,11 +42398,11 @@ vt
 vt
 vt
 CR
-DD
-Ez
+RC
+Sp
 Fn
-Ez
-GQ
+Sp
+Xg
 HH
 ae
 ae

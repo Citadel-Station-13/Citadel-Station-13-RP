@@ -1845,6 +1845,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "dI" = (
@@ -1852,6 +1853,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "dJ" = (
@@ -1859,6 +1861,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "dK" = (
@@ -2158,6 +2161,7 @@
 /obj/effect/floor_decal/corner_oldtile/green{
 	dir = 9
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "em" = (
@@ -2170,6 +2174,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/rust,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "eo" = (
@@ -2592,6 +2597,7 @@
 /obj/effect/floor_decal/corner_oldtile/green{
 	dir = 9
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "eY" = (
@@ -2601,6 +2607,7 @@
 /obj/effect/floor_decal/corner_oldtile/green{
 	dir = 6
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "eZ" = (
@@ -3409,6 +3416,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner_oldtile/green/full,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "gu" = (
@@ -3418,6 +3426,7 @@
 /obj/effect/floor_decal/corner_oldtile/green{
 	dir = 10
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "gv" = (
@@ -3427,6 +3436,7 @@
 /obj/effect/floor_decal/corner_oldtile/green/full{
 	dir = 4
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "gw" = (
@@ -20778,6 +20788,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
+"KL" = (
+/obj/structure/catwalk,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside3)
 "KM" = (
 /obj/item/weapon/stool/padded,
 /obj/structure/disposalpipe/segment{
@@ -21227,8 +21242,7 @@
 /obj/machinery/camera/network/mining{
 	dir = 8
 	},
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside3)
 "MB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -21249,11 +21263,14 @@
 /obj/machinery/camera/network/mining,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
+"MJ" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside3)
 "MK" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/mining,
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside3)
 "MO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21789,8 +21806,8 @@
 /area/tether/surfacebase/bar_backroom)
 "Pz" = (
 /obj/structure/catwalk,
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "PA" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -21995,8 +22012,7 @@
 	icon_state = "tube1";
 	dir = 1
 	},
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
+/turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "Qu" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22272,7 +22288,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/structure/lattice,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "Rz" = (
@@ -22979,8 +22994,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
+/turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "VF" = (
 /obj/machinery/light{
@@ -23192,6 +23206,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
+"WR" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/bar/catwalk)
 "WS" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -23231,8 +23249,7 @@
 "Xh" = (
 /obj/structure/catwalk,
 /obj/machinery/camera/network/northern_star,
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
+/turf/simulated/floor/plating,
 /area/maintenance/bar/catwalk)
 "Xk" = (
 /obj/structure/railing,
@@ -23360,11 +23377,6 @@
 /obj/machinery/light/flamp,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
-"XM" = (
-/obj/structure/catwalk,
-/obj/structure/lattice,
-/turf/simulated/open/virgo3b,
-/area/tether/surfacebase/outside/outside3)
 "XQ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -30416,14 +30428,14 @@ ac
 ac
 ac
 ac
-XM
-XM
+KL
+MJ
 Mw
-XM
-XM
-XM
-XM
-XM
+MJ
+MJ
+MJ
+MJ
+MJ
 Pi
 ab
 ab
@@ -30565,7 +30577,7 @@ Dx
 Dx
 Dx
 Dx
-XM
+MJ
 Pi
 ab
 ab
@@ -30707,7 +30719,7 @@ Hk
 Dx
 Dx
 Dx
-XM
+MJ
 Pi
 ab
 ab
@@ -30849,7 +30861,7 @@ Hk
 Dx
 Dx
 Dx
-XM
+MJ
 Pi
 ab
 ab
@@ -30991,7 +31003,7 @@ Il
 Dx
 Dx
 Dx
-XM
+MJ
 Pi
 ab
 ab
@@ -31133,7 +31145,7 @@ Hk
 Dx
 Dx
 Dx
-XM
+MJ
 Pi
 ab
 ab
@@ -31417,7 +31429,7 @@ Hk
 Dx
 Dx
 Dx
-XM
+KL
 Pi
 ab
 ab
@@ -40158,12 +40170,12 @@ ac
 ac
 ac
 ac
-ab
-ab
-ab
-ab
-ab
-ab
+ac
+KL
+MJ
+MJ
+MJ
+KL
 ac
 ac
 kk
@@ -40301,11 +40313,11 @@ ac
 ac
 ac
 ab
-ab
-ab
-ab
-ab
-ab
+Vm
+Vm
+Vm
+Vm
+Vm
 ab
 ab
 ab
@@ -40761,13 +40773,13 @@ Rt
 Ok
 RB
 Ry
-Pz
-Pz
-Pz
-Pz
+WR
+WR
+WR
+WR
 VE
-Pz
-Pz
+WR
+WR
 Pz
 Pi
 ab
@@ -41185,8 +41197,8 @@ ac
 RB
 RB
 RB
-Pz
-Pz
+WR
+WR
 Pi
 ab
 ab
@@ -41324,10 +41336,10 @@ ab
 ab
 Qh
 Pz
-Pz
+WR
 VE
-Pz
-Pz
+WR
+WR
 TB
 ab
 ab
