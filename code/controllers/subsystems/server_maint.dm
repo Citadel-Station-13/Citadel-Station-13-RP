@@ -10,14 +10,6 @@ SUBSYSTEM_DEF(server_maint)
 	var/list/currentrun
 	var/cleanup_ticker = 0
 
-/datum/controller/subsystem/server_maint/PreInit()
-	world.hub_password = "" //quickly! before the hubbies see us.
-
-/datum/controller/subsystem/server_maint/Initialize(timeofday)
-	if(config_legacy.hub_visibility)
-		world.update_hub_visibility(TRUE)
-	return ..()
-
 /datum/controller/subsystem/server_maint/fire(resumed = FALSE)
 	if(!resumed)
 		if(listclearnulls(clients))
