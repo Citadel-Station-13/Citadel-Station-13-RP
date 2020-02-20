@@ -1666,10 +1666,8 @@
 	dir = 1
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
-	},
-/area/space)
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/engine_room)
 
 (1,1,1) = {"
 aa
