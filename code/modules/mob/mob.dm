@@ -751,8 +751,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(listed_turf && client)
 		if(!TurfAdjacent(listed_turf))
 			listed_turf = null
-		else if(statpanel(listed_turf.name))
-			stat(null, listed_turf)
+		else if(statpanel("Turf"))
+			stat("\icon[listed_turf]", listed_turf.name)
 			var/list/overrides = list()
 			for(var/image/I in client.images)
 				if(I.loc && I.loc.loc == listed_turf && I.override)
@@ -770,15 +770,19 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				*/
 				if(A.plane > plane)
 					continue
-				stat(null, A)
+				stat(A)
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove)						return 0
-	if(stat)							return 0
-	if(anchored)						return 0
-	if(transforming)						return 0
-	return 1
+	if(!canmove)
+		return FALSE
+	if(stat)
+		return FALSE
+	if(anchored)
+		return FALSE
+	if(transforming)
+		return FALSE
+	return TRUE
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
