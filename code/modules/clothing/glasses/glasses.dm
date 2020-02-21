@@ -457,7 +457,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/aerogelgoggles
 	name = "orange goggles"
-	desc = "Teshari designed lightweight goggles"
+	desc = "Teshari designed lightweight goggles."
 	icon_state = "orange-g"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	var/up = 0
