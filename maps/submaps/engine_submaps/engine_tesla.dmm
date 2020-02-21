@@ -153,6 +153,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "au" = (
@@ -1419,6 +1420,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "cu" = (
@@ -1746,9 +1748,9 @@ ab
 ab
 ab
 ab
-ad
+aj
 ab
-ad
+aj
 ab
 ab
 ab
@@ -1778,9 +1780,9 @@ ab
 ab
 ab
 ab
-ad
+aj
 ab
-ad
+aj
 ab
 ab
 ab
@@ -1810,9 +1812,9 @@ ab
 ab
 ab
 ab
-ad
+aj
 ab
-ad
+aj
 ab
 ab
 ab
@@ -1842,9 +1844,9 @@ ab
 ab
 ab
 ab
-ad
+aj
 ab
-ad
+aj
 ab
 ab
 ab
@@ -1874,9 +1876,9 @@ ab
 ab
 zh
 ad
+aj
 ad
-ad
-ad
+aj
 ad
 zh
 ab
@@ -1906,9 +1908,9 @@ ab
 ab
 aj
 co
+aj
 ad
-ad
-ad
+aj
 co
 aj
 ab
@@ -1932,21 +1934,21 @@ ab
 ac
 ak
 cF
-ad
-ad
-ad
-ad
-ad
+aj
+aj
+aj
+aj
+aj
 cK
 aX
 aj
 aX
 cK
-ad
-ad
-ad
-ad
-ad
+aj
+aj
+aj
+aj
+aj
 cs
 cy
 cC
@@ -1996,21 +1998,21 @@ ab
 ac
 am
 ar
-ad
-ad
-ad
-ad
-ad
+aj
+aj
+aj
+aj
+aj
 cK
 aX
 aj
 aX
 cK
-ad
-ad
-ad
-ad
-ad
+aj
+aj
+aj
+aj
+aj
 cs
 cz
 cC

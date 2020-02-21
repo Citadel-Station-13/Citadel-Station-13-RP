@@ -34,6 +34,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "aaj" = (
@@ -430,6 +431,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/mining_main/external)
 "aaX" = (
@@ -2862,6 +2864,7 @@
 /area/tether/surfacebase/tram)
 "afq" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "afr" = (
@@ -17500,10 +17503,6 @@
 /obj/effect/step_trigger/teleporter/to_solars,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
-"aFC" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/tether/surfacebase/outside/outside1)
 "aFD" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -19377,6 +19376,7 @@
 	frequency = 1441;
 	id_tag = "atmos_intake"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/engineering/atmos/intake)
 "aJB" = (
@@ -22886,10 +22886,6 @@
 /area/tether/surfacebase/atrium_one)
 "baY" = (
 /obj/structure/table/woodentable,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -31390,6 +31386,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"cAR" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/engineering/atmos/intake)
 "cBB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -31741,6 +31741,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"fGy" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "fKN" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/engineering,
@@ -31754,6 +31759,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
+"fOF" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/mining_main/external)
 "fUw" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32520,6 +32529,10 @@
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/public_garden_one)
+"orR" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "osI" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
@@ -32613,6 +32626,10 @@
 "pCg" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_one)
+"pLu" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "pZF" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -33749,18 +33766,18 @@ frA
 frA
 frA
 abf
-aad
-aFC
-aFC
-aFC
-aFC
-aFC
-aFC
-aad
-aFC
-aFC
-aad
-aFC
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
+fGy
 aad
 aad
 aad
@@ -33899,8 +33916,8 @@ aad
 aad
 aad
 aad
-aFC
-aFC
+aad
+aad
 aad
 aad
 aad
@@ -34042,7 +34059,7 @@ aad
 aad
 aad
 aad
-aFC
+aad
 aad
 aad
 aad
@@ -34315,8 +34332,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEv
+pLu
 aad
 aad
 aad
@@ -34327,7 +34345,6 @@ aad
 aad
 aad
 aad
-aFC
 aad
 aad
 aad
@@ -34457,9 +34474,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEw
-aad
+pLu
 aad
 aad
 aad
@@ -34599,8 +34616,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEw
+pLu
 aad
 aad
 aad
@@ -34611,7 +34629,6 @@ aad
 aad
 aad
 aad
-aFC
 aad
 aad
 aad
@@ -34741,9 +34758,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEw
-aad
+pLu
 aad
 aad
 aad
@@ -34883,9 +34900,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEw
-aad
+pLu
 aad
 aad
 aad
@@ -35025,9 +35042,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEw
-aad
+pLu
 aad
 aad
 aad
@@ -35167,9 +35184,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEw
-aad
+pLu
 aad
 aad
 aad
@@ -35309,9 +35326,9 @@ aad
 aad
 aad
 aad
-aad
+pLu
 aEx
-aad
+pLu
 aad
 aad
 aad
@@ -36545,9 +36562,9 @@ aah
 aah
 aah
 adK
-aeo
-aeo
-aeo
+orR
+orR
+orR
 afq
 afq
 adK
@@ -36842,10 +36859,10 @@ aah
 aah
 aah
 aah
-akb
-akb
-akb
-akb
+pLu
+pLu
+pLu
+pLu
 aah
 aah
 aah
@@ -39155,7 +39172,7 @@ bOI
 bQT
 aHh
 aIp
-akb
+pLu
 aad
 aad
 aad
@@ -39297,7 +39314,7 @@ bOt
 bQL
 bSJ
 aIq
-akb
+pLu
 aad
 aad
 aad
@@ -39439,7 +39456,7 @@ bON
 bQV
 bSK
 aIq
-akb
+pLu
 aad
 aad
 aad
@@ -39581,7 +39598,7 @@ bOL
 bQU
 aHh
 aIr
-akb
+pLu
 aad
 aad
 aad
@@ -41297,16 +41314,16 @@ aIv
 aIv
 aIv
 aIv
-aJt
-aJt
-aJt
-aJt
+cAR
+cAR
+cAR
+cAR
 aJA
-aJt
-aJt
-aJt
-aJt
-aJt
+cAR
+cAR
+cAR
+cAR
+cAR
 aad
 aad
 aad
@@ -41449,7 +41466,7 @@ aJS
 aJJ
 aJS
 aJt
-aJt
+cAR
 aad
 aad
 aad
@@ -41591,7 +41608,7 @@ aIM
 aIM
 aIM
 aJS
-aJt
+cAR
 aad
 aad
 aad
@@ -41733,7 +41750,7 @@ aJK
 aJW
 aKl
 aKl
-aJt
+cAR
 aad
 aad
 aad
@@ -41875,7 +41892,7 @@ aJJ
 aJS
 aKl
 aKl
-aJt
+cAR
 aad
 aad
 aad
@@ -42017,7 +42034,7 @@ aIM
 aIM
 aIM
 aJW
-aJt
+cAR
 aad
 aad
 aad
@@ -44056,7 +44073,7 @@ aae
 aae
 aae
 aae
-aaf
+fOF
 aaf
 aao
 aau
@@ -44181,7 +44198,7 @@ clb
 "}
 (76,1,1) = {"
 aac
-aaf
+fOF
 aae
 aae
 aae
@@ -44325,10 +44342,10 @@ aaa
 aac
 aaf
 aaf
-aaf
-aaf
-aaf
-aaf
+fOF
+fOF
+fOF
+fOF
 aae
 aae
 aae
@@ -44471,10 +44488,10 @@ aaf
 aaf
 aaf
 aaf
-aaf
-aaf
-aaf
-aaf
+fOF
+fOF
+fOF
+fOF
 aae
 aae
 aae
@@ -44618,12 +44635,12 @@ aaf
 aaf
 aaf
 aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
 aaf
 aak
 aar
@@ -45035,19 +45052,19 @@ aaa
 aac
 aaf
 aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
-aaf
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
+fOF
 aaf
 aaf
 aaf
@@ -45175,7 +45192,7 @@ aaa
 "}
 (83,1,1) = {"
 aac
-aaf
+fOF
 aae
 aae
 aae
@@ -45332,9 +45349,9 @@ aae
 aae
 aae
 aae
-aaf
-aaf
-aaf
+fOF
+fOF
+fOF
 aaf
 aah
 aah
