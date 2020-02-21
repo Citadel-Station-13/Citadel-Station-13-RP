@@ -460,6 +460,7 @@ BLIND     // can't see anything
 	desc = "Teshari designed lightweight goggles."
 	icon_state = "orange-g"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	action_button_name = "Adjust Orange Goggles"
 	var/up = 0
 	item_flags = AIRTIGHT
 	body_parts_covered = EYES
@@ -470,7 +471,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/aerogelgoggles/verb/toggle()
 	set category = "Object"
-	set name = "Adjust goggles"
+	set name = "Adjust Orange Goggles"
 	set src in usr
 
 	if(usr.canmove && !usr.stat && !usr.restrained())
