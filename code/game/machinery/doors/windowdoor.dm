@@ -37,11 +37,14 @@
 	var/obj/item/weapon/airlock_electronics/ae
 	if(!electronics)
 		ae = new/obj/item/weapon/airlock_electronics( src.loc )
-		if(!src.req_access)
-			src.check_access()
-		if(src.req_access.len)
+
+		if(!src.req_access)    //This apparently has side effects that might
+			src.check_access() //update null r_a's? Leaving it just in case.
+
+		if(src.req_access)
 			ae.conf_access = src.req_access
-		else if (src.req_one_access.len)
+
+		else if(src.req_one_access)
 			ae.conf_access = src.req_one_access
 			ae.one_access = 1
 	else
