@@ -12703,7 +12703,16 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "uv" = (
-/obj/machinery/shield_diffuser,
+/obj/machinery/photocopier/faxmachine{
+	department = "Mailing Room"
+	},
+/obj/structure/table/steel,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "uw" = (
@@ -12721,6 +12730,9 @@
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 9
+	},
+/obj/structure/bed/chair{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
@@ -27630,9 +27642,21 @@
 "SW" = (
 /turf/simulated/mineral/vacuum,
 /area/space)
-"Tv" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/wall,
+"TB" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/item/device/destTagger,
+/obj/item/weapon/storage/box,
+/obj/item/weapon/storage/box,
+/obj/structure/table/steel,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "TE" = (
 /obj/machinery/shield_diffuser,
@@ -27696,7 +27720,12 @@
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "UJ" = (
-/obj/machinery/shield_diffuser,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "UK" = (
@@ -27830,9 +27859,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
-"ZH" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/floor/plating,
+"ZA" = (
+/obj/item/weapon/packageWrap,
+/obj/item/weapon/packageWrap,
+/obj/item/weapon/wrapping_paper,
+/obj/structure/table/steel,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
 "ZO" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -40116,9 +40154,9 @@ rN
 sz
 ty
 uv
-uv
-uv
-ZH
+TB
+ZA
+qr
 xm
 ya
 yS
@@ -40260,7 +40298,7 @@ qr
 uw
 uw
 uw
-Tv
+qr
 UJ
 ya
 yT
