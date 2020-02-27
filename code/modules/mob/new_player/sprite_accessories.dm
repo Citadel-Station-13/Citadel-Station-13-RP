@@ -724,7 +724,8 @@
 	jade
 		name = "Jade"
 		icon_state = "hair_jade"
-
+		flags = HAIR_TIEABLE
+		
 	country
 		name = "Country"
 		icon_state = "hair_country"
