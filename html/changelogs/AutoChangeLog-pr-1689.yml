@@ -1,0 +1,4 @@
+author: "Mewchild"
+delete-after: True
+changes: 
+  - tweak: "Allows all species to tie their hair up/let it down via the \"Tie Hair\" verb, previously restricted to humans."
