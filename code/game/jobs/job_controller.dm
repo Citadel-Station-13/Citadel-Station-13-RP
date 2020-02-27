@@ -471,12 +471,30 @@ var/global/datum/controller/occupations/job_master
 
 				if(!isnull(B))
 					for(var/thing in spawn_in_storage)
-						H << "<span class='notice'>Placing \the [thing] in your [B.name]!</span>"
 						var/datum/gear/G = gear_datums[thing]
-						var/metadata = H.client.prefs.gear[G.display_name]
-						G.spawn_item(B, metadata)
+						var/obj/item/I = G.spawn_item(H, H.client.prefs.gear[G.display_name]) //Create the item...
+						if(B.can_be_inserted(I, 1)) //Try putting it in their backpack.
+							H << "<span class='notice'>Placing \the [I] in your [B.name]!</span>"
+							I.forceMove(B)
+							continue
+						if(H.equip_to_appropriate_slot(I)) //Other slots?
+							H << "<span class='notice'>Equipping you with \the [I]!</span>"
+							continue
+						if(H.put_in_hands(I)) //Well, hands?
+							H << "<span class='notice'>Placing \the [I] in your hand!</span>"
+							continue
+						//Throw a tantrum, having exhausted all other options.
+						H << "<span class='danger'>Inventory space exhausted. Putting \the [I] on the ground!</span>"
+						I.forceMove(get_turf(H))
+
 				else
-					H << "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>"
+					H << "<span class='warning'>Failed to locate storage on your mob. Please report this at our Github. Dumping your loadout at your feet...</span>"
+					for(var/thing in spawn_in_storage)
+						var/datum/gear/G = gear_datums[thing]
+						var/obj/item/I = G.spawn_item(H, H.client.prefs.gear[G.display_name])
+						I.forceMove(get_turf(H))
+						H << "<span class='notice'>Putting \the [I] on the ground!</span>"
+
 
 		if(istype(H)) //give humans wheelchairs, if they need them.
 			var/obj/item/organ/external/l_foot = H.get_organ("l_foot")
