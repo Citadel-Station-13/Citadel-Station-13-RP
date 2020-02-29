@@ -734,12 +734,12 @@
 				if(!muzzled)
 					message = "[species.scream_verb]!"
 					m_type = 2
-					/* Removed, pending the location of some actually good, properly licensed sounds.
+					// Citchange. Re-enabled for species that do have a defined scream sound. If a species lacks it, no sound will be played.
 					if(get_gender() == FEMALE)
 						playsound(loc, "[species.female_scream_sound]", 80, 1)
 					else
 						playsound(loc, "[species.male_scream_sound]", 80, 1) //default to male screams if no gender is present.
-					*/
+
 				else
 					message = "makes a very loud noise."
 					m_type = 2
