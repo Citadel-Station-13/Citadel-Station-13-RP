@@ -31,7 +31,7 @@
 	var/list/queue = list()
 	//VOREStation Add End
 	var/current_genre = "Electronic" //What is our current genre?
-	var/list/genres = list("Electronic", "Rock", "Orchestral", "Folk", "Jazz", "Western") //Avaliable genres.
+	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco", "Electronic", "Folk", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),

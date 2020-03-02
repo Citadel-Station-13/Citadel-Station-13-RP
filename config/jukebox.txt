@@ -42,9 +42,9 @@
 },
 {
 "url": "https://s.put.re/vrN9ATH7.mp3",
-"title": "Spaceman's Dilemmia",
+"title": "Spaceman's Dilemma",
 "duration": 2230,
-"artist": "Carmen Miranda",
+"artist": "Leslie Fish",
 "secret": false,
 "lobby": true,
 "jukebox": true,
@@ -59,5 +59,665 @@
 "lobby": true,
 "jukebox": true,
 "genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/zlct4c.mp3",
+"title": "Stayin' Alive",
+"duration": 2420,
+"artist": "The Bee Gees",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Disco"
+},
+{
+"url": "https://files.catbox.moe/dluppg.m4a",
+"title": "Tannhauser Overture",
+"duration": 9360,
+"artist": "Richard Wagner",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/b4j5jc.m4a",
+"title": "Another Song About the Weekend",
+"duration": 2250,
+"artist": "A Day to Remember",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/n36iy9.m4a",
+"title": "Truly Madly Deeply",
+"duration": 2770,
+"artist": "Savage Garden",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/t88x7z.m4a",
+"title": "Adult Education",
+"duration": 3230,
+"artist": "Hall and Oates",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/k38d32.mp3",
+"title": "That's All",
+"duration": 2640,
+"artist": "Genesis",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/b59gnc.mp3",
+"title": "Faith",
+"duration": 1580,
+"artist": "George Michael",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/twy9ln.m4a",
+"title": "Last Christmas",
+"duration": 2630,
+"artist": "Wham!",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/m00qlo.mp3",
+"title": "Dreams",
+"duration": 2920,
+"artist": "Van Halen",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/fwvkr7.m4a",
+"title": "Geronimo's Cadillac",
+"duration": 1960,
+"artist": "Modern Talking",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Disco"
+},
+{
+"url": "https://files.catbox.moe/py8x5m.m4a",
+"title": "Home Sweet Home",
+"duration": 2400,
+"artist": "Motley Crue",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/ius137.mp3",
+"title": "Too Young to Fall in Love",
+"duration": 2100,
+"artist": "Motley Crue",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/dc6s20.mp3",
+"title": "Working for the Weekend",
+"duration": 2220,
+"artist": "Loverboy",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/977069.m4a",
+"title": "Miles Away",
+"duration": 2520,
+"artist": "Winger",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/i5q08z.m4a",
+"title": "Run, Sally, Run!",
+"duration": 2870,
+"artist": "Carpenter Brut",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/34kdfv.mp3",
+"title": "Kickstart my Heart",
+"duration": 2830,
+"artist": "Motley Crue",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/ul3m8e.mp3",
+"title": "Bizarre Love Triangle",
+"duration": 2610,
+"artist": "New Order",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/8f5h2b.mp3",
+"title": "Regret",
+"duration": 2490,
+"artist": "New Order",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/8r1ifw.m4a",
+"title": "Rule Britannia Overture",
+"duration": 7320,
+"artist": "Richard Wagner",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/75o3mo.m4a",
+"title": "Da Ya Think I'm Sexy?",
+"duration": 3270,
+"artist": "Rod Stewart",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Disco"
+},
+{
+"url": "https://files.catbox.moe/s37xwb.m4a",
+"title": "Missing You",
+"duration": 2690,
+"artist": "John Waite",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/nayw83.mp3",
+"title": "Red Velvet",
+"duration": 2080,
+"artist": "NicolArmarfi",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Jazz"
+},
+{
+"url": "https://files.catbox.moe/m8qpa4.m4a",
+"title": "Space Age Love Song",
+"duration": 2270,
+"artist": "A Flock of Seagulls",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/shjfud.m4a",
+"title": "Streets of Laredo",
+"duration": 1690,
+"artist": "Marty Robbins",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/2qdzcj.m4a",
+"title": "Crockett's Theme",
+"duration": 2040,
+"artist": "Jan Hammer",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/8ft96j.m4a",
+"title": "Take Me Home",
+"duration": 3510,
+"artist": "Phil Collins",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/q5c942.m4a",
+"title": "Moonlight Sonata",
+"duration": 8990,
+"artist": "Ludwig van Beethoven",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/rlutyi.m4a",
+"title": "We Built This City",
+"duration": 2960,
+"artist": "Starship",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/1rgsqr.m4a",
+"title": "A Night on Bald Mountain",
+"duration": 6830,
+"artist": "Modest Mussorgsky",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
+},
+{
+"url": "https://files.catbox.moe/frq3un.m4a",
+"title": "Keep on Loving You",
+"duration": 2000,
+"artist": "REO Speedwagon",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/z3v10u.m4a",
+"title": "Lone Star",
+"duration": 1470,
+"artist": "Lost Weekend Western Swing Band",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/zg7gkh.m4a",
+"title": "In The Shadow of the Valley",
+"duration": 1870,
+"artist": "Lost Weekend Western Swing Band",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/v4xtn8.m4a",
+"title": "Blue Moon",
+"duration": 1710,
+"artist": "Frank Sinatra",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Jazz"
+},
+{
+"url": "https://files.catbox.moe/w2ysbr.m4a",
+"title": "I Will Wait",
+"duration": 2760,
+"artist": "Mumford and Sons",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/jim3bp.m4a",
+"title": "You Can't Hurry Love",
+"duration": 1760,
+"artist": "Phil Collins",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/r6jh89.m4a",
+"title": "Big Iron",
+"duration": 2350,
+"artist": "Marty Robbins",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/h698sa.m4a",
+"title": "Overnight Sensation",
+"duration": 2380,
+"artist": "Firehouse",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/bmik55.mp3",
+"title": "Lightnin' Strikes Again",
+"duration": 2270,
+"artist": "Dokken",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/0e0wmd.m4a",
+"title": "Gettin' Jiggy Wit It",
+"duration": 2270,
+"artist": "Will Smith",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/fm20mk.m4a",
+"title": "Lay It Down",
+"duration": 2050,
+"artist": "Ratt",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/xogao9.m4a",
+"title": "Night Fever",
+"duration": 2110,
+"artist": "The Bee Gees",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Disco"
+},
+{
+"url": "https://files.catbox.moe/8gvr40.m4a",
+"title": "Robot Rock",
+"duration": 2870,
+"artist": "Daft Punk",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/owzo1t.m4a",
+"title": "Space Jam",
+"duration": 3040,
+"artist": "Quad City DJs",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/t4t9qi.m4a",
+"title": "Take Me Home, Country Roads",
+"duration": 1980,
+"artist": "John Denver",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/il9tge.m4a",
+"title": "White Collar Crime",
+"duration": 4620,
+"artist": "Simon Viklund",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Jazz"
+},
+{
+"url": "https://files.catbox.moe/bcniut.m4a",
+"title": "Carmen Miranda's Ghost",
+"duration": 1340,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/jiv4md.m4a",
+"title": "Dawson's Christian",
+"duration": 2840,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/fhvudh.m4a",
+"title": "Good Ship Manatee",
+"duration": 1700,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/ejq83o.m4a",
+"title": "Bomber",
+"duration": 1940,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/ych1i1.m4a",
+"title": "Some Kind of Hero",
+"duration": 4070,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/7rfftg.m4a",
+"title": "Guardians",
+"duration": 2370,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/yg7ndh.m4a",
+"title": "One Last Battle",
+"duration": 1580,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/8c3n30.m4a",
+"title": "New Sins for Old",
+"duration": 1520,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/1yzg5l.m4a",
+"title": "Space Hero",
+"duration": 2040,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/e9zip3.m4a",
+"title": "Sam Jones",
+"duration": 4980,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/cfsh4z.m4a",
+"title": "Spacer's Home",
+"duration": 2160,
+"artist": "Leslie Fish",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk"
+},
+{
+"url": "https://files.catbox.moe/1vowpl.m4a",
+"title": "Harder, Better, Faster, Stronger",
+"duration": 2260,
+"artist": "Daft Punk",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/fnse07.m4a",
+"title": "Crazy Train",
+"duration": 2960,
+"artist": "Ozzy Osbourne",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/z7b6ih.m4a",
+"title": "Poison Arrow",
+"duration": 2040,
+"artist": "ABC",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/d874c4.m4a",
+"title": "Everything Counts",
+"duration": 2390,
+"artist": "Depeche Mode",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/p9yfvg.m4a",
+"title": "Legend Has It",
+"duration": 2050,
+"artist": "Run the Jewels",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/gg4pti.m4a",
+"title": "Raputin",
+"duration": 2650,
+"artist": "Boney M",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Disco"
+},
+{
+"url": "https://files.catbox.moe/u3ylxd.m4a",
+"title": "Still D.R.E",
+"duration": 2740,
+"artist": "Dr. Dre (feat. Snoop Dogg)",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/2r3cbk.m4a",
+"title": "It Was a Good Day",
+"duration": 2600,
+"artist": "Ice Cube",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/asthsu.m4a",
+"title": "A Kiss to Build a Dream On",
+"duration": 1840,
+"artist": "Louis Armstrong",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Jazz"
+},
+{
+"url": "https://files.catbox.moe/rze7qx.m4a",
+"title": "(I Always Kill) The Things I Love",
+"duration": 1750,
+"artist": "The Real Tuesday Weld (feat. Claudia Brucken)",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Jazz"
 }
 ]
