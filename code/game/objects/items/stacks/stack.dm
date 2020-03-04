@@ -36,7 +36,7 @@
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
-			if(S.stack_type == stack_type)
+			if(S.stacktype == stacktype)
 				merge(S)
 	update_icon()
 
@@ -337,7 +337,7 @@
 	return
 
 /obj/item/stack/Crossed(obj/o)
-	if(istype(o, merge_type) && !o.throwing)
+	if(istype(o, stacktype) && !o.throwing)
 		merge(o)
 	. = ..()
 
@@ -345,8 +345,8 @@
 	if(QDELETED(S) || QDELETED(src) || S == src) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
-	if(S.is_cyborg)
-		transfer = min(transfer, round((S.source.max_energy - S.source.energy) / S.cost))
+	if(S.uses_charge)
+		transfer = min(transfer, S.get_max_amount() - S.get_amount())
 	else
 		transfer = min(transfer, S.max_amount - S.amount)
 	if(pulledby)
@@ -404,12 +404,22 @@
 	zero_amount()
 
 /obj/item/stack/proc/zero_amount()
-	if(uses_energy)
+	if(uses_charge)
 		return get_amount() <= 0
 	if(amount < 1)
 		qdel(src)
 		return TRUE
 	return FALSE
+
+/obj/item/stack/proc/copy_evidences(obj/item/stack/from)
+	if(from.blood_DNA)
+		blood_DNA = from.blood_DNA.Copy()
+	if(from.fingerprints)
+		fingerprints = from.fingerprints.Copy()
+	if(from.fingerprintshidden)
+		fingerprintshidden = from.fingerprintshidden.Copy()
+	if(from.fingerprintslast)
+		fingerprintslast = from.fingerprintslast
 
 /*
  * Recipe datum
