@@ -16,7 +16,7 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stacktype //determines whether different stack types can merge
 	var/build_type = null //used when directly applied to a turf
 	var/uses_charge = 0
@@ -28,9 +28,10 @@
 	if(new_amount != null)
 		amount = new_amount
 	var/safety = 51			//badmin safety check :^)
-	while(--safety && (amount > max_amount))
-		amount -= max_amount
-		new type(loc, max_amount, FALSE)
+	if((amount > max_amount) && max_amount)
+		while(--safety && (amount > max_amount))
+			amount -= max_amount
+			new type(loc, max_amount, FALSE)
 	if(!stacktype)
 		stacktype = type
 	. = ..()
