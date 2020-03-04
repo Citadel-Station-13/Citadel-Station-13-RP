@@ -373,7 +373,7 @@
 	. = ..()
 	if(!istype(user) || !in_range(user, src) || !user.canmove)
 		return
-	if(is_cyborg)
+	if(uses_charge)
 		return
 	else
 		if(zero_amount())
