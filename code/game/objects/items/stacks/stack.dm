@@ -24,14 +24,21 @@
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
 
-/obj/item/stack/New(var/loc, var/amount=null)
-	..()
-	if (!stacktype)
+/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
+	if(new_amount != null)
+		amount = new_amount
+	var/safety = 51			//badmin safety check :^)
+	while(--safety && (amount > max_amount))
+		amount -= max_amount
+		new type(loc, max_amount, FALSE)
+	if(!stacktype)
 		stacktype = type
-	if (amount)
-		src.amount = amount
+	. = ..()
+	if(merge)
+		for(var/obj/item/stack/S in loc)
+			if(S.stack_type == stack_type)
+				merge(S)
 	update_icon()
-	return
 
 /obj/item/stack/Destroy()
 	if(uses_charge)
@@ -329,6 +336,26 @@
 		..()
 	return
 
+/obj/item/stack/Crossed(obj/o)
+	if(istype(o, merge_type) && !o.throwing)
+		merge(o)
+	. = ..()
+
+/obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
+	if(QDELETED(S) || QDELETED(src) || S == src) //amusingly this can cause a stack to consume itself, let's not allow that.
+		return
+	var/transfer = get_amount()
+	if(S.is_cyborg)
+		transfer = min(transfer, round((S.source.max_energy - S.source.energy) / S.cost))
+	else
+		transfer = min(transfer, S.max_amount - S.amount)
+	if(pulledby)
+		pulledby.start_pulling(S)
+	S.copy_evidences(src)
+	use(transfer, TRUE)
+	S.add(transfer)
+	return transfer
+
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
@@ -341,6 +368,48 @@
 				src.interact(usr)
 	else
 		return ..()
+
+/obj/item/stack/AltClick(mob/living/user)
+	. = ..()
+	if(!istype(user) || !in_range(user, src) || !user.canmove)
+		return
+	if(is_cyborg)
+		return
+	else
+		if(zero_amount())
+			return
+		//get amount from user
+		var/max = get_amount()
+		var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+		max = get_amount()
+		stackmaterial = min(max, stackmaterial)
+		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !user.canmove)
+			return TRUE
+		else
+			change_stack(user, stackmaterial)
+			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack</span>")
+		return TRUE
+
+/obj/item/stack/proc/change_stack(mob/user, amount)
+	if(!use(amount, TRUE, FALSE))
+		return FALSE
+	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE)
+	. = F
+	F.copy_evidences(src)
+	if(user)
+		if(!user.put_in_hands(F, merge_stacks = FALSE))
+			F.forceMove(user.drop_location())
+		add_fingerprint(user)
+		F.add_fingerprint(user)
+	zero_amount()
+
+/obj/item/stack/proc/zero_amount()
+	if(uses_energy)
+		return get_amount() <= 0
+	if(amount < 1)
+		qdel(src)
+		return TRUE
+	return FALSE
 
 /*
  * Recipe datum
