@@ -291,6 +291,9 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/virgo3b_indoors,
 /area/tether/outpost/solars_shed)
 "aG" = (
@@ -419,6 +422,10 @@
 /obj/structure/cable/yellow{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-6";
+	dir = 4
 	},
 /turf/simulated/floor/virgo3b_indoors,
 /area/tether/outpost/solars_shed)
@@ -4998,6 +5005,30 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/virgo3b,
 /area/tether/outpost/solars_outside)
+"pY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "1-6";
+	dir = 4
+	},
+/turf/simulated/floor/virgo3b_indoors,
+/area/tether/outpost/solars_shed)
+"UG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "9-10";
+	dir = 4
+	},
+/turf/simulated/floor/virgo3b_indoors,
+/area/tether/outpost/solars_shed)
+"ZX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "2-9";
+	dir = 4
+	},
+/turf/simulated/floor/virgo3b_indoors,
+/area/tether/outpost/solars_shed)
 
 (1,1,1) = {"
 aa
@@ -16257,7 +16288,7 @@ ad
 ad
 au
 aB
-aE
+UG
 aE
 au
 bh
@@ -16399,7 +16430,7 @@ ad
 ad
 au
 aC
-aE
+ZX
 aT
 au
 bi
@@ -16541,7 +16572,7 @@ ad
 ad
 av
 aD
-aE
+pY
 aE
 aZ
 bj
@@ -16682,7 +16713,7 @@ ad
 ad
 ad
 av
-aE
+ZX
 aE
 aE
 ba

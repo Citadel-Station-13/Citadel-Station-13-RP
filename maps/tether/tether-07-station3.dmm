@@ -13213,7 +13213,7 @@
 	dir = 1;
 	id = "packageSort1"
 	},
-/obj/structure/plasticflaps,
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "vf" = (
