@@ -1301,6 +1301,11 @@
 		icon_state = "vox_ruff_beard"
 		species_allowed = list(SPECIES_VOX)
 
+	vox_shaved_beard
+		name = "Vox Shaved"
+		icon_state = "vox_bald"
+		species_allowed = list(SPECIES_VOX)
+
 //unathi horn beards and the like
 
 	una_chinhorn
