@@ -743,6 +743,15 @@
 				else
 					message = "makes a very loud noise."
 					m_type = 2
+		if("squeak","squeaks")
+			if(miming)
+				message = "acts out a soft squeak."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "squeaks!"
+					m_type = 2
+					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2
