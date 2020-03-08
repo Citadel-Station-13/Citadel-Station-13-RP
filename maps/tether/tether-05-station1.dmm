@@ -9001,6 +9001,7 @@
 /area/engineering/workshop)
 "avf" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "avg" = (
@@ -10891,6 +10892,7 @@
 	req_one_access = list(11,24)
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "aAR" = (
@@ -11490,7 +11492,6 @@
 	name = "Engineering Starboard External Access"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/shield_diffuser,
 /turf/simulated/floor,
 /area/engineering/engineering_airlock)
 "aCC" = (
