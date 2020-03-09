@@ -405,10 +405,6 @@
 "aR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/solar_control,
-/obj/structure/cable/yellow{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /obj/structure/cable/yellow,
 /turf/simulated/floor/virgo3b_indoors,
 /area/tether/outpost/solars_shed)
@@ -418,10 +414,6 @@
 	dir = 2;
 	name = "south bump";
 	pixel_y = -28
-	},
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
 	},
 /obj/structure/cable{
 	icon_state = "0-6";
@@ -433,6 +425,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera/network/engineering{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/virgo3b_indoors,
 /area/tether/outpost/solars_shed)
@@ -5013,11 +5008,25 @@
 	},
 /turf/simulated/floor/virgo3b_indoors,
 /area/tether/outpost/solars_shed)
-"UG" = (
+"DO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
-	icon_state = "9-10";
-	dir = 4
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/virgo3b_indoors,
+/area/tether/outpost/solars_shed)
+"LI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/virgo3b_indoors,
+/area/tether/outpost/solars_shed)
+"UG" = (
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/simulated/floor/virgo3b_indoors,
 /area/tether/outpost/solars_shed)
@@ -16289,7 +16298,7 @@ ad
 au
 aB
 UG
-aE
+LI
 au
 bh
 bs
@@ -16430,7 +16439,7 @@ ad
 ad
 au
 aC
-ZX
+DO
 aT
 au
 bi
