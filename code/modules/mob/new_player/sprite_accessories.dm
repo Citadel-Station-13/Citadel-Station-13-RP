@@ -780,6 +780,128 @@
 		icon_state = "hair_long3"
 		flags = HAIR_TIEABLE
 
+	glossy
+		name = "Glossy"
+		icon_state = "hair_glossy"
+		flags = HAIR_TIEABLE
+
+	sharpponytail
+		name = "Ponytail Sharp"
+		icon_state = "hair_sharpponytail"
+		flags = HAIR_TIEABLE
+
+	newyou
+		name = "New You"
+		icon_state = "hair_newyou"
+		flags = HAIR_TIEABLE
+
+	partedalt
+		name = "Parted Alt"
+		icon_state = "hair_partedalt"
+
+	amazon
+		name = "Amazon"
+		icon_state = "hair_amazon"
+		flags = HAIR_TIEABLE
+
+	straightlong
+		name = "Straight Long"
+		icon_state = "hair_straightlong"
+		flags = HAIR_TIEABLE
+
+	marysue
+		name = "Mary Sue"
+		icon_state = "hair_marysue"
+
+	sideundercut
+		name = "Side Undercut"
+		icon_state = "hair_sideundercut"
+		flags = HAIR_VERY_SHORT
+
+	donutbun
+		name = "Donut Bun"
+		icon_state = "hair_donutbun"
+
+	gentle2
+		name = "Gentle 2, Long"
+		icon_state = "hair_gentle2long"
+		flags = HAIR_TIEABLE
+
+	sweepshave
+		name = "Sweep Shave"
+		icon_state = "hair_sweepshave"
+
+	beachwave
+		name = "Beach Waves"
+		icon_state = "hair_beachwave"
+		flags = HAIR_TIEABLE
+
+	celebcurls
+		name = "Celeb Curls"
+		icon_state = "hair_celebcurls"
+		flags = HAIR_TIEABLE
+
+	jessica
+		name = "Jessica"
+		icon_state = "hair_jessica"
+		flags = HAIR_TIEABLE
+
+	proper
+		name = "Proper"
+		icon_state = "hair_proper"
+
+	himeup
+		name = "Hime Updo"
+		icon_state = "hair_himeup"
+		flags = HAIR_TIEABLE
+
+	front_braid
+		name = "Braided front"
+		icon_state = "hair_braidfront"
+		flags = HAIR_TIEABLE
+
+	antenna
+		name = "Antenna"
+		icon_state = "hair_antenna"
+
+	protagonist
+		name = "Slightly Long"
+		icon_state = "hair_protagonist"
+		flags = HAIR_TIEABLE
+
+	braidtail
+		name = "Braided Tail"
+		icon_state = "hair_braidtail"
+		flags = HAIR_TIEABLE
+
+	business
+		name = "Business Hair"
+		icon_state = "hair_business"
+		flags = HAIR_VERY_SHORT
+
+	business3
+		name = "Business Hair 3"
+		icon_state = "hair_business3"
+		flags = HAIR_VERY_SHORT
+
+	business4
+		name = "Business Hair 4"
+		icon_state = "hair_business4"
+		flags = HAIR_VERY_SHORT
+
+	sidepartlongalt
+		name = "Long Side Part"
+		icon_state = "hair_longsidepart"
+		flags = HAIR_TIEABLE
+
+	miles
+		name = "Miles Hair"
+		icon_state = "hair_miles"
+
+	vivi
+		name = "Vivi"
+		icon_state = "hair_vivi"
+
 /*
 ///////////////////////////////////
 /  =---------------------------=  /
