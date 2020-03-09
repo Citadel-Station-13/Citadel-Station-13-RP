@@ -1,0 +1,4 @@
+author: "kevinz000"
+delete-after: True
+changes: 
+  - rscadd: "stack splitting can be done via alt click and stacks automatically merge when they cross another stack."

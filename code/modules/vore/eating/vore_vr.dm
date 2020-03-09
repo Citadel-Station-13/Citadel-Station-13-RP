@@ -2,7 +2,7 @@
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
 //
-/datum/configuration
+/datum/configuration_legacy
 	var/items_survive_digestion = 1		//For configuring if the important_items survive digestion
 
 //
@@ -128,14 +128,10 @@
 		return 0
 
 	//Write it out
-#ifdef RUST_G
-	call(RUST_G, "file_write")(json_to_file, path)
-#else
 	// Fall back to using old format if we are not using rust-g
 	if(fexists(path))
 		fdel(path) //Byond only supports APPENDING to files, not replacing.
 	text2file(json_to_file, path)
-#endif
 	if(!fexists(path))
 		log_debug("Saving: [path] failed file write")
 		return 0

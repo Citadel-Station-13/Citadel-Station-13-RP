@@ -122,7 +122,7 @@
 
 	if(anchored)
 		return
-	if(config.ghost_interaction)
+	if(config_legacy.ghost_interaction)
 		src.setDir(turn(src.dir, 90))
 		return
 	else

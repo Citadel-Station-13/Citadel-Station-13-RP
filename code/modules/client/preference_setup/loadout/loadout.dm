@@ -20,13 +20,13 @@ var/list/gear_datums = list()
 		var/use_category = initial(G.sort_category)
 
 		if(!use_name)
-			error("Loadout - Missing display name: [G]")
+			log_world("Loadout - Missing display name: [G]")
 			continue
 		if(isnull(initial(G.cost)))
-			error("Loadout - Missing cost: [G]")
+			log_world("Loadout - Missing cost: [G]")
 			continue
 		if(!initial(G.path))
-			error("Loadout - Missing path definition: [G]")
+			log_world("Loadout - Missing path definition: [G]")
 			continue
 
 		if(!loadout_categories[use_category])
@@ -209,14 +209,14 @@ var/list/gear_datums = list()
 		if(href_list["next_slot"])
 			//change the current slot number
 			pref.gear_slot = pref.gear_slot+1
-			if(pref.gear_slot>config.loadout_slots)
+			if(pref.gear_slot>config_legacy.loadout_slots)
 				pref.gear_slot = 1
 		//If we're moving down a slot..
 		else if(href_list["prev_slot"])
 			//change current slot one down
 			pref.gear_slot = pref.gear_slot-1
 			if(pref.gear_slot<1)
-				pref.gear_slot = config.loadout_slots
+				pref.gear_slot = config_legacy.loadout_slots
 		// Set the currently selected gear to whatever's in the new slot
 		if(pref.gear_list["[pref.gear_slot]"])
 			pref.gear = pref.gear_list["[pref.gear_slot]"]

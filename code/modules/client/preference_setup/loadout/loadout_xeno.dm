@@ -360,3 +360,9 @@
 	display_name = "Teshari IAA Cloak"
 	path = /obj/item/clothing/suit/storage/seromi/cloak/jobs/iaa
 	allowed_roles = list("Internal Affairs Agent")
+
+/datum/gear/eyes/aerogelgoggles
+	display_name = "orange goggles (Teshari)"
+	path = /obj/item/clothing/glasses/aerogelgoggles
+	whitelisted = SPECIES_TESHARI
+	sort_category = "Xenowear"

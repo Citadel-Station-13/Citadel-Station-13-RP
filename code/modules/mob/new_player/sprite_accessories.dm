@@ -724,6 +724,7 @@
 	jade
 		name = "Jade"
 		icon_state = "hair_jade"
+		flags = HAIR_TIEABLE
 
 	country
 		name = "Country"
@@ -1181,6 +1182,66 @@
 		icon_state = "vox_mohawk"
 		species_allowed = list(SPECIES_VOX)
 
+	vox_quills_afro
+		name = "Vox Afro"
+		icon_state = "vox_afro"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_mohawk
+		name = "Vox Mohawk"
+		icon_state = "vox_mohawk"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_yasu
+		name = "Vox Yasuhiro"
+		icon_state = "vox_yasu"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_horns
+		name = "Vox Quorns"
+		icon_state = "vox_horns"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_nights
+		name = "Vox Nights"
+		icon_state = "vox_nights"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_surf
+		name = "Vox Surf"
+		icon_state = "vox_surf"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_cropped
+		name = "Vox Cropped"
+		icon_state = "vox_cropped"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_bald
+		name = "Vox Bald"
+		icon_state = "vox_bald"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_ruffhawk
+		name = "Vox Ruffhawk"
+		icon_state = "vox_ruff_hawk"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_rows
+		name = "Vox Rows"
+		icon_state = "vox_rows"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_mange
+		name = "Vox Mange"
+		icon_state = "vox_mange"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_pony
+		name = "Vox Pony"
+		icon_state = "vox_pony"
+		species_allowed = list(SPECIES_VOX)
+
 /datum/sprite_accessory/facial_hair
 
 	taj_sideburns
@@ -1212,6 +1273,33 @@
 		name = "Tajaran Smallsatche"
 		icon_state = "facial_smallstache"
 		species_allowed = list(SPECIES_TAJ)
+
+// More Vox things
+
+	vox_face_colonel
+		name = "Vox Colonel"
+		icon_state = "vox_colonel"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_face_fu
+		name = "Quill Fu"
+		icon_state = "vox_fu"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_face_neck
+		name = "Neck Quills"
+		icon_state = "vox_neck"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_face_beard
+		name = "Quill Beard"
+		icon_state = "vox_beard"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_ruff_beard
+		name = "Ruff Beard"
+		icon_state = "vox_ruff_beard"
+		species_allowed = list(SPECIES_VOX)
 
 //unathi horn beards and the like
 

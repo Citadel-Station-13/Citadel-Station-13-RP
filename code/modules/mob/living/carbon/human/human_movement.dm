@@ -136,7 +136,7 @@
 			tally = tally/2
 		tally -= chem_effects[CE_SPEEDBOOST]	// give 'em a buff on top.
 
-	return max(-3, tally+config.human_delay)	// Minimum return should be the same as force_max_speed
+	return max(-3, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 /mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
 	//Can we act?
@@ -190,7 +190,7 @@
 
 // Handle footstep sounds
 /mob/living/carbon/human/handle_footstep(var/turf/T)
-	if(!config.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
+	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
 		return
 	// Future Upgrades - Multi species support
 	var/list/footstep_sounds = T.footstep_sounds["human"]
@@ -208,7 +208,7 @@
 	if(m_intent == "run" && step_count++ % 2 != 0)
 		return
 
-	var/volume = config.footstep_volume
+	var/volume = config_legacy.footstep_volume
 
 	// Reduce volume while walking or barefoot
 	if(!shoes || m_intent == "walk")
