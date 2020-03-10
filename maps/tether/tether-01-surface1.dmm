@@ -513,10 +513,7 @@
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "abg" = (
-/obj/machinery/door/airlock/maintenance/common{
-	name = "Trash Pit Access";
-	req_one_access = list(26,48)
-	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance)
 "abh" = (
@@ -721,9 +718,9 @@
 /turf/simulated/mineral/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "abB" = (
-/obj/machinery/door/airlock/maintenance/common{
-	name = "Trash Pit Access";
-	req_one_access = list(26,48)
+/obj/machinery/door/airlock/maintenance/int{
+	name = "Emergency Storage";
+	req_one_access = list()
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/tram)
