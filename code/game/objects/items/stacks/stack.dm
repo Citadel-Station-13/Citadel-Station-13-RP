@@ -16,7 +16,7 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stacktype //determines whether different stack types can merge
 	var/build_type = null //used when directly applied to a turf
 	var/uses_charge = 0
@@ -24,22 +24,14 @@
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
 
-/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
-	if(new_amount != null)
-		amount = new_amount
-	var/safety = 51			//badmin safety check :^)
-	if((amount > max_amount) && max_amount)
-		while(--safety && (amount > max_amount))
-			amount -= max_amount
-			new type(loc, max_amount, FALSE)
-	if(!stacktype)
+/obj/item/stack/New(var/loc, var/amount=null)
+	..()
+	if (!stacktype)
 		stacktype = type
-	. = ..()
-	if(merge)
-		for(var/obj/item/stack/S in loc)
-			if(S.stacktype == stacktype)
-				merge(S)
+	if (amount)
+		src.amount = amount
 	update_icon()
+	return
 
 /obj/item/stack/Destroy()
 	if(uses_charge)
@@ -337,26 +329,6 @@
 		..()
 	return
 
-/obj/item/stack/Crossed(obj/o)
-	if(istype(o, stacktype) && !o.throwing)
-		merge(o)
-	. = ..()
-
-/obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
-	if(QDELETED(S) || QDELETED(src) || S == src) //amusingly this can cause a stack to consume itself, let's not allow that.
-		return
-	var/transfer = get_amount()
-	if(S.uses_charge)
-		transfer = min(transfer, S.get_max_amount() - S.get_amount())
-	else
-		transfer = min(transfer, S.max_amount - S.amount)
-	if(pulledby)
-		pulledby.start_pulling(S)
-	S.copy_evidences(src)
-	use(transfer, TRUE)
-	S.add(transfer)
-	return transfer
-
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
@@ -369,58 +341,6 @@
 				src.interact(usr)
 	else
 		return ..()
-
-/obj/item/stack/AltClick(mob/living/user)
-	. = ..()
-	if(!istype(user) || !in_range(user, src) || !user.canmove)
-		return
-	if(uses_charge)
-		return
-	else
-		if(zero_amount())
-			return
-		//get amount from user
-		var/max = get_amount()
-		var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
-		max = get_amount()
-		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !user.canmove)
-			return TRUE
-		else
-			change_stack(user, stackmaterial)
-			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack</span>")
-		return TRUE
-
-/obj/item/stack/proc/change_stack(mob/user, amount)
-	if(!use(amount, TRUE, FALSE))
-		return FALSE
-	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE)
-	. = F
-	F.copy_evidences(src)
-	if(user)
-		if(!user.put_in_hands(F, merge_stacks = FALSE))
-			F.forceMove(user.drop_location())
-		add_fingerprint(user)
-		F.add_fingerprint(user)
-	zero_amount()
-
-/obj/item/stack/proc/zero_amount()
-	if(uses_charge)
-		return get_amount() <= 0
-	if(amount < 1)
-		qdel(src)
-		return TRUE
-	return FALSE
-
-/obj/item/stack/proc/copy_evidences(obj/item/stack/from)
-	if(from.blood_DNA)
-		blood_DNA = from.blood_DNA.Copy()
-	if(from.fingerprints)
-		fingerprints = from.fingerprints.Copy()
-	if(from.fingerprintshidden)
-		fingerprintshidden = from.fingerprintshidden.Copy()
-	if(from.fingerprintslast)
-		fingerprintslast = from.fingerprintslast
 
 /*
  * Recipe datum
