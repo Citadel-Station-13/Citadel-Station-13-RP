@@ -13276,7 +13276,6 @@
 /turf/simulated/floor/wood,
 /area/library)
 "xU" = (
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
 "xV" = (
@@ -15380,17 +15379,6 @@
 /area/maintenance/lower/atrium)
 "Bn" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
