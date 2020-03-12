@@ -22,6 +22,14 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Wizard costume crate"
 
+/datum/supply_pack/costumes/techpriest
+	name = "Tech Priest robes"
+	contains = list(
+		/obj/item/clothing/suit/storage/hooded/techpriest = 2)
+	cost = 150
+	containertype = /obj/structure/closet/crate
+	containername = "Tech Priest crate"
+
 /datum/supply_pack/randomised/costumes/hats
 	num_contained = 4
 	contains = list(
@@ -80,7 +88,8 @@
 			/obj/item/clothing/suit/chef,
 			/obj/item/clothing/suit/storage/apron/overalls,
 			/obj/item/clothing/under/redcoat,
-			/obj/item/clothing/under/kilt
+			/obj/item/clothing/under/kilt,
+			/obj/item/clothing/suit/storage/hooded/techpriest
 			)
 	name = "Costumes crate"
 	cost = 10
