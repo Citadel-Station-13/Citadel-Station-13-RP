@@ -151,6 +151,12 @@
 	item_state_slots = list(slot_r_hand_str = "coatcargo", slot_l_hand_str = "coatcargo")
 	hoodtype = /obj/item/clothing/head/hood/winter/cargo
 
+/obj/item/clothing/suit/storage/hooded/techpriest
+	name = "tech priest robe"
+	icon_state = "techpriest"
+	item_state_slots = list(slot_r_hand_str = "techpriest", slot_l_hand_str = "techpriest")
+	hoodtype = /obj/item/clothing/head/hood/techpriest
+
 /obj/item/clothing/suit/storage/hooded/wintercoat/miner
 	name = "mining winter coat"
 	icon_state = "coatminer"

@@ -3840,7 +3840,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/rnd)
 "ix" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -4306,10 +4306,6 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
-"jv" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
 "jw" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4363,15 +4359,12 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
-"jE" = (
-/turf/simulated/mineral,
-/area/maintenance/asmaint2)
 "jF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/rnd)
 "jG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
@@ -4556,20 +4549,20 @@
 	pixel_y = -22
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/rnd)
 "kc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/rnd)
 "kd" = (
 /obj/structure/catwalk,
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/asmaint2)
 "ke" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/rack,
@@ -24462,32 +24455,32 @@ ac
 ac
 ac
 ac
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
-cD
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
+ka
 ac
 ac
 ac
@@ -24604,7 +24597,7 @@ ac
 ac
 ac
 ac
-jE
+ac
 kp
 kI
 kT
@@ -24747,7 +24740,7 @@ ac
 ac
 ac
 ac
-jE
+ac
 kJ
 kU
 kU
@@ -25176,7 +25169,7 @@ cD
 kq
 ka
 ka
-jE
+ac
 lm
 lm
 lm
@@ -25316,7 +25309,7 @@ ac
 ac
 iw
 jF
-jv
+il
 ac
 ac
 lm
@@ -25338,8 +25331,8 @@ ka
 ka
 uz
 ka
-jE
-jE
+ac
+ac
 ac
 ac
 ac
@@ -25457,7 +25450,7 @@ ac
 ac
 ac
 ac
-jv
+il
 ac
 ac
 ac
@@ -25599,7 +25592,7 @@ ac
 ac
 ac
 iw
-jv
+il
 ac
 ac
 ac
@@ -25741,7 +25734,7 @@ ac
 ac
 ac
 iw
-jv
+il
 ac
 ac
 ac
@@ -25762,7 +25755,7 @@ wG
 ka
 tG
 ka
-jE
+ac
 ac
 ac
 ac
@@ -25883,7 +25876,7 @@ ac
 ac
 ac
 iw
-jv
+il
 ks
 ks
 ks
@@ -25904,7 +25897,7 @@ qL
 ka
 tH
 ka
-jE
+ac
 ac
 ac
 ac
@@ -26166,8 +26159,8 @@ ac
 ac
 ac
 ac
-jv
-jv
+il
+il
 ks
 kK
 lj
@@ -26308,7 +26301,7 @@ ac
 ac
 ac
 ac
-jv
+il
 iw
 ks
 kY
@@ -26593,7 +26586,7 @@ ac
 ac
 ac
 ac
-jv
+il
 ks
 la
 ll
