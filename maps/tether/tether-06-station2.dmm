@@ -422,7 +422,6 @@
 /obj/structure/table/steel,
 /obj/item/weapon/deck/cards,
 /obj/item/toy/nanotrasenballoon,
-/obj/item/weapon/material/twohanded/fireaxe/foam,
 /turf/simulated/floor/tiled/dark,
 /area/security/recstorage)
 "aS" = (
