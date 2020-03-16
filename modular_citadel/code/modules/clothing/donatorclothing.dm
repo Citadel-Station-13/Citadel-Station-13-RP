@@ -98,7 +98,7 @@
 	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
 	body_parts_covered = HEAD
 
-/obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later retard
+/obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later
 	name = "Army Garrison Cap"
 	desc = "A vintage wool cap, neatly shaven down the grain, adorning a golden oak leaf on its left half."
 	icon_state = "woolhat"
