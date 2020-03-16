@@ -168,4 +168,4 @@
 	display_name = "Carcharodon Suit"
 	sort_category = "Donator"
 	path = /obj/item/clothing/under/carcharodon
-	ckeywhistelist = list("desucake")
+	ckeywhitelist = list("desucake")
