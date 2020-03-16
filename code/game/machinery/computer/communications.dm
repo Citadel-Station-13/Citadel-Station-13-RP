@@ -99,7 +99,7 @@
 				state = STATE_DEFAULT
 
 		if("announce")
-			if(src.authenticated==2)
+			if(src.authenticated>=1)
 				if(message_cooldown)
 					usr << "Please allow at least one minute to pass between announcements"
 					return
@@ -296,8 +296,9 @@
 		if(STATE_DEFAULT)
 			if (src.authenticated)
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>Log Out</A> \]"
-				if (src.authenticated==2)
+				if (src.authenticated>=1)
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make An Announcement</A> \]"
+				if (src.authenticated==2)
 					if(src.emagged == 0)
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [using_map.boss_short]</A> \]"
 					else
