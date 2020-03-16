@@ -268,8 +268,8 @@
 	item_state = "tesh_uniform_sec"
 
 /obj/item/clothing/under/seromi/undercoat/jobs/qm
-	name = "Quarter master's undercoat"
-	desc =  "A traditional Teshari garb made for the Quarter Master (Who is a real head btw)"
+	name = "Quartermaster's undercoat"
+	desc =  "A traditional Teshari garb made for the Quartermaster"
 	icon_state = "tesh_uniform_qm"
 	item_state = "tesh_uniform_qm"
 

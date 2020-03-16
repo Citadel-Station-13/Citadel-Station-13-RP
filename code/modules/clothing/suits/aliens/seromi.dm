@@ -222,8 +222,8 @@
 	item_state = "tesh_cloak_sec"
 
 /obj/item/clothing/suit/storage/seromi/cloak/jobs/qm
-	name = "Quarter master's cloak"
-	desc =  "A soft Teshari cloak made for the Quarter Master (Who is a real head btw)"
+	name = "Quartermaster's cloak"
+	desc =  "A soft Teshari cloak made for the Quartermaster"
 	icon_state = "tesh_cloak_qm"
 	item_state = "tesh_cloak_qm"
 
