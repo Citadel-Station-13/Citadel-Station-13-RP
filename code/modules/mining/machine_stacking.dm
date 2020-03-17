@@ -119,8 +119,9 @@
 	var/turf/outturf = get_turf(output)
 	for(var/obj/item/I in inturf.contents)
 		if(istype(I, /obj/item/stack) && !isnull(stack_storage[I.name]))
-			stack_storage[I.name] += I.amount
-			qdel(I)
+			var/obj/item/stack/S = I
+			stack_storage[S.name] += S.amount
+			qdel(S)
 			continue
 		I.forceMove(outturf)
 
