@@ -2345,6 +2345,13 @@
 	required_reagents = list("gin" = 1, "limejuice" = 1, "sodawater" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	result = "firepunch"
+	required_reagents = list("sugar" = 1, "rum" = 2)
+	result_amount = 3
+
 ////////////////////////////////
 /// End of booze drinks list///
 ///////////////////////////////

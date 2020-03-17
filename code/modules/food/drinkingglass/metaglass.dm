@@ -577,3 +577,20 @@ Drinks Data
 /datum/reagent/ethanol/gimlet
 	glass_icon_state = "gimlet"
 
+/datum/reagent/ethanol/chrysanthemum
+	glass_icon_state = "chrysanthemum"
+
+/datum/reagent/ethanol/voxdelight
+	glass_icon_state = "voxdelight"
+
+/datum/reagent/ethanol/daiquiri
+	glass_icon_state = "daiquiri"
+
+/datum/reagent/ethanol/firepunch
+	glass_icon_state = "firepunch"
+
+/datum/reagent/ethanol/screamingviking
+	glass_icon_state = "screamingviking"
+
+/datum/reagent/ethanol/paloma
+	glass_icon_state = "paloma"

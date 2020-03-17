@@ -3234,6 +3234,12 @@ End Citadel Change */
 	taste_description = "lime infused tree"
 	strength = 20
 
+/datum/reagent/ethanol/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	description = "A spicy take on a summer classic."
+	taste_description = "rum and sugar"
+	strength = 70
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
