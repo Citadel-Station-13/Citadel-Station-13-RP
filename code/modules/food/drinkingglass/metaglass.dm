@@ -546,3 +546,34 @@ Drinks Data
 /datum/reagent/drink/eggnog
 	glass_icon_state = "eggnog"
 	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/gibbfloat
+	glass_icon_state = "gibbfloats"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mint_julep
+	glass_icon_state = "mint_julep"
+
+/datum/reagent/ethanol/oldfashioned
+	glass_icon_state = "oldfashioned"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/bitters
+	glass_icon_state = "bittersglass"
+
+/datum/reagent/ethanol/planters_punch
+	glass_icon_state = "planterspunch"
+
+/datum/reagent/ethanol/olympus_mons
+	glass_icon_state = "olympusmons"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/sazerac
+	glass_icon_state = "sazerac"
+
+/datum/reagent/ethanol/junglejuice
+	glass_icon_state = "junglejuice"
+
+/datum/reagent/ethanol/gimlet
+	glass_icon_state = "gimlet"
+
