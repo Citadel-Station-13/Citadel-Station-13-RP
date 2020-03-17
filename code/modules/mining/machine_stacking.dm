@@ -21,7 +21,7 @@
 	else
 		//Silently failing and causing mappers to scratch their heads while runtiming isn't ideal.
 			// yeah well telling the world chat before anyone even connected without logging isn't ideal either, 5brain.
-		stack_trace("Stacking machine console at [src.x], [src.y], [src.z] could not find its machine!")
+		stack_trace("Stacking machine console at [COORD(src)] could not find its machine!")
 		qdel(src)
 
 /obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user)
@@ -62,8 +62,8 @@
 			machine.stack_storage[href_list["release_stack"]] = 0
 			S.update_icon()
 
-	src.add_fingerprint(usr)
-	src.updateUsrDialog()
+	add_fingerprint(usr)
+	updateUsrDialog()
 
 	return
 
@@ -104,11 +104,13 @@
 
 /obj/machinery/mineral/stacking_machine/LateInitialize()
 	for (var/dir in cardinal)
-		src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
-		if(src.input) break
+		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
+		if(input)
+			break
 	for (var/dir in cardinal)
-		src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
-		if(src.output) break
+		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
+		if(output)
+			break
 
 /obj/machinery/mineral/stacking_machine/process()
 	if(!input || !output)
