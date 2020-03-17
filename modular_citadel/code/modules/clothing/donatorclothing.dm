@@ -110,3 +110,7 @@
 	desc = "A hardened leather maillot meant to be worn under denim shorts and chaps. This suit was cut specifically to aid flexibility without sacrificing protection. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "carcharodon"
+	item_state = "carcharodon"
+	rolled_down_icon = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	item_icons = list(slot_r_hand_str = 'modular_citadel/icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'modular_citadel/icons/mob/inhands/clothing_left.dmi')
