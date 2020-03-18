@@ -2306,12 +2306,12 @@
 /datum/chemical_reaction/drinks/mint_julep
 	name = "Mint Julep"
 	id = "mint_julep"
-	result = "mintjulep"
+	result = "mint_julep"
 	required_reagents = list("water" = 1, "whiskey" = 1, "ice" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/planters_punch
-	name = "Planter's Punch"
+	name = "Planters Punch"
 	id = "planterspunch"
 	result = "planterspunch"
 	required_reagents = list("rum" = 2, "orangejuice" = 2, "grenadine" = 1)

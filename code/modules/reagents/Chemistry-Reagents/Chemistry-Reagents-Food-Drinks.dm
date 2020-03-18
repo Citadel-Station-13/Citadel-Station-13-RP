@@ -3200,7 +3200,7 @@ End Citadel Change */
 	strength = 80
 
 /datum/reagent/ethanol/planters_punch
-	name = "Planter's Punch"
+	name = "Planters Punch"
 	id = "planterspunch"
 	description = "A refreshing drink for the aspiring botanist."
 	taste_description = "happy plants"
