@@ -3206,7 +3206,7 @@ End Citadel Change */
 	taste_description = "happy plants"
 	strength = 85
 
-/datum/reagent/ethanol/olympus_mons
+/datum/reagent/ethanol/olympusmons
 	name = "Olympus Mons"
 	id = "olympusmons"
 	description = "For those that need the extra kick."

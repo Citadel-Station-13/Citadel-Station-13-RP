@@ -564,9 +564,8 @@ Drinks Data
 /datum/reagent/ethanol/planters_punch
 	glass_icon_state = "planterspunch"
 
-/datum/reagent/ethanol/olympus_mons
+/datum/reagent/ethanol/olympusmons
 	glass_icon_state = "olympusmons"
-	glass_center_of_mass = list("x"=16, "y"=8)
 
 /datum/reagent/ethanol/sazerac
 	glass_icon_state = "sazerac"

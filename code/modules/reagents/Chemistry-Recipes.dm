@@ -2317,7 +2317,7 @@
 	required_reagents = list("rum" = 2, "orangejuice" = 2, "grenadine" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drinks/olympus_mons
+/datum/chemical_reaction/drinks/olympusmons
 	name = "Olympus Mons"
 	id = "olympusmons"
 	result = "olympusmons"
