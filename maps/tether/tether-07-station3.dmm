@@ -7889,6 +7889,28 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"nc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/hologram/holopad,
+/obj/structure/closet/wardrobe/chemistry_white{
+	step_x = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "nd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -13253,6 +13275,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+"vi" = (
+/obj/machinery/smartfridge/chemistry/chemvator,
+/turf/simulated/floor/plating,
+/area/medical/chemistry)
 "vj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13738,6 +13764,21 @@
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+"vY" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/chemistry)
 "vZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -20143,25 +20184,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
-"Gx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "Gy" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -20481,22 +20503,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
-"Hc" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/border{
-	dir = 8
-	},
-/obj/structure/closet/wardrobe/chemistry_white,
-/obj/effect/floor_decal/borderfloorwhite/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/bordercorner2{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/chemistry)
 "Hd" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -36335,7 +36341,7 @@ Dp
 EP
 FE
 Gu
-EP
+vi
 Dp
 ID
 Jr
@@ -36477,7 +36483,7 @@ DV
 EQ
 FF
 Gv
-Hc
+vY
 HV
 ID
 Js
@@ -36760,7 +36766,7 @@ Dq
 DX
 ES
 FH
-Gx
+nc
 Hd
 HX
 IF
