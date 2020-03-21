@@ -1,7 +1,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask
 	name = "fitness shaker"
 	base_name = "shaker"
-	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits."
+	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits. This is almost pure protein so."
 	icon_state = "fitness-cup_black"
 	base_icon = "fitness-cup"
 	volume = 100
@@ -25,7 +25,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 15)
+	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("iron", 10)
-	reagents.add_reagent("protein", 15)
+	reagents.add_reagent("protein", 30)
 	reagents.add_reagent("water", 60)
