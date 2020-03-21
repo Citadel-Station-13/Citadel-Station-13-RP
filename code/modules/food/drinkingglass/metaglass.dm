@@ -551,8 +551,8 @@ Drinks Data
 	glass_icon_state = "gibbfloats"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
-/datum/reagent/ethanol/mint_julep
-	glass_icon_state = "mint_julep"
+/datum/reagent/ethanol/mintjulep
+	glass_icon_state = "mintjulep"
 
 /datum/reagent/ethanol/oldfashioned
 	glass_icon_state = "oldfashioned"
@@ -561,10 +561,10 @@ Drinks Data
 /datum/reagent/ethanol/bitters
 	glass_icon_state = "bittersglass"
 
-/datum/reagent/ethanol/planters_punch
+/datum/reagent/ethanol/planterspunch
 	glass_icon_state = "planterspunch"
 
-/datum/reagent/ethanol/olympus_mons
+/datum/reagent/ethanol/olympusmons
 	glass_icon_state = "olympusmons"
 	glass_center_of_mass = list("x"=16, "y"=8)
 

@@ -2303,21 +2303,21 @@
 	required_reagents = list("ice" = 1, "cream" = 1, "dr_gibb" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/mint_julep
+/datum/chemical_reaction/drinks/mintjulep
 	name = "Mint Julep"
-	id = "mint_julep"
-	result = "mint_julep"
+	id = "mintjulep"
+	result = "mintjulep"
 	required_reagents = list("water" = 1, "whiskey" = 1, "ice" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/drinks/planters_punch
+/datum/chemical_reaction/drinks/planterspunch
 	name = "Planters Punch"
 	id = "planterspunch"
 	result = "planterspunch"
 	required_reagents = list("rum" = 2, "orangejuice" = 2, "grenadine" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drinks/olympus_mons
+/datum/chemical_reaction/drinks/olympusmons
 	name = "Olympus Mons"
 	id = "olympusmons"
 	result = "olympusmons"
