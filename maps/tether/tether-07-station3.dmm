@@ -13277,7 +13277,7 @@
 /area/quartermaster/delivery)
 "vi" = (
 /obj/machinery/smartfridge/chemistry/chemvator,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall,
 /area/medical/chemistry)
 "vj" = (
 /obj/effect/floor_decal/borderfloor{
