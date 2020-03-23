@@ -7889,6 +7889,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"nc" = (
+/obj/machinery/smartfridge/chemistry/chemvator,
+/turf/simulated/wall/r_wall,
+/area/medical/chemistry)
 "nd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -36335,7 +36339,7 @@ Dp
 EP
 FE
 Gu
-EP
+nc
 Dp
 ID
 Jr
