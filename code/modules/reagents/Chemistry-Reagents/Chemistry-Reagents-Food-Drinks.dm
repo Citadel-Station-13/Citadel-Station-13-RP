@@ -3192,21 +3192,21 @@ End Citadel Change */
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
 
-/datum/reagent/ethanol/mint_julep
+/datum/reagent/ethanol/mintjulep
 	name = "Mint Julep"
-	id = "mint_julep"
+	id = "mintjulep"
 	description = "Really not just watery whiskey.. I think."
 	taste_description = "mint infused whiskey"
 	strength = 80
 
-/datum/reagent/ethanol/planters_punch
-	name = "Planter's Punch"
+/datum/reagent/ethanol/planterspunch
+	name = "Planters Punch"
 	id = "planterspunch"
 	description = "A refreshing drink for the aspiring botanist."
 	taste_description = "happy plants"
 	strength = 85
 
-/datum/reagent/ethanol/olympus_mons
+/datum/reagent/ethanol/olympusmons
 	name = "Olympus Mons"
 	id = "olympusmons"
 	description = "For those that need the extra kick."
@@ -3234,6 +3234,13 @@ End Citadel Change */
 	taste_description = "lime infused tree"
 	strength = 20
 
+/datum/reagent/ethanol/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	description = "A spicy take on a summer classic."
+	taste_description = "rum and sugar"
+	strength = 70
+	targ_temp = 300
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
