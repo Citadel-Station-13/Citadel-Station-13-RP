@@ -139,24 +139,24 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "ao" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "ap" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aq" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "ar" = (
 /obj/structure/flora/pottedplant/unusual,
@@ -307,11 +307,11 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aG" = (
-/obj/structure/table/bench/padded,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aH" = (
-/obj/machinery/light,
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aI" = (
@@ -347,49 +347,23 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aL" = (
-/obj/structure/table/marble,
-/obj/item/toy/plushie/coffee_fox,
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "cafe";
-	layer = 3.1;
-	name = "Cafe Shutters"
-	},
+/obj/machinery/vending/cola,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aM" = (
-/obj/structure/table/marble,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "cafe";
-	layer = 3.1;
-	name = "Cafe Shutters"
-	},
+/obj/machinery/vending/fitness,
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aN" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "cafe";
-	layer = 3.1;
-	name = "Cafe Shutters"
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aO" = (
-/obj/structure/bed/chair/sofa/left{
-	icon_state = "sofaend_left";
-	dir = 4
-	},
-/turf/simulated/floor/wood,
+/obj/structure/bed/chair/comfy/black,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -404,55 +378,41 @@
 /turf/simulated/sky/virgo3b,
 /area/tether/transit)
 "aR" = (
-/obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "cafe";
-	layer = 3.1;
-	name = "Cafe Shutters"
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aS" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for shutters.";
-	id = "cafe";
-	name = "Cafe Shutters";
-	pixel_x = -10;
-	pixel_y = 26;
-	req_access = list();
-	req_one_access = list(25);
-	step_x = 0;
-	step_y = 0
-	},
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
-/turf/simulated/wall/r_wall,
-/area/tether/midpoint)
-"aT" = (
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	light_range = 12
 	},
-/obj/structure/bed/chair/sofa{
-	icon_state = "sofamiddle";
-	dir = 4
+/obj/structure/bed/chair/comfy/black,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"aT" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aU" = (
-/obj/machinery/vending/boozeomat,
-/turf/simulated/wall/r_wall,
-/area/tether/midpoint)
-"aV" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/dice/d20,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"aV" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	light_range = 12
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -472,21 +432,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "aY" = (
-/obj/machinery/door/window/southright{
-	name = "Cafe"
-	},
-/turf/simulated/floor/wood,
-/area/tether/midpoint)
-"aZ" = (
-/obj/structure/table/marble,
-/obj/structure/window/reinforced,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "cafe";
-	layer = 3.1;
-	name = "Cafe Shutters"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "ba" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -495,13 +443,6 @@
 	},
 /obj/machinery/camera/network/northern_star{
 	dir = 5
-	},
-/turf/simulated/floor/wood,
-/area/tether/midpoint)
-"bb" = (
-/obj/structure/bed/chair/sofa/right{
-	icon_state = "sofaend_right";
-	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
@@ -527,19 +468,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"be" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/tether/midpoint)
-"bf" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/dark,
-/area/tether/midpoint)
 "bg" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -562,11 +490,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"bi" = (
-/obj/machinery/light,
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
-/area/tether/midpoint)
 "bj" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -575,21 +498,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/tether/midpoint)
-"bk" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/dark,
-/area/tether/midpoint)
-"bl" = (
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
-/turf/simulated/floor/wood,
 /area/tether/midpoint)
 
 (1,1,1) = {"
@@ -10459,7 +10367,7 @@ aW
 aW
 ba
 bd
-bk
+aN
 aw
 au
 au
@@ -10591,7 +10499,7 @@ au
 au
 au
 au
-au
+as
 aw
 aw
 av
@@ -10601,10 +10509,10 @@ aK
 aK
 aK
 bc
-bf
+aR
 aw
 aw
-au
+as
 au
 au
 au
@@ -10733,20 +10641,20 @@ au
 au
 au
 au
-au
 ak
 am
 ay
 ay
-aL
-aR
-aR
-aR
+ay
+ay
+ay
+ay
+ay
 ay
 bg
+aK
 bh
 ak
-au
 au
 au
 au
@@ -10875,20 +10783,20 @@ au
 au
 au
 au
-au
 ak
 an
 ay
+ay
+ay
 aG
+aH
+aL
 aM
 ay
 ay
-aY
-ay
 ay
 an
 ak
-au
 au
 au
 au
@@ -11017,20 +10925,20 @@ au
 au
 au
 au
-au
 ak
 ao
 ay
-aG
-aN
 ay
-bl
-aZ
-aG
+ay
+aw
+aw
+aw
+aw
+ay
+ay
 ay
 ao
 ak
-au
 au
 au
 au
@@ -11159,20 +11067,20 @@ au
 au
 au
 au
-au
 ak
 ap
 ay
-aH
-aw
+ay
+ay
 aS
 aU
-aw
-be
+ao
+aV
+ay
+ay
 ay
 ap
 ak
-au
 au
 au
 au
@@ -11301,20 +11209,20 @@ au
 au
 au
 au
-au
 ak
-an
+ar
 ay
 ay
-aw
-aw
-aw
-aw
+ay
+aO
+ao
+ao
+aT
 ay
 ay
-an
+ay
+ar
 ak
-au
 au
 au
 au
@@ -11443,20 +11351,20 @@ au
 au
 au
 au
-au
 ak
-aq
+an
 ay
 ay
-aO
-aT
-aT
-bb
 ay
 ay
-bi
+ay
+ay
+ay
+ay
+ay
+ay
+an
 ak
-au
 au
 au
 au
@@ -11585,20 +11493,20 @@ au
 au
 au
 au
-au
 ak
-ap
+aq
 ay
 ay
-ao
-ao
-aV
-ao
 ay
 ay
-ap
+ay
+ay
+ay
+ay
+ay
+ay
+aY
 ak
-au
 au
 au
 au
@@ -11727,20 +11635,20 @@ au
 au
 au
 au
-au
 ak
-ar
+ap
+ay
+aO
+ao
+aT
 ay
 ay
+aO
+ao
+aT
 ay
-ay
-ay
-ay
-ay
-ay
-ar
+ap
 ak
-au
 au
 au
 au
@@ -11869,20 +11777,20 @@ au
 au
 au
 au
-au
-al
-at
-at
-at
-at
-at
-at
-at
-at
-at
-at
-bj
-au
+ak
+ar
+ay
+aO
+ao
+aT
+ay
+ay
+aO
+ao
+aT
+ay
+ar
+ak
 au
 au
 au
@@ -12011,20 +11919,20 @@ au
 au
 au
 au
-au
-au
-au
-au
-au
-au
-au
-au
-au
-au
-au
-au
-au
-au
+al
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+bj
 au
 au
 au
