@@ -54,11 +54,7 @@
 	log = FALSE
 
 /datum/world_topic/playing/Run(list/input)
-<<<<<<< HEAD
-	return player_list.len
-=======
 	return length(player_list)
->>>>>>> citrp/master
 
 /datum/world_topic/pr_announce
 	keyword = "announce"

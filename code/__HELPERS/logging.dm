@@ -33,11 +33,7 @@
 /proc/log_access_in(client/new_client)
 	if (config_legacy.log_access)
 		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"
-<<<<<<< HEAD
-		WRITE_LOG(diary, "ACCESS IN: [message]") //VOREStation Edit
-=======
 		WRITE_LOG(GLOB.world_game_log, "ACCESS IN: [message]")
->>>>>>> citrp/master
 
 /proc/log_access_out(mob/last_mob)
 	if (config_legacy.log_access)
@@ -75,15 +71,12 @@
 	if (config_legacy.log_whisper)
 		WRITE_LOG(GLOB.world_game_log, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
 
-<<<<<<< HEAD
 	if(speaker.client)
 		speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:gray\"><i>[text]</i></span>"
 		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style=\"color:gray\"><i>[text]</i></span>"
 
-=======
 /proc/log_access(text)
 	WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
->>>>>>> citrp/master
 
 /proc/log_emote(text, mob/speaker)
 	if (config_legacy.log_emote)
@@ -107,7 +100,7 @@
 
 /proc/log_eventsay(text, mob/speaker)
 <<<<<<< HEAD
-	if (config.log_adminchat)
+	if (config_legacy.log_adminchat)
 		WRITE_LOG(diary, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 =======
 	if (config_legacy.log_adminchat)
@@ -132,7 +125,7 @@
 
 /proc/log_pda(text, mob/speaker)
 <<<<<<< HEAD
-	if (config.log_pda)
+	if (config_legacy.log_pda)
 		WRITE_LOG(diary, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
@@ -141,7 +134,7 @@
 
 /proc/log_to_dd(text)
 	world.log << text //this comes before the config check because it can't possibly runtime
-	if(config.log_world_output)
+	if(config_legacy.log_world_output)
 		WRITE_LOG(diary, "DD_OUTPUT: [text]")
 =======
 	if (config_legacy.log_pda)
@@ -157,7 +150,7 @@
 	WRITE_LOG(diary, "MISC: [text]")
 
 /proc/log_topic(text)
-	if(config.log_topic)
+	if(config_legacy.log_topic)
 		WRITE_LOG(diary, "TOPIC: [text]")
 
 /proc/log_href(text)

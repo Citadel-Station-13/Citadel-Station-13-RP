@@ -32,41 +32,31 @@
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != security_level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
-<<<<<<< HEAD
-				security_announcement_down.Announce("[config.alert_desc_green]", "Attention! Alert level lowered to code green.")
-=======
-				security_announcement_down.Announce("[config_legacy.alert_desc_green]", "Attention! Security level lowered to green")
->>>>>>> citrp/master
+				security_announcement_down.Announce("[config_legacy.alert_desc_green]", "Attention! Alert level lowered to code green.")
 				security_level = SEC_LEVEL_GREEN
 			if(SEC_LEVEL_YELLOW)
 				if(security_level < SEC_LEVEL_YELLOW)
-					security_announcement_up.Announce("[config.alert_desc_yellow_upto]", "Attention! Alert level elevated to yellow")
+					security_announcement_up.Announce("[config_legacy.alert_desc_yellow_upto]", "Attention! Alert level elevated to yellow")
 				else
-					security_announcement_down.Announce("[config.alert_desc_yellow_downto]", "Attention! Alert level lowered to yellow")
+					security_announcement_down.Announce("[config_legacy.alert_desc_yellow_downto]", "Attention! Alert level lowered to yellow")
 				security_level = SEC_LEVEL_YELLOW
 			if(SEC_LEVEL_VIOLET)
 				if(security_level < SEC_LEVEL_VIOLET)
-					security_announcement_up.Announce("[config.alert_desc_violet_upto]", "Attention! Alert level elevated to violet")
+					security_announcement_up.Announce("[config_legacy.alert_desc_violet_upto]", "Attention! Alert level elevated to violet")
 				else
-					security_announcement_down.Announce("[config.alert_desc_violet_downto]", "Attention! Alert level lowered to violet")
+					security_announcement_down.Announce("[config_legacy.alert_desc_violet_downto]", "Attention! Alert level lowered to violet")
 				security_level = SEC_LEVEL_VIOLET
 			if(SEC_LEVEL_ORANGE)
 				if(security_level < SEC_LEVEL_ORANGE)
-					security_announcement_up.Announce("[config.alert_desc_orange_upto]", "Attention! Alert level elevated to orange")
+					security_announcement_up.Announce("[config_legacy.alert_desc_orange_upto]", "Attention! Alert level elevated to orange")
 				else
-					security_announcement_down.Announce("[config.alert_desc_orange_downto]", "Attention! Alert level lowered to orange")
+					security_announcement_down.Announce("[config_legacy.alert_desc_orange_downto]", "Attention! Alert level lowered to orange")
 				security_level = SEC_LEVEL_ORANGE
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
-<<<<<<< HEAD
-					security_announcement_up.Announce("[config.alert_desc_blue_upto]", "Attention! Alert level elevated to blue")
+					security_announcement_up.Announce("[config_legacy.alert_desc_blue_upto]", "Attention! Alert level elevated to blue")
 				else
-					security_announcement_down.Announce("[config.alert_desc_blue_downto]", "Attention! Alert level lowered to blue")
-=======
-					security_announcement_up.Announce("[config_legacy.alert_desc_blue_upto]", "Attention! Security level elevated to blue")
-				else
-					security_announcement_down.Announce("[config_legacy.alert_desc_blue_downto]", "Attention! Security level lowered to blue")
->>>>>>> citrp/master
+					security_announcement_down.Announce("[config_legacy.alert_desc_blue_downto]", "Attention! Alert level lowered to blue")
 				security_level = SEC_LEVEL_BLUE
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
@@ -80,7 +70,7 @@
 					CC.post_status("alert", "redalert")*/
 			if(SEC_LEVEL_DELTA)
 <<<<<<< HEAD
-				security_announcement_up.Announce("[config.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/siren.ogg')
+				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/siren.ogg')
 =======
 				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta security level reached!", new_sound = 'sound/effects/siren.ogg')
 >>>>>>> citrp/master

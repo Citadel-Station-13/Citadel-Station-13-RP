@@ -53,11 +53,7 @@
 /client/proc/file_spam_check()
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-<<<<<<< HEAD
 		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [round(time_to_wait/10)] seconds.</font>")
-=======
-		src << "<font color='red'>log_world: file_spam_check(): Spam. Please wait [round(time_to_wait/10)] seconds.</font>"
->>>>>>> citrp/master
 		return 1
 	fileaccess_timer = world.time + FTPDELAY
 	return 0

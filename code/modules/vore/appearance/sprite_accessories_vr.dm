@@ -1654,19 +1654,11 @@
 	extra_overlay = "buggofirefly_vass_markings"
 	extra_overlay_w = "buggofatfirefly_vass_markings"
 
-<<<<<<< HEAD
 /datum/sprite_accessory/tail/tail_smooth
 	name = "Smooth Lizard Tail, Colorable"
 	desc = ""
 	icon_state = "tail_smooth"
 	ani_state = "tail_smooth_w"
-=======
-/datum/sprite_accessory/tail/lizard_tail_smooth
-	name = "Lizard Tail (Smooth)"
-	desc = ""
-	icon_state = "lizard_tail_smooth"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/lizard_tail_dark_tiger
 	name = "Lizard Tail (Dark Tiger)"
@@ -1686,6 +1678,5 @@
 	name = "Lizard Tail (Spiked)"
 	desc = ""
 	icon_state = "lizard_tail_spiked"
->>>>>>> citrp/master
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY

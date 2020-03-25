@@ -83,12 +83,9 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
-<<<<<<< HEAD
 #define FIRE_PRIORITY_AI			10
-=======
 #define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_SERVER_MAINT	10
->>>>>>> citrp/master
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_CHARSETUP     25
 #define FIRE_PRIORITY_AIRFLOW		30

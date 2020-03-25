@@ -8,17 +8,10 @@ datum/controller/transfer_controller
 	var/shift_hard_end = 0 //VOREStation Edit
 	var/shift_last_vote = 0 //Citadel Edit
 datum/controller/transfer_controller/New()
-<<<<<<< HEAD
-	timerbuffer = config.vote_autotransfer_initial
-	shift_hard_end = config.vote_autotransfer_initial + (config.vote_autotransfer_interval * NUMBER_OF_VOTE_EXTENSIONS) //VOREStation Edit //Change this "1" to how many extend votes you want there to be.
-	shift_last_vote = shift_hard_end - config.vote_autotransfer_interval //VOREStation Edit
-	START_PROCESSING(SSobj, src)
-=======
 	timerbuffer = config_legacy.vote_autotransfer_initial
 	shift_hard_end = config_legacy.vote_autotransfer_initial + (config_legacy.vote_autotransfer_interval * NUMBER_OF_VOTE_EXTENSIONS) //VOREStation Edit //Change this "1" to how many extend votes you want there to be.
 	shift_last_vote = shift_hard_end - config_legacy.vote_autotransfer_interval //VOREStation Edit
-	processing_objects += src
->>>>>>> citrp/master
+	START_PROCESSING(SSobj, src)
 
 datum/controller/transfer_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)

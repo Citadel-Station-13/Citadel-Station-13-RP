@@ -379,7 +379,7 @@
 					config_legacy.log_runtime = 1
 
 				if ("log_topic")
-					config.log_topic = text2num(value)
+					config_legacy.log_topic = text2num(value)
 
 				if ("generate_map")
 					config_legacy.generate_map = 1
@@ -435,16 +435,11 @@
 				if ("allow_ai")
 					config_legacy.allow_ai = 1
 
-<<<<<<< HEAD:code/controllers/configuration.dm
 				if ("allow_ai_shells")
-					config.allow_ai_shells = TRUE
+					config_legacy.allow_ai_shells = TRUE
 
 				if("give_free_ai_shell")
-					config.give_free_ai_shell = TRUE
-=======
-				if ("allow_ai_drones")
-					config_legacy.allow_ai_drones = 1
->>>>>>> citrp/master:code/controllers/configuration_old/configuration.dm
+					config_legacy.give_free_ai_shell = TRUE
 
 //				if ("authentication")
 //					config_legacy.enable_authentication = 1
@@ -558,11 +553,11 @@
 					if(req_pos)
 						req_name = lowertext(copytext(value, 1, req_pos))
 						req_value = copytext(value, req_pos + 1)
-						if(req_name in config.modes)
+						if(req_name in config_legacy.modes)
 							if(is_secret_override)
-								config.player_requirements_secret[req_name] = text2num(req_value)
+								config_legacy.player_requirements_secret[req_name] = text2num(req_value)
 							else
-								config.player_requirements[req_name] = text2num(req_value)
+								config_legacy.player_requirements[req_name] = text2num(req_value)
 						else
 							log_misc("Unknown game mode player requirement configuration definition: [req_name].")
 					else
@@ -572,7 +567,7 @@
 					config_legacy.allow_random_events = 1
 
 				if("enable_game_master")
-					config.enable_game_master = 1
+					config_legacy.enable_game_master = 1
 
 				if("kick_inactive")
 					config_legacy.kick_inactive = text2num(value)
@@ -820,21 +815,17 @@
 					config_legacy.second_click_limit = text2num(value)
 
 				if("minute_topic_limit")
-<<<<<<< HEAD:code/controllers/configuration.dm
-					config.minute_topic_limit = text2num(value)
-				if("random_submap_orientation")
-					config.random_submap_orientation = 1
-
-				if("second_topic_limit")
-					config.second_topic_limit = text2num(value)
-				if("autostart_solars")
-					config.autostart_solars = TRUE
-=======
 					config_legacy.minute_topic_limit = text2num(value)
+				if("random_submap_orientation")
+					config_legacy.random_submap_orientation = 1
 
 				if("second_topic_limit")
 					config_legacy.second_topic_limit = text2num(value)
->>>>>>> citrp/master:code/controllers/configuration_old/configuration.dm
+				if("autostart_solars")
+					config_legacy.autostart_solars = TRUE
+
+				if("second_topic_limit")
+					config_legacy.second_topic_limit = text2num(value)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
@@ -874,13 +865,9 @@
 				if("bones_can_break")
 					config_legacy.bones_can_break = value
 				if("limbs_can_break")
-<<<<<<< HEAD:code/controllers/configuration.dm
-					config.limbs_can_break = value
-				if("allow_headgibs")
-					config.allow_headgibs = TRUE
-=======
 					config_legacy.limbs_can_break = value
->>>>>>> citrp/master:code/controllers/configuration_old/configuration.dm
+				if("allow_headgibs")
+					config_legacy.allow_headgibs = TRUE
 
 				if("run_speed")
 					config_legacy.run_speed = value

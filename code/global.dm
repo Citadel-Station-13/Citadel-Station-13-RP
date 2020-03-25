@@ -84,12 +84,7 @@ var/list/reverse_dir = list( // reverse_dir[dir] = reverse of dir
 	23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63
 )
 
-<<<<<<< HEAD
-var/datum/configuration/config      = null
-=======
 var/datum/configuration_legacy/config_legacy      = null
-var/datum/sun/sun                   = null
->>>>>>> citrp/master
 
 var/list/combatlog = list()
 var/list/IClog     = list()

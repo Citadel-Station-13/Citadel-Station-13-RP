@@ -78,13 +78,8 @@ SUBSYSTEM_DEF(vote)
 		if(votes > greatest_votes)
 			greatest_votes = votes
 
-<<<<<<< HEAD
-	if(!config.vote_no_default && choices.len) // Default-vote for everyone who didn't vote
-		var/non_voters = (GLOB.clients.len - total_votes)
-=======
 	if(!config_legacy.vote_no_default && choices.len) // Default-vote for everyone who didn't vote
-		var/non_voters = (clients.len - total_votes)
->>>>>>> citrp/master
+		var/non_voters = (GLOB.clients.len - total_votes)
 		if(non_voters > 0)
 			if(mode == VOTE_RESTART)
 				choices["Continue Playing"] += non_voters

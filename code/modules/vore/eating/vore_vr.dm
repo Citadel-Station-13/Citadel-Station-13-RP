@@ -25,13 +25,8 @@ V::::::V           V::::::VO:::::::OOO:::::::ORR:::::R     R:::::REE::::::EEEEEE
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
 //
-<<<<<<< HEAD
-/datum/configuration
-	var/items_survive_digestion = TRUE	//For configuring if the important_items survive digestion
-=======
 /datum/configuration_legacy
-	var/items_survive_digestion = 1		//For configuring if the important_items survive digestion
->>>>>>> citrp/master
+	var/items_survive_digestion = TRUE		//For configuring if the important_items survive digestion
 
 //
 // The datum type bolted onto normal preferences datums for storing Virgo stuff

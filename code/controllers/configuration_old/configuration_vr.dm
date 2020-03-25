@@ -12,7 +12,7 @@
 	var/require_flavor = FALSE
 
 /hook/startup/proc/read_vs_config()
-	var/list/Lines = file2list("config/legacy/config.txt")
+	var/list/Lines = file2list("config/legacy/config_legacy.txt")
 	for(var/t in Lines)
 		if(!t)	continue
 
@@ -55,11 +55,7 @@
 			if ("time_off")
 				config_legacy.time_off = TRUE
 			if ("pto_job_change")
-<<<<<<< HEAD:code/controllers/configuration_vr.dm
-				config.pto_job_change = TRUE
-			if ("require_flavor")
-				config.require_flavor = TRUE
-=======
 				config_legacy.pto_job_change = TRUE
->>>>>>> citrp/master:code/controllers/configuration_old/configuration_vr.dm
+			if ("require_flavor")
+				config_legacy.require_flavor = TRUE
 	return 1
