@@ -1,4 +1,5 @@
 /datum/job/intern
+	title = "Intern"
 	flag = INTERN
 	department = "Civilian"
 	department_flag = ENGSEC // Ran out of bits
@@ -11,7 +12,7 @@
 	access = list()			//See /datum/job/intern/get_access()
 	minimal_access = list()	//See /datum/job/intern/get_access()
 	outfit_type = /decl/hierarchy/outfit/job/assistant/intern
-	alt_titles = list("Apprentice Engineer","Medical Intern","Lab Assistant","Security Cadet","Jr. Cargo Tech", "Jr. Explorer", "Server" = /decl/hierarchy/outfit/job/service/server)
+	alt_titles = list("Assistant", "Apprentice Engineer","Medical Intern","Lab Assistant","Security Cadet","Jr. Cargo Tech", "Jr. Explorer", "Server" = /decl/hierarchy/outfit/job/service/server)
 	timeoff_factor = 0 // Interns, noh
 
 /datum/job/intern/New()

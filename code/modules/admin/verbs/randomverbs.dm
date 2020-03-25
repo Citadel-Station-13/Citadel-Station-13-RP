@@ -332,29 +332,19 @@ Ccomp's first proc.
 	var/action=""
 	if(config_legacy.antag_hud_restricted)
 		for(var/mob/observer/dead/g in get_ghosts())
-			g << "<font color='blue'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></font>"
+			to_chat(g, "<font color='blue'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></font>")
 		action = "lifted restrictions"
-<<<<<<< HEAD
 		config_legacy.antag_hud_restricted = 0
 		to_chat(src, "<font color='blue'><B>AntagHUD restrictions have been lifted</B></font>")
-=======
-		config_legacy.antag_hud_restricted = 0
-		src << "<font color='blue'><B>AntagHUD restrictions have been lifted</B></font>"
->>>>>>> citrp/master
 	else
 		for(var/mob/observer/dead/g in get_ghosts())
-			g << "<font color='red'><B>The administrator has placed restrictions on joining the round if you use AntagHUD</B></font>"
-			g << "<font color='red'><B>Your AntagHUD has been disabled, you may choose to re-enabled it but will be under restrictions </B></font>"
+			to_chat(g, "<font color='red'><B>The administrator has placed restrictions on joining the round if you use AntagHUD</B></font>")
+			to_chat(g, "<font color='red'><B>Your AntagHUD has been disabled, you may choose to re-enabled it but will be under restrictions </B></font>")
 			g.antagHUD = 0
 			g.has_enabled_antagHUD = 0
 		action = "placed restrictions"
-<<<<<<< HEAD
 		config_legacy.antag_hud_restricted = 1
 		to_chat(src, "<font color='red'><B>AntagHUD restrictions have been enabled</B></font>")
-=======
-		config_legacy.antag_hud_restricted = 1
-		src << "<font color='red'><B>AntagHUD restrictions have been enabled</B></font>"
->>>>>>> citrp/master
 
 	log_admin("[key_name(usr)] has [action] on joining the round if they use AntagHUD")
 	message_admins("Admin [key_name_admin(usr)] has [action] on joining the round if they use AntagHUD", 1)

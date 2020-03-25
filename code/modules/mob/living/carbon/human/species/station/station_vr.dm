@@ -277,14 +277,10 @@
 //	gluttonous = 1
 	num_alternate_languages = 3
 	color_mult = 1
-<<<<<<< HEAD
-	inherent_verbs = list(/mob/living/proc/shred_limb, /mob/living/carbon/human/proc/lick_wounds)
-=======
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
->>>>>>> citrp/master
 
 	blurb = "Vulpkanin are a species of sharp-witted canine-pideds residing on the planet Altam just barely within the \
 	dual-star Vazzend system. Their politically de-centralized society and independent natures have led them to become a species and \
@@ -357,16 +353,12 @@
 	color_mult = 1
 	min_age = 18
 	gluttonous = 0
-<<<<<<< HEAD
-	inherent_verbs = list(/mob/living/proc/shred_limb)
 	descriptors = list()
 	wikilink="https://wiki.vore-station.net/Unathi"
-=======
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
->>>>>>> citrp/master
 
 /datum/species/tajaran
 	spawn_flags = SPECIES_CAN_JOIN
@@ -376,17 +368,12 @@
 	color_mult = 1
 	min_age = 18
 	gluttonous = 0 //Moving this here so I don't have to fix this conflict every time polaris glances at station.dm
-<<<<<<< HEAD
-	inherent_verbs = list(/mob/living/proc/shred_limb, /mob/living/carbon/human/proc/lick_wounds)
 	heat_discomfort_level = 295 //Prevents heat discomfort spam at 20c
 	wikilink="https://wiki.vore-station.net/Tajaran"
-=======
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
-	heat_discomfort_level = 294 //Prevents heat discomfort spam at 20c
->>>>>>> citrp/master
 
 /datum/species/skrell
 	spawn_flags = SPECIES_CAN_JOIN
@@ -458,19 +445,15 @@
 	min_age = 18
 	icobase = 'icons/mob/human_races/r_vox_old.dmi'
 	deform = 'icons/mob/human_races/r_def_vox_old.dmi'
-<<<<<<< HEAD
-	inherent_verbs = list(/mob/living/proc/shred_limb, /mob/living/proc/eat_trash)
 	descriptors = list(
 		/datum/mob_descriptor/vox_markings = 0
 		)
 	wikilink="https://wiki.vore-station.net/Vox"
-=======
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/tie_hair
 		)
->>>>>>> citrp/master
 
 datum/species/harpy
 	name = SPECIES_RAPALA

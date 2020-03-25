@@ -99,13 +99,8 @@
 		WRITE_LOG(GLOB.world_game_log, "MODSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_eventsay(text, mob/speaker)
-<<<<<<< HEAD
-	if (config_legacy.log_adminchat)
-		WRITE_LOG(diary, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
-=======
 	if (config_legacy.log_adminchat)
 		WRITE_LOG(GLOB.world_game_log, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
->>>>>>> citrp/master
 
 /proc/log_ghostsay(text, mob/speaker)
 	if (config_legacy.log_say)
@@ -124,9 +119,8 @@
 		WRITE_LOG(GLOB.world_game_log, "ADMINWARN: [html_decode(text)]")
 
 /proc/log_pda(text, mob/speaker)
-<<<<<<< HEAD
 	if (config_legacy.log_pda)
-		WRITE_LOG(diary, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
+		WRITE_LOG(GLOB.world_game_log, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
@@ -136,18 +130,13 @@
 	world.log << text //this comes before the config check because it can't possibly runtime
 	if(config_legacy.log_world_output)
 		WRITE_LOG(diary, "DD_OUTPUT: [text]")
-=======
-	if (config_legacy.log_pda)
-		WRITE_LOG(GLOB.world_game_log, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
->>>>>>> citrp/master
 
 /proc/log_error(text)
 	world.log << text
 	WRITE_LOG(GLOB.world_runtime_log, "RUNTIME: [text]")
 
 /proc/log_misc(text)
-<<<<<<< HEAD
-	WRITE_LOG(diary, "MISC: [text]")
+	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
 /proc/log_topic(text)
 	if(config_legacy.log_topic)
@@ -156,9 +145,6 @@
 /proc/log_href(text)
 	// Configs are checked by caller
 	WRITE_LOG(href_logfile, "HREF: [text]")
-=======
-	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
->>>>>>> citrp/master
 
 /proc/log_unit_test(text)
 	world.log << "## UNIT_TEST: [text]"
