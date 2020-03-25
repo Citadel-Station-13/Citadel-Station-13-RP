@@ -125,12 +125,6 @@
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style=\"color:[COLOR_GREEN]\">[text]</span>"
 
-
-/proc/log_to_dd(text)
-	world.log << text //this comes before the config check because it can't possibly runtime
-	if(config_legacy.log_world_output)
-		WRITE_LOG(diary, "DD_OUTPUT: [text]")
-
 /proc/log_error(text)
 	world.log << text
 	WRITE_LOG(GLOB.world_runtime_log, "RUNTIME: [text]")
@@ -138,23 +132,8 @@
 /proc/log_misc(text)
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
-/proc/log_topic(text)
-	if(config_legacy.log_topic)
-		WRITE_LOG(diary, "TOPIC: [text]")
-
-/proc/log_href(text)
-	// Configs are checked by caller
-	WRITE_LOG(href_logfile, "HREF: [text]")
-
 /proc/log_unit_test(text)
 	world.log << "## UNIT_TEST: [text]"
-
-/proc/log_access(text)
-	WRITE_LOG(diary, "ACCESS: [text]")
-
-/* Log to the logfile only. */
-/proc/log_runtime(text)
-	WRITE_LOG(error_log, text)
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)

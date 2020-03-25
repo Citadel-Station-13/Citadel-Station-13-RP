@@ -155,7 +155,7 @@
 	.["ai"] = config_legacy.allow_ai
 	.["host"] = host || null
 	.["round_id"] = GLOB.round_id
-	.["players"] = clients.len
+	.["players"] = GLOB.clients.len
 	.["revision"] = GLOB.revdata.commit
 	.["revision_date"] = GLOB.revdata.date
 

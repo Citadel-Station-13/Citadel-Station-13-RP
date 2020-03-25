@@ -27,7 +27,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 
-	var/motd = global.config_legacy.motd
+	var/motd = config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 

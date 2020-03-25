@@ -1,6 +1,5 @@
 //Updates the mob's health from organs and mob damage variables
 /mob/living/carbon/human/updatehealth()
-	var/huskmodifier = 1.5 // With 1.5, you need 250 burn instead of 200 to husk a human.
 
 	if(status_flags & GODMODE)
 		health = getMaxHealth()

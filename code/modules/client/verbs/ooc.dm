@@ -3,7 +3,7 @@
 	set category = "OOC"
 	set desc ="Check the Message of the Day"
 
-	var/motd = global.config_legacy.motd
+	var/motd = config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 	else

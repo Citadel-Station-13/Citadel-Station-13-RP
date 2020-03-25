@@ -28,7 +28,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	GLOB.revdata = new
 
-	config_legacy.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	SetupLogs()
 
