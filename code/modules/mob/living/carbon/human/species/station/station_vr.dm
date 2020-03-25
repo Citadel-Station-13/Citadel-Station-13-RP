@@ -81,15 +81,11 @@
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	name_language = LANGUAGE_SKRELLIAN
 	color_mult = 1
-<<<<<<< HEAD
-	inherent_verbs = list(/mob/living/proc/shred_limb)
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
-=======
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
->>>>>>> citrp/master
 
 	min_age = 18
 	max_age = 80

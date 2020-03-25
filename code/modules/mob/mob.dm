@@ -432,15 +432,10 @@
 		'html/changelog.html'
 		)
 	src << browse('html/changelog.html', "window=changes;size=675x650")
-<<<<<<< HEAD
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
-		SScharacter_setup.queue_preferences_save(prefs)
-=======
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
+		SScharacter_setup.queue_preferences_save(prefs)
 		prefs.save_preferences()
->>>>>>> citrp/master
 		winset(src, "rpane.changelog", "background-color=none;font-style=;")
 
 /mob/verb/observe()
@@ -702,81 +697,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/Stat()
 	..()
-<<<<<<< HEAD
-	. = (is_client_active(10 MINUTES))
-
-	if(.)
-		if(statpanel("Status"))
-			stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
-			if(ticker && ticker.current_state != GAME_STATE_PREGAME)
-				stat("Station Time", stationtime2text())
-				stat("Station Date", stationdate2text())
-				stat("Round Duration", roundduration2text())
-
-		if(client.holder)
-			if(statpanel("Status"))
-				stat("Location:", "([x], [y], [z]) [loc]")
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
-				stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
-
-			if(statpanel("Processes"))
-				if(processScheduler)
-					processScheduler.statProcesses()
-
-			if(statpanel("MC"))
-				stat("Location:", "([x], [y], [z]) [loc]")
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
-				stat("World Time:", world.time)
-				stat("Real time of day:", REALTIMEOFDAY)
-				stat(null)
-				if(GLOB)
-					GLOB.stat_entry()
-				else
-					stat("Globals:", "ERROR")
-				if(Master)
-					Master.stat_entry()
-				else
-					stat("Master Controller:", "ERROR")
-				if(Failsafe)
-					Failsafe.stat_entry()
-				else
-					stat("Failsafe Controller:", "ERROR")
-				if(Master)
-					stat(null)
-					for(var/datum/controller/subsystem/SS in Master.subsystems)
-						SS.stat_entry()
-
-			if(statpanel("Tickets"))
-				GLOB.ahelp_tickets.stat_entry()
-
-
-			if(length(GLOB.sdql2_queries))
-				if(statpanel("SDQL2"))
-					stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-					for(var/i in GLOB.sdql2_queries)
-						var/datum/SDQL2_query/Q = i
-						Q.generate_stat()
-
-		if(listed_turf && client)
-			if(!TurfAdjacent(listed_turf))
-				listed_turf = null
-			else
-				if(statpanel("Turf"))
-					stat(listed_turf)
-					for(var/atom/A in listed_turf)
-						if(!A.mouse_opacity)
-							continue
-						if(A.invisibility > see_invisible)
-							continue
-						if(is_type_in_list(A, shouldnt_see))
-							continue
-						if(A.plane > plane)
-							continue
-						stat(A)
-=======
->>>>>>> citrp/master
 
 	//This is only called from client/Stat(), let's assume client exists.
 
@@ -801,6 +721,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			stat("CPU:", "[world.cpu]")
 			stat("Instances:", "[num2text(world.contents.len, 10)]")
 			stat("World Time:", "[world.time]")
+			stat("Real time of day:", REALTIMEOFDAY)
 			GLOB.stat_entry()
 			config.stat_entry()
 			stat(null)

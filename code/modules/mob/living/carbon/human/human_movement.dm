@@ -113,8 +113,7 @@
 			tally = tally/2
 		tally -= chem_effects[CE_SPEEDBOOST]	// give 'em a buff on top.
 
-<<<<<<< HEAD
-	return max(HUMAN_LOWEST_SLOWDOWN, tally+config.human_delay)	// Minimum return should be the same as force_max_speed
+	return max(HUMAN_LOWEST_SLOWDOWN, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // This calculates the amount of slowdown to receive from items worn. This does NOT include species modifiers.
 // It is in a seperate place to avoid an infinite loop situation with dragging mobs dragging each other.
@@ -172,9 +171,6 @@
 					. += WH.wind_speed
 
 #undef HUMAN_LOWEST_SLOWDOWN
-=======
-	return max(-3, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
->>>>>>> citrp/master
 
 /mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
 	//Can we act?

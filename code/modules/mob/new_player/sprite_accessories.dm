@@ -701,13 +701,11 @@
 		icon_state = "hair_topknot"
 		flags = HAIR_TIEABLE
 
-<<<<<<< HEAD
 	trimflat
 		name = "Trimmed Flat Top"
 		icon_state = "hair_trimflat"
 		gender = MALE
 		flags = HAIR_VERY_SHORT
-=======
 	shy
 		name = "Shy"
 		icon_state = "hair_shy"
@@ -716,7 +714,6 @@
 		name = "Jade"
 		icon_state = "hair_jade"
 		flags = HAIR_TIEABLE
->>>>>>> citrp/master
 
 	trimmed
 		name = "Trimmed"

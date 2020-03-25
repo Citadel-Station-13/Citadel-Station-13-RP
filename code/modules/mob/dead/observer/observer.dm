@@ -278,13 +278,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle AntagHUD"
 	set desc = "Toggles AntagHUD allowing you to see who is the antagonist"
 
-<<<<<<< HEAD
-	if(!config.antag_hud_allowed && !client.holder)
-		to_chat(src, "<font color='red'>Admins have disabled this for this round.</font>")
-=======
 	if(!config_legacy.antag_hud_allowed && !client.holder)
-		src << "<font color='red'>Admins have disabled this for this round.</font>"
->>>>>>> citrp/master
+		to_chat(src, "<font color='red'>Admins have disabled this for this round.</font>")
 		return
 	if(jobban_isbanned(src, "AntagHUD"))
 		to_chat(src, "<font color='red'><B>You have been banned from using this feature</B></font>")
@@ -479,13 +474,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Become mouse"
 	set category = "Ghost"
 
-<<<<<<< HEAD
-	if(config.disable_player_mice)
-		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
-=======
 	if(config_legacy.disable_player_mice)
-		src << "<span class='warning'>Spawning as a mouse is currently disabled.</span>"
->>>>>>> citrp/master
+		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
 		return
 
 	if(!MayRespawn(1))
@@ -554,13 +544,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Write in blood"
 	set desc = "If the round is sufficiently spooky, write a short message in blood on the floor or a wall. Remember, no IC in OOC or OOC in IC."
 
-<<<<<<< HEAD
-	if(!(config.cult_ghostwriter))
-		to_chat(src, "<font color='red'>That verb is not currently permitted.</font>")
-=======
 	if(!(config_legacy.cult_ghostwriter))
-		src << "<font color='red'>That verb is not currently permitted.</font>"
->>>>>>> citrp/master
+		to_chat(src, "<font color='red'>That verb is not currently permitted.</font>")
 		return
 
 	if (!src.stat)

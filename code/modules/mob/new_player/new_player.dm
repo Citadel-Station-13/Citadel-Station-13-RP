@@ -170,10 +170,7 @@
 
 	if(href_list["SelectedJob"])
 
-<<<<<<< HEAD
 		/* Vorestation Removal Start
-=======
->>>>>>> citrp/master
 		//Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name

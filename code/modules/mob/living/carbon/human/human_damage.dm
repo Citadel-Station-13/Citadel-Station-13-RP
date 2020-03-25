@@ -18,11 +18,7 @@
 	health = getMaxHealth() - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute
 
 	//TODO: fix husking
-<<<<<<< HEAD
-	if( ((getMaxHealth() - total_burn) < config.health_threshold_dead * huskmodifier) && stat == DEAD)
-=======
 	if( ((getMaxHealth() - total_burn) < config_legacy.health_threshold_dead) && stat == DEAD)
->>>>>>> citrp/master
 		ChangeToHusk()
 	return
 

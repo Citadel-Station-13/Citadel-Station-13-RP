@@ -43,13 +43,8 @@
 		return // Clientless mobs shouldn't be trying to talk in deadchat.
 
 	if(!src.client.holder)
-<<<<<<< HEAD
-		if(!config.dsay_allowed)
-			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
-=======
 		if(!config_legacy.dsay_allowed)
-			src << "<span class='danger'>Deadchat is globally muted.</span>"
->>>>>>> citrp/master
+			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
