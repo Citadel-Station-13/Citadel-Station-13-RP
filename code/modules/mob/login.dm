@@ -71,10 +71,7 @@
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
-<<<<<<< HEAD
 
 	var/turf/T = get_turf(src)
 	if(isturf(T))
 		update_client_z(T.z)
-=======
->>>>>>> citrp/master

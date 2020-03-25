@@ -547,11 +547,10 @@ Drinks Data
 	glass_icon_state = "eggnog"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
-<<<<<<< HEAD
 /datum/reagent/drink/cider
 	glass_icon_state = "ciderglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
-=======
+
 /datum/reagent/ethanol/gibbfloat
 	glass_icon_state = "gibbfloats"
 	glass_center_of_mass = list("x"=16, "y"=8)
@@ -599,4 +598,3 @@ Drinks Data
 
 /datum/reagent/ethanol/paloma
 	glass_icon_state = "paloma"
->>>>>>> citrp/master

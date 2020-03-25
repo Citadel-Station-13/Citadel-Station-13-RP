@@ -836,21 +836,6 @@ var/list/admin_verbs_event_manager = list(
 			verbs |= /client/proc/readmin_self
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-<<<<<<< HEAD
-/client/proc/toggle_log_hrefs()
-	set name = "Toggle href logging"
-	set category = "Server"
-	if(!holder)	return
-	if(config)
-		if(config.log_hrefs)
-			config.log_hrefs = 0
-			to_chat(src, "<b>Stopped logging hrefs</b>")
-		else
-			config.log_hrefs = 1
-			to_chat(src, "<b>Started logging hrefs</b>")
-
-=======
->>>>>>> citrp/master
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
 	set category = "Admin"
@@ -1042,23 +1027,13 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-<<<<<<< HEAD
-		if(config.cult_ghostwriter)
-			config.cult_ghostwriter = 0
+		if(config_legacy.cult_ghostwriter)
+			config_legacy.cult_ghostwriter = 0
 			to_chat(src, "<b>Disallowed ghost writers.</b>")
 			message_admins("Admin [key_name_admin(usr)] has disabled ghost writers.", 1)
 		else
-			config.cult_ghostwriter = 1
-			to_chat(src, "<b>Enabled ghost writers.</b>")
-=======
-		if(config_legacy.cult_ghostwriter)
-			config_legacy.cult_ghostwriter = 0
-			src << "<b>Disallowed ghost writers.</b>"
-			message_admins("Admin [key_name_admin(usr)] has disabled ghost writers.", 1)
-		else
 			config_legacy.cult_ghostwriter = 1
-			src << "<b>Enabled ghost writers.</b>"
->>>>>>> citrp/master
+			to_chat(src, "<b>Enabled ghost writers.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled ghost writers.", 1)
 
 /client/proc/toggledrones()
@@ -1066,23 +1041,13 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
-<<<<<<< HEAD
-		if(config.allow_drone_spawn)
-			config.allow_drone_spawn = 0
+		if(config_legacy.allow_drone_spawn)
+			config_legacy.allow_drone_spawn = 0
 			to_chat(src, "<b>Disallowed maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
 		else
-			config.allow_drone_spawn = 1
-			to_chat(src, "<b>Enabled maint drones.</b>")
-=======
-		if(config_legacy.allow_drone_spawn)
-			config_legacy.allow_drone_spawn = 0
-			src << "<b>Disallowed maint drones.</b>"
-			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
-		else
 			config_legacy.allow_drone_spawn = 1
-			src << "<b>Enabled maint drones.</b>"
->>>>>>> citrp/master
+			to_chat(src, "<b>Enabled maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)
 
 /client/proc/man_up(mob/T as mob in mob_list)

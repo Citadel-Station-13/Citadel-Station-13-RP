@@ -305,13 +305,8 @@ Ccomp's first proc.
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
 				g << "<font color='red'><B>The Administrator has disabled AntagHUD </B></font>"
-<<<<<<< HEAD
-		config.antag_hud_allowed = 0
-		to_chat(src, "<font color='red'><B>AntagHUD usage has been disabled</B></font>")
-=======
 		config_legacy.antag_hud_allowed = 0
-		src << "<font color='red'><B>AntagHUD usage has been disabled</B></font>"
->>>>>>> citrp/master
+		to_chat(src, "<font color='red'><B>AntagHUD usage has been disabled</B></font>")
 		action = "disabled"
 	else
 		for(var/mob/observer/dead/g in get_ghosts())
@@ -340,7 +335,7 @@ Ccomp's first proc.
 			g << "<font color='blue'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></font>"
 		action = "lifted restrictions"
 <<<<<<< HEAD
-		config.antag_hud_restricted = 0
+		config_legacy.antag_hud_restricted = 0
 		to_chat(src, "<font color='blue'><B>AntagHUD restrictions have been lifted</B></font>")
 =======
 		config_legacy.antag_hud_restricted = 0
@@ -354,7 +349,7 @@ Ccomp's first proc.
 			g.has_enabled_antagHUD = 0
 		action = "placed restrictions"
 <<<<<<< HEAD
-		config.antag_hud_restricted = 1
+		config_legacy.antag_hud_restricted = 1
 		to_chat(src, "<font color='red'><B>AntagHUD restrictions have been enabled</B></font>")
 =======
 		config_legacy.antag_hud_restricted = 1

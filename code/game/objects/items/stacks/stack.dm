@@ -24,14 +24,9 @@
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
 
-<<<<<<< HEAD
 	var/pass_color = FALSE // Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/strict_color_stacking = FALSE // Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc)
 
-/obj/item/stack/New(var/loc, var/amount=null)
-	..()
-	if (!stacktype)
-=======
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
 		amount = new_amount
@@ -41,7 +36,6 @@
 			amount -= max_amount
 			new type(loc, max_amount, FALSE)
 	if(!stacktype)
->>>>>>> citrp/master
 		stacktype = type
 	. = ..()
 	if(merge)

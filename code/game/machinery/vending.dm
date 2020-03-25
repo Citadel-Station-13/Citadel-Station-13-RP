@@ -806,11 +806,7 @@
 
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 3,
-<<<<<<< HEAD
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 40,	//VOREStation Edit,
-=======
-					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 40,
->>>>>>> citrp/master
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 5,
@@ -1157,7 +1153,6 @@
 					/obj/item/toy/plushie/face_hugger = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
-<<<<<<< HEAD
 					/obj/item/toy/plushie/tabby_cat = 50)
 
 /obj/machinery/vending/fishing
@@ -1177,6 +1172,4 @@
 					/obj/item/stack/cable_coil/random = 4)
 	premium = list(/obj/item/weapon/storage/box/wormcan/deluxe = 1)
 	contraband = list(/obj/item/weapon/storage/box/wormcan/deluxe = 1)
-=======
-					/obj/item/toy/plushie/tabby_cat = 50)
->>>>>>> citrp/master
+

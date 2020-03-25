@@ -170,13 +170,8 @@
 				eventMmsg += "\t[C] is a [C.holder.rank]\n"
 				num_event_managers_online++
 
-<<<<<<< HEAD
-	if(config.admin_irc)
-		to_chat(src, "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>")
-=======
 	if(config_legacy.admin_irc)
-		src << "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>"
->>>>>>> citrp/master
+		to_chat(src, "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond.</span>")
 	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
 	if(config_legacy.show_mods)

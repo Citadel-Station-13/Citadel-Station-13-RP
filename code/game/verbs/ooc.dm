@@ -20,13 +20,8 @@
 		return
 
 	if(!holder)
-<<<<<<< HEAD
-		if(!config.ooc_allowed)
-			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
-=======
 		if(!config_legacy.ooc_allowed)
-			src << "<span class='danger'>OOC is globally muted.</span>"
->>>>>>> citrp/master
+			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
 			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
@@ -103,13 +98,8 @@
 		return
 
 	if(!holder)
-<<<<<<< HEAD
-		if(!config.looc_allowed)
-			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
-=======
 		if(!config_legacy.looc_allowed)
-			src << "<span class='danger'>LOOC is globally muted.</span>"
->>>>>>> citrp/master
+			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
 			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"

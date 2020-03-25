@@ -717,7 +717,6 @@
 	reagents.add_reagent(toxin_type, toxin_amount)
 	src.bitesize = 6
 
-<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif
 	desc = "A fillet of sivian fish meat."
 	filling_color = "#2c2cff"
@@ -734,9 +733,6 @@
 	toxin_amount = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/fishfingers
-=======
-/obj/item/weapon/reagent_containers/food/snacks/fishfingers // Buff 4 >> 9
->>>>>>> citrp/master
 	name = "Fish Fingers"
 	desc = "A finger of fish."
 	icon_state = "fishfingers"
@@ -3394,7 +3390,6 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/rawsticks/Initialize()
 	. = ..()
 
-<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/liquidprotein
 	name = "\improper LiquidProtein Ration"
 	desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
@@ -3403,16 +3398,8 @@ END CITADEL CHANGE */
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
 	center_of_mass = list("x"=16, "y"=15)
-=======
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood // Buff 20 >> 30
-	name = "\improper LiquidFood Ration"
-	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
-	icon_state = "liquidfood"
-	trash = /obj/item/trash/liquidfood
-	filling_color = "#A8A8A8"
 	nutriment_amt = 22
 	nutriment_desc = list("chalk" = 6)
->>>>>>> citrp/master
 
 /obj/item/weapon/reagent_containers/food/snacks/liquidprotein/Initialize()
 	..()

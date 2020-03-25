@@ -268,13 +268,8 @@
 	item_state = "tesh_uniform_sec"
 
 /obj/item/clothing/under/seromi/undercoat/jobs/qm
-<<<<<<< HEAD
 	name = "quartermaster undercoat"
 	desc = "A traditional Teshari garb made for the Quartermaster"
-=======
-	name = "Quartermaster's undercoat"
-	desc =  "A traditional Teshari garb made for the Quartermaster"
->>>>>>> citrp/master
 	icon_state = "tesh_uniform_qm"
 	item_state = "tesh_uniform_qm"
 

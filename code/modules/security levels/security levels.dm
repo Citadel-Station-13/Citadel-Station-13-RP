@@ -69,11 +69,7 @@
 				if(CC)
 					CC.post_status("alert", "redalert")*/
 			if(SEC_LEVEL_DELTA)
-<<<<<<< HEAD
 				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta alert level reached!", new_sound = 'sound/effects/siren.ogg')
-=======
-				security_announcement_up.Announce("[config_legacy.alert_desc_delta]", "Attention! Delta security level reached!", new_sound = 'sound/effects/siren.ogg')
->>>>>>> citrp/master
 				security_level = SEC_LEVEL_DELTA
 
 		var/newlevel = get_security_level()
