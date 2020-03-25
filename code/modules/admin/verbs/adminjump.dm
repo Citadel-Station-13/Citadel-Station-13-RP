@@ -11,7 +11,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 
-	if(config.allow_admin_jump)
+	if(config_legacy.allow_admin_jump)
 		usr.on_mob_jump()
 		usr.loc = pick(get_area_turfs(A))
 
@@ -26,7 +26,7 @@
 	set category = "Admin"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
-	if(config.allow_admin_jump)
+	if(config_legacy.allow_admin_jump)
 		log_admin("[key_name(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]")
 		message_admins("[key_name_admin(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]", 1)
 		usr.on_mob_jump()
@@ -43,7 +43,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 
-	if(config.allow_admin_jump)
+	if(config_legacy.allow_admin_jump)
 		log_admin("[key_name(usr)] jumped to [key_name(M)]")
 		message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)]", 1)
 		if(src.mob)
@@ -65,7 +65,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 
-	if (config.allow_admin_jump)
+	if (config_legacy.allow_admin_jump)
 		if(src.mob)
 			var/mob/A = src.mob
 			A.on_mob_jump()
@@ -85,7 +85,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 
-	if(config.allow_admin_jump)
+	if(config_legacy.allow_admin_jump)
 		var/list/keys = list()
 		for(var/mob/M in player_list)
 			keys += M.client
@@ -108,7 +108,7 @@
 	set desc = "Mob to teleport"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
-	if(config.allow_admin_jump)
+	if(config_legacy.allow_admin_jump)
 		log_admin("[key_name(usr)] jumped to [key_name(M)]")
 		var/msg = "[key_name_admin(usr)] jumped to [key_name_admin(M)]"
 		message_admins(msg)
@@ -127,7 +127,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 
-	if(config.allow_admin_jump)
+	if(config_legacy.allow_admin_jump)
 		var/list/keys = list()
 		for(var/mob/M in player_list)
 			keys += M.client
@@ -156,7 +156,7 @@
 		return
 	var/area/A = input(usr, "Pick an area.", "Pick an area") in return_sorted_areas()
 	if(A)
-		if(config.allow_admin_jump)
+		if(config_legacy.allow_admin_jump)
 			M.on_mob_jump()
 			M.loc = pick(get_area_turfs(A))
 			feedback_add_details("admin_verb","SMOB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

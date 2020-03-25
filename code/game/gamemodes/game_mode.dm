@@ -5,7 +5,7 @@ var/global/list/additional_antag_types = list()
 	var/name = "invalid"
 	var/round_description = "How did you even vote this in?"
 	var/extended_round_description = "This roundtype should not be spawned, let alone votable. Someone contact a developer and tell them the game's broken again."
-	var/config_tag = null
+	var/config_tag
 	var/votable = 1
 	var/probability = 0
 
@@ -36,9 +36,6 @@ var/global/list/additional_antag_types = list()
 
 	var/event_delay_mod_moderate             // Modifies the timing of random events.
 	var/event_delay_mod_major                // As above.
-
-/datum/game_mode/New()
-	..()
 
 /datum/game_mode/Topic(href, href_list[])
 	if(..())
@@ -270,7 +267,7 @@ var/global/list/additional_antag_types = list()
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
 				return 0
-		if(config.continous_rounds)
+		if(config_legacy.continous_rounds)
 			emergency_shuttle.auto_recall = 0
 			return 0
 		return 1
@@ -432,7 +429,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/create_antagonists()
 
-	if(!config.traitor_scaling)
+	if(!config_legacy.traitor_scaling)
 		antag_scaling_coeff = 0
 
 	if(antag_tags && antag_tags.len)

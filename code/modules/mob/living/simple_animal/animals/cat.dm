@@ -115,7 +115,7 @@
 				handle_stance(STANCE_FOLLOW)
 
 	if (friend_dist <= 1)
-		if (friend.stat >= DEAD || friend.health <= config.health_threshold_softcrit)
+		if (friend.stat >= DEAD || friend.health <= config_legacy.health_threshold_softcrit)
 			if (prob((friend.stat < DEAD)? 50 : 15))
 				var/verb = pick("meows", "mews", "mrowls")
 				audible_emote(pick("[verb] in distress.", "[verb] anxiously."))

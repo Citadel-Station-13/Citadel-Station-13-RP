@@ -383,7 +383,7 @@
 
 	if(!breath || (breath.total_moles == 0))
 		failed_last_breath = 1
-		if(health > config.health_threshold_crit)
+		if(health > config_legacy.health_threshold_crit)
 			adjustOxyLoss(HUMAN_MAX_OXYLOSS)
 		else
 			adjustOxyLoss(HUMAN_CRIT_MAX_OXYLOSS)
@@ -950,14 +950,14 @@
 	else				//ALIVE. LIGHTS ARE ON
 		updatehealth()	//TODO
 
-		if(health <= config.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
+		if(health <= config_legacy.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
 			death()
 			blinded = 1
 			silent = 0
 			return 1
 
 		//UNCONSCIOUS. NO-ONE IS HOME
-		if((getOxyLoss() > (species.total_health/2)) || (health <= config.health_threshold_crit))
+		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
 			Paralyse(3)
 
 		if(hallucination)
@@ -1291,7 +1291,7 @@
 		set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
 		set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
 
-		if(config.welder_vision)
+		if(config_legacy.welder_vision)
 			var/found_welder
 			if(species.short_sighted)
 				found_welder = 1
@@ -1502,12 +1502,12 @@
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain()) return
 
-	if(health < config.health_threshold_softcrit)// health 0 makes you immediately collapse
+	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
 
 	if(traumatic_shock >= 80)
 		shock_stage += 1
-	else if(health < config.health_threshold_softcrit)
+	else if(health < config_legacy.health_threshold_softcrit)
 		shock_stage = max(shock_stage, 61)
 	else
 		shock_stage = min(shock_stage, 160)
@@ -1674,7 +1674,7 @@
 		if(stat == DEAD)
 			holder.icon_state = "-100" 	// X_X
 		else
-			holder.icon_state = RoundHealth((health-config.health_threshold_crit)/(getMaxHealth()-config.health_threshold_crit)*100)
+			holder.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
 		apply_hud(HEALTH_HUD, holder)
 
 	if (CHECK_BITFIELD(hud_updateflag, LIFE_HUD))

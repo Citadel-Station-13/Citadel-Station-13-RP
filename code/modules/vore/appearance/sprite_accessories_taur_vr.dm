@@ -567,3 +567,12 @@
 	do_colouration = 1
 	extra_overlay = "alraunecolor_markings"
 	extra_overlay_w = "alraunecolor_closed_markings"
+
+/datum/sprite_accessory/tail/taur/long_lizard
+	name = "Large Dragon Tail"
+	icon_state = "big_liz"
+	can_ride = 0
+
+/datum/sprite_accessory/tail/taur/long_lizard/scaled
+	name = "Large Dragon Tail/W scales"
+	extra_overlay = "big_liz_mark"

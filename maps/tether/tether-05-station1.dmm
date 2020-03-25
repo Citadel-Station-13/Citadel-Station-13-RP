@@ -2420,6 +2420,7 @@
 /obj/machinery/camera/network/northern_star{
 	dir = 5
 	},
+/obj/structure/reagent_dispensers/cookingoil,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/lounge/kitchen)
 "afh" = (
@@ -9001,6 +9002,7 @@
 /area/engineering/workshop)
 "avf" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "avg" = (
@@ -10891,6 +10893,7 @@
 	req_one_access = list(11,24)
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "aAR" = (
@@ -20613,6 +20616,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bHu" = (
@@ -20700,6 +20704,7 @@
 	pixel_y = -26;
 	req_one_access = list(13)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bHN" = (
@@ -21096,6 +21101,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bPq" = (
@@ -21173,6 +21179,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
 "bPx" = (
@@ -21523,6 +21530,7 @@
 	locked = 1;
 	name = "Dock One External Access"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQz" = (
@@ -21533,6 +21541,7 @@
 	locked = 1;
 	name = "Dock One External Access"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQC" = (
@@ -21552,6 +21561,7 @@
 	pixel_y = -6;
 	req_one_access = list(13)
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQD" = (
@@ -21579,6 +21589,7 @@
 	locked = 1;
 	name = "Docking Port Airlock"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bVu" = (
@@ -25471,7 +25482,7 @@
 /obj/structure/kitchenspike,
 /obj/machinery/alarm{
 	pixel_y = 22;
-	target_temperature = 293.15
+	target_temperature = 277.15
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/lounge/kitchen_freezer)

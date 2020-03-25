@@ -60,7 +60,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 			edge_log += "Active Edge [E] ([E.type])"
 			for(var/turf/T in E.connecting_turfs)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
-		log_debug("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
+		subsystem_log("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
 		startup_active_edge_log = edge_log.Copy()
 
 	..()

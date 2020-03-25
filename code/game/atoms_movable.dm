@@ -454,7 +454,7 @@
 	if(z in using_map.sealed_levels)
 		return
 
-	if(config.use_overmap)
+	if(config_legacy.use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 

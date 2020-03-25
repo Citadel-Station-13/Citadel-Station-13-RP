@@ -93,6 +93,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/chaplain,
+		/obj/item/clothing/suit/storage/hooded/techpriest,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/suit/nun,
 		/obj/item/clothing/head/nun_hood,

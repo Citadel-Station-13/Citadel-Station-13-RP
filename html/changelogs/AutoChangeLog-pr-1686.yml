@@ -1,0 +1,9 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - rscadd: "Vox beret sprites"
+  - rscadd: "Vox beanie sprites"
+  - rscadd: "Vox utility hat sprites"
+  - rscadd: "Vox flatcap sprites"
+  - rscadd: "Vox demon, fancy, engineering, and knight welding mask sprites"
+  - tweak: "Edited the radiation hood so it looked a bit less poopy. Only a bit less."

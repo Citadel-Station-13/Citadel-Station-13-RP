@@ -82,3 +82,10 @@
 
 /datum/supply_pack/randomised/hospitality/pizza
 	cost = 50
+
+/datum/supply_pack/hospitality/cookingoil
+	name = "Cooking oil tank crate"
+	contains = list(/obj/structure/reagent_dispensers/cookingoil)
+	cost = 10
+	containertype = /obj/structure/largecrate
+	containername = "cooking oil tank crate"

@@ -461,7 +461,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/egg/New()
 /*
-	if(config.aliens_allowed)
+	if(config_legacy.aliens_allowed)
 		..()
 		spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
 			Grow()

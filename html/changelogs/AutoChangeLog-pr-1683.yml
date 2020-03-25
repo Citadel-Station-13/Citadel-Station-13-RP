@@ -1,0 +1,5 @@
+author: "Mewchild"
+delete-after: True
+changes: 
+  - rscadd: "Shield Diffusers are now mapped in, meaning shields won't form on certain access paths."
+  - rscadd: "Engineers now get handheld diffusers in their lockers, to instantly break shields (No more crowbar bashing)"

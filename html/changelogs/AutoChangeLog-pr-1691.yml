@@ -1,0 +1,4 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - bugfix: "Fixed a typo in the second alert for grub infestation."

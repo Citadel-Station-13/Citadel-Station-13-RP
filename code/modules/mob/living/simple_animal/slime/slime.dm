@@ -269,7 +269,7 @@
 	if(bodytemperature < 183.222)
 		. += (283.222 - bodytemperature) / 10 * 1.75
 
-	. += config.slime_delay
+	. += config_legacy.slime_delay
 
 /mob/living/simple_animal/slime/Process_Spacemove()
 	return 2

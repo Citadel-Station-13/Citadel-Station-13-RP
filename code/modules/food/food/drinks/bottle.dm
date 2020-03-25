@@ -328,6 +328,17 @@
 	. = ..()
 	reagents.add_reagent("wine", 100)
 
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bitters
+	name = "Rattison's Bitters"
+	desc = "The best thing to bitters you're going to get in this sector."
+	icon_state = "bittersbottle"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bitters/Initialize()
+	..()
+	reagents.add_reagent("bitters", 100)
+
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe
 	name = "Jailbreaker Verte"
 	desc = "One sip of this and you just know you're gonna have a good time."

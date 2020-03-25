@@ -22,7 +22,7 @@
 	if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
 		tally-=2 // VOREStation Edit
 
-	return tally+config.robot_delay
+	return tally+config_legacy.robot_delay
 
 // NEW: Use power while moving.
 /mob/living/silicon/robot/SelfMove(turf/n, direct)

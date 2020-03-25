@@ -24,9 +24,8 @@ SUBSYSTEM_DEF(overlays)
 /datum/controller/subsystem/overlays/stat_entry()
 	..("Ov:[length(queue)]")
 
-
 /datum/controller/subsystem/overlays/Shutdown()
-	text2file(render_stats(stats), "[log_path]-overlay.log")
+	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")
 
 /datum/controller/subsystem/overlays/Recover()
 	overlay_icon_state_caches = SSoverlays.overlay_icon_state_caches

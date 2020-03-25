@@ -17,8 +17,8 @@ var/global/datum/global_init/init = new ()
 	return 2 // QDEL_HINT_IWILLGC
 
 /proc/load_configuration()
-	config = new /datum/configuration()
-	config.load("config/config.txt")
-	config.load("config/game_options.txt","game_options")
-	config.loadsql("config/dbconfig.txt")
-	config.loadforumsql("config/forumdbconfig.txt")
+	config_legacy = new /datum/configuration_legacy()
+	config_legacy.load("config/legacy/config.txt")
+	config_legacy.load("config/legacy/game_options.txt","game_options")
+	config_legacy.loadsql("config/legacy/dbconfig.txt")
+	config_legacy.loadforumsql("config/legacy/forumdbconfig.txt")

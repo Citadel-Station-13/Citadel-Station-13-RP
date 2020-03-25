@@ -159,6 +159,8 @@ var/global/list/grub_machine_overlays = list()
 	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
+		for(var/mob/L in player_list)
+			L.client.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	forced_out += rand(5,15)
 	powermachine.draining = 1

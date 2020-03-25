@@ -28,7 +28,7 @@
 		return
 	last_irc_check = rtod
 	var/server = null		//CONFIG_GET(string/server)
-	//return "[round_id ? "Round #[round_id]: " : ""][clients.len] players on [SSmapping.config.map_name], Mode: [master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	//return "[round_id ? "Round #[round_id]: " : ""][clients.len] players on [SSmapping.config_legacy.map_name], Mode: [master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
 	var/current_state
 	switch(ticker.current_state)
 		if(GAME_STATE_PREGAME)

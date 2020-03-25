@@ -316,6 +316,7 @@
 /turf/simulated/floor/tiled/freezer
 	name = "tiles"
 	icon_state = "freezer"
+	temperature = 277.15
 	initial_flooring = /decl/flooring/tiling/freezer
 
 /turf/simulated/floor/lino

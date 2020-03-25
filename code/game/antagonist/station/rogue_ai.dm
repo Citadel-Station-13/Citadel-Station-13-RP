@@ -51,7 +51,7 @@ var/datum/antagonist/rogue_ai/malf
 
 		var/mob/living/silicon/ai/A = player.current
 		if(!istype(A))
-			error("Non-AI mob designated malf AI! Report this.")
+			log_world("Non-AI mob designated malf AI! Report this.")
 			world << "##ERROR: Non-AI mob designated malf AI! Report this."
 			return 0
 
