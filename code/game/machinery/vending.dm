@@ -686,7 +686,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/mug = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/wine = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher = 10,
-					/obj/item/weapon/reagent_containers/food/drinks/metaglass = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/metaglass = 25,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao = 5,
@@ -705,6 +705,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/wine = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/bitters = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale = 15,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer = 15,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/small/cider = 15,
@@ -805,7 +806,11 @@
 
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 3,
+<<<<<<< HEAD
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 40,	//VOREStation Edit,
+=======
+					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake = 40,
+>>>>>>> citrp/master
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 5,
@@ -1152,6 +1157,7 @@
 					/obj/item/toy/plushie/face_hugger = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
+<<<<<<< HEAD
 					/obj/item/toy/plushie/tabby_cat = 50)
 
 /obj/machinery/vending/fishing
@@ -1171,3 +1177,6 @@
 					/obj/item/stack/cable_coil/random = 4)
 	premium = list(/obj/item/weapon/storage/box/wormcan/deluxe = 1)
 	contraband = list(/obj/item/weapon/storage/box/wormcan/deluxe = 1)
+=======
+					/obj/item/toy/plushie/tabby_cat = 50)
+>>>>>>> citrp/master

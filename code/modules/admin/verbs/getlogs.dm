@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 	HOW DO I LOG RUNTIMES?
 	Firstly, start dreamdeamon if it isn't already running. Then select "world>Log Session" (or press the F3 key)
@@ -55,16 +56,25 @@
 	src << run( file(path) )
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	return
-
-
+=======
 //This proc allows download of past server logs saved within the data/logs/ folder.
-//It works similarly to show-server-log.
-/client/proc/getserverlog()
-	set name = ".getserverlog"
-	set desc = "Fetch logfiles from data/logs"
-	set category = null
+/client/proc/getserverlogs()
+	set name = "Get Server Logs"
+	set desc = "View/retrieve logfiles."
+	set category = "Admin"
 
-	var/path = browse_files("data/logs/")
+	browseserverlogs()
+>>>>>>> citrp/master
+
+/client/proc/getcurrentlogs()
+	set name = "Get Current Logs"
+	set desc = "View/retrieve logfiles for the current round."
+	set category = "Admin"
+
+	browseserverlogs("[GLOB.log_directory]/")
+
+/client/proc/browseserverlogs(path = "data/logs/")
+	path = browse_files(path)
 	if(!path)
 		return
 
@@ -72,6 +82,7 @@
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
+<<<<<<< HEAD
 	src << run( file(path) )
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	return
@@ -113,3 +124,15 @@
 	feedback_add_details("admin_verb","SSAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 	*/
+=======
+	switch(alert("View (in game), Open (in your system's text editor), or Download?", path, "View", "Open", "Download"))
+		if ("View")
+			src << browse("<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>", list2params(list("window" = "viewfile.[path]")))
+		if ("Open")
+			src << run(file(path))
+		if ("Download")
+			src << ftp(file(path))
+		else
+			return
+	to_chat(src, "Attempting to send [path], this may take a fair few minutes if the file is very large.")
+>>>>>>> citrp/master

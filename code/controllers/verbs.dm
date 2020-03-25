@@ -63,11 +63,16 @@
 		usr.client.debug_variables(antag)
 		message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
 
+<<<<<<< HEAD
 /client/proc/debug_controller()
+=======
+/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Radio","Supply","Shuttles","Emergency Shuttle","Legacy Configuration","pAI", "Cameras", "Transfer Controller", "Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets"))
+>>>>>>> citrp/master
 	set category = "Debug"
 	set name = "Debug Controller"
 	set desc = "Debug the various subsystems/controllers for the game (be careful!)"
 
+<<<<<<< HEAD
 	if(!holder)
 		return
 	var/list/options = list()
@@ -112,6 +117,72 @@
 	feedback_add_details("admin_verb", "DebugController")
 	message_admins("Admin [key_name_admin(mob)] is debugging the [pick] controller.")
 	debug_variables(D)
+=======
+	if(!holder)	return
+	switch(controller)
+		if("Master")
+			debug_variables(master_controller)
+			feedback_add_details("admin_verb","DMC")
+		if("Ticker")
+			debug_variables(ticker)
+			feedback_add_details("admin_verb","DTicker")
+		if("Ticker Process")
+			debug_variables(tickerProcess)
+			feedback_add_details("admin_verb","DTickerProcess")
+		if("Air")
+			debug_variables(air_master)
+			feedback_add_details("admin_verb","DAir")
+		if("Jobs")
+			debug_variables(job_master)
+			feedback_add_details("admin_verb","DJobs")
+		if("Sun")
+			debug_variables(sun)
+			feedback_add_details("admin_verb","DSun")
+		if("Radio")
+			debug_variables(radio_controller)
+			feedback_add_details("admin_verb","DRadio")
+		if("Supply")
+			debug_variables(supply_controller)
+			feedback_add_details("admin_verb","DSupply")
+		if("Shuttles")
+			debug_variables(shuttle_controller)
+			feedback_add_details("admin_verb","DShuttles")
+		if("Emergency Shuttle")
+			debug_variables(emergency_shuttle)
+			feedback_add_details("admin_verb","DEmergency")
+		if("Legacy Configuration")
+			debug_variables(config_legacy)
+			feedback_add_details("admin_verb","DConf")
+		if("pAI")
+			debug_variables(paiController)
+			feedback_add_details("admin_verb","DpAI")
+		if("Cameras")
+			debug_variables(cameranet)
+			feedback_add_details("admin_verb","DCameras")
+		if("Transfer Controller")
+			debug_variables(transfer_controller)
+			feedback_add_details("admin_verb","DAutovoter")
+		if("Gas Data")
+			debug_variables(gas_data)
+			feedback_add_details("admin_verb","DGasdata")
+		if("Event")
+			debug_variables(event_manager)
+			feedback_add_details("admin_verb", "DEvent")
+		if("Plants")
+			debug_variables(plant_controller)
+			feedback_add_details("admin_verb", "DPlants")
+		if("Alarm")
+			debug_variables(alarm_manager)
+			feedback_add_details("admin_verb", "DAlarm")
+		if("Nano")
+			debug_variables(GLOB.nanomanager)
+			feedback_add_details("admin_verb", "DNano")
+		if("Chemistry")
+			debug_variables(chemistryProcess)
+			feedback_add_details("admin_verb", "DChem")
+	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
+	return
+>>>>>>> citrp/master
 
 //VOREStation Edit Begin
 /client/proc/debug_process_scheduler()
@@ -120,7 +191,7 @@
 	set desc = "Debug the process scheduler itself. For vulpine use only."
 
 	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(config_legacy.debugparanoid && !check_rights(R_ADMIN)) return
 	debug_variables(processScheduler)
 	feedback_add_details("admin_verb", "DProcSchd")
 	message_admins("Admin [key_name_admin(usr)] is debugging the process scheduler.")
@@ -131,7 +202,7 @@
 	set desc = "Debug one of the periodic loop background task controllers for the game (be careful!)"
 
 	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(config_legacy.debugparanoid && !check_rights(R_ADMIN)) return
 	var/datum/controller/process/P = processScheduler.nameToProcessMap[controller]
 	debug_variables(P)
 	feedback_add_details("admin_verb", "DProcCtrl")

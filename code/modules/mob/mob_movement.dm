@@ -199,11 +199,19 @@
 		switch(mob.m_intent)
 			if("run")
 				if(mob.drowsyness > 0)
+<<<<<<< HEAD
 					mob.move_delay += 6
 				mob.move_delay += config.run_speed
 			if("walk")
 				mob.move_delay += config.walk_speed
 		mob.move_delay += mob.movement_delay(n, direct)
+=======
+					move_delay += 6
+				move_delay += config_legacy.run_speed
+			if("walk")
+				move_delay += config_legacy.walk_speed
+		move_delay += mob.movement_delay()
+>>>>>>> citrp/master
 
 		if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.
 			//manually set move_delay for vehicles so we don't inherit any mob movement penalties

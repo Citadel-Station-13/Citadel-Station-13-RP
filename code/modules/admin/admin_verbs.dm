@@ -19,6 +19,8 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/set_tcrystals,
 	/datum/admins/proc/add_tcrystals,
 	/client/proc/invisimin,				//allows our mob to go invisible/visible,
+	/client/proc/getserverlogs,		/*for accessing server logs*/
+	/client/proc/getcurrentlogs,		/*for accessing server logs*/
 	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind.,
 	/datum/admins/proc/show_game_mode,  //Configuration window for the current game mode.,
 	/datum/admins/proc/force_mode_latespawn, //Force the mode to try a latespawn proc,
@@ -31,8 +33,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/colorooc,				//allows us to set a custom colour for everythign we say in ooc,
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
 	/client/proc/toggle_view_range,		//changes how far we can see,
-	/datum/admins/proc/view_txt_log,	//shows the server log (diary) for today,
-	/datum/admins/proc/view_atk_log,	//shows the server combat-log, doesn't do anything presently,
 	/client/proc/cmd_admin_pm_context,	//right-click adminPM interface,
 	/client/proc/cmd_admin_pm_panel,	//admin-pm list,
 	/client/proc/cmd_admin_subtle_message,	//send an message to somebody as a 'voice in their head',
@@ -42,8 +42,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_check_player_logs,	//checks a player's attack logs,
 	/client/proc/cmd_admin_check_dialogue_logs,	//checks a player's dialogue logs,
 	/datum/admins/proc/access_news_network,	//allows access of newscasters,
-	/client/proc/giveruntimelog,		//allows us to give access to runtime logs to somebody,
-	/client/proc/getserverlog,			//allows us to fetch server logs (diary) for other days,
 	/client/proc/jumptocoord,			//we ghost and jump to a coordinate,
 	/client/proc/Getmob,				//teleports a mob to our location,
 	/client/proc/Getkey,				//teleports a mob with a certain ckey to our location,
@@ -172,7 +170,6 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleaban,
 	/client/proc/cmd_mod_say,
-	/client/proc/toggle_log_hrefs,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
@@ -192,11 +189,11 @@ var/list/admin_verbs_server = list(
 	)
 
 var/list/admin_verbs_debug = list(
-	/client/proc/getruntimelog,                     //allows us to access runtime logs to somebody,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
 	/client/proc/kill_air,
 	/client/proc/ZASSettings,
+	/client/proc/reload_configuration,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/kill_airgroup,
 	/client/proc/debug_controller,
@@ -269,8 +266,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/colorooc,
 	/client/proc/admin_ghost,
 	/client/proc/toggle_view_range,
-	/datum/admins/proc/view_txt_log,
-	/datum/admins/proc/view_atk_log,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_icsubtle_message,
 	/client/proc/cmd_admin_check_contents,
@@ -306,8 +301,8 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/restart,
 	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleaban,
-	/client/proc/toggle_log_hrefs,
 	/client/proc/everyone_random,
+	/client/proc/reload_configuration,
 	/datum/admins/proc/toggleAI,
 	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
@@ -360,9 +355,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
 	/datum/admins/proc/sendFax,
-	/client/proc/getserverlog,			//allows us to fetch server logs (diary) for other days,
-	/datum/admins/proc/view_txt_log,	//shows the server log (diary) for today,
-	/datum/admins/proc/view_atk_log,		//shows the server combat-log, doesn't do anything presently,
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass
 )
@@ -425,7 +417,7 @@ var/list/admin_verbs_event_manager = list(
 		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
 		if(holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
-			if(config.debugparanoid && !(holder.rights & R_ADMIN))
+			if(config_legacy.debugparanoid && !(holder.rights & R_ADMIN))
 				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
 		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
@@ -559,7 +551,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Display Job bans"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(config_legacy.ban_legacy_system)
 			holder.Jobbans()
 		else
 			holder.DB_ban_panel()
@@ -570,7 +562,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Unban Panel"
 	set category = "Admin"
 	if(holder)
-		if(config.ban_legacy_system)
+		if(config_legacy.ban_legacy_system)
 			holder.unbanpanel()
 		else
 			holder.DB_ban_panel()
@@ -844,6 +836,7 @@ var/list/admin_verbs_event_manager = list(
 			verbs |= /client/proc/readmin_self
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href logging"
 	set category = "Server"
@@ -856,6 +849,8 @@ var/list/admin_verbs_event_manager = list(
 			config.log_hrefs = 1
 			to_chat(src, "<b>Started logging hrefs</b>")
 
+=======
+>>>>>>> citrp/master
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
 	set category = "Admin"
@@ -1047,6 +1042,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
+<<<<<<< HEAD
 		if(config.cult_ghostwriter)
 			config.cult_ghostwriter = 0
 			to_chat(src, "<b>Disallowed ghost writers.</b>")
@@ -1054,6 +1050,15 @@ var/list/admin_verbs_event_manager = list(
 		else
 			config.cult_ghostwriter = 1
 			to_chat(src, "<b>Enabled ghost writers.</b>")
+=======
+		if(config_legacy.cult_ghostwriter)
+			config_legacy.cult_ghostwriter = 0
+			src << "<b>Disallowed ghost writers.</b>"
+			message_admins("Admin [key_name_admin(usr)] has disabled ghost writers.", 1)
+		else
+			config_legacy.cult_ghostwriter = 1
+			src << "<b>Enabled ghost writers.</b>"
+>>>>>>> citrp/master
 			message_admins("Admin [key_name_admin(usr)] has enabled ghost writers.", 1)
 
 /client/proc/toggledrones()
@@ -1061,6 +1066,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Server"
 	if(!holder)	return
 	if(config)
+<<<<<<< HEAD
 		if(config.allow_drone_spawn)
 			config.allow_drone_spawn = 0
 			to_chat(src, "<b>Disallowed maint drones.</b>")
@@ -1068,6 +1074,15 @@ var/list/admin_verbs_event_manager = list(
 		else
 			config.allow_drone_spawn = 1
 			to_chat(src, "<b>Enabled maint drones.</b>")
+=======
+		if(config_legacy.allow_drone_spawn)
+			config_legacy.allow_drone_spawn = 0
+			src << "<b>Disallowed maint drones.</b>"
+			message_admins("Admin [key_name_admin(usr)] has disabled maint drones.", 1)
+		else
+			config_legacy.allow_drone_spawn = 1
+			src << "<b>Enabled maint drones.</b>"
+>>>>>>> citrp/master
 			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)
 
 /client/proc/man_up(mob/T as mob in mob_list)

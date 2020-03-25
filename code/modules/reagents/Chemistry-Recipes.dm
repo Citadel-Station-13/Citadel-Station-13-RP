@@ -1499,6 +1499,13 @@
 	required_reagents = list("rum" = 2, "cola" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/negroni
+	name = "Negroni"
+	id = "negroni"
+	result = "negroni"
+	required_reagents = list("gin" = 1, "bitters" = 1, "vermouth" = 1)
+	result_amount = 3
+
 /datum/chemical_reaction/drinks/martini
 	name = "Classic Martini"
 	id = "martini"
@@ -2331,13 +2338,6 @@
 	required_reagents = list("slimejelly" = 4, "vodka" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drinks/negroni
-	name = "Negroni"
-	id = "negroni"
-	result = "negroni"
-	required_reagents = list("gin" = 1, "bitters" = 1, "vermouth" = 1)
-	result_amount = 3
-
 /datum/chemical_reaction/drinks/cloverclub
 	name = "Clover Club"
 	id = "cloverclub"
@@ -2349,8 +2349,8 @@
 	name = "Old Fashioned"
 	id = "oldfashioned"
 	result = "oldfashioned"
-	required_reagents = list("whiskey" = 3, "bitters" = 1, "sugar" = 1)
-	result_amount = 5
+	required_reagents = list("whiskey" = 1, "bitters" = 1, "sugar" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/drinks/whiskeysour
 	name = "Whiskey Sour"
@@ -2515,12 +2515,74 @@
 	required_reagents = list("cornoil" = 4, "sodawater" = 1, "carbon" = 1, "tricordrazine" = 1)
 	result_amount = 6
 
+<<<<<<< HEAD
 /datum/chemical_reaction/drinks/fusionnaire
 	name = "Fusionnaire"
 	id = "fusionnaire"
 	result = "fusionnaire"
 	required_reagents = list("lemonjuice" = 3, "vodka" = 2, "schnapps_pep" = 1, "schnapps_lem" = 1, "rum" = 1, "ice" = 1)
 	result_amount = 9
+=======
+/datum/chemical_reaction/drinks/gibbfloat
+	name = "Gibbfloat"
+	id = "gibbfloat"
+	result = "gibbfloat"
+	required_reagents = list("ice" = 1, "cream" = 1, "dr_gibb" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/mintjulep
+	name = "Mint Julep"
+	id = "mintjulep"
+	result = "mintjulep"
+	required_reagents = list("water" = 1, "whiskey" = 1, "ice" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/planterspunch
+	name = "Planters Punch"
+	id = "planterspunch"
+	result = "planterspunch"
+	required_reagents = list("rum" = 2, "orangejuice" = 2, "grenadine" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/olympusmons
+	name = "Olympus Mons"
+	id = "olympusmons"
+	result = "olympusmons"
+	required_reagents = list("blackrussian" = 1, "whiskey" = 1, "rum" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/sazerac
+	name = "Sazerac"
+	id = "sazerac"
+	result = "sazerac"
+	required_reagents = list("cognac" = 2, "absinthe" = 1, "sugar" = 1, "bitters" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/junglejuice
+	name = "Jungle Juice"
+	id = "junglejuice"
+	result = "junglejuice"
+	required_reagents = list("lemonjuice" = 1, "orangejuice" = 1, "lemon_lime" = 1, "vodka" = 1, "rum" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/gimlet
+	name = "Gimlet"
+	id = "gimlet"
+	result = "gimlet"
+	required_reagents = list("gin" = 1, "limejuice" = 1, "sodawater" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	result = "firepunch"
+	required_reagents = list("sugar" = 1, "rum" = 2)
+	result_amount = 3
+
+////////////////////////////////
+/// End of booze drinks list///
+///////////////////////////////
+>>>>>>> citrp/master
 
 //R-UST Port
 /datum/chemical_reaction/hyrdophoron

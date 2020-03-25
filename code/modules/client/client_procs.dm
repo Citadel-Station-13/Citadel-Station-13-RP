@@ -23,7 +23,7 @@
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
 
-	if(!config.guests_allowed && IsGuestKey(key))
+	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
@@ -92,13 +92,10 @@
 
 	chatOutput.start() // Starts the chat
 
-	// Forcibly enable hardware-accelerated graphics, as we need them for the lighting overlays.
-	// (but turn them off first, since sometimes BYOND doesn't turn them on properly otherwise)
-	spawn(5) // And wait a half-second, since it sounds like you can do this too fast.
-		if(src)
-			winset(src, null, "command=\".configure graphics-hwmode off\"")
-			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
-			winset(src, null, "command=\".configure graphics-hwmode on\"")
+	connection_time = world.time
+	connection_realtime = world.realtime
+	connection_timeofday = world.timeofday
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 	log_client_to_db()
 
@@ -110,15 +107,20 @@
 		void.MakeGreed()
 	screen += void
 
+<<<<<<< HEAD
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+=======
+	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+		src << "<span class='info'>You have unread updates in the changelog.</span>"
+>>>>>>> citrp/master
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
-		if(config.aggressive_changelog)
+		if(config_legacy.aggressive_changelog)
 			src.changes()
 
 	hook_vr("client_new",list(src)) //VOREStation Code
 
-	if(config.paranoia_logging)
+	if(config_legacy.paranoia_logging)
 		if(isnum(player_age) && player_age == -1)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
 		if(isnum(account_age) && account_age <= 2)
@@ -244,17 +246,17 @@
 
 	//Panic bunker code
 	if ((player_age == -1) && !(ckey in GLOB.PB_bypass)) //first connection
-		if (config.panic_bunker && !holder && !deadmin_holder)
+		if (config_legacy.panic_bunker && !holder && !deadmin_holder)
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, config.panic_bunker_message)
+			to_chat(src, config_legacy.panic_bunker_message)
 			qdel(src)
 			return 0
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 
 	// VOREStation Edit Start - Department Hours
-	if(config.time_off)
+	if(config_legacy.time_off)
 		var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
 		query_hours.Execute()
 		while(query_hours.NextRow())

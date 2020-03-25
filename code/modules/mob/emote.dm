@@ -70,8 +70,13 @@
 		return
 
 	if(!src.client.holder)
+<<<<<<< HEAD
 		if(!config.dsay_allowed)
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
+=======
+		if(!config_legacy.dsay_allowed)
+			src << "<span class='danger'>Deadchat is globally muted.</span>"
+>>>>>>> citrp/master
 			return
 
 

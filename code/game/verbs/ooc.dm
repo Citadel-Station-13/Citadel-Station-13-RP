@@ -20,10 +20,15 @@
 		return
 
 	if(!holder)
+<<<<<<< HEAD
 		if(!config.ooc_allowed)
 			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
+=======
+		if(!config_legacy.ooc_allowed)
+			src << "<span class='danger'>OOC is globally muted.</span>"
+>>>>>>> citrp/master
 			return
-		if(!config.dooc_allowed && (mob.stat == DEAD))
+		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
 			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -68,7 +73,7 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config.allow_admin_ooccolor && (src.prefs.ooccolor != initial(src.prefs.ooccolor))) // keeping this for the badmins
+			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor && (src.prefs.ooccolor != initial(src.prefs.ooccolor))) // keeping this for the badmins
 				target << "<font color='[src.prefs.ooccolor]'><span class='ooc'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
 			else
 				target << "<span class='ooc'><span class='[ooc_style]'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></span>"
@@ -98,10 +103,15 @@
 		return
 
 	if(!holder)
+<<<<<<< HEAD
 		if(!config.looc_allowed)
 			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
+=======
+		if(!config_legacy.looc_allowed)
+			src << "<span class='danger'>LOOC is globally muted.</span>"
+>>>>>>> citrp/master
 			return
-		if(!config.dooc_allowed && (mob.stat == DEAD))
+		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
 			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)

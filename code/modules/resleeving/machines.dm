@@ -85,7 +85,11 @@
 		H.add_modifier(modifier_type)
 
 	//Apply damage
+<<<<<<< HEAD
 	H.adjustCloneLoss((H.getMaxHealth() - config.health_threshold_dead)*-0.75)
+=======
+	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*0.75)
+>>>>>>> citrp/master
 	H.Paralyse(4)
 	H.updatehealth()
 

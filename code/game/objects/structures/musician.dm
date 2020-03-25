@@ -1,8 +1,13 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 #define MUSICIAN_HEARCHECK_MINDELAY 4
+<<<<<<< HEAD
 #define INSTRUMENT_MAX_LINE_LENGTH 50
 #define INSTRUMENT_MAX_LINE_NUMBER 300
+=======
+#define INSTRUMENT_MAX_LINE_LENGTH 300
+#define INSTRUMENT_MAX_LINE_NUMBER 500
+>>>>>>> citrp/master
 
 /datum/song
 	var/name = "Untitled"
@@ -215,7 +220,11 @@
 			var/linenum = 1
 			for(var/l in lines)
 				if(length(l) > INSTRUMENT_MAX_LINE_LENGTH)
+<<<<<<< HEAD
 					to_chat(usr, "Line [linenum] too long!")
+=======
+					usr << "Line [linenum] too long!"
+>>>>>>> citrp/master
 					lines.Remove(l)
 				else
 					linenum++
@@ -325,7 +334,16 @@
 		return
 	if(!usr || !isturf(usr.loc) || usr.stat || usr.restrained())
 		return
+<<<<<<< HEAD
 	if (isobserver(usr) && !config.ghost_interaction)
+=======
+	else if(usr.stat || usr.restrained())
+		return
+	else if (istype(usr,/mob/observer/ghost) && !config_legacy.ghost_interaction)
+		return
+	else
+		src.setDir(turn(src.dir, 90))
+>>>>>>> citrp/master
 		return
 	src.setDir(turn(src.dir, 270))
 

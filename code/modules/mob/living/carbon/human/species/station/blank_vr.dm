@@ -26,7 +26,13 @@
 	max_age = 200
 	health_hud_intensity = 2
 	num_alternate_languages = 3
+<<<<<<< HEAD
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+=======
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/tie_hair
+		)
+>>>>>>> citrp/master
 
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR

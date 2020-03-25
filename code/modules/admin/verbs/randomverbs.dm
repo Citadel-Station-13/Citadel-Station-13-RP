@@ -162,7 +162,7 @@
 
 proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(automute)
-		if(!config.automute_on)
+		if(!config_legacy.automute_on)
 			return
 	else
 		if(!usr || !usr.client)
@@ -274,7 +274,7 @@ Ccomp's first proc.
 		return
 
 	var/mob/observer/dead/G = ghosts[target]
-	if(G.has_enabled_antagHUD && config.antag_hud_restricted)
+	if(G.has_enabled_antagHUD && config_legacy.antag_hud_restricted)
 		var/response = alert(src, "Are you sure you wish to allow this individual to play?","Ghost has used AntagHUD","Yes","No")
 		if(response == "No") return
 	G.timeofdeath=-19999						/* time of death is checked in /mob/verb/abandon_mob() which is the Respawn verb.
@@ -297,7 +297,7 @@ Ccomp's first proc.
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 	var/action=""
-	if(config.antag_hud_allowed)
+	if(config_legacy.antag_hud_allowed)
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						//Remove the verb from non-admin ghosts
 				g.verbs -= /mob/observer/dead/verb/toggle_antagHUD
@@ -305,15 +305,20 @@ Ccomp's first proc.
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
 				g << "<font color='red'><B>The Administrator has disabled AntagHUD </B></font>"
+<<<<<<< HEAD
 		config.antag_hud_allowed = 0
 		to_chat(src, "<font color='red'><B>AntagHUD usage has been disabled</B></font>")
+=======
+		config_legacy.antag_hud_allowed = 0
+		src << "<font color='red'><B>AntagHUD usage has been disabled</B></font>"
+>>>>>>> citrp/master
 		action = "disabled"
 	else
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
 				g.verbs += /mob/observer/dead/verb/toggle_antagHUD
 			g << "<font color='blue'><B>The Administrator has enabled AntagHUD </B></font>"	// Notify all observers they can now use AntagHUD
-		config.antag_hud_allowed = 1
+		config_legacy.antag_hud_allowed = 1
 		action = "enabled"
 		to_chat(src, "<font color='blue'><B>AntagHUD usage has been enabled</B></font>")
 
@@ -330,12 +335,17 @@ Ccomp's first proc.
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 	var/action=""
-	if(config.antag_hud_restricted)
+	if(config_legacy.antag_hud_restricted)
 		for(var/mob/observer/dead/g in get_ghosts())
 			g << "<font color='blue'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></font>"
 		action = "lifted restrictions"
+<<<<<<< HEAD
 		config.antag_hud_restricted = 0
 		to_chat(src, "<font color='blue'><B>AntagHUD restrictions have been lifted</B></font>")
+=======
+		config_legacy.antag_hud_restricted = 0
+		src << "<font color='blue'><B>AntagHUD restrictions have been lifted</B></font>"
+>>>>>>> citrp/master
 	else
 		for(var/mob/observer/dead/g in get_ghosts())
 			g << "<font color='red'><B>The administrator has placed restrictions on joining the round if you use AntagHUD</B></font>"
@@ -343,8 +353,13 @@ Ccomp's first proc.
 			g.antagHUD = 0
 			g.has_enabled_antagHUD = 0
 		action = "placed restrictions"
+<<<<<<< HEAD
 		config.antag_hud_restricted = 1
 		to_chat(src, "<font color='red'><B>AntagHUD restrictions have been enabled</B></font>")
+=======
+		config_legacy.antag_hud_restricted = 1
+		src << "<font color='red'><B>AntagHUD restrictions have been enabled</B></font>"
+>>>>>>> citrp/master
 
 	log_admin("[key_name(usr)] has [action] on joining the round if they use AntagHUD")
 	message_admins("Admin [key_name_admin(usr)] has [action] on joining the round if they use AntagHUD", 1)
@@ -552,7 +567,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!istype(M))
 		alert("Cannot revive a ghost")
 		return
-	if(config.allow_admin_rev)
+	if(config_legacy.allow_admin_rev)
 		M.revive()
 
 		log_admin("[key_name(usr)] healed / revived [key_name(M)]")
@@ -742,7 +757,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			M << "<font color='red'>To try to resolve this matter head to http://ss13.donglabs.com/forum/</font>"
 			log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 			message_admins("<font color='blue'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</font>")
-			world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=[mins]&server=[replacetext(config.server_name, "#", "")]")
+			world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=[mins]&server=[replacetext(config_legacy.server_name, "#", "")]")
 			del(M.client)
 			qdel(M)
 		else
@@ -757,7 +772,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		M << "<font color='red'>To try to resolve this matter head to http://ss13.donglabs.com/forum/</font>"
 		log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.")
 		message_admins("<font color='blue'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.</font>")
-		world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=perma&server=[replacetext(config.server_name, "#", "")]")
+		world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=perma&server=[replacetext(config_legacy.server_name, "#", "")]")
 		del(M.client)
 		qdel(M)
 */
@@ -939,12 +954,12 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set desc = "Toggles random events such as meteors, black holes, blob (but not space dust) on/off"
 	if(!check_rights(R_SERVER|R_EVENT))	return
 
-	if(!config.allow_random_events)
-		config.allow_random_events = 1
+	if(!config_legacy.allow_random_events)
+		config_legacy.allow_random_events = 1
 		usr << "Random events enabled"
 		message_admins("Admin [key_name_admin(usr)] has enabled random events.", 1)
 	else
-		config.allow_random_events = 0
+		config_legacy.allow_random_events = 0
 		usr << "Random events disabled"
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.", 1)
 	feedback_add_details("admin_verb","TRE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

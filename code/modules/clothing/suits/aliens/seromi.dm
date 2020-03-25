@@ -222,8 +222,13 @@
 	item_state = "tesh_cloak_sec"
 
 /obj/item/clothing/suit/storage/seromi/cloak/jobs/qm
+<<<<<<< HEAD
 	name = "quartermaster cloak"
 	desc = "A soft Teshari cloak made for the Quartermaster"
+=======
+	name = "Quartermaster's cloak"
+	desc =  "A soft Teshari cloak made for the Quartermaster"
+>>>>>>> citrp/master
 	icon_state = "tesh_cloak_qm"
 	item_state = "tesh_cloak_qm"
 
@@ -234,7 +239,14 @@
 	item_state = "tesh_cloak_serv"
 
 /obj/item/clothing/suit/storage/seromi/cloak/jobs/iaa
+<<<<<<< HEAD
 	name = "internal affairs cloak"
 	desc = "A soft Teshari cloak made for the Internal Affairs Agent"
 	icon_state = "tesh_cloak_iaa"
 	item_state = "tesh_cloak_iaa"
+=======
+	name = "Iaa cloak"
+	desc =  "A soft Teshari cloak made for the Internal Affairs Agent"
+	icon_state = "tesh_uniform_iaa"
+	item_state = "tesh_uniform_iaa"
+>>>>>>> citrp/master

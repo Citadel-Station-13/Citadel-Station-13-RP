@@ -119,12 +119,17 @@
 
 	if(anchored)
 		return
+<<<<<<< HEAD
 
 	if(!usr || !isturf(usr.loc))
 		return
 	if(usr.stat || usr.restrained())
 		return
 	if(ismouse(usr) || (isobserver(usr) && !config.ghost_interaction))
+=======
+	if(config_legacy.ghost_interaction)
+		src.setDir(turn(src.dir, 90))
+>>>>>>> citrp/master
 		return
 
 	src.setDir(turn(src.dir, 270))

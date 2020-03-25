@@ -82,7 +82,7 @@
 			stat("Game Mode:", "Secret")
 		else
 			if(ticker.hide_mode == 0)
-				stat("Game Mode:", "[config.mode_names[master_mode]]") // Old setting for showing the game mode
+				stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
 
 		if(ticker.current_state == GAME_STATE_PREGAME)
 			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
@@ -144,7 +144,7 @@
 				client.prefs.real_name = random_name(client.prefs.identifying_gender)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+			if(!client.holder && !config_legacy.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 			observer.key = key
 			qdel(src)
@@ -158,7 +158,7 @@
 			return
 /*
 		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
-			if (config.usealienwhitelist)
+			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
 					return 0
@@ -170,7 +170,10 @@
 
 	if(href_list["SelectedJob"])
 
+<<<<<<< HEAD
 		/* Vorestation Removal Start
+=======
+>>>>>>> citrp/master
 		//Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
@@ -179,7 +182,7 @@
 				return
 		*/ //Vorestation Removal End
 
-		if(!config.enter_allowed)
+		if(!config_legacy.enter_allowed)
 			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
 			return
 		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
@@ -341,7 +344,7 @@
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 		usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
 		return 0
-	if(!config.enter_allowed)
+	if(!config_legacy.enter_allowed)
 		usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
 		return 0
 	if(!IsJobAvailable(rank))

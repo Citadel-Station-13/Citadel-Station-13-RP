@@ -8,10 +8,17 @@ datum/controller/transfer_controller
 	var/shift_hard_end = 0 //VOREStation Edit
 	var/shift_last_vote = 0 //Citadel Edit
 datum/controller/transfer_controller/New()
+<<<<<<< HEAD
 	timerbuffer = config.vote_autotransfer_initial
 	shift_hard_end = config.vote_autotransfer_initial + (config.vote_autotransfer_interval * NUMBER_OF_VOTE_EXTENSIONS) //VOREStation Edit //Change this "1" to how many extend votes you want there to be.
 	shift_last_vote = shift_hard_end - config.vote_autotransfer_interval //VOREStation Edit
 	START_PROCESSING(SSobj, src)
+=======
+	timerbuffer = config_legacy.vote_autotransfer_initial
+	shift_hard_end = config_legacy.vote_autotransfer_initial + (config_legacy.vote_autotransfer_interval * NUMBER_OF_VOTE_EXTENSIONS) //VOREStation Edit //Change this "1" to how many extend votes you want there to be.
+	shift_last_vote = shift_hard_end - config_legacy.vote_autotransfer_interval //VOREStation Edit
+	processing_objects += src
+>>>>>>> citrp/master
 
 datum/controller/transfer_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -25,9 +32,9 @@ datum/controller/transfer_controller/process()
 */
 	if (round_duration_in_ticks >= shift_hard_end - 1 MINUTE)
 		init_shift_change(null, 1)
-		shift_hard_end = timerbuffer + config.vote_autotransfer_interval //If shuttle somehow gets recalled, let's force it to call again next time a vote would occur.
-		timerbuffer = timerbuffer + config.vote_autotransfer_interval //Just to make sure a vote doesn't occur immediately afterwords.
+		shift_hard_end = timerbuffer + config_legacy.vote_autotransfer_interval //If shuttle somehow gets recalled, let's force it to call again next time a vote would occur.
+		timerbuffer = timerbuffer + config_legacy.vote_autotransfer_interval //Just to make sure a vote doesn't occur immediately afterwords.
 	else if (round_duration_in_ticks >= timerbuffer - 1 MINUTE)
 		SSvote.autotransfer()
 	//VOREStation Edit END
-		timerbuffer = timerbuffer + config.vote_autotransfer_interval
+		timerbuffer = timerbuffer + config_legacy.vote_autotransfer_interval

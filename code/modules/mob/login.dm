@@ -4,7 +4,7 @@
 	lastKnownIP	= client.address
 	computer_id	= client.computer_id
 	log_access_in(client)
-	if(config.log_access)
+	if(config_legacy.log_access)
 		for(var/mob/M in player_list)
 			if(M == src)	continue
 			if( M.key && (M.key != key) )
@@ -71,7 +71,10 @@
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
+<<<<<<< HEAD
 
 	var/turf/T = get_turf(src)
 	if(isturf(T))
 		update_client_z(T.z)
+=======
+>>>>>>> citrp/master

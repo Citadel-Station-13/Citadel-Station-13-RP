@@ -177,7 +177,7 @@ Works together with spawning an observer, noted above.
 			B.update()
 		if(ghost.client)
 			ghost.client.time_died_as_mouse = ghost.timeofdeath
-		if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
+		if(ghost.client && !ghost.client.holder && !config_legacy.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			ghost.verbs -= /mob/observer/dead/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
 		return ghost
 
@@ -278,13 +278,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle AntagHUD"
 	set desc = "Toggles AntagHUD allowing you to see who is the antagonist"
 
+<<<<<<< HEAD
 	if(!config.antag_hud_allowed && !client.holder)
 		to_chat(src, "<font color='red'>Admins have disabled this for this round.</font>")
+=======
+	if(!config_legacy.antag_hud_allowed && !client.holder)
+		src << "<font color='red'>Admins have disabled this for this round.</font>"
+>>>>>>> citrp/master
 		return
 	if(jobban_isbanned(src, "AntagHUD"))
 		to_chat(src, "<font color='red'><B>You have been banned from using this feature</B></font>")
 		return
-	if(config.antag_hud_restricted && !has_enabled_antagHUD && !client.holder)
+	if(config_legacy.antag_hud_restricted && !has_enabled_antagHUD && !client.holder)
 		var/response = alert(src, "If you turn this on, you will not be able to take any part in the round.","Are you sure you want to turn this feature on?","Yes","No")
 		if(response == "No") return
 		can_reenter_corpse = FALSE
@@ -474,8 +479,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Become mouse"
 	set category = "Ghost"
 
+<<<<<<< HEAD
 	if(config.disable_player_mice)
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
+=======
+	if(config_legacy.disable_player_mice)
+		src << "<span class='warning'>Spawning as a mouse is currently disabled.</span>"
+>>>>>>> citrp/master
 		return
 
 	if(!MayRespawn(1))
@@ -511,7 +521,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>Unable to find any unwelded vents to spawn mice at.</span>")
 
 	if(host)
-		if(config.uneducated_mice)
+		if(config_legacy.uneducated_mice)
 			host.universal_understand = 0
 		announce_ghost_joinleave(src, 0, "They are now a mouse.")
 		host.ckey = src.ckey
@@ -544,8 +554,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Write in blood"
 	set desc = "If the round is sufficiently spooky, write a short message in blood on the floor or a wall. Remember, no IC in OOC or OOC in IC."
 
+<<<<<<< HEAD
 	if(!(config.cult_ghostwriter))
 		to_chat(src, "<font color='red'>That verb is not currently permitted.</font>")
+=======
+	if(!(config_legacy.cult_ghostwriter))
+		src << "<font color='red'>That verb is not currently permitted.</font>"
+>>>>>>> citrp/master
 		return
 
 	if (!src.stat)
@@ -556,7 +571,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/ghosts_can_write
 	if(ticker.mode.name == "cult")
-		if(cult.current_antagonists.len > config.cult_ghostwriter_req_cultists)
+		if(cult.current_antagonists.len > config_legacy.cult_ghostwriter_req_cultists)
 			ghosts_can_write = 1
 
 	if(!ghosts_can_write && !check_rights(R_ADMIN, 0)) //Let's allow for admins to write in blood for events and the such.
@@ -716,7 +731,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 		if(feedback)
 			to_chat(src, "<span class='warning'>Your non-dead body prevent you from respawning.</span>")
 		return 0
-	if(config.antag_hud_restricted && has_enabled_antagHUD == 1)
+	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD == 1)
 		if(feedback)
 			to_chat(src, "<span class='warning'>antagHUD restrictions prevent you from respawning.</span>")
 		return 0

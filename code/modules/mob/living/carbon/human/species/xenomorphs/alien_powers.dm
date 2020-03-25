@@ -83,8 +83,13 @@
 	set desc = "Lay an egg to produce huggers to impregnate prey with."
 	set category = "Abilities"
 
+<<<<<<< HEAD
 	if(!config.aliens_allowed)
 		to_chat(src, "You begin to lay an egg, but hesitate. You suspect it isn't allowed.")
+=======
+	if(!config_legacy.aliens_allowed)
+		src << "You begin to lay an egg, but hesitate. You suspect it isn't allowed."
+>>>>>>> citrp/master
 		verbs -= /mob/living/carbon/human/proc/lay_egg
 		return
 

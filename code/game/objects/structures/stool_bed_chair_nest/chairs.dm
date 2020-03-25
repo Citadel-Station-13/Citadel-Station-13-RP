@@ -73,7 +73,12 @@
 	set category = "Object"
 	set src in oview(1)
 
+<<<<<<< HEAD
 	if(!usr || !isturf(usr.loc))
+=======
+	if(config_legacy.ghost_interaction)
+		src.setDir(turn(src.dir, 90))
+>>>>>>> citrp/master
 		return
 	if(usr.stat || usr.restrained())
 		return

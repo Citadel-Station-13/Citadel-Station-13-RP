@@ -26,7 +26,7 @@
 	var/require_comms_key = FALSE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = config && config.comms_key == input["key"] && (config.comms_key != initial(config.comms_key))		//no fucking defaults allowed.
+	key_valid = config && config_legacy.comms_key == input["key"] && (config_legacy.comms_key != initial(config_legacy.comms_key))		//no fucking defaults allowed.
 	//key_valid = config && (CONFIG_GET(string/comms_key) == input["key"])
 	if(require_comms_key && !key_valid)
 		return "Bad Key"
@@ -54,7 +54,11 @@
 	log = FALSE
 
 /datum/world_topic/playing/Run(list/input)
+<<<<<<< HEAD
 	return player_list.len
+=======
+	return length(player_list)
+>>>>>>> citrp/master
 
 /datum/world_topic/pr_announce
 	keyword = "announce"
@@ -136,20 +140,26 @@
 /datum/world_topic/adminwho/Run(list/input)
 	return ircadminwho()
 
+*/
+
 /datum/world_topic/status
 	keyword = "status"
 
-/datum/world_topic/status/Run(list/input)
+/datum/world_topic/status/Run(list/input, addr)
+	if(!key_valid) //If we have a key, then it's safe to trust that this isn't a malicious packet. Also prevents the extra info from leaking
+		if(GLOB.topic_status_lastcache >= world.time)
+			return GLOB.topic_status_cache
+		GLOB.topic_status_lastcache = world.time + 5
 	. = list()
-	.["version"] = GLOB.game_version
-	.["mode"] = GLOB.master_mode
-	.["respawn"] = config ? !CONFIG_GET(flag/norespawn) : FALSE
-	.["enter"] = GLOB.enter_allowed
-	.["vote"] = CONFIG_GET(flag/allow_vote_mode)
-	.["ai"] = CONFIG_GET(flag/allow_ai)
-	.["host"] = world.host ? world.host : null
+	.["version"] = game_version
+	.["mode"] = master_mode
+	.["respawn"] = config_legacy.abandon_allowed
+	.["enter"] = config_legacy.enter_allowed
+	.["vote"] = config_legacy.allow_vote_mode
+	.["ai"] = config_legacy.allow_ai
+	.["host"] = host || null
 	.["round_id"] = GLOB.round_id
-	.["players"] = GLOB.clients.len
+	.["players"] = clients.len
 	.["revision"] = GLOB.revdata.commit
 	.["revision_date"] = GLOB.revdata.date
 
@@ -157,19 +167,23 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	.["gamestate"] = SSticker.current_state
+	//.["gamestate"] = SSticker.current_state
 
-	.["map_name"] = SSmapping.config?.map_name || "Loading..."
+	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
-	if(key_valid)
-		.["active_players"] = get_active_player_count()
+	//if(key_valid)
+		//.["active_players"] = get_active_player_count()
+		/*
 		if(SSticker.HasRoundStarted())
 			.["real_mode"] = SSticker.mode.name
 			// Key-authed callers may know the truth behind the "secret"
+		*/
 
 	.["security_level"] = get_security_level()
-	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
-	// Amount of world's ticks in seconds, useful for calculating round duration
+//	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+//	// Amount of world's ticks in seconds, useful for calculating round duration
+	.["stationtime"] = stationtime2text()
+	.["roundduration"] = roundduration2text()
 
 	//Time dilation stats.
 	.["time_dilation_current"] = SStime_track.time_dilation_current
@@ -177,16 +191,13 @@
 	.["time_dilation_avg_slow"] = SStime_track.time_dilation_avg_slow
 	.["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
 
-	//pop cap stats
-	.["soft_popcap"] = CONFIG_GET(number/soft_popcap) || 0
-	.["hard_popcap"] = CONFIG_GET(number/hard_popcap) || 0
-	.["extreme_popcap"] = CONFIG_GET(number/extreme_popcap) || 0
-	.["popcap"] = max(CONFIG_GET(number/soft_popcap), CONFIG_GET(number/hard_popcap), CONFIG_GET(number/extreme_popcap)) //generalized field for this concept for use across ss13 codebases
-
+	/*
 	if(SSshuttle && SSshuttle.emergency)
 		.["shuttle_mode"] = SSshuttle.emergency.mode
 		// Shuttle status, see /__DEFINES/stat.dm
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
+	*/
 
-*/
+	if(!key_valid)
+		GLOB.topic_status_cache = .
