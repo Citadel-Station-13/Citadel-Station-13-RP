@@ -99,13 +99,8 @@
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
-<<<<<<< HEAD
 	if(!(config.allow_drone_spawn))
 		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
-=======
-	if(!(config_legacy.allow_drone_spawn))
-		src << "<span class='danger'>That verb is not currently permitted.</span>"
->>>>>>> citrp/master
 		return
 
 	if (!src.stat)

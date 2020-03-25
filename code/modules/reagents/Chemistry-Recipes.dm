@@ -2515,14 +2515,13 @@
 	required_reagents = list("cornoil" = 4, "sodawater" = 1, "carbon" = 1, "tricordrazine" = 1)
 	result_amount = 6
 
-<<<<<<< HEAD
 /datum/chemical_reaction/drinks/fusionnaire
 	name = "Fusionnaire"
 	id = "fusionnaire"
 	result = "fusionnaire"
 	required_reagents = list("lemonjuice" = 3, "vodka" = 2, "schnapps_pep" = 1, "schnapps_lem" = 1, "rum" = 1, "ice" = 1)
 	result_amount = 9
-=======
+
 /datum/chemical_reaction/drinks/gibbfloat
 	name = "Gibbfloat"
 	id = "gibbfloat"
@@ -2582,7 +2581,6 @@
 ////////////////////////////////
 /// End of booze drinks list///
 ///////////////////////////////
->>>>>>> citrp/master
 
 //R-UST Port
 /datum/chemical_reaction/hyrdophoron
