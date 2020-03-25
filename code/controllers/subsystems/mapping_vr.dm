@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(mapping)
 	maploader = new()
 	load_map_templates()
 
-	if(config.generate_map)
+	if(config_legacy.generate_map)
 		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
 		if(using_map.perform_map_generation())
 			using_map.refresh_mining_turfs()

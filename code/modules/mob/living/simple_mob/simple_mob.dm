@@ -245,7 +245,7 @@
 	if(m_intent == "walk")
 		tally *= 1.5
 
-	return tally+config.animal_delay
+	return tally+config_legacy.animal_delay
 
 
 /mob/living/simple_mob/Stat()

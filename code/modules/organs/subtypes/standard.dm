@@ -269,7 +269,7 @@
 	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
 /obj/item/organ/external/head/Initialize()
-	if(config.allow_headgibs)
+	if(config_legacy.allow_headgibs)
 		cannot_gib = FALSE
 	return ..()
 

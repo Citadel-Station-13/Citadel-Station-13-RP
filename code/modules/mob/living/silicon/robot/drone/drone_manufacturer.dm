@@ -99,7 +99,7 @@
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
-	if(!(config.allow_drone_spawn))
+	if(!(config_legacy.allow_drone_spawn))
 		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
 		return
 

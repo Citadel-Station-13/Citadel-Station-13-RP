@@ -116,7 +116,7 @@
 		return 1
 
 /datum/job/clown/get_access()
-	if(config.assistant_maint)
+	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels)
 	else
 		return list()
@@ -155,7 +155,7 @@
 		return 1
 
 /datum/job/mime/get_access()
-	if(config.assistant_maint)
+	if(config_legacy.assistant_maint)
 		return list(access_maint_tunnels)
 	else
 		return list()

@@ -116,7 +116,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	undeploy("Remote session terminated.")
 
 /mob/living/silicon/robot/attack_ai(mob/user)
-	if(shell && config.allow_ai_shells && (!connected_ai || connected_ai == user))
+	if(shell && config_legacy.allow_ai_shells && (!connected_ai || connected_ai == user))
 		var/mob/living/silicon/ai/AI = user
 		AI.deploy_to_shell(src)
 	else
@@ -132,6 +132,6 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	delete_me = TRUE
 
 /obj/effect/landmark/free_ai_shell/Initialize()
-	if(config.allow_ai_shells && config.give_free_ai_shell)
+	if(config_legacy.allow_ai_shells && config_legacy.give_free_ai_shell)
 		new /mob/living/silicon/robot/ai_shell(get_turf(src))
 	return ..()

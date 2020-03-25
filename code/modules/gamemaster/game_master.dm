@@ -26,7 +26,7 @@
 		while(config_setup_delay)
 			if(config)
 				config_setup_delay = FALSE
-				if(config.enable_game_master)
+				if(config_legacy.enable_game_master)
 					suspended = FALSE
 			else
 				sleep(30 SECONDS)

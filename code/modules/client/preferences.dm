@@ -360,7 +360,7 @@ datum/preferences
 		dat += "<b>Select a character slot to overwrite</b><br>"
 		dat += "<b>You will then need to save to confirm</b><hr>"
 		var/name
-		for(var/i=1, i<= config.character_slots, i++)
+		for(var/i=1, i<= config_legacy.character_slots, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"
