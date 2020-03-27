@@ -117,10 +117,17 @@
 
 /datum/gear/utility/implant
 	slot = "implant"
-	exploitable = 1
+	exploitable = 0
+
+/datum/gear/utility/implant/backup
+	slot = "implant"
+	display_name= "implant, mind backup"
+	cost = 2
+	path = /obj/item/weapon/implant/backup
 
 /datum/gear/utility/implant/tracking
 	display_name = "implant, tracking"
+	slot = "implant"
 	path = /obj/item/weapon/implant/tracking/weak
 	cost = 0 //VOREStation Edit. Changed cost to 0
 /* VOREStation Edit - Make languages great again
