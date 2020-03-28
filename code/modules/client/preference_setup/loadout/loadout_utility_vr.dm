@@ -55,3 +55,8 @@
     display_name = "science dufflebag"
     path = /obj/item/weapon/storage/backpack/dufflebag/sci
     allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist","Explorer")
+
+/datum/gear/utility/compliance
+	display_name = "NIFSoft Disk(Compliance)" //CITADEL CHANGE: Adds Compliance Disk to loadout
+	path = /obj/item/weapon/disk/nifsoft/compliance
+	cost = 2

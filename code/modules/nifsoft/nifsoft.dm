@@ -209,7 +209,7 @@
 // Compliance Disk //
 /obj/item/weapon/disk/nifsoft/compliance
 	name = "NIFSoft Disk (Compliance)"
-	desc = "Wow, adding laws to people? That seems illegal. It probably is. Okay, it really is."
+	desc = "A Compliance NIFSoft disk from Naughty Succubus which entered the market after winning a long and grueling lawsuit about it's legality, which installs custom directives into a user with a NIF, though it can't be used to make the user do something they find utterly unacceptable." //CITADEL CHANGE: Changing description to make it legal instead of illegal
 	stored = /datum/nifsoft/compliance
 	var/laws
 

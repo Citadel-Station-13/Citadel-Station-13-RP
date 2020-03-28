@@ -90,7 +90,7 @@
 
 /datum/nifsoft/compliance
 	name = "Compliance Module"
-	desc = "A system that allows one to apply 'laws' to sapient life. Extremely illegal, of course."
+	desc = "A system that allows one to apply 'directives' to sapient life, though, it can't be used to order someone to do something they find unacceptable." //CITADEL CHANGE: Changing description to make it legal instead of illegal
 	list_pos = NIF_COMPLIANCE
 	cost = 8200
 	wear = 4
