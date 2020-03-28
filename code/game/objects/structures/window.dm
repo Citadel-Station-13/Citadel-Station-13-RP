@@ -24,6 +24,15 @@
 	var/silicate = 0 // number of units of silicate
 	var/fulltile = FALSE // Set to true on full-tile variants.
 
+/obj/structure/window/New()
+	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
+	check_fullwindow()
+	return ..()
+
+/obj/structure/window/proc/check_fullwindow()
+	if(dir & (dir - 1))		//diagonal!
+		fulltile = TRUE
+
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
 
