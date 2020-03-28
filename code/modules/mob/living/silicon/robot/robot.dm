@@ -273,10 +273,10 @@
 
 	if(module)
 		return
-	if(!(modtype in robot_modules))
+	if(!(modtype in GLOB.robot_modules))
 		return
 
-	var/module_type = robot_modules[modtype]
+	var/module_type = GLOB.robot_modules[modtype]
 	transform_with_anim()	//VOREStation edit: sprite animation
 	new module_type(src)
 
