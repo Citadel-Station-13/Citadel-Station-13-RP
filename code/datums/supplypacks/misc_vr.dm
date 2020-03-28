@@ -41,9 +41,10 @@
 	containername = "Crab Crate"
 
 /datum/supply_pack/misc/rations
-	name = "Emergency LiquidFood Rations"
+	name = "Emergency LiquidFood and Protein Rations"
 	contains = list(
-	/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 10
+	/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 10,
+	/obj/item/weapon/reagent_containers/food/snacks/liquidprotein = 10
 	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
