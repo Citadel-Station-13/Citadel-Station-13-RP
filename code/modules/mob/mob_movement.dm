@@ -200,9 +200,9 @@
 			if("run")
 				if(mob.drowsyness > 0)
 					mob.move_delay += 6
-				move_delay += config_legacy.run_speed
+				mob.move_delay += config_legacy.run_speed
 			if("walk")
-				move_delay += config_legacy.walk_speed
+				mob.move_delay += config_legacy.walk_speed
 		mob.move_delay += mob.movement_delay(n, direct)
 
 		if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.

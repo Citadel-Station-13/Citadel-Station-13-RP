@@ -74,6 +74,7 @@
 	options["MC"] = Master
 	options["Failsafe"] = Failsafe
 	options["Configuration"] = config
+	options["Legacy Configuration"] = config_legacy
 	for(var/i in Master.subsystems)
 		var/datum/controller/subsystem/S = i
 		if(!istype(S))		//Eh, we're a debug verb, let's have typechecking.

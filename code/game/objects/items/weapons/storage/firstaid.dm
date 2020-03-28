@@ -188,6 +188,7 @@
 	. = ..()
 	base_name = name
 	base_desc = desc
+	update_icon()
 
 /obj/item/weapon/storage/pill_bottle/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/pen) || istype(W, /obj/item/device/flashlight/pen))
