@@ -214,14 +214,6 @@
 	flags_inv = HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	item_state_slots = list(slot_r_hand_str = "red_labcoat", slot_l_hand_str = "red_labcoat")
 
-/obj/item/clothing/suit/storage/hooded/techpriest
-	name = "tech priest robe"
-	desc = "A robe for those that worship the Mechanicus. Also toasters.. for.. some reason."
-	icon_state = "techpriest"
-	body_parts_covered = FEET|LOWER_TORSO|UPPER_TORSO|LEGS|ARMS
-	flags_inv = HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	item_state_slots = list(slot_r_hand_str = "techpriest", slot_l_hand_str = "techpriest")
-
 /*
  * Misc
  */
@@ -340,6 +332,8 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	blood_overlay_type = "coat"
 	allowed = list(/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter)
 	flags_inv = HIDEHOLSTER
+
+
 /*
  * stripper
  */
