@@ -23,7 +23,7 @@
 	light_color = "#b88b2e"
 	req_access = list(access_cargo)
 	circuit = /obj/item/weapon/circuitboard/supplycomp/control
-	authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
+	authorization = 0
 
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
@@ -31,6 +31,11 @@
 /obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
 	if(..())
 		return
+	if(!allowed(user))
+		authorization = 0
+		return
+	else
+		authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 	user.set_machine(src)
 	ui_interact(user)
 	return
