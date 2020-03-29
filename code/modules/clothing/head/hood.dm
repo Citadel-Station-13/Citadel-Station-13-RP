@@ -42,9 +42,6 @@
 /obj/item/clothing/head/hood/winter/cargo
 	name = "cargo winter hood"
 
-/obj/item/clothing/head/hood/techpriest
-	name = "techpriest hood"
-
 /obj/item/clothing/head/hood/winter/miner
 	name = "mining winter hood"
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -72,3 +69,8 @@
 	desc = "A hood that looks just like a corgi's head, it won't guarantee dog biscuits."
 	icon_state = "ian"
 	item_state_slots = list(slot_r_hand_str = "ian", slot_l_hand_str = "ian") //Does not exist -S2-
+
+
+/obj/item/clothing/head/hood/techpriest
+	name = "tech priest hood"
+	icon_state = "techpriesth"
