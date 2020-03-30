@@ -14,6 +14,7 @@
 	build_path = /obj/item/device/perfect_tele
 	sort_string = "PAAAA"
 
+/*
 /datum/design/item/teleport/bluespace_crystal
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
@@ -21,3 +22,4 @@
 	materials = list("diamond" = 1500, "phoron" = 1500)
 	build_path = /obj/item/weapon/ore/bluespace_crystal/artificial
 	sort_string = "PAAAB"
+*/
