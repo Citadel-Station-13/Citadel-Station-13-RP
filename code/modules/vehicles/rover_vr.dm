@@ -298,8 +298,8 @@
 		return 0
 
 	if(ismob(C))
-		buckle_mob(C)
-		C.alpha = 0
+		if(buckle_mob(C))
+			C.alpha = 0
 
 	return ..()
 

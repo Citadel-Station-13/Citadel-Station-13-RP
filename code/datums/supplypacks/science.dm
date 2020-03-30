@@ -1,6 +1,6 @@
 /*
 *	Here is where any supply packs
-*	related to security tasks live
+*	related to science tasks live
 */
 /datum/supply_pack/sci
 	group = "Science"
@@ -86,3 +86,10 @@
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Xenoarchaeology Tech crate"
 	access = access_research
+
+/datum/supply_pack/sci/jukebox_circuitboard
+	name = "Jukebox Circuit Board crate"
+	contains = list(/obj/item/weapon/circuitboard/jukebox = 2)
+	cost = 25
+	containertype = /obj/structure/closet/crate
+	containername = "Jukebox Circuit Board crate"

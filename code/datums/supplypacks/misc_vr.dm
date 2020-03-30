@@ -63,7 +63,7 @@
 	contains = list(
 	/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 10
 	)
-	cost = 5
+	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "emergency rations"
 

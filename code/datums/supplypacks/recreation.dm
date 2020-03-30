@@ -98,3 +98,10 @@
 			/obj/machinery/porta_turret/lasertag/blue,
 			/obj/machinery/porta_turret/lasertag/red
 			)
+
+/datum/supply_pack/recreation/jukebox
+	name = "Jukebox crate"
+	cost = 50
+	containername = "Jukebox crate"
+	containertype = /obj/structure/closet/crate
+	contains = list (/obj/machinery/media/jukebox = 1)

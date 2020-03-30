@@ -6,10 +6,6 @@
 	sort_category = "Suits and Overwear"
 	cost = 2
 
-/datum/gear/suit/techpriest
-	display_name = "techpriest"
-	path = /obj/item/clothing/suit/storage/hooded/techpriest
-
 /datum/gear/suit/greatcoat
 	display_name = "greatcoat"
 	path = /obj/item/clothing/suit/greatcoat
@@ -383,6 +379,10 @@ datum/gear/suit/duster
 	display_name = "winter coat, mining"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/miner
 	allowed_roles = list("Shaft Miner")
+
+/datum/gear/suit/techrobes
+	display_name = "techpriest"
+	path = /obj/item/clothing/suit/storage/hooded/techpriest
 
 /datum/gear/suit/varsity
 	display_name = "varsity jacket selection"
