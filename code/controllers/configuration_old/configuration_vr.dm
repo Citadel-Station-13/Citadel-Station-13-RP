@@ -12,7 +12,7 @@
 	var/require_flavor = FALSE
 
 /hook/startup/proc/read_vs_config()
-	var/list/Lines = file2list("config/legacy/config_legacy.txt")
+	var/list/Lines = file2list("config/legacy/config.txt")
 	for(var/t in Lines)
 		if(!t)	continue
 
