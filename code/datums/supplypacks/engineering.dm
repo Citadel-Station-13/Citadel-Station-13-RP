@@ -156,6 +156,7 @@
 	contains = list(/obj/machinery/power/rad_collector = 3)
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "collector crate"
+	access = access_engine
 
 /datum/supply_pack/eng/engine/PA
 	name = "Particle Accelerator crate"
