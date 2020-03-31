@@ -47,7 +47,9 @@
 	var/radio_filter_out
 	var/radio_filter_in
 
+/*
 	var/datum/looping_sound/air_pump/soundloop
+*/
 
 /obj/machinery/atmospherics/unary/vent_pump/on
 	use_power = 1
@@ -72,7 +74,9 @@
 
 /obj/machinery/atmospherics/unary/vent_pump/Initialize()
 	. = ..()
+	/*
 	soundloop = new(list(src), FALSE)
+	*/
 
 /obj/machinery/atmospherics/unary/vent_pump/New()
 	..()
@@ -90,7 +94,7 @@
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag
-	QDEL_NULL(soundloop)
+	//QDEL_NULL(soundloop)
 	return ..()
 
 /obj/machinery/atmospherics/unary/vent_pump/high_volume
@@ -171,15 +175,15 @@
 
 /obj/machinery/atmospherics/unary/vent_pump/proc/can_pump()
 	if(stat & (NOPOWER|BROKEN))
-		soundloop.stop()
+		//soundloop.stop()
 		return 0
 	if(!use_power)
-		soundloop.stop()
+		//soundloop.stop()
 		return 0
 	if(welded)
-		soundloop.stop()
+		//soundloop.stop()
 		return 0
-	soundloop.start()
+	//soundloop.start()
 	return 1
 
 /obj/machinery/atmospherics/unary/vent_pump/process()
