@@ -382,36 +382,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_r_ear)      return r_ear
 	return ..()
 
+
 /mob/living/carbon/human/is_holding_item_of_type(typepath)
 	for(var/obj/item/I in list(l_hand, r_hand))
 		if(istype(I, typepath))
 			return I
 	return FALSE
-
-//Puts the item into our active hand if possible. returns 1 on success.
-/mob/living/carbon/human/put_in_active_hand(var/obj/item/W)
-	return (hand ? put_in_l_hand(W) : put_in_r_hand(W))
-
-//Puts the item into our inactive hand if possible. returns 1 on success.
-/mob/living/carbon/human/put_in_inactive_hand(var/obj/item/W)
-	return (hand ? put_in_r_hand(W) : put_in_l_hand(W))
-
-/mob/living/carbon/human/put_in_l_hand(var/obj/item/W)
-	if(!..() || l_hand)
-		return 0
-	W.forceMove(src)
-	l_hand = W
-	W.equipped(src,slot_l_hand)
-	W.add_fingerprint(src)
-	update_inv_l_hand()
-	return 1
-
-/mob/living/carbon/human/put_in_r_hand(var/obj/item/W)
-	if(!..() || r_hand)
-		return 0
-	W.forceMove(src)
-	r_hand = W
-	W.equipped(src,slot_r_hand)
-	W.add_fingerprint(src)
-	update_inv_r_hand()
-	return 1
