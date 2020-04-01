@@ -515,12 +515,6 @@
 		gender = NEUTER
 		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE) //This needed to be manually defined, apparantly.
 
-	neck_fluff
-		name = "Neck Fluff"
-		icon = 'icons/mob/human_face_or_vr.dmi'
-		icon_state = "facial_neckfluff"
-		gender = NEUTER
-
 	vulp_none
 		name = "None"
 		icon = 'icons/mob/human_face_vr.dmi'
@@ -582,6 +576,12 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_state = "vulp_facial_swift"
 		species_allowed = list(SPECIES_VULPKANIN)
+		gender = NEUTER
+
+	neck_fluff
+		name = "Neck Fluff"
+		icon = 'icons/mob/human_face_or_vr.dmi'
+		icon_state = "facial_neckfluff"
 		gender = NEUTER
 
 //Special hairstyles
