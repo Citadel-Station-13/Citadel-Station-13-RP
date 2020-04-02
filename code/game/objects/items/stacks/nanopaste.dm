@@ -9,6 +9,9 @@
 	toolspeed = 0.75 //Used in surgery, shouldn't be the same speed as a normal screwdriver on mechanical organ repair.
 	w_class = ITEMSIZE_SMALL
 	no_variants = FALSE
+	var/restoration_external = 5
+	var/restoration_internal = 20
+	var/repair_external = FALSE
 
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
@@ -47,3 +50,11 @@
 				user.visible_message("<span class='notice'>\The [user] applies some nanite paste on [user != M ? "[M]'s [S.name]" : "[S]"] with [src].</span>",\
 				"<span class='notice'>You apply some nanite paste on [user == M ? "your" : "[M]'s"] [S.name].</span>")
 		//VOREStation Edit End
+
+/obj/item/stack/nanopaste/advanced
+	name = "advanced nanopaste"
+	singular_name = "advanced nanite swarm"
+	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery. These ones are capable of restoring condition even of most thrashed robotic parts"
+	icon_state = "adv_nanopaste"
+	restoration_external = 10
+	repair_external = TRUE

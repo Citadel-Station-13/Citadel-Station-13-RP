@@ -35,6 +35,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
 		/obj/item/device/suit_cooling_unit,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/weapon/storage/briefcase,
 		/obj/item/weapon/storage/secure/briefcase
 		)
@@ -82,6 +83,7 @@
 	allowed = list(
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/bag/ore,
 		/obj/item/device/t_scanner,
@@ -122,6 +124,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
 		/obj/item/device/suit_cooling_unit,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/weapon/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
 		/obj/item/weapon/rcd
@@ -168,6 +171,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
 		/obj/item/device/suit_cooling_unit,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/weapon/storage/briefcase/inflatable,
 		/obj/item/device/t_scanner,
 		/obj/item/weapon/rcd
@@ -223,6 +227,7 @@
 		/obj/item/device/beacon_locator,
 		/obj/item/device/radio/beacon,
 		/obj/item/weapon/pickaxe/hand,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/weapon/storage/bag/fossils)
 
 	req_access = list()
@@ -258,6 +263,7 @@
 		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/storage/firstaid,
 		/obj/item/device/healthanalyzer,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/stack/medical,
 		/obj/item/roller
 		)
@@ -295,6 +301,7 @@
 		/obj/item/weapon/gun,
 		/obj/item/device/flashlight,
 		/obj/item/weapon/tank,
+		/obj/item/weapon/storage/backpack,
 		/obj/item/device/suit_cooling_unit,
 		/obj/item/weapon/melee/baton
 		)
