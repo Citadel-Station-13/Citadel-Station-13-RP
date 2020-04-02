@@ -28,7 +28,7 @@
 //Area allowing backpacks to be placed on rigsuits.
 /obj/item/weapon/rig/vox
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/backpack,/obj/item/device/subspaceradio)
-/obj/item/weapon/rig/combat
+/obj/item/weapon/rig/combat1
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/melee/baton,/obj/item/weapon/storage/backpack,/obj/item/device/subspaceradio)
 /obj/item/weapon/rig/ert
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank, /obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \

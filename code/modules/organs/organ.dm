@@ -70,7 +70,7 @@ var/list/organ_cache = list()
 			dna = holder.dna.Clone()
 			species = holder.species //VOREStation Edit - For custom species
 		else
-			log_debug("[src] at [loc] spawned without a proper DNA.")
+			stack_trace("[src] at [loc] spawned without a proper DNA.")
 		var/mob/living/carbon/human/H = holder
 		if(istype(H))
 			if(internal)

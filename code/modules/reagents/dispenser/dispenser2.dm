@@ -52,9 +52,9 @@
 		user.drop_from_inventory(C)
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
-	C.loc = src
+	C.forceMove(src)
 	cartridges[C.label] = C
-	cartridges = sortTim(cartridges, /proc/cmp_text_asc, TRUE)
+	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
 	SSnanoui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(label)
