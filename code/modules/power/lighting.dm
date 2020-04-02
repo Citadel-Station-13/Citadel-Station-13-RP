@@ -756,7 +756,7 @@ var/global/list/light_type_cache = list()
 	base_state = "ltube"
 	item_state = "c_tube"
 	matter = list("glass" = 100)
-	brightness_range = 10	// luminosity when on, also used in power calculation //VOREStation Edit
+	brightness_range = 12	// luminosity when on, also used in power calculation //VOREStation Edit
 	brightness_power = 6
 
 /obj/item/weapon/light/tube/large
