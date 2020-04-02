@@ -60,8 +60,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/seromi/suit.dmi',
-		"Vox" = 'icons/mob/species/vox/ties.dmi'
+		"Teshari" = 'icons/mob/species/seromi/suit.dmi'
 		)
 
 /obj/item/clothing/accessory/poncho/green
