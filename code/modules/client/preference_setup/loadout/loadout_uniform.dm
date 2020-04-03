@@ -587,6 +587,6 @@
 	path = /obj/item/clothing/under/littleblackdress
 
 /datum/gear/uniform/bridgeofficer
-	displayname = "bridge officer uniform"
+	display_name = "bridge officer uniform"
 	path = /obj/item/clothing/under/bridgeofficer
 	allowed_roles = list("Command Secretary")

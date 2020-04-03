@@ -512,5 +512,5 @@ datum/gear/suit/duster
 
 /datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
 	display_name = "bridge officer dress jacket"
-	path = /obj/item/clothing/suit/storage/lawyer/bridgeofficer
+	path = /obj/item/clothing/under/bridgeofficer
 	allowed_roles = list("Command Secretary")
