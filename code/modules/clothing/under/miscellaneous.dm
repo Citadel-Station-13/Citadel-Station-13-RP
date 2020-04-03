@@ -717,7 +717,7 @@
 
 /obj/item/clothing/under/swimsuit/stripper/mankini
 	name = "mankini"
-	desc = "No honest man would wear this abomination"
+	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
 
 /*
@@ -853,3 +853,20 @@
 	name = "hazard cohesion suit"
 	desc = "An orange cohesion suit with yellow hazard stripes intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit_hazard"
+
+
+// April 2020 - Drof's Additions Begin Below
+/obj/item/clothing/under/haltertop
+	name = "halter top"
+	desc = "A black halter top with denim jean shorts."
+	icon_state = "haltertop"
+
+/obj/item/clothing/under/festivedress
+	name = "festive dress"
+	desc = "A red dress with a fur-like white trim that is associated with the Christmas season."
+	icon_state = "festivedress"
+
+/obj/item/clothing/under/littleblackdress
+	name = "little black dress"
+	desc = "A small black dress with a red sash."
+	icon_state = "littleblackdress"
