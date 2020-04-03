@@ -904,18 +904,18 @@
 	reagents.add_reagent("protein", 8)
 	bitesize = 3
 
-/obj/item/weapon/reagent_containers/food/snacks/monkeyburger
+/obj/item/weapon/reagent_containers/food/snacks/monkeyburger // Buff 6 >> 15
 	name = "burger"
 	desc = "The cornerstone of every nutritious breakfast."
 	icon_state = "hburger"
 	filling_color = "#D63C3C"
-	nutriment_amt = 3
+	nutriment_amt = 7
 	nutriment_desc = list("bun" = 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeyburger/Initialize()
 	. = ..()
-	reagents.add_reagent("protein", 3)
-	bitesize = 2
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/fishburger // Buff 6 >> 15
 	name = "Fillet -o- Carp Sandwich"
@@ -3366,20 +3366,33 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/rawsticks/Initialize()
 	. = ..()
 
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood // Buff 20 >> 30
+/obj/item/weapon/reagent_containers/food/snacks/liquidfood // Balance 30 > 30 Nutriment ONLY
 	name = "\improper LiquidFood Ration"
 	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
 	icon_state = "liquidfood"
 	trash = /obj/item/trash/liquidfood
 	filling_color = "#A8A8A8"
-	nutriment_amt = 22
+	nutriment_amt = 30
 	nutriment_desc = list("chalk" = 6)
 
 /obj/item/weapon/reagent_containers/food/snacks/liquidfood/Initialize()
 	. = ..()
 	reagents.add_reagent("iron", 3)
-	reagents.add_reagent("protein", 8)
 	bitesize = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/liquidprotein // Added Protein only version of LiquidFood + added custom sprite for it
+    name = "\improper LiquidProtein Ration"
+    desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
+    icon_state = "liquidprotein"
+    trash = /obj/item/trash/liquidprotein
+    filling_color = "#A8A8A8"
+    center_of_mass = list("x"=16, "y"=15)
+
+/obj/item/weapon/reagent_containers/food/snacks/liquidprotein/Initialize()
+    ..()
+    reagents.add_reagent("protein", 30)
+    reagents.add_reagent("iron", 3)
+    bitesize = 4
 
 /obj/item/weapon/reagent_containers/food/snacks/tastybread
 	name = "bread tube"
@@ -3558,7 +3571,7 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 5)
 	bitesize = 2
 
-/obj/item/weapon/reagent_containers/food/snacks/porkbowl // Buff 10 >> 15
+/obj/item/weapon/reagent_containers/food/snacks/porkbowl // Buff 10 >> 16
 	name = "pork bowl"
 	desc = "A bowl of fried rice with cuts of meat."
 	icon_state = "porkbowl"
@@ -3568,8 +3581,8 @@ END CITADEL CHANGE */
 
 /obj/item/weapon/reagent_containers/food/snacks/porkbowl/Initialize()
 	. = ..()
-	reagents.add_reagent("nutriment", 12)
-	reagents.add_reagent("protein", 4)
+	reagents.add_reagent("nutriment", 11)
+	reagents.add_reagent("protein", 5)
 	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/tortilla

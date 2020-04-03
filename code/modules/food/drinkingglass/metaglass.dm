@@ -594,3 +594,6 @@ Drinks Data
 
 /datum/reagent/ethanol/paloma
 	glass_icon_state = "paloma"
+
+/datum/reagent/ethanol/euphoria
+	glass_icon_state = "euphoria"
