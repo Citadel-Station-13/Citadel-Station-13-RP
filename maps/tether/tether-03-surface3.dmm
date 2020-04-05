@@ -11606,10 +11606,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/kitchen)
 "up" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "uq" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -12422,6 +12422,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
+"vO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/westright{
+	name = "Research Desk";
+	req_access = list(47)
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "vP" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -12707,6 +12719,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
+"wq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1;
+	icon_state = "borderfloor";
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/bordercorner2{
+	dir = 4
+	},
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "wr" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
@@ -12746,6 +12776,14 @@
 /obj/item/weapon/reagent_containers/food/condiment/sugar,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"wv" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	icon_state = "soda_dispenser";
+	dir = 8
+	},
+/turf/simulated/floor/lino,
+/area/assembly/robotics)
 "ww" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -13339,6 +13377,25 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"xu" = (
+/obj/structure/table/standard,
+/obj/item/weapon/paper_bin{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/item/weapon/storage/box/cups,
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "xv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13374,6 +13431,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"xx" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "xy" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloor{
@@ -17294,24 +17356,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
-"DD" = (
-/obj/structure/bed/chair,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	icon_state = "borderfloor";
-	pixel_y = 0
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/bordercorner2{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/assembly/robotics)
 "DE" = (
 /obj/structure/bed/chair,
 /obj/machinery/firealarm{
@@ -17913,19 +17957,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
-"Es" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Robotics Lab";
-	req_access = list(29,47);
-	req_one_access = list(47)
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/assembly/robotics)
 "Et" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light{
@@ -19971,24 +20002,6 @@
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
-"HX" = (
-/obj/structure/table/standard,
-/obj/item/weapon/paper_bin{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/assembly/robotics)
 "HY" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/decal/cleanable/blood,
@@ -21403,14 +21416,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
-"LY" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	icon_state = "soda_dispenser";
-	dir = 8
-	},
-/turf/simulated/floor/lino,
-/area/crew_quarters/bar)
 "Mf" = (
 /obj/structure/railing{
 	dir = 4
@@ -32877,7 +32882,7 @@ Ba
 BR
 Cx
 Ei
-DD
+wq
 FV
 If
 HJ
@@ -33169,9 +33174,9 @@ Ij
 IB
 LC
 LS
-LY
+wv
 HP
-HX
+xu
 Ik
 Da
 ac
@@ -33587,9 +33592,9 @@ Bf
 BQ
 Bf
 Bf
-Da
-Es
-Da
+up
+vO
+up
 De
 FX
 GC
@@ -37577,7 +37582,7 @@ Jr
 Js
 Jv
 JE
-up
+xx
 IY
 JH
 JJ
@@ -37719,7 +37724,7 @@ Js
 Js
 Jz
 JE
-up
+xx
 IY
 JH
 JJ
@@ -37861,7 +37866,7 @@ Jt
 Js
 Jz
 JE
-up
+xx
 IY
 JH
 JJ
