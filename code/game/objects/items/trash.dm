@@ -78,7 +78,7 @@
 
 /obj/item/trash/liquidprotein
 	name = "\improper \"LiquidProtein\" ration"
-	icon_state = "liquidfood"
+	icon_state = "liquidprotein"
 
 /obj/item/trash/tastybread
 	name = "bread tube"
