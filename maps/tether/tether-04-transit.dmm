@@ -298,6 +298,11 @@
 /area/tether/midpoint)
 "aG" = (
 /obj/machinery/vending/snack,
+/obj/item/device/radio/intercom{
+	dir = 4;
+	icon_state = "intercom";
+	pixel_x = 24
+	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aH" = (
@@ -510,11 +515,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "bh" = (
-/obj/structure/table/woodentable,
-/obj/machinery/camera/network/northern_star{
-	dir = 5
-	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/wood,
 /area/tether/midpoint)
 "bi" = (
 /obj/structure/table/woodentable,
@@ -534,6 +536,17 @@
 /obj/structure/table/woodentable,
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/small,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bl" = (
+/obj/structure/table/woodentable,
+/obj/machinery/camera/network/northern_star{
+	dir = 5
+	},
+/obj/item/device/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 
@@ -11111,7 +11124,7 @@ aq
 aq
 aO
 bf
-bh
+bl
 bg
 aq
 aq
@@ -11394,7 +11407,7 @@ an
 aq
 aq
 aq
-aq
+bh
 aq
 aq
 aq
