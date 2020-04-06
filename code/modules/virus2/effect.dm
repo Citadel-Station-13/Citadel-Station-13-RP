@@ -233,7 +233,7 @@
 	mob.apply_damages(backlash_amt,backlash_amt,backlash_amt,backlash_amt)
 
 /datum/disease2/effect/better_bones
-	name = "Brittle Bones"
+	name = "Better Bones"
 	stage = 4
 	chance_maxm = 10
 
@@ -283,7 +283,7 @@
 			H.adjust_fire_stacks(2)
 			H.IgniteMob()
 
-// Upgraded Chem Synth. Provided only good meds to constant heal a patient
+// Upgraded Chem Synth. Provided only good meds to heal a patient
 /datum/disease2/effect/improved_chem_synthesis
 	name = "Improved Chemical Synthesis"
 	stage = 4
