@@ -375,3 +375,8 @@
 /datum/gear/head/circuitry
 	display_name = "headwear, circuitry (empty)"
 	path = /obj/item/clothing/head/circuitry
+
+/datum/gear/head/bohat
+	display_name = "bohat"
+	path = /obj/item/clothing/head/bohat
+	allowed_roles = list("Command Secretary")

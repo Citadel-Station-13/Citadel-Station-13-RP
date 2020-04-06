@@ -231,3 +231,7 @@
 /datum/gear/shoes/circuitry
 	display_name = "boots, circuitry (empty)"
 	path = /obj/item/clothing/shoes/circuitry
+
+/datum/gear/shoes/cowboy/black
+	display_name = "black cowboy boots"
+	path = /obj/item/clothing/shoes/cowboyboots/black

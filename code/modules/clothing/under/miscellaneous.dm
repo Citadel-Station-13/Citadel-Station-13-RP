@@ -870,3 +870,9 @@
 	name = "little black dress"
 	desc = "A small black dress with a red sash."
 	icon_state = "littleblackdress"
+
+/obj/item/clothing/under/bridgeofficer
+	name = "bridge officer uniform"
+	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficer"
+	item_state = "bridgeofficer"
