@@ -321,7 +321,7 @@
 
 /datum/disease2/effect/organ_repair/activate(var/mob/living/carbon/mob,var/multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 8)
-		mob << "<span class='notice'>You feel like you rinsides relaxed and you feel healthier after.</span>"
+		mob << "<span class='notice'>You feel like your insides relaxed and you feel healthier after.</span>"
 		mob.reagents.add_reagent(data, 3)
 
 /datum/disease2/effect/toxins
