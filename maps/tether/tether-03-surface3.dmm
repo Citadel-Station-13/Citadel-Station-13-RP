@@ -5923,6 +5923,11 @@
 	icon_state = "1-8"
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/kitchen)
 "kj" = (
@@ -5939,6 +5944,10 @@
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/kitchen)
@@ -9892,7 +9901,8 @@
 	name = "Garden";
 	req_access = list(28)
 	},
-/turf/simulated/floor/tiled/white,
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/steel,
 /area/crew_quarters/kitchen)
 "ru" = (
 /turf/simulated/wall,
@@ -11559,15 +11569,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "um" = (
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "kitchen";
-	layer = 3.3;
-	name = "Kitchen Shutters"
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/steel,
-/area/crew_quarters/kitchen)
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "un" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -12343,10 +12348,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_three)
 "vH" = (
-/obj/effect/floor_decal/corner/beige{
-	dir = 10
-	},
-/obj/effect/floor_decal/spline/plain,
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -12354,6 +12355,7 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
+/obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
 "vI" = (
@@ -13759,7 +13761,6 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "xY" = (
-/obj/effect/floor_decal/spline/plain,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -13797,11 +13798,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
-"yc" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
 "yd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -37610,7 +37606,7 @@ Jr
 Js
 Jv
 JE
-yc
+um
 IY
 JH
 JJ
@@ -37752,7 +37748,7 @@ Js
 Js
 Jz
 JE
-yc
+um
 IY
 JH
 JJ
@@ -37894,7 +37890,7 @@ Jt
 Js
 Jz
 JE
-yc
+um
 IY
 JH
 JJ
@@ -38998,7 +38994,7 @@ mf
 qW
 mK
 oN
-um
+vN
 no
 uR
 vq

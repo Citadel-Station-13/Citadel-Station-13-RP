@@ -2131,15 +2131,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
 "dg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 25;
 	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
@@ -3023,15 +3018,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "eJ" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "propulsion_l"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
 	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/large_escape_pod1/station{
-	base_turf = /turf/simulated/mineral/floor/vacuum
-	})
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/chapel_morgue)
 "eK" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -3050,18 +3044,25 @@
 /turf/space,
 /area/space)
 "eN" = (
+/obj/structure/table/glass,
+/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/weapon/extinguisher,
+/obj/item/weapon/storage/box/monkeycubes,
+/turf/simulated/floor/tiled/white,
+/area/medical/virology)
+"eO" = (
 /obj/structure/shuttle/engine/propulsion{
-	dir = 8
+	dir = 8;
+	icon_state = "propulsion_l"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/large_escape_pod1/station{
 	base_turf = /turf/simulated/mineral/floor/vacuum
 	})
-"eO" = (
+"eP" = (
 /obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "propulsion_r"
+	dir = 8
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -3085,6 +3086,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"eR" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
 "eS" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
@@ -10073,12 +10084,6 @@
 /area/medical/virology)
 "si" = (
 /obj/machinery/disease2/incubator,
-/turf/simulated/floor/tiled/white,
-/area/medical/virology)
-"sj" = (
-/obj/structure/table/glass,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/extinguisher,
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "sk" = (
@@ -30027,11 +30032,11 @@ AN
 AN
 Bw
 yY
-eJ
-eN
-eN
-eN
 eO
+eP
+eP
+eP
+eR
 yY
 ac
 ac
@@ -30857,7 +30862,7 @@ pp
 pX
 qH
 rx
-sj
+eN
 sJ
 pX
 tV
@@ -32251,8 +32256,8 @@ bz
 bV
 cj
 cF
-cF
 dg
+eJ
 dG
 el
 bg
