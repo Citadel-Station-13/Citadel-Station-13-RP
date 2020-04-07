@@ -79,7 +79,7 @@
 	parent_organ = BP_TORSO
 	vital = TRUE
 
-/obj/item/organ/internal/nano/refactory
+/obj/item/organ/internal/nano/
 	name = "refactory module"
 	desc = "A miniature metal processing unit and nanite factory."
 	icon = 'icons/mob/species/protean/protean.dmi'
@@ -89,6 +89,7 @@
 
 	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0)
 	var/max_storage = 10000
+	var/processingbuffs = FALSE
 
 /obj/item/organ/internal/nano/refactory/proc/get_stored_material(var/material)
 	if(status & ORGAN_DEAD)

@@ -223,6 +223,21 @@
 	else
 		to_chat(src,"<span class='notice'>You're completely capped out on [substance]!</span>")
 
+/mob/living/carbon/human/proc/nano_togglebuff()
+	set name = "Ref - Toggle Material Augment"
+	set desc = "Toggle your consumption of stored diamonds, mhydrogen and plasteel."
+	set category = "Abilities"
+	set hidden = TRUE
+
+	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
+	//Missing the organ that does this
+	if(!istype(refactory))
+		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		return
+	if(refactory.processingbuffs == TRUE)
+		refactory.processingbuffs = FALSE
+	else
+		refactory.processingbuffs = TRUE
 ////
 //  Blob Form
 ////
@@ -388,8 +403,14 @@
 
 /obj/effect/protean_ability/metal_nom
 	ability_name = "Ref - Store Metals"
-	desc = "Store the metal you're holding. Your refactory can only store steel, and all other metals will be converted into nanites ASAP for various effects."
+	desc = "Store the metal you're holding. Your refactory can store steel as well as metallic hydrogen, diamonds and plasteel. The refactory can consume these special materials to augment your capabilites temporarily."
 	icon_state = "metal"
 	to_call = /mob/living/carbon/human/proc/nano_metalnom
+
+/obj/effect/protean_ability/toggle_buff
+	ability_name = "Ref - Toggle Material Augment"
+	desc = "Toggle your consumption of special materials such as diamonds, plasteel and metallic hydrogen. Toggling this on will cause these materials to be consumed to provide special effects."
+	icon_state = "togglebuff"
+	to_call = /mob/living/carbon/human/proc/nano_togglebuff
 
 #undef PER_LIMB_STEEL_COST
