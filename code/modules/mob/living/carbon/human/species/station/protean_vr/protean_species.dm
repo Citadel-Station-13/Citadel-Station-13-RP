@@ -172,7 +172,7 @@
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
 	var/obj/item/organ/internal/nano/refactory/refactory = locate() in H.internal_organs
-	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
+	if(refactory && !(refactory.status & ORGAN_DEAD))
 
 		//MHydrogen adds speeeeeed
 		if(refactory.get_stored_material("mhydrogen") >= METAL_PER_TICK)
@@ -230,14 +230,13 @@
 	if(!istype(origin))
 		expire()
 
-	//No refactory or refactory not processing buffs anymore so you can't be permanently buffed while not consuming materials
+	//No refactory
 	var/obj/item/organ/internal/nano/refactory/refactory = origin.resolve()
-	if(!istype(refactory) || refactory.status & ORGAN_DEAD || refactory.processingbuffs == FALSE)
+	if(!istype(refactory) || refactory.status & ORGAN_DEAD)
 		expire()
 
 	//Out of materials
-	// stops you from consuming materials if the toggle is off
-	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
+	if(!refactory.use_stored_material(material_name,material_use))
 		expire()
 
 /datum/modifier/protean/mhydrogen
