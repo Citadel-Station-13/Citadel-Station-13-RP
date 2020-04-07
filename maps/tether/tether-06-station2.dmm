@@ -2948,7 +2948,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/weapon/storage/fancy/candle_box,
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "eB" = (
