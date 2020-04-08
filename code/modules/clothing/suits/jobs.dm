@@ -236,7 +236,12 @@
 	name = "paramedic vest"
 	desc = "A dark blue vest with reflective strips for emergency medical technicians."
 	icon_state = "paramedic-vest"
-	item_state = "paramedic-vest"
+
+/obj/item/clothing/suit/toggle/labcoat/paramed
+	name = "paramedic jacket"
+	desc = "A reflective jacket, like an old Sol country."
+	icon_state = "pmedic_jacket"
+
 
 //Mime
 /obj/item/clothing/suit/suspenders

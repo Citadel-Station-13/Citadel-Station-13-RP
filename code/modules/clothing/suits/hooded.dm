@@ -191,3 +191,30 @@
 		/obj/item/weapon/pickaxe,
 		/obj/item/weapon/gun/projectile/sec/flash
 		)
+
+
+/obj/item/clothing/suit/storage/hooded/wintercoat/bar
+	name = "bartender winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, it smells of booze."
+	icon_state = "coatbar"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_inv = HIDEHOLSTER
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	hoodtype = /obj/item/clothing/head/hood/winter
+	allowed = list (/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+
+/obj/item/clothing/suit/storage/hooded/wintercoat/para
+	name = "paramedic winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, it has an aura of underappreciation."
+	icon_state = "coatpara"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_inv = HIDEHOLSTER
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	hoodtype = /obj/item/clothing/head/hood/winter
+	allowed = list (/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
