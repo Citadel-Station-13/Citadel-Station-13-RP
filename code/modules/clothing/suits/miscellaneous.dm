@@ -871,8 +871,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	name = "science snowsuit"
 	icon_state = "snowsuit_science"
 
-/obj/item/clothing/under/bridgeofficer
+/obj/item/clothing/suit/bridgeofficer
 	name = "bridge officer uniform"
 	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
-	icon_state = "bridgeofficer"
-	item_state = "bridgeofficer"
+	icon_state = "bridgeofficer_jacket"
