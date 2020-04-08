@@ -131,7 +131,7 @@
 /datum/gear/uniform/job_skirt/med
 	display_name = "skirt, medical"
 	path = /obj/item/clothing/under/rank/medical/skirt
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/job_skirt/sci
 	display_name = "skirt, scientist"
@@ -471,7 +471,7 @@
 /datum/gear/uniform/sifguard/medical
 	display_name = "uniform, crew (medical)"
 	path = /obj/item/clothing/under/utility/sifguard/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/sifguard/science
 	display_name = "uniform, crew (science)"
@@ -502,7 +502,7 @@
 /datum/gear/uniform/fleet/medical
 	display_name = "uniform, coveralls (medical)"
 	path = /obj/item/clothing/under/utility/fleet/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/fleet/science
 	display_name = "uniform, coveralls (science)"
@@ -533,7 +533,7 @@
 /datum/gear/uniform/marine/medical
 	display_name = "uniform, fatigues (medical)"
 	path = /obj/item/clothing/under/utility/marine/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/marine/science
 	display_name = "uniform, fatigues (science)"
@@ -594,12 +594,12 @@
 /datum/gear/uniform/paramedunidark
 	display_name = "Dark Paramedic Uniform"
 	path = /obj/item/clothing/under/paramedunidark
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/parameduniskirtdark
 	display_name = "Dark Paramedic Uniform"
 	path = /obj/item/clothing/under/parameduniskirtdark
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/suit/bartenderbtc
 	display_name = "BTC Bartender"
@@ -609,9 +609,9 @@
 /datum/gear/uniform/paramedunilight
 	display_name = "Light Paramedic Uniform"
 	path = /obj/item/clothing/under/paramedunilight
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/parameduniskirtdark
 	display_name = "Light Paramedic Uniform"
 	path = /obj/item/clothing/under/parameduniskirtlight
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")

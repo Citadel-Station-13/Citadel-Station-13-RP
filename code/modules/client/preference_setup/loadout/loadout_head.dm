@@ -384,5 +384,5 @@
 /datum/gear/head/paramedhat
 	display_name = "Paramedic Cap"
 	path = /obj/item/clothing/head/parahat
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist", "Off-duty Medic")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
