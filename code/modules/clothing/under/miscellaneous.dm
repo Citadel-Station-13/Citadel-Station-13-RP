@@ -909,7 +909,6 @@
 	desc = "An orange cohesion suit with yellow hazard stripes intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit_hazard"
 
-<<<<<<< HEAD
 //Uniforms
 //On-mob sprites go in icons\mob\uniform.dmi with the format "white_ranger_uniform_s" - with 'white' replaced with green, cyan, etc... of course! Note the _s - this is not optional.
 //Item sprites go in icons\obj\clothing\ranger.dmi with the format "white_ranger_uniform"
