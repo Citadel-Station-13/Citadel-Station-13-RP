@@ -10,3 +10,9 @@ var/const/access_pilot = 67
 	id = access_pilot
 	desc = "Pilot"
 	region = ACCESS_REGION_SUPPLY
+
+var/const/access_pathfinder = 44
+/datum/access/pathfinder
+	id = access_pathfinder
+	desc = "Pathfinder"
+	region = ACCESS_REGION_GENERAL
