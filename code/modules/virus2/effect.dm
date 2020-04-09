@@ -294,7 +294,7 @@
 		data = c_data
 	else
 		data = pick("bicaridine", "kelotane", "anti_toxin", "tricordrazine")
-	var/datum/reagent/R = chemical_reagents_list[data]
+	var/datum/reagent/R = GLOB.chemical_reagents_list[data]
 	name = "[initial(name)] ([initial(R.name)])"
 
 /datum/disease2/effect/improved_chem_synthesis/activate(var/mob/living/carbon/mob,var/multiplier)
