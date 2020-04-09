@@ -439,3 +439,8 @@
 	desc = "A gold-lined white cowl. It gives off uncomfortable cult vibes, but fancy."
 	icon_state = "whitecowl"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/bohat
+	name = "bridge officer hat"
+	desc = "For a person with no authority who takes themselves very seriously."
+	icon_state = "bridgeofficersoft"

@@ -141,3 +141,28 @@
 /datum/gear/eyes/glasses/prescriptionthin
 	display_name = "Glasses, prescription thin frame"
 	path = /obj/item/clothing/glasses/regular/thin
+
+// April 2020 Drof's Additions Begin Below
+/datum/gear/eyes/jamjar
+	display_name = "jamjar glasses"
+	path = /obj/item/clothing/glasses/jamjar
+
+/datum/gear/eyes/jensenshades
+	display_name = "augmented shades"
+	path = /obj/item/clothing/glasses/augmentedshades
+
+/datum/gear/eyes/whiteblindfold
+	display_name = "white blindfold"
+	path = /obj/item/clothing/glasses/sunglasses/whiteblindfold
+
+/datum/gear/eyes/redglasses
+	display_name = "red glasses"
+	path = /obj/item/clothing/glasses/redglasses
+
+/datum/gear/eyes/badglasses
+	display_name = "poorly made glasses"
+	path = /obj/item/clothing/glasses/badglasses
+
+/datum/gear/eyes/orangeglasses
+	display_name = "orange glasses"
+	path = /obj/item/clothing/glasses/orangeglasses

@@ -521,3 +521,8 @@ datum/gear/suit/duster
 /datum/gear/suit/miscellaneous/cardigan/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
+	display_name = "bridge officer dress jacket"
+	path = /obj/item/clothing/under/bridgeofficer
+	allowed_roles = list("Command Secretary")

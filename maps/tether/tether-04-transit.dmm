@@ -139,8 +139,10 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "an" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "ao" = (
 /obj/machinery/light{
@@ -150,8 +152,9 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "ap" = (
-/obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/wood,
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/small,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aq" = (
 /turf/simulated/floor/wood,
@@ -288,14 +291,18 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aF" = (
-/obj/structure/table/woodentable,
-/obj/machinery/light{
-	dir = 1
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aG" = (
 /obj/machinery/vending/snack,
+/obj/item/device/radio/intercom{
+	dir = 4;
+	icon_state = "intercom";
+	pixel_x = 24
+	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aH" = (
@@ -318,10 +325,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "aJ" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/table/woodentable,
+/obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/obj/structure/flora/pottedplant/flower,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -337,10 +346,8 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aL" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aM" = (
 /obj/structure/cable{
@@ -366,13 +373,8 @@
 /turf/simulated/floor/plating,
 /area/tether/midpoint)
 "aO" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/simulated/floor/wood,
+/obj/structure/bed/chair/comfy/black,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aP" = (
 /obj/machinery/light,
@@ -415,18 +417,16 @@
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
 "aU" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aV" = (
-/obj/structure/table/woodentable,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "aW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -496,8 +496,58 @@
 /area/tether/midpoint)
 "be" = (
 /obj/structure/table/woodentable,
-/obj/machinery/light,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/structure/flora/pottedplant/small,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bf" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/dice/d20,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bg" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bh" = (
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood,
+/area/tether/midpoint)
+"bi" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/structure/flora/pottedplant/flower,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bj" = (
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/flower,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bk" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light,
+/obj/structure/flora/pottedplant/small,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/midpoint)
+"bl" = (
+/obj/structure/table/woodentable,
+/obj/machinery/camera/network/northern_star{
+	dir = 5
+	},
+/obj/item/device/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 
 (1,1,1) = {"
@@ -10504,10 +10554,10 @@ ay
 ay
 at
 aM
-aO
-aO
-aO
-aO
+aU
+aU
+aU
+aU
 aY
 bd
 ay
@@ -10646,10 +10696,10 @@ ak
 ao
 aq
 aq
-aq
-aq
-aq
-aq
+aV
+aV
+aV
+aV
 aq
 aE
 aR
@@ -10784,8 +10834,8 @@ au
 au
 au
 aH
-aU
-aU
+an
+an
 aq
 aq
 aT
@@ -10794,8 +10844,8 @@ ba
 bb
 aq
 aq
-aU
-aU
+an
+an
 aH
 au
 au
@@ -10926,8 +10976,8 @@ au
 au
 au
 aH
-an
-an
+ap
+aL
 aq
 aP
 ay
@@ -10936,8 +10986,8 @@ ay
 ay
 bc
 aq
-an
-an
+aL
+bj
 aH
 au
 au
@@ -11068,18 +11118,18 @@ au
 au
 au
 aH
-aL
-aL
+aF
+aF
 aq
 aq
-ap
-an
-an
-aJ
+aO
+bf
+bl
+bg
 aq
 aq
-aL
-aL
+aF
+aF
 aH
 au
 au
@@ -11214,10 +11264,10 @@ ak
 aq
 aq
 aq
-ap
-an
-an
-aJ
+aO
+aL
+aL
+bg
 aq
 aq
 aq
@@ -11352,18 +11402,18 @@ au
 au
 au
 aH
-aU
-aU
+an
+an
+aq
+aq
+aq
+bh
 aq
 aq
 aq
 aq
-aq
-aq
-aq
-aq
-aU
-aU
+an
+an
 aH
 au
 au
@@ -11494,8 +11544,8 @@ au
 au
 au
 aH
-aF
-an
+aJ
+aL
 aq
 aq
 aq
@@ -11504,8 +11554,8 @@ aq
 aq
 aq
 aq
-an
-be
+aL
+bk
 aH
 au
 au
@@ -11636,18 +11686,18 @@ au
 au
 au
 aH
-aL
-aL
+aF
+aF
 aq
-ap
-an
-aJ
-ap
-an
-aJ
+aO
+aL
+bg
+aO
+aL
+bg
 aq
-aL
-aL
+aF
+aF
 aH
 au
 au
@@ -11779,16 +11829,16 @@ au
 au
 aH
 ak
-aL
 aq
-ap
-aV
-aJ
-ap
-aV
-aJ
 aq
-aL
+aO
+be
+bg
+aO
+bi
+bg
+aq
+aq
 ak
 aH
 au

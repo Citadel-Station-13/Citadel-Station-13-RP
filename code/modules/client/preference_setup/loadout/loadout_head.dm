@@ -383,3 +383,8 @@
 /datum/gear/head/jingasa
 	display_name = "jingasa"
 	path = /obj/item/clothing/head/jingasa
+
+/datum/gear/head/bohat
+	display_name = "bohat"
+	path = /obj/item/clothing/head/bohat
+	allowed_roles = list("Command Secretary")

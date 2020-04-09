@@ -557,6 +557,7 @@ Drinks Data
 
 /datum/reagent/ethanol/mintjulep
 	glass_icon_state = "mintjulep"
+	glass_center_of_mass = list("x"=16, "y"=16)
 
 /datum/reagent/ethanol/oldfashioned
 	glass_icon_state = "oldfashioned"
@@ -574,12 +575,14 @@ Drinks Data
 
 /datum/reagent/ethanol/sazerac
 	glass_icon_state = "sazerac"
+	glass_center_of_mass = list("x"=16, "y"=16)
 
 /datum/reagent/ethanol/junglejuice
 	glass_icon_state = "junglejuice"
 
 /datum/reagent/ethanol/gimlet
 	glass_icon_state = "gimlet"
+	glass_center_of_mass = list("x"=16, "y"=16)
 
 /datum/reagent/ethanol/chrysanthemum
 	glass_icon_state = "chrysanthemum"
@@ -598,3 +601,7 @@ Drinks Data
 
 /datum/reagent/ethanol/paloma
 	glass_icon_state = "paloma"
+
+/datum/reagent/ethanol/euphoria
+	glass_icon_state = "euphoria"
+	glass_center_of_mass = list("x"=16, "y"=16)

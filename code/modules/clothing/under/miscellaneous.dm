@@ -771,7 +771,7 @@
 
 /obj/item/clothing/under/swimsuit/stripper/mankini
 	name = "mankini"
-	desc = "No honest man would wear this abomination"
+	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
 
 /*
@@ -909,6 +909,7 @@
 	desc = "An orange cohesion suit with yellow hazard stripes intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit_hazard"
 
+<<<<<<< HEAD
 //Uniforms
 //On-mob sprites go in icons\mob\uniform.dmi with the format "white_ranger_uniform_s" - with 'white' replaced with green, cyan, etc... of course! Note the _s - this is not optional.
 //Item sprites go in icons\obj\clothing\ranger.dmi with the format "white_ranger_uniform"
@@ -945,3 +946,25 @@
 
 /obj/item/clothing/under/color/ranger/yellow
 	unicolor = "yellow"
+
+// April 2020 - Drof's Additions Begin Below
+/obj/item/clothing/under/haltertop
+	name = "halter top"
+	desc = "A black halter top with denim jean shorts."
+	icon_state = "haltertop"
+
+/obj/item/clothing/under/festivedress
+	name = "festive dress"
+	desc = "A red dress with a fur-like white trim that is associated with the Christmas season."
+	icon_state = "festivedress"
+
+/obj/item/clothing/under/littleblackdress
+	name = "little black dress"
+	desc = "A small black dress with a red sash."
+	icon_state = "littleblackdress"
+
+/obj/item/clothing/under/bridgeofficer
+	name = "bridge officer uniform"
+	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficer"
+	item_state = "bridgeofficer"

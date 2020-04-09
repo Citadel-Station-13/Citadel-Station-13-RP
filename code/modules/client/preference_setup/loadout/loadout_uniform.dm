@@ -625,3 +625,25 @@
 /datum/gear/uniform/lilacdress
 	display_name = "lilac dress"
 	path = /obj/item/clothing/under/dress/lilacdress
+
+// April 2020 - Drof's Additions Begin Below
+/datum/gear/uniform/stripeddress
+	display_name = "striped dress"
+	path = /obj/item/clothing/under/dress/stripeddress
+
+/datum/gear/uniform/festivedress
+	display_name = "festive dress"
+	path = /obj/item/clothing/under/festivedress
+
+/datum/gear/uniform/haltertop
+	display_name = "halter top"
+	path = /obj/item/clothing/under/haltertop
+
+/datum/gear/uniform/littleblackdress
+	display_name = "little black dress"
+	path = /obj/item/clothing/under/littleblackdress
+
+/datum/gear/uniform/bridgeofficer
+	display_name = "bridge officer uniform"
+	path = /obj/item/clothing/under/bridgeofficer
+	allowed_roles = list("Command Secretary")
