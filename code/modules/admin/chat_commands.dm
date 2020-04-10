@@ -39,7 +39,7 @@
 			current_state = "active"
 		if(GAME_STATE_FINISHED)
 			current_state = "finishing"
-	return "[GLOB.clients.len] players on [using_map.name], Mode: [master_mode]; round [current_state] -- Duration [roundduration2text()] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	return "[GLOB.clients.len] players on [GLOB.using_map.name], Mode: [master_mode]; round [current_state] -- Duration [roundduration2text()] -- [server ? server : "[world.internet_address]:[world.port]"]"
 
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"

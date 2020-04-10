@@ -72,8 +72,8 @@ GLOBAL_LIST(topic_status_cache)
 	load_map_templates()
 
 	if(config_legacy.generate_map)
-		if(using_map.perform_map_generation())
-			using_map.refresh_mining_turfs()
+		if(GLOB.using_map.perform_map_generation())
+			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()

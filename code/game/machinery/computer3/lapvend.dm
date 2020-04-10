@@ -178,9 +178,9 @@
 			if(D)
 				transfer_and_vend(D, C)
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 	else
 		transfer_and_vend(CH, C)
 
@@ -327,10 +327,10 @@
 				transfer_and_reimburse(D)
 				return 1
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 				return 0
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 			return 0
 	else
 		transfer_and_reimburse(CH)

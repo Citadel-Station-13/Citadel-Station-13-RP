@@ -451,7 +451,7 @@
 	return
 
 /atom/movable/proc/touch_map_edge()
-	if(z in using_map.sealed_levels)
+	if(z in GLOB.using_map.sealed_levels)
 		return
 
 	if(config_legacy.use_overmap)
@@ -487,7 +487,7 @@
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = using_map.accessible_z_levels.Copy()
+	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
 	candidates.Remove("[src.z]")
 
 	if(!candidates.len)
