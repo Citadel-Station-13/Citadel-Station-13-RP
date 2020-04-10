@@ -313,7 +313,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Follow and haunt a mob."
 
 	var/target = getmobs()[input]
-	if(!target) return
+	if(!target)
+		return
 	ManualFollow(target)
 
 // This is the ghost's follow verb with an argument

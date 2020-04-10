@@ -575,12 +575,7 @@ var/global/list/light_type_cache = list()
 // ai attack - make lights flicker, because why not
 
 /obj/machinery/light/attack_ai(mob/user)
-	src.flicker(1)
-	return
-
-/obj/machinery/light/flamp/attack_ai(mob/user)
-	attack_hand()
-	return
+	flicker(1)
 
 // attack with hand - remove tube/bulb
 // if hands aren't protected and the light is on, burn the player
