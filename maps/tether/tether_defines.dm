@@ -190,7 +190,7 @@
 	if (long_range && (srcz in map_levels))
 		return map_levels
 	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
-		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but 
+		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but
 	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SPACE_HIGH)
 		return list(
 			Z_LEVEL_SURFACE_LOW,

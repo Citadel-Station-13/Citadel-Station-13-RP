@@ -127,11 +127,6 @@
 	prices = list(/obj/item/device/flash = 600,/obj/item/weapon/reagent_containers/spray/pepper = 800,  /obj/item/weapon/gun/projectile/olivaw = 1600, /obj/item/weapon/gun/projectile/giskard = 1200, /obj/item/ammo_magazine/mg/cl32/rubber = 200)
 */
 
-/obj/machinery/vending/fitness/New()
-	products += list(/obj/item/weapon/reagent_containers/food/snacks/liquidprotein = 8)
-	prices += list(/obj/item/weapon/reagent_containers/food/snacks/liquidprotein = 10)
-	..()
-
 /obj/machinery/vending/blood
 	name = "Blood-Onator"
 	desc = "Freezer-vendor for storage and quick dispensing of blood packs"

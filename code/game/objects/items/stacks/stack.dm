@@ -154,17 +154,14 @@
 
 	if (use(required))
 		var/atom/O
-		if(recipe.use_material)
-			O = new recipe.result_type(user.loc, recipe.use_material)
+		if(ispath(recipe.result_type, /obj/item/stack))
+			O = new recipe.result_type(user.drop_location(), produced)
+		else if(recipe.use_material)
+			O = new recipe.result_type(user.drop_location(), recipe.use_material)
 		else
-			O = new recipe.result_type(user.loc)
+			O = new recipe.result_type(user.drop_location())
 		O.setDir(user.dir)
 		O.add_fingerprint(user)
-
-		if (istype(O, /obj/item/stack))
-			var/obj/item/stack/S = O
-			S.amount = produced
-			S.add_to_stacks(user)
 
 		if (istype(O, /obj/item/weapon/storage)) //BubbleWrap - so newly formed boxes are empty
 			for (var/obj/item/I in O)
