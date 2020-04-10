@@ -23,7 +23,7 @@ var/datum/antagonist/ninja/ninjas
 	ninjas = src
 
 /datum/antagonist/ninja/attempt_random_spawn()
-	if(config.ninjas_allowed) ..()
+	if(config_legacy.ninjas_allowed) ..()
 
 /datum/antagonist/ninja/create_objectives(var/datum/mind/ninja)
 

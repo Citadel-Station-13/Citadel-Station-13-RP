@@ -1,0 +1,6 @@
+author: "lukevale"
+delete-after: True
+changes: 
+  - rscadd: "New hair"
+  - rscadd: "New hair sprites"
+  - rscadd: "Vox shaving"

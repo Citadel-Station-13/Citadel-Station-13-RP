@@ -1,4 +1,4 @@
-//Uncommenting ALLOW_HOLIDAYS in config.txt will enable Holidays
+//Uncommenting ALLOW_HOLIDAYS in config_legacy.txt will enable Holidays
 var/global/list/Holiday = list() //Holidays are lists now, so we can have more than one holiday at the same time (hey, you never know).
 
 //Just thinking ahead! Here's the foundations to a more robust Holiday event system.

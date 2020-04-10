@@ -85,6 +85,16 @@
 	action_button_name = "Toggle Ian Hood"
 	hoodtype = /obj/item/clothing/head/hood/ian_hood
 
+/obj/item/clothing/suit/storage/hooded/techpriest /// TO DO - FIND A WAY TO HIDE FEET PROPERLY
+	name = "tech priest robe"
+	desc = "A robe for those that worship the Omnissiah. Also toasters.. for.. some reason."
+	icon_state = "techpriest"
+	action_button_name = "Toggle Priest Hood"
+	body_parts_covered = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	item_state_slots = list(slot_r_hand_str = "techpriest", slot_l_hand_str = "techpriest")
+	hoodtype = /obj/item/clothing/head/hood/techpriest
+
 /obj/item/clothing/suit/storage/hooded/wintercoat
 	name = "winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs."

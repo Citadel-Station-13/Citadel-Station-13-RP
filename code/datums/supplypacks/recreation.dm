@@ -68,3 +68,10 @@
 			/obj/item/device/floor_painter = 2,
 			/obj/item/device/closet_painter = 2
 			)
+
+/datum/supply_pack/recreation/jukebox
+	name = "Jukebox crate"
+	cost = 50
+	containername = "Jukebox crate"
+	containertype = /obj/structure/closet/crate
+	contains = list (/obj/machinery/media/jukebox = 1)

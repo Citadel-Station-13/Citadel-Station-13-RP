@@ -1,0 +1,7 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Mind backup implant is now a loadout item for cost 2"
+  - bugfix: "tracking implant now actually tracks"
+  - bugfix: "implants now start INSIDE the person"
+  - code_imp: "adjusted the way implants get handled roundstart to properly load in and work."

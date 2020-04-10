@@ -1,0 +1,4 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - code_imp: "Uncommented the 'playsound' portion of the scream emote code so sound can be played"

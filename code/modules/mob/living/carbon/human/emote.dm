@@ -734,15 +734,24 @@
 				if(!muzzled)
 					message = "[species.scream_verb]!"
 					m_type = 2
-					/* Removed, pending the location of some actually good, properly licensed sounds.
+					// Citchange. Re-enabled for species that do have a defined scream sound. If a species lacks it, no sound will be played.
 					if(get_gender() == FEMALE)
 						playsound(loc, "[species.female_scream_sound]", 80, 1)
 					else
 						playsound(loc, "[species.male_scream_sound]", 80, 1) //default to male screams if no gender is present.
-					*/
+
 				else
 					message = "makes a very loud noise."
 					m_type = 2
+		if("squeak","squeaks")
+			if(miming)
+				message = "acts out a soft squeak."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "squeaks!"
+					m_type = 2
+					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2

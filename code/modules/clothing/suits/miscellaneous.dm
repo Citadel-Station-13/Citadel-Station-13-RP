@@ -332,6 +332,15 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	blood_overlay_type = "coat"
 	allowed = list(/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter)
 	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/cardigan
+	name = "cardigan"
+	desc = "A cozy cardigan in a classic style."
+	icon_state = "cardigan"
+	addblends = "cardigan_a"
+	flags_inv = HIDEHOLSTER
+
+
 /*
  * stripper
  */
@@ -861,3 +870,9 @@ obj/item/clothing/suit/storage/toggle/peacoat
 /obj/item/clothing/suit/storage/snowsuit/science
 	name = "science snowsuit"
 	icon_state = "snowsuit_science"
+
+/obj/item/clothing/under/bridgeofficer
+	name = "bridge officer uniform"
+	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficer"
+	item_state = "bridgeofficer"

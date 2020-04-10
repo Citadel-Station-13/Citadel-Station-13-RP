@@ -31,7 +31,7 @@
 	var/list/queue = list()
 	//VOREStation Add End
 	var/current_genre = "Electronic" //What is our current genre?
-	var/list/genres = list("Electronic", "Rock", "Orchestral", "Folk", "Jazz", "Western") //Avaliable genres.
+	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
@@ -222,21 +222,21 @@
 		StopPlaying()
 	else if(href_list["play"])
 		if(emagged)
-			playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
-			for(var/mob/living/carbon/M in ohearers(6, src))
-				if(M.get_ear_protection() >= 2)
-					continue
-				M.sleeping = 0
-				M.stuttering += 20
-				M.ear_deaf += 30
-				M.Weaken(3)
-				if(prob(30))
-					M.Stun(10)
-					M.Paralyse(4)
-				else
-					M.make_jittery(500)
-			spawn(15)
-				explode()
+			//playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
+			//for(var/mob/living/carbon/M in ohearers(6, src))
+				//if(M.get_ear_protection() >= 2)
+					//continue
+				//M.sleeping = 0
+				//M.stuttering += 20
+				//M.ear_deaf += 30
+				//M.Weaken(3)
+				//if(prob(30))
+					//M.Stun(10)
+					//M.Paralyse(4)
+				//else
+					//M.make_jittery(500)
+			//spawn(15)
+				//explode()
 		else if(current_track == null)
 			to_chat(usr, "No track selected.")
 		else

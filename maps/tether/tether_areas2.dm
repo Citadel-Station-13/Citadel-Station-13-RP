@@ -85,6 +85,8 @@
 	name = "\improper Atrium Construction Site"
 /area/vacant/vacant_bar
 	name = "\improper Vacant Bar"
+/area/vacant/vacant_bar_upper
+	name = "\improper Upper Vacant Bar"
 
 // /area/tether/surfacebase/east_stairs_three //This is just part of an upper hallway
 
@@ -484,12 +486,27 @@
 // Exploration Shuttle stuff //
 /area/tether/station/excursion_dock
 	name = "\improper Excursion Shuttle Dock"
+	icon_state = "hangar"
 
 /area/tether/station/explorer_prep
 	name = "\improper Explorer Prep Room"
+	icon_state = "locker"
+
+/area/tether/station/explorer_entry
+	name = "\improper Exploration Foyer"
+	icon_state = "green"
 
 /area/tether/station/explorer_meeting
 	name = "\improper Explorer Meeting Room"
+	icon_state = "northeast"
+
+/area/tether/station/explorer_showers
+	name = "\improper Explorer Showers"
+	icon_state = "restrooms"
+
+/area/tether/station/explorer_medical
+	name = "\improper Exploration Med Station"
+	icon_state = "medbay"
 
 /area/tether/station/pathfinder_office
 	name = "\improper Pathfinder's Office"

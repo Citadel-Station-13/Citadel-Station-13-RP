@@ -46,13 +46,10 @@ SUBSYSTEM_DEF(mobs)
 		else
 			// Right now mob.Life() is unstable enough I think we need to use a try catch.
 			// Obviously we should try and get rid of this for performance reasons when we can.
-			try
-				if(M.low_priority && !(M.z in busy_z_levels))
-					slept_mobs++
-					continue
-				M.Life(times_fired)
-			catch(var/exception/e)
-				world.Error(e, M, "Caught by [name] subsystem")
+			if(M.low_priority && !(M.z in busy_z_levels))
+				slept_mobs++
+				continue
+			M.Life(times_fired)
 
 		if (MC_TICK_CHECK)
 			return

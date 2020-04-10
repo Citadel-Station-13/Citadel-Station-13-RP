@@ -1660,6 +1660,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/template_noop)
+"wm" = (
+/obj/effect/floor_decal/industrial/warning/cee{
+	icon_state = "warningcee";
+	dir = 1
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/engine_room)
 
 (1,1,1) = {"
 aa
@@ -2088,7 +2096,7 @@ ab
 ab
 ab
 ab
-ab
+wm
 aF
 aM
 aX

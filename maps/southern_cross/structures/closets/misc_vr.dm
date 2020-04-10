@@ -18,6 +18,7 @@
 		/obj/item/device/radio/headset/explorer,
 		/obj/item/device/flashlight,
 		/obj/item/device/gps/explorer,
+		/obj/item/weapon/storage/belt/explorer,
 		/obj/item/weapon/storage/box/flare,
 		/obj/item/weapon/storage/box/explorerkeys,
 		/obj/item/device/geiger,

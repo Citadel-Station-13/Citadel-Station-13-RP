@@ -1,0 +1,8 @@
+author: "RobotAlice"
+delete-after: True
+changes: 
+  - bugfix: "Kitchen grills no longer break after a single cooking job"
+  - tweak: "The oven tray emptying verb can now be accessed while holding it"
+  - bugfix: "Fixes certain windoors dropping materials without breaking."
+  - bugfix: "Hopefully prevents solargrub infestation glow from showing up after evicting them"
+  - bugfix: "Fire alarms now able to be deconstructed again"

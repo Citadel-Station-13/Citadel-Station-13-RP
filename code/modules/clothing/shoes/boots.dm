@@ -164,3 +164,8 @@
 	icon_state = "jackboots"
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 10, rad = 0)
 	siemens_coefficient = 0.6
+
+/obj/item/clothing/shoes/cowboyboots/black
+	name = "black cowboy boots"
+	desc = "A pair of black cowboy boots, pretty easy to scuff up."
+	icon_state = "cowboyboots_black"

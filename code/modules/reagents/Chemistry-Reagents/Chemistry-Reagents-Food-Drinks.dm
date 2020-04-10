@@ -3182,6 +3182,69 @@ End Citadel Change */
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
 
+/datum/reagent/ethanol/gibbfloat
+	name = "Gibbfloat"
+	id = "gibbfloat"
+	description = "A tasty, frothy drink."
+	taste_description = "soda float"
+	strength = 100
+
+	glass_name = "Gibbfloat"
+	glass_desc = "A tasty, frothy drink"
+
+/datum/reagent/ethanol/mintjulep
+	name = "Mint Julep"
+	id = "mintjulep"
+	description = "Really not just watery whiskey.. I think."
+	taste_description = "mint infused whiskey"
+	strength = 80
+
+/datum/reagent/ethanol/planterspunch
+	name = "Planters Punch"
+	id = "planterspunch"
+	description = "A refreshing drink for the aspiring botanist."
+	taste_description = "happy plants"
+	strength = 85
+
+/datum/reagent/ethanol/olympusmons
+	name = "Olympus Mons"
+	id = "olympusmons"
+	description = "For those that need the extra kick."
+	taste_description = "stronge coffee infused booze"
+	strength = 35
+
+/datum/reagent/ethanol/sazerac
+	name = "Sazerac"
+	id = "sazerac"
+	description = "When a regular whiskey cocktail isn't enough."
+	taste_description = "a strong bite of flavor"
+	strength = 20
+
+/datum/reagent/ethanol/junglejuice
+	name = "Jungle Juice"
+	id = "junglejuice"
+	description = "An overload of sweetness and sugary goodness."
+	taste_description = "fruits and bad decisions"
+	strength = 55
+
+/datum/reagent/ethanol/gimlet
+	name = "Gimlet"
+	id = "gimlet"
+	description = "For those who want to look fancy with their gin."
+	taste_description = "lime infused tree"
+	strength = 20
+
+/datum/reagent/ethanol/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	description = "A spicy take on a summer classic."
+	taste_description = "rum and sugar"
+	strength = 70
+	targ_temp = 300
+
+///////////////////////////////////////////////
+//// End of list for drinks for bartenders ////
+///////////////////////////////////////////////
 /*
 	Coatings are used in cooking. Dipping food items in a reagent container with a coating in it
 	allows it to be covered in that, which will add a masked overlay to the sprite.

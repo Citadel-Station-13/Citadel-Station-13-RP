@@ -60,6 +60,10 @@ List of things solar grubs should be able to do:
 		visible_message("<span class='danger'>The grub releases a powerful shock!</span>")
 	..()
 
+/mob/living/simple_mob/vore/solargrub/New()
+	existing_solargrubs += src
+	..()
+
 /mob/living/simple_animal/retaliate/solargrub/Life()
 	. = ..()
 	if(!. || ai_inactive) return
@@ -110,6 +114,10 @@ List of things solar grubs should be able to do:
 /mob/living/simple_animal/retaliate/solargrub/death()
 	src.anchored = 0
 	set_light(0)
+	..()
+
+/mob/living/simple_mob/vore/solargrub/Destroy()
+	existing_solargrubs -= src
 	..()
 
 /mob/living/simple_animal/retaliate/solargrub/handle_light()

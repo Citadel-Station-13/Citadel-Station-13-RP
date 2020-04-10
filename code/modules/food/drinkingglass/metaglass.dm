@@ -546,3 +546,58 @@ Drinks Data
 /datum/reagent/drink/eggnog
 	glass_icon_state = "eggnog"
 	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/gibbfloat
+	glass_icon_state = "gibbfloats"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mintjulep
+	glass_icon_state = "mintjulep"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/oldfashioned
+	glass_icon_state = "oldfashioned"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/bitters
+	glass_icon_state = "bittersglass"
+
+/datum/reagent/ethanol/planterspunch
+	glass_icon_state = "planterspunch"
+
+/datum/reagent/ethanol/olympusmons
+	glass_icon_state = "olympusmons"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/sazerac
+	glass_icon_state = "sazerac"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/junglejuice
+	glass_icon_state = "junglejuice"
+
+/datum/reagent/ethanol/gimlet
+	glass_icon_state = "gimlet"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/chrysanthemum
+	glass_icon_state = "chrysanthemum"
+
+/datum/reagent/ethanol/voxdelight
+	glass_icon_state = "voxdelight"
+
+/datum/reagent/ethanol/daiquiri
+	glass_icon_state = "daiquiri"
+
+/datum/reagent/ethanol/firepunch
+	glass_icon_state = "firepunch"
+
+/datum/reagent/ethanol/screamingviking
+	glass_icon_state = "screamingviking"
+
+/datum/reagent/ethanol/paloma
+	glass_icon_state = "paloma"
+
+/datum/reagent/ethanol/euphoria
+	glass_icon_state = "euphoria"
+	glass_center_of_mass = list("x"=16, "y"=16)
