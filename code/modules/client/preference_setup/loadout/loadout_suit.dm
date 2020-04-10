@@ -534,3 +534,7 @@ datum/gear/suit/labcoat/param
 	display_name = "winter coat, bartender"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/bar
 	allowed_roles = list("Bartender")
+
+/datum/gear/suit/storage/dutchcoat
+	display_name = "Western Coat"
+	path = /obj/item/clothing/suit/storage/dutchcoat

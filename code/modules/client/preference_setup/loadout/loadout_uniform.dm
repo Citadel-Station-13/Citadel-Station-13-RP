@@ -615,3 +615,7 @@
 	display_name = "Light Paramedic Uniform"
 	path = /obj/item/clothing/under/parameduniskirtlight
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+datum/gear/uniform/dutchsuit
+	display_name = "Western Suit"
+	path = /obj/item/clothing/under/dutch
