@@ -342,3 +342,8 @@
 	name = "Christmas turtleneck"
 	desc = "A really cheesy holiday sweater, it actually kinda itches."
 	icon_state = "turtleneck_winterred"
+
+/obj/item/clothing/accessory/sweater/combat
+	name = "Combat Sweater"
+	desc = "Look like an off duty soldier with this green sweater!"
+	icon_state = "ubacgreen"
