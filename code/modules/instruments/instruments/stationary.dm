@@ -36,7 +36,9 @@
 	song.ui_interact(user)
 
 /obj/structure/musician/wrench_act(mob/living/user, obj/item/I)
-	default_unfasten_wrench(user, I, 40)
+	anchored = !anchored
+	user.visible_message("<span class='notice'>[user] [anchored? "anchors" : "unanchors"] [src].</span>")
+	//default_unfasten_wrench(user, I, 40)
 	return TRUE
 
 /obj/structure/musician/piano

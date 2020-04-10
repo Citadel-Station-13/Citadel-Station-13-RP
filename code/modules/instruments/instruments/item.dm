@@ -273,6 +273,7 @@
 	hitsound = 'sound/weapons/banjoslap.ogg'
 	allowed_instrument_ids = "banjo"
 
+/*
 /obj/item/musicaltuner
 	name = "musical tuner"
 	desc = "A device for tuning musical instruments both manual and electronic alike."
@@ -283,7 +284,9 @@
 	item_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+*/
 
+/*
 /obj/item/choice_beacon/music
 	name = "instrument delivery beacon"
 	desc = "Summon your tool of art."
@@ -309,3 +312,4 @@
 			var/atom/A = V
 			instruments[initial(A.name)] = A
 	return instruments
+*/
