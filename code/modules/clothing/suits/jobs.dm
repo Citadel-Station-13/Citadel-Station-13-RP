@@ -246,3 +246,8 @@
 	icon_state = "suspenders"
 	blood_overlay_type = "armor" //it's the less thing that I can put here
 	body_parts_covered = 0
+
+/obj/item/clothing/suit/toggle/labcoat/paramed
+	name = "paramedic jacket"
+	desc = "A reflective jacket, like an old Sol country."
+	icon_state = "pmedic_jacket"

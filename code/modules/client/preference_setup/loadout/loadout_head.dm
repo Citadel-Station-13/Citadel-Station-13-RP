@@ -377,6 +377,11 @@
 	path = /obj/item/clothing/head/circuitry
 
 /datum/gear/head/bohat
-	display_name = "bohat"
+	display_name = "bridge officer hat"
 	path = /obj/item/clothing/head/bohat
 	allowed_roles = list("Command Secretary")
+
+/datum/gear/head/paramedhat
+	display_name = "Paramedic Cap"
+	path = /obj/item/clothing/head/parahat
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
