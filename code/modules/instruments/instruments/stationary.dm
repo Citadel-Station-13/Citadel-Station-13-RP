@@ -1,7 +1,7 @@
 /obj/structure/musician
 	name = "Not A Piano"
 	desc = "Something broke, contact coderbus."
-	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_REQUIRES_DEXTERITY
+	//interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_REQUIRES_DEXTERITY
 	var/can_play_unanchored = FALSE
 	var/list/allowed_instrument_ids
 	var/datum/song/song
@@ -21,6 +21,15 @@
 	if(!user)
 		return FALSE
 	return !user.canUseTopic(src, FALSE, TRUE, FALSE, FALSE)		//can play with TK and while resting because fun.
+
+/// CITRP EDIT UNTIL INTERACTION REFACTOR PORT!
+/obj/structure/musician/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!anchored)
+		return
+	ui_interact(user)
 
 /obj/structure/musician/ui_interact(mob/user)
 	. = ..()

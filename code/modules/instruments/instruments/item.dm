@@ -2,14 +2,14 @@
 /obj/item/instrument
 	name = "generic instrument"
 	force = 10
-	max_integrity = 100
-	resistance_flags = FLAMMABLE
+//	max_integrity = 100
+//	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/instruments_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
 	var/datum/song/handheld/song
 	var/list/allowed_instrument_ids
-	var/tune_time_left = 0
+//	var/tune_time_left = 0
 
 /obj/item/instrument/Initialize(mapload)
 	. = ..()
@@ -18,13 +18,16 @@
 
 /obj/item/instrument/Destroy()
 	QDEL_NULL(song)
+/*
 	if(tune_time_left)
 		STOP_PROCESSING(SSprocessing, src)
+*/
 	return ..()
 
 /obj/item/instrument/proc/should_stop_playing(mob/user)
 	return !user.CanReach(src) || !user.canUseTopic(src, FALSE, TRUE, FALSE, FALSE)
 
+/*
 /obj/item/instrument/process(wait)
 	if(is_tuned())
 		if (song.playing)
@@ -39,6 +42,7 @@
 		if (song.playing)
 			loc.visible_message("<span class='warning'>[src] starts sounding a little off...</span>")
 		STOP_PROCESSING(SSprocessing, src)
+*/
 
 /obj/item/instrument/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] begins to play 'Gloomy Sunday'! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -50,6 +54,7 @@
 		return TRUE
 	interact(user)
 
+/*
 /obj/item/instrument/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/musicaltuner))
 		var/mob/living/carbon/human/H = user
@@ -65,6 +70,7 @@
 
 /obj/item/instrument/proc/is_tuned()
 	return tune_time_left > 0
+*/
 
 /obj/item/instrument/interact(mob/user)
 	ui_interact(user)
@@ -89,7 +95,8 @@
 	desc = "A golden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
 	icon_state = "golden_violin"
 	item_state = "golden_violin"
-	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	unacidable = TRUE
+//	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 /obj/item/instrument/piano_synth
 	name = "synthesizer"
@@ -150,9 +157,11 @@
 	force = 0
 	attack_verb = list("played","jazzed","trumpeted","mourned","dooted","spooked")
 
+/*
 /obj/item/instrument/trumpet/spectral/Initialize()
 	. = ..()
 	AddComponent(/datum/component/spooky)
+*/
 
 /obj/item/instrument/trumpet/spectral/attack(mob/living/carbon/C, mob/user)
 	playsound (loc, 'sound/instruments/trombone/En4.mid', 100,1,-1)
@@ -173,9 +182,11 @@
 	force = 0
 	attack_verb = list("played","jazzed","saxxed","mourned","dooted","spooked")
 
+/*
 /obj/item/instrument/saxophone/spectral/Initialize()
 	. = ..()
 	AddComponent(/datum/component/spooky)
+*/
 
 /obj/item/instrument/saxophone/spectral/attack(mob/living/carbon/C, mob/user)
 	playsound(loc, 'sound/instruments/saxophone/En4.mid', 100,1,-1)
@@ -223,6 +234,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	actions_types = list(/datum/action/item_action/instrument)
 
+/*
 /obj/item/instrument/harmonica/proc/handle_speech(datum/source, list/speech_args)
 	if(song.playing && ismob(loc))
 		to_chat(loc, "<span class='warning'>You stop playing the harmonica to talk...</span>")
@@ -235,6 +247,7 @@
 /obj/item/instrument/harmonica/dropped(mob/M)
 	. = ..()
 	UnregisterSignal(M, COMSIG_MOB_SAY)
+*/
 
 /obj/item/instrument/bikehorn
 	name = "gilded bike horn"
