@@ -335,7 +335,8 @@ var/global/datum/controller/occupations/job_master
 
 
 	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
-		if(!H)	return null
+		if(!H)
+			return
 
 		var/datum/job/job = GetJob(rank)
 		var/list/spawn_in_storage = list()
@@ -390,7 +391,7 @@ var/global/datum/controller/occupations/job_master
 							continue
 
 						if(G.slot == "implant")
-							var/obj/item/weapon/implant/I = G.spawn_item(H)
+							var/obj/item/weapon/implant/I = G.spawn_item(H, H.client.prefs.gear[G.display_name])
 							I.invisibility = 100
 							I.implant_loadout(H)
 							continue

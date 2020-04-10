@@ -55,8 +55,8 @@ var/const/SAR 				=(1<<14)
 	economic_modifier = 7
 	minimal_player_age = 7
 
-	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
-	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
+	access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
+	minimal_access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	outfit_type = /decl/hierarchy/outfit/job/pathfinder
 
 /datum/job/pilot

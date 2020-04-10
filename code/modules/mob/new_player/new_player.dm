@@ -335,7 +335,7 @@
 	return 1
 
 
-/mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -457,7 +457,8 @@
 
 
 /mob/new_player/proc/create_character(var/turf/T)
-	if (!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
+	if (!attempt_vr(src,"spawn_checks_vr",list()))
+		return 0 // VOREStation Insert
 	spawning = 1
 	close_spawn_windows()
 
