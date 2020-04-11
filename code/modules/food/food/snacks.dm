@@ -3399,13 +3399,13 @@ END CITADEL CHANGE */
 	survivalfood = TRUE
 	center_of_mass = list("x"=16, "y"=15)
 	nutriment_amt = 30
+	bitesize = 4
 	nutriment_desc = list("chalk" = 6)
 
 /obj/item/weapon/reagent_containers/food/snacks/liquidprotein/Initialize()
 	..()
 	reagents.add_reagent("protein", 30)
 	reagents.add_reagent("iron", 3)
-	bitesize = 4
 
 /obj/item/weapon/reagent_containers/food/snacks/liquidvitamin
 	name = "\improper VitaPaste Ration"
@@ -3413,6 +3413,7 @@ END CITADEL CHANGE */
 	icon_state = "liquidvitamin"
 	trash = /obj/item/trash/liquidvitamin
 	filling_color = "#A8A8A8"
+	bitesize = 6
 	survivalfood = TRUE
 	center_of_mass = list("x"=16, "y"=15)
 
@@ -3423,7 +3424,6 @@ END CITADEL CHANGE */
 	reagents.add_reagent("paracetamol", 5)
 	reagents.add_reagent("enzyme", 1)
 	reagents.add_reagent("iron", 3)
-	bitesize = 6
 
 /obj/item/weapon/reagent_containers/food/snacks/meatcube
 	name = "cubed meat"
@@ -3443,13 +3443,13 @@ END CITADEL CHANGE */
     icon_state = "liquidprotein"
     trash = /obj/item/trash/liquidprotein
     filling_color = "#A8A8A8"
+    bitesize = 4
     center_of_mass = list("x"=16, "y"=15)
 
 /obj/item/weapon/reagent_containers/food/snacks/liquidprotein/Initialize()
     ..()
     reagents.add_reagent("protein", 30)
     reagents.add_reagent("iron", 3)
-    bitesize = 4
 
 /obj/item/weapon/reagent_containers/food/snacks/tastybread
 	name = "bread tube"

@@ -261,19 +261,21 @@
 	Alt click
 	Unused except for AI
 */
-/mob/proc/AltClickOn(var/atom/A)
-	A.AltClick(src)
-	return
+/mob/proc/AltClickOn(atom/A)
+	if(!A.AltClick(src))
+		altclick_listed_turf(A)
+
+/mob/proc/altclick_listed_turf(atom/A)
+	var/turf/T = get_turf(A)
+	if(T == A.loc || T == A)
+		if(T == listed_turf)
+			listed_turf = null
+		else if(TurfAdjacent(T))
+			listed_turf = T
+			client.statpanel = T.name
 
 /atom/proc/AltClick(var/mob/user)
-	var/turf/T = get_turf(src)
-	if(T && user.TurfAdjacent(T))
-		if(user.listed_turf == T)
-			user.listed_turf = null
-		else
-			user.listed_turf = T
-			user.client.statpanel = "Turf"
-	return 1
+	return FALSE
 
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)

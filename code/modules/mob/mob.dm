@@ -750,6 +750,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			if(processScheduler)
 				processScheduler.statProcesses()
 
+/*
 	if(listed_turf && client)
 		if(!TurfAdjacent(listed_turf))
 			listed_turf = null
@@ -773,6 +774,29 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				if(A.plane > plane)
 					continue
 				stat(A)
+*/
+
+	if(listed_turf && client)
+		if(!TurfAdjacent(listed_turf))
+			listed_turf = null
+		else
+			statpanel(listed_turf.name, null, listed_turf)
+			var/list/overrides = list()
+			for(var/image/I in client.images)
+				if(I.loc && I.loc.loc == listed_turf && I.override)
+					overrides += I.loc
+			for(var/atom/A in listed_turf)
+				if(!A.mouse_opacity)
+					continue
+				if(A.invisibility > see_invisible)
+					continue
+				if(overrides.len && (A in overrides))
+					continue
+/*
+				if(A.IsObscured())
+					continue
+*/
+				statpanel(listed_turf.name, null, A)
 
 // facing verbs
 /mob/proc/canface()
