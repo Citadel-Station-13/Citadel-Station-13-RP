@@ -30,7 +30,7 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
-	brute_mod =		1
+	brute_mod =		0.2
 	burn_mod =		1.4
 	oxy_mod =		0
 
