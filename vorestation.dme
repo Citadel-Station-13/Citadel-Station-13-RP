@@ -150,6 +150,7 @@
 #include "code\_global_vars\sensitive.dm"
 #include "code\_global_vars\traits.dm"
 #include "code\_global_vars\lists\mapping.dm"
+#include "code\_global_vars\lists\medical.dm"
 #include "code\_globals\regexes.dm"
 #include "code\_onclick\_defines.dm"
 #include "code\_onclick\adjacent.dm"

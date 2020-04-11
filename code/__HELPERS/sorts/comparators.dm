@@ -97,3 +97,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_area_names_dsc(area/A, area/B)
 	return sorttext(A.name, B.name)
+
+/proc/cmp_surgery_priority_asc(datum/surgery_step/A, datum/surgery_step/B)
+	return B.priority - A.priority
