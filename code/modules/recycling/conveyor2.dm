@@ -14,6 +14,7 @@
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	circuit = /obj/item/weapon/circuitboard/conveyor
+	speed_process = TRUE
 	var/operating = OFF	// 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1	// true if can operate (no broken segments in this belt run)
 	var/forwards		// this is the default (forward) direction, set by the map dir
@@ -45,12 +46,6 @@
 	component_parts += new /obj/item/weapon/stock_parts/motor(src)
 	component_parts += new /obj/item/stack/cable_coil(src,5)
 	RefreshParts()
-	processing_machines -= src		//heck off this needs to be removed/machine process() renamed
-	START_PROCESSING(SSfastprocess, src)
-
-/obj/machinery/conveyor/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	return ..()
 
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == FORWARDS)
@@ -94,15 +89,14 @@
 	use_power(100)
 
 	affecting = loc.contents - src		// moved items will be all in loc
-	spawn(1)	// slight delay to prevent infinite propagation due to map order	//TODO: please no spawn() in process(). It's a very bad idea
-		var/items_moved = 0
-		for(var/atom/movable/A in affecting)
-			if(!A.anchored)
-				if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
-					step(A,movedir)
-					items_moved++
-			if(items_moved >= 10)
-				break
+	var/items_moved = 0
+	for(var/atom/movable/A in affecting)
+		if(!A.anchored)
+			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
+				step(A,movedir)
+				items_moved++
+		if(items_moved >= 10)
+			break
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
