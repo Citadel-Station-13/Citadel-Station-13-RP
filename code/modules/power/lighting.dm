@@ -752,13 +752,13 @@ var/global/list/light_type_cache = list()
 	item_state = "c_tube"
 	matter = list("glass" = 100)
 	brightness_range = 12	// luminosity when on, also used in power calculation //VOREStation Edit
-	brightness_power = 6
+	brightness_power = 1
 
 /obj/item/weapon/light/tube/large
 	w_class = ITEMSIZE_SMALL
 	name = "large light tube"
-	brightness_range = 15
-	brightness_power = 9
+	brightness_range = 12
+	brightness_power = 1
 
 /obj/item/weapon/light/bulb
 	name = "light bulb"
@@ -768,7 +768,7 @@ var/global/list/light_type_cache = list()
 	item_state = "contvapour"
 	matter = list("glass" = 100)
 	brightness_range = 5
-	brightness_power = 4
+	brightness_power = 1
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
 
 /obj/item/weapon/light/throw_impact(atom/hit_atom)
