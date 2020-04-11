@@ -1552,7 +1552,8 @@
 		Weaken(20)
 
 /mob/living/carbon/human/proc/handle_pulse()
-	if(life_tick % 5) return pulse	//update pulse every 5 life ticks (~1 tick/sec, depending on server load)
+	if(life_tick % 5)
+		return pulse	//update pulse every 5 life ticks (~1 tick/sec, depending on server load)
 
 	var/temp = PULSE_NORM
 
@@ -1639,7 +1640,6 @@
 			if(R.volume >= R.overdose)
 				temp = PULSE_NONE
 
-	return temp
 	return max(0, round(temp * brain_modifier))
 
 /mob/living/carbon/human/proc/handle_heartbeat()

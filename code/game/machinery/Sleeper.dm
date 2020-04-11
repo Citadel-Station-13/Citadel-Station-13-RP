@@ -371,6 +371,9 @@
 	if(!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [src] is not designed for that organism!</span>")
 		return
+	if(M.buckled)
+		to_chat(user, "<span class='warning'>[M == user? "You are" : "[M] is"] buckled to something!</span>")
+		return
 	if(M == user)
 		visible_message("\The [user] starts climbing into \the [src].")
 	else
@@ -380,11 +383,7 @@
 		if(occupant)
 			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 			return
-		M.stop_pulling()
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
-		M.loc = src
+		M.forceMove(src)
 		update_use_power(2)
 		occupant = M
 		update_icon()

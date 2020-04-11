@@ -32,9 +32,9 @@
 	if (..())//no need to duplicate adjacency check
 		user << "Oil Level: [oil.total_volume]/[optimal_oil]"
 
-/obj/machinery/appliance/cooker/fryer/New()
+/obj/machinery/appliance/cooker/fryer/Initialize(mapload)
 	. = ..()
-	oil = new/datum/reagents(optimal_oil * 1.25, src)
+	oil = new(optimal_oil * 1.25, src)
 	var/variance = rand()*0.15
 	//Fryer is always a little below full, but its usually negligible
 

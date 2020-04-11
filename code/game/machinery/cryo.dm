@@ -205,7 +205,7 @@
 		var/mob/M = grab.affecting
 		qdel(grab)
 		put_mob(M)
-			
+
 	return
 
 /obj/machinery/atmospherics/unary/cryo_cell/MouseDrop_T(var/mob/target, var/mob/user) //Allows borgs to put people into cryo without external assistance
@@ -303,14 +303,16 @@
 	if(M.abiotic())
 		to_chat(usr, "<span class='warning'>Subject may not have abiotic items on.</span>")
 		return
+	if(M.buckled)
+		to_chat(usr, "<span class='warning'>[M] is buckled to something!</span>")
+		return
 	if(!node)
 		to_chat(usr, "<span class='warning'>The cell is not correctly connected to its pipe network!</span>")
 		return
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
-	M.stop_pulling()
-	M.loc = src
+	M.forceMove(src)
 	M.ExtinguishMob()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
 		to_chat(M, "<span class='notice'><b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>")
