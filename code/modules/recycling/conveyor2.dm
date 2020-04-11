@@ -45,6 +45,12 @@
 	component_parts += new /obj/item/weapon/stock_parts/motor(src)
 	component_parts += new /obj/item/stack/cable_coil(src,5)
 	RefreshParts()
+	processing_machines -= src		//heck off this needs to be removed/machine process() renamed
+	START_PROCESSING(SSfastprocess, src)
+
+/obj/machinery/conveyor/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
 
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == FORWARDS)

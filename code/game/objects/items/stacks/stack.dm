@@ -336,20 +336,10 @@
 			break
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
-		var/N = input("How many stacks of [src] would you like to split off?  There are currently [amount].", "Split stacks", 1) as num|null
-		if(N)
-			var/obj/item/stack/F = src.split(N)
-			if (F)
-				user.put_in_hands(F)
-				src.add_fingerprint(user)
-				F.add_fingerprint(user)
-				spawn(0)
-					if (src && usr.machine==src)
-						src.interact(usr)
+	if(user.get_inactive_hand() == src)
+		change_stack(user, 1)
 	else
-		..()
-	return
+		return ..()
 
 /obj/item/stack/Crossed(obj/o)
 	if(istype(o, stacktype) && !o.throwing)
@@ -388,6 +378,9 @@
 	. = ..()
 	if(!istype(user) || !in_range(user, src) || !user.canmove)
 		return
+	attempt_split_stack(user)
+
+/obj/item/stack/proc/attempt_split_stack(mob/living/user)
 	if(uses_charge)
 		return
 	else
