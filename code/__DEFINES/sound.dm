@@ -16,7 +16,7 @@
 #define CHANNEL_HIGHEST_AVAILABLE 1014	//VORESTATION EDIT - Fancy Sound Loop channel from 1015
 
 #define SOUND_MINIMUM_PRESSURE 10
-#define FALLOFF_SOUNDS 0.5
+#define FALLOFF_SOUNDS 1
 
 //Sound environment defines. Reverb preset for sounds played in an area, see sound datum reference for more.
 #define GENERIC 0

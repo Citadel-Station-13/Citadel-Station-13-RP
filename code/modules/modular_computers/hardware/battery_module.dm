@@ -64,7 +64,9 @@
 /obj/item/weapon/computer_hardware/battery_module/Initialize(mapload)
 	if(ispath(battery))
 		battery = new battery
-		battery.maxcharge = battery.charge = battery_rating
+	if(battery)
+		battery.maxcharge = battery_rating
+		battery.charge = 0
 	return ..()
 
 /obj/item/weapon/computer_hardware/battery_module/Destroy()
