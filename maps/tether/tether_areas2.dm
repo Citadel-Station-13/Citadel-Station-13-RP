@@ -85,6 +85,8 @@
 	name = "\improper Atrium Construction Site"
 /area/vacant/vacant_bar
 	name = "\improper Vacant Bar"
+/area/vacant/vacant_bar_upper
+	name = "\improper Upper Vacant Bar"
 
 // /area/tether/surfacebase/east_stairs_three //This is just part of an upper hallway
 
@@ -152,6 +154,8 @@
 	name = "\improper Surface Atmos Substation"
 /area/maintenance/substation/civ_west
 	name = "\improper Civilian West Substation"
+/area/maintenance/tether_midpoint
+	name = "\improper Tether Midpoint Maint"
 
 
 /area/tether/surfacebase/medical
@@ -482,12 +486,27 @@
 // Exploration Shuttle stuff //
 /area/tether/station/excursion_dock
 	name = "\improper Excursion Shuttle Dock"
+	icon_state = "hangar"
 
 /area/tether/station/explorer_prep
 	name = "\improper Explorer Prep Room"
+	icon_state = "locker"
+
+/area/tether/station/explorer_entry
+	name = "\improper Exploration Foyer"
+	icon_state = "green"
 
 /area/tether/station/explorer_meeting
 	name = "\improper Explorer Meeting Room"
+	icon_state = "northeast"
+
+/area/tether/station/explorer_showers
+	name = "\improper Explorer Showers"
+	icon_state = "restrooms"
+
+/area/tether/station/explorer_medical
+	name = "\improper Exploration Med Station"
+	icon_state = "medbay"
 
 /area/tether/station/pathfinder_office
 	name = "\improper Pathfinder's Office"
@@ -525,7 +544,19 @@
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Virgo3b Sky"
 	base_turf = /turf/simulated/sky
-//////////////////////////////////
+
+
+/area/tether/midpoint
+	name = "\improper Tether Midpoint"
+
+/area/shuttle/excursion/virgo3b_moving
+	name = "\improper Excursion Shuttle - Virgo3b Transit"
+	base_turf = /turf/simulated/sky
+
+/area/shuttle/excursion/tether_surface
+	name = "\improper Excursion Shuttle - Tether Surface"
+	base_turf = /turf/simulated/floor/reinforced
+
 
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"

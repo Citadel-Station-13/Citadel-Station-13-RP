@@ -724,6 +724,7 @@
 	jade
 		name = "Jade"
 		icon_state = "hair_jade"
+		flags = HAIR_TIEABLE
 
 	country
 		name = "Country"
@@ -778,6 +779,128 @@
 		name = "Long Hair 3"
 		icon_state = "hair_long3"
 		flags = HAIR_TIEABLE
+
+	glossy
+		name = "Glossy"
+		icon_state = "hair_glossy"
+		flags = HAIR_TIEABLE
+
+	sharpponytail
+		name = "Ponytail Sharp"
+		icon_state = "hair_sharpponytail"
+		flags = HAIR_TIEABLE
+
+	newyou
+		name = "New You"
+		icon_state = "hair_newyou"
+		flags = HAIR_TIEABLE
+
+	partedalt
+		name = "Parted Alt"
+		icon_state = "hair_partedalt"
+
+	amazon
+		name = "Amazon"
+		icon_state = "hair_amazon"
+		flags = HAIR_TIEABLE
+
+	straightlong
+		name = "Straight Long"
+		icon_state = "hair_straightlong"
+		flags = HAIR_TIEABLE
+
+	marysue
+		name = "Mary Sue"
+		icon_state = "hair_marysue"
+
+	sideundercut
+		name = "Side Undercut"
+		icon_state = "hair_sideundercut"
+		flags = HAIR_VERY_SHORT
+
+	donutbun
+		name = "Donut Bun"
+		icon_state = "hair_donutbun"
+
+	gentle2
+		name = "Gentle 2, Long"
+		icon_state = "hair_gentle2long"
+		flags = HAIR_TIEABLE
+
+	sweepshave
+		name = "Sweep Shave"
+		icon_state = "hair_sweepshave"
+
+	beachwave
+		name = "Beach Waves"
+		icon_state = "hair_beachwave"
+		flags = HAIR_TIEABLE
+
+	celebcurls
+		name = "Celeb Curls"
+		icon_state = "hair_celebcurls"
+		flags = HAIR_TIEABLE
+
+	jessica
+		name = "Jessica"
+		icon_state = "hair_jessica"
+		flags = HAIR_TIEABLE
+
+	proper
+		name = "Proper"
+		icon_state = "hair_proper"
+
+	himeup
+		name = "Hime Updo"
+		icon_state = "hair_himeup"
+		flags = HAIR_TIEABLE
+
+	front_braid
+		name = "Braided front"
+		icon_state = "hair_braidfront"
+		flags = HAIR_TIEABLE
+
+	antenna
+		name = "Antenna"
+		icon_state = "hair_antenna"
+
+	protagonist
+		name = "Slightly Long"
+		icon_state = "hair_protagonist"
+		flags = HAIR_TIEABLE
+
+	braidtail
+		name = "Braided Tail"
+		icon_state = "hair_braidtail"
+		flags = HAIR_TIEABLE
+
+	business
+		name = "Business Hair"
+		icon_state = "hair_business"
+		flags = HAIR_VERY_SHORT
+
+	business3
+		name = "Business Hair 3"
+		icon_state = "hair_business3"
+		flags = HAIR_VERY_SHORT
+
+	business4
+		name = "Business Hair 4"
+		icon_state = "hair_business4"
+		flags = HAIR_VERY_SHORT
+
+	sidepartlongalt
+		name = "Long Side Part"
+		icon_state = "hair_longsidepart"
+		flags = HAIR_TIEABLE
+
+	miles
+		name = "Miles Hair"
+		icon_state = "hair_miles"
+
+	vivi
+		name = "Vivi"
+		icon_state = "hair_vivi"
 
 /*
 ///////////////////////////////////
@@ -1181,6 +1304,66 @@
 		icon_state = "vox_mohawk"
 		species_allowed = list(SPECIES_VOX)
 
+	vox_quills_afro
+		name = "Vox Afro"
+		icon_state = "vox_afro"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_mohawk
+		name = "Vox Mohawk"
+		icon_state = "vox_mohawk"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_yasu
+		name = "Vox Yasuhiro"
+		icon_state = "vox_yasu"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_horns
+		name = "Vox Quorns"
+		icon_state = "vox_horns"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_nights
+		name = "Vox Nights"
+		icon_state = "vox_nights"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_surf
+		name = "Vox Surf"
+		icon_state = "vox_surf"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_cropped
+		name = "Vox Cropped"
+		icon_state = "vox_cropped"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_bald
+		name = "Vox Bald"
+		icon_state = "vox_bald"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_ruffhawk
+		name = "Vox Ruffhawk"
+		icon_state = "vox_ruff_hawk"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_rows
+		name = "Vox Rows"
+		icon_state = "vox_rows"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_mange
+		name = "Vox Mange"
+		icon_state = "vox_mange"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_quills_pony
+		name = "Vox Pony"
+		icon_state = "vox_pony"
+		species_allowed = list(SPECIES_VOX)
+
 /datum/sprite_accessory/facial_hair
 
 	taj_sideburns
@@ -1212,6 +1395,38 @@
 		name = "Tajaran Smallsatche"
 		icon_state = "facial_smallstache"
 		species_allowed = list(SPECIES_TAJ)
+
+// More Vox things
+
+	vox_face_colonel
+		name = "Vox Colonel"
+		icon_state = "vox_colonel"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_face_fu
+		name = "Quill Fu"
+		icon_state = "vox_fu"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_face_neck
+		name = "Neck Quills"
+		icon_state = "vox_neck"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_face_beard
+		name = "Quill Beard"
+		icon_state = "vox_beard"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_ruff_beard
+		name = "Ruff Beard"
+		icon_state = "vox_ruff_beard"
+		species_allowed = list(SPECIES_VOX)
+
+	vox_shaved_beard
+		name = "Vox Shaved"
+		icon_state = "vox_bald"
+		species_allowed = list(SPECIES_VOX)
 
 //unathi horn beards and the like
 

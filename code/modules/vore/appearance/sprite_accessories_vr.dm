@@ -393,6 +393,13 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/large_dragon
+	name = "vary large dragon horns"
+	desc = ""
+	icon_state = "big_liz"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 
 // Special snowflake ears go below here.
 
@@ -614,42 +621,42 @@
 	name = "moth antenna and wings"
 	desc = ""
 	icon_state = "moth_full"
-	
+
 /datum/sprite_accessory/wing/moth_royal
 	name = "royal moth antenna and wings"
 	desc = ""
 	icon_state = "moth_royal"
-	
+
 /datum/sprite_accessory/wing/moth_red
 	name = "red moth antenna and wings"
 	desc = ""
 	icon_state = "moth_red"
-	
+
 /datum/sprite_accessory/wing/moth_gothic
 	name = "gothic moth antenna and wings"
 	desc = ""
 	icon_state = "moth_gothic"
-	
+
 /datum/sprite_accessory/wing/moth_lover
 	name = "lover moth antenna and wings"
 	desc = ""
 	icon_state = "moth_lover"
-	
+
 /datum/sprite_accessory/wing/moth_monarch
 	name = "monarch moth antenna and wings"
 	desc = ""
 	icon_state = "moth_monarch"
-	
+
 /datum/sprite_accessory/wing/moth_burned
 	name = "burned moth antenna and wings"
 	desc = ""
 	icon_state = "moth_burned"
-	
+
 /datum/sprite_accessory/wing/moth_white
 	name = "white moth antenna and wings"
 	desc = ""
 	icon_state = "moth_white"
-	
+
 /datum/sprite_accessory/wing/moth_firewatch
 	name = "firewatch moth antenna and wings"
 	desc = ""
@@ -659,7 +666,7 @@
 	name = "death moth antenna and wings"
 	desc = ""
 	icon_state = "moth_deathhead"
-	
+
 /datum/sprite_accessory/wing/moth_poison
 	name = "poison antenna and wings"
 	desc = ""
@@ -1585,3 +1592,31 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofirefly_vass_markings"
 	extra_overlay_w = "buggofatfirefly_vass_markings"
+
+/datum/sprite_accessory/tail/lizard_tail_smooth
+	name = "Lizard Tail (Smooth)"
+	desc = ""
+	icon_state = "lizard_tail_smooth"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/lizard_tail_dark_tiger
+	name = "Lizard Tail (Dark Tiger)"
+	desc = ""
+	icon_state = "lizard_tail_dark_tiger"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/lizard_tail_light_tiger
+	name = "Lizard Tail (Light Tiger)"
+	desc = ""
+	icon_state = "lizard_tail_light_tiger"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/lizard_tail_spiked
+	name = "Lizard Tail (Spiked)"
+	desc = ""
+	icon_state = "lizard_tail_spiked"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY

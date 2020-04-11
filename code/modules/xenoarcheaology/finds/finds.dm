@@ -22,7 +22,7 @@
 	origin_tech = list(TECH_MATERIAL = 5)
 
 /obj/item/weapon/ore/strangerock/Initialize(mapload, inside_item_type = 0)
-	. ..()
+	. = ..()
 	if(inside_item_type)
 		new /obj/item/weapon/archaeological_find(src, new_item_type = inside_item_type)
 

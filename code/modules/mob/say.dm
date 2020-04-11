@@ -39,7 +39,7 @@
 		return // Clientless mobs shouldn't be trying to talk in deadchat.
 
 	if(!src.client.holder)
-		if(!config.dsay_allowed)
+		if(!config_legacy.dsay_allowed)
 			src << "<span class='danger'>Deadchat is globally muted.</span>"
 			return
 

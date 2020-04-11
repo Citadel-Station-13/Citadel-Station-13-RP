@@ -104,7 +104,7 @@
 			/obj/item/device/analyzer,
 			/obj/item/weapon/storage/bag/ore,
 			/obj/item/device/flashlight/lantern,
-			/obj/item/weapon/shovel,
+			/obj/item/weapon/pickaxe/shovel,
 			/obj/item/weapon/pickaxe,
 			/obj/item/weapon/mining_scanner,
 			/obj/item/clothing/glasses/material,

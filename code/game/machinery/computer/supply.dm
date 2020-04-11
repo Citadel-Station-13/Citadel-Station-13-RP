@@ -52,6 +52,11 @@
 	var/orders[0]
 	var/receipts[0]
 
+	if(!allowed(user))
+		authorization = 0
+	else
+		authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
+
 	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 	if(shuttle)
 		if(shuttle.has_arrive_time())

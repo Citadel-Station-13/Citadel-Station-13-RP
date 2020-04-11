@@ -27,7 +27,7 @@ var/datum/antagonist/xenos/xenomorphs
 		xenomorphs = src
 
 /datum/antagonist/xenos/attempt_random_spawn()
-	if(config.aliens_allowed) ..()
+	if(config_legacy.aliens_allowed) ..()
 
 /datum/antagonist/xenos/proc/get_vents()
 	var/list/vents = list()

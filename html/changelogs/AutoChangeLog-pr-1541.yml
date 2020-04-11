@@ -1,4 +1,0 @@
-author: "Nethaufer"
-delete-after: True
-changes: 
-  - bugfix: "Made it so that there's only one option to print cables because the other options were buggy."

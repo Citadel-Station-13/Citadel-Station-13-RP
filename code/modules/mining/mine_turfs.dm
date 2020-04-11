@@ -246,40 +246,25 @@ var/list/mining_overlay_cache = list()
 
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/weapon/W as obj, mob/user as mob)
-
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	if(!density)
-
-		var/list/usable_tools = list(
-			/obj/item/weapon/shovel,
-			/obj/item/weapon/pickaxe/diamonddrill,
-			/obj/item/weapon/pickaxe/drill,
-			/obj/item/weapon/pickaxe/borgdrill
-			)
-
-		var/valid_tool
-		for(var/valid_type in usable_tools)
-			if(istype(W,valid_type))
-				valid_tool = 1
-				break
-
-		if(valid_tool)
-			if (sand_dug)
+		if(istype(W,/obj/item/weapon/pickaxe))
+			var/obj/item/weapon/pickaxe/P = W
+			if(P.shovelspeed == -1)
+				return
+			if(sand_dug)
 				to_chat(user, "<span class='warning'>This area has already been dug.</span>")
 				return
 
 			var/turf/T = user.loc
-			if (!(istype(T)))
+			if(!(istype(T)))
 				return
-
 			to_chat(user, "<span class='notice'>You start digging.</span>")
 			playsound(user.loc, 'sound/effects/rustle1.ogg', 50, 1)
-
-			if(!do_after(user,20)) return
-
+			if(!do_after(user,P.shovelspeed)) return
 			to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			GetDrilled()
 

@@ -1,11 +1,28 @@
 /obj/item/weapon/mining_scanner
 	name = "ore detector"
-	desc = "A complex device used to locate ore deep underground in a 3 by 3 area around you."
+	desc = "A complex device used to locate ore deep underground around you."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic0-old" //GET A BETTER SPRITE.
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 150)
+	var/scanrange = 2
+	var/maxscanrange = 2
+
+/obj/item/weapon/mining_scanner/examine()
+	. = ..()
+	to_chat(usr, "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range.")
+
+/obj/item/weapon/mining_scanner/AltClick(mob/user)
+	var/newscan = text2num(input(usr,"What would you like to set the scan range to? Maximum of [maxscanrange].","New Scan Range",maxscanrange))
+	newscan = round(newscan,1)
+	if(newscan >= maxscanrange)
+		newscan = maxscanrange
+	if(newscan < 0)
+		newscan = 0
+	scanrange = newscan
+	to_chat(usr, "New scan range set to [scanrange] step(s) around user, including current location.")
+	. = ..()
 
 /obj/item/weapon/mining_scanner/attack_self(mob/user)
 	to_chat(user,"You begin sweeping \the [src] about, scanning for metal deposits.")
@@ -21,7 +38,7 @@
 		"exotic matter" = 0
 		)
 
-	for(var/turf/simulated/T in range(2, get_turf(user)))
+	for(var/turf/simulated/T in range(scanrange, get_turf(user)))
 
 		if(!T.has_resources)
 			continue
@@ -51,11 +68,13 @@
 
 /obj/item/weapon/mining_scanner/advanced
 	name = "advanced ore detector"
-	desc = "A compact, complex device used to quickly locate ore deep underground in a 5 by 5 area around you."
+	desc = "A compact, complex device used to quickly locate ore deep underground around you."
 	icon_state = "mining-scanner" //thank you eris spriters
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	scanrange = 5
+	maxscanrange = 5
 
 /obj/item/weapon/mining_scanner/advanced/attack_self(mob/user)
 	to_chat(user,"You sweep \the [src] about, quickly pinging for ore deposits.")
@@ -77,7 +96,7 @@
 		"hydrogen" = 0
 			)
 
-	for(var/turf/simulated/T in range(5, get_turf(user)))
+	for(var/turf/simulated/T in range((scanrange), get_turf(user)))
 
 		if(!T.has_resources)
 			continue

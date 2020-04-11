@@ -22,6 +22,7 @@
 	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
+	trashcan = 1
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/reconstitute_form,
 		/mob/living/carbon/human/proc/sonar_ping,
@@ -31,7 +32,8 @@
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/proc/start_wings_hovering,
+		/mob/living/carbon/human/proc/tie_hair) //Xenochimera get all the special verbs since they can't select traits.
 
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
@@ -329,7 +331,9 @@
 	icobase_tail = 1
 
 	inherent_verbs = list(
-		/mob/proc/weaveWebBindings)
+		/mob/proc/weaveWebBindings,
+		/mob/living/carbon/human/proc/tie_hair
+		)
 
 	min_age = 18
 	max_age = 80

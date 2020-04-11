@@ -31,6 +31,7 @@ var/global/list/grub_machine_overlays = list()
 	var/static/list/ignored_machine_types = list(
 		/obj/machinery/atmospherics/unary/vent_pump,
 		/obj/machinery/atmospherics/unary/vent_scrubber,
+		/obj/machinery/light_switch,
 		/obj/machinery/door/firedoor
 		)
 
@@ -45,6 +46,7 @@ var/global/list/grub_machine_overlays = list()
 
 /mob/living/simple_animal/solargrub_larva/Initialize(mapload)
 	. = ..()
+	existing_solargrubs += src
 	powermachine = new(src)
 	sparks = new(src)
 	sparks.set_up()
@@ -57,6 +59,7 @@ var/global/list/grub_machine_overlays = list()
 	return ..()
 
 /mob/living/simple_animal/solargrub_larva/Destroy()
+	existing_solargrubs -= src
 	QDEL_NULL(powermachine)
 	QDEL_NULL(sparks)
 	QDEL_NULL(machine_effect)
@@ -156,6 +159,8 @@ var/global/list/grub_machine_overlays = list()
 	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
+		for(var/mob/L in player_list)
+			L.client.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	forced_out += rand(5,15)
 	powermachine.draining = 1

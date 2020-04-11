@@ -12,14 +12,28 @@
 	contains = list(/obj/item/weapon/storage/box/lights/mixed = 3)
 	cost = 10
 	containertype = /obj/structure/closet/crate
-	containername = "Replacement lights"
+	containername = "replacement lights"
 
 /datum/supply_pack/eng/smescoil
-	name = "Superconducting Magnetic Coil"
+	name = "Superconductive Magnetic Coil"
 	contains = list(/obj/item/weapon/smes_coil)
-	cost = 75
+	cost = 20
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "Superconducting Magnetic Coil crate"
+	containername = "superconductive magnetic coil crate"
+
+/datum/supply_pack/eng/smescoilsupercap
+	name = "Superconductive Capacitance Coil"
+	contains = list(/obj/item/weapon/smes_coil/super_capacity)
+	cost = 25
+	containertype = /obj/structure/closet/crate/engineering
+	containername = "superconductive capacitance coil crate"
+
+/datum/supply_pack/eng/smescoilsuperio
+	name = "Superconductive Transmission Coil"
+	contains = list(/obj/item/weapon/smes_coil/super_io)
+	cost = 25
+	containertype = /obj/structure/closet/crate/engineering
+	containername = "superconductive transmission coil crate"
 
 /datum/supply_pack/eng/shield_capacitor
 	name = "Shield Capacitor"
@@ -73,7 +87,7 @@
 			)
 	cost = 10
 	containertype = /obj/structure/closet/crate/engineering/electrical
-	containername = "Electrical maintenance crate"
+	containername = "electrical maintenance crate"
 
 /datum/supply_pack/eng/e_welders
 	name = "Electric welder crate"
@@ -82,7 +96,7 @@
 			)
 	cost = 15
 	containertype = /obj/structure/closet/crate/engineering/electrical
-	containername = "Electric welder crate"
+	containername = "electric welder crate"
 
 /datum/supply_pack/eng/mechanical
 	name = "Mechanical maintenance crate"
@@ -94,7 +108,7 @@
 			)
 	cost = 10
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "Mechanical maintenance crate"
+	containername = "mechanical maintenance crate"
 
 /datum/supply_pack/eng/fueltank
 	name = "Fuel tank crate"
@@ -113,35 +127,36 @@
 			)
 	cost = 20
 	containertype = /obj/structure/closet/crate/engineering
-	containername = "Solar pack crate"
+	containername = "solar pack crate"
 
 /datum/supply_pack/eng/engine
 	name = "Emitter crate"
 	contains = list(/obj/machinery/power/emitter = 2)
 	cost = 10
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "Emitter crate"
+	containername = "emitter crate"
 	access = access_ce
 
 /datum/supply_pack/eng/engine/field_gen
 	name = "Field Generator crate"
 	contains = list(/obj/machinery/field_generator = 2)
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "Field Generator crate"
+	containername = "field Generator crate"
 	access = access_ce
 
 /datum/supply_pack/eng/engine/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "Singularity Generator crate"
+	containername = "singularity generator crate"
 	access = access_ce
 
 /datum/supply_pack/eng/engine/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector = 3)
 	containertype = /obj/structure/closet/crate/secure/engineering
-	containername = "Collector crate"
+	containername = "collector crate"
+	access = access_engine
 
 /datum/supply_pack/eng/engine/PA
 	name = "Particle Accelerator crate"
@@ -192,21 +207,23 @@
 	access = access_ce
 
 /datum/supply_pack/eng/teg
-	contains = list(/obj/machinery/power/generator)
-	name = "Mark I Thermoelectric Generator"
-	cost = 40
+	contains = list(
+		/obj/machinery/power/generator,
+		/obj/machinery/atmospherics/binary/circulator = 2)
+	name = "Mark I TEG + Circulators"
+	cost = 35
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "Mk1 TEG crate"
 	access = access_engine
-
+/*
 /datum/supply_pack/eng/circulator
-	contains = list(/obj/machinery/atmospherics/binary/circulator)
-	name = "Binary atmospheric circulator"
-	cost = 20
+	contains = list(/obj/machinery/atmospherics/binary/circulator = 2)
+	name = "Binary atmospheric circulators"
+	cost = 15
 	containertype = /obj/structure/closet/crate/secure/large
-	containername = "Atmospheric circulator crate"
+	containername = "Atmospheric circulators crate"
 	access = access_engine
-
+*/
 /datum/supply_pack/eng/radsuit
 	contains = list(
 			/obj/item/clothing/suit/radiation = 3,
@@ -299,7 +316,7 @@
 			/obj/item/weapon/storage/briefcase/fission/fuelmixed,
 			/obj/item/weapon/storage/briefcase/fission/reflectormixed,
 			/obj/item/weapon/storage/briefcase/fission/controlmixed)
-	cost = 20
+	cost = 50
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "fission core crate"
 	access = access_ce
@@ -310,7 +327,7 @@
 			/obj/item/weapon/storage/briefcase/fission/uranium,
 			/obj/item/weapon/storage/briefcase/fission/tungstencarbide,
 			/obj/item/weapon/storage/briefcase/fission/boron)
-	cost = 20
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "fission expansion crate"
 	access = access_ce

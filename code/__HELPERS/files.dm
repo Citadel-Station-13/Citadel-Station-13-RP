@@ -2,12 +2,12 @@
 //returns text as a string if these conditions are met
 /proc/return_file_text(filename)
 	if(fexists(filename) == 0)
-		error("File not found ([filename])")
+		log_world("File not found ([filename])")
 		return
 
 	var/text = file2text(filename)
 	if(!text)
-		error("File empty ([filename])")
+		log_world("File empty ([filename])")
 		return
 
 	return text
@@ -53,7 +53,7 @@
 /client/proc/file_spam_check()
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		src << "<font color='red'>Error: file_spam_check(): Spam. Please wait [round(time_to_wait/10)] seconds.</font>"
+		src << "<font color='red'>log_world: file_spam_check(): Spam. Please wait [round(time_to_wait/10)] seconds.</font>"
 		return 1
 	fileaccess_timer = world.time + FTPDELAY
 	return 0

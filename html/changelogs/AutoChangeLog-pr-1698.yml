@@ -1,0 +1,5 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - soundadd: "Added new music to the jukebox."
+  - spellcheck: "Fixed a typo where \"Spaceman's Dilemma\" was named \"Spaceman's Dilemmia\" on the jukebox."

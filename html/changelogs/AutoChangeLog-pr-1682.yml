@@ -1,0 +1,8 @@
+author: "Nethaufer"
+delete-after: True
+changes: 
+  - rscadd: "Added sprites for a handful of Vox hardsuits; engineering, atmos, medical, mining, and paramedic."
+  - rscadd: "Added sprites for the hazmat suit and hood"
+  - rscadd: "Added sprites for the exploration suit and hood"
+  - code_imp: "Created support for Vox on the suit cycler menu"
+  - code_imp: "Created references for the Vox sprite sheets on the voidsuit file"

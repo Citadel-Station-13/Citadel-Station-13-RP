@@ -66,7 +66,7 @@
 	modules += new /obj/item/weapon/robot_harvester(src)
 
 	// For digging and beautifying graves
-	modules += new /obj/item/weapon/shovel(src)
+	modules += new /obj/item/weapon/pickaxe/shovel(src)
 	modules += new /obj/item/weapon/gripper/gravekeeper(src)
 
 	// For really persistent looters

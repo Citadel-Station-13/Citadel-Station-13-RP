@@ -44,13 +44,13 @@
 /proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
 	if(message)	//CITADEL CHANGE - adds TGS3 integration to those fancy verbose round event messages
 		world.TgsTargetedChatBroadcast(message, TRUE)	//CITADEL CHANGE - ditto
-	if (!config.chat_webhook_url || !message)
+	if (!config_legacy.chat_webhook_url || !message)
 		return
 	spawn(0)
 		var/query_string = "type=adminalert"
-		query_string += "&key=[url_encode(config.chat_webhook_key)]"
+		query_string += "&key=[url_encode(config_legacy.chat_webhook_key)]"
 		query_string += "&msg=[url_encode(message)]"
 		query_string += "&color=[url_encode(color)]"
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
-		world.Export("[config.chat_webhook_url]?[query_string]")
+		world.Export("[config_legacy.chat_webhook_url]?[query_string]")

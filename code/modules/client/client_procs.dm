@@ -1,81 +1,3 @@
-	////////////
-	//SECURITY//
-	////////////
-#define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
-#define MIN_CLIENT_VERSION	0		//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
-									//I would just like the code ready should it ever need to be used.
-
-//#define TOPIC_DEBUGGING 1
-
-	/*
-	When somebody clicks a link in game, this Topic is called first.
-	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
-	(if specified in the link). ie locate(hsrc).Topic()
-
-	Such links can be spoofed.
-
-	Because of this certain things MUST be considered whenever adding a Topic() for something:
-		- Can it be fed harmful values which could cause runtimes?
-		- Is the Topic call an admin-only thing?
-		- If so, does it have checks to see if the person who called it (usr.client) is an admin?
-		- Are the processes being called by Topic() particularly laggy?
-		- If so, is there any protection against somebody spam-clicking a link?
-	If you have any  questions about this stuff feel free to ask. ~Carn
-	*/
-/client/Topic(href, href_list, hsrc)
-	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
-		return
-
-	#if defined(TOPIC_DEBUGGING)
-	world << "[src]'s Topic: [href] destined for [hsrc]."
-
-	if(href_list["nano_err"]) //nano throwing errors
-		world << "## NanoUI, Subject [src]: " + html_decode(href_list["nano_err"]) //NANO DEBUG HOOK
-
-	#endif
-
-	//search the href for script injection
-	if( findtext(href,"<script",1,0) )
-		world.log << "Attempted use of scripts within a topic call, by [src]"
-		message_admins("Attempted use of scripts within a topic call, by [src]")
-		//del(usr)
-		return
-
-	//Admin PM
-	if(href_list["priv_msg"])
-		var/client/C = locate(href_list["priv_msg"])
-		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
-			var/mob/M = C
-			C = M.client
-		cmd_admin_pm(C,null)
-		return
-
-	if(href_list["irc_msg"])
-		if(!holder && received_irc_pm < world.time - 6000) //Worse they can do is spam IRC for 10 minutes
-			usr << "<span class='warning'>You are no longer able to use this, it's been more then 10 minutes since an admin on IRC has responded to you</span>"
-			return
-		if(mute_irc)
-			usr << "<span class='warning'You cannot use this as your client has been muted from sending messages to the admins on IRC</span>"
-			return
-		send2adminirc(href_list["irc_msg"])
-		return
-
-
-
-	//Logs all hrefs
-	if(config && config.log_hrefs && href_logfile)
-		log_href("[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]")
-
-	switch(href_list["_src_"])
-		if("holder")	hsrc = holder
-		if("usr")		hsrc = mob
-		if("prefs")		return prefs.process_link(usr,href_list)
-		if("vars")		return view_var_Topic(href,href_list,hsrc)
-		if("chat")
-			return chatOutput.Topic(href, href_list)
-
-	..()	//redirect to hsrc.Topic()
-
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
@@ -100,10 +22,8 @@
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
-	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
-		return null
 
-	if(!config.guests_allowed && IsGuestKey(key))
+	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
@@ -117,10 +37,12 @@
 	GLOB.ahelp_tickets.ClientLogin(src)
 
 	//Admin Authorisation
+	var/connecting_admin = FALSE
 	holder = admin_datums[ckey]
 	if(holder)
 		admins += src
 		holder.owner = src
+		connecting_admin = TRUE
 
 	// Localhost connections get full admin rights and a special rank
 	else if(isnull(address) || (address in list("127.0.0.1", "::1")))
@@ -136,6 +58,25 @@
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
 	. = ..()	//calls mob.Login()
+
+	if (byond_version >= 512)
+		if (!byond_build || byond_build < 1386)
+			message_admins("<span class='adminnotice'>[key_name(src)] has been detected as spoofing their byond version. Connection rejected.</span>")
+			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
+			log_access("Failed Login: [key] - Spoofed byond version")
+			qdel(src)
+
+		if (num2text(byond_build) in GLOB.blacklisted_builds)
+			log_access("Failed login: [key] - blacklisted byond version")
+			to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
+			to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
+			to_chat(src, "<span class='danger'>Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
+			if(connecting_admin)
+				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
+			else
+				qdel(src)
+				return
+
 	prefs.sanitize_preferences()
 
 	if(custom_event_msg && custom_event_msg != "")
@@ -151,13 +92,10 @@
 
 	chatOutput.start() // Starts the chat
 
-	// Forcibly enable hardware-accelerated graphics, as we need them for the lighting overlays.
-	// (but turn them off first, since sometimes BYOND doesn't turn them on properly otherwise)
-	spawn(5) // And wait a half-second, since it sounds like you can do this too fast.
-		if(src)
-			winset(src, null, "command=\".configure graphics-hwmode off\"")
-			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
-			winset(src, null, "command=\".configure graphics-hwmode on\"")
+	connection_time = world.time
+	connection_realtime = world.realtime
+	connection_timeofday = world.timeofday
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 	log_client_to_db()
 
@@ -169,15 +107,15 @@
 		void.MakeGreed()
 	screen += void
 
-	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
+	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		src << "<span class='info'>You have unread updates in the changelog.</span>"
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
-		if(config.aggressive_changelog)
+		if(config_legacy.aggressive_changelog)
 			src.changes()
 
 	hook_vr("client_new",list(src)) //VOREStation Code
 
-	if(config.paranoia_logging)
+	if(config_legacy.paranoia_logging)
 		if(isnum(player_age) && player_age == -1)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
 		if(isnum(account_age) && account_age <= 2)
@@ -200,6 +138,33 @@
 	return QDEL_HINT_HARDDEL_NOW
 
 // here because it's similar to below
+
+/client/proc/add_system_note(system_ckey, message)
+	notes_add(ckey, message)
+/*
+	var/sql_system_ckey = sanitizeSQL(system_ckey)
+	var/sql_ckey = sanitizeSQL(ckey)
+	//check to see if we noted them in the last day.
+	var/datum/DBQuery/query_get_notes = SSdbcore.NewQuery("SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = '[sql_ckey]' AND adminckey = '[sql_system_ckey]' AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND expire_timestamp > NOW()")
+	if(!query_get_notes.Execute())
+		qdel(query_get_notes)
+		return
+	if(query_get_notes.NextRow())
+		qdel(query_get_notes)
+		return
+	qdel(query_get_notes)
+	//regardless of above, make sure their last note is not from us, as no point in repeating the same note over and over.
+	query_get_notes = SSdbcore.NewQuery("SELECT adminckey FROM [format_table_name("messages")] WHERE targetckey = '[sql_ckey]' AND deleted = 0 AND expire_timestamp > NOW() ORDER BY timestamp DESC LIMIT 1")
+	if(!query_get_notes.Execute())
+		qdel(query_get_notes)
+		return
+	if(query_get_notes.NextRow())
+		if (query_get_notes.item[1] == system_ckey)
+			qdel(query_get_notes)
+			return
+	qdel(query_get_notes)
+	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
+*/
 
 // Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
 
@@ -276,16 +241,17 @@
 
 	//Panic bunker code
 	if ((player_age == -1) && !(ckey in GLOB.PB_bypass)) //first connection
-		if (config.panic_bunker && !holder && !deadmin_holder)
+		if (config_legacy.panic_bunker && !holder && !deadmin_holder)
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, config.panic_bunker_message)
+			to_chat(src, config_legacy.panic_bunker_message)
 			qdel(src)
 			return 0
+	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 
 	// VOREStation Edit Start - Department Hours
-	if(config.time_off)
+	if(config_legacy.time_off)
 		var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
 		query_hours.Execute()
 		while(query_hours.NextRow())

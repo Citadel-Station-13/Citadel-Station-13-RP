@@ -54,6 +54,7 @@
 	master_area = null
 
 /obj/machinery/media/Move()
+	disconnect_media_source() // This line is imperative because it prevents a bug wherein multiple areas that *once* but *no longer* have a jukebox in them still hear whatever the original jukebox is now playing, regardless of area. -Drofoljaelisglis
 	..()
 	if(anchored)
 		update_music()

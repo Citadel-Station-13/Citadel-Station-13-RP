@@ -75,7 +75,16 @@
 		if(S.robo_repair(15, BRUTE, "some dents", src, user))
 			remove_fuel(1, user)
 			return 1
-
+	if(user.a_intent != I_HELP)
+		if(welding)
+			remove_fuel(1, user, 0)
+		if(isliving(A))
+			var/mob/living/L = A
+			L.IgniteMob()
+/*		if(istype(A, /turf)) // cant get this to work smh -hatterhat
+			var/turf/T = get_turf(A)
+			T.hotspot_expose(700, 50, 1)
+*/
 	return ..()
 
 /obj/item/weapon/weldingtool/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -121,9 +130,6 @@
 		++burned_fuel_for
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
 			remove_fuel(1)
-
-
-
 		if(get_fuel() < 1)
 			setWelding(0)
 
@@ -139,11 +145,12 @@
 
 
 /obj/item/weapon/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(!proximity)
+		return
+	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
-			to_chat(user, "<span class='notice'>Welder refueled</span>")
+			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
 		else if(!welding)
@@ -156,14 +163,6 @@
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 			return
-	if (src.welding)
-		remove_fuel(1)
-		var/turf/location = get_turf(user)
-		if(isliving(O))
-			var/mob/living/L = O
-			L.IgniteMob()
-		if (istype(location, /turf))
-			location.hotspot_expose(700, 50, 1)
 	return
 
 
@@ -179,7 +178,7 @@
 	return max_fuel
 
 //Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/weapon/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/weapon/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null, var/eyecheck = 1)
 	if(!welding)
 		return 0
 	if(amount)
@@ -187,7 +186,8 @@
 	if(get_fuel() >= amount)
 		reagents.remove_reagent("fuel", amount)
 		if(M)
-			eyecheck(M)
+			if(eyecheck)
+				eyecheck(M)
 		update_icon()
 		return 1
 	else

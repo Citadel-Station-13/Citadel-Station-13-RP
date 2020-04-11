@@ -22,7 +22,7 @@
 			return
 
 	var/nutrition_used = nutrition * 0.5
-	var/time = (240+960/(1 + nutrition_used/75))
+	var/time = (40+360/(1 + nutrition_used/70))
 
 	//Clicked regen while dead.
 	if(stat == DEAD)
@@ -140,9 +140,6 @@
 	//Visual effects
 	var/T = get_turf(src)
 	new /obj/effect/gibspawner/human/xenochimera(T)
-
-	reviving = REVIVING_COOLDOWN
-	schedule_callback_in(1 HOUR, VARSET_CALLBACK(src, reviving, 0))
 
 /obj/effect/gibspawner/human/xenochimera
 	fleshcolor = "#14AD8B"

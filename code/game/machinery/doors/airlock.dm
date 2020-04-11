@@ -1178,7 +1178,7 @@ About the new airlock wires panel:
 
 		electronics = assembly.electronics
 		electronics.loc = src
-
+		wires = new/datum/wires/airlock(src) //so new default airlocks won't have 'null' wires
 		//update the door's access to match the electronics'
 		secured_wires = electronics.secure
 		if(electronics.one_access)

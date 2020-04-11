@@ -2635,7 +2635,7 @@
 	desc = "Use on a hydroponics tray to freeze your crops into stasis if you don't want them to die while you're out of the room. You can also use this on airlocks or APCs to try to hack them without cutting wires, but that's immoral.";
 	name = "hydroponics multitool"
 	},
-/obj/item/weapon/shovel/spade,
+/obj/item/weapon/pickaxe/shovel/spade,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -2729,7 +2729,7 @@
 /obj/structure/table/standard{
 	name = "plastic table frame"
 	},
-/obj/item/weapon/shovel/spade,
+/obj/item/weapon/pickaxe/shovel/spade,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -5774,7 +5774,7 @@
 	desc = "Use on a hydroponics tray to freeze your crops into stasis if you don't want them to die while you're out of the room. You can also use this on airlocks or APCs to try to hack them without cutting wires, but that's immoral.";
 	name = "hydroponics multitool"
 	},
-/obj/item/weapon/shovel/spade,
+/obj/item/weapon/pickaxe/shovel/spade,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},

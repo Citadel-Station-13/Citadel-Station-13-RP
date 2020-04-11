@@ -473,6 +473,11 @@
 	path = /obj/item/clothing/under/utility/sifguard/medical
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
 
+/datum/gear/uniform/sifguard/science
+	display_name = "uniform, crew (science)"
+	path = /obj/item/clothing/under/utility/sifguard/science
+	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist")
+
 /datum/gear/uniform/sifguard/engineering
 	display_name = "uniform, crew (engineering)"
 	path = /obj/item/clothing/under/utility/sifguard/engineering
@@ -499,6 +504,11 @@
 	path = /obj/item/clothing/under/utility/fleet/medical
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
 
+/datum/gear/uniform/fleet/science
+	display_name = "uniform, coveralls (science)"
+	path = /obj/item/clothing/under/utility/fleet/science
+	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist")
+
 /datum/gear/uniform/fleet/engineering
 	display_name = "uniform, coveralls (engineering)"
 	path = /obj/item/clothing/under/utility/fleet/engineering
@@ -524,6 +534,11 @@
 	display_name = "uniform, fatigues (medical)"
 	path = /obj/item/clothing/under/utility/marine/medical
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Search and Rescue")
+
+/datum/gear/uniform/marine/science
+	display_name = "uniform, fatigues (science)"
+	path = /obj/item/clothing/under/utility/marine/science
+	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist")
 
 /datum/gear/uniform/marine/engineering
 	display_name = "uniform, fatigues (engineering)"
@@ -553,3 +568,25 @@
 /datum/gear/uniform/marine/tan
 	display_name = "uniform, fatigues (tan)"
 	path = /obj/item/clothing/under/utility/marine/tan
+
+// April 2020 - Drof's Additions Begin Below
+/datum/gear/uniform/stripeddress
+	display_name = "striped dress"
+	path = /obj/item/clothing/under/dress/stripeddress
+
+/datum/gear/uniform/festivedress
+	display_name = "festive dress"
+	path = /obj/item/clothing/under/festivedress
+
+/datum/gear/uniform/haltertop
+	display_name = "halter top"
+	path = /obj/item/clothing/under/haltertop
+
+/datum/gear/uniform/littleblackdress
+	display_name = "little black dress"
+	path = /obj/item/clothing/under/littleblackdress
+
+/datum/gear/uniform/bridgeofficer
+	display_name = "bridge officer uniform"
+	path = /obj/item/clothing/under/bridgeofficer
+	allowed_roles = list("Command Secretary")

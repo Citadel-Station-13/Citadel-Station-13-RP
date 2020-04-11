@@ -372,6 +372,8 @@ var/global/list/cont_flavors_musky = list("drenched",
 				"sticky",
 				"tainted")
 
+/var/global/list/existing_solargrubs = list()
+
 /hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
 

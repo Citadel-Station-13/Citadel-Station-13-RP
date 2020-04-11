@@ -3,7 +3,7 @@
 var/list/whitelist = list()
 
 /hook/startup/proc/loadWhitelist()
-	if(config.usewhitelist)
+	if(config_legacy.usewhitelist)
 		load_whitelist()
 	return 1
 
@@ -19,7 +19,7 @@ var/list/whitelist = list()
 /var/list/alien_whitelist = list()
 
 /hook/startup/proc/loadAlienWhitelist()
-	if(config.usealienwhitelist)
+	if(config_legacy.usealienwhitelist)
 		load_alienwhitelist()
 	return 1
 
@@ -73,7 +73,7 @@ var/list/whitelist = list()
 				return 1
 
 /proc/whitelist_overrides(mob/M)
-	if(!config.usealienwhitelist)
+	if(!config_legacy.usealienwhitelist)
 		return 1
 	if(check_rights(R_ADMIN, 0, M))
 		return 1

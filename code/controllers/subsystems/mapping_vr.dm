@@ -30,16 +30,16 @@ SUBSYSTEM_DEF(mapping)
 
 	var/turf/T = get_turf(engine_loader)
 	if(!isturf(T))
-		to_world_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
+		subsystem_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
 		return
 
 	// Choose an engine type
 	var/datum/map_template/engine/chosen_type = null
-	if (LAZYLEN(config.engine_map))
-		var/chosen_name = pick(config.engine_map)
+	if (LAZYLEN(config_legacy.engine_map))
+		var/chosen_name = pick(config_legacy.engine_map)
 		chosen_type = map_templates[chosen_name]
 		if(!istype(chosen_type))
-			error("Configured engine map [chosen_name] is not a valid engine map name!")
+			log_world("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
 		var/list/engine_types = list()
 		for(var/map in map_templates)
@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(mapping)
 			if(istype(MT))
 				engine_types += MT
 		chosen_type = pick(engine_types)
-	to_world_log("Chose Engine Map: [chosen_type.name]")
+	subsystem_log("Chose Engine Map: [chosen_type.name]")
 	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
 
 	// Annihilate movable atoms
@@ -62,12 +62,12 @@ SUBSYSTEM_DEF(mapping)
 
 	for(var/list/maplist in deffo_load)
 		if(!islist(maplist))
-			error("Lateload Z level [maplist] is not a list! Must be in a list!")
+			log_world("Lateload Z level [maplist] is not a list! Must be in a list!")
 			continue
 		for(var/mapname in maplist)
 			var/datum/map_template/MT = map_templates[mapname]
 			if(!istype(MT))
-				error("Lateload Z level \"[mapname]\" is not a valid map!")
+				log_world("Lateload Z level \"[mapname]\" is not a valid map!")
 				continue
 			MT.load_new_z(centered = FALSE)
 			CHECK_TICK
@@ -79,13 +79,13 @@ SUBSYSTEM_DEF(mapping)
 			return
 
 		if(!islist(picklist)) //So you can have a 'chain' of z-levels that make up one away mission
-			error("Randompick Z level [picklist] is not a list! Must be in a list!")
+			log_world("Randompick Z level [picklist] is not a list! Must be in a list!")
 			return
 
 		for(var/map in picklist)
 			var/datum/map_template/MT = map_templates[map]
 			if(!istype(MT))
-				error("Randompick Z level \"[map]\" is not a valid map!")
+				log_world("Randompick Z level \"[map]\" is not a valid map!")
 			else
 				MT.load_new_z(centered = FALSE)
 

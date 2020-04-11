@@ -372,6 +372,10 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/miner
 	allowed_roles = list("Shaft Miner")
 
+/datum/gear/suit/techrobes
+	display_name = "techpriest"
+	path = /obj/item/clothing/suit/storage/hooded/techpriest
+
 /datum/gear/suit/varsity
 	display_name = "varsity jacket selection"
 	path = /obj/item/clothing/suit/varsity
@@ -497,3 +501,16 @@ datum/gear/suit/duster
 	display_name = "snowsuit, supply"
 	path = /obj/item/clothing/suit/storage/snowsuit/cargo
 	allowed_roles = list("Quartermaster","Shaft Miner","Cargo Technician","Head of Personnel")
+
+/datum/gear/suit/miscellaneous/cardigan
+	display_name = "cardigan"
+	path = /obj/item/clothing/suit/storage/toggle/cardigan
+
+/datum/gear/suit/miscellaneous/cardigan/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
+	display_name = "bridge officer dress jacket"
+	path = /obj/item/clothing/under/bridgeofficer
+	allowed_roles = list("Command Secretary")

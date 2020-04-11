@@ -414,3 +414,8 @@
 	desc = "Keeps hair out of the way for important... jobs."
 	icon_state = "maid"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/bohat
+	name = "bridge officer hat"
+	desc = "For a person with no authority who takes themselves very seriously."
+	icon_state = "bridgeofficersoft"

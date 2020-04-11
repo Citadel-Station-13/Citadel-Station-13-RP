@@ -31,7 +31,10 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/weapon/tank/emergency/oxygen/engi,
-		/obj/item/weapon/reagent_containers/spray/windowsealant) //VOREStation Add
+		/obj/item/device/gps/engineering/ce,
+		/obj/item/weapon/reagent_containers/spray/windowsealant,//VOREStation Add
+		/obj/item/weapon/pipe_dispenser, //Citadel Addition
+		/obj/item/weapon/shield_diffuser) //Citadel Addition
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
 	if(prob(50))
@@ -98,7 +101,9 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/weapon/tank/emergency/oxygen/engi,
-		/obj/item/weapon/reagent_containers/spray/windowsealant) //VOREStation Add
+		/obj/item/device/gps/engineering,
+		/obj/item/weapon/reagent_containers/spray/windowsealant, //VOREStation Add
+		/obj/item/weapon/shield_diffuser) //Citadel Addition
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize()
 	if(prob(50))
@@ -133,7 +138,10 @@
 		/obj/item/taperoll/atmos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos,
 		/obj/item/clothing/shoes/boots/winter/atmos,
-		/obj/item/weapon/tank/emergency/oxygen/engi)
+		/obj/item/weapon/tank/emergency/oxygen/engi,
+		/obj/item/device/gps/engineering/atmos,
+		/obj/item/weapon/pipe_dispenser,
+		/obj/item/weapon/shield_diffuser) //Citadel Addition
 
 /obj/structure/closet/secure_closet/atmos_personal/Initialize()
 	if(prob(50))

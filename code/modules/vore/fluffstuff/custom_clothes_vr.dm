@@ -1759,6 +1759,11 @@ END OF CITADEL CHANGES */
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "vietsi_ring"
+
+/obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi/change_name(var/signet_name = "Unknown")
+	name = "[signet_name]'s Bone Signet Ring"
+	desc = "A signet ring belonging to [signet_name], carved from the bones of something long extinct, as a ward against bad luck."
+
 /* CITADEL CHANGE - Removes Virgo Fluff
 /obj/item/clothing/head/helmet/space/void/security/hasd
 	name = "HASD EVA faceplate"

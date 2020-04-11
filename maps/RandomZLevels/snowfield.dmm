@@ -80,7 +80,7 @@
 	amount = 2;
 	icon_state = "coil2"
 	},
-/obj/item/weapon/shovel,
+/obj/item/weapon/pickaxe/shovel,
 /obj/machinery/light/small{
 	dir = 1
 	},

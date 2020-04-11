@@ -71,7 +71,7 @@
 
 /obj/structure/closet/grave/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(src.opened)
-		if(istype(W, /obj/item/weapon/shovel))
+		if(istype(W, /obj/item/weapon/pickaxe/shovel))
 			user.visible_message("<span class='notice'>[user] piles dirt into \the [src.name].</span>", \
 								 "<span class='notice'>You start to pile dirt into \the [src.name].</span>", \
 								 "<span class='notice'>You hear dirt being moved.</span>")
@@ -107,7 +107,7 @@
 		if(W)
 			W.forceMove(src.loc)
 	else
-		if(istype(W, /obj/item/weapon/shovel))
+		if(istype(W, /obj/item/weapon/pickaxe/shovel))
 			if(user.a_intent == I_HURT)	// Hurt intent means you're trying to kill someone, or just get rid of the grave
 				user.visible_message("<span class='notice'>[user] begins to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You start to smoothe out the dirt of \the [src.name].</span>", \

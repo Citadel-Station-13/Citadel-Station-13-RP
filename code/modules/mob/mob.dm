@@ -333,7 +333,7 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(lentext(msg) <= 40)
+		if(length(msg) <= 40)
 			return "<font color='blue'>[msg]</font>"
 		else
 			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
@@ -349,7 +349,7 @@
 	set name = "Respawn"
 	set category = "OOC"
 
-	if (!( config.abandon_allowed ))
+	if (!( config_legacy.abandon_allowed ))
 		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
 		return
 	if ((stat != 2 || !( ticker )))
@@ -362,7 +362,7 @@
 		var/deathtime = world.time - src.timeofdeath
 		if(istype(src,/mob/observer/dead))
 			var/mob/observer/dead/G = src
-			if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
+			if(G.has_enabled_antagHUD == 1 && config_legacy.antag_hud_restricted)
 				to_chat(usr, "<font color='blue'><B>By using the antagHUD you forfeit the ability to join the round.</B></font>")
 				return
 		var/deathtimeminutes = round(deathtime / 600)
@@ -432,8 +432,8 @@
 		'html/changelog.html'
 		)
 	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
 		winset(src, "rpane.changelog", "background-color=none;font-style=;")
 
@@ -557,7 +557,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/pull_damage()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.health - H.halloss <= config.health_threshold_softcrit)
+		if(H.health - H.halloss <= config_legacy.health_threshold_softcrit)
 			for(var/name in H.organs_by_name)
 				var/obj/item/organ/external/e = H.organs_by_name[name]
 				if(e && H.lying)
@@ -696,80 +696,93 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/Stat()
 	..()
-	. = (is_client_active(10 MINUTES))
 
-	if(.)
-		if(statpanel("Status") && ticker && ticker.current_state != GAME_STATE_PREGAME)
-			stat("Station Time", stationtime2text())
-			stat("Station Date", stationdate2text())
-			stat("Round Duration", roundduration2text())
+	//This is only called from client/Stat(), let's assume client exists.
 
-		if(client.holder)
-			if(statpanel("Status"))
-				stat("Location:", "([x], [y], [z]) [loc]")
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
+	if(statpanel("Status"))
+		//var/list/L = list()
+		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		//L += SSmapping.stat_map_name
+		//L += "Round ID: [GLOB.round_id || "NULL"]"
+		// VIRGO START
+		stat("Station Time", stationtime2text())
+		stat("Station Date", stationdate2text())
+		stat("Round Duration", roundduration2text())
+		// VIRGO END
+		stat("Time dilation", SStime_track.stat_time_text)
+		//L += SSshuttle.emergency_shuttle_stat_text
+		//stat(null, "[L.Join("\n\n")]")
 
-			if(statpanel("Processes"))
-				if(processScheduler)
-					processScheduler.statProcesses()
-
-			if(statpanel("MC"))
-				stat("CPU:","[world.cpu]")
-				stat("Instances:","[world.contents.len]")
-				stat(null)
-				if(Master)
-					Master.stat_entry()
-				else
-					stat("Master Controller:", "ERROR")
-				if(Failsafe)
-					Failsafe.stat_entry()
-				else
-					stat("Failsafe Controller:", "ERROR")
-				if(GLOB)
-					GLOB.stat_entry()
-				else
-					stat("Globals:", "ERROR")
-				if(Master)
-					stat(null)
-					for(var/datum/controller/subsystem/SS in Master.subsystems)
-						SS.stat_entry()
-
-			if(statpanel("Tickets"))
-				GLOB.ahelp_tickets.stat_entry()
-
-			if(length(GLOB.sdql2_queries))
-				if(statpanel("SDQL2"))
-					stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-					for(var/i in GLOB.sdql2_queries)
-						var/datum/SDQL2_query/Q = i
-						Q.generate_stat()
-
-		if(listed_turf && client)
-			if(!TurfAdjacent(listed_turf))
-				listed_turf = null
+	if(client.holder)
+		if(statpanel("MC"))
+			var/turf/T = get_turf(client.eye)
+			stat("Location:", COORD(T))
+			stat("CPU:", "[world.cpu]")
+			stat("Instances:", "[num2text(world.contents.len, 10)]")
+			stat("World Time:", "[world.time]")
+			GLOB.stat_entry()
+			config.stat_entry()
+			stat(null)
+			if(Master)
+				Master.stat_entry()
 			else
-				if(statpanel("Turf"))
-					stat("\icon[listed_turf]", listed_turf.name)
-					for(var/atom/A in listed_turf)
-						if(!A.mouse_opacity)
-							continue
-						if(A.invisibility > see_invisible)
-							continue
-						if(is_type_in_list(A, shouldnt_see))
-							continue
-						if(A.plane > plane)
-							continue
-						stat(A)
+				stat("Master Controller:", "ERROR")
+			if(Failsafe)
+				Failsafe.stat_entry()
+			else
+				stat("Failsafe Controller:", "ERROR")
+			if(Master)
+				stat(null)
+				for(var/datum/controller/subsystem/SS in Master.subsystems)
+					SS.stat_entry()
+			//GLOB.cameranet.stat_entry()
+		if(statpanel("Tickets"))
+			GLOB.ahelp_tickets.stat_entry()
+		if(length(GLOB.sdql2_queries))
+			if(statpanel("SDQL2"))
+				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
+				for(var/i in GLOB.sdql2_queries)
+					var/datum/SDQL2_query/Q = i
+					Q.generate_stat()
+		if(statpanel("Processes"))
+			if(processScheduler)
+				processScheduler.statProcesses()
 
+	if(listed_turf && client)
+		if(!TurfAdjacent(listed_turf))
+			listed_turf = null
+		else if(statpanel("Turf"))
+			stat("\icon[listed_turf]", listed_turf.name)
+			var/list/overrides = list()
+			for(var/image/I in client.images)
+				if(I.loc && I.loc.loc == listed_turf && I.override)
+					overrides += I.loc
+			for(var/atom/A in listed_turf)
+				if(!A.mouse_opacity)
+					continue
+				if(A.invisibility > see_invisible)
+					continue
+				if(overrides.len && (A in overrides))
+					continue
+				/*
+				if(A.IsObscured())
+					continue
+				*/
+				if(A.plane > plane)
+					continue
+				stat(A)
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove)						return 0
-	if(stat)							return 0
-	if(anchored)						return 0
-	if(transforming)						return 0
-	return 1
+	if(!canmove)
+		return FALSE
+	if(stat)
+		return FALSE
+	if(anchored)
+		return FALSE
+	if(transforming)
+		return FALSE
+	return TRUE
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -1134,10 +1147,10 @@ mob/proc/yank_out_object()
 //Exploitable Info Update
 
 /mob/proc/amend_exploitable(var/obj/item/I)
-	var/obj/item/exploit_item = new I(src.loc)
-	exploit_addons |= exploit_item
-	var/exploitmsg = html_decode("\n" + "Has " + exploit_item.name + ".")
-	exploit_record += exploitmsg
+	if(istype(I))
+		exploit_addons |= I
+		var/exploitmsg = html_decode("\n" + "Has " + I.name + ".")
+		exploit_record += exploitmsg
 
 /client/proc/check_has_body_select()
 	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
