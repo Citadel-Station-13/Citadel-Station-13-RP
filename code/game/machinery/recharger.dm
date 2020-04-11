@@ -52,22 +52,22 @@
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>\The [E] has no recharge port.</span>")
 				return
-		if(istype(G, /obj/item/modular_computer))
+		else if(istype(G, /obj/item/modular_computer))
 			var/obj/item/modular_computer/C = G
 			if(!C.battery_module)
 				to_chat(user, "<span class='notice'>\The [C] does not have a battery installed. </span>")
 				return
-		if(istype(G, /obj/item/weapon/melee/baton))
+		else if(istype(G, /obj/item/weapon/melee/baton))
 			var/obj/item/weapon/melee/baton/B = G
 			if(B.use_external_power)
 				to_chat(user, "<span class='notice'>\The [B] has no recharge port.</span>")
 				return
-		if(istype(G, /obj/item/device/flash))
+		else if(istype(G, /obj/item/device/flash))
 			var/obj/item/device/flash/F = G
 			if(F.use_external_power)
 				to_chat(user, "<span class='notice'>\The [F] has no recharge port.</span>")
 				return
-		if(istype(G, /obj/item/weapon/weldingtool/electric))
+		else if(istype(G, /obj/item/weapon/weldingtool/electric))
 			var/obj/item/weapon/weldingtool/electric/EW = G
 			if(EW.use_external_power)
 				to_chat(user, "<span class='notice'>\The [EW] has no recharge port.</span>")
@@ -77,7 +77,7 @@
 			return
 
 		user.drop_item()
-		G.loc = src
+		G.forceMove(src)
 		charging = G
 		update_icon()
 		user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")

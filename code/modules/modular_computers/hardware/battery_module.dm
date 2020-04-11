@@ -8,7 +8,7 @@
 	malfunction_probability = 1
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	var/battery_rating = 750
-	var/obj/item/weapon/cell/battery = null
+	var/obj/item/weapon/cell/battery = /obj/item/weapon/cell
 
 /obj/item/weapon/computer_hardware/battery_module/advanced
 	name = "advanced battery"
@@ -55,19 +55,16 @@
 	icon_state = "battery_lambda"
 	hardware_size = 1
 	battery_rating = 30000
-
-/obj/item/weapon/computer_hardware/battery_module/lambda/New()
-	..()
-	battery = new/obj/item/weapon/cell/infinite(src)
+	battery = /obj/item/weapon/cell/infinite
 
 /obj/item/weapon/computer_hardware/battery_module/diagnostics(var/mob/user)
 	..()
 	to_chat(user, "Internal battery charge: [battery.charge]/[battery.maxcharge] CU")
 
 /obj/item/weapon/computer_hardware/battery_module/Initialize(mapload)
-	battery = new /obj/item/weapon/cell(src)
-	battery.maxcharge = battery_rating
-	battery.charge = 0
+	if(ispath(battery))
+		battery = new battery
+		battery.maxcharge = battery.charge = battery_rating
 	return ..()
 
 /obj/item/weapon/computer_hardware/battery_module/Destroy()
