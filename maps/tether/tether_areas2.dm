@@ -47,6 +47,7 @@
 	name = "\improper Atrium Third Floor"
 	icon_state = "dk_yellow"
 
+
 /area/tether/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
 	icon_state = "dk_yellow"
@@ -73,6 +74,10 @@
 	name = "\improper Bar Backroom"
 	icon_state = "red"
 	sound_env = SMALL_SOFTFLOOR
+
+/area/tether/surfacebase/fishing_garden
+	name = "\improper fish garden"
+	icon_state = "blue"
 
 // /area/tether/surfacebase/east_stairs_one //This is just part of a lower hallway
 

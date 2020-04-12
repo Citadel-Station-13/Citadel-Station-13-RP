@@ -2972,6 +2972,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"gC" = (
+/obj/machinery/ntnet_relay,
+/turf/simulated/floor/bluegrid{
+	name = "Mainframe Base";
+	nitrogen = 100;
+	oxygen = 0;
+	temperature = 80
+	},
+/area/tcommsat/chamber)
 "gD" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -3060,13 +3069,8 @@
 /turf/simulated/floor,
 /area/maintenance/lower/north)
 "gO" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/north)
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "gP" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -3144,17 +3148,24 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "gZ" = (
-/turf/simulated/floor,
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "ha" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
+/obj/item/device/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/open,
+/area/tether/surfacebase/north_staires_two)
 "hb" = (
-/obj/random/obstruction,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
+/turf/simulated/wall,
+/area/tether/surfacebase/fishing_garden)
 "hc" = (
 /obj/structure/sign/directions/evac{
 	dir = 1
@@ -3255,26 +3266,19 @@
 /area/maintenance/lower/bar)
 "hm" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
-"hn" = (
-/obj/item/clothing/gloves/boxing/yellow,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
-"ho" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_staires_two)
+"hn" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"ho" = (
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
 "hp" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -3299,12 +3303,9 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_staires_two)
 "hr" = (
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
 "hs" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -3395,41 +3396,25 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "hC" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/north)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
 "hD" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/north_staires_two)
 "hE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/light_switch{
-	dir = 1;
-	pixel_x = 4;
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "hF" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/fishing_garden)
 "hG" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -3448,23 +3433,17 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_staires_two)
 "hH" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+/obj/item/device/radio/intercom{
+	dir = 1;
+	pixel_y = 24;
+	req_access = list()
 	},
-/obj/machinery/power/apc{
-	dir = 2;
-	name = "south bump";
-	pixel_y = -28
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/north_staires_two)
+/area/tether/surfacebase/fishing_garden)
 "hI" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4306,6 +4285,10 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
+"jv" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
 "jw" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4359,6 +4342,16 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/bar)
+"jE" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
 "jF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -10619,6 +10612,54 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
+"vg" = (
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"vh" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"vi" = (
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"vj" = (
+/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/railing,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"vk" = (
+/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"vl" = (
+/turf/simulated/floor/beach/sand,
+/area/tether/surfacebase/fishing_garden)
+"vm" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"vn" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "vo" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
@@ -11033,6 +11074,13 @@
 /obj/item/clothing/under/schoolgirl,
 /turf/simulated/floor/wood,
 /area/maintenance/lower/atmos)
+"vY" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
 "vZ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -11218,6 +11266,46 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
+"wt" = (
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"wu" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"wv" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"ww" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "wx" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -11268,6 +11356,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
+"wA" = (
+/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"wB" = (
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"wC" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
 "wD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	icon_state = "intact";
@@ -11275,6 +11379,26 @@
 	},
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
+"wE" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"wF" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
 "wG" = (
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
@@ -11890,6 +12014,45 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
+"xm" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xn" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xo" = (
+/obj/item/device/radio/intercom{
+	dir = 1;
+	pixel_y = 24;
+	req_access = list()
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xp" = (
+/obj/structure/railing,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xq" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"xr" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
 "xs" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -12162,6 +12325,35 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"xO" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xP" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/railing,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xQ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xR" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/railing,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"xS" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "xT" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -12492,6 +12684,37 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"ys" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"yt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"yu" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/railing,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"yv" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/holofloor/desert,
+/area/tether/surfacebase/fishing_garden)
+"yw" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/beach/sand,
+/area/tether/surfacebase/fishing_garden)
 "yx" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12577,6 +12800,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/janitor)
+"yD" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "yE" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -12799,6 +13029,10 @@
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled,
 /area/janitor)
+"yY" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "yZ" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -13963,6 +14197,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
+"Bo" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "Bp" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
@@ -14199,6 +14441,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
+"BT" = (
+/obj/structure/flora/ausbushes/leafybush,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "BU" = (
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -14384,6 +14630,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
+"Cs" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "Ct" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -14449,6 +14700,12 @@
 	},
 /turf/simulated/open,
 /area/engineering/atmos)
+"CB" = (
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/tree/jungle_small,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "CC" = (
 /obj/structure/railing{
 	dir = 8
@@ -14462,6 +14719,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
+"CE" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/tree/jungle_small,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "CF" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/engi{
@@ -14548,6 +14810,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
+"CQ" = (
+/obj/structure/flora/tree/jungle,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "CR" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed,
@@ -14559,6 +14825,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
+"CT" = (
+/obj/structure/flora/tree/jungle_small,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "CU" = (
 /obj/structure/dogbed,
 /obj/item/clothing/accessory/collar/pink,
@@ -17594,6 +17864,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"IP" = (
+/mob/living/simple_mob/animal/passive/fish/bass,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"IQ" = (
+/mob/living/simple_mob/animal/passive/fish/rockfish,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"IR" = (
+/mob/living/simple_mob/animal/passive/fish/koi,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"IS" = (
+/mob/living/simple_mob/animal/passive/fish/solarfish,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
 "IT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -17608,6 +17894,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"IU" = (
+/mob/living/simple_mob/animal/passive/fish/trout,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
 "IV" = (
 /obj/structure/closet,
 /obj/structure/catwalk,
@@ -17662,6 +17952,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"Je" = (
+/mob/living/simple_mob/animal/passive/bird/azure_tit,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "Jf" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17701,6 +17995,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"Jl" = (
+/obj/structure/flora/ausbushes/leafybush,
+/mob/living/simple_mob/animal/passive/bird/black_bird,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "Jm" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -17721,6 +18020,23 @@
 "Jo" = (
 /turf/simulated/open,
 /area/maintenance/lower/atmos)
+"Jp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
+"Jq" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
 "Jr" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -17760,6 +18076,19 @@
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"Jw" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
 "Jx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -17858,6 +18187,224 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"JK" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JM" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/vending/wallmed1{
+	emagged = 1;
+	pixel_y = 32;
+	shut_up = 0
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JO" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1;
+	name = "Atrium Second Floor"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"JP" = (
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = 4;
+	pixel_y = -24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"JQ" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"JR" = (
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/apc{
+	dir = 2;
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"JS" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
+"JT" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/passive/fish/koi,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"JU" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"JV" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JW" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
+"JY" = (
+/obj/machinery/vending/fishing,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"JZ" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"Ka" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1;
+	name = "Atrium Second Floor"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"Kb" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/north_staires_two)
+"Kc" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
+"Kd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
+"Ke" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/fishing_garden)
+"Kf" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Kg" = (
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Kh" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/railing,
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Ki" = (
+/obj/item/device/radio/intercom{
+	dir = 1;
+	pixel_y = 24;
+	req_access = list()
+	},
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "Kj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17866,6 +18413,25 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"Kk" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Kl" = (
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Km" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/passive/fish/bass,
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
 "Kn" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17884,6 +18450,25 @@
 "Ko" = (
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar_upper)
+"Kp" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/beach/water,
+/area/tether/surfacebase/fishing_garden)
+"Kq" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Kr" = (
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/flower,
+/turf/simulated/floor/holofloor/desert,
+/area/tether/surfacebase/fishing_garden)
 "Kt" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
@@ -24585,17 +25170,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+hb
 ac
 ac
 kp
@@ -24727,17 +25312,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+Kg
+gO
+gO
+gO
+Kg
+gO
+gO
+gO
+Kg
+hb
 ac
 ac
 ac
@@ -24869,17 +25454,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xO
+gO
+CE
+gO
+gO
+gO
+CQ
+gO
+Jl
+hb
 ac
 ac
 kd
@@ -25011,17 +25596,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xO
+xO
+gO
+gO
+CQ
+gO
+vn
+Je
+gO
+hb
 ac
 ac
 kr
@@ -25153,17 +25738,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+gO
+xO
+gO
+Kk
+xm
+Kk
+xm
+Kg
+gO
+hb
 ac
 cD
 kq
@@ -25295,17 +25880,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+hn
+vk
+wA
+vl
+vl
+vl
+vl
+ww
+BT
+hb
 ac
 iw
 jF
@@ -25437,17 +26022,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+vj
+vl
+vl
+vl
+Kr
+yv
+vl
+ww
+yY
+hb
 ac
 ac
 il
@@ -25579,17 +26164,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xp
+vl
+wv
+vl
+yw
+yw
+vl
+ww
+xO
+hb
 ac
 iw
 il
@@ -25721,17 +26306,17 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+Ki
+vl
+yu
+vl
+vl
+vl
+vl
+ww
+xO
+hb
 ac
 iw
 il
@@ -25863,17 +26448,17 @@ cW
 cW
 ap
 ap
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xP
+vl
+ww
+xn
+xn
+yD
+xn
+Kf
+gO
+hb
 ac
 iw
 il
@@ -26005,17 +26590,17 @@ cW
 cW
 cW
 ap
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xP
+vl
+ww
+gO
+CT
+hn
+gO
+CQ
+xO
+hb
 ac
 ac
 kb
@@ -26147,17 +26732,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+Kh
+vl
+xQ
+xm
+xm
+xm
+xm
+xO
+gO
+hb
 ac
 il
 il
@@ -26289,17 +26874,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xP
+vl
+vY
+IP
+wB
+wC
+wB
+ww
+vn
+hb
 ac
 il
 iw
@@ -26431,17 +27016,17 @@ cW
 cW
 cW
 ap
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xP
+vl
+vY
+IQ
+IR
+IQ
+IU
+Kq
+gO
+hb
 ac
 iw
 iw
@@ -26573,17 +27158,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+vg
+vl
+wE
+JT
+JU
+Km
+JU
+Kq
+Kc
+hb
 ac
 ac
 il
@@ -26715,17 +27300,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xp
+hr
+wF
+JX
+JX
+JX
+JX
+JX
+Kd
+hb
 ac
 cD
 kc
@@ -26857,17 +27442,17 @@ cW
 cW
 cW
 ap
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xo
+wu
+Jp
+Cs
+xp
+Kp
+Kp
+Kq
+Ke
+hb
 ac
 ii
 kW
@@ -26999,17 +27584,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+xS
+CB
+Jp
+vn
+Kl
+wB
+IU
+Kq
+xO
+hb
 jy
 ii
 il
@@ -27141,17 +27726,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+ys
+hE
+JS
+gO
+Kl
+IS
+xr
+Bo
+xO
+hb
 ii
 ke
 il
@@ -27283,17 +27868,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+Kg
+xR
+Jp
+vn
+xp
+wB
+IR
+ww
+Kg
+hb
 ii
 kf
 ku
@@ -27425,17 +28010,17 @@ cW
 cW
 cW
 cW
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+hb
+hb
+hC
+xq
+hC
+hb
+hb
+hb
+hb
+hb
+hb
 ii
 ii
 kv
@@ -27568,11 +28153,11 @@ cW
 cW
 cW
 ac
-ac
-ac
-ac
-ac
-ac
+hb
+JY
+yt
+JV
+hb
 ac
 ac
 ac
@@ -27710,11 +28295,11 @@ cW
 cW
 cW
 ac
-ac
-ac
-ac
-ac
-ac
+hb
+hF
+JK
+ho
+hb
 ii
 ii
 ii
@@ -27852,11 +28437,11 @@ cW
 cW
 cW
 ac
-ac
-ac
-ac
-ac
-ac
+hb
+hH
+JL
+JV
+hb
 ii
 iO
 je
@@ -27994,11 +28579,11 @@ cW
 cW
 ap
 ap
-ap
-ap
-ap
-ac
-ac
+hb
+JZ
+yt
+ho
+hb
 ii
 iB
 jf
@@ -28136,11 +28721,11 @@ cW
 cW
 ap
 gK
-gZ
-ha
-ap
-ac
-ac
+hb
+wt
+yt
+ho
+hb
 ii
 iP
 iT
@@ -28278,11 +28863,11 @@ cW
 cW
 ap
 gL
-ha
-hm
-ap
-ac
-ac
+hb
+JM
+yt
+ho
+hb
 ii
 iP
 jf
@@ -28420,11 +29005,11 @@ cW
 cW
 ap
 gM
-gZ
-hn
-ap
-ac
-ii
+hb
+vm
+JN
+JW
+hb
 ii
 iP
 jg
@@ -28563,10 +29148,10 @@ ap
 ap
 gN
 hb
-ap
-ap
-ap
-ii
+Jq
+Ka
+hb
+hb
 ix
 iQ
 jh
@@ -28703,11 +29288,11 @@ fP
 gd
 gs
 gF
-gO
-gO
-gO
-hC
-hC
+gZ
+hm
+Jw
+Kb
+vh
 ij
 iy
 iR
@@ -28847,8 +29432,8 @@ ge
 ge
 ge
 hc
-ge
-hD
+jv
+JO
 ge
 ii
 iz
@@ -28987,10 +29572,10 @@ fR
 ge
 gt
 gt
-gt
+ha
 hd
-ho
-hE
+jE
+JP
 ge
 ik
 iA
@@ -29132,7 +29717,7 @@ gt
 gP
 gt
 hp
-hF
+JQ
 ge
 il
 iB
@@ -29415,8 +30000,8 @@ gu
 ge
 gQ
 hf
-hr
-hH
+vi
+JR
 ge
 il
 iC
@@ -33311,7 +33896,7 @@ Gg
 Gq
 GD
 GP
-Gz
+gC
 Hd
 Hn
 Gz
