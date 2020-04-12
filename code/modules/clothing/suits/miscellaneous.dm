@@ -876,8 +876,12 @@ obj/item/clothing/suit/kamishimo
 	name = "science snowsuit"
 	icon_state = "snowsuit_science"
 
-/obj/item/clothing/under/bridgeofficer
-	name = "bridge officer uniform"
-	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
-	icon_state = "bridgeofficer"
-	item_state = "bridgeofficer"
+/obj/item/clothing/suit/storage/bridgeofficer
+	name = "bridge officer dress jacket"
+	desc = "A dress jacket for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficer_jacket"
+
+/obj/item/clothing/suit/storage/dutchcoat
+	name = "western coat"
+	desc = "When I'm gone, they'll just find another coat. They have to. Because they have to justify their wages."
+	icon_state = "DutchJacket"

@@ -30,10 +30,21 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
-	brute_mod =		0.2
-	burn_mod =		1.4
-	oxy_mod =		0
 
+	brute_mod =		0.30 // 70% brute reduction
+	burn_mod =		1.4 //60% burn weakness
+	oxy_mod =		0
+ /*
+These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
+A worst-case sev 4 emp will do 88 damage pre-mitigation, and 140.8 post-mitigation (as resist is negative) spread out over all the limbs.
+A best case sev 4 emp will do 55 pre-mitigation damage. This is 88 damage.
+A worst case sev 3 emp will do 66 pre-mitigation damage. This is 105.6 damage.
+A best case sev 3 emp will do 44 pre-mitigation damage. This is 70.4 damage.
+A worst case sev 2 emp will do 55 pre-mitigation damage. This is 88 damage.
+A best case sev 2 emp will do 22 pre-mitigation damage. This is 35.2 damage.
+A worst case sev 1 emp will do 33 pre-mitigation damage.This is 52.8 damage.
+A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
+*/
 	cold_level_1 = 280 //Default 260 - Lower is better
 	cold_level_2 = 220 //Default 200
 	cold_level_3 = 130 //Default 120
@@ -42,8 +53,10 @@
 	heat_level_2 = 370 //Default 400
 	heat_level_3 = 600 //Default 1000
 
-	hazard_low_pressure = -1 //Space doesn't bother them
-	hazard_high_pressure = 200 //They can cope with slightly higher pressure
+	//Space doesn't bother them
+	hazard_low_pressure = -1
+	hazard_high_pressure = INFINITY //Totally pressure immune - in human form (blobform is also completely pressure/heat immune, bringing them both in line with each other.)
+
 
 	//Cold/heat does affect them, but it's done in special ways below
 	cold_level_1 = -INFINITY
@@ -55,7 +68,8 @@
 
 	body_temperature =      290
 
-	siemens_coefficient =   1.5 //Very bad zappy times
+	siemens_coefficient =   1.4
+
 	rarity_value =          5
 
 	has_organ = list(
@@ -165,12 +179,12 @@
 			H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.5 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever)
+	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.35 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.35 as of now) is the autoblob %hp threshold.
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
 	var/obj/item/organ/internal/nano/refactory/refactory = locate() in H.internal_organs
-	if(refactory && !(refactory.status & ORGAN_DEAD))
+	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
 
 		//MHydrogen adds speeeeeed
 		if(refactory.get_stored_material(MAT_METALHYDROGEN) >= METAL_PER_TICK)
@@ -232,13 +246,13 @@
 	if(!istype(origin))
 		expire()
 
-	//No refactory
+	//No refactory or refactory not processing buffs anymore so you can't be permanently buffed while not consuming materials
 	var/obj/item/organ/internal/nano/refactory/refactory = origin.resolve()
-	if(!istype(refactory) || refactory.status & ORGAN_DEAD)
+	if(!istype(refactory) || refactory.status & ORGAN_DEAD || refactory.processingbuffs == FALSE)
 		expire()
-
-	//Out of materials
-	if(!refactory.use_stored_material(material_name,material_use))
+		
+	// stops you from consuming materials if the toggle is off
+	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
 		expire()
 
 /datum/modifier/protean/mhydrogen
@@ -296,8 +310,11 @@
 	material_name = MAT_STEEL
 
 /datum/modifier/protean/steel/tick()
-	holder.adjustBruteLoss(-10,include_robo = TRUE) //Looks high, but these ARE modified by species resistances, so this is really 20% of this
-	holder.adjustFireLoss(-1,include_robo = TRUE) //And this is really double this
+
+	..()
+	holder.adjustBruteLoss(-9 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
+	holder.adjustFireLoss(-2.14,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
+
 	var/mob/living/carbon/human/H = holder
 	for(var/organ in H.internal_organs)
 		var/obj/item/organ/O = organ
