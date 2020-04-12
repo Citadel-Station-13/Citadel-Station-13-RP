@@ -19,9 +19,9 @@
 /turf/simulated/flesh/attackby()
 	return
 
-/turf/simulated/flesh/Initialize(mapload)
-	. = ..()
-	update_icon(1)	//TODO: TG icon smoothing
+/turf/simulated/flesh/New()
+	..()
+	update_icon(1)
 
 var/list/flesh_overlay_cache = list()
 

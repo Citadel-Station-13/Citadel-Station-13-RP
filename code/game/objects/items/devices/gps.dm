@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(GPS_list)
+var/list/GPS_list = list()
 
 /obj/item/device/gps
 	name = "global positioning system"
@@ -17,14 +17,14 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	var/hide_signal = FALSE		// If true, signal is not visible to other GPS devices.
 	var/can_hide_signal = FALSE	// If it can toggle the above var.
 
-/obj/item/device/gps/Initialize(mapload)
+/obj/item/device/gps/Initialize()
 	. = ..()
-	GLOB.GPS_list += src
+	GPS_list += src
 	name = "global positioning system ([gps_tag])"
 	update_icon()
 
 /obj/item/device/gps/Destroy()
-	GLOB.GPS_list -= src
+	GPS_list -= src
 	return ..()
 
 /obj/item/device/gps/AltClick(mob/user)
@@ -59,11 +59,11 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		visible_message("\The [src] appears to be functional again.")
 
 /obj/item/device/gps/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(emped)
-		add_overlay("emp")
+		overlays += image(icon, src, "emp")
 	else if(tracking)
-		add_overlay("working")
+		overlays += image(icon, src, "working")
 
 /obj/item/device/gps/attack_self(mob/user)
 	display(user)
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	dat["gps_list"] = list()
 	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
 
-	for(var/obj/item/device/gps/G in GLOB.GPS_list - src)
+	for(var/obj/item/device/gps/G in GPS_list - src)
 		if(!G.tracking || G.emped || G.hide_signal)
 			continue
 
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 /obj/item/device/gps/science/on
 	tracking = TRUE
-
+	
 /obj/item/device/gps/science/rd
 	icon_state = "gps-rd"
 	gps_tag = "RD0"
@@ -231,11 +231,11 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 /obj/item/device/gps/engineering/on
 	tracking = TRUE
-
+	
 /obj/item/device/gps/engineering/ce
 	icon_state = "gps-ce"
 	gps_tag = "CE0"
-
+	
 /obj/item/device/gps/engineering/atmos
 	icon_state = "gps-atm"
 	gps_tag = "ATM0"

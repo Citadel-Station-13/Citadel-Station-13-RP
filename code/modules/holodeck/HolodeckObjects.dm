@@ -67,8 +67,7 @@
 	name = "reinforced holofloor"
 	icon_state = "reinforced"
 
-/turf/simulated/floor/holofloor/space/Initialize(mapload)
-	. = ..()
+/turf/simulated/floor/holofloor/space/New()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/simulated/floor/holofloor/beach

@@ -28,8 +28,8 @@
 	pushdirection = SOUTH  // south because the space tile is scrolling south
 	var/static/list/phase_shift_by_x
 
-/turf/space/transit/north/Initialize(mapload)
-	. = ..()
+/turf/space/transit/north/New()
+	..()
 	if(!phase_shift_by_x)
 		phase_shift_by_x = get_cross_shift_list(15)
 
@@ -44,8 +44,8 @@
 	pushdirection = SOUTH  // south because the space tile is scrolling south
 	var/static/list/phase_shift_by_x
 
-/turf/space/transit/south/Initialize(mapload)
-	. = ..()
+/turf/space/transit/south/New()
+	..()
 	if(!phase_shift_by_x)
 		phase_shift_by_x = get_cross_shift_list(15)
 
@@ -62,8 +62,8 @@
 	pushdirection = WEST
 	var/static/list/phase_shift_by_y
 
-/turf/space/transit/east/Initialize(mapload)
-	. = ..()
+/turf/space/transit/east/New()
+	..()
 	if(!phase_shift_by_y)
 		phase_shift_by_y = get_cross_shift_list(15)
 
@@ -78,8 +78,8 @@
 	pushdirection = WEST
 	var/static/list/phase_shift_by_y
 
-/turf/space/transit/west/Initialize(mapload)
-	. = ..()
+/turf/space/transit/west/New()
+	..()
 	if(!phase_shift_by_y)
 		phase_shift_by_y = get_cross_shift_list(15)
 

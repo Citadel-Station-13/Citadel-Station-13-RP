@@ -17,6 +17,11 @@
 	updateVisibility(src)
 	return ..()
 
+/turf/simulated/New()
+	..()
+	updateVisibility(src)
+
+
 // STRUCTURES
 
 /obj/structure/Destroy()

@@ -3,7 +3,7 @@
 	oxygen = MOLES_O2STANDARD
 	nitrogen = MOLES_N2STANDARD
 
-/turf/unsimulated/Initialize(mapload)
+/turf/unsimulated/Initialize()
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
