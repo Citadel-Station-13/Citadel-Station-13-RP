@@ -27,7 +27,7 @@
 	return ..()
 
 /obj/item/instrument/proc/should_stop_playing(mob/user)
-	return !user.CanReach(src) || !user.canUseTopic(src, FALSE, TRUE, FALSE, FALSE)
+	return !user.CanReach(src) || (usr.default_can_use_topic(src) < STATUS_UPDATE)
 
 /*
 /obj/item/instrument/process(wait)
@@ -47,7 +47,7 @@
 */
 
 /obj/item/instrument/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] begins to play 'Gloomy Sunday'! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] begins to play 'Gloomy Sunday'! It looks like they're trying to commit suicide!</span>")
 	return (BRUTELOSS)
 
 /obj/item/instrument/attack_self(mob/user)
@@ -209,12 +209,14 @@
 	force = 0
 	attack_verb = list("played","jazzed","tromboned","mourned","dooted","spooked")
 
+/*
 /obj/item/instrument/trombone/spectral/Initialize()
 	. = ..()
 	AddComponent(/datum/component/spooky)
+*/
 
 /obj/item/instrument/trombone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound (loc, 'sound/instruments/trombone/Cn4.mid', 100,1,-1)
+	playsound(loc, 'sound/instruments/trombone/Cn4.mid', 100,1,-1)
 	..()
 
 /obj/item/instrument/recorder
@@ -256,8 +258,10 @@
 	desc = "An exquisitely decorated bike horn, capable of honking in a variety of notes."
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
-	lefthand_file = 'icons/mob/inhands/equipment/horns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/horns_righthand.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/equipment/horns_righthand.dmi'
+		)
 	attack_verb = list("beautifully honks")
 	allowed_instrument_ids = "bikehorn"
 	w_class = WEIGHT_CLASS_TINY

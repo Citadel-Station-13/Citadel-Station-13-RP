@@ -20,7 +20,7 @@
 		return TRUE
 	if(!user)
 		return FALSE
-	return !user.canUseTopic(src, FALSE, TRUE, FALSE, FALSE)		//can play with TK and while resting because fun.
+	return (usr.default_can_use_topic(src) < UI_UPDATE)		//can play with TK and while resting because fun.
 
 /// CITRP EDIT UNTIL INTERACTION REFACTOR PORT!
 /obj/structure/musician/attack_hand(mob/user)
@@ -37,9 +37,9 @@
 
 /obj/structure/musician/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, I.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored? "loosen" : "tighten"] [src]'s casters...</span>")
-		if(do_after(user, 40 * O.toolspeed))
+		if(do_after(user, 40 * I.toolspeed))
 			user.visible_message("<span class='notice'>[user] [anchored? "loosens" : "tightens"] [src]'s casters.</span>")
 			anchored = !anchored
 	else
