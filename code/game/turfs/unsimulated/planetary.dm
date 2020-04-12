@@ -17,13 +17,13 @@
 	phoron = 0
 	temperature = T20C
 
-/turf/unsimulated/wall/planetary/New()
-	..()
+/turf/unsimulated/wall/planetary/Initialize(mapload)
+	. = ..()
 	SSplanets.addTurf(src)
 
 /turf/unsimulated/wall/planetary/Destroy()
 	SSplanets.removeTurf(src)
-	..()
+	return ..()
 
 /turf/unsimulated/wall/planetary/proc/set_temperature(var/new_temperature)
 	if(new_temperature == temperature)
