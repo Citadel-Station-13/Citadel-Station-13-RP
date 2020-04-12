@@ -1,20 +1,5 @@
 var/list/mining_overlay_cache = list()
 
-GLOBAL_LIST_INIT(ore_types, list(
-		"hematite" = /obj/item/weapon/ore/iron,
-		"uranium" = /obj/item/weapon/ore/uranium,
-		"gold" = /obj/item/weapon/ore/gold,
-		"silver" = /obj/item/weapon/ore/silver,
-		"diamond" = /obj/item/weapon/ore/diamond,
-		"phoron" = /obj/item/weapon/ore/phoron,
-		"osmium" = /obj/item/weapon/ore/osmium,
-		"hydrogen" = /obj/item/weapon/ore/hydrogen,
-		"silicates" = /obj/item/weapon/ore/glass,
-		"carbon" = /obj/item/weapon/ore/coal,
-		"verdantium" = /obj/item/weapon/ore/verdantium,
-		"marble" = /obj/item/weapon/ore/marble,
-		"lead" = /obj/item/weapon/ore/lead
-	))
 
 /**********************Mineral deposits**************************/
 /turf/unsimulated/mineral
@@ -28,7 +13,7 @@ GLOBAL_LIST_INIT(ore_types, list(
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
 	var/rock_side_icon_state = "rock_side"
-	var/sand_icon_state = "asteroid"
+	var/sand_icon_state = "asteroid"S
 	var/rock_icon_state = "rock"
 	var/random_icon = 0
 	oxygen = 0

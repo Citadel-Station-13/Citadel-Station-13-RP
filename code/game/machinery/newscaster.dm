@@ -100,7 +100,7 @@
 		NEWSCASTER.update_icon()
 
 	var/list/receiving_pdas = new
-	for (var/obj/item/device/pda/P in PDAs)
+	for (var/obj/item/device/pda/P in GLOB.PDAs)
 		if(!P.owner)
 			continue
 		if(P.toff)

@@ -152,7 +152,7 @@
 
 		var/pdas[0]
 		if(!user.pda.toff)
-			for(var/obj/item/device/pda/P in sortList(PDAs))
+			for(var/obj/item/device/pda/P in GLOB.PDAs)
 				if(!P.owner || P.toff || P == user.pda || P.hidden) continue
 				var/pda[0]
 				pda["name"] = "[P]"

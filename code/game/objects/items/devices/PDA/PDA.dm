@@ -1,7 +1,7 @@
 
 //The advanced pea-green monochrome lcd of tomorrow.
 
-var/global/list/obj/item/device/pda/PDAs = list()
+GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/device/pda
 	name = "\improper PDA"
@@ -334,7 +334,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 /obj/item/device/pda/multicaster/new_message(var/sending_unit, var/sender, var/sender_job, var/message)
 	if(sender)
 		var/list/targets = list()
-		for(var/obj/item/device/pda/pda in PDAs)
+		for(var/obj/item/device/pda/pda in GLOB.PDAs)
 			if(pda.cartridge && pda.owner && is_type_in_list(pda.cartridge, cartridges_to_send_to))
 				targets |= pda
 		if(targets.len)
@@ -420,8 +420,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda/Initialize(mapload)
 	. = ..()
-	PDAs += src
-	sortTim(PDAs, cmp = /proc/cmp_name_asc)
+	GLOB.PDAs += src
+	sortTim(GLOB.PDAs, cmp = /proc/cmp_name_asc)
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/weapon/pen(src)
@@ -555,7 +555,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		var/convopdas[0]
 		var/pdas[0]
 		var/count = 0
-		for (var/obj/item/device/pda/P in PDAs)
+		for (var/obj/item/device/pda/P in GLOB.PDAs)
 			if (!P.owner||P.toff||P == src||P.hidden)       continue
 			if(conversations.Find("\ref[P]"))
 				convopdas.Add(list(list("Name" = "[P]", "Reference" = "\ref[P]", "Detonate" = "[P.detonate]", "inconvo" = "1")))
@@ -1450,7 +1450,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	return
 
 /obj/item/device/pda/Destroy()
-	PDAs -= src
+	GLOB.PDAs -= src
 	if (src.id && prob(100)) //IDs are kept in 90% of the cases //VOREStation Edit - 100% of the cases
 		src.id.forceMove(get_turf(src.loc))
 	else
@@ -1476,7 +1476,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		to_chat(usr, "Turn on your receiver in order to send messages.")
 		return
 
-	for (var/obj/item/device/pda/P in PDAs)
+	for (var/obj/item/device/pda/P in GLOB.PDAs)
 		if (!P.owner)
 			continue
 		else if(P.hidden)
