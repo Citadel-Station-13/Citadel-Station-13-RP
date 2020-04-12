@@ -235,9 +235,11 @@
 		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 	if(refactory.processingbuffs == TRUE)
+		to_chat(src,"<span class='warning'>You toggle material consumption off.</span>")
 		refactory.processingbuffs = FALSE
 	else
 		refactory.processingbuffs = TRUE
+		to_chat(src,"<span class='warning'>You toggle material consumption on.</span>")
 
 ////
 //  Blob Form
