@@ -3771,3 +3771,13 @@ End Citadel Change */
 	description = "A dry mix for making delicious brownies."
 	reagent_state = SOLID
 	color = "#441a03"
+
+/datum/reagent/ethanol/wine/champagnejericho
+	name = "Champagne"
+	id = "champagnejericho"
+	description = "Wait a minute...this isnt Champagne, this is just sparkling wine!"
+	taste_description = "bitterness, suitable for a Champion"
+	color = "#D1B166"
+
+	glass_name = "the bubbly"
+	glass_desc = "An even classier looking drink, with floating bubbles."

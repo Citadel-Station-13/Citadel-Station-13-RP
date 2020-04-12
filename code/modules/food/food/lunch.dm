@@ -77,7 +77,8 @@ var/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
                                              /datum/reagent/ethanol/toxins_special,
 											 /datum/reagent/ethanol/voxdelight,
 											 /datum/reagent/ethanol/soemmerfire,
-											 /datum/reagent/ethanol/slimeshot)
+											 /datum/reagent/ethanol/slimeshot
+											 /datum/reagent/ethanol/wine/champagnejericho)
 
 /proc/lunchables_lunches()
 	if(!(lunchables_lunches_[lunchables_lunches_[1]]))

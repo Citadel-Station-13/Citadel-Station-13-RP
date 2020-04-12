@@ -605,3 +605,9 @@ Drinks Data
 /datum/reagent/ethanol/euphoria
 	glass_icon_state = "euphoria"
 	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/wine/champagnejericho
+	glass_icon_state = "champagneglass"
+
+/datum/reagent/ethanol/wine/champagne
+	glass_icon_state = "champagneglass"
