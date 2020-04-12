@@ -21,15 +21,16 @@
 	var/obj/item/device/radio/intercom/announce	// Integreated announcer
 
 
-/obj/machinery/computer/timeclock/New()
+/obj/machinery/computer/timeclock/Initialize(mapload)
+	. = ..()
 	announce = new /obj/item/device/radio/intercom(src)
-	..()
 
 /obj/machinery/computer/timeclock/Destroy()
 	if(card)
 		card.forceMove(get_turf(src))
 		card = null
-	. = ..()
+	QDEL_NULL(announce)
+	return ..()
 
 /obj/machinery/computer/timeclock/update_icon()
 	if(inoperable())
