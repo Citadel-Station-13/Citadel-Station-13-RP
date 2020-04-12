@@ -222,6 +222,22 @@
 		visible_message("<span class='notice'>[src] devours some of the [substance] right off the stack!</span>")
 	else
 		to_chat(src,"<span class='notice'>You're completely capped out on [substance]!</span>")
+// toggling buffs
+/mob/living/carbon/human/proc/nano_togglebuff()
+	set name = "Ref - Toggle Material Augment"
+	set desc = "Toggle your consumption of stored diamonds, mhydrogen and plasteel."
+	set category = "Abilities"
+	set hidden = TRUE
+
+	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
+	//Missing the organ that does this
+	if(!istype(refactory))
+		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		return
+	if(refactory.processingbuffs == TRUE)
+		refactory.processingbuffs = FALSE
+	else
+		refactory.processingbuffs = TRUE
 
 ////
 //  Blob Form
