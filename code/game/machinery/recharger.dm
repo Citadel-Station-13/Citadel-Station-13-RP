@@ -191,7 +191,7 @@
 	var/E = 0
 	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	efficiency = active_power_usage * (1+ (E - 1)*0.5)
+	efficiency = active_power_usage * (1+ (E - 1)*0.5) * 10
 
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"

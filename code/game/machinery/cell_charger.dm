@@ -88,7 +88,7 @@
 
 /obj/machinery/cell_charger/attack_hand(mob/user)
 	add_fingerprint(user)
-	
+
 	if(charging)
 		usr.put_in_hands(charging)
 		charging.add_fingerprint(user)
@@ -135,7 +135,7 @@
 	var/E = 0
 	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	efficiency = active_power_usage * (1+(E-1)*0.5)
+	efficiency = active_power_usage * (1+(E-1)*0.5) * 10
 
 //cit change starts
 /obj/item/cell_charger_kit

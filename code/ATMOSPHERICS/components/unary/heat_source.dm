@@ -1,5 +1,5 @@
 //TODO: Put this under a common parent type with freezers to cut down on the copypasta
-#define HEATER_PERF_MULT 2.5
+#define HEATER_PERF_MULT 25
 
 /obj/machinery/atmospherics/unary/heater
 	name = "gas heating system"
