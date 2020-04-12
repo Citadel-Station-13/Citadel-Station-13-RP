@@ -65,6 +65,7 @@
 //
 // The backup tether shuttle uses experimental engines and can degrade and/or crash!
 //
+/* //Disabling the crash mechanics per request
 /datum/shuttle/ferry/tether_backup
 	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
 	category = /datum/shuttle/ferry/tether_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
@@ -168,6 +169,7 @@
 	wear = 20
 	update_icon()
 	return 1
+*/
 
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////

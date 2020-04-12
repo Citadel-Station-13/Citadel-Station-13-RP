@@ -9,7 +9,8 @@ var/list/lunchables_lunches_ = list(/obj/item/weapon/reagent_containers/food/sna
                                   /obj/item/weapon/reagent_containers/food/snacks/tastybread,
                                   /obj/item/weapon/reagent_containers/food/snacks/liquidfood,
                                   /obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry,
-                                  /obj/item/weapon/reagent_containers/food/snacks/tossedsalad)
+                                  /obj/item/weapon/reagent_containers/food/snacks/tossedsalad,
+                                  /obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/glucose)
 
 var/list/lunchables_snacks_ = list(/obj/item/weapon/reagent_containers/food/snacks/donut/jelly,
                                    /obj/item/weapon/reagent_containers/food/snacks/donut/cherryjelly,
@@ -108,7 +109,7 @@ var/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
 	for(var/lunch in lunches)
 		var/obj/O = lunch
 		.[initial(O.name)] = lunch
-	return sortAssoc(.)
+	return sortTim(., /proc/cmp_text_asc, TRUE)
 
 /proc/init_lunchable_reagent_list(var/list/banned_reagents, var/reagent_types)
 	. = list()
@@ -117,4 +118,4 @@ var/list/lunchables_ethanol_reagents_ = list(/datum/reagent/ethanol/acid_spit,
 			continue
 		var/datum/reagent/reagent = reagent_type
 		.[initial(reagent.name)] = initial(reagent.id)
-	return sortAssoc(.)
+	return sortTim(., /proc/cmp_text_asc, TRUE)

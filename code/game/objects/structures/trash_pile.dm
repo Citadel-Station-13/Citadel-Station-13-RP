@@ -20,6 +20,7 @@
 	var/global/list/unique_gamma = list(
 		/obj/item/device/perfect_tele,
 		/obj/item/weapon/bluespace_harpoon,
+		/obj/item/clothing/glasses/thermal/syndi,
 		/obj/item/weapon/gun/energy/netgun,
 		/obj/item/weapon/gun/projectile/pirate,
 		/obj/item/clothing/accessory/permit/gun,
@@ -131,9 +132,10 @@
 					prob(5);/obj/item/weapon/storage/backpack/satchel/norm,
 					prob(5);/obj/item/weapon/storage/box,
 				//	prob(5);/obj/random/cigarettes,
-					prob(4);/obj/item/broken_device,
+					prob(4);/obj/item/broken_device/random,
 					prob(4);/obj/item/clothing/head/hardhat,
 					prob(4);/obj/item/clothing/mask/breath,
+					prob(4);/obj/item/clothing/shoes/black,
 					prob(4);/obj/item/clothing/shoes/black,
 					prob(4);/obj/item/clothing/shoes/laceup,
 					prob(4);/obj/item/clothing/shoes/leather,
@@ -206,6 +208,7 @@
 					prob(1);/obj/item/device/flashlight/pen,
 					prob(1);/obj/item/device/paicard,
 					prob(1);/obj/item/weapon/card/emag,
+					prob(1);/obj/item/clothing/mask/gas/voice,
 					prob(1);/obj/item/weapon/spacecash/c100,
 					prob(1);/obj/item/weapon/spacecash/c50,
 					prob(1);/obj/item/weapon/storage/backpack/dufflebag/syndie,
@@ -276,7 +279,7 @@
 	desc = "A small heap of trash, perfect for mice to nest in."
 	icon = 'icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
-	spawn_types = list(/mob/living/simple_animal/mouse)
+	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse)
 	simultaneous_spawns = 1
 	destructible = 1
 	spawn_delay = 1 HOUR

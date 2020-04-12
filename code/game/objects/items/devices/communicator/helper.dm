@@ -19,17 +19,17 @@
 			// Poor_high/_low are the values outside of which the entry reports as unideal
 			// Values were extracted from the template itself
 			results = list(
-						list("entry" = "Pressure", "type" = "pressure", "val" = "[round(pressure,0.1)]", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80),
-						list("entry" = "Temperature", "type" = "temp", "val" = "[round(environment.temperature-T0C,0.1)]", "bad_high" = 35, "poor_high" = 25, "poor_low" = 15, "bad_low" = 5),
-						list("entry" = "Oxygen", "type" = "pressure", "val" = "[round(o2_level*100,0.1)]", "bad_high" = 140, "poor_high" = 135, "poor_low" = 19, "bad_low" = 17),
-						list("entry" = "Nitrogen", "type" = "pressure", "val" = "[round(n2_level*100,0.1)]", "bad_high" = 105, "poor_high" = 85, "poor_low" = 50, "bad_low" = 40),
-						list("entry" = "Carbon Dioxide", "type" = "pressure", "val" = "[round(co2_level*100,0.1)]", "bad_high" = 10, "poor_high" = 5, "poor_low" = 0, "bad_low" = 0),
-						list("entry" = "Phoron", "type" = "pressure", "val" = "[round(phoron_level*100,0.01)]", "bad_high" = 0.5, "poor_high" = 0, "poor_low" = 0, "bad_low" = 0),
-						list("entry" = "Other", "type" = "pressure", "val" = "[round(unknown_level, 0.01)]", "bad_high" = 1, "poor_high" = 0.5, "poor_low" = 0, "bad_low" = 0)
+						list("entry" = "Pressure", "units" = "kPa", "val" = "[round(pressure,0.1)]", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80),
+						list("entry" = "Temperature", "units" = "&degC", "val" = "[round(environment.temperature-T0C,0.1)]", "bad_high" = 35, "poor_high" = 25, "poor_low" = 15, "bad_low" = 5),
+						list("entry" = "Oxygen", "units" = "kPa", "val" = "[round(o2_level*100,0.1)]", "bad_high" = 140, "poor_high" = 135, "poor_low" = 19, "bad_low" = 17),
+						list("entry" = "Nitrogen", "units" = "kPa", "val" = "[round(n2_level*100,0.1)]", "bad_high" = 105, "poor_high" = 85, "poor_low" = 50, "bad_low" = 40),
+						list("entry" = "Carbon Dioxide", "units" = "kPa", "val" = "[round(co2_level*100,0.1)]", "bad_high" = 10, "poor_high" = 5, "poor_low" = 0, "bad_low" = 0),
+						list("entry" = "Phoron", "units" = "kPa", "val" = "[round(phoron_level*100,0.01)]", "bad_high" = 0.5, "poor_high" = 0, "poor_low" = 0, "bad_low" = 0),
+						list("entry" = "Other", "units" = "kPa", "val" = "[round(unknown_level, 0.01)]", "bad_high" = 1, "poor_high" = 0.5, "poor_low" = 0, "bad_low" = 0)
 						)
 
 	if(isnull(results))
-		results = list(list("entry" = "pressure", "val" = "0"))
+		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
 
 
@@ -224,7 +224,7 @@
 	// Minor tweaks for efficiency and cleanliness
 	var/turf/T = get_turf(src)
 	if(T)
-		var/list/levels = using_map.get_map_levels(T.z, FALSE)
+		var/list/levels = GLOB.using_map.get_map_levels(T.z, FALSE)
 		for(var/obj/machinery/power/sensor/S in machines)
 			if((S.long_range) || (S.loc.z in levels) || (S.loc.z == T.z)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 				if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
@@ -296,7 +296,7 @@
 	// User's location
 	var/turf/userloc = get_turf(src)
 	if(isturf(userloc))
-		janidata[++janidata.len] = list("field" = "Current Location", "val" = "<span class='good'>[userloc.x], [userloc.y], [using_map.get_zlevel_name(userloc.z)]</span>")
+		janidata[++janidata.len] = list("field" = "Current Location", "val" = "<span class='good'>[userloc.x], [userloc.y], [GLOB.using_map.get_zlevel_name(userloc.z)]</span>")
 	else
 		janidata[++janidata.len] = list("field" = "Current Location", "val" = "<span class='bad'>Unknown</span>")
 		return janidata // If the user isn't on a valid turf, then it shouldn't be able to find anything anyways
@@ -304,23 +304,23 @@
 	// Mops, mop buckets, janitorial carts.
 	for(var/obj/C in cleaningList)
 		var/turf/T = get_turf(C)
-		if(isturf(T) )//&& T.z in using_map.get_map_levels(userloc, FALSE))
+		if(isturf(T) )//&& T.z in GLOB.using_map.get_map_levels(userloc, FALSE))
 			if(T.z == userloc.z)
-				janidata[++janidata.len] = list("field" = apply_text_macros("\proper [C.name]"), "val" = "<span class='good'>[T.x], [T.y], [using_map.get_zlevel_name(T.z)]</span>")
+				janidata[++janidata.len] = list("field" = apply_text_macros("\proper [C.name]"), "val" = "<span class='good'>[T.x], [T.y], [GLOB.using_map.get_zlevel_name(T.z)]</span>")
 			else
-				janidata[++janidata.len] = list("field" = apply_text_macros("\proper [C.name]"), "val" = "<span class='average'>[T.x], [T.y], [using_map.get_zlevel_name(T.z)]</span>")
+				janidata[++janidata.len] = list("field" = apply_text_macros("\proper [C.name]"), "val" = "<span class='average'>[T.x], [T.y], [GLOB.using_map.get_zlevel_name(T.z)]</span>")
 
 	// Cleanbots
 	for(var/mob/living/bot/cleanbot/B in living_mob_list)
 		var/turf/T = get_turf(B)
-		if(isturf(T) )//&& T.z in using_map.get_map_levels(userloc, FALSE))
+		if(isturf(T) )//&& T.z in GLOB.using_map.get_map_levels(userloc, FALSE))
 			var/textout = ""
 			if(B.on)
 				textout += "Status: <span class='good'>Online</span><br>"
 				if(T.z == userloc.z)
-					textout += "<span class='good'>[T.x], [T.y], [using_map.get_zlevel_name(T.z)]</span>"
+					textout += "<span class='good'>[T.x], [T.y], [GLOB.using_map.get_zlevel_name(T.z)]</span>"
 				else
-					textout += "<span class='average'>[T.x], [T.y], [using_map.get_zlevel_name(T.z)]</span>"
+					textout += "<span class='average'>[T.x], [T.y], [GLOB.using_map.get_zlevel_name(T.z)]</span>"
 			else
 				textout += "Status: <span class='bad'>Offline</span>"
 

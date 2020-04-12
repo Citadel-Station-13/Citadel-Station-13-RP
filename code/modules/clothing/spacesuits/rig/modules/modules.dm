@@ -230,9 +230,12 @@
 
 /mob/living/carbon/human/Stat()
 	. = ..()
-
-	if(. && istype(back,/obj/item/weapon/rig))
+	if(istype(back,/obj/item/weapon/rig))
 		var/obj/item/weapon/rig/R = back
+		SetupStat(R)
+
+	else if(istype(belt,/obj/item/weapon/rig))
+		var/obj/item/weapon/rig/R = belt
 		SetupStat(R)
 
 /mob/proc/SetupStat(var/obj/item/weapon/rig/R)

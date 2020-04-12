@@ -81,14 +81,14 @@ var/specops_shuttle_timeleft = 0
 	for(var/mob/living/carbon/bug in end_location) // If someone somehow is still in the shuttle's docking area...
 		bug.gib()
 
-	for(var/mob/living/simple_animal/pest in end_location) // And for the other kind of bug...
+	for(var/mob/living/simple_mob/pest in end_location) // And for the other kind of bug...
 		pest.gib()
 
 	start_location.move_contents_to(end_location)
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		M << "<span class='notice'>You have arrived at [using_map.boss_name]. Operation has ended!</span>"
+		M << "<span class='notice'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>"
 
 	specops_shuttle_at_station = 0
 
@@ -285,14 +285,14 @@ var/specops_shuttle_timeleft = 0
 		if(!specops_shuttle_at_station|| specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
 
 		if (!specops_can_move())
-			usr << "<span class='notice'>[using_map.boss_name] will not allow the Special Operations shuttle to return yet.</span>"
+			usr << "<span class='notice'>[GLOB.using_map.boss_name] will not allow the Special Operations shuttle to return yet.</span>"
 			if(world.timeofday <= specops_shuttle_timereset)
 				if (((world.timeofday - specops_shuttle_timereset)/10) > 60)
 					usr << "<span class='notice'>[-((world.timeofday - specops_shuttle_timereset)/10)/60] minutes remain!</span>"
 				usr << "<span class='notice'>[-(world.timeofday - specops_shuttle_timereset)/10] seconds remain!</span>"
 			return
 
-		usr << "<span class='notice'>The Special Operations shuttle will arrive at [using_map.boss_name] in [(SPECOPS_MOVETIME/10)] seconds.</span>"
+		usr << "<span class='notice'>The Special Operations shuttle will arrive at [GLOB.using_map.boss_name] in [(SPECOPS_MOVETIME/10)] seconds.</span>"
 
 		temp += "Shuttle departing.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 		updateUsrDialog()

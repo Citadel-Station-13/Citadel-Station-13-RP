@@ -37,11 +37,9 @@
 #define R_SPAWN         0x1000
 #define R_MOD           0x2000
 #define R_EVENT	        0x4000
+#define R_HOST          0x8000 //higher than this will overflow
 
-// Host permission (sum of all permissions above) is equal 32767 or 7FFF
-#define R_HOST          0x7FFF
-
-#define R_MAXPERMISSION 0x4000 // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
+#define R_MAXPERMISSION 0x8000 // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
 #define SMITE_BREAKLEGS				"Break Legs"
 #define SMITE_BLUESPACEARTILLERY	"Bluespace Artillery"

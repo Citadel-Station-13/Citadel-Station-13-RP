@@ -4428,7 +4428,7 @@
 "jP" = (
 /obj/item/weapon/storage/fancy/cigar/havana,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/mimic/crate,
+/mob/living/simple_mob/vore/aggressive/mimic,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "jQ" = (
@@ -5083,7 +5083,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "lk" = (
-/mob/living/simple_animal/slime/rainbow/kendrick,
+/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "ll" = (
@@ -17898,7 +17898,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "Lg" = (
-/obj/machinery/telecomms/relay/preset/tether/transit,
+/obj/machinery/telecomms/relay/preset/tether/midpoint,
 /turf/simulated/floor/tiled/dark{
 	nitrogen = 100;
 	oxygen = 0;

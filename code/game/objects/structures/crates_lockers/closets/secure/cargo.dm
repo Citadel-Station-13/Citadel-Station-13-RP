@@ -86,7 +86,7 @@
 		/obj/item/device/analyzer,
 		/obj/item/weapon/storage/bag/ore,
 		/obj/item/device/flashlight/lantern,
-		/obj/item/weapon/pickaxe/shovel,
+		/obj/item/weapon/shovel,
 		/obj/item/weapon/pickaxe,
 		/obj/item/device/gps/mining,
 		/obj/item/clothing/glasses/material,

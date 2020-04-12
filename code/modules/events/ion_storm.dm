@@ -14,8 +14,8 @@
 
 	for (var/mob/living/silicon/ai/target in silicon_mob_list)
 		var/law = target.generate_ion_law()
-		target << "<font color='red'><b>You have detected a change in your laws information:</b></font>"
-		target << law
+		to_chat(target, "<font color='red'><b>You have detected a change in your laws information:</b></font>")
+		to_chat(target, law)
 		target.add_ion_law(law)
 		target.show_laws()
 /* //VOREstation edit. Was fucking up all PDA messagess.
@@ -24,7 +24,7 @@
 			MS.spamfilter.Cut()
 			var/i
 			for (i = 1, i <= MS.spamfilter_limit, i++)
-				MS.spamfilter += pick("kitty","HONK","rev","malf","liberty","freedom","drugs", "[using_map.station_short]", \
+				MS.spamfilter += pick("kitty","HONK","rev","malf","liberty","freedom","drugs", "[GLOB.using_map.station_short]", \
 					"admin","ponies","heresy","meow","Pun Pun","monkey","Ian","moron","pizza","message","spam",\
 					"director", "Hello", "Hi!"," ","nuke","crate","dwarf","xeno")
 */

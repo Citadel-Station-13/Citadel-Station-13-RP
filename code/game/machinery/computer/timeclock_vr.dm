@@ -21,15 +21,16 @@
 	var/obj/item/device/radio/intercom/announce	// Integreated announcer
 
 
-/obj/machinery/computer/timeclock/New()
+/obj/machinery/computer/timeclock/Initialize(mapload)
+	. = ..()
 	announce = new /obj/item/device/radio/intercom(src)
-	..()
 
 /obj/machinery/computer/timeclock/Destroy()
 	if(card)
 		card.forceMove(get_turf(src))
 		card = null
-	. = ..()
+	QDEL_NULL(announce)
+	return ..()
 
 /obj/machinery/computer/timeclock/update_icon()
 	if(inoperable())
@@ -54,7 +55,7 @@
 		if(!card && user.unEquip(I))
 			I.forceMove(src)
 			card = I
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 			update_icon()
 		else if(card)
 			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
@@ -94,7 +95,7 @@
 			if(job && job.timeoff_factor < 0) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
 				data["job_choices"] = getOpenOnDutyJobs(user, job.department)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "timeclock_vr.tmpl", capitalize(src.name), 500, 520)
 		ui.set_initial_data(data)

@@ -9,36 +9,36 @@
 
 	if(!mob)	return
 	if(IsGuestKey(key))
-		src << "Guests may not use OOC."
+		to_chat(src, "Guests may not use OOC.")
 		return
 
 	msg = sanitize(msg)
 	if(!msg)	return
 
 	if(!is_preference_enabled(/datum/client_preference/show_ooc))
-		src << "<span class='warning'>You have OOC muted.</span>"
+		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
 	if(!holder)
 		if(!config_legacy.ooc_allowed)
-			src << "<span class='danger'>OOC is globally muted.</span>"
+			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
 			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>You cannot use OOC (muted).</span>"
+			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
 		if(findtext(msg, "byond://"))
-			src << "<B>Advertising other servers is not allowed.</B>"
+			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
-		/*		CITADEL EDIT - This is dumb.
+		//VOREStation Add - No talking during voting
 		if(SSvote && SSvote.mode)
 			to_chat(src,"<span class='danger'>OOC is not allowed during voting.</span>")
 			return
-		*/
+		//VOREStation Add End
 
 	log_ooc(msg, src)
 
@@ -57,7 +57,7 @@
 		if(holder.rights & R_ADMIN)
 			ooc_style = "admin"
 
-	for(var/client/target in clients)
+	for(var/client/target in GLOB.clients)
 		if(target.is_preference_enabled(/datum/client_preference/show_ooc))
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
 				continue
@@ -86,7 +86,7 @@
 		return
 
 	if(IsGuestKey(key))
-		src << "Guests may not use OOC."
+		to_chat(src, "Guests may not use OOC.")
 		return
 
 	msg = sanitize(msg)
@@ -94,21 +94,21 @@
 		return
 
 	if(!is_preference_enabled(/datum/client_preference/show_looc))
-		src << "<span class='danger'>You have LOOC muted.</span>"
+		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
 		return
 
 	if(!holder)
 		if(!config_legacy.looc_allowed)
-			src << "<span class='danger'>LOOC is globally muted.</span>"
+			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
 			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>You cannot use OOC (muted).</span>"
+			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
 		if(findtext(msg, "byond://"))
-			src << "<B>Advertising other servers is not allowed.</B>"
+			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
@@ -124,7 +124,7 @@
 	var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 	var/list/m_viewers = in_range["mobs"]
 
-	var/list/receivers = list() // Clients, not mobs.
+	var/list/receivers = list() //Clients, not mobs.
 	var/list/r_receivers = list()
 
 	var/display_name = key

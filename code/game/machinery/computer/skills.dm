@@ -9,6 +9,7 @@
 	light_color = "#00b000"
 	req_one_access = list(access_heads)
 	circuit = /obj/item/weapon/circuitboard/skills
+	density = 0
 	var/obj/item/weapon/card/id/scan = null
 	var/authenticated = null
 	var/rank = null
@@ -39,7 +40,7 @@
 /obj/machinery/computer/skills/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if (using_map && !(src.z in using_map.contact_levels))
+	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
 		user << "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!"
 		return
 	var/dat

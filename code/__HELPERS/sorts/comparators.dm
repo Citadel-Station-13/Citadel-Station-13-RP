@@ -3,9 +3,49 @@
 // They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively.
 //
 
-// Sorts numeric ascending
+/proc/cmp_numeric_dsc(a,b)
+	return b - a
+
 /proc/cmp_numeric_asc(a,b)
 	return a - b
+
+/proc/cmp_text_asc(a,b)
+	return sorttext(b,a)
+
+/proc/cmp_text_dsc(a,b)
+	return sorttext(a,b)
+
+/proc/cmp_name_asc(atom/a, atom/b)
+	return sorttext(b.name, a.name)
+
+/proc/cmp_name_dsc(atom/a, atom/b)
+	return sorttext(a.name, b.name)
+
+GLOBAL_VAR_INIT(cmp_field, "name")
+/proc/cmp_records_asc(datum/data/record/a, datum/data/record/b)
+	return sorttext(b.fields[GLOB.cmp_field], a.fields[GLOB.cmp_field])
+
+/proc/cmp_records_dsc(datum/data/record/a, datum/data/record/b)
+	return sorttext(a.fields[GLOB.cmp_field], b.fields[GLOB.cmp_field])
+
+// Datum cmp with vars is always slower than a specialist cmp proc, use your judgement.
+/proc/cmp_datum_numeric_asc(datum/a, datum/b, variable)
+	return cmp_numeric_asc(a.vars[variable], b.vars[variable])
+
+/proc/cmp_datum_numeric_dsc(datum/a, datum/b, variable)
+	return cmp_numeric_dsc(a.vars[variable], b.vars[variable])
+
+/proc/cmp_datum_text_asc(datum/a, datum/b, variable)
+	return sorttext(b.vars[variable], a.vars[variable])
+
+/proc/cmp_datum_text_dsc(datum/a, datum/b, variable)
+	return sorttext(a.vars[variable], b.vars[variable])
+
+/proc/cmp_ckey_asc(client/a, client/b)
+	return sorttext(b.ckey, a.ckey)
+
+/proc/cmp_ckey_dsc(client/a, client/b)
+	return sorttext(a.ckey, b.ckey)
 
 // Sorts subsystems alphabetically
 /proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
@@ -51,3 +91,12 @@
 	var/a_score = LAZYLEN(A.items) + LAZYLEN(A.reagents) + LAZYLEN(A.fruit)
 	var/b_score = LAZYLEN(B.items) + LAZYLEN(B.reagents) + LAZYLEN(B.fruit)
 	return b_score - a_score
+
+/proc/cmp_area_names_asc(area/A, area/B)
+	return sorttext(B.name, A.name)
+
+/proc/cmp_area_names_dsc(area/A, area/B)
+	return sorttext(A.name, B.name)
+
+/proc/cmp_surgery_priority_asc(datum/surgery_step/A, datum/surgery_step/B)
+	return B.priority - A.priority

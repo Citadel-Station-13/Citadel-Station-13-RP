@@ -56,7 +56,7 @@
 
 /mob/living/Stat()
 	. = ..()
-	if(. && get_rig_stats)
+	if(get_rig_stats)
 		var/obj/item/weapon/rig/rig = get_rig()
 		if(rig)
 			SetupStat(rig)

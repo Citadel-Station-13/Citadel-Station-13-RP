@@ -95,10 +95,8 @@
 		stat |= BROKEN
 
 // When anchored, don't let air past us.
-/obj/machinery/compressor/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
-	if(!height || air_group)
-		return !anchored
-	return !density
+/obj/machinery/compressor/CanZASPass(turf/T, is_zone)
+	return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES
 
 /obj/machinery/compressor/proc/locate_machinery()
 	if(turbine)
@@ -365,7 +363,7 @@
 		data["temp"] = compressor.gas_contained.temperature
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
