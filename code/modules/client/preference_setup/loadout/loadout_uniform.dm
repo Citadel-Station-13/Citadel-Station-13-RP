@@ -654,7 +654,7 @@
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/parameduniskirtdark
-	display_name = "Dark Paramedic Uniform"
+	display_name = "Dark Paramedic Skirt"
 	path = /obj/item/clothing/under/parameduniskirtdark
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
@@ -669,7 +669,7 @@
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/parameduniskirtdark
-	display_name = "Light Paramedic Uniform"
+	display_name = "Light Paramedic Skirt"
 	path = /obj/item/clothing/under/parameduniskirtlight
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
