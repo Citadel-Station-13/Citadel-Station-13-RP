@@ -257,14 +257,13 @@
 
 	//Drop all our things
 	var/list/things_to_drop = contents.Copy()
-	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear) //And whatever else we decide for balancing.
-
-	/* No for now, because insta-pepperspray or flash on unblob
+	var/list/things_to_not_drop = list(w_uniform,nif,l_store,r_store,wear_id,l_ear,r_ear,slot_shoes,slot_gloves,slot_glasses) //And whatever else we decide for balancing.
+	//you can instaflash or pepperspray on unblob with pockets anyways
 	if(l_hand && l_hand.w_class <= ITEMSIZE_SMALL) //Hands but only if small or smaller
 		things_to_not_drop += l_hand
 	if(r_hand && r_hand.w_class <= ITEMSIZE_SMALL)
 		things_to_not_drop += r_hand
-	*/
+
 
 	things_to_drop -= things_to_not_drop //Crunch the lists
 	things_to_drop -= organs //Mah armbs
@@ -273,11 +272,21 @@
 	for(var/obj/item/I in things_to_drop) //rip hoarders
 		drop_from_inventory(I)
 
+
+	if(slot_gloves && istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
+		var/obj/item/clothing/gloves/riggloves = slot_gloves
+			drop_from_inventory(riggloves)
+
+	if(slot_shoes && istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
+		var/obj/item/clothing/shoes/magboots = slot_shoes
+			drop_from_inventory(magboots)
+
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
 		if(LAZYLEN(uniform.accessories))
 			for(var/obj/item/clothing/accessory/A in uniform.accessories)
-				uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
+				if(istype(A, /obj/item/clothing/accessory/holster) || istype(A, /obj/item/clothing/accessory/storage)) //only drop webbings/holsters so you don't drop your PAN or vanity/fluff accessories(the life notifier necklace, etc).
+					uniform.remove_accessory(null,A) //First param is user, but adds fingerprints and messages
 
 	//Size update
 	blob.transform = matrix()*size_multiplier
