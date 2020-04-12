@@ -21,7 +21,7 @@
 	else
 		alert("Admin jumping disabled")
 
-/client/proc/jumptoturf(var/turf/T in turfs)
+/client/proc/jumptoturf(turf/T in world)
 	set name = "Jump to Turf"
 	set category = "Admin"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
@@ -29,12 +29,10 @@
 	if(config_legacy.allow_admin_jump)
 		log_admin("[key_name(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]")
 		message_admins("[key_name_admin(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]", 1)
-		usr.on_mob_jump()
-		usr.loc = T
+		usr.forceMove(T)
 		feedback_add_details("admin_verb","JT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
 		alert("Admin jumping disabled")
-	return
 
 /client/proc/jumptomob(var/mob/M in mob_list)
 	set category = "Admin"
