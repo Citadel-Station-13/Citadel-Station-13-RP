@@ -20,7 +20,7 @@
 		return TRUE
 	if(!user)
 		return FALSE
-	return (usr.default_can_use_topic(src) < UI_UPDATE)		//can play with TK and while resting because fun.
+	return (usr.default_can_use_topic(src) < STATUS_UPDATE)		//can play with TK and while resting because fun.
 
 /// CITRP EDIT UNTIL INTERACTION REFACTOR PORT!
 /obj/structure/musician/attack_hand(mob/user)

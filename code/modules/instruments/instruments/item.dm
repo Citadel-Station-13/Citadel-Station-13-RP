@@ -27,7 +27,7 @@
 	return ..()
 
 /obj/item/instrument/proc/should_stop_playing(mob/user)
-	return !user.CanReach(src) || (usr.default_can_use_topic(src) < STATUS_UPDATE)
+	return !Adjacent(user) && !(storage_depth(user) < 3)
 
 /*
 /obj/item/instrument/process(wait)
