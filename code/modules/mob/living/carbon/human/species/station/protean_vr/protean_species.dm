@@ -31,7 +31,7 @@
 	min_age =		18
 	max_age =		200
 	brute_mod =		0.30 // 70% brute reduction
-	burn_mod =		1.6 //Burn, however, is
+	burn_mod =		1.4 //Burn, however, is
 	oxy_mod =		0
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
