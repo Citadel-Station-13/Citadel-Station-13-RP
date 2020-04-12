@@ -100,23 +100,12 @@
 	damage = 32
 	damage_type = BRUTE
 	check_armour = "bomb"
-	range = 3 // Our "range" var is named "kill_count". Yes it is.
+	range = 4
 
 	var/pressure_decrease = 0.25
 	var/turf_aoe = FALSE
 	var/mob_aoe = FALSE
 	var/list/hit_overlays = list()
-
-// /obj/item/projectile/kinetic/pod
-// 	kill_count = 4
-//
-// /obj/item/projectile/kinetic/pod/regular
-// 	damage = 50
-// 	pressure_decrease = 0.5
-//
-// /obj/item/projectile/kinetic/pod/enhanced
-// 	turf_aoe = TRUE
-// 	mob_aoe = TRUE
 
 /obj/item/projectile/kinetic/on_impact(var/atom/A)
 	strike_thing(A)
