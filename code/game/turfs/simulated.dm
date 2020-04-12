@@ -20,6 +20,8 @@
 /turf/simulated/Initialize(mapload)
 	. = ..()
 	levelupdate()
+	// HOOK FOR MOB/FREELOOK SYSTEM
+	updateVisibility(src)
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)

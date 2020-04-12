@@ -65,10 +65,10 @@
 
 	if (light_power && light_range)
 		update_light()
+*/
 
 	if (opacity)
 		has_opaque_atom = TRUE
-*/
 
 /*
 	if(requires_activation)
