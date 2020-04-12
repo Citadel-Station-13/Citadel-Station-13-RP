@@ -995,5 +995,5 @@
 
 /obj/item/clothing/under/dutch
 	name = "Western suit"
-	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing. ."
+	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
 	icon_state = "DutchUniform"
