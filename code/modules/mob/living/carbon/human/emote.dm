@@ -729,7 +729,7 @@
 				if(!muzzled)
 					message = "mrowls"
 					m_type = 2
-					playsound(loc, 'sound/voice/meow1.ogg', 50, 1
+					playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2
