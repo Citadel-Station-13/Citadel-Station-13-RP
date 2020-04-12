@@ -80,7 +80,7 @@
 	last_channel_played = channel_text
 	for(var/i in hearing_mobs)
 		var/mob/M = i
-		M.playsound_local(get_turf(parent), null, volume, FALSE, K.frequency, INSTRUMENT_DISTANCE_NO_FALLOFF, channel, null, copy, distance_multiplier = INSTRUMENT_DISTANCE_FALLOFF_BUFF)
+		M.playsound_local(get_turf(parent), null, volume, FALSE, K.frequency, INSTRUMENT_DISTANCE_NO_FALLOFF, FALSE, channel, null, copy, /datum/client_preference/intrument_toggle, distance_multiplier = INSTRUMENT_DISTANCE_FALLOFF_BUFF)
 		// Could do environment and echo later but not for now
 
 /datum/song/proc/terminate_all_sounds(clear_channels = TRUE)

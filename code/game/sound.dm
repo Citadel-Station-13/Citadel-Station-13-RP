@@ -17,7 +17,7 @@ GLOBAL_VAR_INIT(sound_env_dry, 0)
 		return
 
 	//allocate a channel if necessary now so its the same for everyone
-	channel = channel || open_sound_channel()
+	channel = channel || SSsounds.random_available_channel()
 
 	// Looping through the player list has the added bonus of working for mobs inside containers
 	var/sound/S = sound(get_sfx(soundin))
@@ -71,7 +71,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		S = sound(get_sfx(soundin))
 
 	S.wait = 0 //No queue
-	S.channel = channel || open_sound_channel()		//SSsounds.random_available_channel()
+	S.channel = channel || SSsounds.random_available_channel()
 	S.volume = vol
 	// TG EDIT
 	S.environment = GLOB.sound_default_environment
