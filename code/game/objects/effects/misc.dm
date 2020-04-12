@@ -7,6 +7,7 @@
 	density = 1
 	anchored = 0
 
+// this is banned, use temporary-visual - kevinz000
 /obj/effect/temporary_effect
 	name = "self deleting effect"
 	desc = "How are you examining what which cannot be seen?"
@@ -14,11 +15,10 @@
 	invisibility = 0
 	var/time_to_die = 10 SECONDS // Afer which, it will delete itself.
 
-/obj/effect/temporary_effect/New()
-	..()
+/obj/effect/temporary_effect/Initialize(mapload)
+	. = ..()
 	if(time_to_die)
-		spawn(time_to_die)
-			qdel(src)
+		QDEL_IN(src, time_to_die)
 
 // Shown really briefly when attacking with axes.
 /obj/effect/temporary_effect/cleave_attack

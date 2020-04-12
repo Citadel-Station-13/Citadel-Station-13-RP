@@ -4,8 +4,8 @@
 
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
-	item_flags = THICKMATERIAL
 	flags = PHORONGUARD
+	item_flags = THICKMATERIAL|ALLOW_SURVIVALFOOD
 	flags_inv = 		 HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection =    HEAD|FACE|EYES
@@ -19,6 +19,8 @@
 		SPECIES_TESHARI = 'icons/mob/species/seromi/head.dmi'
 		)
 	species_restricted = null
+	max_pressure_protection = null
+	min_pressure_protection = null
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
@@ -45,10 +47,10 @@
 	flags = PHORONGUARD
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	heat_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	cold_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_inv =          HIDEJUMPSUIT|HIDETAIL
-	item_flags =              STOPPRESSUREDAMAGE | THICKMATERIAL | AIRTIGHT
+	heat_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	cold_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags_inv =			 HIDEJUMPSUIT|HIDETAIL
+	item_flags =		 THICKMATERIAL | AIRTIGHT
 	slowdown = 0
 	//will reach 10 breach damage after 25 laser carbine blasts, 3 revolver hits, or ~1 PTR hit. Completely immune to smg or sts hits.
 	breach_threshold = 38
@@ -62,6 +64,8 @@
 		)
 	supporting_limbs = list()
 	var/obj/item/weapon/material/knife/tacknife
+	max_pressure_protection = null
+	min_pressure_protection = null
 
 /obj/item/clothing/suit/space/rig/attack_hand(var/mob/living/M)
 	if(tacknife)
@@ -96,7 +100,7 @@
 		return 0
 
 	var/mob/living/carbon/human/H = loc
-	if(!istype(H) || !H.back)
+	if(!istype(H) || (!H.back && !H.belt))
 		return 0
 
 	var/obj/item/weapon/rig/suit = H.back

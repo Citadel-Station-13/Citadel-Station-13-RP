@@ -19,19 +19,20 @@
 /obj/item/clothing/accessory/collar/lifecrystal/Destroy() //Waitwaitwait
 	if(state == 1)
 		process() //Nownownow
+	STOP_PROCESSING(SSobj, src)
 	return ..() //Okfine
 
 /obj/item/clothing/accessory/collar/lifecrystal/process()
 	check_owner()
 	if((state > 1) || !owner)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/lifecrystal/attack_self(mob/user as mob)
 	owner = user	//We're paired to this guy
 	owner_c = user.client	//This is his client
 	check_owner()
 	to_chat(user, "<span class='notice'>The [name] glows pleasantly blue.</span>")
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/accessory/collar/lifecrystal/proc/check_owner()
 	//He's dead, jim

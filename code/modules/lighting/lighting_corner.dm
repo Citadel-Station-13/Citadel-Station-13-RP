@@ -99,6 +99,12 @@
 
 /datum/lighting_corner/proc/update_overlays()
 	// Cache these values a head of time so 4 individual lighting overlays don't all calculate them individually.
+	/*
+	var/lum_r = src.lum_r > 0 ? LIGHTING_MULT_FACTOR * sqrt(src.lum_r) : src.lum_r
+	var/lum_g = src.lum_g > 0 ? LIGHTING_MULT_FACTOR * sqrt(src.lum_g) : src.lum_g
+	var/lum_b = src.lum_b > 0 ? LIGHTING_MULT_FACTOR * sqrt(src.lum_b) : src.lum_b
+	disabled for now
+	*/
 	var/lum_r = src.lum_r
 	var/lum_g = src.lum_g
 	var/lum_b = src.lum_b
@@ -135,5 +141,5 @@
 /datum/lighting_corner/Destroy(var/force)
 	if (!force)
 		return QDEL_HINT_LETMELIVE
-	crash_with("Who decided to force qdel() a lighting corner? Why did you do this?")
+	stack_trace("Who decided to force qdel() a lighting corner? Why did you do this?")
 	return ..()

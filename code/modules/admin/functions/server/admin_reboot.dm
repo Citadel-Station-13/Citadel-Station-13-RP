@@ -23,7 +23,7 @@
 				if("Regular Restart")
 					//SSticker.Reboot(init_by, "admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]", 10)
 					//POLARIS CODE REE
-					to_chat(world, "<span class='danger'>Rebooting world in 1 second! Initiated by [init_by]</span>")
+					to_chat(world, "<span class='danger'>Rebooting world in 1 second! [init_by]</span>")
 					spawn(10)
 						world.Reboot()
 				if("Hard Restart (No Delay, No Feeback Reason)")

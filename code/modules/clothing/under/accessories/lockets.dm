@@ -13,14 +13,14 @@
 	if(!base_icon)
 		base_icon = icon_state
 
-	/*if(!("[base_icon]_open" in icon_states(icon)))
+	if(!("[base_icon]_open" in icon_states(icon)))
 		user << "\The [src] doesn't seem to open."
-		return*/
+		return
 
 	open = !open
 	user << "You flip \the [src] [open?"open":"closed"]."
 	if(open)
-		//icon_state = "[base_icon]_open"
+		icon_state = "[base_icon]_open"
 		if(held)
 			user << "\The [held] falls out!"
 			held.loc = get_turf(user)

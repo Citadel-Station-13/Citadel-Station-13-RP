@@ -40,6 +40,8 @@
 
 	var/empty //Mapper override to spawn an empty version of a container that usually has stuff
 
+	var/last_message = 0
+
 /obj/item/weapon/storage/Destroy()
 	close_all()
 	QDEL_NULL(boxes)

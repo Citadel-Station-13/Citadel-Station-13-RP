@@ -104,7 +104,7 @@
 
 
 /datum/game_mode/proc/forge_meme_objectives(var/datum/mind/meme, var/datum/mind/first_host)
-	if (config.objectives_disabled)
+	if (config_legacy.objectives_disabled)
 		return
 
 	// meme always needs to attune X hosts

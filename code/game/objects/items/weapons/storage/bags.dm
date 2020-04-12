@@ -143,6 +143,7 @@
 	if(O)
 		gather_all(get_turf(src), user)
 
+
 /obj/item/weapon/storage/bag/ore/examine(mob/user)
 	..()
 
@@ -376,6 +377,19 @@
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks,/obj/item/weapon/reagent_containers/food/condiment)
+
+	// -----------------------------
+	//           Evidence Bag
+	// -----------------------------
+/obj/item/weapon/storage/bag/detective
+	name = "secure satchel"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "detbag"
+	desc = "A bag for storing investigation things. You know, securely."
+	max_storage_space = ITEMSIZE_COST_NORMAL * 15
+	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_SMALL
+	can_hold = list(/obj/item/weapon/forensics/swab,/obj/item/weapon/sample/print,/obj/item/weapon/sample/fibers,/obj/item/weapon/evidencebag)
 
 /obj/item/weapon/storage/bag/dogborg
 	name = "dog bag"

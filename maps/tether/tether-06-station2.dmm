@@ -2131,15 +2131,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
 "dg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 25;
 	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
@@ -3057,6 +3052,15 @@
 /turf/space,
 /area/space)
 "eN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/chapel_morgue)
+"eO" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
 	icon_state = "propulsion_l"
@@ -3066,19 +3070,9 @@
 /area/shuttle/large_escape_pod1/station{
 	base_turf = /turf/simulated/mineral/floor/vacuum
 	})
-"eO" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
-	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/large_escape_pod1/station{
-	base_turf = /turf/simulated/mineral/floor/vacuum
-	})
 "eP" = (
 /obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "propulsion_r"
+	dir = 8
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -3102,6 +3096,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"eR" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
 "eS" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
@@ -30031,11 +30035,11 @@ AN
 AN
 Bw
 yY
-eN
-eO
-eO
 eO
 eP
+eP
+eP
+eR
 yY
 ac
 ac
@@ -32255,8 +32259,8 @@ bz
 bV
 cj
 cF
-cF
 dg
+eN
 dG
 el
 bg

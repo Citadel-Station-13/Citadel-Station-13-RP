@@ -34,6 +34,6 @@
 		if("singulo", "telesci")			//general one-round-only stuff
 			var/F = investigate_subject2file(subject)
 			if(!F)
-				src << "<font color='red'>Error: admin_investigate: [INVESTIGATE_DIR][subject] is an invalid path or cannot be accessed.</font>"
+				to_chat(src, "<font color='red'>Error: admin_investigate: [INVESTIGATE_DIR][subject] is an invalid path or cannot be accessed.</font>")
 				return
 			src << browse(F,"window=investigate[subject];size=800x300")

@@ -7,7 +7,6 @@
 	icon_state = "apc_frame"
 	refund_amt = 2
 	refund_type = /obj/item/stack/material/steel
-	flags = CONDUCT
 
 /obj/item/frame/apc/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()

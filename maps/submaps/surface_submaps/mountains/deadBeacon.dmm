@@ -55,9 +55,9 @@
 "m" = (
 /obj/structure/table/steel,
 /obj/item/weapon/circuitboard/comm_server,
-/obj/machinery/light/built{
+/obj/machinery/light{
 	dir = 8;
-	fitting = ""
+	status = LIGHT_EMPTY
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/cave/deadBeacon)
@@ -164,7 +164,7 @@
 "D" = (
 /obj/item/weapon/cigbutt,
 /obj/item/weapon/tool/wrench,
-/obj/machinery/light/built,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/cave/deadBeacon)
 "E" = (

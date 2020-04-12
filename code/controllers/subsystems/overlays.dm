@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(overlays)
 	stats = list()
 
 /datum/controller/subsystem/overlays/Initialize()
-	initialized = TRUE
+	subsystem_initialized = TRUE
 	fire(mc_check = FALSE)
 	..()
 

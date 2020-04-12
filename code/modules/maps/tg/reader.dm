@@ -98,7 +98,8 @@
 				if(cropMap)
 					continue
 				else
-					world.maxz = zcrd //create a new z_level if needed
+					while(world.maxz < zcrd)
+						world.increment_max_z()
 				if(!no_changeturf)
 					WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems")
 

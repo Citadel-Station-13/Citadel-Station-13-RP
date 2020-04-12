@@ -5,6 +5,7 @@
 	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
 	hunting skills that emphasized taking out their prey without themselves getting hit. They \
 	are only recently becoming known on human stations after reaching space with Skrell assistance."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/teshari)
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
@@ -27,7 +28,7 @@
 	flesh_color = "#5F7BB0"
 	base_color = "#001144"
 	tail = "seromitail"
-	//tail_hair = "feathers" //TESHARI TEMPORARY REMOVAL
+	//tail_hair = "feathers" //VORESTATION TESHARI TEMPORARY REMOVAL
 	reagent_tag = IS_TESHARI
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
@@ -109,7 +110,9 @@
 		O_LIVER =    /obj/item/organ/internal/liver,
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
 		O_BRAIN =    /obj/item/organ/internal/brain,
-		O_EYES =     /obj/item/organ/internal/eyes
+		O_EYES =     /obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 
 	unarmed_types = list(

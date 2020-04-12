@@ -3,8 +3,8 @@
 	desc = "This box contains blood packs."
 	icon_state = "sterile"
 
-/obj/item/weapon/storage/box/bloodpacks/New()
-		..()
+/obj/item/weapon/storage/box/bloodpacks/Initialize()
+		. = ..()
 		new /obj/item/weapon/reagent_containers/blood/empty(src)
 		new /obj/item/weapon/reagent_containers/blood/empty(src)
 		new /obj/item/weapon/reagent_containers/blood/empty(src)
@@ -27,7 +27,7 @@
 	var/blood_type = null
 
 /obj/item/weapon/reagent_containers/blood/Initialize()
-	..()
+	. = ..()
 	base_name = name
 	base_desc = desc
 	if(blood_type != null)

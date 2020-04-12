@@ -11,9 +11,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ad" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/template_noop,
 /area/template_noop)
 "ae" = (
@@ -39,7 +37,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ak" = (
-/mob/living/simple_animal/hostile/malf_drone/lesser,
+/mob/living/simple_mob/mechanical/combat_drone/lesser,
 /turf/template_noop,
 /area/submap/Rockybase)
 "al" = (
@@ -158,9 +156,7 @@
 "aH" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet,
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/holofloor/lino,
 /area/submap/Rockybase)
 "aI" = (
@@ -193,7 +189,7 @@
 /area/submap/Rockybase)
 "aO" = (
 /obj/structure/table/standard,
-/obj/item/device/laptop,
+/obj/item/modular_computer/laptop/preset/custom_loadout/cheap,
 /obj/effect/floor_decal/corner/red/border{
 	icon_state = "bordercolor";
 	dir = 9
@@ -329,9 +325,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bf" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bg" = (
@@ -433,9 +427,7 @@
 /area/submap/Rockybase)
 "bu" = (
 /obj/effect/floor_decal/corner/red/border,
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bv" = (
@@ -542,7 +534,7 @@
 /turf/template_noop,
 /area/template_noop)
 "bK" = (
-/mob/living/simple_animal/hostile/malf_drone/lesser,
+/mob/living/simple_mob/mechanical/combat_drone/lesser,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bL" = (
@@ -607,9 +599,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
 "bY" = (
-/mob/living/simple_animal/hostile/viscerator{
-	returns_home = 1
-	},
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
 "bZ" = (
@@ -839,6 +829,12 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Rockybase)
 "cL" = (
+/mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced{
+	faction = "malf_drone"
+	},
+/turf/simulated/floor/tiled,
+/area/submap/Rockybase)
+"cM" = (
 /obj/machinery/drone_fabricator{
 	fabricator_tag = "Unknown"
 	},
@@ -877,7 +873,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/mob/living/simple_animal/hostile/malf_drone/lesser,
+/mob/living/simple_mob/mechanical/combat_drone/lesser,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cS" = (
@@ -930,12 +926,6 @@
 /area/submap/Rockybase)
 "da" = (
 /obj/item/mecha_parts/chassis/gygax,
-/turf/simulated/floor/tiled,
-/area/submap/Rockybase)
-"db" = (
-/mob/living/simple_animal/hostile/mecha/malf_drone{
-	name = "Autonomous Mechanized Drone"
-	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dc" = (
@@ -1055,7 +1045,7 @@
 "dp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/malf_drone/lesser,
+/mob/living/simple_mob/mechanical/combat_drone/lesser,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dq" = (
@@ -1672,9 +1662,9 @@ bQ
 at
 cd
 aN
-cL
+cM
 aN
-cL
+cM
 aN
 at
 ai
@@ -1786,7 +1776,7 @@ bR
 at
 cg
 aN
-cL
+cM
 aN
 al
 aN
@@ -1825,7 +1815,7 @@ at
 ch
 aN
 aN
-db
+cL
 al
 aN
 at

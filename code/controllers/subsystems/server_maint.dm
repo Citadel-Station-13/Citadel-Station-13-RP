@@ -12,9 +12,9 @@ SUBSYSTEM_DEF(server_maint)
 
 /datum/controller/subsystem/server_maint/fire(resumed = FALSE)
 	if(!resumed)
-		if(listclearnulls(clients))
+		if(listclearnulls(GLOB.clients))
 			log_world("Found a null in clients list!")
-		src.currentrun = clients.Copy()
+		src.currentrun = GLOB.clients.Copy()
 		switch (cleanup_ticker) // do only one of these at a time, once per 5 fires
 			if (0)
 				if(listclearnulls(player_list))

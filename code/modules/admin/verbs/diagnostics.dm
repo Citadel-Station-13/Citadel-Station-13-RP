@@ -17,7 +17,7 @@
 	var/inactive_on_main_station = 0
 	for(var/zone/zone in air_master.zones)
 		var/turf/simulated/turf = locate() in zone.contents
-		if(turf && turf.z in using_map.station_levels)
+		if(turf && turf.z in GLOB.using_map.station_levels)
 			if(zone.needs_update)
 				active_on_main_station++
 			else
@@ -124,7 +124,7 @@
 	set category = "Debug"
 		/*
 	if(!holder)
-		src << "Only administrators may use this command."
+		to_chat(src, "Only administrators may use this command.")
 		return
 
 	if(!air_master)
@@ -146,7 +146,7 @@
 	set category = "Debug"
 	/*
 	if(!holder)
-		src << "Only administrators may use this command."
+		to_chat(src, "Only administrators may use this command.")
 		return
 
 	if(!air_master)

@@ -14,18 +14,18 @@
 	var/recharge_time = 5 //Time it takes for shots to recharge (in seconds)
 	var/bypass_protection = FALSE // If true, can inject through things like spacesuits and armor.
 
-	var/list/reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
+	var/list/reagent_ids = list("tricordrazine", "inaprovaline", "anti_toxin", "tramadol", "dexalin" ,"spaceacillin")
 	var/list/reagent_volumes = list()
 	var/list/reagent_names = list()
 
 /obj/item/weapon/reagent_containers/borghypo/surgeon
-	reagent_ids = list( "tricordrazine", "dexalin", "inaprovaline", "oxycodone", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
+	reagent_ids = list("tricordrazine", "inaprovaline", "oxycodone", "dexalin" ,"spaceacillin")
 
 /obj/item/weapon/reagent_containers/borghypo/crisis
-	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "inaprovaline", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
+	reagent_ids = list("tricordrazine", "inaprovaline", "anti_toxin", "tramadol", "dexalin" ,"spaceacillin")
 
 /obj/item/weapon/reagent_containers/borghypo/lost
-	reagent_ids = list("bicaridine", "kelotane", "anti_toxin", "dexalin", "tricordrazine", "tramadol", "spaceacillin") // CITADEL CHANGE - Grants access to bicaridine and kelotane.
+	reagent_ids = list("tricordrazine", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin")
 
 /obj/item/weapon/reagent_containers/borghypo/merc
 	name = "advanced cyborg hypospray"
@@ -35,17 +35,17 @@
 	reagent_ids = list("healing_nanites", "hyperzine", "tramadol", "oxycodone", "spaceacillin", "peridaxon", "osteodaxon", "myelamine", "synthblood")
 
 /obj/item/weapon/reagent_containers/borghypo/Initialize()
-	..()
+	. = ..()
 
 	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
-		var/datum/reagent/R = chemical_reagents_list[T]
+		var/datum/reagent/R = SSchemistry.chemical_reagents[T]
 		reagent_names += R.name
 
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/reagent_containers/borghypo/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/weapon/reagent_containers/borghypo/process() //Every [recharge_time] seconds, recharge some reagents for the cyborg+
@@ -112,14 +112,14 @@
 		if(t)
 			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
 			mode = t
-			var/datum/reagent/R = chemical_reagents_list[reagent_ids[mode]]
+			var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
 			usr << "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>"
 
 /obj/item/weapon/reagent_containers/borghypo/examine(mob/user)
 	if(!..(user, 2))
 		return
 
-	var/datum/reagent/R = chemical_reagents_list[reagent_ids[mode]]
+	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
 
 	user << "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
 

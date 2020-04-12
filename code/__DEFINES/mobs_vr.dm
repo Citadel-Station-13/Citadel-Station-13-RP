@@ -31,3 +31,11 @@
 #define SPECIES_ZORREN_HIGH		"Highlander Zorren"
 #define SPECIES_CUSTOM			"Custom Species"
 #define SPECIES_PLASMAMAN		"Phoronoid"
+
+#define SPECIES_MONKEY_AKULA		"Sobaka"
+#define SPECIES_MONKEY_NEVREAN		"Sparra"
+#define SPECIES_MONKEY_SERGAL		"Saru"
+#define SPECIES_MONKEY_VULPKANIN	"Wolpin"
+
+#define SPECIES_WEREBEAST			"Werebeast"
+#define SPECIES_SHADEKIN			"Shadekin"

@@ -6,13 +6,13 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/plane_ground)
 "c" = (
-/obj/effect/landmark/start,
-/turf/simulated/floor/outdoors/dirt,
-/area/plane_ground)
-"d" = (
 /obj/effect/landmark{
 	name = "JoinLate"
 	},
+/turf/simulated/floor/outdoors/dirt,
+/area/plane_ground)
+"d" = (
+/obj/effect/landmark/start,
 /turf/simulated/floor/outdoors/dirt,
 /area/plane_ground)
 
@@ -1900,7 +1900,7 @@ b
 b
 b
 b
-b
+d
 b
 b
 b
@@ -2031,9 +2031,9 @@ b
 b
 b
 b
-d
-d
-d
+c
+c
+c
 b
 b
 b
@@ -2095,11 +2095,11 @@ b
 b
 b
 b
-c
 b
-d
-d
-d
+b
+c
+c
+c
 b
 b
 b
@@ -2163,9 +2163,9 @@ b
 b
 b
 b
-d
-d
-d
+c
+c
+c
 b
 b
 b

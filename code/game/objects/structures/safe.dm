@@ -115,7 +115,7 @@ FLOOR SAFES
 				if(canhear)
 					to_chat(user, "<span class='notice'>You hear a [pick("click", "chink", "clink")] from \the [src].</span>")
 					playsound(user, 'sound/machines/click.ogg', 20, 1)
-			check_unlocked(user, canhear)
+			check_unlocked(user, canhear)		
 
 		updateUsrDialog()
 		return

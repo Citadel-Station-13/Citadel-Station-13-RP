@@ -52,7 +52,7 @@
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..())
 		return 1
-	if (using_map && !(src.z in using_map.contact_levels))
+	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
 		usr << "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>"
 		return
 	usr.set_machine(src)
@@ -93,6 +93,12 @@
 					switch(security_level)
 						if(SEC_LEVEL_GREEN)
 							feedback_inc("alert_comms_green",1)
+						if(SEC_LEVEL_YELLOW)
+							feedback_inc("alert_comms_yellow",1)
+						if(SEC_LEVEL_VIOLET)
+							feedback_inc("alert_comms_violet",1)
+						if(SEC_LEVEL_ORANGE)
+							feedback_inc("alert_comms_orange",1)
 						if(SEC_LEVEL_BLUE)
 							feedback_inc("alert_comms_blue",1)
 				tmp_alertlevel = 0
@@ -182,12 +188,12 @@
 				if(centcomm_message_cooldown)
 					usr << "<font color='red'>Arrays recycling.  Please stand by.</font>"
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
 				CentCom_announce(input, usr)
 				usr << "<font color='blue'>Message transmitted.</font>"
-				log_game("[key_name(usr)] has made an IA [using_map.boss_short] announcement: [input]")
+				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
 					centcomm_message_cooldown = 0
@@ -274,7 +280,7 @@
 /obj/machinery/computer/communications/attack_hand(var/mob/user as mob)
 	if(..())
 		return
-	if (using_map && !(src.z in using_map.contact_levels))
+	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
 		user << "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>"
 		return
 
@@ -300,7 +306,7 @@
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make An Announcement</A> \]"
 				if (src.authenticated==2)
 					if(src.emagged == 0)
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [using_map.boss_short]</A> \]"
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageCentCom'>Send an emergency message to [GLOB.using_map.boss_short]</A> \]"
 					else
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=MessageSyndicate'>Send an emergency message to \[UNKNOWN\]</A> \]"
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=RestoreBackup'>Restore Backup Routing Data</A> \]"
@@ -359,6 +365,9 @@
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_VIOLET]'>Violet</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_YELLOW]'>Yellow</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 		if(STATE_CONFIRM_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
@@ -433,7 +442,7 @@
 		return
 
 	if(deathsquad.deployed)
-		user << "[using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated."
+		user << "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated."
 		return
 
 	if(emergency_shuttle.deny_shuttle)
@@ -445,7 +454,7 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		user << "The emergency shuttle may not be called while returning to [using_map.boss_short]."
+		user << "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short]."
 		return
 
 	if(emergency_shuttle.online())
@@ -469,7 +478,7 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		user << "The shuttle may not be called while returning to [using_map.boss_short]."
+		user << "The shuttle may not be called while returning to [GLOB.using_map.boss_short]."
 		return
 
 	if(emergency_shuttle.online())
@@ -479,11 +488,11 @@
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
 		if(emergency_shuttle.deny_shuttle)
-			user << "[using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later."
+			user << "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later."
 			return
 
 		if(deathsquad.deployed == 1)
-			user << "[using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated."
+			user << "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated."
 			return
 
 		if(world.time < 54000) // 30 minute grace period to let the game get going
@@ -502,8 +511,8 @@
 
 	//delay events in case of an autotransfer
 	if (isnull(user))
-		event_manager.delay_events(EVENT_LEVEL_MODERATE, 9000) //15 minutes
-		event_manager.delay_events(EVENT_LEVEL_MAJOR, 9000)
+		SSevents.delay_events(EVENT_LEVEL_MODERATE, 9000) //15 minutes
+		SSevents.delay_events(EVENT_LEVEL_MAJOR, 9000)
 
 	log_game("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
 	message_admins("[user? key_name_admin(user) : "Autotransfer"] has called the shuttle.", 1)
@@ -522,6 +531,13 @@
 		log_game("[key_name(user)] has recalled the shuttle.")
 		message_admins("[key_name_admin(user)] has recalled the shuttle.", 1)
 	return
+
+
+/proc/is_relay_online()
+    for(var/obj/machinery/telecomms/relay/M in world)
+        if(M.stat == 0)
+            return 1
+    return 0
 
 /obj/machinery/computer/communications/proc/post_status(var/command, var/data1, var/data2)
 

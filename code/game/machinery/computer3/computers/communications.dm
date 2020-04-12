@@ -206,12 +206,12 @@
 			if(centcomm_message_cooldown)
 				to_chat(usr, "Arrays recycling.  Please stand by.")
 				return
-			var/input = sanitize(input("Please choose a message to transmit to [using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response.", "To abort, send an empty message.", ""))
+			var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response.", "To abort, send an empty message.", ""))
 			if(!input || !interactable())
 				return
 			CentCom_announce(input, usr)
 			to_chat(usr, "Message transmitted.")
-			log_game("[key_name(usr)] has made a [using_map.boss_short] announcement: [input]")
+			log_game("[key_name(usr)] has made a [GLOB.using_map.boss_short] announcement: [input]")
 			centcomm_message_cooldown = 1
 			spawn(600)//10 minute cooldown
 				centcomm_message_cooldown = 0
@@ -307,7 +307,7 @@
 		if (authenticated==2)
 			dat += "<BR>\[ <A HREF='?src=\ref[src];announce'>Make An Announcement</A> \]"
 			if(computer.emagged == 0)
-				dat += "<BR>\[ <A HREF='?src=\ref[src];MessageCentCom'>Send an emergency message to [using_map.boss_short]</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];MessageCentCom'>Send an emergency message to [GLOB.using_map.boss_short]</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];MessageSyndicate'>Send an emergency message to \[UNKNOWN\]</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];RestoreBackup'>Restore Backup Routing Data</A> \]"

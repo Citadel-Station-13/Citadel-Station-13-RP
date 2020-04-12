@@ -83,11 +83,13 @@
 /mob/proc/can_overcome_gravity()
 	return FALSE
 
-/mob/living/carbon/human/can_overcome_gravity()
-	return species && species.can_overcome_gravity(src)
+/mob/living/can_overcome_gravity()
+	return hovering
 
-/mob/living/simple_animal/construct/can_overcome_gravity()
-	return 1 //They care not for standard physics.
+/mob/living/carbon/human/can_overcome_gravity()
+	. = ..()
+	if(!.)
+		return species && species.can_overcome_gravity(src)
 
 /mob/observer/zMove(direction)
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
@@ -117,36 +119,44 @@
 	return ..()
 
 /mob/observer/can_ztravel()
-	return 1
+	return TRUE
 
-/mob/living/simple_animal/construct/can_ztravel()
-	return 1
+/mob/living/can_ztravel()
+	if(incapacitated())
+		return FALSE
+	return hovering
 
 /mob/living/carbon/human/can_ztravel()
 	if(incapacitated())
-		return 0
+		return FALSE
+
+	if(hovering)
+		return TRUE
 
 	if(flying) //VOREStation Edit. Allows movement up/down with wings.
 		return 1 //VOREStation Edit
 
 	if(Process_Spacemove())
-		return 1
+		return TRUE
 
 	if(Check_Shoegrip())	//scaling hull with magboots
 		for(var/turf/simulated/T in trange(1,src))
 			if(T.density)
-				return 1
+				return TRUE
 
 /mob/living/silicon/robot/can_ztravel()
 	if(incapacitated() || is_dead())
-		return 0
+		return FALSE
+
+	if(hovering)
+		return TRUE
 
 	if(Process_Spacemove()) //Checks for active jetpack
-		return 1
+		return TRUE
 
 	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
 		if(T.density)
-			return 1
+			return TRUE
 
 // TODO - Leshana Experimental
 
@@ -198,11 +208,11 @@
 			else if (H.nutrition > 1000) //Eat too much while flying? Get fat and fall.
 				to_chat(H, "<span class='danger'>You're too heavy! Your wings give out and you plummit to the ground!</span>")
 				H.stop_flying() //womp womp.
-			else if(H.nutrition < 300 && H.nutrition > 299.4) //290 would be risky, as metabolism could mess it up. Let's do 289.
+			else if(H.nutrition < 300 && H.nutrition > 289) //290 would be risky, as metabolism could mess it up. Let's do 289.
 				to_chat(H, "<span class='danger'>You are starting to get fatigued... You probably have a good minute left in the air, if that. Even less if you continue to fly around! You should get to the ground soon!</span>") //Ticks are, on average, 3 seconds. So this would most likely be 90 seconds, but lets just say 60.
 				H.nutrition -= 0.5 //Fixed the evilness to have 10 nutrition drained per tick and tile below 300 nutrition too
 				return
-			else if(H.nutrition < 100 && H.nutrition > 99.4)
+			else if(H.nutrition < 100 && H.nutrition > 89)
 				to_chat(H, "<span class='danger'>You're seriously fatigued! You need to get to the ground immediately and eat before you fall!</span>")
 				return
 			else if(H.nutrition < 10) //Should have listened to the warnings!
@@ -262,18 +272,14 @@
 	if((locate(/obj/structure/disposalpipe/up) in below) || locate(/obj/machinery/atmospherics/pipe/zpipe/up in below))
 		return FALSE
 
+/mob/living/can_fall()
+	if(hovering)
+		return FALSE
+	return ..()
+
 /mob/living/carbon/human/can_fall()
 	if(..())
 		return species.can_fall(src)
-
-/mob/living/simple_animal/parrot/can_fall() // Poly can fly.
-	return FALSE
-
-/mob/living/simple_animal/hostile/carp/can_fall() // So can carp apparently.
-	return FALSE
-
-/mob/living/simple_animal/construct/can_fall() //As do Constructs.
-	return FALSE
 
 // Check if this atom prevents things standing on it from falling. Return TRUE to allow the fall.
 /obj/proc/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
@@ -330,6 +336,10 @@
 
 	// Detect if we made a silent landing.
 	if(locate(/obj/structure/stairs) in landing)
+		if(isliving(src))
+			var/mob/living/L = src
+			if(L.pulling)
+				L.pulling.forceMove(landing)
 		return 1
 	else
 		var/atom/A = find_fall_target(oldloc, landing)
@@ -431,7 +441,7 @@
 
 /atom/movable/proc/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 10, var/silent = FALSE, var/planetary = FALSE)
 	if(!silent)
-		visible_message("\The [src] falls from above and into \the [hit_atom]!", "You hear something fall onto \the [hit_atom].")
+		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
 

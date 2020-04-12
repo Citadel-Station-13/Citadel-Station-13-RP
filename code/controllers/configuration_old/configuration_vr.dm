@@ -9,6 +9,7 @@
 	var/limit_interns = -1 //Unlimited by default
 	var/limit_visitors = -1 //Unlimited by default
 	var/pto_cap = 100 //Hours
+	var/require_flavor = FALSE
 
 /hook/startup/proc/read_vs_config()
 	var/list/Lines = file2list("config/legacy/config.txt")
@@ -55,4 +56,6 @@
 				config_legacy.time_off = TRUE
 			if ("pto_job_change")
 				config_legacy.pto_job_change = TRUE
+			if ("require_flavor")
+				config_legacy.require_flavor = TRUE
 	return 1

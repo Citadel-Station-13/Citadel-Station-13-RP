@@ -18,12 +18,11 @@
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/chainsaw/Destroy()
-	processing_objects -= src
-	if(reagents)
-		qdel(reagents)
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 obj/item/weapon/chainsaw/proc/turnOn(mob/user as mob)
 	if(on) return
