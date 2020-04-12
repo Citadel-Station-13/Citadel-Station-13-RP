@@ -153,14 +153,13 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 			var/mob/MO = M
 			MO.playsound_local(get_turf(MO), sound, volume, vary, pressure_affected = FALSE)
 
-/proc/open_sound_channel()
-	var/static/next_channel = 1	//loop through the available 1024 - (the ones we reserve) channels and pray that its not still being used
-	. = ++next_channel
-	if(next_channel > CHANNEL_HIGHEST_AVAILABLE)
-		next_channel = 1
-
 /mob/proc/stop_sound_channel(chan)
-	src << sound(null, repeat = 0, wait = 0, channel = chan)
+	SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = chan))
+
+/mob/proc/set_sound_channel_volume(channel, volume)
+	var/sound/S = sound(null, FALSE, FALSE, channel, volume)
+	S.status = SOUND_UPDATE
+	SEND_SOUND(src, S)
 
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
