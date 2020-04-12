@@ -86,7 +86,7 @@
 		return
 	if(!operating)
 		return
-	use_power(100)
+	use_power(10)
 
 	affecting = loc.contents - src		// moved items will be all in loc
 	var/items_moved = 0
