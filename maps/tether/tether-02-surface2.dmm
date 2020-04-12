@@ -12708,8 +12708,11 @@
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
 "yv" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/holofloor/desert,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/flamp,
+/turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
 "yw" = (
 /obj/structure/table/bench/wooden,
@@ -14675,6 +14678,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/research_storage)
+"Cw" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/flamp,
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "Cx" = (
 /obj/random/junk,
 /obj/effect/decal/cleanable/dirt,
@@ -15077,6 +15087,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
+"DB" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/holofloor/desert,
+/area/tether/surfacebase/fishing_garden)
 "DC" = (
 /obj/machinery/vending/coffee{
 	product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies;Would you like some tea, Mrs. Nesbit?";
@@ -25743,7 +25757,7 @@ gO
 xO
 gO
 Kk
-xm
+yv
 Kk
 xm
 Kg
@@ -26028,7 +26042,7 @@ vl
 vl
 vl
 Kr
-yv
+DB
 vl
 ww
 yY
@@ -26453,7 +26467,7 @@ xP
 vl
 ww
 xn
-xn
+Cw
 yD
 xn
 Kf
