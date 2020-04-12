@@ -522,7 +522,31 @@ datum/gear/suit/duster
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
+datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
 	display_name = "bridge officer dress jacket"
-	path = /obj/item/clothing/under/bridgeofficer
+	path = /obj/item/clothing/suit/storage/bridgeofficer
 	allowed_roles = list("Command Secretary")
+
+datum/gear/suit/labcoat/param
+	display_name = "Paramedic Jacket"
+	path = /obj/item/clothing/suit/toggle/labcoat/paramed
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+datum/gear/suit/labcoat/param
+	display_name = "EMT Vest"
+	path = /obj/item/clothing/suit/toggle/labcoat/paramedic
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/suit/wintercoat/paramed
+	display_name = "winter coat, paramedic"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/para
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/suit/wintercoat/bar
+	display_name = "winter coat, bartender"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/bar
+	allowed_roles = list("Bartender")
+
+/datum/gear/suit/storage/dutchcoat
+	display_name = "Western Coat"
+	path = /obj/item/clothing/suit/storage/dutchcoat

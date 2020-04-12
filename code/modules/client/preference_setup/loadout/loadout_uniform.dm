@@ -647,3 +647,32 @@
 	display_name = "bridge officer uniform"
 	path = /obj/item/clothing/under/bridgeofficer
 	allowed_roles = list("Command Secretary")
+
+/datum/gear/uniform/paramedunidark
+	display_name = "Dark Paramedic Uniform"
+	path = /obj/item/clothing/under/paramedunidark
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/uniform/parameduniskirtdark
+	display_name = "Dark Paramedic Uniform"
+	path = /obj/item/clothing/under/parameduniskirtdark
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/uniform/suit/bartenderbtc
+	display_name = "BTC Bartender"
+	path = /obj/item/clothing/under/btcbartender
+	allowed_roles = list("Bartender")
+
+/datum/gear/uniform/paramedunilight
+	display_name = "Light Paramedic Uniform"
+	path = /obj/item/clothing/under/paramedunilight
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/uniform/parameduniskirtdark
+	display_name = "Light Paramedic Uniform"
+	path = /obj/item/clothing/under/parameduniskirtlight
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+datum/gear/uniform/dutchsuit
+	display_name = "Western Suit"
+	path = /obj/item/clothing/under/dutch

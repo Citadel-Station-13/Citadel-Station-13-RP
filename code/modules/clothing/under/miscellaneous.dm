@@ -967,3 +967,33 @@
 	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
 	icon_state = "bridgeofficer"
 	item_state = "bridgeofficer"
+
+/obj/item/clothing/under/paramedunidark
+	name = "Paramedic Uniform"
+	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-dark"
+
+/obj/item/clothing/under/parameduniskirtdark
+	name = "Paramedic Uniskirt"
+	desc = "A dark jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-dark_skirt"
+
+/obj/item/clothing/under/btcbartender
+	name = "BTC Bartender"
+	desc = "For the classy bartender who converts their paychecks into Spesscoin."
+	icon_state = "btc_bartender_s"
+
+/obj/item/clothing/under/paramedunilight
+	name = "Paramedic Uniform"
+	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light"
+
+/obj/item/clothing/under/parameduniskirtlight
+	name = "Paramedic Uniskirt"
+	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light_skirt"
+
+/obj/item/clothing/under/dutch
+	name = "Western suit"
+	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing. ."
+	icon_state = "DutchUniform"
