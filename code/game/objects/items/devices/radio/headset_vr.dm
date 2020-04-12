@@ -19,7 +19,8 @@
 
 /obj/item/device/radio/headset
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ears.dmi',
-						SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi')
+						SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi',
+						SPECIES_VOX = 'icons/mob/species/vox/ears.dmi')
 
 /obj/item/device/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.
 	name = "nonhuman radio implant"
