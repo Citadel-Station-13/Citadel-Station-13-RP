@@ -17,7 +17,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Janihound"		= /obj/item/weapon/robot_module/robot/scrubpup,
 	"Sci-Hound"		= /obj/item/weapon/robot_module/robot/science,
 	"Pupdozer"		= /obj/item/weapon/robot_module/robot/engiedog,
-	"Service-Hound"		= /obj/item/weapon/robot_module/robot/clerical/brodog
+	"Service-Hound"		= /obj/item/weapon/robot_module/robot/clerical/brodog,
+	"KMine" = /obj/item/weapon/robot_module/robot/kmine
 	))
 
 /obj/item/weapon/robot_module
