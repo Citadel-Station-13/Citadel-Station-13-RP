@@ -168,6 +168,8 @@
 
 /datum/surgery_step/cavity/implant_removal/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	if(!affected)
+		return FALSE
 	if(affected.organ_tag == BP_HEAD)
 		var/obj/item/organ/internal/brain/sponge = target.internal_organs_by_name["brain"]
 		return ..() && (!sponge || !sponge.damage)
@@ -207,8 +209,8 @@
 			ENABLE_BITFIELD(target.hud_updateflag, IMPLOYAL_HUD)
 
 			//Handle possessive brain borers.
-			if(istype(obj,/mob/living/simple_animal/borer))
-				var/mob/living/simple_animal/borer/worm = obj
+			if(istype(obj,/mob/living/simple_mob/animal/borer))
+				var/mob/living/simple_mob/animal/borer/worm = obj
 				if(worm.controlling)
 					target.release_control()
 				worm.detatch()

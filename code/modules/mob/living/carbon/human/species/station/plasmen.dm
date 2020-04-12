@@ -132,7 +132,7 @@
 		if("Medical Doctor","Paramedic","Psychiatrist")
 			suit=/obj/item/clothing/suit/space/plasman/med
 			helm=/obj/item/clothing/head/helmet/space/plasman/med
-		if("Search and Rescue")
+		if("Field Medic")
 			suit=/obj/item/clothing/suit/space/plasman/med/rescue
 			helm=/obj/item/clothing/head/helmet/space/plasman/med/rescue
 		if("Chemist")

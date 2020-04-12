@@ -1,6 +1,4 @@
 GLOBAL_LIST_INIT(bitfields, list(
-
-/*
 	"appearance_flags" = list(
 		"LONG_GLIDE" = LONG_GLIDE,
 		"RESET_COLOR" = RESET_COLOR,
@@ -13,6 +11,12 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"TILE_BOUND" = TILE_BOUND,
 		"PIXEL_SCALE" = PIXEL_SCALE
 		),
+	"datum_flags" = list(
+		"DF_USE_TAG" = DF_USE_TAG,
+		"DF_VAR_EDITED" = DF_VAR_EDITED,
+		"DF_ISPROCESSING" = DF_ISPROCESSING,
+		)
+/*
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
 		"SEE_SELF" = SEE_SELF,
@@ -35,11 +39,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"USES_TGUI" = USES_TGUI,
 		"FROZEN" = FROZEN,
 		),
-	"datum_flags" = list(
-		"DF_USE_TAG" = DF_USE_TAG,
-		"DF_VAR_EDITED" = DF_VAR_EDITED,
-		"DF_ISPROCESSING" = DF_ISPROCESSING,
-		),
+
 	"item_flags" = list(
 		"BEING_REMOVED" = BEING_REMOVED,
 		"IN_INVENTORY" = IN_INVENTORY,

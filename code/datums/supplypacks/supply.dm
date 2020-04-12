@@ -61,7 +61,7 @@
 				/obj/item/weapon/tool/wirecutters,
 				/obj/item/weapon/tape_roll = 2)
 	cost = 10
-	containertype = "/obj/structure/closet/crate"
+	containertype = /obj/structure/closet/crate
 	containername = "Shipping supplies crate"
 
 /datum/supply_pack/supply/bureaucracy
@@ -104,14 +104,14 @@
 			/obj/item/device/analyzer,
 			/obj/item/weapon/storage/bag/ore,
 			/obj/item/device/flashlight/lantern,
-			/obj/item/weapon/pickaxe/shovel,
+			/obj/item/weapon/shovel,
 			/obj/item/weapon/pickaxe,
 			/obj/item/weapon/mining_scanner,
 			/obj/item/clothing/glasses/material,
 			/obj/item/clothing/glasses/meson
 			)
 	cost = 10
-	containertype = "/obj/structure/closet/crate/secure"
+	containertype = /obj/structure/closet/crate/secure
 	containername = "Shaft miner equipment"
 	access = access_mining
 /* //VOREStation Edit - Pointless on Tether.

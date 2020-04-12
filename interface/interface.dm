@@ -9,11 +9,11 @@
 				var/output = replacetext(config_legacy.wikisearchurl, "%s", url_encode(query))
 				src << link(output)
 			else
-				src << "<span class='warning'> The wiki search URL is not set in the server configuration.</span>"
+				to_chat(src, "<span class='warning'> The wiki search URL is not set in the server configuration.</span>")
 		else
 			src << link(config_legacy.wikiurl)
 	else
-		src << "<span class='warning'>The wiki URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 		return
 
 /client/verb/forum()
@@ -25,7 +25,7 @@
 			return
 		src << link(config_legacy.forumurl)
 	else
-		src << "<span class='warning'>The forum URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 		return
 
 /client/verb/rules()
@@ -38,7 +38,7 @@
 			return
 		src << link(config_legacy.rulesurl)
 	else
-		src << "<span class='danger'>The rules URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/map()
@@ -51,7 +51,7 @@
 			return
 		src << link(config_legacy.mapurl)
 	else
-		src << "<span class='danger'>The map URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='danger'>The map URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/github()
@@ -64,7 +64,7 @@
 			return
 		src << link(CONFIG_GET(string/githuburl))
 	else
-		src << "<span class='danger'>The GitHub URL is not set in the server configuration.</span>"
+		to_chat(src, "<span class='danger'>The GitHub URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/hotkeys_help()

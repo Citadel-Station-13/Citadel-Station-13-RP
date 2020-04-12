@@ -30,15 +30,15 @@
 	var/integrity = 80
 
 
-/obj/machinery/power/emitter/verb/rotate()
-	set name = "Rotate"
+/obj/machinery/power/emitter/verb/rotate_clockwise()
+	set name = "Rotate Emitter Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.setDir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 270))
 	return 1
 
 /obj/machinery/power/emitter/Initialize()
@@ -142,7 +142,8 @@
 
 		var/obj/item/projectile/beam/emitter/A = get_emitter_beam()
 		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)
-		A.launch( get_step(src.loc, src.dir) )
+		A.firer = src
+		A.fire(dir2angle(dir))
 
 /obj/machinery/power/emitter/attackby(obj/item/W, mob/user)
 

@@ -26,7 +26,7 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 
 	var/ckey = ckey(key)
 
-	var/client/C = directory[ckey]
+	var/client/C = GLOB.directory[ckey]
 	if (C && ckey == C.ckey && computer_id == C.computer_id && address == C.address)
 		key_cache[key] = 0
 		return //don't recheck connected clients.

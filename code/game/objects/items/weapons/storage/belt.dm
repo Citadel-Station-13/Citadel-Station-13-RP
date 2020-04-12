@@ -177,7 +177,8 @@
 		/obj/item/weapon/gun/projectile/sec,
 		/obj/item/weapon/gun/projectile/p92x,
 		/obj/item/taperoll,
-		/obj/item/weapon/gun/projectile/colt/detective
+		/obj/item/weapon/gun/projectile/colt/detective,
+		/obj/item/device/holowarrant
 		)
 
 /obj/item/weapon/storage/belt/detective
@@ -219,7 +220,8 @@
 		/obj/item/weapon/flame/lighter,
 		/obj/item/weapon/reagent_containers/food/snacks/donut/,
 		/obj/item/ammo_magazine,
-		/obj/item/weapon/gun/projectile/colt/detective
+		/obj/item/weapon/gun/projectile/colt/detective,
+		/obj/item/device/holowarrant
 		)
 
 /obj/item/weapon/storage/belt/explorer
@@ -420,6 +422,7 @@
 		/obj/item/weapon/photo,
 		/obj/item/weapon/folder,
 		/obj/item/weapon/pen,
+		/obj/item/weapon/folder,
 		/obj/item/weapon/clipboard,
 		/obj/item/weapon/anodevice,
 		/obj/item/clothing/glasses,
@@ -509,3 +512,8 @@
 		var/mob/living/L = loc
 		L.regenerate_icons()
 	..()
+/obj/item/weapon/storage/belt/ranger
+	name = "ranger belt"
+	desc = "The fancy utility-belt holding the tools, cuffs and gadgets of the Go Go ERT-Rangers. The belt buckle is not real phoron, but it is still surprisingly comfortable to wear."
+	icon = 'icons/obj/clothing/ranger.dmi'
+	icon_state = "ranger_belt"

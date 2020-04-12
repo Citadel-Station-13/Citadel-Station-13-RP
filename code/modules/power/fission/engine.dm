@@ -104,7 +104,7 @@
 
 	var/healthmul = (((health / max_health) - 1) / -1)
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
-	radiation_repository.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
+	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
 
 /obj/machinery/power/fission/attack_hand(mob/user as mob)
 	ui_interact(user)
@@ -150,7 +150,7 @@
 		roddata["insertion"] = round(rod.insertion * 100)
 		data["rods"][i] = roddata
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "fission_engine.tmpl", "Nuclear Fission Core", 500, 600)
 		ui.set_initial_data(data)
@@ -426,7 +426,7 @@
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
-			radiation_repository.z_radiate(locate(1, 1, L.z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
+			SSradiation.z_radiate(locate(1, 1, L.z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
 			for(var/mob/living/mob in living_mob_list)
 				var/turf/T = get_turf(mob)
 				if(T && (L.z == T.z))

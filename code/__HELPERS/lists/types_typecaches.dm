@@ -12,6 +12,9 @@
 			return TRUE
 	return FALSE
 
+/proc/subtypesof(prototype)
+	return (typesof(prototype) - prototype)
+
 //Typecaches, specially formatted lists used to check for types with priority to speed rather than memory efficiency.
 
 //Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')

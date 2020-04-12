@@ -61,12 +61,12 @@
 	atmos_comp = TRUE
 	prob_spawn = 100
 	prob_fall = 50
-	guard = 20
+	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/hivebot/range = 3,
-		/mob/living/simple_animal/hostile/hivebot/range/ion = 3,
-		/mob/living/simple_animal/hostile/hivebot/range/laser = 3,
-		/mob/living/simple_animal/hostile/corrupthound = 1
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic = 3,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion = 1,
+		/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser = 3,
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1
 	)
 
 /obj/tether_away_spawner/aerostat_surface
@@ -74,12 +74,12 @@
 	faction = "aerostat_surface"
 	atmos_comp = TRUE
 	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
+	prob_fall = 30
+	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/viscerator = 2,
-		/mob/living/simple_animal/hostile/corrupthound = 1
+		/mob/living/simple_mob/animal/space/jelly = 1,
+		/mob/living/simple_mob/mechanical/viscerator = 1,
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 1
 	)
 
 /obj/structure/old_roboprinter
@@ -151,7 +151,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral)
 	if(mineral)
 		return
 
-	var/mineral_name = pickweight(list("uranium" = 5, "platinum" = 10, "hematite" = 5, "carbon" = 5, "diamond" = 10, "gold" = 20, "silver" = 20, "phoron" = 5))
+	var/mineral_name = pickweight(list("marble" = 5, "uranium" = 5, "platinum" = 10, "hematite" = 5, "carbon" = 5, "diamond" = 10, "gold" = 20, "silver" = 20, "lead" = 10, "verdantium" = 5))
 
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
@@ -166,6 +166,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 /area/shuttle/excursion/away_aerostat
 	name = "\improper Excursion Shuttle - Aerostat"
+	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 
 // The aerostat shuttle
 /area/shuttle/aerostat/docked
@@ -186,6 +187,14 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 /area/tether_away/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
+	icon_state = "crew_quarters"
+	base_turf = /turf/simulated/floor/plating/virgo2
+	requires_power = TRUE
+	dynamic_lighting = TRUE
+	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
+
+/area/tether_away/aerostat/solars
+	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
 	base_turf = /turf/simulated/floor/plating/virgo2
 	dynamic_lighting = TRUE

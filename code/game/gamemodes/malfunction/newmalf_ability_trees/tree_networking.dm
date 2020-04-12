@@ -120,7 +120,7 @@
 	if(!ability_prechecks(user, price))
 		return
 
-	var/alert_target = input("Select new alert level:") in list("green", "blue", "red", "delta", "CANCEL")
+	var/alert_target = input("Select new alert level:") in list("green", "yellow", "violet", "orange", "blue", "red", "delta", "CANCEL")
 	if(!alert_target || !ability_pay(user, price) || alert_target == "CANCEL")
 		user << "Hack Aborted"
 		return
@@ -148,7 +148,7 @@
 		return
 	var/list/remaining_apcs = list()
 	for(var/obj/machinery/power/apc/A in machines)
-		if(!(A.z in using_map.station_levels)) 		// Only station APCs
+		if(!(A.z in GLOB.using_map.station_levels)) 		// Only station APCs
 			continue
 		if(A.hacker == user || A.aidisabled) 		// This one is already hacked, or AI control is disabled on it.
 			continue
@@ -194,7 +194,7 @@
 	sleep(300)
 	// Hack all APCs, including those built during hack sequence.
 	for(var/obj/machinery/power/apc/A in machines)
-		if((!A.hacker || A.hacker != src) && !A.aidisabled && A.z in using_map.station_levels)
+		if((!A.hacker || A.hacker != src) && !A.aidisabled && A.z in GLOB.using_map.station_levels)
 			A.ai_hack(src)
 
 

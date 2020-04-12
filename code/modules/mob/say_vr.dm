@@ -23,7 +23,7 @@
 
 /mob/proc/custom_emote_vr(var/m_type=1,var/message = null) //This would normally go in emote.dm
 	if(stat || !use_me && usr == src)
-		src << "You are unable to emote."
+		to_chat(src, "You are unable to emote.")
 		return
 
 	var/muzzled = is_muzzled()
@@ -85,7 +85,7 @@
 		return
 
 	var/length = length(message)
-	var/posts = CEILING(length/MAX_MESSAGE_LEN, 1)
+	var/posts = CEILING((length/MAX_MESSAGE_LEN), 1)
 	to_chat(user,message)
 	to_chat(user,"<span class='danger'>^ This message was NOT SENT ^ -- It was [length] characters, and the limit is [MAX_MESSAGE_LEN]. It would fit in [posts] separate messages.</span>")
 #undef MAX_HUGE_MESSAGE_LEN

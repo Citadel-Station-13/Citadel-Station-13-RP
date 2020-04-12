@@ -51,18 +51,18 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "n" = (
-/mob/living/simple_animal/fish/trout,
+/mob/living/simple_mob/animal/passive/fish/trout,
 /turf/simulated/floor/water,
 /area/submap/PooledR)
 "o" = (
-/mob/living/simple_animal/fish/salmon,
+/mob/living/simple_mob/animal/passive/fish/salmon,
 /turf/simulated/floor/water,
 /area/submap/PooledR)
 "p" = (
 /turf/simulated/floor/water/deep,
 /area/submap/PooledR)
 "q" = (
-/mob/living/simple_animal/fish/bass,
+/mob/living/simple_mob/animal/passive/fish/bass,
 /turf/simulated/floor/water/deep,
 /area/submap/PooledR)
 

@@ -38,7 +38,7 @@
 			oldlimb.removed()
 			qdel(oldlimb)
 
-		var/mob/living/simple_animal/protean_blob/blob = nano_intoblob()
+		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
 		if(do_after(blob,5 SECONDS))
 			var/list/limblist = species.has_limbs[choice]
@@ -128,7 +128,7 @@
 		to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take 5 seconds.</span>")
 		visible_message("<B>[src]</B>'s form collapses into an amorphous blob of black ichor...")
 
-		var/mob/living/simple_animal/protean_blob/blob = nano_intoblob()
+		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
 		if(do_after(blob,5 SECONDS))
 			synthetic = usable_manufacturers[manu_choice]
@@ -149,7 +149,7 @@
 	visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
 	active_regen = TRUE
 
-	var/mob/living/simple_animal/protean_blob/blob = nano_intoblob()
+	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 	if(do_after(blob, delay_length, null, 0))
 		if(stat != DEAD && refactory)
 			var/list/holder = refactory.materials
@@ -200,7 +200,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.name
-	var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+	var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE
@@ -213,7 +213,7 @@
 		return //Quietly fail
 
 	var/actually_added = refactory.add_stored_material(substance,howmuch*matstack.perunit)
-	matstack.use(CEILING(actually_added/matstack.perunit, 1))
+	matstack.use(CEILING((actually_added/matstack.perunit), 1))
 	if(actually_added && actually_added < howmuch)
 		to_chat(src,"<span class='warning'>Your refactory module is now full, so only [actually_added] units were stored.</span>")
 		visible_message("<span class='notice'>[src] nibbles some of the [substance] right off the stack!</span>")
@@ -222,6 +222,22 @@
 		visible_message("<span class='notice'>[src] devours some of the [substance] right off the stack!</span>")
 	else
 		to_chat(src,"<span class='notice'>You're completely capped out on [substance]!</span>")
+// toggling buffs
+/mob/living/carbon/human/proc/nano_togglebuff()
+	set name = "Ref - Toggle Material Augment"
+	set desc = "Toggle your consumption of stored diamonds, mhydrogen and plasteel."
+	set category = "Abilities"
+	set hidden = TRUE
+
+	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
+	//Missing the organ that does this
+	if(!istype(refactory))
+		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		return
+	if(refactory.processingbuffs == TRUE)
+		refactory.processingbuffs = FALSE
+	else
+		refactory.processingbuffs = TRUE
 
 ////
 //  Blob Form
@@ -234,7 +250,8 @@
 
 	//Blob form
 	if(temporary_form)
-		if(health < maxHealth*0.35)
+
+		if(health < maxHealth*0.35) //Reforming HP threshold.
 			to_chat(temporary_form,"<span class='warning'>You need to regenerate more nanites first!</span>")
 		else if(temporary_form.stat)
 			to_chat(temporary_form,"<span class='warning'>You can only do this while not stunned.</span>")
@@ -298,14 +315,14 @@
 
 	//Sizing up
 	if(cost > 0)
-		if(refactory.use_stored_material("steel",cost))
+		if(refactory.use_stored_material(MAT_STEEL,cost))
 			user.resize(size_factor)
 		else
 			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
-		var/actually_added = refactory.add_stored_material("steel",cost)
+		var/actually_added = refactory.add_stored_material(MAT_STEEL,cost)
 		user.resize(size_factor)
 		if(actually_added != cost)
 			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
@@ -319,7 +336,7 @@
 			return R
 	return
 
-/mob/living/simple_animal/protean_blob/nano_get_refactory()
+/mob/living/simple_mob/protean_blob/nano_get_refactory()
 	if(refactory)
 		return ..(refactory)
 	if(humanform)
@@ -353,7 +370,7 @@
 			do_ability(usr)
 		//Blobform using it
 		else
-			var/mob/living/simple_animal/protean_blob/blob = usr
+			var/mob/living/simple_mob/protean_blob/blob = usr
 			do_ability(blob.humanform)
 
 /obj/effect/protean_ability/proc/do_ability(var/mob/living/L)
@@ -391,5 +408,13 @@
 	desc = "Store the metal you're holding. Your refactory can only store steel, and all other metals will be converted into nanites ASAP for various effects."
 	icon_state = "metal"
 	to_call = /mob/living/carbon/human/proc/nano_metalnom
+
+
+/obj/effect/protean_ability/toggle_buff
+	ability_name = "Ref - Toggle Material Augment"
+	desc = "Toggle your consumption of augmenting materials such as diamonds, plasteel and metallic hydrogen. Toggling this on will cause these materials to be consumed to provide special effects."
+	icon_state = "togglebuff"
+	to_call = /mob/living/carbon/human/proc/nano_togglebuff
+
 
 #undef PER_LIMB_STEEL_COST
