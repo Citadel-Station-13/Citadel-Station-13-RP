@@ -21787,7 +21787,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/heads/chief)
 "bYN" = (
-/obj/structure/device/piano,
+/obj/structure/musician/piano,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bYP" = (

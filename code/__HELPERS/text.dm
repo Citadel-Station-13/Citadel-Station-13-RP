@@ -122,18 +122,49 @@
 	return output
 
 //Returns null if there is any bad text in the string
-/proc/reject_bad_text(var/text, var/max_length=512)
-	if(length(text) > max_length)	return			//message too long
-	var/non_whitespace = 0
-	for(var/i=1, i<=length(text), i++)
-		switch(text2ascii(text,i))
-			if(62,60,92,47)	return			//rejects the text if it contains these bad characters: <, >, \ or /
-			if(127 to 255)	return			//rejects weird letters like �
-			if(0 to 31)		return			//more weird stuff
-			if(32)			continue		//whitespace
-			else			non_whitespace = 1
-	if(non_whitespace)		return text		//only accepts the text if it has some non-spaces
+/proc/reject_bad_text(text, max_length = 512, ascii_only = TRUE)
+	var/char_count = 0
+	var/non_whitespace = FALSE
+	var/lenbytes = length(text)
+	var/char = ""
+	for(var/i = 1, i <= lenbytes, i += length(char))
+		char = text[i]
+		char_count++
+		if(char_count > max_length)
+			return
+		switch(text2ascii(char))
+			if(62,60,92,47) // <, >, \, /
+				return
+			if(0 to 31)
+				return
+			if(32)
+				continue		//whitespace
+			if(127 to INFINITY)
+				if(ascii_only)
+					return
+			else
+				non_whitespace = TRUE
+	if(non_whitespace)
+		return text		//only accepts the text if it has some non-spaces
 
+// Used to get a properly sanitized input, of max_length
+// no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
+/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
+	var/name = input(user, message, title, default) as text|null
+	if(no_trim)
+		return copytext(html_encode(name), 1, max_length)
+	else
+		return trim(html_encode(name), max_length) //trim is "outside" because html_encode can expand single symbols into multiple symbols (such as turning < into &lt;)
+
+// Used to get a properly sanitized multiline input, of max_length
+/proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
+	var/name = input(user, message, title, default) as message|null
+	if(isnull(name)) // Return null if canceled.
+		return null
+	if(no_trim)
+		return copytext(html_encode(name), 1, max_length)
+	else
+		return trim(html_encode(name), max_length)
 
 //Old variant. Haven't dared to replace in some places.
 /proc/sanitize_old(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))

@@ -4,23 +4,18 @@
 	req_access = list(access_all_personal_lockers)
 	var/registered_name = null
 
-	starts_with = list(
-		/obj/item/device/radio/headset)
-
-/obj/structure/closet/secure_closet/personal/Initialize()
+/obj/structure/closet/secure_closet/personal/PopulateContents()
+	new /obj/item/device/radio/headset(src)
 	if(prob(50))
-		starts_with += /obj/item/weapon/storage/backpack
+		new /obj/item/weapon/storage/backpack(src)
 	else
-		starts_with += /obj/item/weapon/storage/backpack/satchel/norm
-	return ..()
+		new /obj/item/weapon/storage/backpack/satchel/norm(src)
+	new /obj/item/instrument/piano_synth(src)
 
-/obj/structure/closet/secure_closet/personal/patient
-	name = "patient's closet"
-
-	starts_with = list(
-		/obj/item/clothing/under/medigown,
-		/obj/item/clothing/under/color/white,
-		/obj/item/clothing/shoes/white)
+/obj/structure/closet/secure_closet/personal/patient/PopulateContents()
+	new /obj/item/clothing/under/medigown(src)
+	new /obj/item/clothing/under/color/white(src)
+	new /obj/item/clothing/shoes/white(src)
 
 
 /obj/structure/closet/secure_closet/personal/cabinet
