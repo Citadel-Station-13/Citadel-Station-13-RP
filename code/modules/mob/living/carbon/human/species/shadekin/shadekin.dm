@@ -42,7 +42,7 @@
 	heat_level_3 = 1150
 
 	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT
-	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_WHITELIST_SELECTABLE
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
 
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
