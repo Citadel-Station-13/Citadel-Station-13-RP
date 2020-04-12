@@ -965,45 +965,44 @@
 /obj/item/clothing/under/bridgeofficer
 	name = "bridge officer uniform"
 	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
-	icon_state = "bridgeofficer"
-	item_state = "bridgeofficer"
+	icon_state = "bridgeofficer_s"
 
 /obj/item/clothing/under/paramedunidark
 	name = "Paramedic Uniform"
 	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
-	icon_state = "paramedic-dark"
+	icon_state = "paramedic-dark_s"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/parameduniskirtdark
 	name = "Paramedic Uniskirt"
 	desc = "A dark jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
-	icon_state = "paramedic-dark_skirt"
+	icon_state = "paramedic-dark_skirt_s"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/btcbartender
 	name = "BTC Bartender"
 	desc = "For the classy bartender who converts their paychecks into Spesscoin."
-	icon_state = "btc_bartender"
+	icon_state = "btc_bartender_s"
 
 /obj/item/clothing/under/paramedunilight
 	name = "Paramedic Uniform"
 	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
-	icon_state = "paramedic-light"
+	icon_state = "paramedic-light_s"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 1
 
 /obj/item/clothing/under/parameduniskirtlight
 	name = "Paramedic Uniskirt"
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
-	icon_state = "paramedic_skirt"
+	icon_state = "paramedic_skirt_s"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/dutch
 	name = "Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing. ."
-	icon_state = "DutchUniform"
+	icon_state = "DutchUniform_s"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	rolled_sleeves = 0
