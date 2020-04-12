@@ -365,9 +365,9 @@
 	icon_state = "turtleneck_red"
 
 /obj/item/clothing/accessory/sweater/combat
-	name = "Combat Sweater"
+	name = "combat sweater"
 	desc = "Look like an off duty soldier with this green sweater!"
-	icon_state = "ubacgreen"
+	icon_state = "combatsweater"
 //***
 // End of sweaters
 //***
