@@ -116,7 +116,7 @@
 	//END: ECS SHIT
 
 	//VORECODE START
-	GLOB.nanomanager.close_uis(src)
+	SSnanoui.close_uis(src)
 	//VORECODE END
 
 	return QDEL_HINT_QUEUE

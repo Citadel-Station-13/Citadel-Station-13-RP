@@ -87,9 +87,9 @@
 	. = ..()
 	stack_storage = list()
 	stack_paths = list()
-	
+
 	for(var/stacktype in subtypesof(/obj/item/stack/material))
-		var/obj/item/stack/S = new stacktype(src)
+		var/obj/item/stack/S = new stacktype
 		stack_storage[S.name] = 0
 		stack_paths[S.name] = stacktype
 		qdel(S)

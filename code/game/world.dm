@@ -72,8 +72,8 @@ GLOBAL_LIST(topic_status_cache)
 	load_map_templates()
 
 	if(config_legacy.generate_map)
-		if(using_map.perform_map_generation())
-			using_map.refresh_mining_turfs()
+		if(GLOB.using_map.perform_map_generation())
+			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()
@@ -111,7 +111,7 @@ GLOBAL_LIST(topic_status_cache)
 
 /world/proc/SetupExternalRsc()
 #if (PRELOAD_RSC == 0)
-	GLOB.external_rsc_urls = world.file2list("[global.config.directory]/external_rsc_urls.txt","\n")
+	GLOB.external_rsc_urls = world.file2list("[global.config_legacy.directory]/external_rsc_urls.txt","\n")
 	var/i=1
 	while(i<=GLOB.external_rsc_urls.len)
 		if(GLOB.external_rsc_urls[i])
@@ -292,7 +292,7 @@ GLOBAL_LIST(topic_status_cache)
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/load_mentors()
 	if(config_legacy.admin_legacy_system)
@@ -312,7 +312,7 @@ GLOBAL_LIST(topic_status_cache)
 
 				var/ckey = copytext(line, 1, length(line)+1)
 				var/datum/admins/D = new /datum/admins(title, rights, ckey)
-				D.associate(directory[ckey])
+				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
 	var/s = ""
@@ -478,3 +478,16 @@ proc/establish_old_db_connection()
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
+
+// Things to do when a new z-level was just made.
+/world/proc/max_z_changed()
+	if(!istype(GLOB.players_by_zlevel, /list))
+		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	while(GLOB.players_by_zlevel.len < world.maxz)
+		GLOB.players_by_zlevel.len++
+		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+
+// Call this to make a new blank z-level, don't modify maxz directly.
+/world/proc/increment_max_z()
+	maxz++
+	max_z_changed()

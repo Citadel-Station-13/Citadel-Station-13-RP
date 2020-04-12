@@ -282,11 +282,11 @@
 				var/obj/item/device/pda/pda = H.wear_id
 				id = pda.id
 			id.icon_state = "gold"
-			id.access = get_all_accesses()
+			id.access = get_all_accesses().Copy()
 		else
 			var/obj/item/weapon/card/id/id = new/obj/item/weapon/card/id(M);
 			id.icon_state = "gold"
-			id.access = get_all_accesses()
+			id.access = get_all_accesses().Copy()
 			id.registered_name = H.real_name
 			id.assignment = "Colony Director"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
@@ -562,7 +562,7 @@
 				SMES.output_level = 75000
 
 	if(!found_the_pump && response == "Setup Completely")
-		src << "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>"
+		to_chat(src, "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>")
 		var/turf/simulated/T = SM.loc
 		T.zone.air.gas["nitrogen"] += 450
 		T.zone.air.temperature = 50
@@ -592,7 +592,7 @@
 		if("Dead Mobs")
 			usr << jointext(dead_mob_list,",")
 		if("Clients")
-			usr << jointext(clients,",")
+			usr << jointext(GLOB.clients,",")
 
 /client/proc/cmd_debug_using_map()
 	set category = "Debug"
@@ -601,7 +601,7 @@
 
 	if(!check_rights(R_DEBUG))
 		return
-	debug_variables(using_map)
+	debug_variables(GLOB.using_map)
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)

@@ -14,6 +14,7 @@
 	var/ui_style_vr = FALSE //Do we use our hud icons?
 	var/sitting = FALSE
 	var/bellyup = FALSE
+	does_spin = FALSE
 	var/vr_icons = list(
 					   "handy-hydro",
 					   "handy-service",
@@ -32,13 +33,27 @@
 					   "mechoid-Janitor",
 					   "mechoid-Combat",
 					   "mechoid-Combat-roll",
+					   "mechoid-Combat-shield",
 					   "Noble-CLN",
 					   "Noble-SRV",
 					   "Noble-DIG",
 					   "Noble-MED",
 					   "Noble-SEC",
 					   "Noble-ENG",
-					   "Noble-STD"
+					   "Noble-STD",
+					   "zoomba-standard",
+					   "zoomba-clerical",
+					   "zoomba-engineering",
+					   "zoomba-janitor",
+					   "zoomba-medical",
+					   "zoomba-crisis",
+					   "zoomba-miner",
+					   "zoomba-research",
+					   "zoomba-security",
+					   "zoomba-service",
+					   "zoomba-combat",
+					   "zoomba-combat-roll",
+					   "zoomba-combat-shield"
 					   )					//List of all used sprites that are in robots_vr.dmi
 
 
@@ -162,13 +177,7 @@
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
 
 /datum/riding/dogborg/handle_vehicle_layer()
-	if(ridden.has_buckled_mobs())
-		if(ridden.dir != NORTH)
-			ridden.layer = ABOVE_MOB_LAYER
-		else
-			ridden.layer = initial(ridden.layer)
-	else
-		ridden.layer = initial(ridden.layer)
+	ridden.layer = initial(ridden.layer)
 
 /datum/riding/dogborg/ride_check(mob/living/M)
 	var/mob/living/L = ridden
@@ -187,10 +196,10 @@
 	var/scale = L.size_multiplier
 
 	var/list/values = list(
-		"[NORTH]" = list(0, 8*scale, ABOVE_MOB_LAYER),
-		"[SOUTH]" = list(0, 8*scale, BELOW_MOB_LAYER),
-		"[EAST]" = list(-5*scale, 8*scale, ABOVE_MOB_LAYER),
-		"[WEST]" = list(5*scale, 8*scale, ABOVE_MOB_LAYER))
+		"[NORTH]" = list(0, 10*scale, ABOVE_MOB_LAYER),
+		"[SOUTH]" = list(0, 10*scale, BELOW_MOB_LAYER),
+		"[EAST]" = list(-5*scale, 10*scale, ABOVE_MOB_LAYER),
+		"[WEST]" = list(5*scale, 10*scale, ABOVE_MOB_LAYER))
 
 	return values
 
@@ -263,3 +272,10 @@
 		return
 	if(buckle_mob(M))
 		visible_message("<span class='notice'>[M] starts riding [name]!</span>")
+
+/mob/living/silicon/robot/onTransitZ(old_z, new_z)
+	if(shell)
+		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
+			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
+			undeploy()
+	..()

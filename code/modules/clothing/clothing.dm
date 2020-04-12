@@ -80,6 +80,16 @@
 				return 0
 	return 1
 
+/obj/item/clothing/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	. = ..()
+	if((. == 0) && LAZYLEN(accessories))
+		for(var/obj/item/I in accessories)
+			var/check = I.handle_shield(user, damage, damage_source, attacker, def_zone, attack_text)
+
+			if(check != 0)	// Projectiles sometimes use negatives IIRC, 0 is only returned if something is not blocked.
+				. = check
+				break
+
 /obj/item/clothing/proc/refit_for_species(var/target_species)
 	if(!species_restricted)
 		return //this item doesn't use the species_restricted system
@@ -293,6 +303,17 @@
 	punch_force = initial(punch_force)
 	wearer = null
 
+/obj/item/clothing/gloves
+	var/datum/unarmed_attack/special_attack = null //do the gloves have a special unarmed attack?
+	var/special_attack_type = null
+
+/obj/item/clothing/gloves/New()
+	..()
+	if(special_attack_type && ispath(special_attack_type))
+		special_attack = new special_attack_type
+
+
+
 /////////////////////////////////////////////////////////////////////
 //Rings
 
@@ -474,6 +495,7 @@
 
 	var/water_speed = 0		//Speed boost/decrease in water, lower/negative values mean more speed
 	var/snow_speed = 0		//Speed boost/decrease on snow, lower/negative values mean more speed
+	var/rock_climbing = FALSE // If true, allows climbing cliffs with clickdrag.
 
 	var/step_volume_mod = 1	//How quiet or loud footsteps in this shoe are
 
@@ -501,6 +523,7 @@
 	if(usr.put_in_hands(holding))
 		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
 		holding = null
+		overlays -= image(icon, "[icon_state]_knife")
 	else
 		usr << "<span class='warning'>Your need an empty, unbroken hand to do that.</span>"
 		holding.forceMove(src)
@@ -545,12 +568,23 @@
 	update_icon()
 
 /obj/item/clothing/shoes/update_icon()
-	overlays.Cut()
+	overlays.Cut() //This removes all the overlays on the sprite and then goes down a checklist adding them as required.
+	if(blood_DNA)
+		add_blood()
 	if(holding)
 		overlays += image(icon, "[icon_state]_knife")
+	if(contaminated)
+		overlays += contamination_overlay
+	if(gurgled) //VOREStation Edit Start
+		decontaminate()
+		gurgle_contaminate() //VOREStation Edit End
 	if(ismob(usr))
 		var/mob/M = usr
 		M.update_inv_shoes()
+	return ..()
+
+/obj/item/clothing/shoes/clean_blood()
+	update_icon()
 	return ..()
 
 /obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)
@@ -642,6 +676,7 @@
 		|ACCESSORY_SLOT_ARMBAND\
 		|ACCESSORY_SLOT_DECOR\
 		|ACCESSORY_SLOT_MEDAL\
+		|ACCESSORY_SLOT_INSIGNIA\
 		|ACCESSORY_SLOT_TIE\
 		|ACCESSORY_SLOT_OVER)
 	restricted_accessory_slots = (\

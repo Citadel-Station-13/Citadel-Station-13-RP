@@ -124,5 +124,5 @@
 	nutriment_desc = list("slime" = 10, "sweetness" = 10, "bliss" = 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/slime/Initialize()
-	..()
+	. = ..()
 	bitesize = 5

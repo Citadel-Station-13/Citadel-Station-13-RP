@@ -28,6 +28,8 @@ var/list/global/map_templates = list()
 
 	var/static/dmm_suite/maploader = new
 
+	var/fixed_orientation = FALSE		//for ruins
+
 /datum/map_template/New(path = null, rename = null)
 	if(path)
 		mappath = path
@@ -49,7 +51,7 @@ var/list/global/map_templates = list()
 	return bounds
 
 /datum/map_template/proc/initTemplateBounds(var/list/bounds)
-	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
+	if (SSatoms.subsystem_initialized == INITIALIZATION_INSSATOMS)
 		return // let proper initialisation handle it later
 
 	var/list/atom/atoms = list()

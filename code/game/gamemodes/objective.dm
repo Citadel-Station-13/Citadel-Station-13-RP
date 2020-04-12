@@ -130,7 +130,7 @@ datum/objective/anti_revolution/demote
 		..()
 		if(target && target.current)
 			var/datum/gender/T = gender_datums[target.current.get_visible_gender()]
-			explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [using_map.company_name]'s goals. Demote [T.him] to assistant."
+			explanation_text = "[target.current.real_name], the [target.assigned_role]  has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
 		else
 			explanation_text = "Free Objective"
 		return target
@@ -139,7 +139,7 @@ datum/objective/anti_revolution/demote
 		..(role, role_type)
 		if(target && target.current)
 			var/datum/gender/T = gender_datums[target.current.get_visible_gender()]
-			explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [using_map.company_name]'s goals. Demote [T.him] to assistant."
+			explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] has been classified as harmful to [GLOB.using_map.company_name]'s goals. Demote [T.him] to assistant."
 		else
 			explanation_text = "Free Objective"
 		return target
@@ -808,7 +808,7 @@ datum/objective/heist/salvage
 
 /datum/objective/borer_survive/check_completion()
 	if(owner)
-		var/mob/living/simple_animal/borer/B = owner
+		var/mob/living/simple_mob/animal/borer/B = owner
 		if(istype(B) && B.stat < 2 && B.host && B.host.stat < 2) return 1
 	return 0
 
@@ -817,7 +817,7 @@ datum/objective/heist/salvage
 
 /datum/objective/borer_reproduce/check_completion()
 	if(owner && owner.current)
-		var/mob/living/simple_animal/borer/B = owner.current
+		var/mob/living/simple_mob/animal/borer/B = owner.current
 		if(istype(B) && B.has_reproduced) return 1
 	return 0
 

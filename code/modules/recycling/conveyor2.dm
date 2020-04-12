@@ -1,3 +1,7 @@
+#define OFF 0
+#define FORWARDS 1
+#define BACKWARDS -1
+
 //conveyor2 is pretty much like the original, except it supports corners, but not diverters.
 //note that corner pieces transfer stuff clockwise when running forward, and anti-clockwise backwards.
 
@@ -10,7 +14,8 @@
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	circuit = /obj/item/weapon/circuitboard/conveyor
-	var/operating = 0	// 1 if running forward, -1 if backwards, 0 if off
+	speed_process = TRUE
+	var/operating = OFF	// 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1	// true if can operate (no broken segments in this belt run)
 	var/forwards		// this is the default (forward) direction, set by the map dir
 	var/backwards		// hopefully self-explanatory
@@ -28,15 +33,10 @@
 	if(newdir)
 		setDir(newdir)
 
-	if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
-		forwards = turn(dir, 135)
-		backwards = turn(dir, 45)
-	else
-		forwards = dir
-		backwards = turn(dir, 180)
+	update_dir()
 
 	if(on)
-		operating = 1
+		operating = FORWARDS
 		setmove()
 
 	component_parts = list()
@@ -48,22 +48,35 @@
 	RefreshParts()
 
 /obj/machinery/conveyor/proc/setmove()
-	if(operating == 1)
+	if(operating == FORWARDS)
 		movedir = forwards
-	else if(operating == -1)
+	else if(operating == BACKWARDS)
 		movedir = backwards
-	else operating = 0
+	else
+		operating = OFF
 	update()
+
+/obj/machinery/conveyor/setDir()
+	.=..()
+	update_dir()
+
+/obj/machinery/conveyor/proc/update_dir()
+	if(!(dir in cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
+		forwards = turn(dir, 135)
+		backwards = turn(dir, 45)
+	else
+		forwards = dir
+		backwards = turn(dir, 180)
 
 /obj/machinery/conveyor/proc/update()
 	if(stat & BROKEN)
 		icon_state = "conveyor-broken"
-		operating = 0
+		operating = OFF
 		return
 	if(!operable)
-		operating = 0
+		operating = OFF
 	if(stat & NOPOWER)
-		operating = 0
+		operating = OFF
 	icon_state = "conveyor[operating]"
 
 	// machine process
@@ -76,15 +89,14 @@
 	use_power(100)
 
 	affecting = loc.contents - src		// moved items will be all in loc
-	spawn(1)	// slight delay to prevent infinite propagation due to map order	//TODO: please no spawn() in process(). It's a very bad idea
-		var/items_moved = 0
-		for(var/atom/movable/A in affecting)
-			if(!A.anchored)
-				if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
-					step(A,movedir)
-					items_moved++
-			if(items_moved >= 10)
-				break
+	var/items_moved = 0
+	for(var/atom/movable/A in affecting)
+		if(!A.anchored)
+			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
+				step(A,movedir)
+				items_moved++
+		if(items_moved >= 10)
+			break
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
@@ -106,21 +118,6 @@
 			for(var/obj/machinery/conveyor_switch/C in machines)
 				if(C.id == id)
 					C.conveyors |= src
-			return
-
-	if(istype(I, /obj/item/weapon/tool/wrench))
-		if(panel_open)
-			if(operating != 0)
-				to_chat(user, "<span class='notice'>Turn the conveyor off first!</span>")
-				return
-			else if(dir & (dir-1)) // Diagonal. Forwards is *away* from dir, curving to the right.
-				forwards = turn(dir, 135)
-				backwards = turn(dir, 45)
-			else
-				forwards = dir
-				backwards = turn(dir, 180)
-			playsound(src.loc, I.usesound, 50, 1)
-			to_chat(user, "<span class='notice'>You adjust the gears and motors to spin in the conveyor's direction.</span>")
 			return
 
 	user.drop_item(get_turf(src))

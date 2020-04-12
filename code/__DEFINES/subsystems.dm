@@ -76,6 +76,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_OVERLAY	-6
 #define INIT_ORDER_XENOARCH	-20
 #define INIT_ORDER_CIRCUIT	-21
+#define INIT_ORDER_CHEMISTRY	18
+#define INIT_ORDER_AI			-22
 
 
 // Subsystem fire priority, from lowest to highest priority
@@ -83,16 +85,20 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9
+#define FIRE_PRIORITY_AI			10
 #define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
+#define FIRE_PRIORITY_CHARSETUP     25
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35
+#define FIRE_PRIORITY_OBJ			40
 #define FIRE_PRIORITY_PROCESS		45
 #define FIRE_PRIORITY_DEFAULT		50
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
+#define FIRE_PRIORITY_PROJECTILES	150
 #define FIRE_PRIORITY_OVERLAYS		500
 
 // Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)

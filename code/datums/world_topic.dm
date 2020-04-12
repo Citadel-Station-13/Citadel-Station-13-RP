@@ -46,7 +46,7 @@
 
 /datum/world_topic/ping/Run(list/input)
 	. = 0
-	for (var/client/C in clients)
+	for (var/client/C in GLOB.clients)
 		++.
 
 /datum/world_topic/playing
@@ -72,7 +72,7 @@
 			return
 
 	var/final_composed = "<span class='announce'>PR: [input[keyword]]</span>"
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
 /*
@@ -155,7 +155,7 @@
 	.["ai"] = config_legacy.allow_ai
 	.["host"] = host || null
 	.["round_id"] = GLOB.round_id
-	.["players"] = clients.len
+	.["players"] = GLOB.clients.len
 	.["revision"] = GLOB.revdata.commit
 	.["revision_date"] = GLOB.revdata.date
 

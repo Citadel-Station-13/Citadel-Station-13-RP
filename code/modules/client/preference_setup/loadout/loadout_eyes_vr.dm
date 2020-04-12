@@ -1,3 +1,10 @@
+/datum/gear/eyes/medical
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/eyes/meson
+	display_name = "Optical Meson Scanners (Engineering, Science)"
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Explorer", "Pathfinder")
+
 /datum/gear/eyes/arglasses
 	display_name = "AR glasses"
 	path = /obj/item/clothing/glasses/omnihud
@@ -31,7 +38,7 @@
 /datum/gear/eyes/arglasses/med
 	display_name = "AR-M glasses"
 	path = /obj/item/clothing/glasses/omnihud/med
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/arglasses/all
 	display_name = "AR-B glasses"

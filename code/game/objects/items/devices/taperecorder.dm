@@ -13,7 +13,6 @@
 	var/playsleepseconds = 0.0
 	var/obj/item/device/tape/mytape = /obj/item/device/tape/random
 	var/canprint = 1
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	throwforce = 2
 	throw_speed = 4
@@ -363,14 +362,14 @@
 
 /obj/item/device/tape
 	name = "tape"
-	desc = "A magnetic tape that can hold up to ninety minutes of content."
+	desc = "A magnetic tape that can hold up to ten minutes of content."
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
 	matter = list(DEFAULT_WALL_MATERIAL=20, "glass"=5)
 	force = 1
 	throwforce = 0
-	var/max_capacity = 5400
+	var/max_capacity = 1800
 	var/used_capacity = 0
 	var/list/storedinfo = new/list()
 	var/list/timestamp = new/list()

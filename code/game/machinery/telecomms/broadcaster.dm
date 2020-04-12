@@ -22,7 +22,17 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	machinetype = 5
 	produces_heat = 0
 	delay = 7
-	circuitboard = "/obj/item/weapon/circuitboard/telecomms/broadcaster"
+	circuit = /obj/item/weapon/circuitboard/telecomms/broadcaster
+
+/obj/machinery/telecomms/processor/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/weapon/stock_parts/subspace/sub_filter(src)
+	component_parts += new /obj/item/weapon/stock_parts/subspace/crystal(src)
+	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/weapon/stock_parts/micro_laser/high(src)
+	component_parts += new /obj/item/stack/cable_coil(src, 1)
 
 /obj/machinery/telecomms/broadcaster/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 	// Don't broadcast rejected signals
@@ -140,7 +150,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		// For some reason level is both used as a list and not a list, and now it needs to be a list.
 		// Because this is a 'all in one' machine, we're gonna just cheat.
-		signal.data["level"] = using_map.contact_levels.Copy()
+		signal.data["level"] = GLOB.using_map.contact_levels.Copy()
 
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary

@@ -64,9 +64,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "ap" = (
-/mob/living/simple_animal/hostile/giant_spider/phorogenic{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aq" = (
@@ -163,9 +161,7 @@
 /area/submap/BoomBase)
 "aK" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/giant_spider/phorogenic{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aL" = (

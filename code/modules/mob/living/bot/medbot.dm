@@ -49,6 +49,32 @@
 /mob/living/bot/medbot/handleAdjacentTarget()
 	UnarmedAttack(target)
 
+/mob/living/bot/medbot/handlePanic()	// Speed modification based on alert level.
+	. = 0
+	switch(get_security_level())
+		if("green")
+			. = 0
+
+		if("yellow")
+			. = 0
+
+		if("violet")
+			. = 1
+
+		if("orange")
+			. = 0
+
+		if("blue")
+			. = 1
+
+		if("red")
+			. = 2
+
+		if("delta")
+			. = 2
+
+	return .
+
 /mob/living/bot/medbot/lookForTargets()
 	for(var/mob/living/carbon/human/H in view(7, src)) // Time to find a patient!
 		if(confirmTarget(H))
@@ -204,8 +230,8 @@
 	else if((href_list["adj_threshold"]) && (!locked || issilicon(usr)))
 		var/adjust_num = text2num(href_list["adj_threshold"])
 		heal_threshold += adjust_num
-		if(heal_threshold < 5)
-			heal_threshold = 5
+		if(heal_threshold <= 0)
+			heal_threshold = 0.1
 		if(heal_threshold > 75)
 			heal_threshold = 75
 
@@ -277,6 +303,9 @@
 
 /mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
+		return 0
+
+	if(H.isSynthetic()) // Don't treat FBPs
 		return 0
 
 	if(H.stat == DEAD) // He's dead, Jim

@@ -270,10 +270,12 @@
 
 	var/obj/item/device/nif/nif
 	var/datum/nifsoft/soulcatcher/soulcatcher
+	var/identifying_gender
 
 /mob/living/carbon/brain/caught_soul/Login()
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+	identifying_gender = client.prefs.identifying_gender
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -367,7 +369,7 @@
 			return
 		if (src.client)
 			if (client.prefs.muted & MUTE_IC)
-				src << "<span class='warning'>You cannot send IC messages (muted).</span>"
+				to_chat(src, "<span class='warning'>You cannot send IC messages (muted).</span>")
 				return
 		if (stat)
 			return

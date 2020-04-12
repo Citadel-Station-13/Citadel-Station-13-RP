@@ -49,7 +49,7 @@
 	if(datum_flags & DF_USE_TAG)
 		GenerateTag()
 
-	var/do_initialize = SSatoms.initialized
+	var/do_initialize = SSatoms.subsystem_initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
 		if(SSatoms.InitAtom(src, args))
@@ -132,7 +132,7 @@
 	return -1
 
 /atom/proc/Bumped(AM as mob|obj)
-	return
+	set waitfor = FALSE
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
@@ -421,7 +421,8 @@
 		blood_DNA = list()
 
 	was_bloodied = 1
-	blood_color = "#A10808"
+	if(!blood_color)
+		blood_color = "#A10808"
 	if(istype(M))
 		if (!istype(M.dna, /datum/dna))
 			M.dna = new /datum/dna(null)
@@ -530,7 +531,7 @@
 		if(!istype(drop_destination) || drop_destination == destination)
 			return forceMove(destination)
 		destination = drop_destination
-	return forceMove(null)
+	return moveToNullspace()
 
 /atom/proc/onDropInto(var/atom/movable/AM)
 	return // If onDropInto returns null, then dropInto will forceMove AM into us.
@@ -555,7 +556,7 @@
 	var/atom/L = loc
 	if(!L)
 		return null
-	return L.AllowDrop() ? L : get_turf(L)
+	return L.AllowDrop() ? L : L.drop_location()
 
 /atom/proc/AllowDrop()
 	return FALSE
