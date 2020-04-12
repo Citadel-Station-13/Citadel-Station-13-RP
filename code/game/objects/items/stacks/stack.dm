@@ -214,6 +214,14 @@
 		return 0
 	return 1
 
+/**
+  * Can we merge with this stack?
+  */
+/obj/item/stack/proc/can_merge(obj/item/stack/other)
+	if(!istype(other))
+		return FALSE
+	return other.stacktype == stacktype
+
 /obj/item/stack/proc/use(var/used)
 	if (!can_use(used))
 		return 0
@@ -259,7 +267,7 @@
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	if (!get_amount())
 		return 0
-	if ((stacktype != S.stacktype) && !type_verified)
+	if (!can_merge(S) && !type_verified)
 		return 0
 	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
 		return 0
@@ -342,7 +350,7 @@
 		return ..()
 
 /obj/item/stack/Crossed(obj/o)
-	if(istype(o, stacktype) && !o.throwing)
+	if(can_merge(o) && !o.throwing)
 		merge(o)
 	. = ..()
 
