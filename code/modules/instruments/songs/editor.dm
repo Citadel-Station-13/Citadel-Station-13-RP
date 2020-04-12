@@ -243,4 +243,4 @@
 	else if(href_list["togglesustainhold"])
 		full_sustain_held_note = !full_sustain_held_note
 
-	updateDialog()
+	updateDialog(usr)

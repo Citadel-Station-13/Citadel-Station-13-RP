@@ -492,7 +492,8 @@
 			ticker.minds += mind
 		else
 			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
-	if(!mind.name)	mind.name = real_name
+	if(!mind.name)
+		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
 		src.client.verbs += /client/proc/aooc
@@ -500,7 +501,8 @@
 //HUMAN
 /mob/living/carbon/human/mind_initialize()
 	..()
-	if(!mind.assigned_role)	mind.assigned_role = USELESS_JOB	//defualt //VOREStation Edit - Visitor not Assistant
+	if(!mind.assigned_role)
+		mind.assigned_role = USELESS_JOB	//defualt //VOREStation Edit - Visitor not Assistant
 
 //slime
 /mob/living/simple_mob/slime/mind_initialize()
