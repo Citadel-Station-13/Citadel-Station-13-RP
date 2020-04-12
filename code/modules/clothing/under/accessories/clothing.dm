@@ -68,6 +68,8 @@
 	if(istype(H) && H.wear_suit == src)
 		if(H.species.name == "Teshari")
 			icon_override = 'icons/mob/species/seromi/suit.dmi'
+		else if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/ties.dmi'
 		update_clothing_icon()
