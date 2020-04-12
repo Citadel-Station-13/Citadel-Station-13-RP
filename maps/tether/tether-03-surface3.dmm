@@ -10096,18 +10096,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "rN" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
+/obj/effect/floor_decal/spline/plain,
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
-	dir = 8;
+	dir = 2;
 	id = "bar";
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/item/weapon/storage/box/wings,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
 "rO" = (
 /obj/structure/table/marble,
@@ -11573,14 +11570,17 @@
 /area/crew_quarters/bar)
 "um" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/structure/table/marble,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
 /obj/machinery/door/blast/shutters{
-	dir = 8;
+	dir = 2;
 	id = "bar";
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
 "un" = (
@@ -13767,19 +13767,17 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "xY" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
 	},
+/obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
-	dir = 8;
+	dir = 2;
 	id = "bar";
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/effect/floor_decal/borderfloor,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "xZ" = (
 /obj/effect/floor_decal/corner/black/diagonal,
@@ -13851,10 +13849,15 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "yf" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "bar";
+	layer = 3.3;
+	name = "Bar Shutters"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "yg" = (
 /obj/structure/table/marble,
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker{
@@ -14213,6 +14216,11 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
+"yC" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "yD" = (
 /obj/structure/window/basic{
 	dir = 8
@@ -37615,7 +37623,7 @@ Jr
 Js
 Jv
 JE
-yf
+yC
 IY
 JH
 JJ
@@ -37757,7 +37765,7 @@ Js
 Js
 Jz
 JE
-yf
+yC
 IY
 JH
 JJ
@@ -37899,7 +37907,7 @@ Jt
 Js
 Jz
 JE
-yf
+yC
 IY
 JH
 JJ
@@ -39717,9 +39725,9 @@ xx
 no
 uR
 uR
-um
-nt
 rN
+nt
+xY
 rR
 so
 sX
@@ -39859,9 +39867,9 @@ xx
 uj
 uT
 no
-xY
+um
 nu
-rO
+yf
 rS
 rS
 rS
