@@ -22,7 +22,7 @@
 /obj/effect/turf_overlay/beach_water
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "water2"
-	laayer = ABOVE_MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 
 /turf/simulated/floor/beach
 	name = "Beach"
@@ -66,4 +66,4 @@
 /obj/effect/turf_overlay/beach_ocean
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "water5"
-	laayer = ABOVE_MOB_LAYER
+	layer = ABOVE_MOB_LAYER

@@ -35,9 +35,9 @@
 	var/list/dangerous_objects // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
 /turf/Initialize(mapload)
-	if(flags_1 & INITIALIZED_1)
+	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags_1 |= INITIALIZED_1
+	flags |= INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.Cut()
@@ -130,7 +130,7 @@
 	visibilityChanged()
 	QDEL_LIST(blueprint_data)
 */
-	flags_1 &= ~INITIALIZED_1
+	flags &= ~INITIALIZED
 /*
 	requires_activation = FALSE
 */

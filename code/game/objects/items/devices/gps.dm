@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	update_icon()
 
 /obj/item/device/gps/Destroy()
-	GLOB.gps_list -= src
+	GLOB.GPS_list -= src
 	return ..()
 
 /obj/item/device/gps/AltClick(mob/user)

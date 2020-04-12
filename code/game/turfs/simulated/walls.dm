@@ -39,7 +39,7 @@
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
 	update_material()
-	if(material.radioactivity || reinf_material.radioactivity || girder_material.radioactivty)
+	if(material.radioactivity || reinf_material.radioactivity || girder_material.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
