@@ -5,8 +5,10 @@
 //	max_integrity = 100
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
-	lefthand_file = 'icons/mob/inhands/equipment/instruments_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
+		)
 	var/datum/song/handheld/song
 	var/list/allowed_instrument_ids
 //	var/tune_time_left = 0
@@ -229,7 +231,7 @@
 	icon_state = "harmonica"
 	item_state = "harmonica"
 	allowed_instrument_ids = "harmonica"
-	slot_flags = ITEM_SLOT_MASK
+//	slot_flags = ITEM_SLOT_MASK
 	force = 5
 	w_class = WEIGHT_CLASS_SMALL
 //	actions_types = list(/datum/action/item_action/instrument)

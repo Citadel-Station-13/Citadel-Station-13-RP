@@ -35,11 +35,21 @@
 	. = ..()
 	song.ui_interact(user)
 
+/obj/structure/musician/attackby(obj/item/I, mob/living/user)
+	if(I.is_wrench())
+		playsound(src, O.usesound, 50, 1)
+		to_chat(user, "<span class='notice'>You begin to [anchored? "loosen" : "tighten"] [src]'s casters...</span>")
+		if(do_after(user, 40 * O.toolspeed))
+			user.visible_message("<span class='notice'>[user] [anchored? "loosens" : "tightens"] [src]'s casters.</span>")
+			anchored = !anchored
+	else
+		return ..()
+
+/*
 /obj/structure/musician/wrench_act(mob/living/user, obj/item/I)
-	anchored = !anchored
-	user.visible_message("<span class='notice'>[user] [anchored? "anchors" : "unanchors"] [src].</span>")
-	//default_unfasten_wrench(user, I, 40)
+	default_unfasten_wrench(user, I, 40)
 	return TRUE
+*/
 
 /obj/structure/musician/piano
 	name = "space minimoog"
