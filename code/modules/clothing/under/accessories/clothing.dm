@@ -364,6 +364,10 @@
 	desc = "A comfortable turtleneck in a dark red."
 	icon_state = "turtleneck_red"
 
+/obj/item/clothing/accessory/sweater/combat
+	name = "Combat Sweater"
+	desc = "Look like an off duty soldier with this green sweater!"
+	icon_state = "ubacgreen"
 //***
 // End of sweaters
 //***

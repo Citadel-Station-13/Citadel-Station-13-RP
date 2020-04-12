@@ -427,7 +427,7 @@
 	icon_state = "jingasa"
 	body_parts_covered = 0
 	item_state_slots = list(slot_r_hand_str = "taq", slot_l_hand_str = "taq")
-	
+
 /obj/item/clothing/head/cowl
 	name = "black cowl"
 	desc = "A gold-lined black cowl. It gives off uncomfortable cult vibes, but fancy."
@@ -444,3 +444,8 @@
 	name = "bridge officer hat"
 	desc = "For a person with no authority who takes themselves very seriously."
 	icon_state = "bridgeofficersoft"
+
+/obj/item/clothing/head/parahat
+	name = "paramedic cap"
+	desc = "For a person who really needs a raise."
+	icon_state = "paramedicsoft"
