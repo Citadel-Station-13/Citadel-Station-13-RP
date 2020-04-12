@@ -409,7 +409,7 @@
 
 /obj/effect/protean_ability/toggle_buff
 	ability_name = "Ref - Toggle Material Augment"
-	desc = "Toggle your consumption of special materials such as diamonds, plasteel and metallic hydrogen. Toggling this on will cause these materials to be consumed to provide special effects."
+	desc = "Toggle your consumption of augmenting materials such as diamonds, plasteel and metallic hydrogen. Toggling this on will cause these materials to be consumed to provide special effects."
 	icon_state = "togglebuff"
 	to_call = /mob/living/carbon/human/proc/nano_togglebuff
 
