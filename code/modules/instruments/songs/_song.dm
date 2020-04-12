@@ -123,7 +123,7 @@
 	if(length(allowed_instrument_ids))
 		set_instrument(allowed_instrument_ids[1])
 	hearing_mobs = list()
-	volume = clamp(volume, min_volume, max_volume)
+	volume = CLAMP(volume, min_volume, max_volume)
 	update_sustain()
 
 /datum/song/Destroy()
