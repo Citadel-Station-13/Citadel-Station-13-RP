@@ -48,7 +48,7 @@
 	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - /obj/item/toy/plushie/therapy)
 		var/obj/item/toy/plushie/plushie_type = plushie
 		plushies[initial(plushie_type.name)] = plushie_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(plushies))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(plushies, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/flask
 	display_name = "flask"
@@ -79,7 +79,7 @@
 		var/obj/item/weapon/storage/toolbox/lunchbox/lunchbox = lunchbox_type
 		if(!initial(lunchbox.filled))
 			lunchboxes[initial(lunchbox.name)] = lunchbox_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(lunchboxes))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(lunchboxes, /proc/cmp_text_asc, TRUE))
 	gear_tweaks += new/datum/gear_tweak/contents(lunchables_lunches(), lunchables_snacks(), lunchables_drinks())
 
 /datum/gear/towel

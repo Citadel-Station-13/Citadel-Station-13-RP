@@ -34,11 +34,11 @@
 	if(vendmode == 1 && I)
 		scan_id(I, W)
 		vendmode = 0
-		GLOB.nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
 	if(vendmode == 2 && I)
 		if(reimburse_id(I, W))
 			vendmode = 0
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 	if(vendmode == 0)
 		if(istype(W, /obj/item/device/laptop))
 			var/obj/item/device/laptop/L = W
@@ -48,7 +48,7 @@
 			L.loc = src
 			vendmode = 2
 			to_chat(user, "<span class='notice'>You slot your [L.name] into \The [src.name]</span>")
-			GLOB.nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 	else
 		..()
 
@@ -77,7 +77,7 @@
 	data["power"] = power
 	data["total"] = total()
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "laptop_vendor.tmpl", src.name, 480, 425)
 		ui.set_initial_data(data)
@@ -136,7 +136,7 @@
 			vendmode = 0
 
 	src.add_fingerprint(usr)
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 
 /obj/machinery/lapvend/proc/vend()
 	if(cardreader > 0)
@@ -178,9 +178,9 @@
 			if(D)
 				transfer_and_vend(D, C)
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 	else
 		transfer_and_vend(CH, C)
 
@@ -327,10 +327,10 @@
 				transfer_and_reimburse(D)
 				return 1
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 				return 0
 		else
-			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [using_map.boss_short] Support.</span>")
+			to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call [GLOB.using_map.boss_short] Support.</span>")
 			return 0
 	else
 		transfer_and_reimburse(CH)

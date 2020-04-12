@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(assets)
 
 	preload = cache.Copy() //don't preload assets generated during the round
 
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		spawn(10)
 			getFilesSlow(C, preload, FALSE)
 	..()

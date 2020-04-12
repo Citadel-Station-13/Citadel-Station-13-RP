@@ -253,7 +253,7 @@
 			CHECK_TICK
 
 	else if (ispath(T, /client))
-		for(var/client/thing in clients)
+		for(var/client/thing in GLOB.clients)
 			if (typecache[thing.type])
 				. += thing
 			CHECK_TICK

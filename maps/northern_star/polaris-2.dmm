@@ -142,7 +142,7 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-10"
+	icon_state = "plant-10"
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
@@ -336,7 +336,7 @@
 "be" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -629,7 +629,7 @@
 "bP" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -824,7 +824,7 @@
 /area/space)
 "cm" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-06"
+	icon_state = "plant-06"
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_theatre)
@@ -917,7 +917,7 @@
 /area/holodeck/source_meetinghall)
 "cz" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-06"
+	icon_state = "plant-06"
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
@@ -1446,7 +1446,7 @@
 /area/holodeck/source_basketball)
 "eh" = (
 /turf/unsimulated/beach/sand{
-	 icon_state = "beach"
+	icon_state = "beach"
 	},
 /area/holodeck/source_beach)
 "ei" = (
@@ -1775,6 +1775,17 @@
 	name = "\improper Trader Base"
 	})
 "eY" = (
+/obj/structure/showcase{
+	desc = "So that's how the shuttle moves on its own.";
+	icon = 'icons/mob/AI.dmi';
+	icon_state = "ai-red";
+	name = "Arrivals Announcement Computer"
+	},
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
+	},
+/area/shuttle/arrival/pre_game)
+"eZ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "arrivals_shuttle";
@@ -1784,23 +1795,12 @@
 	tag_door = "arrivals_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/arrival/pre_game)
-"eZ" = (
-/obj/structure/showcase{
-	desc = "So that's how the shuttle moves on its own.";
-	icon = 'icons/mob/AI.dmi';
-	icon_state = "ai-red";
-	name = "Arrivals Announcement Computer"
-	},
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "fa" = (
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "fb" = (
@@ -1860,7 +1860,7 @@
 "fh" = (
 /obj/machinery/computer/shuttle_control/arrivals,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "fi" = (
@@ -1869,19 +1869,10 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "fj" = (
-/obj/machinery/light,
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/arrival/pre_game)
-"fk" = (
 /obj/structure/table/steel,
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-09";
@@ -1889,7 +1880,16 @@
 	pixel_y = 15
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
+	},
+/area/shuttle/arrival/pre_game)
+"fk" = (
+/obj/machinery/light,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
 	},
 /area/shuttle/arrival/pre_game)
 "fl" = (
@@ -2005,18 +2005,18 @@
 /turf/simulated/shuttle/wall/hard_corner,
 /area/shuttle/arrival/pre_game)
 "fA" = (
-/obj/structure/closet/emcloset,
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
-	},
-/area/shuttle/arrival/pre_game)
-"fB" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/computer/arcade/battle,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
+	},
+/area/shuttle/arrival/pre_game)
+"fB" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "fC" = (
@@ -2050,7 +2050,7 @@
 	},
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "fG" = (
@@ -2175,13 +2175,8 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
-	dir = 8;
-	name = "Station Intercom (General)";
-	pixel_x = -21
-	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "fY" = (
@@ -2192,8 +2187,13 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/device/radio/intercom{
+	dir = 8;
+	name = "Station Intercom (General)";
+	pixel_x = -21
+	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "fZ" = (
@@ -2210,7 +2210,7 @@
 	pixel_x = 26
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "ga" = (
@@ -2244,6 +2244,11 @@
 	name = "\improper Trader Base"
 	})
 "gc" = (
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_white"
+	},
+/area/shuttle/arrival/pre_game)
+"gd" = (
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -2253,12 +2258,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
-	},
-/area/shuttle/arrival/pre_game)
-"gd" = (
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "ge" = (
@@ -2270,7 +2270,7 @@
 	pixel_x = 28
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "gf" = (
@@ -2333,7 +2333,7 @@
 	name = "JoinLate"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "gn" = (
@@ -2442,7 +2442,7 @@
 "gx" = (
 /obj/structure/table/standard,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "gy" = (
@@ -2456,7 +2456,7 @@
 /obj/structure/table/standard,
 /obj/item/weapon/book/codex/lore/vir,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "gA" = (
@@ -2534,7 +2534,7 @@
 	name = "JoinLate"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "gN" = (
@@ -2834,13 +2834,8 @@
 	name = "JoinLate"
 	},
 /obj/structure/window/reinforced,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	name = "Station Intercom (General)";
-	pixel_x = -21
-	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "hx" = (
@@ -2851,8 +2846,13 @@
 	name = "JoinLate"
 	},
 /obj/structure/window/reinforced,
+/obj/item/device/radio/intercom{
+	dir = 8;
+	name = "Station Intercom (General)";
+	pixel_x = -21
+	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "hy" = (
@@ -2869,7 +2869,7 @@
 	pixel_x = 26
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "hz" = (
@@ -3049,13 +3049,13 @@
 "hT" = (
 /obj/machinery/vending/snack,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "hU" = (
 /obj/machinery/vending/cigarette,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "hV" = (
@@ -3128,20 +3128,20 @@
 "id" = (
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "ie" = (
 /obj/machinery/light,
 /obj/structure/table/standard,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "if" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_white"
+	icon_state = "floor_white"
 	},
 /area/shuttle/arrival/pre_game)
 "ig" = (
@@ -3305,7 +3305,7 @@
 	name = "Beruang";
 	pixel_x = 32
 	},
-/mob/living/simple_animal/corgi/tamaskan/spice,
+/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/trade/centcom)
 "iz" = (
@@ -4206,7 +4206,7 @@
 /area/shuttle/trade/centcom)
 "kq" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 5
 	},
 /obj/machinery/atm{
@@ -4231,7 +4231,7 @@
 /area/shuttle/trade/centcom)
 "ks" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 10
 	},
 /turf/simulated/shuttle/floor/black,
@@ -4349,7 +4349,7 @@
 /area/shuttle/trade/centcom)
 "kH" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-10"
+	icon_state = "plant-10"
 	},
 /turf/simulated/floor/carpet,
 /area/shuttle/trade/centcom)
@@ -4767,19 +4767,19 @@
 /area/alien)
 "lC" = (
 /obj/structure/table/steel_reinforced,
-/obj/structure/mirror,
+/obj/item/clothing/mask/balaclava/tactical,
+/obj/item/clothing/mask/balaclava,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
 	})
 "lD" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/clothing/mask/balaclava/tactical,
-/obj/item/clothing/mask/balaclava,
+/obj/structure/mirror,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
@@ -4787,7 +4787,7 @@
 "lE" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
@@ -4826,13 +4826,6 @@
 	name = "\improper Ninja Base"
 	})
 "lI" = (
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/syndicate_mothership{
-	name = "\improper Ninja Base"
-	})
-"lJ" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -4840,7 +4833,14 @@
 	name = "ninjastart"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
+	},
+/area/syndicate_mothership{
+	name = "\improper Ninja Base"
+	})
+"lJ" = (
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
@@ -4906,17 +4906,17 @@
 	name = "\improper Ninja Base"
 	})
 "lS" = (
-/obj/machinery/computer/teleporter,
+/obj/machinery/teleport/station,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
 	})
 "lT" = (
-/obj/machinery/teleport/station,
+/obj/machinery/computer/teleporter,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
@@ -4924,7 +4924,7 @@
 "lU" = (
 /obj/machinery/teleport/hub,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/syndicate_mothership{
 	name = "\improper Ninja Base"
@@ -7088,25 +7088,25 @@
 /area/syndicate_mothership)
 "pQ" = (
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
 "pR" = (
-/obj/structure/sign/double/map/left{
-	pixel_y = 32
-	},
-/turf/unsimulated/floor{
-	 name = "plating";
-	icon_state = "cult"
-	},
-/area/syndicate_mothership)
-"pS" = (
 /obj/structure/sign/double/map/right{
 	pixel_y = 32
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
+	icon_state = "cult"
+	},
+/area/syndicate_mothership)
+"pS" = (
+/obj/structure/sign/double/map/left{
+	pixel_y = 32
+	},
+/turf/unsimulated/floor{
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7116,7 +7116,7 @@
 	prices = list()
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7376,7 +7376,7 @@
 "qs" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7580,21 +7580,11 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
 "qO" = (
-/obj/item/weapon/folder{
-	pixel_y = 2
-	},
-/obj/structure/table/glass,
-/turf/unsimulated/floor{
-	 name = "plating";
-	icon_state = "cult"
-	},
-/area/syndicate_mothership)
-"qP" = (
 /obj/item/weapon/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -7604,7 +7594,17 @@
 	},
 /obj/structure/table/glass,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
+	icon_state = "cult"
+	},
+/area/syndicate_mothership)
+"qP" = (
+/obj/item/weapon/folder{
+	pixel_y = 2
+	},
+/obj/structure/table/glass,
+/turf/unsimulated/floor{
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7613,7 +7613,7 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7778,6 +7778,12 @@
 /turf/simulated/shuttle/plating/airless,
 /area/shuttle/specops/centcom)
 "rc" = (
+/obj/structure/bed/chair,
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
+	},
+/area/shuttle/specops/centcom)
+"rd" = (
 /obj/machinery/computer/security/telescreen{
 	desc = "";
 	name = "Spec. Ops. Monitor";
@@ -7786,16 +7792,15 @@
 	},
 /obj/machinery/computer/shuttle_control/specops,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
-"rd" = (
-/obj/structure/bed/chair,
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "re" = (
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
+	},
+/area/shuttle/specops/centcom)
+"rf" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "specops_shuttle_port";
@@ -7806,24 +7811,10 @@
 	},
 /obj/structure/bed/chair,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
-"rf" = (
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "rg" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_x = 4;
-	pixel_y = 32
-	},
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
-"rh" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = 32
@@ -7838,7 +7829,16 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
+	},
+/area/shuttle/specops/centcom)
+"rh" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "ri" = (
@@ -7898,7 +7898,7 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7908,7 +7908,7 @@
 	prices = list()
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -7994,7 +7994,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "rz" = (
@@ -8007,7 +8007,7 @@
 	tag_door = "specops_shuttle_fore_hatch"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "rA" = (
@@ -8026,7 +8026,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_mob/animal/passive/dog/corgi/puppy{
 	name = "Bockscar"
 	},
 /turf/unsimulated/floor{
@@ -8074,7 +8074,7 @@
 	products = list(/obj/item/weapon/storage/fancy/cigarettes = 10, /obj/item/weapon/storage/box/matches = 10, /obj/item/weapon/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership)
@@ -8099,6 +8099,14 @@
 	},
 /area/syndicate_mothership)
 "rI" = (
+/obj/machinery/computer/prisoner{
+	name = "Implant Management"
+	},
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
+	},
+/area/shuttle/specops/centcom)
+"rJ" = (
 /obj/machinery/computer/communications,
 /obj/item/device/radio/intercom{
 	broadcasting = 0;
@@ -8109,15 +8117,7 @@
 	pixel_y = -28
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/shuttle/specops/centcom)
-"rJ" = (
-/obj/machinery/computer/prisoner{
-	name = "Implant Management"
-	},
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "rK" = (
@@ -8125,7 +8125,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "rL" = (
@@ -8136,7 +8136,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/shuttle/specops/centcom)
 "rM" = (
@@ -9217,7 +9217,7 @@
 /area/syndicate_station/start)
 "ua" = (
 /obj/machinery/door/window{
-	 name = "Seating";
+	name = "Seating";
 	icon_state = "right";
 	dir = 2;
 	req_access = list(150)
@@ -9226,7 +9226,7 @@
 /area/syndicate_station/start)
 "ub" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-10"
+	icon_state = "plant-10"
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/syndicate_station/start)
@@ -9532,7 +9532,7 @@
 /area/syndicate_mothership)
 "uI" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "propulsion_r";
+	icon_state = "propulsion_r";
 	dir = 8
 	},
 /turf/space,
@@ -9608,7 +9608,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/syndicate_station/start)
 "uP" = (
-/mob/living/simple_animal/cat/kitten{
+/mob/living/simple_mob/animal/passive/cat/kitten{
 	name = "Enola"
 	},
 /turf/simulated/shuttle/floor/darkred,
@@ -9638,7 +9638,7 @@
 	req_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 9
 	},
 /turf/simulated/shuttle/floor/darkred,
@@ -11340,7 +11340,7 @@
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
-	 icon_state = "platform";
+	icon_state = "platform";
 	dir = 1
 	},
 /area/supply/dock)
@@ -11348,7 +11348,7 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
-	 icon_state = "platform";
+	icon_state = "platform";
 	dir = 1
 	},
 /area/supply/dock)
@@ -11358,7 +11358,7 @@
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
-	 icon_state = "platform";
+	icon_state = "platform";
 	dir = 1
 	},
 /area/supply/dock)
@@ -12112,7 +12112,7 @@
 /obj/structure/table/marble,
 /obj/effect/floor_decal/corner/white/diagonal,
 /obj/machinery/cash_register/civilian{
-	 icon_state = "register_idle";
+	icon_state = "register_idle";
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -12503,7 +12503,7 @@
 /area/centcom/tram)
 "AZ" = (
 /obj/structure/shuttle/engine/propulsion{
-	 icon_state = "burst_l";
+	icon_state = "burst_l";
 	dir = 4
 	},
 /turf/space,
@@ -12847,7 +12847,7 @@
 /area/centcom/tram)
 "BN" = (
 /obj/effect/floor_decal/corner/white/full{
-	 icon_state = "corner_white_full";
+	icon_state = "corner_white_full";
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -12953,7 +12953,7 @@
 /area/centcom/terminal)
 "BZ" = (
 /obj/effect/floor_decal/corner/white/diagonal{
-	 icon_state = "corner_white_diagonal";
+	icon_state = "corner_white_diagonal";
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -13036,7 +13036,7 @@
 /area/centcom/tram)
 "Ci" = (
 /obj/effect/floor_decal/corner/white{
-	 icon_state = "corner_white";
+	icon_state = "corner_white";
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -13094,7 +13094,7 @@
 "Cn" = (
 /obj/structure/flora/grass/brown,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -13329,7 +13329,7 @@
 "CJ" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -13356,7 +13356,7 @@
 "CM" = (
 /obj/structure/flora/ausbushes/fernybush,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -13476,7 +13476,7 @@
 "CX" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -13497,7 +13497,7 @@
 "CZ" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -13676,18 +13676,10 @@
 	dir = 1
 	},
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "Dp" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
-	},
-/area/centcom/main_hall)
-"Dq" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -13695,7 +13687,15 @@
 	dir = 4
 	},
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
+	},
+/area/centcom/main_hall)
+"Dq" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/unsimulated/beach/sand{
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "Dr" = (
@@ -13818,7 +13818,7 @@
 /area/centcom/main_hall)
 "DB" = (
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "DC" = (
@@ -13922,12 +13922,12 @@
 	dir = 8
 	},
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "DL" = (
 /obj/effect/floor_decal/spline/plain{
-	 icon_state = "spline_plain_full";
+	icon_state = "spline_plain_full";
 	dir = 1
 	},
 /obj/structure/showcase,
@@ -13941,7 +13941,7 @@
 	dir = 4
 	},
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "DN" = (
@@ -13984,7 +13984,7 @@
 	dir = 8
 	},
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "DR" = (
@@ -13993,7 +13993,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "DS" = (
@@ -14135,17 +14135,17 @@
 /area/centcom/main_hall)
 "Ed" = (
 /obj/structure/window/reinforced,
-/turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
-	},
-/area/centcom/main_hall)
-"Ee" = (
-/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/unsimulated/beach/sand{
-	 icon_state = "seashallow"
+	icon_state = "seashallow"
+	},
+/area/centcom/main_hall)
+"Ee" = (
+/obj/structure/window/reinforced,
+/turf/unsimulated/beach/sand{
+	icon_state = "seashallow"
 	},
 /area/centcom/main_hall)
 "Ef" = (
@@ -14185,7 +14185,7 @@
 "Ek" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -14206,7 +14206,7 @@
 "Em" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -14369,7 +14369,7 @@
 "EF" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
-	 icon_state = "spline_fancy";
+	icon_state = "spline_fancy";
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -14456,7 +14456,7 @@
 "EQ" = (
 /obj/machinery/door/airlock/glass,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "ER" = (
@@ -14532,6 +14532,11 @@
 	},
 /area/centcom/medical)
 "Fa" = (
+/turf/unsimulated/floor{
+	icon_state = "wood"
+	},
+/area/centcom/bar)
+"Fb" = (
 /obj/structure/table/woodentable{
 	dir = 5
 	},
@@ -14539,12 +14544,7 @@
 	pixel_y = 8
 	},
 /turf/unsimulated/floor{
-	 icon_state = "wood"
-	},
-/area/centcom/bar)
-"Fb" = (
-/turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Fc" = (
@@ -14688,39 +14688,39 @@
 	},
 /area/centcom/medical)
 "Fy" = (
-/obj/structure/bed/chair/wood/wings{
-	icon_state = "wooden_chair_wings";
-	dir = 4
-	},
-/turf/unsimulated/floor{
-	 icon_state = "wood"
-	},
-/area/centcom/bar)
-"Fz" = (
 /obj/structure/table/woodentable{
 	dir = 5
 	},
 /obj/item/weapon/reagent_containers/food/snacks/amanita_pie,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
+	},
+/area/centcom/bar)
+"Fz" = (
+/obj/structure/bed/chair/wood/wings{
+	icon_state = "wooden_chair_wings";
+	dir = 4
+	},
+/turf/unsimulated/floor{
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FA" = (
-/obj/structure/table/woodentable{
-	dir = 5
-	},
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/turf/unsimulated/floor{
-	 icon_state = "wood"
-	},
-/area/centcom/bar)
-"FB" = (
 /obj/structure/bed/chair/wood/wings{
 	icon_state = "wooden_chair_wings";
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
+	},
+/area/centcom/bar)
+"FB" = (
+/obj/structure/table/woodentable{
+	dir = 5
+	},
+/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
+/turf/unsimulated/floor{
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FC" = (
@@ -14729,7 +14729,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/slice/carrotcake/filled,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FD" = (
@@ -14738,7 +14738,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/stew,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FE" = (
@@ -14791,7 +14791,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/boiledrice,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FL" = (
@@ -14800,7 +14800,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/beetsoup,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FM" = (
@@ -14809,7 +14809,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/stuffing,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FN" = (
@@ -14818,7 +14818,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/soylenviridians,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "FO" = (
@@ -15019,7 +15019,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/bloodsoup,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Gl" = (
@@ -15028,7 +15028,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/tofukabob,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Gm" = (
@@ -15037,7 +15037,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/poppypretzel,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Gn" = (
@@ -15046,7 +15046,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/slice/orangecake/filled,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Go" = (
@@ -15138,7 +15138,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/spesslaw,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Gy" = (
@@ -15147,7 +15147,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/candiedapple,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Gz" = (
@@ -15156,7 +15156,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/mushroomsoup,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "GA" = (
@@ -15165,7 +15165,7 @@
 	},
 /obj/item/weapon/reagent_containers/food/snacks/meatsteak,
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "GB" = (
@@ -15368,12 +15368,8 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/machinery/camera/network/crescent{
-	c_tag = "Crescent Bar East";
-	dir = 4
-	},
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "GZ" = (
@@ -15386,13 +15382,17 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/machinery/camera/network/crescent{
+	c_tag = "Crescent Bar East";
+	dir = 4
+	},
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /area/centcom/bar)
 "Ha" = (
 /turf/unsimulated/floor{
-	 icon_state = "wood"
+	icon_state = "wood"
 	},
 /turf/unsimulated/floor{
 	icon_state = "lino"
@@ -16012,7 +16012,7 @@
 /area/centcom/medical)
 "Il" = (
 /obj/structure/morgue{
-	 icon_state = "morgue1";
+	icon_state = "morgue1";
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue/full{
@@ -16139,7 +16139,7 @@
 /area/centcom/medical)
 "Iw" = (
 /obj/structure/morgue{
-	 icon_state = "morgue1";
+	icon_state = "morgue1";
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/blue{
@@ -16813,19 +16813,19 @@
 /area/shuttle/escape/centcom)
 "JQ" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
-	dir = 5
-	},
-/obj/machinery/camera/network/crescent{
-	c_tag = "Shuttle Medical";
-	dir = 4
+	icon_state = "intact";
+	dir = 9
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
 "JR" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
-	dir = 9
+	icon_state = "intact";
+	dir = 5
+	},
+/obj/machinery/camera/network/crescent{
+	c_tag = "Shuttle Medical";
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom)
@@ -17582,7 +17582,7 @@
 /area/tdome)
 "Lp" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -17599,7 +17599,7 @@
 /area/tdome)
 "Lr" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -18104,7 +18104,7 @@
 /area/centcom/evac)
 "MI" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 5
 	},
 /turf/simulated/shuttle/floor/white,
@@ -18115,7 +18115,7 @@
 /area/centcom/evac)
 "MK" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	 icon_state = "intact";
+	icon_state = "intact";
 	dir = 9
 	},
 /turf/simulated/shuttle/floor/white,
@@ -18260,7 +18260,7 @@
 /area/centcom/evac)
 "Nc" = (
 /obj/structure/morgue{
-	 icon_state = "morgue1";
+	icon_state = "morgue1";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/white,
@@ -18284,7 +18284,7 @@
 /turf/unsimulated/beach/sand,
 /area/beach)
 "Nf" = (
-/mob/living/simple_animal/crab/Coffee,
+/mob/living/simple_mob/animal/passive/crab/Coffee,
 /turf/unsimulated/beach/sand,
 /area/beach)
 "Ng" = (
@@ -18465,7 +18465,7 @@
 "ND" = (
 /obj/machinery/door/airlock/glass,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_yellow"
+	icon_state = "floor_yellow"
 	},
 /area/centcom/evac)
 "NE" = (
@@ -18532,17 +18532,17 @@
 /turf/simulated/shuttle/floor,
 /area/centcom/evac)
 "NS" = (
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_yellow"
+	},
+/area/centcom/evac)
+"NT" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Cockpit";
 	req_access = list(109)
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_yellow"
-	},
-/area/centcom/evac)
-"NT" = (
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_yellow"
+	icon_state = "floor_yellow"
 	},
 /area/centcom/evac)
 "NU" = (
@@ -18696,34 +18696,34 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/centcom/evac)
 "Om" = (
-/obj/machinery/computer/card,
+/obj/structure/table/rack,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "On" = (
-/obj/structure/table/rack,
+/obj/machinery/computer/card,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "Oo" = (
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/centcom/evac)
-"Op" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
+	},
+/area/centcom/evac)
+"Op" = (
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "Oq" = (
 /obj/machinery/computer/secure_data,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "Or" = (
@@ -18797,7 +18797,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "OD" = (
@@ -18822,17 +18822,17 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/large_escape_pod1/centcom)
 "OH" = (
+/obj/structure/closet/secure_closet/security,
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_red"
+	},
+/area/centcom/evac)
+"OI" = (
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
-	},
-/area/centcom/evac)
-"OI" = (
-/obj/structure/closet/secure_closet/security,
-/turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "OJ" = (
@@ -18855,12 +18855,12 @@
 	req_access = list(1)
 	},
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "OM" = (
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -18873,7 +18873,7 @@
 /obj/structure/bed/padded,
 /obj/item/weapon/bedsheet/orange,
 /turf/simulated/shuttle/floor{
-	 icon_state = "floor_red"
+	icon_state = "floor_red"
 	},
 /area/centcom/evac)
 "OP" = (
@@ -18961,7 +18961,7 @@
 "Pa" = (
 /obj/item/weapon/bedsheet/orange,
 /obj/effect/decal/cleanable/cobweb2{
-	 icon_state = "cobweb1"
+	icon_state = "cobweb1"
 	},
 /obj/structure/bed/padded,
 /turf/unsimulated/floor{
@@ -19073,7 +19073,7 @@
 "Pm" = (
 /obj/item/clothing/head/xenos,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19103,23 +19103,23 @@
 	name = "\improper alien mask"
 	},
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
 	})
 "Pp" = (
-/obj/item/xenos_claw,
+/obj/structure/table/rack,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
 	})
 "Pq" = (
-/obj/structure/table/rack,
+/obj/item/xenos_claw,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19128,7 +19128,7 @@
 /obj/structure/table/rack,
 /obj/item/weapon/gun/launcher/spikethrower,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19147,7 +19147,7 @@
 "Pt" = (
 /obj/item/pizzabox/meat,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19155,7 +19155,7 @@
 "Pu" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19163,7 +19163,7 @@
 	})
 "Pv" = (
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19172,7 +19172,7 @@
 "Pw" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19182,7 +19182,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/glasses/thermal/plain/monocle,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19192,7 +19192,7 @@
 	name = "voxstart"
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19201,7 +19201,7 @@
 "Pz" = (
 /obj/item/weapon/tank/nitrogen,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19209,7 +19209,7 @@
 "PA" = (
 /obj/item/organ/internal/stack,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19217,7 +19217,7 @@
 "PB" = (
 /obj/structure/bed/chair,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19266,18 +19266,18 @@
 	name = "\improper Raider Base"
 	})
 "PF" = (
-/obj/machinery/computer/station_alert,
+/obj/machinery/computer/shuttle_control/multi/skipjack,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
 	})
 "PG" = (
-/obj/machinery/computer/shuttle_control/multi/skipjack,
+/obj/machinery/computer/station_alert,
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19288,7 +19288,7 @@
 	locked = 0
 	},
 /turf/unsimulated/floor{
-	 name = "plating";
+	name = "plating";
 	icon_state = "cult"
 	},
 /area/syndicate_mothership{
@@ -19307,7 +19307,7 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/item/weapon/tank/nitrogen,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -19315,7 +19315,7 @@
 "PK" = (
 /obj/item/clothing/head/philosopher_wig,
 /turf/unsimulated/floor{
-	 icon_state = "asteroid"
+	icon_state = "asteroid"
 	},
 /area/syndicate_mothership{
 	name = "\improper Raider Base"
@@ -20091,7 +20091,7 @@
 	},
 /area/wizard_station)
 "Ru" = (
-/mob/living/simple_animal/mouse/gray{
+/mob/living/simple_mob/animal/passive/mouse/gray{
 	desc = "He looks kingly.";
 	name = "Arthur"
 	},
@@ -20101,7 +20101,7 @@
 /area/wizard_station)
 "Rv" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-24"
+	icon_state = "plant-24"
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -20158,7 +20158,7 @@
 /area/wizard_station)
 "RE" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-08"
+	icon_state = "plant-08"
 	},
 /turf/unsimulated/floor{
 	dir = 8;
@@ -20434,7 +20434,7 @@
 /area/wizard_station)
 "Si" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-04"
+	icon_state = "plant-04"
 	},
 /turf/unsimulated/floor{
 	icon_state = "vault";
@@ -20647,7 +20647,7 @@
 /area/wizard_station)
 "SL" = (
 /obj/structure/flora/pottedplant{
-	 icon_state = "plant-03"
+	icon_state = "plant-03"
 	},
 /obj/item/device/radio/intercom{
 	desc = "Talk through this. Evilly";
@@ -20895,7 +20895,7 @@
 /area/wizard_station)
 "Tp" = (
 /obj/effect/floor_decal/industrial/warning/corner{
-	 icon_state = "warningcorner";
+	icon_state = "warningcorner";
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -22253,7 +22253,7 @@ mc
 mc
 OM
 OM
-Pp
+Pq
 OM
 OM
 Pz
@@ -22510,9 +22510,9 @@ Os
 Os
 OM
 OM
-Pq
-Pq
-Pq
+Pp
+Pp
+Pp
 OM
 OM
 Os
@@ -23025,7 +23025,7 @@ OM
 OM
 OM
 Pr
-Pq
+Pp
 Px
 OM
 OM
@@ -27397,7 +27397,7 @@ Of
 Pv
 Pv
 Pv
-PF
+PG
 PC
 af
 af
@@ -27654,7 +27654,7 @@ OJ
 Pv
 Py
 PB
-PG
+PF
 PD
 af
 af
@@ -38142,7 +38142,7 @@ Fr
 Fr
 EV
 JC
-JQ
+JR
 Kh
 Kv
 EU
@@ -38399,7 +38399,7 @@ Fr
 Fr
 EV
 JD
-JR
+JQ
 JE
 Kw
 Ku
@@ -41668,9 +41668,9 @@ mi
 pB
 mD
 qF
-rc
+rd
 ry
-rI
+rJ
 qF
 sE
 af
@@ -41925,9 +41925,9 @@ mi
 pC
 mD
 qF
-rd
-rf
-rJ
+rc
+re
+rI
 qF
 sE
 af
@@ -42182,8 +42182,8 @@ mi
 pD
 md
 qF
-re
 rf
+re
 rK
 qF
 sE
@@ -42439,8 +42439,8 @@ mi
 mi
 qj
 qG
-rf
-rf
+re
+re
 rK
 qF
 sE
@@ -42696,8 +42696,8 @@ mi
 mi
 qj
 qG
-rf
-rf
+re
+re
 rK
 qF
 sE
@@ -42953,8 +42953,8 @@ mi
 mi
 md
 qF
-rf
-rf
+re
+re
 rK
 qF
 sE
@@ -43210,8 +43210,8 @@ mi
 pC
 md
 qF
-rg
-rf
+rh
+re
 rK
 qF
 sE
@@ -43467,8 +43467,8 @@ mi
 pB
 md
 qF
-rh
-rf
+rg
+re
 rL
 qF
 sE
@@ -44084,8 +44084,8 @@ MN
 MO
 MO
 MS
-NT
-NT
+NS
+NS
 MN
 Mh
 Mn
@@ -45885,12 +45885,12 @@ MO
 MS
 MO
 NC
-Om
+On
 OC
-OH
+OI
 NC
 OO
-Oo
+Op
 OO
 Mh
 af
@@ -46142,13 +46142,13 @@ MO
 MS
 MO
 NC
-On
-Oo
-OI
+Om
+Op
+OH
 NC
-Oo
-Oo
-Oo
+Op
+Op
+Op
 Mh
 af
 af
@@ -46345,16 +46345,16 @@ Cc
 Bc
 CH
 EO
+Fb
 Fa
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-GY
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+GZ
 Hp
 HF
 HQ
@@ -46399,12 +46399,12 @@ MO
 MS
 MO
 Oc
-Oo
-Oo
-Oo
+Op
+Op
+Op
 OL
-Oo
-Oo
+Op
+Op
 OO
 Mh
 af
@@ -46602,16 +46602,16 @@ AQ
 Bc
 CE
 EP
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-GZ
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+GY
 Hq
 HG
 HR
@@ -46656,13 +46656,13 @@ MO
 MS
 MO
 NC
+Oo
 Op
-Oo
-Oo
+Op
 NC
-Oo
-Oo
-Oo
+Op
+Op
+Op
 Mh
 af
 af
@@ -46859,16 +46859,16 @@ AQ
 Bc
 CF
 EP
-Fb
-Fb
-Fy
-Fy
-Fb
-Fy
-Fy
-Fb
-Fb
-GZ
+Fa
+Fa
+Fz
+Fz
+Fa
+Fz
+Fz
+Fa
+Fa
+GY
 Hr
 HH
 HS
@@ -46915,10 +46915,10 @@ MO
 NC
 Oq
 OC
-Oo
+Op
 NC
 OO
-Oo
+Op
 OO
 Mh
 af
@@ -47116,19 +47116,19 @@ AQ
 Bc
 CG
 EP
-Fb
-Fb
-Fz
+Fa
+Fa
+Fy
 FK
-Fb
+Fa
 Gk
 Gx
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
 EO
 Ik
 Eu
@@ -47373,19 +47373,19 @@ AQ
 Bc
 CG
 EP
-Fb
-Fb
-FA
+Fa
+Fa
+FB
 FL
-Fb
+Fa
 Gl
 Gy
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
 EO
 Il
 Iw
@@ -47630,15 +47630,15 @@ AQ
 Bc
 Bc
 EO
-Fb
-Fb
-FB
-FB
-Fb
-FB
-FB
-Fb
-Fb
+Fa
+Fa
+FA
+FA
+Fa
+FA
+FA
+Fa
+Fa
 Ha
 Ha
 Ha
@@ -47887,14 +47887,14 @@ AQ
 AQ
 AQ
 EQ
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
 GM
 Hb
 Hs
@@ -48144,14 +48144,14 @@ AQ
 AQ
 AQ
 EQ
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
 GM
 Hb
 Ht
@@ -48401,14 +48401,14 @@ AQ
 Bc
 Bc
 EO
-Fb
-Fb
-Fy
-Fy
-Fb
-Fy
-Fy
-Fb
+Fa
+Fa
+Fz
+Fz
+Fa
+Fz
+Fz
+Fa
 GM
 Hb
 Ht
@@ -48452,7 +48452,7 @@ MH
 Mh
 Mh
 NC
-NS
+NT
 NC
 Mh
 Mh
@@ -48658,14 +48658,14 @@ AQ
 Bc
 CO
 EP
-Fb
-Fb
+Fa
+Fa
 FC
 FM
-Fb
+Fa
 Gm
 Gz
-Fb
+Fa
 GM
 Hc
 Ht
@@ -48709,7 +48709,7 @@ Nc
 Mh
 NE
 NL
-NT
+NS
 NW
 Od
 Mh
@@ -48915,14 +48915,14 @@ AQ
 Bc
 EE
 EP
-Fb
-Fb
+Fa
+Fa
 FD
 FN
-Fb
+Fa
 Gn
 GA
-Fb
+Fa
 GM
 Hb
 Ht
@@ -49172,14 +49172,14 @@ AQ
 Bc
 CG
 EP
-Fb
-Fb
-FB
-FB
-Fb
-FB
-FB
-Fb
+Fa
+Fa
+FA
+FA
+Fa
+FA
+FA
+Fa
 GM
 Hb
 Ht
@@ -49429,14 +49429,14 @@ AQ
 Bc
 CF
 EP
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
 GM
 Hb
 Ht
@@ -49686,14 +49686,14 @@ Cc
 Bc
 CF
 EO
+Fb
 Fa
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+Fa
+Fa
+Fa
+Fa
+Fa
+Fa
 GM
 Hb
 Ht
@@ -49827,15 +49827,15 @@ aa
 eT
 eT
 eT
-fA
+fB
 fL
-fX
-gc
+fY
+gd
 gm
 gx
 gM
-gc
-hw
+gd
+hx
 fL
 hT
 ic
@@ -50084,17 +50084,17 @@ eT
 eT
 fh
 fp
-fB
+fA
 fL
-fY
-gd
+fX
+gc
 gm
 gx
 gM
-gd
-hx
+gc
+hw
 fL
-gd
+gc
 id
 eT
 eT
@@ -50338,18 +50338,18 @@ aj
 aj
 aa
 eT
-eY
+eZ
 fi
 fq
 fC
 fL
-fY
-gd
+fX
+gc
 gm
 gx
 gM
-gd
-hx
+gc
+hw
 fL
 fL
 gz
@@ -50595,7 +50595,7 @@ aj
 aj
 aa
 eT
-eZ
+eY
 fa
 fr
 fD
@@ -50853,17 +50853,17 @@ aj
 aa
 eT
 fa
-fj
+fk
 eT
 fE
 fL
-fY
-gd
+fX
+gc
 gm
 gz
 gM
-gd
-hx
+gc
+hw
 fL
 fL
 gx
@@ -51110,19 +51110,19 @@ aj
 aa
 eT
 eT
-fk
+fj
 fs
 fF
 fL
-fY
-gd
+fX
+gc
 gm
 gx
 gM
-gd
-hx
+gc
+hw
 fL
-gd
+gc
 if
 eT
 eT
@@ -51369,7 +51369,7 @@ aa
 eT
 eT
 eT
-fA
+fB
 fL
 fZ
 ge
@@ -51991,11 +51991,11 @@ AQ
 Cp
 CL
 CL
-Dp
+Dq
 DB
 DL
 DB
-Ed
+Ee
 CL
 CL
 ER
@@ -52248,11 +52248,11 @@ AQ
 Cp
 CL
 CL
-Dq
+Dp
 DB
 DB
 DB
-Ee
+Ed
 CL
 CL
 ER
@@ -52506,7 +52506,7 @@ Cq
 CL
 CL
 CL
-Dq
+Dp
 DM
 DR
 CL
@@ -67336,12 +67336,12 @@ af
 af
 af
 lx
-lC
-lI
-lI
-lI
-lI
-lS
+lD
+lJ
+lJ
+lJ
+lJ
+lT
 lW
 lZ
 af
@@ -67593,12 +67593,12 @@ af
 af
 af
 ly
-lD
+lC
+lI
 lJ
-lI
-lI
-lI
-lT
+lJ
+lJ
+lS
 lW
 ma
 af
@@ -67851,10 +67851,10 @@ af
 af
 lx
 lE
-lI
-lI
-lI
-lI
+lJ
+lJ
+lJ
+lJ
 lU
 lW
 mb
@@ -80215,9 +80215,9 @@ af
 af
 af
 ps
-pR
+pS
 qs
-qO
+qP
 ro
 pQ
 ps
@@ -80472,9 +80472,9 @@ kT
 hV
 af
 pt
-pS
+pR
 qs
-qP
+qO
 ro
 pQ
 rT

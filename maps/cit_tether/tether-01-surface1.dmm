@@ -5239,7 +5239,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
 "amu" = (
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/tether/surfacebase/atrium_one)
 "amv" = (
@@ -13289,7 +13289,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/research)
 "aFv" = (
-/mob/living/simple_animal/retaliate/gaslamp,
+/mob/living/simple_mob/retaliate/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aFw" = (

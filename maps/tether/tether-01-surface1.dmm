@@ -2137,7 +2137,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/crowbar,
-/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/shovel,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/effect/floor_decal/borderfloor/corner2,
@@ -2149,7 +2149,7 @@
 /obj/item/weapon/pickaxe,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/crowbar,
-/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/shovel,
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -6869,7 +6869,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/north_stairs_one)
 "amu" = (
-/mob/living/simple_animal/fish/koi/poisonous,
+/mob/living/simple_mob/animal/passive/fish/koi/poisonous,
 /turf/simulated/floor/water/pool,
 /area/tether/surfacebase/atrium_one)
 "amv" = (
@@ -14960,8 +14960,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/weapon/pickaxe/shovel,
-/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/shovel,
+/obj/item/weapon/shovel,
 /obj/item/weapon/soap,
 /obj/item/device/radio/intercom{
 	dir = 1;
@@ -17455,7 +17455,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "aFv" = (
-/mob/living/simple_animal/retaliate/gaslamp,
+/mob/living/simple_mob/animal/passive/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aFw" = (

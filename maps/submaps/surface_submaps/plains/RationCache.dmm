@@ -6,15 +6,11 @@
 /turf/simulated/floor/outdoors/snow,
 /area/submap/RationCache)
 "c" = (
-/mob/living/simple_animal/retaliate/diyaab{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/sif/diyaab,
 /turf/simulated/floor/outdoors/snow,
 /area/submap/RationCache)
 "d" = (
-/mob/living/simple_animal/retaliate/diyaab{
-	returns_home = 1
-	},
+/mob/living/simple_mob/animal/sif/diyaab,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/RationCache)
 "e" = (

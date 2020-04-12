@@ -32,14 +32,17 @@ GLOBAL_LIST_INIT(cww_dir, list( // cww_dir[dir] = counter-clockwise rotation of 
 ))
 
 GLOBAL_LIST_INIT(ore_types, list(
-	"hematite" = /obj/item/weapon/ore/iron,
-	"uranium" = /obj/item/weapon/ore/uranium,
-	"gold" = /obj/item/weapon/ore/gold,
-	"silver" = /obj/item/weapon/ore/silver,
-	"diamond" = /obj/item/weapon/ore/diamond,
-	"phoron" = /obj/item/weapon/ore/phoron,
-	"osmium" = /obj/item/weapon/ore/osmium,
-	"hydrogen" = /obj/item/weapon/ore/hydrogen,
-	"silicates" = /obj/item/weapon/ore/glass,
-	"carbon" = /obj/item/weapon/ore/coal
-))
+		"hematite" = /obj/item/weapon/ore/iron,
+		"uranium" = /obj/item/weapon/ore/uranium,
+		"gold" = /obj/item/weapon/ore/gold,
+		"silver" = /obj/item/weapon/ore/silver,
+		"diamond" = /obj/item/weapon/ore/diamond,
+		"phoron" = /obj/item/weapon/ore/phoron,
+		"osmium" = /obj/item/weapon/ore/osmium,
+		"hydrogen" = /obj/item/weapon/ore/hydrogen,
+		"silicates" = /obj/item/weapon/ore/glass,
+		"carbon" = /obj/item/weapon/ore/coal,
+		"verdantium" = /obj/item/weapon/ore/verdantium,
+		"marble" = /obj/item/weapon/ore/marble,
+		"lead" = /obj/item/weapon/ore/lead
+	))

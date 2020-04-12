@@ -43,8 +43,6 @@
 /datum/controller/process/open_space/proc/update_turf(var/turf/T)
 	for(var/atom/movable/A in T)
 		A.fall()
-	for(var/obj/vehicle/B in T)
-		B.fall()
 	T.update_icon()
 
 /datum/controller/process/open_space/proc/add_turf(var/turf/T, var/recursive = 0)

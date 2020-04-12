@@ -91,7 +91,7 @@
 			roddata["insertion"] = round(rod.insertion * 100)
 			data["rods"][i] = roddata
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "fission_monitor.tmpl", "Nuclear Fission Core", 500, 600)
 		ui.set_initial_data(data)

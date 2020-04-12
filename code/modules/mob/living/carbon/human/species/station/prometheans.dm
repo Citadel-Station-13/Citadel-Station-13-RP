@@ -10,6 +10,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	mimic many forms of life. Derived from the Aetolian giant slime (Macrolimus vulgaris) inhabiting the warm, tropical planet \
 	of Aetolus, they are a relatively new lab-created sapient species, and as such many things about them have yet to be comprehensively studied. \
 	What has Science done?"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
 	show_ssd =         "totally quiescent"
 	death_message =    "rapidly loses cohesion, splattering across the ground..."
 	knockout_message = "collapses inwards, forming a disordered puddle of goo."
@@ -24,12 +25,13 @@ var/datum/species/shapeshifter/promethean/prometheans
 	bump_flag =        SLIME
 	swap_flags =       MONKEY|SLIME|SIMPLE_ANIMAL
 	push_flags =       MONKEY|SLIME|SIMPLE_ANIMAL
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | IS_SLIME
+	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
 	health_hud_intensity = 2
 	num_alternate_languages = 3
 	species_language = LANGUAGE_SOL_COMMON
+	secondary_langs = list(LANGUAGE_SOL_COMMON)	// For some reason, having this as their species language does not allow it to be chosen.
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)	// Prometheans are weird, let's just assume they can use basically any language.
 
 	breath_type = null
@@ -45,7 +47,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	economic_modifier = 3
 
-	//gluttonous =	1 // VOREStation Edit. Redundant feature.
+	gluttonous =	1
 	virus_immune =	1
 	blood_volume =	560
 	slowdown = -0.2 // citadel change
@@ -65,15 +67,21 @@ var/datum/species/shapeshifter/promethean/prometheans
 	heat_level_2 = 370 //Default 400
 	heat_level_3 = 600 //Default 1000
 
-	body_temperature =      310.15
+	body_temperature = T20C	// Room temperature
 
-	siemens_coefficient =   0.4
-	rarity_value =          5
+	rarity_value = 5
+	siemens_coefficient = 0.8
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
 
 	unarmed_types = list(/datum/unarmed_attack/slime_glomp)
-	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime) // Slime core.
+
+	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime,
+						O_HEART = /obj/item/organ/internal/heart/grey/colormatch/slime,
+						O_REGBRUTE = /obj/item/organ/internal/regennetwork,
+						O_REGBURN = /obj/item/organ/internal/regennetwork/burn,
+						O_REGOXY = /obj/item/organ/internal/regennetwork/oxy,
+						O_REGTOX = /obj/item/organ/internal/regennetwork/tox)
 
 	dispersed_eyes = TRUE
 
@@ -124,11 +132,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 							/obj/item/weapon/storage/toolbox/lunchbox/nymph,
 							/obj/item/weapon/storage/toolbox/lunchbox/syndicate))	//Only pick the empty types
 	var/obj/item/weapon/storage/toolbox/lunchbox/L = new boxtype(get_turf(H))
-	var/mob/living/simple_animal/mouse/mouse = new (L)
-	var/obj/item/weapon/holder/holder = new (L)
-	holder.held_mob = mouse
-	mouse.forceMove(holder)
-	holder.sync(mouse)
+	new /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar(L)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(L, slot_r_hand)
 	else

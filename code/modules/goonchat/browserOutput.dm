@@ -218,7 +218,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		return
 
 	if(target == world)
-		target = clients
+		target = GLOB.clients
 
 	var/original_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output

@@ -927,7 +927,7 @@
 /obj/item/weapon/tool/wrench,
 /obj/item/device/measuring_tape,
 /obj/item/stack/flag/yellow,
-/obj/item/weapon/pickaxe/shovel/spade,
+/obj/item/weapon/shovel/spade,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
@@ -1267,7 +1267,7 @@
 	},
 /area/awaymission/labyrinth/arrival)
 "de" = (
-/obj/item/weapon/pickaxe/shovel/spade,
+/obj/item/weapon/shovel/spade,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroid";
@@ -1276,7 +1276,7 @@
 	},
 /area/awaymission/labyrinth/arrival)
 "df" = (
-/obj/item/weapon/pickaxe/shovel,
+/obj/item/weapon/shovel,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "asteroid";
