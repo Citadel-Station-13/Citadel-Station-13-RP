@@ -10096,7 +10096,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "rN" = (
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
 /obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
@@ -10104,7 +10106,8 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/turf/simulated/floor/tiled/steel,
+/obj/item/weapon/storage/box/wings,
+/turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "rO" = (
 /obj/structure/table/marble,
@@ -11570,17 +11573,14 @@
 /area/crew_quarters/bar)
 "um" = (
 /obj/effect/floor_decal/spline/plain,
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor,
+/obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
+	dir = 8;
 	id = "bar";
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
+/obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
 "un" = (
@@ -12778,9 +12778,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "wv" = (
-/obj/structure/closet/secure_closet/medical_wall/synth_anesthetics,
-/turf/simulated/wall,
-/area/assembly/robotics)
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "bar";
+	layer = 3.3;
+	name = "Bar Shutters"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "ww" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -13767,17 +13773,19 @@
 /turf/simulated/floor/carpet,
 /area/library)
 "xY" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 4
 	},
-/obj/structure/table/marble,
 /obj/machinery/door/blast/shutters{
-	dir = 2;
+	dir = 8;
 	id = "bar";
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled/steel,
 /area/crew_quarters/bar)
 "xZ" = (
 /obj/effect/floor_decal/corner/black/diagonal,
@@ -13804,20 +13812,10 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "yc" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/assembly/robotics)
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "yd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -13848,16 +13846,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
-"yf" = (
-/obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	dir = 2;
-	id = "bar";
-	layer = 3.3;
-	name = "Bar Shutters"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/bar)
 "yg" = (
 /obj/structure/table/marble,
 /obj/item/weapon/reagent_containers/food/condiment/small/saltshaker{
@@ -14216,11 +14204,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
-"yC" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
 "yD" = (
 /obj/structure/window/basic{
 	dir = 8
@@ -19995,6 +19978,24 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
+"HQ" = (
+/obj/structure/closet/secure_closet/medical_wall/anesthetics{
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8;
+	icon_state = "borderfloor";
+	pixel_x = 0
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
@@ -32507,7 +32508,7 @@ Da
 LL
 LL
 LL
-wv
+Da
 Da
 Da
 MI
@@ -32649,7 +32650,7 @@ IU
 LM
 IH
 HM
-yc
+HQ
 Ia
 Da
 ac
@@ -37623,7 +37624,7 @@ Jr
 Js
 Jv
 JE
-yC
+yc
 IY
 JH
 JJ
@@ -37765,7 +37766,7 @@ Js
 Js
 Jz
 JE
-yC
+yc
 IY
 JH
 JJ
@@ -37907,7 +37908,7 @@ Jt
 Js
 Jz
 JE
-yC
+yc
 IY
 JH
 JJ
@@ -39725,9 +39726,9 @@ xx
 no
 uR
 uR
-rN
+um
 nt
-xY
+rN
 rR
 so
 sX
@@ -39867,9 +39868,9 @@ xx
 uj
 uT
 no
-um
+xY
 nu
-yf
+wv
 rS
 rS
 rS
@@ -40011,7 +40012,7 @@ RB
 RB
 Ys
 nu
-yf
+wv
 rO
 sp
 rO
