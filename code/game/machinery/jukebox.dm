@@ -54,6 +54,11 @@
 		new/datum/track("Russkiy rep Diskoteka", 'sound/music/russianrapdisco.ogg')
 	)
 
+	// Only visible if emagged
+	var/list/datum/track/emag_tracks = list(
+	)
+
+
 /obj/machinery/media/jukebox/New()
 	. = ..()
 	default_apply_parts()
@@ -71,11 +76,14 @@
 	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
 		tracks.Cut()
 		secret_tracks.Cut()
+		emag_tracks.Cut()
 		for(var/datum/track/T in all_jukebox_tracks) //Load them
 			if(!T.jukebox)
 				continue
 			if(T.secret)
 				secret_tracks |= T
+			if(T.emag)
+				emag_tracks |=T
 			else
 				tracks |= T
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
@@ -324,7 +332,13 @@
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
-		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+	else
+		StopPlaying()
+		visible_message("<span class='notice'>\The [src] abruptly stops and reboots itself, but nothing else happens.</span>")
+		return 1
+	if (emagged == 1)
+		tracks.Add(emag_tracks)
+		visible_message("<span class='notice'>\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist.</span>")
 		update_icon()
 		return 1
 
