@@ -27,8 +27,8 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	. = ..()
+/turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
+	..(newloc)
 	icon_state = "blank"
 	if(!materialtype)
 		materialtype = DEFAULT_WALL_MATERIAL
@@ -39,13 +39,12 @@
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
 	update_material()
-	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
-		START_PROCESSING(SSturfs, src)
+	START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
-	dismantle_wall(null, null, TRUE)
-	return ..()
+	dismantle_wall(null,null,1)
+	..()
 
 /turf/simulated/wall/process()
 	// Calling parent will kill processing

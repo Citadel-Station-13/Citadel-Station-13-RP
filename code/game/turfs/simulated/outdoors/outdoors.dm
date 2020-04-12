@@ -24,10 +24,10 @@ var/list/turf_edge_cache = list()
 	update_icon()
 	. = ..()
 
-/turf/simulated/floor/Initialize(mapload)
-	. = ..()
+/turf/simulated/floor/New()
 	if(outdoors)
 		SSplanets.addTurf(src)
+	..()
 
 /turf/simulated/floor/Destroy()
 	if(outdoors)

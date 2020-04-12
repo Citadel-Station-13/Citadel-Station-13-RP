@@ -17,12 +17,6 @@
 	var/dirty_prob = 2	// Chance of being dirty roundstart
 	var/dirt = 0
 
-/turf/simulated/Initialize(mapload)
-	. = ..()
-	levelupdate()
-	// HOOK FOR MOB/FREELOOK SYSTEM
-	updateVisibility(src)
-
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
 	if(wet > 2)	//Can't mop up ice
@@ -60,6 +54,12 @@
 	for(var/obj/effect/decal/cleanable/blood/B in contents)
 		B.clean_blood()
 	..()
+
+/turf/simulated/New()
+	..()
+	if(istype(loc, /area/chapel))
+		holy = 1
+	levelupdate()
 
 /turf/simulated/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
 	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src

@@ -364,6 +364,3 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define MOUSE_OPACITY_TRANSPARENT 0
 #define MOUSE_OPACITY_ICON 1
 #define MOUSE_OPACITY_OPAQUE 2
-
-/// Embed chance unset for embed_chance var on /obj/item.
-#define EMBED_CHANCE_UNSET -1337

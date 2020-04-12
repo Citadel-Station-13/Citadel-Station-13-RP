@@ -34,107 +34,26 @@
 	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
 	var/list/dangerous_objects // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
-/turf/Initialize(mapload)
-	if(flags & INITIALIZED)
-		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+/turf/New()
+	..()
+	for(var/atom/movable/AM as mob|obj in src)
+		spawn( 0 )
+			src.Entered(AM)
+			return
+	turfs |= src
 
-	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
-
-	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-
-/*
-	assemble_baseturfs()
-*/
-
-/*
-	if(smooth)
-		queue_smooth(src)
-	visibilityChanged()
-*/
-
-	for(var/atom/movable/AM in src)
-		Entered(AM)
-
-/*
-	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
-		add_overlay(/obj/effect/fullbright)
-
-	if (light_power && light_range)
-		update_light()
-*/
-
-	if (opacity)
-		has_opaque_atom = TRUE
-
-/*
-	if(requires_activation)
-		CALCULATE_ADJACENT_TURFS(src)
-		SSair.add_to_active(src)
-*/
-
-/*
-	var/turf/T = SSmapping.get_turf_above(src)
-	if(T)
-		T.multiz_turf_new(src, DOWN)
-		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
-	T = SSmapping.get_turf_below(src)
-	if(T)
-		T.multiz_turf_new(src, UP)
-		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
-*/
-
-	ComponentInitialize()
-
-	// VORESTATION EDIT
-	if(movement_cost && pathweight == 1) // This updates pathweight automatically.
-		pathweight = movement_cost
 	if(dynamic_lighting)
 		luminosity = 0
 	else
 		luminosity = 1
-	// VORE/POLARIS EDIT END
 
-	return INITIALIZE_HINT_NORMAL
+	if(movement_cost && pathweight == 1) // This updates pathweight automatically.
+		pathweight = movement_cost
 
-/turf/Destroy(force)
-	. = QDEL_HINT_IWILLGC
-/*
-	if(!changing_turf)
-		stack_trace("Incorrect turf deletion")
-	changing_turf = FALSE
-*/
-
-/*
-	var/turf/T = SSmapping.get_turf_above(src)
-	if(T)
-		T.multiz_turf_del(src, DOWN)
-	T = SSmapping.get_turf_below(src)
-	if(T)
-		T.multiz_turf_del(src, UP)
-*/
-	if(force)
-		..()
-		//this will completely wipe turf state
-		var/turf/B = new world.turf(src)
-		for(var/A in B.contents)
-			qdel(A)
-		for(var/I in B.vars)
-			B.vars[I] = null
-		return
-/*
-	SSair.remove_from_active(src)
-	visibilityChanged()
-	QDEL_LIST(blueprint_data)
-*/
-	flags &= ~INITIALIZED
-/*
-	requires_activation = FALSE
-*/
+/turf/Destroy()
+	turfs -= src
 	..()
+	return QDEL_HINT_IWILLGC
 
 /turf/ex_act(severity)
 	return 0

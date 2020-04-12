@@ -55,7 +55,7 @@
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
 
-	var/embed_chance = EMBED_CHANCE_UNSET	//0 won't embed, and 100 will always embed
+	var/embed_chance = -1	//0 won't embed, and 100 will always embed
 
 	var/icon_override = null  //Used to override hardcoded clothing dmis in human clothing proc.
 
@@ -91,10 +91,9 @@
 	var/icon/default_worn_icon	//Default on-mob icon
 	var/worn_layer				//Default on-mob layer
 
-/obj/item/Initialize(mapload)
-	. = ..()
-	//Potential memory optimization: Making embed chance a getter if unset.
-	if(embed_chance == EMBED_CHANCE_UNSET)
+/obj/item/New()
+	..()
+	if(embed_chance < 0)
 		if(sharp)
 			embed_chance = max(5, round(force/w_class))
 		else

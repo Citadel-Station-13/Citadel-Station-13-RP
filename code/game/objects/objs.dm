@@ -21,7 +21,7 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
-/obj/Initialize(mapload)
+/obj/Initialize()
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	return ..()
