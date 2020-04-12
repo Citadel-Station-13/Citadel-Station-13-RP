@@ -993,7 +993,7 @@
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light_skirt"
 
-/obj/item/clothing/under/dutch
+/obj/item/clothing/under/dutchuniform
 	name = "Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
-	icon_state = "DutchUniform"
+	icon_state = "dutchuniform"
