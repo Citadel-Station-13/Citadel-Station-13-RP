@@ -52,7 +52,7 @@
 	if (!status || (stat & NOPOWER))
 		return 0
 	if (!detectTime) return 0
-	SSalarmsmotion_alarm.triggerAlarm(loc, src)
+	SSalarms.motion_alarm.triggerAlarm(loc, src)
 	detectTime = -1
 	return 1
 
