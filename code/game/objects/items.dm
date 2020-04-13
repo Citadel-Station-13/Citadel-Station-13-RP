@@ -12,8 +12,6 @@
 	/// Sound to play on hit. Set to [NO_HITSOUND] to have it automatically set on init.
 	var/hitsound = NO_HITSOUND
 
-	var/damtype = "brute"
-
 	var/usesound = null // Like hitsound, but for when used properly and not to kill someone.
 	var/storage_cost = null
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
