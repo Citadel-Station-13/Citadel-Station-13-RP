@@ -170,15 +170,15 @@
 			helm=/obj/item/clothing/head/helmet/space/plasman/mime
 	H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 	H.equip_to_slot_or_del(new helm(H), slot_head)
-	H.equip_to_slot_or_del(new /obj/item/weapon/extinguisher/mini/plasman(H), slot_r_hand)
+	H.equip_to_slot_or_del(new /obj/item/extinguisher/mini/plasman(H), slot_r_hand)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_s_store)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
 		H.internal = H.s_store
-	H.internal = locate(/obj/item/weapon/tank) in H.contents
-	if(istype(H.internal,/obj/item/weapon/tank) && H.internals)
+	H.internal = locate(/obj/item/tank) in H.contents
+	if(istype(H.internal,/obj/item/tank) && H.internals)
 		H.internals.icon_state = "internal1"
 	spawn(2)
 		if(H.head && !istype(H.head,/obj/item/clothing/head/helmet/space/plasman))
@@ -192,6 +192,6 @@
 			H.equip_to_slot_or_del(new suit(H), slot_wear_suit)
 			if(H.on_fire)
 				H.ExtinguishMob()
-			H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_s_store)
+			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
 			H.internal = H.s_store
 			H.internals.icon_state = "internal1"

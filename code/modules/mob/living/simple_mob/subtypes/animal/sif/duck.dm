@@ -51,7 +51,7 @@
 
 	var/has_food = FALSE
 	for(var/obj/item/I in L.get_contents())	// Do they have food?
-		if(istype(I, /obj/item/weapon/reagent_containers/food))
+		if(istype(I, /obj/item/reagent_containers/food))
 			has_food = TRUE
 			break
 	if(has_food)	// Yes? Gimme the food.

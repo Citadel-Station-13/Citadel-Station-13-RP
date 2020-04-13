@@ -139,7 +139,7 @@
 			ManualFollow(target)
 
 /mob/observer/dead/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/weapon/book/tome))
+	if(istype(W,/obj/item/book/tome))
 		var/mob/observer/dead/M = src
 		M.manifest(user)
 
@@ -802,8 +802,8 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	set name = "Blank pAI alert"
 	set desc = "Flash an indicator light on available blank pAI devices for a smidgen of hope."
 	if(usr.client.prefs.be_special & BE_PAI)
-		for(var/obj/item/device/paicard/p in GLOB.all_pai_cards)
-			var/obj/item/device/paicard/PP = p
+		for(var/obj/item/paicard/p in GLOB.all_pai_cards)
+			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				PP.icon = 'icons/obj/pda_vr.dmi' // VOREStation Edit
 				PP.overlays += "pai-ghostalert"

@@ -143,7 +143,7 @@
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 
-		var/list/borks = typesof(/obj/item/weapon/reagent_containers/food/snacks) - /obj/item/weapon/reagent_containers/food/snacks // BORK BORK BORK
+		var/list/borks = typesof(/obj/item/reagent_containers/food/snacks) - /obj/item/reagent_containers/food/snacks // BORK BORK BORK
 
 		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 /* Removed at some point, unsure what to replace with
@@ -214,7 +214,7 @@
 	on_reaction(var/datum/reagents/holder)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
 			O.show_message(text("<span class='warning'> The contents of the slime core harden and begin to emit a warm, bright light.</span>"), 1)
-		var/obj/item/device/flashlight/slime/F = new /obj/item/device/flashlight/slime
+		var/obj/item/flashlight/slime/F = new /obj/item/flashlight/slime
 		F.loc = get_turf(holder.my_atom)
 
 

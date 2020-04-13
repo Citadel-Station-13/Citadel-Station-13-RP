@@ -56,7 +56,7 @@
 	panel_open = 0 // If it's been screwdrivered open.
 	var/aidisabled = 0
 	var/shorted = 0
-	circuit = /obj/item/weapon/circuitboard/airalarm
+	circuit = /obj/item/circuitboard/airalarm
 
 	var/datum/wires/alarm/wires
 
@@ -766,7 +766,7 @@
 	if(alarm_deconstruction_wirecutters(user, W))
 		return
 
-	if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))// trying to unlock the interface with an ID card
+	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))// trying to unlock the interface with an ID card
 		if(stat & (NOPOWER|BROKEN))
 			user << "It does nothing"
 			return
@@ -790,7 +790,7 @@
 AIR ALARM CIRCUIT
 Just a object used in constructing air alarms
 
-/obj/item/weapon/airalarm_electronics
+/obj/item/airalarm_electronics
 	name = "air alarm electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -821,7 +821,7 @@ FIRE ALARM
 	var/last_process = 0
 	panel_open = 0
 	var/seclevel
-	circuit = /obj/item/weapon/circuitboard/firealarm
+	circuit = /obj/item/circuitboard/firealarm
 	var/alarms_hidden = FALSE //If the alarms from this machine are visible on consoles
 
 /obj/machinery/firealarm/alarms_hidden
@@ -882,7 +882,7 @@ FIRE ALARM
 		return
 
 	if(panel_open)
-		if(istype(W, /obj/item/device/multitool))
+		if(istype(W, /obj/item/multitool))
 			detecting = !(detecting)
 			if(detecting)
 				user.visible_message("<span class='notice'>\The [user] has reconnected [src]'s detecting unit!</span>", "<span class='notice'>You have reconnected [src]'s detecting unit.</span>")
@@ -1020,7 +1020,7 @@ FIRE ALARM
 FIRE ALARM CIRCUIT
 Just a object used in constructing fire alarms
 
-/obj/item/weapon/firealarm_electronics
+/obj/item/firealarm_electronics
 	name = "fire alarm electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"

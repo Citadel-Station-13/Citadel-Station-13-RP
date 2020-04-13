@@ -94,7 +94,7 @@
 	return ..()
 
 /mob/living/simple_mob/hostile/statue/attackby(var/obj/item/O as obj, var/mob/user as mob) //banishing the statue is a risky job
-	if(istype(O, /obj/item/weapon/nullrod))
+	if(istype(O, /obj/item/nullrod))
 		visible_message("<span class='warning'>[user] tries to banish [src] with [O]!</span>")
 		if(do_after(user, 15, src))
 			if(banishable)
@@ -103,7 +103,7 @@
 			else
 				visible_message("<span class='warning'>[src] is too strong to be banished!</span>")
 				Paralyse(rand(8,15))
-	if(istype(O, /obj/item/weapon/pickaxe) || istype(O, /obj/item/weapon/pickaxe/plasmacutter) && !drilled)
+	if(istype(O, /obj/item/pickaxe) || istype(O, /obj/item/pickaxe/plasmacutter) && !drilled)
 		drilled = TRUE
 		resistance = 0
 		spawn(300)

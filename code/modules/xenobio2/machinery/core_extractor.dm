@@ -10,7 +10,7 @@
 	icon_state = "scanner_0old"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/slimeextractor
+	circuit = /obj/item/circuitboard/slimeextractor
 	var/inuse
 	var/mob/living/simple_mob/xeno/slime/occupant = null
 	var/occupiedcolor = "#22FF22"
@@ -22,11 +22,11 @@
 	..()
 	update_light_color()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 
 /obj/machinery/slime/extractor/attackby(var/obj/item/W, var/mob/user)
@@ -43,7 +43,7 @@
 	if(panel_open)
 		to_chat(user, "<span class='warning'>Close the panel first!</span>")
 
-	var/obj/item/weapon/grab/G = W
+	var/obj/item/grab/G = W
 
 	if(!istype(G))
 		return ..()
@@ -181,13 +181,13 @@
 	return
 
 //Circuit board below,
-/obj/item/weapon/circuitboard/slimeextractor
+/obj/item/circuitboard/slimeextractor
 	name = T_BOARD("Slime extractor")
 	build_path = "/obj/machinery/slime/extractor"
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							/obj/item/weapon/stock_parts/matter_bin = 1,
-							/obj/item/weapon/stock_parts/micro_laser = 2
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/micro_laser = 2
 							)

@@ -32,7 +32,7 @@
 
 /obj/machinery/appliance/grill/Initialize()
 	. = ..()
-	cooking_objs += new /datum/cooking_item(new /obj/item/weapon/reagent_containers/cooking_container(src))
+	cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = 0
 
 /obj/machinery/appliance/grill/has_space(var/obj/item/I)

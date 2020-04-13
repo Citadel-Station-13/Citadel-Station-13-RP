@@ -6,7 +6,7 @@
 	id = "binaryencrypt"
 	req_tech = list(TECH_ILLEGAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 300, "glass" = 300)
-	build_path = /obj/item/device/encryptionkey/binary
+	build_path = /obj/item/encryptionkey/binary
 	sort_string = "VASAA" */
 
 /datum/design/item/chameleon
@@ -15,5 +15,5 @@
 	id = "chameleon"
 	req_tech = list(TECH_ILLEGAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 500)
-	build_path = /obj/item/weapon/storage/box/syndie_kit/chameleon
+	build_path = /obj/item/storage/box/syndie_kit/chameleon
 	sort_string = "VASBA"

@@ -20,7 +20,7 @@
 	name = "parts lathe"
 	icon = 'icons/obj/partslathe_vr.dmi'
 	icon_state = "partslathe-idle"
-	circuit = /obj/item/weapon/circuitboard/partslathe
+	circuit = /obj/item/circuitboard/partslathe
 	anchored = 1
 	density = 1
 	use_power = 1
@@ -31,7 +31,7 @@
 	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
 	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
 
-	var/obj/item/weapon/circuitboard/copy_board // Inserted board
+	var/obj/item/circuitboard/copy_board // Inserted board
 
 	var/list/datum/category_item/partslathe/queue = list() // Queue of things to build
 	var/busy = 0			// Currently building stuff y/n
@@ -59,12 +59,12 @@
 
 /obj/machinery/partslathe/RefreshParts()
 	var/mb_rating = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		mb_rating += M.rating
 	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 16000
 	storage_capacity["glass"] = mb_rating  * 8000
 	var/T = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		T += M.rating
 	mat_efficiency = 6 / T // Ranges from 3.0 to 1.0
 	speed = T / 2 // Ranges from 1.0 to 3.0
@@ -101,7 +101,7 @@
 	if(panel_open)
 		user << "<span class='notice'>You can't load \the [src] while it's opened.</span>"
 		return
-	if(istype(O, /obj/item/weapon/circuitboard))
+	if(istype(O, /obj/item/circuitboard))
 		if(copy_board)
 			user << "<span class='warning'>There is already a board inserted in \the [src].</span>"
 			return
@@ -349,9 +349,9 @@
 /obj/machinery/partslathe/proc/update_recipe_list()
 	if(!partslathe_recipies)
 		partslathe_recipies = list()
-		var/list/paths = typesof(/obj/item/weapon/stock_parts)-/obj/item/weapon/stock_parts
+		var/list/paths = typesof(/obj/item/stock_parts)-/obj/item/stock_parts
 		for(var/type in paths)
-			var/obj/item/weapon/stock_parts/I = new type()
+			var/obj/item/stock_parts/I = new type()
 			if(getHighestOriginTechLevel(I) > 1)
 				qdel(I)
 				continue // Ignore high-tech parts

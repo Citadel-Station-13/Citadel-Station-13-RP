@@ -9,7 +9,7 @@
 	spawn_positions = 1
 	supervisors = "the Colony Director"
 	selection_color = "#026865"
-	idtype = /obj/item/weapon/card/id/medical/head
+	idtype = /obj/item/card/id/medical/head
 	req_admin_notify = 1
 	economic_modifier = 10
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
@@ -35,7 +35,7 @@
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/doctor
+	idtype = /obj/item/card/id/medical/doctor
 	economic_modifier = 7
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
@@ -57,7 +57,7 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/chemist
+	idtype = /obj/item/card/id/medical/chemist
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
@@ -78,7 +78,7 @@
 	spawn_positions = 0
 	supervisors = "the chief medical officer and research director"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/geneticist
+	idtype = /obj/item/card/id/medical/geneticist
 	economic_modifier = 7
 	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research)
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
@@ -97,7 +97,7 @@
 	economic_modifier = 5
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/psychiatrist
+	idtype = /obj/item/card/id/medical/psychiatrist
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
@@ -113,7 +113,7 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
-	idtype = /obj/item/weapon/card/id/medical/paramedic
+	idtype = /obj/item/card/id/medical/paramedic
 	economic_modifier = 4
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)

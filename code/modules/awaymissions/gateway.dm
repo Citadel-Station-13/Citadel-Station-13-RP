@@ -139,8 +139,8 @@ obj/machinery/gateway/centerstation/process()
 			M.setDir(SOUTH)
 		return
 
-/obj/machinery/gateway/centerstation/attackby(obj/item/device/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/device/multitool))
+/obj/machinery/gateway/centerstation/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/multitool))
 		if(!awaygate)
 			awaygate = locate(/obj/machinery/gateway/centeraway)
 			if(!awaygate) // We still can't find the damn thing because there is no destination.
@@ -237,7 +237,7 @@ obj/machinery/gateway/centerstation/process()
 	if(!ready)	return
 	if(!active)	return
 	if(istype(M, /mob/living/carbon))
-		for(var/obj/item/weapon/implant/exile/E in M)//Checking that there is an exile implant in the contents
+		for(var/obj/item/implant/exile/E in M)//Checking that there is an exile implant in the contents
 			if(E.imp_in == M)//Checking that it's actually implanted vs just in their pocket
 				M << "<font color='black'>The station gate has detected your exile implant and is blocking your entry.</font>"
 				return
@@ -247,8 +247,8 @@ obj/machinery/gateway/centerstation/process()
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 
 
-/obj/machinery/gateway/centeraway/attackby(obj/item/device/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/device/multitool))
+/obj/machinery/gateway/centeraway/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/multitool))
 		if(calibrated && stationgate)
 			user << "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>"
 			return

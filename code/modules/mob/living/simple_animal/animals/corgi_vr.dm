@@ -87,7 +87,7 @@
 						return
 
 					var/list/allowed_types = list(
-						/obj/item/weapon/bedsheet,
+						/obj/item/bedsheet,
 						/obj/item/clothing/glasses/sunglasses,
 						/obj/item/clothing/head/caphat,
 						/obj/item/clothing/head/that,
@@ -136,7 +136,7 @@
 
 					var/list/allowed_types = list(
 						/obj/item/clothing/suit/armor/vest,
-						/obj/item/device/radio
+						/obj/item/radio
 					)
 
 					if( ! ( item_to_add.type in allowed_types ) )
@@ -203,7 +203,7 @@
 		if(/obj/item/clothing/head/wizard/fake,	/obj/item/clothing/head/wizard,	/obj/item/clothing/head/collectable/wizard)
 			name = "Grandwizard [real_name]"
 			speak = list("YAP", "Woof!", "Bark!", "AUUUUUU", "EI  NATH!")
-		if(/obj/item/weapon/bedsheet)
+		if(/obj/item/bedsheet)
 			name = "\improper Ghost"
 			speak = list("WoooOOOooo~","AUUUUUUUUUUUUUUUUUU")
 			emote_see = list("stumbles around", "shivers")

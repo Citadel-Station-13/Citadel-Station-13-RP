@@ -125,7 +125,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			abilities += new path()
 
 /datum/species/protean/create_organs(var/mob/living/carbon/human/H)
-	var/obj/item/device/nif/saved_nif = H.nif
+	var/obj/item/nif/saved_nif = H.nif
 	if(saved_nif)
 		H.nif.unimplant(H) //Needs reference to owner to unimplant right.
 		H.nif.moveToNullspace()
@@ -158,7 +158,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 
 	spawn(0) //Let their real nif load if they have one
 		if(!H.nif)
-			var/obj/item/device/nif/bioadap/new_nif = new()
+			var/obj/item/nif/bioadap/new_nif = new()
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)

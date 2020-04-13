@@ -34,7 +34,7 @@
 	say_got_target = list("YAP!","YIP!")
 
 	meat_amount = 1
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fox
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
@@ -168,7 +168,7 @@
 	setDir(get_dir(src, friend))
 	say("Yap!")
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/fox
+/obj/item/reagent_containers/food/snacks/meat/fox
 	name = "Fox meat"
 	desc = "The fox doesn't say a goddamn thing, now."
 

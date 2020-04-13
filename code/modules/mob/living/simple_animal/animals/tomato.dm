@@ -21,4 +21,4 @@
 	melee_damage_lower = 10
 	attacktext = list("mauled")
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/tomatomeat
+	meat_type = /obj/item/reagent_containers/food/snacks/tomatomeat

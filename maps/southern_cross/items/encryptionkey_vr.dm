@@ -1,6 +1,6 @@
-/obj/item/device/encryptionkey/pilot
+/obj/item/encryptionkey/pilot
 	icon_state = "cypherkey"
 	channels = list("Explorer" = 1)
 
-/obj/item/device/encryptionkey/explorer
+/obj/item/encryptionkey/explorer
 	channels = list("Science" = 1, "Explorer" = 1)

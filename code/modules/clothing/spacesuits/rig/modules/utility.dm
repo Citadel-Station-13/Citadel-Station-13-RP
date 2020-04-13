@@ -28,7 +28,7 @@
 	disruptive = 0
 
 	var/device_type
-	var/obj/item/device
+	var/obj/item
 
 /obj/item/rig_module/device/plasmacutter
 	name = "hardsuit plasma cutter"
@@ -40,7 +40,7 @@
 	suit_overlay_inactive = "plasmacutter"
 	use_power_cost = 0.5
 
-	device_type = /obj/item/weapon/pickaxe/plasmacutter
+	device_type = /obj/item/pickaxe/plasmacutter
 
 /obj/item/rig_module/device/healthscanner
 	name = "health scanner module"
@@ -49,7 +49,7 @@
 	interface_name = "health scanner"
 	interface_desc = "Shows an informative health readout when used on a subject."
 
-	device_type = /obj/item/device/healthanalyzer
+	device_type = /obj/item/healthanalyzer
 
 /obj/item/rig_module/device/drill
 	name = "hardsuit drill mount"
@@ -61,7 +61,7 @@
 	suit_overlay_inactive = "mounted-drill"
 	use_power_cost = 0.1
 
-	device_type = /obj/item/weapon/pickaxe/diamonddrill
+	device_type = /obj/item/pickaxe/diamonddrill
 
 /obj/item/rig_module/device/anomaly_scanner
 	name = "hardsuit anomaly scanner"
@@ -72,7 +72,7 @@
 	engage_string = "Begin Scan"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/device/ano_scanner
+	device_type = /obj/item/ano_scanner
 
 /obj/item/rig_module/device/orescanner
 	name = "ore scanner module"
@@ -83,13 +83,13 @@
 	engage_string = "Begin Scan"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/weapon/mining_scanner
+	device_type = /obj/item/mining_scanner
 
 /obj/item/rig_module/device/orescanner/advanced
 	name = "advanced ore scanner module"
 	desc = "A sleeker, yet still somewhat clunky ore scanner."
 	interface_name = "adv. ore detector"
-	device_type = /obj/item/weapon/mining_scanner/advanced
+	device_type = /obj/item/mining_scanner/advanced
 
 /obj/item/rig_module/device/rcd
 	name = "RCD mount"
@@ -100,7 +100,7 @@
 	usable = 1
 	engage_string = "Configure RCD"
 
-	device_type = /obj/item/weapon/rcd/electric/mounted/rig
+	device_type = /obj/item/rcd/electric/mounted/rig
 
 /obj/item/rig_module/device/New()
 	..()
@@ -360,7 +360,7 @@
 	interface_name = "maneuvering jets"
 	interface_desc = "An inbuilt EVA maneuvering system that runs off the rig air supply."
 
-	var/obj/item/weapon/tank/jetpack/rig/jets
+	var/obj/item/tank/jetpack/rig/jets
 
 /obj/item/rig_module/maneuvering_jets/engage()
 	if(!..())
@@ -431,9 +431,9 @@
 	active_power_cost = 0
 	passive_power_cost = 0
 
-	gun = /obj/item/weapon/reagent_containers/spray/cleaner
+	gun = /obj/item/reagent_containers/spray/cleaner
 
-//obj/item/weapon/reagent_containers/spray/cleaner
+//obj/item/reagent_containers/spray/cleaner
 //	spary =
 
 /obj/item/rig_module/mounted/engage(atom/target)
@@ -451,7 +451,7 @@
 /obj/item/rig_module/mounted/mop/process()
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/weapon/mop_deploy) in holder.wearer))
+		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -468,7 +468,7 @@
 		deactivate()
 		return
 
-	var/obj/item/weapon/mop_deploy/blade = new(M)
+	var/obj/item/mop_deploy/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -481,7 +481,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/weapon/mop_deploy/blade in M.contents)
+	for(var/obj/item/mop_deploy/blade in M.contents)
 		M.drop_from_inventory(blade)
 		qdel(blade)
 
@@ -502,7 +502,7 @@
 	var/fire_distance = 10
 
 	charges = list(
-		list("cleaner grenade",   "cleaner grenade",   /obj/item/weapon/grenade/chem_grenade/cleaner,  9),
+		list("cleaner grenade",   "cleaner grenade",   /obj/item/grenade/chem_grenade/cleaner,  9),
 		)
 
 /obj/item/rig_module/cleaner_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -554,7 +554,7 @@
 		return 0
 
 	charge.charges--
-	var/obj/item/weapon/grenade/new_grenade = new charge.product_type(get_turf(H))
+	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
 	new_grenade.activate(H)
 	new_grenade.throw_at(target,fire_force,fire_distance)
@@ -568,7 +568,7 @@
 	engage_string = "Dispense"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/weapon/paper_bin
+	device_type = /obj/item/paper_bin
 
 /obj/item/rig_module/device/paperdispenser/engage(atom/target)
 
@@ -587,7 +587,7 @@
 	interface_desc = "Signatures with style(tm)."
 	engage_string = "Change color"
 	usable = 1
-	device_type = /obj/item/weapon/pen/multi
+	device_type = /obj/item/pen/multi
 
 /obj/item/rig_module/device/stamp
 	name = "mounted internal affairs stamp"
@@ -602,8 +602,8 @@
 
 /obj/item/rig_module/device/stamp/New()
 	..()
-	iastamp = new /obj/item/weapon/stamp/internalaffairs(src)
-	deniedstamp = new /obj/item/weapon/stamp/denied(src)
+	iastamp = new /obj/item/stamp/internalaffairs(src)
+	deniedstamp = new /obj/item/stamp/denied(src)
 	device = iastamp
 
 /obj/item/rig_module/device/stamp/engage(atom/target)

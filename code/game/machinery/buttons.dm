@@ -15,11 +15,11 @@
 /obj/machinery/button/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/button/attackby(obj/item/weapon/W, mob/user as mob)
+/obj/machinery/button/attackby(obj/item/W, mob/user as mob)
 	return attack_hand(user)
 
 // VOREStation Edit Begin
-/obj/machinery/button/attack_hand(obj/item/weapon/W, mob/user as mob)
+/obj/machinery/button/attack_hand(obj/item/W, mob/user as mob)
 	if(..()) return 1
 	playsound(loc, 'sound/machines/button.ogg', 100, 1)
 // VOREStation Edit End

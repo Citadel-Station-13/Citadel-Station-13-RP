@@ -459,7 +459,7 @@
 	for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
 		if(!O.loc)
 			continue
-		if(istype(O, /obj/item/weapon/disk/nuclear))
+		if(istype(O, /obj/item/disk/nuclear))
 			var/name = "Nuclear Disk"
 			if (names.Find(name))
 				namecounts[name]++
@@ -619,7 +619,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		if(M.grabbed_by.len)
 			// Only start pulling when nobody else has a grab on them
 			. = 1
-			for(var/obj/item/weapon/grab/G in M.grabbed_by)
+			for(var/obj/item/grab/G in M.grabbed_by)
 				if(G.assailant != usr)
 					. = 0
 				else
@@ -1016,7 +1016,7 @@ mob/proc/yank_out_object()
 			U << "[src] has nothing stuck in their wounds that is large enough to remove."
 		return
 
-	var/obj/item/weapon/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
+	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
 	if(self)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
@@ -1067,7 +1067,7 @@ mob/proc/yank_out_object()
 	selection.forceMove(get_turf(src))
 	U.put_in_hands(selection)
 
-	for(var/obj/item/weapon/O in pinned)
+	for(var/obj/item/O in pinned)
 		if(O == selection)
 			pinned -= O
 		if(!pinned.len)

@@ -391,7 +391,7 @@ var/global/datum/controller/occupations/job_master
 							continue
 
 						if(G.slot == "implant")
-							var/obj/item/weapon/implant/I = G.spawn_item(H, H.client.prefs.gear[G.display_name])
+							var/obj/item/implant/I = G.spawn_item(H, H.client.prefs.gear[G.display_name])
 							I.invisibility = 100
 							I.implant_loadout(H)
 							continue
@@ -465,8 +465,8 @@ var/global/datum/controller/occupations/job_master
 
 			//Deferred item spawning.
 			if(spawn_in_storage && spawn_in_storage.len)
-				var/obj/item/weapon/storage/B
-				for(var/obj/item/weapon/storage/S in H.contents)
+				var/obj/item/storage/B
+				for(var/obj/item/storage/S in H.contents)
 					B = S
 					break
 
@@ -500,7 +500,7 @@ var/global/datum/controller/occupations/job_master
 		if(istype(H)) //give humans wheelchairs, if they need them.
 			var/obj/item/organ/external/l_foot = H.get_organ("l_foot")
 			var/obj/item/organ/external/r_foot = H.get_organ("r_foot")
-			var/obj/item/weapon/storage/S = locate() in H.contents
+			var/obj/item/storage/S = locate() in H.contents
 			var/obj/item/wheelchair/R = null
 			if(S)
 				R = locate() in S.contents
@@ -521,7 +521,7 @@ var/global/datum/controller/occupations/job_master
 
 		if(job.idtype)
 			spawnId(H, rank, alt_title)
-			H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), slot_l_ear)
+			H.equip_to_slot_or_del(new /obj/item/radio/headset(H), slot_l_ear)
 			H << "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>"
 
 		if(job.req_admin_notify)
@@ -565,7 +565,7 @@ var/global/datum/controller/occupations/job_master
 
 	proc/spawnId(var/mob/living/carbon/human/H, rank, title)
 		if(!H)	return 0
-		var/obj/item/weapon/card/id/C = H.get_equipped_item(slot_wear_id)
+		var/obj/item/card/id/C = H.get_equipped_item(slot_wear_id)
 		if(istype(C))  return 0
 
 		var/datum/job/job = null
@@ -581,7 +581,7 @@ var/global/datum/controller/occupations/job_master
 				C = new job.idtype(H)
 				C.access = job.get_access()
 		else
-			C = new /obj/item/weapon/card/id(H)
+			C = new /obj/item/card/id(H)
 		if(C)
 			C.rank = rank
 			C.assignment = title ? title : rank
@@ -593,9 +593,9 @@ var/global/datum/controller/occupations/job_master
 
 			H.equip_to_slot_or_del(C, slot_wear_id)
 
-//		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
-		if(locate(/obj/item/device/pda,H))
-			var/obj/item/device/pda/pda = locate(/obj/item/device/pda,H)
+//		H.equip_to_slot_or_del(new /obj/item/pda(H), slot_belt)
+		if(locate(/obj/item/pda,H))
+			var/obj/item/pda/pda = locate(/obj/item/pda,H)
 			pda.owner = H.real_name
 			pda.ownjob = C.assignment
 			pda.ownrank = C.rank

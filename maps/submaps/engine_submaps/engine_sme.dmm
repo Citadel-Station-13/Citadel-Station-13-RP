@@ -723,7 +723,7 @@
 /turf/simulated/floor,
 /area/template_noop)
 "bA" = (
-/obj/item/weapon/book/manual/supermatter_engine,
+/obj/item/book/manual/supermatter_engine,
 /turf/template_noop,
 /area/template_noop)
 "bB" = (
@@ -1489,7 +1489,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dh" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 2;
 	pixel_y = -24
 	},

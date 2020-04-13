@@ -12,7 +12,7 @@
 	item_state_slots = list(slot_r_hand_str = "sec_helm", slot_l_hand_str = "sec_helm")
 	species_restricted = list(SPECIES_AKULA)
 
-/obj/item/weapon/melee/baton/stunsword
+/obj/item/melee/baton/stunsword
 	name = "stunsword"
 	desc = "A sleek, menacing-looking stunbaton fashioned to look like a sword, but isn't sharp. This model seems to belong to Pavel Marsk."
 	icon_state = "stunsword"

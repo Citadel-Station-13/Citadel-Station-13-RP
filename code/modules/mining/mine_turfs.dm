@@ -37,7 +37,7 @@ var/list/mining_overlay_cache = list()
 	var/next_rock = 0
 	var/archaeo_overlay = ""
 	var/excav_overlay = ""
-	var/obj/item/weapon/last_find
+	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen
 
@@ -114,7 +114,7 @@ turf/simulated/mineral/floor/light_corner
 	if(istype(M,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
 		if(R.module)
-			for(var/obj/item/weapon/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
+			for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
 				attackby(O, R)
 				return
 
@@ -253,13 +253,13 @@ turf/simulated/mineral/floor/light_corner
 
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		var/obj/item/weapon/pickaxe/P = H.get_inactive_hand()
+		var/obj/item/pickaxe/P = H.get_inactive_hand()
 		if(istype(P))
 			src.attackby(P, H)
 
 	else if(istype(AM,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
-		if(istype(R.module_active,/obj/item/weapon/pickaxe))
+		if(istype(R.module_active,/obj/item/pickaxe))
 			attackby(R.module_active,R)
 
 	else if(istype(AM,/obj/mecha))
@@ -285,7 +285,7 @@ turf/simulated/mineral/floor/light_corner
 	update_icon()
 
 //Not even going to touch this pile of spaghetti
-/turf/simulated/mineral/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)
 
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
@@ -294,10 +294,10 @@ turf/simulated/mineral/floor/light_corner
 	if(!density)
 
 		var/list/usable_tools = list(
-			/obj/item/weapon/shovel,
-			/obj/item/weapon/pickaxe/diamonddrill,
-			/obj/item/weapon/pickaxe/drill,
-			/obj/item/weapon/pickaxe/borgdrill
+			/obj/item/shovel,
+			/obj/item/pickaxe/diamonddrill,
+			/obj/item/pickaxe/drill,
+			/obj/item/pickaxe/borgdrill
 			)
 
 		var/valid_tool
@@ -323,17 +323,17 @@ turf/simulated/mineral/floor/light_corner
 			to_chat(user, "<span class='notice'>You dug a hole.</span>")
 			GetDrilled()
 
-		else if(istype(W,/obj/item/weapon/storage/bag/ore))
-			var/obj/item/weapon/storage/bag/ore/S = W
+		else if(istype(W,/obj/item/storage/bag/ore))
+			var/obj/item/storage/bag/ore/S = W
 			if(S.collection_mode)
-				for(var/obj/item/weapon/ore/O in contents)
+				for(var/obj/item/ore/O in contents)
 					O.attackby(W,user)
 					return
 
-		else if(istype(W,/obj/item/weapon/storage/bag/fossils))
-			var/obj/item/weapon/storage/bag/fossils/S = W
+		else if(istype(W,/obj/item/storage/bag/fossils))
+			var/obj/item/storage/bag/fossils/S = W
 			if(S.collection_mode)
-				for(var/obj/item/weapon/fossil/F in contents)
+				for(var/obj/item/fossil/F in contents)
 					F.attackby(W,user)
 					return
 
@@ -364,26 +364,26 @@ turf/simulated/mineral/floor/light_corner
 
 
 	else
-		if (istype(W, /obj/item/device/core_sampler))
+		if (istype(W, /obj/item/core_sampler))
 			geologic_data.UpdateNearbyArtifactInfo(src)
-			var/obj/item/device/core_sampler/C = W
+			var/obj/item/core_sampler/C = W
 			C.sample_item(src, user)
 			return
 
-		if (istype(W, /obj/item/device/depth_scanner))
-			var/obj/item/device/depth_scanner/C = W
+		if (istype(W, /obj/item/depth_scanner))
+			var/obj/item/depth_scanner/C = W
 			C.scan_atom(user, src)
 			return
 
-		if (istype(W, /obj/item/device/measuring_tape))
-			var/obj/item/device/measuring_tape/P = W
+		if (istype(W, /obj/item/measuring_tape))
+			var/obj/item/measuring_tape/P = W
 			user.visible_message("<span class='notice'>\The [user] extends \a [P] towards \the [src].</span>","<span class='notice'>You extend \the [P] towards \the [src].</span>")
 			if(do_after(user, 15))
 				to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
 			return
 
-		if(istype(W, /obj/item/device/xenoarch_multi_tool))
-			var/obj/item/device/xenoarch_multi_tool/C = W
+		if(istype(W, /obj/item/xenoarch_multi_tool))
+			var/obj/item/xenoarch_multi_tool/C = W
 			if(C.mode) //Mode means scanning
 				C.depth_scanner.scan_atom(user, src)
 			else
@@ -392,11 +392,11 @@ turf/simulated/mineral/floor/light_corner
 					to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level]cm.</span>")
 			return
 
-		if (istype(W, /obj/item/weapon/pickaxe))
+		if (istype(W, /obj/item/pickaxe))
 			if(!istype(user.loc, /turf))
 				return
 
-			var/obj/item/weapon/pickaxe/P = W
+			var/obj/item/pickaxe/P = W
 			if(last_act + P.digspeed > world.time)//prevents message spam
 				return
 			last_act = world.time
@@ -438,7 +438,7 @@ turf/simulated/mineral/floor/light_corner
 				next_rock += P.excavation_amount
 				while(next_rock > 50)
 					next_rock -= 50
-					var/obj/item/weapon/ore/O = new(src)
+					var/obj/item/ore/O = new(src)
 					geologic_data.UpdateNearbyArtifactInfo(src)
 					O.geologic_data = geologic_data
 			return
@@ -501,7 +501,7 @@ turf/simulated/mineral/floor/light_corner
 	if(!mineral)
 		return
 	clear_ore_effects()
-	var/obj/item/weapon/ore/O = new mineral.ore (src)
+	var/obj/item/ore/O = new mineral.ore (src)
 	if(istype(O))
 		geologic_data.UpdateNearbyArtifactInfo(src)
 		O.geologic_data = geologic_data
@@ -533,7 +533,7 @@ turf/simulated/mineral/floor/light_corner
 		if(!sand_dug)
 			sand_dug = 1
 			for(var/i=0;i<(rand(3)+2);i++)
-				new/obj/item/weapon/ore/glass(src)
+				new/obj/item/ore/glass(src)
 			update_icon()
 		return
 
@@ -572,16 +572,16 @@ turf/simulated/mineral/floor/light_corner
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
 	//with skill and luck, players can cleanly extract finds
 	//otherwise, they come out inside a chunk of rock
-	var/obj/item/weapon/X
+	var/obj/item/X
 	if(is_clean)
-		X = new /obj/item/weapon/archaeological_find(src, new_item_type = F.find_type)
+		X = new /obj/item/archaeological_find(src, new_item_type = F.find_type)
 	else
-		X = new /obj/item/weapon/strangerock(src, inside_item_type = F.find_type)
+		X = new /obj/item/strangerock(src, inside_item_type = F.find_type)
 		geologic_data.UpdateNearbyArtifactInfo(src)
-		var/obj/item/weapon/strangerock/SR = X
+		var/obj/item/strangerock/SR = X
 		SR.geologic_data = geologic_data
 
-	//some find types delete the /obj/item/weapon/archaeological_find and replace it with something else, this handles when that happens
+	//some find types delete the /obj/item/archaeological_find and replace it with something else, this handles when that happens
 	//yuck
 	var/display_name = "Something"
 	if(!X)
@@ -616,10 +616,10 @@ turf/simulated/mineral/floor/light_corner
 				new /obj/item/stack/material/plasteel(src, rand(5,25))
 			if(5)
 				for(var/i=1 to rand(1,3))
-					new /obj/item/weapon/material/shard(src)
+					new /obj/item/material/shard(src)
 			if(6)
 				for(var/i=1 to rand(1,3))
-					new /obj/item/weapon/material/shard/phoron(src)
+					new /obj/item/material/shard/phoron(src)
 			if(7)
 				new /obj/item/stack/material/uranium(src, rand(5,25))
 

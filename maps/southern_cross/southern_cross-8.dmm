@@ -268,11 +268,11 @@
 /turf/simulated/shuttle/floor/voidcraft/external,
 /area/surface/outpost/wall/checkpoint)
 "bm" = (
-/obj/item/weapon/banner/nt,
+/obj/item/banner/nt,
 /turf/simulated/shuttle/floor/voidcraft/external,
 /area/surface/outpost/wall/checkpoint)
 "bn" = (
-/obj/item/weapon/banner/virgov,
+/obj/item/banner/virgov,
 /turf/simulated/shuttle/floor/voidcraft/external,
 /area/surface/outpost/wall/checkpoint)
 "bo" = (
@@ -312,7 +312,7 @@
 "bv" = (
 /obj/structure/closet/crate,
 /obj/random/powercell,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/plating/external,
 /area/surface/outpost/shelter)
 "bw" = (
@@ -328,7 +328,7 @@
 /turf/simulated/floor/plating/external,
 /area/surface/outpost/shelter)
 "bx" = (
-/obj/item/weapon/banner/virgov,
+/obj/item/banner/virgov,
 /turf/simulated/floor/plating/external,
 /area/surface/outpost/shelter)
 "by" = (

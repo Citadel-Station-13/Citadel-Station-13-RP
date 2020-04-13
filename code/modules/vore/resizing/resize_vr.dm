@@ -20,7 +20,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 // Define holder_type on types we want to be scoop-able
 /mob/living/carbon/human
-	holder_type = /obj/item/weapon/holder/micro
+	holder_type = /obj/item/holder/micro
 
 // The reverse lookup of player_sizes_list, number to name.
 /proc/player_size_name(var/size_multiplier)
@@ -139,8 +139,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
 		return 0
 	if(size_diff >= 0.50)
-		holder_type = /obj/item/weapon/holder/micro
-		var/obj/item/weapon/holder/m_holder = get_scooped(M)
+		holder_type = /obj/item/holder/micro
+		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
 		if (m_holder)
 			return 1

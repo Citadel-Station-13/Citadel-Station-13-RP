@@ -165,7 +165,7 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
-/obj/item/weapon/grenade/empgrenade,
+/obj/item/grenade/empgrenade,
 /turf/simulated/floor/bluegrid,
 /area/tether_away/debrisfield/derelict)
 "az" = (
@@ -308,7 +308,7 @@
 /area/tether_away/debrisfield/derelict)
 "aY" = (
 /obj/random/humanoidremains,
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/tether_away/debrisfield/derelict)
 "aZ" = (
@@ -859,7 +859,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether_away/debrisfield/derelict)
 "cC" = (
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /turf/space,
 /area/tether_away/debrisfield/derelict)
 "cD" = (
@@ -875,9 +875,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether_away/debrisfield/derelict)
 "cG" = (
-/obj/item/weapon/grenade/empgrenade,
-/obj/item/weapon/grenade/empgrenade,
-/obj/item/weapon/grenade/empgrenade,
+/obj/item/grenade/empgrenade,
+/obj/item/grenade/empgrenade,
+/obj/item/grenade/empgrenade,
 /turf/space,
 /area/tether_away/debrisfield/derelict)
 "cH" = (

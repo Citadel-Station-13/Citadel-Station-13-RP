@@ -21,7 +21,7 @@
 
 #define isclothing(A) (istype(A, /obj/item/clothing))
 
-#define isstorage(A)	istype(A, /obj/item/weapon/storage)
+#define isstorage(A)	istype(A, /obj/item/storage)
 
 #define isstructure(A) (istype(A, /obj/structure))
 

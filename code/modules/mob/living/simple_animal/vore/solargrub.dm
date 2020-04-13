@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 
 	speed = 2
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
 	response_help = "pokes"
 	response_disarm = "pushes"

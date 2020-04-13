@@ -1178,7 +1178,7 @@
 /datum/chemical_reaction/food/tofu/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/tofu(location)
+		new /obj/item/reagent_containers/food/snacks/tofu(location)
 	return
 
 /datum/chemical_reaction/food/chocolate_bar
@@ -1191,7 +1191,7 @@
 /datum/chemical_reaction/food/chocolate_bar/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/chocolatebar(location)
+		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
 	return
 
 /datum/chemical_reaction/food/chocolate_bar2
@@ -1204,7 +1204,7 @@
 /datum/chemical_reaction/food/chocolate_bar2/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/chocolatebar(location)
+		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
 	return
 
 /datum/chemical_reaction/drinks/coffee
@@ -1296,7 +1296,7 @@
 /datum/chemical_reaction/food/cheesewheel/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel(location)
+		new /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel(location)
 	return
 
 /datum/chemical_reaction/food/meatball
@@ -1309,7 +1309,7 @@
 /datum/chemical_reaction/food/meatball/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/meatball(location)
+		new /obj/item/reagent_containers/food/snacks/meatball(location)
 	return
 
 /datum/chemical_reaction/food/dough
@@ -1322,7 +1322,7 @@
 /datum/chemical_reaction/food/dough/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/dough(location)
+		new /obj/item/reagent_containers/food/snacks/dough(location)
 	return
 
 /datum/chemical_reaction/food/syntiflesh
@@ -1335,7 +1335,7 @@
 /datum/chemical_reaction/food/syntiflesh/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/meat/syntiflesh(location)
+		new /obj/item/reagent_containers/food/snacks/meat/syntiflesh(location)
 	return
 
 /datum/chemical_reaction/hot_ramen
@@ -2679,7 +2679,7 @@
 /datum/chemical_reaction/food/butter/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/weapon/reagent_containers/food/snacks/spreads/butter(location)
+		new /obj/item/reagent_containers/food/snacks/spreads/butter(location)
 	return
 /datum/chemical_reaction/neutralize_carpotoxin
 	name = "Neutralize Carpotoxin"

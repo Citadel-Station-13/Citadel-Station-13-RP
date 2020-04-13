@@ -5,7 +5,7 @@
 	icon_state = "syndipod_0"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/vr_sleeper
+	circuit = /obj/item/circuitboard/vr_sleeper
 	var/mob/living/carbon/human/occupant = null
 	var/mob/living/carbon/human/avatar = null
 	var/datum/mind/vr_mind = null
@@ -18,7 +18,7 @@
 /obj/machinery/vr_sleeper/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
 
 	RefreshParts()

@@ -71,7 +71,7 @@
 		add_fingerprint(user)
 		return
 
-/obj/structure/inflatable/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	if (can_puncture(W))
@@ -260,7 +260,7 @@
 		user << "<span class='notice'>The inflatable door is too torn to be inflated!</span>"
 		add_fingerprint(user)
 
-/obj/item/weapon/storage/briefcase/inflatable
+/obj/item/storage/briefcase/inflatable
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
 	icon_state = "inf_box"

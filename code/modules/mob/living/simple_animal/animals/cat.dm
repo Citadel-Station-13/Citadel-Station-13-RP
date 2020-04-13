@@ -26,7 +26,7 @@
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
 
-	holder_type = /obj/item/weapon/holder/cat
+	holder_type = /obj/item/holder/cat
 	mob_size = MOB_SMALL
 
 	has_langs = list("Cat")
@@ -39,7 +39,7 @@
 	say_got_target = list("MEOW!","HSSSS!","REEER!")
 
 	meat_amount = 1
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
@@ -173,7 +173,7 @@
 	gender = NEUTER
 
 // Leaving this here for now.
-/obj/item/weapon/holder/cat/fluff/bones
+/obj/item/holder/cat/fluff/bones
 	name = "Bones"
 	desc = "It's Bones! Meow."
 	gender = MALE
@@ -185,7 +185,7 @@
 	gender = MALE
 	icon_state = "cat3"
 	item_state = "cat3"
-	holder_type = /obj/item/weapon/holder/cat/fluff/bones
+	holder_type = /obj/item/holder/cat/fluff/bones
 	friend_name = "Erstatz Vryroxes"
 
 /mob/living/simple_animal/cat/kitten/New()

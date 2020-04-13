@@ -365,17 +365,17 @@ var/global/list/latejoin_tram   = list()
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/weapon/reagent_containers/pill/airlock = 10,/obj/item/device/healthanalyzer = 1)
-	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 2)
+	products = list(/obj/item/reagent_containers/pill/airlock = 10,/obj/item/healthanalyzer = 1)
+	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
 
-/obj/item/weapon/reagent_containers/pill/airlock
+/obj/item/reagent_containers/pill/airlock
 	name = "\'Airlock\' Pill"
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
 	icon_state = "pill2"
 
-/obj/item/weapon/reagent_containers/pill/airlock/New()
+/obj/item/reagent_containers/pill/airlock/New()
 	..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
@@ -398,9 +398,9 @@ var/global/list/latejoin_tram   = list()
 /obj/structure/closet/secure_closet/guncabinet/excursion/New()
 	..()
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked(src)
+		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked/holdout(src)
+		new /obj/item/gun/energy/frontier/locked/holdout(src)
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
@@ -469,10 +469,10 @@ var/global/list/latejoin_tram   = list()
 	icon_keyboard = "mining_key"
 	icon_screen = "mining"
 	network = list(NETWORK_XENOBIO)
-	circuit = /obj/item/weapon/circuitboard/security/xenobio
+	circuit = /obj/item/circuitboard/security/xenobio
 	light_color = "#F9BBFC"
 
-/obj/item/weapon/circuitboard/security/xenobio
+/obj/item/circuitboard/security/xenobio
 	name = T_BOARD("xenobiology camera monitor")
 	build_path = /obj/machinery/computer/security/xenobio
 	network = list(NETWORK_XENOBIO)
@@ -502,9 +502,9 @@ var/global/list/latejoin_tram   = list()
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window
 //
-/obj/item/device/radio/intercom
+/obj/item/radio/intercom
 	layer = ABOVE_WINDOW_LAYER
-/obj/item/weapon/storage/secure/safe
+/obj/item/storage/secure/safe
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER

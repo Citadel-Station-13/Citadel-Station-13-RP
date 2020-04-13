@@ -16,11 +16,11 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/obj/item/weapon/book/tome,
+/obj/item/book/tome,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "af" = (
-/obj/item/weapon/flame/candle/everburn,
+/obj/item/flame/candle/everburn,
 /turf/simulated/floor/outdoors/rocks,
 /area/template_noop)
 "ag" = (
@@ -51,7 +51,7 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "an" = (
-/obj/item/weapon/material/knife/ritual,
+/obj/item/material/knife/ritual,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "ao" = (
@@ -60,7 +60,7 @@
 /area/template_noop)
 "ap" = (
 /obj/structure/loot_pile/surface/bones,
-/obj/item/weapon/coin/diamond,
+/obj/item/coin/diamond,
 /obj/item/clothing/under/technomancer/master,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
@@ -76,7 +76,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "as" = (
-/obj/item/weapon/scepter,
+/obj/item/scepter,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "at" = (
@@ -94,7 +94,7 @@
 /area/submap/Chapel1)
 "aw" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/weapon/flame/candle/candelabra/everburn,
+/obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "ax" = (
@@ -118,7 +118,7 @@
 /area/submap/Chapel1)
 "aB" = (
 /obj/vehicle/boat/dragon/sifwood,
-/obj/item/weapon/oar/sifwood,
+/obj/item/oar/sifwood,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "aC" = (
@@ -165,7 +165,7 @@
 /area/submap/Chapel1)
 "aL" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/weapon/flame/candle/everburn,
+/obj/item/flame/candle/everburn,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "aM" = (
@@ -183,7 +183,7 @@
 /area/submap/Chapel1)
 "aO" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/weapon/chainsaw,
+/obj/item/chainsaw,
 /obj/random/tool/powermaint,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
@@ -194,7 +194,7 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "aQ" = (
-/obj/item/weapon/oar/sifwood,
+/obj/item/oar/sifwood,
 /turf/simulated/floor/wood/sif/broken,
 /area/submap/Chapel1)
 "aR" = (
@@ -210,7 +210,7 @@
 "aT" = (
 /obj/structure/closet/coffin,
 /obj/random/drinkbottle,
-/obj/item/weapon/ectoplasm,
+/obj/item/ectoplasm,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
@@ -221,13 +221,13 @@
 /turf/simulated/floor/wood/sif/broken,
 /area/submap/Chapel1)
 "aV" = (
-/obj/item/weapon/flame/candle/candelabra,
+/obj/item/flame/candle/candelabra,
 /obj/structure/table/sifwoodentable,
 /turf/simulated/floor/wood/sif/broken,
 /area/submap/Chapel1)
 "aW" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/weapon/flame/candle/candelabra,
+/obj/item/flame/candle/candelabra,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "aX" = (
@@ -256,7 +256,7 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bc" = (
-/obj/item/weapon/flame/candle/candelabra,
+/obj/item/flame/candle/candelabra,
 /obj/structure/table/sifwoodentable,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
@@ -284,8 +284,8 @@
 /area/submap/Chapel1)
 "bh" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/weapon/material/harpoon,
-/obj/item/weapon/material/harpoon,
+/obj/item/material/harpoon,
+/obj/item/material/harpoon,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bi" = (
@@ -297,12 +297,12 @@
 "bj" = (
 /obj/structure/table/sifwoodentable,
 /obj/random/toolbox,
-/obj/item/weapon/flame/candle/everburn,
+/obj/item/flame/candle/everburn,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bk" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/weapon/material/fishing_net,
+/obj/item/material/fishing_net,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bl" = (
@@ -318,7 +318,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/template_noop)
 "bo" = (
-/obj/item/weapon/flame/candle/everburn,
+/obj/item/flame/candle/everburn,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "bp" = (
@@ -334,21 +334,21 @@
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bs" = (
-/obj/item/weapon/ore,
-/obj/item/weapon/ore,
-/obj/item/weapon/ore,
-/obj/item/weapon/ore,
-/obj/item/weapon/ore/gold,
-/obj/item/weapon/ore/diamond,
-/obj/item/weapon/ore/silver,
-/obj/item/weapon/ore/uranium,
-/obj/item/weapon/ore,
-/obj/item/weapon/ore,
-/obj/item/weapon/ore,
-/obj/item/weapon/ore/coal,
-/obj/item/weapon/ore/coal,
-/obj/item/weapon/ore/coal,
-/obj/item/weapon/pickaxe/hand,
+/obj/item/ore,
+/obj/item/ore,
+/obj/item/ore,
+/obj/item/ore,
+/obj/item/ore/gold,
+/obj/item/ore/diamond,
+/obj/item/ore/silver,
+/obj/item/ore/uranium,
+/obj/item/ore,
+/obj/item/ore,
+/obj/item/ore,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/pickaxe/hand,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
 "bt" = (
@@ -366,7 +366,7 @@
 "bw" = (
 /obj/structure/closet/coffin,
 /obj/random/maintenance/cargo,
-/obj/item/weapon/ectoplasm,
+/obj/item/ectoplasm,
 /obj/effect/decal/remains/xeno,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)

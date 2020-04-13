@@ -155,18 +155,18 @@
 	icon_state = "holster_machete"
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
-	can_hold = list(/obj/item/weapon/material/knife/machete)
+	can_hold = list(/obj/item/material/knife/machete)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 
 /obj/item/clothing/accessory/holster/machete/occupied
-	var/holstered_spawn = /obj/item/weapon/material/knife/machete
+	var/holstered_spawn = /obj/item/material/knife/machete
 
 /obj/item/clothing/accessory/holster/machete/occupied/Initialize()
 	holstered = new holstered_spawn
 
 /obj/item/clothing/accessory/holster/machete/occupied/deluxe
-	holstered_spawn = /obj/item/weapon/material/knife/machete/deluxe
+	holstered_spawn = /obj/item/material/knife/machete/deluxe
 
 /obj/item/clothing/accessory/holster/machete/occupied/durasteel
-	holstered_spawn = /obj/item/weapon/material/knife/machete/deluxe/durasteel
+	holstered_spawn = /obj/item/material/knife/machete/deluxe/durasteel

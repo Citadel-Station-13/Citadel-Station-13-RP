@@ -40,7 +40,7 @@
 	if(harvest_count < max_harvests)
 		to_chat(user, "<span class='notice'>\The [src] seems to have something hanging from it.</span>")
 
-/obj/structure/flora/attackby(var/obj/item/weapon/W, var/mob/living/user)
+/obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))
 		var/harvest_spawn = pickweight(harvest_loot)
 		var/atom/movable/AM = spawn_harvest(harvest_spawn, user)

@@ -6,9 +6,9 @@
 	icon_state = "dnaopen"
 	anchored = 1
 	density = 1
-	circuit = /obj/item/weapon/circuitboard/dna_analyzer
+	circuit = /obj/item/circuitboard/dna_analyzer
 
-	var/obj/item/weapon/forensics/swab/bloodsamp = null
+	var/obj/item/forensics/swab/bloodsamp = null
 	var/closed = 0
 	var/scanning = 0
 	var/scanner_progress = 0
@@ -18,10 +18,10 @@
 
 /obj/machinery/dnaforensics/New()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
 	..()
 
@@ -41,7 +41,7 @@
 			user << "<span class='warning'>Open the cover before inserting the sample.</span>"
 		return
 
-	var/obj/item/weapon/forensics/swab/swab = W
+	var/obj/item/forensics/swab/swab = W
 	if(istype(swab) && swab.is_used())
 		user.unEquip(W)
 		src.bloodsamp = swab
@@ -118,9 +118,9 @@
 	src.visible_message("<span class='notice'>\icon[src] makes an insistent chime.</span>", 2)
 	update_icon()
 	if(bloodsamp)
-		var/obj/item/weapon/paper/P = new(src)
+		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [bloodsamp.name]"
-		P.stamped = list(/obj/item/weapon/stamp)
+		P.stamped = list(/obj/item/stamp)
 		P.overlays = list("paper_stamped")
 		//dna data itself
 		var/data = "No scan information available."

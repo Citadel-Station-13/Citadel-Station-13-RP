@@ -310,7 +310,7 @@
 /area/shuttle/arrival/pre_game)
 "aX" = (
 /obj/structure/closet/emcloset,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -525,7 +525,7 @@
 /area/shuttle/arrival/pre_game)
 "bx" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/codex/lore/vir,
+/obj/item/book/codex/lore/vir,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/arrival/pre_game)
 "by" = (
@@ -536,7 +536,7 @@
 /area/shuttle/arrival/pre_game)
 "bz" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/codex/corp_regs,
+/obj/item/book/codex/corp_regs,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/arrival/pre_game)
 "bA" = (
@@ -567,7 +567,7 @@
 /area/shuttle/arrival/pre_game)
 "bE" = (
 /obj/structure/closet/emcloset,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21

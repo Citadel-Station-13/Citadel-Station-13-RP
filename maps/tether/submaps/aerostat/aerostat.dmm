@@ -1650,7 +1650,7 @@
 /area/tether_away/aerostat/inside)
 "uU" = (
 /obj/structure/table/standard,
-/obj/item/weapon/gun/energy/taser/xeno,
+/obj/item/gun/energy/taser/xeno,
 /obj/random/cigarettes,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
@@ -1728,7 +1728,7 @@
 /area/tether_away/aerostat/inside)
 "Ym" = (
 /obj/structure/table/standard,
-/obj/item/weapon/gun/energy/taser/xeno,
+/obj/item/gun/energy/taser/xeno,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "ZK" = (

@@ -219,10 +219,10 @@
 
 	var/list/backup_implants = list()
 	for(var/obj/item/organ/I in M.organs)
-		for(var/obj/item/weapon/implant/backup/BI in I.contents)
+		for(var/obj/item/implant/backup/BI in I.contents)
 			backup_implants += BI
 	if(backup_implants.len)
-		for(var/obj/item/weapon/implant/backup/BI in backup_implants)
+		for(var/obj/item/implant/backup/BI in backup_implants)
 			BI.forceMove(src)
 	if(color_action == 1)
 		M.set_species(O.species.name,0,1,M)
@@ -237,7 +237,7 @@
 
 	if(backup_implants.len)
 		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)
-		for(var/obj/item/weapon/implant/backup/BI in backup_implants)
+		for(var/obj/item/implant/backup/BI in backup_implants)
 			BI.forceMove(torso)
 			torso.implants += BI
 

@@ -29,9 +29,9 @@
 		holder.icon_state = "hudblank"
 
 		for(var/obj/item/organ/external/E in organs)
-			for(var/obj/item/weapon/implant/I in E.implants)
+			for(var/obj/item/implant/I in E.implants)
 				if(I.implanted)
-					if(istype(I,/obj/item/weapon/implant/backup))
+					if(istype(I,/obj/item/implant/backup))
 						if(!mind)
 							holder.icon_state = "hud_backup_nomind"
 						else if(!(mind.name in SStranscore.body_scans))
