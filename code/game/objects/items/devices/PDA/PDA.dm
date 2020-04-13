@@ -532,11 +532,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(isnull(cartridge.radio))
 				cartdata["radio"] = 0
 			else
-				if(istype(cartridge.radio, /obj/item/radio/integrated/beepsky))
+				if(istype(cartridge.radio, /obj/item/integated_radio/beepsky))
 					cartdata["radio"] = 1
-				if(istype(cartridge.radio, /obj/item/radio/integrated/signal))
+				if(istype(cartridge.radio, /obj/item/integated_radio/signal))
 					cartdata["radio"] = 2
-				//if(istype(cartridge.radio, /obj/item/radio/integrated/mule))
+				//if(istype(cartridge.radio, /obj/item/integated_radio/mule))
 				//	cartdata["radio"] = 3
 
 		if(mode == 2)

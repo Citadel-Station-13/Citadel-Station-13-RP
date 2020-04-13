@@ -52,7 +52,7 @@ var/list/civilian_cartridges = list(
 	item_state = "electronic"
 	w_class = ITEMSIZE_TINY
 
-	var/obj/item/radio/integrated/radio = null
+	var/obj/item/integated_radio/radio = null
 	var/access_security = 0
 	var/access_engine = 0
 	var/access_atmos = 0
@@ -110,7 +110,7 @@ var/list/civilian_cartridges = list(
 	access_security = 1
 
 /obj/item/cartridge/security/Initialize()
-	radio = new /obj/item/radio/integrated/beepsky(src)
+	radio = new /obj/item/integated_radio/beepsky(src)
 	. = ..()
 
 /obj/item/cartridge/detective
@@ -166,7 +166,7 @@ var/list/civilian_cartridges = list(
 	access_atmos = 1
 
 /obj/item/cartridge/signal/Initialize()
-    radio = new /obj/item/radio/integrated/signal(src)
+    radio = new /obj/item/integated_radio/signal(src)
     . = ..()
 
 /obj/item/cartridge/quartermaster
@@ -200,7 +200,7 @@ var/list/civilian_cartridges = list(
 	access_security = 1
 
 /obj/item/cartridge/hos/Initialize()
-	radio = new /obj/item/radio/integrated/beepsky(src)
+	radio = new /obj/item/integated_radio/beepsky(src)
 	. = ..()
 
 /obj/item/cartridge/ce
@@ -225,7 +225,7 @@ var/list/civilian_cartridges = list(
 	access_atmos = 1
 
 /obj/item/cartridge/rd/Initialize()
-	radio = new /obj/item/radio/integrated/signal(src)
+	radio = new /obj/item/integated_radio/signal(src)
 	. = ..()
 
 /obj/item/cartridge/captain
@@ -290,8 +290,8 @@ var/list/civilian_cartridges = list(
 	/*		Signaler (Mode: 40)				*/
 
 
-	if(istype(radio,/obj/item/radio/integrated/signal) && (mode==40))
-		var/obj/item/radio/integrated/signal/R = radio
+	if(istype(radio,/obj/item/integated_radio/signal) && (mode==40))
+		var/obj/item/integated_radio/signal/R = radio
 		values["signal_freq"] = format_frequency(R.frequency)
 		values["signal_code"] = R.code
 
@@ -363,8 +363,8 @@ var/list/civilian_cartridges = list(
 	if(mode==46)
 		var/botsData[0]
 		var/beepskyData[0]
-		if(istype(radio,/obj/item/radio/integrated/beepsky))
-			var/obj/item/radio/integrated/beepsky/SC = radio
+		if(istype(radio,/obj/item/integated_radio/beepsky))
+			var/obj/item/integated_radio/beepsky/SC = radio
 			beepskyData["active"] = SC.active
 			if(SC.active && !isnull(SC.botstatus))
 				var/area/loca = SC.botstatus["loca"]

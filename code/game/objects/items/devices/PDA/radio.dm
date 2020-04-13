@@ -1,4 +1,4 @@
-/obj/item/radio/integrated
+/obj/item/integated_radio
 	name = "\improper PDA radio module"
 	desc = "An electronic radio system."
 	icon = 'icons/obj/module.dmi'
@@ -35,7 +35,7 @@
 
 	proc/generate_menu()
 
-/obj/item/radio/integrated/beepsky
+/obj/item/integated_radio/beepsky
 	var/list/botlist = null		// list of bots
 	var/mob/living/bot/secbot/active 	// the active bot; if null, show bot list
 	var/list/botstatus			// the status signal sent by the bot
@@ -100,7 +100,7 @@
 				post_signal(control_freq, "command", "bot_status", "active", active, s_filter = RADIO_SECBOT)
 
 
-/obj/item/radio/integrated/beepsky/Destroy()
+/obj/item/integated_radio/beepsky/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src, control_freq)
 	return ..()
@@ -110,13 +110,13 @@
  */
 
 
-/obj/item/radio/integrated/signal
+/obj/item/integated_radio/signal
 	var/frequency = 1457
 	var/code = 30.0
 	var/last_transmission
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/radio/integrated/signal/Initialize()
+/obj/item/integated_radio/signal/Initialize()
 	. = ..()
 	if(!radio_controller)
 		return
@@ -126,12 +126,12 @@
 
 	set_frequency(frequency)
 
-/obj/item/radio/integrated/signal/proc/set_frequency(new_frequency)
+/obj/item/integated_radio/signal/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency)
 
-/obj/item/radio/integrated/signal/proc/send_signal(message="ACTIVATE")
+/obj/item/integated_radio/signal/proc/send_signal(message="ACTIVATE")
 
 	if(last_transmission && world.time < (last_transmission + 5))
 		return
@@ -149,7 +149,7 @@
 	radio_connection.post_signal(src, signal)
 
 
-/obj/item/radio/integrated/signal/Destroy()
+/obj/item/integated_radio/signal/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src, frequency)
 	return ..()

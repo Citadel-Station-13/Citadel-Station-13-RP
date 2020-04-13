@@ -9,8 +9,8 @@
 	var/health = null
 	var/burn_point = null
 	var/burning = null
-	/// Sound to play on hit. Set to [NO_HITSOUND] to have it automatically set on init.
-	var/hitsound = NO_HITSOUND
+	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
+	var/hitsound = HITSOUND_UNSET
 
 	var/usesound = null // Like hitsound, but for when used properly and not to kill someone.
 	var/storage_cost = null
@@ -101,7 +101,7 @@
 			embed_chance = max(5, round(force/w_class))
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
-	if(hitsound == NO_HITSOUND)
+	if(hitsound == HITSOUND_UNSET)
 		if(damtype == "fire")
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")

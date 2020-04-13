@@ -71,7 +71,7 @@ var/list/infomorph_emotions = list(
 	var/hackprogress = 0				// Possible values: 0 - 1000, >= 1000 means the hack is complete and will be reset upon next check
 	var/hack_aborted = 0
 
-	var/obj/item/radio/integrated/signal/sradio					// AI's signaller
+	var/obj/item/integated_radio/signal/sradio					// AI's signaller
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
 	var/obj/item/pda/ai/pai/pda							// Our integrated PDA
 
