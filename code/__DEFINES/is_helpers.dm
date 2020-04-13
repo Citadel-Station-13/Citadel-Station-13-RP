@@ -71,8 +71,8 @@
 
 #define isvoice(A) istype(A, /mob/living/voice)
 
-#define isslime(A) istype(A, /mob/living/simple_animal/slime)
+#define isslime(A) istype(A, /mob/living/simple_mob/slime)
 
 #define isbot(A) istype(A, /mob/living/bot)
 
-#define isxeno(A) istype(A, /mob/living/simple_animal/xeno)
+#define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
