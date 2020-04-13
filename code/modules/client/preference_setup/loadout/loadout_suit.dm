@@ -527,7 +527,7 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
 	path = /obj/item/clothing/suit/storage/bridgeofficer
 	allowed_roles = list("Command Secretary")
 
-datum/gear/suit/labcoat/param
+datum/gear/suit/labcoat/parame
 	display_name = "Paramedic Jacket"
 	path = /obj/item/clothing/suit/toggle/labcoat/paramed
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")

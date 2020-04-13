@@ -34,6 +34,7 @@
 
 /obj/structure/closet/Initialize()
 	..()
+	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 
@@ -56,6 +57,12 @@
 		if(content_size > storage_capacity-5)
 			storage_capacity = content_size + 5
 	update_icon()
+
+/**
+  * The proc that fills the closet with its initial contents.
+  */
+/obj/structure/closet/proc/PopulateContents()
+	return
 
 /obj/structure/closet/examine(mob/user)
 	if(..(user, 1) && !opened)

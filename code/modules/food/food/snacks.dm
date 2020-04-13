@@ -3183,6 +3183,11 @@
 	reagents.add_reagent("radium", 2)
 	bitesize = 2
 
+/obj/item/weapon/reagent_containers/food/snacks/worm
+	name = "worm"
+	desc = "It wiggles at the touch, bleh."
+	icon_state = "worm"
+
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////

@@ -303,3 +303,12 @@
 	starts_with = list(
 		/obj/item/weapon/tank/anesthetic = 3,
 		/obj/item/clothing/mask/breath/medical = 3)
+
+/obj/structure/closet/secure_closet/medical_wall/synth_anesthetics
+	name = "robotics anesthetics wall closet"
+	desc = "Used to knock people out."
+	req_access = list(access_robotics)
+
+	starts_with = list(
+		/obj/item/weapon/tank/anesthetic = 3,
+		/obj/item/clothing/mask/breath/medical = 3)

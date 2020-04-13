@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "dnainjector"
 	var/block=0
-	var/datum/dna2/record/buf=null
+	var/datum/dna2/record/buf
 	var/s_time = 10.0
 	throw_speed = 1
 	throw_range = 5

@@ -675,4 +675,4 @@
 
 datum/gear/uniform/dutchsuit
 	display_name = "Western Suit"
-	path = /obj/item/clothing/under/dutch
+	path = /obj/item/clothing/under/dutchuniform

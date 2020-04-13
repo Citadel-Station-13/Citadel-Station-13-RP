@@ -14,7 +14,9 @@
 	var/concealed_holster = 0
 	var/mob/living/carbon/human/wearer = null //To check if the wearer changes, so species spritesheets change properly.
 	var/list/on_rolled = list()	//used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ties.dmi') //Teshari can into webbing, too!
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/seromi/ties.dmi', //Teshari can into webbing, too!
+		SPECIES_VOX = 'icons/mob/species/vox/ties.dmi')
 
 /obj/item/clothing/accessory/Destroy()
 	on_removed()

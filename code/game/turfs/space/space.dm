@@ -10,7 +10,7 @@
 	var/keep_sprite = FALSE
 //	heat_capacity = 700000 No.
 
-/turf/space/Initialize()
+/turf/space/Initialize(mapload)
 	. = ..()
 	if(!keep_sprite)
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
