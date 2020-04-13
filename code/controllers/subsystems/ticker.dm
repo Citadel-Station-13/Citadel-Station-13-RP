@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	wait = 20
 	init_order = INIT_ORDER_TICKER
+	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/const/restart_timeout = 3 MINUTES //One minute is 600.
 	var/current_state = GAME_STATE_PREGAME
 
