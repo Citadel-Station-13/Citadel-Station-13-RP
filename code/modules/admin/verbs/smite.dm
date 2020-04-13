@@ -1,12 +1,17 @@
-/client/proc/smite(var/mob/living/carbon/human/target in player_list)
+/client/proc/smite(mob/victim as mob)
 	set name = "Smite"
 	set desc = "Abuse a player with various 'special treatments' from a list."
 	set category = "Fun"
 	if(!check_rights(R_FUN))
 		return
+	
+	if(!victim)
+		victim = input("Select a player", "Who?") as null|mob in player_list
+	
+	if(!ishuman(victim))
+		rturn
 
-	if(!istype(target))
-		return
+	var/mob/living/carbon/human/H = target
 
 	var/list/smite_types = list(SMITE_BREAKLEGS,SMITE_BLUESPACEARTILLERY,SMITE_SPONTANEOUSCOMBUSTION,SMITE_LIGHTNINGBOLT)
 
