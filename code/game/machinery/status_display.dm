@@ -94,7 +94,7 @@
 		if(STATUS_DISPLAY_BLANK)	//blank
 			return 1
 		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)				//emergency shuttle timer
-			if(!emergency_shuttle)
+			if(!SSemergencyshuttle)
 				message1 = "-ETA-"
 				message2 = "Never" // You're here forever.
 				return 1
@@ -194,7 +194,7 @@
 		maptext = new_text
 
 /obj/machinery/status_display/proc/get_shuttle_timer_arrival()
-	if(!emergency_shuttle)
+	if(!SSemergencyshuttle)
 		return "Error"
 	var/timeleft = SSemergencyshuttle.estimate_arrival_time()
 	if(timeleft < 0)
@@ -202,7 +202,7 @@
 	return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 
 /obj/machinery/status_display/proc/get_shuttle_timer_departure()
-	if(!emergency_shuttle)
+	if(!SSemergencyshuttle)
 		return "Error"
 	var/timeleft = SSemergencyshuttle.estimate_launch_time()
 	if(timeleft < 0)

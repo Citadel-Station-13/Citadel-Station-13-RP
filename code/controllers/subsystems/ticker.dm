@@ -129,7 +129,6 @@ SUBSYSTEM_DEF(ticker)
 	lighting_controller.process()	//Start processing DynamicAreaLighting updates
 	*/
 
-	processScheduler.start()
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
 	if(config_legacy.sql_enabled)

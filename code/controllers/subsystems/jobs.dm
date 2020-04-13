@@ -674,7 +674,7 @@ SUBSYSTEM_DEF(jobs)
 		tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 		feedback_add_details("job_preferences",tmp_str)
 
-/datum/controller/occupations/proc/LateSpawn(var/client/C, var/rank)
+/datum/controller/subsystem/jobs/proc/LateSpawn(var/client/C, var/rank)
 
 	var/datum/spawnpoint/spawnpos
 
