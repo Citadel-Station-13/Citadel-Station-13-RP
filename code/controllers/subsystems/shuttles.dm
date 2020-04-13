@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(shuttles)
 	var/docks_initialized = FALSE
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
-	global.shuttle_controller = src
+	global.SSshuttle = src
 	setup_shuttle_docks()
 	for(var/I in docks_init_callbacks)
 		var/datum/callback/cb = I
