@@ -603,3 +603,13 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/lemonadeschnapps/Initialize()
 	. = ..()
 	reagents.add_reagent("schnapps_lem", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/jericho
+	name = "Le Champion's Bubbly Champagne"
+	desc = "For when you need a Little Bit of the Bubbly."
+	icon_state = "champagne_bottle"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/jericho/Initialize()
+	. = ..()
+	reagents.add_reagent("champagnejericho", 100)
