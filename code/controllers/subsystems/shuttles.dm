@@ -2,7 +2,7 @@
 // SSshuttles subsystem - Handles initialization and processing of shuttles.
 //
 
-SUBSYSTEM_DEF(shuttles)
+SUBSYSTEM_DEF(shuttle)
 	name = "Shuttles"
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_SHUTTLES
