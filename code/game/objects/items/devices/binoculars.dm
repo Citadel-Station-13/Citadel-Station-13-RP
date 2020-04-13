@@ -1,7 +1,7 @@
 /obj/item/binoculars
 	name = "binoculars"
 	desc = "A pair of binoculars."
-	icon = "icons/obj/devices.dmi'
+	icon = 'icons/obj/device.dmi'
 	icon_state = "binoculars"
 	force = 5.0
 	w_class = ITEMSIZE_SMALL

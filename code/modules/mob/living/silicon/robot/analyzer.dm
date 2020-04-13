@@ -3,7 +3,7 @@
 //
 /obj/item/robotanalyzer
 	name = "cyborg analyzer"
-	icon = "icons/obj/devices.dmi'
+	icon = 'icons/obj/device.dmi'
 	icon_state = "robotanalyzer"
 	item_state = "analyzer"
 	desc = "A hand-held scanner able to diagnose robotic injuries."
