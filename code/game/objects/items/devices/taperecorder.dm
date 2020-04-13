@@ -3,6 +3,7 @@
 	desc = "A device that can record to cassette tapes, and play them. It automatically translates the content in playback."
 	icon_state = "taperecorder_empty"
 	item_state = "analyzer"
+	icon = "icons/obj/devices.dmi'
 	w_class = ITEMSIZE_SMALL
 
 	matter = list(DEFAULT_WALL_MATERIAL = 60,"glass" = 30)
@@ -363,6 +364,7 @@
 /obj/item/tape
 	name = "tape"
 	desc = "A magnetic tape that can hold up to ten minutes of content."
+	icon = "icons/obj/devices.dmi'
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY

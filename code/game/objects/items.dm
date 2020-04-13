@@ -9,7 +9,11 @@
 	var/health = null
 	var/burn_point = null
 	var/burning = null
-	var/hitsound = null
+	/// Sound to play on hit. Set to [NO_HITSOUND] to have it automatically set on init.
+	var/hitsound = NO_HITSOUND
+
+	var/damtype = "brute"
+
 	var/usesound = null // Like hitsound, but for when used properly and not to kill someone.
 	var/storage_cost = null
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
@@ -99,6 +103,11 @@
 			embed_chance = max(5, round(force/w_class))
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
+	if(hitsound == NO_HITSOUND)
+		if(damtype == "fire")
+			hitsound = 'sound/items/welder.ogg'
+		if(damtype == "brute")
+		hitsound = "swing_hit"
 
 /obj/item/equipped()
 	..()
@@ -711,10 +720,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // Called when you swap hands away from the item
 /obj/item/proc/in_inactive_hand(mob/user)
 	return
-
-// My best guess as to why this is here would be that it does so little. Still, keep it under all the procs, for sanity's sake.
-/obj/item
-	icon = 'icons/obj/device.dmi'
 
 //Worn icon generation for on-mob sprites
 /obj/item/proc/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null) //VOREStation edit - add 'clip mask' argument.

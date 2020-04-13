@@ -14,6 +14,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/healthanalyzer
 	name = "health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
+	icon = "icons/obj/devices.dmi'
 	icon_state = "health"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
@@ -327,6 +328,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/analyzer
 	name = "analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels."
+	icon = "icons/obj/devices.dmi'
 	icon_state = "atmos"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
@@ -365,6 +367,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/mass_spectrometer
 	name = "mass spectrometer"
 	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
+	icon = "icons/obj/devices.dmi'
 	icon_state = "spectrometer"
 	w_class = ITEMSIZE_SMALL
 	flags = OPENCONTAINER
@@ -426,6 +429,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/reagent_scanner
 	name = "reagent scanner"
 	desc = "A hand-held reagent scanner which identifies chemical agents."
+	icon = "icons/obj/devices.dmi'
 	icon_state = "spectrometer"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_SMALL
@@ -474,6 +478,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	name = "slime scanner"
 	icon_state = "xenobio"
 	item_state = "xenobio"
+	icon = "icons/obj/devices.dmi'
 	origin_tech = list(TECH_BIO = 1)
 	w_class = ITEMSIZE_SMALL
 	throwforce = 0
@@ -516,6 +521,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/halogen_counter
 	name = "halogen counter"
 	icon_state = "eftpos"
+	icon = "icons/obj/devices.dmi'
 	desc = "A hand-held halogen counter, used to detect the level of irradiation of living beings."
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 2)

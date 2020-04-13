@@ -1219,6 +1219,7 @@
 #include "code\game\objects\items\weapons\melee\deflect.dm"
 #include "code\game\objects\items\weapons\melee\energy.dm"
 #include "code\game\objects\items\weapons\melee\energy_vr.dm"
+#include "code\game\objects\items\weapons\melee\melee.dm"
 #include "code\game\objects\items\weapons\melee\misc.dm"
 #include "code\game\objects\items\weapons\storage\_storage.dm"
 #include "code\game\objects\items\weapons\storage\backpack.dm"

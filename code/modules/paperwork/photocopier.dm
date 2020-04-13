@@ -256,5 +256,6 @@
 
 /obj/item/toner
 	name = "toner cartridge"
+	icon = "icons/obj/devices.dmi'
 	icon_state = "tonercartridge"
 	var/toner_amount = 30

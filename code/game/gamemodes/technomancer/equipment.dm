@@ -216,5 +216,6 @@
 /obj/item/binoculars/spyglass
 	name = "spyglass"
 	desc = "It's a hand-held telescope, useful for star-gazing, peeping, and recon."
+	icon = "icons/obj/devices.dmi'
 	icon_state = "spyglass"
 	slot_flags = SLOT_BELT

@@ -1,20 +1,6 @@
 /obj/item
-	name = "weapon"
-	icon = 'icons/obj/weapons.dmi'
-	hitsound = "swing_hit"
 	var/can_cleave = FALSE // If true, a 'cleaving' attack will occur.
 	var/cleaving = FALSE // Used to avoid infinite cleaving.
-
-/obj/item/Bump(mob/M as mob)
-	spawn(0)
-		..()
-	return
-
-/obj/item/melee
-	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
-			)
 
 // Attacks mobs (atm only simple ones due to friendly fire issues) that are adjacent to the target and user.
 /obj/item/proc/cleave(mob/living/user, atom/target)
