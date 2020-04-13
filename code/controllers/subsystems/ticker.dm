@@ -298,6 +298,8 @@ SUBSYSTEM_DEF(ticker)
 	switch(current_state)
 		if(GAME_STATE_PREGAME)
 			pregame()
+		if(GAME_STATE_SETTING_UP)
+			setup()
 		if(GAME_STATE_PLAYING)
 			round_process()
 
@@ -310,7 +312,6 @@ SUBSYSTEM_DEF(ticker)
 	if(pregame_timeleft <= 0)
 		current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
-		setup()
 
 /datum/controller/subsystem/ticker/proc/round_process()
 	if(current_state != GAME_STATE_PLAYING)
