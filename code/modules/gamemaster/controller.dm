@@ -5,7 +5,7 @@
 
 	game_master.interact(usr)
 
-/datum/game_master/proc/interact(var/client/user)
+/datum/controller/subsystem/gamemaster/proc/interact(var/client/user)
 	if(!user)
 		return
 
@@ -45,7 +45,7 @@
 	HTML +="</body></html>"
 	user << browse(HTML, "window=log;size=400x450;border=1;can_resize=1;can_close=1;can_minimize=1")
 
-/datum/game_master/Topic(href, href_list)
+/datum/controller/subsystem/gamemaster/Topic(href, href_list)
 	if(..())
 		return
 
