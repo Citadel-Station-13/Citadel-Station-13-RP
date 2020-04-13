@@ -4,6 +4,7 @@
 	var/active_throwforce
 	var/active_w_class
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
+	icon = 'icons/obj/weapons.dmi'
 	sharp = 0
 	edge = 0
 	armor_penetration = 50
