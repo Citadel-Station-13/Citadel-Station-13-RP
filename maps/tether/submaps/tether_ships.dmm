@@ -86,7 +86,7 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/houseboat/holodeck/beach)
 "eQ" = (
-/obj/item/weapon/beach_ball,
+/obj/item/beach_ball,
 /turf/simulated/floor/holofloor/beach/sand,
 /area/houseboat/holodeck/beach)
 "eR" = (
@@ -283,7 +283,7 @@
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/under/color/red,
-/obj/item/weapon/holo/esword/red,
+/obj/item/holo/esword/red,
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
@@ -316,7 +316,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gB" = (
-/obj/item/weapon/beach_ball/holoball,
+/obj/item/beach_ball/holoball,
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gC" = (
@@ -361,7 +361,7 @@
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/under/color/green,
-/obj/item/weapon/holo/esword/green,
+/obj/item/holo/esword/green,
 /obj/effect/floor_decal/corner/green{
 	dir = 10
 	},

@@ -50,7 +50,7 @@
 				movement_target = null
 			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
 				movement_target = null
-				for(var/obj/item/weapon/reagent_containers/food/snacks/snakesnack/S in oview(src,3))
+				for(var/obj/item/reagent_containers/food/snacks/snakesnack/S in oview(src,3))
 					if(isturf(S.loc) || ishuman(S.loc))
 						movement_target = S
 						visible_emote("turns towards \the [movement_target] and slithers towards it.")
@@ -95,7 +95,7 @@
 				movement_target = null
 				stop_automated_movement = 0
 				walk(src,0)
-				for(var/obj/item/weapon/reagent_containers/food/snacks/snakesnack/S in oview(src,3))
+				for(var/obj/item/reagent_containers/food/snacks/snakesnack/S in oview(src,3))
 					if(isturf(S.loc))
 						movement_target = S
 						visible_emote("turns towards \the [movement_target] and slithers towards it.")
@@ -123,14 +123,14 @@
 		..()
 
 /mob/living/simple_mob/animal/passive/snake/noodle/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/snakesnack))
+	if(istype(O, /obj/item/reagent_containers/food/snacks/snakesnack))
 		visible_message("<span class='notice'>[user] feeds \the [O] to [src].</span>")
 		qdel(O)
 	else
 		return ..()
 
 //Special snek-snax for Noodle!
-/obj/item/weapon/reagent_containers/food/snacks/snakesnack
+/obj/item/reagent_containers/food/snacks/snakesnack
 	name = "sugar mouse"
 	desc = "A little mouse treat made of coloured sugar. Noodle loves these!"
 	var/snack_colour
@@ -139,7 +139,7 @@
 	nutriment_amt = 1
 	nutriment_desc = list("sugar" = 1)
 
-/obj/item/weapon/reagent_containers/food/snacks/snakesnack/Initialize()
+/obj/item/reagent_containers/food/snacks/snakesnack/Initialize()
 	..()
 	if(!snack_colour)
 		snack_colour = pick( list("yellow","green","pink","blue") )
@@ -147,19 +147,19 @@
 	desc = "A little mouse treat made of coloured sugar. Noodle loves these! This one is [snack_colour]."
 	reagents.add_reagent("sugar", 2)
 
-/obj/item/weapon/storage/box/snakesnackbox
+/obj/item/storage/box/snakesnackbox
 	name = "box of Snake Snax"
 	desc = "A box containing Noodle's special sugermouse treats."
 	icon = 'icons/mob/snake_vr.dmi'
 	icon_state = "sneksnakbox"
 	storage_slots = 7
 
-/obj/item/weapon/storage/box/snakesnackbox/New()
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/snakesnack(src)
+/obj/item/storage/box/snakesnackbox/New()
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
+	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	..()

@@ -223,8 +223,8 @@
 		else if(ishuman(H)) //Needed to prevent 2 people from grabbing eachother in the air.
 			var/mob/living/carbon/human/F = H
 			if(F.grabbed_by.len) //If you're grabbed (presumably by someone flying) let's not have you fall. This also allows people to grab onto you while you jump over a railing to prevent you from falling!
-				var/obj/item/weapon/grab/G = F.get_active_hand()
-				var/obj/item/weapon/grab/J = F.get_inactive_hand()
+				var/obj/item/grab/G = F.get_active_hand()
+				var/obj/item/grab/J = F.get_inactive_hand()
 				if(istype(G) || istype(J))
 					//fall
 				else

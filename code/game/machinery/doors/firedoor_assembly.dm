@@ -36,7 +36,7 @@ obj/structure/firedoor_assembly/attackby(obj/item/C, mob/user as mob)
 			new/obj/item/stack/cable_coil(src.loc, 1)
 			wired = 0
 
-	else if(istype(C, /obj/item/weapon/circuitboard/airalarm) && wired)
+	else if(istype(C, /obj/item/circuitboard/airalarm) && wired)
 		if(anchored)
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			user.visible_message("<span class='warning'>[user] has inserted a circuit into \the [src]!</span>",
@@ -52,8 +52,8 @@ obj/structure/firedoor_assembly/attackby(obj/item/C, mob/user as mob)
 		user.visible_message("<span class='warning'>[user] has [anchored ? "" : "un" ]secured \the [src]!</span>",
 							  "You have [anchored ? "" : "un" ]secured \the [src]!")
 		update_icon()
-	else if(!anchored && istype(C, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = C
+	else if(!anchored && istype(C, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = C
 		if(WT.remove_fuel(0, user))
 			user.visible_message("<span class='warning'>[user] dissassembles \the [src].</span>",
 			"You start to dissassemble \the [src].")

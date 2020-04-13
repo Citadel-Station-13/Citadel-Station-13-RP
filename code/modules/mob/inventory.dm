@@ -19,7 +19,7 @@ var/list/slot_equipment_priority = list( \
 	)
 
 /mob
-	var/obj/item/weapon/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
+	var/obj/item/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
 
 //This proc is called whenever someone clicks an inventory ui slot.
 /mob/proc/attack_ui(var/slot)
@@ -108,7 +108,7 @@ var/list/slot_equipment_priority = list( \
 	for(var/i in possible)
 		if(!i)
 			continue
-		var/obj/item/weapon/storage/S = i
+		var/obj/item/storage/S = i
 		if(!istype(S))
 			continue
 		if(S.can_be_inserted(src, TRUE))

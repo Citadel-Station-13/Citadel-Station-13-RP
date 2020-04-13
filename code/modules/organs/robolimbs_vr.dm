@@ -16,7 +16,7 @@
 	suggested_species = "Tajara"
 	whitelisted_to = list("arokha")
 
-/obj/item/weapon/disk/limb/kitsuhana
+/obj/item/disk/limb/kitsuhana
 	company = "Kitsuhana"
 
 // silencedmp5a5 : Serdykov Antoz
@@ -29,7 +29,7 @@
 	includes_tail = 1
 	whitelisted_to = list("silencedmp5a5")
 
-/obj/item/weapon/disk/limb/white_kryten
+/obj/item/disk/limb/white_kryten
 	company = "White Kryten Cybernetics"
 END OF CITADEL CHANGES */
 // verkister : Rahwoof Boop
@@ -41,7 +41,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	unavailable_to_build = 1
 
-/obj/item/weapon/disk/limb/eggnerdltd
+/obj/item/disk/limb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
 	icon = 'icons/obj/items_vr.dmi'
 	icon_state = "verkdisk"
@@ -52,7 +52,7 @@ END OF CITADEL CHANGES */
 	desc = "This metallic limb is sleek and featuresless apart from some exposed motors"
 	icon = 'icons/mob/human_races/cyberlimbs/talon/talon_main.dmi' //Sprited by: Viveret
 
-/obj/item/weapon/disk/limb/talon
+/obj/item/disk/limb/talon
 	company = "Talon LLC"
 
 /datum/robolimb/zenghu_taj //This wasn't indented. At all. It's a miracle this didn't break literally everything.
@@ -70,7 +70,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	unavailable_to_build = 1
 
-/obj/item/weapon/disk/limb/eggnerdltdred
+/obj/item/disk/limb/eggnerdltdred
 	company = "Eggnerd Prototyping Ltd. (Red)"
 	icon = 'icons/obj/items_vr.dmi'
 	icon_state = "verkdisk"
@@ -89,7 +89,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Tajara"
 
-/obj/item/weapon/disk/limb/dsi_tajaran
+/obj/item/disk/limb/dsi_tajaran
 	company = "DSI - Tajaran"
 
 /datum/robolimb/dsi_lizard
@@ -103,7 +103,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Unathi"
 
-/obj/item/weapon/disk/limb/dsi_lizard
+/obj/item/disk/limb/dsi_lizard
 	company = "DSI - Lizard"
 
 /datum/robolimb/dsi_sergal
@@ -117,7 +117,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Sergal"
 
-/obj/item/weapon/disk/limb/dsi_sergal
+/obj/item/disk/limb/dsi_sergal
 	company = "DSI - Sergal"
 
 /datum/robolimb/dsi_nevrean
@@ -131,7 +131,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Nevrean"
 
-/obj/item/weapon/disk/limb/dsi_nevrean
+/obj/item/disk/limb/dsi_nevrean
 	company = "DSI - Nevrean"
 
 /datum/robolimb/dsi_vulpkanin
@@ -145,7 +145,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Vulpkanin"
 
-/obj/item/weapon/disk/limb/dsi_vulpkanin
+/obj/item/disk/limb/dsi_vulpkanin
 	company = "DSI - Vulpkanin"
 
 /datum/robolimb/dsi_akula
@@ -159,7 +159,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Akula"
 
-/obj/item/weapon/disk/limb/dsi_akula
+/obj/item/disk/limb/dsi_akula
 	company = "DSI - Akula"
 
 /datum/robolimb/dsi_spider
@@ -173,7 +173,7 @@ END OF CITADEL CHANGES */
 	skin_tone = 1
 	suggested_species = "Vasilissan"
 
-/obj/item/weapon/disk/limb/dsi_spider
+/obj/item/disk/limb/dsi_spider
 	company = "DSI - Vasilissan"
 
 /datum/robolimb/dsi_teshari
@@ -189,7 +189,7 @@ END OF CITADEL CHANGES */
 	species_cannot_use -= SPECIES_TESHARI
 	..()
 
-/obj/item/weapon/disk/limb/dsi_teshari
+/obj/item/disk/limb/dsi_teshari
 	company = "DSI - Teshari"
 
 
@@ -200,7 +200,7 @@ END OF CITADEL CHANGES */
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 
-/obj/item/weapon/disk/limb/braincase
+/obj/item/disk/limb/braincase
 	company = "cortexCases - MMI"
 
 /datum/robolimb/posicase
@@ -210,7 +210,7 @@ END OF CITADEL CHANGES */
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 
-/obj/item/weapon/disk/limb/posicase
+/obj/item/disk/limb/posicase
 	company = "cortexCases - Posi"
 
 /datum/robolimb/antares
@@ -220,5 +220,5 @@ END OF CITADEL CHANGES */
 	unavailable_to_build = 1
 	monitor_styles = standard_monitor_styles
 
-/obj/item/weapon/disk/limb/antares
+/obj/item/disk/limb/antares
 	company = "Antares Robotics"

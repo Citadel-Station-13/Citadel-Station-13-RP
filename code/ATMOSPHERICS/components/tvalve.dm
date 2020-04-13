@@ -326,14 +326,14 @@
 			else
 				go_to_side()
 
-/obj/machinery/atmospherics/tvalve/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/weapon/airlock_electronics) && istype(src, /obj/machinery/atmospherics/tvalve/digital))
+/obj/machinery/atmospherics/tvalve/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/airlock_electronics) && istype(src, /obj/machinery/atmospherics/tvalve/digital))
 		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 			return 1
 		to_chat(user, "<span class='notice'>You begin to upload access data to \the [src]...</span>")
 		if (do_after(user, 20))
-			var/obj/item/weapon/airlock_electronics/E = W
+			var/obj/item/airlock_electronics/E = W
 			if(E.one_access)
 				req_access = null
 				req_one_access = E.conf_access

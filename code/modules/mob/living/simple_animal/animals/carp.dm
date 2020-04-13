@@ -36,7 +36,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/carpmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
 
 /mob/living/simple_mob/hostile/carp/large
 	name = "elder carp"

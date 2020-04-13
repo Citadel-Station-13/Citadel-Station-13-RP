@@ -58,8 +58,8 @@
 /mob/living/carbon/human/break_cloak()
 	if(mind && mind.changeling) //Changeling visible camo
 		mind.changeling.cloaked = 0
-	if(istype(back, /obj/item/weapon/rig)) //Ninja cloak
-		var/obj/item/weapon/rig/suit = back
+	if(istype(back, /obj/item/rig)) //Ninja cloak
+		var/obj/item/rig/suit = back
 		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				cloaker.deactivate()
@@ -67,8 +67,8 @@
 /mob/living/carbon/human/is_cloaked()
 	if(mind && mind.changeling && mind.changeling.cloaked) // Ling camo.
 		return TRUE
-	else if(istype(back, /obj/item/weapon/rig)) //Ninja cloak
-		var/obj/item/weapon/rig/suit = back
+	else if(istype(back, /obj/item/rig)) //Ninja cloak
+		var/obj/item/rig/suit = back
 		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				return TRUE
@@ -79,14 +79,14 @@
 	if(istype(l_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/L = l_ear
 		sum += L.ear_protection
-	if(istype(l_ear, /obj/item/device/radio/headset))		//CITADEL
-		var/obj/item/device/radio/headset/L = l_ear			//BOWNAN
+	if(istype(l_ear, /obj/item/radio/headset))		//CITADEL
+		var/obj/item/radio/headset/L = l_ear			//BOWNAN
 		sum += L.ear_protection								//CHANGE
 	if(istype(r_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/R = r_ear
 		sum += R.ear_protection
-	if(istype(r_ear, /obj/item/device/radio/headset))		//CITADEL
-		var/obj/item/device/radio/headset/R = r_ear			//BOWMAN
+	if(istype(r_ear, /obj/item/radio/headset))		//CITADEL
+		var/obj/item/radio/headset/R = r_ear			//BOWMAN
 		sum += R.ear_protection								//CHANGE
 	if(istype(head, /obj/item/clothing/head))
 		var/obj/item/clothing/head/H = head
@@ -137,11 +137,11 @@
 	if(B) // Incase we lost our brain for some reason, like if we got decapped.
 		if(istype(B, /obj/item/organ/internal/mmi_holder))
 			var/obj/item/organ/internal/mmi_holder/mmi_holder = B
-			if(istype(mmi_holder.stored_mmi, /obj/item/device/mmi/digital/posibrain))
+			if(istype(mmi_holder.stored_mmi, /obj/item/mmi/digital/posibrain))
 				return FBP_POSI
-			else if(istype(mmi_holder.stored_mmi, /obj/item/device/mmi/digital/robot))
+			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi/digital/robot))
 				return FBP_DRONE
-			else if(istype(mmi_holder.stored_mmi, /obj/item/device/mmi)) // This needs to come last because inheritence.
+			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi)) // This needs to come last because inheritence.
 				return FBP_CYBORG
 
 	return FBP_NONE
@@ -178,7 +178,7 @@
 			compiled_vis |= O.enables_planes
 
 	//Check to see if we have a rig (ugh, blame rigs, desnowflake this)
-	var/obj/item/weapon/rig/rig = back
+	var/obj/item/rig/rig = back
 	if(istype(rig) && rig.visor)
 		if(!rig.helmet || (head && rig.helmet == head))
 			if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)

@@ -82,7 +82,7 @@
 		files += hdd.files
 	if(floppy && floppy.inserted)
 		files += floppy.inserted.files
-	if(cardslot && istype(cardslot.reader,/obj/item/weapon/card/data))
+	if(cardslot && istype(cardslot.reader,/obj/item/card/data))
 		files += cardslot.reader:files
 	if(!ispath(typekey))
 		return files

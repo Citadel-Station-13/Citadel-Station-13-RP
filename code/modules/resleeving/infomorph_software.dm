@@ -193,7 +193,7 @@
 		else if(href_list["cable"])
 			var/turf/T = get_turf(P)
 			P.hack_aborted = 0
-			P.cable = new /obj/item/weapon/pai_cable(T)
+			P.cable = new /obj/item/pai_cable(T)
 			if(ishuman(P.card.loc))
 				var/mob/living/carbon/human/H = P.card.loc
 				H.put_in_any_hand_if_possible(P.cable)

@@ -30,13 +30,13 @@
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
 	corpse = /obj/effect/landmark/mobcorpse/syndicatesoldier
-	loot_list = list(/obj/item/weapon/material/knife/tacknife = 100)	// Might as well give it the knife
+	loot_list = list(/obj/item/material/knife/tacknife = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/merc
 
 	// Grenade special attack vars
-	var/grenade_type = /obj/item/weapon/grenade/concussion
+	var/grenade_type = /obj/item/grenade/concussion
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
 	special_attack_max_range = 7
@@ -67,7 +67,7 @@
 	set waitfor = FALSE
 	set_AI_busy(TRUE)
 
-	var/obj/item/weapon/grenade/G = new grenade_type(get_turf(src))
+	var/obj/item/grenade/G = new grenade_type(get_turf(src))
 	if(istype(G))
 		G.throw_at(A, G.throw_range, G.throw_speed, src)
 		G.attack_self(src)
@@ -94,7 +94,7 @@
 //			Melee
 ////////////////////////////////
 /mob/living/simple_mob/humanoid/merc/melee	// Defined in case we add non-sword-and-board mercs
-	loot_list = list(/obj/item/weapon/material/knife/tacknife = 100)
+	loot_list = list(/obj/item/material/knife/tacknife = 100)
 
 // Sword and Shield Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword
@@ -108,7 +108,7 @@
 	attack_edge = 1
 	attacktext = list("slashed")
 
-	loot_list = list(/obj/item/weapon/melee/energy/sword = 100, /obj/item/weapon/shield/energy = 100)
+	loot_list = list(/obj/item/melee/energy/sword = 100, /obj/item/shield/energy = 100)
 
 // They have a shield, so they try to block
 /mob/living/simple_mob/humanoid/merc/melee/sword/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -146,7 +146,7 @@
 	projectiletype = /obj/item/projectile/bullet/pistol/medium
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
-	loot_list = list(/obj/item/weapon/gun/projectile/colt = 100)
+	loot_list = list(/obj/item/gun/projectile/colt = 100)
 
 	needs_reload = TRUE
 	reload_max = 7		// Not the best default, but it fits the pistol
@@ -157,7 +157,7 @@
 	icon_state = "syndicateranged_smg"
 	icon_living = "syndicateranged_smg"
 
-	loot_list = list(/obj/item/weapon/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -167,7 +167,7 @@
 	icon_living = "blueforranged_smg"
 
 	corpse = /obj/effect/landmark/mobcorpse/solarpeacekeeper
-	loot_list = list(/obj/item/weapon/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -179,7 +179,7 @@
 	projectiletype = /obj/item/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/laser = 100)
+	loot_list = list(/obj/item/gun/energy/laser = 100)
 
 	reload_max = 10
 
@@ -190,7 +190,7 @@
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/ionrifle = 100)
+	loot_list = list(/obj/item/gun/energy/ionrifle = 100)
 
 	reload_max = 10
 
@@ -201,7 +201,7 @@
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/projectile/shotgun/pump = 100)
+	loot_list = list(/obj/item/gun/projectile/shotgun/pump = 100)
 
 	reload_max = 4
 	reload_time = 1.5 SECONDS	// It's a shotgun, it takes a moment

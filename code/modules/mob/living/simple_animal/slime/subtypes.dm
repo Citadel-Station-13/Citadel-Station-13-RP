@@ -158,7 +158,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/slime/dark_purple/attackby(var/obj/item/weapon/W, var/mob/user)
+/mob/living/simple_animal/slime/dark_purple/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
@@ -636,7 +636,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/slime/oil/attackby(var/obj/item/weapon/W, var/mob/user)
+/mob/living/simple_animal/slime/oil/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()

@@ -1,6 +1,7 @@
-/obj/item/device/detective_scanner
+/obj/item/detective_scanner
 	name = "forensic scanner"
 	desc = "Used to scan objects for DNA and fingerprints."
+	icon = 'icons/obj/device.dmi'
 	icon_state = "forensic"
 	var/list/stored = list()
 	w_class = ITEMSIZE_SMALL
@@ -13,7 +14,7 @@
 	var/reveal_blood = TRUE
 	var/reveal_fibers = FALSE
 
-/obj/item/device/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
+/obj/item/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	if (!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [M] does not seem to be compatible with this device.</span>")
 		flick("[icon_state]0",src)
@@ -25,7 +26,7 @@
 			flick("[icon_state]0",src)
 			return 0
 		else if(user.zone_sel.selecting == "r_hand" || user.zone_sel.selecting == "l_hand")
-			var/obj/item/weapon/sample/print/P = new /obj/item/weapon/sample/print(user.loc)
+			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
 			P.attack(M, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
 	//		user << "<span class='notice'>[M]'s Fingerprints: [md5(M.dna.uni_identity)]</span>"
@@ -37,7 +38,7 @@
 				to_chat(user,"<span class='notice'>Blood type: [M.blood_DNA[blood]]\nDNA: [blood]</span>")
 	return
 
-/obj/item/device/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
+/obj/item/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
 	if(!proximity) return
 	if(ismob(A))
 		return
@@ -51,7 +52,7 @@
 		return
 */
 
-	if(istype(A,/obj/item/weapon/sample/print))
+	if(istype(A,/obj/item/sample/print))
 		to_chat(user,"The scanner displays on the screen: \"ERROR 43: Object on Excluded Object List.\"")
 		flick("[icon_state]0",src)
 		return
@@ -125,7 +126,7 @@
 	flick("[icon_state]2",src)
 	return 0
 
-/obj/item/device/detective_scanner/proc/add_data(atom/A as mob|obj|turf|area)
+/obj/item/detective_scanner/proc/add_data(atom/A as mob|obj|turf|area)
 	var/datum/data/record/forensic/old = stored["\ref [A]"]
 	var/datum/data/record/forensic/fresh = new(A)
 
@@ -134,7 +135,7 @@
 		. = 1
 	stored["\ref [A]"] = fresh
 
-/obj/item/device/detective_scanner/verb/examine_data()
+/obj/item/detective_scanner/verb/examine_data()
 	set name = "Examine Forensic Data"
 	set category = "Object"
 	set src in view(1)
@@ -142,7 +143,7 @@
 	world << "usr is [usr]"
 	display_data(usr)
 
-/obj/item/device/detective_scanner/proc/display_data(var/mob/user)
+/obj/item/detective_scanner/proc/display_data(var/mob/user)
 	if(user && stored && stored.len)
 		for(var/objref in stored)
 			if(!do_after(user, 1 SECOND)) // So people can move and stop the spam, if they refuse to wipe data.
@@ -185,7 +186,7 @@
 					for(var/bloodsample in bloods)
 						to_chat(user, " - <span class='warning'>[bloodsample]</span> Type: [bloods[bloodsample]]")
 
-/obj/item/device/detective_scanner/verb/wipe()
+/obj/item/detective_scanner/verb/wipe()
 	set name = "Wipe Forensic Data"
 	set category = "Object"
 	set src in view(1)
@@ -194,7 +195,7 @@
 		stored = list()
 		to_chat(usr,"<span class='notice'>Forensic data erase complete.</span>")
 
-/obj/item/device/detective_scanner/advanced
+/obj/item/detective_scanner/advanced
 	name = "advanced forensic scanner"
 	icon_state = "forensic_neo"
 	reveal_fibers = TRUE

@@ -287,16 +287,16 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/circuitboard/tesla_coil{
+/obj/item/circuitboard/tesla_coil{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/weapon/circuitboard/tesla_coil{
+/obj/item/circuitboard/tesla_coil{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/stock_parts/capacitor,
-/obj/item/weapon/stock_parts/capacitor{
+/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/capacitor{
 	pixel_x = -2;
 	pixel_y = 2
 	},
@@ -822,11 +822,11 @@
 /turf/simulated/floor/tiled,
 /area/submap/pa_room)
 "bu" = (
-/obj/item/weapon/book/manual/engineering_particle_accelerator{
+/obj/item/book/manual/engineering_particle_accelerator{
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/weapon/book/manual/tesla_engine,
+/obj/item/book/manual/tesla_engine,
 /turf/template_noop,
 /area/template_noop)
 "bv" = (
@@ -1136,8 +1136,8 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals8,
 /obj/structure/table/standard,
-/obj/item/weapon/book/manual/tesla_engine,
-/obj/item/weapon/book/manual/engineering_particle_accelerator{
+/obj/item/book/manual/tesla_engine,
+/obj/item/book/manual/engineering_particle_accelerator{
 	pixel_x = 5;
 	pixel_y = 5
 	},

@@ -8,7 +8,7 @@
 	icon_screen = "comm"
 	light_color = "#0099ff"
 	req_access = list(access_heads)
-	circuit = /obj/item/weapon/circuitboard/communications
+	circuit = /obj/item/circuitboard/communications
 	var/prints_intercept = 1
 	var/authenticated = 0
 	var/list/messagetitle = list()
@@ -65,9 +65,9 @@
 			src.state = STATE_DEFAULT
 		if("login")
 			var/mob/M = usr
-			var/obj/item/weapon/card/id/I = M.get_active_hand()
-			if (istype(I, /obj/item/device/pda))
-				var/obj/item/device/pda/pda = I
+			var/obj/item/card/id/I = M.get_active_hand()
+			if (istype(I, /obj/item/pda))
+				var/obj/item/pda/pda = I
 				I = pda.id
 			if (I && istype(I))
 				if(src.check_access(I))

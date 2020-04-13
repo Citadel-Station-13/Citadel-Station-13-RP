@@ -19,8 +19,8 @@
 /*
 /datum/surgery_step/internal/remove_embryo
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/material/kitchen/utensil/fork = 20
+	/obj/item/surgical/hemostat = 100,	\
+	/obj/item/material/kitchen/utensil/fork = 20
 	)
 
 	allowed_procs = list(IS_WIRECUTTER = 75)
@@ -150,9 +150,9 @@
 /datum/surgery_step/internal/detatch_organ/
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel = 100,		\
-	/obj/item/weapon/material/knife = 75,	\
-	/obj/item/weapon/material/shard = 50, 		\
+	/obj/item/surgical/scalpel = 100,		\
+	/obj/item/material/knife = 75,	\
+	/obj/item/material/shard = 50, 		\
 	)
 
 	min_duration = 90
@@ -212,8 +212,8 @@
 /datum/surgery_step/internal/remove_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/material/kitchen/utensil/fork = 20
+	/obj/item/surgical/hemostat = 100,	\
+	/obj/item/material/kitchen/utensil/fork = 20
 	)
 
 	allowed_procs = list(IS_WIRECUTTER = 75)
@@ -348,7 +348,7 @@
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
+	/obj/item/surgical/FixOVein = 100, \
 	/obj/item/stack/cable_coil = 75
 	)
 
@@ -401,7 +401,7 @@
 /datum/surgery_step/internal/rip_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel/ripper = 100
+	/obj/item/surgical/scalpel/ripper = 100
 	)
 
 	priority = 3
@@ -459,9 +459,9 @@
 // To be finished after some tests.
 // /datum/surgery_step/ribcage/heart/cut
 //	allowed_tools = list(
-//	/obj/item/weapon/surgical/scalpel = 100,		\
-//	/obj/item/weapon/material/knife = 75,	\
-//	/obj/item/weapon/material/shard = 50, 		\
+//	/obj/item/surgical/scalpel = 100,		\
+//	/obj/item/material/knife = 75,	\
+//	/obj/item/material/shard = 50, 		\
 //	)
 
 //	min_duration = 30

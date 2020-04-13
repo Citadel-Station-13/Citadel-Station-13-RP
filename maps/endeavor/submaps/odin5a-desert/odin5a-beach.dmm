@@ -34,7 +34,7 @@
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "k" = (
-/obj/item/weapon/beach_ball,
+/obj/item/beach_ball,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "l" = (
@@ -42,25 +42,25 @@
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "m" = (
-/obj/item/weapon/melee/umbrella/random,
+/obj/item/melee/umbrella/random,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "n" = (
-/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
-/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
-/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
-/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
-/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle,
-/obj/item/weapon/reagent_containers/food/drinks/ice,
-/obj/item/weapon/reagent_containers/food/drinks/ice,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/ice,
+/obj/item/reagent_containers/food/drinks/ice,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "o" = (
@@ -82,13 +82,13 @@
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
-/obj/item/weapon/material/knife/machete/hatchet,
+/obj/item/material/knife/machete/hatchet,
 /obj/structure/closet/crate,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
-/obj/item/weapon/weldpack,
+/obj/item/weldpack,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "t" = (
@@ -123,7 +123,7 @@
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "z" = (
-/obj/item/weapon/flame/lighter/random,
+/obj/item/flame/lighter/random,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "A" = (
@@ -151,7 +151,7 @@
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/jungle)
 "G" = (
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "H" = (
@@ -159,7 +159,7 @@
 	icon_state = "chair_preview";
 	dir = 4
 	},
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/coast)
 "I" = (
@@ -174,7 +174,7 @@
 /turf/simulated/floor/beach/sand/desert/odin5a,
 /area/endeavor_away/beach/jungle)
 "L" = (
-/obj/item/weapon/reagent_containers/food/snacks/egg/rainbow,
+/obj/item/reagent_containers/food/snacks/egg/rainbow,
 /turf/simulated/floor/beach/sand/odin5a,
 /area/endeavor_away/beach/eastereggisland)
 "M" = (

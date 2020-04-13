@@ -2,7 +2,7 @@
 #error T_BOARD macro is not defined but we need it!
 #endif
 
-/obj/item/weapon/circuitboard/fission_monitor
+/obj/item/circuitboard/fission_monitor
 	name = T_BOARD("fission monitoring console")
 	build_path = /obj/machinery/computer/fission_monitor
 
@@ -15,7 +15,7 @@
 	use_power = 1
 	idle_power_usage = 250
 	active_power_usage = 500
-	circuit = /obj/item/weapon/circuitboard/fission_monitor
+	circuit = /obj/item/circuitboard/fission_monitor
 	var/obj/machinery/power/fission/linked
 
 /obj/machinery/computer/fission_monitor/New()
@@ -25,9 +25,9 @@
 	linked = null
 	..()
 
-/obj/machinery/computer/fission_monitor/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/device/multitool))
-		var/obj/item/device/multitool/M = W
+/obj/machinery/computer/fission_monitor/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/multitool))
+		var/obj/item/multitool/M = W
 		if (!isnull(M.connectable) && istype(M.connectable, /obj/machinery/power/fission))
 			linked = M.connectable
 			to_chat(user, "<span class='notice'>You link \the [M.connectable] to \the [src].</span>")
@@ -80,7 +80,7 @@
 
 		data["rods"] = new /list(linked.rods.len)
 		for(var/i=1,i<=linked.rods.len,i++)
-			var/obj/item/weapon/fuelrod/rod = linked.rods[i]
+			var/obj/item/fuelrod/rod = linked.rods[i]
 			var/roddata[0]
 			roddata["rod"] = "\ref[rod]"
 			roddata["name"] = rod.name
@@ -105,7 +105,7 @@
 		return 1
 
 	if(href_list["rod_insertion"])
-		var/obj/item/weapon/fuelrod/rod = locate(href_list["rod_insertion"])
+		var/obj/item/fuelrod/rod = locate(href_list["rod_insertion"])
 		if(istype(rod) && rod.loc == linked)
 			var/new_insersion = input(usr,"Enter new insertion (0-100)%","Insertion control",rod.insertion * 100) as num
 			rod.insertion = between(0, new_insersion / 100, 1)

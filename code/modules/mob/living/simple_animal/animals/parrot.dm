@@ -55,7 +55,7 @@
 	emote_hear = list("squawks","bawks")
 	emote_see = list("flutters its wings")
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/cracker
+	meat_type = /obj/item/reagent_containers/food/snacks/cracker
 
 	hovering = TRUE
 	softfall = TRUE
@@ -73,7 +73,7 @@
 	var/list/available_channels = list()
 
 	//Headset for Poly to yell at engineers :)
-	var/obj/item/device/radio/headset/ears = null
+	var/obj/item/radio/headset/ears = null
 
 	//The thing the parrot is currently interested in. This gets used for items the parrot wants to pick up, mobs it wants to steal from,
 	//mobs it wants to attack or mobs that have attacked it
@@ -97,11 +97,11 @@
 /mob/living/simple_mob/parrot/New()
 	..()
 	if(!ears)
-		var/headset = pick(/obj/item/device/radio/headset/headset_sec, \
-						/obj/item/device/radio/headset/headset_eng, \
-						/obj/item/device/radio/headset/headset_med, \
-						/obj/item/device/radio/headset/headset_sci, \
-						/obj/item/device/radio/headset/headset_cargo)
+		var/headset = pick(/obj/item/radio/headset/headset_sec, \
+						/obj/item/radio/headset/headset_eng, \
+						/obj/item/radio/headset/headset_med, \
+						/obj/item/radio/headset/headset_sci, \
+						/obj/item/radio/headset/headset_cargo)
 		ears = new headset(src)
 
 	parrot_sleep_dur = parrot_sleep_max //In case someone decides to change the max without changing the duration var
@@ -184,11 +184,11 @@
 						if(!item_to_add)
 							return
 
-						if( !istype(item_to_add,  /obj/item/device/radio/headset) )
+						if( !istype(item_to_add,  /obj/item/radio/headset) )
 							to_chat(usr, "<font color='red'>This object won't fit.</font>")
 							return
 
-						var/obj/item/device/radio/headset/headset_to_add = item_to_add
+						var/obj/item/radio/headset/headset_to_add = item_to_add
 
 						usr.drop_item()
 						headset_to_add.forceMove(src)
@@ -652,8 +652,8 @@
 		return 0
 
 	if(!drop_gently)
-		if(istype(held_item, /obj/item/weapon/grenade))
-			var/obj/item/weapon/grenade/G = held_item
+		if(istype(held_item, /obj/item/grenade))
+			var/obj/item/grenade/G = held_item
 			G.forceMove(src.loc)
 			G.detonate()
 			to_chat(src, "You let go of the [held_item]!")
@@ -693,7 +693,7 @@
 	speak = list("Poly wanna cracker!", ":e Check the singlo, you chucklefucks!",":e Wire the solars, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?",":e OH GOD ITS FREE CALL THE SHUTTLE")
 
 /mob/living/simple_mob/parrot/Poly/New()
-	ears = new /obj/item/device/radio/headset/headset_eng(src)
+	ears = new /obj/item/radio/headset/headset_eng(src)
 	available_channels = list(":e")
 	..()
 
@@ -724,7 +724,7 @@
 
 	if(message_mode)
 		if(message_mode in radiochannels)
-			if(ears && istype(ears,/obj/item/device/radio))
+			if(ears && istype(ears,/obj/item/radio))
 				ears.talk_into(src,sanitize(message), message_mode, verb, null)
 
 

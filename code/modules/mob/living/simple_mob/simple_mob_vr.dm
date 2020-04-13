@@ -45,7 +45,7 @@
 	var/mount_offset_x = 5				// Horizontal riding offset.
 	var/mount_offset_y = 8				// Vertical riding offset
 
-	var/obj/item/device/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
+	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
 	does_spin = FALSE
 
 // Release belly contents before being gc'd!
@@ -266,7 +266,7 @@
 
 // Riding
 /datum/riding/simple_mob
-	keytype = /obj/item/weapon/material/twohanded/fluff/riding_crop // Crack!
+	keytype = /obj/item/material/twohanded/fluff/riding_crop // Crack!
 	nonhuman_key_exemption = FALSE	// If true, nonhumans who can't hold keys don't need them, like borgs and simplemobs.
 	key_name = "a riding crop"		// What the 'keys' for the thing being rided on would be called.
 	only_one_driver = TRUE			// If true, only the person in 'front' (first on list of riding mobs) can drive.
@@ -354,16 +354,16 @@
 	if(mob_radio)
 		switch(message_mode)
 			if("intercom")
-				for(var/obj/item/device/radio/intercom/I in view(1, null))
+				for(var/obj/item/radio/intercom/I in view(1, null))
 					I.talk_into(src, message, verb, speaking)
 					used_radios += I
 			if("headset")
-				if(mob_radio && istype(mob_radio,/obj/item/device/radio/headset/mob_headset))
+				if(mob_radio && istype(mob_radio,/obj/item/radio/headset/mob_headset))
 					mob_radio.talk_into(src,message,null,verb,speaking)
 					used_radios += mob_radio
 			else
 				if(message_mode)
-					if(mob_radio && istype(mob_radio,/obj/item/device/radio/headset/mob_headset))
+					if(mob_radio && istype(mob_radio,/obj/item/radio/headset/mob_headset))
 						mob_radio.talk_into(src,message, message_mode, verb, speaking)
 						used_radios += mob_radio
 	else

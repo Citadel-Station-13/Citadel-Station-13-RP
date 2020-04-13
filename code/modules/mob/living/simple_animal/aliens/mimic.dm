@@ -37,7 +37,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/carpmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
 
 	showvoreprefs = 0 //VOREStation Edit - Hides mechanical vore prefs for mimics. You can't see their gaping maws when they're just sitting idle.
 

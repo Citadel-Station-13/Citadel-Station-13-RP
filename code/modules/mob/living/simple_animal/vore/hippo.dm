@@ -47,7 +47,7 @@
 	emote_see = list("shakes its head")
 
 	meat_amount = 10 //Infinite meat!
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	max_buckled_mobs = 1 //Yeehaw
 	can_buckle = TRUE

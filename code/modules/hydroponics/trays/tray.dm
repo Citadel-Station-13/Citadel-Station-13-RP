@@ -450,7 +450,7 @@
 	if(O.is_open_container())
 		return 0
 
-	if(O.is_wirecutter() || istype(O, /obj/item/weapon/surgical/scalpel))
+	if(O.is_wirecutter() || istype(O, /obj/item/surgical/scalpel))
 
 		if(!seed)
 			user << "There is nothing to take a sample from in \the [src]."
@@ -478,9 +478,9 @@
 
 		return
 
-	else if(istype(O, /obj/item/weapon/reagent_containers/syringe))
+	else if(istype(O, /obj/item/reagent_containers/syringe))
 
-		var/obj/item/weapon/reagent_containers/syringe/S = O
+		var/obj/item/reagent_containers/syringe/S = O
 
 		if (S.mode == 1)
 			if(seed)
@@ -514,7 +514,7 @@
 		else
 			user << "<span class='danger'>\The [src] already has seeds in it!</span>"
 
-	else if (istype(O, /obj/item/weapon/material/minihoe))  // The minihoe
+	else if (istype(O, /obj/item/material/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
 			user.visible_message("<span class='danger'>[user] starts uprooting the weeds.</span>", "<span class='danger'>You remove the weeds from the [src].</span>")
@@ -523,19 +523,19 @@
 		else
 			user << "<span class='danger'>This plot is completely devoid of weeds. It doesn't need uprooting.</span>"
 
-	else if (istype(O, /obj/item/weapon/storage/bag/plants))
+	else if (istype(O, /obj/item/storage/bag/plants))
 
 		attack_hand(user)
 
-		var/obj/item/weapon/storage/bag/plants/S = O
-		for (var/obj/item/weapon/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
+		var/obj/item/storage/bag/plants/S = O
+		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G))
 				return
 			S.handle_item_insertion(G, 1)
 
-	else if ( istype(O, /obj/item/weapon/plantspray) )
+	else if ( istype(O, /obj/item/plantspray) )
 
-		var/obj/item/weapon/plantspray/spray = O
+		var/obj/item/plantspray/spray = O
 		user.remove_from_mob(O)
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
@@ -555,7 +555,7 @@
 		anchored = !anchored
 		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."
 
-	else if(istype(O,/obj/item/device/multitool))
+	else if(istype(O,/obj/item/multitool))
 		if(!anchored)
 			to_chat(user, "<span class='warning'>Anchor it first!</span>")
 			return

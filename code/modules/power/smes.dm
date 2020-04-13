@@ -12,7 +12,7 @@
 	density = 1
 	anchored = 1
 	use_power = 0
-	circuit = /obj/item/weapon/circuitboard/smes
+	circuit = /obj/item/circuitboard/smes
 
 	var/capacity = 5e6 // maximum charge
 	var/charge = 1e6 // actual charge
@@ -252,7 +252,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_screwdriver())
 		if(!open_hatch)
 			open_hatch = 1

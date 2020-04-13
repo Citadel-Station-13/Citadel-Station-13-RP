@@ -4,7 +4,7 @@
 	icon_keyboard = "power_key"
 	icon_screen = "power:0"
 	light_color = "#a97faa"
-	circuit = /obj/item/weapon/circuitboard/shutoff_monitor
+	circuit = /obj/item/circuitboard/shutoff_monitor
 
 /obj/machinery/computer/shutoff_monitor/attack_hand(var/mob/user)
 	..()

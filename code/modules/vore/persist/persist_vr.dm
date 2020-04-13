@@ -235,7 +235,7 @@
 		WARNING("Persist (NIF): [H] has no prefs datum, skipping")
 		return
 
-	var/obj/item/device/nif/nif = H.nif
+	var/obj/item/nif/nif = H.nif
 
 	//If they have one, and if it's not installing without an owner, because
 	//Someone who joins and immediately leaves again (wrong job choice, maybe)

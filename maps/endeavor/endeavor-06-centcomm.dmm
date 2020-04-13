@@ -107,7 +107,7 @@
 	})
 "ar" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom{
 	base_turf = /turf/simulated/floor/reinforced
@@ -154,7 +154,7 @@
 /area/centcom/main_hall)
 "ay" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom{
 	base_turf = /turf/simulated/floor/reinforced
@@ -193,7 +193,7 @@
 /obj/random/medical/lite,
 /obj/random/medical/lite,
 /obj/random/medical/lite,
-/obj/item/device/healthanalyzer,
+/obj/item/healthanalyzer,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom{
 	base_turf = /turf/simulated/floor/reinforced
@@ -213,7 +213,7 @@
 	})
 "aE" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape/centcom{
 	base_turf = /turf/simulated/floor/reinforced
@@ -765,8 +765,8 @@
 /area/centcom/terminal)
 "cg" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/effect/floor_decal/corner_kafel/blue{
 	icon_state = "corner_kafel";
 	dir = 6
@@ -779,8 +779,8 @@
 /area/centcom/terminal)
 "ch" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/effect/floor_decal/corner_kafel/blue{
 	icon_state = "corner_kafel";
 	dir = 9
@@ -826,13 +826,13 @@
 	icon_state = "corner_kafel";
 	dir = 5
 	},
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
-/obj/item/weapon/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
+/obj/item/reagent_containers/food/snacks/berrymuffin,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cl" = (
@@ -844,14 +844,14 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
-/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
+/obj/item/reagent_containers/food/snacks/bigbiteburger,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cm" = (
@@ -952,10 +952,10 @@
 /area/centcom/terminal)
 "cw" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper/pamphlet/phoenix,
-/obj/item/weapon/paper/pamphlet/phoenix,
-/obj/item/weapon/paper/pamphlet/phoenix,
-/obj/item/weapon/paper/pamphlet/phoenix,
+/obj/item/paper/pamphlet/phoenix,
+/obj/item/paper/pamphlet/phoenix,
+/obj/item/paper/pamphlet/phoenix,
+/obj/item/paper/pamphlet/phoenix,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom/terminal)
 "cx" = (
@@ -1123,14 +1123,14 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
-/obj/item/weapon/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
+/obj/item/reagent_containers/food/snacks/appletart,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cS" = (
@@ -1142,13 +1142,13 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
-/obj/item/weapon/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
+/obj/item/reagent_containers/food/snacks/blackpudding,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cT" = (
@@ -1160,27 +1160,27 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
-/obj/item/weapon/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
+/obj/item/reagent_containers/food/snacks/cheesymash,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cU" = (
 /obj/structure/table/marble,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
-/obj/item/weapon/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
+/obj/item/reagent_containers/food/snacks/donerkebab,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cV" = (
@@ -1195,14 +1195,14 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
-/obj/item/weapon/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
+/obj/item/reagent_containers/food/snacks/eggbowl,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cW" = (
@@ -1214,13 +1214,13 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
-/obj/item/weapon/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/obj/item/reagent_containers/food/snacks/enchiladas,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cX" = (
@@ -1232,15 +1232,15 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
-/obj/item/weapon/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
+/obj/item/reagent_containers/food/snacks/meatballspagetti,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cY" = (
@@ -1252,14 +1252,14 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
-/obj/item/weapon/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
+/obj/item/reagent_containers/food/snacks/onionsoup,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "cZ" = (
@@ -1315,14 +1315,14 @@
 	icon_state = "corner_kafel";
 	dir = 6
 	},
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
-/obj/item/weapon/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
+/obj/item/reagent_containers/food/snacks/piginblanket,
 /turf/simulated/floor/tiled/kafel_full/gray,
 /area/centcom)
 "df" = (

@@ -9,7 +9,7 @@
 /datum/uplink_item/item/tools/survivalcapsule
 	name = "Survival Capsule"
 	item_cost = 5
-	path = /obj/item/device/survivalcapsule
+	path = /obj/item/survivalcapsule
 
 /datum/uplink_item/item/tools/nanopaste
 	name = "Nanopaste (Advanced)"
@@ -29,14 +29,14 @@
 /datum/uplink_item/item/tools/luxurycapsule
 	name = "Survival Capsule (Luxury)"
 	item_cost = 40
-	path = /obj/item/device/survivalcapsule/luxury
+	path = /obj/item/survivalcapsule/luxury
 
 /datum/uplink_item/item/tools/translocator
 	name = "Translocator"
 	item_cost = 40
-	path = /obj/item/device/perfect_tele
+	path = /obj/item/perfect_tele
 
 /datum/uplink_item/item/tools/barcapsule
 	name = "Survival Capsule (Bar)"
 	item_cost = 80
-	path = /obj/item/device/survivalcapsule/luxurybar
+	path = /obj/item/survivalcapsule/luxurybar

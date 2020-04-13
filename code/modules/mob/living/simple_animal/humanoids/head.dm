@@ -21,7 +21,7 @@
 	emote_hear = list("clicks")
 	emote_see = list("clacks")
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/list/insults = list(
 	"Man you suck",

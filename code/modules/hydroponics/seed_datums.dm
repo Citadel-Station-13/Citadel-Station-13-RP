@@ -246,7 +246,7 @@
 	kitchen_tag = "egg-plant"
 	mutants = null
 	chems = list("nutriment" = list(1,5), "egg" = list(3,12))
-	has_item_product = /obj/item/weapon/reagent_containers/food/snacks/egg/purple
+	has_item_product = /obj/item/reagent_containers/food/snacks/egg/purple
 
 //Apples/varieties.
 /datum/seed/apple
@@ -808,7 +808,7 @@
 	display_name = "banana tree"
 	kitchen_tag = "banana"
 	chems = list("banana" = list(10,10))
-	trash_type = /obj/item/weapon/bananapeel
+	trash_type = /obj/item/bananapeel
 
 /datum/seed/banana/New()
 	..()
@@ -830,7 +830,7 @@
 	display_name = "ears of corn"
 	kitchen_tag = "corn"
 	chems = list("nutriment" = list(1,10), "cornoil" = list(1,10))
-	trash_type = /obj/item/weapon/corncob
+	trash_type = /obj/item/corncob
 
 /datum/seed/corn/New()
 	..()

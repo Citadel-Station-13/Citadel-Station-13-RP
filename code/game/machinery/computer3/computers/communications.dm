@@ -71,12 +71,12 @@
 		var/obj/item/I = M.get_active_hand()
 		if(I)
 			I = I.GetID()
-		if(istype(I,/obj/item/weapon/card/id) && check_access(I))
+		if(istype(I,/obj/item/card/id) && check_access(I))
 			authenticated = 1
 			if(access_captain in I.GetAccess())
 				authenticated = 2
 				crew_announcement.announcer = GetNameAndAssignmentFromId(I)
-		if(istype(I,/obj/item/weapon/card/emag))
+		if(istype(I,/obj/item/card/emag))
 			authenticated = 2
 			computer.emagged = 1
 
@@ -89,7 +89,7 @@
 		var/obj/item/I = M.get_active_hand()
 		I = I.GetID()
 
-		if (istype(I,/obj/item/weapon/card/id))
+		if (istype(I,/obj/item/card/id))
 			if(access_captain in I.GetAccess())
 				var/old_level = security_level
 				if(!tmp_alertlevel)

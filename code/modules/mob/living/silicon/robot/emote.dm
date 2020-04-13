@@ -220,7 +220,7 @@
 			m_type = 1
 
 		if("law")
-			if (istype(module,/obj/item/weapon/robot_module/robot/security) || istype(module,/obj/item/weapon/robot_module/robot/knine)) //VOREStation Add - K9
+			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine)) //VOREStation Add - K9
 				message = "shows its legal authorization barcode."
 
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 50, 0)
@@ -229,7 +229,7 @@
 				to_chat(src, "You are not THE LAW, pal.")
 
 		if("halt")
-			if (istype(module,/obj/item/weapon/robot_module/robot/security) || istype(module,/obj/item/weapon/robot_module/robot/knine)) //VOREStation Add - K9
+			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine)) //VOREStation Add - K9
 				message = "<B>'s</B> speakers skreech, \"Halt! Security!\"."
 
 				playsound(src.loc, 'sound/voice/halt.ogg', 50, 0)
@@ -238,7 +238,7 @@
 				src << "You are not security."
 
 		if("bark")
-			if (istype(module,/obj/item/weapon/robot_module/robot/knine) || istype(module,/obj/item/weapon/robot_module/robot/medihound) || istype(module,/obj/item/weapon/robot_module/robot/scrubpup) || istype(module,/obj/item/weapon/robot_module/robot/ert) || istype(module,/obj/item/weapon/robot_module/robot/science) || istype(module,/obj/item/weapon/robot_module/robot/engiedog) || istype(module,/obj/item/weapon/robot_module/robot/clerical/brodog))
+			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out a bark."
 
 				playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
@@ -246,7 +246,7 @@
 			else
 				src << "You're not a dog!"
 		if("arfe")
-			if (istype(module,/obj/item/weapon/robot_module/robot/knine) || istype(module,/obj/item/weapon/robot_module/robot/medihound) || istype(module,/obj/item/weapon/robot_module/robot/scrubpup) || istype(module,/obj/item/weapon/robot_module/robot/ert) || istype(module,/obj/item/weapon/robot_module/robot/science) || istype(module,/obj/item/weapon/robot_module/robot/engiedog) || istype(module,/obj/item/weapon/robot_module/robot/clerical/brodog))
+			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out an A R F E."
 
 				playsound(loc, 'modular_citadel/sound/voice/arfe.ogg', 50, 1, -1)

@@ -19,7 +19,7 @@
 
 /* TEMPLATE
 //ckey:Character Name
-/obj/item/weapon/gun/type/fluff/charactername
+/obj/item/gun/type/fluff/charactername
 	name = ""
 	desc = ""
 
@@ -36,7 +36,7 @@
 //////////////////// Projectile Weapons ////////////////////
 ////////////////////////////////////////////////////////////
 // For general use
-/obj/item/weapon/gun/projectile/automatic/battlerifle
+/obj/item/gun/projectile/automatic/battlerifle
 	name = "\improper USDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -57,7 +57,7 @@
 	one_handed_penalty = 60 // The weapon itself is heavy
 
 // For general use
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF
+/obj/item/gun/projectile/shotgun/pump/USDF
 	name = "\improper USDF tactical shotgun"
 	desc = "All you greenhorns who wanted to see Xenomorphs up close... this is your lucky day. Uses 12g rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -69,7 +69,7 @@
 	max_shells = 12
 
 // For general use
-/obj/item/weapon/gun/projectile/automatic/pdw
+/obj/item/gun/projectile/automatic/pdw
 	name = "personal defense weapon"
 	desc = "The X-9MM is a select-fire personal defense weapon designed in-house by Xing Private Security. It was made to compete with the WT550 Saber, but never caught on with NanoTrasen. Uses 9mm rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -88,7 +88,7 @@
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30), dispersion=list(0.0, 0.6, 0.6))
 		)
 
-/obj/item/weapon/gun/projectile/automatic/pdw/update_icon(var/ignore_inhands)
+/obj/item/gun/projectile/automatic/pdw/update_icon(var/ignore_inhands)
 	..()
 	if(istype(ammo_magazine,/obj/item/ammo_magazine/m9mm))
 		icon_state = "pdw-short"
@@ -97,7 +97,7 @@
 	if(!ignore_inhands) update_held_icon()
 
 // For general use
-/obj/item/weapon/gun/energy/imperial
+/obj/item/gun/energy/imperial
 	name = "imperial energy pistol"
 	desc = "An elegant weapon developed by the Imperium Auream. Their weaponsmiths have cleverly found a way to make a gun that is only about the size of an average energy pistol, yet with the fire power of a laser carbine."
 	icon_state = "ge_pistol"
@@ -114,14 +114,14 @@
 	projectile_type = /obj/item/projectile/beam/imperial
 /* CITADEL CHANGE - Removes Virgo Fluff
 // jertheace : Jeremiah 'Ace' Acacius
-/obj/item/weapon/gun/projectile/shotgun/pump/USDF/fluff/ace
+/obj/item/gun/projectile/shotgun/pump/USDF/fluff/ace
 	name = "Ace's tactical shotgun" // D-model holds half as many shells as the normal version so as not OP as shit. Better than normal shotgun, worse than combat shotgun.
 	desc = "Owned by the respected (or feared?) veteran Captain of the original NSS Adephagia. Inscribed on the barrel are the words \"Speak softly, and carry a big stick.\""
 	ammo_type = /obj/item/ammo_casing/a12g/stunshell
 	max_shells = 6
 
 // bwoincognito:Tasald Corlethian
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/tasald_corlethian //Now that it is actually Single-Action and not hacky broken SA, I see no reason to nerf this down to .38. --Joan Risu
+/obj/item/gun/projectile/revolver/mateba/fluff/tasald_corlethian //Now that it is actually Single-Action and not hacky broken SA, I see no reason to nerf this down to .38. --Joan Risu
 	name = "\improper \"Big Iron\" revolver"
 	desc = "A .357 revolver for veteran rangers on the planet Orta. The right side of the handle has a logo for Quarion industries, and the left is the Rangers. The primary ammo for this gun is .357 rubber. According to the CentCom Chief of Security, this revolver was more controversial than it needed to be."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -151,26 +151,26 @@
 			chambered = AC
 		update_icon()
 
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user as mob)
+/obj/item/gun/projectile/revolver/mateba/fluff/tasald_corlethian/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
 		unload_ammo(user, allow_dump = 1)
 	else
 		..()
 
 // wankersonofjerkin : Glenn Pink
-/obj/item/weapon/gun/projectile/revolver/fluff/admiral_pink_revolver
+/obj/item/gun/projectile/revolver/fluff/admiral_pink_revolver
 	name = "Admiral Pink's 'Devilgun'"
 	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red rosewood grip. Uses .357 rounds." //Edgy, but based on real guns the player owns.
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "ryan_winz"
 	item_state = "revolver"
 
-/obj/item/weapon/gun/projectile/revolver/fluff/admiral_pink_revolver/redemption
+/obj/item/gun/projectile/revolver/fluff/admiral_pink_revolver/redemption
 	name = "Admiral Pink's 'Redeemer'"
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 rounds." //Edgy, but based on real guns the player owns.
 
 // sasoperative : Joseph Skinner
-/obj/item/weapon/gun/projectile/revolver/judge/fluff/sasoperative
+/obj/item/gun/projectile/revolver/judge/fluff/sasoperative
 	name = "\"The Jury\""
 	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner. Uses 12g shells."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -179,7 +179,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
 // Dhaeleena : Dhaeleena M'iar
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/dhael
+/obj/item/gun/projectile/revolver/mateba/fluff/dhael
 	name = "Dhaeleena's engraved mateba"
 	desc = "This unique looking handgun is engraved with roses along the barrel and the cylinder as well as the initials DM under the grip. Along the middle of the barrel an engraving shows the words 'Mateba Unica 6'. Uses .357 rounds."
 	icon_state = "mateba"
@@ -187,7 +187,7 @@
 	ammo_type = /obj/item/ammo_casing/a357/stun
 
 // SilencedMP5A5 : Serdykov Antoz
-/obj/item/weapon/gun/projectile/colt/fluff/serdy
+/obj/item/gun/projectile/colt/fluff/serdy
 	name = "Raikov PPS/45"
 	desc = "An expertly crafted and reliable .45 sidearm with a 7 round single-stack magazine, originally built and in 2369 for frontier men and peacekeepers. The frame and slide are nickel plated, and it has a synthetic black ivory grip. The words 'Krasnaya Raketa' are engraved on the slide near the muzzle. It's relatively thin, but heavy. It also has an ambidextrous mag release and safety lever, making it grippable in either hand comfortably."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -197,7 +197,7 @@
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
 
 /* //Commented out due to weapon change.
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/serdy //This forces it to be .38 bullets only
+/obj/item/gun/projectile/revolver/detective/fluff/serdy //This forces it to be .38 bullets only
 	name = "Vintage S&W Model 10"
 	desc = "It's a classic S&W Model 10 revolver. This one in particular is beautifully restored with a chromed black frame and cylinder, and a nice redwood grip. The name 'Serdykov A.' is engraved into the base of the grip."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -209,14 +209,14 @@
 */
 
 // LuminescentRing : Briana Moore
-/obj/item/weapon/gun/projectile/derringer/fluff/briana
+/obj/item/gun/projectile/derringer/fluff/briana
 	name = "second-hand derringer"
 	desc = "It's a palm sized gun. One of the few things that won't break an angel's wrists. Uses 10mm rounds."
 	caliber = "10mm"
 	ammo_type = /obj/item/ammo_casing/a10mm
 END OF CITADEL CHANGES */
 // For general use
-/obj/item/weapon/gun/projectile/automatic/stg
+/obj/item/gun/projectile/automatic/stg
 	name = "\improper Sturmgewehr"
 	desc = "An STG-560 built by RauMauser. Experience the terror of the Siegfried line, redone for the 26th century! The Kaiser would be proud. Uses unique 7.92x33mm Kurz rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -230,14 +230,14 @@ END OF CITADEL CHANGES */
 	allowed_magazines = list(/obj/item/ammo_magazine/mtg)
 	load_method = MAGAZINE
 
-/obj/item/weapon/gun/projectile/automatic/stg/update_icon(var/ignore_inhands)
+/obj/item/gun/projectile/automatic/stg/update_icon(var/ignore_inhands)
 	..()
 	icon_state = (ammo_magazine)? "stg60" : "stg60-empty"
 	item_state = (ammo_magazine)? "arifle" : "arifle-empty"
 	if(!ignore_inhands) update_held_icon()
 
 //-----------------------Tranq Gun----------------------------------
-/obj/item/weapon/gun/projectile/dartgun/tranq
+/obj/item/gun/projectile/dartgun/tranq
 	name = "tranquilizer gun"
 	desc = "A gas-powered dart gun designed by the National Armory of Gaia. This gun is used primarily by United Federation special forces for Tactical Espionage missions. Don't forget your bandana."
 	icon_state = "tranqgun"
@@ -253,7 +253,7 @@ END OF CITADEL CHANGES */
 	allowed_magazines = list(/obj/item/ammo_magazine/chemdart)
 	auto_eject = 0
 
-/obj/item/weapon/gun/projectile/dartgun/tranq/update_icon()
+/obj/item/gun/projectile/dartgun/tranq/update_icon()
 	if(!ammo_magazine)
 		icon_state = "tranqgun"
 		return 1
@@ -268,7 +268,7 @@ END OF CITADEL CHANGES */
 
 // Removed because gun64_vr.dmi guns don't work.
 /*//-----------------------UF-ARC----------------------------------
-/obj/item/weapon/gun/projectile/automatic/carbine/fluff/ufarc
+/obj/item/gun/projectile/automatic/carbine/fluff/ufarc
 	name = "UF-ARC"
 	desc = "The UF-ARC is a lightweight assault rifle manufactured by the National Armory of Gaia and sold almost exclusively to the United Federation's standing army, the Military Assault Command Operations Department (MACOs)."
 	icon = 'icons/obj/gun64_vr.dmi'
@@ -278,7 +278,7 @@ END OF CITADEL CHANGES */
 	item_icons = null
 	pixel_x = -16
 
-/obj/item/weapon/gun/projectile/automatic/carbine/fluff/ufarc/update_icon(var/ignore_inhands)
+/obj/item/gun/projectile/automatic/carbine/fluff/ufarc/update_icon(var/ignore_inhands)
 	..()
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "ufarc" : "ufarc-empty"
@@ -288,7 +288,7 @@ END OF CITADEL CHANGES */
 
 
 //-----------------------G44----------------------------------
-/obj/item/weapon/gun/projectile/automatic/carbine/fluff/g44
+/obj/item/gun/projectile/automatic/carbine/fluff/g44
 	name = "G44 Rifle"
 	desc = "The G44 is a lightweight assault rifle manufactured by the National Armory of Gaia and sold almost exclusively to the United Federation's standing army, the Military Assault Command Operations Department (MACOs)."
 	icon = 'icons/obj/gun64_vr.dmi'
@@ -296,7 +296,7 @@ END OF CITADEL CHANGES */
 	item_state = "bullpup"
 	pixel_x = -16
 
-/obj/item/weapon/gun/projectile/automatic/carbine/fluff/g44/update_icon(var/ignore_inhands)
+/obj/item/gun/projectile/automatic/carbine/fluff/g44/update_icon(var/ignore_inhands)
 	..()
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "g44" : "g44-empty"
@@ -304,7 +304,7 @@ END OF CITADEL CHANGES */
 	if(!ignore_inhands) update_held_icon()
 
 //-----------------------G44 Energy Variant--------------------
-/obj/item/weapon/gun/energy/gun/burst/g44e
+/obj/item/gun/energy/gun/burst/g44e
 	name = "G44 Energy Rifle"
 	desc = "The G44 Energy is a laser variant of the G44 lightweight assault rifle manufactured by the National Armory of Gaia. Though almost exclusively to the United Federation's Military Assault Command Operations Department (MACOs) and Starfleet, it is occassionally sold to security departments for their stun capabilities."
 	icon = 'icons/obj/gun64_vr.dmi'
@@ -332,7 +332,7 @@ END OF CITADEL CHANGES */
 
 /* CITADEL CHANGE - Removes Virgo Fluff
 // molenar:Kari Akiren
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
+/obj/item/gun/projectile/shotgun/pump/rifle/fluff/kari_akiren
 	name = "clockwork rifle"
 	desc = "Brass, copper, and lots of gears. Well lubricated for fluid movement as each round is loaded, locked, and fired. Just like clockwork."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -343,12 +343,12 @@ END OF CITADEL CHANGES */
 
 /* Permit Expired
 //Razerwing:Archer Maximus
-/obj/item/weapon/gun/projectile/colt/fluff/archercolt
+/obj/item/gun/projectile/colt/fluff/archercolt
 	name = "\improper MEUSOC .45"
 	desc = "Some serious drywall work, coming up!"
 */
 //hzdonut:Jesse Soemmer
-/obj/item/weapon/gun/projectile/revolver/fluff/jesselemat
+/obj/item/gun/projectile/revolver/fluff/jesselemat
 	name = "Modified LeMat"
 	desc = "The LeMat Revolver is a 9 shot revolver with a secondary firing barrel for loading shotgun shells. Uses .38-Special and 12g rounds depending on the barrel. This one appears to have had it's secondary barrel sealed off and looks to be in pristine condition. Either it's brand new, or its owner takes very good care of it."
 	icon_state = "lemat"
@@ -360,7 +360,7 @@ END OF CITADEL CHANGES */
 //////////////////// Energy Weapons ////////////////////
 
 // ------------ Energy Luger ------------
-/obj/item/weapon/gun/energy/gun/eluger
+/obj/item/gun/energy/gun/eluger
 	name = "energy Luger"
 	desc = "The finest sidearm produced by RauMauser. Although its battery cannot be removed, its ergonomic design makes it easy to shoot, allowing for rapid follow-up shots. It also has the ability to toggle between stun and kill."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -378,7 +378,7 @@ END OF CITADEL CHANGES */
 
 //////////////////// Eris Ported Guns ////////////////////
 //HoS Gun
-/*/obj/item/weapon/gun/projectile/lamia
+/*/obj/item/gun/projectile/lamia
 	name = "FS HG .44 \"Lamia\""
 	desc = "Uses .44 rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -393,7 +393,7 @@ END OF CITADEL CHANGES */
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 4)
 
-/obj/item/weapon/gun/projectile/lamia/update_icon()
+/obj/item/gun/projectile/lamia/update_icon()
 	overlays.Cut()
 	if(!ammo_magazine)
 		return
@@ -403,7 +403,7 @@ END OF CITADEL CHANGES */
 
 
 //Civilian gun
-/obj/item/weapon/gun/projectile/giskard
+/obj/item/gun/projectile/giskard
 	name = "\improper \"Giskard\" holdout pistol"
 	desc = "The FS HG .380 \"Giskard\" can even fit into the pocket! Uses .380 rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -416,7 +416,7 @@ END OF CITADEL CHANGES */
 	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
 
-/obj/item/weapon/gun/projectile/giskard/update_icon()
+/obj/item/gun/projectile/giskard/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "giskardcivil"
@@ -424,7 +424,7 @@ END OF CITADEL CHANGES */
 		icon_state = "giskardcivil_empty"
 
 //Not so civilian gun
-/obj/item/weapon/gun/projectile/giskard/olivaw
+/obj/item/gun/projectile/giskard/olivaw
 	name = "\improper \"Olivaw\" holdout burst-pistol"
 	desc = "The FS HG .380 \"Olivaw\" is a more advanced version of the \"Giskard\". This one seems to have a two-round burst-fire mode. Uses .380 rounds."
 	icon_state = "olivawcivil"
@@ -433,7 +433,7 @@ END OF CITADEL CHANGES */
 		list(mode_name="2-round bursts", burst=2, fire_delay=0.2, move_delay=4,    burst_accuracy=list(0,-15),       dispersion=list(1.2, 1.8)),
 		)
 
-/obj/item/weapon/gun/projectile/giskard/olivaw/update_icon()
+/obj/item/gun/projectile/giskard/olivaw/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "olivawcivil"
@@ -441,7 +441,7 @@ END OF CITADEL CHANGES */
 		icon_state = "olivawcivil_empty"
 
 //Detective gun
-/obj/item/weapon/gun/projectile/revolver/consul
+/obj/item/gun/projectile/revolver/consul
 	name = "\improper \"Consul\" Revolver"
 	desc = "Are you feeling lucky, punk? Uses .44 rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -452,18 +452,18 @@ END OF CITADEL CHANGES */
 	handle_casings = CYCLE_CASINGS
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 
-/obj/item/weapon/gun/projectile/revolver/consul/proc/update_charge()
+/obj/item/gun/projectile/revolver/consul/proc/update_charge()
 	if(loaded.len==0)
 		overlays += "inspector_off"
 	else
 		overlays += "inspector_on"
 
-/obj/item/weapon/gun/projectile/revolver/consul/update_icon()
+/obj/item/gun/projectile/revolver/consul/update_icon()
 	overlays.Cut()
 	update_charge()
 
 // No idea what this is for.
-/obj/item/weapon/gun/projectile/automatic/sol
+/obj/item/gun/projectile/automatic/sol
 	name = "\improper \"Sol\" SMG"
 	desc = "The FS 9x19mm \"Sol\" is a compact and reliable submachine gun. Uses 9mm rounds."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -483,7 +483,7 @@ END OF CITADEL CHANGES */
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    burst_accuracy=list(0,-15,-15),       dispersion=list(0.0, 0.6, 1.0)),
 		)
 
-/obj/item/weapon/gun/projectile/automatic/sol/proc/update_charge()
+/obj/item/gun/projectile/automatic/sol/proc/update_charge()
 	if(!ammo_magazine)
 		return
 	var/ratio = ammo_magazine.stored_ammo.len / ammo_magazine.max_ammo
@@ -492,13 +492,13 @@ END OF CITADEL CHANGES */
 	ratio = round(ratio, 0.25) * 100
 	overlays += "smg_[ratio]"
 
-/obj/item/weapon/gun/projectile/automatic/sol/update_icon()
+/obj/item/gun/projectile/automatic/sol/update_icon()
 	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
 	overlays.Cut()
 	update_charge()
 
 //HoP gun
-/obj/item/weapon/gun/energy/gun/martin
+/obj/item/gun/energy/gun/martin
 	name = "holdout energy gun"
 	desc = "The FS PDW E \"Martin\" is small holdout e-gun. Don't miss!"
 	icon = 'icons/obj/gun_vr.dmi'
@@ -517,13 +517,13 @@ END OF CITADEL CHANGES */
 		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
 		)
 
-/obj/item/weapon/gun/energy/gun/martin/proc/update_mode()
+/obj/item/gun/energy/gun/martin/proc/update_mode()
 	var/datum/firemode/current_mode = firemodes[sel_mode]
 	switch(current_mode.name)
 		if("stun") add_overlay("taser_pdw")
 		if("lethal") add_overlay("lazer_pdw")
 
-/obj/item/weapon/gun/energy/gun/martin/update_icon()
+/obj/item/gun/energy/gun/martin/update_icon()
 	cut_overlays()
 	update_mode()
 
@@ -726,7 +726,7 @@ END OF CITADEL CHANGES */
 	ammo_type = /obj/item/ammo_casing/a44/rubber
 
 //Expedition pistol
-/obj/item/weapon/gun/energy/frontier
+/obj/item/gun/energy/frontier
 	name = "frontier phaser"
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -750,7 +750,7 @@ END OF CITADEL CHANGES */
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, charge_cost = 60),
 	)
 
-/obj/item/weapon/gun/energy/frontier/unload_ammo(var/mob/user)
+/obj/item/gun/energy/frontier/unload_ammo(var/mob/user)
 	if(recharging)
 		return
 	recharging = 1
@@ -767,26 +767,26 @@ END OF CITADEL CHANGES */
 	recharging = 0
 	update_icon()
 
-/obj/item/weapon/gun/energy/frontier/update_icon()
+/obj/item/gun/energy/frontier/update_icon()
 	if(recharging)
 		icon_state = "[initial(icon_state)]_pump"
 		update_held_icon()
 		return
 	..()
 
-/obj/item/weapon/gun/energy/frontier/emp_act(severity)
+/obj/item/gun/energy/frontier/emp_act(severity)
 	return ..(severity+2)
 
-/obj/item/weapon/gun/energy/frontier/ex_act() //|rugged|
+/obj/item/gun/energy/frontier/ex_act() //|rugged|
 	return
 
-/obj/item/weapon/gun/energy/frontier/locked
+/obj/item/gun/energy/frontier/locked
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	req_access = list(access_armory) //for toggling safety
 	var/locked = 1
 
-/obj/item/weapon/gun/energy/frontier/locked/attackby(obj/item/I, mob/user)
-	var/obj/item/weapon/card/id/id = I.GetID()
+/obj/item/gun/energy/frontier/locked/attackby(obj/item/I, mob/user)
+	var/obj/item/card/id/id = I.GetID()
 	if(istype(id))
 		if(check_access(id))
 			locked = !locked
@@ -797,12 +797,12 @@ END OF CITADEL CHANGES */
 	else
 		return ..()
 
-/obj/item/weapon/gun/energy/frontier/locked/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/gun/energy/frontier/locked/emag_act(var/remaining_charges,var/mob/user)
 	..()
 	locked = !locked
 	to_chat(user, "<span class='warning'>You [locked ? "enable" : "disable"] the safety lock on \the [src]!</span>")
 
-/obj/item/weapon/gun/energy/frontier/locked/special_check(mob/user)
+/obj/item/gun/energy/frontier/locked/special_check(mob/user)
 	if(locked)
 		var/turf/T = get_turf(src)
 		if(T.z in GLOB.using_map.map_levels)
@@ -811,7 +811,7 @@ END OF CITADEL CHANGES */
 	return ..()
 
 //Phaser Carbine - Reskinned phaser
-/obj/item/weapon/gun/energy/frontier/locked/carbine
+/obj/item/gun/energy/frontier/locked/carbine
 	name = "frontier carbine"
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon = 'icons/obj/gun_vr.dmi'
@@ -825,7 +825,7 @@ END OF CITADEL CHANGES */
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
 	)
 
-/obj/item/weapon/gun/energy/frontier/locked/carbine/update_icon()
+/obj/item/gun/energy/frontier/locked/carbine/update_icon()
 	if(recharging)
 		icon_state = "[modifystate]_pump"
 		update_held_icon()
@@ -833,7 +833,7 @@ END OF CITADEL CHANGES */
 	..()
 
 //Expeditionary Holdout Phaser Pistol
-/obj/item/weapon/gun/energy/frontier/locked/holdout
+/obj/item/gun/energy/frontier/locked/holdout
 	name = "holdout frontier phaser"
 	desc = "An minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon = 'icons/obj/gun_vr.dmi'

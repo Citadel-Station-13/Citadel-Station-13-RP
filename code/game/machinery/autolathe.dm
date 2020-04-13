@@ -8,7 +8,7 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/weapon/circuitboard/autolathe
+	circuit = /obj/item/circuitboard/autolathe
 	var/datum/category_collection/autolathe/machine_recipes
 	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
 	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
@@ -28,11 +28,11 @@
 	..()
 	wires = new(src)
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
 	RefreshParts()
 
 /obj/machinery/autolathe/Destroy()
@@ -136,7 +136,7 @@
 
 	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
-		if(istype(O, /obj/item/device/multitool) || O.is_wirecutter())
+		if(istype(O, /obj/item/multitool) || O.is_wirecutter())
 			attack_hand(user)
 			return
 
@@ -302,9 +302,9 @@
 	..()
 	var/mb_rating = 0
 	var/man_rating = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
 		mb_rating += MB.rating
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
 	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 25000

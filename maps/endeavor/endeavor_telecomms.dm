@@ -71,10 +71,10 @@
 		num2text(EXP_FREQ) = list(access_explorer)
 	)
 
-/obj/item/device/multitool/endeavor_buffered
+/obj/item/multitool/endeavor_buffered
 	name = "pre-linked multitool (Endeavor hub)"
 	desc = "This multitool has already been linked to the Endeavor telecomms hub and can be used to configure one (1) relay."
 
-/obj/item/device/multitool/endeavor_buffered/Initialize()
+/obj/item/multitool/endeavor_buffered/Initialize()
 	. = ..()
 	buffer = locate(/obj/machinery/telecomms/hub/preset/endeavor)

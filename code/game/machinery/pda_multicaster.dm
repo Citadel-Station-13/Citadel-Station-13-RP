@@ -5,7 +5,7 @@
 	icon_state = "controller"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/telecomms/pda_multicaster
+	circuit = /obj/item/circuitboard/telecomms/pda_multicaster
 	use_power = 1
 	idle_power_usage = 750
 	var/on = 1		// If we're currently active,
@@ -14,23 +14,23 @@
 
 /obj/machinery/pda_multicaster/New()
 	..()
-	internal_PDAs = list("command" = new /obj/item/device/pda/multicaster/command(src),
-		"security" = new /obj/item/device/pda/multicaster/security(src),
-		"engineering" = new /obj/item/device/pda/multicaster/engineering(src),
-		"medical" = new /obj/item/device/pda/multicaster/medical(src),
-		"research" = new /obj/item/device/pda/multicaster/research(src),
-		"cargo" = new /obj/item/device/pda/multicaster/cargo(src),
-		"civilian" = new /obj/item/device/pda/multicaster/civilian(src))
+	internal_PDAs = list("command" = new /obj/item/pda/multicaster/command(src),
+		"security" = new /obj/item/pda/multicaster/security(src),
+		"engineering" = new /obj/item/pda/multicaster/engineering(src),
+		"medical" = new /obj/item/pda/multicaster/medical(src),
+		"research" = new /obj/item/pda/multicaster/research(src),
+		"cargo" = new /obj/item/pda/multicaster/cargo(src),
+		"civilian" = new /obj/item/pda/multicaster/civilian(src))
 
 /obj/machinery/pda_multicaster/prebuilt/New()
 	..()
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/telecomms/pda_multicaster(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/ansible(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/sub_filter(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/treatment(src)
+	component_parts += new /obj/item/circuitboard/telecomms/pda_multicaster(src)
+	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
+	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 
@@ -69,7 +69,7 @@
 		log_game(msg)
 
 /obj/machinery/pda_multicaster/proc/update_PDAs(var/turn_off)
-	for(var/obj/item/device/pda/pda in contents)
+	for(var/obj/item/pda/pda in contents)
 		pda.toff = turn_off
 
 /obj/machinery/pda_multicaster/proc/update_power()

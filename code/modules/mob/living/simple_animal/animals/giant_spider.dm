@@ -41,7 +41,7 @@
 	speak_emote = list("chitters")
 	emote_hear = list("chitters")
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat
+	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat
 
 	var/busy = 0
 	var/poison_per_bite = 5
@@ -284,7 +284,7 @@ Hunter Family
 	spawn(1)
 		for(var/I = 1 to rand(3,6))
 			if(src)
-				new/obj/item/weapon/ore/glass(src.loc)
+				new/obj/item/ore/glass(src.loc)
 			else
 				break
 	return ..()

@@ -1,4 +1,4 @@
-/obj/item/weapon/robot_module
+/obj/item/robot_module
 	languages = list(LANGUAGE_SOL_COMMON= 1,
 					LANGUAGE_TRADEBAND	= 1,
 					LANGUAGE_UNATHI		= 0,
@@ -16,7 +16,7 @@
 					)
 	var/vr_sprites = list()
 
-/obj/item/weapon/robot_module/robot/clerical
+/obj/item/robot_module/robot/clerical
 	languages = list(
 					LANGUAGE_SOL_COMMON	= 1,
 					LANGUAGE_TRADEBAND	= 1,
@@ -37,29 +37,29 @@
 					)
 
 //Just add a new proc with the robot_module type if you wish to run some other vore code
-/obj/item/weapon/robot_module/proc/vr_new() // Any Global modules, just add them before the return (This will also affect all the borgs in this file)
+/obj/item/robot_module/proc/vr_new() // Any Global modules, just add them before the return (This will also affect all the borgs in this file)
 	return
 
-/obj/item/weapon/robot_module/proc/vr_add_sprites() // Adds sprites from this file into list of avialible ones for global modules
+/obj/item/robot_module/proc/vr_add_sprites() // Adds sprites from this file into list of avialible ones for global modules
 	sprites += vr_sprites
 	return
 
-/obj/item/weapon/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
-	src.modules += new /obj/item/device/sleevemate(src) //Lets them scan people.
+/obj/item/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
+	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	. = ..() //Any Global vore modules will come from here
 
-/obj/item/weapon/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
-	src.modules += new /obj/item/device/sleevemate(src) //Lets them scan people.
+/obj/item/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
+	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	. = ..() //Any Global vore modules will come from here
 
-/obj/item/weapon/robot_module/robot/medical/surgeon //VOREStation sprites
+/obj/item/robot_module/robot/medical/surgeon //VOREStation sprites
 	vr_sprites = list(
 						"Acheron" = "mechoid-Medical",
 						"Shellguard Noble" = "Noble-MED",
 						"ZOOM-BA" = "zoomba-medical"
 					 )
 
-/obj/item/weapon/robot_module/robot/medical/crisis //VOREStation sprites
+/obj/item/robot_module/robot/medical/crisis //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-med",
 						"Acheron" = "mechoid-Medical",
@@ -67,7 +67,7 @@
 						"ZOOM-BA" = "zoomba-crisis"
 					 )
 
-/obj/item/weapon/robot_module/robot/clerical/butler //VOREStation sprites
+/obj/item/robot_module/robot/clerical/butler //VOREStation sprites
 	vr_sprites = list(
 						"Handy - Service" = "handy-service",
 						"Handy - Hydro" = "handy-hydro",
@@ -76,7 +76,7 @@
 						"ZOOM-BA" = "zoomba-service"
 					 )
 
-/obj/item/weapon/robot_module/robot/clerical/general //VOREStation sprites
+/obj/item/robot_module/robot/clerical/general //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-clerk",
 						"Acheron" = "mechoid-Service",
@@ -84,7 +84,7 @@
 						"ZOOM-BA" = "zoomba-clerical"
 					 )
 
-/obj/item/weapon/robot_module/robot/janitor //VOREStation sprites
+/obj/item/robot_module/robot/janitor //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-janitor",
 						"Acheron" = "mechoid-Janitor",
@@ -92,7 +92,7 @@
 						"ZOOM-BA" = "zoomba-janitor"
 					 )
 
-/obj/item/weapon/robot_module/robot/security/general //VOREStation sprites
+/obj/item/robot_module/robot/security/general //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-sec",
 						"Acheron" = "mechoid-Security",
@@ -100,7 +100,7 @@
 						"ZOOM-BA" = "zoomba-security"
 					 )
 
-/obj/item/weapon/robot_module/robot/miner //VOREStation sprites
+/obj/item/robot_module/robot/miner //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-miner",
 						"Acheron" = "mechoid-Miner",
@@ -108,7 +108,7 @@
 						"ZOOM-BA" = "zoomba-miner"
 					 )
 
-/obj/item/weapon/robot_module/robot/standard //VOREStation sprites
+/obj/item/robot_module/robot/standard //VOREStation sprites
 	vr_sprites = list(
 						"Handy" = "handy-standard",
 						"Acheron" = "mechoid-Standard",
@@ -116,20 +116,20 @@
 						"ZOOM-BA" = "zoomba-standard"
 					 )
 
-/obj/item/weapon/robot_module/robot/engineering/general //VOREStation sprites
+/obj/item/robot_module/robot/engineering/general //VOREStation sprites
 	vr_sprites = list(
 						"Acheron" = "mechoid-Engineering",
 						"Shellguard Noble" = "Noble-ENG",
 						"ZOOM-BA" = "zoomba-engineering"
 					 )
 
-/obj/item/weapon/robot_module/robot/research //VOREStation sprites
+/obj/item/robot_module/robot/research //VOREStation sprites
 	vr_sprites = list(
 						"Acheron" = "mechoid-Science",
 						"ZOOM-BA" = "zoomba-research"
 					 )
 
-/obj/item/weapon/robot_module/robot/security/combat //VOREStation sprites
+/obj/item/robot_module/robot/security/combat //VOREStation sprites
 	vr_sprites = list(
 						"Acheron" = "mechoid-Combat",
 						"ZOOM-BA" = "zoomba-combat"

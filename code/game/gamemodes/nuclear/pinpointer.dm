@@ -1,4 +1,4 @@
-/obj/item/weapon/pinpointer
+/obj/item/pinpointer
 	name = "pinpointer"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pinoff"
@@ -9,7 +9,7 @@
 	throw_range = 20
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	preserve_item = 1
-	var/obj/item/weapon/disk/nuclear/the_disk = null
+	var/obj/item/disk/nuclear/the_disk = null
 	var/active = 0
 
 
@@ -48,11 +48,11 @@
 			if(bomb.timing)
 				user << "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
 
-/obj/item/weapon/pinpointer/Destroy()
+/obj/item/pinpointer/Destroy()
 	active = 0
 	..()
 
-/obj/item/weapon/pinpointer/advpinpointer
+/obj/item/pinpointer/advpinpointer
 	name = "Advanced Pinpointer"
 	icon = 'icons/obj/device.dmi'
 	desc = "A larger version of the normal pinpointer, this unit features a helpful quantum entanglement detection system to locate various objects that do not broadcast a locator signal."
@@ -113,7 +113,7 @@
 				icon_state = "pinonfar"
 		spawn(5) .()
 
-/obj/item/weapon/pinpointer/advpinpointer/verb/toggle_mode()
+/obj/item/pinpointer/advpinpointer/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Pinpointer Mode"
 	set src in view(1)
@@ -180,11 +180,11 @@
 ///////////////////////
 
 
-/obj/item/weapon/pinpointer/nukeop
+/obj/item/pinpointer/nukeop
 	var/mode = 0	//Mode 0 locates disk, mode 1 locates the shuttle
 	var/obj/machinery/computer/shuttle_control/multi/syndicate/home = null
 
-/obj/item/weapon/pinpointer/nukeop/attack_self(mob/user as mob)
+/obj/item/pinpointer/nukeop/attack_self(mob/user as mob)
 	if(!active)
 		active = 1
 		if(!mode)
@@ -199,7 +199,7 @@
 		user << "<span class='notice'>You deactivate the pinpointer.</span>"
 
 
-/obj/item/weapon/pinpointer/nukeop/workdisk()
+/obj/item/pinpointer/nukeop/workdisk()
 	if(!active) return
 	if(mode)		//Check in case the mode changes while operating
 		worklocation()
@@ -232,7 +232,7 @@
 	spawn(5) .()
 
 
-/obj/item/weapon/pinpointer/nukeop/proc/worklocation()
+/obj/item/pinpointer/nukeop/proc/worklocation()
 	if(!active)	return
 	if(!mode)
 		workdisk()
@@ -266,11 +266,11 @@
 
 
 // This one only points to the ship.  Useful if there is no nuking to occur today.
-/obj/item/weapon/pinpointer/shuttle
+/obj/item/pinpointer/shuttle
 	var/shuttle_comp_id = null
 	var/obj/machinery/computer/shuttle_control/our_shuttle = null
 
-/obj/item/weapon/pinpointer/shuttle/attack_self(mob/user as mob)
+/obj/item/pinpointer/shuttle/attack_self(mob/user as mob)
 	if(!active)
 		active = TRUE
 		find_shuttle()
@@ -280,7 +280,7 @@
 		icon_state = "pinoff"
 		to_chat(user, "<span class='notice'>You deactivate the pinpointer.</span>")
 
-/obj/item/weapon/pinpointer/shuttle/proc/find_shuttle()
+/obj/item/pinpointer/shuttle/proc/find_shuttle()
 	if(!active)
 		return
 
@@ -312,8 +312,8 @@
 		.()
 
 
-/obj/item/weapon/pinpointer/shuttle/merc
+/obj/item/pinpointer/shuttle/merc
 	shuttle_comp_id = "Mercenary"
 
-/obj/item/weapon/pinpointer/shuttle/heist
+/obj/item/pinpointer/shuttle/heist
 	shuttle_comp_id = "Skipjack"

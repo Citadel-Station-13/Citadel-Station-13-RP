@@ -1,5 +1,5 @@
 // -------------- Pummeler -------------
-/obj/item/weapon/gun/energy/pummeler
+/obj/item/gun/energy/pummeler
 	name = "hypersonic gun"
 	desc = "For when you want to get that pesky marketing guy out of your face ASAP. The PML9 'Pummeler' fires one HUGE \
 	sonic blast in the direction of fire, throwing the target away from you at high speed. Now you can REALLY \
@@ -53,5 +53,5 @@
 	id = "pummeler"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, "uranium" = 1000)
-	build_path = /obj/item/weapon/gun/energy/pummeler
+	build_path = /obj/item/gun/energy/pummeler
 	sort_string = "TAADC"

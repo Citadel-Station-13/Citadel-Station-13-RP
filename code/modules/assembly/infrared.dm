@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-/obj/item/device/assembly/infra
+/obj/item/assembly/infra
 	name = "infrared emitter"
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
@@ -15,14 +15,14 @@
 	var/visible = 0
 	var/obj/effect/beam/i_beam/first = null
 
-/obj/item/device/assembly/infra/activate()
+/obj/item/assembly/infra/activate()
 		if(!..())	return 0//Cooldown check
 		on = !on
 		update_icon()
 		return 1
 
 
-/obj/item/device/assembly/infra/toggle_secure()
+/obj/item/assembly/infra/toggle_secure()
 	secured = !secured
 	if(secured)
 		START_PROCESSING(SSobj, src)
@@ -34,7 +34,7 @@
 	return secured
 
 
-/obj/item/device/assembly/infra/update_icon()
+/obj/item/assembly/infra/update_icon()
 	overlays.Cut()
 	attached_overlays = list()
 	if(on)
@@ -46,7 +46,7 @@
 	return
 
 
-/obj/item/device/assembly/infra/process()//Old code
+/obj/item/assembly/infra/process()//Old code
 	if(!on)
 		if(first)
 			qdel(first)
@@ -72,13 +72,13 @@
 	return
 
 
-/obj/item/device/assembly/infra/attack_hand()
+/obj/item/assembly/infra/attack_hand()
 	qdel(first)
 	..()
 	return
 
 
-/obj/item/device/assembly/infra/Move()
+/obj/item/assembly/infra/Move()
 	var/t = dir
 	..()
 	setDir(t)
@@ -86,14 +86,14 @@
 	return
 
 
-/obj/item/device/assembly/infra/holder_movement()
+/obj/item/assembly/infra/holder_movement()
 	if(!holder)	return 0
 //		setDir(holder.dir)
 	qdel(first)
 	return 1
 
 
-/obj/item/device/assembly/infra/proc/trigger_beam()
+/obj/item/assembly/infra/proc/trigger_beam()
 	if((!secured)||(!on)||(cooldown > 0))	return 0
 	pulse(0)
 	if(!holder)
@@ -104,7 +104,7 @@
 	return
 
 
-/obj/item/device/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
+/obj/item/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
 	if(!secured)	return
 	user.set_machine(src)
 	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
@@ -115,7 +115,7 @@
 	return
 
 
-/obj/item/device/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
+/obj/item/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
 	if(..()) return 1
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		usr << browse(null, "window=infra")
@@ -142,7 +142,7 @@
 	return
 
 
-/obj/item/device/assembly/infra/verb/rotate_clockwise()
+/obj/item/assembly/infra/verb/rotate_clockwise()
 	set name = "Rotate Infrared Laser Clockwise"
 	set category = "Object"
 	set src in usr
@@ -159,7 +159,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
 	var/obj/effect/beam/i_beam/next = null
-	var/obj/item/device/assembly/infra/master = null
+	var/obj/item/assembly/infra/master = null
 	var/limit = null
 	var/visible = 0.0
 	var/left = null

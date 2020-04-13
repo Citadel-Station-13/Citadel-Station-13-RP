@@ -9,13 +9,13 @@
 	active_power_usage = 60000	//60 kW. (this the power drawn when charging)
 	var/efficiency = 60000 //will provide the modified power rate when upgraded
 	power_channel = EQUIP
-	var/obj/item/weapon/cell/charging = null
+	var/obj/item/cell/charging = null
 	var/chargelevel = -1
-	circuit = /obj/item/weapon/circuitboard/cell_charger
+	circuit = /obj/item/circuitboard/cell_charger
 
 /obj/machinery/cell_charger/New()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
 	..()
@@ -46,12 +46,12 @@
 	if(charging)
 		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
 
-/obj/machinery/cell_charger/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
 		return
 
-	if(istype(W, /obj/item/weapon/cell) && anchored)
-		if(istype(W, /obj/item/weapon/cell/device))
+	if(istype(W, /obj/item/cell) && anchored)
+		if(istype(W, /obj/item/cell/device))
 			to_chat(user, "<span class='warning'>\The [src] isn't fitted for that type of cell.</span>")
 			return
 		if(charging)
@@ -133,7 +133,7 @@
 
 /obj/machinery/cell_charger/RefreshParts()
 	var/E = 0
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
 	efficiency = active_power_usage * (1+(E-1)*0.5) * 10
 

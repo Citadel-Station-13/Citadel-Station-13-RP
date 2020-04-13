@@ -5,11 +5,11 @@
 	var/registered_name = null
 
 /obj/structure/closet/secure_closet/personal/PopulateContents()
-	new /obj/item/device/radio/headset(src)
+	new /obj/item/radio/headset(src)
 	if(prob(50))
-		new /obj/item/weapon/storage/backpack(src)
+		new /obj/item/storage/backpack(src)
 	else
-		new /obj/item/weapon/storage/backpack/satchel/norm(src)
+		new /obj/item/storage/backpack/satchel/norm(src)
 	new /obj/item/instrument/piano_synth(src)
 
 /obj/structure/closet/secure_closet/personal/patient/PopulateContents()
@@ -27,8 +27,8 @@
 	icon_off = "cabinetdetective_broken"
 
 	starts_with = list(
-		/obj/item/weapon/storage/backpack/satchel/withwallet,
-		/obj/item/device/radio/headset
+		/obj/item/storage/backpack/satchel/withwallet,
+		/obj/item/radio/headset
 		)
 
 /obj/structure/closet/secure_closet/personal/cabinet/update_icon()
@@ -43,15 +43,15 @@
 		else
 			icon_state = icon_opened
 
-/obj/structure/closet/secure_closet/personal/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/closet/secure_closet/personal/attackby(obj/item/W as obj, mob/user as mob)
 	if (src.opened)
-		if (istype(W, /obj/item/weapon/grab))
-			var/obj/item/weapon/grab/G = W
+		if (istype(W, /obj/item/grab))
+			var/obj/item/grab/G = W
 			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
 		user.drop_item()
 		if (W) W.forceMove(src.loc)
 	else if(W.GetID())
-		var/obj/item/weapon/card/id/I = W.GetID()
+		var/obj/item/card/id/I = W.GetID()
 
 		if(src.broken)
 			user << "<span class='warning'>It appears to be broken.</span>"
@@ -68,7 +68,7 @@
 				src.desc = "Owned by [I.registered_name]."
 		else
 			user << "<span class='warning'>Access Denied</span>"
-	else if(istype(W, /obj/item/weapon/melee/energy/blade))
+	else if(istype(W, /obj/item/melee/energy/blade))
 		if(emag_act(INFINITY, user, "The locker has been sliced open by [user] with \an [W]!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
