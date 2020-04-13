@@ -133,9 +133,7 @@
 /obj/item/weapon/cell/proc/give(var/amount)
 	if(rigged && amount > 0)
 		explode()
-		return 0
-
-	if(maxcharge < amount)	return 0
+		return FALSE
 	var/amount_used = min(maxcharge-charge,amount)
 	charge += amount_used
 	update_icon()
