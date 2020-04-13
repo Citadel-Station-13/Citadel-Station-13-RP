@@ -12,6 +12,14 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 //Holder on humans to prevent having to 'find' it every time
 /mob/living/carbon/human/var/obj/item/nif/nif
 
+GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
+
+/proc/init_nif_id_lookup()
+	. = list()
+	for(var/path in typesof(/obj/item/nif))
+		var/obj/item/nif/N = path
+		.[initial(N.id)] = path
+
 //Nanotech Implant Foundation
 /obj/item/nif
 	name = "nanite implant framework"
@@ -23,6 +31,9 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	icon_state = "nif_0"
 
 	w_class = ITEMSIZE_TINY
+
+	/// For savefiles
+	var/id = NIF_ID_BASIC
 
 	var/durability = 100					// Durability remaining
 	var/bioadap = FALSE						// If it'll work in fancy species
@@ -559,12 +570,14 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	name = "bootleg NIF"
 	desc = "A copy of a copy of a copy of a copy of... this can't be any good, right? Surely?"
 	durability = 10
+	id = NIF_ID_BOOTLEG
 
 /obj/item/nif/authentic
 	name = "\improper Kitsuhana NIF"
 	desc = "An actual Kitsuhana working surface, in a box. From a society slightly less afraid \
 	of self-replicating nanotechnology. Basically just a high-endurance NIF."
 	durability = 1000
+	id = NIF_ID_VEYMED
 
 /obj/item/nif/bioadap
 	name = "bioadaptive NIF"
@@ -572,6 +585,7 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 	Will function in species where it normally wouldn't."
 	durability = 25
 	bioadap = TRUE
+	id = NIF_ID_BIOADAPTIVE
 
 ////////////////////////////////
 // Special Promethean """surgery"""
