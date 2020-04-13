@@ -601,10 +601,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	else if(get_amount() == 2)
 		msg += "A piece of power cable."
 	else
-		msg += "A coil of power cable."
-
-		if(get_dist(src, user) <= 1)
-			msg += " There are [get_amount()] lengths of cable in the coil."
+		msg += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
 
 	to_chat(user, msg)
 
@@ -977,10 +974,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	return 0
 
 /obj/item/stack/cable_coil/alien/examine(mob/user)
-	var/msg = "A spool of cable."
-
-	if(get_dist(src, user) <= 1)
-		msg += " It doesn't seem to have a beginning, or an end."
+	var/msg = "A spool of cable. It doesn't seem to have a beginning, or an end."
 
 	to_chat(user, msg)
 

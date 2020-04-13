@@ -72,7 +72,10 @@ var/global/list/grub_machine_overlays = list()
 /mob/living/simple_mob/animal/solargrub_larva/Destroy()
 	QDEL_NULL(powermachine)
 	QDEL_NULL(sparks)
-	QDEL_NULL(machine_effect)
+	if(machine_effect)
+		for(var/mob/L in player_list)
+			L.client?.images -= machine_effect
+		QDEL_NULL(machine_effect)
 	return ..()
 
 /mob/living/simple_mob/animal/solargrub_larva/Life()
@@ -145,6 +148,8 @@ var/global/list/grub_machine_overlays = list()
 	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
+		for(var/mob/L in player_list)
+			L.client?.images -= machine_effect
 		QDEL_NULL(machine_effect)
 	ai_holder.target = null
 	powermachine.draining = 1
