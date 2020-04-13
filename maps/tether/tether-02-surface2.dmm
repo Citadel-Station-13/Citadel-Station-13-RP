@@ -3050,6 +3050,32 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
+"gK" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"gL" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"gM" = (
+/mob/living/simple_mob/animal/passive/fish/bass,
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"gN" = (
+/mob/living/simple_mob/animal/passive/fish/rockfish,
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
 "gO" = (
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
@@ -5274,6 +5300,9 @@
 	name = "RD Office Door Control";
 	pixel_x = -30;
 	pixel_y = -18
+	},
+/obj/effect/landmark/start{
+	name = "Research Director"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
@@ -11070,10 +11099,10 @@
 /area/maintenance/lower/atmos)
 "vY" = (
 /obj/structure/railing{
-	icon_state = "railing0";
-	dir = 1
+	dir = 4
 	},
-/turf/simulated/floor/water/indoors,
+/mob/living/simple_mob/animal/passive/fish/koi,
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "vZ" = (
 /obj/structure/cable/green{
@@ -11360,19 +11389,11 @@
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
 "wB" = (
-/obj/structure/flora/ausbushes/reedbush,
-/obj/structure/railing{
-	icon_state = "railing0";
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "wC" = (
-/mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/indoors,
+/mob/living/simple_mob/animal/passive/fish/koi,
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "wD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -11382,8 +11403,10 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "wE" = (
-/mob/living/simple_mob/animal/passive/fish/rockfish,
-/turf/simulated/floor/water/indoors,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "wF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -12045,11 +12068,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/fishing_garden)
 "xr" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/mob/living/simple_mob/animal/passive/fish/koi,
-/turf/simulated/floor/water/indoors,
+/obj/structure/flora/ausbushes/reedbush,
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "xs" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17878,28 +17898,29 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "IO" = (
-/turf/simulated/floor/water/indoors,
-/area/tether/surfacebase/fishing_garden)
-"IP" = (
-/mob/living/simple_mob/animal/passive/fish/koi,
-/turf/simulated/floor/water/indoors,
-/area/tether/surfacebase/fishing_garden)
-"IQ" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/water/indoors,
-/area/tether/surfacebase/fishing_garden)
-"IR" = (
-/obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/indoors,
-/area/tether/surfacebase/fishing_garden)
-"IS" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"IP" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"IQ" = (
+/mob/living/simple_mob/animal/passive/fish/solarfish,
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"IR" = (
+/mob/living/simple_mob/animal/passive/fish/trout,
+/turf/simulated/floor/water/deep,
+/area/tether/surfacebase/fishing_garden)
+"IS" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "IT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17916,10 +17937,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "IU" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/water/indoors,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/turf/simulated/floor/water/deep,
 /area/tether/surfacebase/fishing_garden)
 "IV" = (
 /obj/structure/closet,
@@ -18310,14 +18331,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/fishing_garden)
-"JT" = (
-/mob/living/simple_mob/animal/passive/fish/solarfish,
-/turf/simulated/floor/water/indoors,
-/area/tether/surfacebase/fishing_garden)
-"JU" = (
-/mob/living/simple_mob/animal/passive/fish/trout,
-/turf/simulated/floor/water/indoors,
-/area/tether/surfacebase/fishing_garden)
 "JV" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
@@ -18439,10 +18452,6 @@
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
-/area/tether/surfacebase/fishing_garden)
-"Km" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/indoors,
 /area/tether/surfacebase/fishing_garden)
 "Kn" = (
 /obj/structure/cable{
@@ -26949,11 +26958,11 @@ cW
 hb
 xP
 vl
-vY
-wC
-IO
-IR
-IO
+gK
+gM
+wB
+xr
+wB
 Kw
 vn
 hb
@@ -27091,11 +27100,11 @@ ap
 hb
 xP
 vl
-vY
-wE
-IP
-wE
-JU
+gK
+gN
+wC
+gN
+IR
 Kq
 gO
 hb
@@ -27233,11 +27242,11 @@ cW
 hb
 vj
 vl
-wB
-xr
-IQ
-IS
-IQ
+gL
+vY
+wE
+IO
+wE
 Kq
 Kc
 hb
@@ -27378,8 +27387,8 @@ hr
 wF
 JX
 Ks
-JX
-JX
+IU
+IU
 JX
 Kv
 hb
@@ -27520,8 +27529,8 @@ wu
 Jp
 Cs
 xp
-IU
-IU
+IP
+IP
 Kq
 Ke
 hb
@@ -27662,8 +27671,8 @@ CB
 Jp
 vn
 Kl
-IO
-JU
+wB
+IR
 Kq
 xO
 hb
@@ -27804,8 +27813,8 @@ hE
 JS
 gO
 Kl
-JT
-Km
+IQ
+IS
 Bo
 xO
 hb
@@ -27946,8 +27955,8 @@ xR
 Jp
 vn
 Ky
-IO
-IP
+wB
+wC
 ww
 Kg
 hb
