@@ -119,7 +119,8 @@
 		Process_Incorpmove(direct)
 		return
 
-	if(moving)	return 0
+	if(moving)
+		return FALSE
 
 	if(!mob.check_move_cooldown())
 		return
@@ -161,7 +162,8 @@
 						b.zoom()
 				*/
 
-	if(Process_Grab())	return
+	if(Process_Grab())
+		return
 
 	if(!mob.canmove)
 		return

@@ -139,32 +139,32 @@
 	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
 
 /datum/gear/accessory/brown_vest
-	display_name = "webbing, brown"
+	display_name = "webbing, brown (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/brown_vest
 	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/black_vest
-	display_name = "webbing, black"
+	display_name = "webbing, black (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/black_vest
 	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/white_vest
-	display_name = "webbing, white"
+	display_name = "webbing, white (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/white_vest
 	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/brown_drop_pouches
-	display_name = "drop pouches, brown"
+	display_name = "drop pouches, brown (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
 	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/black_drop_pouches
-	display_name = "drop pouches, black"
+	display_name = "drop pouches, black (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
 	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/white_drop_pouches
-	display_name = "drop pouches, white"
+	display_name = "drop pouches, white (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
 	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
