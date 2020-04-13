@@ -4,9 +4,9 @@
 
 /datum/shuttle/ferry/escape_pod/New()
 	move_time = move_time + rand(-30, 60)
-	if(name in SSemergencyshuttle.escape_pods)
+	if(name in SSshuttle.escape_pods)
 		CRASH("An escape pod with the name '[name]' has already been defined.")
-	SSemergencyshuttle.escape_pods[name] = src
+	SSshuttle.escape_pods[name] = src
 	..()
 
 /datum/shuttle/ferry/escape_pod/init_docking_controllers()

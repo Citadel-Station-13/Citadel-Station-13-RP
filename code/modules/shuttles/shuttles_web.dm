@@ -474,7 +474,7 @@
 
 /obj/shuttle_connector/Initialize()
 	. = ..()
-	SSshuttles.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
+	SSshuttle.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
 
 /obj/shuttle_connector/proc/setup_routes()
 	if(destinations && shuttle_name)
