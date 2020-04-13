@@ -3398,7 +3398,7 @@ END CITADEL CHANGE */
 /obj/item/weapon/reagent_containers/food/snacks/liquidfood
 	name = "\improper LiquidProtein Ration"
 	desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
-	icon_state = "liquidfood"
+	icon_state = "liquidprotein"
 	trash = /obj/item/trash/liquidprotein
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
