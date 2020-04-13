@@ -4,6 +4,7 @@
 /obj/item/material
 	health = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	icon = 'icons/obj/weapons.dmi'
 	gender = NEUTER
 	throw_speed = 3
 	throw_range = 7
