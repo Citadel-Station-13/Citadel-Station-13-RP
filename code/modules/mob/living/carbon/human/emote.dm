@@ -723,7 +723,7 @@
 		
 		if("meow", "meows")
 			if(miming)
-				mesaage = "acts out a soft mrowl."
+				message = "acts out a soft mrowl."
 				m_type = 1
 			else
 				if(!muzzled)
