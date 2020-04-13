@@ -7,7 +7,7 @@
 	products += list(/obj/item/weapon/gun/energy/taser = 8,/obj/item/weapon/gun/energy/stunrevolver = 4,
 					/obj/item/weapon/reagent_containers/spray/pepper = 6,/obj/item/taperoll/police = 6,
 					/obj/item/clothing/glasses/omnihud/sec = 6, /obj/item/weapon/gun/projectile/sec = 3,
-					/obj/item/weapon/gun/projectile/sec/wood = 1, /obj/item/ammo_magazine/m45/rubber = 5)
+					/obj/item/ammo_magazine/m45/rubber = 5)
 	..()
 
 /obj/machinery/vending/tool/New()
