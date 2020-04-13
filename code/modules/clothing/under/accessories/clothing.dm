@@ -62,6 +62,18 @@
 		"Teshari" = 'icons/mob/species/seromi/suit.dmi'
 		)
 
+/obj/item/clothing/accessory/poncho/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.wear_suit == src)
+		if(H.species.name == "Teshari")
+			icon_override = 'icons/mob/species/seromi/suit.dmi'
+		else if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/ties.dmi'
+		else
+			icon_override = 'icons/mob/ties.dmi'
+		update_clothing_icon()
+
 /obj/item/clothing/accessory/poncho/green
 	name = "green poncho"
 	desc = "A simple, comfortable cloak without sleeves. This one is green."
