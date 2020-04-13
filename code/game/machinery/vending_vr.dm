@@ -4,10 +4,10 @@
 	..()
 
 /obj/machinery/vending/security/New()
-	products += list(/obj/item/weapon/gun/energy/taser = 8,/obj/item/weapon/gun/energy/stunrevolver = 4,
-					/obj/item/weapon/reagent_containers/spray/pepper = 6,/obj/item/taperoll/police = 6,
-					/obj/item/clothing/glasses/omnihud/sec = 6, /obj/item/weapon/gun/projectile/sec = 3,
-					/obj/item/ammo_magazine/m45/rubber = 5)
+	products += list(/obj/item/gun/energy/taser = 8,/obj/item/gun/energy/stunrevolver = 4,
+					 /obj/item/reagent_containers/spray/pepper = 6,/obj/item/taperoll/police = 6,
+					 /obj/item/clothing/glasses/omnihud/sec = 6, obj/item/gun/projectile/sec = 3,
+					 /obj/item/ammo_magazine/m45/rubber = 5)
 	..()
 
 /obj/machinery/vending/tool/New()
