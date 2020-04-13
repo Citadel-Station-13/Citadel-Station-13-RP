@@ -24,10 +24,10 @@ datum/controller/game_controller/New()
 			qdel(master_controller)
 		master_controller = src
 
-	if(!SSjobs)
-		SSjobs = new /datum/controller/occupations()
-		SSjobs.SetupOccupations()
-		SSjobs.LoadJobs("config/jobs.txt")
+	if(!job_master)
+		job_master = new /datum/controller/occupations()
+		job_master.SetupOccupations()
+		job_master.LoadJobs("config/jobs.txt")
 		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
 
 	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
