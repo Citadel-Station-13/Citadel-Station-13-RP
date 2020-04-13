@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	wait = 20
+	init_order = INIT_ORDER_TICKER
 	var/const/restart_timeout = 3 MINUTES //One minute is 600.
 	var/current_state = GAME_STATE_PREGAME
 
@@ -277,10 +278,28 @@ SUBSYSTEM_DEF(ticker)
 				to_chat(M, "Colony Directorship not forced on anyone.")
 
 /datum/controller/subsystem/ticker/Initialize()
+	if(!job_master)
+		job_master = new /datum/controller/occupations()
+		job_master.SetupOccupations()
+		job_master.LoadJobs("config/jobs.txt")
+		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
+
+	if(!syndicate_code_phrase)
+		syndicate_code_phrase	= generate_code_phrase()
+	if(!syndicate_code_response)
+		syndicate_code_response = generate_code_phrase()
+
+	// Set up antagonists.
+	populate_antag_type_list()
+
+	//Set up spawn points.
+	populate_spawn_points()
+
 	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 	pregame_timeleft = 180
 	to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
+	return ..()
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
