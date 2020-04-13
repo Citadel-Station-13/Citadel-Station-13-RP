@@ -156,6 +156,8 @@
 	density = TRUE
 	anchored = TRUE
 	light_range = 3
+	speed_process = TRUE
+	var/tick = 0
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
@@ -218,6 +220,7 @@
 		return
 
 	var/list/tick_alloys = list()
+	tick++
 
 	//Grab some more ore to process this tick.
 	for(var/i = 0,i<sheets_per_tick,i++)
@@ -309,8 +312,10 @@
 				new /obj/item/ore/slag(output.loc)
 		else
 			continue
-
-	console.updateUsrDialog()
+	
+	if(!(tick % 10))
+		console.updateUsrDialog()
+		tick = 0
 
 #undef PROCESS_NONE
 #undef PROCESS_SMELT
