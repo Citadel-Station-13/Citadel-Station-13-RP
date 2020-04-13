@@ -9,6 +9,7 @@
 	\
 	Ctrl clicking the rod will remove any attached bait from the rod."
 	description_antag = "Some fishing rods can be utilized as long-range, sharp weapons, though their pseudo ranged ability comes at the cost of slow speed."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "fishing_rod"
 	item_state = "fishing_rod"
 	force_divisor = 0.02	//VOREStation Edit
