@@ -206,23 +206,23 @@
 
 		switch(href_list["call_shuttle"])
 			if("1")
-				if ((!( SSticker ) || !emergency_shuttle.location()))
+				if ((!( SSticker ) || !SSemergencyshuttle.location()))
 					return
-				if (emergency_shuttle.can_call())
-					emergency_shuttle.call_evac()
+				if (SSemergencyshuttle.can_call())
+					SSemergencyshuttle.call_evac()
 					log_admin("[key_name(usr)] called the Emergency Shuttle")
 					message_admins("<font color='blue'>[key_name_admin(usr)] called the Emergency Shuttle to the station.</font>", 1)
 
 			if("2")
-				if (!( SSticker ) || !emergency_shuttle.location())
+				if (!( SSticker ) || !SSemergencyshuttle.location())
 					return
-				if (emergency_shuttle.can_call())
-					emergency_shuttle.call_evac()
+				if (SSemergencyshuttle.can_call())
+					SSemergencyshuttle.call_evac()
 					log_admin("[key_name(usr)] called the Emergency Shuttle")
 					message_admins("<font color='blue'>[key_name_admin(usr)] called the Emergency Shuttle to the station.</font>", 1)
 
-				else if (emergency_shuttle.can_recall())
-					emergency_shuttle.recall()
+				else if (SSemergencyshuttle.can_recall())
+					SSemergencyshuttle.recall()
 					log_admin("[key_name(usr)] sent the Emergency Shuttle back")
 					message_admins("<font color='blue'>[key_name_admin(usr)] sent the Emergency Shuttle back.</font>", 1)
 
@@ -231,17 +231,17 @@
 	else if(href_list["edit_shuttle_time"])
 		if(!check_rights(R_SERVER))	return
 
-		if (emergency_shuttle.wait_for_launch)
-			var/new_time_left = input("Enter new shuttle launch countdown (seconds):","Edit Shuttle Launch Time", emergency_shuttle.estimate_launch_time() ) as num
+		if (SSemergencyshuttle.wait_for_launch)
+			var/new_time_left = input("Enter new shuttle launch countdown (seconds):","Edit Shuttle Launch Time", SSemergencyshuttle.estimate_launch_time() ) as num
 
-			emergency_shuttle.launch_time = world.time + new_time_left*10
+			SSemergencyshuttle.launch_time = world.time + new_time_left*10
 
 			log_admin("[key_name(usr)] edited the Emergency Shuttle's launch time to [new_time_left]")
 			message_admins("<font color='blue'>[key_name_admin(usr)] edited the Emergency Shuttle's launch time to [new_time_left*10]</font>", 1)
-		else if (emergency_shuttle.shuttle.has_arrive_time())
+		else if (SSemergencyshuttle.shuttle.has_arrive_time())
 
-			var/new_time_left = input("Enter new shuttle arrival time (seconds):","Edit Shuttle Arrival Time", emergency_shuttle.estimate_arrival_time() ) as num
-			emergency_shuttle.shuttle.arrive_time = world.time + new_time_left*10
+			var/new_time_left = input("Enter new shuttle arrival time (seconds):","Edit Shuttle Arrival Time", SSemergencyshuttle.estimate_arrival_time() ) as num
+			SSemergencyshuttle.shuttle.arrive_time = world.time + new_time_left*10
 
 			log_admin("[key_name(usr)] edited the Emergency Shuttle's arrival time to [new_time_left]")
 			message_admins("<font color='blue'>[key_name_admin(usr)] edited the Emergency Shuttle's arrival time to [new_time_left*10]</font>", 1)

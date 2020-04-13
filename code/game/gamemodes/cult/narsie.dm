@@ -55,8 +55,8 @@ var/global/list/narsie_list = list()
 
 		spawn(10 SECONDS)
 			if(emergency_shuttle)
-				emergency_shuttle.call_evac()
-				emergency_shuttle.launch_time = 0	// Cannot recall
+				SSemergencyshuttle.call_evac()
+				SSemergencyshuttle.launch_time = 0	// Cannot recall
 
 /obj/singularity/narsie/process()
 	eat()

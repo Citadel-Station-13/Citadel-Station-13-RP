@@ -1,10 +1,6 @@
-//simplified MC that is designed to fail when procs 'break'. When it fails it's just replaced with a new one.
-//It ensures master_controller.process() is never doubled up by killing the MC (hence terminating any of its sleeping procs)
-//WIP, needs lots of work still
-
-//
-// TODO - This will be completely replaced by master.dm in time.
-//
+// KILL THIS FILE WHENEVER POSSIBLE, ONLY HERE BECAUSE LEGACY
+SUBSYSTEM_DEF(mastercontroller)
+	name = "Master Controller System"
 
 var/global/datum/controller/game_controller/master_controller //Set in world.New()
 

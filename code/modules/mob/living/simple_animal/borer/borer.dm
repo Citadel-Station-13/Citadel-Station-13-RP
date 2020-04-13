@@ -97,7 +97,7 @@
 	statpanel("Status")
 
 	if(emergency_shuttle)
-		var/eta_status = emergency_shuttle.get_status_panel_eta()
+		var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 		if(eta_status)
 			stat(null, eta_status)
 

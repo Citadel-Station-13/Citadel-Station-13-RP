@@ -28,10 +28,10 @@
 
 /datum/game_mode/proc/try_latespawn(var/datum/mind/player, var/latejoin_only)
 
-	if(emergency_shuttle.departed || !round_autoantag)
+	if(SSemergencyshuttle.departed || !round_autoantag)
 		return
 
-	if(emergency_shuttle.shuttle && (emergency_shuttle.shuttle.moving_status == SHUTTLE_WARMUP || emergency_shuttle.shuttle.moving_status == SHUTTLE_INTRANSIT))
+	if(SSemergencyshuttle.shuttle && (SSemergencyshuttle.shuttle.moving_status == SHUTTLE_WARMUP || SSemergencyshuttle.shuttle.moving_status == SHUTTLE_INTRANSIT))
 		return // Don't do anything if the shuttle's coming.
 
 	var/mills = round_duration_in_ticks

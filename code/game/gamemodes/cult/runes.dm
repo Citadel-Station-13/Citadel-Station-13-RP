@@ -213,8 +213,8 @@ var/list/sacrificed = list()
 
 					spawn(10 SECONDS)
 						if(emergency_shuttle)
-							emergency_shuttle.call_evac()
-							emergency_shuttle.launch_time = 0	// Cannot recall
+							SSemergencyshuttle.call_evac()
+							SSemergencyshuttle.launch_time = 0	// Cannot recall
 
 				log_and_message_admins_many(cultists, "summoned the end of days.")
 //				new /obj/singularity/narsie/large(src.loc)
