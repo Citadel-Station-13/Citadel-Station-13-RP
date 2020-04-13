@@ -238,7 +238,7 @@
 	icon_state = "paramedic-vest"
 	item_state = "paramedic-vest"
 
-/obj/item/clothing/suit/toggle/labcoat/paramed
+/obj/item/clothing/suit/toggle/paramed
 	name = "paramedic jacket"
 	desc = "A reflective jacket, like an old Sol country."
 	icon_state = "pmedic_jacket"
