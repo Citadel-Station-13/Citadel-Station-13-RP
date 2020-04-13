@@ -53,3 +53,9 @@
 
 /obj/item/weapon/storage/secure/briefcase/trashmoney
 	starts_with = list(/obj/item/weapon/spacecash/c200 = 10)
+
+/obj/item/weapon/storage/box/wormcan
+	name = "box of worms"
+	desc = "It's a box filled with worms."
+	icon_state = "box"
+	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/worm = 10)
