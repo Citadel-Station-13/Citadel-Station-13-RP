@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		FLAG(OVERLAY_QUEUED),
 		FLAG(INITIALIZED),
 		FLAG(ADMIN_SPAWNED)
-		)
+		),
 	"mob_class" = list(
 		FLAG(MOB_CLASS_PLANT),
 		FLAG(MOB_CLASS_ANIMAL),
