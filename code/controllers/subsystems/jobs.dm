@@ -14,7 +14,10 @@ SUBSYSTEM_DEF(jobs)
 #define BE_ASSISTANT 1
 #define RETURN_TO_LOBBY 2
 
-
+/datum/controller/subsystem/jobs/Initialize()
+	SetupOccupations()
+	LoadJobs("config/jobs.txt")
+	return ..()
 
 /datum/controller/subsystem/jobs/proc/SetupOccupations(var/faction = "Station")
 	occupations = list()

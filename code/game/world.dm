@@ -200,7 +200,6 @@ GLOBAL_LIST(topic_status_cache)
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		//POLARIS START
-		processScheduler.stop()
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 		//END

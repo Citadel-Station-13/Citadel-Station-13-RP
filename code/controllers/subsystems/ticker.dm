@@ -257,7 +257,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/mob/living/player in player_list)
 		if(player.mind)
-			ticker.minds += player.mind
+			minds += player.mind
 
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
@@ -277,12 +277,6 @@ SUBSYSTEM_DEF(ticker)
 				to_chat(M, "Colony Directorship not forced on anyone.")
 
 /datum/controller/subsystem/ticker/Initialize()
-	if(!SSjobs)
-		SSjobs = new /datum/controller/occupations()
-		SSjobs.SetupOccupations()
-		SSjobs.LoadJobs("config/jobs.txt")
-		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
-
 	if(!syndicate_code_phrase)
 		syndicate_code_phrase	= generate_code_phrase()
 	if(!syndicate_code_response)

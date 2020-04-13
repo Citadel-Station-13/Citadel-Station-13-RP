@@ -70,10 +70,6 @@ GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 	set category = "Mapping"
 	set name = "Camera Report"
 
-	if(!master_controller)
-		alert(usr,"Master_controller not found.","Sec Camera Report")
-		return 0
-
 	var/list/obj/machinery/camera/CL = list()
 
 	for(var/obj/machinery/camera/C in cameranet.cameras)

@@ -209,7 +209,7 @@ var/global/list/additional_antag_types = list()
 		if(antag.is_latejoin_template())
 			latejoin_templates |= antag
 
-	if(emergency_shuttle && auto_recall_shuttle)
+	if(SSemergencyshuttle && auto_recall_shuttle)
 		SSemergencyshuttle.auto_recall = 1
 
 	feedback_set_details("round_start","[time2text(world.realtime)]")
