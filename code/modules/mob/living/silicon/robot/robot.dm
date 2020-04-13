@@ -17,6 +17,7 @@
 	var/sight_mode = 0
 	var/custom_name = ""
 	var/custom_sprite = 0 //Due to all the sprites involved, a var for our custom borgs may be best
+	var/sprite_name = null // The name of the borg, for the purposes of custom icon sprite indexing.
 	var/crisis //Admin-settable for combat module use.
 	var/crisis_override = 0
 	var/integrated_light_power = 6
@@ -51,7 +52,7 @@
 	var/obj/item/device/radio/borg/radio = null
 	var/obj/item/device/communicator/integrated/communicator = null
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/weapon/cell/high/cell = null
+	var/obj/item/weapon/cell/cell = null
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2
@@ -226,13 +227,17 @@
 				mmi.brainmob.languages = languages
 			mmi.brainmob.remove_language("Robot Talk")
 			mind.transfer_to(mmi.brainmob)
-		else
+		else if(!shell) // Shells don't have brainmbos in their MMIs.
 			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
 			ghostize()
 			//ERROR("A borg has been destroyed, but its MMI lacked a brainmob, so the mind could not be transferred. Player: [ckey].")
 		mmi = null
 	if(connected_ai)
 		connected_ai.connected_robots -= src
+	if(shell)
+		if(deployed)
+			undeploy()
+		revert_shell() // To get it out of the GLOB list.
 	qdel(wires)
 	wires = null
 	return ..()
@@ -242,7 +247,7 @@
 		module_sprites = new_sprites.Copy()
 		//Custom_sprite check and entry
 		if (custom_sprite == 1)
-			module_sprites["Custom"] = "[ckey]-[name]-[modtype]" //Made compliant with custom_sprites.dm line 32. (src.) was apparently redundant as it's implied. ~Mech
+			module_sprites["Custom"] = "[ckey]-[sprite_name]-[modtype]" //Made compliant with custom_sprites.dm line 32. (src.) was apparently redundant as it's implied. ~Mech
 			icontype = "Custom"
 		else
 			icontype = module_sprites[1]
@@ -255,18 +260,18 @@
 		return
 	var/list/modules = list()
 	modules.Add(robot_module_types)
-	if(crisis || security_level == SEC_LEVEL_RED || crisis_override) // VOREStation Edit
+	if(crisis || security_level == SEC_LEVEL_RED || crisis_override)
 		to_chat(src, "<font color='red'>Crisis mode active. Combat module available.</font>")
 		modules+="Combat"
-		modules+="ERT" //VOREStation Edit
+		modules+="ERT"
 	modtype = input("Please, select a module!", "Robot module", null, null) as null|anything in modules
 
 	if(module)
 		return
-	if(!(modtype in robot_modules))
+	if(!(modtype in GLOB.robot_modules))
 		return
 
-	var/module_type = robot_modules[modtype]
+	var/module_type = GLOB.robot_modules[modtype]
 	transform_with_anim()	//VOREStation edit: sprite animation
 	new module_type(src)
 
@@ -280,11 +285,13 @@
 		modtype = prefix
 
 	if(istype(mmi, /obj/item/device/mmi/digital/posibrain))
-		braintype = "Robot"
+		braintype = BORG_BRAINTYPE_POSI
 	else if(istype(mmi, /obj/item/device/mmi/digital/robot))
-		braintype = "Drone"
+		braintype = BORG_BRAINTYPE_DRONE
+	else if(istype(mmi, /obj/item/device/mmi/inert/ai_remote))
+		braintype = BORG_BRAINTYPE_AI_SHELL
 	else
-		braintype = "Cyborg"
+		braintype = BORG_BRAINTYPE_CYBORG
 
 
 	var/changed_name = ""
@@ -332,6 +339,7 @@
 		newname = sanitizeSafe(input(src,"You are a robot. Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN)
 		if (newname)
 			custom_name = newname
+			sprite_name = newname
 
 		updatename()
 		updateicon()
@@ -478,11 +486,15 @@
 			to_chat(user, "<span class='warning'>You need to open \the [src]'s panel before you can modify them.</span>")
 			return
 
+		if(shell) // AI shells always have the laws of the AI
+			to_chat(user, span("warning", "\The [src] is controlled remotely! You cannot upload new laws this way!"))
+			return
+
 		var/obj/item/weapon/aiModule/M = W
 		M.install(src, user)
 		return
 
-	if (istype(W, /obj/item/weapon/weldingtool))
+	if (istype(W, /obj/item/weapon/weldingtool) && user.a_intent != I_HURT)
 		if (src == user)
 			to_chat(user, "<span class='warning'>You lack the reach to be able to repair yourself.</span>")
 			return
@@ -514,7 +526,7 @@
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
 
-	else if (W.is_crowbar())	// crowbar means open or close the cover
+	else if (W.is_crowbar() && user.a_intent != I_HURT)	// crowbar means open or close the cover
 		if(opened)
 			if(cell)
 				to_chat(user, "You close the cover.")
@@ -616,7 +628,7 @@
 		else
 			to_chat(user, "Unable to locate a radio.")
 
-	else if (istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda)||istype(W, /obj/item/weapon/card/robot))			// trying to unlock the interface with an ID card
+	else if (W.GetID())			// trying to unlock the interface with an ID card
 		if(emagged)//still allow them to open the cover
 			to_chat(user, "The interface seems slightly damaged")
 		if(opened)
@@ -652,12 +664,42 @@
 				spark_system.start()
 		return ..()
 
+/mob/living/silicon/robot/proc/module_reset()
+	transform_with_anim() //VOREStation edit: sprite animation
+	uneq_all()
+	modtype = initial(modtype)
+	hands.icon_state = initial(hands.icon_state)
+
+	notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
+	module.Reset(src)
+	qdel(module)
+	module = null
+	updatename("Default")
+
 /mob/living/silicon/robot/attack_hand(mob/user)
 
 	add_fingerprint(user)
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
+		switch(H.a_intent)
+			if(I_HELP)
+				visible_message("<span class='notice'>[H] pets [src].</span>")
+				return
+			if(I_HURT)
+				H.do_attack_animation(src)
+				if(H.species.can_shred(H))
+					attack_generic(H, rand(30,50), "slashed")
+					return
+				else
+					playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
+					visible_message("<span class='warning'>[H] punches [src], but doesn't leave a dent.</span>")
+					return
+			if(I_DISARM)
+				H.do_attack_animation(src)
+				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
+				visible_message("<span class='warning'>[H] taps [src].</span>")
+				return
 		if(H.species.can_shred(H))
 			attack_generic(H, rand(30,50), "slashed")
 			return
@@ -698,27 +740,29 @@
 			return 1
 	return 0
 
-/mob/living/silicon/robot/proc/check_access(obj/item/weapon/card/id/I)
+/mob/living/silicon/robot/proc/check_access(obj/item/I)
 	if(!istype(req_access, /list)) //something's very wrong
 		return 1
 
 	var/list/L = req_access
 	if(!L.len) //no requirements
 		return 1
-	if(!I || !istype(I, /obj/item/weapon/card/id) || !I.access) //not ID or no access
+	if(!I) //nothing to check with..?
 		return 0
+	var/access_found = I.GetAccess()
 	for(var/req in req_access)
-		if(req in I.access) //have one of the required accesses
+		if(req in access_found) //have one of the required accesses
 			return 1
 	return 0
 
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
 	if(stat == CONSCIOUS)
-		add_overlay("eyes-[module_sprites[icontype]]")
+		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
+			add_overlay("eyes-[module_sprites[icontype]]")
 
 	if(opened)
-		var/panelprefix = custom_sprite ? "[src.ckey]-[src.name]" : "ov"
+		var/panelprefix = custom_sprite ? "[src.ckey]-[src.sprite_name]" : "ov"
 		if(wiresexposed)
 			add_overlay("[panelprefix]-openpanel +w")
 		else if(cell)
@@ -973,6 +1017,11 @@
 			return
 		else
 			transform_with_anim()	//VOREStation edit end: sprite animation
+
+	if(icontype == "Custom")
+		icon = CUSTOM_ITEM_SYNTH
+	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
+		vr_sprite_check() //VOREStation Edit
 	icon_state = module_sprites[icontype]
 	updateicon()
 
@@ -1028,6 +1077,8 @@
 /mob/living/silicon/robot/proc/notify_ai(var/notifytype, var/first_arg, var/second_arg)
 	if(!connected_ai)
 		return
+	if(shell && notifytype != ROBOT_NOTIFICATION_AI_SHELL)
+		return // No point annoying the AI/s about renames and module resets for shells.
 	switch(notifytype)
 		if(ROBOT_NOTIFICATION_NEW_UNIT) //New Robot
 			connected_ai << "<br><br><span class='notice'>NOTICE - New [lowertext(braintype)] connection detected: <a href='byond://?src=\ref[connected_ai];track2=\ref[connected_ai];track=\ref[src]'>[name]</a></span><br>"
@@ -1038,6 +1089,8 @@
 		if(ROBOT_NOTIFICATION_NEW_NAME) //New Name
 			if(first_arg != second_arg)
 				connected_ai << "<br><br><span class='notice'>NOTICE - [braintype] reclassification detected: [first_arg] is now designated as [second_arg].</span><br>"
+		if(ROBOT_NOTIFICATION_AI_SHELL) //New Shell
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New AI shell detected: <a href='?src=[REF(connected_ai)];track2=[html_encode(name)]'>[name]</a></span><br>")
 
 /mob/living/silicon/robot/proc/disconnect_from_ai()
 	if(connected_ai)
@@ -1046,7 +1099,7 @@
 		connected_ai = null
 
 /mob/living/silicon/robot/proc/connect_to_ai(var/mob/living/silicon/ai/AI)
-	if(AI && AI != connected_ai)
+	if(AI && AI != connected_ai && !shell)
 		disconnect_from_ai()
 		connected_ai = AI
 		connected_ai.connected_robots |= src
@@ -1062,6 +1115,9 @@
 			else
 				to_chat(user, "You fail to emag the cover lock.")
 				to_chat(src, "Hack attempt detected.")
+
+			if(shell) // A warning to Traitors who may not know that emagging AI shells does not slave them.
+				to_chat(user, span("warning", "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
 			return 1
 		else
 			to_chat(user, "The cover is already unlocked.")
@@ -1072,49 +1128,57 @@
 		if(wiresexposed)
 			to_chat(user, "You must close the panel first")
 			return
+
+
+		// The block of code below is from TG. Feel free to replace with a better result if desired.
+		if(shell) // AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
+			to_chat(user, span("danger", "[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
+			log_game("[key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
+			module_reset()
+			return
+
+		sleep(6)
+		if(prob(50))
+			emagged = 1
+			lawupdate = 0
+			disconnect_from_ai()
+			to_chat(user, "You emag [src]'s interface.")
+			message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
+			log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
+			clear_supplied_laws()
+			clear_inherent_laws()
+			laws = new /datum/ai_laws/syndicate_override
+			var/time = time2text(world.realtime,"hh:mm:ss")
+			lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
+			var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+			set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
+			. = 1
+			spawn()
+				to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
+				sleep(5)
+				to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
+				sleep(20)
+				to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
+				sleep(5)
+				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
+				sleep(5)
+				to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
+				sleep(10)
+				to_chat(src, "<span class='danger'>> N</span>")
+				sleep(20)
+				to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
+				to_chat(src, "<b>Obey these laws:</b>")
+				laws.show_laws(src)
+				to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands.</span>")
+				updateicon()
 		else
-			sleep(6)
-			if(prob(50))
-				emagged = 1
-				lawupdate = 0
-				disconnect_from_ai()
-				to_chat(user, "You emag [src]'s interface.")
-				message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
-				log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
-				clear_supplied_laws()
-				clear_inherent_laws()
-				laws = new /datum/ai_laws/syndicate_override
-				var/time = time2text(world.realtime,"hh:mm:ss")
-				lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-				var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-				set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
-				. = 1
-				spawn()
-					to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
-					sleep(5)
-					to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
-					sleep(20)
-					to_chat(src, "<span class='danger'>SynBorg v1.7.1 loaded.</span>")
-					sleep(5)
-					to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
-					sleep(5)
-					to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
-					sleep(10)
-					to_chat(src, "<span class='danger'>> N</span>")
-					sleep(20)
-					to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
-					to_chat(src, "<b>Obey these laws:</b>")
-					laws.show_laws(src)
-					to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands.</span>")
-					updateicon()
-			else
-				to_chat(user, "You fail to hack [src]'s interface.")
-				to_chat(src, "Hack attempt detected.")
-			return 1
-		return
+			to_chat(user, "You fail to hack [src]'s interface.")
+			to_chat(src, "Hack attempt detected.")
+		return 1
+	return
 
 /mob/living/silicon/robot/is_sentient()
-	return braintype != "Drone"
+	return braintype != BORG_BRAINTYPE_DRONE
 
 
 /mob/living/silicon/robot/drop_item()

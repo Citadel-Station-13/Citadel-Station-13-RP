@@ -5,7 +5,7 @@ var/global/list/additional_antag_types = list()
 	var/name = "invalid"
 	var/round_description = "How did you even vote this in?"
 	var/extended_round_description = "This roundtype should not be spawned, let alone votable. Someone contact a developer and tell them the game's broken again."
-	var/config_tag = null
+	var/config_tag
 	var/votable = 1
 	var/probability = 0
 
@@ -36,9 +36,6 @@ var/global/list/additional_antag_types = list()
 
 	var/event_delay_mod_moderate             // Modifies the timing of random events.
 	var/event_delay_mod_major                // As above.
-
-/datum/game_mode/New()
-	..()
 
 /datum/game_mode/Topic(href, href_list[])
 	if(..())
@@ -146,10 +143,10 @@ var/global/list/additional_antag_types = list()
 			playerC++
 
 	if(master_mode=="secret")
-		if(playerC < required_players_secret)
+		if(playerC < config_legacy.player_requirements_secret[config_tag])
 			return 0
 	else
-		if(playerC < required_players)
+		if(playerC < config_legacy.player_requirements[config_tag])
 			return 0
 
 	if(!(antag_templates && antag_templates.len))
@@ -176,12 +173,12 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/refresh_event_modifiers()
 	if(event_delay_mod_moderate || event_delay_mod_major)
-		event_manager.report_at_round_end = 1
+		SSevents.report_at_round_end = TRUE
 		if(event_delay_mod_moderate)
-			var/datum/event_container/EModerate = event_manager.event_containers[EVENT_LEVEL_MODERATE]
+			var/datum/event_container/EModerate = SSevents.event_containers[EVENT_LEVEL_MODERATE]
 			EModerate.delay_modifier = event_delay_mod_moderate
 		if(event_delay_mod_moderate)
-			var/datum/event_container/EMajor = event_manager.event_containers[EVENT_LEVEL_MAJOR]
+			var/datum/event_container/EMajor = SSevents.event_containers[EVENT_LEVEL_MAJOR]
 			EMajor.delay_modifier = event_delay_mod_major
 
 /datum/game_mode/proc/pre_setup()
@@ -270,7 +267,7 @@ var/global/list/additional_antag_types = list()
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
 				return 0
-		if(config.continous_rounds)
+		if(config_legacy.continous_rounds)
 			emergency_shuttle.auto_recall = 0
 			return 0
 		return 1
@@ -432,7 +429,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/create_antagonists()
 
-	if(!config.traitor_scaling)
+	if(!config_legacy.traitor_scaling)
 		antag_scaling_coeff = 0
 
 	if(antag_tags && antag_tags.len)
@@ -464,7 +461,7 @@ proc/display_roundstart_logout_report()
 
 		if(L.ckey)
 			var/found = 0
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.ckey == L.ckey)
 					found = 1
 					break

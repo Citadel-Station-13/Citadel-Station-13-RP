@@ -3,6 +3,8 @@
 
 /obj/machinery/computer/transhuman/designer
 	name = "body design console"
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
+						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/computer_vr.dmi'
 	icon_keyboard = "med_key"
 	icon_screen = "explosive"
@@ -141,7 +143,7 @@
 	data["disk"] = disk ? 1 : 0
 	data["diskStored"] = disk && disk.stored ? 1 : 0
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "body_designer.tmpl", "Body Design Console", 400, 600)
 		ui.set_initial_data(data)
@@ -332,7 +334,7 @@
 	ASSERT(istype(B))
 	var/datum/category_item/player_setup_item/general/basic/G = CG.items_by_name["Basic"]
 	ASSERT(istype(G))
-	CG = CC.categories_by_name["Species Customization"]
+	CG = CC.categories_by_name["VORE"]
 	var/datum/category_item/player_setup_item/vore/ears/E = CG.items_by_name["Appearance"]
 	ASSERT(istype(E))
 

@@ -6,7 +6,7 @@
 
 /mob/living/silicon/robot/drone/attack_ai(var/mob/living/silicon/ai/user)
 
-	if(!istype(user) || controlling_ai || !config.allow_drone_spawn || !config.allow_ai_drones)
+	if(!istype(user) || controlling_ai || !config_legacy.allow_drone_spawn || !config_legacy.allow_ai_drones)
 		return
 
 	if(client || key)
@@ -35,7 +35,7 @@
 
 /obj/machinery/drone_fabricator/attack_ai(var/mob/living/silicon/ai/user as mob)
 
-	if(!istype(user) || user.controlling_drone || !config.allow_drone_spawn || !config.allow_ai_drones)
+	if(!istype(user) || user.controlling_drone || !config_legacy.allow_drone_spawn || !config_legacy.allow_ai_drones)
 		return
 
 	if(stat & NOPOWER)
@@ -50,7 +50,7 @@
 		to_chat(user, "<span class='warning'>\The [src] is not ready to produce a new drone.</span>")
 		return
 
-	if(count_drones() >= config.max_maint_drones)
+	if(count_drones() >= config_legacy.max_maint_drones)
 		to_chat(user, "<span class='warning'>The drone control subsystems are tasked to capacity; they cannot support any more drones.</span>")
 		return
 

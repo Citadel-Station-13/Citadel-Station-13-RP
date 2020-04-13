@@ -20,7 +20,7 @@
 	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
 		if(!SK.status)
-			user << "<span class='notice'>\The [SK] is not ready to be attached!</span>"
+			to_chat(user, "<span class='notice'>\The [SK] is not ready to be attached!</span>")
 			return
 		user.drop_item()
 		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
@@ -35,7 +35,7 @@
 	if(has_buckled_mobs())
 		..()
 	else
-		rotate()
+		rotate_clockwise()
 	return
 
 /obj/structure/bed/chair/post_buckle_mob()
@@ -68,24 +68,19 @@
 			var/mob/living/L = A
 			L.setDir(dir)
 
-/obj/structure/bed/chair/verb/rotate()
-	set name = "Rotate Chair"
+/obj/structure/bed/chair/verb/rotate_clockwise()
+	set name = "Rotate Chair Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
-	if(config.ghost_interaction)
-		src.setDir(turn(src.dir, 90))
+	if(!usr || !isturf(usr.loc))
 		return
-	else
-		if(istype(usr,/mob/living/simple_animal/mouse))
-			return
-		if(!usr || !isturf(usr.loc))
-			return
-		if(usr.stat || usr.restrained())
-			return
+	if(usr.stat || usr.restrained())
+		return
+	if(ismouse(usr) || (isobserver(usr) && !config_legacy.ghost_interaction))
+		return
 
-		src.setDir(turn(src.dir, 90))
-		return
+	src.setDir(turn(src.dir, 270))
 
 /obj/structure/bed/chair/shuttle
 	name = "chair"
@@ -126,27 +121,6 @@
 
 /obj/structure/bed/chair/comfy/lime/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","lime")
-
-/obj/structure/bed/chair/sofa
-	name = "sofa"
-	desc = "A padded, comfy sofa. Great for lazing on."
-	base_icon = "sofamiddle"
-
-/obj/structure/bed/chair/sofa/left
-	base_icon = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/right
-	base_icon = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/corner
-	base_icon = "sofacorner"
-
-/obj/structure/bed/chair/sofa/corner/update_layer()
-	if(src.dir == NORTH || src.dir == WEST)
-		plane = MOB_PLANE
-		layer = MOB_LAYER + 0.1
-	else
-		reset_plane_and_layer()
 
 /obj/structure/bed/chair/office
 	anchored = 0

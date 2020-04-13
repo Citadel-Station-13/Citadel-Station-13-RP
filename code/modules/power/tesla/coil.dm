@@ -95,6 +95,7 @@
 	playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 10, power/(coeff/2))
 
+//TFF 3/6/19 - Port Cit RP fix for infinite frames
 /obj/machinery/power/grounding_rod
 	name = "grounding rod"
 	desc = "Keep an area from being fried from Edison's Bane."

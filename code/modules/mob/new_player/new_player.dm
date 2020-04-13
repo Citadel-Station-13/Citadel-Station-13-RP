@@ -82,7 +82,7 @@
 			stat("Game Mode:", "Secret")
 		else
 			if(ticker.hide_mode == 0)
-				stat("Game Mode:", "[config.mode_names[master_mode]]") // Old setting for showing the game mode
+				stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
 
 		if(ticker.current_state == GAME_STATE_PREGAME)
 			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
@@ -114,14 +114,14 @@
 
 	if(href_list["observe"])
 
-		if(alert(src,"Are you sure you wish to observe? You will have to wait three minutes before being able to respawn!","Player Setup","Yes","No") == "Yes") //Citadelstation edit
+		if(alert(src,"Are you sure you wish to observe? You will have to wait 60 seconds before being able to respawn!","Player Setup","Yes","No") == "Yes") //Vorestation edit - Rykka corrected to 60 seconds to match current spawn time
 			if(!client)	return 1
 
 			//Make a new mannequin quickly, and allow the observer to take the appearance
 			var/mob/living/carbon/human/dummy/mannequin = new()
 			client.prefs.dress_preview_mob(mannequin)
 			var/mob/observer/dead/observer = new(mannequin)
-			observer.forceMove(null) //Let's not stay in our doomed mannequin
+			observer.moveToNullspace() //Let's not stay in our doomed mannequin
 			qdel(mannequin)
 
 			spawning = 1
@@ -144,7 +144,7 @@
 				client.prefs.real_name = random_name(client.prefs.identifying_gender)
 			observer.real_name = client.prefs.real_name
 			observer.name = observer.real_name
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+			if(!client.holder && !config_legacy.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 				observer.verbs -= /mob/observer/dead/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 			observer.key = key
 			qdel(src)
@@ -158,7 +158,7 @@
 			return
 /*
 		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
-			if (config.usealienwhitelist)
+			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
 					return 0
@@ -169,15 +169,17 @@
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
-	
+
+		/* Vorestation Removal Start
 		//Prevents people rejoining as same character.
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
 				usr << "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>" //VOREStation Edit
 				return
+		*/ //Vorestation Removal End
 
-		if(!config.enter_allowed)
+		if(!config_legacy.enter_allowed)
 			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
 			return
 		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
@@ -309,7 +311,7 @@
 	var/savefile/F = get_server_news()
 	if(F)
 		client.prefs.lastnews = md5(F["body"])
-		client.prefs.save_preferences()
+		SScharacter_setup.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"
@@ -333,13 +335,13 @@
 	return 1
 
 
-/mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 		usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
 		return 0
-	if(!config.enter_allowed)
+	if(!config_legacy.enter_allowed)
 		usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
 		return 0
 	if(!IsJobAvailable(rank))
@@ -385,7 +387,7 @@
 		return
 
 	// Equip our custom items only AFTER deploying to spawn points eh?
-	equip_custom_items(character)
+	//equip_custom_items(character)	//VOREStation Removal
 
 	//character.apply_traits() //VOREStation Removal
 
@@ -455,14 +457,8 @@
 
 
 /mob/new_player/proc/create_character(var/turf/T)
-	if (!attempt_vr(src,"spawn_checks_vr",list())) return 0 // VOREStation Insert
-	//CITADEL EDITS START HERE - gives a big ol' "lol nope" to skids trying to spawn in as proteans
-	if(client.prefs.species)
-		var/datum/species/diosmio = all_species[client.prefs.species]
-		if(!is_alien_whitelisted(src, diosmio))
-			to_chat(src, "<span class='warning'>You aren't whitelisted for your selected species.</span>")
-			return
-	//END OF CIT CHANGES
+	if (!attempt_vr(src,"spawn_checks_vr",list()))
+		return 0 // VOREStation Insert
 	spawning = 1
 	close_spawn_windows()
 

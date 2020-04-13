@@ -17,8 +17,8 @@
 	brute_dam_coeff = 0.5
 	var/protection_percent = 60
 
-	var/land_speed = 1.5 //if 0 it can't go on turf
-	var/space_speed = 0.5
+	var/land_speed = 0.5 //if 0 it can't go on turf
+	var/space_speed = 0.4
 	var/bike_icon = "bike"
 	var/custom_icon = FALSE
 
@@ -59,6 +59,9 @@
 	set category = "Vehicle"
 	set src in view(0)
 
+	if(!isliving(usr) || ismouse(usr))
+		return
+
 	if(usr.incapacitated()) return
 
 	if(!on && cell && cell.charge > charge_use)
@@ -72,6 +75,9 @@
 	set name = "Toggle Kickstand"
 	set category = "Vehicle"
 	set src in view(0)
+
+	if(!isliving(usr) || ismouse(usr))
+		return
 
 	if(usr.incapacitated()) return
 

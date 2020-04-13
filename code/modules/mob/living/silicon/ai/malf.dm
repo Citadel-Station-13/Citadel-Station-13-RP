@@ -43,7 +43,7 @@
 	if(!research)
 		if(!errored)
 			errored = 1
-			error("malf_process() called on AI without research datum. Report this.")
+			log_world("malf_process() called on AI without research datum. Report this.")
 			message_admins("ERROR: malf_process() called on AI without research datum. If admin modified one of the AI's vars revert the change and don't modify variables directly, instead use ProcCall or admin panels.")
 			spawn(1200)
 				errored = 0
@@ -62,7 +62,7 @@
 
 	// Off-Station APCs should not count towards CPU generation.
 	for(var/obj/machinery/power/apc/A in hacked_apcs)
-		if(A.z in using_map.station_levels)
+		if(A.z in GLOB.using_map.station_levels)
 			cpu_gain += 0.004
 			cpu_storage += 10
 
@@ -79,14 +79,14 @@
 /mob/living/silicon/ai/proc/start_apu(var/shutup = 0)
 	if(!hardware || !istype(hardware, /datum/malf_hardware/apu_gen))
 		if(!shutup)
-			src << "You do not have an APU generator and you shouldn't have this verb. Report this."
+			to_chat(src, "You do not have an APU generator and you shouldn't have this verb. Report this.")
 		return
 	if(hardware_integrity() < 50)
 		if(!shutup)
-			src << "<span class='notice'>Starting APU... <b>FAULT</b>(System Damaged)</span>"
+			to_chat(src, "<span class='notice'>Starting APU... <b>FAULT</b>(System Damaged)</span>")
 		return
 	if(!shutup)
-		src << "Starting APU... ONLINE"
+		to_chat(src, "Starting APU... ONLINE")
 	APU_power = 1
 
 // Stops AI's APU generator
@@ -97,7 +97,7 @@
 	if(APU_power)
 		APU_power = 0
 		if(!shutup)
-			src << "Shutting down APU... DONE"
+			to_chat(src, "Shutting down APU... DONE")
 
 // Returns percentage of AI's remaining backup capacitor charge (maxhealth - oxyloss).
 /mob/living/silicon/ai/proc/backup_capacitor()
@@ -105,7 +105,7 @@
 
 // Returns percentage of AI's remaining hardware integrity (maxhealth - (bruteloss + fireloss))
 /mob/living/silicon/ai/proc/hardware_integrity()
-	return (health-config.health_threshold_dead)/2
+	return (health-config_legacy.health_threshold_dead)/2
 
 // Shows capacitor charge and hardware integrity information to the AI in Status tab.
 /mob/living/silicon/ai/show_system_integrity()

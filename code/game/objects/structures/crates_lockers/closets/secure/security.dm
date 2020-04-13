@@ -19,6 +19,7 @@
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/flash,
+		/obj/item/device/gps/command,
 		/obj/item/weapon/storage/belt/sheath,
 		/obj/item/weapon/storage/box/ids)
 
@@ -41,7 +42,10 @@
 		/obj/item/device/radio/headset/heads/hop/alt,
 		/obj/item/weapon/storage/box/ids = 2,
 		/obj/item/weapon/gun/energy/gun,
+		/obj/item/device/gps/command,
 		/obj/item/weapon/gun/energy/gun/martin, //VOREStation Add,
+		/obj/item/weapon/storage/box/commandkeys, //VOREStation Add,
+		/obj/item/weapon/storage/box/servicekeys, //VOREStation Add,
 		///obj/item/weapon/gun/projectile/sec/flash, //VOREStation Removal,
 		/obj/item/device/flash)
 
@@ -112,13 +116,14 @@
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun,
+		/obj/item/weapon/gun/magnetic/railgun/heater/pistol/hos,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/device/gps/security/hos,
 		/obj/item/device/flashlight/maglight,
 		/obj/item/clothing/mask/gas/half)
 
@@ -159,7 +164,6 @@
 		/obj/item/clothing/accessory/badge/holo/warden,
 		/obj/item/weapon/storage/box/flashbangs,
 		/obj/item/weapon/storage/belt/security,
-		/obj/item/weapon/storage/box/trackimp,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/weapon/gun/energy/gun,
@@ -168,6 +172,7 @@
 		/obj/item/clothing/head/beret/sec/corporate/warden,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/device/gps/security,
 		/obj/item/device/flashlight/maglight,
 		/obj/item/device/megaphone,
 		/obj/item/clothing/mask/gas/half)
@@ -212,6 +217,7 @@
 		///obj/item/ammo_magazine/m45/rubber, //VOREStation Removal,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/weapon/cell/device/weapon,
+		/obj/item/device/gps/security,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/device/flashlight/maglight)
@@ -223,6 +229,8 @@
 		starts_with += /obj/item/weapon/storage/backpack/satchel/sec
 	if(prob(50))
 		starts_with += /obj/item/weapon/storage/backpack/dufflebag/sec
+	if(prob(30))
+		starts_with += /obj/item/weapon/contraband/poster/nanotrasen
 	return ..()
 
 /obj/structure/closet/secure_closet/security/cargo/Initialize()
@@ -271,6 +279,7 @@
 		/obj/item/weapon/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/weapon/storage/briefcase/crimekit,
 		/obj/item/device/taperecorder,
+		/obj/item/weapon/storage/bag/detective,
 		/obj/item/device/tape/random = 3)
 
 /obj/structure/closet/secure_closet/detective/update_icon()
@@ -302,9 +311,20 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	var/id = null
 
 	starts_with = list(
-		/obj/item/clothing/under/color/orange,
+		/obj/item/clothing/under/color/prison,
 		/obj/item/clothing/shoes/orange)
 
+/obj/structure/closet/secure_closet/posters
+	name = "morale storage"
+	req_access = list(access_security)
+	anchored = 1
+
+	starts_with = list(
+		/obj/item/weapon/contraband/poster/nanotrasen,
+		/obj/item/weapon/contraband/poster/nanotrasen,
+		/obj/item/weapon/contraband/poster/nanotrasen,
+		/obj/item/weapon/contraband/poster/nanotrasen,
+		/obj/item/weapon/contraband/poster/nanotrasen)
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"

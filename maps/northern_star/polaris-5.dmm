@@ -2749,7 +2749,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/research/toxins_misc_lab)
 "fA" = (
-/mob/living/simple_animal/slime,
+/mob/living/simple_mob/slime/xenobio,
 /turf/simulated/floor/reinforced,
 /area/outpost/research/xenobiology)
 "fB" = (

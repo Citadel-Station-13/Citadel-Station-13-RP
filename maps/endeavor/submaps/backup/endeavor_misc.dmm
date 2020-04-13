@@ -1222,7 +1222,7 @@
 /turf/simulated/shuttle/plating,
 /area/supply/dock)
 "dJ" = (
-/mob/living/simple_animal/hostile/mimic/crate,
+/mob/living/simple_mob/hostile/mimic/crate,
 /turf/unsimulated/floor/steel,
 /area/centcom/suppy)
 "dK" = (

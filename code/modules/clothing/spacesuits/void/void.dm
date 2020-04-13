@@ -7,6 +7,8 @@
 	heat_protection = HEAD
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	min_pressure_protection = 0 * ONE_ATMOSPHERE
+	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
 //	flags_inv = HIDEEARS|BLOCKHAIR
 
@@ -22,7 +24,8 @@
 		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/hats.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/hats.dmi'
+		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/hats.dmi',
+		SPECIES_VOX = 'icons/obj/clothing/species/vox/hats.dmi'
 		)
 
 	light_overlay = "helmet_light"
@@ -37,6 +40,8 @@
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	min_pressure_protection = 0 * ONE_ATMOSPHERE
+	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
 	species_restricted = list("Human", SPECIES_SKRELL, "Promethean")
 	sprite_sheets_refit = list(
@@ -49,7 +54,8 @@
 		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/suits.dmi',
 		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/suits.dmi',
 		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/suits.dmi'
+		SPECIES_TESHARI = 'icons/obj/clothing/species/seromi/suits.dmi',
+		SPECIES_VOX = 'icons/obj/clothing/species/vox/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
@@ -93,6 +99,7 @@
 
 	if(boots)
 		if (H.equip_to_slot_if_possible(boots, slot_shoes))
+			to_chat(M, "Your suit's magboots deploy with a click.")
 			boots.canremove = 0
 
 	if(helmet)
@@ -183,12 +190,17 @@
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
 			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
-// below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me
-/obj/item/clothing/suit/space/void/attack_self(mob/user)
-	if(!istype(src.loc,/mob/living)) return
 
-	if(!helmet)
-		to_chat(usr, "There is no helmet installed.")
+/obj/item/clothing/suit/space/void/verb/toggle_magboots()
+	set name = "Toggle Magboots"
+	set category = "Object"
+	set src in usr
+
+	if(!istype(src.loc,/mob/living))
+		return
+
+	if(!boots)
+		to_chat(usr, "There are no magboots installed.")
 		return
 
 	var/mob/living/carbon/human/H = usr
@@ -200,22 +212,20 @@
 	if(H.wear_suit != src)
 		return
 
-	if(H.head == helmet)
-		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
-		helmet.canremove = 1
-		H.drop_from_inventory(helmet)
-		helmet.forceMove(src)
+	if(H.shoes == boots)
+		to_chat(H, "<span class='notice'>You retract your magboots.</span>")
+		boots.canremove = 1
+		H.drop_from_inventory(boots)
+		boots.forceMove(src)
 	else
-		if(H.head)
-			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>")
-			return
-		if(H.equip_to_slot_if_possible(helmet, slot_head))
-			helmet.pickup(H)
-			helmet.canremove = 0
-			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
-			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
-	helmet.update_light(H)
+		if(H.equip_to_slot_if_possible(boots, slot_shoes))
+			boots.pickup(H)
+			boots.canremove = 0
+			to_chat(H, "<span class='info'>You deploy your magboots.</span>")
+
+// below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
+/obj/item/clothing/suit/space/void/attack_self(mob/user)
+	toggle_helmet()
 
 /obj/item/clothing/suit/space/void/verb/eject_tank()
 
@@ -223,7 +233,8 @@
 	set category = "Object"
 	set src in usr
 
-	if(!istype(src.loc,/mob/living)) return
+	if(!istype(src.loc,/mob/living))
+		return
 
 	if(!tank && !cooler)
 		to_chat(usr, "There is no tank or cooling unit inserted.")
@@ -273,12 +284,12 @@
 				playsound(src, W.usesound, 50, 1)
 				src.cooler = null
 			else if(choice == helmet)
-				to_chat(user, "You detatch \the [helmet] from \the [src]'s helmet mount.")
+				to_chat(user, "You detach \the [helmet] from \the [src]'s helmet mount.")
 				helmet.forceMove(get_turf(src))
 				playsound(src, W.usesound, 50, 1)
 				src.helmet = null
 			else if(choice == boots)
-				to_chat(user, "You detatch \the [boots] from \the [src]'s boot mounts.")
+				to_chat(user, "You detach \the [boots] from \the [src]'s boot mounts.")
 				boots.forceMove(get_turf(src))
 				playsound(src, W.usesound, 50, 1)
 				src.boots = null

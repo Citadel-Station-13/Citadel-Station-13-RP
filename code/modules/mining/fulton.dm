@@ -9,9 +9,15 @@ var/global/list/total_extraction_beacons = list()
 	var/obj/structure/extraction_point/beacon
 	var/list/beacon_networks = list("station")
 	var/uses_left = 3
-	var/can_use_indoors
+	var/can_use_indoors = FALSE
 	var/safe_for_living_creatures = 1
 	var/stuntime = 15
+
+/obj/item/extraction_pack/wormhole
+	name = "wormhole fulton extraction pack"
+	desc = "A balloon pack with integrated wormhole technology and less disruptive movement that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
+	can_use_indoors = TRUE
+	stuntime = 3
 
 /obj/item/extraction_holdercrate
 	name = "extraction crate"
@@ -44,7 +50,7 @@ var/global/list/total_extraction_beacons = list()
 		beacon = A
 		to_chat(user, "You link the extraction pack to the beacon system.")
 
-/obj/item/extraction_pack/afterattack(atom/movable/A, mob/living/user, flag, params)
+/obj/item/extraction_pack/afterattack(atom/movable/A, mob/living/carbon/user, flag, params)
 	if(!beacon)
 		to_chat(user, "[src] is not linked to a beacon, and cannot be used.")
 		return
@@ -81,7 +87,7 @@ var/global/list/total_extraction_beacons = list()
 			var/mutable_appearance/balloon3
 			if(isliving(A))
 				var/mob/living/M = A
-				M.AdjustStunned(20) // Keep them from moving during the duration of the extraction
+				M.AdjustStunned(10) // Keep them from moving during the duration of the extraction
 				if(M.buckled)
 					M.buckled.unbuckle_mob(M)
 			else
@@ -114,8 +120,8 @@ var/global/list/total_extraction_beacons = list()
 			sleep(10)
 			playsound(holder_obj.loc, 'sound/items/fultext_launch.wav', 50, 1, -3)
 			animate(holder_obj, pixel_z = 1000, time = 30)
-			if(istype(A))
-				var/mob/living/L = A
+			if(ishuman(A))
+				var/mob/living/carbon/L = A
 				L.AdjustStunned(stuntime)
 				L.drowsyness = 0
 				update_icon(A)
@@ -199,9 +205,3 @@ var/global/list/total_extraction_beacons = list()
 
 /obj/effect/extraction_holder/singularity_pull()
 	return
-
-/obj/item/extraction_pack/wormhole
-	name = "wormhole fulton extraction pack"
-	desc = "A balloon pack with integrated wormhole technology and less disruptive movement that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
-	can_use_indoors = TRUE
-	stuntime = 5

@@ -4,7 +4,7 @@
 	lastKnownIP	= client.address
 	computer_id	= client.computer_id
 	log_access_in(client)
-	if(config.log_access)
+	if(config_legacy.log_access)
 		for(var/mob/M in player_list)
 			if(M == src)	continue
 			if( M.key && (M.key != key) )
@@ -40,7 +40,7 @@
 		client.fps = 0 // Results in using the server FPS
 
 	next_move = 1
-	disconnect_time = null				//clear the disconnect time
+	disconnect_time = null				//VOREStation Addition: clear the disconnect time
 	sight |= SEE_SELF
 	..()
 
@@ -71,4 +71,7 @@
 
 	if(!client.tooltips)
 		client.tooltips = new(client)
-	
+
+	var/turf/T = get_turf(src)
+	if(isturf(T))
+		update_client_z(T.z)

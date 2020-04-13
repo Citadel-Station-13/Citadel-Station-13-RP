@@ -100,7 +100,7 @@
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null
 	volume = 150
-	flags = CONDUCT | OPENCONTAINER
+	flags = OPENCONTAINER
 
 /obj/item/weapon/reagent_containers/food/drinks/golden_cup/on_reagent_change()
 	..()
@@ -118,7 +118,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 
 /obj/item/weapon/reagent_containers/food/drinks/milk/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("milk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/soymilk
@@ -128,7 +128,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
 /obj/item/weapon/reagent_containers/food/drinks/soymilk/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("soymilk", 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk
@@ -139,7 +139,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk
@@ -150,7 +150,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
 /obj/item/weapon/reagent_containers/food/drinks/smallchocmilk/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("chocolate_milk", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/coffee
@@ -159,7 +159,7 @@
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
 /obj/item/weapon/reagent_containers/food/drinks/coffee/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("coffee", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea
@@ -170,7 +170,7 @@
 	center_of_mass = list("x"=16, "y"=14)
 
 /obj/item/weapon/reagent_containers/food/drinks/tea/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("tea", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/ice
@@ -179,7 +179,7 @@
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
 /obj/item/weapon/reagent_containers/food/drinks/ice/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("ice", 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/h_chocolate
@@ -211,7 +211,7 @@
 	center_of_mass = list("x"=16, "y"=12)
 
 /obj/item/weapon/reagent_containers/food/drinks/sillycup/Initialize()
-	..()
+	. = ..()
 
 /obj/item/weapon/reagent_containers/food/drinks/sillycup/on_reagent_change()
 	..()

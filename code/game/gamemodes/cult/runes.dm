@@ -206,7 +206,7 @@ var/list/sacrificed = list()
 			if(cultists.len >= 9)
 				if(!narsie_cometh)//so we don't initiate Hell more than one time.
 					world << "<font size='15' color='red'><b>THE VEIL HAS BEEN SHATTERED!</b></font>"
-					world << sound('sound/effects/wind/wind_5_1.ogg')
+					world << sound('sound/effects/weather/wind/wind_5_1.ogg')
 
 					SetUniversalState(/datum/universal_state/hell)
 					narsie_cometh = 1
@@ -286,7 +286,7 @@ var/list/sacrificed = list()
 							H.sdisabilities &= ~BLIND
 					for(var/obj/item/organ/E in H.bad_external_organs)
 						var/obj/item/organ/external/affected = E
-						if((affected.damage < affected.min_broken_damage * config.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
+						if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 							affected.status &= ~ORGAN_BROKEN
 						for(var/datum/wound/W in affected.wounds)
 							if(istype(W, /datum/wound/internal_bleeding))
@@ -1088,7 +1088,7 @@ var/list/sacrificed = list()
 					else if(issilicon(L))
 						var/mob/living/silicon/S = L
 						S.Weaken(5)
-						S.show_message("<span class='danger'>#4nd%;f4y6,>£%-BZZZZZZZT... The rune has exploded in a bright flash.</span>", 3)
+						S.show_message("<span class='danger'>BZZZT... The rune has exploded in a bright flash.</span>", 3)
 						add_attack_logs(usr,S,"Stun rune")
 				qdel(src)
 			else                        ///When invoked as talisman, stun and mute the target mob.

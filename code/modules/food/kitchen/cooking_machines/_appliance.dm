@@ -622,8 +622,8 @@
 						src.composition_reagent = "nutriment"
 
 	//if the mob is a simple animal with a defined meat quantity
-	if (istype(src, /mob/living/simple_animal))
-		var/mob/living/simple_animal/SA = src
+	if (istype(src, /mob/living/simple_mob))
+		var/mob/living/simple_mob/SA = src
 		if (SA.meat_amount)
 			src.composition_reagent_quantity = SA.meat_amount*2*9
 

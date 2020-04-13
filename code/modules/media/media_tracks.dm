@@ -9,16 +9,18 @@
 	var/artist		// Song's creator
 	var/duration	// Song length in deciseconds
 	var/secret		// Show up in regular playlist or secret playlist?
+	var/emag        // Show up in the emagged playlist?
 	var/lobby		// Be one of the choices for lobby music?
 	var/jukebox		// Does it even show up in the jukebox?
 	var/genre		// What is the genre of the song?
 
-/datum/track/New(var/url, var/title, var/duration, var/artist = "", var/secret = 0, var/lobby = 0, var/jukebox = 0, var/genre = "")
+/datum/track/New(var/url, var/title, var/duration, var/artist = "", var/secret = 0, var/emag = 0, var/lobby = 0, var/jukebox = 0, var/genre = "")
 	src.url = url
 	src.title = title
 	src.artist = artist
 	src.duration = duration
 	src.secret = secret
+	src.emag = emag
 	src.lobby = lobby
 	src.jukebox = jukebox
 	src.genre = genre
@@ -39,7 +41,7 @@ var/global/list/all_lobby_tracks = list()
 
 // Read the jukebox configuration file on system startup.
 /hook/startup/proc/load_jukebox_tracks()
-	var/jukebox_track_file = "config/jukebox.json"
+	var/jukebox_track_file = "code/game/machinery/jukebox.json"
 	if(!fexists(jukebox_track_file))
 		warning("File not found: [jukebox_track_file]")
 		return
@@ -62,6 +64,7 @@ var/global/list/all_lobby_tracks = list()
 		if(istext(entry["genre"]))
 			T.genre = entry["genre"]
 		T.secret = entry["secret"] ? 1 : 0
+		T.emag = entry["emag"] ? 1 : 0
 		T.lobby = entry["lobby"] ? 1 : 0
 		T.jukebox = entry["jukebox"] ? 1 : 0
 		if(istext(entry["genre"]))

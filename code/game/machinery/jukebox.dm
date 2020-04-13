@@ -31,7 +31,7 @@
 	var/list/queue = list()
 	//VOREStation Add End
 	var/current_genre = "Electronic" //What is our current genre?
-	var/list/genres = list("Electronic", "Rock", "Orchestral", "Folk", "Jazz", "Western") //Avaliable genres.
+	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
@@ -54,6 +54,11 @@
 		new/datum/track("Russkiy rep Diskoteka", 'sound/music/russianrapdisco.ogg')
 	)
 
+	// Only visible if emagged
+	var/list/datum/track/emag_tracks = list(
+	)
+
+
 /obj/machinery/media/jukebox/New()
 	. = ..()
 	default_apply_parts()
@@ -71,11 +76,14 @@
 	if(LAZYLEN(all_jukebox_tracks)) //Global list has tracks
 		tracks.Cut()
 		secret_tracks.Cut()
+		emag_tracks.Cut()
 		for(var/datum/track/T in all_jukebox_tracks) //Load them
 			if(!T.jukebox)
 				continue
 			if(T.secret)
 				secret_tracks |= T
+			if(T.emag)
+				emag_tracks |=T
 			else
 				tracks |= T
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
@@ -222,21 +230,21 @@
 		StopPlaying()
 	else if(href_list["play"])
 		if(emagged)
-			playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
-			for(var/mob/living/carbon/M in ohearers(6, src))
-				if(M.get_ear_protection() >= 2)
-					continue
-				M.sleeping = 0
-				M.stuttering += 20
-				M.ear_deaf += 30
-				M.Weaken(3)
-				if(prob(30))
-					M.Stun(10)
-					M.Paralyse(4)
-				else
-					M.make_jittery(500)
-			spawn(15)
-				explode()
+			//playsound(src.loc, 'sound/items/AirHorn.ogg', 100, 1)
+			//for(var/mob/living/carbon/M in ohearers(6, src))
+				//if(M.get_ear_protection() >= 2)
+					//continue
+				//M.sleeping = 0
+				//M.stuttering += 20
+				//M.ear_deaf += 30
+				//M.Weaken(3)
+				//if(prob(30))
+					//M.Stun(10)
+					//M.Paralyse(4)
+				//else
+					//M.make_jittery(500)
+			//spawn(15)
+				//explode()
 		else if(current_track == null)
 			to_chat(usr, "No track selected.")
 		else
@@ -276,7 +284,7 @@
 		data["tracks"] = nano_tracks
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "jukebox.tmpl", title, 450, 600)
 		ui.set_initial_data(data)
@@ -324,7 +332,13 @@
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
-		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+	else
+		StopPlaying()
+		visible_message("<span class='notice'>\The [src] abruptly stops and reboots itself, but nothing else happens.</span>")
+		return 1
+	if (emagged == 1)
+		tracks.Add(emag_tracks)
+		visible_message("<span class='notice'>\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist.</span>")
 		update_icon()
 		return 1
 

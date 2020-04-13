@@ -242,6 +242,11 @@
 	icon_state = "overalls"
 	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
 
+/obj/item/clothing/under/overalls/sleek
+	name = "sleek overalls"
+	desc = "A set of modern pleather reinforced overalls."
+	icon_state = "overalls_sleek"
+
 /obj/item/clothing/under/pirate
 	name = "pirate outfit"
 	desc = "Yarr."
@@ -282,6 +287,39 @@
 	icon_state = "gladiator"
 	item_state_slots = list(slot_r_hand_str = "yellow", slot_l_hand_str = "yellow")
 	body_parts_covered = LOWER_TORSO
+
+/obj/item/clothing/under/moderncoat
+	name = "modern wrapped coat"
+	desc = "The cutting edge of fashion."
+	icon_state = "moderncoat"
+	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
+
+/obj/item/clothing/under/ascetic
+	name = "plain ascetic garb"
+	desc = "Popular with freshly grown vatborn and new age cultists alike."
+	icon_state = "ascetic"
+	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+
+/obj/item/clothing/under/robe
+	name = "black robe"
+	desc = "A black robe. It gives off uncomfortable cult vibes."
+	icon_state = "robe"
+
+/obj/item/clothing/under/whiterobe
+	name = "white robe"
+	desc = "A white robe. It gives off uncomfortable cult vibes."
+	icon_state = "whiterobe"
+
+/obj/item/clothing/under/goldrobe
+	name = "black gold-lined robe"
+	desc = "A gold-lined black robe. It gives off uncomfortable cult vibes, but fancy."
+	icon_state = "goldrobe"
+
+/obj/item/clothing/under/whitegoldrobe
+	name = "white gold-lined robe"
+	desc = "A gold-lined white robe. It gives off uncomfortable cult vibes, but fancy."
+	icon_state = "whitegoldrobe"
 
 /*
  * dress
@@ -403,6 +441,22 @@
 	name = "western bustle"
 	desc = "A western bustle dress from Earth's late 1800's."
 	icon_state = "westernbustle"
+
+/obj/item/clothing/under/dress/sari
+	name = "red sari"
+	desc = "A colorful traditional dress originating from India."
+	icon_state = "sari_red"
+	item_state_slots = list(slot_r_hand_str = "darkreddress", slot_l_hand_str = "darkreddress")
+
+/obj/item/clothing/under/dress/sari/green
+	name = "green sari"
+	icon_state = "sari_green"
+	item_state_slots = list(slot_r_hand_str = "dress_green", slot_l_hand_str = "dress_green")
+
+/obj/item/clothing/under/dress/lilacdress
+	name = "lilac dress"
+	desc = "A simple black dress adorned in fake purple lilacs."
+	icon_state = "lilacdress"
 
 /*
  * wedding stuff
@@ -717,7 +771,7 @@
 
 /obj/item/clothing/under/swimsuit/stripper/mankini
 	name = "mankini"
-	desc = "No honest man would wear this abomination"
+	desc = "No honest man would wear this abomination."
 	icon_state = "mankini"
 
 /*
@@ -771,6 +825,7 @@
 	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation."
 	icon_state = "mbill"
 	worn_state = "mbill"
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/major_bills)
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
@@ -853,3 +908,92 @@
 	name = "hazard cohesion suit"
 	desc = "An orange cohesion suit with yellow hazard stripes intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit_hazard"
+
+//Uniforms
+//On-mob sprites go in icons\mob\uniform.dmi with the format "white_ranger_uniform_s" - with 'white' replaced with green, cyan, etc... of course! Note the _s - this is not optional.
+//Item sprites go in icons\obj\clothing\ranger.dmi with the format "white_ranger_uniform"
+/obj/item/clothing/under/color/ranger
+	var/unicolor = "white"
+	name = "ranger uniform"
+	desc = "Made from a space-proof fibre and tight fitting, this uniform usually gives the agile Rangers all kinds of protection while not inhibiting their movement. \
+	This costume is instead made from genuine cotton fibre and is based on the season three uniform."
+	icon = 'icons/obj/clothing/ranger.dmi'
+	icon_state = "ranger_uniform"
+	rolled_down = 0
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/color/ranger/Initialize()
+	. = ..()
+	if(icon_state == "ranger_uniform") //allows for custom items
+		name = "[unicolor] ranger uniform"
+		icon_state = "[unicolor]_ranger_uniform"
+
+/obj/item/clothing/under/color/ranger/black
+	unicolor = "black"
+
+/obj/item/clothing/under/color/ranger/pink
+	unicolor = "pink"
+
+/obj/item/clothing/under/color/ranger/green
+	unicolor = "green"
+
+/obj/item/clothing/under/color/ranger/cyan
+	unicolor = "cyan"
+
+/obj/item/clothing/under/color/ranger/orange
+	unicolor = "orange"
+
+/obj/item/clothing/under/color/ranger/yellow
+	unicolor = "yellow"
+
+// April 2020 - Drof's Additions Begin Below
+/obj/item/clothing/under/haltertop
+	name = "halter top"
+	desc = "A black halter top with denim jean shorts."
+	icon_state = "haltertop"
+
+/obj/item/clothing/under/festivedress
+	name = "festive dress"
+	desc = "A red dress with a fur-like white trim that is associated with the Christmas season."
+	icon_state = "festivedress"
+
+/obj/item/clothing/under/littleblackdress
+	name = "little black dress"
+	desc = "A small black dress with a red sash."
+	icon_state = "littleblackdress"
+
+/obj/item/clothing/under/bridgeofficer
+	name = "bridge officer uniform"
+	desc = "A jumpsuit for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficer"
+	item_state = "bridgeofficer"
+
+/obj/item/clothing/under/paramedunidark
+	name = "Paramedic Uniform"
+	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-dark"
+
+/obj/item/clothing/under/parameduniskirtdark
+	name = "Paramedic Uniskirt"
+	desc = "A dark jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-dark_skirt"
+
+/obj/item/clothing/under/btcbartender
+	name = "BTC Bartender"
+	desc = "For the classy bartender who converts their paychecks into Spesscoin."
+	icon_state = "btc_bartender_s"
+
+/obj/item/clothing/under/paramedunilight
+	name = "Paramedic Uniform"
+	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light"
+
+/obj/item/clothing/under/parameduniskirtlight
+	name = "Paramedic Uniskirt"
+	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
+	icon_state = "paramedic-light_skirt"
+
+/obj/item/clothing/under/dutchuniform
+	name = "Western suit"
+	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
+	icon_state = "dutchuniform"

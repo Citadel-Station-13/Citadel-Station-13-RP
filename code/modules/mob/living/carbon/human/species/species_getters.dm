@@ -41,7 +41,7 @@
 	return ((H && H.isSynthetic()) ? "encounters a hardware fault and suddenly reboots!" : knockout_message)
 
 /datum/species/proc/get_death_message(var/mob/living/carbon/human/H)
-	if(config.show_human_death_message)
+	if(config_legacy.show_human_death_message)
 		return ((H && H.isSynthetic()) ? "gives one shrill beep before falling lifeless." : death_message)
 	else
 		return "no message"
@@ -50,8 +50,10 @@
 	if(H)
 		if(H.looksSynthetic())
 			return "flashing a 'system offline' light"
-		else
+		else if(!H.ai_holder)
 			return show_ssd
+		else
+			return
 
 /datum/species/proc/get_blood_colour(var/mob/living/carbon/human/H)
 	if(H)

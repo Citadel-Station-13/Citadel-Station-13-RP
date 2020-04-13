@@ -17,7 +17,6 @@
 	var/list/logs = list() // Gets written to by exonet's send_message() function.
 
 	circuit = /obj/item/weapon/circuitboard/telecomms/exonet_node
-
 // Proc: New()
 // Parameters: None
 // Description: Adds components to the machine for deconstruction.
@@ -25,7 +24,6 @@
 	..()
 
 	component_parts = list()
-//	component_parts += new /obj/item/weapon/circuitboard/telecomms/exonet_node(src)
 	component_parts += new /obj/item/weapon/stock_parts/subspace/ansible(src)
 	component_parts += new /obj/item/weapon/stock_parts/subspace/sub_filter(src)
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
@@ -37,7 +35,7 @@
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 
-	desc = "This machine is one of many, many nodes inside [using_map.starsys_name]'s section of the Exonet, connecting the [using_map.station_short] to the rest of the system, at least \
+	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the [GLOB.using_map.station_short] to the rest of the system, at least \
 	electronically."
 
 // Proc: update_icon()
@@ -125,7 +123,7 @@
 
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -169,7 +167,7 @@
 			log_game(msg)
 
 	update_icon()
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 	add_fingerprint(usr)
 
 // Proc: get_exonet_node()

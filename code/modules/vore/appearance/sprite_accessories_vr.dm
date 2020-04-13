@@ -12,6 +12,7 @@
 /datum/sprite_accessory
 	// Ckey of person allowed to use this, if defined.
 	var/list/ckeys_allowed = null
+	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
 
 /*
 ////////////////////////////
@@ -28,6 +29,17 @@
 	var/color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/desc = "You should not see this..."
+
+// Species-unique ears
+
+/datum/sprite_accessory/ears/shadekin
+	name = "Shadekin Ears, colorable"
+	desc = ""
+	icon_state = "shadekin"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	apply_restrictions = TRUE
+	species_allowed = list(SPECIES_SHADEKIN)
 
 // Ears avaliable to anyone
 
@@ -393,6 +405,13 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/large_dragon
+	name = "vary large dragon horns"
+	desc = ""
+	icon_state = "big_liz"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 
 // Special snowflake ears go below here.
 
@@ -474,6 +493,12 @@
 	icon_state = "alurane-ears"
 	ckeys_allowed = list("natje")
 
+/datum/sprite_accessory/ears/frost
+    name = "Frost antenna"
+    desc = ""
+    icon_state = "frosted_tips"
+    ckeys_allowed = list("tucker0666")
+
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -511,6 +536,7 @@
 	name = "spider legs"
 	desc = ""
 	icon_state = "spider-legs"
+	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/wing/moth
@@ -614,42 +640,42 @@
 	name = "moth antenna and wings"
 	desc = ""
 	icon_state = "moth_full"
-	
+
 /datum/sprite_accessory/wing/moth_royal
 	name = "royal moth antenna and wings"
 	desc = ""
 	icon_state = "moth_royal"
-	
+
 /datum/sprite_accessory/wing/moth_red
 	name = "red moth antenna and wings"
 	desc = ""
 	icon_state = "moth_red"
-	
+
 /datum/sprite_accessory/wing/moth_gothic
 	name = "gothic moth antenna and wings"
 	desc = ""
 	icon_state = "moth_gothic"
-	
+
 /datum/sprite_accessory/wing/moth_lover
 	name = "lover moth antenna and wings"
 	desc = ""
 	icon_state = "moth_lover"
-	
+
 /datum/sprite_accessory/wing/moth_monarch
 	name = "monarch moth antenna and wings"
 	desc = ""
 	icon_state = "moth_monarch"
-	
+
 /datum/sprite_accessory/wing/moth_burned
 	name = "burned moth antenna and wings"
 	desc = ""
 	icon_state = "moth_burned"
-	
+
 /datum/sprite_accessory/wing/moth_white
 	name = "white moth antenna and wings"
 	desc = ""
 	icon_state = "moth_white"
-	
+
 /datum/sprite_accessory/wing/moth_firewatch
 	name = "firewatch moth antenna and wings"
 	desc = ""
@@ -659,7 +685,7 @@
 	name = "death moth antenna and wings"
 	desc = ""
 	icon_state = "moth_deathhead"
-	
+
 /datum/sprite_accessory/wing/moth_poison
 	name = "poison antenna and wings"
 	desc = ""
@@ -717,6 +743,22 @@
 	var/desc = "You should not see this..."
 	var/ani_state // State when wagging/animated
 	var/extra_overlay_w // Wagging state for extra overlay
+	var/list/hide_body_parts = list() //Uses organ tag defines. Bodyparts in this list do not have their icons rendered, allowing for more spriter freedom when doing taur/digitigrade stuff.
+	var/icon/clip_mask_icon = null //Icon file used for clip mask.
+	var/clip_mask_state = null //Icon state to generate clip mask. Clip mask is used to 'clip' off the lower part of clothing such as jumpsuits & full suits.
+
+// Species-unique tails
+
+/datum/sprite_accessory/tail/shadekin_short
+	name = "Shadekin Short Tail, colorable"
+	desc = ""
+	icon_state = "shadekin-short"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	apply_restrictions = TRUE
+	species_allowed = list(SPECIES_SHADEKIN)
+
+// Everyone tails
 
 /datum/sprite_accessory/tail/invisible
 	name = "hide species-sprite tail"
@@ -775,18 +817,18 @@
 	desc = ""
 	icon_state = "stripeytail-brown"
 
-/datum/sprite_accessory/tail/bunny
-	name = "bunny, colorable"
-	desc = ""
-	icon_state = "bunny"
-	do_colouration = 1
-
 /datum/sprite_accessory/tail/chameleon
 	name = "Chameleon, colorable"
 	desc = ""
 	icon_state = "chameleon"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/bunny
+	name = "bunny, colorable"
+	desc = ""
+	icon_state = "bunny"
+	do_colouration = 1
 
 /datum/sprite_accessory/tail/bear_brown
 	name = "bear, brown"
@@ -976,6 +1018,18 @@
 	icon_state = "aronai"
 	ckeys_allowed = list("arokha")
 
+/datum/sprite_accessory/tail/cabletail
+    name = "cabletail"
+    desc = "cabletail"
+    icon_state = "cabletail"
+    ckeys_allowed = list("tucker0666")
+
+/datum/sprite_accessory/tail/featherfluff_tail
+    name = "featherfluff_tail"
+    desc = ""
+    icon_state = "featherfluff_tail"
+    ckeys_allowed = list("tucker0666")
+
 /datum/sprite_accessory/tail/ketrai_wag
 	name = "fennix tail (vwag)"
 	desc = ""
@@ -1016,6 +1070,9 @@
 	icon_state = "satyr"
 	color_blend_mode = ICON_MULTIPLY
 	do_colouration = 1
+	hide_body_parts = list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
+	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
+	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms.
 
 /datum/sprite_accessory/tail/tailmaw
 	name = "tailmaw, colorable"
@@ -1041,6 +1098,17 @@
 	ani_state = "straighttail_w"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/sneptail
+	name = "Snep/Furry Tail (vwag)"
+	desc = ""
+	icon_state = "sneptail"
+	ani_state = "sneptail_w"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "sneptail_mark"
+	extra_overlay_w = "sneptail_mark_w"
+
 
 /datum/sprite_accessory/tail/tiger_new
 	name = "tiger tail (vwag)"
@@ -1585,3 +1653,30 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "buggofirefly_vass_markings"
 	extra_overlay_w = "buggofatfirefly_vass_markings"
+
+/datum/sprite_accessory/tail/tail_smooth
+	name = "Smooth Lizard Tail, Colorable"
+	desc = ""
+	icon_state = "tail_smooth"
+	ani_state = "tail_smooth_w"
+
+/datum/sprite_accessory/tail/lizard_tail_dark_tiger
+	name = "Lizard Tail (Dark Tiger)"
+	desc = ""
+	icon_state = "lizard_tail_dark_tiger"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/lizard_tail_light_tiger
+	name = "Lizard Tail (Light Tiger)"
+	desc = ""
+	icon_state = "lizard_tail_light_tiger"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/lizard_tail_spiked
+	name = "Lizard Tail (Spiked)"
+	desc = ""
+	icon_state = "lizard_tail_spiked"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY

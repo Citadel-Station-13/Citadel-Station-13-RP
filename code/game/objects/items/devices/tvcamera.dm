@@ -5,7 +5,7 @@
 	item_state = "camcorder"
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BELT
-	var/channel = "NCS Northern Star News Feed"
+	var/channel = "Tether News Feed"
 	var/obj/machinery/camera/network/thunder/camera
 	var/obj/item/device/radio/radio
 

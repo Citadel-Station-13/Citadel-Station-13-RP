@@ -35,7 +35,12 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 
 			if (!shuttle.location)	//leaving from the station
 				//launch the pods!
-				for (var/datum/shuttle/ferry/escape_pod/pod in escape_pods)
+				for (var/EP in escape_pods)
+					var/datum/shuttle/ferry/escape_pod/pod
+					if(istype(escape_pods[EP], /datum/shuttle/ferry/escape_pod))
+						pod = escape_pods[EP]
+					else
+						continue
 					if (!pod.arming_controller || pod.arming_controller.armed)
 						pod.launch(src)
 
@@ -51,13 +56,18 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 			var/estimated_time = round(estimate_launch_time()/60,1)
 
 			if (evac)
-				emergency_shuttle_docked.Announce(replacetext(replacetext(using_map.emergency_shuttle_docked_message, "%dock_name%", "[using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+				emergency_shuttle_docked.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_docked_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 			else
-				priority_announcement.Announce(replacetext(replacetext(using_map.shuttle_docked_message, "%dock_name%", "[using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_docked_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 
 		//arm the escape pods
 		if (evac)
-			for (var/datum/shuttle/ferry/escape_pod/pod in escape_pods)
+			for (var/EP in escape_pods)
+				var/datum/shuttle/ferry/escape_pod/pod
+				if(istype(escape_pods[EP], /datum/shuttle/ferry/escape_pod))
+					pod = escape_pods[EP]
+				else
+					continue
 				if (pod.arming_controller)
 					pod.arming_controller.arm()
 
@@ -83,7 +93,7 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
 	evac = 1
-	emergency_shuttle_called.Announce(replacetext(using_map.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
+	emergency_shuttle_called.Announce(replacetext(GLOB.using_map.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
 	for(var/area/A in all_areas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
@@ -103,7 +113,7 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 	shuttle.move_time = SHUTTLE_TRANSIT_DURATION
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
-	priority_announcement.Announce(replacetext(replacetext(using_map.shuttle_called_message, "%dock_name%", "[using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+	priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_called_message, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 	atc.shift_ending()
 
 //recalls the shuttle
@@ -114,14 +124,14 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 	shuttle.cancel_launch(src)
 
 	if (evac)
-		emergency_shuttle_recalled.Announce(using_map.emergency_shuttle_recall_message)
+		emergency_shuttle_recalled.Announce(GLOB.using_map.emergency_shuttle_recall_message)
 
 		for(var/area/A in all_areas)
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
 	else
-		priority_announcement.Announce(using_map.shuttle_recall_message)
+		priority_announcement.Announce(GLOB.using_map.shuttle_recall_message)
 
 /datum/emergency_shuttle_controller/proc/can_call()
 	if (!universe.OnShuttleCall(null))
@@ -195,6 +205,8 @@ var/global/datum/emergency_shuttle_controller/emergency_shuttle
 
 //returns 1 if the shuttle is not idle at centcom
 /datum/emergency_shuttle_controller/proc/online()
+	if(!shuttle)
+		return FALSE
 	if (!shuttle.location)	//not at centcom
 		return 1
 	if (wait_for_launch || shuttle.moving_status != SHUTTLE_IDLE)

@@ -298,7 +298,7 @@
 	if(confirm == "No")
 		return
 
-	if(config.antag_hud_restricted && has_enabled_antagHUD == 1)
+	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD == 1)
 		to_chat(src, "<span class='danger'>You have used the antagHUD and cannot respawn or use communicators!</span>")
 		return
 

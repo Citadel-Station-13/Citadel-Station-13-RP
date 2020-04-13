@@ -95,7 +95,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 
-	switch(H.mind.assigned_role)
+	switch(H.mind?.assigned_role)
 		if("Security Officer","Detective")
 			suit=/obj/item/clothing/suit/space/plasman/sec
 			helm=/obj/item/clothing/head/helmet/space/plasman/sec
@@ -132,7 +132,7 @@
 		if("Medical Doctor","Paramedic","Psychiatrist")
 			suit=/obj/item/clothing/suit/space/plasman/med
 			helm=/obj/item/clothing/head/helmet/space/plasman/med
-		if("Search and Rescue")
+		if("Field Medic")
 			suit=/obj/item/clothing/suit/space/plasman/med/rescue
 			helm=/obj/item/clothing/head/helmet/space/plasman/med/rescue
 		if("Chemist")

@@ -9,19 +9,20 @@
 	var/obj/machinery/mineral/stacking_machine/machine = null
 	//var/machinedir = SOUTHEAST //This is really dumb, so lets burn it with fire.
 
-/obj/machinery/mineral/stacking_unit_console/New()
+/obj/machinery/mineral/stacking_unit_console/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-	..()
-
-	spawn(7)
-		//src.machine = locate(/obj/machinery/mineral/stacking_machine, get_step(src, machinedir)) //No.
-		src.machine = locate(/obj/machinery/mineral/stacking_machine) in range(5,src)
-		if (machine)
-			machine.console = src
-		else
-			//Silently failing and causing mappers to scratch their heads while runtiming isn't ideal.
-			world << "<span class='danger'>Warning: Stacking machine console at [src.x], [src.y], [src.z] could not find its machine!</span>"
-			qdel(src)
+// this is garbage code hecc off
+/obj/machinery/mineral/stacking_unit_console/LateInitialize()
+	machine = locate(/obj/machinery/mineral/stacking_machine) in range(5,src)
+	if(machine)
+		machine.console = src
+	else
+		//Silently failing and causing mappers to scratch their heads while runtiming isn't ideal.
+			// yeah well telling the world chat before anyone even connected without logging isn't ideal either, 5brain.
+		stack_trace("Stacking machine console at [COORD(src)] could not find its machine!")
+		qdel(src)
 
 /obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user)
 	add_fingerprint(user)
@@ -61,8 +62,8 @@
 			machine.stack_storage[href_list["release_stack"]] = 0
 			S.update_icon()
 
-	src.add_fingerprint(usr)
-	src.updateUsrDialog()
+	add_fingerprint(usr)
+	updateUsrDialog()
 
 	return
 
@@ -78,15 +79,17 @@
 	var/obj/machinery/mineral/stacking_unit_console/console
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null
-	var/list/stack_storage[0]
-	var/list/stack_paths[0]
+	var/list/stack_storage
+	var/list/stack_paths
 	var/stack_amt = 50; // Amount to stack before releassing
 
-/obj/machinery/mineral/stacking_machine/New()
-	..()
+/obj/machinery/mineral/stacking_machine/Initialize(mapload)
+	. = ..()
+	stack_storage = list()
+	stack_paths = list()
 
-	for(var/stacktype in typesof(/obj/item/stack/material)-/obj/item/stack/material)
-		var/obj/item/stack/S = new stacktype(src)
+	for(var/stacktype in subtypesof(/obj/item/stack/material))
+		var/obj/item/stack/S = new stacktype
 		stack_storage[S.name] = 0
 		stack_paths[S.name] = stacktype
 		qdel(S)
@@ -97,40 +100,38 @@
 	stack_paths[DEFAULT_WALL_MATERIAL] = /obj/item/stack/material/steel
 	stack_storage["plasteel"] = 0
 	stack_paths["plasteel"] = /obj/item/stack/material/plasteel
+	return INITIALIZE_HINT_LATELOAD
 
-	spawn( 5 )
-		for (var/dir in cardinal)
-			src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
-			if(src.input) break
-		for (var/dir in cardinal)
-			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
-			if(src.output) break
-		return
-	return
+/obj/machinery/mineral/stacking_machine/LateInitialize()
+	for (var/dir in cardinal)
+		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
+		if(input)
+			break
+	for (var/dir in cardinal)
+		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
+		if(output)
+			break
 
 /obj/machinery/mineral/stacking_machine/process()
-	if (src.output && src.input)
-		var/turf/T = get_turf(input)
-		for(var/obj/item/O in T.contents)
-			if(!O) return
-			if(istype(O,/obj/item/stack))
-				if(!isnull(stack_storage[O.name]))
-					stack_storage[O.name]++
-					O.loc = null
-				else
-					O.loc = output.loc
-			else
-				O.loc = output.loc
+	if(!input || !output)
+		return
+	var/turf/inturf = get_turf(input)
+	var/turf/outturf = get_turf(output)
+	for(var/obj/item/I in inturf.contents)
+		if(istype(I, /obj/item/stack) && !isnull(stack_storage[I.name]))
+			var/obj/item/stack/S = I
+			stack_storage[S.name] += S.amount
+			qdel(S)
+			continue
+		I.forceMove(outturf)
 
 	//Output amounts that are past stack_amt.
 	for(var/sheet in stack_storage)
 		if(stack_storage[sheet] >= stack_amt)
 			var/stacktype = stack_paths[sheet]
-			var/obj/item/stack/material/S = new stacktype (get_turf(output))
+			var/obj/item/stack/material/S = new stacktype(get_turf(output))
 			S.amount = stack_amt
 			stack_storage[sheet] -= stack_amt
 			S.update_icon()
 
 	console.updateUsrDialog()
-	return
-

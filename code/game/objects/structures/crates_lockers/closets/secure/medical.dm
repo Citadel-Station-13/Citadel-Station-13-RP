@@ -58,6 +58,7 @@
 		/obj/item/clothing/shoes/boots/winter/medical,
 		/obj/item/clothing/under/rank/nursesuit,
 		/obj/item/clothing/head/nursehat,
+		/obj/item/device/gps/medical,
 		/obj/item/weapon/storage/box/freezer = 3)
 
 /obj/structure/closet/secure_closet/medical3/Initialize()
@@ -133,6 +134,7 @@
 		/obj/item/device/radio/off,
 		/obj/random/medical,
 		/obj/item/weapon/tool/crowbar,
+		/obj/item/device/gps/medical,
 		/obj/item/weapon/extinguisher/mini,
 		/obj/item/weapon/storage/box/freezer,
 		/obj/item/clothing/accessory/storage/white_vest,
@@ -167,6 +169,7 @@
 		/obj/item/taperoll/medical,
 		/obj/item/clothing/suit/bio_suit/cmo,
 		/obj/item/clothing/head/bio_hood/cmo,
+		/obj/item/device/gps/medical/cmo,
 		/obj/item/clothing/shoes/white,
 		/obj/item/weapon/reagent_containers/glass/beaker/vial) //VOREStation Add
 
@@ -296,6 +299,15 @@
 	name = "anesthetics wall closet"
 	desc = "Used to knock people out."
 	req_access = list(access_surgery)
+
+	starts_with = list(
+		/obj/item/weapon/tank/anesthetic = 3,
+		/obj/item/clothing/mask/breath/medical = 3)
+
+/obj/structure/closet/secure_closet/medical_wall/synth_anesthetics
+	name = "robotics anesthetics wall closet"
+	desc = "Used to knock people out."
+	req_access = list(access_robotics)
 
 	starts_with = list(
 		/obj/item/weapon/tank/anesthetic = 3,

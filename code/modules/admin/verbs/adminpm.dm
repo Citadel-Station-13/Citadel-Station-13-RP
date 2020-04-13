@@ -43,7 +43,7 @@
 	if(istext(whom))
 		if(cmptext(copytext(whom,1,2),"@"))
 			whom = findStealthKey(whom)
-		C = directory[whom]
+		C = GLOB.directory[whom]
 	else if(istype(whom,/client))
 		C = whom
 	if(!C)
@@ -81,7 +81,7 @@
 		if(whom == "IRCKEY")
 			irc = 1
 		else
-			recipient = directory[whom]
+			recipient = GLOB.directory[whom]
 	else if(istype(whom,/client))
 		recipient = whom
 
@@ -181,8 +181,8 @@
 				//always play non-admin recipients the adminhelp sound
 				recipient << 'sound/effects/adminhelp.ogg'
 
-				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
-				if(config.popup_admin_pm)
+				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config_legacy.txt ~Carn
+				if(config_legacy.popup_admin_pm)
 					spawn()	//so we don't hold the caller proc up
 						var/sender = src
 						var/sendername = key
@@ -210,7 +210,7 @@
 				to_chat(X, "<font color='blue'><B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]</font>" )
 
 /proc/IrcPm(target,msg,sender)
-	var/client/C = directory[target]
+	var/client/C = GLOB.directory[target]
 
 	var/datum/admin_help/ticket = C ? C.current_ticket : GLOB.ahelp_tickets.CKey2ActiveTicket(target)
 	var/compliant_msg = trim(lowertext(msg))

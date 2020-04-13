@@ -29,7 +29,7 @@
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
 	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
 	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/cell/high(src)
+	component_parts += new /obj/item/weapon/cell/super(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
 

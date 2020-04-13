@@ -38,6 +38,10 @@
 	name = "wine glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/wine
 
+/datum/category_item/autolathe/general/drinkingglass_pitcher
+	name = "drinks pitcher"
+	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher
+
 /datum/category_item/autolathe/general/flashlight
 	name = "flashlight"
 	path =/obj/item/device/flashlight
@@ -73,22 +77,26 @@
 /datum/category_item/autolathe/general/metal
 	name = "steel sheets"
 	path =/obj/item/stack/material/steel
-	is_stack = 1
+	is_stack = TRUE
+	no_scale = TRUE //prevents material duplication exploits
 
 /datum/category_item/autolathe/general/glass
 	name = "glass sheets"
 	path =/obj/item/stack/material/glass
-	is_stack = 1
+	is_stack = TRUE
+	no_scale = TRUE //prevents material duplication exploits
 
 /datum/category_item/autolathe/general/rglass
 	name = "reinforced glass sheets"
 	path =/obj/item/stack/material/glass/reinforced
-	is_stack = 1
+	is_stack = TRUE
+	no_scale = TRUE //prevents material duplication exploits
 
 /datum/category_item/autolathe/general/rods
 	name = "metal rods"
 	path =/obj/item/stack/rods
-	is_stack = 1
+	is_stack = TRUE
+	no_scale = TRUE //prevents material duplication exploits
 
 /datum/category_item/autolathe/general/knife
 	name = "kitchen knife"
@@ -101,10 +109,12 @@
 /datum/category_item/autolathe/general/tube
 	name = "light tube"
 	path =/obj/item/weapon/light/tube
+	is_stack = TRUE
 
 /datum/category_item/autolathe/general/bulb
 	name = "light bulb"
 	path =/obj/item/weapon/light/bulb
+	is_stack = TRUE
 
 /datum/category_item/autolathe/general/ashtray_glass
 	name = "glass ashtray"

@@ -153,6 +153,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "au" = (
@@ -1419,6 +1420,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_room)
 "cu" = (
@@ -1559,11 +1561,6 @@
 "cC" = (
 /turf/simulated/wall/r_wall,
 /area/space)
-"cD" = (
-/obj/structure/lattice,
-/obj/machinery/power/grounding_rod,
-/turf/space,
-/area/space)
 "cE" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -1624,14 +1621,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"cL" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/airless,
-/area/space)
 "cM" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -1651,12 +1640,30 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"cQ" = (
+"zh" = (
+/obj/machinery/power/grounding_rod,
+/turf/simulated/floor/airless,
+/area/space)
+"DC" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/power/tesla_coil,
+/obj/structure/cable/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/space)
+"KR" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/power/tesla_coil,
+/obj/structure/cable/yellow,
 /turf/simulated/floor/airless,
 /area/space)
 
@@ -1738,15 +1745,15 @@ ab
 ab
 ab
 ab
-ad
 ab
 ab
 ab
+aj
+ab
+aj
 ab
 ab
 ab
-ab
-ad
 ab
 ab
 ab
@@ -1770,15 +1777,15 @@ ab
 ab
 ab
 ab
-ad
 ab
 ab
 ab
+aj
+ab
+aj
 ab
 ab
 ab
-ab
-ad
 ab
 ab
 ab
@@ -1802,15 +1809,15 @@ ab
 ab
 ab
 ab
-ad
 ab
 ab
 ab
+aj
+ab
+aj
 ab
 ab
 ab
-ab
-ad
 ab
 ab
 ab
@@ -1834,15 +1841,15 @@ aj
 ab
 ab
 ab
+ab
+ab
+ab
 aj
+ab
 aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
+ab
+ab
+ab
 ab
 ab
 ab
@@ -1863,21 +1870,21 @@ ab
 ac
 aj
 aj
+ab
+ab
+ab
+ab
+zh
 ad
-cD
+aj
 ad
-co
+aj
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-co
-ad
-cD
-ad
+zh
+ab
+ab
+ab
+ab
 aj
 aj
 cC
@@ -1893,25 +1900,25 @@ ab
 ab
 ab
 ac
-ak
-cF
+aj
+aj
 ab
 ab
 ab
-cK
+ab
+aj
+co
+aj
 ad
-aX
-ad
-ad
-ad
-aX
-ad
-cK
+aj
+co
+aj
 ab
 ab
 ab
-cs
-cy
+ab
+aj
+aj
 cC
 ab
 aa
@@ -1925,25 +1932,25 @@ ab
 ab
 ab
 ac
-al
+ak
+cF
 aj
-ab
-ab
-ab
+aj
+aj
+aj
+aj
 cK
-ad
-ad
+aX
 aj
-aj
-aj
-ad
-ad
+aX
 cK
-ab
-ab
-ab
 aj
-al
+aj
+aj
+aj
+aj
+cs
+cy
 cC
 ab
 aa
@@ -1962,15 +1969,15 @@ aj
 ab
 ab
 ab
+ab
+ad
 aI
-ad
-ad
 aj
 bE
 aj
-ad
-ad
 aI
+ad
+ab
 ab
 ab
 ab
@@ -1989,25 +1996,25 @@ ab
 ab
 ab
 ac
-al
+am
+ar
 aj
-ab
-ab
-ab
+aj
+aj
+aj
+aj
 cK
-ad
-ad
+aX
 aj
-aj
-aj
-ad
-ad
+aX
 cK
-ab
-ab
-ab
 aj
-al
+aj
+aj
+aj
+aj
+cs
+cz
 cC
 aa
 aa
@@ -2021,25 +2028,25 @@ ab
 ab
 ab
 ac
-am
-ar
+al
+aj
 ab
 ab
 ab
-cK
-ad
-aX
-ad
-ad
-ad
-aX
-ad
-cK
+ab
+aj
+DC
+cN
+aP
+cN
+KR
+aj
 ab
 ab
 ab
-cs
-cz
+ab
+aj
+al
 cC
 aa
 aa
@@ -2055,21 +2062,21 @@ ab
 ac
 al
 aj
-ad
-cD
-ad
-aI
-ad
-ad
-ad
+ab
+ab
+ab
+ab
+zh
 ad
 ad
+cK
 ad
 ad
-aI
-ad
-cD
-ad
+zh
+ab
+ab
+ab
+ab
 aj
 al
 cC
@@ -2090,15 +2097,15 @@ aj
 ab
 ab
 ab
-cL
-cN
-cN
-cN
-aP
-cN
-cN
-cN
-cQ
+ab
+ab
+ab
+ad
+cK
+ad
+ab
+ab
+ab
 ab
 ab
 ab

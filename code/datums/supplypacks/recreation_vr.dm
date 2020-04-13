@@ -40,11 +40,11 @@
 	containertype = /obj/structure/closet/crate
 	containername = "wolfgirl cosplay crate"
 
-/datum/supply_pack/randomised/recreation/figures_vr
+/datum/supply_pack/randomised/recreation/figures
 	name = "Action figures crate"
 	num_contained = 5
 	contains = list(
-			/obj/random/action_figure
+			/obj/random/action_figure/supplypack
 			)
 	cost = 200
 	containertype = /obj/structure/closet/crate
@@ -68,3 +68,18 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Plushies crate"
+
+/datum/supply_pack/recreation/collars
+	name = "Collar bundle"
+	contains = list(
+			/obj/item/clothing/accessory/collar/shock = 1,
+			/obj/item/clothing/accessory/collar/spike = 1,
+			/obj/item/clothing/accessory/collar/silver = 1,
+			/obj/item/clothing/accessory/collar/gold = 1,
+			/obj/item/clothing/accessory/collar/bell = 1,
+			/obj/item/clothing/accessory/collar/pink = 1,
+			/obj/item/clothing/accessory/collar/holo = 1
+			)
+	cost = 25
+	containertype = /obj/structure/closet/crate
+	containername = "collar crate"

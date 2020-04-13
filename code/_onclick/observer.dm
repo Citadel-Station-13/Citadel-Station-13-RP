@@ -6,9 +6,9 @@
 	if(!client) return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
-		src << "<span class='notice'>You will now examine everything you click on.</span>"
+		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
 	else
-		src << "<span class='notice'>You will no longer examine things you click on.</span>"
+		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 
 /mob/observer/dead/DblClickOn(var/atom/A, var/params)
 	if(client.buildmode)
@@ -33,7 +33,7 @@
 		return
 	if(!canClick()) return
 	setClickCooldown(4)
-	// You are responsible for checking config.ghost_interaction when you override this function
+	// You are responsible for checking config_legacy.ghost_interaction when you override this function
 	// Not all of them require checking, see below
 	A.attack_ghost(src)
 

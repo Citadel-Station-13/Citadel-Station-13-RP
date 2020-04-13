@@ -18,8 +18,7 @@
 
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/food/condiment/flour = 7,
-		/obj/item/weapon/reagent_containers/food/condiment/sugar = 2,
-		/obj/item/weapon/reagent_containers/food/condiment/spacespice = 2)
+		/obj/item/weapon/reagent_containers/food/condiment/sugar = 2)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/mining
 	req_access = list()
@@ -50,7 +49,8 @@
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/food/drinks/milk = 6,
 		/obj/item/weapon/reagent_containers/food/drinks/soymilk = 4,
-		/obj/item/weapon/storage/fancy/egg_box = 4)
+		/obj/item/weapon/storage/fancy/egg_box = 4,
+		/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/glucose = 2)
 
 
 /obj/structure/closet/secure_closet/freezer/money

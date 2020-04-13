@@ -31,6 +31,8 @@
 /obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
 	if(..())
 		return
+	if(!allowed(user))
+		return
 	user.set_machine(src)
 	ui_interact(user)
 	return
@@ -51,6 +53,11 @@
 	var/pack_list[0]		// List of supply packs within the active_category
 	var/orders[0]
 	var/receipts[0]
+
+	if(!allowed(user))
+		authorization = 0
+	else
+		authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 
 	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 	if(shuttle)
@@ -169,7 +176,7 @@
 	data["contraband"] = can_order_contraband || (authorization & SUP_CONTRABAND)
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm

@@ -64,7 +64,7 @@
 		var/obj/machinery/computer/C = user
 
 		if(world.time <= reset_time)
-			C.visible_message("<font color='blue'>[using_map.boss_name] will not allow the Special Operations shuttle to launch yet.</font>")
+			C.visible_message("<font color='blue'>[GLOB.using_map.boss_name] will not allow the Special Operations shuttle to launch yet.</font>")
 			if (((world.time - reset_time)/10) > 60)
 				C.visible_message("<font color='blue'>[-((world.time - reset_time)/10)/60] minutes remain!</font>")
 			else
@@ -95,7 +95,7 @@
 		if (!location)	//just arrived home
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "<span class='danger'>You have arrived at [using_map.boss_name]. Operation has ended!</span>"
+				M << "<span class='danger'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>"
 		else	//just left for the station
 			launch_mauraders()
 			for(var/turf/T in get_area_turfs(destination))

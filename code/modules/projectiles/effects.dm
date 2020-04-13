@@ -2,6 +2,7 @@
 	icon = 'icons/effects/projectiles.dmi'
 	icon_state = "bolt"
 	plane = ABOVE_PLANE
+	mouse_opacity = 0
 
 /obj/effect/projectile/New(var/turf/location)
 	if(istype(location))

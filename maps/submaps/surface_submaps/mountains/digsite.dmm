@@ -47,7 +47,7 @@
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/submap/cave/digsite)
 "n" = (
-/mob/living/simple_animal/tindalos,
+/mob/living/simple_mob/animal/passive/tindalos,
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/submap/cave/digsite)
 "o" = (

@@ -30,9 +30,7 @@
 	},
 /area/submap/Shakden)
 "g" = (
-/mob/living/simple_animal/hostile/shantak{
-	hostile = 0
-	},
+/mob/living/simple_mob/animal/sif/shantak/retaliate,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -46,9 +44,7 @@
 	},
 /area/submap/Shakden)
 "i" = (
-/mob/living/simple_animal/hostile/shantak{
-	hostile = 0
-	},
+/mob/living/simple_mob/animal/sif/shantak/retaliate,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Shakden)
 "j" = (

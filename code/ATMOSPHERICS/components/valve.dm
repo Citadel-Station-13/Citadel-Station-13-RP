@@ -288,6 +288,25 @@
 				open()
 
 /obj/machinery/atmospherics/valve/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/weapon/airlock_electronics) && istype(src, /obj/machinery/atmospherics/valve/digital))
+		if(!src.allowed(user)) // ID check, otherwise you could just wipe the access with any board.
+			to_chat(user, "<span class='warning'>Access denied.</span>")
+			return 1
+		to_chat(user, "<span class='notice'>You begin to upload access data to \the [src]...</span>")
+		if (do_after(user, 20))
+			var/obj/item/weapon/airlock_electronics/E = W
+			if(E.one_access)
+				req_access = null
+				req_one_access = E.conf_access
+			else
+				req_access = E.conf_access
+				req_one_access = null
+			user.visible_message( \
+				"<span class='notice'>\The [user] uploads access data to \the [src].</span>", \
+				"<span class='notice'>You copied access data from \the [W] to \the [src].</span>", \
+				"You hear a faint beep.")
+		return 0
+
 	if (!W.is_wrench())
 		return ..()
 	if (istype(src, /obj/machinery/atmospherics/valve/digital) && !src.allowed(user))

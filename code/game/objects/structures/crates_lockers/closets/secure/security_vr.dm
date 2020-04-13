@@ -15,7 +15,7 @@
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
-		/obj/item/clothing/under/mildress/marine/command/hos,
+		/obj/item/clothing/under/solgov/mildress/marine/command,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
 		/obj/item/clothing/suit/dress/marine/command/hos,
@@ -57,6 +57,7 @@
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
 		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/device/gps/security/hos,
 		/obj/item/device/flashlight/maglight)
 
 //Custom NT Security Lockers, Only found at central command

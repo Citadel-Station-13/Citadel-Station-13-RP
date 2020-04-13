@@ -31,12 +31,30 @@ SUBSYSTEM_DEF(vote)
 			reset()
 
 /datum/controller/subsystem/vote/proc/autotransfer()
+	// Before doing the vote, see if anyone is playing.
+	// If not, just do the transfer.
+	var/players_are_in_round = FALSE
+	for(var/a in player_list) // Mobs with clients attached.
+		var/mob/living/L = a
+		if(!istype(L)) // Exclude ghosts and other weird things.
+			continue
+		if(L.stat == DEAD) // Dead mobs aren't playing.
+			continue
+		// Everything else is, however.
+		players_are_in_round = TRUE
+		break
+
+	if(!players_are_in_round)
+		log_debug("The crew transfer shuttle was automatically called at vote time due to no players being present.")
+		init_shift_change(null, 1)
+		return
+
 	initiate_vote(VOTE_CREW_TRANSFER, "the server", 1)
-	log_debug("The server has called a crew transfer vote.")
+	subsystem_log("The server has called a crew transfer vote.")
 
 /datum/controller/subsystem/vote/proc/autogamemode()
 	initiate_vote(VOTE_GAMEMODE, "the server", 1)
-	log_debug("The server has called a gamemode vote.")
+	subsystem_log("The server has called a gamemode vote.")
 
 /datum/controller/subsystem/vote/proc/reset()
 	initiator = null
@@ -60,8 +78,8 @@ SUBSYSTEM_DEF(vote)
 		if(votes > greatest_votes)
 			greatest_votes = votes
 
-	if(!config.vote_no_default && choices.len) // Default-vote for everyone who didn't vote
-		var/non_voters = (clients.len - total_votes)
+	if(!config_legacy.vote_no_default && choices.len) // Default-vote for everyone who didn't vote
+		var/non_voters = (GLOB.clients.len - total_votes)
 		if(non_voters > 0)
 			if(mode == VOTE_RESTART)
 				choices["Continue Playing"] += non_voters
@@ -87,7 +105,7 @@ SUBSYSTEM_DEF(vote)
 						factor = 1.4
 				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
 				world << "<font color='purple'>Crew Transfer Factor: [factor]</font>"
-				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //Citadel change in line with player vote.
+				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Extend the Shift"]) //VOREStation Edit
 
 	. = list() // Get all options with that many votes and return them in a list
 	if(greatest_votes)
@@ -161,7 +179,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/submit_vote(ckey, newVote)
 	if(mode)
-		if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
+		if(config_legacy.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
 			return
 		if(current_votes[ckey])
 			choices[choices[current_votes[ckey]]]--
@@ -171,10 +189,10 @@ SUBSYSTEM_DEF(vote)
 		else
 			current_votes[ckey] = null
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, automatic = FALSE, time = config.vote_period)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, automatic = FALSE, time = config_legacy.vote_period)
 	if(!mode)
 		if(started_time != null && !(check_rights(R_ADMIN) || automatic))
-			var/next_allowed_time = (started_time + config.vote_delay)
+			var/next_allowed_time = (started_time + config_legacy.vote_delay)
 			if(next_allowed_time > world.time)
 				return 0
 
@@ -186,9 +204,9 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_GAMEMODE)
 				if(ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
-				choices.Add(config.votable_modes)
+				choices.Add(config_legacy.votable_modes)
 				for(var/F in choices)
-					var/datum/game_mode/M = gamemode_cache[F]
+					var/datum/game_mode/M = config_legacy.gamemode_cache[F]
 					if(!M)
 						continue
 					gamemode_names[M.config_tag] = capitalize(M.name) //It's ugly to put this here but it works
@@ -202,10 +220,10 @@ SUBSYSTEM_DEF(vote)
 					if(ticker.current_state <= GAME_STATE_SETTING_UP)
 						initiator_key << "The crew transfer button has been disabled!"
 						return 0
-				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //Citadel change in line with player vote.
-				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //Citadel change in line with player vote.
+				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
+				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
-				if(!config.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
+				if(!config_legacy.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
 				for(var/antag_type in all_antag_types)
 					var/datum/antagonist/antag = all_antag_types[antag_type]
@@ -234,7 +252,7 @@ SUBSYSTEM_DEF(vote)
 
 		log_vote(text)
 
-		world << "<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period / 10] seconds to vote.</font>"
+		world << "<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>"
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
 			world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3)
 
@@ -242,7 +260,7 @@ SUBSYSTEM_DEF(vote)
 			round_progressing = 0
 			world << "<font color='red'><b>Round start has been delayed.</b></font>"
 
-		time_remaining = round(config.vote_period / 10)
+		time_remaining = round(config_legacy.vote_period / 10)
 		return 1
 	return 0
 
@@ -286,31 +304,31 @@ SUBSYSTEM_DEF(vote)
 			. += "(<a href='?src=\ref[src];vote=cancel'>Cancel Vote</a>) "
 	else
 		. += "<h2>Start a vote:</h2><hr><ul><li>"
-		if(admin || config.allow_vote_restart)
+		if(admin || config_legacy.allow_vote_restart)
 			. += "<a href='?src=\ref[src];vote=restart'>Restart</a>"
 		else
 			. += "<font color='grey'>Restart (Disallowed)</font>"
 		. += "</li><li>"
 
-		if(admin || config.allow_vote_restart)
+		if(admin || config_legacy.allow_vote_restart)
 			. += "<a href='?src=\ref[src];vote=crew_transfer'>Crew Transfer</a>"
 		else
 			. += "<font color='grey'>Crew Transfer (Disallowed)</font>"
 
 		if(admin)
-			. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config.allow_vote_restart ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config_legacy.allow_vote_restart ? "Allowed" : "Disallowed"]</a>)"
 		. += "</li><li>"
 
-		if(admin || config.allow_vote_mode)
+		if(admin || config_legacy.allow_vote_mode)
 			. += "<a href='?src=\ref[src];vote=gamemode'>GameMode</a>"
 		else
 			. += "<font color='grey'>GameMode (Disallowed)</font>"
 
 		if(admin)
-			. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config.allow_vote_mode ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config_legacy.allow_vote_mode ? "Allowed" : "Disallowed"]</a>)"
 		. += "</li><li>"
 
-		if(!antag_add_failed && config.allow_extra_antags)
+		if(!antag_add_failed && config_legacy.allow_extra_antags)
 			. += "<a href='?src=\ref[src];vote=add_antagonist'>Add Antagonist Type</a>"
 		else
 			. += "<font color='grey'>Add Antagonist (Disallowed)</font>"
@@ -335,22 +353,22 @@ SUBSYSTEM_DEF(vote)
 				reset()
 		if("toggle_restart")
 			if(usr.client.holder)
-				config.allow_vote_restart = !config.allow_vote_restart
+				config_legacy.allow_vote_restart = !config_legacy.allow_vote_restart
 		if("toggle_gamemode")
 			if(usr.client.holder)
-				config.allow_vote_mode = !config.allow_vote_mode
+				config_legacy.allow_vote_mode = !config_legacy.allow_vote_mode
 
 		if(VOTE_RESTART)
-			if(config.allow_vote_restart || usr.client.holder)
+			if(config_legacy.allow_vote_restart || usr.client.holder)
 				initiate_vote(VOTE_RESTART, usr.key)
 		if(VOTE_GAMEMODE)
-			if(config.allow_vote_mode || usr.client.holder)
+			if(config_legacy.allow_vote_mode || usr.client.holder)
 				initiate_vote(VOTE_GAMEMODE, usr.key)
 		if(VOTE_CREW_TRANSFER)
-			if(config.allow_vote_restart || usr.client.holder)
+			if(config_legacy.allow_vote_restart || usr.client.holder)
 				initiate_vote(VOTE_CREW_TRANSFER, usr.key)
 		if(VOTE_ADD_ANTAGONIST)
-			if(config.allow_extra_antags || usr.client.holder)
+			if(config_legacy.allow_extra_antags || usr.client.holder)
 				initiate_vote(VOTE_ADD_ANTAGONIST, usr.key)
 		if(VOTE_CUSTOM)
 			if(usr.client.holder)

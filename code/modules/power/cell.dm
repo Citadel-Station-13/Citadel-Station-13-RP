@@ -34,11 +34,11 @@
 	charge = maxcharge
 	update_icon()
 	if(self_recharge)
-		processing_objects |= src
+		START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/cell/Destroy()
 	if(self_recharge)
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/weapon/cell/get_cell()
@@ -133,9 +133,7 @@
 /obj/item/weapon/cell/proc/give(var/amount)
 	if(rigged && amount > 0)
 		explode()
-		return 0
-
-	if(maxcharge < amount)	return 0
+		return FALSE
 	var/amount_used = min(maxcharge-charge,amount)
 	charge += amount_used
 	update_icon()

@@ -33,6 +33,12 @@
 	var/list/starts_with
 
 /obj/structure/closet/Initialize()
+	..()
+	PopulateContents()
+	// Closets need to come later because of spawners potentially creating objects during init.
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/closet/LateInitialize()
 	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
@@ -52,6 +58,12 @@
 			storage_capacity = content_size + 5
 	update_icon()
 
+/**
+  * The proc that fills the closet with its initial contents.
+  */
+/obj/structure/closet/proc/PopulateContents()
+	return
+
 /obj/structure/closet/examine(mob/user)
 	if(..(user, 1) && !opened)
 		var/content_size = 0
@@ -69,9 +81,10 @@
 		else
 			to_chat(user, "It is full.")
 
-/obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0 || wall_mounted)) return 1
-	return (!density)
+/obj/structure/closet/CanPass(atom/movable/mover, turf/target)
+	if(wall_mounted)
+		return TRUE
+	return ..()
 
 /obj/structure/closet/proc/can_open()
 	if(src.sealed)
@@ -114,7 +127,8 @@
 	src.icon_state = src.icon_opened
 	src.opened = 1
 	playsound(src.loc, open_sound, 15, 1, -3)
-	density = !density
+	if(initial(density))
+		density = !density
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -138,7 +152,8 @@
 	src.opened = 0
 
 	playsound(src.loc, close_sound, 15, 1, -3)
-	density = !density
+	if(initial(density))
+		density = !density
 	return 1
 
 //Cham Projector Exception
@@ -377,12 +392,12 @@
 	if(!opened)
 		icon_state = icon_closed
 		if(sealed)
-			overlays += "sealed"
+			overlays += "welded"
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys", var/wallbreaker)
-	if(damage < 10 || !wallbreaker)
+/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys")
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
@@ -460,3 +475,10 @@
 		if(istype(src.loc, /obj/structure/closet))
 			return (loc.return_air_for_internal_lifeform(L))
 	return return_air()
+
+/obj/structure/closet/take_damage(var/damage)
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
+		return
+	dump_contents()
+	spawn(1) qdel(src)
+	return 1

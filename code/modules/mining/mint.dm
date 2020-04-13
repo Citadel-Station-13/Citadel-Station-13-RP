@@ -33,7 +33,11 @@
 		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(output)
 			break
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
+
+/obj/machinery/mineral/mint/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/machinery/mineral/mint/process()
 	if (input)

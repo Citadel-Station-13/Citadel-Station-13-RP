@@ -1178,7 +1178,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor,
 /area/maintenance/library)
 "acE" = (
@@ -1752,7 +1752,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
 "aeb" = (
@@ -2621,7 +2621,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
 "afW" = (
@@ -9764,7 +9764,7 @@
 /area/security/riot_control)
 "ats" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor/plating,
 /area/maintenance/security_starboard)
 "att" = (
@@ -27643,7 +27643,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research_shuttle)
 "baY" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor,
 /area/maintenance/research_shuttle)
 "baZ" = (
@@ -37913,7 +37913,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/mob/living/simple_animal/cat/fluff/Runtime,
+/mob/living/simple_mob/animal/passive/cat/runtime,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "buJ" = (
@@ -42674,7 +42674,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor,
 /area/maintenance/central)
 "bCE" = (
@@ -43684,7 +43684,7 @@
 /area/maintenance/central)
 "bEi" = (
 /obj/machinery/light/small,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "bEj" = (
@@ -47102,7 +47102,7 @@
 /obj/item/weapon/storage/belt/utility,
 /obj/item/clothing/mask/gas,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "bJX" = (
@@ -47335,7 +47335,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/mob/living/simple_animal/corgi/Ian,
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "bKr" = (
@@ -50035,7 +50035,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -50656,7 +50656,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/mob/living/simple_animal/slime/rainbow/kendrick,
+/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
 /turf/simulated/floor/tiled/white,
 /area/rnd/rdoffice)
 "bQb" = (
@@ -55783,7 +55783,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay_aft)
 "bZn" = (
@@ -58025,7 +58025,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "cdD" = (
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_y = 32
 	},
 /obj/structure/table/reinforced,
@@ -64364,7 +64364,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/mob/living/simple_animal/mouse/brown/Tom,
+/mob/living/simple_mob/animal/passive/mouse/brown/Tom,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "coZ" = (
@@ -79888,7 +79888,7 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/structure/closet/fireaxecabinet{
+/obj/structure/fireaxecabinet{
 	pixel_y = 32
 	},
 /obj/machinery/cell_charger,
@@ -93830,7 +93830,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_mob/animal/passive/mouse,
 /turf/simulated/floor,
 /area/maintenance/engineering)
 "dud" = (

@@ -46,16 +46,16 @@ var/global/datum/controller/gameticker/ticker
 	'sound/music/space_oddity.ogg') //Ground Control to Major Tom, this song is cool, what's going on?
 	*/ //VOREStation Edit End
 
-	send2mainirc("Server lobby is loaded and open at byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")
+	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 
 	do
-		pregame_timeleft = 300
+		pregame_timeleft = 180
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
 		to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
 		while(current_state == GAME_STATE_PREGAME)
 			if(round_progressing)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft)
+			if(pregame_timeleft == config_legacy.vote_autogamemode_timeleft)
 				if(!SSvote.time_remaining)
 					SSvote.autogamemode()	//Quit calling this over and over and over and over.
 					while(SSvote.time_remaining)
@@ -72,7 +72,7 @@ var/global/datum/controller/gameticker/ticker
 	if(master_mode=="secret")
 		src.hide_mode = 1
 
-	var/list/runnable_modes = config.get_runnable_modes()
+	var/list/runnable_modes = config_legacy.get_runnable_modes()
 	if((master_mode=="random") || (master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
@@ -80,14 +80,14 @@ var/global/datum/controller/gameticker/ticker
 			to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pregame lobby.")
 			return 0
 		if(secret_force_mode != "secret")
-			src.mode = config.pick_mode(secret_force_mode)
+			src.mode = config_legacy.pick_mode(secret_force_mode)
 		if(!src.mode)
 			var/list/weighted_modes = list()
 			for(var/datum/game_mode/GM in runnable_modes)
-				weighted_modes[GM.config_tag] = config.probabilities[GM.config_tag]
-			src.mode = gamemode_cache[pickweight(weighted_modes)]
+				weighted_modes[GM.config_tag] = config_legacy.probabilities[GM.config_tag]
+			src.mode = config_legacy.gamemode_cache[pickweight(weighted_modes)]
 	else
-		src.mode = config.pick_mode(master_mode)
+		src.mode = config_legacy.pick_mode(master_mode)
 
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
@@ -101,7 +101,7 @@ var/global/datum/controller/gameticker/ticker
 	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	if(!src.mode.can_start())
-		world << "<B>Unable to start [mode.name].</B> Not enough players readied, [mode.required_players] players needed. Reverting to pregame lobby."
+		world << "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby."
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		mode.fail_setup()
@@ -126,7 +126,7 @@ var/global/datum/controller/gameticker/ticker
 	create_characters() //Create player characters and transfer them.
 	collect_minds()
 	equip_characters()
-	data_core.manifest()
+	//data_core.manifest()	//VOREStation Removal
 
 	callHook("roundstart")
 
@@ -161,7 +161,7 @@ var/global/datum/controller/gameticker/ticker
 	processScheduler.start()
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
-	if(config.sql_enabled)
+	if(config_legacy.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
@@ -200,7 +200,7 @@ var/global/datum/controller/gameticker/ticker
 				switch(M.z)
 					if(0)	//inside a crate or something
 						var/turf/T = get_turf(M)
-						if(T && T.z in using_map.station_levels)				//we don't use M.death(0) because it calls a for(/mob) loop and
+						if(T && T.z in GLOB.using_map.station_levels)				//we don't use M.death(0) because it calls a for(/mob) loop and
 							M.health = 0
 							M.stat = DEAD
 					if(1)	//on a z-level 1 turf.
@@ -260,7 +260,7 @@ var/global/datum/controller/gameticker/ticker
 						world << sound('sound/effects/explosionfar.ogg')
 						cinematic.icon_state = "summary_selfdes"
 				for(var/mob/living/M in living_mob_list)
-					if(M.loc.z in using_map.station_levels)
+					if(M.loc.z in GLOB.using_map.station_levels)
 						M.death()//No mercy
 		//If its actually the end of the round, wait for it to end.
 		//Otherwise if its a verb it will continue on afterwards.
@@ -280,8 +280,13 @@ var/global/datum/controller/gameticker/ticker
 				else if(!player.mind.assigned_role)
 					continue
 				else
-					if (player.create_character()) // VOREStation Edit
+					//VOREStation Edit Start
+					var/mob/living/carbon/human/new_char = player.create_character()
+					if(new_char)
 						qdel(player)
+					if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
+						data_core.manifest_inject(new_char)
+					//VOREStation Edit End
 
 
 	proc/collect_minds()
@@ -299,7 +304,7 @@ var/global/datum/controller/gameticker/ticker
 				if(!player_is_antag(player.mind, only_offstation_roles = 1))
 					job_master.EquipRank(player, player.mind.assigned_role, 0)
 					UpdateFactionList(player)
-					equip_custom_items(player)
+					//equip_custom_items(player)	//VOREStation Removal
 					//player.apply_traits() //VOREStation Removal
 		if(captainless)
 			for(var/mob/M in player_list)
@@ -317,7 +322,7 @@ var/global/datum/controller/gameticker/ticker
 
 		var/game_finished = 0
 		var/mode_finished = 0
-		if (config.continous_rounds)
+		if (config_legacy.continous_rounds)
 			game_finished = (emergency_shuttle.returned() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())
 		else
@@ -420,7 +425,7 @@ var/global/datum/controller/gameticker/ticker
 
 	for (var/mob/living/silicon/robot/robo in mob_list)
 
-		if(istype(robo,/mob/living/silicon/robot/drone))
+		if(istype(robo,/mob/living/silicon/robot/drone) && !istype(robo,/mob/living/silicon/robot/drone/swarm))
 			dronecount++
 			continue
 
@@ -439,7 +444,7 @@ var/global/datum/controller/gameticker/ticker
 	mode.declare_completion()//To declare normal completion.
 
 	//Ask the event manager to print round end information
-	event_manager.RoundEnd()
+	SSevents.RoundEnd()
 
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()

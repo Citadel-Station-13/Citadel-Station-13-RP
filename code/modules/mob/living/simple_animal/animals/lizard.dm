@@ -1,4 +1,4 @@
-/mob/living/simple_animal/lizard
+/mob/living/simple_mob/lizard
 	name = "Lizard"
 	desc = "A cute tiny lizard."
 	tt_desc = "E Anolis cuvieri"
@@ -11,14 +11,6 @@
 	health = 5
 	maxHealth = 5
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
-	can_pull_size = ITEMSIZE_TINY
-	can_pull_mobs = MOB_PULL_NONE
-	layer = MOB_LAYER
-	density = 0
-
-	holder_type = /obj/item/weapon/holder/micro
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
 
 	response_help  = "pets"
 	response_disarm = "shoos"

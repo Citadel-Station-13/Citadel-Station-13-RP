@@ -64,7 +64,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/New()
 	..()
-	health = config.default_brain_health
+	health = config_legacy.default_brain_health
 	spawn(5)
 		if(brainmob && brainmob.client)
 			brainmob.client.screen.len = null //clear the hud
@@ -107,7 +107,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	if(name == initial(name))
 		name = "\the [owner.real_name]'s [initial(name)]"
 
-	var/mob/living/simple_animal/borer/borer = owner.has_brain_worms()
+	var/mob/living/simple_mob/animal/borer/borer = owner.has_brain_worms()
 
 	if(borer)
 		borer.detatch() //Should remove borer if the brain is removed - RR
@@ -129,6 +129,11 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		else
 			target.key = brainmob.key
 	..()
+
+/obj/item/organ/internal/brain/proc/get_control_efficiency()
+	. = max(0, 1 - (round(damage / max_damage * 10) / 10))
+
+	return .
 
 /obj/item/organ/internal/brain/pariah_brain
 	name = "brain remnants"

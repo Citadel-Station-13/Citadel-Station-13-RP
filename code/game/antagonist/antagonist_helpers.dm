@@ -8,7 +8,7 @@
 	if(!ignore_role)
 		if(player.assigned_role in restricted_jobs)
 			return FALSE
-		if(config.protect_roles_from_antagonist && (player.assigned_role in protected_jobs))
+		if(config_legacy.protect_roles_from_antagonist && (player.assigned_role in protected_jobs))
 			return FALSE
 	return TRUE
 

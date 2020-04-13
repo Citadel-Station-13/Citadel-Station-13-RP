@@ -179,7 +179,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 /spell/proc/cast_check(skipcharge = 0,mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 
 	if(!(src in user.spell_list) && holder == user)
-		error("[user] utilized the spell '[src]' without having it.")
+		log_world("[user] utilized the spell '[src]' without having it.")
 		user << "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>"
 		return 0
 
@@ -190,7 +190,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(!user_turf)
 		user << "<span class='warning'>You cannot cast spells in null space!</span>"
 
-	if(spell_flags & Z2NOCAST && (user_turf.z in using_map.admin_levels)) //Certain spells are not allowed on the CentCom zlevel
+	if(spell_flags & Z2NOCAST && (user_turf.z in GLOB.using_map.admin_levels)) //Certain spells are not allowed on the CentCom zlevel
 		return 0
 
 	if(spell_flags & CONSTRUCT_CHECK)
@@ -198,10 +198,10 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			if(findNullRod(T))
 				return 0
 
-	if(istype(user, /mob/living/simple_animal) && holder == user)
-		var/mob/living/simple_animal/SA = user
-		if(SA.purge)
-			SA << "<span class='warning'>The nullrod's power interferes with your own!</span>"
+	if(istype(user, /mob/living/simple_mob) && holder == user)
+		var/mob/living/simple_mob/SM = user
+		if(SM.purge)
+			SM << "<span class='warning'>The nullrod's power interferes with your own!</span>"
 			return 0
 
 	if(!src.check_charge(skipcharge, user)) //sees if we can cast based on charges alone

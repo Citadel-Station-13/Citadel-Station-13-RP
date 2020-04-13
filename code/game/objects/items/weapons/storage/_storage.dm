@@ -40,6 +40,8 @@
 
 	var/empty //Mapper override to spawn an empty version of a container that usually has stuff
 
+	var/last_message = 0
+
 /obj/item/weapon/storage/Destroy()
 	close_all()
 	QDEL_NULL(boxes)
@@ -503,7 +505,9 @@
 	else if(success)
 		to_chat(user, "<span class='notice'>You put some things in [src].</span>")
 	else
-		to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+		if(world.time >= last_message == 0)
+			to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
+			last_message = world.time + 200
 
 /obj/item/weapon/storage/verb/toggle_gathering_mode()
 	set name = "Switch Gathering Method"

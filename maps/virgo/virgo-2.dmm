@@ -4325,7 +4325,7 @@
 	name = "Beruang";
 	pixel_x = 32
 	},
-/mob/living/simple_animal/corgi/tamaskan/spice,
+/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/trade/centcom)
 "amz" = (
@@ -9590,7 +9590,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_mob/animal/passive/dog/corgi/puppy{
 	name = "Bockscar"
 	},
 /turf/unsimulated/floor{
@@ -10537,7 +10537,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/syndicate_station/start)
 "azh" = (
-/mob/living/simple_animal/cat/kitten{
+/mob/living/simple_mob/animal/passive/cat/kitten{
 	name = "Enola"
 	},
 /turf/simulated/shuttle/floor/darkred,
@@ -20867,7 +20867,7 @@
 /turf/simulated/shuttle/plating,
 /area/space)
 "aVq" = (
-/mob/living/simple_animal/crab/Coffee,
+/mob/living/simple_mob/animal/passive/crab/Coffee,
 /turf/unsimulated/beach/sand,
 /area/centcom/evac)
 "aVr" = (
@@ -22197,7 +22197,7 @@
 	},
 /area/wizard_station)
 "aZP" = (
-/mob/living/simple_animal/mouse/gray{
+/mob/living/simple_mob/animal/passive/mouse/gray{
 	desc = "He looks kingly.";
 	name = "Arthur"
 	},

@@ -232,6 +232,17 @@
 	/obj/item/device/healthanalyzer, /obj/item/device/flashlight, /obj/item/device/radio, /obj/item/weapon/tank/emergency/oxygen,/obj/item/weapon/surgical/scalpel,/obj/item/weapon/surgical/retractor,/obj/item/weapon/surgical/hemostat, \
 	/obj/item/weapon/surgical/cautery,/obj/item/weapon/surgical/bonegel,/obj/item/weapon/surgical/FixOVein)
 
+/obj/item/clothing/suit/toggle/labcoat/paramedic
+	name = "paramedic vest"
+	desc = "A dark blue vest with reflective strips for emergency medical technicians."
+	icon_state = "paramedic-vest"
+	item_state = "paramedic-vest"
+
+/obj/item/clothing/suit/toggle/labcoat/paramed
+	name = "paramedic jacket"
+	desc = "A reflective jacket, like an old Sol country."
+	icon_state = "pmedic_jacket"
+
 //Mime
 /obj/item/clothing/suit/suspenders
 	name = "suspenders"

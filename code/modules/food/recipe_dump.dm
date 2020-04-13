@@ -68,14 +68,14 @@
 	//Reagents can be resolved to nicer names as well
 	for(var/Rp in food_recipes)
 		for(var/rid in food_recipes[Rp]["Reagents"])
-			var/datum/reagent/Rd = chemical_reagents_list[rid]
+			var/datum/reagent/Rd = SSchemistry.chemical_reagents[rid]
 			var/R_name = Rd.name
 			var/amt = food_recipes[Rp]["Reagents"][rid]
 			food_recipes[Rp]["Reagents"] -= rid
 			food_recipes[Rp]["Reagents"][R_name] = amt
 	for(var/Rp in drink_recipes)
 		for(var/rid in drink_recipes[Rp]["Reagents"])
-			var/datum/reagent/Rd = chemical_reagents_list[rid]
+			var/datum/reagent/Rd = SSchemistry.chemical_reagents[rid]
 			var/R_name = Rd.name
 			var/amt = drink_recipes[Rp]["Reagents"][rid]
 			drink_recipes[Rp]["Reagents"] -= rid
@@ -104,8 +104,8 @@
 	for(var/Rp in drink_recipes)
 		drinks_to_paths["[drink_recipes[Rp]["Result"]] [Rp]"] = Rp
 
-	foods_to_paths = sortAssoc(foods_to_paths)
-	drinks_to_paths = sortAssoc(drinks_to_paths)
+	foods_to_paths = sortTim(foods_to_paths, /proc/cmp_text_asc, TRUE)
+	drinks_to_paths = sortTim(drinks_to_paths, /proc/cmp_text_asc, TRUE)
 
 	var/list/foods_newly_sorted = list()
 	var/list/drinks_newly_sorted = list()

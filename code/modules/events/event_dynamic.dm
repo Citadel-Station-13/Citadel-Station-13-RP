@@ -11,7 +11,7 @@
 					dust_swarm("weak")*/
 			if(!event)
 				//CARN: checks to see if random events are enabled.
-				if(config.allow_random_events)
+				if(config_legacy.allow_random_events)
 					hadevent = event()
 				else
 					Holiday_Random_Event()
@@ -24,7 +24,7 @@ var/list/event_last_fired = list()
 
 //Always triggers an event when called, dynamically chooses events based on job population
 /proc/spawn_dynamic_event()
-	if(!config.allow_random_events)
+	if(!config_legacy.allow_random_events)
 		return
 
 	var/minutes_passed = world.time/600

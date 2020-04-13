@@ -20,10 +20,10 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
+		log_world("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "[using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
+	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	admin_datums[ckey] = src
@@ -146,4 +146,9 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	*/
 
 /datum/admins/vv_edit_var(var_name, var_value)
-	return FALSE //nice try trialmin
+#ifdef TESTING
+	return ..()
+#endif
+	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(src, rights))
+		return FALSE
+	return ..()

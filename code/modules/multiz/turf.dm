@@ -56,8 +56,6 @@
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		A.fall()
-	for(var/obj/vehicle/B in src)
-		B.fall()
 	OS_controller.add_turf(src, 1)
 
 // override to make sure nothing is hidden
@@ -151,3 +149,9 @@
 /turf/simulated/open/is_space()
 	var/turf/below = GetBelow(src)
 	return !below || below.is_space()
+
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()

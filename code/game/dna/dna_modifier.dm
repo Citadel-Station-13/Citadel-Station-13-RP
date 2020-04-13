@@ -18,6 +18,8 @@
 	var/mind=null
 	var/languages=null
 	var/list/flavor=null
+	var/gender = null
+	var/list/body_descriptors = null
 	var/list/genetic_modifiers = list() // Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
 
 /datum/dna2/record/proc/GetData()
@@ -270,7 +272,7 @@
 			I.loc = src
 			src.disk = I
 			user << "You insert [I]."
-			GLOB.nanomanager.update_uis(src) // update all UIs attached to src
+			SSnanoui.update_uis(src) // update all UIs attached to src
 			return
 	else
 		..()
@@ -411,7 +413,7 @@
 			occupantData["isViableSubject"] = 0
 		occupantData["health"] = connected.occupant.health
 		occupantData["maxHealth"] = connected.occupant.maxHealth
-		occupantData["minHealth"] = config.health_threshold_dead
+		occupantData["minHealth"] = config_legacy.health_threshold_dead
 		occupantData["uniqueEnzymes"] = connected.occupant.dna.unique_enzymes
 		occupantData["uniqueIdentity"] = connected.occupant.dna.uni_identity
 		occupantData["structuralEnzymes"] = connected.occupant.dna.struc_enzymes
@@ -428,7 +430,7 @@
 				data["beakerVolume"] += R.volume
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -465,7 +467,7 @@
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1//lock it
-		GLOB.nanomanager.update_uis(src) // update all UIs attached to src
+		SSnanoui.update_uis(src) // update all UIs attached to src
 
 		sleep(10*src.radiation_duration) // sleep for radiation_duration seconds
 
@@ -566,7 +568,7 @@
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1//lock it
-		GLOB.nanomanager.update_uis(src) // update all UIs attached to src
+		SSnanoui.update_uis(src) // update all UIs attached to src
 
 		sleep(10*src.radiation_duration) // sleep for radiation_duration seconds
 
@@ -624,7 +626,7 @@
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1 //lock it
-		GLOB.nanomanager.update_uis(src) // update all UIs attached to src
+		SSnanoui.update_uis(src) // update all UIs attached to src
 
 		sleep(10*src.radiation_duration) // sleep for radiation_duration seconds
 
@@ -706,7 +708,10 @@
 				databuf.types = DNA2_BUF_UE
 				databuf.dna = src.connected.occupant.dna.Clone()
 				if(ishuman(connected.occupant))
-					databuf.dna.real_name=connected.occupant.dna.real_name
+					var/mob/living/carbon/human/H = connected.occupant
+					databuf.dna.real_name = H.dna.real_name
+					databuf.gender = H.gender
+					databuf.body_descriptors = H.descriptors
 				databuf.name = "Unique Identifier"
 				src.buffers[bufferId] = databuf
 			return 1
@@ -717,7 +722,10 @@
 				databuf.types = DNA2_BUF_UI|DNA2_BUF_UE
 				databuf.dna = src.connected.occupant.dna.Clone()
 				if(ishuman(connected.occupant))
-					databuf.dna.real_name=connected.occupant.dna.real_name
+					var/mob/living/carbon/human/H = connected.occupant
+					databuf.dna.real_name = H.dna.real_name
+					databuf.gender = H.gender
+					databuf.body_descriptors = H.descriptors
 				databuf.name = "Unique Identifier + Unique Enzymes"
 				src.buffers[bufferId] = databuf
 			return 1
@@ -728,7 +736,10 @@
 				databuf.types = DNA2_BUF_SE
 				databuf.dna = src.connected.occupant.dna.Clone()
 				if(ishuman(connected.occupant))
-					databuf.dna.real_name=connected.occupant.dna.real_name
+					var/mob/living/carbon/human/H = connected.occupant
+					databuf.dna.real_name = H.dna.real_name
+					databuf.gender = H.gender
+					databuf.body_descriptors = H.descriptors
 				databuf.name = "Structural Enzymes"
 				src.buffers[bufferId] = databuf
 			return 1
@@ -751,7 +762,7 @@
 			irradiating = 2
 			var/lock_state = src.connected.locked
 			src.connected.locked = 1//lock it
-			GLOB.nanomanager.update_uis(src) // update all UIs attached to src
+			SSnanoui.update_uis(src) // update all UIs attached to src
 
 			sleep(10*2) // sleep for 2 seconds
 
@@ -764,10 +775,18 @@
 				if ((buf.types & DNA2_BUF_UE))
 					src.connected.occupant.real_name = buf.dna.real_name
 					src.connected.occupant.name = buf.dna.real_name
+					if(ishuman(connected.occupant))
+						var/mob/living/carbon/human/H = connected.occupant
+						H.gender = buf.gender
+						H.descriptors = buf.body_descriptors
 				src.connected.occupant.UpdateAppearance(buf.dna.UI.Copy())
 			else if (buf.types & DNA2_BUF_SE)
 				src.connected.occupant.dna.SE = buf.dna.SE
 				src.connected.occupant.dna.UpdateSE()
+				if(ishuman(connected.occupant))
+					var/mob/living/carbon/human/H = connected.occupant
+					H.gender = buf.gender
+					H.descriptors = buf.body_descriptors
 				domutcheck(src.connected.occupant,src.connected)
 			src.connected.occupant.apply_effect(rand(20,50), IRRADIATE, check_protection = 0)
 			return 1

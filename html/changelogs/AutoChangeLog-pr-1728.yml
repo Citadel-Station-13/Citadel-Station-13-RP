@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "6 new sprites"
+  - imageadd: "6 drink sprites with minor animations on a few for fizzing effect."

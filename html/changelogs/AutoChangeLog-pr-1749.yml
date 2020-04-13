@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - bugfix: "fixed missing sprite for tech priest outfit."
+  - imageadd: "proper tech priest hood sprite"

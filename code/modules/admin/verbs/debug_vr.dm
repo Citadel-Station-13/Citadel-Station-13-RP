@@ -1,4 +1,3 @@
-/* CITADEL CHANGE, IMPROVED VERSION IN CITADEL_MODULAR
 /datum/admins/proc/quick_nif()
 	set category = "Fun"
 	set name = "Quick NIF"
@@ -31,4 +30,3 @@
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-*/
