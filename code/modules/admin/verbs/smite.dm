@@ -9,7 +9,7 @@
 		victim = input("Select a player", "Who?") as null|mob in player_list
 	
 	if(!ishuman(victim))
-		rturn
+		return
 
 	var/mob/living/carbon/human/H = target
 
