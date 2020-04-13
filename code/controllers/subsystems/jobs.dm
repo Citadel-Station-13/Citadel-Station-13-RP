@@ -220,8 +220,8 @@ SUBSYSTEM_DEF(jobs)
 	Debug("Running DO")
 	SetupOccupations()
 
-	//Holder for Triumvirate is stored in the ticker, this just processes it
-	if(ticker && ticker.triai)
+	//Holder for Triumvirate is stored in the SSticker, this just processes it
+	if(SSticker && SSticker.triai)
 		for(var/datum/job/A in occupations)
 			if(A.title == "AI")
 				A.spawn_positions = 3
@@ -266,7 +266,7 @@ SUBSYSTEM_DEF(jobs)
 
 	// Loop through all levels from high to low
 	var/list/shuffledoccupations = shuffle(occupations)
-	// var/list/disabled_jobs = ticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
+	// var/list/disabled_jobs = SSticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
 	for(var/level = 1 to 3)
 		//Check the head jobs first each level
 		CheckHeadPositions(level)
@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(jobs)
 
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
-				if(!job || ticker.mode.disabled_jobs.Find(job.title) )
+				if(!job || SSticker.mode.disabled_jobs.Find(job.title) )
 					continue
 
 				if(jobban_isbanned(player, job.title))
@@ -465,7 +465,7 @@ SUBSYSTEM_DEF(jobs)
 			if("AI")
 				return H
 			if("Colony Director")
-				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+				var/sound/announce_sound = (SSticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
 				captain_announcement.Announce("All hands, [alt_title ? alt_title : "Colony Director"] [H.real_name] on deck!", new_sound=announce_sound)
 
 		//Deferred item spawning.

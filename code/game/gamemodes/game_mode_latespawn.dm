@@ -12,7 +12,7 @@
 	return usable_templates
 
 ///process()
-///Called by the gameticker
+///Called by the gameSSticker
 /datum/game_mode/process()
 	// Slow this down a bit so latejoiners have a chance of being antags.
 	process_count++

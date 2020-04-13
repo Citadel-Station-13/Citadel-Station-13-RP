@@ -86,7 +86,7 @@
 
 	var/dat
 
-	if(!(ticker))
+	if(!(SSticker))
 		return
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
@@ -481,8 +481,8 @@
 		to_despawn.mind.special_role = null
 
 	//else
-		//if(ticker.mode.name == "AutoTraitor")
-			//var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
+		//if(SSticker.mode.name == "AutoTraitor")
+			//var/datum/game_mode/traitor/autotraitor/current_mode = SSticker.mode
 			//current_mode.possible_traitors.Remove(to_despawn)
 
 	// Delete them from datacore.

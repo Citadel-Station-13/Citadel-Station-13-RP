@@ -6,7 +6,7 @@
 	2. The map is initialized, and map objects are created.
 	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
 	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameticker is created.
+	5. The gameSSticker is created.
 
 */
 
@@ -90,7 +90,7 @@ GLOBAL_LIST(topic_status_cache)
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
-	processScheduler.deferSetupFor(/datum/controller/process/ticker)
+	processScheduler.deferSetupFor(/datum/controller/process/SSticker)
 	processScheduler.setup()
 
 	Master.Initialize(10, FALSE)
@@ -333,7 +333,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	var/list/features = list()
 
-	if(ticker)
+	if(SSticker)
 		if(master_mode)
 			features += master_mode
 	else

@@ -352,10 +352,10 @@
 	if (!( config_legacy.abandon_allowed ))
 		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
 		return
-	if ((stat != 2 || !( ticker )))
+	if ((stat != 2 || !( SSticker )))
 		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
-	if (ticker.mode && ticker.mode.deny_respawn) //BS12 EDIT
+	if (SSticker.mode && SSticker.mode.deny_respawn) //BS12 EDIT
 		to_chat(usr, "<span class='notice'>Respawn is disabled for this roundtype.</span>")
 		return
 	else
@@ -376,7 +376,7 @@
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 
-		if ((deathtime < (1 * 600)) && (ticker && ticker.current_state > GAME_STATE_PREGAME))	//VOREStation Edit: lower respawn timer
+		if ((deathtime < (1 * 600)) && (SSticker && SSticker.current_state > GAME_STATE_PREGAME))	//VOREStation Edit: lower respawn timer
 			to_chat(usr, "You must wait 1 minute to respawn!")
 			return
 		else

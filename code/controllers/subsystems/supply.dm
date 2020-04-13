@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(supply)
 		supply_pack[P.name] = P
 	return ..()
 
-// Supply shuttle ticker - handles supply point regeneration
+// Supply shuttle SSticker - handles supply point regeneration
 // This is called by the process scheduler every thirty seconds
 /datum/controller/subsystem/supply/fire(resumed)
 	points += max(0, ((world.time - last_fire) / 10) * points_per_second)

@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(gamemaster)
 	return ..()
 
 /datum/controller/subsystem/gamemaster/fire(resumed)
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING && !suspended)
+	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING && !suspended)
 		adjust_staleness(1)
 		adjust_danger(-1)
 		ticks_completed++
@@ -50,8 +50,8 @@ SUBSYSTEM_DEF(gamemaster)
 
 // This is run before committing to an action/event.
 /datum/controller/subsystem/gamemaster/proc/pre_action_checks()
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-		log_debug("Game Master unable to start event: Ticker is nonexistant, or the game is not ongoing.")
+	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
+		log_debug("Game Master unable to start event: SSticker is nonexistant, or the game is not ongoing.")
 		return FALSE
 	if(suspended)
 		return FALSE

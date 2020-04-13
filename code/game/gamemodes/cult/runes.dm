@@ -390,10 +390,10 @@ var/list/sacrificed = list()
 				"<span class='danger'>You hear a thousand voices, all crying in pain.</span>")
 				body_to_sacrifice.gib()
 
-//			if(ticker.mode.name == "cult")
-//				ticker.mode:add_cultist(corpse_to_raise.mind)
+//			if(SSticker.mode.name == "cult")
+//				SSticker.mode:add_cultist(corpse_to_raise.mind)
 //			else
-//				ticker.mode.cult |= corpse_to_raise.mind
+//				SSticker.mode.cult |= corpse_to_raise.mind
 
 				corpse_to_raise << "<span class='cult'>Your blood pulses. Your head throbs. The world goes red. All at once you are aware of a horrible, horrible truth. The veil of reality has been ripped away and in the festering wound left behind something sinister takes root.</span>"
 				corpse_to_raise << "<span class='cult'>Assist your new compatriots in their dark dealings. Their goal is yours, and yours is theirs. You serve the Dark One above all else. Bring It back.</span>"
@@ -680,7 +680,7 @@ var/list/sacrificed = list()
 					if(lamb.species.rarity_value > 3)
 						worth = 1
 
-				if (ticker.mode.name == "cult")
+				if (SSticker.mode.name == "cult")
 					if(H.mind == cult.sacrifice_target)
 						if(cultsinrange.len >= 3)
 							sacrificed += H.mind
@@ -1005,7 +1005,7 @@ var/list/sacrificed = list()
 		bloodboil() //cultists need at least one DANGEROUS rune. Even if they're all stealthy.
 /*
 			var/list/mob/living/carbon/cultists = new
-			for(var/datum/mind/H in ticker.mode.cult)
+			for(var/datum/mind/H in SSticker.mode.cult)
 				if (istype(H.current,/mob/living/carbon))
 					cultists+=H.current
 */
