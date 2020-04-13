@@ -87,17 +87,10 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	processScheduler = new
-	master_controller = new /datum/controller/game_controller()
-
-	processScheduler.deferSetupFor(/datum/controller/process/SSticker)
-	processScheduler.setup()
-
 	Master.Initialize(10, FALSE)
 
-	spawn(1)
-		master_controller.setup()
 #if UNIT_TEST
+	spawn(1)
 		initialize_unit_tests()
 #endif
 

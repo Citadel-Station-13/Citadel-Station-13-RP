@@ -1963,7 +1963,7 @@
 #include "code\modules\gamemaster\controller.dm"
 #include "code\modules\gamemaster\defines.dm"
 #include "code\modules\gamemaster\helpers.dm"
-#include "code\modules\gamemaster\actions\action.dm"
+#include "code\modules\gamemaster\actions\_action.dm"
 #include "code\modules\gamemaster\actions\atmos_leak.dm"
 #include "code\modules\gamemaster\actions\blob.dm"
 #include "code\modules\gamemaster\actions\brand_intelligence.dm"

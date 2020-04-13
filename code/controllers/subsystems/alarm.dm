@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(alarms)
 	var/static/datum/alarm_handler/motion/motion_alarm
 	var/static/datum/alarm_handler/power/power_alarm
 
-/datum/controller/subsystem/alarm/Initialize()
+/datum/controller/subsystem/alarms/Initialize()
 	atmosphere_alarm = new
 	camera_alarm = new
 	fire_alarm = new
@@ -20,17 +20,17 @@ SUBSYSTEM_DEF(alarms)
 	all_handlers = list(atmosphere_alarm, camera_alarm, fire_alarm, motion_alarm, power_alarm)
 	return ..()
 
-/datum/controller/subsystem/alarm/fire()
+/datum/controller/subsystem/alarms/fire()
 	for(var/datum/alarm_handler/A in all_handlers)
 		A.process()
 
-/datum/controller/subsystem/alarm/proc/active_alarms()
+/datum/controller/subsystem/alarms/proc/active_alarms()
 	. = list()
 	for(var/datum/alarm_handler/AH in all_handlers)
 		. += AH.alarms
 
-/datum/controller/subsystem/alarm/proc/number_of_active_alarms()
+/datum/controller/subsystem/alarms/proc/number_of_active_alarms()
 	return length(active_alarms())
 
-/datum/controller/subsystem/alarm/stat_entry()
+/datum/controller/subsystem/alarms/stat_entry()
 	..("[number_of_active_alarms()] alarms")

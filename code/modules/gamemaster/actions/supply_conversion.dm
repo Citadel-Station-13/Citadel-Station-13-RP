@@ -5,7 +5,7 @@
 	chaotic = 0
 	reusable = TRUE
 
-	var/datum/controller/supply/SC
+	var/datum/controller/subsystem/supply/SC
 	var/running = FALSE
 	var/last_run
 
