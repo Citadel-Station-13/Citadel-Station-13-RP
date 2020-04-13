@@ -3,7 +3,6 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	wait = 20
 
 	var/datum/shuttle/ferry/emergency/shuttle
-	var/static/list/escape_pods
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -19,10 +18,6 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
-/datum/controller/subsystem/emergencyshuttle/Initialize()
-	escape_pods = list()
-	return ..()
-
 /datum/controller/subsystem/emergencyshuttle/fire()
 	if (wait_for_launch)
 		if (evac && auto_recall && world.time >= auto_recall_time)
@@ -32,10 +27,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 			if (!shuttle.location)	//leaving from the station
 				//launch the pods!
-				for (var/EP in escape_pods)
+				for (var/EP in SSshuttle.escape_pods)
 					var/datum/shuttle/ferry/escape_pod/pod
-					if(istype(escape_pods[EP], /datum/shuttle/ferry/escape_pod))
-						pod = escape_pods[EP]
+					if(istype(SSshuttle.escape_pods[EP], /datum/shuttle/ferry/escape_pod))
+						pod = SSshuttle.escape_pods[EP]
 					else
 						continue
 					if (!pod.arming_controller || pod.arming_controller.armed)
@@ -59,10 +54,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 		//arm the escape pods
 		if (evac)
-			for (var/EP in escape_pods)
+			for (var/EP in SSshuttle.escape_pods)
 				var/datum/shuttle/ferry/escape_pod/pod
-				if(istype(escape_pods[EP], /datum/shuttle/ferry/escape_pod))
-					pod = escape_pods[EP]
+				if(istype(SSshuttle.escape_pods[EP], /datum/shuttle/ferry/escape_pod))
+					pod = SSshuttle.escape_pods[EP]
 				else
 					continue
 				if (pod.arming_controller)
