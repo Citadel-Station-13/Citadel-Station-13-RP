@@ -262,8 +262,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "You can't send PDA messages because you are dead!")
 		return
 	var/list/plist = available_pdas()
+	sortTim(plist, cmp = /proc/cmp_text_asc)
 	if (plist)
-		var/c = input(usr, "Please select a PDA") as null|anything in sortList(plist)
+		var/c = input(usr, "Please select a PDA") as null|anything in plist
 		if (!c) // if the user hasn't selected a PDA file we can't send a message
 			return
 		var/selected = plist[c]
@@ -1470,7 +1471,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/proc/available_pdas()
 	var/list/names = list()
 	var/list/plist = list()
-	var/list/namecounts = list()
 
 	if (toff)
 		to_chat(usr, "Turn on your receiver in order to send messages.")
@@ -1487,14 +1487,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 			continue
 
 		var/name = P.owner
-		if (name in names)
-			namecounts[name]++
-			name = text("[name] ([namecounts[name]])")
+		if(names[name])
+			names[name]++
+			name = "[name] ([names[name]])"
 		else
-			names.Add(name)
-			namecounts[name] = 1
+			names[name] = 1
 
-		plist[text("[name]")] = P
+		plist[name] = P
 	return plist
 
 

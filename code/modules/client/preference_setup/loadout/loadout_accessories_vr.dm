@@ -39,34 +39,6 @@
 	display_name = "collar, holo (indigestible)"
 	path = /obj/item/clothing/accessory/collar/holo/indigestible
 
-/datum/gear/accessory/holster
-	display_name = "holster selection (Security, CD, HoP, Exploration)"
-	allowed_roles = list("Colony Director", "Head of Personnel", "Security Officer", "Warden", "Head of Security","Detective","Explorer","Pathfinder", "Field Medic")
-
-/datum/gear/accessory/brown_vest
-	display_name = "webbing, brown (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Chemist","Field Medic","Pathfinder","Shaft Miner")
-
-/datum/gear/accessory/black_vest
-	display_name = "webbing, black (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Chemist","Field Medic","Pathfinder","Shaft Miner")
-
-/datum/gear/accessory/white_vest
-	display_name = "webbing, white (Medical)"
-	allowed_roles = list("Paramedic","Chief Medical Officer","Medical Doctor","Chemist","Field Medic")
-
-/datum/gear/accessory/brown_drop_pouches
-	display_name = "drop pouches, brown (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Chemist","Field Medic","Pathfinder","Shaft Miner")
-
-/datum/gear/accessory/black_drop_pouches
-	display_name = "drop pouches, black (Eng, Sec, Med, Exploration, Miner)"
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Chemist","Field Medic","Pathfinder","Shaft Miner")
-
-/datum/gear/accessory/white_drop_pouches
-	display_name = "drop pouches, white (Medical)"
-	allowed_roles = list("Paramedic","Chief Medical Officer","Medical Doctor","Chemist","Field Medic")
-
 /datum/gear/accessory/webbing
 	cost = 1
 
