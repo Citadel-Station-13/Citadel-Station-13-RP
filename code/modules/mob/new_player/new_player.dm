@@ -424,7 +424,7 @@
 	dat += "<b>Welcome, [name].<br></b>"
 	dat += "Round Duration: [roundduration2text()]<br>"
 
-	if(emergency_shuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
+	if(SSemergencyshuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
 		if(SSemergencyshuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
 			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
 		if(SSemergencyshuttle.online())

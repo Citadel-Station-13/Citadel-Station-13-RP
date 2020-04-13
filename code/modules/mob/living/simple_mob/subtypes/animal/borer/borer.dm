@@ -95,7 +95,7 @@
 	..()
 	if(client.statpanel == "Status")
 		statpanel("Status")
-		if(emergency_shuttle)
+		if(SSemergencyshuttle)
 			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)

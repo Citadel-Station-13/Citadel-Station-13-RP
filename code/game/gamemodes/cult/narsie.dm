@@ -54,7 +54,7 @@ var/global/list/narsie_list = list()
 		narsie_cometh = 1
 
 		spawn(10 SECONDS)
-			if(emergency_shuttle)
+			if(SSemergencyshuttle)
 				SSemergencyshuttle.call_evac()
 				SSemergencyshuttle.launch_time = 0	// Cannot recall
 
