@@ -789,7 +789,7 @@
 
 /obj/item/commcard/head/ce/Initialize(mapload)
 	. = ..()
-	internal_devices |= new /obj.item/device/analyzer(src)
+	internal_devices |= new /obj/item/analyzer(src)
 	internal_devices |= new /obj/item/halogen_counter(src)
 
 /obj/item/commcard/head/ce/Initialize()
