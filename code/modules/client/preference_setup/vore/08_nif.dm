@@ -19,6 +19,12 @@
 		pref.nif_id = initial(N.id)
 		S["nif_path"]	<< null		//erase
 		S["nif_id"]		<< pref.nif_id
+	else if(ispath(path, /obj/item/nif))		//migration until we get proper savefile migrations ugh never ever use typepaths ever again...
+		// overwrite
+		var/obj/item/nif/N = path
+		pref.nif_id = initial(N.id)
+		S["nif_path"]	<< null		//erase
+		S["nif_id"]		<< pref.nif_id	
 	S["nif_durability"]	>> pref.nif_durability
 	S["nif_savedata"]	>> pref.nif_savedata
 
