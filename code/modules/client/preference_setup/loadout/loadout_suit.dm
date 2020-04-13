@@ -529,7 +529,7 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
 
 datum/gear/suit/labcoat/parame
 	display_name = "Paramedic Jacket"
-	path = /obj/item/clothing/suit/toggle/labcoat/paramed
+	path = /obj/item/clothing/suit/toggle/paramed
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 datum/gear/suit/labcoat/param
