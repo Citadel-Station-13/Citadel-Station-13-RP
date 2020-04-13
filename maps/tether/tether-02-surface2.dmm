@@ -3050,24 +3050,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
-"gK" = (
-/obj/item/clothing/gloves/boxing/blue,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
-"gL" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
-"gM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/random/junk,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
-"gN" = (
-/obj/random/obstruction,
-/turf/simulated/floor,
-/area/maintenance/lower/north)
 "gO" = (
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
@@ -10615,6 +10597,12 @@
 "vg" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/railing,
+/obj/machinery/firealarm{
+	dir = 2;
+	layer = 3.3;
+	pixel_x = 0;
+	pixel_y = 26
+	},
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
 "vh" = (
@@ -10653,6 +10641,12 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/firealarm{
+	dir = 2;
+	layer = 3.3;
+	pixel_x = 0;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/fishing_garden)
@@ -18527,6 +18521,29 @@
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
+"Kx" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
+"Ky" = (
+/obj/structure/railing,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
+"Kz" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/grass,
+/area/tether/surfacebase/fishing_garden)
 "KL" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -26370,7 +26387,7 @@ vl
 vl
 vl
 ww
-xO
+Kz
 hb
 ac
 iw
@@ -27928,7 +27945,7 @@ Kg
 xR
 Jp
 vn
-xp
+Ky
 IO
 IP
 ww
@@ -28207,7 +28224,7 @@ cW
 cW
 cW
 cW
-ac
+cW
 hb
 JY
 yt
@@ -28349,7 +28366,7 @@ cW
 cW
 cW
 cW
-ac
+cW
 hb
 Kd
 JK
@@ -28491,7 +28508,7 @@ cW
 cW
 cW
 cW
-ac
+cW
 hb
 hH
 JL
@@ -28632,12 +28649,12 @@ cW
 cW
 cW
 cW
-ap
-ap
+cW
+cW
 hb
 JZ
 Kp
-ho
+Kx
 hb
 ii
 iB
@@ -28774,8 +28791,8 @@ cW
 cW
 cW
 cW
-ap
-gK
+cW
+cW
 hb
 wt
 yt
@@ -28916,8 +28933,8 @@ cW
 cW
 cW
 cW
-ap
-gL
+cW
+cW
 hb
 JM
 yt
@@ -29058,8 +29075,8 @@ cW
 cW
 cW
 cW
-ap
-gM
+cW
+cW
 hb
 vm
 JN
@@ -29201,7 +29218,7 @@ ap
 ap
 ap
 ap
-gN
+ap
 hb
 Jq
 Ka
