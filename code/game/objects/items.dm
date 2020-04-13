@@ -105,7 +105,7 @@
 		if(damtype == "fire")
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == "brute")
-		hitsound = "swing_hit"
+			hitsound = "swing_hit"
 
 /obj/item/equipped()
 	..()
