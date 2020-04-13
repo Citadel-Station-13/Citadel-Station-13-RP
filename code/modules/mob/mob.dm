@@ -746,9 +746,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				for(var/i in GLOB.sdql2_queries)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
-		if(statpanel("Processes"))
-			if(processScheduler)
-				processScheduler.statProcesses()
 
 /*
 	if(listed_turf && client)
