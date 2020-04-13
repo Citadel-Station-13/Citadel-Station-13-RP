@@ -111,6 +111,7 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	name = "colony director's winter coat"
+	desc = "A heavy jacket made from the most expensive animal furs on the market, hand skinned by the finest of hunters, sewed with the finest of jewels, truly a coat befitting the Director."
 	icon_state = "coatcaptain"
 	item_state_slots = list(slot_r_hand_str = "coatcaptain", slot_l_hand_str = "coatcaptain")
 	armor = list(melee = 20, bullet = 15, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
@@ -122,6 +123,7 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security
 	name = "security winter coat"
+	desc = "A heavy jacket made from greyshirt hide, there seems to be a sewed in holster, as well as a thin weave of protection against most damage.'
 	icon_state = "coatsecurity"
 	item_state_slots = list(slot_r_hand_str = "coatsecurity", slot_l_hand_str = "coatsecurity")
 	armor = list(melee = 25, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
@@ -133,6 +135,7 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical
 	name = "medical winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, there's a thick weave of sterile material, good for virus outbreaks!"
 	icon_state = "coatmedical"
 	item_state_slots = list(slot_r_hand_str = "coatmedical", slot_l_hand_str = "coatmedical")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
@@ -145,6 +148,7 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/science
 	name = "science winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, a small tag says 'Bomb Proof! (not fully bomb proof)'."
 	icon_state = "coatscience"
 	item_state_slots = list(slot_r_hand_str = "coatscience", slot_l_hand_str = "coatscience")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
@@ -157,6 +161,7 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/engineering
 	name = "engineering winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, there seems to be a thin weave of lead on the inside."
 	icon_state = "coatengineer"
 	item_state_slots = list(slot_r_hand_str = "coatengineer", slot_l_hand_str = "coatengineer")
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 20)
@@ -168,12 +173,14 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
 	name = "atmospherics winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, seems to have burn makes on the inside from a phoron fire."
 	icon_state = "coatatmos"
 	item_state_slots = list(slot_r_hand_str = "coatatmos", slot_l_hand_str = "coatatmos")
 	hoodtype = /obj/item/clothing/head/hood/winter/engineering/atmos
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/hydro
 	name = "hydroponics winter coat"
+	desc = "A heavy jacket made from synthetic animal furs, there's a small tag that says 'Made in China, Vegan Friendly'."
 	icon_state = "coathydro"
 	item_state_slots = list(slot_r_hand_str = "coathydro", slot_l_hand_str = "coathydro")
 	hoodtype = /obj/item/clothing/head/hood/winter/hydro
@@ -183,6 +190,7 @@
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
 	name = "cargo winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs, it seems to be rather rugged, from backbreaking work of pushing crates."
 	icon_state = "coatcargo"
 	item_state_slots = list(slot_r_hand_str = "coatcargo", slot_l_hand_str = "coatcargo")
 	hoodtype = /obj/item/clothing/head/hood/winter/cargo
@@ -190,6 +198,7 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/miner
 	name = "mining winter coat"
 	icon_state = "coatminer"
+	desc = "A heavy jacket made from real animal furs, the miner who made this must have been through the Underdark."
 	item_state_slots = list(slot_r_hand_str = "coatminer", slot_l_hand_str = "coatminer")
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/miner
@@ -218,7 +227,7 @@
 	flags_inv = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter
 	allowed = list (/obj/item/weapon/gun/projectile/sec/flash, /obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
 
