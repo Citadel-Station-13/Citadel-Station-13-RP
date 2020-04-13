@@ -34,7 +34,7 @@
 	if(!do_after(user, scan_time))
 		return
 
-	ScanTurf(user, get_turf(user), scan_exact_amounts, scan_exact_ores)
+	ScanTurf(get_turf(user), user, scan_exact_amounts, scan_exact_ores)
 
 /obj/item/mining_scanner/proc/ScanTurf(atom/target, mob/user, exact_amount = FALSE, exact_ores = FALSE)
 	var/list/metals = list()
