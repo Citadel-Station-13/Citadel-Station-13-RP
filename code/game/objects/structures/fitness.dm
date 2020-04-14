@@ -17,7 +17,7 @@
 	if(user.nutrition < 20)
 		to_chat(user, "<span class='warning'>You need more energy to use the punching bag. Go eat something.</span>")
 	else
-		if(user.a_intent == I_HURT)
+		if(user.a_intent == INTENT_HARM)
 			user.setClickCooldown(user.get_attack_speed())
 			flick("[icon_state]_hit", src)
 			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)

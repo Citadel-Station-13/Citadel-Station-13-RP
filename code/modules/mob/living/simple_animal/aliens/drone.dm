@@ -19,7 +19,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm = "hits"
 
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	ranged = 1
 	rapid = 1
 	projectiletype = /obj/item/projectile/beam/drone

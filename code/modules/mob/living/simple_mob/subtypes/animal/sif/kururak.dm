@@ -360,7 +360,7 @@
 		hostile = initial(hostile)
 
 /datum/ai_holder/simple_mob/intentional/kururak/pre_special_attack(atom/A)
-	holder.a_intent = I_HURT
+	holder.a_intent = INTENT_HARM
 	if(isliving(A))
 		var/mob/living/L = A
 		if(holder.Adjacent(L))

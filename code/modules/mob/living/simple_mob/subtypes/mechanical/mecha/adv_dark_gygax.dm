@@ -113,7 +113,7 @@
 	switch(a_intent)
 		if(INTENT_DISARM) // Side gun
 			electric_defense(A)
-		if(I_HURT) // Rockets
+		if(INTENT_HARM) // Rockets
 			launch_rockets(A)
 		if(INTENT_GRAB) // Micro-singulo
 			launch_microsingularity(A)
@@ -286,11 +286,11 @@
 // Note that the intent will not change again until the next special attack is about to happen.
 /datum/ai_holder/simple_mob/intentional/adv_dark_gygax/on_engagement(atom/A)
 	// Make the AI backpeddle if using an AoE special attack.
-	var/list/risky_intents = list(INTENT_GRAB, I_HURT) // Mini-singulo and missiles.
+	var/list/risky_intents = list(INTENT_GRAB, INTENT_HARM) // Mini-singulo and missiles.
 	if(holder.a_intent in risky_intents)
 		var/closest_distance = 1
 		switch(holder.a_intent) // Plus one just in case.
-			if(I_HURT)
+			if(INTENT_HARM)
 				closest_distance = rocket_explosive_radius + 1
 			if(INTENT_GRAB)
 				closest_distance = microsingulo_radius + 1
@@ -303,7 +303,7 @@
 		holder.IMove(get_step_towards(holder, A))
 
 // Changes the mob's intent, which controls which special attack is used.
-// INTENT_DISARM causes Electric Defense, INTENT_GRAB causes Micro-Singularity, and I_HURT causes Missile Barrage.
+// INTENT_DISARM causes Electric Defense, INTENT_GRAB causes Micro-Singularity, and INTENT_HARM causes Missile Barrage.
 /datum/ai_holder/simple_mob/intentional/adv_dark_gygax/pre_special_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/target = A
@@ -340,10 +340,10 @@
 		if(tally >= microsingulo_threshold)
 			holder.a_intent = INTENT_GRAB
 		else // Otherwise use rockets.
-			holder.a_intent = I_HURT
+			holder.a_intent = INTENT_HARM
 
 	else
 		if(get_dist(holder, A) >= rocket_explosive_radius + 1)
-			holder.a_intent = I_HURT // Fire rockets if it's an obj/turf.
+			holder.a_intent = INTENT_HARM // Fire rockets if it's an obj/turf.
 		else
 			holder.a_intent = INTENT_DISARM // Electricity might not work but it's safe up close.

@@ -155,7 +155,7 @@
 	if(isliving(A))
 		holder.a_intent = INTENT_DISARM
 	else
-		holder.a_intent = I_HURT
+		holder.a_intent = INTENT_HARM
 
 /datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/post_ranged_attack(atom/A)
 	var/mob/living/simple_mob/animal/sif/frostfly/F = holder

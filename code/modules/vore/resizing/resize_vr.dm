@@ -287,7 +287,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				return FALSE
 
 		//src stepped on someone with harm intent
-		if(I_HURT)
+		if(INTENT_HARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
 				now_pushing = 0
@@ -298,7 +298,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				var/damage = (rand(1,3)* size_damage_multiplier) //Rand 1-3 multiplied by 1 min or 1.75 max. 1 min 5.25 max damage to each limb.
 				var/calculated_damage = damage/2 //This will sting, but not kill. Does .5 to 2.625 damage, randomly, to each limb.
 
-				//Running on I_HURT
+				//Running on INTENT_HARM
 				if(m_intent == "run")
 
 					//Not a human, or not a taur, generic message only
@@ -319,7 +319,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 						Ht.drip(0.1)
 						add_attack_logs(src,tmob,"Crushed underfoot (run, about [calculated_damage] damage)")
 
-				//Walking on I_HURT
+				//Walking on INTENT_HARM
 				else
 					//Multiplies the above damage by 3.5. This means a min of 1.75 damage, or a max of 9.1875. damage to each limb, depending on size and RNG.
 					calculated_damage *= 3.5
@@ -345,7 +345,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				//Return true, the sizediff was enough that we handled it.
 				return TRUE
 
-			//Not enough sizediff for I_HURT to do anything.
+			//Not enough sizediff for INTENT_HARM to do anything.
 			else
 				return FALSE
 

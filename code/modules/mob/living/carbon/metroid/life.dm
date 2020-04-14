@@ -291,7 +291,7 @@
 		if(Target.Adjacent(src))
 			if(istype(Target, /mob/living/silicon)) // Glomp the silicons
 				if(!Atkcool)
-					a_intent = I_HURT
+					a_intent = INTENT_HARM
 					UnarmedAttack(Target)
 					Atkcool = 1
 					spawn(45)
@@ -330,7 +330,7 @@
 			if (frenemy.colour == colour)
 				a_intent = INTENT_HELP
 			else
-				a_intent = I_HURT
+				a_intent = INTENT_HARM
 			UnarmedAttack(frenemy)
 
 	var/sleeptime = movement_delay()
@@ -345,7 +345,7 @@
 	a_intent = INTENT_HELP
 	if (rabid || attacked)
 		newmood = "angry"
-		a_intent = I_HURT
+		a_intent = INTENT_HARM
 	else if (Target) newmood = "mischevous"
 
 	if (!newmood)

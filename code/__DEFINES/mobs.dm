@@ -70,7 +70,7 @@
 #define INTENT_HELP		"help"
 #define INTENT_DISARM	"disarm"
 #define INTENT_GRAB		"grab"
-#define I_HURT		"harm"
+#define INTENT_HARM		"harm"
 
 //These are used Bump() code for living mobs, in the mob_bump_flag, mob_swap_flags, and mob_push_flags vars to determine whom can bump/swap with whom.
 #define HUMAN 1

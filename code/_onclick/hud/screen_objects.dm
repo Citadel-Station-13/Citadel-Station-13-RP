@@ -352,8 +352,8 @@
 		if(INTENT_HELP)
 			usr.a_intent = INTENT_HELP
 			usr.hud_used.action_intent.icon_state = "intent_help"
-		if(I_HURT)
-			usr.a_intent = I_HURT
+		if(INTENT_HARM)
+			usr.a_intent = INTENT_HARM
 			usr.hud_used.action_intent.icon_state = "intent_harm"
 		if(INTENT_GRAB)
 			usr.a_intent = INTENT_GRAB

@@ -67,7 +67,7 @@ var/global/list/all_tooltip_styles = list(
 		ic = all_ui_styles_robot[UI_style_new]
 
 	for(var/obj/screen/I in icons)
-		if(I.name in list(INTENT_HELP, I_HURT, INTENT_DISARM, INTENT_GRAB)) continue
+		if(I.name in list(INTENT_HELP, INTENT_HARM, INTENT_DISARM, INTENT_GRAB)) continue
 		I.icon = ic
 		I.color = UI_style_color_new
 		I.alpha = UI_style_alpha_new

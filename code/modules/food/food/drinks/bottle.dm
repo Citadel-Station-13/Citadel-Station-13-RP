@@ -29,7 +29,7 @@
 	..()
 
 	var/mob/M = thrower
-	if(isGlass && istype(M) && M.a_intent == I_HURT)
+	if(isGlass && istype(M) && M.a_intent == INTENT_HARM)
 		var/throw_dist = get_dist(throw_source, loc)
 		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
@@ -141,7 +141,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	var/blocked = ..()
 
-	if(user.a_intent != I_HURT)
+	if(user.a_intent != INTENT_HARM)
 		return
 	if(!smash_check(1))
 		return //won't always break on the first hit

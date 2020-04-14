@@ -309,7 +309,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return 0
 
 //converts intent-strings into numbers and back
-var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,I_HURT)
+var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
@@ -322,7 +322,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,I_HURT)
 			if(0)			return INTENT_HELP
 			if(1)			return INTENT_DISARM
 			if(2)			return INTENT_GRAB
-			else			return I_HURT
+			else			return INTENT_HARM
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)
@@ -331,7 +331,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,I_HURT)
 
 	if(isliving(src) && !isrobot(src))
 		switch(input)
-			if(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,I_HURT)
+			if(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				a_intent = input
 			if("right")
 				a_intent = intent_numeric((intent_numeric(a_intent)+1) % 4)
@@ -344,13 +344,13 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,I_HURT)
 		switch(input)
 			if(INTENT_HELP)
 				a_intent = INTENT_HELP
-			if(I_HURT)
-				a_intent = I_HURT
+			if(INTENT_HARM)
+				a_intent = INTENT_HARM
 			if("right","left")
 				a_intent = intent_numeric(intent_numeric(a_intent) - 3)
 		if(hud_used && hud_used.action_intent)
-			if(a_intent == I_HURT)
-				hud_used.action_intent.icon_state = I_HURT
+			if(a_intent == INTENT_HARM)
+				hud_used.action_intent.icon_state = INTENT_HARM
 			else
 				hud_used.action_intent.icon_state = INTENT_HELP
 

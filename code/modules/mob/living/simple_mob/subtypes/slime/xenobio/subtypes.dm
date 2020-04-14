@@ -407,7 +407,7 @@
 /mob/living/simple_mob/slime/xenobio/ruby/apply_melee_effects(atom/A)
 	..()
 
-	if(isliving(A) && a_intent == I_HURT)
+	if(isliving(A) && a_intent == INTENT_HARM)
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
 			visible_message(span("danger", "\The [src] sends \the [L] flying with the impact!"))

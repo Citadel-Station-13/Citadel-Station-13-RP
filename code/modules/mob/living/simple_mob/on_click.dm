@@ -7,7 +7,7 @@
 
 //	setClickCooldown(get_attack_speed())
 
-	if(has_hands && istype(A,/obj) && a_intent != I_HURT)
+	if(has_hands && istype(A,/obj) && a_intent != INTENT_HARM)
 		var/obj/O = A
 		return O.attack_hand(src)
 
@@ -16,7 +16,7 @@
 			if(isliving(A))
 				custom_emote(1,"[pick(friendly)] \the [A]!")
 
-		if(I_HURT)
+		if(INTENT_HARM)
 			if(can_special_attack(A) && special_attack_target(A))
 				return
 

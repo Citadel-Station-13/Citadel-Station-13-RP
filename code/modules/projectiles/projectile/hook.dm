@@ -37,7 +37,7 @@
 
 	if(launcher_intent)
 		switch(launcher_intent)
-			if(I_HURT)
+			if(INTENT_HARM)
 				check_armour = "bullet"
 				damage *= 3
 				sharp = 1
@@ -152,7 +152,7 @@
 					visible_message("<span class='notice'>\The [src] [message] [target].</span>")
 					done_mob_unique = TRUE
 					success = TRUE
-				if(I_HURT)
+				if(INTENT_HARM)
 					if(prob(10) && istype(L, /mob/living/carbon/human))
 						to_chat(L, "<span class='warning'>\The [src] rips at your hands!</span>")
 						ranged_disarm(L)

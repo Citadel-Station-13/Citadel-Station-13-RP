@@ -132,7 +132,7 @@
 
 			return TRUE
 
-		if(I_HURT)
+		if(INTENT_HARM)
 
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
 				var/obj/item/grenade/G = wear_mask
@@ -163,7 +163,7 @@
 					// We didn't see this coming, so we get the full blow
 					rand_damage = 5
 					accurate = 1
-				if(I_HURT, INTENT_GRAB)
+				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1

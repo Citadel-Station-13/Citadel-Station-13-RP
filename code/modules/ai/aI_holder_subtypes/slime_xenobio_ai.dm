@@ -154,7 +154,7 @@
 		else if(my_slime.can_consume(L) && L.lying)
 			my_slime.a_intent = INTENT_GRAB // Then eat them.
 		else
-			my_slime.a_intent = I_HURT // Otherwise robust them.
+			my_slime.a_intent = INTENT_HARM // Otherwise robust them.
 
 /datum/ai_holder/simple_mob/xenobio_slime/closest_distance(atom/movable/AM)
 	if(istype(AM, /mob/living))

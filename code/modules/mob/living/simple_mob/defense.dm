@@ -43,7 +43,7 @@
 			L.visible_message("<span class='warning'>\The [L] has grabbed [src] passively!</span>")
 			L.do_attack_animation(src)
 
-		if(I_HURT)
+		if(INTENT_HARM)
 			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
 			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 			L.visible_message("<span class='warning'>\The [L] [response_harm] \the [src]!</span>")

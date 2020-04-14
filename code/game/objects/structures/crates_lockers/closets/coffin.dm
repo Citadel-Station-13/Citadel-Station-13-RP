@@ -108,7 +108,7 @@
 			W.forceMove(src.loc)
 	else
 		if(istype(W, /obj/item/shovel))
-			if(user.a_intent == I_HURT)	// Hurt intent means you're trying to kill someone, or just get rid of the grave
+			if(user.a_intent == INTENT_HARM)	// Hurt intent means you're trying to kill someone, or just get rid of the grave
 				user.visible_message("<span class='notice'>[user] begins to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You start to smoothe out the dirt of \the [src.name].</span>", \
 									 "<span class='notice'>You hear dirt being moved.</span>")

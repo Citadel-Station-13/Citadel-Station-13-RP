@@ -77,7 +77,7 @@
 			if(INTENT_GRAB)
 				..()
 
-			if(I_HURT)
+			if(INTENT_HARM)
 				adjustBruteLoss(harm_intent_damage)
 				M.visible_message(span("danger", "\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)

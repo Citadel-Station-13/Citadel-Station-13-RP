@@ -573,7 +573,7 @@
 				FindTarget()
 		if(STANCE_ATTACK)
 			annoyed = 50
-			a_intent = I_HURT
+			a_intent = INTENT_HARM
 			RequestHelp()
 			MoveToTarget()
 		if(STANCE_ATTACKING)
@@ -642,7 +642,7 @@
 			ai_log("attack_hand() I was grabbed by: [M]",2)
 			react_to_attack(M)
 
-		if(I_HURT)
+		if(INTENT_HARM)
 			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
 			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")

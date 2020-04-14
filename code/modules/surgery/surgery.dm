@@ -121,7 +121,7 @@
 /obj/item/proc/do_surgery(mob/living/carbon/M, mob/living/user)
 	if(!istype(M))
 		return 0
-	if (user.a_intent == I_HURT)	//check for Hippocratic Oath
+	if (user.a_intent == INTENT_HARM)	//check for Hippocratic Oath
 		return 0
 	var/zone = user.zone_sel.selecting
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.

@@ -61,13 +61,13 @@
 				start_consuming(L)
 				return FALSE
 
-			if(I_HURT)
+			if(INTENT_HARM)
 				return ..() // Regular stuff.
 	else
 		return ..() // Do the regular stuff if we're hitting a window/mech/etc.
 
 /mob/living/simple_mob/slime/xenobio/apply_melee_effects(mob/living/L)
-	if(istype(L) && a_intent == I_HURT)
+	if(istype(L) && a_intent == INTENT_HARM)
 		// Pump them full of toxins, if able.
 		if(L.reagents && L.can_inject() && reagent_injected)
 			L.reagents.add_reagent(reagent_injected, injection_amount)

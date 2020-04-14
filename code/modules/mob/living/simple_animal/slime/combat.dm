@@ -21,7 +21,7 @@
 		else if(can_consume(target_mob) && target_mob.lying)
 			a_intent = INTENT_GRAB // Then eat them.
 		else
-			a_intent = I_HURT // Otherwise robust them.
+			a_intent = INTENT_HARM // Otherwise robust them.
 	ai_log("PunchTarget() will [a_intent] [target_mob]",2)
 	..()
 
@@ -175,7 +175,7 @@
 				start_consuming(L)
 				post_attack(L, a_intent)
 
-			if(I_HURT)
+			if(INTENT_HARM)
 				ai_log("DoPunch() against [L], hurting.",2)
 				var/damage_to_do = rand(melee_damage_lower, melee_damage_upper)
 				var/armor_modifier = abs((L.getarmor(null, "bio") / 100) - 1)
@@ -201,7 +201,7 @@
 		var/obj/mecha/M = L
 		M.attack_generic(src, rand(melee_damage_lower, melee_damage_upper), pick(attacktext))
 
-/mob/living/simple_animal/slime/proc/post_attack(var/mob/living/L, var/intent = I_HURT)
+/mob/living/simple_animal/slime/proc/post_attack(var/mob/living/L, var/intent = INTENT_HARM)
 	if(intent != INTENT_HELP)
 		if(L.reagents && L.can_inject() && reagent_injected)
 			L.reagents.add_reagent(reagent_injected, injection_amount)

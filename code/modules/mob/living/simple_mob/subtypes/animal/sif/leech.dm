@@ -493,11 +493,11 @@
 			else
 				holder.a_intent = INTENT_DISARM	// They're standing up! Try to drop or stun them.
 		else
-			holder.a_intent = I_HURT		// Otherwise, bite.
+			holder.a_intent = INTENT_HARM		// Otherwise, bite.
 
 	else if(istype(A, /obj/item))
 		var/obj/item/I = A
 		if(istype(I, /obj/item/reagent_containers/food/snacks))
-			holder.a_intent = I_HURT
+			holder.a_intent = INTENT_HARM
 	else
-		holder.a_intent = I_HURT
+		holder.a_intent = INTENT_HARM

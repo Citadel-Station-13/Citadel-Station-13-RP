@@ -289,21 +289,21 @@
 						lose_target()
 						give_target(IT)
 					return
-				holder.a_intent = I_HURT
+				holder.a_intent = INTENT_HARM
 			else
 				holder.a_intent = INTENT_DISARM	// Otherwise, try to disarm them!
 		else
-			holder.a_intent = I_HURT	// We can't disarm you, so we're going to hurt you.
+			holder.a_intent = INTENT_HARM	// We can't disarm you, so we're going to hurt you.
 
 	else if(istype(A, /obj/item))
 		var/obj/item/I = A
 		if(istype(I, /obj/item/reagent_containers/food/snacks))	// If we can't pick it up, or it's edible, go to harm.
-			holder.a_intent = I_HURT
+			holder.a_intent = INTENT_HARM
 		else
 			holder.a_intent = INTENT_HELP
 
 	else
-		holder.a_intent = I_HURT
+		holder.a_intent = INTENT_HARM
 
 /datum/ai_holder/simple_mob/intentional/sakimm/should_go_home()
 	if((!returns_home && !holder.get_active_hand()) || !home_turf)	// If we have an item, we want to go home.
