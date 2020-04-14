@@ -72,7 +72,7 @@
 		reconsider_lights()
 
 /turf/Exited(var/atom/movable/Obj, var/atom/newloc)
-	. = ..()
+	..()
 
 	if(Obj && Obj.opacity)
 		recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
