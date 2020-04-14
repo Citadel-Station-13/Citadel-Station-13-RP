@@ -166,7 +166,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		overlays += "cart_sign[signs]"
 
 
-//old style retardo-cart
+//old style stupido-cart
 /obj/structure/bed/chair/janicart
 	name = "janicart"
 	icon = 'icons/obj/vehicles.dmi'
