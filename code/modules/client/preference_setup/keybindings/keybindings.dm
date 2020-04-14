@@ -42,7 +42,6 @@
 	. += "<b>Hotkey mode:</b> <a href='?src=[REF(src)];option=hotkeys'>[(pref.hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/OnTopic(href, list/href_list, mob/user)
-	to_chat(world, "DEBUG: href [href] href_list options [href_list["option"]]")
 	if(href_list["option"])
 		switch(href_list["option"])
 			if("hotkeys")
