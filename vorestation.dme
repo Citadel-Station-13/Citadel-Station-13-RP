@@ -188,7 +188,6 @@
 #include "code\_onclick\hud\screen_objects.dm"
 #include "code\_onclick\hud\screen_objects_vr.dm"
 #include "code\_onclick\hud\spell_screen_objects.dm"
-#include "code\controllers\autotransfer.dm"
 #include "code\controllers\communications.dm"
 #include "code\controllers\controller.dm"
 #include "code\controllers\failsafe.dm"
