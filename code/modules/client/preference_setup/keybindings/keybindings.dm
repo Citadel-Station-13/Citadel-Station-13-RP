@@ -100,6 +100,7 @@
 	. += "<br><br>"
 	. += "<a href ='?src=[REF(src)];option=keybindings_reset'>\[Reset to default\]</a>"
 	. += "</body>"
+	. = jointext(., null)
 
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/OnTopic(href, list/href_list, mob/user)
 	var/list/key_bindings = pref.key_bindings
