@@ -124,7 +124,7 @@
 		if("callshuttle2")
 			if(src.authenticated)
 				call_shuttle_proc(usr)
-				if(emergency_shuttle.online())
+				if(SSemergencyshuttle.online())
 					post_status("shuttle")
 			src.state = STATE_DEFAULT
 		if("cancelshuttle")
@@ -286,8 +286,8 @@
 
 	user.set_machine(src)
 	var/dat = "<head><title>Communications Console</title></head><body>"
-	if (emergency_shuttle.has_eta())
-		var/timeleft = emergency_shuttle.estimate_arrival_time()
+	if (SSemergencyshuttle.has_eta())
+		var/timeleft = SSemergencyshuttle.estimate_arrival_time()
 		dat += "<B>Emergency shuttle</B>\n<BR>\nETA: [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]<BR>"
 
 	if (istype(user, /mob/living/silicon))
@@ -312,8 +312,8 @@
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=RestoreBackup'>Restore Backup Routing Data</A> \]"
 
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=changeseclevel'>Change alert level</A> \]"
-				if(emergency_shuttle.location())
-					if (emergency_shuttle.online())
+				if(SSemergencyshuttle.location())
+					if (SSemergencyshuttle.online())
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=cancelshuttle'>Cancel Shuttle Call</A> \]"
 					else
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Call Emergency Shuttle</A> \]"
@@ -385,7 +385,7 @@
 	var/dat = ""
 	switch(src.aistate)
 		if(STATE_DEFAULT)
-			if(emergency_shuttle.location() && !emergency_shuttle.online())
+			if(SSemergencyshuttle.location() && !SSemergencyshuttle.online())
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
@@ -434,7 +434,7 @@
 		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)
-	if ((!( ticker ) || !emergency_shuttle.location()))
+	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
 	if(!universe.OnShuttleCall(usr))
@@ -445,14 +445,20 @@
 		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return
 
+<<<<<<< HEAD
 	if(emergency_shuttle.deny_shuttle)
 		to_chat(user, "The emergency shuttle may not be sent at this time. Please try again later.")
+=======
+	if(SSemergencyshuttle.deny_shuttle)
+		user << "The emergency shuttle may not be sent at this time. Please try again later."
+>>>>>>> citrp/master
 		return
 
 	if(world.time < 6000) // Ten minute grace period to let the game get going without lolmetagaming. -- TLE
 		to_chat(user, "The emergency shuttle is refueling. Please wait another [round((6000-world.time)/600)] minute\s before trying again.")
 		return
 
+<<<<<<< HEAD
 	if(emergency_shuttle.going_to_centcom())
 		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
 		return
@@ -463,9 +469,21 @@
 
 	if(ticker.mode.name == "blob")
 		to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
+=======
+	if(SSemergencyshuttle.going_to_centcom())
+		user << "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short]."
 		return
 
-	emergency_shuttle.call_evac()
+	if(SSemergencyshuttle.online())
+		user << "The emergency shuttle is already on its way."
+		return
+
+	if(SSticker.mode.name == "blob")
+		user << "Under directive 7-10, [station_name()] is quarantined until further notice."
+>>>>>>> citrp/master
+		return
+
+	SSemergencyshuttle.call_evac()
 	log_game("[key_name(user)] has called the shuttle.")
 	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
 	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222") //VOREStation Add
@@ -474,21 +492,35 @@
 	return
 
 /proc/init_shift_change(var/mob/user, var/force = 0)
-	if ((!( ticker ) || !emergency_shuttle.location()))
+	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
+<<<<<<< HEAD
 	if(emergency_shuttle.going_to_centcom())
 		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
 		return
 
 	if(emergency_shuttle.online())
 		to_chat(user, "The shuttle is already on its way.")
+=======
+	if(SSemergencyshuttle.going_to_centcom())
+		user << "The shuttle may not be called while returning to [GLOB.using_map.boss_short]."
+		return
+
+	if(SSemergencyshuttle.online())
+		user << "The shuttle is already on its way."
+>>>>>>> citrp/master
 		return
 
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
+<<<<<<< HEAD
 		if(emergency_shuttle.deny_shuttle)
 			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
+=======
+		if(SSemergencyshuttle.deny_shuttle)
+			user << "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later."
+>>>>>>> citrp/master
 			return
 
 		if(deathsquad.deployed == 1)
@@ -499,15 +531,20 @@
 			to_chat(user, "The shuttle is refueling. Please wait another [round((54000-world.time)/60)] minutes before trying again.")
 			return
 
-		if(ticker.mode.auto_recall_shuttle)
+		if(SSticker.mode.auto_recall_shuttle)
 			//New version pretends to call the shuttle but cause the shuttle to return after a random duration.
-			emergency_shuttle.auto_recall = 1
+			SSemergencyshuttle.auto_recall = 1
 
+<<<<<<< HEAD
 		if(ticker.mode.name == "blob" || ticker.mode.name == "epidemic")
 			to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
+=======
+		if(SSticker.mode.name == "blob" || SSticker.mode.name == "epidemic")
+			user << "Under directive 7-10, [station_name()] is quarantined until further notice."
+>>>>>>> citrp/master
 			return
 
-	emergency_shuttle.call_transfer()
+	SSemergencyshuttle.call_transfer()
 
 	//delay events in case of an autotransfer
 	if (isnull(user))
@@ -521,13 +558,13 @@
 	return
 
 /proc/cancel_call_proc(var/mob/user)
-	if (!( ticker ) || !emergency_shuttle.can_recall())
+	if (!( SSticker ) || !SSemergencyshuttle.can_recall())
 		return
-	if((ticker.mode.name == "blob")||(ticker.mode.name == "Meteor"))
+	if((SSticker.mode.name == "blob")||(SSticker.mode.name == "Meteor"))
 		return
 
-	if(!emergency_shuttle.going_to_centcom()) //check that shuttle isn't already heading to CentCom
-		emergency_shuttle.recall()
+	if(!SSemergencyshuttle.going_to_centcom()) //check that shuttle isn't already heading to CentCom
+		SSemergencyshuttle.recall()
 		log_game("[key_name(user)] has recalled the shuttle.")
 		message_admins("[key_name_admin(user)] has recalled the shuttle.", 1)
 	return

@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/fire(resumed)
 	if(mode)
 		time_remaining = round((started_time + duration - world.time)/10)
-		if(mode == VOTE_GAMEMODE && ticker.current_state >= GAME_STATE_SETTING_UP)
+		if(mode == VOTE_GAMEMODE && SSticker.current_state >= GAME_STATE_SETTING_UP)
 			to_chat(world, "<b>Gamemode vote aborted: Game has already started.</b>")
 			reset()
 			return
@@ -118,7 +118,7 @@ SUBSYSTEM_DEF(vote)
 	var/text
 	if(winners.len > 0)
 		if(winners.len > 1)
-			if(mode != VOTE_GAMEMODE || ticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
+			if(mode != VOTE_GAMEMODE || SSticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
 				text = "<b>Vote Tied Between:</b>\n"
 				for(var/option in winners)
 					text += "\t[option]\n"
@@ -127,7 +127,7 @@ SUBSYSTEM_DEF(vote)
 		for(var/key in current_votes)
 			if(choices[current_votes[key]] == .)
 				round_voters += key // Keep track of who voted for the winning round.
-		if(mode != VOTE_GAMEMODE || . == "Extended" || ticker.hide_mode == 0) // Announce Extended gamemode, but not other gamemodes
+		if(mode != VOTE_GAMEMODE || . == "Extended" || SSticker.hide_mode == 0) // Announce Extended gamemode, but not other gamemodes
 			text += "<b>Vote Result: [mode == VOTE_GAMEMODE ? gamemode_names[.] : .]</b>"
 		else
 			text += "<b>The vote has ended.</b>"
@@ -150,7 +150,7 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_GAMEMODE)
 				if(master_mode != .)
 					world.save_mode(.)
-					if(ticker && ticker.mode)
+					if(SSticker && SSticker.mode)
 						restart = 1
 					else
 						master_mode = .
@@ -202,7 +202,7 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_RESTART)
 				choices.Add("Restart Round", "Continue Playing")
 			if(VOTE_GAMEMODE)
-				if(ticker.current_state >= GAME_STATE_SETTING_UP)
+				if(SSticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
 				choices.Add(config_legacy.votable_modes)
 				for(var/F in choices)
@@ -217,13 +217,18 @@ SUBSYSTEM_DEF(vote)
 					if(get_security_level() == "red" || get_security_level() == "delta")
 						to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
 						return 0
+<<<<<<< HEAD
 					if(ticker.current_state <= GAME_STATE_SETTING_UP)
 						to_chat(initiator_key, "The crew transfer button has been disabled!")
+=======
+					if(SSticker.current_state <= GAME_STATE_SETTING_UP)
+						initiator_key << "The crew transfer button has been disabled!"
+>>>>>>> citrp/master
 						return 0
 				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
 				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit
 			if(VOTE_ADD_ANTAGONIST)
-				if(!config_legacy.allow_extra_antags || ticker.current_state >= GAME_STATE_SETTING_UP)
+				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
 				for(var/antag_type in all_antag_types)
 					var/datum/antagonist/antag = all_antag_types[antag_type]

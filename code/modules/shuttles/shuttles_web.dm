@@ -129,12 +129,12 @@
 			return
 		autopilot = TRUE
 		autopilot_delay = initial(autopilot_delay)
-		shuttle_controller.process_shuttles += src
+		SSshuttle.process_shuttles += src
 	else
 		if(!autopilot)
 			return
 		autopilot = FALSE
-		shuttle_controller.process_shuttles -= src
+		SSshuttle.process_shuttles -= src
 
 /datum/shuttle/web_shuttle/proc/autopilot_say(message) // Makes the autopilot 'talk' to the passengers.
 	var/padded_message = "<span class='game say'><span class='name'>shuttle autopilot</span> states, \"[message]\"</span>"
@@ -186,7 +186,7 @@
 			log_debug("[my_area] shuttle computer couldn't find [lost] sensor!")
 
 /obj/machinery/computer/shuttle_control/web/attackby(obj/I, mob/user)
-	var/datum/shuttle/web_shuttle/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(shuttle && istype(I,/obj/item/clothing/head/pilot))
 		var/obj/item/clothing/head/pilot/H = I
 		H.shuttle_comp = src
@@ -208,7 +208,7 @@
 
 	/*
 	// If nanoUI falls over and you want a non-nanoUI UI, feel free to uncomment this section.
-	var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(WS))
 		message_admins("ERROR: Shuttle computer ([src]) ([shuttle_tag]) could not find their shuttle in the shuttles list.")
 		return
@@ -272,7 +272,7 @@
 /obj/machinery/computer/shuttle_control/web/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/list/routes[0]
-	var/datum/shuttle/web_shuttle/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(shuttle))
 		return
 
@@ -366,7 +366,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(WS))
 		message_admins("ERROR: Shuttle computer ([src]) ([shuttle_tag]) could not find their shuttle in the shuttles list.")
 		return
@@ -474,11 +474,11 @@
 
 /obj/shuttle_connector/Initialize()
 	. = ..()
-	SSshuttles.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
+	SSshuttle.OnDocksInitialized(CALLBACK(src, .proc/setup_routes))
 
 /obj/shuttle_connector/proc/setup_routes()
 	if(destinations && shuttle_name)
-		var/datum/shuttle/web_shuttle/ES = shuttle_controller.shuttles[shuttle_name]
+		var/datum/shuttle/web_shuttle/ES = SSshuttle.shuttles[shuttle_name]
 		var/datum/shuttle_web_master/WM = ES.web_master
 
 		for(var/new_dest in destinations)

@@ -22,8 +22,13 @@
 	user.setClickCooldown(user.get_attack_speed(src))
 	user.do_attack_animation(M)
 
+<<<<<<< HEAD
 	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(user, "<span class='danger'>You don't have the dexterity to do this!</span>")
+=======
+	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
+		user << "<span class='danger'>You don't have the dexterity to do this!</span>"
+>>>>>>> citrp/master
 		return
 
 	if ((CLUMSY in user.mutations) && prob(50))

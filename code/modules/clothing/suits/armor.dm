@@ -401,7 +401,7 @@
 	icon_state = "pvest"
 	desc = "A simple kevlar plate carrier. This one has the word 'Press' embroidered on patches on the back and front."
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	allowed = list(/obj/item/flashlight,/obj/item/taperecorder,/obj/item/pen,/obj/item/camera_film,/obj/item/camera,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/flashlight,/obj/item/tape_recorder,/obj/item/pen,/obj/item/camera_film,/obj/item/camera,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/vest/heavy
 	name = "heavy armor vest"

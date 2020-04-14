@@ -44,9 +44,9 @@ var/global/universe_has_ended = 0
 	for(var/mob/M in player_list)
 		M.flash_eyes()
 
-	if(emergency_shuttle.can_recall())
+	if(SSemergencyshuttle.can_recall())
 		priority_announcement.Announce("The emergency shuttle has returned due to bluespace distortion.")
-		emergency_shuttle.recall()
+		SSemergencyshuttle.recall()
 
 	AreaSet()
 	MiscSet()
@@ -79,7 +79,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 				C.req_one_access = list()
 
 		spawn(5 MINUTES)
-			ticker.station_explosion_cinematic(0,null) // TODO: Custom cinematic
+			SSticker.station_explosion_cinematic(0,null) // TODO: Custom cinematic
 			universe_has_ended = 1
 		return
 

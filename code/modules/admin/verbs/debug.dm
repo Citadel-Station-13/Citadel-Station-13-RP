@@ -97,7 +97,7 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -112,7 +112,7 @@
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 
@@ -160,7 +160,7 @@
 	set category = "Fun"
 	set name = "Make Alien"
 
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 	if(ishuman(M))
@@ -271,7 +271,7 @@
 	set category = "Admin"
 	set name = "Grant Full Access"
 
-	if (!ticker)
+	if (!SSticker)
 		alert("Wait until the game starts")
 		return
 	if (istype(M, /mob/living/carbon/human))
@@ -605,7 +605,7 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon))

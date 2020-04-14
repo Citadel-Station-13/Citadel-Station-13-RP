@@ -30,7 +30,7 @@
 	src.modules += new /obj/item/melee/baton/robot(src)
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src)
 	// src.modules += new /obj/item/gun/energy/taser/xeno/sec/robot(src) // VOREStation Edit - We don't need these
-	src.modules += new /obj/item/taperoll/police(src)
+	src.modules += new /obj/item/barrier_tape_roll/police(src)
 	src.modules += new /obj/item/reagent_containers/spray/pepper(src)
 	src.modules += new /obj/item/gripper/security(src)
 	src.emag = new /obj/item/gun/energy/laser/mounted(src)
@@ -89,7 +89,7 @@
 	src.modules += new /obj/item/dogborg/jaws/big(src) //In case there's some kind of hostile mob.
 	src.modules += new /obj/item/melee/baton/robot(src) //Since the pounce module refused to work, they get a stunbaton instead.
 	src.modules += new /obj/item/dogborg/boop_module(src) //Boop people on the nose.
-	src.modules += new /obj/item/taperoll/police(src) //Block out crime scenes.
+	src.modules += new /obj/item/barrier_tape_roll/police(src) //Block out crime scenes.
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg(src) //They /are/ a security borg, after all.
 	src.modules += new /obj/item/dogborg/pounce(src) //Pounce
 	src.emag 	 = new /obj/item/gun/energy/laser/mounted(src) //Emag. Not a big problem.
@@ -159,7 +159,7 @@
 	src.modules += new /obj/item/handcuffs/cyborg(src)
 	src.modules += new /obj/item/dogborg/jaws/big(src)
 	src.modules += new /obj/item/melee/baton/robot(src)
-	src.modules += new /obj/item/taperoll/police(src)
+	src.modules += new /obj/item/barrier_tape_roll/police(src)
 	src.modules += new /obj/item/gun/energy/taser/mounted/cyborg/ertgun(src)
 	src.modules += new /obj/item/dogborg/swordtail(src)
 	src.emag     = new /obj/item/gun/energy/laser/mounted(src)

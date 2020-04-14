@@ -72,7 +72,7 @@
 	throw_at(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
 
-	sleep(5) // For the throw to complete. It won't hold up the AI ticker due to waitfor being false.
+	sleep(5) // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
 
 	if(status_flags & LEAPING)
 		status_flags &= ~LEAPING // Revert special passage ability.

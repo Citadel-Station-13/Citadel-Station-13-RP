@@ -14,7 +14,7 @@
 		/obj/item/radio/headset/heads/hos,
 		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
-		/obj/item/taperoll/police,
+		/obj/item/barrier_tape_roll/police,
 		/obj/item/shield/riot,
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/holobadge/hos,

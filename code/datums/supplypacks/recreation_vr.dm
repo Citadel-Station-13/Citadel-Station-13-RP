@@ -14,7 +14,7 @@
 			/obj/item/clothing/mask/muzzle,
 			/obj/item/clothing/glasses/sunglasses/blindfold,
 			/obj/item/handcuffs/fuzzy,
-			/obj/item/tape_roll,
+			/obj/item/duct_tape_roll,
 			/obj/item/stack/cable_coil/random,
 			/obj/item/clothing/accessory/collar/shock,
 			/obj/item/clothing/suit/straight_jacket,

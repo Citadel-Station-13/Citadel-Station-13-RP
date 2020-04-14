@@ -490,7 +490,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			job_master.EquipRank(new_character, charjob, 1)
+			SSjobs.EquipRank(new_character, charjob, 1)
 		//equip_custom_items(new_character)	//VOREStation Removal
 
 	//If desired, add records.
@@ -611,8 +611,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if (!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	if(job_master)
-		for(var/datum/job/job in job_master.occupations)
+	if(SSjobs)
+		for(var/datum/job/job in SSjobs.occupations)
 			to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -828,7 +828,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Call Shuttle"
 
-	if ((!( ticker ) || !emergency_shuttle.location()))
+	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
 	if(!check_rights(R_ADMIN|R_EVENT))	return
@@ -837,18 +837,18 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(confirm != "Yes") return
 
 	var/choice
-	if(ticker.mode.auto_recall_shuttle)
+	if(SSticker.mode.auto_recall_shuttle)
 		choice = input("The shuttle will just return if you call it. Call anyway?") in list("Confirm", "Cancel")
 		if(choice == "Confirm")
-			emergency_shuttle.auto_recall = 1	//enable auto-recall
+			SSemergencyshuttle.auto_recall = 1	//enable auto-recall
 		else
 			return
 
 	choice = input("Is this an emergency evacuation or a crew transfer?") in list("Emergency", "Crew Transfer")
 	if (choice == "Emergency")
-		emergency_shuttle.call_evac()
+		SSemergencyshuttle.call_evac()
 	else
-		emergency_shuttle.call_transfer()
+		SSemergencyshuttle.call_transfer()
 
 
 	feedback_add_details("admin_verb","CSHUT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -864,10 +864,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes") return
 
-	if(!ticker || !emergency_shuttle.can_recall())
+	if(!SSticker || !SSemergencyshuttle.can_recall())
 		return
 
-	emergency_shuttle.recall()
+	SSemergencyshuttle.recall()
 	feedback_add_details("admin_verb","CCSHUT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] admin-recalled the emergency shuttle.")
 	message_admins("<font color='blue'>[key_name_admin(usr)] admin-recalled the emergency shuttle.</font>", 1)
@@ -878,15 +878,15 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Toggle Deny Shuttle"
 
-	if (!ticker)
+	if (!SSticker)
 		return
 
 	if(!check_rights(R_ADMIN|R_EVENT))	return
 
-	emergency_shuttle.deny_shuttle = !emergency_shuttle.deny_shuttle
+	SSemergencyshuttle.deny_shuttle = !SSemergencyshuttle.deny_shuttle
 
-	log_admin("[key_name(src)] has [emergency_shuttle.deny_shuttle ? "denied" : "allowed"] the shuttle to be called.")
-	message_admins("[key_name_admin(usr)] has [emergency_shuttle.deny_shuttle ? "denied" : "allowed"] the shuttle to be called.")
+	log_admin("[key_name(src)] has [SSemergencyshuttle.deny_shuttle ? "denied" : "allowed"] the shuttle to be called.")
+	message_admins("[key_name_admin(usr)] has [SSemergencyshuttle.deny_shuttle ? "denied" : "allowed"] the shuttle to be called.")
 
 /client/proc/cmd_admin_attack_log(mob/M as mob in mob_list)
 	set category = "Special Verbs"
@@ -905,12 +905,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(!check_rights(R_FUN))	return
 
+<<<<<<< HEAD
 	if (ticker && ticker.mode)
 		to_chat(usr, "Nope you can't do this, the game's already started. This only works before rounds!")
+=======
+	if (SSticker && SSticker.mode)
+		usr << "Nope you can't do this, the game's already started. This only works before rounds!"
+>>>>>>> citrp/master
 		return
 
-	if(ticker.random_players)
-		ticker.random_players = 0
+	if(SSticker.random_players)
+		SSticker.random_players = 0
 		message_admins("Admin [key_name_admin(usr)] has disabled \"Everyone is Special\" mode.", 1)
 		to_chat(usr, "Disabled.")
 		return
@@ -928,7 +933,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
 
-	ticker.random_players = 1
+	SSticker.random_players = 1
 	feedback_add_details("admin_verb","MER") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 

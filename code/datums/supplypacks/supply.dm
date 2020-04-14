@@ -59,7 +59,7 @@
 				/obj/item/destTagger,
 				/obj/item/hand_labeler,
 				/obj/item/tool/wirecutters,
-				/obj/item/tape_roll = 2)
+				/obj/item/duct_tape_roll = 2)
 	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Shipping supplies crate"
@@ -75,7 +75,7 @@
 			/obj/item/folder/red,
 			/obj/item/folder/yellow,
 			/obj/item/hand_labeler,
-			/obj/item/tape_roll,
+			/obj/item/duct_tape_roll,
 			/obj/structure/filingcabinet/chestdrawer{anchored = 0},
 			/obj/item/paper_bin
 			)

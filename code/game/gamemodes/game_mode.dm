@@ -101,9 +101,9 @@ var/global/list/additional_antag_types = list()
 			return
 		var/datum/antagonist/antag = all_antag_types[choice]
 		if(antag)
-			if(!islist(ticker.mode.antag_templates))
-				ticker.mode.antag_templates = list()
-			ticker.mode.antag_templates |= antag
+			if(!islist(SSticker.mode.antag_templates))
+				SSticker.mode.antag_templates = list()
+			SSticker.mode.antag_templates |= antag
 			message_admins("Admin [key_name_admin(usr)] added [antag.role_text] template to game mode.")
 
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
@@ -209,12 +209,12 @@ var/global/list/additional_antag_types = list()
 		if(antag.is_latejoin_template())
 			latejoin_templates |= antag
 
-	if(emergency_shuttle && auto_recall_shuttle)
-		emergency_shuttle.auto_recall = 1
+	if(SSemergencyshuttle && auto_recall_shuttle)
+		SSemergencyshuttle.auto_recall = 1
 
 	feedback_set_details("round_start","[time2text(world.realtime)]")
-	if(ticker && ticker.mode)
-		feedback_set_details("game_mode","[ticker.mode]")
+	if(SSticker && SSticker.mode)
+		feedback_set_details("game_mode","[SSticker.mode]")
 	feedback_set_details("server_ip","[world.internet_address]:[world.port]")
 	return 1
 
@@ -261,14 +261,14 @@ var/global/list/additional_antag_types = list()
 	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
 /datum/game_mode/proc/check_finished()
-	if(emergency_shuttle.returned() || station_was_nuked)
+	if(SSemergencyshuttle.returned() || station_was_nuked)
 		return 1
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
 				return 0
 		if(config_legacy.continous_rounds)
-			emergency_shuttle.auto_recall = 0
+			SSemergencyshuttle.auto_recall = 0
 			return 0
 		return 1
 	return 0
@@ -334,7 +334,7 @@ var/global/list/additional_antag_types = list()
 	var/text = ""
 	if(surviving_total > 0)
 		text += "<br>There [surviving_total>1 ? "were <b>[surviving_total] survivors</b>" : "was <b>one survivor</b>"]"
-		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [emergency_shuttle.evac ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
+		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [SSemergencyshuttle.evac ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
 	else
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
 	world << text
@@ -378,7 +378,7 @@ var/global/list/additional_antag_types = list()
 		return candidates
 
 	// If this is being called post-roundstart then it doesn't care about ready status.
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		for(var/mob/player in player_list)
 			if(!player.client)
 				continue
@@ -532,16 +532,24 @@ proc/get_nt_opposed()
 	set name = "Check Round Info"
 	set category = "OOC"
 
-	if(!ticker || !ticker.mode)
+	if(!SSticker || !SSticker.mode)
 		usr << "Something is terribly wrong; there is no gametype."
 		return
 
 	if(master_mode != "secret")
+<<<<<<< HEAD
 		to_chat(usr, "<b>The roundtype is [capitalize(ticker.mode.name)]</b>")
 		if(ticker.mode.round_description)
 			to_chat(usr, "<i>[ticker.mode.round_description]</i>")
 		if(ticker.mode.extended_round_description)
 			to_chat(usr, "[ticker.mode.extended_round_description]")
+=======
+		usr << "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>"
+		if(SSticker.mode.round_description)
+			usr << "<i>[SSticker.mode.round_description]</i>"
+		if(SSticker.mode.extended_round_description)
+			usr << "[SSticker.mode.extended_round_description]"
+>>>>>>> citrp/master
 	else
 		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
 	return

@@ -44,7 +44,7 @@
 /// (implies all runlevels because of how it works)
 /// (overrides SS_BACKGROUND)
 /// This is designed for basically anything that works as a mini-mc (like SStimer)
-#define SS_TICKER 16
+#define SS_SSticker 16
 
 /** keep the subsystem's timing on point by firing early if it fired late last fire because of lag */
 /// ie: if a 20ds subsystem fires say 5 ds late due to lag or what not, its next fire would be in 15ds, not 20ds.

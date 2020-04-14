@@ -10,8 +10,13 @@ var/const/commandos_possible = 6 //if more Commandos are needed in the future
 		to_chat(src, "Only administrators may use this command.")
 		return
 
+<<<<<<< HEAD
 	if(!ticker)
 		to_chat(usr, "<font color='red'>The game hasn't started yet!</font>")
+=======
+	if(!SSticker)
+		usr << "<font color='red'>The game hasn't started yet!</font>"
+>>>>>>> citrp/master
 		return
 
 	if(world.time < 6000)

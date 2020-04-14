@@ -470,8 +470,8 @@
 	if(user.mind && (user.mind.assigned_role == "Clown"))
 		clown = 1
 
-	if(istype(P, /obj/item/tape_roll))
-		var/obj/item/tape_roll/tape = P
+	if(istype(P, /obj/item/duct_tape_roll))
+		var/obj/item/duct_tape_roll/tape = P
 		tape.stick(src, user)
 		return
 

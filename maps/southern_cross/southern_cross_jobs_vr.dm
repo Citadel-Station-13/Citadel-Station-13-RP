@@ -105,6 +105,7 @@ var/const/SAR 				=(1<<14)
 	idtype = /obj/item/card/id/medical/sar
 	economic_modifier = 6
 	minimal_player_age = 3
+	alt_titles = list("Search and Rescue")
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva, access_maint_tunnels, access_external_airlocks, access_psychiatrist, access_explorer)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_explorer)
 	outfit_type = /decl/hierarchy/outfit/job/medical/sar

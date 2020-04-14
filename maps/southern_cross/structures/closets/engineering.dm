@@ -24,7 +24,7 @@
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/mask/gas,
 		/obj/item/tank/emergency/oxygen/engi,
-		/obj/item/taperoll/engineering,
+		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering)
 
 /obj/structure/closet/secure_closet/engineering_chief_wardrobe/Initialize()
