@@ -124,7 +124,7 @@
 
 /obj/item/card/id/Initialize()
 	. = ..()
-	var/datum/job/J = job_master.GetJob(rank)
+	var/datum/job/J = SSjobs.GetJob(rank)
 	if(J)
 		access = J.get_access()
 

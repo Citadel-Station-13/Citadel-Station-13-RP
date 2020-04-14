@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(ai)
 	init_order = INIT_ORDER_AI
 	priority = FIRE_PRIORITY_AI
 	wait = 5 // This gets run twice a second, however this is technically two loops in one, with the second loop being run every four iterations.
-	flags = SS_NO_INIT|SS_TICKER
+	flags = SS_NO_INIT|SS_SSticker
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/processing = list()

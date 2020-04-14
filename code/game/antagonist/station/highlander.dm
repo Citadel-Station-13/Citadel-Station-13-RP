@@ -55,7 +55,7 @@ var/datum/antagonist/highlander/highlanders
 
 /proc/only_one()
 
-	if(!ticker)
+	if(!SSticker)
 		alert("The game hasn't started yet!")
 		return
 

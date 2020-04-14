@@ -5131,8 +5131,8 @@
 /obj/structure/railing,
 /obj/structure/closet/crate,
 /obj/item/camera,
-/obj/item/tape/random,
-/obj/item/taperecorder/empty,
+/obj/item/cassette_tape/random,
+/obj/item/reagent_containers/hypospray/autoinjector/empty,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
@@ -7038,8 +7038,8 @@
 /obj/structure/table/standard,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
-/obj/item/taperecorder,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
+/obj/item/tape_recorder,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -9266,7 +9266,7 @@
 	icon_state = "bordercolor";
 	dir = 4
 	},
-/obj/item/taperoll/atmos,
+/obj/item/barrier_tape_roll/atmos,
 /obj/item/stack/cable_coil/random_belt,
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled/techmaint,
@@ -12490,7 +12490,7 @@
 "awI" = (
 /obj/structure/table/standard,
 /obj/item/storage/laundry_basket,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -16191,7 +16191,7 @@
 /area/rnd/xenobiology/xenoflora)
 "aCY" = (
 /obj/structure/table/glass,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/item/analyzer/plant_analyzer,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -17996,11 +17996,11 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/item/tape_roll{
+/obj/item/barrier_tape_roll{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /turf/simulated/floor/tiled,
 /area/storage/art)
 "aGC" = (

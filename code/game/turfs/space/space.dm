@@ -98,10 +98,10 @@
 
 	inertial_drift(A)
 
-	if(ticker && ticker.mode)
+	if(SSticker && SSticker.mode)
 
 		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(ticker.mode.name == "mercenary")	return
+		// if(SSticker.mode.name == "mercenary")	return
 		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE + 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE + 1))
 			A.touch_map_edge()
 

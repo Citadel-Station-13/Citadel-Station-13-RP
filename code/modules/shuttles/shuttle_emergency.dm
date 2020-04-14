@@ -2,9 +2,9 @@
 	category = /datum/shuttle/ferry/emergency
 
 /datum/shuttle/ferry/emergency/New()
-	if(emergency_shuttle.shuttle)
+	if(SSemergencyshuttle.shuttle)
 		CRASH("An emergency shuttle has already been defined.")
-	emergency_shuttle.shuttle = src
+	SSemergencyshuttle.shuttle = src
 	..()
 
 /datum/shuttle/ferry/emergency/arrived()
@@ -12,7 +12,7 @@
 		var/obj/machinery/computer/shuttle_control/emergency/C = in_use
 		C.reset_authorization()
 
-	emergency_shuttle.shuttle_arrived()
+	SSemergencyshuttle.shuttle_arrived()
 
 /datum/shuttle/ferry/emergency/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
 	//world << "shuttle/ferry/emergency/long_jump: departing=[departing], destination=[destination], interim=[interim], travel_time=[travel_time]"
@@ -23,7 +23,7 @@
 
 	//update move_time and launch_time so we get correct ETAs
 	move_time = travel_time
-	emergency_shuttle.launch_time = world.time
+	SSemergencyshuttle.launch_time = world.time
 
 	..()
 
@@ -31,10 +31,10 @@
 	..(origin, destination)
 
 	if (origin == area_station)	//leaving the station
-		emergency_shuttle.departed = 1
-		var/estimated_time = round(emergency_shuttle.estimate_arrival_time()/60,1)
+		SSemergencyshuttle.departed = 1
+		var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
 
-		if (emergency_shuttle.evac)
+		if (SSemergencyshuttle.evac)
 			priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 		else
 			priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
@@ -67,8 +67,8 @@
 	if (!can_launch(user)) return
 
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))	//if we were given a command by an emergency shuttle console
-		if (emergency_shuttle.autopilot)
-			emergency_shuttle.autopilot = 0
+		if (SSemergencyshuttle.autopilot)
+			SSemergencyshuttle.autopilot = 0
 			to_chat(world, "<span class='notice'><b>Alert: The shuttle autopilot has been overridden. Launch sequence initiated!</b></span>")
 
 	if(usr)
@@ -81,8 +81,8 @@
 	if (!can_force(user)) return
 
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))	//if we were given a command by an emergency shuttle console
-		if (emergency_shuttle.autopilot)
-			emergency_shuttle.autopilot = 0
+		if (SSemergencyshuttle.autopilot)
+			SSemergencyshuttle.autopilot = 0
 			to_chat(world, "<span class='notice'><b>Alert: The shuttle autopilot has been overridden. Bluespace drive engaged!</b></span>")
 
 	if(usr)
@@ -95,8 +95,8 @@
 	if (!can_cancel(user)) return
 
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))	//if we were given a command by an emergency shuttle console
-		if (emergency_shuttle.autopilot)
-			emergency_shuttle.autopilot = 0
+		if (SSemergencyshuttle.autopilot)
+			SSemergencyshuttle.autopilot = 0
 			to_chat(world, "<span class='notice'><b>Alert: The shuttle autopilot has been overridden. Launch sequence aborted!</b></span>")
 
 	if(usr)
@@ -177,7 +177,7 @@
 
 /obj/machinery/computer/shuttle_control/emergency/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
-	var/datum/shuttle/ferry/emergency/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/emergency/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 

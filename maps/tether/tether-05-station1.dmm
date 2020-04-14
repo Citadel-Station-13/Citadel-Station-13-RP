@@ -21740,7 +21740,7 @@
 	dir = 4
 	},
 /obj/item/clipboard,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "bXI" = (
@@ -21991,7 +21991,7 @@
 /obj/random/junk,
 /obj/structure/closet,
 /obj/random/maintenance/clean,
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bZS" = (
@@ -22713,7 +22713,7 @@
 /area/tether/station/explorer_meeting)
 "hMi" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/item/paper_bin,
@@ -24016,7 +24016,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/item/universal_translator,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},

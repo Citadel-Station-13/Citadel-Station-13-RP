@@ -27,8 +27,8 @@
 
 	addtimer(CALLBACK(src, .proc/activate_pin, 2), delay)
 
-/obj/item/integrated_circuit/time/ticker
-	name = "ticker circuit"
+/obj/item/integrated_circuit/time/SSticker
+	name = "SSticker circuit"
 	desc = "This circuit sends an automatic pulse every given interval, defined in tenths of a second."
 	extended_desc ="This circuit sends an automatic pulse every given interval, defined in tenths of a second. \
 	For example, setting the time pin to 4 will send a pulse every 0.4 seconds, or 15 for every 1.5 seconds.<br>\
@@ -48,7 +48,7 @@
 	// and the circuit cooldown and will hopefully discourage stupidly fast ticking machines.
 	var/max_power_draw = 500
 
-/obj/item/integrated_circuit/time/ticker/on_data_written()
+/obj/item/integrated_circuit/time/SSticker/on_data_written()
 	var/delay_input = get_pin_data(IC_INPUT, 2)
 	if(delay_input && isnum(delay_input) )
 		var/new_delay = CLAMP(delay_input, 1, 1 HOUR)
@@ -63,7 +63,7 @@
 		is_running = FALSE
 
 
-/obj/item/integrated_circuit/time/ticker/proc/tick()
+/obj/item/integrated_circuit/time/SSticker/proc/tick()
 	if(is_running && check_power())
 		addtimer(CALLBACK(src, .proc/tick), delay)
 		if(world.time > next_fire)

@@ -1,22 +1,21 @@
-var/datum/controller/transfer_controller/transfer_controller
-
-#define NUMBER_OF_VOTE_EXTENSIONS 2
-
-datum/controller/transfer_controller
+SUBSYSTEM_DEF(transfer)
+	wait = 10 SECONDS
+	name = "Transfer"
 	var/timerbuffer = 0 //buffer for time check
 	var/currenttick = 0
 	var/shift_hard_end = 0 //VOREStation Edit
 	var/shift_last_vote = 0 //Citadel Edit
-datum/controller/transfer_controller/New()
+
+// should be a config someday lol
+#define NUMBER_OF_VOTE_EXTENSIONS 2
+
+/datum/controller/subsystem/transfer/Initialize()
 	timerbuffer = config_legacy.vote_autotransfer_initial
 	shift_hard_end = config_legacy.vote_autotransfer_initial + (config_legacy.vote_autotransfer_interval * NUMBER_OF_VOTE_EXTENSIONS) //VOREStation Edit //Change this "1" to how many extend votes you want there to be.
 	shift_last_vote = shift_hard_end - config_legacy.vote_autotransfer_interval //VOREStation Edit
-	START_PROCESSING(SSobj, src)
+	return ..()
 
-datum/controller/transfer_controller/Destroy()
-	STOP_PROCESSING(SSobj, src)
-
-datum/controller/transfer_controller/process()
+/datum/controller/subsystem/transfer/fire(resumed)
 	currenttick = currenttick + 1
 	//VOREStation Edit START
 /*	if (round_duration_in_ticks >= shift_last_vote - 2 MINUTES)

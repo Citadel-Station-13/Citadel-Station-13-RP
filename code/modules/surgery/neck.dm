@@ -182,7 +182,7 @@
 	allowed_tools = list(
 		/obj/item/surgical/bonegel = 100,
 		/obj/item/stack/nanopaste = 50,
-		/obj/item/tape_roll = 5)
+		/obj/item/duct_tape_roll = 5)
 
 	min_duration = 100
 	max_duration = 160

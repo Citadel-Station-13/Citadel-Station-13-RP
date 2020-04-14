@@ -73,7 +73,8 @@ var/list/medical_positions = list(
 	"Geneticist",
 	"Psychiatrist",
 	"Chemist",
-	"Paramedic"
+	"Paramedic",
+	"Field Medic"
 )
 
 
@@ -82,7 +83,9 @@ var/list/science_positions = list(
 	"Scientist",
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
-	"Xenobiologist"
+	"Xenobiologist",
+	"Explorer",
+	"Pathfinder"
 )
 
 //BS12 EDIT
@@ -101,6 +104,7 @@ var/list/civilian_positions = list(
 	"Librarian",
 	"Lawyer",
 	"Chaplain",
+	"Pilot",
 	USELESS_JOB, //VOREStation Edit - Visitor not Assistant
 	"Intern" //VOREStation Edit - Intern
 )

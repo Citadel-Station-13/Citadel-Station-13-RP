@@ -44,7 +44,7 @@
 /area/submap/cave/prepper1)
 "j" = (
 /obj/structure/table/steel,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/submap/cave/prepper1)

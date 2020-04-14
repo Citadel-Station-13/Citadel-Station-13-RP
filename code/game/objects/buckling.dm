@@ -112,7 +112,7 @@
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, var/forced = FALSE, var/silent = FALSE)
-	if(!ticker)
+	if(!SSticker)
 		user << "<span class='warning'>You can't buckle anyone in before the game starts.</span>"
 		return FALSE // Is this really needed?
 	if(!user.Adjacent(M) || user.restrained() || user.stat || istype(user, /mob/living/silicon/pai))
@@ -120,17 +120,16 @@
 	if(M in buckled_mobs)
 		to_chat(user, "<span class='warning'>\The [M] is already buckled to \the [src].</span>")
 		return FALSE
+	//can't buckle unless you share locs so try to move M to the obj.
+	if(M.loc != src.loc)
+		if(M.Adjacent(src) && user.Adjacent(src))
+			M.forceMove(get_turf(src))
 	if(!can_buckle_check(M, forced))
 		return FALSE
 
 	add_fingerprint(user)
 //	unbuckle_mob()
 
-	//can't buckle unless you share locs so try to move M to the obj.
-	if(M.loc != src.loc)
-		if(M.Adjacent(src) && user.Adjacent(src))
-			M.forceMove(get_turf(src))
-	//		step_towards(M, src)
 
 	. = buckle_mob(M, forced)
 	if(.)

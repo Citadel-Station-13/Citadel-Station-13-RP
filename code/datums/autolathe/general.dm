@@ -104,7 +104,7 @@
 
 /datum/category_item/autolathe/general/taperecorder
 	name = "tape recorder"
-	path =/obj/item/taperecorder
+	path =/obj/item/tape_recorder
 
 /datum/category_item/autolathe/general/tube
 	name = "light tube"
