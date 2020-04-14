@@ -41,7 +41,7 @@
 	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
-			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
+			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [lattice] and start pulling yourself upward...</span>")
 			destination.audible_message("<span class='notice'>You hear something climbing up \the [lattice].</span>")
 			if(do_after(src, pull_up_time))

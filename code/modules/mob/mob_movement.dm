@@ -1,6 +1,3 @@
-/mob/proc/setMoveCooldown(var/timeout)
-	move_delay = max(world.time + timeout, move_delay)
-
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
 
@@ -25,10 +22,8 @@
 	set hidden = 1
 	if(!istype(mob, /mob/living/carbon))
 		return
-	if (!mob.stat && isturf(mob.loc) && !mob.restrained())
-		mob:toggle_throw_mode()
-	else
-		return
+	var/mob/living/carbon/C = mob
+	C.toggle_throw_mode()
 
 
 /client/verb/drop_item()
@@ -114,16 +109,21 @@
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
 		mob.ghostize()
 		return FALSE
+
+/*
 	if(mob.force_moving)
 		return FALSE
+*/
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
 	if(L.incorporeal_move)	//Move though walls
 		Process_Incorpmove(direct)
 		return FALSE
 
+/*
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
+*/
 
 	// handle possible Eye movement
 	if(mob.eyeobj)
@@ -208,7 +208,7 @@
 		move_delay = world.time
 	//
 
-	if(mob.restrained() && pulledby)//Why being pulled while cuffed prevents you from moving
+	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
 		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
 		return FALSE
 
@@ -242,11 +242,11 @@
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
 		move_delay_add_grab = 7
-		var/list/L = mob.ret_grab()
-		if(istype(L, /list))
-			if(L.len == 2)
-				L -= mob
-				var/mob/M = L[1]
+		var/list/grabbed = mob.ret_grab()
+		if(grabbed)
+			if(grabbed.len == 2)
+				grabbed -= mob
+				var/mob/M = grabbed[1]
 				if(M)
 					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
 						var/turf/T = mob.loc
@@ -259,11 +259,11 @@
 							if ((get_dist(mob, M) > 1 || diag))
 								step(M, get_dir(M.loc, T))
 			else
-				for(var/mob/M in L)
+				for(var/mob/M in grabbed)
 					M.other_mobs = 1
 					if(mob != M)
 						M.animate_movement = 3
-				for(var/mob/M in L)
+				for(var/mob/M in grabbed)
 					spawn( 0 )
 						step(M, direct)
 						return
