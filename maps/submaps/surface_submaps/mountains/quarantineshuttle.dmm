@@ -43,7 +43,7 @@
 	layer = 3.3;
 	name = "Emergency Lockdown Shutters"
 	},
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	dir = 4;
 	icon_state = "tape_door_0";
 	layer = 3.4
@@ -62,7 +62,7 @@
 	locked = 1;
 	name = "MBT-540"
 	},
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	dir = 4;
 	icon_state = "tape_door_0";
 	layer = 3.4
@@ -351,7 +351,7 @@
 /obj/machinery/door/blast/regular{
 	name = "Cargo Door"
 	},
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	dir = 4;
 	icon_state = "tape_door_0";
 	layer = 3.4
@@ -728,7 +728,7 @@
 /turf/simulated/shuttle/wall/hard_corner,
 /area/submap/cave/qShuttle)
 "bT" = (
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	icon_state = "tape_v_0"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -738,18 +738,18 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/qShuttle)
 "bV" = (
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	dir = 1;
 	icon_state = "tape_dir_0"
 	},
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	dir = 4;
 	icon_state = "tape_dir_0"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/qShuttle)
 "bW" = (
-/obj/item/tape/medical{
+/obj/item/barrier_tape_segment/medical{
 	icon_state = "tape_h_0"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
