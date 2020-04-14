@@ -112,7 +112,6 @@
 	. = jointext(., null)
 
 /datum/category_item/player_setup_item/keybinding/bindings/OnTopic(href, list/href_list, mob/user)
-	var/list/key_bindings = pref.key_bindings
 	if(href_list["option"])
 		switch(href_list["option"])
 			if("keybindings_capture")
@@ -130,10 +129,10 @@
 				var/clear_key = text2num(href_list["clear_key"])
 				var/old_key = href_list["old_key"]
 				if(clear_key)
-					if(key_bindings[old_key])
-						key_bindings[old_key] -= kb_name
-						if(!length(key_bindings[old_key]))
-							key_bindings -= old_key
+					if(pref.key_bindings[old_key])
+						pref.key_bindings[old_key] -= kb_name
+						if(!length(pref.key_bindings[old_key]))
+							pref.key_bindings -= old_key
 					user << browse(null, "window=capturekeypress")
 					save_preferences()
 					return TOPIC_REFRESH
@@ -158,12 +157,12 @@
 						full_key = "[AltMod][CtrlMod][new_key]"
 					else
 						full_key = "[AltMod][CtrlMod][ShiftMod][numpad][new_key]"
-				if(key_bindings[old_key])
-					key_bindings[old_key] -= kb_name
-					if(!length(key_bindings[old_key]))
-						key_bindings -= old_key
-				key_bindings[full_key] += list(kb_name)
-				key_bindings[full_key] = sortList(key_bindings[full_key])
+				if(pref.key_bindings[old_key])
+					pref.key_bindings[old_key] -= kb_name
+					if(!length(pref.key_bindings[old_key]))
+						pref.key_bindings -= old_key
+				pref.key_bindings[full_key] += list(kb_name)
+				pref.key_bindings[full_key] = sortList(pref.key_bindings[full_key])
 
 				user << browse(null, "window=capturekeypress")
 				user.client.update_movement_keys()
@@ -174,7 +173,7 @@
 				if(choice == "Cancel")
 					return TOPIC_REFRESH
 				pref.hotkeys = (choice == "Hotkey")
-				key_bindings = (pref.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+				pref.key_bindings = (pref.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
 				user.client.update_movement_keys()
 		return TOPIC_REFRESH
 	return ..()

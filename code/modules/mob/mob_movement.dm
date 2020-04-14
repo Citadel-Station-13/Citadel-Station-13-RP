@@ -1,11 +1,6 @@
 /mob/proc/setMoveCooldown(var/timeout)
 	move_delay = max(world.time + timeout, move_delay)
 
-/mob/proc/check_move_cooldown()
-	if(world.time < src.move_delay)
-		return FALSE // Need to wait more.
-	return TRUE
-
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
 
@@ -18,8 +13,6 @@
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()
 	return
-
-
 
 /client/verb/attack_self()
 	set hidden = 1
@@ -45,14 +38,6 @@
 	return
 
 
-/client/Center()
-	/* No 3D movement in 2D spessman game. dir 16 is Z Up
-	if (isobj(mob.loc))
-		var/obj/O = mob.loc
-		if (mob.canmove)
-			return O.relaymove(mob, 16)
-	*/
-	return
 
 /client/proc/Move_object(direct)
 	if(mob && mob.control_object)
@@ -64,68 +49,156 @@
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
+/// until movespeed modifiersare done - kevinz000
+/mob/proc/movement_delay()
+	return 0
+
+#define MOVEMENT_DELAY_BUFFER 0.75
+#define MOVEMENT_DELAY_BUFFER_DELTA 1.25
+
+/**
+  * Move a client in a direction
+  *
+  * Huge proc, has a lot of functionality
+  *
+  * Mostly it will despatch to the mob that you are the owner of to actually move
+  * in the physical realm
+  *
+  * Things that stop you moving as a mob:
+  * * world time being less than your next move_delay
+  * * not being in a mob, or that mob not having a loc
+  * * missing the n and direction parameters
+  * * being in remote control of an object (calls Moveobject instead)
+  * * being dead (it ghosts you instead)
+  *
+  * Things that stop you moving as a mob living (why even have OO if you're just shoving it all
+  * in the parent proc with istype checks right?):
+  * * having incorporeal_move set (calls Process_Incorpmove() instead)
+  * * being grabbed
+  * * being buckled  (relaymove() is called to the buckled atom instead)
+  * * having your loc be some other mob (relaymove() is called on that mob instead)
+  * * Not having MOBILITY_MOVE
+  * * Failing Process_Spacemove() call
+  *
+  * At this point, if the mob is is confused, then a random direction and target turf will be calculated for you to travel to instead
+  *
+  * Now the parent call is made (to the byond builtin move), which moves you
+  *
+  * Some final move delay calculations (doubling if you moved diagonally successfully)
+  *
+  * if mob throwing is set I believe it's unset at this point via a call to finalize
+  *
+  * Finally if you're pulling an object and it's dense, you are turned 180 after the move
+  * (if you ask me, this should be at the top of the move so you don't dance around)
+  *
+  */
 
 /client/Move(n, direct)
-	if(!mob)
-		return // Moved here to avoid nullrefs below
-
-	if(mob.control_object)	Move_object(direct)
-
-	if(mob.incorporeal_move && isobserver(mob))
-		Process_Incorpmove(direct)
-		return
-
-	if(moving)
+	if(world.time < move_delay) //do not move anything ahead of this check please
+		return FALSE
+	else
+		next_move_dir_add = 0
+		next_move_dir_sub = 0
+	var/old_move_delay = move_delay
+	move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
+	if(!mob || !mob.loc)
+		return FALSE
+	if(!n || !direct)
+		return FALSE
+	if(mob.transforming)
+		return FALSE	//This is sota the goto stop mobs from moving var
+	if(mob.control_object)
+		return Move_object(direct)
+	if(!isliving(mob))
+		return mob.Move(n, direct)
+	if((mob.stat == DEAD) isliving(mob) && !mob.forbid_seeing_deadchat)
+		mob.ghostize()
+		return FALSE
+	if(mob.force_moving)
 		return FALSE
 
-	if(!mob.check_move_cooldown())
-		return
+	var/mob/living/L = mob  //Already checked for isliving earlier
+	if(L.incorporeal_move)	//Move though walls
+		Process_Incorpmove(direct)
+		return FALSE
 
-	if(locate(/obj/effect/stop/, mob.loc))
-		for(var/obj/effect/stop/S in mob.loc)
-			if(S.victim == mob)
-				return
-
-	if(mob.stat==DEAD && isliving(mob) && !mob.forbid_seeing_deadchat)
-		mob.ghostize()
-		return
+	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
+		return mob.remote_control.relaymove(mob, direct)
 
 	// handle possible Eye movement
 	if(mob.eyeobj)
 		return mob.EyeMove(n,direct)
 
-	if(mob.transforming)	return//This is sota the goto stop mobs from moving var
+/*
+	if(isAI(mob))
+		return AIMove(n,direct,mob)
+*/
 
+// inherited shitcode, tear out when possible
 	if(isliving(mob))
-		var/mob/living/L = mob
-		if(L.incorporeal_move)//Move though walls
-			Process_Incorpmove(direct)
-			return
 		if(mob.client)
 			if(mob.client.view != world.view) // If mob moves while zoomed in with device, unzoom them.
 				for(var/obj/item/item in mob.contents)
 					if(item.zoom)
 						item.zoom()
 						break
-				/*
-				if(locate(/obj/item/gun/energy/sniperrifle, mob.contents))		// If mob moves while zoomed in with sniper rifle, unzoom them.
-					var/obj/item/gun/energy/sniperrifle/s = locate() in mob
-					if(s.zoom)
-						s.zoom()
-				if(locate(/obj/item/binoculars, mob.contents))		// If mob moves while zoomed in with binoculars, unzoom them.
-					var/obj/item/binoculars/b = locate() in mob
-					if(b.zoom)
-						b.zoom()
-				*/
+// end
 
-	if(Process_Grab())
+	if(Process_Grab()) //are we restrained by someone's grip?
 		return
+
+	if(mob.buckled)							//if we're buckled to something, tell it we moved.
+		return mob.buckled.relaymove(mob, direct)
 
 	if(!mob.canmove)
 		return
 
-	//if(istype(mob.loc, /turf/space) || (mob.flags & NOGRAV))
-	//	if(!mob.Process_Spacemove(0))	return 0
+/*	// pending mobility flags
+	if(!(L.mobility_flags & MOBILITY_MOVE))
+		return FALSE
+*/
+
+	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
+		var/atom/O = mob.loc
+		return O.relaymove(mob, direct)
+
+	if(!mob.Process_Spacemove(direct))
+		return FALSE
+	//We are now going to move
+	var/add_delay = mob.cached_multiplicative_slowdown
+	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
+		move_delay = old_move_delay
+	else
+		move_delay = world.time
+
+	if(L.confused)
+		var/newdir = 0
+		if(L.confused > 40)
+			newdir = pick(GLOB.alldirs)
+		else if(prob(L.confused * 1.5))
+			newdir = angle2dir(dir2angle(direct) + pick(90, -90))
+		else if(prob(L.confused * 3))
+			newdir = angle2dir(dir2angle(direct) + pick(45, -45))
+		if(newdir)
+			direct = newdir
+			n = get_step(L, direct)
+
+	. = ..()
+
+	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
+		add_delay *= 2
+	move_delay += add_delay
+	if(.) // If mob is null here, we deserve the runtime
+		if(mob.throwing)
+			mob.throwing.finalize(FALSE)
+
+	var/atom/movable/P = mob.pulling
+	if(P && !ismob(P) && P.density)
+		mob.setDir(turn(mob.dir, 180))
+
+/client/Move(n, direct)
+
+
 
 	if(!mob.lastarea)
 		mob.lastarea = get_area(mob.loc)

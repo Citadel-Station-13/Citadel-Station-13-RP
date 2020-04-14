@@ -1,5 +1,5 @@
-#define SAVEFILE_VERSION_MIN	12
-#define SAVEFILE_VERSION_MAX	12
+#define SAVEFILE_VERSION_MIN	13
+#define SAVEFILE_VERSION_MAX	13
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -18,10 +18,11 @@
 				if(delpath && fexists(delpath))
 					fdel(delpath)
 				break
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 30)	//No mob available when this is run, timer allows user choice.
+		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
 		return 0
-	if(savefile_version < 12)		//TODO : PROPER MIGRATION SYSTEM - kevinz000
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 30)	//No mob available when this is run, timer allows user choice.
+	if(savefile_version < 13)		//TODO : PROPER MIGRATION SYSTEM - kevinz000
+		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
+		return TRUE
 
 	if(savefile_version == SAVEFILE_VERSION_MAX)	//update successful.
 		save_preferences()

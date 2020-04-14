@@ -228,11 +228,15 @@ var/global/list/PDA_Manifest = list()
 		src.throw_at(target, throw_range, throw_speed, user)
 
 /obj/effect/stop
-	var/victim = null
 	icon_state = "empty"
 	name = "Geas"
 	desc = "You can't resist."
-	// name = ""
+	var/atom/movable/victim
+
+/obj/effect/stop/Uncross(atom/movable/AM)
+	. = ..()
+	if(AM == victim)
+		return FALSE
 
 /obj/effect/spawner
 	name = "object spawner"

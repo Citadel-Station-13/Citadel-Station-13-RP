@@ -184,9 +184,6 @@
 			return M
 	return 0
 
-/mob/proc/movement_delay(oldloc, direct)
-	return 0
-
 /mob/proc/Life()
 //	if(organStructure)
 //		organStructure.ProcessOrgans()

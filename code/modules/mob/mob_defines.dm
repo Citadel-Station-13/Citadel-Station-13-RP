@@ -12,7 +12,6 @@
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/move_delay = null // For movement speed delays.
 	var/next_move = null // For click delay, despite the misleading name.
 
 	//Not in use yet
