@@ -111,7 +111,7 @@
 	flags_inv = HIDEHOLSTER
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
-	/obj/item/taperecorder, /obj/item/uv_light)
+	/obj/item/tape_recorder, /obj/item/uv_light)
 	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/det_trench/grey
@@ -128,7 +128,7 @@
 	flags_inv = HIDEHOLSTER
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
-	/obj/item/taperecorder, /obj/item/uv_light)
+	/obj/item/tape_recorder, /obj/item/uv_light)
 	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/forensics/red

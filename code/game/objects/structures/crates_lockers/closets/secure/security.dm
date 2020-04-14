@@ -278,7 +278,7 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,
-		/obj/item/taperecorder,
+		/obj/item/tape_recorder,
 		/obj/item/storage/bag/detective,
 		/obj/item/tape/random = 3)
 

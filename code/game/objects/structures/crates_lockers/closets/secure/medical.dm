@@ -251,7 +251,7 @@
 		/obj/item/reagent_containers/pill/methylphenidate,
 		/obj/item/clipboard,
 		/obj/item/folder/white,
-		/obj/item/taperecorder,
+		/obj/item/tape_recorder,
 		/obj/item/tape/random = 3,
 		/obj/item/camera,
 		/obj/item/toy/plushie/therapy/blue)

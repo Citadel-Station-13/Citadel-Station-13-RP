@@ -67,7 +67,7 @@
 	/obj/item/pen,
 	/obj/item/sample,
 	/obj/item/forensics/sample_kit,
-	/obj/item/taperecorder,
+	/obj/item/tape_recorder,
 	/obj/item/tape,
 	/obj/item/uv_light
 	)

@@ -366,7 +366,7 @@
 			/obj/item/folder/blue,
 			/obj/item/storage/belt/detective,
 			/obj/item/clothing/gloves/black,
-			/obj/item/taperecorder,
+			/obj/item/tape_recorder,
 			/obj/item/mass_spectrometer,
 			/obj/item/camera_film = 2,
 			/obj/item/storage/photo_album,

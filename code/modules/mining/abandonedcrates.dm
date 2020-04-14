@@ -30,7 +30,7 @@
 			new/obj/item/flame/lighter/zippo(src)
 		if(6 to 10)
 			new/obj/item/pickaxe/drill(src)
-			new/obj/item/taperecorder(src)
+			new/obj/item/tape_recorder(src)
 			new/obj/item/clothing/suit/space(src)
 			new/obj/item/clothing/head/helmet/space(src)
 		if(11 to 15)
