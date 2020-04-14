@@ -17,7 +17,6 @@
 	C.toggle_throw_mode()
 	return TRUE
 
-
 /datum/keybinding/carbon/select_help_intent
 	hotkey_keys = list("1")
 	name = "select_help_intent"
@@ -28,7 +27,6 @@
 /datum/keybinding/carbon/select_help_intent/down(client/user)
 	user.mob?.a_intent_change(INTENT_HELP)
 	return TRUE
-
 
 /datum/keybinding/carbon/select_disarm_intent
 	hotkey_keys = list("2")
@@ -41,7 +39,6 @@
 	user.mob?.a_intent_change(INTENT_DISARM)
 	return TRUE
 
-
 /datum/keybinding/carbon/select_grab_intent
 	hotkey_keys = list("3")
 	name = "select_grab_intent"
@@ -52,7 +49,6 @@
 /datum/keybinding/carbon/select_grab_intent/down(client/user)
 	user.mob?.a_intent_change(INTENT_GRAB)
 	return TRUE
-
 
 /datum/keybinding/carbon/select_harm_intent
 	hotkey_keys = list("4")

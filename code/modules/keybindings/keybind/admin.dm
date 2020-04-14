@@ -6,7 +6,7 @@
 	return user.holder ? TRUE : FALSE
 
 /datum/keybinding/admin/admin_say
-	hotkey_keys = list("F3")
+	hotkey_keys = list("Unbound")
 	name = "admin_say"
 	full_name = "Admin say"
 	description = "Talk with other admins."
@@ -16,7 +16,7 @@
 	return TRUE
 
 /datum/keybinding/admin/admin_ghost
-	hotkey_keys = list("F5")
+	hotkey_keys = list("Unbound")
 	name = "admin_ghost"
 	full_name = "Aghost"
 	description = "Go ghost"
@@ -26,7 +26,7 @@
 	return TRUE
 
 /datum/keybinding/admin/player_panel_new
-	hotkey_keys = list("F6")
+	hotkey_keys = list("Unbound")
 	name = "player_panel_new"
 	full_name = "Player Panel New"
 	description = "Opens up the new player panel"
@@ -36,7 +36,7 @@
 	return TRUE
 
 /datum/keybinding/admin/toggle_buildmode_self
-	hotkey_keys = list("F7")
+	hotkey_keys = list("Unbound")
 	name = "toggle_buildmode_self"
 	full_name = "Toggle Buildmode Self"
 	description = "Toggles buildmode"
@@ -46,7 +46,7 @@
 	return TRUE
 
 /datum/keybinding/admin/stealthmode
-	hotkey_keys = list("CtrlF8")
+	hotkey_keys = list("Unbound")
 	name = "stealth_mode"
 	full_name = "Stealth mode"
 	description = "Enters stealth mode"
@@ -56,7 +56,7 @@
 	return TRUE
 
 /datum/keybinding/admin/invisimin
-	hotkey_keys = list("F8")
+	hotkey_keys = list("Unbound")
 	name = "invisimin"
 	full_name = "Admin invisibility"
 	description = "Toggles ghost-like invisibility (Don't abuse this)"
@@ -66,7 +66,7 @@
 	return TRUE
 
 /datum/keybinding/admin/deadsay
-	hotkey_keys = list("F10")
+	hotkey_keys = list("Unbound")
 	name = "dsay"
 	full_name = "deadsay"
 	description = "Allows you to send a message to dead chat"

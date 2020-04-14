@@ -1,3 +1,4 @@
+/*
 /datum/keybinding/emote
 	category = CATEGORY_EMOTE
 	weight = WEIGHT_EMOTE
@@ -13,3 +14,6 @@
 /datum/keybinding/emote/down(client/user)
 	. = ..()
 	return user.mob.emote(emote_key, intentional=TRUE)
+*/
+
+// THIS FILE DISABLED UNTIL DATUM EMOTES.
