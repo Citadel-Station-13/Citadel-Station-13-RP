@@ -496,7 +496,7 @@
 /area/submap/cave/qShuttle)
 "bn" = (
 /obj/structure/table/standard,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /turf/simulated/shuttle/floor,
 /area/submap/cave/qShuttle)
 "bo" = (
