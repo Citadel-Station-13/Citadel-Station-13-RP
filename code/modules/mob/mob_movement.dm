@@ -164,6 +164,18 @@
 
 	if(!mob.Process_Spacemove(direct))
 		return FALSE
+
+// shitcode, rip out when possible
+/*
+	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
+		if(!mob.Process_Spacemove(0))	return 0
+*/
+
+	if(!mob.lastarea)
+		mob.lastarea = get_area(mob.loc)
+// end
+
+/*
 	//We are now going to move
 	var/add_delay = mob.cached_multiplicative_slowdown
 	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
@@ -184,153 +196,150 @@
 			n = get_step(L, direct)
 
 	. = ..()
+*/
+
+// no instead we're using polariscode
+	// added code
+	var/move_delay_add_grab = 0
+	var/add_delay = mob.movement_delay(n, direct)
+	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
+		move_delay = old_move_delay
+	else
+		move_delay = world.time
+	//
+
+	if(mob.restrained())//Why being pulled while cuffed prevents you from moving
+		for(var/mob/M in range(mob, 1))
+			if(M.pulling == mob)
+				if(!M.restrained() && M.stat == 0 && M.canmove && mob.Adjacent(M))
+					to_chat(src, "<font color='blue'>You're restrained! You can't move!</font>")
+					return 0
+				else
+					M.stop_pulling()
+
+	if(mob.pinned.len)
+		to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
+		return 0
+
+	switch(mob.m_intent)
+		if("run")
+			if(mob.drowsyness > 0)
+				mob.move_delay += 6
+			mob.move_delay += config_legacy.run_speed
+		if("walk")
+			mob.move_delay += config_legacy.walk_speed
+	mob.move_delay += mob.movement_delay(n, direct)
+
+	if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.
+		//manually set move_delay for vehicles so we don't inherit any mob movement penalties
+		//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
+		mob.move_delay = world.time
+		//drunk driving
+		if(mob.confused && prob(20)) //vehicles tend to keep moving in the same direction
+			direct = turn(direct, pick(90, -90))
+		return mob.buckled.relaymove(mob,direct)
+
+	if(istype(mob.machine, /obj/machinery))
+		if(mob.machine.relaymove(mob,direct))
+			return
+
+	if(mob.pulledby || mob.buckled) // Wheelchair driving!
+		if(istype(mob.loc, /turf/space))
+			return // No wheelchair driving in space
+		if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
+			return mob.pulledby.relaymove(mob, direct)
+		else if(istype(mob.buckled, /obj/structure/bed/chair/wheelchair))
+			if(ishuman(mob))
+				var/mob/living/carbon/human/driver = mob
+				var/obj/item/organ/external/l_hand = driver.get_organ("l_hand")
+				var/obj/item/organ/external/r_hand = driver.get_organ("r_hand")
+				if((!l_hand || l_hand.is_stump()) && (!r_hand || r_hand.is_stump()))
+					return // No hands to drive your chair? Tough luck!
+			//drunk wheelchair driving
+			else if(mob.confused)
+				switch(mob.m_intent)
+					if("run")
+						if(prob(50))	direct = turn(direct, pick(90, -90))
+					if("walk")
+						if(prob(25))	direct = turn(direct, pick(90, -90))
+			mob.move_delay += 2
+			return mob.buckled.relaymove(mob,direct)
+
+	//We are now going to move
+	//Something with pulling things
+	if(locate(/obj/item/grab, mob))
+		mob.move_delay = max(mob.move_delay, world.time + 7)
+		var/list/L = mob.ret_grab()
+		if(istype(L, /list))
+			if(L.len == 2)
+				L -= mob
+				var/mob/M = L[1]
+				if(M)
+					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
+						var/turf/T = mob.loc
+						. = ..()
+						if (isturf(M.loc))
+							var/diag = get_dir(mob, M)
+							if ((diag - 1) & diag)
+							else
+								diag = null
+							if ((get_dist(mob, M) > 1 || diag))
+								step(M, get_dir(M.loc, T))
+			else
+				for(var/mob/M in L)
+					M.other_mobs = 1
+					if(mob != M)
+						M.animate_movement = 3
+				for(var/mob/M in L)
+					spawn( 0 )
+						step(M, direct)
+						return
+					spawn( 1 )
+						M.other_mobs = null
+						M.animate_movement = 2
+						return
+
+	else
+		if(mob.confused)
+			switch(mob.m_intent)
+				if("run")
+					if(prob(75))
+						direct = turn(direct, pick(90, -90))
+						n = get_step(mob, direct)
+				if("walk")
+					if(prob(25))
+						direct = turn(direct, pick(90, -90))
+						n = get_step(mob, direct)
+		. = mob.SelfMove(n, direct)
+
+	for (var/obj/item/grab/G in mob)
+		if (G.state == GRAB_NECK)
+			mob.setDir(reverse_dir[direct])
+		G.adjust_position()
+	for (var/obj/item/grab/G in mob.grabbed_by)
+		G.adjust_position()
+
+//////////////////////end
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= 2
 	move_delay += add_delay
 	if(.) // If mob is null here, we deserve the runtime
+
+/*
 		if(mob.throwing)
 			mob.throwing.finalize(FALSE)
+*/
 
+/*
 	var/atom/movable/P = mob.pulling
 	if(P && !ismob(P) && P.density)
 		mob.setDir(turn(mob.dir, 180))
+*/
 
 /client/Move(n, direct)
 
 
-
-	if(!mob.lastarea)
-		mob.lastarea = get_area(mob.loc)
-
-	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
-		if(!mob.Process_Spacemove(0))	return 0
-
-	if(isobj(mob.loc) || ismob(mob.loc))//Inside an object, tell it we moved
-		var/atom/O = mob.loc
-		return O.relaymove(mob, direct)
-
-	if(isturf(mob.loc))
-
-		if(mob.restrained())//Why being pulled while cuffed prevents you from moving
-			for(var/mob/M in range(mob, 1))
-				if(M.pulling == mob)
-					if(!M.restrained() && M.stat == 0 && M.canmove && mob.Adjacent(M))
-						to_chat(src, "<font color='blue'>You're restrained! You can't move!</font>")
-						return 0
-					else
-						M.stop_pulling()
-
-		if(mob.pinned.len)
-			to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
-			return 0
-
-		mob.move_delay = world.time//set move delay
-
-		switch(mob.m_intent)
-			if("run")
-				if(mob.drowsyness > 0)
-					mob.move_delay += 6
-				mob.move_delay += config_legacy.run_speed
-			if("walk")
-				mob.move_delay += config_legacy.walk_speed
-		mob.move_delay += mob.movement_delay(n, direct)
-
-		if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.
-			//manually set move_delay for vehicles so we don't inherit any mob movement penalties
-			//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
-			mob.move_delay = world.time
-			//drunk driving
-			if(mob.confused && prob(20)) //vehicles tend to keep moving in the same direction
-				direct = turn(direct, pick(90, -90))
-			return mob.buckled.relaymove(mob,direct)
-
-		if(istype(mob.machine, /obj/machinery))
-			if(mob.machine.relaymove(mob,direct))
-				return
-
-		if(mob.pulledby || mob.buckled) // Wheelchair driving!
-			if(istype(mob.loc, /turf/space))
-				return // No wheelchair driving in space
-			if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
-				return mob.pulledby.relaymove(mob, direct)
-			else if(istype(mob.buckled, /obj/structure/bed/chair/wheelchair))
-				if(ishuman(mob))
-					var/mob/living/carbon/human/driver = mob
-					var/obj/item/organ/external/l_hand = driver.get_organ("l_hand")
-					var/obj/item/organ/external/r_hand = driver.get_organ("r_hand")
-					if((!l_hand || l_hand.is_stump()) && (!r_hand || r_hand.is_stump()))
-						return // No hands to drive your chair? Tough luck!
-				//drunk wheelchair driving
-				else if(mob.confused)
-					switch(mob.m_intent)
-						if("run")
-							if(prob(50))	direct = turn(direct, pick(90, -90))
-						if("walk")
-							if(prob(25))	direct = turn(direct, pick(90, -90))
-				mob.move_delay += 2
-				return mob.buckled.relaymove(mob,direct)
-
-		//We are now going to move
-		moving = 1
-		//Something with pulling things
-		if(locate(/obj/item/grab, mob))
-			mob.move_delay = max(mob.move_delay, world.time + 7)
-			var/list/L = mob.ret_grab()
-			if(istype(L, /list))
-				if(L.len == 2)
-					L -= mob
-					var/mob/M = L[1]
-					if(M)
-						if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
-							var/turf/T = mob.loc
-							. = ..()
-							if (isturf(M.loc))
-								var/diag = get_dir(mob, M)
-								if ((diag - 1) & diag)
-								else
-									diag = null
-								if ((get_dist(mob, M) > 1 || diag))
-									step(M, get_dir(M.loc, T))
-				else
-					for(var/mob/M in L)
-						M.other_mobs = 1
-						if(mob != M)
-							M.animate_movement = 3
-					for(var/mob/M in L)
-						spawn( 0 )
-							step(M, direct)
-							return
-						spawn( 1 )
-							M.other_mobs = null
-							M.animate_movement = 2
-							return
-
-		else
-			if(mob.confused)
-				switch(mob.m_intent)
-					if("run")
-						if(prob(75))
-							direct = turn(direct, pick(90, -90))
-							n = get_step(mob, direct)
-					if("walk")
-						if(prob(25))
-							direct = turn(direct, pick(90, -90))
-							n = get_step(mob, direct)
-			. = mob.SelfMove(n, direct)
-
-		for (var/obj/item/grab/G in mob)
-			if (G.state == GRAB_NECK)
-				mob.setDir(reverse_dir[direct])
-			G.adjust_position()
-		for (var/obj/item/grab/G in mob.grabbed_by)
-			G.adjust_position()
-
-		moving = 0
-
-		return .
-
-	return
 
 /mob/proc/SelfMove(turf/n, direct)
 	return Move(n, direct)
@@ -415,12 +424,6 @@
 ///For moving in space
 ///Return 1 for movement 0 for none
 /mob/proc/Process_Spacemove(var/check_drift = 0)
-
-	//VOREStation Edit begin: SHADEKIN
-	if(shadekin_phasing_check())
-		return
-	//VOREStation Edit end: SHADEKIN
-
 	if(!Check_Dense_Object()) //Nothing to push off of so end here
 		update_floating(0)
 		return 0
@@ -430,13 +433,6 @@
 	if(restrained()) //Check to see if we can do things
 		return 0
 
-	//Check to see if we slipped
-	if(prob(Process_Spaceslipping(5)) && !buckled)
-		to_chat(src, "<font color='blue'><B>You slipped!</B></font>")
-		src.inertia_dir = src.last_move
-		step(src, src.inertia_dir)
-		return 0
-	//If not then we can reset inertia and move
 	inertia_dir = 0
 	return 1
 
