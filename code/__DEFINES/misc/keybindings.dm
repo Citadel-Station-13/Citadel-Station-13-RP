@@ -4,3 +4,7 @@
 #define MAX_KEYPRESS_AUTOKICK 100
 /// Length of max held keys
 #define MAX_HELD_KEYS 15
+/// Maximum keys per keybind
+#define MAX_KEYS_PER_KEYBIND 3
+/// Maximum keys that can be bound to one button
+#define MAX_COMMANDS_PER_KEY 5

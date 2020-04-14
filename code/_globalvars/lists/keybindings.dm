@@ -22,6 +22,7 @@
 			LAZYADD(GLOB.hotkey_keybinding_list_by_key[bound_key], list(instance.name))
 
 /proc/init_emote_keybinds()
+/*		// FOR WHEN DATUM EMOTES ARE OUT.
 	for(var/i in subtypesof(/datum/emote))
 		var/datum/emote/faketype = i
 		if(!initial(faketype.key))
@@ -29,3 +30,4 @@
 		var/datum/keybinding/emote/emote_kb = new
 		emote_kb.link_to_emote(faketype)
 		add_keybinding(emote_kb)
+*/

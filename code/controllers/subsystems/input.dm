@@ -11,8 +11,6 @@ SUBSYSTEM_DEF(input)
 /datum/controller/subsystem/input/Initialize()
 	setup_default_macro_sets()
 
-	initialized = TRUE
-
 	refresh_client_macro_sets()
 
 	return ..()

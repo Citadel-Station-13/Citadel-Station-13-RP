@@ -6,7 +6,7 @@
 
 //Used in savefile update from 11, can be removed once that is no longer relevant.
 /datum/preferences/proc/force_reset_keybindings()
-	var/choice = tgalert(parent.mob, "Your basic keybindings need to be reset, emotes will remain as before. Would you prefer 'hotkey' or 'classic' mode?", "Reset keybindings", "Hotkey", "Classic")
+	var/choice = tgalert(client.mob, "Your basic keybindings need to be reset, emotes will remain as before. Would you prefer 'hotkey' or 'classic' mode?", "Reset keybindings", "Hotkey", "Classic")
 	hotkeys = (choice != "Classic")
 	var/list/oldkeys = key_bindings
 	key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
@@ -14,9 +14,9 @@
 	for(var/key in oldkeys)
 		if(!key_bindings[key])
 			key_bindings[key] = oldkeys[key]
-	parent.update_movement_keys()
+	client.update_movement_keys()
 
-/dtaum/category_item/player_setup_item/keybinding/hotkey_mode
+/datum/category_item/player_setup_item/keybinding/hotkey_mode
 	name = "Hotkey Mode"
 	sort_order = 1
 
@@ -108,15 +108,14 @@
 			if("keybindings_capture")
 				var/datum/keybinding/kb = GLOB.keybindings_by_name[href_list["keybinding"]]
 				var/old_key = href_list["old_key"]
-				CaptureKeybinding(user, kb, old_key)
+				pref.CaptureKeybinding(user, kb, old_key)
 				return
 
 			if("keybindings_set")
 				var/kb_name = href_list["keybinding"]
 				if(!kb_name)
 					user << browse(null, "window=capturekeypress")
-					ShowChoices(user)
-					return
+					return TOPIC_REFRESH
 
 				var/clear_key = text2num(href_list["clear_key"])
 				var/old_key = href_list["old_key"]
@@ -127,8 +126,7 @@
 							key_bindings -= old_key
 					user << browse(null, "window=capturekeypress")
 					save_preferences()
-					ShowChoices(user)
-					return
+					return TOPIC_REFRESH
 
 				var/new_key = uppertext(href_list["key"])
 				var/AltMod = text2num(href_list["alt"]) ? "Alt" : ""
@@ -164,10 +162,9 @@
 			if("keybindings_reset")
 				var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
 				if(choice == "Cancel")
-					ShowChoices(user)
-					return
-				hotkeys = (choice == "Hotkey")
-				key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+					return TOPIC_REFRESH
+				pref.hotkeys = (choice == "Hotkey")
+				key_bindings = (pref.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
 				user.client.update_movement_keys()
 		return TOPIC_REFRESH
 	return ..()
