@@ -143,13 +143,8 @@
 	if(!istype(player))
 		message_admins("[uppertext(SSticker.mode.name)]: Failed to find a candidate for [role_text].")
 		return 0
-<<<<<<< HEAD
 	to_chat(player.current, "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>")
-	message_admins("[uppertext(ticker.mode.name)]: Selected [player] as a [role_text].")
-=======
-	player.current << "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>"
 	message_admins("[uppertext(SSticker.mode.name)]: Selected [player] as a [role_text].")
->>>>>>> citrp/master
 	if(istype(player.current, /mob/observer/dead))
 		create_default(player.current)
 	else

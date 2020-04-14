@@ -491,11 +491,7 @@
 		if(SSticker)
 			SSticker.minds += mind
 		else
-<<<<<<< HEAD
 			log_world("## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn")
-=======
-			world.log << "## DEBUG: mind_initialize(): No SSticker ready yet! Please inform Carn"
->>>>>>> citrp/master
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src

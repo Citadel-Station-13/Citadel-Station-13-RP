@@ -1364,13 +1364,8 @@ var/datum/announcement/minor/admin_min_announcer = new
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-<<<<<<< HEAD
-	if(!ticker || !ticker.mode)
-		to_chat(usr, "Mode has not started.")
-=======
 	if(!SSticker || !SSticker.mode)
-		usr << "Mode has not started."
->>>>>>> citrp/master
+		to_chat(usr, "Mode has not started.")
 		return
 
 	var/antag_type = input("Choose a template.","Force Latespawn") as null|anything in all_antag_types
@@ -1393,13 +1388,8 @@ var/datum/announcement/minor/admin_min_announcer = new
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-<<<<<<< HEAD
-	if(!ticker || !ticker.mode)
-		to_chat(usr, "Mode has not started.")
-=======
 	if(!SSticker || !SSticker.mode)
-		usr << "Mode has not started."
->>>>>>> citrp/master
+		to_chat(usr, "Mode has not started.")
 		return
 
 	log_and_message_admins("attempting to force mode autospawn.")

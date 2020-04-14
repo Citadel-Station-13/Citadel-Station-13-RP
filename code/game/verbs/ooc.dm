@@ -4,11 +4,7 @@
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-<<<<<<< HEAD
-		to_chat(usr, "<span class='warning'>Speech is currently admin-disabled.</span>")
-=======
 		to_chat(src, "<span class='warning'>Speech is currently admin-disabled.</span>")
->>>>>>> citrp/master
 		return
 
 	if(!mob)
@@ -29,11 +25,7 @@
 			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-<<<<<<< HEAD
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
-=======
 			to_chat(src, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
->>>>>>> citrp/master
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
@@ -83,11 +75,7 @@
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-<<<<<<< HEAD
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-=======
 		to_chat(src, "<span class='danger'>Speech is currently admin-disabled.</span>")
->>>>>>> citrp/master
 		return
 
 	if(!mob)
@@ -110,11 +98,7 @@
 			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-<<<<<<< HEAD
 			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
-=======
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")	
->>>>>>> citrp/master
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")

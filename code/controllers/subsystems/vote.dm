@@ -217,13 +217,8 @@ SUBSYSTEM_DEF(vote)
 					if(get_security_level() == "red" || get_security_level() == "delta")
 						to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
 						return 0
-<<<<<<< HEAD
-					if(ticker.current_state <= GAME_STATE_SETTING_UP)
-						to_chat(initiator_key, "The crew transfer button has been disabled!")
-=======
 					if(SSticker.current_state <= GAME_STATE_SETTING_UP)
-						initiator_key << "The crew transfer button has been disabled!"
->>>>>>> citrp/master
+						to_chat(initiator_key, "The crew transfer button has been disabled!")
 						return 0
 				question = "Your PDA beeps with a message from Central. Would you like an additional hour to finish ongoing projects?" //VOREStation Edit
 				choices.Add("Initiate Crew Transfer", "Extend the Shift")  //VOREStation Edit

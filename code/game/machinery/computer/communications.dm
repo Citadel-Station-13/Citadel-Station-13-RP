@@ -445,42 +445,24 @@
 		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return
 
-<<<<<<< HEAD
-	if(emergency_shuttle.deny_shuttle)
-		to_chat(user, "The emergency shuttle may not be sent at this time. Please try again later.")
-=======
 	if(SSemergencyshuttle.deny_shuttle)
-		user << "The emergency shuttle may not be sent at this time. Please try again later."
->>>>>>> citrp/master
+		to_chat(user, "The emergency shuttle may not be sent at this time. Please try again later.")
 		return
 
 	if(world.time < 6000) // Ten minute grace period to let the game get going without lolmetagaming. -- TLE
 		to_chat(user, "The emergency shuttle is refueling. Please wait another [round((6000-world.time)/600)] minute\s before trying again.")
 		return
 
-<<<<<<< HEAD
-	if(emergency_shuttle.going_to_centcom())
+	if(SSemergencyshuttle.going_to_centcom())
 		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
 		return
 
-	if(emergency_shuttle.online())
+	if(SSemergencyshuttle.online())
 		to_chat(user, "The emergency shuttle is already on its way.")
 		return
 
-	if(ticker.mode.name == "blob")
-		to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
-=======
-	if(SSemergencyshuttle.going_to_centcom())
-		user << "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short]."
-		return
-
-	if(SSemergencyshuttle.online())
-		user << "The emergency shuttle is already on its way."
-		return
-
 	if(SSticker.mode.name == "blob")
-		user << "Under directive 7-10, [station_name()] is quarantined until further notice."
->>>>>>> citrp/master
+		to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
 		return
 
 	SSemergencyshuttle.call_evac()
@@ -495,32 +477,18 @@
 	if ((!( SSticker ) || !SSemergencyshuttle.location()))
 		return
 
-<<<<<<< HEAD
-	if(emergency_shuttle.going_to_centcom())
+	if(SSemergencyshuttle.going_to_centcom())
 		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
 		return
 
-	if(emergency_shuttle.online())
-		to_chat(user, "The shuttle is already on its way.")
-=======
-	if(SSemergencyshuttle.going_to_centcom())
-		user << "The shuttle may not be called while returning to [GLOB.using_map.boss_short]."
-		return
-
 	if(SSemergencyshuttle.online())
-		user << "The shuttle is already on its way."
->>>>>>> citrp/master
+		to_chat(user, "The shuttle is already on its way.")
 		return
 
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
-<<<<<<< HEAD
-		if(emergency_shuttle.deny_shuttle)
-			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
-=======
 		if(SSemergencyshuttle.deny_shuttle)
-			user << "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later."
->>>>>>> citrp/master
+			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
 		if(deathsquad.deployed == 1)
@@ -535,13 +503,8 @@
 			//New version pretends to call the shuttle but cause the shuttle to return after a random duration.
 			SSemergencyshuttle.auto_recall = 1
 
-<<<<<<< HEAD
-		if(ticker.mode.name == "blob" || ticker.mode.name == "epidemic")
-			to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
-=======
 		if(SSticker.mode.name == "blob" || SSticker.mode.name == "epidemic")
-			user << "Under directive 7-10, [station_name()] is quarantined until further notice."
->>>>>>> citrp/master
+			to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
 			return
 
 	SSemergencyshuttle.call_transfer()

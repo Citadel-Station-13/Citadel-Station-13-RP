@@ -192,13 +192,8 @@
 
 
 /obj/machinery/computer/supplycomp/Topic(href, href_list)
-<<<<<<< HEAD
-	if(!supply_controller)
-		log_world("## ERROR: The supply_controller datum is missing.")
-=======
 	if(!SSsupply)
-		world.log << "## ERROR: The SSsupply datum is missing."
->>>>>>> citrp/master
+		log_world("## ERROR: The supply_controller datum is missing.")
 		return
 	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
 	if (!shuttle)

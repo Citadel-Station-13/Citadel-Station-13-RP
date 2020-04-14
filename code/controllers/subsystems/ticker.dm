@@ -384,13 +384,8 @@ SUBSYSTEM_DEF(ticker)
 
 	return 1
 
-<<<<<<< HEAD:code/game/gamemodes/gameticker.dm
-/datum/controller/gameticker/proc/declare_completion()
-	to_chat(world, "<br><br><br><H1>A round of [mode.name] has ended!</H1>")
-=======
 /datum/controller/subsystem/ticker/proc/declare_completion()
-	world << "<br><br><br><H1>A round of [mode.name] has ended!</H1>"
->>>>>>> citrp/master:code/controllers/subsystems/ticker.dm
+	to_chat(world, "<br><br><br><H1>A round of [mode.name] has ended!</H1>")
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)

@@ -42,13 +42,8 @@
 					else
 						message_admins("[key_name_admin(user)] has launched the shuttle")
 						log_game("[user.ckey] has launched the shuttle early")
-<<<<<<< HEAD
 						to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
-						emergency_shuttle.set_launch_countdown(10)
-=======
-						world << "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>"
 						SSemergencyshuttle.set_launch_countdown(10)
->>>>>>> citrp/master
 						//src.authorized = null
 						qdel(src.authorized)
 						src.authorized = list(  )
@@ -68,13 +63,8 @@
 			if(!emagged && !SSemergencyshuttle.location() && user.get_active_hand() == W)
 				switch(choice)
 					if("Launch")
-<<<<<<< HEAD
 						to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
-						emergency_shuttle.set_launch_countdown(10)
-=======
-						world << "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>"
 						SSemergencyshuttle.set_launch_countdown(10)
->>>>>>> citrp/master
 						emagged = 1
 					if("Cancel")
 						return

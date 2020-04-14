@@ -15,19 +15,11 @@ var/silent_ert = 0
 	if(!holder)
 		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
 		return
-<<<<<<< HEAD
-	if(!ticker)
+	if(!SSticker)
 		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
 		return
-	if(ticker.current_state == 1)
-		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
-=======
-	if(!SSticker)
-		usr << "<span class='danger'>The game hasn't started yet!</span>"
-		return
 	if(SSticker.current_state == 1)
-		usr << "<span class='danger'>The round hasn't started yet!</span>"
->>>>>>> citrp/master
+		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
 	if(send_emergency_team)
 		to_chat(usr, "<span class='danger'>[GLOB.using_map.boss_name] has already dispatched an emergency response team!</span>")

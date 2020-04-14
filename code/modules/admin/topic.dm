@@ -376,13 +376,8 @@
 		if(!M.ckey)	//sanity
 			to_chat(usr, "This mob has no ckey")
 			return
-<<<<<<< HEAD
-		if(!job_master)
-			to_chat(usr, "Job Master has not been setup!")
-=======
 		if(!SSjobs)
-			usr << "Job Master has not been setup!"
->>>>>>> citrp/master
+			to_chat(usr, "Job Master has not been setup!")
 			return
 
 		var/dat = ""
@@ -653,13 +648,8 @@
 				alert("You cannot perform this action. You must be of a higher administrative rank!")
 				return
 
-<<<<<<< HEAD
-		if(!job_master)
-			to_chat(usr, "Job Master has not been setup!")
-=======
 		if(!SSjobs)
-			usr << "Job Master has not been setup!"
->>>>>>> citrp/master
+			to_chat(usr, "Job Master has not been setup!")
 			return
 
 		//get jobs for department if specified, otherwise just returnt he one job in a list.

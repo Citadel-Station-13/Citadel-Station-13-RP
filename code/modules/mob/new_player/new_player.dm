@@ -153,13 +153,8 @@
 
 	if(href_list["late_join"])
 
-<<<<<<< HEAD
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
-=======
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-			usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
->>>>>>> citrp/master
+			to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 /*
 		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0)) //VORESTATION EDITS: THE COMMENTED OUT AREAS FROM LINE 154 TO 178
@@ -187,13 +182,8 @@
 		if(!config_legacy.enter_allowed)
 			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
-<<<<<<< HEAD
-		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
-=======
 		else if(SSticker && SSticker.mode && SSticker.mode.explosion_in_progress)
-			usr << "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>"
->>>>>>> citrp/master
+			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
 			return
 /*
 		if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
@@ -348,13 +338,8 @@
 /mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return 0
-<<<<<<< HEAD
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
-=======
 	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-		usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
->>>>>>> citrp/master
+		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
