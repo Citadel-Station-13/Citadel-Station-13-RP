@@ -80,7 +80,7 @@
 			var/datum/keybinding/kb = i
 			if(!length(user_binds[kb.name]))
 				. += "<label>[kb.full_name]</label> <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>Unbound</a>"
-				var/list/default_keys = hotkeys ? kb.hotkey_keys : kb.classic_keys
+				var/list/default_keys = pref.hotkeys ? kb.hotkey_keys : kb.classic_keys
 				if(LAZYLEN(default_keys))
 					. += "| Default: [default_keys.Join(", ")]"
 				. += "<br>"
@@ -92,7 +92,7 @@
 					. += " | <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
 				if(length(user_binds[kb.name]) < MAX_KEYS_PER_KEYBIND)
 					. += "| <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name]'>Add Secondary</a>"
-				var/list/default_keys = hotkeys ? kb.classic_keys : kb.hotkey_keys
+				var/list/default_keys = pref.hotkeys ? kb.classic_keys : kb.hotkey_keys
 				if(LAZYLEN(default_keys))
 					. += "| Default: [default_keys.Join(", ")]"
 				. += "<br>"

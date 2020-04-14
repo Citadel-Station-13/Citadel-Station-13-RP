@@ -122,27 +122,10 @@
 	else
 		WARNING("Browser [title] tried to close with a null ID")
 
-// This will allow you to show an icon in the browse window
-// This is added to mob so that it can be used without a reference to the browser object
-// There is probably a better place for this...
-/mob/proc/browse_rsc_icon(icon, icon_state, dir = -1)
-	/*
-	var/icon/I
-	if (dir >= 0)
-		I = new /icon(icon, icon_state, dir)
-	else
-		I = new /icon(icon, icon_state)
-		dir = "default"
-
-	var/filename = "[ckey("[icon]_[icon_state]_[dir]")].png"
-	src << browse_rsc(I, filename)
-	return filename
-	*/
 
 
 
-
-/*
+/* asset cache will make this better (replace it with the commented block)
 
 /datum/browser/proc/add_stylesheet(name, file)
 	if (istype(name, /datum/asset/spritesheet))
@@ -184,14 +167,6 @@
 			[title ? "<div class='uiTitleWrapper'><div [title_attributes]><tt>[title]</tt></div></div>" : ""]
 			<div class='uiContent'>
 	"}
-//" This is here because else the rest of the file looks like a string in notepad++.
-/datum/browser/proc/get_footer()
-	return {"
-			</div>
-		</div>
-	</body>
-</html>"}
-
 
 /datum/browser/proc/open(use_onclose = TRUE)
 	if(isnull(window_id))	//null check because this can potentially nuke goonchat
