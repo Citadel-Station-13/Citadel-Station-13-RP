@@ -90,7 +90,7 @@ var/datum/controller/rogue/rm_controller = new()
 /datum/controller/rogue/proc/dbg(var/message)
 	ASSERT(message) //I want a stack trace if there's no message
 	if(debugging)
-		world.log << "[message]"
+		to_chat(world.log, "[message]")
 
 /datum/controller/rogue/proc/adjust_difficulty(var/amt)
 	ASSERT(amt)

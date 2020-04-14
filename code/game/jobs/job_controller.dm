@@ -18,7 +18,7 @@ var/global/datum/controller/occupations/job_master
 		//var/list/all_jobs = typesof(/datum/job)
 		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
 		if(!all_jobs.len)
-			world << "<span class='warning'>Error setting up jobs, no job datums found!</span>"
+			to_chat(world, "<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
 		for(var/J in all_jobs)
 			var/datum/job/job = new J()
@@ -387,7 +387,7 @@ var/global/datum/controller/occupations/job_master
 							permitted = 0
 
 						if(!permitted)
-							H << "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>"
+							to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
 							continue
 
 						if(G.slot == "implant")
@@ -403,7 +403,7 @@ var/global/datum/controller/occupations/job_master
 							if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 								custom_equip_leftovers += thing
 							else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-								H << "<span class='notice'>Equipping you with \the [thing]!</span>"
+								to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
 								custom_equip_slots.Add(G.slot)
 							else
 								custom_equip_leftovers.Add(thing)
@@ -426,12 +426,12 @@ var/global/datum/controller/occupations/job_master
 				else
 					var/metadata = H.client.prefs.gear[G.display_name]
 					if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-						H << "<span class='notice'>Equipping you with \the [thing]!</span>"
+						to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
 						custom_equip_slots.Add(G.slot)
 					else
 						spawn_in_storage += thing
 		else
-			H << "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator."
+			to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
 		H.job = rank
 		log_game("JOINED [key_name(H)] as \"[rank]\"")
@@ -475,26 +475,26 @@ var/global/datum/controller/occupations/job_master
 						var/datum/gear/G = gear_datums[thing]
 						var/obj/item/I = G.spawn_item(H, H.client.prefs.gear[G.display_name]) //Create the item...
 						if(B.can_be_inserted(I, 1)) //Try putting it in their backpack.
-							H << "<span class='notice'>Placing \the [I] in your [B.name]!</span>"
+							to_chat(H, "<span class='notice'>Placing \the [I] in your [B.name]!</span>")
 							I.forceMove(B)
 							continue
 						if(H.equip_to_appropriate_slot(I)) //Other slots?
-							H << "<span class='notice'>Equipping you with \the [I]!</span>"
+							to_chat(H, "<span class='notice'>Equipping you with \the [I]!</span>")
 							continue
 						if(H.put_in_hands(I)) //Well, hands?
-							H << "<span class='notice'>Placing \the [I] in your hand!</span>"
+							to_chat(H, "<span class='notice'>Placing \the [I] in your hand!</span>")
 							continue
 						//Throw a tantrum, having exhausted all other options.
-						H << "<span class='danger'>Inventory space exhausted. Putting \the [I] on the ground!</span>"
+						to_chat(H, "<span class='danger'>Inventory space exhausted. Putting \the [I] on the ground!</span>")
 						I.forceMove(get_turf(H))
 
 				else
-					H << "<span class='warning'>Failed to locate storage on your mob. Please report this at our Github. Dumping your loadout at your feet...</span>"
+					to_chat(H, "<span class='warning'>Failed to locate storage on your mob. Please report this at our Github. Dumping your loadout at your feet...</span>")
 					for(var/thing in spawn_in_storage)
 						var/datum/gear/G = gear_datums[thing]
 						var/obj/item/I = G.spawn_item(H, H.client.prefs.gear[G.display_name])
 						I.forceMove(get_turf(H))
-						H << "<span class='notice'>Putting \the [I] on the ground!</span>"
+						to_chat(H, "<span class='notice'>Putting \the [I] on the ground!</span>")
 
 
 		if(istype(H)) //give humans wheelchairs, if they need them.
@@ -517,15 +517,15 @@ var/global/datum/controller/occupations/job_master
 		H << "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>"
 
 		if(job.supervisors)
-			H << "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>"
+			to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 
 		if(job.idtype)
 			spawnId(H, rank, alt_title)
 			H.equip_to_slot_or_del(new /obj/item/radio/headset(H), slot_l_ear)
-			H << "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>"
+			to_chat(H, "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>")
 
 		if(job.req_admin_notify)
-			H << "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>"
+			to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
 
 		// EMAIL GENERATION
 		// Email addresses will be created under this domain name. Mostly for the looks.

@@ -17,7 +17,7 @@
 	else if(!istype(O,/obj/item/virusdish)) return
 
 	if(dish)
-		user << "\The [src] is already loaded."
+		to_chat(user, "\The [src] is already loaded.")
 		return
 
 	dish = O

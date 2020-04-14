@@ -93,7 +93,7 @@
 		if(choice == "Yes")
 			for(var/mob/living/L in controlled_mobs)
 				deselect(L)
-			user << "<span class='notice'>You've released control of all entities you had in control.</span>"
+			to_chat(user, "<span class='notice'>You've released control of all entities you had in control.</span>")
 
 
 /obj/item/spell/control/on_ranged_cast(atom/hit_atom, mob/living/user)
@@ -107,21 +107,21 @@
 		if(L.mob_class & allowed_mob_classes)
 			if(!(L in controlled_mobs)) //Selecting
 				if(L.client)
-					user << "<span class='danger'>\The [L] seems to resist you!</span>"
+					to_chat(user, "<span class='danger'>\The [L] seems to resist you!</span>")
 					return 0
 				if(!L.has_AI())
 					to_chat(user, span("warning", "\The [L] seems too dim for this to work on them."))
 					return FALSE
 				if(pay_energy(500))
 					select(L)
-					user << "<span class='notice'>\The [L] is now under your (limited) control.</span>"
+					to_chat(user, "<span class='notice'>\The [L] is now under your (limited) control.</span>")
 			else //Deselect them
 				deselect(L)
-				user << "<span class='notice'>You free \the [L] from your grasp.</span>"
+				to_chat(user, "<span class='notice'>You free \the [L] from your grasp.</span>")
 
 		else //Let's attack
 			if(!controlled_mobs.len)
-				user << "<span class='warning'>You have no entities under your control to command.</span>"
+				to_chat(user, "<span class='warning'>You have no entities under your control to command.</span>")
 				return 0
 			if(pay_energy(25 * controlled_mobs.len))
 				attack_all(L)
@@ -135,7 +135,7 @@
 	else if(isturf(hit_atom))
 		var/turf/T = hit_atom
 		if(!controlled_mobs.len)
-			user << "<span class='warning'>You have no entities under your control to command.</span>"
+			to_chat(user, "<span class='warning'>You have no entities under your control to command.</span>")
 			return 0
 		if(pay_energy(10 * controlled_mobs.len))
 			move_all(T)

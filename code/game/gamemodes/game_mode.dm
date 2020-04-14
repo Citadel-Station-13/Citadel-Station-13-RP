@@ -88,7 +88,7 @@ var/global/list/additional_antag_types = list()
 			message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
 	else if(href_list["remove_antag_type"])
 		if(antag_tags && (href_list["remove_antag_type"] in antag_tags))
-			usr << "Cannot remove core mode antag type."
+			to_chat(usr, "Cannot remove core mode antag type.")
 			return
 		var/datum/antagonist/antag = all_antag_types[href_list["remove_antag_type"]]
 		if(antag_templates && antag_templates.len && antag && (antag in antag_templates) && (antag.id in additional_antag_types))
@@ -114,7 +114,7 @@ var/global/list/additional_antag_types = list()
 				return
 
 /datum/game_mode/proc/announce() //to be called when round starts
-	world << "<B>The current game mode is [capitalize(name)]!</B>"
+	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
 	if(round_description) world << "[round_description]"
 	if(round_autoantag) world << "Antagonists will be added to the round automagically as needed."
 	if(antag_templates && antag_templates.len)
@@ -130,7 +130,7 @@ var/global/list/additional_antag_types = list()
 			i++
 		antag_summary += "."
 		if(antag_templates.len > 1 && master_mode != "secret")
-			world << "[antag_summary]"
+			to_chat(world, "[antag_summary]")
 		else
 			message_admins("[antag_summary]")
 
@@ -523,7 +523,7 @@ proc/get_nt_opposed()
 	if(!player || !player.current) return
 
 	var/obj_count = 1
-	player.current << "<span class='notice'>Your current objectives:</span>"
+	to_chat(player.current, "<span class='notice'>Your current objectives:</span>")
 	for(var/datum/objective/objective in player.objectives)
 		player.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
 		obj_count++
@@ -537,11 +537,11 @@ proc/get_nt_opposed()
 		return
 
 	if(master_mode != "secret")
-		usr << "<b>The roundtype is [capitalize(ticker.mode.name)]</b>"
+		to_chat(usr, "<b>The roundtype is [capitalize(ticker.mode.name)]</b>")
 		if(ticker.mode.round_description)
-			usr << "<i>[ticker.mode.round_description]</i>"
+			to_chat(usr, "<i>[ticker.mode.round_description]</i>")
 		if(ticker.mode.extended_round_description)
-			usr << "[ticker.mode.extended_round_description]"
+			to_chat(usr, "[ticker.mode.extended_round_description]")
 	else
-		usr << "<i>Shhhh</i>. It's a secret."
+		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
 	return

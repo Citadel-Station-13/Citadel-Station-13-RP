@@ -126,9 +126,9 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(M))
-		user << "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>"
+		to_chat(user, "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>")
 	if(occupant)
-		user << "<span class='warning'>\The [src] is already occupied.</span>"
+		to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 		return
 
 	if(M == user)

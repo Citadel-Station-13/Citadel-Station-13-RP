@@ -54,7 +54,7 @@
 	var/list/menuoptions = list()
 	if (CI.container)
 		if (!CI.container.check_contents())
-			user << "There's nothing in the [src] you can remove!"
+			to_chat(user, "There's nothing in the [src] you can remove!")
 			return
 
 		for (var/obj/item/I in CI.container)

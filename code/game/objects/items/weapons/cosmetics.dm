@@ -45,7 +45,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.lip_style)	//if they already have lipstick on
-			user << "<span class='notice'>You need to wipe off the old lipstick first!</span>"
+			to_chat(user, "<span class='notice'>You need to wipe off the old lipstick first!</span>")
 			return
 		if(H == user)
 			user.visible_message("<span class='notice'>[user] does their lips with \the [src].</span>", \
@@ -61,7 +61,7 @@
 				H.lip_style = colour
 				H.update_icons_body()
 	else
-		user << "<span class='notice'>Where are the lips on that?</span>"
+		to_chat(user, "<span class='notice'>Where are the lips on that?</span>")
 
 //you can wipe off lipstick with paper! see code/modules/paperwork/paper.dm, paper/attack()
 

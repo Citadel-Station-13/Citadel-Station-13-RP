@@ -7,8 +7,8 @@
 		if(!check_rights(R_ADMIN|R_SPAWN)) return
 
 		usr << "Infection chance: [infectionchance]; Speed: [speed]; Spread type: [spreadtype]"
-		usr << "Affected species: [english_list(affected_species)]"
-		usr << "Effects:"
+		to_chat(usr, "Affected species: [english_list(affected_species)]")
+		to_chat(usr, "Effects:")
 		for(var/datum/disease2/effectholder/E in effects)
 			usr << "[E.stage]: [E.effect.name]; chance=[E.chance]; multiplier=[E.multiplier]"
 		usr << "Antigens: [antigens2string(antigen)]; Resistance: [resistance]"

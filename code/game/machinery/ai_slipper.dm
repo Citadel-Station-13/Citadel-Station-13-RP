@@ -50,7 +50,7 @@
 				if(user.machine==src)
 					attack_hand(usr)
 		else
-			user << "<span class='warning'>Access denied.</span>"
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 			return
 	return
 
@@ -91,7 +91,7 @@
 	..()
 	if(locked)
 		if(!istype(usr, /mob/living/silicon))
-			usr << "Control panel is locked!"
+			to_chat(usr, "Control panel is locked!")
 			return
 	if(href_list["toggleOn"])
 		disabled = !disabled

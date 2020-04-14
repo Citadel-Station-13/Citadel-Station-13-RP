@@ -44,7 +44,7 @@
 	if(docking_controller_tag)
 		docking_controller = locate(docking_controller_tag)
 		if(!istype(docking_controller))
-			world << "<span class='danger'>warning: shuttle with docking tag [docking_controller_tag] could not find it's controller!</span>"
+			to_chat(world, "<span class='danger'>warning: shuttle with docking tag [docking_controller_tag] could not find it's controller!</span>")
 
 // This creates a graphical warning to where the shuttle is about to land, in approximately five seconds.
 /datum/shuttle/proc/create_warning_effect(area/landing_area)
@@ -223,10 +223,10 @@
 		if(M.client)
 			spawn(0)
 				if(M.buckled)
-					M << "<font color='red'>Sudden acceleration presses you into \the [M.buckled]!</font>"
+					to_chat(M, "<font color='red'>Sudden acceleration presses you into \the [M.buckled]!</font>")
 					shake_camera(M, 3, 1)
 				else
-					M << "<font color='red'>The floor lurches beneath you!</font>"
+					to_chat(M, "<font color='red'>The floor lurches beneath you!</font>")
 					shake_camera(M, 10, 1)
 		if(istype(M, /mob/living/carbon))
 			if(!M.buckled)

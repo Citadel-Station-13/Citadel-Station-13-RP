@@ -52,7 +52,7 @@
 
 	// Wrong state
 	if (!eyeobj || !holo)
-		usr << "<span class='warning'>You can only use this when holo-projecting!</span>"
+		to_chat(usr, "<span class='warning'>You can only use this when holo-projecting!</span>")
 		return
 
 	//Holopads have this 'masters' list where the keys are AI names and the values are the hologram effects
@@ -74,7 +74,7 @@
 		return //Probably cancelled
 
 	if(!istype(prey))
-		usr << "<span class='warning'>Invalid mob choice!</span>"
+		to_chat(usr, "<span class='warning'>Invalid mob choice!</span>")
 		return
 
 	hologram.visible_message("[hologram] starts engulfing [prey] in hardlight holograms!")

@@ -1887,7 +1887,7 @@
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	else
 		status = 0
-		user << "<span class='warning'>[src] is out of charge.</span>"
+		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	update_held_icon()
 	add_fingerprint(user)
 

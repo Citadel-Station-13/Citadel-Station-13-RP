@@ -22,7 +22,7 @@
 	if (istype(W, /obj/item/paper/carbon))
 		var/obj/item/paper/carbon/C = W
 		if (!C.iscopy && !C.copied)
-			user << "<span class='notice'>Take off the carbon copy first.</span>"
+			to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
 			add_fingerprint(user)
 			return
 	// adding sheets
@@ -92,13 +92,13 @@
 				qdel(src)
 
 			else
-				user << "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>"
+				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
 
 /obj/item/paper_bundle/examine(mob/user)
 	if(..(user, 1))
 		src.show_content(user)
 	else
-		user << "<span class='notice'>It is too far away.</span>"
+		to_chat(user, "<span class='notice'>It is too far away.</span>")
 	return
 
 /obj/item/paper_bundle/proc/show_content(mob/user as mob)
@@ -202,7 +202,7 @@
 	set category = "Object"
 	set src in usr
 
-	usr << "<span class='notice'>You loosen the bundle.</span>"
+	to_chat(usr, "<span class='notice'>You loosen the bundle.</span>")
 	for(var/obj/O in src)
 		O.loc = usr.loc
 		O.layer = initial(O.layer)

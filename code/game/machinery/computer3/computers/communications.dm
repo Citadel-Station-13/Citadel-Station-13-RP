@@ -119,7 +119,7 @@
 	if("announce" in href_list)
 		if(authenticated==2)
 			if(message_cooldown)
-				usr << "Please allow at least one minute to pass between announcements"
+				to_chat(usr, "Please allow at least one minute to pass between announcements")
 				return
 			var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement")
 			if(!input || !interactable())

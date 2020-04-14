@@ -414,7 +414,7 @@
 												U.handle_regular_hud_updates()
 
 			if(!modified)
-				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
 	if (href_list["secrecord"])
 		if(hasHUD(usr,"security"))
@@ -441,7 +441,7 @@
 								read = 1
 
 			if(!read)
-				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
 	if (href_list["secrecordComment"])
 		if(hasHUD(usr,"security"))
@@ -464,11 +464,11 @@
 									usr << text("[]", R.fields[text("com_[]", counter)])
 									counter++
 								if (counter == 1)
-									usr << "No comment found"
+									to_chat(usr, "No comment found")
 								usr << "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
 
 			if(!read)
-				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
 	if (href_list["secrecordadd"])
 		if(hasHUD(usr,"security"))
@@ -530,7 +530,7 @@
 											U.handle_regular_hud_updates()
 
 			if(!modified)
-				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
 	if (href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
@@ -558,7 +558,7 @@
 								read = 1
 
 			if(!read)
-				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
 	if (href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
@@ -581,11 +581,11 @@
 									usr << text("[]", R.fields[text("com_[]", counter)])
 									counter++
 								if (counter == 1)
-									usr << "No comment found"
+									to_chat(usr, "No comment found")
 								usr << "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
 
 			if(!read)
-				usr << "<font color='red'>Unable to locate a data core entry for this person.</font>"
+				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
 
 	if (href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
@@ -972,19 +972,19 @@
 		if (prob(round(damage/10)*20))
 			germs++
 		if (germs == 100)
-			world << "Reached stage 1 in [ticks] ticks"
+			to_chat(world, "Reached stage 1 in [ticks] ticks")
 		if (germs > 100)
 			if (prob(10))
 				damage++
 				germs++
 		if (germs == 1000)
-			world << "Reached stage 2 in [ticks] ticks"
+			to_chat(world, "Reached stage 2 in [ticks] ticks")
 		if (germs > 1000)
 			damage++
 			germs++
 		if (germs == 2500)
-			world << "Reached stage 3 in [ticks] ticks"
-	world << "Mob took [tdamage] tox damage"
+			to_chat(world, "Reached stage 3 in [ticks] ticks")
+	to_chat(world, "Mob took [tdamage] tox damage")
 */
 //returns 1 if made bloody, returns 0 otherwise
 
@@ -1100,7 +1100,7 @@
 	if(do_mob(usr, src, 60))
 		usr << "<span class='notice'>[self ? "Your" : "[src]'s"] pulse is [src.get_pulse(GETPULSE_HAND)].</span>"
 	else
-		usr << "<span class='warning'>You failed to check the pulse. Try again.</span>"
+		to_chat(usr, "<span class='warning'>You failed to check the pulse. Try again.</span>")
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour, var/regen_icons = TRUE, var/mob/living/carbon/human/example = null)	//VOREStation Edit - send an example
 
@@ -1297,7 +1297,7 @@
 	if(!. && error_msg && user)
 		if(!fail_msg)
 			fail_msg = "There is no exposed flesh or thin material [target_zone == BP_HEAD ? "on their head" : "on their body"] to inject into."
-		user << "<span class='alert'>[fail_msg]</span>"
+		to_chat(user, "<span class='alert'>[fail_msg]</span>")
 
 /mob/living/carbon/human/print_flavor_text(var/shrink = 1)
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
@@ -1391,11 +1391,11 @@
 	usr.setClickCooldown(20)
 
 	if(usr.stat > 0)
-		usr << "You are unconcious and cannot do that!"
+		to_chat(usr, "You are unconcious and cannot do that!")
 		return
 
 	if(usr.restrained())
-		usr << "You are restrained and cannot do that!"
+		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
 	var/mob/S = src
@@ -1417,7 +1417,7 @@
 	if(self)
 		to_chat(src, "<span class='warning'>You brace yourself to relocate your [current_limb.joint]...</span>")
 	else
-		U << "<span class='warning'>You begin to relocate [S]'s [current_limb.joint]...</span>"
+		to_chat(U, "<span class='warning'>You begin to relocate [S]'s [current_limb.joint]...</span>")
 
 	if(!do_after(U, 30))
 		return
@@ -1427,8 +1427,8 @@
 	if(self)
 		to_chat(src, "<span class='danger'>You pop your [current_limb.joint] back in!</span>")
 	else
-		U << "<span class='danger'>You pop [S]'s [current_limb.joint] back in!</span>"
-		S << "<span class='danger'>[U] pops your [current_limb.joint] back in!</span>"
+		to_chat(U, "<span class='danger'>You pop [S]'s [current_limb.joint] back in!</span>")
+		to_chat(S, "<span class='danger'>[U] pops your [current_limb.joint] back in!</span>")
 	current_limb.relocate()
 
 /mob/living/carbon/human/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
