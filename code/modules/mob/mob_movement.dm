@@ -228,20 +228,6 @@
 			mob.move_delay += config_legacy.run_speed
 		if("walk")
 			mob.move_delay += config_legacy.walk_speed
-	mob.move_delay += mob.movement_delay(n, direct)
-
-	if(istype(mob.buckled, /obj/vehicle) || istype(mob.buckled, /mob))	//VOREStation Edit: taur riding. I think.
-		//manually set move_delay for vehicles so we don't inherit any mob movement penalties
-		//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
-		mob.move_delay = world.time
-		//drunk driving
-		if(mob.confused && prob(20)) //vehicles tend to keep moving in the same direction
-			direct = turn(direct, pick(90, -90))
-		return mob.buckled.relaymove(mob,direct)
-
-	if(istype(mob.machine, /obj/machinery))
-		if(mob.machine.relaymove(mob,direct))
-			return
 
 	if(mob.pulledby || mob.buckled) // Wheelchair driving!
 		if(istype(mob.loc, /turf/space))
@@ -324,9 +310,8 @@
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= 2
 	move_delay += add_delay
-	if(.) // If mob is null here, we deserve the runtime
-
 /*
+	if(.) // If mob is null here, we deserve the runtime
 		if(mob.throwing)
 			mob.throwing.finalize(FALSE)
 */
