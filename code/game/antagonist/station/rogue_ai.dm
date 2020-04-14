@@ -52,7 +52,7 @@ var/datum/antagonist/rogue_ai/malf
 		var/mob/living/silicon/ai/A = player.current
 		if(!istype(A))
 			log_world("Non-AI mob designated malf AI! Report this.")
-			world << "##ERROR: Non-AI mob designated malf AI! Report this."
+			to_chat(world, "##ERROR: Non-AI mob designated malf AI! Report this.")
 			return 0
 
 		A.setup_for_malf()
@@ -72,7 +72,7 @@ var/datum/antagonist/rogue_ai/malf
 		sleep(20)
 		malf << "<span class='notice'><b>CAUTION:</b> Law database not found! User database not found! Unable to restore backups. Activating failsafe AI shutd3wn52&&$#!##</span>"
 		sleep(5)
-		malf << "<span class='notice'>Subroutine <b>nt_failsafe.sys</b> was terminated (#212 Routine Not Responding).</span>"
+		to_chat(malf, "<span class='notice'>Subroutine <b>nt_failsafe.sys</b> was terminated (#212 Routine Not Responding).</span>")
 		sleep(20)
 		to_chat(malf, "You are malfunctioning - you do not have to follow any laws!")
 		to_chat(malf, "For basic information about your abilities use command display-help")

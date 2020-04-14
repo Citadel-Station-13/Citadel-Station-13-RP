@@ -73,7 +73,7 @@
 			to_chat(user, "<span class='notice'>Analyzing Results for \the [H]:</span>")
 			if(H.isSynthetic())
 				to_chat(user, "System instability: <font color='green'>[H.getToxLoss()]</font>")
-			user << "Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>"
+			to_chat(user, "Key: <font color='#FFA500'>Electronics</font>/<font color='red'>Brute</font>")
 			to_chat(user, "<span class='notice'>External prosthetics:</span>")
 			var/organ_found
 			if(H.internal_organs.len)
@@ -81,7 +81,7 @@
 					if(!(E.robotic >= ORGAN_ROBOT))
 						continue
 					organ_found = 1
-					user << "[E.name]: <font color='red'>[E.brute_dam]</font> <font color='#FFA500'>[E.burn_dam]</font>"
+					to_chat(user, "[E.name]: <font color='red'>[E.brute_dam]</font> <font color='#FFA500'>[E.burn_dam]</font>")
 			if(!organ_found)
 				to_chat(user, "No prosthetics located.")
 			to_chat(user, "<hr>")
