@@ -89,8 +89,8 @@
 		if(isnull(H.uplink_owner) && H.used_TC)
 			if(!has_printed)
 				has_printed = 1
-				world << "<b>Ownerless Uplinks</b>"
-			world << "[H.loc] (used [H.used_TC] TC)"
+				to_chat(world, "<b>Ownerless Uplinks</b>")
+			to_chat(world, "[H.loc] (used [H.used_TC] TC)")
 			world << get_uplink_purchases(H)
 
 /proc/get_uplink_purchases(var/obj/item/uplink/H)

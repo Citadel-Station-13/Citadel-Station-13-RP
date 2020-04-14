@@ -103,7 +103,7 @@
 		else
 			..()
 	else
-		usr << "<span class='warning'>This weapon is ineffective, it does no damage.</span>"
+		to_chat(usr, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
 /mob/living/simple_mob/hostile/syndicate/melee/bullet_act(var/obj/item/projectile/Proj)

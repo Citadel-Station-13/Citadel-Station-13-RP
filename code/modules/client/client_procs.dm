@@ -28,7 +28,7 @@
 		del(src)
 		return
 
-	src << "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>"
+	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 
 
 	GLOB.clients += src

@@ -193,11 +193,11 @@
 
 /obj/machinery/computer/supplycomp/Topic(href, href_list)
 	if(!SSsupply)
-		world.log << "## ERROR: The SSsupply datum is missing."
+		log_world("## ERROR: The supply_controller datum is missing.")
 		return
 	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
 	if (!shuttle)
-		world.log << "## ERROR: The supply shuttle datum is missing."
+		log_world("## ERROR: The supply shuttle datum is missing.")
 		return
 	if(..())
 		return 1

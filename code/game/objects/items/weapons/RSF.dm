@@ -66,31 +66,31 @@ RSF
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 	if (mode == 1)
 		mode = 2
-		user << "Changed dispensing mode to 'Pint Glass'" //make it a little nicer
+		to_chat(user, "Changed dispensing mode to 'Pint Glass'") //make it a little nicer
 		return
 	if (mode == 2)
 		mode = 3
-		user << "Changed dispensing mode to 'Shot Glass'"
+		to_chat(user, "Changed dispensing mode to 'Shot Glass'")
 		return
 	if (mode == 3)
 		mode = 4
-		user << "Changed dispensing mode to 'Wine Glass'"
+		to_chat(user, "Changed dispensing mode to 'Wine Glass'")
 		return
 	if (mode == 4)
 		mode = 5
-		user << "Changed dispensing mode to 'Paper'"
+		to_chat(user, "Changed dispensing mode to 'Paper'")
 		return
 	if (mode == 5)
 		mode = 6
-		user << "Changed dispensing mode to 'Pen'"
+		to_chat(user, "Changed dispensing mode to 'Pen'")
 		return
 	if (mode == 6)
 		mode = 7
-		user << "Changed dispensing mode to 'Dice Pack'"
+		to_chat(user, "Changed dispensing mode to 'Dice Pack'")
 		return
 	if (mode == 7)
 		mode = 8
-		user << "Changed dispensing mode to 'Plushie' - WARNING: Requires Significant Charge"
+		to_chat(user, "Changed dispensing mode to 'Plushie' - WARNING: Requires Significant Charge")
 		return
 	if (mode == 8)
 		mode = 1

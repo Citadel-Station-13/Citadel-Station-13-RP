@@ -34,7 +34,7 @@
 
 	if (isrobot(usr) || src.locked)
 		if(istype(O, /obj/item/multitool))
-			user << "<span class='warning'>Resetting circuitry...</span>"
+			to_chat(user, "<span class='warning'>Resetting circuitry...</span>")
 			playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
 			if(do_after(user, 20 * O.toolspeed))
 				src.locked = 0

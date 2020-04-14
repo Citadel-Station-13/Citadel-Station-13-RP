@@ -319,7 +319,7 @@
 /mob/proc/update_flavor_text()
 	set src in usr
 	if(usr != src)
-		usr << "No."
+		to_chat(usr, "No.")
 	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
 
 	if(msg != null)
@@ -446,7 +446,7 @@
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		usr << "<font color='blue'>You must be observing to use this!</font>"
+		to_chat(usr, "<font color='blue'>You must be observing to use this!</font>")
 		return
 
 	if(is_admin && stat == DEAD)
@@ -990,11 +990,11 @@ mob/proc/yank_out_object()
 	usr.setClickCooldown(20)
 
 	if(usr.stat == 1)
-		usr << "You are unconcious and cannot do that!"
+		to_chat(usr, "You are unconcious and cannot do that!")
 		return
 
 	if(usr.restrained())
-		usr << "You are restrained and cannot do that!"
+		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
 	var/mob/S = src
@@ -1010,7 +1010,7 @@ mob/proc/yank_out_object()
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
-			U << "[src] has nothing stuck in their wounds that is large enough to remove."
+			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
 
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
@@ -1018,7 +1018,7 @@ mob/proc/yank_out_object()
 	if(self)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
 	else
-		U << "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>"
+		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
 
 	if(!do_after(U, 30))
 		return
@@ -1092,9 +1092,9 @@ mob/proc/yank_out_object()
 	set_face_dir()
 
 	if(!facing_dir)
-		usr << "You are now not facing anything."
+		to_chat(usr, "You are now not facing anything.")
 	else
-		usr << "You are now facing [dir2text(facing_dir)]."
+		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == facing_dir)

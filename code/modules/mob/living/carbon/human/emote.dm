@@ -84,7 +84,7 @@
 			//Citadel changes start
 			///* VOREStation Removal Start - Eh. People can squish maybe.
 			if(species.bump_flag != SLIME) //This should definitely do it.
-				src << "<span class='warning'>You are not a slime thing!</span>"
+				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
 				return
 			//*/ //VOREStation Removal End
 			//Citadel changes end

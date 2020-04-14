@@ -24,11 +24,11 @@
 
 /obj/item/disposable_teleporter/examine(mob/user)
 	..()
-	user << "[uses] uses remaining."
+	to_chat(user, "[uses] uses remaining.")
 
 /obj/item/disposable_teleporter/attack_self(mob/user as mob)
 	if(!uses)
-		user << "<span class='danger'>\The [src] has ran out of uses, and is now useless to you!</span>"
+		to_chat(user, "<span class='danger'>\The [src] has ran out of uses, and is now useless to you!</span>")
 		return
 	else
 		var/area_wanted = input(user, "Area to teleport to", "Teleportation") in teleportlocs
@@ -72,8 +72,8 @@
 
 		if(destination)
 			user.forceMove(destination)
-			user << "<span class='notice'>You are teleported to \the [A].</span>"
+			to_chat(user, "<span class='notice'>You are teleported to \the [A].</span>")
 			uses--
 			if(uses <= 0)
-				user << "<span class='danger'>\The [src] has ran out of uses, and disintegrates from your hands.</span>"
+				to_chat(user, "<span class='danger'>\The [src] has ran out of uses, and disintegrates from your hands.</span>")
 				qdel(src)

@@ -256,7 +256,7 @@ What a mess.*/
 			else
 				var/obj/item/I = usr.get_active_hand()
 				if(istype(I, /obj/item/card/id))
-					usr << "Attempting to insert"
+					to_chat(usr, "Attempting to insert")
 					computer.cardslot.insert(I, usr) // No slot, will autofill
 					scan = I
 

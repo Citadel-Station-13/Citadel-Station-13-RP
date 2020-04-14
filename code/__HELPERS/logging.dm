@@ -20,7 +20,7 @@
 
 	for(var/client/C in admins)
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
-			C << "DEBUG: [text]"
+			to_chat(C, "DEBUG: [text]")
 
 /proc/log_game(text)
 	if (config_legacy.log_game)
@@ -133,7 +133,7 @@
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
 /proc/log_unit_test(text)
-	world.log << "## UNIT_TEST: [text]"
+	log_world("## UNIT_TEST: [text]")
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)

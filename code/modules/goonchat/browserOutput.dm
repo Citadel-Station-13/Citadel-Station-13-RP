@@ -111,7 +111,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	sendClientData()
 
 	//do not convert to to_chat()
-	owner << "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>"
+	to_chat(owner, "<span class=\"userdanger\">Failed to load fancy chat, reverting to old chat. Certain features won't work.</span>")
 
 /datum/chatOutput/proc/showChat()
 	winset(owner, "output", "is-visible=false")

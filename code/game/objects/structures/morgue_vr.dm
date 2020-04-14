@@ -15,7 +15,7 @@
 			return
 	else
 		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
-			usr << "You get the feeling that you shouldn't cremate one of the items in the cremator."
+			to_chat(usr, "You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 
 		for(var/I in contents)

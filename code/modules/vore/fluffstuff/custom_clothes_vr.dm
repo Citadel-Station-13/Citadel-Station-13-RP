@@ -1785,7 +1785,7 @@ END OF CITADEL CHANGES */
 	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
 		if(..())
 			if(H.ckey != "silencedmp5a5")
-				H << "<span class='warning'>...The faceplate is clearly not made for your anatomy, thus, does not fit.</span>"
+				to_chat(H, "<span class='warning'>...The faceplate is clearly not made for your anatomy, thus, does not fit.</span>")
 				return 0
 			else
 				return 1

@@ -98,7 +98,7 @@
 			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")	
+			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")

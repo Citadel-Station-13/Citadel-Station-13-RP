@@ -21,10 +21,10 @@
 	set_light(3, 2, l_color = "#006AFF")
 	spark_system = new /datum/effect/effect/system/spark_spread()
 	spark_system.set_up(5, 0, src)
-	owner << "<span class='notice'>Your shield will expire in 3 seconds!</span>"
+	to_chat(owner, "<span class='notice'>Your shield will expire in 3 seconds!</span>")
 	spawn(5 SECONDS)
 		if(src)
-			owner << "<span class='danger'>Your shield expires!</span>"
+			to_chat(owner, "<span class='danger'>Your shield expires!</span>")
 			qdel(src)
 
 /obj/item/spell/reflect/Destroy()
@@ -38,7 +38,7 @@
 	var/damage_to_energy_cost = (damage_to_energy_multiplier * damage)
 
 	if(!pay_energy(damage_to_energy_cost))
-		owner << "<span class='danger'>Your shield fades due to lack of energy!</span>"
+		to_chat(owner, "<span class='danger'>Your shield fades due to lack of energy!</span>")
 		qdel(src)
 		return 0
 
@@ -68,7 +68,7 @@
 				if(!reflecting)
 					reflecting = 1
 					spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
-						owner << "<span class='danger'>Your shield fades due being used up!</span>"
+						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
 						qdel(src)
 
 				return PROJECTILE_CONTINUE // complete projectile permutation
@@ -88,7 +88,7 @@
 				if(!reflecting)
 					reflecting = 1
 					spawn(2 SECONDS) //To ensure that most or all of a burst fire cycle is reflected.
-						owner << "<span class='danger'>Your shield fades due being used up!</span>"
+						to_chat(owner, "<span class='danger'>Your shield fades due being used up!</span>")
 						qdel(src)
 		return 1
 	return 0
