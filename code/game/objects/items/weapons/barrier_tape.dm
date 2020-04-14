@@ -9,7 +9,7 @@
 
 	var/turf/start
 	var/turf/end
-	var/tape_type = /obj/item/tape
+	var/tape_type = /obj/item/barrier_tape_segment
 	var/icon_base = "tape"
 
 	var/apply_tape = FALSE
@@ -29,7 +29,7 @@
 var/list/image/hazard_overlays
 var/list/tape_roll_applications = list()
 
-/obj/item/tape
+/obj/item/barrier_tape_segment
 	name = "tape"
 	icon = 'icons/policetape.dmi'
 	anchored = 1
@@ -39,7 +39,7 @@ var/list/tape_roll_applications = list()
 	var/tape_dir = 0
 	var/icon_base = "tape"
 
-/obj/item/tape/update_icon()
+/obj/item/barrier_tape_segment/update_icon()
 	//Possible directional bitflags: 0 (AIRLOCK), 1 (NORTH), 2 (SOUTH), 4 (EAST), 8 (WEST), 3 (VERTICAL), 12 (HORIZONTAL)
 	switch (tape_dir)
 		if(0)  // AIRLOCK
@@ -52,7 +52,7 @@ var/list/tape_roll_applications = list()
 			icon_state = "[icon_base]_dir_[crumpled]"
 			dir = tape_dir
 
-/obj/item/tape/New()
+/obj/item/barrier_tape_segment/New()
 	..()
 	if(!hazard_overlays)
 		hazard_overlays = list()
@@ -65,10 +65,10 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_roll/medical
 	name = "medical tape"
 	desc = "A roll of medical tape used to block off patients from the public."
-	tape_type = /obj/item/tape/medical
+	tape_type = /obj/item/barrier_tape_segment/medical
 	color = COLOR_WHITE
 
-/obj/item/tape/medical
+/obj/item/barrier_tape_segment/medical
 	name = "medical tape"
 	desc = "A length of medical tape.  Do not cross."
 	req_access = list(access_medical)
@@ -77,10 +77,10 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_roll/police
 	name = "police tape"
 	desc = "A roll of police tape used to block off crime scenes from the public."
-	tape_type = /obj/item/tape/police
+	tape_type = /obj/item/barrier_tape_segment/police
 	color = COLOR_RED_LIGHT
 
-/obj/item/tape/police
+/obj/item/barrier_tape_segment/police
 	name = "police tape"
 	desc = "A length of police tape.  Do not cross."
 	req_access = list(access_security)
@@ -89,13 +89,13 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_roll/engineering
 	name = "engineering tape"
 	desc = "A roll of engineering tape used to block off working areas from the public."
-	tape_type = /obj/item/tape/engineering
+	tape_type = /obj/item/barrier_tape_segment/engineering
 	color = COLOR_YELLOW
 
 /obj/item/barrier_tape_roll/engineering/applied
 	apply_tape = TRUE
 
-/obj/item/tape/engineering
+/obj/item/barrier_tape_segment/engineering
 	name = "engineering tape"
 	desc = "A length of engineering tape. Better not cross it."
 	req_one_access = list(access_engine,access_atmospherics)
@@ -104,10 +104,10 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_roll/atmos
 	name = "atmospherics tape"
 	desc = "A roll of atmospherics tape used to block off working areas from the public."
-	tape_type = /obj/item/tape/atmos
+	tape_type = /obj/item/barrier_tape_segment/atmos
 	color = COLOR_DEEP_SKY_BLUE
 
-/obj/item/tape/atmos
+/obj/item/barrier_tape_segment/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
 	req_one_access = list(access_engine,access_atmospherics)
@@ -171,13 +171,13 @@ var/list/tape_roll_applications = list()
 				to_chat(user, "<span class='notice'>You can't place \the [src] here.</span>")
 				return
 			if(possible_dirs & (NORTH|SOUTH))
-				var/obj/item/tape/TP = new tape_type(start)
+				var/obj/item/barrier_tape_segment/TP = new tape_type(start)
 				for(var/dir in list(NORTH, SOUTH))
 					if (possible_dirs & dir)
 						TP.tape_dir += dir
 				TP.update_icon()
 			if(possible_dirs & (EAST|WEST))
-				var/obj/item/tape/TP = new tape_type(start)
+				var/obj/item/barrier_tape_segment/TP = new tape_type(start)
 				for(var/dir in list(EAST, WEST))
 					if (possible_dirs & dir)
 						TP.tape_dir += dir
@@ -262,12 +262,12 @@ var/list/tape_roll_applications = list()
 				for(var/obj/structure/window/window in cur)
 					if(istype(window) && !window.is_fulltile() && window.dir == orientation)
 						tape_dir = dir
-			for(var/obj/item/tape/T in cur)
+			for(var/obj/item/barrier_tape_segment/T in cur)
 				if((T.tape_dir == tape_dir) && (T.icon_base == icon_base))
 					tapetest = 1
 					break
 			if(!tapetest)
-				var/obj/item/tape/T = new tape_type(cur)
+				var/obj/item/barrier_tape_segment/T = new tape_type(cur)
 				T.tape_dir = tape_dir
 				T.update_icon()
 				if(tape_dir & SOUTH)
@@ -286,10 +286,10 @@ var/list/tape_roll_applications = list()
 
 	if (istype(A, /obj/machinery/door))
 		var/turf/T = get_turf(A)
-		if(locate(/obj/item/tape, A.loc))
+		if(locate(/obj/item/barrier_tape_segment, A.loc))
 			to_chat(user, "There's already tape over that door!")
 		else
-			var/obj/item/tape/P = new tape_type(T)
+			var/obj/item/barrier_tape_segment/P = new tape_type(T)
 			P.update_icon()
 			P.layer = WINDOW_LAYER
 			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
@@ -311,13 +311,13 @@ var/list/tape_roll_applications = list()
 			tape_roll_applications[F] |= direction
 		return
 
-/obj/item/tape/proc/crumple()
+/obj/item/barrier_tape_segment/proc/crumple()
 	if(!crumpled)
 		crumpled = 1
 		update_icon()
 		name = "crumpled [name]"
 
-/obj/item/tape/CanPass(atom/movable/mover, turf/target)
+/obj/item/barrier_tape_segment/CanPass(atom/movable/mover, turf/target)
 	if(!lifted && ismob(mover))
 		var/mob/M = mover
 		add_fingerprint(M)
@@ -328,18 +328,18 @@ var/list/tape_roll_applications = list()
 			crumple()
 	return ..()
 
-/obj/item/tape/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
 	breaktape(user)
 
-/obj/item/tape/attack_hand(mob/user as mob)
+/obj/item/barrier_tape_segment/attack_hand(mob/user as mob)
 	if (user.a_intent == I_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
-		for(var/obj/item/tape/T in gettapeline())
+		for(var/obj/item/barrier_tape_segment/T in gettapeline())
 			T.lift(100) //~10 seconds
 	else
 		breaktape(user)
 
-/obj/item/tape/proc/lift(time)
+/obj/item/barrier_tape_segment/proc/lift(time)
 	lifted = 1
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
@@ -348,7 +348,7 @@ var/list/tape_roll_applications = list()
 		reset_plane_and_layer()
 
 // Returns a list of all tape objects connected to src, including itself.
-/obj/item/tape/proc/gettapeline()
+/obj/item/barrier_tape_segment/proc/gettapeline()
 	var/list/dirs = list()
 	if(tape_dir & NORTH)
 		dirs += NORTH
@@ -359,27 +359,27 @@ var/list/tape_roll_applications = list()
 	if(tape_dir & EAST)
 		dirs += EAST
 
-	var/list/obj/item/tape/tapeline = list()
-	for (var/obj/item/tape/T in get_turf(src))
+	var/list/obj/item/barrier_tape_segment/tapeline = list()
+	for (var/obj/item/barrier_tape_segment/T in get_turf(src))
 		tapeline += T
 	for(var/dir in dirs)
 		var/turf/cur = get_step(src, dir)
 		var/not_found = 0
 		while (!not_found)
 			not_found = 1
-			for (var/obj/item/tape/T in cur)
+			for (var/obj/item/barrier_tape_segment/T in cur)
 				tapeline += T
 				not_found = 0
 			cur = get_step(cur, dir)
 	return tapeline
 
-/obj/item/tape/proc/breaktape(mob/user)
+/obj/item/barrier_tape_segment/proc/breaktape(mob/user)
 	if(user.a_intent == I_HELP)
 		to_chat(user, "<span class='warning'>You refrain from breaking \the [src].</span>")
 		return
 	user.visible_message("<span class='notice'>\The [user] breaks \the [src]!</span>","<span class='notice'>You break \the [src].</span>")
 
-	for (var/obj/item/tape/T in gettapeline())
+	for (var/obj/item/barrier_tape_segment/T in gettapeline())
 		if(T == src)
 			continue
 		if(T.tape_dir & get_dir(T, src))
