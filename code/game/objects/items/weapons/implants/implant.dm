@@ -53,7 +53,7 @@
 	return 0
 
 /obj/item/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
-	imp_in << "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>"
+	to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.name]" : "you"]!</span>")
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
 	else

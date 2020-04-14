@@ -411,7 +411,7 @@
 		return FALSE
 
 	if(organ.applied_pressure)
-		user << "<span class='warning'>Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"].</span>"
+		to_chat(user, "<span class='warning'>Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"].</span>")
 		return FALSE
 
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

@@ -91,7 +91,7 @@
 	var/user = usr
 	if(href_list["electronic_warfare"])
 		electronic_warfare = text2num(href_list["electronic_warfare"])
-		user << "<span class='notice'>Electronic warfare [electronic_warfare ? "enabled" : "disabled"].</span>"
+		to_chat(user, "<span class='notice'>Electronic warfare [electronic_warfare ? "enabled" : "disabled"].</span>")
 	else if(href_list["set"])
 		switch(href_list["set"])
 			if("Age")

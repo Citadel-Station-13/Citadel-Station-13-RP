@@ -75,7 +75,7 @@
 /obj/item/mmi/digital/posibrain/proc/reset_search() //We give the players sixty seconds to decide, then reset the timer.
 
 	if(src.brainmob && src.brainmob.key) return
-	world.log << "Resetting Posibrain: [brainmob][brainmob ? ", [brainmob.key]" : ""]"
+	to_chat(world.log, "Resetting Posibrain: [brainmob][brainmob ? ", [brainmob.key]" : ""]")
 
 	src.searching = 0
 	icon_state = "posibrain"

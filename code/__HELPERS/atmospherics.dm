@@ -5,7 +5,7 @@
 	A.add_fingerprint(user)
 	var/list/result = A.atmosanalyze(user)
 	if(result && result.len)
-		user << "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>"
+		to_chat(user, "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>")
 		for(var/line in result)
 			to_chat(user, "<span class='notice'>[line]</span>")
 		return 1

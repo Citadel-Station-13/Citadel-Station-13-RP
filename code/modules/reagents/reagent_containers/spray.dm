@@ -130,11 +130,11 @@
 
 /obj/item/reagent_containers/spray/pepper/examine(mob/user)
 	if(..(user, 1))
-		user << "The safety is [safety ? "on" : "off"]."
+		to_chat(user, "The safety is [safety ? "on" : "off"].")
 
 /obj/item/reagent_containers/spray/pepper/attack_self(var/mob/user)
 	safety = !safety
-	usr << "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>"
+	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
 
 /obj/item/reagent_containers/spray/pepper/Spray_at(atom/A as mob|obj)
 	if(safety)

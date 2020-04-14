@@ -67,7 +67,7 @@
 			return
 		if(check_access(I))
 			locked = !locked
-			user << "<span class='notice'>You [locked ? "" : "un"]lock the circuit controls.</span>"
+			to_chat(user, "<span class='notice'>You [locked ? "" : "un"]lock the circuit controls.</span>")
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 	else if(istype(I,/obj/item/multitool))

@@ -1880,7 +1880,7 @@
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		user << "<span class='notice'>[src] is now [status ? "on" : "off"].</span>"
+		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
 		if(status == 0)
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		else

@@ -90,7 +90,7 @@
 
 		anchored = !anchored
 		playsound(get_turf(src), I.usesound, 50, 1)
-		user << "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>"
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 
 		return
 

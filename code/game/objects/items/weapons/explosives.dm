@@ -31,7 +31,7 @@
 /obj/item/plastique/attackby(var/obj/item/I, var/mob/user)
 	if(I.is_screwdriver())
 		open_panel = !open_panel
-		user << "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>"
+		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
 		playsound(src, I.usesound, 50, 1)
 	else if(I.is_wirecutter() || istype(I, /obj/item/multitool) || istype(I, /obj/item/assembly/signaler ))
 		wires.Interact(user)

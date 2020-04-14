@@ -23,13 +23,13 @@
 
 		var/mob/living/simple_mob/animal/borer/B = src.loc
 		to_chat(src, "You whisper silently, \"[message]\"")
-		B.host << "The captive mind of [src] whispers, \"[message]\""
+		to_chat(B.host, "The captive mind of [src] whispers, \"[message]\"")
 
 		for (var/mob/M in player_list)
 			if (istype(M, /mob/new_player))
 				continue
 			else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
-				M << "The captive mind of [src] whispers, \"[message]\""
+				to_chat(M, "The captive mind of [src] whispers, \"[message]\"")
 
 /mob/living/captive_brain/emote(var/message)
 	return

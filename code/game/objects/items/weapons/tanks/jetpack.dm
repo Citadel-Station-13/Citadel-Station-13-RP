@@ -37,7 +37,7 @@
 	set name = "Toggle Jetpack Stabilization"
 	set category = "Object"
 	stabilization_on = !( stabilization_on )
-	usr << "You toggle the stabilization [stabilization_on? "on":"off"]."
+	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
 /obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
@@ -56,7 +56,7 @@
 		M.update_inv_back()
 		M.update_action_buttons()
 
-	usr << "You toggle the thrusters [on? "on":"off"]."
+	to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
 
 /obj/item/tank/jetpack/proc/allow_thrust(num, mob/living/user as mob)
 	if(!on)

@@ -179,7 +179,7 @@
 	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 		if (src.allowed(user))
 			src.locked = !src.locked
-			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 		else
 			to_chat(user, "<font color='red'>Access denied.</font>")
 

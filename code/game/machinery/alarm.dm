@@ -773,7 +773,7 @@
 		else
 			if(allowed(usr) && !wires.IsIndexCut(AALARM_WIRE_IDSCAN))
 				locked = !locked
-				user << "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>"
+				to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
 			else
 				to_chat(user, "<span class='warning'>Access denied.</span>")
 			return

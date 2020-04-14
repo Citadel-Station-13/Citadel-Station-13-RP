@@ -553,7 +553,7 @@
 
 		playsound(loc, O.usesound, 50, 1)
 		anchored = !anchored
-		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."
+		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 
 	else if(istype(O,/obj/item/multitool))
 		if(!anchored)
@@ -656,5 +656,5 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/close_lid(var/mob/living/user)
 	closed_system = !closed_system
-	user << "You [closed_system ? "close" : "open"] the tray's lid."
+	to_chat(user, "You [closed_system ? "close" : "open"] the tray's lid.")
 	update_icon()

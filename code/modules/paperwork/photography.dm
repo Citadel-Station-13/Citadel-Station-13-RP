@@ -151,7 +151,7 @@ var/global/photo_count = 0
 		src.icon_state = icon_on
 	else
 		src.icon_state = icon_off
-	user << "You switch the camera [on ? "on" : "off"]."
+	to_chat(user, "You switch the camera [on ? "on" : "off"].")
 	return
 
 /obj/item/camera/attackby(obj/item/I as obj, mob/user as mob)

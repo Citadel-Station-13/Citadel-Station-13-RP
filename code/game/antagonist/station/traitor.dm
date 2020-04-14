@@ -168,7 +168,7 @@ var/datum/antagonist/traitor/traitors
 		R.hidden_uplink = T
 		var/obj/item/pda/P = R
 		P.lock_code = pda_pass
-		traitor_mob << "A portable object teleportation relay has been installed in your [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features."
+		to_chat(traitor_mob, "A portable object teleportation relay has been installed in your [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.")
 		traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
 
 /datum/antagonist/traitor/proc/add_law_zero(mob/living/silicon/ai/killer)

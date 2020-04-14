@@ -149,7 +149,7 @@
 /datum/computer/file/embedded_program/docking/post_signal(datum/signal/signal, comm_line)
 	to_chat(world, "Program [id_tag] sent a message!")
 	print_state()
-	world << "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\""
+	to_chat(world, "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\"")
 	..(signal)
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port/verb/view_state()

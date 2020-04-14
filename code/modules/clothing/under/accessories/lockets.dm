@@ -18,7 +18,7 @@
 		return
 
 	open = !open
-	user << "You flip \the [src] [open?"open":"closed"]."
+	to_chat(user, "You flip \the [src] [open?"open":"closed"].")
 	if(open)
 		icon_state = "[base_icon]_open"
 		if(held)

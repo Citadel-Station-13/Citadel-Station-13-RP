@@ -695,7 +695,7 @@ var/list/sacrificed = list()
 						if(cultsinrange.len >= 3)
 							if(H.stat !=2)
 								if(prob(80) || worth)
-									usr << "<span class='cult'>The Geometer of Blood accepts this [worth ? "exotic " : ""]sacrifice.</span>"
+									to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this [worth ? "exotic " : ""]sacrifice.</span>")
 									cult.grant_runeword(usr)
 								else
 									to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
@@ -706,7 +706,7 @@ var/list/sacrificed = list()
 									H.gib()
 							else
 								if(prob(40) || worth)
-									usr << "<span class='cult'>The Geometer of Blood accepts this [worth ? "exotic " : ""]sacrifice.</span>"
+									to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this [worth ? "exotic " : ""]sacrifice.</span>")
 									cult.grant_runeword(usr)
 								else
 									to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
