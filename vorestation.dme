@@ -442,6 +442,7 @@
 #include "code\defines\procs\sd_Alert.dm"
 #include "code\defines\procs\statistics.dm"
 #include "code\game\atom_movable_vv.dm"
+#include "code\game\atom_movement.dm"
 #include "code\game\atom_vv.dm"
 #include "code\game\atoms.dm"
 #include "code\game\atoms_movable.dm"

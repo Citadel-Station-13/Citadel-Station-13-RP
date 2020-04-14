@@ -225,10 +225,6 @@ turf/attackby(obj/item/W as obj, mob/user as mob)
 
 var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
-
-	if(movement_disabled)
-		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
-		return
 	..()
 
 	if(!istype(atom, /atom/movable))

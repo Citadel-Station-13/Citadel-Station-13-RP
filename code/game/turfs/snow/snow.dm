@@ -14,6 +14,7 @@
 #define FOOTSTEP_SPRITE_AMT 2
 
 /turf/snow/Entered(atom/A)
+	..()
     if(ismob(A))
         var/mdir = "[A.dir]"
         if(crossed_dirs[mdir])
@@ -22,8 +23,6 @@
             crossed_dirs[mdir] = 1
 
         update_icon()
-
-    . = ..()
 
 /turf/snow/update_icon()
     cut_overlays()
