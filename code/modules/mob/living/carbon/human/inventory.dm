@@ -483,7 +483,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
 	if(incapacitated())
 		return
-	var/obj/item/thing = get_active_held_item()
+	var/obj/item/thing = get_active_hand()
 	var/obj/item/equipped_back = get_equipped_item(slot_back)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
@@ -515,7 +515,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 /mob/living/carbon/human/proc/smart_equipbelt() // put held thing in belt or take most recent item out of belt
 	if(incapacitated())
 		return
-	var/obj/item/thing = get_active_held_item()
+	var/obj/item/thing = get_active_hand()
 	var/obj/item/equipped_belt = get_equipped_item(slot_belt)
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)
