@@ -5,10 +5,10 @@
 
 SUBSYSTEM_DEF(timer)
 	name = "Timer"
-	wait = 1 //SS_SSticker subsystem, so wait is in ticks
+	wait = 1 //SS_TICKER subsystem, so wait is in ticks
 	init_order = INIT_ORDER_TIMER
 
-	flags = SS_SSticker|SS_NO_INIT
+	flags = SS_TICKER|SS_NO_INIT
 
 	var/list/datum/timedevent/second_queue = list() //awe, yes, you've had first queue, but what about second queue?
 	var/list/hashes = list()
