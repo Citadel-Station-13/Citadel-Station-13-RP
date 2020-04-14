@@ -18,11 +18,6 @@
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/skills
 
-/datum/category_group/player_setup_category/occupation_preferences
-	name = "Occupation"
-	sort_order = 3
-	category_item_type = /datum/category_item/player_setup_item/occupation
-
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Antagonism"
 	sort_order = 4
@@ -42,11 +37,6 @@
 	name = "Global"
 	sort_order = 6
 	category_item_type = /datum/category_item/player_setup_item/player_global
-
-/datum/category_group/player_setup_category/keybindings
-	name = "Keybindings"
-	sort_order = 7
-	category_item_type = /datum/category_item/player_setup_item/keybinding
 
 /****************************
 * Category Collection Setup *
@@ -171,10 +161,6 @@
 			. += "</td><td></td><td style='width:50%'>"
 		. += "[PI.content(user)]<br>"
 	. += "</td></tr></table>"
-
-/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		. += "[PI.content(user)]<br>"
 
 /**********************
 * Category Item Setup *

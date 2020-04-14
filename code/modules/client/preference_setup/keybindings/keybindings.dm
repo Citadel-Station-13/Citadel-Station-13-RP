@@ -16,6 +16,15 @@
 			key_bindings[key] = oldkeys[key]
 	client.update_movement_keys()
 
+/datum/category_group/player_setup_category/keybindings
+	name = "Keybindings"
+	sort_order = 7
+	category_item_type = /datum/category_item/player_setup_item/keybinding
+
+/datum/category_group/player_setup_category/keybindings/content(var/mob/user)
+	for(var/datum/category_item/player_setup_item/PI in items)
+		. += "[PI.content(user)]<br>"
+
 /datum/category_item/player_setup_item/keybinding/hotkey_mode
 	name = "Hotkey Mode"
 	sort_order = 1
@@ -33,6 +42,7 @@
 	. += "<b>Hotkey mode:</b> <a href='?src=[REF(src)];option=hotkeys'>[(pref.hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/OnTopic(href, list/href_list, mob/user)
+	to_chat(world, "DEBUG: href [href] href_list options [href_list["option"]]")
 	if(href_list["option"])
 		switch(href_list["option"])
 			if("hotkeys")
