@@ -13,7 +13,7 @@
 	usr.set_machine(src)
 
 	if(charges <= 0)
-		user << "The Wish Granter lies silent."
+		to_chat(user, "The Wish Granter lies silent.")
 		return
 
 	else if(!istype(user, /mob/living/carbon/human))
@@ -63,6 +63,6 @@
 		user.mind.objectives += silence
 
 		show_objectives(user.mind)
-		user << "You have a very bad feeling about this."
+		to_chat(user, "You have a very bad feeling about this.")
 
 	return

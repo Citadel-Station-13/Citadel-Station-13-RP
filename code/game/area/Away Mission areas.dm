@@ -28,7 +28,7 @@
 	//Handles random flora placement for floracountmax, as defined/randomized in initialize of each individual area.
 	spawn_flora_on_turf()
 	
-	world << "Away mission spawning done."
+	to_chat(world, "Away mission spawning done.")
 
 /area/awaymission/proc/spawn_mob_on_turf()
 	if(!valid_mobs.len)

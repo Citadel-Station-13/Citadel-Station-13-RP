@@ -24,7 +24,7 @@
 		user.weight -= 0.025 * weightloss_power * (0.01*user.weight_loss)
 		flick("[icon_state]2",src)
 		var/message = pick(messages)
-		user << "<span class='notice'>[message].</span>"
+		to_chat(user, "<span class='notice'>[message].</span>")
 		for(var/s in workout_sounds)
 			playsound(src.loc, s, 50, 1)
 

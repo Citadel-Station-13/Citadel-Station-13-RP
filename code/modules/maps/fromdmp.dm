@@ -141,9 +141,9 @@ proc/dmp2swapmap(filename)
 		txt=""
 		for(i=0,i<areas.len,++i)
 			txt+="[i?", ":""]object(\".[i]\")"
-		F << "\tareas = list([txt])"
+		to_chat(F, "\tareas = list([txt])")
 		for(i=0,i<areas.len,++i)
-			F << "\t\t.[i]"
+			to_chat(F, "\t\t.[i]")
 			txt=d2sm_ConvertType(areas[i+1],"\t\t\t")
 			F << copytext(txt,1,length(txt))
 
@@ -168,23 +168,23 @@ proc/dmp2swapmap(filename)
 			_x=max(_x,(j-i-1)/codelen)
 			i=j
 		// print out this z-level now
-		F << "\t[coords[3]]"
+		to_chat(F, "\t[coords[3]]")
 		i=1
 		for(var/y=_y,y>0,--y)	// map is top-down
 			++i
-			F << "\t\t[y]"
+			to_chat(F, "\t\t[y]")
 			for(var/x in 1 to _x)
-				F << "\t\t\t[x]"
+				to_chat(F, "\t\t\t[x]")
 				j=i+codelen
 				F << codes[copytext(mtxt,i,j)]
 				i=j
 		txt=copytext(txt,k+1)
 	/* for(z in 1 to Z)
-		F << "\t[z]"
+		to_chat(F, "\t[z]")
 		for(var/y in 1 to Y)
-			F << "\t\t[y]"
+			to_chat(F, "\t\t[y]")
 			for(var/x in 1 to X)
-				F << "\t\t\t[x]"
+				to_chat(F, "\t\t\t[x]")
 				F << codes[pick(codes)] */
 
 proc/d2sm_ParseCommaList(txt)

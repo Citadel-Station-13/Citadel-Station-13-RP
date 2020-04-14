@@ -8,7 +8,7 @@
 	if(!holder)	return
 
 	if(!xenobio_controller || !xenobio_controller.gene_tag_masks)
-		usr << "Gene masks not set."
+		to_chat(usr, "Gene masks not set.")
 		return
 
 	for(var/mask in xenobio_controller.gene_tag_masks)

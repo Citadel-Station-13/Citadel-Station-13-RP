@@ -332,7 +332,7 @@ var/list/datum/power/changeling/powerinstances = list()
 
 
 	if(geneticpoints < Thepower.genomecost)
-		M.current << "We cannot evolve this... yet.  We must acquire more DNA."
+		to_chat(M.current, "We cannot evolve this... yet.  We must acquire more DNA.")
 		return
 
 	geneticpoints -= Thepower.genomecost

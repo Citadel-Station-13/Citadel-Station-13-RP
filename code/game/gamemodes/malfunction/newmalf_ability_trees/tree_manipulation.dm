@@ -46,7 +46,7 @@
 	var/mob/living/silicon/ai/user = usr
 	if(!ability_prechecks(user, price) || !ability_pay(user,price))
 		return
-	user << "Sending feedback pulse..."
+	to_chat(user, "Sending feedback pulse...")
 	for(var/obj/machinery/power/apc/AP in machines)
 		if(prob(5))
 			AP.overload_lighting()
@@ -62,7 +62,7 @@
 	var/mob/living/silicon/ai/user = usr
 
 	if(target && !istype(target))
-		user << "This is not a camera."
+		to_chat(user, "This is not a camera.")
 		return
 
 	if(!target)
@@ -81,33 +81,33 @@
 				if(!ability_pay(user, price))
 					return
 				target.reset_wires()
-				user << "Camera reactivated."
+				to_chat(user, "Camera reactivated.")
 		if("Add X-Ray")
 			if(target.isXRay())
-				user << "Camera already has X-Ray function."
+				to_chat(user, "Camera already has X-Ray function.")
 				return
 			else if(ability_pay(user, price))
 				target.upgradeXRay()
 				target.reset_wires()
-				user << "X-Ray camera module enabled."
+				to_chat(user, "X-Ray camera module enabled.")
 				return
 		if("Add Motion Sensor")
 			if(target.isMotion())
-				user << "Camera already has Motion Sensor function."
+				to_chat(user, "Camera already has Motion Sensor function.")
 				return
 			else if(ability_pay(user, price))
 				target.upgradeMotion()
 				target.reset_wires()
-				user << "Motion Sensor camera module enabled."
+				to_chat(user, "Motion Sensor camera module enabled.")
 				return
 		if("Add EMP Shielding")
 			if(target.isEmpProof())
-				user << "Camera already has EMP Shielding function."
+				to_chat(user, "Camera already has EMP Shielding function.")
 				return
 			else if(ability_pay(user, price))
 				target.upgradeEmpProof()
 				target.reset_wires()
-				user << "EMP Shielding camera module enabled."
+				to_chat(user, "EMP Shielding camera module enabled.")
 				return
 
 
@@ -122,7 +122,7 @@
 	if(!ability_prechecks(user, price) || !ability_pay(user, price))
 		return
 
-	user << "Emergency forcefield projection completed."
+	to_chat(user, "Emergency forcefield projection completed.")
 	new/obj/machinery/shield/malfai(T)
 	user.hacking = 1
 	spawn(20)

@@ -53,7 +53,7 @@
 					cap.Blend(img, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
 
 		var/file_name = "map_capture_x[tx]_y[ty]_z[tz]_r[range].png"
-		usr << "Saved capture in cache as [file_name]."
+		to_chat(usr, "Saved capture in cache as [file_name].")
 		usr << browse_rsc(cap, file_name)
 	else
-		usr << "Target coordinates are incorrect."
+		to_chat(usr, "Target coordinates are incorrect.")

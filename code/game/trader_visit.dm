@@ -9,7 +9,7 @@ var/can_call_traders = 1
 	set desc = "Invite players to join the Beruang."
 
 	if(!holder)
-		usr << "<span class='danger'>Only administrators may use this command.</span>"
+		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
 		return
 	if(!ticker)
 		usr << "<span class='danger'>The game hasn't started yet!</span>"
@@ -40,19 +40,19 @@ client/verb/JoinTraders()
 	set category = "IC"
 
 	if(!MayRespawn(1))
-		usr << "<span class='warning'>You cannot join the traders.</span>"
+		to_chat(usr, "<span class='warning'>You cannot join the traders.</span>")
 		return
 
 	if(istype(usr,/mob/observer/dead) || istype(usr,/mob/new_player))
 		if(!send_beruang)
-			usr << "The Beruang is not currently heading to the station."
+			to_chat(usr, "The Beruang is not currently heading to the station.")
 			return
 		if(traders.current_antagonists.len >= traders.hard_cap)
 			usr << "The number of trader slots is already full!"
 			return
 		traders.create_default(usr)
 	else
-		usr << "You need to be an observer or new player to use this."
+		to_chat(usr, "You need to be an observer or new player to use this.")
 
 proc/trigger_trader_visit()
 	if(!can_call_traders)
