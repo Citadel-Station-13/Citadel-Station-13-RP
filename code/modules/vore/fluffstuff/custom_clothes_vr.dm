@@ -1312,6 +1312,14 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_command"
 	item_state = "trek_ds9_command"
 
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.w_uniform == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/uniform.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
+
 /obj/item/clothing/under/rank/trek/engsec/ds9
 	desc = "The uniform worn by operations officers of the 2380s."
 	icon_state = "trek_engsec"
