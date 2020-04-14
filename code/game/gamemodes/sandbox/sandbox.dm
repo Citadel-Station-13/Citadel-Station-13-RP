@@ -13,5 +13,5 @@
 
 /datum/game_mode/sandbox/post_setup()
 	..()
-	if(SSemergencyshuttle)
-		SSemergencyshuttle.auto_recall = 1
+	if(emergency_shuttle)
+		emergency_shuttle.auto_recall = 1

@@ -37,7 +37,7 @@
 
 /mob/living/silicon/Destroy()
 	silicon_mob_list -= src
-	for(var/datum/alarm_handler/AH in SSalarms.all_handlers)
+	for(var/datum/alarm_handler/AH in alarm_manager.all_handlers)
 		AH.unregister_alarm(src)
 	return ..()
 
@@ -157,8 +157,8 @@
 
 // this function displays the shuttles ETA in the status panel if the shuttle has been called
 /mob/living/silicon/proc/show_emergency_shuttle_eta()
-	if(SSemergencyshuttle)
-		var/eta_status = SSemergencyshuttle.get_status_panel_eta()
+	if(emergency_shuttle)
+		var/eta_status = emergency_shuttle.get_status_panel_eta()
 		if(eta_status)
 			stat(null, eta_status)
 
@@ -411,7 +411,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)

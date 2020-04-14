@@ -20,7 +20,7 @@
 
 /obj/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
-	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -72,7 +72,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/shuttle = SSshuttle.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 

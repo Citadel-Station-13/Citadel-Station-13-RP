@@ -6,7 +6,7 @@
 	2. The map is initialized, and map objects are created.
 	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
 	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameSSticker is created.
+	5. The gameticker is created.
 
 */
 
@@ -87,10 +87,17 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
+	processScheduler = new
+	master_controller = new /datum/controller/game_controller()
+
+	processScheduler.deferSetupFor(/datum/controller/process/ticker)
+	processScheduler.setup()
+
 	Master.Initialize(10, FALSE)
 
-#if UNIT_TEST
 	spawn(1)
+		master_controller.setup()
+#if UNIT_TEST
 		initialize_unit_tests()
 #endif
 
@@ -200,6 +207,7 @@ GLOBAL_LIST(topic_status_cache)
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		//POLARIS START
+		processScheduler.stop()
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 		//END
@@ -325,7 +333,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	var/list/features = list()
 
-	if(SSticker)
+	if(ticker)
 		if(master_mode)
 			features += master_mode
 	else

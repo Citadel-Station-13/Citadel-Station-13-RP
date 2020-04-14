@@ -20,7 +20,7 @@
 	var/stance = STANCE_IDLE			// Determines if the mob should be doing a specific thing, e.g. attacking, following, standing around, etc.
 	var/intelligence_level = AI_NORMAL	// Adjust to make the AI be intentionally dumber, or make it more robust (e.g. dodging grenades).
 	var/autopilot = FALSE				// If true, the AI won't be deactivated if a client gets attached to the AI's mob.
-	var/busy = FALSE					// If true, the SSticker will skip processing this mob until this is false. Good for if you need the
+	var/busy = FALSE					// If true, the ticker will skip processing this mob until this is false. Good for if you need the
 										// mob to stay still (e.g. delayed attacking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 

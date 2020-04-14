@@ -68,7 +68,7 @@
 /* //Disabling the crash mechanics per request
 /datum/shuttle/ferry/tether_backup
 	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
-	category = /datum/shuttle/ferry/tether_backup // So SSshuttle.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
+	category = /datum/shuttle/ferry/tether_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
 	var/list/engines = list()
 	var/obj/machinery/computer/shuttle_control/tether_backup/computer
 
@@ -208,7 +208,7 @@
 		ASC.setup_routes()
 
 		//Redirect us onto that route instead
-		var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[name]
+		var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[name]
 		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
 		WS.web_master.future_destination = ASD
 		. = ..(departing,ASD.my_area,interim,travel_time,direction)

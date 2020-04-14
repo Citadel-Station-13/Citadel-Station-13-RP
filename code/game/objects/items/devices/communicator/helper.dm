@@ -393,7 +393,7 @@
 // code\game\machinery\computer\supply.dm, starting at line 55
 /obj/item/commcard/proc/get_supply_shuttle_status()
 	var/shuttle_status[0]
-	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 	if(shuttle)
 		if(shuttle.has_arrive_time())
 			shuttle_status["location"] = "In transit"
@@ -453,7 +453,7 @@
 // code\game\machinery\computer\supply.dm, starting at line 130
 /obj/item/commcard/proc/get_supply_orders()
 	var/orders[0]
-	for(var/datum/supply_order/S in SSsupply.order_history)
+	for(var/datum/supply_order/S in supply_controller.order_history)
 		orders[++orders.len] = list(
 				"ref" = "\ref[S]",
 				"status" = S.status,
@@ -476,7 +476,7 @@
 // code\game\machinery\computer\supply.dm, starting at line 147
 /obj/item/commcard/proc/get_supply_receipts()
 	var/receipts[0]
-	for(var/datum/exported_crate/E in SSsupply.exported_crates)
+	for(var/datum/exported_crate/E in supply_controller.exported_crates)
 		receipts[++receipts.len] = list(
 				"ref" = "\ref[E]",
 				"contents" = E.contents,
@@ -494,8 +494,8 @@
 // code\game\machinery\computer\supply.dm, starting at line 147
 /obj/item/commcard/proc/get_supply_pack_list()
 	var/supply_packs[0]
-	for(var/pack_name in SSsupply.supply_pack)
-		var/datum/supply_pack/P = SSsupply.supply_pack[pack_name]
+	for(var/pack_name in supply_controller.supply_pack)
+		var/datum/supply_pack/P = supply_controller.supply_pack[pack_name]
 		if(P.group == internal_data["supply_category"])
 			var/list/pack = list(
 					"name" = P.name,
@@ -520,7 +520,7 @@
 	return list(
 			"shuttle_auth" = (internal_data["supply_controls"] & SUP_SEND_SHUTTLE),
 			"order_auth" = (internal_data["supply_controls"] & SUP_ACCEPT_ORDERS),
-			"supply_points" = SSsupply.points,
+			"supply_points" = supply_controller.points,
 			"supply_categories" = all_supply_groups
 		)
 

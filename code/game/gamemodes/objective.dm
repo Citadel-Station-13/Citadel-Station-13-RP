@@ -23,7 +23,7 @@ datum/objective
 
 	proc/find_target()
 		var/list/possible_targets = list()
-		for(var/datum/mind/possible_target in SSticker.minds)
+		for(var/datum/mind/possible_target in ticker.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2))
 				possible_targets += possible_target
 		if(possible_targets.len > 0)
@@ -31,7 +31,7 @@ datum/objective
 
 
 	proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-		for(var/datum/mind/possible_target in SSticker.minds)
+		for(var/datum/mind/possible_target in ticker.minds)
 			if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 				target = possible_target
 				break
@@ -226,7 +226,7 @@ datum/objective/hijack
 	check_completion()
 		if(!owner.current || owner.current.stat)
 			return 0
-		if(!SSemergencyshuttle.returned())
+		if(!emergency_shuttle.returned())
 			return 0
 		if(issilicon(owner.current))
 			return 0
@@ -248,7 +248,7 @@ datum/objective/block
 	check_completion()
 		if(!istype(owner.current, /mob/living/silicon))
 			return 0
-		if(!SSemergencyshuttle.returned())
+		if(!emergency_shuttle.returned())
 			return 0
 		if(!owner.current)
 			return 0
@@ -266,7 +266,7 @@ datum/objective/silence
 	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and your story is the only one left."
 
 	check_completion()
-		if(!SSemergencyshuttle.returned())
+		if(!emergency_shuttle.returned())
 			return 0
 
 		for(var/mob/living/player in player_list)
@@ -291,7 +291,7 @@ datum/objective/escape
 			return 0
 		if(isbrain(owner.current))
 			return 0
-		if(!SSemergencyshuttle.returned())
+		if(!emergency_shuttle.returned())
 			return 0
 		if(!owner.current || owner.current.stat ==2)
 			return 0
@@ -612,13 +612,13 @@ datum/objective/capture
 /datum/objective/absorb
 	proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
 		target_amount = rand (lowbound,highbound)
-		if (SSticker)
+		if (ticker)
 			var/n_p = 1 //autowin
-			if (SSticker.current_state == GAME_STATE_SETTING_UP)
+			if (ticker.current_state == GAME_STATE_SETTING_UP)
 				for(var/mob/new_player/P in player_list)
 					if(P.client && P.ready && P.mind!=owner)
 						n_p ++
-			else if (SSticker.current_state == GAME_STATE_PLAYING)
+			else if (ticker.current_state == GAME_STATE_PLAYING)
 				for(var/mob/living/carbon/human/P in player_list)
 					if(P.client && !(P.mind.changeling) && P.mind!=owner)
 						n_p ++
@@ -644,7 +644,7 @@ datum/objective/heist/kidnap
 		var/list/possible_targets = list()
 		var/list/priority_targets = list()
 
-		for(var/datum/mind/possible_target in SSticker.minds)
+		for(var/datum/mind/possible_target in ticker.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2) && (!possible_target.special_role))
 				possible_targets += possible_target
 				for(var/role in roles)

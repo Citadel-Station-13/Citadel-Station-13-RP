@@ -323,14 +323,14 @@
 
 /obj/machinery/camera/proc/triggerCameraAlarm(var/duration = 0)
 	alarm_on = 1
-	SSalarms.camera_alarm.triggerAlarm(loc, src, duration)
+	camera_alarm.triggerAlarm(loc, src, duration)
 
 /obj/machinery/camera/proc/cancelCameraAlarm()
 	if(wires.IsIndexCut(CAMERA_WIRE_ALARM))
 		return
 
 	alarm_on = 0
-	SSalarms.camera_alarm.clearAlarm(loc, src)
+	camera_alarm.clearAlarm(loc, src)
 
 //if false, then the camera is listed as DEACTIVATED and cannot be used
 /obj/machinery/camera/proc/can_use()

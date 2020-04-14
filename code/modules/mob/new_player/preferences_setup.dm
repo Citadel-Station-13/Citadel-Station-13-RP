@@ -202,9 +202,9 @@
 	var/datum/job/previewJob
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	if(job_civilian_low & ASSISTANT)
-		previewJob = SSjobs.GetJob(USELESS_JOB)
+		previewJob = job_master.GetJob(USELESS_JOB)
 	else
-		for(var/datum/job/job in SSjobs.occupations)
+		for(var/datum/job/job in job_master.occupations)
 			var/job_flag
 			switch(job.department_flag)
 				if(CIVILIAN)

@@ -3,7 +3,7 @@
 // TURFS
 
 /proc/updateVisibility(atom/A, var/opacity_check = 1)
-	if(SSticker)
+	if(ticker)
 		for(var/datum/visualnet/VN in visual_nets)
 			VN.updateVisibility(A, opacity_check)
 

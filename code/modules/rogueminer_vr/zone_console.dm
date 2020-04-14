@@ -117,7 +117,7 @@
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
 	//Update shuttle destination.
-	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
+	var/datum/shuttle/ferry/S = shuttle_controller.shuttles["Belter"]
 	S.area_offsite = ZM_target.myshuttle
 
 	//Re-enable shuttle.
@@ -146,7 +146,7 @@
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return // Not usable if shuttle is in occupied zone
 	// Okay do it
-	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
+	var/datum/shuttle/ferry/S = shuttle_controller.shuttles["Belter"]
 	S.launch(usr)
 
 /obj/item/circuitboard/roguezones

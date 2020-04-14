@@ -8,39 +8,39 @@ SUBSYSTEM_DEF(server_maint)
 	init_order = INIT_ORDER_SERVER_MAINT
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	var/list/currentrun
-	var/cleanup_SSticker = 0
+	var/cleanup_ticker = 0
 
 /datum/controller/subsystem/server_maint/fire(resumed = FALSE)
 	if(!resumed)
 		if(listclearnulls(GLOB.clients))
 			log_world("Found a null in clients list!")
 		src.currentrun = GLOB.clients.Copy()
-		switch (cleanup_SSticker) // do only one of these at a time, once per 5 fires
+		switch (cleanup_ticker) // do only one of these at a time, once per 5 fires
 			if (0)
 				if(listclearnulls(player_list))
 					log_world("Found a null in player_list!")
-				cleanup_SSticker++
+				cleanup_ticker++
 			if (5)
 				if(listclearnulls(mob_list))
 					log_world("Found a null in mob_list!")
-				cleanup_SSticker++
+				cleanup_ticker++
 			if (10)
 				if(listclearnulls(living_mob_list))
 					log_world("Found a null in living_mob_list!")
-				cleanup_SSticker++
+				cleanup_ticker++
 			if (15)
 				if(listclearnulls(dead_mob_list))
 					log_world("Found a null in dead_mob_list!")
-				cleanup_SSticker++
+				cleanup_ticker++
 			if (20)
-				cleanup_SSticker = 0
+				cleanup_ticker = 0
 			else
-				cleanup_SSticker++
+				cleanup_ticker++
 
 	var/list/currentrun = src.currentrun
 
 	/*
-	var/round_started = SSSSticker.HasRoundStarted()
+	var/round_started = SSticker.HasRoundStarted()
 
 	var/kick_inactive = CONFIG_GET(flag/kick_inactive)
 	var/afk_period

@@ -49,7 +49,7 @@
 /obj/machinery/camera/New()
 	..()
 	//Camera must be added to global list of all cameras no matter what...
-	if(cameranet.cameras_unsorted || !SSticker)
+	if(cameranet.cameras_unsorted || !ticker)
 		cameranet.cameras += src
 		cameranet.cameras_unsorted = 1
 	else

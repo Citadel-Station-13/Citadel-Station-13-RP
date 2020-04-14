@@ -58,7 +58,7 @@
 
 	var/obj/structure/ghost_pod/ghost_activated/human/HP = new (target_turf)
 
-	if(severity == EVENT_LEVEL_MUNDANE || istype(SSticker.mode, /datum/game_mode/extended))
+	if(severity == EVENT_LEVEL_MUNDANE || istype(ticker.mode, /datum/game_mode/extended))
 		HP.make_antag = MODE_STOWAWAY
 
 	else if(severity == EVENT_LEVEL_MODERATE)

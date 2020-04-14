@@ -86,7 +86,7 @@
 
 	var/dat
 
-	if(!(SSticker))
+	if(!(ticker))
 		return
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
@@ -474,15 +474,15 @@
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
 
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(to_despawn.mind.objectives.len)
 		qdel(to_despawn.mind.objectives)
 		to_despawn.mind.special_role = null
 
 	//else
-		//if(SSticker.mode.name == "AutoTraitor")
-			//var/datum/game_mode/traitor/autotraitor/current_mode = SSticker.mode
+		//if(ticker.mode.name == "AutoTraitor")
+			//var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
 			//current_mode.possible_traitors.Remove(to_despawn)
 
 	// Delete them from datacore.

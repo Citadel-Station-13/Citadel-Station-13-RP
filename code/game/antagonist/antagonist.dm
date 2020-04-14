@@ -105,7 +105,7 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	candidates = SSticker.mode.get_players_for_role(role_type, id, ghosts_only)
+	candidates = ticker.mode.get_players_for_role(role_type, id, ghosts_only)
 	for(var/datum/mind/player in candidates)
 		if(ghosts_only && !istype(player.current, /mob/observer/dead))
 			candidates -= player
@@ -141,10 +141,10 @@
 		if(players && players.len)
 			player = pick(players)
 	if(!istype(player))
-		message_admins("[uppertext(SSticker.mode.name)]: Failed to find a candidate for [role_text].")
+		message_admins("[uppertext(ticker.mode.name)]: Failed to find a candidate for [role_text].")
 		return 0
 	player.current << "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>"
-	message_admins("[uppertext(SSticker.mode.name)]: Selected [player] as a [role_text].")
+	message_admins("[uppertext(ticker.mode.name)]: Selected [player] as a [role_text].")
 	if(istype(player.current, /mob/observer/dead))
 		create_default(player.current)
 	else

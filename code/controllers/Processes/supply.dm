@@ -1,30 +1,3 @@
-SUBSYSTEM_DEF(supply)
-	name = "Supply"
-	wait = 300
-	//supply points
-	var/points = 50
-	var/points_per_second = 1.5 / 30
-	var/points_per_slip = 2
-	var/points_per_money = 0.02 // 1 point for $50
-	//control
-	var/ordernum
-	var/list/shoppinglist = list()			// Approved orders
-	var/list/supply_pack = list()			// All supply packs
-	var/list/exported_crates = list()		// Crates sent from the station
-	var/list/order_history = list()			// History of orders, showing edits made by users
-	var/list/adm_order_history = list() 	// Complete history of all orders, for admin use
-	var/list/adm_export_history = list()	// Complete history of all crates sent back on the shuttle, for admin use
-	//shuttle movement
-	var/movetime = 1200
-	var/datum/shuttle/ferry/supply/shuttle
-	var/list/material_points_conversion = list( // Any materials not named in this list are worth 0 points
-			"phoron" = 5,
-			"platinum" = 5,
-			"gold" = 2,// CIT CHANGE: Gold is now worth 2 cargo points per sheet
-			"silver" = 2,// CIT CHANGE: Silver is now worth 2 cargo points per sheet
-			"uranium" = 1 // CIT CHANGE: Uranium is now worth 1 cargo point per sheet
-		)
-
 //Config stuff
 #define SUPPLY_DOCKZ 2				//Z-level of the Dock.
 #define SUPPLY_STATIONZ 1			//Z-level of the Station.
@@ -52,21 +25,54 @@ SUBSYSTEM_DEF(supply)
 	var/value
 	var/list/contents
 
-/datum/controller/subsystem/supply/Initialize()
+var/datum/controller/supply/supply_controller = new()
+
+/datum/controller/supply
+	//supply points
+	var/points = 50
+	var/points_per_process = 1.5
+	var/points_per_slip = 2
+	var/points_per_money = 0.02 // 1 point for $50
+	//control
+	var/ordernum
+	var/list/shoppinglist = list()			// Approved orders
+	var/list/supply_pack = list()			// All supply packs
+	var/list/exported_crates = list()		// Crates sent from the station
+	var/list/order_history = list()			// History of orders, showing edits made by users
+	var/list/adm_order_history = list() 	// Complete history of all orders, for admin use
+	var/list/adm_export_history = list()	// Complete history of all crates sent back on the shuttle, for admin use
+	//shuttle movement
+	var/movetime = 1200
+	var/datum/shuttle/ferry/supply/shuttle
+	var/list/material_points_conversion = list( // Any materials not named in this list are worth 0 points
+			"phoron" = 5,
+			"platinum" = 5,
+			"gold" = 2,// CIT CHANGE: Gold is now worth 2 cargo points per sheet
+			"silver" = 2,// CIT CHANGE: Silver is now worth 2 cargo points per sheet
+			"uranium" = 1 // CIT CHANGE: Uranium is now worth 1 cargo point per sheet
+		)
+
+/datum/controller/supply/New()
 	ordernum = rand(1,9000)
 
 	for(var/typepath in subtypesof(/datum/supply_pack))
 		var/datum/supply_pack/P = new typepath()
 		supply_pack[P.name] = P
-	return ..()
 
-// Supply shuttle SSticker - handles supply point regeneration
+/datum/controller/process/supply/setup()
+	name = "supply controller"
+	schedule_interval = 300 // every 30 seconds
+
+/datum/controller/process/supply/doWork()
+	supply_controller.process()
+
+// Supply shuttle ticker - handles supply point regeneration
 // This is called by the process scheduler every thirty seconds
-/datum/controller/subsystem/supply/fire(resumed)
-	points += max(0, ((world.time - last_fire) / 10) * points_per_second)
+/datum/controller/supply/process()
+	points += points_per_process
 
 //To stop things being sent to CentCom which should not be sent to centcomm. Recursively checks for these types.
-/datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
+/datum/controller/supply/proc/forbidden_atoms_check(atom/A)
 	if(isliving(A))
 		return 1
 	if(istype(A,/obj/item/disk/nuclear))
@@ -83,7 +89,7 @@ SUBSYSTEM_DEF(supply)
 			return 1
 
 //Selling
-/datum/controller/subsystem/supply/proc/sell()
+/datum/controller/supply/proc/sell()
 	var/area/area_shuttle = shuttle.get_location_area()
 	if(!area_shuttle)
 		return
@@ -163,7 +169,7 @@ SUBSYSTEM_DEF(supply)
 		qdel(MA)
 
 //Buying
-/datum/controller/subsystem/supply/proc/buy()
+/datum/controller/supply/proc/buy()
 	var/list/shoppinglist = list()
 	for(var/datum/supply_order/SO in order_history)
 		if(SO.status == SUP_ORDER_APPROVED)
@@ -259,9 +265,9 @@ SUBSYSTEM_DEF(supply)
 	return
 
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
-/datum/controller/subsystem/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
+/datum/controller/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
 	// Not enough points to purchase the crate
-	if(SSsupply.points <= O.object.cost)
+	if(supply_controller.points <= O.object.cost)
 		return FALSE
 
 	// Based on the current model, there shouldn't be any entries in order_history, requestlist, or shoppinglist, that aren't matched in adm_order_history
@@ -288,11 +294,11 @@ SUBSYSTEM_DEF(supply)
 	adm_order.approved_at = stationdate2text() + " - " + stationtime2text()
 
 	// Deduct cost
-	SSsupply.points -= O.object.cost
+	supply_controller.points -= O.object.cost
 	return TRUE
 
 // Will deny the specified order. Only useful if the order is currently requested, but available at any status
-/datum/controller/subsystem/supply/proc/deny_order(var/datum/supply_order/O, var/mob/user)
+/datum/controller/supply/proc/deny_order(var/datum/supply_order/O, var/mob/user)
 	// Based on the current model, there shouldn't be any entries in order_history, requestlist, or shoppinglist, that aren't matched in adm_order_history
 	var/datum/supply_order/adm_order
 	for(var/datum/supply_order/temp in adm_order_history)
@@ -318,22 +324,22 @@ SUBSYSTEM_DEF(supply)
 	return
 
 // Will deny all requested orders
-/datum/controller/subsystem/supply/proc/deny_all_pending(var/mob/user)
+/datum/controller/supply/proc/deny_all_pending(var/mob/user)
 	for(var/datum/supply_order/O in order_history)
 		if(O.status == SUP_ORDER_REQUESTED)
 			deny_order(O, user)
 
 // Will delete the specified order from the user-side list
-/datum/controller/subsystem/supply/proc/delete_order(var/datum/supply_order/O, var/mob/user)
+/datum/controller/supply/proc/delete_order(var/datum/supply_order/O, var/mob/user)
 	// Making sure they know what they're doing
 	if(alert(user, "Are you sure you want to delete this record? If it has been approved, cargo points will NOT be refunded!", "Delete Record","No","Yes") == "Yes")
 		if(alert(user, "Are you really sure? There is no way to recover the order once deleted.", "Delete Record", "No", "Yes") == "Yes")
 			log_admin("[key_name(user)] has deleted supply order \ref[O] [O] from the user-side order history.")
-			SSsupply.order_history -= O
+			supply_controller.order_history -= O
 	return
 
 // Will generate a new, requested order, for the given supply pack type
-/datum/controller/subsystem/supply/proc/create_order(var/datum/supply_pack/S, var/mob/user, var/reason)
+/datum/controller/supply/proc/create_order(var/datum/supply_pack/S, var/mob/user, var/reason)
 	var/datum/supply_order/new_order = new()
 	var/datum/supply_order/adm_order = new() // Admin-recorded order must be a separate copy in memory, or user-made edits will corrupt it
 
@@ -368,16 +374,16 @@ SUBSYSTEM_DEF(supply)
 	adm_order_history += adm_order
 
 // Will delete the specified export receipt from the user-side list
-/datum/controller/subsystem/supply/proc/delete_export(var/datum/exported_crate/E, var/mob/user)
+/datum/controller/supply/proc/delete_export(var/datum/exported_crate/E, var/mob/user)
 	// Making sure they know what they're doing
 	if(alert(user, "Are you sure you want to delete this record?", "Delete Record","No","Yes") == "Yes")
 		if(alert(user, "Are you really sure? There is no way to recover the receipt once deleted.", "Delete Record", "No", "Yes") == "Yes")
 			log_admin("[key_name(user)] has deleted export receipt \ref[E] [E] from the user-side export history.")
-			SSsupply.exported_crates -= E
+			supply_controller.exported_crates -= E
 	return
 
 // Will add an item entry to the specified export receipt on the user-side list
-/datum/controller/subsystem/supply/proc/add_export_item(var/datum/exported_crate/E, var/mob/user)
+/datum/controller/supply/proc/add_export_item(var/datum/exported_crate/E, var/mob/user)
 	var/new_name = input(user, "Name", "Please enter the name of the item.") as null|text
 	if(!new_name)
 		return

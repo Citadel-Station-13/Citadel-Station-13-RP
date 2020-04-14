@@ -90,7 +90,7 @@
 	msg += "Allow Midround Antagonists: [length(CONFIG_GET(keyed_list/midround_antag))] of [config.modes.len] roundtypes"
 	if(CONFIG_GET(flag/show_game_type_odds))
 		var/list/probabilities = CONFIG_GET(keyed_list/probability)
-		if(SSSSticker.IsRoundInProgress())
+		if(SSticker.IsRoundInProgress())
 			var/prob_sum = 0
 			var/current_odds_differ = FALSE
 			var/list/probs = list()
@@ -102,7 +102,7 @@
 				var/ctag = initial(M.config_tag)
 				if(!(ctag in probabilities))
 					continue
-				if((min_pop[ctag] && (min_pop[ctag] > SSSSticker.totalPlayersReady)) || (max_pop[ctag] && (max_pop[ctag] < SSSSticker.totalPlayersReady)) || (initial(M.required_players) > SSSSticker.totalPlayersReady))
+				if((min_pop[ctag] && (min_pop[ctag] > SSticker.totalPlayersReady)) || (max_pop[ctag] && (max_pop[ctag] < SSticker.totalPlayersReady)) || (initial(M.required_players) > SSticker.totalPlayersReady))
 					current_odds_differ = TRUE
 					continue
 				probs[ctag] = 1

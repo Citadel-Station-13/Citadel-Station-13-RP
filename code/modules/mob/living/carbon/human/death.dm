@@ -84,9 +84,9 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 80, 1, 1)
 
-	if(SSticker && SSticker.mode)
+	if(ticker && ticker.mode)
 		sql_report_death(src)
-		SSticker.mode.check_win()
+		ticker.mode.check_win()
 
 	if(wearing_rig)
 		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")

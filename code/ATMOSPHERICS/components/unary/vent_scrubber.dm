@@ -154,6 +154,11 @@
 
 		power_draw = pump_gas(src, environment, air_contents, transfer_moles, power_rating)
 
+	if(scrubbing && power_draw < 0 && controller_iteration > 10)	//99% of all scrubbers
+		//Fucking hibernate because you ain't doing shit.
+		hibernate = 1
+		spawn(rand(100,200))	//hibernate for 10 or 20 seconds randomly
+			hibernate = 0
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw

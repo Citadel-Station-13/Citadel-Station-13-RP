@@ -2,7 +2,7 @@
 	name = "Prison Warp"
 
 /datum/admin_secret_item/admin_secret/prison_warp/can_execute(var/mob/user)
-	if(!SSticker) return 0
+	if(!ticker) return 0
 	return ..()
 
 /datum/admin_secret_item/admin_secret/prison_warp/execute(var/mob/user)

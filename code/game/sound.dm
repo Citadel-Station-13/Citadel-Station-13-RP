@@ -165,7 +165,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
 
 /client/proc/playtitlemusic()
-	if(!SSticker || !all_lobby_tracks.len || !media)	return
+	if(!ticker || !all_lobby_tracks.len || !media)	return
 	if(is_preference_enabled(/datum/client_preference/play_lobby_music))
 		var/datum/track/T = pick(all_lobby_tracks)
 		media.push_music(T.url, world.time, 0.85)

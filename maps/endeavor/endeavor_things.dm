@@ -91,7 +91,7 @@
 	spawnpoint_type = /datum/spawnpoint/ferry
 
 /obj/machinery/cryopod/robot/door/ferry/process()
-	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
+	if(emergency_shuttle.online() || emergency_shuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
 		time_till_despawn = 0
 		..()

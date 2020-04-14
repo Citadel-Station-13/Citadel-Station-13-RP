@@ -20,21 +20,21 @@
 
 /datum/shuttle/New()
 	..()
-	if(src.name in SSshuttle.shuttles)
+	if(src.name in shuttle_controller.shuttles)
 		CRASH("A shuttle with the name '[name]' is already defined.")
-	SSshuttle.shuttles[src.name] = src
+	shuttle_controller.shuttles[src.name] = src
 	if(flags & SHUTTLE_FLAGS_PROCESS)
-		SSshuttle.process_shuttles += src
+		shuttle_controller.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
-		if(SSsupply.shuttle)
+		if(supply_controller.shuttle)
 			CRASH("A supply shuttle is already defined.")
-		SSsupply.shuttle = src
+		supply_controller.shuttle = src
 
 /datum/shuttle/Destroy()
-	SSshuttle.shuttles -= src.name
-	SSshuttle.process_shuttles -= src
-	if(SSsupply.shuttle == src)
-		SSsupply.shuttle = null
+	shuttle_controller.shuttles -= src.name
+	shuttle_controller.process_shuttles -= src
+	if(supply_controller.shuttle == src)
+		supply_controller.shuttle = null
 	. = ..()
 
 /datum/shuttle/process()

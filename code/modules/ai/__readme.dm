@@ -15,7 +15,7 @@ its 'ai_holder_type' variable to the path of the AI that is desired.
 
 In previous iterations of AI systems, the AI is generally written into the mob's code directly,
 which has some advantages, but often makes the code rigid, and also tied the speed of the AI
-to the mob's own SSticker, meaning it could only decide every two seconds.
+to the mob's own ticker, meaning it could only decide every two seconds.
 
 Instead, this version has the code for the AI held inside an /datum/ai_holder object,
 which is carried by the mob it controls. This gives some advantages;

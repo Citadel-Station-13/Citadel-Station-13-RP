@@ -79,9 +79,9 @@
 	if(current_viewing_message)
 		data["message_current"] = current_viewing_message
 
-	if(SSemergencyshuttle.location())
+	if(emergency_shuttle.location())
 		data["have_shuttle"] = 1
-		if(SSemergencyshuttle.online())
+		if(emergency_shuttle.online())
 			data["have_shuttle_called"] = 1
 		else
 			data["have_shuttle_called"] = 0

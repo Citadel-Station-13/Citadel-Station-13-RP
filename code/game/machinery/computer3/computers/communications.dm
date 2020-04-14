@@ -139,7 +139,7 @@
 			return
 		if(authenticated)
 			call_shuttle_proc(usr)
-			if(SSemergencyshuttle.online())
+			if(emergency_shuttle.online())
 				post_status("shuttle")
 		state = STATE_DEFAULT
 
@@ -296,8 +296,8 @@
 /datum/file/program/communications/proc/main_menu()
 	var/dat = ""
 	if (computer.radio.subspace)
-		if(SSemergencyshuttle.online() && SSemergencyshuttle.location())
-			var/timeleft = SSemergencyshuttle.estimate_arrival_time()
+		if(emergency_shuttle.online() && emergency_shuttle.location())
+			var/timeleft = emergency_shuttle.estimate_arrival_time()
 			dat += "<B>Emergency shuttle</B>\n<BR>\nETA: [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]<BR>"
 			refresh = 1
 		else
@@ -313,8 +313,8 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];RestoreBackup'>Restore Backup Routing Data</A> \]"
 
 			dat += "<BR>\[ <A HREF='?src=\ref[src];changeseclevel'>Change alert level</A> \]"
-		if(SSemergencyshuttle.location())
-			if (SSemergencyshuttle.online())
+		if(emergency_shuttle.location())
+			if (emergency_shuttle.online())
 				dat += "<BR>\[ <A HREF='?src=\ref[src];cancelshuttle'>Cancel Shuttle Call</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];callshuttle'>Call Emergency Shuttle</A> \]"

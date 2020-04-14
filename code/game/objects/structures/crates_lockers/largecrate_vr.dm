@@ -116,7 +116,7 @@
 
 /obj/structure/largecrate/animal/catgirl
 	name = "Catgirl Crate"
-	desc = "A sketchy looking crate with airholes that seems to have had most marks and sSStickers removed. You can almost make out 'genetically-engineered subject' written on it."
+	desc = "A sketchy looking crate with airholes that seems to have had most marks and stickers removed. You can almost make out 'genetically-engineered subject' written on it."
 	starts_with = list(/mob/living/simple_mob/vore/catgirl)
 
 /obj/structure/largecrate/animal/wolfgirl

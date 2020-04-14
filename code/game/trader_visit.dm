@@ -11,10 +11,10 @@ var/can_call_traders = 1
 	if(!holder)
 		usr << "<span class='danger'>Only administrators may use this command.</span>"
 		return
-	if(!SSticker)
+	if(!ticker)
 		usr << "<span class='danger'>The game hasn't started yet!</span>"
 		return
-	if(SSticker.current_state == 1)
+	if(ticker.current_state == 1)
 		usr << "<span class='danger'>The round hasn't started yet!</span>"
 		return
 	if(send_beruang)

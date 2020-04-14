@@ -212,9 +212,9 @@ var/list/sacrificed = list()
 					narsie_cometh = 1
 
 					spawn(10 SECONDS)
-						if(SSemergencyshuttle)
-							SSemergencyshuttle.call_evac()
-							SSemergencyshuttle.launch_time = 0	// Cannot recall
+						if(emergency_shuttle)
+							emergency_shuttle.call_evac()
+							emergency_shuttle.launch_time = 0	// Cannot recall
 
 				log_and_message_admins_many(cultists, "summoned the end of days.")
 //				new /obj/singularity/narsie/large(src.loc)
@@ -390,10 +390,10 @@ var/list/sacrificed = list()
 				"<span class='danger'>You hear a thousand voices, all crying in pain.</span>")
 				body_to_sacrifice.gib()
 
-//			if(SSticker.mode.name == "cult")
-//				SSticker.mode:add_cultist(corpse_to_raise.mind)
+//			if(ticker.mode.name == "cult")
+//				ticker.mode:add_cultist(corpse_to_raise.mind)
 //			else
-//				SSticker.mode.cult |= corpse_to_raise.mind
+//				ticker.mode.cult |= corpse_to_raise.mind
 
 				corpse_to_raise << "<span class='cult'>Your blood pulses. Your head throbs. The world goes red. All at once you are aware of a horrible, horrible truth. The veil of reality has been ripped away and in the festering wound left behind something sinister takes root.</span>"
 				corpse_to_raise << "<span class='cult'>Assist your new compatriots in their dark dealings. Their goal is yours, and yours is theirs. You serve the Dark One above all else. Bring It back.</span>"
@@ -680,7 +680,7 @@ var/list/sacrificed = list()
 					if(lamb.species.rarity_value > 3)
 						worth = 1
 
-				if (SSticker.mode.name == "cult")
+				if (ticker.mode.name == "cult")
 					if(H.mind == cult.sacrifice_target)
 						if(cultsinrange.len >= 3)
 							sacrificed += H.mind
@@ -1005,7 +1005,7 @@ var/list/sacrificed = list()
 		bloodboil() //cultists need at least one DANGEROUS rune. Even if they're all stealthy.
 /*
 			var/list/mob/living/carbon/cultists = new
-			for(var/datum/mind/H in SSticker.mode.cult)
+			for(var/datum/mind/H in ticker.mode.cult)
 				if (istype(H.current,/mob/living/carbon))
 					cultists+=H.current
 */

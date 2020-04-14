@@ -31,7 +31,7 @@
 
 	dunebuggy
 		name = "Research Dune Buggy"
-		desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sSSticker that says to wear EVA suits if used in space."
+		desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sticker that says to wear EVA suits if used in space."
 		icon = 'icons/vore/rover_vr.dmi'
 		icon_state = "dunebug"
 

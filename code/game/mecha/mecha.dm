@@ -1372,7 +1372,7 @@
 						<script language='javascript' type='text/javascript'>
 						[js_byjax]
 						[js_dropdowns]
-						function SSticker() {
+						function ticker() {
 						    setInterval(function(){
 						        window.location='byond://?src=\ref[src]&update_content=1';
 						    }, 1000);
@@ -1380,7 +1380,7 @@
 
 						window.onload = function() {
 							dropdowns();
-							SSticker();
+							ticker();
 						}
 						</script>
 						</head>

@@ -1,10 +1,17 @@
-SUBSYSTEM_DEF(turbolifts)
-	name = "Turbolifts"
-	flags = SS_NO_TICK_CHECK
-	wait = 10
-	var/static/list/moving_lifts = list()
+var/datum/controller/process/turbolift/turbolift_controller
 
-/datum/controller/subsystem/turbolifts/fire(resumed)
+/datum/controller/process/turbolift
+	var/list/moving_lifts = list()
+
+/datum/controller/process/turbolift/New()
+	..()
+	turbolift_controller = src
+
+/datum/controller/process/turbolift/setup()
+	name = "turbolift controller"
+	schedule_interval = 10
+
+/datum/controller/process/turbolift/doWork()
 	for(var/liftref in moving_lifts)
 		if(world.time < moving_lifts[liftref])
 			continue
@@ -23,6 +30,7 @@ SUBSYSTEM_DEF(turbolifts)
 			else
 				lift_is_moving(lift,floor_delay)
 			lift.busy = 0
+		SCHECK
 
-/datum/controller/subsystem/turbolifts/proc/lift_is_moving(var/datum/turbolift/lift,var/floor_delay)
+/datum/controller/process/turbolift/proc/lift_is_moving(var/datum/turbolift/lift,var/floor_delay)
 	moving_lifts["\ref[lift]"] = world.time + floor_delay

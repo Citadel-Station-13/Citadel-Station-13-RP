@@ -42,15 +42,15 @@
 
 /datum/nano_module/alarm_monitor/all/New()
 	..()
-	alarm_handlers = SSalarms.all_handlers
+	alarm_handlers = alarm_manager.all_handlers
 
 /datum/nano_module/alarm_monitor/engineering/New()
 	..()
-	alarm_handlers = list(SSalarms.atmosphere_alarm, SSalarms.fire_alarm, SSalarms.power_alarm)
+	alarm_handlers = list(atmosphere_alarm, fire_alarm, power_alarm)
 
 /datum/nano_module/alarm_monitor/security/New()
 	..()
-	alarm_handlers = list(SSalarms.camera_alarm, SSalarms.motion_alarm)
+	alarm_handlers = list(camera_alarm, motion_alarm)
 
 /datum/nano_module/alarm_monitor/proc/register_alarm(var/object, var/procName)
 	for(var/datum/alarm_handler/AH in alarm_handlers)

@@ -2,9 +2,8 @@
 // previous ones, checking various things like player count, department size and composition, individual player activity,
 // individual player (IC) skill, and such, in order to try to choose the best actions to take in order to add spice or variety to
 // the round.
-SUBSYSTEM_DEF(gamemaster)
-	name = "Game Master"
-	wait = 600
+
+/datum/game_master
 	var/suspended = TRUE 				// If true, it will not do anything.
 	var/ignore_time_restrictions = FALSE// Useful for debugging without needing to wait 20 minutes each time.
 	var/list/available_actions = list()	// A list of 'actions' that the GM has access to, to spice up a round, such as events.
@@ -16,7 +15,8 @@ SUBSYSTEM_DEF(gamemaster)
 	var/next_action = 0					// Minimum amount of time of nothingness until the GM can pick something again.
 	var/last_department_used = null		// If an event was done for a specific department, it is written here, so it doesn't do it again.
 
-/datum/controller/subsystem/gamemaster/Initialize()
+/datum/game_master/New()
+	..()
 	available_actions = init_subtypes(/datum/gm_action)
 	for(var/datum/gm_action/action in available_actions)
 		action.gm = src
@@ -30,10 +30,9 @@ SUBSYSTEM_DEF(gamemaster)
 					suspended = FALSE
 			else
 				sleep(30 SECONDS)
-	return ..()
 
-/datum/controller/subsystem/gamemaster/fire(resumed)
-	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING && !suspended)
+/datum/game_master/process()
+	if(ticker && ticker.current_state == GAME_STATE_PLAYING && !suspended)
 		adjust_staleness(1)
 		adjust_danger(-1)
 		ticks_completed++
@@ -49,9 +48,9 @@ SUBSYSTEM_DEF(gamemaster)
 			start_action()
 
 // This is run before committing to an action/event.
-/datum/controller/subsystem/gamemaster/proc/pre_action_checks()
-	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-		log_debug("Game Master unable to start event: SSticker is nonexistant, or the game is not ongoing.")
+/datum/game_master/proc/pre_action_checks()
+	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+		log_debug("Game Master unable to start event: Ticker is nonexistant, or the game is not ongoing.")
 		return FALSE
 	if(suspended)
 		return FALSE
@@ -70,7 +69,7 @@ SUBSYSTEM_DEF(gamemaster)
 		return FALSE
 	return TRUE
 
-/datum/controller/subsystem/gamemaster/proc/start_action()
+/datum/game_master/proc/start_action()
 	if(!pre_action_checks()) // Make sure we're not doing last minute events, or early events.
 		return
 	log_debug("Game Master now starting action decision.")
@@ -89,7 +88,7 @@ SUBSYSTEM_DEF(gamemaster)
 			log_debug("[choice.name] was chosen by the Game Master, and is now being ran.")
 			run_action(choice)
 
-/datum/controller/subsystem/gamemaster/proc/run_action(var/datum/gm_action/action)
+/datum/game_master/proc/run_action(var/datum/gm_action/action)
 	action.set_up()
 	action.start()
 	action.announce()
@@ -102,7 +101,7 @@ SUBSYSTEM_DEF(gamemaster)
 	last_department_used = action.departments[1]
 
 
-/datum/controller/subsystem/gamemaster/proc/decide_best_action(var/list/most_active_departments)
+/datum/game_master/proc/decide_best_action(var/list/most_active_departments)
 	if(!most_active_departments.len) // Server's empty?
 		log_debug("Game Master failed to find any active departments.")
 		return list()
