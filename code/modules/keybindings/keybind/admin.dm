@@ -6,7 +6,7 @@
 	return user.holder ? TRUE : FALSE
 
 /datum/keybinding/admin/admin_say
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("F5")
 	name = "admin_say"
 	full_name = "Admin say"
 	description = "Talk with other admins."
@@ -26,7 +26,7 @@
 	return TRUE
 
 /datum/keybinding/admin/player_panel_new
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("F6")
 	name = "player_panel_new"
 	full_name = "Player Panel New"
 	description = "Opens up the new player panel"
@@ -56,13 +56,23 @@
 	return TRUE
 
 /datum/keybinding/admin/invisimin
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("F8")
 	name = "invisimin"
 	full_name = "Admin invisibility"
 	description = "Toggles ghost-like invisibility (Don't abuse this)"
 
 /datum/keybinding/admin/invisimin/down(client/user)
 	user.invisimin()
+	return TRUE
+
+/datum/keybinding/admin/admin_pm_mob
+	hotkey_keys = list("F7")
+	name = "admin_pm_mob"
+	full_name = "Admin PM Mob"
+	description = "Admin PMs a mob from the player list"
+
+/datum/keybinding/admin/invisimin/down(client/user)
+	user.cmd_admin_pm_panel()
 	return TRUE
 
 /datum/keybinding/admin/deadsay

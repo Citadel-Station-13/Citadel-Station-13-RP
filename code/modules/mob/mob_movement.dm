@@ -9,50 +9,6 @@
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
 
-/client/Northeast()
-	diagonal_action(NORTHEAST)
-/client/Northwest()
-	diagonal_action(NORTHWEST)
-/client/Southeast()
-	diagonal_action(SOUTHEAST)
-/client/Southwest()
-	diagonal_action(SOUTHWEST)
-
-/client/proc/diagonal_action(direction)
-	switch(client_dir(direction, 1))
-		if(NORTHEAST)
-			swap_hand()
-			return
-		if(SOUTHEAST)
-			attack_self()
-			return
-		if(SOUTHWEST)
-			if(isliving(usr))
-				var/mob/living/carbon/C = usr
-				C.toggle_throw_mode()
-			else
-				to_chat(usr, "<font color='red'>This mob type cannot throw items.</font>")
-			return
-		if(NORTHWEST)
-			if(isliving(usr))
-				var/mob/living/carbon/C = usr
-				if(!C.get_active_hand())
-					to_chat(usr, "<font color='red'>You have nothing to drop in your hand.</font>")
-					return
-				drop_item()
-			else
-				to_chat(usr, "<font color='red'>This mob type cannot drop items.</font>")
-			return
-
-//This gets called when you press the delete button.
-/client/verb/delete_key_pressed()
-	set hidden = 1
-
-	if(!usr.pulling)
-		to_chat(usr, "<font color='blue'>You are not pulling anything.</font>")
-		return
-	usr.stop_pulling()
-
 /client/verb/swap_hand()
 	set hidden = 1
 	if(istype(mob, /mob/living))

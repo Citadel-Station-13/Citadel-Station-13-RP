@@ -1,6 +1,16 @@
 /mob/proc/say()
 	return
 
+/mob/proc/whisper_wrapper()
+	var/message = input("","whisper (text)") as message|null
+	if(message)
+		whisper(message)
+
+/mob/proc/subtle_wrapper()
+	var/message = input("","subtle (text)") as message|null
+	if(message)
+		me_verb_subtle(message)
+
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
 	set category = "IC"

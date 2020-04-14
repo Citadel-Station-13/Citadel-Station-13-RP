@@ -61,7 +61,7 @@
 	return TRUE
 
 /datum/keybinding/mob/cycle_intent_right
-	hotkey_keys = list("Northwest") // HOME
+	hotkey_keys = list("Northwest", "F") // HOME
 	name = "cycle_intent_right"
 	full_name = "cycle intent right"
 	description = ""
@@ -72,7 +72,7 @@
 	return TRUE
 
 /datum/keybinding/mob/cycle_intent_left
-	hotkey_keys = list("Insert")
+	hotkey_keys = list("Insert", "G")
 	name = "cycle_intent_left"
 	full_name = "cycle intent left"
 	description = ""
@@ -104,6 +104,56 @@
 	M.mode()
 	return TRUE
 
+/datum/keybinding/mob/say
+	hotkey_keys = list("T", "F3")
+	name = "say"
+	full_name = "Say"
+	description = "Say things in character."
+
+/datum/keybinding/mob/say/down(client/user)
+	user.mob.say_wrapper()
+	return TRUE
+
+/datum/keybinding/mob/me
+	hotkey_keys = list("M", "5", "F4")
+	name = "me"
+	full_name = "Me"
+	description = "Emote something in character."
+
+/datum/keybinding/mob/me/down(client/user)
+	user.mob.me_wrapper()
+	return TRUE
+
+/datum/keybinding/mob/ooc
+	hotkey_keys = list("O", "F2")
+	name = "ooc"
+	full_name = "OOC"
+	description = "Says something in global OOC"
+
+/datum/keybinding/mob/ooc/down(client/user)
+	user.ooc_wrapper()
+	return TRUE
+
+/datum/keybinding/mob/whisper
+	hotkey_keys = list("Y")
+	name = "whisper"
+	full_name = "Whisper"
+	description = "Whisper something in character."
+
+/datum/keybinding/mob/whisper/down(client/user)
+	user.mob.whisper_wrapper()
+	return TRUE
+
+/datum/keybinding/mob/subtle
+	hotkey_keys = list("6")
+	name = "subtle"
+	full_name = "Subtle"
+	description = "Does a subtle emote."
+
+/datum/keybinding/mob/subtle/down(client/user)
+	user.mob.subtle_wrapper()
+	return TRUE
+
 /datum/keybinding/mob/drop_item
 	hotkey_keys = list("Q")
 	name = "drop_item"
@@ -118,7 +168,17 @@
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 	else
-		user.mob.dropItemToGround(I)
+		user.mob.drop_item(I)
+	return TRUE
+
+/datum/keybinding/mob/toggle_gun_mode
+	hotkey_keys = list("J")
+	name = "toggle_gun_mode"
+	full_name = "Toggle gun mode between aiming/hostage-taking and immediate fire."
+	description = ""
+
+/datum/keybinding/mob/toggle_gun-mode/down(client/user)
+	user.mob.toggle_gun_mode()
 	return TRUE
 
 /datum/keybinding/mob/toggle_move_intent
