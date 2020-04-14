@@ -92,7 +92,7 @@
 	description = "Shed your admin powers"
 
 /datum/keybinding/admin/deadmin/down(client/user)
-	user.deadmin()
+	user.deadmin_self()
 	return TRUE
 
 /datum/keybinding/admin/readmin
@@ -102,5 +102,5 @@
 	description = "Regain your admin powers"
 
 /datum/keybinding/admin/readmin/down(client/user)
-	user.readmin()
+	user.readmin_self()
 	return TRUE

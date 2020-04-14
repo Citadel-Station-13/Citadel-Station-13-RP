@@ -3,7 +3,7 @@
 	weight = WEIGHT_ROBOT
 
 /datum/keybinding/robot/can_use(client/user)
-	return iscyborg(user.mob)
+	return isrobot(user.mob)
 
 /datum/keybinding/robot/moduleone
 	hotkey_keys = list("1")

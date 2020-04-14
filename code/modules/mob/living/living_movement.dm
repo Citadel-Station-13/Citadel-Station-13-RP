@@ -21,6 +21,10 @@
 		m_intent = MOVE_INTENT_WALK
 	else
 		m_intent = MOVE_INTENT_RUN
+/*
 	if(hud_used && hud_used.static_inventory)
 		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
+*/
+	// nah, vorecode bad.
+	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"

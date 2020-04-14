@@ -825,12 +825,11 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 
 	if(holder)
-		if(alert("Confirm self-deadmin for the round? You can't re-admin yourself without someone promoting you.",,"Yes","No") == "Yes")
-			log_admin("[src] deadmined themself.")
-			message_admins("[src] deadmined themself.", 1)
-			deadmin()
-			to_chat(src, "<span class='interface'>You are now a normal player.</span>")
-			verbs |= /client/proc/readmin_self
+		log_admin("[src] deadmined themself.")
+		message_admins("[src] deadmined themself.", 1)
+		deadmin()
+		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		verbs |= /client/proc/readmin_self
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/check_ai_laws()
