@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 	// If we previously were in an area with force-played ambiance, stop it.
 	if(L in GLOB.forced_ambiance_list)
-		L.stop_sound_channel(CHANNEL_AMBIANCE_FORCED)
+		L.stop_sound_channel(CHANNEL_AMBIENCE_FORCED)
 		GLOB.forced_ambiance_list -= L
 
 	if(forced_ambience)
@@ -286,7 +286,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE_FORCED)
 			SEND_SOUND(L, chosen_ambiance)
 		else
-			L.stop_sound_channel(CHANNEL_AMBIANCE_FORCED)
+			L.stop_sound_channel(CHANNEL_AMBIENCE_FORCED)
 	else if(src.ambience.len && prob(35))
 		if((world.time >= L.client.time_last_ambience_played + 1 MINUTE))
 			var/sound = pick(ambience)
