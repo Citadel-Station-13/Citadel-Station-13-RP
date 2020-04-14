@@ -683,7 +683,7 @@
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		switch(H.a_intent)
-			if(I_HELP)
+			if(INTENT_HELP)
 				visible_message("<span class='notice'>[H] pets [src].</span>")
 				return
 			if(I_HURT)
@@ -695,7 +695,7 @@
 					playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
 					visible_message("<span class='warning'>[H] punches [src], but doesn't leave a dent.</span>")
 					return
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				H.do_attack_animation(src)
 				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
 				visible_message("<span class='warning'>[H] taps [src].</span>")

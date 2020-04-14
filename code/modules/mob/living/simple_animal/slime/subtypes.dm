@@ -33,7 +33,7 @@
 		)
 
 /mob/living/simple_animal/slime/orange/post_attack(mob/living/L, intent)
-	if(intent != I_HELP)
+	if(intent != INTENT_HELP)
 		L.adjust_fire_stacks(1)
 		if(prob(25))
 			L.IgniteMob()
@@ -615,7 +615,7 @@
 /mob/living/simple_animal/slime/oil/post_attack(var/mob/living/L, var/intent = I_HURT)
 	if(!rabid)
 		return ..()
-	if(intent == I_HURT || intent == I_GRAB)
+	if(intent == I_HURT || intent == INTENT_GRAB)
 		say(pick("Sacrifice...!", "Sssss...", "Boom...!"))
 		sleep(2 SECOND)
 		log_and_message_admins("[src] has suicide-bombed themselves while trying to kill \the [L].")

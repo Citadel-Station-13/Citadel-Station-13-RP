@@ -4,10 +4,10 @@
 /mob/living/simple_mob/slime/xenobio/apply_attack(mob/living/L, damage_to_do)
 	if(istype(L))
 		switch(a_intent)
-			if(I_HELP) // This shouldn't happen but just in case.
+			if(INTENT_HELP) // This shouldn't happen but just in case.
 				return FALSE
 
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				var/stun_power = between(0, power_charge + rand(0, 3), 10)
 
 				if(ishuman(L))
@@ -57,7 +57,7 @@
 					do_attack_animation(L)
 					return FALSE
 
-			if(I_GRAB)
+			if(INTENT_GRAB)
 				start_consuming(L)
 				return FALSE
 

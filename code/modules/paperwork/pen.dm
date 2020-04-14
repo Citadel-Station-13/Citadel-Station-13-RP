@@ -66,13 +66,13 @@
 	desc = "It's a black ink pen. It urges you to click it."
 
 /obj/item/pen/click/attack_self(mob/user as mob)
-	if(user.a_intent == I_HELP)
+	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] idly.</span>","<span class='notice'>You click [src] idly.</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
 	else if (user.a_intent == I_HURT)
 		user.visible_message("<span class='warning'><b>\The [user]</b> clicks [src] angrily!</span>","<span class='warning'>You click [src] angrily!</span>")
 		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
-	else if (user.a_intent == I_GRAB)
+	else if (user.a_intent == INTENT_GRAB)
 		user.visible_message("<span class='warning'><b>\The [user]</b> spins [src] in their fingers!</span>","<span class='warning'>You spin [src] in your fingers!</span>")
 	else
 		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] rhythmically.</span>","<span class='notice'>You click [src] rhythmically.</span>")

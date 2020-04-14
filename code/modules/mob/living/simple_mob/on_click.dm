@@ -12,7 +12,7 @@
 		return O.attack_hand(src)
 
 	switch(a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 			if(isliving(A))
 				custom_emote(1,"[pick(friendly)] \the [A]!")
 
@@ -26,13 +26,13 @@
 			else
 				attack_target(A)
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if(has_hands)
 				A.attack_hand(src)
 			else
 				attack_target(A)
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			if(has_hands)
 				A.attack_hand(src)
 			else

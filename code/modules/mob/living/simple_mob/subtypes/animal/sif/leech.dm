@@ -56,7 +56,7 @@
 	var/feeding_delay = 30 SECONDS	// How long do we have to wait to bite our host's organs?
 	var/last_feeding = 0
 
-	intent = I_HELP
+	intent = INTENT_HELP
 
 	holder_type = /obj/item/holder/leech
 
@@ -134,11 +134,11 @@
 	. = TRUE
 	if(istype(A, /mob/living/carbon))
 		switch(a_intent)
-			if(I_DISARM) // Poison
+			if(INTENT_DISARM) // Poison
 				set_AI_busy(TRUE)
 				poison_inject(src, A)
 				set_AI_busy(FALSE)
-			if(I_GRAB) // Infesting!
+			if(INTENT_GRAB) // Infesting!
 				set_AI_busy(TRUE)
 				do_infest(src, A)
 				set_AI_busy(FALSE)
@@ -489,9 +489,9 @@
 		var/mob/living/L = A
 		if(ishuman(L) && !L.isSynthetic())
 			if(L.incapacitated() || (L.stat && L.stat != DEAD) || L.resting || L.paralysis)
-				holder.a_intent = I_GRAB		// Infesting time.
+				holder.a_intent = INTENT_GRAB		// Infesting time.
 			else
-				holder.a_intent = I_DISARM	// They're standing up! Try to drop or stun them.
+				holder.a_intent = INTENT_DISARM	// They're standing up! Try to drop or stun them.
 		else
 			holder.a_intent = I_HURT		// Otherwise, bite.
 

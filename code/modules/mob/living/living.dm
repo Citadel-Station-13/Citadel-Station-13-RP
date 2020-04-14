@@ -128,7 +128,7 @@ default behaviour is:
 			now_pushing = 0
 			return
 
-		if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
+		if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
 			var/turf/oldloc = loc
 			forceMove(tmob.loc)
 			//VOREstation Edit - Begin
@@ -150,7 +150,7 @@ default behaviour is:
 			now_pushing = 0
 			return
 		//VOREStation Edit - Begin
-		else if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
+		else if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
 			forceMove(tmob.loc)
 			now_pushing = 0
 			return
@@ -159,7 +159,7 @@ default behaviour is:
 		if(!can_move_mob(tmob, 0, 0))
 			now_pushing = 0
 			return
-		if(a_intent == I_HELP || src.restrained())
+		if(a_intent == INTENT_HELP || src.restrained())
 			now_pushing = 0
 			return
 		// VOREStation Edit - Begin

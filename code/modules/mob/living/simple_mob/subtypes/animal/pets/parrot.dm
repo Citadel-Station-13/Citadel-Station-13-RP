@@ -57,7 +57,7 @@
 
 // Clicked on by empty hand.
 /mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/living/L)
-	if(L.a_intent == I_GRAB && my_headset)
+	if(L.a_intent == INTENT_GRAB && my_headset)
 		remove_headset(L)
 	else
 		..()

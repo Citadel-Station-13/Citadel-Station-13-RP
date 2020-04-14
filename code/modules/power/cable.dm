@@ -548,7 +548,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 //you can use wires to heal robotics
 /obj/item/stack/cable_coil/attack(var/atom/A, var/mob/living/user, var/def_zone)
-	if(ishuman(A) && user.a_intent == I_HELP)
+	if(ishuman(A) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 

@@ -349,17 +349,17 @@
 								to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
 		if("act_intent")
 			usr.a_intent_change("right")
-		if(I_HELP)
-			usr.a_intent = I_HELP
+		if(INTENT_HELP)
+			usr.a_intent = INTENT_HELP
 			usr.hud_used.action_intent.icon_state = "intent_help"
 		if(I_HURT)
 			usr.a_intent = I_HURT
 			usr.hud_used.action_intent.icon_state = "intent_harm"
-		if(I_GRAB)
-			usr.a_intent = I_GRAB
+		if(INTENT_GRAB)
+			usr.a_intent = INTENT_GRAB
 			usr.hud_used.action_intent.icon_state = "intent_grab"
-		if(I_DISARM)
-			usr.a_intent = I_DISARM
+		if(INTENT_DISARM)
+			usr.a_intent = INTENT_DISARM
 			usr.hud_used.action_intent.icon_state = "intent_disarm"
 
 		if("pull")

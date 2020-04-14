@@ -230,7 +230,7 @@
 	if(!istype(W)) return//I really wish I did not need this
 
 	// Fixing.
-	if(istype(W, /obj/item/weldingtool) && user.a_intent == I_HELP)
+	if(istype(W, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
 		var/obj/item/weldingtool/WT = W
 		if(health < maxhealth)
 			if(WT.remove_fuel(1 ,user))

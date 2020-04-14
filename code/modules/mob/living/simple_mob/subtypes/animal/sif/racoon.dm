@@ -121,7 +121,7 @@
 				var/obj/item/clothing/head/newhat = H.get_active_hand()
 				H.drop_from_inventory(newhat, get_turf(src))
 				if(!stat)
-					intent = I_HELP
+					intent = INTENT_HELP
 					newhat.attack_hand(src)
 			else if(src.get_active_hand())
 				to_chat(user, "<span class='notice'>\The [src] seems busy with \the [get_active_hand()] already!</span>")
@@ -291,7 +291,7 @@
 					return
 				holder.a_intent = I_HURT
 			else
-				holder.a_intent = I_DISARM	// Otherwise, try to disarm them!
+				holder.a_intent = INTENT_DISARM	// Otherwise, try to disarm them!
 		else
 			holder.a_intent = I_HURT	// We can't disarm you, so we're going to hurt you.
 
@@ -300,7 +300,7 @@
 		if(istype(I, /obj/item/reagent_containers/food/snacks))	// If we can't pick it up, or it's edible, go to harm.
 			holder.a_intent = I_HURT
 		else
-			holder.a_intent = I_HELP
+			holder.a_intent = INTENT_HELP
 
 	else
 		holder.a_intent = I_HURT

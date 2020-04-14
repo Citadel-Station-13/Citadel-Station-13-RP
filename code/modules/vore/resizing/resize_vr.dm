@@ -233,13 +233,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	switch(a_intent)
 
 		//src stepped on someone with disarm intent
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
 				now_pushing = 0
 				forceMove(tmob.loc)
 
-				//Running on I_DISARM
+				//Running on INTENT_DISARM
 				if(m_intent == "run")
 					tmob.resting = 1 //Force them down to the ground.
 
@@ -257,7 +257,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_disarm_run]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_disarm_run]</span>"))
 
-				//Walking on I_DISARM
+				//Walking on INTENT_DISARM
 				else
 					//Perform some HALLOSS damage to the smaller.
 					var/size_damage_multiplier = (src.size_multiplier - tmob.size_multiplier)
@@ -282,7 +282,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				//Return true, the sizediff was enough that we handled it.
 				return TRUE
 
-			//Not enough sizediff for I_DISARM to do anything.
+			//Not enough sizediff for INTENT_DISARM to do anything.
 			else
 				return FALSE
 
@@ -350,7 +350,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				return FALSE
 
 		//src stepped on someone with grab intent
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			// If bigger than them by at least 0.50, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.50)
 				now_pushing = 0
@@ -388,7 +388,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				//Return true, the sizediff was enough that we handled it.
 				return TRUE
 
-			//Not enough sizediff for I_GRAB to do anything.
+			//Not enough sizediff for INTENT_GRAB to do anything.
 			else
 				return FALSE
 

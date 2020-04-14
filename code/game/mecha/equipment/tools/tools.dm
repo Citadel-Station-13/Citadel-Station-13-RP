@@ -105,7 +105,7 @@
 			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			playsound(src.loc, "fracture", 5, 1, -2) //CRACK
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
-		else if(chassis.occupant.a_intent == I_DISARM && enable_special)
+		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
 			playsound(src.loc, 'sound/mecha/hydraulic.ogg', 10, 1, -2)
 			M.take_overall_damage(dam_force/2)
 			M.adjustOxyLoss(round(dam_force/3))
@@ -1257,7 +1257,7 @@
 		if(chassis.occupant.a_intent == I_HURT)
 			chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
 			chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
-		if(chassis.occupant.a_intent == I_DISARM)
+		if(chassis.occupant.a_intent == INTENT_DISARM)
 			chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
 			chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
 		else

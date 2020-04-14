@@ -60,7 +60,7 @@
 			to_chat(user, text("\icon[] The [] contains []/[] units of fuel!", src, src.name, get_fuel(),src.max_fuel ))
 
 /obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
-	if(ishuman(A) && user.a_intent == I_HELP)
+	if(ishuman(A) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 

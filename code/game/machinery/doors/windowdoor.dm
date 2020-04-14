@@ -194,7 +194,7 @@
 
 	if(istype(I))
 		// Fixing.
-		if(istype(I, /obj/item/weldingtool) && user.a_intent == I_HELP)
+		if(istype(I, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
 			var/obj/item/weldingtool/WT = I
 			if(health < maxhealth)
 				if(WT.remove_fuel(1 ,user))

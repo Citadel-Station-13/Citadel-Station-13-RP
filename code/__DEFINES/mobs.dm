@@ -67,9 +67,9 @@
 #define GETPULSE_TOOL 1 // More accurate. (med scanner, sleeper, etc.)
 
 //intent flags, why wasn't this done the first time?
-#define I_HELP		"help"
-#define I_DISARM	"disarm"
-#define I_GRAB		"grab"
+#define INTENT_HELP		"help"
+#define INTENT_DISARM	"disarm"
+#define INTENT_GRAB		"grab"
 #define I_HURT		"harm"
 
 //These are used Bump() code for living mobs, in the mob_bump_flag, mob_swap_flags, and mob_push_flags vars to determine whom can bump/swap with whom.

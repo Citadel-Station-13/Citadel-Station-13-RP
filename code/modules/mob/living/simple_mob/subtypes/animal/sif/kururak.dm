@@ -130,9 +130,9 @@
 /mob/living/simple_mob/animal/sif/kururak/do_special_attack(atom/A)
 	. = TRUE
 	switch(a_intent)
-		if(I_DISARM) // Ranged mob flash, will also confuse borgs rather than stun.
+		if(INTENT_DISARM) // Ranged mob flash, will also confuse borgs rather than stun.
 			tail_flash(A)
-		if(I_GRAB) // Armor-ignoring hit, causes agonizing wounds.
+		if(INTENT_GRAB) // Armor-ignoring hit, causes agonizing wounds.
 			set_AI_busy(TRUE)
 			rending_strike(A)
 			set_AI_busy(FALSE)
@@ -364,19 +364,19 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(holder.Adjacent(L))
-			holder.a_intent = I_GRAB
+			holder.a_intent = INTENT_GRAB
 
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
 			if(!C.eyecheck())
-				if(holder.a_intent != I_GRAB)
-					holder.a_intent = I_DISARM
+				if(holder.a_intent != INTENT_GRAB)
+					holder.a_intent = INTENT_DISARM
 
-		if(issilicon(L) && holder.a_intent != I_GRAB)
-			holder.a_intent = I_DISARM
+		if(issilicon(L) && holder.a_intent != INTENT_GRAB)
+			holder.a_intent = INTENT_DISARM
 
 	else if(istype(A, /obj/mecha))
-		holder.a_intent = I_GRAB
+		holder.a_intent = INTENT_GRAB
 
 /datum/ai_holder/simple_mob/intentional/kururak/post_melee_attack()
 	if(holder.has_modifier_of_type(/datum/modifier/ace))

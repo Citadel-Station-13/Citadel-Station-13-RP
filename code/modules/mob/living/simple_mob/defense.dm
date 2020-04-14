@@ -14,16 +14,16 @@
 	..()
 
 	switch(L.a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 			if(health > 0)
 				L.visible_message("<span class='notice'>\The [L] [response_help] \the [src].</span>")
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			L.visible_message("<span class='notice'>\The [L] [response_disarm] \the [src].</span>")
 			L.do_attack_animation(src)
 			//TODO: Push the mob away or something
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if (L == src)
 				return
 			if (!(status_flags & CANPUSH))

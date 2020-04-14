@@ -126,7 +126,7 @@
 /mob/living/simple_mob/animal/sif/frostfly/do_special_attack(atom/A)
 	. = TRUE
 	switch(a_intent)
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			if(energy < 20)
 				return FALSE
 
@@ -153,7 +153,7 @@
 
 /datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/pre_special_attack(atom/A)
 	if(isliving(A))
-		holder.a_intent = I_DISARM
+		holder.a_intent = INTENT_DISARM
 	else
 		holder.a_intent = I_HURT
 

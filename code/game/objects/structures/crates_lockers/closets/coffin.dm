@@ -54,7 +54,7 @@
 				return TRUE
 		if(isrobot(M))
 			var/mob/living/silicon/robot/R = M
-			if(R.a_intent == I_HELP)
+			if(R.a_intent == INTENT_HELP)
 				to_chat(R, "<span class='warning'>You stop at the edge of \the [src.name].</span>")
 				return FALSE
 			else

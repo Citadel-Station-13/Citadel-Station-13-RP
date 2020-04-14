@@ -5,7 +5,7 @@
 
 	if(isliving(user) && istype(C, /obj/item))
 		var/mob/living/L = user
-		if(L.a_intent != I_HELP)
+		if(L.a_intent != INTENT_HELP)
 			attack_tile(C, L) // Be on help intent if you want to decon something.
 			return
 
