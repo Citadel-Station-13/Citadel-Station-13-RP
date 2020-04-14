@@ -1289,6 +1289,16 @@ END OF CITADEL CHANGES */
 		)
 	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 20, rad = 25)
 
+/obj/item/clothing/suit/storage/trek/ds9/equipped()
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.wear_suit == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/suit.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
+
 /obj/item/clothing/suit/storage/trek/ds9/admiral // Only for adminuz
 	name = "Admiral Overcoat"
 	desc = "Admirality specialty coat to keep flag officers fashionable and protected."
@@ -1307,10 +1317,30 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_engsec"
 	item_state = "trek_ds9_engsec"
 
+/obj/item/clothing/under/rank/trek/engsec/ds9/equipped()
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.w_uniform == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/uniform.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
+
 /obj/item/clothing/under/rank/trek/medsci/ds9
 	desc = "The uniform undershit worn by medsci officers of the 2380s."
 	icon_state = "trek_medsci"
 	item_state = "trek_ds9_medsci"
+
+/obj/item/clothing/under/rank/trek/medsci/ds9/equipped()
+	..()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H) && H.w_uniform == src)
+		if(H.species.name == "Vox")
+			icon_override = 'icons/mob/species/vox/uniform.dmi'
+		else
+			icon_override = 'icons/vore/custom_clothes_vr.dmi'
+	update_clothing_icon()
 
 //For general use maybe
 /obj/item/clothing/under/batter //I guess we're going OFF limits.
