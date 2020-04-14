@@ -25,7 +25,7 @@
 	bellied = prey
 	prey.forceMove(src)
 	visible_message("[src] entirely engulfs [prey] in hardlight holograms!")
-	usr << "<span class='notice'>You completely engulf [prey] in hardlight holograms!</span>" //Can't be part of the above, because the above is from the hologram.
+	to_chat(usr, "<span class='notice'>You completely engulf [prey] in hardlight holograms!</span>") //Can't be part of the above, because the above is from the hologram.
 
 	desc = "[initial(desc)] It seems to have hardlight mode enabled and someone inside."
 	pass_flags = 0

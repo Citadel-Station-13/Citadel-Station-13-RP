@@ -66,7 +66,7 @@ RSF
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 	if (mode == 1)
 		mode = 2
-		user << "Changed dispensing mode to 'Pint Glass'" //make it a little nicer
+		to_chat(user, "Changed dispensing mode to 'Pint Glass'") //make it a little nicer
 		return
 	if (mode == 2)
 		mode = 3

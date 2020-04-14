@@ -111,7 +111,7 @@
 		switch(AM.mag_type)
 			if(MAGAZINE)
 				if(ammo_magazine)
-					user << "<span class='warning'>[src] already has a magazine loaded.</span>" //already a magazine here
+					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>") //already a magazine here
 					return
 				user.remove_from_mob(AM)
 				AM.loc = src

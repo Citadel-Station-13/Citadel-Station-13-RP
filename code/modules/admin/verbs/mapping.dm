@@ -365,7 +365,7 @@ var/global/prevent_airgroup_regroup = 0
 	set category = "Mapping"
 	set name = "Regroup All Airgroups Attempt"
 
-	usr << "<font color='red'>Proc disabled.</font>" //Why not.. Delete the procs instead?
+	to_chat(usr, "<font color='red'>Proc disabled.</font>") //Why not.. Delete the procs instead?
 
 	/*prevent_airgroup_regroup = 0
 	for(var/datum/air_group/AG in air_master.air_groups)

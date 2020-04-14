@@ -107,7 +107,7 @@
 /obj/item/flashlight/attack_self(mob/user)
 	if(power_use)
 		if(!isturf(user.loc))
-			user << "You cannot turn the light on while in this [user.loc]." //To prevent some lighting anomalities.
+			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
 			return 0
 		if(!cell || cell.charge == 0)
 			to_chat(user, "You flick the switch on [src], but nothing happens.")

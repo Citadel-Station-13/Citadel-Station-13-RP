@@ -57,7 +57,7 @@
 		to_chat(user, "<span class='notice'>There is already a poster there!</span>")
 		return
 
-	user << "<span class='notice'>You start placing the poster on the wall...</span>" //Looks like it's uncluttered enough. Place the poster.
+	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>") //Looks like it's uncluttered enough. Place the poster.
 
 	var/obj/structure/sign/poster/P = new poster_type(user.loc, placement_dir=get_dir(user, W), serial=serial_number, itemtype = src.type)
 

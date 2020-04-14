@@ -231,7 +231,7 @@
 		if(!MS.can_cloak)
 			return
 		MS.cloaked = !MS.cloaked
-		usr << "<font color='red'> Ship [MS.legit ? "ATC inhibitor":"stealth"] systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be [MS.legit ? "notified":"warned"] of our arrival.</font>" //VOREStation Edit - Adds legit shuttles.
+		to_chat(usr, "<font color='red'> Ship [MS.legit ? "ATC inhibitor":"stealth"] systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be [MS.legit ? "notified":"warned"] of our arrival.</font>") //VOREStation Edit - Adds legit shuttles.
 		//to_chat(usr, "<font color='red'>Ship stealth systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be warned of our arrival.</font>") //VOREStation Edit.
 
 	if(href_list["move_multi"])

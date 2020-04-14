@@ -26,7 +26,7 @@
 	if(C.connected_ai)
 		C.connected_ai.aiCamera.injectaialbum(p.copy(1), " (synced from [C.name])")
 		to_chat(C.connected_ai, "<span class='unconscious'>Image uploaded by [C.name]</span>")
-		usr << "<span class='unconscious'>Image synced to remote database</span>"	//feedback to the Cyborg player that the picture was taken
+		to_chat(usr, "<span class='unconscious'>Image synced to remote database</span>")	//feedback to the Cyborg player that the picture was taken
 	else
 		to_chat(usr, "<span class='unconscious'>Image recorded</span>")
 	// Always save locally

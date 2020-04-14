@@ -151,7 +151,7 @@
 	if(!..(user, 1))
 		return
 	if (coating) // BEGIN CITADEL CHANGE
-		user << "<span class='notice'>It's coated in [coating.name]!</span>" // END CITADEL CHANGE
+		to_chat(user, "<span class='notice'>It's coated in [coating.name]!</span>") // END CITADEL CHANGE
 	if (bitecount==0)
 		return
 	else if (bitecount==1)

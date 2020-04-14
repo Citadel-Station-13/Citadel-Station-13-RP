@@ -190,7 +190,7 @@ Class Procs:
 			to_chat(M, "[E:air:return_pressure()]kPa")
 
 	to_chat(M, "Zone Edges: [zone_edges]")
-	M << "Space Edges: [space_edges] ([space_coefficient] connections)"
+	to_chat(M, "Space Edges: [space_edges] ([space_coefficient] connections)")
 
 	//for(var/turf/T in unsimulated_contents)
 	//	M << "[T] at ([T.x],[T.y])"

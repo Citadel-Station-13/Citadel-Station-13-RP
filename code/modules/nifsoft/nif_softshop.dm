@@ -125,7 +125,7 @@
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
-				usr << "<span class='warning'>Access denied.</span>"	//Unless emagged of course
+				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
 				flick(icon_deny,entopic.my_image)
 				return
 
@@ -173,7 +173,7 @@
 /obj/machinery/vending/nifsoft_shop/vend(datum/stored_item/vending_product/R, mob/user)
 	var/mob/living/carbon/human/H = user
 	if((!allowed(usr)) && !emagged && scan_id && istype(H))	//For SECURE VENDING MACHINES YEAH
-		usr << "<span class='warning'>Purchase not allowed.</span>"	//Unless emagged of course
+		to_chat(usr, "<span class='warning'>Purchase not allowed.</span>")	//Unless emagged of course
 		flick(icon_deny,entopic.my_image)
 		return
 	vend_ready = 0 //One thing at a time!!
