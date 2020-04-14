@@ -41,6 +41,7 @@
 
 /mob/Initialize()
 	mob_list += src
+	set_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else

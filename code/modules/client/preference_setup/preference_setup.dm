@@ -40,8 +40,13 @@
 */ //VOREStation Removal End
 /datum/category_group/player_setup_category/global_preferences
 	name = "Global"
-	sort_order = 6 //VOREStation Edit due to above commented out
+	sort_order = 6
 	category_item_type = /datum/category_item/player_setup_item/player_global
+
+/datum/category_group/player_setup_category/keybindings
+	name = "Keybindings"
+	sort_order = 7
+	category_item_type = /datum/category_item/player_setup_item/keybinding
 
 /****************************
 * Category Collection Setup *
