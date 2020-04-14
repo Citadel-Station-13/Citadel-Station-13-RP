@@ -65,7 +65,7 @@
 		/obj/item/material/knife/machete/hatchet,
 		/obj/item/analyzer/plant_analyzer,
 		/obj/item/extinguisher/mini,
-		/obj/item/tape_roll,
+		/obj/item/duct_tape_roll,
 		/obj/item/integrated_electronics/wirer,
 		/obj/item/integrated_electronics/debugger, //Vorestation edit adding debugger to toolbelt can hold list
 		)
