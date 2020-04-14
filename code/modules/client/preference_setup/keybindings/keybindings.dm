@@ -102,6 +102,7 @@
 	. += "</body>"
 
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/OnTopic(href, list/href_list, mob/user)
+	var/list/key_bindings = pref.key_bindings
 	if(href_list["option"])
 		switch(href_list["option"])
 			if("keybindings_capture")
