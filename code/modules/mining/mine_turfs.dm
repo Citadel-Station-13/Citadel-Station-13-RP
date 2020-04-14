@@ -104,7 +104,7 @@ turf/simulated/mineral/floor/light_corner
 /turf/simulated/mineral/proc/update_general()
 	update_icon(1)
 	recalc_atom_opacity()
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		reconsider_lights()
 		if(air_master)
 			air_master.mark_for_update(src)
@@ -287,7 +287,7 @@ turf/simulated/mineral/floor/light_corner
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)
 
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 

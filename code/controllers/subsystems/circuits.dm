@@ -1,6 +1,6 @@
 //
 // This is for custom circuits, mostly the initialization of global properties about them.
-// Might make this also process them in the future if its better to do that than using the obj ticker.
+// Might make this also process them in the future if its better to do that than using the obj SSticker.
 //
 SUBSYSTEM_DEF(circuit)
 	name = "Circuit"

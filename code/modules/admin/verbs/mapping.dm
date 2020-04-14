@@ -70,10 +70,6 @@ GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 	set category = "Mapping"
 	set name = "Camera Report"
 
-	if(!master_controller)
-		alert(usr,"Master_controller not found.","Sec Camera Report")
-		return 0
-
 	var/list/obj/machinery/camera/CL = list()
 
 	for(var/obj/machinery/camera/C in cameranet.cameras)
@@ -164,7 +160,6 @@ var/list/debug_verbs = list (
         ,/datum/admins/proc/setup_supermatter
 		,/client/proc/atmos_toggle_debug
 		,/client/proc/spawn_tanktransferbomb
-		,/client/proc/debug_process_scheduler // VOREStation Edit - Nice
 		,/client/proc/take_picture
 	)
 

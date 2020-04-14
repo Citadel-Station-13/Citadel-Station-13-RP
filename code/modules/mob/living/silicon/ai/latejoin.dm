@@ -15,7 +15,7 @@ var/global/list/empty_playable_ai_cores = list()
 	set category = "OOC"
 	set desc = "Enter intelligence storage. This is functionally equivalent to cryo or robotic storage, freeing up your job slot."
 
-	if(ticker && ticker.mode && ticker.mode.name == "AI malfunction")
+	if(SSticker && SSticker.mode && SSticker.mode.name == "AI malfunction")
 		usr << "<span class='danger'>You cannot use this verb in malfunction. If you need to leave, please adminhelp.</span>"
 		return
 

@@ -53,7 +53,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += "Body Temperature: ???"
 		user.show_message("<span class='notice'>[dat]</span>", 1)
 		return
-	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
+	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
@@ -351,7 +351,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/analyzer/attack_self(mob/user as mob)
 	if (user.stat)
 		return
-	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
+	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
@@ -397,7 +397,7 @@ HALOGEN COUNTER	- Radcount on mobs
 /obj/item/mass_spectrometer/attack_self(mob/user as mob)
 	if (user.stat)
 		return
-	if (!(ishuman(user) || ticker) && ticker.mode.name != "monkey")
+	if (!(ishuman(user) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	if(reagents.total_volume)
