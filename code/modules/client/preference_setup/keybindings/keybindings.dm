@@ -58,6 +58,7 @@
 	pref.key_bindings = sanitize_islist(pref.key_bindings, list())
 
 /datum/category_item/player_setup_item/keybinding/bindings/content(mob/user)
+	. = list()
 	var/list/key_bindings = pref.key_bindings		//cache for speed or atleast my finger's sake..
 	// Create an inverted list of keybindings -> key
 	var/list/user_binds = list()
@@ -71,122 +72,104 @@
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
 		kb_categories[kb.category] += list(kb)
 
-	dat += "<style>label { display: inline-block; width: 200px; }</style><body>"
+	. += "<style>label { display: inline-block; width: 200px; }</style><body>"
 
 	for (var/category in kb_categories)
-		dat += "<h3>[category]</h3>"
+		. += "<h3>[category]</h3>"
 		for (var/i in kb_categories[category])
 			var/datum/keybinding/kb = i
 			if(!length(user_binds[kb.name]))
-				dat += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>Unbound</a>"
+				. += "<label>[kb.full_name]</label> <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>Unbound</a>"
 				var/list/default_keys = hotkeys ? kb.hotkey_keys : kb.classic_keys
 				if(LAZYLEN(default_keys))
-					dat += "| Default: [default_keys.Join(", ")]"
-				dat += "<br>"
+					. += "| Default: [default_keys.Join(", ")]"
+				. += "<br>"
 			else
 				var/bound_key = user_binds[kb.name][1]
-				dat += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
+				. += "<label>[kb.full_name]</label> <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
 				for(var/bound_key_index in 2 to length(user_binds[kb.name]))
 					bound_key = user_binds[kb.name][bound_key_index]
-					dat += " | <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
+					. += " | <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
 				if(length(user_binds[kb.name]) < MAX_KEYS_PER_KEYBIND)
-					dat += "| <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name]'>Add Secondary</a>"
+					. += "| <a href ='?src=[REF(src)];option=keybindings_capture;keybinding=[kb.name]'>Add Secondary</a>"
 				var/list/default_keys = hotkeys ? kb.classic_keys : kb.hotkey_keys
 				if(LAZYLEN(default_keys))
-					dat += "| Default: [default_keys.Join(", ")]"
-				dat += "<br>"
+					. += "| Default: [default_keys.Join(", ")]"
+				. += "<br>"
 
-	dat += "<br><br>"
-	dat += "<a href ='?_src_=prefs;preference=keybindings_reset'>\[Reset to default\]</a>"
-	dat += "</body>"
-
-
-
-
-
-
-
+	. += "<br><br>"
+	. += "<a href ='?src=[REF(src)];option=keybindings_reset'>\[Reset to default\]</a>"
+	. += "</body>"
 
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/OnTopic(href, list/href_list, mob/user)
 	if(href_list["option"])
 		switch(href_list["option"])
-			if("hotkeys")
-				pref.hotkeys = !pref.hotkeys
-		return TOPIC_REFRESH
-	return ..()
+			if("keybindings_capture")
+				var/datum/keybinding/kb = GLOB.keybindings_by_name[href_list["keybinding"]]
+				var/old_key = href_list["old_key"]
+				CaptureKeybinding(user, kb, old_key)
+				return
 
-
-
-
-
-
-				if("keybindings_capture")
-					var/datum/keybinding/kb = GLOB.keybindings_by_name[href_list["keybinding"]]
-					var/old_key = href_list["old_key"]
-					CaptureKeybinding(user, kb, old_key)
+			if("keybindings_set")
+				var/kb_name = href_list["keybinding"]
+				if(!kb_name)
+					user << browse(null, "window=capturekeypress")
+					ShowChoices(user)
 					return
 
-				if("keybindings_set")
-					var/kb_name = href_list["keybinding"]
-					if(!kb_name)
-						user << browse(null, "window=capturekeypress")
-						ShowChoices(user)
-						return
-
-					var/clear_key = text2num(href_list["clear_key"])
-					var/old_key = href_list["old_key"]
-					if(clear_key)
-						if(key_bindings[old_key])
-							key_bindings[old_key] -= kb_name
-							if(!length(key_bindings[old_key]))
-								key_bindings -= old_key
-						user << browse(null, "window=capturekeypress")
-						save_preferences()
-						ShowChoices(user)
-						return
-
-					var/new_key = uppertext(href_list["key"])
-					var/AltMod = text2num(href_list["alt"]) ? "Alt" : ""
-					var/CtrlMod = text2num(href_list["ctrl"]) ? "Ctrl" : ""
-					var/ShiftMod = text2num(href_list["shift"]) ? "Shift" : ""
-					var/numpad = text2num(href_list["numpad"]) ? "Numpad" : ""
-					// var/key_code = text2num(href_list["key_code"])
-
-					if(GLOB._kbMap[new_key])
-						new_key = GLOB._kbMap[new_key]
-
-					var/full_key
-					switch(new_key)
-						if("Alt")
-							full_key = "[new_key][CtrlMod][ShiftMod]"
-						if("Ctrl")
-							full_key = "[AltMod][new_key][ShiftMod]"
-						if("Shift")
-							full_key = "[AltMod][CtrlMod][new_key]"
-						else
-							full_key = "[AltMod][CtrlMod][ShiftMod][numpad][new_key]"
+				var/clear_key = text2num(href_list["clear_key"])
+				var/old_key = href_list["old_key"]
+				if(clear_key)
 					if(key_bindings[old_key])
 						key_bindings[old_key] -= kb_name
 						if(!length(key_bindings[old_key]))
 							key_bindings -= old_key
-					key_bindings[full_key] += list(kb_name)
-					key_bindings[full_key] = sortList(key_bindings[full_key])
-
 					user << browse(null, "window=capturekeypress")
-					user.client.update_movement_keys()
 					save_preferences()
+					ShowChoices(user)
+					return
 
-				if("keybindings_reset")
-					var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
-					if(choice == "Cancel")
-						ShowChoices(user)
-						return
-					hotkeys = (choice == "Hotkey")
-					key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
-					user.client.update_movement_keys()
+				var/new_key = uppertext(href_list["key"])
+				var/AltMod = text2num(href_list["alt"]) ? "Alt" : ""
+				var/CtrlMod = text2num(href_list["ctrl"]) ? "Ctrl" : ""
+				var/ShiftMod = text2num(href_list["shift"]) ? "Shift" : ""
+				var/numpad = text2num(href_list["numpad"]) ? "Numpad" : ""
+				// var/key_code = text2num(href_list["key_code"])
 
+				if(GLOB._kbMap[new_key])
+					new_key = GLOB._kbMap[new_key]
 
+				var/full_key
+				switch(new_key)
+					if("Alt")
+						full_key = "[new_key][CtrlMod][ShiftMod]"
+					if("Ctrl")
+						full_key = "[AltMod][new_key][ShiftMod]"
+					if("Shift")
+						full_key = "[AltMod][CtrlMod][new_key]"
+					else
+						full_key = "[AltMod][CtrlMod][ShiftMod][numpad][new_key]"
+				if(key_bindings[old_key])
+					key_bindings[old_key] -= kb_name
+					if(!length(key_bindings[old_key]))
+						key_bindings -= old_key
+				key_bindings[full_key] += list(kb_name)
+				key_bindings[full_key] = sortList(key_bindings[full_key])
 
+				user << browse(null, "window=capturekeypress")
+				user.client.update_movement_keys()
+				save_preferences()
+
+			if("keybindings_reset")
+				var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
+				if(choice == "Cancel")
+					ShowChoices(user)
+					return
+				hotkeys = (choice == "Hotkey")
+				key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+				user.client.update_movement_keys()
+		return TOPIC_REFRESH
+	return ..()
 
 /datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, var/old_key)
 	var/HTML = {"
@@ -200,7 +183,7 @@
 		var shift = e.shiftKey ? 1 : 0;
 		var numpad = (95 < e.keyCode && e.keyCode < 112) ? 1 : 0;
 		var escPressed = e.keyCode == 27 ? 1 : 0;
-		var url = 'byond://?_src_=prefs;preference=keybindings_set;keybinding=[kb.name];old_key=[old_key];clear_key='+escPressed+';key='+e.key+';alt='+alt+';ctrl='+ctrl+';shift='+shift+';numpad='+numpad+';key_code='+e.keyCode;
+		var url = 'byond://?src=[REF(src)];preference=keybindings_set;keybinding=[kb.name];old_key=[old_key];clear_key='+escPressed+';key='+e.key+';alt='+alt+';ctrl='+ctrl+';shift='+shift+';numpad='+numpad+';key_code='+e.keyCode;
 		window.location=url;
 		deedDone = true;
 	}
