@@ -38,7 +38,7 @@ proc/createRandomZlevel()
 		admin_notice("<font color='red'><B>Loading away mission...</B></font>", R_DEBUG)
 
 		var/map = pick(potentialRandomZlevels)
-		to_chat(world.log, "Away mission picked: [map]") //VOREStation Add for debugging
+		log_world("Away mission picked: [map]") //VOREStation Add for debugging
 		var/file = file(map)
 		if(isfile(file))
 			var/datum/map_template/template = new(file, "away mission")
