@@ -133,7 +133,7 @@
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
 /proc/log_unit_test(text)
-	to_chat(world.log, "## UNIT_TEST: [text]")
+	log_world("## UNIT_TEST: [text]")
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)

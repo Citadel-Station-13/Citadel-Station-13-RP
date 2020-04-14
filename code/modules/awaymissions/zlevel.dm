@@ -43,7 +43,7 @@ proc/createRandomZlevel()
 		if(isfile(file))
 			var/datum/map_template/template = new(file, "away mission")
 			template.load_new_z()
-			to_chat(world.log, "away mission loaded: [map]")
+			log_world("away mission loaded: [map]")
 		/* VOREStation Removal - We do this in the special landmark init instead.
 		for(var/obj/effect/landmark/L in landmarks_list)
 			if (L.name != "awaystart")

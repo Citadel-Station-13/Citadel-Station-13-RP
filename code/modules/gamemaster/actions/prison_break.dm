@@ -73,7 +73,7 @@
 			to_chat(A, "<span class='danger'>Malicious program detected in the [english_list(areaName)] lighting and airlock control systems by [my_department].</span>")
 
 	else
-		to_chat(world.log, "ERROR: Could not initate grey-tide. Unable to find suitable containment area.")
+		log_world("ERROR: Could not initate grey-tide. Unable to find suitable containment area.")
 
 	if(areas && areas.len > 0)
 		spawn()
