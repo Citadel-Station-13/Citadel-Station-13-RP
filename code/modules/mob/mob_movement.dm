@@ -316,9 +316,6 @@
 		mob.setDir(turn(mob.dir, 180))
 */
 
-/client/Move(n, direct)
-
-
 
 /mob/proc/SelfMove(turf/n, direct)
 	return Move(n, direct)
