@@ -50,7 +50,7 @@ proc/dmp2swapmap(filename)
 	while(txt)
 		if(text2ascii(txt)==34)
 			if(mode!=34)
-				world << "Corrupt map file [filename]: Unexpected code found after z-level [z]"
+				to_chat(world, "Corrupt map file [filename]: Unexpected code found after z-level [z]")
 				return
 			// standard line:
 			// "a" = (/obj, /obj, /turf, /area)
@@ -69,7 +69,7 @@ proc/dmp2swapmap(filename)
 				return
 			var/list/L = d2sm_ParseCommaList(copytext(txt,i,j))
 			if(istext(L))
-				world << "Corrupt map file [filename]: [L]"
+				to_chat(world, "Corrupt map file [filename]: [L]")
 				return
 			if(L.len<2)
 				world << "Corrupt map file [filename]: Type list following \"[code]\" has only 1 item"
@@ -114,7 +114,7 @@ proc/dmp2swapmap(filename)
 			if(findText(mtxt,"\"\n")!=1 || !findText(mtxt,"\n\"",length(mtxt)-1))
 				world << findText(mtxt,"\"\n")
 				world << findText(mtxt,"\n\"",length(mtxt)-1)
-				world << "Corrupt map file [filename]: No quotes in braces following [copytext(txt,1,i+1)]"
+				to_chat(world, "Corrupt map file [filename]: No quotes in braces following [copytext(txt,1,i+1)]")
 				return
 			mtxt=copytext(mtxt,2,length(mtxt))
 			var/_x=0,_y=0
@@ -131,7 +131,7 @@ proc/dmp2swapmap(filename)
 		else
 			i=findtext(txt,"\n")
 			txt=i?copytext(txt,i+1):null
-	world << "Map size: [X],[Y],[Z]"
+	to_chat(world, "Map size: [X],[Y],[Z]")
 	//for(var/code in codes)
 	//	world << "Code \"[code]\":\n[codes[code]]"
 	fdel("map_[mapname].txt")

@@ -36,7 +36,7 @@
 			survivors++
 
 	if(survivors)
-		world << "<span class='notice'><B>The following survived the meteor storm</B></span>:[text]"
+		to_chat(world, "<span class='notice'><B>The following survived the meteor storm</B></span>:[text]")
 	else
 		to_chat(world, "<span class='notice'><B>Nobody survived the meteor storm!</B></span>")
 

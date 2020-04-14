@@ -64,11 +64,11 @@
 
 /obj/machinery/fitness/heavy/attack_hand(var/mob/living/user)
 	if(!anchored)
-		user << "<span class='notice'>For safety reasons, you are required to have this equipment wrenched down before using it!</span>"
+		to_chat(user, "<span class='notice'>For safety reasons, you are required to have this equipment wrenched down before using it!</span>")
 		return
 
 	else if(user.loc != src.loc)
-		user << "<span class='notice'>For safety reasons, you need to be sitting in the [src] for it to work!</span>"
+		to_chat(user, "<span class='notice'>For safety reasons, you need to be sitting in the [src] for it to work!</span>")
 		return
 
 	else
