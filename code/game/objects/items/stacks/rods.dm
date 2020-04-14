@@ -59,7 +59,7 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 				user.put_in_hands(new_item)
 		return
 
-	if (istype(W, /obj/item/tape_roll))
+	if (istype(W, /obj/item/duct_tape_roll))
 		var/obj/item/stack/medical/splint/ghetto/new_splint = new(get_turf(user))
 		new_splint.add_fingerprint(user)
 

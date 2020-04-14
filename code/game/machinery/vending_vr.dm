@@ -5,7 +5,7 @@
 
 /obj/machinery/vending/security/New()
 	products += list(/obj/item/gun/energy/taser = 8,/obj/item/gun/energy/stunrevolver = 4,
-					/obj/item/reagent_containers/spray/pepper = 6,/obj/item/taperoll/police = 6,
+					/obj/item/reagent_containers/spray/pepper = 6,/obj/item/barrier_tape_roll/police = 6,
 					/obj/item/clothing/glasses/omnihud/sec = 6)
 	..()
 
@@ -886,7 +886,7 @@
 					/obj/item/communicator/watch = 10,
 					/obj/item/radio = 10,
 					/obj/item/camera = 5,
-					/obj/item/taperecorder = 5,
+					/obj/item/tape_recorder = 5,
 					/obj/item/modular_computer/tablet/preset/custom_loadout/cheap = 5,
 					/obj/item/pda = 10,
 					/obj/item/radio/headset = 10,
@@ -906,7 +906,7 @@
 					/obj/item/communicator/watch = 100,
 					/obj/item/radio = 100,
 					/obj/item/camera = 100,
-					/obj/item/taperecorder = 100,
+					/obj/item/tape_recorder = 100,
 					/obj/item/modular_computer/tablet/preset/custom_loadout/cheap = 1000,
 					/obj/item/pda = 50,
 					/obj/item/radio/headset = 50,
