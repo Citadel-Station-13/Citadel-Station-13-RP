@@ -51,7 +51,7 @@
 	return
 
 /// until movespeed modifiersare done - kevinz000
-/mob/proc/_movement_delay()
+/mob/proc/movement_delay()
 	return 0
 
 #define MOVEMENT_DELAY_BUFFER 0.75
