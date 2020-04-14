@@ -166,7 +166,7 @@
 		/obj/item/flame/lighter,
 		/obj/item/flashlight,
 		/obj/item/tape_recorder,
-		/obj/item/tape,
+		/obj/item/barrier_tape_roll,
 		/obj/item/pda,
 		/obj/item/radio/headset,
 		/obj/item/clothing/gloves,
@@ -189,7 +189,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
 		/obj/item/tape_recorder,
-		/obj/item/tape,
+		/obj/item/barrier_tape_roll,
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
 		/obj/item/cell/device,
@@ -271,7 +271,7 @@
 		/obj/item/camera_film,
 		/obj/item/camera,
 		/obj/item/tape_recorder,
-		/obj/item/tape,
+		/obj/item/barrier_tape_roll,
 		/obj/item/healthanalyzer,
 		/obj/item/geiger,
 		/obj/item/gps,

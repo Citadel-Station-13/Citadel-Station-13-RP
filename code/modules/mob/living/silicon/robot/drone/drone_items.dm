@@ -68,7 +68,7 @@
 	/obj/item/sample,
 	/obj/item/forensics/sample_kit,
 	/obj/item/tape_recorder,
-	/obj/item/tape,
+	/obj/item/barrier_tape_roll,
 	/obj/item/uv_light
 	)
 
