@@ -1312,6 +1312,8 @@ END OF CITADEL CHANGES */
 	icon_state = "trek_command"
 	item_state = "trek_ds9_command"
 
+/obj/item/clothing/under/rank/trek/command/ds9/equipped()
+	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.w_uniform == src)
 		if(H.species.name == "Vox")
