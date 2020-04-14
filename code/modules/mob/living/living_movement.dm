@@ -28,3 +28,13 @@
 */
 	// nah, vorecode bad.
 	hud_used?.move_intent?.icon_state = (m_intent == MOVE_INTENT_RUN)? "running" : "walking"
+
+/mob/living/movement_delay()
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			if(drowsyness > 0)
+				move_delay += 6
+			move_delay += config_legacy.run_speed
+		if(MOVE_INTENT_WALK)
+			move_delay += config_legacy.walk_speed
+

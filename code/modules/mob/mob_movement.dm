@@ -50,7 +50,7 @@
 	return
 
 /// until movespeed modifiersare done - kevinz000
-/mob/proc/movement_delay()
+/mob/proc/_movement_delay()
 	return 0
 
 #define MOVEMENT_DELAY_BUFFER 0.75
@@ -111,7 +111,7 @@
 		return Move_object(direct)
 	if(!isliving(mob))
 		return mob.Move(n, direct)
-	if((mob.stat == DEAD) isliving(mob) && !mob.forbid_seeing_deadchat)
+	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
 		mob.ghostize()
 		return FALSE
 	if(mob.force_moving)
@@ -208,28 +208,15 @@
 		move_delay = world.time
 	//
 
-	if(mob.restrained())//Why being pulled while cuffed prevents you from moving
-		for(var/mob/M in range(mob, 1))
-			if(M.pulling == mob)
-				if(!M.restrained() && M.stat == 0 && M.canmove && mob.Adjacent(M))
-					to_chat(src, "<font color='blue'>You're restrained! You can't move!</font>")
-					return 0
-				else
-					M.stop_pulling()
+	if(mob.restrained() && pulledby)//Why being pulled while cuffed prevents you from moving
+		to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
+		return FALSE
 
-	if(mob.pinned.len)
+	if(length(mob.pinned))
 		to_chat(src, "<font color='blue'>You're pinned to a wall by [mob.pinned[1]]!</font>")
-		return 0
+		return FALSE
 
-	switch(mob.m_intent)
-		if("run")
-			if(mob.drowsyness > 0)
-				mob.move_delay += 6
-			mob.move_delay += config_legacy.run_speed
-		if("walk")
-			mob.move_delay += config_legacy.walk_speed
-
-	if(mob.pulledby || mob.buckled) // Wheelchair driving!
+	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
 		if(istype(mob.loc, /turf/space))
 			return // No wheelchair driving in space
 		if(istype(mob.pulledby, /obj/structure/bed/chair/wheelchair))
@@ -248,13 +235,13 @@
 						if(prob(50))	direct = turn(direct, pick(90, -90))
 					if("walk")
 						if(prob(25))	direct = turn(direct, pick(90, -90))
-			mob.move_delay += 2
+			add_delay += 2
 			return mob.buckled.relaymove(mob,direct)
 
 	//We are now going to move
 	//Something with pulling things
 	if(locate(/obj/item/grab, mob))
-		mob.move_delay = max(mob.move_delay, world.time + 7)
+		move_delay_add_grab = 7
 		var/list/L = mob.ret_grab()
 		if(istype(L, /list))
 			if(L.len == 2)
@@ -306,6 +293,7 @@
 		G.adjust_position()
 
 //////////////////////end
+	add_delay = max(add_delay, move_delay_add_grab)
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= 2
