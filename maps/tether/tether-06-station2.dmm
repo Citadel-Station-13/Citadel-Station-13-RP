@@ -1018,7 +1018,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},

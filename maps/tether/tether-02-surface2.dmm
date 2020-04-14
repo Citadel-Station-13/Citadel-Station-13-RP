@@ -747,7 +747,7 @@
 "bR" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/table/steel,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "bS" = (
@@ -6732,7 +6732,7 @@
 /area/rnd/rdoffice)
 "om" = (
 /obj/structure/table/standard,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -3
 	},
 /obj/item/paicard{
@@ -14911,7 +14911,7 @@
 /area/maintenance/lower/south)
 "Db" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/tape{
+/obj/item/duct_tape_piece{
 	desc = "No Talk"
 	},
 /obj/item/clothing/suit/varsity/brown{
@@ -17626,7 +17626,7 @@
 /area/maintenance/lower/atmos)
 "HZ" = (
 /obj/structure/table/steel,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/item/stack/medical/bruise_pack,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor,

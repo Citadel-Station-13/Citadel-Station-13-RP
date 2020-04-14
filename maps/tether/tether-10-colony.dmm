@@ -6895,7 +6895,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /turf/unsimulated/floor{
@@ -8217,7 +8217,7 @@
 /area/centcom/security)
 "oK" = (
 /obj/structure/table/standard,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /obj/item/megaphone,
@@ -14350,7 +14350,7 @@
 	},
 /area/centcom/security)
 "zn" = (
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -14839,7 +14839,7 @@
 /area/centcom/security)
 "Ai" = (
 /obj/structure/table/reinforced,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -15824,7 +15824,7 @@
 "BL" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/security_space_law,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{

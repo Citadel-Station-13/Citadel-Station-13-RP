@@ -14679,7 +14679,7 @@
 /area/library)
 "zm" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -14693,7 +14693,7 @@
 	dir = 1
 	},
 /obj/item/camera,
-/obj/item/tape,
+/obj/item/duct_tape_piece,
 /turf/simulated/floor/carpet,
 /area/library)
 "zn" = (
@@ -15049,7 +15049,7 @@
 /area/maintenance/lower/atrium)
 "zV" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /turf/simulated/floor/carpet,
 /area/library)
 "zW" = (
@@ -15373,7 +15373,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
