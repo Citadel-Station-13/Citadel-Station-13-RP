@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
 	wait = 2 // Ticks, not deciseconds
 	init_order = INIT_ORDER_LIGHTING
-	flags = SS_TICKER
+	flags = SS_SSticker
 
 	var/list/currentrun = list()
 	var/stage = null

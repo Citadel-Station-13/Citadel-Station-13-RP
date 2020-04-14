@@ -24,7 +24,7 @@
 			if(H.isSynthetic() || H.does_not_breathe) // It's hard to choke a robot or something that doesn't breathe.
 				on_expire()
 				return
-			H << "<span class='warning'>You are having difficulty breathing!</span>"
+			to_chat(H, "<span class='warning'>You are having difficulty breathing!</span>")
 			var/pulses = 3
 			var/warned_victim = 0
 			while(pulses)
@@ -68,7 +68,7 @@
 		//world << "Predicted hardcrit."
 		return 1
 	else if(predicted_damage >= victim.species.total_health / 2) // Or perhaps we're gonna go into 'oxy crit'.
-		victim << "<span class='danger'>You feel really light-headed, and everything seems to be fading...</span>"
+		to_chat(victim, "<span class='danger'>You feel really light-headed, and everything seems to be fading...</span>")
 		//world << "Predicted oxycrit."
 		return 1
 	//If we're at this point, the spell is not going to result in critting.

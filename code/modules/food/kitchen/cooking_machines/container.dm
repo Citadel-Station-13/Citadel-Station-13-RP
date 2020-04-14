@@ -58,11 +58,11 @@
 		return
 
 	if (user.stat || user.restrained())
-		user << "<span class='notice'>You are in no fit state to do this.</span>"
+		to_chat(user, "<span class='notice'>You are in no fit state to do this.</span>")
 		return
 
 	if (!Adjacent(user))
-		user << "You can't reach [src] from here."
+		to_chat(user, "You can't reach [src] from here.")
 		return
 
 	if (!contents.len)

@@ -11652,7 +11652,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "uu" = (
-/obj/machinery/media/jukebox,
 /obj/machinery/firealarm{
 	dir = 2;
 	layer = 3.3;
@@ -12275,6 +12274,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "vw" = (
+/obj/effect/landmark/start{
+	name = "Scientist"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "vx" = (
@@ -12451,6 +12453,9 @@
 "vR" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Scientist"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
@@ -13812,10 +13817,23 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "yc" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
+/obj/effect/floor_decal/borderfloor{
+	dir = 8;
+	icon_state = "borderfloor";
+	pixel_x = 0
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/medical_wall/synth_anesthetics{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "yd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -13846,6 +13864,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"yf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Scientist"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/reception_desk)
 "yg" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
@@ -14012,10 +14039,17 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "yp" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/industrial/warning{
+	icon_state = "warning";
+	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Scientist"
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/rnd/reception_desk)
 "yq" = (
 /obj/structure/disposalpipe/segment{
@@ -14204,6 +14238,14 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
+"yC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/landmark/start{
+	name = "Scientist"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research/testingrange)
 "yD" = (
 /obj/structure/window/basic{
 	dir = 8
@@ -14214,6 +14256,22 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
+"yE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Roboticist"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
+"yF" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/landmark/start{
+	name = "Roboticist"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/assembly/robotics)
 "yG" = (
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
@@ -14621,7 +14679,7 @@
 /area/library)
 "zm" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -14635,7 +14693,7 @@
 	dir = 1
 	},
 /obj/item/camera,
-/obj/item/tape,
+/obj/item/duct_tape_piece,
 /turf/simulated/floor/carpet,
 /area/library)
 "zn" = (
@@ -14673,6 +14731,11 @@
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
+"zr" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "zt" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -14793,16 +14856,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/rnd/reception_desk)
-"zE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -14996,7 +15049,7 @@
 /area/maintenance/lower/atrium)
 "zV" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /turf/simulated/floor/carpet,
 /area/library)
 "zW" = (
@@ -15320,7 +15373,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 1;
 	pixel_y = 5
@@ -18202,11 +18255,6 @@
 "ED" = (
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
-"EE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
-/area/rnd/research/testingrange)
 "EF" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
@@ -19981,32 +20029,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
-"HQ" = (
-/obj/structure/closet/secure_closet/medical_wall/anesthetics{
-	pixel_x = -32
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor";
-	pixel_x = 0
-	},
-/obj/effect/floor_decal/corner/mauve/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/assembly/robotics)
 "HR" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/assembly/robotics)
-"HS" = (
-/obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
 "HT" = (
@@ -31222,7 +31248,7 @@ BY
 CX
 Dy
 Ed
-EE
+yC
 EV
 FJ
 Gw
@@ -32650,7 +32676,7 @@ IU
 LM
 IH
 HM
-HQ
+yc
 Ia
 Da
 ac
@@ -32915,7 +32941,7 @@ ud
 xa
 xB
 xL
-yp
+yf
 yV
 zD
 zB
@@ -32926,7 +32952,7 @@ Cx
 Ei
 wq
 FV
-If
+yE
 HJ
 FV
 IA
@@ -33059,7 +33085,7 @@ xC
 xM
 yq
 yW
-zE
+yp
 zI
 xb
 Bf
@@ -33076,7 +33102,7 @@ LB
 LR
 Ih
 En
-HS
+yF
 Id
 Im
 ac
@@ -37624,7 +37650,7 @@ Jr
 Js
 Jv
 JE
-yc
+zr
 IY
 JH
 JJ
@@ -37766,7 +37792,7 @@ Js
 Js
 Jz
 JE
-yc
+zr
 IY
 JH
 JJ
@@ -37908,7 +37934,7 @@ Jt
 Js
 Jz
 JE
-yc
+zr
 IY
 JH
 JJ

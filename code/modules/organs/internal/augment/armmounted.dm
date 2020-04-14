@@ -160,7 +160,7 @@
 		/obj/item/tool/wirecutters = null,
 		/obj/item/multitool = null,
 		/obj/item/stack/cable_coil/gray = null,
-		/obj/item/tape_roll = null
+		/obj/item/duct_tape_roll = null
 		)
 
 	var/list/integrated_tools_by_name

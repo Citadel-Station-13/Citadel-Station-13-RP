@@ -6,7 +6,7 @@
 	2. The map is initialized, and map objects are created.
 	3. world/New() runs, creating the process scheduler (and the old master controller) and spawning their setup.
 	4. processScheduler/setup() runs, creating all the processes. game_controller/setup() runs, calling initialize() on all movable atoms in the world.
-	5. The gameticker is created.
+	5. The gameSSticker is created.
 
 */
 
@@ -87,17 +87,10 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	processScheduler = new
-	master_controller = new /datum/controller/game_controller()
-
-	processScheduler.deferSetupFor(/datum/controller/process/ticker)
-	processScheduler.setup()
-
 	Master.Initialize(10, FALSE)
 
-	spawn(1)
-		master_controller.setup()
 #if UNIT_TEST
+	spawn(1)
 		initialize_unit_tests()
 #endif
 
@@ -207,7 +200,6 @@ GLOBAL_LIST(topic_status_cache)
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		//POLARIS START
-		processScheduler.stop()
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 		//END
@@ -333,7 +325,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	var/list/features = list()
 
-	if(ticker)
+	if(SSticker)
 		if(master_mode)
 			features += master_mode
 	else
@@ -377,11 +369,11 @@ var/failed_old_db_connections = 0
 
 /hook/startup/proc/connectDB()
 	if(!config_legacy.sql_enabled)
-		world.log << "SQL connection disabled in config_legacy."
+		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_database_connection())
-		world.log << "Your server failed to establish a connection with the feedback database."
+		log_world("Your server failed to establish a connection with the feedback database.")
 	else
-		world.log << "Feedback database connection established."
+		log_world("Feedback database connection established.")
 	return 1
 
 proc/setup_database_connection()
@@ -421,11 +413,11 @@ proc/establish_db_connection()
 
 /hook/startup/proc/connectOldDB()
 	if(!config_legacy.sql_enabled)
-		world.log << "SQL connection disabled in config_legacy."
+		log_world("SQL connection disabled in config_legacy.")
 	else if(!setup_old_database_connection())
-		world.log << "Your server failed to establish a connection with the SQL database."
+		log_world("Your server failed to establish a connection with the SQL database.")
 	else
-		world.log << "SQL database connection established."
+		log_world("SQL database connection established.")
 	return 1
 
 //These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.

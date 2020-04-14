@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		var/mob/living/L = .
 		if(L.reagents)
 			if(prob(poison_chance))
-				L << "<span class='warning'>You feel a shock rushing through your veins.</span>"
+				to_chat(L, "<span class='warning'>You feel a shock rushing through your veins.</span>")
 				L.reagents.add_reagent(poison_type, poison_per_bite)
 
 /mob/living/simple_mob/retaliate/solargrub/death()

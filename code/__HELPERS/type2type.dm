@@ -68,7 +68,7 @@
 		if (4.0) return EAST
 		if (8.0) return WEST
 		else
-			world.log << "UNKNOWN DIRECTION: [direction]"
+			log_world("UNKNOWN DIRECTION: [direction]")
 
 //Splits the text of a file at seperator and returns them in a list.
 //returns an empty list if the file doesn't exist

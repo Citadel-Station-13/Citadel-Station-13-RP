@@ -918,7 +918,7 @@ About the new airlock wires panel:
 		if(src.isElectrified())
 			if(src.shock(user, 75))
 				return
-	if(istype(C, /obj/item/taperoll))
+	if(istype(C, /obj/item/barrier_tape_roll))
 		return
 
 	src.add_fingerprint(user)

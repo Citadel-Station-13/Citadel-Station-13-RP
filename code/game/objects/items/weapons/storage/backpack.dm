@@ -53,7 +53,7 @@
 
 /obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding))
-		user << "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>"
+		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
 		//qdel(W) - fuck this holy shit
 		return
 	. = ..()

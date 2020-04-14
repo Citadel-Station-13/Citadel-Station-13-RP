@@ -31,17 +31,17 @@
 				var/mob/living/carbon/C = usr
 				C.toggle_throw_mode()
 			else
-				usr << "<font color='red'>This mob type cannot throw items.</font>"
+				to_chat(usr, "<font color='red'>This mob type cannot throw items.</font>")
 			return
 		if(NORTHWEST)
 			if(isliving(usr))
 				var/mob/living/carbon/C = usr
 				if(!C.get_active_hand())
-					usr << "<font color='red'>You have nothing to drop in your hand.</font>"
+					to_chat(usr, "<font color='red'>You have nothing to drop in your hand.</font>")
 					return
 				drop_item()
 			else
-				usr << "<font color='red'>This mob type cannot drop items.</font>"
+				to_chat(usr, "<font color='red'>This mob type cannot drop items.</font>")
 			return
 
 //This gets called when you press the delete button.
@@ -49,7 +49,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		usr << "<font color='blue'>You are not pulling anything.</font>"
+		to_chat(usr, "<font color='blue'>You are not pulling anything.</font>")
 		return
 	usr.stop_pulling()
 
@@ -119,7 +119,8 @@
 		Process_Incorpmove(direct)
 		return
 
-	if(moving)	return 0
+	if(moving)
+		return FALSE
 
 	if(!mob.check_move_cooldown())
 		return
@@ -161,7 +162,8 @@
 						b.zoom()
 				*/
 
-	if(Process_Grab())	return
+	if(Process_Grab())
+		return
 
 	if(!mob.canmove)
 		return

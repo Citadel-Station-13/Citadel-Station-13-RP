@@ -2532,12 +2532,12 @@
 /area/centcom/specops)
 "fX" = (
 /obj/structure/table/rack,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
 /obj/item/flash,
 /obj/item/flash,
 /obj/item/flash,
@@ -3743,10 +3743,10 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -3754,9 +3754,9 @@
 /area/centcom/specops)
 "hY" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/taperoll/atmos,
-/obj/item/taperoll/atmos,
-/obj/item/taperoll/atmos,
+/obj/item/barrier_tape_roll/atmos,
+/obj/item/barrier_tape_roll/atmos,
+/obj/item/barrier_tape_roll/atmos,
 /obj/item/pickaxe/drill,
 /obj/item/pickaxe/drill,
 /turf/unsimulated/floor{

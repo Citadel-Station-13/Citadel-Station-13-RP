@@ -78,7 +78,7 @@
 					desc = "A creature made of [contents.len-1] assorted bones and a skull. The plaque reads \'[plaque_contents]\'."
 			else
 				desc = "Incomplete skeleton, looks like it could use [breq-bnum] more bones."
-				user << "Looks like it could use [breq-bnum] more bones."
+				to_chat(user, "Looks like it could use [breq-bnum] more bones.")
 		else
 			..()
 	else if(istype(W,/obj/item/pen))

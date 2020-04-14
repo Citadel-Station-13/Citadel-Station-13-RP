@@ -84,7 +84,7 @@
 			//Citadel changes start
 			///* VOREStation Removal Start - Eh. People can squish maybe.
 			if(species.bump_flag != SLIME) //This should definitely do it.
-				src << "<span class='warning'>You are not a slime thing!</span>"
+				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
 				return
 			//*/ //VOREStation Removal End
 			//Citadel changes end
@@ -720,6 +720,16 @@
 					message = "squeaks!"
 					m_type = 2
 					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
+		
+		if("meow", "meows")
+			if(miming)
+				message = "acts out a soft mrowl."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "mrowls"
+					m_type = 2
+					playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2

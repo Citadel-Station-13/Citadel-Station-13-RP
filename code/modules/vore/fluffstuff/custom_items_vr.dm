@@ -546,7 +546,7 @@
 //Stobarico - Alexis Bloise
 /obj/item/cane/wand
     name = "Ancient wand"
-    desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sticker saying Bloise."
+    desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sSSticker saying Bloise."
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "alexiswand"
     item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
@@ -1880,14 +1880,14 @@
 /obj/item/melee/baton/fluff/stunstaff/attack_self(mob/user)
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		user << "<span class='notice'>[src] is now [status ? "on" : "off"].</span>"
+		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
 		if(status == 0)
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 		else
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	else
 		status = 0
-		user << "<span class='warning'>[src] is out of charge.</span>"
+		to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	update_held_icon()
 	add_fingerprint(user)
 

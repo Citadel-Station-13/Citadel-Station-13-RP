@@ -314,7 +314,7 @@ obj/item/clothing/suit/kamishimo
 	desc = "A rugged canvas trenchcoat, designed and created by TX Fabrication Corp. The coat appears to have its kevlar lining removed."
 	icon_state = "detective"
 	blood_overlay_type = "coat"
-	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/taperecorder,/obj/item/uv_light)
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/trench/grey
@@ -765,11 +765,11 @@ obj/item/clothing/suit/kamishimo
 	if(rolled == 0)
 		rolled = 1
 		body_parts_covered &= ~(ARMS)
-		usr << "<span class='notice'>You roll up the sleeves of your [src].</span>"
+		to_chat(usr, "<span class='notice'>You roll up the sleeves of your [src].</span>")
 	else
 		rolled = 0
 		body_parts_covered = initial(body_parts_covered)
-		usr << "<span class='notice'>You roll down the sleeves of your [src].</span>"
+		to_chat(usr, "<span class='notice'>You roll down the sleeves of your [src].</span>")
 	update_icon()
 
 /obj/item/clothing/suit/storage/flannel/verb/tuck()
@@ -781,10 +781,10 @@ obj/item/clothing/suit/kamishimo
 
 	if(tucked == 0)
 		tucked = 1
-		usr << "<span class='notice'>You tuck in your your [src].</span>"
+		to_chat(usr, "<span class='notice'>You tuck in your your [src].</span>")
 	else
 		tucked = 0
-		usr << "<span class='notice'>You untuck your [src].</span>"
+		to_chat(usr, "<span class='notice'>You untuck your [src].</span>")
 	update_icon()
 
 /obj/item/clothing/suit/storage/flannel/verb/button()
@@ -797,11 +797,11 @@ obj/item/clothing/suit/kamishimo
 	if(buttoned == 0)
 		buttoned = 1
 		flags_inv = HIDETIE|HIDEHOLSTER
-		usr << "<span class='notice'>You button your [src].</span>"
+		to_chat(usr, "<span class='notice'>You button your [src].</span>")
 	else
 		buttoned = 0
 		flags_inv = HIDEHOLSTER
-		usr<<"<span class='notice'>You unbutton your [src].</span>"
+		to_chat(usr, "<span class='notice'>You unbutton your [src].</span>")
 	update_icon()
 
 /obj/item/clothing/suit/storage/flannel/update_icon()

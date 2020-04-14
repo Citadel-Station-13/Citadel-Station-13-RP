@@ -1,5 +1,5 @@
 /**
- * Stuff having to do with inter-round persistence. 
+ * Stuff having to do with inter-round persistence.
  */
 
 // Minds represent IC characters.
@@ -242,11 +242,11 @@
 	//should keep it even though it was probably doing the quick-calibrate, and their
 	//owner will have been pre-set during the constructor.
 	if(nif && !(nif.stat == NIF_INSTALLING && !nif.owner))
-		prefs.nif_path = nif.type
+		prefs.nif_id = nif.id
 		prefs.nif_durability = nif.durability
 		prefs.nif_savedata = nif.save_data.Copy()
 	else
-		prefs.nif_path = null
+		prefs.nif_id = null
 		prefs.nif_durability = null
 		prefs.nif_savedata = null
 

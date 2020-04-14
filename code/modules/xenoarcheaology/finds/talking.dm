@@ -63,7 +63,7 @@
 /*/obj/item/talkingcrystal/proc/debug()
 	//set src in view()
 	for(var/v in heard_words)
-		world << "[uppertext(v)]"
+		to_chat(world, "[uppertext(v)]")
 		var/list/d = heard_words["[v]"]
 		for(var/X in d)
 			world << "[X]"*/
@@ -118,5 +118,5 @@
 			listening|=M
 
 	for(var/mob/M in listening)
-		M << "\icon[holder_atom] <b>[holder_atom]</b> reverberates, \"<font color='blue'>[msg]</font>\""
+		to_chat(M, "\icon[holder_atom] <b>[holder_atom]</b> reverberates, \"<font color='blue'>[msg]</font>\"")
 	last_talk_time = world.time

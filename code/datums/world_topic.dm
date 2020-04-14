@@ -163,20 +163,20 @@
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	//.["gamestate"] = SSticker.current_state
+	//.["gamestate"] = SSSSticker.current_state
 
 	//.["map_name"] = SSmapping.config?.map_name || "Loading..."
 
 	//if(key_valid)
 		//.["active_players"] = get_active_player_count()
 		/*
-		if(SSticker.HasRoundStarted())
-			.["real_mode"] = SSticker.mode.name
+		if(SSSSticker.HasRoundStarted())
+			.["real_mode"] = SSSSticker.mode.name
 			// Key-authed callers may know the truth behind the "secret"
 		*/
 
 	.["security_level"] = get_security_level()
-//	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+//	.["round_duration"] = SSSSticker ? round((world.time-SSSSticker.round_start_time)/10) : 0
 //	// Amount of world's ticks in seconds, useful for calculating round duration
 	.["stationtime"] = stationtime2text()
 	.["roundduration"] = roundduration2text()

@@ -283,7 +283,7 @@
 	set name = "Call Communicator"
 	set desc = "If there is a communicator available, send a request to speak through it.  This will reset your respawn timer, if someone picks up."
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
@@ -369,7 +369,7 @@
 		while(user.machine == video_source && Adjacent(user))
 			var/turf/T = get_turf(video_source)
 			if(!T || !is_on_same_plane_or_station(T.z, user.z) || !video_source.can_use())
-				user << "<span class='warning'>The screen bursts into static, then goes black.</span>"
+				to_chat(user, "<span class='warning'>The screen bursts into static, then goes black.</span>")
 				video_cleanup(user)
 				return
 			sleep(10)

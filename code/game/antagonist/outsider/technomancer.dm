@@ -87,7 +87,7 @@ var/datum/antagonist/technomancer/technomancers
 			continue // Only want abandoned cores.
 		if(!core.spells.len)
 			continue // Cores containing spells only.
-		world << "Abandoned [core] had [english_list(core.spells)].<br>"
+		to_chat(world, "Abandoned [core] had [english_list(core.spells)].<br>")
 
 /datum/antagonist/technomancer/print_player_full(var/datum/mind/player)
 	var/text = print_player_lite(player)

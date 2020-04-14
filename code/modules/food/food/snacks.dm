@@ -78,39 +78,39 @@
 			 // Vorestation edits in this section.
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
 			if (fullness <= 50)
-				M << "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>"
+				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
 			if (fullness > 50 && fullness <= 150)
-				M << "<span class='notice'>You hungrily begin to eat [src].</span>"
+				to_chat(M, "<span class='notice'>You hungrily begin to eat [src].</span>")
 			if (fullness > 150 && fullness <= 350)
-				M << "<span class='notice'>You take a bite of [src].</span>"
+				to_chat(M, "<span class='notice'>You take a bite of [src].</span>")
 			if (fullness > 350 && fullness <= 550)
-				M << "<span class='notice'>You unwillingly chew a bit of [src].</span>"
+				to_chat(M, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
 			if (fullness > 550 && fullness <= 650)
-				M << "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>"
+				to_chat(M, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
 			if (fullness > 650 && fullness <= 1000)
-				M << "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>"
+				to_chat(M, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
 			if (fullness > 1000 && fullness <= 3000)
-				M << "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>"
+				to_chat(M, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
 			if (fullness > 3000 && fullness <= 5500)
-				M << "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>"
+				to_chat(M, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
 			if (fullness > 5500 && fullness <= 6000)
-				M << "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>"
+				to_chat(M, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
 			if (fullness > 6000) // There has to be a limit eventually.
-				M << "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>"
+				to_chat(M, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
 				return 0
 			/*if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
-				M << "<span class='danger'>You cannot force any more of [src] to go down your throat.</span>"
+				to_chat(M, "<span class='danger'>You cannot force any more of [src] to go down your throat.</span>")
 				return 0*/
 
 		else
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(!H.check_has_mouth())
-					user << "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!"
+					to_chat(user, "Where do you intend to put \the [src]? \The [H] doesn't have a mouth!")
 					return
 				var/obj/item/blocked = H.check_mouth_coverage()
 				if(blocked)
-					user << "<span class='warning'>\The [blocked] is in the way!</span>"
+					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
 			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
@@ -131,7 +131,7 @@
 				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
 
 			else
-				user << "This creature does not seem to have a mouth!"
+				to_chat(user, "This creature does not seem to have a mouth!")
 				return
 
 		if(reagents)								//Handle ingestion of the reagent.
@@ -151,15 +151,15 @@
 	if(!..(user, 1))
 		return
 	if (coating) // BEGIN CITADEL CHANGE
-		user << "<span class='notice'>It's coated in [coating.name]!</span>" // END CITADEL CHANGE
+		to_chat(user, "<span class='notice'>It's coated in [coating.name]!</span>") // END CITADEL CHANGE
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		user << "<font color='blue'>\The [src] was bitten by someone!</font>"
+		to_chat(user, "<font color='blue'>\The [src] was bitten by someone!</font>")
 	else if (bitecount<=3)
-		user << "<font color='blue'>\The [src] was bitten [bitecount] times!</font>"
+		to_chat(user, "<font color='blue'>\The [src] was bitten [bitecount] times!</font>")
 	else
-		user << "<font color='blue'>\The [src] was bitten multiple times!</font>"
+		to_chat(user, "<font color='blue'>\The [src] was bitten multiple times!</font>")
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -174,7 +174,7 @@
 				U.create_reagents(5)
 
 			if (U.reagents.total_volume > 0)
-				user << "<font color='red'>You already have something on your [U].</font>"
+				to_chat(user, "<font color='red'>You already have something on your [U].</font>")
 				return
 
 			user.visible_message( \
@@ -577,7 +577,7 @@
 		return ..()
 	if(!(proximity && O.is_open_container()))
 		return
-	user << "You crack \the [src] into \the [O]."
+	to_chat(user, "You crack \the [src] into \the [O].")
 	reagents.trans_to(O, reagents.total_volume)
 	user.drop_from_inventory(src)
 	qdel(src)
@@ -595,10 +595,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			usr << "<font color='blue'>The egg refuses to take on this color!</font>"
+			to_chat(usr, "<font color='blue'>The egg refuses to take on this color!</font>")
 			return
 
-		usr << "<font color='blue'>You color \the [src] [clr]</font>"
+		to_chat(usr, "<font color='blue'>You color \the [src] [clr]</font>")
 		icon_state = "egg-[clr]"
 	else
 		. = ..()
@@ -869,12 +869,12 @@
 
 /obj/item/reagent_containers/food/snacks/donkpocket/sinpocket/attack_self(mob/user)
 	if(has_been_heated)
-		user << "<span class='notice'>The heating chemicals have already been spent.</span>"
+		to_chat(user, "<span class='notice'>The heating chemicals have already been spent.</span>")
 		return
 	has_been_heated = 1
 	user.visible_message("<span class='notice'>[user] crushes \the [src] package.</span>", "You crush \the [src] package and feel a comfortable heat build up.")
 	spawn(200)
-		user << "You think \the [src] is ready to eat about now."
+		to_chat(user, "You think \the [src] is ready to eat about now.")
 		heat()
 
 /obj/item/reagent_containers/food/snacks/brainburger
@@ -1288,7 +1288,7 @@
 
 /obj/item/reagent_containers/food/snacks/popcorn/On_Consume()
 	if(prob(unpopped))	//lol ...what's the point?
-		usr << "<font color='red'>You bite down on an un-popped kernel!</font>"
+		to_chat(usr, "<font color='red'>You bite down on an un-popped kernel!</font>")
 		unpopped = max(0, unpopped-1)
 	. = ..()
 
@@ -3208,7 +3208,7 @@
 /obj/item/reagent_containers/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/material/kitchen/rollingpin))
 		new /obj/item/reagent_containers/food/snacks/sliceable/flatdough(src)
-		user << "You flatten the dough."
+		to_chat(user, "You flatten the dough.")
 		qdel(src)
 
 // slicable into 3xdoughslices
@@ -3256,21 +3256,21 @@
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
 		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
-		user << "You make a burger."
+		to_chat(user, "You make a burger.")
 		qdel(W)
 		qdel(src)
 
 	// Bun + cutlet = hamburger
 	else if(istype(W,/obj/item/reagent_containers/food/snacks/cutlet))
 		new /obj/item/reagent_containers/food/snacks/monkeyburger(src)
-		user << "You make a burger."
+		to_chat(user, "You make a burger.")
 		qdel(W)
 		qdel(src)
 
 	// Bun + sausage = hotdog
 	else if(istype(W,/obj/item/reagent_containers/food/snacks/sausage))
 		new /obj/item/reagent_containers/food/snacks/hotdog(src)
-		user << "You make a hotdog."
+		to_chat(user, "You make a hotdog.")
 		qdel(W)
 		qdel(src)
 END CITADEL CHANGE */
@@ -3279,7 +3279,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/monkeyburger/attackby(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))// && !istype(src,/obj/item/reagent_containers/food/snacks/cheesewedge))
 		new /obj/item/reagent_containers/food/snacks/cheeseburger(src)
-		user << "You make a cheeseburger."
+		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
 		return
@@ -3290,7 +3290,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/human/burger/attackby(obj/item/reagent_containers/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))
 		new /obj/item/reagent_containers/food/snacks/cheeseburger(src)
-		user << "You make a cheeseburger."
+		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
 		return
@@ -3378,7 +3378,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/grown/attackby(obj/item/W, mob/user)
 	if(seed && seed.kitchen_tag && seed.kitchen_tag == "potato" && istype(W,/obj/item/material/knife))
 		new /obj/item/reagent_containers/food/snacks/rawsticks(get_turf(src))
-		user << "You cut the potato."
+		to_chat(user, "You cut the potato.")
 		qdel(src)
 	else
 		. = ..()
@@ -3773,7 +3773,7 @@ END CITADEL CHANGE */
 //This proc handles drawing coatings out of a container when this food is dipped into it
 /obj/item/reagent_containers/food/snacks/proc/apply_coating(var/datum/reagent/nutriment/coating/C, var/mob/user)
 	if (coating)
-		user << "The [src] is already coated in [coating.name]!"
+		to_chat(user, "The [src] is already coated in [coating.name]!")
 		return 0
 
 	//Calculate the reagents of the coating needed
@@ -3902,7 +3902,7 @@ END CITADEL CHANGE */
 /mob/living/carbon/alien/diona
 	composition_reagent = "nutriment"//Dionae are plants, so eating them doesn't give animal protein
 
-/mob/living/simple_animal/slime
+/mob/living/simple_mob/slime
 	composition_reagent = "slimejelly"
 
 /mob/living/simple_animal
@@ -4679,7 +4679,7 @@ END CITADEL CHANGE */
 			returningitem.bitesize = CLAMP(returningitem.reagents.total_volume,1,10)
 		else if(prob(1))
 			memed = 1
-			user << "You scoop up some dip with the chip, but mid-scoop, the chip breaks off into the dreadful abyss of dip, never to be seen again..."
+			to_chat(user, "You scoop up some dip with the chip, but mid-scoop, the chip breaks off into the dreadful abyss of dip, never to be seen again...")
 			returningitem.icon_state = "[returningitem.icon_state]_half"
 			returningitem.bitesize = CLAMP(returningitem.reagents.total_volume,1,10)
 		else
@@ -4690,10 +4690,10 @@ END CITADEL CHANGE */
 
 		if (reagents && reagents.total_volume)
 			if(!memed)
-				user << "You scoop up some dip with the chip."
+				to_chat(user, "You scoop up some dip with the chip.")
 		else
 			if(!memed)
-				user << "You scoop up the remaining dip with the chip."
+				to_chat(user, "You scoop up the remaining dip with the chip.")
 			var/obj/waste = new trash(loc)
 			if (loc == user)
 				user.put_in_hands(waste)
