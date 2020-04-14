@@ -734,7 +734,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/qShuttle)
 "bU" = (
-/obj/item/taperoll/medical,
+/obj/item/barrier_tape_roll/medical,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/qShuttle)
 "bV" = (

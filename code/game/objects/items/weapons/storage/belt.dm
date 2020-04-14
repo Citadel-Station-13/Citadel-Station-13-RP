@@ -58,7 +58,7 @@
 		/obj/item/clothing/gloves,
 		/obj/item/pda,
 		/obj/item/megaphone,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/radio/headset,
 		/obj/item/robotanalyzer,
 		/obj/item/material/minihoe,
@@ -125,7 +125,7 @@
 		/obj/item/stack/medical,
 		/obj/item/radio/headset,
 		/obj/item/pda,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/head/surgery,
@@ -176,7 +176,7 @@
 		/obj/item/clothing/accessory/badge,
 		/obj/item/gun/projectile/sec,
 		/obj/item/gun/projectile/p92x,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/gun/projectile/colt/detective,
 		/obj/item/holowarrant
 		)
@@ -213,7 +213,7 @@
 		/obj/item/megaphone,
 		/obj/item/radio/headset,
 		/obj/item/clothing/gloves,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/handcuffs,
 		/obj/item/flash,
@@ -329,7 +329,7 @@
 		/obj/item/stack/medical,
 		/obj/item/radio/headset,
 		/obj/item/pda,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/head/surgery,
@@ -397,7 +397,7 @@
 		/obj/item/light/tube,
 		/obj/item/flame/lighter,
 		/obj/item/megaphone,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/reagent_containers/spray,
 		/obj/item/soap
 		)

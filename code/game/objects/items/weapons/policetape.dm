@@ -1,5 +1,5 @@
 //Define all tape types in policetape.dm
-/obj/item/taperoll
+/obj/item/barrier_tape_roll
 	name = "tape roll"
 	icon = 'icons/policetape.dmi'
 	icon_state = "tape"
@@ -14,7 +14,7 @@
 
 	var/apply_tape = FALSE
 
-/obj/item/taperoll/Initialize()
+/obj/item/barrier_tape_roll/Initialize()
 	. = ..()
 	if(apply_tape)
 		var/turf/T = get_turf(src)
@@ -62,7 +62,7 @@ var/list/tape_roll_applications = list()
 		hazard_overlays["[WEST]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "W")
 	update_icon()
 
-/obj/item/taperoll/medical
+/obj/item/barrier_tape_roll/medical
 	name = "medical tape"
 	desc = "A roll of medical tape used to block off patients from the public."
 	tape_type = /obj/item/tape/medical
@@ -74,7 +74,7 @@ var/list/tape_roll_applications = list()
 	req_access = list(access_medical)
 	color = COLOR_WHITE
 
-/obj/item/taperoll/police
+/obj/item/barrier_tape_roll/police
 	name = "police tape"
 	desc = "A roll of police tape used to block off crime scenes from the public."
 	tape_type = /obj/item/tape/police
@@ -86,13 +86,13 @@ var/list/tape_roll_applications = list()
 	req_access = list(access_security)
 	color = COLOR_RED_LIGHT
 
-/obj/item/taperoll/engineering
+/obj/item/barrier_tape_roll/engineering
 	name = "engineering tape"
 	desc = "A roll of engineering tape used to block off working areas from the public."
 	tape_type = /obj/item/tape/engineering
 	color = COLOR_YELLOW
 
-/obj/item/taperoll/engineering/applied
+/obj/item/barrier_tape_roll/engineering/applied
 	apply_tape = TRUE
 
 /obj/item/tape/engineering
@@ -101,7 +101,7 @@ var/list/tape_roll_applications = list()
 	req_one_access = list(access_engine,access_atmospherics)
 	color = COLOR_YELLOW
 
-/obj/item/taperoll/atmos
+/obj/item/barrier_tape_roll/atmos
 	name = "atmospherics tape"
 	desc = "A roll of atmospherics tape used to block off working areas from the public."
 	tape_type = /obj/item/tape/atmos
@@ -113,7 +113,7 @@ var/list/tape_roll_applications = list()
 	req_one_access = list(access_engine,access_atmospherics)
 	color = COLOR_DEEP_SKY_BLUE
 
-/obj/item/taperoll/update_icon()
+/obj/item/barrier_tape_roll/update_icon()
 	overlays.Cut()
 	var/image/overlay = image(icon = src.icon)
 	overlay.appearance_flags = RESET_COLOR
@@ -125,19 +125,19 @@ var/list/tape_roll_applications = list()
 		overlays += overlay
 
 
-/obj/item/taperoll/dropped(mob/user)
+/obj/item/barrier_tape_roll/dropped(mob/user)
 	update_icon()
 	return ..()
 
-/obj/item/taperoll/pickup(mob/user)
+/obj/item/barrier_tape_roll/pickup(mob/user)
 	update_icon()
 	return ..()
 
-/obj/item/taperoll/attack_hand()
+/obj/item/barrier_tape_roll/attack_hand()
 	update_icon()
 	return ..()
 
-/obj/item/taperoll/attack_self(mob/user as mob)
+/obj/item/barrier_tape_roll/attack_self(mob/user as mob)
 	if(!start)
 		start = get_turf(src)
 		to_chat(user, "<span class='notice'>You place the first end of \the [src].</span>")
@@ -280,7 +280,7 @@ var/list/tape_roll_applications = list()
 		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 		return
 
-/obj/item/taperoll/afterattack(var/atom/A, mob/user as mob, proximity)
+/obj/item/barrier_tape_roll/afterattack(var/atom/A, mob/user as mob, proximity)
 	if(!proximity)
 		return
 

@@ -17864,7 +17864,7 @@
 /area/maintenance/station/sec_lower)
 "NN" = (
 /obj/structure/table/glass,
-/obj/item/taperoll/medical,
+/obj/item/barrier_tape_roll/medical,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
 /turf/simulated/floor,

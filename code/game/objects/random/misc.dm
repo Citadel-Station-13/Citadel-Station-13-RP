@@ -129,8 +129,8 @@
 				prob(1);/obj/item/storage/belt/utility/full,
 				prob(5);/obj/random/tool,
 				prob(2);/obj/item/duct_tape_roll,
-				prob(2);/obj/item/taperoll/engineering,
-				prob(1);/obj/item/taperoll/atmos,
+				prob(2);/obj/item/barrier_tape_roll/engineering,
+				prob(1);/obj/item/barrier_tape_roll/atmos,
 				prob(1);/obj/item/flashlight/maglight)
 
 /obj/random/tech_supply/component

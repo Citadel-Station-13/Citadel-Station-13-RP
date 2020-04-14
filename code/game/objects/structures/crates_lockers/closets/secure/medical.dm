@@ -138,7 +138,7 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/box/freezer,
 		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/taperoll/medical)
+		/obj/item/barrier_tape_roll/medical)
 
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
@@ -166,7 +166,7 @@
 		/obj/item/clothing/shoes/boots/winter/medical,
 		/obj/item/storage/box/freezer,
 		/obj/item/clothing/mask/gas,
-		/obj/item/taperoll/medical,
+		/obj/item/barrier_tape_roll/medical,
 		/obj/item/clothing/suit/bio_suit/cmo,
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/gps/medical/cmo,

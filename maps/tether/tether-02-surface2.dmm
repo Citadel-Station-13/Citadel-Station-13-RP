@@ -13189,7 +13189,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/taperoll/atmos,
+/obj/item/barrier_tape_roll/atmos,
 /obj/random/tech_supply,
 /obj/random/tool,
 /turf/simulated/floor/tiled,

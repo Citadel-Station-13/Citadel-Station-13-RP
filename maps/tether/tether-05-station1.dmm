@@ -21991,7 +21991,7 @@
 /obj/random/junk,
 /obj/structure/closet,
 /obj/random/maintenance/clean,
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bZS" = (

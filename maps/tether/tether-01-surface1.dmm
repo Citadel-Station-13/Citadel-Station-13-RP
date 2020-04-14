@@ -9266,7 +9266,7 @@
 	icon_state = "bordercolor";
 	dir = 4
 	},
-/obj/item/taperoll/atmos,
+/obj/item/barrier_tape_roll/atmos,
 /obj/item/stack/cable_coil/random_belt,
 /obj/random/tech_supply,
 /turf/simulated/floor/tiled/techmaint,
