@@ -92,7 +92,7 @@
 			setDir(get_dir(old_T, newloc))
 			// Apply movement delay.
 			// Player movement has more factors but its all in the client and fixing that would be its own project.
-			setMoveCooldown(movement_delay())
+			applyMoveCooldown(movement_delay())
 		return
 
 	. = MOVEMENT_ON_COOLDOWN // To avoid superfast mobs that aren't meant to be superfast. Is actually -1.

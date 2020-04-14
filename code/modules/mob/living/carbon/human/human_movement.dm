@@ -1,6 +1,7 @@
 #define HUMAN_LOWEST_SLOWDOWN -3
 
 /mob/living/carbon/human/movement_delay(oldloc, direct)
+	. = ..()
 
 	var/tally = 0
 
@@ -113,7 +114,7 @@
 			tally = tally/2
 		tally -= chem_effects[CE_SPEEDBOOST]	// give 'em a buff on top.
 
-	return max(HUMAN_LOWEST_SLOWDOWN, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
+	return max(. + HUMAN_LOWEST_SLOWDOWN, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // This calculates the amount of slowdown to receive from items worn. This does NOT include species modifiers.
 // It is in a seperate place to avoid an infinite loop situation with dragging mobs dragging each other.

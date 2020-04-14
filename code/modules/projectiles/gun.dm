@@ -353,7 +353,6 @@
 
 	//These should apparently be disabled to allow for the automatic system to function without causing near-permanant paralysis. Re-enabling them while we sort that out.
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
-	user.setMoveCooldown(shoot_time) //no moving while shooting either
 
 	next_fire_time = world.time + shoot_time
 
@@ -425,7 +424,6 @@
 
 	//update timing
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	user.setMoveCooldown(move_delay)
 	next_fire_time = world.time + fire_delay
 
 	accuracy = initial(accuracy)	//Reset the gun's accuracy

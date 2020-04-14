@@ -857,6 +857,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	setDir(ndir)
 	if(buckled && buckled.buckle_movable)
 		buckled.setDir(ndir)
+	applyMoveCooldown(0.5)
 	return 1
 
 

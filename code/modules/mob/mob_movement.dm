@@ -1,3 +1,9 @@
+/mob/proc/applyMoveCooldown(amount)
+	move_delay = max(move_delay, world.time + amount)
+
+/mob/proc/check_move_cooldown()
+	return move_delay <= world.time
+
 /client/proc/client_dir(input, direction=-1)
 	return turn(input, direction*dir2angle(dir))
 
@@ -89,15 +95,15 @@
   */
 
 /client/Move(n, direct)
-	if(world.time < move_delay) //do not move anything ahead of this check please
+	if(!mob?.loc)
+		return FALSE
+	if((world.time < move_delay) || !mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
 		next_move_dir_add = 0
 		next_move_dir_sub = 0
-	var/old_move_delay = move_delay
+	var/old_move_delay = mob.move_delay		// IMPORTANT - mob move cooldown vs client.
 	move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
-	if(!mob || !mob.loc)
-		return FALSE
 	if(!n || !direct)
 		return FALSE
 	if(mob.transforming)
@@ -203,9 +209,9 @@
 	var/move_delay_add_grab = 0
 	var/add_delay = mob.movement_delay(n, direct)
 	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
-		move_delay = old_move_delay
+		mob.move_delay = old_move_delay
 	else
-		move_delay = world.time
+		mob.move_delay = world.time
 	//
 
 	if(mob.restrained() && mob.pulledby)//Why being pulled while cuffed prevents you from moving
@@ -297,7 +303,7 @@
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= 2
-	move_delay += add_delay
+	mob.move_delay += add_delay
 /*
 	if(.) // If mob is null here, we deserve the runtime
 		if(mob.throwing)
