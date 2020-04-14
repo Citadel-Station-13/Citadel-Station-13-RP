@@ -537,11 +537,11 @@ proc/get_nt_opposed()
 		return
 
 	if(master_mode != "secret")
-		to_chat(usr, "<b>The roundtype is [capitalize(ticker.mode.name)]</b>")
+		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
 		if(SSticker.mode.round_description)
-			to_chat(usr, "<i>[ticker.mode.round_description]</i>")
+			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
 		if(SSticker.mode.extended_round_description)
-			to_chat(usr, "[ticker.mode.extended_round_description]")
+			to_chat(usr, "[SSticker.mode.extended_round_description]")
 	else
 		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
 	return
