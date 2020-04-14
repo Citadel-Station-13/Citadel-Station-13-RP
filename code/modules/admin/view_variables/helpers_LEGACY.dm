@@ -1,5 +1,5 @@
 
-/atom/get_view_variables_header_legacy()
+/datum/proc/get_view_variables_header_legacy()
 	return ""
 
 /mob/living/get_view_variables_header_legacy()

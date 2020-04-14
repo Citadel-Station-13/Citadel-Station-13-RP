@@ -184,24 +184,22 @@
 		CRASH("Bump was called with no argument.")
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 	. = ..()
-	if(!QDELETED(throwing))
-		throwing.hit_atom(A)
-		. = TRUE
-		if(QDELETED(A))
-			return
-	A.Bumped(src)
-
-/atom/movable/Bump(atom/A)
-	if(!A)
-		CRASH("Bump was called with no argument.")
-	. = ..()
+	// vore code
 	if(throwing)
 		throw_impact(A)
 		throwing = 0
 		if(QDELETED(A))
 			return
-	A.Bumped(src)
 	A.last_bumped = world.time
+	// vore code end
+/*
+	if(!QDELETED(throwing))
+		throwing.hit_atom(A)
+		. = TRUE
+		if(QDELETED(A))
+			return
+*/
+	A.Bumped(src)
 
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
