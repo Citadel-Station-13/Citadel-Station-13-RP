@@ -104,7 +104,7 @@
 	[get_footer()]
 	"}
 
-/datum/browser/proc/open(var/use_onclose = 1)
+/datum/browser/proc/open(use_onclose = TRUE)
 	if(isnull(window_id))	//null check because this can potentially nuke goonchat
 		WARNING("Browser [title] tried to open with a null ID")
 		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
@@ -112,9 +112,22 @@
 	var/window_size = ""
 	if (width && height)
 		window_size = "size=[width]x[height];"
+/*		PENDING ASSET CACHE PORT
+	if (stylesheets.len)
+		send_asset_list(user, stylesheets, verify=FALSE)
+	if (scripts.len)
+		send_asset_list(user, scripts, verify=FALSE)
+*/
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
 	if (use_onclose)
-		onclose(user, window_id, ref)
+		setup_onclose()
+
+/datum/browser/proc/setup_onclose()
+	set waitfor = 0 //winexists sleeps, so we don't need to.
+	for (var/i in 1 to 10)
+		if (user && winexists(user, window_id))
+			onclose(user, window_id, ref)
+			break
 
 /datum/browser/proc/close()
 	if(!isnull(window_id))//null check because this can potentially nuke goonchat
@@ -167,35 +180,4 @@
 			[title ? "<div class='uiTitleWrapper'><div [title_attributes]><tt>[title]</tt></div></div>" : ""]
 			<div class='uiContent'>
 	"}
-
-/datum/browser/proc/open(use_onclose = TRUE)
-	if(isnull(window_id))	//null check because this can potentially nuke goonchat
-		WARNING("Browser [title] tried to open with a null ID")
-		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
-		return
-	var/window_size = ""
-	if (width && height)
-		window_size = "size=[width]x[height];"
-	if (stylesheets.len)
-		send_asset_list(user, stylesheets, verify=FALSE)
-	if (scripts.len)
-		send_asset_list(user, scripts, verify=FALSE)
-	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
-	if (use_onclose)
-		setup_onclose()
-
-/datum/browser/proc/setup_onclose()
-	set waitfor = 0 //winexists sleeps, so we don't need to.
-	for (var/i in 1 to 10)
-		if (user && winexists(user, window_id))
-			onclose(user, window_id, ref)
-			break
-
-/datum/browser/proc/close()
-	if(!isnull(window_id))//null check because this can potentially nuke goonchat
-		user << browse(null, "window=[window_id]")
-	else
-		WARNING("Browser [title] tried to close with a null ID")
-
-
 */
