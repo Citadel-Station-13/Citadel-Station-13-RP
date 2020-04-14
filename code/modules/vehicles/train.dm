@@ -56,7 +56,7 @@
 			M.apply_damages(22 / move_delay)	// and do damage according to how fast the train is going
 			if(istype(load, /mob/living/carbon/human))
 				var/mob/living/D = load
-				D << "<font color='red'>You hit [M]!</font>"
+				to_chat(D, "<font color='red'>You hit [M]!</font>")
 				add_attack_logs(D,M,"Ran over with [src.name]")
 
 //trains are commonly open topped, so there is a chance the projectile will hit the mob riding the train instead

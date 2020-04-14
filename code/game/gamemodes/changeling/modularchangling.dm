@@ -327,7 +327,7 @@ var/list/datum/power/changeling/powerinstances = list()
 		return
 
 	if(Thepower in purchased_powers)
-		M.current << "We have already evolved this ability!"
+		to_chat(M.current, "We have already evolved this ability!")
 		return
 
 

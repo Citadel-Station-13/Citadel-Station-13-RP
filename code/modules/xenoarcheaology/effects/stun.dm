@@ -35,7 +35,7 @@
 		for (var/mob/living/carbon/C in range(src.effectrange,T))
 			var/susceptibility = GetAnomalySusceptibility(C)
 			if(prob(100 * susceptibility))
-				C << "<font color='red'>A wave of energy overwhelms your senses!</font>"
+				to_chat(C, "<font color='red'>A wave of energy overwhelms your senses!</font>")
 				C.SetWeakened(4 * susceptibility)
 				C.stuttering = 4 * susceptibility
 				if(prob(10))

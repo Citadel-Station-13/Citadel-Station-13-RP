@@ -111,14 +111,14 @@
 		sleep(300)
 		if(target && target.lockcharge)
 			to_chat(user, "Successfully sent unlock signal to cyborg..")
-			target << "Unlock signal received.."
+			to_chat(target, "Unlock signal received..")
 			target.SetLockdown(0)
 			if(target.lockcharge)
 				user << "<span class='notice'>Unlock Failed, lockdown wire cut.</span>"
 				target << "<span class='notice'>Unlock Failed, lockdown wire cut.</span>"
 			else
 				to_chat(user, "Cyborg unlocked.")
-				target << "You have been unlocked."
+				to_chat(target, "You have been unlocked.")
 		else if(target)
 			to_chat(user, "Unlock cancelled - cyborg is already unlocked.")
 		else

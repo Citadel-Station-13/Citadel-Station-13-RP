@@ -51,7 +51,7 @@
 		return
 
 	if(!usr.client.holder || !(usr.client.holder.rights & R_PERMISSIONS))
-		usr << "<font color='red'>You do not have permission to do this!</font>"
+		to_chat(usr, "<font color='red'>You do not have permission to do this!</font>")
 		return
 
 	establish_db_connection()
@@ -101,7 +101,7 @@
 		return
 
 	if(!usr.client.holder || !(usr.client.holder.rights & R_PERMISSIONS))
-		usr << "<font color='red'>You do not have permission to do this!</font>"
+		to_chat(usr, "<font color='red'>You do not have permission to do this!</font>")
 		return
 
 	establish_db_connection()

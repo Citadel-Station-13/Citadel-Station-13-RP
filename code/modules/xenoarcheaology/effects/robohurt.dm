@@ -10,7 +10,7 @@
 	if(user)
 		if (istype(user, /mob/living/silicon/robot))
 			var/mob/living/silicon/robot/R = user
-			R << "<font color='red'>Your systems report severe damage has been inflicted!</font>"
+			to_chat(R, "<font color='red'>Your systems report severe damage has been inflicted!</font>")
 			R.adjustBruteLoss(rand(10,50))
 			R.adjustFireLoss(rand(10,50))
 			return 1
