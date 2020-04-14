@@ -322,7 +322,6 @@
 #include "code\datums\observation\equipped.dm"
 #include "code\datums\observation\helpers.dm"
 #include "code\datums\observation\logged_in.dm"
-#include "code\datums\observation\moved.dm"
 #include "code\datums\observation\observation.dm"
 #include "code\datums\observation\turf_changed.dm"
 #include "code\datums\observation\unequipped.dm"
