@@ -99,6 +99,7 @@
 #include "code\__DEFINES\dcs\signals.dm"
 #include "code\__DEFINES\misc\keybindings.dm"
 #include "code\__DEFINES\misc\misc.dm"
+#include "code\__DEFINES\mobs\intent.dm"
 #include "code\__HELPERS\_core.dm"
 #include "code\__HELPERS\_global_objects.dm"
 #include "code\__HELPERS\_global_objects_vr.dm"

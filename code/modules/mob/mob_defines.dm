@@ -4,6 +4,11 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
+
+	// Intents
+	/// How are we intending to move? Walk/run/etc.
+	var/m_intent = MOVE_INTENT_RUN
+
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
@@ -119,11 +124,10 @@
 	var/stunned = 0.0
 	var/weakened = 0.0
 	var/losebreath = 0.0//Carbon
-	var/intent = null//Living
+	var/_intent = null//Living
 	var/shakecamera = 0
 	var/a_intent = INTENT_HELP//Living
 	var/m_int = null//Living
-	var/m_intent = "run"//Living
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 

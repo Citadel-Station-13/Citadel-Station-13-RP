@@ -177,7 +177,7 @@
 	full_name = "Toggle gun mode between aiming/hostage-taking and immediate fire."
 	description = ""
 
-/datum/keybinding/mob/toggle_gun-mode/down(client/user)
+/datum/keybinding/mob/toggle_gun_mode/down(client/user)
 	user.mob.toggle_gun_mode()
 	return TRUE
 

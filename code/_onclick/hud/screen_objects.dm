@@ -210,13 +210,7 @@
 						C.hud_used.move_intent.icon_state = "walking"
 						return 1
 				var/mob/living/L = usr
-				switch(L.m_intent)
-					if("run")
-						L.m_intent = "walk"
-						L.hud_used.move_intent.icon_state = "walking"
-					if("walk")
-						L.m_intent = "run"
-						L.hud_used.move_intent.icon_state = "running"
+				L.toggle_move_intent()
 		if("m_intent")
 			if(!usr.m_int)
 				switch(usr.m_intent)
