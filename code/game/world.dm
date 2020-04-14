@@ -16,6 +16,8 @@ GLOBAL_LIST(topic_status_cache)
 /world/New()
 	enable_debugger()
 
+	make_datum_reference_lists()
+
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	SetupExternalRsc()
