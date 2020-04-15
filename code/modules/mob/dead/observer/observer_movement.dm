@@ -19,3 +19,6 @@
 		else if((direct & WEST) && x > 1)
 			x--
 	Moved(oldloc, direct, FALSE)
+
+/mob/observer/dead/movement_delay()
+	return 0
