@@ -5699,7 +5699,7 @@
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /obj/structure/cable/green{
@@ -8649,7 +8649,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /obj/item/megaphone,
@@ -8752,7 +8752,7 @@
 	icon_state = "light1";
 	pixel_x = -24
 	},
-/obj/item/taperecorder,
+/obj/item/tape_recorder,
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
 "oC" = (
@@ -12343,7 +12343,7 @@
 /area/security/detectives_office)
 "tP" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -12351,7 +12351,7 @@
 /area/security/detectives_office)
 "tQ" = (
 /obj/structure/table/woodentable,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -13376,7 +13376,7 @@
 	dir = 1
 	},
 /obj/structure/closet,
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -13384,7 +13384,7 @@
 	pixel_x = 3;
 	pixel_y = -4
 	},
-/obj/item/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -15813,7 +15813,7 @@
 /area/quartermaster/office)
 "zd" = (
 /obj/structure/table/standard,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 6;
 	pixel_y = -5

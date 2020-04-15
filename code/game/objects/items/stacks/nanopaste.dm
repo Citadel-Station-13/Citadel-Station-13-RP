@@ -11,7 +11,7 @@
 	no_variants = FALSE
 	var/restoration_external = 5
 	var/restoration_internal = 20
-	var/repair_external = FALSE
+
 
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
@@ -27,7 +27,7 @@
 				user.visible_message("<span class='notice'>\The [user] applied some [src] on [R]'s damaged areas.</span>",\
 				"<span class='notice'>You apply some [src] at [R]'s damaged areas.</span>")
 		else
-			user << "<span class='notice'>All [R]'s systems are nominal.</span>"
+			to_chat(user, "<span class='notice'>All [R]'s systems are nominal.</span>")
 
 	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
 		var/mob/living/carbon/human/H = M
@@ -36,8 +36,6 @@
 		if (S && (S.robotic >= ORGAN_ROBOT))
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
-			else if((S.open < 2) && (S.brute_dam + S.burn_dam >= S.min_broken_damage) && !repair_external)
-				to_chat(user, "<span class='notice'>The damage is too extensive for this nanite swarm to handle.</span>")
 			else if(can_use(1))
 				user.setClickCooldown(user.get_attack_speed(src))
 				if(S.open >= 2)
@@ -54,7 +52,6 @@
 /obj/item/stack/nanopaste/advanced
 	name = "advanced nanopaste"
 	singular_name = "advanced nanite swarm"
-	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery. These ones are capable of restoring condition even of most thrashed robotic parts"
+	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery. This swarm is capable of repairing more effectively."
 	icon_state = "adv_nanopaste"
 	restoration_external = 10
-	repair_external = TRUE

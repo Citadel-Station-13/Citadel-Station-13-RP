@@ -77,9 +77,9 @@
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			user << "<font color='red'>The [O] is full.</font>"
+			to_chat(user, "<font color='red'>The [O] is full.</font>")
 		if(!transfered)
-			user << "<font color='red'>The udder is dry. Wait a bit longer...</font>"
+			to_chat(user, "<font color='red'>The udder is dry. Wait a bit longer...</font>")
 	else
 		..()
 //cow
@@ -124,9 +124,9 @@
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			user << "<font color='red'>The [O] is full.</font>"
+			to_chat(user, "<font color='red'>The [O] is full.</font>")
 		if(!transfered)
-			user << "<font color='red'>The udder is dry. Wait a bit longer...</font>"
+			to_chat(user, "<font color='red'>The udder is dry. Wait a bit longer...</font>")
 	else
 		..()
 
@@ -260,9 +260,9 @@ var/global/chicken_count = 0
 				qdel(O)
 				eggsleft += rand(1, 4)
 			else
-				user << "<font color='blue'>[name] doesn't seem hungry!</font>"
+				to_chat(user, "<font color='blue'>[name] doesn't seem hungry!</font>")
 		else
-			user << "[name] doesn't seem interested in that."
+			to_chat(user, "[name] doesn't seem interested in that.")
 	else
 		..()
 

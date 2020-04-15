@@ -21,11 +21,11 @@
 		//helmet and armor = 100% protection
 		if( istype(inventory_head,/obj/item/clothing/head/helmet) && istype(inventory_back,/obj/item/clothing/suit/armor) )
 			if( O.force )
-				usr << "<span class='warning'>This animal is wearing too much armor. You can't cause them any damage.</span>"
+				to_chat(usr, "<span class='warning'>This animal is wearing too much armor. You can't cause them any damage.</span>")
 				for (var/mob/M in viewers(src, null))
 					M.show_message("<span class='warning'><B>[user] hits [src] with the [O], however [src] is too armored.</B></span>")
 			else
-				usr << "<span class='warning'>This animal is wearing too much armor. You can't reach its skin.</span>"
+				to_chat(usr, "<span class='warning'>This animal is wearing too much armor. You can't reach its skin.</span>")
 				for (var/mob/M in viewers(src, null))
 					M.show_message("<span class='warning'>[user] gently taps [src] with the [O].</span>")
 			if(prob(15))
@@ -72,12 +72,12 @@
 			return
 		var/add_to = href_list["add_inv"]
 		if(!usr.get_active_hand())
-			usr << "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>"
+			to_chat(usr, "<span class='warning'>You have nothing in your hand to put on its [add_to].</span>")
 			return
 		switch(add_to)
 			if("head")
 				if(inventory_head)
-					usr << "<span class='warning'>It's is already wearing something.</span>"
+					to_chat(usr, "<span class='warning'>It's is already wearing something.</span>")
 					return
 				else
 					place_on_head(usr.get_active_hand())
@@ -115,7 +115,7 @@
 					)
 
 					if( ! ( item_to_add.type in allowed_types ) )
-						usr << "<span class='warning'>It doesn't seem too keen on wearing that item.</span>"
+						to_chat(usr, "<span class='warning'>It doesn't seem too keen on wearing that item.</span>")
 						return
 
 					usr.drop_item()
@@ -124,7 +124,7 @@
 
 			if("back")
 				if(inventory_back)
-					usr << "<span class='warning'>It's already wearing something.</span>"
+					to_chat(usr, "<span class='warning'>It's already wearing something.</span>")
 					return
 				else
 					var/obj/item/item_to_add = usr.get_active_hand()
@@ -140,7 +140,7 @@
 					)
 
 					if( ! ( item_to_add.type in allowed_types ) )
-						usr << "<span class='warning'>This object won't fit.</span>"
+						to_chat(usr, "<span class='warning'>This object won't fit.</span>")
 						return
 
 					usr.drop_item()

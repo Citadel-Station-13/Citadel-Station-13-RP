@@ -19,7 +19,7 @@
 		set_light(2, 2, color)
 
 /turf/unsimulated/floor/sky/Entered(atom/movable/AM,atom/oldloc)
-	. = ..()
+	..()
 	if(!does_skyfall)
 		return //We don't do that
 	if(isobserver(AM))

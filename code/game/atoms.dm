@@ -214,7 +214,7 @@
 		else
 			f_name += "oil-stained [name][infix]."
 
-	user << "\icon[src] That's [f_name] [suffix]"
+	to_chat(user, "\icon[src] That's [f_name] [suffix]")
 	user << desc
 
 	return distance == -1 || (get_dist(src, user) <= distance)
@@ -223,11 +223,6 @@
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()
 	return
-
-//called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/setDir(new_dir)
-	. = new_dir != dir
-	dir = new_dir
 
 /atom/proc/ex_act()
 	return

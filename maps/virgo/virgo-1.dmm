@@ -27823,7 +27823,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /obj/item/crowbar,
 /turf/simulated/floor/tiled/white,
 /area/ai_monitored/storage/emergency/eva)

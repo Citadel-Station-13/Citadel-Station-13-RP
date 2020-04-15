@@ -118,7 +118,7 @@
 /area/submap/Boathouse)
 "az" = (
 /obj/structure/table/woodentable,
-/obj/item/tape_roll,
+/obj/item/barrier_tape_roll,
 /obj/random/firstaid,
 /turf/simulated/floor/wood,
 /area/submap/Boathouse)

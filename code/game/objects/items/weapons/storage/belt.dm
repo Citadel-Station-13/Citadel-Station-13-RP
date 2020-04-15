@@ -17,7 +17,7 @@
 	set category = "Object"
 
 	if(show_above_suit == -1)
-		usr << "<span class='notice'>\The [src] cannot be worn above your suit!</span>"
+		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
 		return
 	show_above_suit = !show_above_suit
 	update_icon()
@@ -58,14 +58,14 @@
 		/obj/item/clothing/gloves,
 		/obj/item/pda,
 		/obj/item/megaphone,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/radio/headset,
 		/obj/item/robotanalyzer,
 		/obj/item/material/minihoe,
 		/obj/item/material/knife/machete/hatchet,
 		/obj/item/analyzer/plant_analyzer,
 		/obj/item/extinguisher/mini,
-		/obj/item/tape_roll,
+		/obj/item/duct_tape_roll,
 		/obj/item/integrated_electronics/wirer,
 		/obj/item/integrated_electronics/debugger, //Vorestation edit adding debugger to toolbelt can hold list
 		)
@@ -125,7 +125,7 @@
 		/obj/item/stack/medical,
 		/obj/item/radio/headset,
 		/obj/item/pda,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/head/surgery,
@@ -165,8 +165,8 @@
 		/obj/item/gun/energy/gun,
 		/obj/item/flame/lighter,
 		/obj/item/flashlight,
-		/obj/item/taperecorder,
-		/obj/item/tape,
+		/obj/item/tape_recorder,
+		/obj/item/barrier_tape_roll,
 		/obj/item/pda,
 		/obj/item/radio/headset,
 		/obj/item/clothing/gloves,
@@ -176,7 +176,7 @@
 		/obj/item/clothing/accessory/badge,
 		/obj/item/gun/projectile/sec,
 		/obj/item/gun/projectile/p92x,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/gun/projectile/colt/detective,
 		/obj/item/holowarrant
 		)
@@ -188,8 +188,8 @@
 	storage_slots = 7
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
-		/obj/item/taperecorder,
-		/obj/item/tape,
+		/obj/item/tape_recorder,
+		/obj/item/barrier_tape_roll,
 		/obj/item/clothing/glasses,
 		/obj/item/flashlight,
 		/obj/item/cell/device,
@@ -213,7 +213,7 @@
 		/obj/item/megaphone,
 		/obj/item/radio/headset,
 		/obj/item/clothing/gloves,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/handcuffs,
 		/obj/item/flash,
@@ -270,8 +270,8 @@
 		/obj/item/photo,
 		/obj/item/camera_film,
 		/obj/item/camera,
-		/obj/item/taperecorder,
-		/obj/item/tape,
+		/obj/item/tape_recorder,
+		/obj/item/barrier_tape_roll,
 		/obj/item/healthanalyzer,
 		/obj/item/geiger,
 		/obj/item/gps,
@@ -329,7 +329,7 @@
 		/obj/item/stack/medical,
 		/obj/item/radio/headset,
 		/obj/item/pda,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/megaphone,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/head/surgery,
@@ -397,7 +397,7 @@
 		/obj/item/light/tube,
 		/obj/item/flame/lighter,
 		/obj/item/megaphone,
-		/obj/item/taperoll,
+		/obj/item/barrier_tape_roll,
 		/obj/item/reagent_containers/spray,
 		/obj/item/soap
 		)

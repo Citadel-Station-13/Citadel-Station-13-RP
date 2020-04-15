@@ -39,7 +39,7 @@
 		show(usr)
 		usr << desc
 	else
-		usr << "<span class='warning'>It is too far away.</span>"
+		to_chat(usr, "<span class='warning'>It is too far away.</span>")
 
 /obj/item/card/id/proc/prevent_tracking()
 	return 0
@@ -111,9 +111,9 @@
 	set src in usr
 
 	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
-	usr << "The blood type on the card is [blood_type]."
-	usr << "The DNA hash on the card is [dna_hash]."
-	usr << "The fingerprint hash on the card is [fingerprint_hash]."
+	to_chat(usr, "The blood type on the card is [blood_type].")
+	to_chat(usr, "The DNA hash on the card is [dna_hash].")
+	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
 	return
 
 /obj/item/card/id/get_worn_icon_state(var/slot_name)
@@ -124,7 +124,7 @@
 
 /obj/item/card/id/Initialize()
 	. = ..()
-	var/datum/job/J = job_master.GetJob(rank)
+	var/datum/job/J = SSjobs.GetJob(rank)
 	if(J)
 		access = J.get_access()
 

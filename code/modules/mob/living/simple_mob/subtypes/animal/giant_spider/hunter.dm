@@ -72,7 +72,7 @@
 	throw_at(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
 
-	sleep(5) // For the throw to complete. It won't hold up the AI ticker due to waitfor being false.
+	sleep(5) // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
 
 	if(status_flags & LEAPING)
 		status_flags &= ~LEAPING // Revert special passage ability.
@@ -124,19 +124,19 @@
 
 // Called after a successful leap.
 /datum/ai_holder/simple_mob/melee/hunter_spider/proc/drag_away(mob/living/L)
-	world << "Doing drag_away attack on [L]"
+	to_chat(world, "Doing drag_away attack on [L]")
 	if(!istype(L))
-		world << "Invalid type."
+		to_chat(world, "Invalid type.")
 		return FALSE
 
 	// If they didn't get stunned, then don't bother.
 	if(!L.incapacitated(INCAPACITATION_DISABLED))
-		world << "Not incapcitated."
+		to_chat(world, "Not incapcitated.")
 		return FALSE
 
 	// Grab them.
 	if(!holder.start_pulling(L))
-		world << "Failed to pull."
+		to_chat(world, "Failed to pull.")
 		return FALSE
 
 	holder.visible_message(span("danger","\The [holder] starts to drag \the [L] away!"))
@@ -153,14 +153,14 @@
 
 	// First priority: Move our victim to our friends.
 	if(allies.len)
-		world << "Going to move to ally"
+		to_chat(world, "Going to move to ally")
 		give_destination(get_turf(pick(allies)), min_distance = 2, combat = TRUE) // This will switch our stance.
 
 	// Second priority: Move our victim away from their friends.
 	// There's a chance of it derping and pulling towards enemies if there's more than two people.
 	// Preventing that will likely be both a lot of effort for developers and the CPU.
 	else if(enemies.len)
-		world << "Going to move away from enemies"
+		to_chat(world, "Going to move away from enemies")
 		var/mob/living/hostile = pick(enemies)
 		var/turf/move_to = get_turf(hostile)
 		for(var/i = 1 to vision_range) // Move them this many steps away from their friend.
@@ -170,7 +170,7 @@
 
 	// Third priority: Move our victim SOMEWHERE away from where they were.
 	else
-		world << "Going to move away randomly"
+		to_chat(world, "Going to move away randomly")
 		var/turf/move_to = get_turf(L)
 		move_to = get_step(move_to, pick(cardinal))
 		for(var/i = 1 to vision_range) // Move them this many steps away from where they were before.

@@ -77,14 +77,12 @@
 			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
 
 /turf/simulated/Entered(atom/A, atom/OL)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "<span class='danger'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
+	..()
 
 	if (istype(A,/mob/living))
 		var/mob/living/M = A
 		if(M.lying)
-			return ..()
+			return
 
 		if(M.dirties_floor())
 			// Dirt overlays.
@@ -144,8 +142,6 @@
 				M.inertia_dir = 0
 		else
 			M.inertia_dir = 0
-
-	..()
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)

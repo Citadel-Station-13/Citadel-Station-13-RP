@@ -67,8 +67,8 @@
 	/obj/item/pen,
 	/obj/item/sample,
 	/obj/item/forensics/sample_kit,
-	/obj/item/taperecorder,
-	/obj/item/tape,
+	/obj/item/tape_recorder,
+	/obj/item/barrier_tape_roll,
 	/obj/item/uv_light
 	)
 
@@ -179,20 +179,20 @@
 		)
 
 /obj/item/gripper/no_use/organ/Entered(var/atom/movable/AM)
+	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.preserved = 1
 		for(var/obj/item/organ/organ in O)
 			organ.preserved = 1
-	..()
 
 /obj/item/gripper/no_use/organ/Exited(var/atom/movable/AM)
+	..()
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.preserved = 0
 		for(var/obj/item/organ/organ in O)
 			organ.preserved = 0
-	..()
 
 /obj/item/gripper/no_use/organ/robotics
 	name = "robotics organ gripper"

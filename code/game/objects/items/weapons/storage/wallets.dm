@@ -10,7 +10,7 @@
 		/obj/item/card,
 		/obj/item/clothing/mask/smokable/cigarette/,
 		/obj/item/flashlight/pen,
-		/obj/item/tape,
+		/obj/item/barrier_tape_roll,
 		/obj/item/cartridge,
 		/obj/item/encryptionkey,
 		/obj/item/seeds,

@@ -66,12 +66,12 @@
 				affected += M
 			else
 				if(M != src)
-					M << "<span class='notice'>You hear a familiar screech from nearby.  It has no effect on you.</span>"
+					to_chat(M, "<span class='notice'>You hear a familiar screech from nearby.  It has no effect on you.</span>")
 				M << sound('sound/effects/screech.ogg')
 
 		if(issilicon(M))
 			M << sound('sound/weapons/flash.ogg')
-			M << "<span class='notice'>Auditory input overloaded.  Reinitializing...</span>"
+			to_chat(M, "<span class='notice'>Auditory input overloaded.  Reinitializing...</span>")
 			M.Weaken(rand(5,10))
 			affected += M
 

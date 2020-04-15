@@ -38,6 +38,7 @@
 	update_icon_edge()
 
 /turf/simulated/floor/lava/Entered(atom/movable/AM)
+	..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 

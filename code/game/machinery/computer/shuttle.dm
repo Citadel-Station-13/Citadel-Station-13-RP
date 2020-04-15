@@ -10,26 +10,26 @@
 
 	attackby(var/obj/item/card/W as obj, var/mob/user as mob)
 		if(stat & (BROKEN|NOPOWER))	return
-		if ((!( istype(W, /obj/item/card) ) || !( ticker ) || emergency_shuttle.location() || !( user )))	return
+		if ((!( istype(W, /obj/item/card) ) || !( SSticker ) || SSemergencyshuttle.location() || !( user )))	return
 		if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 			if (istype(W, /obj/item/pda))
 				var/obj/item/pda/pda = W
 				W = pda.id
 			if (!W:access) //no access
-				user << "The access level of [W:registered_name]\'s card is not high enough. "
+				to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 				return
 
 			var/list/cardaccess = W:access
 			if(!istype(cardaccess, /list) || !cardaccess.len) //no access
-				user << "The access level of [W:registered_name]\'s card is not high enough. "
+				to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 				return
 
 			if(!(access_heads in W:access)) //doesn't have this access
-				user << "The access level of [W:registered_name]\'s card is not high enough. "
+				to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 				return 0
 
 			var/choice = alert(user, text("Would you like to (un)authorize a shortened launch time? [] authorization\s are still needed. Use abort to cancel all authorizations.", src.auth_need - src.authorized.len), "Shuttle Launch", "Authorize", "Repeal", "Abort")
-			if(emergency_shuttle.location() && user.get_active_hand() != W)
+			if(SSemergencyshuttle.location() && user.get_active_hand() != W)
 				return 0
 			switch(choice)
 				if("Authorize")
@@ -42,8 +42,8 @@
 					else
 						message_admins("[key_name_admin(user)] has launched the shuttle")
 						log_game("[user.ckey] has launched the shuttle early")
-						world << "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>"
-						emergency_shuttle.set_launch_countdown(10)
+						to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
+						SSemergencyshuttle.set_launch_countdown(10)
 						//src.authorized = null
 						qdel(src.authorized)
 						src.authorized = list(  )
@@ -53,18 +53,18 @@
 					world << text("<span class='notice'><b>Alert: [] authorizations needed until shuttle is launched early</b></span>", src.auth_need - src.authorized.len)
 
 				if("Abort")
-					world << "<span class='notice'><b>All authorizations to shortening time for shuttle launch have been revoked!</b></span>"
+					to_chat(world, "<span class='notice'><b>All authorizations to shortening time for shuttle launch have been revoked!</b></span>")
 					src.authorized.len = 0
 					src.authorized = list(  )
 
 		else if (istype(W, /obj/item/card/emag) && !emagged)
 			var/choice = alert(user, "Would you like to launch the shuttle?","Shuttle control", "Launch", "Cancel")
 
-			if(!emagged && !emergency_shuttle.location() && user.get_active_hand() == W)
+			if(!emagged && !SSemergencyshuttle.location() && user.get_active_hand() == W)
 				switch(choice)
 					if("Launch")
-						world << "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>"
-						emergency_shuttle.set_launch_countdown(10)
+						to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
+						SSemergencyshuttle.set_launch_countdown(10)
 						emagged = 1
 					if("Cancel")
 						return

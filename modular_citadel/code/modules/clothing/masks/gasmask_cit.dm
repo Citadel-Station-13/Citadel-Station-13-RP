@@ -14,7 +14,7 @@
 			item_flags = item_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~AIRTIGHT
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "halfgas_up"
-			usr << "Your mask is now hanging on your neck."
+			to_chat(usr, "Your mask is now hanging on your neck.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			gas_filter_strength = initial(gas_filter_strength)
@@ -22,7 +22,7 @@
 			item_flags = initial(item_flags)
 			armor = initial(armor)
 			icon_state = initial(icon_state)
-			usr << "You pull the mask up to cover your face."
+			to_chat(usr, "You pull the mask up to cover your face.")
 		update_clothing_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()

@@ -270,7 +270,7 @@
 
 // Makes the ability be triggered.  The subclasses of this are responsible for carrying it out in whatever way it needs to.
 /obj/screen/ability/proc/activate()
-	world << "[src] had activate() called."
+	to_chat(world, "[src] had activate() called.")
 	return
 
 // This checks if the ability can be used.
