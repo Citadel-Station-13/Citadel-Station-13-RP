@@ -164,3 +164,14 @@
 		return 1
 	else
 		..()
+
+/obj/item/projectile/bullet/magnetic/bore/powerful
+	name = "energetic phorogenic blast"
+	icon_state = "purpleemitter"
+	damage = 30
+	incendiary = 2
+	armor_penetration = 20
+	penetrating = 0
+	check_armour = "melee"
+	irradiate = 20
+	range = 12

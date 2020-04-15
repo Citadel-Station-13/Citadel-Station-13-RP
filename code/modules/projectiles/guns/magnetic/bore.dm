@@ -5,6 +5,7 @@
 	description_antag = "This device is exceptional at breaking down walls, though it is incredibly loud when doing so."
 	description_info = "The projectile of this tool will travel six tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets."
 
+
 	icon_state = "bore"
 	item_state = "bore"
 	wielded_item_state = "bore-wielded"
@@ -163,3 +164,12 @@
 		update_icon()
 		return
 	. = ..()
+
+/obj/item/gun/magnetic/matfed/advanced
+	name = "advanced phoron bore"
+	description_fluff = "A revision of an ageing Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
+	description_antag = "This device is exceptional at breaking down walls, though it is incredibly loud when doing so."
+	description_info = "The projectile of this tool will travel twelve tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets, and can hold a maximum of ten sheets."
+	projectile_type = /obj/item/projectile/bullet/magnetic/bore/powerful
+	power_cost = 1000
+	max_mat_storage = 20000	// How much material can be stored inside?
