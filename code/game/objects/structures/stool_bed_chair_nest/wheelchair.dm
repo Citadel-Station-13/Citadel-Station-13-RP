@@ -31,7 +31,7 @@
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
- 	
+
 	if(world.time < last_active_move + move_delay)
 		return
 

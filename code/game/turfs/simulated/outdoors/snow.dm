@@ -19,7 +19,7 @@
 		var/mdir = "[A.dir]"
 		crossed_dirs[mdir] = 1
 		update_icon()
-	. = ..()
+	..()
 
 /turf/simulated/floor/outdoors/snow/update_icon()
 	..()
@@ -52,6 +52,7 @@
 	desc = "Looks slippery."
 
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
+	..()
 	sleep(1 * world.tick_lag)
 	if(istype(M, /mob/living))
 		if(M.stunned == 0)

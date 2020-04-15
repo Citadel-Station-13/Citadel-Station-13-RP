@@ -720,14 +720,14 @@
 					message = "squeaks!"
 					m_type = 2
 					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
-		
+
 		if("meow", "meows")
 			if(miming)
 				message = "acts out a soft mrowl."
 				m_type = 1
 			else
 				if(!muzzled)
-					message = "mrowls"
+					message = "mrowls!"
 					m_type = 2
 					playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 

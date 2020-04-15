@@ -183,8 +183,8 @@ obj/var/contaminated = 0
 		gloves.contaminate()
 
 
-turf/Entered(obj/item/I)
-	. = ..()
+/turf/Entered(obj/item/I)
+	..()
 	//Items that are in phoron, but not on a mob, can still be contaminated.
 	if(istype(I) && vsc.plc.CLOTH_CONTAMINATION && I.can_contaminate())
 		var/datum/gas_mixture/env = return_air(1)

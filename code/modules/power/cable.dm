@@ -124,6 +124,8 @@ var/list/possible_cable_coil_colours = list(
 
 // Rotating cables requires d1 and d2 to be rotated
 /obj/structure/cable/setDir(new_dir)
+	SHOULD_CALL_PARENT(FALSE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 	if(powernet)
 		cut_cable_from_powernet() // Remove this cable from the powernet so the connections update
 

@@ -110,7 +110,7 @@ turf/simulated/mineral/floor/light_corner
 			air_master.mark_for_update(src)
 
 /turf/simulated/mineral/Entered(atom/movable/M as mob|obj)
-	. = ..()
+	..()
 	if(istype(M,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
 		if(R.module)

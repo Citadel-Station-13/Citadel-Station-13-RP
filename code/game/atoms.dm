@@ -224,11 +224,6 @@
 /atom/proc/relaymove()
 	return
 
-//called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/setDir(new_dir)
-	. = new_dir != dir
-	dir = new_dir
-
 /atom/proc/ex_act()
 	return
 

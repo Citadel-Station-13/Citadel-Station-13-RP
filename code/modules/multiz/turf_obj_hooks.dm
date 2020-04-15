@@ -9,7 +9,7 @@
 			SSopenspace.add_turf(T, 1)
 
 /turf/Exited(atom/movable/AM)
-	. = ..()
+	..()
 	if(SSopenspace.subsystem_initialized && !AM.invisibility && isobj(AM))
 		var/turf/T = GetAbove(src)
 		if(isopenspace(T))

@@ -13,10 +13,6 @@
 	var/monitor_state_index = "blank"
 	var/global/list/monitor_states = list()
 
-/obj/item/clothing/mask/monitor/setDir()
-	dir = SOUTH
-	return
-
 /obj/item/clothing/mask/monitor/equipped()
 	..()
 	var/mob/living/carbon/human/H = loc
