@@ -10,7 +10,7 @@
 		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
 
 /client/proc/ooc_wrapper()
-	var/message = input("","ooc (text)") as message|null
+	var/message = input("","ooc (text)") as text|null
 	if(message)
 		ooc(message)
 

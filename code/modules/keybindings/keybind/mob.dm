@@ -125,7 +125,7 @@
 	return TRUE
 
 /datum/keybinding/mob/ooc
-	hotkey_keys = list("O", "F2")
+	hotkey_keys = list("Unbound")
 	name = "ooc"
 	full_name = "OOC"
 	description = "Says something in global OOC"
@@ -168,7 +168,7 @@
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 	else
-		user.mob.drop_item(I)
+		M.drop_item(M.drop_location())
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode

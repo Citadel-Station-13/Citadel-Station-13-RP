@@ -18,11 +18,11 @@
 				if(delpath && fexists(delpath))
 					fdel(delpath)
 				break
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
+		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 3 SECONDS)	//No mob available when this is run, timer allows user choice.
 		return FALSE
 	if(savefile_version < 13)		//TODO : PROPER MIGRATION SYSTEM - kevinz000
 		savefile_version = 13
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
+		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 3 SECONDS)	//No mob available when this is run, timer allows user choice.
 
 	return TRUE
 
@@ -32,15 +32,18 @@
 	savefile_version = SAVEFILE_VERSION_MAX
 
 /datum/preferences/proc/load_preferences()
-	if(!path)				return 0
+	if(!path)
+		return 0
 	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
 		return 0
 	loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
-	if(!fexists(path))		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/"
 
 	S["version"] >> savefile_version

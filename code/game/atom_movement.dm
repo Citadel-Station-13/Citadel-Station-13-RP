@@ -26,3 +26,10 @@
   */
 /atom/Exited(atom/movable/AM, atom/newLoc)
 	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, newLoc)
+
+/**
+  * Check if an atom can exit us in movement.
+  *
+  */
+/atom/proc/CheckExit(atom/movable/AM, atom/newLoc)
+	return TRUE
