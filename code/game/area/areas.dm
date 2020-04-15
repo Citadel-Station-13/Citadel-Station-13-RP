@@ -46,6 +46,15 @@
 	var/minimap_color
 
 /area/New()
+	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
+		// generate one using the icon_state
+		if(icon_state && icon_state != "unknown")
+			var/icon/I = new(icon, icon_state, dir)
+			I.Scale(1,1)
+			minimap_color = I.GetPixel(1,1)
+		else // no icon state? use random.
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
+
 	icon_state = ""
 	uid = ++global_uid
 	all_areas += src
