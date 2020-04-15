@@ -24,10 +24,6 @@
 		savefile_version = 13
 		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
 
-	if(savefile_version == SAVEFILE_VERSION_MAX)	//update successful.
-		save_preferences()
-		save_character()
-		return TRUE
 	return TRUE
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
