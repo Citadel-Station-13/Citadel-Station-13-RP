@@ -34,6 +34,7 @@
 	brute_mod =		0.30 // 70% brute reduction
 	burn_mod =		1.4 //60% burn weakness
 	oxy_mod =		0
+	item_slowdown_mod = 0.1
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
 A worst-case sev 4 emp will do 88 damage pre-mitigation, and 140.8 post-mitigation (as resist is negative) spread out over all the limbs.
@@ -250,7 +251,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	var/obj/item/organ/internal/nano/refactory/refactory = origin.resolve()
 	if(!istype(refactory) || refactory.status & ORGAN_DEAD || refactory.processingbuffs == FALSE)
 		expire()
-		
+
 	// stops you from consuming materials if the toggle is off
 	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
 		expire()
