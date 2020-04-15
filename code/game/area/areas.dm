@@ -42,6 +42,9 @@
 	var/global/global_uid = 0
 	var/uid
 
+	/// Color on minimaps, if it's null (which is default) it makes one at random.
+	var/minimap_color
+
 /area/New()
 	icon_state = ""
 	uid = ++global_uid
