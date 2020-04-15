@@ -46,6 +46,8 @@
 		/obj/item/clothing/shoes/boots/winter/explorer,
 		/obj/item/radio/headset/sar,
 		/obj/item/cartridge/medical,
+		/obj/item/material/knife/machete,
+		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/flashlight,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/clothing/glasses/hud/health,
