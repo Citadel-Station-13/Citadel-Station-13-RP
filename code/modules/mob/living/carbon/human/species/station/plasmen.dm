@@ -36,7 +36,7 @@
 	radiation_mod = 1
 	flash_mod =     2
 	chemOD_mod =	1 // turns out this is just damage
-
+	item_slowdown_mod = 0.1
 	breath_type = "phoron"
 	poison_type = "oxygen"
 	siemens_coefficient = 1
