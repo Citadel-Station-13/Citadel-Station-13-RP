@@ -714,6 +714,28 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		//L += SSshuttle.emergency_shuttle_stat_text
 		//stat(null, "[L.Join("\n\n")]")
 
+	if(listed_turf && client)
+		if(!TurfAdjacent(listed_turf))
+			listed_turf = null
+		else
+			statpanel(listed_turf.name, null, listed_turf)
+			var/list/overrides = list()
+			for(var/image/I in client.images)
+				if(I.loc && I.loc.loc == listed_turf && I.override)
+					overrides += I.loc
+			for(var/atom/A in listed_turf)
+				if(!A.mouse_opacity)
+					continue
+				if(A.invisibility > see_invisible)
+					continue
+				if(overrides.len && (A in overrides))
+					continue
+/*
+				if(A.IsObscured())
+					continue
+*/
+				statpanel(listed_turf.name, null, A)
+
 	if(client.holder)
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
@@ -746,54 +768,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				for(var/i in GLOB.sdql2_queries)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
-
-/*
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else if(statpanel("Turf"))
-			stat("\icon[listed_turf]", listed_turf.name)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-				/*
-				if(A.IsObscured())
-					continue
-				*/
-				if(A.plane > plane)
-					continue
-				stat(A)
-*/
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			statpanel(listed_turf.name, null, listed_turf)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-/*
-				if(A.IsObscured())
-					continue
-*/
-				statpanel(listed_turf.name, null, A)
 
 // facing verbs
 /mob/proc/canface()

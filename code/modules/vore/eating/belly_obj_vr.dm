@@ -176,6 +176,7 @@
 
 // Called whenever an atom enters this belly
 /obj/belly/Entered(var/atom/movable/thing,var/atom/OldLoc)
+	..()
 	if(OldLoc in contents)
 		return //Someone dropping something (or being stripdigested)
 

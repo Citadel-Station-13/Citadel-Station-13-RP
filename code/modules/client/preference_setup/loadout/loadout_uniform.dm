@@ -676,3 +676,27 @@
 datum/gear/uniform/dutchsuit
 	display_name = "Western Suit"
 	path = /obj/item/clothing/under/dutchuniform
+
+datum/gear/uniform/victorianredshirt
+	display_name = "Red Shirt Victorian Suit"
+	path = /obj/item/clothing/under/victorianblred
+
+datum/gear/uniform/victorianredvest
+	display_name = "Red Vested Victorian Suit"
+	path = /obj/item/clothing/under/victorianredvest
+
+datum/gear/uniform/victoriansuit
+	display_name = "Victorian Suit"
+	path = /obj/item/clothing/under/victorianvest
+
+datum/gear/uniform/victorianbluesuit
+	display_name = "Blue Shirted Victorian Suit"
+	path = /obj/item/clothing/under/victorianlightfire
+
+datum/gear/uniform/victorianreddress
+	display_name = "Victorian Red Dress"
+	path = /obj/item/clothing/under/victorianreddress
+
+datum/gear/uniform/victorianblackdress
+	display_name = "Victorian Black Dress"
+	path = /obj/item/clothing/under/victorianblackdress

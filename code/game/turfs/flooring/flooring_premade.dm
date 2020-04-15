@@ -422,7 +422,7 @@
 
         update_icon()
 
-    . = ..()
+    ..()
 
 /turf/snow/update_icon()
     cut_overlays()

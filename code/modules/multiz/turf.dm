@@ -40,7 +40,7 @@
 	update()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
-	. = ..()
+	..()
 	mover.fall()
 
 // Called when thrown object lands on this turf.

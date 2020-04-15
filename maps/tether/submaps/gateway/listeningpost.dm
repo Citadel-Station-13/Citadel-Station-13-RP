@@ -55,7 +55,7 @@
 /obj/item/paper/listneningpost/year2558/october
 	name = "\improper October 2558 Report"
 	info = {"Oh my god, if it weren't for the impending doom, I'd be laughing my ass off at
-			all the hell VORE has put up with this month. Near mutiny over a retarded clown,
+			all the hell VORE has put up with this month. Near mutiny over a mentally deficient clown,
 			redspace aliens coming to kill them, and then V.G. Station crew getting mixed up
 			in a transfer which led to a major riot where DEATHSQUAD had to come clean up the
 			mess! We shouldn't have to worry about the VORE, but they know about something

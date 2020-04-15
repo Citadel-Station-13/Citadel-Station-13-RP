@@ -885,3 +885,8 @@ obj/item/clothing/suit/kamishimo
 	name = "western coat"
 	desc = "When I'm gone, they'll just find another coat. They have to. Because they have to justify their wages."
 	icon_state = "DutchJacket"
+
+/obj/item/clothing/suit/storage/tailcoat
+	name = "tailcoat"
+	desc = "Even the clown wouldn't wear this, you can, if you really want to."
+	icon_state = "tailcoat"

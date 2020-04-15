@@ -75,3 +75,5 @@
 	var/turf/T = get_turf(src)
 	if(isturf(T))
 		update_client_z(T.z)
+
+	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
