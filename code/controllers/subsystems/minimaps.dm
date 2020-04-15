@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(minimaps)
 /*
 	for(var/z in SSmapping.levels_by_trait(ZTRAIT_STATION))
 */
-	for(var/z in using_maps.station_levels)
+	for(var/z in using_map.station_levels)
 		/*
 		var/datum/space_level/SL = SSmapping.get_level(z)
 		var/name = (SL.name == initial(SL.name))? "[z] - Station" : "[z] - [SL.name]"

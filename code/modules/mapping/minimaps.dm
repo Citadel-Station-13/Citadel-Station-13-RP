@@ -32,7 +32,7 @@
 		var/area/A = T.loc
 		var/img_x = T.x - x1 + 1 // arrays start at 1
 		var/img_y = T.y - y1 + 1
-		if(!istype(A, /area/space) || T.density))
+		if(!istype(A, /area/space) || T.density)
 			crop_x1 = min(crop_x1, T.x)
 			crop_x2 = max(crop_x2, T.x)
 			crop_y1 = min(crop_y1, T.y)
@@ -43,13 +43,14 @@
 			area_to_color[A] = meta_color
 			color_area_names[meta_color] = A.name
 		meta_icon.DrawBox(meta_color, img_x, img_y)
-		if(istype(T, /turf/closed/wall))
+		if(T.density)
 			map_icon.DrawBox("#000000", img_x, img_y)
 		else if(!istype(A, /area/space))
 			var/color = A.minimap_color || "#FF00FF"
 			if(locate(/obj/machinery/power/solar) in T)
 				color = "#02026a"
-			if((locate(/obj/effect/spawner/structure/window) in T) || (locate(/obj/structure/grille) in T))
+			//if((locate(/obj/effect/spawner/structure/window) in T) || (locate(/obj/structure/grille) in T))
+			if((locate(/obj/structure/window) in T) || (locate(/obj/structure/grille) in T))
 				color = BlendRGB(color, "#000000", 0.5)
 			map_icon.DrawBox(color, img_x, img_y)
 	map_icon.Crop(crop_x1, crop_y1, crop_x2, crop_y2)
