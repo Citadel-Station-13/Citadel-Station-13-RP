@@ -550,3 +550,7 @@ datum/gear/suit/labcoat/param
 /datum/gear/suit/storage/dutchcoat
 	display_name = "Western Coat"
 	path = /obj/item/clothing/suit/storage/dutchcoat
+
+/datum/gear/suit/storage/tailcoat
+	display_name = "Tailcoat"
+	path = /obj/item/clothing/suit/storage/tailcoat
