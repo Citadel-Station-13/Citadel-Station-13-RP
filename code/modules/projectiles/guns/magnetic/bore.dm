@@ -165,6 +165,7 @@
 		return
 	. = ..()
 
+//phoron bore 2
 /obj/item/gun/magnetic/matfed/advanced
 	name = "advanced phoron bore"
 	description_fluff = "A revision of an ageing Grayson design, the NanoTrasen Man-Portable Phorogenic Tunneler, or NT-MPPT is capable of drilling through longer swathes of rock, at the cost of slightly worse power efficiency than the Grayson design."
