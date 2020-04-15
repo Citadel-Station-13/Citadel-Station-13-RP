@@ -47,10 +47,10 @@
 /obj/item/projectile/bullet/magnetic/fuelrod
 	name = "fuel rod"
 	icon_state = "fuel-deuterium"
-	damage = 30
+	damage = 70 //it's a fusion fuel rod propelled faster than sound, it should hurt.
 	stun = 1
 	weaken = 0
-	agony = 30
+	agony = 50
 	incendiary = 1
 	flammability = 0 //Deuterium and Tritium are both held in water, but the object moving so quickly will ignite the target.
 	penetrating = 2
@@ -99,7 +99,7 @@
 
 /obj/item/projectile/bullet/magnetic/fuelrod/tritium
 	icon_state = "fuel-tritium"
-	damage = 40
+	damage = 100 //Much harder to get than tritium - needs mhydrogen
 	flammability = -1
 	armor_penetration = 50
 	penetrating = 3
@@ -107,7 +107,7 @@
 /obj/item/projectile/bullet/magnetic/fuelrod/phoron
 	name = "blazing fuel rod"
 	icon_state = "fuel-phoron"
-	damage = 35
+	damage = 65 //leaves a trail of fire, irradiates and is much easier to get than the other two, so less damage is fine
 	incendiary = 2
 	flammability = 2
 	armor_penetration = 60
@@ -118,7 +118,7 @@
 /obj/item/projectile/bullet/magnetic/fuelrod/supermatter
 	name = "painfully incandescent fuel rod"
 	icon_state = "fuel-supermatter"
-	damage = 15
+	damage = 15 //it qdels things
 	incendiary = 2
 	flammability = 4
 	weaken = 2
