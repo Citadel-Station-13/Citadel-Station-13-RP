@@ -21,8 +21,8 @@
 		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
 		return 0
 	if(savefile_version < 13)		//TODO : PROPER MIGRATION SYSTEM - kevinz000
+		savefile_version = 13
 		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 10 SECONDS)	//No mob available when this is run, timer allows user choice.
-		return TRUE
 
 	if(savefile_version == SAVEFILE_VERSION_MAX)	//update successful.
 		save_preferences()

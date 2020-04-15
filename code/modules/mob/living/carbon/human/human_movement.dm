@@ -8,7 +8,8 @@
 	if(species.slowdown)
 		tally = species.slowdown
 
-	if (istype(loc, /turf/space)) return -1 // It's hard to be slowed down in space by... anything
+	if (istype(loc, /turf/space))
+		return -1 // It's hard to be slowed down in space by... anything
 
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
@@ -114,7 +115,7 @@
 			tally = tally/2
 		tally -= chem_effects[CE_SPEEDBOOST]	// give 'em a buff on top.
 
-	return max(. + HUMAN_LOWEST_SLOWDOWN, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
+	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // This calculates the amount of slowdown to receive from items worn. This does NOT include species modifiers.
 // It is in a seperate place to avoid an infinite loop situation with dragging mobs dragging each other.

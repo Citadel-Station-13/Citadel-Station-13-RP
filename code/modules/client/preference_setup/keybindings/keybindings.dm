@@ -117,7 +117,7 @@
 			if("keybindings_capture")
 				var/datum/keybinding/kb = GLOB.keybindings_by_name[href_list["keybinding"]]
 				var/old_key = href_list["old_key"]
-				pref.CaptureKeybinding(user, kb, old_key)
+				pref.CaptureKeybinding(user, kb, old_key, src)
 				return
 
 			if("keybindings_set")
@@ -178,7 +178,7 @@
 		return TOPIC_REFRESH
 	return ..()
 
-/datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, var/old_key)
+/datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, old_key, datum/category_item/player_setup_item/keybinding/bindings/host)
 	var/HTML = {"
 	<div id='focus' style="outline: 0;" tabindex=0>Keybinding: [kb.full_name]<br>[kb.description]<br><br><b>Press any key to change<br>Press ESC to clear</b></div>
 	<script>
@@ -190,7 +190,7 @@
 		var shift = e.shiftKey ? 1 : 0;
 		var numpad = (95 < e.keyCode && e.keyCode < 112) ? 1 : 0;
 		var escPressed = e.keyCode == 27 ? 1 : 0;
-		var url = 'byond://?src=[REF(src)];preference=keybindings_set;keybinding=[kb.name];old_key=[old_key];clear_key='+escPressed+';key='+e.key+';alt='+alt+';ctrl='+ctrl+';shift='+shift+';numpad='+numpad+';key_code='+e.keyCode;
+		var url = 'byond://?src=[REF(host)];option=keybindings_set;keybinding=[kb.name];old_key=[old_key];clear_key='+escPressed+';key='+e.key+';alt='+alt+';ctrl='+ctrl+';shift='+shift+';numpad='+numpad+';key_code='+e.keyCode;
 		window.location=url;
 		deedDone = true;
 	}
