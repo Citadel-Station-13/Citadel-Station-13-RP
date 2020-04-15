@@ -3,7 +3,7 @@
 	name = "portable shaft excavation device"
 	desc = "A heavily modified shaft bore utilizing phorogenic blasts to tunnel vertically through rock. Much faster than a large industrial drill unit, but is very resource- and power-intensive."
 	description_fluff = "A phoron bore used for rapidly digging through rock that has been modified to allow it to fire straight down at a much higher power. However, this has resulted in a loss of power and resource efficiency, compactness, and modularity as the proprietary capacitor and manipulator cannot be swapped."
-	w_class = w_class = ITEMSIZE_NO_CONTAINER //haha harold can't powergame itemsize with BoHs if it doesn't even fit in a BoH
+	w_class = ITEMSIZE_NO_CONTAINER //haha harold can't powergame itemsize with BoHs if it doesn't even fit in a BoH
 	//he's just going to locker it isn't he
 
 	icon = 'icons/obj/railgun.dmi'
