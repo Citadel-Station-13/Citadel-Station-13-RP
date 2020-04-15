@@ -57,7 +57,7 @@
 	update()
 
 /obj/machinery/conveyor/setDir()
-	.=..()
+	. =..()
 	update_dir()
 
 /obj/machinery/conveyor/proc/update_dir()
