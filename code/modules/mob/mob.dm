@@ -577,14 +577,19 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	show_inv(usr)
 
 
-/mob/verb/stop_pulling()
-
+/mob/verb/stop_pulling_verb()
 	set name = "Stop Pulling"
 	set category = "IC"
 
+	stop_pulling()
+
+/// to be moved to atom/movable later.
+/mob/proc/stop_pulling()
+	. = ..()
 	if(pulling)
 		pulling.pulledby = null
 		pulling = null
+		pulling.reset_glide_size()
 		if(pullin)
 			pullin.icon_state = "pull0"
 
@@ -648,6 +653,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	src.pulling = AM
 	AM.pulledby = src
+	AM.set_glide_size(glide_size)
 
 	if(pullin)
 		pullin.icon_state = "pull1"
