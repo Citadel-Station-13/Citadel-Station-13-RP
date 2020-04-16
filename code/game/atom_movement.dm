@@ -29,7 +29,6 @@
 
 /**
   * Check if an atom can exit us in movement.
-  *
   */
 /atom/proc/CheckExit(atom/movable/AM, atom/newLoc)
 	return TRUE

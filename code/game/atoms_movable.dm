@@ -3,8 +3,15 @@
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 	/// Whatever we're pulling.
 	var/atom/movable/pulling
+	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
+	var/generic_canpass = TRUE
+	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
+	var/moving_diagonally = 0
+	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
+	var/atom/movable/moving_from_pull
+	/// Direction of our last move.
+	var/last_move = NONE
 
-	var/last_move = null
 	var/anchored = 0
 	// var/elevation = 2    - not used anywhere
 	var/moving_diagonally
