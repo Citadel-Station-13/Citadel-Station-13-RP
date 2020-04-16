@@ -34,7 +34,7 @@ var/const/enterloopsanity = 100
 						thing.HasProximity(A, 1)
 
 
-//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanPass/Cross call, lemme know or go ahead and fix this mess - kevinz000
+//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanAllowThrough/Cross call, lemme know or go ahead and fix this mess - kevinz000
 /turf/Enter(atom/movable/mover, atom/oldloc)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
 		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
@@ -44,7 +44,7 @@ var/const/enterloopsanity = 100
 	// By default byond will call Bump() on the first dense object in contents
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
-	var/CanPassSelf = CanPass(mover, src)
+	var/CanAllowThroughSelf = CanPass(mover, src)
 	if(CanPassSelf || CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
 		for(var/i in contents)
 			if(QDELETED(mover))
@@ -53,7 +53,7 @@ var/const/enterloopsanity = 100
 				continue
 			var/atom/movable/thing = i
 			if(!thing.Cross(mover))
-				if(QDELETED(mover))		//Mover deleted from Cross/CanPass, do not proceed.
+				if(QDELETED(mover))		//Mover deleted from Cross/CanAllowThrough, do not proceed.
 					return FALSE
 				if(CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
 					mover.Bump(thing)
@@ -61,7 +61,7 @@ var/const/enterloopsanity = 100
 				else
 					if(!firstbump || ((thing.layer > firstbump.layer || thing.flags & ON_BORDER) && !(firstbump.flags & ON_BORDER)))
 						firstbump = thing
-	if(QDELETED(mover))					//Mover deleted from Cross/CanPass/Bump, do not proceed.
+	if(QDELETED(mover))					//Mover deleted from Cross/CanAllowThrough/Bump, do not proceed.
 		return FALSE
 	if(!CanPassSelf)	//Even if mover is unstoppable they need to bump us.
 		firstbump = src

@@ -317,7 +317,7 @@ var/list/tape_roll_applications = list()
 		update_icon()
 		name = "crumpled [name]"
 
-/obj/item/barrier_tape_segment/CanPass(atom/movable/mover, turf/target)
+/obj/item/barrier_tape_segment/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!lifted && ismob(mover))
 		var/mob/M = mover
 		add_fingerprint(M)

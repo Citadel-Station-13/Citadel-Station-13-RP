@@ -229,7 +229,7 @@ default behaviour is:
 				G.adjust_position()
 		now_pushing = 0
 
-/mob/living/CanPass(atom/movable/mover, turf/target)
+/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
 		return TRUE
 	return ..()

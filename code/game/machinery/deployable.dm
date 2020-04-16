@@ -100,7 +100,7 @@ Barricades
 			health -= 25
 			CheckHealth()
 
-/obj/structure/barricade/CanPass(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
+/obj/structure/barricade/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE
@@ -209,7 +209,7 @@ Barricades
 		anchored = !anchored
 		icon_state = "barrier[locked]"
 
-/obj/machinery/deployable/barrier/CanPass(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
+/obj/machinery/deployable/barrier/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE

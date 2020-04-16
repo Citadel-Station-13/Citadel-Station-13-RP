@@ -1,4 +1,4 @@
-/mob/CanPass(atom/movable/mover, turf/target)
+/mob/CanAllowThrough(atom/movable/mover, turf/target)
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))

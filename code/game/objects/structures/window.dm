@@ -140,7 +140,7 @@
 /obj/structure/window/blob_act()
 	take_damage(50)
 
-/obj/structure/window/CanPass(atom/movable/mover, turf/target)
+/obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
 	if(is_fulltile())

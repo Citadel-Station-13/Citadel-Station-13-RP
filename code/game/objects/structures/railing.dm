@@ -34,7 +34,7 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target)
+/obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
 	if(mover.checkpass(PASSTABLE) || mover.throwing)
 		return TRUE
 	if(get_dir(mover, target) & turn(dir, 180))

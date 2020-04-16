@@ -48,7 +48,7 @@
 		pulledby = null
 	QDEL_NULL(riding_datum) //VOREStation Add
 
-/atom/movable/CanPass(atom/movable/mover, turf/target)
+/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)
