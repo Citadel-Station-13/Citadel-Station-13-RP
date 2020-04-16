@@ -77,15 +77,14 @@
 /mob/new_player/Stat()
 	..()
 
-	if(statpanel("Lobby") && SSticker)
-		if(SSticker.hide_mode)
-			stat("Game Mode:", "Secret")
-		else
-			if(SSticker.hide_mode == 0)
-				stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
-
-		if(SSticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[SSticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
+	if(SSticker.current_state == GAME_STATE_PREGAME)
+		if(statpanel("Status"))
+			if(SSticker.hide_mode)
+				stat("Game Mode:", "Secret")
+			else
+				if(SSticker.hide_mode == 0)
+					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
+			stat("Time To Start:", "[round(SSticker.timeLeft / 10)][round_progressing ? "" : " (DELAYED)"]")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0

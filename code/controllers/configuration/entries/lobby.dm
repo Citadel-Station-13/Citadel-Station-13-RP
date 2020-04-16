@@ -7,5 +7,5 @@
 	min_val = 0
 
 /datum/config_entry/number/lobby_gamemode_vote_delay
-	config_entry_value = 60
+	config_entry_value = 120
 	min_val = 0

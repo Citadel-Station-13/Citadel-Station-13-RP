@@ -5,22 +5,24 @@ SUBSYSTEM_DEF(ticker)
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
-	/// What world.time we finished from MC init at, set by the first time we fire.
-	var/static/lobby_start_time
-	/// What world.time we start the game, set by config
-	var/static/lobby_end_time
+
 	/// Did we attempt an automatic gamemode vote?
 	var/static/auto_gamemode_vote_attempted = FALSE
+
 	/// What world.time we startED the game, set at round start.
 	var/static/round_start_time
 	/// What world.time we endED the game, set at round end.
 	var/static/round_end_time
+
 	/// Should we immediately start?
 	var/start_immediately = FALSE
 	/// Is everything in order for us to start a timed reboot?
 	var/ready_for_reboot = FALSE
 	/// Is round end delayed?
 	var/delay_end = FALSE
+
+	var/timeLeft						//pregame timer
+	var/start_at
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
@@ -64,6 +66,8 @@ SUBSYSTEM_DEF(ticker)
 	//Set up spawn points.
 	populate_spawn_points()
 
+	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+
 	return ..()
 
 /datum/controller/subsystem/ticker/fire()
@@ -80,23 +84,32 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
 	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
-	lobby_start_time = world.time
-	lobby_end_time = world.time + (CONFIG_GET(number/lobby_countdown) SECONDS)
 	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
 	current_state = GAME_STATE_PREGAME
+	if(Master.initializations_finished_with_no_players_logged_in)
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	fire()
 
 /datum/controller/subsystem/ticker/proc/process_pregame()
-	if(!auto_gamemode_vote_attempted && (world.time >= (lobby_start_time + (CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))))
+	if(isnull(timeLeft))
+		timeLeft = max(0,start_at - world.time)
+	if(start_immediately)
+		timeLeft = 0
+	if(timeLeft < 0)
+		return
+	timeLeft -= wait
+	if(!auto_gamemode_vote_attempted && (timeLeft <= CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))
 		auto_gamemode_vote_attempted = TRUE
 		// patch this code later
 		if(!SSvote.time_remaining)
 			SSvote.autogamemode()
 		//end
-	if((world.time >= lobby_end_time) || start_immediately)
+	if(timeLeft <= 0)
 		current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
+		if(start_immediately)
+			fire()
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
 	set waitfor = FALSE
@@ -122,6 +135,17 @@ SUBSYSTEM_DEF(ticker)
 	log_game("<span class='boldannounce'>World reboot triggered by ticker. [reason]</span>")
 
 	world.Reboot()
+
+/datum/controller/subsystem/ticker/proc/GetTimeLeft()
+	if(isnull(SSticker.timeLeft))
+		return max(0, start_at - world.time)
+	return timeLeft
+
+/datum/controller/subsystem/ticker/proc/SetTimeLeft(newtime)
+	if(newtime >= 0 && isnull(timeLeft))	//remember, negative means delayed
+		start_at = world.time + newtime
+	else
+		timeLeft = newtime
 
 /datum/controller/subsystem/ticker/proc/setup()
 	//Create and announce mode
