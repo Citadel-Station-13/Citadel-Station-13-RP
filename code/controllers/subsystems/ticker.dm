@@ -127,7 +127,23 @@ SUBSYSTEM_DEF(ticker)
 
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
-	sleep(delay - (world.time - start_wait))
+	while(world.time - start_wait < delay)
+		if(delay_end)		//delayed, break loop.
+			break
+		var/timeleft = delay - (world.time - start_wait)
+		// If we have less than 10 seconds left.
+		if(timeleft <= 10 SECONDS)
+			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			sleep(10)
+		//If we have 30 seconds left, announce and sleep for the rest of the time.
+		if(timeleft <= 30 SECONDS)
+			var/time = timeleft - 10 SECONDS
+			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			sleep(time)
+		// Otherwise, per minute.
+		else
+			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			sleep(60 SECONDS)
 
 	if(delay_end)
 		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
