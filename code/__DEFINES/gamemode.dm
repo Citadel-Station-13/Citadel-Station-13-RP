@@ -1,8 +1,3 @@
-#define GAME_STATE_PREGAME		1
-#define GAME_STATE_SETTING_UP	2
-#define GAME_STATE_PLAYING		3
-#define GAME_STATE_FINISHED		4
-
 // Security levels.
 #define SEC_LEVEL_GREEN 0
 #define SEC_LEVEL_YELLOW  1

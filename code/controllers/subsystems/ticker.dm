@@ -3,8 +3,10 @@ SUBSYSTEM_DEF(ticker)
 	wait = 20
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	/// Current state of the game
+	var/static/game_state = GAME_STATE_INIT
+
 	var/const/restart_timeout = 3 MINUTES //One minute is 600.
-	var/current_state = GAME_STATE_PREGAME
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
@@ -38,6 +40,51 @@ SUBSYSTEM_DEF(ticker)
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/obj/screen/cinematic = null
+
+
+/datum/controller/subsystem/ticker/Initialize()
+	if(!syndicate_code_phrase)
+		syndicate_code_phrase	= generate_code_phrase()
+	if(!syndicate_code_response)
+		syndicate_code_response = generate_code_phrase()
+
+	// Set up antagonists.
+	populate_antag_type_list()
+
+	//Set up spawn points.
+	populate_spawn_points()
+
+	return ..()
+
+/datum/controller/subsystem/ticker/fire()
+	switch(game_state)
+		if(GAME_STATE_INIT)
+			// We fire after init finishes
+			on_mc_init_finish()
+		if(GAME_STATE_PREGAME)
+			pregame()
+		if(GAME_STATE_SETTING_UP)
+			setup()
+		if(GAME_STATE_PLAYING)
+			round_process()
+		if(GAME_STATE_FINISHED)
+
+/datum/controller/subsystem/ticker/proc/on_mc_init_finish()
+	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
+	pregame_timeleft = 180
+	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
+	to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
+	game_state = GAME_STATE_PREGAME
+
+/datum/controller/subsystem/ticker/proc/pregame()
+	if(round_progressing)
+		pregame_timeleft--
+	if(pregame_timeleft == config_legacy.vote_autogamemode_timeleft)
+		if(!SSvote.time_remaining)
+			SSvote.autogamemode()	//Quit calling this over and over and over and over.
+	if(pregame_timeleft <= 0)
+		current_state = GAME_STATE_SETTING_UP
+		Master.SetRunLevel(RUNLEVEL_SETUP)
 
 /datum/controller/subsystem/ticker/proc/setup()
 	//Create and announce mode
@@ -277,42 +324,6 @@ SUBSYSTEM_DEF(ticker)
 			if(!istype(M,/mob/new_player))
 				to_chat(M, "Colony Directorship not forced on anyone.")
 
-/datum/controller/subsystem/ticker/Initialize()
-	if(!syndicate_code_phrase)
-		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)
-		syndicate_code_response = generate_code_phrase()
-
-	// Set up antagonists.
-	populate_antag_type_list()
-
-	//Set up spawn points.
-	populate_spawn_points()
-
-	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
-	pregame_timeleft = 180
-	to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
-	to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
-	return ..()
-
-/datum/controller/subsystem/ticker/fire()
-	switch(current_state)
-		if(GAME_STATE_PREGAME)
-			pregame()
-		if(GAME_STATE_SETTING_UP)
-			setup()
-		if(GAME_STATE_PLAYING)
-			round_process()
-
-/datum/controller/subsystem/ticker/proc/pregame()
-	if(round_progressing)
-		pregame_timeleft--
-	if(pregame_timeleft == config_legacy.vote_autogamemode_timeleft)
-		if(!SSvote.time_remaining)
-			SSvote.autogamemode()	//Quit calling this over and over and over and over.
-	if(pregame_timeleft <= 0)
-		current_state = GAME_STATE_SETTING_UP
-		Master.SetRunLevel(RUNLEVEL_SETUP)
 
 /datum/controller/subsystem/ticker/proc/round_process()
 	if(current_state != GAME_STATE_PLAYING)

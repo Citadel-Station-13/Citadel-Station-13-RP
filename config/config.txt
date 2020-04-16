@@ -2,6 +2,7 @@
 
 $include entries/urls.txt
 $include entries/fail2topic.txt
+$include entries/lobby.txt
 # $include game_options.txt
 # $include dbconfig.txt
 # $include comms.txt

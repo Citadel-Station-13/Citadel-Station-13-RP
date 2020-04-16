@@ -81,11 +81,15 @@ h1.alert, h2.alert		{color: #000000;}
 .passive				{color: #660000;}
 
 .announce 				{color: #228b22;	font-weight: bold;}
+.boldannounce			{color: #ff0000;	font-weight: bold;}
 .critical				{color: #ff0000; font-weight: bold; font-size: 150%;}
-.danger					{color: #ff0000; font-weight: bold;}
-.warning				{color: #ff0000; font-style: italic;}
+.userdanger				{color: #ff0000;	font-weight: bold; font-size: 3;}
+.danger					{color: #ff0000;}
+.warning				{color: #ff0000;	font-style: italic;}
+.boldwarning			{color: #ff0000;	font-style: italic;	font-weight: bold}
 .rose					{color: #ff5050;}
 .info					{color: #0000CC;}
+.boldnotice				{color: #000099;	font-weight: bold;}
 .notice					{color: #000099;}
 .alium					{color: #00ff00;}
 .cult					{color: #800080; font-weight: bold; font-style: italic;}
