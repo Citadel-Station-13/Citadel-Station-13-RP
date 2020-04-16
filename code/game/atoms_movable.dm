@@ -1,6 +1,9 @@
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	/// Whatever we're pulling.
+	var/atom/movable/pulling
+
 	var/last_move = null
 	var/anchored = 0
 	// var/elevation = 2    - not used anywhere

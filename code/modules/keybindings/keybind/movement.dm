@@ -27,7 +27,7 @@
 	description = "Moves your character east"
 
 /datum/keybinding/movement/facenorth
-	hotkey_keys = list("AltW", "AltNorth")
+	hotkey_keys = list("CtrlAltW", "CtrlAltNorth")
 	name = "Permanently Face North"
 	full_name = "Permanently Face North"
 	description = "Force your character to face north until overridden."
@@ -36,7 +36,7 @@
 	user.mob.northfaceperm()
 
 /datum/keybinding/movement/facesouth
-	hotkey_keys = list("AltS", "AltSouth")
+	hotkey_keys = list("CtrlAltS", "CtrlAltSouth")
 	name = "Face South"
 	full_name = "Permanently Face South"
 	description = "Force your character to face south until overridden."
@@ -45,7 +45,7 @@
 	user.mob.southfaceperm()
 
 /datum/keybinding/movement/facewest
-	hotkey_keys = list("AltA", "AltWest")
+	hotkey_keys = list("CtrlAltA", "CtrlAltWest")
 	name = "Face west"
 	full_name = "Permanently Face West"
 	description = "Force your character to face west until overridden."
@@ -54,7 +54,7 @@
 	user.mob.westfaceperm()
 
 /datum/keybinding/movement/faceeast
-	hotkey_keys = list("AltD", "AltEast")
+	hotkey_keys = list("CtrlAltD", "CtrlAltEast")
 	name = "Face east"
 	full_name = "Permanently Face East"
 	description = "Force your character to face east until overridden."

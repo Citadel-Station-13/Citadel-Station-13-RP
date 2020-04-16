@@ -469,16 +469,11 @@
 
 /mob/proc/update_gravity()
 	return
-/*
-// The real Move() proc is above, but touching that massive block just to put this in isn't worth it.
-/mob/Move(var/newloc, var/direct)
-	. = ..(newloc, direct)
-	if(.)
-		post_move(newloc, direct)
-*/
+
 // Called when a mob successfully moves.
 // Would've been an /atom/movable proc but it caused issues.
 /mob/Moved(atom/oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

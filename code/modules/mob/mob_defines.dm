@@ -69,7 +69,6 @@
 	var/poll_answer = 0.0
 	var/sdisabilities = 0	//Carbon
 	var/disabilities = 0	//Carbon
-	var/atom/movable/pulling = null
 	var/transforming = null	//Carbon
 	var/other = 0.0
 	var/eye_blind = null	//Carbon

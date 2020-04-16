@@ -3,14 +3,6 @@
 /atom/var/pressure_resistance = ONE_ATMOSPHERE
 /atom/var/can_atmos_pass = ATMOS_PASS_YES
 
-// Purpose: Determines if the object can pass this atom.
-// Called by: Movement.
-// Inputs: The moving atom, target turf.
-// Outputs: Boolean if can pass.
-// Airflow and ZAS zones now uses CanZASPass() instead of this proc.
-/atom/proc/CanPass(atom/movable/mover, turf/target)
-	return !density
-
 // Purpose: Determines if airflow is allowed between T and loc.
 // Called by: Airflow.
 // Inputs: The turf the airflow is from, which may not be the same as loc. is_zone is for conditionally disallowing merging.
@@ -23,12 +15,6 @@
 			return can_atmos_pass
 
 /turf/can_atmos_pass = ATMOS_PASS_NO
-
-/turf/CanPass(atom/movable/mover, turf/target)
-	if(!target) return FALSE
-
-	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
-		return !density
 
 /turf/CanZASPass(turf/T, is_zone)
 	if(T.blocks_air || src.blocks_air)

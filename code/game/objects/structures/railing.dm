@@ -35,16 +35,17 @@
 		R.update_icon()
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target)
-	if(mover.checkpass(PASSTABLE))
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
 		return TRUE
-	if(target == get_turf(src))		//moving into us
-		if(mover.loc == get_step(src, dir))
-			return !density
+	if(get_dir(mover, target) & turn(dir, 180))
+		return !density
 	return TRUE
 
 /obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
+		return TRUE
 	if(mover.loc == get_turf(src))	//moving out of us
-		if(newLoc == get_step(src, dir))
+		if(get_dir(mover, newLoc) & dir)
 			return !density
 	return TRUE
 
