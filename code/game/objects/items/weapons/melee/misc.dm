@@ -18,6 +18,7 @@
 /obj/item/melee/sabre
 	name = "officer's sabre"
 	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
+	hitsound = "swing_hit"
 	icon_state = "sabre"
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 35
