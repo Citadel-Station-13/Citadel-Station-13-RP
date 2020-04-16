@@ -84,7 +84,13 @@
 			else
 				if(SSticker.hide_mode == 0)
 					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
-			stat("Time To Start:", "[round(SSticker.timeLeft / 10)][round_progressing ? "" : " (DELAYED)"]")
+			var/time_remaining = SSticker.GetTimeLeft()
+			if(time_remaining > 0)
+				stat(null, "Time To Start: [round(time_remaining/10)]s")
+			else if(time_remaining == -10)
+				stat(null, "Time To Start: DELAYED")
+			else
+				stat(null, "Time To Start: SOON")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
