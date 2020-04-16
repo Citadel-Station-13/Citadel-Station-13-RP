@@ -156,11 +156,14 @@
 	// This is hackish but whatever.
 	var/turf/target = get_step(GetAbove(A), dir)
 	if(target.Enter(A, src)) // Pass src to be ignored to avoid infinate loop
-		A.forceMove(target)
+		var/oldpulling
+		var/mob/living/L
 		if(isliving(A))
-			var/mob/living/L = A
-			if(L.pulling)
-				L.pulling.forceMove(target)
+			L = A
+			oldpulling = L.pulling
+		A.forceMove(target)
+		if(oldpulling)
+			L.start_pulling(oldpulling)
 
 /obj/structure/stairs/proc/upperStep(var/turf/T)
 	return (T == loc)
