@@ -338,7 +338,7 @@
 /mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return 0
-	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
 	if(!config_legacy.enter_allowed)
