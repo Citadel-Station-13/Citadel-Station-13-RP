@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(ticker)
 	var/start_immediately = FALSE
 	/// Is everything in order for us to start a timed reboot?
 	var/ready_for_reboot = FALSE
+	/// Is round end delayed?
+	var/delay_end = FALSE
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
@@ -379,9 +381,6 @@ SUBSYSTEM_DEF(ticker)
 	if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
 		current_state = GAME_STATE_FINISHED
 		round_end_time = world.time
-		reboot_time = world.time + CONFIG_GET(number/round_end_countdown) SECONDS
-		if(mode.station_was_nuked)
-			reboot_time = world.time + 1 MINUTES
 		Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 		spawn
@@ -398,6 +397,9 @@ SUBSYSTEM_DEF(ticker)
 
 			if(blackbox)
 				blackbox.save_all_data_to_sql()
+
+			ready_for_reboot = TRUE
+			standard_reboot()
 
 
 	else if (mode_finished)
