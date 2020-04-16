@@ -1,13 +1,13 @@
-/obj/item/device/camerabug
-	var/obj/item/device/radio/radio
+/obj/item/camerabug
+	var/obj/item/radio/radio
 
-/obj/item/device/camerabug/Destroy()
+/obj/item/camerabug/Destroy()
 	. = ..()
 	listening_objects -= src
 	qdel(src.radio)
 	radio = null
 
-/obj/item/device/camerabug/Initialize()
+/obj/item/camerabug/Initialize()
 	. = ..()
 	listening_objects += src
 	radio = new(src)
@@ -18,25 +18,25 @@
 	radio.icon_state = src.icon_state
 	update_icon()
 
-/obj/item/device/camerabug/reset()
+/obj/item/camerabug/reset()
 	. = ..()
 	radio.broadcasting = 0
 
-/obj/item/device/camerabug/attackby(obj/item/W as obj, mob/living/user as mob)
+/obj/item/camerabug/attackby(obj/item/W as obj, mob/living/user as mob)
 	. = ..()
-	if(istype(W, /obj/item/device/bug_monitor))
-		var/obj/item/device/bug_monitor/SM = W
+	if(istype(W, /obj/item/bug_monitor))
+		var/obj/item/bug_monitor/SM = W
 		if(!linkedmonitor)
 			radio.broadcasting = 0
 		else if (linkedmonitor == SM)
 			radio.broadcasting = 1
 			radio.set_frequency(SM.radio.frequency)
 
-/obj/item/device/bug_monitor
-	var/obj/item/device/radio/radio
+/obj/item/bug_monitor
+	var/obj/item/radio/radio
 	var/global/list/freqblacklist
 
-/obj/item/device/bug_monitor/Initialize(mapload)
+/obj/item/bug_monitor/Initialize(mapload)
 	. = ..()
 	listening_objects += src
 	if(!freqblacklist)
@@ -50,7 +50,7 @@
 		radio.set_frequency( rand(RADIO_LOW_FREQ, RADIO_HIGH_FREQ) )
 	while (radio.frequency in freqblacklist || (radio.frequency % 2 == 0))
 
-/obj/item/device/bug_monitor/Destroy()
+/obj/item/bug_monitor/Destroy()
 	. = ..()
 	listening_objects -= src
 	qdel(src.radio)

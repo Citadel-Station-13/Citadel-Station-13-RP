@@ -38,7 +38,7 @@ emp_act
 		if(!prob(armor/2))		//Even if the armor doesn't stop the bullet from hurting you, it might stop it from embedding.
 			var/hit_embed_chance = P.embed_chance + (P.damage - armor)	//More damage equals more chance to embed
 			if(prob(max(hit_embed_chance, 0)))
-				var/obj/item/weapon/material/shard/shrapnel/SP = new()
+				var/obj/item/material/shard/shrapnel/SP = new()
 				SP.name = (P.name != "shrapnel")? "[P.name] shrapnel" : "shrapnel"
 				SP.desc = "[SP.desc] It looks like it was fired from [P.shot_from]."
 				SP.loc = organ
@@ -236,7 +236,7 @@ emp_act
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if (!affecting || affecting.is_stump())
-		user << "<span class='danger'>They are missing that limb!</span>"
+		to_chat(user, "<span class='danger'>They are missing that limb!</span>")
 		return null
 
 	return hit_zone
@@ -349,12 +349,12 @@ emp_act
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
 	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
-		user << "<span class='warning'>That limb isn't robotic.</span>"
+		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
 		return -1
 	if(affecting.sabotaged)
-		user << "<span class='warning'>[src]'s [affecting.name] is already sabotaged!</span>"
+		to_chat(user, "<span class='warning'>[src]'s [affecting.name] is already sabotaged!</span>")
 		return -1
-	user << "<span class='notice'>You sneakily slide [emag_source] into the dataport on [src]'s [affecting.name] and short out the safeties.</span>"
+	to_chat(user, "<span class='notice'>You sneakily slide [emag_source] into the dataport on [src]'s [affecting.name] and short out the safeties.</span>")
 	affecting.sabotaged = 1
 	return 1
 
@@ -527,8 +527,8 @@ emp_act
 	if(damtype != BURN && damtype != BRUTE) return
 
 	// The rig might soak this hit, if we're wearing one.
-	if(back && istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = back
+	if(back && istype(back,/obj/item/rig))
+		var/obj/item/rig/rig = back
 		rig.take_hit(damage)
 
 	// We may also be taking a suit breach.
@@ -588,7 +588,7 @@ emp_act
 	return 1-converted_protection
 
 
-/mob/living/carbon/human/shank_attack(obj/item/W, obj/item/weapon/grab/G, mob/user, hit_zone)
+/mob/living/carbon/human/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
 	if(!..())
 		return 0

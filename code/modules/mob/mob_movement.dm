@@ -31,17 +31,17 @@
 				var/mob/living/carbon/C = usr
 				C.toggle_throw_mode()
 			else
-				usr << "<font color='red'>This mob type cannot throw items.</font>"
+				to_chat(usr, "<font color='red'>This mob type cannot throw items.</font>")
 			return
 		if(NORTHWEST)
 			if(isliving(usr))
 				var/mob/living/carbon/C = usr
 				if(!C.get_active_hand())
-					usr << "<font color='red'>You have nothing to drop in your hand.</font>"
+					to_chat(usr, "<font color='red'>You have nothing to drop in your hand.</font>")
 					return
 				drop_item()
 			else
-				usr << "<font color='red'>This mob type cannot drop items.</font>"
+				to_chat(usr, "<font color='red'>This mob type cannot drop items.</font>")
 			return
 
 //This gets called when you press the delete button.
@@ -49,7 +49,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		usr << "<font color='blue'>You are not pulling anything.</font>"
+		to_chat(usr, "<font color='blue'>You are not pulling anything.</font>")
 		return
 	usr.stop_pulling()
 
@@ -119,7 +119,8 @@
 		Process_Incorpmove(direct)
 		return
 
-	if(moving)	return 0
+	if(moving)
+		return FALSE
 
 	if(!mob.check_move_cooldown())
 		return
@@ -151,17 +152,18 @@
 						item.zoom()
 						break
 				/*
-				if(locate(/obj/item/weapon/gun/energy/sniperrifle, mob.contents))		// If mob moves while zoomed in with sniper rifle, unzoom them.
-					var/obj/item/weapon/gun/energy/sniperrifle/s = locate() in mob
+				if(locate(/obj/item/gun/energy/sniperrifle, mob.contents))		// If mob moves while zoomed in with sniper rifle, unzoom them.
+					var/obj/item/gun/energy/sniperrifle/s = locate() in mob
 					if(s.zoom)
 						s.zoom()
-				if(locate(/obj/item/device/binoculars, mob.contents))		// If mob moves while zoomed in with binoculars, unzoom them.
-					var/obj/item/device/binoculars/b = locate() in mob
+				if(locate(/obj/item/binoculars, mob.contents))		// If mob moves while zoomed in with binoculars, unzoom them.
+					var/obj/item/binoculars/b = locate() in mob
 					if(b.zoom)
 						b.zoom()
 				*/
 
-	if(Process_Grab())	return
+	if(Process_Grab())
+		return
 
 	if(!mob.canmove)
 		return
@@ -243,7 +245,7 @@
 		//We are now going to move
 		moving = 1
 		//Something with pulling things
-		if(locate(/obj/item/weapon/grab, mob))
+		if(locate(/obj/item/grab, mob))
 			mob.move_delay = max(mob.move_delay, world.time + 7)
 			var/list/L = mob.ret_grab()
 			if(istype(L, /list))
@@ -288,11 +290,11 @@
 							n = get_step(mob, direct)
 			. = mob.SelfMove(n, direct)
 
-		for (var/obj/item/weapon/grab/G in mob)
+		for (var/obj/item/grab/G in mob)
 			if (G.state == GRAB_NECK)
 				mob.setDir(reverse_dir[direct])
 			G.adjust_position()
-		for (var/obj/item/weapon/grab/G in mob.grabbed_by)
+		for (var/obj/item/grab/G in mob.grabbed_by)
 			G.adjust_position()
 
 		moving = 0
@@ -483,7 +485,7 @@
 /obj/proc/on_loc_moved(atom/oldloc)
 	return
 
-/obj/item/weapon/storage/on_loc_moved(atom/oldloc)
+/obj/item/storage/on_loc_moved(atom/oldloc)
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

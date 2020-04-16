@@ -60,7 +60,7 @@
 	// Battery must be installed BEFORE wiring the computer.
 	// if installing it in an existing computer, you will have to
 	// get back to this state first.
-	var/obj/item/weapon/cell/battery	= null
+	var/obj/item/cell/battery	= null
 
 /obj/structure/computer3frame/server
 	name = "server frame"
@@ -84,8 +84,8 @@
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
 					src.anchored = 1
 					src.state = 1
-			if(istype(P, /obj/item/weapon/weldingtool))
-				var/obj/item/weapon/weldingtool/WT = P
+			if(istype(P, /obj/item/weldingtool))
+				var/obj/item/weldingtool/WT = P
 				if(!WT.remove_fuel(0, user))
 					to_chat(user, "The welding tool must be on to complete this task.")
 					return
@@ -102,8 +102,8 @@
 					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 					src.anchored = 0
 					src.state = 0
-			if(istype(P, /obj/item/weapon/circuitboard) && !circuit)
-				var/obj/item/weapon/circuitboard/B = P
+			if(istype(P, /obj/item/circuitboard) && !circuit)
+				var/obj/item/circuitboard/B = P
 				if(B.board_type == "computer")
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
@@ -142,7 +142,7 @@
 				else
 					to_chat(user, "<span class='warning'>There's no battery to remove!</span>")
 
-			if(istype(P, /obj/item/weapon/cell))
+			if(istype(P, /obj/item/cell))
 				if(!battery)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(5))
@@ -203,9 +203,9 @@
 				if(circuit.id) B:id = circuit.id
 				//if(circuit.records) B:records = circuit.records
 				if(circuit.frequency) B:frequency = circuit.frequency
-				if(istype(circuit,/obj/item/weapon/circuitboard/supplycomp))
+				if(istype(circuit,/obj/item/circuitboard/supplycomp))
 					var/obj/machinery/computer/supplycomp/SC = B
-					var/obj/item/weapon/circuitboard/supplycomp/C = circuit
+					var/obj/item/circuitboard/supplycomp/C = circuit
 					SC.can_order_contraband = C.contraband_enabled*/
 				B.circuit = circuit
 				circuit.loc = B

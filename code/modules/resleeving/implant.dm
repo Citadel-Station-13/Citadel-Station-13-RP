@@ -4,7 +4,7 @@
 ////////////////////////////////
 
 //The backup implant itself
-/obj/item/weapon/implant/backup
+/obj/item/implant/backup
 	name = "backup implant"
 	desc = "A mindstate backup implant that occasionally stores a copy of one's mind on a central server for backup purposes."
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
@@ -12,7 +12,7 @@
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "backup_implant"
 //CITADEL CHANGE - ALTERING IMPLANT DATA
-/obj/item/weapon/implant/backup/get_data()
+/obj/item/implant/backup/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> [GLOB.using_map.company_name] Employee Backup Implant<BR>
@@ -25,11 +25,11 @@
 <b>Integrity:</b> Sturdy, weak against acidic compounds."}
 	return dat
 //END OF CITADEL CHANGE
-/obj/item/weapon/implant/backup/Destroy()
+/obj/item/implant/backup/Destroy()
 	SStranscore.implants -= src
 	return ..()
 
-/obj/item/weapon/implant/backup/post_implant(var/mob/living/carbon/human/H)
+/obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
 		ENABLE_BITFIELD(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
@@ -37,7 +37,7 @@
 		return 1
 
 //New, modern implanter instead of old style implanter.
-/obj/item/weapon/backup_implanter
+/obj/item/backup_implanter
 	name = "backup implanter"
 	desc = "After discovering that Nanotrasen was just re-using the same implanters over and over again on organics, leading to cross-contamination, Kitsuhana Heavy industries designed this self-cleaning model. Holds four backup implants at a time."
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
@@ -49,50 +49,50 @@
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
-	var/obj/item/weapon/implant/backup/list/imps = list()
+	var/obj/item/implant/backup/list/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 
-/obj/item/weapon/backup_implanter/New()
+/obj/item/backup_implanter/New()
 	..()
 	for(var/i = 1 to max_implants)
-		var/obj/item/weapon/implant/backup/imp = new(src)
+		var/obj/item/implant/backup/imp = new(src)
 		imps |= imp
 		imp.germ_level = 0
 	update()
 
-/obj/item/weapon/backup_implanter/proc/update()
+/obj/item/backup_implanter/proc/update()
 	icon_state = "[initial(icon_state)][imps.len]"
 	germ_level = 0
 
-/obj/item/weapon/backup_implanter/attack_self(mob/user as mob)
+/obj/item/backup_implanter/attack_self(mob/user as mob)
 	if(!istype(user))
 		return
 
 	if(imps.len)
-		user << "<span class='notice'>You eject a backup implant.</span>"
-		var/obj/item/weapon/implant/backup/imp = imps[imps.len]
+		to_chat(user, "<span class='notice'>You eject a backup implant.</span>")
+		var/obj/item/implant/backup/imp = imps[imps.len]
 		imp.forceMove(get_turf(user))
 		imps -= imp
 		user.put_in_any_hand_if_possible(imp)
 		update()
 	else
-		user << "<span class='warning'>\The [src] is empty.</span>"
+		to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
 
 	return
 
-/obj/item/weapon/backup_implanter/attackby(obj/W, mob/user)
-	if(istype(W,/obj/item/weapon/implant/backup))
+/obj/item/backup_implanter/attackby(obj/W, mob/user)
+	if(istype(W,/obj/item/implant/backup))
 		if(imps.len < max_implants)
 			user.unEquip(W)
 			imps |= W
 			W.germ_level = 0
 			W.forceMove(src)
 			update()
-			user << "<span class='notice'>You load \the [W] into \the [src].</span>"
+			to_chat(user, "<span class='notice'>You load \the [W] into \the [src].</span>")
 		else
-			user << "<span class='warning'>\The [src] is already full!</span>"
+			to_chat(user, "<span class='warning'>\The [src] is already full!</span>")
 
-/obj/item/weapon/backup_implanter/attack(mob/M as mob, mob/user as mob)
+/obj/item/backup_implanter/attack(mob/M as mob, mob/user as mob)
 	if (!istype(M, /mob/living/carbon))
 		return
 	if (user && imps.len)
@@ -106,7 +106,7 @@
 			if(user && M && (get_turf(M) == T1) && src && src.imps.len)
 				M.visible_message("<span class='notice'>[M] has been backup implanted by [user].</span>")
 
-				var/obj/item/weapon/implant/backup/imp = imps[imps.len]
+				var/obj/item/implant/backup/imp = imps[imps.len]
 				if(imp.handle_implant(M,user.zone_sel.selecting))
 					imp.post_implant(M)
 					imps -= imp
@@ -115,31 +115,31 @@
 				update()
 
 //The glass case for the implant
-/obj/item/weapon/implantcase/backup
+/obj/item/implantcase/backup
 	name = "glass case - 'backup'"
 	desc = "A case containing a backup implant."
 	icon_state = "implantcase-b"
 
-/obj/item/weapon/implantcase/backup/New()
-	src.imp = new /obj/item/weapon/implant/backup(src)
+/obj/item/implantcase/backup/New()
+	src.imp = new /obj/item/implant/backup(src)
 	..()
 	return
 
 //The box of backup implants
-/obj/item/weapon/storage/box/backup_kit
+/obj/item/storage/box/backup_kit
 	name = "backup implant kit"
 	desc = "Box of stuff used to implant backup implants."
 	icon_state = "implant"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 
-/obj/item/weapon/storage/box/backup_kit/New()
+/obj/item/storage/box/backup_kit/New()
 	..()
 	for(var/i = 1 to 7)
-		new /obj/item/weapon/implantcase/backup(src)
-	new /obj/item/weapon/implanter(src)
+		new /obj/item/implantcase/backup(src)
+	new /obj/item/implanter(src)
 /* CITADEL CHANGE - Removes this useless shit
 //Purely for fluff
-/obj/item/weapon/implant/backup/full
+/obj/item/implant/backup/full
 	name = "khi backup implant"
 	desc = "A normal KHI wireless cortical stack with neutrino and QE transmission for constant-stream consciousness upload."
 END OF CITADEL CHANGE */

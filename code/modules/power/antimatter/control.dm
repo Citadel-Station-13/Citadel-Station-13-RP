@@ -11,7 +11,7 @@
 
 	var/list/obj/machinery/am_shielding/linked_shielding
 	var/list/obj/machinery/am_shielding/linked_cores
-	var/obj/item/weapon/am_containment/fueljar
+	var/obj/item/am_containment/fueljar
 	var/update_shield_icons = 0
 	var/stability = 100
 	var/exploding = 0
@@ -156,12 +156,12 @@
 			src.anchored = 0
 			disconnect_from_network()
 		else
-			user << "<font color='red'>Once bolted and linked to a shielding unit it the [src.name] is unable to be moved!</font>"
+			to_chat(user, "<font color='red'>Once bolted and linked to a shielding unit it the [src.name] is unable to be moved!</font>")
 		return
 
-	if(istype(W, /obj/item/weapon/am_containment))
+	if(istype(W, /obj/item/am_containment))
 		if(fueljar)
-			user << "<font color='red'>There is already a [fueljar] inside!</font>"
+			to_chat(user, "<font color='red'>There is already a [fueljar] inside!</font>")
 			return
 		fueljar = W
 		user.remove_from_mob(W)

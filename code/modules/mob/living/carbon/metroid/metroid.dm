@@ -265,7 +265,7 @@
 		if (I_GRAB)
 			if (M == src || anchored)
 				return
-			var/obj/item/weapon/grab/G = new /obj/item/weapon/grab(M, src)
+			var/obj/item/grab/G = new /obj/item/grab(M, src)
 
 			M.put_in_active_hand(G)
 
@@ -310,7 +310,7 @@
 	if(W.force > 0)
 		attacked += 10
 		if(prob(25))
-			user << "<span class='danger'>[W] passes right through [src]!</span>"
+			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0

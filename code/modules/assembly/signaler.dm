@@ -1,4 +1,4 @@
-/obj/item/device/assembly/signaler
+/obj/item/assembly/signaler
 	name = "remote signaling device"
 	desc = "Used to remotely activate devices.  Tap against another secured signaler to transfer configuration."
 	icon_state = "signaller"
@@ -17,14 +17,14 @@
 	var/datum/radio_frequency/radio_connection
 	var/deadman = FALSE
 
-/obj/item/device/assembly/signaler/New()
+/obj/item/assembly/signaler/New()
 	..()
 	spawn(40)
 		set_frequency(frequency)
 	return
 
 
-/obj/item/device/assembly/signaler/activate()
+/obj/item/assembly/signaler/activate()
 	if(cooldown > 0)	return FALSE
 	cooldown = 2
 	spawn(10)
@@ -33,12 +33,12 @@
 	signal()
 	return TRUE
 
-/obj/item/device/assembly/signaler/update_icon()
+/obj/item/assembly/signaler/update_icon()
 	if(holder)
 		holder.update_icon()
 	return
 
-/obj/item/device/assembly/signaler/interact(mob/user as mob, flag1)
+/obj/item/assembly/signaler/interact(mob/user as mob, flag1)
 	var/t1 = "-------"
 //		if ((src.b_stat && !( flag1 )))
 //			t1 = text("-------<BR>\nGreen Wire: []<BR>\nRed Wire:   []<BR>\nBlue Wire:  []<BR>\n", (src.wires & 4 ? text("<A href='?src=\ref[];wires=4'>Cut Wire</A>", src) : text("<A href='?src=\ref[];wires=4'>Mend Wire</A>", src)), (src.wires & 2 ? text("<A href='?src=\ref[];wires=2'>Cut Wire</A>", src) : text("<A href='?src=\ref[];wires=2'>Mend Wire</A>", src)), (src.wires & 1 ? text("<A href='?src=\ref[];wires=1'>Cut Wire</A>", src) : text("<A href='?src=\ref[];wires=1'>Mend Wire</A>", src)))
@@ -69,7 +69,7 @@ Code:
 	return
 
 
-/obj/item/device/assembly/signaler/Topic(href, href_list, state = deep_inventory_state)
+/obj/item/assembly/signaler/Topic(href, href_list, state = deep_inventory_state)
 	if(..())
 		return TRUE
 
@@ -99,9 +99,9 @@ Code:
 
 	return
 
-/obj/item/device/assembly/signaler/attackby(obj/item/weapon/W, mob/user, params)
+/obj/item/assembly/signaler/attackby(obj/item/W, mob/user, params)
 	if(issignaler(W))
-		var/obj/item/device/assembly/signaler/signaler2 = W
+		var/obj/item/assembly/signaler/signaler2 = W
 		if(secured && signaler2.secured)
 			code = signaler2.code
 			set_frequency(signaler2.frequency)
@@ -109,7 +109,7 @@ Code:
 	else
 		..()
 
-/obj/item/device/assembly/signaler/proc/signal()
+/obj/item/assembly/signaler/proc/signal()
 	if(!radio_connection)
 		return
 	if(is_jammed(src))
@@ -123,7 +123,7 @@ Code:
 	return
 
 
-/obj/item/device/assembly/signaler/pulse(var/radio = 0)
+/obj/item/assembly/signaler/pulse(var/radio = 0)
 	if(is_jammed(src))
 		return FALSE
 	if(src.connected && src.wires)
@@ -135,7 +135,7 @@ Code:
 	return TRUE
 
 
-/obj/item/device/assembly/signaler/receive_signal(datum/signal/signal)
+/obj/item/assembly/signaler/receive_signal(datum/signal/signal)
 	if(!signal)
 		return FALSE
 	if(signal.encryption != code)
@@ -152,7 +152,7 @@ Code:
 	return
 
 
-/obj/item/device/assembly/signaler/proc/set_frequency(new_frequency)
+/obj/item/assembly/signaler/proc/set_frequency(new_frequency)
 	if(!frequency)
 		return
 	if(!radio_controller)
@@ -165,7 +165,7 @@ Code:
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 	return
 
-/obj/item/device/assembly/signaler/process()
+/obj/item/assembly/signaler/process()
 	if(!deadman)
 		STOP_PROCESSING(SSobj, src)
 	var/mob/M = src.loc
@@ -178,7 +178,7 @@ Code:
 		M.visible_message("[M]'s finger twitches a bit over [src]'s signal button!")
 	return
 
-/obj/item/device/assembly/signaler/verb/deadman_it()
+/obj/item/assembly/signaler/verb/deadman_it()
 	set src in usr
 	set name = "Threaten to push the button!"
 	set desc = "BOOOOM!"
@@ -187,7 +187,7 @@ Code:
 	log_and_message_admins("is threatening to trigger a signaler deadman's switch")
 	usr.visible_message("<font color='red'>[usr] moves their finger over [src]'s signal button...</font>")
 
-/obj/item/device/assembly/signaler/Destroy()
+/obj/item/assembly/signaler/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,frequency)
 	frequency = 0

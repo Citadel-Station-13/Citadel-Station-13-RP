@@ -1,4 +1,4 @@
-/obj/item/weapon/storage/briefcase
+/obj/item/storage/briefcase
 	name = "briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	icon_state = "briefcase"
@@ -9,7 +9,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-/obj/item/weapon/storage/briefcase/clutch
+/obj/item/storage/briefcase/clutch
 	name = "clutch purse"
 	desc = "A fashionable handheld bag typically used by women."
 	icon = 'icons/obj/clothing/backpack.dmi' //VOREStation Edit - Wrong sprite location

@@ -1,4 +1,4 @@
-/obj/item/weapon/book/manual/standard_operating_procedure
+/obj/item/book/manual/standard_operating_procedure
 	name = "Standard Operating Procedure"
 	desc = "A set of corporate guidelines for keeping space stations running smoothly."
 	icon_state = "sop"
@@ -6,7 +6,7 @@
 	author = "NanoTrasen"
 	title = "Standard Operating Procedure"
 
-/obj/item/weapon/book/manual/standard_operating_procedure/New()
+/obj/item/book/manual/standard_operating_procedure/New()
 	..()
 	dat = {"
 
@@ -21,7 +21,7 @@
 
 		"}
 
-/obj/item/weapon/book/manual/command_guide
+/obj/item/book/manual/command_guide
 	name = "The Chain of Command"
 	desc = "A set of corporate guidelines outlining the entire command structure of NanoTrasen from top to bottom."
 	icon_state = "commandGuide"
@@ -29,7 +29,7 @@
 	author = "Jeremiah Acacius"
 	title = "Corporate Regulations"
 
-/obj/item/weapon/book/manual/command_guide/New()
+/obj/item/book/manual/command_guide/New()
 	..()
 	dat = {"
 

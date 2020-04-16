@@ -20,7 +20,7 @@
 				qdel(src)
 	return
 
-/obj/effect/spider/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 
 	if(W.attack_verb.len)
@@ -30,8 +30,8 @@
 
 	var/damage = W.force / 4.0
 
-	if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 
 		if(WT.remove_fuel(0, user))
 			damage = 15
@@ -238,7 +238,7 @@
 			O.owner.apply_damage(1, TOX, O.organ_tag)
 			if(world.time > last_itch + 30 SECONDS)
 				last_itch = world.time
-				O.owner << "<span class='notice'>Your [O.name] itches...</span>"
+				to_chat(O.owner, "<span class='notice'>Your [O.name] itches...</span>")
 	else if(prob(1))
 		src.visible_message("<span class='notice'>\The [src] skitters.</span>")
 

@@ -4,7 +4,7 @@
 #define DISPOSALS_MODE 1
 #define TRANSIT_MODE 2
 
-/obj/item/weapon/pipe_dispenser
+/obj/item/pipe_dispenser
 	name = "Rapid Piping Device (RPD)"
 	desc = "A device used to rapidly pipe things."
 	icon = 'icons/obj/tools.dmi'
@@ -25,12 +25,12 @@
 	var/screen = ATMOS_MODE //Starts on the atmos tab.
 	var/piping_layer = PIPING_LAYER_DEFAULT
 	var/wrench_mode = FALSE
-	var/obj/item/weapon/tool/wrench/tool
+	var/obj/item/tool/wrench/tool
 	var/datum/pipe_recipe/recipe
 	var/static/datum/pipe_recipe/first_atmos
 	var/static/datum/pipe_recipe/first_disposal
 
-/obj/item/weapon/pipe_dispenser/New()
+/obj/item/pipe_dispenser/New()
 	. = ..()
 	src.spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
@@ -40,24 +40,24 @@
 	if(!first_disposal)
 		first_disposal = disposal_pipe_recipes[disposal_pipe_recipes[1]][1]
 	recipe = first_atmos
-	tool = new /obj/item/weapon/tool/wrench/cyborg(src) // RPDs have wrenches inside of them, so that they can wrench down spawned pipes without being used as superior wrenches themselves.
+	tool = new /obj/item/tool/wrench/cyborg(src) // RPDs have wrenches inside of them, so that they can wrench down spawned pipes without being used as superior wrenches themselves.
 
-/obj/item/weapon/pipe_dispenser/Destroy()
+/obj/item/pipe_dispenser/Destroy()
 	qdel(spark_system)
 	spark_system = null
 	return ..()
 
-/obj/item/weapon/pipe_dispenser/suicide_act(mob/user)
+/obj/item/pipe_dispenser/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='suicide'>[user] points the end of the RPD down [TU.his] throat and presses a button! It looks like [TU.hes] trying to commit suicide...</span>")
 	playsound(get_turf(user), 'sound/machines/click.ogg', 50, 1)
 	playsound(get_turf(user), 'sound/items/deconstruct.ogg', 50, 1)
 	return(BRUTELOSS)
 
-/obj/item/weapon/pipe_dispenser/attack_self(mob/user)
+/obj/item/pipe_dispenser/attack_self(mob/user)
 	src.interact(user)
 
-/obj/item/weapon/pipe_dispenser/interact(mob/user)
+/obj/item/pipe_dispenser/interact(mob/user)
 	var/list/lines = list()
 	if(mode >= ATMOS_MODE)
 		lines += "<div class=\"block\"><h3>Direction:</h3><div class=\"item\">"
@@ -168,7 +168,7 @@
 	popup.set_content("<TT>[dat]</TT>")
 	popup.open()
 
-/obj/item/weapon/pipe_dispenser/Topic(href,href_list)
+/obj/item/pipe_dispenser/Topic(href,href_list)
 	if(..())
 		return
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
@@ -220,7 +220,7 @@
 			playsound(get_turf(src), 'sound/effects/pop.ogg', 50, 0)
 		src.interact(usr)
 
-/obj/item/weapon/pipe_dispenser/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/pipe_dispenser/afterattack(atom/A, mob/user as mob, proximity)
 	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !proximity)
 		return ..()
 
@@ -317,15 +317,15 @@
 			return ..()
 
 
-/obj/item/weapon/pipe_dispenser/proc/activate()
+/obj/item/pipe_dispenser/proc/activate()
 	playsound(get_turf(src), 'sound/items/deconstruct.ogg', 50, 1)
 
-/obj/item/weapon/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
+/obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
 	var/resolved = target.attackby(tool,user)
 	if(!resolved && tool && target)
 		tool.afterattack(target,user,1)
 
-/obj/item/weapon/pipe_dispenser/proc/render_dir_img(preview,user,_dir,title,noimg,flipped=0)
+/obj/item/pipe_dispenser/proc/render_dir_img(preview,user,_dir,title,noimg,flipped=0)
 	var/dirtext = dir2text(_dir)
 	var/selected = " style=\"height:34px;width:34px;display:inline-block\""
 	if(_dir == p_dir && flipped == p_flipped)

@@ -214,7 +214,7 @@
 		else
 			f_name += "oil-stained [name][infix]."
 
-	user << "\icon[src] That's [f_name] [suffix]"
+	to_chat(user, "\icon[src] That's [f_name] [suffix]")
 	user << desc
 
 	return distance == -1 || (get_dist(src, user) <= distance)
@@ -223,11 +223,6 @@
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()
 	return
-
-//called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/setDir(new_dir)
-	. = new_dir != dir
-	dir = new_dir
 
 /atom/proc/ex_act()
 	return
@@ -242,10 +237,10 @@
 // Returns an assoc list of RCD information.
 // Example would be: list(RCD_VALUE_MODE = RCD_DECONSTRUCT, RCD_VALUE_DELAY = 50, RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 4)
 // This occurs before rcd_act() is called, and it won't be called if it returns FALSE.
-/atom/proc/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/atom/proc/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	return FALSE
 
-/atom/proc/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/atom/proc/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	return
 
 /atom/proc/melt()

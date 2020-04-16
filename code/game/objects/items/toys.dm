@@ -49,24 +49,24 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
-		user << "<span class='notice'>You fill the balloon with the contents of [A].</span>"
+		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
 
 /obj/item/toy/balloon/attackby(obj/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/weapon/reagent_containers/glass))
+	if(istype(O, /obj/item/reagent_containers/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				user << "The [O] is empty."
+				to_chat(user, "The [O] is empty.")
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
-					user << "The acid chews through the balloon!"
+					to_chat(user, "The acid chews through the balloon!")
 					O.reagents.splash(user, reagents.total_volume)
 					qdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					user << "<span class='notice'>You fill the balloon with the contents of [O].</span>"
+					to_chat(user, "<span class='notice'>You fill the balloon with the contents of [O].</span>")
 					O.reagents.trans_to_obj(src, 10)
 	src.update_icon()
 	return
@@ -150,7 +150,7 @@
 
 	examine(mob/user)
 		if(..(user, 2) && bullets)
-			user << "<span class='notice'>It is loaded with [bullets] foam darts!</span>"
+			to_chat(user, "<span class='notice'>It is loaded with [bullets] foam darts!</span>")
 
 	attackby(obj/item/I as obj, mob/user as mob)
 		if(istype(I, /obj/item/toy/ammo/crossbow))
@@ -158,9 +158,9 @@
 				user.drop_item()
 				qdel(I)
 				bullets++
-				user << "<span class='notice'>You load the foam dart into the crossbow.</span>"
+				to_chat(user, "<span class='notice'>You load the foam dart into the crossbow.</span>")
 			else
-				usr << "<span class='warning'>It's already fully loaded.</span>"
+				to_chat(usr, "<span class='warning'>It's already fully loaded.</span>")
 
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
@@ -267,12 +267,12 @@
 	attack_self(mob/user as mob)
 		src.active = !( src.active )
 		if (src.active)
-			user << "<span class='notice'>You extend the plastic blade with a quick flick of your wrist.</span>"
+			to_chat(user, "<span class='notice'>You extend the plastic blade with a quick flick of your wrist.</span>")
 			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 			src.icon_state = "swordblue"
 			src.w_class = ITEMSIZE_LARGE
 		else
-			user << "<span class='notice'>You push the plastic blade back down into the handle.</span>"
+			to_chat(user, "<span class='notice'>You push the plastic blade back down into the handle.</span>")
 			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
 			src.icon_state = "sword0"
 			src.w_class = ITEMSIZE_SMALL
@@ -325,7 +325,7 @@
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == "run")
-			M << "<span class='warning'>You step on the snap pop!</span>"
+			to_chat(M, "<span class='warning'>You step on the snap pop!</span>")
 
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 			s.set_up(2, 0, src)
@@ -358,7 +358,7 @@
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
 
-	if (istype(A, /obj/item/weapon/storage/backpack ))
+	if (istype(A, /obj/item/storage/backpack ))
 		return
 
 	else if (locate (/obj/structure/table, src.loc))
@@ -366,12 +366,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		user << "<span class='notice'>You refill your flower!</span>"
+		to_chat(user, "<span class='notice'>You refill your flower!</span>")
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		user << "<span class='notice'>Your flower has run dry!</span>"
+		to_chat(user, "<span class='notice'>Your flower has run dry!</span>")
 		return
 
 	else
@@ -418,7 +418,7 @@
 
 /obj/item/toy/bosunwhistle/attack_self(mob/user as mob)
 	if(cooldown < world.time - 35)
-		user << "<span class='notice'>You blow on [src], creating an ear-splitting noise!</span>"
+		to_chat(user, "<span class='notice'>You blow on [src], creating an ear-splitting noise!</span>")
 		playsound(user, 'sound/misc/boatswain.ogg', 20, 1)
 		cooldown = world.time
 
@@ -433,14 +433,14 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user as mob)
 	if(cooldown < world.time - 8)
-		user << "<span class='notice'>You play with [src].</span>"
+		to_chat(user, "<span class='notice'>You play with [src].</span>")
 		playsound(user, 'sound/mecha/mechstep.ogg', 20, 1)
 		cooldown = world.time
 
 /obj/item/toy/prize/attack_hand(mob/user as mob)
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			user << "<span class='notice'>You play with [src].</span>"
+			to_chat(user, "<span class='notice'>You play with [src].</span>")
 			playsound(user, 'sound/mecha/mechturn.ogg', 20, 1)
 			cooldown = world.time
 			return
@@ -1266,11 +1266,11 @@
 	name = "lich miniature"
 	desc = "Murderboner extraordinaire."
 	icon_state = "lichcharacter"
-/obj/item/weapon/storage/box/characters
+/obj/item/storage/box/characters
 	name = "box of miniatures"
 	desc = "The nerd's best friends."
 	icon_state = "box"
-/obj/item/weapon/storage/box/characters/starts_with = list(
+/obj/item/storage/box/characters/starts_with = list(
 //	/obj/item/toy/character/alien,
 	/obj/item/toy/character/cleric,
 	/obj/item/toy/character/warrior,
@@ -1338,7 +1338,7 @@
 	..()
 
 /* NYET.
-/obj/item/weapon/toddler
+/obj/item/toddler
 	icon_state = "toddler"
 	name = "toddler"
 	desc = "This baby looks almost real. Wait, did it just burp?"
@@ -1349,7 +1349,7 @@
 
 //This should really be somewhere else but I don't know where. w/e
 
-/obj/item/weapon/inflatable_duck
+/obj/item/inflatable_duck
 	name = "inflatable duck"
 	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"

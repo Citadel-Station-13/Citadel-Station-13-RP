@@ -161,7 +161,7 @@
 	if(U.cameraFollow)
 		U.ai_cancel_tracking()
 	U.cameraFollow = target
-	U << "Now tracking [target.name] on camera."
+	to_chat(U, "Now tracking [target.name] on camera.")
 	target.tracking_initiated()
 
 	spawn (0)
@@ -171,7 +171,7 @@
 
 			switch(target.tracking_status())
 				if(TRACKING_NO_COVERAGE)
-					U << "Target is not near any active cameras."
+					to_chat(U, "Target is not near any active cameras.")
 					sleep(100)
 					continue
 				if(TRACKING_TERMINATE)
@@ -223,7 +223,7 @@ mob/living/proc/near_camera()
 /mob/living/proc/tracking_status()
 	// Easy checks first.
 	// Don't detect mobs on CentCom. Since the wizard den is on CentCom, we only need this.
-	var/obj/item/weapon/card/id/id = GetIdCard()
+	var/obj/item/card/id/id = GetIdCard()
 	if(id && id.prevent_tracking())
 		return TRACKING_TERMINATE
 	if(InvalidPlayerTurf(get_turf(src)))

@@ -134,21 +134,21 @@
 
 	if (!can_use(required))
 		if (produced>1)
-			user << "<span class='warning'>You haven't got enough [src] to build \the [produced] [recipe.title]\s!</span>"
+			to_chat(user, "<span class='warning'>You haven't got enough [src] to build \the [produced] [recipe.title]\s!</span>")
 		else
-			user << "<span class='warning'>You haven't got enough [src] to build \the [recipe.title]!</span>"
+			to_chat(user, "<span class='warning'>You haven't got enough [src] to build \the [recipe.title]!</span>")
 		return
 
 	if (recipe.one_per_turf && (locate(recipe.result_type) in user.loc))
-		user << "<span class='warning'>There is another [recipe.title] here!</span>"
+		to_chat(user, "<span class='warning'>There is another [recipe.title] here!</span>")
 		return
 
 	if (recipe.on_floor && !isfloor(user.loc))
-		user << "<span class='warning'>\The [recipe.title] must be constructed on the floor!</span>"
+		to_chat(user, "<span class='warning'>\The [recipe.title] must be constructed on the floor!</span>")
 		return
 
 	if (recipe.time)
-		user << "<span class='notice'>Building [recipe.title] ...</span>"
+		to_chat(user, "<span class='notice'>Building [recipe.title] ...</span>")
 		if (!do_after(user, recipe.time))
 			return
 
@@ -163,7 +163,7 @@
 		O.setDir(user.dir)
 		O.add_fingerprint(user)
 
-		if (istype(O, /obj/item/weapon/storage)) //BubbleWrap - so newly formed boxes are empty
+		if (istype(O, /obj/item/storage)) //BubbleWrap - so newly formed boxes are empty
 			for (var/obj/item/I in O)
 				qdel(I)
 
@@ -339,7 +339,7 @@
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>"
+			to_chat(user, "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>")
 		if(!amount)
 			break
 

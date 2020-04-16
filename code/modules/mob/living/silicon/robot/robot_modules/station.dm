@@ -1,26 +1,26 @@
 GLOBAL_LIST_INIT(robot_modules, list(
-	"Standard"		= /obj/item/weapon/robot_module/robot/standard,
-	"Service" 		= /obj/item/weapon/robot_module/robot/clerical/butler,
-	"Clerical" 		= /obj/item/weapon/robot_module/robot/clerical/general,
-	"Research" 		= /obj/item/weapon/robot_module/robot/research,
-	"Miner" 		= /obj/item/weapon/robot_module/robot/miner,
-	"Crisis" 		= /obj/item/weapon/robot_module/robot/medical/crisis,
-	"Surgeon" 		= /obj/item/weapon/robot_module/robot/medical/surgeon,
-	"Security" 		= /obj/item/weapon/robot_module/robot/security/general,
-	"Combat" 		= /obj/item/weapon/robot_module/robot/security/combat,
-	"Engineering"	= /obj/item/weapon/robot_module/robot/engineering/general,
-//	"Construction"	= /obj/item/weapon/robot_module/robot/engineering/construction,
-	"Janitor" 		= /obj/item/weapon/robot_module/robot/janitor,
-	"Medihound"		= /obj/item/weapon/robot_module/robot/medihound,
-	"K9"		= /obj/item/weapon/robot_module/robot/knine,
-	"ERT"		= /obj/item/weapon/robot_module/robot/ert,
-	"Janihound"		= /obj/item/weapon/robot_module/robot/scrubpup,
-	"Sci-Hound"		= /obj/item/weapon/robot_module/robot/science,
-	"Pupdozer"		= /obj/item/weapon/robot_module/robot/engiedog,
-	"Service-Hound"		= /obj/item/weapon/robot_module/robot/clerical/brodog
+	"Standard"		= /obj/item/robot_module/robot/standard,
+	"Service" 		= /obj/item/robot_module/robot/clerical/butler,
+	"Clerical" 		= /obj/item/robot_module/robot/clerical/general,
+	"Research" 		= /obj/item/robot_module/robot/research,
+	"Miner" 		= /obj/item/robot_module/robot/miner,
+	"Crisis" 		= /obj/item/robot_module/robot/medical/crisis,
+	"Surgeon" 		= /obj/item/robot_module/robot/medical/surgeon,
+	"Security" 		= /obj/item/robot_module/robot/security/general,
+	"Combat" 		= /obj/item/robot_module/robot/security/combat,
+	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
+//	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
+	"Janitor" 		= /obj/item/robot_module/robot/janitor,
+	"Medihound"		= /obj/item/robot_module/robot/medihound,
+	"K9"		= /obj/item/robot_module/robot/knine,
+	"ERT"		= /obj/item/robot_module/robot/ert,
+	"Janihound"		= /obj/item/robot_module/robot/scrubpup,
+	"Sci-Hound"		= /obj/item/robot_module/robot/science,
+	"Pupdozer"		= /obj/item/robot_module/robot/engiedog,
+	"Service-Hound"		= /obj/item/robot_module/robot/clerical/brodog
 	))
 
-/obj/item/weapon/robot_module
+/obj/item/robot_module
 	name = "robot module"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_module"
@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/list/original_languages = list()
 	var/list/added_networks = list()
 
-/obj/item/weapon/robot_module/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/New(var/mob/living/silicon/robot/R)
 	..()
 	R.module = src
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	for(var/obj/item/I in modules)
 		I.canremove = 0
 
-/obj/item/weapon/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
 	remove_languages(R)
 	remove_subsystems(R)
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		R.radio.recalculateChannels()
 	R.choose_icon(0, R.set_module_sprites(list("Default" = "robot")))
 
-/obj/item/weapon/robot_module/Destroy()
+/obj/item/robot_module/Destroy()
 	for(var/module in modules)
 		qdel(module)
 	for(var/synth in synths)
@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	jetpack = null
 	return ..()
 
-/obj/item/weapon/robot_module/emp_act(severity)
+/obj/item/robot_module/emp_act(severity)
 	if(modules)
 		for(var/obj/O in modules)
 			O.emp_act(severity)
@@ -102,21 +102,21 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	..()
 	return
 
-/obj/item/weapon/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
+/obj/item/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R, var/rate)
 	if(!synths || !synths.len)
 		return
 
 	for(var/datum/matter_synth/T in synths)
 		T.add_charge(T.recharge_rate * rate)
 
-/obj/item/weapon/robot_module/proc/rebuild()//Rebuilds the list so it's possible to add/remove items from the module
+/obj/item/robot_module/proc/rebuild()//Rebuilds the list so it's possible to add/remove items from the module
 	var/list/temp_list = modules
 	modules = list()
 	for(var/obj/O in temp_list)
 		if(O)
 			modules += O
 
-/obj/item/weapon/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
 	// Stores the languages as they were before receiving the module, and whether they could be synthezized.
 	for(var/datum/language/language_datum in R.languages)
 		original_languages[language_datum] = (language_datum in R.speech_synthesizer_langs)
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	for(var/language in languages)
 		R.add_language(language, languages[language])
 
-/obj/item/weapon/robot_module/proc/remove_languages(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/remove_languages(var/mob/living/silicon/robot/R)
 	// Clear all added languages, whether or not we originally had them.
 	for(var/language in languages)
 		R.remove_language(language)
@@ -134,37 +134,37 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		R.add_language(original_language, original_languages[original_language])
 	original_languages.Cut()
 
-/obj/item/weapon/robot_module/proc/add_camera_networks(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/add_camera_networks(var/mob/living/silicon/robot/R)
 	if(R.camera && (NETWORK_ROBOTS in R.camera.network))
 		for(var/network in networks)
 			if(!(network in R.camera.network))
 				R.camera.add_network(network)
 				added_networks |= network
 
-/obj/item/weapon/robot_module/proc/remove_camera_networks(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/remove_camera_networks(var/mob/living/silicon/robot/R)
 	if(R.camera)
 		R.camera.remove_networks(added_networks)
 	added_networks.Cut()
 
-/obj/item/weapon/robot_module/proc/add_subsystems(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/add_subsystems(var/mob/living/silicon/robot/R)
 	R.verbs |= subsystems
 
-/obj/item/weapon/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/remove_subsystems(var/mob/living/silicon/robot/R)
 	R.verbs -= subsystems
 
-/obj/item/weapon/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
 		R.status_flags &= ~CANPUSH
 
-/obj/item/weapon/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
 		R.status_flags |= CANPUSH
 
 // Cyborgs (non-drones), default loadout. This will be given to every module.
-/obj/item/weapon/robot_module/robot/New()
+/obj/item/robot_module/robot/New()
 	..()
-	src.modules += new /obj/item/device/flash/robot(src)
-	src.modules += new /obj/item/weapon/tool/crowbar/cyborg(src)
-	src.modules += new /obj/item/weapon/extinguisher(src)
-	src.modules += new /obj/item/device/gps/robot(src)
+	src.modules += new /obj/item/flash/robot(src)
+	src.modules += new /obj/item/tool/crowbar/cyborg(src)
+	src.modules += new /obj/item/extinguisher(src)
+	src.modules += new /obj/item/gps/robot(src)
 	vr_new() // Vorestation Edit: For modules in robot_modules_vr.dm

@@ -72,7 +72,7 @@
 	// Check if the crew succeeded or failed!
 	if(required_items.len == 0)
 		// Success!
-		supply_controller.points += 100 * severity
+		SSsupply.points += 100 * severity
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
 		msg += "[capitalize(pick(first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."
@@ -86,7 +86,7 @@
 			message += req.describe() + "<br>"
 		for (var/obj/machinery/computer/communications/C in machines)
 			if(C.operable())
-				var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( C.loc )
+				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[my_department] Mission Summary'"
 				P.info = message
 				P.update_space(P.info)
@@ -206,7 +206,7 @@
 /datum/supply_demand_order/reagent/match_item(var/atom/I)
 	if(!I.reagents)
 		return
-	if(!istype(I, /obj/item/weapon/reagent_containers))
+	if(!istype(I, /obj/item/reagent_containers))
 		return
 	var/amount_to_take = min(I.reagents.get_reagent_amount(reagent_id), qty_need)
 	if(amount_to_take >= 1)

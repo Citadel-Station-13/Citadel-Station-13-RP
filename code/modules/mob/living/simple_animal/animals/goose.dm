@@ -49,7 +49,7 @@
 	reactions = list()
 
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 /mob/living/simple_mob/hostile/goose/set_target()
 	. = ..()

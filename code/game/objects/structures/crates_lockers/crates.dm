@@ -24,7 +24,7 @@
 	if(!src.can_open())
 		return 0
 
-	if(rigged && locate(/obj/item/device/radio/electropack) in src)
+	if(rigged && locate(/obj/item/radio/electropack) in src)
 		if(isliving(usr))
 			var/mob/living/L = usr
 			if(L.electrocute_act(17, src))
@@ -68,7 +68,7 @@
 	src.opened = 0
 	return 1
 
-/obj/structure/closet/crate/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
 	if(opened)
 		if(isrobot(user))
 			return
@@ -77,26 +77,26 @@
 		user.drop_item()
 		if(W)
 			W.forceMove(src.loc)
-	else if(istype(W, /obj/item/weapon/packageWrap))
+	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(rigged)
-			user << "<span class='notice'>[src] is already rigged!</span>"
+			to_chat(user, "<span class='notice'>[src] is already rigged!</span>")
 			return
 		if (C.use(1))
-			user  << "<span class='notice'>You rig [src].</span>"
+			to_chat(user, "<span class='notice'>You rig [src].</span>")
 			rigged = 1
 			return
-	else if(istype(W, /obj/item/device/radio/electropack))
+	else if(istype(W, /obj/item/radio/electropack))
 		if(rigged)
-			user  << "<span class='notice'>You attach [W] to [src].</span>"
+			to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
 			user.drop_item()
 			W.forceMove(src)
 			return
 	else if(W.is_wirecutter())
 		if(rigged)
-			user  << "<span class='notice'>You cut away the wiring.</span>"
+			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
 			playsound(src.loc, W.usesound, 100, 1)
 			rigged = 0
 			return
@@ -149,15 +149,15 @@
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user as mob)
 	if(src.opened)
-		user << "<span class='notice'>Close the crate first.</span>"
+		to_chat(user, "<span class='notice'>Close the crate first.</span>")
 		return
 	if(src.broken)
-		user << "<span class='warning'>The crate appears to be broken.</span>"
+		to_chat(user, "<span class='warning'>The crate appears to be broken.</span>")
 		return
 	if(src.allowed(user))
 		set_locked(!locked, user)
 	else
-		user << "<span class='notice'>Access Denied</span>"
+		to_chat(user, "<span class='notice'>Access Denied</span>")
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
 	if(locked == newlocked) return
@@ -181,7 +181,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		usr << "<span class='warning'>This mob type can't use this verb.</span>"
+		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
@@ -190,10 +190,10 @@
 	else
 		src.toggle(user)
 
-/obj/structure/closet/crate/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(is_type_in_list(W, list(/obj/item/weapon/packageWrap, /obj/item/stack/cable_coil, /obj/item/device/radio/electropack, /obj/item/weapon/tool/wirecutters)))
+/obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
+	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/radio/electropack, /obj/item/tool/wirecutters)))
 		return ..()
-	if(istype(W, /obj/item/weapon/melee/energy/blade))
+	if(istype(W, /obj/item/melee/energy/blade))
 		emag_act(INFINITY, user)
 	if(!opened)
 		src.togglelock(user)
@@ -209,7 +209,7 @@
 		playsound(src.loc, "sparks", 60, 1)
 		src.locked = 0
 		src.broken = 1
-		user << "<span class='notice'>You unlock \the [src].</span>"
+		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
 		return 1
 
 /obj/structure/closet/crate/secure/emp_act(severity)
@@ -288,8 +288,8 @@
 	icon_closed = "engi_crate"
 
 	starts_with = list(
-		/obj/item/weapon/rcd_ammo = 3,
-		/obj/item/weapon/rcd)
+		/obj/item/rcd_ammo = 3,
+		/obj/item/rcd)
 
 /obj/structure/closet/crate/solar
 	name = "solar pack crate"
@@ -299,9 +299,9 @@
 
 	starts_with = list(
 		/obj/item/solar_assembly = 21,
-		/obj/item/weapon/circuitboard/solar_control,
-		/obj/item/weapon/tracker_electronics,
-		/obj/item/weapon/paper/solar)
+		/obj/item/circuitboard/solar_control,
+		/obj/item/tracker_electronics,
+		/obj/item/paper/solar)
 
 /obj/structure/closet/crate/freezer
 	name = "freezer"
@@ -523,5 +523,5 @@
 
 /obj/structure/closet/crate/hydroponics/prespawned
 	starts_with = list(
-		/obj/item/weapon/reagent_containers/spray/plantbgone = 2,
-		/obj/item/weapon/material/minihoe)
+		/obj/item/reagent_containers/spray/plantbgone = 2,
+		/obj/item/material/minihoe)

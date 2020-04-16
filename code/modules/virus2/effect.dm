@@ -85,14 +85,14 @@
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/external/O = pick(H.organs)
 		if(prob(25))
-			mob << "<span class='warning'>Your [O.name] feels as if it might burst!</span>"
+			to_chat(mob, "<span class='warning'>Your [O.name] feels as if it might burst!</span>")
 		if(prob(3))
 			spawn(50)
 				if(O)
 					O.droplimb(0,DROPLIMB_BLUNT)
 	else
 		if(prob(75))
-			mob << "<span class='warning'>Your whole body feels like it might fall apart!</span>"
+			to_chat(mob, "<span class='warning'>Your whole body feels like it might fall apart!</span>")
 		if(prob(3))
 			mob.adjustBruteLoss(25*multiplier)
 
@@ -125,11 +125,11 @@
 	if(istype(mob,/mob/living/carbon/human))
 		var/mob/living/carbon/human/h = mob
 		if(prob(25))
-			mob << "<span class='warning'> You feel as if your body is trying to rapidly regress...</span>"
+			to_chat(mob, "<span class='warning'> You feel as if your body is trying to rapidly regress...</span>")
 		if(prob(3))
 			h.monkeyize()
 	else
-		mob << "<span class='warning'>You feel an odd attraction to consume banana's...</span>"
+		to_chat(mob, "<span class='warning'>You feel an odd attraction to consume banana's...</span>")
 
 
 
@@ -177,7 +177,7 @@
 		var/obj/item/organ/external/E = H.organs_by_name[organ]
 		if (!(E.status & ORGAN_DEAD))
 			E.status |= ORGAN_DEAD
-			H << "<span class='notice'>You can't feel your [E.name] anymore...</span>"
+			to_chat(H, "<span class='notice'>You can't feel your [E.name] anymore...</span>")
 			for (var/obj/item/organ/external/C in E.children)
 				C.status |= ORGAN_DEAD
 		H.update_icons_body()
@@ -206,9 +206,9 @@
 		if (O.robotic != ORGAN_ROBOT)
 			if(prob(15))
 				O.damage += (5*multiplier)
-				H << "<span class='notice'>You feel a cramp in your guts.</span>"
+				to_chat(H, "<span class='notice'>You feel a cramp in your guts.</span>")
 			else
-				H << "<span class='warning'>You feel like doom is coming.. you should head to medical!</span>"
+				to_chat(H, "<span class='warning'>You feel like doom is coming.. you should head to medical!</span>")
 
 /datum/disease2/effect/immortal
 	name = "Hyperaccelerated Aging"
@@ -227,7 +227,7 @@
 /datum/disease2/effect/immortal/deactivate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		H << "<span class='notice'>You suddenly feel hurt and old...</span>"
+		to_chat(H, "<span class='notice'>You suddenly feel hurt and old...</span>")
 		H.age += 8
 	var/backlash_amt = 5*multiplier
 	mob.apply_damages(backlash_amt,backlash_amt,backlash_amt,backlash_amt)
@@ -276,10 +276,10 @@
 		var/mob/living/carbon/human/H = mob
 		var/obj/item/organ/external/O = pick(H.organs)
 		if(prob(25))
-			mob << "<span class='warning'>It feels like your [O.name] is on fire and your blood is boiling!</span>"
+			to_chat(mob, "<span class='warning'>It feels like your [O.name] is on fire and your blood is boiling!</span>")
 			H.adjust_fire_stacks(1)
 		if(prob(10))
-			mob << "<span class='warning'>Flames erupt from your skin, your entire body is burning!</span>"
+			to_chat(mob, "<span class='warning'>Flames erupt from your skin, your entire body is burning!</span>")
 			H.adjust_fire_stacks(2)
 			H.IgniteMob()
 
@@ -321,7 +321,7 @@
 
 /datum/disease2/effect/organ_repair/activate(var/mob/living/carbon/mob,var/multiplier)
 	if (mob.reagents.get_reagent_amount(data) < 8)
-		mob << "<span class='notice'>You feel like your insides relaxed and you feel healthier after.</span>"
+		to_chat(mob, "<span class='notice'>You feel like your insides relaxed and you feel healthier after.</span>")
 		mob.reagents.add_reagent(data, 3)
 
 /datum/disease2/effect/toxins
@@ -391,7 +391,7 @@
 	stage = 3
 
 /datum/disease2/effect/confusion/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>"
+	to_chat(mob, "<span class='notice'>You have trouble telling right and left apart all of a sudden.</span>")
 	mob.Confuse(10)
 
 /datum/disease2/effect/mutation
@@ -527,7 +527,7 @@
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
 		if(H.species.name == SPECIES_HUMAN && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
-			H << "<span class='danger'>Your hair starts to fall out in clumps...</span>"
+			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
 			spawn(50)
 				H.h_style = "Balding Hair"
 				H.update_hair()
@@ -537,7 +537,7 @@
 	stage = 2
 
 /datum/disease2/effect/stimulant/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='notice'>You feel a rush of energy inside you!</span>"
+	to_chat(mob, "<span class='notice'>You feel a rush of energy inside you!</span>")
 	if (mob.reagents.get_reagent_amount("hyperzine") < 10)
 		mob.reagents.add_reagent("hyperzine", 4)
 	if (prob(30))
@@ -551,7 +551,7 @@
 /datum/disease2/effect/ringing/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		H << "<span class='notice'>You hear an awful ringing in your ears.</span>"
+		to_chat(H, "<span class='notice'>You hear an awful ringing in your ears.</span>")
 		H << 'sound/weapons/flash.ogg'
 
 /datum/disease2/effect/vomiting
@@ -560,7 +560,7 @@
 	chance_maxm = 15
 
 /datum/disease2/effect/vomiting/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='notice'>Your stomach churns!</span>"
+	to_chat(mob, "<span class='notice'>Your stomach churns!</span>")
 	if (prob(50))
 		mob.say("*vomit")
 
@@ -644,7 +644,7 @@
 	stage = 1
 
 /datum/disease2/effect/gunck/activate(var/mob/living/carbon/mob,var/multiplier)
-	mob << "<span class='warning'>Mucous runs down the back of your throat.</span>"
+	to_chat(mob, "<span class='warning'>Mucous runs down the back of your throat.</span>")
 
 /datum/disease2/effect/drool
 	name = "Salivary Gland Stimulation"

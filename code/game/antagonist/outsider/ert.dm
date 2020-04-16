@@ -15,7 +15,7 @@ var/datum/antagonist/ert/ert
 		rules aside from those without explicit exceptions apply to the ERT.</b>"
 	leader_welcome_text = "As leader of the Emergency Response Team, you answer only to the Company, and have authority to override the Colony Director where it is necessary to achieve your mission goals. It is recommended that you attempt to cooperate with the Colony Director where possible, however."
 	landmark_id = "Response Team"
-	id_type = /obj/item/weapon/card/id/centcom/ERT
+	id_type = /obj/item/card/id/centcom/ERT
 
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME
 	antaghud_indicator = "hudloyalist"
@@ -40,12 +40,12 @@ var/datum/antagonist/ert/ert
 	if(!..())
 		return
 	player.current << "The Emergency Response Team works for Asset Protection; your job is to protect [GLOB.using_map.company_name]'s ass-ets. There is a code red alert on [station_name()], you are tasked to go and fix the problem."
-	player.current << "You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready."
+	to_chat(player.current, "You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready.")
 
 /datum/antagonist/ert/equip(var/mob/living/carbon/human/player)
 
 	//Special radio setup
-	player.equip_to_slot_or_del(new /obj/item/device/radio/headset/ert(src), slot_l_ear)
+	player.equip_to_slot_or_del(new /obj/item/radio/headset/ert(src), slot_l_ear)
 	player.equip_to_slot_or_del(new /obj/item/clothing/under/ert(src), slot_w_uniform)
 	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/boots/swat(src), slot_shoes)
 	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(src), slot_gloves)

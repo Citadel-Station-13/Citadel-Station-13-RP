@@ -37,7 +37,7 @@
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
 	flags = 0	//Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it,
 				//it still ends up in your blood. (also balance but muh fluff)
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/tank/oxygen)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
 	canremove = 0
 
@@ -81,13 +81,13 @@
 		magpulse = 0
 		set_slowdown()
 		force = 3
-		user << "We release our grip on the floor."
+		to_chat(user, "We release our grip on the floor.")
 	else
 		item_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
-		user << "We cling to the terrain below us."
+		to_chat(user, "We cling to the terrain below us.")
 
 /obj/item/clothing/shoes/magboots/changeling/dropped()
 	..()

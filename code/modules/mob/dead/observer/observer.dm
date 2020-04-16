@@ -139,7 +139,7 @@
 			ManualFollow(target)
 
 /mob/observer/dead/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/weapon/book/tome))
+	if(istype(W,/obj/item/book/tome))
 		var/mob/observer/dead/M = src
 		M.manifest(user)
 
@@ -221,8 +221,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/Stat()
 	..()
 	if(statpanel("Status"))
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
+		if(SSemergencyshuttle)
+			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
 
@@ -234,7 +234,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>You have no body.</span>")
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
-		usr << "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>"
+		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
 	//VOREStation Add
 	if(prevent_respawns.Find(mind.name))
@@ -248,7 +248,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				found_rune = 1
 				break
 		if(!found_rune)
-			usr << "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>"
+			to_chat(usr, "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>")
 			return
 	mind.current.ajourn=0
 	mind.current.key = key
@@ -301,7 +301,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Teleport to a location"
 
 	if(!istype(usr, /mob/observer/dead))
-		usr << "Not when you're not dead!"
+		to_chat(usr, "Not when you're not dead!")
 		return
 
 	usr.forceMove(pick(get_area_turfs(A)))
@@ -324,7 +324,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/turf/targetloc = get_turf(target)
 	if(check_holy(targetloc))
-		usr << "<span class='warning'>You cannot follow a mob standing on holy grounds!</span>"
+		to_chat(usr, "<span class='warning'>You cannot follow a mob standing on holy grounds!</span>")
 		return
 	if(target != src)
 		if(following && following == target)
@@ -517,7 +517,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		announce_ghost_joinleave(src, 0, "They are now a mouse.")
 		host.ckey = src.ckey
 		host.add_ventcrawl(vent_found)
-		host << "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>"
+		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
 
 /mob/observer/dead/verb/view_manfiest()
 	set name = "Show Crew Manifest"
@@ -556,7 +556,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0 //something is terribly wrong
 
 	var/ghosts_can_write
-	if(ticker.mode.name == "cult")
+	if(SSticker.mode.name == "cult")
 		if(cult.current_antagonists.len > config_legacy.cult_ghostwriter_req_cultists)
 			ghosts_can_write = 1
 
@@ -755,7 +755,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 		var/msg = sanitize(input(src, "Message:", "Spectral Whisper") as text|null)
 		if(msg)
 			log_say("(SPECWHISP to [key_name(M)]): [msg]", src)
-			M << "<span class='warning'> You hear a strange, unidentifiable voice in your head... <font color='purple'>[msg]</font></span>"
+			to_chat(M, "<span class='warning'> You hear a strange, unidentifiable voice in your head... <font color='purple'>[msg]</font></span>")
 			to_chat(src, "<span class='warning'> You said: '[msg]' to [M].</span>")
 		else
 			return
@@ -802,8 +802,8 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	set name = "Blank pAI alert"
 	set desc = "Flash an indicator light on available blank pAI devices for a smidgen of hope."
 	if(usr.client.prefs.be_special & BE_PAI)
-		for(var/obj/item/device/paicard/p in GLOB.all_pai_cards)
-			var/obj/item/device/paicard/PP = p
+		for(var/obj/item/paicard/p in GLOB.all_pai_cards)
+			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				PP.icon = 'icons/obj/pda_vr.dmi' // VOREStation Edit
 				PP.overlays += "pai-ghostalert"

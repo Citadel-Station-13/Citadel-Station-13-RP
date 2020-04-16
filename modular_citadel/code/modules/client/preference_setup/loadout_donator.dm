@@ -1,13 +1,13 @@
 /datum/gear/donator
 	display_name = "If this item can be chosen or seen, ping a coder immediately!"
 	sort_category = "Donator"
-	path = /obj/item/weapon/bikehorn
+	path = /obj/item/bikehorn
 	ckeywhitelist = list("This entry should never be choosable with this variable set.") //If it does, then that means somebody fucked up the whitelist system pretty hard
 
 /*
 /datum/gear/donator/testhorn
 	display_name = "Airhorn - Example Item"
-	path = /obj/item/weapon/bikehorn
+	path = /obj/item/bikehorn
 	ckeywhitelist = list("realdonaldtrump")
 */
 
@@ -38,7 +38,7 @@
 /datum/gear/donator/carrotsatchel
 	display_name = "Carrot Satchel"
 	slot = slot_back
-	path = /obj/item/weapon/storage/backpack/satchel/donator/carrot
+	path = /obj/item/storage/backpack/satchel/donator/carrot
 	ckeywhitelist = list("improvedname")
 
 /datum/gear/donator/stripedcollar
@@ -50,7 +50,7 @@
 /datum/gear/donator/cameronbackpack
 	display_name = "Brig Physician's Backpack"
 	slot = slot_back
-	path = /obj/item/weapon/storage/backpack/satchel/donator/cameron
+	path = /obj/item/storage/backpack/satchel/donator/cameron
 	ckeywhitelist = list("cameronlancaster")
 
 /datum/gear/donator/cameronarmor

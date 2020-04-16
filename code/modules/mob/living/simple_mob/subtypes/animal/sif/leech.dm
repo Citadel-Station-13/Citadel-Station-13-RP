@@ -58,7 +58,7 @@
 
 	intent = I_HELP
 
-	holder_type = /obj/item/weapon/holder/leech
+	holder_type = /obj/item/holder/leech
 
 	movement_cooldown = 0
 	aquatic_movement = -2
@@ -124,8 +124,8 @@
 	..()
 	if(client.statpanel == "Status")
 		statpanel("Status")
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
+		if(SSemergencyshuttle)
+			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
 		stat("Chemicals", chemicals)
@@ -497,7 +497,7 @@
 
 	else if(istype(A, /obj/item))
 		var/obj/item/I = A
-		if(istype(I, /obj/item/weapon/reagent_containers/food/snacks))
+		if(istype(I, /obj/item/reagent_containers/food/snacks))
 			holder.a_intent = I_HURT
 	else
 		holder.a_intent = I_HURT

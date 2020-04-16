@@ -1,5 +1,5 @@
 //RD 'gun'
-/obj/item/weapon/bluespace_harpoon
+/obj/item/bluespace_harpoon
 	name = "bluespace harpoon"
 	desc = "For climbing on bluespace mountains!"
 
@@ -22,7 +22,7 @@
 	var/failchance = 5
 	var/failrange = 24
 
-/obj/item/weapon/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
+/obj/item/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
 	var/current_fire = world.time
 	if(!user || !A)
 		return
@@ -76,10 +76,10 @@
 		else
 			M.forceMove(ToTurf)
 
-/obj/item/weapon/bluespace_harpoon/attack_self(mob/living/user as mob)
+/obj/item/bluespace_harpoon/attack_self(mob/living/user as mob)
 	return chande_fire_mode(user)
 
-/obj/item/weapon/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)
+/obj/item/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)
 	set name = "Change fire mode"
 	set category = "Object"
 	set src in oview(1)
@@ -89,7 +89,7 @@
 	to_chat(user,"<span class = 'info'>You change \the [src]'s mode to [mode ? "transmiting" : "receiving"].</span>")
 	update_icon()
 
-/obj/item/weapon/bluespace_harpoon/update_icon()
+/obj/item/bluespace_harpoon/update_icon()
 	if(transforming)
 		switch(mode)
 			if(0)

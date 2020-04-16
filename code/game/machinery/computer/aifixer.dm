@@ -3,7 +3,7 @@
 	icon_keyboard = "rd_key"
 	icon_screen = "ai-fixer"
 	light_color = "#a97faa"
-	circuit = /obj/item/weapon/circuitboard/aifixer
+	circuit = /obj/item/circuitboard/aifixer
 	req_one_access = list(access_robotics, access_heads)
 	var/mob/living/silicon/ai/occupant = null
 	var/active = 0
@@ -12,14 +12,14 @@
 	..()
 	update_icon()
 
-/obj/machinery/computer/aifixer/proc/load_ai(var/mob/living/silicon/ai/transfer, var/obj/item/device/aicard/card, var/mob/user)
+/obj/machinery/computer/aifixer/proc/load_ai(var/mob/living/silicon/ai/transfer, var/obj/item/aicard/card, var/mob/user)
 
 	if(!transfer)
 		return
 
 	// Transfer over the AI.
-	transfer << "You have been transferred into a stationary terminal. Sadly, there is no remote access from here."
-	user << "<span class='notice'>Transfer successful:</span> [transfer.name] placed within stationary terminal."
+	to_chat(transfer, "You have been transferred into a stationary terminal. Sadly, there is no remote access from here.")
+	to_chat(user, "<span class='notice'>Transfer successful:</span> [transfer.name] placed within stationary terminal.")
 
 	transfer.loc = src
 	transfer.cancel_camera()
@@ -33,19 +33,19 @@
 
 /obj/machinery/computer/aifixer/attackby(I as obj, user as mob)
 
-	if(istype(I, /obj/item/device/aicard))
+	if(istype(I, /obj/item/aicard))
 
 		if(stat & (NOPOWER|BROKEN))
-			user << "This terminal isn't functioning right now."
+			to_chat(user, "This terminal isn't functioning right now.")
 			return
 
-		var/obj/item/device/aicard/card = I
+		var/obj/item/aicard/card = I
 		var/mob/living/silicon/ai/comp_ai = locate() in src
 		var/mob/living/silicon/ai/card_ai = locate() in card
 
 		if(istype(comp_ai))
 			if(active)
-				user << "<span class='danger'>ERROR:</span> Reconstruction in progress."
+				to_chat(user, "<span class='danger'>ERROR:</span> Reconstruction in progress.")
 				return
 			card.grab_ai(comp_ai, user)
 			if(!(locate(/mob/living/silicon/ai) in src)) occupant = null

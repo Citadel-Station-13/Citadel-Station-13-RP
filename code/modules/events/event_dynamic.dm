@@ -3,7 +3,7 @@
 /proc/start_events()
 	//changed to a while(1) loop since they are more efficient.
 	//Moved the spawn in here to allow it to be called with advance proc call if it crashes.
-	//and also to stop spawn copying variables from the game ticker
+	//and also to stop spawn copying variables from the game SSticker
 	spawn(3000)
 		while(1)
 			/*if(prob(50))//Every 120 seconds and prob 50 2-4 weak spacedusts will hit the station
@@ -197,13 +197,13 @@ var/list/event_last_fired = list()
 		if(istype(M, /mob/living/silicon/robot))
 			var/mob/living/silicon/robot/R = M
 			if(R.module)
-				if(istype(R.module, /obj/item/weapon/robot_module/robot/engineering))
+				if(istype(R.module, /obj/item/robot_module/robot/engineering))
 					active_with_role["Engineer"]++
-				else if(istype(R.module, /obj/item/weapon/robot_module/robot/security))
+				else if(istype(R.module, /obj/item/robot_module/robot/security))
 					active_with_role["Security"]++
-				else if(istype(R.module, /obj/item/weapon/robot_module/robot/medical))
+				else if(istype(R.module, /obj/item/robot_module/robot/medical))
 					active_with_role["Medical"]++
-				else if(istype(R.module, /obj/item/weapon/robot_module/robot/research))
+				else if(istype(R.module, /obj/item/robot_module/robot/research))
 					active_with_role["Scientist"]++
 
 		if(M.mind.assigned_role in engineering_positions)

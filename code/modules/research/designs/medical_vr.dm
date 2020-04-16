@@ -18,7 +18,7 @@
 	id = "sleevemate"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
-	build_path = /obj/item/device/sleevemate
+	build_path = /obj/item/sleevemate
 	sort_string = "KCAVA"
 
 /datum/design/item/medical/protohypospray
@@ -27,7 +27,7 @@
 	id = "protohypospray"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3, TECH_POWER = 2, TECH_BIO = 4, TECH_ILLEGAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 1500, "silver" = 2000, "gold" = 1500, "uranium" = 1000)
-	build_path = /obj/item/weapon/reagent_containers/hypospray/science
+	build_path = /obj/item/reagent_containers/hypospray/science
 	sort_string = "KCAVB"
 
 // ML-3M medigun and cells
@@ -40,7 +40,7 @@
 	id = "cell_medigun"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 3, TECH_BIO = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, "plastic" = 8000, "glass" = 5000, "silver" = 1000, "gold" = 1000, "uranium" = 1000)
-	build_path = /obj/item/weapon/gun/projectile/cell_loaded/medical
+	build_path = /obj/item/gun/projectile/cell_loaded/medical
 	sort_string = "KVAAA"
 
 /datum/design/item/medical/cell_based/cell_medigun_mag

@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
-	idtype = /obj/item/weapon/card/id/centcom
+	idtype = /obj/item/card/id/centcom
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
@@ -20,13 +20,13 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/centcom(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/radio/headset/centcom(H), slot_l_ear)
 		switch(H.backbag)
-			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
-			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
+			if(2) H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
+			if(3) H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
+			if(4) H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom, slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/centcom(H), slot_belt)
+		H.equip_to_slot_or_del(new /obj/item/pda/centcom(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/white(H), slot_gloves)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), slot_head)
@@ -48,7 +48,7 @@
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
-	idtype = /obj/item/weapon/card/id/centcom
+	idtype = /obj/item/card/id/centcom
 	access = list()
 	minimal_access = list()
 	minimal_player_age = 14
@@ -61,13 +61,13 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/centcom(H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/radio/headset/centcom(H), slot_l_ear)
 		switch(H.backbag)
-			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
-			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
+			if(2) H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
+			if(3) H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
+			if(4) H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom, slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/centcom(H), slot_belt)
+		H.equip_to_slot_or_del(new /obj/item/pda/centcom(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/white(H), slot_gloves)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), slot_head)
@@ -100,18 +100,18 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/clown(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(H), slot_wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/clown(H), slot_belt)
+		H.equip_to_slot_or_del(new /obj/item/pda/clown(H), slot_belt)
 
 		if(H.backbag > 0)
-			H.equip_to_slot_or_del(new /obj/item/weapon/stamp/clown(H.back), slot_in_backpack)
-			H.equip_to_slot_or_del(new /obj/item/weapon/bikehorn(H.back), slot_in_backpack) //VOREStation Edit
+			H.equip_to_slot_or_del(new /obj/item/stamp/clown(H.back), slot_in_backpack)
+			H.equip_to_slot_or_del(new /obj/item/bikehorn(H.back), slot_in_backpack) //VOREStation Edit
 		else
-			H.equip_to_slot_or_del(new /obj/item/weapon/stamp/clown(H), slot_l_hand)
-			H.equip_to_slot_or_del(new /obj/item/weapon/bikehorn(H.back), slot_l_hand) //VOREStation Edit
+			H.equip_to_slot_or_del(new /obj/item/stamp/clown(H), slot_l_hand)
+			H.equip_to_slot_or_del(new /obj/item/bikehorn(H.back), slot_l_hand) //VOREStation Edit
 
 		return 1
 
@@ -140,17 +140,17 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/mime(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/mime(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/mime(H), slot_head)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/mime(H), slot_wear_mask)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/mime(H), slot_belt)
+		H.equip_to_slot_or_del(new /obj/item/pda/mime(H), slot_belt)
 
 		if(H.backbag > 0)
-			H.equip_to_slot_or_del(new /obj/item/weapon/pen/crayon/mime(H.back), slot_in_backpack)
+			H.equip_to_slot_or_del(new /obj/item/pen/crayon/mime(H.back), slot_in_backpack)
 		else
-			H.equip_to_slot_or_del(new /obj/item/weapon/pen/crayon/mime(H), slot_l_hand)
+			H.equip_to_slot_or_del(new /obj/item/pen/crayon/mime(H), slot_l_hand)
 
 		return 1
 

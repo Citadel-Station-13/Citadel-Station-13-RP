@@ -3,7 +3,7 @@
 	desc = "Used to teleport objects to and from the telescience telepad."
 	icon_screen = "teleport"
 	icon_keyboard = "teleport_key"
-	circuit = /obj/item/weapon/circuitboard/telesci_console
+	circuit = /obj/item/circuitboard/telesci_console
 	var/sending = 1
 	var/obj/machinery/telepad/telepad = null
 	var/temp_msg = "Telescience control console initialized.<BR>Welcome."
@@ -27,7 +27,7 @@
 	// Used to adjust OP-ness: (4 crystals * 6 efficiency * 12.5 coefficient) = 300 range.
 	var/powerCoefficient = 12.5
 	var/list/crystals = list()
-	var/obj/item/device/gps/inserted_gps
+	var/obj/item/gps/inserted_gps
 
 /obj/machinery/computer/telescience/Destroy()
 	eject()
@@ -38,18 +38,18 @@
 
 /obj/machinery/computer/telescience/examine(mob/user)
 	..()
-	user << "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots."
+	to_chat(user, "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots.")
 
 /obj/machinery/computer/telescience/Initialize()
 	. = ..()
 	recalibrate()
 	for(var/i = 1; i <= starting_crystals; i++)
-		crystals += new /obj/item/weapon/ore/bluespace_crystal/artificial(src) // starting crystals
+		crystals += new /obj/item/ore/bluespace_crystal/artificial(src) // starting crystals
 
 /obj/machinery/computer/telescience/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/weapon/ore/bluespace_crystal))
+	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(crystals.len >= max_crystals)
-			user << "<span class='warning'>There are not enough crystal slots.</span>"
+			to_chat(user, "<span class='warning'>There are not enough crystal slots.</span>")
 			return
 		if(!user.unEquip(W))
 			return
@@ -57,18 +57,18 @@
 		W.forceMove(src)
 		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", "<span class='notice'>You insert [W] into \the [src]'s crystal slot.</span>")
 		updateDialog()
-	else if(istype(W, /obj/item/device/gps))
+	else if(istype(W, /obj/item/gps))
 		if(!inserted_gps)
 			inserted_gps = W
 			user.unEquip(W)
 			W.forceMove(src)
 			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", "<span class='notice'>You insert [W] into \the [src]'s GPS device slot.</span>")
-	else if(istype(W, /obj/item/device/multitool))
-		var/obj/item/device/multitool/M = W
+	else if(istype(W, /obj/item/multitool))
+		var/obj/item/multitool/M = W
 		if(M.connectable && istype(M.connectable, /obj/machinery/telepad))
 			telepad = M.connectable
 			M.connectable = null
-			user << "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>"
+			to_chat(user, "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>")
 	else
 		return ..()
 

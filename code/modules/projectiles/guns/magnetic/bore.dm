@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/magnetic/matfed
+/obj/item/gun/magnetic/matfed
 	name = "portable phoron bore"
 	desc = "A large man-portable tunnel bore, using phorogenic plasma blasts. Point away from user."
 	description_fluff = "An aging Grayson Manufactories mining tool used for rapidly digging through rock. Mass production was discontinued when many of the devices were stolen and used to break into a high security facility by Boiling Point drones."
@@ -22,11 +22,11 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
-/obj/item/weapon/gun/magnetic/matfed/examine(mob/user)
+/obj/item/gun/magnetic/matfed/examine(mob/user)
 	. = ..()
 	show_ammo(user)
 
-/obj/item/weapon/gun/magnetic/matfed/update_icon()
+/obj/item/gun/magnetic/matfed/update_icon()
 	var/list/overlays_to_add = list()
 	if(removable_components)
 		if(cell)
@@ -44,7 +44,7 @@
 
 	overlays = overlays_to_add
 	..()
-/obj/item/weapon/gun/magnetic/matfed/attack_hand(var/mob/user) // It doesn't keep a loaded item inside.
+/obj/item/gun/magnetic/matfed/attack_hand(var/mob/user) // It doesn't keep a loaded item inside.
 	if(user.get_inactive_hand() == src)
 		var/obj/item/removing
 
@@ -61,21 +61,21 @@
 			return
 	. = ..()
 
-/obj/item/weapon/gun/magnetic/matfed/check_ammo()
+/obj/item/gun/magnetic/matfed/check_ammo()
 	if(mat_storage - mat_cost >= 0)
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/gun/magnetic/matfed/use_ammo()
+/obj/item/gun/magnetic/matfed/use_ammo()
 	mat_storage -= mat_cost
 
-/obj/item/weapon/gun/magnetic/matfed/show_ammo(var/mob/user)
+/obj/item/gun/magnetic/matfed/show_ammo(var/mob/user)
 	if(mat_storage)
 		to_chat(user, "<span class='notice'>It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.</span>")
 
-/obj/item/weapon/gun/magnetic/matfed/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/gun/magnetic/matfed/attackby(var/obj/item/thing, var/mob/user)
 	if(removable_components)
-		if(istype(thing, /obj/item/weapon/cell))
+		if(istype(thing, /obj/item/cell))
 			if(cell)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 				return
@@ -109,7 +109,7 @@
 			update_icon()
 			return
 
-		if(istype(thing, /obj/item/weapon/stock_parts/capacitor))
+		if(istype(thing, /obj/item/stock_parts/capacitor))
 			if(capacitor)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [capacitor] installed.</span>")
 				return
@@ -122,7 +122,7 @@
 			update_icon()
 			return
 
-		if(istype(thing, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(thing, /obj/item/stock_parts/manipulator))
 			if(manipulator)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [manipulator] installed.</span>")
 				return

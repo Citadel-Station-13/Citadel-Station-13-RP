@@ -176,19 +176,19 @@
 
 /obj/machinery/artifact/attack_hand(var/mob/user as mob)
 	if (get_dist(user, src) > 1)
-		user << "<font color='red'>You can't reach [src] from here.</font>"
+		to_chat(user, "<font color='red'>You can't reach [src] from here.</font>")
 		return
 	if(ishuman(user) && user:gloves)
-		user << "<b>You touch [src]</b> with your gloved hands, [pick("but nothing of note happens","but nothing happens","but nothing interesting happens","but you notice nothing different","but nothing seems to have happened")]."
+		to_chat(user, "<b>You touch [src]</b> with your gloved hands, [pick("but nothing of note happens","but nothing happens","but nothing interesting happens","but you notice nothing different","but nothing seems to have happened")].")
 		return
 
 	src.add_fingerprint(user)
 
 	if(my_effect.trigger == TRIGGER_TOUCH)
-		user << "<b>You touch [src].</b>"
+		to_chat(user, "<b>You touch [src].</b>")
 		my_effect.ToggleActivate()
 	else
-		user << "<b>You touch [src],</b> [pick("but nothing of note happens","but nothing happens","but nothing interesting happens","but you notice nothing different","but nothing seems to have happened")]."
+		to_chat(user, "<b>You touch [src],</b> [pick("but nothing of note happens","but nothing happens","but nothing interesting happens","but you notice nothing different","but nothing seems to have happened")].")
 
 	if(prob(25) && secondary_effect && secondary_effect.trigger == TRIGGER_TOUCH)
 		secondary_effect.ToggleActivate(0)
@@ -199,9 +199,9 @@
 	if(secondary_effect && secondary_effect.effect == EFFECT_TOUCH && secondary_effect.activated)
 		secondary_effect.DoEffectTouch(user)
 
-/obj/machinery/artifact/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/obj/machinery/artifact/attackby(obj/item/W as obj, mob/living/user as mob)
 
-	if (istype(W, /obj/item/weapon/reagent_containers/))
+	if (istype(W, /obj/item/reagent_containers/))
 		if(W.reagents.has_reagent("hydrogen", 1) || W.reagents.has_reagent("water", 1))
 			if(my_effect.trigger == TRIGGER_WATER)
 				my_effect.ToggleActivate()
@@ -222,18 +222,18 @@
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_TOXIN && prob(25))
 				secondary_effect.ToggleActivate(0)
-	else if(istype(W,/obj/item/weapon/melee/baton) && W:status ||\
-			istype(W,/obj/item/weapon/melee/energy) ||\
-			istype(W,/obj/item/weapon/melee/cultblade) ||\
-			istype(W,/obj/item/weapon/card/emag) ||\
-			istype(W,/obj/item/device/multitool))
+	else if(istype(W,/obj/item/melee/baton) && W:status ||\
+			istype(W,/obj/item/melee/energy) ||\
+			istype(W,/obj/item/melee/cultblade) ||\
+			istype(W,/obj/item/card/emag) ||\
+			istype(W,/obj/item/multitool))
 		if (my_effect.trigger == TRIGGER_ENERGY)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-	else if (istype(W,/obj/item/weapon/flame) && W:lit ||\
-			istype(W,/obj/item/weapon/weldingtool) && W:welding)
+	else if (istype(W,/obj/item/flame) && W:lit ||\
+			istype(W,/obj/item/weldingtool) && W:welding)
 		if(my_effect.trigger == TRIGGER_HEAT)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_HEAT && prob(25))
@@ -271,7 +271,7 @@
 			warn = 1
 
 		if(warn)
-			M << "<b>You accidentally touch [src].</b>"
+			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
 /obj/machinery/artifact/bullet_act(var/obj/item/projectile/P)

@@ -5,12 +5,12 @@
 	A.add_fingerprint(user)
 	var/list/result = A.atmosanalyze(user)
 	if(result && result.len)
-		user << "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>"
+		to_chat(user, "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>")
 		for(var/line in result)
-			user << "<span class='notice'>[line]</span>"
+			to_chat(user, "<span class='notice'>[line]</span>")
 		return 1
 
-	user << "<span class='warning'>Your [src] flashes a red light as it fails to analyze \the [A].</span>"
+	to_chat(user, "<span class='warning'>Your [src] flashes a red light as it fails to analyze \the [A].</span>")
 	return 0
 
 /proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture/mixture, var/mob/user)
@@ -34,7 +34,7 @@
 /atom/proc/atmosanalyze(var/mob/user)
 	return
 
-/obj/item/weapon/tank/atmosanalyze(var/mob/user)
+/obj/item/tank/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air_contents, user)
 
 /obj/machinery/portable_atmospherics/atmosanalyze(var/mob/user)
@@ -73,5 +73,5 @@
 /obj/machinery/power/rad_collector/atmosanalyze(var/mob/user)
 	if(P)	return atmosanalyzer_scan(src, src.P.air_contents, user)
 
-/obj/item/weapon/flamethrower/atmosanalyze(var/mob/user)
+/obj/item/flamethrower/atmosanalyze(var/mob/user)
 	if(ptank)	return atmosanalyzer_scan(src, ptank.air_contents, user)

@@ -3,7 +3,7 @@
 	name = "fish"
 	desc = "Its a fishy.  No touchy fishy."
 	icon = 'icons/mob/fish.dmi'
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 	intelligence_level = SA_ANIMAL
 
 	// By defautl they can be in any water turf.  Subtypes might restrict to deep/shallow etc

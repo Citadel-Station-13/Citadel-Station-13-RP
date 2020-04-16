@@ -38,8 +38,8 @@
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
-	holder_type = /obj/item/weapon/holder/mouse
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	holder_type = /obj/item/holder/mouse
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/body_color //brown, gray and white, leave blank for random
 

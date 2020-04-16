@@ -14,7 +14,7 @@
 	active_power_usage = 150 KILOWATTS  //BIG POWER
 	idle_power_usage = 500
 
-	circuit = /obj/item/weapon/circuitboard/thermoregulator
+	circuit = /obj/item/circuitboard/thermoregulator
 
 	var/on = 0
 	var/target_temp = T20C
@@ -45,7 +45,7 @@
 			disconnect_from_network()
 			turn_off()
 		return
-	if(istype(I, /obj/item/device/multitool))
+	if(istype(I, /obj/item/multitool))
 		var/new_temp = input("Input a new target temperature, in degrees C.","Target Temperature", 20) as num
 		if(!Adjacent(user) || user.incapacitated())
 			return

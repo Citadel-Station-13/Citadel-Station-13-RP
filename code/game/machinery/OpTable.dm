@@ -55,7 +55,7 @@
 
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
 
-	if((!(istype(O, /obj/item/weapon)) || user.get_active_hand() != O))
+	if((!(istype(O, /obj/item)) || user.get_active_hand() != O))
 		return
 	user.drop_item()
 	if(O.loc != src.loc)
@@ -116,9 +116,9 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/attackby(obj/item/weapon/W as obj, mob/living/carbon/user as mob)
-	if(istype(W, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = W
+/obj/machinery/optable/attackby(obj/item/W as obj, mob/living/carbon/user as mob)
+	if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
 		if(iscarbon(G.affecting) && check_table(G.affecting))
 			take_victim(G.affecting,usr)
 			qdel(W)
@@ -127,9 +127,9 @@
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient as mob)
 	check_victim()
 	if(victim && get_turf(victim) == get_turf(src) && victim.lying)
-		usr << "<span class='warning'>\The [src] is already occupied!</span>"
+		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
 		return 0
 	if(patient.buckled)
-		usr << "<span class='notice'>Unbuckle \the [patient] first!</span>"
+		to_chat(usr, "<span class='notice'>Unbuckle \the [patient] first!</span>")
 		return 0
 	return 1

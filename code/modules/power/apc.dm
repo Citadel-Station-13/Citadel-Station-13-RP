@@ -45,16 +45,16 @@
 	is_critical = 1
 
 /obj/machinery/power/apc/high
-	cell_type = /obj/item/weapon/cell/high
+	cell_type = /obj/item/cell/high
 
 /obj/machinery/power/apc/super
-	cell_type = /obj/item/weapon/cell/super
+	cell_type = /obj/item/cell/super
 
 /obj/machinery/power/apc/super/critical
 	is_critical = 1
 
 /obj/machinery/power/apc/hyper
-	cell_type = /obj/item/weapon/cell/hyper
+	cell_type = /obj/item/cell/hyper
 
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
@@ -71,10 +71,10 @@
 	req_access = list(access_engine_equip)
 	var/area/area
 	var/areastring = null
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
 	var/chargelevel = 0.0005  // Cap for how fast APC cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 	var/start_charge = 90				// initial cell charge %
-	var/cell_type = /obj/item/weapon/cell/apc
+	var/cell_type = /obj/item/cell/apc
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/grid_check = FALSE
@@ -472,12 +472,12 @@
 							"<span class='warning'>[user.name] has broken the charred power control board inside [src.name]!</span>",\
 							"<span class='notice'>You broke the charred power control board and remove the remains.</span>",
 							"You hear a crack!")
-						//ticker.mode:apcs-- //XSI said no and I agreed. -rastaf0
+						//SSticker.mode:apcs-- //XSI said no and I agreed. -rastaf0
 					else
 						user.visible_message(\
 							"<span class='warning'>[user.name] has removed the power control board from [src.name]!</span>",\
 							"<span class='notice'>You remove the power control board.</span>")
-						new /obj/item/weapon/module/power_control(loc)
+						new /obj/item/module/power_control(loc)
 		else if (opened!=2) //cover isn't removed
 			opened = 0
 			update_icon()
@@ -488,7 +488,7 @@
 		else
 			opened = 1
 			update_icon()
-	else if	(istype(W, /obj/item/weapon/cell) && opened)	// trying to put a cell inside
+	else if	(istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		if(cell)
 			to_chat(user,"The [src.name] already has a power cell installed.")
 			return
@@ -533,7 +533,7 @@
 			playsound(src, W.usesound, 50, 1)
 			update_icon()
 
-	else if (istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/device/pda))			// trying to unlock the interface with an ID card
+	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))			// trying to unlock the interface with an ID card
 		if(emagged)
 			to_chat(user,"The panel is unresponsive.")
 		else if(opened)
@@ -597,7 +597,7 @@
 				new /obj/item/stack/cable_coil(loc,10)
 				to_chat(user,"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
 				qdel(terminal)
-	else if (istype(W, /obj/item/weapon/module/power_control) && opened && has_electronics==0 && !((stat & BROKEN)))
+	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && !((stat & BROKEN)))
 		user.visible_message("<span class='warning'>[user.name] inserts the power control board into [src].</span>", \
 							"You start to insert the power control board into the frame...")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -607,11 +607,11 @@
 				reboot()
 				to_chat(user,"<span class='notice'>You place the power control board inside the frame.</span>")
 				qdel(W)
-	else if (istype(W, /obj/item/weapon/module/power_control) && opened && has_electronics==0 && ((stat & BROKEN)))
+	else if (istype(W, /obj/item/module/power_control) && opened && has_electronics==0 && ((stat & BROKEN)))
 		to_chat(user,"<span class='warning'>The [src] is too broken for that. Repair it first.</span>")
 		return
-	else if (istype(W, /obj/item/weapon/weldingtool) && opened && has_electronics==0 && !terminal)
-		var/obj/item/weapon/weldingtool/WT = W
+	else if (istype(W, /obj/item/weldingtool) && opened && has_electronics==0 && !terminal)
+		var/obj/item/weldingtool/WT = W
 		if (WT.get_fuel() < 3)
 			to_chat(user,"<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return
@@ -651,7 +651,7 @@
 				if (opened==2)
 					opened = 1
 				update_icon()
-		else if (istype(W, /obj/item/device/multitool) && (hacker || emagged))
+		else if (istype(W, /obj/item/multitool) && (hacker || emagged))
 			if(cell)
 				to_chat(user, "<span class='warning'>You need to remove the power cell first.</span>")
 				return
@@ -679,7 +679,7 @@
 		else
 			if (istype(user, /mob/living/silicon))
 				return src.attack_hand(user)
-			if (!opened && wiresexposed && (istype(W, /obj/item/device/multitool) || W.is_wirecutter() || istype(W, /obj/item/device/assembly/signaler)))
+			if (!opened && wiresexposed && (istype(W, /obj/item/multitool) || W.is_wirecutter() || istype(W, /obj/item/assembly/signaler)))
 				return src.attack_hand(user)
 			//Placeholder until someone can do take_damage() for APCs or something.
 			to_chat(user,"<span class='notice'>The [src.name] looks too sturdy to bash open with \the [W.name].</span>")
@@ -1124,7 +1124,7 @@
 		equipment = autoset(equipment, 0)
 		lighting = autoset(lighting, 0)
 		environ = autoset(environ, 0)
-		power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
+		SSalarms.power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
 		autoflag = 0
 
 	// update icon & area power if anything changed
@@ -1148,27 +1148,27 @@
 			lighting = autoset(lighting, 1)
 			environ = autoset(environ, 1)
 			autoflag = 3
-			power_alarm.clearAlarm(loc, src)
+			SSalarms.power_alarm.clearAlarm(loc, src)
 	else if((cell.percent() <= 30) && (cell.percent() > 15) && longtermpower < 0)                       // <30%, turn off equipment
 		if(autoflag != 2)
 			equipment = autoset(equipment, 2)
 			lighting = autoset(lighting, 1)
 			environ = autoset(environ, 1)
-			power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
+			SSalarms.power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
 			autoflag = 2
 	else if(cell.percent() <= 15)        // <15%, turn off lighting & equipment
 		if((autoflag > 1 && longtermpower < 0) || (autoflag > 1 && longtermpower >= 0))
 			equipment = autoset(equipment, 2)
 			lighting = autoset(lighting, 2)
 			environ = autoset(environ, 1)
-			power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
+			SSalarms.power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
 			autoflag = 1
 	else                                   // zero charge, turn all off
 		if(autoflag != 0)
 			equipment = autoset(equipment, 0)
 			lighting = autoset(lighting, 0)
 			environ = autoset(environ, 0)
-			power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
+			SSalarms.power_alarm.triggerAlarm(loc, src, hidden=alarms_hidden)
 			autoflag = 0
 
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
@@ -1293,7 +1293,7 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	//start with main breaker off, chargemode in the default state and all channels on auto upon reboot
 	operating = 0
 	chargemode = initial(chargemode)
-	power_alarm.clearAlarm(loc, src)
+	SSalarms.power_alarm.clearAlarm(loc, src)
 
 	lighting = POWERCHAN_ON_AUTO
 	equipment = POWERCHAN_ON_AUTO

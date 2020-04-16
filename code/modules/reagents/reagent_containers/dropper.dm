@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// Droppers.
 ////////////////////////////////////////////////////////////////////////////////
-/obj/item/weapon/reagent_containers/dropper
+/obj/item/reagent_containers/dropper
 	name = "dropper"
 	desc = "A dropper. Transfers up to 5 units at a time."
 	icon = 'icons/obj/chemical.dmi'
@@ -12,7 +12,7 @@
 	slot_flags = SLOT_EARS
 	volume = 5
 
-/obj/item/weapon/reagent_containers/dropper/examine(var/mob/user)
+/obj/item/reagent_containers/dropper/examine(var/mob/user)
 	if(!..(user, 2))
 		return
 	if(reagents && reagents.reagent_list.len)
@@ -20,7 +20,7 @@
 	else
 		to_chat(user, "<span class='notice'>It is empty.</span>")
 
-/obj/item/weapon/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
+/obj/item/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
 	if(!target.reagents || !proximity) return
 
 	if(reagents.total_volume)
@@ -29,7 +29,7 @@
 			to_chat(user, "<span class='notice'>[target] is full.</span>")
 			return
 
-		if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/weapon/reagent_containers/food) && !istype(target, /obj/item/clothing/mask/smokable/cigarette)) //You can inject humans and food but you cant remove the shit.
+		if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_containers/food) && !istype(target, /obj/item/clothing/mask/smokable/cigarette)) //You can inject humans and food but you cant remove the shit.
 			to_chat(user, "<span class='notice'>You cannot directly fill this object.</span>")
 			return
 
@@ -91,16 +91,16 @@
 
 	return
 
-/obj/item/weapon/reagent_containers/dropper/on_reagent_change()
+/obj/item/reagent_containers/dropper/on_reagent_change()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/dropper/update_icon()
+/obj/item/reagent_containers/dropper/update_icon()
 	if(reagents.total_volume)
 		icon_state = "dropper1"
 	else
 		icon_state = "dropper0"
 
-/obj/item/weapon/reagent_containers/dropper/industrial
+/obj/item/reagent_containers/dropper/industrial
 	name = "Industrial Dropper"
 	desc = "A larger dropper. Transfers up to 10 units at a time."
 	amount_per_transfer_from_this = 10

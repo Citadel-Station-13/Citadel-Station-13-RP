@@ -71,12 +71,12 @@
 		var/obj/item/I = M.get_active_hand()
 		if(I)
 			I = I.GetID()
-		if(istype(I,/obj/item/weapon/card/id) && check_access(I))
+		if(istype(I,/obj/item/card/id) && check_access(I))
 			authenticated = 1
 			if(access_captain in I.GetAccess())
 				authenticated = 2
 				crew_announcement.announcer = GetNameAndAssignmentFromId(I)
-		if(istype(I,/obj/item/weapon/card/emag))
+		if(istype(I,/obj/item/card/emag))
 			authenticated = 2
 			computer.emagged = 1
 
@@ -89,7 +89,7 @@
 		var/obj/item/I = M.get_active_hand()
 		I = I.GetID()
 
-		if (istype(I,/obj/item/weapon/card/id))
+		if (istype(I,/obj/item/card/id))
 			if(access_captain in I.GetAccess())
 				var/old_level = security_level
 				if(!tmp_alertlevel)
@@ -119,7 +119,7 @@
 	if("announce" in href_list)
 		if(authenticated==2)
 			if(message_cooldown)
-				usr << "Please allow at least one minute to pass between announcements"
+				to_chat(usr, "Please allow at least one minute to pass between announcements")
 				return
 			var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement")
 			if(!input || !interactable())
@@ -139,7 +139,7 @@
 			return
 		if(authenticated)
 			call_shuttle_proc(usr)
-			if(emergency_shuttle.online())
+			if(SSemergencyshuttle.online())
 				post_status("shuttle")
 		state = STATE_DEFAULT
 
@@ -296,8 +296,8 @@
 /datum/file/program/communications/proc/main_menu()
 	var/dat = ""
 	if (computer.radio.subspace)
-		if(emergency_shuttle.online() && emergency_shuttle.location())
-			var/timeleft = emergency_shuttle.estimate_arrival_time()
+		if(SSemergencyshuttle.online() && SSemergencyshuttle.location())
+			var/timeleft = SSemergencyshuttle.estimate_arrival_time()
 			dat += "<B>Emergency shuttle</B>\n<BR>\nETA: [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]<BR>"
 			refresh = 1
 		else
@@ -313,8 +313,8 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];RestoreBackup'>Restore Backup Routing Data</A> \]"
 
 			dat += "<BR>\[ <A HREF='?src=\ref[src];changeseclevel'>Change alert level</A> \]"
-		if(emergency_shuttle.location())
-			if (emergency_shuttle.online())
+		if(SSemergencyshuttle.location())
+			if (SSemergencyshuttle.online())
 				dat += "<BR>\[ <A HREF='?src=\ref[src];cancelshuttle'>Cancel Shuttle Call</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];callshuttle'>Call Emergency Shuttle</A> \]"

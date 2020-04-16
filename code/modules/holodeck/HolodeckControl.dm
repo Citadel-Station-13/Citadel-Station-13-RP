@@ -161,8 +161,8 @@
 		emagged = 1
 		safety_disabled = 1
 		update_projections()
-		user << "<span class='notice'>You vastly increase projector power and override the safety and security protocols.</span>"
-		user << "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call [GLOB.using_map.company_name] maintenance and do not use the simulator."
+		to_chat(user, "<span class='notice'>You vastly increase projector power and override the safety and security protocols.</span>")
+		to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call [GLOB.using_map.company_name] maintenance and do not use the simulator.")
 		log_game("[key_name(usr)] emagged the Holodeck Control Computer")
 		return 1
 	return
@@ -170,11 +170,11 @@
 /obj/machinery/computer/HolodeckControl/proc/update_projections()
 	if (safety_disabled)
 		item_power_usage = 2500
-		for(var/obj/item/weapon/holo/esword/H in linkedholodeck)
+		for(var/obj/item/holo/esword/H in linkedholodeck)
 			H.damtype = BRUTE
 	else
 		item_power_usage = initial(item_power_usage)
-		for(var/obj/item/weapon/holo/esword/H in linkedholodeck)
+		for(var/obj/item/holo/esword/H in linkedholodeck)
 			H.damtype = initial(H.damtype)
 
 	for(var/mob/living/simple_mob/animal/space/carp/holodeck/C in holographic_mobs)
@@ -187,7 +187,7 @@
 	current_program = powerdown_program
 	linkedholodeck = locate(projection_area)
 	if(!linkedholodeck)
-		world << "<span class='danger'>Holodeck computer at [x],[y],[z] failed to locate projection area.</span>"
+		to_chat(world, "<span class='danger'>Holodeck computer at [x],[y],[z] failed to locate projection area.</span>")
 
 //This could all be done better, but it works for now.
 /obj/machinery/computer/HolodeckControl/Destroy()

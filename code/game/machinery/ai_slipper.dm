@@ -33,7 +33,7 @@
 	uses = uses
 	power_change()
 
-/obj/machinery/ai_slipper/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/ai_slipper/attackby(obj/item/W, mob/user)
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(istype(user, /mob/living/silicon))
@@ -41,7 +41,7 @@
 	else // trying to unlock the interface
 		if(allowed(usr))
 			locked = !locked
-			user << "You [ locked ? "lock" : "unlock"] the device."
+			to_chat(user, "You [ locked ? "lock" : "unlock"] the device.")
 			if(locked)
 				if(user.machine==src)
 					user.unset_machine()
@@ -50,7 +50,7 @@
 				if(user.machine==src)
 					attack_hand(usr)
 		else
-			user << "<span class='warning'>Access denied.</span>"
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 			return
 	return
 
@@ -91,7 +91,7 @@
 	..()
 	if(locked)
 		if(!istype(usr, /mob/living/silicon))
-			usr << "Control panel is locked!"
+			to_chat(usr, "Control panel is locked!")
 			return
 	if(href_list["toggleOn"])
 		disabled = !disabled

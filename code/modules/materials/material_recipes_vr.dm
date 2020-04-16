@@ -11,4 +11,4 @@
 
 /datum/material/durasteel/generate_recipes()
 	. = ..()
-	recipes += new/datum/stack_recipe("durasteel fishing rod", /obj/item/weapon/material/fishing_rod/modern/strong, 2)
+	recipes += new/datum/stack_recipe("durasteel fishing rod", /obj/item/material/fishing_rod/modern/strong, 2)

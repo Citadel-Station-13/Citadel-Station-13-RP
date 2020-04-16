@@ -1,6 +1,6 @@
 var/global/list/ashtray_cache = list()
 
-/obj/item/weapon/material/ashtray
+/obj/item/material/ashtray
 	name = "ashtray"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "blank"
@@ -9,7 +9,7 @@ var/global/list/ashtray_cache = list()
 	var/image/base_image
 	var/max_butts = 10
 
-/obj/item/weapon/material/ashtray/New(var/newloc, var/material_name)
+/obj/item/material/ashtray/New(var/newloc, var/material_name)
 	..(newloc, material_name)
 	if(!material)
 		qdel(src)
@@ -20,7 +20,7 @@ var/global/list/ashtray_cache = list()
 	update_icon()
 	return
 
-/obj/item/weapon/material/ashtray/update_icon()
+/obj/item/material/ashtray/update_icon()
 	color = null
 	overlays.Cut()
 	var/cache_key = "base-[material.name]"
@@ -43,12 +43,12 @@ var/global/list/ashtray_cache = list()
 	else
 		desc = "An ashtray made of [material.display_name]."
 
-/obj/item/weapon/material/ashtray/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/material/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health <= 0)
 		return
-	if (istype(W,/obj/item/weapon/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/weapon/flame/match))
+	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
 		if (contents.len >= max_butts)
-			user << "\The [src] is full."
+			to_chat(user, "\The [src] is full.")
 			return
 		user.remove_from_mob(W)
 		W.loc = src
@@ -65,7 +65,7 @@ var/global/list/ashtray_cache = list()
 				//spawn(1)
 				//	TemperatureAct(150)
 			else if (cig.lit == 0)
-				user << "You place [cig] in [src] without even smoking it. Why would you do that?"
+				to_chat(user, "You place [cig] in [src] without even smoking it. Why would you do that?")
 
 		src.visible_message("[user] places [W] in [src].")
 		user.update_inv_l_hand()
@@ -74,12 +74,12 @@ var/global/list/ashtray_cache = list()
 		update_icon()
 	else
 		health = max(0,health - W.force)
-		user << "You hit [src] with [W]."
+		to_chat(user, "You hit [src] with [W].")
 		if (health < 1)
 			shatter()
 	return
 
-/obj/item/weapon/material/ashtray/throw_impact(atom/hit_atom)
+/obj/item/material/ashtray/throw_impact(atom/hit_atom)
 	if (health > 0)
 		health = max(0,health - 3)
 		if (contents.len)
@@ -92,11 +92,11 @@ var/global/list/ashtray_cache = list()
 		update_icon()
 	return ..()
 
-/obj/item/weapon/material/ashtray/plastic/New(var/newloc)
+/obj/item/material/ashtray/plastic/New(var/newloc)
 	..(newloc, "plastic")
 
-/obj/item/weapon/material/ashtray/bronze/New(var/newloc)
+/obj/item/material/ashtray/bronze/New(var/newloc)
 	..(newloc, "bronze")
 
-/obj/item/weapon/material/ashtray/glass/New(var/newloc)
+/obj/item/material/ashtray/glass/New(var/newloc)
 	..(newloc, "glass")

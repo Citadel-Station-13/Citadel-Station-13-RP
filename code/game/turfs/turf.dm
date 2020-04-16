@@ -162,15 +162,15 @@
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
 
-turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = W
+turf/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/storage))
+		var/obj/item/storage/S = W
 		if(S.use_to_pickup && S.collection_mode)
 			S.gather_all(src, user)
 	return ..()
 
 // Hits a mob on the tile.
-/turf/proc/attack_tile(obj/item/weapon/W, mob/living/user)
+/turf/proc/attack_tile(obj/item/W, mob/living/user)
 	if(!istype(W))
 		return FALSE
 
@@ -225,10 +225,6 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
-
-	if(movement_disabled)
-		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
-		return
 	..()
 
 	if(!istype(atom, /atom/movable))
@@ -275,7 +271,7 @@ var/const/enterloopsanity = 100
 //There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanPass/Cross call, lemme know or go ahead and fix this mess - kevinz000
 /turf/Enter(atom/movable/mover, atom/oldloc)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "<span class='warning'>Movement is admin-disabled.</span>" //This is to identify lag problems
+		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
 		return
 	// Do not call ..()
 	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
@@ -400,7 +396,7 @@ var/const/enterloopsanity = 100
 			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
 	else
-		user << "<span class='warning'>\The [source] is too dry to wash that.</span>"
+		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
 	source.reagents.trans_to_turf(src, 1, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 
 /turf/proc/update_blood_overlays()
@@ -445,7 +441,7 @@ var/const/enterloopsanity = 100
 // This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
 // More specialized turfs like walls should instead override this.
 // The code for applying lattices/floor tiles onto lattices could also utilize something similar in the future.
-/turf/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/turf/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(density || !can_build_into_floor)
 		return FALSE
 	if(passed_mode == RCD_FLOORWALL)
@@ -460,7 +456,7 @@ var/const/enterloopsanity = 100
 			)
 	return FALSE
 
-/turf/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/turf/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
 		to_chat(user, span("notice", "You build a floor."))
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)

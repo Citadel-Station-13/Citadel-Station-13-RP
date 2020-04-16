@@ -1,24 +1,24 @@
-/obj/item/device/radio
+/obj/item/radio
 	var/bluespace_radio = FALSE
 
-/obj/item/device/radio/phone
+/obj/item/radio/phone
 	subspace_transmission = 1
 	canhear_range = 0
 	adhoc_fallback = TRUE
 
-/obj/item/device/radio/emergency
+/obj/item/radio/emergency
 	name = "Medbay Emergency Radio Link"
 	icon_state = "med_walkietalkie"
 	frequency = MED_I_FREQ
 	subspace_transmission = 1
 	adhoc_fallback = TRUE
 
-/obj/item/device/radio/emergency/Initialize(mapload)
+/obj/item/radio/emergency/Initialize(mapload)
 	. = ..()
 	internal_channels = GLOB.default_medbay_channels.Copy()
 
 //Pathfinder's Subspace Radio
-/obj/item/device/subspaceradio
+/obj/item/subspaceradio
 	name = "subspace radio"
 	desc = "A powerful new radio recently gifted to Nanotrasen from KHI, this communications device has the ability to send and recieve transmissions from anywhere."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/khi)
@@ -33,26 +33,26 @@
 	w_class = ITEMSIZE_LARGE
 	action_button_name = "Remove/Replace Handset"
 
-	var/obj/item/device/radio/subspacehandset/linked/handset = /obj/item/device/radio/subspacehandset/linked
+	var/obj/item/radio/subspacehandset/linked/handset = /obj/item/radio/subspacehandset/linked
 
-/obj/item/device/subspaceradio/Initialize(Mapload) //starts without a cell for rnd
+/obj/item/subspaceradio/Initialize(Mapload) //starts without a cell for rnd
 	. = ..()
 	handset = new(src, src)
 
-/obj/item/device/subspaceradio/Destroy()
+/obj/item/subspaceradio/Destroy()
 	. = ..()
 	QDEL_NULL(handset)
 
-/obj/item/device/subspaceradio/ui_action_click()
+/obj/item/subspaceradio/ui_action_click()
 	toggle_handset()
 
-/obj/item/device/subspaceradio/attack_hand(mob/user)
+/obj/item/subspaceradio/attack_hand(mob/user)
 	if(loc == user)
 		toggle_handset()
 	else
 		..()
 
-/obj/item/device/subspaceradio/MouseDrop()
+/obj/item/subspaceradio/MouseDrop()
 	if(ismob(loc))
 		if(!CanMouseDrop(src))
 			return
@@ -62,13 +62,13 @@
 		add_fingerprint(usr)
 		M.put_in_any_hand_if_possible(src)
 
-/obj/item/device/subspaceradio/attackby(obj/item/weapon/W, mob/user, params)
+/obj/item/subspaceradio/attackby(obj/item/W, mob/user, params)
 	if(W == handset)
 		reattach_handset(user)
 	else
 		return ..()
 
-/obj/item/device/subspaceradio/verb/toggle_handset()
+/obj/item/subspaceradio/verb/toggle_handset()
 	set name = "Toggle Handset"
 	set category = "Object"
 
@@ -89,7 +89,7 @@
 		update_icon() //success
 
 //checks that the base unit is in the correct slot to be used
-/obj/item/device/subspaceradio/proc/slot_check()
+/obj/item/subspaceradio/proc/slot_check()
 	var/mob/M = loc
 	if(!istype(M))
 		return 0 //not equipped
@@ -101,11 +101,11 @@
 
 	return 0
 
-/obj/item/device/subspaceradio/dropped(mob/user)
+/obj/item/subspaceradio/dropped(mob/user)
 	..()
 	reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
-/obj/item/device/subspaceradio/proc/reattach_handset(mob/user)
+/obj/item/subspaceradio/proc/reattach_handset(mob/user)
 	if(!handset) return
 
 	if(ismob(handset.loc))
@@ -116,7 +116,7 @@
 		handset.forceMove(src)
 
 //Subspace Radio Handset
-/obj/item/device/radio/subspacehandset
+/obj/item/radio/subspacehandset
 	name = "subspace radio handset"
 	desc = "A large walkie talkie attached to the subspace radio by a retractable cord. It sits comfortably on a slot in the radio when not in use."
 	bluespace_radio = TRUE
@@ -124,14 +124,14 @@
 	slot_flags = null
 	w_class = ITEMSIZE_LARGE
 
-/obj/item/device/radio/subspacehandset/linked
-	var/obj/item/device/subspaceradio/base_unit
+/obj/item/radio/subspacehandset/linked
+	var/obj/item/subspaceradio/base_unit
 
-/obj/item/device/radio/subspacehandset/linked/New(newloc, obj/item/device/subspaceradio/radio)
+/obj/item/radio/subspacehandset/linked/New(newloc, obj/item/subspaceradio/radio)
 	base_unit = radio
 	..(newloc)
 
-/obj/item/device/radio/subspacehandset/linked/Destroy()
+/obj/item/radio/subspacehandset/linked/Destroy()
 	if(base_unit)
 		//ensure the base unit's icon updates
 		if(base_unit.handset == src)
@@ -139,7 +139,7 @@
 		base_unit = null
 	return ..()
 
-/obj/item/device/radio/subspacehandset/linked/dropped(mob/user)
+/obj/item/radio/subspacehandset/linked/dropped(mob/user)
 	..() //update twohanding
 	if(base_unit)
 		base_unit.reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit

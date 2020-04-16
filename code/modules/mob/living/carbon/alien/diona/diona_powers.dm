@@ -32,7 +32,7 @@
 /mob/living/carbon/alien/diona/proc/do_merge(var/mob/living/carbon/human/H)
 	if(!istype(H) || !src || !(src.Adjacent(H)))
 		return 0
-	H << "You feel your being twine with that of \the [src] as it merges with your biomass."
+	to_chat(H, "You feel your being twine with that of \the [src] as it merges with your biomass.")
 	to_chat(src, "You feel your being twine with that of \the [H] as you merge with its biomass.")
 	loc = H
 	verbs += /mob/living/carbon/alien/diona/proc/split
@@ -52,7 +52,7 @@
 		src.verbs -= /mob/living/carbon/alien/diona/proc/split
 		return
 
-	src.loc << "You feel a pang of loss as [src] splits away from your biomass."
+	to_chat(src.loc, "You feel a pang of loss as [src] splits away from your biomass.")
 	to_chat(src, "You wiggle out of the depths of [src.loc]'s biomass and plop to the ground.")
 
 	var/mob/living/M = src.loc
@@ -63,5 +63,5 @@
 
 	if(istype(M))
 		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/weapon/holder))
+			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/holder))
 				return

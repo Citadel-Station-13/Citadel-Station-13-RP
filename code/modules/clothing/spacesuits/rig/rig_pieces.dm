@@ -45,7 +45,7 @@
 /obj/item/clothing/suit/space/rig
 	name = "chestpiece"
 	flags = PHORONGUARD
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit)
+	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -63,7 +63,7 @@
 		SPECIES_TESHARI = 'icons/mob/species/seromi/suit.dmi'
 		)
 	supporting_limbs = list()
-	var/obj/item/weapon/material/knife/tacknife
+	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null
 	min_pressure_protection = null
 
@@ -71,7 +71,7 @@
 	if(tacknife)
 		tacknife.loc = get_turf(src)
 		if(M.put_in_active_hand(tacknife))
-			M << "<span class='notice'>You slide \the [tacknife] out of [src].</span>"
+			to_chat(M, "<span class='notice'>You slide \the [tacknife] out of [src].</span>")
 			playsound(M, 'sound/weapons/flipblade.ogg', 40, 1)
 			tacknife = null
 			update_icon()
@@ -79,13 +79,13 @@
 	..()
 
 /obj/item/clothing/suit/space/rig/attackby(var/obj/item/I, var/mob/living/M)
-	if(istype(I, /obj/item/weapon/material/knife/tacknife))
+	if(istype(I, /obj/item/material/knife/tacknife))
 		if(tacknife)
 			return
 		M.drop_item()
 		tacknife = I
 		I.loc = src
-		M << "<span class='notice'>You slide the [I] into [src].</span>"
+		to_chat(M, "<span class='notice'>You slide the [I] into [src].</span>")
 		playsound(M, 'sound/weapons/flipblade.ogg', 40, 1)
 		update_icon()
 	..()
@@ -103,7 +103,7 @@
 	if(!istype(H) || (!H.back && !H.belt))
 		return 0
 
-	var/obj/item/weapon/rig/suit = H.back
+	var/obj/item/rig/suit = H.back
 	if(!suit || !istype(suit) || !suit.installed_modules.len)
 		return 0
 
@@ -125,7 +125,7 @@
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"
-	allowed = list(/obj/item/device/flashlight)
+	allowed = list(/obj/item/flashlight)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection =    UPPER_TORSO|LOWER_TORSO|LEGS|ARMS

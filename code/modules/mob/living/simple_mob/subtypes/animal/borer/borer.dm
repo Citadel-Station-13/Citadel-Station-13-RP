@@ -23,7 +23,7 @@
 	universal_understand = TRUE
 	can_be_antagged = TRUE
 
-	holder_type = /obj/item/weapon/holder/borer
+	holder_type = /obj/item/holder/borer
 	ai_holder_type = null // This is player-controlled, always.
 
 	var/chemicals = 10							// A resource used for reproduction and powers.
@@ -95,8 +95,8 @@
 	..()
 	if(client.statpanel == "Status")
 		statpanel("Status")
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
+		if(SSemergencyshuttle)
+			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
 		stat("Chemicals", chemicals)

@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/metaglass
+/obj/item/reagent_containers/food/drinks/metaglass
 	name = "metamorphic glass"
 	desc = "This glass changes shape and form depending on the drink inside... fancy!"
 	icon_state = "glass_empty"
@@ -9,7 +9,7 @@
 	matter = list("glass" = 500)
 	icon = 'icons/obj/drinks.dmi'
 
-/obj/item/weapon/reagent_containers/food/drinks/metaglass/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
 		var/datum/reagent/R = reagents.get_master_reagent()
 

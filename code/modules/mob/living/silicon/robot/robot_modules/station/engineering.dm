@@ -1,4 +1,4 @@
-/obj/item/weapon/robot_module/robot/engineering
+/obj/item/robot_module/robot/engineering
 	name = "engineering robot module"
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
@@ -21,24 +21,24 @@
 					"Handy" = "handy-engineer"
 					)
 
-/obj/item/weapon/robot_module/robot/engineering/construction
+/obj/item/robot_module/robot/engineering/construction
 	name = "construction robot module"
 	no_slip = 1
 
 /* Merged back into engineering (Hell, it's about time.)
 
-/obj/item/weapon/robot_module/robot/engineering/construction/New()
+/obj/item/robot_module/robot/engineering/construction/New()
 	..()
 	src.modules += new /obj/item/borg/sight/meson(src)
-	src.modules += new /obj/item/weapon/rcd/borg(src)
-	src.modules += new /obj/item/weapon/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/weapon/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/weapon/pickaxe/plasmacutter(src)
-	src.modules += new /obj/item/device/pipe_painter(src)
-	src.modules += new /obj/item/device/floor_painter(src)
-	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
-	src.modules += new /obj/item/device/geiger(src)
+	src.modules += new /obj/item/rcd/borg(src)
+	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
+	src.modules += new /obj/item/tool/wrench/cyborg(src)
+	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
+	src.modules += new /obj/item/pickaxe/plasmacutter(src)
+	src.modules += new /obj/item/pipe_painter(src)
+	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/gripper/no_use/loader(src)
+	src.modules += new /obj/item/geiger(src)
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
 	var/datum/matter_synth/plasteel = new /datum/matter_synth/plasteel()
@@ -68,29 +68,29 @@
 	src.modules += RG
 */
 
-/obj/item/weapon/robot_module/robot/engineering/general/New()
+/obj/item/robot_module/robot/engineering/general/New()
 	..()
 	src.modules += new /obj/item/borg/sight/meson(src)
-	src.modules += new /obj/item/weapon/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/wirecutters/cyborg(src)
-	src.modules += new /obj/item/device/multitool(src)
-	src.modules += new /obj/item/device/t_scanner(src)
-	src.modules += new /obj/item/device/analyzer(src)
-	src.modules += new /obj/item/taperoll/engineering(src)
-	src.modules += new /obj/item/weapon/gripper(src)
-	src.modules += new /obj/item/weapon/gripper/circuit(src)
-	src.modules += new /obj/item/device/lightreplacer(src)
-	src.modules += new /obj/item/device/pipe_painter(src)
-	src.modules += new /obj/item/device/floor_painter(src)
-	src.modules += new /obj/item/weapon/inflatable_dispenser/robot(src)
-	src.emag = new /obj/item/weapon/melee/baton/robot/arm(src)
-	src.modules += new /obj/item/device/geiger(src)
-	src.modules += new /obj/item/weapon/rcd/electric/mounted/borg(src)
-	src.modules += new /obj/item/weapon/pickaxe/plasmacutter(src)
-	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
-	src.modules += new /obj/item/weapon/pipe_dispenser(src)
+	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
+	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
+	src.modules += new /obj/item/tool/wrench/cyborg(src)
+	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
+	src.modules += new /obj/item/multitool(src)
+	src.modules += new /obj/item/t_scanner(src)
+	src.modules += new /obj/item/analyzer(src)
+	src.modules += new /obj/item/barrier_tape_roll/engineering(src)
+	src.modules += new /obj/item/gripper(src)
+	src.modules += new /obj/item/gripper/circuit(src)
+	src.modules += new /obj/item/lightreplacer(src)
+	src.modules += new /obj/item/pipe_painter(src)
+	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/inflatable_dispenser/robot(src)
+	src.emag = new /obj/item/melee/baton/robot/arm(src)
+	src.modules += new /obj/item/geiger(src)
+	src.modules += new /obj/item/rcd/electric/mounted/borg(src)
+	src.modules += new /obj/item/pickaxe/plasmacutter(src)
+	src.modules += new /obj/item/gripper/no_use/loader(src)
+	src.modules += new /obj/item/pipe_dispenser(src)
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal(40000)
 	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
@@ -106,7 +106,7 @@
 	synths += plastic
 	synths += wire
 
-	var/obj/item/weapon/matter_decompiler/MD = new /obj/item/weapon/matter_decompiler(src)
+	var/obj/item/matter_decompiler/MD = new /obj/item/matter_decompiler(src)
 	MD.metal = metal
 	MD.glass = glass
 	src.modules += MD
@@ -156,7 +156,7 @@
 	src.modules += PL
 
 
-/obj/item/weapon/robot_module/robot/engiedog
+/obj/item/robot_module/robot/engiedog
 	name = "Construction Hound module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
@@ -168,29 +168,29 @@
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	can_be_pushed = 0
 
-/obj/item/weapon/robot_module/robot/engiedog/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/engiedog/New(var/mob/living/silicon/robot/R)
 	src.modules += new /obj/item/borg/sight/meson(src)
-	src.modules += new /obj/item/weapon/weldingtool/electric/mounted/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/screwdriver/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/weapon/tool/wirecutters/cyborg(src)
-	src.modules += new /obj/item/device/multitool(src)
-	src.modules += new /obj/item/device/t_scanner(src)
-	src.modules += new /obj/item/device/analyzer(src)
-	src.modules += new /obj/item/taperoll/engineering(src)
-	src.modules += new /obj/item/weapon/inflatable_dispenser/robot(src)
-	src.modules += new /obj/item/weapon/pickaxe(src)
-	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
-	src.modules += new /obj/item/device/dogborg/boop_module(src)
-	src.modules += new /obj/item/device/geiger(src)
-	src.modules += new /obj/item/device/pipe_painter(src)
-	src.modules += new /obj/item/device/floor_painter(src)
-	src.modules += new /obj/item/weapon/gripper(src)
-	src.modules += new /obj/item/weapon/gripper/no_use/loader(src)
-	src.modules += new /obj/item/weapon/pipe_dispenser(src)
-	src.modules += new /obj/item/weapon/gripper/circuit(src)
-	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src)
-	src.modules += new /obj/item/weapon/pipe_dispenser(src)
+	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
+	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
+	src.modules += new /obj/item/tool/wrench/cyborg(src)
+	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
+	src.modules += new /obj/item/multitool(src)
+	src.modules += new /obj/item/t_scanner(src)
+	src.modules += new /obj/item/analyzer(src)
+	src.modules += new /obj/item/barrier_tape_roll/engineering(src)
+	src.modules += new /obj/item/inflatable_dispenser/robot(src)
+	src.modules += new /obj/item/pickaxe(src)
+	src.modules += new /obj/item/dogborg/jaws/small(src)
+	src.modules += new /obj/item/dogborg/boop_module(src)
+	src.modules += new /obj/item/geiger(src)
+	src.modules += new /obj/item/pipe_painter(src)
+	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/gripper(src)
+	src.modules += new /obj/item/gripper/no_use/loader(src)
+	src.modules += new /obj/item/pipe_dispenser(src)
+	src.modules += new /obj/item/gripper/circuit(src)
+	src.emag 	 = new /obj/item/dogborg/pounce(src)
+	src.modules += new /obj/item/pipe_dispenser(src)
 
 	//Painfully slow charger regen but high capacity. Also starts with low amount.
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
@@ -223,15 +223,15 @@
 	synths += wire
 	synths += water
 
-	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
 	T.water = water
 	src.modules += T
 
-	var/obj/item/device/lightreplacer/dogborg/LR = new /obj/item/device/lightreplacer/dogborg(src)
+	var/obj/item/lightreplacer/dogborg/LR = new /obj/item/lightreplacer/dogborg(src)
 	LR.glass = glass
 	src.modules += LR
 
-	var/obj/item/device/dogborg/sleeper/compactor/decompiler/MD = new /obj/item/device/dogborg/sleeper/compactor/decompiler(src)
+	var/obj/item/dogborg/sleeper/compactor/decompiler/MD = new /obj/item/dogborg/sleeper/compactor/decompiler(src)
 	MD.metal = metal
 	MD.glass = glass
 	MD.wood = wood

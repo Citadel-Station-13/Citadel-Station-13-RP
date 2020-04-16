@@ -140,14 +140,14 @@
 /obj/item/clothing/head/helmet/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/weapon/shield/riot,
+/obj/item/shield/riot,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "aq" = (
@@ -278,14 +278,14 @@
 /obj/item/clothing/head/helmet/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/weapon/shield/riot,
+/obj/item/shield/riot,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "aA" = (
@@ -358,7 +358,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -526,11 +526,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/blanks{
+/obj/item/storage/box/blanks{
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/item/weapon/storage/box/blanks{
+/obj/item/storage/box/blanks{
 	pixel_x = 2;
 	pixel_y = -2
 	},
@@ -648,14 +648,14 @@
 /obj/item/clothing/head/helmet/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/gloves/arm_guard/riot,
-/obj/item/weapon/shield/riot,
+/obj/item/shield/riot,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "ba" = (
@@ -732,7 +732,7 @@
 	req_access = list(1,2,18);
 	req_one_access = newlist()
 	},
-/obj/item/weapon/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
 /turf/simulated/floor/tiled/dark,
 /area/security/eva)
 "bk" = (
@@ -749,7 +749,7 @@
 	dir = 5
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/cell/high{
+/obj/item/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -821,7 +821,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -1162,7 +1162,7 @@
 "bT" = (
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
-/obj/item/weapon/cell/high{
+/obj/item/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -1203,19 +1203,19 @@
 /area/ai)
 "bZ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/storage/box/shotgunshells{
+/obj/item/storage/box/shotgunshells{
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/weapon/storage/box/shotgunshells{
+/obj/item/storage/box/shotgunshells{
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/weapon/storage/box/shotgunshells{
+/obj/item/storage/box/shotgunshells{
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/weapon/storage/box/shotgunshells{
+/obj/item/storage/box/shotgunshells{
 	pixel_x = 6;
 	pixel_y = -1
 	},
@@ -1231,10 +1231,10 @@
 /obj/item/ammo_magazine/m9mmt,
 /obj/item/ammo_magazine/m9mmt,
 /obj/item/ammo_magazine/m9mmt,
-/obj/item/weapon/storage/box/stunshells/large,
-/obj/item/weapon/storage/box/stunshells/large,
-/obj/item/weapon/storage/box/stunshells/large,
-/obj/item/weapon/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
+/obj/item/storage/box/stunshells/large,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
 	},
@@ -1745,7 +1745,7 @@
 /obj/machinery/computer/secure_data{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1761,7 +1761,7 @@
 /area/security/hallwayaux)
 "cN" = (
 /obj/structure/table/reinforced,
-/obj/item/device/retail_scanner/security,
+/obj/item/retail_scanner/security,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "cO" = (
@@ -2159,12 +2159,12 @@
 	pixel_x = -32;
 	pixel_y = 32
 	},
-/obj/item/device/radio/intercom/locked/ai_private{
+/obj/item/radio/intercom/locked/ai_private{
 	dir = 4;
 	icon_state = "intercom";
 	pixel_x = 32
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	broadcasting = 1;
 	dir = 8;
 	listening = 1;
@@ -2172,7 +2172,7 @@
 	pixel_x = -21;
 	pixel_y = 0
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -2272,7 +2272,7 @@
 /obj/machinery/photocopier/faxmachine{
 	department = "Head of Security"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -2424,8 +2424,8 @@
 /area/space)
 "ee" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/energy/laser,
-/obj/item/weapon/gun/energy/laser,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "ef" = (
@@ -2500,7 +2500,7 @@
 "ek" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -2540,13 +2540,13 @@
 /area/maintenance/station/ai)
 "en" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/folder/red_hos,
-/obj/item/weapon/pen/multi,
-/obj/item/device/radio/intercom/department/security{
+/obj/item/folder/red_hos,
+/obj/item/pen/multi,
+/obj/item/radio/intercom/department/security{
 	dir = 4;
 	icon_state = "secintercom";
 	pixel_x = 24;
@@ -2757,12 +2757,12 @@
 /obj/item/clothing/accessory/permit/gun,
 /obj/item/clothing/accessory/permit/gun,
 /obj/item/clothing/accessory/permit/gun,
-/obj/item/weapon/paper{
+/obj/item/paper{
 	desc = "";
 	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your NanoTrasen Employee Representitive for more information.";
 	name = "note from CentCom about permits"
 	},
-/obj/item/weapon/storage/secure/safe{
+/obj/item/storage/secure/safe{
 	pixel_x = 38;
 	pixel_y = 0
 	},
@@ -2820,9 +2820,9 @@
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
 "eM" = (
-/obj/item/weapon/coin/gold,
-/obj/item/weapon/coin/silver,
-/obj/item/weapon/bone/skull,
+/obj/item/coin/gold,
+/obj/item/coin/silver,
+/obj/item/bone/skull,
 /mob/living/simple_mob/vore/aggressive/mimic,
 /turf/simulated/mineral/floor/cave,
 /area/maintenance/station/ai)
@@ -2924,7 +2924,7 @@
 	},
 /obj/item/clothing/accessory/tie/horrible,
 /obj/random/drinkbottle,
-/obj/item/weapon/flame/lighter/random,
+/obj/item/flame/lighter/random,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "eV" = (
@@ -2978,8 +2978,8 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/hand_labeler,
+/obj/item/packageWrap,
+/obj/item/hand_labeler,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
@@ -3443,7 +3443,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
-/obj/item/device/camera,
+/obj/item/camera,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -3462,10 +3462,10 @@
 /area/security/evidence_storage)
 "fM" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "fN" = (
@@ -3493,7 +3493,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/sterile/latex,
-/obj/item/weapon/reagent_containers/syringe,
+/obj/item/reagent_containers/syringe,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -3596,7 +3596,7 @@
 	dir = 6
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/storage/lockbox,
+/obj/item/storage/lockbox,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
@@ -3644,7 +3644,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -3764,9 +3764,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/wrench,
-/obj/item/weapon/hand_labeler,
+/obj/item/tool/crowbar,
+/obj/item/tool/wrench,
+/obj/item/hand_labeler,
 /obj/machinery/button/remote/blast_door{
 	id = "armoryred";
 	name = "Armoury Access";
@@ -3791,12 +3791,12 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/warden,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat{
+/obj/item/gun/projectile/shotgun/pump/combat{
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
 	desc = "Built for close quarters combat, the Hesphaistos Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. This one has 'Property of the Warden' inscribed on the stock.";
 	name = "warden's shotgun"
 	},
-/obj/item/weapon/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -3816,7 +3816,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -3825,8 +3825,8 @@
 /area/security/armory/red)
 "gs" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/energy/ionrifle,
-/obj/item/weapon/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "gt" = (
@@ -3836,7 +3836,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 9
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -4013,7 +4013,7 @@
 	},
 /obj/random/maintenance/medical,
 /obj/random/maintenance/research,
-/obj/item/weapon/storage/toolbox,
+/obj/item/storage/toolbox,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "gN" = (
@@ -4116,7 +4116,7 @@
 	name = "Jetpack Storage";
 	req_access = list(1,2,18)
 	},
-/obj/item/weapon/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
 /turf/simulated/floor/tiled/dark,
 /area/security/eva)
 "gV" = (
@@ -4159,8 +4159,8 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "gY" = (
@@ -4217,10 +4217,10 @@
 /area/maintenance/station/ai)
 "hd" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-/obj/item/weapon/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
+/obj/item/gun/projectile/shotgun/pump/combat,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -4255,7 +4255,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/item/weapon/rig/hazard,
+/obj/item/rig/hazard,
 /obj/item/rig_module/vision/sechud,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/maneuvering_jets,
@@ -4279,10 +4279,10 @@
 /area/security/armory/red)
 "hh" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -4353,7 +4353,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/practice,
+/obj/item/gun/projectile/shotgun/pump/rifle/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4375,7 +4375,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/weapon/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
@@ -4384,7 +4384,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/weapon/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
 "hp" = (
@@ -4493,7 +4493,7 @@
 /area/maintenance/station/ai)
 "hz" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/pickaxe,
+/obj/item/pickaxe,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "hA" = (
@@ -4530,7 +4530,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/item/weapon/rig/hazard,
+/obj/item/rig/hazard,
 /obj/item/rig_module/vision/sechud,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/maneuvering_jets,
@@ -4901,7 +4901,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/weapon/storage/box/empslite,
+/obj/item/storage/box/empslite,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
@@ -4916,20 +4916,20 @@
 	icon_state = "alarm0";
 	pixel_y = -22
 	},
-/obj/item/weapon/storage/box/flashbangs,
-/obj/item/weapon/storage/box/flashbangs,
+/obj/item/storage/box/flashbangs,
+/obj/item/storage/box/flashbangs,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "ij" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/table/steel,
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = -6;
 	pixel_y = 3
 	},
-/obj/item/weapon/cell/device/weapon,
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon,
+/obj/item/cell/device/weapon{
 	pixel_x = 5;
 	pixel_y = 3
 	},
@@ -4955,7 +4955,7 @@
 	dir = 8
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -5124,8 +5124,8 @@
 /area/security/armory/blue)
 "iv" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/stamp/ward,
-/obj/item/weapon/stamp/denied{
+/obj/item/stamp/ward,
+/obj/item/stamp/denied{
 	pixel_x = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5451,14 +5451,14 @@
 /area/security/warden)
 "iP" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/clipboard,
-/obj/item/weapon/folder/red,
-/obj/item/weapon/pen,
-/obj/item/device/radio{
+/obj/item/clipboard,
+/obj/item/folder/red,
+/obj/item/pen,
+/obj/item/radio{
 	pixel_x = -4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5604,7 +5604,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorblack/corner,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -5642,7 +5642,7 @@
 	icon_state = "computer";
 	dir = 1
 	},
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5695,11 +5695,11 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/drinks/flask/barflask{
+/obj/item/reagent_containers/food/drinks/flask/barflask{
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/device/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
 /obj/structure/cable/green{
@@ -5717,8 +5717,8 @@
 	dir = 6
 	},
 /obj/structure/table/woodentable,
-/obj/item/device/radio/off,
-/obj/item/device/megaphone,
+/obj/item/radio/off,
+/obj/item/megaphone,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -5866,23 +5866,23 @@
 /area/security/armory/blue)
 "jF" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = 3
 	},
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = 3
 	},
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = 3
 	},
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = 3
 	},
-/obj/item/weapon/storage/box/handcuffs{
+/obj/item/storage/box/handcuffs{
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/item/weapon/storage/box/handcuffs{
+/obj/item/storage/box/handcuffs{
 	pixel_x = 6;
 	pixel_y = -2
 	},
@@ -5987,7 +5987,7 @@
 	name = "sample weapon permit";
 	owner = 1
 	},
-/obj/item/weapon/paper{
+/obj/item/paper{
 	desc = "";
 	info = "The Chief of Security at CentCom is debating a new policy. It's not official yet, and probably won't be since it's hard to enforce, but I suggest following it anyway. That policy is, if a security officer claims they need more than two extra magazines (or batteries) to go on routine patrols, fire them. If they cannot subdue a single suspect using all that ammo, they are not competent as Security.\[br]-Jeremiah Acacius";
 	name = "note to the Head of Security"
@@ -6100,8 +6100,8 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/obj/item/weapon/stamp/hos,
-/obj/item/device/flashlight/lamp/green{
+/obj/item/stamp/hos,
+/obj/item/flashlight/lamp/green{
 	dir = 2;
 	pixel_x = -4;
 	pixel_y = 12
@@ -6352,12 +6352,12 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/evidence,
-/obj/item/weapon/storage/box/handcuffs{
+/obj/item/storage/box/evidence,
+/obj/item/storage/box/handcuffs{
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -6484,9 +6484,9 @@
 /area/crew_quarters/heads/hos)
 "kI" = (
 /obj/structure/bookcase,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/standard_operating_procedure,
-/obj/item/weapon/book/manual/command_guide,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/command_guide,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "kJ" = (
@@ -6508,7 +6508,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/flashbangs{
+/obj/item/storage/box/flashbangs{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -6560,16 +6560,16 @@
 	pixel_y = -32
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/folder/red,
-/obj/item/weapon/pen,
+/obj/item/folder/red,
+/obj/item/pen,
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/borderfloor/shifted,
 /obj/effect/floor_decal/corner/red/border/shifted,
 /obj/effect/floor_decal/corner/red{
@@ -6671,10 +6671,10 @@
 	dir = 9
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = -3
 	},
-/obj/item/weapon/cell/device/weapon{
+/obj/item/cell/device/weapon{
 	pixel_x = 3
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6791,11 +6791,11 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/pen/multi,
+/obj/item/pen/multi,
 /obj/structure/table/reinforced,
 /obj/machinery/firealarm{
 	dir = 2;
@@ -7088,9 +7088,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/item/weapon/book/codex,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/security_space_law,
+/obj/item/book/codex,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
@@ -7269,7 +7269,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 8;
 	icon_state = "secintercom";
 	pixel_x = -24;
@@ -7324,18 +7324,18 @@
 	dir = 1
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/crowbar,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
 	pixel_y = 30
@@ -7446,7 +7446,7 @@
 /area/security/briefing_room)
 "mn" = (
 /obj/structure/table/glass,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "mo" = (
@@ -7460,7 +7460,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/item/weapon/folder/red_hos,
+/obj/item/folder/red_hos,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
@@ -7470,7 +7470,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -7542,13 +7542,13 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/nifsofts_security,
-/obj/item/weapon/hand_labeler,
+/obj/item/storage/box/nifsofts_security,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "my" = (
@@ -7760,7 +7760,7 @@
 "mN" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/glass,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "mO" = (
@@ -7939,9 +7939,9 @@
 /area/security/breakroom)
 "ni" = (
 /obj/structure/bookcase,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "nj" = (
@@ -8090,8 +8090,8 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/folder/red,
-/obj/item/weapon/storage/box/donut,
+/obj/item/folder/red,
+/obj/item/storage/box/donut,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "nu" = (
@@ -8221,7 +8221,7 @@
 "nG" = (
 /obj/structure/table/steel,
 /obj/machinery/chemical_dispenser/bar_soft/full,
-/obj/item/weapon/storage/box/glasses/square,
+/obj/item/storage/box/glasses/square,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "nH" = (
@@ -8371,7 +8371,7 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "nT" = (
@@ -8621,7 +8621,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "on" = (
@@ -8649,10 +8649,10 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/device/taperecorder{
+/obj/item/tape_recorder{
 	pixel_y = 0
 	},
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
@@ -8669,7 +8669,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "or" = (
-/obj/item/weapon/storage/laundry_basket,
+/obj/item/storage/laundry_basket,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "os" = (
@@ -8703,7 +8703,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
 "ow" = (
@@ -8717,7 +8717,7 @@
 /area/security/breakroom)
 "ox" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
@@ -8752,7 +8752,7 @@
 	icon_state = "light1";
 	pixel_x = -24
 	},
-/obj/item/device/taperecorder,
+/obj/item/tape_recorder,
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
 "oC" = (
@@ -8779,11 +8779,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
 "oE" = (
@@ -8864,7 +8864,7 @@
 "oK" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 2;
 	icon_state = "secintercom";
 	pixel_y = -24
@@ -8877,7 +8877,7 @@
 "oL" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled,
@@ -8900,10 +8900,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -4
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -9300,7 +9300,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 10
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -9309,8 +9309,8 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/folder/red,
-/obj/item/weapon/folder/red{
+/obj/item/folder/red,
+/obj/item/folder/red{
 	pixel_x = 2;
 	pixel_y = 4
 	},
@@ -9330,7 +9330,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
@@ -9378,7 +9378,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -9507,7 +9507,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 2;
 	pixel_y = -24
 	},
@@ -9693,7 +9693,7 @@
 /area/maintenance/cargo)
 "pZ" = (
 /obj/structure/table/steel,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "qa" = (
@@ -9768,7 +9768,7 @@
 	icon_state = "0-4"
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/evidence,
+/obj/item/storage/box/evidence,
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
 "qi" = (
@@ -9919,7 +9919,7 @@
 	dir = 9
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/forensics/sample_kit,
+/obj/item/forensics/sample_kit,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "qx" = (
@@ -9990,7 +9990,7 @@
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -10043,8 +10043,8 @@
 /area/security/detectives_office)
 "qG" = (
 /obj/structure/bookcase,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "qH" = (
@@ -10364,7 +10364,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/forensics/sample_kit/powder,
+/obj/item/forensics/sample_kit/powder,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "rf" = (
@@ -10588,7 +10588,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -11077,8 +11077,8 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/spray/luminol,
-/obj/item/device/uv_light,
+/obj/item/reagent_containers/spray/luminol,
+/obj/item/uv_light,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -11105,17 +11105,17 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/folder/yellow{
+/obj/item/folder/yellow{
 	pixel_y = -5
 	},
-/obj/item/weapon/folder/blue{
+/obj/item/folder/blue{
 	pixel_y = -3
 	},
-/obj/item/weapon/folder/red,
-/obj/item/weapon/storage/box/swabs{
+/obj/item/folder/red,
+/obj/item/storage/box/swabs{
 	layer = 5
 	},
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "sd" = (
@@ -11140,11 +11140,11 @@
 /obj/structure/closet{
 	name = "Forensics Gear"
 	},
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/evidence,
-/obj/item/weapon/storage/box/bodybags,
-/obj/item/weapon/storage/briefcase/crimekit,
-/obj/item/weapon/storage/briefcase/crimekit,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/evidence,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/briefcase/crimekit,
+/obj/item/storage/briefcase/crimekit,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -11201,9 +11201,9 @@
 /area/security/detectives_office)
 "sh" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /obj/item/clothing/glasses/sunglasses,
-/obj/item/weapon/pen/blue{
+/obj/item/pen/blue{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -11211,7 +11211,7 @@
 /area/security/detectives_office)
 "si" = (
 /obj/structure/table/woodentable,
-/obj/item/device/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -11219,8 +11219,8 @@
 /area/security/detectives_office)
 "sj" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/handcuffs,
-/obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
+/obj/item/handcuffs,
+/obj/item/storage/fancy/cigarettes/dromedaryco,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -11233,9 +11233,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /obj/item/clothing/glasses/sunglasses,
-/obj/item/weapon/pen/blue{
+/obj/item/pen/blue{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -11349,7 +11349,7 @@
 /turf/simulated/floor,
 /area/maintenance/cargo)
 "sv" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
@@ -11961,7 +11961,7 @@
 	},
 /obj/structure/table/steel,
 /obj/item/roller,
-/obj/item/weapon/storage/box/autoinjectors,
+/obj/item/storage/box/autoinjectors,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32;
 	pixel_y = -9
@@ -12135,8 +12135,8 @@
 /area/quartermaster/delivery)
 "ty" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box,
-/obj/item/weapon/storage/box,
+/obj/item/storage/box,
+/obj/item/storage/box,
 /obj/machinery/alarm{
 	dir = 8;
 	icon_state = "alarm0";
@@ -12177,12 +12177,12 @@
 /turf/simulated/wall,
 /area/quartermaster/office)
 "tC" = (
-/obj/item/weapon/stamp/denied{
+/obj/item/stamp/denied{
 	pixel_x = 4;
 	pixel_y = -2
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/stamp/cargo,
+/obj/item/stamp/cargo,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -12211,12 +12211,12 @@
 /area/quartermaster/office)
 "tF" = (
 /obj/structure/table/standard,
-/obj/item/weapon/material/ashtray/glass,
+/obj/item/material/ashtray/glass,
 /obj/machinery/newscaster{
 	pixel_x = 28;
 	pixel_y = 0
 	},
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -12251,8 +12251,8 @@
 	dir = 10
 	},
 /obj/structure/table/reinforced,
-/obj/item/device/mass_spectrometer/adv,
-/obj/item/device/reagent_scanner,
+/obj/item/mass_spectrometer/adv,
+/obj/item/reagent_scanner,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -12328,8 +12328,8 @@
 /area/security/forensics)
 "tN" = (
 /obj/structure/closet/secure_closet/detective,
-/obj/item/weapon/reagent_containers/spray/pepper,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/reagent_containers/spray/pepper,
+/obj/item/gun/energy/taser,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "tO" = (
@@ -12343,7 +12343,7 @@
 /area/security/detectives_office)
 "tP" = (
 /obj/structure/table/woodentable,
-/obj/item/device/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -12351,7 +12351,7 @@
 /area/security/detectives_office)
 "tQ" = (
 /obj/structure/table/woodentable,
-/obj/item/device/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -12538,7 +12538,7 @@
 /obj/item/bodybag/cryobag{
 	pixel_x = 6
 	},
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -12666,9 +12666,9 @@
 	dir = 1
 	},
 /obj/item/clothing/suit/fire/firefighter,
-/obj/item/weapon/tank/oxygen,
+/obj/item/tank/oxygen,
 /obj/item/clothing/mask/gas,
-/obj/item/weapon/extinguisher,
+/obj/item/extinguisher,
 /obj/item/clothing/head/hardhat/red,
 /obj/item/clothing/glasses/meson,
 /obj/machinery/power/apc{
@@ -12791,11 +12791,11 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/structure/table/glass,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "uB" = (
@@ -12815,12 +12815,12 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "uC" = (
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen/red{
+/obj/item/clipboard,
+/obj/item/pen/red{
 	pixel_x = 2;
 	pixel_y = 6
 	},
@@ -13207,9 +13207,9 @@
 	pixel_y = 0;
 	report_danger_level = 0
 	},
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/device/t_scanner,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/t_scanner,
 /turf/simulated/floor,
 /area/storage/emergency_storage/emergency3)
 "ve" = (
@@ -13376,26 +13376,26 @@
 	dir = 1
 	},
 /obj/structure/closet,
-/obj/item/device/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/obj/item/device/camera{
+/obj/item/camera{
 	pixel_x = 3;
 	pixel_y = -4
 	},
-/obj/item/device/taperecorder{
+/obj/item/tape_recorder{
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/obj/item/device/camera{
+/obj/item/camera{
 	pixel_x = 3;
 	pixel_y = -4
 	},
-/obj/item/device/flash,
-/obj/item/device/flash,
-/obj/item/weapon/storage/secure/briefcase,
-/obj/item/weapon/storage/secure/briefcase,
+/obj/item/flash,
+/obj/item/flash,
+/obj/item/storage/secure/briefcase,
+/obj/item/storage/secure/briefcase,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -13410,12 +13410,12 @@
 	dir = 1
 	},
 /obj/structure/bookcase,
-/obj/item/weapon/book/manual/standard_operating_procedure,
-/obj/item/weapon/book/manual/standard_operating_procedure,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/command_guide,
-/obj/item/weapon/book/manual/command_guide,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/command_guide,
+/obj/item/book/manual/command_guide,
 /turf/simulated/floor/tiled/dark,
 /area/lawoffice)
 "vy" = (
@@ -13633,7 +13633,7 @@
 /area/security/lobby)
 "vM" = (
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -13676,7 +13676,7 @@
 /area/hallway/station/upper)
 "vQ" = (
 /obj/structure/table/woodentable,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -13908,7 +13908,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -13925,7 +13925,7 @@
 /obj/random/maintenance/clean,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor,
 /area/maintenance/station/elevator)
 "ws" = (
@@ -14026,8 +14026,8 @@
 /area/quartermaster/delivery)
 "wE" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/pen{
+/obj/item/folder/yellow,
+/obj/item/pen{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -14116,7 +14116,7 @@
 "wK" = (
 /obj/structure/table/standard,
 /obj/fiftyspawner/steel,
-/obj/item/device/multitool,
+/obj/item/multitool,
 /obj/machinery/alarm{
 	dir = 8;
 	icon_state = "alarm0";
@@ -14140,7 +14140,7 @@
 "wM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/reinforced,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/lawoffice)
 "wN" = (
@@ -14193,11 +14193,11 @@
 	dir = 6
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/obj/item/weapon/pen/blue{
+/obj/item/pen/blue{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -14251,8 +14251,8 @@
 /area/security/forensics)
 "wT" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/cups,
-/obj/item/weapon/storage/box/cups{
+/obj/item/storage/box/cups,
+/obj/item/storage/box/cups{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -14260,8 +14260,8 @@
 /area/security/lobby)
 "wU" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/security_space_law,
-/obj/item/weapon/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/security_space_law,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "wV" = (
@@ -14626,7 +14626,7 @@
 /area/quartermaster/office)
 "xt" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/yellow,
+/obj/item/folder/yellow,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -14672,16 +14672,16 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/folder{
+/obj/item/folder{
 	pixel_x = -4
 	},
-/obj/item/weapon/folder/blue{
+/obj/item/folder/blue{
 	pixel_x = 5
 	},
-/obj/item/weapon/folder/red{
+/obj/item/folder/red{
 	pixel_y = 3
 	},
-/obj/item/weapon/folder/yellow,
+/obj/item/folder/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/lawoffice)
 "xz" = (
@@ -14701,8 +14701,8 @@
 	dir = 5
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/stamp/internalaffairs,
-/obj/item/weapon/stamp/denied{
+/obj/item/stamp/internalaffairs,
+/obj/item/stamp/denied{
 	pixel_x = 4;
 	pixel_y = -2
 	},
@@ -14749,8 +14749,8 @@
 	dir = 9
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/stamp/internalaffairs,
-/obj/item/weapon/stamp/denied{
+/obj/item/stamp/internalaffairs,
+/obj/item/stamp/denied{
 	pixel_x = 4;
 	pixel_y = -2
 	},
@@ -14770,16 +14770,16 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/folder{
+/obj/item/folder{
 	pixel_x = -4
 	},
-/obj/item/weapon/folder/blue{
+/obj/item/folder/blue{
 	pixel_x = 5
 	},
-/obj/item/weapon/folder/red{
+/obj/item/folder/red{
 	pixel_y = 3
 	},
-/obj/item/weapon/folder/yellow,
+/obj/item/folder/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/lawoffice)
 "xH" = (
@@ -14794,10 +14794,10 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -4
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -15125,8 +15125,8 @@
 /area/quartermaster/office)
 "yh" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/belt/utility,
-/obj/item/weapon/storage/belt/utility,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
@@ -15150,13 +15150,13 @@
 	dir = 10
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /obj/machinery/newscaster{
 	layer = 3.3;
 	pixel_x = -27;
 	pixel_y = 0
 	},
-/obj/item/weapon/storage/briefcase{
+/obj/item/storage/briefcase{
 	pixel_x = -2;
 	pixel_y = -5
 	},
@@ -15176,15 +15176,15 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/weapon/pen/blue{
+/obj/item/pen/blue{
 	pixel_x = -5;
 	pixel_y = -1
 	},
-/obj/item/weapon/pen/red{
+/obj/item/pen/red{
 	pixel_x = -1;
 	pixel_y = 3
 	},
@@ -15229,13 +15229,13 @@
 	dir = 6
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /obj/machinery/newscaster{
 	layer = 3.3;
 	pixel_x = 27;
 	pixel_y = 0
 	},
-/obj/item/weapon/storage/briefcase{
+/obj/item/storage/briefcase{
 	pixel_x = 3;
 	pixel_y = 0
 	},
@@ -15794,7 +15794,7 @@
 	pixel_x = -12;
 	pixel_y = -24
 	},
-/obj/item/device/retail_scanner/civilian{
+/obj/item/retail_scanner/civilian{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -15805,7 +15805,7 @@
 /area/quartermaster/office)
 "zc" = (
 /obj/structure/table/standard,
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /obj/machinery/recharger,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -15813,8 +15813,8 @@
 /area/quartermaster/office)
 "zd" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tape_roll,
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/barrier_tape_roll,
+/obj/item/storage/firstaid/regular{
 	pixel_x = 6;
 	pixel_y = -5
 	},
@@ -15827,33 +15827,33 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "ze" = (
-/obj/item/weapon/coin/silver,
-/obj/item/weapon/coin/silver,
-/obj/item/weapon/coin/silver,
-/obj/item/weapon/coin/silver,
-/obj/item/weapon/coin/silver,
+/obj/item/coin/silver,
+/obj/item/coin/silver,
+/obj/item/coin/silver,
+/obj/item/coin/silver,
+/obj/item/coin/silver,
 /obj/structure/closet/crate/secure{
 	name = "Silver Crate";
 	req_access = list(19)
 	},
-/obj/item/weapon/coin/silver,
+/obj/item/coin/silver,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "zf" = (
 /obj/item/stack/material/gold,
-/obj/item/weapon/storage/belt/champion,
+/obj/item/storage/belt/champion,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/secure{
 	name = "Gold Crate";
 	req_access = list(19)
 	},
-/obj/item/weapon/coin/gold,
-/obj/item/weapon/coin/gold,
-/obj/item/weapon/coin/gold,
-/obj/item/weapon/coin/gold,
-/obj/item/weapon/coin/gold,
-/obj/item/weapon/coin/gold,
+/obj/item/coin/gold,
+/obj/item/coin/gold,
+/obj/item/coin/gold,
+/obj/item/coin/gold,
+/obj/item/coin/gold,
+/obj/item/coin/gold,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "zg" = (
@@ -16353,7 +16353,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -16540,7 +16540,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -16606,7 +16606,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -16869,7 +16869,7 @@
 "AC" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/therapy/blue,
-/obj/item/weapon/storage/secure/safe{
+/obj/item/storage/secure/safe{
 	pixel_x = 5;
 	pixel_y = 28
 	},
@@ -16913,11 +16913,11 @@
 /area/quartermaster/qm)
 "AK" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "AL" = (
@@ -17009,13 +17009,13 @@
 /area/quartermaster/storage)
 "AT" = (
 /obj/structure/closet/secure_closet/cargotech,
-/obj/item/weapon/stamp/cargo,
+/obj/item/stamp/cargo,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "AU" = (
 /obj/structure/closet/secure_closet/cargotech,
-/obj/item/weapon/storage/backpack/dufflebag,
-/obj/item/weapon/stamp/cargo,
+/obj/item/storage/backpack/dufflebag,
+/obj/item/stamp/cargo,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "AV" = (
@@ -17393,7 +17393,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/device/radio/beacon,
+/obj/item/radio/beacon,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -17541,8 +17541,8 @@
 /area/maintenance/station/cargo)
 "BI" = (
 /obj/structure/mopbucket,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
 /turf/simulated/floor/tiled,
 /area/maintenance/station/cargo)
 "BJ" = (
@@ -17581,12 +17581,12 @@
 /area/quartermaster/qm)
 "BN" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/pen{
+/obj/item/folder/yellow,
+/obj/item/pen{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/pen/red{
+/obj/item/pen/red{
 	pixel_x = 2;
 	pixel_y = 6
 	},
@@ -17791,7 +17791,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 9
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 2;
 	pixel_y = -24
 	},
@@ -17995,8 +17995,8 @@
 	pixel_y = -25
 	},
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/tiled,
 /area/maintenance/station/cargo)
 "CC" = (
@@ -18010,8 +18010,8 @@
 /area/quartermaster/qm)
 "CE" = (
 /obj/structure/table/standard,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/stamp/qm,
+/obj/item/clipboard,
+/obj/item/stamp/qm,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -18189,10 +18189,10 @@
 /obj/structure/safe,
 /obj/item/clothing/under/color/yellow,
 /obj/item/toy/katana,
-/obj/item/weapon/disk/nuclear{
+/obj/item/disk/nuclear{
 	name = "authentication disk"
 	},
-/obj/item/weapon/moneybag/vault,
+/obj/item/moneybag/vault,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
@@ -18204,7 +18204,7 @@
 	name = "gun safe";
 	req_access = list(1)
 	},
-/obj/item/weapon/gun/projectile/revolver/consul,
+/obj/item/gun/projectile/revolver/consul,
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /turf/simulated/floor/tiled/dark,
@@ -18212,7 +18212,7 @@
 "CV" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/freezer/money,
-/obj/item/weapon/storage/secure/briefcase/money{
+/obj/item/storage/secure/briefcase/money{
 	desc = "An sleek tidy briefcase.";
 	name = "secure briefcase"
 	},
@@ -18529,16 +18529,16 @@
 /area/quartermaster/storage)
 "DE" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/fancy/cigarettes{
+/obj/item/storage/fancy/cigarettes{
 	pixel_y = 2
 	},
-/obj/item/weapon/deck/cards,
-/obj/item/weapon/book/codex,
+/obj/item/deck/cards,
+/obj/item/book/codex,
 /obj/machinery/atm{
 	pixel_y = 30
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -18612,7 +18612,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -18776,7 +18776,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -18788,14 +18788,14 @@
 /area/medical/chemistry)
 "DW" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/item/weapon/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "DX" = (
@@ -18869,7 +18869,7 @@
 /area/medical/surgery_hallway)
 "Ec" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /turf/simulated/floor/carpet/blue,
 /area/medical/psych)
 "Ed" = (
@@ -18894,10 +18894,10 @@
 /area/medical/psych)
 "Eh" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_y = 4
 	},
-/obj/item/weapon/pen{
+/obj/item/pen{
 	pixel_y = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -18974,8 +18974,8 @@
 /area/quartermaster/qm)
 "Eq" = (
 /obj/structure/table/standard,
-/obj/item/weapon/coin/silver,
-/obj/item/weapon/coin/silver,
+/obj/item/coin/silver,
+/obj/item/coin/silver,
 /obj/machinery/alarm{
 	dir = 1;
 	icon_state = "alarm0";
@@ -18985,15 +18985,15 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/weapon/cartridge/quartermaster{
+/obj/item/cartridge/quartermaster{
 	pixel_x = 6;
 	pixel_y = 5
 	},
-/obj/item/weapon/cartridge/quartermaster{
+/obj/item/cartridge/quartermaster{
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/weapon/cartridge/quartermaster,
+/obj/item/cartridge/quartermaster,
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "Er" = (
@@ -19002,7 +19002,7 @@
 /area/quartermaster/qm)
 "Es" = (
 /obj/structure/closet,
-/obj/item/weapon/storage/backpack/dufflebag,
+/obj/item/storage/backpack/dufflebag,
 /turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "Et" = (
@@ -19221,7 +19221,7 @@
 /area/medical/chemistry)
 "ES" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/beakers,
+/obj/item/storage/box/beakers,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "ET" = (
@@ -19341,7 +19341,7 @@
 /area/medical/psych)
 "Fb" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/white,
+/obj/item/folder/white,
 /turf/simulated/floor/carpet/blue,
 /area/medical/psych)
 "Fc" = (
@@ -19653,11 +19653,11 @@
 /area/medical/chemistry)
 "FF" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/hand_labeler,
-/obj/item/weapon/packageWrap,
+/obj/item/hand_labeler,
+/obj/item/packageWrap,
 /obj/item/clothing/glasses/science,
 /obj/item/clothing/glasses/science,
-/obj/item/weapon/reagent_containers/spray/cleaner{
+/obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the 'Space' from Space Cleaner and written in Chemistry. Scrawled on the back is, 'Okay, whoever filled this with polytrinic acid, it was only funny the first time. It was hard enough replacing the CMO's first cat!'";
 	name = "Chemistry Cleaner"
 	},
@@ -19667,8 +19667,8 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/item/device/mass_spectrometer/adv,
-/obj/item/device/mass_spectrometer/adv,
+/obj/item/mass_spectrometer/adv,
+/obj/item/mass_spectrometer/adv,
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 10
 	},
@@ -19698,7 +19698,7 @@
 /area/medical/chemistry)
 "FJ" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/tool/screwdriver,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
@@ -19791,7 +19791,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/device/flashlight/lamp/green{
+/obj/item/flashlight/lamp/green{
 	dir = 2;
 	pixel_x = -5;
 	pixel_y = 4
@@ -19916,8 +19916,8 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/weapon/module/power_control,
-/obj/item/weapon/cell{
+/obj/item/module/power_control,
+/obj/item/cell{
 	maxcharge = 2000
 	},
 /obj/structure/cable/green{
@@ -20042,8 +20042,8 @@
 	req_one_access = list(5)
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "Gp" = (
@@ -20282,7 +20282,7 @@
 /obj/structure/closet/crate,
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -20385,7 +20385,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 0;
 	pixel_y = 0
 	},
@@ -20396,11 +20396,11 @@
 /area/maintenance/security_starboard)
 "GU" = (
 /obj/structure/table/glass,
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = 4;
 	pixel_y = -4
 	},
@@ -20616,19 +20616,19 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "Ho" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/white/border{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -20637,7 +20637,7 @@
 /area/medical/surgery)
 "Hp" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner{
+/obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
 	pixel_x = 2;
@@ -20668,7 +20668,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -20892,13 +20892,13 @@
 	dir = 10
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/storage/box/body_record_disk,
-/obj/item/weapon/paper{
+/obj/item/storage/box/body_record_disk,
+/obj/item/paper{
 	desc = "";
 	info = "Bodies designed on the design console must be saved to a disk, provided on the front desk counter, then placed into the resleeving console for printing.";
 	name = "Body Designer Note"
 	},
-/obj/item/device/sleevemate,
+/obj/item/sleevemate,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "HN" = (
@@ -20940,16 +20940,16 @@
 	dir = 4
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/backup_implanter{
+/obj/item/backup_implanter{
 	pixel_y = -12
 	},
-/obj/item/weapon/backup_implanter{
+/obj/item/backup_implanter{
 	pixel_y = -5
 	},
-/obj/item/weapon/backup_implanter{
+/obj/item/backup_implanter{
 	pixel_y = 2
 	},
-/obj/item/weapon/backup_implanter{
+/obj/item/backup_implanter{
 	pixel_y = 9
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -20994,8 +20994,8 @@
 	dir = 9
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/storage/box/cups,
-/obj/item/weapon/storage/box/cups{
+/obj/item/storage/box/cups,
+/obj/item/storage/box/cups{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -21035,12 +21035,12 @@
 /area/medical/reception)
 "HV" = (
 /obj/structure/closet/secure_closet/medical1,
-/obj/item/weapon/storage/box/pillbottles,
-/obj/item/weapon/storage/box/syringes,
-/obj/item/device/radio/headset/headset_med,
-/obj/item/weapon/storage/box/pillbottles,
-/obj/item/weapon/storage/fancy/vials,
-/obj/item/weapon/storage/fancy/vials,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/radio/headset/headset_med,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -21209,7 +21209,7 @@
 /area/medical/surgery)
 "Ii" = (
 /obj/structure/table/standard,
-/obj/item/device/healthanalyzer,
+/obj/item/healthanalyzer,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
@@ -21750,12 +21750,12 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/item/device/sleevemate,
+/obj/item/sleevemate,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "Jc" = (
 /obj/structure/table/glass,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 7;
 	pixel_y = 1
 	},
@@ -21768,15 +21768,15 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/item/weapon/reagent_containers/glass/bottle/biomass{
+/obj/item/reagent_containers/glass/bottle/biomass{
 	pixel_x = -4;
 	pixel_y = 8
 	},
-/obj/item/weapon/reagent_containers/glass/bottle/biomass{
+/obj/item/reagent_containers/glass/bottle/biomass{
 	pixel_x = -3;
 	pixel_y = -2
 	},
-/obj/item/weapon/reagent_containers/glass/bottle/biomass{
+/obj/item/reagent_containers/glass/bottle/biomass{
 	pixel_x = 3;
 	pixel_y = 5
 	},
@@ -21798,11 +21798,11 @@
 	dir = 8
 	},
 /obj/structure/table/glass,
-/obj/item/device/flashlight/pen{
+/obj/item/flashlight/pen{
 	pixel_x = -3;
 	pixel_y = -3
 	},
-/obj/item/device/flashlight/pen{
+/obj/item/flashlight/pen{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -21827,9 +21827,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
-/obj/item/device/radio/headset,
-/obj/item/device/radio/headset,
-/obj/item/device/radio/headset,
+/obj/item/radio/headset,
+/obj/item/radio/headset,
+/obj/item/radio/headset,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "Jg" = (
@@ -21854,11 +21854,11 @@
 	dir = 4
 	},
 /obj/structure/table/glass,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 7;
 	pixel_y = 1
 	},
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = -4;
 	pixel_y = 0
 	},
@@ -21942,8 +21942,8 @@
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "Jn" = (
@@ -22069,7 +22069,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/medical3,
-/obj/item/weapon/soap/nanotrasen,
+/obj/item/soap/nanotrasen,
 /obj/machinery/light_switch{
 	dir = 2;
 	name = "light switch ";
@@ -22088,7 +22088,7 @@
 /area/medical/medbay_primary_storage)
 "Jx" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/gloves{
+/obj/item/storage/box/gloves{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -22178,7 +22178,7 @@
 /area/medical/surgery)
 "JE" = (
 /obj/structure/table/standard,
-/obj/item/device/healthanalyzer,
+/obj/item/healthanalyzer,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
@@ -22234,12 +22234,12 @@
 /area/quartermaster/warehouse)
 "JM" = (
 /obj/structure/table/standard,
-/obj/item/weapon/hand_labeler,
-/obj/item/weapon/stamp{
+/obj/item/hand_labeler,
+/obj/item/stamp{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "JN" = (
@@ -22256,7 +22256,7 @@
 "JO" = (
 /obj/structure/table/standard,
 /obj/item/clothing/head/soft,
-/obj/item/weapon/stamp{
+/obj/item/stamp{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -22435,11 +22435,11 @@
 /area/medical/sleeper)
 "Kf" = (
 /obj/structure/table/glass,
-/obj/item/weapon/reagent_containers/spray/cleaner{
+/obj/item/reagent_containers/spray/cleaner{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/weapon/reagent_containers/spray/cleaner{
+/obj/item/reagent_containers/spray/cleaner{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -22494,7 +22494,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/medical3,
-/obj/item/weapon/soap/nanotrasen,
+/obj/item/soap/nanotrasen,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "Kk" = (
@@ -22507,7 +22507,7 @@
 /area/medical/medbay_primary_storage)
 "Kl" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/masks,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -22586,14 +22586,14 @@
 /area/medical/surgery)
 "Kr" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/white/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "Ks" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner{
+/obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
 	pixel_x = 2;
@@ -22644,7 +22644,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -23153,7 +23153,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 6
 	},
-/obj/item/device/defib_kit/loaded,
+/obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "Lp" = (
@@ -23170,14 +23170,14 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 8
 	},
-/obj/item/weapon/storage/box/nifsofts_medical,
+/obj/item/storage/box/nifsofts_medical,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "Lr" = (
@@ -23228,9 +23228,9 @@
 /area/medical/medbay_primary_storage)
 "Lv" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -23302,14 +23302,14 @@
 /area/medical/surgery2)
 "LA" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/white/border{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -23318,7 +23318,7 @@
 /area/medical/surgery2)
 "LB" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner{
+/obj/item/reagent_containers/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
 	pixel_x = 2;
@@ -23395,7 +23395,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "LG" = (
-/obj/item/weapon/book/manual/resleeving,
+/obj/item/book/manual/resleeving,
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -23482,10 +23482,10 @@
 /area/medical/sleeper)
 "LR" = (
 /obj/structure/table/glass,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/storage/pill_bottle/tramadol,
-/obj/item/weapon/storage/pill_bottle/antitox,
-/obj/item/weapon/reagent_containers/syringe/antiviral,
+/obj/item/tool/screwdriver,
+/obj/item/storage/pill_bottle/tramadol,
+/obj/item/storage/pill_bottle/antitox,
+/obj/item/reagent_containers/syringe/antiviral,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -23536,11 +23536,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "LW" = (
-/obj/item/weapon/reagent_containers/blood/empty,
-/obj/item/weapon/reagent_containers/blood/empty,
-/obj/item/weapon/reagent_containers/blood/empty,
-/obj/item/weapon/reagent_containers/blood/empty,
-/obj/item/weapon/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
+/obj/item/reagent_containers/blood/empty,
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -23605,7 +23605,7 @@
 /area/medical/surgery2)
 "Mb" = (
 /obj/structure/table/standard,
-/obj/item/device/healthanalyzer,
+/obj/item/healthanalyzer,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
@@ -23654,7 +23654,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -23708,9 +23708,9 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 10
 	},
-/obj/item/weapon/hand_labeler,
-/obj/item/weapon/packageWrap,
-/obj/item/device/radio/intercom{
+/obj/item/hand_labeler,
+/obj/item/packageWrap,
+/obj/item/radio/intercom{
 	dir = 2;
 	pixel_y = -24
 	},
@@ -23726,11 +23726,11 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 9
 	},
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "Mm" = (
@@ -23762,9 +23762,9 @@
 /obj/structure/table/glass,
 /obj/random/medical,
 /obj/random/medical,
-/obj/item/device/flashlight/pen,
-/obj/item/device/flashlight/pen,
-/obj/item/device/flashlight/pen,
+/obj/item/flashlight/pen,
+/obj/item/flashlight/pen,
+/obj/item/flashlight/pen,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -23782,7 +23782,7 @@
 	},
 /obj/random/medical,
 /obj/random/medical,
-/obj/item/device/glasses_kit,
+/obj/item/glasses_kit,
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
@@ -23792,17 +23792,17 @@
 	name = "east bump";
 	pixel_x = 28
 	},
-/obj/item/weapon/storage/box/rxglasses,
-/obj/item/weapon/storage/box/rxglasses,
+/obj/item/storage/box/rxglasses,
+/obj/item/storage/box/rxglasses,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "Mp" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/blood/AMinus,
-/obj/item/weapon/reagent_containers/blood/APlus,
-/obj/item/weapon/reagent_containers/blood/BMinus,
-/obj/item/weapon/reagent_containers/blood/BPlus,
-/obj/item/weapon/reagent_containers/blood/OPlus,
+/obj/item/reagent_containers/blood/AMinus,
+/obj/item/reagent_containers/blood/APlus,
+/obj/item/reagent_containers/blood/BMinus,
+/obj/item/reagent_containers/blood/BPlus,
+/obj/item/reagent_containers/blood/OPlus,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -23986,7 +23986,7 @@
 /area/crew_quarters/heads/cmo)
 "MC" = (
 /obj/structure/closet/secure_closet/CMO,
-/obj/item/weapon/cmo_disk_holder,
+/obj/item/cmo_disk_holder,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -23994,11 +23994,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/device/flashlight/pen,
-/obj/item/weapon/storage/belt/medical,
+/obj/item/flashlight/pen,
+/obj/item/storage/belt/medical,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/accessory/stethoscope,
-/obj/item/device/defib_kit/compact/combat/loaded,
+/obj/item/defib_kit/compact/combat/loaded,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "MD" = (
@@ -24199,10 +24199,10 @@
 /area/crew_quarters/heads/cmo)
 "MP" = (
 /obj/structure/table/glass,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
-/obj/item/weapon/folder/white_cmo,
-/obj/item/weapon/stamp/cmo,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/folder/white_cmo,
+/obj/item/stamp/cmo,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/cmo)
 "MQ" = (
@@ -24691,8 +24691,8 @@
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/white/border,
-/obj/item/weapon/reagent_containers/blood/OMinus,
-/obj/item/weapon/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "Nt" = (
@@ -25211,7 +25211,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24;
 	req_access = list()
@@ -25726,7 +25726,7 @@
 	dir = 9
 	},
 /obj/structure/table/glass,
-/obj/item/device/healthanalyzer,
+/obj/item/healthanalyzer,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "OV" = (
@@ -25798,7 +25798,7 @@
 /area/medical/ward)
 "OY" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
@@ -25876,14 +25876,14 @@
 /obj/effect/floor_decal/corner/pink/bordercorner2{
 	dir = 4
 	},
-/obj/item/weapon/cane,
+/obj/item/cane,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "Pc" = (
 /obj/structure/table/glass,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/clipboard,
+/obj/item/pen,
 /obj/machinery/camera/network/medbay{
 	dir = 8
 	},
@@ -26112,7 +26112,7 @@
 /area/medical/ward)
 "Pv" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -26129,7 +26129,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -26202,7 +26202,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -26275,7 +26275,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -26348,7 +26348,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -26482,7 +26482,7 @@
 /area/medical/ward)
 "PP" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -26493,7 +26493,7 @@
 /area/medical/ward)
 "PQ" = (
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -26530,7 +26530,7 @@
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 4
 	},
-/obj/item/device/healthanalyzer,
+/obj/item/healthanalyzer,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "PU" = (
@@ -26545,7 +26545,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -26557,7 +26557,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "PW" = (
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -26584,7 +26584,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -26596,7 +26596,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "PZ" = (
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -26623,7 +26623,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -26635,7 +26635,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "Qc" = (
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -26827,7 +26827,7 @@
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/pink/border,
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "Qr" = (
@@ -26850,9 +26850,9 @@
 /area/medical/exam_room)
 "Qt" = (
 /obj/structure/table/glass,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/clipboard,
+/obj/item/paper_bin,
+/obj/item/pen,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -26906,8 +26906,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen,
+/obj/item/clipboard,
+/obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "Qx" = (
@@ -26952,8 +26952,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen,
+/obj/item/clipboard,
+/obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "QA" = (
@@ -27102,7 +27102,7 @@
 /area/medical/ward)
 "QO" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -27139,7 +27139,7 @@
 /area/medical/ward)
 "QR" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/medical,
+/obj/item/bedsheet/medical,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
@@ -27315,7 +27315,7 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /obj/random/maintenance/medical,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /obj/structure/railing,
 /obj/random/tool,
 /obj/machinery/light/small{
@@ -27650,9 +27650,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/device/destTagger,
-/obj/item/weapon/storage/box,
-/obj/item/weapon/storage/box,
+/obj/item/destTagger,
+/obj/item/storage/box,
+/obj/item/storage/box,
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -27755,7 +27755,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/item/device/radio/intercom/locked/ai_private{
+/obj/item/radio/intercom/locked/ai_private{
 	dir = 1;
 	icon_state = "intercom";
 	pixel_y = 32
@@ -27853,8 +27853,8 @@
 	name = "Prototype Hardsuit Storage";
 	req_access = list(58)
 	},
-/obj/item/device/suit_cooling_unit,
-/obj/item/weapon/tank/jetpack/carbondioxide,
+/obj/item/suit_cooling_unit,
+/obj/item/tank/jetpack/carbondioxide,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/suit/space/void/headofsecurity,
 /obj/item/clothing/head/helmet/space/void/headofsecurity,
@@ -27864,9 +27864,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "ZA" = (
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/packageWrap,
-/obj/item/weapon/wrapping_paper,
+/obj/item/packageWrap,
+/obj/item/packageWrap,
+/obj/item/wrapping_paper,
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6

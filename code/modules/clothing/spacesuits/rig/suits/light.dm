@@ -1,10 +1,10 @@
 // Light rigs are not space-capable, but don't suffer excessive slowdown or sight issues when depowered.
-/obj/item/weapon/rig/light
+/obj/item/rig/light
 	name = "light suit control module"
 	desc = "A lighter, less armoured rig suit."
 	icon_state = "ninja_rig"
 	suit_type = "light suit"
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/cell)
+	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/cell)
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 	emp_protection = 10
 	slowdown = 0
@@ -33,7 +33,7 @@
 /obj/item/clothing/head/helmet/space/rig/light
 	name = "hood"
 
-/obj/item/weapon/rig/light/hacker
+/obj/item/rig/light/hacker
 	name = "cybersuit control module"
 	suit_type = "cyber"
 	desc = "An advanced powered armour suit with many cyberwarfare enhancements. Comes with built-in insulated gloves for safely tampering with electronics."
@@ -75,7 +75,7 @@
 /obj/item/clothing/gloves/gauntlets/rig/light/hacker
 	siemens_coefficient = 0
 
-/obj/item/weapon/rig/light/ninja
+/obj/item/rig/light/ninja
 	name = "ominous suit control module"
 	suit_type = "ominous"
 	desc = "A unique suit of nano-enhanced armor designed for covert operations."
@@ -87,7 +87,7 @@
 	chest_type = /obj/item/clothing/suit/space/rig/light/ninja
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/light/ninja
 	boot_type = /obj/item/clothing/shoes/magboots/rig/light/ninja
-	cell_type =  /obj/item/weapon/cell/hyper
+	cell_type =  /obj/item/cell/hyper
 
 	req_access = list(access_syndicate)
 
@@ -117,7 +117,7 @@
 /obj/item/clothing/suit/space/rig/light/ninja
 	breach_threshold = 38 //comparable to regular hardsuits
 
-/obj/item/weapon/rig/light/stealth
+/obj/item/rig/light/stealth
 	name = "stealth suit control module"
 	suit_type = "stealth"
 	desc = "A highly advanced and expensive suit designed for covert operations."

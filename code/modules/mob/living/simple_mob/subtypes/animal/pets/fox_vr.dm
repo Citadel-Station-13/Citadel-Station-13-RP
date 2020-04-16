@@ -24,7 +24,7 @@
 	maxbodytemp = 323		//Above 50 Degrees Celcius
 
 	meat_amount = 1
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fox
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
 
 	say_list_type = /datum/say_list/fox
 	ai_holder_type = /datum/ai_holder/simple_mob/fox
@@ -175,7 +175,7 @@
 		return
 
 	if (!(ishuman(usr) && befriend_job && usr.job == befriend_job))
-		usr << "<span class='notice'>[src] ignores you.</span>"
+		to_chat(usr, "<span class='notice'>[src] ignores you.</span>")
 		return
 
 	friend = usr
@@ -183,7 +183,7 @@
 	setDir(get_dir(src, friend))
 	say("Yap!")
 */
-/obj/item/weapon/reagent_containers/food/snacks/meat/fox
+/obj/item/reagent_containers/food/snacks/meat/fox
 	name = "Fox meat"
 	desc = "The fox doesn't say a goddamn thing, now."
 

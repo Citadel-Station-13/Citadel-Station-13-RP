@@ -19,7 +19,7 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 100
-	circuit = /obj/item/weapon/circuitboard/jukebox
+	circuit = /obj/item/circuitboard/jukebox
 
 	// Vars for hacking
 	var/datum/wires/jukebox/wires = null
@@ -153,7 +153,7 @@
 		return
 	if(W.is_wirecutter())
 		return wires.Interact(user)
-	if(istype(W, /obj/item/device/multitool))
+	if(istype(W, /obj/item/multitool))
 		return wires.Interact(user)
 	if(W.is_wrench())
 		if(playing)

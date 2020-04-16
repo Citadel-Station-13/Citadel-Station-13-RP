@@ -151,23 +151,23 @@
 		for(var/obj/item/I in contents)
 			if(istype(I, /obj/item/organ))
 				continue
-			usr << "<span class='danger'>There is \a [I] sticking out of it.</span>"
+			to_chat(usr, "<span class='danger'>There is \a [I] sticking out of it.</span>")
 	return
 
-/obj/item/organ/external/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/obj/item/organ/external/attackby(obj/item/W as obj, mob/living/user as mob)
 	switch(stage)
 		if(0)
-			if(istype(W,/obj/item/weapon/surgical/scalpel))
+			if(istype(W,/obj/item/surgical/scalpel))
 				user.visible_message("<span class='danger'><b>[user]</b> cuts [src] open with [W]!</span>")
 				stage++
 				return
 		if(1)
-			if(istype(W,/obj/item/weapon/surgical/retractor))
+			if(istype(W,/obj/item/surgical/retractor))
 				user.visible_message("<span class='danger'><b>[user]</b> cracks [src] open like an egg with [W]!</span>")
 				stage++
 				return
 		if(2)
-			if(istype(W,/obj/item/weapon/surgical/hemostat))
+			if(istype(W,/obj/item/surgical/hemostat))
 				if(contents.len)
 					var/obj/item/removing = pick(contents)
 					removing.loc = get_turf(user.loc)
@@ -274,7 +274,7 @@
 
 	if(status & ORGAN_BROKEN && brute)
 		jostle_bone(brute)
-		if(organ_can_feel_pain() && prob(40) && !isbelly(owner.loc) && !istype(owner.loc, /obj/item/device/dogborg/sleeper)) //VOREStation Edit
+		if(organ_can_feel_pain() && prob(40) && !isbelly(owner.loc) && !istype(owner.loc, /obj/item/dogborg/sleeper)) //VOREStation Edit
 			owner.emote("scream")	//getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
@@ -411,11 +411,11 @@
 		else return 0
 
 	if(!damage_amount)
-		user << "<span class='notice'>Nothing to fix!</span>"
+		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
 		return 0
 
 	if(brute_dam + burn_dam >= min_broken_damage) //VOREStation Edit - Makes robotic limb damage scalable
-		user << "<span class='danger'>The damage is far too severe to patch over externally.</span>"
+		to_chat(user, "<span class='danger'>The damage is far too severe to patch over externally.</span>")
 		return 0
 
 	if(user == src.owner)
@@ -426,12 +426,12 @@
 			grasp = "r_hand"
 
 		if(grasp)
-			user << "<span class='warning'>You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)].</span>"
+			to_chat(user, "<span class='warning'>You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)].</span>")
 			return 0
 
 	user.setClickCooldown(user.get_attack_speed(tool))
 	if(!do_mob(user, owner, 10))
-		user << "<span class='warning'>You must stand still to do that.</span>"
+		to_chat(user, "<span class='warning'>You must stand still to do that.</span>")
 		return 0
 
 	switch(damage_type)
@@ -467,7 +467,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
-		if(!istype(implanted_object,/obj/item/weapon/implant) && !istype(implanted_object,/obj/item/device/nif))	// We don't want to remove REAL implants. Just shrapnel etc. //VOREStation Edit - NIFs pls
+		if(!istype(implanted_object,/obj/item/implant) && !istype(implanted_object,/obj/item/nif))	// We don't want to remove REAL implants. Just shrapnel etc. //VOREStation Edit - NIFs pls
 			implanted_object.loc = get_turf(src)
 			implants -= implanted_object
 
@@ -510,7 +510,7 @@ This function completely restores a damaged organ to perfect condition.
 		owner.custom_pain("You feel something rip in your [name]!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off
-	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.flags & NO_BLOOD) && !istype(owner.loc,/mob/living) && !istype(owner.loc,/obj/item/device/dogborg/sleeper)) // VOREStation Edit
+	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.flags & NO_BLOOD) && !istype(owner.loc,/mob/living) && !istype(owner.loc,/obj/item/dogborg/sleeper)) // VOREStation Edit
 		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - BLOOD_VOLUME_SURVIVE/100)
 		owner.remove_blood(fluid_loss)
 
@@ -690,7 +690,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(. >= 3 && antibiotics < ANTIBIO_OD)	//INFECTION_LEVEL_THREE
 		if (!(status & ORGAN_DEAD))
 			status |= ORGAN_DEAD
-			owner << "<span class='notice'>You can't feel your [name] anymore...</span>"
+			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
 			owner.update_icons_body()
 			for (var/obj/item/organ/external/child in children)
 				child.germ_level += 110 //Burst of infection from a parent organ becoming necrotic
@@ -954,10 +954,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 			qdel(src)
 
 	if(victim.l_hand)
-		if(istype(victim.l_hand,/obj/item/weapon/material/twohanded)) //if they're holding a two-handed weapon, drop it now they've lost a hand
+		if(istype(victim.l_hand,/obj/item/material/twohanded)) //if they're holding a two-handed weapon, drop it now they've lost a hand
 			victim.l_hand.update_held_icon()
 	if(victim.r_hand)
-		if(istype(victim.r_hand,/obj/item/weapon/material/twohanded))
+		if(istype(victim.r_hand,/obj/item/material/twohanded))
 			victim.r_hand.update_held_icon()
 
 /****************************************************
@@ -1177,7 +1177,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/is_malfunctioning()
 	return ((robotic >= ORGAN_ROBOT) && (brute_dam + burn_dam) >= min_broken_damage*0.83 && prob(brute_dam + burn_dam)) //VOREStation Edit - Makes robotic limb damage scalable
 
-/obj/item/organ/external/proc/embed(var/obj/item/weapon/W, var/silent = 0)
+/obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
 	if(owner.species.flags & IS_SLIME)

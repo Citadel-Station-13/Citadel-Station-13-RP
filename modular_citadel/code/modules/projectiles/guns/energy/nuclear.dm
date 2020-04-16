@@ -2,7 +2,7 @@
 	egun stuff goes here
 */
 
-/obj/item/weapon/gun/energy/gun/multiphase
+/obj/item/gun/energy/gun/multiphase
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
 	icon = 'modular_citadel/icons/obj/multiphase.dmi'

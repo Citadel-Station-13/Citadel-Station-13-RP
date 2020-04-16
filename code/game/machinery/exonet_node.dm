@@ -16,7 +16,7 @@
 
 	var/list/logs = list() // Gets written to by exonet's send_message() function.
 
-	circuit = /obj/item/weapon/circuitboard/telecomms/exonet_node
+	circuit = /obj/item/circuitboard/telecomms/exonet_node
 // Proc: New()
 // Parameters: None
 // Description: Adds components to the machine for deconstruction.
@@ -24,14 +24,14 @@
 	..()
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/subspace/ansible(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/sub_filter(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/crystal(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/treatment(src)
-	component_parts += new /obj/item/weapon/stock_parts/subspace/treatment(src)
+	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
+	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/subspace/crystal(src)
+	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
+	component_parts += new /obj/item/stock_parts/subspace/treatment(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	RefreshParts()
 

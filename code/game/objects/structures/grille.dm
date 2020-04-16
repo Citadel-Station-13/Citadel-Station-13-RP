@@ -92,7 +92,7 @@
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
 		return
-	if(istype(W, /obj/item/weapon/rcd)) // To stop us from hitting the grille when building windows, because grilles don't let parent handle it properly.
+	if(istype(W, /obj/item/rcd)) // To stop us from hitting the grille when building windows, because grilles don't let parent handle it properly.
 		return FALSE
 	else if(W.is_wirecutter())
 		if(!shock(user, 100))
@@ -129,23 +129,23 @@
 					else
 						dir_to_set = 4
 			else
-				user << "<span class='notice'>You can't reach.</span>"
+				to_chat(user, "<span class='notice'>You can't reach.</span>")
 				return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
 		for(var/obj/structure/window/WINDOW in loc)
 			if(WINDOW.dir == dir_to_set)
-				user << "<span class='notice'>There is already a window facing this way there.</span>"
+				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
 				return
-		user << "<span class='notice'>You start placing the window.</span>"
+		to_chat(user, "<span class='notice'>You start placing the window.</span>")
 		if(do_after(user,20))
 			for(var/obj/structure/window/WINDOW in loc)
 				if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
-					user << "<span class='notice'>There is already a window facing this way there.</span>"
+					to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
 					return
 
 			var/wtype = ST.material.created_window
 			if (ST.use(1))
 				var/obj/structure/window/WD = new wtype(loc, dir_to_set, 1)
-				user << "<span class='notice'>You place the [WD] on [src].</span>"
+				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
 				WD.update_icon()
 		return
 //window placing end
@@ -248,7 +248,7 @@
 	icon_state = "grillerustic-b"
 
 
-/obj/structure/grille/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/obj/structure/grille/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_WINDOWGRILLE)
 			// A full tile window costs 4 glass sheets.
@@ -266,7 +266,7 @@
 			)
 	return FALSE
 
-/obj/structure/grille/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/obj/structure/grille/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
 			to_chat(user, span("notice", "You deconstruct \the [src]."))

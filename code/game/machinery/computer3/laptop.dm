@@ -17,7 +17,7 @@
 */
 
 
-/obj/item/device/laptop
+/obj/item/laptop
 	name		= "Laptop Computer"
 	desc		= "A clamshell portable computer.  It is closed."
 	icon		= 'icons/obj/computer3.dmi'
@@ -28,10 +28,10 @@
 
 	var/obj/machinery/computer3/laptop/stored_computer = null
 
-/obj/item/device/laptop/get_cell()
+/obj/item/laptop/get_cell()
 	return stored_computer.battery
 
-/obj/item/device/laptop/verb/open_computer()
+/obj/item/laptop/verb/open_computer()
 	set name = "Open Laptop"
 	set category = "Object"
 	set src in view(1)
@@ -63,12 +63,12 @@
 	loc = stored_computer
 	to_chat(usr, "You open \the [src].")
 
-/obj/item/device/laptop/AltClick()
+/obj/item/laptop/AltClick()
 	if(Adjacent(usr))
 		open_computer()
 
 //Quickfix until Snapshot works out how he wants to redo power. ~Z
-/obj/item/device/laptop/verb/eject_id()
+/obj/item/laptop/verb/eject_id()
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in oview(1)
@@ -101,11 +101,11 @@
 	active_power_usage = 200 // Stationary consoles we use on station have 300, laptops are probably slightly more power efficient
 	idle_power_usage = 100
 
-	var/obj/item/device/laptop/portable = null
+	var/obj/item/laptop/portable = null
 
 /obj/machinery/computer3/laptop/New(var/L, var/built = 0)
 	if(!built && !battery)
-		battery = new /obj/item/weapon/cell(src)
+		battery = new /obj/item/cell(src)
 		battery.maxcharge = 500
 		battery.charge = 500
 	..(L,built)
@@ -126,7 +126,7 @@
 	close_laptop(usr)
 
 /obj/machinery/computer3/laptop/proc/close_laptop(mob/user = null)
-	if(istype(loc,/obj/item/device/laptop))
+	if(istype(loc,/obj/item/laptop))
 		testing("Close closed computer")
 		return
 	if(!istype(loc,/turf))
@@ -170,7 +170,7 @@
 		stat &= ~NOPOWER
 
 /obj/machinery/computer3/laptop/Destroy()
-	if(istype(loc,/obj/item/device/laptop))
+	if(istype(loc,/obj/item/laptop))
 		var/obj/O = loc
 		spawn(5)
 			if(O)

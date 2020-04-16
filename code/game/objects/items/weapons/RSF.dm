@@ -4,7 +4,7 @@ RSF
 
 */
 
-/obj/item/weapon/rsf
+/obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
 	desc = "A device used to rapidly deploy service items."
 	description_info = "Control Clicking on the device will allow you to choose the glass it dispenses when in the proper mode."
@@ -15,30 +15,30 @@ RSF
 	anchored = 0.0
 	var/stored_matter = 30
 	var/mode = 1
-	var/obj/item/weapon/reagent_containers/glasstype = /obj/item/weapon/reagent_containers/food/drinks/metaglass
+	var/obj/item/reagent_containers/glasstype = /obj/item/reagent_containers/food/drinks/metaglass
 
 	var/list/container_types = list(
-		"metamorphic glass" = /obj/item/weapon/reagent_containers/food/drinks/metaglass,
-		"half-pint glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/square,
-		"rocks glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/rocks,
-		"milkshake glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/shake,
-		"cocktail glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/cocktail,
-		"shot glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/shot,
-		"pint glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/pint,
-		"mug" = /obj/item/weapon/reagent_containers/food/drinks/glass2/mug,
-		"wine glass" = /obj/item/weapon/reagent_containers/food/drinks/glass2/wine,
-		"condiment bottle" = /obj/item/weapon/reagent_containers/food/condiment
+		"metamorphic glass" = /obj/item/reagent_containers/food/drinks/metaglass,
+		"half-pint glass" = /obj/item/reagent_containers/food/drinks/glass2/square,
+		"rocks glass" = /obj/item/reagent_containers/food/drinks/glass2/rocks,
+		"milkshake glass" = /obj/item/reagent_containers/food/drinks/glass2/shake,
+		"cocktail glass" = /obj/item/reagent_containers/food/drinks/glass2/cocktail,
+		"shot glass" = /obj/item/reagent_containers/food/drinks/glass2/shot,
+		"pint glass" = /obj/item/reagent_containers/food/drinks/glass2/pint,
+		"mug" = /obj/item/reagent_containers/food/drinks/glass2/mug,
+		"wine glass" = /obj/item/reagent_containers/food/drinks/glass2/wine,
+		"condiment bottle" = /obj/item/reagent_containers/food/condiment
 		)
 
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/rsf/examine(mob/user)
+/obj/item/rsf/examine(mob/user)
 	if(..(user, 0))
 		to_chat(user,"<span class='notice'>It currently holds [stored_matter]/30 fabrication-units.</span>")
 
-/obj/item/weapon/rsf/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/rsf/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if (istype(W, /obj/item/weapon/rcd_ammo))
+	if (istype(W, /obj/item/rcd_ammo))
 
 		if ((stored_matter + 10) > 30)
 			to_chat(user, "<span class='warning'>The RSF can't hold any more matter.</span>")
@@ -51,7 +51,7 @@ RSF
 		to_chat(user,"<span class='notice'>The RSF now holds [stored_matter]/30 fabrication-units.</span>")
 		return
 
-/obj/item/weapon/rsf/CtrlClick(mob/living/user)
+/obj/item/rsf/CtrlClick(mob/living/user)
 	if(!Adjacent(user) || !istype(user))
 		to_chat(user,"<span class='notice'>You are too far away.</span>")
 		return
@@ -60,44 +60,44 @@ RSF
 	if(glass_choice)
 		glasstype = container_types[glass_choice]
 	else
-		glasstype = /obj/item/weapon/reagent_containers/food/drinks/metaglass
+		glasstype = /obj/item/reagent_containers/food/drinks/metaglass
 
-/obj/item/weapon/rsf/attack_self(mob/user as mob)
+/obj/item/rsf/attack_self(mob/user as mob)
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 	if (mode == 1)
 		mode = 2
-		user << "Changed dispensing mode to 'Pint Glass'" //make it a little nicer
+		to_chat(user, "Changed dispensing mode to 'Pint Glass'") //make it a little nicer
 		return
 	if (mode == 2)
 		mode = 3
-		user << "Changed dispensing mode to 'Shot Glass'"
+		to_chat(user, "Changed dispensing mode to 'Shot Glass'")
 		return
 	if (mode == 3)
 		mode = 4
-		user << "Changed dispensing mode to 'Wine Glass'"
+		to_chat(user, "Changed dispensing mode to 'Wine Glass'")
 		return
 	if (mode == 4)
 		mode = 5
-		user << "Changed dispensing mode to 'Paper'"
+		to_chat(user, "Changed dispensing mode to 'Paper'")
 		return
 	if (mode == 5)
 		mode = 6
-		user << "Changed dispensing mode to 'Pen'"
+		to_chat(user, "Changed dispensing mode to 'Pen'")
 		return
 	if (mode == 6)
 		mode = 7
-		user << "Changed dispensing mode to 'Dice Pack'"
+		to_chat(user, "Changed dispensing mode to 'Dice Pack'")
 		return
 	if (mode == 7)
 		mode = 8
-		user << "Changed dispensing mode to 'Plushie' - WARNING: Requires Significant Charge"
+		to_chat(user, "Changed dispensing mode to 'Plushie' - WARNING: Requires Significant Charge")
 		return
 	if (mode == 8)
 		mode = 1
 		to_chat(user,"<span class='notice'>Changed dispensing mode to 'Cigarette'</span>")
 		return
 
-/obj/item/weapon/rsf/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/rsf/afterattack(atom/A, mob/user as mob, proximity)
 
 	if(!proximity) return
 
@@ -124,19 +124,19 @@ RSF
 			product = new glasstype()
 			used_energy = 50
 		if(3)
-			product = new /obj/item/weapon/reagent_containers/food/drinks/glass2/shot()
+			product = new /obj/item/reagent_containers/food/drinks/glass2/shot()
 			used_energy = 25
 		if(4)
-			product = new /obj/item/weapon/reagent_containers/food/drinks/glass2/wine()
+			product = new /obj/item/reagent_containers/food/drinks/glass2/wine()
 			used_energy = 25
 		if(5)
-			product = new /obj/item/weapon/paper()
+			product = new /obj/item/paper()
 			used_energy = 10
 		if(6)
-			product = new /obj/item/weapon/pen()
+			product = new /obj/item/pen()
 			used_energy = 50
 		if(7)
-			product = new /obj/item/weapon/storage/pill_bottle/dice()
+			product = new /obj/item/storage/pill_bottle/dice()
 			used_energy = 200
 		if(8)
 			product = new /obj/random/plushie() //dear god if this gets spammed i will commit die

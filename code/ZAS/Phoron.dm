@@ -45,7 +45,7 @@ obj/var/contaminated = 0
 	//Clothing and backpacks can be contaminated.
 	if(flags & PHORONGUARD)
 		return 0
-	else if(istype(src,/obj/item/weapon/storage/backpack))
+	else if(istype(src,/obj/item/storage/backpack))
 		return 0 //Cannot be washed :(
 	//VOREStation Addition start
 	else if(isbelly(loc))
@@ -82,7 +82,7 @@ obj/var/contaminated = 0
 			suit_contamination() //Phoron can sometimes get through such an open suit.
 
 //Cannot wash backpacks currently.
-//	if(istype(back,/obj/item/weapon/storage/backpack))
+//	if(istype(back,/obj/item/storage/backpack))
 //		back.contaminate()
 
 /mob/proc/pl_effects()
@@ -183,8 +183,8 @@ obj/var/contaminated = 0
 		gloves.contaminate()
 
 
-turf/Entered(obj/item/I)
-	. = ..()
+/turf/Entered(obj/item/I)
+	..()
 	//Items that are in phoron, but not on a mob, can still be contaminated.
 	if(istype(I) && vsc.plc.CLOTH_CONTAMINATION && I.can_contaminate())
 		var/datum/gas_mixture/env = return_air(1)
