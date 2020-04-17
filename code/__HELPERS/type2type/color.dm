@@ -44,9 +44,9 @@
 			b = (lightness+saturation) - (saturation*lightness)
 		a = 2*lightness - b
 
-		red = round(255 * hue2rgb(a, b, hue+(1/3)))
-		green = round(255 * hue2rgb(a, b, hue))
-		blue = round(255 * hue2rgb(a, b, hue-(1/3)))
+		red = round(255 * hue2rgb(a, b, hue+(1/3)), 1)
+		green = round(255 * hue2rgb(a, b, hue), 1)
+		blue = round(255 * hue2rgb(a, b, hue-(1/3)), 1)
 
 	return list(red, green, blue)
 
