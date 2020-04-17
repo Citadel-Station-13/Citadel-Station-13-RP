@@ -292,7 +292,7 @@
 	access = access_engine
 	contains = list(
 			/obj/machinery/power/emitter/gyrotron,
-			/obj/item/circuitboard/gyrotron
+			/obj/item/circuitboard/gyrotron_control
 			)
 
 /datum/supply_pack/eng/fusion_fuel_compressor
