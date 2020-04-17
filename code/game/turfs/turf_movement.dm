@@ -22,7 +22,8 @@ var/const/enterloopsanity = 100
 	var/objects = 0
 	if(A && (A.flags & PROXMOVE))
 		for(var/atom/movable/thing in range(1))
-			if(objects++ > enterloopsanity) break
+			if(objects++ > enterloopsanity)
+				break
 			spawn(0)
 				if(A) //Runtime prevention
 					A.HasProximity(thing, 1)
