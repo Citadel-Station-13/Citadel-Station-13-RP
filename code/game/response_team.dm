@@ -18,7 +18,7 @@ var/silent_ert = 0
 	if(!SSticker)
 		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
 		return
-	if(SSticker.current_state == 1)
+	if(SSticker.current_state <= GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
 	if(send_emergency_team)

@@ -112,8 +112,8 @@
 		if(open)
 			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
 
-/obj/item/rig/New()
-	..()
+/obj/item/rig/Initialize(mapload)
+	. = ..()
 
 	suit_state = icon_state
 	item_state = icon_state
