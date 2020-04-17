@@ -59,7 +59,7 @@
 			return
 		stop_pulling()
 
-	changeNext_move(CLICK_CD_GRABBING)
+	setClickCooldown(CLICK_CD_PULLING)
 
 	if(AM.pulledby)
 		if(!supress_message)
@@ -122,7 +122,6 @@
 			var/mob/living/carbon/human/H = AM
 			if(H.pull_damage())
 				to_chat(src, "<font color='red'><B>Pulling \the [H] in their current condition would probably be a bad idea.</B></font>")
-		pulled.inertia_dir = 0
 		// vorecode end
 
 /mob/verb/stop_pulling_verb()

@@ -318,7 +318,7 @@
   */
 /atom/movable/proc/Process_Spacemove(movement_dir = NONE)
 	if(has_gravity(src))
-		return TRUe
+		return TRUE
 
 	if(pulledby)
 		return TRUE

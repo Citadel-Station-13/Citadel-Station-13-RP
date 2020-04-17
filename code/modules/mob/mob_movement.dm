@@ -399,18 +399,13 @@
 ///Called by /client/Move()
 ///For moving in space
 ///Return 1 for movement 0 for none
-/mob/proc/Process_Spacemove(var/check_drift = 0)
-	if(!Check_Dense_Object()) //Nothing to push off of so end here
-		update_floating(0)
-		return 0
-
-	update_floating(1)
-
-	if(restrained()) //Check to see if we can do things
-		return 0
-
-	inertia_dir = 0
-	return 1
+/mob/Process_Spacemove(direction)
+	. = ..()
+	if(.)
+		return
+	if(Check_Dense_object())
+		update_floating(TRUE)
+		return TRUE
 
 /mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
 

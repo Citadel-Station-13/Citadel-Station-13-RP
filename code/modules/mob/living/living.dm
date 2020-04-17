@@ -888,26 +888,6 @@ default behaviour is:
 		return
 	..()
 
-/mob/living/touch_map_edge()
-
-	//check for nuke disks
-	if(client && stat != DEAD) //if they are clientless and dead don't bother, the parent will treat them as any other container
-		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear)) //only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = SSticker.mode
-			if(G.check_mob(src))
-				if(x <= TRANSITIONEDGE)
-					inertia_dir = 4
-				else if(x >= world.maxx -TRANSITIONEDGE)
-					inertia_dir = 8
-				else if(y <= TRANSITIONEDGE)
-					inertia_dir = 1
-				else if(y >= world.maxy -TRANSITIONEDGE)
-					inertia_dir = 2
-				to_chat(src, "<span class='warning'>Something you are carrying is preventing you from leaving.</span>")
-				return
-
-	..()
-
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
 	ear_damage = max(0, ear_damage + damage)
@@ -1192,17 +1172,8 @@ default behaviour is:
 
 	if(!src.lastarea)
 		src.lastarea = get_area(src.loc)
-	if((istype(src.loc, /turf/space)) || (src.lastarea.has_gravity == 0))
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
 
-
-/*
-	if(istype(src.loc, /turf/space) || (src.flags & NOGRAV)) //they're in space, move em one space in the opposite direction
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
-*/
-
+	newtonian_move(get_dir(target, src))
 
 	item.throw_at(target, throw_range, item.throw_speed, src)
 

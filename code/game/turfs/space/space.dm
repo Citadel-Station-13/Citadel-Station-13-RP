@@ -86,6 +86,9 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
+/turf/space/has_gravity(turf/T)
+	return FALSE
+
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
 	var/cur_x
 	var/cur_y
