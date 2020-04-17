@@ -137,7 +137,7 @@
 	flags = ON_BORDER
 	layer = STAIRS_LAYER
 
-/obj/structure/stairs/Initialize()
+/obj/structure/stairs/Initialize(mapload)
 	. = ..()
 	for(var/turf/turf in locs)
 		var/turf/simulated/open/above = GetAbove(turf)
@@ -153,17 +153,13 @@
 	. = ..()
 
 /obj/structure/stairs/Bumped(atom/movable/A)
+	. = ..()
 	// This is hackish but whatever.
 	var/turf/target = get_step(GetAbove(A), dir)
-	if(target.Enter(A, src)) // Pass src to be ignored to avoid infinate loop
-		var/oldpulling
-		var/mob/living/L
-		if(isliving(A))
-			L = A
-			oldpulling = L.pulling
-		A.forceMove(target)
-		if(oldpulling)
-			L.start_pulling(oldpulling)
+	for(var/i in A.getLocationTransitForceMoveAtoms(target))		//make sure they can all go through.
+		if(!target.Enter(i, src))
+			return
+	A.locationTransitForceMove(target)
 
 /obj/structure/stairs/proc/upperStep(var/turf/T)
 	return (T == loc)

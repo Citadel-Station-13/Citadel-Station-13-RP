@@ -211,6 +211,53 @@
 */
 	A.Bumped(src)
 
+/**
+  * forceMove but it brings along pulling/buckled stuff
+  * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
+  * Probably needs a better way of handling this in the future.
+  */
+
+/atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0)
+	var/atom/oldpulling = pulling
+	var/list/mob/oldbuckled = buckled_mobs.Copy()
+	doLocationTransitForceMove(destination)
+	if(oldpulling)
+		if(recurse_levels)
+			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
+		else
+			oldpulling.doLocationTransitForceMove(destination)
+		start_pulling(oldpulling)
+	if(length(oldbuckled))
+		for(var/mob/M in oldbuckled)
+			if(recurse_levels)
+				M.locationTransitForceMove(destination, recurse_levels - 1)
+			else
+				M.doLocationTransitForceMove(destination)
+		buckle_mob(M, force = TRUE)
+
+/**
+  * Gets the atoms that we'd pull along with a locationTransitForceMove
+  */
+/atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
+	. = list(src)
+	if(pulling)
+		if(recurse_levels)
+			. |= pulling.getLocationocationTransitForceMoveTargets(destination, recurse_levels - 1)
+		else
+			. |= pulling
+	if(buckled_mobs)
+		for(var/mob/M in oldbuckled)
+			if(recurse_levels)
+				. |= M.getLocationTransitForceMoveAtoms(destination, recurse_levels - 1)
+			else
+				. |= M
+
+/**
+  * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
+  */
+/atom/movable/proc/doLocationTransitForceMove(atom/destination)
+	forceMove(destination)
+
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
 	if(destination)
