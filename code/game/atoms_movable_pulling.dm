@@ -40,6 +40,7 @@
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 	pulling = AM
 	AM.pulledby = src
+	AM.set_glide_size(glide_size)
 
 	if(ismob(AM))
 		var/mob/M = AM
@@ -56,6 +57,7 @@
 	if(pulling)
 		. = pulling
 		pulling.pulledby = null
+		pulling.reset_glide_size()
 		pulling = null
 
 /**

@@ -32,6 +32,9 @@
 	return
 
 /mob/living/carbon/human/RangedAttack(var/atom/A)
+	if(isturf(A) && get_dist(A, src) <= 1)
+		move_pulled_towards(A)
+		return
 	if(!gloves && !mutations.len && !spitting)
 		return
 	var/obj/item/clothing/gloves/G = gloves
