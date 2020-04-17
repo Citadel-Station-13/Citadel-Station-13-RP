@@ -50,8 +50,7 @@
 	return material
 
 /obj/item/material/proc/update_force()
-	if(material = datum/material/supermatter)
-		force = 150 //double the force of a durasteel claymore.
+
 	if(edge || sharp)
 		force = material.get_edge_damage()
 	else
@@ -59,6 +58,8 @@
 	force = round(force*force_divisor)
 	if(dulled)
 		force = round(force*dulled_divisor)
+	if(material = datum/material/supermatter)
+		force = 150 //double the force of a durasteel claymore.
 	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
 	//spawn(1)
 	//	world << "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]"
