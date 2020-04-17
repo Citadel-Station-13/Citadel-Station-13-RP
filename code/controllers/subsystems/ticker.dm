@@ -3,8 +3,26 @@ SUBSYSTEM_DEF(ticker)
 	wait = 20
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	var/const/restart_timeout = 3 MINUTES //One minute is 600.
-	var/current_state = GAME_STATE_PREGAME
+	/// Current state of the game
+	var/static/current_state = GAME_STATE_INIT
+
+	/// Did we attempt an automatic gamemode vote?
+	var/static/auto_gamemode_vote_attempted = FALSE
+
+	/// What world.time we startED the game, set at round start.
+	var/static/round_start_time
+	/// What world.time we endED the game, set at round end.
+	var/static/round_end_time
+
+	/// Should we immediately start?
+	var/start_immediately = FALSE
+	/// Is everything in order for us to start a timed reboot?
+	var/ready_for_reboot = FALSE
+	/// Is round end delayed?
+	var/delay_end = FALSE
+
+	var/timeLeft						//pregame timer
+	var/start_at
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
@@ -27,10 +45,6 @@ SUBSYSTEM_DEF(ticker)
 	var/list/factions = list()			  // list of all factions
 	var/list/availablefactions = list()	  // list of factions with openings
 
-	var/pregame_timeleft = 0
-
-	var/delay_end = 0	//if set to nonzero, the round will not restart on it's own
-
 	var/triai = 0//Global holder for Triumvirate
 
 	var/round_end_announced = 0 // Spam Prevention. Announce round end only once.
@@ -38,6 +52,116 @@ SUBSYSTEM_DEF(ticker)
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/obj/screen/cinematic = null
+
+
+/datum/controller/subsystem/ticker/Initialize()
+	if(!syndicate_code_phrase)
+		syndicate_code_phrase	= generate_code_phrase()
+	if(!syndicate_code_response)
+		syndicate_code_response = generate_code_phrase()
+
+	// Set up antagonists.
+	populate_antag_type_list()
+
+	//Set up spawn points.
+	populate_spawn_points()
+
+	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+
+	return ..()
+
+/datum/controller/subsystem/ticker/fire()
+	switch(current_state)
+		if(GAME_STATE_INIT)
+			// We fire after init finishes
+			on_mc_init_finish()
+		if(GAME_STATE_PREGAME)
+			process_pregame()
+		if(GAME_STATE_SETTING_UP)
+			setup()
+		if(GAME_STATE_PLAYING)
+			round_process()
+
+/datum/controller/subsystem/ticker/proc/on_mc_init_finish()
+	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
+	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
+	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
+	current_state = GAME_STATE_PREGAME
+	if(Master.initializations_finished_with_no_players_logged_in)
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	fire()
+
+/datum/controller/subsystem/ticker/proc/process_pregame()
+	if(isnull(timeLeft))
+		timeLeft = max(0,start_at - world.time)
+	if(start_immediately)
+		timeLeft = 0
+	if(timeLeft < 0)
+		return
+	timeLeft -= wait
+	if(!auto_gamemode_vote_attempted && (timeLeft <= CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))
+		auto_gamemode_vote_attempted = TRUE
+		// patch this code later
+		if(!SSvote.time_remaining)
+			SSvote.autogamemode()
+		//end
+	if(timeLeft <= 0)
+		current_state = GAME_STATE_SETTING_UP
+		Master.SetRunLevel(RUNLEVEL_SETUP)
+		if(start_immediately)
+			fire()
+
+/datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
+	set waitfor = FALSE
+	if(usr && !check_rights(R_SERVER, TRUE))
+		return
+
+	if(!delay)
+		delay = CONFIG_GET(number/round_end_countdown) * 10
+
+	if(delay_end)
+		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
+		return
+
+	to_chat(world, "<span class='boldannounce'>Rebooting World in [DisplayTimeText(delay)]. [reason]</span>")
+
+	var/start_wait = world.time
+	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
+	while(world.time - start_wait < delay)
+		if(delay_end)		//delayed, break loop.
+			break
+		var/timeleft = delay - (world.time - start_wait)
+		// If we have less than 10 seconds left.
+		if(timeleft <= 10 SECONDS)
+			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			sleep(10)
+		//If we have 30 seconds left, announce and sleep for the rest of the time.
+		if(timeleft <= 30 SECONDS)
+			var/time = timeleft - 10 SECONDS
+			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			sleep(time)
+		// Otherwise, per minute.
+		else
+			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			sleep(60 SECONDS)
+
+	if(delay_end)
+		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
+		return
+	log_game("<span class='boldannounce'>World reboot triggered by ticker. [reason]</span>")
+
+	world.Reboot()
+
+/datum/controller/subsystem/ticker/proc/GetTimeLeft()
+	if(isnull(SSticker.timeLeft))
+		return max(0, start_at - world.time)
+	return timeLeft
+
+/datum/controller/subsystem/ticker/proc/SetTimeLeft(newtime)
+	if(newtime >= 0 && isnull(timeLeft))	//remember, negative means delayed
+		start_at = world.time + newtime
+	else
+		timeLeft = newtime
 
 /datum/controller/subsystem/ticker/proc/setup()
 	//Create and announce mode
@@ -131,6 +255,7 @@ SUBSYSTEM_DEF(ticker)
 	*/
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
+	round_start_time = world.time
 
 	if(config_legacy.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
@@ -277,50 +402,12 @@ SUBSYSTEM_DEF(ticker)
 			if(!istype(M,/mob/new_player))
 				to_chat(M, "Colony Directorship not forced on anyone.")
 
-/datum/controller/subsystem/ticker/Initialize()
-	if(!syndicate_code_phrase)
-		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)
-		syndicate_code_response = generate_code_phrase()
-
-	// Set up antagonists.
-	populate_antag_type_list()
-
-	//Set up spawn points.
-	populate_spawn_points()
-
-	send2mainirc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
-	pregame_timeleft = 180
-	to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
-	to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
-	return ..()
-
-/datum/controller/subsystem/ticker/fire()
-	switch(current_state)
-		if(GAME_STATE_PREGAME)
-			pregame()
-		if(GAME_STATE_SETTING_UP)
-			setup()
-		if(GAME_STATE_PLAYING)
-			round_process()
-
-/datum/controller/subsystem/ticker/proc/pregame()
-	if(round_progressing)
-		pregame_timeleft--
-	if(pregame_timeleft == config_legacy.vote_autogamemode_timeleft)
-		if(!SSvote.time_remaining)
-			SSvote.autogamemode()	//Quit calling this over and over and over and over.
-	if(pregame_timeleft <= 0)
-		current_state = GAME_STATE_SETTING_UP
-		Master.SetRunLevel(RUNLEVEL_SETUP)
 
 /datum/controller/subsystem/ticker/proc/round_process()
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
 	mode.process()
-
-//		SSemergencyshuttle.process() //handled in scheduler
 
 	var/game_finished = 0
 	var/mode_finished = 0
@@ -333,6 +420,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
 		current_state = GAME_STATE_FINISHED
+		round_end_time = world.time
 		Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 		spawn
@@ -341,34 +429,18 @@ SUBSYSTEM_DEF(ticker)
 		spawn(50)
 			callHook("roundend")
 
-			var/time_left
-
 			if (mode.station_was_nuked)
 				feedback_set_details("end_proper","nuke")
-				time_left = 1 MINUTE //No point waiting five minutes if everyone's dead.
-				if(!delay_end)
-					to_chat(world, "<span class='notice'><b>Rebooting due to destruction of station in [round(time_left/600)] minutes.</b></span>")
 			else
 				feedback_set_details("end_proper","proper completion")
-				time_left = round(restart_timeout)
 
 
 			if(blackbox)
 				blackbox.save_all_data_to_sql()
 
-			if(!delay_end)
-				while(time_left > 0)
-					if(delay_end)
-						break
-					to_chat(world, "<span class='notice'><b>Restarting in [round(time_left/600)] minute\s.</b></span>")
-					time_left -= 1 MINUTES
-					sleep(600)
-				if(!delay_end)
-					world.Reboot()
-				else
-					to_chat(world, "<span class='notice'><b>An admin has delayed the round end.</b></span>")
-			else
-				to_chat(world, "<span class='notice'><b>An admin has delayed the round end.</b></span>")
+			ready_for_reboot = TRUE
+			standard_reboot()
+
 
 	else if (mode_finished)
 		post_game = 1
