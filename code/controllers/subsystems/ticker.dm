@@ -258,7 +258,8 @@ SUBSYSTEM_DEF(ticker)
 	round_start_time = world.time
 
 	if(config_legacy.sql_enabled)
-		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
+		//THIS REQUIRES THE INVOKE ASYNC.
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
 
