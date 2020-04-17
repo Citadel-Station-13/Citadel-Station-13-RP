@@ -737,6 +737,7 @@ var/list/name_to_material
 	sheet_singular_name = "sheet"
 	sheet_plural_name = "sheets"
 
+//exotic wonder material
 /datum/material/morphium
 	name = MAT_MORPHIUM
 	stack_type = /obj/item/stack/material/morphium
@@ -745,17 +746,17 @@ var/list/name_to_material
 	icon_colour = "#37115A"
 	icon_reinf = "reinf_metal"
 	protectiveness = 60
-	integrity = 300
+	integrity = 900
 	conductive = 0
 	conductivity = 1.5
-	hardness = 90
+	hardness = 120
 	shard_type = SHARD_SHARD
 	weight = 30
 	negation = 25
 	explosion_resistance = 85
 	reflectivity = 0.2
 	radiation_resistance = 10
-	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_ILLEGAL = 1, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_ARCANE = 1)
+	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8 TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 4)
 
 /datum/material/morphium/hull
 	name = MAT_MORPHIUMHULL
