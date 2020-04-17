@@ -756,7 +756,7 @@ var/list/name_to_material
 	explosion_resistance = 85
 	reflectivity = 0.2
 	radiation_resistance = 10
-	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8 TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 4)
+	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8, TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 4)
 
 /datum/material/morphium/hull
 	name = MAT_MORPHIUMHULL
