@@ -78,6 +78,14 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
+/obj/item/material/attack(atom/A)
+	if(material = /datum/material/supermatter)
+		visible_message(7, "The [name] strikes the [A.name], causing it to vanish!") //this is an awful idea
+		qdel(A)
+		SSradiation.radiate(get_turf(src), 10)
+	else
+		..()
+
 /obj/item/material/apply_hit_effect()
 	..()
 	if(!unbreakable)
