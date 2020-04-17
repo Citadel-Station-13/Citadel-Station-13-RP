@@ -156,7 +156,7 @@
 		return ..()
 */
 
-	if(item_place && (user.a_intent != I_HURT))
+	if(item_place && (user.a_intent != INTENT_HARM))
 		user.drop_item(src.loc)
 		var/list/click_params = params2list(params)
 		//Center the icon where the user clicked.
