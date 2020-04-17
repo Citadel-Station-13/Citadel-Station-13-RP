@@ -44,7 +44,7 @@ var/const/enterloopsanity = 100
 	// By default byond will call Bump() on the first dense object in contents
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
-	var/CanAllowThroughSelf = CanPass(mover, src)
+	var/CanPassSelf = CanPass(mover, src)
 	if(CanPassSelf || CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
 		for(var/i in contents)
 			if(QDELETED(mover))

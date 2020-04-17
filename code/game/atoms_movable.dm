@@ -14,7 +14,6 @@
 
 	var/anchored = 0
 	// var/elevation = 2    - not used anywhere
-	var/moving_diagonally
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1

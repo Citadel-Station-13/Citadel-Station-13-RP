@@ -40,9 +40,7 @@
 	set category = "Object"
 
 	if(AM.Adjacent(src))
-		src.start_pulling(AM)
-
-	return
+		start_pulling(AM)
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())
@@ -983,6 +981,10 @@ default behaviour is:
 			lastpuke = 0
 
 /mob/living/update_canmove()
+	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
+	if(restrained())
+		stop_pulling()
+	// End
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 		canmove = 1
