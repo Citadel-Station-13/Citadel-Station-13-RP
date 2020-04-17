@@ -50,6 +50,8 @@
 	return material
 
 /obj/item/material/proc/update_force()
+	if(material = datum/material/supermatter)
+		force = 150 //double the force of a durasteel claymore.
 	if(edge || sharp)
 		force = material.get_edge_damage()
 	else
