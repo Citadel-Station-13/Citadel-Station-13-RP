@@ -218,39 +218,47 @@
   */
 
 /atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0)
-	var/atom/oldpulling = pulling
-	var/list/mob/oldbuckled = buckled_mobs.Copy()
+	var/list/mob/oldbuckled = buckled_mobs?.Copy()
 	doLocationTransitForceMove(destination)
-	if(oldpulling)
-		if(recurse_levels)
-			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
-		else
-			oldpulling.doLocationTransitForceMove(destination)
-		start_pulling(oldpulling)
 	if(length(oldbuckled))
 		for(var/mob/M in oldbuckled)
 			if(recurse_levels)
 				M.locationTransitForceMove(destination, recurse_levels - 1)
 			else
 				M.doLocationTransitForceMove(destination)
-		buckle_mob(M, force = TRUE)
+			buckle_mob(M, force = TRUE)
+
+// until movement rework
+/mob/locationTransitForceMove(atom/destination, recurse_levels = 0)
+	var/atom/movable/oldpulling = pulling
+	. = ..()
+	if(oldpulling)
+		if(recurse_levels)
+			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
+		else
+			oldpulling.doLocationTransitForceMove(destination)
+		start_pulling(oldpulling)
 
 /**
   * Gets the atoms that we'd pull along with a locationTransitForceMove
   */
 /atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
 	. = list(src)
-	if(pulling)
-		if(recurse_levels)
-			. |= pulling.getLocationocationTransitForceMoveTargets(destination, recurse_levels - 1)
-		else
-			. |= pulling
 	if(buckled_mobs)
-		for(var/mob/M in oldbuckled)
+		for(var/mob/M in buckled_mobs)
 			if(recurse_levels)
-				. |= M.getLocationTransitForceMoveAtoms(destination, recurse_levels - 1)
+				. |= M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1)
 			else
 				. |= M
+
+// until movement rework
+/mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
+	. = ..()
+	if(pulling)
+		if(recurse_levels)
+			. |= pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1)
+		else
+			. |= pulling
 
 /**
   * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().

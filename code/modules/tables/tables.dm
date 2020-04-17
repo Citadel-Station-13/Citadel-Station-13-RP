@@ -30,7 +30,8 @@ var/list/table_icon_cache = list()
 
 	var/list/connections = list("nw0", "ne0", "sw0", "se0")
 
-	var/item_place = 1 //allows items to be placed on the table, but not on benches.
+	/// Can people place items on us by clicking on us?
+	var/item_place = TRUE
 
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth

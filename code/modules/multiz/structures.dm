@@ -156,7 +156,7 @@
 	. = ..()
 	// This is hackish but whatever.
 	var/turf/target = get_step(GetAbove(A), dir)
-	for(var/i in A.getLocationTransitForceMoveAtoms(target))		//make sure they can all go through.
+	for(var/i in A.getLocationTransitForceMoveTargets(target))		//make sure they can all go through.
 		if(!target.Enter(i, src))
 			return
 	A.locationTransitForceMove(target)
