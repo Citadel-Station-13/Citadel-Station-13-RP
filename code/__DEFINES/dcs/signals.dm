@@ -145,7 +145,10 @@
 	#define HEARING_SPANS 6
 	#define HEARING_MESSAGE_MODE 7 */
 #define COMSIG_MOVABLE_DISPOSING "movable_disposing"			//called when the movable is added to a disposal holder object for disposal movement: (obj/structure/disposalholder/holder, obj/machinery/disposal/source)
+*/
+#define COMSIG_MOVABLE_CHANGE_GLIDE_SIZE "glide_size_changed"	//from base of atom/movable/set_glide_size(new_glide_size, old_glide_size)
 
+/*
 // /mob signals
 #define COMSIG_MOB_DEATH "mob_death"							//from base of mob/death(): (gibbed)
 
