@@ -275,3 +275,17 @@
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		var/atom/movable/AM = item
 		AM.onTransitZ(old_z,new_z)
+
+/**
+  * Sets our glide size
+  */
+/atom/movable/proc/set_glide_size(new_glide_size)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_CHANGE_GLIDE_SIZE, new_glide_size, glide_size)
+	glide_size = new_glide_size
+
+/**
+  * Sets our glide size back to our standard glide size.
+  */
+
+/atom/movable/proc/reset_glide_size()
+	set_glide_size(default_glide_size)

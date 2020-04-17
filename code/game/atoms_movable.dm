@@ -1,6 +1,9 @@
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	/// Our default glide_size.
+	var/default_glide_size = 0
+
 	var/last_move = null
 	var/anchored = 0
 	// var/elevation = 2    - not used anywhere

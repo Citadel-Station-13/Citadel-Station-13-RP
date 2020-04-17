@@ -15,3 +15,7 @@ $include entries/lobby.txt
 # @LOG_TWITTER 0
 # Which explicitly disables LOG_TWITTER, as well as locking it.
 # There are various options which are hard-locked for security reasons.
+
+## Uncomment to enable minimap generation
+MINIMAPS_ENABLED
+ 

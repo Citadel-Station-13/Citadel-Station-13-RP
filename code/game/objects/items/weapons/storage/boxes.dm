@@ -475,3 +475,8 @@
 	name = "ambrosia deus seeds box"
 	desc = "Contains the seeds you need to get a proper healthy high."
 	starts_with = list(/obj/item/seeds/ambrosiadeusseed = 7)
+
+/obj/item/storage/box/wormcan
+	name = "box of worms"
+	desc = "It's a box filled with worms."
+	starts_with = list(/obj/item/reagent_containers/food/snacks/worm = 10)
