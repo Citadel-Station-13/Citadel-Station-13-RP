@@ -50,7 +50,6 @@
 	return material
 
 /obj/item/material/proc/update_force()
-
 	if(edge || sharp)
 		force = material.get_edge_damage()
 	else
@@ -58,7 +57,7 @@
 	force = round(force*force_divisor)
 	if(dulled)
 		force = round(force*dulled_divisor)
-	if(material == datum/material/supermatter)
+	if(material == /datum/material/supermatter)
 		force = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
 	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
