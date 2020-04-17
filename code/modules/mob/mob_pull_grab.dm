@@ -7,8 +7,8 @@
 		return FALSE
 
 	// vorecode start why isn't this move force
-	var/mob/M = AM
 	if(ismob(AM))
+		var/mob/M = AM
 
 		if(!can_pull_mobs || !can_pull_size)
 			to_chat(src, "<span class='warning'>They won't budge!</span>")

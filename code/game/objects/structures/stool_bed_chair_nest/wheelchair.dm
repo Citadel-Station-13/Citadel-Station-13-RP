@@ -45,7 +45,7 @@
 		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
 			pulling_along.pulledby = null
 			pulling_along = null
-	if(user.pulling_along && (user == pulling_along))
+	if(user.pulling && (user == pulling_along))
 		pulling_along = null
 		user.pulledby = null
 		return
@@ -143,8 +143,8 @@
 		if(!pulling_along)
 			pulling_along = user
 			user.pulledby = src
-			if(user.pulling_along)
-				user.stop_pulling_along()
+			if(user.pulling)
+				user.stop_pulling()
 			user.setDir(get_dir(user, src))
 			to_chat(user, "You grip \the [name]'s handles.")
 		else
