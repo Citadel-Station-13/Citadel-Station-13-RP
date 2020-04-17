@@ -229,6 +229,61 @@
 */
 	A.Bumped(src)
 
+/**
+  * forceMove but it brings along pulling/buckled stuff
+  * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
+  * Probably needs a better way of handling this in the future.
+  */
+
+/atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0)
+	var/list/mob/oldbuckled = buckled_mobs?.Copy()
+	doLocationTransitForceMove(destination)
+	if(length(oldbuckled))
+		for(var/mob/M in oldbuckled)
+			if(recurse_levels)
+				M.locationTransitForceMove(destination, recurse_levels - 1)
+			else
+				M.doLocationTransitForceMove(destination)
+			buckle_mob(M, force = TRUE)
+
+// until movement rework
+/mob/locationTransitForceMove(atom/destination, recurse_levels = 0)
+	var/atom/movable/oldpulling = pulling
+	. = ..()
+	if(oldpulling)
+		if(recurse_levels)
+			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
+		else
+			oldpulling.doLocationTransitForceMove(destination)
+		start_pulling(oldpulling)
+
+/**
+  * Gets the atoms that we'd pull along with a locationTransitForceMove
+  */
+/atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
+	. = list(src)
+	if(buckled_mobs)
+		for(var/mob/M in buckled_mobs)
+			if(recurse_levels)
+				. |= M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1)
+			else
+				. |= M
+
+// until movement rework
+/mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
+	. = ..()
+	if(pulling)
+		if(recurse_levels)
+			. |= pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1)
+		else
+			. |= pulling
+
+/**
+  * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
+  */
+/atom/movable/proc/doLocationTransitForceMove(atom/destination)
+	forceMove(destination)
+
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
 	if(destination)
@@ -346,3 +401,17 @@
 	inertia_last_loc = loc
 	SSspacedrift.processing[src] = src
 	return TRUE
+
+/**
+  * Sets our glide size
+  */
+/atom/movable/proc/set_glide_size(new_glide_size)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_CHANGE_GLIDE_SIZE, new_glide_size, glide_size)
+	glide_size = new_glide_size
+
+/**
+  * Sets our glide size back to our standard glide size.
+  */
+
+/atom/movable/proc/reset_glide_size()
+	set_glide_size(default_glide_size)

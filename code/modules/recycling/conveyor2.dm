@@ -15,6 +15,9 @@
 	anchored = 1
 	circuit = /obj/item/circuitboard/conveyor
 	speed_process = TRUE
+	/// What we set things to glide size to when they are being moved by us
+	var/conveyor_glide_size = 8
+
 	var/operating = OFF	// 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1	// true if can operate (no broken segments in this belt run)
 	var/forwards		// this is the default (forward) direction, set by the map dir
@@ -60,6 +63,16 @@
 	. =..()
 	update_dir()
 
+/obj/machinery/conveyor/Crossed(atom/movable/AM)
+	. = ..()
+	if(operating)
+		AM.set_glide_size(conveyor_glide_size)
+
+/obj/machinery/conveyor/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(operating)
+		AM.reset_glide_size()
+
 /obj/machinery/conveyor/proc/update_dir()
 	if(!(dir in cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
 		forwards = turn(dir, 135)
@@ -77,6 +90,9 @@
 		operating = OFF
 	if(stat & NOPOWER)
 		operating = OFF
+	if(operating)
+		for(var/atom/movable/AM in loc)
+			AM.set_glide_size(conveyor_glide_size)
 	icon_state = "conveyor[operating]"
 
 	// machine process

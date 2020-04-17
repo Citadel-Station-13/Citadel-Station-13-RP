@@ -199,6 +199,7 @@
 /obj/item/crossbowframe
 	name = "crossbow frame"
 	desc = "A half-finished crossbow."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "crossbowframe0"
 	item_state = "crossbow-solid"
 

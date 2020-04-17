@@ -71,8 +71,9 @@
 	return
 
 
-/obj/structure/table/attackby(obj/item/W as obj, mob/user as mob)
-	if (!W) return
+/obj/structure/table/attackby(obj/item/W, mob/user, params)
+	if (!W)
+		return
 
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
@@ -139,9 +140,33 @@
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
 		return
 
-	if(item_place)
+/*
+	if(user.a_intent != INTENT_HARM && !(I.item_flags & ABSTRACT))
+		if(user.transferItemToLoc(I, drop_location(), silent = FALSE))
+			var/list/click_params = params2list(params)
+			//Center the icon where the user clicked.
+			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+				return
+			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
+			I.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			I.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			AfterPutItemOnTable(I, user)
+			return TRUE
+	else
+		return ..()
+*/
+
+	if(item_place && (user.a_intent != I_HURT))
 		user.drop_item(src.loc)
-	return
+		var/list/click_params = params2list(params)
+		//Center the icon where the user clicked.
+		if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+			return
+		//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
+		W.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		W.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		return TRUE
+	return ..()
 
 /obj/structure/table/attack_tk() // no telehulk sorry
 	return

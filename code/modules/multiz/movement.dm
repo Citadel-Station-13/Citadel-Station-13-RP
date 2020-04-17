@@ -330,22 +330,20 @@
 			return FALSE
 	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
-	// Now lets move there!
-	if(!Move(landing))
-		return 1
+	// this is shitcode lmao
+	var/obj/structure/stairs = locate() in landing
+	if(!stairs)
 
-	// Detect if we made a silent landing.
-	if(locate(/obj/structure/stairs) in landing)
-		if(isliving(src))
-			var/mob/living/L = src
-			if(L.pulling)
-				L.pulling.forceMove(landing)
-		return 1
-	else
+		// Now lets move there!
+		if(!Move(landing))
+			return 1
+
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
 			return
 		fall_impact(A)
+	else
+		locationTransitForceMove(landing)
 
 /atom/movable/proc/special_fall_handle(var/atom/A)
 	return FALSE

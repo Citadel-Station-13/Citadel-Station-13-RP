@@ -611,8 +611,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(istype(M,/mob/living/silicon/ai)) return
 	show_inv(usr)
 
-
-
 /mob/proc/can_use_hands()
 	return
 

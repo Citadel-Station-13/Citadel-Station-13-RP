@@ -921,25 +921,39 @@ var/datum/announcement/minor/admin_min_announcer = new
 	message_admins("[key_name_admin(usr)] toggled Space Ninjas [config_legacy.ninjas_allowed ? "on" : "off"].", 1)
 	feedback_add_details("admin_verb","TSN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/delay()
+/datum/admins/proc/delay_end()
 	set category = "Server"
-	set desc="Delay the game start/end"
-	set name="Delay"
+	set desc="Delay the game end"
+	set name="Delay reboot"
 
-	if(!check_rights(R_SERVER|R_EVENT))	return
-	if (!SSticker || SSticker.current_state != GAME_STATE_PREGAME)
-		SSticker.delay_end = !SSticker.delay_end
-		log_admin("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		message_admins("<font color='blue'>[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].</font>", 1)
-		return //alert("Round end delayed", null, null, null, null, null)
-	round_progressing = !round_progressing
-	if (!round_progressing)
-		to_chat(world, "<b>The game start has been delayed.</b>")
-		log_admin("[key_name(usr)] delayed the game.")
-	else
-		to_chat(world, "<b>The game will start soon.</b>")
-		log_admin("[key_name(usr)] removed the delay.")
-	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	if(!check_rights(R_SERVER))
+		return
+	SSticker.delay_end = !SSticker.delay_end
+	var/msg = "[SSticker.delay_end ? "delayed" : "undelayed"] the round end"
+	log_admin("[key_name(usr)] [msg]")
+	message_admins("[key_name_admin(usr)] [msg]")
+	if(SSticker.ready_for_reboot && !SSticker.delay_end) //we undelayed after standard reboot would occur
+		SSticker.standard_reboot()
+
+/datum/admins/proc/delay_start()
+	set category = "Server"
+	set desc = "Delay the game start"
+	set name = "Delay pre-game"
+
+	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.","Set Delay",round(SSticker.GetTimeLeft()/10)) as num|null
+	if(SSticker.current_state > GAME_STATE_PREGAME)
+		return alert("Too late... The game has already started!")
+	if(newtime)
+		newtime = newtime*10
+		SSticker.SetTimeLeft(newtime)
+		if(newtime < 0)
+			to_chat(world, "<b>The game start has been delayed.</b>")
+			log_admin("[key_name(usr)] delayed the round start.")
+		else
+			to_chat(world, "<b>The game will start in [DisplayTimeText(newtime)].</b>")
+			SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
+			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
+//		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adjump()
 	set category = "Server"

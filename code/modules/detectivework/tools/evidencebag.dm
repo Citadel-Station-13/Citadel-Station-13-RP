@@ -17,9 +17,6 @@
 
 	var/mob/living/carbon/human/user = usr
 
-	if(!user.item_is_in_hands(src))
-		return //bag must be in your hands to use
-
 	if (isturf(I.loc))
 		if (!user.Adjacent(I))
 			return
@@ -50,8 +47,8 @@
 		to_chat(user, "<span class='notice'>[src] already has something inside it.</span>")
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
-	"You hear a rustle as someone puts something into a plastic bag.")
+	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",
+		"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
 

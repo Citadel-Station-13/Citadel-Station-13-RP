@@ -209,6 +209,13 @@
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
 
+/obj/structure/bed/roller/doLocationTransitForceMove(atom/destination)
+	var/list/old_buckled = buckled_mobs?.Copy()
+	. = ..()
+	if(old_buckled)
+		for(var/mob/M in old_buckled)
+			buckle_mob(M, force = TRUE)
+
 /obj/structure/bed/roller/update_icon()
 	return
 

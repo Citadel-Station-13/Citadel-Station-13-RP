@@ -24,6 +24,9 @@
 	/// Movement types, see __DEFINES/flags/movement.dm
 	var/movement_type = NONE
 
+	/// Our default glide_size.
+	var/default_glide_size = 0
+
 	var/anchored = 0
 	var/move_speed = 10
 	var/l_move_time = 1
