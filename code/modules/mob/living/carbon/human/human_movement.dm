@@ -91,6 +91,7 @@
 	// Item related slowdown.
 	var/item_tally = calculate_item_encumbrance()
 
+	/* removed - kevinz000. A system will eventually be reintroduced to do this, but for the moment I'd rather this Not be a thing.
 	// Dragging heavy objects will also slow you down, similar to above.
 	if(pulling)
 		if(istype(pulling, /obj/item))
@@ -100,6 +101,7 @@
 			var/mob/living/carbon/human/H = pulling
 			var/their_slowdown = max(H.calculate_item_encumbrance(), 1)
 			item_tally = max(item_tally, their_slowdown) // If our slowdown is less than theirs, then we become as slow as them (before species modifires).
+	*/
 
 	item_tally *= species.item_slowdown_mod
 
