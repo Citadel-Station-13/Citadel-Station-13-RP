@@ -41,7 +41,7 @@
 
 /mob/living/Move(NewLoc, Dir)
 	// what the hell does this do i don't know fine we'll keep it for now..
-	if (buckled && buckled.loc != newLoc) //not updating position
+	if (buckled && buckled.loc != NewLoc) //not updating position
 		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
 			return buckled.Move(NewLoc, Dir)
 		else	//Otherwise, no running around for you.

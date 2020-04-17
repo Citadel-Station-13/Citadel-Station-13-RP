@@ -403,7 +403,7 @@
 	. = ..()
 	if(.)
 		return
-	if(Check_Dense_object())
+	if(Check_Dense_Object())
 		update_floating(TRUE)
 		return TRUE
 

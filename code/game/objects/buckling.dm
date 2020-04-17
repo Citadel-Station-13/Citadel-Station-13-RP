@@ -4,7 +4,7 @@
 	/// Can mobs be buckled to this atom.
 	var/can_buckle = FALSE
 	/// Can only buckle restrained people to this, like pipes.
-	var/buckle_requires_restraints = FALSE
+	var/buckle_require_restraints = FALSE
 	/// How many people can be buckled to us at once.
 	var/max_buckled_mobs = 1
 
