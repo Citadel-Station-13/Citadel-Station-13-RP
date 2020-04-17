@@ -174,10 +174,10 @@
 /atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
-/*
 	if (!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(Dir)
+/*
 	if (length(client_mobs_in_contents))
 		update_parallax_contents()
 */
@@ -304,3 +304,45 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_BE_PURE(TRUE)
 	return blocker_opinion
+
+/**
+  * Called whenever an object moves and by mobs when they attempt to move themselves through space
+  * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
+  *
+  * Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
+  *
+  * Mobs should return 1 if they should be able to move of their own volition, see [/client/Move]
+  *
+  * Arguments:
+  * * movement_dir - 0 when stopping or any dir when trying to move
+  */
+/atom/movable/proc/Process_Spacemove(movement_dir = NONE)
+	if(has_gravity(src))
+		return TRUe
+
+	if(pulledby)
+		return TRUE
+
+	if(throwing)
+		return TRUE
+
+	if(!isturf(loc))
+		return TRUE
+
+	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+		return TRUE
+
+	return FALSE
+
+/// Only moves the object if it's under no gravity
+/atom/movable/proc/newtonian_move(direction)
+	if(!loc || Process_Spacemove(NONE))
+		inertia_dir = NONE
+		return FALSE
+
+	inertia_dir = direction
+	if(!direction)
+		return TRUE
+	inertia_last_loc = loc
+	SSspacedrift.processing[src] = src
+	return TRUE

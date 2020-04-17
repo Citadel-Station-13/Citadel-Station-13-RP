@@ -230,22 +230,6 @@ turf/attackby(obj/item/W as obj, mob/user as mob)
 /turf/proc/is_plating()
 	return 0
 
-/turf/proc/inertial_drift(atom/movable/A as mob|obj)
-	if(!(A.last_move))	return
-	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
-		var/mob/M = A
-		if(M.Process_Spacemove(1))
-			M.inertia_dir  = 0
-			return
-		spawn(5)
-			if((M && !(M.anchored) && !(M.pulledby) && (M.loc == src)))
-				if(M.inertia_dir)
-					step(M, M.inertia_dir)
-					return
-				M.inertia_dir = M.last_move
-				step(M, M.inertia_dir)
-	return
-
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
@@ -366,3 +350,9 @@ turf/attackby(obj/item/W as obj, mob/user as mob)
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE
+
+/**
+  * Returns if things have gravity on us
+  */
+/turf/has_gravity(turf/T)
+	return loc.has_gravity(src)

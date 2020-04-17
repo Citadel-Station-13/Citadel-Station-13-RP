@@ -613,3 +613,13 @@
 		else if(C)
 			color = C
 			return
+
+/**
+  * Returns if we have gravity on a specified turf.
+  */
+/atom/proc/has_gravity(turf/T)
+	if(!T)
+		T = get_turf(src)
+	if(!T)
+		return TRUE
+	return T.has_gravity()

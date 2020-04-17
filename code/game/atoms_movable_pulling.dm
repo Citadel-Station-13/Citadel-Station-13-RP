@@ -34,7 +34,7 @@
 	if(pulling)
 		stop_pulling()
 	if(AM.pulledby)
-		log_game("[src] pulled [AM] from [AM.pulledby].")
+		log_attack("[src] pulled [AM] from [AM.pulledby].")
 		// logging overhaul when??
 		//log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.

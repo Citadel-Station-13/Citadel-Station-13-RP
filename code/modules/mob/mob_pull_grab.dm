@@ -1,7 +1,7 @@
 /mob/living/start_pulling(atom/movable/AM, supress_message = FALSE)
 	if(!AM || !src)
 		return FALSE
-	if(!(AM.can_be_pulled(src, state)))
+	if(!(AM.can_be_pulled(src)))
 		return FALSE
 	if(throwing || restrained())// || !(mobility_flags & MOBILITY_PULL))
 		return FALSE
@@ -66,7 +66,8 @@
 			AM.visible_message("<span class='danger'>[src] pulls [AM] from [AM.pulledby]'s grip.</span>", \
 							"<span class='danger'>[src] pulls you from [AM.pulledby]'s grip.</span>", null, null, src)
 			to_chat(src, "<span class='notice'>You pull [AM] from [AM.pulledby]'s grip!</span>")
-		log_combat(AM, AM.pulledby, "pulled from", src)
+		log_attack("[src] pulled [AM] from [AM.pulledby].")
+		//log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 
 	pulling = AM
@@ -90,7 +91,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 
-		log_combat(src, M, "grabbed", addition="passive grab")
+		log_attack("[src] started to passively pull [AM].")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
 			M.visible_message("<span class='warning'>[src] starts to pull [M] [(zone_sel.selecting == "l_arm" || zone_sel.selecting == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
 							"<span class='warning'>[src] starts to pull you[(zone_sel.selecting == "l_arm" || zone_sel.selecting == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>")//, null, null, src)

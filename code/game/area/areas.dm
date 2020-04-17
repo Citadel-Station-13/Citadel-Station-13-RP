@@ -337,14 +337,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 /area/space/has_gravity()
 	return 0
 
-/proc/has_gravity(atom/AT, turf/T)
-	if(!T)
-		T = get_turf(AT)
-	var/area/A = get_area(T)
-	if(A && A.has_gravity())
-		return 1
-	return 0
-
 /area/proc/shuttle_arrived()
 	return TRUE
 

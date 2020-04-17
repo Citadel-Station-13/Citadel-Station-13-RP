@@ -11,9 +11,20 @@
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
 	var/last_move = NONE
+	/// Which direction we're drifting
+	var/inertia_dir = NONE
+	/// Only set while drifting, last location we were while drifting
+	var/atom/inertia_last_loc
+	/// If we're moving from no-grav drifting
+	var/inertia_moving = FALSE
+	/// Next world.time we should move from no-grav drifting
+	var/inertia_next_move = 0
+	/// Delay between each drifting move.
+	var/inertia_move_delay = 5
+	/// Movement types, see __DEFINES/flags/movement.dm
+	var/movement_type = NONE
 
 	var/anchored = 0
-	// var/elevation = 2    - not used anywhere
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
@@ -32,7 +43,6 @@
 	var/old_y = 0
 	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
-	var/movement_type = NONE
 
 /atom/movable/Destroy()
 	. = ..()

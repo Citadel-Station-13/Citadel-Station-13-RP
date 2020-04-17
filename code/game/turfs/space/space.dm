@@ -86,23 +86,6 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
-
-// Ported from unstable r355
-
-/turf/space/Entered(atom/movable/A as mob|obj)
-	..()
-	if ((!(A) || src != A.loc))
-		return
-
-	inertial_drift(A)
-
-	if(SSticker && SSticker.mode)
-
-		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(SSticker.mode.name == "mercenary")	return
-		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE + 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE + 1))
-			A.touch_map_edge()
-
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
 	var/cur_x
 	var/cur_y
