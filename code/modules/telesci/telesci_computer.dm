@@ -151,12 +151,11 @@
 			sparks()
 			if(telepad)
 				var/L = get_turf(telepad)
-				var/blocked = list(/mob/living/simple_mob/hostile)
-				var/list/hostiles = typesof(/mob/living/simple_mob/hostile) - blocked
+				var/list/hostiles = subtypesof(/mob/living/simple_mob)
 				playsound(L, 'sound/effects/phasein.ogg', 100, 1, extrarange = 3, falloff = 5)
 				for(var/i in 1 to rand(1,4))
 					var/chosen = pick(hostiles)
-					var/mob/living/simple_mob/hostile/H = new chosen
+					var/mob/living/simple_mob/hostile/H = new chosen(L)
 					H.forceMove(L)
 			return
 		if(99)
