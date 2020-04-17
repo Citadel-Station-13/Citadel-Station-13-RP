@@ -72,7 +72,7 @@
 	pulling = AM
 	AM.pulledby = src
 
-	SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM, state, force)
+	//SEND_SIGNAL(src, COMSIG_LIVING_START_PULL, AM)
 
 	if(!supress_message)
 		var/sound_to_play = 'sound/weapons/thudswoosh.ogg'
@@ -92,9 +92,9 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
-							"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
-			to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
+			M.visible_message("<span class='warning'>[src] starts to pull [M] [(zone_sel.selecting == "l_arm" || zone_sel.selecting == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
+							"<span class='warning'>[src] starts to pull you[(zone_sel.selecting == "l_arm" || zone_sel.selecting == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>")//, null, null, src)
+			//to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
