@@ -5,11 +5,10 @@
 	var/whitelisted_turfs
 	var/banned_areas
 	var/banned_objects
-	var/roof
 
 /datum/map_template/shelter/New()
 	. = ..()
-	blacklisted_turfs = typecacheof(/turf/unsimulated)
+	blacklisted_turfs = typecacheof(list(/turf/unsimulated, /turf/simulated/floor))
 	whitelisted_turfs = list()
 	banned_areas = typecacheof(/area/shuttle)
 	banned_objects = list()
@@ -59,16 +58,6 @@
 		sleeping area! Order now, and we'll throw in a TINY FAN, \
 		absolutely free!"
 	mappath = "maps/submaps/shelters/shelter_1.dmm"
-	roof = "roof_alpha"
-
-/datum/map_template/shelter/alpha_roof
-	shelter_id = "roof_alpha"
-	mappath = "maps/submaps/shelters/shelter_1_roof.dmm"
-
-/datum/map_template/shelter/alpha/New()
-	. = ..()
-	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
-	banned_objects = list()
 
 /datum/map_template/shelter/beta
 	name = "Shelter Beta"
@@ -79,11 +68,7 @@
 		and a deluxe companion to keep you from getting lonely during \
 		an ash storm."
 	mappath = "maps/submaps/shelters/shelter_2.dmm"
-	roof = "roof_beta"
 
-/datum/map_template/shelter/beta_roof
-	shelter_id = "roof_beta"
-	mappath = "maps/submaps/shelters/shelter_2_roof.dmm"
 /datum/map_template/shelter/gamma
 	name = "Shelter Gamma"
 	shelter_id = "shelter_gamma"
@@ -94,10 +79,6 @@
 		death."
 	mappath = "maps/submaps/shelters/shelter_3.dmm"
 
-/datum/map_template/shelter/beta/New()
-	. = ..()
-	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
-	banned_objects = list()
 /datum/map_template/shelter/delta
 	name = "Shelter Delta"
 	shelter_id = "shelter_delta"
