@@ -35,46 +35,16 @@
 			wood
 */
 
-// Assoc list containing all material datums indexed by name.
-var/list/name_to_material
-
-//Returns the material the object is made of, if applicable.
-//Will we ever need to return more than one value here? Or should we just return the "dominant" material.
-/obj/proc/get_material()
-	return null
-
-//mostly for convenience
-/obj/proc/get_material_name()
-	var/datum/material/material = get_material()
-	if(material)
-		return material.name
-
-// Builds the datum list above.
-/proc/populate_material_list(force_remake=0)
-	if(name_to_material && !force_remake) return // Already set up!
-	name_to_material = list()
-	for(var/type in typesof(/datum/material) - /datum/material)
-		var/datum/material/new_mineral = new type
-		if(!new_mineral.name)
-			continue
-		name_to_material[lowertext(new_mineral.name)] = new_mineral
-	return 1
-
-// Safety proc to make sure the material list exists before trying to grab from it.
-/proc/get_material_by_name(name)
-	if(!name_to_material)
-		populate_material_list()
-	return name_to_material[name]
-
-/proc/material_display_name(name)
-	var/datum/material/material = get_material_by_name(name)
-	if(material)
-		return material.display_name
-	return null
-
 // Material definition and procs follow.
 /datum/material
-	var/name	                          // Unique name for use in indexing the list.
+	/// This material's unique ID.
+	var/id
+	/// Autoinitializing - If we should be created at roundstart by SSmaterials.
+	var/autoinit = TRUE
+	/// Abstract type - If this is the same as our type, we won't be autoinit'd.
+	var/abstract_type = /datum/material
+
+
 	var/display_name                      // Prettier name for display.
 	var/use_name
 	var/flags = 0                         // Various status modifiers.
@@ -135,6 +105,17 @@ var/list/name_to_material
 	// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
+/datum/material/New()
+	if(!id)
+		id = "[type]"
+	if(!display_name)
+		display_name = id
+
+	if(!use_name)
+		use_name = display_name
+	if(!shard_icon)
+		shard_icon = shard_type
+
 // Placeholders for light tiles and rglass.
 /datum/material/proc/build_rod_product(var/mob/user, var/obj/item/stack/used_stack, var/obj/item/stack/target_stack)
 	if(!rod_product)
@@ -162,16 +143,6 @@ var/list/name_to_material
 	to_chat(user, "<span class='notice'>You attach wire to the [name].</span>")
 	var/obj/item/product = new wire_product(get_turf(user))
 	user.put_in_hands(product)
-
-// Make sure we have a display name and shard icon even if they aren't explicitly set.
-/datum/material/New()
-	..()
-	if(!display_name)
-		display_name = name
-	if(!use_name)
-		use_name = display_name
-	if(!shard_icon)
-		shard_icon = shard_type
 
 // This is a placeholder for proper integration of windows/windoors into the system.
 /datum/material/proc/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
@@ -270,50 +241,6 @@ var/list/name_to_material
 	hardness = 100
 	stack_origin_tech = list(TECH_MATERIAL = 6)
 
-/datum/material/gold
-	name = "gold"
-	stack_type = /obj/item/stack/material/gold
-	icon_colour = "#EDD12F"
-	weight = 24
-	hardness = 40
-	conductivity = 41
-	stack_origin_tech = list(TECH_MATERIAL = 4)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-/datum/material/gold/bronze //placeholder for ashtrays
-	name = "bronze"
-	icon_colour = "#EDD12F"
-
-/datum/material/silver
-	name = "silver"
-	stack_type = /obj/item/stack/material/silver
-	icon_colour = "#D1E6E3"
-	weight = 22
-	hardness = 50
-	conductivity = 63
-	stack_origin_tech = list(TECH_MATERIAL = 3)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-//R-UST port
-/datum/material/supermatter
-	name = "supermatter"
-	icon_colour = "#FFFF00"
-	stack_type = /obj/item/stack/material/supermatter
-	shard_type = SHARD_SHARD
-	radioactivity = 20
-	stack_type = null
-	luminescence = 3
-	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = "stone"
-	shard_type = SHARD_SHARD
-	hardness = 30
-	door_icon_base = "stone"
-	sheet_singular_name = "crystal"
-	sheet_plural_name = "crystals"
-	is_fusion_fuel = 1
-	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 5, TECH_BLUESPACE = 4)
 
 /datum/material/phoron
 	name = "phoron"
@@ -443,7 +370,8 @@ var/list/name_to_material
 
 // Very rare alloy that is reflective, should be used sparingly.
 /datum/material/durasteel
-	name = "durasteel"
+	id = MATERIAL_ID_DURASTEEL
+	display_name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600
 	melting_point = 7000
@@ -459,7 +387,7 @@ var/list/name_to_material
 	composite_material = list("plasteel" = SHEET_MATERIAL_AMOUNT, "diamond" = SHEET_MATERIAL_AMOUNT) //shrug
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
-	name = MAT_DURASTEELHULL
+	id = MATERIAL_ID_DURASTEEL_HULL
 	icon_base = "hull"
 	icon_reinf = "reinf_mesh"
 	icon_colour = "#45829a"
