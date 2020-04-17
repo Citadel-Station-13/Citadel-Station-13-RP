@@ -1,6 +1,6 @@
 /atom/movable
 	/// Buckling prevents people from pulling the person buckled
-	var/buckled_prevents_pull = FALSE
+	var/buckle_prevents_pull = FALSE
 	/// Can mobs be buckled to this atom.
 	var/can_buckle = FALSE
 	/// Can only buckle restrained people to this, like pipes.
