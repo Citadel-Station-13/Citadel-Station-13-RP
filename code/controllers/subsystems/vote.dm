@@ -163,11 +163,6 @@ SUBSYSTEM_DEF(vote)
 				else
 					additional_antag_types |= antag_names_to_ids[.]
 
-	if(mode == VOTE_GAMEMODE) //fire this even if the vote fails.
-		if(!round_progressing)
-			round_progressing = 1
-			to_chat(world, "<font color='red'><b>The round will start soon.</b></font>")
-
 	if(restart)
 		to_chat(world, "World restarting due to vote...")
 		feedback_set_details("end_error", "restart vote")
@@ -255,10 +250,6 @@ SUBSYSTEM_DEF(vote)
 		to_chat(world, "<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>")
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
 			world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3)
-
-		if(mode == VOTE_GAMEMODE && round_progressing)
-			round_progressing = 0
-			to_chat(world, "<font color='red'><b>Round start has been delayed.</b></font>")
 
 		time_remaining = round(config_legacy.vote_period / 10)
 		return 1
