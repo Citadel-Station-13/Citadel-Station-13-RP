@@ -99,17 +99,17 @@ SUBSYSTEM_DEF(ticker)
 	if(timeLeft < 0)
 		return
 	timeLeft -= wait
-	if(!auto_gamemode_vote_attempted && (timeLeft <= CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))
-		auto_gamemode_vote_attempted = TRUE
-		// patch this code later
-		if(!SSvote.time_remaining)
-			SSvote.autogamemode()
-		//end
 	if(timeLeft <= 0)
 		current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		if(start_immediately)
 			fire()
+	else if(!auto_gamemode_vote_attempted && (timeLeft <= CONFIG_GET(number/lobby_gamemode_vote_delay) SECONDS))
+		auto_gamemode_vote_attempted = TRUE
+		// patch this code later
+		if(!SSvote.time_remaining)
+			SSvote.autogamemode()
+		//end
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
 	set waitfor = FALSE
