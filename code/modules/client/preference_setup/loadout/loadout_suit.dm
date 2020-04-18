@@ -567,3 +567,4 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
 /datum/gear/suit/storage/ladvic
 	display_name = "Ladies Victorian Coat"
 	path = /obj/item/clothing/suit/storage/ladiesvictoriancoat
+
