@@ -38,6 +38,19 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 1000, "diamond" = 2000)
 	build_path = /obj/item/pickaxe/diamonddrill
 
+/datum/design/item/weapon/mining/advbore
+	id = "adv_bore"
+	req_tech = list(TECH_MATERIAL = 5, TECH_PHORON = 5, TECH_ENGINEERING = 4, TECH_POWER = 4) //phoron 5 needs materials to get
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500, "gold" = 2500, "phoron" = 2500)
+	build_path = /obj/item/gun/magnetic/matfed/advanced
+
+/datum/design/item/weapon/mining/vertibore
+	id = "vertibore"
+	req_tech = list(TECH_MATERIAL = 5, TECH_PHORON = 5, TECH_ENGINEERING = 6, TECH_POWER = 7)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000, "gold" = 5000, "phoron" = 5000, "diamond" = 100, "uranium" = 1000)
+	build_path = /obj/item/vertibore
+
+// Mining other equipment
 /datum/design/item/device/mining_scanner
 	id = "mining_scanner"
 	req_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
@@ -53,7 +66,7 @@
 	sort_string = "KAAAG"
 	sort_string = "FAAAE"
 
-// Mining other equipment
+
 
 /datum/design/item/weapon/mining/depth_scanner
 	desc = "Used to check spatial depth and density of rock outcroppings."
