@@ -6,9 +6,9 @@
 	w_class = ITEMSIZE_NO_CONTAINER //haha harold can't powergame itemsize with BoHs if it doesn't even fit in a BoH
 	//he's just going to locker it isn't he
 
-	icon = 'icons/obj/railgun.dmi'
-	icon_state = "bore"
-	item_state = "bore"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "vertibore"
+	item_state = "vertibore"
 
 
 	var/obj/item/cell/cell //loaded cell
@@ -83,3 +83,9 @@
 	if(cell.use(power_cost) && do_after(user, 2.5 SECONDS))
 		var/turf/T = get_turf(user)
 		T.ex_act(1)
+
+/obj/item/vertibore/update_icon()
+	var/list/overlays_to_add = list()
+	if(cell)
+		overlays_to_add += image(icon, "[icon_state]_cell")
+	..()
