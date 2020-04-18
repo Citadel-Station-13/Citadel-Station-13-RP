@@ -77,7 +77,7 @@
 	if(mat_cost > mat_storage)
 		to_chat(user, "<span class='notice'>The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there.</span>")
 		return
-	if(power_cost > cell.charge))
+	if(power_cost > cell.charge)
 		to_chat(user, "<span class='notice'>The [src] flashes a warning light, it doesn't have enough charge to dig.</span>")
 		return
 	if(cell.use(power_cost) && do_after(user, 2.5 SECONDS))
