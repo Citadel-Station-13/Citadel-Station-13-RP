@@ -169,3 +169,9 @@
 	sort_category = "Donator"
 	path = /obj/item/clothing/under/carcharodon
 	ckeywhitelist = list("desucake")
+
+/datum/gear/donator/mantleofheaven
+	display_name = "Mantle of the Heavens"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/mantleofheaven
+	ckeywhitelist = list("hjorthorn")
