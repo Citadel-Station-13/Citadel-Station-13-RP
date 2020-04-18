@@ -890,3 +890,18 @@ obj/item/clothing/suit/kamishimo
 	name = "tailcoat"
 	desc = "Even the clown wouldn't wear this, you can, if you really want to."
 	icon_state = "tailcoat"
+
+/obj/item/clothing/suit/storage/ladiesvictoriancoat
+	name = "ladies victorian coat"
+	desc = "I'm in no hurry, I've got all day. And I'm not going to kill you until you say..something...nice."
+	icon_state = "ladiesvictoriancoat"
+
+/obj/item/clothing/suit/storage/redladiesvictoriancoat
+	name = "ladies red victorian coat"
+	desc = "Give a good man firepower, and he'll never run out of people to kill."
+	icon_state = "ladiesredvictoriancoat"
+
+/obj/item/clothing/suit/storage/ecdress_ofcr
+	name = "bridge officer parade jacket"
+	desc = "For those times when you need to properly look like you aren't a glorified assistant."
+	icon_state = "ecdress_ofcr"

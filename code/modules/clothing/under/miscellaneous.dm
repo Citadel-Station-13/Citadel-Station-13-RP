@@ -1032,3 +1032,18 @@
     name = "black victorian dress"
     desc = "What's the use of a good quotation if you can't change it?"
     icon_state = "victorianblackdress"
+
+/obj/item/clothing/under/bridgeofficerskirt
+	name = "bridge officer skirt"
+	desc = "A jumpskirt for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficerskirt"
+
+/obj/item/clothing/under/fiendsuit
+	name = "fiendish suit"
+	desc = "A red and black suit befitting someone from the dark pits themselves....Or a thirteen year old."
+	icon_state = "fiendsuit"
+
+/obj/item/clothing/under/fienddress
+	name = "fiendish dress"
+	desc = "A red and black dress befitting someone from the dark pits themselves....Or a thirteen year old."
+	icon_state = "fienddress"
