@@ -5,7 +5,7 @@
 	description_fluff = "A phoron bore used for rapidly digging through rock that has been modified to allow it to fire straight down at a much higher power. However, this has resulted in a loss of power and resource efficiency, compactness, and modularity as the proprietary capacitor and manipulator cannot be swapped."
 	w_class = ITEMSIZE_NO_CONTAINER //haha harold can't powergame itemsize with BoHs if it doesn't even fit in a BoH
 	//he's just going to locker it isn't he
-
+	slowdown = 1 //chonker bore is heavy boy 
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "vertibore"
 	item_state = "vertibore"
