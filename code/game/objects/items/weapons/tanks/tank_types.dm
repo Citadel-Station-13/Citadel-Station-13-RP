@@ -235,7 +235,7 @@
 /obj/item/tank/carbon_dioxide
 	name = "carbon dioxide tank"
 	desc = "Contains co2. Do not inhale. Plants only."
-	icon = 'icons/obj/tank_vr.dmi'"
+	icon = 'icons/obj/tank_vr.dmi'
 	icon_state = "co2"
 	gauge_icon = "indicator_bigtank"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
