@@ -230,38 +230,3 @@
 	..()
 	src.air_contents.adjust_gas_temp("nitrogen", (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*TN60C), TN60C)
 	return
-
-//co2
-/obj/item/tank/carbon_dioxide
-	name = "carbon dioxide tank"
-	desc = "Contains co2. Do not inhale. Plants only."
-	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "co2"
-	gauge_icon = "indicator_bigtank"
-	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
-	slot_flags //onmobs cringe tbh
-
-/obj/item/tank/carbon_dioxide/Initialize()
-	..()
-
-	air_contents.adjust_gas("carbon_dioxide", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
-
-/obj/item/tank/emergency/carbon_dioxide
-	name = "emergency CO2 tank"
-	icon = 'icons/obj/tank_vr.dmi'
-	desc = "Used for plant emergencies. Contains very little CO2, so try to conserve it until you actually need it."
-	icon_state = "emergency_co2"
-	gauge_icon = "indicator_engi"
-	volume = 6
-
-
-/obj/item/tank/emergency/carbon_dioxide/Initialize()
-	..()
-	src.air_contents.adjust_gas("carbon_dioxide", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
-
-/obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
-	if(..(user, 0) && air_contents.gas["carbon_dioxide"] < 0.2 && loc==user)
-		to_chat(user, text("<span class='danger'>The meter on the [src.name] indicates you are almost out of air!</span>"))
-		user << sound('sound/effects/alert.ogg')
