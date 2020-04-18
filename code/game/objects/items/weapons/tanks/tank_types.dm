@@ -239,7 +239,7 @@
 	icon_state = "co2"
 	gauge_icon = "indicator_bigtank"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
-	slot_flags = NULL //onmobs cringe tbh
+	slot_flags //onmobs cringe tbh
 
 /obj/item/tank/carbon_dioxide/Initialize()
 	..()
