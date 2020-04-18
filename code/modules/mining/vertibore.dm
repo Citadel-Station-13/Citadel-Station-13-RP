@@ -29,7 +29,7 @@
 /obj/item/vertibore/attackby(var/obj/item/thing, var/mob/user)
 	if(istype(thing, /obj/item/cell))
 		if(cell)
-		to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
+			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 			return
 		cell = thing
 		user.drop_from_inventory(cell)
