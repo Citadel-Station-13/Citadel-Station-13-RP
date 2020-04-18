@@ -71,7 +71,7 @@
 	full_name = "Admin PM Mob"
 	description = "Admin PMs a mob from the player list"
 
-/datum/keybinding/admin/invisimin/down(client/user)
+/datum/keybinding/admin/admin_pm_mob/down(client/user)
 	user.cmd_admin_pm_panel()
 	return TRUE
 

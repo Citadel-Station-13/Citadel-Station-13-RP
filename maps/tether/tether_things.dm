@@ -247,7 +247,7 @@
 
 	var/mob/living/carbon/human/user = AM
 
-	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
+	var/choice = alert(user, "Do you want to depart via the tram? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time

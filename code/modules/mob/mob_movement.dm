@@ -97,13 +97,13 @@
 /client/Move(n, direct)
 	if(!mob?.loc)
 		return FALSE
-	if((world.time < move_delay) || !mob.check_move_cooldown()) //do not move anything ahead of this check please
+	if(!mob.check_move_cooldown()) //do not move anything ahead of this check please
 		return FALSE
 	else
 		next_move_dir_add = 0
 		next_move_dir_sub = 0
 	var/old_move_delay = mob.move_delay		// IMPORTANT - mob move cooldown vs client.
-	move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
+	mob.move_delay = world.time + world.tick_lag //this is here because Move() can now be called mutiple times per tick
 	if(!n || !direct)
 		return FALSE
 	if(mob.transforming)
@@ -290,7 +290,6 @@
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
 		. = mob.SelfMove(n, direct)
-
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
 			mob.setDir(reverse_dir[direct])

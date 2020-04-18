@@ -196,6 +196,17 @@ window "mainwindow"
 		menu = "menu"
 		outer-size = 1046x879
 		inner-size = 1024x793
+	elem "hotkeytoggle"
+		type = BUTTON
+		pos = 986,746
+		size = 30x20
+		anchor1 = 100,100
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = "Hotkey Toggle"
+		command = ".winset \"input.focus=true?map.focus=true input.background-color=\"#F0F0F0\" hotkeytoggle.is-checked=false:input.focus=true input.background-color=\"#D3B5B5\" hotkeytoggle.is-checked=true\""
+		button-type = pushbox
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
@@ -209,7 +220,7 @@ window "mainwindow"
 	elem "input"
 		type = INPUT
 		pos = 3,746
-		size = 988x20
+		size = 956x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = #d3b5b5
@@ -218,7 +229,7 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 988,746
+		pos = 956,746
 		size = 30x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -244,7 +255,6 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -252,7 +262,6 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 660x500
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -273,7 +282,6 @@ window "outputwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -281,14 +289,12 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 660x500
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
 		size = 640x28
 		anchor1 = 0,0
 		anchor2 = 0,5
-		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
