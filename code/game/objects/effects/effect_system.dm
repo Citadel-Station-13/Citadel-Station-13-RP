@@ -13,7 +13,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	unacidable = 1//So effect are not targeted by alien acid.
 	pass_flags = PASSTABLE | PASSGRILLE
 
-/datum/effect/effect/system
+/datum/effect_system
 	var/number = 3
 	var/cardinals = 0
 	var/turf/location
@@ -55,7 +55,7 @@ steam.start() -- spawns the effect
 	icon_state = "extinguish"
 	density = 0
 
-/datum/effect/effect/system/steam_spread
+/datum/effect_system/steam_spread
 
 	set_up(n = 3, c = 0, turf/loc)
 		if(n > 10)
@@ -120,7 +120,7 @@ steam.start() -- spawns the effect
 		T.hotspot_expose(1000,100)
 	return
 
-/datum/effect/effect/system/spark_spread
+/datum/effect_system/spark_spread
 	var/total_sparks = 0 // To stop it being spammed and lagging!
 
 	set_up(n = 3, c = 0, loca)
@@ -322,12 +322,12 @@ steam.start() -- spawns the effect
 // Smoke spread
 /////////////////////////////////////////////
 
-/datum/effect/effect/system/smoke_spread
+/datum/effect_system/smoke_spread
 	var/total_smoke = 0 // To stop it being spammed and lagging!
 	var/direction
 	var/smoke_type = /obj/effect/effect/smoke
 
-/datum/effect/effect/system/smoke_spread/set_up(n = 5, c = 0, loca, direct)
+/datum/effect_system/smoke_spread/set_up(n = 5, c = 0, loca, direct)
 	if(n > 10)
 		n = 10
 	number = n
@@ -339,7 +339,7 @@ steam.start() -- spawns the effect
 	if(direct)
 		direction = direct
 
-/datum/effect/effect/system/smoke_spread/start(var/I)
+/datum/effect_system/smoke_spread/start(var/I)
 	var/i = 0
 	for(i=0, i<src.number, i++)
 		if(src.total_smoke > 20)
@@ -364,19 +364,19 @@ steam.start() -- spawns the effect
 				if (smoke) qdel(smoke)
 				src.total_smoke--
 
-/datum/effect/effect/system/smoke_spread/bad
+/datum/effect_system/smoke_spread/bad
 	smoke_type = /obj/effect/effect/smoke/bad
 
-/datum/effect/effect/system/smoke_spread/fire
+/datum/effect_system/smoke_spread/fire
 	smoke_type = /obj/effect/effect/smoke/elemental/fire
 
-/datum/effect/effect/system/smoke_spread/frost
+/datum/effect_system/smoke_spread/frost
 	smoke_type = /obj/effect/effect/smoke/elemental/frost
 
-/datum/effect/effect/system/smoke_spread/shock
+/datum/effect_system/smoke_spread/shock
 	smoke_type = /obj/effect/effect/smoke/elemental/shock
 
-/datum/effect/effect/system/smoke_spread/mist
+/datum/effect_system/smoke_spread/mist
 	smoke_type = /obj/effect/effect/smoke/elemental/mist
 
 /////////////////////////////////////////////
@@ -391,19 +391,19 @@ steam.start() -- spawns the effect
 	icon_state = "ion_trails"
 	anchored = 1.0
 
-/datum/effect/effect/system/ion_trail_follow
+/datum/effect_system/ion_trail_follow
 	var/turf/oldposition
 	var/on = TRUE
 
-/datum/effect/effect/system/ion_trail_follow/Destroy()
+/datum/effect_system/ion_trail_follow/Destroy()
 	stop()
 	return ..()
 
-/datum/effect/effect/system/ion_trail_follow/set_up(atom/atom)
+/datum/effect_system/ion_trail_follow/set_up(atom/atom)
 	attach(atom)
 	oldposition = get_turf(atom)
 
-/datum/effect/effect/system/ion_trail_follow/start()
+/datum/effect_system/ion_trail_follow/start()
 	if(on)
 		return
 	if(!ismovableatom(holder))
@@ -411,7 +411,7 @@ steam.start() -- spawns the effect
 	START_PROCESSING(SSfastprocess, src)
 	on = TRUE
 
-/datum/effect/effect/system/ion_trail_follow/process(wait)
+/datum/effect_system/ion_trail_follow/process(wait)
 	var/turf/current = get_turf(holder)
 	if(current != oldposition)
 		if(isturf(current))
@@ -422,7 +422,7 @@ steam.start() -- spawns the effect
 			I.icon_state = "blank"
 			QDEL_IN(I, 20)
 
-/datum/effect/effect/system/ion_trail_follow/proc/stop()
+/datum/effect_system/ion_trail_follow/proc/stop()
 	if(!on)
 		return
 	oldposition = null
@@ -434,7 +434,7 @@ steam.start() -- spawns the effect
 // even if it's carried of thrown.
 /////////////////////////////////////////////
 
-/datum/effect/effect/system/steam_trail_follow
+/datum/effect_system/steam_trail_follow
 	var/turf/oldposition
 	var/processing = 1
 	var/on = 1
@@ -472,7 +472,7 @@ steam.start() -- spawns the effect
 		src.processing = 0
 		src.on = 0
 
-/datum/effect/effect/system/reagents_explosion
+/datum/effect_system/reagents_explosion
 	var/amount 						// TNT equivalent
 	var/flashing = 0			// does explosion creates flash effect?
 	var/flashing_factor = 0		// factor of how powerful the flash effect relatively to the explosion
@@ -491,7 +491,7 @@ steam.start() -- spawns the effect
 
 	start()
 		if (amount <= 2)
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
 			s.set_up(2, 1, location)
 			s.start()
 

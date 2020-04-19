@@ -92,7 +92,7 @@
 
 	// Wiring! How exciting.
 	var/datum/wires/rig/wires
-	var/datum/effect/effect/system/spark_spread/spark_system
+	var/datum/effect_system/spark_spread/spark_system
 
 /obj/item/rig/examine()
 	to_chat(usr, "This is \icon[src][src.name].")

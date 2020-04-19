@@ -566,7 +566,7 @@
 			if (C.amount >= 10 && !terminal && opened && has_electronics != 2)
 				var/obj/structure/cable/N = T.get_cable_node()
 				if (prob(50) && electrocute_mob(usr, N, N))
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
 					if(user.stunned)
@@ -588,7 +588,7 @@
 		if(do_after(user, 50 * W.toolspeed))
 			if(terminal && opened && has_electronics!=2)
 				if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
 					if(usr.stunned)
@@ -977,11 +977,11 @@
 			src.cell.charge = 0
 			cell.corrupt()
 			update_icon()
-			var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(3, 0, src.loc)
 			smoke.attach(src)
 			smoke.start()
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
 			visible_message("<span class='danger'>The [src.name] suddenly lets out a blast of smoke and some sparks!</span>", \

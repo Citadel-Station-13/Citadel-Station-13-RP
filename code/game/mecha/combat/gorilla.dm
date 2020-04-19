@@ -74,7 +74,7 @@
 	var/smoke = 5
 	var/smoke_ready = 1
 	var/smoke_cooldown = 100
-	var/datum/effect/effect/system/smoke_spread/smoke_system = new
+	var/datum/effect_system/smoke_spread/smoke_system = new
 	wreckage = /obj/effect/decal/mecha_wreckage/gorilla
 	add_req_access = 0
 	internal_damage_threshold = 25

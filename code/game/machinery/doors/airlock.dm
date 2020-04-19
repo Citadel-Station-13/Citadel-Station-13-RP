@@ -810,7 +810,7 @@ About the new airlock wires panel:
 			var/obj/item/i = mover
 			if(world.time > last_spark + 2 SECONDS)
 				if (i.matter && (DEFAULT_WALL_MATERIAL in i.matter) && i.matter[DEFAULT_WALL_MATERIAL] > 0)
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
 					last_spark = world.time
@@ -1039,7 +1039,7 @@ About the new airlock wires panel:
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name]'s control panel bursts open, sparks spewing out!")
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
 

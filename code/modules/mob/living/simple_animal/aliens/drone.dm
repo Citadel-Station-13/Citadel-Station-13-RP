@@ -44,7 +44,7 @@
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 
 
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/turf/patrol_target
 	var/explode_chance = 1
 	var/disabled = 0
@@ -85,14 +85,14 @@
 	//repair a bit of damage
 	if(prob(1))
 		src.visible_message("<font color='red'>\icon[src] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		health += rand(25,100)
 
 	//spark for no reason
 	if(prob(5))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
@@ -134,7 +134,7 @@
 			src.visible_message("<font color='red'>\icon[src] [src] begins to spark and shake violenty!</font>")
 		else
 			src.visible_message("<font color='red'>\icon[src] [src] sparks and shakes like it's about to explode!</font>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
@@ -164,7 +164,7 @@
 /mob/living/simple_mob/hostile/malf_drone/Destroy()
 	//More advanced than the default S_A loot system, for visual effect and random tech levels.
 	if(has_loot)
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		var/obj/O
