@@ -7,6 +7,10 @@
 	seal_tool = /obj/item/tool/screwdriver
 	breakout_sound = 'sound/weapons/tablehit1.ogg'
 
+/obj/structure/closet/coffin/comfy
+	name = "Extra comfortable coffin"
+	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
+
 /obj/structure/closet/coffin/update_icon()
 	if(!opened)
 		icon_state = icon_closed
