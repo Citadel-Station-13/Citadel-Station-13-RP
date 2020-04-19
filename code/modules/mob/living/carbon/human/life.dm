@@ -1359,7 +1359,7 @@
 
 		var/tmp/glasses_processed = 0
 		var/obj/item/rig/rig = back
-		if(istype(rig) && rig.visor && //!looking_elsewhere)
+		if(istype(rig) && rig.visor //&& !looking_elsewhere)
 			if(!rig.helmet || (head && rig.helmet == head))
 				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
 					glasses_processed = 1
