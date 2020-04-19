@@ -92,7 +92,7 @@
 
 /datum/supply_pack/hospitality/vampcarepackage
 	name = "Vampire Care package"
-	contains = list(/obj/item/reagent_containers/blood/prelabeled/OPlus = 3,
+	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
 					/obj/item/clothing/under/suit_jacket)
 	cost = 50
 	containertype = /obj/structure/closet/coffin/comfy
