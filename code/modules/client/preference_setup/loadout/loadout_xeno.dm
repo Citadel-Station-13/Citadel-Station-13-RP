@@ -360,5 +360,5 @@
 /datum/gear/uniform/voxcivassistant
 	display_name = "vox pressure suit (assistant)"
 	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
-	whitelisted = SPECIES_VOX
 	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
