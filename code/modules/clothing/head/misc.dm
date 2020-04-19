@@ -449,3 +449,8 @@
 	name = "paramedic cap"
 	desc = "For a person who really needs a raise."
 	icon_state = "paramedicsoft"
+
+/obj/item/clothing/head/bocap
+	name = "bridge officer cap"
+	desc = "For a person with no authority who takes themselves very VERY seriously."
+	icon_state = "bridgeofficerhard"
