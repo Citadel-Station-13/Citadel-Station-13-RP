@@ -393,50 +393,41 @@ steam.start() -- spawns the effect
 
 /datum/effect/effect/system/ion_trail_follow
 	var/turf/oldposition
-	var/processing = 1
-	var/on = 1
+	var/on = TRUE
 
-	set_up(atom/atom)
-		attach(atom)
-		oldposition = get_turf(atom)
+/datum/effect/effect/system/ion_trail_follow/Destroy()
+	stop()
+	return ..()
 
-	start()
-		if(!src.on)
-			src.on = 1
-			src.processing = 1
-		if(src.processing)
-			src.processing = 0
-			spawn(0)
-				var/turf/T = get_turf(src.holder)
-				if(istype(holder, /atom/movable))
-					var/atom/movable/AM = holder
-					if(AM.locs && AM.locs.len)
-						T = pick(AM.locs)
-				if(T != src.oldposition)
-					if(isturf(T))
-						var/obj/effect/effect/ion_trails/I = new /obj/effect/effect/ion_trails(src.oldposition)
-						src.oldposition = T
-						I.setDir(src.holder.dir)
-						flick("ion_fade", I)
-						I.icon_state = "blank"
-						spawn( 20 )
-							qdel(I)
-					spawn(2)
-						if(src.on)
-							src.processing = 1
-							src.start()
-				else
-					spawn(2)
-						if(src.on)
-							src.processing = 1
-							src.start()
+/datum/effect/effect/system/ion_trail_follow/set_up(atom/atom)
+	attach(atom)
+	oldposition = get_turf(atom)
 
-	proc/stop()
-		src.processing = 0
-		src.on = 0
+/datum/effect/effect/system/ion_trail_follow/start()
+	if(on)
+		return
+	if(!ismovableatom(holder))
+		return
+	START_PROCESSING(SSfastprocess, src)
+	on = TRUE
 
+/datum/effect/effect/system/ion_trail_follow/process(wait)
+	var/turf/current = get_turf(holder)
+	if(current != oldposition)
+		if(isturf(current))
+			var/obj/effect/effect/ion_trails/I = new /obj/effect/effect/ion_trails(oldposition)
+			oldposition = current
+			I.setDir(src.holder.dir)
+			flick("ion_fade", I)
+			I.icon_state = "blank"
+			QDEL_IN(I, 20)
 
-
+/datum/effect/effect/system/ion_trail_follow/proc/stop()
+	if(!on)
+		return
+	oldposition = null
+	on = FALSE
+	STOP_PROCESSING(SSfastprocess, src)
 
 /////////////////////////////////////////////
 //////// Attach a steam trail to an object (eg. a reacting beaker) that will follow it

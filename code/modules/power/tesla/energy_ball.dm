@@ -141,7 +141,7 @@
 
 /obj/singularity/energy_ball/stop_orbit(datum/component/orbiter/orbits)
 	if(istype(orbits?.parent, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/orbitingball = orbits.orbiting
+		var/obj/singularity/energy_ball/orbitingball = orbits.parent
 		orbitingball.orbiting_balls -= src
 		orbitingball.dissipate_strength = orbitingball.orbiting_balls.len
 	..()
