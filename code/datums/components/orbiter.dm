@@ -20,12 +20,14 @@
 	begin_orbit(orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit)
 
 /datum/component/orbiter/RegisterWithParent()
+	. = ..()
 	var/atom/target = parent
 	while(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/move_react)
 		target = target.loc
 
 /datum/component/orbiter/UnregisterFromParent()
+	. = ..()
 	var/atom/target = parent
 	while(ismovableatom(target))
 		UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
@@ -39,9 +41,9 @@
 	orbiters = null
 	return ..()
 
-/datum/component/orbiter/InheritComponent(datum/component/orbiter/newcomp, original, list/arguments)
-	if(arguments)
-		begin_orbit(arglist(arguments))
+/datum/component/orbiter/InheritComponent(datum/component/orbiter/newcomp, original, atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation, actually_orbit = TRUE)
+	if(!newcomp)
+		begin_orbit(arglist(args.Copy(3)))
 		return
 	// The following only happens on component transfers
 	orbiters += newcomp.orbiters
@@ -76,9 +78,7 @@
 		var/matrix/shift = matrix(orbiter.transform)
 		shift.Translate(0, radius)
 		orbiter.transform = shift
-
 		orbiter.SpinAnimation(rotation_speed, -1, clockwise, rotation_segments, parallel = FALSE)
-
 		//we stack the orbits up client side, so we can assign this back to normal server side without it breaking the orbit
 		orbiter.transform = initial_transform
 	orbiter.forceMove(get_turf(parent))
@@ -129,6 +129,7 @@
 		if(CHECK_TICK && master.loc != curloc)
 			// We moved again during the checktick, cancel current operation
 			break
+
 
 /datum/component/orbiter/proc/orbiter_move_react(atom/movable/orbiter, atom/oldloc, direction)
 	if(orbiter.loc == get_turf(parent))
