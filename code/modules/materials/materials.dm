@@ -749,7 +749,7 @@ var/list/name_to_material
 	integrity = 900
 	conductive = 0
 	conductivity = 1.5
-	hardness = 120
+	hardness = 80
 	shard_type = SHARD_SHARD
 	weight = 30
 	negation = 25
