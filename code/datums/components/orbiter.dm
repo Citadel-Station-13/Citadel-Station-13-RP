@@ -136,12 +136,6 @@
 	end_orbit(orbiter)
 
 /////////////////////
-/atom
-	/// The orbiter component of the thing we're orbiting.
-	var/datum/component/orbiter/orbiting
-	/// The orbiter comopnent if we're being orbited.
-	var/datum/component/orbiter/orbiters
-
 /atom/movable/proc/orbit(atom/A, radius = 10, clockwise = FALSE, rotation_speed = 20, rotation_segments = 36, pre_rotation = TRUE, actually_orbit = TRUE)
 	if(!istype(A) || !get_turf(A) || A == src)
 		return

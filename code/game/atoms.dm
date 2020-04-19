@@ -18,6 +18,8 @@
 	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 
+	/// The orbiter comopnent if we're being orbited.
+	var/datum/component/orbiter/orbiters
 	///Chemistry.
 	var/datum/reagents/reagents = null
 

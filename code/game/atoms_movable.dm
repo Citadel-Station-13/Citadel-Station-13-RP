@@ -23,7 +23,8 @@
 	var/inertia_move_delay = 5
 	/// Movement types, see __DEFINES/flags/movement.dm
 	var/movement_type = NONE
-
+	/// The orbiter component of the thing we're orbiting.
+	var/datum/component/orbiter/orbiting
 	/// Our default glide_size.
 	var/default_glide_size = 0
 

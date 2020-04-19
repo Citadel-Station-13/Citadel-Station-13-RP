@@ -329,7 +329,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/observer/dead/start_orbit(datum/component/orbiter/orbits)
 	. = ..()
-	to_chat(src, "<span class='notice'>Now orbiting [orbits.parent].</span>")
 	if(mouse_opacity_yield_while_following)
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
