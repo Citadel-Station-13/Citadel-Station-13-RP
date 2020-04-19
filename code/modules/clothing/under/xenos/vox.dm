@@ -38,3 +38,4 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon_state = "vox-civ-assistant"
 	item_state = "vox-civ-assistant"
+	flags = PHORONGUARD
