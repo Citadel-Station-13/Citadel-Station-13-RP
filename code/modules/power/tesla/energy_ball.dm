@@ -36,21 +36,16 @@
 	return
 
 /obj/singularity/energy_ball/Destroy()
-	if(orbiting && istype(orbiting.orbiting, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/EB = orbiting.orbiting
-		EB.orbiting_balls -= src
-
 	for(var/ball in orbiting_balls)
 		var/obj/singularity/energy_ball/EB = ball
 		qdel(EB)
-
-	. = ..()
+	orbiting_balls.Cut()
+	return ..()
 
 /obj/singularity/energy_ball/admin_investigate_setup()
 	if(miniball)
 		return //don't annnounce miniballs
 	..()
-
 
 /obj/singularity/energy_ball/process(var/wait = 20)
 	set waitfor = FALSE
@@ -144,7 +139,7 @@
 
 	. = ..()
 
-/obj/singularity/energy_ball/stop_orbit(datum/component/orbiting/orbits)
+/obj/singularity/energy_ball/stop_orbit(datum/component/orbiter/orbits)
 	if(istype(orbits?.parent, /obj/singularity/energy_ball))
 		var/obj/singularity/energy_ball/orbitingball = orbits.orbiting
 		orbitingball.orbiting_balls -= src

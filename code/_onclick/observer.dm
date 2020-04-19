@@ -1,4 +1,4 @@
-/mob/dead/observer/DblClickOn(atom/A, params)
+/mob/observer/dead/DblClickOn(atom/A, params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return

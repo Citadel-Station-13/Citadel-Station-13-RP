@@ -327,13 +327,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	orbit(target, actually_orbit = FALSE)
 
-/mob/observer/dead/start_orbiting(datum/component/orbiter/orbits)
+/mob/observer/dead/start_orbit(datum/component/orbiter/orbits)
 	. = ..()
 	to_chat(src, "<span class='notice'>Now orbiting [orbits.parent].</span>")
 	if(mouse_opacity_yield_while_following)
-		mouse_opacity = MOUSE_OPACITY_TRANSPRENT
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/mob/observer/dead/stop_orbiting(datum/component/orbiter/orbits)
+/mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
 	. = ..()
 	if(mouse_opacity_yield_while_following)
 		mouse_opacity = initial(mouse_opacity)
@@ -353,7 +353,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
 				forceMove(T)
-				following = null
 			else
 				to_chat(src, "This mob is not located in the game world.")
 /*
@@ -379,9 +378,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/add_memory()
 	set hidden = 1
 	to_chat(src, "<font color='red'>You are dead! You have no mind to store memory!</font>")
-
-/mob/observer/dead/Post_Incorpmove()
-	following = null
 
 /mob/observer/dead/verb/analyze_air()
 	set name = "Analyze Air"
