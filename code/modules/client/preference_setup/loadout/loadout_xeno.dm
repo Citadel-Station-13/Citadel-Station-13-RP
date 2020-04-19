@@ -360,4 +360,5 @@
 /datum/gear/uniform/voxcivassistant
 	display_name = "vox pressure suit (assistant)"
 	path = /obj/item/clothing/under/vox-civ-assistant_s
+	whitelisted = SPECIES_VOX
 	sort_category = "Xenowear"
