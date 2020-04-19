@@ -31,3 +31,10 @@
 	..()
 	hold.max_storage_space = slots * ITEMSIZE_COST_NORMAL
 	hold.max_w_class = ITEMSIZE_NORMAL
+	
+//Vox Pressure Suits
+/obj/item/clothing/under/pressuresuit/vox-civ-assistant
+	name = "assistant pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
+	icon_state = "vox-civ-assistant"
+	item_state = "vox-civ-assistant"
