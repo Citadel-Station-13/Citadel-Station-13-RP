@@ -226,4 +226,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH)
