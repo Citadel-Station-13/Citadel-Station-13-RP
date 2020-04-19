@@ -176,10 +176,7 @@
 
 #undef HUMAN_LOWEST_SLOWDOWN
 
-/mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
-	//Can we act?
-	if(restrained())	return 0
-
+/mob/living/carbon/human/Process_Spacemove(dir)
 	//Do we have a working jetpack?
 	var/obj/item/tank/jetpack/thrust
 	if(back)
@@ -191,18 +188,15 @@
 				thrust = module.jets
 				break
 
-	if(thrust)
-		if(((!check_drift) || (check_drift && thrust.stabilization_on)) && (!lying) && (thrust.allow_thrust(0.01, src)))
-			inertia_dir = 0
-			return 1
-	if(flying) //VOREStation Edit. If you're flying, you glide around!
-		return 0  //VOREStation Edit.
+	if(thrust && !lying)
+		if(dir != NONE)
+			return thrust.allow_thrust(0.01, src)
+		else
+			return thrust.stabilization_on && thrust.allow_thrust(0.01, src)
+	if(flying)
+		return TRUE
 
-	//If no working jetpack then use the other checks
-	if(..())
-		return 1
-	return 0
-
+	return ..()
 
 /mob/living/carbon/human/Process_Spaceslipping(var/prob_slip = 5)
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.

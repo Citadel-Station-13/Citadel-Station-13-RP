@@ -28,11 +28,13 @@
 	var/medHUD = 0
 	var/antagHUD = 0
 	universal_speak = 1
-	var/atom/movable/following = null
 	var/admin_ghosted = 0
 	var/anonsay = 0
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	incorporeal_move = 1
+
+	/// Whether or not our mouse opacity is set to transparent while following.
+	var/mouse_opacity_yield_while_following = TRUE
 
 	var/is_manifest = 0 //If set to 1, the ghost is able to whisper. Usually only set if a cultist drags them through the veil.
 	var/ghost_sprite = null
@@ -307,7 +309,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	usr.forceMove(pick(get_area_turfs(A)))
-	usr.on_mob_jump()
 
 /mob/observer/dead/verb/follow(input in getmobs())
 	set category = "Ghost"
@@ -320,77 +321,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	ManualFollow(target)
 
 // This is the ghost's follow verb with an argument
-/mob/observer/dead/proc/ManualFollow(var/atom/movable/target)
-	if(!target)
+/mob/observer/dead/proc/ManualFollow(atom/movable/target)
+	if (!istype(target))
 		return
 
-	var/turf/targetloc = get_turf(target)
-	if(check_holy(targetloc))
-		to_chat(usr, "<span class='warning'>You cannot follow a mob standing on holy grounds!</span>")
-		return
-	if(target != src)
-		if(following && following == target)
-			return
-		following = target
-		to_chat(src, "<span class='notice'>Now following [target]</span>")
-		if(ismob(target))
-			forceMove(get_turf(target))
-			var/mob/M = target
-			M.following_mobs += src
-		else
-			spawn(0)
-				while(target && following == target && client)
-					var/turf/T = get_turf(target)
-					if(!T)
-						break
-					// To stop the ghost flickering.
-					if(loc != T)
-						forceMove(T)
-					sleep(15)
+	orbit(target, actually_orbit = FALSE)
 
-/mob/proc/update_following()
-	. = get_turf(src)
-	for(var/mob/observer/dead/M in following_mobs)
-		if(M.following != src)
-			following_mobs -= M
-		else
-			if(M.loc != .)
-				M.forceMove(.)
-
-/mob
-	var/list/following_mobs = list()
-
-/mob/Destroy()
-	for(var/mob/observer/dead/M in following_mobs)
-		M.following = null
-	following_mobs = null
-	return ..()
-
-/mob/observer/dead/Destroy()
-	if(ismob(following))
-		var/mob/M = following
-		M.following_mobs -= src
-	following = null
-	return ..()
-
-/mob/Move()
+/mob/observer/dead/start_orbiting(datum/component/orbiter/orbits)
 	. = ..()
-	if(.)
-		update_following()
+	to_chat(src, "<span class='notice'>Now orbiting [orbits.parent].</span>")
+	if(mouse_opacity_yield_while_following)
+		mouse_opacity = MOUSE_OPACITY_TRANSPRENT
 
-/mob/Life()
-	// to catch teleports etc which directly set loc
-	update_following()
-	return ..()
-
-/mob/proc/check_holy(var/turf/T)
-	return 0
-
-/mob/observer/dead/check_holy(var/turf/T)
-	if(check_rights(R_ADMIN|R_FUN, 0, src))
-		return 0
-
-	return (T && T.holy) && (is_manifest || (mind in cult.current_antagonists))
+/mob/observer/dead/stop_orbiting(datum/component/orbiter/orbits)
+	. = ..()
+	if(mouse_opacity_yield_while_following)
+		mouse_opacity = initial(mouse_opacity)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"

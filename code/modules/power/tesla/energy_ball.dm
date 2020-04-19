@@ -143,15 +143,15 @@
 		target.dissipate_strength = target.orbiting_balls.len
 
 	. = ..()
-/obj/singularity/energy_ball/stop_orbit()
-	if (orbiting && istype(orbiting.orbiting, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/orbitingball = orbiting.orbiting
+
+/obj/singularity/energy_ball/stop_orbit(datum/component/orbiting/orbits)
+	if(istype(orbits?.parent, /obj/singularity/energy_ball))
+		var/obj/singularity/energy_ball/orbitingball = orbits.orbiting
 		orbitingball.orbiting_balls -= src
 		orbitingball.dissipate_strength = orbitingball.orbiting_balls.len
 	..()
 	if (!loc && !QDELETED(src))
 		qdel(src)
-
 
 /obj/singularity/energy_ball/proc/dust_mobs(atom/A)
 	if(isliving(A))

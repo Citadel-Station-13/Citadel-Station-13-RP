@@ -8,10 +8,8 @@
 		for(var/obj/item/tank/jetpack/J in module.modules)
 			if(istype(J, /obj/item/tank/jetpack))
 				if(J.allow_thrust(0.01))
-					return 1
-	if(..())
-		return 1
-	return 0
+					return TRUE
+	return ..()
 
 /mob/living/silicon/robot/movement_delay()
 	. = ..()
