@@ -95,6 +95,7 @@
 /obj/item/tool/screwdriver/hybrid
 	name = "strange screwdriver"
 	desc = "A strange conglomerate of a screwdriver."
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_screwdriver)
 	icon_state = "hybscrewdriver"
 	item_state = "screwdriver_black"
 	origin_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3)
@@ -105,13 +106,7 @@
 	random_color = FALSE
 	reach = 2
 
-/obj/item/tool/screwdriver/hybrid/is_screwdriver()
-	if(prob(10))
-		var/turf/T = get_turf(src)
-		SSradiation.radiate(get_turf(src), 5)
-		T.visible_message("<span class='alien'>\The [src] shudders!</span>")
-		return FALSE
-	return TRUE
+
 
 /obj/item/tool/screwdriver/cyborg
 	name = "powered screwdriver"
