@@ -16,6 +16,21 @@
 	desc = "Weird and flowing!"
 	icon_state = "vox-casual-2"
 	item_state = "vox-casual-2"
+	
+//Vox Accessories
+/obj/item/clothing/accessory/storage/vox
+	name = "alien mesh"
+	desc = "An alien mesh. Seems to be made up mostly of pockets and writhing flesh."
+	icon_state = "webbing-vox"
+
+	flags = PHORONGUARD
+
+	slots = 3
+
+/obj/item/clothing/accessory/storage/vox/New()
+	..()
+	hold.max_storage_space = slots * ITEMSIZE_COST_NORMAL
+	hold.max_w_class = ITEMSIZE_NORMAL
 
 //Vox Pressure Suits
 /obj/item/clothing/under/pressuresuit
