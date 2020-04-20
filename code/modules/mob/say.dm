@@ -2,7 +2,7 @@
 	return
 
 /mob/proc/whisper_wrapper()
-	var/message = input("","whisper (text)") as message|null
+	var/message = input("","whisper (text)") as text|null
 	if(message)
 		whisper(message)
 
