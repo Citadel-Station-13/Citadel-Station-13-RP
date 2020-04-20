@@ -104,7 +104,7 @@
 	desc = "A stunning shell for a shotgun."
 	id = "stunshell"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000)
+	materials = list(DEFAULT_WALL_MATERIAL = 360, MAT_GLASS = 720)
 	build_path = /obj/item/ammo_casing/a12g/stunshell
 	sort_string = "MABBB"
 

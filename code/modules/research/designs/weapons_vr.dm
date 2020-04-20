@@ -15,7 +15,15 @@
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "silver" = 1000)
 	build_path = /obj/item/gun/energy/protector
-	sort_string = "TAADA"
+	sort_string = "MAAAH"
+
+/datum/design/item/weapon/energy/netgun
+	name = "\'Retiarius\' capture gun"
+	id = "netgun"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 3000)
+	build_path = /obj/item/gun/energy/netgun
+	sort_string = "MAAAI"
 
 /datum/design/item/weapon/energy/sickshot
 	desc = "A 'Sickshot' is a 4-shot energy revolver that causes nausea and confusion."
@@ -23,15 +31,7 @@
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000)
 	build_path = /obj/item/gun/energy/sickshot
-	sort_string = "MAAVB"
-
-/datum/design/item/weapon/energy/netgun
-	name = "\'Hunter\' capture gun"
-	id = "netgun"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 3000)
-	build_path = /obj/item/gun/energy/netgun
-	sort_string = "MAAVC"
+	sort_string = "MAAAJ"
 
 // Misc weapons
 
@@ -41,7 +41,7 @@
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, "uranium" = 1000)
 	build_path = /obj/item/gun/energy/pummeler
-	sort_string = "MADVA"
+	sort_string = "MAAAK"
 
 // Anti-particle stuff
 
