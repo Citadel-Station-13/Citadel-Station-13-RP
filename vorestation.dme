@@ -2186,6 +2186,7 @@
 #include "code\modules\mining\satchel_ore_boxdm.dm"
 #include "code\modules\mining\shelter_atoms.dm"
 #include "code\modules\mining\shelters.dm"
+#include "code\modules\mining\vertibore.dm"
 #include "code\modules\mining\drilling\drill.dm"
 #include "code\modules\mining\drilling\scanner.dm"
 #include "code\modules\mining\ore_redemption_machine\construction.dm"

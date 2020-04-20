@@ -232,8 +232,8 @@
 /obj/item/clothing/accessory/poncho/roles/cloak/custom //A colorable cloak
 	name = "cloak"
 	desc = "A simple, bland cloak."
-	icon_state = "colorcloak"
-	item_state = "colorcloak"
+	icon_state = "cloak"
+	item_state = "cloak"
 
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"

@@ -305,7 +305,7 @@
 												contents.Add(0)
 
 										// No races breath this, but never know about downstream servers.
-										if ("carbon dioxide")
+										if ("carbon_dioxide")
 											if(t.air_contents.gas["carbon_dioxide"] && !t.air_contents.gas["phoron"])
 												contents.Add(t.air_contents.gas["carbon_dioxide"])
 											else

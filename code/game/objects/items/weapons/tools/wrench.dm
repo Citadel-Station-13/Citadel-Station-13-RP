@@ -29,6 +29,7 @@
 	name = "strange wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
+	/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
 	force = 8
@@ -41,13 +42,7 @@
 	toolspeed = 0.5
 	reach = 2
 
-/obj/item/tool/wrench/hybrid/is_wrench()
-	if(prob(10))
-		var/turf/T = get_turf(src)
-		SSradiation.radiate(get_turf(src), 5)
-		T.visible_message("<span class='alien'>\The [src] shudders!</span>")
-		return FALSE
-	return TRUE
+
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	name = "Precursor Alpha Object - Fastener Torque Tool"
