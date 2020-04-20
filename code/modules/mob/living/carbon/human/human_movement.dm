@@ -190,9 +190,11 @@
 
 	if(thrust && !lying)
 		if(dir != NONE)
-			return thrust.allow_thrust(0.01, src)
+			if(thrust.allow_thrust(0.01, src))
+				return TRUE
 		else
-			return thrust.stabilization_on && thrust.allow_thrust(0.01, src)
+			if(thrust.stabilization_on && thrust.allow_thrust(0.01, src))
+				return TRUE
 	if(flying)
 		return TRUE
 
