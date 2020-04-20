@@ -441,7 +441,7 @@
 	name = "strange welding tool"
 	desc = "An experimental welder capable of synthesizing its own fuel from spatial waveforms. It's like welding with a star!"
 	icon_state = "hybwelder"
-	max_fuel = 20
+	max_fuel = 80
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
 	slowdown = 0.1
 	toolspeed = 0.25

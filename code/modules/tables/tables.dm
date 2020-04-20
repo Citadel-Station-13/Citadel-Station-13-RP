@@ -32,6 +32,8 @@ var/list/table_icon_cache = list()
 
 	/// Can people place items on us by clicking on us?
 	var/item_place = TRUE
+	/// Do people pixel-place items or center place?
+	var/item_pixel_place = TRUE
 
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth

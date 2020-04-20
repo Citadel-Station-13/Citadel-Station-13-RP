@@ -202,7 +202,7 @@
 	charge /= 2
 	maxcharge /= 2
 	if (prob(10))
-		rigged = 1 //broken batterys are dangerous
+		rigged = 1 //broken batteries are dangerous
 
 /obj/item/cell/emp_act(severity)
 	//remove this once emp changes on dev are merged in

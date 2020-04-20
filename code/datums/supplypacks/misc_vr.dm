@@ -58,16 +58,6 @@
 	containername = "medical hardsuit crate"
 	access = access_medical
 
-/datum/supply_pack/misc/rations
-	name = "Emergency LiquidFood and Protein Rations"
-	contains = list(
-	/obj/item/reagent_containers/food/snacks/liquidfood = 10,
-	/obj/item/reagent_containers/food/snacks/liquidprotein = 10
-	)
-	cost = 10
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "emergency rations"
-
 /datum/supply_pack/misc/phoronoid
 	name  = "Spare Phoronoid containment suits"
 	contains = list(

@@ -89,3 +89,11 @@
 	cost = 10
 	containertype = /obj/structure/largecrate
 	containername = "cooking oil tank crate"
+
+/datum/supply_pack/hospitality/vampcarepackage
+	name = "Vampire Care package"
+	contains = list(/obj/item/reagent_containers/blood/prelabeled/ABPlus = 3,
+					/obj/item/clothing/under/suit_jacket)
+	cost = 50
+	containertype = /obj/structure/closet/coffin/comfy
+	containername = "Extra comfortable coffin"

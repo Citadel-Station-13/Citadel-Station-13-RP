@@ -168,7 +168,7 @@
 	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
 	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
 	if(!building)
-		init()
+		autobuild()
 	else
 		area = get_area(src)
 		area.apc = src
@@ -220,7 +220,7 @@
 	terminal.setDir(dir)
 	terminal.master = src
 
-/obj/machinery/power/apc/proc/init()
+/obj/machinery/power/apc/proc/autobuild()
 	has_electronics = 2 //installed and secured
 	// is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
