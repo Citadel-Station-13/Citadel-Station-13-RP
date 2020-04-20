@@ -52,3 +52,13 @@
 
 	if (s_active && !( s_active in contents ) && !(s_active.Adjacent(src)))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.close(src)
+
+///Checks mobility move as well as parent checks
+/mob/living/canface()
+/*
+	if(!(mobility_flags & MOBILITY_MOVE))
+		return FALSE
+*/
+	if(!canmove)
+		return FALSE
+	return ..()

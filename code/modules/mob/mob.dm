@@ -718,17 +718,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
 
-// facing verbs
-/mob/proc/canface()
-	if(!canmove)
-		return FALSE
-	if(stat)
-		return FALSE
-	if(anchored)
-		return FALSE
-	if(transforming)
-		return FALSE
-	return TRUE
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -737,37 +726,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
 	return canmove
-
-
-/mob/proc/facedir(var/ndir)
-	if(!canface() || (client && (client.moving || (world.time < move_delay))))
-		return 0
-	setDir(ndir)
-	if(buckled && buckled.buckle_movable)
-		buckled.setDir(ndir)
-	applyMoveCooldown(0.5)
-	return 1
-
-
-/mob/verb/eastface()
-	set hidden = 1
-	return facedir(client.client_dir(EAST))
-
-
-/mob/verb/westface()
-	set hidden = 1
-	return facedir(client.client_dir(WEST))
-
-
-/mob/verb/northface()
-	set hidden = 1
-	return facedir(client.client_dir(NORTH))
-
-
-/mob/verb/southface()
-	set hidden = 1
-	return facedir(client.client_dir(SOUTH))
-
 
 //This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()

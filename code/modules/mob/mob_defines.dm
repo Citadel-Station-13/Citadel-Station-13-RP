@@ -14,6 +14,8 @@
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
+	/// Last world.time we turned in our spot without moving (see: facing directions)
+	var/last_turn = 0
 	var/next_move = null // For click delay, despite the misleading name.
 
 	//Not in use yet

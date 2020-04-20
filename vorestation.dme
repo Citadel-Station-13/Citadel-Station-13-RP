@@ -100,7 +100,7 @@
 #include "code\__DEFINES\flags\movement.dm"
 #include "code\__DEFINES\misc\keybindings.dm"
 #include "code\__DEFINES\misc\misc.dm"
-#include "code\__DEFINES\mobs\click_cooldown.dm"
+#include "code\__DEFINES\mobs\cooldowns.dm"
 #include "code\__DEFINES\mobs\intent.dm"
 #include "code\__HELPERS\_core.dm"
 #include "code\__HELPERS\_global_objects.dm"

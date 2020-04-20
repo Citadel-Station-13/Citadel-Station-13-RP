@@ -475,19 +475,62 @@
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
-/client/verb/moveup()
-	set name = ".moveup"
-	set instant = 1
-	Move(get_step(mob, NORTH), NORTH)
-/client/verb/movedown()
-	set name = ".movedown"
-	set instant = 1
-	Move(get_step(mob, SOUTH), SOUTH)
-/client/verb/moveright()
-	set name = ".moveright"
-	set instant = 1
-	Move(get_step(mob, EAST), EAST)
-/client/verb/moveleft()
-	set name = ".moveleft"
-	set instant = 1
-	Move(get_step(mob, WEST), WEST)
+// facing verbs
+/**
+  * Returns true if a mob can turn to face things
+  *
+  * Conditions:
+  * * client.last_turn > world.time
+  * * not dead or unconcious
+  * * not anchored
+  * * no transform not set
+  * * we are not restrained
+  */
+/mob/proc/canface()
+	if(world.time < last_turn)
+		return FALSE
+	if(stat == DEAD || stat == UNCONSCIOUS)
+		return FALSE
+	if(anchored)
+		return FALSE
+	if(transforming)
+		return FALSE
+	if(restrained())
+		return FALSE
+	return TRUE
+
+///Hidden verb to turn east
+/mob/verb/eastface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(EAST)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
+
+///Hidden verb to turn west
+/mob/verb/westface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(WEST)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
+
+///Hidden verb to turn north
+/mob/verb/northface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(NORTH)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
+
+///Hidden verb to turn south
+/mob/verb/southface()
+	set hidden = TRUE
+	if(!canface())
+		return FALSE
+	setDir(SOUTH)
+	last_turn = world.time + MOB_FACE_DIRECTION_DELAY
+	return TRUE
