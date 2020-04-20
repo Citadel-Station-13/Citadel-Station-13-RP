@@ -283,32 +283,24 @@
 
 // Check if this atom prevents things standing on it from falling. Return TRUE to allow the fall.
 /obj/proc/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(!isturf(mover.loc)) // VORESTATION EDIT. We clearly didn't have enough backup checks.
-		return FALSE //If this ain't working Ima be pissed.
 	return TRUE
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.z < z)
-		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
-	if(!isturf(mover.loc))
-		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
-	else
-		return TRUE
+	if(target.x == x && target.y == y && target.z == z - 1)
+		return FALSE
+	return TRUE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.z >= z)
-		return TRUE // We don't block sideways or upward movement.
-	else if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return TRUE // Anything small enough to pass a grille will pass a lattice
-	if(!isturf(mover.loc))
-		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
-	else
-		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
+	if(mover.checkpass(PASSGRILLE))
+		return TRUE
+	if(target.x == x && target.y == y && target.z == z - 1)
+		return FALSE
+	return TRUE
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
