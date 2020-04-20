@@ -9,7 +9,8 @@
 
 // Energy Weapons
 
-/datum/design/item/weapon/protector
+/datum/design/item/weapon/energy/protector
+	name = "\'Myrmidon\' code-locked e-gun"
 	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
 	id = "protector"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
@@ -26,7 +27,7 @@
 	sort_string = "MAAAI"
 
 /datum/design/item/weapon/energy/sickshot
-	desc = "A 'Sickshot' is a 4-shot energy revolver that causes nausea and confusion."
+	desc = "The 'Discombobulator' is a 4-shot energy revolver that causes nausea and confusion."
 	id = "sickshot"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000)
