@@ -242,10 +242,8 @@
 	slot_flags //onmobs cringe tbh
 
 /obj/item/tank/carbon_dioxide/Initialize()
-	..()
-
+	. = ..()
 	air_contents.adjust_gas("carbon_dioxide", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/emergency/carbon_dioxide
 	name = "emergency CO2 tank"
@@ -257,9 +255,8 @@
 
 
 /obj/item/tank/emergency/carbon_dioxide/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas("carbon_dioxide", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["carbon_dioxide"] < 0.2 && loc==user)

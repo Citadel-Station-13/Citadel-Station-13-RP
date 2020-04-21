@@ -112,5 +112,45 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	icon_state = "carcharodon"
 	item_state = "carcharodon"
-	rolled_down_icon = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	item_icons = list(slot_r_hand_str = 'modular_citadel/icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'modular_citadel/icons/mob/inhands/clothing_left.dmi')
+	rolled_sleeves = -1
+	rolled_down = -1
+
+/obj/item/clothing/under/carcharodon/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = "Object"
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(worn_state == "carcharodon_s")
+        worn_state = "carcharodon_d_s"
+    if(worn_state == "carcharodon_d_s")
+        worn_state = "carcharodon_s"
+
+/obj/item/clothing/under/mantleofheaven
+	name = "Mantle of the Heavens"
+	desc = "A flowing nanosilk kimono, black with a pattern of swallows in silver thread. The interior is lined with a sleek orange synthetic fiber. This garment was cut specifically to maximize ventilation without sacrificing style nor mobility. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon_state = "mantleofheaven"
+	item_state = "mantleofheaven"
+	item_icons = list(slot_r_hand_str = 'modular_citadel/icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'modular_citadel/icons/mob/inhands/clothing_left.dmi')
+	rolled_sleeves = -1
+	rolled_down = -1
+
+/obj/item/clothing/under/mantleofheaven/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = "Object"
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(worn_state == "mantleofheaven_s")
+        worn_state = "mantleofheaven_d_s"
+    if(worn_state == "mantleofheaven_d_s")
+        worn_state = "mantleofheaven_s"
