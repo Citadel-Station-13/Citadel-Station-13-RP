@@ -110,7 +110,13 @@ var/global/list/string_slot_flags = list(
 /////Initial Building/////
 //////////////////////////
 
-/proc/makeDatumRefLists()
+/proc/make_datum_reference_lists()
+	// Keybindings
+	init_keybindings()
+
+	// Circuits
+	initialize_integrated_circuits_list()
+
 	var/list/paths
 
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name

@@ -57,7 +57,9 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
+
 #define INIT_ORDER_FAIL2TOPIC		101
+#define INIT_ORDER_INPUT			100
 #define INIT_ORDER_SOUNDS			95
 #define INIT_ORDER_JOBS				85
 #define INIT_ORDER_GARBAGE			70
@@ -94,6 +96,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_CHARSETUP     25
+#define FIRE_PRIORITY_SPACEDRIFT	25
 #define FIRE_PRIORITY_AIRFLOW		30
 #define FIRE_PRIORITY_AIR			35
 #define FIRE_PRIORITY_OBJ			40
@@ -104,9 +107,9 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_MACHINES		100
 #define FIRE_PRIORITY_PROJECTILES	150
 #define FIRE_PRIORITY_OVERLAYS		500
+#define FIRE_PRIORITY_INPUT			1000		//never drop input
 
 // Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
-// TODO - I don't really like the location of this macro define.  Consider it. ~Leshana
 #define COMPILE_OVERLAYS(A)\
 	if (TRUE) {\
 		var/list/oo = A.our_overlays;\

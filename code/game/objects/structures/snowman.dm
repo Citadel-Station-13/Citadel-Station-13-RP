@@ -6,7 +6,7 @@
 	anchored = 1
 
 /obj/structure/snowman/attack_hand(mob/user as mob)
-	if(user.a_intent == I_HURT)
+	if(user.a_intent == INTENT_HARM)
 		to_chat(user, "<span class='notice'>In one hit, [src] easily crumples into a pile of snow. You monster.</span>")
 		var/turf/simulated/floor/F = get_turf(src)
 		if (istype(F))

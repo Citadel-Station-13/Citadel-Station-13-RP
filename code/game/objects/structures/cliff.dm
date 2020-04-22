@@ -132,7 +132,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 
 // Movement-related code.
 
-/obj/structure/cliff/CanPass(atom/movable/mover, turf/target)
+/obj/structure/cliff/CanAllowThrough(atom/movable/mover, turf/target)
 	if(isliving(mover))
 		var/mob/living/L = mover
 		if(L.hovering) // Flying mobs can always pass.

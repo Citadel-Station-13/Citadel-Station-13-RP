@@ -358,9 +358,9 @@
 		to_chat(src, span("warning", "There wasn't an unoccupied spot to teleport to."))
 		return FALSE
 
-	var/datum/effect/effect/system/spark_spread/s1 = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
 	s1.set_up(5, 1, T)
-	var/datum/effect/effect/system/spark_spread/s2 = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s2 = new /datum/effect_system/spark_spread
 	s2.set_up(5, 1, target_turf)
 
 
@@ -407,7 +407,7 @@
 /mob/living/simple_mob/slime/xenobio/ruby/apply_melee_effects(atom/A)
 	..()
 
-	if(isliving(A) && a_intent == I_HURT)
+	if(isliving(A) && a_intent == INTENT_HARM)
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
 			visible_message(span("danger", "\The [src] sends \the [L] flying with the impact!"))

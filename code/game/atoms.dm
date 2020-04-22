@@ -18,6 +18,8 @@
 	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 
+	/// The orbiter comopnent if we're being orbited.
+	var/datum/component/orbiter/orbiters
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -146,9 +148,6 @@
 	proc/can_add_container()
 		return flags & INSERT_CONTAINER
 */
-
-/atom/proc/CheckExit()
-	return 1
 
 // If you want to use this, the atom must have the PROXMOVE flag, and the moving
 // atom must also have the PROXMOVE flag currently to help with lag. ~ ComicIronic
@@ -535,16 +534,6 @@
 /atom/proc/InsertedContents()
 	return contents
 
-/atom/proc/has_gravity(turf/T)
-	if(!T || !isturf(T))
-		T = get_turf(src)
-	if(istype(T, /turf/space)) // Turf never has gravity
-		return FALSE
-	var/area/A = get_area(T)
-	if(A && A.has_gravity())
-		return TRUE
-	return FALSE
-
 /atom/proc/drop_location()
 	var/atom/L = loc
 	if(!L)
@@ -616,3 +605,13 @@
 		else if(C)
 			color = C
 			return
+
+/**
+  * Returns if we have gravity on a specified turf.
+  */
+/atom/proc/has_gravity(turf/T)
+	if(!T)
+		T = get_turf(src)
+	if(!T)
+		return TRUE
+	return T.has_gravity()

@@ -80,12 +80,12 @@
 		var/mob/living/M = AM
 		M.slip("the foam", 6)
 
-/datum/effect/effect/system/foam_spread
+/datum/effect_system/foam_spread
 	var/amount = 5				// the size of the foam spread.
 	var/list/carried_reagents	// the IDs of reagents present when the foam was mixed
 	var/metal = 0				// 0 = foam, 1 = metalfoam, 2 = ironfoam
 
-/datum/effect/effect/system/foam_spread/set_up(amt=5, loca, var/datum/reagents/carry = null, var/metalfoam = 0)
+/datum/effect_system/foam_spread/set_up(amt=5, loca, var/datum/reagents/carry = null, var/metalfoam = 0)
 	amount = round(sqrt(amt / 3), 1)
 	if(istype(loca, /turf/))
 		location = loca
@@ -101,7 +101,7 @@
 		for(var/datum/reagent/R in carry.reagent_list)
 			carried_reagents += R.id
 
-/datum/effect/effect/system/foam_spread/start()
+/datum/effect_system/foam_spread/start()
 	spawn(0)
 		var/obj/effect/effect/foam/F = locate() in location
 		if(F)

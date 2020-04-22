@@ -63,7 +63,7 @@
 	say_got_target = list("ENGAGING!!!","CONTACT!!!","TARGET SPOTTED!","FOUND ONE!")
 	reactions = list()
 
-	var/datum/effect/effect/system/spark_spread/sparks
+	var/datum/effect_system/spark_spread/sparks
 	var/wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark
 
 /mob/living/simple_mob/hostile/mecha/New()

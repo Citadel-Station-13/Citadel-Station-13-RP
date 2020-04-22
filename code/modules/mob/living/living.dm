@@ -40,9 +40,7 @@
 	set category = "Object"
 
 	if(AM.Adjacent(src))
-		src.start_pulling(AM)
-
-	return
+		start_pulling(AM)
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())
@@ -128,7 +126,7 @@ default behaviour is:
 			now_pushing = 0
 			return
 
-		if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
+		if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
 			var/turf/oldloc = loc
 			forceMove(tmob.loc)
 			//VOREstation Edit - Begin
@@ -150,7 +148,7 @@ default behaviour is:
 			now_pushing = 0
 			return
 		//VOREStation Edit - Begin
-		else if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
+		else if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
 			forceMove(tmob.loc)
 			now_pushing = 0
 			return
@@ -159,7 +157,7 @@ default behaviour is:
 		if(!can_move_mob(tmob, 0, 0))
 			now_pushing = 0
 			return
-		if(a_intent == I_HELP || src.restrained())
+		if(a_intent == INTENT_HELP || src.restrained())
 			now_pushing = 0
 			return
 		// VOREStation Edit - Begin
@@ -229,7 +227,7 @@ default behaviour is:
 				G.adjust_position()
 		now_pushing = 0
 
-/mob/living/CanPass(atom/movable/mover, turf/target)
+/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
 		return TRUE
 	return ..()
@@ -777,116 +775,6 @@ default behaviour is:
 	//VOREStation Edit End - Making it so SSD people have prefs with fallback to original style.
 	return
 
-/mob/living/Move(a, b, flag)
-	if (buckled && buckled.loc != a) //not updating position
-		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
-			return buckled.Move(a, b)
-		else	//Otherwise, no running around for you.
-			return 0
-
-	if (restrained())
-		stop_pulling()
-
-
-	var/t7 = 1
-	if (restrained())
-		for(var/mob/living/M in range(src, 1))
-			if ((M.pulling == src && M.stat == 0 && !( M.restrained() )))
-				t7 = null
-	if ((t7 && (pulling && ((get_dist(src, pulling) <= 1 || pulling.loc == loc) && (client && client.moving)))))
-		var/turf/T = loc
-		. = ..()
-
-		if (pulling && pulling.loc)
-			if(!( isturf(pulling.loc) ))
-				stop_pulling()
-				return
-
-		/////
-		if(pulling && pulling.anchored)
-			stop_pulling()
-			return
-
-		if (!restrained())
-			var/diag = get_dir(src, pulling)
-			if ((diag - 1) & diag)
-			else
-				diag = null
-			if ((get_dist(src, pulling) > 1 || diag))
-				if (isliving(pulling))
-					var/mob/living/M = pulling
-					var/atom/movable/t = M.pulling
-					M.stop_pulling()
-
-					if(!istype(M.loc, /turf/space))
-						var/area/A = get_area(M)
-						if(A.has_gravity)
-							//this is the gay blood on floor shit -- Added back -- Skie
-							if (M.lying && (prob(M.getBruteLoss() / 6)))
-								var/bloodtrail = 1	//Checks if it's possible to even spill blood
-								if(ishuman(M))
-									var/mob/living/carbon/human/H = M
-									if(H.species.flags & NO_BLOOD)
-										bloodtrail = 0
-									else
-										var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
-										if(blood_volume < BLOOD_VOLUME_SURVIVE)
-											bloodtrail = 0	//Most of it's gone already, just leave it be
-										else
-											H.vessel.remove_reagent("blood", 1)
-								if(bloodtrail)
-									var/turf/location = M.loc
-									if(istype(location, /turf/simulated))
-										location.add_blood(M)
-							//pull damage with injured people
-								if(prob(25))
-									M.adjustBruteLoss(1)
-									visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!</span>")
-							if(M.pull_damage())
-								if(prob(25))
-									M.adjustBruteLoss(2)
-									visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!</span>")
-									var/turf/location = M.loc
-									if (istype(location, /turf/simulated))
-										var/bloodtrail = 1	//Checks if it's possible to even spill blood
-										if(ishuman(M))
-											var/mob/living/carbon/human/H = M
-											if(H.species.flags & NO_BLOOD)
-												bloodtrail = 0
-											else
-												var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
-												if(blood_volume < BLOOD_VOLUME_SURVIVE)
-													bloodtrail = 0	//Most of it's gone already, just leave it be
-												else
-													H.vessel.remove_reagent("blood", 1)
-										if(bloodtrail)
-											if(istype(location, /turf/simulated))
-												location.add_blood(M)
-
-					if(get_dist(pulling.loc, T) > 1 || pulling.loc.z != T.z)
-						M.stop_pulling()
-					else
-						step(pulling, get_dir(pulling.loc, T))
-						if(t)
-							M.start_pulling(t)
-				else
-					if (pulling)
-						if (istype(pulling, /obj/structure/window))
-							var/obj/structure/window/W = pulling
-							if(W.is_fulltile())
-								for(var/obj/structure/window/win in get_step(pulling,get_dir(pulling.loc, T)))
-									stop_pulling()
-
-						if(get_dist(pulling.loc, T) > 1 || pulling.loc.z != T.z) // This is needed or else pulled objects can't get pushed away.
-							stop_pulling()
-						else
-							step(pulling, get_dir(pulling.loc, T))
-	else
-		stop_pulling()
-		. = ..()
-
-	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
-		s_active.close(src)
 
 /mob/living/proc/handle_footstep(turf/T)
 	return FALSE
@@ -1000,26 +888,6 @@ default behaviour is:
 		return
 	..()
 
-/mob/living/touch_map_edge()
-
-	//check for nuke disks
-	if(client && stat != DEAD) //if they are clientless and dead don't bother, the parent will treat them as any other container
-		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear)) //only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = SSticker.mode
-			if(G.check_mob(src))
-				if(x <= TRANSITIONEDGE)
-					inertia_dir = 4
-				else if(x >= world.maxx -TRANSITIONEDGE)
-					inertia_dir = 8
-				else if(y <= TRANSITIONEDGE)
-					inertia_dir = 1
-				else if(y >= world.maxy -TRANSITIONEDGE)
-					inertia_dir = 2
-				to_chat(src, "<span class='warning'>Something you are carrying is preventing you from leaving.</span>")
-				return
-
-	..()
-
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjustEarDamage(var/damage, var/deaf)
 	ear_damage = max(0, ear_damage + damage)
@@ -1093,6 +961,10 @@ default behaviour is:
 			lastpuke = 0
 
 /mob/living/update_canmove()
+	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
+	if(restrained())
+		stop_pulling()
+	// End
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 		canmove = 1
@@ -1300,17 +1172,8 @@ default behaviour is:
 
 	if(!src.lastarea)
 		src.lastarea = get_area(src.loc)
-	if((istype(src.loc, /turf/space)) || (src.lastarea.has_gravity == 0))
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
 
-
-/*
-	if(istype(src.loc, /turf/space) || (src.flags & NOGRAV)) //they're in space, move em one space in the opposite direction
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
-*/
-
+	newtonian_move(get_dir(target, src))
 
 	item.throw_at(target, throw_range, item.throw_speed, src)
 

@@ -13,6 +13,7 @@
 	var/cooldown = 0
 	var/acceleration = 1
 	var/owner_follows_eye = 0
+	var/slowdown = 1			//people said this was too fast. meh.
 
 	see_in_dark = 7
 	status_flags = GODMODE
@@ -83,6 +84,9 @@
 /mob/proc/EyeMove(n, direct)
 	if(!eyeobj)
 		return
+
+	if(eyeobj.slowdown)
+		applyMoveCooldown(eyeobj.slowdown)
 
 	return eyeobj.EyeMove(n, direct)
 

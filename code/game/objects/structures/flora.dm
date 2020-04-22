@@ -370,7 +370,7 @@
 	icon = 'icons/obj/flora/sifflora.dmi'
 
 /obj/structure/flora/sif/attack_hand(mob/user)
-	if (user.a_intent == I_HURT)
+	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
 			qdel(src)

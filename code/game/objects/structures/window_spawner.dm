@@ -23,7 +23,7 @@
 /obj/effect/wingrille_spawn/attack_generic()
 	activate()
 
-/obj/effect/wingrille_spawn/CanPass(atom/movable/mover, turf/target)
+/obj/effect/wingrille_spawn/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
 /obj/effect/wingrille_spawn/Initialize()

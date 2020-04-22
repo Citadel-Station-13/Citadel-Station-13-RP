@@ -16,7 +16,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 50000, "glass" = 25000)
-	var/datum/effect/effect/system/spark_spread/spark_system
+	var/datum/effect_system/spark_spread/spark_system
 	var/working = 0
 	var/mode = ATMOS_MODE
 	var/p_dir = NORTH
@@ -32,7 +32,7 @@
 
 /obj/item/pipe_dispenser/New()
 	. = ..()
-	src.spark_system = new /datum/effect/effect/system/spark_spread
+	src.spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 	if(!first_atmos)

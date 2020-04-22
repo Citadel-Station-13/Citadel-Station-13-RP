@@ -548,7 +548,7 @@
 	switch(stance)
 		if(STANCE_IDLE)
 			target_mob = null
-			a_intent = I_HELP
+			a_intent = INTENT_HELP
 			annoyed = max(0,annoyed--)
 
 			//Yes I'm breaking this into two if()'s for ease of reading
@@ -573,7 +573,7 @@
 				FindTarget()
 		if(STANCE_ATTACK)
 			annoyed = 50
-			a_intent = I_HURT
+			a_intent = INTENT_HARM
 			RequestHelp()
 			MoveToTarget()
 		if(STANCE_ATTACKING)
@@ -611,16 +611,16 @@
 
 	switch(M.a_intent)
 
-		if(I_HELP)
+		if(INTENT_HELP)
 			if (health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			M.visible_message("<span class='notice'>[M] [response_disarm] \the [src].</span>")
 			M.do_attack_animation(src)
 			//TODO: Push the mob away or something
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if (M == src)
 				return
 			if (!(status_flags & CANPUSH))
@@ -642,7 +642,7 @@
 			ai_log("attack_hand() I was grabbed by: [M]",2)
 			react_to_attack(M)
 
-		if(I_HURT)
+		if(INTENT_HARM)
 			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
 			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")
@@ -1544,7 +1544,7 @@
 	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, "sparks", 50, 1, -1)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)
 	s.start()
 

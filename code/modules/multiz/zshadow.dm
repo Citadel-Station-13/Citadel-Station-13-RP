@@ -61,21 +61,13 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/living/Move()
+/mob/living/Moved()
 	. = ..()
 	check_shadow()
 
 /mob/living/forceMove()
 	. = ..()
 	check_shadow()
-
-/mob/living/on_mob_jump()
-	// We're about to be admin-jumped.
-	// Unfortuantely loc isn't set until after this proc is called. So we must spawn() so check_shadow executes with the new loc.
-	. = ..()
-	if(shadow)
-		spawn(0)
-			check_shadow()
 
 /mob/living/proc/check_shadow()
 	var/mob/M = src

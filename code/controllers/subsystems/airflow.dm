@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(airflow)
 		step_towards(target, target.airflow_dest)
 		var/mob/M = target
 		if (ismob(target) && M.client)
-			M.setMoveCooldown(vsc.airflow_mob_slowdown)
+			M.applyMoveCooldown(vsc.airflow_mob_slowdown)
 
 		if (MC_TICK_CHECK)
 			return

@@ -270,7 +270,7 @@ emp_act
 	if(soaked >= round(effective_force*0.8))
 		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
-	if(user.a_intent == I_DISARM)
+	if(user.a_intent == INTENT_DISARM)
 		effective_force *= 0.5 //reduced effective force...
 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
 			return 0

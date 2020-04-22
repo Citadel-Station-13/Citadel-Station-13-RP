@@ -65,14 +65,16 @@
 //
 ////////////////////////////////////////
 
-/atom/movable/Move(atom/newloc, direct = 0)
+/atom/movable/Move(atom/newloc, direct)
+	var/atom/movable/pullee = pulling
+	var/turf/T = loc
+	if(!moving_from_pull)
+		check_pulling()
 	if(!loc || !newloc)
 		return FALSE
 	var/atom/oldloc = loc
 
 	if(loc != newloc)
-		if(!direct)
-			direct = get_dir(oldloc, newloc)
 		if (!(direct & (direct - 1))) //Cardinal move
 			. = ..()
 		else //Diagonal move, split it into cardinal moves
@@ -123,18 +125,38 @@
 			if(moving_diagonally == SECOND_DIAG_STEP)
 				if(!.)
 					setDir(first_step_dir)
-				//else if (!inertia_moving)
-				//	inertia_next_move = world.time + inertia_move_delay
-				//	newtonian_move(direct)
+				else if (!inertia_moving)
+					inertia_next_move = world.time + inertia_move_delay
+					newtonian_move(direct)
 			moving_diagonally = 0
 			return
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
-		last_move = 0
+		last_move = NONE
 		return
 
 	if(.)
 		Moved(oldloc, direct)
+	if(. && pulling && pulling == pullee && pulling != moving_from_pull) //we were pulling a thing and didn't lose it during our move.
+		if(pulling.anchored)
+			stop_pulling()
+		else
+			var/pull_dir = get_dir(src, pulling)
+			//puller and pullee more than one tile away or in diagonal position
+			if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
+				pulling.moving_from_pull = src
+				var/success = pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
+				pulling.moving_from_pull = null
+				if(success)
+					// hook for baystation stuff
+					on_move_pulled(pulling)
+					// end
+			check_pulling()
+
+	last_move = direct
+	setDir(direct)
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
+		return FALSE
 
 	//Polaris stuff
 	move_speed = world.time - l_move_time
@@ -142,12 +164,8 @@
 	m_flag = 1
 	//End
 
-	last_move = direct
-	setDir(direct)
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
-		return FALSE
 	//VOREStation Add
-	else if(. && riding_datum)
+	if(. && riding_datum)
 		riding_datum.handle_vehicle_layer()
 		riding_datum.handle_vehicle_offsets()
 	//VOREStation Add End
@@ -156,10 +174,10 @@
 /atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
-/*
 	if (!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(Dir)
+/*
 	if (length(client_mobs_in_contents))
 		update_parallax_contents()
 */
@@ -171,7 +189,7 @@
 /atom/movable/Cross(atom/movable/AM)
 	. = TRUE
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)
-	return CanPass(AM, AM.loc, TRUE)
+	return CanPass(AM, src, TRUE)
 
 //oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
@@ -330,6 +348,59 @@
 	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		var/atom/movable/AM = item
 		AM.onTransitZ(old_z,new_z)
+
+/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(mover in buckled_mobs)
+		return TRUE
+
+/// Returns true or false to allow src to move through the blocker, mover has final say
+/atom/movable/proc/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_BE_PURE(TRUE)
+	return blocker_opinion
+
+/**
+  * Called whenever an object moves and by mobs when they attempt to move themselves through space
+  * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
+  *
+  * Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
+  *
+  * Mobs should return 1 if they should be able to move of their own volition, see [/client/Move]
+  *
+  * Arguments:
+  * * movement_dir - 0 when stopping or any dir when trying to move
+  */
+/atom/movable/proc/Process_Spacemove(movement_dir = NONE)
+	if(has_gravity(src))
+		return TRUE
+
+	if(pulledby)
+		return TRUE
+
+	if(throwing)
+		return TRUE
+
+	if(!isturf(loc))
+		return TRUE
+
+	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+		return TRUE
+
+	return FALSE
+
+/// Only moves the object if it's under no gravity
+/atom/movable/proc/newtonian_move(direction)
+	if(!loc || Process_Spacemove(NONE))
+		inertia_dir = NONE
+		return FALSE
+
+	inertia_dir = direction
+	if(!direction)
+		return TRUE
+	inertia_last_loc = loc
+	SSspacedrift.processing[src] = src
+	return TRUE
 
 /**
   * Sets our glide size

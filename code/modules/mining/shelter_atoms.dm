@@ -66,7 +66,7 @@
 			return
 
 		var/turf/T = deploy_location
-		var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 		smoke.attach(T)
 		smoke.set_up(10, 0, T)
 		smoke.start()
