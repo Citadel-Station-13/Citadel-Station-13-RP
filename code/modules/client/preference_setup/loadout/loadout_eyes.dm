@@ -166,3 +166,13 @@
 /datum/gear/eyes/orangeglasses
 	display_name = "orange glasses"
 	path = /obj/item/clothing/glasses/orangeglasses
+
+/datum/gear/eyes/medical/eyepatch
+	display_name = "Medical HUD Eyepatch"
+	path = /obj/item/clothing/glasses/hud/health/eyepatch
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
+
+/datum/gear/eyes/meson/eyepatch
+	display_name = "Optical Meson Eyepatch (Engineering, Science, Mining)"
+	path = /obj/item/clothing/glasses/hud/health/eyepatch
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")

@@ -700,3 +700,16 @@ datum/gear/uniform/victorianreddress
 datum/gear/uniform/victorianblackdress
 	display_name = "Victorian Black Dress"
 	path = /obj/item/clothing/under/victorianblackdress
+
+datum/gear/uniform/bridgeofficer
+	display_name = "bridge officer skirt"
+	path = /obj/item/clothing/under/bridgeofficerskirt
+	allowed_roles = list("Command Secretary")
+
+datum/gear/uniform/fiendsuit
+	display_name = "Fiendish Suit"
+	path = /obj/item/clothing/under/fiendsuit
+
+datum/gear/uniform/fienddress
+	display_name = "Fiendish Dress"
+	path = /obj/item/clothing/under/fienddress
