@@ -221,12 +221,12 @@ GUEST_BAN
 # FORUMURL http://example.com
 
 ## Wiki address
-# WIKIURL http://example.com
+WIKIURL https://citadel-station.net/wiki_rp/index.php?title=Main_Page
 
 ## Wiki search path
 ## Set this to whatever path your wiki uses to search for articles
 ## Use %s to mark where the search query should be inserted
-# WIKISEARCHURL http://example.com/index.php?title=Special%3ASearch&search=%s
+WIKISEARCHURL https://citadel-station.net/wiki_rp/index.php?search=%s&title=Special%3ASearch&go=Go
 
 ## GitHub address
 # GITHUBURL https://github.com/example-user/example-repository
