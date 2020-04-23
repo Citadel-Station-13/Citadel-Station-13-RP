@@ -25,7 +25,7 @@
 
 //code/game/objects/structures/tank_dispenser.dm
 /obj/structure/dispenser
-	icon = 'modular_citadel/icons/obj/objects.dmi'
+	icon = 'icons/obj/objects.dmi'
 
 //code/game/objects/structures/under_wardrobe.dm
 /obj/structure/undies_wardrobe
