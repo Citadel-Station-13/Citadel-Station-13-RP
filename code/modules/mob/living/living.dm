@@ -82,7 +82,7 @@ default behaviour is:
 	if(now_pushing || !loc)
 		return
 	now_pushing = 1
-	var/oldpulling = pulling
+	var/old_pulling = pulling
 	if (istype(AM, /mob/living))
 		var/mob/living/tmob = AM
 
