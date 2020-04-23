@@ -16,7 +16,7 @@
 	desc = "Weird and flowing!"
 	icon_state = "vox-casual-2"
 	item_state = "vox-casual-2"
-
+	
 //Vox Accessories
 /obj/item/clothing/accessory/storage/vox
 	name = "alien mesh"
@@ -31,3 +31,20 @@
 	..()
 	hold.max_storage_space = slots * ITEMSIZE_COST_NORMAL
 	hold.max_w_class = ITEMSIZE_NORMAL
+
+//Vox Pressure Suits
+/obj/item/clothing/under/pressuresuit
+	species_restricted = list(SPECIES_VOX)
+	name = "vox pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
+	icon = 'icons/obj/clothing/uniforms.dmi'
+	icon_override = 'icons/mob/species/vox/uniform.dmi'
+	flags_inv = HIDEGLOVES|HIDESHOES
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags = PHORONGUARD
+
+/obj/item/clothing/under/pressuresuit/voxcivassistant
+	name = "assistant pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
+	icon_state = "vox-civ-assistant"
+	item_state = "vox-civ-assistant"
