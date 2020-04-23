@@ -21,7 +21,7 @@
 
 //code/game/objects/structures/crates_lockers/crates.dm
 /obj/structure/closet/crate
-	icon = 'modular_citadel/icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi'
 
 //code/game/objects/structures/tank_dispenser.dm
 /obj/structure/dispenser
