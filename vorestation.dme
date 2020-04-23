@@ -1097,6 +1097,7 @@
 #include "code\game\objects\items\weapons\manuals_vr.dm"
 #include "code\game\objects\items\weapons\mop.dm"
 #include "code\game\objects\items\weapons\mop_deploy.dm"
+#include "code\game\objects\items\weapons\nullrod.dm"
 #include "code\game\objects\items\weapons\paint.dm"
 #include "code\game\objects\items\weapons\paiwire.dm"
 #include "code\game\objects\items\weapons\RCD.dm"

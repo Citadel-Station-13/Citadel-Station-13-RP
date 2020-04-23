@@ -94,7 +94,7 @@
 	id = "advanced_analyzer"
 	req_tech = list(TECH_MAGNET = 6, TECH_BIO = 7, TECH_PHORON = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1250, "gold" = 1750, "uranium" = 1000, "plastic" = 500)
-	build_path = /obj/item/device/healthanalyzer/advanced
+	build_path = /obj/item/healthanalyzer/advanced
 	sort_string = "MBBAH"
 
 /datum/design/item/medical/phasic_analyzer
@@ -103,7 +103,7 @@
 	id = "phasic_analyzer"
 	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1500, "gold" = 2000, "uranium" = 1250, "diamond" = 750, "phoron" = 500, "plastic" = 1000, "osmium" = 500)
-	build_path = /obj/item/device/healthanalyzer/phasic
+	build_path = /obj/item/healthanalyzer/phasic
 	sort_string = "MBBAI"
 
 /datum/design/item/medical/advanced_roller

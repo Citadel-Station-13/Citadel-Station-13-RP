@@ -14,11 +14,9 @@
 	var/locked = 1
 	var/smashed = 0
 
-	starts_with = list(/obj/item/material/twohanded/fireaxe)
-
-/obj/structure/closet/fireaxecabinet/Initialize()
-	..()
-	fireaxe = locate() in contents
+/obj/structure/closet/fireaxecabinet/PopulateContents()
+	. = ..()
+	fireaxe = new /obj/item/material/twohanded/fireaxe(src)
 
 /obj/structure/closet/fireaxecabinet/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
 	//..() //That's very useful, Erro
