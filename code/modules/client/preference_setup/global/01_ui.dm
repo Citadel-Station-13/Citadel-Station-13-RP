@@ -20,7 +20,7 @@
 
 /datum/category_item/player_setup_item/player_global/ui/sanitize_preferences()
 	pref.UI_style		= sanitize_inlist(pref.UI_style, all_ui_styles, initial(pref.UI_style))
-	pref.UI_style_color	= sanitize_hexcolor(pref.UI_style_color, default = initial(pref.UI_style_color))
+	pref.UI_style_color	= sanitize_hexcolor(pref.UI_style_color, 6, 1, default = initial(pref.UI_style_color))
 	pref.UI_style_alpha	= sanitize_integer(pref.UI_style_alpha, 0, 255, initial(pref.UI_style_alpha))
 	pref.ooccolor		= sanitize_ooccolor(sanitize_hexcolor(pref.ooccolor, 6, 1, initial(pref.ooccolor)))
 	pref.tooltipstyle	= sanitize_inlist(pref.tooltipstyle, all_tooltip_styles, initial(pref.tooltipstyle))

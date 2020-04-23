@@ -28,10 +28,10 @@
 		user.stop_aiming(no_message=1)
 	holstered = I
 	user.drop_from_inventory(holstered)
-	holstered.loc = src
+	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
+	user.visible_message("<span class='notice'>[user] holsters [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
 
