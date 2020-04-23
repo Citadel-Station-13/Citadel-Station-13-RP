@@ -82,6 +82,7 @@ default behaviour is:
 	if(now_pushing || !loc)
 		return
 	now_pushing = 1
+	var/oldpulling = pulling
 	if (istype(AM, /mob/living))
 		var/mob/living/tmob = AM
 
@@ -145,12 +146,16 @@ default behaviour is:
 			// TODO - Check if we need to do something about the slime.UpdateFeed() we are skipping below.
 			// VOREStation Edit - End
 			tmob.forceMove(oldloc)
+			if(old_pulling)
+				start_pulling(old_pulling, suppress_message = TRUE)
 			now_pushing = 0
 			return
 		//VOREStation Edit - Begin
 		else if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
 			forceMove(tmob.loc)
 			now_pushing = 0
+			if(old_pulling)
+				start_pulling(old_pulling, suppress_message = TRUE)
 			return
 		//VOREStation Edit - End
 
@@ -812,7 +817,8 @@ default behaviour is:
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 
 /mob/living/proc/escape_inventory(obj/item/holder/H)
-	if(H != src.loc) return
+	if(H != src.loc)
+		return
 
 	var/mob/M = H.loc //Get our mob holder (if any).
 

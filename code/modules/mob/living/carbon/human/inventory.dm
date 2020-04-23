@@ -202,7 +202,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(!species || !species.hud || !(slot in species.hud.equip_slots))
 		return
 
-	W.loc = src
+	W.forceMove(src)
 	switch(slot)
 		if(slot_back)
 			src.back = W
@@ -247,7 +247,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			src.l_ear = W
 			if(l_ear.slot_flags & SLOT_TWOEARS)
 				var/obj/item/clothing/ears/offear/O = new(W)
-				O.loc = src
+				O.forceMove(src)
 				src.r_ear = O
 				O.hud_layerise()
 			W.equipped(src, slot)
@@ -256,7 +256,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 			src.r_ear = W
 			if(r_ear.slot_flags & SLOT_TWOEARS)
 				var/obj/item/clothing/ears/offear/O = new(W)
-				O.loc = src
+				O.forceMove(src)
 				src.l_ear = O
 				O.hud_layerise()
 			W.equipped(src, slot)
@@ -311,7 +311,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_in_backpack)
 			if(src.get_active_hand() == W)
 				src.remove_from_mob(W)
-			W.loc = src.back
+			W.forceMove(back)
 		if(slot_tie)
 			for(var/obj/item/clothing/C in worn_clothing)
 				if(istype(W, /obj/item/clothing/accessory))
