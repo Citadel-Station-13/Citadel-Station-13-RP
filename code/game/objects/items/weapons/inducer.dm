@@ -244,6 +244,7 @@
 */
 
 // A 'human stand-in' cell for recharging 'nutrition' on synthetic humans (wow this is terrible! \o/)
+#define NUTRITION_COEFF 0.05 // 1000 charge = 50 nutrition at 0.05
 /obj/item/cell/standin
 	name = "don't spawn this"
 	desc = "this is for weird code use, don't spawn it!!!"
@@ -262,10 +263,12 @@
 	QDEL_IN(src, 20 SECONDS)
 
 /obj/item/cell/standin/give(var/amount)
-	amount *= 0.05 // So 1000 becomes 50
-	..(amount)
-	hume.nutrition += amount
+	. = ..(amount * NUTRITION_COEFF) //Shrink amount to store
+	hume.nutrition += . //Add the amount we really stored
+	. /= NUTRITION_COEFF //Inflate amount to take from the giver
 
 // Various sideways-defined get_cells
 /obj/mecha/get_cell()
 	return cell
+
+#undef NUTRITION_COEFF
