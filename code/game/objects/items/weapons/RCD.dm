@@ -362,12 +362,23 @@
 // RCDs for RIGs.
 /obj/item/rcd/electric/mounted/rig
 
+// Old method for swapping modes as there is no way to bring up the radial.
+/obj/item/rcd/electric/mounted/rig/attack_self(mob/living/user)
+	if(mode_index >= modes.len) // Shouldn't overflow unless someone messes with it in VV poorly but better safe than sorry.
+		mode_index = 1
+	else
+		mode_index++
+
+	to_chat(user, span("notice", "Changed mode to '[modes[mode_index]]'."))
+	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
+
+	if(prob(20))
+		src.spark_system.start()
 
 // RCDs for Mechs.
 /obj/item/rcd/electric/mounted/mecha
 	ranged = TRUE
 	toolspeed = 0.5
-
 
 // Infinite use RCD for debugging/adminbuse.
 /obj/item/rcd/debug
