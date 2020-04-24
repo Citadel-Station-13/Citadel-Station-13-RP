@@ -39,10 +39,36 @@
 	var/static/image/radial_image_grillewind = image(icon = 'icons/mob/radial.dmi', icon_state = "grillewindow"),
 	var/static/image/radial_image_floorwall = image(icon = 'icons/mob/radial.dmi', icon_state = "wallfloor")
 
+/obj/item/rcd/Initialize()
+	src.spark_system = new /datum/effect_system/spark_spread
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
+	update_icon()
+	return ..()
+
 /obj/item/rcd/Destroy()
 	QDEL_NULL(spark_system)
 	spark_system = null
 	return ..()
+
+/obj/item/rcd/update_icon()
+	var/nearest_ten = round((stored_matter/max_stored_matter)*10, 1)
+
+	//Just to prevent updates every use
+	if(ammostate == nearest_ten)
+		return //No change
+	ammostate = nearest_ten
+
+	cut_overlays()
+
+	//Main sprite update
+	if(!nearest_ten)
+		icon_state = "[initial(icon_state)]_empty"
+	else
+		icon_state = "[initial(icon_state)]"
+
+	add_overlay("[initial(icon_state)]_charge[nearest_ten]")
+
 
 /obj/item/rcd/examine(mob/user)
 	..()
@@ -150,6 +176,7 @@
 	if(!can_afford(amount))
 		return FALSE
 	stored_matter -= amount
+	update_icon()
 	return TRUE
 
 // Useful for testing before actually paying (e.g. before a do_after() ).
@@ -188,6 +215,7 @@
 		rcd_beam = beam_origin.Beam(A, icon_state = "rped_upgrade", time = max(true_delay, 5))
 	busy = TRUE
 
+	perform_effect(A, true_delay) //VOREStation Add
 	if(do_after(user, true_delay, target = A))
 		busy = FALSE
 		// Doing another check in case we lost matter during the delay for whatever reason.
@@ -373,9 +401,15 @@
 /obj/item/rcd_ammo
 	name = "compressed matter cartridge"
 	desc = "Highly compressed matter for the RCD."
-	icon = 'icons/obj/ammo.dmi'
-	icon_state = "rcd"
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "rcdammo"
 	item_state = "rcdammo"
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+	)
+
+
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 30000,"glass" = 15000)
@@ -397,6 +431,19 @@
 	return "It currently holds [remaining]/[initial(remaining)] matter-units."
 
 // RCD Construction Effects
+
+/obj/item/rcd/proc/perform_effect(var/atom/A, var/time_taken)
+	effects[A] = new /obj/effect/constructing_effect(get_turf(A), time_taken, modes[mode_index])
+
+/obj/item/rcd/use_rcd(atom/A, mob/living/user)
+	. = ..()
+	cleanup_effect(A)
+
+/obj/item/rcd/proc/cleanup_effect(var/atom/A)
+	if(A in effects)
+		qdel(effects[A])
+		effects -= A
+
 /obj/effect/constructing_effect
 	icon = 'icons/effects/effects_rcd.dmi'
 	icon_state = ""
@@ -438,3 +485,4 @@
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)
+
