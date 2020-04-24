@@ -13257,6 +13257,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+"vi" = (
+/obj/structure/noticeboard,
+/turf/simulated/wall,
+/area/security/evidence_storage)
 "vj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13742,6 +13746,10 @@
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+"vY" = (
+/obj/structure/noticeboard,
+/turf/simulated/wall,
+/area/security/security_processing)
 "vZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -27533,6 +27541,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
+"Rt" = (
+/obj/structure/noticeboard,
+/turf/simulated/wall,
+/area/medical/medbay_primary_storage)
+"Ru" = (
+/obj/structure/noticeboard,
+/turf/simulated/wall,
+/area/medical/surgery2)
 "Rv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -34333,7 +34349,7 @@ fv
 oz
 oz
 oz
-oz
+vi
 sX
 tU
 uM
@@ -34901,7 +34917,7 @@ fw
 oA
 oA
 oA
-oA
+vY
 tb
 tT
 uQ
@@ -37058,7 +37074,7 @@ KP
 Lu
 LV
 Mo
-Jr
+Rt
 Nk
 NI
 Og
@@ -37770,7 +37786,7 @@ Lw
 Mq
 Lw
 Lw
-KV
+Ru
 Ol
 OE
 Pg
