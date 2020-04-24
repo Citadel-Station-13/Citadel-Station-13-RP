@@ -2190,6 +2190,13 @@ End Citadel Change */
 	glass_desc = "The second most Irish drink."
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/ethanol/peppermintschnapps
+	name = "Peppermint Schnapps"
+	id = "schnapps_pep"
+	description = "A flavoured grain liqueur with a fresh, minty taste."
+	taste_description = "peachy"
+	strength = 90
+
 // Cocktails
 
 
