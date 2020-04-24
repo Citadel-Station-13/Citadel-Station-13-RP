@@ -44,7 +44,7 @@
 		cell.emp_act(severity)
 
 /obj/item/inducer/afterattack(atom/A, mob/living/carbon/user, proximity)
-	if(user.a_intent == I_HURT)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
 
 	if(cantbeused(user))
@@ -152,7 +152,7 @@
 		var/filter = filter(type = "outline", size = 1, color = "#22AAFF")
 		A.filters += filter
 
-		spark_system = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, get_turf(A))
 		spark_system.attach(A)
 
@@ -232,6 +232,7 @@
 	cell_type = /obj/item/cell/super
 	charge_guns = TRUE
 
+/* Requires void cores which we do not have here
 /obj/item/inducer/hybrid
 	name = "hybrid-tech inducer"
 	desc = "A tool for inductively charging internal power cells. This one has some flashy bits and recharges devices slower, but seems to recharge itself between uses."
@@ -240,6 +241,7 @@
 	powertransfer = 250
 	cell_type = /obj/item/cell/void
 	charge_guns = TRUE
+*/
 
 // A 'human stand-in' cell for recharging 'nutrition' on synthetic humans (wow this is terrible! \o/)
 /obj/item/cell/standin
