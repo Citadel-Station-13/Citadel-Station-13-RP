@@ -1,12 +1,12 @@
 /obj/item/inducer
 	name = "industrial inducer"
 	desc = "A tool for inductively charging internal power cells."
-	icon = 'icons/obj/tools_vr.dmi'
+	icon = 'icons/obj/tools.dmi'
 	icon_state = "inducer-engi"
 	item_state = "inducer-engi"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
 	)
 	force = 7
 
