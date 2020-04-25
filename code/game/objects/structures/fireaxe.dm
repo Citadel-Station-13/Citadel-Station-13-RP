@@ -11,6 +11,7 @@
 	var/hitstaken = 0
 	var/locked = 1
 	var/smashed = 0
+	var/hasaxe = 1
 
 /obj/structure/fireaxecabinet/Initialize()
 	..()
@@ -179,7 +180,7 @@
 		return
 
 /obj/structure/fireaxecabinet/update_icon() //Template: fireaxe[has fireaxe][is opened][hits taken][is smashed]. If you want the opening or closing animations, add "opening" or "closing" right after the numbers
-	var/hasaxe = 0
+	hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
 	icon_state = text("fireaxe[][][][]",hasaxe,open,hitstaken,smashed)
