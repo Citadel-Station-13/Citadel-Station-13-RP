@@ -43,6 +43,13 @@
 	if(cell)
 		cell.emp_act(severity)
 
+/obj/item/inducer/attack(mob/living/M, mob/living/user)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	else
+		return 0 //No accidental bludgeons!
+
+
 /obj/item/inducer/afterattack(atom/A, mob/living/carbon/user, proximity)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
