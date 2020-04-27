@@ -137,7 +137,7 @@
 
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
-	desc = "Almost like a longer machete, strapped to your arm."
+	desc = "A long, machete-like blade, mounted to your arm. The size and location of it lends itself to parrying blows in melee."
 	icon_state = "armblade"
 	item_state = "armblade"
 	force_divisor = 0.4 // long and arm-mounted but you gotta use a suit for it
