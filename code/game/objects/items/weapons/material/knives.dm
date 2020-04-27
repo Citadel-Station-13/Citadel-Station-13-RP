@@ -153,6 +153,7 @@
 	return FALSE
 
 /obj/item/material/knife/machete/armblade/rig
+	default_material = DEFAULT_WALL_MATERIAL
 	w_class = ITEMSIZE_HUGE
 	canremove = FALSE
 	var/obj/item/rig_module/armblade/storing_module
