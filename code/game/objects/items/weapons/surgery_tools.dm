@@ -16,7 +16,7 @@
 	var/helpforce = 0	//For help intent things
 
 /obj/item/surgical/attack(mob/M, mob/user)
-	if(user.a_intent == I_HELP)	//A tad messy, but this should stop people from smacking their patients in surgery
+	if(user.a_intent == INTENT_HELP)	//A tad messy, but this should stop people from smacking their patients in surgery
 		return 0
 	..()
 

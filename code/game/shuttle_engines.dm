@@ -14,7 +14,7 @@
 	var/window_flags = 0 // Bitflags to indicate connected windows
 	var/wall_flags = 0 // Bitflags to indicate connected walls
 
-/obj/structure/shuttle/window/CanPass(atom/movable/mover, turf/target)
+/obj/structure/shuttle/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
 	return ..()

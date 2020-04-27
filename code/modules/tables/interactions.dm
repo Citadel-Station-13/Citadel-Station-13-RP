@@ -1,4 +1,4 @@
-/obj/structure/table/CanPass(atom/movable/mover, turf/target)
+/obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover,/obj/item/projectile))
 		return (check_cover(mover,target))
 	if (flipped == 1)
@@ -71,8 +71,9 @@
 	return
 
 
-/obj/structure/table/attackby(obj/item/W as obj, mob/user as mob)
-	if (!W) return
+/obj/structure/table/attackby(obj/item/W, mob/user, params)
+	if (!W)
+		return
 
 	// Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
@@ -86,7 +87,7 @@
 			if(!user.Adjacent(M))
 				return
 			if (G.state < 2)
-				if(user.a_intent == I_HURT)
+				if(user.a_intent == INTENT_HARM)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = BP_HEAD)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
@@ -121,7 +122,7 @@
 		return
 
 	if(istype(W, /obj/item/melee/energy/blade))
-		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, src.loc)
 		spark_system.start()
 		playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
@@ -139,9 +140,34 @@
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
 		return
 
-	if(item_place)
+/*
+	if(user.a_intent != INTENT_HARM && !(I.item_flags & ABSTRACT))
+		if(user.transferItemToLoc(I, drop_location(), silent = FALSE))
+			var/list/click_params = params2list(params)
+			//Center the icon where the user clicked.
+			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+				return
+			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
+			I.pixel_x = CLAMP(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			I.pixel_y = CLAMP(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			AfterPutItemOnTable(I, user)
+			return TRUE
+	else
+		return ..()
+*/
+
+	if(item_place && (user.a_intent != INTENT_HARM))
 		user.drop_item(src.loc)
-	return
+		if(item_pixel_place)
+			var/list/click_params = params2list(params)
+			//Center the icon where the user clicked.
+			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+				return
+			//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
+			W.pixel_x = CLAMP(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			W.pixel_y = CLAMP(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		return TRUE
+	return ..()
 
 /obj/structure/table/attack_tk() // no telehulk sorry
 	return

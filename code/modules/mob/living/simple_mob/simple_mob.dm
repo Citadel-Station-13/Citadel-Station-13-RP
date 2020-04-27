@@ -216,6 +216,7 @@
 	return ..()
 */
 /mob/living/simple_mob/movement_delay()
+	. = ..()
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
 
 	tally = movement_cooldown
@@ -245,7 +246,7 @@
 	if(m_intent == "walk")
 		tally *= 1.5
 
-	return tally+config_legacy.animal_delay
+	return . + tally + config_legacy.animal_delay
 
 
 /mob/living/simple_mob/Stat()

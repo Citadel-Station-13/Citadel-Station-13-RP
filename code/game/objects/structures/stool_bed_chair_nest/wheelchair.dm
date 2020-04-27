@@ -7,7 +7,7 @@
 
 	var/last_active_move = 0
 	var/driving = 0
-	var/mob/living/pulling = null
+	var/mob/living/pulling_along = null
 	var/bloodiness
 	var/move_delay = 2		//5 TPS
 
@@ -36,30 +36,30 @@
 		return
 
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
-		if(user==pulling)
-			pulling = null
+		if(user==pulling_along)
+			pulling_along = null
 			user.pulledby = null
 			to_chat(user, "<span class='warning'>You lost your grip!</span>")
 		return
-	if(has_buckled_mobs() && pulling && user in buckled_mobs)
-		if(pulling.stat || pulling.stunned || pulling.weakened || pulling.paralysis || pulling.lying || pulling.restrained())
-			pulling.pulledby = null
-			pulling = null
-	if(user.pulling && (user == pulling))
-		pulling = null
+	if(has_buckled_mobs() && pulling_along && user in buckled_mobs)
+		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
+			pulling_along.pulledby = null
+			pulling_along = null
+	if(user.pulling && (user == pulling_along))
+		pulling_along = null
 		user.pulledby = null
 		return
 	if(propelled)
 		return
-	if(pulling && (get_dist(src, pulling) > 1))
-		pulling = null
+	if(pulling_along && (get_dist(src, pulling_along) > 1))
+		pulling_along = null
 		user.pulledby = null
-		if(user==pulling)
+		if(user==pulling_along)
 			return
-	if(pulling && (get_dir(src.loc, pulling.loc) == direction))
+	if(pulling_along && (get_dir(src.loc, pulling_along.loc) == direction))
 		to_chat(user, "<span class='warning'>You cannot go there.</span>")
 		return
-	if(pulling && has_buckled_mobs() && (user in buckled_mobs))
+	if(pulling_along && has_buckled_mobs() && (user in buckled_mobs))
 		to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
 		return
 
@@ -78,25 +78,25 @@
 			step(L, direction)
 			L.buckled = src
 	//--2----Move driver----2--//
-	if(pulling)
-		T = pulling.loc
-		if(get_dist(src, pulling) >= 1)
-			step(pulling, get_dir(pulling.loc, src.loc))
+	if(pulling_along)
+		T = pulling_along.loc
+		if(get_dist(src, pulling_along) >= 1)
+			step(pulling_along, get_dir(pulling_along.loc, src.loc))
 	//--3--Move wheelchair--3--//
 	step(src, direction)
 	if(has_buckled_mobs()) // Make sure it stays beneath the occupant
 		var/mob/living/L = buckled_mobs[1]
 		Move(L.loc)
 	setDir(direction)
-	if(pulling) // Driver
-		if(pulling.loc == src.loc) // We moved onto the wheelchair? Revert!
-			pulling.forceMove(T)
+	if(pulling_along) // Driver
+		if(pulling_along.loc == src.loc) // We moved onto the wheelchair? Revert!
+			pulling_along.forceMove(T)
 		else
 			spawn(0)
-			if(get_dist(src, pulling) > 1) // We are too far away? Losing control.
-				pulling = null
+			if(get_dist(src, pulling_along) > 1) // We are too far away? Losing control.
+				pulling_along = null
 				user.pulledby = null
-			pulling.setDir(get_dir(pulling, src)) // When everything is right, face the wheelchair
+			pulling_along.setDir(get_dir(pulling_along, src)) // When everything is right, face the wheelchair
 	if(bloodiness)
 		create_track()
 	driving = 0
@@ -117,16 +117,16 @@
 								Bump(O)
 					else
 						unbuckle_mob()
-				if (pulling && (get_dist(src, pulling) > 1))
-					pulling.pulledby = null
-					to_chat(pulling, "<span class='warning'>You lost your grip!</span>")
-					pulling = null
+				if (pulling_along && (get_dist(src, pulling_along) > 1))
+					pulling_along.pulledby = null
+					to_chat(pulling_along, "<span class='warning'>You lost your grip!</span>")
+					pulling_along = null
 			else
 				if (occupant && (src.loc != occupant.loc))
 					src.forceMove(occupant.loc) // Failsafe to make sure the wheelchair stays beneath the occupant after driving
 
 /obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
-	if (pulling)
+	if (pulling_along)
 		MouseDrop(usr)
 	else
 		if(has_buckled_mobs())
@@ -140,8 +140,8 @@
 		if(has_buckled_mobs() && user in buckled_mobs)
 			to_chat(user, "<span class='warning'>You realize you are unable to push the wheelchair you sit in.</span>")
 			return
-		if(!pulling)
-			pulling = user
+		if(!pulling_along)
+			pulling_along = user
 			user.pulledby = src
 			if(user.pulling)
 				user.stop_pulling()
@@ -149,19 +149,19 @@
 			to_chat(user, "You grip \the [name]'s handles.")
 		else
 			to_chat(usr, "You let go of \the [name]'s handles.")
-			pulling.pulledby = null
-			pulling = null
+			pulling_along.pulledby = null
+			pulling_along = null
 		return
 
 /obj/structure/bed/chair/wheelchair/Bump(atom/A)
 	..()
 	if(!has_buckled_mobs())	return
 
-	if(propelled || (pulling && (pulling.a_intent == I_HURT)))
+	if(propelled || (pulling_along && (pulling_along.a_intent == INTENT_HARM)))
 		var/mob/living/occupant = unbuckle_mob()
 
-		if (pulling && (pulling.a_intent == I_HURT))
-			occupant.throw_at(A, 3, 3, pulling)
+		if (pulling_along && (pulling_along.a_intent == INTENT_HARM))
+			occupant.throw_at(A, 3, 3, pulling_along)
 		else if (propelled)
 			occupant.throw_at(A, 3, propelled)
 
@@ -183,10 +183,10 @@
 			victim.apply_effect(6, WEAKEN, blocked)
 			victim.apply_effect(6, STUTTER, blocked)
 			victim.apply_damage(10, BRUTE, def_zone, soaked)
-		if(pulling)
-			occupant.visible_message("<span class='danger'>[pulling] has thrusted \the [name] into \the [A], throwing \the [occupant] out of it!</span>")
+		if(pulling_along)
+			occupant.visible_message("<span class='danger'>[pulling_along] has thrusted \the [name] into \the [A], throwing \the [occupant] out of it!</span>")
 
-			add_attack_logs(pulling,occupant,"Crashed their [name] into [A]")
+			add_attack_logs(pulling_along,occupant,"Crashed their [name] into [A]")
 		else
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
@@ -205,8 +205,8 @@
 	bloodiness--
 
 /obj/structure/bed/chair/wheelchair/buckle_mob(mob/M as mob, mob/user as mob)
-	if(M == pulling)
-		pulling = null
+	if(M == pulling_along)
+		pulling_along = null
 		usr.pulledby = null
 	..()
 

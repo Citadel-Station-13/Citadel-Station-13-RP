@@ -250,7 +250,7 @@ var/list/possible_cable_coil_colours = list(
 	if(!prob(prb))
 		return 0
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 		if(usr.stunned)
@@ -550,7 +550,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 //you can use wires to heal robotics
 /obj/item/stack/cable_coil/attack(var/atom/A, var/mob/living/user, var/def_zone)
-	if(ishuman(A) && user.a_intent == I_HELP)
+	if(ishuman(A) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 

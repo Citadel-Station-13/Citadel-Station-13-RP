@@ -92,7 +92,7 @@
 
 	// Wiring! How exciting.
 	var/datum/wires/rig/wires
-	var/datum/effect/effect/system/spark_spread/spark_system
+	var/datum/effect_system/spark_spread/spark_system
 
 /obj/item/rig/examine()
 	to_chat(usr, "This is \icon[src][src.name].")
@@ -112,8 +112,8 @@
 		if(open)
 			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
 
-/obj/item/rig/New()
-	..()
+/obj/item/rig/Initialize(mapload)
+	. = ..()
 
 	suit_state = icon_state
 	item_state = icon_state

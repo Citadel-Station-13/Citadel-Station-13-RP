@@ -23,7 +23,7 @@
 	camera = new camtype(src)
 
 /obj/item/camerabug/attack_self(mob/user)
-	if(user.a_intent == I_HURT)
+	if(user.a_intent == INTENT_HARM)
 		to_chat(user, "<span class='notice'>You crush the [src] under your foot, breaking it.</span>")
 		visible_message("[user.name] crushes the [src] under their foot, breaking it!</span>")
 		new brokentype(get_turf(src))
@@ -60,7 +60,7 @@
 	name = "broken bug"
 	desc = ""	//Even when it's broken it's inconspicuous
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "eshield0"
+	icon_state = "eshield"
 	item_state = "nothing"
 	layer = TURF_LAYER+0.2
 	w_class = ITEMSIZE_TINY
@@ -75,7 +75,7 @@
 	name = "bug"
 	desc = ""	//Nothing to see here
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "eshield0"
+	icon_state = "eshield"
 	item_state = "nothing"
 	layer = TURF_LAYER+0.2
 	w_class = ITEMSIZE_TINY

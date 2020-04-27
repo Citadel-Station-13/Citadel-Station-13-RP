@@ -313,7 +313,7 @@
 			var/hit_zone = assailant.zone_sel.selecting
 			flick(hud.icon_state, hud)
 			switch(assailant.a_intent)
-				if(I_HELP)
+				if(INTENT_HELP)
 					if(force_down)
 						to_chat(assailant, "<span class='warning'>You are no longer pinning [affecting] to the ground.</span>")
 						force_down = 0
@@ -323,10 +323,10 @@
 					else
 						inspect_organ(affecting, assailant, hit_zone)
 
-				if(I_GRAB)
+				if(INTENT_GRAB)
 					jointlock(affecting, assailant, hit_zone)
 
-				if(I_HURT)
+				if(INTENT_HARM)
 					if(hit_zone == O_EYES)
 						attack_eye(affecting, assailant)
 					else if(hit_zone == BP_HEAD)
@@ -334,7 +334,7 @@
 					else
 						dislocate(affecting, assailant, hit_zone)
 
-				if(I_DISARM)
+				if(INTENT_DISARM)
 					pin_down(affecting, assailant)
 
 	//clicking on yourself while grabbing them

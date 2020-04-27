@@ -15,14 +15,12 @@
 	w_class = ITEMSIZE_TINY
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
-	var/datum/map_template/shelter/template_roof
 	var/used = FALSE
 
 /obj/item/survivalcapsule/proc/get_template()
 	if(template)
 		return
 	template = SSmapping.shelter_templates[template_id]
-	template_roof = SSmapping.shelter_templates[template.roof]
 	if(!template)
 		throw EXCEPTION("Shelter template ([template_id]) not found!")
 		qdel(src)
@@ -68,7 +66,7 @@
 			return
 
 		var/turf/T = deploy_location
-		var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 		smoke.attach(T)
 		smoke.set_up(10, 0, T)
 		smoke.start()
@@ -77,9 +75,11 @@
 		playsound(get_turf(src), 'sound/effects/phasein.ogg', 100, 1)
 
 		log_and_message_admins("[key_name_admin(usr)] activated a bluespace capsule at [get_area(T)]!")
-		if(above_location && template_roof)
-			template_roof.load(above_location, centered = TRUE)
+		if(above_location)
+			template.add_roof(above_location)
+		template.annihilate_plants(deploy_location)
 		template.load(deploy_location, centered = TRUE)
+		template.update_lighting(deploy_location)
 		qdel(src)
 
 /obj/item/survivalcapsule/luxury

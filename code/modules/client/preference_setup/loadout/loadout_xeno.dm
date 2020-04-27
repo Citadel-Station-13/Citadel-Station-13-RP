@@ -356,3 +356,9 @@
 	path = /obj/item/clothing/glasses/aerogelgoggles
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
+	
+/datum/gear/uniform/voxcivassistant
+	display_name = "vox pressure suit (assistant)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX

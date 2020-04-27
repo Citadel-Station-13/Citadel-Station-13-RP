@@ -29,7 +29,7 @@
 	flags |= OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(flags & NOBLUDGEON) && user.a_intent == I_HURT)
+	if(force && !(flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return ..()
 
 	if(standard_feed_mob(user, M))

@@ -1268,9 +1268,11 @@
 		var/mob/M = locate(href_list["adminplayerobservejump"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
-		sleep(2)
-		C.jumptomob(M)
+		if(!isobserver(usr))
+			C.admin_ghost()
+		var/mob/observer/dead/O = C.mob
+		if(istype(O))
+			O.ManualFollow(M)
 
 	else if(href_list["check_antagonist"])
 		check_antagonists()

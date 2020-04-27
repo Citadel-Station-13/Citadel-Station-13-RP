@@ -74,7 +74,7 @@ proc/cardinalrange(var/center)
 	return
 
 
-/obj/machinery/am_shielding/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/am_shielding/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
 

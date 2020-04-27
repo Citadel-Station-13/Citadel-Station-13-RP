@@ -1,3 +1,10 @@
+/proc/load_configuration()
+	config_legacy = new /datum/configuration_legacy()
+	config_legacy.load("config/legacy/config.txt")
+	config_legacy.load("config/legacy/game_options.txt","game_options")
+	config_legacy.loadsql("config/legacy/dbconfig.txt")
+	config_legacy.loadforumsql("config/legacy/forumdbconfig.txt")
+
 /datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
 	var/server_suffix = 0				// generate numeric suffix based on server port

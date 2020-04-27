@@ -19,7 +19,7 @@
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/CanPass()
+/obj/machinery/portable_atmospherics/hydroponics/soil/CanAllowThrough()
 	return 1
 
 // Holder for vine plants.

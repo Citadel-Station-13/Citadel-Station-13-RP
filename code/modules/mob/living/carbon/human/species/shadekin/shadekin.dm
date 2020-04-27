@@ -51,7 +51,6 @@
 
 	has_glowing_eyes = TRUE
 
-	death_message = "phases to somewhere far away!"
 	male_cough_sounds = null
 	female_cough_sounds = null
 	male_sneeze_sound = null
@@ -108,12 +107,6 @@
 	for(var/power in shadekin_abilities)
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
-
-/datum/species/shadekin/handle_death(var/mob/living/carbon/human/H)
-	spawn(1)
-		for(var/obj/item/W in H)
-			H.drop_from_inventory(W)
-		qdel(H)
 
 /datum/species/shadekin/get_bodytype()
 	return SPECIES_SHADEKIN

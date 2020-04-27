@@ -1,14 +1,17 @@
-
-
 /atom/movable
-	var/can_buckle = 0
+	/// Buckling prevents people from pulling the person buckled
+	var/buckle_prevents_pull = FALSE
+	/// Can mobs be buckled to this atom.
+	var/can_buckle = FALSE
+	/// Can only buckle restrained people to this, like pipes.
+	var/buckle_require_restraints = FALSE
+	/// How many people can be buckled to us at once.
+	var/max_buckled_mobs = 1
+
 	var/buckle_movable = 0
 	var/buckle_dir = 0
 	var/buckle_lying = -1 //bed-like behavior, forces mob.lying = buckle_lying if != -1
-	var/buckle_require_restraints = 0 //require people to be handcuffed before being able to buckle. eg: pipes
-//	var/mob/living/buckled_mob = null
-	var/list/mob/living/buckled_mobs = null //list()
-	var/max_buckled_mobs = 1
+	var/list/mob/living/buckled_mobs
 
 
 /atom/movable/attack_hand(mob/living/user)

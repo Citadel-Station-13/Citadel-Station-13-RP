@@ -167,7 +167,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
-	/datum/admins/proc/delay,
+	/datum/admins/proc/delay_start,
+	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,
 	/client/proc/cmd_mod_say,
 	/client/proc/everyone_random,
@@ -297,7 +298,8 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
-	/datum/admins/proc/delay,
+	/datum/admins/proc/delay_start,
+	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,
 	/client/proc/everyone_random,
 	/client/proc/reload_configuration,
@@ -387,7 +389,8 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,
 	/client/proc/cmd_admin_delete,
-	/datum/admins/proc/delay,
+	/datum/admins/proc/delay_start,
+	/datum/admins/proc/delay_end,
 	/client/proc/Set_Holiday,
 	/client/proc/make_sound,
 	/client/proc/toggle_random_events,
@@ -825,12 +828,11 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 
 	if(holder)
-		if(alert("Confirm self-deadmin for the round? You can't re-admin yourself without someone promoting you.",,"Yes","No") == "Yes")
-			log_admin("[src] deadmined themself.")
-			message_admins("[src] deadmined themself.", 1)
-			deadmin()
-			to_chat(src, "<span class='interface'>You are now a normal player.</span>")
-			verbs |= /client/proc/readmin_self
+		log_admin("[src] deadmined themself.")
+		message_admins("[src] deadmined themself.", 1)
+		deadmin()
+		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		verbs |= /client/proc/readmin_self
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/check_ai_laws()

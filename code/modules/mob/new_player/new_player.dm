@@ -77,15 +77,20 @@
 /mob/new_player/Stat()
 	..()
 
-	if(statpanel("Lobby") && SSticker)
-		if(SSticker.hide_mode)
-			stat("Game Mode:", "Secret")
-		else
-			if(SSticker.hide_mode == 0)
-				stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
-
-		if(SSticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[SSticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
+	if(SSticker.current_state == GAME_STATE_PREGAME)
+		if(statpanel("Status"))
+			if(SSticker.hide_mode)
+				stat("Game Mode:", "Secret")
+			else
+				if(SSticker.hide_mode == 0)
+					stat("Game Mode:", "[config_legacy.mode_names[master_mode]]") // Old setting for showing the game mode
+			var/time_remaining = SSticker.GetTimeLeft()
+			if(time_remaining > 0)
+				stat(null, "Time To Start: [round(time_remaining/10)]s")
+			else if(time_remaining == -10)
+				stat(null, "Time To Start: DELAYED")
+			else
+				stat(null, "Time To Start: SOON")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
@@ -338,7 +343,7 @@
 /mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return 0
-	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
 	if(!config_legacy.enter_allowed)

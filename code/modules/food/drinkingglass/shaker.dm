@@ -1,12 +1,12 @@
-/obj/item/reagent_containers/food/drinks/glass2/fitnessflask
+/obj/item/reagent_containers/food/drinks/glass2/fitnessflask // Balance work
 	name = "fitness shaker"
 	base_name = "shaker"
 	desc = "Big enough to contain enough protein to get perfectly swole. Don't mind the bits."
 	icon_state = "fitness-cup_black"
 	base_icon = "fitness-cup"
-	volume = 100
+	volume = 50
 	matter = list("plastic" = 2000)
-	filling_states = list(10,20,30,40,50,60,70,80,90,100)
+	filling_states = list(5,10,15,20,25,30,35,40,45,50)
 	possible_transfer_amounts = list(5, 10, 15, 25)
 	rim_pos = null // no fruit slices
 	var/lid_color = "black"
@@ -28,4 +28,3 @@
 	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("iron", 10)
 	reagents.add_reagent("protein", 30)
-	reagents.add_reagent("water", 50)

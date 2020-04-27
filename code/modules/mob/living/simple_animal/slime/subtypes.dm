@@ -33,7 +33,7 @@
 		)
 
 /mob/living/simple_animal/slime/orange/post_attack(mob/living/L, intent)
-	if(intent != I_HELP)
+	if(intent != INTENT_HELP)
 		L.adjust_fire_stacks(1)
 		if(prob(25))
 			L.IgniteMob()
@@ -326,9 +326,9 @@
 		to_chat(src, "<span class='warning'>There wasn't an unoccupied spot to teleport to.</span>")
 		return FALSE
 
-	var/datum/effect/effect/system/spark_spread/s1 = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
 	s1.set_up(5, 1, T)
-	var/datum/effect/effect/system/spark_spread/s2 = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s2 = new /datum/effect_system/spark_spread
 	s2.set_up(5, 1, target_turf)
 
 
@@ -374,7 +374,7 @@
 	..() // Do regular attacks.
 
 	if(istype(L))
-		if(a_intent == I_HURT)
+		if(a_intent == INTENT_HARM)
 			visible_message("<span class='danger'>\The [src] sends \the [L] flying with the impact!</span>")
 			playsound(src, "punch", 50, 1)
 			L.Weaken(1)
@@ -612,10 +612,10 @@
 		if(src) // Delete ourselves if the explosion didn't do it.
 			qdel(src)
 
-/mob/living/simple_animal/slime/oil/post_attack(var/mob/living/L, var/intent = I_HURT)
+/mob/living/simple_animal/slime/oil/post_attack(var/mob/living/L, var/intent = INTENT_HARM)
 	if(!rabid)
 		return ..()
-	if(intent == I_HURT || intent == I_GRAB)
+	if(intent == INTENT_HARM || intent == INTENT_GRAB)
 		say(pick("Sacrifice...!", "Sssss...", "Boom...!"))
 		sleep(2 SECOND)
 		log_and_message_admins("[src] has suicide-bombed themselves while trying to kill \the [L].")

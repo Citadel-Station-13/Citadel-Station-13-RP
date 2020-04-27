@@ -4,10 +4,10 @@
 /mob/living/simple_mob/slime/xenobio/apply_attack(mob/living/L, damage_to_do)
 	if(istype(L))
 		switch(a_intent)
-			if(I_HELP) // This shouldn't happen but just in case.
+			if(INTENT_HELP) // This shouldn't happen but just in case.
 				return FALSE
 
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				var/stun_power = between(0, power_charge + rand(0, 3), 10)
 
 				if(ishuman(L))
@@ -28,7 +28,7 @@
 						L.buckled.unbuckle_mob() // To prevent an exploit where being buckled prevents slimes from jumping on you.
 					L.stuttering = max(L.stuttering, stun_power)
 
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, L)
 					s.start()
 
@@ -57,17 +57,17 @@
 					do_attack_animation(L)
 					return FALSE
 
-			if(I_GRAB)
+			if(INTENT_GRAB)
 				start_consuming(L)
 				return FALSE
 
-			if(I_HURT)
+			if(INTENT_HARM)
 				return ..() // Regular stuff.
 	else
 		return ..() // Do the regular stuff if we're hitting a window/mech/etc.
 
 /mob/living/simple_mob/slime/xenobio/apply_melee_effects(mob/living/L)
-	if(istype(L) && a_intent == I_HURT)
+	if(istype(L) && a_intent == INTENT_HARM)
 		// Pump them full of toxins, if able.
 		if(L.reagents && L.can_inject() && reagent_injected)
 			L.reagents.add_reagent(reagent_injected, injection_amount)

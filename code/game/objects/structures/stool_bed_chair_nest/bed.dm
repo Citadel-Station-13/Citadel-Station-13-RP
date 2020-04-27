@@ -69,7 +69,7 @@
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
 
-/obj/structure/bed/CanPass(atom/movable/mover, turf/target)
+/obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return ..()
@@ -208,6 +208,13 @@
 	icon_state = "rollerbedadv"
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
+
+/obj/structure/bed/roller/doLocationTransitForceMove(atom/destination)
+	var/list/old_buckled = buckled_mobs?.Copy()
+	. = ..()
+	if(old_buckled)
+		for(var/mob/M in old_buckled)
+			buckle_mob(M, force = TRUE)
 
 /obj/structure/bed/roller/update_icon()
 	return

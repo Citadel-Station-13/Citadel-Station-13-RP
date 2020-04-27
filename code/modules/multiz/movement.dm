@@ -41,7 +41,7 @@
 	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
-			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
+			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [lattice] and start pulling yourself upward...</span>")
 			destination.audible_message("<span class='notice'>You hear something climbing up \the [lattice].</span>")
 			if(do_after(src, pull_up_time))
@@ -283,32 +283,24 @@
 
 // Check if this atom prevents things standing on it from falling. Return TRUE to allow the fall.
 /obj/proc/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(!isturf(mover.loc)) // VORESTATION EDIT. We clearly didn't have enough backup checks.
-		return FALSE //If this ain't working Ima be pissed.
 	return TRUE
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.z < z)
-		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
-	if(!isturf(mover.loc))
-		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
-	else
-		return TRUE
+	if(target.x == x && target.y == y && target.z == z - 1)
+		return FALSE
+	return TRUE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.z >= z)
-		return TRUE // We don't block sideways or upward movement.
-	else if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return TRUE // Anything small enough to pass a grille will pass a lattice
-	if(!isturf(mover.loc))
-		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
-	else
-		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
+	if(mover.checkpass(PASSGRILLE))
+		return TRUE
+	if(target.x == x && target.y == y && target.z == z - 1)
+		return FALSE
+	return TRUE
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
@@ -330,22 +322,20 @@
 			return FALSE
 	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
-	// Now lets move there!
-	if(!Move(landing))
-		return 1
+	// this is shitcode lmao
+	var/obj/structure/stairs = locate() in landing
+	if(!stairs)
 
-	// Detect if we made a silent landing.
-	if(locate(/obj/structure/stairs) in landing)
-		if(isliving(src))
-			var/mob/living/L = src
-			if(L.pulling)
-				L.pulling.forceMove(landing)
-		return 1
-	else
+		// Now lets move there!
+		if(!Move(landing))
+			return 1
+
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
 			return
 		fall_impact(A)
+	else
+		locationTransitForceMove(landing)
 
 /atom/movable/proc/special_fall_handle(var/atom/A)
 	return FALSE

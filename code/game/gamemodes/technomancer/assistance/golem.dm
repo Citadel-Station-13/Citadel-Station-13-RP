@@ -104,7 +104,7 @@
 	..()
 	visible_message("\The [src] disintegrates!")
 	new /obj/effect/decal/cleanable/blood/gibs/robot(src.loc)
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
@@ -250,7 +250,7 @@
 		return
 
 /mob/living/simple_animal/technomancer_golem/proc/targeted_blink(var/atom/target)
-	var/datum/effect/effect/system/spark_spread/spark_system = new()
+	var/datum/effect_system/spark_spread/spark_system = new()
 	spark_system.set_up(5, 0, get_turf(src))
 	spark_system.start()
 	src.visible_message("<span class='notice'>\The [src] vanishes!</span>")

@@ -23,7 +23,7 @@
 		//autodel() //Currently doesn't really work right.
 		return
 
-/obj/screen/auto_target/CanPass()//Everything should ignore this guy and just pass by
+/obj/screen/auto_target/CanAllowThrough()//Everything should ignore this guy and just pass by
 		return 1
 
 	//Used to get rid of this if they target but dont actually shoot or stop shooting (no ammo) yet are still dragging us around

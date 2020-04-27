@@ -60,7 +60,7 @@
 			to_chat(user, text("\icon[] The [] contains []/[] units of fuel!", src, src.name, get_fuel(),src.max_fuel ))
 
 /obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
-	if(ishuman(A) && user.a_intent == I_HELP)
+	if(ishuman(A) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
@@ -441,7 +441,7 @@
 	name = "strange welding tool"
 	desc = "An experimental welder capable of synthesizing its own fuel from spatial waveforms. It's like welding with a star!"
 	icon_state = "hybwelder"
-	max_fuel = 20
+	max_fuel = 80
 	eye_safety_modifier = -2	// Brighter than the sun. Literally, you can look at the sun with a welding mask of proper grade, this will burn through that.
 	slowdown = 0.1
 	toolspeed = 0.25

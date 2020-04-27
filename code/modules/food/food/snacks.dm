@@ -727,10 +727,14 @@
 /obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
 	toxin_type = "murk_protein"
 
-/obj/item/reagent_containers/food/snacks/carpmeat/fish
+/obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
-	toxin_type = "neurotoxic_protein"
-	toxin_amount = 1
+	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize()
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -916,17 +920,17 @@
 	reagents.add_reagent("protein", 6)
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/cheeseburger // Buff 4 >> 12
+/obj/item/reagent_containers/food/snacks/cheeseburger // Buff 4 >> 19
 	name = "cheeseburger"
 	desc = "The cheese adds a good flavor."
 	icon_state = "cheeseburger"
-	nutriment_amt = 4
+	nutriment_amt = 10
 	nutriment_desc = list("cheese" = 2, "bun" = 2)
 
 /obj/item/reagent_containers/food/snacks/cheeseburger/Initialize()
 	. = ..()
 	reagents.add_reagent("protein", 8)
-	bitesize = 3
+	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/monkeyburger // Buff 6 >> 15
 	name = "burger"
@@ -2376,6 +2380,16 @@
 	reagents.add_reagent("gold", 5)
 	bitesize = 3
 
+/obj/item/reagent_containers/food/snacks/worm
+	name = "worm"
+	desc = "It wiggles at the touch, bleh."
+	icon_state = "worm"
+
+/obj/item/reagent_containers/food/snacks/worm/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 4)
+	bitesize = 4
+
 /////////////////////////////////////////////////Sliceable////////////////////////////////////////
 // All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
 
@@ -3183,11 +3197,6 @@
 	reagents.add_reagent("radium", 2)
 	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/worm
-	name = "worm"
-	desc = "It wiggles at the touch, bleh."
-	icon_state = "worm"
-
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////
@@ -3395,11 +3404,11 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/rawsticks/Initialize()
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/liquidfood
-	name = "\improper LiquidProtein Ration"
-	desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
-	icon_state = "liquidprotein"
-	trash = /obj/item/trash/liquidprotein
+/obj/item/reagent_containers/food/snacks/liquidfood // Buff back to 30 from 20
+	name = "\improper LiquidFood Ration"
+	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
+	icon_state = "liquidfood"
+	trash = /obj/item/trash/liquidfood
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
 	center_of_mass = list("x"=16, "y"=15)
@@ -3407,9 +3416,8 @@ END CITADEL CHANGE */
 	bitesize = 4
 	nutriment_desc = list("chalk" = 6)
 
-/obj/item/reagent_containers/food/snacks/liquidprotein/Initialize()
+/obj/item/reagent_containers/food/snacks/liquidfood/Initialize()
 	..()
-	reagents.add_reagent("protein", 30)
 	reagents.add_reagent("iron", 3)
 
 /obj/item/reagent_containers/food/snacks/liquidvitamin
@@ -4317,33 +4325,33 @@ END CITADEL CHANGE */
 	nutriment_desc = list("pizza crust" = 5, "tomato" = 5)
 	nutriment_amt = 5
 
-/obj/item/reagent_containers/food/snacks/burger/bacon
+/obj/item/reagent_containers/food/snacks/burger/bacon // Buff 7 >> 15
 	name = "bacon burger"
 	desc = "The cornerstone of every nutritious breakfast, now with bacon!"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "baconburger"
 	filling_color = "#D63C3C"
 	nutriment_desc = list("bun" = 2)
-	nutriment_amt = 3
-	bitesize = 2
+	nutriment_amt = 8
+	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/burger/bacon/Initialize()
 	. = ..()
-	reagents.add_reagent("protein", 4)
+	reagents.add_reagent("protein", 7)
 
-/obj/item/reagent_containers/food/snacks/blt
+/obj/item/reagent_containers/food/snacks/blt // Buff 8 >> 16
 	name = "BLT"
 	desc = "Bacon, lettuce, tomatoes. The perfect lunch."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "blt"
 	filling_color = "#D63C3C"
 	nutriment_desc = list("bread" = 4)
-	nutriment_amt = 4
+	nutriment_amt = 8
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/blt/Initialize()
 	. = ..()
-	reagents.add_reagent("protein", 4)
+	reagents.add_reagent("protein", 8)
 
 /obj/item/reagent_containers/food/snacks/onionrings
 	name = "onion rings"

@@ -9,7 +9,7 @@
 
 /obj/item/duct_tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))
-		if(user.a_intent == I_HELP)
+		if(user.a_intent == INTENT_HELP)
 			return
 		var/can_place = 0
 		if(istype(user, /mob/living/silicon/robot))

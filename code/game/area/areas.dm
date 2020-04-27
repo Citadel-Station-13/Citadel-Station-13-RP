@@ -42,7 +42,19 @@
 	var/global/global_uid = 0
 	var/uid
 
+	/// Color on minimaps, if it's null (which is default) it makes one at random.
+	var/minimap_color
+
 /area/New()
+	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
+		// generate one using the icon_state
+		if(icon_state && icon_state != "unknown")
+			var/icon/I = new(icon, icon_state, dir)
+			I.Scale(1,1)
+			minimap_color = I.GetPixel(1,1)
+		else // no icon state? use random.
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
+
 	icon_state = ""
 	uid = ++global_uid
 	all_areas += src
@@ -335,14 +347,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	return has_gravity
 
 /area/space/has_gravity()
-	return 0
-
-/proc/has_gravity(atom/AT, turf/T)
-	if(!T)
-		T = get_turf(AT)
-	var/area/A = get_area(T)
-	if(A && A.has_gravity())
-		return 1
 	return 0
 
 /area/proc/shuttle_arrived()

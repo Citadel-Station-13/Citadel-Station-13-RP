@@ -36,7 +36,7 @@
 	density = 0
 	solidledge = 0
 
-/obj/structure/ledge/CanPass(atom/movable/mover, turf/target)
+/obj/structure/ledge/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	if(solidledge && get_dir(mover, target) == turn(dir, 180))

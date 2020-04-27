@@ -78,7 +78,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),1,ico.Height()/2,ico.Width()/2,ico.Height())
 		using = new /obj/screen()
-		using.name = I_HELP
+		using.name = INTENT_HELP
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -90,7 +90,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,ico.Height()/2,ico.Width(),ico.Height())
 		using = new /obj/screen()
-		using.name = I_DISARM
+		using.name = INTENT_DISARM
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -102,7 +102,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,1,ico.Width(),ico.Height()/2)
 		using = new /obj/screen()
-		using.name = I_GRAB
+		using.name = INTENT_GRAB
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
@@ -114,7 +114,7 @@
 		ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 		ico.DrawBox(rgb(255,255,255,1),1,1,ico.Width()/2,ico.Height()/2)
 		using = new /obj/screen()
-		using.name = I_HURT
+		using.name = INTENT_HARM
 		using.icon = ico
 		using.screen_loc = ui_acti
 		using.alpha = ui_alpha
