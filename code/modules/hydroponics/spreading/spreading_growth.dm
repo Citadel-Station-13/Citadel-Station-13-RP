@@ -102,7 +102,7 @@
 
 		for(var/i in 1 to max_spread)
 			if(prob(spread_chance))
-				sleep(rand(3,5))
+				sleep(rand(1,2)) // Adjusting Sleep timer to be lower.
 				if(!neighbors.len)
 					break
 				spread_to(pick(neighbors))

@@ -25,14 +25,20 @@
 
 /obj/effect/plant/proc/trodden_on(var/mob/living/victim)
 	if(!is_mature())
-		return
-	var/mob/living/carbon/human/H = victim
-	if(prob(round(seed.get_trait(TRAIT_POTENCY)/3)))
-		entangle(victim)
-	if(istype(H) && H.shoes)
-		return
+		victim << "<span class='danger'>You push through the vines and feel some minor numbess in your body!</span>"
+		victim.adjustToxLoss(1)
+		victim.adjustBruteLoss(2,pick("r_foot","l_foot","r_leg","l_leg"))
+	entangle(victim)
 	seed.do_thorns(victim,src)
 	seed.do_sting(victim,src,pick("r_foot","l_foot","r_leg","l_leg"))
+	if(prob(25))
+		victim << "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>"
+		victim.adjustToxLoss(rand(2,4))
+		victim.adjustBruteLoss(rand(3,5))
+	if(prob(95))
+		victim << "<span class='danger'>You push through the mess of vines and feel a bit of numbess in your body!</span>"
+		victim.adjustToxLoss(rand(1,2))
+		victim.adjustBruteLoss(rand(2,3),pick("r_foot","l_foot","r_leg","l_leg"))
 
 /obj/effect/plant/proc/unbuckle()
 	if(has_buckled_mobs())
@@ -91,10 +97,17 @@
 			if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
 				can_grab = 0
 		if(can_grab)
-			src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
-			victim.forceMove(src.loc)
-			buckle_mob(victim)
-			victim.setDir(pick(cardinal))
-			victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
-			victim.Weaken(0.5)
-			seed.do_thorns(victim,src)
+			if(prob(85))
+				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
+				victim.forceMove(src.loc)
+				buckle_mob(victim)
+				victim.setDir(pick(cardinal))
+				victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
+				victim.Weaken(1.5) // Powering up weaken power from .5 (Testing)
+				victim.adjustToxLoss(rand(1,3))
+				seed.do_thorns(victim,src)
+			else // Adding a non-grab attack chance since we will be increasing the rate at which the vines check for nearby targets
+				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
+				victim.Weaken(3)
+				victim.adjustToxLoss(rand(3,5))
+				victim.adjustBruteLoss(rand(1,2))
