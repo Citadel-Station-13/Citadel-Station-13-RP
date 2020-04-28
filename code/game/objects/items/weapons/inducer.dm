@@ -273,9 +273,11 @@
 	. = ..(amount * NUTRITION_COEFF) //Shrink amount to store
 	hume.nutrition += . //Add the amount we really stored
 	. /= NUTRITION_COEFF //Inflate amount to take from the giver
+#undef NUTRITION_COEFF
 
 // Various sideways-defined get_cells
 /obj/mecha/get_cell()
 	return cell
 
-#undef NUTRITION_COEFF
+/obj/vehicle/get_cell()
+	return cell
