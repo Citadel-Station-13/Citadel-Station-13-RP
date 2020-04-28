@@ -25,13 +25,13 @@
 
 	//Organ is missing, needs restoring
 	if(!organs_by_name[choice] || istype(organs_by_name[choice], /obj/item/organ/external/stump)) //allows limb stumps to regenerate like removed limbs.
-		if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < PER_LIMB_STEEL_COST)
+		if(refactory.get_stored_material(/datum/material/steel) < PER_LIMB_STEEL_COST)
 			to_chat(src,"<span class='warning'>You're missing that limb, and need to store at least [PER_LIMB_STEEL_COST] steel to regenerate it.</span>")
 			return
 		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_STEEL_COST] steel?","Regenerate limb?","Yes","No")
 		if(regen != "Yes")
 			return
-		if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
+		if(!refactory.use_stored_material(/datum/material/steel,PER_LIMB_STEEL_COST))
 			return
 		if(organs_by_name[choice])
 			var/obj/item/organ/external/oldlimb = organs_by_name[choice]
@@ -140,7 +140,7 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,refactory.max_storage))
+	if(!refactory.use_stored_material(/datum/material/steel,refactory.max_storage))
 		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 		return
 
@@ -200,7 +200,7 @@
 
 	var/obj/item/stack/material/matstack = held
 	var/substance = matstack.material.id
-	var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
+	var/list/edible_materials = list(/datum/material/steel, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
 	var allowed = FALSE
 	for(var/material in edible_materials)
 		if(material == substance) allowed = TRUE
@@ -317,14 +317,14 @@
 
 	//Sizing up
 	if(cost > 0)
-		if(refactory.use_stored_material(MAT_STEEL,cost))
+		if(refactory.use_stored_material(/datum/material/steel,cost))
 			user.resize(size_factor)
 		else
 			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
-		var/actually_added = refactory.add_stored_material(MAT_STEEL,cost)
+		var/actually_added = refactory.add_stored_material(/datum/material/steel,cost)
 		user.resize(size_factor)
 		if(actually_added != cost)
 			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")

@@ -31,10 +31,10 @@
 	. = ..()
 	icon_state = "blank"
 	if(!materialtype)
-		materialtype = DEFAULT_WALL_MATERIAL
+		materialtype = /datum/material/steel
 	material = SSmaterials.material_by_id(materialtype)
 	if(!girdertype)
-		girdertype = DEFAULT_WALL_MATERIAL
+		girdertype = /datum/material/steel
 	girder_material = SSmaterials.material_by_id(girdertype)
 	if(!isnull(rmaterialtype))
 		reinf_material = SSmaterials.material_by_id(rmaterialtype)

@@ -8,7 +8,7 @@
 	else
 		construction_stage = null
 	if(!material)
-		material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+		material = SSmaterials.material_by_id(/datum/material/steel)
 	if(material)
 		explosion_resistance = material.explosion_resistance
 	if(reinf_material && reinf_material.explosion_resistance > explosion_resistance)
@@ -35,7 +35,7 @@
 	material = newmaterial
 	reinf_material = newrmaterial
 	if(!newgmaterial)
-		girder_material = DEFAULT_WALL_MATERIAL
+		girder_material = /datum/material/steel
 	else
 		girder_material = newgmaterial
 	update_material()

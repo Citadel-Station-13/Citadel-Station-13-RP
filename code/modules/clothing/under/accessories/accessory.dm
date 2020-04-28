@@ -365,7 +365,7 @@
 /obj/item/clothing/accessory/bracelet/material/New(var/newloc, var/new_material)
 	..(newloc)
 	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
+		new_material = /datum/material/steel
 	material = SSmaterials.material_by_id(new_material)
 	if(!istype(material))
 		qdel(src)

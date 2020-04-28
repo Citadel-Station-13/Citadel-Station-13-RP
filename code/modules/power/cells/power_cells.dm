@@ -3,7 +3,7 @@
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 500
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
+	matter = list(/datum/material/steel = 700, "glass" = 40)
 
 /obj/item/cell/crap/empty/New()
 	..()
@@ -13,7 +13,7 @@
 	name = "security borg rechargable D battery"
 	origin_tech = list(TECH_POWER = 0)
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 40)
+	matter = list(/datum/material/steel = 700, "glass" = 40)
 
 /obj/item/cell/secborg/empty/New()
 	..()
@@ -23,14 +23,14 @@
 	name = "heavy-duty power cell"
 	origin_tech = list(TECH_POWER = 1)
 	maxcharge = 5000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 50)
+	matter = list(/datum/material/steel = 700, "glass" = 50)
 
 /obj/item/cell/high
 	name = "high-capacity power cell"
 	origin_tech = list(TECH_POWER = 2)
 	icon_state = "hcell"
 	maxcharge = 10000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 60)
+	matter = list(/datum/material/steel = 700, "glass" = 60)
 
 /obj/item/cell/high/empty/New()
 	..()
@@ -41,7 +41,7 @@
 	origin_tech = list(TECH_POWER = 5)
 	icon_state = "scell"
 	maxcharge = 20000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 70)
+	matter = list(/datum/material/steel = 700, "glass" = 70)
 
 /obj/item/cell/super/empty/New()
 	..()
@@ -52,7 +52,7 @@
 	origin_tech = list(TECH_POWER = 6)
 	icon_state = "hpcell"
 	maxcharge = 30000
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
+	matter = list(/datum/material/steel = 700, "glass" = 80)
 
 /obj/item/cell/hyper/empty/New()
 	..()
@@ -63,7 +63,7 @@
 	icon_state = "icell"
 	origin_tech =  null
 	maxcharge = 30000 //determines how badly mobs get shocked
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
+	matter = list(/datum/material/steel = 700, "glass" = 80)
 
 /obj/item/cell/infinite/check_charge()
 	return 1

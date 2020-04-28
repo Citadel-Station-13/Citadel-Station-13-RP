@@ -12,7 +12,7 @@
 	color = "#666666"
 
 /obj/structure/table/steel/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/marble
@@ -29,7 +29,7 @@
 
 /obj/structure/table/reinforced/New()
 	material = SSmaterials.material_by_id(DEFAULT_TABLE_MATERIAL)
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/steel_reinforced
@@ -37,8 +37,8 @@
 	color = "#666666"
 
 /obj/structure/table/steel_reinforced/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/wooden_reinforced
@@ -47,7 +47,7 @@
 
 /obj/structure/table/wooden_reinforced/New()
 	material = SSmaterials.material_by_id("wood")
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/woodentable
@@ -72,7 +72,7 @@
 
 /obj/structure/table/sifwooden_reinforced/New()
 	material = SSmaterials.material_by_id("alien wood")
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/gamblingtable
@@ -147,7 +147,7 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 
@@ -165,7 +165,7 @@
 
 /obj/structure/table/bench/reinforced/New()
 	material = SSmaterials.material_by_id(DEFAULT_TABLE_MATERIAL)
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/bench/steel_reinforced
@@ -173,8 +173,8 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel_reinforced/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/bench/wooden_reinforced
@@ -183,7 +183,7 @@
 
 /obj/structure/table/bench/wooden_reinforced/New()
 	material = SSmaterials.material_by_id("wood")
-	reinforced = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	reinforced = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 */
 /obj/structure/table/bench/wooden
@@ -210,7 +210,7 @@
 	icon_state = "padded_preview"
 
 /obj/structure/table/bench/padded/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
 	carpeted = 1
 	..()
 

@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	w_class = ITEMSIZE_SMALL
 	show_messages = 1
 
-	matter = list("glass" = 25,DEFAULT_WALL_MATERIAL = 75)
+	matter = list("glass" = 25,/datum/material/steel = 75)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 

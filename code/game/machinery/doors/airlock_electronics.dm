@@ -6,7 +6,7 @@
 	icon_state = "door_electronics"
 	w_class = ITEMSIZE_SMALL //It should be tiny! -Agouri
 
-	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 50)
+	matter = list(/datum/material/steel = 50,"glass" = 50)
 
 	req_access = list(access_engine)
 

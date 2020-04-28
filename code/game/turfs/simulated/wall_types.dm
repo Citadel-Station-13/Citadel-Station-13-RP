@@ -4,9 +4,9 @@
 	return ..(mapload, "plasteel","plasteel") //3strong
 
 /turf/simulated/wall/shull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace ship.
-	return ..(mapload, MAT_STEELHULL, null, MAT_STEELHULL)
+	return ..(mapload, /datum/material/steelHULL, null, /datum/material/steelHULL)
 /turf/simulated/wall/rshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_STEELHULL, MAT_STEELHULL, MAT_STEELHULL)
+	return ..(mapload, /datum/material/steelHULL, /datum/material/steelHULL, /datum/material/steelHULL)
 /turf/simulated/wall/pshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-er ship.
 	return ..(mapload, MAT_PLASTEELHULL, null, MAT_PLASTEELHULL)
 /turf/simulated/wall/rpshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)

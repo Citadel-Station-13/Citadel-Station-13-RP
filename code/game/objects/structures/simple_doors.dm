@@ -23,7 +23,7 @@
 /obj/structure/simple_door/New(var/newloc, var/material_name)
 	..()
 	if(!material_name)
-		material_name = DEFAULT_WALL_MATERIAL
+		material_name = /datum/material/steel
 	material = SSmaterials.material_by_id(material_name)
 	if(!material)
 		qdel(src)

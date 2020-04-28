@@ -14,7 +14,7 @@
 /*
 /datum/design/item/rig
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 6000, "uranium" = 4000)
+	materials = list(/datum/material/steel = 6000, "glass" = 6000, "silver" = 6000, "uranium" = 4000)
 
 /datum/design/item/rig/AssembleDesignName()
 	..()
@@ -47,7 +47,7 @@
 
 /datum/design/item/rig_module
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000)
+	materials = list(/datum/material/steel = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000)
 
 /datum/design/item/rig_module/AssembleDesignName()
 	..()
@@ -99,14 +99,14 @@
 	name = "laser cannon"
 	id = "rigmod_lasercannon"
 	build_path = /obj/item/rig_module/mounted
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 2000)
+	materials = list(/datum/material/steel = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 2000)
 	sort_string = "OBADA"
 
 /datum/design/item/rig_module/egun
 	name = "energy gun"
 	id = "rigmod_egun"
 	build_path = /obj/item/rig_module/mounted/egun
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 1000)
+	materials = list(/datum/material/steel = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 1000)
 	sort_string = "OBADB"
 
 /datum/design/item/rig_module/taser
@@ -119,5 +119,5 @@
 	name = "rcd"
 	id = "rigmod_rcd"
 	build_path = /obj/item/rig_module/device/rcd
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 2000)
+	materials = list(/datum/material/steel = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000, "diamond" = 2000)
 	sort_string = "OBAEA"

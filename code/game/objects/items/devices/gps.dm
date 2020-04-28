@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(/datum/material/steel = 500)
 	var/gps_tag = "GEN0"
 	var/emped = FALSE
 	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.

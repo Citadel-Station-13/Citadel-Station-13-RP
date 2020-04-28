@@ -1,5 +1,5 @@
 /datum/material/steel
-	id = DEFAULT_WALL_MATERIAL
+	id = /datum/material/steel
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
@@ -9,7 +9,7 @@
 	icon_colour = "#666666"
 
 /datum/material/steel/hull
-	id = MAT_STEELHULL
+	id = /datum/material/steelHULL
 	stack_type = /obj/item/stack/material/steel/hull
 	integrity = 250
 	explosion_resistance = 10
@@ -21,8 +21,8 @@
 	new /obj/item/stack/material/steel(target)
 
 /datum/material/steel/holographic
-	id = "holo" + DEFAULT_WALL_MATERIAL
-	display_name = DEFAULT_WALL_MATERIAL
+	id = "holo" + /datum/material/steel
+	display_name = /datum/material/steel
 	stack_type = null
 	shard_type = SHARD_NONE
 
@@ -40,7 +40,7 @@
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(/datum/material/steel = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull

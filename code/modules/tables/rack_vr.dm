@@ -2,7 +2,7 @@
 	color = "#666666"
 
 /obj/structure/table/rack/steel/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
 	..()
 
 /obj/structure/table/rack/shelf
@@ -15,5 +15,5 @@
 	color = "#666666"
 
 /obj/structure/table/rack/shelf/steel/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
 	..()

@@ -6,7 +6,7 @@
 	name = T_BOARD("pipe layer")
 	build_path = /obj/machinery/pipelayer
 	board_type = new /datum/frame/frame_types/machine
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	matter = list(/datum/material/steel = 50, "glass" = 50)
 	req_components = list(
 							/obj/item/stock_parts/motor = 1,
 							/obj/item/stock_parts/gear = 1,

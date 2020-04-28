@@ -125,7 +125,7 @@ var/global/photo_count = 0
 	item_state = "camera"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(/datum/material/steel = 2000)
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/on = 1

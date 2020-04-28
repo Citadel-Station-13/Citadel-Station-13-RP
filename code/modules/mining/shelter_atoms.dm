@@ -166,7 +166,7 @@
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/New()
-	material = SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	material = SSmaterials.material_by_id(/datum/material/steel)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	..()
@@ -219,7 +219,7 @@
 	icon_state = "bed"
 
 /obj/structure/bed/pod/New(var/newloc)
-	..(newloc,DEFAULT_WALL_MATERIAL,"cotton")
+	..(newloc,/datum/material/steel,"cotton")
 
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod

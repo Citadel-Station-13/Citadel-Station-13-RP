@@ -96,8 +96,8 @@
 
 	stack_storage["glass"] = 0
 	stack_paths["glass"] = /obj/item/stack/material/glass
-	stack_storage[DEFAULT_WALL_MATERIAL] = 0
-	stack_paths[DEFAULT_WALL_MATERIAL] = /obj/item/stack/material/steel
+	stack_storage[/datum/material/steel] = 0
+	stack_paths[/datum/material/steel] = /obj/item/stack/material/steel
 	stack_storage["plasteel"] = 0
 	stack_paths["plasteel"] = /obj/item/stack/material/plasteel
 	return INITIALIZE_HINT_LATELOAD

@@ -87,7 +87,7 @@
 	organ_tag = O_FACT
 	parent_organ = BP_TORSO
 	
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0)
+	var/list/materials = list(/datum/material/steel = 0)
 	var/max_storage = 10000
 	var/processingbuffs = FALSE
 

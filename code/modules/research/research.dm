@@ -226,7 +226,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
+	matter = list(/datum/material/steel = 30, "glass" = 10)
 	var/datum/tech/stored
 
 /obj/item/disk/tech_disk/New()
@@ -240,7 +240,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
+	matter = list(/datum/material/steel = 30, "glass" = 10)
 	var/datum/design/blueprint
 
 /obj/item/disk/design_disk/New()

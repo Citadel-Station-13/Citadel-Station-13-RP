@@ -12,14 +12,14 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	var/default_type = DEFAULT_WALL_MATERIAL
+	var/default_type = /datum/material/steel
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
-		default_type = DEFAULT_WALL_MATERIAL
+		default_type = /datum/material/steel
 	material = SSmaterials.material_by_id("[default_type]")
 	if(!material)
 		return INITIALIZE_HINT_QDEL
@@ -187,14 +187,14 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = /datum/material/steel
 	icon_state = "sheet-metal"
-	default_type = DEFAULT_WALL_MATERIAL
+	default_type = /datum/material/steel
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
-	name = MAT_STEELHULL
-	default_type = MAT_STEELHULL
+	name = /datum/material/steelHULL
+	default_type = /datum/material/steelHULL
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"

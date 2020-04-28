@@ -337,7 +337,7 @@
 	circuit = /obj/item/circuitboard/roboprinter
 
 	var/matter_amount_per_sheet = 10
-	var/matter_type = DEFAULT_WALL_MATERIAL
+	var/matter_type = /datum/material/steel
 
 /obj/machinery/organ_printer/robot/full/New()
 	. = ..()

@@ -75,7 +75,7 @@
 	. = ..()
 
 /obj/machinery/door/firedoor/get_material()
-	return SSmaterials.material_by_id(DEFAULT_WALL_MATERIAL)
+	return SSmaterials.material_by_id(/datum/material/steel)
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..(user, 1)

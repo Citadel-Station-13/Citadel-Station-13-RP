@@ -181,7 +181,7 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(/datum/material/steel = 50)
 
 //TFF 17/6/19 - public loadout addition: Indigestible Holocollar
 /obj/item/clothing/accessory/collar/holo/indigestible

@@ -48,7 +48,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
+	matter = list(/datum/material/steel = 2000, "glass" = 2000)
 	var/obj/item/implant/backup/list/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 

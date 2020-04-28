@@ -20,7 +20,7 @@
 	w_class = ITEMSIZE_TINY
 	throw_speed = 7
 	throw_range = 15
-	matter = list(DEFAULT_WALL_MATERIAL = 10)
+	matter = list(/datum/material/steel = 10)
 	var/colour = "black"	//what colour the ink is!
 	pressure_resistance = 2
 

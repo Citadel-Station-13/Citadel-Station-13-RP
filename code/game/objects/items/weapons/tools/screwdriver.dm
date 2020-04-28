@@ -14,7 +14,7 @@
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	usesound = 'sound/items/screwdriver.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	matter = list(/datum/material/steel = 75)
 	attack_verb = list("stabbed")
 	sharp  = 1
 	toolspeed = 1
@@ -119,7 +119,7 @@
 	desc = "A simple powered hand drill. It's fitted with a screw bit."
 	icon_state = "drill_screw"
 	item_state = "drill"
-	matter = list(DEFAULT_WALL_MATERIAL = 150, MAT_SILVER = 50)
+	matter = list(/datum/material/steel = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
 	force = 8

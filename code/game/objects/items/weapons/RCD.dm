@@ -12,7 +12,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 50000)
+	matter = list(/datum/material/steel = 50000)
 	preserve_item = TRUE // RCDs are pretty important.
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
@@ -25,7 +25,7 @@
 	var/can_remove_rwalls = FALSE
 	var/airlock_type = /obj/machinery/door/airlock
 	var/window_type = /obj/structure/window/reinforced/full
-	var/material_to_use = DEFAULT_WALL_MATERIAL // So badmins can make RCDs that print diamond walls.
+	var/material_to_use = /datum/material/steel // So badmins can make RCDs that print diamond walls.
 	var/make_rwalls = FALSE // If true, when building walls, they will be reinforced.
 
 /obj/item/rcd/Initialize()
@@ -146,7 +146,7 @@
 	name = "shipwright's rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. This version creates a stronger variant of wall, often \
 	used in the construction of hulls for starships. Reload with compressed matter cartridges."
-	material_to_use = MAT_STEELHULL
+	material_to_use = /datum/material/steelHULL
 
 /obj/item/rcd/shipwright/loaded/Initialize()
 	stored_matter = max_stored_matter
@@ -248,7 +248,7 @@
 	name = "Rapid Assimilation Device"
 	ranged = TRUE
 	toolspeed = 0.7
-	material_to_use = MAT_STEELHULL
+	material_to_use = /datum/material/steelHULL
 
 /obj/item/rcd/electric/mounted/borg/lesser
 	can_remove_rwalls = FALSE
@@ -301,12 +301,12 @@
 	item_state = "rcdammo"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 30000,"glass" = 15000)
+	matter = list(/datum/material/steel = 30000,"glass" = 15000)
 	var/remaining = RCD_MAX_CAPACITY / 3
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
 	desc = "Do not ingest."
-	matter = list(DEFAULT_WALL_MATERIAL = 45000,"glass" = 22500)
+	matter = list(/datum/material/steel = 45000,"glass" = 22500)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY

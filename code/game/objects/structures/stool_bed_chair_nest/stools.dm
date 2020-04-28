@@ -19,7 +19,7 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/New(var/newloc, var/new_material, var/new_padding_material)
 	..(newloc)
 	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
+		new_material = /datum/material/steel
 	material = SSmaterials.material_by_id(new_material)
 	if(new_padding_material)
 		padding_material = SSmaterials.material_by_id(new_padding_material)

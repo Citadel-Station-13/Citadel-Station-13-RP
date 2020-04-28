@@ -229,7 +229,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 /datum/modifier/protean
 	stacks = MODIFIER_STACK_FORBID
 	var/material_use = METAL_PER_TICK
-	var/material_name = DEFAULT_WALL_MATERIAL
+	var/material_name = /datum/material/steel
 
 /datum/modifier/protean/on_applied()
 	. = ..()
@@ -307,7 +307,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of steel, healing you slowly.</span>"
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
-	material_name = MAT_STEEL
+	material_name = /datum/material/steel
 
 /datum/modifier/protean/steel/tick()
 
