@@ -262,7 +262,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_created_text = "<span class='notice'>You feel yourself accelerate, the metallic hydrogen increasing your speed temporarily.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the metallic hydrogen, and you return to normal speed.</span>"
 
-	material_name = MAT_METALHYDROGEN
+	material_id = MATERIAL_ID_METALLIC_HYDROGEN
 
 	slowdown = -1
 
@@ -273,7 +273,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_created_text = "<span class='notice'>You feel yourself become nearly impervious to physical attacks as uranium is incorporated in your nanites.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the uranium, and you return to your normal nanites.</span>"
 
-	material_name = MAT_URANIUM
+	material_id = MATERIAL_ID_URANIUM
 
 	incoming_brute_damage_percent = 0.8
 
@@ -284,7 +284,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_created_text = "<span class='notice'>You feel yourself become more reflective, able to resist heat and fire better for a time.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the gold, and you return to your normal nanites.</span>"
 
-	material_name = MAT_GOLD
+	material_id = MATERIAL_ID_GOLD
 
 	incoming_fire_damage_percent = 0.8
 
@@ -295,7 +295,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_created_text = "<span class='notice'>Your physical control is improved for a time, making it easier to hit targets, and avoid being hit.</span>"
 	on_expired_text = "<span class='notice'>Your refactory finishes consuming the silver, and your motor control returns to normal.</span>"
 
-	material_name = MAT_SILVER
+	material_id = MATERIAL_ID_SILVER
 
 	accuracy = 30
 	evasion = 30
@@ -307,7 +307,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of steel, healing you slowly.</span>"
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
-	material_name = MAT_STEEL
+	material_id = MATERIAL_ID_STEEL
 
 /datum/modifier/protean/steel/tick()
 

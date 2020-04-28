@@ -2155,6 +2155,7 @@
 #include "code\modules\materials\materials\_materials.dm"
 #include "code\modules\materials\materials\alloys.dm"
 #include "code\modules\materials\materials\cloth.dm"
+#include "code\modules\materials\materials\exotic.dm"
 #include "code\modules\materials\materials\glass.dm"
 #include "code\modules\materials\materials\metals.dm"
 #include "code\modules\materials\materials\misc.dm"

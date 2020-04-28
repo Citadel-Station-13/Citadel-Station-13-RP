@@ -12,7 +12,7 @@
 		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	var/default_type = MATERIAL_ID_STEEL
+	var/default_material_id = MATERIAL_ID_STEEL
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
@@ -90,12 +90,12 @@
 /obj/item/stack/material/iron
 	name = "iron"
 	icon_state = "sheet-silver"
-	default_type = "iron"
+	default_material_id = MATERIAL_ID_IRON
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/lead
-	name = "lead"
+	default_material_id = MATERIAL_ID_LEAD
 	icon_state = "sheet-adamantine"
 	default_type = "lead"
 	apply_colour = 1
@@ -104,76 +104,76 @@
 /obj/item/stack/material/sandstone
 	name = "sandstone brick"
 	icon_state = "sheet-sandstone"
-	default_type = "sandstone"
+	default_material_id = MATERIAL_ID_SANDSTONE
 	no_variants = FALSE
 
 /obj/item/stack/material/marble
 	name = "marble brick"
 	icon_state = "sheet-marble"
-	default_type = "marble"
+	default_material_id = MATERIAL_ID_MARBLE
 	no_variants = FALSE
 
 /obj/item/stack/material/diamond
 	name = "diamond"
 	icon_state = "sheet-diamond"
-	default_type = "diamond"
+	default_material_id = MATERIAL_ID_DIAMOND
 
 /obj/item/stack/material/uranium
 	name = "uranium"
 	icon_state = "sheet-uranium"
-	default_type = "uranium"
+	default_material_id = MATERIAL_ID_URANIUM
 	no_variants = FALSE
 
 /obj/item/stack/material/phoron
 	name = "solid phoron"
 	icon_state = "sheet-phoron"
-	default_type = "phoron"
+	default_material_id = MATERIAL_ID_PHORON
 	no_variants = FALSE
 
 /obj/item/stack/material/plastic
 	name = "plastic"
 	icon_state = "sheet-plastic"
-	default_type = "plastic"
+	default_material_id = MATERIAL_ID_PHORON
 	no_variants = FALSE
 
 /obj/item/stack/material/gold
 	name = "gold"
 	icon_state = "sheet-gold"
-	default_type = "gold"
+	default_material_id = MATERIAL_ID_GOLD
 	no_variants = FALSE
 
 /obj/item/stack/material/silver
 	name = "silver"
 	icon_state = "sheet-silver"
-	default_type = "silver"
+	default_material_id = MATERIAL_ID_SILVER
 	no_variants = FALSE
 
 //Valuable resource, cargo can sell it.
 /obj/item/stack/material/platinum
 	name = "platinum"
 	icon_state = "sheet-adamantine"
-	default_type = "platinum"
+	default_material_id = MATERIAL_ID_PLATINUM
 	no_variants = FALSE
 
 //Extremely valuable to Research.
 /obj/item/stack/material/mhydrogen
 	name = "metallic hydrogen"
 	icon_state = "sheet-mythril"
-	default_type = "mhydrogen"
+	default_material_id = MATERIAL_ID_METALLIC_HYDROGEN
 	no_variants = FALSE
 
 //Fuel for MRSPACMAN generator.
 /obj/item/stack/material/tritium
 	name = "tritium"
 	icon_state = "sheet-silver"
-	default_type = "tritium"
+	default_material_id = MATERIAL_ID_TRITIUM
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/osmium
 	name = "osmium"
 	icon_state = "sheet-silver"
-	default_type = "osmium"
+	default_material_id = MATERIAL_ID_OSMIUM
 	apply_colour = 1
 	no_variants = FALSE
 
@@ -182,19 +182,19 @@
 /obj/item/stack/material/deuterium
 	name = "deuterium"
 	icon_state = "sheet-silver"
-	default_type = "deuterium"
+	default_material_id = MATERIAL_ID_DEUTERIUM
 	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
 	name = MATERIAL_ID_STEEL
 	icon_state = "sheet-metal"
-	default_type = MATERIAL_ID_STEEL
+	default_material_id = MATERIAL_ID_STEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
 	name = MAT_STEELHULL
-	default_type = MAT_STEELHULL
+	default_material_id = MATERIAL_ID_STEEL_HULL
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"
@@ -204,49 +204,50 @@
 
 /obj/item/stack/material/plasteel/hull
 	name = MAT_PLASTEELHULL
-	default_type = MAT_PLASTEELHULL
+	default_material_id = MATERIAL_ID_PLASTEEL_HULL
 
 /obj/item/stack/material/durasteel
 	name = "durasteel"
 	icon_state = "sheet-durasteel"
 	item_state = "sheet-metal"
-	default_type = "durasteel"
+	default_material_id = MATERIAL_ID_DURASTEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/durasteel/hull
 	name = MAT_DURASTEELHULL
+	default_material_id = MATERIAL_ID_DURASTEEL_HULL
 
 /obj/item/stack/material/titanium
-	name = MAT_TITANIUM
+	name = MATERIAL_ID_TITANIUM
 	icon_state = "sheet-silver"
 	item_state = "sheet-silver"
-	default_type = MAT_TITANIUM
+	default_material_id = MATERIAL_ID_TITANIUM
 	no_variants = FALSE
 
 /obj/item/stack/material/titanium/hull
-	name = MAT_TITANIUMHULL
-	default_type = MAT_TITANIUMHULL
+	name = MATERIAL_ID_TITANIUM_HULL
+	default_material_id = MATERIAL_ID_TITANIUM_HULL
 
 // Particle Smasher and Exotic material.
 /obj/item/stack/material/verdantium
-	name = MAT_VERDANTIUM
+	name = MATERIAL_ID_VERDANTIUM
 	icon_state = "sheet-wavy"
 	item_state = "mhydrogen"
-	default_type = MAT_VERDANTIUM
+	default_type = MATERIAL_ID_VERDANTIUM
 	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/morphium
-	name = MAT_MORPHIUM
+	name = MATERIAL_ID_MORPHIUM
 	icon_state = "sheet-wavy"
 	item_state = "mhydrogen"
-	default_type = MAT_MORPHIUM
+	default_type = MATERIAL_ID_MORPHIUM
 	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/morphium/hull
-	name = MAT_MORPHIUMHULL
-	default_type = MAT_MORPHIUMHULL
+	name = MATERIAL_ID_MORPHIUM_HULL
+	default_type = MATERIAL_ID_MORPHIUM_HULL
 
 /obj/item/stack/material/valhollide
 	name = MAT_VALHOLLIDE
@@ -315,18 +316,18 @@
 /obj/item/stack/material/wood
 	name = "wooden plank"
 	icon_state = "sheet-wood"
-	default_type = MAT_WOOD
+	default_type = MATERIAL_ID_WOOD
 	strict_color_stacking = TRUE
 
 /obj/item/stack/material/wood/sif
 	name = "alien wooden plank"
 	color = "#0099cc"
-	default_type = MAT_SIFWOOD
+	default_type = MATERIAL_ID_SIF_WOOD
 
 /obj/item/stack/material/log
 	name = "log"
 	icon_state = "sheet-log"
-	default_type = MAT_LOG
+	default_type = MATERIAL_ID_LOG
 	no_variants = FALSE
 	color = "#824B28"
 	max_amount = 25
@@ -336,7 +337,7 @@
 
 /obj/item/stack/material/log/sif
 	name = "alien log"
-	default_type = MAT_SIFLOG
+	default_type = MATERIAL_ID_SIF_LOG
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
 
@@ -392,13 +393,13 @@
 	name = "snow"
 	desc = "The temptation to build a snowman rises."
 	icon_state = "sheet-snow"
-	default_type = "snow"
+	default_type = MATERIAL_ID_SNOW
 
 /obj/item/stack/material/snowbrick
 	name = "snow brick"
 	desc = "For all of your igloo building needs."
 	icon_state = "sheet-snowbrick"
-	default_type = "packed snow"
+	default_type = MATERIAL_ID_SNOW_BRICK
 
 /obj/item/stack/material/leather
 	name = "leather"
@@ -412,13 +413,13 @@
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"
-	default_type = "glass"
+	default_type = MATERIAL_ID_GLASS
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/reinforced
 	name = "reinforced glass"
 	icon_state = "sheet-rglass"
-	default_type = "rglass"
+	default_type = MATERIAL_ID_GLASS_REINFORCED
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronglass
@@ -426,7 +427,7 @@
 	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures"
 	singular_name = "borosilicate glass sheet"
 	icon_state = "sheet-phoronglass"
-	default_type = "borosilicate glass"
+	default_type = MATERIAL_ID_GLASS_PHORON
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronrglass
@@ -434,5 +435,5 @@
 	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
 	singular_name = "reinforced borosilicate glass sheet"
 	icon_state = "sheet-phoronrglass"
-	default_type = "reinforced borosilicate glass"
+	default_type = MATERIAL_ID_GLASS_PHORON_REINFORCED
 	no_variants = FALSE

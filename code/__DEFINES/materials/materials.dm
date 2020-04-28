@@ -50,3 +50,9 @@
 
 // Organic
 #define MATEIRAL_ID_DIONA				"diona"
+
+// Exotic
+#define MATERIAL_ID_MORPHIUM				"morphium"
+	#define MATERIAL_ID_MORPHIUM_HULL		"morphiumhull"
+#define MATERIAL_ID_VERDANTIUM				"verdantium"
+#define MATERIAL_ID_VALHOLLIDE				"valhollide"
