@@ -245,7 +245,7 @@
 	for(var/M in materials)
 		materials_ui[++materials_ui.len] = list(
 				"name" = M,
-				"display" = material_display_name(M),
+				"display" = SSmaterials.material_name_by_id(M),
 				"qty" = materials[M],
 				"max" = storage_capacity[M],
 				"percent" = (materials[M] / storage_capacity[M] * 100))

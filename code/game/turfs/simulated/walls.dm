@@ -52,7 +52,7 @@
 	if(!radiate())
 		return PROCESS_KILL
 
-/turf/simulated/wall/proc/get_material()
+/turf/simulated/wall/get_material()
 	return material
 
 /turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)

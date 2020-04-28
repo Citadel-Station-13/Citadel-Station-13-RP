@@ -6,18 +6,21 @@
 SUBSYSTEM_DEF(materials)
 	name = "Materials"
 	init_order = INIT_ORDER_MATERIALS
-	priority = FIRE_PRIORITY_MATERIALS
-	wait = 10
+//	priority = FIRE_PRIORITY_MATERIALS
+	flags = SS_NO_FIRE
+//	wait = 10
 
 	/// Master list of every material datum in the game, indexed by its id.
 	var/list/materials_by_id
 
+/*
 	var/current_stage = MATERIAL_PROCESS_STAGE_RADIATION
 	var/fire_start_stage
 
 	var/list/processing_list_radioactive = list()
 
 	var/list/currentrun = list()
+*/
 
 /datum/controller/subsystem/materials/Initialize()
 	initialize_materials()
@@ -53,6 +56,7 @@ SUBSYSTEM_DEF(materials)
 	var/datum/material/M = material_by_id(id)
 	return M?.display_name
 
+/*
 /datum/controller/subsystem/materials/fire(resumed)
 	fire_start_stage = current_stage
 	process_chain()
@@ -89,3 +93,4 @@ SUBSYSTEM_DEF(materials)
 
 /datum/proc/standard_material_process_radioactive()
 	return PROCESS_KILL
+*/

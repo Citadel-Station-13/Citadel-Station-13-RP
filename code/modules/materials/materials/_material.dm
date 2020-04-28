@@ -38,6 +38,8 @@
 // eh, this stays for now. don't use it though.
 /atom/proc/get_material_name()
 
+/atom/proc/get_material()
+
 // Material definition and procs follow.
 /datum/material
 	/// Unique material id. Defaults to type.
@@ -206,7 +208,7 @@
 // As above.
 /datum/material/proc/place_shard(var/turf/target)
 	if(shard_type)
-		return new /obj/item/material/shard(target, src.name)
+		return new /obj/item/material/shard(target, id)
 
 // Used by walls and weapons to determine if they break or not.
 /datum/material/proc/is_brittle()

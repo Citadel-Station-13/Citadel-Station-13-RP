@@ -226,7 +226,7 @@
 		to_chat(user, "<span class='notice'>There isn't enough material here to construct a wall.</span>")
 		return 0
 
-	var/datum/material/M = name_to_material[S.default_type]
+	var/datum/material/M = SSmaterials.material_by_id(S.default_type)
 	if(!istype(M))
 		return 0
 
@@ -401,7 +401,7 @@
 			var/turf/simulated/wall/new_T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/datum/material/M = name_to_material[the_rcd.material_to_use]
+			var/datum/material/M = SSmaterials.material_by_idthe_rcd.material_to_use)
 			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
 			new_T.add_hiddenprint(user)
 			qdel(src)
