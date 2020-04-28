@@ -83,6 +83,8 @@
 		sleep(5) //The duration of the TP animation
 		canmove = original_canmove
 		alpha = initial(alpha)
+		// probably replace with a trait later.
+		set_movement_type(GROUND)
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -124,6 +126,9 @@
 		//overlays.Cut()
 		update_icon()
 		alpha = 127
+
+		// probably replace with a trait later.
+		set_movement_type(PHASING)
 
 		canmove = original_canmove
 		incorporeal_move = TRUE
