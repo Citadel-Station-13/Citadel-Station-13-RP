@@ -193,7 +193,7 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
-	name = /datum/material/steel/hull
+	name = "steel"
 	default_type = /datum/material/steel/hull
 
 /obj/item/stack/material/plasteel
