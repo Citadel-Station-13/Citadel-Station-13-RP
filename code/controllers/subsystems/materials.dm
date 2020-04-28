@@ -19,7 +19,6 @@ SUBSYSTEM_DEF(materials)
 
 	var/list/currentrun = list()
 
-
 /datum/controller/subsystem/materials/Initialize()
 	initialize_materials()
 	return ..()
