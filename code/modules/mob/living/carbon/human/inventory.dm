@@ -502,6 +502,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		var/obj/item/storage/S = equipped_back
 		if(!S.can_be_inserted(thing))
 			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
+			return
 		S.handle_item_insertion(thing)
 		return
 	if(!equipped_back.contents.len) // nothing to take out
@@ -534,6 +535,7 @@ This saves us from having to call add_fingerprint() any time something is put in
 		var/obj/item/storage/S = equipped_belt
 		if(!S.can_be_inserted(thing))
 			to_chat(src, "<span class='warning'>You can't fit anything in!</span>")
+			return
 		S.handle_item_insertion(thing)
 		return
 	if(!equipped_belt.contents.len) // nothing to take out
