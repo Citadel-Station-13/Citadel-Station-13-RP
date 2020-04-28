@@ -52,6 +52,6 @@
 	desc = "With the 'Pummeler', punt anyone you don't like out of the room!"
 	id = "pummeler"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
-	materials = list(MATERIAL_ID_STEEL = 3000, "glass" = 3000, "uranium" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 3000, MATERIAL_ID_GLASS = 3000, "uranium" = 1000)
 	build_path = /obj/item/gun/energy/pummeler
 	sort_string = "TAADC"

@@ -5,7 +5,7 @@
 	desc = "Allows for deciphering the binary channel on-the-fly."
 	id = "binaryencrypt"
 	req_tech = list(TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_ID_STEEL = 300, "glass" = 300)
+	materials = list(MATERIAL_ID_STEEL = 300, MATERIAL_ID_GLASS = 300)
 	build_path = /obj/item/encryptionkey/binary
 	sort_string = "VASAA" */
 

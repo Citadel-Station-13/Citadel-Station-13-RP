@@ -750,7 +750,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "ltube"
 	base_state = "ltube"
 	item_state = "c_tube"
-	matter = list("glass" = 100)
+	matter = list(MATERIAL_ID_GLASS = 100)
 	brightness_range = 12	// luminosity when on, also used in power calculation //VOREStation Edit
 	brightness_power = 1
 
@@ -766,7 +766,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	item_state = "contvapour"
-	matter = list("glass" = 100)
+	matter = list(MATERIAL_ID_GLASS = 100)
 	brightness_range = 5
 	brightness_power = 1
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
@@ -786,7 +786,7 @@ var/global/list/light_type_cache = list()
 	icon_state = "fbulb"
 	base_state = "fbulb"
 	item_state = "egg4"
-	matter = list("glass" = 100)
+	matter = list(MATERIAL_ID_GLASS = 100)
 
 // update the icon state and description of the light
 /obj/item/light/update_icon()

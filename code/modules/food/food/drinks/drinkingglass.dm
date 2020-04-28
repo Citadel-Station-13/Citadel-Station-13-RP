@@ -8,7 +8,7 @@
 	volume = 30
 	unacidable = 1 //glass
 	center_of_mass = list("x"=16, "y"=10)
-	matter = list("glass" = 500)
+	matter = list(MATERIAL_ID_GLASS = 500)
 
 	on_reagent_change()
 		/*if(reagents.reagent_list.len > 1 )
@@ -113,7 +113,7 @@
 	icon_state = "shotglass"
 	amount_per_transfer_from_this = 10
 	volume = 10
-	matter = list("glass" = 175)
+	matter = list(MATERIAL_ID_GLASS = 175)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/on_reagent_change()
 	overlays.Cut()

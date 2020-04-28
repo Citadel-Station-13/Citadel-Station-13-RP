@@ -180,7 +180,7 @@
 	density = 1
 	anchored = 1
 
-	var/list/stored_material =  list(MATERIAL_ID_STEEL = 30000, "glass" = 30000)
+	var/list/stored_material =  list(MATERIAL_ID_STEEL = 30000, MATERIAL_ID_GLASS = 30000)
 	var/connected      //What console it's done up with
 	var/busy = 0       //Busy cloning
 	var/body_cost = 15000  //Cost of a cloned body (metal and glass ea.)

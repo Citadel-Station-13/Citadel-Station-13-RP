@@ -151,7 +151,7 @@
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_mag"
 	caliber = "nsfw"
-	matter = list(MATERIAL_ID_STEEL = 1680, "glass" = 2000)
+	matter = list(MATERIAL_ID_STEEL = 1680, MATERIAL_ID_GLASS = 2000)
 	ammo_type = /obj/item/ammo_casing/nsfw_batt
 	initial_ammo = 0
 	max_ammo = 3

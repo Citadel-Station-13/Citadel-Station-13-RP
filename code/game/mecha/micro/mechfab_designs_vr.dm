@@ -13,7 +13,7 @@
 	name = "Gopher Torso"
 	id = "gopher_torso"
 	build_path = /obj/item/mecha_parts/micro/part/gopher_torso
-	materials = list(MATERIAL_ID_STEEL = 15000, "glass" = 5250)
+	materials = list(MATERIAL_ID_STEEL = 15000, MATERIAL_ID_GLASS = 5250)
 
 /datum/design/item/mechfab/gopher/left_arm
 	name = "Gopher Left Arm"
@@ -69,7 +69,7 @@
 	name = "Polecat Torso"
 	id = "polecat_torso"
 	build_path = /obj/item/mecha_parts/micro/part/polecat_torso
-	materials = list(MATERIAL_ID_STEEL = 15000, "glass" = 5250)
+	materials = list(MATERIAL_ID_STEEL = 15000, MATERIAL_ID_GLASS = 5250)
 
 /datum/design/item/mechfab/polecat/left_arm
 	name = "Polecat Left Arm"
@@ -117,7 +117,7 @@
 	name = "\improper PC-20 \"Lance\" light laser cannon"
 	id = "micro_laser_heavy"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
-	materials = list(MATERIAL_ID_STEEL = 10000, "glass" = 1000, "diamond" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 10000, MATERIAL_ID_GLASS = 1000, "diamond" = 2000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/microheavy
 
 /datum/design/item/mecha/weapon/grenade_launcher/micro
@@ -148,7 +148,7 @@
 	name = "Weasel Torso"
 	id = "weasel_torso"
 	build_path = /obj/item/mecha_parts/micro/part/weasel_torso
-	materials = list(MATERIAL_ID_STEEL = 15000, "glass" = 5250)
+	materials = list(MATERIAL_ID_STEEL = 15000, MATERIAL_ID_GLASS = 5250)
 
 /datum/design/item/mechfab/weasel/left_arm
 	name = "Weasel Left Arm"
@@ -184,7 +184,7 @@
 	name = "Weasel Head"
 	id = "weasel_head"
 	build_path = /obj/item/mecha_parts/micro/part/weasel_head
-	materials = list(MATERIAL_ID_STEEL = 7000, "glass" = 2500)
+	materials = list(MATERIAL_ID_STEEL = 7000, MATERIAL_ID_GLASS = 2500)
 
 /datum/design/item/mecha/medigun
 	name = "BL-3/P directed restoration system"

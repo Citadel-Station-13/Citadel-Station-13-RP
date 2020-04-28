@@ -23,7 +23,7 @@
 	id = "ripley_torso"
 	build_path = /obj/item/mecha_parts/part/ripley_torso
 	time = 20
-	materials = list(MATERIAL_ID_STEEL = 30000, "glass" = 11250)
+	materials = list(MATERIAL_ID_STEEL = 30000, MATERIAL_ID_GLASS = 11250)
 
 /datum/design/item/mechfab/ripley/left_arm
 	name = "Ripley Left Arm"
@@ -75,7 +75,7 @@
 	id = "odysseus_head"
 	build_path = /obj/item/mecha_parts/part/odysseus_head
 	time = 10
-	materials = list(MATERIAL_ID_STEEL = 1500, "glass" = 7500)
+	materials = list(MATERIAL_ID_STEEL = 1500, MATERIAL_ID_GLASS = 7500)
 
 /datum/design/item/mechfab/odysseus/left_arm
 	name = "Odysseus Left Arm"
@@ -126,14 +126,14 @@
 	id = "gygax_torso"
 	build_path = /obj/item/mecha_parts/part/gygax_torso
 	time = 30
-	materials = list(MATERIAL_ID_STEEL = 37500, "glass" = 15000)
+	materials = list(MATERIAL_ID_STEEL = 37500, MATERIAL_ID_GLASS = 15000)
 
 /datum/design/item/mechfab/gygax/head
 	name = "Gygax Head"
 	id = "gygax_head"
 	build_path = /obj/item/mecha_parts/part/gygax_head
 	time = 20
-	materials = list(MATERIAL_ID_STEEL = 15000, "glass" = 7500)
+	materials = list(MATERIAL_ID_STEEL = 15000, MATERIAL_ID_GLASS = 7500)
 
 /datum/design/item/mechfab/gygax/left_arm
 	name = "Gygax Left Arm"
@@ -185,14 +185,14 @@
 	id = "durand_torso"
 	build_path = /obj/item/mecha_parts/part/durand_torso
 	time = 30
-	materials = list(MATERIAL_ID_STEEL = 41250, "glass" = 15000, "silver" = 7500)
+	materials = list(MATERIAL_ID_STEEL = 41250, MATERIAL_ID_GLASS = 15000, "silver" = 7500)
 
 /datum/design/item/mechfab/durand/head
 	name = "Durand Head"
 	id = "durand_head"
 	build_path = /obj/item/mecha_parts/part/durand_head
 	time = 20
-	materials = list(MATERIAL_ID_STEEL = 18750, "glass" = 7500, "silver" = 2250)
+	materials = list(MATERIAL_ID_STEEL = 18750, MATERIAL_ID_GLASS = 7500, "silver" = 2250)
 
 /datum/design/item/mechfab/durand/left_arm
 	name = "Durand Left Arm"
@@ -338,20 +338,20 @@
 	name = "Sleeper"
 	id = "mech_sleeper"
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/sleeper
-	materials = list(MATERIAL_ID_STEEL = 3750, "glass" = 7500)
+	materials = list(MATERIAL_ID_STEEL = 3750, MATERIAL_ID_GLASS = 7500)
 
 /datum/design/item/mecha/syringe_gun
 	name = "Syringe Gun"
 	id = "mech_syringe_gun"
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun
 	time = 20
-	materials = list(MATERIAL_ID_STEEL = 2250, "glass" = 1500)
+	materials = list(MATERIAL_ID_STEEL = 2250, MATERIAL_ID_GLASS = 1500)
 
 /datum/design/item/mecha/passenger
 	name = "Passenger Compartment"
 	id = "mech_passenger"
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/passenger
-	materials = list(MATERIAL_ID_STEEL = 3750, "glass" = 3750)
+	materials = list(MATERIAL_ID_STEEL = 3750, MATERIAL_ID_GLASS = 3750)
 
 /datum/design/item/mecha/taser
 	name = "PBT \"Pacifier\" Mounted Taser"
@@ -369,7 +369,7 @@
 	id = "mech_shocker"
 	req_tech = list(TECH_COMBAT = 3, TECH_POWER = 6, TECH_MAGNET = 1)
 	build_path = /obj/item/mecha_parts/mecha_equipment/shocker
-	materials = list(MATERIAL_ID_STEEL = 3500, "gold" = 750, "glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 3500, "gold" = 750, MATERIAL_ID_GLASS = 1000)
 
 /datum/design/item/mecha/lmg
 	name = "Ultra AC 2"
@@ -383,7 +383,7 @@
 
 /datum/design/item/mecha/weapon
 	req_tech = list(TECH_COMBAT = 3)
-	materials = list(MATERIAL_ID_STEEL = 8000, "glass" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 8000, MATERIAL_ID_GLASS = 2000)
 
 // *** Weapon modules
 /datum/design/item/mecha/weapon/scattershot
@@ -391,21 +391,21 @@
 	id = "mech_scattershot"
 	req_tech = list(TECH_COMBAT = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
-	materials = list(MATERIAL_ID_STEEL = 8000, "glass" = 3000, "plastic" = 2000, "silver" = 2500)
+	materials = list(MATERIAL_ID_STEEL = 8000, MATERIAL_ID_GLASS = 3000, "plastic" = 2000, "silver" = 2500)
 
 /datum/design/item/mecha/weapon/rigged_scattershot
 	name = "Jury-Rigged Shrapnel Cannon"
 	id = "mech_scattershot-r"
 	req_tech = list(TECH_COMBAT = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/rigged
-	materials = list(MATERIAL_ID_STEEL = 7000, "glass" = 2000, "plastic" = 2000, "silver" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 7000, MATERIAL_ID_GLASS = 2000, "plastic" = 2000, "silver" = 2000)
 
 /datum/design/item/mecha/weapon/laser
 	name = "CH-PS \"Immolator\" Laser"
 	id = "mech_laser"
 	req_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 3)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	materials = list(MATERIAL_ID_STEEL = 8000, "glass" = 3000, "plastic" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 8000, MATERIAL_ID_GLASS = 3000, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/laser_rigged
 	name = "Jury-Rigged Welder-Laser"
@@ -419,35 +419,35 @@
 	id = "mech_laser_heavy"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
-	materials = list(MATERIAL_ID_STEEL = 10000, "glass" = 3000, "diamond" = 2000, "osmium" = 5000, "plastic" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 10000, MATERIAL_ID_GLASS = 3000, "diamond" = 2000, "osmium" = 5000, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/rigged_laser_heavy
 	name = "Jury-Rigged Emitter Cannon"
 	id = "mech_laser_heavy-r"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4, TECH_PHORON = 3, TECH_ILLEGAL = 1)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy/rigged
-	materials = list(MATERIAL_ID_STEEL = 8000, "glass" = 4000, "diamond" = 1500, "osmium" = 4000, "plastic" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 8000, MATERIAL_ID_GLASS = 4000, "diamond" = 1500, "osmium" = 4000, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/laser_xray
 	name = "CH-XS \"Penetrator\" Laser"
 	id = "mech_laser_xray"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray
-	materials = list(MATERIAL_ID_STEEL = 9000, "glass" = 3000, "phoron" = 1000, "silver" = 1500, "gold" = 2500, "plastic" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 9000, MATERIAL_ID_GLASS = 3000, "phoron" = 1000, "silver" = 1500, "gold" = 2500, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/rigged_laser_xray
 	name = "Jury-Rigged Xray Rifle"
 	id = "mech_laser_xray-r"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 4)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray/rigged
-	materials = list(MATERIAL_ID_STEEL = 8500, "glass" = 2500, "phoron" = 1000, "silver" = 1250, "gold" = 2000, "plastic" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 8500, MATERIAL_ID_GLASS = 2500, "phoron" = 1000, "silver" = 1250, "gold" = 2000, "plastic" = 2000)
 
 /datum/design/item/mecha/weapon/phase
 	name = "NT-PE \"Scorpio\" Phase-Emitter"
 	id = "mech_phase"
 	req_tech = list(TECH_MATERIAL = 1, TECH_COMBAT = 2, TECH_MAGNET = 2)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase
-	materials = list(MATERIAL_ID_STEEL = 6000, "glass" = 3000, "plastic" = 3000)
+	materials = list(MATERIAL_ID_STEEL = 6000, MATERIAL_ID_GLASS = 3000, "plastic" = 3000)
 
 /datum/design/item/mecha/weapon/ion
 	name = "MK-IV Ion Heavy Cannon"
@@ -559,7 +559,7 @@
 	desc = "Automated repair droid, exosuits' best companion. BEEP BOOP"
 	id = "mech_repair_droid"
 	req_tech = list(TECH_MAGNET = 3, TECH_DATA = 3, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_ID_STEEL = 7500, "gold" = 750, "silver" = 1500, "glass" = 3750)
+	materials = list(MATERIAL_ID_STEEL = 7500, "gold" = 750, "silver" = 1500, MATERIAL_ID_GLASS = 3750)
 	build_path = /obj/item/mecha_parts/mecha_equipment/repair_droid
 
 /datum/design/item/mecha/shield_drone
@@ -567,7 +567,7 @@
 	desc = "Manual shield drone. Deploys a large, familiar, and rectangular shield in one direction at a time."
 	id = "mech_shield_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
-	materials = list(MATERIAL_ID_STEEL = 8000, "gold" = 2000, "silver" = 3000, "phoron" = 5000, "glass" = 3750)
+	materials = list(MATERIAL_ID_STEEL = 8000, "gold" = 2000, "silver" = 3000, "phoron" = 5000, MATERIAL_ID_GLASS = 3750)
 	build_path = /obj/item/mecha_parts/mecha_equipment/combat_shield
 
 /datum/design/item/mecha/crisis_drone
@@ -600,20 +600,20 @@
 	id = "mech_jetpack"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MAGNET = 4) //One less magnet than the actual got-damn teleporter.
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/jetpack
-	materials = list(MATERIAL_ID_STEEL = 7500, "silver" = 300, "glass" = 600)
+	materials = list(MATERIAL_ID_STEEL = 7500, "silver" = 300, MATERIAL_ID_GLASS = 600)
 
 /datum/design/item/mecha/phoron_generator
 	desc = "Phoron Reactor"
 	id = "mech_phoron_generator"
 	req_tech = list(TECH_PHORON = 2, TECH_POWER= 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/mecha_parts/mecha_equipment/generator
-	materials = list(MATERIAL_ID_STEEL = 7500, "silver" = 375, "glass" = 750)
+	materials = list(MATERIAL_ID_STEEL = 7500, "silver" = 375, MATERIAL_ID_GLASS = 750)
 
 /datum/design/item/mecha/energy_relay
 	name = "Energy Relay"
 	id = "mech_energy_relay"
 	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 3)
-	materials = list(MATERIAL_ID_STEEL = 7500, "gold" = 1500, "silver" = 2250, "glass" = 1500)
+	materials = list(MATERIAL_ID_STEEL = 7500, "gold" = 1500, "silver" = 2250, MATERIAL_ID_GLASS = 1500)
 	build_path = /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 
 /datum/design/item/mecha/ccw_armor
@@ -653,7 +653,7 @@
 	desc = "A hefty device used to scan for subterranean veins of ore."
 	id = "mech_ore_scanner"
 	req_tech = list(TECH_MATERIAL = 2, TECH_MAGNET = 2, TECH_POWER = 2)
-	materials = list(MATERIAL_ID_STEEL = 4000, "glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 1000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/orescanner
 
 /datum/design/item/mecha/advorescanner
@@ -669,7 +669,7 @@
 	desc = "A large, hydraulic wrench."
 	id = "mech_wrench"
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2, TECH_POWER = 2)
-	materials = list(MATERIAL_ID_STEEL = 5000, "plastic" = 2000, "glass" = 1250)
+	materials = list(MATERIAL_ID_STEEL = 5000, "plastic" = 2000, MATERIAL_ID_GLASS = 1250)
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/powertool
 
 /datum/design/item/mecha/powercrowbar
@@ -677,7 +677,7 @@
 	desc = "A large, hydraulic prybar."
 	id = "mech_crowbar"
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2, TECH_POWER = 2)
-	materials = list(MATERIAL_ID_STEEL = 4000, "osmium" = 3000, "glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 4000, "osmium" = 3000, MATERIAL_ID_GLASS = 1000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/tool/powertool/prybar
 
 /datum/design/item/mecha/generator_nuclear
@@ -685,7 +685,7 @@
 	desc = "Exosuit-held nuclear reactor. Converts uranium and everyone's health to energy."
 	id = "mech_generator_nuclear"
 	req_tech = list(TECH_POWER= 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
-	materials = list(MATERIAL_ID_STEEL = 7500, "silver" = 375, "glass" = 750)
+	materials = list(MATERIAL_ID_STEEL = 7500, "silver" = 375, MATERIAL_ID_GLASS = 750)
 	build_path = /obj/item/mecha_parts/mecha_equipment/generator/nuclear
 
 /datum/design/item/mecha/speedboost_ripley
@@ -701,7 +701,7 @@
 	id = "sflash"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
 	build_type = MECHFAB
-	materials = list(MATERIAL_ID_STEEL = 562, "glass" = 562)
+	materials = list(MATERIAL_ID_STEEL = 562, MATERIAL_ID_GLASS = 562)
 	build_path = /obj/item/flash/synthetic
 	category = "Misc"
 

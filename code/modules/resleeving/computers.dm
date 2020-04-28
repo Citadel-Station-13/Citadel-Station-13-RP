@@ -127,7 +127,7 @@
 
 	var/spods_list_ui[0]
 	for(var/obj/machinery/transhuman/synthprinter/spod in spods)
-		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, "steel" = spod.stored_material[MATERIAL_ID_STEEL], "glass" = spod.stored_material["glass"])
+		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, "steel" = spod.stored_material[MATERIAL_ID_STEEL], MATERIAL_ID_GLASS = spod.stored_material["glass"])
 
 	var/sleevers_list_ui[0]
 	for(var/obj/machinery/transhuman/resleever/resleever in sleevers)

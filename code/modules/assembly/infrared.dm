@@ -5,7 +5,7 @@
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	matter = list(MATERIAL_ID_STEEL = 1000, "glass" = 500, "waste" = 100)
+	matter = list(MATERIAL_ID_STEEL = 1000, MATERIAL_ID_GLASS = 500, "waste" = 100)
 
 	wires = WIRE_PULSE
 

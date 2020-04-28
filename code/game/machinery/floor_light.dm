@@ -11,7 +11,7 @@ var/list/floor_light_cache = list()
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = LIGHT
-	matter = list(MATERIAL_ID_STEEL = 2500, "glass" = 2750)
+	matter = list(MATERIAL_ID_STEEL = 2500, MATERIAL_ID_GLASS = 2750)
 
 	var/on
 	var/damaged

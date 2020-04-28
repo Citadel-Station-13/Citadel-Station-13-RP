@@ -1,6 +1,6 @@
 /datum/design/aimodule
 	build_type = IMPRINTER
-	materials = list("glass" = 2000, "gold" = 100)
+	materials = list(MATERIAL_ID_GLASS = 2000, "gold" = 100)
 
 /datum/design/aimodule/AssembleDesignName()
 	name = "AI module design ([name])"

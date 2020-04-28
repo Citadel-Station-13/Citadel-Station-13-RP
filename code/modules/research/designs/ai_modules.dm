@@ -1,6 +1,6 @@
 /datum/design/aimodule
 	build_type = IMPRINTER
-	materials = list("glass" = 2000, "gold" = 100)
+	materials = list(MATERIAL_ID_GLASS = 2000, "gold" = 100)
 
 /datum/design/aimodule/AssembleDesignName()
 	name = "AI module design ([name])"
@@ -112,6 +112,6 @@
 	desc = "Allows for the construction of an intelliCore."
 	id = "intellicore"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 4)
-	materials = list("glass" = 1000, "gold" = 200)
+	materials = list(MATERIAL_ID_GLASS = 1000, "gold" = 200)
 	build_path = /obj/item/aicard
 	sort_string = "VACAA"

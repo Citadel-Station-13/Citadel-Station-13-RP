@@ -15,7 +15,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	matter = list(MATERIAL_ID_STEEL = 50000, "glass" = 25000)
+	matter = list(MATERIAL_ID_STEEL = 50000, MATERIAL_ID_GLASS = 25000)
 	var/datum/effect/effect/system/spark_spread/spark_system
 	var/working = 0
 	var/mode = ATMOS_MODE

@@ -10,37 +10,37 @@
 	name = T_BOARD("guestpass console")
 	build_path = /obj/machinery/computer/guestpass
 	board_type = new /datum/frame/frame_types/guest_pass_console
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/status_display
 	name = T_BOARD("status display")
 	build_path = /obj/machinery/status_display
 	board_type = new /datum/frame/frame_types/display
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/ai_status_display
 	name = T_BOARD("ai status display")
 	build_path = /obj/machinery/ai_status_display
 	board_type = new /datum/frame/frame_types/display
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/newscaster
 	name = T_BOARD("newscaster")
 	build_path = /obj/machinery/newscaster
 	board_type = new /datum/frame/frame_types/newscaster
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/atm
 	name = T_BOARD("atm")
 	build_path = /obj/machinery/atm
 	board_type = new /datum/frame/frame_types/atm
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/request
 	name = T_BOARD("request console")
 	build_path = /obj/machinery/requests_console
 	board_type = new /datum/frame/frame_types/supply_request_console
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 //Alarm
 
@@ -48,25 +48,25 @@
 	name = T_BOARD("fire alarm")
 	build_path = /obj/machinery/firealarm
 	board_type = new /datum/frame/frame_types/fire_alarm
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/airalarm
 	name = T_BOARD("air alarm")
 	build_path = /obj/machinery/alarm
 	board_type = new /datum/frame/frame_types/air_alarm
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/intercom
 	name = T_BOARD("intercom")
 	build_path = /obj/item/radio/intercom
 	board_type = new /datum/frame/frame_types/intercom
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/keycard_auth
 	name = T_BOARD("keycard authenticator")
 	build_path = /obj/machinery/keycard_auth
 	board_type = new /datum/frame/frame_types/keycard_authenticator
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 //Computer
 
@@ -74,7 +74,7 @@
 	name = T_BOARD("holopad")
 	build_path = /obj/machinery/hologram/holopad
 	board_type = new /datum/frame/frame_types/holopad
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 
 /obj/item/circuitboard/scanner_console
 	name = T_BOARD("body scanner console")
@@ -94,7 +94,7 @@
 	name = T_BOARD("photocopier")
 	build_path = /obj/machinery/photocopier
 	board_type = new /datum/frame/frame_types/photocopier
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 	req_components = list(
 							/obj/item/stock_parts/scanning_module = 1,
 							/obj/item/stock_parts/motor = 1,
@@ -105,7 +105,7 @@
 	name = T_BOARD("fax")
 	build_path = /obj/machinery/photocopier/faxmachine
 	board_type = new /datum/frame/frame_types/fax
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 	req_components = list(
 							/obj/item/stock_parts/scanning_module = 1,
 							/obj/item/stock_parts/motor = 1,
@@ -125,7 +125,7 @@
 	name = T_BOARD("microwave")
 	build_path = /obj/machinery/microwave
 	board_type = new /datum/frame/frame_types/microwave
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 	req_components = list(
 							/obj/item/stock_parts/console_screen = 1,
 							/obj/item/stock_parts/motor = 1,
@@ -156,7 +156,7 @@
 	name = T_BOARD("washing machine")
 	build_path = /obj/machinery/washing_machine
 	board_type = new /datum/frame/frame_types/washing_machine
-	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, MATERIAL_ID_GLASS = 50)
 	req_components = list(
 							/obj/item/stock_parts/motor = 1,
 							/obj/item/stock_parts/gear = 2)

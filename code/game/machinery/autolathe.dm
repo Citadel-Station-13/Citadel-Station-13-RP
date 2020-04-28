@@ -10,8 +10,8 @@
 	active_power_usage = 2000
 	circuit = /obj/item/circuitboard/autolathe
 	var/datum/category_collection/autolathe/machine_recipes
-	var/list/stored_material =  list(MATERIAL_ID_STEEL = 0, "glass" = 0)
-	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, "glass" = 0)
+	var/list/stored_material =  list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
+	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
 	var/datum/category_group/autolathe/current_category
 
 	var/hacked = 0

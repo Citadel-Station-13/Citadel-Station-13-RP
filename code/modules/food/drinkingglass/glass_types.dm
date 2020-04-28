@@ -7,7 +7,7 @@
 	volume = 30
 	possible_transfer_amounts = list(5,10,15,30)
 	rim_pos = list(23,13,20) // y, x0, x1
-	matter = list("glass" = 60)
+	matter = list(MATERIAL_ID_GLASS = 60)
 
 /obj/item/reagent_containers/food/drinks/glass2/rocks
 	name = "rocks glass"
@@ -18,7 +18,7 @@
 	volume = 20
 	possible_transfer_amounts = list(5,10,20)
 	rim_pos = list(21, 10, 23)
-	matter = list("glass" = 40)
+	matter = list(MATERIAL_ID_GLASS = 40)
 
 /obj/item/reagent_containers/food/drinks/glass2/shake
 	name = "milkshake glass"
@@ -29,7 +29,7 @@
 	volume = 30
 	possible_transfer_amounts = list(5,10,15,30)
 	rim_pos = list(25, 13, 21)
-	matter = list("glass" = 30)
+	matter = list(MATERIAL_ID_GLASS = 30)
 
 /obj/item/reagent_containers/food/drinks/glass2/cocktail
 	name = "cocktail glass"
@@ -40,7 +40,7 @@
 	volume = 15
 	possible_transfer_amounts = list(5,10,15)
 	rim_pos = list(22, 13, 21)
-	matter = list("glass" = 30)
+	matter = list(MATERIAL_ID_GLASS = 30)
 
 /obj/item/reagent_containers/food/drinks/glass2/shot
 	name = "shot glass"
@@ -51,7 +51,7 @@
 	volume = 5
 	possible_transfer_amounts = list(1,2,5)
 	rim_pos = list(17, 13, 21)
-	matter = list("glass" = 10)
+	matter = list(MATERIAL_ID_GLASS = 10)
 
 /obj/item/reagent_containers/food/drinks/glass2/pint
 	name = "pint glass"
@@ -62,7 +62,7 @@
 	volume = 60
 	possible_transfer_amounts = list(5,10,15,30,60)
 	rim_pos = list(25, 12, 21)
-	matter = list("glass" = 120)
+	matter = list(MATERIAL_ID_GLASS = 120)
 
 /obj/item/reagent_containers/food/drinks/glass2/mug
 	name = "glass mug"
@@ -73,7 +73,7 @@
 	volume = 40
 	possible_transfer_amounts = list(5,10,20,40)
 	rim_pos = list(22, 12, 20)
-	matter = list("glass" = 80)
+	matter = list(MATERIAL_ID_GLASS = 80)
 
 /obj/item/reagent_containers/food/drinks/glass2/wine
 	name = "wine glass"
@@ -84,7 +84,7 @@
 	volume = 25
 	possible_transfer_amounts = list(5, 10, 15, 25)
 	rim_pos = list(25, 12, 21)
-	matter = list("glass" = 50)
+	matter = list(MATERIAL_ID_GLASS = 50)
 
 /obj/item/reagent_containers/food/drinks/glass2/pitcher
 	name = "pitcher"
@@ -96,4 +96,4 @@
 	amount_per_transfer_from_this = 30
 	possible_transfer_amounts = list(5,10,15,30,60)
 	rim_pos = list(25, 12, 21)
-	matter = list("glass" = 600)
+	matter = list(MATERIAL_ID_GLASS = 600)

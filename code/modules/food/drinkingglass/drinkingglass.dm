@@ -25,7 +25,7 @@
 	possible_transfer_amounts = list(5,10,15,30)
 	flags = OPENCONTAINER
 
-	matter = list("glass" = 60)
+	matter = list(MATERIAL_ID_GLASS = 60)
 
 /obj/item/reagent_containers/food/drinks/glass2/examine(mob/M as mob)
 	..()

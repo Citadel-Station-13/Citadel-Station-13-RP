@@ -28,8 +28,8 @@
 	active_power_usage = 5000
 
 	// Amount of materials we can store total
-	var/list/materials = list(MATERIAL_ID_STEEL = 0, "glass" = 0)
-	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, "glass" = 0)
+	var/list/materials = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
+	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, MATERIAL_ID_GLASS = 0)
 
 	var/obj/item/circuitboard/copy_board // Inserted board
 

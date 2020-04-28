@@ -42,13 +42,13 @@
 /datum/design/item/stock_part/subspace/subspace_crystal
 	id = "s-crystal"
 	req_tech = list(TECH_MAGNET = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2)
-	materials = list("glass" = 1000, "silver" = 20, "gold" = 20)
+	materials = list(MATERIAL_ID_GLASS = 1000, "silver" = 20, "gold" = 20)
 	build_path = /obj/item/stock_parts/subspace/crystal
 	sort_string = "RAAAF"
 
 /datum/design/item/stock_part/subspace/subspace_transmitter
 	id = "s-transmitter"
 	req_tech = list(TECH_MAGNET = 5, TECH_MATERIAL = 5, TECH_BLUESPACE = 3)
-	materials = list("glass" = 100, "silver" = 10, "uranium" = 15)
+	materials = list(MATERIAL_ID_GLASS = 100, "silver" = 10, "uranium" = 15)
 	build_path = /obj/item/stock_parts/subspace/transmitter
 	sort_string = "RAAAG"

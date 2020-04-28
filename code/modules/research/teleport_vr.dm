@@ -10,7 +10,7 @@
 	name = "Personal translocator"
 	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
-	materials = list(MATERIAL_ID_STEEL = 4000, "glass" = 2000, "uranium" = 4000, "diamond" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 2000, "uranium" = 4000, "diamond" = 2000)
 	build_path = /obj/item/perfect_tele
 	sort_string = "PAAAA"
 

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "syringe-cartridge"
 	var/icon_flight = "syringe-cartridge-flight" //so it doesn't look so weird when shot
-	matter = list(MATERIAL_ID_STEEL = 125, "glass" = 375)
+	matter = list(MATERIAL_ID_STEEL = 125, MATERIAL_ID_GLASS = 375)
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throwforce = 3
 	force = 3

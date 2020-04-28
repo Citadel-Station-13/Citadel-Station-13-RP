@@ -6,7 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEMSIZE_SMALL
 
-	matter = list(MATERIAL_ID_STEEL = 60,"glass" = 30)
+	matter = list(MATERIAL_ID_STEEL = 60,MATERIAL_ID_GLASS = 30)
 
 	var/emagged = 0.0
 	var/recording = 0.0

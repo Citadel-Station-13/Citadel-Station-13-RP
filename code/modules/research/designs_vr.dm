@@ -3,21 +3,21 @@
 	name = "Language implant"
 	id = "implant_language"
 	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
-	materials = list(MATERIAL_ID_STEEL = 7000, "glass" = 7000, "gold" = 2000, "diamond" = 3000)
+	materials = list(MATERIAL_ID_STEEL = 7000, MATERIAL_ID_GLASS = 7000, "gold" = 2000, "diamond" = 3000)
 	build_path = /obj/item/implantcase/vrlanguage
 */
 /datum/design/item/implant/backup
 	name = "Backup implant"
 	id = "implant_backup"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
-	materials = list(MATERIAL_ID_STEEL = 2000, "glass" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 2000)
 	build_path = /obj/item/implantcase/backup
 
 /datum/design/item/weapon/sizegun
 	name = "Size gun"
 	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials = list(MATERIAL_ID_STEEL = 3000, "glass" = 2000, "uranium" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 3000, MATERIAL_ID_GLASS = 2000, "uranium" = 2000)
 	build_path = /obj/item/gun/energy/sizegun
 	sort_string = "TAAAB"
 
@@ -25,7 +25,7 @@
 	name = "Bluespace jumpsuit"
 	id = "bsjumpsuit"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials = list(MATERIAL_ID_STEEL = 4000, "glass" = 4000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 4000)
 	build_path = /obj/item/clothing/under/bluespace
 	sort_string = "TAAAC"
 
@@ -33,7 +33,7 @@
 	name = "SleeveMate 3700"
 	id = "sleevemate"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
-	materials = list(MATERIAL_ID_STEEL = 4000, "glass" = 4000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 4000)
 	build_path = /obj/item/sleevemate
 	sort_string = "TAAAD"
 
@@ -41,14 +41,14 @@
 	name = "Body Snatcher"
 	id = "bodysnatcher"
 	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
-	materials = list(MATERIAL_ID_STEEL = 4000, "glass" = 4000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 4000)
 	build_path = /obj/item/bodysnatcher
 
 /datum/design/item/item/pressureinterlock
 	name = "APP pressure interlock"
 	id = "pressureinterlock"
 	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	materials = list(MATERIAL_ID_STEEL = 1000, "glass" = 250)
+	materials = list(MATERIAL_ID_STEEL = 1000, MATERIAL_ID_GLASS = 250)
 	build_path = /obj/item/pressurelock
 	sort_string = "TAADA"
 
@@ -56,7 +56,7 @@
 	name = "Advanced anti-particle rifle"
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
-	materials = list(MATERIAL_ID_STEEL = 5000, "glass" = 1000, "gold" = 1000, "uranium" = 750)
+	materials = list(MATERIAL_ID_STEEL = 5000, MATERIAL_ID_GLASS = 1000, "gold" = 1000, "uranium" = 750)
 	build_path = /obj/item/gun/energy/particle/advanced
 	sort_string = "TAADB"
 
@@ -64,7 +64,7 @@
 	name = "Anti-particle cannon"
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
-	materials = list(MATERIAL_ID_STEEL = 10000, "glass" = 1500, "gold" = 2000, "uranium" = 1000, "diamond" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 10000, MATERIAL_ID_GLASS = 1500, "gold" = 2000, "uranium" = 1000, "diamond" = 2000)
 	build_path = /obj/item/gun/energy/particle/cannon
 	sort_string = "TAADC"
 
@@ -72,7 +72,7 @@
 	name = "AR glasses"
 	id = "omnihud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
-	materials = list(MATERIAL_ID_STEEL = 1000, "glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 1000, MATERIAL_ID_GLASS = 1000)
 	build_path = /obj/item/clothing/glasses/omnihud
 	sort_string = "GAAFB"
 
@@ -80,7 +80,7 @@
 	name = "Personal translocator"
 	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
-	materials = list(MATERIAL_ID_STEEL = 4000, "glass" = 2000, "uranium" = 4000, "diamond" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 4000, MATERIAL_ID_GLASS = 2000, "uranium" = 4000, "diamond" = 2000)
 	build_path = /obj/item/perfect_tele
 	sort_string = "HABAF"
 
@@ -88,7 +88,7 @@
 	name = "nanite implant framework"
 	id = "nif"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	materials = list(MATERIAL_ID_STEEL = 5000, "glass" = 8000, "uranium" = 6000, "diamond" = 6000)
+	materials = list(MATERIAL_ID_STEEL = 5000, MATERIAL_ID_GLASS = 8000, "uranium" = 6000, "diamond" = 6000)
 	build_path = /obj/item/nif
 	sort_string = "HABBC"
 
@@ -96,7 +96,7 @@
 	name = "bioadaptive NIF"
 	id = "bioadapnif"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5, TECH_BIO = 5)
-	materials = list(MATERIAL_ID_STEEL = 10000, "glass" = 15000, "uranium" = 10000, "diamond" = 10000)
+	materials = list(MATERIAL_ID_STEEL = 10000, MATERIAL_ID_GLASS = 15000, "uranium" = 10000, "diamond" = 10000)
 	build_path = /obj/item/nif/bioadap
 	sort_string = "HABBD" //Changed String from HABBE to HABBD
 //Addiing bioadaptive NIF to Protolathe
@@ -105,7 +105,7 @@
 	name = "adv. NIF repair tool"
 	id = "anrt"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	materials = list(MATERIAL_ID_STEEL = 200, "glass" = 3000, "uranium" = 2000, "diamond" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 200, MATERIAL_ID_GLASS = 3000, "uranium" = 2000, "diamond" = 2000)
 	build_path = /obj/item/nifrepairer
 	sort_string = "HABBE" //Changed String from HABBD to HABBE
 
@@ -157,7 +157,7 @@
 	name = "\'Retiarius\' capture gun" //cit change
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
-	materials = list(MATERIAL_ID_STEEL = 6000, "glass" = 3000)
+	materials = list(MATERIAL_ID_STEEL = 6000, MATERIAL_ID_GLASS = 3000)
 	build_path = /obj/item/gun/energy/netgun
 	sort_string = "TAADF"
 
@@ -248,7 +248,7 @@
 /*
 /datum/design/item/rig
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(MATERIAL_ID_STEEL = 6000, "glass" = 6000, "silver" = 6000, "uranium" = 4000)
+	materials = list(MATERIAL_ID_STEEL = 6000, MATERIAL_ID_GLASS = 6000, "silver" = 6000, "uranium" = 4000)
 
 /datum/design/item/rig/eva
 	name = "eva hardsuit (empty)"
@@ -277,7 +277,7 @@
 
 /datum/design/item/rig_module
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(MATERIAL_ID_STEEL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 6000, MATERIAL_ID_GLASS = 6000, "silver" = 4000, "uranium" = 2000)
 
 /datum/design/item/rig_module/plasma_cutter
 	name = "rig module - plasma cutter"

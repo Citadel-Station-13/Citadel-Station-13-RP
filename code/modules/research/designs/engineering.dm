@@ -9,7 +9,7 @@
 	desc = "A welding tool that generate fuel for itself."
 	id = "expwelder"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3, TECH_MATERIAL = 4)
-	materials = list(MATERIAL_ID_STEEL = 70, "glass" = 120, "phoron" = 100)
+	materials = list(MATERIAL_ID_STEEL = 70, MATERIAL_ID_GLASS = 120, "phoron" = 100)
 	build_path = /obj/item/weldingtool/experimental
 	sort_string = "NAAAA"
 
@@ -69,6 +69,6 @@
 	desc = "A hand-held environmental scanner which reports current gas levels."
 	id = "atmosanalyzer"
 	req_tech = list(TECH_ENGINEERING = 2)
-	materials = list(MATERIAL_ID_STEEL = 200, "glass" = 100)
+	materials = list(MATERIAL_ID_STEEL = 200, MATERIAL_ID_GLASS = 100)
 	build_path = /obj/item/analyzer
 	sort_string = "NBABA"

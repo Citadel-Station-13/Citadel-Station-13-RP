@@ -2,7 +2,7 @@
 	name = "Backup implant"
 	id = "implant_backup"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
-	materials = list(MATERIAL_ID_STEEL = 2000, "glass" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 2000)
 	build_path = /obj/item/implantcase/backup
 	sort_string = "MFAVA"
 
@@ -10,7 +10,7 @@
 	name = "Size control implant"
 	id = "implant_size"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_DATA = 4, TECH_ENGINEERING = 3)
-	materials = list(MATERIAL_ID_STEEL = 2000, "glass" = 2000, "silver" = 3000)
+	materials = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 2000, "silver" = 3000)
 	build_path = /obj/item/implanter/sizecontrol
 	sort_string = "MFAVB"
 
@@ -19,7 +19,7 @@
 	name = "Language implant"
 	id = "implant_language"
 	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
-	materials = list(MATERIAL_ID_STEEL = 7000, "glass" = 7000, "gold" = 2000, "diamond" = 3000)
+	materials = list(MATERIAL_ID_STEEL = 7000, MATERIAL_ID_GLASS = 7000, "gold" = 2000, "diamond" = 3000)
 	build_path = /obj/item/implantcase/vrlanguage
 	sort_string = "MFAVC"
 */

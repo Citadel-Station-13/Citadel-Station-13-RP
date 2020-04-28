@@ -90,7 +90,7 @@
 	icon_state = "mining-scanner" //thank you eris spriters
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
-	matter = list(MATERIAL_ID_STEEL = 2000, "glass" = 1000)
+	matter = list(MATERIAL_ID_STEEL = 2000, MATERIAL_ID_GLASS = 1000)
 	scanrange = 5
 	maxscanrange = 5
 	scan_time = 1 SECONDS

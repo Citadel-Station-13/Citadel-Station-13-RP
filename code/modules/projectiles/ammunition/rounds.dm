@@ -219,7 +219,7 @@
 	desc = "A 12 gauge taser cartridge."
 	icon_state = "stunshell"
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
-	matter = list(MATERIAL_ID_STEEL = 360, "glass" = 720)
+	matter = list(MATERIAL_ID_STEEL = 360, MATERIAL_ID_GLASS = 720)
 
 /obj/item/ammo_casing/a12g/stunshell/emp_act(severity)
 	if(prob(100/severity)) BB = null
@@ -231,7 +231,7 @@
 	desc = "A chemical shell used to signal distress or provide illumination."
 	icon_state = "fshell"
 	projectile_type = /obj/item/projectile/energy/flash/flare
-	matter = list(MATERIAL_ID_STEEL = 90, "glass" = 90)
+	matter = list(MATERIAL_ID_STEEL = 90, MATERIAL_ID_GLASS = 90)
 
 /obj/item/ammo_casing/a12g/emp
 	name = "ion shell"
