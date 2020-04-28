@@ -275,7 +275,7 @@
 	return 1
 
 /datum/material/algae
-	name = MATERIAL_ALGAE
+	id = MATERIAL_ALGAE
 	stack_type = /obj/item/stack/material/algae
 	icon_colour = "#557722"
 	shard_type = SHARD_STONE_PIECE
@@ -294,7 +294,7 @@
 	amount = 10
 
 /datum/material/carbon
-	name = MATERIAL_CARBON
+	id = MATERIAL_CARBON
 	stack_type = /obj/item/stack/material/carbon
 	icon_colour = "#303030"
 	shard_type = SHARD_SPLINTER

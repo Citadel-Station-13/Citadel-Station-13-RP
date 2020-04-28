@@ -67,9 +67,6 @@ GLOBAL_LIST(topic_status_cache)
 	// Set up roundstart seed list.
 	plant_controller = new()
 
-	// This is kinda important. Set up details of what the hell things are made of.
-	populate_material_list()
-
 	// Loads all the pre-made submap templates.
 	load_map_templates()
 
