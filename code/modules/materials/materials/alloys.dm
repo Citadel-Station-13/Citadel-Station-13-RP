@@ -1,5 +1,4 @@
 /datum/material/steel
-	id = /datum/material/steel
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
@@ -9,7 +8,7 @@
 	icon_colour = "#666666"
 
 /datum/material/steel/hull
-	id = /datum/material/steelHULL
+	id = /datum/material/steel/hull
 	stack_type = /obj/item/stack/material/steel/hull
 	integrity = 250
 	explosion_resistance = 10
@@ -21,8 +20,7 @@
 	new /obj/item/stack/material/steel(target)
 
 /datum/material/steel/holographic
-	id = "holo" + /datum/material/steel
-	display_name = /datum/material/steel
+	display_name = "steel"
 	stack_type = null
 	shard_type = SHARD_NONE
 

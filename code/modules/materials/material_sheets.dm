@@ -187,14 +187,14 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
-	name = /datum/material/steel
+	name = "steel"
 	icon_state = "sheet-metal"
 	default_type = /datum/material/steel
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
-	name = /datum/material/steelHULL
-	default_type = /datum/material/steelHULL
+	name = /datum/material/steel/hull
+	default_type = /datum/material/steel/hull
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"

@@ -145,11 +145,9 @@
 #define WALL_OPENING 2
 
 #define DEFAULT_TABLE_MATERIAL "plastic"
-#define /datum/material/steel "steel"
 
 #define MAT_IRON			"iron"
 #define MAT_MARBLE			"marble"
-#define /datum/material/steel			"steel"
 #define MAT_PLASTIC			"plastic"
 #define MAT_GLASS			"glass"
 #define MAT_SILVER			"silver"
@@ -163,7 +161,6 @@
 #define MAT_LOG				"log"
 #define MAT_SIFWOOD			"alien wood"
 #define MAT_SIFLOG			"alien log"
-#define /datum/material/steelHULL		"steel hull"
 #define MAT_PLASTEEL		"plasteel"
 #define MAT_PLASTEELHULL	"plasteel hull"
 #define MAT_DURASTEEL		"durasteel"

@@ -146,7 +146,7 @@
 	name = "shipwright's rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. This version creates a stronger variant of wall, often \
 	used in the construction of hulls for starships. Reload with compressed matter cartridges."
-	material_to_use = /datum/material/steelHULL
+	material_to_use = /datum/material/steel/hull
 
 /obj/item/rcd/shipwright/loaded/Initialize()
 	stored_matter = max_stored_matter
@@ -248,7 +248,7 @@
 	name = "Rapid Assimilation Device"
 	ranged = TRUE
 	toolspeed = 0.7
-	material_to_use = /datum/material/steelHULL
+	material_to_use = /datum/material/steel/hull
 
 /obj/item/rcd/electric/mounted/borg/lesser
 	can_remove_rwalls = FALSE
