@@ -37,7 +37,7 @@ Barricades
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
-		if(D.get_material_name() != material.name)
+		if(D.get_material_name() != material.id)
 			return //hitting things with the wrong type of stack usually doesn't produce messages, and probably doesn't need to.
 		if(health < maxhealth)
 			if(D.get_amount() < 1)

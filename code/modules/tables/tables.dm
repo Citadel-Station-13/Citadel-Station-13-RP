@@ -375,7 +375,7 @@ var/list/table_icon_cache = list()
 		var/tabledirs = 0
 		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
 			var/obj/structure/table/T = locate(/obj/structure/table ,get_step(src,direction))
-			if (T && T.flipped == 1 && T.dir == src.dir && material && T.material && T.material.name == material.name)
+			if (T && T.flipped == 1 && T.dir == src.dir && material && T.material && T.material.id == material.id)
 				type++
 				tabledirs |= direction
 
@@ -451,7 +451,7 @@ var/list/table_icon_cache = list()
 	for(var/obj/structure/table/T in orange(src, 1))
 		var/T_dir = get_dir(src, T)
 		if(T_dir in blocked_dirs) continue
-		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
+		if(material && T.material && material.id == T.material.id && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
 			spawn(0)

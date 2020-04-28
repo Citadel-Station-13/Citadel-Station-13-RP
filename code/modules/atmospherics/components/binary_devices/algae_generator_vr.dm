@@ -258,14 +258,14 @@
 /obj/machinery/atmospherics/binary/algae_farm/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
 	if(!istype(S))
 		return 0
-	if(!(S.material.name in stored_material))
+	if(!(S.material.id in stored_material))
 		to_chat(user, "<span class='warning'>\The [src] doesn't accept [material_display_name(S.material)]!</span>")
 		return 1
-	var/max_res_amount = storage_capacity[S.material.name]
-	if(stored_material[S.material.name] + S.perunit <= max_res_amount)
+	var/max_res_amount = storage_capacity[S.material.id]
+	if(stored_material[S.material.id] + S.perunit <= max_res_amount)
 		var/count = 0
-		while(stored_material[S.material.name] + S.perunit <= max_res_amount && S.amount >= 1)
-			stored_material[S.material.name] += S.perunit
+		while(stored_material[S.material.id] + S.perunit <= max_res_amount && S.amount >= 1)
+			stored_material[S.material.id] += S.perunit
 			S.use(1)
 			count++
 		user.visible_message("\The [user] inserts [S.name] into \the [src].", "<span class='notice'>You insert [count] [S.name] into \the [src].</span>")

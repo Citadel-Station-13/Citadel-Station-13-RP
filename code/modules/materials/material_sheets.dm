@@ -67,7 +67,7 @@
 
 /obj/item/stack/material/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	var/obj/item/stack/material/M = S
-	if(!istype(M) || material.name != M.material.name)
+	if(!istype(M) || material.id != M.material.id)
 		return 0
 	var/transfer = ..(S,tamount,1)
 	if(src) update_strings()
@@ -351,7 +351,7 @@
 			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)
 			var/obj/item/stack/material/wood/existing_wood = null
 			for(var/obj/item/stack/material/wood/M in user.loc)
-				if(M.material.name == src.material.name)
+				if(M.material.id == src.material.id)
 					existing_wood = M
 					break
 

@@ -18,7 +18,7 @@
 			if(do_after(user, 70))
 				M.use(5)
 				var/obj/item/SK
-				SK = new /obj/item/material/sharpeningkit(get_turf(user), M.material.name)
+				SK = new /obj/item/material/sharpeningkit(get_turf(user), M.material.id)
 				to_chat(user, "You sharpen and refine the [src] into \a [SK].")
 				qdel(src)
 				if(SK)
@@ -57,7 +57,7 @@
 		if(S.material == material)
 			S.use(1)
 			uses += 1
-			to_chat(user, "You add a [S.material.name] [S.material.sheet_singular_name] to [src].")
+			to_chat(user, "You add a [S.material.id] [S.material.sheet_singular_name] to [src].")
 			return
 
 	if(istype(W, /obj/item/material))
@@ -66,7 +66,7 @@
 			return
 		var/obj/item/material/M = W
 		if(uses >= M.w_class*2)
-			if(M.sharpen(src.material.name, sharpen_time, src, user))
+			if(M.sharpen(src.material.id, sharpen_time, src, user))
 				uses -= M.w_class*2
 				return
 		else

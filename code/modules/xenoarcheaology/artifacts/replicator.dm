@@ -92,7 +92,7 @@
 			var/spawn_type = pop(spawning_types)
 			var/obj/spawned_obj = new spawn_type(loc)
 			if(source_material)
-				if(length(source_material.name) < MAX_MESSAGE_LEN)
+				if(length(source_material.id) < MAX_MESSAGE_LEN)
 					spawned_obj.name = "[source_material] " +  spawned_obj.name
 				if(length(source_material.desc) < MAX_MESSAGE_LEN * 2)
 					if(spawned_obj.desc)

@@ -186,7 +186,7 @@
 		G.reinforce_girder()
 	if(girder_material)
 		if(istype(girder_material, /datum/material))
-			girder_material = girder_material.name
+			girder_material = girder_material.id
 		G.set_material(girder_material)
 
 

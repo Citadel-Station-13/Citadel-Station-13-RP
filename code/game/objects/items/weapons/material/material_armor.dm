@@ -242,7 +242,7 @@ Protectiveness | Armor %
 			return
 		user.drop_from_inventory(src)
 		user.drop_from_inventory(second_plate)
-		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, src.material.name)
+		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, src.material.id)
 		user.put_in_hands(new_armor)
 		qdel(second_plate)
 		qdel(src)
@@ -267,7 +267,7 @@ Protectiveness | Armor %
 		var/obj/item/stack/material/S = O
 		if(S.use(2))
 			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
-			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.name)
+			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.id)
 			user.put_in_hands(helmet)
 			user.drop_from_inventory(src)
 			qdel(src)

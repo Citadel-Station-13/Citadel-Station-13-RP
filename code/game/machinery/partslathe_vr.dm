@@ -122,20 +122,20 @@
 /obj/machinery/partslathe/proc/try_load_materials(var/mob/user, var/obj/item/stack/material/S)
 	if(!istype(S))
 		return 0
-	if(!(S.material.name in materials))
+	if(!(S.material.id in materials))
 		to_chat(user, "<span class='warning'>The [src] doesn't accept [S.material]!</span>")
 		return 1
 	if(S.amount < 1)
 		return 1 // Does this even happen? Sanity check I guess.
-	var/max_res_amount = storage_capacity[S.material.name]
-	if(materials[S.material.name] + S.perunit <= max_res_amount)
+	var/max_res_amount = storage_capacity[S.material.id]
+	if(materials[S.material.id] + S.perunit <= max_res_amount)
 		var/count = 0
-		while(materials[S.material.name] + S.perunit <= max_res_amount && S.amount >= 1)
-			materials[S.material.name] += S.perunit
+		while(materials[S.material.id] + S.perunit <= max_res_amount && S.amount >= 1)
+			materials[S.material.id] += S.perunit
 			S.use(1)
 			count++
 		user.visible_message("[user] inserts [S.name] into \the [src].", "<span class='notice'>You insert [count] [S.name] into \the [src].</span>")
-		flick("partslathe-load-[S.material.name]", src)
+		flick("partslathe-load-[S.material.id]", src)
 		updateUsrDialog()
 	else
 		to_chat(user, "<span class='warning'>\The [src] cannot hold more [S.name].</span>")

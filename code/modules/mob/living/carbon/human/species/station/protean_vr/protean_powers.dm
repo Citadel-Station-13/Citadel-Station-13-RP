@@ -199,7 +199,7 @@
 		return
 
 	var/obj/item/stack/material/matstack = held
-	var/substance = matstack.material.name
+	var/substance = matstack.material.id
 	var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
 	var allowed = FALSE
 	for(var/material in edible_materials)

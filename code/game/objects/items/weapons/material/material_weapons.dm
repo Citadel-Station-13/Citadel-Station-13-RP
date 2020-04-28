@@ -63,7 +63,7 @@
 		armor_penetration = 100 //regardless of armor
 	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
 	//spawn(1)
-	//	world << "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]"
+	//	world << "[src] has force [force] and throwforce [throwforce] when made from default material [material.id]"
 
 /obj/item/material/proc/set_material(var/new_material)
 	material = SSmaterials.material_by_id(new_material)

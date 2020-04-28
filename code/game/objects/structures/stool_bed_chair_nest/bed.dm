@@ -44,7 +44,7 @@
 	icon_state = ""
 	overlays.Cut()
 	// Base icon.
-	var/cache_key = "[base_icon]-[material.name]"
+	var/cache_key = "[base_icon]-[material.id]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon) //VOREStation Edit
 		//var/image/I = image('icons/obj/furniture.dmi', base_icon) //From Polaris Sync. Not sure if this is a better way of doing it or not. Uncomment if so.
@@ -54,7 +54,7 @@
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
-		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
+		var/padding_cache_key = "[base_icon]-padding-[padding_material.id]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding")
 			I.color = padding_material.icon_colour
@@ -108,7 +108,7 @@
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
-				padding_type = "[M.material.name]"
+				padding_type = "[M.material.id]"
 		if(!padding_type)
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return

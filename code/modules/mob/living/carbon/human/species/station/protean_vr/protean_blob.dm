@@ -204,14 +204,14 @@
 /mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
-		var/substance = S.material.name
+		var/substance = S.material.id
 		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
 		var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE
 		if(!allowed)
 			return
-		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
+		if(refactory.add_stored_material(S.material.id,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
 	else
 		return ..()
@@ -219,14 +219,14 @@
 /mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
 		var/obj/item/stack/material/S = O
-		var/substance = S.material.name
+		var/substance = S.material.id
 		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
 		var allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance) allowed = TRUE
 		if(!allowed)
 			return
-		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
+		if(refactory.add_stored_material(S.material.id,1*S.perunit) && S.use(1))
 			visible_message("<b>[name]</b> gloms over some of \the [S], absorbing it.")
 	else
 		return ..()

@@ -37,7 +37,7 @@ var/global/list/stool_cache = list() //haha stool
 	icon_state = ""
 	overlays.Cut()
 	// Base icon.
-	var/cache_key = "stool-[material.name]"
+	var/cache_key = "stool-[material.id]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		I.color = material.icon_colour
@@ -45,7 +45,7 @@ var/global/list/stool_cache = list() //haha stool
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
-		var/padding_cache_key = "stool-padding-[padding_material.name]"
+		var/padding_cache_key = "stool-padding-[padding_material.id]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
 			I.color = padding_material.icon_colour
@@ -127,7 +127,7 @@ var/global/list/stool_cache = list() //haha stool
 		else if(istype(W,/obj/item/stack/material))
 			var/obj/item/stack/material/M = W
 			if(M.material && (M.material.flags & MATERIAL_PADDING))
-				padding_type = "[M.material.name]"
+				padding_type = "[M.material.id]"
 		if(!padding_type)
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return

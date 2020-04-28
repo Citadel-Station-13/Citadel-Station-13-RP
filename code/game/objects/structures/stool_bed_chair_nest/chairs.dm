@@ -23,7 +23,7 @@
 			to_chat(user, "<span class='notice'>\The [SK] is not ready to be attached!</span>")
 			return
 		user.drop_item()
-		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
+		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.id)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		E.setDir(dir)
 		E.part = SK
@@ -44,7 +44,7 @@
 /obj/structure/bed/chair/update_icon()
 	..()
 	if(has_buckled_mobs() && padding_material)
-		var/cache_key = "[base_icon]-armrest-[padding_material.name]"
+		var/cache_key = "[base_icon]-armrest-[padding_material.id]"
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon]_armrest")
 			I.layer = MOB_LAYER + 0.1

@@ -141,7 +141,7 @@
 		loading = TRUE
 		var/obj/item/stack/material/M = thing
 
-		if(!M.material || M.material.name != ammo_material)
+		if(!M.material || M.material.id != ammo_material)
 			return
 
 		if(mat_storage + 2000 > max_mat_storage)

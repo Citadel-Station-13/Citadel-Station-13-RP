@@ -368,16 +368,16 @@
 		return
 
 	var/obj/item/stack/material/S = W
-	if(!(S.material.name in stored_material))
+	if(!(S.material.id in stored_material))
 		to_chat(user, "<span class='warning'>\the [src] doesn't accept [S.material]!</span>")
 		return
 
 	var/amnt = S.perunit
-	if(stored_material[S.material.name] + amnt <= max_res_amount)
+	if(stored_material[S.material.id] + amnt <= max_res_amount)
 		if(S && S.amount >= 1)
 			var/count = 0
-			while(stored_material[S.material.name] + amnt <= max_res_amount && S.amount >= 1)
-				stored_material[S.material.name] += amnt
+			while(stored_material[S.material.id] + amnt <= max_res_amount && S.amount >= 1)
+				stored_material[S.material.id] += amnt
 				S.use(1)
 				count++
 			to_chat(user, "You insert [count] [S.name] into \the [src].")

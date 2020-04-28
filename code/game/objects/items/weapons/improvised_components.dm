@@ -10,7 +10,7 @@
 	if(W.is_screwdriver())
 		to_chat(user, "You finish the concealed blade weapon.")
 		playsound(src, W.usesound, 50, 1)
-		new /obj/item/material/butterfly(user.loc, material.name)
+		new /obj/item/material/butterfly(user.loc, material.id)
 		qdel(src)
 		return
 
@@ -34,7 +34,7 @@
 	if(istype(W,/obj/item/material/butterflyblade))
 		var/obj/item/material/butterflyblade/B = W
 		to_chat(user, "You attach the two concealed blade parts.")
-		new /obj/item/material/butterflyconstruction(user.loc, B.material.name)
+		new /obj/item/material/butterflyconstruction(user.loc, B.material.id)
 		qdel(W)
 		qdel(src)
 		return
@@ -57,7 +57,7 @@
 	var/obj/item/finished
 	if(istype(I, /obj/item/material/shard) || istype(I, /obj/item/material/butterflyblade))
 		var/obj/item/material/tmp_shard = I
-		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.material.name)
+		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.material.id)
 		to_chat(user, "<span class='notice'>You fasten \the [I] to the top of the rod with the cable.</span>")
 	else if(I.is_wirecutter())
 		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
