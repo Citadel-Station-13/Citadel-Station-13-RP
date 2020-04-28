@@ -3061,24 +3061,39 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/chapel_morgue)
 "eO" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "propulsion_l"
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/large_escape_pod1/station{
-	base_turf = /turf/simulated/mineral/floor/vacuum
-	})
-"eP" = (
-/obj/structure/shuttle/engine/propulsion{
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/large_escape_pod1/station{
-	base_turf = /turf/simulated/mineral/floor/vacuum
-	})
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/hallway/station/starboard)
+"eP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "eQ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -3099,7 +3114,7 @@
 "eR" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
-	icon_state = "propulsion_r"
+	icon_state = "propulsion_l"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -3124,6 +3139,25 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"eT" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
+"eU" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/large_escape_pod1/station{
+	base_turf = /turf/simulated/mineral/floor/vacuum
+	})
 "fc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -9895,22 +9929,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/port)
-"rV" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
@@ -27599,7 +27617,7 @@ oi
 pK
 qs
 ri
-rV
+eP
 KI
 Hq
 KI
@@ -30035,11 +30053,11 @@ AN
 AN
 Bw
 yY
-eO
-eP
-eP
-eP
 eR
+eT
+eT
+eT
+eU
 yY
 ac
 ac
@@ -30149,7 +30167,7 @@ lL
 lL
 mV
 nN
-oq
+eO
 oW
 po
 pW

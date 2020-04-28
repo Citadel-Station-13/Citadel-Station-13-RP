@@ -994,6 +994,31 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled,
 /area/tether/station/excursion_dock)
+"abV" = (
+/obj/machinery/camera/network/northern_star{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled,
+/area/hallway/station/atrium)
 "abW" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
@@ -1031,6 +1056,30 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/construction/observation)
+"acc" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/hallway/station/atrium)
 "acd" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
@@ -2706,30 +2755,6 @@
 /area/crew_quarters/lounge/kitchen)
 "afC" = (
 /turf/simulated/wall/r_wall,
-/area/hallway/station/atrium)
-"afD" = (
-/obj/machinery/camera/network/northern_star{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "afE" = (
 /obj/machinery/vending/cola,
@@ -16392,29 +16417,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
-"bdu" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/atrium)
 "bdx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32821,7 +32823,7 @@ bXK
 aYc
 agV
 aCe
-bdu
+acc
 aws
 bgN
 biC
@@ -35372,7 +35374,7 @@ aeU
 aeU
 afz
 afA
-afD
+abV
 aWn
 agh
 acp
