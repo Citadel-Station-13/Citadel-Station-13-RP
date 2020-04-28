@@ -34,7 +34,7 @@
 
 /obj/machinery/door/blast/Initialize()
 	. = ..()
-	implicit_material = get_material_by_name("plasteel")
+	implicit_material = SSmaterials.material_by_id("plasteel")
 
 /obj/machinery/door/blast/get_material()
 	return implicit_material

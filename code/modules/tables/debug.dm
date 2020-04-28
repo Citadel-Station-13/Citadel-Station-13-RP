@@ -4,7 +4,7 @@
 
 /obj/structure/table/debug
 	New()
-		material = get_material_by_name("debugium")
+		material = SSmaterials.material_by_id("debugium")
 		..()
 
 /datum/material/debug

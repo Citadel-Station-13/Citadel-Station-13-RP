@@ -18,7 +18,7 @@
 	return
 
 /obj/machinery/r_n_d/proc/getMaterialType(var/name)
-	var/datum/material/M = get_material_by_name(name)
+	var/datum/material/M = SSmaterials.material_by_id(name)
 	if(M && M.stack_type)
 		return M.stack_type
 	return null

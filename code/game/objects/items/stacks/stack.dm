@@ -170,7 +170,7 @@
 		if ((pass_color || recipe.pass_color))
 			if(!color)
 				if(recipe.use_material)
-					var/datum/material/MAT = get_material_by_name(recipe.use_material)
+					var/datum/material/MAT = SSmaterials.material_by_id(recipe.use_material)
 					if(MAT.icon_colour)
 						O.color = MAT.icon_colour
 				else

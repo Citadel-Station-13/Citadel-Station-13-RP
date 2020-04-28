@@ -24,7 +24,7 @@
 	..()
 	if(!material_name)
 		material_name = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name(material_name)
+	material = SSmaterials.material_by_id(material_name)
 	if(!material)
 		qdel(src)
 		return
@@ -134,9 +134,9 @@
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
-		if(material == get_material_by_name("resin"))
+		if(material == SSmaterials.material_by_id("resin"))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD)))
+		else if(material == (SSmaterials.material_by_id(MAT_WOOD) || SSmaterials.material_by_id(MAT_SIFWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 		else
 			playsound(src, 'sound/weapons/smash.ogg', 50, 1)
@@ -159,9 +159,9 @@
 
 /obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == get_material_by_name("resin"))
+	if(material == SSmaterials.material_by_id("resin"))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD)))
+	else if(material == (SSmaterials.material_by_id(MAT_WOOD) || SSmaterials.material_by_id(MAT_SIFWOOD)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 	else
 		playsound(src, 'sound/weapons/smash.ogg', 50, 1)

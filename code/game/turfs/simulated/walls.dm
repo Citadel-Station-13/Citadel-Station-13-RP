@@ -32,12 +32,12 @@
 	icon_state = "blank"
 	if(!materialtype)
 		materialtype = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name(materialtype)
+	material = SSmaterials.material_by_id(materialtype)
 	if(!girdertype)
 		girdertype = DEFAULT_WALL_MATERIAL
-	girder_material = get_material_by_name(girdertype)
+	girder_material = SSmaterials.material_by_id(girdertype)
 	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
+		reinf_material = SSmaterials.material_by_id(rmaterialtype)
 	update_material()
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
@@ -206,7 +206,7 @@
 			O.loc = src
 
 	clear_plants()
-	material = get_material_by_name("placeholder")
+	material = SSmaterials.material_by_id("placeholder")
 	reinf_material = null
 	girder_material = null
 	update_connections(1)

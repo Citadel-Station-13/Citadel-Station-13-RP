@@ -49,7 +49,7 @@ Protectiveness | Armor %
 
 // Debating if this should be made an /obj/item/ proc.
 /obj/item/clothing/proc/set_material(var/new_material)
-	material = get_material_by_name(new_material)
+	material = SSmaterials.material_by_id(new_material)
 	if(!material)
 		qdel(src)
 	else

@@ -23,7 +23,7 @@
 	..(newloc)
 	if(!material_name)
 		material_name = "wood"
-	material = get_material_by_name("[material_name]")
+	material = SSmaterials.material_by_id("[material_name]")
 	if(!material)
 		qdel(src)
 		return

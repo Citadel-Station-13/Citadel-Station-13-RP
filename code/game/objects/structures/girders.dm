@@ -43,7 +43,7 @@
 
 
 /obj/structure/girder/proc/set_material(var/new_material)
-	girder_material = get_material_by_name(new_material)
+	girder_material = SSmaterials.material_by_id(new_material)
 	if(!girder_material)
 		qdel(src)
 	name = "[girder_material.display_name] [initial(name)]"

@@ -20,7 +20,7 @@
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
 		default_type = DEFAULT_WALL_MATERIAL
-	material = get_material_by_name("[default_type]")
+	material = SSmaterials.material_by_id("[default_type]")
 	if(!material)
 		return INITIALIZE_HINT_QDEL
 

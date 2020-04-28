@@ -37,7 +37,7 @@
 
 /obj/machinery/door/blast/puzzle/Initialize()
 	. = ..()
-	implicit_material = get_material_by_name("dungeonium")
+	implicit_material = SSmaterials.material_by_id("dungeonium")
 	if(locks.len)
 		return
 	var/check_range = world.view * checkrange_mult

@@ -203,7 +203,7 @@
 	var/obj/item/stack/material/cyborg/glass/G = new (src)
 	G.name = "glass recycler"
 	G.desc = "A device that refines recycled glass into sheets."
-	G.material = get_material_by_name("placeholder") //Hacky shit but we want sheets, not windows.
+	G.material = SSmaterials.material_by_id("placeholder") //Hacky shit but we want sheets, not windows.
 	G.synths = list(glass)
 	G.recipes = list()
 	G.recipes += new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)
