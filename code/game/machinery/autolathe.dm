@@ -10,8 +10,8 @@
 	active_power_usage = 2000
 	circuit = /obj/item/circuitboard/autolathe
 	var/datum/category_collection/autolathe/machine_recipes
-	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
+	var/list/stored_material =  list(MATERIAL_ID_STEEL = 0, "glass" = 0)
+	var/list/storage_capacity = list(MATERIAL_ID_STEEL = 0, "glass" = 0)
 	var/datum/category_group/autolathe/current_category
 
 	var/hacked = 0
@@ -155,7 +155,7 @@
 			to_chat(user, "\The [speedloader] is too hazardous to put back into the autolathe while there's ammunition inside of it!")
 			return
 		else
-			speedloader.matter = list(DEFAULT_WALL_MATERIAL = 75) // It's just a hunk of scrap metal now.
+			speedloader.matter = list(MATERIAL_ID_STEEL = 75) // It's just a hunk of scrap metal now.
 	if(istype(O,/obj/item/ammo_magazine)) // This was just for immersion consistency with above.
 		var/obj/item/ammo_magazine/mag = O
 		if(mag.stored_ammo)
@@ -307,7 +307,7 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
-	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 25000
+	storage_capacity[MATERIAL_ID_STEEL] = mb_rating  * 25000
 	storage_capacity["glass"] = mb_rating  * 12500
 	build_time = 50 / man_rating
 	mat_efficiency = 1.1 - man_rating * 0.1// Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.6. Maximum rating of parts is 5

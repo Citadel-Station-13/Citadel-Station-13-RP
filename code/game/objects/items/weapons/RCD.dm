@@ -12,7 +12,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 50000)
+	matter = list(MATERIAL_ID_STEEL = 50000)
 	preserve_item = TRUE // RCDs are pretty important.
 	var/datum/effect/effect/system/spark_spread/spark_system
 	var/stored_matter = 0
@@ -25,7 +25,7 @@
 	var/can_remove_rwalls = FALSE
 	var/airlock_type = /obj/machinery/door/airlock
 	var/window_type = /obj/structure/window/reinforced/full
-	var/material_to_use = DEFAULT_WALL_MATERIAL // So badmins can make RCDs that print diamond walls.
+	var/material_to_use = MATERIAL_ID_STEEL // So badmins can make RCDs that print diamond walls.
 	var/make_rwalls = FALSE // If true, when building walls, they will be reinforced.
 
 /obj/item/rcd/Initialize()
@@ -301,12 +301,12 @@
 	item_state = "rcdammo"
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 30000,"glass" = 15000)
+	matter = list(MATERIAL_ID_STEEL = 30000,"glass" = 15000)
 	var/remaining = RCD_MAX_CAPACITY / 3
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
 	desc = "Do not ingest."
-	matter = list(DEFAULT_WALL_MATERIAL = 45000,"glass" = 22500)
+	matter = list(MATERIAL_ID_STEEL = 45000,"glass" = 22500)
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY

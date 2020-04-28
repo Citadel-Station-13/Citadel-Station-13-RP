@@ -37,7 +37,7 @@
 	name = T_BOARD("entertainment camera monitor")
 	build_path = /obj/machinery/computer/security/telescreen/entertainment
 	board_type = new /datum/frame/frame_types/display
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	matter = list(MATERIAL_ID_STEEL = 50, "glass" = 50)
 
 /obj/item/circuitboard/security/telescreen/entertainment/New()
 	..()

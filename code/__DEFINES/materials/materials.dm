@@ -1,15 +1,3 @@
-#define DEFAULT_TABLE_MATERIAL_ID		MATERIAL_ID_PLASTIC
-#define DEFAULT_WALL_MATERIAL_ID		MATERIAL_ID_STEEL
-
-// Glasses
-#define MATERIAL_ID_GLASS			"glass"
-
-// Common Base Materials
-#define MATERIAL_ID_PLASTIC				"plastic"
-#define MATERIAL_ID_PHORON				"phoron"
-#define MATERIAL_ID_DIAMOND				"diamond"
-#define MATERIAL_ID_METALLIC_HYDROGEN	"mhydrogen"
-
 // Metals
 #define MATERIAL_ID_IRON				"iron"
 #define MATERIAL_ID_SILVER				"silver"
@@ -53,6 +41,8 @@
 	#define MATERIAL_ID_SIF_LOG				"siflog"
 
 // Misc
+#define MATERIAL_ID_PLASTIC				"plastic"
+#define MATERIAL_ID_DIAMOND				"diamond"
 #define MATERIAL_ID_SNOW				"snow"
 #define MATERIAL_ID_SNOW_BRICK			"snowbrick"
 #define MATERIAL_ID_MARBLE				"marble"

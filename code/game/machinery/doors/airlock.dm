@@ -108,7 +108,7 @@
 /obj/machinery/door/airlock/get_material()
 	if(mineral)
 		return get_material_by_name(mineral)
-	return get_material_by_name(DEFAULT_WALL_MATERIAL)
+	return get_material_by_name(MATERIAL_ID_STEEL)
 
 /obj/machinery/door/airlock/command
 	name = "Command Airlock"
@@ -809,7 +809,7 @@ About the new airlock wires panel:
 		if (istype(mover, /obj/item))
 			var/obj/item/i = mover
 			if(world.time > last_spark + 2 SECONDS)
-				if (i.matter && (DEFAULT_WALL_MATERIAL in i.matter) && i.matter[DEFAULT_WALL_MATERIAL] > 0)
+				if (i.matter && (MATERIAL_ID_STEEL in i.matter) && i.matter[MATERIAL_ID_STEEL] > 0)
 					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()

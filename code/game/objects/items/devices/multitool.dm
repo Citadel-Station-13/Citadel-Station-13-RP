@@ -16,7 +16,7 @@
 	throw_speed = 3
 	desc = "You can use this on airlocks or APCs to try to hack them without cutting wires."
 
-	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
+	matter = list(MATERIAL_ID_STEEL = 50,"glass" = 20)
 
 	var/mode_index = 1
 	var/toolmode = MULTITOOL_MODE_STANDARD

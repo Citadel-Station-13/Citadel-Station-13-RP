@@ -127,7 +127,7 @@
 
 	var/spods_list_ui[0]
 	for(var/obj/machinery/transhuman/synthprinter/spod in spods)
-		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, "steel" = spod.stored_material[DEFAULT_WALL_MATERIAL], "glass" = spod.stored_material["glass"])
+		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, "steel" = spod.stored_material[MATERIAL_ID_STEEL], "glass" = spod.stored_material["glass"])
 
 	var/sleevers_list_ui[0]
 	for(var/obj/machinery/transhuman/resleever/resleever in sleevers)
@@ -269,8 +269,8 @@
 						temp = "Error: SynthFab is currently busy."
 
 					//Not enough steel or glass
-					else if(spod.stored_material[DEFAULT_WALL_MATERIAL] < spod.body_cost)
-						temp = "Error: Not enough [DEFAULT_WALL_MATERIAL] in SynthFab."
+					else if(spod.stored_material[MATERIAL_ID_STEEL] < spod.body_cost)
+						temp = "Error: Not enough [MATERIAL_ID_STEEL] in SynthFab."
 					else if(spod.stored_material["glass"] < spod.body_cost)
 						temp = "Error: Not enough glass in SynthFab."
 

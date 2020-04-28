@@ -22,7 +22,7 @@
 
 /datum/material/steel/holographic
 	id = MATERIAL_ID_STEEL_HOLO
-	display_name = DEFAULT_WALL_MATERIAL
+	display_name = MATERIAL_ID_STEEL
 	stack_type = null
 	shard_type = SHARD_NONE
 
@@ -40,7 +40,7 @@
 	protectiveness = 20 // 50%
 	conductivity = 13 // For the purposes of balance.
 	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
+	composite_material = list(MATERIAL_ID_STEEL = SHEET_MATERIAL_AMOUNT, "platinum" = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull

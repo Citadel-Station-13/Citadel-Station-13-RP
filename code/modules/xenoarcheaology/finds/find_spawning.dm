@@ -22,7 +22,7 @@
 
 	if(prob(40))
 		material_descriptor = pick("rusted ","dusty ","archaic ","fragile ")
-	source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
+	source_material = pick("cordite","quadrinium",MATERIAL_ID_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 
 	var/talkative = 0
 	if(prob(5))
@@ -475,7 +475,7 @@
 			var/new_boat_mat = pickweight(
 				MAT_WOOD = 100,
 				MAT_SIFWOOD = 200,
-				DEFAULT_WALL_MATERIAL = 60,
+				MATERIAL_ID_STEEL = 60,
 				MAT_URANIUM = 14,
 				MAT_MARBLE = 16,
 				MAT_GOLD = 20,
@@ -523,7 +523,7 @@
 
 	if(istype(new_item, /obj/item/material))
 		var/new_item_mat = pickweight(
-			DEFAULT_WALL_MATERIAL = 80,
+			MATERIAL_ID_STEEL = 80,
 			MAT_WOOD = 20,
 			MAT_SIFWOOD = 40,
 			MAT_URANIUM = 14,
@@ -552,7 +552,7 @@
 
 	var/decorations = ""
 	if(apply_material_decorations)
-		source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
+		source_material = pick("cordite","quadrinium",MATERIAL_ID_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 		if(istype(new_item, /obj/item/material))
 			var/obj/item/material/MW = new_item
 			source_material = MW.material.display_name

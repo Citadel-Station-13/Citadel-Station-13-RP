@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MATERIAL_ID_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/midlaser
 //	one_handed_penalty = 30
 
@@ -225,7 +225,7 @@
 	item_state = "laser"
 	desc = "Standard issue weapon of the Imperial Guard"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MATERIAL_ID_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1

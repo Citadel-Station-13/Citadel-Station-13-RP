@@ -8,7 +8,7 @@
 	item_state = "t-ray"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 150)
+	matter = list(MATERIAL_ID_STEEL = 150)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
 	var/scan_range = 1
@@ -136,14 +136,14 @@
 /obj/item/t_scanner/upgraded
 	name = "Upgraded T-ray Scanner"
 	desc = "An upgraded version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(DEFAULT_WALL_MATERIAL = 500, PHORON = 150)
+	matter = list(MATERIAL_ID_STEEL = 500, PHORON = 150)
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 5)
 	scan_range = 3
 
 /obj/item/t_scanner/advanced
 	name = "Advanced T-ray Scanner"
 	desc = "An advanced version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(DEFAULT_WALL_MATERIAL = 1500, PHORON = 200, SILVER = 250)
+	matter = list(MATERIAL_ID_STEEL = 1500, PHORON = 200, SILVER = 250)
 	origin_tech = list(TECH_MAGNET = 7, TECH_ENGINEERING = 7, TECH_MATERIAL = 6)
 	scan_range = 7
 

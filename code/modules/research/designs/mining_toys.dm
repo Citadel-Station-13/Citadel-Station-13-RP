@@ -7,21 +7,21 @@
 /datum/design/item/weapon/mining/drill
 	id = "drill"
 	req_tech = list(TECH_MATERIAL = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 1000) //expensive, but no need for miners.
+	materials = list(MATERIAL_ID_STEEL = 6000, "glass" = 1000) //expensive, but no need for miners.
 	build_path = /obj/item/pickaxe/drill
 	sort_string = "FAAAA"
 
 /datum/design/item/weapon/mining/jackhammer
 	id = "jackhammer"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 500, "silver" = 500)
+	materials = list(MATERIAL_ID_STEEL = 2000, "glass" = 500, "silver" = 500)
 	build_path = /obj/item/pickaxe/jackhammer
 	sort_string = "FAAAB"
 
 /datum/design/item/weapon/mining/plasmacutter
 	id = "plasmacutter"
 	req_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 3, TECH_ENGINEERING = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 500, "gold" = 500, "phoron" = 500)
+	materials = list(MATERIAL_ID_STEEL = 1500, "glass" = 500, "gold" = 500, "phoron" = 500)
 	build_path = /obj/item/pickaxe/plasmacutter
 	sort_string = "FAAAC"
 
@@ -35,20 +35,20 @@
 /datum/design/item/weapon/mining/drill_diamond
 	id = "drill_diamond"
 	req_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 1000, "diamond" = 2000)
+	materials = list(MATERIAL_ID_STEEL = 3000, "glass" = 1000, "diamond" = 2000)
 	build_path = /obj/item/pickaxe/diamonddrill
 
 /datum/design/item/device/mining_scanner
 	id = "mining_scanner"
 	req_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 150)
+	materials = list(MATERIAL_ID_STEEL = 150)
 	build_path = /obj/item/mining_scanner
 	sort_string = "KAAAF"
 
 /datum/design/item/device/mining_scanner_adv
 	id = "mining_scanner_adv"
 	req_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 2000, "glass" = 1000)
 	build_path = /obj/item/mining_scanner/advanced
 	sort_string = "KAAAG"
 	sort_string = "FAAAE"
@@ -59,6 +59,6 @@
 	desc = "Used to check spatial depth and density of rock outcroppings."
 	id = "depth_scanner"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_BLUESPACE = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 1000)
+	materials = list(MATERIAL_ID_STEEL = 1000,"glass" = 1000)
 	build_path = /obj/item/depth_scanner
 	sort_string = "FBAAA"
