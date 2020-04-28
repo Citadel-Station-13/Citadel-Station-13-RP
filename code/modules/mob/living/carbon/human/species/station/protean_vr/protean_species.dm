@@ -229,7 +229,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 /datum/modifier/protean
 	stacks = MODIFIER_STACK_FORBID
 	var/material_use = METAL_PER_TICK
-	var/material_name = DEFAULT_WALL_MATERIAL
+	var/material_id = MATERIAL_ID_STEEL
 
 /datum/modifier/protean/on_applied()
 	. = ..()
@@ -250,7 +250,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	var/obj/item/organ/internal/nano/refactory/refactory = origin.resolve()
 	if(!istype(refactory) || refactory.status & ORGAN_DEAD || refactory.processingbuffs == FALSE)
 		expire()
-		
+
 	// stops you from consuming materials if the toggle is off
 	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
 		expire()
