@@ -27,18 +27,19 @@
 	if(!is_mature())
 		to_chat(victim, "<span class='danger'>You push through the vines and feel some minor numbness in your body!</span>")
 		victim.adjustToxLoss(1)
-		victim.adjustBruteLoss(2,pick("r_foot","l_foot","r_leg","l_leg"))
+		victim.adjustBruteLoss(1,pick("r_foot","l_foot","r_leg","l_leg"))
 	entangle(victim)
 	seed.do_thorns(victim,src)
 	seed.do_sting(victim,src,pick("r_foot","l_foot","r_leg","l_leg"))
-	if(prob(25))
-		to_chat(victim, "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>")
-		victim.adjustToxLoss(rand(2,4))
-		victim.adjustBruteLoss(rand(3,5))
 	else
-		to_chat(victim, "<span class='danger'>You push through the mess of vines and feel a bit of numbness in your body!</span>")
-		victim.adjustToxLoss(rand(1,2))
-		victim.adjustBruteLoss(rand(2,3),pick("r_foot","l_foot","r_leg","l_leg"))
+		if(prob(25))
+			to_chat(victim, "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>")
+			victim.adjustToxLoss(rand(2,3))
+			victim.adjustBruteLoss(rand(2,4))
+		else
+			to_chat(victim, "<span class='danger'>You push through the mess of vines and feel a bit of numbness in your body!</span>")
+			victim.adjustToxLoss(rand(1,2))
+			victim.adjustBruteLoss(2,pick("r_foot","l_foot","r_leg","l_leg"))
 
 
 /obj/effect/plant/proc/unbuckle()
