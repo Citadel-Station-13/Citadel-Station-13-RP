@@ -1,4 +1,4 @@
-#define NEIGHBOR_REFRESH_TIME 100
+#define NEIGHBOR_REFRESH_TIME 50
 
 /obj/effect/plant/proc/get_cardinal_neighbors()
 	var/list/cardinal_neighbors = list()

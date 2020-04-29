@@ -35,7 +35,7 @@
 		to_chat(victim, "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>")
 		victim.adjustToxLoss(rand(2,4))
 		victim.adjustBruteLoss(rand(3,5))
-	if(prob(95))
+	else
 		to_chat(victim, "<span class='danger'>You push through the mess of vines and feel a bit of numbness in your body!</span>")
 		victim.adjustToxLoss(rand(1,2))
 		victim.adjustBruteLoss(rand(2,3),pick("r_foot","l_foot","r_leg","l_leg"))
