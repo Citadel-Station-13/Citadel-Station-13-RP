@@ -106,10 +106,10 @@
 				victim.setDir(pick(cardinal))
 				victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
 				victim.Weaken(1.5) // Powering up weaken power from .5 (Testing)
-				victim.adjustToxLoss(rand(1,3))
+				victim.adjustToxLoss(rand(1,3.25))
 				seed.do_thorns(victim,src)
 			else // Adding a non-grab attack chance since we will be increasing the rate at which the vines check for nearby targets
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
 				victim.Weaken(3)
-				victim.adjustToxLoss(rand(3,5))
-				victim.adjustBruteLoss(rand(1,2))
+				victim.adjustToxLoss(rand(2,4.5))
+				victim.adjustBruteLoss(rand(0.5,2.5))
