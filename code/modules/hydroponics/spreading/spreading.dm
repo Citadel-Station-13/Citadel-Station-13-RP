@@ -125,9 +125,9 @@
 	if(max_growth > 2 && prob(50))
 		max_growth-- //Ensure some variation in final sprite, makes the carpet of crap look less wonky.
 
-	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 15 //prevent vines from maturing until at least a few seconds after they've been created.
+	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 20 //prevent vines from maturing until at least a few seconds after they've been created.
 	spread_chance = seed.get_trait(TRAIT_POTENCY)
-	spread_distance = ((growth_type>0) ? round(spread_chance*1.3) : round(spread_chance*1.1))
+	spread_distance = ((growth_type>0) ? round(spread_chance*1.3) : round(spread_chance*0.85))
 	update_icon()
 
 // Plants will sometimes be spawned in the turf adjacent to the one they need to end up in, for the sake of correct dir/etc being set.
