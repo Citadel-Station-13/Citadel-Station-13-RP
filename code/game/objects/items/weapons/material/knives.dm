@@ -87,8 +87,8 @@
 /obj/item/material/knife/tacknife/combatknife
 	name = "combat knife"
 	desc = "If only you had a boot to put it in."
-	icon = 'icons/obj/weapons.dmi'
-	icon_state = "tacknife"
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "buckknife"
 	item_state = "knife"
 	force_divisor = 0.34 // 20 with hardness 60 (steel)
 	thrown_force_divisor = 1.75 // 20 with weight 20 (steel)
@@ -134,6 +134,38 @@
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT
 	default_material = "plasteel" //VOREStation Edit
+
+/obj/item/material/knife/machete/armblade
+	name = "arm-mounted blade"
+	desc = "A long, machete-like blade, mounted to your arm. The size and location of it lends itself to parrying blows in melee."
+	icon_state = "armblade"
+	item_state = "armblade"
+	force_divisor = 0.4 // long and arm-mounted but you gotta use a suit for it
+	slot_flags = null
+	unbreakable = TRUE
+	can_dull = FALSE
+
+/obj/item/material/knife/machete/armblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(default_parry_check(user, attacker, damage_source) && prob(30))
+		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
+		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
+		return TRUE
+	return FALSE
+
+/obj/item/material/knife/machete/armblade/rig
+	default_material = DEFAULT_WALL_MATERIAL
+	w_class = ITEMSIZE_HUGE
+	canremove = FALSE
+	var/obj/item/rig_module/armblade/storing_module
+
+/obj/item/material/knife/machete/armblade/rig/dropped(mob/user)
+	if(storing_module)
+		src.forceMove(storing_module)
+		visible_message("<span class='notice'>[user] retracts [src] from [storing_module.holder]!</span>", "<span class='notice'>You hear a click and a hiss.</span>")
+		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+	else
+		to_chat(user, "Something fucked up and the armblade got out of a module. Please report this bug.")
+		qdel(src)
 
 /obj/item/material/knife/tacknife/survival
 	name = "survival knife"
