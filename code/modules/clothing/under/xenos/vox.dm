@@ -48,3 +48,28 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon_state = "vox-civ-assistant"
 	item_state = "vox-civ-assistant"
+	
+/obj/item/clothing/under/pressuresuit/voxcivbartender
+	name = "bartender pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Sylish black, complete with a little bowtie."
+	icon_state = "vox-civ-bartender"
+	item_state = "vox-civ-bartender"
+	
+/obj/item/clothing/under/pressuresuit/voxcivchef
+	name = "chef pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Comes with an integrated apron!"
+	icon_state = "vox-civ-chef"
+	item_state = "vox-civ-chef"
+
+/obj/item/clothing/under/pressuresuit/voxcivchaplain
+	name = "chaplain pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Religious advice from a Vox should be taken with several grains of salt."
+	icon_state = "vox-civ-chaplain"
+	item_state = "vox-civ-chaplain"
+
+/obj/item/clothing/under/pressuresuit/voxcivlibrarian
+	name = "assistant pressure suit"
+	desc = "A lightly-plated jumpsuit, fitted to an alien frame. More stylish than others. Don't eat the books."
+	icon_state = "vox-civ-librarian"
+	item_state = "vox-civ-librarian"
+
