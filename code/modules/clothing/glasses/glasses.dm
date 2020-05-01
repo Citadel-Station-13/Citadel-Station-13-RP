@@ -216,6 +216,8 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	off_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
+	item_flags = AIRTIGHT //  Cit change
+	body_parts_covered = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
