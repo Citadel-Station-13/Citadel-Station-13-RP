@@ -1,7 +1,7 @@
 #define DEFAULT_SEED "glowshroom"
 #define VINE_GROWTH_STAGES 5
 
-/proc/spacevine_infestation(var/potency_min=85, var/potency_max=100, var/maturation_min=5, var/maturation_max=15)
+/proc/spacevine_infestation(var/potency_min=80, var/potency_max=100, var/maturation_min=5, var/maturation_max=15)
 	spawn() //to stop the secrets panel hanging
 		var/list/turf/simulated/floor/turfs = list() //list of all the empty floor turfs in the hallway areas
 		for(var/areapath in typesof(/area/hallway))
@@ -16,7 +16,7 @@
 			seed.set_trait(TRAIT_SPREAD,2)             // So it will function properly as vines.
 			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max)) // 70-100 potency will help guarantee a wide spread and powerful effects.
 			seed.set_trait(TRAIT_MATURATION,rand(maturation_min, maturation_max))
-			seed.set_trait(TRAIT_CARNIVOROUS,rand(30, 50)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
+			seed.set_trait(TRAIT_CARNIVOROUS,rand(15, 25)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
 			seed.display_name = "strange plants" //more thematic for the vine infestation event
 
 			//make vine zero start off fully matured
@@ -55,10 +55,10 @@
 	pass_flags = PASSTABLE
 	mouse_opacity = 2
 
-	var/health = 25
-	var/max_health = 100
+	var/health = 15
+	var/max_health = 50
 	var/growth_threshold = 0
-	var/growth_type = 0
+	var/growth_type = 1
 	var/max_growth = 0
 	var/list/neighbors = list()
 	var/obj/effect/plant/parent
@@ -110,7 +110,6 @@
 		max_growth = VINE_GROWTH_STAGES
 		growth_threshold = max_health/VINE_GROWTH_STAGES
 		icon = 'icons/obj/hydroponics_vines.dmi'
-		growth_type = rand(1,4) // Allows any vine type to show up now. All are bitey
 	else
 		max_growth = seed.growth_stages
 		growth_threshold = max_health/seed.growth_stages
@@ -118,9 +117,9 @@
 	if(max_growth > 2 && prob(50))
 		max_growth-- //Ensure some variation in final sprite, makes the carpet of crap look less wonky.
 
-	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 20 //prevent vines from maturing until at least a few seconds after they've been created.
+	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 25 //prevent vines from maturing until at least a few seconds after they've been created.
 	spread_chance = seed.get_trait(TRAIT_POTENCY)
-	spread_distance = ((growth_type>0) ? round(spread_chance*1.3) : round(spread_chance*0.85))
+	spread_distance = ((growth_type>0) ? round(spread_chance*0.925) : round(spread_chance*0.75))
 	update_icon()
 
 // Plants will sometimes be spawned in the turf adjacent to the one they need to end up in, for the sake of correct dir/etc being set.
@@ -172,15 +171,14 @@
 			max_growth--
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
-		switch(growth_type)
-			if(1)
-				icon_state = "worms"
-			if(2)
-				icon_state = "vines-[growth]"
-			if(3)
-				icon_state = "mass-[growth]"
-			if(4)
-				icon_state = "mold-[growth]"
+		if(TRAIT_POTENCY >= 80 && TRAIT_POTENCY < 85)
+			icon_state = "worms"
+		else if(TRAIT_POTENCY >= 85 && TRAIT_POTENCY < 90)
+			icon_state = "vines-[growth]"
+		else if(TRAIT_POTENCY >= 90 && TRAIT_POTENCY < 95)
+			icon_state = "mass-[growth]"
+		else
+			icon_state = "mold-[growth]"
 	else
 		icon_state = "[seed.get_trait(TRAIT_PLANT_ICON)]-[growth]"
 

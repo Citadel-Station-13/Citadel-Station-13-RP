@@ -13,6 +13,27 @@
 		spawn(1)
 			entangle(M)
 
+
+/obj/effect/plant/proc/attack_mob(mob/living/M,base_damage)
+	var/target_zone
+	if(M.lying)
+		target_zone = ran_zone()
+	else
+		target_zone = pick("l_foot", "r_foot", "l_leg", "r_leg")
+
+	//armour
+	var/blocked = M.run_armor_check(target_zone, "melee")
+	var/soaked = M.get_armor_soak(target_zone, "melee")
+
+	if(blocked >= 100)
+		return
+
+	if(soaked >= 30)
+		return
+
+	if(!M.apply_damage(base_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
+		return 0
+
 /obj/effect/plant/attack_hand(var/mob/user)
 	manual_unbuckle(user)
 
@@ -29,19 +50,19 @@
 	else if(!is_mature())
 		to_chat(victim, "<span class='danger'>You push through the vines and feel some minor numbness in your body!</span>")
 		victim.adjustToxLoss(1)
-		victim.adjustBruteLoss(1,pick("r_foot","l_foot","r_leg","l_leg"))
+		attack_mob(victim,1.5)
 	else
 		entangle(victim)
 		seed.do_thorns(victim,src)
-		seed.do_sting(victim,src,pick("r_foot","l_foot","r_leg","l_leg"))
+		seed.do_sting(victim,pick("r_foot","l_foot","r_leg","l_leg"))
 		if(prob(25))
 			to_chat(victim, "<span class='danger'>You push through the vines and feel some of the thorns rip through your clothing!</span>")
 			victim.adjustToxLoss(rand(2,3))
-			victim.adjustBruteLoss(rand(2,4))
+			attack_mob(victim,rand(4,7))
 		else
 			to_chat(victim, "<span class='danger'>You push through the mess of vines and feel a bit of numbness in your body!</span>")
 			victim.adjustToxLoss(rand(1,2))
-			victim.adjustBruteLoss(2,pick("r_foot","l_foot","r_leg","l_leg"))
+			attack_mob(victim,rand(2,4))
 
 
 /obj/effect/plant/proc/unbuckle()
@@ -114,4 +135,4 @@
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and swipe across [victim]!</span>")
 				victim.Weaken(3)
 				victim.adjustToxLoss(rand(1,3.5))
-				victim.adjustBruteLoss(rand(0.5,1.5))
+				attack_mob(victim,rand(2,3.5))
