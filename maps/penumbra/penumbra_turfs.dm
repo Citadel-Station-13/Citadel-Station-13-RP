@@ -10,11 +10,11 @@ NERADA8_TURF_CREATE(/turf/simulated/open)
 
 /turf/simulated/mineral/nerada8
 	icon_state = "icerock"
-	icon_side = "ice_side"
+	rock_side_icon_state = "ice_side"
 
 /turf/simulated/mineral/nerada8/snow
 	icon_state = "snowrock"
-	icon_side = "snow_side"
+	rock_side_icon_state = "snow_side"
 
 NERADA8_TURF_CREATE(/turf/simulated/floor)
 
