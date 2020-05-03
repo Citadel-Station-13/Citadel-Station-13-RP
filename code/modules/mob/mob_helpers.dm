@@ -85,10 +85,6 @@ proc/getsensorlevel(A)
 /proc/is_admin(var/mob/user)
 	return check_rights(R_ADMIN, 0, user) != 0
 
-
-/proc/hsl2rgb(h, s, l)
-	return //TODO: Implement
-
 /*
 	Miss Chance
 */
@@ -140,7 +136,7 @@ proc/getsensorlevel(A)
 		if(target.buckled || target.lying)
 			return zone
 		// if your target is being grabbed aggressively by someone you cannot miss either
-		for(var/obj/item/weapon/grab/G in target.grabbed_by)
+		for(var/obj/item/grab/G in target.grabbed_by)
 			if(G.state >= GRAB_AGGRESSIVE)
 				return zone
 
@@ -313,20 +309,20 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return 0
 
 //converts intent-strings into numbers and back
-var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
+var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(I_HELP)		return 0
-			if(I_DISARM)	return 1
-			if(I_GRAB)		return 2
+			if(INTENT_HELP)		return 0
+			if(INTENT_DISARM)	return 1
+			if(INTENT_GRAB)		return 2
 			else			return 3
 	else
 		switch(argument)
-			if(0)			return I_HELP
-			if(1)			return I_DISARM
-			if(2)			return I_GRAB
-			else			return I_HURT
+			if(0)			return INTENT_HELP
+			if(1)			return INTENT_DISARM
+			if(2)			return INTENT_GRAB
+			else			return INTENT_HARM
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)
@@ -335,28 +331,28 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 
 	if(isliving(src) && !isrobot(src))
 		switch(input)
-			if(I_HELP,I_DISARM,I_GRAB,I_HURT)
+			if(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				a_intent = input
-			if("right")
+			if(INTENT_HOTKEY_RIGHT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+1) % 4)
-			if("left")
+			if(INTENT_HOTKEY_LEFT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+3) % 4)
 		if(hud_used && hud_used.action_intent)
 			hud_used.action_intent.icon_state = "intent_[a_intent]"
 
 	else if(isrobot(src))
 		switch(input)
-			if(I_HELP)
-				a_intent = I_HELP
-			if(I_HURT)
-				a_intent = I_HURT
-			if("right","left")
+			if(INTENT_HELP)
+				a_intent = INTENT_HELP
+			if(INTENT_HARM)
+				a_intent = INTENT_HARM
+			if(INTENT_HOTKEY_RIGHT, INTENT_HOTKEY_LEFT)
 				a_intent = intent_numeric(intent_numeric(a_intent) - 3)
 		if(hud_used && hud_used.action_intent)
-			if(a_intent == I_HURT)
-				hud_used.action_intent.icon_state = I_HURT
+			if(a_intent == INTENT_HARM)
+				hud_used.action_intent.icon_state = INTENT_HARM
 			else
-				hud_used.action_intent.icon_state = I_HELP
+				hud_used.action_intent.icon_state = INTENT_HELP
 
 proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
@@ -423,7 +419,7 @@ proc/is_blind(A)
 					else										// Everyone else (dead people who didn't ghost yet, etc.)
 						lname = name
 				lname = "<span class='name'>[lname]</span> "
-			M << "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [lname][follow][message]</span>"
+			to_chat(M, "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [lname][follow][message]</span>")
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in player_list)
@@ -437,7 +433,7 @@ proc/is_blind(A)
 				lname = "[subject.name] ([subject.x],[subject.y],[subject.z])"
 
 			lname = "<span class='name'>[lname]</span> "
-			M << "<span class='deadsay'>" + create_text_tag("event_dead", "EVENT:", M.client) + " [lname][follow][message]</span>"
+			to_chat(M, "<span class='deadsay'>" + create_text_tag("event_dead", "EVENT:", M.client) + " [lname][follow][message]</span>")
 
 //Announces that a ghost has joined/left, mainly for use with wizards
 /proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
@@ -516,24 +512,24 @@ proc/is_blind(A)
 		return SAFE_PERP
 
 	//Agent cards lower threatlevel.
-	var/obj/item/weapon/card/id/id = GetIdCard()
-	if(id && istype(id, /obj/item/weapon/card/id/syndicate))
+	var/obj/item/card/id/id = GetIdCard()
+	if(id && istype(id, /obj/item/card/id/syndicate))
 		threatcount -= 2
 	// A proper	CentCom id is hard currency.
-	else if(id && istype(id, /obj/item/weapon/card/id/centcom))
+	else if(id && istype(id, /obj/item/card/id/centcom))
 		return SAFE_PERP
 
 	if(check_access && !access_obj.allowed(src))
 		threatcount += 4
 
 	if(auth_weapons && !access_obj.allowed(src))
-		if(istype(l_hand, /obj/item/weapon/gun) || istype(l_hand, /obj/item/weapon/melee))
+		if(istype(l_hand, /obj/item/gun) || istype(l_hand, /obj/item/melee))
 			threatcount += 4
 
-		if(istype(r_hand, /obj/item/weapon/gun) || istype(r_hand, /obj/item/weapon/melee))
+		if(istype(r_hand, /obj/item/gun) || istype(r_hand, /obj/item/melee))
 			threatcount += 4
 
-		if(istype(belt, /obj/item/weapon/gun) || istype(belt, /obj/item/weapon/melee))
+		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item/melee))
 			threatcount += 2
 
 		if(species.name != SPECIES_HUMAN)

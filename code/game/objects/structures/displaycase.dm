@@ -13,9 +13,9 @@
 /obj/structure/displaycase/ex_act(severity)
 	switch(severity)
 		if (1)
-			new /obj/item/weapon/material/shard( src.loc )
+			new /obj/item/material/shard( src.loc )
 			if (occupied)
-				new /obj/item/weapon/gun/energy/captain( src.loc )
+				new /obj/item/gun/energy/captain( src.loc )
 				occupied = 0
 			qdel(src)
 		if (2)
@@ -39,7 +39,7 @@
 		if (!( src.destroyed ))
 			src.density = 0
 			src.destroyed = 1
-			new /obj/item/weapon/material/shard( src.loc )
+			new /obj/item/material/shard( src.loc )
 			playsound(src, "shatter", 70, 1)
 			update_icon()
 	else
@@ -54,7 +54,7 @@
 	return
 
 
-/obj/structure/displaycase/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed(W))
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
@@ -65,8 +65,8 @@
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)
 	if (src.destroyed && src.occupied)
-		new /obj/item/weapon/gun/energy/captain( src.loc )
-		user << "<span class='notice'>You deactivate the hover field built into the case.</span>"
+		new /obj/item/gun/energy/captain( src.loc )
+		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")
 		src.occupied = 0
 		src.add_fingerprint(user)
 		update_icon()
@@ -75,7 +75,7 @@
 		usr << text("<span class='warning'>You kick the display case.</span>")
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
-				O << "<span class='warning'>[usr] kicks the display case.</span>"
+				to_chat(O, "<span class='warning'>[usr] kicks the display case.</span>")
 		src.health -= 2
 		healthcheck()
 		return

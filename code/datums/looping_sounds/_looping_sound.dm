@@ -30,6 +30,8 @@
 	var/direct
 	var/opacity_check
 	var/pref_check
+	var/soundenvdry
+	var/soundenvwet
 
 	var/timerid
 
@@ -89,7 +91,7 @@
 					continue
 			SEND_SOUND(thing, S)
 		else
-			playsound(thing, S, volume, ignore_walls = !opacity_check, preference = pref_check)
+			playsound(thing, S, volume, ignore_walls = !opacity_check, preference = pref_check, soundenvdry = soundenvdry, soundenvwet = soundenvwet)
 
 /datum/looping_sound/proc/get_sound(starttime, _mid_sounds)
 	if(!_mid_sounds)

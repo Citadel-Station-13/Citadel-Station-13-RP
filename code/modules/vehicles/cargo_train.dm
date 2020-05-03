@@ -11,14 +11,14 @@
 	load_offset_x = 0
 	mob_offset_y = 7
 
-	cell = /obj/item/weapon/cell/high
+	cell = /obj/item/cell/high
 	var/speed_mod = 1.1
 	var/car_limit = 3		//how many cars an engine can pull before performance degrades
 	active_engines = 1
-	var/obj/item/weapon/key/key
-	var/key_type = /obj/item/weapon/key/cargo_train
+	var/obj/item/key/key
+	var/key_type = /obj/item/key/cargo_train
 
-/obj/item/weapon/key/cargo_train
+/obj/item/key/cargo_train
 	name = "key"
 	desc = "A keyring with a small steel key, and a yellow fob reading \"Choo Choo!\"."
 	icon = 'icons/obj/vehicles.dmi'
@@ -55,7 +55,7 @@
 		turn_off()
 		update_stats()
 		if(load && is_train_head())
-			load << "The drive motor briefly whines, then drones to a stop."
+			to_chat(load, "The drive motor briefly whines, then drones to a stop.")
 
 	if(is_train_head() && !on)
 		return 0
@@ -66,14 +66,14 @@
 
 	return ..()
 
-/obj/vehicle/train/trolley/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/vehicle/train/trolley/attackby(obj/item/W as obj, mob/user as mob)
 	if(open && W.is_wirecutter())
 		passenger_allowed = !passenger_allowed
 		user.visible_message("<span class='notice'>[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src].</span>","<span class='notice'>You [passenger_allowed ? "cut" : "mend"] the load limiter cable.</span>")
 	else
 		..()
 
-/obj/vehicle/train/engine/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/vehicle/train/engine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, key_type))
 		if(!key)
 			user.drop_item()
@@ -99,10 +99,10 @@
 		icon_state = initial(icon_state)
 */
 
-/obj/vehicle/train/trolley/insert_cell(var/obj/item/weapon/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/train/trolley/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
 	return
 
-/obj/vehicle/train/engine/insert_cell(var/obj/item/weapon/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/train/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
 	..()
 	update_stats()
 
@@ -168,7 +168,7 @@
 
 	if(is_train_head() && istype(load, /mob/living/carbon/human))
 		var/mob/living/carbon/human/D = load
-		D << "<font color='red'><B>You ran over [H]!</B></font>"
+		to_chat(D, "<font color='red'><B>You ran over [H]!</B></font>")
 		visible_message("<B><font color='red'>\The [src] ran over [H]!</B></font>")
 		add_attack_logs(D,H,"Ran over with [src.name]")
 		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [H.name] ([H.ckey]), driven by [D.name] ([D.ckey])</font>")
@@ -199,7 +199,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	user << "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+	to_chat(user, "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition.")
 	user << "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
 /obj/vehicle/train/engine/verb/start_engine()
@@ -211,17 +211,17 @@
 		return
 
 	if(on)
-		usr << "The engine is already running."
+		to_chat(usr, "The engine is already running.")
 		return
 
 	turn_on()
 	if (on)
-		usr << "You start [src]'s engine."
+		to_chat(usr, "You start [src]'s engine.")
 	else
 		if(cell.charge < charge_use)
-			usr << "[src] is out of power."
+			to_chat(usr, "[src] is out of power.")
 		else
-			usr << "[src]'s engine won't start."
+			to_chat(usr, "[src]'s engine won't start.")
 
 /obj/vehicle/train/engine/verb/stop_engine()
 	set name = "Stop engine"
@@ -232,12 +232,12 @@
 		return
 
 	if(!on)
-		usr << "The engine is already stopped."
+		to_chat(usr, "The engine is already stopped.")
 		return
 
 	turn_off()
 	if (!on)
-		usr << "You stop [src]'s engine."
+		to_chat(usr, "You stop [src]'s engine.")
 
 /obj/vehicle/train/engine/verb/remove_key()
 	set name = "Remove key"

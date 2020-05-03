@@ -50,7 +50,7 @@
 	item_state = "classicponcho"
 	icon_override = 'icons/mob/ties.dmi'
 	var/fire_resist = T0C+100
-	allowed = list(/obj/item/weapon/tank/emergency/oxygen)
+	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -232,8 +232,8 @@
 /obj/item/clothing/accessory/poncho/roles/cloak/custom //A colorable cloak
 	name = "cloak"
 	desc = "A simple, bland cloak."
-	icon_state = "colorcloak"
-	item_state = "colorcloak"
+	icon_state = "cloak"
+	item_state = "cloak"
 
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"
@@ -264,7 +264,7 @@
 	item_state = "vest"
 	icon_override = 'icons/mob/ties.dmi'
 	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
-	allowed = list(/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -377,9 +377,24 @@
 	icon_state = "turtleneck_red"
 
 /obj/item/clothing/accessory/sweater/combat
-	name = "combat sweater"
+	name = "green combat sweater"
 	desc = "Look like an off duty soldier with this green sweater!"
 	icon_state = "combatsweater"
+
+/obj/item/clothing/accessory/sweater/combatblack
+	name = "black combat sweater"
+	desc = "Look like an off duty soldier with this black sweater!"
+	icon_state = "ubacblack"
+
+/obj/item/clothing/accessory/sweater/combatblue
+	name = "blue combat sweater"
+	desc = "Look like an off duty soldier with this bue sweater!"
+	icon_state = "ubacblue"
+
+/obj/item/clothing/accessory/sweater/syndi
+	name = "slim fit sweater"
+	desc = "A slim fit sweater! It seems robust."
+	icon_state = "syndicatesweater"
 //***
 // End of sweaters
 //***

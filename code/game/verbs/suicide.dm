@@ -7,7 +7,7 @@
 		to_chat(src, "You're already dead!")
 		return
 
-	if (!ticker)
+	if (!SSticker)
 		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
@@ -95,7 +95,7 @@
 		to_chat(src, "You're already dead!")
 		return
 
-	if (!ticker)
+	if (!SSticker)
 		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
@@ -158,7 +158,7 @@
 	set name = "pAI Suicide"
 	var/answer = input("REALLY kill yourself? This action can't be undone.", "Suicide", "No") in list ("Yes", "No")
 	if(answer == "Yes")
-		var/obj/item/device/paicard/card = loc
+		var/obj/item/paicard/card = loc
 		card.removePersonality()
 		var/turf/T = get_turf_or_move(card.loc)
 		for (var/mob/M in viewers(T))

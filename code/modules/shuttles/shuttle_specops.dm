@@ -4,7 +4,7 @@
 	req_access = list(access_cent_specops)
 
 /obj/machinery/computer/shuttle_control/specops/attack_ai(user as mob)
-	user << "<font color='red'>Access Denied.</font>"
+	to_chat(user, "<font color='red'>Access Denied.</font>")
 	return 1
 
 //for shuttles that may use a different docking port at each location
@@ -40,7 +40,7 @@
 	var/specops_return_delay = 6000		//After moving, the amount of time that must pass before the shuttle may move again
 	var/specops_countdown_time = 600	//Length of the countdown when moving the shuttle
 
-	var/obj/item/device/radio/intercom/announcer = null
+	var/obj/item/radio/intercom/announcer = null
 	var/reset_time = 0	//the world.time at which the shuttle will be ready to move again.
 	var/launch_prep = 0
 	var/cancel_countdown = 0
@@ -48,7 +48,7 @@
 
 /datum/shuttle/ferry/multidock/specops/New()
 	..()
-	announcer = new /obj/item/device/radio/intercom(null)//We need a fake AI to announce some stuff below. Otherwise it will be wonky.
+	announcer = new /obj/item/radio/intercom(null)//We need a fake AI to announce some stuff below. Otherwise it will be wonky.
 	announcer.config(list("Response Team" = 0))
 
 /datum/shuttle/ferry/multidock/specops/proc/radio_announce(var/message)
@@ -95,12 +95,12 @@
 		if (!location)	//just arrived home
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "<span class='danger'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>"
+				to_chat(M, "<span class='danger'>You have arrived at [GLOB.using_map.boss_name]. Operation has ended!</span>")
 		else	//just left for the station
 			launch_mauraders()
 			for(var/turf/T in get_area_turfs(destination))
 				var/mob/M = locate(/mob) in T
-				M << "<span class='danger'>You have arrived at [station_name()]. Commence operation!</span>"
+				to_chat(M, "<span class='danger'>You have arrived at [station_name()]. Commence operation!</span>")
 
 				var/obj/machinery/light/small/readylight/light = locate() in T
 				if(light) light.set_state(1)

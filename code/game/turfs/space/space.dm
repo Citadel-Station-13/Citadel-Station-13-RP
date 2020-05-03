@@ -86,24 +86,8 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
-
-// Ported from unstable r355
-
-/turf/space/Entered(atom/movable/A as mob|obj)
-	if(movement_disabled)
-		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
-		return
-	..()
-	if ((!(A) || src != A.loc))	return
-
-	inertial_drift(A)
-
-	if(ticker && ticker.mode)
-
-		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(ticker.mode.name == "mercenary")	return
-		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE + 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE + 1))
-			A.touch_map_edge()
+/turf/space/has_gravity(turf/T)
+	return FALSE
 
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
 	var/cur_x
@@ -127,9 +111,9 @@
 		target_z = y_arr[cur_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Target Z = [target_z]"
-		world << "Next X = [next_x]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Target Z = [target_z]")
+		to_chat(world, "Next X = [next_x]")
 		//debug
 */
 		if(target_z)
@@ -152,9 +136,9 @@
 		target_z = y_arr[cur_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Target Z = [target_z]"
-		world << "Next X = [next_x]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Target Z = [target_z]")
+		to_chat(world, "Next X = [next_x]")
 		//debug
 */
 		if(target_z)
@@ -176,9 +160,9 @@
 		target_z = y_arr[next_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Next Y = [next_y]"
-		world << "Target Z = [target_z]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Next Y = [next_y]")
+		to_chat(world, "Target Z = [target_z]")
 		//debug
 */
 		if(target_z)
@@ -201,9 +185,9 @@
 		target_z = y_arr[next_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Next Y = [next_y]"
-		world << "Target Z = [target_z]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Next Y = [next_y]")
+		to_chat(world, "Target Z = [target_z]")
 		//debug
 */
 		if(target_z)

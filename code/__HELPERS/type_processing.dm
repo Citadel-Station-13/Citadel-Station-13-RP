@@ -6,7 +6,7 @@
 		var/typename = "[type]"
 		var/static/list/TYPES_SHORTCUTS = list(
 			/obj/effect/decal/cleanable = "CLEANABLE",
-			/obj/item/device/radio/headset = "HEADSET",
+			/obj/item/radio/headset = "HEADSET",
 			/obj/item/clothing/head/helmet/space = "SPESSHELMET",
 //			/obj/item/book/manual = "MANUAL",
 //			/obj/item/reagent_containers/food/drinks = "DRINK", //longest paths comes first

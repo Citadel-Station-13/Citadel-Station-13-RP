@@ -23,25 +23,25 @@
 /datum/design/item/rig/eva
 	name = "eva hardsuit (empty)"
 	id = "eva_hardsuit"
-	build_path = /obj/item/weapon/rig/eva
+	build_path = /obj/item/rig/eva
 	sort_string = "OAAAA"
 
 /datum/design/item/rig/mining
 	name = "industrial hardsuit (empty)"
 	id = "ind_hardsuit"
-	build_path = /obj/item/weapon/rig/industrial
+	build_path = /obj/item/rig/industrial
 	sort_string = "OAAAB"
 
 /datum/design/item/rig/research
 	name = "ami hardsuit (empty)"
 	id = "ami_hardsuit"
-	build_path = /obj/item/weapon/rig/hazmat
+	build_path = /obj/item/rig/hazmat
 	sort_string = "OAAAC"
 
 /datum/design/item/rig/medical
 	name = "medical hardsuit (empty)"
 	id = "med_hardsuit"
-	build_path = /obj/item/weapon/rig/medical
+	build_path = /obj/item/rig/medical
 	sort_string = "OAAAD"
 */
 

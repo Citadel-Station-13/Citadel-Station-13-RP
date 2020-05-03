@@ -972,11 +972,13 @@
 	name = "Paramedic Uniform"
 	desc = "A dark jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-dark"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/parameduniskirtdark
 	name = "Paramedic Uniskirt"
 	desc = "A dark jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-dark_skirt"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/btcbartender
 	name = "BTC Bartender"
@@ -987,13 +989,62 @@
 	name = "Paramedic Uniform"
 	desc = "A light jumpsuit for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/parameduniskirtlight
 	name = "Paramedic Uniskirt"
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
 	icon_state = "paramedic-light_skirt"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dutchuniform
 	name = "Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
 	icon_state = "dutchuniform"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/victorianblred
+    name = "red shirted victorian suit"
+    desc = "Don't you see? I have thirteen lives."
+    icon_state = "victorianblred"
+
+/obj/item/clothing/under/victorianredvest
+    name = "red vested victorian suit"
+    desc = "Why are we going to the back of the ship? Because the front crashes first. Think it though."
+    icon_state = "victorianredvest"
+
+/obj/item/clothing/under/victorianvest
+    name = "victorian suit"
+    desc = "Four minutes? That's ages. What if I get bored, or need a television, couple of books? Anyone for chess? Bring me knitting."
+    icon_state = "victorianvest"
+
+/obj/item/clothing/under/victorianlightfire
+    name = "light blue shirted victorian suit"
+    desc = "Have you ever thought what it's like to be wanderers in the Fourth Dimension?"
+    icon_state = "victorianlightfire"
+
+/obj/item/clothing/under/victorianreddress
+    name = "red victorian dress"
+    desc = "A little gratitude wouldn't irretrievably damage my ego."
+    icon_state = "victorianreddress"
+
+/obj/item/clothing/under/victorianblackdress
+    name = "black victorian dress"
+    desc = "What's the use of a good quotation if you can't change it?"
+    icon_state = "victorianblackdress"
+
+/obj/item/clothing/under/bridgeofficerskirt
+	name = "bridge officer skirt"
+	desc = "A jumpskirt for those ranked high enough to stand at the bridge, but not high enough to touch any buttons."
+	icon_state = "bridgeofficerskirt"
+
+/obj/item/clothing/under/fiendsuit
+	name = "fiendish suit"
+	desc = "A red and black suit befitting someone from the dark pits themselves....Or a thirteen year old."
+	icon_state = "fiendsuit"
+
+/obj/item/clothing/under/fienddress
+	name = "fiendish dress"
+	desc = "A red and black dress befitting someone from the dark pits themselves....Or a thirteen year old."
+	icon_state = "fienddress"
+

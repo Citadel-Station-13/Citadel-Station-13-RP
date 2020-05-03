@@ -12,7 +12,7 @@
 	use_power = 0
 	flags = ON_BORDER
 	opacity = 0
-	var/obj/item/weapon/airlock_electronics/electronics = null
+	var/obj/item/airlock_electronics/electronics = null
 	explosion_resistance = 5
 	air_properties_vary_with_direction = 1
 
@@ -31,12 +31,12 @@
 		icon_state = "[base_state]open"
 
 /obj/machinery/door/window/proc/shatter(var/display_message = 1)
-	new /obj/item/weapon/material/shard(src.loc)
-	new /obj/item/weapon/material/shard(src.loc)
+	new /obj/item/material/shard(src.loc)
+	new /obj/item/material/shard(src.loc)
 	new /obj/item/stack/cable_coil(src.loc, 1)
-	var/obj/item/weapon/airlock_electronics/ae
+	var/obj/item/airlock_electronics/ae
 	if(!electronics)
-		ae = new/obj/item/weapon/airlock_electronics( src.loc )
+		ae = new/obj/item/airlock_electronics( src.loc )
 
 		if(!src.req_access)    //This apparently has side effects that might
 			src.check_access() //update null r_a's? Leaving it just in case.
@@ -79,7 +79,7 @@
 					open()
 					addtimer(CALLBACK(src, .proc/close), 50)
 		return
-	if (!( ticker ))
+	if (!( SSticker ))
 		return
 	if (src.operating)
 		return
@@ -87,7 +87,7 @@
 		open()
 		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
-/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
 	if(get_dir(mover, loc) == turn(dir, 180)) //Make sure looking at appropriate border
@@ -112,7 +112,7 @@
 /obj/machinery/door/window/open()
 	if (operating == 1 || !density) //doors can still open when emag-disabled
 		return 0
-	if (!ticker)
+	if (!SSticker)
 		return 0
 	if (!operating) //in case of emag
 		operating = 1
@@ -194,8 +194,8 @@
 
 	if(istype(I))
 		// Fixing.
-		if(istype(I, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)
-			var/obj/item/weapon/weldingtool/WT = I
+		if(istype(I, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
+			var/obj/item/weldingtool/WT = I
 			if(health < maxhealth)
 				if(WT.remove_fuel(1 ,user))
 					to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
@@ -209,9 +209,9 @@
 			return
 
 		//Emags and ninja swords? You may pass.
-		if (istype(I, /obj/item/weapon/melee/energy/blade))
+		if (istype(I, /obj/item/melee/energy/blade))
 			if(emag_act(10, user))
-				var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
 				playsound(src.loc, "sparks", 50, 1)
@@ -239,10 +239,10 @@
 				wa.update_state()
 
 				if(operating == -1)
-					wa.electronics = new/obj/item/weapon/circuitboard/broken()
+					wa.electronics = new/obj/item/circuitboard/broken()
 				else
 					if(!electronics)
-						wa.electronics = new/obj/item/weapon/airlock_electronics()
+						wa.electronics = new/obj/item/airlock_electronics()
 						if(!src.req_access)
 							src.check_access()
 						if(src.req_access.len)
@@ -258,7 +258,7 @@
 				return
 
 		//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
-		if(src.density && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
+		if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
 			user.setClickCooldown(user.get_attack_speed(I))
 			var/aforce = I.force
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)

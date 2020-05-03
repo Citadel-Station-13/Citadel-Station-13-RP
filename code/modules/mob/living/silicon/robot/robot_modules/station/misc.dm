@@ -1,4 +1,4 @@
-/obj/item/weapon/robot_module/robot/standard
+/obj/item/robot_module/robot/standard
 	name = "standard robot module"
 	sprites = list(
 					"M-USE NanoTrasen" = "robot",
@@ -17,9 +17,9 @@
 					)
 
 
-/obj/item/weapon/robot_module/robot/standard/New()
+/obj/item/robot_module/robot/standard/New()
 	..()
-	src.modules += new /obj/item/weapon/melee/baton/loaded(src)
-	src.modules += new /obj/item/weapon/tool/wrench/cyborg(src)
-	src.modules += new /obj/item/device/healthanalyzer(src)
-	src.emag = new /obj/item/weapon/melee/energy/sword(src)
+	src.modules += new /obj/item/melee/baton/loaded(src)
+	src.modules += new /obj/item/tool/wrench/cyborg(src)
+	src.modules += new /obj/item/healthanalyzer(src)
+	src.emag = new /obj/item/melee/energy/sword(src)

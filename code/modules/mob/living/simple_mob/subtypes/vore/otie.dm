@@ -182,12 +182,12 @@
 	maxbodytemp = 1000
 
 /mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
-	if(istype(O, /obj/item/weapon/reagent_containers/food))
+	if(istype(O, /obj/item/reagent_containers/food))
 		qdel(O)
 		playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
 		if(!has_AI())//No autobarf on player control.
 			return
-		if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/donut) && istype(src, /mob/living/simple_mob/otie/security))
+		if(istype(O, /obj/item/reagent_containers/food/snacks/donut) && istype(src, /mob/living/simple_mob/otie/security))
 			to_chat(user,"<span class='notice'>The guard pup accepts your offer for their catch.</span>")
 			release_vore_contents()
 		else if(prob(2)) //Small chance to get prey out from non-sec oties.
@@ -221,7 +221,7 @@
 /mob/living/simple_mob/otie/attack_hand(mob/living/carbon/human/M as mob)
 
 	switch(M.a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 			if(health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
 				if(has_AI())
@@ -236,7 +236,7 @@
 							faction = M.faction
 					sleep(1 SECOND)
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if(health > 0)
 				if(has_AI())
 					var/datum/ai_holder/AI = ai_holder

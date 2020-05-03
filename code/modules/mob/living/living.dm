@@ -40,9 +40,7 @@
 	set category = "Object"
 
 	if(AM.Adjacent(src))
-		src.start_pulling(AM)
-
-	return
+		start_pulling(AM)
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())
@@ -91,7 +89,7 @@ default behaviour is:
 		spread_fire(tmob)
 
 		for(var/mob/living/M in range(tmob, 1))
-			if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, tmob.grabbed_by.len)) )
+			if(tmob.pinned.len ||  ((M.pulling == tmob && ( tmob.restrained() && !( M.restrained() ) && M.stat == 0)) || locate(/obj/item/grab, tmob.grabbed_by.len)) )
 				if ( !(world.time % 5) )
 					to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
 				now_pushing = 0
@@ -128,7 +126,7 @@ default behaviour is:
 			now_pushing = 0
 			return
 
-		if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
+		if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && tmob.canmove && canmove && !tmob.buckled && !buckled && can_swap && can_move_mob(tmob, 1, 0)) // mutual brohugs all around!
 			var/turf/oldloc = loc
 			forceMove(tmob.loc)
 			//VOREstation Edit - Begin
@@ -150,7 +148,7 @@ default behaviour is:
 			now_pushing = 0
 			return
 		//VOREStation Edit - Begin
-		else if((tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
+		else if((tmob.mob_always_swap || (tmob.a_intent == INTENT_HELP || tmob.restrained()) && (a_intent == INTENT_HELP || src.restrained())) && canmove && can_swap && handle_micro_bump_helping(tmob))
 			forceMove(tmob.loc)
 			now_pushing = 0
 			return
@@ -159,7 +157,7 @@ default behaviour is:
 		if(!can_move_mob(tmob, 0, 0))
 			now_pushing = 0
 			return
-		if(a_intent == I_HELP || src.restrained())
+		if(a_intent == INTENT_HELP || src.restrained())
 			now_pushing = 0
 			return
 		// VOREStation Edit - Begin
@@ -179,12 +177,12 @@ default behaviour is:
 				to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
 				now_pushing = 0
 				return
-		if(tmob.r_hand && istype(tmob.r_hand, /obj/item/weapon/shield/riot))
+		if(tmob.r_hand && istype(tmob.r_hand, /obj/item/shield/riot))
 			if(prob(99))
 				now_pushing = 0
 				return
 
-		if(tmob.l_hand && istype(tmob.l_hand, /obj/item/weapon/shield/riot))
+		if(tmob.l_hand && istype(tmob.l_hand, /obj/item/shield/riot))
 			if(prob(99))
 				now_pushing = 0
 				return
@@ -224,12 +222,12 @@ default behaviour is:
 				return
 		step(AM, t)
 		if(ishuman(AM) && AM:grabbed_by)
-			for(var/obj/item/weapon/grab/G in AM:grabbed_by)
+			for(var/obj/item/grab/G in AM:grabbed_by)
 				step(G:assailant, get_dir(G:assailant, AM))
 				G.adjust_position()
 		now_pushing = 0
 
-/mob/living/CanPass(atom/movable/mover, turf/target)
+/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/blob) && faction == "blob") //Blobs should ignore things on their faction.
 		return TRUE
 	return ..()
@@ -591,41 +589,41 @@ default behaviour is:
 
 
 //Recursive function to find everything a mob is holding.
-/mob/living/get_contents(var/obj/item/weapon/storage/Storage = null)
+/mob/living/get_contents(var/obj/item/storage/Storage = null)
 	var/list/L = list()
 
 	if(Storage) //If it called itself
 		L += Storage.return_inv()
 
 		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
-		//for(var/obj/item/weapon/storage/S in Storage.return_inv()) //Check for storage items
+		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
 		//	L += get_contents(S)
 
-		for(var/obj/item/weapon/gift/G in Storage.return_inv()) //Check for gift-wrapped items
+		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
 			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
+			if(istype(G.gift, /obj/item/storage))
 				L += get_contents(G.gift)
 
 		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
 			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
+			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
 				L += get_contents(D.wrapped)
 		return L
 
 	else
 
 		L += src.contents
-		for(var/obj/item/weapon/storage/S in src.contents)	//Check for storage items
+		for(var/obj/item/storage/S in src.contents)	//Check for storage items
 			L += get_contents(S)
 
-		for(var/obj/item/weapon/gift/G in src.contents) //Check for gift-wrapped items
+		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
 			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
+			if(istype(G.gift, /obj/item/storage))
 				L += get_contents(G.gift)
 
 		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
 			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
+			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
 				L += get_contents(D.wrapped)
 		return L
 
@@ -773,120 +771,10 @@ default behaviour is:
 		else
 			to_chat(usr, "[src] does not have any stored infomation!")
 	else
-		usr << "OOC Metadata is not supported by this server!"
+		to_chat(usr, "OOC Metadata is not supported by this server!")
 	//VOREStation Edit End - Making it so SSD people have prefs with fallback to original style.
 	return
 
-/mob/living/Move(a, b, flag)
-	if (buckled && buckled.loc != a) //not updating position
-		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
-			return buckled.Move(a, b)
-		else	//Otherwise, no running around for you.
-			return 0
-
-	if (restrained())
-		stop_pulling()
-
-
-	var/t7 = 1
-	if (restrained())
-		for(var/mob/living/M in range(src, 1))
-			if ((M.pulling == src && M.stat == 0 && !( M.restrained() )))
-				t7 = null
-	if ((t7 && (pulling && ((get_dist(src, pulling) <= 1 || pulling.loc == loc) && (client && client.moving)))))
-		var/turf/T = loc
-		. = ..()
-
-		if (pulling && pulling.loc)
-			if(!( isturf(pulling.loc) ))
-				stop_pulling()
-				return
-
-		/////
-		if(pulling && pulling.anchored)
-			stop_pulling()
-			return
-
-		if (!restrained())
-			var/diag = get_dir(src, pulling)
-			if ((diag - 1) & diag)
-			else
-				diag = null
-			if ((get_dist(src, pulling) > 1 || diag))
-				if (isliving(pulling))
-					var/mob/living/M = pulling
-					var/atom/movable/t = M.pulling
-					M.stop_pulling()
-
-					if(!istype(M.loc, /turf/space))
-						var/area/A = get_area(M)
-						if(A.has_gravity)
-							//this is the gay blood on floor shit -- Added back -- Skie
-							if (M.lying && (prob(M.getBruteLoss() / 6)))
-								var/bloodtrail = 1	//Checks if it's possible to even spill blood
-								if(ishuman(M))
-									var/mob/living/carbon/human/H = M
-									if(H.species.flags & NO_BLOOD)
-										bloodtrail = 0
-									else
-										var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
-										if(blood_volume < BLOOD_VOLUME_SURVIVE)
-											bloodtrail = 0	//Most of it's gone already, just leave it be
-										else
-											H.vessel.remove_reagent("blood", 1)
-								if(bloodtrail)
-									var/turf/location = M.loc
-									if(istype(location, /turf/simulated))
-										location.add_blood(M)
-							//pull damage with injured people
-								if(prob(25))
-									M.adjustBruteLoss(1)
-									visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state worsens": "wounds open more"] from being dragged!</span>")
-							if(M.pull_damage())
-								if(prob(25))
-									M.adjustBruteLoss(2)
-									visible_message("<span class='danger'>\The [M]'s [M.isSynthetic() ? "state" : "wounds"] worsen terribly from being dragged!</span>")
-									var/turf/location = M.loc
-									if (istype(location, /turf/simulated))
-										var/bloodtrail = 1	//Checks if it's possible to even spill blood
-										if(ishuman(M))
-											var/mob/living/carbon/human/H = M
-											if(H.species.flags & NO_BLOOD)
-												bloodtrail = 0
-											else
-												var/blood_volume = round((H.vessel.get_reagent_amount("blood")/H.species.blood_volume)*100)
-												if(blood_volume < BLOOD_VOLUME_SURVIVE)
-													bloodtrail = 0	//Most of it's gone already, just leave it be
-												else
-													H.vessel.remove_reagent("blood", 1)
-										if(bloodtrail)
-											if(istype(location, /turf/simulated))
-												location.add_blood(M)
-
-					if(get_dist(pulling.loc, T) > 1 || pulling.loc.z != T.z)
-						M.stop_pulling()
-					else
-						step(pulling, get_dir(pulling.loc, T))
-						if(t)
-							M.start_pulling(t)
-				else
-					if (pulling)
-						if (istype(pulling, /obj/structure/window))
-							var/obj/structure/window/W = pulling
-							if(W.is_fulltile())
-								for(var/obj/structure/window/win in get_step(pulling,get_dir(pulling.loc, T)))
-									stop_pulling()
-
-						if(get_dist(pulling.loc, T) > 1 || pulling.loc.z != T.z) // This is needed or else pulled objects can't get pushed away.
-							stop_pulling()
-						else
-							step(pulling, get_dir(pulling.loc, T))
-	else
-		stop_pulling()
-		. = ..()
-
-	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
-		s_active.close(src)
 
 /mob/living/proc/handle_footstep(turf/T)
 	return FALSE
@@ -903,7 +791,7 @@ default behaviour is:
 
 /mob/living/proc/process_resist()
 	//Getting out of someone's inventory.
-	if(istype(src.loc, /obj/item/weapon/holder))
+	if(istype(src.loc, /obj/item/holder))
 		escape_inventory(src.loc)
 		return
 
@@ -923,7 +811,7 @@ default behaviour is:
 
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 
-/mob/living/proc/escape_inventory(obj/item/weapon/holder/H)
+/mob/living/proc/escape_inventory(obj/item/holder/H)
 	if(H != src.loc) return
 
 	var/mob/M = H.loc //Get our mob holder (if any).
@@ -935,7 +823,7 @@ default behaviour is:
 
 		// Update whether or not this mob needs to pass emotes to contents.
 		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/weapon/holder))
+			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/holder))
 				return
 
 	else if(istype(H.loc,/obj/item/clothing/accessory/holster))
@@ -958,7 +846,7 @@ default behaviour is:
 
 /mob/living/proc/resist_grab()
 	var/resisting = 0
-	for(var/obj/item/weapon/grab/G in grabbed_by)
+	for(var/obj/item/grab/G in grabbed_by)
 		resisting++
 		G.handle_resist()
 	if(resisting)
@@ -998,26 +886,6 @@ default behaviour is:
 /mob/living/carbon/drop_from_inventory(var/obj/item/W, var/atom/Target = null)
 	if(W in internal_organs)
 		return
-	..()
-
-/mob/living/touch_map_edge()
-
-	//check for nuke disks
-	if(client && stat != DEAD) //if they are clientless and dead don't bother, the parent will treat them as any other container
-		if(ticker && istype(ticker.mode, /datum/game_mode/nuclear)) //only really care if the game mode is nuclear
-			var/datum/game_mode/nuclear/G = ticker.mode
-			if(G.check_mob(src))
-				if(x <= TRANSITIONEDGE)
-					inertia_dir = 4
-				else if(x >= world.maxx -TRANSITIONEDGE)
-					inertia_dir = 8
-				else if(y <= TRANSITIONEDGE)
-					inertia_dir = 1
-				else if(y >= world.maxy -TRANSITIONEDGE)
-					inertia_dir = 2
-				to_chat(src, "<span class='warning'>Something you are carrying is preventing you from leaving.</span>")
-				return
-
 	..()
 
 //damage/heal the mob ears and adjust the deaf amount
@@ -1093,6 +961,10 @@ default behaviour is:
 			lastpuke = 0
 
 /mob/living/update_canmove()
+	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
+	if(restrained())
+		stop_pulling()
+	// End
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 		canmove = 1
@@ -1131,7 +1003,7 @@ default behaviour is:
 	else
 		density = initial(density)
 
-	for(var/obj/item/weapon/grab/G in grabbed_by)
+	for(var/obj/item/grab/G in grabbed_by)
 		if(G.state >= GRAB_AGGRESSIVE)
 			canmove = 0
 			break
@@ -1277,8 +1149,8 @@ default behaviour is:
 	if(!item) return
 
 	var/throw_range = item.throw_range
-	if (istype(item, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = item
+	if (istype(item, /obj/item/grab))
+		var/obj/item/grab/G = item
 		item = G.throw_held() //throw the person instead of the grab
 		if(ismob(item))
 			var/mob/M = item
@@ -1300,17 +1172,8 @@ default behaviour is:
 
 	if(!src.lastarea)
 		src.lastarea = get_area(src.loc)
-	if((istype(src.loc, /turf/space)) || (src.lastarea.has_gravity == 0))
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
 
-
-/*
-	if(istype(src.loc, /turf/space) || (src.flags & NOGRAV)) //they're in space, move em one space in the opposite direction
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
-*/
-
+	newtonian_move(get_dir(target, src))
 
 	item.throw_at(target, throw_range, item.throw_speed, src)
 

@@ -159,6 +159,9 @@ datum/preferences
 				if(load_character())
 					return
 
+	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
+	C?.update_movement_keys(src)
+
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
 		if(!skills.Find(S.ID) || forced)
@@ -215,7 +218,7 @@ datum/preferences
 	if(!user || !user.client)	return
 
 	if(!get_mob_by_key(client_ckey))
-		user << "<span class='danger'>No mob exists for the given client!</span>"
+		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
 		close_load_dialog(user)
 		return
 
@@ -252,7 +255,7 @@ datum/preferences
 		if(config_legacy.forumurl)
 			user << link(config_legacy.forumurl)
 		else
-			user << "<span class='danger'>The forum URL is not set in the server configuration.</span>"
+			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 			return
 	ShowChoices(usr)
 	return 1

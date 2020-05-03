@@ -15,7 +15,7 @@
 	use_power = 1
 	idle_power_usage = 250
 	active_power_usage = 500
-	circuit = /obj/item/weapon/circuitboard/roguezones
+	circuit = /obj/item/circuitboard/roguezones
 
 	var/debug = 0
 	var/debug_scans = 0
@@ -117,7 +117,7 @@
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
 	//Update shuttle destination.
-	var/datum/shuttle/ferry/S = shuttle_controller.shuttles["Belter"]
+	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
 	S.area_offsite = ZM_target.myshuttle
 
 	//Re-enable shuttle.
@@ -146,10 +146,10 @@
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return // Not usable if shuttle is in occupied zone
 	// Okay do it
-	var/datum/shuttle/ferry/S = shuttle_controller.shuttles["Belter"]
+	var/datum/shuttle/ferry/S = SSshuttle.shuttles["Belter"]
 	S.launch(usr)
 
-/obj/item/weapon/circuitboard/roguezones
+/obj/item/circuitboard/roguezones
 	name = T_BOARD("asteroid belt scanning computer")
 	build_path = /obj/machinery/computer/roguezones
 	origin_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 1)
@@ -159,7 +159,7 @@
 #undef TRANSIT_Z
 #undef BELT_Z
 
-/obj/item/weapon/paper/rogueminer
+/obj/item/paper/rogueminer
 	name = "R-38 Scanner Console Guide"
 	info = {"<h4>Getting Started</h4>
 	Congratulations, your station has purchased the R-38 industrial asteroid belt scanner!<br>

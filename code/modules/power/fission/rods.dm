@@ -2,7 +2,7 @@
 #define ROD_TEMPERATURE_CUTOFF 10000
 #define ROD_EXPOSED_POWER 0.1
 
-/obj/item/weapon/fuelrod
+/obj/item/fuelrod
 	name = "Fuel Rod"
 	desc = "A nuclear rod."
 	icon = 'icons/obj/machines/power/fission.dmi'
@@ -20,15 +20,15 @@
 	var/melting_point = 3000 // Entering the danger zone.
 	var/decay_heat = 0 // MJ/mol (Yes, using MegaJoules per Mole. Techincally reduces power, but that reflects reduced lifespan.)
 
-/obj/item/weapon/fuelrod/Initialize()
+/obj/item/fuelrod/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/fuelrod/Destroy()
+/obj/item/fuelrod/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weapon/fuelrod/process()
+/obj/item/fuelrod/process()
 	if(isnull(loc))
 		return PROCESS_KILL
 
@@ -36,7 +36,7 @@
 		var/turf/T = get_turf(src)
 		equalize(T.return_air(), gasefficiency)
 
-		if(decay_heat > 0 && !istype(loc, /obj/item/weapon/storage/briefcase/fission))
+		if(decay_heat > 0 && !istype(loc, /obj/item/storage/briefcase/fission))
 			var/insertion_multiplier = ROD_EXPOSED_POWER
 			if(integrity == 0)
 				insertion_multiplier = 1
@@ -44,7 +44,7 @@
 			add_thermal_energy(power)
 			SSradiation.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
-/obj/item/weapon/fuelrod/proc/equalize(var/E, var/efficiency)
+/obj/item/fuelrod/proc/equalize(var/E, var/efficiency)
 	var/our_heatcap = heat_capacity()
 	// Ugly code ahead. Thanks for not allowing polymorphism, Byond.
 	if(istype(E, /obj/machinery/power/fission))
@@ -78,7 +78,7 @@
 	if(integrity == 0 && integrity_lost > 0) // Meltdown time.
 		meltdown()
 
-/obj/item/weapon/fuelrod/proc/add_thermal_energy(var/thermal_energy)
+/obj/item/fuelrod/proc/add_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 
@@ -91,10 +91,10 @@
 	temperature += thermal_energy/heat_capacity
 	return thermal_energy
 
-/obj/item/weapon/fuelrod/proc/heat_capacity()
+/obj/item/fuelrod/proc/heat_capacity()
 	. = specific_heat * (mass / molar_mass)
 
-/obj/item/weapon/fuelrod/proc/tick_life(var/apply_heat = 0, var/insertion_override = 0)
+/obj/item/fuelrod/proc/tick_life(var/apply_heat = 0, var/insertion_override = 0)
 	var/applied_insertion = get_insertion()
 	if(insertion_override)
 		applied_insertion = insertion_override
@@ -109,16 +109,16 @@
 			return ((decay_heat * (mass / molar_mass)) / lifespan) * (min(life, 100) / 100) * applied_insertion
 	return 0
 
-/obj/item/weapon/fuelrod/proc/get_insertion()
+/obj/item/fuelrod/proc/get_insertion()
 	var/applied_insertion = 1
 	if(istype(loc, /obj/machinery/power/fission) && icon_state != "rod_melt")
 		applied_insertion = insertion
 	return between(0, applied_insertion, 1)
 
-/obj/item/weapon/fuelrod/proc/is_melted()
+/obj/item/fuelrod/proc/is_melted()
 	return (icon_state == "rod_melt") ? 1 : 0
 
-/obj/item/weapon/fuelrod/proc/meltdown()
+/obj/item/fuelrod/proc/meltdown()
 	if(!is_melted())
 		if(decay_heat > 0)
 			life = life * 10
@@ -129,7 +129,7 @@
 		icon_state = "rod_melt"
 		integrity = 0
 
-/obj/item/weapon/fuelrod/uranium
+/obj/item/fuelrod/uranium
 	name = "uranium fuel rod"
 	desc = "A nuclear fuel rod."
 	color = "#75716E"
@@ -139,7 +139,7 @@
 	melting_point = 1405
 	decay_heat = 19536350 // MJ/mol
 
-/obj/item/weapon/fuelrod/plutonium
+/obj/item/fuelrod/plutonium
 	name = "plutonium fuel rod"
 	desc = "A nuclear fuel rod."
 	color = "#cbcbcb"
@@ -150,7 +150,7 @@
 	decay_heat = 20342002 // MJ/mol
 	lifespan = 1800
 
-/obj/item/weapon/fuelrod/beryllium
+/obj/item/fuelrod/beryllium
 	name = "beryllium reflector"
 	desc = "A neutron reflector."
 	color = "#878B96"
@@ -160,7 +160,7 @@
 	melting_point = 1560
 	lifespan = 7200
 
-/obj/item/weapon/fuelrod/tungstencarbide
+/obj/item/fuelrod/tungstencarbide
 	name = "tungsten carbide reflector"
 	desc = "A neutron reflector."
 	color = "#525252"
@@ -170,7 +170,7 @@
 	melting_point = 3058
 	lifespan = 14400
 
-/obj/item/weapon/fuelrod/silver
+/obj/item/fuelrod/silver
 	name = "silver control rod"
 	desc = "A nuclear control rod."
 	color = "#D1C9B6"
@@ -181,7 +181,7 @@
 	melting_point = 1235
 	lifespan = 4800
 
-/obj/item/weapon/fuelrod/boron
+/obj/item/fuelrod/boron
 	name = "boron control rod"
 	desc = "A nuclear control rod."
 	color = "#6F6E6A"

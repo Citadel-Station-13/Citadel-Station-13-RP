@@ -108,12 +108,12 @@
 
 	log_say("(COMMUNE to [key_name(M)]) [text]",src)
 
-	M << "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>"
+	to_chat(M, "<font color='blue'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
-		H << "<font color='red'>Your nose begins to bleed...</font>"
+		to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
 		H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
@@ -137,7 +137,7 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-		M << "<font color='green'>You hear a strange, alien voice in your head... <i>[msg]</i></font>"
+		to_chat(M, "<font color='green'>You hear a strange, alien voice in your head... <i>[msg]</i></font>")
 		to_chat(src, "<font color='green'>You said: \"[msg]\" to [M]</font>")
 	return
 

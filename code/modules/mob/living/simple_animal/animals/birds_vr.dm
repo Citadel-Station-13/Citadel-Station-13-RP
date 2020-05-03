@@ -16,7 +16,7 @@
 	emote_hear = list("chirps","caws")
 	emote_see = list("shakes their head", "ruffles their feathers")
 
-	holder_type = /obj/item/weapon/holder/bird
+	holder_type = /obj/item/holder/bird
 
 /mob/living/simple_mob/bird/kea
 	name = "Kea"
@@ -144,7 +144,7 @@
 	icon_living = "mtoo-flap"
 	icon_dead = "mtoo-dead"
 
-/obj/item/weapon/holder/bird
+/obj/item/holder/bird
 	name = "Bird"
 	desc = "It's a bird!"
 	icon_state = null

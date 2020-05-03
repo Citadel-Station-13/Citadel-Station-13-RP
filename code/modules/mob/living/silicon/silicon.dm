@@ -5,7 +5,7 @@
 	var/const/MAIN_CHANNEL = "Main Frequency"
 	var/lawchannel = MAIN_CHANNEL // Default channel on which to state laws
 	var/list/stating_laws = list()// Channels laws are currently being stated on
-	var/obj/item/device/radio/common_radio
+	var/obj/item/radio/common_radio
 
 	has_huds = TRUE
 	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
@@ -15,15 +15,15 @@
 	var/speak_exclamation = "declares"
 	var/speak_query = "queries"
 	var/pose //Yes, now AIs can pose too.
-	var/obj/item/device/camera/siliconcam/aiCamera = null //photography
+	var/obj/item/camera/siliconcam/aiCamera = null //photography
 	var/local_transmit //If set, can only speak to others of the same type within a short range.
 
 	var/next_alarm_notice
 	var/list/datum/alarm/queued_alarms = new()
 
 	var/list/access_rights
-	var/obj/item/weapon/card/id/idcard
-	var/idcard_type = /obj/item/weapon/card/id/synthetic
+	var/obj/item/card/id/idcard
+	var/idcard_type = /obj/item/card/id/synthetic
 
 	var/hudmode = null
 
@@ -37,7 +37,7 @@
 
 /mob/living/silicon/Destroy()
 	silicon_mob_list -= src
-	for(var/datum/alarm_handler/AH in alarm_manager.all_handlers)
+	for(var/datum/alarm_handler/AH in SSalarms.all_handlers)
 		AH.unregister_alarm(src)
 	return ..()
 
@@ -81,7 +81,7 @@
 
 /mob/living/silicon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 0.0)
 	if(shock_damage > 0)
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, loc)
 		s.start()
 
@@ -157,8 +157,8 @@
 
 // this function displays the shuttles ETA in the status panel if the shuttle has been called
 /mob/living/silicon/proc/show_emergency_shuttle_eta()
-	if(emergency_shuttle)
-		var/eta_status = emergency_shuttle.get_status_panel_eta()
+	if(SSemergencyshuttle)
+		var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 		if(eta_status)
 			stat(null, eta_status)
 
@@ -186,7 +186,7 @@
 //can't inject synths
 /mob/living/silicon/can_inject(var/mob/user, var/error_msg)
 	if(error_msg)
-		user << "<span class='alert'>The armoured plating is too tough.</span>"
+		to_chat(user, "<span class='alert'>The armoured plating is too tough.</span>")
 	return 0
 
 
@@ -411,7 +411,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	job_master.FreeRole(job)
+	SSjobs.FreeRole(job)
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)

@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(transcore)
 	var/datum/transhuman/mind_record/list/backed_up = list()	// All known mind records, indexed by MR.mindname/mind.name
 	var/datum/transhuman/mind_record/list/has_left = list()		// Why do we even have this?
 	var/datum/transhuman/body_record/list/body_scans = list()	// All known body records, indexed by BR.mydna.name
-	var/obj/item/weapon/implant/backup/list/implants = list()	// All OPERATING implants that are being ticked
+	var/obj/item/implant/backup/list/implants = list()	// All OPERATING implants that are being ticked
 
 	var/list/current_run = list()
 
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(transcore)
 
 	var/list/current_run = src.current_run
 	while(current_run.len)
-		var/obj/item/weapon/implant/backup/imp = current_run[current_run.len]
+		var/obj/item/implant/backup/imp = current_run[current_run.len]
 		current_run.len--
 
 		//Remove if not in a human anymore.
@@ -124,7 +124,7 @@ SUBSYSTEM_DEF(transcore)
 		for(var/N in SStranscore.backed_up[N])
 			if(N) backed_up[N] = SStranscore.backed_up[N]
 
-/datum/controller/subsystem/transcore/proc/m_backup(var/datum/mind/mind, var/obj/item/device/nif/nif, var/one_time = FALSE)
+/datum/controller/subsystem/transcore/proc/m_backup(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
 	ASSERT(mind)
 	if(!mind.name || core_dumped)
 		return 0
@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(transcore)
 	subsystem_log("Removed [BR.mydna.name] from transcore body DB.")
 
 // Moves all mind records from the databaes into the disk and shuts down all backup canary processing.
-/datum/controller/subsystem/transcore/proc/core_dump(var/obj/item/weapon/disk/transcore/disk)
+/datum/controller/subsystem/transcore/proc/core_dump(var/obj/item/disk/transcore/disk)
 	ASSERT(disk)
 	global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Command")
 	global_announcer.autosay("An emergency core dump has been initiated!", "TransCore Oversight", "Medical")

@@ -18,6 +18,8 @@
 	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 
+	/// The orbiter comopnent if we're being orbited.
+	var/datum/component/orbiter/orbiters
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -147,9 +149,6 @@
 		return flags & INSERT_CONTAINER
 */
 
-/atom/proc/CheckExit()
-	return 1
-
 // If you want to use this, the atom must have the PROXMOVE flag, and the moving
 // atom must also have the PROXMOVE flag currently to help with lag. ~ ComicIronic
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
@@ -214,7 +213,7 @@
 		else
 			f_name += "oil-stained [name][infix]."
 
-	user << "\icon[src] That's [f_name] [suffix]"
+	to_chat(user, "\icon[src] That's [f_name] [suffix]")
 	user << desc
 
 	return distance == -1 || (get_dist(src, user) <= distance)
@@ -223,11 +222,6 @@
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()
 	return
-
-//called to set the atom's dir and used to add behaviour to dir-changes
-/atom/proc/setDir(new_dir)
-	. = new_dir != dir
-	dir = new_dir
 
 /atom/proc/ex_act()
 	return
@@ -242,10 +236,10 @@
 // Returns an assoc list of RCD information.
 // Example would be: list(RCD_VALUE_MODE = RCD_DECONSTRUCT, RCD_VALUE_DELAY = 50, RCD_VALUE_COST = RCD_SHEETS_PER_MATTER_UNIT * 4)
 // This occurs before rcd_act() is called, and it won't be called if it returns FALSE.
-/atom/proc/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/atom/proc/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	return FALSE
 
-/atom/proc/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/atom/proc/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	return
 
 /atom/proc/melt()
@@ -540,16 +534,6 @@
 /atom/proc/InsertedContents()
 	return contents
 
-/atom/proc/has_gravity(turf/T)
-	if(!T || !isturf(T))
-		T = get_turf(src)
-	if(istype(T, /turf/space)) // Turf never has gravity
-		return FALSE
-	var/area/A = get_area(T)
-	if(A && A.has_gravity())
-		return TRUE
-	return FALSE
-
 /atom/proc/drop_location()
 	var/atom/L = loc
 	if(!L)
@@ -621,3 +605,13 @@
 		else if(C)
 			color = C
 			return
+
+/**
+  * Returns if we have gravity on a specified turf.
+  */
+/atom/proc/has_gravity(turf/T)
+	if(!T)
+		T = get_turf(src)
+	if(!T)
+		return TRUE
+	return T.has_gravity()

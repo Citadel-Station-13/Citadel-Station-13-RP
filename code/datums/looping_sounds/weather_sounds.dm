@@ -1,5 +1,7 @@
 /datum/looping_sound/weather
 	pref_check = /datum/client_preference/weather_sounds
+	soundenvwet = -10000
+	soundenvdry = 0
 
 /datum/looping_sound/weather/outside_blizzard
 	mid_sounds = list(
@@ -11,7 +13,7 @@
 	start_sound = 'sound/effects/weather/snowstorm/outside/active_start.ogg'
 	start_length = 13 SECONDS
 	end_sound = 'sound/effects/weather/snowstorm/outside/active_end.ogg'
-	volume = 60
+	volume = 40
 
 /datum/looping_sound/weather/inside_blizzard
 	mid_sounds = list(
@@ -23,7 +25,7 @@
 	start_sound = 'sound/effects/weather/snowstorm/inside/active_start.ogg'
 	start_length = 13 SECONDS
 	end_sound = 'sound/effects/weather/snowstorm/inside/active_end.ogg'
-	volume = 40
+	volume = 20
 
 /datum/looping_sound/weather/outside_snow
 	mid_sounds = list(
@@ -35,7 +37,7 @@
 	start_sound = 'sound/effects/weather/snowstorm/outside/weak_start.ogg'
 	start_length = 13 SECONDS
 	end_sound = 'sound/effects/weather/snowstorm/outside/weak_end.ogg'
-	volume = 40
+	volume = 30
 
 /datum/looping_sound/weather/inside_snow
 	mid_sounds = list(
@@ -47,7 +49,7 @@
 	start_sound = 'sound/effects/weather/snowstorm/inside/weak_start.ogg'
 	start_length = 13 SECONDS
 	end_sound = 'sound/effects/weather/snowstorm/inside/weak_end.ogg'
-	volume = 20
+	volume = 15
 
 /datum/looping_sound/weather/wind
 	mid_sounds = list(
@@ -59,11 +61,11 @@
 		'sound/effects/weather/wind/wind_5_1.ogg' = 1
 		)
 	mid_length = 10 SECONDS // The lengths for the files vary, but the longest is ten seconds, so this will make it sound like intermittent wind.
-	volume = 40
+	volume = 30
 
 // Don't have special sounds so we just make it quieter indoors.
 /datum/looping_sound/weather/wind/indoors
-	volume = 20
+	volume = 15
 
 /datum/looping_sound/weather/rain
 	mid_sounds = list(
@@ -73,7 +75,7 @@
 	start_sound = 'sound/effects/weather/acidrain_start.ogg'
 	start_length = 13 SECONDS
 	end_sound = 'sound/effects/weather/acidrain_end.ogg'
-	volume = 40
+	volume = 30
 
 /datum/looping_sound/weather/rain/indoors
-	volume = 20
+	volume = 15

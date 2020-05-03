@@ -13,7 +13,7 @@
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(Debug2)
-		world.log << "## DEBUG: getarmor() was called."
+		log_world("## DEBUG: getarmor() was called.")
 
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
@@ -23,7 +23,7 @@
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
 		if(Debug2)
-			world.log << "## DEBUG: The range of armor variance is [armor_variance_range].  The variance picked by RNG is [armor_variance]."
+			log_world("## DEBUG: The range of armor variance is [armor_variance_range].  The variance picked by RNG is [armor_variance].")
 
 		armor = min(armor + armor_variance, 100)	//Now we calcuate damage using the new armor percentage.
 		armor = max(armor - armour_pen, 0)			//Armor pen makes armor less effective.
@@ -39,7 +39,7 @@
 			else
 				to_chat(src, "<span class='danger'>Your armor softens the blow!</span>")
 		if(Debug2)
-			world.log << "## DEBUG: Armor when [src] was attacked was [armor]."
+			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
 /*
@@ -95,15 +95,15 @@
 // Clicking with an empty hand
 /mob/living/attack_hand(mob/living/L)
 	..()
-	if(istype(L) && L.a_intent != I_HELP)
+	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)
 
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
-	if(istype(get_active_hand(),/obj/item/device/assembly/signaler))
-		var/obj/item/device/assembly/signaler/signaler = get_active_hand()
+	if(istype(get_active_hand(),/obj/item/assembly/signaler))
+		var/obj/item/assembly/signaler/signaler = get_active_hand()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
@@ -129,7 +129,7 @@
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
-		src <<"<font color='red'>You have been hit by [P]!</font>"
+		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
 		if(!P.nodamage)
 			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)

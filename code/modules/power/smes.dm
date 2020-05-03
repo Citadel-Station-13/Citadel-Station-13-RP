@@ -12,7 +12,7 @@
 	density = 1
 	anchored = 1
 	use_power = 0
-	circuit = /obj/item/weapon/circuitboard/smes
+	circuit = /obj/item/circuitboard/smes
 
 	var/capacity = 5e6 // maximum charge
 	var/charge = 1e6 // actual charge
@@ -252,7 +252,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(W.is_screwdriver())
 		if(!open_hatch)
 			open_hatch = 1
@@ -298,7 +298,7 @@
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, 50 * W.toolspeed))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
-						var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(5, 1, src)
 						s.start()
 						building_terminal = 0
@@ -413,7 +413,7 @@
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>The [src.name] is making strange noises!</font>", 3, "<font color='red'>You hear sizzling electronics.</font>", 2)
 			sleep(10*pick(4,5,6,7,10,14))
-			var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(3, 0, src.loc)
 			smoke.attach(src)
 			smoke.start()
@@ -421,7 +421,7 @@
 			qdel(src)
 			return
 		if(prob(15)) //Power drain
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
 			if(prob(25))
@@ -433,7 +433,7 @@
 			else
 				emp_act(4)
 		if(prob(5)) //smoke only
-			var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(3, 0, src.loc)
 			smoke.attach(src)
 			smoke.start()

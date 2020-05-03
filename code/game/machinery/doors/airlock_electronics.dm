@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/item/weapon/airlock_electronics
+/obj/item/airlock_electronics
 	name = "airlock electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -67,8 +67,8 @@
 				src.last_configurator = usr.name
 			else
 				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/device/pda))
-					var/obj/item/device/pda/pda = I
+				if (istype(I, /obj/item/pda))
+					var/obj/item/pda/pda = I
 					I = pda.id
 				if (I && src.check_access(I))
 					src.locked = 0
@@ -106,7 +106,7 @@
 						conf_access = null
 
 
-/obj/item/weapon/airlock_electronics/secure
+/obj/item/airlock_electronics/secure
 	name = "secure airlock electronics"
 	desc = "designed to be somewhat more resistant to hacking than standard electronics."
 	origin_tech = list(TECH_DATA = 2)

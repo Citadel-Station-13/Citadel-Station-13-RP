@@ -1,4 +1,4 @@
-/obj/item/device/radio/electropack
+/obj/item/radio/electropack
 	name = "electropack"
 	desc = "Dance my monkeys! DANCE!!!"
 	icon_state = "electropack0"
@@ -15,17 +15,17 @@
 
 	var/code = 2
 
-/obj/item/device/radio/electropack/attack_hand(mob/living/user as mob)
+/obj/item/radio/electropack/attack_hand(mob/living/user as mob)
 	if(src == user.back)
-		user << "<span class='notice'>You need help taking this off!</span>"
+		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
 		return
 	..()
 
-/obj/item/device/radio/electropack/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/radio/electropack/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/clothing/head/helmet))
 		if(!b_stat)
-			user << "<span class='notice'>[src] is not ready to be attached!</span>"
+			to_chat(user, "<span class='notice'>[src] is not ready to be attached!</span>")
 			return
 		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit( user )
 		A.icon = 'icons/obj/assemblies.dmi'
@@ -43,11 +43,11 @@
 		user.put_in_hands(A)
 		A.add_fingerprint(user)
 
-/obj/item/device/radio/electropack/Topic(href, href_list)
+/obj/item/radio/electropack/Topic(href, href_list)
 	//..()
 	if(usr.stat || usr.restrained())
 		return
-	if(((istype(usr, /mob/living/carbon/human) && ((!( ticker ) || (ticker && ticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
+	if(((istype(usr, /mob/living/carbon/human) && ((!( SSticker ) || (SSticker && SSticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
 		usr.set_machine(src)
 		if(href_list["freq"])
 			var/new_frequency = sanitize_frequency(frequency + text2num(href_list["freq"]))
@@ -81,7 +81,7 @@
 		return
 	return
 
-/obj/item/device/radio/electropack/receive_signal(datum/signal/signal)
+/obj/item/radio/electropack/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption != code)
 		return
 
@@ -95,8 +95,8 @@
 				sleep(50)
 				if(M)
 					M.moved_recently = 0
-		M << "<span class='danger'>You feel a sharp shock!</span>"
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		to_chat(M, "<span class='danger'>You feel a sharp shock!</span>")
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
 
@@ -106,7 +106,7 @@
 		master.receive_signal()
 	return
 
-/obj/item/device/radio/electropack/attack_self(mob/user as mob, flag1)
+/obj/item/radio/electropack/attack_self(mob/user as mob, flag1)
 
 	if(!istype(user, /mob/living/carbon/human))
 		return

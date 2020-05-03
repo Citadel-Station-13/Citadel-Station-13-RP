@@ -1,7 +1,8 @@
-/obj/item/weapon/melee/chainofcommand
+/obj/item/melee/chainofcommand
 	name = "chain of command"
 	desc = "A tool used by great men to placate the frothing masses."
 	icon_state = "chain"
+	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 7
@@ -9,15 +10,15 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
-	suicide_act(mob/user)
-		var/datum/gender/T = gender_datums[user.get_visible_gender()]
-		user.visible_message(span("danger", "\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), span("danger", "You start to strangle yourself with \the [src]!"), span("danger", "You hear the sound of someone choking!"))
-		return (OXYLOSS)
+/obj/item/melee/chainofcommand/suicide_act(mob/user)
+	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	user.visible_message(span("danger", "\The [user] [T.is] strangling [T.himself] with \the [src]! It looks like [T.he] [T.is] trying to commit suicide."), span("danger", "You start to strangle yourself with \the [src]!"), span("danger", "You hear the sound of someone choking!"))
+	return (OXYLOSS)
 
-
-/obj/item/weapon/melee/sabre
+/obj/item/melee/sabre
 	name = "officer's sabre"
 	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
+	hitsound = "swing_hit"
 	icon_state = "sabre"
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	force = 35
@@ -26,12 +27,12 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-/obj/item/weapon/melee/sabre/suicide_act(mob/user)
+/obj/item/melee/sabre/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
 
-/obj/item/weapon/melee/umbrella
+/obj/item/melee/umbrella
 	name = "umbrella"
 	desc = "To keep the rain off you. Use with caution on windy days."
 	icon = 'icons/obj/items.dmi'
@@ -43,14 +44,14 @@
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
-/obj/item/weapon/melee/umbrella/New()
+/obj/item/melee/umbrella/New()
 	..()
 	update_icon()
 
-/obj/item/weapon/melee/umbrella/attack_self()
+/obj/item/melee/umbrella/attack_self()
 	src.toggle_umbrella()
 
-/obj/item/weapon/melee/umbrella/proc/toggle_umbrella()
+/obj/item/melee/umbrella/proc/toggle_umbrella()
 	open = !open
 	icon_state = "umbrella_[open ? "open" : "closed"]"
 	addblends = icon_state + "_a"
@@ -63,11 +64,11 @@
 	..()
 
 // Randomizes color
-/obj/item/weapon/melee/umbrella/random/New()
+/obj/item/melee/umbrella/random/New()
 	color = "#"+get_random_colour()
 	..()
 
-/obj/item/weapon/melee/cursedblade
+/obj/item/melee/cursedblade
 	name = "crystal blade"
 	desc = "The red crystal blade's polished surface glints in the light, giving off a faint glow."
 	icon_state = "soulblade"
@@ -83,14 +84,14 @@
 	var/list/voice_mobs = list() //The curse of the sword is that it has someone trapped inside.
 
 
-/obj/item/weapon/melee/cursedblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/melee/cursedblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(50))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return 1
 	return 0
 
-/obj/item/weapon/melee/cursedblade/proc/ghost_inhabit(var/mob/candidate)
+/obj/item/melee/cursedblade/proc/ghost_inhabit(var/mob/candidate)
 	if(!isobserver(candidate))
 		return
 	//Handle moving the ghost into the new shell.

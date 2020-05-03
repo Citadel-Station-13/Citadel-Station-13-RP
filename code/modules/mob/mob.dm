@@ -41,6 +41,7 @@
 
 /mob/Initialize()
 	mob_list += src
+	set_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
@@ -108,6 +109,43 @@
 		else if(blind_message)
 			M.show_message(blind_message, 2)
 
+/**
+  * Reset the attached clients perspective (viewpoint)
+  *
+  * reset_perspective() set eye to common default : mob on turf, loc otherwise
+  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
+  */
+/mob/proc/reset_perspective(atom/A)
+	if(client)
+		if(A)
+			if(ismovable(A))
+				//Set the the thing unless it's us
+				if(A != src)
+					client.perspective = EYE_PERSPECTIVE
+					client.eye = A
+				else
+					client.eye = client.mob
+					client.perspective = MOB_PERSPECTIVE
+			else if(isturf(A))
+				//Set to the turf unless it's our current turf
+				if(A != loc)
+					client.perspective = EYE_PERSPECTIVE
+					client.eye = A
+				else
+					client.eye = client.mob
+					client.perspective = MOB_PERSPECTIVE
+			else
+				//Do nothing
+		else
+			//Reset to common defaults: mob if on turf, otherwise current loc
+			if(isturf(loc))
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+			else
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = loc
+		return 1
+
 // Returns an amount of power drawn from the object (-1 if it's not viable).
 // If drain_check is set it will not actually drain power, just return a value.
 // If surge is set, it will destroy/damage the recipient and not return any power.
@@ -144,9 +182,6 @@
 	for(var/mob/M in mob_list)
 		if (M.real_name == text("[]", msg))
 			return M
-	return 0
-
-/mob/proc/movement_delay(oldloc, direct)
 	return 0
 
 /mob/proc/Life()
@@ -319,7 +354,7 @@
 /mob/proc/update_flavor_text()
 	set src in usr
 	if(usr != src)
-		usr << "No."
+		to_chat(usr, "No.")
 	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
 
 	if(msg != null)
@@ -352,10 +387,10 @@
 	if (!( config_legacy.abandon_allowed ))
 		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
 		return
-	if ((stat != 2 || !( ticker )))
+	if ((stat != 2 || !( SSticker )))
 		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
-	if (ticker.mode && ticker.mode.deny_respawn) //BS12 EDIT
+	if (SSticker.mode && SSticker.mode.deny_respawn) //BS12 EDIT
 		to_chat(usr, "<span class='notice'>Respawn is disabled for this roundtype.</span>")
 		return
 	else
@@ -376,7 +411,7 @@
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 
-		if ((deathtime < (1 * 600)) && (ticker && ticker.current_state > GAME_STATE_PREGAME))	//VOREStation Edit: lower respawn timer
+		if ((deathtime < (1 * 600)) && (SSticker && SSticker.current_state > GAME_STATE_PREGAME))	//VOREStation Edit: lower respawn timer
 			to_chat(usr, "You must wait 1 minute to respawn!")
 			return
 		else
@@ -446,7 +481,7 @@
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		usr << "<font color='blue'>You must be observing to use this!</font>"
+		to_chat(usr, "<font color='blue'>You must be observing to use this!</font>")
 		return
 
 	if(is_admin && stat == DEAD)
@@ -459,7 +494,7 @@
 	for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
 		if(!O.loc)
 			continue
-		if(istype(O, /obj/item/weapon/disk/nuclear))
+		if(istype(O, /obj/item/disk/nuclear))
 			var/name = "Nuclear Disk"
 			if (names.Find(name))
 				namecounts[name]++
@@ -576,92 +611,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(istype(M,/mob/living/silicon/ai)) return
 	show_inv(usr)
 
-
-/mob/verb/stop_pulling()
-
-	set name = "Stop Pulling"
-	set category = "IC"
-
-	if(pulling)
-		pulling.pulledby = null
-		pulling = null
-		if(pullin)
-			pullin.icon_state = "pull0"
-
-/mob/proc/start_pulling(var/atom/movable/AM)
-
-	if ( !AM || !usr || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
-		return
-
-	if (AM.anchored)
-		to_chat(src, "<span class='warning'>It won't budge!</span>")
-		return
-
-	var/mob/M = AM
-	if(ismob(AM))
-
-		if(!can_pull_mobs || !can_pull_size)
-			to_chat(src, "<span class='warning'>They won't budge!</span>")
-			return
-
-		if((mob_size < M.mob_size) && (can_pull_mobs != MOB_PULL_LARGER))
-			to_chat(src, "<span class='warning'>[M] is too large for you to move!</span>")
-			return
-
-		if((mob_size == M.mob_size) && (can_pull_mobs == MOB_PULL_SMALLER))
-			to_chat(src, "<span class='warning'>[M] is too heavy for you to move!</span>")
-			return
-
-		// If your size is larger than theirs and you have some
-		// kind of mob pull value AT ALL, you will be able to pull
-		// them, so don't bother checking that explicitly.
-
-		if(M.grabbed_by.len)
-			// Only start pulling when nobody else has a grab on them
-			. = 1
-			for(var/obj/item/weapon/grab/G in M.grabbed_by)
-				if(G.assailant != usr)
-					. = 0
-				else
-					qdel(G)
-			if(!.)
-				to_chat(src, "<span class='warning'>Somebody has a grip on them!</span>")
-				return
-
-		if(!iscarbon(src))
-			M.LAssailant = null
-		else
-			M.LAssailant = usr
-
-	else if(isobj(AM))
-		var/obj/I = AM
-		if(!can_pull_size || can_pull_size < I.w_class)
-			to_chat(src, "<span class='warning'>It won't budge!</span>")
-			return
-
-	if(pulling)
-		var/pulling_old = pulling
-		stop_pulling()
-		// Are we pulling the same thing twice? Just stop pulling.
-		if(pulling_old == AM)
-			return
-
-	src.pulling = AM
-	AM.pulledby = src
-
-	if(pullin)
-		pullin.icon_state = "pull1"
-
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(H.pull_damage())
-			to_chat(src, "<font color='red'><B>Pulling \the [H] in their current condition would probably be a bad idea.</B></font>")
-
-	//Attempted fix for people flying away through space when cuffed and dragged.
-	if(ismob(AM))
-		var/mob/pulled = AM
-		pulled.inertia_dir = 0
-
 /mob/proc/can_use_hands()
 	return
 
@@ -714,6 +663,28 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		//L += SSshuttle.emergency_shuttle_stat_text
 		//stat(null, "[L.Join("\n\n")]")
 
+	if(listed_turf && client)
+		if(!TurfAdjacent(listed_turf))
+			listed_turf = null
+		else
+			statpanel(listed_turf.name, null, listed_turf)
+			var/list/overrides = list()
+			for(var/image/I in client.images)
+				if(I.loc && I.loc.loc == listed_turf && I.override)
+					overrides += I.loc
+			for(var/atom/A in listed_turf)
+				if(!A.mouse_opacity)
+					continue
+				if(A.invisibility > see_invisible)
+					continue
+				if(overrides.len && (A in overrides))
+					continue
+/*
+				if(A.IsObscured())
+					continue
+*/
+				statpanel(listed_turf.name, null, A)
+
 	if(client.holder)
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
@@ -746,69 +717,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				for(var/i in GLOB.sdql2_queries)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
-		if(statpanel("Processes"))
-			if(processScheduler)
-				processScheduler.statProcesses()
 
-/*
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else if(statpanel("Turf"))
-			stat("\icon[listed_turf]", listed_turf.name)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-				/*
-				if(A.IsObscured())
-					continue
-				*/
-				if(A.plane > plane)
-					continue
-				stat(A)
-*/
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			statpanel(listed_turf.name, null, listed_turf)
-			var/list/overrides = list()
-			for(var/image/I in client.images)
-				if(I.loc && I.loc.loc == listed_turf && I.override)
-					overrides += I.loc
-			for(var/atom/A in listed_turf)
-				if(!A.mouse_opacity)
-					continue
-				if(A.invisibility > see_invisible)
-					continue
-				if(overrides.len && (A in overrides))
-					continue
-/*
-				if(A.IsObscured())
-					continue
-*/
-				statpanel(listed_turf.name, null, A)
-
-// facing verbs
-/mob/proc/canface()
-	if(!canmove)
-		return FALSE
-	if(stat)
-		return FALSE
-	if(anchored)
-		return FALSE
-	if(transforming)
-		return FALSE
-	return TRUE
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -817,37 +726,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
 	return canmove
-
-
-/mob/proc/facedir(var/ndir)
-	if(!canface() || (client && (client.moving || (world.time < move_delay))))
-		return 0
-	setDir(ndir)
-	if(buckled && buckled.buckle_movable)
-		buckled.setDir(ndir)
-	move_delay += movement_delay()
-	return 1
-
-
-/mob/verb/eastface()
-	set hidden = 1
-	return facedir(client.client_dir(EAST))
-
-
-/mob/verb/westface()
-	set hidden = 1
-	return facedir(client.client_dir(WEST))
-
-
-/mob/verb/northface()
-	set hidden = 1
-	return facedir(client.client_dir(NORTH))
-
-
-/mob/verb/southface()
-	set hidden = 1
-	return facedir(client.client_dir(SOUTH))
-
 
 //This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
@@ -993,11 +871,11 @@ mob/proc/yank_out_object()
 	usr.setClickCooldown(20)
 
 	if(usr.stat == 1)
-		usr << "You are unconcious and cannot do that!"
+		to_chat(usr, "You are unconcious and cannot do that!")
 		return
 
 	if(usr.restrained())
-		usr << "You are restrained and cannot do that!"
+		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
 	var/mob/S = src
@@ -1013,15 +891,15 @@ mob/proc/yank_out_object()
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
-			U << "[src] has nothing stuck in their wounds that is large enough to remove."
+			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
 
-	var/obj/item/weapon/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
+	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 
 	if(self)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
 	else
-		U << "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>"
+		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
 
 	if(!do_after(U, 30))
 		return
@@ -1067,7 +945,7 @@ mob/proc/yank_out_object()
 	selection.forceMove(get_turf(src))
 	U.put_in_hands(selection)
 
-	for(var/obj/item/weapon/O in pinned)
+	for(var/obj/item/O in pinned)
 		if(O == selection)
 			pinned -= O
 		if(!pinned.len)
@@ -1095,9 +973,9 @@ mob/proc/yank_out_object()
 	set_face_dir()
 
 	if(!facing_dir)
-		usr << "You are now not facing anything."
+		to_chat(usr, "You are now not facing anything.")
 	else
-		usr << "You are now facing [dir2text(facing_dir)]."
+		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
 /mob/proc/set_face_dir(var/newdir)
 	if(newdir == facing_dir)

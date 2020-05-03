@@ -31,7 +31,7 @@
 		"Your form begins to slowly soften and break apart, rounding out Runtime's swollen belly. The carnivorous cat rumbles and purrs happily at the feeling of such a filling meal.")
 
 // Ascian's Tactical Kitten
-/obj/item/weapon/holder/cat/fluff/tabiranth
+/obj/item/holder/cat/fluff/tabiranth
 	name = "Spirit"
 	desc = "A small, inquisitive feline, who constantly seems to investigate his surroundings."
 	gender = MALE
@@ -45,7 +45,7 @@
 	icon_state = "kitten"
 	item_state = "kitten"
 	gender = MALE
-	holder_type = /obj/item/weapon/holder/cat/fluff/tabiranth
+	holder_type = /obj/item/holder/cat/fluff/tabiranth
 	friend_name = "Ascian"
 	digestable = 0
 	meat_amount = 0

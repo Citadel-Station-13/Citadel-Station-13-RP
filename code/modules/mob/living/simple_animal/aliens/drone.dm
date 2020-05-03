@@ -19,7 +19,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm = "hits"
 
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	ranged = 1
 	rapid = 1
 	projectiletype = /obj/item/projectile/beam/drone
@@ -44,7 +44,7 @@
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 
 
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/turf/patrol_target
 	var/explode_chance = 1
 	var/disabled = 0
@@ -85,14 +85,14 @@
 	//repair a bit of damage
 	if(prob(1))
 		src.visible_message("<font color='red'>\icon[src] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		health += rand(25,100)
 
 	//spark for no reason
 	if(prob(5))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
@@ -134,7 +134,7 @@
 			src.visible_message("<font color='red'>\icon[src] [src] begins to spark and shake violenty!</font>")
 		else
 			src.visible_message("<font color='red'>\icon[src] [src] sparks and shakes like it's about to explode!</font>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
@@ -164,22 +164,22 @@
 /mob/living/simple_mob/hostile/malf_drone/Destroy()
 	//More advanced than the default S_A loot system, for visual effect and random tech levels.
 	if(has_loot)
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		var/obj/O
 
 		//shards
-		O = new /obj/item/weapon/material/shard(src.loc)
+		O = new /obj/item/material/shard(src.loc)
 		step_to(O, get_turf(pick(view(7, src))))
 		if(prob(75))
-			O = new /obj/item/weapon/material/shard(src.loc)
+			O = new /obj/item/material/shard(src.loc)
 			step_to(O, get_turf(pick(view(7, src))))
 		if(prob(50))
-			O = new /obj/item/weapon/material/shard(src.loc)
+			O = new /obj/item/material/shard(src.loc)
 			step_to(O, get_turf(pick(view(7, src))))
 		if(prob(25))
-			O = new /obj/item/weapon/material/shard(src.loc)
+			O = new /obj/item/material/shard(src.loc)
 			step_to(O, get_turf(pick(view(7, src))))
 
 		//rods
@@ -209,7 +209,7 @@
 			step_to(O, get_turf(pick(view(7, src))))
 
 		//also drop dummy circuit boards deconstructable for research (loot)
-		var/obj/item/weapon/circuitboard/C
+		var/obj/item/circuitboard/C
 
 		//spawn 1-4 boards of a random type
 		var/spawnees = 0

@@ -1,13 +1,15 @@
 #define HUMAN_LOWEST_SLOWDOWN -3
 
 /mob/living/carbon/human/movement_delay(oldloc, direct)
+	. = ..()
 
 	var/tally = 0
 
 	if(species.slowdown)
 		tally = species.slowdown
 
-	if (istype(loc, /turf/space)) return -1 // It's hard to be slowed down in space by... anything
+	if (istype(loc, /turf/space))
+		return -1 // It's hard to be slowed down in space by... anything
 
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
@@ -89,6 +91,7 @@
 	// Item related slowdown.
 	var/item_tally = calculate_item_encumbrance()
 
+	/* removed - kevinz000. A system will eventually be reintroduced to do this, but for the moment I'd rather this Not be a thing.
 	// Dragging heavy objects will also slow you down, similar to above.
 	if(pulling)
 		if(istype(pulling, /obj/item))
@@ -98,6 +101,7 @@
 			var/mob/living/carbon/human/H = pulling
 			var/their_slowdown = max(H.calculate_item_encumbrance(), 1)
 			item_tally = max(item_tally, their_slowdown) // If our slowdown is less than theirs, then we become as slow as them (before species modifires).
+	*/
 
 	item_tally *= species.item_slowdown_mod
 
@@ -113,7 +117,7 @@
 			tally = tally/2
 		tally -= chem_effects[CE_SPEEDBOOST]	// give 'em a buff on top.
 
-	return max(HUMAN_LOWEST_SLOWDOWN, tally+config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
+	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
 
 // This calculates the amount of slowdown to receive from items worn. This does NOT include species modifiers.
 // It is in a seperate place to avoid an infinite loop situation with dragging mobs dragging each other.
@@ -172,33 +176,29 @@
 
 #undef HUMAN_LOWEST_SLOWDOWN
 
-/mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
-	//Can we act?
-	if(restrained())	return 0
-
+/mob/living/carbon/human/Process_Spacemove(dir)
 	//Do we have a working jetpack?
-	var/obj/item/weapon/tank/jetpack/thrust
+	var/obj/item/tank/jetpack/thrust
 	if(back)
-		if(istype(back,/obj/item/weapon/tank/jetpack))
+		if(istype(back,/obj/item/tank/jetpack))
 			thrust = back
-		else if(istype(back,/obj/item/weapon/rig))
-			var/obj/item/weapon/rig/rig = back
+		else if(istype(back,/obj/item/rig))
+			var/obj/item/rig/rig = back
 			for(var/obj/item/rig_module/maneuvering_jets/module in rig.installed_modules)
 				thrust = module.jets
 				break
 
-	if(thrust)
-		if(((!check_drift) || (check_drift && thrust.stabilization_on)) && (!lying) && (thrust.allow_thrust(0.01, src)))
-			inertia_dir = 0
-			return 1
-	if(flying) //VOREStation Edit. If you're flying, you glide around!
-		return 0  //VOREStation Edit.
+	if(thrust && !lying)
+		if(dir != NONE)
+			if(thrust.allow_thrust(0.01, src))
+				return TRUE
+		else
+			if(thrust.stabilization_on && thrust.allow_thrust(0.01, src))
+				return TRUE
+	if(flying)
+		return TRUE
 
-	//If no working jetpack then use the other checks
-	if(..())
-		return 1
-	return 0
-
+	return ..()
 
 /mob/living/carbon/human/Process_Spaceslipping(var/prob_slip = 5)
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.

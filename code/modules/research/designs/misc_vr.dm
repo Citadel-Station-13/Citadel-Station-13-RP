@@ -11,7 +11,7 @@
 	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000, "uranium" = 2000)
-	build_path = /obj/item/weapon/gun/energy/sizegun
+	build_path = /obj/item/gun/energy/sizegun
 	sort_string = "TAVAB"
 
 /datum/design/item/general/bodysnatcher
@@ -19,5 +19,5 @@
 	id = "bodysnatcher"
 	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
-	build_path = /obj/item/device/bodysnatcher
+	build_path = /obj/item/bodysnatcher
 	sort_string = "TBVAA"

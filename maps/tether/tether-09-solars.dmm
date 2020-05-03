@@ -345,7 +345,7 @@
 /area/tether/outpost/solars_outside)
 "aL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/stool,
+/obj/item/stool,
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -1050,7 +1050,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "cr" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24;
 	req_access = list()
 	},
@@ -1115,7 +1115,7 @@
 /obj/machinery/door/window/eastleft,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
-/obj/item/weapon/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
 /obj/structure/window/basic{
 	dir = 1
 	},
@@ -1136,8 +1136,8 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/emergency,
-/obj/item/device/radio/intercom{
+/obj/item/storage/toolbox/emergency,
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -1293,13 +1293,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24;
 	req_access = list()
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/folder/white,
-/obj/item/weapon/pen/fountain,
+/obj/item/folder/white,
+/obj/item/pen/fountain,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "cR" = (
@@ -1312,7 +1312,7 @@
 	},
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
-/obj/item/weapon/tool/wirecutters,
+/obj/item/tool/wirecutters,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "cS" = (
@@ -1357,7 +1357,7 @@
 /obj/machinery/door/window/eastright,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
-/obj/item/weapon/tank/emergency/oxygen/engi,
+/obj/item/tank/emergency/oxygen/engi,
 /obj/structure/window/basic,
 /obj/structure/window/basic{
 	dir = 8
@@ -1538,7 +1538,7 @@
 /area/rnd/outpost/testing_lab)
 "ds" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tank/phoron,
+/obj/item/tank/phoron,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
 "dt" = (
@@ -1747,7 +1747,7 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/weldingtool,
+/obj/item/weldingtool,
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
@@ -1756,8 +1756,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/item/weapon/tool/screwdriver,
-/obj/item/device/assembly_holder/timer_igniter,
+/obj/item/tool/screwdriver,
+/obj/item/assembly_holder/timer_igniter,
 /obj/machinery/camera/network/research_outpost{
 	dir = 4
 	},
@@ -1786,7 +1786,7 @@
 "dV" = (
 /obj/machinery/vending/phoronresearch{
 	name = "Toximate 2556";
-	products = list(/obj/item/device/transfer_valve = 3, /obj/item/device/assembly/timer = 6, /obj/item/device/assembly/signaler = 6, /obj/item/device/assembly/prox_sensor = 6, /obj/item/device/assembly/igniter = 12)
+	products = list(/obj/item/transfer_valve = 3, /obj/item/assembly/timer = 6, /obj/item/assembly/signaler = 6, /obj/item/assembly/prox_sensor = 6, /obj/item/assembly/igniter = 12)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing_lab)
@@ -2133,7 +2133,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -2869,7 +2869,7 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/device/analyzer,
+/obj/item/analyzer,
 /obj/machinery/camera/network/research_outpost{
 	dir = 1
 	},
@@ -2886,14 +2886,14 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wrench{
+/obj/item/tool/wrench{
 	pixel_x = 2;
 	pixel_y = 2
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
 	},
-/obj/item/weapon/tool/wrench{
+/obj/item/tool/wrench{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -2913,7 +2913,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -3434,11 +3434,11 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
 	},
-/obj/item/device/analyzer,
+/obj/item/analyzer,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "gA" = (
@@ -3447,11 +3447,11 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24;
 	req_access = list()
 	},
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "gB" = (
@@ -3497,7 +3497,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -3799,7 +3799,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -4152,7 +4152,7 @@
 /area/rnd/outpost/chamber)
 "hF" = (
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -4355,7 +4355,7 @@
 	pixel_x = -26;
 	pixel_y = -8
 	},
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "hZ" = (

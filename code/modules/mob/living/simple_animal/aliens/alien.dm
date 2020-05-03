@@ -29,7 +29,7 @@
 
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 
 	environment_smash = 2
 	status_flags = CANPUSH
@@ -46,7 +46,7 @@
 	heat_damage_per_tick = 20
 	unsuitable_atoms_damage = 15
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/xenomeat
+	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
 
 /mob/living/simple_mob/hostile/alien/drone
 	name = "alien drone"

@@ -1,6 +1,16 @@
 /mob/proc/say()
 	return
 
+/mob/proc/whisper_wrapper()
+	var/message = input("","whisper (text)") as text|null
+	if(message)
+		whisper(message)
+
+/mob/proc/subtle_wrapper()
+	var/message = input("","subtle (text)") as message|null
+	if(message)
+		me_verb_subtle(message)
+
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
 	set category = "IC"
@@ -19,7 +29,7 @@
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<font color='red'>Speech is currently admin-disabled.</font>"
+		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
 		return
 
 	//VOREStation Edit Start
@@ -36,7 +46,7 @@
 
 /mob/proc/say_dead(var/message)
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	if(!client)
@@ -48,7 +58,7 @@
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		usr << "<span class='danger'>You have deadchat muted.</span>"
+		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
 	message = say_emphasis(message)

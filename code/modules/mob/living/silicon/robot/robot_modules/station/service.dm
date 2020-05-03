@@ -1,4 +1,4 @@
-/obj/item/weapon/robot_module/robot/janitor
+/obj/item/robot_module/robot/janitor
 	name = "janitorial robot module"
 	channels = list("Service" = 1)
 	sprites = list(
@@ -15,24 +15,24 @@
 					"Drone" = "drone-janitor"
 					)
 
-/obj/item/weapon/robot_module/robot/janitor/New()
+/obj/item/robot_module/robot/janitor/New()
 	..()
-	src.modules += new /obj/item/weapon/soap/nanotrasen(src)
-	src.modules += new /obj/item/weapon/storage/bag/trash(src)
-	src.modules += new /obj/item/weapon/mop(src)
-	src.modules += new /obj/item/device/lightreplacer(src)
-	src.emag = new /obj/item/weapon/reagent_containers/spray(src)
+	src.modules += new /obj/item/soap/nanotrasen(src)
+	src.modules += new /obj/item/storage/bag/trash(src)
+	src.modules += new /obj/item/mop(src)
+	src.modules += new /obj/item/lightreplacer(src)
+	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("lube", 250)
 	src.emag.name = "Lube spray"
 
-/obj/item/weapon/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/device/lightreplacer/LR = locate() in src.modules
+/obj/item/robot_module/robot/janitor/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+	var/obj/item/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R, amount)
 	if(src.emag)
-		var/obj/item/weapon/reagent_containers/spray/S = src.emag
+		var/obj/item/reagent_containers/spray/S = src.emag
 		S.reagents.add_reagent("lube", 2 * amount)
 
-/obj/item/weapon/robot_module/robot/clerical
+/obj/item/robot_module/robot/clerical
 	name = "service robot module"
 	channels = list("Service" = 1)
 	languages = list(
@@ -52,7 +52,7 @@
 					LANGUAGE_ZADDAT		= 1,
 					)
 
-/obj/item/weapon/robot_module/robot/clerical/butler
+/obj/item/robot_module/robot/clerical/butler
 	sprites = list(
 					"M-USE NanoTrasen" = "robotServ",
 					"Cabeiri" = "eyebot-standard",
@@ -72,32 +72,32 @@
 					"Drone - Hydro" = "drone-hydro"
 				  	)
 
-/obj/item/weapon/robot_module/robot/clerical/butler/New()
+/obj/item/robot_module/robot/clerical/butler/New()
 	..()
-	src.modules += new /obj/item/weapon/gripper/service(src)
-	src.modules += new /obj/item/weapon/reagent_containers/glass/bucket(src)
-	src.modules += new /obj/item/weapon/material/minihoe(src)
-	src.modules += new /obj/item/weapon/material/knife/machete/hatchet(src)
-	src.modules += new /obj/item/device/analyzer/plant_analyzer(src)
-	src.modules += new /obj/item/weapon/storage/bag/plants(src)
-	src.modules += new /obj/item/weapon/robot_harvester(src)
-	src.modules += new /obj/item/weapon/material/knife(src)
-	src.modules += new /obj/item/weapon/material/kitchen/rollingpin(src)
-	src.modules += new /obj/item/device/multitool(src) //to freeze trays
+	src.modules += new /obj/item/gripper/service(src)
+	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
+	src.modules += new /obj/item/material/minihoe(src)
+	src.modules += new /obj/item/material/knife/machete/hatchet(src)
+	src.modules += new /obj/item/analyzer/plant_analyzer(src)
+	src.modules += new /obj/item/storage/bag/plants(src)
+	src.modules += new /obj/item/robot_harvester(src)
+	src.modules += new /obj/item/material/knife(src)
+	src.modules += new /obj/item/material/kitchen/rollingpin(src)
+	src.modules += new /obj/item/multitool(src) //to freeze trays
 
-	var/obj/item/weapon/rsf/M = new /obj/item/weapon/rsf(src)
+	var/obj/item/rsf/M = new /obj/item/rsf(src)
 	M.stored_matter = 30
 	src.modules += M
 
-	src.modules += new /obj/item/weapon/reagent_containers/dropper/industrial(src)
+	src.modules += new /obj/item/reagent_containers/dropper/industrial(src)
 
-	var/obj/item/weapon/flame/lighter/zippo/L = new /obj/item/weapon/flame/lighter/zippo(src)
+	var/obj/item/flame/lighter/zippo/L = new /obj/item/flame/lighter/zippo(src)
 	L.lit = 1
 	src.modules += L
 
-	src.modules += new /obj/item/weapon/tray/robotray(src)
-	src.modules += new /obj/item/weapon/reagent_containers/borghypo/service(src)
-	src.emag = new /obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer(src)
+	src.modules += new /obj/item/tray/robotray(src)
+	src.modules += new /obj/item/reagent_containers/borghypo/service(src)
+	src.emag = new /obj/item/reagent_containers/food/drinks/bottle/small/beer(src)
 
 	var/datum/reagents/R = new/datum/reagents(50)
 	src.emag.reagents = R
@@ -105,7 +105,7 @@
 	R.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
 
-/obj/item/weapon/robot_module/robot/clerical/general
+/obj/item/robot_module/robot/clerical/general
 	name = "clerical robot module"
 	sprites = list(
 					"M-USE NanoTrasen" = "robotCler",
@@ -124,25 +124,25 @@
 					"Drone" = "drone-blu"
 					)
 
-/obj/item/weapon/robot_module/robot/clerical/general/New()
+/obj/item/robot_module/robot/clerical/general/New()
 	..()
-	src.modules += new /obj/item/weapon/pen/robopen(src)
-	src.modules += new /obj/item/weapon/form_printer(src)
-	src.modules += new /obj/item/weapon/gripper/paperwork(src)
-	src.modules += new /obj/item/weapon/hand_labeler(src)
-	src.modules += new /obj/item/weapon/stamp(src)
-	src.modules += new /obj/item/weapon/stamp/denied(src)
-	src.emag = new /obj/item/weapon/stamp/chameleon(src)
-	src.emag = new /obj/item/weapon/pen/chameleon(src)
+	src.modules += new /obj/item/pen/robopen(src)
+	src.modules += new /obj/item/form_printer(src)
+	src.modules += new /obj/item/gripper/paperwork(src)
+	src.modules += new /obj/item/hand_labeler(src)
+	src.modules += new /obj/item/stamp(src)
+	src.modules += new /obj/item/stamp/denied(src)
+	src.emag = new /obj/item/stamp/chameleon(src)
+	src.emag = new /obj/item/pen/chameleon(src)
 
-/obj/item/weapon/robot_module/general/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/weapon/reagent_containers/food/condiment/enzyme/E = locate() in src.modules
+/obj/item/robot_module/general/butler/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+	var/obj/item/reagent_containers/food/condiment/enzyme/E = locate() in src.modules
 	E.reagents.add_reagent("enzyme", 2 * amount)
 	if(src.emag)
-		var/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer/B = src.emag
+		var/obj/item/reagent_containers/food/drinks/bottle/small/beer/B = src.emag
 		B.reagents.add_reagent("beer2", 2 * amount)
 
-/obj/item/weapon/robot_module/robot/scrubpup
+/obj/item/robot_module/robot/scrubpup
 	name = "Custodial Hound module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
@@ -151,11 +151,11 @@
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 
-/obj/item/weapon/robot_module/robot/scrubpup/New(var/mob/living/silicon/robot/R)
-	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
-	src.modules += new /obj/item/device/dogborg/boop_module(src)
+/obj/item/robot_module/robot/scrubpup/New(var/mob/living/silicon/robot/R)
+	src.modules += new /obj/item/dogborg/jaws/small(src)
+	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/pupscrubber(src)
-	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
+	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
 
 	//Starts empty. Can only recharge with recycled material.
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
@@ -177,15 +177,15 @@
 	synths += glass
 	synths += water
 
-	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
 	T.water = water
 	src.modules += T
 
-	var/obj/item/device/lightreplacer/dogborg/LR = new /obj/item/device/lightreplacer/dogborg(src)
+	var/obj/item/lightreplacer/dogborg/LR = new /obj/item/lightreplacer/dogborg(src)
 	LR.glass = glass
 	src.modules += LR
 
-	var/obj/item/device/dogborg/sleeper/compactor/C = new /obj/item/device/dogborg/sleeper/compactor(src)
+	var/obj/item/dogborg/sleeper/compactor/C = new /obj/item/dogborg/sleeper/compactor(src)
 	C.metal = metal
 	C.glass = glass
 	C.water = water
@@ -224,7 +224,7 @@
 	..()
 
 // Uses modified K9 sprites.
-/obj/item/weapon/robot_module/robot/clerical/brodog
+/obj/item/robot_module/robot/clerical/brodog
 	name = "service-hound module"
 	sprites = list(
 					"Blackhound" = "k50",
@@ -236,20 +236,20 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/weapon/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
-	src.modules += new /obj/item/weapon/gripper/service(src)
-	src.modules += new /obj/item/weapon/reagent_containers/glass/bucket(src)
-	src.modules += new /obj/item/weapon/material/minihoe(src)
-	src.modules += new /obj/item/weapon/material/knife/machete/hatchet(src)
-	src.modules += new /obj/item/device/analyzer/plant_analyzer(src)
-	src.modules += new /obj/item/weapon/storage/bag/dogborg(src)
-	src.modules += new /obj/item/weapon/robot_harvester(src)
-	src.modules += new /obj/item/weapon/material/knife(src)
-	src.modules += new /obj/item/weapon/material/kitchen/rollingpin(src)
-	src.modules += new /obj/item/device/multitool(src) //to freeze trays
-	src.modules += new /obj/item/weapon/dogborg/jaws/small(src)
-	src.modules += new /obj/item/device/dogborg/boop_module(src)
-	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
+/obj/item/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
+	src.modules += new /obj/item/gripper/service(src)
+	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
+	src.modules += new /obj/item/material/minihoe(src)
+	src.modules += new /obj/item/material/knife/machete/hatchet(src)
+	src.modules += new /obj/item/analyzer/plant_analyzer(src)
+	src.modules += new /obj/item/storage/bag/dogborg(src)
+	src.modules += new /obj/item/robot_harvester(src)
+	src.modules += new /obj/item/material/knife(src)
+	src.modules += new /obj/item/material/kitchen/rollingpin(src)
+	src.modules += new /obj/item/multitool(src) //to freeze trays
+	src.modules += new /obj/item/dogborg/jaws/small(src)
+	src.modules += new /obj/item/dogborg/boop_module(src)
+	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500) // buffy fix, was 0
 	water.name = "Water reserves"
@@ -259,25 +259,25 @@
 	synths += water
 
 
-	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
 	T.water = water
 	src.modules += T
 
-	var/obj/item/weapon/rsf/M = new /obj/item/weapon/rsf(src)
+	var/obj/item/rsf/M = new /obj/item/rsf(src)
 	M.stored_matter = 30
 	src.modules += M
 
-	src.modules += new /obj/item/weapon/reagent_containers/dropper/industrial(src)
+	src.modules += new /obj/item/reagent_containers/dropper/industrial(src)
 
-	var/obj/item/weapon/flame/lighter/zippo/L = new /obj/item/weapon/flame/lighter/zippo(src)
+	var/obj/item/flame/lighter/zippo/L = new /obj/item/flame/lighter/zippo(src)
 	L.lit = 1
 	src.modules += L
 
-	src.modules += new /obj/item/weapon/tray/robotray(src)
-	src.modules += new /obj/item/weapon/reagent_containers/borghypo/service(src)
+	src.modules += new /obj/item/tray/robotray(src)
+	src.modules += new /obj/item/reagent_containers/borghypo/service(src)
 
 /* // I don't know what kind of sleeper to put here, but also no need if you already have "Robot Nom" verb.
-	var/obj/item/device/dogborg/sleeper/K9/B = new /obj/item/device/dogborg/sleeper/K9(src)
+	var/obj/item/dogborg/sleeper/K9/B = new /obj/item/dogborg/sleeper/K9(src)
 	B.water = water
 	src.modules += B
 */
@@ -295,7 +295,7 @@
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 	..()
 
-/obj/item/weapon/robot_module/Reset(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/Reset(var/mob/living/silicon/robot/R)
 	R.pixel_x = initial(pixel_x)
 	R.pixel_y = initial(pixel_y)
 	R.icon = initial(R.icon)

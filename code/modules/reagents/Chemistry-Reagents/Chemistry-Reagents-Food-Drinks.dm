@@ -178,7 +178,7 @@
 /datum/reagent/nutriment/coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
@@ -488,7 +488,7 @@ End Citadel Change */
 			return
 
 	if(dose < 5 && (dose == metabolism || prob(5)))
-		M << "<span class='danger'>Your insides feel uncomfortably hot!</span>"
+		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
@@ -635,7 +635,7 @@ End Citadel Change */
 		if(!H.can_feel_pain())
 			return
 	if(dose == metabolism)
-		M << "<span class='danger'>You feel like your insides are burning!</span>"
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
@@ -895,7 +895,7 @@ End Citadel Change */
 /datum/reagent/drink/milk/chocolate/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -903,7 +903,7 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		M << "<span class='vox'>You feel nourished by the milk.</span>"
+		to_chat(M, "<span class='vox'>You feel nourished by the milk.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1193,7 +1193,7 @@ End Citadel Change */
 /datum/reagent/drink/hot_coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
@@ -1354,7 +1354,7 @@ End Citadel Change */
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
-			M << "<span class='vox'>You feel a rush of nutrients fill your body.</span>"
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
@@ -2189,6 +2189,13 @@ End Citadel Change */
 	glass_name = "cider"
 	glass_desc = "The second most Irish drink."
 	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/peppermintschnapps
+	name = "Peppermint Schnapps"
+	id = "schnapps_pep"
+	description = "A flavoured grain liqueur with a fresh, minty taste."
+	taste_description = "peachy"
+	strength = 90
 
 // Cocktails
 
@@ -3582,7 +3589,7 @@ End Citadel Change */
 	//We'll assume that the batter isnt going to be regurgitated and eaten by someone else. Only show this once
 	if (data["cooked"] != 1)
 		if (!messaged)
-			M << "Ugh, this raw [name] tastes disgusting."
+			to_chat(M, "Ugh, this raw [name] tastes disgusting.")
 			nutriment_factor *= 0.5
 			messaged = 1
 
@@ -3600,7 +3607,7 @@ End Citadel Change */
 			data["cooked"] = 0
 		return
 	data["cooked"] = 0
-	if (holder && holder.my_atom && istype(holder.my_atom,/obj/item/weapon/reagent_containers/food/snacks))
+	if (holder && holder.my_atom && istype(holder.my_atom,/obj/item/reagent_containers/food/snacks))
 		data["cooked"] = 1
 		name = cooked_name
 

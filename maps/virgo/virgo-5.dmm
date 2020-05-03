@@ -69,14 +69,14 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/weapon/tank/oxygen,
-/obj/item/weapon/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/extinguisher,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/storage/box/lights/mixed,
+/obj/item/extinguisher,
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25;
@@ -115,8 +115,8 @@
 /area/outpost/research/mixing)
 "aw" = (
 /obj/structure/table/standard,
-/obj/item/weapon/wrench,
-/obj/item/weapon/screwdriver{
+/obj/item/wrench,
+/obj/item/screwdriver{
 	pixel_y = 10
 	},
 /obj/machinery/newscaster{
@@ -124,7 +124,7 @@
 	pixel_x = 0;
 	pixel_y = 30
 	},
-/obj/item/weapon/crowbar,
+/obj/item/crowbar,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/mixing)
 "ax" = (
@@ -213,7 +213,7 @@
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/powered/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -275,7 +275,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/tox_store)
 "aQ" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -811,7 +811,7 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -1908,7 +1908,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -2147,12 +2147,12 @@
 /area/outpost/research/hallway/toxins_hallway)
 "el" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen,
+/obj/item/clipboard,
+/obj/item/pen,
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
@@ -2165,7 +2165,7 @@
 /area/outpost/research/toxins_misc_lab)
 "em" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder,
+/obj/item/folder,
 /obj/item/clothing/glasses/science,
 /obj/machinery/light_switch{
 	pixel_y = 28
@@ -2395,7 +2395,7 @@
 /area/outpost/research/hallway/toxins_hallway)
 "eM" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24;
@@ -2457,7 +2457,7 @@
 /area/outpost/research/toxins_misc_lab)
 "eT" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/purple,
+/obj/item/bedsheet/purple,
 /turf/simulated/floor/tiled,
 /area/outpost/research/toxins_misc_lab)
 "eU" = (
@@ -2581,7 +2581,7 @@
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -2649,14 +2649,14 @@
 /area/outpost/research/hallway/toxins_hallway)
 "fs" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
 /obj/item/clothing/accessory/armband/science,
 /obj/item/clothing/glasses/science,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
-/obj/item/device/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/plating,
 /area/outpost/research/hallway/toxins_hallway)
 "ft" = (
@@ -2694,7 +2694,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway/toxins_hallway)
 "fv" = (
-/obj/item/weapon/wrench,
+/obj/item/wrench,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/toxins_misc_lab)
@@ -2710,7 +2710,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -3160,8 +3160,8 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/xenobiology)
 "gl" = (
@@ -3494,7 +3494,7 @@
 	icon_state = "warning";
 	dir = 9
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -4009,9 +4009,9 @@
 	icon_state = "tube1"
 	},
 /obj/structure/table/standard,
-/obj/item/device/multitool,
-/obj/item/weapon/gun/energy/taser/xeno,
-/obj/item/weapon/gun/energy/taser/xeno,
+/obj/item/multitool,
+/obj/item/gun/energy/taser/xeno,
+/obj/item/gun/energy/taser/xeno,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
 "hH" = (
@@ -4020,7 +4020,7 @@
 /area/outpost/research/xenobiology)
 "hI" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/beakers{
+/obj/item/storage/box/beakers{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -4182,11 +4182,11 @@
 /area/outpost/research/xenobiology)
 "hX" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/reagent_containers/food/snacks/monkeycube/wrapped,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
 "hY" = (
@@ -4197,8 +4197,8 @@
 /obj/structure/table/standard,
 /obj/item/glass_jar,
 /obj/item/glass_jar,
-/obj/item/weapon/storage/box/syringes,
-/obj/item/weapon/hand_labeler,
+/obj/item/storage/box/syringes,
+/obj/item/hand_labeler,
 /obj/item/clothing/gloves/sterile/latex,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
@@ -4393,15 +4393,15 @@
 /area/mine/explored)
 "ir" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/item/weapon/pen/blue{
+/obj/item/pen/blue{
 	pixel_x = -5;
 	pixel_y = -1
 	},
-/obj/item/weapon/pen/red{
+/obj/item/pen/red{
 	pixel_x = -1;
 	pixel_y = 3
 	},
@@ -4530,11 +4530,11 @@
 /area/outpost/research/xenobiology)
 "iF" = (
 /obj/structure/table/standard,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/folder,
-/obj/item/weapon/pen,
-/obj/item/weapon/melee/baton/slime/loaded,
-/obj/item/device/analyzer/xeno_analyzer,
+/obj/item/clipboard,
+/obj/item/folder,
+/obj/item/pen,
+/obj/item/melee/baton/slime/loaded,
+/obj/item/analyzer/xeno_analyzer,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/xenobiology)
 "iG" = (
@@ -4688,13 +4688,13 @@
 /area/outpost/research/xenobiology)
 "iR" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/red{
+/obj/item/folder/red{
 	pixel_y = 3
 	},
-/obj/item/weapon/folder/blue{
+/obj/item/folder/blue{
 	pixel_x = 5
 	},
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled,
 /area/outpost/research/xenobiology)
 "iS" = (
@@ -4734,7 +4734,7 @@
 "iV" = (
 /obj/structure/table/steel,
 /obj/item/clothing/glasses/science,
-/obj/item/device/analyzer/xeno_analyzer,
+/obj/item/analyzer/xeno_analyzer,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/xenobiology)
 "iW" = (
@@ -4866,9 +4866,9 @@
 /area/outpost/research/xenobiology)
 "jd" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/xenobiodisk,
-/obj/item/weapon/melee/baton/slime/loaded,
-/obj/item/device/analyzer/xeno_analyzer,
+/obj/item/storage/box/xenobiodisk,
+/obj/item/melee/baton/slime/loaded,
+/obj/item/analyzer/xeno_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/xenobiology)
 "je" = (
@@ -4878,7 +4878,7 @@
 /obj/structure/closet,
 /obj/item/toy/figure/scientist,
 /obj/item/clothing/accessory/armband/science,
-/obj/item/device/analyzer/xeno_analyzer,
+/obj/item/analyzer/xeno_analyzer,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/xenobiology)
 "jg" = (
@@ -5097,20 +5097,20 @@
 /area/outpost/research/medical)
 "jG" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 3;
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/medical)
 "jH" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/o2{
+/obj/item/storage/firstaid/o2{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
 /obj/machinery/firealarm{
 	dir = 2;
 	pixel_y = 24
@@ -5195,8 +5195,8 @@
 /area/outpost/research/tempstorage)
 "jV" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/weapon/storage/toolbox/emergency{
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/emergency{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -5348,7 +5348,7 @@
 /area/outpost/research/dorms)
 "kk" = (
 /obj/structure/table/reinforced,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -5392,7 +5392,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -5980,12 +5980,12 @@
 /area/outpost/research/dorms)
 "lJ" = (
 /obj/structure/table/glass,
-/obj/item/weapon/tape_roll,
+/obj/item/tape_roll,
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "lK" = (
 /obj/structure/table/glass,
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "lL" = (
@@ -6246,19 +6246,19 @@
 /area/outpost/research/dorms)
 "mo" = (
 /obj/structure/table/glass,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen,
-/obj/item/device/taperecorder,
+/obj/item/clipboard,
+/obj/item/pen,
+/obj/item/taperecorder,
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "mp" = (
 /obj/structure/table/glass,
-/obj/item/weapon/folder,
-/obj/item/weapon/stamp,
+/obj/item/folder,
+/obj/item/stamp,
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "mq" = (
@@ -6407,8 +6407,8 @@
 /area/outpost/research/dock)
 "mG" = (
 /obj/structure/table/standard,
-/obj/item/weapon/material/ashtray/glass,
-/obj/item/weapon/reagent_containers/food/drinks/coffee,
+/obj/item/material/ashtray/glass,
+/obj/item/reagent_containers/food/drinks/coffee,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/dock)
@@ -6420,7 +6420,7 @@
 /area/outpost/research/dock)
 "mI" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/status_display{
 	layer = 4;
@@ -6431,8 +6431,8 @@
 /area/outpost/research/dorms)
 "mJ" = (
 /obj/structure/table/glass,
-/obj/item/weapon/storage/box/cups,
-/obj/item/weapon/storage/box/glasses/square{
+/obj/item/storage/box/cups,
+/obj/item/storage/box/glasses/square{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -6441,15 +6441,15 @@
 /area/outpost/research/dorms)
 "mK" = (
 /obj/structure/table/glass,
-/obj/item/device/camera_film{
+/obj/item/camera_film{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/device/camera,
+/obj/item/camera,
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "mL" = (
-/obj/item/weapon/bedsheet/purple,
+/obj/item/bedsheet/purple,
 /obj/structure/bed/padded,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -6773,7 +6773,7 @@
 "np" = (
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /obj/effect/floor_decal/corner/purple/full{
 	dir = 1
 	},
@@ -7041,7 +7041,7 @@
 /area/outpost/research/hallway/mid)
 "nO" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -7121,7 +7121,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -7847,7 +7847,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -8391,7 +8391,7 @@
 	pixel_x = 0;
 	pixel_y = -27
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -8486,7 +8486,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
 "qo" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -8528,7 +8528,7 @@
 "qu" = (
 /obj/structure/table/rack,
 /obj/item/clothing/head/welding,
-/obj/item/weapon/weldingtool,
+/obj/item/weldingtool,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -8537,10 +8537,10 @@
 "qv" = (
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
-/obj/item/weapon/screwdriver{
+/obj/item/screwdriver{
 	pixel_y = 15
 	},
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/anomaly)
 "qw" = (
@@ -8611,7 +8611,7 @@
 /turf/simulated/floor/bluegrid,
 /area/outpost/research/anomaly)
 "qE" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -8665,7 +8665,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -8683,7 +8683,7 @@
 /area/outpost/research/eva)
 "qN" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/belt/archaeology,
+/obj/item/storage/belt/archaeology,
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/mask/breath,
@@ -8713,7 +8713,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
 "qQ" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
 "qR" = (
@@ -8723,7 +8723,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
 "qS" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -8891,7 +8891,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/table/steel,
-/obj/item/device/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled,
 /area/outpost/research/eva)
 "ri" = (
@@ -8906,7 +8906,7 @@
 /area/outpost/research/eva)
 "rk" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/belt/archaeology,
+/obj/item/storage/belt/archaeology,
 /obj/item/clothing/suit/space/anomaly,
 /obj/item/clothing/head/helmet/space/anomaly,
 /obj/item/clothing/mask/breath,
@@ -8923,7 +8923,7 @@
 "rl" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
-/obj/item/weapon/storage/box/beakers{
+/obj/item/storage/box/beakers{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -8936,8 +8936,8 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
 "rm" = (
-/obj/item/weapon/reagent_containers/glass/beaker/large,
-/obj/item/weapon/reagent_containers/dropper{
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/dropper{
 	pixel_y = -4
 	},
 /obj/structure/table/glass,
@@ -8948,8 +8948,8 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/analysis)
 "rn" = (
-/obj/item/weapon/reagent_containers/glass/bottle/toxin,
-/obj/item/weapon/reagent_containers/glass/beaker/sulphuric{
+/obj/item/reagent_containers/glass/bottle/toxin,
+/obj/item/reagent_containers/glass/beaker/sulphuric{
 	name = "beaker 'sulphuric acid'"
 	},
 /obj/structure/table/glass,
@@ -8983,7 +8983,7 @@
 /obj/machinery/camera/network/research_outpost{
 	c_tag = "OPR - Hallway Starboard 2"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -9117,8 +9117,8 @@
 	pixel_y = 0
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/tiled,
 /area/outpost/research/eva)
 "rE" = (
@@ -9161,20 +9161,20 @@
 /turf/simulated/floor/tiled,
 /area/outpost/research/eva)
 "rH" = (
-/obj/item/weapon/storage/excavation,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/wrench,
-/obj/item/device/measuring_tape,
+/obj/item/storage/excavation,
+/obj/item/pickaxe,
+/obj/item/wrench,
+/obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/outpost/research/eva)
 "rI" = (
-/obj/item/weapon/storage/excavation,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/wrench,
-/obj/item/device/measuring_tape,
+/obj/item/storage/excavation,
+/obj/item/pickaxe,
+/obj/item/wrench,
+/obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
@@ -9216,7 +9216,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/analysis)
 "rN" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/analysis)
 "rO" = (
@@ -9321,13 +9321,13 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled,
 /area/outpost/research/anomaly)
 "sb" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/tape_roll,
+/obj/item/paper_bin,
+/obj/item/tape_roll,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -9557,7 +9557,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/research/analysis)
 "sv" = (
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /obj/structure/table/standard,
 /obj/machinery/firealarm{
 	dir = 1;
@@ -9663,7 +9663,7 @@
 	c_tag = "OPR - Hallway Mid 1";
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -9816,9 +9816,9 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/folder,
-/obj/item/device/camera,
-/obj/item/weapon/pen,
+/obj/item/folder,
+/obj/item/camera,
+/obj/item/pen,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue{
@@ -9943,7 +9943,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -10924,14 +10924,14 @@
 /area/outpost/mining_main/north_hall)
 "ve" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = 5
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/break_room)
 "vf" = (
@@ -10960,8 +10960,8 @@
 /area/outpost/mining_main/break_room)
 "vj" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/firstaid/toxin,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/toxin,
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 8
 	},
@@ -11066,7 +11066,7 @@
 /area/outpost/mining_main/break_room)
 "vx" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -11247,11 +11247,11 @@
 /area/mine/explored)
 "vI" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/o2{
+/obj/item/storage/firstaid/o2{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
 /obj/effect/floor_decal/corner/paleblue/full,
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/medbay)
@@ -11357,7 +11357,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -11375,7 +11375,7 @@
 /area/outpost/mining_main/break_room)
 "vU" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /obj/machinery/alarm{
 	dir = 8;
 	icon_state = "alarm0";
@@ -12177,14 +12177,14 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/weapon/tank/oxygen,
-/obj/item/weapon/tank/oxygen,
+/obj/item/tank/oxygen,
+/obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/extinguisher,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/storage/box/lights/mixed,
+/obj/item/extinguisher,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/north_hall)
 "xr" = (
@@ -12472,24 +12472,24 @@
 /turf/simulated/wall,
 /area/outpost/mining_main/dorms)
 "xW" = (
-/obj/item/weapon/anobattery{
+/obj/item/anobattery{
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/item/weapon/anobattery{
+/obj/item/anobattery{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/weapon/anobattery{
+/obj/item/anobattery{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/anobattery{
+/obj/item/anobattery{
 	pixel_x = 6;
 	pixel_y = 6
 	},
 /obj/structure/table/steel,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -12505,11 +12505,11 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/north_hall)
 "xY" = (
-/obj/item/weapon/anodevice{
+/obj/item/anodevice{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/weapon/anodevice,
+/obj/item/anodevice,
 /obj/structure/table/steel,
 /obj/machinery/light{
 	dir = 1
@@ -12697,7 +12697,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/outpost/mining_main/dorms)
 "yt" = (
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /obj/structure/bed/padded,
 /turf/simulated/floor/carpet,
 /area/outpost/mining_main/dorms)
@@ -12706,7 +12706,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -12864,14 +12864,14 @@
 /area/outpost/engineering/mining/hallway)
 "yN" = (
 /obj/structure/table/standard,
-/obj/item/weapon/flame/lighter/random,
-/obj/item/weapon/crowbar,
+/obj/item/flame/lighter/random,
+/obj/item/crowbar,
 /obj/machinery/newscaster{
 	layer = 3.3;
 	pixel_x = -30;
 	pixel_y = 0
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -12948,7 +12948,7 @@
 /area/outpost/mining_main/dorms)
 "yW" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/dropper{
+/obj/item/reagent_containers/dropper{
 	pixel_y = -4
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -12989,7 +12989,7 @@
 /area/outpost/mining_main/dorms)
 "za" = (
 /obj/structure/table/steel,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -13032,7 +13032,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -13878,7 +13878,7 @@
 	pixel_x = 0;
 	pixel_y = -30
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -14244,7 +14244,7 @@
 /area/outpost/mining_main/refinery)
 "Bs" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -14277,7 +14277,7 @@
 /area/outpost/engineering/mining/power)
 "Bv" = (
 /obj/effect/floor_decal/corner/brown/full,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -14461,12 +14461,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/weapon/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
 "BV" = (
 /obj/structure/closet/secure_closet/miner,
-/obj/item/weapon/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
 "BW" = (
@@ -14513,7 +14513,7 @@
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/weapon/mining_scanner,
+/obj/item/mining_scanner,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -14526,7 +14526,7 @@
 /obj/item/clothing/suit/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/weapon/mining_scanner,
+/obj/item/mining_scanner,
 /obj/item/clothing/suit/space/void/mining/taur,
 /obj/item/clothing/head/helmet/space/void/mining,
 /turf/simulated/floor/tiled,
@@ -14596,7 +14596,7 @@
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -14822,13 +14822,13 @@
 /area/outpost/mining_main/eva)
 "CH" = (
 /obj/structure/table/steel,
-/obj/item/device/suit_cooling_unit,
-/obj/item/device/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
 "CI" = (
 /obj/structure/table/steel,
-/obj/item/weapon/pickaxe,
+/obj/item/pickaxe,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -15080,7 +15080,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/eva)
 "De" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -15088,18 +15088,18 @@
 /area/outpost/engineering/mining/atmospherics)
 "Df" = (
 /obj/structure/table/rack,
-/obj/item/weapon/pickaxe/hammer,
-/obj/item/weapon/wrench,
-/obj/item/weapon/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/pickaxe/hammer,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/item/shovel,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
 "Dg" = (
 /obj/structure/table/rack,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/wrench,
-/obj/item/weapon/crowbar,
-/obj/item/weapon/shovel,
+/obj/item/pickaxe,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/item/shovel,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
@@ -15111,7 +15111,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -15135,9 +15135,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/south_hall)
 "Dl" = (
-/obj/item/weapon/crowbar,
-/obj/item/weapon/wrench,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/crowbar,
+/obj/item/wrench,
+/obj/item/storage/toolbox/mechanical,
 /obj/structure/table/steel,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -15171,13 +15171,13 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/south_hall)
 "Dq" = (
-/obj/item/weapon/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/eva)
 "Dr" = (
-/obj/item/weapon/storage/belt/utility,
-/obj/item/weapon/pickaxe,
+/obj/item/storage/belt/utility,
+/obj/item/pickaxe,
 /obj/structure/table/steel,
 /obj/machinery/status_display{
 	layer = 4;
@@ -15218,8 +15218,8 @@
 	},
 /area/mine/explored)
 "Dz" = (
-/obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris,
-/obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris,
+/obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris,
+/obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris,
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
 	},
@@ -15232,7 +15232,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/mine/explored)
 "DB" = (
-/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/libertycap,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/libertycap,
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
 	},
@@ -15292,7 +15292,7 @@
 /area/outpost/research/anomaly)
 "DH" = (
 /obj/machinery/computer/roguezones,
-/obj/item/weapon/paper/rogueminer,
+/obj/item/paper/rogueminer,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/mine/explored)
 "DI" = (
@@ -15322,7 +15322,7 @@
 /area/outpost/mining_main/refinery)
 "DM" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -15333,7 +15333,7 @@
 /obj/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -15346,7 +15346,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -15357,7 +15357,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -15370,7 +15370,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -15383,7 +15383,7 @@
 	c_tag = "ENG - Outpost Mining Power Port";
 	dir = 2
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 21
@@ -15399,7 +15399,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -15409,11 +15409,11 @@
 "DT" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/breath,
-/obj/item/weapon/mining_scanner,
+/obj/item/mining_scanner,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/item/weapon/rig/industrial/equipped,
+/obj/item/rig/industrial/equipped,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/storage)
 "DU" = (
@@ -15426,7 +15426,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -15442,7 +15442,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = -21
 	},
@@ -15456,7 +15456,7 @@
 	c_tag = "OPM - Mining Hallway Aft";
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -21
@@ -15685,7 +15685,7 @@
 /turf/simulated/floor/wood,
 /area/outpost/research/dorms)
 "Eu" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = 21
@@ -15711,14 +15711,14 @@
 /area/outpost/mining_main/refinery)
 "Ey" = (
 /obj/structure/table/steel,
-/obj/item/weapon/screwdriver,
-/obj/item/weapon/crowbar,
-/obj/item/weapon/wrench,
+/obj/item/screwdriver,
+/obj/item/crowbar,
+/obj/item/wrench,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/mining_main/refinery)
 "Ez" = (
 /obj/structure/table/steel,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/mining_main/refinery)
 "EA" = (
@@ -15732,7 +15732,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/mining_main/refinery)
 "EC" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/tiled,
 /area/outpost/research/xenobiology)
 "ED" = (
@@ -15841,7 +15841,7 @@
 /area/outpost/research/isolation_a)
 "EQ" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_a)
 "ER" = (
@@ -15857,7 +15857,7 @@
 /area/outpost/research/isolation_b)
 "ET" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_b)
 "EU" = (
@@ -15869,7 +15869,7 @@
 /area/outpost/research/isolation_b)
 "EV" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/isolation_c)
 "EW" = (
@@ -16035,7 +16035,7 @@
 /obj/structure/table/steel,
 /obj/structure/cable,
 /obj/item/frame/apc,
-/obj/item/weapon/module/power_control,
+/obj/item/module/power_control,
 /turf/simulated/floor/airless{
 	icon_state = "asteroidplating2"
 	},
@@ -16044,7 +16044,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/engineering/storage)
 "Fo" = (
-/obj/item/weapon/cell/high{
+/obj/item/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -16644,10 +16644,10 @@
 /area/outpost/engineering/storage)
 "Gv" = (
 /obj/structure/table/rack,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
-/obj/item/weapon/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/storage)
 "Gw" = (
@@ -16657,7 +16657,7 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/item/stack/cable_coil/yellow,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/storage)
 "Gx" = (
@@ -16668,8 +16668,8 @@
 /obj/random/tech_supply,
 /obj/item/stack/cable_coil/yellow,
 /obj/item/stack/cable_coil,
-/obj/item/weapon/module/power_control,
-/obj/item/weapon/module/power_control,
+/obj/item/module/power_control,
+/obj/item/module/power_control,
 /obj/item/clothing/gloves/yellow,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/storage)
@@ -16783,7 +16783,7 @@
 	layer = 3.3;
 	pixel_x = 26
 	},
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/storage)
 "GL" = (
@@ -17547,7 +17547,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/hallway)
 "Ih" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	broadcasting = 0;
 	listening = 1;
 	name = "Station Intercom (General)";
@@ -17742,7 +17742,7 @@
 /area/outpost/engineering/rest)
 "IG" = (
 /obj/structure/bed/padded,
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/rest)
 "IH" = (
@@ -17859,7 +17859,7 @@
 "IW" = (
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/kitchen)
 "IX" = (
@@ -18102,7 +18102,7 @@
 /area/outpost/engineering/rest)
 "Jr" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_x = 0;
@@ -18268,12 +18268,12 @@
 /area/outpost/engineering/kitchen)
 "JH" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 0;
 	pixel_y = -28
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/tiled,
 /area/outpost/engineering/kitchen)
 "JI" = (
@@ -18316,11 +18316,11 @@
 /area/outpost/engineering/rest)
 "JM" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/o2{
+/obj/item/storage/firstaid/o2{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 0;
 	pixel_y = -28
@@ -18981,8 +18981,8 @@
 /area/shuttle/belter/station)
 "La" = (
 /obj/structure/table/standard,
-/obj/item/device/binoculars,
-/obj/item/weapon/gun/energy/particle,
+/obj/item/binoculars,
+/obj/item/gun/energy/particle,
 /obj/machinery/light{
 	dir = 1
 	},

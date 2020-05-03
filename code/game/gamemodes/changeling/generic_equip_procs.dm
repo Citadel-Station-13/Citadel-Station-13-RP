@@ -127,7 +127,7 @@
 
 	else
 
-		M << "<span class='notice'>We begin growing our new equipment...</span>"
+		to_chat(M, "<span class='notice'>We begin growing our new equipment...</span>")
 
 		var/list/grown_items_list = list()
 
@@ -223,7 +223,7 @@
 
 		var/feedback = english_list(grown_items_list, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 
-		M << "<span class='notice'>We have grown [feedback].</span>"
+		to_chat(M, "<span class='notice'>We have grown [feedback].</span>")
 	
 		if(success)
 			M.mind.changeling.armor_deployed = 1
@@ -245,7 +245,7 @@
 		to_chat(src, "<span class='warning'>Our hands are full.  Drop something first.</span>")
 		return 0
 
-	var/obj/item/weapon/W = new weapon_type(src)
+	var/obj/item/W = new weapon_type(src)
 	src.put_in_hands(W)
 
 	src.mind.changeling.chem_charges -= cost

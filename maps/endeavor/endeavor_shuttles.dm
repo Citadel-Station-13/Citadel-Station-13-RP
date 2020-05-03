@@ -91,7 +91,7 @@
 		ASC.setup_routes()
 
 		//Redirect us onto that route instead
-		var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[name]
+		var/datum/shuttle/web_shuttle/WS = SSshuttle.shuttles[name]
 		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
 		WS.web_master.future_destination = ASD
 		. = ..(departing,ASD.my_area,interim,travel_time,direction)

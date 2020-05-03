@@ -36,7 +36,7 @@
 	if(!istype(user) || user.stat) return
 
 	if(ai_holder.retaliate || (ai_holder.hostile && faction != user.faction))
-		user << "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>"
+		to_chat(user, "<span class='warning'>This predator isn't friendly, and doesn't give a shit about your opinions of it digesting you.</span>")
 		return
 	if(vore_selected.digest_mode == DM_HOLD)
 		var/confirm = alert(user, "Enabling digestion on [name] will cause it to digest all stomach contents. Using this to break OOC prefs is against the rules. Digestion will reset after 20 minutes.", "Enabling [name]'s Digestion", "Enable", "Cancel")
@@ -62,7 +62,7 @@
 	to_chat(user, "[src] is now using [vore_selected.fancy_vore ? "Fancy" : "Classic"] vore sounds.")
 
 /mob/living/simple_mob/attackby(var/obj/item/O, var/mob/user)
-	if (istype(O, /obj/item/weapon/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
+	if (istype(O, /obj/item/newspaper) && !(ckey || (ai_holder.hostile && faction != user.faction)) && isturf(user.loc))
 		if (ai_holder.retaliate && prob(vore_pounce_chance/2)) // This is a gamble!
 			user.Weaken(5) //They get tackled anyway whether they're edible or not.
 			user.visible_message("<span class='danger'>\the [user] swats \the [src] with \the [O] and promptly gets tackled!</span>!")

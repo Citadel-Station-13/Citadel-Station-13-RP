@@ -60,7 +60,7 @@
 	var/follow_dist = 2				// Distance the mob tries to follow a friend
 	var/obstacles = list()			// Things this mob refuses to move through
 	var/speed = 0					// Higher speed is slower, negative speed is faster.
-	var/obj/item/weapon/card/id/myid// An ID card if they have one to give them access to stuff.
+	var/obj/item/card/id/myid// An ID card if they have one to give them access to stuff.
 	var/turf/home_turf				// Set when they spawned, they try to come back here sometimes.
 
 	//Mob interaction
@@ -548,7 +548,7 @@
 	switch(stance)
 		if(STANCE_IDLE)
 			target_mob = null
-			a_intent = I_HELP
+			a_intent = INTENT_HELP
 			annoyed = max(0,annoyed--)
 
 			//Yes I'm breaking this into two if()'s for ease of reading
@@ -573,7 +573,7 @@
 				FindTarget()
 		if(STANCE_ATTACK)
 			annoyed = 50
-			a_intent = I_HURT
+			a_intent = INTENT_HARM
 			RequestHelp()
 			MoveToTarget()
 		if(STANCE_ATTACKING)
@@ -611,16 +611,16 @@
 
 	switch(M.a_intent)
 
-		if(I_HELP)
+		if(INTENT_HELP)
 			if (health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			M.visible_message("<span class='notice'>[M] [response_disarm] \the [src].</span>")
 			M.do_attack_animation(src)
 			//TODO: Push the mob away or something
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if (M == src)
 				return
 			if (!(status_flags & CANPUSH))
@@ -629,7 +629,7 @@
 				M.visible_message("<span class='warning'>[M] tries to grab [src] but fails!</span>")
 				return
 
-			var/obj/item/weapon/grab/G = new /obj/item/weapon/grab(M, src)
+			var/obj/item/grab/G = new /obj/item/grab(M, src)
 
 			M.put_in_active_hand(G)
 
@@ -642,7 +642,7 @@
 			ai_log("attack_hand() I was grabbed by: [M]",2)
 			react_to_attack(M)
 
-		if(I_HURT)
+		if(INTENT_HARM)
 			var/armor = run_armor_check(def_zone = null, attack_flag = "melee")
 			apply_damage(damage = harm_intent_damage, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 			M.visible_message("<span class='warning'>[M] [response_harm] \the [src]!</span>")
@@ -668,9 +668,9 @@
 							M.show_message("<span class='notice'>[user] applies the [MED] on [src].</span>")
 		else
 			var/datum/gender/T = gender_datums[src.get_visible_gender()]
-			user << "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>" // the gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
+			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>") // the gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
 	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
-		if(istype(O, /obj/item/weapon/material/knife) || istype(O, /obj/item/weapon/material/knife/butch))
+		if(istype(O, /obj/item/material/knife) || istype(O, /obj/item/material/knife/butch))
 			harvest(user)
 	else
 		ai_log("attackby() I was weapon'd by: [user]",2)
@@ -684,7 +684,7 @@
 	//Animals can't be stunned(?)
 	if(O.damtype == HALLOSS)
 		effective_force = 0
-	if(supernatural && istype(O,/obj/item/weapon/nullrod))
+	if(supernatural && istype(O,/obj/item/nullrod))
 		effective_force *= 2
 		purge = 3
 	if(O.force <= resistance)
@@ -1499,7 +1499,7 @@
 //Check for shuttle bumrush
 /mob/living/simple_mob/proc/check_horde()
 	return 0
-	if(emergency_shuttle.shuttle.location)
+	if(SSemergencyshuttle.shuttle.location)
 		if(!enroute && !target_mob)	//The shuttle docked, all monsters rush for the escape hallway
 			if(!shuttletarget && escape_list.len) //Make sure we didn't already assign it a target, and that there are targets to pick
 				shuttletarget = pick(escape_list) //Pick a shuttle target
@@ -1544,7 +1544,7 @@
 	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, "sparks", 50, 1, -1)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)
 	s.start()
 

@@ -37,7 +37,7 @@
 	starts_with = list(
 		/obj/item/clothing/suit/radiation = 3,
 		/obj/item/clothing/head/radiation = 3,
-		/obj/item/device/geiger = 3,
+		/obj/item/geiger = 3,
 		/obj/item/clothing/glasses/meson = 3)
 
 //Fax Machine Presets
@@ -91,7 +91,7 @@
 	spawnpoint_type = /datum/spawnpoint/ferry
 
 /obj/machinery/cryopod/robot/door/ferry/process()
-	if(emergency_shuttle.online() || emergency_shuttle.returned())
+	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
 		time_till_despawn = 0
 		..()
@@ -121,12 +121,12 @@
 */
 
 //explorer intercom
-/obj/item/device/radio/intercom/explorer
+/obj/item/radio/intercom/explorer
 	name = "intercom (explorer)"
 	frequency = EXP_FREQ
 
 //CC ship pamphlet
-/obj/item/weapon/paper/pamphlet/phoenix
+/obj/item/paper/pamphlet/phoenix
 	name = "pamphlet - Welcome to the ARFS Phoenix"
 	icon_state = "pamphlet"
 	info = "<b>Welcome to the ARFS Phoenix</b><br>\
@@ -212,7 +212,7 @@
 /obj/structure/closet/secure_closet/guncabinet/excursion/New()
 	..()
 	for(var/i = 1 to 3)
-		new /obj/item/weapon/gun/energy/frontier/locked(src)
+		new /obj/item/gun/energy/frontier/locked(src)
 
 //Air scrubbers for shuttles, always on
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/alwayson
@@ -227,9 +227,9 @@
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window
 //
-/obj/item/device/radio/intercom
+/obj/item/radio/intercom
 	layer = ABOVE_WINDOW_LAYER
-/obj/item/weapon/storage/secure/safe
+/obj/item/storage/secure/safe
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
@@ -314,7 +314,7 @@
 		return FALSE // Block exit from our turf to above
 	return TRUE
 
-/obj/effect/ceiling/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/effect/ceiling/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
@@ -337,25 +337,25 @@
 //berry juice for fancy drinks
 /obj/machinery/chemical_dispenser/bar_alc/full
 	spawn_cartridges = list(
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/lemon_lime,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sugar,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/orange,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/lime,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sodawater,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tonic,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/beer,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/kahlua,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/whiskey,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/wine,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/vodka,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/gin,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/rum,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tequila,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/vermouth,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cognac,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ale,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/mead,
-			/obj/item/weapon/reagent_containers/chem_disp_cartridge/berry
+			/obj/item/reagent_containers/chem_disp_cartridge/lemon_lime,
+			/obj/item/reagent_containers/chem_disp_cartridge/sugar,
+			/obj/item/reagent_containers/chem_disp_cartridge/orange,
+			/obj/item/reagent_containers/chem_disp_cartridge/lime,
+			/obj/item/reagent_containers/chem_disp_cartridge/sodawater,
+			/obj/item/reagent_containers/chem_disp_cartridge/tonic,
+			/obj/item/reagent_containers/chem_disp_cartridge/beer,
+			/obj/item/reagent_containers/chem_disp_cartridge/kahlua,
+			/obj/item/reagent_containers/chem_disp_cartridge/whiskey,
+			/obj/item/reagent_containers/chem_disp_cartridge/wine,
+			/obj/item/reagent_containers/chem_disp_cartridge/vodka,
+			/obj/item/reagent_containers/chem_disp_cartridge/gin,
+			/obj/item/reagent_containers/chem_disp_cartridge/rum,
+			/obj/item/reagent_containers/chem_disp_cartridge/tequila,
+			/obj/item/reagent_containers/chem_disp_cartridge/vermouth,
+			/obj/item/reagent_containers/chem_disp_cartridge/cognac,
+			/obj/item/reagent_containers/chem_disp_cartridge/ale,
+			/obj/item/reagent_containers/chem_disp_cartridge/mead,
+			/obj/item/reagent_containers/chem_disp_cartridge/berry
 		)
 
 //arrival dock cryopod
@@ -376,14 +376,14 @@
 /obj/machinery/computer/cryopod/shuttle
 	name = "docking oversight console"
 	desc = "An interface between visitors and the docking oversight systems tasked with keeping track of all visitors who enter or exit from the docks."
-	circuit = "/obj/item/weapon/circuitboard/robotstoragecontrol"
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
 
 	storage_type = "visitors"
 	storage_name = "Travel Oversight Control"
 	allow_items = 1
 
 //Rust manual
-/obj/item/weapon/book/manual/rust_engine/New()
+/obj/item/book/manual/rust_engine/New()
 	..()
 	dat = {"<html>
 				<head>

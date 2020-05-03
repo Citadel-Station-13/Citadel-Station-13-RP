@@ -19,7 +19,7 @@
 		var/mdir = "[A.dir]"
 		crossed_dirs[mdir] = 1
 		update_icon()
-	. = ..()
+	..()
 
 /turf/simulated/floor/outdoors/snow/update_icon()
 	..()
@@ -27,7 +27,7 @@
 		add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d)))
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/weapon/shovel))
+	if(istype(W, /obj/item/shovel))
 		to_chat(user, "<span class='notice'>You begin to remove \the [src] with your [W].</span>")
 		if(do_after(user, 4 SECONDS * W.toolspeed))
 			to_chat(user, "<span class='notice'>\The [src] has been dug up, and now lies in a pile nearby.</span>")
@@ -52,6 +52,7 @@
 	desc = "Looks slippery."
 
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
+	..()
 	sleep(1 * world.tick_lag)
 	if(istype(M, /mob/living))
 		if(M.stunned == 0)

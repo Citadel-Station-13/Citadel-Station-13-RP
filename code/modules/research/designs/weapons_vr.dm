@@ -9,29 +9,30 @@
 
 // Energy Weapons
 
-/datum/design/item/weapon/protector
+/datum/design/item/weapon/energy/protector
+	name = "\'Myrmidon\' code-locked e-gun"
 	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
 	id = "protector"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "silver" = 1000)
-	build_path = /obj/item/weapon/gun/energy/protector
-	sort_string = "TAADA"
-
-/datum/design/item/weapon/energy/sickshot
-	desc = "A 'Sickshot' is a 4-shot energy revolver that causes nausea and confusion."
-	id = "sickshot"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000)
-	build_path = /obj/item/weapon/gun/energy/sickshot
-	sort_string = "MAAVB"
+	build_path = /obj/item/gun/energy/protector
+	sort_string = "MAAAH"
 
 /datum/design/item/weapon/energy/netgun
-	name = "\'Hunter\' capture gun"
+	name = "\'Retiarius\' capture gun"
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 3000)
-	build_path = /obj/item/weapon/gun/energy/netgun
-	sort_string = "MAAVC"
+	build_path = /obj/item/gun/energy/netgun
+	sort_string = "MAAAI"
+
+/datum/design/item/weapon/energy/sickshot
+	desc = "The 'Discombobulator' is a 4-shot energy revolver that causes nausea and confusion."
+	id = "sickshot"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000)
+	build_path = /obj/item/gun/energy/sickshot
+	sort_string = "MAAAJ"
 
 // Misc weapons
 
@@ -40,8 +41,8 @@
 	id = "pummeler"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_MAGNET = 5)
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, "uranium" = 1000)
-	build_path = /obj/item/weapon/gun/energy/pummeler
-	sort_string = "MADVA"
+	build_path = /obj/item/gun/energy/pummeler
+	sort_string = "MAAAK"
 
 // Anti-particle stuff
 
@@ -54,7 +55,7 @@
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1000, "gold" = 1000, "uranium" = 750)
-	build_path = /obj/item/weapon/gun/energy/particle/advanced
+	build_path = /obj/item/gun/energy/particle/advanced
 	sort_string = "MAAUA"
 
 /datum/design/item/weapon/particle/particlecannon
@@ -62,7 +63,7 @@
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 1500, "gold" = 2000, "uranium" = 1000, "diamond" = 2000)
-	build_path = /obj/item/weapon/gun/energy/particle/cannon
+	build_path = /obj/item/gun/energy/particle/cannon
 	sort_string = "MAAUB"
 
 /datum/design/item/weapon/particle/pressureinterlock
@@ -83,7 +84,7 @@
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 6000, "phoron" = 8000, "uranium" = 4000)
-	build_path = /obj/item/weapon/gun/projectile/cell_loaded/combat/prototype
+	build_path = /obj/item/gun/projectile/cell_loaded/combat/prototype
 	sort_string = "MAVAA"
 
 /datum/design/item/weapon/cell_based/prototype_nsfw_mag

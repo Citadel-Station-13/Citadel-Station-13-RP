@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/metaglass
+/obj/item/reagent_containers/food/drinks/metaglass
 	name = "metamorphic glass"
 	desc = "This glass changes shape and form depending on the drink inside... fancy!"
 	icon_state = "glass_empty"
@@ -9,7 +9,7 @@
 	matter = list("glass" = 500)
 	icon = 'icons/obj/drinks.dmi'
 
-/obj/item/weapon/reagent_containers/food/drinks/metaglass/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
 		var/datum/reagent/R = reagents.get_master_reagent()
 
@@ -556,7 +556,7 @@ Drinks Data
 	glass_center_of_mass = list("x"=16, "y"=8)
 
 /datum/reagent/ethanol/mintjulep
-	glass_icon_state = "mintjulep"
+	glass_icon_state = "mint_julep"
 	glass_center_of_mass = list("x"=16, "y"=16)
 
 /datum/reagent/ethanol/oldfashioned
@@ -567,7 +567,7 @@ Drinks Data
 	glass_icon_state = "bittersglass"
 
 /datum/reagent/ethanol/planterspunch
-	glass_icon_state = "planterspunch"
+	glass_icon_state = "junglejuice"
 
 /datum/reagent/ethanol/olympusmons
 	glass_icon_state = "olympusmons"

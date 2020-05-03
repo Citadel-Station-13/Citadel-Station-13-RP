@@ -7,7 +7,7 @@
 	use_power = 1
 	idle_power_usage = 200
 	active_power_usage = 5000
-	circuit = /obj/item/weapon/circuitboard/quantumpad
+	circuit = /obj/item/circuitboard/quantumpad
 	var/teleport_cooldown = 400 //30 seconds base due to base parts
 	var/teleport_speed = 50
 	var/last_teleport //to handle the cooldown
@@ -33,12 +33,12 @@
 
 /obj/machinery/power/quantumpad/RefreshParts()
 	var/E = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		E += M.rating
 	power_efficiency = E
 	
 	E = 0
-	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
 	
 	teleport_speed = initial(teleport_speed)
@@ -50,14 +50,14 @@
 	if(default_deconstruction_screwdriver(user, I))
 		return
 
-	if(istype(I, /obj/item/device/multitool))
+	if(istype(I, /obj/item/multitool))
 		if(panel_open)
-			var/obj/item/device/multitool/M = I
+			var/obj/item/multitool/M = I
 			M.buffer = src
 			to_chat(user, "<span class='notice'>You save the data in [I]'s buffer.</span>")
 			return 1
 		else
-			var/obj/item/device/multitool/M = I
+			var/obj/item/multitool/M = I
 			if(istype(M.buffer, /obj/machinery/power/quantumpad))
 				linked_pad = M.buffer
 				to_chat(user, "<span class='notice'>You link [src] to the one in [I]'s buffer.</span>")
@@ -119,7 +119,7 @@
 	doteleport(user)
 
 /obj/machinery/power/quantumpad/proc/sparks()
-	var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 	sparks.set_up(5, 1, get_turf(src))
 	sparks.start()
 

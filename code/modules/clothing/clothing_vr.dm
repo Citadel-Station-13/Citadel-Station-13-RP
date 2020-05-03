@@ -32,14 +32,14 @@
 
 //This is a crazy 'sideways' override.
 /obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I,/obj/item/weapon/holder/micro))
+	if(istype(I,/obj/item/holder/micro))
 		var/full = 0
 		for(var/mob/M in src)
 			full++
 		if(full >= 2)
 			to_chat(user,"<span class='warning'>You can't fit anyone else into \the [src]!</span>")
 		else
-			var/obj/item/weapon/holder/micro/holder = I
+			var/obj/item/holder/micro/holder = I
 			if(holder.held_mob && holder.held_mob in holder)
 				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
 				holder.held_mob.forceMove(src)
@@ -79,14 +79,14 @@
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.shoes == src)
-			H << "<font color='red'>[user]'s tiny body presses against you in \the [src], squirming!</font>"
-			user << "<font color='red'>Your body presses out against [H]'s form! Well, what little you can get to!</font>"
+			to_chat(H, "<font color='red'>[user]'s tiny body presses against you in \the [src], squirming!</font>")
+			to_chat(user, "<font color='red'>Your body presses out against [H]'s form! Well, what little you can get to!</font>")
 		else
-			H << "<font color='red'>[user]'s form shifts around in the \the [src], squirming!</font>"
-			user << "<font color='red'>You move around inside the [src], to no avail.</font>"
+			to_chat(H, "<font color='red'>[user]'s form shifts around in the \the [src], squirming!</font>")
+			to_chat(user, "<font color='red'>You move around inside the [src], to no avail.</font>")
 	else
 		src.visible_message("<font color='red'>\The [src] moves a little!</font>")
-		user << "<font color='red'>You throw yourself against the inside of \the [src]!</font>"
+		to_chat(user, "<font color='red'>You throw yourself against the inside of \the [src]!</font>")
 
 //Mask
 /obj/item/clothing/mask

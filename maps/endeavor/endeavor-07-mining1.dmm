@@ -156,7 +156,7 @@
 /area/outpost/mining_main/main)
 "aB" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /obj/machinery/alarm{
 	dir = 8;
 	icon_state = "alarm0";
@@ -171,7 +171,7 @@
 /area/outpost/mining_main/main)
 "aD" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/tiled/steel,
 /area/outpost/mining_main/main)
 "aE" = (
@@ -626,7 +626,7 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/unexplored/low)
 "bO" = (
-/obj/item/weapon/bananapeel,
+/obj/item/bananapeel,
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/unexplored/low)
 "bP" = (

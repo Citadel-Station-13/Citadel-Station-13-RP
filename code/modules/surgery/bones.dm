@@ -9,7 +9,7 @@
 
 /datum/surgery_step/glue_bone
 	allowed_tools = list(
-		/obj/item/weapon/surgical/bonegel = 100
+		/obj/item/surgical/bonegel = 100
 	)
 
 	allowed_procs = list(IS_SCREWDRIVER = 75)
@@ -51,7 +51,7 @@
 
 /datum/surgery_step/set_bone
 	allowed_tools = list(
-		/obj/item/weapon/surgical/bonesetter = 100
+		/obj/item/surgical/bonesetter = 100
 	)
 
 	allowed_procs = list(IS_WRENCH = 75)
@@ -95,7 +95,7 @@
 
 /datum/surgery_step/mend_skull
 	allowed_tools = list(
-		/obj/item/weapon/surgical/bonesetter = 100
+		/obj/item/surgical/bonesetter = 100
 	)
 
 	allowed_procs = list(IS_WRENCH = 75)
@@ -134,7 +134,7 @@
 
 /datum/surgery_step/finish_bone
 	allowed_tools = list(
-		/obj/item/weapon/surgical/bonegel = 100
+		/obj/item/surgical/bonegel = 100
 	)
 
 	allowed_procs = list(IS_SCREWDRIVER = 75)
@@ -175,7 +175,7 @@
 
 /datum/surgery_step/clamp_bone
 	allowed_tools = list(
-		/obj/item/weapon/surgical/bone_clamp = 100
+		/obj/item/surgical/bone_clamp = 100
 		)
 
 	can_infect = 1

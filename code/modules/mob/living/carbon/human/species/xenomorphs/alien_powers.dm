@@ -72,7 +72,7 @@
 		amount = abs(round(amount))
 		if(check_alien_ability(amount,0,O_PLASMA))
 			M.gain_plasma(amount)
-			M << "<span class='alium'>[src] has transfered [amount] plasma to you.</span>"
+			to_chat(M, "<span class='alium'>[src] has transfered [amount] plasma to you.</span>")
 			to_chat(src, "<span class='alium'>You have transferred [amount] plasma to [M].</span>")
 	return
 
@@ -319,7 +319,7 @@
 
 	src.visible_message("<span class='warning'><b>\The [src]</b> seizes [T] aggressively!</span>")
 
-	var/obj/item/weapon/grab/G = new(src,T)
+	var/obj/item/grab/G = new(src,T)
 	if(use_hand == "left")
 		l_hand = G
 	else
@@ -341,7 +341,7 @@
 		to_chat(src, "<span class='danger'>You cannot do that in your current state.</span>")
 		return
 
-	var/obj/item/weapon/grab/G = locate() in src
+	var/obj/item/grab/G = locate() in src
 	if(!G || !istype(G))
 		to_chat(src, "<span class='danger'>You are not grabbing anyone.</span>")
 		return

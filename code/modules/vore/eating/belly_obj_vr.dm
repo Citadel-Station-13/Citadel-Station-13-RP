@@ -176,6 +176,7 @@
 
 // Called whenever an atom enters this belly
 /obj/belly/Entered(var/atom/movable/thing,var/atom/OldLoc)
+	..()
 	if(OldLoc in contents)
 		return //Someone dropping something (or being stripdigested)
 
@@ -410,11 +411,11 @@
 				var/obj/item/I = M.get_equipped_item(slot = slot)
 				if(I)
 					M.unEquip(I,force = TRUE)
-					if(contaminates || istype(I,/obj/item/weapon/card/id))
+					if(contaminates || istype(I,/obj/item/card/id))
 						I.gurgle_contaminate(contents, contamination_flavor, contamination_color) //We do an initial contamination pass to get stuff like IDs wet.
 					if(item_digest_mode == IM_HOLD)
 						items_preserved |= I
-					else if(item_digest_mode == IM_DIGEST_FOOD && !(istype(I,/obj/item/weapon/reagent_containers/food) || istype(I,/obj/item/organ)))
+					else if(item_digest_mode == IM_DIGEST_FOOD && !(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ)))
 						items_preserved |= I
 
 	//Reagent transfer
@@ -630,7 +631,7 @@
 	content.forceMove(target)
 	if(isitem(content))
 		var/obj/item/I = content
-		if(istype(I,/obj/item/weapon/card/id))
+		if(istype(I,/obj/item/card/id))
 			I.gurgle_contaminate(target.contents, target.contamination_flavor, target.contamination_color)
 		if(I.gurgled && target.contaminates)
 			I.decontaminate()

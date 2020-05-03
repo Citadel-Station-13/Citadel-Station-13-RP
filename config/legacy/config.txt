@@ -221,12 +221,12 @@ GUEST_BAN
 # FORUMURL http://example.com
 
 ## Wiki address
-# WIKIURL http://example.com
+WIKIURL https://citadel-station.net/wiki_rp/index.php?title=Main_Page
 
 ## Wiki search path
 ## Set this to whatever path your wiki uses to search for articles
 ## Use %s to mark where the search query should be inserted
-# WIKISEARCHURL http://example.com/index.php?title=Special%3ASearch&search=%s
+WIKISEARCHURL https://citadel-station.net/wiki_rp/index.php?search=%s&title=Special%3ASearch&go=Go
 
 ## GitHub address
 # GITHUBURL https://github.com/example-user/example-repository
@@ -249,8 +249,8 @@ GUEST_BAN
 
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
 ALLOW_HOLIDAYS
-##Defines the ticklag for the world.  0.6 is the normal one, 0.5 is smoother
-TICKLAG 0.6
+##Defines the ticklag for the world.
+TICKLAG 0.5
 
 ## Defines if Tick Compensation is used.  It results in a minor slowdown of movement of all mobs, but attempts to result in a level movement speed across all ticks.  Recommended if tickrate is lowered.
 TICKCOMP 0

@@ -393,3 +393,8 @@
 	display_name = "Paramedic Cap"
 	path = /obj/item/clothing/head/parahat
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/head/bohat
+	display_name = "bridge officer cap"
+	path = /obj/item/clothing/head/bocap
+	allowed_roles = list("Command Secretary")

@@ -27,7 +27,7 @@
 	emote_see = list("shakes its head", "shivers")
 
 	meat_amount = 3
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
@@ -60,7 +60,7 @@
 			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
 				movement_target = null
 				stop_automated_movement = 0
-				for(var/obj/item/weapon/reagent_containers/food/snacks/S in oview(src,3))
+				for(var/obj/item/reagent_containers/food/snacks/S in oview(src,3))
 					if(isturf(S.loc) || ishuman(S.loc))
 						movement_target = S
 						break
@@ -96,12 +96,12 @@
 					setDir(i)
 					sleep(1)
 
-/obj/item/weapon/reagent_containers/food/snacks/meat/corgi
+/obj/item/reagent_containers/food/snacks/meat/corgi
 	name = "corgi meat"
 	desc = "Tastes like... well, you know..."
 
 /mob/living/simple_mob/corgi/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
-	if(istype(O, /obj/item/weapon/newspaper))
+	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
@@ -148,7 +148,7 @@
 //pupplies cannot wear anything.
 /mob/living/simple_mob/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		usr << "<font color='red'>You can't fit this on [src]</font>"
+		to_chat(usr, "<font color='red'>You can't fit this on [src]</font>")
 		return
 	..()
 

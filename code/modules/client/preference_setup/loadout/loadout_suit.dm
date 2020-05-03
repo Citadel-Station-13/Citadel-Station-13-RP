@@ -527,9 +527,9 @@ datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
 	path = /obj/item/clothing/suit/storage/bridgeofficer
 	allowed_roles = list("Command Secretary")
 
-datum/gear/suit/labcoat/parame
+datum/gear/suit/labcoat/paramedicjacketsol
 	display_name = "Paramedic Jacket"
-	path = /obj/item/clothing/suit/toggle/labcoat/paramed
+	path = /obj/item/clothing/suit/toggle/paramed
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 datum/gear/suit/labcoat/param
@@ -550,3 +550,20 @@ datum/gear/suit/labcoat/param
 /datum/gear/suit/storage/dutchcoat
 	display_name = "Western Coat"
 	path = /obj/item/clothing/suit/storage/dutchcoat
+
+/datum/gear/suit/storage/tailcoat
+	display_name = "Tailcoat"
+	path = /obj/item/clothing/suit/storage/tailcoat
+
+datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
+	display_name = "bridge officer parade jacket"
+	path = /obj/item/clothing/suit/storage/ecdress_ofcr
+	allowed_roles = list("Command Secretary")
+
+/datum/gear/suit/storage/redladvic
+	display_name = "Red Victorian Coat"
+	path = /obj/item/clothing/suit/storage/redladiesvictoriancoat
+
+/datum/gear/suit/storage/ladvic
+	display_name = "Ladies Victorian Coat"
+	path = /obj/item/clothing/suit/storage/ladiesvictoriancoat

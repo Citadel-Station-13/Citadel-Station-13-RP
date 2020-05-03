@@ -13,8 +13,11 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/conveyor
+	circuit = /obj/item/circuitboard/conveyor
 	speed_process = TRUE
+	/// What we set things to glide size to when they are being moved by us
+	var/conveyor_glide_size = 8
+
 	var/operating = OFF	// 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1	// true if can operate (no broken segments in this belt run)
 	var/forwards		// this is the default (forward) direction, set by the map dir
@@ -40,10 +43,10 @@
 		setmove()
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/motor(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/motor(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/motor(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/motor(src)
 	component_parts += new /obj/item/stack/cable_coil(src,5)
 	RefreshParts()
 
@@ -57,8 +60,18 @@
 	update()
 
 /obj/machinery/conveyor/setDir()
-	.=..()
+	. =..()
 	update_dir()
+
+/obj/machinery/conveyor/Crossed(atom/movable/AM)
+	. = ..()
+	if(operating)
+		AM.set_glide_size(conveyor_glide_size)
+
+/obj/machinery/conveyor/Uncrossed(atom/movable/AM)
+	. = ..()
+	if(operating)
+		AM.reset_glide_size()
 
 /obj/machinery/conveyor/proc/update_dir()
 	if(!(dir in cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
@@ -77,6 +90,9 @@
 		operating = OFF
 	if(stat & NOPOWER)
 		operating = OFF
+	if(operating)
+		for(var/atom/movable/AM in loc)
+			AM.set_glide_size(conveyor_glide_size)
 	icon_state = "conveyor[operating]"
 
 	// machine process
@@ -108,7 +124,7 @@
 	if(default_deconstruction_crowbar(user, I))
 		return
 
-	if(istype(I, /obj/item/device/multitool))
+	if(istype(I, /obj/item/multitool))
 		if(panel_open)
 			var/input = sanitize(input(usr, "What id would you like to give this conveyor?", "Multitool-Conveyor interface", id))
 			if(!input)
@@ -259,9 +275,9 @@
 	if(default_deconstruction_screwdriver(user, I))
 		return
 
-	if(istype(I, /obj/item/weapon/weldingtool))
+	if(istype(I, /obj/item/weldingtool))
 		if(panel_open)
-			var/obj/item/weapon/weldingtool/WT = I
+			var/obj/item/weldingtool/WT = I
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
@@ -273,7 +289,7 @@
 				qdel(src)
 				return
 
-	if(istype(I, /obj/item/device/multitool))
+	if(istype(I, /obj/item/multitool))
 		if(panel_open)
 			var/input = sanitize(input(usr, "What id would you like to give this conveyor switch?", "Multitool-Conveyor interface", id))
 			if(!input)

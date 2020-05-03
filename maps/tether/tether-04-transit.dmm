@@ -298,7 +298,7 @@
 /area/tether/midpoint)
 "aG" = (
 /obj/machinery/vending/snack,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	icon_state = "intercom";
 	pixel_x = 24
@@ -317,7 +317,7 @@
 "aI" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	cell_type = /obj/item/weapon/cell/super;
+	cell_type = /obj/item/cell/super;
 	dir = 8;
 	name = "west bump";
 	pixel_x = -28
@@ -505,7 +505,7 @@
 /area/tether/midpoint)
 "bf" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/dice/d20,
+/obj/item/dice/d20,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/midpoint)
 "bg" = (
@@ -543,7 +543,7 @@
 /obj/machinery/camera/network/northern_star{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
 	},

@@ -21,22 +21,22 @@
 	load_offset_x = 0
 	pixel_x = -8
 	pixel_y = -8
-	cell = /obj/item/weapon/cell/high
+	cell = /obj/item/cell/high
 
 
 	var/car_limit = 0	//how many cars an engine can pull before performance degrades. This should be 0 to prevent trailers from unhitching.
 	active_engines = 1
-	var/obj/item/weapon/key/rover/key
+	var/obj/item/key/rover/key
 	var/siren = 0 //This is for eventually getting the siren sprite to work.
 
 	dunebuggy
 		name = "Research Dune Buggy"
-		desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sticker that says to wear EVA suits if used in space."
+		desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sSSticker that says to wear EVA suits if used in space."
 		icon = 'icons/vore/rover_vr.dmi'
 		icon_state = "dunebug"
 
 
-/obj/item/weapon/key/rover
+/obj/item/key/rover
 	name = "The Rover key"
 	desc = "The Rover key used to start it."
 	icon = 'icons/obj/vehicles_vr.dmi'
@@ -62,7 +62,7 @@
 //-------------------------------------------
 /obj/vehicle/train/rover/engine/Initialize(mapload)
 	. = ..()
-	cell = new /obj/item/weapon/cell/high(src)
+	cell = new /obj/item/cell/high(src)
 	key = new(src)
 	turn_off()	//so engine verbs are correctly set
 
@@ -71,7 +71,7 @@
 		turn_off()
 		update_stats()
 		if(load && is_train_head())
-			load << "The drive motor briefly whines, then drones to a stop."
+			to_chat(load, "The drive motor briefly whines, then drones to a stop.")
 
 	if(is_train_head() && !on)
 		return 0
@@ -82,15 +82,15 @@
 
 	return ..()
 
-/obj/vehicle/train/rover/trolley/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(open && istype(W, /obj/item/weapon/tool/wirecutters))
+/obj/vehicle/train/rover/trolley/attackby(obj/item/W as obj, mob/user as mob)
+	if(open && istype(W, /obj/item/tool/wirecutters))
 		passenger_allowed = !passenger_allowed
 		user.visible_message("<span class='notice'>[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src].</span>","<span class='notice'>You [passenger_allowed ? "cut" : "mend"] the load limiter cable.</span>")
 	else
 		..()
 
-/obj/vehicle/train/rover/engine/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/key/rover))
+/obj/vehicle/train/rover/engine/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/key/rover))
 		if(!key)
 			user.drop_item()
 			W.forceMove(src)
@@ -113,10 +113,10 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/vehicle/train/rover/trolley/insert_cell(var/obj/item/weapon/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/train/rover/trolley/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
 	return
 
-/obj/vehicle/train/rover/engine/insert_cell(var/obj/item/weapon/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/train/rover/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
 	..()
 	update_stats()
 
@@ -213,7 +213,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	user << "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+	to_chat(user, "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition.")
 	user << "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
 /obj/vehicle/train/rover/engine/verb/start_engine()
@@ -225,17 +225,17 @@
 		return
 
 	if(on)
-		usr << "The engine is already running."
+		to_chat(usr, "The engine is already running.")
 		return
 
 	turn_on()
 	if (on)
-		usr << "You start [src]'s engine."
+		to_chat(usr, "You start [src]'s engine.")
 	else
 		if(cell.charge < charge_use)
-			usr << "[src] is out of power."
+			to_chat(usr, "[src] is out of power.")
 		else
-			usr << "[src]'s engine won't start."
+			to_chat(usr, "[src]'s engine won't start.")
 
 /obj/vehicle/train/rover/engine/verb/stop_engine()
 	set name = "Stop engine"
@@ -246,12 +246,12 @@
 		return
 
 	if(!on)
-		usr << "The engine is already stopped."
+		to_chat(usr, "The engine is already stopped.")
 		return
 
 	turn_off()
 	if (!on)
-		usr << "You stop [src]'s engine."
+		to_chat(usr, "You stop [src]'s engine.")
 
 /obj/vehicle/train/rover/engine/verb/remove_key()
 	set name = "Remove key"

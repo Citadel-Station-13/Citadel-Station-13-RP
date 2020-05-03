@@ -40,7 +40,7 @@
 	update()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
-	. = ..()
+	..()
 	mover.fall()
 
 // Called when thrown object lands on this turf.
@@ -56,7 +56,7 @@
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
 		A.fall()
-	OS_controller.add_turf(src, 1)
+	SSopenspace.add_turf(src, 1)
 
 // override to make sure nothing is hidden
 /turf/simulated/open/levelupdate()
@@ -103,10 +103,16 @@
 		add_overlay(o_img)
 
 		if(!below_is_open)
-			add_overlay(over_OS_darkness)
+			add_overlay(/obj/effect/abstract/over_openspace_darkness)
 
 		return 0
 	return PROCESS_KILL
+
+/obj/effect/abstract/over_openspace_darkness
+	icon = 'icons/turf/open_space.dmi'
+	icon_state = "black_open"
+	plane = OVER_OPENSPACE_PLANE
+	layer = MOB_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)

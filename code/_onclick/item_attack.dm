@@ -28,20 +28,20 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
-/obj/item/proc/resolve_attackby(atom/A, mob/user, var/attack_modifier = 1)
+/obj/item/proc/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	pre_attack(A, user)
 	add_fingerprint(user)
-	return A.attackby(src, user, attack_modifier)
+	return A.attackby(src, user, params, attack_modifier)
 
 // No comment
-/atom/proc/attackby(obj/item/W, mob/user, var/attack_modifier)
+/atom/proc/attackby(obj/item/W, mob/user, params, attack_modifier)
 	return
 
-/atom/movable/attackby(obj/item/W, mob/user, var/attack_modifier)
+/atom/movable/attackby(obj/item/W, mob/user, params, attack_modifier)
 	if(!(W.flags & NOBLUDGEON))
 		visible_message("<span class='danger'>[src] has been hit by [user] with [W].</span>")
 
-/mob/living/attackby(obj/item/I, mob/user, var/attack_modifier)
+/mob/living/attackby(obj/item/I, mob/user, params, attack_modifier)
 	if(!ismob(user))
 		return 0
 	if(can_operate(src) && I.do_surgery(src,user))
@@ -77,7 +77,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 /obj/item/proc/attack(mob/living/M, mob/living/user, var/target_zone, var/attack_modifier)
 	if(!force || (flags & NOBLUDGEON))
 		return 0
-	if(M == user && user.a_intent != I_HURT)
+	if(M == user && user.a_intent != INTENT_HARM)
 		return 0
 
 	/////////////////////////

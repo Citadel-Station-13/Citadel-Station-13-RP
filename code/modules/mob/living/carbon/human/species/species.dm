@@ -93,7 +93,7 @@
 	var/vision_flags = SEE_SELF								// Same flags as glasses.
 
 	// Death vars.
-	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
+	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	var/remains_type = /obj/effect/decal/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
@@ -264,26 +264,26 @@
 	return sanitizeName(name, MAX_NAME_LEN, robot)
 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/weapon/storage/box/survival //Default survival box
+	var/boxtype = /obj/item/storage/box/survival //Default survival box
 
 	var/synth = H.isSynthetic()
 
 	//Empty box for synths
 	if(synth)
-		boxtype = /obj/item/weapon/storage/box/survival/synth
+		boxtype = /obj/item/storage/box/survival/synth
 
 	//Special box with extra equipment
 	else if(comprehensive)
-		boxtype = /obj/item/weapon/storage/box/survival/comp
+		boxtype = /obj/item/storage/box/survival/comp
 
 	//Create the box
-	var/obj/item/weapon/storage/box/box = new boxtype(H)
+	var/obj/item/storage/box/box = new boxtype(H)
 
 	//If not synth, they get an air tank (if they breathe)
 	if(!synth && breath_type)
 		//Create a tank (if such a thing exists for this species)
-		var/tanktext = "/obj/item/weapon/tank/emergency/" + "[breath_type]"
-		var/obj/item/weapon/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
+		var/tanktext = "/obj/item/tank/emergency/" + "[breath_type]"
+		var/obj/item/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
 		if(extendedtank)
 			tankpath = text2path(tanktext + "/engi")
 			if(!tankpath) //Is it just that there's no /engi?
@@ -297,7 +297,7 @@
 
 	//If they are synth, they get a smol battery
 	else if(synth)
-		new /obj/item/device/fbp_backup_cell(box)
+		new /obj/item/fbp_backup_cell(box)
 
 	box.calibrate_size()
 
@@ -413,7 +413,7 @@
 // Called when using the shredding behavior.
 /datum/species/proc/can_shred(var/mob/living/carbon/human/H, var/ignore_intent)
 
-	if(!ignore_intent && H.a_intent != I_HURT)
+	if(!ignore_intent && H.a_intent != INTENT_HARM)
 		return 0
 
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)

@@ -74,7 +74,7 @@
 /obj/item/clothing/accessory/collar/shock/Topic(href, href_list)
 	if(usr.stat || usr.restrained())
 		return
-	if(((istype(usr, /mob/living/carbon/human) && ((!( ticker ) || (ticker && ticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
+	if(((istype(usr, /mob/living/carbon/human) && ((!( SSticker ) || (SSticker && SSticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))
 		usr.set_machine(src)
 		if(href_list["freq"])
 			var/new_frequency = sanitize_frequency(frequency + text2num(href_list["freq"]))
@@ -129,7 +129,7 @@
 		if(ismob(loc.loc))
 			M = loc.loc // This is about as terse as I can make my solution to the whole 'collar won't work when attached as accessory' thing.
 		to_chat(M,"<span class='danger'>You feel a sharp shock!</span>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
 		M.Weaken(10)
@@ -226,11 +226,11 @@
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		return
 
-	if(istype(I,/obj/item/weapon/tool/screwdriver))
+	if(istype(I,/obj/item/tool/screwdriver))
 		update_collartag(user, I, "scratched out", "scratch out", "engraved")
 		return
 
-	if(istype(I,/obj/item/weapon/pen))
+	if(istype(I,/obj/item/pen))
 		update_collartag(user, I, "crossed out", "cross out", "written")
 		return
 
@@ -267,7 +267,7 @@
 	icon_state = "holster_machete"
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
-	can_hold = list(/obj/item/weapon/material/knife/machete)
+	can_hold = list(/obj/item/material/knife/machete)
 	//sound_in = 'sound/effects/holster/sheathin.ogg'
 	//sound_out = 'sound/effects/holster/sheathout.ogg'
 

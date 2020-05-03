@@ -42,7 +42,7 @@
 /datum/chemical_reaction/dontcrossthebeams/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
 	playsound(location, 'sound/weapons/gauss_shoot.ogg', 50, 1)
-	var/datum/effect/effect/system/grav_pull/s = new /datum/effect/effect/system/grav_pull
+	var/datum/effect_system/grav_pull/s = new /datum/effect_system/grav_pull
 	s.set_up(3, 3, location)
 	s.start()
 	holder.clear_reagents()
@@ -143,7 +143,7 @@
 	result_amount = 1
 	on_reaction(var/datum/reagents/holder)
 
-		var/list/borks = typesof(/obj/item/weapon/reagent_containers/food/snacks) - /obj/item/weapon/reagent_containers/food/snacks // BORK BORK BORK
+		var/list/borks = typesof(/obj/item/reagent_containers/food/snacks) - /obj/item/reagent_containers/food/snacks // BORK BORK BORK
 
 		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 /* Removed at some point, unsure what to replace with
@@ -214,7 +214,7 @@
 	on_reaction(var/datum/reagents/holder)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
 			O.show_message(text("<span class='warning'> The contents of the slime core harden and begin to emit a warm, bright light.</span>"), 1)
-		var/obj/item/device/flashlight/slime/F = new /obj/item/device/flashlight/slime
+		var/obj/item/flashlight/slime/F = new /obj/item/flashlight/slime
 		F.loc = get_turf(holder.my_atom)
 
 
@@ -242,7 +242,7 @@
 		playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 		for(var/mob/living/M in range (get_turf(holder.my_atom), 7))
 			M.bodytemperature -= 140
-			M << "<span class='notice'> You suddenly feel a chill!</span>"
+			to_chat(M, "<span class='notice'> You suddenly feel a chill!</span>")
 
 
 
@@ -291,7 +291,7 @@
 	required_reagents = list("phoron" = 10, "bicaridine" = 10, "kelotane" = 10, "inaprovaline" = 10, "slimejelly" = 10)
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 		for (var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
-			C << "<span class='notice'>A wave of energy suddenly invigorates you.</span>"
+			to_chat(C, "<span class='notice'>A wave of energy suddenly invigorates you.</span>")
 			C.adjustBruteLoss(-25)
 			C.adjustFireLoss(-25)
 			C.adjustToxLoss(-25)

@@ -42,7 +42,19 @@
 	var/global/global_uid = 0
 	var/uid
 
+	/// Color on minimaps, if it's null (which is default) it makes one at random.
+	var/minimap_color
+
 /area/New()
+	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
+		// generate one using the icon_state
+		if(icon_state && icon_state != "unknown")
+			var/icon/I = new(icon, icon_state, dir)
+			I.Scale(1,1)
+			minimap_color = I.GetPixel(1,1)
+		else // no icon state? use random.
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
+
 	icon_state = ""
 	uid = ++global_uid
 	all_areas += src
@@ -82,13 +94,13 @@
 
 /area/proc/atmosalert(danger_level, var/alarm_source)
 	if (danger_level == 0)
-		atmosphere_alarm.clearAlarm(src, alarm_source)
+		SSalarms.atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
 		var/obj/machinery/alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
-			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
+			SSalarms.atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
 		else
-			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
+			SSalarms.atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/obj/machinery/alarm/AA in src)
@@ -266,48 +278,31 @@
 		if(ENVIRON)
 			used_environ += amount
 
-
-var/list/mob/living/forced_ambiance_list = new
-
-/area/Entered(A)
-	if(!istype(A,/mob/living))	return
-
-	var/mob/living/L = A
-	if(!L.ckey)	return
-
-	if(!L.lastarea)
-		L.lastarea = get_area(L.loc)
-	var/area/newarea = get_area(L.loc)
-	var/area/oldarea = L.lastarea
-	if((oldarea.has_gravity == 0) && (newarea.has_gravity == 1) && (L.m_intent == "run")) // Being ready when you change areas gives you a chance to avoid falling all together.
-		thunk(L)
-		L.update_floating( L.Check_Dense_Object() )
-
-	L.lastarea = newarea
-	play_ambience(L)
+GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambiance)))	return
+	if(!L?.is_preference_enabled(/datum/client_preference/play_ambiance))
+		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
-	if(L in forced_ambiance_list)
-		L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
-		forced_ambiance_list -= L
+	if(L in GLOB.forced_ambiance_list)
+		L.stop_sound_channel(CHANNEL_AMBIENCE_FORCED)
+		GLOB.forced_ambiance_list -= L
 
 	if(forced_ambience)
 		if(forced_ambience.len)
-			forced_ambiance_list |= L
+			GLOB.forced_ambiance_list |= L
 			var/sound/chosen_ambiance = pick(forced_ambience)
 			if(!istype(chosen_ambiance))
 				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE_FORCED)
-			L << chosen_ambiance
+			SEND_SOUND(L, chosen_ambiance)
 		else
-			L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
+			L.stop_sound_channel(CHANNEL_AMBIENCE_FORCED)
 	else if(src.ambience.len && prob(35))
 		if((world.time >= L.client.time_last_ambience_played + 1 MINUTE))
 			var/sound = pick(ambience)
-			L << sound(sound, repeat = 0, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE)
+			SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE))
 			L.client.time_last_ambience_played = world.time
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
@@ -335,7 +330,7 @@ var/list/mob/living/forced_ambiance_list = new
 		else
 			H.AdjustStunned(3)
 			H.AdjustWeakened(3)
-		mob << "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>"
+		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
 /area/proc/prison_break()
@@ -352,14 +347,6 @@ var/list/mob/living/forced_ambiance_list = new
 	return has_gravity
 
 /area/space/has_gravity()
-	return 0
-
-/proc/has_gravity(atom/AT, turf/T)
-	if(!T)
-		T = get_turf(AT)
-	var/area/A = get_area(T)
-	if(A && A.has_gravity())
-		return 1
 	return 0
 
 /area/proc/shuttle_arrived()

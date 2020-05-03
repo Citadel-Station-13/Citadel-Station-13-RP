@@ -116,7 +116,7 @@
 						continue
 					loc_landmark = tripai
 		if (!loc_landmark)
-			O << "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone."
+			to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
 			for(var/obj/effect/landmark/start/sloc in landmarks_list)
 				if (sloc.name == "AI")
 					loc_landmark = sloc
@@ -170,11 +170,11 @@
 	O.job = "Cyborg"
 	if(O.mind.assigned_role == "Cyborg")
 		if(O.mind.role_alt_title == "Robot")
-			O.mmi = new /obj/item/device/mmi/digital/posibrain(O)
+			O.mmi = new /obj/item/mmi/digital/posibrain(O)
 		else if(O.mind.role_alt_title == "Drone")
-			O.mmi = new /obj/item/device/mmi/digital/robot(O)
+			O.mmi = new /obj/item/mmi/digital/robot(O)
 		else
-			O.mmi = new /obj/item/device/mmi(O)
+			O.mmi = new /obj/item/mmi(O)
 
 		O.mmi.transfer_identity(src)
 
@@ -209,10 +209,10 @@
 	var/alien_caste = pick("Hunter","Sentinel","Drone")
 	var/mob/living/carbon/human/new_xeno = create_new_xenomorph(alien_caste,loc)
 
-	new_xeno.a_intent = I_HURT
+	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
 
-	new_xeno << "<B>You are now an alien.</B>"
+	to_chat(new_xeno, "<B>You are now an alien.</B>")
 	qdel(src)
 	return
 
@@ -231,10 +231,10 @@
 		qdel(t)
 
 	var/mob/living/simple_mob/animal/passive/dog/corgi/new_corgi = new /mob/living/simple_mob/animal/passive/dog/corgi (loc)
-	new_corgi.a_intent = I_HURT
+	new_corgi.a_intent = INTENT_HARM
 	new_corgi.key = key
 
-	new_corgi << "<B>You are now a Corgi. Yap Yap!</B>"
+	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
 	qdel(src)
 	return
 
@@ -244,7 +244,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		usr << "<font color='red'>Sorry but this mob type is currently unavailable.</font>"
+		to_chat(usr, "<font color='red'>Sorry but this mob type is currently unavailable.</font>")
 		return
 
 	if(transforming)
@@ -264,10 +264,10 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = I_HURT
+	new_mob.a_intent = INTENT_HARM
 
 
-	new_mob << "You suddenly feel more... animalistic."
+	to_chat(new_mob, "You suddenly feel more... animalistic.")
 	spawn()
 		qdel(src)
 	return
@@ -278,14 +278,14 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		usr << "<font color='red'>Sorry but this mob type is currently unavailable.</font>"
+		to_chat(usr, "<font color='red'>Sorry but this mob type is currently unavailable.</font>")
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = I_HURT
-	new_mob << "You feel more... animalistic"
+	new_mob.a_intent = INTENT_HARM
+	to_chat(new_mob, "You feel more... animalistic")
 
 	qdel(src)
 

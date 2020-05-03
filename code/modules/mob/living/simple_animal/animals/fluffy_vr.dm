@@ -26,7 +26,7 @@
 	emote_see = list("puffs its fur out", "shakes its fur", "stares directly at you")
 
 	meat_amount = 1
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 /mob/living/simple_mob/fluffy/Life()
 	. = ..()

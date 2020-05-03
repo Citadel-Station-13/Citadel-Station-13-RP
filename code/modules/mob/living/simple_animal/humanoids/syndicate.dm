@@ -91,7 +91,7 @@
 
 	status_flags = 0
 
-	loot_list = list(/obj/item/weapon/melee/energy/sword/red = 100, /obj/item/weapon/shield/energy = 100)
+	loot_list = list(/obj/item/melee/energy/sword/red = 100, /obj/item/shield/energy = 100)
 
 /mob/living/simple_mob/hostile/syndicate/melee/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(O.force)
@@ -103,7 +103,7 @@
 		else
 			..()
 	else
-		usr << "<span class='warning'>This weapon is ineffective, it does no damage.</span>"
+		to_chat(usr, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
 		visible_message("<span class='warning'>\The [user] gently taps [src] with \the [O].</span>")
 
 /mob/living/simple_mob/hostile/syndicate/melee/bullet_act(var/obj/item/projectile/Proj)
@@ -150,7 +150,7 @@
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/Gunshot_light.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/projectile/automatic/c20r = 100)
+	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 /mob/living/simple_mob/hostile/syndicate/ranged/laser
 	icon_state = "syndicateranged_laser"
@@ -159,7 +159,7 @@
 	projectiletype = /obj/item/projectile/beam/midlaser
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/laser = 100)
+	loot_list = list(/obj/item/gun/energy/laser = 100)
 
 /mob/living/simple_mob/hostile/syndicate/ranged/ionrifle
 	icon_state = "syndicateranged_ionrifle"
@@ -168,7 +168,7 @@
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/energy/ionrifle = 100)
+	loot_list = list(/obj/item/gun/energy/ionrifle = 100)
 
 /mob/living/simple_mob/hostile/syndicate/ranged/space
 	name = "space mercenary" //VOREStation Edit

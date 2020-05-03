@@ -56,9 +56,9 @@
 	var/feeding_delay = 30 SECONDS	// How long do we have to wait to bite our host's organs?
 	var/last_feeding = 0
 
-	intent = I_HELP
+	a_intent = INTENT_HELP
 
-	holder_type = /obj/item/weapon/holder/leech
+	holder_type = /obj/item/holder/leech
 
 	movement_cooldown = 0
 	aquatic_movement = -2
@@ -124,8 +124,8 @@
 	..()
 	if(client.statpanel == "Status")
 		statpanel("Status")
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
+		if(SSemergencyshuttle)
+			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
 		stat("Chemicals", chemicals)
@@ -134,11 +134,11 @@
 	. = TRUE
 	if(istype(A, /mob/living/carbon))
 		switch(a_intent)
-			if(I_DISARM) // Poison
+			if(INTENT_DISARM) // Poison
 				set_AI_busy(TRUE)
 				poison_inject(src, A)
 				set_AI_busy(FALSE)
-			if(I_GRAB) // Infesting!
+			if(INTENT_GRAB) // Infesting!
 				set_AI_busy(TRUE)
 				do_infest(src, A)
 				set_AI_busy(FALSE)
@@ -489,15 +489,15 @@
 		var/mob/living/L = A
 		if(ishuman(L) && !L.isSynthetic())
 			if(L.incapacitated() || (L.stat && L.stat != DEAD) || L.resting || L.paralysis)
-				holder.a_intent = I_GRAB		// Infesting time.
+				holder.a_intent = INTENT_GRAB		// Infesting time.
 			else
-				holder.a_intent = I_DISARM	// They're standing up! Try to drop or stun them.
+				holder.a_intent = INTENT_DISARM	// They're standing up! Try to drop or stun them.
 		else
-			holder.a_intent = I_HURT		// Otherwise, bite.
+			holder.a_intent = INTENT_HARM		// Otherwise, bite.
 
 	else if(istype(A, /obj/item))
 		var/obj/item/I = A
-		if(istype(I, /obj/item/weapon/reagent_containers/food/snacks))
-			holder.a_intent = I_HURT
+		if(istype(I, /obj/item/reagent_containers/food/snacks))
+			holder.a_intent = INTENT_HARM
 	else
-		holder.a_intent = I_HURT
+		holder.a_intent = INTENT_HARM

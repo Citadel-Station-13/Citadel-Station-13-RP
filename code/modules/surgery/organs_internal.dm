@@ -19,8 +19,8 @@
 /*
 /datum/surgery_step/internal/remove_embryo
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/material/kitchen/utensil/fork = 20
+	/obj/item/surgical/hemostat = 100,	\
+	/obj/item/material/kitchen/utensil/fork = 20
 	)
 
 	allowed_procs = list(IS_WIRECUTTER = 75)
@@ -150,9 +150,9 @@
 /datum/surgery_step/internal/detatch_organ/
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel = 100,		\
-	/obj/item/weapon/material/knife = 75,	\
-	/obj/item/weapon/material/shard = 50, 		\
+	/obj/item/surgical/scalpel = 100,		\
+	/obj/item/material/knife = 75,	\
+	/obj/item/material/shard = 50, 		\
 	)
 
 	min_duration = 90
@@ -212,8 +212,8 @@
 /datum/surgery_step/internal/remove_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/material/kitchen/utensil/fork = 20
+	/obj/item/surgical/hemostat = 100,	\
+	/obj/item/material/kitchen/utensil/fork = 20
 	)
 
 	allowed_procs = list(IS_WIRECUTTER = 75)
@@ -289,11 +289,11 @@
 		return 0
 
 	if((affected.robotic >= ORGAN_ROBOT) && !(O.robotic >= ORGAN_ROBOT))
-		user << "<span class='danger'>You cannot install a naked organ into a robotic body.</span>"
+		to_chat(user, "<span class='danger'>You cannot install a naked organ into a robotic body.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.species)
-		user << "<span class='danger'>You have no idea what species this person is. Report this on the bug tracker.</span>"
+		to_chat(user, "<span class='danger'>You have no idea what species this person is. Report this on the bug tracker.</span>")
 		return SURGERY_FAILURE
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"
@@ -301,20 +301,20 @@
 	var/o_do = (O.gender == PLURAL) ? "don't" : "doesn't"
 
 	if(O.damage > (O.max_damage * 0.75))
-		user << "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be transplanted.</span>"
+		to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be transplanted.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.internal_organs_by_name[O.organ_tag])
 		organ_missing = 1
 	else
-		user << "<span class='warning'>\The [target] already has [o_a][O.organ_tag].</span>"
+		to_chat(user, "<span class='warning'>\The [target] already has [o_a][O.organ_tag].</span>")
 		return SURGERY_FAILURE
 
 	if(O && affected.organ_tag == O.parent_organ)
 		organ_compatible = 1
 
 	else
-		user << "<span class='warning'>\The [O.organ_tag] [o_do] normally go in \the [affected.name].</span>"
+		to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_do] normally go in \the [affected.name].</span>")
 		return SURGERY_FAILURE
 
 	return ..() && organ_missing && organ_compatible
@@ -348,7 +348,7 @@
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
+	/obj/item/surgical/FixOVein = 100, \
 	/obj/item/stack/cable_coil = 75
 	)
 
@@ -401,7 +401,7 @@
 /datum/surgery_step/internal/rip_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel/ripper = 100
+	/obj/item/surgical/scalpel/ripper = 100
 	)
 
 	priority = 3
@@ -459,9 +459,9 @@
 // To be finished after some tests.
 // /datum/surgery_step/ribcage/heart/cut
 //	allowed_tools = list(
-//	/obj/item/weapon/surgical/scalpel = 100,		\
-//	/obj/item/weapon/material/knife = 75,	\
-//	/obj/item/weapon/material/shard = 50, 		\
+//	/obj/item/surgical/scalpel = 100,		\
+//	/obj/item/material/knife = 75,	\
+//	/obj/item/material/shard = 50, 		\
 //	)
 
 //	min_duration = 30

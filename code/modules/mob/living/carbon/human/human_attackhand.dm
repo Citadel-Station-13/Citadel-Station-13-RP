@@ -33,7 +33,7 @@
 		if(H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(!temp || !temp.is_usable())
-			H << "<font color='red'>You can't use your hand.</font>"
+			to_chat(H, "<font color='red'>You can't use your hand.</font>")
 			return
 	if(H.lying)
 		return
@@ -60,7 +60,7 @@
 		C.spread_disease_to(src, "Contact")
 
 	switch(M.a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 
 			// VOREStation Edit - Begin
 			if (istype(H) && attempt_to_scoop(H))
@@ -68,16 +68,16 @@
 			// VOREStation Edit - End
 			if(istype(H) && health < config_legacy.health_threshold_crit)
 				if(!H.check_has_mouth())
-					H << "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>"
+					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
 					return
 				if(!check_has_mouth())
-					H << "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>"
+					to_chat(H, "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>")
 					return
 				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					H << "<span class='notice'>Remove your mask!</span>"
+					to_chat(H, "<span class='notice'>Remove your mask!</span>")
 					return 0
 				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					H << "<span class='notice'>Remove [src]'s mask!</span>"
+					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
 					return 0
 
 				if (!cpr_time)
@@ -93,7 +93,7 @@
 					return
 
 				H.visible_message("<span class='danger'>\The [H] performs CPR on \the [src]!</span>")
-				H << "<span class='warning'>Repeat at least every 7 seconds.</span>"
+				to_chat(H, "<span class='warning'>Repeat at least every 7 seconds.</span>")
 
 				if(istype(H) && health > config_legacy.health_threshold_dead)
 					adjustOxyLoss(-(min(getOxyLoss(), 5)))
@@ -104,19 +104,19 @@
 				help_shake_act(M)
 			return TRUE
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if(M == src || anchored)
 				return 0
-			for(var/obj/item/weapon/grab/G in src.grabbed_by)
+			for(var/obj/item/grab/G in src.grabbed_by)
 				if(G.assailant == M)
-					M << "<span class='notice'>You already grabbed [src].</span>"
+					to_chat(M, "<span class='notice'>You already grabbed [src].</span>")
 					return
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
 
-			var/obj/item/weapon/grab/G = new /obj/item/weapon/grab(M, src)
+			var/obj/item/grab/G = new /obj/item/grab(M, src)
 			if(buckled)
-				M << "<span class='notice'>You cannot grab [src], [TT.he] is buckled in!</span>"
+				to_chat(M, "<span class='notice'>You cannot grab [src], [TT.he] is buckled in!</span>")
 				return
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
@@ -132,16 +132,16 @@
 
 			return TRUE
 
-		if(I_HURT)
+		if(INTENT_HARM)
 
-			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
-				var/obj/item/weapon/grenade/G = wear_mask
+			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
+				var/obj/item/grenade/G = wear_mask
 				if(!G.active)
 					visible_message("<span class='danger'>\The [M] pulls the pin from \the [src]'s [G.name]!</span>")
 					G.activate(M)
 					update_inv_wear_mask()
 				else
-					M << "<span class='warning'>\The [G] is already primed! Run!</span>"
+					to_chat(M, "<span class='warning'>\The [G] is already primed! Run!</span>")
 				return
 
 			if(!istype(H))
@@ -155,15 +155,15 @@
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
 
 			if(!affecting || affecting.is_stump())
-				M << "<span class='danger'>They are missing that limb!</span>"
+				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
 				return TRUE
 
 			switch(src.a_intent)
-				if(I_HELP)
+				if(INTENT_HELP)
 					// We didn't see this coming, so we get the full blow
 					rand_damage = 5
 					accurate = 1
-				if(I_HURT, I_GRAB)
+				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1
@@ -269,7 +269,7 @@
 			// Finally, apply damage to target
 			apply_damage(real_damage, hit_dam_type, hit_zone, armour, soaked, sharp=attack.sharp, edge=attack.edge)
 
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			add_attack_logs(H,src,"Disarmed")
 
 			M.do_attack_animation(src)
@@ -281,7 +281,7 @@
 			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
 
 			//See if they have any guns that might go off
-			for(var/obj/item/weapon/gun/W in holding)
+			for(var/obj/item/gun/W in holding)
 				if(W && prob(holding[W]))
 					var/list/turfs = list()
 					for(var/turf/T in view())
@@ -351,7 +351,7 @@
 //Used to attack a joint through grabbing
 /mob/living/carbon/human/proc/grab_joint(var/mob/living/user, var/def_zone)
 	var/has_grab = 0
-	for(var/obj/item/weapon/grab/G in list(user.l_hand, user.r_hand))
+	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
 		if(G.affecting == src && G.state == GRAB_NECK)
 			has_grab = 1
 			break
@@ -382,15 +382,15 @@
 		success = TRUE
 		stop_pulling()
 
-	if(istype(l_hand, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/lgrab = l_hand
+	if(istype(l_hand, /obj/item/grab))
+		var/obj/item/grab/lgrab = l_hand
 		if(lgrab.affecting)
 			visible_message("<span class='danger'>[user] has broken [src]'s grip on [lgrab.affecting]!</span>")
 			success = TRUE
 		spawn(1)
 			qdel(lgrab)
-	if(istype(r_hand, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/rgrab = r_hand
+	if(istype(r_hand, /obj/item/grab))
+		var/obj/item/grab/rgrab = r_hand
 		if(rgrab.affecting)
 			visible_message("<span class='danger'>[user] has broken [src]'s grip on [rgrab.affecting]!</span>")
 			success = TRUE
@@ -411,7 +411,7 @@
 		return FALSE
 
 	if(organ.applied_pressure)
-		user << "<span class='warning'>Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"].</span>"
+		to_chat(user, "<span class='warning'>Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"].</span>")
 		return FALSE
 
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

@@ -69,13 +69,13 @@
 				for (var/mob/v in viewers(T))
 					v.show_message("<span class='notice'>[M] presses [TM.his] thumb against [P].</span>", 3, "<span class='notice'>[P] makes a sharp clicking sound as it extracts DNA material from [M].</span>", 2)
 				var/datum/dna/dna = M.dna
-				P << "<font color = red><h3>[M]'s UE string : [dna.unique_enzymes]</h3></font>"
+				to_chat(P, "<font color = red><h3>[M]'s UE string : [dna.unique_enzymes]</h3></font>")
 				if(dna.unique_enzymes == P.master_dna)
-					P << "<b>DNA is a match to stored Master DNA.</b>"
+					to_chat(P, "<b>DNA is a match to stored Master DNA.</b>")
 				else
-					P << "<b>DNA does not match stored Master DNA.</b>"
+					to_chat(P, "<b>DNA does not match stored Master DNA.</b>")
 			else
-				P << "[M] does not seem like [TM.he] is going to provide a DNA sample willingly."
+				to_chat(P, "[M] does not seem like [TM.he] is going to provide a DNA sample willingly.")
 			return 1
 
 /datum/pai_software/radio_config
@@ -96,7 +96,7 @@
 			var/ch_stat = user.radio.channels[ch_name]
 			var/ch_dat[0]
 			ch_dat["name"] = ch_name
-			// FREQ_LISTENING is const in /obj/item/device/radio
+			// FREQ_LISTENING is const in /obj/item/radio
 			ch_dat["listening"] = !!(ch_stat & user.radio.FREQ_LISTENING)
 			channels[++channels.len] = ch_dat
 
@@ -152,7 +152,7 @@
 
 		var/pdas[0]
 		if(!user.pda.toff)
-			for(var/obj/item/device/pda/P in GLOB.PDAs)
+			for(var/obj/item/pda/P in GLOB.PDAs)
 				if(!P.owner || P.toff || P == user.pda || P.hidden) continue
 				var/pda[0]
 				pda["name"] = "[P]"
@@ -363,7 +363,7 @@
 		else if(href_list["cable"])
 			var/turf/T = get_turf_or_move(P.loc)
 			P.hack_aborted = 0
-			P.cable = new /obj/item/weapon/pai_cable(T)
+			P.cable = new /obj/item/pai_cable(T)
 			for(var/mob/M in viewers(T))
 				M.show_message("<span class='warning'>A port on [P] opens to reveal [P.cable], which promptly falls to the floor.</span>", 3,
 				               "<span class='warning'>You hear the soft click of something light and hard falling to the ground.</span>", 2)
@@ -373,9 +373,9 @@
 	var/turf/T = get_turf_or_move(src.loc)
 	for(var/mob/living/silicon/ai/AI in player_list)
 		if(T.loc)
-			AI << "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>"
+			to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>")
 		else
-			AI << "<font color = red><b>Network Alert: Brute-force encryption crack in progress. Unable to pinpoint location.</b></font>"
+			to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress. Unable to pinpoint location.</b></font>")
 	var/obj/machinery/door/D = cable.machine
 	if(!istype(D))
 		hack_aborted = 1

@@ -58,7 +58,7 @@
 	var/meat_amount = 0				// How much meat to drop from this mob when butchered
 	var/obj/meat_type				// The meat object to drop
 	var/list/loot_list = list()		// The list of lootable objects to drop, with "/path = prob%" structure
-	var/obj/item/weapon/card/id/myid// An ID card if they have one to give them access to stuff.
+	var/obj/item/card/id/myid// An ID card if they have one to give them access to stuff.
 
 	//Mob environment settings
 	var/minbodytemp = 250			// Minimum "okay" temperature in kelvin
@@ -216,6 +216,7 @@
 	return ..()
 */
 /mob/living/simple_mob/movement_delay()
+	. = ..()
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
 
 	tally = movement_cooldown
@@ -245,7 +246,7 @@
 	if(m_intent == "walk")
 		tally *= 1.5
 
-	return tally+config_legacy.animal_delay
+	return . + tally + config_legacy.animal_delay
 
 
 /mob/living/simple_mob/Stat()

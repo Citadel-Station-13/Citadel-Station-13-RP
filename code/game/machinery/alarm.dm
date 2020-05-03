@@ -56,7 +56,7 @@
 	panel_open = 0 // If it's been screwdrivered open.
 	var/aidisabled = 0
 	var/shorted = 0
-	circuit = /obj/item/weapon/circuitboard/airalarm
+	circuit = /obj/item/circuitboard/airalarm
 
 	var/datum/wires/alarm/wires
 
@@ -605,7 +605,7 @@
 
 /obj/machinery/alarm/CanUseTopic(var/mob/user, var/datum/topic_state/state, var/href_list = list())
 	if(aidisabled && isAI(user))
-		user << "<span class='warning'>AI control for \the [src] interface has been disabled.</span>"
+		to_chat(user, "<span class='warning'>AI control for \the [src] interface has been disabled.</span>")
 		return STATUS_CLOSE
 
 	. = shorted ? STATUS_DISABLED : STATUS_INTERACTIVE
@@ -642,7 +642,7 @@
 		var/input_temperature = input("What temperature would you like the system to mantain? (Capped between [min_temperature] and [max_temperature]C)", "Thermostat Controls", target_temperature - T0C) as num|null
 		if(isnum(input_temperature))
 			if(input_temperature > max_temperature || input_temperature < min_temperature)
-				usr << "Temperature must be between [min_temperature]C and [max_temperature]C"
+				to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
 			else
 				target_temperature = input_temperature + T0C
 		return 1
@@ -766,16 +766,16 @@
 	if(alarm_deconstruction_wirecutters(user, W))
 		return
 
-	if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))// trying to unlock the interface with an ID card
+	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))// trying to unlock the interface with an ID card
 		if(stat & (NOPOWER|BROKEN))
-			user << "It does nothing"
+			to_chat(user, "It does nothing")
 			return
 		else
 			if(allowed(usr) && !wires.IsIndexCut(AALARM_WIRE_IDSCAN))
 				locked = !locked
-				user << "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>"
+				to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
 			else
-				user << "<span class='warning'>Access denied.</span>"
+				to_chat(user, "<span class='warning'>Access denied.</span>")
 			return
 	return ..()
 
@@ -790,7 +790,7 @@
 AIR ALARM CIRCUIT
 Just a object used in constructing air alarms
 
-/obj/item/weapon/airalarm_electronics
+/obj/item/airalarm_electronics
 	name = "air alarm electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -821,7 +821,7 @@ FIRE ALARM
 	var/last_process = 0
 	panel_open = 0
 	var/seclevel
-	circuit = /obj/item/weapon/circuitboard/firealarm
+	circuit = /obj/item/circuitboard/firealarm
 	var/alarms_hidden = FALSE //If the alarms from this machine are visible on consoles
 
 /obj/machinery/firealarm/alarms_hidden
@@ -882,7 +882,7 @@ FIRE ALARM
 		return
 
 	if(panel_open)
-		if(istype(W, /obj/item/device/multitool))
+		if(istype(W, /obj/item/multitool))
 			detecting = !(detecting)
 			if(detecting)
 				user.visible_message("<span class='notice'>\The [user] has reconnected [src]'s detecting unit!</span>", "<span class='notice'>You have reconnected [src]'s detecting unit.</span>")
@@ -992,7 +992,7 @@ FIRE ALARM
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/firealarm/FA in area)
-		fire_alarm.clearAlarm(src.loc, FA)
+		SSalarms.fire_alarm.clearAlarm(src.loc, FA)
 	update_icon()
 	return
 
@@ -1001,7 +1001,7 @@ FIRE ALARM
 		return
 	var/area/area = get_area(src)
 	for(var/obj/machinery/firealarm/FA in area)
-		fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
+		SSalarms.fire_alarm.triggerAlarm(loc, FA, duration, hidden = alarms_hidden)
 	update_icon()
 	playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 	return
@@ -1020,7 +1020,7 @@ FIRE ALARM
 FIRE ALARM CIRCUIT
 Just a object used in constructing fire alarms
 
-/obj/item/weapon/firealarm_electronics
+/obj/item/firealarm_electronics
 	name = "fire alarm electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"

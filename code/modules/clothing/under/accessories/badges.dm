@@ -28,7 +28,7 @@
 /obj/item/clothing/accessory/badge/attack_self(mob/user as mob)
 
 	if(!stored_name)
-		user << "You polish your old badge fondly, shining up the surface."
+		to_chat(user, "You polish your old badge fondly, shining up the surface.")
 		set_name(user.real_name)
 		return
 
@@ -74,39 +74,39 @@
 
 /obj/item/clothing/accessory/badge/holo/attack_self(mob/user as mob)
 	if(!stored_name)
-		user << "Waving around a holobadge before swiping an ID would be pretty pointless."
+		to_chat(user, "Waving around a holobadge before swiping an ID would be pretty pointless.")
 		return
 	return ..()
 
 /obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, var/mob/user)
 	if (emagged)
-		user << "<span class='danger'>\The [src] is already cracked.</span>"
+		to_chat(user, "<span class='danger'>\The [src] is already cracked.</span>")
 		return
 	else
 		emagged = 1
-		user << "<span class='danger'>You crack the holobadge security checks.</span>"
+		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
 		return 1
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/weapon/card/id) || istype(O, /obj/item/device/pda))
+	if(istype(O, /obj/item/card/id) || istype(O, /obj/item/pda))
 
-		var/obj/item/weapon/card/id/id_card = null
+		var/obj/item/card/id/id_card = null
 
-		if(istype(O, /obj/item/weapon/card/id))
+		if(istype(O, /obj/item/card/id))
 			id_card = O
 		else
-			var/obj/item/device/pda/pda = O
+			var/obj/item/pda/pda = O
 			id_card = pda.id
 
 		if(access_security in id_card.access || emagged)
-			user << "You imprint your ID details onto the badge."
+			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
 		else
-			user << "[src] rejects your insufficient access rights."
+			to_chat(user, "[src] rejects your insufficient access rights.")
 		return
 	..()
 
-/obj/item/weapon/storage/box/holobadge
+/obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 	New()
@@ -137,7 +137,7 @@
 	icon_state = "marshalbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
-/obj/item/weapon/storage/box/holobadge/hos
+/obj/item/storage/box/holobadge/hos
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 	New()

@@ -1,8 +1,5 @@
 var/global/list/limb_icon_cache = list()
 
-/obj/item/organ/external/setDir()
-	return
-
 /obj/item/organ/external/proc/compile_icon()
 	cut_overlays()
 	 // This is a kludge, only one icon has more than one generation of children though.

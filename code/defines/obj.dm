@@ -4,7 +4,7 @@
 	anchored = 1
 	density = 1
 
-	attackby(obj/item/weapon/W as obj, mob/user as mob)
+	attackby(obj/item/W as obj, mob/user as mob)
 		return attack_hand(user)
 
 	attack_hand(mob/user as mob)
@@ -211,7 +211,7 @@ var/global/list/PDA_Manifest = list()
 
 /obj/item/mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-/obj/item/weapon/beach_ball
+/obj/item/beach_ball
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "beachball"
 	name = "beach ball"
@@ -228,11 +228,15 @@ var/global/list/PDA_Manifest = list()
 		src.throw_at(target, throw_range, throw_speed, user)
 
 /obj/effect/stop
-	var/victim = null
 	icon_state = "empty"
 	name = "Geas"
 	desc = "You can't resist."
-	// name = ""
+	var/atom/movable/victim
+
+/obj/effect/stop/Uncross(atom/movable/AM)
+	. = ..()
+	if(AM == victim)
+		return FALSE
 
 /obj/effect/spawner
 	name = "object spawner"

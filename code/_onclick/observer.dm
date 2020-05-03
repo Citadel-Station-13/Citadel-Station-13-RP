@@ -1,3 +1,21 @@
+/mob/observer/dead/DblClickOn(atom/A, params)
+	if(client.buildmode)
+		build_click(src, client.buildmode, params, A)
+		return
+	if(can_reenter_corpse && mind && mind.current)
+		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
+			reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
+			return
+
+	// Things you might plausibly want to follow
+	if(ismovableatom(A))
+		ManualFollow(A)
+
+	// Otherwise jump
+	else if(A.loc)
+		forceMove(get_turf(A))
+//		update_parallax_contents()
+
 /client/var/inquisitive_ghost = 1
 /mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
 	set name = "Toggle Inquisitiveness"
@@ -9,23 +27,6 @@
 		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
 	else
 		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
-
-/mob/observer/dead/DblClickOn(var/atom/A, var/params)
-	if(client.buildmode)
-		build_click(src, client.buildmode, params, A)
-		return
-	if(can_reenter_corpse && mind && mind.current)
-		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
-			reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
-			return
-
-	// Things you might plausibly want to follow
-	if(istype(A,/atom/movable))
-		ManualFollow(A)
-	// Otherwise jump
-	else
-		following = null
-		forceMove(get_turf(A))
 
 /mob/observer/dead/ClickOn(var/atom/A, var/params)
 	if(client.buildmode)
@@ -61,13 +62,13 @@
 	if(awaygate)
 		user.loc = awaygate.loc
 	else
-		user << "[src] has no destination."
+		to_chat(user, "[src] has no destination.")
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
 	if(stationgate)
 		user.loc = stationgate.loc
 	else
-		user << "[src] has no destination."
+		to_chat(user, "[src] has no destination.")
 
 // -------------------------------------------
 // This was supposed to be used by adminghosts

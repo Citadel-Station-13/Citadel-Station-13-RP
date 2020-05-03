@@ -33,7 +33,7 @@
 		return
 	if(istype(T, /mob/living))
 		var/mob/living/M = T
-		if(src.occupant.a_intent == I_HURT || istype(src.occupant, /mob/living/carbon/brain)) //Brains cannot change intents; Exo-piloting brains lack any form of physical feedback for control, limiting the ability to 'play nice'.
+		if(src.occupant.a_intent == INTENT_HARM || istype(src.occupant, /mob/living/carbon/brain)) //Brains cannot change intents; Exo-piloting brains lack any form of physical feedback for control, limiting the ability to 'play nice'.
 			playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
 			if(damtype == "brute")
 				step_away(M,src,15)
@@ -102,7 +102,7 @@
 	else
 		if(istype(T, /obj/machinery/disposal)) // Stops mechs from climbing into disposals
 			return
-		if(src.occupant.a_intent == I_HURT || istype(src.occupant, /mob/living/carbon/brain)) // Don't smash unless we mean it
+		if(src.occupant.a_intent == INTENT_HARM || istype(src.occupant, /mob/living/carbon/brain)) // Don't smash unless we mean it
 			if(damtype == "brute")
 				src.occupant_message("You hit [T].")
 				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
@@ -255,7 +255,7 @@
 	else
 		return 0
 
-/obj/mecha/combat/mmi_moved_inside(var/obj/item/device/mmi/mmi_as_oc as obj,mob/user as mob)
+/obj/mecha/combat/mmi_moved_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
 	if(..())
 		if(occupant.client)
 			occupant.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")

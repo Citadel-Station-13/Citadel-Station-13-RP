@@ -21,13 +21,13 @@
 	emote_hear = list("clicks")
 	emote_see = list("clacks")
 
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/list/insults = list(
 	"Man you suck",
-	"You look like the most retarded douche around",
+	"You look like the most idiotic douche around",
 	"What's up?, oh wait nevermind you are a fucking asshat",
-	"you are just overly retarded",
+	"you are just overly idiotic",
 	"Whiteman said what?!",)
 	var/list/comments = list("Man have you seen those furry cats?,I mean who in the right mind would like something like that?",
 	"They call me abusive,I just like the truth",

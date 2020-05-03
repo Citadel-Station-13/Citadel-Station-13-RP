@@ -64,7 +64,7 @@
 				else if (istype(M, /mob/living/carbon))
 					var/mob/living/carbon/C = M
 					if (C.can_feel_pain())
-						M << "<span class='danger'>[painMes]</span>"
+						to_chat(M, "<span class='danger'>[painMes]</span>")
 
 			gain_nutrition(rand(20,25))
 

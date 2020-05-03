@@ -4,7 +4,7 @@
 
 
 
-/obj/item/weapon/card
+/obj/item/card
 	icon = 'icons/obj/card_cit.dmi' // These are redefined here so that changing sprites is as easy as clicking the checkbox.
 	base_icon = "icons/obj/card_cit.dmi"
 
@@ -51,13 +51,13 @@
 				initial_sprite_stack = list("base-stamp-silver", "top-command", "letter-n-command", "pips-civilian")
 
 // The following are defined in southern_cross_jobs.dm for some reason. Despite being part of the main game now. Nonetheless, they stay here until folded in right.
-/obj/item/weapon/card/id/medical/sar
+/obj/item/card/id/medical/sar
 	initial_sprite_stack = list("", "pips-science")
-/obj/item/weapon/card/id/civilian/pilot
+/obj/item/card/id/civilian/pilot
 	initial_sprite_stack = list("", "pips-science")
-/obj/item/weapon/card/id/science/explorer
+/obj/item/card/id/science/explorer
 	initial_sprite_stack = list("", "top-science-explorer")
 
 //Ditto in southern_cross_jobs_vr.dm
-/obj/item/weapon/card/id/science/head/pathfinder
+/obj/item/card/id/science/head/pathfinder
 	initial_sprite_stack = list("", "top-science-explorer", "pips-gold")

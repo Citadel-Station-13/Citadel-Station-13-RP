@@ -17,7 +17,7 @@ var/global/list/grub_machine_overlays = list()
 	melee_damage_upper = 1
 
 	meat_amount = 2
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/grubmeat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
 	faction = "grubs"
 
@@ -40,7 +40,7 @@ var/global/list/grub_machine_overlays = list()
 		/obj/machinery/button/windowtint
 		)
 
-	var/datum/effect/effect/system/spark_spread/sparks
+	var/datum/effect_system/spark_spread/sparks
 	var/image/machine_effect
 
 	var/obj/machinery/abstract_grub_machine/powermachine
@@ -294,7 +294,7 @@ var/global/list/grub_machine_overlays = list()
 	idle_power_usages = split_into_3(total_idle_power_usage)
 
 
-/obj/item/device/multitool/afterattack(obj/O, mob/user, proximity)
+/obj/item/multitool/afterattack(obj/O, mob/user, proximity)
 	if(proximity)
 		if(istype(O, /obj/machinery))
 			var/mob/living/simple_mob/animal/solargrub_larva/grub = locate() in O

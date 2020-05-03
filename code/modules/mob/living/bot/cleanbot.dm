@@ -114,12 +114,12 @@
 	visible_message("<span class='danger'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 
-	new /obj/item/weapon/reagent_containers/glass/bucket(Tsec)
-	new /obj/item/device/assembly/prox_sensor(Tsec)
+	new /obj/item/reagent_containers/glass/bucket(Tsec)
+	new /obj/item/assembly/prox_sensor(Tsec)
 	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
@@ -168,17 +168,17 @@
 			patrol_path = null
 		if("screw")
 			screwloose = !screwloose
-			usr << "<span class='notice'>You twiddle the screw.</span>"
+			to_chat(usr, "<span class='notice'>You twiddle the screw.</span>")
 		if("oddbutton")
 			oddbutton = !oddbutton
-			usr << "<span class='notice'>You press the weird button.</span>"
+			to_chat(usr, "<span class='notice'>You press the weird button.</span>")
 	attack_hand(usr)
 
 /mob/living/bot/cleanbot/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
 	if(!screwloose || !oddbutton)
 		if(user)
-			user << "<span class='notice'>The [src] buzzes and beeps.</span>"
+			to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, 0)
 		oddbutton = 1
 		screwloose = 1
@@ -199,7 +199,7 @@
 
 /* Assembly */
 
-/obj/item/weapon/bucket_sensor
+/obj/item/bucket_sensor
 	desc = "It's a bucket. With a sensor attached."
 	name = "proxy bucket"
 	icon = 'icons/obj/aibots.dmi'
@@ -211,7 +211,7 @@
 	w_class = ITEMSIZE_NORMAL
 	var/created_name = "Cleanbot"
 
-/obj/item/weapon/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
+/obj/item/bucket_sensor/attackby(var/obj/item/W, var/mob/user)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic left arm") || (W.name == "robotic right arm"))))
 		user.drop_item()
@@ -219,11 +219,11 @@
 		var/turf/T = get_turf(loc)
 		var/mob/living/bot/cleanbot/A = new /mob/living/bot/cleanbot(T)
 		A.name = created_name
-		user << "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>"
+		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 
-	else if(istype(W, /obj/item/weapon/pen))
+	else if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return

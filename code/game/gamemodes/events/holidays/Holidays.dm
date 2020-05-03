@@ -237,11 +237,11 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 			holidays.Add(p)
 			holiday_blurbs.Add("[Holiday[p]]")
 		var/holidays_string = english_list(holidays, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
-		world << "<font color='blue'>and...</font>"
-		world << "<h4>Happy [holidays_string] Everybody!</h4>"
+		to_chat(world, "<font color='blue'>and...</font>")
+		to_chat(world, "<h4>Happy [holidays_string] Everybody!</h4>")
 		if(holiday_blurbs.len != 0)
 			for(var/blurb in holiday_blurbs)
-				world << "<div align='center'><font color='blue'>[blurb]</font></div>"
+				to_chat(world, "<div align='center'><font color='blue'>[blurb]</font></div>")
 		switch(Holiday)			//special holidays
 			if("Easter")
 				//do easter stuff
@@ -263,12 +263,12 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 			var/turf/simulated/floor/F = Floorlist[rand(1,Floorlist.len)]
 			Floorlist = null
 			var/obj/structure/closet/C = locate(/obj/structure/closet) in F
-			var/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/wrapped/Egg
+			var/obj/item/reagent_containers/food/snacks/chocolateegg/wrapped/Egg
 			if( C )			Egg = new(C)
 			else			Egg = new(F)
 */
 /*			var/list/obj/containers = list()
-			for(var/obj/item/weapon/storage/S in world)
+			for(var/obj/item/storage/S in world)
 				if(isNotStationLevel(S.z))	continue
 				containers += S
 

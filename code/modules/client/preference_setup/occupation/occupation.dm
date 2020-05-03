@@ -1,3 +1,12 @@
+/datum/category_group/player_setup_category/occupation_preferences
+	name = "Occupation"
+	sort_order = 3
+	category_item_type = /datum/category_item/player_setup_item/occupation
+
+/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
+	for(var/datum/category_item/player_setup_item/PI in items)
+		. += "[PI.content(user)]<br>"
+
 //used for pref.alternate_option
 #define GET_RANDOM_JOB 0
 #define BE_ASSISTANT 1
@@ -46,18 +55,15 @@
 	pref.job_engsec_low 	= sanitize_integer(pref.job_engsec_low, 0, 65535, initial(pref.job_engsec_low))
 	if(!(pref.player_alt_titles)) pref.player_alt_titles = new()
 
-	if(!job_master)
+	if(!SSjobs)
 		return
 
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in SSjobs.occupations)
 		var/alt_title = pref.player_alt_titles[job.title]
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
 
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 20, list/splitJobs = list("Pathfinder"))  //VOREStation Edit
-	if(!job_master)
-		return
-
 	. = list()
 	. += "<tt><center>"
 	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
@@ -67,8 +73,8 @@
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	if (!job_master)		return
-	for(var/datum/job/job in job_master.occupations)
+	if (!SSjobs)		return
+	for(var/datum/job/job in SSjobs.occupations)
 		if(job.latejoin_only) continue //VOREStation Code
 		if((++index >= limit) || (job.title in splitJobs))
 /*******
@@ -176,7 +182,7 @@
 		pref.player_alt_titles[job.title] = new_title
 
 /datum/category_item/player_setup_item/occupation/proc/SetJob(mob/user, role)
-	var/datum/job/job = job_master.GetJob(role)
+	var/datum/job/job = SSjobs.GetJob(role)
 	if(!job)
 		return 0
 

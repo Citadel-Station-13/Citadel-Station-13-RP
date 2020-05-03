@@ -72,7 +72,7 @@
 		"rad" = 0
 		)
 
-	var/datum/effect/effect/system/smoke_spread/frost/smoke_special
+	var/datum/effect_system/smoke_spread/frost/smoke_special
 
 	say_list_type = /datum/say_list/frostfly
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly
@@ -112,8 +112,8 @@
 	..()
 	if(client.statpanel == "Status")
 		statpanel("Status")
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
+		if(SSemergencyshuttle)
+			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
 		stat("Energy", energy)
@@ -126,7 +126,7 @@
 /mob/living/simple_mob/animal/sif/frostfly/do_special_attack(atom/A)
 	. = TRUE
 	switch(a_intent)
-		if(I_DISARM)
+		if(INTENT_DISARM)
 			if(energy < 20)
 				return FALSE
 
@@ -153,9 +153,9 @@
 
 /datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/pre_special_attack(atom/A)
 	if(isliving(A))
-		holder.a_intent = I_DISARM
+		holder.a_intent = INTENT_DISARM
 	else
-		holder.a_intent = I_HURT
+		holder.a_intent = INTENT_HARM
 
 /datum/ai_holder/simple_mob/ranged/kiting/threatening/frostfly/post_ranged_attack(atom/A)
 	var/mob/living/simple_mob/animal/sif/frostfly/F = holder

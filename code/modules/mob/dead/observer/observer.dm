@@ -16,6 +16,8 @@
 	blinded = 0
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
+	/// Do we set dir on move
+	var/updatedir = TRUE
 	var/can_reenter_corpse
 	var/datum/hud/living/carbon/hud = null // hud
 	var/bootime = 0
@@ -26,11 +28,13 @@
 	var/medHUD = 0
 	var/antagHUD = 0
 	universal_speak = 1
-	var/atom/movable/following = null
 	var/admin_ghosted = 0
 	var/anonsay = 0
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	incorporeal_move = 1
+
+	/// Whether or not our mouse opacity is set to transparent while following.
+	var/mouse_opacity_yield_while_following = TRUE
 
 	var/is_manifest = 0 //If set to 1, the ghost is able to whisper. Usually only set if a cultist drags them through the veil.
 	var/ghost_sprite = null
@@ -139,11 +143,11 @@
 			ManualFollow(target)
 
 /mob/observer/dead/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/weapon/book/tome))
+	if(istype(W,/obj/item/book/tome))
 		var/mob/observer/dead/M = src
 		M.manifest(user)
 
-/mob/observer/dead/CanPass(atom/movable/mover, turf/target)
+/mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
 	return TRUE
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
@@ -221,8 +225,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/Stat()
 	..()
 	if(statpanel("Status"))
-		if(emergency_shuttle)
-			var/eta_status = emergency_shuttle.get_status_panel_eta()
+		if(SSemergencyshuttle)
+			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
 
@@ -234,7 +238,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>You have no body.</span>")
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
-		usr << "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>"
+		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
 	//VOREStation Add
 	if(prevent_respawns.Find(mind.name))
@@ -248,7 +252,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				found_rune = 1
 				break
 		if(!found_rune)
-			usr << "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>"
+			to_chat(usr, "<span class='warning'>The astral cord that ties your body and your spirit has been severed. You are likely to wander the realm beyond until your body is finally dead and thus reunited with you.</span>")
 			return
 	mind.current.ajourn=0
 	mind.current.key = key
@@ -301,11 +305,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Teleport to a location"
 
 	if(!istype(usr, /mob/observer/dead))
-		usr << "Not when you're not dead!"
+		to_chat(usr, "Not when you're not dead!")
 		return
 
 	usr.forceMove(pick(get_area_turfs(A)))
-	usr.on_mob_jump()
 
 /mob/observer/dead/verb/follow(input in getmobs())
 	set category = "Ghost"
@@ -318,77 +321,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	ManualFollow(target)
 
 // This is the ghost's follow verb with an argument
-/mob/observer/dead/proc/ManualFollow(var/atom/movable/target)
-	if(!target)
+/mob/observer/dead/proc/ManualFollow(atom/movable/target)
+	if (!istype(target))
 		return
 
-	var/turf/targetloc = get_turf(target)
-	if(check_holy(targetloc))
-		usr << "<span class='warning'>You cannot follow a mob standing on holy grounds!</span>"
-		return
-	if(target != src)
-		if(following && following == target)
-			return
-		following = target
-		to_chat(src, "<span class='notice'>Now following [target]</span>")
-		if(ismob(target))
-			forceMove(get_turf(target))
-			var/mob/M = target
-			M.following_mobs += src
-		else
-			spawn(0)
-				while(target && following == target && client)
-					var/turf/T = get_turf(target)
-					if(!T)
-						break
-					// To stop the ghost flickering.
-					if(loc != T)
-						forceMove(T)
-					sleep(15)
+	orbit(target, actually_orbit = FALSE)
 
-/mob/proc/update_following()
-	. = get_turf(src)
-	for(var/mob/observer/dead/M in following_mobs)
-		if(M.following != src)
-			following_mobs -= M
-		else
-			if(M.loc != .)
-				M.forceMove(.)
-
-/mob
-	var/list/following_mobs = list()
-
-/mob/Destroy()
-	for(var/mob/observer/dead/M in following_mobs)
-		M.following = null
-	following_mobs = null
-	return ..()
-
-/mob/observer/dead/Destroy()
-	if(ismob(following))
-		var/mob/M = following
-		M.following_mobs -= src
-	following = null
-	return ..()
-
-/mob/Move()
+/mob/observer/dead/start_orbit(datum/component/orbiter/orbits)
 	. = ..()
-	if(.)
-		update_following()
+	if(mouse_opacity_yield_while_following)
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/mob/Life()
-	// to catch teleports etc which directly set loc
-	update_following()
-	return ..()
-
-/mob/proc/check_holy(var/turf/T)
-	return 0
-
-/mob/observer/dead/check_holy(var/turf/T)
-	if(check_rights(R_ADMIN|R_FUN, 0, src))
-		return 0
-
-	return (T && T.holy) && (is_manifest || (mind in cult.current_antagonists))
+/mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
+	. = ..()
+	if(mouse_opacity_yield_while_following)
+		mouse_opacity = initial(mouse_opacity)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
@@ -405,7 +352,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
 				forceMove(T)
-				following = null
 			else
 				to_chat(src, "This mob is not located in the game world.")
 /*
@@ -431,9 +377,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/add_memory()
 	set hidden = 1
 	to_chat(src, "<font color='red'>You are dead! You have no mind to store memory!</font>")
-
-/mob/observer/dead/Post_Incorpmove()
-	following = null
 
 /mob/observer/dead/verb/analyze_air()
 	set name = "Analyze Air"
@@ -517,7 +460,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		announce_ghost_joinleave(src, 0, "They are now a mouse.")
 		host.ckey = src.ckey
 		host.add_ventcrawl(vent_found)
-		host << "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>"
+		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
 
 /mob/observer/dead/verb/view_manfiest()
 	set name = "Show Crew Manifest"
@@ -556,7 +499,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0 //something is terribly wrong
 
 	var/ghosts_can_write
-	if(ticker.mode.name == "cult")
+	if(SSticker.mode.name == "cult")
 		if(cult.current_antagonists.len > config_legacy.cult_ghostwriter_req_cultists)
 			ghosts_can_write = 1
 
@@ -755,7 +698,7 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 		var/msg = sanitize(input(src, "Message:", "Spectral Whisper") as text|null)
 		if(msg)
 			log_say("(SPECWHISP to [key_name(M)]): [msg]", src)
-			M << "<span class='warning'> You hear a strange, unidentifiable voice in your head... <font color='purple'>[msg]</font></span>"
+			to_chat(M, "<span class='warning'> You hear a strange, unidentifiable voice in your head... <font color='purple'>[msg]</font></span>")
 			to_chat(src, "<span class='warning'> You said: '[msg]' to [M].</span>")
 		else
 			return
@@ -802,8 +745,8 @@ mob/observer/dead/MayRespawn(var/feedback = 0)
 	set name = "Blank pAI alert"
 	set desc = "Flash an indicator light on available blank pAI devices for a smidgen of hope."
 	if(usr.client.prefs.be_special & BE_PAI)
-		for(var/obj/item/device/paicard/p in GLOB.all_pai_cards)
-			var/obj/item/device/paicard/PP = p
+		for(var/obj/item/paicard/p in GLOB.all_pai_cards)
+			var/obj/item/paicard/PP = p
 			if(PP.pai == null)
 				PP.icon = 'icons/obj/pda_vr.dmi' // VOREStation Edit
 				PP.overlays += "pai-ghostalert"

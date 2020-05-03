@@ -1,7 +1,7 @@
 var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 //SleeveMate!
-/obj/item/device/sleevemate
+/obj/item/sleevemate
 	name = "\improper SleeveMate 3700"
 	desc = "A hand-held sleeve management tool for performing one-time backups and managing mindstates."
 	icon = 'icons/obj/device_alt.dmi'
@@ -17,13 +17,13 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 	var/datum/mind/stored_mind
 
-/obj/item/device/sleevemate/attack(mob/living/M, mob/living/user)
+/obj/item/sleevemate/attack(mob/living/M, mob/living/user)
 	if(ishuman(M))
 		scan_mob(M, user)
 	else
 		to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
 
-/obj/item/device/sleevemate/attack_self(mob/living/user)
+/obj/item/sleevemate/attack_self(mob/living/user)
 	if(!stored_mind)
 		to_chat(user,"<span class='warning'>No stored mind in \the [src].</span>")
 		return
@@ -42,7 +42,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		if("Cancel")
 			return
 
-/obj/item/device/sleevemate/proc/scan_mob(mob/living/carbon/human/H, mob/living/user)
+/obj/item/sleevemate/proc/scan_mob(mob/living/carbon/human/H, mob/living/user)
 	var/output = ""
 
 	output += "<br><br><span class='notice'><b>[src.name] Scan Results</b></span><br>"
@@ -112,7 +112,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 	to_chat(user,output)
 
-/obj/item/device/sleevemate/Topic(href, href_list)
+/obj/item/sleevemate/Topic(href, href_list)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	//Sanity checking/href-hacking checking
@@ -264,7 +264,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 
 
-/obj/item/device/sleevemate/update_icon()
+/obj/item/sleevemate/update_icon()
 	if(stored_mind)
 		icon_state = "[initial(icon_state)]_on"
 	else

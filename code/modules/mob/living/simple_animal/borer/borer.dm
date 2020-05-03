@@ -13,7 +13,7 @@
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
 	speed = 5
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 	status_flags = CANPUSH
 	attacktext = list("nipped")
@@ -21,7 +21,7 @@
 	wander = 0
 	pass_flags = PASSTABLE
 	universal_understand = 1
-	holder_type = /obj/item/weapon/holder/borer
+	holder_type = /obj/item/holder/borer
 
 	var/used_dominate
 	var/chemicals = 10                      // Chemicals used for reproduction and spitting neurotoxin.
@@ -65,14 +65,14 @@
 			if(host.reagents.has_reagent("sugar"))
 				if(!docile)
 					if(controlling)
-						host << "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>"
+						to_chat(host, "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>")
 					else
 						to_chat(src, "<font color='blue'>You feel the soporific flow of sugar in your host's blood, lulling you into docility.</font>")
 					docile = 1
 			else
 				if(docile)
 					if(controlling)
-						host << "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>"
+						to_chat(host, "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>")
 					else
 						to_chat(src, "<font color='blue'>You shake off your lethargy as the sugar leaves your host's blood.</font>")
 					docile = 0
@@ -82,7 +82,7 @@
 			if(controlling)
 
 				if(docile)
-					host << "<font color='blue'>You are feeling far too docile to continue controlling your host...</font>"
+					to_chat(host, "<font color='blue'>You are feeling far too docile to continue controlling your host...</font>")
 					host.release_control()
 					return
 
@@ -96,8 +96,8 @@
 	..()
 	statpanel("Status")
 
-	if(emergency_shuttle)
-		var/eta_status = emergency_shuttle.get_status_panel_eta()
+	if(SSemergencyshuttle)
+		var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 		if(eta_status)
 			stat(null, eta_status)
 

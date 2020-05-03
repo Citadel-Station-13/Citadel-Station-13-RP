@@ -1,11 +1,11 @@
-/obj/item/weapon/robot_module/robot/medical
+/obj/item/robot_module/robot/medical
 	name = "medical robot module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
 	can_be_pushed = 0
 
-/obj/item/weapon/robot_module/robot/medical/surgeon
+/obj/item/robot_module/robot/medical/surgeon
 	name = "surgeon robot module"
 	sprites = list(
 					"M-USE NanoTrasen" = "robotMedi",
@@ -24,26 +24,26 @@
 					"Insekt" = "insekt-Med"
 					)
 
-/obj/item/weapon/robot_module/robot/medical/surgeon/New()
+/obj/item/robot_module/robot/medical/surgeon/New()
 	..()
-	src.modules += new /obj/item/device/healthanalyzer(src)
-	src.modules += new /obj/item/weapon/reagent_containers/borghypo/surgeon(src)
-	src.modules += new /obj/item/weapon/autopsy_scanner(src)
-	src.modules += new /obj/item/weapon/surgical/scalpel/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/hemostat/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/retractor/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/cautery/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/bonegel/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/FixOVein/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/bonesetter/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/circular_saw/cyborg(src)
-	src.modules += new /obj/item/weapon/surgical/surgicaldrill/cyborg(src)
-	src.modules += new /obj/item/weapon/gripper/no_use/organ(src)
-	src.modules += new /obj/item/weapon/gripper/medical(src)
-	src.modules += new /obj/item/weapon/shockpaddles/robot(src)
-	src.modules += new /obj/item/weapon/reagent_containers/dropper(src) // Allows surgeon borg to fix necrosis
-	src.modules += new /obj/item/weapon/reagent_containers/syringe(src)
-	src.emag = new /obj/item/weapon/reagent_containers/spray(src)
+	src.modules += new /obj/item/healthanalyzer(src)
+	src.modules += new /obj/item/reagent_containers/borghypo/surgeon(src)
+	src.modules += new /obj/item/autopsy_scanner(src)
+	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
+	src.modules += new /obj/item/surgical/hemostat/cyborg(src)
+	src.modules += new /obj/item/surgical/retractor/cyborg(src)
+	src.modules += new /obj/item/surgical/cautery/cyborg(src)
+	src.modules += new /obj/item/surgical/bonegel/cyborg(src)
+	src.modules += new /obj/item/surgical/FixOVein/cyborg(src)
+	src.modules += new /obj/item/surgical/bonesetter/cyborg(src)
+	src.modules += new /obj/item/surgical/circular_saw/cyborg(src)
+	src.modules += new /obj/item/surgical/surgicaldrill/cyborg(src)
+	src.modules += new /obj/item/gripper/no_use/organ(src)
+	src.modules += new /obj/item/gripper/medical(src)
+	src.modules += new /obj/item/shockpaddles/robot(src)
+	src.modules += new /obj/item/reagent_containers/dropper(src) // Allows surgeon borg to fix necrosis
+	src.modules += new /obj/item/reagent_containers/syringe(src)
+	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
 
@@ -61,9 +61,9 @@
 	src.modules += N
 	src.modules += B
 
-/obj/item/weapon/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 
-	var/obj/item/weapon/reagent_containers/syringe/S = locate() in src.modules
+	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
 		S.mode = initial(S.mode)
@@ -71,12 +71,12 @@
 		S.update_icon()
 
 	if(src.emag)
-		var/obj/item/weapon/reagent_containers/spray/PS = src.emag
+		var/obj/item/reagent_containers/spray/PS = src.emag
 		PS.reagents.add_reagent("pacid", 2 * amount)
 
 	..()
 
-/obj/item/weapon/robot_module/robot/medical/crisis
+/obj/item/robot_module/robot/medical/crisis
 	name = "crisis robot module"
 	sprites = list(
 					"M-USE NanoTrasen" = "robotMedi",
@@ -95,19 +95,19 @@
 					"Insekt" = "insekt-Med"
 					)
 
-/obj/item/weapon/robot_module/robot/medical/crisis/New()
+/obj/item/robot_module/robot/medical/crisis/New()
 	..()
-	src.modules += new /obj/item/device/healthanalyzer(src)
-	src.modules += new /obj/item/device/reagent_scanner/adv(src)
+	src.modules += new /obj/item/healthanalyzer(src)
+	src.modules += new /obj/item/reagent_scanner/adv(src)
 	src.modules += new /obj/item/roller_holder(src)
-	src.modules += new /obj/item/weapon/reagent_containers/borghypo/crisis(src)
-	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
-	src.modules += new /obj/item/weapon/reagent_containers/dropper/industrial(src)
-	src.modules += new /obj/item/weapon/reagent_containers/syringe(src)
-	src.modules += new /obj/item/weapon/gripper/no_use/organ(src)
-	src.modules += new /obj/item/weapon/gripper/medical(src)
-	src.modules += new /obj/item/weapon/shockpaddles/robot(src)
-	src.emag = new /obj/item/weapon/reagent_containers/spray(src)
+	src.modules += new /obj/item/reagent_containers/borghypo/crisis(src)
+	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
+	src.modules += new /obj/item/reagent_containers/dropper/industrial(src)
+	src.modules += new /obj/item/reagent_containers/syringe(src)
+	src.modules += new /obj/item/gripper/no_use/organ(src)
+	src.modules += new /obj/item/gripper/medical(src)
+	src.modules += new /obj/item/shockpaddles/robot(src)
+	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
 
@@ -130,9 +130,9 @@
 	src.modules += B
 	src.modules += S
 
-/obj/item/weapon/robot_module/robot/medical/crisis/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/medical/crisis/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 
-	var/obj/item/weapon/reagent_containers/syringe/S = locate() in src.modules
+	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
 		S.mode = initial(S.mode)
@@ -140,12 +140,12 @@
 		S.update_icon()
 
 	if(src.emag)
-		var/obj/item/weapon/reagent_containers/spray/PS = src.emag
+		var/obj/item/reagent_containers/spray/PS = src.emag
 		PS.reagents.add_reagent("pacid", 2 * amount)
 
 	..()
 
-/obj/item/weapon/robot_module/robot/medihound
+/obj/item/robot_module/robot/medihound
 	name = "MediHound module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
@@ -153,20 +153,20 @@
 	can_be_pushed = 0
 	sprites = list(
 					"Medical Hound" = "medihound",
-					"Dark Medical Hound (Static)" = "medihounddark",
+					"Dark Medical Hound" = "medihounddark",
 					"Mediborg model V-2" = "vale",
 					"Borgi" = "borgi-medi"
 					)
 
-/obj/item/weapon/robot_module/robot/medihound/New(var/mob/living/silicon/robot/R)
-	src.modules += new /obj/item/weapon/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
-	src.modules += new /obj/item/device/dogborg/boop_module(src) //Boop the crew.
-	src.modules += new /obj/item/device/healthanalyzer(src) // See who's hurt specificially.
-	src.modules += new /obj/item/weapon/reagent_containers/syringe(src) //In case the chemist is nice!
-	src.modules += new /obj/item/weapon/reagent_containers/glass/beaker/large(src)//For holding the chemicals when the chemist is nice
-	src.modules += new /obj/item/device/sleevemate(src) //Lets them scan people.
-	src.modules += new /obj/item/weapon/shockpaddles/robot/hound(src) //Paws of life
-	src.emag 	 = new /obj/item/weapon/dogborg/pounce(src) //Pounce
+/obj/item/robot_module/robot/medihound/New(var/mob/living/silicon/robot/R)
+	src.modules += new /obj/item/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
+	src.modules += new /obj/item/dogborg/boop_module(src) //Boop the crew.
+	src.modules += new /obj/item/healthanalyzer(src) // See who's hurt specificially.
+	src.modules += new /obj/item/reagent_containers/syringe(src) //In case the chemist is nice!
+	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)//For holding the chemicals when the chemist is nice
+	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+	src.modules += new /obj/item/shockpaddles/robot/hound(src) //Paws of life
+	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
@@ -174,15 +174,15 @@
 	R.water_res = water
 	synths += water
 
-	var/obj/item/weapon/reagent_containers/borghypo/hound/H = new /obj/item/weapon/reagent_containers/borghypo/hound(src)
+	var/obj/item/reagent_containers/borghypo/hound/H = new /obj/item/reagent_containers/borghypo/hound(src)
 	H.water = water
 	src.modules += H
 
-	var/obj/item/device/dogborg/tongue/T = new /obj/item/device/dogborg/tongue(src)
+	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
 	T.water = water
 	src.modules += T
 
-	var/obj/item/device/dogborg/sleeper/B = new /obj/item/device/dogborg/sleeper(src) //So they can nom people and heal them
+	var/obj/item/dogborg/sleeper/B = new /obj/item/dogborg/sleeper(src) //So they can nom people and heal them
 	B.water = water
 	src.modules += B
 

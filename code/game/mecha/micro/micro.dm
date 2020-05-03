@@ -36,7 +36,7 @@
 	if(!melee_can_hit || !istype(target, /atom)) return
 	if(istype(target, /mob/living))
 		var/mob/living/M = target
-		if(src.occupant.a_intent == I_HURT)
+		if(src.occupant.a_intent == INTENT_HARM)
 			playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
 			if(damtype == "brute")
 				step_away(M,src,15)
@@ -121,7 +121,7 @@
 /obj/mecha/micro/move_inside()
 	var/mob/living/carbon/C = usr
 	if (C.size_multiplier >= 0.5)
-		C << "<span class='warning'>You can't fit in this suit!</span>"
+		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
 		return
 	else
 		..()
@@ -129,7 +129,7 @@
 /obj/mecha/micro/move_inside_passenger()
 	var/mob/living/carbon/C = usr
 	if (C.size_multiplier >= 0.5)
-		C << "<span class='warning'>You can't fit in this suit!</span>"
+		to_chat(C, "<span class='warning'>You can't fit in this suit!</span>")
 		return
 	else
 		..()

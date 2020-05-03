@@ -8,7 +8,7 @@
 	frozen = -1
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O,/obj/item/weapon/tank))
+	if(istype(O,/obj/item/tank))
 		return
 	else
 		..()
@@ -19,7 +19,7 @@
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/CanPass()
+/obj/machinery/portable_atmospherics/hydroponics/soil/CanAllowThrough()
 	return 1
 
 // Holder for vine plants.

@@ -1,4 +1,4 @@
-/obj/item/weapon/mining_scanner
+/obj/item/mining_scanner
 	name = "ore detector"
 	desc = "A complex device used to locate ore deep underground around you."
 	icon = 'icons/obj/device.dmi'
@@ -12,11 +12,11 @@
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
-/obj/item/weapon/mining_scanner/examine()
+/obj/item/mining_scanner/examine()
 	. = ..()
 	to_chat(usr, "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range.")
 
-/obj/item/weapon/mining_scanner/AltClick(mob/user)
+/obj/item/mining_scanner/AltClick(mob/user)
 	var/newscan = text2num(input(usr,"What would you like to set the scan range to? Maximum of [maxscanrange].","New Scan Range",maxscanrange))
 	newscan = round(newscan,1)
 	if(newscan >= maxscanrange)
@@ -27,16 +27,16 @@
 	to_chat(usr, "New scan range set to [scanrange] step(s) around user, including current location.")
 	. = ..()
 
-/obj/item/weapon/mining_scanner/attack_self(mob/user)
+/obj/item/mining_scanner/attack_self(mob/user)
 	to_chat(user,"You begin sweeping \the [src] about, scanning for metal deposits.")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
 	if(!do_after(user, scan_time))
 		return
 
-	ScanTurf(user, get_turf(user), scan_exact_amounts, scan_exact_ores)
+	ScanTurf(get_turf(user), user, scan_exact_amounts, scan_exact_ores)
 
-/obj/item/weapon/mining_scanner/proc/ScanTurf(atom/target, mob/user, exact_amount = FALSE, exact_ores = FALSE)
+/obj/item/mining_scanner/proc/ScanTurf(atom/target, mob/user, exact_amount = FALSE, exact_ores = FALSE)
 	var/list/metals = list()
 	for(var/turf/simulated/T in range(scanrange, get_turf(user)))
 
@@ -84,7 +84,7 @@
 		results += result
 	to_chat(user, results.Join("<br>"))
 
-/obj/item/weapon/mining_scanner/advanced
+/obj/item/mining_scanner/advanced
 	name = "advanced ore detector"
 	desc = "A compact, complex device used to quickly locate ore deep underground around you."
 	icon_state = "mining-scanner" //thank you eris spriters

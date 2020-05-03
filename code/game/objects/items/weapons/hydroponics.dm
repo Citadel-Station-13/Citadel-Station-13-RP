@@ -3,7 +3,7 @@
  */
 //uncomment when this is updated to match storage update
 /*
-/obj/item/weapon/seedbag
+/obj/item/seedbag
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "seedbag"
 	name = "Seed Bag"
@@ -14,25 +14,25 @@
 	w_class = ITEMSIZE_TINY
 	var/list/item_quants = list()
 
-/obj/item/weapon/seedbag/attack_self(mob/user as mob)
+/obj/item/seedbag/attack_self(mob/user as mob)
 	user.machine = src
 	interact(user)
 
-/obj/item/weapon/seedbag/verb/toggle_mode()
+/obj/item/seedbag/verb/toggle_mode()
 	set name = "Switch Bagging Method"
 	set category = "Object"
 
 	mode = !mode
 	switch (mode)
 		if(1)
-			usr << "The bag now picks up all seeds in a tile at once."
+			to_chat(usr, "The bag now picks up all seeds in a tile at once.")
 		if(0)
-			usr << "The bag now picks up one seed pouch at a time."
+			to_chat(usr, "The bag now picks up one seed pouch at a time.")
 
 /obj/item/seeds/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	..()
-	if (istype(O, /obj/item/weapon/seedbag))
-		var/obj/item/weapon/seedbag/S = O
+	if (istype(O, /obj/item/seedbag))
+		var/obj/item/seedbag/S = O
 		if (S.mode == 1)
 			for (var/obj/item/seeds/G in locate(src.x,src.y,src.z))
 				if (S.contents.len < S.capacity)
@@ -42,10 +42,10 @@
 					else
 						S.item_quants[G.name] = 1
 				else
-					user << "<span class='warning'>The seed bag is full.</span>"
+					to_chat(user, "<span class='warning'>The seed bag is full.</span>")
 					S.updateUsrDialog()
 					return
-			user << "<span class='notice'>You pick up all the seeds.</span>"
+			to_chat(user, "<span class='notice'>You pick up all the seeds.</span>")
 		else
 			if (S.contents.len < S.capacity)
 				S.contents += src;
@@ -54,11 +54,11 @@
 				else
 					S.item_quants[name] = 1
 			else
-				user << "<span class='warning'>The seed bag is full.</span>"
+				to_chat(user, "<span class='warning'>The seed bag is full.</span>")
 		S.updateUsrDialog()
 	return
 
-/obj/item/weapon/seedbag/interact(mob/user as mob)
+/obj/item/seedbag/interact(mob/user as mob)
 
 	var/dat = "<TT><b>Select an item:</b><br>"
 
@@ -79,7 +79,7 @@
 	onclose(user, "seedbag")
 	return
 
-/obj/item/weapon/seedbag/Topic(href, href_list)
+/obj/item/seedbag/Topic(href, href_list)
 	if(..())
 		return
 
@@ -105,7 +105,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/item/weapon/seedbag/updateUsrDialog()
+/obj/item/seedbag/updateUsrDialog()
 	var/list/nearby = range(1, src)
 	for(var/mob/M in nearby)
 		if ((M.client && M.machine == src))

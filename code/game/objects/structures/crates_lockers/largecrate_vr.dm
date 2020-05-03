@@ -2,7 +2,7 @@
 	name = "Bird crate"
 	desc = "You hear chirping and cawing inside the crate. It sounds like there are a lot of birds in there..."
 
-/obj/structure/largecrate/birds/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/largecrate/birds/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_crowbar())
 		new /obj/item/stack/material/wood(src)
 		new /mob/living/simple_mob/animal/passive/bird(src)
@@ -116,7 +116,7 @@
 
 /obj/structure/largecrate/animal/catgirl
 	name = "Catgirl Crate"
-	desc = "A sketchy looking crate with airholes that seems to have had most marks and stickers removed. You can almost make out 'genetically-engineered subject' written on it."
+	desc = "A sketchy looking crate with airholes that seems to have had most marks and sSStickers removed. You can almost make out 'genetically-engineered subject' written on it."
 	starts_with = list(/mob/living/simple_mob/vore/catgirl)
 
 /obj/structure/largecrate/animal/wolfgirl

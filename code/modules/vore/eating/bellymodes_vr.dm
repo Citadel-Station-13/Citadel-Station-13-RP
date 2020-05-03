@@ -66,12 +66,12 @@
 		//Handle stray items
 		if(isitem(A) && !did_an_item)
 			var/obj/item/I = A
-			if(contaminates || istype(I,/obj/item/weapon/card/id))
+			if(contaminates || istype(I,/obj/item/card/id))
 				I.gurgle_contaminate(src, contamination_flavor, contamination_color)
 			if(item_digest_mode == IM_HOLD)
 				items_preserved |= I
 			else if(item_digest_mode == IM_DIGEST_FOOD)
-				if(istype(I,/obj/item/weapon/reagent_containers/food) || istype(I,/obj/item/organ))
+				if(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ))
 					digest_item(I)
 				else
 					items_preserved |= I
@@ -115,12 +115,12 @@
 						var/obj/item/I = H.get_equipped_item(slot = slot)
 						if(I)
 							H.unEquip(I,force = TRUE)
-							if(contaminates || istype(I,/obj/item/weapon/card/id))
+							if(contaminates || istype(I,/obj/item/card/id))
 								I.gurgle_contaminate(contents, contamination_flavor, contamination_color)
 							if(item_digest_mode == IM_HOLD)
 								items_preserved |= I
 							else if(item_digest_mode == IM_DIGEST_FOOD)
-								if(istype(I,/obj/item/weapon/reagent_containers/food) || istype(I,/obj/item/organ))
+								if(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ))
 									digest_item(I)
 								else
 									items_preserved |= I

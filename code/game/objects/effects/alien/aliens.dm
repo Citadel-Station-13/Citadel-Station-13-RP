@@ -109,7 +109,7 @@
 /obj/effect/alien/resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (HULK in usr.mutations)
-		usr << "<span class='notice'>You easily destroy the [name].</span>"
+		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
 		health = 0
@@ -125,14 +125,14 @@
 				healthcheck()
 				return
 
-		usr << "<span class='notice'>You claw at the [name].</span>"
+		to_chat(usr, "<span class='notice'>You claw at the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] claws at the [name]!</span>", 1)
 		health -= rand(5,10)
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/effect/alien/resin/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
 	var/aforce = W.force
@@ -142,7 +142,7 @@
 	..()
 	return
 
-/obj/effect/alien/resin/CanPass(atom/movable/mover, turf/target)
+/obj/effect/alien/resin/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return !opacity
 	return !density
@@ -330,7 +330,7 @@ Alien plants should do something if theres a lot of poison
 				qdel(src)
 	return
 
-/obj/effect/alien/weeds/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 	if(W.attack_verb.len)
 		visible_message("<span class='danger'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -339,8 +339,8 @@ Alien plants should do something if theres a lot of poison
 
 	var/damage = W.force / 4.0
 
-	if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 
 		if(WT.remove_fuel(0, user))
 			damage = 15
@@ -476,14 +476,14 @@ Alien plants should do something if theres a lot of poison
 
 	switch(status)
 		if(BURST)
-			user << "<span class='warning'>You clear the hatched egg.</span>"
+			to_chat(user, "<span class='warning'>You clear the hatched egg.</span>")
 			qdel(src)
 			return
 /*		if(GROWING)
-			user << "<span class='warning'>The child is not developed yet.</span>"
+			to_chat(user, "<span class='warning'>The child is not developed yet.</span>")
 			return
 		if(GROWN)
-			user << "<span class='warning'>You retrieve the child.</span>"
+			to_chat(user, "<span class='warning'>You retrieve the child.</span>")
 			Burst(0)
 			return
 
@@ -534,7 +534,7 @@ Alien plants should do something if theres a lot of poison
 	return
 
 
-/obj/effect/alien/egg/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/alien/egg/attackby(var/obj/item/W, var/mob/user)
 	if(health <= 0)
 		return
 	if(W.attack_verb.len)
@@ -543,8 +543,8 @@ Alien plants should do something if theres a lot of poison
 		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.force / 4.0
 
-	if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 
 		if(WT.remove_fuel(0, user))
 			damage = 15

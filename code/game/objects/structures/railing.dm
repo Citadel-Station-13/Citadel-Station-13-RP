@@ -34,11 +34,19 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+/obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
 		return TRUE
-	if(get_dir(mover, target) == turn(dir, 180))
+	if(get_dir(mover, target) & turn(dir, 180))
 		return !density
+	return TRUE
+
+/obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
+		return TRUE
+	if(mover.loc == get_turf(src))	//moving out of us
+		if(get_dir(mover, newLoc) & dir)
+			return !density
 	return TRUE
 
 /obj/structure/railing/examine(mob/user)
@@ -204,8 +212,8 @@
 			return
 
 	// Repair
-	if(health < maxhealth && istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/F = W
+	if(health < maxhealth && istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/F = W
 		if(F.welding)
 			playsound(src.loc, F.usesound, 50, 1)
 			if(do_after(user, 20, src))
@@ -224,8 +232,8 @@
 			return
 
 	// Handle harm intent grabbing/tabling.
-	if(istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
-		var/obj/item/weapon/grab/G = W
+	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
+		var/obj/item/grab/G = W
 		if (istype(G.affecting, /mob/living))
 			var/mob/living/M = G.affecting
 			var/obj/occupied = turf_is_crowded()
@@ -233,7 +241,7 @@
 				to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
 				return
 			if (G.state < 2)
-				if(user.a_intent == I_HURT)
+				if(user.a_intent == INTENT_HARM)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = "head")
 					take_damage(8)

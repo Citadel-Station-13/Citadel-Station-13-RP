@@ -69,7 +69,7 @@
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
 
-/obj/structure/bed/CanPass(atom/movable/mover, turf/target)
+/obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return ..()
@@ -88,7 +88,7 @@
 				qdel(src)
 				return
 
-/obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
@@ -128,8 +128,8 @@
 		playsound(src.loc, W.usesound, 100, 1)
 		remove_padding()
 
-	else if(istype(W, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = W
+	else if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it
 			to_chat(user, "<span class='notice'>\The [src] already has someone buckled to it.</span>")
@@ -209,10 +209,17 @@
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
 
+/obj/structure/bed/roller/doLocationTransitForceMove(atom/destination)
+	var/list/old_buckled = buckled_mobs?.Copy()
+	. = ..()
+	if(old_buckled)
+		for(var/mob/M in old_buckled)
+			buckle_mob(M, force = TRUE)
+
 /obj/structure/bed/roller/update_icon()
 	return
 
-/obj/structure/bed/roller/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/roller/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
 	else if(istype(W,/obj/item/roller_holder))
@@ -242,7 +249,7 @@
 	R.add_fingerprint(user)
 	qdel(src)
 
-/obj/item/roller/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/roller/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W,/obj/item/roller_holder))
 		var/obj/item/roller_holder/RH = W
@@ -346,5 +353,5 @@
 /obj/structure/bed/alien/update_icon()
 	return // Doesn't care about material or anything else.
 
-/obj/structure/bed/alien/attackby(obj/item/weapon/W, mob/user)
+/obj/structure/bed/alien/attackby(obj/item/W, mob/user)
 	return // No deconning.

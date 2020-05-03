@@ -66,12 +66,6 @@
 #define GETPULSE_HAND 0 // Less accurate. (hand)
 #define GETPULSE_TOOL 1 // More accurate. (med scanner, sleeper, etc.)
 
-//intent flags, why wasn't this done the first time?
-#define I_HELP		"help"
-#define I_DISARM	"disarm"
-#define I_GRAB		"grab"
-#define I_HURT		"harm"
-
 //These are used Bump() code for living mobs, in the mob_bump_flag, mob_swap_flags, and mob_push_flags vars to determine whom can bump/swap with whom.
 #define HUMAN 1
 #define MONKEY 2
@@ -339,20 +333,20 @@
 
 // More refined version of SA_* ""intelligence"" seperators.
 // Now includes bitflags, so to target two classes you just do 'MOB_CLASS_ANIMAL|MOB_CLASS_HUMANOID'
-#define MOB_CLASS_NONE 			0	// Default value, and used to invert for _ALL.
+#define MOB_CLASS_NONE 			NONE	// Default value, and used to invert for _ALL.
 
-#define MOB_CLASS_PLANT			1	// Unused at the moment.
-#define MOB_CLASS_ANIMAL		2	// Animals and beasts like spiders, saviks, and bears.
-#define MOB_CLASS_HUMANOID		4	// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
-#define MOB_CLASS_SYNTHETIC		8	// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
-#define MOB_CLASS_SLIME			16	// Everyone's favorite xenobiology specimen (and maybe prometheans?).
-#define MOB_CLASS_ABERRATION	32	// Weird shit.
-#define MOB_CLASS_DEMONIC		64	// Cult stuff.
-#define MOB_CLASS_BOSS			128	// Future megafauna hopefully someday.
-#define MOB_CLASS_ILLUSION		256	// Fake mobs, e.g. Technomancer illusions.
-#define MOB_CLASS_PHOTONIC		512	// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
+#define MOB_CLASS_PLANT			(1<<0)		// Unused at the moment.
+#define MOB_CLASS_ANIMAL		(1<<1)		// Animals and beasts like spiders, saviks, and bears.
+#define MOB_CLASS_HUMANOID		(1<<2)		// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
+#define MOB_CLASS_SYNTHETIC		(1<<3)		// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
+#define MOB_CLASS_SLIME			(1<<4)		// Everyone's favorite xenobiology specimen (and maybe prometheans?).
+#define MOB_CLASS_ABERRATION	(1<<5)		// Weird shit.
+#define MOB_CLASS_DEMONIC		(1<<6)		// Cult stuff.
+#define MOB_CLASS_BOSS			(1<<7)		// Future megafauna hopefully someday.
+#define MOB_CLASS_ILLUSION		(1<<8)		// Fake mobs, e.g. Technomancer illusions.
+#define MOB_CLASS_PHOTONIC		(1<<9)		// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
 
-#define MOB_CLASS_ALL (~MOB_CLASS_NONE)
+#define MOB_CLASS_ALL			(~MOB_CLASS_NONE)
 
 // For slime commanding.  Higher numbers allow for more actions.
 #define SLIME_COMMAND_OBEY		1 // When disciplined.

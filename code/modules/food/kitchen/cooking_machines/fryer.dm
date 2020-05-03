@@ -20,7 +20,7 @@
 	resistance = 20000	// Approx. 8-9 minutes to heat up.
 
 	max_contents = 2
-	container_type = /obj/item/weapon/reagent_containers/cooking_container/fryer
+	container_type = /obj/item/reagent_containers/cooking_container/fryer
 
 	stat = POWEROFF//Starts turned off
 
@@ -30,7 +30,7 @@
 
 /obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
 	if (..())//no need to duplicate adjacency check
-		user << "Oil Level: [oil.total_volume]/[optimal_oil]"
+		to_chat(user, "Oil Level: [oil.total_volume]/[optimal_oil]")
 
 /obj/machinery/appliance/cooker/fryer/Initialize(mapload)
 	. = ..()
@@ -154,7 +154,7 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN*3)
 
 	if(!victim || !victim.Adjacent(user))
-		user << "<span class='danger'>Your victim slipped free!</span>"
+		to_chat(user, "<span class='danger'>Your victim slipped free!</span>")
 		return
 
 	var/damage = rand(7,13)
@@ -190,10 +190,10 @@
 
 
 		if(!nopain)
-			victim << "<span class='danger'>Agony consumes you as searing hot oil scorches your [E ? E.name : "flesh"] horribly!</span>"
+			to_chat(victim, "<span class='danger'>Agony consumes you as searing hot oil scorches your [E ? E.name : "flesh"] horribly!</span>")
 			victim.emote("scream")
 		else
-			victim << "<span class='danger'>Searing hot oil scorches your [E ? E.name : "flesh"]!</span>"
+			to_chat(victim, "<span class='danger'>Searing hot oil scorches your [E ? E.name : "flesh"]!</span>")
 
 
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has [cook_type] \the [victim] ([victim.ckey]) in \a [src]</font>")
@@ -204,7 +204,7 @@
 	oil.trans_to(victim, 40)
 
 /obj/machinery/appliance/cooker/fryer/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/reagent_containers/glass) && I.reagents)
+	if(istype(I, /obj/item/reagent_containers/glass) && I.reagents)
 		if (I.reagents.total_volume <= 0 && oil)
 			//Its empty, handle scooping some hot oil out of the fryer
 			oil.trans_to(I, I.reagents.maximum_volume)

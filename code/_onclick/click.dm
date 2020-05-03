@@ -103,7 +103,7 @@
 	var/sdepth = A.storage_depth(src)
 	if((!isturf(A) && A == loc) || (sdepth <= MAX_STORAGE_REACH))
 		if(W)
-			var/resolved = W.resolve_attackby(A, src)
+			var/resolved = W.resolve_attackby(A, src, params)
 			if(!resolved && A && W)
 				W.afterattack(A, src, 1, params) // 1 indicates adjacency
 		else
@@ -117,7 +117,7 @@
 	// VOREStation Addition Start: inbelly item interaction
 	if(isbelly(loc) && (loc == A.loc))
 		if(W)
-			var/resolved = W.resolve_attackby(A,src)
+			var/resolved = W.resolve_attackby(A, src, params)
 			if(!resolved && A && W)
 				W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
 		else
@@ -137,7 +137,7 @@
 		if(A.Adjacent(src) || (W && W.attack_can_reach(src, A, W.reach)) ) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
-				var/resolved = W.resolve_attackby(A,src)
+				var/resolved = W.resolve_attackby(A, src, params)
 				if(!resolved && A && W)
 					W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
 			else
@@ -182,7 +182,7 @@
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
 
-	if(!ticker)
+	if(!SSticker)
 		to_chat(src, "You cannot attack people before the game has started.")
 		return 0
 
@@ -201,7 +201,7 @@
 */
 /mob/proc/RangedAttack(var/atom/A, var/params)
 	if(!mutations.len) return
-	if((LASER in mutations) && a_intent == I_HURT)
+	if((LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
 	else if(TK in mutations)
 		if(get_dist(src, A) > tk_maxrange)
@@ -322,20 +322,26 @@
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)
-	if(!A || !x || !y || !A.x || !A.y) return
+	if(!A || !x || !y || !A.x || !A.y)
+		return
 	var/dx = A.x - x
 	var/dy = A.y - y
-	if(!dx && !dy) return
+	if(!dx && !dy)
+		return
 
 	var/direction
 	if(abs(dx) < abs(dy))
-		if(dy > 0)	direction = NORTH
-		else		direction = SOUTH
+		if(dy > 0)
+			direction = NORTH
+		else
+			direction = SOUTH
 	else
-		if(dx > 0)	direction = EAST
-		else		direction = WEST
+		if(dx > 0)
+			direction = EAST
+		else
+			direction = WEST
 	if(direction != dir)
-		facedir(direction)
+		setDir(direction)
 
 /obj/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'

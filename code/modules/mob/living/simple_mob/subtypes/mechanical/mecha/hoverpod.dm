@@ -26,13 +26,13 @@
 	projectiletype = /obj/item/projectile/beam
 	base_attack_cooldown = 2 SECONDS
 
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 
 /mob/living/simple_mob/mechanical/mecha/hoverpod/manned
 	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged
 
 /mob/living/simple_mob/mechanical/mecha/hoverpod/Initialize()
-	ion_trail = new /datum/effect/effect/system/ion_trail_follow()
+	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 	ion_trail.start()
 	return ..()

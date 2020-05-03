@@ -26,8 +26,8 @@ var/list/floor_light_cache = list()
 	if(W.is_screwdriver())
 		anchored = !anchored
 		visible_message("<span class='notice'>\The [user] has [anchored ? "attached" : "detached"] \the [src].</span>")
-	else if(istype(W, /obj/item/weapon/weldingtool) && (damaged || (stat & BROKEN)))
-		var/obj/item/weapon/weldingtool/WT = W
+	else if(istype(W, /obj/item/weldingtool) && (damaged || (stat & BROKEN)))
+		var/obj/item/weldingtool/WT = W
 		if(!WT.remove_fuel(0, user))
 			to_chat(user, "<span class='warning'>\The [src] must be on to complete this task.</span>")
 			return
@@ -46,7 +46,7 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/attack_hand(var/mob/user)
 
-	if(user.a_intent == I_HURT && !issmall(user))
+	if(user.a_intent == INTENT_HARM && !issmall(user))
 		if(!isnull(damaged) && !(stat & BROKEN))
 			visible_message("<span class='danger'>\The [user] smashes \the [src]!</span>")
 			playsound(src, "shatter", 70, 1)

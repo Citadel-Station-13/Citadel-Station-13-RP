@@ -53,10 +53,10 @@ var/list/ai_verbs_default = list(
 	var/viewalerts = 0
 	var/icon/holo_icon//Default is assigned when AI is created.
 	var/list/connected_robots = list()
-	var/obj/item/device/pda/ai/aiPDA = null
-	var/obj/item/device/communicator/aiCommunicator = null
-	var/obj/item/device/multitool/aiMulti = null
-	var/obj/item/device/radio/headset/heads/ai_integrated/aiRadio = null
+	var/obj/item/pda/ai/aiPDA = null
+	var/obj/item/communicator/aiCommunicator = null
+	var/obj/item/multitool/aiMulti = null
+	var/obj/item/radio/headset/heads/ai_integrated/aiRadio = null
 	var/camera_light_on = 0	//Defines if the AI toggled the light on the camera it's looking through.
 	var/datum/trackable/track = null
 	var/last_announcement = ""
@@ -96,7 +96,7 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/device/mmi/B, var/safety = 0)
+/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/mmi/B, var/safety = 0)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -113,7 +113,7 @@ var/list/ai_verbs_default = list(
 				pickedName = null
 
 	if(!is_dummy)
-		aiPDA = new/obj/item/device/pda/ai(src)
+		aiPDA = new/obj/item/pda/ai(src)
 	SetName(pickedName)
 	anchored = 1
 	canmove = 0
@@ -121,7 +121,7 @@ var/list/ai_verbs_default = list(
 	loc = loc
 
 	if(!is_dummy)
-		aiCommunicator = new /obj/item/device/communicator/integrated(src)
+		aiCommunicator = new /obj/item/communicator/integrated(src)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
 
@@ -140,7 +140,7 @@ var/list/ai_verbs_default = list(
 	additional_law_channels["Binary"] = "#b"
 	additional_law_channels["Holopad"] = ":h"
 
-	aiCamera = new/obj/item/device/camera/siliconcam/ai_camera(src)
+	aiCamera = new/obj/item/camera/siliconcam/ai_camera(src)
 
 	if (istype(loc, /turf))
 		add_ai_verbs(src)
@@ -388,7 +388,7 @@ var/list/ai_verbs_default = list(
 		call_shuttle_proc(src)
 
 	// hack to display shuttle timer
-	if(emergency_shuttle.online())
+	if(SSemergencyshuttle.online())
 		var/obj/machinery/computer/communications/C = locate() in machines
 		if(C)
 			C.post_status("shuttle")
@@ -416,13 +416,13 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 	if(emergency_message_cooldown)
-		usr << "<span class='warning'>Arrays recycling. Please stand by.</span>"
+		to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
 		return
 	var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 	if(!input)
 		return
 	CentCom_announce(input, usr)
-	usr << "<span class='notice'>Message transmitted.</span>"
+	to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 	log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 	emergency_message_cooldown = 1
 	spawn(300)
@@ -715,10 +715,10 @@ var/list/ai_verbs_default = list(
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 
-/mob/living/silicon/ai/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/device/aicard))
+/mob/living/silicon/ai/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/aicard))
 
-		var/obj/item/device/aicard/card = W
+		var/obj/item/aicard/card = W
 		card.grab_ai(src, user)
 
 	else if(W.is_wrench())
@@ -775,26 +775,26 @@ var/list/ai_verbs_default = list(
 		var/obj/effect/overlay/aiholo/hologram = holo.masters[src]
 		walk(hologram, 0)
 	//VOREStation Add End
-	usr << "Your hologram will [hologram_follow ? "follow" : "no longer follow"] you now."
+	to_chat(usr, "Your hologram will [hologram_follow ? "follow" : "no longer follow"] you now.")
 
 
 /mob/living/silicon/ai/proc/check_unable(var/flags = 0, var/feedback = 1)
 	if(stat == DEAD)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>You are dead!</span>")
 		return 1
 
 	if(aiRestorePowerRoutine)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>You lack power!</span>")
 		return 1
 
 	if((flags & AI_CHECK_WIRELESS) && src.control_disabled)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>Wireless control is disabled!</span>")
 		return 1
 	if((flags & AI_CHECK_RADIO) && src.aiRadio.disabledAi)
-		if(feedback) 
+		if(feedback)
 			to_chat(src, "<span class='warning'>System Error - Transceiver Disabled!</span>")
 		return 1
 	return 0
@@ -828,7 +828,7 @@ var/list/ai_verbs_default = list(
 	set category = "IC"
 
 	resting = 0
-	var/obj/item/weapon/rig/rig = src.get_rig()
+	var/obj/item/rig/rig = src.get_rig()
 	if(rig)
 		rig.force_rest(src)
 

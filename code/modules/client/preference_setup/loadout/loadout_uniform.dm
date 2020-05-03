@@ -654,7 +654,7 @@
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/parameduniskirtdark
-	display_name = "Dark Paramedic Uniform"
+	display_name = "Dark Paramedic Skirt"
 	path = /obj/item/clothing/under/parameduniskirtdark
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
@@ -669,10 +669,47 @@
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/uniform/parameduniskirtdark
-	display_name = "Light Paramedic Uniform"
+	display_name = "Light Paramedic Skirt"
 	path = /obj/item/clothing/under/parameduniskirtlight
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
 
 datum/gear/uniform/dutchsuit
 	display_name = "Western Suit"
 	path = /obj/item/clothing/under/dutchuniform
+
+datum/gear/uniform/victorianredshirt
+	display_name = "Red Shirt Victorian Suit"
+	path = /obj/item/clothing/under/victorianblred
+
+datum/gear/uniform/victorianredvest
+	display_name = "Red Vested Victorian Suit"
+	path = /obj/item/clothing/under/victorianredvest
+
+datum/gear/uniform/victoriansuit
+	display_name = "Victorian Suit"
+	path = /obj/item/clothing/under/victorianvest
+
+datum/gear/uniform/victorianbluesuit
+	display_name = "Blue Shirted Victorian Suit"
+	path = /obj/item/clothing/under/victorianlightfire
+
+datum/gear/uniform/victorianreddress
+	display_name = "Victorian Red Dress"
+	path = /obj/item/clothing/under/victorianreddress
+
+datum/gear/uniform/victorianblackdress
+	display_name = "Victorian Black Dress"
+	path = /obj/item/clothing/under/victorianblackdress
+
+datum/gear/uniform/bridgeofficer
+	display_name = "bridge officer skirt"
+	path = /obj/item/clothing/under/bridgeofficerskirt
+	allowed_roles = list("Command Secretary")
+
+datum/gear/uniform/fiendsuit
+	display_name = "Fiendish Suit"
+	path = /obj/item/clothing/under/fiendsuit
+
+datum/gear/uniform/fienddress
+	display_name = "Fiendish Dress"
+	path = /obj/item/clothing/under/fienddress

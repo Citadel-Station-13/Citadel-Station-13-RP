@@ -150,11 +150,11 @@
 		var/mob/living/simple_mob/slime/xenobio/my_slime = holder
 
 		if( (!L.lying && prob(30 + (my_slime.power_charge * 7) ) || (!L.lying && always_stun) ))
-			my_slime.a_intent = I_DISARM // Stun them first.
+			my_slime.a_intent = INTENT_DISARM // Stun them first.
 		else if(my_slime.can_consume(L) && L.lying)
-			my_slime.a_intent = I_GRAB // Then eat them.
+			my_slime.a_intent = INTENT_GRAB // Then eat them.
 		else
-			my_slime.a_intent = I_HURT // Otherwise robust them.
+			my_slime.a_intent = INTENT_HARM // Otherwise robust them.
 
 /datum/ai_holder/simple_mob/xenobio_slime/closest_distance(atom/movable/AM)
 	if(istype(AM, /mob/living))

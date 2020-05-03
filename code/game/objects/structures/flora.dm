@@ -40,7 +40,7 @@
 	if(harvest_count < max_harvests)
 		to_chat(user, "<span class='notice'>\The [src] seems to have something hanging from it.</span>")
 
-/obj/structure/flora/attackby(var/obj/item/weapon/W, var/mob/living/user)
+/obj/structure/flora/attackby(var/obj/item/W, var/mob/living/user)
 	if(can_harvest(W))
 		var/harvest_spawn = pickweight(harvest_loot)
 		var/atom/movable/AM = spawn_harvest(harvest_spawn, user)
@@ -370,7 +370,7 @@
 	icon = 'icons/obj/flora/sifflora.dmi'
 
 /obj/structure/flora/sif/attack_hand(mob/user)
-	if (user.a_intent == I_HURT)
+	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
 			qdel(src)
