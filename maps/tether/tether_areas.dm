@@ -102,3 +102,7 @@
 /area/vacant/vacant_office
 	name = "\improper Vacant Office"
 	icon_state = "vacant_site"
+
+/area/medical/psych_ward
+	name = "\improper Psych Ward"
+	icon_state = "psych_ward"
