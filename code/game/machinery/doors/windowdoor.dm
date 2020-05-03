@@ -87,7 +87,7 @@
 		open()
 		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
-/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return TRUE
 	if(get_dir(mover, loc) == turn(dir, 180)) //Make sure looking at appropriate border
@@ -194,7 +194,7 @@
 
 	if(istype(I))
 		// Fixing.
-		if(istype(I, /obj/item/weldingtool) && user.a_intent == I_HELP)
+		if(istype(I, /obj/item/weldingtool) && user.a_intent == INTENT_HELP)
 			var/obj/item/weldingtool/WT = I
 			if(health < maxhealth)
 				if(WT.remove_fuel(1 ,user))
@@ -211,7 +211,7 @@
 		//Emags and ninja swords? You may pass.
 		if (istype(I, /obj/item/melee/energy/blade))
 			if(emag_act(10, user))
-				var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+				var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src.loc)
 				spark_system.start()
 				playsound(src.loc, "sparks", 50, 1)

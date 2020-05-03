@@ -727,10 +727,14 @@
 /obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
 	toxin_type = "murk_protein"
 
-/obj/item/reagent_containers/food/snacks/carpmeat/fish
+/obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
-	toxin_type = "neurotoxic_protein"
-	toxin_amount = 1
+	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize()
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -3400,7 +3404,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/rawsticks/Initialize()
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/liquidfood
+/obj/item/reagent_containers/food/snacks/liquidfood // Buff back to 30 from 20
 	name = "\improper LiquidFood Ration"
 	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
 	icon_state = "liquidfood"
@@ -3408,7 +3412,7 @@ END CITADEL CHANGE */
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
 	center_of_mass = list("x"=16, "y"=15)
-	nutriment_amt = 20
+	nutriment_amt = 30
 	bitesize = 4
 	nutriment_desc = list("chalk" = 6)
 

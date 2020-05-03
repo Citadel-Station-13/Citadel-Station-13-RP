@@ -11,7 +11,7 @@
 
 	var/list/active_beams
 
-/obj/structure/cult/pylon/swarm/CanPass(atom/movable/mover, turf/target)
+/obj/structure/cult/pylon/swarm/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living))
 		var/mob/living/L = mover
 		if(L.faction == "swarmer")

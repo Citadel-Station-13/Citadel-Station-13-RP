@@ -13979,11 +13979,21 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "AN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
+/obj/machinery/firealarm{
+	dir = 2;
+	layer = 3.3;
+	pixel_x = 0;
+	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/east_stairs_two)
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lime/border{
+	dir = 9
+	},
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/public_garden_two)
 "AO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -18039,6 +18049,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"Jl" = (
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
 "Jm" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -18326,6 +18340,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/fishing_garden)
+"JT" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
+"JU" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "JV" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
@@ -18909,21 +18935,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
-"RL" = (
-/obj/machinery/firealarm{
-	dir = 2;
-	layer = 3.3;
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/lime/border{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/public_garden_two)
 "Sc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/shieldgen,
@@ -24520,7 +24531,7 @@ ac
 ac
 Kt
 Kt
-RL
+AN
 LG
 Uh
 Uh
@@ -28374,7 +28385,7 @@ cW
 hb
 Kd
 JK
-ho
+Jl
 hb
 ii
 ii
@@ -32508,7 +32519,7 @@ gw
 lV
 mv
 mX
-nz
+JT
 dY
 dY
 dY
@@ -32669,7 +32680,7 @@ tu
 zr
 zR
 Ap
-AN
+JU
 rO
 Bt
 BG

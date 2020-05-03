@@ -37,7 +37,7 @@ var/global/list/grub_machine_overlays = list()
 
 	var/obj/machinery/atmospherics/unary/vent_pump/target_vent
 
-	var/datum/effect/effect/system/spark_spread/sparks
+	var/datum/effect_system/spark_spread/sparks
 	var/image/machine_effect
 
 	var/obj/machinery/abstract_grub_machine/powermachine

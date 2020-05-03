@@ -26,7 +26,7 @@
 	health = 3000
 	status_flags = CANPUSH
 //	investigates = 1
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	density = 1
 	mob_bump_flag = HEAVY
 	mob_push_flags = ~HEAVY

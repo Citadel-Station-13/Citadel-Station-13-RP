@@ -24,13 +24,13 @@
 
 	paint_color = "#ffffff"
 
-	var/datum/effect/effect/system/ion_trail_follow/ion
+	var/datum/effect_system/ion_trail_follow/ion
 	var/kickstand = 1
 
 /obj/vehicle/bike/New()
 	..()
 	cell = new /obj/item/cell/high(src)
-	ion = new /datum/effect/effect/system/ion_trail_follow()
+	ion = new /datum/effect_system/ion_trail_follow()
 	ion.set_up(src)
 	turn_off()
 	icon_state = "[bike_icon]_off"

@@ -148,7 +148,7 @@
 		side = "right"
 
 /obj/item/reagent_containers/food/drinks/glass2/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(user.a_intent == I_HURT) //We only want splashing to be done if they are on harm intent.
+	if(user.a_intent == INTENT_HARM) //We only want splashing to be done if they are on harm intent.
 		if(!is_open_container() || !proximity)
 			return 1
 		if(standard_splash_mob(user, target))

@@ -93,7 +93,7 @@
 	starting_accessories = list(/obj/item/clothing/accessory/solgov/department/research)
 
 /obj/item/clothing/under/solgov/utility/sifguard/officer
-	name = "\improper Sifuard officer's uniform"
+	name = "\improper SifGuard officer's uniform"
 	desc = "The utility uniform of the Sif Defense Force, made from biohazard resistant material. This one has gold trim."
 	icon_state = "blackutility_com"
 	worn_state = "blackutility_com"

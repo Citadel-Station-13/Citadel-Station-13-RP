@@ -10,7 +10,7 @@
 	is_ranged = 1
 	preparing_arrest_sounds = new()
 
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	mob_bump_flag = HEAVY
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = HEAVY
@@ -44,7 +44,7 @@
 		else
 			new /obj/item/clothing/suit/storage/vest(Tsec)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 

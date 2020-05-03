@@ -6,6 +6,7 @@
  * /obj/item/rig_module/shield
  * /obj/item/rig_module/fabricator
  * /obj/item/rig_module/mounted/energy_blade
+ * /obj/item/rig_module/armblade
  * /obj/item/rig_module/device/flash */
 
 /obj/item/rig_module/device/flash
@@ -260,3 +261,69 @@
 			H.put_in_hands(new_weapon)
 
 	return 1
+
+/obj/item/rig_module/armblade
+	name = "retractable armblade"
+	desc = "A retractable arm-mounted blade in an equally retractable scabbard that fits in standardized hardsuit mounts. Attaches to the user's forearm."
+	icon_state = "armblade"
+	toggleable = TRUE
+	disruptive = FALSE
+
+	interface_name = "retractable armblade"
+	interface_desc = "An attached armblade fitted to the wearer's arm of choice."
+
+	activate_string = "Extend Blade"
+	deactivate_string = "Retract Blade"
+	var/obj/item/material/knife/machete/armblade/rig/held_blade
+
+/obj/item/rig_module/armblade/Initialize()
+	. = ..()
+	held_blade = new /obj/item/material/knife/machete/armblade/rig
+	held_blade.storing_module = src
+
+/obj/item/rig_module/armblade/process()
+
+	if(holder && holder.wearer)
+		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))
+			deactivate()
+			return 0
+
+	return ..()
+
+/obj/item/rig_module/armblade/activate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+	var/datum/gender/TU = gender_datums[M.get_visible_gender()]
+
+	if(M.l_hand && M.r_hand)
+		to_chat(M, "<span class='danger'>Your hands are full.</span>")
+		deactivate()
+		return
+	if(M.a_intent == INTENT_HARM)
+		M.visible_message(
+			"<span class='danger'>[M] throws [TU.his] arm out, extending [held_blade] from [holder] with a click!</span>",
+			"<span class='danger'>You throw your arm out, extending [held_blade] from [holder] with a click!</span>",
+			"<span class='notice'>You hear a threatening hiss and a click.</span>"
+			)
+	else
+		M.visible_message(
+			"<span class='notice'>[M] extends [held_blade] from [holder] with a click!</span>",
+			"<span class='notice'>You extend [held_blade] from [holder] with a click!</span>",
+			"<span class='notice'>You hear a hiss and a click.</span>")
+
+	playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+	M.put_in_hands(held_blade)
+
+/obj/item/rig_module/armblade/deactivate()
+
+	..()
+
+	var/mob/living/M = holder.wearer
+
+	if(!M)
+		return
+
+	for(var/obj/item/material/knife/machete/armblade/stabby in M.contents)
+		M.drop_from_inventory(stabby)

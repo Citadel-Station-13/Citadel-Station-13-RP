@@ -1,4 +1,4 @@
-/obj/structure/table/CanPass(atom/movable/mover, turf/target)
+/obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover,/obj/item/projectile))
 		return (check_cover(mover,target))
 	if (flipped == 1)
@@ -87,7 +87,7 @@
 			if(!user.Adjacent(M))
 				return
 			if (G.state < 2)
-				if(user.a_intent == I_HURT)
+				if(user.a_intent == INTENT_HARM)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = BP_HEAD)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
@@ -122,7 +122,7 @@
 		return
 
 	if(istype(W, /obj/item/melee/energy/blade))
-		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, src.loc)
 		spark_system.start()
 		playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
@@ -156,7 +156,7 @@
 		return ..()
 */
 
-	if(item_place && (user.a_intent != I_HURT))
+	if(item_place && (user.a_intent != INTENT_HARM))
 		user.drop_item(src.loc)
 		if(item_pixel_place)
 			var/list/click_params = params2list(params)

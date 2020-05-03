@@ -38,7 +38,7 @@
 		if(epitaph)
 			to_chat(user, epitaph)
 
-/obj/structure/gravemarker/CanPass(atom/movable/mover, turf/target)
+/obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	if(get_dir(loc, target) & dir)

@@ -16,7 +16,7 @@
 	bitesize = 3 //How many reagents to transfer per bite?
 */
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi
+/obj/item/reagent_containers/food/snacks/sliceable/sushi // Buff 25 >> 35
 	name = "sushi roll"
 	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi."
 	icon = 'icons/obj/food_vr.dmi'
@@ -24,11 +24,11 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/filled
 	slices_num = 5
 	nutriment_desc = list("rice" = 5, "fish" = 5)
-	nutriment_amt = 15
+	nutriment_amt = 20
 
 /obj/item/reagent_containers/food/snacks/sliceable/sushi/Initialize()
 	..()
-	reagents.add_reagent("protein", 10)
+	reagents.add_reagent("protein", 15)
 	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/slice/sushi/filled

@@ -98,14 +98,14 @@
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == I_HURT || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
+		if(chassis.occupant.a_intent == INTENT_HARM || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.take_overall_damage(dam_force)
 			M.adjustOxyLoss(round(dam_force/2))
 			M.updatehealth()
 			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			playsound(src.loc, "fracture", 5, 1, -2) //CRACK
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
-		else if(chassis.occupant.a_intent == I_DISARM && enable_special)
+		else if(chassis.occupant.a_intent == INTENT_DISARM && enable_special)
 			playsound(src.loc, 'sound/mecha/hydraulic.ogg', 10, 1, -2)
 			M.take_overall_damage(dam_force/2)
 			M.adjustOxyLoss(round(dam_force/3))
@@ -1254,10 +1254,10 @@
 	else if(istype(target,/mob/living))
 		var/mob/living/M = target
 		if(M.stat>1) return
-		if(chassis.occupant.a_intent == I_HURT)
+		if(chassis.occupant.a_intent == INTENT_HARM)
 			chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
 			chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
-		if(chassis.occupant.a_intent == I_DISARM)
+		if(chassis.occupant.a_intent == INTENT_DISARM)
 			chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
 			chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
 		else
@@ -1428,7 +1428,7 @@
 	equip_cooldown = 5
 	energy_drain = 50
 	var/wait = 0
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 
 
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack/can_attach(obj/mecha/M as obj)

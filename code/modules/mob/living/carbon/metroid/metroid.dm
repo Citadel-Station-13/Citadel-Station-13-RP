@@ -77,6 +77,7 @@
 	..(location)
 
 /mob/living/carbon/slime/movement_delay()
+	. = ..()
 	if (bodytemperature >= 330.23) // 135 F
 		return -1	// slimes become supercharged at high temperatures
 
@@ -98,7 +99,7 @@
 	if(health <= 0) // if damaged, the slime moves twice as slow
 		tally *= 2
 
-	return tally + config_legacy.slime_delay
+	return . + tally + config_legacy.slime_delay
 
 /mob/living/carbon/slime/Bump(atom/movable/AM as mob|obj, yes)
 	if ((!(yes) || now_pushing))
@@ -259,10 +260,10 @@
 
 	switch(M.a_intent)
 
-		if (I_HELP)
+		if (INTENT_HELP)
 			help_shake_act(M)
 
-		if (I_GRAB)
+		if (INTENT_GRAB)
 			if (M == src || anchored)
 				return
 			var/obj/item/grab/G = new /obj/item/grab(M, src)

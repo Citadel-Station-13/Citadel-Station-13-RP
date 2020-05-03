@@ -356,3 +356,33 @@
 	path = /obj/item/clothing/glasses/aerogelgoggles
 	whitelisted = SPECIES_TESHARI
 	sort_category = "Xenowear"
+	
+/datum/gear/uniform/voxcivassistant
+	display_name = "vox pressure suit (assistant)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivassistant
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivbartender
+	display_name = "vox pressure suit (bartender)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivbartender
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+
+/datum/gear/uniform/voxcivchef
+	display_name = "vox pressure suit (chef)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivchef
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+	
+/datum/gear/uniform/voxcivchaplain
+	display_name = "vox pressure suit (chaplain)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivchaplain
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX
+	
+/datum/gear/uniform/voxcivlibrarian
+	display_name = "vox pressure suit (librarian)"
+	path = /obj/item/clothing/under/pressuresuit/voxcivlibrarian
+	sort_category = "Xenowear"
+	whitelisted = SPECIES_VOX

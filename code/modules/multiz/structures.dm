@@ -113,7 +113,7 @@
 			return FALSE
 	return M.forceMove(T) //VOREStation Edit - Fixes adminspawned ladders
 
-/obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
+/obj/structure/ladder/CanAllowThrough(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
 /obj/structure/ladder/update_icon()
@@ -164,7 +164,7 @@
 /obj/structure/stairs/proc/upperStep(var/turf/T)
 	return (T == loc)
 
-/obj/structure/stairs/CanPass(obj/mover, turf/source, height, airflow)
+/obj/structure/stairs/CanAllowThrough(obj/mover, turf/source, height, airflow)
 	return airflow || !density
 
 // type paths to make mapping easier.

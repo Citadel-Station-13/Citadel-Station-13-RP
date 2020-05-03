@@ -46,7 +46,11 @@ datum/design/item/general/laserpointer
 	build_path = /obj/item/lightreplacer
 	sort_string = "TAADA"
 
-/datum/design/item/general/binaryencrypt
+/datum/design/item/illegal/AssembleDesignName()
+	..()
+	name = "Nonstandard design ([item_name])"
+
+/datum/design/item/illegal/binaryencrypt
 	name = "Binary encryption key"
 	desc = "Allows for deciphering the binary channel on-the-fly."
 	id = "binaryencrypt"
@@ -55,7 +59,7 @@ datum/design/item/general/laserpointer
 	build_path = /obj/item/encryptionkey/binary
 	sort_string = "TBAAA"
 
-/datum/design/item/general/chameleon
+/datum/design/item/illegal/chameleon
 	name = "Holographic equipment kit"
 	desc = "A kit of dangerous, high-tech equipment with changeable looks."
 	id = "chameleon"

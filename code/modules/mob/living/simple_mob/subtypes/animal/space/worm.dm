@@ -175,7 +175,7 @@
 
 	return
 
-/mob/living/simple_mob/animal/space/space_worm/CanPass(atom/movable/mover, turf/target)
+/mob/living/simple_mob/animal/space/space_worm/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living/simple_mob/animal/space/space_worm/head))
 		var/mob/living/simple_mob/animal/space/space_worm/head/H = mover
 		if(H.previous == src)

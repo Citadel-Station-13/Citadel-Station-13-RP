@@ -41,8 +41,15 @@ GLOBAL_LIST_INIT(bitfields, list(
 		FLAG(MOB_CLASS_BOSS),
 		FLAG(MOB_CLASS_ILLUSION),
 		FLAG(MOB_CLASS_PHOTONIC)
+		),
+	"movement_type" = list(
+		FLAG(UNSTOPPABLE),
+		FLAG(GROUND),
+		FLAG(FLYING),
+		FLAG(PHASING),
+		FLAG(VENTCRAWLING),
+		FLAG(FLOATING)
 		)
-
 /*
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
@@ -127,13 +134,6 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"PASSMOB" = PASSMOB,
 		"PASSCLOSEDTURF" = PASSCLOSEDTURF,
 		"LETPASSTHROW" = LETPASSTHROW
-		),
-	"movement_type" = list(
-		"GROUND" = GROUND,
-		"FLYING" = FLYING,
-		"VENTCRAWLING" = VENTCRAWLING,
-		"FLOATING" = FLOATING,
-		"UNSTOPPABLE" = UNSTOPPABLE
 		),
 	"resistance_flags" = list(
 		"LAVA_PROOF" = LAVA_PROOF,

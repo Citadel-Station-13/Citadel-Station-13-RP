@@ -37,22 +37,22 @@
 
 	if(launcher_intent)
 		switch(launcher_intent)
-			if(I_HURT)
+			if(INTENT_HARM)
 				check_armour = "bullet"
 				damage *= 3
 				sharp = 1
 				agony = 20
-			if(I_GRAB)
+			if(INTENT_GRAB)
 				check_armour = "melee"
 				damage_type = HALLOSS
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				check_armour = "melee"
 				if(prob(30))	// A chance for a successful hit to either knock someone down, or cause minor disorientation.
 					weaken = 1
 				else
 					stun = 2
 					eyeblur = 3
-			if(I_HELP)
+			if(INTENT_HELP)
 				silenced = 1
 				damage_type = HALLOSS
 
@@ -107,7 +107,7 @@
 	var/success = FALSE
 	if(istype(target,/turf))
 		if(launcher_intent)
-			if(launcher_intent != I_HELP && !done_mob_unique)
+			if(launcher_intent != INTENT_HELP && !done_mob_unique)
 				var/target_mob = pick(/mob/living in target.contents)
 
 				if(!target_mob)
@@ -144,7 +144,7 @@
 		var/mob/living/L = target
 		if(launcher_intent)
 			switch(launcher_intent)
-				if(I_HELP)
+				if(INTENT_HELP)
 					var/message = pick(help_messages)
 					if(message == "slaps")
 						spawn(1)
@@ -152,13 +152,13 @@
 					visible_message("<span class='notice'>\The [src] [message] [target].</span>")
 					done_mob_unique = TRUE
 					success = TRUE
-				if(I_HURT)
+				if(INTENT_HARM)
 					if(prob(10) && istype(L, /mob/living/carbon/human))
 						to_chat(L, "<span class='warning'>\The [src] rips at your hands!</span>")
 						ranged_disarm(L)
 					success = TRUE
 					done_mob_unique = TRUE
-				if(I_DISARM)
+				if(INTENT_DISARM)
 					if(prob(disarm_chance) && istype(L, /mob/living/carbon/human))
 						ranged_disarm(L)
 					else
@@ -166,7 +166,7 @@
 						L.throw_at(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
-				if(I_GRAB)
+				if(INTENT_GRAB)
 					var/turf/STurf = get_turf(L)
 					spawn(2)
 						playsound(STurf, crack_sound, 60, 1)

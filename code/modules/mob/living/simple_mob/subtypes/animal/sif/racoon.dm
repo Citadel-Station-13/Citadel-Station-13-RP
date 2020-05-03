@@ -121,7 +121,7 @@
 				var/obj/item/clothing/head/newhat = H.get_active_hand()
 				H.drop_from_inventory(newhat, get_turf(src))
 				if(!stat)
-					intent = I_HELP
+					a_intent = INTENT_HELP
 					newhat.attack_hand(src)
 			else if(src.get_active_hand())
 				to_chat(user, "<span class='notice'>\The [src] seems busy with \the [get_active_hand()] already!</span>")
@@ -289,21 +289,21 @@
 						lose_target()
 						give_target(IT)
 					return
-				holder.a_intent = I_HURT
+				holder.a_intent = INTENT_HARM
 			else
-				holder.a_intent = I_DISARM	// Otherwise, try to disarm them!
+				holder.a_intent = INTENT_DISARM	// Otherwise, try to disarm them!
 		else
-			holder.a_intent = I_HURT	// We can't disarm you, so we're going to hurt you.
+			holder.a_intent = INTENT_HARM	// We can't disarm you, so we're going to hurt you.
 
 	else if(istype(A, /obj/item))
 		var/obj/item/I = A
 		if(istype(I, /obj/item/reagent_containers/food/snacks))	// If we can't pick it up, or it's edible, go to harm.
-			holder.a_intent = I_HURT
+			holder.a_intent = INTENT_HARM
 		else
-			holder.a_intent = I_HELP
+			holder.a_intent = INTENT_HELP
 
 	else
-		holder.a_intent = I_HURT
+		holder.a_intent = INTENT_HARM
 
 /datum/ai_holder/simple_mob/intentional/sakimm/should_go_home()
 	if((!returns_home && !holder.get_active_hand()) || !home_turf)	// If we have an item, we want to go home.

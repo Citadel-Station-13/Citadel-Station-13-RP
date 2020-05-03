@@ -1172,13 +1172,12 @@ I said no!
 
 //BEGIN CITADEL CHANGES
 
-/datum/recipe/sushi
+/datum/recipe/sushi // Changed to take fish and not steak meat OMEGALUL
 	fruit = list("cabbage" = 1)
 	reagents = list("rice" = 20)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat,
-		/obj/item/reagent_containers/food/snacks/meat
+		/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+		/obj/item/reagent_containers/food/snacks/carpmeat/fish
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi
 
