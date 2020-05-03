@@ -58,7 +58,7 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/binary/pump/fuel/on
 	icon_state = "map_on-fuel"
-	use_power = USE_POWER_IDLE
+	use_power = 1
 
 /obj/machinery/atmospherics/binary/pump/aux
 	icon_state = "map_off-aux"
@@ -68,11 +68,11 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/binary/pump/aux/on
 	icon_state = "map_on-aux"
-	use_power = USE_POWER_IDLE
+	use_power = 1
 
 /obj/machinery/atmospherics/binary/pump/update_icon()
 	if(!powered())
-		icon_state = "[base-icon]-off"
+		icon_state = "[base_icon]-off"
 	else
 		icon_state = "[use_power ? "[base_icon]-on" : "[base_icon]-off"]"
 
