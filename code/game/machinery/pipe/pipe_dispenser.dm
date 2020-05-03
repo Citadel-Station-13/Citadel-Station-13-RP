@@ -29,9 +29,9 @@
 	for(var/category in atmos_pipe_recipes)
 		lines += "<b>[category]:</b><BR>"
 		for(var/pipename in pipe_layers)
-				var/pipelayer = pipe_layers[pipename]
-				lines += "<a class='[p_layer == pipelayer ? "linkOn" : "linkOff"]' href='?src=\ref[src];setlayer=[pipelayer]'>[pipename]</a> "
-				lines += "<br>"
+			var/pipelayer = pipe_layers[pipename]
+			lines += "<a class='[p_layer == pipelayer ? "linkOn" : "linkOff"]' href='?src=\ref[src];setlayer=[pipelayer]'>[pipename]</a> "
+			lines += "<br>"
 		for(var/datum/pipe_recipe/PI in atmos_pipe_recipes[category])
 			lines += PI.Render(src)
 	var/dat = lines.Join()
