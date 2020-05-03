@@ -106,12 +106,6 @@
 				add_underlay_adapter(T, , node_dir, "-scrubbers")
 				add_underlay_adapter(T, , node_dir, "-fuel")
 				add_underlay_adapter(T, node, node_dir, "-aux")
-			else
-				add_underlay_adapter(T, node, node_dir, "")
-				add_underlay_adapter(T, , node_dir, "-supply")
-				add_underlay_adapter(T, , node_dir, "-scrubbers")
-				add_underlay_adapter(T, , node_dir, "-fuel")
-				add_underlay_adapter(T, , node_dir, "-aux")
 	else
 		add_underlay_adapter(T, , direction, "-supply")
 		add_underlay_adapter(T, , direction, "-scrubbers")
