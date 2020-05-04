@@ -3537,7 +3537,6 @@
 #include "modular_citadel\code\modules\clothing\donatorclothing.dm"
 #include "modular_citadel\code\modules\clothing\glasses\hud_vr.dm"
 #include "modular_citadel\code\modules\clothing\head\misc_cit.dm"
-#include "modular_citadel\code\modules\clothing\masks\gasmask_cit.dm"
 #include "modular_citadel\code\modules\clothing\shoes\miscellaneous_cit.dm"
 #include "modular_citadel\code\modules\clothing\spacesuits\rig\modules\utility.dm"
 #include "modular_citadel\code\modules\clothing\spacesuits\rig\suits\station.dm"
