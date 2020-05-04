@@ -488,7 +488,7 @@ var/global/list/latejoin_tram   = list()
 /obj/structure/dancepole
 	name = "dance pole"
 	desc = "Engineered for your entertainment"
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "dancepole"
 	density = 0
 	anchored = 1

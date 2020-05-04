@@ -15,7 +15,7 @@ var/const/enterloopsanity = 100
 			M.make_floating(1) //VOREStation Edit End.
 		else if(!is_space())
 			M.make_floating(0)
-		if(isliving(M))
+		if(isliving(M) && CHECK_BITFIELD(M.movement_type, GROUND))
 			var/mob/living/L = M
 			L.handle_footstep(src)
 	..()

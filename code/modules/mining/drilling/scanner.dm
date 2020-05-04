@@ -76,11 +76,11 @@
 		else
 			switch(metals[ore_type])
 				if(1 to 25)
-					result = "trace amounts"
+					result = "trace amounts of [ore_type]"
 				if(26 to 75)
-					result = "significant amounts"
+					result = "significant amounts of [ore_type]"
 				if(76 to INFINITY)
-					result = "huge quantities"
+					result = "huge quantities of [ore_type]"
 		results += result
 	to_chat(user, results.Join("<br>"))
 
