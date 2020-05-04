@@ -303,14 +303,14 @@
 		return
 	if(M.a_intent == INTENT_HARM)
 		M.visible_message(
-			"<span class='danger'>[M] throws [TU.his] arm out, extending [held_blade] from [holder] with a click!</span>",
-			"<span class='danger'>You throw your arm out, extending [held_blade] from [holder] with a click!</span>",
+			"<span class='danger'>[M] throws [TU.his] arm out, extending \the [held_blade] from \the [holder] with a click!</span>",
+			"<span class='danger'>You throw your arm out, extending \the [held_blade] from \the [holder] with a click!</span>",
 			"<span class='notice'>You hear a threatening hiss and a click.</span>"
 			)
 	else
 		M.visible_message(
-			"<span class='notice'>[M] extends [held_blade] from [holder] with a click!</span>",
-			"<span class='notice'>You extend [held_blade] from [holder] with a click!</span>",
+			"<span class='notice'>[M] extends \the [held_blade] from \the [holder] with a click!</span>",
+			"<span class='notice'>You extend \the [held_blade] from \the [holder] with a click!</span>",
 			"<span class='notice'>You hear a hiss and a click.</span>")
 
 	playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)

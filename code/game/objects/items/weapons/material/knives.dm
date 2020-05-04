@@ -140,13 +140,13 @@
 	desc = "A long, machete-like blade, mounted to your arm. The size and location of it lends itself to parrying blows in melee."
 	icon_state = "armblade"
 	item_state = "armblade"
-	force_divisor = 0.4 // long and arm-mounted but you gotta use a suit for it
+	force_divisor = 0.5 // long and arm-mounted but you gotta use a suit for it
 	slot_flags = null
 	unbreakable = TRUE
 	can_dull = FALSE
 
 /obj/item/material/knife/machete/armblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_parry_check(user, attacker, damage_source) && prob(30))
+	if(default_parry_check(user, attacker, damage_source) && prob(33))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 		playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 		return TRUE
@@ -154,14 +154,17 @@
 
 /obj/item/material/knife/machete/armblade/rig
 	default_material = DEFAULT_WALL_MATERIAL
-	w_class = ITEMSIZE_HUGE
 	canremove = FALSE
 	var/obj/item/rig_module/armblade/storing_module
 
 /obj/item/material/knife/machete/armblade/rig/dropped(mob/user)
 	if(storing_module)
 		src.forceMove(storing_module)
-		visible_message("<span class='notice'>[user] retracts [src] from [storing_module.holder]!</span>", "<span class='notice'>You hear a click and a hiss.</span>")
+		user.visible_message(
+			"<span class='notice'>[user] retracts the [src], folding it away with a click and a hiss.</span>",
+			"<span class='notice'>You retract the [src], folding it away with a click and a hiss.</span>",
+			"<span class='notice'>You hear a threatening click and a hiss.</span>"
+			)
 		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
 	else
 		to_chat(user, "Something fucked up and the armblade got out of a module. Please report this bug.")
