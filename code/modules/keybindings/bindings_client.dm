@@ -50,7 +50,7 @@
 
 	//Focus Chat failsafe. Overrides movement checks to prevent WASD.
 	if(!prefs.hotkeys && length(_key) == 1 && _key != "Alt" && _key != "Ctrl" && _key != "Shift")
-		winset(src, null, "input.focus=true ; input.text=[url_encode(_key)]")
+		winset(src, null, "input.focus=true ; input.text=\\\"\[input.text\][url_encode(_key)]\\\"")
 		return
 
 	//offset by 1 because the buffer address is 0 indexed because the math was simpler
