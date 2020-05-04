@@ -21,6 +21,7 @@
 	species_restricted = null
 	max_pressure_protection = null
 	min_pressure_protection = null
+	force = 3 // if you're headbutting someone with something meant to protect you from space...
 
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
@@ -41,6 +42,7 @@
 	species_restricted = null
 	gender = PLURAL
 	icon_base = null
+	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 /obj/item/clothing/suit/space/rig
 	name = "chestpiece"
