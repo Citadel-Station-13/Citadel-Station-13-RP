@@ -542,6 +542,7 @@
 	id = "hyperzine"
 	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
 	taste_description = "bitterness"
+	metabolism = REM * 0.25 // see "long lasting"
 	reagent_state = LIQUID
 	color = "#FF3300"
 	overdose = REAGENTS_OVERDOSE * 0.5
