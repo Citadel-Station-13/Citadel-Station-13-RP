@@ -3,7 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
-	icon = 'icons/obj/storage_vr.dmi'	//VOREStation edit
+	icon = 'icons/obj/storage.dmi'	//VOREStation edit
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
@@ -434,7 +434,7 @@
 /obj/structure/closet/crate/large
 	name = "large crate"
 	desc = "A hefty metal crate."
-	icon = 'icons/obj/storage_vr.dmi'	//VOREStation Edit
+	icon = 'icons/obj/storage.dmi'	//VOREStation Edit
 	icon_state = "largemetal"
 	icon_opened = "largemetalopen"
 	icon_closed = "largemetal"
@@ -462,7 +462,7 @@
 /obj/structure/closet/crate/secure/large
 	name = "large crate"
 	desc = "A hefty metal crate with an electronic locking system."
-	icon = 'icons/obj/storage_vr.dmi'		//VOREStation Edit
+	icon = 'icons/obj/storage.dmi'		//VOREStation Edit
 	icon_state = "largemetalsecure"			//VOREStation Edit
 	icon_opened = "largemetalsecureopen"	//VOREStation Edit
 	icon_closed = "largemetalsecure"		//VOREStation Edit

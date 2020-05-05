@@ -141,7 +141,7 @@
 /obj/item/cell_charger_kit
 	name = "cell charger kit"
 	desc = "A box with the parts for a heavy-duty cell charger inside of it. Use it in-hand to deploy a cell charger."
-	icon = 'modular_citadel/icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "box"
 	item_icons = list(
 		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',

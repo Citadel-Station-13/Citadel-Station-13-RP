@@ -4498,6 +4498,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "ail" = (
@@ -7112,6 +7113,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
+"amW" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
 "amX" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
@@ -7436,6 +7452,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/mining_main/ore)
+"anF" = (
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
+"anG" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
 "anH" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -13070,20 +13095,6 @@
 "axH" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/atrium_one)
-"axI" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
@@ -30308,11 +30319,6 @@
 /obj/structure/flora/pottedplant,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
-"cgP" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/atrium_one)
 "cgR" = (
 /obj/machinery/light,
 /turf/simulated/floor/lino,
@@ -43834,7 +43840,7 @@ aah
 agM
 avE
 aww
-axI
+amW
 agM
 agV
 aip
@@ -46828,7 +46834,7 @@ aiK
 aiK
 aiK
 agM
-avB
+anF
 aqq
 avB
 asq
@@ -48109,7 +48115,7 @@ cfE
 cfE
 bHH
 bJD
-cgP
+anG
 cgT
 chb
 bSl

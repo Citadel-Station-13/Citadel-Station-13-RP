@@ -61,6 +61,7 @@
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
 					security_announcement_up.Announce("[config_legacy.alert_desc_red_upto]", "Attention! Code red!")
+					security_announcement_up.Announce(new_sound = 'sound/effects/carter_alarm_cut.ogg')
 				else
 					security_announcement_down.Announce("[config_legacy.alert_desc_red_downto]", "Attention! Code red!")
 				security_level = SEC_LEVEL_RED

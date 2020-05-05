@@ -8,7 +8,7 @@
 /obj/structure/table/rack/shelf
 	name = "shelving"
 	desc = "Some nice metal shelves."
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "shelf"
 
 /obj/structure/table/rack/shelf/steel

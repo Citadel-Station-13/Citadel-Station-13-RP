@@ -28,7 +28,6 @@
 	name = "explorer's officer uniform"
 	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This one has gold trim."
 
-
 /obj/item/clothing/under/solgov/utility/fleet
 	name = "fleet coveralls"
 	desc = "The utility uniform of the USDF Fleet, made from an insulated material."

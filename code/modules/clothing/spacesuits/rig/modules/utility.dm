@@ -650,7 +650,7 @@
 
 	to_chat(H, "<font color='blue'><b>You activate the suit's sprint mode.</b></font>")
 
-	holder.slowdown = initial(holder.slowdown) - sprint_speed
+	holder.slowdown -= sprint_speed
 
 /obj/item/rig_module/sprinter/deactivate()
 
@@ -661,4 +661,4 @@
 
 	to_chat(H, "<span class='danger'>Your hardsuit returns to normal speed.</span>")
 
-	holder.slowdown = initial(holder.slowdown)
+	holder.slowdown += sprint_speed

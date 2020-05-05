@@ -22,7 +22,7 @@
 	/// Delay between each drifting move.
 	var/inertia_move_delay = 5
 	/// Movement types, see __DEFINES/flags/movement.dm
-	var/movement_type = NONE
+	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
 	/// Our default glide_size.
@@ -289,3 +289,9 @@
 // Called when touching a lava tile.
 /atom/movable/proc/lava_act()
 	fire_act(null, 10000, 1000)
+
+/**
+  * Sets our movement type.
+  */
+/atom/movable/proc/set_movement_type(new_movetype)
+	movement_type = new_movetype

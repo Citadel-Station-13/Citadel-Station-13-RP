@@ -47,7 +47,7 @@
 	return TRUE
 
 /datum/keybinding/mob/stop_pulling
-	hotkey_keys = list("H", "Delete")
+	hotkey_keys = list("J", "Delete")
 	name = "stop_pulling"
 	full_name = "Stop pulling"
 	description = ""

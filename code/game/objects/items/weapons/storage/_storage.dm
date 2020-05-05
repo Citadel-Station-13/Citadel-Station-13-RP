@@ -131,8 +131,12 @@
 	return
 
 /obj/item/storage/proc/hide_from(mob/user as mob)
-
-	if(!user.client)
+	if(!user)
+		return
+	is_seeing -= user
+	if(user.s_active == src)
+		user.s_active = null
+	if(!user?.client)
 		return
 	user.client.screen -= src.boxes
 	user.client.screen -= src.storage_start
@@ -140,9 +144,6 @@
 	user.client.screen -= src.storage_end
 	user.client.screen -= src.closer
 	user.client.screen -= src.contents
-	if(user.s_active == src)
-		user.s_active = null
-	is_seeing -= user
 
 /obj/item/storage/proc/open(mob/user as mob)
 	if (src.use_sound && !isobserver(user))
