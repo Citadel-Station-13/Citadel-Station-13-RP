@@ -8,7 +8,7 @@
 	icon_state = "station_map"
 	anchored = 1
 	density = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
@@ -126,7 +126,7 @@
 			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, .proc/checkPosition)
 			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, .proc/checkPosition)
 			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, .proc/stopWatching)
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)
 				to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
@@ -156,7 +156,7 @@
 		UnregisterSignal(watching_mob, COMSIG_MOVABLE_MOVED)
 		UnregisterSignal(watching_mob, COMSIG_PARENT_QDELETING)
 	watching_mob = null
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/station_map/power_change()
 	. = ..()
