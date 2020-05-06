@@ -632,7 +632,9 @@ modules/mob/mob_movement.dm if you move you will be zoomed out
 modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
-/obj/item/proc/zoom(var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
+
+// this is shitcode holy crap
+/obj/item/proc/zoom(tileoffset = 14, viewsize = 9, mob/user = usr) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 
 	var/devicename
 
@@ -643,18 +645,18 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	var/cannotzoom
 
-	if((usr.stat && !zoom) || !(istype(usr,/mob/living/carbon/human)))
-		to_chat(usr, "You are unable to focus through the [devicename]")
+	if((user.stat && !zoom) || !(istype(user,/mob/living/carbon/human)))
+		to_chat(user, "You are unable to focus through the [devicename]")
 		cannotzoom = 1
-	else if(!zoom && GLOB.global_hud.darkMask[1] in usr.client.screen)
-		to_chat(usr, "Your visor gets in the way of looking through the [devicename]")
+	else if(!zoom && GLOB.global_hud.darkMask[1] in user.client.screen)
+		to_chat(user, "Your visor gets in the way of looking through the [devicename]")
 		cannotzoom = 1
-	else if(!zoom && usr.get_active_hand() != src)
-		to_chat(usr, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
+	else if(!zoom && user.get_active_hand() != src)
+		to_chat(user, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
 
 	//We checked above if they are a human and returned already if they weren't.
-	var/mob/living/carbon/human/H = usr
+	var/mob/living/carbon/human/H = user
 
 	if(!zoom && !cannotzoom)
 		if(H.hud_used.hud_shown)
@@ -679,7 +681,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				H.client.pixel_x = -viewoffset
 				H.client.pixel_y = 0
 
-		H.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
+		H.visible_message("[user] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
 		H.looking_elsewhere = TRUE
 		H.handle_vision()
 
@@ -695,7 +697,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		H.handle_vision()
 
 		if(!cannotzoom)
-			usr.visible_message("[zoomdevicename ? "[usr] looks up from the [src.name]" : "[usr] lowers the [src.name]"].")
+			user.visible_message("[zoomdevicename ? "[user] looks up from the [src.name]" : "[user] lowers the [src.name]"].")
 
 	return
 

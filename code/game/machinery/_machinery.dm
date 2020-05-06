@@ -101,7 +101,7 @@ Class Procs:
 
 	var/stat = 0
 	var/emagged = 0
-	var/use_power = 1
+	var/use_power = USE_POWER_IDLE
 		//0 = dont run the auto
 		//1 = run auto, use idle
 		//2 = run auto, use active
@@ -119,14 +119,11 @@ Class Procs:
 
 	var/speed_process = FALSE			//If false, SSmachines. If true, SSfastprocess.
 
-/obj/machinery/New(l, d=0)
-	..(l)
-	if(d)
-		setDir(d)
-	if(circuit)
+/obj/machinery/Initialize(mapload, newdir)
+	if(newdir)
+		setDir(newdir)
+	if(ispath(circuit))
 		circuit = new circuit(src)
-
-/obj/machinery/Initialize()
 	. = ..()
 	global.machines += src
 	if(!speed_process)
@@ -146,13 +143,14 @@ Class Procs:
 				qdel(A)
 			else // Otherwise we assume they were dropped to the ground during deconstruction, and were not removed from the component_parts list by deconstruction code.
 				component_parts -= A
+		component_parts = null
 	if(contents) // The same for contents.
 		for(var/atom/A in contents)
 			if(ishuman(A))
 				var/mob/living/carbon/human/H = A
 				H.client.eye = H.client.mob
 				H.client.perspective = MOB_PERSPECTIVE
-				H.loc = src.loc
+				H.forceMove(loc)
 			else
 				qdel(A)
 	return ..()
@@ -199,9 +197,9 @@ Class Procs:
 /obj/machinery/proc/auto_use_power()
 	if(!powered(power_channel))
 		return 0
-	if(use_power == 1)
+	if(use_power == USE_POWER_IDLE)
 		use_power(idle_power_usage, power_channel, 1)
-	else if(use_power >= 2)
+	else if(use_power >= USE_POWER_ACTIVE)
 		use_power(active_power_usage, power_channel, 1)
 	return 1
 
