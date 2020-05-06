@@ -209,10 +209,7 @@
 			O.show_message("<span class='warning'>Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix.</span>")
 		return
 	if(istype(M, /atom/movable))
-		if(prob(5) && !accurate) //oh dear a problem, put em in deep space
-			do_teleport(M, locate(rand((2*TRANSITIONEDGE), world.maxx - (2*TRANSITIONEDGE)), rand((2*TRANSITIONEDGE), world.maxy - (2*TRANSITIONEDGE)), 3), 2)
-		else
-			do_teleport(M, com.locked) //dead-on precision
+		do_teleport(M, com.locked) //dead-on precision
 
 		if(com.one_time_use) //Make one-time-use cards only usable one time!
 			com.one_time_use = 0
