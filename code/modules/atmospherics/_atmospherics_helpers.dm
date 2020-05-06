@@ -439,7 +439,7 @@
 		var/sink_heat_capacity = sink.heat_capacity()
 		var/transfer_heat_capacity = source.heat_capacity()*estimate_moles/source_total_moles
 		air_temperature = (sink.temperature*sink_heat_capacity  + source.temperature*transfer_heat_capacity) / (sink_heat_capacity + transfer_heat_capacity)
-	
+
 	//get the number of moles that would have to be transfered to bring sink to the target pressure
 	return pressure_delta*output_volume/(air_temperature * R_IDEAL_GAS_EQUATION)
 
@@ -468,6 +468,10 @@
 			return "REGULAR"
 		if(PIPING_LAYER_SCRUBBER)
 			return "SCRUBBER"
+		if(PIPING_LAYER_FUEL)
+			return "FUEL"
+		if(PIPING_LAYER_AUX)
+			return "AUX"
 
 /proc/atmos_pipe_flags_str(pipe_flags)
 	var/list/dat = list()
@@ -489,6 +493,10 @@
 		dat += "SUPPLY"
 	if(connect_types & CONNECT_TYPE_SCRUBBER)
 		dat += "SCRUBBER"
+	if(connect_types & CONNECT_TYPE_FUEL)
+		dat += "FUEL"
+	if(connect_types & CONNECT_TYPE_AUX)
+		dat += "AUX"
 	if(connect_types & CONNECT_TYPE_HE)
 		dat += "HE"
 	return dat.Join("|")

@@ -55,6 +55,11 @@
 	use_power = 1
 	icon_state = "map_vent_out"
 
+/obj/machinery/atmospherics/unary/vent_pump/aux
+	icon_state = "map_vent_aux"
+	icon_connect_type = "-aux"
+	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
+
 /obj/machinery/atmospherics/unary/vent_pump/siphon
 	pump_direction = 0
 
@@ -101,6 +106,11 @@
 	name = "Large Air Vent"
 	power_channel = EQUIP
 	power_rating = 45000	//15 kW ~ 20 HP //VOREStation Edit - 45000
+
+/obj/machinery/atmospherics/unary/vent_pump/high_volume/aux
+	icon_state = "map_vent_aux"
+	icon_connect_type = "-aux"
+	connect_types = CONNECT_TYPE_AUX //connects to aux pipes
 
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/New()
 	..()
