@@ -61,7 +61,7 @@
 
 /datum/variable_settings_controller/proc/html_render(category = entries_by_category[1])
 	. = list()
-	. += "<a href='?src=[REF(src)];category=[category];preset=1'>SET PRESET</a> <a href='?src=[REF(src)];category=[category];reset=1'>RESET DEFAULT</a><br>"
+	. += "<a href='?src=[REF(src)];category=[category];preset=1'>Set Preset</a> <a href='?src=[REF(src)];category=[category];reset=1'>Reset Default</a><br>"
 	for(var/cat in entries_by_category)
 		. += "<span class='[(cat == category)? "linkOn" : ""]'><a href='?src=[REF(src)];category=[cat];refresh=1'>[cat]</a></span> "
 	. += "<hr>"
