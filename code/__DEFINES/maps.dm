@@ -1,4 +1,4 @@
-a/*
+/*
 The /tg/ codebase allows mixing of hardcoded and dynamically-loaded z-levels.
 Z-levels can be reordered as desired and their properties are set by "traits".
 See map_config.dm for how a particular station's traits may be chosen.

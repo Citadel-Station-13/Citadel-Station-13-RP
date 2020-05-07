@@ -3,6 +3,14 @@
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	level = 1
+
+	// baseturfs can be either a list or a single turf type.
+	// In class definition like here it should always be a single type.
+	// A list will be created in initialization that figures out the baseturf's baseturf etc.
+	// In the case of a list it is sorted from bottom layer to top.
+	// This shouldn't be modified directly, use the helper procs.
+	var/list/baseturfs = /turf/baseturf_bottom
+
 	var/holy = 0
 
 	// Initial air contents (in moles)
@@ -45,9 +53,7 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-/*
 	assemble_baseturfs()
-*/
 
 /*
 	if(smooth)

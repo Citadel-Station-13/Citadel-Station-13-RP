@@ -58,6 +58,9 @@
 	return list(width, height, zdepth)
 
 /datum/parsed_map/proc/initTemplateBounds()
+	if (SSatoms.subsystem_initialized == INITIALIZATION_INSSATOMS)
+		return // let proper initialisation handle it later
+
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/obj/structure/cable/cables = list()
 	var/list/atom/atoms = list()
@@ -86,6 +89,19 @@
 	SSatoms.InitializeAtoms(atoms)
 	SSmachines.setup_template_powernets(cables)
 	SSair.setup_template_machinery(atmos_machines)
+
+#warn tg above, vorestation below, fix this.
+
+	SSatoms.InitializeAtoms(atoms)
+
+	SSmachines.setup_atmos_machinery(atmos_machines)
+
+	SSmachines.setup_powernets_for_cables(cables)
+
+	// Ensure all machines in loaded areas get notified of power status
+	for(var/I in areas)
+		var/area/A = I
+		A.power_change()
 
 /datum/map_template/proc/load_new_z(orientation = SOUTH, list/ztraits = src.ztraits || list(ZTRAIT_AWAY = TRUE), centered = TRUE)
 	var/x = centered? max(round((world.maxx - width) / 2), 1) : 1
