@@ -36,10 +36,11 @@
 /datum/variable_setting_entry/proc/set_value(newvalue)
 	value = newvalue
 
-/datum/variable_setting_entry/proc/ui_html(datum/variable_settings_controller/host)
+/datum/variable_setting_entry/proc/ui_html(datum/variable_settings_controller/host, category)
 	. = list()
-	. += "<h3>[name]</h3> - <b>\[<a href='?src=[REF(host)];target=[type];set=1'>SET</a>\]</b><br>"
+	. += "<h3>[name]</h3> - <b>\[<a href='?src=[REF(host)];target=[type];set=1;category=[category]'>SET</a>\]</b><br>"
 	. += "[desc]"
+	return jointext(., "")
 
 #define CANCEL_VALUE "#################____######CANCEL"		//heh
 /datum/variable_setting_entry/proc/prompt_value(mob/user)

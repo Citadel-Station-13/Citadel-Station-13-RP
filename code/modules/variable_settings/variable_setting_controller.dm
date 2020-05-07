@@ -31,6 +31,45 @@
 		message_admins(logline)
 		log_admin(logline)
 		return TRUE
+	var/category = href_list["category"]
+	var/refresh = FALSE
+	if(href_list["target"])
+		var/path = text2path(href_list["target"])
+		var/datum/variable_setting_entry/E = entries_by_type[E]
+		refresh = E.OnTopic(href, href_list)
+	else if(href_list["preset"])
+		request_and_set_preset(usr)
+		refresh = TRUE
+	else if(href_list["reset"])
+		var/logline = "[key_name(usr)] reset [src]([type]) to defaults."
+		message_admins(logline)
+		log_admin(logline)
+		reset_to_default()
+		refresh = TRUE
+	else if(href_list["refresh"])
+		refresh = TRUE
+
+	if(refresh)
+		ui_interact(usr, category)
+
+/datum/variable_settings_controller/proc/ui_interact(mob/user, category)
+	if(!(category in entries_by_category))
+		category = entries_by_category[1]
+	var/datum/browser/B = new(user, "vsc_[name]", name, 500, 1000, src)
+	B.set_content(html_render(category))
+	B.open(FALSE)
+
+/datum/variable_settings_controller/proc/html_render(category = entries_by_category[1])
+	. = list()
+	. += "<h1>VSC Controls: [name]</h1><br>"
+	. += "<h3>\[<a href='?src=[REF(src)];category=[category];preset=1'>SET PRESET</a>\]</h3><br>"
+	. += "<h3>\[<a href='?src=[REF(src)];category=[category];reset=1'>RESET DEFAULT</a>\]</h3><br>"
+	for(var/cat in entries_by_category)
+		. += "<span class='[(cat == category)? "linkOn" : "linkOff"]'><a href='?src=[REF(src)];category=[cat];refresh=1'>[cat]</a></span> "
+	. += "<hr>"
+	for(var/datum/variable_setting_entry/E in entries_by_category[category])
+		. += "<div class='statusDisplay'>[E.ui_html(src, category)]</div>"
+	return jointext(., "")
 
 /datum/variable_settings_controller/proc/get_entries()
 	. = list()
