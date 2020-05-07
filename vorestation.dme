@@ -1622,6 +1622,7 @@
 #include "code\modules\atmospherics\zas\Phoron.dm"
 #include "code\modules\atmospherics\zas\Turf.dm"
 #include "code\modules\atmospherics\zas\Variable Settings.dm"
+#include "code\modules\atmospherics\zas\variable_settings.dm"
 #include "code\modules\atmospherics\zas\Zone.dm"
 #include "code\modules\awaymissions\bluespaceartillery.dm"
 #include "code\modules\awaymissions\corpse.dm"
