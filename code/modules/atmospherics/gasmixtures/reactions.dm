@@ -1,6 +1,8 @@
 //Returns the firelevel
 /datum/gas_mixture/proc/zburn(zone/zone, force_burn, no_check = 0)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/fuel_energy_release, fuel_energy_release)
+
 	. = 0
 	if((temperature > PHORON_MINIMUM_BURN_TEMPERATURE || force_burn) && (no_check ||check_recombustability(zone? zone.fuel_objs : null)))
 
@@ -89,7 +91,7 @@
 			zone.remove_liquidfuel(used_liquid_fuel, !check_combustability())
 
 		//calculate the energy produced by the reaction and then set the new temperature of the mix
-		temperature = (starting_energy + vsc.fire_fuel_energy_release * (used_gas_fuel + used_liquid_fuel)) / heat_capacity()
+		temperature = (starting_energy + fuel_energy_release * (used_gas_fuel + used_liquid_fuel)) / heat_capacity()
 		update_values()
 
 		#ifdef FIREDBG
@@ -140,6 +142,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 //returns a value between 0 and vsc.fire_firelevel_multiplier
 /datum/gas_mixture/proc/calculate_firelevel(total_fuel, total_oxidizers, reaction_limit, gas_volume)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	//Calculates the firelevel based on one equation instead of having to do this multiple times in different areas.
 	var/firelevel = 0
 
@@ -163,6 +166,6 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 		#endif
 
 		//toss everything together -- should produce a value between 0 and fire_firelevel_multiplier
-		firelevel = vsc.fire_firelevel_multiplier * mix_multiplier * damping_multiplier
+		firelevel = firelevel_multiplier * mix_multiplier * damping_multiplier
 
 	return max( 0, firelevel)

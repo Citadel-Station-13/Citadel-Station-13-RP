@@ -46,17 +46,20 @@
 	return E.value
 
 /datum/variable_settings_controller/proc/get_datum(path)
-	return entries_by_path[path]
+	return entries_by_type[path]
 
 /datum/variable_settings_controller/proc/request_and_set_preset(mob/user)
 	var/input = input(user, "Select Preset", "Presets") as null|anything in (presets | initial_preset_name)
 	if(!input)
 		return
 	var/announce = alert(user, "Announce to all players?", "Announce?", "No", "Yes", "Cancel")
+	var/logstr = "[key_name(user)] changed [src]'s preset to [input]"
 	if(announce == "Cancel")
 		return
 	else if(announce == "Yes")
 		to_chat(world, "<span class='boldnotice'>[user?.client?.holder?.fakekey? "Administrator" : "user.key"] applied preset [input] to [src].</span>")
+	message_admins(logstr)
+	log_admin(logstr)
 	if(input == initial_preset_name)
 		reset_to_default()
 	else

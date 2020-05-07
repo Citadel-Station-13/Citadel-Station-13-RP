@@ -163,9 +163,10 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 	name = "Air Consumption Ratio"
 	desc = "Ratio of air removed and combusted per tick."
 
+// WARNING: This should be reworked at some point, it is a serious misnomer and at the time of writing it's not clear what this does.
 /datum/variable_setting_entry/atmos/fire/firelevel_multiplier
 	name = "Firelevel Constant"
-	desc = "Multiplied by the equation for firelevel, affects mainly the extinguishing of fires."
+	desc = "Multiplied by the equation for firelevel, affects mainly the extinguishing of fires. (WARNING: Really confusing variable. Assume that the lower this is, the more lethal and dangerous fires can get.)"
 
 /datum/variable_setting_entry/atmos/fire/fuel_energy_release
 	name = "Fuel Energy Release"

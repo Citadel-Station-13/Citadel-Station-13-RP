@@ -41,18 +41,29 @@
 	. += "<h3>[name]</h3> - <b>\[<a href='?src=[REF(host)];target=[type];set=1'>SET</a>\]</b><br>"
 	. += "[desc]"
 
+#define CANCEL_VALUE "#################____######CANCEL"		//heh
 /datum/variable_setting_entry/proc/prompt_value(mob/user)
 	var/list/vv_return = user.client.vv_get_value(class = value_vv_class, current_value = value)
-	return vv_return["value"]
+	. = vv_return["value"]
+	if((.["class"] != VV_NULL) && isnull(.["value"]))
+		return CANCEL_VALUE
 
 /datum/variable_setting_entry/proc/OnTopic(href, href_list)
 	if(href_list["set"])
-		var/val = prompt_value(user)
-		if(isnull(val) && !allow_null)
+		var/val = prompt_value(usr)
+		if((isnull(val) && !allow_null) || (val == CANCEL_VALUE))
 			return FALSE
+		var/logstr = "[key_name(usr)] set [src]([type]) to [val]."
+		message_admins(logstr)
+		log_admin(logstr)
 		set_value(val)
 		return TRUE
 	if(href_list["initial"])
+		var/logstr = "[key_name(usr)] reset [src]([type]) to default."
+		message_admins(logstr)
+		log_admin(logstr)
 		reset_to_default()
 		return TRUE
 	return FALSE
+
+#undef CANCEL_VALUE

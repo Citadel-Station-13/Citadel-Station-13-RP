@@ -97,4 +97,4 @@ client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
 /client/proc/ZASSettings()
 	set category = "Debug"
 
-	atmos_vsc.request_and_set_preset(mob)
+	GLOB.atmos_vsc.request_and_set_preset(mob)

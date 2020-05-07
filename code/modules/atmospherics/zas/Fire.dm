@@ -37,7 +37,8 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	return igniting
 
 /zone/proc/process_fire()
-	var/datum/gas_mixture/burn_gas = air.remove_ratio(vsc.fire_consuption_rate, fire_tiles.len)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, consumption_rate)
+	var/datum/gas_mixture/burn_gas = air.remove_ratio(consumption_rate, fire_tiles.len)
 
 	var/firelevel = burn_gas.zburn(src, fire_tiles, force_burn = 1, no_check = 1)
 
@@ -234,6 +235,8 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	//Burns mobs due to fire. Respects heat transfer coefficients on various body parts.
 	//Due to TG reworking how fireprotection works, this is kinda less meaningful.
 
+	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
+
 	var/head_exposure = 1
 	var/chest_exposure = 1
 	var/groin_exposure = 1
@@ -258,7 +261,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 			if(C.body_parts_covered & ARMS)
 				arms_exposure = 0
 	//minimize this for low-pressure enviroments
-	var/mx = 5 * firelevel/vsc.fire_firelevel_multiplier * min(pressure / ONE_ATMOSPHERE, 1)
+	var/mx = 5 * firelevel/firelevel_multiplier * min(pressure / ONE_ATMOSPHERE, 1)
 
 	//Always check these damage procs first if fire damage isn't working. They're probably what's wrong.
 

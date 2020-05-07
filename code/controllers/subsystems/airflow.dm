@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(airflow)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/airflow/fire(resumed = FALSE)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/speed_decay, speed_decay)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/mob_slowdown, mob_slowdown)
 	if (!resumed)
 		currentrun = processing.Copy()
 
@@ -49,7 +51,7 @@ SUBSYSTEM_DEF(airflow)
 			target.airflow_process_delay = 0
 
 		target.airflow_speed = min(target.airflow_speed, 15)
-		target.airflow_speed -= vsc.airflow_speed_decay
+		target.airflow_speed -= speed_decay
 		if (!target.airflow_skip_speedcheck)
 			if (target.airflow_speed > 7)
 				if (target.airflow_time++ >= target.airflow_speed - 7)
@@ -93,7 +95,7 @@ SUBSYSTEM_DEF(airflow)
 		step_towards(target, target.airflow_dest)
 		var/mob/M = target
 		if (ismob(target) && M.client)
-			M.applyMoveCooldown(vsc.airflow_mob_slowdown)
+			M.applyMoveCooldown(mob_slowdown)
 
 		if (MC_TICK_CHECK)
 			return

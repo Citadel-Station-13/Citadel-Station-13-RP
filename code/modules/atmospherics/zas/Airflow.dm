@@ -6,7 +6,8 @@ mob/var/tmp/last_airflow_stun = 0
 mob/proc/airflow_stun()
 	if(stat == 2)
 		return 0
-	if(last_airflow_stun > world.time - vsc.airflow_stun_cooldown)	return 0
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_cooldown, stuncd)
+	if(last_airflow_stun > world.time - stuncd)	return 0
 
 	if(!(status_flags & CANSTUN) && !(status_flags & CANWEAKEN))
 		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
@@ -29,16 +30,21 @@ mob/living/carbon/human/airflow_stun()
 	..()
 
 atom/movable/proc/check_airflow_movable(n)
-	if(!simulated) return 0
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
+	if(!simulated)
+		return 0
 
-	if(anchored && !ismob(src)) return 0
+	if(anchored && !ismob(src))
+		return 0
 
-	if(!isobj(src) && n < vsc.airflow_dense_pressure) return 0
+	if(!isobj(src) && n < dense_pressure)
+		return 0
 
 	return 1
 
 mob/check_airflow_movable(n)
-	if(n < vsc.airflow_heavy_pressure)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/heavy_pressure, heavy_pressure)
+	if(n < heavy_pressure)
 		return 0
 	return 1
 
