@@ -3,7 +3,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_settings_controller/atmospherics
 	initial_entries = list(
 		/datum/variable_setting_entry/atmos/fire/consumption_rate = 0.25,
-		/datum/variable_Setting_entry/atmos/fire/firelevel_multiplier = 25,
+		/datum/variable_setting_entry/atmos/fire/firelevel_multiplier = 25,
 		/datum/variable_setting_entry/atmos/fire/fuel_energy_release = 866000,
 		/datum/variable_setting_entry/atmos/fire/ignition_level = 0.5,
 		/datum/variable_setting_entry/atmos/airflow/lightest_pressure = 20,
@@ -33,7 +33,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 	presets = list(
 	"ZAS - Standard" = list(
 		/datum/variable_setting_entry/atmos/fire/consumption_rate = 0.25,
-		/datum/variable_Setting_entry/atmos/fire/firelevel_multiplier = 25,
+		/datum/variable_setting_entry/atmos/fire/firelevel_multiplier = 25,
 		/datum/variable_setting_entry/atmos/fire/fuel_energy_release = 866000,
 		/datum/variable_setting_entry/atmos/fire/ignition_level = 0.5,
 		/datum/variable_setting_entry/atmos/airflow/lightest_pressure = 20,
@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 		),
 	"ZAS - Forgiving" = list(
 		/datum/variable_setting_entry/atmos/fire/consumption_rate = 0.25,
-		/datum/variable_Setting_entry/atmos/fire/firelevel_multiplier = 25,
+		/datum/variable_setting_entry/atmos/fire/firelevel_multiplier = 25,
 		/datum/variable_setting_entry/atmos/fire/fuel_energy_release = 866000,
 		/datum/variable_setting_entry/atmos/fire/ignition_level = 0.5,
 		/datum/variable_setting_entry/atmos/airflow/lightest_pressure = 45,
@@ -73,7 +73,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 		),
 	"ZAS - Dangerous" = list(
 		/datum/variable_setting_entry/atmos/fire/consumption_rate = 0.25,
-		/datum/variable_Setting_entry/atmos/fire/firelevel_multiplier = 25,
+		/datum/variable_setting_entry/atmos/fire/firelevel_multiplier = 25,
 		/datum/variable_setting_entry/atmos/fire/fuel_energy_release = 866000,
 		/datum/variable_setting_entry/atmos/fire/ignition_level = 0.5,
 		/datum/variable_setting_entry/atmos/airflow/lightest_pressure = 15,
@@ -93,7 +93,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 		),
 	"ZAS - Hell" = list(
 		/datum/variable_setting_entry/atmos/fire/consumption_rate = 0.25,
-		/datum/variable_Setting_entry/atmos/fire/firelevel_multiplier = 25,
+		/datum/variable_setting_entry/atmos/fire/firelevel_multiplier = 25,
 		/datum/variable_setting_entry/atmos/fire/fuel_energy_release = 866000,
 		/datum/variable_setting_entry/atmos/fire/ignition_level = 0.5,
 		/datum/variable_setting_entry/atmos/airflow/lightest_pressure = 20,
@@ -254,7 +254,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 
 /datum/variable_setting_entry/atmos/phoron/genetic_corruption
 	name = "Genetic Corruption"
-	desc = "X in 10,000 chance of doing genetic corruption on damage ticks.
+	desc = "X in 10,000 chance of doing genetic corruption on damage ticks."
 
 /datum/variable_setting_entry/atmos/phoron/skin_burns
 	name = "Skin Burns"
