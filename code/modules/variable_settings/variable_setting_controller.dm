@@ -61,11 +61,9 @@
 
 /datum/variable_settings_controller/proc/html_render(category = entries_by_category[1])
 	. = list()
-	. += "<h1>VSC Controls: [name]</h1><br>"
-	. += "<h3>\[<a href='?src=[REF(src)];category=[category];preset=1'>SET PRESET</a>\]</h3><br>"
-	. += "<h3>\[<a href='?src=[REF(src)];category=[category];reset=1'>RESET DEFAULT</a>\]</h3><br>"
+	. += "<a href='?src=[REF(src)];category=[category];preset=1'>SET PRESET</a> <a href='?src=[REF(src)];category=[category];reset=1'>RESET DEFAULT</a><br>"
 	for(var/cat in entries_by_category)
-		. += "<span class='[(cat == category)? "linkOn" : "linkOff"]'><a href='?src=[REF(src)];category=[cat];refresh=1'>[cat]</a></span> "
+		. += "<span class='[(cat == category)? "linkOn" : ""]'><a href='?src=[REF(src)];category=[cat];refresh=1'>[cat]</a></span> "
 	. += "<hr>"
 	for(var/datum/variable_setting_entry/E in entries_by_category[category])
 		. += "<div class='statusDisplay'>[E.ui_html(src, category)]</div>"
@@ -96,7 +94,7 @@
 	if(announce == "Cancel")
 		return
 	else if(announce == "Yes")
-		to_chat(world, "<span class='boldnotice'>[user?.client?.holder?.fakekey? "Administrator" : "user.key"] applied preset [input] to [src].</span>")
+		to_chat(world, "<span class='boldnotice'>[user?.client?.holder?.fakekey? "Administrator" : user.key] applied preset [input] to [src].</span>")
 	message_admins(logstr)
 	log_admin(logstr)
 	if(input == initial_preset_name)

@@ -1945,6 +1945,9 @@
 		else
 			error_viewer.show_to(owner, null, href_list["viewruntime_linear"])
 
+	else if(href_list["atmos_vsc"])
+		GLOB.atmos_vsc.ui_interact(usr)
+
 	// player info stuff
 
 	if(href_list["add_player_info"])

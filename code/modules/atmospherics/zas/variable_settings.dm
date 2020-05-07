@@ -1,6 +1,7 @@
 GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, new)
 
 /datum/variable_settings_controller/atmospherics
+	name = "Atmospheric Properties Controller"
 	initial_entries = list(
 		/datum/variable_setting_entry/atmos/fire/consumption_rate = 0.25,
 		/datum/variable_setting_entry/atmos/fire/firelevel_multiplier = 25,
@@ -233,6 +234,7 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_setting_entry/atmos/connection/insulation
 	name = "Insulation"
 	desc = "Should things like doors forbid heat transfer?"
+	value_type = VSC_VALUE_BOOLEAN
 
 /datum/variable_setting_entry/atmos/connection/temperature_delta
 	name = "Temperature Difference"
@@ -248,10 +250,12 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_setting_entry/atmos/phoron/contamination
 	name = "Cloth Contamination"
 	desc = "If this is on, phoron does damage by getting into cloth."
+	value_type = VSC_VALUE_BOOLEAN
 
 /datum/variable_setting_entry/atmos/phoron/phoronguard_only
 	name = "Phoronguard Only"
 	desc = "If this is on, only biosuits and spacesuits and other PHORONGUARD flagged items can protect against contamination and ill effects."
+	value_type = VSC_VALUE_BOOLEAN
 
 /datum/variable_setting_entry/atmos/phoron/genetic_corruption
 	name = "Genetic Corruption"

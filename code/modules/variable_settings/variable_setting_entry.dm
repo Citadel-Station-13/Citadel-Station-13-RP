@@ -12,10 +12,8 @@
 	var/value
 	/// Initial value
 	var/initial_value
-	/// VV class for the default implementation of prompt_value.
-	var/value_vv_class
-	/// Allow nulls?
-	var/allow_null = FALSE
+	/// Value type
+	var/value_type = VSC_VALUE_NUMBER
 
 /datum/variable_setting_entry/New(_value)
 	if(!islist(_value))
@@ -23,8 +21,6 @@
 	else
 		value = deepCopyList(_value)
 		initial_value = deepCopyList(_value)
-	if(initial_value && isnull(value_vv_class))
-		value_vv_class = vv_get_class(initial_value)
 	// we do not handle datums yet.
 
 /datum/variable_setting_entry/proc/reset_to_default()
@@ -36,23 +32,32 @@
 /datum/variable_setting_entry/proc/set_value(newvalue)
 	value = newvalue
 
+/datum/variable_setting_entry/proc/render_value()
+	switch(value_type)
+		if(VSC_VALUE_NUMBER)
+			return value
+		if(VSC_VALUE_BOOLEAN)
+			return value? "On" : "Off"
+		else
+			return value
+
 /datum/variable_setting_entry/proc/ui_html(datum/variable_settings_controller/host, category)
 	. = list()
-	. += "<h3>[name]</h3> - <b>\[<a href='?src=[REF(host)];target=[type];set=1;category=[category]'>SET</a>\]</b><br>"
+	. += "<b>[name]</b><br><a href='?src=[REF(host)];target=[type];set=1;category=[category]'>Set</a> \[[render_value()]\]<br>"
 	. += "[desc]"
 	return jointext(., "")
 
-#define CANCEL_VALUE "#################____######CANCEL"		//heh
 /datum/variable_setting_entry/proc/prompt_value(mob/user)
-	var/list/vv_return = user.client.vv_get_value(class = value_vv_class, current_value = value)
-	. = vv_return["value"]
-	if((.["class"] != VV_NULL) && isnull(.["value"]))
-		return CANCEL_VALUE
+	switch(value_type)
+		if(VSC_VALUE_NUMBER)
+			return input(user, "Input a number.", "Set Value", value) as num|null
+		if(VSC_VALUE_BOOLEAN)
+			return !value
 
 /datum/variable_setting_entry/proc/OnTopic(href, href_list)
 	if(href_list["set"])
 		var/val = prompt_value(usr)
-		if((isnull(val) && !allow_null) || (val == CANCEL_VALUE))
+		if(isnull(val))
 			return FALSE
 		var/logstr = "[key_name(usr)] set [src]([type]) to [val]."
 		message_admins(logstr)
@@ -66,5 +71,3 @@
 		reset_to_default()
 		return TRUE
 	return FALSE
-
-#undef CANCEL_VALUE
