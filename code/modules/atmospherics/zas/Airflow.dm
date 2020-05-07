@@ -123,7 +123,8 @@ mob/living/carbon/human/airflow_hit(atom/A)
 	if (prob(33))
 		loc:add_blood(src)
 		bloody_body(src)
-	var/b_loss = airflow_speed * vsc.airflow_damage
+	GET_VSC_PRO(atmos_vsc, /atmos/airflow/impact_damage, impact_damage)
+	var/b_loss = airflow_speed * impact_damage
 
 	var/blocked = run_armor_check(BP_HEAD,"melee")
 	var/soaked = get_armor_soak(BP_HEAD,"melee")
@@ -137,11 +138,13 @@ mob/living/carbon/human/airflow_hit(atom/A)
 	soaked = get_armor_soak(BP_GROIN,"melee")
 	apply_damage(b_loss/3, BRUTE, BP_GROIN, blocked, soaked, 0, "Airflow")
 
+	GET_VSC_PROP(atmos_vsc, /atmos/airflow/impact_stun, impact_stun)
+
 	if(airflow_speed > 10)
-		Paralyse(round(airflow_speed * vsc.airflow_stun))
+		Paralyse(round(airflow_speed * vsc.impact_stun))
 		Stun(paralysis + 3)
 	else
-		Stun(round(airflow_speed * vsc.airflow_stun/2))
+		Stun(round(airflow_speed * vsc.impact_stun/2))
 	. = ..()
 
 zone/proc/movables()

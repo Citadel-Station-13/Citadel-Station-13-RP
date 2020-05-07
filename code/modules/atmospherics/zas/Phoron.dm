@@ -116,9 +116,10 @@ obj/var/contaminated = 0
 			Blind(20)
 
 /mob/living/carbon/human/proc/pl_head_protected()
+	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)
 	//Checks if the head is adequately sealed.	//This is just odd. TODO: Make this respect the body_parts_covered stuff like thermal gear does.
 	if(head)
-		if(vsc.plc.PHORONGUARD_ONLY)
+		if(phoronguard_only)
 			if(head.flags & PHORONGUARD)
 				return 1
 		else if(head.body_parts_covered & EYES)

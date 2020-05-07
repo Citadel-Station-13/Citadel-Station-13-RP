@@ -108,7 +108,8 @@ SUBSYSTEM_DEF(airflow)
 	var/tmp/airflow_skip_speedcheck
 
 /atom/movable/proc/prepare_airflow(n)
-	if (!airflow_dest || airflow_speed < 0 || last_airflow > world.time - vsc.airflow_delay)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, retrigger_delay)
+	if (!airflow_dest || airflow_speed < 0 || last_airflow > world.time - retrigger_delay)
 		return FALSE
 	if (airflow_speed)
 		airflow_speed = n / max(get_dist(src, airflow_dest), 1)
