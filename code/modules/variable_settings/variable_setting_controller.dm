@@ -35,7 +35,7 @@
 	var/refresh = FALSE
 	if(href_list["target"])
 		var/path = text2path(href_list["target"])
-		var/datum/variable_setting_entry/E = entries_by_type[E]
+		var/datum/variable_setting_entry/E = entries_by_type[path]
 		refresh = E.OnTopic(href, href_list)
 	else if(href_list["preset"])
 		request_and_set_preset(usr)
@@ -52,7 +52,7 @@
 	if(refresh)
 		ui_interact(usr, category)
 
-/datum/variable_settings_controller/proc/ui_interact(mob/user, category)
+/datum/variable_settings_controller/ui_interact(mob/user, category)
 	if(!(category in entries_by_category))
 		category = entries_by_category[1]
 	var/datum/browser/B = new(user, "vsc_[name]", name, 500, 1000, src)
