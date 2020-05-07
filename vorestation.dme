@@ -66,7 +66,6 @@
 #include "code\__DEFINES\objects.dm"
 #include "code\__DEFINES\parameters_world.dm"
 #include "code\__DEFINES\planets.dm"
-#include "code\__DEFINES\process_scheduler.dm"
 #include "code\__DEFINES\qdel.dm"
 #include "code\__DEFINES\research.dm"
 #include "code\__DEFINES\roguemining_vr.dm"

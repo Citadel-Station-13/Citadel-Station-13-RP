@@ -94,7 +94,7 @@ client/proc/Test_ZAS_Connection(var/turf/simulated/T as turf)
 		else
 			to_chat(mob, "both turfs can merge.")
 
-client/proc/ZASSettings()
+/client/proc/ZASSettings()
 	set category = "Debug"
 
-	vsc.SetDefault(mob)
+	atmos_vsc.request_and_set_preset(mob)
