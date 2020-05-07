@@ -1,3 +1,123 @@
+
+
+/**
+  * Variable settings controller. Sorta like config but not as much as meant to be customized by config as much as adminbus purposes.
+  */
+/datum/variable_settings_controller
+	/// Our user friendly name
+	var/name = "Controller"
+	/// List of entries by type.
+	var/list/entries_by_type = list()
+	/// List of entries by category
+	var/list/entries_by_category = list()
+	/// List of entries followed by default values.
+	var/list/initial_entries = list()
+	/// List of presets followed by a list of entries to set to specific values. Entries not included are not impacted.
+	var/list/presets = list()
+	/// Default entry set name
+	var/initial_preset_name = "RESET TO DEFAULT"
+
+/datum/variable_settings_controller/New()
+	for(var/path in initial_entries)
+		var/datum/variable_setting_entry/E = new path(initial_entries[path])
+		entries_by_type[path] = E
+		LAZYINITLIST(entries_by_category[E.category])
+		entries_by_category[E.category] += E
+
+/datum/variable_settings_controller/Topic(href, href_list)
+	if(..())
+		return
+	if(!check_rights())
+		to_chat(usr, "<span class='boldwarning'>You must be an admin to modify this.</span>")
+		var/logline = "[key_name(usr)] attempted to modify [src] without permissions."
+		message_admins(logline)
+		log_admin(logline)
+		return TRUE
+
+/datum/variable_settings_controller/proc/get_entries()
+	. = list()
+	for(var/path in entries_by_type)
+		. += entries_by_type[path]
+
+/datum/variable_settings_controller/proc/reset_to_default()
+	for(var/datum/variable_setting_entry/E in get_entries())
+		E.reset_to_default()
+
+/datum/variable_settings_controller/proc/get_value(path)
+	var/datum/variable_setting_entry/E = entries_by_type[path]
+	return E.value
+
+/datum/variable_settings_controller/proc/get_datum(path)
+	return entries_by_path[path]
+
+/**
+  * Variable settings entry. There cannot be duplicate entries of the same typepath in a controller.
+  */
+/datum/variable_setting_entry
+	/// User friendly name
+	var/name = "Entry"
+	/// User friendly description
+	var/desc = "A bugged entry!"
+	/// Category
+	var/category = "General"
+	/// Current value
+	var/value
+	/// Initial value
+	var/initial_value
+	/// VV class for the default implementation of prompt_value.
+	var/value_vv_class
+	/// Allow nulls?
+	var/allow_null = FALSE
+
+/datum/variable_setting_entry/New(_value)
+	if(!islist(_value))
+		value = initial_value = _value
+	else
+		value = deepCopyList(_value)
+		initial_value = deepCopyList(_value)
+	// we do not handle datums yet.
+
+/datum/variable_setting_entry/proc/reset_to_default()
+	if(islist(initial_value))
+		value = deepCopyList(initial_value)
+	else
+		value = initial_value
+
+/datum/variable_setting_entry/proc/set_value(newvalue)
+	value = newvalue
+
+/datum/variable_setting_entry/proc/ui_html(datum/variable_settings_controller/host)
+	. = list()
+	. += "<h3>[name]</h3> - <b>\[<a href='?src=[REF(host)];target=[type];set=1'>SET</a>\]</b><br>"
+	. += "[desc]"
+
+/datum/variable_setting_entry/proc/prompt_value(mob/user)
+	var/list/vv_return = user.client.vv_get_value(class = value_vv_class, current_value = value)
+	return vv_return["value"]
+
+/datum/variable_setting_entry/proc/OnTopic(href, href_list)
+	if(href_list["set"])
+		var/val = prompt_value(user)
+		if(isnull(val) && !allow_null)
+			return FALSE
+		set_value(val)
+		return TRUE
+	if(href_list["initial"])
+		reset_to_default()
+		return TRUE
+	return FALSE
+
+GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, new)
+
+/datum/variable_Settings_controller/atmospherics
+	initial_entries = list(
+
+	)
+	presets = list(
+
+	)
+	initial_preset_name = "RESET TO DEFAULT"
+
 var/global/vs_control/vsc = new
 
 /vs_control

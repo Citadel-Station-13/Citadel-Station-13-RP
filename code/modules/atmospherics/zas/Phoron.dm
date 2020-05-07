@@ -102,7 +102,7 @@ obj/var/contaminated = 0
 	if(vsc.plc.SKIN_BURNS && (species.breath_type != "phoron"))
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
-			if(prob(20)) 
+			if(prob(20))
 				to_chat(src, "<span class='danger'>Your skin burns!</span>")
 			updatehealth()
 

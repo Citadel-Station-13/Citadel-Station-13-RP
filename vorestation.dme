@@ -1594,6 +1594,8 @@
 #include "code\modules\atmospherics\components\unary\vent_pump.dm"
 #include "code\modules\atmospherics\components\unary\vent_scrubber.dm"
 #include "code\modules\atmospherics\components\unary\vent_scrubber_vr.dm"
+#include "code\modules\atmospherics\environmental\ZAS_airpass.dm"
+#include "code\modules\atmospherics\environmental\ZAS_turf.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_types.dm"
 #include "code\modules\atmospherics\gasmixtures\immutable_mixtures.dm"
