@@ -51,10 +51,14 @@ obj/var/contaminated = 0
 /mob/proc/pl_effects()
 
 /mob/living/carbon/human/pl_effects()
+	GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination, clothing_contamination)
+	GET_VSC_PROP(atmos_vsc, /atmos/phoron/skin_burns, skin_burns)
+	GET_VSC_PROP(atmos_vsc, /atmos/phoron/eye_burns, eye_burns)
+	GET_VSC_PROP(atmos_vsc, /atmos/phoron/genetic_corruption, genetic_corruption)
 	//Handles all the bad things phoron can do.
 
 	//Contamination
-	if(vsc.plc.CLOTH_CONTAMINATION)
+	if(clothing_contamination)
 		contaminate()
 
 	//Anything else requires them to not be dead.
@@ -62,7 +66,7 @@ obj/var/contaminated = 0
 		return
 
 	//Burn skin if exposed.
-	if(vsc.plc.SKIN_BURNS && (species.breath_type != "phoron"))
+	if(skin_burns && (species.breath_type != "phoron"))
 		if(!pl_head_protected() || !pl_suit_protected())
 			burn_skin(0.75)
 			if(prob(20))
@@ -70,7 +74,7 @@ obj/var/contaminated = 0
 			updatehealth()
 
 	//Burn eyes if exposed.
-	if(vsc.plc.EYE_BURNS && species.breath_type && (species.breath_type != "phoron"))		//VOREStation Edit: those who don't breathe
+	if(eye_burns && species.breath_type && (species.breath_type != "phoron"))		//VOREStation Edit: those who don't breathe
 		var/burn_eyes = 1
 
 		//Check for protective glasses
@@ -94,8 +98,8 @@ obj/var/contaminated = 0
 			burn_eyes()
 
 	//Genetic Corruption
-	if(vsc.plc.GENETIC_CORRUPTION && (species.breath_type != "phoron"))
-		if(rand(1,10000) < vsc.plc.GENETIC_CORRUPTION)
+	if(genetic_corruption && (species.breath_type != "phoron"))
+		if(rand(1,10000) < genetic_corruption)
 			randmutb(src)
 			to_chat(src, "<span class='danger'>High levels of toxins cause you to spontaneously mutate!</span>")
 			domutcheck(src,null)
@@ -122,16 +126,18 @@ obj/var/contaminated = 0
 	return 0
 
 /mob/living/carbon/human/proc/pl_suit_protected()
+	CACHE_VSC_PROP(atmos_vsc, /atmos/phoron/phoronguard_only, phoronguard_only)
+
 	//Checks if the suit is adequately sealed.	//This is just odd. TODO: Make this respect the body_parts_covered stuff like thermal gear does.
 	var/coverage = 0
 	for(var/obj/item/protection in list(wear_suit, gloves, shoes))	//This is why it's odd. If I'm in a full suit, but my shoes and gloves aren't phoron proof, damage.
 		if(!protection)
 			continue
-		if(vsc.plc.PHORONGUARD_ONLY && !(protection.flags & PHORONGUARD))
+		if(phoronguard_only && !(protection.flags & PHORONGUARD))
 			return 0
 		coverage |= protection.body_parts_covered
 
-	if(vsc.plc.PHORONGUARD_ONLY)
+	if(phoronguard_only)
 		return 1
 
 	return BIT_TEST_ALL(coverage, UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS)
