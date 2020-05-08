@@ -16,7 +16,7 @@
 			seed.set_trait(TRAIT_SPREAD,2)             // So it will function properly as vines.
 			seed.set_trait(TRAIT_POTENCY,rand(potency_min, potency_max)) // 70-100 potency will help guarantee a wide spread and powerful effects.
 			seed.set_trait(TRAIT_MATURATION,rand(maturation_min, maturation_max))
-			seed.set_trait(TRAIT_CARNIVOROUS,rand(15, 25)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
+			seed.set_trait(TRAIT_CARNIVOROUS,rand(5, 20)) // VINES WERE A BIT TOO MURDERHAPPY AT 80~100!!
 			seed.display_name = "strange plants" //more thematic for the vine infestation event
 
 			//make vine zero start off fully matured
@@ -119,7 +119,7 @@
 
 	mature_time = world.time + seed.get_trait(TRAIT_MATURATION) + 25 //prevent vines from maturing until at least a few seconds after they've been created.
 	spread_chance = seed.get_trait(TRAIT_POTENCY)
-	spread_distance = ((growth_type>0) ? round(spread_chance*0.925) : round(spread_chance*0.75))
+	spread_distance = ((growth_type>0) ? round(spread_chance*0.72) : round(spread_chance*0.50))
 	update_icon()
 
 // Plants will sometimes be spawned in the turf adjacent to the one they need to end up in, for the sake of correct dir/etc being set.
@@ -172,11 +172,11 @@
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
 		if(TRAIT_POTENCY >= 80 && TRAIT_POTENCY < 85)
-			icon_state = "worms"
-		else if(TRAIT_POTENCY >= 85 && TRAIT_POTENCY < 90)
 			icon_state = "vines-[growth]"
-		else if(TRAIT_POTENCY >= 90 && TRAIT_POTENCY < 95)
+		else if(TRAIT_POTENCY >= 85 && TRAIT_POTENCY < 90)
 			icon_state = "mass-[growth]"
+		else if(TRAIT_POTENCY >= 90 && TRAIT_POTENCY < 95)
+			icon_state = "worms"
 		else
 			icon_state = "mold-[growth]"
 	else
