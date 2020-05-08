@@ -14,6 +14,7 @@
 	var/active_category = null
 	var/menu_tab = 0
 	var/list/expanded_packs = list()
+	authorization = 0
 
 // Supply control console
 /obj/machinery/computer/supplycomp/control
@@ -53,11 +54,6 @@
 	var/pack_list[0]		// List of supply packs within the active_category
 	var/orders[0]
 	var/receipts[0]
-
-	if(!allowed(user))
-		authorization = 0
-	else
-		authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 
 	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
 	if(shuttle)
