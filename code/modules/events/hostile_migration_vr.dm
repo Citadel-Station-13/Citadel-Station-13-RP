@@ -43,15 +43,15 @@
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "the library"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(3 * severity, 5 * severity)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
-			spawncount = rand(2 * severity, 4 * severity)
+			spawncount = rand(3 * severity, 5 * severity)
 		if(LOC_MEDBAY)
 			spawn_area_type = /area/medical
 			locstring = "the medbay"
-			spawncount = rand(3 * severity, 5 * severity)
+			spawncount = rand(4 * severity, 6 * severity)
 		if(LOC_TETHER)
 			spawn_area_type = /area/tether/surfacebase
 			locstring = "tether surface halls"
@@ -84,7 +84,7 @@
 	if(location != 6)
 		command_announcement.Announce("Sensors have located the location of the migration! Lifesigns are nesting in [locstring]!", "Confirmed Migration Alert", new_sound = 'sound/AI/aliens.ogg')
 	else
-		command_announcement.Announce("Sensors have detecte the migration has split in [locstring]! Immediate crew intervention advised.", "Confirmed Migration Alert", new_sound = 'sound/AI/aliens.ogg')
+		command_announcement.Announce("Sensors have detected the migration has split in [locstring]! Immediate crew intervention advised.", "Confirmed Migration Alert", new_sound = 'sound/AI/aliens.ogg')
 
 #undef LOC_KITCHEN
 #undef LOC_SECURITY
