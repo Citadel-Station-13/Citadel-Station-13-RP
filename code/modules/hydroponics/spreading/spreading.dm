@@ -1,7 +1,7 @@
 #define DEFAULT_SEED "glowshroom"
 #define VINE_GROWTH_STAGES 5
 
-/proc/spacevine_infestation(var/potency_min=80, var/potency_max=100, var/maturation_min=5, var/maturation_max=15)
+/proc/spacevine_infestation(var/potency_min=40, var/potency_max=80, var/maturation_min=5, var/maturation_max=15)
 	spawn() //to stop the secrets panel hanging
 		var/list/turf/simulated/floor/turfs = list() //list of all the empty floor turfs in the hallway areas
 		for(var/areapath in typesof(/area/hallway))
@@ -171,11 +171,11 @@
 			max_growth--
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
-		if(TRAIT_POTENCY >= 80 && TRAIT_POTENCY < 85)
+		if(TRAIT_POTENCY >= 40 && TRAIT_POTENCY < 50)
 			icon_state = "vines-[growth]"
-		else if(TRAIT_POTENCY >= 85 && TRAIT_POTENCY < 90)
+		else if(TRAIT_POTENCY >= 50 && TRAIT_POTENCY < 60)
 			icon_state = "mass-[growth]"
-		else if(TRAIT_POTENCY >= 90 && TRAIT_POTENCY < 95)
+		else if(TRAIT_POTENCY >= 60 && TRAIT_POTENCY < 70)
 			icon_state = "worms"
 		else
 			icon_state = "mold-[growth]"
