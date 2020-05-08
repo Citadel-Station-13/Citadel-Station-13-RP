@@ -31,27 +31,27 @@
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
 			locstring = "the kitchen"
-			spawncount = rand(2 * severity, 5 * severity)
+			spawncount = rand(2 * severity, 4 * severity)
 		if(LOC_SECURITY)
 			spawn_area_type = /area/security/
 			locstring = "security"
-			spawncount = rand(8 * severity, 15 * severity)
+			spawncount = rand(5 * severity, 10 * severity)
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "the chapel"
-			spawncount = rand(4 * severity, 8 * severity)
+			spawncount = rand(2 * severity, 4 * severity)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "the library"
-			spawncount = rand(2 * severity, 5 * severity)
+			spawncount = rand(1 * severity, 3 * severity)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
-			spawncount = rand(3 * severity, 6 * severity)
+			spawncount = rand(2 * severity, 4 * severity)
 		if(LOC_MEDBAY)
 			spawn_area_type = /area/medical
 			locstring = "the medbay"
-			spawncount = rand(6 * severity, 9 * severity)
+			spawncount = rand(3 * severity, 5 * severity)
 		if(LOC_TETHER)
 			spawn_area_type = /area/tether/surfacebase
 			locstring = "tether surface halls"
@@ -63,7 +63,7 @@
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(8 * severity, 12 * severity)
+			spawncount = rand(5 * severity, 7 * severity)
 
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
