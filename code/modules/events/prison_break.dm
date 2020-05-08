@@ -28,7 +28,7 @@
 
 /datum/event/prison_break/station
 	eventDept = "Station"
-	areaName = list("Brig","Virology","Xenobiology", "Psychiatric Ward")
+	areaName = list("Brig","Virology","Xenobiology","Psychiatric Ward")
 	areaType = list(/area/security/prison, /area/security/brig, /area/medical/virology, /area/medical/virologyaccess, /area/rnd/xenobiology, /area/medical/psych_ward)
 	areaNotType = list(/area/rnd/xenobiology/xenoflora, /area/rnd/xenobiology/xenoflora_storage)
 
