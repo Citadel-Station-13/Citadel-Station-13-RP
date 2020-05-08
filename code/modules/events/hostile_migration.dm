@@ -8,8 +8,6 @@
 #define LOC_TECH 7
 #define LOC_RESEARCH 8
 
-/var/global/sent_rats_to_station = 0
-
 /datum/event/hostile_migration
 	announceWhen = 2
 	endWhen = 50
