@@ -80,7 +80,8 @@
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Xenobiology Breach",		/datum/event/prison_break/xenobiology,	0,		list(ASSIGNMENT_SCIENCE = 100), 1),
 		//Evil grubs that drain station power slightly
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Grub Infestation",			/datum/event/grub_infestation,			0,		list(ASSIGNMENT_SECURITY = 10, ASSIGNMENT_ENGINEER = 30), 1),
-		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Rat Migration",			/datum/event/hostile_migration,			50,		list(ASSIGNMENT_SECURITY = 10, ASSIGNMENT_ENGINEER = 30), 1),
+		//Angry rats that are going to cause a bad day to nearby crew
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Rat Migration",			/datum/event/hostile_migration,			50,		list(ASSIGNMENT_SECURITY = 30, ASSIGNMENT_ENGINEER = 10), 1),
 	)
 	add_disabled_events(list(
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Appendicitis", 			/datum/event/spontaneous_appendicitis, 	0,		list(ASSIGNMENT_MEDICAL = 30), 1),

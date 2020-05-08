@@ -15,7 +15,6 @@
 	var/locstring
 	var/spawncount = 1
 
-
 /datum/event/hostile_migration/setup()
 	announceWhen = rand(announceWhen, announceWhen + 15)
 	startWhen = announceWhen + 5
@@ -86,6 +85,7 @@
 		command_announcement.Announce("Sensors have located the location of the migration! Lifesigns are nesting in [locstring]!", "Confirmed Migration Alert", new_sound = 'sound/AI/aliens.ogg')
 	else
 		command_announcement.Announce("Sensors have detecte the migration has split in [locstring]! Immediate crew intervention advised.", "Confirmed Migration Alert", new_sound = 'sound/AI/aliens.ogg')
+
 #undef LOC_KITCHEN
 #undef LOC_SECURITY
 #undef LOC_CHAPEL
