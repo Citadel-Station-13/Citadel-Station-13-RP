@@ -19415,6 +19415,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"YO" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/wood,
+/area/rnd/breakroom)
 "YP" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -28547,7 +28552,11 @@ ql
 qG
 rn
 rn
+<<<<<<< HEAD
 ZX
+=======
+YO
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 rn
 qH
 tm

@@ -3125,6 +3125,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"eU" = (
+/obj/structure/stairs/north,
+/turf/simulated/floor/airless,
+/area/medical/psych_ward)
 "fc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3961,6 +3965,16 @@
 	},
 /turf/simulated/floor,
 /area/security/interrogation)
+"hb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "hc" = (
 /obj/structure/cable/pink{
 	icon_state = "1-2"
@@ -4352,6 +4366,18 @@
 "hQ" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/foyer_mezzenine)
+"hT" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/dicecup{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/storage/pill_bottle/dice_nerd{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "hU" = (
 /obj/structure/stairs/west,
 /turf/simulated/floor/tiled,
@@ -4417,19 +4443,35 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
 "ib" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
+=======
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/bed/chair/sofa/left,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "ic" = (
 /obj/structure/table/standard,
+<<<<<<< HEAD
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
 	},
 /obj/item/pen,
+=======
+/obj/item/storage/box/donkpockets,
+/obj/machinery/light,
+/obj/machinery/alarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -22
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "id" = (
@@ -4717,10 +4759,19 @@
 /turf/simulated/floor/carpet,
 /area/chapel/main)
 "iP" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
+=======
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner{
+	dir = 8
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "iQ" = (
@@ -5037,16 +5088,27 @@
 "jt" = (
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_office)
+<<<<<<< HEAD
 "ju" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/fancy/crayons,
 /obj/item/storage/pill_bottle/dice,
+=======
+"jv" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/bed/chair/sofa/right,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "jx" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/vacant/vacant_office)
+"jy" = (
+/obj/structure/stairs/east,
+/turf/simulated/floor/airless,
+/area/medical/psych_ward)
 "jA" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -5251,6 +5313,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/sec_lower)
+"jV" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/bed/chair/sofa,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "jX" = (
 /turf/simulated/wall/r_wall,
 /area/ai_server_room)
@@ -5456,6 +5527,23 @@
 	},
 /turf/simulated/floor,
 /area/vacant/vacant_office)
+"kE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/airless,
+/area/mine/explored/upper_level)
 "kF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
@@ -11754,6 +11842,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"vb" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "vc" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/gloves{
@@ -16856,6 +16950,20 @@
 /obj/structure/closet/wardrobe/orange,
 /turf/simulated/floor/tiled/dark,
 /area/security/recstorage)
+"Du" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Dy" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -16874,10 +16982,34 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "DD" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/corner/white/border{
 	dir = 6
 	},
 /turf/simulated/floor/grass,
+=======
+/obj/machinery/shower{
+	dir = 4;
+	icon_state = "shower";
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/simulated/floor/tiled/white,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "DF" = (
 /turf/simulated/floor/tiled,
@@ -16915,6 +17047,7 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "Ec" = (
 /obj/machinery/camera/network/medbay{
 	c_tag = "MED - Rec Room 1";
@@ -16938,6 +17071,24 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 10
 	},
+=======
+"DY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Eb" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/bed/chair/sofa,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Ej" = (
@@ -17076,6 +17227,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
+<<<<<<< HEAD
 "EO" = (
 /obj/effect/floor_decal/corner/white/border{
 	dir = 8
@@ -17110,6 +17262,32 @@
 "EU" = (
 /obj/effect/floor_decal/borderfloorwhite/corner,
 /obj/effect/floor_decal/corner/brown/bordercorner,
+=======
+"EL" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/machinery/computer/arcade/battle,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"EV" = (
+/obj/structure/table/woodentable,
+/obj/item/deck/cards,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"EX" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medbreak)
+"EY" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "EZ" = (
@@ -17168,6 +17346,7 @@
 	},
 /turf/simulated/floor,
 /area/security/interrogation)
+<<<<<<< HEAD
 "Fl" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
@@ -17182,6 +17361,21 @@
 	name = "Staff Access"
 	},
 /turf/simulated/floor/tiled/white,
+=======
+"Fm" = (
+/obj/machinery/libraryscanner,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Fp" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "Fq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17262,6 +17456,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"FB" = (
+/obj/structure/sign/nosmoking_2,
+/turf/simulated/wall/r_wall,
+/area/medical/psych_ward)
 "FC" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -17345,24 +17543,76 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
+"Gi" = (
+/turf/simulated/floor/grass,
+/area/medical/psych_ward)
+"Gn" = (
+/obj/machinery/button/remote/blast_door{
+	id = "yard_riot";
+	name = "Emergency Lockdown";
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Go" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
+<<<<<<< HEAD
 "Gu" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+=======
+"Gt" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medbreak)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Gw" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+"Gx" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 4
+	},
+/obj/machinery/computer/arcade/orion_trail,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "GG" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/security/brig)
+"GL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/wall/r_wall,
+/area/medical/psych_ward)
+"GM" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "GV" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -17441,6 +17691,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
+"Hs" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Hx" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -17464,6 +17721,10 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
+"HC" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "HH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -17498,6 +17759,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"HN" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "HP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -17508,6 +17787,7 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "HR" = (
 /obj/structure/table/standard,
 /obj/machinery/librarypubliccomp,
@@ -17518,12 +17798,53 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+=======
+"HT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/r_wall,
+/area/medical/psych_ward)
+"Ia" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/airless,
+/area/mine/explored/upper_level)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Ik" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"In" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/airless,
+/area/mine/explored/upper_level)
 "Ip" = (
 /turf/simulated/mineral/vacuum,
 /area/chapel/office)
@@ -17558,6 +17879,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"IA" = (
+/obj/machinery/alarm{
+	breach_detection = 0;
+	dir = 8;
+	pixel_x = 25;
+	pixel_y = 0;
+	report_danger_level = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "IB" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -17566,6 +17897,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
+<<<<<<< HEAD
 "ID" = (
 /obj/effect/floor_decal/corner/white/border{
 	dir = 1
@@ -17579,6 +17911,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/grass,
+=======
+"IC" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/white,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "IG" = (
 /obj/machinery/firealarm{
@@ -17603,12 +17940,30 @@
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/airless,
 /area/space)
+<<<<<<< HEAD
 "IQ" = (
 /obj/machinery/libraryscanner,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "IR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+=======
+"IP" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "IX" = (
@@ -17669,11 +18024,16 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/engineering/shaft)
+<<<<<<< HEAD
 "Jo" = (
 /obj/machinery/camera/network/medbay{
 	c_tag = "MED - Emergency Staging 1";
 	dir = 4
 	},
+=======
+"Jn" = (
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Jp" = (
@@ -17783,6 +18143,7 @@
 /obj/structure/table/steel,
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+<<<<<<< HEAD
 "JU" = (
 /obj/structure/sign/nosmoking_2,
 /turf/simulated/wall/r_wall,
@@ -17795,6 +18156,52 @@
 /area/medical/psych_ward)
 "Kf" = (
 /obj/structure/bed/chair,
+=======
+"JO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/airless,
+/area/mine/explored/upper_level)
+"Kb" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Kd" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Psych Observation"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "yard_riot 2";
+	name = "Riot Control";
+	pixel_y = 30
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Kg" = (
@@ -17804,6 +18211,7 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "Kj" = (
 /obj/machinery/light{
 	dir = 1
@@ -17821,6 +18229,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
+=======
+"Kr" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Kv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -17829,6 +18244,7 @@
 /obj/item/beach_ball/holoball,
 /turf/simulated/floor/tiled/dark,
 /area/security/recstorage)
+<<<<<<< HEAD
 "KC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -17838,9 +18254,47 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/medical/psych_ward)
+=======
+"Kz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/airless,
+/area/mine/explored/upper_level)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "KG" = (
 /turf/simulated/mineral/floor/cave,
 /area/maintenance/station/sec_lower)
+"KH" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "KI" = (
 /turf/simulated/wall,
 /area/tether/station/public_meeting_room)
@@ -18055,6 +18509,13 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
+"LO" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/table/standard,
+/obj/item/clipboard,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "LQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18090,6 +18551,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/airless,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "LY" = (
 /obj/machinery/shower{
 	dir = 8;
@@ -18111,6 +18573,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
+=======
+"Mb" = (
+/turf/simulated/floor/airless,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "Me" = (
 /obj/effect/floor_decal/techfloor,
@@ -18120,6 +18586,7 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+<<<<<<< HEAD
 "Mh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -18138,6 +18605,13 @@
 	},
 /turf/simulated/floor/airless,
 /area/mine/explored/upper_level)
+=======
+"Mk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Mn" = (
 /obj/structure/table/steel,
 /turf/simulated/floor,
@@ -18177,9 +18651,23 @@
 /obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "Mz" = (
 /obj/structure/table/woodentable,
 /obj/item/deck/cards,
+=======
+"My" = (
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Rec Room 1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"MB" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/fancy/crayons,
+/obj/item/storage/pill_bottle/dice,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "MC" = (
@@ -18195,6 +18683,7 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "MM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -18212,6 +18701,13 @@
 	name = "Riot Control";
 	pixel_y = 30
 	},
+=======
+"ML" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/vending/fitness,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "MN" = (
@@ -18225,9 +18721,17 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "MQ" = (
 /obj/machinery/bookbinder,
 /turf/simulated/floor/tiled/white,
+=======
+"MS" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 6
+	},
+/turf/simulated/floor/grass,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "MT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18283,6 +18787,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+<<<<<<< HEAD
 "Nd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -18302,6 +18807,20 @@
 	},
 /turf/simulated/floor/airless,
 /area/mine/explored/upper_level)
+=======
+"Nf" = (
+/obj/machinery/door/blast/regular{
+	dir = 1;
+	id = "psych cell 1";
+	name = "Yard Access"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Ng" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;
@@ -18384,6 +18903,7 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "NB" = (
 /obj/structure/railing{
 	dir = 8
@@ -18408,6 +18928,21 @@
 	opacity = 0
 	},
 /turf/simulated/floor/plating,
+=======
+"NI" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/white/border,
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/white/border{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "NJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18431,6 +18966,7 @@
 /turf/space,
 /area/space)
 "NT" = (
+<<<<<<< HEAD
 /obj/structure/stairs/east,
 /turf/simulated/floor/airless,
 /area/medical/psych_ward)
@@ -18449,6 +18985,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/medbreak)
+=======
+/obj/structure/table/standard,
+/obj/item/storage/box/syringes,
+/obj/item/reagent_containers/glass/bottle/chloralhydrate,
+/obj/item/reagent_containers/glass/bottle/chloralhydrate{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "NY" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -18503,6 +19051,7 @@
 	},
 /turf/simulated/floor,
 /area/security/interrogation)
+<<<<<<< HEAD
 "Oh" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -18510,6 +19059,13 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
+=======
+"Og" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Oj" = (
@@ -18533,6 +19089,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/brig)
+"Oq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Or" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
@@ -18553,6 +19113,18 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"OE" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "OI" = (
 /obj/structure/closet{
 	name = "Prisoner's Locker"
@@ -18581,6 +19153,17 @@
 "OQ" = (
 /turf/simulated/mineral/vacuum,
 /area/maintenance/evahallway)
+"OR" = (
+/obj/structure/stairs/west,
+/turf/simulated/floor/airless,
+/area/medical/psych_ward)
+"OU" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "OY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -18591,6 +19174,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"OZ" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/bed/chair/sofa,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Pd" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
@@ -18633,6 +19222,18 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
+"Pk" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/table/standard,
+/obj/item/pizzabox/meat,
+/obj/item/reagent_containers/food/snacks/popcorn,
+/obj/item/reagent_containers/food/snacks/popcorn{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Pl" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18651,10 +19252,21 @@
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "Pv" = (
+<<<<<<< HEAD
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 1
 	},
+=======
+/obj/effect/floor_decal/corner/white/border{
+	dir = 8
+	},
+/turf/simulated/floor/grass,
+/area/medical/psych_ward)
+"Px" = (
+/obj/structure/table/standard,
+/obj/machinery/light,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Py" = (
@@ -18663,6 +19275,21 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"Pz" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "PA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
@@ -18803,12 +19430,37 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "Qd" = (
 /turf/simulated/wall/r_wall,
 /area/medical/psych_ward)
 "Qi" = (
 /obj/structure/bed/chair{
 	dir = 8
+=======
+"Qh" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Qi" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_medical{
+	name = "Staff Access"
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -18872,6 +19524,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+<<<<<<< HEAD
 "Qz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -18896,6 +19549,27 @@
 /obj/item/reagent_containers/food/snacks/popcorn{
 	pixel_x = 10;
 	pixel_y = 5
+=======
+"QA" = (
+/obj/machinery/shower{
+	dir = 8;
+	icon_state = "shower";
+	pixel_x = -5;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/structure/bed/chair{
+	dir = 1
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -18954,6 +19628,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
+<<<<<<< HEAD
 "QI" = (
 /obj/machinery/door/blast/regular{
 	dir = 1;
@@ -18965,6 +19640,13 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
+=======
+"QK" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 9
+	},
+/turf/simulated/floor/grass,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "QN" = (
 /obj/structure/closet,
@@ -19015,6 +19697,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "QT" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -19023,6 +19706,18 @@
 /obj/structure/bed/chair/sofa,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+=======
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medbreak)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "QW" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19094,6 +19789,18 @@
 /obj/item/frame/apc,
 /turf/simulated/floor,
 /area/vacant/vacant_office)
+"Rm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/table/standard,
+/obj/machinery/button/windowtint{
+	id = "wardobv";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Rq" = (
 /obj/structure/sign/electricshock,
 /turf/simulated/wall/r_wall,
@@ -19105,11 +19812,23 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "Rz" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/machinery/vending/snack,
+=======
+"Rt" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/structure/table/standard,
+/obj/machinery/microwave,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "RA" = (
@@ -19198,6 +19917,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+<<<<<<< HEAD
 "RZ" = (
 /obj/structure/railing{
 	icon_state = "railing0";
@@ -19205,6 +19925,12 @@
 	},
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/tiled/white,
+=======
+"RY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/wall/r_wall,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "Sb" = (
 /obj/effect/floor_decal/borderfloor{
@@ -19227,12 +19953,17 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "Sh" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/brown/border,
 /obj/structure/bed/chair/sofa,
+=======
+/obj/effect/floor_decal/borderfloorwhite/corner,
+/obj/effect/floor_decal/corner/brown/bordercorner,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Si" = (
@@ -19286,6 +20017,13 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+"Sw" = (
+/obj/machinery/door/airlock/glass_medical{
+	name = "Staff Access"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Sy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19352,11 +20090,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
 /area/maintenance/station/sec_lower)
+"SZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Ta" = (
 /obj/structure/table/steel,
 /obj/random/action_figure,
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+"Te" = (
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Emergency Staging 1";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Tf" = (
 /obj/structure/table/steel,
 /obj/random/maintenance/clean,
@@ -19416,6 +20165,16 @@
 /obj/item/surgical/cautery,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"Tu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Tw" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small{
@@ -19438,11 +20197,26 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+<<<<<<< HEAD
 "TL" = (
 /obj/machinery/camera/network/medbay{
 	c_tag = "MED - Rec Room 2";
 	dir = 8
 	},
+=======
+"TF" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"TJ" = (
+/obj/structure/table/standard,
+/obj/machinery/librarypubliccomp,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "TO" = (
@@ -19456,6 +20230,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/public_meeting_room)
+<<<<<<< HEAD
 "TT" = (
 /obj/machinery/shower{
 	dir = 4;
@@ -19477,6 +20252,27 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/vomit,
+=======
+"TU" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "TW" = (
@@ -19497,6 +20293,10 @@
 "TY" = (
 /turf/simulated/wall/r_wall,
 /area/security/riot_control)
+"Ud" = (
+/obj/structure/closet/crate/bin,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Uf" = (
 /obj/structure/railing{
 	dir = 8
@@ -19509,6 +20309,22 @@
 /obj/random/junk,
 /turf/simulated/mineral/floor/cave,
 /area/maintenance/station/sec_lower)
+"Uh" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Ui" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -19606,6 +20422,21 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+"UC" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "UE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -19626,6 +20457,53 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"UK" = (
+/obj/effect/floor_decal/corner/white/border{
+	icon_state = "bordercolor";
+	dir = 4
+	},
+/turf/simulated/floor/grass,
+/area/medical/psych_ward)
+"UM" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "wardobv"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/medical/psych_ward)
+"UN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/structure/table/standard,
+/obj/item/reagent_containers/food/drinks/metaglass,
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/drinks/metaglass{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/food/drinks/metaglass,
+/obj/item/reagent_containers/food/drinks/shaker,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "UO" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/techfloor{
@@ -19696,6 +20574,29 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/maintenance/evahallway)
+"UZ" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 4
+	},
+/obj/machinery/computer/arcade,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vh" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/medbreak)
 "Vj" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/techfloor{
@@ -19729,6 +20630,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
+<<<<<<< HEAD
 "Vn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/dirt,
@@ -19739,6 +20641,24 @@
 /obj/effect/floor_decal/corner/brown/border,
 /obj/structure/bed/chair/sofa/right,
 /turf/simulated/floor/tiled/white,
+=======
+"Vo" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/wall/r_wall,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "Vw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19753,6 +20673,30 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
+"Vz" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/structure/table/standard,
+/obj/machinery/chemical_dispenser/bar_alc/full{
+	icon_state = "booze_dispenser";
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "VA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Public Meeting Room"
@@ -19878,6 +20822,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"VZ" = (
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Emergency Staging 2";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Wa" = (
+/turf/simulated/wall/r_wall,
+/area/medical/psych_ward)
+"Wf" = (
+/obj/structure/railing{
+	icon_state = "railing0";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Wi" = (
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -19943,6 +20907,40 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled,
+/area/security/security_cell_hallway)
+"Ws" = (
+/obj/machinery/door/blast/regular{
+	dir = 1;
+	id = "psych cell 1";
+	name = "Yard Access"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Ww" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor,
+/area/maintenance/station/sec_lower)
+"Wx" = (
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -20016,6 +21014,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
+<<<<<<< HEAD
 "WV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -20025,6 +21024,30 @@
 	},
 /obj/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
+=======
+"WT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "wardobv"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/medical/psych_ward)
+"WU" = (
+/obj/structure/table/standard,
+/obj/machinery/microwave,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Xc" = (
@@ -20035,6 +21058,22 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/maintenance/station/sec_lower)
+"Xf" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Xi" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Xk" = (
 /obj/structure/table/steel,
 /obj/item/flashlight/lamp{
@@ -20043,10 +21082,19 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "Xm" = (
+<<<<<<< HEAD
 /obj/machinery/door/airlock/glass_medical{
 	name = "Staff Access"
 	},
 /obj/machinery/door/firedoor/glass,
+=======
+/obj/machinery/alarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22;
+	pixel_y = 0
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Xp" = (
@@ -20179,6 +21227,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"XP" = (
+/obj/machinery/bookbinder,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "XR" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -20292,6 +21344,17 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
 /area/maintenance/station/sec_lower)
+"Yn" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Yq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/firedoor/glass,
@@ -20340,10 +21403,16 @@
 "Yw" = (
 /turf/simulated/floor/airless,
 /area/mine/explored/upper_level)
+<<<<<<< HEAD
 "YA" = (
 /obj/effect/floor_decal/corner/white/border{
 	icon_state = "bordercolor";
 	dir = 4
+=======
+"YC" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 10
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
@@ -20388,6 +21457,18 @@
 	},
 /turf/simulated/floor,
 /area/vacant/vacant_office)
+"YI" = (
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YJ" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	light_range = 12
+	},
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "YK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -20414,6 +21495,7 @@
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
+<<<<<<< HEAD
 "YO" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
@@ -20425,6 +21507,30 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+=======
+"YP" = (
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YR" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/medbreak)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "YU" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash_pile,
@@ -20473,11 +21579,32 @@
 "Zo" = (
 /turf/simulated/floor/plating,
 /area/mine/explored/upper_level)
+<<<<<<< HEAD
 "Zp" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
+=======
+"Zq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "wardobv"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "Zr" = (
 /obj/effect/floor_decal/rust,
@@ -20529,6 +21656,7 @@
 "Zy" = (
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
+<<<<<<< HEAD
 "ZC" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20544,11 +21672,26 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
+=======
+"Zz" = (
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Rec Room 2";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "ZE" = (
 /obj/structure/table/steel,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"ZF" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 5
+	},
+/turf/simulated/floor/grass,
+/area/medical/psych_ward)
 "ZH" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -27588,6 +28731,7 @@ aa
 aa
 aa
 eM
+<<<<<<< HEAD
 Qd
 Qd
 Qd
@@ -27596,6 +28740,16 @@ Qd
 Qd
 Qd
 Qd
+=======
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 eM
 eM
 eM
@@ -27730,6 +28884,7 @@ aa
 aa
 eM
 eM
+<<<<<<< HEAD
 Qd
 Kj
 Ez
@@ -27738,6 +28893,16 @@ ZS
 Jo
 YO
 Qd
+=======
+Wa
+hb
+YI
+Xm
+Jn
+Te
+NT
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 eM
@@ -27870,6 +29035,7 @@ aa
 aa
 aa
 eM
+<<<<<<< HEAD
 Qd
 Qd
 Qd
@@ -27880,6 +29046,18 @@ Qd
 VI
 LY
 Qd
+=======
+Wa
+Wa
+Wa
+Sw
+Wa
+Wa
+Wa
+Gn
+QA
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 eM
 eM
 eM
@@ -28012,6 +29190,7 @@ aa
 eM
 eM
 eM
+<<<<<<< HEAD
 Qd
 ZO
 Ef
@@ -28027,6 +29206,23 @@ Qd
 Qd
 Qd
 Qd
+=======
+Wa
+IP
+HN
+Kb
+TU
+Wa
+Wa
+Nf
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 eM
 eM
@@ -28154,6 +29350,7 @@ eM
 aP
 aP
 aP
+<<<<<<< HEAD
 Qd
 VM
 iP
@@ -28170,6 +29367,24 @@ Ec
 fg
 Qd
 Qd
+=======
+Wa
+Uh
+YP
+YI
+iP
+UC
+Wa
+Qi
+Wa
+eU
+Mb
+GM
+My
+Ud
+Wa
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 eM
@@ -28296,6 +29511,7 @@ aP
 aP
 aP
 aP
+<<<<<<< HEAD
 Qd
 Zg
 Zg
@@ -28312,6 +29528,24 @@ Ez
 Ez
 HY
 Qd
+=======
+Wa
+Mb
+Mb
+Hs
+YI
+LO
+UM
+Kb
+YJ
+ML
+Xi
+YI
+YI
+YI
+WU
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 eM
 eM
@@ -28438,6 +29672,7 @@ aP
 aP
 aP
 aP
+<<<<<<< HEAD
 Qd
 NT
 NT
@@ -28454,6 +29689,24 @@ ZS
 ZS
 ZT
 Qd
+=======
+Wa
+jy
+jy
+Wf
+Oq
+Rm
+Zq
+Oq
+Oq
+Oq
+Oq
+Og
+Jn
+Jn
+ic
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 eM
 eM
 aa
@@ -28580,6 +29833,7 @@ aP
 aP
 aP
 aP
+<<<<<<< HEAD
 Qd
 Qd
 Qd
@@ -28596,6 +29850,24 @@ Ez
 Ez
 Pe
 Qd
+=======
+Wa
+Wa
+Wa
+Tu
+YI
+jv
+UM
+ZF
+UK
+MS
+YI
+YI
+YI
+YI
+Kr
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 eM
 aa
@@ -28722,6 +29994,7 @@ aP
 aP
 aP
 aP
+<<<<<<< HEAD
 Qd
 iL
 Qz
@@ -28738,6 +30011,24 @@ Gu
 Ez
 IQ
 Qd
+=======
+Wa
+GL
+RY
+Yn
+Oq
+jV
+UM
+Gi
+Gi
+Gi
+EY
+YI
+EY
+YI
+Fm
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 eM
 aa
 aa
@@ -28860,6 +30151,7 @@ AU
 ac
 ac
 aP
+<<<<<<< HEAD
 ff
 Sj
 Sj
@@ -28880,6 +30172,28 @@ Mz
 Jt
 JU
 Qd
+=======
+Kz
+In
+In
+In
+In
+Ia
+Wa
+Du
+YI
+OZ
+UM
+Fp
+NI
+Fp
+hT
+MB
+EV
+HC
+FB
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 eM
 aa
 aa
@@ -29002,6 +30316,7 @@ AU
 ac
 ac
 aP
+<<<<<<< HEAD
 ZV
 aP
 aP
@@ -29022,6 +30337,28 @@ Qi
 Ez
 MQ
 Qd
+=======
+kE
+aP
+aP
+aP
+Wa
+Vq
+HT
+Kd
+SZ
+Eb
+UM
+Gi
+Gi
+Gi
+vb
+YI
+vb
+YI
+XP
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 eM
 aa
 aa
@@ -29144,6 +30481,7 @@ AG
 AG
 AG
 aP
+<<<<<<< HEAD
 ZV
 aP
 aP
@@ -29164,6 +30502,28 @@ Ez
 Ez
 ic
 Qd
+=======
+kE
+aP
+aP
+aP
+Wa
+Wa
+Wa
+DY
+YI
+ib
+UM
+QK
+Pv
+YC
+Jn
+YI
+YI
+YI
+Wx
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -29286,6 +30646,7 @@ CP
 Dd
 Di
 aP
+<<<<<<< HEAD
 ZV
 aP
 aP
@@ -29306,6 +30667,28 @@ Ez
 Kf
 KW
 Qd
+=======
+kE
+aP
+aP
+aP
+Wa
+OR
+OR
+Qh
+SZ
+UN
+WT
+SZ
+Mk
+Mk
+SZ
+Vo
+YI
+IC
+Px
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -29423,6 +30806,7 @@ Bo
 BE
 BP
 Ch
+<<<<<<< HEAD
 WA
 WA
 ZC
@@ -29448,6 +30832,33 @@ Ez
 Ez
 HR
 Qd
+=======
+Gt
+Gt
+YR
+Vh
+In
+JO
+aP
+aP
+aP
+Wa
+Mb
+Mb
+Hs
+YI
+Pk
+UM
+OU
+EL
+Gx
+UZ
+YI
+YI
+YI
+TJ
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -29567,13 +30978,18 @@ BQ
 Ci
 CE
 CQ
+<<<<<<< HEAD
 Kk
+=======
+EX
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 Di
 aP
 aP
 aP
 aP
 ac
+<<<<<<< HEAD
 Qd
 Jr
 VB
@@ -29590,6 +31006,24 @@ TL
 Ez
 Qd
 Qd
+=======
+Wa
+KH
+Xf
+YI
+Sh
+Rt
+Wa
+Qi
+Wa
+eU
+Mb
+GM
+Zz
+YI
+Wa
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -29716,6 +31150,7 @@ aP
 aP
 ac
 ac
+<<<<<<< HEAD
 Qd
 Oh
 Hj
@@ -29731,6 +31166,23 @@ Qd
 Qd
 Qd
 Qd
+=======
+Wa
+TF
+Pz
+OU
+Vz
+Wa
+Wa
+Ws
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -29858,6 +31310,7 @@ aP
 aP
 ac
 ac
+<<<<<<< HEAD
 Qd
 Qd
 Qd
@@ -29868,6 +31321,18 @@ Qd
 VI
 TT
 Qd
+=======
+Wa
+Wa
+Wa
+Sw
+Wa
+Wa
+Wa
+Gn
+DD
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -29993,7 +31458,11 @@ BT
 Cl
 CH
 CT
+<<<<<<< HEAD
 Kk
+=======
+EX
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 Di
 aP
 aP
@@ -30002,6 +31471,7 @@ ac
 ac
 ac
 ac
+<<<<<<< HEAD
 Qd
 Uw
 Ez
@@ -30010,6 +31480,16 @@ Ez
 IJ
 YO
 Qd
+=======
+Wa
+OE
+YI
+IA
+YI
+VZ
+NT
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -30135,7 +31615,11 @@ BI
 BI
 CI
 CU
+<<<<<<< HEAD
 QO
+=======
+QT
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 Di
 aP
 aP
@@ -30144,6 +31628,7 @@ ac
 ac
 ac
 ac
+<<<<<<< HEAD
 Qd
 Qd
 Qd
@@ -30152,6 +31637,16 @@ Qd
 Qd
 Qd
 Qd
+=======
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+Wa
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa

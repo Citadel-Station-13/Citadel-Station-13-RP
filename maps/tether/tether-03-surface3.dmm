@@ -15344,6 +15344,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atrium)
+"Ay" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/carpet/blue,
+/area/tether/surfacebase/security/breakroom)
 "Az" = (
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -34901,7 +34906,11 @@ ac
 bl
 bS
 cG
+<<<<<<< HEAD
 Zv
+=======
+Ay
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 dY
 eA
 fs

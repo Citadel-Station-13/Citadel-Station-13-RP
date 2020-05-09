@@ -27665,6 +27665,7 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
+<<<<<<< HEAD
 "RM" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
@@ -27690,11 +27691,53 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "RS" = (
+=======
+"RD" = (
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"RF" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	dir = 1;
+	id = "psych cell 2";
+	name = "Yard Access"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"RG" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Padded Room"
+	},
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"RN" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/structure/disposalpipe/segment{
@@ -27704,6 +27747,19 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"RP" = (
+/obj/structure/sign/warning/nosmoking_1,
+/turf/simulated/wall/r_wall,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "RU" = (
 /obj/machinery/suit_cycler/headofsecurity,
 /turf/simulated/floor/wood,
@@ -27747,6 +27803,7 @@
 /area/security/eva)
 "Sb" = (
 /obj/effect/floor_decal/borderfloorwhite{
+<<<<<<< HEAD
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/brown/border{
@@ -27817,6 +27874,60 @@
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
+=======
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Sf" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/structure/bed,
+/obj/machinery/flasher{
+	id = "psych flash 2";
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Sl" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"So" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -27832,12 +27943,17 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+<<<<<<< HEAD
 "Sr" = (
+=======
+"Sx" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -27862,6 +27978,29 @@
 /obj/machinery/flasher{
 	id = "psych flash 1";
 	pixel_y = 25
+=======
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"SB" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/obj/structure/closet/secure_closet/brig{
+	name = "inmate locker"
+	},
+/obj/machinery/light{
+	dir = 1
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -27872,6 +28011,7 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
+<<<<<<< HEAD
 "SI" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -27939,27 +28079,14 @@
 /obj/machinery/door/blast/regular{
 	dir = 1;
 	id = "psych cell 2";
-	name = "Yard Access"
+=======
+"SP" = (
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/open,
 /area/medical/psych_ward)
-"Tp" = (
-/obj/effect/floor_decal/borderfloorwhite{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 5
-	},
-/obj/item/book{
-	author = "Asylum Inmate";
-	dat = "<html>\n\t\t\t\t<head>\n\t\t\t\t<style>\n\t\t\t\th1 {font-size: 18px; margin: 15px 0px 5px;}\n\t\t\t\th2 {font-size: 15px; margin: 15px 0px 5px;}\n\t\t\t\tli {margin: 2px 0px 2px 15px;}\n\t\t\t\tul {margin: 5px; padding: 0px;}\n\t\t\t\tol {margin: 5px; padding: 0px 15px;}\n\t\t\t\tbody {font-size: 13px; font-family: Verdana;}\n\t\t\t\t</style>\n\t\t\t\t</head>\n\t\t\t\t<body>\n\t\t\t\t<br>\n\t\t\t\tThe pages of this book are covered in row upon row of the same phrase written over and over. The size and quality of the lettering varies, but there's no doubt\n\t\t\t\tthat the author's blood was used instead of ink. The penmanship steadily degrades as the journal continues, until the writing becomes ultimately unintelligible:\n\t\t\t\t'She says I'm getting better.'\n\t\t\t\t</body>\n\t\t\t</html>";
-	name = "Forgotten Journal"
-	},
-/obj/structure/table/standard,
-/obj/structure/plushie/beepsky,
-/turf/simulated/floor/tiled/white,
-/area/medical/psych_ward)
-"Tx" = (
+"SR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -27977,6 +28104,133 @@
 	},
 /obj/machinery/door/airlock/glass_medical{
 	name = "Inmate Cell 1"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"SV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"SW" = (
+/turf/simulated/mineral/vacuum,
+/area/space)
+"Tc" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	dir = 1;
+	id = "psych cell 1";
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
+	name = "Yard Access"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+<<<<<<< HEAD
+"Tp" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/obj/item/book{
+	author = "Asylum Inmate";
+	dat = "<html>\n\t\t\t\t<head>\n\t\t\t\t<style>\n\t\t\t\th1 {font-size: 18px; margin: 15px 0px 5px;}\n\t\t\t\th2 {font-size: 15px; margin: 15px 0px 5px;}\n\t\t\t\tli {margin: 2px 0px 2px 15px;}\n\t\t\t\tul {margin: 5px; padding: 0px;}\n\t\t\t\tol {margin: 5px; padding: 0px 15px;}\n\t\t\t\tbody {font-size: 13px; font-family: Verdana;}\n\t\t\t\t</style>\n\t\t\t\t</head>\n\t\t\t\t<body>\n\t\t\t\t<br>\n\t\t\t\tThe pages of this book are covered in row upon row of the same phrase written over and over. The size and quality of the lettering varies, but there's no doubt\n\t\t\t\tthat the author's blood was used instead of ink. The penmanship steadily degrades as the journal continues, until the writing becomes ultimately unintelligible:\n\t\t\t\t'She says I'm getting better.'\n\t\t\t\t</body>\n\t\t\t</html>";
+	name = "Forgotten Journal"
+	},
+/obj/structure/table/standard,
+/obj/structure/plushie/beepsky,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Tx" = (
+=======
+"Te" = (
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"Tj" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/structure/table/standard,
+/obj/structure/plushie/ian,
+/obj/item/pen/crayon/red,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Tm" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Ts" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+<<<<<<< HEAD
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_medical{
+	name = "Inmate Cell 1"
+=======
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Tx" = (
+/turf/simulated/open,
+/area/medical/psych_ward)
+"Ty" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Rec Room 1";
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 9
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -28000,6 +28254,7 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
+<<<<<<< HEAD
 "TH" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -28018,6 +28273,31 @@
 	name = "Riot Control";
 	pixel_y = 30
 	},
+=======
+"TG" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 6
+	},
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Psych Ward 1";
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2,
+/obj/effect/floor_decal/corner/brown/bordercorner2,
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "TL" = (
@@ -28064,7 +28344,74 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
+<<<<<<< HEAD
 "TR" = (
+=======
+"TQ" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/machinery/cryopod,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"TT" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_medical{
+	name = "Patient Observation"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"TU" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/machinery/embedded_controller/radio/airlock/access_controller{
+	frequency = 6000;
+	id_tag = "psych_airlock_control";
+	name = "Psychiatric Ward Access Console";
+	pixel_x = 8;
+	pixel_y = -22;
+	req_access = list(45);
+	tag_exterior_door = "psych_airlock_exterior";
+	tag_interior_door = "psych_airlock_interior"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Ua" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -28084,6 +28431,7 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
 "TT" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -28113,12 +28461,31 @@
 	},
 /area/medical/psych_ward)
 "Ub" = (
+=======
+"Uc" = (
+/turf/simulated/wall/r_wall{
+	desc = "This wall has been covered in thick foam padding to prevent injury.";
+	name = "padded wall"
+	},
+/area/medical/psych_ward)
+"Ud" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Uk" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -28145,6 +28512,37 @@
 	},
 /obj/machinery/light{
 	dir = 1
+=======
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 6000;
+	master_tag = "psych_airlock_control";
+	name = "Psychiatric Ward Interior";
+	pixel_x = 28;
+	pixel_y = -8;
+	req_access = list(45)
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/medical{
+	autoclose = 0;
+	desc = "We hope to see you soon.";
+	frequency = 6000;
+	icon_state = "door_locked";
+	id_tag = "psych_airlock_interior";
+	locked = 1;
+	name = "Psychiatric Ward Airlock";
+	req_access = list(45)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -28179,6 +28577,23 @@
 	},
 /turf/simulated/floor,
 /area/security/eva)
+"Uq" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/ward)
 "Ur" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -28189,6 +28604,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/eva)
+<<<<<<< HEAD
 "Us" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -28243,6 +28659,63 @@
 	desc = "This padded tile squishes beneath your feet.";
 	name = "padded floor"
 	},
+=======
+"Uw" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"UE" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 6
+	},
+/obj/structure/table/standard,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/masks,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"UF" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2,
+/obj/effect/floor_decal/corner/brown/bordercorner2,
+/turf/simulated/floor/tiled/white,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "UJ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -28260,6 +28733,7 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
+<<<<<<< HEAD
 "UN" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -28296,10 +28770,72 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
+=======
+"UR" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/white,
+/area/medical/ward)
+"UX" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Va" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"Vc" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 10
+	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 9
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Vd" = (
+<<<<<<< HEAD
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
@@ -28335,6 +28871,38 @@
 /area/medical/psych_ward)
 "Vm" = (
 /obj/effect/decal/cleanable/dirt,
+=======
+/obj/machinery/light,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vg" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vi" = (
+/obj/effect/rune,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/kafel_full{
 	desc = "This padded tile squishes beneath your feet.";
 	name = "padded floor"
@@ -28363,6 +28931,7 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
+<<<<<<< HEAD
 "VI" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -28384,6 +28953,120 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 9
 	},
+=======
+"Vs" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2,
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
+	pixel_x = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vt" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5;
+	icon_state = "borderfloorcorner2_white";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Vy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/medical{
+	desc = "It opens and closes. A tiny stylized K has been printed directly beneath the electronics housing in subtle blue ink.";
+	name = "Funland"
+	},
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"Vz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"VA" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"VH" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"VI" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/structure/closet/secure_closet/brig{
+	name = "inmate locker"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "VM" = (
@@ -28398,6 +29081,7 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
+<<<<<<< HEAD
 "VU" = (
 /obj/effect/floor_decal/borderfloorwhite/corner,
 /obj/effect/floor_decal/corner/brown/bordercorner,
@@ -28542,6 +29226,59 @@
 	},
 /turf/simulated/open,
 /area/medical/psych_ward)
+=======
+"VS" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Wc" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/borderfloorwhite/corner2,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2,
+/turf/simulated/floor/tiled/white,
+/area/medical/ward)
+"We" = (
+/obj/effect/floor_decal/borderfloorwhite/corner,
+/obj/effect/floor_decal/corner/brown/bordercorner,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Wn" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Wt" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23;
+	pixel_y = 0
+	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Wv" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/brown/border,
@@ -28558,7 +29295,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
 "Wz" = (
+=======
+"Ww" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
 	},
@@ -28570,6 +29311,7 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
 "WA" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -28577,6 +29319,12 @@
 /obj/machinery/camera/network/medbay{
 	c_tag = "MED - Padded Room"
 	},
+=======
+"Wz" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/kafel_full{
 	desc = "This padded tile squishes beneath your feet.";
 	name = "padded floor"
@@ -28593,6 +29341,7 @@
 /turf/simulated/floor,
 /area/maintenance/cargo)
 "WJ" = (
+<<<<<<< HEAD
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -28608,12 +29357,15 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "WO" = (
+=======
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
+<<<<<<< HEAD
 /obj/structure/bed,
 /obj/machinery/flasher{
 	id = "psych flash 2";
@@ -28627,10 +29379,26 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
+=======
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 1
+	},
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Psych Ward Center"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"WK" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
 "WV" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -28640,12 +29408,60 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+=======
+"WN" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "mrecovery-tint"
+	},
+/turf/simulated/floor/plating,
+/area/medical/ward)
+"WQ" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/obj/structure/table/standard,
+/obj/machinery/button/flasher{
+	id = "psych flash 1";
+	pixel_x = -25;
+	pixel_y = 5
+	},
+/obj/item/storage/box/syringes,
+/obj/item/reagent_containers/glass/bottle/chloralhydrate,
+/obj/item/reagent_containers/glass/bottle/chloralhydrate{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "psych cell 1";
+	name = "Cell 1";
+	pixel_x = -25;
+	pixel_y = -5
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "WY" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
+<<<<<<< HEAD
 "Xa" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -28664,6 +29480,18 @@
 "Xd" = (
 /obj/machinery/light,
 /turf/simulated/open,
+=======
+"Xb" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /area/medical/psych_ward)
 "Xg" = (
 /obj/machinery/door/firedoor/border_only,
@@ -28681,6 +29509,7 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
+<<<<<<< HEAD
 "Xi" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -28704,6 +29533,23 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "Xm" = (
+=======
+"Xh" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/structure/bed,
+/obj/machinery/flasher{
+	id = "psych flash 1";
+	pixel_y = 25
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Xs" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -28725,6 +29571,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
 "Xt" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -28762,6 +29609,8 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+=======
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "Xv" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -28775,6 +29624,13 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
+"Xw" = (
+/obj/machinery/light,
+/turf/simulated/open,
+/area/medical/psych_ward)
+"Xx" = (
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Xy" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -28785,6 +29641,7 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
+<<<<<<< HEAD
 "XE" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -28795,13 +29652,62 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+=======
+"XD" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5;
+	icon_state = "borderfloorcorner2_white";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 5
+	},
+/obj/structure/table/standard,
+/obj/machinery/button/flasher{
+	id = "psych flash 2";
+	pixel_x = 25;
+	pixel_y = 5
+	},
+/obj/item/storage/box/syringes,
+/obj/item/reagent_containers/glass/bottle/chloralhydrate,
+/obj/item/reagent_containers/glass/bottle/chloralhydrate{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "psych cell 2";
+	name = "Cell 2";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"XF" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/borderfloorwhite/corner2,
+/obj/effect/floor_decal/corner/brown/bordercorner2,
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "XG" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
 /area/security/eva)
+<<<<<<< HEAD
 "XJ" = (
+=======
+"XH" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -28829,6 +29735,26 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
+=======
+"XI" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/structure/table/standard,
+/obj/item/healthanalyzer,
+/obj/item/healthanalyzer,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "XL" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -28838,6 +29764,7 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai/foyer)
+<<<<<<< HEAD
 "XM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -28855,6 +29782,29 @@
 /turf/simulated/wall/r_wall,
 /area/medical/psych_ward)
 "XU" = (
+=======
+"XX" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "yard_riot 2";
+	name = "Riot Control";
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Yj" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -28875,6 +29825,7 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+<<<<<<< HEAD
 "XV" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -28889,10 +29840,31 @@
 	},
 /obj/machinery/cryopod{
 	dir = 4
+=======
+"Yr" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/obj/machinery/camera/network/medbay{
+	c_tag = "MED - Psych Ward Airlock"
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
+<<<<<<< HEAD
 	light_range = 12
 	},
 /turf/simulated/floor/tiled/white,
@@ -29005,6 +29977,68 @@
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
+=======
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Yx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Yz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YC" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YE" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
+	},
+/obj/item/book{
+	author = "Asylum Inmate";
+	dat = "<html>\n\t\t\t\t<head>\n\t\t\t\t<style>\n\t\t\t\th1 {font-size: 18px; margin: 15px 0px 5px;}\n\t\t\t\th2 {font-size: 15px; margin: 15px 0px 5px;}\n\t\t\t\tli {margin: 2px 0px 2px 15px;}\n\t\t\t\tul {margin: 5px; padding: 0px;}\n\t\t\t\tol {margin: 5px; padding: 0px 15px;}\n\t\t\t\tbody {font-size: 13px; font-family: Verdana;}\n\t\t\t\t</style>\n\t\t\t\t</head>\n\t\t\t\t<body>\n\t\t\t\t<br>\n\t\t\t\tThe pages of this book are covered in row upon row of the same phrase written over and over. The size and quality of the lettering varies, but there's no doubt\n\t\t\t\tthat the author's blood was used instead of ink. The penmanship steadily degrades as the journal continues, until the writing becomes ultimately unintelligible:\n\t\t\t\t'She says I'm getting better.'\n\t\t\t\t</body>\n\t\t\t</html>";
+	name = "Forgotten Journal"
+	},
+/obj/structure/table/standard,
+/obj/structure/plushie/beepsky,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YI" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/simulated/open,
+/area/medical/psych_ward)
+"YL" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 5
 	},
 /obj/structure/table/standard,
 /obj/item/clothing/suit/straight_jacket,
@@ -29014,6 +30048,51 @@
 	},
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YM" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 9
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
+	},
+/obj/structure/table/standard,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/mask/muzzle,
+<<<<<<< HEAD
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 5
+=======
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YN" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 1;
+	icon_state = "pdoor0";
+	id = "yard_riot 2";
+	name = "Riot Control Lockdown";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_medical{
+	name = "Holding Cells"
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -29040,6 +30119,7 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+<<<<<<< HEAD
 "YQ" = (
 /turf/simulated/wall/r_wall{
 	desc = "This wall has been covered in thick foam padding to prevent injury.";
@@ -29081,12 +30161,57 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Zf" = (
+=======
+"YP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"YR" = (
+/obj/machinery/light/flicker,
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"YU" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/machinery/shower{
+	dir = 8;
+	icon_state = "shower";
+	pixel_x = -5;
+	pixel_y = 0
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"YW" = (
+/turf/simulated/wall/r_wall,
+/area/medical/psych_ward)
+"Za" = (
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
+<<<<<<< HEAD
 /obj/structure/closet/secure_closet/brig{
 	name = "inmate locker"
 	},
@@ -29181,6 +30306,71 @@
 	},
 /turf/simulated/open,
 /area/medical/psych_ward)
+=======
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 5
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1";
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Zb" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Zf" = (
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/tiled/kafel_full{
+	desc = "This padded tile squishes beneath your feet.";
+	name = "padded floor"
+	},
+/area/medical/psych_ward)
+"Zj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Zt" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"Zu" = (
+/obj/structure/table/woodentable,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/carpet,
+/area/security/detectives_office)
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 "ZA" = (
 /obj/item/packageWrap,
 /obj/item/packageWrap,
@@ -29194,6 +30384,7 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+<<<<<<< HEAD
 "ZK" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -29209,6 +30400,24 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
+=======
+"ZD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -29216,6 +30425,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/security/eva)
+<<<<<<< HEAD
 "ZP" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/standard_operating_procedure,
@@ -29262,6 +30472,32 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
+=======
+"ZU" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
+"ZV" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 
@@ -34724,7 +35960,11 @@ fH
 qF
 rn
 si
+<<<<<<< HEAD
 ZP
+=======
+Zu
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 tP
 uJ
 vu
@@ -36476,11 +37716,19 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 XO
 XO
 XO
 XO
 XO
+=======
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -36614,6 +37862,7 @@ vt
 vt
 ab
 ab
+<<<<<<< HEAD
 XO
 XO
 XO
@@ -36627,6 +37876,21 @@ XO
 XO
 XO
 XO
+=======
+YW
+YW
+YW
+YW
+YW
+Tj
+UX
+Vc
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -36756,6 +38020,7 @@ vt
 ab
 ab
 ab
+<<<<<<< HEAD
 XO
 YD
 YD
@@ -36769,6 +38034,21 @@ YD
 Wr
 YD
 XO
+=======
+YW
+Tx
+Tx
+YW
+YW
+Xh
+Xx
+Vi
+Tc
+Tx
+SP
+Tx
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -36898,6 +38178,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 XO
 YD
 Xd
@@ -36911,6 +38192,21 @@ XO
 XO
 XO
 XO
+=======
+YW
+Tx
+Xw
+YW
+YW
+Vt
+SV
+TG
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
@@ -37035,6 +38331,7 @@ OT
 OT
 OT
 OT
+<<<<<<< HEAD
 XO
 XO
 XO
@@ -37056,6 +38353,29 @@ XO
 XO
 XO
 XO
+=======
+YW
+YW
+YW
+YW
+YW
+YW
+Tx
+Tx
+YW
+YW
+YW
+SR
+YW
+YW
+YW
+YW
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 ad
@@ -37177,6 +38497,7 @@ QH
 QN
 QP
 OT
+<<<<<<< HEAD
 XO
 Ya
 Xm
@@ -37199,6 +38520,30 @@ YQ
 YQ
 YQ
 XO
+=======
+YW
+YM
+Xs
+Ua
+YW
+YW
+TT
+TT
+YW
+VI
+WQ
+ZD
+Wt
+XH
+YW
+YW
+Uc
+Uc
+Uc
+Uc
+Uc
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 ad
 ae
@@ -37319,6 +38664,7 @@ Pu
 Pu
 QQ
 OT
+<<<<<<< HEAD
 So
 Zj
 Ym
@@ -37341,6 +38687,30 @@ Wo
 ZK
 YQ
 XO
+=======
+Yr
+VS
+Xx
+Ww
+TU
+YW
+VA
+Vd
+YW
+WJ
+Xx
+Zj
+WK
+Wv
+YW
+Uc
+RG
+Te
+Te
+Wz
+Uc
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 ad
 ae
@@ -37457,6 +38827,7 @@ OW
 Pt
 PN
 Qm
+<<<<<<< HEAD
 Xl
 Xl
 Te
@@ -37483,6 +38854,34 @@ UI
 Wf
 YQ
 XO
+=======
+UR
+UR
+Uq
+QS
+RD
+RN
+VH
+Zt
+ZV
+Uk
+ZU
+Ud
+YN
+RD
+RN
+Sx
+Uw
+Sl
+Vz
+Vy
+Vj
+Te
+Zf
+YR
+Uc
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 ae
 ae
 aa
@@ -37601,6 +39000,7 @@ PO
 Qn
 Pu
 Pu
+<<<<<<< HEAD
 ST
 OT
 Wd
@@ -37625,6 +39025,32 @@ Ua
 Wo
 YQ
 XO
+=======
+Wc
+OT
+Za
+Vg
+Xx
+We
+Vs
+YW
+Zb
+Tm
+YW
+XX
+Wn
+Yz
+Yx
+XF
+RP
+Uc
+Va
+YP
+Xb
+Te
+Uc
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 ae
 ae
 aa
@@ -37745,6 +39171,7 @@ QO
 PP
 QR
 OT
+<<<<<<< HEAD
 XO
 YL
 ZQ
@@ -37767,6 +39194,30 @@ YQ
 YQ
 YQ
 XO
+=======
+YW
+YL
+YU
+YC
+YW
+YW
+TT
+TT
+YW
+SB
+XD
+Ts
+UE
+XI
+YW
+YW
+Uc
+Uc
+Uc
+Uc
+Uc
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 ad
 ad
 aa
@@ -37884,6 +39335,7 @@ OT
 OT
 OT
 OT
+<<<<<<< HEAD
 XZ
 XZ
 OT
@@ -37908,6 +39360,32 @@ XO
 XO
 XO
 XO
+=======
+WN
+WN
+OT
+YW
+YW
+YW
+YW
+YW
+YW
+Tx
+Tx
+YW
+YW
+YW
+Yj
+YW
+YW
+YW
+YW
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 ad
@@ -38034,6 +39512,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 XO
 YD
 Xd
@@ -38047,6 +39526,21 @@ XO
 XO
 XO
 XO
+=======
+YW
+Tx
+Xw
+YW
+YW
+Sb
+So
+Ty
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 ae
@@ -38176,6 +39670,7 @@ ab
 ab
 ab
 ab
+<<<<<<< HEAD
 XO
 YD
 YD
@@ -38189,6 +39684,21 @@ YD
 Zz
 YD
 XO
+=======
+YW
+Tx
+Tx
+YW
+YW
+Sf
+Xx
+Xx
+RF
+Tx
+YI
+Tx
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 ae
 ad
 ad
@@ -38318,6 +39828,7 @@ vt
 vt
 vt
 vt
+<<<<<<< HEAD
 XO
 XO
 XO
@@ -38331,6 +39842,21 @@ XO
 XO
 XO
 XO
+=======
+YW
+YW
+YW
+YW
+YW
+YE
+TQ
+UF
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 ae
 ad
 ad
@@ -38464,11 +39990,19 @@ vt
 vt
 ab
 ab
+<<<<<<< HEAD
 XO
 XO
 XO
 XO
 XO
+=======
+YW
+YW
+YW
+YW
+YW
+>>>>>>> 9eb9f70f14bc9f26a1a1d7e406b6a05f77f0114d
 aa
 aa
 aa
