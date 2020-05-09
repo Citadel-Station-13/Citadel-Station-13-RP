@@ -2155,6 +2155,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
 "el" = (
@@ -2872,6 +2873,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lobby)
 "fB" = (
@@ -7853,6 +7855,7 @@
 /area/tether/surfacebase/atrium_three)
 "nN" = (
 /obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/atrium_three)
 "nO" = (
@@ -14220,6 +14223,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/carpet,
 /area/library)
 "yB" = (
@@ -17907,6 +17911,7 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Eh" = (
@@ -20556,6 +20561,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
+"Jd" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/carpet/blue,
+/area/tether/surfacebase/security/breakroom)
 "Je" = (
 /obj/structure/closet/hydrant,
 /turf/simulated/wall,
@@ -34891,7 +34901,7 @@ ac
 bl
 bS
 cG
-cF
+Jd
 dY
 eA
 fs
