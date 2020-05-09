@@ -140,7 +140,7 @@
 	description = "This is what you rub all over yourself to pretend to be a ghost."
 	taste_description = "chalky wheat"
 	reagent_state = SOLID
-	nutriment_factor = 1
+	nutriment_factor = 15
 	color = "#FFFFFF"
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
