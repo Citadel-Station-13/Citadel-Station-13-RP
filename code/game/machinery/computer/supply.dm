@@ -14,7 +14,6 @@
 	var/active_category = null
 	var/menu_tab = 0
 	var/list/expanded_packs = list()
-	authorization = 0
 
 // Supply control console
 /obj/machinery/computer/supplycomp/control
