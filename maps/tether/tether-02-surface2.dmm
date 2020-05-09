@@ -12819,6 +12819,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yD" = (
@@ -13741,6 +13742,7 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "An" = (
@@ -19198,6 +19200,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
+"Wh" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/wood,
+/area/rnd/breakroom)
 "Wr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -28540,7 +28547,7 @@ ql
 qG
 rn
 rn
-rn
+Wh
 rn
 qH
 tm
