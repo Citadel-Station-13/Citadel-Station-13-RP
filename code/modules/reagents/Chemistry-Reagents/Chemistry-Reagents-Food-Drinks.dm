@@ -140,12 +140,19 @@
 	description = "This is what you rub all over yourself to pretend to be a ghost."
 	taste_description = "chalky wheat"
 	reagent_state = SOLID
-	nutriment_factor = 15
+	nutriment_factor = 1
 	color = "#FFFFFF"
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
 	if(!istype(T, /turf/space))
 		new /obj/effect/decal/cleanable/flour(T)
+
+/datum/reagent/nutriment/flour/vitapaste
+	name = "NutriFlour"
+	id = "nutriflour"
+	description = "A nutritionally-fortified flour compound. It tastes like worse flour."
+	taste_description = "weird chalky wheat"
+	nutriment_factor = 20
 
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
