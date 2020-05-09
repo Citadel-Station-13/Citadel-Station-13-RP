@@ -12819,6 +12819,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yD" = (
@@ -13741,6 +13742,7 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "An" = (
@@ -19518,6 +19520,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
+"ZX" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/wood,
+/area/rnd/breakroom)
 
 (1,1,1) = {"
 aa
@@ -28540,7 +28547,7 @@ ql
 qG
 rn
 rn
-rn
+ZX
 rn
 qH
 tm
