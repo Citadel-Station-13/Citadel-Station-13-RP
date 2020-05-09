@@ -12819,6 +12819,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yD" = (
@@ -13741,6 +13742,7 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "An" = (
@@ -18886,6 +18888,11 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/public_garden_two)
+"Rf" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/wood,
+/area/rnd/breakroom)
 "Rl" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -28540,7 +28547,7 @@ ql
 qG
 rn
 rn
-rn
+Rf
 rn
 qH
 tm
