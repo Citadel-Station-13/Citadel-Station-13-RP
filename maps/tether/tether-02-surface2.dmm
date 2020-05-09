@@ -12819,7 +12819,6 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yD" = (
@@ -13742,7 +13741,6 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
-/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "An" = (
@@ -19068,11 +19066,6 @@
 /obj/structure/symbol/gu,
 /turf/simulated/wall,
 /area/tether/surfacebase/public_garden_two)
-"UA" = (
-/obj/structure/table/glass,
-/obj/item/book/manual/standard_operating_procedure,
-/turf/simulated/floor/wood,
-/area/rnd/breakroom)
 "UB" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -28547,7 +28540,7 @@ ql
 qG
 rn
 rn
-UA
+rn
 rn
 qH
 tm

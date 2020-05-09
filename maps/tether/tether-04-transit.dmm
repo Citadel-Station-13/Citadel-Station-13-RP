@@ -84,6 +84,7 @@
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
+/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "ah" = (
@@ -92,6 +93,7 @@
 /area/maintenance/tether_midpoint)
 "ai" = (
 /obj/structure/disposalpipe/up,
+/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "aj" = (
