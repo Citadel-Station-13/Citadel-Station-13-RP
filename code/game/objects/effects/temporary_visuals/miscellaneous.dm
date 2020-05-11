@@ -2,18 +2,18 @@
 	desc = "It's a decoy!"
 	duration = 15
 
-/obj/effect/temp_visual/decoy/initialize(mapload, atom/mimiced_atom, var/customappearance)
+/obj/effect/temp_visual/decoy/Initialize(mapload, atom/mimiced_atom, var/customappearance)
 	. = ..()
 	alpha = initial(alpha)
 	if(mimiced_atom)
 		name = mimiced_atom.name
 		appearance = mimiced_atom.appearance
-		set_dir(mimiced_atom.dir)
+		setDir(mimiced_atom.dir)
 		mouse_opacity = 0
 	if(customappearance)
 		appearance = customappearance
 
-/obj/effect/temp_visual/decoy/fading/initialize(mapload, atom/mimiced_atom)
+/obj/effect/temp_visual/decoy/fading/Initialize(mapload, atom/mimiced_atom)
 	. = ..()
 	animate(src, alpha = 0, time = duration)
 
@@ -44,3 +44,14 @@
 	icon_state = "explosionfast"
 	duration = 4
 // VOREStation Add End
+
+//VOREStation edit: medigun
+/obj/effect/temp_visual/heal
+	name = "healing glow"
+	icon_state = "heal"
+	duration = 15
+
+/obj/effect/temp_visual/heal/Initialize(mapload)
+	pixel_x = rand(-12, 12)
+	pixel_y = rand(-9, 0)
+//VOREStation edit ends

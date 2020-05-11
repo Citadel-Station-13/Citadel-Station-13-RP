@@ -14,7 +14,7 @@
 			var/turf/T = get_turf(C)
 			if(!T)
 				continue
-			if(!(T.z in using_map.station_levels))
+			if(!(T.z in GLOB.using_map.station_levels))
 				continue
 			place_ian(T)
 
@@ -23,12 +23,12 @@
 	for(var/i = 0, i < 3, i++)
 		var/turf/target = get_step(T, pick(alldirs))
 		if(target && istype(target, /turf/simulated/floor))
-			var/mob/living/simple_animal/corgi/Ian/doge = new(target)
+			var/mob/living/simple_mob/animal/passive/dog/corgi/Ian/doge = new(target)
 			doge.name = "Ian " + pick("Alpha", "Beta", "Chi", "Delta", "Epsilon", "Phi",
 				"Gamma", "Eta", "Iota", "Kappa", "Lambda", "Omicron", "Theta",
 				"Rho", "Sigma", "Tau", "Upsilon", "Omega", "Psi", "Zeta")
 			// Poof them onto the station!
-			var/datum/effect/effect/system/steam_spread/s = new
+			var/datum/effect_system/steam_spread/s = new
 			s.set_up(3, 0, target)
 			s.start()
 			return

@@ -2,10 +2,7 @@
 // SSshuttles subsystem - Handles initialization and processing of shuttles.
 //
 
-// This global variable exists for legacy support so we don't have to rename every shuttle_controller to SSshuttles yet.
-var/global/datum/controller/subsystem/shuttles/shuttle_controller
-
-SUBSYSTEM_DEF(shuttles)
+SUBSYSTEM_DEF(shuttle)
 	name = "Shuttles"
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_SHUTTLES
@@ -13,14 +10,15 @@ SUBSYSTEM_DEF(shuttles)
 	flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
-	var/list/shuttles = list()	// Maps shuttle tags to shuttle datums, so that they can be looked up.
-	var/list/process_shuttles = list()	// Simple list of shuttles, for processing
-	var/list/current_run = list() // Shuttles remaining to process this fire() tick
+	var/static/list/escape_pods = list()
+	var/static/list/shuttles = list()	// Maps shuttle tags to shuttle datums, so that they can be looked up.
+	var/static/list/process_shuttles = list()	// Simple list of shuttles, for processing
+	var/static/list/current_run = list() // Shuttles remaining to process this fire() tick
 	var/list/docks_init_callbacks // List of callbacks to run when we finish setting up shuttle docks.
 	var/docks_initialized = FALSE
 
-/datum/controller/subsystem/shuttles/Initialize(timeofday)
-	global.shuttle_controller = src
+/datum/controller/subsystem/shuttle/Initialize(timeofday)
+	global.SSshuttle = src
 	setup_shuttle_docks()
 	for(var/I in docks_init_callbacks)
 		var/datum/callback/cb = I
@@ -29,16 +27,16 @@ SUBSYSTEM_DEF(shuttles)
 	docks_init_callbacks = null
 	return ..()
 
-/datum/controller/subsystem/shuttles/fire(resumed = 0)
+/datum/controller/subsystem/shuttle/fire(resumed = 0)
 	do_process_shuttles(resumed)
 
-/datum/controller/subsystem/shuttles/stat_entry()
+/datum/controller/subsystem/shuttle/stat_entry()
 	var/msg = list()
 	msg += "AS:[shuttles.len]|"
 	msg += "PS:[process_shuttles.len]|"
 	..(jointext(msg, null))
 
-/datum/controller/subsystem/shuttles/proc/do_process_shuttles(resumed = 0)
+/datum/controller/subsystem/shuttle/proc/do_process_shuttles(resumed = 0)
 	if (!resumed)
 		src.current_run = process_shuttles.Copy()
 
@@ -59,7 +57,7 @@ SUBSYSTEM_DEF(shuttles)
 			return
 
 // This should be called after all the machines and radio frequencies have been properly initialized
-/datum/controller/subsystem/shuttles/proc/setup_shuttle_docks()
+/datum/controller/subsystem/shuttle/proc/setup_shuttle_docks()
 	// Find all declared shuttle datums and initailize them.
 	for(var/shuttle_type in subtypesof(/datum/shuttle))
 		var/datum/shuttle/shuttle = shuttle_type
@@ -76,7 +74,7 @@ SUBSYSTEM_DEF(shuttles)
 	docks_initialized = TRUE
 
 // Register a callback that will be invoked once the shuttles have been initialized
-/datum/controller/subsystem/shuttles/proc/OnDocksInitialized(datum/callback/cb)
+/datum/controller/subsystem/shuttle/proc/OnDocksInitialized(datum/callback/cb)
 	if(!docks_initialized)
 		LAZYADD(docks_init_callbacks, cb)
 	else

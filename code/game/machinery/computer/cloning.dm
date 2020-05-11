@@ -3,7 +3,7 @@
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = "#315ab4"
-	circuit = /obj/item/weapon/circuitboard/cloning
+	circuit = /obj/item/circuitboard/cloning
 	req_access = list(access_heads) //Only used for record deletion right now.
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
 	var/list/pods = list() //Linked cloning pods.
@@ -12,11 +12,11 @@
 	var/menu = 1 //Which menu screen to display
 	var/list/records = list()
 	var/datum/dna2/record/active_record = null
-	var/obj/item/weapon/disk/data/diskette = null //Mostly so the geneticist can steal everything.
+	var/obj/item/disk/data/diskette = null //Mostly so the geneticist can steal everything.
 	var/loading = 0 // Nice loading text
 
 
-/obj/machinery/computer/cloning/initialize()
+/obj/machinery/computer/cloning/Initialize()
 	. = ..()
 	updatemodules()
 
@@ -62,7 +62,7 @@
 			P.name = "[initial(P.name)] #[num++]"
 
 /obj/machinery/computer/cloning/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/disk/data)) //INSERT SOME DISKETTES
+	if (istype(W, /obj/item/disk/data)) //INSERT SOME DISKETTES
 		if (!diskette)
 			user.drop_item()
 			W.loc = src
@@ -70,8 +70,8 @@
 			to_chat(user, "You insert [W].")
 			updateUsrDialog()
 			return
-	else if(istype(W, /obj/item/device/multitool))
-		var/obj/item/device/multitool/M = W
+	else if(istype(W, /obj/item/multitool))
+		var/obj/item/multitool/M = W
 		var/obj/machinery/clonepod/P = M.connecting
 		if(P && !(P in pods))
 			pods += P
@@ -79,7 +79,7 @@
 			P.name = "[initial(P.name)] #[pods.len]"
 			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
 
-	else if (menu == 4 && (istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda)))
+	else if (menu == 4 && (istype(W, /obj/item/card/id) || istype(W, /obj/item/pda)))
 		if(check_access(W))
 			records.Remove(active_record)
 			qdel(active_record)
@@ -146,7 +146,7 @@
 	data["diskette"] = diskette
 	data["temp"] = temp
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "cloning.tmpl", src.name, 400, 450)
 		ui.set_initial_data(data)
@@ -256,7 +256,7 @@
 					temp = "Error: Not enough biomass."
 				else if(pod.mess)
 					temp = "Error: Clonepod malfunction."
-				else if(!config.revival_cloning)
+				else if(!config_legacy.revival_cloning)
 					temp = "Error: Unable to initiate cloning cycle."
 				else if(pod.growclone(C))
 					temp = "Initiating cloning cycle..."
@@ -284,7 +284,7 @@
 		temp = ""
 		scantemp = ""
 
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 	add_fingerprint(usr)
 
 /obj/machinery/computer/cloning/proc/scan_mob(mob/living/carbon/human/subject as mob)
@@ -335,6 +335,8 @@
 	R.name = R.dna.real_name
 	R.types = DNA2_BUF_UI|DNA2_BUF_UE|DNA2_BUF_SE
 	R.languages = subject.languages
+	R.gender = subject.gender
+	R.body_descriptors = subject.descriptors
 	if(!brain_skip) //Brains don't have flavor text.
 		R.flavor = subject.flavor_texts.Copy()
 	else
@@ -344,9 +346,9 @@
 			R.genetic_modifiers.Add(mod.type)
 
 	//Add an implant if needed
-	var/obj/item/weapon/implant/health/imp = locate(/obj/item/weapon/implant/health, subject)
+	var/obj/item/implant/health/imp = locate(/obj/item/implant/health, subject)
 	if (isnull(imp))
-		imp = new /obj/item/weapon/implant/health(subject)
+		imp = new /obj/item/implant/health(subject)
 		imp.implanted = subject
 		R.implant = "\ref[imp]"
 	//Update it if needed

@@ -5,7 +5,7 @@
 var/global/list/map_sectors = list()
 
 /hook/startup/proc/build_map()
-	if(!config.use_overmap)
+	if(!config_legacy.use_overmap)
 		return 1
 	testing("Building overmap...")
 	var/obj/effect/mapinfo/data
@@ -74,7 +74,7 @@ var/global/list/map_sectors = list()
 	if(data.landing_area)
 		shuttle_landing = locate(data.landing_area)
 
-/obj/effect/map/CanPass(atom/movable/A)
+/obj/effect/map/CanAllowThrough(atom/movable/A)
 	testing("[A] attempts to enter sector\"[name]\"")
 	return 1
 

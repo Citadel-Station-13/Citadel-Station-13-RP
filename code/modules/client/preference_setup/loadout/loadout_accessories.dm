@@ -1,3 +1,4 @@
+
 /datum/gear/accessory
 	display_name = "accessory"
 	slot = slot_tie
@@ -16,7 +17,7 @@
 	for(var/armband in (typesof(/obj/item/clothing/accessory/armband) - typesof(/obj/item/clothing/accessory/armband/med/color)))
 		var/obj/item/clothing/accessory/armband_type = armband
 		armbands[initial(armband_type.name)] = armband_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(armbands))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(armbands, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/armband/colored
 	display_name = "armband"
@@ -28,17 +29,17 @@
 
 /datum/gear/accessory/wallet
 	display_name = "wallet, orange"
-	path = /obj/item/weapon/storage/wallet/random
+	path = /obj/item/storage/wallet/random
 
 /datum/gear/accessory/wallet_poly
 	display_name = "wallet, polychromic"
-	path = /obj/item/weapon/storage/wallet/poly
+	path = /obj/item/storage/wallet/poly
 	cost = 0 //VOREStation Edit
-	
+
 
 /datum/gear/accessory/wallet/womens
 	display_name = "wallet, womens"
-	path = /obj/item/weapon/storage/wallet/womens
+	path = /obj/item/storage/wallet/womens
 	cost = 0 //VOREStation Edit
 
 /datum/gear/accessory/wallet/womens/New()
@@ -47,7 +48,7 @@
 
 /datum/gear/accessory/clutch
 	display_name = "clutch bag"
-	path = /obj/item/weapon/storage/briefcase/clutch
+	path = /obj/item/storage/briefcase/clutch
 	cost = 2
 
 /datum/gear/accessory/clutch/New()
@@ -56,7 +57,7 @@
 
 /datum/gear/accessory/purse
 	display_name = "purse"
-	path = /obj/item/weapon/storage/backpack/purse
+	path = /obj/item/storage/backpack/purse
 	cost = 3
 
 /datum/gear/accessory/purse/New()
@@ -74,12 +75,12 @@
 	for(var/wcoat in typesof(/obj/item/clothing/accessory/wcoat))
 		var/obj/item/clothing/accessory/wcoat_type = wcoat
 		wcoats[initial(wcoat_type.name)] = wcoat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(wcoats))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(wcoats, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/holster
-	display_name = "holster selection (Security, CD, HoP)"
+	display_name = "holster selection"
 	path = /obj/item/clothing/accessory/holster
-	allowed_roles = list("Colony Director", "Head of Personnel", "Security Officer", "Warden", "Head of Security","Detective")
+	allowed_roles = list("Colony Director","Head of Personnel","Security Officer","Warden","Head of Security","Detective","Field Medic","Explorer","Pathfinder")
 
 /datum/gear/accessory/holster/New()
 	..()
@@ -87,7 +88,7 @@
 	for(var/holster in typesof(/obj/item/clothing/accessory/holster))
 		var/obj/item/clothing/accessory/holster_type = holster
 		holsters[initial(holster_type.name)] = holster_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(holsters))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(holsters, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/tie
 	display_name = "tie selection"
@@ -100,7 +101,7 @@
 	for(var/tie in typesof(/obj/item/clothing/accessory/tie))
 		var/obj/item/clothing/accessory/tie_type = tie
 		ties[initial(tie_type.name)] = tie_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(ties))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(ties, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/scarf
 	display_name = "scarf selection"
@@ -113,7 +114,7 @@
 	for(var/scarf in typesof(/obj/item/clothing/accessory/scarf))
 		var/obj/item/clothing/accessory/scarf_type = scarf
 		scarfs[initial(scarf_type.name)] = scarf_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(scarfs))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(scarfs, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/jacket
 	display_name = "suit jacket selection"
@@ -126,54 +127,59 @@
 	for(var/jacket in typesof(/obj/item/clothing/accessory/jacket))
 		var/obj/item/clothing/accessory/jacket_type = jacket
 		jackets[initial(jacket_type.name)] = jacket_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(jackets))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(jackets, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/suitvest
 	display_name = "suit vest"
 	path = /obj/item/clothing/accessory/vest
 
+/datum/gear/accessory/lifecrystal
+	display_name = "Life Crystal"
+	path = /obj/item/clothing/accessory/collar/lifecrystal
+	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
+
 /datum/gear/accessory/brown_vest
-	display_name = "webbing, brown"
+	display_name = "webbing, brown (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/brown_vest
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/black_vest
-	display_name = "webbing, black"
+	display_name = "webbing, black (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/black_vest
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/white_vest
-	display_name = "webbing, white"
+	display_name = "webbing, white (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/white_vest
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/brown_drop_pouches
-	display_name = "drop pouches, brown"
+	display_name = "drop pouches, brown (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor", "Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/black_drop_pouches
-	display_name = "drop pouches, black"
+	display_name = "drop pouches, black (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor", "Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/white_drop_pouches
-	display_name = "drop pouches, white"
+	display_name = "drop pouches, white (Eng, Sec, CD, Med, Exploration, Miner)"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
-	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor", "Search and Rescue")
+	allowed_roles = list("Station Engineer","Atmospheric Technician","Chief Engineer","Security Officer","Detective","Head of Security","Warden","Paramedic","Chief Medical Officer","Medical Doctor","Field Medic","Quartermaster","Cargo Technician","Shaft Miner","Explorer","Pathfinder","Pilot","Colony Director")
 
 /datum/gear/accessory/fannypack
 	display_name = "fannypack selection"
 	cost = 2
-	path = /obj/item/weapon/storage/belt/fannypack
+	path = /obj/item/storage/belt/fannypack
 
 /datum/gear/accessory/fannypack/New()
 	..()
 	var/list/fannys = list()
-	for(var/fanny in typesof(/obj/item/weapon/storage/belt/fannypack))
-		var/obj/item/weapon/storage/belt/fannypack/fanny_type = fanny
+	for(var/fanny in typesof(/obj/item/storage/belt/fannypack))
+		var/obj/item/storage/belt/fannypack/fanny_type = fanny
 		fannys[initial(fanny_type.name)] = fanny_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(fannys))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(fannys, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/webbing
 	display_name = "webbing, simple"
@@ -211,7 +217,7 @@
 	for(var/sweater in typesof(/obj/item/clothing/accessory/sweater))
 		var/obj/item/clothing/suit/sweater_type = sweater
 		sweaters[initial(sweater_type.name)] = sweater_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sweaters))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(sweaters, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/accessory/bracelet/material
 	display_name = "bracelet selection"
@@ -239,8 +245,45 @@
 /datum/gear/accessory/stethoscope
 	display_name = "stethoscope"
 	path = /obj/item/clothing/accessory/stethoscope
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Search and Rescue")
+	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Field Medic")
 
 /datum/gear/accessory/locket
 	display_name = "locket"
 	path = /obj/item/clothing/accessory/locket
+
+/datum/gear/accessory/treatbox
+	display_name = "box of treats"
+	path = /obj/item/storage/box/treats
+	cost = 2
+/datum/gear/accessory/halfcape
+	display_name = "half cape"
+	path = /obj/item/clothing/accessory/halfcape
+
+/datum/gear/accessory/fullcape
+	display_name = "full cape"
+	path = /obj/item/clothing/accessory/fullcape
+
+/datum/gear/accessory/sash
+	display_name = "sash (colorable)"
+	path = /obj/item/clothing/accessory/sash
+
+/datum/gear/accessory/sash/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/accessory/asym
+	display_name = "asymmetric jacket selection"
+	path = /obj/item/clothing/accessory/asymmetric
+	cost = 1
+
+/datum/gear/accessory/asym/New()
+	..()
+	var/list/asyms = list()
+	for(var/asym in typesof(/obj/item/clothing/accessory/asymmetric))
+		var/obj/item/clothing/accessory/asymmetric_type = asym
+		asyms[initial(asymmetric_type.name)] = asymmetric_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(asyms, /proc/cmp_text_asc, TRUE))
+
+/datum/gear/accessory/cowledvest
+	display_name = "cowled vest"
+	path = /obj/item/clothing/accessory/cowledvest

@@ -25,7 +25,7 @@
 /turf/template_noop,
 /area/submap/Blackshuttledown)
 "ah" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/poi,
+/mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
 /turf/template_noop,
 /area/submap/Blackshuttledown)
 "ai" = (
@@ -155,8 +155,8 @@
 /area/submap/Blackshuttledown)
 "ax" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/p90,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/p90,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "ay" = (
@@ -216,9 +216,9 @@
 	},
 /area/submap/Blackshuttledown)
 "aI" = (
-/mob/living/simple_animal/hostile/viscerator,
-/mob/living/simple_animal/hostile/viscerator,
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "aJ" = (
@@ -252,7 +252,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aO" = (
-/mob/living/simple_animal/hostile/syndicate/melee/poi,
+/mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aP" = (
@@ -274,7 +274,7 @@
 /area/submap/Blackshuttledown)
 "aR" = (
 /obj/structure/table/steel,
-/obj/item/weapon/grenade/smokebomb,
+/obj/item/grenade/smokebomb,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "aS" = (
@@ -298,7 +298,7 @@
 /area/submap/Blackshuttledown)
 "aV" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/effect/floor_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 10
@@ -307,7 +307,7 @@
 /area/submap/Blackshuttledown)
 "aW" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tank/anesthetic,
+/obj/item/tank/anesthetic,
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
@@ -324,14 +324,14 @@
 /area/submap/Blackshuttledown)
 "aZ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/sterilizine,
-/obj/item/weapon/reagent_containers/spray/sterilizine,
+/obj/item/reagent_containers/spray/sterilizine,
+/obj/item/reagent_containers/spray/sterilizine,
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "ba" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/masks,
 /obj/effect/floor_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 6
@@ -399,7 +399,7 @@
 /area/submap/Blackshuttledown)
 "bk" = (
 /obj/structure/table/steel,
-/obj/item/weapon/material/knife,
+/obj/item/material/knife,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bl" = (
@@ -412,7 +412,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bn" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/poi,
+/mob/living/simple_mob/humanoid/merc/ranged/smg/poi,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bo" = (
@@ -470,7 +470,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bu" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bv" = (
@@ -550,7 +550,7 @@
 /turf/simulated/floor/tiled/yellow,
 /area/submap/Blackshuttledown)
 "bI" = (
-/mob/living/simple_animal/hostile/syndicate/melee/poi,
+/mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/yellow,
 /area/submap/Blackshuttledown)
 "bJ" = (
@@ -561,11 +561,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bK" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/mob/living/simple_animal/hostile/syndicate/ranged/laser/poi,
-/turf/simulated/floor/tiled/steel,
+/mob/living/simple_mob/humanoid/merc/ranged/laser/poi,
+/turf/template_noop,
 /area/submap/Blackshuttledown)
 "bL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -584,7 +581,7 @@
 /area/submap/Blackshuttledown)
 "bN" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper{
+/obj/item/paper{
 	info = "We need to take a short stop. The engine's are in need of minor repairs due to turbulence, should be a week's time. We've got reserve food supplies but pleanty of locale fauna to subsist on too if need be. PCRC is keeping most of there assets near New Reykjavik and locale authorities are more mindful then most to travel in this kind of weather. Our outfit should be at the rendezvous point in less then ten days assuming the upper ecehelon hasn't dropped ties with us yet.";
 	name = "Operation Progress/M-53"
 	},
@@ -592,7 +589,7 @@
 /area/submap/Blackshuttledown)
 "bO" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bP" = (
@@ -658,7 +655,7 @@
 /area/submap/Blackshuttledown)
 "bY" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bZ" = (
@@ -669,12 +666,12 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Blackshuttledown)
 "cb" = (
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "cc" = (
 /obj/structure/table/steel,
-/obj/item/weapon/gun/projectile/pistol,
+/obj/item/gun/projectile/pistol,
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
@@ -689,7 +686,7 @@
 /area/submap/Blackshuttledown)
 "ce" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/structure/bed,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
@@ -701,8 +698,8 @@
 /turf/simulated/floor/tiled/hydro,
 /area/submap/Blackshuttledown)
 "cg" = (
-/mob/living/simple_animal/hostile/viscerator,
-/mob/living/simple_animal/hostile/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
+/mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "ch" = (
@@ -746,7 +743,7 @@
 /area/submap/Blackshuttledown)
 "cm" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
@@ -756,7 +753,7 @@
 /area/submap/Blackshuttledown)
 "co" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/item/toy/plushie/spider,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
@@ -774,16 +771,19 @@
 	name = "Unknown Shuttle"
 	},
 /area/submap/Blackshuttledown)
-"EI" = (
+"cr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/syndicate/melee/poi,
+/mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
-"SN" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/laser/poi,
-/turf/template_noop,
+"cs" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/mob/living/simple_mob/humanoid/merc/ranged/laser/poi,
+/turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 
 (1,1,1) = {"
@@ -1139,7 +1139,7 @@ az
 aK
 aS
 az
-bK
+cs
 bU
 aQ
 aj
@@ -1365,7 +1365,7 @@ bM
 az
 bW
 aS
-EI
+cr
 ck
 aj
 ag
@@ -1405,7 +1405,7 @@ aT
 aj
 aj
 aj
-SN
+bK
 ab
 ag
 ab
@@ -1497,7 +1497,7 @@ af
 ab
 ag
 ab
-SN
+bK
 aj
 aj
 aj

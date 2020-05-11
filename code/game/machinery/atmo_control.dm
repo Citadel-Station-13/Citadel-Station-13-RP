@@ -63,7 +63,7 @@
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/air_sensor/initialize()
+/obj/machinery/air_sensor/Initialize()
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -81,7 +81,7 @@ obj/machinery/air_sensor/Destroy()
 	var/list/sensors = list()
 	var/list/sensor_information = list()
 	var/datum/radio_frequency/radio_connection
-	circuit = /obj/item/weapon/circuitboard/air_management
+	circuit = /obj/item/circuitboard/air_management
 
 obj/machinery/computer/general_air_control/Destroy()
 	if(radio_controller)
@@ -117,7 +117,7 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	data["sensors"] = sensors_ui
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 525, 600)
 		ui.set_initial_data(data)
@@ -129,7 +129,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/computer/general_air_control/initialize()
+/obj/machinery/computer/general_air_control/Initialize()
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -143,7 +143,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	var/list/output_info
 	var/input_flow_setting = 200
 	var/pressure_setting = ONE_ATMOSPHERE * 45
-	circuit = /obj/item/weapon/circuitboard/air_management/tank_control
+	circuit = /obj/item/circuitboard/air_management/tank_control
 
 /obj/machinery/computer/general_air_control/large_tank_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
@@ -174,7 +174,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	data["input_flow_setting"] = round(input_flow_setting, 0.1)
 	data["pressure_setting"] = pressure_setting
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 660, 500)
 		ui.set_initial_data(data)
@@ -254,7 +254,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	var/list/output_info
 	var/input_flow_setting = 700
 	var/pressure_setting = 100
-	circuit = /obj/item/weapon/circuitboard/air_management/supermatter_core
+	circuit = /obj/item/circuitboard/air_management/supermatter_core
 
 /obj/machinery/computer/general_air_control/supermatter_core/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
@@ -284,7 +284,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	data["input_flow_setting"] = round(input_flow_setting, 0.1)
 	data["pressure_setting"] = pressure_setting
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 650, 500)
 		ui.set_initial_data(data)
@@ -363,7 +363,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	var/automation = 0
 	var/cutoff_temperature = 2000
 	var/on_temperature = 1200
-	circuit = /obj/item/weapon/circuitboard/air_management/injector_control
+	circuit = /obj/item/circuitboard/air_management/injector_control
 
 /obj/machinery/computer/general_air_control/fuel_injection/process()
 	if(automation)
@@ -416,7 +416,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	else
 		data["device_info"] = null
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 650, 500)
 		ui.set_initial_data(data)

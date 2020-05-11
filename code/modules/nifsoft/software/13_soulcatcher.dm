@@ -26,7 +26,7 @@
 		load_settings()
 
 	Destroy()
-		QDEL_NULL_LIST(brainmobs)
+		QDEL_LIST_NULL(brainmobs)
 		return ..()
 
 	activate()
@@ -49,7 +49,7 @@
 			nif.human.verbs |= /mob/living/carbon/human/proc/nme
 
 	uninstall()
-		QDEL_NULL_LIST(brainmobs)
+		QDEL_LIST_NULL(brainmobs)
 		if((. = ..()) && nif && nif.human) //Sometimes NIFs are deleted outside of a human
 			nif.human.verbs -= /mob/living/carbon/human/proc/nsay
 			nif.human.verbs -= /mob/living/carbon/human/proc/nme
@@ -268,12 +268,14 @@
 	var/client_missing = 0		//How long the client has been missing
 	universal_understand = TRUE
 
-	var/obj/item/device/nif/nif
+	var/obj/item/nif/nif
 	var/datum/nifsoft/soulcatcher/soulcatcher
+	var/identifying_gender
 
 /mob/living/carbon/brain/caught_soul/Login()
 	..()
 	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+	identifying_gender = client.prefs.identifying_gender
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -311,12 +313,12 @@
 	//If they're blinded
 	if(ext_blind)
 		eye_blind = 5
-		client.screen.Remove(global_hud.whitense)
+		client.screen.Remove(GLOB.global_hud.whitense)
 		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 	else
 		eye_blind = 0
 		clear_fullscreens()
-		client.screen.Add(global_hud.whitense)
+		client.screen.Add(GLOB.global_hud.whitense)
 
 	//If they're deaf
 	if(ext_deaf)
@@ -350,9 +352,9 @@
 	else
 		return ..(A)
 
-/mob/living/carbon/brain/caught_soul/set_dir(var/direction)
+/mob/living/carbon/brain/caught_soul/setDir(var/direction)
 	if(eyeobj)
-		return eyeobj.set_dir(direction)
+		return eyeobj.setDir(direction)
 	else
 		return ..(direction)
 
@@ -367,7 +369,7 @@
 			return
 		if (src.client)
 			if (client.prefs.muted & MUTE_IC)
-				src << "<span class='warning'>You cannot send IC messages (muted).</span>"
+				to_chat(src, "<span class='warning'>You cannot send IC messages (muted).</span>")
 				return
 		if (stat)
 			return
@@ -407,7 +409,7 @@
 	real_name = brainmob.real_name	//And the OTHER name
 
 	forceMove(get_turf(parent_human))
-	GLOB.moved_event.register(parent_human, src, /mob/observer/eye/ar_soul/proc/human_moved)
+	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
@@ -422,7 +424,7 @@
 
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
-		GLOB.moved_event.unregister(parent_human, src)
+		UnregisterSignal(parent_human, COMSIG_MOVABLE_MOVED)
 		parent_human = null
 	return ..()
 
@@ -436,7 +438,7 @@
 	for(var/i = 0; i < max(sprint, initial); i += 20)
 		var/turf/stepn = get_turf(get_step(src, direct))
 		if(stepn)
-			set_dir(direct)
+			setDir(direct)
 			if(can_see(parent_human, stepn))
 				forceMove(stepn)
 

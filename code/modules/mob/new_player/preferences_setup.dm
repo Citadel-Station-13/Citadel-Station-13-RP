@@ -24,13 +24,13 @@
 			b_skin = rand (0,255)
 	if(current_species.appearance_flags & HAS_UNDERWEAR)
 		all_underwear.Cut()
-		for(var/datum/category_group/underwear/WRC in global_underwear.categories)
+		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
 			all_underwear[WRC.name] = WRI.name
 
 
 	backbag = rand(1,5)
-	pdachoice = rand(1,4)
+	pdachoice = rand(1,5)
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)
@@ -202,9 +202,9 @@
 	var/datum/job/previewJob
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	if(job_civilian_low & ASSISTANT)
-		previewJob = job_master.GetJob(USELESS_JOB)
+		previewJob = SSjobs.GetJob(USELESS_JOB)
 	else
-		for(var/datum/job/job in job_master.occupations)
+		for(var/datum/job/job in SSjobs.occupations)
 			var/job_flag
 			switch(job.department_flag)
 				if(CIVILIAN)
@@ -251,6 +251,7 @@
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
 	dress_preview_mob(mannequin)
+	COMPILE_OVERLAYS(mannequin)
 
 	preview_icon = icon('icons/effects/128x48.dmi', bgstate)
 	preview_icon.Scale(48+32, 16+32)

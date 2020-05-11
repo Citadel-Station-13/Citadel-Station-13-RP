@@ -6,7 +6,7 @@
 /turf/simulated/floor/holofloor
 	thermal_conductivity = 0
 
-/turf/simulated/floor/holofloor/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
 	// HOLOFLOOR DOES NOT GIVE A FUCK
 
@@ -67,7 +67,8 @@
 	name = "reinforced holofloor"
 	icon_state = "reinforced"
 
-/turf/simulated/floor/holofloor/space/New()
+/turf/simulated/floor/holofloor/space/Initialize(mapload)
+	. = ..()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/simulated/floor/holofloor/beach
@@ -104,7 +105,7 @@
 	base_icon = 'icons/turf/flooring/asteroid.dmi'
 	initial_flooring = null
 
-/turf/simulated/floor/holofloor/desert/initialize()
+/turf/simulated/floor/holofloor/desert/Initialize()
 	. = ..()
 	if(prob(10))
 		add_overlay("asteroid[rand(0,9)]")
@@ -126,12 +127,44 @@
 			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "boxing"
+	special_attack_type = /datum/unarmed_attack/holopugilism
+
+datum/unarmed_attack/holopugilism
+	sparring_variant_type = /datum/unarmed_attack/holopugilism
+
+datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
+	user.do_attack_animation(src)
+	var/damage = rand(0, 9)
+	if(!damage)
+		playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+		target.visible_message("<font color='red'><B>[user] has attempted to punch [target]!</B></font>")
+		return TRUE
+	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(user.zone_sel.selecting))
+	var/armor_block = target.run_armor_check(affecting, "melee")
+	var/armor_soak = target.get_armor_soak(affecting, "melee")
+
+	if(HULK in user.mutations)
+		damage += 5
+
+	playsound(target.loc, "punch", 25, 1, -1)
+
+	target.visible_message("<font color='red'><B>[user] has punched [target]!</B></font>")
+
+	if(armor_soak >= damage)
+		return TRUE
+
+	target.apply_damage(damage, HALLOSS, affecting, armor_block, armor_soak)
+	if(damage >= 9)
+		target.visible_message("<font color='red'><B>[user] has weakened [target]!</B></font>")
+		target.apply_effect(4, WEAKEN, armor_block)
+
+	return TRUE
 
 /obj/structure/window/reinforced/holowindow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W))
 		return//I really wish I did not need this
-	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
-		var/obj/item/weapon/grab/G = W
+	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
+		var/obj/item/grab/G = W
 		if(istype(G.affecting,/mob/living))
 			var/mob/living/M = G.affecting
 			var/state = G.state
@@ -181,12 +214,12 @@
 	qdel(src)
 	return
 
-/obj/machinery/door/window/holowindoor/attackby(obj/item/weapon/I as obj, mob/user as mob)
+/obj/machinery/door/window/holowindoor/attackby(obj/item/I as obj, mob/user as mob)
 
 	if (src.operating == 1)
 		return
 
-	if(src.density && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
+	if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
 		var/aforce = I.force
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		visible_message("<font color='red'><B>[src] was hit by [I].</B></font>")
@@ -216,21 +249,21 @@
 		visible_message("[src] fades away as it shatters!")
 	qdel(src)
 
-/obj/structure/bed/chair/holochair/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/chair/holochair/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
 //VOREStation Add
-/obj/structure/bed/holobed/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/holobed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		user << ("<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
 //VOREStation Add End
-/obj/item/weapon/holo
+/obj/item/holo
 	damtype = HALLOSS
 	no_attack_log = 1
 
-/obj/item/weapon/holo/esword
+/obj/item/holo/esword
 	desc = "May the force be within you. Sorta."
 	icon_state = "sword0"
 	item_icons = list(
@@ -246,29 +279,29 @@
 	var/active = 0
 	var/item_color
 
-/obj/item/weapon/holo/esword/green
+/obj/item/holo/esword/green
 	New()
 		item_color = "green"
 
-/obj/item/weapon/holo/esword/red
+/obj/item/holo/esword/red
 	New()
 		item_color = "red"
 
-/obj/item/weapon/holo/esword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+/obj/item/holo/esword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
 		user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 
-		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
 		playsound(user.loc, 'sound/weapons/blade1.ogg', 50, 1)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
-/obj/item/weapon/holo/esword/New()
+/obj/item/holo/esword/New()
 	item_color = pick("red","blue","green","purple")
 
-/obj/item/weapon/holo/esword/attack_self(mob/living/user as mob)
+/obj/item/holo/esword/attack_self(mob/living/user as mob)
 	active = !active
 	if (active)
 		force = 30
@@ -293,7 +326,7 @@
 
 //BASKETBALL OBJECTS
 
-/obj/item/weapon/beach_ball/holoball
+/obj/item/beach_ball/holoball
 	icon = 'icons/obj/basketball.dmi'
 	icon_state = "basketball"
 	name = "basketball"
@@ -309,9 +342,9 @@
 	density = 1
 	throwpass = 1
 
-/obj/structure/holohoop/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
-		var/obj/item/weapon/grab/G = W
+/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
+		var/obj/item/grab/G = W
 		if(G.state<2)
 			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 			return
@@ -325,19 +358,18 @@
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 
-/obj/structure/holohoop/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/structure/holohoop/CanAllowThrough(atom/movable/mover, turf/target)
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/item/projectile))
-			return
+			return TRUE
 		if(prob(50))
-			I.loc = src.loc
-			visible_message("<span class='notice'>Swish! \the [I] lands in \the [src].</span>", 3)
+			I.forceMove(loc)
+			visible_message(span("notice", "Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message("<span class='warning'>\The [I] bounces off of \the [src]'s rim!</span>", 3)
-		return 0
-	else
-		return ..(mover, target, height, air_group)
+			visible_message(span("warning", "\The [I] bounces off of \the [src]'s rim!"), 3)
+		return FALSE
+	return ..()
 
 
 /obj/machinery/readybutton
@@ -363,7 +395,7 @@
 	..()
 
 
-/obj/machinery/readybutton/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
@@ -419,7 +451,7 @@
 
 //Holocarp
 
-/mob/living/simple_animal/hostile/carp/holodeck
+/mob/living/simple_mob/animal/space/carp/holodeck
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "holo4"
 	icon_living = "holo4"
@@ -429,31 +461,27 @@
 	meat_amount = 0
 	meat_type = null
 
-/mob/living/simple_animal/hostile/carp/holodeck/New()
+/mob/living/simple_mob/animal/space/carp/holodeck/New()
 	..()
 	set_light(2) //hologram lighting
 
-/mob/living/simple_animal/hostile/carp/holodeck/proc/set_safety(var/safe)
+/mob/living/simple_mob/animal/space/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)
 		faction = "neutral"
 		melee_damage_lower = 0
 		melee_damage_upper = 0
-		environment_smash = 0
-		destroy_surroundings = 0
 	else
 		faction = "carp"
 		melee_damage_lower = initial(melee_damage_lower)
 		melee_damage_upper = initial(melee_damage_upper)
-		environment_smash = initial(environment_smash)
-		destroy_surroundings = initial(destroy_surroundings)
 
-/mob/living/simple_animal/hostile/carp/holodeck/gib()
+/mob/living/simple_mob/animal/space/carp/holodeck/gib()
 	derez() //holograms can't gib
 
-/mob/living/simple_animal/hostile/carp/holodeck/death()
+/mob/living/simple_mob/animal/space/carp/holodeck/death()
 	..()
 	derez()
 
-/mob/living/simple_animal/hostile/carp/holodeck/proc/derez()
+/mob/living/simple_mob/animal/space/carp/holodeck/proc/derez()
 	visible_message("<span class='notice'>\The [src] fades away!</span>")
 	qdel(src)

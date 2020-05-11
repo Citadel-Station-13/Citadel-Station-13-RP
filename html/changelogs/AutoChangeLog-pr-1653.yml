@@ -1,0 +1,4 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - bugfix: "fixed lack of docking controller for s3 landing pad"

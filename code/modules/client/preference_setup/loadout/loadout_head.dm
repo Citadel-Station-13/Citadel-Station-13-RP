@@ -34,7 +34,7 @@
 /datum/gear/head/beret/csec
 	display_name = "beret, corporate (officer)"
 	path = /obj/item/clothing/head/beret/sec/corporate/officer
-	allowed_roles = list("Security Officer","Head of Security","Warden")
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/head/beret/csec_warden
 	display_name = "beret, corporate (warden)"
@@ -57,7 +57,7 @@
 /datum/gear/head/beret/sec
 	display_name = "beret, red (security)"
 	path = /obj/item/clothing/head/beret/sec
-	allowed_roles = list("Security Officer","Head of Security","Warden")
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/head/cap
 	display_name = "cap, black"
@@ -175,7 +175,7 @@
 	for(var/pin in typesof(/obj/item/clothing/head/pin))
 		var/obj/item/clothing/head/pin/pin_type = pin
 		pins[initial(pin_type.name)] = pin_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(pins))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(pins, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/head/hardhat
 	display_name = "hardhat selection"
@@ -188,7 +188,7 @@
 	for(var/hardhat in typesof(/obj/item/clothing/head/hardhat))
 		var/obj/item/clothing/head/hardhat/hardhat_type = hardhat
 		hardhats[initial(hardhat_type.name)] = hardhat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(hardhats))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(hardhats, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/head/boater
 	display_name = "hat, boatsman"
@@ -229,7 +229,7 @@
 	for(var/santahat in typesof(/obj/item/clothing/head/santa))
 		var/obj/item/clothing/head/santa/santahat_type = santahat
 		santahats[initial(santahat_type.name)] = santahat_type
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(santahats))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(santahats, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/head/hijab
 	display_name = "hijab"
@@ -270,6 +270,10 @@
 /datum/gear/head/rabbit
 	display_name = "rabbit ears"
 	path = /obj/item/clothing/head/rabbitears
+
+/datum/gear/head/maid_band
+	display_name = "maid headband"
+	path = /obj/item/clothing/head/headband/maid
 
 /datum/gear/head/beanie
 	display_name = "beanie"
@@ -351,7 +355,7 @@
 	for(var/sol_style in typesof(/obj/item/clothing/head/beret/sol))
 		var/obj/item/clothing/head/beret/sol/sol = sol_style
 		sols[initial(sol.name)] = sol
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sols))*/ // Vorestation removal.
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(sols, /proc/cmp_text_asc, TRUE))*/ // Vorestation removal.
 
 /datum/gear/head/surgery
 	display_name = "surgical cap selection"
@@ -371,3 +375,26 @@
 /datum/gear/head/circuitry
 	display_name = "headwear, circuitry (empty)"
 	path = /obj/item/clothing/head/circuitry
+
+/datum/gear/head/maangtikka
+	display_name = "maang tikka"
+	path = /obj/item/clothing/head/maangtikka
+
+/datum/gear/head/jingasa
+	display_name = "jingasa"
+	path = /obj/item/clothing/head/jingasa
+
+/datum/gear/head/bohat
+	display_name = "bridge officer hat"
+	path = /obj/item/clothing/head/bohat
+	allowed_roles = list("Command Secretary")
+
+/datum/gear/head/paramedhat
+	display_name = "Paramedic Cap"
+	path = /obj/item/clothing/head/parahat
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/head/bohat
+	display_name = "bridge officer cap"
+	path = /obj/item/clothing/head/bocap
+	allowed_roles = list("Command Secretary")

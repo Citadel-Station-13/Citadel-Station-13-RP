@@ -32,7 +32,7 @@
 	//Set the destination to be like us
 	T.Destroy()
 	var/turf/simulated/shuttle/new_dest = T.ChangeTurf(my_turf.type,,1)
-	new_dest.set_dir(my_turf.dir)
+	new_dest.setDir(my_turf.dir)
 	new_dest.icon_state = my_turf.icon_state
 	new_dest.icon = my_turf.icon
 	new_dest.copy_overlays(my_turf, TRUE)
@@ -60,7 +60,7 @@
 	//Change our source to whatever it was before
 	if(turf_type)
 		new_source = my_turf.ChangeTurf(turf_type,,1)
-		new_source.set_dir(dir)
+		new_source.setDir(dir)
 		new_source.icon_state = icon_state
 		new_source.icon = icon
 		new_source.copy_overlays(src, TRUE)
@@ -185,7 +185,7 @@
 	light_color = "#66ffff" // Bright cyan.
 	block_tele = TRUE
 
-/turf/simulated/shuttle/floor/alien/initialize()
+/turf/simulated/shuttle/floor/alien/Initialize()
 	. = ..()
 	icon_state = "alienpod[rand(1, 9)]"
 
@@ -213,8 +213,9 @@
 	takes_underlays = 1
 	blocks_air = 1 //I'd make these unsimulated but it just fucks with so much stuff so many other places.
 
-	initialize()
-		icon_state = "carry_ingame"
+/turf/simulated/shuttle/plating/carry/Initialize()
+	. = ..()
+	icon_state = "carry_ingame"
 
 /turf/simulated/shuttle/plating/airless/carry
 	name = "airless carry turf"
@@ -223,8 +224,9 @@
 	takes_underlays = 1
 	blocks_air = 1
 
-	initialize()
-		icon_state = "carry_ingame"
+/turf/simulated/shuttle/plating/airless/carry/Initialize()
+	. = ..()
+	icon_state = "carry_ingame"
 
 /turf/simulated/shuttle/plating/skipjack //Skipjack plating
 	oxygen = 0

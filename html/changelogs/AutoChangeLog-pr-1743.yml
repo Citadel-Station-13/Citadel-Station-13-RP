@@ -1,0 +1,4 @@
+author: "drofoljaelisglis"
+delete-after: True
+changes: 
+  - rscadd: "Added two new crates to Cargo's consoles, one under Recreation, the Jukebox crate, and the other under Science, the Jukebox Circuit Board crate."

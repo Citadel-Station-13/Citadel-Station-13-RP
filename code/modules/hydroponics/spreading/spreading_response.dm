@@ -94,7 +94,7 @@
 			src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
 			victim.forceMove(src.loc)
 			buckle_mob(victim)
-			victim.set_dir(pick(cardinal))
+			victim.setDir(pick(cardinal))
 			victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
 			victim.Weaken(0.5)
 			seed.do_thorns(victim,src)

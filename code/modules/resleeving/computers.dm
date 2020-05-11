@@ -1,9 +1,11 @@
 /obj/machinery/computer/transhuman/resleeving
 	name = "resleeving control console"
+	catalogue_data = list(///datum/category_item/catalogue/information/organization/khi,
+						/datum/category_item/catalogue/technology/resleeving)
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = "#315ab4"
-	circuit = /obj/item/weapon/circuitboard/resleeving_control
+	circuit = /obj/item/circuitboard/resleeving_control
 	req_access = list(access_heads) //Only used for record deletion right now.
 	var/list/pods = list() //Linked grower pods.
 	var/list/spods = list()
@@ -14,9 +16,9 @@
 	var/datum/transhuman/mind_record/active_mr = null
 	var/organic_capable = 1
 	var/synthetic_capable = 1
-	var/obj/item/weapon/disk/transcore/disk
+	var/obj/item/disk/transcore/disk
 
-/obj/machinery/computer/transhuman/resleeving/initialize()
+/obj/machinery/computer/transhuman/resleeving/Initialize()
 	. = ..()
 	updatemodules()
 
@@ -62,21 +64,21 @@
 			P.name = "[initial(P.name)] #[num++]"
 
 /obj/machinery/computer/transhuman/resleeving/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/device/multitool))
-		var/obj/item/device/multitool/M = W
+	if(istype(W, /obj/item/multitool))
+		var/obj/item/multitool/M = W
 		var/obj/machinery/clonepod/transhuman/P = M.connecting
 		if(istype(P) && !(P in pods))
 			pods += P
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
-			user << "<span class='notice'>You connect [P] to [src].</span>"
-	else if(istype(W, /obj/item/weapon/disk/transcore) && SStranscore && !SStranscore.core_dumped)
+			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
+	else if(istype(W, /obj/item/disk/transcore) && SStranscore && !SStranscore.core_dumped)
 		user.unEquip(W)
 		disk = W
 		disk.forceMove(src)
-		user << "<span class='notice'>You insert \the [W] into \the [src].</span>"
-	if(istype(W, /obj/item/weapon/disk/body_record))
-		var/obj/item/weapon/disk/body_record/brDisk = W
+		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
+	if(istype(W, /obj/item/disk/body_record))
+		var/obj/item/disk/body_record/brDisk = W
 		if(!brDisk.stored)
 			to_chat(user, "<span class='warning'>\The [W] does not contain a stored body record.</span>")
 			return
@@ -198,7 +200,7 @@
 	data["coredumped"] = SStranscore.core_dumped
 	data["emergency"] = disk ? 1 : 0
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "sleever.tmpl", "Resleeving Control Console", 400, 450)
 		ui.set_initial_data(data)
@@ -301,8 +303,8 @@
 					else if(pod.mess)
 						temp = "Error: Growpod malfunction."
 
-					//Disabled in config.
-					else if(!config.revival_cloning)
+					//Disabled in config_legacy.
+					else if(!config_legacy.revival_cloning)
 						temp = "Error: Unable to initiate growing cycle."
 
 					//Do the cloning!
@@ -375,31 +377,33 @@
 		menu = href_list["menu"]
 		temp = ""
 
-	GLOB.nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 	add_fingerprint(usr)
 
 // In here because only relevant to computer
-/obj/item/weapon/cmo_disk_holder
+/obj/item/cmo_disk_holder
 	name = "cmo emergency packet"
 	desc = "A small paper packet with printing on one side. \"Tear open in case of Code Delta or Emergency Evacuation ONLY. Use in any other case is UNLAWFUL.\""
+	catalogue_data = list(/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "cmoemergency"
 	item_state = "card-id"
 
-/obj/item/weapon/cmo_disk_holder/attack_self(var/mob/attacker)
+/obj/item/cmo_disk_holder/attack_self(var/mob/attacker)
 	playsound(src, 'sound/items/poster_ripped.ogg', 50)
-	attacker << "<span class='warning'>You tear open \the [name].</span>"
+	to_chat(attacker, "<span class='warning'>You tear open \the [name].</span>")
 	attacker.unEquip(src)
-	var/obj/item/weapon/disk/transcore/newdisk = new(get_turf(src))
+	var/obj/item/disk/transcore/newdisk = new(get_turf(src))
 	attacker.put_in_any_hand_if_possible(newdisk)
 	qdel(src)
 
-/obj/item/weapon/disk/transcore
+/obj/item/disk/transcore
 	name = "TransCore Dump Disk"
 	desc = "It has a small label. \n\
 	\"1.INSERT DISK INTO RESLEEVING CONSOLE\n\
 	2. BEGIN CORE DUMP PROCEDURE\n\
 	3. ENSURE DISK SAFETY WHEN EJECTED\""
+	catalogue_data = list(/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "harddisk"
 	item_state = "card-id"

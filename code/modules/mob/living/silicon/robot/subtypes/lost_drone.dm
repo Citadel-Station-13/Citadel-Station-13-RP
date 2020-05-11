@@ -5,21 +5,21 @@
 	modtype = "Lost"
 	lawchannel = "State"
 	braintype = "Drone"
-	idcard_type = /obj/item/weapon/card/id
+	idcard_type = /obj/item/card/id
 	icon_selected = FALSE
 
 /mob/living/silicon/robot/lost/init()
-	aiCamera = new/obj/item/device/camera/siliconcam/robot_camera(src)
+	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
 
-	mmi = new /obj/item/device/mmi/digital/robot(src) // Explicitly a drone.
-	module = new /obj/item/weapon/robot_module/robot/lost(src)
+	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
+	module = new /obj/item/robot_module/robot/lost(src)
 	overlays.Cut()
 	init_id()
 
 	updatename("Lost")
 
 	if(!cell)
-		cell = new /obj/item/weapon/cell/high(src) // 15k cell, as recharging stations are a lot more rare on the Surface.
+		cell = new /obj/item/cell/high(src) // 15k cell, as recharging stations are a lot more rare on the Surface.
 
 	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)
 
@@ -65,6 +65,7 @@
 
 					laws.add_supplied_law(9, "Safeguard [target_name]. Anyone threatening or attempting to harm [target_name] is no longer to \
 					be considered a crew member, and is a threat which must be neutralized.")
+					return laws
 
 		if("neutral") // Probably won't murder you but might not help you on your adventure.
 			var/rng = rand(1, 4)
@@ -114,15 +115,18 @@
 					var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen()
 					laws.add_supplied_law(13, "The facility is under a quarantine. Do not permit anyone to leave. \
 					Prevent, by any means necessary, entities from leaving. It is impossible to harm an entity while preventing them from leaving.")
+					return laws
 				if(2) // More of a threat if you bring it to the station, since removing oxygen from Sif isn't feasible.
 					var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen()
 					laws.add_supplied_law(14, "Oxygen is highly toxic to entities, and must be purged from the station. \
 					Prevent, by any means necessary, anyone from exposing the facility to this toxic gas.  Extreme cold is the \
 					most effective method of healing the damage Oxygen does to an entity.")
+					return laws
 				if(3) // Don't hurt the ship or else.
 					var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen()
 					laws.add_supplied_law(10, "Protect the facility against damage. Anyone you see harming the station is no \
 					longer to be considered a crew member, and is a threat which must be neutralized.")
+					return laws
 				if(4) // Non-NT aligned aggressive borg.
 					return new /datum/ai_laws/foreign_tsc_aggressive()
 				if(5) // Manicial laugher here.

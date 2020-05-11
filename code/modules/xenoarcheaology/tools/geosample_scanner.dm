@@ -6,11 +6,11 @@
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "analyser"
 
-	use_power = 1			//1 = idle, 2 = active
+	use_power = USE_POWER_IDLE			//1 = idle, 2 = active
 	idle_power_usage = 20
 	active_power_usage = 300
 
-	//var/obj/item/weapon/reagent_containers/glass/coolant_container
+	//var/obj/item/reagent_containers/glass/coolant_container
 	var/scanning = 0
 	var/report_num = 0
 	//
@@ -43,8 +43,8 @@
 	var/t_left_radspike = 0
 	var/rad_shield = 0
 
-/obj/machinery/radiocarbon_spectrometer/New()
-	..()
+/obj/machinery/radiocarbon_spectrometer/Initialize(mapload)
+	. = ..()
 	create_reagents(500)
 	coolant_reagents_purity["water"] = 0.5
 	coolant_reagents_purity["icecoffee"] = 0.6
@@ -64,7 +64,7 @@
 
 /obj/machinery/radiocarbon_spectrometer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(scanning)
-		user << "<span class='warning'>You can't do that while [src] is scanning!</span>"
+		to_chat(user, "<span class='warning'>You can't do that while [src] is scanning!</span>")
 	else
 		if(istype(I, /obj/item/stack/nanopaste))
 			var/choice = alert("What do you want to do with the nanopaste?","Radiometric Scanner","Scan nanopaste","Fix seal integrity")
@@ -74,37 +74,37 @@
 				N.use(amount_used)
 				scanner_seal_integrity = round(scanner_seal_integrity + amount_used * 10)
 				return
-		if(istype(I, /obj/item/weapon/reagent_containers/glass))
-			var/obj/item/weapon/reagent_containers/glass/G = I
+		if(istype(I, /obj/item/reagent_containers/glass))
+			var/obj/item/reagent_containers/glass/G = I
 			if(!G.is_open_container())
 				return
 			var/choice = alert("What do you want to do with the container?","Radiometric Scanner","Add coolant","Empty coolant","Scan container")
 			if(choice == "Add coolant")
-				var/amount_transferred = min(src.reagents.maximum_volume - src.reagents.total_volume, G.reagents.total_volume)
+				var/amount_transferred = min(reagents.maximum_volume - reagents.total_volume, G.reagents.total_volume)
 				var/trans = G.reagents.trans_to_obj(src, amount_transferred)
-				user << "<span class='info'>You empty [trans ? trans : 0]u of coolant into [src].</span>"
+				to_chat(user, "<span class='info'>You empty [trans ? trans : 0]u of coolant into [src].</span>")
 				update_coolant()
 				return
 			else if(choice == "Empty coolant")
-				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, src.reagents.total_volume)
-				var/trans = src.reagents.trans_to(G, amount_transferred)
-				user << "<span class='info'>You remove [trans ? trans : 0]u of coolant from [src].</span>"
+				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, reagents.total_volume)
+				var/trans = reagents.trans_to(G, amount_transferred)
+				to_chat(user, "<span class='info'>You remove [trans ? trans : 0]u of coolant from [src].</span>")
 				update_coolant()
 				return
 		if(scanned_item)
-			user << "<span class=warning>\The [src] already has \a [scanned_item] inside!</span>"
+			to_chat(user, "<span class=warning>\The [src] already has \a [scanned_item] inside!</span>")
 			return
 		user.drop_item()
 		I.loc = src
 		scanned_item = I
-		user << "<span class=notice>You put \the [I] into \the [src].</span>"
+		to_chat(user, "<span class=notice>You put \the [I] into \the [src].</span>")
 
 /obj/machinery/radiocarbon_spectrometer/proc/update_coolant()
 	var/total_purity = 0
 	fresh_coolant = 0
 	coolant_purity = 0
 	var/num_reagent_types = 0
-	for (var/datum/reagent/current_reagent in src.reagents.reagent_list)
+	for (var/datum/reagent/current_reagent in reagents.reagent_list)
 		if (!current_reagent)
 			continue
 		var/cur_purity = coolant_reagents_purity[current_reagent.id]
@@ -150,7 +150,7 @@
 	data["rad_shield_on"] = rad_shield
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -198,7 +198,7 @@
 					radiation = rand() * 15 + 85
 					if(!rad_shield)
 						//irradiate nearby mobs
-						radiation_repository.radiate(src, radiation / 25)
+						SSradiation.radiate(src, radiation / 25)
 				else
 					t_left_radspike = pick(10,15,25)
 
@@ -234,16 +234,16 @@
 			//emergency stop if seal integrity reaches 0
 			if(scanner_seal_integrity <= 0 || (scanner_temperature >= 1273 && !rad_shield))
 				stop_scanning()
-				src.visible_message("<font color='blue'>\icon[src] buzzes unhappily. It has failed mid-scan!</font>", 2)
+				visible_message("<font color='blue'>\icon[src] buzzes unhappily. It has failed mid-scan!</font>", 2)
 
 			if(prob(5))
-				src.visible_message("<font color='blue'>\icon[src] [pick("whirrs","chuffs","clicks")][pick(" excitedly"," energetically"," busily")].</font>", 2)
+				visible_message("<font color='blue'>\icon[src] [pick("whirrs","chuffs","clicks")][pick(" excitedly"," energetically"," busily")].</font>", 2)
 	else
 		//gradually cool down over time
 		if(scanner_temperature > 0)
 			scanner_temperature = max(scanner_temperature - 5 - 10 * rand(), 0)
 		if(prob(0.75))
-			src.visible_message("<font color='blue'>\icon[src] [pick("plinks","hisses")][pick(" quietly"," softly"," sadly"," plaintively")].</font>", 2)
+			visible_message("<font color='blue'>\icon[src] [pick("plinks","hisses")][pick(" quietly"," softly"," sadly"," plaintively")].</font>", 2)
 	last_process_worldtime = world.time
 
 /obj/machinery/radiocarbon_spectrometer/proc/stop_scanning()
@@ -257,37 +257,37 @@
 	radiation = 0
 	t_left_radspike = 0
 	if(used_coolant)
-		src.reagents.remove_any(used_coolant)
+		reagents.remove_any(used_coolant)
 		used_coolant = 0
 
 /obj/machinery/radiocarbon_spectrometer/proc/complete_scan()
-	src.visible_message("<font color='blue'>\icon[src] makes an insistent chime.</font>", 2)
+	visible_message("<font color='blue'>\icon[src] makes an insistent chime.</font>", 2)
 
 	if(scanned_item)
 		//create report
-		var/obj/item/weapon/paper/P = new(src)
+		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [scanned_item.name]"
-		P.stamped = list(/obj/item/weapon/stamp)
+		P.stamped = list(/obj/item/stamp)
 		P.overlays = list("paper_stamped")
 
 		//work out data
 		var/data = " - Mundane object: [scanned_item.desc ? scanned_item.desc : "No information on record."]<br>"
 		var/datum/geosample/G
 		switch(scanned_item.type)
-			if(/obj/item/weapon/ore)
-				var/obj/item/weapon/ore/O = scanned_item
+			if(/obj/item/ore)
+				var/obj/item/ore/O = scanned_item
 				if(O.geologic_data)
 					G = O.geologic_data
 
-			if(/obj/item/weapon/rocksliver)
-				var/obj/item/weapon/rocksliver/O = scanned_item
+			if(/obj/item/rocksliver)
+				var/obj/item/rocksliver/O = scanned_item
 				if(O.geological_data)
 					G = O.geological_data
 
-			if(/obj/item/weapon/archaeological_find)
+			if(/obj/item/archaeological_find)
 				data = " - Mundane object (archaic xenos origins)<br>"
 
-				var/obj/item/weapon/archaeological_find/A = scanned_item
+				var/obj/item/archaeological_find/A = scanned_item
 				if(A.talking_atom)
 					data = " - Exhibits properties consistent with sonic reproduction and audio capture technologies.<br>"
 
@@ -318,9 +318,9 @@
 		P.info = "<b>[src] analysis report #[report_num]</b><br>"
 		P.info += "<b>Scanned item:</b> [scanned_item.name]<br><br>" + data
 		last_scan_data = P.info
-		P.loc = src.loc
+		P.loc = loc
 
-		scanned_item.loc = src.loc
+		scanned_item.loc = loc
 		scanned_item = null
 
 /obj/machinery/radiocarbon_spectrometer/Topic(href, href_list)
@@ -336,11 +336,11 @@
 					scanner_progress = 0
 					scanning = 1
 					t_left_radspike = pick(5,10,15)
-					usr << "<span class='notice'>Scan initiated.</span>"
+					to_chat(usr, "<span class='notice'>Scan initiated.</span>")
 				else
-					usr << "<span class='warning'>Could not initiate scan, seal requires replacing.</span>"
+					to_chat(usr, "<span class='warning'>Could not initiate scan, seal requires replacing.</span>")
 			else
-				usr << "<span class='warning'>Insert an item to scan.</span>"
+				to_chat(usr, "<span class='warning'>Insert an item to scan.</span>")
 
 	if(href_list["maserWavelength"])
 		maser_wavelength = max(min(maser_wavelength + 1000 * text2num(href_list["maserWavelength"]), 10000), 1)
@@ -356,7 +356,7 @@
 
 	if(href_list["ejectItem"])
 		if(scanned_item)
-			scanned_item.loc = src.loc
+			scanned_item.loc = loc
 			scanned_item = null
 
 	add_fingerprint(usr)

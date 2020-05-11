@@ -6,10 +6,10 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mass_driver"
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 50
-	circuit = /obj/item/weapon/circuitboard/mass_driver
+	circuit = /obj/item/circuitboard/mass_driver
 
 	var/power = 1.0
 	var/code = 1.0
@@ -19,12 +19,12 @@
 /obj/machinery/mass_driver/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/motor(src)
-	component_parts += new /obj/item/weapon/stock_parts/motor(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/gear(src)
-	component_parts += new /obj/item/weapon/stock_parts/spring(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/motor(src)
+	component_parts += new /obj/item/stock_parts/motor(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/gear(src)
+	component_parts += new /obj/item/stock_parts/spring(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
 
@@ -34,7 +34,7 @@
 	if(default_deconstruction_crowbar(user, I))
 		return
 
-	if(istype(I, /obj/item/device/multitool))
+	if(istype(I, /obj/item/multitool))
 		if(panel_open)
 			var/input = sanitize(input(usr, "What id would you like to give this conveyor?", "Multitool-Conveyor interface", id))
 			if(!input)

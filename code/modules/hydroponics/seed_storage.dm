@@ -24,7 +24,7 @@
 	icon_state = "seeds"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 100
 
 	var/seeds_initialized = 0 // Map-placed ones break if seeds are loaded right at the start of the round, so we do it on the first interaction
@@ -54,7 +54,7 @@
 					/obj/item/seeds/ambrosiavulgarisseed = 3,
 					/obj/item/seeds/plastiseed = 3,
 					/obj/item/seeds/kudzuseed = 2,
-					/obj/item/seeds/nettleseed = 1
+					/obj/item/seeds/rose/blood = 1
 					),
 			list(
 					/obj/item/seeds/ambrosiavulgarisseed = 3,
@@ -69,6 +69,7 @@
 					/obj/item/seeds/bluetomatoseed = 1
 					),
 			list(
+					/obj/item/seeds/durian = 2,
 					/obj/item/seeds/ambrosiadeusseed = 1,
 					/obj/item/seeds/killertomatoseed = 1
 					),
@@ -99,17 +100,20 @@
 		/obj/item/seeds/berryseed = 3,
 		/obj/item/seeds/cabbageseed = 3,
 		/obj/item/seeds/carrotseed = 3,
+		/obj/item/seeds/celery = 3,
 		/obj/item/seeds/chantermycelium = 3,
 		/obj/item/seeds/cherryseed = 3,
 		/obj/item/seeds/chiliseed = 3,
 		/obj/item/seeds/cocoapodseed = 3,
 		/obj/item/seeds/cornseed = 3,
+		/obj/item/seeds/durian = 3,
 		/obj/item/seeds/eggplantseed = 3,
 		/obj/item/seeds/grapeseed = 3,
 		/obj/item/seeds/grassseed = 3,
 		/obj/item/seeds/replicapod = 3,
 		/obj/item/seeds/lavenderseed = 3,
 		/obj/item/seeds/lemonseed = 3,
+		/obj/item/seeds/lettuce = 3,
 		/obj/item/seeds/limeseed = 3,
 		/obj/item/seeds/mtearseed = 2,
 		/obj/item/seeds/orangeseed = 3,
@@ -119,14 +123,18 @@
 		/obj/item/seeds/poppyseed = 3,
 		/obj/item/seeds/potatoseed = 3,
 		/obj/item/seeds/pumpkinseed = 3,
+		/obj/item/seeds/rhubarb = 3,
 		/obj/item/seeds/riceseed = 3,
+		/obj/item/seeds/rose = 3,
 		/obj/item/seeds/soyaseed = 3,
+		/obj/item/seeds/spineapple = 3,
 		/obj/item/seeds/sugarcaneseed = 3,
 		/obj/item/seeds/sunflowerseed = 3,
 		/obj/item/seeds/shandseed = 2,
 		/obj/item/seeds/tobaccoseed = 3,
 		/obj/item/seeds/tomatoseed = 3,
 		/obj/item/seeds/towermycelium = 3,
+		/obj/item/seeds/vanilla = 3,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3
@@ -144,11 +152,13 @@
 		/obj/item/seeds/berryseed = 3,
 		/obj/item/seeds/cabbageseed = 3,
 		/obj/item/seeds/carrotseed = 3,
+		/obj/item/seeds/celery = 3,
 		/obj/item/seeds/chantermycelium = 3,
 		/obj/item/seeds/cherryseed = 3,
 		/obj/item/seeds/chiliseed = 3,
 		/obj/item/seeds/cocoapodseed = 3,
 		/obj/item/seeds/cornseed = 3,
+		/obj/item/seeds/durian = 3,
 		/obj/item/seeds/replicapod = 3,
 		/obj/item/seeds/eggplantseed = 3,
 		/obj/item/seeds/glowshroom = 2,
@@ -156,6 +166,7 @@
 		/obj/item/seeds/grassseed = 3,
 		/obj/item/seeds/lavenderseed = 3,
 		/obj/item/seeds/lemonseed = 3,
+		/obj/item/seeds/lettuce = 3,
 		/obj/item/seeds/libertymycelium = 2,
 		/obj/item/seeds/limeseed = 3,
 		/obj/item/seeds/mtearseed = 2,
@@ -168,14 +179,19 @@
 		/obj/item/seeds/potatoseed = 3,
 		/obj/item/seeds/pumpkinseed = 3,
 		/obj/item/seeds/reishimycelium = 2,
+		/obj/item/seeds/rhubarb = 3,
 		/obj/item/seeds/riceseed = 3,
+		/obj/item/seeds/rose = 3,
 		/obj/item/seeds/soyaseed = 3,
+		/obj/item/seeds/spineapple = 3,
 		/obj/item/seeds/sugarcaneseed = 3,
 		/obj/item/seeds/sunflowerseed = 3,
 		/obj/item/seeds/shandseed = 2,
 		/obj/item/seeds/tobaccoseed = 3,
 		/obj/item/seeds/tomatoseed = 3,
 		/obj/item/seeds/towermycelium = 3,
+		/obj/item/seeds/vanilla = 3,
+		/obj/item/seeds/wabback = 2,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3
@@ -473,8 +489,8 @@
 		add(O)
 		user.visible_message("[user] puts \the [O.name] into \the [src].", "You put \the [O] into \the [src].")
 		return
-	else if (istype(O, /obj/item/weapon/storage/bag/plants) && !lockdown)
-		var/obj/item/weapon/storage/P = O
+	else if (istype(O, /obj/item/storage/bag/plants) && !lockdown)
+		var/obj/item/storage/P = O
 		var/loaded = 0
 		for(var/obj/item/seeds/G in P.contents)
 			++loaded
@@ -495,7 +511,7 @@
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, "[initial(icon_state)]-panel")
-	else if((O.is_wirecutter() || istype(O, /obj/item/device/multitool)) && panel_open)
+	else if((O.is_wirecutter() || istype(O, /obj/item/multitool)) && panel_open)
 		wires.Interact(user)
 
 /obj/machinery/seed_storage/emag_act(var/remaining_charges, var/mob/user)
@@ -508,7 +524,7 @@
 			req_access = list()
 			req_one_access = list()
 			to_chat(user, "<span class='warning'>\The [src]'s access mechanism shorts out.</span>")
-			var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 			sparks.set_up(3, 0, get_turf(src))
 			sparks.start()
 			visible_message("<span class='warning'>\The [src]'s panel sparks!</span>")
@@ -519,8 +535,8 @@
 	if (istype(O.loc, /mob))
 		var/mob/user = O.loc
 		user.remove_from_mob(O)
-	else if(istype(O.loc,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = O.loc
+	else if(istype(O.loc,/obj/item/storage))
+		var/obj/item/storage/S = O.loc
 		S.remove_from_storage(O, src)
 
 	O.loc = src

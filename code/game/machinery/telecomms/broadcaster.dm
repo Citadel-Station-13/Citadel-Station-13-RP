@@ -17,12 +17,22 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 25
 	machinetype = 5
 	produces_heat = 0
 	delay = 7
-	circuitboard = "/obj/item/weapon/circuitboard/telecomms/broadcaster"
+	circuit = /obj/item/circuitboard/telecomms/broadcaster
+
+/obj/machinery/telecomms/processor/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
+	component_parts += new /obj/item/stock_parts/subspace/crystal(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/micro_laser/high(src)
+	component_parts += new /obj/item/stack/cable_coil(src, 1)
 
 /obj/machinery/telecomms/broadcaster/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
 	// Don't broadcast rejected signals
@@ -113,11 +123,11 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 /obj/machinery/telecomms/allinone
 	name = "Telecommunications Mainframe"
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "comm_server"
+	icon_state = "allinone"
 	desc = "A compact machine used for portable subspace telecommuniations processing."
 	density = 1
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	machinetype = 6
 	produces_heat = 0
@@ -140,7 +150,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		// For some reason level is both used as a list and not a list, and now it needs to be a list.
 		// Because this is a 'all in one' machine, we're gonna just cheat.
-		signal.data["level"] = using_map.contact_levels.Copy()
+		signal.data["level"] = GLOB.using_map.contact_levels.Copy()
 
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary
@@ -225,7 +235,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 **/
 
 /proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
-						var/vmask, var/vmessage, var/obj/item/device/radio/radio,
+						var/vmask, var/vmessage, var/obj/item/radio/radio,
 						var/message, var/name, var/job, var/realname, var/vname,
 						var/data, var/compression, var/list/level, var/freq, var/verbage = "says", var/datum/language/speaking = null)
 
@@ -234,13 +244,13 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	var/display_freq = freq
 
-	var/list/obj/item/device/radio/radios = list()
+	var/list/obj/item/radio/radios = list()
 
 	// --- Broadcast only to intercom devices ---
 
 	if(data == 1)
 
-		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
 			if(R.receive_range(display_freq, level) > -1)
 				radios += R
 
@@ -248,9 +258,9 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	else if(data == 2)
 
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/radio/R in connection.devices["[RADIO_CHAT]"])
 
-			if(istype(R, /obj/item/device/radio/headset) && !R.adhoc_fallback)
+			if(istype(R, /obj/item/radio/headset) && !R.adhoc_fallback)
 				continue
 
 			if(R.receive_range(display_freq, level) > -1)
@@ -261,7 +271,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	else if(data == 3)
 		for(var/antag_freq in ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
-			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
+			for (var/obj/item/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				if(R.receive_range(antag_freq, level) > -1)
 					radios += R
 
@@ -269,7 +279,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	else
 
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/radio/R in connection.devices["[RADIO_CHAT]"])
 			if(R.receive_range(display_freq, level) > -1)
 				radios += R
 
@@ -446,7 +456,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast only to intercom devices ---
 
 	if(data == 1)
-		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
 			var/turf/position = get_turf(R)
 			if(position && position.z == level)
 				receive |= R.send_hear(display_freq, level)
@@ -455,9 +465,9 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast only to intercoms and station-bounced radios ---
 
 	else if(data == 2)
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/radio/R in connection.devices["[RADIO_CHAT]"])
 
-			if(istype(R, /obj/item/device/radio/headset))
+			if(istype(R, /obj/item/radio/headset))
 				continue
 			var/turf/position = get_turf(R)
 			if(position && position.z == level)
@@ -469,7 +479,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	else if(data == 3)
 		for(var/freq in ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(freq)
-			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
+			for (var/obj/item/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				var/turf/position = get_turf(R)
 				if(position && position.z == level)
 					receive |= R.send_hear(freq)
@@ -478,7 +488,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	// --- Broadcast to ALL radio devices ---
 
 	else
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/obj/item/radio/R in connection.devices["[RADIO_CHAT]"])
 			var/turf/position = get_turf(R)
 			if(position && position.z == level)
 				receive |= R.send_hear(display_freq)
@@ -535,7 +545,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			part_b_extra = " <i>(Intercepted)</i>"
 
 		// Create a radio headset for the sole purpose of using its icon
-		var/obj/item/device/radio/headset/radio = new
+		var/obj/item/radio/headset/radio = new
 
 		var/part_b = "</span><b> \icon[radio]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE

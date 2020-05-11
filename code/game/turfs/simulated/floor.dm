@@ -35,14 +35,18 @@
 /turf/simulated/floor/is_plating()
 	return !flooring
 
-/turf/simulated/floor/New(var/newloc, var/floortype)
-	..(newloc)
+/turf/simulated/floor/Initialize(mapload, floortype)
+	. = ..()
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
 		set_flooring(get_flooring_data(floortype))
 	else
 		footstep_sounds = base_footstep_sounds
+	if(can_dirty && can_start_dirty)
+		if(prob(dirty_prob))
+			dirt += rand(50,100)
+			update_dirt() //5% chance to start with dirt on a floor tile- give the janitor something to do
 
 /turf/simulated/floor/proc/set_flooring(var/decl/flooring/newflooring)
 	make_plating(defer_icon_update = 1)
@@ -92,7 +96,7 @@
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
 
-/turf/simulated/floor/rcd_values(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
 			// A wall costs four sheets to build (two for the grider and two for finishing it).
@@ -130,7 +134,7 @@
 	return FALSE
 
 
-/turf/simulated/floor/rcd_act(mob/living/user, obj/item/weapon/rcd/the_rcd, passed_mode)
+/turf/simulated/floor/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
 			to_chat(user, span("notice", "You build a wall."))
@@ -138,7 +142,7 @@
 			var/turf/simulated/wall/T = get_turf(src) // Ref to the wall we just built.
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
-			var/material/M = name_to_material[the_rcd.material_to_use]
+			var/datum/material/M = name_to_material[the_rcd.material_to_use]
 			T.set_material(M, the_rcd.make_rwalls ? M : null, M)
 			T.add_hiddenprint(user)
 			return TRUE

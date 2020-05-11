@@ -8,9 +8,9 @@
 		return 1
 	if(feedback)
 		if(status[1] == HUMAN_EATING_NO_MOUTH)
-			src << "Where do you intend to put \the [food]? You don't have a mouth!"
+			to_chat(src, "Where do you intend to put \the [food]? You don't have a mouth!")
 		else if(status[1] == HUMAN_EATING_BLOCKED_MOUTH)
-			src << "<span class='warning'>\The [status[2]] is in the way!</span>"
+			to_chat(src, "<span class='warning'>\The [status[2]] is in the way!</span>")
 	return 0
 
 /mob/living/carbon/human/can_force_feed(var/feeder, var/food, var/feedback = 1)
@@ -19,9 +19,9 @@
 		return 1
 	if(feedback)
 		if(status[1] == HUMAN_EATING_NO_MOUTH)
-			feeder << "Where do you intend to put \the [food]? \The [src] doesn't have a mouth!"
+			to_chat(feeder, "Where do you intend to put \the [food]? \The [src] doesn't have a mouth!")
 		else if(status[1] == HUMAN_EATING_BLOCKED_MOUTH)
-			feeder << "<span class='warning'>\The [status[2]] is in the way!</span>"
+			to_chat(feeder, "<span class='warning'>\The [status[2]] is in the way!</span>")
 	return 0
 
 /mob/living/carbon/human/proc/can_eat_status()
@@ -32,29 +32,61 @@
 		return list(HUMAN_EATING_BLOCKED_MOUTH, blocked)
 	return list(HUMAN_EATING_NO_ISSUE)
 
+/mob/living/carbon/human/proc/get_coverage()
+	var/list/coverage = list()
+	for(var/obj/item/clothing/C in src)
+		if(item_is_in_hands(C))
+			continue
+		if(C.body_parts_covered & HEAD)
+			coverage += list(organs_by_name[BP_HEAD])
+		if(C.body_parts_covered & UPPER_TORSO)
+			coverage += list(organs_by_name[BP_TORSO])
+		if(C.body_parts_covered & LOWER_TORSO)
+			coverage += list(organs_by_name[BP_GROIN])
+		if(C.body_parts_covered & LEGS)
+			coverage += list(organs_by_name[BP_L_LEG], organs_by_name[BP_R_LEG])
+		if(C.body_parts_covered & ARMS)
+			coverage += list(organs_by_name[BP_R_ARM], organs_by_name[BP_L_ARM])
+		if(C.body_parts_covered & FEET)
+			coverage += list(organs_by_name[BP_L_FOOT], organs_by_name[BP_R_FOOT])
+		if(C.body_parts_covered & HANDS)
+			coverage += list(organs_by_name[BP_L_HAND], organs_by_name[BP_R_HAND])
+	return coverage
+
+
 //This is called when we want different types of 'cloaks' to stop working, e.g. when attacking.
 /mob/living/carbon/human/break_cloak()
 	if(mind && mind.changeling) //Changeling visible camo
 		mind.changeling.cloaked = 0
-	if(istype(back, /obj/item/weapon/rig)) //Ninja cloak
-		var/obj/item/weapon/rig/suit = back
+	if(istype(back, /obj/item/rig)) //Ninja cloak
+		var/obj/item/rig/suit = back
 		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				cloaker.deactivate()
+
+/mob/living/carbon/human/is_cloaked()
+	if(mind && mind.changeling && mind.changeling.cloaked) // Ling camo.
+		return TRUE
+	else if(istype(back, /obj/item/rig)) //Ninja cloak
+		var/obj/item/rig/suit = back
+		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
+			if(cloaker.active)
+				return TRUE
+	return ..()
 
 /mob/living/carbon/human/get_ear_protection()
 	var/sum = 0
 	if(istype(l_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/L = l_ear
 		sum += L.ear_protection
-	if(istype(l_ear, /obj/item/device/radio/headset))		//CITADEL
-		var/obj/item/device/radio/headset/L = l_ear			//BOWNAN
+	if(istype(l_ear, /obj/item/radio/headset))		//CITADEL
+		var/obj/item/radio/headset/L = l_ear			//BOWNAN
 		sum += L.ear_protection								//CHANGE
 	if(istype(r_ear, /obj/item/clothing/ears))
 		var/obj/item/clothing/ears/R = r_ear
 		sum += R.ear_protection
-	if(istype(r_ear, /obj/item/device/radio/headset))		//CITADEL
-		var/obj/item/device/radio/headset/R = r_ear			//BOWMAN
+	if(istype(r_ear, /obj/item/radio/headset))		//CITADEL
+		var/obj/item/radio/headset/R = r_ear			//BOWMAN
 		sum += R.ear_protection								//CHANGE
 	if(istype(head, /obj/item/clothing/head))
 		var/obj/item/clothing/head/H = head
@@ -105,11 +137,11 @@
 	if(B) // Incase we lost our brain for some reason, like if we got decapped.
 		if(istype(B, /obj/item/organ/internal/mmi_holder))
 			var/obj/item/organ/internal/mmi_holder/mmi_holder = B
-			if(istype(mmi_holder.stored_mmi, /obj/item/device/mmi/digital/posibrain))
+			if(istype(mmi_holder.stored_mmi, /obj/item/mmi/digital/posibrain))
 				return FBP_POSI
-			else if(istype(mmi_holder.stored_mmi, /obj/item/device/mmi/digital/robot))
+			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi/digital/robot))
 				return FBP_DRONE
-			else if(istype(mmi_holder.stored_mmi, /obj/item/device/mmi)) // This needs to come last because inheritence.
+			else if(istype(mmi_holder.stored_mmi, /obj/item/mmi)) // This needs to come last because inheritence.
 				return FBP_CYBORG
 
 	return FBP_NONE
@@ -122,7 +154,7 @@
 	else
 		hud_list[STATUS_HUD]  = gen_hud_image(ingame_hud, src, "hudhealthy", plane = PLANE_CH_STATUS)
 		hud_list[LIFE_HUD]    = gen_hud_image(ingame_hud, src, "hudhealthy", plane = PLANE_CH_LIFE)
-	hud_list[ID_HUD]          = gen_hud_image(using_map.id_hud_icons, src, "hudunknown", plane = PLANE_CH_ID)
+	hud_list[ID_HUD]          = gen_hud_image(GLOB.using_map.id_hud_icons, src, "hudunknown", plane = PLANE_CH_ID)
 	hud_list[WANTED_HUD]      = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_WANTED)
 	hud_list[IMPLOYAL_HUD]    = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_IMPLOYAL)
 	hud_list[IMPCHEM_HUD]     = gen_hud_image(ingame_hud, src, "hudblank", plane = PLANE_CH_IMPCHEM)
@@ -146,7 +178,7 @@
 			compiled_vis |= O.enables_planes
 
 	//Check to see if we have a rig (ugh, blame rigs, desnowflake this)
-	var/obj/item/weapon/rig/rig = back
+	var/obj/item/rig/rig = back
 	if(istype(rig) && rig.visor)
 		if(!rig.helmet || (head && rig.helmet == head))
 			if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)

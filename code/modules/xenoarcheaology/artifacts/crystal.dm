@@ -2,13 +2,11 @@
 	name = "large crystal"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "crystal"
-	density = 1
+	density = TRUE
 
-/obj/structure/crystal/New()
-	..()
-
+/obj/structure/crystal/Initialize(mapload)
+	. = ..()
 	icon_state = pick("ano70","ano80")
-
 	desc = pick(
 	"It shines faintly as it catches the light.",
 	"It appears to have a faint inner glow.",
@@ -17,19 +15,19 @@
 	"It's mesmerizing to behold.")
 
 /obj/structure/crystal/Destroy()
-	src.visible_message("<font color='red'><b>[src] shatters!</b></font>")
+	visible_message("<font color='red'><b>[src] shatters!</b></font>")
 	if(prob(75))
-		new /obj/item/weapon/material/shard/phoron(src.loc)
+		new /obj/item/material/shard/phoron(loc)
 	if(prob(50))
-		new /obj/item/weapon/material/shard/phoron(src.loc)
+		new /obj/item/material/shard/phoron(loc)
 	if(prob(25))
-		new /obj/item/weapon/material/shard/phoron(src.loc)
+		new /obj/item/material/shard/phoron(loc)
 	if(prob(75))
-		new /obj/item/weapon/material/shard(src.loc)
+		new /obj/item/material/shard(loc)
 	if(prob(50))
-		new /obj/item/weapon/material/shard(src.loc)
+		new /obj/item/material/shard(loc)
 	if(prob(25))
-		new /obj/item/weapon/material/shard(src.loc)
-	..()
+		new /obj/item/material/shard(loc)
+	return ..()
 
 //todo: laser_act

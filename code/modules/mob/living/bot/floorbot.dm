@@ -57,7 +57,7 @@
 	if(!emagged)
 		emagged = 1
 		if(user)
-			user << "<span class='notice'>The [src] buzzes and beeps.</span>"
+			to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, 0)
 		return 1
 
@@ -281,14 +281,14 @@
 	playsound(src.loc, "sparks", 50, 1)
 	var/turf/Tsec = get_turf(src)
 
-	var/obj/item/weapon/storage/toolbox/mechanical/N = new /obj/item/weapon/storage/toolbox/mechanical(Tsec)
+	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)
 	N.contents = list()
-	new /obj/item/device/assembly/prox_sensor(Tsec)
+	new /obj/item/assembly/prox_sensor(Tsec)
 	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 	var/obj/item/stack/tile/floor/T = new /obj/item/stack/tile/floor(Tsec)
 	T.amount = amount
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
@@ -300,28 +300,54 @@
 	else if(amount > maxAmount)
 		amount = maxAmount
 
+/mob/living/bot/floorbot/handlePanic()	// Speed modification based on alert level.
+	. = 0
+	switch(get_security_level())
+		if("green")
+			. = 0
+
+		if("yellow")
+			. = 0
+
+		if("violet")
+			. = 0
+
+		if("orange")
+			. = 1
+
+		if("blue")
+			. = 1
+
+		if("red")
+			. = 2
+
+		if("delta")
+			. = 2
+
+	return .
+
 /* Assembly */
 
-/obj/item/weapon/storage/toolbox/mechanical/attackby(var/obj/item/stack/tile/floor/T, mob/living/user as mob)
+/obj/item/storage/toolbox/mechanical/attackby(var/obj/item/stack/tile/floor/T, mob/living/user as mob)
 	if(!istype(T, /obj/item/stack/tile/floor))
 		..()
 		return
 	if(contents.len >= 1)
-		user << "<span class='notice'>They wont fit in as there is already stuff inside.</span>"
+		to_chat(user, "<span class='notice'>They wont fit in as there is already stuff inside.</span>")
 		return
 	if(user.s_active)
 		user.s_active.close(user)
 	if(T.use(10))
-		var/obj/item/weapon/toolbox_tiles/B = new /obj/item/weapon/toolbox_tiles
+		var/obj/item/toolbox_tiles/B = new /obj/item/toolbox_tiles
 		user.put_in_hands(B)
-		user << "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>"
+		to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
 	else
-		user << "<span class='warning'>You need 10 floor tiles for a floorbot.</span>"
+		to_chat(user, "<span class='warning'>You need 10 floor tiles for a floorbot.</span>")
 	return
 
-/obj/item/weapon/toolbox_tiles
+/obj/item/toolbox_tiles
 	desc = "It's a toolbox with tiles sticking out the top"
 	name = "tiles and toolbox"
 	icon = 'icons/obj/aibots.dmi'
@@ -333,17 +359,17 @@
 	w_class = ITEMSIZE_NORMAL
 	var/created_name = "Floorbot"
 
-/obj/item/weapon/toolbox_tiles/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/toolbox_tiles/attackby(var/obj/item/W, mob/user as mob)
 	..()
 	if(isprox(W))
 		qdel(W)
-		var/obj/item/weapon/toolbox_tiles_sensor/B = new /obj/item/weapon/toolbox_tiles_sensor()
+		var/obj/item/toolbox_tiles_sensor/B = new /obj/item/toolbox_tiles_sensor()
 		B.created_name = created_name
 		user.put_in_hands(B)
-		user << "<span class='notice'>You add the sensor to the toolbox and tiles!</span>"
+		to_chat(user, "<span class='notice'>You add the sensor to the toolbox and tiles!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
-	else if (istype(W, /obj/item/weapon/pen))
+	else if (istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return
@@ -351,7 +377,7 @@
 			return
 		created_name = t
 
-/obj/item/weapon/toolbox_tiles_sensor
+/obj/item/toolbox_tiles_sensor
 	desc = "It's a toolbox with tiles sticking out the top and a sensor attached"
 	name = "tiles, toolbox and sensor arrangement"
 	icon = 'icons/obj/aibots.dmi'
@@ -363,17 +389,17 @@
 	w_class = ITEMSIZE_NORMAL
 	var/created_name = "Floorbot"
 
-/obj/item/weapon/toolbox_tiles_sensor/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/toolbox_tiles_sensor/attackby(var/obj/item/W, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic right arm") || (W.name == "robotic left arm"))))
 		qdel(W)
 		var/turf/T = get_turf(user.loc)
 		var/mob/living/bot/floorbot/A = new /mob/living/bot/floorbot(T)
 		A.name = created_name
-		user << "<span class='notice'>You add the robot arm to the odd looking toolbox assembly! Boop beep!</span>"
+		to_chat(user, "<span class='notice'>You add the robot arm to the odd looking toolbox assembly! Boop beep!</span>")
 		user.drop_from_inventory(src)
 		qdel(src)
-	else if(istype(W, /obj/item/weapon/pen))
+	else if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return

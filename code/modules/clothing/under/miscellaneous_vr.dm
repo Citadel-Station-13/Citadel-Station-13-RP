@@ -3,8 +3,8 @@
 /obj/item/clothing/under/permit
 	name = "public nudity permit"
 	desc = "This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide."
-	icon = 'icons/obj/card.dmi'
-	icon_state = "guest"
+	icon = 'icons/obj/card_cit.dmi'
+	icon_state = "permit-civilian"
 	body_parts_covered = 0
 
 	sprite_sheets = list()
@@ -85,7 +85,7 @@
 		H.update_icons() //Just want the matrix transform
 		return
 
-	if (!IsInRange(new_size,25,200))
+	if (!ISINRANGE(new_size,25,200))
 		to_chat(H,"<span class='notice'>The safety features of the uniform prevent you from choosing this size.</span>")
 		return
 
@@ -105,3 +105,7 @@
 		H.resize(original_size)
 		original_size = null
 		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+
+//Same as Nanotrasen Security Uniforms
+/obj/item/clothing/under/ert
+	armor = list(melee = 5, bullet = 10, laser = 10, energy = 5, bomb = 5, bio = 0, rad = 0)

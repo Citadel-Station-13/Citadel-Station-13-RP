@@ -1,4 +1,4 @@
-/obj/item/device/closet_painter
+/obj/item/closet_painter
 	name = "closet painter"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
@@ -64,14 +64,13 @@
 		/obj/structure/closet/cabinet,
 		/obj/structure/closet/crate,
 		/obj/structure/closet/coffin,
-		/obj/structure/closet/fireaxecabinet,
 		/obj/structure/closet/hydrant,
 		/obj/structure/closet/medical_wall,
 		/obj/structure/closet/statue,
 		/obj/structure/closet/walllocker
 		)
 
-/obj/item/device/closet_painter/afterattack(atom/A, var/mob/user, proximity)
+/obj/item/closet_painter/afterattack(atom/A, var/mob/user, proximity)
 	if(!proximity)
 		return
 
@@ -82,7 +81,7 @@
 		if(istype(A,ctype))
 			non_closet = 1
 	if(non_closet)
-		user << "<span class='warning'>\The [src] can only be used on closets.</span>"
+		to_chat(user, "<span class='warning'>\The [src] can only be used on closets.</span>")
 		return
 
 	var/config_error
@@ -90,7 +89,7 @@
 	if(istype(A,/obj/structure/closet/secure_closet))
 		var/obj/structure/closet/secure_closet/F = A
 		if(F.broken)
-			user << "<span class='warning'>\The [src] cannot paint broken closets.</span>"
+			to_chat(user, "<span class='warning'>\The [src] cannot paint broken closets.</span>")
 			return
 
 		var/list/colour_data = colours_secure[colour_secure]
@@ -115,21 +114,21 @@
 			F.update_icon()
 
 	if(config_error)
-		user << "<span class='warning'>\The [src] flashes an error light. You might need to reconfigure it.</span>"
+		to_chat(user, "<span class='warning'>\The [src] flashes an error light. You might need to reconfigure it.</span>")
 		return
 
-/obj/item/device/closet_painter/attack_self(var/mob/user)
+/obj/item/closet_painter/attack_self(var/mob/user)
 	var/choice = input("Do you wish to change the regular closet colour or the secure closet colour?") as null|anything in list("Regular Closet Colour","Secure Closet Colour")
 	if(choice == "Regular Closet Colour")
 		choose_colour()
 	else if(choice == "Secure Closet Colour")
 		choose_colour_secure()
 
-/obj/item/device/closet_painter/examine(mob/user)
+/obj/item/closet_painter/examine(mob/user)
 	..(user)
-	user << "It is configured to produce the '[colour]' paint scheme or the '[colour_secure]' secure closet paint scheme."
+	to_chat(user, "It is configured to produce the '[colour]' paint scheme or the '[colour_secure]' secure closet paint scheme.")
 
-/obj/item/device/closet_painter/verb/choose_colour()
+/obj/item/closet_painter/verb/choose_colour()
 	set name = "Choose Colour"
 	set desc = "Choose a regular closet painter colour."
 	set category = "Object"
@@ -141,9 +140,9 @@
 	var/new_colour = input("Select a colour.") as null|anything in colours
 	if(new_colour && !isnull(colours[new_colour]))
 		colour = new_colour
-		usr << "<span class='notice'>You set \the [src] regular closet colour to '[colour]'.</span>"
+		to_chat(usr, "<span class='notice'>You set \the [src] regular closet colour to '[colour]'.</span>")
 
-/obj/item/device/closet_painter/verb/choose_colour_secure()
+/obj/item/closet_painter/verb/choose_colour_secure()
 	set name = "Choose Secure Colour"
 	set desc = "Choose a secure closet painter colour."
 	set category = "Object"
@@ -155,4 +154,4 @@
 	var/new_colour_secure = input("Select a colour.") as null|anything in colours_secure
 	if(new_colour_secure && !isnull(colours_secure[new_colour_secure]))
 		colour_secure = new_colour_secure
-		usr << "<span class='notice'>You set \the [src] secure closet colour to '[colour_secure]'.</span>"
+		to_chat(usr, "<span class='notice'>You set \the [src] secure closet colour to '[colour_secure]'.</span>")

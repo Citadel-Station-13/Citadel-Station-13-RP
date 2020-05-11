@@ -21,7 +21,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/New()
 	..()
-	cell = new/obj/item/weapon/cell/apc(src)
+	cell = new/obj/item/cell/apc(src)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
@@ -114,7 +114,7 @@
 	if (holding)
 		data["holdingTank"] = list("name" = holding.name, "tankPressure" = round(holding.air_contents.return_pressure() > 0 ? holding.air_contents.return_pressure() : 0))
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "portscrubber.tmpl", "Portable Scrubber", 480, 400, state = physical_state)
 		ui.set_initial_data(data)
@@ -136,7 +136,7 @@
 		. = 1
 	if (href_list["volume_adj"])
 		var/diff = text2num(href_list["volume_adj"])
-		volume_rate = Clamp(volume_rate+diff, minrate, maxrate)
+		volume_rate = CLAMP(volume_rate+diff, minrate, maxrate)
 		. = 1
 	update_icon()
 
@@ -150,7 +150,7 @@
 	volume = 500000
 	volume_rate = 7000
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50		//internal circuitry, friction losses and stuff
 	active_power_usage = 1000	// Blowers running
 	power_rating = 100000	//100 kW ~ 135 HP
@@ -195,7 +195,7 @@
 		update_use_power(new_use_power)
 	if(!on)
 		return
-	
+
 	var/power_draw = -1
 
 	var/datum/gas_mixture/environment = loc.return_air()
@@ -224,13 +224,13 @@
 		return
 
 	//doesn't use power cells
-	if(istype(I, /obj/item/weapon/cell))
+	if(istype(I, /obj/item/cell))
 		return
 	if(I.is_screwdriver())
 		return
 
 	//doesn't hold tanks
-	if(istype(I, /obj/item/weapon/tank))
+	if(istype(I, /obj/item/tank))
 		return
 
 	..()

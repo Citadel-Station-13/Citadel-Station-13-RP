@@ -1,0 +1,10 @@
+author: "Mewchild"
+delete-after: True
+changes: 
+  - rscadd: "Added Bitters into the booze-o-mat, with an amount of 5 bottles at 100 units."
+  - rscadd: "Added 7 new drink recipes with accompanying sprites."
+  - rscadd: "Added missing sprites to pre-existing drinks."
+  - tweak: "Changed the amount of metaglass from 10 to 25 in booze-o-mats"
+  - imageadd: "Added new sprites for use with the meta glass for bar."
+  - imageadd: "New container for Bitters"
+  - code_imp: "Added new recipes, and ensured no pre-existing PRs or code changes are mixed in this. This will only affect bar recipes and code."

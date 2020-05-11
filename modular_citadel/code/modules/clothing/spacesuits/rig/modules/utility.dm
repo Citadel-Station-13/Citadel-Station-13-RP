@@ -7,4 +7,4 @@
 	interface_name = "Hand-mounted Defbrillators"
 	interface_desc = "Following complaints regarding the danger of switching equipment in the field, Vey-Med developed internalised defibrillator paddles mounted in the gauntlets of the rescue suit powered by the suit's cell."
 
-	device_type = /obj/item/weapon/shockpaddles/standalone/rig
+	device_type = /obj/item/shockpaddles/standalone/rig

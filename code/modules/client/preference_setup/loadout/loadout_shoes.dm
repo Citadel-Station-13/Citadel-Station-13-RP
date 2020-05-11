@@ -211,7 +211,7 @@
 /datum/gear/shoes/boots/winter/medical
 	display_name = "medical winter boots"
 	path = /obj/item/clothing/shoes/boots/winter/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Field Medic","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/shoes/boots/winter/mining
 	display_name = "mining winter boots"
@@ -231,3 +231,7 @@
 /datum/gear/shoes/circuitry
 	display_name = "boots, circuitry (empty)"
 	path = /obj/item/clothing/shoes/circuitry
+
+/datum/gear/shoes/cowboy/black
+	display_name = "black cowboy boots"
+	path = /obj/item/clothing/shoes/cowboyboots/black

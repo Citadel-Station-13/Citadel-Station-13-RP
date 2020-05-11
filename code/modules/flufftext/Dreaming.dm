@@ -15,7 +15,17 @@ var/list/dreams = list(
 	//VOREStation Additions after this
 	"slimey surroundings","a sexy squirrel","licking their lips","a gaping maw","an unlikely predator","sinking inside",
 	"vulpine assets","more dakka","churning guts","pools of fluid","an exceptional grip","mawing in faces","gaping throat",
-	"swallowed whole","a fox","a wolf","a cat","a tiger","a dog","a taur","a xenochimera"
+	"swallowed whole","a fox","a wolf","a cat","a tiger","a dog","a taur","a xenochimera",
+	//Cit dream text!
+	"a teshari","an alarune","a promethean","a vox","a sergal","an akula","a zorren","a nevrean","a chimera","a vasilissan", //actual races not covered in the defaults
+
+	"a fox","a wolf","a dog","a cat","a bird","a shark","an angel","a demon","a dragon", "a xenomorph","a security K9","a medihound","a scrubpuppy","a borgi", //common animals and other common "custom" races. This obviously isn't all of them- suggestions/additions welcome!
+
+	"more dakka","something indescribable","a tiny prick","family","a collar", "time stopping","a sweet liquid","a compliance disk","love","war","submitting","dominating","a demotion","a promotion",
+	"HELP MAINT","only vendor food","a blue ethereal figure","a hologram","an anomaly","a cold, metallic surgery table","reality warping","time dialation","a corrupted hound","clouds of phoron",
+	"a blood-red hardsuit","a facehugger","an evil presence","blood dripping from the walls","strange red glyphs on the floor","a nice warm meal","a nice sweet drink","a teleporter malfunction",
+	"an interrogation","hijacked shuttles"
+	//other misc. things
 	)
 
 mob/living/carbon/proc/dream()
@@ -23,7 +33,7 @@ mob/living/carbon/proc/dream()
 
 	spawn(0)
 		for(var/i = rand(1,4),i > 0, i--)
-			src << "<font color='blue'><i>... [pick(dreams)] ...</i></font>"
+			to_chat(src, "<font color='blue'><i>... [pick(dreams)] ...</i></font>")
 			sleep(rand(40,70))
 			if(paralysis <= 0)
 				dreaming = 0

@@ -40,20 +40,20 @@
 	path = /obj/item/ammo_magazine/s45/ap
 
 /datum/uplink_item/item/ammo/tommymag
-	name = "Tommygun Magazine (.45)"
+	name = "Tommy Gun Magazine (.45)"
 	path = /obj/item/ammo_magazine/m45tommy
 
 /datum/uplink_item/item/ammo/tommymagap
-	name = "Tommygun Magazine (.45 AP)"
+	name = "Tommy Gun Magazine (.45 AP)"
 	path = /obj/item/ammo_magazine/m45tommy/ap
 
 /datum/uplink_item/item/ammo/tommydrum
-	name = "Tommygun Drum Magazine (.45)"
+	name = "Tommy Gun Drum Magazine (.45)"
 	path = /obj/item/ammo_magazine/m45tommydrum
 	item_cost = 40
 
 /datum/uplink_item/item/ammo/tommydrumap
-	name = "Tommygun Drum Magazine (.45 AP)"
+	name = "Tommy Gun Drum Magazine (.45 AP)"
 	path = /obj/item/ammo_magazine/m45tommydrum/ap
 
 /datum/uplink_item/item/ammo/darts
@@ -63,7 +63,7 @@
 
 /datum/uplink_item/item/ammo/sniperammo
 	name = "Anti-Materiel Rifle ammo box (14.5mm)"
-	path = /obj/item/weapon/storage/box/sniperammo
+	path = /obj/item/storage/box/sniperammo
 
 /datum/uplink_item/item/ammo/c545
 	name = "Rifle Magazine (5.45mm)"
@@ -103,27 +103,27 @@
 
 /datum/uplink_item/item/ammo/g12
 	name = "12g Shotgun Ammo Box (Slug)"
-	path = /obj/item/weapon/storage/box/shotgunammo
+	path = /obj/item/storage/box/shotgunammo
 
 /datum/uplink_item/item/ammo/g12/beanbag
 	name = "12g Shotgun Ammo Box (Beanbag)"
-	path = /obj/item/weapon/storage/box/beanbags
+	path = /obj/item/storage/box/beanbags
 	item_cost = 10 // Discount due to it being LTL.
 
 /datum/uplink_item/item/ammo/g12/pellet
 	name = "12g Shotgun Ammo Box (Pellet)"
-	path = /obj/item/weapon/storage/box/shotgunshells
+	path = /obj/item/storage/box/shotgunshells
 
 /datum/uplink_item/item/ammo/g12/stun
 	name = "12g Shotgun Ammo Box (Stun)"
-	path = /obj/item/weapon/storage/box/stunshells
+	path = /obj/item/storage/box/stunshells
 	item_cost = 10 // Discount due to it being LTL.
 
 /datum/uplink_item/item/ammo/g12/flash
 	name = "12g Shotgun Ammo Box (Flash)"
-	path = /obj/item/weapon/storage/box/flashshells
+	path = /obj/item/storage/box/flashshells
 	item_cost = 10 // Discount due to it being LTL.
 
 /datum/uplink_item/item/ammo/cell
 	name = "weapon cell"
-	path = /obj/item/weapon/cell/device/weapon
+	path = /obj/item/cell/device/weapon

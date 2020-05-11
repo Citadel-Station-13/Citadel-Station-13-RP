@@ -47,6 +47,13 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
+/obj/item/clothing/gloves/combat/advanced //punchy combat glubbs
+	name = "advanced combat gloves"
+	desc = "These advanced tactical gloves are fire and impact resistant, with the addition of weighted knuckles and durable synthetics."
+	force = 5
+	punch_force = 5
+	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
+
 /obj/item/clothing/gloves/sterile
 	name = "sterile gloves"
 	desc = "Sterile gloves."
@@ -127,3 +134,35 @@
 	overgloves = 1
 	force = 5
 	punch_force = 5
+
+/obj/item/clothing/gloves/ranger
+	var/glovecolor = "white"
+	name = "ranger gloves"
+	desc = "The gloves of the Rangers are the least memorable part. They're not even insulated in the show, so children \
+	don't try and take apart a toaster with inadequate protection. They only serve to complete the fancy outfit."
+	icon = 'icons/obj/clothing/ranger.dmi'
+	icon_state = "ranger_gloves"
+
+/obj/item/clothing/gloves/ranger/Initialize()
+	. = ..()
+	if(icon_state == "ranger_gloves")
+		name = "[glovecolor] ranger gloves"
+		icon_state = "[glovecolor]_ranger_gloves"
+
+/obj/item/clothing/gloves/ranger/black
+	glovecolor = "black"
+
+/obj/item/clothing/gloves/ranger/pink
+	glovecolor = "pink"
+
+/obj/item/clothing/gloves/ranger/green
+	glovecolor = "green"
+
+/obj/item/clothing/gloves/ranger/cyan
+	glovecolor = "cyan"
+
+/obj/item/clothing/gloves/ranger/orange
+	glovecolor = "orange"
+
+/obj/item/clothing/gloves/ranger/yellow
+	glovecolor = "yellow"

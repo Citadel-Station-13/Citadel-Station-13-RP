@@ -1,3 +1,4 @@
+/client/var/adminhelptimerid = 0	//a timer id for returning the ahelp verb
 /client/var/datum/admin_help/current_ticket	//the current ticket the (usually) not-admin client is dealing with
 
 //
@@ -23,6 +24,23 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	QDEL_NULL(cstatclick)
 	QDEL_NULL(rstatclick)
 	return ..()
+
+/datum/admin_help_tickets/proc/TicketByID(id)
+	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
+	for(var/I in lists)
+		for(var/J in I)
+			var/datum/admin_help/AH = J
+			if(AH.id == id)
+				return J
+
+/datum/admin_help_tickets/proc/TicketsByCKey(ckey)
+	. = list()
+	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
+	for(var/I in lists)
+		for(var/J in I)
+			var/datum/admin_help/AH = J
+			if(AH.initiator_ckey == ckey)
+				. += AH
 
 //private
 /datum/admin_help_tickets/proc/ListInsert(datum/admin_help/new_ticket)
@@ -343,8 +361,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 
 	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as IC issue! -</b></font><br>"
-	msg += "<font color='red'><b>Losing is part of the game!</b></font><br>"
-	msg += "<font color='red'>Your AdminHelp may also be unabled to be answered due to ongoing events.</font>"
+	msg += "<font color='red'><b>This is something that can be solved ICly, and does not currently require staff intervention.</b></font><br>"
+	msg += "<font color='red'>Your AdminHelp may also be unanswerable due to ongoing events.</font>"
 
 	if(initiator)
 		to_chat(initiator, msg)
@@ -462,6 +480,16 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 // CLIENT PROCS
 //
 
+/client/proc/giveadminhelpverb()
+	src.verbs |= /client/verb/adminhelp
+	deltimer(adminhelptimerid)
+	adminhelptimerid = 0
+
+// Used for methods where input via arg doesn't work
+/client/proc/get_adminhelp()
+	var/msg = input(src, "Please describe your problem concisely and an admin will help as soon as they're able.", "Adminhelp contents") as message|null
+	adminhelp(msg)
+
 /client/verb/adminhelp(msg as text)
 	set category = "Admin"
 	set name = "Adminhelp"
@@ -480,16 +508,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(!msg)
 		return
 
+	msg = sanitize(msg)
+
 	//remove out adminhelp verb temporarily to prevent spamming of admins.
 	src.verbs -= /client/verb/adminhelp
-	spawn(1200)
-		src.verbs += /client/verb/adminhelp	// 2 minute cool-down for adminhelps
+	adminhelptimerid = addtimer(CALLBACK(src, .proc/giveadminhelpverb), 2 MINUTES, flags = TIMER_STOPPABLE)
 
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(current_ticket)
 		if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")
 			if(current_ticket)
 				current_ticket.MessageNoRecipient(msg)
+				to_chat(usr, "<span class='adminnotice'>PM to-<b>Admins</b>: [msg]</span>")
 				return
 			else
 				to_chat(usr, "<span class='warning'>Ticket not found, creating new one...</span>")

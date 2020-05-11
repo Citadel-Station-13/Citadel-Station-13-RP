@@ -47,6 +47,7 @@
 	name = "\improper Atrium Third Floor"
 	icon_state = "dk_yellow"
 
+
 /area/tether/surfacebase/north_stairs_one
 	name = "\improper North Stairwell First Floor"
 	icon_state = "dk_yellow"
@@ -74,6 +75,10 @@
 	icon_state = "red"
 	sound_env = SMALL_SOFTFLOOR
 
+/area/tether/surfacebase/fishing_garden
+	name = "\improper fish garden"
+	icon_state = "blue"
+
 // /area/tether/surfacebase/east_stairs_one //This is just part of a lower hallway
 
 /area/tether/surfacebase/east_stairs_two
@@ -85,6 +90,8 @@
 	name = "\improper Atrium Construction Site"
 /area/vacant/vacant_bar
 	name = "\improper Vacant Bar"
+/area/vacant/vacant_bar_upper
+	name = "\improper Upper Vacant Bar"
 
 // /area/tether/surfacebase/east_stairs_three //This is just part of an upper hallway
 
@@ -152,6 +159,8 @@
 	name = "\improper Surface Atmos Substation"
 /area/maintenance/substation/civ_west
 	name = "\improper Civilian West Substation"
+/area/maintenance/tether_midpoint
+	name = "\improper Tether Midpoint Maint"
 
 
 /area/tether/surfacebase/medical
@@ -236,11 +245,11 @@
 /area/maintenance/lower/trash_pit
 	name = "\improper Trash Pit"
 /area/maintenance/lower/solars
-	name = "\improper Solars maintenanceance"
+	name = "\improper Solars Maintenance"
 /area/maintenance/lower/mining_eva
 	name = "\improper Mining EVA Maintenance"
 /area/maintenance/lower/public_garden_maintenence
-	name = "\improper Public Garden Maintenence"
+	name = "\improper Public Garden Maintenance"
 
 // Research
 /area/rnd/xenobiology/xenoflora/lab_atmos
@@ -482,12 +491,27 @@
 // Exploration Shuttle stuff //
 /area/tether/station/excursion_dock
 	name = "\improper Excursion Shuttle Dock"
+	icon_state = "hangar"
 
 /area/tether/station/explorer_prep
 	name = "\improper Explorer Prep Room"
+	icon_state = "locker"
+
+/area/tether/station/explorer_entry
+	name = "\improper Exploration Foyer"
+	icon_state = "green"
 
 /area/tether/station/explorer_meeting
 	name = "\improper Explorer Meeting Room"
+	icon_state = "northeast"
+
+/area/tether/station/explorer_showers
+	name = "\improper Explorer Showers"
+	icon_state = "restrooms"
+
+/area/tether/station/explorer_medical
+	name = "\improper Exploration Med Station"
+	icon_state = "medbay"
 
 /area/tether/station/pathfinder_office
 	name = "\improper Pathfinder's Office"
@@ -525,7 +549,19 @@
 /area/shuttle/excursion/virgo3b_sky
 	name = "\improper Excursion Shuttle - Virgo3b Sky"
 	base_turf = /turf/simulated/sky
-//////////////////////////////////
+
+
+/area/tether/midpoint
+	name = "\improper Tether Midpoint"
+
+/area/shuttle/excursion/virgo3b_moving
+	name = "\improper Excursion Shuttle - Virgo3b Transit"
+	base_turf = /turf/simulated/sky
+
+/area/shuttle/excursion/tether_surface
+	name = "\improper Excursion Shuttle - Tether Surface"
+	base_turf = /turf/simulated/floor/reinforced
+
 
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"

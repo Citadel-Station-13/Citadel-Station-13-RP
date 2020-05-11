@@ -38,14 +38,13 @@
 #define LIGHT_BURNED 3
 
 
-/obj/item/device/lightreplacer
+/obj/item/lightreplacer
 
 	name = "light replacer"
 	desc = "A device to automatically replace lights. Refill with working lightbulbs or sheets of glass."
 	force = 8
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	origin_tech = list(TECH_MAGNET = 3, TECH_MATERIAL = 2)
 
@@ -55,15 +54,15 @@
 	var/failmsg = ""
 	var/charge = 0
 
-/obj/item/device/lightreplacer/New()
+/obj/item/lightreplacer/New()
 	failmsg = "The [name]'s refill light blinks red."
 	..()
 
-/obj/item/device/lightreplacer/examine(mob/user)
+/obj/item/lightreplacer/examine(mob/user)
 	if(..(user, 2))
 		to_chat(user, "It has [uses] lights remaining.")
 
-/obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
+/obj/item/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == "glass")
 		var/obj/item/stack/G = W
 		if(uses >= max_uses)
@@ -76,8 +75,8 @@
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
 
-	if(istype(W, /obj/item/weapon/light))
-		var/obj/item/weapon/light/L = W
+	if(istype(W, /obj/item/light))
+		var/obj/item/light/L = W
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				add_uses(1)
@@ -89,7 +88,7 @@
 			to_chat(user, "You need a working light.")
 			return
 
-/obj/item/device/lightreplacer/attack_self(mob/user)
+/obj/item/lightreplacer/attack_self(mob/user)
 	/* // This would probably be a bit OP. If you want it though, uncomment the code.
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
@@ -100,72 +99,42 @@
 	*/
 	to_chat(usr, "It has [uses] lights remaining.")
 
-/obj/item/device/lightreplacer/update_icon()
+/obj/item/lightreplacer/update_icon()
 	icon_state = "lightreplacer[emagged]"
 
 
-/obj/item/device/lightreplacer/proc/Use(var/mob/user)
+/obj/item/lightreplacer/proc/Use(var/mob/user)
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 	add_uses(-1)
 	return 1
 
 // Negative numbers will subtract
-/obj/item/device/lightreplacer/proc/add_uses(var/amount = 1)
+/obj/item/lightreplacer/proc/add_uses(var/amount = 1)
 	uses = min(max(uses + amount, 0), max_uses)
 
-/obj/item/device/lightreplacer/proc/Charge(var/mob/user, var/amount = 1)
+/obj/item/lightreplacer/proc/Charge(var/mob/user, var/amount = 1)
 	charge += amount
 	if(charge > 6)
 		add_uses(1)
 		charge = 0
 
-/obj/item/device/lightreplacer/proc/ReplaceLight(var/obj/machinery/light/target, var/mob/living/U)
+/obj/item/lightreplacer/proc/ReplaceLight(var/obj/machinery/light/target, var/mob/living/U)
 
-	if(target.status != LIGHT_OK)
-		if(CanUse(U))
-			if(!Use(U)) return
-			U << "<span class='notice'>You replace the [target.fitting] with the [src].</span>"
+	if(target.status == LIGHT_OK)
+		to_chat(U, "There is a working [target.get_fitting_name()] already inserted.")
+	else if(!CanUse(U))
+		to_chat(U, failmsg)
+	else if(Use(U))
+		to_chat(U, "<span class='notice'>You replace the [target.get_fitting_name()] with the [src].</span>")
 
-			if(target.status != LIGHT_EMPTY)
+		if(target.status != LIGHT_EMPTY)
+			target.remove_bulb()
 
-				var/obj/item/weapon/light/L1 = new target.light_type(target.loc)
-				L1.status = target.status
-				L1.rigged = target.rigged
-				L1.brightness_range = target.brightness_range
-				L1.brightness_power = target.brightness_power
-				L1.brightness_color = target.brightness_color
-				L1.switchcount = target.switchcount
-				target.switchcount = 0
-				L1.update()
+		var/obj/item/light/L = new target.light_type()
+		target.insert_bulb(L)
 
-				target.status = LIGHT_EMPTY
-				target.update()
-
-			var/obj/item/weapon/light/L2 = new target.light_type()
-
-			target.status = L2.status
-			target.switchcount = L2.switchcount
-			target.rigged = emagged
-			target.brightness_range = L2.brightness_range
-			target.brightness_power = L2.brightness_power
-			target.brightness_color = L2.brightness_color
-			target.on = target.has_power()
-			target.update()
-			qdel(L2)
-
-			if(target.on && target.rigged)
-				target.explode()
-			return
-
-		else
-			U << failmsg
-			return
-	else
-		U << "There is a working [target.fitting] already inserted."
-		return
-
-/obj/item/device/lightreplacer/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/lightreplacer/emag_act(var/remaining_charges, var/mob/user)
 	emagged = !emagged
 	playsound(src.loc, "sparks", 100, 1)
 	update_icon()
@@ -173,7 +142,7 @@
 
 //Can you use it?
 
-/obj/item/device/lightreplacer/proc/CanUse(var/mob/living/user)
+/obj/item/lightreplacer/proc/CanUse(var/mob/living/user)
 	src.add_fingerprint(user)
 	//Not sure what else to check for. Maybe if clumsy?
 	if(uses > 0)

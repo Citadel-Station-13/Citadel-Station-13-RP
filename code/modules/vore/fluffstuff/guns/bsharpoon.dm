@@ -1,5 +1,5 @@
 //RD 'gun'
-/obj/item/weapon/bluespace_harpoon
+/obj/item/bluespace_harpoon
 	name = "bluespace harpoon"
 	desc = "For climbing on bluespace mountains!"
 
@@ -22,7 +22,7 @@
 	var/failchance = 5
 	var/failrange = 24
 
-/obj/item/weapon/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
+/obj/item/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
 	var/current_fire = world.time
 	if(!user || !A)
 		return
@@ -44,16 +44,19 @@
 	if(!T || T.check_density())
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
+	if(get_area(A).flags & BLUE_SHIELDED)
+		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
+		return
 
 	last_fire = current_fire
 	playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 
 	user.visible_message("<span class='warning'>[user] fires \the [src]!</span>","<span class='warning'>You fire \the [src]!</span>")
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(4, 1, A)
 	s.start()
-	s = new /datum/effect/effect/system/spark_spread
+	s = new /datum/effect_system/spark_spread
 	s.set_up(4, 1, user)
 	s.start()
 
@@ -73,10 +76,10 @@
 		else
 			M.forceMove(ToTurf)
 
-/obj/item/weapon/bluespace_harpoon/attack_self(mob/living/user as mob)
+/obj/item/bluespace_harpoon/attack_self(mob/living/user as mob)
 	return chande_fire_mode(user)
 
-/obj/item/weapon/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)
+/obj/item/bluespace_harpoon/verb/chande_fire_mode(mob/user as mob)
 	set name = "Change fire mode"
 	set category = "Object"
 	set src in oview(1)
@@ -86,7 +89,7 @@
 	to_chat(user,"<span class = 'info'>You change \the [src]'s mode to [mode ? "transmiting" : "receiving"].</span>")
 	update_icon()
 
-/obj/item/weapon/bluespace_harpoon/update_icon()
+/obj/item/bluespace_harpoon/update_icon()
 	if(transforming)
 		switch(mode)
 			if(0)

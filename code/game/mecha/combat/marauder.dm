@@ -1,6 +1,7 @@
 /obj/mecha/combat/marauder
 	desc = "Heavy-duty, combat exosuit, developed after the Durand model. Rarely found among civilian populations."
 	name = "Marauder"
+	catalogue_data = list(/datum/category_item/catalogue/technology/marauder)
 	icon_state = "marauder"
 	initial_icon = "marauder"
 	step_in = 5
@@ -15,13 +16,14 @@
 	var/smoke = 5
 	var/smoke_ready = 1
 	var/smoke_cooldown = 100
-	var/datum/effect/effect/system/smoke_spread/smoke_system = new
+	var/datum/effect_system/smoke_spread/smoke_system = new
 	operation_req_access = list(access_cent_specops)
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
 	add_req_access = 0
 	internal_damage_threshold = 25
 	force = 45
 	max_equip = 4
+	mech_faction = MECH_FACTION_NT
 
 	max_hull_equip = 3
 	max_weapon_equip = 3
@@ -32,6 +34,7 @@
 /obj/mecha/combat/marauder/seraph
 	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
 	name = "Seraph"
+	catalogue_data = list(/datum/category_item/catalogue/technology/seraph)
 	icon_state = "seraph"
 	initial_icon = "seraph"
 	operation_req_access = list(access_cent_creed)
@@ -42,6 +45,7 @@
 	force = 55
 	max_equip = 5
 
+
 /obj/mecha/combat/marauder/mauler
 	desc = "Heavy-duty, combat exosuit, developed off of the existing Marauder model."
 	name = "Mauler"
@@ -49,8 +53,9 @@
 	initial_icon = "mauler"
 	operation_req_access = list(access_syndicate)
 	wreckage = /obj/effect/decal/mecha_wreckage/mauler
+	mech_faction = MECH_FACTION_SYNDI
 
-/obj/mecha/combat/marauder/New()
+/obj/mecha/combat/marauder/Initialize()
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse
 	ME.attach(src)
@@ -64,7 +69,7 @@
 	src.smoke_system.attach(src)
 	return
 
-/obj/mecha/combat/marauder/seraph/New()
+/obj/mecha/combat/marauder/seraph/Initialize()
 	..()//Let it equip whatever is needed.
 	var/obj/item/mecha_parts/mecha_equipment/ME
 	if(equipment.len)//Now to remove it and equip anew.
@@ -90,7 +95,7 @@
 /obj/mecha/combat/marauder/relaymove(mob/user,direction)
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
 		user.loc = get_turf(src)
-		user << "You climb out from [src]"
+		to_chat(user, "You climb out from [src]")
 		return 0
 	if(!can_move)
 		return 0

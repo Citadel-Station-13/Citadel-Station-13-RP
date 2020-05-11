@@ -8,10 +8,10 @@
 	icon_state = "station_map"
 	anchored = 1
 	density = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
-	circuit = /obj/item/weapon/circuitboard/station_map
+	circuit = /obj/item/circuitboard/station_map
 
 	// TODO - Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
@@ -38,7 +38,7 @@
 	SSholomaps.station_holomaps += src
 	flags |= ON_BORDER // Why? It doesn't help if its not density
 
-/obj/machinery/station_map/initialize()
+/obj/machinery/station_map/Initialize()
 	. = ..()
 	if(SSholomaps.holomaps_initialized)
 		spawn(1) // Tragically we need to spawn this in order to give the frame construcing us time to set pixel_x/y
@@ -114,19 +114,19 @@
 	// TODO - This part!! ~Leshana
 	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
 		if(user.client)
-			holomap_datum.station_map.loc = global_hud.holomap  // Put the image on the holomap hud
+			holomap_datum.station_map.loc = GLOB.global_hud.holomap  // Put the image on the holomap hud
 			holomap_datum.station_map.alpha = 0 // Set to transparent so we can fade in
 			animate(holomap_datum.station_map, alpha = 255, time = 5, easing = LINEAR_EASING)
 			flick("station_map_activate", src)
 			// Wait, if wea re not modifying the holomap_obj... can't it be part of the global hud?
-			user.client.screen |= global_hud.holomap // TODO - HACK! This should be there permenently really.
+			user.client.screen |= GLOB.global_hud.holomap // TODO - HACK! This should be there permenently really.
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
-			GLOB.moved_event.register(watching_mob, src, /obj/machinery/station_map/proc/checkPosition)
-			GLOB.dir_set_event.register(watching_mob, src, /obj/machinery/station_map/proc/checkPosition)
-			destroyed_event.register(watching_mob, src, /obj/machinery/station_map/proc/stopWatching)
-			update_use_power(2)
+			RegisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE, .proc/checkPosition)
+			RegisterSignal(watching_mob, COMSIG_MOVABLE_MOVED, .proc/checkPosition)
+			RegisterSignal(watching_mob, COMSIG_PARENT_QDELETING, .proc/stopWatching)
+			update_use_power(USE_POWER_ACTIVE)
 
 			if(bogus)
 				to_chat(user, "<span class='warning'>The holomap failed to initialize. This area of space cannot be mapped.</span>")
@@ -152,11 +152,11 @@
 			var/mob/M = watching_mob
 			spawn(5) //we give it time to fade out
 				M.client.images -= holomap_datum.station_map
-		GLOB.moved_event.unregister(watching_mob, src)
-		GLOB.dir_set_event.unregister(watching_mob, src)
-		destroyed_event.unregister(watching_mob, src)
+		UnregisterSignal(watching_mob, COMSIG_ATOM_DIR_CHANGE)
+		UnregisterSignal(watching_mob, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(watching_mob, COMSIG_PARENT_QDELETING)
 	watching_mob = null
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/station_map/power_change()
 	. = ..()
@@ -199,7 +199,7 @@
 	else
 		overlays -= "station_map-panel"
 
-/obj/machinery/station_map/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/station_map/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -227,7 +227,7 @@
 	frame_style = "wall"
 	x_offset = WORLD_ICON_SIZE
 	y_offset = WORLD_ICON_SIZE
-	circuit = /obj/item/weapon/circuitboard/station_map
+	circuit = /obj/item/circuitboard/station_map
 	icon_override = 'icons/obj/machines/stationmap.dmi'
 
 /datum/frame/frame_types/station_map/get_icon_state(var/state)
@@ -236,7 +236,7 @@
 /obj/structure/frame
 	layer = ABOVE_WINDOW_LAYER
 
-/obj/item/weapon/circuitboard/station_map
+/obj/item/circuitboard/station_map
 	name = T_BOARD("Station Map")
 	board_type = new /datum/frame/frame_types/station_map
 	build_path = /obj/machinery/station_map

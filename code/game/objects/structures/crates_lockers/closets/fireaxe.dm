@@ -2,7 +2,7 @@
 /obj/structure/closet/fireaxecabinet
 	name = "fire axe cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
-	var/obj/item/weapon/material/twohanded/fireaxe/fireaxe
+	var/obj/item/material/twohanded/fireaxe/fireaxe
 	icon_state = "fireaxe1000"
 	icon_closed = "fireaxe1000"
 	icon_opened = "fireaxe1100"
@@ -14,11 +14,9 @@
 	var/locked = 1
 	var/smashed = 0
 
-	starts_with = list(/obj/item/weapon/material/twohanded/fireaxe)
-
-/obj/structure/closet/fireaxecabinet/initialize()
-	..()
-	fireaxe = locate() in contents
+/obj/structure/closet/fireaxecabinet/PopulateContents()
+	. = ..()
+	fireaxe = new /obj/item/material/twohanded/fireaxe(src)
 
 /obj/structure/closet/fireaxecabinet/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
 	//..() //That's very useful, Erro
@@ -33,16 +31,16 @@
 		hasaxe = 1
 
 	if (isrobot(usr) || src.locked)
-		if(istype(O, /obj/item/device/multitool))
-			user << "<span class='warning'>Resetting circuitry...</span>"
+		if(istype(O, /obj/item/multitool))
+			to_chat(user, "<span class='warning'>Resetting circuitry...</span>")
 			playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
 			if(do_after(user, 20 * O.toolspeed))
 				src.locked = 0
 				to_chat(user, "<span class = 'caution'> You disable the locking modules.</span>")
 				update_icon()
 			return
-		else if(istype(O, /obj/item/weapon))
-			var/obj/item/weapon/W = O
+		else if(istype(O, /obj/item))
+			var/obj/item/W = O
 			if(src.smashed || src.localopened)
 				if(localopened)
 					localopened = 0
@@ -62,7 +60,7 @@
 					src.localopened = 1
 			update_icon()
 		return
-	if (istype(O, /obj/item/weapon/material/twohanded/fireaxe) && src.localopened)
+	if (istype(O, /obj/item/material/twohanded/fireaxe) && src.localopened)
 		if(!fireaxe)
 			if(O:wielded)
 				O:wielded = 0
@@ -88,7 +86,7 @@
 	else
 		if(src.smashed)
 			return
-		if(istype(O, /obj/item/device/multitool))
+		if(istype(O, /obj/item/multitool))
 			if(localopened)
 				localopened = 0
 				icon_state = text("fireaxe[][][][]closing",hasaxe,src.localopened,src.hitstaken,src.smashed)

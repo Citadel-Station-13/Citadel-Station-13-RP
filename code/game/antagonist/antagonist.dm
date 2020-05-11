@@ -70,7 +70,7 @@
 
 	// ID card stuff.
 	var/default_access = list()
-	var/id_type = /obj/item/weapon/card/id
+	var/id_type = /obj/item/card/id
 
 	var/antag_text = "You are an antagonist! Within the rules, \
 		try to act as an opposing force to the crew. Further RP and try to make sure \
@@ -89,7 +89,7 @@
 	get_starting_locations()
 	if(!role_text_plural)
 		role_text_plural = role_text
-	if(config.protect_roles_from_antagonist)
+	if(config_legacy.protect_roles_from_antagonist)
 		restricted_jobs |= protected_jobs
 	if(antaghud_indicator)
 		if(!hud_icon_reference)
@@ -105,12 +105,12 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	candidates = ticker.mode.get_players_for_role(role_type, id, ghosts_only)
+	candidates = SSticker.mode.get_players_for_role(role_type, id, ghosts_only)
 	for(var/datum/mind/player in candidates)
 		if(ghosts_only && !istype(player.current, /mob/observer/dead))
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role! They have been removed from the draft.")
-		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+		else if(config_legacy.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
 		else if(player.special_role)
@@ -141,10 +141,10 @@
 		if(players && players.len)
 			player = pick(players)
 	if(!istype(player))
-		message_admins("[uppertext(ticker.mode.name)]: Failed to find a candidate for [role_text].")
+		message_admins("[uppertext(SSticker.mode.name)]: Failed to find a candidate for [role_text].")
 		return 0
-	player.current << "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>"
-	message_admins("[uppertext(ticker.mode.name)]: Selected [player] as a [role_text].")
+	to_chat(player.current, "<span class='danger'><i>You have been selected this round as an antagonist!</i></span>")
+	message_admins("[uppertext(SSticker.mode.name)]: Selected [player] as a [role_text].")
 	if(istype(player.current, /mob/observer/dead))
 		create_default(player.current)
 	else

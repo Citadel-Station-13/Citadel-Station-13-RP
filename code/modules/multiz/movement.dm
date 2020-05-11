@@ -41,7 +41,7 @@
 	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
-			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
+			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [lattice] and start pulling yourself upward...</span>")
 			destination.audible_message("<span class='notice'>You hear something climbing up \the [lattice].</span>")
 			if(do_after(src, pull_up_time))
@@ -83,11 +83,13 @@
 /mob/proc/can_overcome_gravity()
 	return FALSE
 
-/mob/living/carbon/human/can_overcome_gravity()
-	return species && species.can_overcome_gravity(src)
+/mob/living/can_overcome_gravity()
+	return hovering
 
-/mob/living/simple_animal/construct/can_overcome_gravity()
-	return 1 //They care not for standard physics.
+/mob/living/carbon/human/can_overcome_gravity()
+	. = ..()
+	if(!.)
+		return species && species.can_overcome_gravity(src)
 
 /mob/observer/zMove(direction)
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
@@ -117,36 +119,44 @@
 	return ..()
 
 /mob/observer/can_ztravel()
-	return 1
+	return TRUE
 
-/mob/living/simple_animal/construct/can_ztravel()
-	return 1
+/mob/living/can_ztravel()
+	if(incapacitated())
+		return FALSE
+	return hovering
 
 /mob/living/carbon/human/can_ztravel()
 	if(incapacitated())
-		return 0
+		return FALSE
+
+	if(hovering)
+		return TRUE
 
 	if(flying) //VOREStation Edit. Allows movement up/down with wings.
 		return 1 //VOREStation Edit
 
 	if(Process_Spacemove())
-		return 1
+		return TRUE
 
 	if(Check_Shoegrip())	//scaling hull with magboots
 		for(var/turf/simulated/T in trange(1,src))
 			if(T.density)
-				return 1
+				return TRUE
 
 /mob/living/silicon/robot/can_ztravel()
 	if(incapacitated() || is_dead())
-		return 0
+		return FALSE
+
+	if(hovering)
+		return TRUE
 
 	if(Process_Spacemove()) //Checks for active jetpack
-		return 1
+		return TRUE
 
 	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
 		if(T.density)
-			return 1
+			return TRUE
 
 // TODO - Leshana Experimental
 
@@ -191,7 +201,7 @@
 		var/mob/H = src //VOREStation Edit Start. Flight on mobs.
 		if(H.flying) //Some other checks are done in the wings_toggle proc
 			if(H.nutrition > 2)
-				H.nutrition -= 2 //You use up 2 nutrition per TILE and tick of flying above open spaces. If people wanna flap their wings in the hallways, shouldn't penalize them for it.
+				H.nutrition -= 0.5 //You use up 0.5 nutrition per TILE and tick of flying above open spaces. If people wanna flap their wings in the hallways, shouldn't penalize them for it. Lowered to make winged people less sad.
 			if(H.incapacitated(INCAPACITATION_ALL))
 				H.stop_flying()
 				//Just here to see if the person is KO'd, stunned, etc. If so, it'll move onto can_fall.
@@ -200,12 +210,12 @@
 				H.stop_flying() //womp womp.
 			else if(H.nutrition < 300 && H.nutrition > 289) //290 would be risky, as metabolism could mess it up. Let's do 289.
 				to_chat(H, "<span class='danger'>You are starting to get fatigued... You probably have a good minute left in the air, if that. Even less if you continue to fly around! You should get to the ground soon!</span>") //Ticks are, on average, 3 seconds. So this would most likely be 90 seconds, but lets just say 60.
-				H.nutrition -= 10
+				H.nutrition -= 0.5 //Fixed the evilness to have 10 nutrition drained per tick and tile below 300 nutrition too
 				return
 			else if(H.nutrition < 100 && H.nutrition > 89)
 				to_chat(H, "<span class='danger'>You're seriously fatigued! You need to get to the ground immediately and eat before you fall!</span>")
 				return
-			else if(H.nutrition < 2) //Should have listened to the warnings!
+			else if(H.nutrition < 10) //Should have listened to the warnings!
 				to_chat(H, "<span class='danger'>You lack the strength to keep yourself up in the air...</span>")
 				H.stop_flying()
 			else
@@ -213,8 +223,8 @@
 		else if(ishuman(H)) //Needed to prevent 2 people from grabbing eachother in the air.
 			var/mob/living/carbon/human/F = H
 			if(F.grabbed_by.len) //If you're grabbed (presumably by someone flying) let's not have you fall. This also allows people to grab onto you while you jump over a railing to prevent you from falling!
-				var/obj/item/weapon/grab/G = F.get_active_hand()
-				var/obj/item/weapon/grab/J = F.get_inactive_hand()
+				var/obj/item/grab/G = F.get_active_hand()
+				var/obj/item/grab/J = F.get_inactive_hand()
 				if(istype(G) || istype(J))
 					//fall
 				else
@@ -262,47 +272,35 @@
 	if((locate(/obj/structure/disposalpipe/up) in below) || locate(/obj/machinery/atmospherics/pipe/zpipe/up in below))
 		return FALSE
 
+/mob/living/can_fall()
+	if(hovering)
+		return FALSE
+	return ..()
+
 /mob/living/carbon/human/can_fall()
 	if(..())
 		return species.can_fall(src)
 
-/mob/living/simple_animal/parrot/can_fall() // Poly can fly.
-	return FALSE
-
-/mob/living/simple_animal/hostile/carp/can_fall() // So can carp apparently.
-	return FALSE
-
-/mob/living/simple_animal/construct/can_fall() //As do Constructs.
-	return FALSE
-
 // Check if this atom prevents things standing on it from falling. Return TRUE to allow the fall.
 /obj/proc/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(!isturf(mover.loc)) // VORESTATION EDIT. We clearly didn't have enough backup checks.
-		return FALSE //If this ain't working Ima be pissed.
 	return TRUE
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.z < z)
-		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
-	if(!isturf(mover.loc))
-		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
-	else
-		return TRUE
+	if(target.x == x && target.y == y && target.z == z - 1)
+		return FALSE
+	return TRUE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.z >= z)
-		return TRUE // We don't block sideways or upward movement.
-	else if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return TRUE // Anything small enough to pass a grille will pass a lattice
-	if(!isturf(mover.loc))
-		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
-	else
-		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
+	if(mover.checkpass(PASSGRILLE))
+		return TRUE
+	if(target.x == x && target.y == y && target.z == z - 1)
+		return FALSE
+	return TRUE
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
@@ -324,18 +322,20 @@
 			return FALSE
 	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
-	// Now lets move there!
-	if(!Move(landing))
-		return 1
+	// this is shitcode lmao
+	var/obj/structure/stairs = locate() in landing
+	if(!stairs)
 
-	// Detect if we made a silent landing.
-	if(locate(/obj/structure/stairs) in landing)
-		return 1
-	else
+		// Now lets move there!
+		if(!Move(landing))
+			return 1
+
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
 			return
 		fall_impact(A)
+	else
+		locationTransitForceMove(landing)
 
 /atom/movable/proc/special_fall_handle(var/atom/A)
 	return FALSE

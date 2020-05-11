@@ -3,159 +3,164 @@
 //SDQL2 datumized, /tg/station special!
 
 /*
-Welcome admins, badmins and coders alike, to Structured Datum Query Language.
-SDQL allows you to powerfully run code on batches of objects (or single objects, it's still unmatched
-even there.)
-When I say "powerfully" I mean it you're in for a ride.
+	Welcome admins, badmins and coders alike, to Structured Datum Query Language.
+	SDQL allows you to powerfully run code on batches of objects (or single objects, it's still unmatched
+	even there.)
+	When I say "powerfully" I mean it you're in for a ride.
 
-Ok so say you want to get a list of every mob. How does one do this?
-"SELECT /mob"
-This will open a list of every object in world that is a /mob.
-And you can VV them if you need.
+	Ok so say you want to get a list of every mob. How does one do this?
+	"SELECT /mob"
+	This will open a list of every object in world that is a /mob.
+	And you can VV them if you need.
 
-What if you want to get every mob on a *specific z-level*?
-"SELECT /mob WHERE z == 4"
+	What if you want to get every mob on a *specific z-level*?
+	"SELECT /mob WHERE z == 4"
 
-What if you want to select every mob on even numbered z-levels?
-"SELECT /mob WHERE z % 2 == 0"
+	What if you want to select every mob on even numbered z-levels?
+	"SELECT /mob WHERE z % 2 == 0"
 
-Can you see where this is going? You can select objects with an arbitrary expression.
-These expressions can also do variable access and proc calls (yes, both on-object and globals!)
-Keep reading!
+	Can you see where this is going? You can select objects with an arbitrary expression.
+	These expressions can also do variable access and proc calls (yes, both on-object and globals!)
+	Keep reading!
 
-Ok. What if you want to get every machine in the SSmachine process list? Looping through world is kinda
-slow.
+	Ok. What if you want to get every machine in the SSmachine process list? Looping through world is kinda
+	slow.
 
-"SELECT * IN SSmachines.machinery"
+	"SELECT * IN SSmachines.machinery"
 
-Here "*" as type functions as a wildcard.
-We know everything in the global SSmachines.machinery list is a machine.
+	Here "*" as type functions as a wildcard.
+	We know everything in the global SSmachines.machinery list is a machine.
 
-You can specify "IN <expression>" to return a list to operate on.
-This can be any list that you can wizard together from global variables and global proc calls.
-Every variable/proc name in the "IN" block is global.
-It can also be a single object, in which case the object is wrapped in a list for you.
-So yeah SDQL is unironically better than VV for complex single-object operations.
+	You can specify "IN <expression>" to return a list to operate on.
+	This can be any list that you can wizard together from global variables and global proc calls.
+	Every variable/proc name in the "IN" block is global.
+	It can also be a single object, in which case the object is wrapped in a list for you.
+	So yeah SDQL is unironically better than VV for complex single-object operations.
 
-You can of course combine these.
-"SELECT * IN SSmachines.machinery WHERE z == 4"
-"SELECT * IN SSmachines.machinery WHERE stat & 2" // (2 is NOPOWER, can't use defines from SDQL. Sorry!)
-"SELECT * IN SSmachines.machinery WHERE stat & 2 && z == 4"
+	You can of course combine these.
+	"SELECT * IN SSmachines.machinery WHERE z == 4"
+	"SELECT * IN SSmachines.machinery WHERE stat & 2" // (2 is NOPOWER, can't use defines from SDQL. Sorry!)
+	"SELECT * IN SSmachines.machinery WHERE stat & 2 && z == 4"
 
-The possibilities are endless (just don't crash the server, ok?).
+	The possibilities are endless (just don't crash the server, ok?).
 
-Oh it gets better.
+	Oh it gets better.
 
-You can use "MAP <expression>" to run some code per object and use the result. For example:
+	You can use "MAP <expression>" to run some code per object and use the result. For example:
 
-"SELECT /obj/machinery/power/smes MAP [charge / capacity * 100, RCon_tag, src]"
+	"SELECT /obj/machinery/power/smes MAP [charge / capacity * 100, RCon_tag, src]"
 
-This will give you a list of all the APCs, their charge AND RCon tag. Useful eh?
+	This will give you a list of all the APCs, their charge AND RCon tag. Useful eh?
 
-[] being a list here. Yeah you can write out lists directly without > lol lists in VV. Color matrix
-shenanigans inbound.
+	[] being a list here. Yeah you can write out lists directly without > lol lists in VV. Color matrix
+	shenanigans inbound.
 
-After the "MAP" segment is executed, the rest of the query executes as if it's THAT object you just made
-(here the list).
-Yeah, by the way, you can chain these MAP / WHERE things FOREVER!
+	After the "MAP" segment is executed, the rest of the query executes as if it's THAT object you just made
+	(here the list).
+	Yeah, by the way, you can chain these MAP / WHERE things FOREVER!
 
-"SELECT /mob WHERE client MAP client WHERE holder MAP holder"
+	"SELECT /mob WHERE client MAP client WHERE holder MAP holder"
 
-What if some dumbass admin spawned a bajillion spiders and you need to kill them all?
-Oh yeah you'd rather not delete all the spiders in maintenace. Only that one room the spiders were
-spawned in.
+	You can also generate a new list on the fly using a selector array. @[] will generate a list of objects based off the selector provided.
 
-"DELETE /mob/living/carbon/superior_animal/giant_spider WHERE loc.loc == marked"
+	"SELECT /mob/living IN (@[/area/crew_quarters/bar MAP contents])[1]"
 
-Here I used VV to mark the area they were in, and since loc.loc = area, voila.
-Only the spiders in a specific area are gone.
+	What if some dumbass admin spawned a bajillion spiders and you need to kill them all?
+	Oh yeah you'd rather not delete all the spiders in maintenace. Only that one room the spiders were
+	spawned in.
 
-Or you know if you want to catch spiders that crawled into lockers too (how even?)
+	"DELETE /mob/living/carbon/superior_animal/giant_spider WHERE loc.loc == marked"
 
-"DELETE /mob/living/carbon/superior_animal/giant_spider WHERE global.get_area(src) == marked"
+	Here I used VV to mark the area they were in, and since loc.loc = area, voila.
+	Only the spiders in a specific area are gone.
 
-What else can you do?
+	Or you know if you want to catch spiders that crawled into lockers too (how even?)
 
-Well suppose you'd rather gib those spiders instead of simply flat deleting them...
+	"DELETE /mob/living/carbon/superior_animal/giant_spider WHERE global.get_area(src) == marked"
 
-"CALL gib() ON /mob/living/carbon/superior_animal/giant_spider WHERE global.get_area(src) == marked"
+	What else can you do?
 
-Or you can have some fun..
+	Well suppose you'd rather gib those spiders instead of simply flat deleting them...
 
-"CALL forceMove(marked) ON /mob/living/carbon/superior_animal"
+	"CALL gib() ON /mob/living/carbon/superior_animal/giant_spider WHERE global.get_area(src) == marked"
 
-You can also run multiple queries sequentially:
+	Or you can have some fun..
 
-"CALL forceMove(marked) ON /mob/living/carbon/superior_animal; CALL gib() ON
-/mob/living/carbon/superior_animal"
+	"CALL forceMove(marked) ON /mob/living/carbon/superior_animal"
 
-And finally, you can directly modify variables on objects.
+	You can also run multiple queries sequentially:
 
-"UPDATE /mob WHERE client SET client.color = [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]"
+	"CALL forceMove(marked) ON /mob/living/carbon/superior_animal; CALL gib() ON
+	/mob/living/carbon/superior_animal"
 
-Don't crash the server, OK?
+	And finally, you can directly modify variables on objects.
 
-A quick recommendation: before you run something like a DELETE or another query.. Run it through SELECT
-first.
-You'd rather not gib every player on accident.
-Or crash the server.
+	"UPDATE /mob WHERE client SET client.color = [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]"
 
-By the way, queries are slow and take a while. Be patient.
-They don't hang the entire server though.
+	Don't crash the server, OK?
 
-With great power comes great responsability.
+	A quick recommendation: before you run something like a DELETE or another query.. Run it through SELECT
+	first.
+	You'd rather not gib every player on accident.
+	Or crash the server.
 
-Here's a slightly more formal quick reference.
+	By the way, queries are slow and take a while. Be patient.
+	They don't hang the entire server though.
 
-The 4 queries you can do are:
+	With great power comes great responsability.
 
-"SELECT <selectors>"
-"CALL <proc call> ON <selectors>"
-"UPDATE <selectors> SET var=<value>,var2=<value>"
-"DELETE <selectors>"
+	Here's a slightly more formal quick reference.
 
-"<selectors>" in this context is "<type> [IN <source>] [chain of MAP/WHERE modifiers]"
+	The 4 queries you can do are:
 
-"IN" (or "FROM", that works too but it's kinda weird to read),
-is the list of objects to work on. This defaults to world if not provided.
-But doing something like "IN living_mob_list" is quite handy and can optimize your query.
-All names inside the IN block are global scope, so you can do living_mob_list (a global var) easily.
-You can also run it on a single object. Because SDQL is that convenient even for single operations.
+	"SELECT <selectors>"
+	"CALL <proc call> ON <selectors>"
+	"UPDATE <selectors> SET var=<value>,var2=<value>"
+	"DELETE <selectors>"
 
-<type> filters out objects of, well, that type easily. "*" is a wildcard and just takes everything in
-the source list.
+	"<selectors>" in this context is "<type> [IN <source>] [chain of MAP/WHERE modifiers]"
 
-And then there's the MAP/WHERE chain.
-These operate on each individual object being ran through the query.
-They're both expressions like IN, but unlike it the expression is scoped *on the object*.
-So if you do "WHERE z == 4", this does "src.z", effectively.
-If you want to access global variables, you can do `global.living_mob_list`.
-Same goes for procs.
+	"IN" (or "FROM", that works too but it's kinda weird to read),
+	is the list of objects to work on. This defaults to world if not provided.
+	But doing something like "IN living_mob_list" is quite handy and can optimize your query.
+	All names inside the IN block are global scope, so you can do living_mob_list (a global var) easily.
+	You can also run it on a single object. Because SDQL is that convenient even for single operations.
 
-MAP "changes" the object into the result of the expression.
-WHERE "drops" the object if the expression is falsey (0, null or "")
+	<type> filters out objects of, well, that type easily. "*" is a wildcard and just takes everything in
+	the source list.
 
-What can you do inside expressions?
+	And then there's the MAP/WHERE chain.
+	These operate on each individual object being ran through the query.
+	They're both expressions like IN, but unlike it the expression is scoped *on the object*.
+	So if you do "WHERE z == 4", this does "src.z", effectively.
+	If you want to access global variables, you can do `global.living_mob_list`.
+	Same goes for procs.
 
-* Proc calls
-* Variable reads
-* Literals (numbers, strings, type paths, etc...)
-* \ref referencing: {0x30000cc} grabs the object with \ref [0x30000cc]
-* Lists: [a, b, c] or [a: b, c: d]
-* Math and stuff.
-* A few special variables: src (the object currently scoped on), usr (your mob),
-marked (your marked datum), global(global scope)
+	MAP "changes" the object into the result of the expression.
+	WHERE "drops" the object if the expression is falsey (0, null or "")
 
-TG ADDITIONS START:
-Add USING keyword to the front of the query to use options system
-The defaults aren't necessarily implemented, as there is no need to.
-Available options: (D) means default
-PROCCALL = (D)ASYNC, BLOCKING
-SELECT = FORCE_NULLS, (D)SKIP_NULLS
-PRIORITY = HIGH, (D) NORMAL
-AUTOGC = (D) AUTOGC, KEEP_ALIVE
+	What can you do inside expressions?
 
-Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT /mob FROM world WHERE z == 1
+	* Proc calls
+	* Variable reads
+	* Literals (numbers, strings, type paths, etc...)
+	* \ref referencing: {0x30000cc} grabs the object with \ref [0x30000cc]
+	* Lists: [a, b, c] or [a: b, c: d]
+	* Math and stuff.
+	* A few special variables: src (the object currently scoped on), usr (your mob),
+		marked (your marked datum), global(global scope)
+
+	TG ADDITIONS START:
+	Add USING keyword to the front of the query to use options system
+	The defaults aren't necessarily implemented, as there is no need to.
+	Available options: (D) means default
+	PROCCALL = (D)ASYNC, BLOCKING
+	SELECT = FORCE_NULLS, (D)SKIP_NULLS
+	PRIORITY = HIGH, (D) NORMAL
+	AUTOGC = (D) AUTOGC, KEEP_ALIVE
+	SEQUENTIAL = TRUE - The queries in this batch will be executed sequentially one by one not in parallel
+
+	Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT /mob FROM world WHERE z == 1
 
 */
 
@@ -168,13 +173,14 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 #define SDQL2_STATE_SWITCHING 5
 #define SDQL2_STATE_HALTING 6
 
-#define SDQL2_VALID_OPTION_TYPES list("proccall", "select", "priority", "autogc")
-#define SDQL2_VALID_OPTION_VALUES list("async", "blocking", "force_nulls", "skip_nulls", "high", "normal", "keep_alive")
+#define SDQL2_VALID_OPTION_TYPES list("proccall", "select", "priority", "autogc" , "sequential")
+#define SDQL2_VALID_OPTION_VALUES list("async", "blocking", "force_nulls", "skip_nulls", "high", "normal", "keep_alive" , "true")
 
 #define SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS			(1<<0)
 #define SDQL2_OPTION_BLOCKING_CALLS						(1<<1)
 #define SDQL2_OPTION_HIGH_PRIORITY						(1<<2)		//High priority SDQL query, allow using almost all of the tick.
 #define SDQL2_OPTION_DO_NOT_AUTOGC						(1<<3)
+#define SDQL2_OPTION_SEQUENTIAL							(1<<4)
 
 #define SDQL2_OPTIONS_DEFAULT		(SDQL2_OPTION_SELECT_OUTPUT_SKIP_NULLS)
 
@@ -200,6 +206,7 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 	if(length(results) == 3)
 		for(var/I in 1 to 3)
 			to_chat(usr, results[I])
+	//SSblackbox.record_feedback("nested tally", "SDQL query", 1, list(ckey, query_text))
 
 /world/proc/SDQL2_query(query_text, log_entry1, log_entry2)
 	var/query_log = "executed SDQL query(s): \"[query_text]\"."
@@ -209,6 +216,7 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 	NOTICE(query_log)
 
 	var/start_time_total = REALTIMEOFDAY
+	var/sequential = FALSE
 
 	if(!length(query_text))
 		return
@@ -219,18 +227,35 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 	if(!length(querys))
 		return
 	var/list/datum/SDQL2_query/running = list()
+	var/list/datum/SDQL2_query/waiting_queue = list() //Sequential queries queue.
+
 	for(var/list/query_tree in querys)
 		var/datum/SDQL2_query/query = new /datum/SDQL2_query(query_tree)
 		if(QDELETED(query))
 			continue
 		if(usr)
 			query.show_next_to_key = usr.ckey
+		waiting_queue += query
+		if(query.options & SDQL2_OPTION_SEQUENTIAL)
+			sequential = TRUE
+
+	if(sequential) //Start first one
+		var/datum/SDQL2_query/query = popleft(waiting_queue)
 		running += query
 		var/msg = "Starting query #[query.id] - [query.get_query_text()]."
 		if(usr)
 			to_chat(usr, "<span class='admin'>[msg]</span>")
 		log_admin(msg)
 		query.ARun()
+	else //Start all
+		for(var/datum/SDQL2_query/query in waiting_queue)
+			running += query
+			var/msg = "Starting query #[query.id] - [query.get_query_text()]."
+			if(usr)
+				to_chat(usr, "<span class='admin'>[msg]</span>")
+			log_admin(msg)
+			query.ARun()
+
 	var/finished = FALSE
 	var/objs_all = 0
 	var/objs_eligible = 0
@@ -246,10 +271,10 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 				continue
 			else if(query.state != SDQL2_STATE_IDLE)
 				finished = FALSE
-			else if(query.state == SDQL2_STATE_ERROR)
-				if(usr)
-					to_chat(usr, "<span class='admin'>SDQL query [query.get_query_text()] errored. It will NOT be automatically garbage collected. Please remove manually.</span>")
-				running -= query
+				if(query.state == SDQL2_STATE_ERROR)
+					if(usr)
+						to_chat(usr, "<span class='admin'>SDQL query [query.get_query_text()] errored. It will NOT be automatically garbage collected. Please remove manually.</span>")
+					running -= query
 			else
 				if(query.finished)
 					objs_all += islist(query.obj_count_all)? length(query.obj_count_all) : query.obj_count_all
@@ -257,8 +282,17 @@ Example: USING PROCCALL = BLOCKING, SELECT = FORCE_NULLS, PRIORITY = HIGH SELECT
 					selectors_used |= query.where_switched
 					combined_refs |= query.select_refs
 					running -= query
-					//if(!CHECK_BITFIELD(query.options, SDQL2_OPTION_DO_NOT_AUTOGC))
-						//QDEL_IN(query, 50) Maybe when vorestation finally ports timers..
+					if(!CHECK_BITFIELD(query.options, SDQL2_OPTION_DO_NOT_AUTOGC))
+						QDEL_IN(query, 50)
+					if(sequential && waiting_queue.len)
+						finished = FALSE
+						var/datum/SDQL2_query/next_query = popleft(waiting_queue)
+						running += next_query
+						var/msg = "Starting query #[next_query.id] - [next_query.get_query_text()]."
+						if(usr)
+							to_chat(usr, "<span class='admin'>[msg]</span>")
+						log_admin(msg)
+						next_query.ARun()
 				else
 					if(usr)
 						to_chat(usr, "<span class='admin'>SDQL query [query.get_query_text()] was halted. It will NOT be automatically garbage collected. Please remove manually.</span>")
@@ -305,6 +339,9 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/obj/effect/statclick/SDQL2_action/action_click
 
 /datum/SDQL2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
+	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
+		qdel(src)
+		return
 	LAZYADD(GLOB.sdql2_queries, src)
 	superuser = SU
 	allow_admin_interact = admin_interact
@@ -338,8 +375,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		//print the key
 		if(islist(key))
 			recursive_list_print(output, key, datum_handler, atom_handler)
-		else if(is_proper_datum(key) && (datum_handler || (istype(key, /atom) && atom_handler)))
-			if(istype(key, /atom) && atom_handler)
+		else if(is_proper_datum(key) && (datum_handler || (isatom(key) && atom_handler)))
+			if(isatom(key) && atom_handler)
 				output += atom_handler.Invoke(key)
 			else
 				output += datum_handler.Invoke(key)
@@ -352,8 +389,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			var/value = input[key]
 			if(islist(value))
 				recursive_list_print(output, value, datum_handler, atom_handler)
-			else if(is_proper_datum(value) && (datum_handler || (istype(value, /atom) && atom_handler)))
-				if(istype(value, /atom) && atom_handler)
+			else if(is_proper_datum(value) && (datum_handler || (isatom(value) && atom_handler)))
+				if(isatom(value) && atom_handler)
 					output += atom_handler.Invoke(value)
 				else
 					output += datum_handler.Invoke(value)
@@ -418,8 +455,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/msg = "[key_name(user)] has (re)started query #[id]"
 	message_admins(msg)
 	log_admin(msg)
-	ARun()
 	show_next_to_key = user.ckey
+	ARun()
 
 /datum/SDQL2_query/proc/admin_del(user = usr)
 	var/msg = "[key_name(user)] has stopped + deleted query #[id]"
@@ -445,6 +482,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			switch(value)
 				if("keep_alive")
 					ENABLE_BITFIELD(options, SDQL2_OPTION_DO_NOT_AUTOGC)
+		if("sequential")
+			switch(value)
+				if("true")
+					ENABLE_BITFIELD(options,SDQL2_OPTION_SEQUENTIAL)
 
 /datum/SDQL2_query/proc/ARun()
 	INVOKE_ASYNC(src, .proc/Run)
@@ -480,7 +521,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	finished = TRUE
 	. = TRUE
 	if(show_next_to_key)
-		var/client/C = directory[show_next_to_key]
+		var/client/C = GLOB.directory[show_next_to_key]
 		if(C)
 			var/mob/showmob = C.mob
 			to_chat(showmob, "<span class='admin'>SDQL query results: [get_query_text()]<br>\
@@ -550,6 +591,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	state = SDQL2_STATE_SWITCHING
 
 /datum/SDQL2_query/proc/SDQL_from_objs(list/tree)
+	if(IsAdminAdvancedProcCall())
+		if("world" in tree)
+			var/text = "[key_name(usr)] attempted to grab world with a procedure call to a SDQL datum."
+			message_admins(text)
+			log_admin(text)
+			return
 	if("world" in tree)
 		return world
 	return SDQL_expression(world, tree)
@@ -652,7 +699,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			obj_count_finished = select_refs
 			for(var/i in found)
 				SDQL_print(i, text_list, print_nulls)
-				select_refs["\ref[i]"] = TRUE
+				select_refs[REF(i)] = TRUE
 				SDQL2_TICK_CHECK
 				SDQL2_HALT_CHECK
 			select_text = text_list
@@ -673,7 +720,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 /datum/SDQL2_query/proc/SDQL_print(object, list/text_list, print_nulls = TRUE)
 	if(is_proper_datum(object))
-		text_list += "<A HREF='?_src_=vars;Vars=\ref[object]'>\ref[object]</A> : [object]"
+		text_list += "<A HREF='?_src_=vars;[HrefToken(TRUE)];Vars=[REF(object)]'>[REF(object)]</A> : [object]"
 		if(istype(object, /atom))
 			var/atom/A = object
 			var/turf/T = A.loc
@@ -747,9 +794,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	for(var/arg in arguments)
 		new_args[++new_args.len] = SDQL_expression(source, arg)
 	if(object == GLOB) // Global proc.
-		procname = "/proc/[procname]"
-		return call(procname)(arglist(new_args))
-	return call(object, procname)(arglist(new_args))
+		return superuser? (call(procname)(new_args)) : (WrapAdminProcCall(GLOBAL_PROC, procname, new_args))
+	return superuser? (call(object, procname)(new_args)) : (WrapAdminProcCall(object, procname, new_args))
 
 /datum/SDQL2_query/proc/SDQL_function_async(datum/object, procname, list/arguments, source)
 	set waitfor = FALSE
@@ -869,6 +915,22 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				dummy[result] = assoc
 				result = dummy
 			val += result
+
+	else if(expression[i] == "@\[")
+		var/list/search_tree = expression[++i]
+		var/already_searching = (state == SDQL2_STATE_SEARCHING) //In case we nest, don't want to break out of the searching state until we're all done.
+
+		if(!already_searching)
+			state = SDQL2_STATE_SEARCHING
+
+		val = Search(search_tree)
+		SDQL2_STAGE_SWITCH_CHECK
+
+		if(!already_searching)
+			state = SDQL2_STATE_EXECUTING
+		else
+			state = SDQL2_STATE_SEARCHING
+
 	else
 		val = world.SDQL_var(object, expression, i, object, superuser, src)
 		i = expression.len
@@ -958,6 +1020,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			return null
 		start++
 		long = start < expression.len
+	else if(expression[start] == "(" && long)
+		v = query.SDQL_expression(source, expression[start + 1])
+		start++
+		long = start < expression.len
 	else if(D != null && (!long || expression[start + 1] == ".") && (expression[start] in D.vars))
 		if(D.can_vv_get(expression[start]) || superuser)
 			v = D.vars[expression[start]]
@@ -986,6 +1052,46 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = Failsafe
 			if("CFG")
 				v = config
+/*
+			//Subsystem switches
+			if("SSgarbage")
+				v = SSgarbage
+			if("SSmachines")
+				v = SSmachines
+			if("SSobj")
+				v = SSobj
+			if("SSresearch")
+				v = SSresearch
+			if("SSprojectiles")
+				v = SSprojectiles
+			if("SSfastprocess")
+				v = SSfastprocess
+			if("SSSSticker")
+				v = SSSSticker
+			if("SStimer")
+				v = SStimer
+			if("SSradiation")
+				v = SSradiation
+			if("SSnpcpool")
+				v = SSnpcpool
+			if("SSmobs")
+				v = SSmobs
+			if("SSmood")
+				v = SSmood
+			if("SSquirks")
+				v = SSquirks
+			if("SSwet_floors")
+				v = SSwet_floors
+			if("SSshuttle")
+				v = SSshuttle
+			if("SSmapping")
+				v = SSmapping
+			if("SSevents")
+				v = SSevents
+			if("SSeconomy")
+				v = SSeconomy
+			//End
+*/
 			else
 				return null
 	else if(object == GLOB) // Shitty ass hack kill me.
@@ -998,7 +1104,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		else if(expression[start + 1] == "\[" && islist(v))
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
-			if(isnum(index) && (!(round(index) == index) || L.len < index))
+			if(isnum(index) && (!ISINTEGER(index) || L.len < index))
 				to_chat(usr, "<span class='danger'>Invalid list index: [index]</span>")
 				return null
 			return L[index]
@@ -1012,7 +1118,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 					"=" = list("", "="),
 					"<" = list("", "=", ">"),
 					">" = list("", "="),
-					"!" = list("", "="))
+					"!" = list("", "="),
+					"@" = list("\["))
 
 	var/word = ""
 	var/list/query_list = list()

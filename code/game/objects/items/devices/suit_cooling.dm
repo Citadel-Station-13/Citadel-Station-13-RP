@@ -1,4 +1,4 @@
-/obj/item/device/suit_cooling_unit
+/obj/item/suit_cooling_unit
 	name = "portable suit cooling unit"
 	desc = "A portable heat sink and liquid cooled radiator that can be hooked up to a space suit's existing temperature controls to provide industrial levels of cooling."
 	w_class = ITEMSIZE_LARGE
@@ -7,7 +7,6 @@
 	slot_flags = SLOT_BACK
 
 	//copied from tank.dm
-	flags = CONDUCT
 	force = 5.0
 	throwforce = 10.0
 	throw_speed = 1
@@ -19,22 +18,22 @@
 
 	var/on = 0				//is it turned on?
 	var/cover_open = 0		//is the cover open?
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
 	var/max_cooling = 15				// in degrees per second - probably don't need to mess with heat capacity here
 	var/charge_consumption = 3			// charge per second at max_cooling
 	var/thermostat = T20C
 
 	//TODO: make it heat up the surroundings when not in space
 
-/obj/item/device/suit_cooling_unit/ui_action_click()
+/obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
 
-/obj/item/device/suit_cooling_unit/New()
-	processing_objects |= src
-	cell = new/obj/item/weapon/cell/high()	//comes not with the crappy default power cell - because this is dedicated EVA equipment
+/obj/item/suit_cooling_unit/New()
+	START_PROCESSING(SSobj, src)
+	cell = new/obj/item/cell/high()	//comes not with the crappy default power cell - because this is dedicated EVA equipment
 	cell.loc = src
 
-/obj/item/device/suit_cooling_unit/process()
+/obj/item/suit_cooling_unit/process()
 	if (!on || !cell)
 		return
 
@@ -46,7 +45,9 @@
 
 	var/mob/living/carbon/human/H = loc
 
-	var/efficiency = 1 - H.get_pressure_weakness()			// You need to have a good seal for effective cooling
+	var/turf/T = get_turf(src)
+	var/datum/gas_mixture/environment = T.return_air()
+	var/efficiency = 1 - H.get_pressure_weakness(environment.return_pressure())	// You need to have a good seal for effective cooling
 	var/temp_adj = 0										// How much the unit cools you. Adjusted later on.
 	var/env_temp = get_environment_temperature()			// This won't save you from a fire
 	var/thermal_protection = H.get_heat_protection(env_temp)	// ... unless you've got a good suit.
@@ -68,7 +69,7 @@
 	if(cell.charge <= 0)
 		turn_off(1)
 
-/obj/item/device/suit_cooling_unit/proc/get_environment_temperature()
+/obj/item/suit_cooling_unit/proc/get_environment_temperature()
 	if (ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		if(istype(H.loc, /obj/mecha))
@@ -87,7 +88,7 @@
 
 	return environment.temperature
 
-/obj/item/device/suit_cooling_unit/proc/attached_to_suit(mob/M)
+/obj/item/suit_cooling_unit/proc/attached_to_suit(mob/M)
 	if (!ishuman(M))
 		return 0
 
@@ -98,7 +99,7 @@
 
 	return 1
 
-/obj/item/device/suit_cooling_unit/proc/turn_on()
+/obj/item/suit_cooling_unit/proc/turn_on()
 	if(!cell)
 		return
 	if(cell.charge <= 0)
@@ -107,12 +108,12 @@
 	on = 1
 	updateicon()
 
-/obj/item/device/suit_cooling_unit/proc/turn_off(var/failed)
+/obj/item/suit_cooling_unit/proc/turn_off(var/failed)
 	if(failed) visible_message("\The [src] clicks and whines as it powers down.")
 	on = 0
 	updateicon()
 
-/obj/item/device/suit_cooling_unit/attack_self(var/mob/user)
+/obj/item/suit_cooling_unit/attack_self(var/mob/user)
 	if(cover_open && cell)
 		if(ishuman(user))
 			user.put_in_hands(cell)
@@ -129,14 +130,14 @@
 
 	toggle(user)
 
-/obj/item/device/suit_cooling_unit/proc/toggle(var/mob/user)
+/obj/item/suit_cooling_unit/proc/toggle(var/mob/user)
 	if(on)
 		turn_off()
 	else
 		turn_on()
 	to_chat(user, "<span class='notice'>You switch \the [src] [on ? "on" : "off"].</span>")
 
-/obj/item/device/suit_cooling_unit/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/suit_cooling_unit/attackby(obj/item/W as obj, mob/user as mob)
 	if (W.is_screwdriver())
 		if(cover_open)
 			cover_open = 0
@@ -148,7 +149,7 @@
 		updateicon()
 		return
 
-	if (istype(W, /obj/item/weapon/cell))
+	if (istype(W, /obj/item/cell))
 		if(cover_open)
 			if(cell)
 				to_chat(user, "There is a [cell] already installed here.")
@@ -162,7 +163,7 @@
 
 	return ..()
 
-/obj/item/device/suit_cooling_unit/proc/updateicon()
+/obj/item/suit_cooling_unit/proc/updateicon()
 	if (cover_open)
 		if (cell)
 			icon_state = "suitcooler1"
@@ -171,7 +172,7 @@
 	else
 		icon_state = "suitcooler0"
 
-/obj/item/device/suit_cooling_unit/examine(mob/user)
+/obj/item/suit_cooling_unit/examine(mob/user)
 	if(!..(user, 1))
 		return
 

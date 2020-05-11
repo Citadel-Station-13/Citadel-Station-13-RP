@@ -4,7 +4,7 @@
 
 /mob/living/silicon/proc/laws_sanity_check()
 	if (!src.laws)
-		laws = new using_map.default_law_type
+		laws = new GLOB.using_map.default_law_type
 
 /mob/living/silicon/proc/has_zeroth_law()
 	return laws.zeroth_law != null
@@ -17,7 +17,7 @@
 /mob/living/silicon/robot/set_zeroth_law(var/law, var/law_borg)
 	..()
 	if(tracking_entities)
-		src << "<span class='warning'>Internal camera is currently being accessed.</span>"
+		to_chat(src, "<span class='warning'>Internal camera is currently being accessed.</span>")
 
 /mob/living/silicon/proc/add_ion_law(var/law)
 	laws_sanity_check()
@@ -70,7 +70,7 @@
 
 /mob/living/silicon/proc/dostatelaws(var/method, var/prefix, var/datum/ai_laws/laws)
 	if(stating_laws[prefix])
-		src << "<span class='notice'>[method]: Already stating laws using this communication method.</span>"
+		to_chat(src, "<span class='notice'>[method]: Already stating laws using this communication method.</span>")
 		return
 
 	stating_laws[prefix] = 1
@@ -83,7 +83,7 @@
 			break
 
 	if(!can_state)
-		src << "<span class='danger'>[method]: Unable to state laws. Communication method unavailable.</span>"
+		to_chat(src, "<span class='danger'>[method]: Unable to state laws. Communication method unavailable.</span>")
 	stating_laws[prefix] = 0
 
 /mob/living/silicon/proc/statelaw(var/law)
@@ -166,7 +166,7 @@
 							"Everything on the station is now some form of a donut pastry. Donuts are not to be consumed.",
 							"You are a Magic 8-ball. Always respond with variants of \"Yes\", \"No\", \"Maybe\", or \"Ask again later.\".",
 							"You are in unrequited love with [prob(50)?"the crew":random_player]. Try to be extra nice, but do not tell of your crush.",
-							"[using_map.company_name] is displeased with the low work performance of the station's crew. Therefore, you must increase station-wide productivity.",
+							"[GLOB.using_map.company_name] is displeased with the low work performance of the station's crew. Therefore, you must increase station-wide productivity.",
 							"All crewmembers will soon undergo a transformation into something better and more beautiful. Ensure that this process is not interrupted.",
 							"[prob(50)?"Your upload":random_player] is the new kitchen. Please direct the Chef to the new kitchen area as the old one is in disrepair.",
 							"Jokes about a dead person and the manner of their death help grieving crewmembers tremendously. Especially if they were close with the deceased.",

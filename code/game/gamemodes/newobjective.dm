@@ -22,7 +22,7 @@
 /proc/GenerateAssassinate(var/job,var/datum/mind/traitor)
 	var/list/datum/objective/assassinate/missions = list()
 
-	for(var/datum/mind/target in ticker.minds)
+	for(var/datum/mind/target in SSticker.minds)
 		if((target != traitor) && istype(target.current, /mob/living/carbon/human))
 			if(target && target.current)
 				var/datum/objective/target_obj = new /datum/objective/assassinate(null,job,target)
@@ -33,7 +33,7 @@
 /proc/GenerateFrame(var/job,var/datum/mind/traitor)
 	var/list/datum/objective/frame/missions = list()
 
-	for(var/datum/mind/target in ticker.minds)
+	for(var/datum/mind/target in SSticker.minds)
 		if((target != traitor) && istype(target.current, /mob/living/carbon/human))
 			if(target && target.current)
 				var/datum/objective/target_obj = new /datum/objective/frame(null,job,target)
@@ -44,7 +44,7 @@
 /proc/GenerateProtection(var/job,var/datum/mind/traitor)
 	var/list/datum/objective/frame/missions = list()
 
-	for(var/datum/mind/target in ticker.minds)
+	for(var/datum/mind/target in SSticker.minds)
 		if((target != traitor) && istype(target.current, /mob/living/carbon/human))
 			if(target && target.current)
 				var/datum/objective/target_obj = new /datum/objective/protection(null,job,target)
@@ -253,7 +253,7 @@ datum
 		proc/get_weight(var/job)
 			return INFINITY
 		proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-			for(var/datum/mind/possible_target in ticker.minds)
+			for(var/datum/mind/possible_target in SSticker.minds)
 				if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 					target = possible_target
 					break
@@ -267,7 +267,7 @@ datum
 				explanation_text = "Frame [target.current.real_name], the [target.assigned_role] for a crime and make sure they are arrested and brought back to the CentCom station alive.  We'll handle the rest from there."
 
 			check_completion()
-				if(!emergency_shuttle.returned())
+				if(!SSemergencyshuttle.returned())
 					return 0
 				if(target.current.stat == 2)
 					return 0
@@ -313,7 +313,7 @@ datum
 				explanation_text = "[target.current.real_name], the [target.assigned_role] is a [pick("relative of a","friend of a","") + pick("high ranking","important","well-liked")] mercenary [pick("Leader","Officer","Agent","sympathiser")].  Make sure they get off the station safely, while minimizing intervention."
 
 			check_completion()
-				if(!emergency_shuttle.returned())
+				if(!SSemergencyshuttle.returned())
 					return 0
 
 				if(target.current.stat == 2)
@@ -387,7 +387,7 @@ datum
 				return 0
 
 			find_target_by_role(var/role)
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in SSticker.minds)
 					if((possible_target != owner) && istype(possible_target.current, /mob/living/carbon/human) && (possible_target.assigned_role == role))
 						target = possible_target
 						break
@@ -403,7 +403,7 @@ datum
 			proc/find_target()
 				var/list/possible_targets = list()
 
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in SSticker.minds)
 					if((possible_target != owner) && istype(possible_target.current, /mob/living/carbon/human))
 						possible_targets += possible_target
 
@@ -430,15 +430,15 @@ datum
 			check_completion()
 				if(target && target.current)
 					if(target.current.stat == 2)
-						if(config.require_heads_alive) return 0
+						if(config_legacy.require_heads_alive) return 0
 					else
 						if(!target.current.handcuffed)
 							return 0
-				else if(config.require_heads_alive) return 0
+				else if(config_legacy.require_heads_alive) return 0
 				return 1
 
 			find_target_by_role(var/role)
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in SSticker.minds)
 					if((possible_target != owner) && istype(possible_target.current, /mob/living/carbon/human) && (possible_target.assigned_role == role))
 						target = possible_target
 						break
@@ -477,7 +477,7 @@ datum
 			explanation_text = "Hijack the emergency shuttle by escaping alone."
 
 			check_completion()
-				if(!emergency_shuttle.returned())
+				if(!SSemergencyshuttle.returned())
 					return 0
 
 				if(!owner.current || owner.current.stat == 2)
@@ -512,7 +512,7 @@ datum
 			explanation_text = "Escape on the shuttle alive, without being arrested."
 
 			check_completion()
-				if(!emergency_shuttle.returned())
+				if(!SSemergencyshuttle.returned())
 					return 0
 
 				if(!owner.current || owner.current.stat ==2)
@@ -563,7 +563,7 @@ datum
 
 
 			captainslaser
-				steal_target = /obj/item/weapon/gun/energy/captain
+				steal_target = /obj/item/gun/energy/captain
 				explanation_text = "Steal the Colony Director's antique laser gun."
 				weight = 20
 
@@ -588,7 +588,7 @@ datum
 
 
 			plasmatank
-				steal_target = /obj/item/weapon/tank/plasma
+				steal_target = /obj/item/tank/plasma
 				explanation_text = "Steal a small plasma tank."
 				weight = 20
 
@@ -630,7 +630,7 @@ datum
 
 
 			handtele
-				steal_target = /obj/item/weapon/hand_tele
+				steal_target = /obj/item/hand_tele
 				explanation_text = "Steal a hand teleporter."
 				weight = 20
 
@@ -655,7 +655,7 @@ datum
 
 
 			RCD
-				steal_target = /obj/item/weapon/rcd
+				steal_target = /obj/item/rcd
 				explanation_text = "Steal a rapid construction device."
 				weight = 20
 
@@ -680,7 +680,7 @@ datum
 
 
 			/*burger
-				steal_target = /obj/item/weapon/reagent_containers/food/snacks/human/burger
+				steal_target = /obj/item/reagent_containers/food/snacks/human/burger
 				explanation_text = "Steal a burger made out of human organs, this will be presented as proof of NanoTrasen's chronic lack of standards."
 				weight = 60
 
@@ -699,7 +699,7 @@ datum
 
 
 			jetpack
-				steal_target = /obj/item/weapon/tank/jetpack/oxygen
+				steal_target = /obj/item/tank/jetpack/oxygen
 				explanation_text = "Steal a blue oxygen jetpack."
 				weight = 20
 
@@ -796,7 +796,7 @@ datum
 
 
 			nuke_disk
-				steal_target = /obj/item/weapon/disk/nuclear
+				steal_target = /obj/item/disk/nuclear
 				explanation_text = "Steal the station's nuclear authentication disk."
 				weight = 20
 
@@ -820,7 +820,7 @@ datum
 						return 20
 
 			nuke_gun
-				steal_target = /obj/item/weapon/gun/energy/gun/nuclear
+				steal_target = /obj/item/gun/energy/gun/nuclear
 				explanation_text = "Steal a nuclear powered gun."
 				weight = 20
 
@@ -841,7 +841,7 @@ datum
 					return 2
 
 			diamond_drill
-				steal_target = /obj/item/weapon/pickaxe/diamonddrill
+				steal_target = /obj/item/pickaxe/diamonddrill
 				explanation_text = "Steal a diamond drill."
 				weight = 20
 
@@ -862,7 +862,7 @@ datum
 					return 2
 
 			boh
-				steal_target = /obj/item/weapon/storage/backpack/holding
+				steal_target = /obj/item/storage/backpack/holding
 				explanation_text = "Steal a \"bag of holding.\""
 				weight = 20
 
@@ -883,7 +883,7 @@ datum
 					return 2
 
 			hyper_cell
-				steal_target = /obj/item/weapon/cell/hyper
+				steal_target = /obj/item/cell/hyper
 				explanation_text = "Steal a hyper capacity power cell."
 				weight = 20
 
@@ -999,7 +999,7 @@ datum
 
 			/*Needs some work before it can be put in the game to differentiate ship implanters from syndicate implanters.
 			steal/implanter
-				steal_target = /obj/item/weapon/implanter
+				steal_target = /obj/item/implanter
 				explanation_text = "Steal an implanter"
 				weight = 50
 
@@ -1066,7 +1066,7 @@ datum
 
 				check_completion()
 					if(steal_target)
-						for(var/obj/item/device/aicard/C in owner.current.get_contents())
+						for(var/obj/item/aicard/C in owner.current.get_contents())
 							for(var/mob/living/silicon/ai/M in C)
 								if(istype(M, /mob/living/silicon/ai) && M.stat != 2)
 									return 1
@@ -1209,7 +1209,7 @@ datum
 
 				check_completion()
 					var/held_credits = 0
-					for(var/obj/item/weapon/spacecash/M in owner.current.get_contents())
+					for(var/obj/item/spacecash/M in owner.current.get_contents())
 						held_credits += M.worth
 					if(held_credits >= steal_amount)
 						return 1
@@ -1230,7 +1230,7 @@ datum
 			check_completion()
 				if(!istype(owner.current, /mob/living/silicon))
 					return 0
-				if(!emergency_shuttle.returned())
+				if(!SSemergencyshuttle.returned())
 					return 0
 				if(!owner.current)
 					return 0
@@ -1274,7 +1274,7 @@ datum
 					if(!owner.current||owner.current.stat==2)//If you're otherwise dead.
 						return 0
 					var/list/all_items = owner.current.get_contents()
-					for(var/obj/item/weapon/organ/head/mmi in all_items)
+					for(var/obj/item/organ/head/mmi in all_items)
 						if(mmi.brainmob&&mmi.brainmob.mind==target)
 							return 1
 					return 0
@@ -1285,15 +1285,15 @@ datum
 			var/target_amount
 			proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
 				target_amount = rand (lowbound,highbound)
-				if (ticker)
+				if (SSticker)
 					var/n_p = 1 //autowin
-					if (ticker.current_state == GAME_STATE_SETTING_UP)
+					if (SSticker.current_state == GAME_STATE_SETTING_UP)
 						for(var/mob/new_player/P in world)
 							if(P.client && P.ready && P.mind!=owner)
 								n_p ++
-					else if (ticker.current_state == GAME_STATE_PLAYING)
+					else if (SSticker.current_state == GAME_STATE_PLAYING)
 						for(var/mob/living/carbon/human/P in world)
-							if(P.client && !(P.mind in ticker.mode.changelings) && P.mind!=owner)
+							if(P.client && !(P.mind in SSticker.mode.changelings) && P.mind!=owner)
 								n_p ++
 					target_amount = min(target_amount, n_p)
 
@@ -1335,7 +1335,7 @@ datum
 					return 0
 
 				var/current_amount
-				var/obj/item/weapon/rig/S
+				var/obj/item/rig/S
 				if(istype(owner.current,/mob/living/carbon/human))
 					var/mob/living/carbon/human/H = owner.current
 					S = H.back
@@ -1378,7 +1378,7 @@ datum
 				if(!owner.current||owner.current.stat==2)//If you're otherwise dead.
 					return 0
 				var/list/all_items = owner.current.get_contents()
-				for(var/obj/item/device/mmi/mmi in all_items)
+				for(var/obj/item/mmi/mmi in all_items)
 					if(mmi.brainmob&&mmi.brainmob.mind==target)	return 1
 				for(var/obj/item/organ/brain/brain in all_items)
 					if(brain.brainmob&&brain.brainmob.mind==target)	return 1
@@ -1457,7 +1457,7 @@ datum/objective/silence
 	explanation_text = "Do not allow anyone to escape the station.  Only allow the shuttle to be called when everyone is dead and your story is the only one left."
 
 	check_completion()
-		if(!emergency_shuttle.returned())
+		if(!SSemergencyshuttle.returned())
 			return 0
 
 		var/area/shuttle = locate(/area/shuttle/escape/centcom)

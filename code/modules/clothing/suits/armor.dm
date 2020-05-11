@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/armor
-	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	item_flags = THICKMATERIAL
 
@@ -13,10 +13,10 @@
 	if(..()) //This will only run if no other problems occured when equiping.
 		for(var/obj/item/clothing/I in list(H.gloves, H.shoes))
 			if(I && (src.body_parts_covered & ARMS && I.body_parts_covered & ARMS) )
-				H << "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>"
+				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
 				return 0
 			if(I && (src.body_parts_covered & LEGS && I.body_parts_covered & LEGS) )
-				H << "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>"
+				to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [I], it's in the way.</span>")
 				return 0
 		return 1
 
@@ -126,15 +126,17 @@
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
+	item_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
 	w_class = ITEMSIZE_HUGE
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 100)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	min_pressure_protection = 0 * ONE_ATMOSPHERE
+	max_pressure_protection = 20* ONE_ATMOSPHERE
 	siemens_coefficient = 0.6
 
 
@@ -184,7 +186,7 @@
 		var/turf/picked = pick(turfs)
 		if(!isturf(picked)) return
 
-		var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, user.loc)
 		spark_system.start()
 		playsound(user.loc, "sparks", 50, 1)
@@ -196,10 +198,10 @@
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	active = !( active )
 	if (active)
-		user << "<font color='blue'>The reactive armor is now active.</font>"
+		to_chat(user, "<font color='blue'>The reactive armor is now active.</font>")
 		icon_state = "reactive"
 	else
-		user << "<font color='blue'>The reactive armor is now inactive.</font>"
+		to_chat(user, "<font color='blue'>The reactive armor is now inactive.</font>")
 		icon_state = "reactiveoff"
 		add_fingerprint(user)
 	return
@@ -278,7 +280,7 @@
 	icon_state = "kvest"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/flashlight/maglight,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	item_flags = THICKMATERIAL
@@ -376,6 +378,16 @@
 	item_state = "tacwebvest"
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/storage/vest/heavy/flexitac //a reskin of the above to have a matching armor set
+	name = "tactical light vest"
+	desc = "An armored vest made from advanced flexible ceramic plates. It's surprisingly mobile, if a little unfashionable."
+	icon_state = "flexitac"
+	item_state = "flexitac"
+	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	cold_protection = UPPER_TORSO|LOWER_TORSO
+	min_cold_protection_temperature = T0C - 20
+	slowdown = 0.3
+
 /obj/item/clothing/suit/storage/vest/detective
 	name = "detective armor vest"
 	desc = "A simple kevlar plate carrier in a vintage brown, it has a badge clipped to the chest that reads, 'Private investigator'."
@@ -389,7 +401,7 @@
 	icon_state = "pvest"
 	desc = "A simple kevlar plate carrier. This one has the word 'Press' embroidered on patches on the back and front."
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	allowed = list(/obj/item/device/flashlight,/obj/item/device/taperecorder,/obj/item/weapon/pen,/obj/item/device/camera_film,/obj/item/device/camera,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/flashlight,/obj/item/tape_recorder,/obj/item/pen,/obj/item/camera_film,/obj/item/camera,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/vest/heavy
 	name = "heavy armor vest"
@@ -449,7 +461,7 @@
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	w_class = ITEMSIZE_LARGE//bulky item
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/gun/energy,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -508,6 +520,22 @@
 		|ACCESSORY_SLOT_ARMOR_M)
 	blood_overlay_type = "armor"
 
+/obj/item/clothing/suit/armor/pcarrier/mob_can_equip(var/mob/living/carbon/human/H, slot)
+	if(..()) //This will only run if no other problems occured when equiping.
+		if(H.gloves)
+			if(H.gloves.body_parts_covered & ARMS)
+				for(var/obj/item/clothing/accessory/A in src)
+					if(A.body_parts_covered & ARMS)
+						to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
+						return 0
+		if(H.shoes)
+			if(H.shoes.body_parts_covered & LEGS)
+				for(var/obj/item/clothing/accessory/A in src)
+					if(A.body_parts_covered & LEGS)
+						to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
+						return 0
+		return 1
+
 /obj/item/clothing/suit/armor/pcarrier/light
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)
 
@@ -536,6 +564,11 @@
 	name = "blue plate carrier"
 	desc = "A lightweight blue plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_blue"
+
+/obj/item/clothing/suit/armor/pcarrier/press
+	name = "light blue plate carrier"
+	desc = "A lightweight light blue plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	icon_state = "pcarrier_press"
 
 /obj/item/clothing/suit/armor/pcarrier/blue/sol
 	name = "peacekeeper plate carrier"

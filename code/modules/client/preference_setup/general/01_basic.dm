@@ -43,7 +43,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/basic/copy_to_mob(var/mob/living/carbon/human/character)
-	if(config.humans_need_surnames)
+	if(config_legacy.humans_need_surnames)
 		var/firstspace = findtext(pref.real_name, " ")
 		var/name_length = length(pref.real_name)
 		if(!firstspace)	//we need a surname
@@ -75,7 +75,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	. += "<b>Pronouns:</b> <a href='?src=\ref[src];id_gender=1'><b>[gender2text(pref.identifying_gender)]</b></a><br>"
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	if(config.allow_Metadata)
+	if(config_legacy.allow_Metadata)
 		. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
 
@@ -88,7 +88,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 				pref.real_name = new_name
 				return TOPIC_REFRESH
 			else
-				user << "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>"
+				to_chat(user, "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>")
 				return TOPIC_NOACTION
 
 	else if(href_list["random_name"])
@@ -107,7 +107,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 				pref.nickname = new_nickname
 				return TOPIC_REFRESH
 			else
-				user << "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>"
+				to_chat(user, "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>")
 				return TOPIC_NOACTION
 
 	else if(href_list["bio_gender"])

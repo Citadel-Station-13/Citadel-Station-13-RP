@@ -69,11 +69,11 @@
 				playsound(src, I.usesound, 50, 1)
 				to_chat(user, "You attach the screws around the power connection.")
 				return
-		else if(istype(I, /obj/item/weapon/weldingtool) && mode==-1)
+		else if(istype(I, /obj/item/weldingtool) && mode==-1)
 			if(contents.len > 0)
 				to_chat(user, "Eject the items first!")
 				return
-			var/obj/item/weapon/weldingtool/W = I
+			var/obj/item/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 100, 1)
 				to_chat(user, "You start slicing the floorweld off the disposal unit.")
@@ -93,12 +93,12 @@
 				to_chat(user, "You need more welding fuel to complete this task.")
 				return
 
-	if(istype(I, /obj/item/weapon/melee/energy/blade))
+	if(istype(I, /obj/item/melee/energy/blade))
 		to_chat(user, "You can't place that item inside the disposal unit.")
 		return
 
-	if(istype(I, /obj/item/weapon/storage/bag/trash))
-		var/obj/item/weapon/storage/bag/trash/T = I
+	if(istype(I, /obj/item/storage/bag/trash))
+		var/obj/item/storage/bag/trash/T = I
 		to_chat(user, "<font color='blue'>You empty the bag.</font>")
 		for(var/obj/item/O in T.contents)
 			T.remove_from_storage(O,src)
@@ -106,8 +106,8 @@
 		update()
 		return
 
-	if(istype(I, /obj/item/weapon/material/ashtray))
-		var/obj/item/weapon/material/ashtray/A = I
+	if(istype(I, /obj/item/material/ashtray))
+		var/obj/item/material/ashtray/A = I
 		if(A.contents.len > 0)
 			user.visible_message("<span class='notice'>\The [user] empties \the [A.name] into [src].</span>")
 			for(var/obj/item/O in A.contents)
@@ -116,7 +116,7 @@
 			update()
 			return
 
-	var/obj/item/weapon/grab/G = I
+	var/obj/item/grab/G = I
 	if(istype(G))	// handle grabbed mob
 		if(ismob(G.affecting))
 			var/mob/GM = G.affecting
@@ -136,7 +136,7 @@
 
 	if(isrobot(user))
 		return
-	if(!I)
+	if(!I || I.anchored || !I.canremove)
 		return
 
 	user.drop_item()
@@ -359,7 +359,7 @@
 // charge the gas reservoir and perform flush if ready
 /obj/machinery/disposal/process()
 	if(!air_contents || (stat & BROKEN))			// nothing can happen if broken
-		update_use_power(0)
+		update_use_power(USE_POWER_OFF)
 		return
 
 	flush_count++
@@ -377,7 +377,7 @@
 		flush()
 
 	if(mode != 1) //if off or ready, no need to charge
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 	else if(air_contents.return_pressure() >= SEND_PRESSURE)
 		mode = 2 //if full enough, switch to ready mode
 		update()
@@ -386,7 +386,7 @@
 
 /obj/machinery/disposal/proc/pressurize()
 	if(stat & NOPOWER)			// won't charge if no power
-		update_use_power(0)
+		update_use_power(USE_POWER_OFF)
 		return
 
 	var/atom/L = loc						// recharging from loc turf
@@ -467,7 +467,7 @@
 		H.vent_gas(loc)
 		qdel(H)
 
-/obj/machinery/disposal/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item/projectile))
 		return 1
 	if (istype(mover,/obj/item) && mover.throwing)
@@ -483,7 +483,7 @@
 				M.show_message("\The [I] bounces off of \the [src]'s rim!", 3)
 		return 0
 	else
-		return ..(mover, target, height, air_group)
+		return ..(mover, target)
 
 // virtual disposal object
 // travels through pipes in lieu of actual items
@@ -546,7 +546,7 @@
 
 		forceMove(D.trunk)
 		active = 1
-		set_dir(DOWN)
+		setDir(DOWN)
 		spawn(1)
 			move()		// spawn off the movement process
 
@@ -709,7 +709,7 @@
 	//
 	proc/transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
-		H.set_dir(nextdir)
+		H.setDir(nextdir)
 		var/turf/T = H.nextloc()
 		var/obj/structure/disposalpipe/P = H.findpipe(T)
 
@@ -817,7 +817,7 @@
 			for(var/D in cardinal)
 				if(D & dpdir)
 					var/obj/structure/disposalpipe/broken/P = new(src.loc)
-					P.set_dir(D)
+					P.setDir(D)
 
 		src.invisibility = 101	// make invisible (since we won't delete the pipe immediately)
 		var/obj/structure/disposalholder/H = locate() in src
@@ -877,8 +877,8 @@
 		if(!T.is_plating())
 			return		// prevent interaction with T-scanner revealed pipes
 		src.add_fingerprint(user)
-		if(istype(I, /obj/item/weapon/weldingtool))
-			var/obj/item/weapon/weldingtool/W = I
+		if(istype(I, /obj/item/weldingtool))
+			var/obj/item/weldingtool/W = I
 
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 50, 1)
@@ -931,7 +931,7 @@
 				C.ptype = 14
 		C.subtype = src.subtype
 		src.transfer_fingerprints_to(C)
-		C.set_dir(dir)
+		C.setDir(dir)
 		C.density = 0
 		C.anchored = 1
 		C.update()
@@ -1004,7 +1004,7 @@
 
 	transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir)
-		H.set_dir(nextdir)
+		H.setDir(nextdir)
 
 		var/turf/T
 		var/obj/structure/disposalpipe/P
@@ -1163,8 +1163,8 @@
 		if(..())
 			return
 
-		if(istype(I, /obj/item/device/destTagger))
-			var/obj/item/device/destTagger/O = I
+		if(istype(I, /obj/item/destTagger))
+			var/obj/item/destTagger/O = I
 
 			if(O.currTag)// Tag set
 				sort_tag = O.currTag
@@ -1231,8 +1231,8 @@
 		if(..())
 			return
 
-		if(istype(I, /obj/item/device/destTagger))
-			var/obj/item/device/destTagger/O = I
+		if(istype(I, /obj/item/destTagger))
+			var/obj/item/destTagger/O = I
 
 			if(O.currTag)// Tag set
 				sortType = O.currTag
@@ -1261,7 +1261,7 @@
 
 	transfer(var/obj/structure/disposalholder/H)
 		var/nextdir = nextdir(H.dir, H.destinationTag)
-		H.set_dir(nextdir)
+		H.setDir(nextdir)
 		var/turf/T = H.nextloc()
 		var/obj/structure/disposalpipe/P = H.findpipe(T)
 
@@ -1357,8 +1357,8 @@
 	if(!T.is_plating())
 		return		// prevent interaction with T-scanner revealed pipes
 	src.add_fingerprint(user)
-	if(istype(I, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/W = I
+	if(istype(I, /obj/item/weldingtool))
+		var/obj/item/weldingtool/W = I
 
 		if(W.remove_fuel(0,user))
 			playsound(src, W.usesound, 100, 1)
@@ -1486,8 +1486,8 @@
 				to_chat(user, "You attach the screws around the power connection.")
 				playsound(src, I.usesound, 50, 1)
 				return
-		else if(istype(I, /obj/item/weapon/weldingtool) && mode==1)
-			var/obj/item/weapon/weldingtool/W = I
+		else if(istype(I, /obj/item/weldingtool) && mode==1)
+			var/obj/item/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 100, 1)
 				to_chat(user, "You start slicing the floorweld off the disposal outlet.")

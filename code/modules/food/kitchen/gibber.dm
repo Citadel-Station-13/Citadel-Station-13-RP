@@ -14,7 +14,7 @@
 	var/gib_time = 40        // Time from starting until meat appears
 	var/gib_throw_dir = WEST // Direction to spit meat and gibs in.
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 500
 
@@ -75,22 +75,22 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
-		user << "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>"
+		to_chat(user, "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>")
 		return
 	else
 		src.startgibbing(user)
 
 /obj/machinery/gibber/examine()
 	..()
-	usr << "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"]."
+	to_chat(usr, "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"].")
 
 /obj/machinery/gibber/emag_act(var/remaining_charges, var/mob/user)
 	emagged = !emagged
-	user << "<span class='danger'>You [emagged ? "disable" : "enable"] the gibber safety guard.</span>"
+	to_chat(user, "<span class='danger'>You [emagged ? "disable" : "enable"] the gibber safety guard.</span>")
 	return 1
 
 /obj/machinery/gibber/attackby(var/obj/item/W, var/mob/user)
-	var/obj/item/weapon/grab/G = W
+	var/obj/item/grab/G = W
 
 	if(default_unfasten_wrench(user, W, 40))
 		return
@@ -99,7 +99,7 @@
 		return ..()
 
 	if(G.state < 2)
-		user << "<span class='danger'>You need a better grip to do that!</span>"
+		to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
 		return
 
 	move_into_gibber(user,G.affecting)
@@ -113,24 +113,24 @@
 /obj/machinery/gibber/proc/move_into_gibber(var/mob/user,var/mob/living/victim)
 
 	if(src.occupant)
-		user << "<span class='danger'>The gibber is full, empty it first!</span>"
+		to_chat(user, "<span class='danger'>The gibber is full, empty it first!</span>")
 		return
 
 	if(operating)
-		user << "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>"
+		to_chat(user, "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>")
 		return
 
-	if(!(istype(victim, /mob/living/carbon)) && !(istype(victim, /mob/living/simple_animal)) )
-		user << "<span class='danger'>This is not suitable for the gibber!</span>"
+	if(!(istype(victim, /mob/living/carbon)) && !(istype(victim, /mob/living/simple_mob)) )
+		to_chat(user, "<span class='danger'>This is not suitable for the gibber!</span>")
 		return
 
 	if(istype(victim,/mob/living/carbon/human) && !emagged)
-		user << "<span class='danger'>The gibber safety guard is engaged!</span>"
+		to_chat(user, "<span class='danger'>The gibber safety guard is engaged!</span>")
 		return
 
 
 	if(victim.abiotic(1))
-		user << "<span class='danger'>Subject may not have abiotic items on.</span>"
+		to_chat(user, "<span class='danger'>Subject may not have abiotic items on.</span>")
 		return
 
 	user.visible_message("<span class='danger'>[user] starts to put [victim] into the gibber!</span>")
@@ -183,12 +183,12 @@
 
 	var/slab_name = occupant.name
 	var/slab_count = 3
-	var/slab_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	var/slab_type = /obj/item/reagent_containers/food/snacks/meat
 	var/slab_nutrition = src.occupant.nutrition / 15
 
 	// Some mobs have specific meat item types.
-	if(istype(src.occupant,/mob/living/simple_animal))
-		var/mob/living/simple_animal/critter = src.occupant
+	if(istype(src.occupant,/mob/living/simple_mob))
+		var/mob/living/simple_mob/critter = src.occupant
 		if(critter.meat_amount)
 			slab_count = critter.meat_amount
 		if(critter.meat_type)
@@ -204,7 +204,7 @@
 	slab_nutrition /= slab_count
 
 	for(var/i=1 to slab_count)
-		var/obj/item/weapon/reagent_containers/food/snacks/meat/new_meat = new slab_type(src, rand(3,8))
+		var/obj/item/reagent_containers/food/snacks/meat/new_meat = new slab_type(src, rand(3,8))
 		if(istype(new_meat))
 			new_meat.name = "[slab_name] [new_meat.name]"
 			new_meat.reagents.add_reagent("nutriment",slab_nutrition)
@@ -217,13 +217,13 @@
 
 	spawn(gib_time)
 
-		src.operating = 0
-		src.occupant.gib()
-		qdel(src.occupant)
+		operating = 0
+		occupant.gib()
+		occupant = null
 
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 		operating = 0
-		for (var/obj/item/thing in contents)
+		for (var/obj/thing in contents)
 			// There's a chance that the gibber will fail to destroy some evidence.
 			if(istype(thing,/obj/item/organ) && prob(80))
 				qdel(thing)

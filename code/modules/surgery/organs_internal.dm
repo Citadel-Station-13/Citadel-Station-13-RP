@@ -19,8 +19,8 @@
 /*
 /datum/surgery_step/internal/remove_embryo
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/material/kitchen/utensil/fork = 20
+	/obj/item/surgical/hemostat = 100,	\
+	/obj/item/material/kitchen/utensil/fork = 20
 	)
 
 	allowed_procs = list(IS_WIRECUTTER = 75)
@@ -150,9 +150,9 @@
 /datum/surgery_step/internal/detatch_organ/
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/scalpel = 100,		\
-	/obj/item/weapon/material/knife = 75,	\
-	/obj/item/weapon/material/shard = 50, 		\
+	/obj/item/surgical/scalpel = 100,		\
+	/obj/item/material/knife = 75,	\
+	/obj/item/material/shard = 50, 		\
 	)
 
 	min_duration = 90
@@ -212,8 +212,8 @@
 /datum/surgery_step/internal/remove_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/surgical/hemostat = 100,	\
-	/obj/item/weapon/material/kitchen/utensil/fork = 20
+	/obj/item/surgical/hemostat = 100,	\
+	/obj/item/material/kitchen/utensil/fork = 20
 	)
 
 	allowed_procs = list(IS_WIRECUTTER = 75)
@@ -289,11 +289,11 @@
 		return 0
 
 	if((affected.robotic >= ORGAN_ROBOT) && !(O.robotic >= ORGAN_ROBOT))
-		user << "<span class='danger'>You cannot install a naked organ into a robotic body.</span>"
+		to_chat(user, "<span class='danger'>You cannot install a naked organ into a robotic body.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.species)
-		user << "<span class='danger'>You have no idea what species this person is. Report this on the bug tracker.</span>"
+		to_chat(user, "<span class='danger'>You have no idea what species this person is. Report this on the bug tracker.</span>")
 		return SURGERY_FAILURE
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"
@@ -301,20 +301,20 @@
 	var/o_do = (O.gender == PLURAL) ? "don't" : "doesn't"
 
 	if(O.damage > (O.max_damage * 0.75))
-		user << "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be transplanted.</span>"
+		to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be transplanted.</span>")
 		return SURGERY_FAILURE
 
 	if(!target.internal_organs_by_name[O.organ_tag])
 		organ_missing = 1
 	else
-		user << "<span class='warning'>\The [target] already has [o_a][O.organ_tag].</span>"
+		to_chat(user, "<span class='warning'>\The [target] already has [o_a][O.organ_tag].</span>")
 		return SURGERY_FAILURE
 
 	if(O && affected.organ_tag == O.parent_organ)
 		organ_compatible = 1
 
 	else
-		user << "<span class='warning'>\The [O.organ_tag] [o_do] normally go in \the [affected.name].</span>"
+		to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_do] normally go in \the [affected.name].</span>")
 		return SURGERY_FAILURE
 
 	return ..() && organ_missing && organ_compatible
@@ -348,7 +348,7 @@
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/weapon/surgical/FixOVein = 100, \
+	/obj/item/surgical/FixOVein = 100, \
 	/obj/item/stack/cable_coil = 75
 	)
 
@@ -394,15 +394,74 @@
 	"<span class='warning'>Your hand slips, damaging the flesh in [target]'s [affected.name] with \the [tool]!</span>")
 	affected.createwound(BRUISE, 20)
 
+///////////////////////////////////////////////////////////////
+// Organ Ripping Surgery
+///////////////////////////////////////////////////////////////
+
+/datum/surgery_step/internal/rip_organ
+
+	allowed_tools = list(
+	/obj/item/surgical/scalpel/ripper = 100
+	)
+
+	priority = 3
+
+	blood_level = 3
+
+	min_duration = 60
+	max_duration = 80
+
+/datum/surgery_step/internal/rip_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if (!..())
+		return 0
+
+	target.op_stage.current_organ = null
+
+	var/list/removable_organs = list()
+	for(var/organ in target.internal_organs_by_name)
+		var/obj/item/organ/internal/I = target.internal_organs_by_name[organ]
+		if(istype(I) && I.parent_organ == target_zone)
+			removable_organs |= organ
+
+	var/organ_to_remove = input(user, "Which organ do you want to remove?") as null|anything in removable_organs
+	if(!organ_to_remove)
+		return 0
+
+	target.op_stage.current_organ = organ_to_remove
+	return ..()
+
+/datum/surgery_step/internal/rip_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	user.visible_message("[user] starts ripping [target]'s [target.op_stage.current_organ] out with \the [tool].", \
+	"You start ripping [target]'s [target.op_stage.current_organ] out with \the [tool].")
+	target.custom_pain("Someone's ripping out your [target.op_stage.current_organ]!", 100)
+	..()
+
+/datum/surgery_step/internal/rip_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	user.visible_message("<span class='notice'>[user] has ripped [target]'s [target.op_stage.current_organ] out with \the [tool].</span>", \
+	"<span class='notice'>You have ripped [target]'s [target.op_stage.current_organ] out with \the [tool].</span>")
+
+	// Extract the organ!
+	if(target.op_stage.current_organ)
+		var/obj/item/organ/O = target.internal_organs_by_name[target.op_stage.current_organ]
+		if(O && istype(O))
+			O.removed(user)
+		target.op_stage.current_organ = null
+
+/datum/surgery_step/internal/rip_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	user.visible_message("<span class='warning'>[user]'s hand slips, damaging [target]'s [affected.name] with \the [tool]!</span>", \
+	"<span class='warning'>Your hand slips, damaging [target]'s [affected.name] with \the [tool]!</span>")
+	affected.createwound(BRUISE, 20)
+
 //////////////////////////////////////////////////////////////////
 //						HEART SURGERY							//
 //////////////////////////////////////////////////////////////////
 // To be finished after some tests.
 // /datum/surgery_step/ribcage/heart/cut
 //	allowed_tools = list(
-//	/obj/item/weapon/surgical/scalpel = 100,		\
-//	/obj/item/weapon/material/knife = 75,	\
-//	/obj/item/weapon/material/shard = 50, 		\
+//	/obj/item/surgical/scalpel = 100,		\
+//	/obj/item/material/knife = 75,	\
+//	/obj/item/material/shard = 50, 		\
 //	)
 
 //	min_duration = 30

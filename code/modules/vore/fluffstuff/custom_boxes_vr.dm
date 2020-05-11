@@ -1,26 +1,26 @@
 // ToDo: Alphabetize by ckey.
+// Also these things might be mildly obsolete considering the update to inventory.
 
 // BEGIN - DO NOT EDIT PROTOTYPE
-/obj/item/weapon/storage/box/fluff
+/obj/item/storage/box/fluff
 	name = "Undefined Fluff Box"
 	desc = "This should have a description. Tell an admin."
 	storage_slots = 7
 	var/list/has_items = list()
 
-/obj/item/weapon/storage/box/fluff/New()
+/obj/item/storage/box/fluff/PopulateContents()
+	. = ..()
 	storage_slots = has_items.len
 	allowed = list()
 	for(var/P in has_items)
 		allowed += P
 		new P(src)
-	..()
-	return
 // END - DO NOT EDIT PROTOTYPE
 
 
 /* TEMPLATE
 // ckey:Character Name
-/obj/item/weapon/storage/box/fluff/charactername
+/obj/item/storage/box/fluff/charactername
 	name = ""
 	desc = ""
 	has_items = list(
@@ -31,7 +31,7 @@
 */
 /* CITADEL CHANGES - Removes Virgo Fluff
 // BeyondMyLife:Cassandra Selones Spawn Kit
-/obj/item/weapon/storage/box/fluff/cassandra
+/obj/item/storage/box/fluff/cassandra
 	name = "Cassandra Selone's Spawn Kit"
 	desc = "A spawn Kit, holding Cassandra Selone's Item's"
 	has_items = list(
@@ -40,7 +40,7 @@
 		/obj/item/clothing/shoes/boots/fluff/kilano/purple)
 
 // bwoincognito:Tasald Corlethian
-/obj/item/weapon/storage/box/fluff/tasald
+/obj/item/storage/box/fluff/tasald
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's equipment."
 	has_items = list(
@@ -48,11 +48,11 @@
 		/obj/item/clothing/suit/storage/det_suit/fluff/tas_coat,
 		/obj/item/clothing/under/det/fluff/tasald,
 		/obj/item/clothing/accessory/permit/gun/fluff/tasald_corlethian,
-		/obj/item/weapon/gun/projectile/revolver/mateba/fluff/tasald_corlethian,
-		/obj/item/weapon/implanter/loyalty)
+		/obj/item/gun/projectile/revolver/mateba/fluff/tasald_corlethian,
+		/obj/item/implanter/loyalty)
 
 //bwoincognito:Octavious Ward
-/obj/item/weapon/storage/box/fluff/octavious
+/obj/item/storage/box/fluff/octavious
 	name = "Octavious's Kit"
 	desc = "A kit containing Octavious's work clothes."
 	has_items = list(
@@ -61,12 +61,12 @@
 		/obj/item/clothing/mask/gas/plaguedoctor/fluff/octaviousmask,
 		/obj/item/clothing/head/fedora/fluff/bowler,
 		/obj/item/clothing/shoes/black/cuffs/octavious,
-		/obj/item/weapon/cane/fluff/tasald,
+		/obj/item/cane/fluff/tasald,
 		/obj/item/clothing/glasses/hud/health/octaviousmonicle
 		)
 
 // jemli:Cirra Mayhem
-/obj/item/weapon/storage/box/fluff/cirra
+/obj/item/storage/box/fluff/cirra
 	name = "Instant Pirate Kit"
 	desc = "Just add Akula!"
 	has_items = list(
@@ -76,19 +76,19 @@
 		/obj/item/clothing/under/pirate)
 
 // joey4298:Emoticon
-/obj/item/weapon/storage/box/fluff/emoticon
+/obj/item/storage/box/fluff/emoticon
 	name = "Emoticon's Mime Kit"
 	desc = "Specially packaged for the hungry catgirl mime with a taste for clown."
 	has_items = list(
-		/obj/item/device/fluff/id_kit_mime,
+		/obj/item/fluff/id_kit_mime,
 		/obj/item/clothing/gloves/white,
 		/obj/item/clothing/head/beret,
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing,
+		/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,
 		/obj/item/clothing/shoes/black,
 		/*/obj/item/toy/crayon/mime*/) //Need to track down the code for crayons before adding this back in
 
 //joanrisu:Joan Risu
-/obj/item/weapon/storage/backpack/dufflebag/sec/fluff/joanrisu
+/obj/item/storage/backpack/dufflebag/sec/fluff/joanrisu
 	name = "Joan's Workbag"
 	desc = "A bag Joan uses to carry her work equipment. It has the 82nd Battle Group Insignia on it."
 	icon_state = "joanbag"
@@ -101,18 +101,18 @@
 		new /obj/item/clothing/accessory/holster/hip(src)
 		new /obj/item/clothing/suit/storage/fluff/modernfedcoat(src)
 		new /obj/item/clothing/head/caphat/formal/fedcover(src)
-		new /obj/item/weapon/card/id/centcom/station/fluff/joanbadge(src)
-//		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
+		new /obj/item/card/id/centcom/station/fluff/joanbadge(src)
+//		new /obj/item/gun/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
 //		new /obj/item/clothing/accessory/permit/gun/fluff/joanrisu(src)
-//		new /obj/item/weapon/sword/fluff/joanaria(src)
-		new /obj/item/weapon/flame/lighter/zippo/fluff/joan(src)
+//		new /obj/item/sword/fluff/joanaria(src)
+		new /obj/item/flame/lighter/zippo/fluff/joan(src)
 		new /obj/item/clothing/under/rank/internalaffairs/fluff/joan(src)
 		new /obj/item/clothing/head/helmet/space/fluff/joan(src)
 		new /obj/item/clothing/suit/space/fluff/joan(src)
 
 //joanrisu:Katarina Eine
-/obj/item/weapon/storage/backpack/dufflebag/sec/fluff/katarina
+/obj/item/storage/backpack/dufflebag/sec/fluff/katarina
 	name = "Katarina's Workbag"
 	desc = "A duffle bag Katarina uses to carry her tools."
 	slowdown = 0
@@ -121,14 +121,14 @@
 		..()
 		new /obj/item/clothing/accessory/holster/hip(src)
 		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-//		new /obj/item/weapon/gun/energy/gun/fluff/dominator(src)
+//		new /obj/item/gun/energy/gun/fluff/dominator(src)
 		new /obj/item/clothing/suit/armor/det_suit(src)
 		new /obj/item/clothing/accessory/storage/black_vest(src)
-		new /obj/item/weapon/material/knife/tacknife/combatknife/fluff/katarina(src)
+		new /obj/item/material/knife/tacknife/combatknife/fluff/katarina(src)
 		new /obj/item/clothing/under/rank/internalaffairs/fluff/joan(src)
 
 //drakefrostpaw:Drake Frostpaw
-/obj/item/weapon/storage/box/fluff/drake
+/obj/item/storage/box/fluff/drake
 	name = "United Federation Uniform Kit"
 	desc = "A box containing all the parts of a United Federation Uniform"
 	has_items = list(
@@ -139,34 +139,34 @@
 		)
 
 // Draycu: Schae Yonra
-/obj/item/weapon/storage/box/fluff/yonra
+/obj/item/storage/box/fluff/yonra
 	name = "Yonra's Starting Kit"
 	desc = "A small box containing Yonra's personal effects"
 	has_items = list(
-		/obj/item/weapon/melee/fluff/holochain/mass,
-		/obj/item/weapon/implanter/reagent_generator/yonra,
+		/obj/item/melee/fluff/holochain/mass,
+		/obj/item/implanter/reagent_generator/yonra,
 		/obj/item/clothing/accessory/medal/silver/unity)
 
 //Razerwing:Archer Maximus
-/obj/item/weapon/storage/box/fluff/archermaximus
+/obj/item/storage/box/fluff/archermaximus
 	desc = "Personal Effects"
 	has_items = list()
 
 //ivymoomoo:Ivy Baladeva
-/obj/item/weapon/storage/backpack/messenger/sec/fluff/ivymoomoo
+/obj/item/storage/backpack/messenger/sec/fluff/ivymoomoo
 	name = "Ivy's Courier"
 	desc = "A bag resembling something used by college students. Contains items for ''MooMoo''."
 
 	New()
 		..()
 		new /obj/item/clothing/head/beretg(src)
-		new /obj/item/device/fluff/id_kit_ivy(src)
-		new /obj/item/weapon/storage/fancy/cigarettes/dromedaryco(src)
-		new /obj/item/weapon/storage/box/matches(src)
-		new /obj/item/weapon/reagent_containers/food/snacks/sliceable/plaincake(src)
+		new /obj/item/fluff/id_kit_ivy(src)
+		new /obj/item/storage/fancy/cigarettes/dromedaryco(src)
+		new /obj/item/storage/box/matches(src)
+		new /obj/item/reagent_containers/food/snacks/sliceable/plaincake(src)
 
 //Xsdew:Penelope Allen
-/obj/item/weapon/storage/box/fluff/penelope
+/obj/item/storage/box/fluff/penelope
 	name = "Penelope's capsule"
 	desc = "A little capsule where a designer's swimsuit is stored."
 	icon = 'icons/vore/custom_items_vr.dmi'
@@ -179,47 +179,47 @@
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/penelope)
 
 // Aerowing:Sebastian Aji
-/obj/item/weapon/storage/box/fluff/sebastian_aji
+/obj/item/storage/box/fluff/sebastian_aji
 	name = "Sebastian's Lumoco Arms P3 Box"
 	has_items = list(
-		/obj/item/weapon/gun/projectile/pistol,
+		/obj/item/gun/projectile/pistol,
 		/obj/item/ammo_magazine/m9mm/compact/flash,
 		/obj/item/ammo_magazine/m9mm/compact/flash,
 		/obj/item/clothing/accessory/permit/gun/fluff/sebastian_aji)
 
 /*
-/obj/item/weapon/storage/box/fluff/briana_moore
+/obj/item/storage/box/fluff/briana_moore
 	name = "Briana's Derringer Box"
 	has_items = list(
-		/obj/item/weapon/gun/projectile/derringer/fluff/briana,
+		/obj/item/gun/projectile/derringer/fluff/briana,
 		/obj/item/clothing/accessory/permit/gun/fluff/briana_moore)
 */
 
 /*
 //SilencedMP5A5:Serdykov Antoz
-/obj/item/weapon/storage/box/fluff/serdykov_antoz
+/obj/item/storage/box/fluff/serdykov_antoz
 	name = "Serdy's Weapon Box"
 	has_items = list(
 		/obj/item/clothing/accessory/permit/gun/fluff/silencedmp5a5,
-		/obj/item/weapon/gun/projectile/colt/fluff/serdy)
+		/obj/item/gun/projectile/colt/fluff/serdy)
 */
 
 //BeyondMyLife: Ne'tra Ky'ram //Made a box because they have so many items that it'd spam the debug log.
-/obj/item/weapon/storage/box/fluff/kilano
+/obj/item/storage/box/fluff/kilano
 	name = "Ne'tra Ky'ram's Kit"
 	desc = "A kit containing Ne'tra Ky'ram's clothing."
 	has_items = list(
 		/obj/item/clothing/suit/storage/hooded/wintercoat/kilanocoat,
 		/obj/item/clothing/under/fluff/kilanosuit,
-		/obj/item/weapon/storage/backpack/messenger/sec/fluff/kilano,
-		/obj/item/weapon/storage/belt/security/fluff/kilano,
+		/obj/item/storage/backpack/messenger/sec/fluff/kilano,
+		/obj/item/storage/belt/security/fluff/kilano,
 		/obj/item/clothing/gloves/fluff/kilano/netra,
 		/obj/item/clothing/shoes/boots/fluff/kilano,
 		/obj/item/clothing/accessory/storage/black_vest/fluff/kilano
 		)
 
 // JackNoir413: Mor Xaina
-/obj/item/weapon/storage/box/fluff/morxaina
+/obj/item/storage/box/fluff/morxaina
 	name = "Fashionable clothes set"
 	desc = "Set of custom-made, expensive attire elements."
 	has_items = list(
@@ -228,7 +228,7 @@
 		/obj/item/clothing/under/fluff/morunder)
 
 // Mewchild: Phi Vietsi
-/obj/item/weapon/storage/box/fluff/vietsi
+/obj/item/storage/box/fluff/vietsi
 	name = "Phi's Personal Items"
 	has_items = list(
 		/obj/item/clothing/accessory/medal/bronze_heart,
@@ -237,7 +237,7 @@ END OF CITADEL CHANGES */
 /*
 Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 */
-/obj/item/weapon/storage/box/fluff/swimsuit
+/obj/item/storage/box/fluff/swimsuit
 	name = "Black Swimsuit capsule"
 	desc = "A little capsule where a swimsuit is usually stored."
 	storage_slots = 1
@@ -249,71 +249,83 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	can_hold = list(/obj/item/clothing/under/swimsuit/)
 	has_items = list(/obj/item/clothing/under/swimsuit/black)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/blue
+/obj/item/storage/box/fluff/swimsuit/blue
 	name = "Blue Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/blue)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/purple
+/obj/item/storage/box/fluff/swimsuit/purple
 	name = "Purple Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/purple)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/green
+/obj/item/storage/box/fluff/swimsuit/green
 	name = "Green Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/green)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/red
+/obj/item/storage/box/fluff/swimsuit/red
 	name = "Red Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/red)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/engineering
+/obj/item/storage/box/fluff/swimsuit/white
+	name = "White Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/white)
+
+/obj/item/storage/box/fluff/swimsuit/blue
+	name = "Striped Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/striped)
+
+/obj/item/storage/box/fluff/swimsuit/earth
+	name = "Earthen Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/earth)
+
+/obj/item/storage/box/fluff/swimsuit/engineering
 	name = "Engineering Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/engineering)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/science
+/obj/item/storage/box/fluff/swimsuit/science
 	name = "Science Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/science)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/security
+/obj/item/storage/box/fluff/swimsuit/security
 	name = "Security Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/security)
 
-/obj/item/weapon/storage/box/fluff/swimsuit/medical
+/obj/item/storage/box/fluff/swimsuit/medical
 	name = "Medical Swimsuit capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/fluff/medical)
 
 //Monkey boxes for the new primals we have
-/obj/item/weapon/storage/box/monkeycubes/sobakacubes
+/obj/item/storage/box/monkeycubes/sobakacubes
 	name = "sobaka cube box"
 	desc = "Drymate brand sobaka cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/sobakacubes/New()
-	..()
+/obj/item/storage/box/monkeycubes/sobakacubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sobakacube(src)
+		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sobakacube(src)
 
-/obj/item/weapon/storage/box/monkeycubes/sarucubes
+/obj/item/storage/box/monkeycubes/sarucubes
 	name = "saru cube box"
 	desc = "Drymate brand saru cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/sarucubes/New()
-	..()
+/obj/item/storage/box/monkeycubes/sarucubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sarucube(src)
+		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sarucube(src)
 
-/obj/item/weapon/storage/box/monkeycubes/sparracubes
+/obj/item/storage/box/monkeycubes/sparracubes
 	name = "sparra cube box"
 	desc = "Drymate brand sparra cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/sparracubes/New()
-	..()
+/obj/item/storage/box/monkeycubes/sparracubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sparracube(src)
+		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/sparracube(src)
 
-/obj/item/weapon/storage/box/monkeycubes/wolpincubes
+/obj/item/storage/box/monkeycubes/wolpincubes
 	name = "wolpin cube box"
 	desc = "Drymate brand wolpin cubes. Just add water!"
 
-/obj/item/weapon/storage/box/monkeycubes/wolpincubes/New()
-	..()
+/obj/item/storage/box/monkeycubes/wolpincubes/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube(src)
+		new /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube(src)

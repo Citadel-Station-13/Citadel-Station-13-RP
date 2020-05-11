@@ -68,15 +68,24 @@
 
 /datum/gear/suit/mil
 	display_name = "military jacket"
+	display_name = "military jacket selection"
 	path = /obj/item/clothing/suit/storage/miljacket
 
-/datum/gear/suit/mil/alt
+/datum/gear/suit/mil/New()
+	..()
+	var/list/mil_jackets = list()
+	for(var/military_style in typesof(/obj/item/clothing/suit/storage/miljacket))
+		var/obj/item/clothing/suit/storage/miljacket/miljacket = military_style
+		mil_jackets[initial(miljacket.name)] = miljacket
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(mil_jackets, /proc/cmp_text_asc, TRUE))
+
+/* /datum/gear/suit/mil/alt
 	display_name = "military jacket, alt"
 	path = /obj/item/clothing/suit/storage/miljacket/alt
 
 /datum/gear/suit/mil/green
 	display_name = "military jacket, green"
-	path = /obj/item/clothing/suit/storage/miljacket/green
+	path = /obj/item/clothing/suit/storage/miljacket/green */
 
 /datum/gear/suit/greyjacket
 	display_name = "grey jacket"
@@ -108,7 +117,7 @@ datum/gear/suit/duster
 	for(var/hazard_style in typesof(/obj/item/clothing/suit/storage/hazardvest))
 		var/obj/item/clothing/suit/storage/hazardvest/hazardvest = hazard_style
 		hazards[initial(hazardvest.name)] = hazardvest
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(hazards))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(hazards, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/suit/hoodie
 	display_name = "hoodie selection"
@@ -120,7 +129,7 @@ datum/gear/suit/duster
 	for(var/hoodie_style in typesof(/obj/item/clothing/suit/storage/toggle/hoodie))
 		var/obj/item/clothing/suit/storage/toggle/hoodie/hoodie = hoodie_style
 		hoodies[initial(hoodie.name)] = hoodie
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(hoodies))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(hoodies, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/suit/labcoat
 	display_name = "labcoat"
@@ -184,7 +193,7 @@ datum/gear/suit/duster
 	for(var/poncho_style in (typesof(/obj/item/clothing/accessory/poncho) - typesof(/obj/item/clothing/accessory/poncho/roles)))
 		var/obj/item/clothing/accessory/poncho/poncho = poncho_style
 		ponchos[initial(poncho.name)] = poncho
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(ponchos))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(ponchos, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/suit/roles/poncho/security
 	display_name = "poncho, security"
@@ -244,42 +253,42 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/cargo
 	display_name = "cloak, cargo"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/cargo
-	allowed_roles = list("Cargo Technician","Quartermaster")
 
 /datum/gear/suit/roles/poncho/cloak/mining
 	display_name = "cloak, mining"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/mining
-	allowed_roles = list("Quartermaster","Shaft Miner")
 
 /datum/gear/suit/roles/poncho/cloak/security
 	display_name = "cloak, security"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/security
-	allowed_roles = list("Head of Security","Detective","Warden","Security Officer")
 
 /datum/gear/suit/roles/poncho/cloak/service
 	display_name = "cloak, service"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/service
-	allowed_roles = list("Head of Personnel","Bartender","Botanist","Janitor","Chef","Librarian")
 
 /datum/gear/suit/roles/poncho/cloak/engineer
 	display_name = "cloak, engineer"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/engineer
-	allowed_roles = list("Chief Engineer","Station Engineer")
 
 /datum/gear/suit/roles/poncho/cloak/atmos
 	display_name = "cloak, atmos"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/atmos
-	allowed_roles = list("Chief Engineer","Atmospheric Technician")
 
 /datum/gear/suit/roles/poncho/cloak/research
 	display_name = "cloak, science"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/research
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
 
 /datum/gear/suit/roles/poncho/cloak/medical
 	display_name = "cloak, medical"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/suit/roles/poncho/cloak/custom //A colorable cloak
+	display_name = "cloak (colorable)"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom
+
+/datum/gear/suit/roles/poncho/cloak/custom/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/suit/unathi_robe
 	display_name = "roughspun robe"
@@ -339,7 +348,7 @@ datum/gear/suit/duster
 /datum/gear/suit/wintercoat/medical
 	display_name = "winter coat, medical"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Field Medic","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/suit/wintercoat/science
 	display_name = "winter coat, science"
@@ -371,6 +380,10 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/miner
 	allowed_roles = list("Shaft Miner")
 
+/datum/gear/suit/techrobes
+	display_name = "techpriest"
+	path = /obj/item/clothing/suit/storage/hooded/techpriest
+
 /datum/gear/suit/varsity
 	display_name = "varsity jacket selection"
 	path = /obj/item/clothing/suit/varsity
@@ -381,7 +394,7 @@ datum/gear/suit/duster
 	for(var/varsity_style in typesof(/obj/item/clothing/suit/varsity))
 		var/obj/item/clothing/suit/varsity/varsity = varsity_style
 		varsities[initial(varsity.name)] = varsity
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(varsities))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(varsities, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/suit/track
 	display_name = "track jacket selection"
@@ -393,7 +406,7 @@ datum/gear/suit/duster
 	for(var/track_style in typesof(/obj/item/clothing/suit/storage/toggle/track))
 		var/obj/item/clothing/suit/storage/toggle/track/track = track_style
 		tracks[initial(track.name)] = track
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(tracks))
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(tracks, /proc/cmp_text_asc, TRUE))
 
 /datum/gear/suit/flannel
 	display_name = "grey flannel"
@@ -463,6 +476,10 @@ datum/gear/suit/duster
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
+/datum/gear/suit/miscellaneous/kamishimo
+	display_name = "kamishimo"
+	path = /obj/item/clothing/suit/kamishimo
+
 /datum/gear/suit/snowsuit
 	display_name = "snowsuit"
 	path = /obj/item/clothing/suit/storage/snowsuit
@@ -480,7 +497,7 @@ datum/gear/suit/duster
 /datum/gear/suit/snowsuit/medical
 	display_name = "snowsuit, medical"
 	path = /obj/item/clothing/suit/storage/snowsuit/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Search and Rescue")
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/suit/snowsuit/science
 	display_name = "snowsuit, science"
@@ -496,3 +513,57 @@ datum/gear/suit/duster
 	display_name = "snowsuit, supply"
 	path = /obj/item/clothing/suit/storage/snowsuit/cargo
 	allowed_roles = list("Quartermaster","Shaft Miner","Cargo Technician","Head of Personnel")
+
+/datum/gear/suit/miscellaneous/cardigan
+	display_name = "cardigan"
+	path = /obj/item/clothing/suit/storage/toggle/cardigan
+
+/datum/gear/suit/miscellaneous/cardigan/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficer
+	display_name = "bridge officer dress jacket"
+	path = /obj/item/clothing/suit/storage/bridgeofficer
+	allowed_roles = list("Command Secretary")
+
+datum/gear/suit/labcoat/paramedicjacketsol
+	display_name = "Paramedic Jacket"
+	path = /obj/item/clothing/suit/toggle/paramed
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+datum/gear/suit/labcoat/param
+	display_name = "EMT Vest"
+	path = /obj/item/clothing/suit/toggle/labcoat/paramedic
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/suit/wintercoat/paramed
+	display_name = "winter coat, paramedic"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/para
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Search and Rescue","Paramedic","Geneticist", "Psychiatrist")
+
+/datum/gear/suit/wintercoat/bar
+	display_name = "winter coat, bartender"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/bar
+	allowed_roles = list("Bartender")
+
+/datum/gear/suit/storage/dutchcoat
+	display_name = "Western Coat"
+	path = /obj/item/clothing/suit/storage/dutchcoat
+
+/datum/gear/suit/storage/tailcoat
+	display_name = "Tailcoat"
+	path = /obj/item/clothing/suit/storage/tailcoat
+
+datum/gear/suit/miscellaneous/storage/lawyer/bridgeofficerparade
+	display_name = "bridge officer parade jacket"
+	path = /obj/item/clothing/suit/storage/ecdress_ofcr
+	allowed_roles = list("Command Secretary")
+
+/datum/gear/suit/storage/redladvic
+	display_name = "Red Victorian Coat"
+	path = /obj/item/clothing/suit/storage/redladiesvictoriancoat
+
+/datum/gear/suit/storage/ladvic
+	display_name = "Ladies Victorian Coat"
+	path = /obj/item/clothing/suit/storage/ladiesvictoriancoat

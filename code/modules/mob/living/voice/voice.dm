@@ -3,7 +3,7 @@
 	name = "unknown person"
 	desc = "How are you examining me?"
 	see_invisible = SEE_INVISIBLE_LIVING
-	var/obj/item/device/communicator/comm = null
+	var/obj/item/communicator/comm = null
 
 	emote_type = 2 //This lets them emote through containers.  The communicator has a image feed of the person calling them so...
 
@@ -11,7 +11,7 @@
 	add_language(LANGUAGE_GALCOM)
 	set_default_language(all_languages[LANGUAGE_GALCOM])
 
-	if(istype(loc, /obj/item/device/communicator))
+	if(istype(loc, /obj/item/communicator))
 		comm = loc
 	..()
 
@@ -40,8 +40,8 @@
 // Description: Adds a static overlay to the client's screen.
 /mob/living/voice/Login()
 	..()
-	client.screen |= global_hud.whitense
-	client.screen |= global_hud.darkMask
+	client.screen |= GLOB.global_hud.whitense
+	client.screen |= GLOB.global_hud.darkMask
 
 // Proc: Destroy()
 // Parameters: None
@@ -69,7 +69,7 @@
 	if(comm)
 		comm.close_connection(user = src, target = src, reason = "[src] hung up")
 	else
-		src << "You appear to not be inside a communicator.  This is a bug and you should report it."
+		to_chat(src, "You appear to not be inside a communicator.  This is a bug and you should report it.")
 
 // Verb: change_name()
 // Parameters: None
@@ -90,7 +90,7 @@
 		log_game(msg)
 		src.name = new_name
 	else
-		src << "<span class='warning'>Invalid name.  Rejected.</span>"
+		to_chat(src, "<span class='warning'>Invalid name.  Rejected.</span>")
 
 // Proc: Life()
 // Parameters: None

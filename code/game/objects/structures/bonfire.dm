@@ -9,7 +9,7 @@
 	var/burning = FALSE
 	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
 	var/grill = FALSE
-	var/material/material
+	var/datum/material/material
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
@@ -159,14 +159,14 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		visible_message("<span class='notice'>\The [src] stops burning.</span>")
 
 /obj/structure/bonfire/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		visible_message("<span class='warning'>\The [src] starts burning!</span>")
 
 /obj/structure/bonfire/proc/burn()
@@ -342,14 +342,14 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		visible_message("<span class='notice'>\The [src] stops burning.</span>")
 
 /obj/structure/fireplace/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		visible_message("<span class='warning'>\The [src] starts burning!</span>")
 
 /obj/structure/fireplace/proc/burn()

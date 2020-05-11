@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/metaglass
+/obj/item/reagent_containers/food/drinks/metaglass
 	name = "metamorphic glass"
 	desc = "This glass changes shape and form depending on the drink inside... fancy!"
 	icon_state = "glass_empty"
@@ -9,7 +9,7 @@
 	matter = list("glass" = 500)
 	icon = 'icons/obj/drinks.dmi'
 
-/obj/item/weapon/reagent_containers/food/drinks/metaglass/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
 		var/datum/reagent/R = reagents.get_master_reagent()
 
@@ -312,7 +312,7 @@ Drinks Data
 	glass_icon_state = "atomicbombglass"
 	glass_center_of_mass = list("x"=15, "y"=7)
 
-/datum/reagent/ethanol/b52
+/datum/reagent/ethanol/coffee/b52
 	glass_icon_state = "b52glass"
 
 /datum/reagent/ethanol/bahama_mama
@@ -542,3 +542,72 @@ Drinks Data
 /datum/reagent/ethanol/ichor_mead
 	glass_icon_state = "ichor_meadglass"
 	glass_center_of_mass = list("x"=17, "y"=10)
+
+/datum/reagent/drink/eggnog
+	glass_icon_state = "eggnog"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/cider
+	glass_icon_state = "ciderglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/gibbfloat
+	glass_icon_state = "gibbfloats"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mintjulep
+	glass_icon_state = "mint_julep"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/oldfashioned
+	glass_icon_state = "oldfashioned"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/bitters
+	glass_icon_state = "bittersglass"
+
+/datum/reagent/ethanol/planterspunch
+	glass_icon_state = "junglejuice"
+
+/datum/reagent/ethanol/olympusmons
+	glass_icon_state = "olympusmons"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/sazerac
+	glass_icon_state = "sazerac"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/junglejuice
+	glass_icon_state = "junglejuice"
+
+/datum/reagent/ethanol/gimlet
+	glass_icon_state = "gimlet"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/chrysanthemum
+	glass_icon_state = "chrysanthemum"
+
+/datum/reagent/ethanol/voxdelight
+	glass_icon_state = "voxdelight"
+
+/datum/reagent/ethanol/daiquiri
+	glass_icon_state = "daiquiri"
+
+/datum/reagent/ethanol/firepunch
+	glass_icon_state = "firepunch"
+
+/datum/reagent/ethanol/screamingviking
+	glass_icon_state = "screamingviking"
+
+/datum/reagent/ethanol/paloma
+	glass_icon_state = "paloma"
+
+/datum/reagent/ethanol/euphoria
+	glass_icon_state = "euphoria"
+	glass_center_of_mass = list("x"=16, "y"=16)
+
+/datum/reagent/ethanol/wine/champagnejericho
+	glass_icon_state = "champagneglass"
+
+/datum/reagent/ethanol/wine/champagne
+	glass_icon_state = "champagneglass"

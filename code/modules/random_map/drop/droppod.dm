@@ -15,7 +15,7 @@
 	floor_type = /turf/simulated/floor/reinforced
 	var/list/supplied_drop_types = list()
 	var/door_type = /obj/structure/droppod_door
-	var/drop_type = /mob/living/simple_animal/parrot
+	var/drop_type = /mob/living/simple_mob/animal/passive/bird/parrot
 	var/auto_open_doors
 
 	var/placement_explosion_dev =   1
@@ -118,7 +118,7 @@
 	// Also spawn doors and loot.
 	if(value == SD_DOOR_TILE)
 		var/obj/structure/S = new door_type(T, auto_open_doors)
-		S.set_dir(spawn_dir)
+		S.setDir(spawn_dir)
 
 	else if(value == SD_SUPPLY_TILE)
 		get_spawned_drop(T)
@@ -172,12 +172,12 @@
 			spawned_mobs |= M
 	else
 		var/list/candidates = list()
-		for(var/client/player in clients)
+		for(var/client/player in GLOB.clients)
 			if(player.mob && istype(player.mob, /mob/observer/dead))
 				candidates |= player
 
 		if(!candidates.len)
-			usr << "There are no candidates for a drop pod launch."
+			to_chat(usr, "There are no candidates for a drop pod launch.")
 			return
 
 		// Get a player and a mob type.

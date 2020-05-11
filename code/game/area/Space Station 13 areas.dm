@@ -978,6 +978,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "entry_D2"
 	base_turf = /turf/space
 
+/area/hallway/secondary/entry/D2/arrivals
+	name = "\improper Shuttle Dock Hallway - Dock Two"
+	icon_state = "entry_D2"
+	base_turf = /turf/space
+	requires_power = 0
+
 /area/hallway/secondary/entry/D3
 	name = "\improper Shuttle Dock Hallway - Dock Three"
 	icon_state = "entry_D3"
@@ -1368,6 +1374,19 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/visitor_laundry
  	name = "\improper Visitor Laundry"
  	icon_state = "visitor_laundry"
+
+/area/crew_quarters/lounge
+	name = "\improper Lounge"
+	icon_state = "bar"
+	sound_env = LARGE_SOFTFLOOR
+
+/area/crew_quarters/lounge/kitchen
+	name = "\improper Lounge Kitchen"
+	icon_state = "kitchen"
+
+/area/crew_quarters/lounge/kitchen_freezer
+	name = "\improper Lounge Kitchen Freezer"
+	icon_state = "kitchen"
 
 /area/library
  	name = "\improper Library"
@@ -2388,6 +2407,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/construction/Storage
 	name = "Construction Site Storage"
+	icon_state = "yellow"
+
+/area/construction/observation
+	name = "\improper Abandoned Observation Lounge"
 	icon_state = "yellow"
 
 //AI

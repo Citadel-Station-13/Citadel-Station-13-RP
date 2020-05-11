@@ -56,7 +56,7 @@
 
 
 // When destroyed by explosions, properly handle contents.
-obj/structure/ex_act(severity)
+/obj/structure/transit_tube_pod/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
@@ -101,11 +101,11 @@ obj/structure/ex_act(severity)
 /obj/structure/transit_tube/Bumped(mob/AM as mob|obj)
 	var/obj/structure/transit_tube/T = locate() in AM.loc
 	if(T)
-		AM << "<span class='warning'>The tube's support pylons block your way.</span>"
+		to_chat(AM, "<span class='warning'>The tube's support pylons block your way.</span>")
 		return ..()
 	else
 		AM.loc = src.loc
-		AM << "<span class='info'>You slip under the tube.</span>"
+		to_chat(AM, "<span class='info'>You slip under the tube.</span>")
 
 
 /obj/structure/transit_tube/station/New(loc)
@@ -117,7 +117,7 @@ obj/structure/ex_act(severity)
 	if(!pod_moving && icon_state == "open" && istype(AM, /mob))
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(pod.contents.len)
-				AM << "<span class='notice'>The pod is already occupied.</span>"
+				to_chat(AM, "<span class='notice'>The pod is already occupied.</span>")
 				return
 			else if(!pod.moving && pod.dir in directions())
 				AM.loc = pod
@@ -170,7 +170,7 @@ obj/structure/ex_act(severity)
 						nexttube = tube
 						break
 				if(!nexttube)
-					pod.set_dir(turn(pod.dir, 180))
+					pod.setDir(turn(pod.dir, 180))
 
 				if(icon_state == "closed" && pod)
 					pod.follow_tube()
@@ -320,13 +320,13 @@ obj/structure/ex_act(severity)
 					break
 
 			if(current_tube == null)
-				set_dir(next_dir)
+				setDir(next_dir)
 				Move(get_step(loc, dir)) // Allow collisions when leaving the tubes.
 				break
 
 			last_delay = current_tube.enter_delay(src, next_dir)
 			sleep(last_delay)
-			set_dir(next_dir)
+			setDir(next_dir)
 			loc = next_loc // When moving from one tube to another, skip collision and such.
 			density = current_tube.density
 
@@ -400,14 +400,14 @@ obj/structure/ex_act(severity)
 								station.open_animation()
 
 						else if(direction in station.directions())
-							set_dir(direction)
+							setDir(direction)
 							station.launch_pod()
 					return
 
 			for(var/obj/structure/transit_tube/tube in loc)
 				if(dir in tube.directions())
 					if(tube.has_exit(direction))
-						set_dir(direction)
+						setDir(direction)
 						return
 
 

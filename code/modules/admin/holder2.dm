@@ -1,5 +1,8 @@
 var/list/admin_datums = list()
 
+GLOBAL_VAR_INIT(href_token, GenerateToken())
+GLOBAL_PROTECT(href_token)
+
 /datum/admins
 	var/rank			= "Temporary Admin"
 	var/client/owner	= null
@@ -13,13 +16,14 @@ var/list/admin_datums = list()
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
 	var/admincaster_signature	//What you'll sign the newsfeeds as
 
+	var/href_token
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
+		log_world("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "[using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
+	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	admin_datums[ckey] = src
@@ -56,7 +60,7 @@ generally it would be used like so:
 
 proc/admin_proc()
 	if(!check_rights(R_ADMIN)) return
-	world << "you have enough rights!"
+	to_chat(world, "you have enough rights!")
 
 NOTE: It checks usr by default. Supply the "user" argument if you wish to check for a specific mob.
 */
@@ -70,7 +74,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	if(!C.holder)
 		if(show_msg)
-			C << "<span class='warning'>Error: You are not an admin.</span>"
+			to_chat(C, "<span class='warning'>Error: You are not an admin.</span>")
 		return FALSE
 
 	if(rights_required)
@@ -78,7 +82,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 			return TRUE
 		else
 			if(show_msg)
-				C << "<span class='warning'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</span>"
+				to_chat(C, "<span class='warning'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</span>")
 			return FALSE
 	else
 		return TRUE
@@ -92,7 +96,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 			if(usr.client.holder.rights != other.holder.rights)
 				if( (usr.client.holder.rights & other.holder.rights) == other.holder.rights )
 					return 1	//we have all the rights they have and more
-		usr << "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>"
+		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
 
 
@@ -102,3 +106,49 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		holder.disassociate()
 		//qdel(holder)
 	return 1
+
+/proc/GenerateToken()
+	. = ""
+	for(var/I in 1 to 32)
+		. += "[rand(10)]"
+
+/proc/RawHrefToken(forceGlobal = FALSE)
+	var/tok = GLOB.href_token
+	if(!forceGlobal && usr)
+		var/client/C = usr.client
+		if(!C)
+			CRASH("No client for HrefToken()!")
+		var/datum/admins/holder = C.holder
+		if(holder)
+			tok = holder.href_token
+	return tok
+
+/proc/HrefToken(forceGlobal = FALSE)
+	return "admin_token=[RawHrefToken(forceGlobal)]"
+
+/proc/HrefTokenFormField(forceGlobal = FALSE)
+	return "<input type='hidden' name='admin_token' value='[RawHrefToken(forceGlobal)]'>"
+
+/datum/admins/proc/CheckAdminHref(href, href_list)
+	return TRUE
+	/*			Disabled
+	var/auth = href_list["admin_token"]
+	. = auth && (auth == href_token || auth == GLOB.href_token)
+	if(.)
+		return
+	var/msg = !auth ? "no" : "a bad"
+	message_admins("[key_name_admin(usr)] clicked an href with [msg] authorization key!")
+	if(CONFIG_GET(flag/debug_admin_hrefs))
+		message_admins("Debug mode enabled, call not blocked. Please ask your coders to review this round's logs.")
+		log_world("UAH: [href]")
+		return TRUE
+	log_admin_private("[key_name(usr)] clicked an href with [msg] authorization key! [href]")
+	*/
+
+/datum/admins/vv_edit_var(var_name, var_value)
+#ifdef TESTING
+	return ..()
+#endif
+	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(src, rights))
+		return FALSE
+	return ..()

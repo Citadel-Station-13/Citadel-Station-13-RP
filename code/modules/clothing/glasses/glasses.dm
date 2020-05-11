@@ -71,11 +71,13 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
+	item_flags = AIRTIGHT //cit change
+	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
 /obj/item/clothing/glasses/meson/New()
 	..()
-	overlay = global_hud.meson
+	overlay = GLOB.global_hud.meson
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription mesons"
@@ -117,10 +119,11 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	item_flags = AIRTIGHT
+	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/science/New()
 	..()
-	overlay = global_hud.science
+	overlay = GLOB.global_hud.science
 
 /obj/item/clothing/glasses/goggles
 	name = "goggles"
@@ -139,6 +142,8 @@ BLIND     // can't see anything
 	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
+	item_flags = AIRTIGHT //  Cit change
+	body_parts_covered = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT)
@@ -150,7 +155,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/night/New()
 	..()
-	overlay = global_hud.nvg
+	overlay = GLOB.global_hud.nvg
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
@@ -190,15 +195,37 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
+	item_flags = AIRTIGHT //cit change
+	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
 /obj/item/clothing/glasses/material/New()
 	..()
-	overlay = global_hud.material
+	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/material/prescription
 	name = "prescription optical material scanner"
 	prescription = 1
+
+/obj/item/clothing/glasses/graviton
+	name = "graviton goggles"
+	desc = "The secrets of space travel are.. not quite yours."
+	icon_state = "grav"
+	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	origin_tech = list(TECH_MAGNET = 2, TECH_BLUESPACE = 1)
+	darkness_view = 5
+	toggleable = 1
+	action_button_name = "Toggle Goggles"
+	off_state = "denight"
+	vision_flags = SEE_OBJS | SEE_TURFS
+	item_flags = AIRTIGHT //  Cit change
+	body_parts_covered = EYES // Cit change
+	flash_protection = FLASH_PROTECTION_REDUCED
+	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
+
+/obj/item/clothing/glasses/graviton/New()
+	..()
+	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
@@ -231,6 +258,30 @@ BLIND     // can't see anything
 	icon_state = "gglasses"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	body_parts_covered = 0
+
+/obj/item/clothing/glasses/regular/rimless
+	name = "prescription rimless glasses"
+	desc = "Sleek modern glasses with a single sculpted lens."
+	icon_state = "glasses_rimless"
+
+/obj/item/clothing/glasses/rimless
+	name = "rimless glasses"
+	desc = "Sleek modern glasses with a single sculpted lens."
+	icon_state = "glasses_rimless"
+	prescription = 0
+
+/obj/item/clothing/glasses/regular/thin
+	name = "prescription thin-rimmed glasses"
+	desc = "Glasses with frames are so last century."
+	icon_state = "glasses_thin"
+	prescription = 1
+
+/obj/item/clothing/glasses/thin
+	name = "thin-rimmed glasses"
+	desc = "Glasses with frames are so last century."
+	icon_state = "glasses_thin"
+	prescription = 0
+
 
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
@@ -398,7 +449,7 @@ BLIND     // can't see anything
 	emp_act(severity)
 		if(istype(src.loc, /mob/living/carbon/human))
 			var/mob/living/carbon/human/M = src.loc
-			M << "<font color='red'>The Optical Thermal Scanner overloads and blinds you!</font>"
+			to_chat(M, "<font color='red'>The Optical Thermal Scanner overloads and blinds you!</font>")
 			if(M.glasses == src)
 				M.Blind(3)
 				M.eye_blurry = 5
@@ -411,7 +462,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/thermal/New()
 	..()
-	overlay = global_hud.thermal
+	overlay = GLOB.global_hud.thermal
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "optical meson scanner"
@@ -447,6 +498,85 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/thermal/plain/jensen
 	name = "optical thermal implants"
-	desc = "A set of implantable lenses designed to augment your vision"
+	desc = "A set of implantable lenses designed to augment your vision."
 	icon_state = "thermalimplants"
 	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+
+/obj/item/clothing/glasses/aerogelgoggles
+	name = "orange goggles"
+	desc = "Teshari designed lightweight goggles."
+	icon_state = "orange-g"
+	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	action_button_name = "Adjust Orange Goggles"
+	var/up = 0
+	item_flags = AIRTIGHT
+	body_parts_covered = EYES
+	species_restricted = list(SPECIES_TESHARI)
+
+/obj/item/clothing/glasses/aerogelgoggles/attack_self()
+	toggle()
+
+/obj/item/clothing/glasses/aerogelgoggles/verb/toggle()
+	set category = "Object"
+	set name = "Adjust Orange Goggles"
+	set src in usr
+
+	if(usr.canmove && !usr.stat && !usr.restrained())
+		if(src.up)
+			src.up = !src.up
+			flags_inv |= HIDEEYES
+			body_parts_covered |= EYES
+			icon_state = initial(icon_state)
+			to_chat(usr, "You flip \the [src] down to protect your eyes.")
+		else
+			src.up = !src.up
+			flags_inv &= ~HIDEEYES
+			body_parts_covered &= ~EYES
+			icon_state = "[initial(icon_state)]up"
+			to_chat(usr, "You push \the [src] up from in front of your eyes.")
+		update_clothing_icon()
+		usr.update_action_buttons()
+
+// April 2020 Drof's Additions Begin Below
+/obj/item/clothing/glasses/jamjar
+	name = "jamjar glasses"
+	desc = "A staple of the neo-otaku's wardrobe."
+	icon_state = "jamjar_glasses"
+	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	prescription = 1
+	body_parts_covered = 0
+
+/obj/item/clothing/glasses/augmentedshades
+	name = "augmented shades"
+	desc = "A pair of retractable sunglasses lenses."
+	icon_state = "jensenshades"
+	off_state = "jensenshades_off"
+	toggleable = 1
+	action_button_name = "Toggle Out/In"
+
+/obj/item/clothing/glasses/sunglasses/whiteblindfold
+	name = "white blindfold"
+	desc = "A white blindfold that covers the eyes, preventing sight."
+	icon_state = "blindfoldwhite"
+	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+	flash_protection = FLASH_PROTECTION_MAJOR
+	vision_flags = BLIND
+
+/obj/item/clothing/glasses/redglasses
+	name = "red glasses"
+	desc = "A pair of glasses with red lenses that swirl and pulse hypnotically."
+	icon_state = "redglasses"
+	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+
+/obj/item/clothing/glasses/badglasses
+	name = "poorly made glasses"
+	desc = "A pair of glasses that look cheaply made. The lenses are prescription, at least...?"
+	icon_state = "glasses_bad"
+	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	prescription = 1
+
+/obj/item/clothing/glasses/orangeglasses
+	name = "orange glasses"
+	desc = "A pair of orange glasses."
+	icon_state = "orangeglasses"
+	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")

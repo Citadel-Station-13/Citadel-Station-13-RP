@@ -12,11 +12,11 @@
 	var/list/network
 	var/mapping = 0//For the overview file, interesting bit of code.
 	var/cache_id = 0
-	circuit = /obj/item/weapon/circuitboard/security
+	circuit = /obj/item/circuitboard/security
 
 /obj/machinery/computer/security/New()
 	if(!network)
-		network = using_map.station_networks.Copy()
+		network = GLOB.using_map.station_networks.Copy()
 	..()
 	if(network.len)
 		current_network = network[1]
@@ -47,9 +47,9 @@
 		data["cameras"] = camera_repository.cameras_in_network(current_network)
 	if(current_camera)
 		switch_to_camera(user, current_camera)
-	data["map_levels"] = using_map.get_map_levels(src.z)
+	data["map_levels"] = GLOB.using_map.get_map_levels(src.z)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "sec_camera.tmpl", "Camera Console", 900, 800)
 
@@ -91,8 +91,8 @@
 		. = ..()
 
 /obj/machinery/computer/security/attack_hand(var/mob/user as mob)
-	if (using_map && !(src.z in using_map.contact_levels))
-		user << "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!"
+	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	if(stat & (NOPOWER|BROKEN))	return
 
@@ -152,7 +152,7 @@
 /obj/machinery/computer/security/process()
 	if(cache_id != camera_repository.camera_cache_id)
 		cache_id = camera_repository.camera_cache_id
-		GLOB.nanomanager.update_uis(src)
+		SSnanoui.update_uis(src)
 
 /obj/machinery/computer/security/proc/can_access_camera(var/obj/machinery/camera/C)
 	var/list/shared_networks = src.network & C.network
@@ -170,7 +170,7 @@
 	src.current_camera = C
 	if(current_camera)
 		current_camera.camera_computers_using_this.Add(src)
-		use_power = 2
+		update_use_power(USE_POWER_ACTIVE)
 		var/mob/living/L = current_camera.loc
 		if(istype(L))
 			L.tracking_initiated()
@@ -182,7 +182,7 @@
 		if(istype(L))
 			L.tracking_cancelled()
 	current_camera = null
-	use_power = 1
+	use_power = USE_POWER_IDLE
 
 //Camera control: mouse.
 /atom/DblClick()
@@ -222,10 +222,10 @@
 	light_color = "#FFEEDB"
 	light_range_on = 2
 	network = list(NETWORK_THUNDER)
-	circuit = /obj/item/weapon/circuitboard/security/telescreen/entertainment
-	var/obj/item/device/radio/radio = null
+	circuit = /obj/item/circuitboard/security/telescreen/entertainment
+	var/obj/item/radio/radio = null
 
-/obj/machinery/computer/security/telescreen/entertainment/initialize()
+/obj/machinery/computer/security/telescreen/entertainment/Initialize()
 	. = ..()
 	radio = new(src)
 	radio.listening = TRUE
@@ -248,7 +248,7 @@
 	icon_state = "television"
 	icon_keyboard = null
 	icon_screen = "detective_tv"
-	circuit = null
+	circuit = /obj/item/circuitboard/security/tv
 	light_color = "#3848B3"
 	light_power_on = 0.5
 
@@ -258,7 +258,7 @@
 	icon_keyboard = "mining_key"
 	icon_screen = "mining"
 	network = list("Mining Outpost")
-	circuit = /obj/item/weapon/circuitboard/security/mining
+	circuit = /obj/item/circuitboard/security/mining
 	light_color = "#F9BBFC"
 
 /obj/machinery/computer/security/engineering
@@ -266,7 +266,7 @@
 	desc = "Used to monitor fires and breaches."
 	icon_keyboard = "power_key"
 	icon_screen = "engie_cams"
-	circuit = /obj/item/weapon/circuitboard/security/engineering
+	circuit = /obj/item/circuitboard/security/engineering
 	light_color = "#FAC54B"
 
 /obj/machinery/computer/security/engineering/New()

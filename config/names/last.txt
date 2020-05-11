@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Whittier
 Dimeling
 Blaine
@@ -2245,4 +2244,3 @@ Leporis
 Barnard
 Vega
 Altair
->>>>>>> 16f14ee... Merge pull request #4525 from VOREStation/upstream-merge-5732

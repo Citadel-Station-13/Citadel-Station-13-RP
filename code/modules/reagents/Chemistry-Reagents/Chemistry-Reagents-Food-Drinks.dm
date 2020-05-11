@@ -34,19 +34,16 @@
 				data -= taste
 
 /datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	/* VOREStation Removal
-	if(!injectable && alien != IS_SLIME)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA) //VOREStation Edit
 		M.adjustToxLoss(0.1 * removed)
 		return
-	affect_ingest(M, alien, removed) 
-	*/ //VOREStation Removal End
-	if(injectable) //vorestation addition/replacement
-		affect_ingest(M, alien, removed)
+	affect_ingest(M, alien, removed)
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	switch(alien)
 		if(IS_DIONA) return
 		if(IS_UNATHI) removed *= 0.5
+		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
 	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
 	if(M.species.gets_food_nutrition) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
@@ -71,13 +68,16 @@
 	switch(alien)
 		if(IS_SKRELL)
 			M.adjustToxLoss(0.5 * removed)
-			return
 		if(IS_TESHARI)
 			..(M, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
-			return
 		if(IS_UNATHI)
 			..(M, alien, removed*2.25) //Unathi get most of their nutrition from meat.
-	..()
+		//VOREStation Edit Start
+		if(IS_CHIMERA)
+			..(M, alien, removed*4) //Xenochimera are obligate carnivores.
+		//VOREStation Edit End
+		else
+			..()
 
 /datum/reagent/nutriment/protein/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien && alien == IS_SKRELL)
@@ -90,6 +90,12 @@
 	id = "egg"
 	taste_description = "egg"
 	color = "#FFFFAA"
+
+/datum/reagent/nutriment/protein/murk
+	name = "murkfin protein"
+	id = "murk_protein"
+	taste_description = "mud"
+	color = "#664330"
 
 /datum/reagent/nutriment/honey
 	name = "Honey"
@@ -120,6 +126,14 @@
 			M.sleeping = max(M.sleeping, 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
+/datum/reagent/nutriment/mayo
+	name = "mayonnaise"
+	id = "mayo"
+	description = "A thick, bitter sauce."
+	taste_description = "unmistakably mayonnaise"
+	nutriment_factor = 10
+	color = "#FFFFFF"
+
 /datum/reagent/nutriment/flour
 	name = "Flour"
 	id = "flour"
@@ -133,6 +147,24 @@
 	if(!istype(T, /turf/space))
 		new /obj/effect/decal/cleanable/flour(T)
 
+/datum/reagent/nutriment/coffee
+	name = "Coffee Powder"
+	id = "coffeepowder"
+	description = "A bitter powder made by grinding coffee beans."
+	taste_description = "bitterness"
+	taste_mult = 1.3
+	nutriment_factor = 1
+	color = "#482000"
+
+/datum/reagent/nutriment/tea
+	name = "Tea Powder"
+	id = "teapowder"
+	description = "A dark, tart powder made from black tea leaves."
+	taste_description = "tartness"
+	taste_mult = 1.3
+	nutriment_factor = 1
+	color = "#101000"
+
 /datum/reagent/nutriment/coco
 	name = "Coco Powder"
 	id = "coco"
@@ -142,6 +174,46 @@
 	reagent_state = SOLID
 	nutriment_factor = 5
 	color = "#302000"
+
+/datum/reagent/nutriment/coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 5
+/datum/reagent/nutriment/instantjuice
+	name = "Juice Powder"
+	id = "instantjuice"
+	description = "Dehydrated, powdered juice of some kind."
+	taste_mult = 1.3
+	nutriment_factor = 1
+
+/datum/reagent/nutriment/instantjuice/grape
+	name = "Grape Juice Powder"
+	id = "instantgrape"
+	description = "Dehydrated, powdered grape juice."
+	taste_description = "dry grapes"
+	color = "#863333"
+
+/datum/reagent/nutriment/instantjuice/orange
+	name = "Orange Juice Powder"
+	id = "instantorange"
+	description = "Dehydrated, powdered orange juice."
+	taste_description = "dry oranges"
+	color = "#e78108"
+
+/datum/reagent/nutriment/instantjuice/watermelon
+	name = "Watermelon Juice Powder"
+	id = "instantwatermelon"
+	description = "Dehydrated, powdered watermelon juice."
+	taste_description = "dry sweet watermelon"
+	color = "#b83333"
+
+/datum/reagent/nutriment/instantjuice/apple
+	name = "Apple Juice Powder"
+	id = "instantapple"
+	description = "Dehydrated, powdered apple juice."
+	taste_description = "dry sweet apples"
+	color = "#c07c40"
 
 /datum/reagent/nutriment/soysauce
 	name = "Soysauce"
@@ -182,6 +254,7 @@
 	nutriment_factor = 1
 	color = "#801E28"
 
+/* Begin Citadel Change - Removed due to Aurora cooking port
 /datum/reagent/nutriment/cornoil
 	name = "Corn Oil"
 	id = "cornoil"
@@ -206,6 +279,77 @@
 
 	if(volume >= 3)
 		T.wet_floor()
+
+End Citadel Change */
+/datum/reagent/nutriment/peanutoil
+	name = "Peanut Oil"
+	id = "peanutoil"
+	description = "An oil derived from various types of nuts."
+	taste_description = "nuts"
+	taste_mult = 0.3
+	reagent_state = LIQUID
+	nutriment_factor = 15
+	color = "#4F3500"
+
+/datum/reagent/nutriment/peanutoil/touch_turf(var/turf/simulated/T)
+	if(!istype(T))
+		return
+
+	var/hotspot = (locate(/obj/fire) in T)
+	if(hotspot && !istype(T, /turf/space))
+		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
+		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
+		lowertemp.react()
+		T.assume_air(lowertemp)
+		qdel(hotspot)
+
+	if(volume >= 5)
+		T.wet_floor()
+
+/datum/reagent/nutriment/peanutbutter
+	name = "Peanut Butter"
+	id = "peanutbutter"
+	description = "A butter derived from various types of nuts."
+	taste_description = "peanuts"
+	taste_mult = 0.5
+	reagent_state = LIQUID
+	nutriment_factor = 30
+	color = "#4F3500"
+
+/datum/reagent/nutriment/vanilla
+	name = "Vanilla Extract"
+	id = "vanilla"
+	description = "Vanilla extract. Tastes suspiciously like boring ice-cream."
+	taste_description = "vanilla"
+	taste_mult = 5
+	reagent_state = LIQUID
+	nutriment_factor = 2
+	color = "#0F0A00"
+
+/datum/reagent/nutriment/durian
+	name = "Durian Paste"
+	id = "durianpaste"
+	description = "A strangely sweet and savory paste."
+	taste_description = "sweet and savory"
+	color = "#757631"
+
+	glass_name = "durian paste"
+	glass_desc = "Durian paste. It smells horrific."
+
+/datum/reagent/nutriment/durian/touch_mob(var/mob/M, var/amount)
+	if(iscarbon(M) && !M.isSynthetic())
+		var/message = pick("Oh god, it smells disgusting here.", "What is that stench?", "That's an awful odor.")
+		to_chat(M,"<span class='alien'>[message]</span>")
+		if(prob(CLAMP(amount, 5, 90)))
+			var/mob/living/L = M
+			L.vomit()
+	return ..()
+
+/datum/reagent/nutriment/durian/touch_turf(var/turf/T, var/amount)
+	if(istype(T))
+		var/obj/effect/decal/cleanable/chemcoating/C = new /obj/effect/decal/cleanable/chemcoating(T)
+		C.reagents.add_reagent(id, amount)
+	return ..()
 
 /datum/reagent/nutriment/virus_food
 	name = "Virus Food"
@@ -305,8 +449,6 @@
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
 		M.emote("shiver")
-	if(istype(M, /mob/living/simple_animal/slime))
-		M.bodytemperature = max(M.bodytemperature - rand(10,20), 0)
 	holder.remove_reagent("capsaicin", 5)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
@@ -335,19 +477,22 @@
 /datum/reagent/capsaicin/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
+		if(prob(5))
+			to_chat(M, span("rose","You feel a pleasant sensation in your mouth."))
+		M.bodytemperature += rand(10, 25)
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
 
 	if(dose < 5 && (dose == metabolism || prob(5)))
-		M << "<span class='danger'>Your insides feel uncomfortably hot!</span>"
+		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	if(istype(M, /mob/living/simple_animal/slime))
-		M.bodytemperature += rand(10, 25)
 	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/condensedcapsaicin
@@ -384,6 +529,9 @@
 
 	if(alien == IS_SKRELL)	//Larger eyes means bigger targets.
 		effective_strength = 8
+
+	if(alien == IS_ALRAUNE) //cit change: plants find the base form tasty, still mildly inconvenient to be affected by this.
+		effective_strength = 4
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
@@ -487,13 +635,11 @@
 		if(!H.can_feel_pain())
 			return
 	if(dose == metabolism)
-		M << "<span class='danger'>You feel like your insides are burning!</span>"
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
-	if(istype(M, /mob/living/simple_animal/slime))
-		M.bodytemperature += rand(15, 30)
 	holder.remove_reagent("frostoil", 5)
 
 /* Drinks */
@@ -557,6 +703,16 @@
 
 	glass_name = "berry juice"
 	glass_desc = "Berry juice. Or maybe it's jam. Who cares?"
+
+/datum/reagent/drink/juice/pineapple
+	name = "Pineapple Juice"
+	id = "pineapplejuice"
+	description = "A sour but refreshing juice from a pineapple."
+	taste_description = "pineapple"
+	color = "#C3AF00"
+
+	glass_name = "pineapple juice"
+	glass_desc = "Pineapple juice. Or maybe it's spineapple. Who cares?"
 
 /datum/reagent/drink/juice/carrot
 	name = "Carrot juice"
@@ -736,11 +892,19 @@
 	glass_name = "chocolate milk"
 	glass_desc = "Deliciously fattening!"
 
+/datum/reagent/drink/milk/chocolate/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
+		to_chat(M, "<span class='vox'>You feel nourished by the milk.</span>")
+		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
 
@@ -1026,6 +1190,12 @@
 	cup_name = "cup of hot chocolate"
 	cup_desc = "Made with love! And cocoa beans."
 
+/datum/reagent/drink/hot_coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 5
+
 /datum/reagent/drink/soda/sodawater
 	name = "Soda Water"
 	id = "sodawater"
@@ -1077,6 +1247,42 @@
 
 	glass_name = "lemonade"
 	glass_desc = "Oh the nostalgia..."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/melonade
+	name = "Melonade"
+	id = "melonade"
+	description = "Oh the.. nostalgia?"
+	taste_description = "watermelon"
+	color = "#FFB3BB"
+	adj_temp = -5
+
+	glass_name = "melonade"
+	glass_desc = "Oh the.. nostalgia?"
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/appleade
+	name = "Appleade"
+	id = "appleade"
+	description = "Applejuice, improved."
+	taste_description = "apples"
+	color = "#FFD1B3"
+	adj_temp = -5
+
+	glass_name = "appleade"
+	glass_desc = "Applejuice, improved."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/pineappleade
+	name = "Pineappleade"
+	id = "pineappleade"
+	description = "Spineapple, juiced up."
+	taste_description = "sweet`n`sour pineapples"
+	color = "#FFFF00"
+	adj_temp = -5
+
+	glass_name = "pineappleade"
+	glass_desc = "Spineapple, juiced up."
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/soda/kiraspecial
@@ -1145,6 +1351,12 @@
 	glass_name = "Chocolate Milkshake"
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
+/datum/reagent/drink/milkshake/chocoshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 5
+
 /datum/reagent/drink/milkshake/berryshake
 	name = "Berry Milkshake"
 	id = "berryshake"
@@ -1173,6 +1385,16 @@
 
 /datum/reagent/drink/milkshake/coffeeshake/overdose(var/mob/living/carbon/M, var/alien)
 	M.make_jittery(5)
+
+/datum/reagent/drink/milkshake/peanutshake
+	name = "Peanut Milkshake"
+	id = "peanutmilkshake"
+	description = "Savory cream in an ice-cold stature."
+	taste_description = "cold peanuts and cream"
+	color = "#8e6f44"
+
+	glass_name = "Peanut Milkshake"
+	glass_desc = "Savory cream in an ice-cold stature."
 
 /datum/reagent/drink/rewriter
 	name = "Rewriter"
@@ -1216,6 +1438,7 @@
 	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
 	taste_description = "100% pure pomegranate"
 	color = "#FF004F"
+	water_based = FALSE
 
 	glass_name = "grenadine syrup"
 	glass_desc = "Sweet and tangy, a bar syrup used to add color or flavor to drinks."
@@ -1283,7 +1506,6 @@
 	glass_name = "lemon lime soda"
 	glass_desc = "A tangy substance made of 0.5% natural citrus!"
 	glass_special = list(DRINK_FIZZ)
-
 
 /datum/reagent/drink/soda/gingerale
 	name = "Ginger Ale"
@@ -1491,7 +1713,7 @@
 	id = "lovepotion"
 	description = "Creamy strawberries and sugar, simple and sweet."
 	taste_description = "strawberries and cream"
-	color = "#fc8a8a" // rrgb(252, 138, 138)
+	color = "#fc8a8a" // rgb(252, 138, 138)
 
 	glass_name = "Love Potion"
 	glass_desc = "Love me tender, love me sweet."
@@ -1507,6 +1729,28 @@
 	glass_name = "Oil Slick"
 	glass_desc = "A concoction that should probably be in an engine, rather than your stomach."
 	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/drink/slimeslammer
+	name = "Slick Slimes Slammer"
+	id = "slimeslammer"
+	description = "A viscous, but savory, ooze."
+	taste_description = "peanuts`n`slime"
+	color = "#93604D"
+	water_based = FALSE
+
+	glass_name = "Slick Slime Slammer"
+	glass_desc = "A concoction that should probably be in an engine, rather than your stomach. Still."
+	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/drink/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	description = "A creamy, rich beverage made out of whisked eggs, milk and sugar, for when you feel like celebrating the winter holidays."
+	taste_description = "thick cream and vanilla"
+	color = "#fff3c1" // rgb(255, 243, 193)
+
+	glass_name = "Eggnog"
+	glass_desc = "You can't egg-nore the holiday cheer all around you"
 
 /datum/reagent/drink/nuclearwaste
 	name = "Nuclear Waste"
@@ -1563,6 +1807,73 @@
 				var/datum/reagent/drink/D = R
 				if(D.water_based)
 					M.adjustToxLoss(removed * -2)
+
+/datum/reagent/drink/mojito
+	name = "Mojito"
+	id = "virginmojito"
+	description = "Mint, bubbly water, and citrus, made for sailing."
+	taste_description = "mint and lime"
+	color = "#FFF7B3"
+
+	glass_name = "mojito"
+	glass_desc = "Mint, bubbly water, and citrus, made for sailing."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/sexonthebeach
+	name = "Virgin Sex On The Beach"
+	id = "virginsexonthebeach"
+	description = "A secret combination of orange juice and pomegranate."
+	taste_description = "60% orange juice, 40% pomegranate"
+	color = "#7051E3"
+
+	glass_name = "sex on the beach"
+	glass_desc = "A secret combination of orange juice and pomegranate."
+
+/datum/reagent/drink/driverspunch
+	name = "Driver's Punch"
+	id = "driverspunch"
+	description = "A fruity punch!"
+	taste_description = "sharp, sour apples"
+	color = "#D2BA6E"
+
+	glass_name = "driver`s punch"
+	glass_desc = "A fruity punch!"
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/berrycordial
+	name = "Berry Cordial"
+	id = "berrycordial"
+	description = "How <font face='comic sans ms'>berry cordial</font> of you."
+	taste_description = "sweet chivalry"
+	color = "#D26EB8"
+
+	glass_name = "berry cordial"
+	glass_desc = "How <font face='comic sans ms'>berry cordial</font> of you."
+	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/drink/tropicalfizz
+	name = "Tropical Fizz"
+	id = "tropicalfizz"
+	description = "One sip and you're in the bahamas."
+	taste_description = "tropical"
+	color = "#69375C"
+
+	glass_name = "tropical fizz"
+	glass_desc = "One sip and you're in the bahamas."
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/fauxfizz
+	name = "Faux Fizz"
+	id = "fauxfizz"
+	description = "One sip and you're in the bahamas... maybe."
+	taste_description = "slightly tropical"
+	color = "#69375C"
+
+	glass_name = "tropical fizz"
+	glass_desc = "One sip and you're in the bahamas... maybe."
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
 
 /* Alcohol */
 
@@ -1651,6 +1962,17 @@
 		return
 	M.dizziness +=5
 
+/datum/reagent/ethanol/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	description = "Yo ho ho and a jar of honey."
+	taste_description = "sharp butterscotch"
+	color = "#ECB633"
+	strength = 7
+
+	glass_name = "fire punch"
+	glass_desc = "Yo ho ho and a jar of honey."
+
 /datum/reagent/ethanol/gin
 	name = "Gin"
 	id = "gin"
@@ -1718,6 +2040,18 @@
 	glass_name = "melon liquor"
 	glass_desc = "A relatively sweet and fruity 46 proof liquor."
 
+/datum/reagent/ethanol/melonspritzer
+	name = "Melon Spritzer"
+	id = "melonspritzer"
+	description = "Melons: Citrus style."
+	taste_description = "sour melon"
+	color = "#934D5D"
+	strength = 10
+
+	glass_name = "melon spritzer"
+	glass_desc = "Melons: Citrus style."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/ethanol/rum
 	name = "Rum"
 	id = "rum"
@@ -1740,6 +2074,17 @@
 
 	glass_name = "sake"
 	glass_desc = "A glass of sake."
+
+/datum/reagent/ethanol/sexonthebeach
+	name = "Sex On The Beach"
+	id = "sexonthebeach"
+	description = "A concoction of vodka and a secret combination of orange juice and pomegranate."
+	taste_description = "60% orange juice, 40% pomegranate, 100% alcohol"
+	color = "#7051E3"
+	strength = 15
+
+	glass_name = "sex on the beach"
+	glass_desc = "A concoction of vodka and a secret combination of orange juice and pomegranate."
 
 /datum/reagent/ethanol/tequila
 	name = "Tequila"
@@ -1843,6 +2188,14 @@
 
 	glass_name = "cider"
 	glass_desc = "The second most Irish drink."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/peppermintschnapps
+	name = "Peppermint Schnapps"
+	id = "schnapps_pep"
+	description = "A flavoured grain liqueur with a fresh, minty taste."
+	taste_description = "peachy"
+	strength = 90
 
 // Cocktails
 
@@ -2668,7 +3021,7 @@
 
 /datum/reagent/ethanol/saketini
 	name = "Saketini"
-	id = "sakitini"
+	id = "saketini"
 	description = "For when you're too weeb for a real martini."
 	taste_description = "dry alcohol"
 	color = "#0064C8"
@@ -3153,3 +3506,285 @@
 
 	glass_name = "Ichor Mead"
 	glass_desc = "A trip to Valhalla."
+
+/datum/reagent/ethanol/gibbfloat
+	name = "Gibbfloat"
+	id = "gibbfloat"
+	description = "A tasty, frothy drink."
+	taste_description = "soda float"
+	strength = 100
+
+	glass_name = "Gibbfloat"
+	glass_desc = "A tasty, frothy drink"
+
+/datum/reagent/ethanol/mintjulep
+	name = "Mint Julep"
+	id = "mintjulep"
+	description = "Really not just watery whiskey.. I think."
+	taste_description = "mint infused whiskey"
+	strength = 80
+
+/datum/reagent/ethanol/planterspunch
+	name = "Planters Punch"
+	id = "planterspunch"
+	description = "A refreshing drink for the aspiring botanist."
+	taste_description = "happy plants"
+	strength = 85
+
+/datum/reagent/ethanol/olympusmons
+	name = "Olympus Mons"
+	id = "olympusmons"
+	description = "For those that need the extra kick."
+	taste_description = "stronge coffee infused booze"
+	strength = 35
+
+/datum/reagent/ethanol/sazerac
+	name = "Sazerac"
+	id = "sazerac"
+	description = "When a regular whiskey cocktail isn't enough."
+	taste_description = "a strong bite of flavor"
+	strength = 20
+
+/datum/reagent/ethanol/junglejuice
+	name = "Jungle Juice"
+	id = "junglejuice"
+	description = "An overload of sweetness and sugary goodness."
+	taste_description = "fruits and bad decisions"
+	strength = 55
+
+/datum/reagent/ethanol/gimlet
+	name = "Gimlet"
+	id = "gimlet"
+	description = "For those who want to look fancy with their gin."
+	taste_description = "lime infused tree"
+	strength = 20
+
+/datum/reagent/ethanol/firepunch
+	name = "Fire Punch"
+	id = "firepunch"
+	description = "A spicy take on a summer classic."
+	taste_description = "rum and sugar"
+	strength = 70
+	targ_temp = 300
+
+///////////////////////////////////////////////
+//// End of list for drinks for bartenders ////
+///////////////////////////////////////////////
+/*
+	Coatings are used in cooking. Dipping food items in a reagent container with a coating in it
+	allows it to be covered in that, which will add a masked overlay to the sprite.
+	Coatings have both a raw and a cooked image. Raw coating is generally unhealthy
+	Generally coatings are intended for deep frying foods
+*/
+/datum/reagent/nutriment/coating
+	nutriment_factor = 6 //Less dense than the food itself, but coatings still add extra calories
+	var/messaged = 0
+	var/icon_raw
+	var/icon_cooked
+	var/coated_adj = "coated"
+	var/cooked_name = "coating"
+
+/datum/reagent/nutriment/coating/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+
+	//We'll assume that the batter isnt going to be regurgitated and eaten by someone else. Only show this once
+	if (data["cooked"] != 1)
+		if (!messaged)
+			to_chat(M, "Ugh, this raw [name] tastes disgusting.")
+			nutriment_factor *= 0.5
+			messaged = 1
+
+		//Raw coatings will sometimes cause vomiting
+		if (prob(1))
+			M.vomit()
+	..()
+
+/datum/reagent/nutriment/coating/initialize_data(var/newdata) // Called when the reagent is created.
+	..()
+	if (!data)
+		data = list()
+	else
+		if (isnull(data["cooked"]))
+			data["cooked"] = 0
+		return
+	data["cooked"] = 0
+	if (holder && holder.my_atom && istype(holder.my_atom,/obj/item/reagent_containers/food/snacks))
+		data["cooked"] = 1
+		name = cooked_name
+
+		//Batter which is part of objects at compiletime spawns in a cooked state
+
+
+//Handles setting the temperature when oils are mixed
+/datum/reagent/nutriment/coating/mix_data(var/newdata, var/newamount)
+	if (!data)
+		data = list()
+
+	data["cooked"] = newdata["cooked"]
+
+/datum/reagent/nutriment/coating/batter
+	name = "batter mix"
+	cooked_name = "batter"
+	id = "batter"
+	color = "#f5f4e9"
+	reagent_state = LIQUID
+	icon_raw = "batter_raw"
+	icon_cooked = "batter_cooked"
+	coated_adj = "battered"
+
+/datum/reagent/nutriment/coating/beerbatter
+	name = "beer batter mix"
+	cooked_name = "beer batter"
+	id = "beerbatter"
+	color = "#f5f4e9"
+	reagent_state = LIQUID
+	icon_raw = "batter_raw"
+	icon_cooked = "batter_cooked"
+	coated_adj = "beer-battered"
+
+/datum/reagent/nutriment/coating/beerbatter/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	M.add_chemical_effect(CE_ALCOHOL, 0.02) //Very slightly alcoholic
+
+//=========================
+//Fats
+//=========================
+/datum/reagent/nutriment/triglyceride
+	name = "triglyceride"
+	id = "triglyceride"
+	description = "More commonly known as fat, the third macronutrient, with over double the energy content of carbs and protein"
+
+	reagent_state = SOLID
+	nutriment_factor = 27//The caloric ratio of carb/protein/fat is 4:4:9
+	color = "#CCCCCC"
+
+/datum/reagent/nutriment/triglyceride/oil
+	//Having this base class incase we want to add more variants of oil
+	name = "Oil"
+	id = "oil"
+	description = "Oils are liquid fats."
+	reagent_state = LIQUID
+	color = "#c79705"
+	touch_met = 1.5
+	var/lastburnmessage = 0
+
+/datum/reagent/nutriment/triglyceride/oil/touch_turf(var/turf/simulated/T)
+	if(!istype(T))
+		return
+
+	if(volume >= 3)
+		T.wet_floor(2)
+
+/datum/reagent/nutriment/triglyceride/oil/initialize_data(var/newdata) // Called when the reagent is created.
+	..()
+	if (!data)
+		data = list("temperature" = T20C)
+
+//Handles setting the temperature when oils are mixed
+/datum/reagent/nutriment/triglyceride/oil/mix_data(var/newdata, var/newamount)
+
+	if (!data)
+		data = list()
+
+	var/ouramount = volume - newamount
+	if (ouramount <= 0 || !data["temperature"] || !volume)
+		//If we get here, then this reagent has just been created, just copy the temperature exactly
+		data["temperature"] = newdata["temperature"]
+
+	else
+		//Our temperature is set to the mean of the two mixtures, taking volume into account
+		var/total = (data["temperature"] * ouramount) + (newdata["temperature"] * newamount)
+		data["temperature"] = total / volume
+
+	return ..()
+
+
+//Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
+/datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(var/mob/living/carbon/M)
+	var/threshold = 360//Human heatdamage threshold
+	var/datum/species/S = M.get_species(1)
+	if (S && istype(S))
+		threshold = S.heat_level_1
+
+	//If temperature is too low to burn, return a factor of 0. no damage
+	if (data["temperature"] < threshold)
+		return 0
+
+	//Step = degrees above heat level 1 for 1.0 multiplier
+	var/step = 60
+	if (S && istype(S))
+		step = (S.heat_level_2 - S.heat_level_1)*1.5
+
+	. = data["temperature"] - threshold
+	. /= step
+	. = min(., 2.5)//Cap multiplier at 2.5
+
+/datum/reagent/nutriment/triglyceride/oil/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	var/dfactor = heatdamage(M)
+	if (dfactor)
+		M.take_organ_damage(0, removed * 1.5 * dfactor)
+		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
+		if (lastburnmessage+100 < world.time	)
+			M << span("danger", "Searing hot oil burns you, wash it off quick!")
+			lastburnmessage = world.time
+
+/datum/reagent/nutriment/triglyceride/oil/corn
+	name = "Corn Oil"
+	id = "cornoil"
+	description = "An oil derived from various types of corn."
+
+//Protein! Get your mind out of the gutter.
+/datum/reagent/nutriment/protein // Bad for Skrell!
+	name = "animal protein"
+	id = "protein"
+	color = "#440000"
+	taste_description = "meat"
+
+/datum/reagent/nutriment/protein/tofu
+	name = "tofu protein"
+	id = "tofu"
+	color = "#fdffa8"
+	taste_description = "tofu"
+
+/datum/reagent/nutriment/protein/seafood
+	name = "seafood protein"
+	id = "seafood"
+	color = "#f5f4e9"
+	taste_description = "fish"
+
+/datum/reagent/nutriment/protein/egg
+	name = "egg yolk"
+	id = "egg"
+	color = "#FFFFAA"
+	taste_description = "egg"
+
+/datum/reagent/nutriment/protein/cheese // Also bad for skrell.
+	name = "cheese"
+	id = "cheese"
+	color = "#EDB91F"
+	taste_description = "cheese"
+
+//SYNNONO MEME FOODS EXPANSION - Credit to Synnono
+
+/datum/reagent/spacespice
+	name = "Space Spice"
+	id = "spacespice"
+	description = "An exotic blend of spices for cooking. Definitely not worms."
+	reagent_state = SOLID
+	color = "#e08702"
+
+/datum/reagent/browniemix
+	name = "Brownie Mix"
+	id = "browniemix"
+	description = "A dry mix for making delicious brownies."
+	reagent_state = SOLID
+	color = "#441a03"
+
+/datum/reagent/ethanol/wine/champagnejericho
+	name = "Champagne"
+	id = "champagnejericho"
+	description = "Wait a minute...this isnt Champagne, this is just sparkling wine!"
+	taste_description = "bitterness, suitable for a Champion"
+	color = "#D1B166"
+
+	glass_name = "the bubbly"
+	glass_desc = "An even classier looking drink, with floating bubbles."

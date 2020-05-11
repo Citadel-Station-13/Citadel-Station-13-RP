@@ -11,7 +11,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
 	selection_color = "#1D1D4F"
-	idtype = /obj/item/weapon/card/id/gold
+	idtype = /obj/item/card/id/gold
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
@@ -31,7 +31,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 		H.implant_loyalty(src)
 */
 /datum/job/captain/get_access()
-	return get_all_station_access()
+	return get_all_station_access().Copy()
 
 /datum/job/hop
 	title = "Head of Personnel"
@@ -44,7 +44,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	spawn_positions = 1
 	supervisors = "the Colony Director"
 	selection_color = "#2F2F7F"
-	idtype = /obj/item/weapon/card/id/silver/hop
+	idtype = /obj/item/card/id/silver/hop
 	req_admin_notify = 1
 	minimal_player_age = 10
 	economic_modifier = 10
@@ -79,11 +79,12 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	spawn_positions = 2
 	supervisors = "command staff"
 	selection_color = "#2F2F7F"
-	idtype = /obj/item/weapon/card/id/silver/secretary
+	idtype = /obj/item/card/id/silver/secretary
 	minimal_player_age = 5
 	economic_modifier = 7
 
 	access = list(access_heads, access_keycard_auth)
 	minimal_access = list(access_heads, access_keycard_auth)
+	alt_titles = list("Bridge Officer")
 
 	outfit_type = /decl/hierarchy/outfit/job/secretary

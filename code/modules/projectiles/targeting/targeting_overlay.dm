@@ -72,7 +72,7 @@
 		else
 			return
 
-	owner << "<span class='[use_span]'>[aiming_at ? "\The [aiming_at] is" : "Your targets are"] [message].</span>"
+	to_chat(owner, "<span class='[use_span]'>[aiming_at ? "\The [aiming_at] is" : "Your targets are"] [message].</span>")
 	if(aiming_at)
 		to_chat(aiming_at, "<span class='[use_span]'>You are [message].</span>")
 
@@ -89,7 +89,7 @@
 		aiming_at = null
 	owner = null
 	aiming_with = null
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 obj/aiming_overlay/proc/update_aiming_deferred()
@@ -139,7 +139,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 
 	if(!owner.incapacitated() && owner.client)
 		spawn(0)
-			owner.set_dir(get_dir(get_turf(owner), get_turf(src)))
+			owner.setDir(get_dir(get_turf(owner), get_turf(src)))
 
 /obj/aiming_overlay/proc/aim_at(var/mob/target, var/obj/thing)
 
@@ -171,12 +171,13 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	if(owner.client)
 		owner.client.add_gun_icons()
 	to_chat(target, "<span class='danger'>You now have a gun pointed at you. No sudden moves!</span>")
+	to_chat(target, "<span class='critical'>If you fail to comply with your assailant, you accept the consequences of your actions.</span>")
 	aiming_with = thing
 	aiming_at = target
-	if(istype(aiming_with, /obj/item/weapon/gun))
+	if(istype(aiming_with, /obj/item/gun))
 		playsound(get_turf(owner), 'sound/weapons/TargetOn.ogg', 50,1)
 	forceMove(get_turf(target))
-	processing_objects |= src
+	START_PROCESSING(SSobj, src)
 
 	aiming_at.aimed |= src
 	toggle_active(1)
@@ -213,7 +214,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 /obj/aiming_overlay/proc/cancel_aiming(var/no_message = 0)
 	if(!aiming_with || !aiming_at)
 		return
-	if(istype(aiming_with, /obj/item/weapon/gun))
+	if(istype(aiming_with, /obj/item/gun))
 		playsound(get_turf(owner), 'sound/weapons/TargetOff.ogg', 50,1)
 	if(!no_message)
 		owner.visible_message("<span class='notice'>\The [owner] lowers \the [aiming_with].</span>")
@@ -221,6 +222,6 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	aiming_with = null
 	aiming_at.aimed -= src
 	aiming_at = null
-	loc = null
-	processing_objects -= src
+	moveToNullspace()
+	STOP_PROCESSING(SSobj, src)
 

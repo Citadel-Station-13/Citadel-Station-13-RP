@@ -1,4 +1,3 @@
-/* CITADEL CHANGE, IMPROVED VERSION IN CITADEL_MODULAR
 /datum/admins/proc/quick_nif()
 	set category = "Fun"
 	set name = "Quick NIF"
@@ -25,10 +24,9 @@
 		return
 
 	if(H.species.flags & NO_SCAN)
-		new /obj/item/device/nif/bioadap(H)
+		new /obj/item/nif/bioadap(H)
 	else
-		new /obj/item/device/nif(H)
+		new /obj/item/nif(H)
 
 	log_and_message_admins("[key_name(src)] Quick NIF'd [H.real_name].")
 	feedback_add_details("admin_verb","QNIF") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-*/

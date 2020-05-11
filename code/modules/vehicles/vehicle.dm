@@ -31,7 +31,7 @@
 	var/powered = 0		//set if vehicle is powered and should use fuel when moving
 	var/move_delay = 1	//set this to limit the speed of the vehicle
 
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
 	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
 
 	var/paint_color = "#666666" //For vehicles with special paint overlays.
@@ -47,9 +47,6 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/New()
-	..()
-	//spawn the cell you want in each vehicle
 
 /obj/vehicle/Destroy()
 	QDEL_NULL(riding_datum)
@@ -71,7 +68,7 @@
 		riding_datum.restore_position(buckled_mob)
 		riding_datum.handle_vehicle_offsets() // So the person in back goes to the front.
 
-/obj/vehicle/set_dir(newdir)
+/obj/vehicle/setDir(newdir)
 	..(newdir)
 	if(riding_datum)
 		riding_datum.handle_vehicle_offsets()
@@ -100,7 +97,7 @@
 			anchored = init_anc
 			return 0
 
-		set_dir(get_dir(old_loc, loc))
+		setDir(get_dir(old_loc, loc))
 		anchored = init_anc
 
 		if(mechanical && on && powered)
@@ -110,14 +107,14 @@
 		//See load_object() proc in cargo_trains.dm for an example
 		if(load && !istype(load, /datum/vehicle_dummy_load))
 			load.forceMove(loc)
-			load.set_dir(dir)
+			load.setDir(dir)
 
 		return 1
 	else
 		return 0
 
-/obj/vehicle/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/hand_labeler))
+/obj/vehicle/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/hand_labeler))
 		return
 	if(mechanical)
 		if(W.is_screwdriver())
@@ -129,10 +126,10 @@
 		else if(W.is_crowbar() && cell && open)
 			remove_cell(user)
 
-		else if(istype(W, /obj/item/weapon/cell) && !cell && open)
+		else if(istype(W, /obj/item/cell) && !cell && open)
 			insert_cell(W, user)
-		else if(istype(W, /obj/item/weapon/weldingtool))
-			var/obj/item/weapon/weldingtool/T = W
+		else if(istype(W, /obj/item/weldingtool))
+			var/obj/item/weldingtool/T = W
 			if(T.welding)
 				if(health < maxhealth)
 					if(open)
@@ -164,6 +161,10 @@
 	..()
 	healthcheck()
 
+/obj/vehicle/proc/adjust_health(amount)
+	health = between(0, health + amount, maxhealth)
+	healthcheck()
+
 /obj/vehicle/ex_act(severity)
 	switch(severity)
 		if(1.0)
@@ -193,7 +194,7 @@
 	pulse2.icon_state = "empdisable"
 	pulse2.name = "emp sparks"
 	pulse2.anchored = 1
-	pulse2.set_dir(pick(cardinal))
+	pulse2.setDir(pick(cardinal))
 
 	spawn(10)
 		qdel(pulse2)
@@ -290,7 +291,7 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/weapon/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
 	if(!mechanical)
 		return
 	if(cell)
@@ -340,7 +341,7 @@
 		crate.close()
 
 	C.forceMove(loc)
-	C.set_dir(dir)
+	C.setDir(dir)
 	C.anchored = 1
 
 	load = C
@@ -390,7 +391,7 @@
 		return 0
 
 	load.forceMove(dest)
-	load.set_dir(get_dir(loc, dest))
+	load.setDir(get_dir(loc, dest))
 	load.anchored = 0		//we can only load non-anchored items, so it makes sense to set this to false
 	load.pixel_x = initial(load.pixel_x)
 	load.pixel_y = initial(load.pixel_y)
@@ -416,6 +417,15 @@
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	user.do_attack_animation(src)
+	src.health -= damage
+	if(mechanical && prob(10))
+		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+	spawn(1) healthcheck()
+	return 1
+
+/obj/vehicle/take_damage(var/damage)
+	if(!damage)
+		return
 	src.health -= damage
 	if(mechanical && prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)

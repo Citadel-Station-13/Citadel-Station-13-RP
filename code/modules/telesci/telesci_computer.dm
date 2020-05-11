@@ -3,7 +3,7 @@
 	desc = "Used to teleport objects to and from the telescience telepad."
 	icon_screen = "teleport"
 	icon_keyboard = "teleport_key"
-	circuit = /obj/item/weapon/circuitboard/telesci_console
+	circuit = /obj/item/circuitboard/telesci_console
 	var/sending = 1
 	var/obj/machinery/telepad/telepad = null
 	var/temp_msg = "Telescience control console initialized.<BR>Welcome."
@@ -27,7 +27,7 @@
 	// Used to adjust OP-ness: (4 crystals * 6 efficiency * 12.5 coefficient) = 300 range.
 	var/powerCoefficient = 12.5
 	var/list/crystals = list()
-	var/obj/item/device/gps/inserted_gps
+	var/obj/item/gps/inserted_gps
 
 /obj/machinery/computer/telescience/Destroy()
 	eject()
@@ -38,18 +38,18 @@
 
 /obj/machinery/computer/telescience/examine(mob/user)
 	..()
-	user << "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots."
+	to_chat(user, "There are [crystals.len ? crystals.len : "no"] bluespace crystal\s in the crystal slots.")
 
-/obj/machinery/computer/telescience/initialize()
+/obj/machinery/computer/telescience/Initialize()
 	. = ..()
 	recalibrate()
 	for(var/i = 1; i <= starting_crystals; i++)
-		crystals += new /obj/item/weapon/ore/bluespace_crystal/artificial(src) // starting crystals
+		crystals += new /obj/item/ore/bluespace_crystal/artificial(src) // starting crystals
 
 /obj/machinery/computer/telescience/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/weapon/ore/bluespace_crystal))
+	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(crystals.len >= max_crystals)
-			user << "<span class='warning'>There are not enough crystal slots.</span>"
+			to_chat(user, "<span class='warning'>There are not enough crystal slots.</span>")
 			return
 		if(!user.unEquip(W))
 			return
@@ -57,23 +57,23 @@
 		W.forceMove(src)
 		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", "<span class='notice'>You insert [W] into \the [src]'s crystal slot.</span>")
 		updateDialog()
-	else if(istype(W, /obj/item/device/gps))
+	else if(istype(W, /obj/item/gps))
 		if(!inserted_gps)
 			inserted_gps = W
 			user.unEquip(W)
 			W.forceMove(src)
 			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", "<span class='notice'>You insert [W] into \the [src]'s GPS device slot.</span>")
-	else if(istype(W, /obj/item/device/multitool))
-		var/obj/item/device/multitool/M = W
+	else if(istype(W, /obj/item/multitool))
+		var/obj/item/multitool/M = W
 		if(M.connectable && istype(M.connectable, /obj/machinery/telepad))
 			telepad = M.connectable
 			M.connectable = null
-			user << "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>"
+			to_chat(user, "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>")
 	else
 		return ..()
 
 /obj/machinery/computer/telescience/proc/get_max_allowed_distance()
-	return Floor(crystals.len * telepad.efficiency * powerCoefficient)
+	return FLOOR((crystals.len * telepad.efficiency * powerCoefficient), 1)
 
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	src.attack_hand(user)
@@ -97,7 +97,7 @@
 		data["cooldown"] = max(0, min(100, round(teleport_cooldown - world.time) / 10))
 		data["crystalCount"] = crystals.len
 		data["maxCrystals"] = max_crystals
-		data["maxPossibleDistance"] = Floor(max_crystals * powerCoefficient * 6); // max efficiency is 6
+		data["maxPossibleDistance"] = FLOOR((max_crystals * powerCoefficient * 6), 1); // max efficiency is 6
 		data["maxAllowedDistance"] = get_max_allowed_distance()
 		data["distance"] = distance
 
@@ -106,7 +106,7 @@
 			data["tempMsg"] = "Telepad undergoing physical maintenance operations."
 
 		data["sectorOptions"] = list()
-		for(var/z in using_map.player_levels)
+		for(var/z in GLOB.using_map.player_levels)
 			data["sectorOptions"] += z
 
 		if(last_tele_data)
@@ -116,7 +116,7 @@
 			data["lastTeleData"]["distance"] = last_tele_data.distance
 			data["lastTeleData"]["time"] = last_tele_data.time
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "telescience_console.tmpl", src.name, 400, 450)
 		ui.set_initial_data(data)
@@ -125,7 +125,7 @@
 
 /obj/machinery/computer/telescience/proc/sparks()
 	if(telepad)
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
 		s.set_up(5, 1, get_turf(telepad))
 		s.start()
 	else
@@ -151,12 +151,11 @@
 			sparks()
 			if(telepad)
 				var/L = get_turf(telepad)
-				var/blocked = list(/mob/living/simple_animal/hostile)
-				var/list/hostiles = typesof(/mob/living/simple_animal/hostile) - blocked
+				var/list/hostiles = subtypesof(/mob/living/simple_mob)
 				playsound(L, 'sound/effects/phasein.ogg', 100, 1, extrarange = 3, falloff = 5)
 				for(var/i in 1 to rand(1,4))
 					var/chosen = pick(hostiles)
-					var/mob/living/simple_animal/hostile/H = new chosen
+					var/mob/living/simple_mob/hostile/H = new chosen(L)
 					H.forceMove(L)
 			return
 		if(99)
@@ -173,7 +172,7 @@
 		return
 
 	if(telepad)
-		var/trueDistance = Clamp(distance + distance_off, 1, get_max_allowed_distance())
+		var/trueDistance = CLAMP(distance + distance_off, 1, get_max_allowed_distance())
 		var/trueRotation = rotation + rotation_off
 
 		var/datum/projectile_data/proj_data = simple_projectile_trajectory(telepad.x, telepad.y, trueRotation, trueDistance)
@@ -211,7 +210,7 @@
 			// use a lot of power
 			use_power(trueDistance * 10000)
 
-			var/datum/effect/effect/system/spark_spread/S = new /datum/effect/effect/system/spark_spread()
+			var/datum/effect_system/spark_spread/S = new /datum/effect_system/spark_spread()
 			S.set_up(5, 1, get_turf(telepad))
 			S.start()
 
@@ -226,7 +225,7 @@
 			temp_msg += "Data printed below."
 
 			var/sparks = get_turf(target)
-			var/datum/effect/effect/system/spark_spread/Y = new /datum/effect/effect/system/spark_spread()
+			var/datum/effect_system/spark_spread/Y = new /datum/effect_system/spark_spread()
 			Y.set_up(5, 1, sparks)
 			Y.start()
 
@@ -283,7 +282,7 @@
 			updateDialog()
 
 /obj/machinery/computer/telescience/proc/teleport(mob/user)
-	distance = Clamp(distance, 0, get_max_allowed_distance())
+	distance = CLAMP(distance, 0, get_max_allowed_distance())
 	if(rotation == null || distance == null || z_co == null)
 		temp_msg = "ERROR!<BR>Set a distance, rotation and sector."
 		return
@@ -291,7 +290,7 @@
 		telefail()
 		temp_msg = "ERROR!<BR>No distance selected!"
 		return
-	if(!(z_co in using_map.player_levels))
+	if(!(z_co in GLOB.using_map.player_levels))
 		telefail()
 		temp_msg = "ERROR! Sector is outside known time and space!"
 		return
@@ -320,19 +319,19 @@
 		var/new_rot = input("Please input desired bearing in degrees.", name, rotation) as num
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
-		rotation = Clamp(new_rot, -900, 900)
+		rotation = CLAMP(new_rot, -900, 900)
 		rotation = round(rotation, 0.01)
 
 	if(href_list["setdistance"])
 		var/new_pow = input("Please input desired distance in meters.", name, rotation) as num
 		if(..()) // Check after we input a value, as they could've moved after they entered something
 			return
-		distance = Clamp(new_pow, 1, get_max_allowed_distance())
-		distance = Floor(distance)
+		distance = CLAMP(new_pow, 1, get_max_allowed_distance())
+		distance = FLOOR(distance, 1)
 
 	if(href_list["setz"])
 		var/new_z = text2num(href_list["setz"])
-		if(new_z in using_map.player_levels)
+		if(new_z in GLOB.using_map.player_levels)
 			z_co = new_z
 
 	if(href_list["ejectGPS"])

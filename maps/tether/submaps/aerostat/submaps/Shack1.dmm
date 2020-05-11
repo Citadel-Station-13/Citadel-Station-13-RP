@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/simulated/wall/log_sif,
+/turf/simulated/wall/virgo2,
 /area/submap/virgo2/Shack1)
 "c" = (
 /turf/template_noop,
@@ -46,7 +46,7 @@
 	},
 /area/submap/virgo2/Shack1)
 "m" = (
-/obj/structure/simple_door/wood,
+/obj/machinery/door/airlock/external,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/Shack1)
 "n" = (
@@ -61,13 +61,13 @@
 "p" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wooden_reinforced,
-/obj/item/weapon/storage/toolbox,
+/obj/item/storage/toolbox,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/Shack1)
 "q" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wooden_reinforced,
-/obj/item/weapon/material/twohanded/fireaxe/scythe,
+/obj/item/material/twohanded/fireaxe/scythe,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/Shack1)
 "r" = (
@@ -82,12 +82,17 @@
 "t" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wooden_reinforced,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/wood,
 /area/submap/virgo2/Shack1)
 "v" = (
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/template_noop)
+"O" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/multiple/voidsuit,
+/turf/simulated/floor/wood,
+/area/submap/virgo2/Shack1)
 
 (1,1,1) = {"
 a
@@ -152,7 +157,7 @@ a
 (6,1,1) = {"
 a
 b
-h
+O
 h
 i
 i
@@ -164,7 +169,7 @@ a
 (7,1,1) = {"
 a
 b
-h
+O
 k
 i
 i

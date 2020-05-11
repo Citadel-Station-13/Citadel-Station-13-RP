@@ -6,7 +6,7 @@
 /obj/machinery/computer/supplycomp
 	name = "supply ordering console"
 	icon_screen = "request"
-	circuit = /obj/item/weapon/circuitboard/supplycomp
+	circuit = /obj/item/circuitboard/supplycomp
 	var/authorization = 0
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
@@ -22,7 +22,7 @@
 	icon_screen = "supply"
 	light_color = "#b88b2e"
 	req_access = list(access_cargo)
-	circuit = /obj/item/weapon/circuitboard/supplycomp/control
+	circuit = /obj/item/circuitboard/supplycomp/control
 	authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
@@ -30,6 +30,8 @@
 
 /obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
 	if(..())
+		return
+	if(!allowed(user))
 		return
 	user.set_machine(src)
 	ui_interact(user)
@@ -52,7 +54,12 @@
 	var/orders[0]
 	var/receipts[0]
 
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	if(!allowed(user))
+		authorization = 0
+	else
+		authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
+
+	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
 	if(shuttle)
 		if(shuttle.has_arrive_time())
 			shuttle_status["location"] = "In transit"
@@ -105,14 +112,14 @@
 	else
 		shuttle["mode"] = SUP_SHUTTLE_ERROR
 
-	for(var/pack_name in supply_controller.supply_pack)
-		var/datum/supply_pack/P = supply_controller.supply_pack[pack_name]
+	for(var/pack_name in SSsupply.supply_pack)
+		var/datum/supply_pack/P = SSsupply.supply_pack[pack_name]
 		if(P.group == active_category)
 			var/list/pack = list(
 					"name" = P.name,
 					"cost" = P.cost,
 					"contraband" = P.contraband,
-					"manifest" = uniquelist(P.manifest),
+					"manifest" = uniqueList(P.manifest),
 					"random" = P.num_contained,
 					"expand" = 0,
 					"ref" = "\ref[P]"
@@ -127,7 +134,7 @@
 	// Status determines which menus the entry will display in
 	// Organized in field-entry list for iterative display
 	// List is nested so both the list of orders, and the list of elements in each order, can be iterated over
-	for(var/datum/supply_order/S in supply_controller.order_history)
+	for(var/datum/supply_order/S in SSsupply.order_history)
 		orders[++orders.len] = list(
 				"ref" = "\ref[S]",
 				"status" = S.status,
@@ -144,7 +151,7 @@
 			)
 
 	// Compile exported crates
-	for(var/datum/exported_crate/E in supply_controller.exported_crates)
+	for(var/datum/exported_crate/E in SSsupply.exported_crates)
 		receipts[++receipts.len] = list(
 				"ref" = "\ref[E]",
 				"contents" = E.contents,
@@ -160,7 +167,7 @@
 	data["shuttle_auth"] = (authorization & SUP_SEND_SHUTTLE) // Whether this ui is permitted to control the supply shuttle
 	data["order_auth"] = (authorization & SUP_ACCEPT_ORDERS)   // Whether this ui is permitted to accept/deny requested orders
 	data["shuttle"] = shuttle_status
-	data["supply_points"] = supply_controller.points
+	data["supply_points"] = SSsupply.points
 	data["categories"] = all_supply_groups
 	data["active_category"] = active_category
 	data["supply_packs"] = pack_list
@@ -169,7 +176,7 @@
 	data["contraband"] = can_order_contraband || (authorization & SUP_CONTRABAND)
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -185,12 +192,12 @@
 
 
 /obj/machinery/computer/supplycomp/Topic(href, href_list)
-	if(!supply_controller)
-		world.log << "## ERROR: The supply_controller datum is missing."
+	if(!SSsupply)
+		log_world("## ERROR: The supply_controller datum is missing.")
 		return
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = SSsupply.shuttle
 	if (!shuttle)
-		world.log << "## ERROR: The supply shuttle datum is missing."
+		log_world("## ERROR: The supply shuttle datum is missing.")
 		return
 	if(..())
 		return 1
@@ -236,7 +243,7 @@
 			if(!reason)
 				return
 
-			supply_controller.create_order(S, user, reason)
+			SSsupply.create_order(S, user, reason)
 
 			var/idname = "*None Provided*"
 			var/idrank = "*None Provided*"
@@ -248,10 +255,10 @@
 				idname = user.real_name
 				idrank = "Stationbound synthetic"
 
-			var/obj/item/weapon/paper/reqform = new /obj/item/weapon/paper(loc)
+			var/obj/item/paper/reqform = new /obj/item/paper(loc)
 			reqform.name = "Requisition Form - [S.name]"
 			reqform.info += "<h3>[station_name()] Supply Requisition Form</h3><hr>"
-			reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
+			reqform.info += "INDEX: #[SSsupply.ordernum]<br>"
 			reqform.info += "REQUESTED BY: [idname]<br>"
 			reqform.info += "RANK: [idrank]<br>"
 			reqform.info += "REASON: [reason]<br>"
@@ -311,20 +318,20 @@
 					O.approved_at = new_val
 
 		if(href_list["approve"])
-			supply_controller.approve_order(O, user)
+			SSsupply.approve_order(O, user)
 
 		if(href_list["deny"])
-			supply_controller.deny_order(O, user)
+			SSsupply.deny_order(O, user)
 
 		if(href_list["delete"])
-			supply_controller.delete_order(O, user)
+			SSsupply.delete_order(O, user)
 
 	if(href_list["clear_all_requests"])
 		var/mob/user = locate(href_list["user"])
 		if(!istype(user)) // Invalid ref
 			return
 
-		supply_controller.deny_all_pending(user)
+		SSsupply.deny_all_pending(user)
 
 	if(href_list["export_ref"])
 		var/datum/exported_crate/E = locate(href_list["export_ref"])
@@ -380,10 +387,10 @@
 						E.value = num
 
 		else if(href_list["delete"])
-			supply_controller.delete_export(E, user)
+			SSsupply.delete_export(E, user)
 
 		else if(href_list["add_item"])
-			supply_controller.add_export_item(E, user)
+			SSsupply.add_export_item(E, user)
 
 
 
@@ -397,7 +404,7 @@
 
 		if("send_to_station")
 			shuttle.launch(src)
-			to_chat(usr, "<span class='notice'>The supply shuttle has been called and will arrive in approximately [round(supply_controller.movetime/600,1)] minutes.</span>")
+			to_chat(usr, "<span class='notice'>The supply shuttle has been called and will arrive in approximately [round(SSsupply.movetime/600,1)] minutes.</span>")
 
 		if("cancel_shuttle")
 			shuttle.cancel_launch(src)

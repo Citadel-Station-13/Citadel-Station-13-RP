@@ -17,7 +17,7 @@
 	if(user.nutrition < 20)
 		to_chat(user, "<span class='warning'>You need more energy to use the punching bag. Go eat something.</span>")
 	else
-		if(user.a_intent == I_HURT)
+		if(user.a_intent == INTENT_HARM)
 			user.setClickCooldown(user.get_attack_speed())
 			flick("[icon_state]_hit", src)
 			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
@@ -32,7 +32,7 @@
 	var/weight = 1
 	var/list/qualifiers = list("with ease", "without any trouble", "with great effort")
 
-/obj/structure/fitness/weightlifter/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/fitness/weightlifter/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 75, 1)
 		weight = ((weight) % qualifiers.len) + 1
@@ -53,7 +53,7 @@
 	else
 		being_used = 1
 		playsound(src.loc, 'sound/effects/weightlifter.ogg', 50, 1)
-		user.set_dir(SOUTH)
+		user.setDir(SOUTH)
 		flick("[icon_state]_[weight]", src)
 		if(do_after(user, 20 + (weight * 10)))
 			playsound(src.loc, 'sound/effects/weightdrop.ogg', 25, 1)

@@ -32,10 +32,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = "#a97faa"
-	circuit = /obj/item/weapon/circuitboard/rdconsole
+	circuit = /obj/item/circuitboard/rdconsole
 	var/datum/research/files							//Stores all the collected research data.
-	var/obj/item/weapon/disk/tech_disk/t_disk = null	//Stores the technology disk.
-	var/obj/item/weapon/disk/design_disk/d_disk = null	//Stores the design disk.
+	var/obj/item/disk/tech_disk/t_disk = null	//Stores the technology disk.
+	var/obj/item/disk/design_disk/d_disk = null	//Stores the design disk.
 
 	var/obj/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
 	var/obj/machinery/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
@@ -113,20 +113,20 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			S.update_connections()
 			break
 
-/obj/machinery/computer/rdconsole/initialize()
+/obj/machinery/computer/rdconsole/Initialize()
 	SyncRDevices()
 	. = ..()
 
-/obj/machinery/computer/rdconsole/attackby(var/obj/item/weapon/D as obj, var/mob/user as mob)
+/obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
 	//Loading a disk into it.
-	if(istype(D, /obj/item/weapon/disk))
+	if(istype(D, /obj/item/disk))
 		if(t_disk || d_disk)
 			to_chat(user, "A disk is already loaded into the machine.")
 			return
 
-		if(istype(D, /obj/item/weapon/disk/tech_disk))
+		if(istype(D, /obj/item/disk/tech_disk))
 			t_disk = D
-		else if (istype(D, /obj/item/weapon/disk/design_disk))
+		else if (istype(D, /obj/item/disk/design_disk))
 			d_disk = D
 		else
 			to_chat(user, "<span class='notice'>Machine cannot accept disks in that format.</span>")
@@ -390,7 +390,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	else if (href_list["print"]) //Print research information
 		screen = 0.5
 		spawn(20)
-			var/obj/item/weapon/paper/PR = new/obj/item/weapon/paper
+			var/obj/item/paper/PR = new/obj/item/paper
 			PR.name = "list of researched technologies"
 			PR.info = "<center><b>[station_name()] Science Laboratories</b>"
 			PR.info += "<h2>[ (text2num(href_list["print"]) == 2) ? "Detailed" : ] Research Progress Report</h2>"
@@ -642,9 +642,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					continue
 				var/temp_dat
 				for(var/M in D.materials)
-					temp_dat += ", [D.materials[M]*linked_imprinter.mat_efficiency] [CallMaterialName(M)]" //cit change - *incoherent screaming*
+					temp_dat += ", [D.materials[M]*linked_lathe.mat_efficiency] [CallMaterialName(M)]"
 				for(var/T in D.chemicals)
-					temp_dat += ", [D.chemicals[T]*linked_imprinter.mat_efficiency] [CallReagentName(T)]"
+					temp_dat += ", [D.chemicals[T]*linked_lathe.mat_efficiency] [CallReagentName(T)]"
 				if(temp_dat)
 					temp_dat = " \[[copytext(temp_dat, 3)]\]"
 				if(linked_lathe.canBuild(D))
@@ -660,6 +660,13 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			dat += "<UL>"
 			for(var/M in linked_lathe.materials)
 				var/amount = linked_lathe.materials[M]
+				var/hidden_mat = FALSE
+				for(var/HM in linked_lathe.hidden_materials)
+					if(M == HM && amount == 0)
+						hidden_mat = TRUE
+						break
+				if(hidden_mat)
+					continue
 				dat += "<LI><B>[capitalize(M)]</B>: [amount] cm<sup>3</sup>"
 				if(amount >= SHEET_MATERIAL_AMOUNT)
 					dat += " || Eject "
@@ -745,6 +752,13 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			dat += "<UL>"
 			for(var/M in linked_imprinter.materials)
 				var/amount = linked_imprinter.materials[M]
+				var/hidden_mat = FALSE
+				for(var/HM in linked_imprinter.hidden_materials)
+					if(M == HM && amount == 0)
+						hidden_mat = TRUE
+						break
+				if(hidden_mat)
+					continue
 				dat += "<LI><B>[capitalize(M)]</B>: [amount] cm<sup>3</sup>"
 				if(amount >= SHEET_MATERIAL_AMOUNT)
 					dat += " || Eject: "

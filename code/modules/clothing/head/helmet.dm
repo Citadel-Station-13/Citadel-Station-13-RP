@@ -69,10 +69,10 @@
 /obj/item/clothing/head/helmet/riot/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]up"
-		user << "You raise the visor on the riot helmet."
+		to_chat(user, "You raise the visor on the riot helmet.")
 	else
 		src.icon_state = initial(icon_state)
-		user << "You lower the visor on the riot helmet."
+		to_chat(user, "You lower the visor on the riot helmet.")
 	update_clothing_icon()	//so our mob-overlays update
 
 /obj/item/clothing/head/helmet/laserproof
@@ -102,6 +102,18 @@
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
+
+/obj/item/clothing/head/helmet/flexitac
+	name = "tactical light helmet"
+	desc = "A tan helmet made from advanced ceramic with an integrated tactical flashlight."
+	icon_state = "flexitac"
+	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	siemens_coefficient = 0.6
+	brightness_on = 6
+	light_overlay = "helmet_light_dual_green"
+	action_button_name = "Toggle Head-light"
+	min_cold_protection_temperature = T0C - 20
+	cold_protection = HEAD
 
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"

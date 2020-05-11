@@ -16,7 +16,8 @@
 	var/x_offset = 0 // Offset from the 'center' of where the projector is, so that if it moves, the shield can recalc its position.
 	var/y_offset = 0 // Ditto.
 
-/obj/effect/directional_shield/New(var/newloc, var/new_projector)
+/obj/effect/directional_shield/Initialize(mapload, new_projector)
+	. = ..()
 	if(new_projector)
 		projector = new_projector
 		var/turf/us = get_turf(src)
@@ -26,7 +27,6 @@
 			y_offset = us.y - them.y
 	else
 		update_color()
-	..(newloc)
 
 /obj/effect/directional_shield/proc/relocate()
 	if(!projector)
@@ -53,10 +53,8 @@
 		projector = null
 	return ..()
 
-/obj/effect/directional_shield/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0))
-		return TRUE
-	else if(istype(mover, /obj/item/projectile))
+/obj/effect/directional_shield/CanAllowThrough(atom/movable/mover, turf/target)
+	if(istype(mover, /obj/item/projectile))
 		var/obj/item/projectile/P = mover
 		if(istype(P, /obj/item/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
 			return TRUE
@@ -64,8 +62,6 @@
 		var/bad_arc = reverse_direction(dir) // Arc of directions from which we cannot block.
 		if(check_shield_arc(src, bad_arc, P)) // This is actually for mobs but it will work for our purposes as well.
 			return FALSE
-		else
-			return TRUE
 	return TRUE
 
 /obj/effect/directional_shield/bullet_act(var/obj/item/projectile/P)
@@ -88,6 +84,8 @@
 	but allow those projectiles to leave the shield from the inside.  Blocking too many damaging projectiles will cause the shield to fail."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "signmaker_sec"
+	light_range = 4
+	light_power = 4
 	var/active = FALSE					// If it's on.
 	var/shield_health = 400				// How much damage the shield blocks before breaking.  This is a shared health pool for all shields attached to this projector.
 	var/max_shield_health = 400			// Ditto.  This is fairly high, but shields are really big, you can't miss them, and laser carbines pump out so much hurt.
@@ -99,15 +97,15 @@
 	var/high_color = "#0099FF"			// Color the shield will be when at max health.  A light blue.
 	var/low_color = "#FF0000"			// Color the shield will drift towards as health is lowered.  Deep red.
 
-/obj/item/shield_projector/New()
-	processing_objects += src
+/obj/item/shield_projector/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
 	if(always_on)
 		create_shields()
-	..()
 
 /obj/item/shield_projector/Destroy()
 	destroy_shields()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/shield_projector/proc/create_shield(var/newloc, var/new_dir)
@@ -152,7 +150,7 @@
 // Makes shields become gradually more red as the projector's health decreases.
 /obj/item/shield_projector/proc/update_shield_colors()
 	// This is done at the projector instead of the shields themselves to avoid needing to calculate this more than once every update.
-	var/lerp_weight = shield_health / max_shield_health
+	var/interpolate_weight = shield_health / max_shield_health
 
 	var/list/low_color_list = hex2rgb(low_color)
 	var/low_r = low_color_list[1]
@@ -164,11 +162,13 @@
 	var/high_g = high_color_list[2]
 	var/high_b = high_color_list[3]
 
-	var/new_r = Interpolate(low_r, high_r, weight = lerp_weight)
-	var/new_g = Interpolate(low_g, high_g, weight = lerp_weight)
-	var/new_b = Interpolate(low_b, high_b, weight = lerp_weight)
+	var/new_r = LERP(low_r, high_r, interpolate_weight)
+	var/new_g = LERP(low_g, high_g, interpolate_weight)
+	var/new_b = LERP(low_b, high_b, interpolate_weight)
 
 	var/new_color = rgb(new_r, new_g, new_b)
+
+	set_light(light_range, light_power, new_color)
 
 	// Now deploy the new color to all the shields.
 	for(var/obj/effect/directional_shield/S in active_shields)
@@ -182,7 +182,7 @@
 
 		destroy_shields()
 	else
-		set_dir(user.dir) // Needed for linear shields.
+		setDir(user.dir) // Needed for linear shields.
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 
@@ -378,9 +378,9 @@
 		destroy_shields()
 	else
 		if(istype(user.loc, /obj/mecha))
-			set_dir(user.loc.dir)
+			setDir(user.loc.dir)
 		else
-			set_dir(user.dir)
+			setDir(user.dir)
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 

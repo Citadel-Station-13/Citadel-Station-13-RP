@@ -13,22 +13,22 @@
 	if(!changeling)	return
 
 	if(src.has_brain_worms())
-		src << "<span class='warning'>We cannot perform this ability at the present time!</span>"
+		to_chat(src, "<span class='warning'>We cannot perform this ability at the present time!</span>")
 		return
 
 	var/mob/living/carbon/human/H = src
 
 	if(!istype(H) || !H.species.primitive_form)
-		src << "<span class='warning'>We cannot perform this ability in this form!</span>"
+		to_chat(src, "<span class='warning'>We cannot perform this ability in this form!</span>")
 		return
 
 	changeling.chem_charges--
 	H.remove_changeling_powers()
 	H.visible_message("<span class='warning'>[H] transforms!</span>")
 	changeling.geneticdamage = 30
-	H << "<span class='warning'>Our genes cry out!</span>"
+	to_chat(H, "<span class='warning'>Our genes cry out!</span>")
 	var/list/implants = list() //Try to preserve implants.
-	for(var/obj/item/weapon/implant/W in H)
+	for(var/obj/item/implant/W in H)
 		implants += W
 	H.monkeyize()
 	feedback_add_details("changeling_powers","LF")
@@ -61,7 +61,7 @@
 	C.dna = chosen_dna.Clone()
 
 	var/list/implants = list()
-	for (var/obj/item/weapon/implant/I in C) //Still preserving implants
+	for (var/obj/item/implant/I in C) //Still preserving implants
 		implants += I
 
 	C.transforming = 1
@@ -101,7 +101,7 @@
 	O.setOxyLoss(C.getOxyLoss())
 	O.adjustFireLoss(C.getFireLoss())
 	O.stat = C.stat
-	for (var/obj/item/weapon/implant/I in implants)
+	for (var/obj/item/implant/I in implants)
 		I.loc = O
 		I.implanted = O
 

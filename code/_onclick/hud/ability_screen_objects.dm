@@ -180,7 +180,8 @@
 
 /mob/New()
 	..()
-	ability_master = new /obj/screen/movable/ability_master(src)
+	if(!ability_master)	//VOREStation Edit: S H A D E K I N
+		ability_master = new /obj/screen/movable/ability_master(src)
 
 ///////////ACTUAL ABILITIES////////////
 //This is what you click to do things//
@@ -269,7 +270,7 @@
 
 // Makes the ability be triggered.  The subclasses of this are responsible for carrying it out in whatever way it needs to.
 /obj/screen/ability/proc/activate()
-	world << "[src] had activate() called."
+	to_chat(world, "[src] had activate() called.")
 	return
 
 // This checks if the ability can be used.
@@ -282,7 +283,7 @@
 	if(!mob)
 		return // Paranoid.
 	if(isnull(slot) || !isnum(slot))
-		src << "<span class='warning'>.activate_ability requires a number as input, corrisponding to the slot you wish to use.</span>"
+		to_chat(src, "<span class='warning'>.activate_ability requires a number as input, corrisponding to the slot you wish to use.</span>")
 		return // Bad input.
 	if(!mob.ability_master)
 		return // No abilities.

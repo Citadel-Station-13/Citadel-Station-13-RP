@@ -44,7 +44,7 @@
 	name = "supermatter supply beacon"
 	drop_type = "supermatter"
 
-/obj/machinery/power/supply_beacon/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/machinery/power/supply_beacon/attackby(var/obj/item/W, var/mob/user)
 	if(!use_power && W.is_wrench())
 		if(!anchored && !connect_to_network())
 			to_chat(user, "<span class='warning'>This device must be placed over an exposed cable.</span>")
@@ -58,7 +58,7 @@
 /obj/machinery/power/supply_beacon/attack_hand(var/mob/user)
 
 	if(expended)
-		use_power = 0
+		update_use_power(USE_POWER_OFF)
 		to_chat (user, "<span class='warning'>\The [src] has used up its charge.</span>")
 		return
 
@@ -80,7 +80,7 @@
 		return
 	set_light(3, 3, "#00CCAA")
 	icon_state = "beacon_active"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	if(user) to_chat(user, "<span class='notice'>You activate the beacon. The supply drop will be dispatched soon.</span>")
 
 /obj/machinery/power/supply_beacon/proc/deactivate(var/mob/user, var/permanent)
@@ -90,7 +90,7 @@
 	else
 		icon_state = "beacon"
 	set_light(0)
-	use_power = 0
+	use_power = USE_POWER_OFF
 	target_drop_time = null
 	if(user) to_chat(user, "<span class='notice'>You deactivate the beacon.</span>")
 
@@ -114,6 +114,6 @@
 		var/drop_x = src.x - 2
 		var/drop_y = src.y - 2
 		var/drop_z = src.z
-		command_announcement.Announce("[using_map.starsys_name] Rapid Fabrication priority supply request #[rand(1000,9999)]-[rand(100,999)] recieved. Shipment dispatched via ballistic supply pod for immediate delivery. Have a nice day.", "Thank You For Your Patronage")
+		command_announcement.Announce("[GLOB.using_map.starsys_name] Rapid Fabrication priority supply request #[rand(1000,9999)]-[rand(100,999)] recieved. Shipment dispatched via ballistic supply pod for immediate delivery. Have a nice day.", "Thank You For Your Patronage")
 		spawn(rand(100, 300))
 			new /datum/random_map/droppod/supply(null, drop_x, drop_y, drop_z, supplied_drop = drop_type) // Splat.

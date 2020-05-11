@@ -10,16 +10,16 @@
 
 /mob/living/carbon/human/proc/chimera_regenerate()
 	//If they're already regenerating
-	switch(reviving)
+	switch(revive_ready)
 		if(REVIVING_NOW)
 			to_chat(src, "You are already reconstructing, just wait for the reconstruction to finish!")
 			return
 		if(REVIVING_DONE)
 			to_chat(src, "Your reconstruction is done, but you need to hatch now.")
 			return
-		if(REVIVING_COOLDOWN)
-			to_chat(src, "You can't use that ability again so soon!")
-			return
+	if(revive_ready > world.time)
+		to_chat(src, "You can't use that ability again so soon!")
+		return
 
 	var/nutrition_used = nutrition * 0.5
 	var/time = (240+960/(1 + nutrition_used/75))
@@ -32,18 +32,18 @@
 			to_chat(src, "You begin to reconstruct your form. You will not be able to move during this time. It should take aproximately [round(time)] seconds.")
 
 			//Scary spawnerization.
-			reviving = REVIVING_NOW
+			revive_ready = REVIVING_NOW
 			spawn(time SECONDS)
 				// Was dead, now not dead.
 				if(stat != DEAD)
 					to_chat(src, "<span class='notice'>Your body has recovered from its ordeal, ready to regenerate itself again.</span>")
-					reviving = 0 //Not bool
+					revive_ready = REVIVING_READY //reset their cooldown
 
 				// Was dead, still dead.
 				else
 					to_chat(src, "<span class='notice'>Consciousness begins to stir as your new body awakens, ready to hatch.</span>")
 					verbs |= /mob/living/carbon/human/proc/hatch
-					reviving = REVIVING_DONE
+					revive_ready = REVIVING_DONE
 
 		//Dead until nutrition injected.
 		else
@@ -54,25 +54,25 @@
 		to_chat(src, "You begin to reconstruct your form. You will not be able to move during this time. It should take aproximately [round(time)] seconds.")
 
 		//Waiting for regen after being alive
-		reviving = REVIVING_NOW
+		revive_ready = REVIVING_NOW
 		spawn(time SECONDS)
 
 			//If they're still alive after regenning.
 			if(stat != DEAD)
 				to_chat(src, "<span class='notice'>Consciousness begins to stir as your new body awakens, ready to hatch..</span>")
 				verbs |= /mob/living/carbon/human/proc/hatch
-				reviving = REVIVING_DONE
+				revive_ready = REVIVING_DONE
 
 			//Was alive, now dead
 			else if(hasnutriment())
 				to_chat(src, "<span class='notice'>Consciousness begins to stir as your new body awakens, ready to hatch..</span>")
 				verbs |= /mob/living/carbon/human/proc/hatch
-				reviving = REVIVING_DONE
+				revive_ready = REVIVING_DONE
 
 			//Dead until nutrition injected.
 			else
 				to_chat(src, "<span class='warning'>Your body was unable to regenerate, what few living cells remain require additional nutrients to complete the process.</span>")
-				reviving = 0 //Not boolean
+				revive_ready = REVIVING_READY //reset their cooldown
 
 /mob/living/carbon/human/proc/hasnutriment()
 	if (bloodstr.has_reagent("nutriment", 30) || src.bloodstr.has_reagent("protein", 15)) //protein needs half as much. For reference, a steak contains 9u protein.
@@ -86,7 +86,7 @@
 	set name = "Hatch"
 	set category = "Abilities"
 
-	if(reviving != REVIVING_DONE)
+	if(revive_ready != REVIVING_DONE)
 		//Hwhat?
 		verbs -= /mob/living/carbon/human/proc/hatch
 		return
@@ -107,7 +107,7 @@
 			else
 				to_chat(src, "Your body was unable to regenerate, what few living cells remain require additional nutrients to complete the process.")
 				verbs -= /mob/living/carbon/human/proc/hatch
-				reviving = 0 //So they can try again when they're given a kickstart
+				revive_ready = REVIVING_READY //reset their cooldown they can try again when they're given a kickstart
 
 		//Alive when hatching
 		else
@@ -141,8 +141,10 @@
 	var/T = get_turf(src)
 	new /obj/effect/gibspawner/human/xenochimera(T)
 
-	reviving = REVIVING_COOLDOWN
-	schedule_callback_in(1 HOUR, VARSET_CALLBACK(src, reviving, 0))
+	revive_ready = world.time + 1 HOUR //set the cooldown
+
+/mob/living/carbon/human/proc/revivingreset() // keep this as a debug proc or potential future use
+		revive_ready = REVIVING_READY
 
 /obj/effect/gibspawner/human/xenochimera
 	fleshcolor = "#14AD8B"
@@ -165,13 +167,13 @@
 			switch(halpick)
 				if(0 to 15) //15% chance
 					//Screwy HUD
-					//src << "Screwy HUD"
+					//to_chat(src, "Screwy HUD")
 					hal_screwyhud = pick(1,2,3,3,4,4)
 					spawn(rand(100,250))
 						hal_screwyhud = 0
 				if(16 to 25) //10% chance
 					//Strange items
-					//src << "Traitor Items"
+					//to_chat(src, "Traitor Items")
 					if(!halitem)
 						halitem = new
 						var/list/slots_free = list(ui_lhand,ui_rhand)
@@ -219,7 +221,7 @@
 								halitem = null
 				if(26 to 35) //10% chance
 					//Flashes of danger
-					//src << "Danger Flash"
+					//to_chat(src, "Danger Flash")
 					if(!halimage)
 						var/list/possible_points = list()
 						for(var/turf/simulated/floor/F in view(src,world.view))
@@ -229,13 +231,13 @@
 
 							switch(rand(1,3))
 								if(1)
-									//src << "Space"
+									//to_chat(src, "Space")
 									halimage = image('icons/turf/space.dmi',target,"[rand(1,25)]",TURF_LAYER)
 								if(2)
-									//src << "Fire"
+									//to_chat(src, "Fire")
 									halimage = image('icons/effects/fire.dmi',target,"1",TURF_LAYER)
 								if(3)
-									//src << "C4"
+									//to_chat(src, "C4")
 									halimage = image('icons/obj/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
@@ -246,7 +248,7 @@
 
 				if(36 to 55) //20% chance
 					//Strange audio
-					//src << "Strange Audio"
+					//to_chat(src, "Strange Audio")
 					switch(rand(1,12))
 						if(1) src << 'sound/machines/airlock.ogg'
 						if(2)
@@ -260,9 +262,9 @@
 						if(8) src << 'sound/machines/windowdoor.ogg'
 						if(9)
 							//To make it more realistic, I added two gunshots (enough to kill)
-							src << 'sound/weapons/Gunshot.ogg'
+							src << 'sound/weapons/Gunshot1.ogg'
 							spawn(rand(10,30))
-								src << 'sound/weapons/Gunshot.ogg'
+								src << 'sound/weapons/Gunshot2.ogg'
 						if(10) src << 'sound/weapons/smash.ogg'
 						if(11)
 							//Same as above, but with tasers.
@@ -280,7 +282,7 @@
 							src << pick(creepyasssounds)
 				if(56 to 60) //5% chance
 					//Flashes of danger
-					//src << "Danger Flash"
+					//to_chat(src, "Danger Flash")
 					if(!halbody)
 						var/list/possible_points = list()
 						for(var/turf/simulated/floor/F in view(src,world.view))
@@ -356,7 +358,7 @@
 		return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
-		src << "You cannot bite anyone in your current state!"
+		to_chat(src, "You cannot bite anyone in your current state!")
 		return
 
 	var/list/choices = list()
@@ -374,10 +376,10 @@
 	if(last_special > world.time) return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
-		src << "You cannot bite in your current state."
+		to_chat(src, "You cannot bite in your current state.")
 		return
 	if(B.vessel.total_volume <= 0 || B.isSynthetic()) //Do they have any blood in the first place, and are they synthetic?
-		src << "<font color='red'>There appears to be no blood in this prey...</font>"
+		to_chat(src, "<font color='red'>There appears to be no blood in this prey...</font>")
 		return
 
 	last_special = world.time + 600
@@ -403,7 +405,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 	var/mob/living/carbon/human/C = src
-	var/obj/item/weapon/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_hand()
 	if(!istype(G))
 		to_chat(C, "<span class='warning'>You must be grabbing a creature in your active hand to absorb them.</span>")
 		return
@@ -466,7 +468,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 
-	var/obj/item/weapon/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_hand()
 	if(!istype(G))
 		to_chat(src, "<span class='warning'>You must be grabbing a creature in your active hand to drain them.</span>")
 		return
@@ -558,7 +560,7 @@
 	if(!ishuman(src))
 		return //If you're not a human you don't have permission to do this.
 	var/mob/living/carbon/human/C = src
-	var/obj/item/weapon/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_hand()
 	if(!istype(G))
 		to_chat(C, "<span class='warning'>You must be grabbing a creature in your active hand to feed them.</span>")
 		return
@@ -648,7 +650,7 @@
 /mob/living/carbon/human/vore_shred_time = 10 SECONDS
 /mob/living/carbon/human/can_shred()
 	//Humans need a grab
-	var/obj/item/weapon/grab/G = get_active_hand()
+	var/obj/item/grab/G = get_active_hand()
 	if(!istype(G))
 		to_chat(src,"<span class='warning'>You have to have a very strong grip on someone first!</span>")
 		return FALSE
@@ -689,7 +691,7 @@
 
 	return ..(target)
 
-/mob/living/simple_animal/can_shred(var/mob/living/carbon/human/target)
+/mob/living/simple_mob/can_shred(var/mob/living/carbon/human/target)
 	if(!target)
 		var/list/choices = list()
 		for(var/mob/living/carbon/human/M in oviewers(1))

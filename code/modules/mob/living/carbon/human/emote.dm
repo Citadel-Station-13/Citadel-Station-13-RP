@@ -15,7 +15,7 @@
 	//var/m_type = 1
 
 	for(var/obj/item/organ/O in src.organs)
-		for (var/obj/item/weapon/implant/I in O)
+		for (var/obj/item/implant/I in O)
 			if (I.implanted)
 				I.trigger(act, src)
 
@@ -30,10 +30,10 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "no", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
 
 			if(!isSynthetic())
-				src << "<span class='warning'>You are not a synthetic.</span>"
+				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
 				return
 
 			var/M = null
@@ -53,7 +53,7 @@
 			else if(act == "ping")
 				display_msg = "pings"
 				use_sound = 'sound/machines/ping.ogg'
-			else if(act == "yes")
+			else if(act == "yes" || act == "ye")
 				display_msg = "emits an affirmative blip"
 				use_sound = 'sound/machines/synth_yes.ogg'
 			else if(act == "no")
@@ -84,7 +84,7 @@
 			//Citadel changes start
 			///* VOREStation Removal Start - Eh. People can squish maybe.
 			if(species.bump_flag != SLIME) //This should definitely do it.
-				src << "<span class='warning'>You are not a slime thing!</span>"
+				to_chat(src, "<span class='warning'>You are not a slime thing!</span>")
 				return
 			//*/ //VOREStation Removal End
 			//Citadel changes end
@@ -141,7 +141,7 @@
 
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					src << "<font color='red'>You cannot send IC messages (muted).</font>"
+					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
 					return
 			if (stat)
 				return
@@ -658,6 +658,10 @@
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 
 //Citadel changes starts here
+		if ("fguns")
+			message = "points some fingerguns."
+			m_type = 1
+
 		if("aslap", "aslaps")
 			m_type = 1
 			var/mob/living/carbon/human/H = src
@@ -689,34 +693,6 @@
 					playsound(loc, 'sound/effects/snap.ogg', 50, 1)
 					add_attack_logs(src,src,"Slapped own butt")
 					//adding damage for aslaps to stop the spam
-			emoteDanger =  min(1+(emoteDanger*2), 100)
-			var/danger = emoteDanger - 5
-			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Same dmg as snapping
-			for(var/organ_name in involved_parts)
-				var/obj/item/organ/external/E = get_organ(organ_name)
-				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
-					involved_parts -= organ_name
-					danger += 5
-
-
-			if(prob(danger))
-				spawn(10) //more copied snap dmg code
-					var/breaking = pick(involved_parts)
-					var/obj/item/organ/external/E = get_organ(breaking)
-					if(isSynthetic())
-						src.Weaken(5)
-						E.droplimb(1,DROPLIMB_EDGE)
-						message += " <span class='danger'>And loses a limb!</span>"
-						log_and_message_admins("lost their [breaking] with *aslap, ahahah.", src)
-					else
-						src.Weaken(5)
-						if(E.cannot_break) //Prometheans go splat
-							E.droplimb(0,DROPLIMB_BLUNT)
-						else
-							E.fracture()
-						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("broke their [breaking] with *aslap, ahahah.", src)
-//Citadel changes ends here
 
 		if("scream", "screams")
 			if(miming)
@@ -726,15 +702,34 @@
 				if(!muzzled)
 					message = "[species.scream_verb]!"
 					m_type = 2
-					/* Removed, pending the location of some actually good, properly licensed sounds.
+					// Citchange. Re-enabled for species that do have a defined scream sound. If a species lacks it, no sound will be played.
 					if(get_gender() == FEMALE)
 						playsound(loc, "[species.female_scream_sound]", 80, 1)
 					else
 						playsound(loc, "[species.male_scream_sound]", 80, 1) //default to male screams if no gender is present.
-					*/
+
 				else
 					message = "makes a very loud noise."
 					m_type = 2
+		if("squeak","squeaks")
+			if(miming)
+				message = "acts out a soft squeak."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "squeaks!"
+					m_type = 2
+					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
+
+		if("meow", "meows")
+			if(miming)
+				message = "acts out a soft mrowl."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "mrowls!"
+					m_type = 2
+					playsound(loc, 'sound/voice/meow1.ogg', 50, 1)
 
 		if("snap", "snaps")
 			m_type = 2
@@ -755,36 +750,6 @@
 			message = "snaps [T.his] fingers."
 			playsound(loc, 'sound/effects/fingersnap.ogg', 50, 1, -3)
 
-
-			///////////////////////// CITADEL STATION ADDITIONS START
-			emoteDanger =  min(1+(emoteDanger*2), 100)
-			var/danger = emoteDanger - 5//Base chance to break something. Snapping is inherently less dangerous.
-			var/list/involved_parts = list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM) // Snapping is dangerous yo
-			for(var/organ_name in involved_parts)
-				var/obj/item/organ/external/E = get_organ(organ_name)
-				if(!E || E.is_stump() || E.splinted || (E.status & ORGAN_BROKEN))
-					involved_parts -= organ_name
-					danger += 5 //Add 5% to the chance for each problem limb
-
-
-			if(prob(danger))
-				spawn(10) //Don't be so rough with your hands...
-					var/breaking = pick(involved_parts)
-					var/obj/item/organ/external/E = get_organ(breaking)
-					if(isSynthetic())
-						src.Weaken(5)
-						E.droplimb(1,DROPLIMB_EDGE)
-						message += " <span class='danger'>And loses a limb!</span>"
-						log_and_message_admins("lost their [breaking] with *snap, ahahah.", src)
-					else
-						src.Weaken(5)
-						if(E.cannot_break) //Prometheans go splat
-							E.droplimb(0,DROPLIMB_BLUNT)
-						else
-							E.fracture()
-						message += " <span class='danger'>And breaks something!</span>"
-						log_and_message_admins("broke their [breaking] with *snap, ahahah.", src)
-			///////////////////////// CITADEL STATION ADDITIONS END
 		if("swish")
 			src.animate_tail_once()
 
@@ -799,7 +764,7 @@
 
 		if("vomit")
 			if(isSynthetic())
-				src << "<span class='warning'>You are unable to vomit.</span>"
+				to_chat(src, "<span class='warning'>You are unable to vomit.</span>")
 				return
 			vomit()
 			return
@@ -819,13 +784,13 @@
 				message = "makes a light spitting noise, a poor attempt at a whistle."
 
 		if ("help")
-			src << "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+			to_chat(src, "blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hug-(none)/mob, laugh, look-(none)/mob, moan, mumble, nod, pale, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yess, no, rcough, rsneeze, ping"
+					twitch_v, vomit, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping")
 
 		else
-			src << "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>"
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
 
 	if (message)
 		custom_emote(m_type,message)

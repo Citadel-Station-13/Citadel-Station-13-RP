@@ -89,26 +89,26 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return
 
 
-/obj/structure/particle_accelerator/verb/rotate()
+/obj/structure/particle_accelerator/verb/rotate_clockwise()
 	set name = "Rotate Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	return 1
 
-/obj/structure/particle_accelerator/verb/rotateccw()
+/obj/structure/particle_accelerator/verb/rotate_counterclockwise()
 	set name = "Rotate Counter Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 	return 1
 
 /obj/structure/particle_accelerator/examine(mob/user)
@@ -258,7 +258,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	icon_state = "none"
 	anchored = 0
 	density = 1
-	use_power = 0
+	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	active_power_usage = 0
 	var/construction_state = 0
@@ -269,26 +269,26 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	var/desc_holder = null
 
 
-/obj/machinery/particle_accelerator/verb/rotate()
+/obj/machinery/particle_accelerator/verb/rotate_clockwise()
 	set name = "Rotate Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	return 1
 
-/obj/machinery/particle_accelerator/verb/rotateccw()
+/obj/machinery/particle_accelerator/verb/rotate_counterclockwise()
 	set name = "Rotate Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 	return 1
 
 /obj/machinery/particle_accelerator/update_icon()
@@ -333,10 +333,8 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		else
 	return
 
-
 /obj/machinery/particle_accelerator/proc/update_state()
 	return 0
-
 
 /obj/machinery/particle_accelerator/proc/process_tool_hit(var/obj/item/O, var/mob/user)
 	if(!(O) || !(user))
@@ -385,10 +383,10 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		if(src.construction_state < 3)//Was taken apart, update state
 			update_state()
 			if(use_power)
-				use_power = 0
+				update_use_power(USE_POWER_OFF)
 		src.construction_state = temp_state
 		if(src.construction_state >= 3)
-			use_power = 1
+			update_use_power(USE_POWER_IDLE)
 		update_icon()
 		return 1
 	return 0

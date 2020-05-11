@@ -16,6 +16,7 @@
 	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
 	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
 	dealing with their traders and merchants; those that do rarely enjoy the experience."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
 
 //	taste_sensitivity = TASTE_DULL
 
@@ -96,11 +97,11 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_back)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/weapon/tank/vox(H), slot_r_hand)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_r_hand)
 		H.internal = H.r_hand
-	H.internal = locate(/obj/item/weapon/tank) in H.contents
-	if(istype(H.internal,/obj/item/weapon/tank) && H.internals)
+	H.internal = locate(/obj/item/tank) in H.contents
+	if(istype(H.internal,/obj/item/tank) && H.internals)
 		H.internals.icon_state = "internal1"

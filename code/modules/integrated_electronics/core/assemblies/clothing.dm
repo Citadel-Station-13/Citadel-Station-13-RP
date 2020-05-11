@@ -3,7 +3,7 @@
 // E.g. Glasses have less room than something worn over the chest.
 // Note that the electronic assembly is INSIDE the object that actually gets worn, in a similar way to implants.
 
-/obj/item/device/electronic_assembly/clothing
+/obj/item/electronic_assembly/clothing
 	name = "electronic clothing"
 	icon_state = "circuitry" // Needs to match the clothing's base icon_state.
 	desc = "It's a case, for building machines attached to clothing."
@@ -12,25 +12,25 @@
 	max_complexity = IC_COMPLEXITY_BASE
 	var/obj/item/clothing/clothing = null
 
-/obj/item/device/electronic_assembly/clothing/nano_host()
+/obj/item/electronic_assembly/clothing/nano_host()
 	return clothing
 
-/obj/item/device/electronic_assembly/clothing/resolve_nano_host()
+/obj/item/electronic_assembly/clothing/resolve_nano_host()
 	return clothing
 
-/obj/item/device/electronic_assembly/clothing/update_icon()
+/obj/item/electronic_assembly/clothing/update_icon()
 	..()
 	clothing.icon_state = icon_state
 	// We don't need to update the mob sprite since it won't (and shouldn't) actually get changed.
 
 // This is 'small' relative to the size of regular clothing assemblies.
-/obj/item/device/electronic_assembly/clothing/small
+/obj/item/electronic_assembly/clothing/small
 	max_components = IC_COMPONENTS_BASE / 2
 	max_complexity = IC_COMPLEXITY_BASE / 2
 	w_class = ITEMSIZE_TINY
 
 // Ditto.
-/obj/item/device/electronic_assembly/clothing/large
+/obj/item/electronic_assembly/clothing/large
 	max_components = IC_COMPONENTS_BASE * 2
 	max_complexity = IC_COMPLEXITY_BASE * 2
 	w_class = ITEMSIZE_NORMAL
@@ -38,7 +38,7 @@
 
 // This is defined higher up, in /clothing to avoid lots of copypasta.
 /obj/item/clothing
-	var/obj/item/device/electronic_assembly/clothing/IC = null
+	var/obj/item/electronic_assembly/clothing/IC = null
 	var/obj/item/integrated_circuit/built_in/action_button/action_circuit = null // This gets pulsed when someone clicks the button on the hud.
 
 /obj/item/clothing/emp_act(severity)
@@ -54,7 +54,7 @@
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(IC)
 		// This needs to be done in a better way...
-		if(I.is_crowbar() || I.is_screwdriver() || istype(I, /obj/item/integrated_circuit) || istype(I, /obj/item/weapon/cell/device) || istype(I, /obj/item/device/integrated_electronics) )
+		if(I.is_crowbar() || I.is_screwdriver() || istype(I, /obj/item/integrated_circuit) || istype(I, /obj/item/cell/device) || istype(I, /obj/item/integrated_electronics) )
 			IC.attackby(I, user)
 	else
 		..()
@@ -108,8 +108,8 @@
 	icon_state = "circuitry"
 	worn_state = "circuitry"
 
-/obj/item/clothing/under/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing)
+/obj/item/clothing/under/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing)
 	return ..()
 
 
@@ -121,8 +121,8 @@
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
-/obj/item/clothing/gloves/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing/small)
+/obj/item/clothing/gloves/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
 
@@ -134,8 +134,8 @@
 	icon_state = "circuitry"
 	item_state = "night" // The on-mob sprite would be identical anyways.
 
-/obj/item/clothing/glasses/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing/small)
+/obj/item/clothing/glasses/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
 // Shoes
@@ -146,8 +146,8 @@
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
-/obj/item/clothing/shoes/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing/small)
+/obj/item/clothing/shoes/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
 // Head
@@ -158,8 +158,8 @@
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
-/obj/item/clothing/head/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing/small)
+/obj/item/clothing/head/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
 // Ear
@@ -170,8 +170,8 @@
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
-/obj/item/clothing/ears/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing/small)
+/obj/item/clothing/ears/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
 	return ..()
 
 // Exo-slot
@@ -182,6 +182,6 @@
 	icon_state = "circuitry"
 	item_state = "circuitry"
 
-/obj/item/clothing/suit/circuitry/initialize()
-	setup_integrated_circuit(/obj/item/device/electronic_assembly/clothing/large)
+/obj/item/clothing/suit/circuitry/Initialize()
+	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/large)
 	return ..()

@@ -71,14 +71,14 @@
 	if(cloaked || isnull(departure_message))
 		return
 
-	command_announcement.Announce(departure_message,(announcer ? announcer : "[using_map.boss_name]"))
+	command_announcement.Announce(departure_message,(announcer ? announcer : "[GLOB.using_map.boss_name]"))
 
 /datum/shuttle/multi_shuttle/proc/announce_arrival()
 
 	if(cloaked || isnull(arrival_message))
 		return
 
-	command_announcement.Announce(arrival_message,(announcer ? announcer : "[using_map.boss_name]"))
+	command_announcement.Announce(arrival_message,(announcer ? announcer : "[GLOB.using_map.boss_name]"))
 
 
 /obj/machinery/computer/shuttle_control/multi
@@ -91,7 +91,7 @@
 		return
 	src.add_fingerprint(user)
 
-	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/multi_shuttle/MS = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(MS)) return
 
 	var/dat
@@ -169,7 +169,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/multi_shuttle/MS = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(MS)) return
 
 	//world << "multi_shuttle: last_departed=[MS.last_departed], origin=[MS.origin], interim=[MS.interim], travel_time=[MS.move_time]"
@@ -204,7 +204,7 @@
 			return
 
 		if(!MS.return_warning && !MS.legit) //VOREStation Add - Criminals only!
-			usr << "<font color='red'>Returning to your home base will end your mission. If you are sure, press the button again.</font>"
+			to_chat(usr, "<font color='red'>Returning to your home base will end your mission. If you are sure, press the button again.</font>")
 			//TODO: Actually end the mission.
 			MS.return_warning = 1
 			return
@@ -231,7 +231,7 @@
 		if(!MS.can_cloak)
 			return
 		MS.cloaked = !MS.cloaked
-		usr << "<font color='red'> Ship [MS.legit ? "ATC inhibitor":"stealth"] systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be [MS.legit ? "notified":"warned"] of our arrival.</font>" //VOREStation Edit - Adds legit shuttles.
+		to_chat(usr, "<font color='red'> Ship [MS.legit ? "ATC inhibitor":"stealth"] systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be [MS.legit ? "notified":"warned"] of our arrival.</font>") //VOREStation Edit - Adds legit shuttles.
 		//to_chat(usr, "<font color='red'>Ship stealth systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be warned of our arrival.</font>") //VOREStation Edit.
 
 	if(href_list["move_multi"])

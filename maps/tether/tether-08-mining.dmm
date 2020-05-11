@@ -41,7 +41,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
 "ai" = (
-/mob/living/simple_animal/retaliate/gaslamp,
+/mob/living/simple_mob/animal/passive/gaslamp,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
 "aj" = (
@@ -150,9 +150,9 @@
 /area/outpost/mining_main/storage)
 "aC" = (
 /obj/structure/table/steel,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/screwdriver,
+/obj/item/tool/crowbar,
+/obj/item/tool/wrench,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
@@ -168,7 +168,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/storage)
 "aF" = (
@@ -417,7 +417,7 @@
 	},
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/item/weapon/storage/belt,
+/obj/item/storage/belt,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "ba" = (
@@ -695,11 +695,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
-/obj/item/weapon/storage/box/cups{
+/obj/item/storage/box/cups{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "bx" = (
@@ -988,7 +988,7 @@
 /area/outpost/mining_main/maintenance)
 "bX" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
@@ -1252,7 +1252,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/maintenance)
 "cq" = (
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /obj/structure/bed/padded,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
@@ -1513,6 +1513,11 @@
 /obj/effect/step_trigger/teleporter/from_mining,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
+"sc" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/telecomms/relay/preset/underdark,
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/maintenance)
 
 (1,1,1) = {"
 aa
@@ -4054,7 +4059,7 @@ bg
 bs
 bH
 bW
-co
+sc
 cD
 ab
 cH

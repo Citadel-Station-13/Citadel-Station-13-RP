@@ -122,7 +122,7 @@
 			healths.icon_state = "health7"
 
 	if (client)
-		client.screen.Remove(global_hud.blurry,global_hud.druggy,global_hud.vimpaired)
+		client.screen.Remove(GLOB.global_hud.blurry,GLOB.global_hud.druggy,GLOB.global_hud.vimpaired)
 
 	if ( stat != 2)
 		if ((blinded))
@@ -150,7 +150,7 @@
 		adjustFireLoss((environment.temperature - (T0C+66))/5) // Might be too high, check in testing.
 		if (fire) fire.icon_state = "fire2"
 		if(prob(20))
-			src << "<font color='red'>You feel a searing heat!</font>"
+			to_chat(src, "<font color='red'>You feel a searing heat!</font>")
 	else
 		if (fire) fire.icon_state = "fire0"
 

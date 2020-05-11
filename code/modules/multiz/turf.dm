@@ -34,29 +34,32 @@
 	..()
 	update()
 
-/turf/simulated/open/initialize()
+/turf/simulated/open/Initialize()
 	. = ..()
 	ASSERT(HasBelow(z))
 	update()
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
-	. = ..()
-	mover.fall()
+	..()
+	if(mover.movement_type & GROUND)
+		mover.fall()
 
 // Called when thrown object lands on this turf.
 /turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
 	. = ..()
-	AM.fall()
+	if(AM.movement_type & GROUND)
+		AM.fall()
 
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
 	below = GetBelow(src)
-	turf_changed_event.register(below, src, /turf/simulated/open/update_icon)
+	GLOB.turf_changed_event.register(below, src, /turf/simulated/open/update_icon)
 	levelupdate()
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
-		A.fall()
-	OS_controller.add_turf(src, 1)
+		if(A.movement_type & GROUND)
+			A.fall()
+	SSopenspace.add_turf(src, 1)
 
 // override to make sure nothing is hidden
 /turf/simulated/open/levelupdate()
@@ -103,10 +106,16 @@
 		add_overlay(o_img)
 
 		if(!below_is_open)
-			add_overlay(over_OS_darkness)
+			add_overlay(/obj/effect/abstract/over_openspace_darkness)
 
 		return 0
 	return PROCESS_KILL
+
+/obj/effect/abstract/over_openspace_darkness
+	icon = 'icons/turf/open_space.dmi'
+	icon_state = "black_open"
+	plane = OVER_OPENSPACE_PLANE
+	layer = MOB_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
@@ -149,3 +158,9 @@
 /turf/simulated/open/is_space()
 	var/turf/below = GetBelow(src)
 	return !below || below.is_space()
+
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()

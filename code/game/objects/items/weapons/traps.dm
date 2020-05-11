@@ -1,4 +1,4 @@
-/obj/item/weapon/beartrap
+/obj/item/beartrap
 	name = "mechanical trap"
 	throw_speed = 2
 	throw_range = 1
@@ -11,16 +11,18 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 18750)
 	var/deployed = 0
+	var/camo_net = FALSE
+	var/stun_length = 0.25 SECONDS
 
-/obj/item/weapon/beartrap/suicide_act(mob/user)
+/obj/item/beartrap/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
 	viewers(user) << "<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>"
 	return (BRUTELOSS)
 
-/obj/item/weapon/beartrap/proc/can_use(mob/user)
+/obj/item/beartrap/proc/can_use(mob/user)
 	return (user.IsAdvancedToolUser() && !issilicon(user) && !user.stat && !user.restrained())
 
-/obj/item/weapon/beartrap/attack_self(mob/user as mob)
+/obj/item/beartrap/attack_self(mob/user as mob)
 	..()
 	if(!deployed && can_use(user))
 		user.visible_message(
@@ -42,7 +44,7 @@
 			update_icon()
 			anchored = 1
 
-/obj/item/weapon/beartrap/attack_hand(mob/user as mob)
+/obj/item/beartrap/attack_hand(mob/user as mob)
 	if(has_buckled_mobs() && can_use(user))
 		var/victim = english_list(buckled_mobs)
 		user.visible_message(
@@ -73,7 +75,7 @@
 	else
 		..()
 
-/obj/item/weapon/beartrap/proc/attack_mob(mob/living/L)
+/obj/item/beartrap/proc/attack_mob(mob/living/L)
 
 	var/target_zone
 	if(L.lying)
@@ -95,14 +97,15 @@
 		return 0
 
 	//trap the victim in place
-	set_dir(L.dir)
+	setDir(L.dir)
 	can_buckle = 1
 	buckle_mob(L)
-	L << "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>"
+	L.Stun(stun_length)
+	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
 	deployed = 0
 	can_buckle = initial(can_buckle)
 
-/obj/item/weapon/beartrap/Crossed(AM as mob|obj)
+/obj/item/beartrap/Crossed(AM as mob|obj)
 	if(deployed && isliving(AM))
 		var/mob/living/L = AM
 		if(L.m_intent == "run")
@@ -118,10 +121,25 @@
 			update_icon()
 	..()
 
-/obj/item/weapon/beartrap/update_icon()
+/obj/item/beartrap/update_icon()
 	..()
 
 	if(!deployed)
+		if(camo_net)
+			alpha = 255
+
 		icon_state = "beartrap0"
 	else
+		if(camo_net)
+			alpha = 50
+
 		icon_state = "beartrap1"
+
+/obj/item/beartrap/hunting
+	name = "hunting trap"
+	desc = "A mechanically activated leg trap. High-tech and reliable. Looks like it could really hurt if you set it off."
+	stun_length = 1 SECOND
+	camo_net = TRUE
+	color = "#C9DCE1"
+
+	origin_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_PHORON = 2, TECH_ARCANE = 1)

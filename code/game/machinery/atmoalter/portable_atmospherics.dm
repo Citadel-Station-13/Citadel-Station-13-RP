@@ -1,11 +1,11 @@
 /obj/machinery/portable_atmospherics
 	name = "atmoalter"
-	use_power = 0
+	use_power = USE_POWER_OFF
 	layer = OBJ_LAYER // These are mobile, best not be under everything.
 	var/datum/gas_mixture/air_contents = new
 
 	var/obj/machinery/atmospherics/portables_connector/connected_port
-	var/obj/item/weapon/tank/holding
+	var/obj/item/tank/holding
 
 	var/volume = 0
 	var/destroyed = 0
@@ -26,7 +26,7 @@
 	QDEL_NULL(holding)
 	. = ..()
 
-/obj/machinery/portable_atmospherics/initialize()
+/obj/machinery/portable_atmospherics/Initialize()
 	. = ..()
 	spawn()
 		var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
@@ -102,11 +102,11 @@
 	if (network)
 		network.update = 1
 
-/obj/machinery/portable_atmospherics/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if ((istype(W, /obj/item/weapon/tank) && !( src.destroyed )))
+/obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
 		if (src.holding)
 			return
-		var/obj/item/weapon/tank/T = W
+		var/obj/item/tank/T = W
 		user.drop_item()
 		T.loc = src
 		src.holding = T
@@ -135,8 +135,8 @@
 				to_chat(user, "<span class='notice'>Nothing happens.</span>")
 				return
 
-	else if ((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
-		var/obj/item/device/analyzer/A = W
+	else if ((istype(W, /obj/item/analyzer)) && Adjacent(user))
+		var/obj/item/analyzer/A = W
 		A.analyze_gases(src, user)
 		return
 
@@ -148,7 +148,9 @@
 	var/power_rating
 	var/power_losses
 	var/last_power_draw = 0
-	var/obj/item/weapon/cell/cell
+	var/obj/item/cell/cell
+	var/use_cell = TRUE
+	var/removeable_cell = TRUE
 
 /obj/machinery/portable_atmospherics/powered/powered()
 	if(use_power) //using area power
@@ -158,12 +160,12 @@
 	return 0
 
 /obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/cell))
+	if(use_cell && istype(I, /obj/item/cell))
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")
 			return
 
-		var/obj/item/weapon/cell/C = I
+		var/obj/item/cell/C = I
 
 		user.drop_item()
 		C.add_fingerprint(user)
@@ -173,7 +175,7 @@
 		power_change()
 		return
 
-	if(I.is_screwdriver())
+	if(I.is_screwdriver() && removeable_cell)
 		if(!cell)
 			to_chat(user, "<span class='warning'>There is no power cell installed.</span>")
 			return

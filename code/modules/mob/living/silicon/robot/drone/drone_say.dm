@@ -2,7 +2,7 @@
 	if(local_transmit)
 		if (src.client)
 			if(client.prefs.muted & MUTE_IC)
-				src << "You cannot send IC messages (muted)."
+				to_chat(src, "You cannot send IC messages (muted).")
 				return 0
 
 		message = sanitize(message)
@@ -27,7 +27,7 @@
 
 		for(var/mob/living/silicon/D in listeners)
 			if(D.client && D.local_transmit)
-				D << "<b>[src]</b> transmits, \"[message]\""
+				to_chat(D, "<b>[src]</b> transmits, \"[message]\"")
 
 		for (var/mob/M in player_list)
 			if (istype(M, /mob/new_player))

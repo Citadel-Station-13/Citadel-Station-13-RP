@@ -1,9 +1,0 @@
-author: Buffalowing
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added a sound for the awoo emote"
-  - rscadd: "Added the Nya emote"
-  - rscadd: "Added the weh emote"
-  - tweak: "Ass slapping will now damage your hand if you spam it"

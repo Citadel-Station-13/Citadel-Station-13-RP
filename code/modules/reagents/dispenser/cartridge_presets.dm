@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/chem_disp_cartridge
+/obj/item/reagent_containers/chem_disp_cartridge
 	small
 		volume = CARTRIDGE_VOLUME_SMALL
 
@@ -30,6 +30,7 @@
 	ethanol		spawn_reagent = "ethanol"
 	sacid		spawn_reagent = "sacid"
 	tungsten	spawn_reagent = "tungsten"
+	calcium		spawn_reagent = "calcium"
 
 	// Bar, alcoholic
 	beer		spawn_reagent = "beer"
@@ -45,6 +46,7 @@
 	ale			spawn_reagent = "ale"
 	mead		spawn_reagent = "mead"
 	bitters		spawn_reagent = "bitters"
+	cider		spawn_reagent = "cider"
 
 	// Bar, soft
 	ice			spawn_reagent = "ice"

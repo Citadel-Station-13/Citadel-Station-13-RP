@@ -10,7 +10,7 @@
 	health = 600
 	speed = 3
 
-	meat_amount = 10
+	meat_amount = 20 //listen if you're gonna make it a big lad make him drop more fuckin meat at least i mean christ -hatter
 
 	melee_damage_lower = 10
 	melee_damage_upper = 25

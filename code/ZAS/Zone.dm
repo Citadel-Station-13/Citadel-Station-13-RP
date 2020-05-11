@@ -68,6 +68,8 @@ Class Procs:
 	ASSERT(!air_master.has_valid_zone(T))
 #endif
 
+	if(!istype(T))
+		return
 	var/datum/gas_mixture/turf_air = T.return_air()
 	add_tile_air(turf_air)
 	T.zone = src
@@ -170,10 +172,10 @@ Class Procs:
 /zone/proc/dbg_data(mob/M)
 	M << name
 	for(var/g in air.gas)
-		M << "[gas_data.name[g]]: [air.gas[g]]"
-	M << "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]°K ([air.temperature - T0C]°C)"
+		to_chat(M, "[gas_data.name[g]]: [air.gas[g]]")
+	M << "P: [air.return_pressure()] kPa V: [air.volume]L T: [air.temperature]ï¿½K ([air.temperature - T0C]ï¿½C)"
 	M << "O2 per N2: [(air.gas["nitrogen"] ? air.gas["oxygen"]/air.gas["nitrogen"] : "N/A")] Moles: [air.total_moles]"
-	M << "Simulated: [contents.len] ([air.group_multiplier])"
+	to_chat(M, "Simulated: [contents.len] ([air.group_multiplier])")
 	//M << "Unsimulated: [unsimulated_contents.len]"
 	//M << "Edges: [edges.len]"
 	if(invalid) M << "Invalid!"
@@ -185,10 +187,10 @@ Class Procs:
 		else
 			space_edges++
 			space_coefficient += E.coefficient
-			M << "[E:air:return_pressure()]kPa"
+			to_chat(M, "[E:air:return_pressure()]kPa")
 
-	M << "Zone Edges: [zone_edges]"
-	M << "Space Edges: [space_edges] ([space_coefficient] connections)"
+	to_chat(M, "Zone Edges: [zone_edges]")
+	to_chat(M, "Space Edges: [space_edges] ([space_coefficient] connections)")
 
 	//for(var/turf/T in unsimulated_contents)
 	//	M << "[T] at ([T.x],[T.y])"

@@ -5,9 +5,10 @@
 	desc = "Used for repairing or building APCs"
 	icon = 'icons/obj/apc_repair.dmi'
 	icon_state = "apc_frame"
-	flags = CONDUCT
+	refund_amt = 2
+	refund_type = /obj/item/stack/material/steel
 
-/obj/item/frame/apc/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/frame/apc/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if (W.is_wrench())
 		new /obj/item/stack/material/steel( get_turf(src.loc), 2 )

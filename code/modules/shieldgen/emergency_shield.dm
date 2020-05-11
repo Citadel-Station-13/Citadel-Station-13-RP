@@ -7,6 +7,7 @@
 	opacity = 0
 	anchored = 1
 	unacidable = 1
+	can_atmos_pass = ATMOS_PASS_NO
 	var/const/max_health = 200
 	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
 	var/shield_generate_power = 7500	//how much power we use when regenerating
@@ -27,9 +28,9 @@
 		qdel(src)
 		return
 
-/obj/machinery/shield/New()
-	src.set_dir(pick(1,2,3,4))
-	..()
+/obj/machinery/shield/Initialize(mapload)
+	. = ..()
+	setDir(pick(1,2,3,4))
 	update_nearby_tiles(need_rebuild=1)
 
 /obj/machinery/shield/Destroy()
@@ -38,11 +39,7 @@
 	update_nearby_tiles()
 	..()
 
-/obj/machinery/shield/CanPass(atom/movable/mover, turf/target, height, air_group)
-	if(!height || air_group) return 0
-	else return ..()
-
-/obj/machinery/shield/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/shield/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	//Calculate damage
@@ -137,7 +134,7 @@
 	var/is_open = 0 //Whether or not the wires are exposed
 	var/locked = 0
 	var/check_delay = 60	//periodically recheck if we need to rebuild a shield
-	use_power = 0
+	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	var/global/list/blockedturfs =  list(
 		/turf/space,
@@ -159,7 +156,7 @@
 	idle_power_usage = 0
 	for(var/obj/machinery/shield/shield_tile in deployed_shields)
 		idle_power_usage += shield_tile.shield_idle_power
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/shieldgen/proc/shields_down()
 	if(!active) return 0 //If it's already off, how did this get called?
@@ -169,7 +166,7 @@
 
 	collapse_shields()
 
-	update_use_power(0)
+	update_use_power(USE_POWER_OFF)
 
 /obj/machinery/shieldgen/proc/create_shields()
 	for(var/turf/target_tile in range(2, src))
@@ -209,7 +206,7 @@
 
 			if (new_power_usage != idle_power_usage)
 				idle_power_usage = new_power_usage
-				use_power(0)
+				use_power(USE_POWER_OFF)
 
 			check_delay = 60
 		else
@@ -281,7 +278,7 @@
 		update_icon()
 		return 1
 
-/obj/machinery/shieldgen/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		playsound(src, W.usesound, 100, 1)
 		if(is_open)
@@ -320,7 +317,7 @@
 			anchored = 1
 
 
-	else if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))
+	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
 		if(src.allowed(user))
 			src.locked = !src.locked
 			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")

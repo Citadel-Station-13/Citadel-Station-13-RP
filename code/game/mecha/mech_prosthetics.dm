@@ -5,15 +5,16 @@
 	desc = "A machine used for construction of prosthetics."
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
 	req_access = list(access_robotics)
-	circuit = /obj/item/weapon/circuitboard/prosthetics
+	circuit = /obj/item/circuitboard/prosthetics
 
 	var/speed = 1
 	var/mat_efficiency = 1
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0, "plasteel" = 0)
+	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, MAT_PLASTEEL = 0, "gold" = 0, "silver" = 0, MAT_LEAD = 0, "osmium" = 0, "diamond" = 0, MAT_DURASTEEL = 0, "phoron" = 0, "uranium" = 0, MAT_VERDANTIUM = 0, MAT_MORPHIUM = 0)
+	var/list/hidden_materials = list(MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM)
 	var/res_max_amount = 200000
 
 	var/datum/research/files
@@ -29,17 +30,17 @@
 /obj/machinery/pros_fabricator/New()
 	..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
 	RefreshParts()
 
 	files = new /datum/research(src) //Setup the research data holder.
 	return
 
-/obj/machinery/pros_fabricator/initialize()
+/obj/machinery/pros_fabricator/Initialize()
 	. = ..()
 	manufacturer = basic_robolimb.company
 	update_categories()
@@ -49,11 +50,11 @@
 	if(stat)
 		return
 	if(busy)
-		use_power = 2
+		update_use_power(USE_POWER_ACTIVE)
 		progress += speed
 		check_build()
 	else
-		use_power = 1
+		update_use_power(USE_POWER_IDLE)
 	update_icon()
 
 /obj/machinery/pros_fabricator/update_icon()
@@ -72,13 +73,13 @@
 
 /obj/machinery/pros_fabricator/RefreshParts()
 	res_max_amount = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		res_max_amount += M.rating * 100000 // 200k -> 600k
 	var/T = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		T += M.rating
-	mat_efficiency = 1 - (T - 1) / 4 // 1 -> 0.5
-	for(var/obj/item/weapon/stock_parts/micro_laser/M in component_parts) // Not resetting T is intended; speed is affected by both
+	mat_efficiency = max(0.2, 1 - (T - 1) / 4) // 1 -> 0.2
+	for(var/obj/item/stock_parts/micro_laser/M in component_parts) // Not resetting T is intended; speed is affected by both
 		T += M.rating
 	speed = T / 2 // 1 -> 3
 
@@ -113,7 +114,7 @@
 	if(current)
 		data["builtperc"] = round((progress / current.time) * 100)
 
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "mechfab.tmpl", "Prosthetics Fab UI", 800, 600)
 		ui.set_initial_data(data)
@@ -159,8 +160,8 @@
 	if(default_part_replacement(user, I))
 		return
 
-	if(istype(I,/obj/item/weapon/disk/limb))
-		var/obj/item/weapon/disk/limb/D = I
+	if(istype(I,/obj/item/disk/limb))
+		var/obj/item/disk/limb/D = I
 		if(!D.company || !(D.company in all_robolimbs))
 			to_chat(user, "<span class='warning'>This disk seems to be corrupted!</span>")
 		else
@@ -181,12 +182,12 @@
 		var/sname = "[S.name]"
 		var/amnt = S.perunit
 		if(materials[S.material.name] + amnt <= res_max_amount)
-			if(S && S.amount >= 1)
+			if(S && S.get_amount() >= 1)
 				var/count = 0
 				overlays += "fab-load-metal"
 				spawn(10)
 					overlays -= "fab-load-metal"
-				while(materials[S.material.name] + amnt <= res_max_amount && S.amount >= 1)
+				while(materials[S.material.name] + amnt <= res_max_amount && S.get_amount() >= 1)
 					materials[S.material.name] += amnt
 					S.use(1)
 					count++
@@ -209,7 +210,7 @@
 			sleep(15)
 			visible_message("\icon[src] <b>[src]</b> beeps: \"User DB corrupted \[Code 0x00FA\]. Truncating data structure...\"")
 			sleep(30)
-			visible_message("\icon[src] <b>[src]</b> beeps: \"User DB truncated. Please contact your [using_map.company_name] system operator for future assistance.\"")
+			visible_message("\icon[src] <b>[src]</b> beeps: \"User DB truncated. Please contact your [GLOB.using_map.company_name] system operator for future assistance.\"")
 			req_access = null
 			emagged = 1
 			return 1
@@ -299,12 +300,18 @@
 /obj/machinery/pros_fabricator/proc/get_materials()
 	. = list()
 	for(var/T in materials)
-		. += list(list("mat" = capitalize(T), "amt" = materials[T]))
+		var/hidden_mat = FALSE
+		for(var/HM in hidden_materials) // Direct list contents comparison was failing.
+			if(T == HM && materials[T] == 0)
+				hidden_mat = TRUE
+				continue
+		if(!hidden_mat)
+			. += list(list("mat" = capitalize(T), "amt" = materials[T]))
 
 /obj/machinery/pros_fabricator/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	var/matstring = lowertext(material)
-	var/material/M = get_material_by_name(matstring)
+	var/datum/material/M = get_material_by_name(matstring)
 
 	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
 	if(amount <= 0)

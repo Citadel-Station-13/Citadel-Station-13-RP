@@ -14,7 +14,7 @@
 /area/submap/CaveS)
 "e" = (
 /obj/item/ammo_casing/a45,
-/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 /turf/template_noop,
 /area/submap/CaveS)
 "f" = (
@@ -49,7 +49,7 @@
 	},
 /area/submap/CaveS)
 "l" = (
-/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat,
+/obj/item/reagent_containers/food/snacks/xenomeat/spidermeat,
 /turf/template_noop,
 /area/submap/CaveS)
 "m" = (
@@ -58,13 +58,13 @@
 /area/submap/CaveS)
 "n" = (
 /obj/item/clothing/accessory/storage/webbing,
-/obj/item/weapon/material/knife/tacknife/combatknife,
+/obj/item/material/knife/tacknife/combatknife,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "o" = (
-/mob/living/simple_animal/hostile/giant_spider,
+/mob/living/simple_mob/animal/giant_spider,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -76,61 +76,73 @@
 	},
 /area/submap/CaveS)
 "q" = (
-/mob/living/simple_animal/hostile/giant_spider/lurker,
+/obj/random/mob/spider,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "r" = (
-/obj/effect/decal/cleanable/cobweb2,
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "s" = (
-/mob/living/simple_animal/hostile/giant_spider/webslinger,
+/obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "t" = (
-/obj/effect/decal/cleanable/cobweb2,
-/mob/living/simple_animal/hostile/giant_spider/lurker,
+/mob/living/simple_mob/animal/giant_spider/webslinger,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
 /area/submap/CaveS)
 "u" = (
-/turf/simulated/floor/outdoors/grass/sif/forest,
+/obj/effect/decal/cleanable/cobweb2,
+/mob/living/simple_mob/animal/giant_spider/lurker,
+/turf/simulated/floor/outdoors/dirt{
+	outdoors = 0
+	},
 /area/submap/CaveS)
 "v" = (
-/mob/living/simple_animal/hostile/giant_spider/lurker,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/grass/sif/forest,
+/area/submap/CaveS)
+"w" = (
+/obj/random/mob/spider/mutant,
+/turf/simulated/floor/outdoors/dirt{
+	outdoors = 0
+	},
 /area/submap/CaveS)
 "x" = (
+/mob/living/simple_mob/animal/giant_spider/lurker,
+/turf/simulated/floor/outdoors/dirt,
+/area/submap/CaveS)
+"y" = (
 /obj/structure/flora/tree/sif,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/CaveS)
-"y" = (
+"z" = (
 /obj/random/landmine,
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/CaveS)
-"z" = (
-/turf/simulated/floor,
-/area/submap/CaveS)
 "A" = (
-/obj/structure/closet/crate,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/weapon/storage/toolbox,
-/obj/random/toolbox,
 /turf/simulated/floor,
 /area/submap/CaveS)
 "B" = (
-/obj/structure/loot_pile/maint/technical,
+/obj/structure/closet/crate,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/storage/toolbox,
+/obj/random/toolbox,
 /turf/simulated/floor,
 /area/submap/CaveS)
 "C" = (
+/obj/structure/loot_pile/maint/technical,
+/turf/simulated/floor,
+/area/submap/CaveS)
+"D" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor,
 /area/submap/CaveS)
@@ -147,13 +159,13 @@
 /area/submap/CaveS)
 "G" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/reagent_containers/hypospray,
-/obj/item/weapon/reagent_containers/glass/bottle/stoxin,
-/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
-/obj/item/weapon/reagent_containers/pill/antitox,
-/obj/item/weapon/reagent_containers/pill/antitox,
-/obj/item/weapon/reagent_containers/pill/antitox,
-/obj/item/weapon/reagent_containers/pill/paracetamol,
+/obj/item/reagent_containers/hypospray,
+/obj/item/reagent_containers/glass/bottle/stoxin,
+/obj/item/reagent_containers/glass/bottle/antitoxin,
+/obj/item/reagent_containers/pill/antitox,
+/obj/item/reagent_containers/pill/antitox,
+/obj/item/reagent_containers/pill/antitox,
+/obj/item/reagent_containers/pill/paracetamol,
 /obj/random/firstaid,
 /turf/simulated/floor,
 /area/submap/CaveS)
@@ -172,16 +184,16 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/energy,
-/obj/item/weapon/material/star,
-/obj/item/weapon/material/star,
-/obj/item/weapon/material/star,
-/obj/item/weapon/material/star,
-/obj/item/weapon/material/star,
+/obj/item/material/star,
+/obj/item/material/star,
+/obj/item/material/star,
+/obj/item/material/star,
+/obj/item/material/star,
 /turf/simulated/floor,
 /area/submap/CaveS)
 "J" = (
 /obj/effect/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/lurker,
+/mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -214,18 +226,6 @@
 "N" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor,
-/area/submap/CaveS)
-"P" = (
-/obj/random/mob/spider/mutant,
-/turf/simulated/floor/outdoors/dirt{
-	outdoors = 0
-	},
-/area/submap/CaveS)
-"V" = (
-/obj/random/mob/spider,
-/turf/simulated/floor/outdoors/dirt{
-	outdoors = 0
-	},
 /area/submap/CaveS)
 
 (1,1,1) = {"
@@ -421,12 +421,12 @@ d
 d
 d
 d
-u
-u
+v
+v
 d
 d
-u
-u
+v
+v
 d
 d
 d
@@ -462,14 +462,14 @@ d
 d
 d
 d
-u
-x
-u
-u
-u
-u
-u
-u
+v
+y
+v
+v
+v
+v
+v
+v
 d
 d
 d
@@ -504,14 +504,14 @@ d
 d
 d
 d
-u
-u
-y
-u
-u
-u
-u
-u
+v
+v
+z
+v
+v
+v
+v
+v
 d
 d
 d
@@ -545,16 +545,16 @@ d
 d
 d
 d
-u
-u
-u
-u
-u
-u
-u
-u
-u
-x
+v
+v
+v
+v
+v
+v
+v
+v
+v
+y
 d
 d
 d
@@ -582,21 +582,21 @@ d
 n
 k
 k
-V
+q
 d
 d
 d
 d
-u
-u
-u
-u
-x
+v
+v
+v
+v
 y
-u
-u
-u
-u
+z
+v
+v
+v
+v
 d
 d
 d
@@ -632,14 +632,14 @@ d
 d
 d
 d
-u
-u
-u
-u
-u
-u
+v
+v
+v
+v
+v
+v
 k
-u
+v
 d
 d
 d
@@ -677,7 +677,7 @@ d
 d
 i
 k
-u
+v
 k
 k
 k
@@ -712,7 +712,7 @@ k
 k
 k
 k
-s
+t
 d
 d
 d
@@ -749,7 +749,7 @@ d
 d
 i
 k
-q
+r
 d
 k
 k
@@ -763,7 +763,7 @@ d
 k
 k
 d
-v
+x
 d
 d
 d
@@ -794,7 +794,7 @@ d
 d
 d
 d
-r
+s
 k
 k
 d
@@ -839,7 +839,7 @@ d
 d
 k
 k
-P
+w
 k
 k
 d
@@ -925,7 +925,7 @@ k
 k
 d
 d
-q
+r
 k
 k
 k
@@ -1049,7 +1049,7 @@ d
 p
 k
 k
-v
+x
 d
 d
 k
@@ -1130,7 +1130,7 @@ d
 d
 d
 d
-V
+q
 k
 k
 d
@@ -1313,7 +1313,7 @@ k
 k
 k
 k
-P
+w
 d
 d
 d
@@ -1351,12 +1351,12 @@ d
 k
 k
 k
-z
-z
-z
+A
+A
+A
 k
 k
-q
+r
 d
 d
 d
@@ -1384,7 +1384,7 @@ d
 d
 d
 d
-t
+u
 k
 k
 d
@@ -1392,7 +1392,7 @@ d
 k
 k
 k
-z
+A
 E
 H
 K
@@ -1430,16 +1430,16 @@ d
 k
 k
 d
-q
+r
 k
-z
-z
-C
+A
+A
+D
 F
 F
 L
-z
-z
+A
+A
 k
 d
 d
@@ -1474,13 +1474,13 @@ k
 d
 k
 k
-z
-z
-C
+A
+A
+D
 F
 F
 M
-z
+A
 N
 d
 d
@@ -1512,17 +1512,17 @@ p
 h
 k
 k
-V
+q
 d
 d
 k
+B
 A
-z
-z
+A
 G
 I
-z
-z
+A
+A
 d
 d
 d
@@ -1559,11 +1559,11 @@ d
 d
 k
 k
-B
-z
-P
+C
+A
+w
 k
-z
+A
 d
 d
 d
@@ -1588,9 +1588,9 @@ d
 d
 d
 d
-V
+q
 d
-r
+s
 k
 d
 d

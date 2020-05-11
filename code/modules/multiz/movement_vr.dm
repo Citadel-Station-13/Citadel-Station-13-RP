@@ -6,8 +6,8 @@
 		for(var/atom/A in landing)
 			if(!A.CanPass(src, src.loc, 1, 0))
 				return FALSE
-		Move(landing)
-		return 1
+		locationTransitForceMove(landing)
+		return TRUE
 
 	for(var/obj/O in loc)
 		if(!O.CanFallThru(src, landing))
@@ -20,6 +20,7 @@
 
 	// Then call parent to have us actually fall
 	return ..()
+
 /mob/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 /* //Leaving this here to show my previous iterations which failed.

@@ -1,13 +1,13 @@
 /datum/gear/donator
 	display_name = "If this item can be chosen or seen, ping a coder immediately!"
 	sort_category = "Donator"
-	path = /obj/item/weapon/bikehorn
+	path = /obj/item/bikehorn
 	ckeywhitelist = list("This entry should never be choosable with this variable set.") //If it does, then that means somebody fucked up the whitelist system pretty hard
 
 /*
 /datum/gear/donator/testhorn
 	display_name = "Airhorn - Example Item"
-	path = /obj/item/weapon/bikehorn
+	path = /obj/item/bikehorn
 	ckeywhitelist = list("realdonaldtrump")
 */
 
@@ -38,7 +38,7 @@
 /datum/gear/donator/carrotsatchel
 	display_name = "Carrot Satchel"
 	slot = slot_back
-	path = /obj/item/weapon/storage/backpack/satchel/donator/carrot
+	path = /obj/item/storage/backpack/satchel/donator/carrot
 	ckeywhitelist = list("improvedname")
 
 /datum/gear/donator/stripedcollar
@@ -50,7 +50,7 @@
 /datum/gear/donator/cameronbackpack
 	display_name = "Brig Physician's Backpack"
 	slot = slot_back
-	path = /obj/item/weapon/storage/backpack/satchel/donator/cameron
+	path = /obj/item/storage/backpack/satchel/donator/cameron
 	ckeywhitelist = list("cameronlancaster")
 
 /datum/gear/donator/cameronarmor
@@ -91,8 +91,87 @@
 	path = /obj/item/toy/tennis/rainbow/izzy
 	ckeywhitelist = list("izzyinbox")
 
+
+/datum/gear/donator/pduni
+	display_name = "Olympius PD Service Uniform"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/opd
+	ckeywhitelist = list("hungrycricket")
+
 /datum/gear/donator/mewchild
 	display_name = "Bone Signet Ring"
 	sort_category = "Donator"
 	path = /obj/item/clothing/gloves/ring/seal/signet/fluff/vietsi
-	ckeywhitelist = list("Mewchild")
+	ckeywhitelist = list("mewchild")
+
+/datum/gear/donator/stunsword
+	display_name = "Stunsword kit"
+	sort_category = "Donator"
+	path = /obj/item/reskin_kit/stunsword
+	ckeywhitelist = list("phillip458")
+
+/datum/gear/donator/redlensmask
+	display_name = "Red-Lensed Gas Mask"
+	sort_category = "Donator"
+	path = /obj/item/clothing/mask/red_mask
+	ckeywhitelist = list("figneugen")
+
+/datum/gear/donator/blackredgold
+	display_name = "Black, Red, and Gold Coat"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/donator/blackredgold
+	ckeywhitelist = list("ttbnc")
+
+/datum/gear/donator/hoodedlcoak
+	display_name = "Project: Zul-E"
+	sort_category = "Donator"
+	path = /obj/item/clothing/suit/storage/hooded/donator/hooded_cloak
+	ckeywhitelist = list("asky")
+
+/datum/gear/donator/pinklatex
+	display_name = "Pink Latex"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/pinksuit
+	ckeywhitelist = list("tippler")
+
+/datum/gear/donator/peltcloak
+	display_name = "Pelt Cloak"
+	sort_category = "Donator"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/peltcloak
+	ckeywhitelist = list("irkallaepsilon")
+
+/datum/gear/donator/doubleglasses
+	display_name = "Double Sunglasses"
+	sort_category = "Donator"
+	path = /obj/item/clothing/glasses/sunglasses/double
+	ckeywhitelist = list("jglitch")
+
+/datum/gear/donator/huni
+	display_name = "KHI Uniform"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/donator/huni
+	ckeywhitelist = list("certifiedhyena")
+
+/datum/gear/donator/hberet
+	display_name = "USDF Beret"
+	sort_category = "Donator"
+	path = /obj/item/clothing/head/donator/hberet
+	ckeywhitelist = list("certifiedhyena")
+
+/datum/gear/donator/woolhat
+	display_name = "Army Garrison Cap"
+	sort_category = "Donator"
+	path = /obj/item/clothing/head/donator/woolhat
+	ckeywhitelist = list("vfivesix")
+
+/datum/gear/donator/carcharodon
+	display_name = "Carcharodon Suit"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/carcharodon
+	ckeywhitelist = list("desucake")
+
+/datum/gear/donator/mantleofheaven
+	display_name = "Mantle of the Heavens"
+	sort_category = "Donator"
+	path = /obj/item/clothing/under/mantleofheaven
+	ckeywhitelist = list("hjorthorn")

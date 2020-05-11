@@ -4,7 +4,6 @@
 	icon_state = "yellow"
 	density = 1
 	var/health = 100.0
-	flags = CONDUCT
 	w_class = ITEMSIZE_HUGE
 
 	layer = TABLE_LAYER	// Above catwalks, hopefully below other things
@@ -19,7 +18,7 @@
 	pressure_resistance = 7 * ONE_ATMOSPHERE
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
-	use_power = 0
+	use_power = USE_POWER_OFF
 	interact_offline = 1 // Allows this to be used when not in powered area.
 	var/release_log = ""
 	var/update_flag = 0
@@ -239,14 +238,14 @@ update_flag
 		healthcheck()
 	..()
 
-/obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if(!W.is_wrench() && !istype(W, /obj/item/weapon/tank) && !istype(W, /obj/item/device/analyzer) && !istype(W, /obj/item/device/pda))
+/obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(!W.is_wrench() && !istype(W, /obj/item/tank) && !istype(W, /obj/item/analyzer) && !istype(W, /obj/item/pda))
 		visible_message("<span class='warning'>\The [user] hits \the [src] with \a [W]!</span>")
 		src.health -= W.force
 		src.add_fingerprint(user)
 		healthcheck()
 
-	if(istype(user, /mob/living/silicon/robot) && istype(W, /obj/item/weapon/tank/jetpack))
+	if(istype(user, /mob/living/silicon/robot) && istype(W, /obj/item/tank/jetpack))
 		var/datum/gas_mixture/thejetpack = W:air_contents
 		var/env_pressure = thejetpack.return_pressure()
 		var/pressure_delta = min(10*ONE_ATMOSPHERE - env_pressure, (air_contents.return_pressure() - env_pressure)/2)
@@ -256,12 +255,12 @@ update_flag
 			transfer_moles = pressure_delta*thejetpack.volume/(air_contents.temperature * R_IDEAL_GAS_EQUATION)//Actually transfer the gas
 			var/datum/gas_mixture/removed = air_contents.remove(transfer_moles)
 			thejetpack.merge(removed)
-			user << "You pulse-pressurize your jetpack from the tank."
+			to_chat(user, "You pulse-pressurize your jetpack from the tank.")
 		return
 
 	..()
 
-	GLOB.nanomanager.update_uis(src) // Update all NanoUIs attached to src
+	SSnanoui.update_uis(src) // Update all NanoUIs attached to src
 
 /obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
@@ -289,7 +288,7 @@ update_flag
 		data["holdingTank"] = list("name" = holding.name, "tankPressure" = round(holding.air_contents.return_pressure()))
 
 	// update the ui if it exists, returns null if no ui is passed/found
-	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -332,7 +331,7 @@ update_flag
 			if (valve_open)
 				valve_open = 0
 				release_log += "Valve was <b>closed</b> by [usr] ([usr.ckey]), stopping the transfer into the [holding]<br>"
-			if(istype(holding, /obj/item/weapon/tank))
+			if(istype(holding, /obj/item/tank))
 				holding.manipulated_by = usr.real_name
 			holding.loc = loc
 			holding = null
@@ -450,3 +449,7 @@ update_flag
 	src.air_contents.adjust_gas("phoron", MolesForPressure())
 	src.update_icon()
 	return 1
+
+/obj/machinery/portable_atmospherics/canister/take_damage(var/damage)
+	src.health -= damage
+	healthcheck()

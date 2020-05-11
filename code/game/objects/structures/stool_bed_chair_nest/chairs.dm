@@ -15,17 +15,17 @@
 		update_layer()
 	return
 
-/obj/structure/bed/chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/chair/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
 		if(!SK.status)
-			user << "<span class='notice'>\The [SK] is not ready to be attached!</span>"
+			to_chat(user, "<span class='notice'>\The [SK] is not ready to be attached!</span>")
 			return
 		user.drop_item()
 		var/obj/structure/bed/chair/e_chair/E = new (src.loc, material.name)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		E.set_dir(dir)
+		E.setDir(dir)
 		E.part = SK
 		SK.loc = E
 		SK.master = E
@@ -35,7 +35,7 @@
 	if(has_buckled_mobs())
 		..()
 	else
-		rotate()
+		rotate_clockwise()
 	return
 
 /obj/structure/bed/chair/post_buckle_mob()
@@ -60,32 +60,27 @@
 	else
 		reset_plane_and_layer()
 
-/obj/structure/bed/chair/set_dir()
+/obj/structure/bed/chair/setDir()
 	..()
 	update_layer()
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.set_dir(dir)
+			L.setDir(dir)
 
-/obj/structure/bed/chair/verb/rotate()
-	set name = "Rotate Chair"
+/obj/structure/bed/chair/verb/rotate_clockwise()
+	set name = "Rotate Chair Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
-	if(config.ghost_interaction)
-		src.set_dir(turn(src.dir, 90))
+	if(!usr || !isturf(usr.loc))
 		return
-	else
-		if(istype(usr,/mob/living/simple_animal/mouse))
-			return
-		if(!usr || !isturf(usr.loc))
-			return
-		if(usr.stat || usr.restrained())
-			return
+	if(usr.stat || usr.restrained())
+		return
+	if(ismouse(usr) || (isobserver(usr) && !config_legacy.ghost_interaction))
+		return
 
-		src.set_dir(turn(src.dir, 90))
-		return
+	src.setDir(turn(src.dir, 270))
 
 /obj/structure/bed/chair/shuttle
 	name = "chair"
@@ -134,7 +129,7 @@
 /obj/structure/bed/chair/office/update_icon()
 	return
 
-/obj/structure/bed/chair/office/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/chair/office/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
 	..()
@@ -198,7 +193,7 @@
 /obj/structure/bed/chair/wood/update_icon()
 	return
 
-/obj/structure/bed/chair/wood/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/chair/wood/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
 	..()

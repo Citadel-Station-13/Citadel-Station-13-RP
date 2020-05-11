@@ -21,11 +21,14 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 
 	var/last_world_time = 0
 
-/datum/event_container/proc/process()
+/datum/event_container/process()
+	if(!round_start_time)
+		return //don't do events if the round hasn't even started yet
+
 	if(!next_event_time)
 		set_event_delay()
 
-	if(delayed || !config.allow_random_events)
+	if(delayed || !config_legacy.allow_random_events)
 		next_event_time += (world.time - last_world_time)
 	else if(world.time > next_event_time)
 		start_event()
@@ -79,16 +82,16 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 	var/last_time = last_event_time[EM]
 	if(last_time)
 		var/time_passed = world.time - last_time
-		var/weight_modifier = max(0, round((config.expected_round_length - time_passed) / 300))
+		var/weight_modifier = max(0, round((config_legacy.expected_round_length - time_passed) / 300))
 		weight = weight - weight_modifier
 
 	return weight
 
 /datum/event_container/proc/set_event_delay()
 	// If the next event time has not yet been set and we have a custom first time start
-	if(next_event_time == 0 && config.event_first_run[severity])
-		var/lower = config.event_first_run[severity]["lower"]
-		var/upper = config.event_first_run[severity]["upper"]
+	if(next_event_time == 0 && config_legacy.event_first_run[severity])
+		var/lower = config_legacy.event_first_run[severity]["lower"]
+		var/upper = config_legacy.event_first_run[severity]["upper"]
 		var/event_delay = rand(lower, upper)
 		next_event_time = world.time + event_delay
 	// Otherwise, follow the standard setup process
@@ -107,7 +110,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 				playercount_modifier = 0.8
 		playercount_modifier = playercount_modifier * delay_modifier
 
-		var/event_delay = rand(config.event_delay_lower[severity], config.event_delay_upper[severity]) * playercount_modifier
+		var/event_delay = rand(config_legacy.event_delay_lower[severity], config_legacy.event_delay_upper[severity]) * playercount_modifier
 		next_event_time = world.time + event_delay
 
 	log_debug("Next event of severity [severity_to_string[severity]] in [(next_event_time - world.time)/600] minutes.")
@@ -148,10 +151,10 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 /datum/event_container/moderate
 	severity = EVENT_LEVEL_MODERATE
 	available_events = list(
-		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Nothing",					/datum/event/nothing,					800),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Nothing",					/datum/event/nothing,					1300),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Appendicitis", 			/datum/event/spontaneous_appendicitis, 	0,		list(ASSIGNMENT_MEDICAL = 30), 1),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Carp School",				/datum/event/carp_migration,			100, 	list(ASSIGNMENT_ENGINEER = 20, ASSIGNMENT_SECURITY = 30), 1),
-		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Communication Blackout",	/datum/event/communications_blackout,	500,	list(ASSIGNMENT_AI = 150, ASSIGNMENT_SECURITY = 120)),
+		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Communication Blackout",	/datum/event/communications_blackout,	100,	list(ASSIGNMENT_AI = 75, ASSIGNMENT_SECURITY = 60)),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Electrical Storm",			/datum/event/electrical_storm, 			250,	list(ASSIGNMENT_ENGINEER = 20, ASSIGNMENT_JANITOR = 150)),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Gravity Failure",			/datum/event/gravity,	 				75,		list(ASSIGNMENT_ENGINEER = 60)),
 		new /datum/event_meta(EVENT_LEVEL_MODERATE, "Grid Check",				/datum/event/grid_check, 				200,	list(ASSIGNMENT_SCIENTIST = 10)),

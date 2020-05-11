@@ -11,7 +11,7 @@
 	var/maxhealth = 100
 	anchored = 1.0
 
-/obj/structure/catwalk/initialize()
+/obj/structure/catwalk/Initialize()
 	. = ..()
 	for(var/obj/structure/catwalk/O in range(1))
 		O.update_icon()
@@ -67,8 +67,8 @@
 	return
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
-	if(istype(C, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = C
+	if(istype(C, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = C
 		if(WT.isOn())
 			if(WT.remove_fuel(0, user))
 				to_chat(user, "<span class='notice'>Slicing lattice joints ...</span>")
@@ -98,7 +98,7 @@
 		return 0
 	return 1
 
-/obj/structure/catwalk/proc/take_damage(amount)
+/obj/structure/catwalk/take_damage(amount)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
