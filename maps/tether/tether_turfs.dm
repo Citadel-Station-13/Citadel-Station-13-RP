@@ -15,6 +15,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 	return 0
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
+
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
