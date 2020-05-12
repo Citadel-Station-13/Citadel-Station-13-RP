@@ -251,6 +251,11 @@
 	display_name = "locket"
 	path = /obj/item/clothing/accessory/locket
 
+/datum/gear/accessory/necklace
+	display_name = "cuztomizeable necklace"
+	path = /obj/item/clothing/accessory/necklace
+	description = "A necklace. You can rename it and change its description in-game."
+
 /datum/gear/accessory/treatbox
 	display_name = "box of treats"
 	path = /obj/item/storage/box/treats
