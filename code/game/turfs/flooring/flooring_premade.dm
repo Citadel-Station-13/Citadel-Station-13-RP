@@ -387,6 +387,7 @@
 	name = "snow"
 	icon = 'icons/turf/snow_new.dmi'
 	icon_state = "snow"
+	initial_flooring = /decl/flooring/snow
 	var/list/crossed_dirs = list()
 
 /turf/simulated/floor/snow/snow2
