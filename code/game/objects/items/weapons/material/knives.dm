@@ -161,8 +161,8 @@
 	if(storing_module)
 		src.forceMove(storing_module)
 		user.visible_message(
-			"<span class='notice'>[user] retracts the [src], folding it away with a click and a hiss.</span>",
-			"<span class='notice'>You retract the [src], folding it away with a click and a hiss.</span>",
+			"<span class='notice'>[user] retracts [src], folding it away with a click and a hiss.</span>",
+			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",
 			"<span class='notice'>You hear a threatening click and a hiss.</span>"
 			)
 		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
