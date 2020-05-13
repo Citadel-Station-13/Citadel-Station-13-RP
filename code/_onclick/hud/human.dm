@@ -235,9 +235,7 @@
 	if(hud_data.has_internals)
 		mymob.internals = new /obj/screen()
 		mymob.internals.icon = ui_style
-		mymob.internals.icon_state = "internal0"
-		if(istype(target.internal, /obj/item/tank)) //Internals on already? Iight, prove it
-			mymob.internals.icon_state = "internal1"
+		mymob.internals.icon_state = "internal[target?.internal? 1 : 0]"
 		mymob.internals.name = "internal"
 		mymob.internals.screen_loc = ui_internal
 		hud_elements |= mymob.internals
