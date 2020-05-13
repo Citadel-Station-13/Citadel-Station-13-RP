@@ -28094,6 +28094,14 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "Ud" = (
@@ -28373,6 +28381,9 @@
 /obj/machinery/camera/network/medbay{
 	c_tag = "MED - Psych Ward Center"
 	},
+/obj/machinery/computer/cryopod{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "VD" = (
@@ -28400,17 +28411,17 @@
 	pixel_y = 5
 	},
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	id = "psych cell 1";
 	name = "Cell 1";
 	pixel_x = -25;
 	pixel_y = -5
+	},
+/obj/item/reagent_containers/glass/bottle/tramadol,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = -6;
+	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -28465,17 +28476,17 @@
 	pixel_y = 5
 	},
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "psych cell 2";
 	name = "Cell 2";
 	pixel_x = 25;
 	pixel_y = -5
+	},
+/obj/item/reagent_containers/glass/bottle/tramadol,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = 5;
+	pixel_y = 7
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -28642,7 +28653,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "psych cell 1";
+	id = "yard_riot_3";
 	name = "Yard Access"
 	},
 /turf/simulated/floor/tiled/white,
@@ -28678,6 +28689,14 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -28908,6 +28927,14 @@
 	},
 /obj/machinery/door/airlock/glass_medical{
 	name = "Holding Cells"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
