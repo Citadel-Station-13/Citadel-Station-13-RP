@@ -30,7 +30,7 @@
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
 			locstring = "kitchen"
-			spawncount = rand(1, 2)
+			spawncount = rand(2 * severity, 5 * severity)
 		if(LOC_SECURITY)
 			spawn_area_type = /area/security/
 			locstring = "security department"
@@ -38,23 +38,23 @@
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "chapel"
-			spawncount = rand(1, 4)
+			spawncount = rand(2 * severity, 3 * severity)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "library"
-			spawncount = rand(1, 2)
+			spawncount = rand(2 * severity, 3 * severity)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics bay"
-			spawncount = rand(1,3)
+			spawncount = rand(2,4 * severity)
 		if(LOC_MEDBAY)
 			spawn_area_type = /area/medical
 			locstring = "medbay"
-			spawncount = rand(1, 3 * severity)
+			spawncount = rand(3 * severity, 5 * severity)
 		if(LOC_TETHER)
 			spawn_area_type = /area/tether/surfacebase
 			locstring = "tether surface halls"
-			spawncount = rand(5 * severity, 9 * severity)
+			spawncount = rand(6 * severity, 9 * severity)
 		if(LOC_TECH)
 			spawn_area_type = /area/storage/tech
 			locstring = "technical storage"
@@ -62,7 +62,7 @@
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(2, 4 * severity)
+			spawncount = rand(2 * severity, 4 * severity)
 
 /datum/event/hostile_migration/end()
 	var/list/vents = list()
