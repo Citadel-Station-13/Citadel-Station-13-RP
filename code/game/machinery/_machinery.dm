@@ -124,7 +124,7 @@ Class Procs:
 		setDir(newdir)
 	if(ispath(circuit))
 		circuit = new circuit(src)
-	.=..()
+	. = ..()
 	global.machines += src
 	if(!speed_process)
 		START_MACHINE_PROCESSING(src)
