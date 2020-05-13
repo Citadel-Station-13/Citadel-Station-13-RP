@@ -423,3 +423,24 @@
 	desc = "A plain, unadorned sash."
 	icon_state = "sash"
 	slot = ACCESSORY_SLOT_OVER
+
+/obj/item/clothing/accessory/necklace
+	name = "necklace"
+	desc = "Alt-click to name and add a description."
+	icon_state = "locket"
+	var/described = FALSE
+	var/named = FALSE
+
+/obj/item/clothing/accessory/necklace/AltClick(mob/user)
+	if(!named)
+		var/inputname = sanitizeSafe(input("Enter a prefix for the necklace's name.", ,""), MAX_NAME_LEN)
+		if(src && inputname && in_range(user,src))
+			name = "[inputname] necklace"
+			to_chat(user, "You describe the [name].")
+			named = TRUE
+	if(!described)
+		var/inputdesc = sanitizeSafe(input("Enter the new description for the necklace. 200 character limit.", ,""), 200) // 200 character limit
+		if(src && inputdesc && in_range(user,src))
+			desc = "[inputdesc]"
+			to_chat(user, "You describe the [name].")
+			described = TRUE
