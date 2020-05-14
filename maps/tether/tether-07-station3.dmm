@@ -27738,6 +27738,9 @@
 /obj/machinery/camera/network/medbay{
 	c_tag = "MED - Psych Ward Center"
 	},
+/obj/machinery/computer/cryopod{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "SB" = (
@@ -27793,6 +27796,14 @@
 /obj/machinery/door/airlock/glass_medical{
 	name = "Holding Cells"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "SI" = (
@@ -27844,6 +27855,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"Tf" = (
+/turf/simulated/mineral/floor/vacuum,
+/area/space)
 "Tr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -28437,17 +28451,17 @@
 	pixel_y = 5
 	},
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "psych cell 2";
 	name = "Cell 2";
 	pixel_x = 25;
 	pixel_y = -5
+	},
+/obj/item/reagent_containers/glass/bottle/tramadol,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = 5;
+	pixel_y = 7
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -29124,7 +29138,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "psych cell 1";
+	id = "yard_riot_3";
 	name = "Yard Access"
 	},
 /turf/simulated/floor/tiled/white,
@@ -29188,17 +29202,17 @@
 	pixel_y = 5
 	},
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
 	id = "psych cell 1";
 	name = "Cell 1";
 	pixel_x = -25;
 	pixel_y = -5
+	},
+/obj/item/reagent_containers/glass/bottle/tramadol,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = -6;
+	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -29253,6 +29267,14 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "ZX" = (
@@ -29261,6 +29283,14 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -36191,13 +36221,13 @@ aa
 aa
 ab
 ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+gg
+gg
+gg
+gg
+gg
+gg
+gg
 aa
 aa
 aa
@@ -36335,11 +36365,11 @@ ab
 ab
 ab
 ab
-aa
-aa
-aa
-aa
-aa
+gg
+gg
+gg
+gg
+gg
 aa
 aa
 aa
@@ -36481,7 +36511,7 @@ Ug
 Ug
 Ug
 Ug
-aa
+gg
 aa
 aa
 aa
@@ -36627,8 +36657,8 @@ Ug
 Ug
 Ug
 Ug
-aa
-aa
+gg
+gg
 aa
 aa
 aa
@@ -36769,9 +36799,9 @@ XQ
 YQ
 XQ
 Ug
-aa
-aa
-aa
+gg
+gg
+gg
 aa
 aa
 aa
@@ -36911,9 +36941,9 @@ Ug
 Ug
 Ug
 Ug
-aa
-aa
-aa
+gg
+gg
+gg
 aa
 aa
 aa
@@ -38047,9 +38077,9 @@ Ug
 Ug
 Ug
 Ug
-aa
-aa
-ae
+gg
+gg
+gg
 ae
 ae
 ad
@@ -38189,9 +38219,9 @@ XQ
 Ut
 XQ
 Ug
-ae
-ad
-ad
+gg
+gg
+gg
 aa
 aa
 ae
@@ -38331,9 +38361,9 @@ Ug
 Ug
 Ug
 Ug
-ae
-ad
-ad
+gg
+gg
+aa
 ad
 ad
 aa
@@ -38459,7 +38489,7 @@ vt
 vt
 vt
 vt
-ae
+Tf
 vt
 vt
 ab
@@ -38469,7 +38499,7 @@ Ug
 Ug
 Ug
 Ug
-aa
+gg
 aa
 aa
 ae
@@ -38601,17 +38631,17 @@ vt
 vt
 vt
 vt
-ae
-ae
-aa
-vt
-vt
-vt
-vt
-vt
-aa
-aa
-aa
+Tf
+Tf
+Tf
+vs
+vs
+vs
+vs
+vs
+gg
+gg
+gg
 ad
 ae
 ae
@@ -38743,17 +38773,17 @@ vt
 vt
 vt
 vt
-ae
-ae
-aa
-aa
-aa
-ae
-ae
-ae
-ae
-ae
-ad
+Tf
+Tf
+Tf
+gg
+gg
+gg
+gg
+gg
+gg
+gg
+gg
 ae
 aa
 ad
@@ -38885,17 +38915,17 @@ vt
 vt
 vt
 vt
+Tf
+Tf
+Tf
+Tf
+Tf
+Tf
+aa
+aa
 ae
-aa
-aa
-aa
-aa
 ae
-ae
-aa
-aa
-ae
-aa
+ad
 aa
 aa
 ae
@@ -39027,16 +39057,16 @@ vt
 vt
 vt
 vt
-aa
-ad
-aa
-aa
-aa
-ad
+Tf
+Tf
+Tf
+Tf
 aa
 aa
 aa
 aa
+aa
+ae
 aa
 aa
 aa
@@ -39169,9 +39199,9 @@ vt
 vt
 vt
 vt
-ad
-ae
-aa
+Tf
+Tf
+Tf
 aa
 aa
 aa
@@ -39311,7 +39341,7 @@ vt
 vt
 vt
 vt
-aa
+Tf
 aa
 aa
 aa
@@ -39453,7 +39483,7 @@ vt
 vt
 vt
 vt
-aa
+Tf
 aa
 aa
 aa
@@ -39594,7 +39624,7 @@ vt
 vt
 vt
 vt
-aa
+Tf
 aa
 aa
 aa
@@ -39735,8 +39765,8 @@ vt
 vt
 vt
 vt
-aa
-aa
+Tf
+Tf
 aa
 aa
 aa
@@ -39877,8 +39907,8 @@ vt
 vt
 vt
 vt
-aa
-aa
+Tf
+Tf
 aa
 aa
 aa
@@ -40019,8 +40049,8 @@ vt
 vt
 vt
 vt
-aa
-aa
+Tf
+Tf
 aa
 aa
 aa
@@ -40161,8 +40191,8 @@ vt
 vt
 vt
 vt
-aa
-aa
+Tf
+Tf
 aa
 aa
 aa
@@ -40303,8 +40333,8 @@ vt
 vt
 vt
 vt
-aa
-aa
+Tf
+Tf
 aa
 aa
 aa
@@ -40445,8 +40475,8 @@ vt
 vt
 vt
 vt
-aa
-aa
+Tf
+Tf
 aa
 aa
 aa
@@ -40587,7 +40617,7 @@ vt
 vt
 vt
 vt
-aa
+Tf
 aa
 aa
 aa
@@ -41013,7 +41043,7 @@ vt
 vt
 vt
 vt
-aa
+Tf
 aa
 aa
 aa
@@ -41296,7 +41326,7 @@ ab
 ab
 ab
 ab
-vt
+ab
 aa
 aa
 aa
