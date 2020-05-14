@@ -856,9 +856,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/computer/cryopod{
-	pixel_x = 32
-	},
+/obj/machinery/computer/cryopod,
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
 "bt" = (
@@ -17513,6 +17511,17 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
+"HC" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/syringes,
+/obj/machinery/light,
+/obj/item/reagent_containers/glass/bottle/stoxin,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "HE" = (
 /obj/machinery/shower{
 	dir = 8;
@@ -17693,7 +17702,7 @@
 "IP" = (
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "psych cell 1";
+	id = "yard_riot";
 	name = "Yard Access"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -18403,6 +18412,14 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"NB" = (
+/obj/machinery/button/remote/blast_door{
+	id = "yard_riot_3";
+	name = "Emergency Lockdown";
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "NE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -18591,12 +18608,12 @@
 "OM" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/light,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/reagent_containers/glass/bottle/stoxin,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "OQ" = (
@@ -18701,7 +18718,7 @@
 "Pu" = (
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "psych cell 1";
+	id = "yard_riot_3";
 	name = "Yard Access"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -29865,7 +29882,7 @@ VS
 MU
 MU
 MU
-SL
+NB
 ZO
 MU
 aa
@@ -30008,7 +30025,7 @@ WU
 RC
 WU
 Nt
-OM
+HC
 MU
 aa
 aa
