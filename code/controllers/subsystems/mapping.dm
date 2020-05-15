@@ -794,6 +794,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/area/A = B
 		A.reg_in_areas_in_z()
 
+/*
 /datum/controller/subsystem/mapping/proc/get_isolated_ruin_z()
 	if(!isolated_ruins_z)
 		isolated_ruins_z = add_new_zlevel("Isolated Ruins/Reserved", list(ZTRAIT_RESERVED = TRUE, ZTRAIT_ISOLATED_RUINS = TRUE))
@@ -810,6 +811,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		LM.load()
 	if(GLOB.stationroom_landmarks.len)
 		seedStation() //I'm sure we can trust everyone not to insert a 1x1 rooms which loads a landmark which loads a landmark which loads a la...
+*/
 
 /**
   * Generates an obfuscated but constant id for an original id for cases where you don't want players codediving for an id.
