@@ -5,7 +5,7 @@
 
 /datum/map_config
 	// Metadata
-	var/config_filename = "_maps/boxstation.json"
+	var/config_filename = "_maps/tether.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
 	// Config from maps.txt
 	var/config_max_users = 0
@@ -15,9 +15,20 @@
 	var/max_rounds_played = 0
 
 	// Config actually from the JSON - should default to Box
-	var/map_name = "Box Station"
-	var/map_path = "map_files/BoxStation"
-	var/map_file = "BoxStation.dmm"
+	var/map_name = "Tether"
+	var/map_path = "map_files/tether"
+	var/map_file = list(
+		"tether-01-surface1.dmm",
+		"tether-02-surface2.dmm",
+		"tether-03-surface3.dmm",
+		"tether-04-transit.dmm",
+		"tether-05-station1.dmm",
+		"tether-06-station2.dmm",
+		"tether-07-station3.dmm",
+		"tether-08-mining.dmm",
+		"tether-08-solars.dmm",
+		"tether-10-colony.dmm"
+	}
 
 	var/traits = null
 	var/space_ruin_levels = 2
