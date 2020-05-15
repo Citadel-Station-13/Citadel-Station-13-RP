@@ -4637,6 +4637,7 @@
 /area/tether/station/pathfinder_office)
 "ajo" = (
 /obj/structure/table/woodentable,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/tether/station/pathfinder_office)
 "ajp" = (
@@ -8140,7 +8141,9 @@
 /area/engineering/hallway)
 "arZ" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/remains/mouse{
+	desc = "They look like the remains of a small rodent. A tarnished syringe needle is broken off in its dessicated rib cage."
+	},
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "asa" = (
@@ -8714,6 +8717,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/carpet,
 /area/engineering/break_room)
 "atH" = (
@@ -14804,6 +14808,7 @@
 	name = "Engineering Reception Desk";
 	req_access = list(10)
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "aQJ" = (
@@ -22658,6 +22663,7 @@
 /obj/machinery/camera/network/northern_star{
 	dir = 4
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_prep)
 "hpl" = (
@@ -25410,6 +25416,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/tether/station/explorer_meeting)
 "xva" = (

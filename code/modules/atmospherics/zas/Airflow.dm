@@ -6,7 +6,8 @@ mob/var/tmp/last_airflow_stun = 0
 mob/proc/airflow_stun()
 	if(stat == 2)
 		return 0
-	if(last_airflow_stun > world.time - vsc.airflow_stun_cooldown)	return 0
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_cooldown, stuncd)
+	if(last_airflow_stun > world.time - stuncd)	return 0
 
 	if(!(status_flags & CANSTUN) && !(status_flags & CANWEAKEN))
 		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
@@ -29,16 +30,21 @@ mob/living/carbon/human/airflow_stun()
 	..()
 
 atom/movable/proc/check_airflow_movable(n)
-	if(!simulated) return 0
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
+	if(!simulated)
+		return 0
 
-	if(anchored && !ismob(src)) return 0
+	if(anchored && !ismob(src))
+		return 0
 
-	if(!isobj(src) && n < vsc.airflow_dense_pressure) return 0
+	if(!isobj(src) && n < dense_pressure)
+		return 0
 
 	return 1
 
 mob/check_airflow_movable(n)
-	if(n < vsc.airflow_heavy_pressure)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/heavy_pressure, heavy_pressure)
+	if(n < heavy_pressure)
 		return 0
 	return 1
 
@@ -52,17 +58,21 @@ mob/living/silicon/check_airflow_movable()
 obj/check_airflow_movable(n)
 	if (!(. = ..()))
 		return 0
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, light_pressure)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, lightest_pressure)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, medium_pressure)
 	if(isnull(w_class))
-		if(n < vsc.airflow_dense_pressure) return 0 //most non-item objs don't have a w_class yet
+		if(n < dense_pressure) return 0 //most non-item objs don't have a w_class yet
 	switch(w_class)
 		if(ITEMSIZE_TINY,ITEMSIZE_SMALL)
-			if(n < vsc.airflow_lightest_pressure) return 0
+			if(n < lightest_pressure) return 0
 		if(ITEMSIZE_NORMAL)
-			if(n < vsc.airflow_light_pressure) return 0
+			if(n < light_pressure) return 0
 		if(ITEMSIZE_LARGE,ITEMSIZE_HUGE)
-			if(n < vsc.airflow_medium_pressure) return 0
+			if(n < medium_pressure) return 0
 		else
-			if(n < vsc.airflow_dense_pressure) return 0
+			if(n < dense_pressure) return 0
 
 /atom/movable/var/tmp/turf/airflow_dest
 /atom/movable/var/tmp/airflow_speed = 0
@@ -119,7 +129,8 @@ mob/living/carbon/human/airflow_hit(atom/A)
 	if (prob(33))
 		loc:add_blood(src)
 		bloody_body(src)
-	var/b_loss = airflow_speed * vsc.airflow_damage
+	GET_VSC_PROP(atmos_vsc, /atmos/airflow/impact_damage, impact_damage)
+	var/b_loss = airflow_speed * impact_damage
 
 	var/blocked = run_armor_check(BP_HEAD,"melee")
 	var/soaked = get_armor_soak(BP_HEAD,"melee")
@@ -133,11 +144,13 @@ mob/living/carbon/human/airflow_hit(atom/A)
 	soaked = get_armor_soak(BP_GROIN,"melee")
 	apply_damage(b_loss/3, BRUTE, BP_GROIN, blocked, soaked, 0, "Airflow")
 
+	GET_VSC_PROP(atmos_vsc, /atmos/airflow/impact_stun, impact_stun)
+
 	if(airflow_speed > 10)
-		Paralyse(round(airflow_speed * vsc.airflow_stun))
+		Paralyse(round(airflow_speed * impact_stun))
 		Stun(paralysis + 3)
 	else
-		Stun(round(airflow_speed * vsc.airflow_stun/2))
+		Stun(round(airflow_speed * impact_stun/2))
 	. = ..()
 
 zone/proc/movables()

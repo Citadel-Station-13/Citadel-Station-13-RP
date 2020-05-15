@@ -320,11 +320,13 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
 "aaM" = (
-/obj/machinery/mineral/stacking_machine,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining_interior"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/mining_main/refinery)
 "aaN" = (
-/obj/machinery/mineral/output,
 /obj/machinery/conveyor{
 	dir = 9;
 	id = "mining_interior"
@@ -2119,6 +2121,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 9
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "adT" = (
@@ -9592,6 +9595,7 @@
 	dir = 1;
 	pixel_y = 28
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "arE" = (
@@ -12044,6 +12048,7 @@
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "avU" = (
@@ -28621,6 +28626,7 @@
 	layer = 8;
 	name = "Vent Blast Door"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "bWv" = (
@@ -47347,7 +47353,7 @@ aad
 aah
 aah
 aar
-aaJ
+aaI
 aaS
 abi
 abU
