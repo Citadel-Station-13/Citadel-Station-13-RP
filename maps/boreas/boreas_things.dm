@@ -6,7 +6,7 @@
 //Special map objects
 /obj/effect/landmark/map_data/virgo3b
     height = 7
-
+/*
 /obj/turbolift_map_holder/tether
 	name = "Tether Climber"
 	depth = 7
@@ -183,7 +183,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
 	return TRUE // Always be powered
-
+*/
 //Chemistry 'chemavator'
 /obj/machinery/smartfridge/chemistry/chemvator
 	name = "\improper Smart Chemavator - Upper"
@@ -206,7 +206,7 @@
 		item_records = attached.item_records
 	else
 		to_chat(world,"<span class='danger'>[src] at [x],[y],[z] cannot find the unit above it!</span>")
-
+/*
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
 /obj/machinery/cryopod/robot/door/tram
 	name = "\improper Tram Station"
@@ -270,7 +270,7 @@ var/global/list/latejoin_tram   = list()
 
 //
 // Holodorms
-//
+
 /obj/machinery/computer/HolodeckControl/holodorm
 	name = "Don't use this one!!!"
 	powerdown_program = "Off"
@@ -351,7 +351,7 @@ var/global/list/latejoin_tram   = list()
 	"Bunking"			= new/datum/holodeck_program(/area/houseboat/holodeck/bunking, list()),
 	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
 	)
-
+*/
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
@@ -363,17 +363,17 @@ var/global/list/latejoin_tram   = list()
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/weapon/reagent_containers/pill/airlock = 10,/obj/item/device/healthanalyzer = 1)
-	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 2)
+	products = list(/obj/item/reagent_containers/pill/airlock = 10,/obj/item/healthanalyzer = 1)
+	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
 
-/obj/item/weapon/reagent_containers/pill/airlock
+/obj/item/reagent_containers/pill/airlock
 	name = "\'Airlock\' Pill"
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
 	icon_state = "pill2"
 
-/obj/item/weapon/reagent_containers/pill/airlock/New()
+/obj/item/reagent_containers/pill/airlock/New()
 	..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
@@ -396,10 +396,10 @@ var/global/list/latejoin_tram   = list()
 /obj/structure/closet/secure_closet/guncabinet/excursion/New()
 	..()
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked(src)
+		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked/holdout(src)
-
+		new /obj/item/gun/energy/frontier/locked/holdout(src)
+/*
 // Underdark mob spawners
 /obj/tether_away_spawner/underdark_normal
 	name = "Underdark Normal Spawner"
@@ -447,9 +447,9 @@ var/global/list/latejoin_tram   = list()
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window
 //
-/obj/item/device/radio/intercom
+/obj/item/radio/intercom
 	layer = ABOVE_WINDOW_LAYER
-/obj/item/weapon/storage/secure/safe
+/obj/item/storage/secure/safe
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
@@ -499,3 +499,4 @@ var/global/list/latejoin_tram   = list()
 	layer = ABOVE_WINDOW_LAYER
 /obj/structure/noticeboard
 	layer = ABOVE_WINDOW_LAYER
+*/

@@ -121,10 +121,10 @@
 		num2text(EXP_FREQ) = list(access_explorer)
 	)
 
-/obj/item/device/multitool/tether_buffered
+/obj/item/multitool/tether_buffered
 	name = "pre-linked multitool (tether hub)"
 	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
 
-/obj/item/device/multitool/tether_buffered/Initialize()
+/obj/item/multitool/tether_buffered/Initialize()
 	. = ..()
 	buffer = locate(/obj/machinery/telecomms/hub/preset/tether)
