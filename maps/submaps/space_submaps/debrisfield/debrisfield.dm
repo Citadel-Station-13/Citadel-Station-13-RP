@@ -5,7 +5,7 @@
 // #define "your_map_here.dmm"
 #endif
 
-/datum/map_template/debrisfield
+/datum/map_template/submap/debrisfield
 	name = "Space Content - Debrisfield"
 	desc = "Designed for space points of interest."
 
