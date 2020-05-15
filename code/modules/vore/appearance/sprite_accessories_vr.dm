@@ -724,6 +724,14 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/wing/robo
+	name = "Robotic Wings"
+	desc = ""
+	icon_state = "Drago_wing"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -1680,3 +1688,11 @@
 	icon_state = "lizard_tail_spiked"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/robo_tail
+	name = "Robo Dragon Tail"
+	desc = ""
+	icon_state = "robo_dragon"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "robodragon_b"
