@@ -11,8 +11,15 @@ SUBSYSTEM_DEF(mapping)
 	var/static/datum/map_config/config
 	var/static/datum/map_config/next_map_config
 
-	var/list/map_templates = list()
+	var/list/map_templates				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
+	//These are IDs only, non associative.
+	var/list/submap_templates
+	var/list/shelter_templates
+	var/list/engine_templates
 
+	var/list/submap_groups
+
+/*
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
 	var/list/lava_ruins_templates = list()
@@ -20,9 +27,12 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ice_ruins_underground_templates = list()
 	var/list/station_ruins_templates = list()
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
-
 	var/list/shuttle_templates = list()
 	var/list/shelter_templates = list()
+*/
+
+	var/list/zlevels_by_id = list()			//id = zlevel datum
+	var/transitions_initialized = FALSE		//if this is not set, trait changes/hardsets will let setup_map_transitions() eventually set them up (so deferring updates.)
 
 	var/list/areas_in_z = list()
 
@@ -51,6 +61,76 @@ SUBSYSTEM_DEF(mapping)
 	/// "secret" key
 	var/static/obfuscation_secret
 
+//Vorestation stuff start
+	var/obj/effect/landmark/engine_loader/engine_loader
+
+/datum/controller/subsystem/mapping/proc/loadEngine()
+	if(!engine_loader)
+		return // Seems this map doesn't need an engine loaded.
+
+	var/turf/T = get_turf(engine_loader)
+	if(!isturf(T))
+		subsystem_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
+		return
+
+	// Choose an engine type
+	var/datum/map_template/engine/chosen_type = null
+	if (LAZYLEN(config_legacy.engine_map))
+		var/chosen_name = pick(config_legacy.engine_map)
+		chosen_type = map_templates[chosen_name]
+		if(!istype(chosen_type))
+			log_world("Configured engine map [chosen_name] is not a valid engine map name!")
+	if(!istype(chosen_type))
+		var/list/engine_types = list()
+		for(var/map in map_templates)
+			var/datum/map_template/engine/MT = map_templates[map]
+			if(istype(MT))
+				engine_types += MT
+		chosen_type = pick(engine_types)
+	subsystem_log("Chose Engine Map: [chosen_type.name]")
+	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
+
+	// Annihilate movable atoms
+	engine_loader.annihilate_bounds()
+	//CHECK_TICK //Don't let anything else happen for now
+	// Actually load it
+	chosen_type.load(T, annihilate = TEMPLATE_NO_ANNIHILATE)
+
+/datum/controller/subsystem/mapping/proc/loadLateMaps()
+	var/list/deffo_load = GLOB.using_map.lateload_z_levels
+	var/list/maybe_load = GLOB.using_map.lateload_single_pick
+
+	for(var/list/maplist in deffo_load)
+		if(!islist(maplist))
+			log_world("Lateload Z level [maplist] is not a list! Must be in a list!")
+			continue
+		for(var/mapname in maplist)
+			var/datum/map_template/MT = map_templates[mapname]
+			if(!istype(MT))
+				log_world("Lateload Z level \"[mapname]\" is not a valid map!")
+				continue
+			MT.load_new_z(centered = FALSE)
+			CHECK_TICK
+
+	if(LAZYLEN(maybe_load))
+		var/picklist = pick(maybe_load)
+
+		if(!picklist) //No lateload maps at all
+			return
+
+		if(!islist(picklist)) //So you can have a 'chain' of z-levels that make up one away mission
+			log_world("Randompick Z level [picklist] is not a list! Must be in a list!")
+			return
+
+		for(var/map in picklist)
+			var/datum/map_template/MT = map_templates[map]
+			if(!istype(MT))
+				log_world("Randompick Z level \"[map]\" is not a valid map!")
+			else
+				MT.load_new_z(centered = FALSE)
+
+//Vorestation stuff end
+
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!config)
@@ -75,13 +155,19 @@ SUBSYSTEM_DEF(mapping)
 		if(!config || config.defaulted)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Box Station</span>")
 			config = old_config
+/*
 	GLOB.year_integer += config.year_offset
 	GLOB.announcertype = (config.announcertype == "standard" ? (prob(1) ? "medibot" : "classic") : config.announcertype)
+*/
 	loadWorld()
 	repopulate_sorted_areas()
+/*
 	process_teleport_locs()			//Sets up the wizard teleport locations
 	preloadTemplates()
+*/
+
 #ifndef LOWMEMORYMODE
+/*
 	// Create space ruin levels
 	while (space_levels_so_far < config.space_ruin_levels)
 		++space_levels_so_far
@@ -91,8 +177,11 @@ SUBSYSTEM_DEF(mapping)
 		++space_levels_so_far
 		empty_space = add_new_zlevel("Empty Area [space_levels_so_far]", list(ZTRAIT_LINKAGE = CROSSLINKED))
 	// and the transit level
+*/
+
 	transit = add_new_zlevel("Transit/Reserved", list(ZTRAIT_RESERVED = TRUE))
 
+/*
 	// Pick a random away mission.
 	if(CONFIG_GET(flag/roundstart_away))
 		createRandomZlevel()
@@ -132,7 +221,20 @@ SUBSYSTEM_DEF(mapping)
 		seedRuins(station_ruins, (SSmapping.config.station_ruin_budget < 0) ? CONFIG_GET(number/station_space_budget) : SSmapping.config.station_ruin_budget, list(/area/space/station_ruins), station_ruins_templates)
 	SSmapping.seedStation()
 	loading_ruins = FALSE
+*/
 #endif
+	//Vorestation stuff
+	loadEngine()
+	// Mining generation probably should be here too
+	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
+	if(using_map)
+		loadLateMaps()
+	if(global.config.generate_map)
+		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
+		if(using_map.perform_map_generation())
+			using_map.refresh_mining_turfs()
+	//Vorestation stuff end
+
 	repopulate_sorted_areas()
 	// Set up Z-level transitions.
 	setup_map_transitions()
@@ -148,8 +250,9 @@ SUBSYSTEM_DEF(mapping)
 	if(clearing_reserved_turfs || !initialized)			//in either case this is just not needed.
 		return
 	clearing_reserved_turfs = TRUE
-	SSshuttle.transit_requesters.Cut()
+	//SSshuttle.transit_requesters.Cut()
 	message_admins("Clearing dynamic reservation space.")
+/*
 	var/list/obj/docking_port/mobile/in_transit = list()
 	for(var/i in SSshuttle.transit)
 		var/obj/docking_port/stationary/transit/T = i
@@ -163,6 +266,7 @@ SUBSYSTEM_DEF(mapping)
 	for(var/i in in_transit)
 		INVOKE_ASYNC(src, .proc/safety_clear_transit_dock, i, in_transit[i], cleared)
 	UNTIL((go_ahead < world.time) || (cleared.len == in_transit.len))
+*/
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
 
@@ -207,6 +311,107 @@ SUBSYSTEM_DEF(mapping)
 	used_turfs = SSmapping.used_turfs
 
 	clearing_reserved_turfs = SSmapping.clearing_reserved_turfs
+
+/datum/controller/subsystem/mapping/proc/initialize_map_templates(reset = FALSE)
+	if(reset)
+		map_templates = null
+		shelter_templates = null
+		submap_templates = null
+		engine_templates = null
+		submap_groups = null
+	load_map_templates()
+	process_map_templates()
+	generate_submap_groups()
+	sort_submaps()
+
+/datum/controller/subsystem/mapping/proc/load_map_templates()
+	var/permissive = FALSE
+	if(islist(map_templates))
+		permissive = TRUE
+	else
+		map_templates = list()
+	for(var/path in subtypesof(/datum/map_template))
+		var/datum/map_template/template = path
+		if(initial(template.abstract_type) == path)
+			continue
+		var/id
+		var/loaded
+		if(initial(template.autoinit))
+			template = new path
+			id = template.id
+			loaded = TRUE
+		else
+			id = initial(template.id)
+		if(map_templates[id])
+			if(!permissive)			//don't bother stack tracing if we're operating on an already existing template list.
+				stack_trace("Map template collision on ID [id] type [path]")
+			if(loaded)
+				qdel(template)
+			continue
+		map_templates[id] = template
+	return TRUE
+
+/datum/controller/subsystem/mapping/proc/map_template_name_list()
+	. = list()
+	for(var/id in map_templates)
+		var/datum/map_template/T = map_templates[id]
+		if(ispath(T))
+			.[initial(T.name)] = id
+		else
+			.[T.name] = id
+
+/datum/controller/subsystem/mapping/proc/get_map_template(id)
+	if(!length(id))
+		return
+	var/datum/map_template/template = map_templates[id]
+	if(!istype(template) && ispath(template))
+		template = new template		//it's a path.
+		map_templates[id] = template		//cache for obvious reasons.
+	return template
+
+/datum/controller/subsystem/mapping/proc/process_map_templates()
+	LAZYINITLIST(submap_templates)
+	LAZYINITLIST(shelter_templates)
+	LAZYINITLIST(engine_templates)
+	for(var/id in map_templates)
+		var/datum/map_template/template = map_templates[id]
+		var/path = ispath(template)? template : template.type
+		if(ispath(path, /datum/map_template/submap))
+			submap_templates |= id
+		else if(ispath(path, /datum/map_template/shelter))
+			shelter_templates |= id
+		else if(ispath(path, /datum/map_template/engine))
+			engine_templates |= id
+
+/datum/controller/subsystem/mapping/proc/generate_submap_groups()
+	var/permissive = FALSE
+	if(islist(submap_groups))
+		permissive = TRUE
+	else
+		submap_groups = list()
+	for(var/path in subtypesof(/datum/submap_group))
+		var/datum/submap_group/group = path
+		if((initial(group.abstract_type) == path) || isnull(initial(group.id)))
+			continue
+		group = new path
+		if(submap_groups[group.id])
+			if(!permissive)
+				stack_trace("Submap group collision on ID [group.id] type [path]")
+			qdel(group)
+			continue
+		submap_groups[group.id] = group
+	return TRUE
+
+/datum/controller/subsystem/mapping/proc/sort_submaps()
+	for(var/id in submap_groups)
+		var/datum/submap_group/group = submap_groups[id]
+		group.submap_ids = list()
+	for(var/id in submap_templates)
+		var/datum/map_template/submap/submap = map_templates[id]
+		var/gid = ispath(submap)? initial(submap.group_id) : submap.group_id
+		if(gid && submap_groups[gid])
+			var/datum/submap_group/group = submap_groups[gid]
+			group.submap_ids += id
 
 /datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, orientation = SOUTH)
 	. = list()
@@ -372,6 +577,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 	stat_map_name = "[config.map_name] (Next: [next_map_config.map_name])"
 
+/*
 /datum/controller/subsystem/mapping/proc/preloadTemplates(path = "_maps/templates/") //see master controller setup
 	var/list/filelist = flist(path)
 	for(var/map in filelist)
@@ -439,6 +645,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		shelter_templates[S.shelter_id] = S
 		map_templates[S.shelter_id] = S
+*/
 
 /*
 //Manual loading of away missions.
@@ -623,145 +830,3 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	if(random_generated_ids_by_original[key])
 		return random_generated_ids_by_original[key]
 	. = random_generated_ids_by_original[key] = "[obfuscation_secret]%[obfuscation_next_id++]"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Mapping subsystem handles initialization of random map elements at server start
-// On VOREStation that means loading our random roundstart engine!
-//
-SUBSYSTEM_DEF(mapping)
-	name = "Mapping"
-	init_order = INIT_ORDER_MAPPING
-	flags = SS_NO_FIRE
-
-	var/list/map_templates = list()
-	var/dmm_suite/maploader = null
-	var/obj/effect/landmark/engine_loader/engine_loader
-	var/list/shelter_templates = list()
-
-/datum/controller/subsystem/mapping/Recover()
-	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
-	shelter_templates = SSmapping.shelter_templates
-
-/datum/controller/subsystem/mapping/Initialize(timeofday)
-	if(subsystem_initialized)
-		return
-	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
-	maploader = new()
-	load_map_templates()
-
-	if(config_legacy.generate_map)
-		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
-
-	loadEngine()
-	preloadShelterTemplates()
-	// Mining generation probably should be here too
-	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
-	if(GLOB.using_map)
-		loadLateMaps()
-	..()
-
-/datum/controller/subsystem/mapping/proc/load_map_templates()
-	for(var/T in subtypesof(/datum/map_template))
-		var/datum/map_template/template = T
-		if(!(initial(template.mappath))) // If it's missing the actual path its probably a base type or being used for inheritence.
-			continue
-		template = new T()
-		map_templates[template.name] = template
-	return TRUE
-
-/datum/controller/subsystem/mapping/proc/loadEngine()
-	if(!engine_loader)
-		return // Seems this map doesn't need an engine loaded.
-
-	var/turf/T = get_turf(engine_loader)
-	if(!isturf(T))
-		subsystem_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
-		return
-
-	// Choose an engine type
-	var/datum/map_template/engine/chosen_type = null
-	if (LAZYLEN(config_legacy.engine_map))
-		var/chosen_name = pick(config_legacy.engine_map)
-		chosen_type = map_templates[chosen_name]
-		if(!istype(chosen_type))
-			log_world("Configured engine map [chosen_name] is not a valid engine map name!")
-	if(!istype(chosen_type))
-		var/list/engine_types = list()
-		for(var/map in map_templates)
-			var/datum/map_template/engine/MT = map_templates[map]
-			if(istype(MT))
-				engine_types += MT
-		chosen_type = pick(engine_types)
-	subsystem_log("Chose Engine Map: [chosen_type.name]")
-	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
-
-	// Annihilate movable atoms
-	engine_loader.annihilate_bounds()
-	//CHECK_TICK //Don't let anything else happen for now
-	// Actually load it
-	chosen_type.load(T)
-
-/datum/controller/subsystem/mapping/proc/loadLateMaps()
-	var/list/deffo_load = GLOB.using_map.lateload_z_levels
-	var/list/maybe_load = GLOB.using_map.lateload_single_pick
-
-	for(var/list/maplist in deffo_load)
-		if(!islist(maplist))
-			log_world("Lateload Z level [maplist] is not a list! Must be in a list!")
-			continue
-		for(var/mapname in maplist)
-			var/datum/map_template/MT = map_templates[mapname]
-			if(!istype(MT))
-				log_world("Lateload Z level \"[mapname]\" is not a valid map!")
-				continue
-			MT.load_new_z(centered = FALSE)
-			CHECK_TICK
-
-	if(LAZYLEN(maybe_load))
-		var/picklist = pick(maybe_load)
-
-		if(!picklist) //No lateload maps at all
-			return
-
-		if(!islist(picklist)) //So you can have a 'chain' of z-levels that make up one away mission
-			log_world("Randompick Z level [picklist] is not a list! Must be in a list!")
-			return
-
-		for(var/map in picklist)
-			var/datum/map_template/MT = map_templates[map]
-			if(!istype(MT))
-				log_world("Randompick Z level \"[map]\" is not a valid map!")
-			else
-				MT.load_new_z(centered = FALSE)
-
-/datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
-	for(var/item in subtypesof(/datum/map_template/shelter))
-		var/datum/map_template/shelter/shelter_type = item
-		if(!(initial(shelter_type.mappath)))
-			continue
-		var/datum/map_template/shelter/S = new shelter_type()
-
-		shelter_templates[S.shelter_id] = S
-
-/datum/controller/subsystem/mapping/stat_entry(msg)
-	if (!Debug2)
-		return // Only show up in stat panel if debugging is enabled.
-	. = ..()
