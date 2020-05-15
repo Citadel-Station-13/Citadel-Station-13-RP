@@ -598,7 +598,7 @@
 "lz" = (/turf/simulated/floor/bluegrid,/area/generic)
 "lA" = (/obj/machinery/mech_recharger,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/bluegrid,/area/generic)
 "lB" = (/obj/effect/floor_decal/borderfloorblack{dir = 4},/obj/structure/table/steel,/obj/machinery/camera/network/security{icon_state = "camera"; dir = 8},/obj/item/toy/stickhorse,/turf/simulated/floor/tiled/dark,/area/generic)
-"lC" = (/obj/effect/floor_decal/borderfloorblack{dir = 10},/obj/effect/floor_decal/borderfloorblack/corner2{dir = 9},/obj/structure/table/steel,/obj/item/cell/device/weapon{pixel_x = -3},/obj/item/cell/device/weapon{pixel_x = 3},/turf/simulated/floor/tiled/dark,/area/generic)
+"lC" = (/obj/effect/floor_decal/borderfloorblack{dir = 10},/obj/effect/floor_decal/borderfloorblack/corner2{dir = 9},/obj/structure/table/steel,/turf/simulated/floor/tiled/dark,/area/generic)
 "lD" = (/obj/effect/floor_decal/borderfloorblack,/obj/effect/floor_decal/borderfloorblack/corner2,/obj/structure/table/rack/shelf/steel,/obj/item/clothing/glasses/hud/security,/obj/item/clothing/glasses/hud/security,/obj/item/clothing/glasses/hud/security,/turf/simulated/floor/tiled/dark,/area/generic)
 "lE" = (/obj/effect/floor_decal/borderfloorblack,/obj/effect/floor_decal/borderfloorblack/corner2{dir = 9},/obj/structure/table/rack/shelf/steel,/obj/machinery/light,/turf/simulated/floor/tiled/dark,/area/generic)
 "lF" = (/obj/effect/floor_decal/borderfloorblack{dir = 6},/obj/effect/floor_decal/borderfloorblack/corner2,/obj/effect/floor_decal/borderfloorblack/corner2{dir = 6},/obj/structure/table/steel,/obj/item/storage/lockbox,/obj/machinery/light_switch{dir = 8; pixel_x = -24},/turf/simulated/floor/tiled/dark,/area/generic)
