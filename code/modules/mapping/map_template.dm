@@ -1,5 +1,10 @@
 /datum/map_template
+	/// Text ID for associative lookup.
+	var/id
+	var/abstract_type = /datum/map_template
+	var/autoinit = FALSE			//Init this and keep this at load. Otherwise will be init + kept when needed.
 	var/name = "Default Template Name"
+	var/desc = "Some text should go here. Maybe."
 	var/width = 0				//all these are for SOUTH!
 	var/height = 0
 	var/zdepth = 1
@@ -11,6 +16,8 @@
 	var/list/ztraits				//zlevel traits for load_new_z
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
+	if(!id)
+		id = "[path || type]"
 	if(path)
 		mappath = path
 	if(mappath)

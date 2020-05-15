@@ -34,6 +34,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ADMIN_SPAWNED			(1<<10)
 /// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
 #define HEAR					(1<<11)
+/// TURF ONLY - This is an unused reservation turf.
+#define UNUSED_RESERVATION_TURF	(1<<12)
 
 
 //Flags for items (equipment) - Used in /obj/item/var/item_flags

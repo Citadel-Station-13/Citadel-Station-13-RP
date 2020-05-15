@@ -1,3 +1,13 @@
+#define TEXT_NORTH	"[NORTH]"
+#define TEXT_SOUTH	"[SOUTH]"
+#define TEXT_EAST	"[EAST]"
+#define TEXT_WEST	"[WEST]"
+
+#define NORTH_DEGREES 0
+#define SOUTH_DEGREES 180
+#define EAST_DEGREES 90
+#define WEST_DEGREES 270
+
 #define get_turf(A) (get_step(A, 0))
 
 // Turf-only flags.

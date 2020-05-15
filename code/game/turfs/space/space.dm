@@ -10,6 +10,14 @@
 	var/keep_sprite = FALSE
 //	heat_capacity = 700000 No.
 
+	var/destination_z
+	var/destination_x
+	var/destination_y
+
+/turf/space/basic/New()	//Do not convert to Initialize
+	//This is used to optimize the map loader
+	return
+
 /turf/space/Initialize(mapload)
 	. = ..()
 	if(!keep_sprite)
