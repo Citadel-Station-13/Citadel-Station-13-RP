@@ -8,6 +8,7 @@
 	..()
 	return late ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_QDEL
 
+/*
 //airlock helpers
 /obj/effect/mapping_helpers/airlock
 	layer = DOOR_HELPER_LAYER
@@ -115,3 +116,4 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 		CRASH("Wrong disease type passed in.")
 	var/datum/disease/D = new disease_type()
 	return list(component_type,D)
+*/

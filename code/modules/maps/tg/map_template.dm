@@ -2,11 +2,6 @@
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
 	var/template_group = null // If this is set, no more than one template in the same group will be spawned, per submap seeding.
-	var/width = 0
-	var/height = 0
-	var/mappath = null
-	var/loaded = 0 // Times loaded this round
-	var/annihilate = FALSE // If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
 
 	var/cost = null // The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until \
 	it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc. \
