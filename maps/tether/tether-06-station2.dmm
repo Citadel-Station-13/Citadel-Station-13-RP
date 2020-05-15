@@ -856,9 +856,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/computer/cryopod{
-	pixel_x = 32
-	},
+/obj/machinery/computer/cryopod,
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
 "bt" = (
@@ -5275,12 +5273,12 @@
 "jW" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate,
-/obj/item/reagent_containers/glass/bottle/chloralhydrate{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/light,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/reagent_containers/glass/bottle/stoxin,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "jX" = (
@@ -17376,13 +17374,21 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/engineering/shaft)
+"Gv" = (
+/obj/machinery/button/remote/blast_door{
+	id = "yard_riot_3";
+	name = "Emergency Lockdown";
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "Gw" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
 "GC" = (
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "psych cell 1";
+	id = "yard_riot";
 	name = "Yard Access"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -17784,6 +17790,17 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/public_meeting_room)
+"Jt" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/syringes,
+/obj/machinery/light,
+/obj/item/reagent_containers/glass/bottle/stoxin,
+/obj/item/reagent_containers/glass/bottle/stoxin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "JD" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -17896,7 +17913,7 @@
 "Kw" = (
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "psych cell 1";
+	id = "yard_riot_3";
 	name = "Yard Access"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -18770,6 +18787,9 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"Pt" = (
+/turf/simulated/mineral/vacuum,
+/area/space)
 "Py" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -27887,7 +27907,7 @@ aa
 aa
 aa
 aa
-eM
+Pt
 VR
 VR
 VR
@@ -28025,11 +28045,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-eM
-eM
-eM
+Pt
+Pt
+Pt
+Pt
+Pt
 VR
 Ya
 Oo
@@ -28166,12 +28186,12 @@ ac
 aa
 aa
 aa
-eM
-eM
-eM
-aP
-aP
-aP
+Pt
+Pt
+Pt
+ac
+ac
+ac
 VR
 Oy
 GI
@@ -28308,12 +28328,12 @@ AU
 Cy
 CN
 aP
-aP
-aP
-aP
-aP
-aP
-aP
+ac
+ac
+ac
+ac
+ac
+ac
 VR
 XB
 XB
@@ -28451,11 +28471,11 @@ Cz
 CO
 aP
 aP
-aP
-aP
-aP
-aP
-aP
+ac
+ac
+ac
+ac
+ac
 VR
 Oq
 Oq
@@ -28596,8 +28616,8 @@ aP
 aP
 aP
 aP
-aP
-aP
+ac
+ac
 VR
 VR
 VR
@@ -28739,7 +28759,7 @@ aP
 aP
 aP
 aP
-aP
+ac
 VR
 Mv
 SZ
@@ -29021,9 +29041,9 @@ ac
 ac
 aP
 Lz
-aP
-aP
-aP
+ac
+ac
+ac
 VR
 Cn
 Hr
@@ -29163,9 +29183,9 @@ AG
 AG
 aP
 Lz
-aP
-aP
-aP
+ac
+ac
+ac
 VR
 VR
 VR
@@ -29305,9 +29325,9 @@ Dd
 Di
 aP
 Lz
-aP
-aP
-aP
+ac
+ac
+ac
 VR
 GR
 GR
@@ -29448,8 +29468,8 @@ UZ
 EQ
 Gi
 aP
-aP
-aP
+ac
+ac
 VR
 XB
 XB
@@ -29883,7 +29903,7 @@ Ue
 VR
 VR
 VR
-Ri
+Gv
 ZG
 VR
 aa
@@ -30026,7 +30046,7 @@ FM
 XO
 FM
 Xu
-jW
+Jt
 VR
 aa
 aa
