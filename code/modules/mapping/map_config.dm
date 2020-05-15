@@ -28,7 +28,7 @@
 		"tether-08-mining.dmm",
 		"tether-08-solars.dmm",
 		"tether-10-colony.dmm"
-	}
+	)
 
 	var/traits = null
 	var/space_ruin_levels = 2
