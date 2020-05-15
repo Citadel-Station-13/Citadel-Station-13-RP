@@ -5,7 +5,7 @@
 // #define "your_map_here.dmm"
 #endif
 
-/datum/map_template/space
+/datum/map_template/submap/space
 	name = "POI - Space Content"
 	desc = "A map template base.  In space."
 
