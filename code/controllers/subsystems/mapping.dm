@@ -5,19 +5,21 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	flags = SS_NO_FIRE
 
+/*
 	var/list/nuke_tiles = list()
 	var/list/nuke_threats = list()
+*/
 
 	var/static/datum/map_config/config
 	var/static/datum/map_config/next_map_config
 
-	var/list/map_templates				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
+	var/static/list/map_templates				//ID = datum OR path. Use get_map_template, DO NOT DIRECTLY ACCESS!
 	//These are IDs only, non associative.
-	var/list/submap_templates
-	var/list/shelter_templates
-	var/list/engine_templates
+	var/static/list/submap_templates
+	var/static/list/shelter_templates
+	var/static/list/engine_templates
 
-	var/list/submap_groups
+	var/static/list/submap_groups
 
 /*
 	var/list/ruins_templates = list()
@@ -31,26 +33,26 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shelter_templates = list()
 */
 
-	var/list/zlevels_by_id = list()			//id = zlevel datum
-	var/transitions_initialized = FALSE		//if this is not set, trait changes/hardsets will let setup_map_transitions() eventually set them up (so deferring updates.)
+	var/static/list/zlevels_by_id = list()			//id = zlevel datum
+	var/static/transitions_initialized = FALSE		//if this is not set, trait changes/hardsets will let setup_map_transitions() eventually set them up (so deferring updates.)
 
-	var/list/areas_in_z = list()
+	var/static/list/areas_in_z = list()
 
-	var/loading_ruins = FALSE
-	var/list/turf/unused_turfs = list()				//Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
-	var/list/datum/turf_reservations		//list of turf reservations
-	var/list/used_turfs = list()				//list of turf = datum/turf_reservation
+	var/static/loading_ruins = FALSE
+	var/static/list/turf/unused_turfs = list()				//Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
+	var/static/list/datum/turf_reservations		//list of turf reservations
+	var/static/list/used_turfs = list()				//list of turf = datum/turf_reservation
 
-	var/list/reservation_ready = list()
-	var/clearing_reserved_turfs = FALSE
+	var/static/list/reservation_ready = list()
+	var/static/clearing_reserved_turfs = FALSE
 
 	// Z-manager stuff
-	var/station_start  // should only be used for maploading-related tasks
-	var/space_levels_so_far = 0
+	var/static/station_start  // should only be used for maploading-related tasks
+	var/static/space_levels_so_far = 0
 	var/static/list/z_list
-	var/datum/space_level/transit
-	var/datum/space_level/empty_space
-	var/num_of_res_levels = 1
+	var/static/datum/space_level/transit
+//	var/datum/space_level/empty_space
+	var/static/num_of_res_levels = 1
 
 	var/stat_map_name = "Loading..."
 
@@ -62,7 +64,7 @@ SUBSYSTEM_DEF(mapping)
 	var/static/obfuscation_secret
 
 //Vorestation stuff start
-	var/obj/effect/landmark/engine_loader/engine_loader
+	var/static/obj/effect/landmark/engine_loader/engine_loader
 
 /datum/controller/subsystem/mapping/proc/loadEngine()
 	if(!engine_loader)
@@ -270,13 +272,16 @@ SUBSYSTEM_DEF(mapping)
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
 
+/*
 /datum/controller/subsystem/mapping/proc/safety_clear_transit_dock(obj/docking_port/stationary/transit/T, obj/docking_port/mobile/M, list/returning)
 	M.setTimer(0)
 	var/error = M.initiate_docking(M.destination, M.preferred_direction)
 	if(!error)
 		returning += M
 		qdel(T, TRUE)
+*/
 
+/*
 /datum/controller/subsystem/mapping/proc/add_nuke_threat(datum/nuke)
 	nuke_threats[nuke] = TRUE
 	check_nuke_threats()
@@ -293,24 +298,11 @@ SUBSYSTEM_DEF(mapping)
 	for(var/N in nuke_tiles)
 		var/turf/open/floor/circuit/C = N
 		C.update_icon()
+*/
 
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
 	subsystem_initialized = SSmapping.subsystem_initialized
-	map_templates = SSmapping.map_templates
-	ruins_templates = SSmapping.ruins_templates
-	space_ruins_templates = SSmapping.space_ruins_templates
-	lava_ruins_templates = SSmapping.lava_ruins_templates
-	ice_ruins_templates = SSmapping.ice_ruins_templates
-	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
-	station_ruins_templates = SSmapping.station_ruins_templates
-	shuttle_templates = SSmapping.shuttle_templates
-	shelter_templates = SSmapping.shelter_templates
-	unused_turfs = SSmapping.unused_turfs
-	turf_reservations = SSmapping.turf_reservations
-	used_turfs = SSmapping.used_turfs
-
-	clearing_reserved_turfs = SSmapping.clearing_reserved_turfs
 
 /datum/controller/subsystem/mapping/proc/initialize_map_templates(reset = FALSE)
 	if(reset)
