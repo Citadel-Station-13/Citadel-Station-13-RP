@@ -69,6 +69,33 @@ require only minor tweaks.
 	// CROSSLINKED - mixed in with the cross-linked space pool
 	#define CROSSLINKED "Cross"
 
+// string - id for static linkage as above. only one side across all maps can have the same unique ID, more will result in errors.
+// only works if the map is static.
+// IS BY DEFAULT, ONE WAY. You have to set it on both zlevels pointing to each other to be two way.
+#define ZTRAIT_TRANSITION_ID_NORTH "Transition ID North"
+#define ZTRAIT_TRANSITION_ID_SOUTH "Transition ID South"
+#define ZTRAIT_TRANSITION_ID_EAST "Transition ID East"
+#define ZTRAIT_TRANSITION_ID_WEST "Transition ID West"
+
+// string - MUST BE UNIQUE! What the above ztrait transition IDs target. same as above, don't let this conflict.
+#define ZTRAIT_LEVEL_ID "Level ID"
+
+// number - tiles of padding on edge for transitions - defaults to DEFAULT_Z_EDGE_PADDING
+#define ZTRAIT_TRANSITION_PADDING "Transition Padding"
+
+// boolean - Disable transition mirage holders - defaults to false
+#define ZTRAIT_TRANSITION_NO_MIRAGE "No Transition Mirage"
+
+// number - the range of mirage borders for transitions
+#define ZTRAIT_MIRAGE_DISTANCE "Mirage Distance"
+
+// enum - how transitions are made
+#define ZTRAIT_TRANSITION_MODE "Transition Mode"
+	#define ZTRANSITION_MODE_STEP_TELEPORTER "step_teleporter"
+	// Make step teleporters on the turfs. will not render without mirage borders. IT IS HIGHLY RECOMMENDED THAT YOU USE PADDING 1 FOR THIS!
+	#define ZTRANSITION_MODE_TURF "turf"
+	// EXPERIMENTAL: attempt to utilize turfs themselves, without step teleporters. Planned to be similar to /tg/'s.
+
 // string - type path of the z-level's baseturf (defaults to space)
 #define ZTRAIT_BASETURF "Baseturf"
 
