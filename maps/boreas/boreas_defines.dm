@@ -1,6 +1,6 @@
 //Atmosphere properties
-#define BOREAS_ONE_ATMOSPHERE	82.4 //kPa
-#define BOREAS_AVG_TEMP	234 //kelvin
+#define BOREAS_ONE_ATMOSPHERE	98.3 //kPa
+#define BOREAS_AVG_TEMP	143 //kelvin
 
 #define BOREAS_PER_N2		0.74 //percent
 #define BOREAS_PER_O2		0.18

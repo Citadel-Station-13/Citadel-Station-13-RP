@@ -7,11 +7,7 @@
 	name = "Boreas(TEMP)"
 	desc = "TBD"
 	current_time = new /datum/time/boreas()
-	expected_z_levels = list(
-						Z_LEVEL_SURFACE_UNDER,
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID
-						)
+	expected_z_levels = list(1)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/boreas
 
 /datum/planet/boreas/New()
