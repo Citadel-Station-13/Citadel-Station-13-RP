@@ -395,6 +395,6 @@
 
 /datum/gear/suit/simonjacket
 	display_name = "simon jacket (Vox)"
-	path = /obj/item/clothing/suit/vox/simonjacket
+	path = /obj/item/clothing/suit/simonjacket
 	sort_category = "Xenowear"
 	whitelisted = SPECIES_VOX
