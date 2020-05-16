@@ -18,7 +18,7 @@
 	item_state = "vox-casual-2"
 
 /obj/item/clothing/under/vox/simonpants
-	name = "simon pants'
+	name = "simon pants"
 	desc = "Based off the clothing of a hero so famous, even the Vox had to emulate his style."
 	icon_state = "simonpants"
 	item_state = "simonpants"
