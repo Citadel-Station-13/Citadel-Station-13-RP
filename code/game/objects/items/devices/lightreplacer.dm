@@ -54,6 +54,12 @@
 	var/failmsg = ""
 	var/charge = 0
 
+	// Eating used bulbs gives us bulb shards
+	var/bulb_shards = 0
+	// when we get this many shards, we get a free bulb.
+	var/shards_required = 4
+
+
 /obj/item/lightreplacer/New()
 	failmsg = "The [name]'s refill light blinks red."
 	..()
@@ -84,9 +90,48 @@
 				user.drop_item()
 				qdel(L)
 				return
-		else
+		else if(L.status == 2)
+			if(uses >= max_uses)
+				to_chat(user, "<span class='warning'>[src.name] is full.</span>")
+				return
+			AddShards(1, user)
+			to_chat(user, "<span class='notice'>You insert a shard of glass into the [src.name]. You have [uses] light\s remaining.</span>")
+			qdel(W)
+			return
+/*		else
 			to_chat(user, "You need a working light.")
 			return
+*/
+
+	if(istype(W, /obj/item/storage))
+		var/obj/item/storage/S = W
+		var/found_lightbulbs = FALSE
+		var/replaced_something = TRUE
+
+		for(var/obj/item/I in S.contents)
+			if(istype(I, /obj/item/light))
+				var/obj/item/light/L = I
+				found_lightbulbs = TRUE
+				if(src.uses >= max_uses)
+					break
+				if(L.status == LIGHT_OK)
+					replaced_something = TRUE
+					add_uses(1)
+					qdel(L)
+
+				else if(L.status == LIGHT_BROKEN || L.status == LIGHT_BURNED)
+					replaced_something = TRUE
+					AddShards(1, user)
+					qdel(L)
+
+		if(!found_lightbulbs)
+			to_chat(user, "<span class='warning'>\The [S] contains no bulbs.</span>")
+			return
+
+		if(!replaced_something && src.uses == max_uses)
+			to_chat(user, "<span class='warning'>\The [src] is full!</span>")
+			return
+
 
 /obj/item/lightreplacer/attack_self(mob/user)
 	/* // This would probably be a bit OP. If you want it though, uncomment the code.
@@ -98,6 +143,17 @@
 			return
 	*/
 	to_chat(usr, "It has [uses] lights remaining.")
+
+/obj/item/lightreplacer/proc/AddShards(amount = 1, user)
+	bulb_shards += amount
+	var/new_bulbs = round(bulb_shards / shards_required)
+	if(new_bulbs > 0)
+		uses += 1
+	bulb_shards = bulb_shards % shards_required
+	if(new_bulbs != 0)
+		to_chat(user, "<span class='notice'>\The [src] has fabricated a new bulb from the broken glass it has stored. It now has [uses] uses.</span>")
+		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
+	return new_bulbs
 
 /obj/item/lightreplacer/update_icon()
 	icon_state = "lightreplacer[emagged]"
@@ -129,7 +185,9 @@
 		to_chat(U, "<span class='notice'>You replace the [target.get_fitting_name()] with the [src].</span>")
 
 		if(target.status != LIGHT_EMPTY)
-			target.remove_bulb()
+			AddShards(1, U)
+			target.status = LIGHT_EMPTY
+			target.update()
 
 		var/obj/item/light/L = new target.light_type()
 		target.insert_bulb(L)
