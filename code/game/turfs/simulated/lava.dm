@@ -14,6 +14,13 @@
 	can_build_into_floor = TRUE
 	can_dirty = FALSE
 
+/turf/simulated/floor/lava/phoron
+	name = "liquid phoron"
+	desc = "A pool of molten phoron"
+	description_info = "Liquid phoron is an extremely dangerous form of the usually gaseous state of phoron, as it only forms under extreme heat and pressure."
+	icon_state = "plava"
+	light_color = LIGHT_COLOR_PLAVA
+
 /turf/simulated/floor/lava/outdoors
 	outdoors = TRUE
 
