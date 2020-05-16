@@ -50,7 +50,7 @@
 "aX" = (/obj/machinery/appliance/mixer/candy,/obj/effect/floor_decal/industrial/warning/dust{dir = 8},/turf/simulated/floor/tiled/white,/area/crew_quarters/kitchen)
 "aY" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/machinery/door/firedoor/glass,/obj/structure/window/reinforced/polarized{dir = 10; icon_state = "fwindow"; id = "cmooffice_b"},/turf/simulated/floor/plating,/area/medical/surgery)
 "aZ" = (/turf/simulated/wall,/area/medical/surgery)
-"ba" = (/turf/space,/area/boreas/surfacebase/outside)
+"ba" = (/turf/simulated/open/boreas,/area/boreas/surfacebase/outside)
 "bb" = (/obj/structure/sign/nosmoking_1,/turf/simulated/wall,/area/medical/surgery)
 "bc" = (/obj/machinery/atmospherics/unary/vent_pump/on,/turf/simulated/floor/tiled/white,/area/crew_quarters/heads/cmo)
 "bd" = (/obj/machinery/door/airlock/medical{name = "Exam Room A"; req_one_access = list()},/turf/simulated/wall,/area/medical/medbay)
