@@ -4,53 +4,19 @@
 	maxhealth = 80
 
 //Special map objects
-/obj/effect/landmark/map_data/virgo3b
+/obj/effect/landmark/map_data/boreas
     height = 7
-/*
-/obj/turbolift_map_holder/tether
-	name = "Tether Climber"
-	depth = 7
-	lift_size_x = 3
-	lift_size_y = 3
-	icon = 'icons/obj/turbolift_preview_3x3.dmi'
-	wall_type = null // Don't make walls
-
-	areas_to_use = list(
-		/area/turbolift/t_surface/level1,
-		/area/turbolift/t_surface/level2,
-		/area/turbolift/t_surface/level3,
-		/area/turbolift/tether/transit,
-		/area/turbolift/t_station/level1,
-		/area/turbolift/t_station/level2,
-		/area/turbolift/t_station/level3
-		)
-
-/datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
 	use_power = 1
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
-
-/obj/effect/step_trigger/teleporter/to_mining/New()
-	..()
-	teleport_x = src.x
-	teleport_y = 2
-	teleport_z = Z_LEVEL_SURFACE_MINE
-
 /obj/effect/step_trigger/teleporter/from_mining/New()
 	..()
 	teleport_x = src.x
 	teleport_y = world.maxy - 1
 	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/to_solars/New()
-	..()
-	teleport_x = world.maxx - 1
-	teleport_y = src.y
-	teleport_z = Z_LEVEL_SOLARS
 
 /obj/effect/step_trigger/teleporter/from_solars/New()
 	..()
@@ -75,7 +41,7 @@
 		teleport_y = 2
 	else
 		teleport_y = src.y
-
+/*
 /obj/effect/step_trigger/teleporter/to_underdark
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
@@ -93,6 +59,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
+
 /obj/effect/step_trigger/teleporter/from_underdark/Initialize()
 	. = ..()
 	teleport_x = x
@@ -102,8 +69,8 @@
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/Initialize()
-	planet = planet_virgo3b
+/obj/effect/step_trigger/teleporter/planetary_fall/boreas/Initialize()
+	planet = planet_boreas
 	. = ..()
 
 /obj/effect/step_trigger/lost_in_space
@@ -143,37 +110,11 @@
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
+*/
 
 //
 // TRAM STATION
 //
-
-// The tram's electrified maglev tracks
-/turf/simulated/floor/maglev
-	name = "maglev track"
-	desc = "Magnetic levitation tram tracks. Caution! Electrified!"
-	icon = 'icons/turf/flooring/maglevs.dmi'
-	icon_state = "maglevup"
-
-	var/area/shock_area = /area/tether/surfacebase/tram
-
-/turf/simulated/floor/maglev/Initialize()
-	. = ..()
-	shock_area = locate(shock_area)
-
-// Walking on maglev tracks will shock you! Horray!
-/turf/simulated/floor/maglev/Entered(var/atom/movable/AM, var/atom/old_loc)
-	if(isliving(AM) && prob(50))
-		track_zap(AM)
-/turf/simulated/floor/maglev/attack_hand(var/mob/user)
-	if(prob(75))
-		track_zap(user)
-/turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
-	if (!istype(user)) return
-	if (electrocute_mob(user, shock_area, src))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
 
 // Tram air scrubbers for keeping arrivals clean - they work even with no area power
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram
@@ -183,7 +124,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
 	return TRUE // Always be powered
-*/
+
 //Chemistry 'chemavator'
 /obj/machinery/smartfridge/chemistry/chemvator
 	name = "\improper Smart Chemavator - Upper"
@@ -401,7 +342,7 @@ var/global/list/latejoin_tram   = list()
 		new /obj/item/gun/energy/frontier/locked/holdout(src)
 /*
 // Underdark mob spawners
-/obj/tether_away_spawner/underdark_normal
+/obj/boreas_away_spawner/underdark_normal
 	name = "Underdark Normal Spawner"
 	faction = "underdark"
 	atmos_comp = TRUE
@@ -415,7 +356,7 @@ var/global/list/latejoin_tram   = list()
 		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
 	)
 
-/obj/tether_away_spawner/underdark_hard
+/obj/boreas_away_spawner/underdark_hard
 	name = "Underdark Hard Spawner"
 	faction = "underdark"
 	atmos_comp = TRUE
@@ -428,7 +369,7 @@ var/global/list/latejoin_tram   = list()
 		/mob/living/simple_animal/hostile/mimic = 1
 	)
 
-/obj/tether_away_spawner/underdark_boss
+/obj/boreas_away_spawner/underdark_boss
 	name = "Underdark Boss Spawner"
 	faction = "underdark"
 	atmos_comp = TRUE
@@ -442,7 +383,7 @@ var/global/list/latejoin_tram   = list()
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
-
+*/
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window
@@ -499,4 +440,3 @@ var/global/list/latejoin_tram   = list()
 	layer = ABOVE_WINDOW_LAYER
 /obj/structure/noticeboard
 	layer = ABOVE_WINDOW_LAYER
-*/

@@ -93,22 +93,22 @@
 	if(awaym_dest && awaym_dest.contents.len) // Otherwise this is an empty imaginary area
 		destinations["Unknown Location [rand(1000,9999)]"] = awaym_dest
 
-*/
+
 
 //////////////////////////////////////////////////////////////
-// Tether Shuttle
-/datum/shuttle/ferry/tether_backup
-	name = "Tether Backup"
+// Boreas Shuttle
+/datum/shuttle/ferry/boreas_backup
+	name = "Boreas Backup"
 	location = 1 // At offsite
 	warmup_time = 5
 	move_time = 45
-	area_offsite = /area/shuttle/tether/surface
-	area_station = /area/shuttle/tether/station
-	area_transition = /area/shuttle/tether/transit
-	crash_areas = list(/area/shuttle/tether/crash1, /area/shuttle/tether/crash2)
-	docking_controller_tag = "tether_shuttle"
-	dock_target_station = "tether_dock_airlock"
-	dock_target_offsite = "tether_pad_airlock"
+	area_offsite = /area/shuttle/boreas/surface
+	area_station = /area/shuttle/boreas/station
+	area_transition = /area/shuttle/boreas/transit
+	crash_areas = list(/area/shuttle/boreas/crash1, /area/shuttle/boreas/crash2)
+	docking_controller_tag = "boreas_shuttle"
+	dock_target_station = "boreas_dock_airlock"
+	dock_target_offsite = "boreas_pad_airlock"
 
 //////////////////////////////////////////////////////////////
 // Antag Space "Proto Shuttle" Shuttle
@@ -155,17 +155,17 @@
 		//"Northwest of the station" = /area/syndicate_station/northwest,
 		//"North of the station" = /area/syndicate_station/north,
 		//"Northeast of the station" = /area/syndicate_station/northeast,
-		//"(Land) Southwest of Tether" = /area/syndicate_station/southwest,
+		//"(Land) Southwest of Boreas" = /area/syndicate_station/southwest,
 		//"South of the station" = /area/syndicate_station/south,
 		//"Southeast of the station" = /area/syndicate_station/southeast,
 		//"Telecomms Satellite" = /area/syndicate_station/commssat,
-		"(Land) Solar farm west of Tether" = /area/syndicate_station/mining,
-		"Tether spaceport" = /area/syndicate_station/arrivals_dock
+		"(Land) Solar farm west of Boreas" = /area/syndicate_station/mining,
+		"Boreas spaceport" = /area/syndicate_station/arrivals_dock
 		)
 	docking_controller_tag = "merc_shuttle"
 	destination_dock_targets = list(
 		"Mercenary base" = "merc_base",
-		"Tether spaceport" = "nuke_shuttle_dock_airlock",
+		"Boreas spaceport" = "nuke_shuttle_dock_airlock",
 		)
 	announcer = "Automated Traffic Control"
 
@@ -219,3 +219,4 @@
 	docking_controller_tag = "cruiser_shuttle"
 	dock_target_station = "d1a1_dock"
 	dock_target_offsite = "cruiser_shuttle_bay"
+*/

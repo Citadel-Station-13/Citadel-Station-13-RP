@@ -137,7 +137,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		"interior_status" = program.memory["interior_status"],
 		"processing" = program.memory["processing"]
 	)
-
+/*
 	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "phoron_airlock_console.tmpl", name, 470, 290)
@@ -171,7 +171,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 		program.receive_user_command(href_list["command"])
 
 	return 1
-
+*/
 //
 // PHORON LOCK CONTROLLER PROGRAM
 //
@@ -193,8 +193,8 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 /datum/computer/file/embedded_program/airlock/phoron/New(var/obj/machinery/embedded_controller/M)
 	..(M)
 	memory["chamber_sensor_phoron"] = 0
-	memory["external_sensor_pressure"] = VIRGO3B_ONE_ATMOSPHERE
-	memory["external_sensor_phoron"] = VIRGO3B_MOL_PHORON
+	memory["external_sensor_pressure"] = BOREAS_ONE_ATMOSPHERE
+	memory["external_sensor_phoron"] = BOREAS_MOL_PHORON
 	memory["internal_sensor_phoron"] = 0
 	memory["scrubber_status"] = "unknown"
 	memory["target_phoron"] = 0.1

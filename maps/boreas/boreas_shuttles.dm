@@ -1,17 +1,17 @@
 ////////////////////////////////////////
-// Tether custom shuttle implemnetations
+// Boreas custom shuttle implemnetations
 ////////////////////////////////////////
 
-/obj/machinery/computer/shuttle_control/tether_backup
-	name = "tether backup shuttle control console"
-	shuttle_tag = "Tether Backup"
+/obj/machinery/computer/shuttle_control/boreas_backup
+	name = "boreas backup shuttle control console"
+	shuttle_tag = "Boreas Backup"
 	req_one_access = list(access_heads,access_pilot)
 
-/obj/machinery/computer/shuttle_control/multi/tether_antag_ground
+/obj/machinery/computer/shuttle_control/multi/boreas_antag_ground
 	name = "land crawler control console"
 	shuttle_tag = "Land Crawler"
 
-/obj/machinery/computer/shuttle_control/multi/tether_antag_space
+/obj/machinery/computer/shuttle_control/multi/boreas_antag_space
 	name = "protoshuttle control console"
 	shuttle_tag = "Proto"
 
@@ -61,23 +61,23 @@
 		qdel(signal)
 
 //
-// The backup tether shuttle uses experimental engines and can degrade and/or crash!
+// The backup boreas shuttle uses experimental engines and can degrade and/or crash!
 //
-/datum/shuttle/ferry/tether_backup
-	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
-	category = /datum/shuttle/ferry/tether_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
+/datum/shuttle/ferry/boreas_backup
+	crash_message = "Boreas shuttle distress signal received. Shuttle location is approximately 200 meters from boreas base."
+	category = /datum/shuttle/ferry/boreas_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
 	var/list/engines = list()
-	var/obj/machinery/computer/shuttle_control/tether_backup/computer
+	var/obj/machinery/computer/shuttle_control/boreas_backup/computer
 
-/datum/shuttle/ferry/tether_backup/New()
+/datum/shuttle/ferry/boreas_backup/New()
 	..()
 	var/area/current_area = get_location_area(location)
 	for(var/obj/structure/shuttle/engine/propulsion/E in current_area)
 		engines += E
-	for(var/obj/machinery/computer/shuttle_control/tether_backup/comp in current_area)
+	for(var/obj/machinery/computer/shuttle_control/boreas_backup/comp in current_area)
 		computer = comp
 
-/datum/shuttle/ferry/tether_backup/process_longjump(var/area/origin, var/area/intended_destination)
+/datum/shuttle/ferry/boreas_backup/process_longjump(var/area/origin, var/area/intended_destination)
 	var/failures = engines.len
 	for(var/engine in engines)
 		var/obj/structure/shuttle/engine/E = engine
@@ -166,7 +166,7 @@
 	wear = 20
 	update_icon()
 	return 1
-
+/*
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
@@ -187,7 +187,7 @@
 /datum/shuttle/web_shuttle/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	current_area = /area/shuttle/excursion/tether
+	current_area = /area/shuttle/excursion/boreas
 	docking_controller_tag = "expshuttle_docker"
 	web_master_type = /datum/shuttle_web_master/excursion
 	var/abduct_chance = 0.5 //Prob
@@ -213,70 +213,71 @@
 
 /datum/shuttle_web_master/excursion
 	destination_class = /datum/shuttle_destination/excursion
-	starting_destination = /datum/shuttle_destination/excursion/tether
+	starting_destination = /datum/shuttle_destination/excursion/boreas
 
-/datum/shuttle_destination/excursion/tether
+/datum/shuttle_destination/excursion/boreas
 	name = "NSB Adephagia Excursion Hangar"
-	my_area = /area/shuttle/excursion/tether
+	my_area = /area/shuttle/excursion/boreas
 
 	dock_target = "expshuttle_dock"
 	radio_announce = 1
 	announcer = "Excursion Shuttle"
 
 	routes_to_make = list(
-		/datum/shuttle_destination/excursion/outside_tether = 0,
+		/datum/shuttle_destination/excursion/outside_boreas = 0,
 	)
 
-/datum/shuttle_destination/excursion/tether/get_arrival_message()
+/datum/shuttle_destination/excursion/boreas/get_arrival_message()
 	return "Attention, [master.my_shuttle.visible_name] has arrived at the Excursion Hangar."
 
-/datum/shuttle_destination/excursion/tether/get_departure_message()
+/datum/shuttle_destination/excursion/boreas/get_departure_message()
 	return "Attention, [master.my_shuttle.visible_name] has departed from the Excursion Hangar."
 
 
-/datum/shuttle_destination/excursion/outside_tether
+/datum/shuttle_destination/excursion/outside_boreas
 	name = "Nearby NSB Adephagia"
-	my_area = /area/shuttle/excursion/tether_nearby
+	my_area = /area/shuttle/excursion/boreas_nearby
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 
 	routes_to_make = list(
-		/datum/shuttle_destination/excursion/docked_tether = 0,
-		/datum/shuttle_destination/excursion/virgo3b_orbit = 30 SECONDS
+		/datum/shuttle_destination/excursion/docked_boreas = 0,
+		/datum/shuttle_destination/excursion/boreas_orbit = 30 SECONDS
 	)
 
 
-/datum/shuttle_destination/excursion/docked_tether
+/datum/shuttle_destination/excursion/docked_boreas
 	name = "NSB Adephagia Docking Arm"
-	my_area = /area/shuttle/excursion/tether_dockarm
+	my_area = /area/shuttle/excursion/boreas_dockarm
 
 	dock_target = "d1a2_dock"
 	radio_announce = 1
 	announcer = "Excursion Shuttle"
 
-/datum/shuttle_destination/excursion/docked_tether/get_arrival_message()
+/datum/shuttle_destination/excursion/docked_boreas/get_arrival_message()
 	return "Attention, [master.my_shuttle.visible_name] has arrived at Docking Arm One."
 
-/datum/shuttle_destination/excursion/docked_tether/get_departure_message()
+/datum/shuttle_destination/excursion/docked_boreas/get_departure_message()
 	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
 
 
-/datum/shuttle_destination/excursion/virgo3b_orbit
+/datum/shuttle_destination/excursion/boreas_orbit
 	name = "Virgo 3B Orbit"
 	my_area = /area/shuttle/excursion/space
 	preferred_interim_area = /area/shuttle/excursion/space_moving
 
 	routes_to_make = list(
-		/datum/shuttle_destination/excursion/virgo3b_sky = 30 SECONDS,
+		/datum/shuttle_destination/excursion/boreas_sky = 30 SECONDS,
 		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
 	)
 
 
-/datum/shuttle_destination/excursion/virgo3b_sky
+/datum/shuttle_destination/excursion/boreas_sky
 	name = "Skies of Virgo 3B"
-	my_area = /area/shuttle/excursion/virgo3b_sky
+	my_area = /area/shuttle/excursion/boreas_sky
 
 ////////// Distant Destinations
 /datum/shuttle_destination/excursion/bluespace
 	name = "Bluespace Jump"
 	my_area = /area/shuttle/excursion/bluespace
 	preferred_interim_area = /area/shuttle/excursion/space_moving
+*/
