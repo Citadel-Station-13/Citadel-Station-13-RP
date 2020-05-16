@@ -3,44 +3,44 @@
 
 // #### Relays ####
 // Telecomms doesn't know about connected z-levels, so we need relays even for the other surface levels.
-/obj/machinery/telecomms/relay/preset/tether/base_low
+/obj/machinery/telecomms/relay/preset/boreas/base_low
 	id = "Base Relay 1"
 	listening_level = Z_LEVEL_SURFACE_LOW
 	autolinkers = list("tbl_relay")
 
-/obj/machinery/telecomms/relay/preset/tether/base_mid
+/obj/machinery/telecomms/relay/preset/boreas/base_mid
 	id = "Base Relay 2"
 	listening_level = Z_LEVEL_SURFACE_MID
 	autolinkers = list("tbm_relay")
-
-/obj/machinery/telecomms/relay/preset/tether/base_high
+/*
+/obj/machinery/telecomms/relay/preset/boreas/base_high
 	id = "Base Relay 3"
 	listening_level = Z_LEVEL_SURFACE_HIGH
 	autolinkers = list("tbh_relay")
 
 // cit edit - fuck you guys
-/obj/machinery/telecomms/relay/preset/tether/transit
-	id = "Tether Midpoint Relay"
+/obj/machinery/telecomms/relay/preset/boreas/transit
+	id = "Boreas Midpoint Relay"
 	listening_level = Z_LEVEL_TRANSIT
 	autolinkers = list("tmp_relay")
 
 // The station of course needs relays fluff-wise to connect to ground station. But again, no multi-z so, we need one for each z level.
-/obj/machinery/telecomms/relay/preset/tether/station_low
+/obj/machinery/telecomms/relay/preset/boreas/station_low
 	id = "Station Relay 1"
 	listening_level = Z_LEVEL_SPACE_LOW
 	autolinkers = list("tsl_relay")
 
-/obj/machinery/telecomms/relay/preset/tether/station_mid
+/obj/machinery/telecomms/relay/preset/boreas/station_mid
 	id = "Station Relay 2"
 	listening_level = Z_LEVEL_SPACE_MID
 	autolinkers = list("tsm_relay")
 
-/obj/machinery/telecomms/relay/preset/tether/station_high
+/obj/machinery/telecomms/relay/preset/boreas/station_high
 	id = "Station Relay 3"
 	listening_level = Z_LEVEL_SPACE_HIGH
 	autolinkers = list("tsh_relay")
 
-/obj/machinery/telecomms/relay/preset/tether/sci_outpost
+/obj/machinery/telecomms/relay/preset/boreas/sci_outpost
 	id = "Science Outpost Relay"
 	listening_level = Z_LEVEL_SOLARS
 	autolinkers = list("sci_o_relay")
@@ -49,9 +49,9 @@
 	id = "Mining Underground Relay"
 	listening_level = Z_LEVEL_UNDERDARK
 	autolinkers = list("ud_relay")
-
+*/
 // #### Hub ####
-/obj/machinery/telecomms/hub/preset/tether
+/obj/machinery/telecomms/hub/preset/boreas
 	id = "Hub"
 	network = "tcommsat"
 	autolinkers = list("hub",
@@ -61,38 +61,38 @@
 		"hb_relay", "receiverA", "broadcasterA"
 	)
 
-/obj/machinery/telecomms/receiver/preset_right/tether
+/obj/machinery/telecomms/receiver/preset_right/boreas
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ, EXP_FREQ)
 
-/obj/machinery/telecomms/bus/preset_two/tether
+/obj/machinery/telecomms/bus/preset_two/boreas
 	freq_listening = list(SUP_FREQ, SRV_FREQ, EXP_FREQ)
 
-/obj/machinery/telecomms/server/presets/service/tether
+/obj/machinery/telecomms/server/presets/service/boreas
 	freq_listening = list(SRV_FREQ, EXP_FREQ)
 	autolinkers = list("service", "explorer")
 
 // Telecommunications Satellite
-/area/tether/surfacebase/tcomms
+/area/boreas/surfacebase/tcomms
 	name = "\improper Telecomms"
 	ambience = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg')
 
-/area/tether/surfacebase/tcomms/entrance
+/area/boreas/surfacebase/tcomms/entrance
 	name = "\improper Telecomms Teleporter"
 	icon_state = "tcomsatentrance"
 
-/area/tether/surfacebase/tcomms/foyer
+/area/boreas/surfacebase/tcomms/foyer
 	name = "\improper Telecomms Foyer"
 	icon_state = "tcomsatfoyer"
 
-/area/tether/surfacebase/tcomms/storage
+/area/boreas/surfacebase/tcomms/storage
 	name = "\improper Telecomms Storage"
 	icon_state = "tcomsatwest"
 
-/area/tether/surfacebase/tcomms/computer
+/area/boreas/surfacebase/tcomms/computer
 	name = "\improper Telecomms Control Room"
 	icon_state = "tcomsatcomp"
 
-/area/tether/surfacebase/tcomms/chamber
+/area/boreas/surfacebase/tcomms/chamber
 	name = "\improper Telecomms Central Compartment"
 	icon_state = "tcomsatcham"
 	flags = BLUE_SHIELDED
@@ -103,7 +103,7 @@
 /area/maintenance/station/tcomms
 	name = "\improper Telecoms Maintenance"
 
-/datum/map/tether/default_internal_channels()
+/datum/map/boreas/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ) = list(),
 		num2text(AI_FREQ)  = list(access_synth),
@@ -121,10 +121,10 @@
 		num2text(EXP_FREQ) = list(access_explorer)
 	)
 
-/obj/item/multitool/tether_buffered
-	name = "pre-linked multitool (tether hub)"
-	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
+/obj/item/multitool/boreas_buffered
+	name = "pre-linked multitool (boreas hub)"
+	desc = "This multitool has already been linked to the Boreas telecomms hub and can be used to link multiple machines to the hub, including relays." //cit edit - it's not one use
 
-/obj/item/multitool/tether_buffered/Initialize()
+/obj/item/multitool/boreas_buffered/Initialize()
 	. = ..()
-	buffer = locate(/obj/machinery/telecomms/hub/preset/tether)
+	buffer = locate(/obj/machinery/telecomms/hub/preset/boreas)

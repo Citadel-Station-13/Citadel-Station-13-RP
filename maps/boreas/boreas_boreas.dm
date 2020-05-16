@@ -1,29 +1,25 @@
-//var/datum/planet/virgo3b/planet_virgo3b = null
+/var/datum/planet/boreas/planet_boreas = null
 
-/datum/time/virgo3b
-	seconds_in_day = 3 HOURS
-/*
-/datum/planet/virgo3b
-	name = "Virgo-3B"
-	desc = "A mid-sized moon of the Virgo 3 gas giant, this planet has an atmosphere mainly comprised of phoron, with trace \
-	amounts of both oxygen and nitrogen. Fortunately, the oxygen is not enough to be combustible in any meaningful way, however \
-	the phoron is desirable by many corporations, including NanoTrasen."
-	current_time = new /datum/time/virgo3b()
+/datum/time/boreas
+	seconds_in_day = 2 HOURS
+
+/datum/planet/boreas
+	name = "Boreas(TEMP)"
+	desc = "TBD"
+	current_time = new /datum/time/boreas()
 	expected_z_levels = list(
+						Z_LEVEL_SURFACE_UNDER,
 						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_SURFACE_MINE,
-						Z_LEVEL_SOLARS
+						Z_LEVEL_SURFACE_MID
 						)
-	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
-*/
-/datum/planet/virgo3b/New()
-	..()
-	planet_virgo3b = src
-	weather_holder = new /datum/weather_holder/virgo3b(src)
+	planetary_wall_type = /turf/unsimulated/wall/planetary/boreas
 
-/datum/planet/virgo3b/update_sun()
+/datum/planet/boreas/New()
+	..()
+	planet_boreas = src
+	weather_holder = new /datum/weather_holder/boreas(src)
+
+/datum/planet/boreas/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60
@@ -101,20 +97,20 @@
 
 	spawn(1)
 		update_sun_deferred(2, new_brightness, new_color)
-/*
 
-/datum/weather_holder/virgo3b
-	temperature = T0C
+
+/datum/weather_holder/boreas
+	temperature = -149
 	allowed_weather_types = list(
-		WEATHER_CLEAR		= new /datum/weather/virgo3b/clear(),
-		WEATHER_OVERCAST	= new /datum/weather/virgo3b/overcast(),
-		WEATHER_LIGHT_SNOW	= new /datum/weather/virgo3b/light_snow(),
-		WEATHER_SNOW		= new /datum/weather/virgo3b/snow(),
-		WEATHER_BLIZZARD	= new /datum/weather/virgo3b/blizzard(),
-		WEATHER_RAIN		= new /datum/weather/virgo3b/rain(),
-		WEATHER_STORM		= new /datum/weather/virgo3b/storm(),
-		WEATHER_HAIL		= new /datum/weather/virgo3b/hail(),
-		WEATHER_BLOOD_MOON	= new /datum/weather/virgo3b/blood_moon()
+		WEATHER_CLEAR		= new /datum/weather/boreas/clear(),
+		WEATHER_OVERCAST	= new /datum/weather/boreas/overcast(),
+		WEATHER_LIGHT_SNOW	= new /datum/weather/boreas/light_snow(),
+		WEATHER_SNOW		= new /datum/weather/boreas/snow(),
+		WEATHER_BLIZZARD	= new /datum/weather/boreas/blizzard(),
+		WEATHER_RAIN		= new /datum/weather/boreas/rain(),
+		WEATHER_STORM		= new /datum/weather/boreas/storm(),
+		WEATHER_HAIL		= new /datum/weather/boreas/hail(),
+		WEATHER_BLOOD_MOON	= new /datum/weather/boreas/blood_moon()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 30,
@@ -127,12 +123,12 @@
 		WEATHER_HAIL		= 2.5
 		)
 
-/datum/weather/virgo3b
-	name = "virgo3b base"
-	temp_high = 243.15 // -20c
-	temp_low = 233.15  // -30c
+/datum/weather/boreas
+	name = "boreas base"
+	temp_high = 124.15 // -140c
+	temp_low = 110.15  // -163c
 
-/datum/weather/virgo3b/clear
+/datum/weather/boreas/clear
 	name = "clear"
 	transition_chances = list(
 		WEATHER_CLEAR = 60,
@@ -146,7 +142,7 @@
 	sky_visible = TRUE
 	observed_message = "The sky is clear."
 
-/datum/weather/virgo3b/overcast
+/datum/weather/boreas/overcast
 	name = "overcast"
 	light_modifier = 0.8
 	transition_chances = list(
@@ -164,11 +160,11 @@
 		"It's very cloudy."
 		)
 
-/datum/weather/virgo3b/light_snow
+/datum/weather/boreas/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
-	temp_high = 235
-	temp_low = 	225
+	temp_high = 111
+	temp_low = 	101
 	light_modifier = 0.7
 	transition_chances = list(
 		WEATHER_OVERCAST = 20,
@@ -182,11 +178,11 @@
 		"It begins to snow lightly.",
 		)
 
-/datum/weather/virgo3b/snow
+/datum/weather/boreas/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
-	temp_high = 230
-	temp_low = 220
+	temp_high = 90
+	temp_low = 75
 	light_modifier = 0.5
 	flight_failure_modifier = 5
 	transition_chances = list(
@@ -202,7 +198,7 @@
 		"The air feels much colder as snowflakes fall from above."
 	)
 
-/datum/weather/virgo3b/snow/process_effects()
+/datum/weather/boreas/snow/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -212,11 +208,11 @@
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
 						T.chill()
 
-/datum/weather/virgo3b/blizzard
+/datum/weather/boreas/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
-	temp_high = 215
-	temp_low = 200
+	temp_high = 80
+	temp_low = 71
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	transition_chances = list(
@@ -231,7 +227,7 @@
 		"It starts snowing heavily, and it feels extremly cold now."
 	)
 
-/datum/weather/virgo3b/blizzard/process_effects()
+/datum/weather/boreas/blizzard/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -241,7 +237,7 @@
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
 						T.chill()
 
-/datum/weather/virgo3b/rain
+/datum/weather/boreas/rain
 	name = "rain"
 	icon_state = "rain"
 	light_modifier = 0.5
@@ -259,7 +255,7 @@
 		"The sky is dark, and rain falls down upon you."
 	)
 
-/datum/weather/virgo3b/rain/process_effects()
+/datum/weather/boreas/rain/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -285,7 +281,7 @@
 			if(show_message)
 				to_chat(L, effect_message)
 
-/datum/weather/virgo3b/storm
+/datum/weather/boreas/storm
 	name = "storm"
 	icon_state = "storm"
 	light_modifier = 0.3
@@ -310,7 +306,7 @@
 		WEATHER_OVERCAST = 5
 		)
 
-/datum/weather/virgo3b/storm/process_effects()
+/datum/weather/boreas/storm/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -358,14 +354,14 @@
 
 // This gets called to do lightning periodically.
 // There is a seperate function to do the actual lightning strike, so that badmins can play with it.
-/datum/weather/virgo3b/storm/proc/handle_lightning()
+/datum/weather/boreas/storm/proc/handle_lightning()
 	if(world.time < next_lightning_strike)
 		return // It's too soon to strike again.
 	next_lightning_strike = world.time + rand(min_lightning_cooldown, max_lightning_cooldown)
 	var/turf/T = pick(holder.our_planet.planet_floors) // This has the chance to 'strike' the sky, but that might be a good thing, to scare reckless pilots.
 	lightning_strike(T)
 
-/datum/weather/virgo3b/hail
+/datum/weather/boreas/hail
 	name = "hail"
 	icon_state = "hail"
 	light_modifier = 0.3
@@ -387,7 +383,7 @@
 		"An intense chill is felt, and chunks of ice start to fall from the sky, towards you."
 	)
 
-/datum/weather/virgo3b/hail/process_effects()
+/datum/weather/boreas/hail/process_effects()
 	..()
 	for(var/humie in human_mob_list)
 		var/mob/living/carbon/human/H = humie
@@ -424,7 +420,7 @@
 			if(show_message)
 				to_chat(H, effect_message)
 
-/datum/weather/virgo3b/blood_moon
+/datum/weather/boreas/blood_moon
 	name = "blood moon"
 	light_modifier = 0.5
 	light_color = "#FF0000"
@@ -436,4 +432,3 @@
 	transition_messages = list(
 		"The sky turns blood red!"
 	)
-*/

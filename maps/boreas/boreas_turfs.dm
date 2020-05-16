@@ -1,35 +1,35 @@
 //Simulated
-VIRGO3B_TURF_CREATE(/turf/simulated/open)
-/turf/simulated/open/virgo3b
+BOREAS_TURF_CREATE(/turf/simulated/open)
+/turf/simulated/open/boreas
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
-/turf/simulated/open/virgo3b/New()
+/turf/simulated/open/boreas/New()
 	..()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor)
+BOREAS_TURF_CREATE(/turf/simulated/floor)
 
-/turf/simulated/floor/virgo3b_indoors
-	VIRGO3B_SET_ATMOS
-/turf/simulated/floor/virgo3b_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
+/turf/simulated/floor/boreas_indoors
+	BOREAS_SET_ATMOS
+/turf/simulated/floor/boreas_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
 	return 0
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
+BOREAS_TURF_CREATE(/turf/simulated/floor/reinforced)
+BOREAS_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
+BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
+BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
+BOREAS_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
 	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks/virgo3b,
-		/turf/simulated/floor/outdoors/dirt/virgo3b
+		/turf/simulated/floor/outdoors/rocks/boreas,
+		/turf/simulated/floor/outdoors/dirt/boreas
 		)
 
 
 
 // Overriding these for the sake of submaps that use them on other planets.
-// This means that mining on tether base and space is oxygen-generating, but solars and mining should use the virgo3b subtype
+// This means that mining on boreas base and space is oxygen-generating, but solars and mining should use the boreas subtype
 /turf/simulated/mineral
 	oxygen = MOLES_O2STANDARD
 	nitrogen = MOLES_N2STANDARD
@@ -52,58 +52,58 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 	nitrogen = 0
 	temperature	= TCMB
 
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral)
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
+BOREAS_TURF_CREATE(/turf/simulated/mineral)
+BOREAS_TURF_CREATE(/turf/simulated/mineral/floor)
 	//This proc is responsible for ore generation on surface turfs
-/turf/simulated/mineral/virgo3b/make_ore(var/rare_ore)
+/turf/simulated/mineral/boreas/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"uranium" = 10, 
-			"platinum" = 10, 
-			"hematite" = 20, 
-			"carbon" = 20, 
-			"diamond" = 1, 
-			"gold" = 8, 
-			"silver" = 8, 
-			"phoron" = 18))
+			"uranium" = 10,
+			"platinum" = 10,
+			"hematite" = 10,
+			"carbon" = 13,
+			"diamond" = 1,
+			"gold" = 8,
+			"silver" = 8,
+			"phoron" = 25))
 	else
 		mineral_name = pickweight(list(
-			"uranium" = 5, 
-			"platinum" = 5, 
-			"hematite" = 35, 
-			"carbon" = 35, 
-			"gold" = 3, 
-			"silver" = 3, 
+			"uranium" = 5,
+			"platinum" = 5,
+			"hematite" = 35,
+			"carbon" = 35,
+			"gold" = 3,
+			"silver" = 3,
 			"phoron" = 25))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
-/turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)
+/turf/simulated/mineral/boreas/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
 	if(rare_ore)
 		mineral_name = pickweight(list(
-			"uranium" = 10, 
-			"platinum" = 10, 
-			"hematite" = 10, 
-			"carbon" = 10, 
-			"diamond" = 4, 
-			"gold" = 15, 
+			"uranium" = 10,
+			"platinum" = 10,
+			"hematite" = 10,
+			"carbon" = 10,
+			"diamond" = 4,
+			"gold" = 15,
 			"silver" = 15))
 	else
 		mineral_name = pickweight(list(
-			"uranium" = 7, 
-			"platinum" = 7, 
-			"hematite" = 28, 
-			"carbon" = 28, 
-			"diamond" = 2, 
-			"gold" = 7, 
+			"uranium" = 7,
+			"platinum" = 7,
+			"hematite" = 28,
+			"carbon" = 28,
+			"diamond" = 2,
+			"gold" = 7,
 			"silver" = 7))
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
@@ -111,13 +111,13 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	update_icon()
 
 //Unsimulated
-/turf/unsimulated/wall/planetary/virgo3b
+/turf/unsimulated/wall/planetary/boreas
 	name = "facility wall"
-	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
+	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is comprised of dangerous ice-beasts."
 	alpha = 0xFF
-	VIRGO3B_SET_ATMOS
+	BOREAS_SET_ATMOS
 
-/turf/unsimulated/mineral/virgo3b
+/turf/unsimulated/mineral/boreas
 	blocks_air = TRUE
 
 /turf/unsimulated/floor/steel
@@ -179,29 +179,29 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 
 //Sky stuff!
 // A simple turf to fake the appearance of flying.
-/turf/simulated/sky/virgo3b
+/turf/simulated/sky/boreas
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize()
+/turf/simulated/sky/boreas/Initialize()
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 
-/turf/simulated/sky/virgo3b/north
+/turf/simulated/sky/boreas/north
 	dir = NORTH
-/turf/simulated/sky/virgo3b/south
+/turf/simulated/sky/boreas/south
 	dir = SOUTH
-/turf/simulated/sky/virgo3b/east
+/turf/simulated/sky/boreas/east
 	dir = EAST
-/turf/simulated/sky/virgo3b/west
+/turf/simulated/sky/boreas/west
 	dir = WEST
 
-/turf/simulated/sky/virgo3b/moving
+/turf/simulated/sky/boreas/moving
 	icon_state = "sky_fast"
-/turf/simulated/sky/virgo3b/moving/north
+/turf/simulated/sky/boreas/moving/north
 	dir = NORTH
-/turf/simulated/sky/virgo3b/moving/south
+/turf/simulated/sky/boreas/moving/south
 	dir = SOUTH
-/turf/simulated/sky/virgo3b/moving/east
+/turf/simulated/sky/boreas/moving/east
 	dir = EAST
-/turf/simulated/sky/virgo3b/moving/west
+/turf/simulated/sky/boreas/moving/west
 	dir = WEST
