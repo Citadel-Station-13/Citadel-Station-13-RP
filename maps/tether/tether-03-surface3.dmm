@@ -18014,11 +18014,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_research{
-	name = "Robotics Lab";
-	req_access = list(29,47)
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/research{
+	name = "Robotics"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
 "DU" = (
@@ -18999,10 +18998,10 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "Fm" = (
-/obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Fn" = (
@@ -19618,10 +19617,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "Go" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
+/obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Gp" = (
@@ -21041,10 +21037,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "Jd" = (
-/obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Je" = (
