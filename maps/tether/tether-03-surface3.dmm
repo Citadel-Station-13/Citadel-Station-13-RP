@@ -17646,15 +17646,15 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "DA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
-	name = "Robotics Morgue"
+	id_tag = "researchdoor";
+	name = "Robotics Lab";
+	req_access = list(47)
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
 "DB" = (
@@ -18011,14 +18011,17 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "DT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_research{
-	name = "Robotics Lab";
-	req_access = list(29,47)
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	id_tag = "researchdoor";
+	name = "Robotics Morgue";
+	req_access = list(47)
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
 "DU" = (
@@ -18999,10 +19002,10 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "Fm" = (
-/obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Fn" = (
@@ -19618,10 +19621,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "Go" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
+/obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Gp" = (
@@ -20258,7 +20258,9 @@
 "HG" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
-	name = "Robotics"
+	id_tag = "researchdoor";
+	name = "Robotics Lab";
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
@@ -20604,10 +20606,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
-	name = "Robotics Morgue"
+	id_tag = "researchdoor";
+	name = "Robotics Morgue";
+	req_access = list(47)
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -21041,10 +21045,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/shuttle_pad)
 "Jd" = (
-/obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
+/obj/machinery/disposal,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "Je" = (
@@ -33063,7 +33067,7 @@ Da
 Da
 Da
 Fa
-DT
+DA
 Fa
 Da
 Da
@@ -33922,7 +33926,7 @@ Hc
 Hp
 De
 De
-DA
+DT
 Da
 Da
 zb
