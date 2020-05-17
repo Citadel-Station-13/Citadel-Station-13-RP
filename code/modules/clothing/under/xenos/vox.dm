@@ -16,6 +16,12 @@
 	desc = "Weird and flowing!"
 	icon_state = "vox-casual-2"
 	item_state = "vox-casual-2"
+
+/obj/item/clothing/under/vox/simonpants
+	name = "simon pants"
+	desc = "Based off the clothing of a hero so famous, even the Vox had to emulate his style."
+	icon_state = "simonpants"
+	item_state = "simonpants"
 	
 //Vox Accessories
 /obj/item/clothing/accessory/storage/vox
