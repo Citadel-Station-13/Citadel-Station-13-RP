@@ -13049,6 +13049,8 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
+/obj/item/holosign_creator,
+/obj/item/holosign_creator,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yY" = (
@@ -18476,6 +18478,15 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
+"Km" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/janitor)
 "Kn" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -19225,15 +19236,6 @@
 /obj/effect/floor_decal/corner/lime/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Wv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/janitor)
 "WA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	icon_state = "map";
@@ -33391,7 +33393,7 @@ ac
 oc
 vH
 wl
-Wv
+Km
 yA
 yU
 zu
