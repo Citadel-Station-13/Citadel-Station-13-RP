@@ -113,6 +113,10 @@
 	slot_flags = SLOT_HOLSTER
 	origin_tech = list(TECH_BIO = 3)
 
+/obj/item/holder/protoblob
+	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5, TECH_ENGINEERING = 5)
+	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER
+
 /obj/item/holder/fish/afterattack(var/atom/target, var/mob/living/user, proximity)
 	if(!target)
 		return
