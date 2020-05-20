@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(input)
 		"North", "East", "South", "West",
 		"Northeast", "Southeast", "Northwest", "Southwest",
 		"Insert", "Delete", "Ctrl", "Alt", "Shift",
-		"F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
+		/*"F1", "F2", REMOVED - Keep these out unless control freak is enabled.*/ "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
 		)
 	for(var/key in classic_mode_keys)
 		macroset_classic_input[key] = "\"KeyDown [key]\""
@@ -63,6 +63,9 @@ SUBSYSTEM_DEF(input)
 	// Misc
 	macroset_classic_input["Tab"] = "\".winset \\\"mainwindow.macro=[SKIN_MACROSET_CLASSIC_HOTKEYS] map.focus=true input.background-color=[COLOR_INPUT_DISABLED]\\\"\""
 	macroset_classic_input["Escape"] = "\".winset \\\"input.text=\\\"\\\"\\\"\""
+	// These are required unless control freak is enabled.
+	macroset_classic_input["F1"] = "adminhelp"
+	macroset_classic_input["F2"] = "ooc"
 
 	// FINALLY, WE CAN DO SOMETHING MORE NORMAL FOR THE SNOWFLAKE-BUT-LESS KEYSET.
 	macroset_classic_hotkey = list(
@@ -71,10 +74,9 @@ SUBSYSTEM_DEF(input)
 	"Tab" = "\".winset \\\"mainwindow.macro=[SKIN_MACROSET_CLASSIC_INPUT] input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 	"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
-	"O" = "ooc",
-	"T" = "say",
-	"L" = "looc",
-	"M" = "me"
+	"F1" = "adminhelp",
+	"F2" = "ooc",
+	"H" = "holster"
 	)
 
 	// And finally, the modern set.
@@ -84,10 +86,9 @@ SUBSYSTEM_DEF(input)
 	"Tab" = "\".winset \\\"input.focus=true?map.focus=true input.background-color=[COLOR_INPUT_DISABLED]:input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 	"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
-	"O" = "ooc",
-	"T" = "say",
-	"L" = "looc",
-	"M" = "me"
+	"F1" = "adminhelp",
+	"F2" = "ooc",
+	"H" = "holster"
 	)
 
 // Badmins just wanna have fun ♪
