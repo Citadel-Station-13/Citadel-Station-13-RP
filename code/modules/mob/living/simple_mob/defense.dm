@@ -144,8 +144,7 @@
 
 /mob/living/simple_mob/get_shock_protection()
 	return shock_resist
-// tasers no longer damage simples. Break out the lasers.
-/*
+
 // Shot with taser/stunvolver
 /mob/living/simple_mob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
 	if(taser_kill)
@@ -160,7 +159,7 @@
 		if(agony_amount)
 			agonyDam += agony_amount * 0.5
 			apply_damage(damage = agonyDam, damagetype = BURN, def_zone = null, blocked = armor, blocked = resistance, used_weapon = used_weapon, sharp = FALSE, edge = FALSE)
-*/
+
 
 // Electromagnetism
 /mob/living/simple_mob/emp_act(severity)
@@ -233,3 +232,4 @@
 	if(ignore_thickness)
 		return TRUE
 	return !thick_armor
+
