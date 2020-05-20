@@ -11,16 +11,16 @@
 	if (istype(fax, /obj/item/paper))
 		var/obj/item/paper/P = fax
 		var/text = "<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[P.info][P.stamps]</BODY></HTML>";
-		file("[config_legacy.fax_export_dir]/fax_[faxid].html") << text;
+		file("[GLOB.log_directory]/faxes/fax_[faxid].html") << text;
 	else if (istype(fax, /obj/item/photo))
 		var/obj/item/photo/H = fax
-		fcopy(H.img, "[config_legacy.fax_export_dir]/photo_[faxid].png")
+		fcopy(H.img, "[GLOB.log_directory]/faxes/photo_[faxid].png")
 		var/text = "<html><head><title>[H.name]</title></head>" \
 			+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
 			+ "<img src='photo_[faxid].png'>" \
 			+ "[H.scribble ? "<br>Written on the back:<br><i>[H.scribble]</i>" : ""]"\
 			+ "</body></html>"
-		file("[config_legacy.fax_export_dir]/fax_[faxid].html") << text
+		file("[GLOB.log_directory]/faxes/fax_[faxid].html") << text
 	else if (istype(fax, /obj/item/paper_bundle))
 		var/obj/item/paper_bundle/B = fax
 		var/data = ""
