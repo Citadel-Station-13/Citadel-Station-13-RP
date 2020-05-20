@@ -29,7 +29,7 @@
 			var/page_faxid = export_fax(pageobj)
 			data += "<a href='fax_[page_faxid].html'>Page [page] - [pageobj.name]</a><br>"
 		var/text = "<html><head><title>[B.name]</title></head><body>[data]</body></html>"
-		file("[config_legacy.fax_export_dir]/fax_[faxid].html") << text
+		file("[GLOB.log_directory]/faxes/fax_[faxid].html") << text
 	return faxid
 
 /**
@@ -54,4 +54,3 @@
 /datum/configuration_legacy
 	var/chat_webhook_url = ""		// URL of the webhook for sending announcements/faxes to discord chat.
 	var/chat_webhook_key = ""		// Shared secret for authenticating to the chat webhook
-	var/fax_export_dir = "data/faxes"	// Directory in which to write exported fax HTML files.
