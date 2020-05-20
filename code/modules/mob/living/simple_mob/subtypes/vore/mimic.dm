@@ -65,7 +65,7 @@
 	desc = "A rectangular steel crate."
 	icon_state = "crate"
 	icon_living = "crate"
-	icon = 'icons/obj/storage_vr.dmi'
+	icon = 'icons/obj/storage.dmi'
 
 	faction = "mimic"
 

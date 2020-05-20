@@ -147,6 +147,13 @@
 	if(!istype(T, /turf/space))
 		new /obj/effect/decal/cleanable/flour(T)
 
+/datum/reagent/nutriment/flour/vitapaste
+	name = "NutriFlour"
+	id = "nutriflour"
+	description = "A nutritionally-fortified flour compound. It tastes like worse flour."
+	taste_description = "weird chalky wheat"
+	nutriment_factor = 20
+
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
 	id = "coffeepowder"

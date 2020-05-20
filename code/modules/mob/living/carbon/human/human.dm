@@ -1288,11 +1288,11 @@
 		fail_msg = "Your needle fails to penetrate \the [affecting]'s thick hide..."
 	else
 		switch(target_zone)
-			if(BP_HEAD)
-				if(head && (head.item_flags & THICKMATERIAL) && !ignore_thickness)
+			if(BP_HEAD) //If targeting head, check helmets
+				if(head && (head.item_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
 					. = 0
-			else
-				if(wear_suit && (wear_suit.item_flags & THICKMATERIAL) && !ignore_thickness)
+			else //Otherwise, if not targeting head, check the suit
+				if(wear_suit && (wear_suit.item_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
 					. = 0
 	if(!. && error_msg && user)
 		if(!fail_msg)

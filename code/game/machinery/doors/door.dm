@@ -149,14 +149,17 @@
 	return ..()
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
-	if(operating)	return
-	if(user.last_airflow > world.time - vsc.airflow_delay) //Fakkit
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, airflow_delay)
+	if(operating)
+		return
+	if(user.last_airflow > world.time - airflow_delay)
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))	open()
-		else				do_animate("deny")
-	return
+		if(allowed(user))
+			open()
+		else
+			do_animate("deny")
 
 /obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
 	..()

@@ -29,7 +29,7 @@
 	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
@@ -488,7 +488,7 @@ var/global/list/latejoin_tram   = list()
 /obj/structure/dancepole
 	name = "dance pole"
 	desc = "Engineered for your entertainment"
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "dancepole"
 	density = 0
 	anchored = 1

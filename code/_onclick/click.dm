@@ -331,6 +331,8 @@
 /mob/proc/face_atom(var/atom/A)
 	if(!A || !x || !y || !A.x || !A.y)
 		return
+	if(!canmove)
+		return
 	var/dx = A.x - x
 	var/dy = A.y - y
 	if(!dx && !dy)

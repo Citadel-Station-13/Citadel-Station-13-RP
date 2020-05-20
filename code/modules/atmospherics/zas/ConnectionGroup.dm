@@ -92,16 +92,21 @@ Class Procs:
 /connection_edge/proc/recheck()
 
 /connection_edge/proc/flow(list/movable, differential, repelled)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, retrigger_delay)
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/stun_pressure, stun_pressure)
 	for(var/i = 1; i <= movable.len; i++)
 		var/atom/movable/M = movable[i]
 
 		//If they're already being tossed, don't do it again.
-		if(M.last_airflow > world.time - vsc.airflow_delay) continue
-		if(M.airflow_speed) continue
+		if(M.last_airflow > world.time - retrigger_delay)
+			continue
+		if(M.airflow_speed)
+			continue
 
 		//Check for knocking people over
-		if(ismob(M) && differential > vsc.airflow_stun_pressure)
-			if(M:status_flags & GODMODE) continue
+		if(ismob(M) && differential > stun_pressure)
+			if(M:status_flags & GODMODE)
+				continue
 			M:airflow_stun()
 
 		if(M.check_airflow_movable(differential))
@@ -109,15 +114,17 @@ Class Procs:
 			var/list/close_turfs = list()
 			for(var/turf/U in connecting_turfs)
 				if(get_dist(M,U) < world.view) close_turfs += U
-			if(!close_turfs.len) continue
+			if(!close_turfs.len)
+				continue
 
 			M.airflow_dest = pick(close_turfs) //Pick a random midpoint to fly towards.
 
-			if(repelled) spawn if(M) M.RepelAirflowDest(differential/5)
-			else spawn if(M) M.GotoAirflowDest(differential/10)
-
-
-
+			if(repelled)
+				spawn
+					if(M) M.RepelAirflowDest(differential/5)
+			else
+				spawn
+					if(M) M.GotoAirflowDest(differential/10)
 
 /connection_edge/zone/var/zone/B
 
@@ -147,6 +154,7 @@ Class Procs:
 	. = ..()
 
 /connection_edge/zone/tick()
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/lightest_pressure, lightest_pressure)
 	if(A.invalid || B.invalid)
 		erase()
 		return
@@ -154,7 +162,7 @@ Class Procs:
 	var/equiv = A.air.share_ratio(B.air, coefficient)
 
 	var/differential = A.air.return_pressure() - B.air.return_pressure()
-	if(abs(differential) >= vsc.airflow_lightest_pressure)
+	if(abs(differential) >= lightest_pressure)
 		var/list/attracted
 		var/list/repelled
 		if(differential > 0)
@@ -222,10 +230,12 @@ Class Procs:
 		erase()
 		return
 
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/lightest_pressure, lightest_pressure)
+
 	var/equiv = A.air.share_space(air)
 
 	var/differential = A.air.return_pressure() - air.return_pressure()
-	if(abs(differential) >= vsc.airflow_lightest_pressure)
+	if(abs(differential) >= lightest_pressure)
 		var/list/attracted = A.movables()
 		flow(attracted, abs(differential), differential < 0)
 

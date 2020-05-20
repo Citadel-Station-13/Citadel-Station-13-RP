@@ -229,7 +229,6 @@
 	active_force = 35
 	active_throwforce = 20
 	force = 15
-
 	use_cell = TRUE
 	hitcost = 120
 
@@ -388,7 +387,7 @@
 	armor_penetration = 25
 	projectile_parry_chance = 40
 	colorable = TRUE
-
+	use_cell = TRUE
 	hitcost = 75
 
 /obj/item/melee/energy/sword/charge/loaded/New()

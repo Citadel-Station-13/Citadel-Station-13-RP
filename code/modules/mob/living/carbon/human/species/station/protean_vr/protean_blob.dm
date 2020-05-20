@@ -16,7 +16,7 @@
 
 	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
 	show_stat_health = FALSE //We will do it ourselves
-
+	has_langs = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 	response_help = "pats the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
@@ -292,7 +292,9 @@
 
 	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
 	if(r_hand) blob.prev_right_hand = r_hand
-
+	//languages!!
+	for(var/datum/language/L in languages)
+		blob.add_language(L.name)
 	//Put our owner in it (don't transfer var/mind)
 	blob.ckey = ckey
 	temporary_form = blob
