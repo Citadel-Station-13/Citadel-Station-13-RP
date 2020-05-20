@@ -511,7 +511,7 @@
 
 /datum/sprite_accessory/hair/inkling
 	name = "colorable mature inkling hair"
-	icon = 'icons/human_face_vr.dmi'
+	icon = 'icons/mob/human_face_vr.dmi'
 	icon_state = "inkling-colorable"
 	color_blend_mode = ICON_MULTIPLY
 	do_colouration = 1
