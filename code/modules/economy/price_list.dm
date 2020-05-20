@@ -432,6 +432,12 @@
 /obj/item/reagent_containers/food/drinks/bottle/limejuice
 	price_tag = 6
 
+/obj/item/reagent_containers/food/drinks/bottle/small/sassafras
+	price_tag = 6
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla
+	price_tag = 6
+
 
 // Beer //
 
@@ -439,6 +445,9 @@
 	price_tag = 3
 
 /obj/item/reagent_containers/food/drinks/bottle/small/ale
+	price_tag = 3
+
+/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras
 	price_tag = 3
 
 
