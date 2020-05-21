@@ -10,6 +10,8 @@
 
 */
 
+GLOBAL_VAR_INIT(tgs_initialized, FALSE)
+
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
@@ -25,10 +27,9 @@ GLOBAL_LIST(topic_status_cache)
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
-
-	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
-
 	GLOB.revdata = new
+
+	InitTgs()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
@@ -103,6 +104,15 @@ GLOBAL_LIST(topic_status_cache)
 #undef RECOMMENDED_VERSION
 
 	return
+
+/world/proc/InitTgs()
+	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
+	GLOB.revdata.load_tgs_info()
+#ifdef USE_CUSTOM_ERROR_HANDLER
+	if (TgsAvailable())
+		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+#endif
+	GLOB.tgs_initialized = TRUE
 
 /world/proc/SetupExternalRsc()
 #if (PRELOAD_RSC == 0)
