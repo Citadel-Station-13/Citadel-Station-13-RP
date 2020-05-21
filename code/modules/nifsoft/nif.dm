@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(!install_done)
 		if(human.mind.name == owner)
 			install_done = world.time + 1 MINUTE
-			notify("Welcome back, [owner]! Performing quick-calibration, welcome back [owner]...")
+			notify("Welcome back, [owner]! Performing quick-calibration...")
 		else if(!owner)
 			install_done = world.time + 15 MINUTES
 			notify("Adapting to new user, this process may take upwards of fifteen minutes...")

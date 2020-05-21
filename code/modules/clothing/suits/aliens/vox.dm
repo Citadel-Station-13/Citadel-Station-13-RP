@@ -8,3 +8,9 @@
 	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_VOX)
 	siemens_coefficient = 1 //Its literally metal
+
+/obj/item/clothing/suit/simonjacket
+	name = "simon jacket"
+	desc = "The coat of someone who believes in the you that believes in them...or something."
+	icon_state = "simonjacket"
+	item_state = "simonjacket"

@@ -572,6 +572,9 @@
 	name = "Large Dragon Tail"
 	icon_state = "big_liz"
 	can_ride = 0
+	hide_body_parts = null
+	clip_mask_icon = null
+	clip_mask_state = null
 
 /datum/sprite_accessory/tail/taur/long_lizard/scaled
 	name = "Large Dragon Tail/W scales"

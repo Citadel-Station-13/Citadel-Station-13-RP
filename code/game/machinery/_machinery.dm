@@ -130,6 +130,7 @@ Class Procs:
 		START_MACHINE_PROCESSING(src)
 	else
 		START_PROCESSING(SSfastprocess, src)
+	power_change()
 
 /obj/machinery/Destroy()
 	if(!speed_process)

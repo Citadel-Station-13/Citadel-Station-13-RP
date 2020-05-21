@@ -68,3 +68,8 @@
 	name = "Long John Bottoms"
 	icon_state = "ljonb"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/maebari
+	name = "Maebari"
+	icon_state = "maebari"
+	has_color = TRUE
