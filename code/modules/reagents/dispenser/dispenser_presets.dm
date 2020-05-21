@@ -84,7 +84,9 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/orange,
 			/obj/item/reagent_containers/chem_disp_cartridge/lime,
 			/obj/item/reagent_containers/chem_disp_cartridge/watermelon,
-			/obj/item/reagent_containers/chem_disp_cartridge/lemon
+			/obj/item/reagent_containers/chem_disp_cartridge/lemon,
+			/obj/item/reagent_containers/chem_disp_cartridge/sassafras,
+			/obj/item/reagent_containers/chem_disp_cartridge/sarsaparilla
 		)
 
 /obj/machinery/chemical_dispenser/bar_alc
@@ -139,6 +141,5 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/lemon,
 			/obj/item/reagent_containers/chem_disp_cartridge/lime,
 			/obj/item/reagent_containers/chem_disp_cartridge/berry,
-
 
 		)
