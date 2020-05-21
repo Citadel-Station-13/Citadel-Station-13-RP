@@ -252,6 +252,17 @@
 	light_color = "#3848B3"
 	light_power_on = 0.5
 
+/obj/machinery/computer/security/wooden_tv/service
+	name = "security camera monitor"
+	desc = "An old TV hooked into the stations entertainment network."
+	icon_state = "television"
+	icon_keyboard = null
+	icon_screen = "detective_tv"
+	network = list(NETWORK_THUNDER)
+	circuit = /obj/item/circuitboard/security/telescreen/entertainment
+	light_color = "#3848B3"
+	light_power_on = 0.9
+
 /obj/machinery/computer/security/mining
 	name = "outpost camera monitor"
 	desc = "Used to access the various cameras on the outpost."

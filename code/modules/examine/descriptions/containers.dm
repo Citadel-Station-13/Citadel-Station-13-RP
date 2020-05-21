@@ -96,3 +96,12 @@
 
 /obj/item/reagent_containers/food/drinks/bottle/sake
 	description_fluff = "An export from New Kyoto, Mono-no-Aware promises to show to the drinker the beautiful transience of all life. Mostly it just tastes like dry booze."
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sassafras
+	description_fluff = "The Cyan Consumables Corporation's flagship drink, and the origin of their Cyan Cowgirl mascot, CC's Famous Rootbeer is a favorite on the frontier."
+
+/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras
+	description_fluff = "When CCC angled to get their Famous Rootbeer a place in the alcoholic world, many took the Chairman's suggestion that they just pour Vodka into the standard formula to be a joke. She was being serious."
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla
+	description_fluff = "An attempt to capture the portion of the market partial to slightly more bitter flavors, the Cyan Cowgirl next rode into town on the back of this delicious sarsaparilla."
