@@ -13259,10 +13259,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
-"vi" = (
-/obj/structure/noticeboard,
-/turf/simulated/wall,
-/area/security/evidence_storage)
 "vj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -13748,10 +13744,6 @@
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
-"vY" = (
-/obj/structure/noticeboard,
-/turf/simulated/wall,
-/area/security/security_processing)
 "vZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
@@ -18193,7 +18185,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "CS" = (
-/turf/space,
+/turf/simulated/floor/airless,
 /area/supply/station{
 	base_turf = /turf/simulated/floor/airless;
 	dynamic_lighting = 0
@@ -27550,14 +27542,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
-"Rt" = (
-/obj/structure/noticeboard,
-/turf/simulated/wall,
-/area/medical/medbay_primary_storage)
-"Ru" = (
-/obj/structure/noticeboard,
-/turf/simulated/wall,
-/area/medical/surgery2)
 "Rv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -29154,7 +29138,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 1;
-	id = "yard_riot_3";
+	id = "psych cell 1";
 	name = "Yard Access"
 	},
 /turf/simulated/floor/tiled/white,
@@ -35763,7 +35747,7 @@ fv
 oz
 oz
 oz
-vi
+oz
 sX
 tU
 uM
@@ -36331,7 +36315,7 @@ fw
 oA
 oA
 oA
-vY
+oA
 tb
 tT
 uQ
@@ -38488,7 +38472,7 @@ KP
 Lu
 LV
 Mo
-Rt
+Jr
 Nk
 NI
 Og
@@ -39200,7 +39184,7 @@ Lw
 Mq
 Lw
 Lw
-Ru
+KV
 Ol
 OE
 Pg
