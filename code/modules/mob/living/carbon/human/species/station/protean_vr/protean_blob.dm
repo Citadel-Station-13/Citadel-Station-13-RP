@@ -124,6 +124,9 @@
 	else
 		..()
 
+/mob/living/simple_mob/protean_blob/stun_effect_act()
+	return FALSE //ok so tasers hurt protean blobs what the fuck
+
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount)
 	if(humanform)
 		humanform.adjustBruteLoss(amount)
