@@ -3854,6 +3854,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"gQ" = (
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/dark,
+/area/ai_monitored/storage/eva)
 "gR" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -9887,16 +9893,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
-"rL" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/grille,
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/ai_monitored/storage/eva)
 "rM" = (
 /obj/structure/table/rack{
 	dir = 8;
@@ -10253,17 +10249,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
-"sr" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/grille,
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable/green,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/ai_monitored/storage/eva)
 "ss" = (
 /obj/random/junk,
 /obj/random/maintenance/engineering,
@@ -10495,19 +10480,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
-"sR" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/ai_monitored/storage/eva)
 "sS" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/material/plasteel{
@@ -10525,57 +10497,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
-"sT" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/grille,
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable/green,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/ai_monitored/storage/eva)
 "sU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
-/area/ai_monitored/storage/eva)
-"sV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/tiled/dark,
-/area/ai_monitored/storage/eva)
-"sW" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/ai_monitored/storage/eva)
-"sX" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "sY" = (
@@ -10881,6 +10807,11 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "tC" = (
@@ -10897,6 +10828,11 @@
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
@@ -10915,14 +10851,6 @@
 	pixel_y = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark,
-/area/ai_monitored/storage/eva)
-"tF" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "tG" = (
@@ -11239,7 +11167,6 @@
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "uk" = (
-/obj/machinery/suit_storage_unit/standard_unit,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4;
 	icon_state = "map"
@@ -11497,64 +11424,35 @@
 /turf/simulated/floor/plating,
 /area/ai_monitored/storage/eva)
 "uJ" = (
-/turf/simulated/floor/tiled,
-/area/ai_monitored/storage/eva)
-"uK" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1379;
 	master_tag = "eva_port_airlock";
 	name = "interior access button";
 	pixel_x = 26;
-	pixel_y = 26;
+	pixel_y = -26;
 	req_one_access = list(18)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
-"uL" = (
+"uK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "eva_port_inner";
-	locked = 1;
-	name = "EVA Internal Access";
-	req_access = list(18)
-	},
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK";
-	pixel_x = 0;
-	pixel_y = -32
+	dir = 9;
+	icon_state = "intact"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
-"uM" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 1379;
-	id_tag = "eva_port_airlock";
-	name = "Airlock Console";
-	pixel_y = 30;
-	req_access = list(18);
-	tag_airpump = "eva_port_pump";
-	tag_chamber_sensor = "eva_port_sensor";
-	tag_exterior_door = "eva_port_outer";
-	tag_interior_door = "eva_port_inner"
+"uL" = (
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.9
 	},
-/obj/machinery/light/small,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/shoes/magboots,
+/turf/simulated/wall/r_wall,
 /area/ai_monitored/storage/eva)
 "uN" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -11831,12 +11729,16 @@
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "vl" = (
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.9
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1379;
+	icon_state = "door_locked";
+	id_tag = "eva_port_inner";
+	locked = 1;
+	name = "EVA Internal Access";
+	req_access = list(18)
 	},
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/clothing/shoes/magboots,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "vm" = (
@@ -17586,6 +17488,10 @@
 /obj/structure/bed/chair/sofa,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"Ie" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/ai_monitored/storage/eva)
 "Ik" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -17884,6 +17790,16 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"Kq" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5;
+	icon_state = "intact"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ai_monitored/storage/eva)
 "Kv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -19270,6 +19186,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/public_meeting_room)
+"Se" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5;
+	icon_state = "intact"
+	},
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/ai_monitored/storage/eva)
 "Sg" = (
 /obj/structure/table/steel,
 /obj/random/maintenance/clean,
@@ -20257,6 +20188,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+"XW" = (
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4;
+	icon_state = "map"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ai_monitored/storage/eva)
 "XX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -20475,6 +20414,17 @@
 /obj/item/deck/cards,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"YG" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/grille,
+/obj/structure/cable/green,
+/obj/structure/window/reinforced/full,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/ai_monitored/storage/eva)
 "YH" = (
 /obj/machinery/atmospherics/pipe/cap/hidden/scrubbers{
 	dir = 4
@@ -20516,6 +20466,24 @@
 /obj/random/trash,
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"YX" = (
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1379;
+	id_tag = "eva_port_airlock";
+	name = "Airlock Console";
+	pixel_y = -30;
+	req_access = list(18);
+	tag_airpump = "eva_port_pump";
+	tag_chamber_sensor = "eva_port_sensor";
+	tag_exterior_door = "eva_port_outer";
+	tag_interior_door = "eva_port_inner"
+	},
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/ai_monitored/storage/eva)
 "Za" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -34390,7 +34358,7 @@ qg
 qT
 rJ
 qg
-sR
+qg
 tB
 ug
 pB
@@ -34672,13 +34640,13 @@ oY
 pD
 qi
 oY
-rL
-sr
-sT
-tD
+oY
+oY
+oY
+YG
 ui
 uI
-tD
+oY
 oY
 oY
 aP
@@ -34814,14 +34782,14 @@ oY
 pE
 qc
 oY
-rM
-qc
-qc
-qc
+gQ
+Kq
+oY
+rN
 uj
 uJ
 vl
-oY
+Se
 oY
 aP
 aP
@@ -34956,14 +34924,14 @@ oY
 pE
 qj
 oY
-rN
-qc
+gQ
+XW
 sU
-tE
+Ie
 uk
 uK
-vl
 oY
+YX
 oY
 aP
 aP
@@ -35100,13 +35068,13 @@ oY
 oY
 oY
 oY
-sV
 oY
-oY
+rM
+tE
 uL
 oY
+uN
 oY
-aa
 aa
 aa
 aa
@@ -35239,16 +35207,16 @@ ac
 ac
 ac
 ac
-ac
-ac
-oY
-sW
-tF
-oY
-uM
-oY
 aa
 aa
+oY
+oY
+oY
+oY
+oY
+oY
+uO
+oY
 aa
 aa
 aa
@@ -35383,12 +35351,12 @@ ac
 ac
 aa
 aa
-oY
-sX
-sX
-oY
-uN
-oY
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -35525,12 +35493,12 @@ aa
 aa
 aa
 aa
-oY
-oY
-oY
-oY
-uO
-oY
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

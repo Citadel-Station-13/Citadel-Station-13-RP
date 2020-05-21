@@ -18185,7 +18185,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
 "CS" = (
-/turf/simulated/floor/airless,
+/turf/space,
 /area/supply/station{
 	base_turf = /turf/simulated/floor/airless;
 	dynamic_lighting = 0
