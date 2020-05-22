@@ -20506,10 +20506,16 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
 "HP" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/reinforced,
-/turf/simulated/shuttle/plating/carry,
-/area/shuttle/tether/surface)
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/obj/structure/sign/poster/nanotrasen{
+	icon_state = "bsposter47";
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "HQ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22182,12 +22188,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/robotics)
 "Lf" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/machinery/camera/network/civilian{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/crew_quarters/bar)
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/reinforced,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/tether/surface)
 "Lg" = (
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -22275,12 +22279,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/crew_quarters/bar)
-"Lo" = (
-/obj/structure/sign/poster/nanotrasen{
-	icon_state = "bsposter47"
-	},
-/turf/simulated/wall,
-/area/crew_quarters/barrestroom)
 "Lp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -38739,7 +38737,7 @@ Jr
 Js
 Jv
 JE
-HP
+Lf
 IY
 JH
 JJ
@@ -38881,7 +38879,7 @@ Js
 Js
 Jz
 JE
-HP
+Lf
 IY
 JH
 JJ
@@ -39023,7 +39021,7 @@ Jt
 Js
 Jz
 JE
-HP
+Lf
 IY
 JH
 JJ
@@ -40424,8 +40422,8 @@ sK
 sZ
 Az
 DZ
-Lf
-Lo
+HP
+Ty
 Ty
 Ty
 Ty
