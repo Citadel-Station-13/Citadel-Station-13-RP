@@ -25,7 +25,7 @@ GLOBAL_LIST(topic_status_cache)
 	SetupExternalRsc()
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	GLOB.revdata = new
 
@@ -151,6 +151,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
@@ -158,6 +159,7 @@ GLOBAL_LIST(topic_status_cache)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_qdel_log)
+	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.subsystem_log)
 
