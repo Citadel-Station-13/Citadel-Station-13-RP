@@ -12566,6 +12566,10 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
+/obj/structure/sign/poster/nanotrasen{
+	icon_state = "bsposter29";
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "we" = (
