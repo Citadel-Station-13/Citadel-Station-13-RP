@@ -153,7 +153,7 @@
 
 /datum/gear/eyes/whiteblindfold
 	display_name = "white blindfold"
-	path = /obj/item/clothing/glasses/sunglasses/whiteblindfold
+	path = /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
 
 /datum/gear/eyes/redglasses
 	display_name = "red glasses"
