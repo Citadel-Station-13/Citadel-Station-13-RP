@@ -57,6 +57,8 @@
 //Constructor allows passing the human to sync damages
 /mob/living/simple_mob/protean_blob/New(var/newloc, var/mob/living/carbon/human/H)
 	..()
+	mob_radio = new(src)
+	myid = new(src)
 	if(H)
 		humanform = H
 		updatehealth()
@@ -282,18 +284,18 @@
 		var/obj/item/clothing/shoes/magboots = slot_shoes
 			drop_from_inventory(magboots)
 
-	for(/obj/item/radio/headset/H in things_to_not_drop)
-		mob_radio.ks1type = H.ks1type
-		mob_radio.ks2type = H.ks2type
-		mob_radio.recalculateChannels()
+	for(var/obj/item/radio/headset/H in things_to_not_drop)
+		blob.mob_radio.keyslot1 = H.keyslot1
+		blob.mob_radio.keyslot2 = H.keyslot2
+		blob.mob_radio.recalculateChannels()
 
-	for(/obj/item/pda/P in things_to_not_drop)
+	for(var/obj/item/pda/P in things_to_not_drop)
 		if(P.id)
 			var/obj/item/card/id/PID = P.id
-			myid.access += PID.access
+			blob.myid.access += PID.access
 
-	for(/obj/item/card/id/I in things_to_not_drop)
-		myid.access += I.access
+	for(var/obj/item/card/id/I in things_to_not_drop)
+		blob.myid.access += I.access
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
