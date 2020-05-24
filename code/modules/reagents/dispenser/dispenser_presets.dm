@@ -116,7 +116,8 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/cognac,
 			/obj/item/reagent_containers/chem_disp_cartridge/cider,
 			/obj/item/reagent_containers/chem_disp_cartridge/ale,
-			/obj/item/reagent_containers/chem_disp_cartridge/mead
+			/obj/item/reagent_containers/chem_disp_cartridge/mead,
+			/obj/item/reagent_containers/chem_disp_cartridge/alcsassafras
 		)
 
 /obj/machinery/chemical_dispenser/bar_coffee
