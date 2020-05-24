@@ -282,6 +282,19 @@
 		var/obj/item/clothing/shoes/magboots = slot_shoes
 			drop_from_inventory(magboots)
 
+	for(/obj/item/radio/headset/H in things_to_not_drop)
+		mob_radio.ks1type = H.ks1type
+		mob_radio.ks2type = H.ks2type
+		mob_radio.recalculateChannels()
+
+	for(/obj/item/pda/P in things_to_not_drop)
+		if(P.id)
+			var/obj/item/card/id/PID = P.id
+			myid.access += PID.access
+
+	for(/obj/item/card/id/I in things_to_not_drop)
+		myid.access += I.access
+
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform
 		if(LAZYLEN(uniform.accessories))
