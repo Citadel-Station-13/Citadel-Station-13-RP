@@ -17,9 +17,8 @@
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 
 /obj/item/tank/oxygen/Initialize()
-	..()
+	. = ..()
 	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/oxygen/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["oxygen"] < 10)
@@ -43,13 +42,11 @@
 	icon_state = "anesthetic"
 
 /obj/item/tank/anesthetic/Initialize()
-	..()
+	. = ..()
 
 	air_contents.gas["oxygen"] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * O2STANDARD
 	air_contents.gas["sleeping_agent"] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * N2STANDARD
 	air_contents.update_values()
-
-	return
 
 /*
  * Air
@@ -65,11 +62,9 @@
 		user << sound('sound/effects/alert.ogg')
 
 /obj/item/tank/air/Initialize()
-	..()
+	. = ..()
 
 	src.air_contents.adjust_multi("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C) * O2STANDARD, "nitrogen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C) * N2STANDARD)
-
-	return
 
 /*
  * Phoron
@@ -82,10 +77,8 @@
 	slot_flags = null	//they have no straps!
 
 /obj/item/tank/phoron/Initialize()
-	..()
-
+	. = ..()
 	src.air_contents.adjust_gas("phoron", (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/phoron/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -135,9 +128,8 @@
 	gauge_icon = "indicator_emergency"
 
 /obj/item/tank/emergency/oxygen/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas("oxygen", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/emergency/oxygen/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["oxygen"] < 0.2 && loc==user)
@@ -163,9 +155,8 @@
 	volume = 10
 
 /obj/item/tank/stasis/oxygen/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas("oxygen", (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/emergency/nitrogen
 	name = "emergency nitrogen tank"
@@ -174,7 +165,7 @@
 	gauge_icon = "indicator_emergency"
 
 /obj/item/tank/emergency/nitrogen/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas("nitrogen", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/emergency/nitrogen/double
@@ -190,7 +181,7 @@
 	gauge_icon = "indicator_emergency"
 
 /obj/item/tank/emergency/phoron/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas("phoron", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/emergency/phoron/double
@@ -209,10 +200,9 @@
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 
 /obj/item/tank/nitrogen/Initialize()
-	..()
+	. = ..()
 
 	src.air_contents.adjust_gas("nitrogen", (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/nitrogen/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["nitrogen"] < 10)
@@ -227,9 +217,8 @@
 	volume = 10
 
 /obj/item/tank/stasis/nitro_cryo/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas_temp("nitrogen", (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*TN60C), TN60C)
-	return
 
 //co2
 /obj/item/tank/carbon_dioxide
@@ -242,10 +231,8 @@
 	slot_flags //onmobs cringe tbh
 
 /obj/item/tank/carbon_dioxide/Initialize()
-	..()
-
+	. = ..()
 	air_contents.adjust_gas("carbon_dioxide", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/emergency/carbon_dioxide
 	name = "emergency CO2 tank"
@@ -257,9 +244,8 @@
 
 
 /obj/item/tank/emergency/carbon_dioxide/Initialize()
-	..()
+	. = ..()
 	src.air_contents.adjust_gas("carbon_dioxide", (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/emergency/carbon_dioxide/examine(mob/user)
 	if(..(user, 0) && air_contents.gas["carbon_dioxide"] < 0.2 && loc==user)

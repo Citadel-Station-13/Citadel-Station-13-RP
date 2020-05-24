@@ -48,7 +48,7 @@
 
 	attack_generic(user,damage_dealt,attack_message)
 
-/obj/structure/grille/CanPass(atom/movable/mover, turf/target)
+/obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGRILLE))
 		return TRUE
 	if(istype(mover, /obj/item/projectile))
@@ -196,7 +196,7 @@
 		if(electrocute_mob(user, C, src))
 			if(C.powernet)
 				C.powernet.trigger_warning()
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
 			if(user.stunned)

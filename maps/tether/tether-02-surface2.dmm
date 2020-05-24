@@ -3055,7 +3055,7 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "gL" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -3066,15 +3066,15 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "gM" = (
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "gN" = (
 /mob/living/simple_mob/animal/passive/fish/rockfish,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "gO" = (
 /turf/simulated/floor/grass,
@@ -11102,7 +11102,7 @@
 	dir = 4
 	},
 /mob/living/simple_mob/animal/passive/fish/koi,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "vZ" = (
 /obj/structure/cable/green{
@@ -11389,11 +11389,11 @@
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
 "wB" = (
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "wC" = (
 /mob/living/simple_mob/animal/passive/fish/koi,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "wD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -11406,7 +11406,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "wF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -12069,7 +12069,7 @@
 /area/tether/surfacebase/fishing_garden)
 "xr" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "xs" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12819,6 +12819,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yD" = (
@@ -13048,6 +13049,8 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
+/obj/item/holosign_creator,
+/obj/item/holosign_creator,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "yY" = (
@@ -13741,6 +13744,7 @@
 	pixel_y = 7
 	},
 /obj/item/pen,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "An" = (
@@ -13979,11 +13983,21 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "AN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
+/obj/machinery/firealarm{
+	dir = 2;
+	layer = 3.3;
+	pixel_x = 0;
+	pixel_y = 26
 	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/east_stairs_two)
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lime/border{
+	dir = 9
+	},
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/public_garden_two)
 "AO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -17902,27 +17916,27 @@
 	dir = 4
 	},
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "IP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/catwalk,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "IQ" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "IR" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "IS" = (
 /mob/living/simple_mob/animal/passive/fish/trout,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "IT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17940,7 +17954,7 @@
 /area/tether/surfacebase/public_garden_two)
 "IU" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/tether/surfacebase/fishing_garden)
 "IV" = (
 /obj/structure/closet,
@@ -18039,6 +18053,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
+"Jl" = (
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/fishing_garden)
 "Jm" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -18326,6 +18344,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/fishing_garden)
+"JT" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/atrium_two)
+"JU" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "JV" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
@@ -18448,6 +18478,15 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
 /area/tether/surfacebase/fishing_garden)
+"Km" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/janitor)
 "Kn" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18909,21 +18948,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/atrium_two)
-"RL" = (
-/obj/machinery/firealarm{
-	dir = 2;
-	layer = 3.3;
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/lime/border{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/public_garden_two)
 "Sc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/shieldgen,
@@ -19198,6 +19222,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
+"Wh" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/standard_operating_procedure,
+/turf/simulated/floor/wood,
+/area/rnd/breakroom)
 "Wr" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -19207,15 +19236,6 @@
 /obj/effect/floor_decal/corner/lime/bordercorner,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
-"Wv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/janitor)
 "WA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	icon_state = "map";
@@ -24520,7 +24540,7 @@ ac
 ac
 Kt
 Kt
-RL
+AN
 LG
 Uh
 Uh
@@ -28374,7 +28394,7 @@ cW
 hb
 Kd
 JK
-ho
+Jl
 hb
 ii
 ii
@@ -28540,7 +28560,7 @@ ql
 qG
 rn
 rn
-rn
+Wh
 rn
 qH
 tm
@@ -32508,7 +32528,7 @@ gw
 lV
 mv
 mX
-nz
+JT
 dY
 dY
 dY
@@ -32669,7 +32689,7 @@ tu
 zr
 zR
 Ap
-AN
+JU
 rO
 Bt
 BG
@@ -33373,7 +33393,7 @@ ac
 oc
 vH
 wl
-Wv
+Km
 yA
 yU
 zu

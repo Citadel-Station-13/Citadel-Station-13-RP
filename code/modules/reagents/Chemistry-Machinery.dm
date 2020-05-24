@@ -14,7 +14,7 @@
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	var/beaker = null
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
@@ -224,7 +224,7 @@
 				count = input("Select the number of pills to make.", "Max [max_pill_count]", pillamount) as null|num
 				if(!count) //Covers 0 and cancel
 					return
-				count = CLAMP(count, 1, max_pill_count)
+				count = CLAMP(round(count), 1, max_pill_count) // Fix decimals input and clamp to reasonable amounts
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
@@ -246,7 +246,7 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
-			while (count--)
+			while(count-- > 0) // Will definitely eventually stop.
 				var/obj/item/reagent_containers/pill/P = new/obj/item/reagent_containers/pill(src.loc)
 				if(!name) name = reagents.get_master_reagent_name()
 				P.name = "[name] pill"
@@ -326,7 +326,7 @@
 	icon_state = "juicer1"
 	density = 0
 	anchored = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/grinder

@@ -6,7 +6,7 @@
 	var/id = null
 	var/on = 1.0
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -53,7 +53,7 @@
 	var/last_spark = 0
 	var/base_state = "migniter"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -99,7 +99,7 @@
 		return
 
 	flick("[base_state]-spark", src)
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(2, 1, src)
 	s.start()
 	last_spark = world.time

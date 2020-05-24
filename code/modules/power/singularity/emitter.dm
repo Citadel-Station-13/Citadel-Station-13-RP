@@ -10,7 +10,7 @@
 	req_access = list(access_engine_equip)
 	var/id = null
 
-	use_power = 0	//uses powernet power, not APC power
+	use_power = USE_POWER_OFF	//uses powernet power, not APC power
 	active_power_usage = 30000	//30 kW laser. I guess that means 30 kJ per shot.
 
 	var/active = 0
@@ -136,7 +136,7 @@
 
 		playsound(src.loc, 'sound/weapons/emitter.ogg', 25, 1)
 		if(prob(35))
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(5, 1, src)
 			s.start()
 

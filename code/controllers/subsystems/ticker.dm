@@ -258,7 +258,8 @@ SUBSYSTEM_DEF(ticker)
 	round_start_time = world.time
 
 	if(config_legacy.sql_enabled)
-		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
+		//THIS REQUIRES THE INVOKE ASYNC.
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
 
@@ -423,23 +424,21 @@ SUBSYSTEM_DEF(ticker)
 		round_end_time = world.time
 		Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
-		spawn
-			declare_completion()
+		declare_completion()
 
-		spawn(50)
-			callHook("roundend")
+		callHook("roundend")
 
-			if (mode.station_was_nuked)
-				feedback_set_details("end_proper","nuke")
-			else
-				feedback_set_details("end_proper","proper completion")
+		if (mode.station_was_nuked)
+			feedback_set_details("end_proper","nuke")
+		else
+			feedback_set_details("end_proper","proper completion")
 
 
-			if(blackbox)
-				blackbox.save_all_data_to_sql()
+		if(blackbox)
+			blackbox.save_all_data_to_sql()
 
-			ready_for_reboot = TRUE
-			standard_reboot()
+		ready_for_reboot = TRUE
+		standard_reboot()
 
 
 	else if (mode_finished)

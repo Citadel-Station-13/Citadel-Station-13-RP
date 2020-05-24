@@ -94,12 +94,11 @@
 	machine_understands = FALSE
 	flags = WHITELISTED | HIVEMIND
 
-/datum/language/human/slavic
+/datum/language/slavic
 	name = LANGUAGE_SLAVIC
 	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
 	colour = "solcom"
-	key = "r"
-
+	key = "g"
 	syllables = list(
 		"rus", "zem", "ave", "groz", "ski", "ska", "ven", "konst", "pol", "lin", "svy",
 		"danya", "da", "mied", "zan", "das", "krem", "myka", "to", "st", "no", "na", "ni",

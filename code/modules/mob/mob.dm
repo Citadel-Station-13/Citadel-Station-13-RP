@@ -41,6 +41,7 @@
 
 /mob/Initialize()
 	mob_list += src
+	set_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
@@ -108,6 +109,43 @@
 		else if(blind_message)
 			M.show_message(blind_message, 2)
 
+/**
+  * Reset the attached clients perspective (viewpoint)
+  *
+  * reset_perspective() set eye to common default : mob on turf, loc otherwise
+  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
+  */
+/mob/proc/reset_perspective(atom/A)
+	if(client)
+		if(A)
+			if(ismovable(A))
+				//Set the the thing unless it's us
+				if(A != src)
+					client.perspective = EYE_PERSPECTIVE
+					client.eye = A
+				else
+					client.eye = client.mob
+					client.perspective = MOB_PERSPECTIVE
+			else if(isturf(A))
+				//Set to the turf unless it's our current turf
+				if(A != loc)
+					client.perspective = EYE_PERSPECTIVE
+					client.eye = A
+				else
+					client.eye = client.mob
+					client.perspective = MOB_PERSPECTIVE
+			else
+				//Do nothing
+		else
+			//Reset to common defaults: mob if on turf, otherwise current loc
+			if(isturf(loc))
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+			else
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = loc
+		return 1
+
 // Returns an amount of power drawn from the object (-1 if it's not viable).
 // If drain_check is set it will not actually drain power, just return a value.
 // If surge is set, it will destroy/damage the recipient and not return any power.
@@ -144,9 +182,6 @@
 	for(var/mob/M in mob_list)
 		if (M.real_name == text("[]", msg))
 			return M
-	return 0
-
-/mob/proc/movement_delay(oldloc, direct)
 	return 0
 
 /mob/proc/Life()
@@ -251,6 +286,8 @@
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.invisibility = invisibility
 	P.plane = plane
+	P.pixel_x = A.pixel_x
+	P.pixel_y = A.pixel_y
 	spawn (20)
 		if(P)
 			qdel(P)	// qdel
@@ -576,98 +613,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if(istype(M,/mob/living/silicon/ai)) return
 	show_inv(usr)
 
-
-/mob/verb/stop_pulling_verb()
-	set name = "Stop Pulling"
-	set category = "IC"
-
-	stop_pulling()
-
-/// to be moved to atom/movable later.
-/mob/proc/stop_pulling()
-	. = ..()
-	if(pulling)
-		pulling.pulledby = null
-		pulling = null
-		pulling.reset_glide_size()
-		if(pullin)
-			pullin.icon_state = "pull0"
-
-/mob/proc/start_pulling(var/atom/movable/AM)
-
-	if ( !AM || !usr || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
-		return
-
-	if (AM.anchored)
-		to_chat(src, "<span class='warning'>It won't budge!</span>")
-		return
-
-	var/mob/M = AM
-	if(ismob(AM))
-
-		if(!can_pull_mobs || !can_pull_size)
-			to_chat(src, "<span class='warning'>They won't budge!</span>")
-			return
-
-		if((mob_size < M.mob_size) && (can_pull_mobs != MOB_PULL_LARGER))
-			to_chat(src, "<span class='warning'>[M] is too large for you to move!</span>")
-			return
-
-		if((mob_size == M.mob_size) && (can_pull_mobs == MOB_PULL_SMALLER))
-			to_chat(src, "<span class='warning'>[M] is too heavy for you to move!</span>")
-			return
-
-		// If your size is larger than theirs and you have some
-		// kind of mob pull value AT ALL, you will be able to pull
-		// them, so don't bother checking that explicitly.
-
-		if(M.grabbed_by.len)
-			// Only start pulling when nobody else has a grab on them
-			. = 1
-			for(var/obj/item/grab/G in M.grabbed_by)
-				if(G.assailant != usr)
-					. = 0
-				else
-					qdel(G)
-			if(!.)
-				to_chat(src, "<span class='warning'>Somebody has a grip on them!</span>")
-				return
-
-		if(!iscarbon(src))
-			M.LAssailant = null
-		else
-			M.LAssailant = usr
-
-	else if(isobj(AM))
-		var/obj/I = AM
-		if(!can_pull_size || can_pull_size < I.w_class)
-			to_chat(src, "<span class='warning'>It won't budge!</span>")
-			return
-
-	if(pulling)
-		var/pulling_old = pulling
-		stop_pulling()
-		// Are we pulling the same thing twice? Just stop pulling.
-		if(pulling_old == AM)
-			return
-
-	src.pulling = AM
-	AM.pulledby = src
-	AM.set_glide_size(glide_size)
-
-	if(pullin)
-		pullin.icon_state = "pull1"
-
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(H.pull_damage())
-			to_chat(src, "<font color='red'><B>Pulling \the [H] in their current condition would probably be a bad idea.</B></font>")
-
-	//Attempted fix for people flying away through space when cuffed and dragged.
-	if(ismob(AM))
-		var/mob/pulled = AM
-		pulled.inertia_dir = 0
-
 /mob/proc/can_use_hands()
 	return
 
@@ -775,17 +720,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
 
-// facing verbs
-/mob/proc/canface()
-	if(!canmove)
-		return FALSE
-	if(stat)
-		return FALSE
-	if(anchored)
-		return FALSE
-	if(transforming)
-		return FALSE
-	return TRUE
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
@@ -794,37 +728,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
 	return canmove
-
-
-/mob/proc/facedir(var/ndir)
-	if(!canface() || (client && (client.moving || (world.time < move_delay))))
-		return 0
-	setDir(ndir)
-	if(buckled && buckled.buckle_movable)
-		buckled.setDir(ndir)
-	move_delay += movement_delay()
-	return 1
-
-
-/mob/verb/eastface()
-	set hidden = 1
-	return facedir(client.client_dir(EAST))
-
-
-/mob/verb/westface()
-	set hidden = 1
-	return facedir(client.client_dir(WEST))
-
-
-/mob/verb/northface()
-	set hidden = 1
-	return facedir(client.client_dir(NORTH))
-
-
-/mob/verb/southface()
-	set hidden = 1
-	return facedir(client.client_dir(SOUTH))
-
 
 //This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()

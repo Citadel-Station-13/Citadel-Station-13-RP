@@ -177,7 +177,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/action_buttons_hidden = 0
 	var/list/slot_info
 
-datum/hud/New(mob/owner)
+/datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()
 	..()

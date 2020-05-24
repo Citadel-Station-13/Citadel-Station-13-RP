@@ -313,7 +313,7 @@
 
 	throw_impact(atom/hit_atom)
 		..()
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		new /obj/effect/decal/cleanable/ash(src.loc)
@@ -327,7 +327,7 @@
 		if(M.m_intent == "run")
 			to_chat(M, "<span class='warning'>You step on the snap pop!</span>")
 
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(2, 0, src)
 			s.start()
 			new /obj/effect/decal/cleanable/ash(src.loc)
@@ -843,11 +843,11 @@
 
 /obj/structure/plushie/attack_hand(mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if(user.a_intent == I_HELP)
+	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
-	else if (user.a_intent == I_HURT)
+	else if (user.a_intent == INTENT_HARM)
 		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
-	else if (user.a_intent == I_GRAB)
+	else if (user.a_intent == INTENT_GRAB)
 		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to strangle [src]!</span>","<span class='warning'>You attempt to strangle [src]!</span>")
 	else
 		user.visible_message("<span class='notice'><b>\The [user]</b> pokes the [src].</span>","<span class='notice'>You poke the [src].</span>")
@@ -891,11 +891,11 @@
 /obj/item/toy/plushie/attack_self(mob/user as mob)
 	if(world.time - last_message <= 1 SECOND)
 		return
-	if(user.a_intent == I_HELP)
+	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
-	else if (user.a_intent == I_HURT)
+	else if (user.a_intent == INTENT_HARM)
 		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
-	else if (user.a_intent == I_GRAB)
+	else if (user.a_intent == INTENT_GRAB)
 		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to strangle [src]!</span>","<span class='warning'>You attempt to strangle [src]!</span>")
 	else
 		user.visible_message("<span class='notice'><b>\The [user]</b> pokes [src].</span>","<span class='notice'>You poke [src].</span>")

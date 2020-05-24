@@ -222,6 +222,6 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	aiming_with = null
 	aiming_at.aimed -= src
 	aiming_at = null
-	loc = null
+	moveToNullspace()
 	STOP_PROCESSING(SSobj, src)
 

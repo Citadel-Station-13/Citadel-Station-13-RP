@@ -6,7 +6,7 @@
 	anchored = 1
 	density = 1
 	throwpass = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	layer = ON_WINDOW_LAYER
 	power_channel = EQUIP
 	var/on = 0
@@ -15,7 +15,7 @@
 	var/frequency = 1379
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/mech_sensor/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/mech_sensor/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!enabled())
 		return TRUE
 

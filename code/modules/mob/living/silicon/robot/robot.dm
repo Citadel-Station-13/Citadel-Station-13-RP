@@ -77,8 +77,8 @@
 	var/modtype = "Default"
 	var/lower_mod = 0
 	var/jetpack = 0
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail = null
-	var/datum/effect/effect/system/spark_spread/spark_system//So they can initialize sparks whenever/N
+	var/datum/effect_system/ion_trail_follow/ion_trail = null
+	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
 	var/jeton = 0
 	var/killswitch = 0
 	var/killswitch_time = 60
@@ -98,7 +98,7 @@
 	)
 
 /mob/living/silicon/robot/New(loc,var/unfinished = 0)
-	spark_system = new /datum/effect/effect/system/spark_spread()
+	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
@@ -494,7 +494,7 @@
 		M.install(src, user)
 		return
 
-	if (istype(W, /obj/item/weldingtool) && user.a_intent != I_HURT)
+	if (istype(W, /obj/item/weldingtool) && user.a_intent != INTENT_HARM)
 		if (src == user)
 			to_chat(user, "<span class='warning'>You lack the reach to be able to repair yourself.</span>")
 			return
@@ -526,7 +526,7 @@
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
 
-	else if (W.is_crowbar() && user.a_intent != I_HURT)	// crowbar means open or close the cover
+	else if (W.is_crowbar() && user.a_intent != INTENT_HARM)	// crowbar means open or close the cover
 		if(opened)
 			if(cell)
 				to_chat(user, "You close the cover.")
@@ -683,10 +683,10 @@
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		switch(H.a_intent)
-			if(I_HELP)
+			if(INTENT_HELP)
 				visible_message("<span class='notice'>[H] pets [src].</span>")
 				return
-			if(I_HURT)
+			if(INTENT_HARM)
 				H.do_attack_animation(src)
 				if(H.species.can_shred(H))
 					attack_generic(H, rand(30,50), "slashed")
@@ -695,7 +695,7 @@
 					playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
 					visible_message("<span class='warning'>[H] punches [src], but doesn't leave a dent.</span>")
 					return
-			if(I_DISARM)
+			if(INTENT_DISARM)
 				H.do_attack_animation(src)
 				playsound(src.loc, 'sound/effects/clang1.ogg', 10, 1)
 				visible_message("<span class='warning'>[H] taps [src].</span>")

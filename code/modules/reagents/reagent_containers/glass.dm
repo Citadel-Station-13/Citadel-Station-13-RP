@@ -79,7 +79,7 @@
 	update_icon()
 
 /obj/item/reagent_containers/glass/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(flags & NOBLUDGEON) && user.a_intent == I_HURT)
+	if(force && !(flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return	..()
 
 	if(standard_feed_mob(user, M))
@@ -91,7 +91,7 @@
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to open \the [src] first.</span>")
 		return 1
-	if(user.a_intent == I_HURT)
+	if(user.a_intent == INTENT_HARM)
 		return 1
 	return ..()
 
@@ -108,7 +108,7 @@
 		return 1
 	if(standard_pour_into(user, target)) //Pouring into another beaker?
 		return
-	if(user.a_intent == I_HURT)
+	if(user.a_intent == INTENT_HARM)
 		if(standard_splash_mob(user,target))
 			return 1
 		if(reagents && reagents.total_volume)
@@ -200,7 +200,7 @@
 	name = "large beaker"
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
-	matter = list("glass" = 5000)
+	matter = list("glass" = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)

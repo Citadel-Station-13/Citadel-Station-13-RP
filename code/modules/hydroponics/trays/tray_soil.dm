@@ -2,7 +2,7 @@
 	name = "soil"
 	icon_state = "soil"
 	density = 0
-	use_power = 0
+	use_power = USE_POWER_OFF
 	mechanical = 0
 	tray_light = 0
 	frozen = -1
@@ -19,7 +19,7 @@
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/CanPass()
+/obj/machinery/portable_atmospherics/hydroponics/soil/CanAllowThrough()
 	return 1
 
 // Holder for vine plants.

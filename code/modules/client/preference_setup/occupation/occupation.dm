@@ -1,3 +1,12 @@
+/datum/category_group/player_setup_category/occupation_preferences
+	name = "Occupation"
+	sort_order = 3
+	category_item_type = /datum/category_item/player_setup_item/occupation
+
+/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
+	for(var/datum/category_item/player_setup_item/PI in items)
+		. += "[PI.content(user)]<br>"
+
 //used for pref.alternate_option
 #define GET_RANDOM_JOB 0
 #define BE_ASSISTANT 1
@@ -55,9 +64,6 @@
 			pref.player_alt_titles -= job.title
 
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 20, list/splitJobs = list("Pathfinder"))  //VOREStation Edit
-	if(!SSjobs)
-		return
-
 	. = list()
 	. += "<tt><center>"
 	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"

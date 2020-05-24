@@ -34,11 +34,19 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
+/obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
 		return TRUE
-	if(get_dir(mover, target) == turn(dir, 180))
+	if(get_dir(mover, target) & turn(dir, 180))
 		return !density
+	return TRUE
+
+/obj/structure/railing/CheckExit(atom/movable/mover, atom/newLoc)
+	if(mover.checkpass(PASSTABLE) || mover.throwing)
+		return TRUE
+	if(mover.loc == get_turf(src))	//moving out of us
+		if(get_dir(mover, newLoc) & dir)
+			return !density
 	return TRUE
 
 /obj/structure/railing/examine(mob/user)
@@ -233,7 +241,7 @@
 				to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
 				return
 			if (G.state < 2)
-				if(user.a_intent == I_HURT)
+				if(user.a_intent == INTENT_HARM)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = "head")
 					take_damage(8)

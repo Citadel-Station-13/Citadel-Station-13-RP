@@ -6,6 +6,7 @@
 	concealed_holster = 1
 	var/obj/item/holstered = null
 	var/list/can_hold //VOREStation Add
+	var/list/cant_hold // cit add
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 
@@ -15,7 +16,7 @@
 		return
 	//VOREStation Edit - Machete scabbard support
 	if (LAZYLEN(can_hold))
-		if(!is_type_in_list(I,can_hold))
+		if(!is_type_in_list(I, can_hold) && !is_type_in_list(I, cant_hold))
 			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 			return
 
@@ -28,10 +29,10 @@
 		user.stop_aiming(no_message=1)
 	holstered = I
 	user.drop_from_inventory(holstered)
-	holstered.loc = src
+	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
+	user.visible_message("<span class='notice'>[user] holsters [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
 
@@ -46,8 +47,8 @@
 	if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
 		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
 	else
-		if(user.a_intent == I_HURT)
-			usr.visible_message(
+		if(user.a_intent == INTENT_HARM)
+			user.visible_message(
 				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
 				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
 				)
@@ -156,6 +157,7 @@
 	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/material/knife/machete)
+	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 

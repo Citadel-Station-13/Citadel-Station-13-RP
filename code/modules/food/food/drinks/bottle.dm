@@ -29,7 +29,7 @@
 	..()
 
 	var/mob/M = thrower
-	if(isGlass && istype(M) && M.a_intent == I_HURT)
+	if(isGlass && istype(M) && M.a_intent == INTENT_HARM)
 		var/throw_dist = get_dist(throw_source, loc)
 		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
@@ -141,7 +141,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	var/blocked = ..()
 
-	if(user.a_intent != I_HURT)
+	if(user.a_intent != INTENT_HARM)
 		return
 	if(!smash_check(1))
 		return //won't always break on the first hit
@@ -613,3 +613,33 @@
 /obj/item/reagent_containers/food/drinks/bottle/champagne/jericho/Initialize()
 	. = ..()
 	reagents.add_reagent("champagnejericho", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras
+	name = "CC'S Hard Root Beer"
+	desc = "Doesn't matter if you're drunk when you have a horse to take you home!"
+	icon_state = "sassafras_alc"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras/Initialize()
+	. = ..()
+	reagents.add_reagent("alcsassafras", 60)
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla
+	name = "CC'S Homemade Sarsaparilla"
+	desc = "The Cyan Cowgirl rides again!"
+	icon_state = "sarsaparilla"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla/Initialize()
+	. = ..()
+	reagents.add_reagent("sarsaparilla", 60)
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sassafras
+	name = "CC'S Famous Root Beer"
+	desc = "Feel nostalgia for a range you never rode."
+	icon_state = "sassafras"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/reagent_containers/food/drinks/bottle/small/sassafras/Initialize()
+	. = ..()
+	reagents.add_reagent("sassafras", 60)

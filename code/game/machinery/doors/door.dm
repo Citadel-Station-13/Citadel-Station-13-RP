@@ -138,7 +138,7 @@
 			else
 				do_animate("deny")
 
-/obj/machinery/door/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return !opacity
 	return !density
@@ -149,14 +149,17 @@
 	return ..()
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
-	if(operating)	return
-	if(user.last_airflow > world.time - vsc.airflow_delay) //Fakkit
+	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, airflow_delay)
+	if(operating)
+		return
+	if(user.last_airflow > world.time - airflow_delay)
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))	open()
-		else				do_animate("deny")
-	return
+		if(allowed(user))
+			open()
+		else
+			do_animate("deny")
 
 /obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
 	..()
@@ -270,7 +273,7 @@
 			return
 
 		//psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.
-		if(src.density && istype(I, /obj/item) && user.a_intent == I_HURT && !istype(I, /obj/item/card))
+		if(src.density && istype(I, /obj/item) && user.a_intent == INTENT_HARM && !istype(I, /obj/item/card))
 			var/obj/item/W = I
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
@@ -362,7 +365,7 @@
 				take_damage(300)
 		if(3.0)
 			if(prob(80))
-				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
 			else

@@ -110,7 +110,7 @@
 					log_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed.")
 
 			///// If user clicked on their grabbed target
-			else if((src == G.affecting) && (attacker.a_intent == I_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
+			else if((src == G.affecting) && (attacker.a_intent == INTENT_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
 				if(!(G.affecting.feeding))
 					to_chat(user, "<span class='notice'>[G.affecting] isn't willing to be fed.</span>")
 					return FALSE

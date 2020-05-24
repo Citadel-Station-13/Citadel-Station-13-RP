@@ -8,4 +8,4 @@
 
 /datum/config_entry/number/lobby_gamemode_vote_delay
 	config_entry_value = 120
-	min_val = 0
+	min_val = -1		//-1 for disabled

@@ -1875,6 +1875,32 @@ End Citadel Change */
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/soda/sarsaparilla
+	name = "CC's Homemade Sarsaparilla"
+	id = "sarsaparilla"
+	description = "The Cyan Cowgirl rides again!"
+	taste_description = "earthy vanilla and harsh bubbles"
+	color = "#503301"
+	adj_temp = -2
+
+	glass_name = "CC's Homemade Sarsaparilla"
+	glass_desc = "Real girls drink from the bottle."
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/sassafras
+	name = "CC's Famous Root Beer"
+	id = "sassafras"
+	description = "Feel nostalgia for a range you never rode."
+	taste_description = "bitter licorice and sweet vanilla"
+	color = "#312003"
+	adj_temp = -2
+
+	glass_name = "CC's Famous Root Beer"
+	glass_desc = "Wet your whistle!"
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
 /* Alcohol */
 
 // Basic
@@ -3559,6 +3585,18 @@ End Citadel Change */
 	taste_description = "rum and sugar"
 	strength = 70
 	targ_temp = 300
+
+/datum/reagent/ethanol/alcsassafras
+	name = "CC's Hard Rootbeer"
+	id = "alcsassafras"
+	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
+	taste_description = "bitter vanilla with a sharp burn"
+	strength = 20
+
+	glass_name = "CC's Hard Rootbeer"
+	glass_desc = "You'd better carry two guns if you're gonna keep drinking these!"
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////

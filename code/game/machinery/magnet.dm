@@ -11,7 +11,7 @@
 	desc = "A device that uses station power to create points of magnetic energy."
 	plane = PLATING_PLANE
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 
 	var/freq = 1449		// radio frequency
@@ -20,7 +20,7 @@
 	var/code = 0 // frequency code, they should be different unless you have a group of magnets working together or something
 	var/turf/center // the center of magnetic attraction
 	var/on = 0
-	var/pulling = 0
+	var/pull_active = 0
 
 	// x, y modifiers to the center turf; (0, 0) is centered on the magnet, whereas (1, -1) is one tile right, one tile down
 	var/center_x = 0
@@ -142,10 +142,10 @@
 
 	// Update power usage:
 	if(on)
-		use_power = 2
+		update_use_power(USE_POWER_ACTIVE)
 		active_power_usage = electricity_level*15
 	else
-		use_power = 0
+		update_use_power(USE_POWER_OFF)
 
 	// Overload conditions:
 	/* // Eeeehhh kinda stupid
@@ -159,11 +159,11 @@
 
 	updateicon()
 
-/obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pulling
-	if(pulling) return
+/obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pull_active
+	if(pull_active) return
 	while(on)
 
-		pulling = 1
+		pull_active = 1
 		center = locate(x+center_x, y+center_y, z)
 		if(center)
 			for(var/obj/M in orange(magnetic_field, center))
@@ -177,7 +177,7 @@
 		use_power(electricity_level * 5)
 		sleep(13 - electricity_level)
 
-	pulling = 0
+	pull_active = 0
 
 /obj/machinery/magnetic_module/Destroy()
 	if(radio_controller)
@@ -190,7 +190,7 @@
 	icon_state = "airlock_control_standby"
 	density = 1
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 45
 	var/frequency = 1449
 	var/code = 0

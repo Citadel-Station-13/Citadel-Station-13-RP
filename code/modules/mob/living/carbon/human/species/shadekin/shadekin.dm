@@ -42,7 +42,7 @@
 	heat_level_3 = 1150
 
 	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
 
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
@@ -51,7 +51,6 @@
 
 	has_glowing_eyes = TRUE
 
-	death_message = "phases to somewhere far away!"
 	male_cough_sounds = null
 	female_cough_sounds = null
 	male_sneeze_sound = null
@@ -108,12 +107,6 @@
 	for(var/power in shadekin_abilities)
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
-
-/datum/species/shadekin/handle_death(var/mob/living/carbon/human/H)
-	spawn(1)
-		for(var/obj/item/W in H)
-			H.drop_from_inventory(W)
-		qdel(H)
 
 /datum/species/shadekin/get_bodytype()
 	return SPECIES_SHADEKIN

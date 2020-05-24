@@ -146,23 +146,10 @@
 	return 0
 
 /turf/attack_hand(mob/user)
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
-		return 0
-	if(user.pulling.anchored || !isturf(user.pulling.loc))
-		return 0
-	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-		return 0
-	if(ismob(user.pulling))
-		var/mob/M = user.pulling
-		var/atom/movable/t = M.pulling
-		M.stop_pulling()
-		step(user.pulling, get_dir(user.pulling.loc, src))
-		M.start_pulling(t)
-	else
-		step(user.pulling, get_dir(user.pulling.loc, src))
-	return 1
+	. = ..()
+	user.move_pulled_towards(src)
 
-turf/attackby(obj/item/W as obj, mob/user as mob)
+/turf/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.use_to_pickup && S.collection_mode)
@@ -223,124 +210,12 @@ turf/attackby(obj/item/W as obj, mob/user as mob)
 			sleep(2)
 			O.update_transform()
 
-var/const/enterloopsanity = 100
-/turf/Entered(atom/atom as mob|obj)
-	..()
-
-	if(!istype(atom, /atom/movable))
-		return
-
-	var/atom/movable/A = atom
-
-	if(ismob(A))
-		var/mob/M = A
-		if(!M.lastarea)
-			M.lastarea = get_area(M.loc)
-		if(M.lastarea.has_gravity == 0)
-			inertial_drift(M)
-		if(M.flying) //VORESTATION Edit Start. This overwrites the above is_space without touching it all that much.
-			inertial_drift(M)
-			M.make_floating(1) //VOREStation Edit End.
-		else if(!is_space())
-			M.inertia_dir = 0
-			M.make_floating(0)
-		if(isliving(M))
-			var/mob/living/L = M
-			L.handle_footstep(src)
-	..()
-	var/objects = 0
-	if(A && (A.flags & PROXMOVE))
-		for(var/atom/movable/thing in range(1))
-			if(objects++ > enterloopsanity) break
-			spawn(0)
-				if(A) //Runtime prevention
-					A.HasProximity(thing, 1)
-					if ((thing && A) && (thing.flags & PROXMOVE))
-						thing.HasProximity(A, 1)
-
-/turf/CanPass(atom/movable/mover, turf/target)
-	if(!target)
-		return FALSE
-
-	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
-		return !density
-
-	stack_trace("Non movable passed to turf CanPass : [mover]")
-	return FALSE
-
-//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanPass/Cross call, lemme know or go ahead and fix this mess - kevinz000
-/turf/Enter(atom/movable/mover, atom/oldloc)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
-		return
-	// Do not call ..()
-	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
-	// By default byond will call Bump() on the first dense object in contents
-	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
-	var/atom/firstbump
-	var/CanPassSelf = CanPass(mover, src)
-	if(CanPassSelf || CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
-		for(var/i in contents)
-			if(QDELETED(mover))
-				return FALSE		//We were deleted, do not attempt to proceed with movement.
-			if(i == mover || i == mover.loc) // Multi tile objects and moving out of other objects
-				continue
-			var/atom/movable/thing = i
-			if(!thing.Cross(mover))
-				if(QDELETED(mover))		//Mover deleted from Cross/CanPass, do not proceed.
-					return FALSE
-				if(CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
-					mover.Bump(thing)
-					continue
-				else
-					if(!firstbump || ((thing.layer > firstbump.layer || thing.flags & ON_BORDER) && !(firstbump.flags & ON_BORDER)))
-						firstbump = thing
-	if(QDELETED(mover))					//Mover deleted from Cross/CanPass/Bump, do not proceed.
-		return FALSE
-	if(!CanPassSelf)	//Even if mover is unstoppable they need to bump us.
-		firstbump = src
-	if(firstbump)
-		mover.Bump(firstbump)
-		return !QDELETED(mover) && CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE)
-	return TRUE
-
-/turf/Exit(atom/movable/mover, atom/newloc)
-	. = ..()
-	if(!. || QDELETED(mover))
-		return FALSE
-	for(var/i in contents)
-		if(i == mover)
-			continue
-		var/atom/movable/thing = i
-		if(!thing.Uncross(mover, newloc))
-			if(thing.flags & ON_BORDER)
-				mover.Bump(thing)
-			if(!CHECK_BITFIELD(mover.movement_type, UNSTOPPABLE))
-				return FALSE
-		if(QDELETED(mover))
-			return FALSE		//We were deleted.
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return
 
 /turf/proc/is_plating()
 	return 0
-
-/turf/proc/inertial_drift(atom/movable/A as mob|obj)
-	if(!(A.last_move))	return
-	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
-		var/mob/M = A
-		if(M.Process_Spacemove(1))
-			M.inertia_dir  = 0
-			return
-		spawn(5)
-			if((M && !(M.anchored) && !(M.pulledby) && (M.loc == src)))
-				if(M.inertia_dir)
-					step(M, M.inertia_dir)
-					return
-				M.inertia_dir = M.last_move
-				step(M, M.inertia_dir)
-	return
 
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
@@ -462,3 +337,9 @@ var/const/enterloopsanity = 100
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE
+
+/**
+  * Returns if things have gravity on us
+  */
+/turf/has_gravity(turf/T)
+	return loc.has_gravity(src)

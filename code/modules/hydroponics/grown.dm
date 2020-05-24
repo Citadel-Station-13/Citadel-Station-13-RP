@@ -272,27 +272,21 @@
 	if(istype(user.loc,/turf/space))
 		return
 
-	if(user.a_intent == I_HURT)
-		user.visible_message("<span class='danger'>\The [user] squashes \the [src]!</span>")
+	if(user.a_intent == INTENT_HARM)
+		user.visible_message("<span class='danger'>[user] squashes [src]!</span>")
 		seed.thrown_at(src,user)
 		sleep(-1)
 		if(src) qdel(src)
 		return
 
 	if(seed.kitchen_tag == "grass")
-		user.show_message("<span class='notice'>You make a grass tile out of \the [src]!</span>", 1)
+		user.show_message("<span class='notice'>You make a grass tile out of [src]!</span>", 1)
 		var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
-		if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
-		for(var/i=0,i<2,i++)
-			var/obj/item/stack/tile/grass/G = new (user.loc)
-			if(flesh_colour) G.color = flesh_colour
-			for (var/obj/item/stack/tile/grass/NG in user.loc)
-				if(G==NG)
-					continue
-				if(NG.amount>=NG.max_amount)
-					continue
-				NG.attackby(G, user)
-			to_chat(user, "You add the newly-formed grass to the stack. It now contains [G.amount] tiles.")
+		if(!flesh_colour)
+			flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
+		var/obj/item/stack/tile/grass/G = new(user.loc, 2)		//2 grass tiles
+		if(flesh_colour)
+			G.color = flesh_colour
 		qdel(src)
 		return
 

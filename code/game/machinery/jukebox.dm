@@ -16,7 +16,7 @@
 	anchored = 1
 	density = 1
 	power_channel = EQUIP
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/jukebox
@@ -303,7 +303,7 @@
 
 	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 
@@ -344,7 +344,7 @@
 
 /obj/machinery/media/jukebox/proc/StopPlaying()
 	playing = 0
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	start_stop_song()
 
@@ -352,7 +352,7 @@
 	if(!current_track)
 		return
 	playing = 1
-	update_use_power(2)
+	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
 	start_stop_song()
 	updateDialog()

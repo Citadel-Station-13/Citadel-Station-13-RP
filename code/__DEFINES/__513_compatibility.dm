@@ -3,6 +3,8 @@
 
 #define ismovableatom(A) (istype(A, /atom/movable))
 
+#define ismovable(A) ismovableatom(A)
+
 #define islist(L) (istype(L, /list))
 
 #define CLAMP01(x) (CLAMP(x, 0, 1))

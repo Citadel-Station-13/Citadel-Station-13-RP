@@ -153,7 +153,7 @@
 	can_be_pushed = 0
 	sprites = list(
 					"Medical Hound" = "medihound",
-					"Dark Medical Hound (Static)" = "medihounddark",
+					"Dark Medical Hound" = "medihounddark",
 					"Mediborg model V-2" = "vale",
 					"Borgi" = "borgi-medi"
 					)

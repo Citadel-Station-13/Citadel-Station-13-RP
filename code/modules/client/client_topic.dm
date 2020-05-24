@@ -64,12 +64,10 @@
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
-	//search the href for script injection
-	if( findtext(href,"<script",1,0) )
-		log_world("Attempted use of scripts within a topic call, by [src]")
-		message_admins("Attempted use of scripts within a topic call, by [src]")
-		//del(usr)
-		return
+
+	//Logs all hrefs, except chat pings
+	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
+		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
 	//Admin PM
 	if(href_list["priv_msg"])
@@ -90,17 +88,15 @@
 		send2adminirc(href_list["irc_msg"])
 		return
 
-
-
-	//Logs all hrefs
-	if(config_legacy?.log_hrefs)
-		log_href("[src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]")
-
 	switch(href_list["_src_"])
-		if("holder")	hsrc = holder
-		if("usr")		hsrc = mob
-		if("prefs")		return prefs.process_link(usr,href_list)
-		if("vars")		return view_var_Topic(href,href_list,hsrc)
+		if("holder")
+			hsrc = holder
+		if("usr")
+			hsrc = mob
+		if("prefs")
+			return prefs.process_link(usr,href_list)
+		if("vars")
+			return view_var_Topic(href,href_list,hsrc)
 		if("chat")
 			return chatOutput.Topic(href, href_list)
 

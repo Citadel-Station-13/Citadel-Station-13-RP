@@ -4,7 +4,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "holocontrol"
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	active_power_usage = 8000 //8kW for the scenery + 500W per holoitem
 	var/item_power_usage = 500
 
@@ -224,14 +224,14 @@
 			damaged = 1
 			loadProgram(powerdown_program, 0)
 			active = 0
-			use_power = 1
+			update_use_power(USE_POWER_IDLE)
 			for(var/mob/M in range(10,src))
 				M.show_message("The holodeck overloads!")
 
 
 			for(var/turf/T in linkedholodeck)
 				if(prob(30))
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(2, 1, T)
 					s.start()
 				T.ex_act(3)
@@ -271,7 +271,7 @@
 			linkedholodeck.gravitychange(1,linkedholodeck)
 
 		active = 0
-		use_power = 1
+		update_use_power(USE_POWER_IDLE)
 
 
 /obj/machinery/computer/HolodeckControl/proc/loadProgram(var/prog, var/check_delay = 1)
@@ -301,7 +301,7 @@
 
 	last_change = world.time
 	active = 1
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 
 	for(var/item in holographic_objs)
 		derez(item)
@@ -333,7 +333,7 @@
 			if(L.name=="Atmospheric Test Start")
 				spawn(20)
 					var/turf/T = get_turf(L)
-					var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(2, 1, T)
 					s.start()
 					if(T)
@@ -362,7 +362,7 @@
 
 	last_gravity_change = world.time
 	active = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 
 	if(A.has_gravity)
 		A.gravitychange(0,A)
@@ -377,4 +377,4 @@
 		linkedholodeck.gravitychange(1,linkedholodeck)
 
 	active = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE

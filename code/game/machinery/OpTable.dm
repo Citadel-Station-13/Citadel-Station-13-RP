@@ -5,7 +5,7 @@
 	icon_state = "table2-idle"
 	density = 1
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
 	surgery_odds = 100
@@ -48,7 +48,7 @@
 		qdel(src)
 	return
 
-/obj/machinery/optable/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/optable/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
 	return FALSE

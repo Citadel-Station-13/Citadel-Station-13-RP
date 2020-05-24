@@ -24,7 +24,7 @@
 	icon_state = "seeds"
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 100
 
 	var/seeds_initialized = 0 // Map-placed ones break if seeds are loaded right at the start of the round, so we do it on the first interaction
@@ -524,7 +524,7 @@
 			req_access = list()
 			req_one_access = list()
 			to_chat(user, "<span class='warning'>\The [src]'s access mechanism shorts out.</span>")
-			var/datum/effect/effect/system/spark_spread/sparks = new /datum/effect/effect/system/spark_spread()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 			sparks.set_up(3, 0, get_turf(src))
 			sparks.start()
 			visible_message("<span class='warning'>\The [src]'s panel sparks!</span>")

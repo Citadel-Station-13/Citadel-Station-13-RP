@@ -337,7 +337,7 @@
 /mob/living/simple_mob/otie/attack_hand(mob/living/carbon/human/M as mob)
 
 	switch(M.a_intent)
-		if(I_HELP)
+		if(INTENT_HELP)
 			if(health > 0)
 				M.visible_message("<span class='notice'>[M] [response_help] \the [src].</span>")
 				if(ai_inactive)
@@ -351,7 +351,7 @@
 						faction = M.faction
 				sleep(1 SECOND)
 
-		if(I_GRAB)
+		if(INTENT_GRAB)
 			if(health > 0)
 				if(ai_inactive)
 					return

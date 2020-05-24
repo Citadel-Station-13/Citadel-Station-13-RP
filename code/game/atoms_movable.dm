@@ -1,13 +1,34 @@
 /atom/movable
 	layer = OBJ_LAYER
 	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	/// Whatever we're pulling.
+	var/atom/movable/pulling
+	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
+	var/generic_canpass = TRUE
+	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
+	var/moving_diagonally = 0
+	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
+	var/atom/movable/moving_from_pull
+	/// Direction of our last move.
+	var/last_move = NONE
+	/// Which direction we're drifting
+	var/inertia_dir = NONE
+	/// Only set while drifting, last location we were while drifting
+	var/atom/inertia_last_loc
+	/// If we're moving from no-grav drifting
+	var/inertia_moving = FALSE
+	/// Next world.time we should move from no-grav drifting
+	var/inertia_next_move = 0
+	/// Delay between each drifting move.
+	var/inertia_move_delay = 5
+	/// Movement types, see __DEFINES/flags/movement.dm
+	var/movement_type = GROUND
+	/// The orbiter component of the thing we're orbiting.
+	var/datum/component/orbiter/orbiting
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
-	var/last_move = null
 	var/anchored = 0
-	// var/elevation = 2    - not used anywhere
-	var/moving_diagonally
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
@@ -26,7 +47,6 @@
 	var/old_y = 0
 	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
-	var/movement_type = NONE
 
 /atom/movable/Destroy()
 	. = ..()
@@ -48,7 +68,7 @@
 		pulledby = null
 	QDEL_NULL(riding_datum) //VOREStation Add
 
-/atom/movable/CanPass(atom/movable/mover, turf/target)
+/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)
@@ -269,3 +289,9 @@
 // Called when touching a lava tile.
 /atom/movable/proc/lava_act()
 	fire_act(null, 10000, 1000)
+
+/**
+  * Sets our movement type.
+  */
+/atom/movable/proc/set_movement_type(new_movetype)
+	movement_type = new_movetype

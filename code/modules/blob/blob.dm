@@ -22,7 +22,7 @@
 	update_icon()
 	return ..(loc)
 
-/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target)
+/obj/effect/blob/CanAllowThrough(var/atom/movable/mover, vra/turf/target)
 	return FALSE
 
 /obj/effect/blob/ex_act(var/severity)
@@ -205,5 +205,5 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/shield/CanPass(var/atom/movable/mover, var/turf/target)
+/obj/effect/blob/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
 	return !density

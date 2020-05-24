@@ -171,7 +171,7 @@
 	icon_state = "tele0"
 	dir = 4
 	var/accurate = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	circuit = /obj/item/circuitboard/teleporter_hub
@@ -218,7 +218,7 @@
 			com.one_time_use = 0
 			com.locked = null
 	else
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
@@ -306,7 +306,7 @@
 	M.loc = tmploc
 	sleep(2)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, M)
 	s.start()
 	return
@@ -319,7 +319,7 @@
 	dir = 4
 	var/active = 0
 	var/engaged = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	circuit = /obj/item/circuitboard/teleporter_station
@@ -356,8 +356,8 @@
 	if(com)
 		com.icon_state = "tele1"
 		use_power(5000)
-		update_use_power(2)
-		com.update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
+		com.update_use_power(USE_POWER_ACTIVE)
 		for(var/mob/O in hearers(src, null))
 			O.show_message("<span class='notice'>Teleporter engaged!</span>", 2)
 	add_fingerprint(usr)
@@ -371,8 +371,8 @@
 	if(com)
 		com.icon_state = "tele0"
 		com.accurate = 0
-		com.update_use_power(1)
-		update_use_power(1)
+		com.update_use_power(USE_POWER_IDLE)
+		update_use_power(USE_POWER_IDLE)
 		for(var/mob/O in hearers(src, null))
 			O.show_message("<span class='notice'>Teleporter disengaged!</span>", 2)
 	add_fingerprint(usr)

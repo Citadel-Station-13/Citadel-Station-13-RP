@@ -18,9 +18,6 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define DF_ISPROCESSING			(1<<1)
 #define DF_USE_TAG				(1<<2)
 
-// /atom/movable movement_type
-#define UNSTOPPABLE				(1<<0)			//Can not be stopped from moving from Cross(), CanPass(), or Uncross() failing. Still bumps everything it passes through, though.
-
 // Flags bitmasks. - Used in /atom/var/flags
 #define NOBLUDGEON				(1<<0)	// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
 #define NOCONDUCT					(1<<1)	// Conducts electricity. (metal etc.)

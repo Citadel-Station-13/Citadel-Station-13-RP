@@ -4,10 +4,18 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
+
+	// Intents
+	/// How are we intending to move? Walk/run/etc.
+	var/m_intent = MOVE_INTENT_RUN
+
 	var/datum/mind/mind
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/move_delay = null // For movement speed delays.
+	/// Next world.time we will be able to move.
+	var/move_delay = 0
+	/// Last world.time we turned in our spot without moving (see: facing directions)
+	var/last_turn = 0
 	var/next_move = null // For click delay, despite the misleading name.
 
 	//Not in use yet
@@ -63,7 +71,6 @@
 	var/poll_answer = 0.0
 	var/sdisabilities = 0	//Carbon
 	var/disabilities = 0	//Carbon
-	var/atom/movable/pulling = null
 	var/transforming = null	//Carbon
 	var/other = 0.0
 	var/eye_blind = null	//Carbon
@@ -119,11 +126,10 @@
 	var/stunned = 0.0
 	var/weakened = 0.0
 	var/losebreath = 0.0//Carbon
-	var/intent = null//Living
+	var/_intent = null//Living
 	var/shakecamera = 0
-	var/a_intent = I_HELP//Living
+	var/a_intent = INTENT_HELP//Living
 	var/m_int = null//Living
-	var/m_intent = "run"//Living
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 
@@ -136,8 +142,6 @@
 	var/list/mapobjs = list()
 
 	var/in_throw_mode = 0
-
-	var/inertia_dir = 0
 
 	var/music_lastplayed = "null"
 

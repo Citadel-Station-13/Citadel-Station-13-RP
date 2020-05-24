@@ -1268,9 +1268,11 @@
 		var/mob/M = locate(href_list["adminplayerobservejump"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
-		sleep(2)
-		C.jumptomob(M)
+		if(!isobserver(usr))
+			C.admin_ghost()
+		var/mob/observer/dead/O = C.mob
+		if(istype(O))
+			O.ManualFollow(M)
 
 	else if(href_list["check_antagonist"])
 		check_antagonists()
@@ -1903,15 +1905,6 @@
 		if(check_rights(R_ADMIN|R_SERVER))
 			populate_inactive_customitems_list(src.owner)
 
-	else if(href_list["vsc"])
-		if(check_rights(R_ADMIN|R_SERVER))
-			if(href_list["vsc"] == "airflow")
-				vsc.ChangeSettingsDialog(usr,vsc.settings)
-			if(href_list["vsc"] == "phoron")
-				vsc.ChangeSettingsDialog(usr,vsc.plc.settings)
-			if(href_list["vsc"] == "default")
-				vsc.SetDefault(usr)
-
 	else if(href_list["toglang"])
 		if(check_rights(R_SPAWN|R_EVENT))
 			var/mob/M = locate(href_list["toglang"])
@@ -1951,6 +1944,9 @@
 			error_viewer.show_to(owner, locate(href_list["viewruntime_backto"]), href_list["viewruntime_linear"])
 		else
 			error_viewer.show_to(owner, null, href_list["viewruntime_linear"])
+
+	else if(href_list["atmos_vsc"])
+		GLOB.atmos_vsc.ui_interact(usr)
 
 	// player info stuff
 

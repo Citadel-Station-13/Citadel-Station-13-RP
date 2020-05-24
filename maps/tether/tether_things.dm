@@ -29,7 +29,7 @@
 	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
@@ -141,7 +141,7 @@
 		return FALSE // Block exit from our turf to above
 	return TRUE
 
-/obj/effect/ceiling/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/effect/ceiling/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
@@ -176,7 +176,7 @@
 /turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
 	if (!istype(user)) return
 	if (electrocute_mob(user, shock_area, src))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 
@@ -247,7 +247,7 @@
 
 	var/mob/living/carbon/human/user = AM
 
-	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
+	var/choice = alert(user, "Do you want to depart via the tram? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time
@@ -488,7 +488,7 @@ var/global/list/latejoin_tram   = list()
 /obj/structure/dancepole
 	name = "dance pole"
 	desc = "Engineered for your entertainment"
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "dancepole"
 	density = 0
 	anchored = 1

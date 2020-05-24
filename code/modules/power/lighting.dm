@@ -168,7 +168,7 @@ var/global/list/light_type_cache = list()
 	anchored = 1
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 10
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
@@ -367,10 +367,10 @@ var/global/list/light_type_cache = list()
 					on = 0
 					set_light(0)
 			else
-				use_power = 2
+				update_use_power(USE_POWER_ACTIVE)
 				set_light(brightness_range, brightness_power, brightness_color)
 	else
-		use_power = 1
+		update_use_power(USE_POWER_IDLE)
 		set_light(0)
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
@@ -513,7 +513,7 @@ var/global/list/light_type_cache = list()
 
 		to_chat(user, "You stick \the [W] into the light socket!")
 		if(has_power() && !(W.flags & NOCONDUCT))
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
 			//if(!user.mutations & COLD_RESISTANCE)
@@ -659,7 +659,7 @@ var/global/list/light_type_cache = list()
 		if(status == LIGHT_OK || status == LIGHT_BURNED)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		if(on)
-			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
 	status = LIGHT_BROKEN
@@ -846,7 +846,7 @@ var/global/list/light_type_cache = list()
 	if(!proximity) return
 	if(istype(target, /obj/machinery/light))
 		return
-	if(user.a_intent != I_HURT)
+	if(user.a_intent != INTENT_HARM)
 		return
 
 	shatter()

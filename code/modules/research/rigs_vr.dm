@@ -89,6 +89,12 @@
 	build_path = /obj/item/rig_module/device/orescanner
 	sort_string = "OBABD"
 
+/datum/design/item/rig_module/orescanneradv
+	name = "adv. ore scanner"
+	id = "rigmod_orescanneradv"
+	build_path = /obj/item/rig_module/device/orescanner/advanced
+	sort_string = "OBABE"
+
 /datum/design/item/rig_module/rescue_pharm
 	name = "rescue pharm"
 	id = "rigmod_rescue_pharm"
@@ -114,6 +120,13 @@
 	id = "rigmod_taser"
 	build_path = /obj/item/rig_module/mounted/taser
 	sort_string = "OBADC"
+
+/datum/design/item/rig_module/armblade
+	name = "arm-mounted blade"
+	id = "rigmod_armblade"
+	build_path = /obj/item/rig_module/armblade
+	sort_string = "OBADD"
+	materials = list(DEFAULT_WALL_MATERIAL = 8000, "glass" = 2000, "silver" = 2000, "gold" = 2000)
 
 /datum/design/item/rig_module/rcd
 	name = "rcd"

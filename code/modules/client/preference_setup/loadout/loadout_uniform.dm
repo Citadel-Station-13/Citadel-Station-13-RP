@@ -488,37 +488,36 @@
 // NEW UNIFORMS BEGIN HERE
 /datum/gear/uniform/sifguard
 	display_name = "uniform, crew"
-	path = /obj/item/clothing/under/solgov/utility/sifguard
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew
 
 /datum/gear/uniform/sifguard/medical
 	display_name = "uniform, crew (medical)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/medical
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/medical
 	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Paramedic","Geneticist","Field Medic")
 
 /datum/gear/uniform/sifguard/science
 	display_name = "uniform, crew (science)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/research
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/research
 	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist")
 
 /datum/gear/uniform/sifguard/engineering
 	display_name = "uniform, crew (engineering)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/engineering
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
 
 /datum/gear/uniform/sifguard/supply
 	display_name = "uniform, crew (supply)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/supply
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/supply
 	allowed_roles = list("Quartermaster","Cargo Technician","Shaft Miner")
 
 /datum/gear/uniform/sifguard/security
 	display_name = "uniform, crew (security)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/security
-	cost = 2
+	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/security
 	allowed_roles = list("Security Officer","Head of Security","Warden","Detective")
 
 /datum/gear/uniform/sifguard/command
 	display_name = "uniform, crew (command)"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/command
+	path = /obj/item/clothing/under/solgov/utility/sifguard/officer/crew
 	allowed_roles = list("Head of Security","Colony Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
 
 /datum/gear/uniform/fleet/medical
@@ -700,3 +699,16 @@ datum/gear/uniform/victorianreddress
 datum/gear/uniform/victorianblackdress
 	display_name = "Victorian Black Dress"
 	path = /obj/item/clothing/under/victorianblackdress
+
+datum/gear/uniform/bridgeofficer
+	display_name = "bridge officer skirt"
+	path = /obj/item/clothing/under/bridgeofficerskirt
+	allowed_roles = list("Command Secretary")
+
+datum/gear/uniform/fiendsuit
+	display_name = "Fiendish Suit"
+	path = /obj/item/clothing/under/fiendsuit
+
+datum/gear/uniform/fienddress
+	display_name = "Fiendish Dress"
+	path = /obj/item/clothing/under/fienddress

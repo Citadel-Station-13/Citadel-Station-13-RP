@@ -15,7 +15,7 @@
 	var/max_charge = 8e6	//8 MJ
 	var/max_charge_rate = 400000	//400 kW
 	var/locked = 0
-	use_power = 0 //doesn't use APC power
+	use_power = USE_POWER_OFF //doesn't use APC power
 	var/charge_rate = 100000	//100 kW
 	var/obj/machinery/shield_gen/owned_gen
 
@@ -31,7 +31,7 @@
 		to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 		. = 1
 		updateDialog()
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
 

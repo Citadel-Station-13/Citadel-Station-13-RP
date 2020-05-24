@@ -320,11 +320,13 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/mining_main/refinery)
 "aaM" = (
-/obj/machinery/mineral/stacking_machine,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining_interior"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/mining_main/refinery)
 "aaN" = (
-/obj/machinery/mineral/output,
 /obj/machinery/conveyor{
 	dir = 9;
 	id = "mining_interior"
@@ -2119,6 +2121,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 9
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/storage)
 "adT" = (
@@ -4498,6 +4501,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "ail" = (
@@ -7112,6 +7116,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
+"amW" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/computer/timeclock/premade/south,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
 "amX" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
@@ -7436,6 +7455,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/mining_main/ore)
+"anF" = (
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
+"anG" = (
+/obj/effect/floor_decal/steeldecal/steel_decals6,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/atrium_one)
 "anH" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -9567,6 +9595,7 @@
 	dir = 1;
 	pixel_y = 28
 	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "arE" = (
@@ -12019,6 +12048,7 @@
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint)
 "avU" = (
@@ -13070,20 +13100,6 @@
 "axH" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/atrium_one)
-"axI" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
@@ -28610,6 +28626,7 @@
 	layer = 8;
 	name = "Vent Blast Door"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "bWv" = (
@@ -30306,11 +30323,6 @@
 	dir = 9
 	},
 /obj/structure/flora/pottedplant,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/atrium_one)
-"cgP" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/atrium_one)
 "cgR" = (
@@ -43834,7 +43846,7 @@ aah
 agM
 avE
 aww
-axI
+amW
 agM
 agV
 aip
@@ -46828,7 +46840,7 @@ aiK
 aiK
 aiK
 agM
-avB
+anF
 aqq
 avB
 asq
@@ -47341,7 +47353,7 @@ aad
 aah
 aah
 aar
-aaJ
+aaI
 aaS
 abi
 abU
@@ -48109,7 +48121,7 @@ cfE
 cfE
 bHH
 bJD
-cgP
+anG
 cgT
 chb
 bSl

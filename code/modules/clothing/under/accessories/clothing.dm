@@ -232,8 +232,8 @@
 /obj/item/clothing/accessory/poncho/roles/cloak/custom //A colorable cloak
 	name = "cloak"
 	desc = "A simple, bland cloak."
-	icon_state = "colorcloak"
-	item_state = "colorcloak"
+	icon_state = "cloak"
+	item_state = "cloak"
 
 /obj/item/clothing/accessory/hawaii
 	name = "flower-pattern shirt"
@@ -377,9 +377,24 @@
 	icon_state = "turtleneck_red"
 
 /obj/item/clothing/accessory/sweater/combat
-	name = "combat sweater"
+	name = "green combat sweater"
 	desc = "Look like an off duty soldier with this green sweater!"
 	icon_state = "combatsweater"
+
+/obj/item/clothing/accessory/sweater/combatblack
+	name = "black combat sweater"
+	desc = "Look like an off duty soldier with this black sweater!"
+	icon_state = "ubacblack"
+
+/obj/item/clothing/accessory/sweater/combatblue
+	name = "blue combat sweater"
+	desc = "Look like an off duty soldier with this bue sweater!"
+	icon_state = "ubacblue"
+
+/obj/item/clothing/accessory/sweater/syndi
+	name = "slim fit sweater"
+	desc = "A slim fit sweater! It seems robust."
+	icon_state = "syndicatesweater"
 //***
 // End of sweaters
 //***

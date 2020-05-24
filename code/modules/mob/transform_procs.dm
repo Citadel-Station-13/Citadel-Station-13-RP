@@ -209,7 +209,7 @@
 	var/alien_caste = pick("Hunter","Sentinel","Drone")
 	var/mob/living/carbon/human/new_xeno = create_new_xenomorph(alien_caste,loc)
 
-	new_xeno.a_intent = I_HURT
+	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
@@ -231,7 +231,7 @@
 		qdel(t)
 
 	var/mob/living/simple_mob/animal/passive/dog/corgi/new_corgi = new /mob/living/simple_mob/animal/passive/dog/corgi (loc)
-	new_corgi.a_intent = I_HURT
+	new_corgi.a_intent = INTENT_HARM
 	new_corgi.key = key
 
 	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
@@ -264,7 +264,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = I_HURT
+	new_mob.a_intent = INTENT_HARM
 
 
 	to_chat(new_mob, "You suddenly feel more... animalistic.")
@@ -284,7 +284,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = I_HURT
+	new_mob.a_intent = INTENT_HARM
 	to_chat(new_mob, "You feel more... animalistic")
 
 	qdel(src)

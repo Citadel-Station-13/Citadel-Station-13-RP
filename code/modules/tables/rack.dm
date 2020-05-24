@@ -6,6 +6,7 @@
 	can_plate = 0
 	can_reinforce = 0
 	flipped = -1
+	item_pixel_place = FALSE
 
 /obj/structure/table/rack/Initialize(mapload)
 	. = ..()

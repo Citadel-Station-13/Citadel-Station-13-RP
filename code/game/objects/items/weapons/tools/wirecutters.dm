@@ -28,7 +28,7 @@
 	..()
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C as mob, mob/user as mob)
-	if(istype(C) && user.a_intent == I_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
+	if(istype(C) && user.a_intent == INTENT_HELP && (C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
 		"You cut \the [C]'s restraints with \the [src]!",\
 		"You hear cable being cut.")
@@ -76,6 +76,7 @@
 /obj/item/tool/wirecutters/hybrid
 	name = "strange wirecutters"
 	desc = "This cuts wires.  With <span class='alien'>Science!</span>"
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters)
 	icon_state = "hybcutters"
 	w_class = ITEMSIZE_NORMAL
 	slowdown = 0.1
@@ -85,13 +86,6 @@
 	toolspeed = 0.4
 	reach = 2
 
-/obj/item/tool/wirecutters/hybrid/is_wirecutter()
-	if(prob(10))
-		var/turf/T = get_turf(src)
-		SSradiation.radiate(get_turf(src), 5)
-		T.visible_message("<span class='alien'>\The [src] shudders!</span>")
-		return FALSE
-	return TRUE
 
 /obj/item/tool/wirecutters/power
 	name = "jaws of life"

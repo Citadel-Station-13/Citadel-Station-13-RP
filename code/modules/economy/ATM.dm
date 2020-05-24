@@ -20,7 +20,7 @@ log transactions
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	circuit =  /obj/item/circuitboard/atm
 	var/datum/money_account/authenticated_account
@@ -33,12 +33,12 @@ log transactions
 	var/obj/item/card/held_card
 	var/editing_security_level = 0
 	var/view_screen = NO_SCREEN
-	var/datum/effect/effect/system/spark_spread/spark_system
+	var/datum/effect_system/spark_spread/spark_system
 
 /obj/machinery/atm/New()
 	..()
 	machine_id = "[station_name()] RT #[num_financial_terminals++]"
-	spark_system = new /datum/effect/effect/system/spark_spread
+	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 

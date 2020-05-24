@@ -616,7 +616,7 @@
 /obj/item/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, flags)
 
-/obj/item/projectile/CanPass()
+/obj/item/projectile/CanAllowThrough()
 	return TRUE
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.

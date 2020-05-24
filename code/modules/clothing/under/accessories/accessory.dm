@@ -159,14 +159,14 @@
 	slot = ACCESSORY_SLOT_TIE
 
 /obj/item/clothing/accessory/stethoscope/do_surgery(mob/living/carbon/human/M, mob/living/user)
-	if(user.a_intent != I_HELP) //in case it is ever used as a surgery tool
+	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool
 		return ..()
 	attack(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
 	if(ishuman(M) && isliving(user))
-		if(user.a_intent == I_HELP)
+		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_sel.selecting)
 			if(body_part)
 				var/their = "their"
@@ -423,3 +423,24 @@
 	desc = "A plain, unadorned sash."
 	icon_state = "sash"
 	slot = ACCESSORY_SLOT_OVER
+
+/obj/item/clothing/accessory/necklace
+	name = "necklace"
+	desc = "Alt-click to name and add a description."
+	icon_state = "locket"
+	var/described = FALSE
+	var/named = FALSE
+
+/obj/item/clothing/accessory/necklace/AltClick(mob/user)
+	if(!named)
+		var/inputname = sanitizeSafe(input("Enter a prefix for the necklace's name.", ,""), MAX_NAME_LEN)
+		if(src && inputname && in_range(user,src))
+			name = "[inputname] necklace"
+			to_chat(user, "You describe the [name].")
+			named = TRUE
+	if(!described)
+		var/inputdesc = sanitizeSafe(input("Enter the new description for the necklace. 400 character limit.", ,""), 400) // 400 character limit
+		if(src && inputdesc && in_range(user,src))
+			desc = "[inputdesc]"
+			to_chat(user, "You describe the [name].")
+			described = TRUE

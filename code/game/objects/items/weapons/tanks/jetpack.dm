@@ -12,7 +12,7 @@
 			)
 	item_state_slots = list(slot_r_hand_str = "jetpack", slot_l_hand_str = "jetpack")
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/on = 0.0
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
@@ -20,7 +20,7 @@
 
 /obj/item/tank/jetpack/New()
 	..()
-	ion_trail = new /datum/effect/effect/system/ion_trail_follow()
+	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 
 /obj/item/tank/jetpack/Destroy()
@@ -84,9 +84,8 @@
 	item_state_slots = list(slot_r_hand_str = "jetpack-void", slot_l_hand_str = "jetpack-void")
 
 /obj/item/tank/jetpack/void/Initialize()
-	..()
+	. = ..()
 	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/jetpack/oxygen
 	name = "jetpack (oxygen)"
@@ -95,9 +94,8 @@
 	item_state_slots = list(slot_r_hand_str = "jetpack", slot_l_hand_str = "jetpack")
 
 /obj/item/tank/jetpack/oxygen/Initialize()
-	..()
+	. = ..()
 	air_contents.adjust_gas("oxygen", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/jetpack/carbondioxide
 	name = "jetpack (carbon dioxide)"
@@ -107,9 +105,8 @@
 	item_state_slots = list(slot_r_hand_str = "jetpack-black", slot_l_hand_str = "jetpack-black")
 
 /obj/item/tank/jetpack/carbondioxide/Initialize()
-	..()
+	. = ..()
 	air_contents.adjust_gas("carbon_dioxide", (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
 
 /obj/item/tank/jetpack/rig
 	name = "jetpack"

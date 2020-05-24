@@ -90,6 +90,10 @@
 		add_admin_verbs()
 		admin_memo_show()
 
+	if(SSinput.subsystem_initialized)
+		set_macros()
+		update_movement_keys()
+
 	chatOutput.start() // Starts the chat
 
 	connection_time = world.time
@@ -125,15 +129,17 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!gc_destroyed)
+		Destroy() //Clean up signals and timers.
+	return ..()
+
+/client/Destroy()
 	if(holder)
 		holder.owner = null
 		admins -= src
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
-	return ..()
-
-/client/Destroy()
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 

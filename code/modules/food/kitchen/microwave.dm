@@ -6,7 +6,7 @@
 	layer = 2.9
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 2000
 	flags = OPENCONTAINER | NOREACT
@@ -386,7 +386,7 @@
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/broke()
-	var/datum/effect/effect/system/spark_spread/s = new
+	var/datum/effect_system/spark_spread/s = new
 	s.set_up(2, 1, src)
 	s.start()
 	src.icon_state = "mwb" // Make it look all busted up and shit
@@ -446,7 +446,7 @@
 	)
 	dispose()
 
-/obj/machinery/microwave/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/machinery/microwave/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
 	if (!mover)
 		return 1
 	if(mover.checkpass(PASSTABLE))

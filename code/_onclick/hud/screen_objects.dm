@@ -210,13 +210,7 @@
 						C.hud_used.move_intent.icon_state = "walking"
 						return 1
 				var/mob/living/L = usr
-				switch(L.m_intent)
-					if("run")
-						L.m_intent = "walk"
-						L.hud_used.move_intent.icon_state = "walking"
-					if("walk")
-						L.m_intent = "run"
-						L.hud_used.move_intent.icon_state = "running"
+				L.toggle_move_intent()
 		if("m_intent")
 			if(!usr.m_int)
 				switch(usr.m_intent)
@@ -305,7 +299,7 @@
 												contents.Add(0)
 
 										// No races breath this, but never know about downstream servers.
-										if ("carbon dioxide")
+										if ("carbon_dioxide")
 											if(t.air_contents.gas["carbon_dioxide"] && !t.air_contents.gas["phoron"])
 												contents.Add(t.air_contents.gas["carbon_dioxide"])
 											else
@@ -349,17 +343,17 @@
 								to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
 		if("act_intent")
 			usr.a_intent_change("right")
-		if(I_HELP)
-			usr.a_intent = I_HELP
+		if(INTENT_HELP)
+			usr.a_intent = INTENT_HELP
 			usr.hud_used.action_intent.icon_state = "intent_help"
-		if(I_HURT)
-			usr.a_intent = I_HURT
+		if(INTENT_HARM)
+			usr.a_intent = INTENT_HARM
 			usr.hud_used.action_intent.icon_state = "intent_harm"
-		if(I_GRAB)
-			usr.a_intent = I_GRAB
+		if(INTENT_GRAB)
+			usr.a_intent = INTENT_GRAB
 			usr.hud_used.action_intent.icon_state = "intent_grab"
-		if(I_DISARM)
-			usr.a_intent = I_DISARM
+		if(INTENT_DISARM)
+			usr.a_intent = INTENT_DISARM
 			usr.hud_used.action_intent.icon_state = "intent_disarm"
 
 		if("pull")

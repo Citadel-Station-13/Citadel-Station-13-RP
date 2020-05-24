@@ -41,12 +41,14 @@
 
 /turf/simulated/open/Entered(var/atom/movable/mover)
 	..()
-	mover.fall()
+	if(mover.movement_type & GROUND)
+		mover.fall()
 
 // Called when thrown object lands on this turf.
 /turf/simulated/open/hitby(var/atom/movable/AM, var/speed)
 	. = ..()
-	AM.fall()
+	if(AM.movement_type & GROUND)
+		AM.fall()
 
 /turf/simulated/open/proc/update()
 	plane = OPENSPACE_PLANE + src.z
@@ -55,7 +57,8 @@
 	levelupdate()
 	below.update_icon() // So the 'ceiling-less' overlay gets added.
 	for(var/atom/movable/A in src)
-		A.fall()
+		if(A.movement_type & GROUND)
+			A.fall()
 	SSopenspace.add_turf(src, 1)
 
 // override to make sure nothing is hidden

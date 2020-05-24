@@ -727,10 +727,14 @@
 /obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
 	toxin_type = "murk_protein"
 
-/obj/item/reagent_containers/food/snacks/carpmeat/fish
+/obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
-	toxin_type = "neurotoxic_protein"
-	toxin_amount = 1
+	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize()
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -3400,11 +3404,11 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/rawsticks/Initialize()
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/liquidfood
-	name = "\improper LiquidProtein Ration"
-	desc = "A variant of the liquidfood ration, designed for obligate carnivore species. Only barely more appealing than regular liquidfood. Should this be crunchy?"
-	icon_state = "liquidprotein"
-	trash = /obj/item/trash/liquidprotein
+/obj/item/reagent_containers/food/snacks/liquidfood // Buff back to 30 from 20
+	name = "\improper LiquidFood Ration"
+	desc = "A prepackaged grey slurry of all the essential nutrients for a spacefarer on the go. Should this be crunchy?"
+	icon_state = "liquidfood"
+	trash = /obj/item/trash/liquidfood
 	filling_color = "#A8A8A8"
 	survivalfood = TRUE
 	center_of_mass = list("x"=16, "y"=15)
@@ -3412,9 +3416,8 @@ END CITADEL CHANGE */
 	bitesize = 4
 	nutriment_desc = list("chalk" = 6)
 
-/obj/item/reagent_containers/food/snacks/liquidprotein/Initialize()
+/obj/item/reagent_containers/food/snacks/liquidfood/Initialize()
 	..()
-	reagents.add_reagent("protein", 30)
 	reagents.add_reagent("iron", 3)
 
 /obj/item/reagent_containers/food/snacks/liquidvitamin
@@ -3429,7 +3432,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/liquidvitamin/Initialize()
 	..()
-	reagents.add_reagent("flour", 20)
+	reagents.add_reagent("nutriflour", 20)
 	reagents.add_reagent("tricordrazine", 5)
 	reagents.add_reagent("paracetamol", 5)
 	reagents.add_reagent("enzyme", 1)

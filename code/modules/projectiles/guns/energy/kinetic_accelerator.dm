@@ -141,7 +141,7 @@
 /obj/item/borg/upgrade/modkit
 	name = "modification kit"
 	desc = "An upgrade for kinetic accelerators."
-	icon = 'icons/obj/objects_vr.dmi'
+	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_MAGNET = 4)
 	require_module = 1
