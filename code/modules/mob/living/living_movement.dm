@@ -67,7 +67,7 @@
 	if(!(mobility_flags & MOBILITY_MOVE))
 		return FALSE
 */
-	if(!canmove)
+	if(stat != CONSCIOUS)
 		return FALSE
 	return ..()
 
