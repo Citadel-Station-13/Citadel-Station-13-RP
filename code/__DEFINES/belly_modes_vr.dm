@@ -29,15 +29,15 @@
 #define DM_TRANSFORM_FEMALE_EGG						"Transform (Female) (EGG)"
 
 //Addon mode flags
-#define DM_FLAG_NUMBING			0x1
-#define DM_FLAG_STRIPPING		0x2
-#define DM_FLAG_LEAVEREMAINS	0x4
-#define DM_FLAG_THICKBELLY		0x8
+#define DM_FLAG_NUMBING			(1<<0)
+#define DM_FLAG_STRIPPING		(1<<1)
+#define DM_FLAG_LEAVEREMAINS	(1<<2)
+#define DM_FLAG_THICKBELLY		(1<<3)
 
 //Item related modes
-#define IM_HOLD									"Hold"
-#define IM_DIGEST_FOOD							"Digest (Food Only)"
-#define IM_DIGEST								"Digest"
+#define IM_HOLD					"Hold"
+#define IM_DIGEST_FOOD			"Digest (Food Only)"
+#define IM_DIGEST				"Digest"
 
 //Stance for hostile mobs to be in while devouring someone.
 #define HOSTILE_STANCE_EATING	99

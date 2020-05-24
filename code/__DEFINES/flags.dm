@@ -4,35 +4,44 @@
 #define NONE 0
 
 //for convenience
-#define ENABLE_BITFIELD(variable, flag)				(variable |= (flag))
-#define DISABLE_BITFIELD(variable, flag)			(variable &= ~(flag))
-#define CHECK_BITFIELD(variable, flag)				(variable & (flag))
+#define ENABLE_BITFIELD(variable, flag) (variable |= (flag))
+#define DISABLE_BITFIELD(variable, flag) (variable &= ~(flag))
+#define CHECK_BITFIELD(variable, flag) (variable & (flag))
+#define TOGGLE_BITFIELD(variable, flag) (variable ^= (flag))
 
-//check if all bitflags specified are present
-#define CHECK_MULTIPLE_BITFIELDS(flagvar, flags)	((flagvar & (flags)) == flags)
+#define CHECK_MULTIPLE_BITFIELDS(flagvar, flags) (((flagvar) & (flags)) == (flags))
 
 GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768))
 
-// datum_flags
-#define DF_VAR_EDITED			(1<<0)
-#define DF_ISPROCESSING			(1<<1)
-#define DF_USE_TAG				(1<<2)
+// for /datum/var/datum_flags
+#define DF_USE_TAG		(1<<0)
+#define DF_VAR_EDITED	(1<<1)
+#define DF_ISPROCESSING (1<<2)
 
-// Flags bitmasks. - Used in /atom/var/flags
-#define NOBLUDGEON				(1<<0)	// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
-#define NOCONDUCT					(1<<1)	// Conducts electricity. (metal etc.)
-#define ON_BORDER				(1<<2)	// Item has priority to check when entering or leaving.
-#define NOBLOODY				(1<<3)	// Used for items if they don't want to get a blood overlay.
-#define OPENCONTAINER			(1<<4)	// Is an open container for chemistry purposes.
-#define PHORONGUARD				(1<<5)	// Does not get contaminated by phoron.
-#define NOREACT					(1<<6)	// Reagents don't react inside this container.
-#define PROXMOVE				(1<<7)// Does this object require proximity checking in Enter()?
-#define OVERLAY_QUEUED			(1<<8)// Atom queued to SSoverlay for COMPILE_OVERLAYS
-/// Atom is initialized
+// FLAGS BITMASK - Used in /atom/var/flags
+// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
+#define NOBLUDGEON				(1<<0)
+// Conducts electricity. (metal etc.)
+#define NOCONDUCT				(1<<1)
+// Item has priority to check when entering or leaving.	
+#define ON_BORDER				(1<<2)
+// Used for items if they don't want to get a blood overlay.
+#define NOBLOODY				(1<<3)
+// Is an open container for chemistry purposes.
+#define OPENCONTAINER			(1<<4)
+// Does not get contaminated by phoron.	
+#define PHORONGUARD				(1<<5)
+// Reagents don't react inside this container.
+#define NOREACT					(1<<6)
+// Does this object require proximity checking in Enter()?
+#define PROXMOVE				(1<<7)
+// Atom queued to SSoverlay for COMPILE_OVERLAYS
+#define OVERLAY_QUEUED			(1<<8) 
+// Whether /atom/Initialize() has already run for the object.
 #define INITIALIZED				(1<<9)
-/// Atom is admin spawned
+// Was this spawned by an admin? used for stat tracking stuff.
 #define ADMIN_SPAWNED			(1<<10)
-/// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
+// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
 #define HEAR					(1<<11)
 
 
@@ -44,9 +53,17 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define FLEXIBLEMATERIAL		(1<<4)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
 #define ALLOW_SURVIVALFOOD		(1<<5)	// Allows special survival food items to be eaten through it
 
-// Flags for pass_flags. - Used in /atom/var/pass_flags
-#define PASSTABLE				(1<<0)
-#define PASSGLASS				(1<<1)
-#define PASSGRILLE				(1<<2)
-#define PASSBLOB				(1<<3)
-#define PASSMOB					(1<<4)
+/*
+	These defines are used specifically with the atom/pass_flags bitmask
+	the atom/checkpass() proc uses them (tables will call movable atom checkpass(PASSTABLE) for example)
+*/
+//flags for pass_flags
+#define PASSTABLE		(1<<0)
+#define PASSGLASS		(1<<1)
+#define PASSGRILLE		(1<<2)
+#define PASSBLOB		(1<<3)
+#define PASSMOB			(1<<4)
+/* Not yet included
+#define PASSCLOSEDTURF	(1<<5)
+#define LETPASSTHROW	(1<<6)
+*/

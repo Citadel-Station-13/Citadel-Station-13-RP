@@ -53,47 +53,47 @@
 
 // NIF flags
 //Vision
-#define	NIF_V_AR_CIVILIAN		0x1
-#define	NIF_V_AR_MEDICAL		0x2
-#define NIF_V_AR_SECURITY		0x4
-#define NIF_V_AR_ENGINE			0x8
-#define NIF_V_AR_SCIENCE		0x10
-#define NIF_V_AR_OMNI			0x20
-#define	NIF_V_CORRECTIVE		0x40
-#define NIF_V_MESONS			0x80
-#define NIF_V_MATERIAL			0x100
-#define NIF_V_THERMALS			0x200
-#define NIF_V_NIGHTVIS			0x400
-#define NIF_V_UVFILTER			0x800
-#define NIF_V_FLASHPROT			0x1000
+#define	NIF_V_AR_CIVILIAN		(1<<0)
+#define	NIF_V_AR_MEDICAL		(1<<1)
+#define NIF_V_AR_SECURITY		(1<<2)
+#define NIF_V_AR_ENGINE			(1<<3)
+#define NIF_V_AR_SCIENCE		(1<<4)
+#define NIF_V_AR_OMNI			(1<<5)
+#define	NIF_V_CORRECTIVE		(1<<6)
+#define NIF_V_MESONS			(1<<7)
+#define NIF_V_MATERIAL			(1<<8)
+#define NIF_V_THERMALS			(1<<9)
+#define NIF_V_NIGHTVIS			(1<<10)
+#define NIF_V_UVFILTER			(1<<11)
+#define NIF_V_FLASHPROT			(1<<12)
 
 //Health
-#define NIF_H_ORGREPAIR			0x1
-#define NIF_H_SYNTHREPAIR		0x2
-#define NIF_H_AUTOSTASIS		0x4 //These two are just part of
-#define NIF_H_ALERTMED			0x8 //medichines right now
-#define NIF_H_TOXREGEN			0x10
-#define NIF_H_SPAREBREATH		0x20
+#define NIF_H_ORGREPAIR			(1<<0)
+#define NIF_H_SYNTHREPAIR		(1<<1)
+#define NIF_H_AUTOSTASIS		(1<<2) //These two are just part of
+#define NIF_H_ALERTMED			(1<<3) //medichines right now
+#define NIF_H_TOXREGEN			(1<<4)
+#define NIF_H_SPAREBREATH		(1<<5)
 
 //Combat
-#define NIF_C_BRUTEARMOR		0x1
-#define NIF_C_BURNARMOR			0x2
-#define NIF_C_PAINKILLERS		0x4
-#define NIF_C_HARDCLAWS			0x8
-#define NIF_C_HIDELASER			0x10
+#define NIF_C_BRUTEARMOR		(1<<0)
+#define NIF_C_BURNARMOR			(1<<1)
+#define NIF_C_PAINKILLERS		(1<<2)
+#define NIF_C_HARDCLAWS			(1<<3)
+#define NIF_C_HIDELASER			(1<<4)
 
 //Other
-#define NIF_O_COMMLINK			0x1
-#define NIF_O_APCCHARGE			0x2
-#define NIF_O_PRESSURESEAL		0x4
-#define NIF_O_HEATSINKS			0x8
-#define NIF_O_SCMYSELF			0x10 //Soulcatcher stuff
-#define NIF_O_SCOTHERS			0x20
+#define NIF_O_COMMLINK			(1<<0)
+#define NIF_O_APCCHARGE			(1<<1)
+#define NIF_O_PRESSURESEAL		(1<<2)
+#define NIF_O_HEATSINKS			(1<<3)
+#define NIF_O_SCMYSELF			(1<<4) //Soulcatcher stuff
+#define NIF_O_SCOTHERS			(1<<5)
 
 ///////////////////
 // applies_to flags
-#define NIF_ORGANIC		0x1
-#define NIF_SYNTHETIC	0x2
+#define NIF_ORGANIC		(1<<0)
+#define NIF_SYNTHETIC	(1<<1)
 
 /////////////
 // stat flags

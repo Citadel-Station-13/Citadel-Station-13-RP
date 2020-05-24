@@ -1,1 +1,1 @@
-#define MAP_LEVEL_XENOARCH_EXEMPT 0x080	// Z-levels exempt from xenoarch digsite generation.
+#define MAP_LEVEL_XENOARCH_EXEMPT (1<<7)	// Z-levels exempt from xenoarch digsite generation.

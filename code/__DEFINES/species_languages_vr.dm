@@ -1,4 +1,4 @@
-#define SPECIES_WHITELIST_SELECTABLE      0x20    // Can select and customize, but not join as
+#define SPECIES_WHITELIST_SELECTABLE      (1<<5)    // Can select and customize, but not join as
 
 #define LANGUAGE_SLAVIC "Pan-Slavic"
 #define LANGUAGE_BIRDSONG "Birdsong"

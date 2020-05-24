@@ -4,16 +4,17 @@
 #define DEAD        2
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define CANSTUN     0x1
-#define CANWEAKEN   0x2
-#define CANPARALYSE 0x4
-#define CANPUSH     0x8
-#define LEAPING     0x10
-#define HIDING      0x20
-#define PASSEMOTES  0x40    // Mob has a cortical borer or holders inside of it that need to see emotes.
-#define GODMODE     0x1000
-#define FAKEDEATH   0x2000  // Replaces stuff like changeling.changeling_fakedeath.
-#define DISFIGURED  0x4000  // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
+#define CANSTUN     (1<<0)
+#define CANWEAKEN   (1<<1)
+#define CANPARALYSE (1<<2)
+#define CANPUSH     (1<<3)
+#define LEAPING     (1<<4)
+#define HIDING      (1<<5)
+#define PASSEMOTES  (1<<6) // Mob has a cortical borer or holders inside of it that need to see emotes.
+
+#define GODMODE     (1<<8)
+#define FAKEDEATH   (1<<9) // Replaces stuff like changeling.changeling_fakedeath.
+#define DISFIGURED  (1<<10) // Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
 
 // Grab levels.
 #define GRAB_PASSIVE    1
@@ -22,10 +23,10 @@
 #define GRAB_UPGRADING  4
 #define GRAB_KILL       5
 
-#define BORGMESON 0x1
-#define BORGTHERM 0x2
-#define BORGXRAY  0x4
-#define BORGMATERIAL  8
+#define BORGMESON (1<<0)
+#define BORGTHERM (1<<1)
+#define BORGXRAY  (1<<2)
+#define BORGMATERIAL (1<<3)
 
 #define STANCE_ATTACK    11 // Backwards compatability
 #define STANCE_ATTACKING 12 // Ditto
@@ -52,9 +53,9 @@
 
 #define STANCES_COMBAT      list(STANCE_ALERT, STANCE_APPROACH, STANCE_FIGHT, STANCE_BLINDFIGHT, STANCE_REPOSITION)
 
-#define LEFT  0x1
-#define RIGHT 0x2
-#define UNDER 0x4
+#define LEFT  (1<<0)
+#define RIGHT (1<<1)
+#define UNDER (1<<2)
 
 // Pulse levels, very simplified.
 #define PULSE_NONE    0 // So !M.pulse checks would be possible.
@@ -67,14 +68,14 @@
 #define GETPULSE_TOOL 1 // More accurate. (med scanner, sleeper, etc.)
 
 //These are used Bump() code for living mobs, in the mob_bump_flag, mob_swap_flags, and mob_push_flags vars to determine whom can bump/swap with whom.
-#define HUMAN 1
-#define MONKEY 2
-#define ALIEN 4
-#define ROBOT 8
-#define SLIME 16
-#define SIMPLE_ANIMAL 32
-#define HEAVY 64
-#define ALLMOBS (HUMAN|MONKEY|ALIEN|ROBOT|SLIME|SIMPLE_ANIMAL|HEAVY)
+#define HUMAN 			(1<<0)
+#define MONKEY		 	(1<<1)
+#define ALIEN		 	(1<<2)
+#define ROBOT			(1<<3)
+#define SLIME			(1<<4)
+#define SIMPLE_ANIMAL	(1<<5)
+#define HEAVY 			(1<<6)
+#define ALLMOBS (HUMAN | MONKEY | ALIEN | ROBOT | SLIME | SIMPLE_ANIMAL | HEAVY)
 
 // Robot AI notifications
 #define ROBOT_NOTIFICATION_NEW_UNIT 1
@@ -84,17 +85,17 @@
 #define ROBOT_NOTIFICATION_AI_SHELL 5
 
 // Appearance change flags
-#define APPEARANCE_UPDATE_DNA  0x1
-#define APPEARANCE_RACE       (0x2|APPEARANCE_UPDATE_DNA)
-#define APPEARANCE_GENDER     (0x4|APPEARANCE_UPDATE_DNA)
-#define APPEARANCE_SKIN        0x8
-#define APPEARANCE_HAIR        0x10
-#define APPEARANCE_HAIR_COLOR  0x20
-#define APPEARANCE_FACIAL_HAIR 0x40
-#define APPEARANCE_FACIAL_HAIR_COLOR 0x80
-#define APPEARANCE_EYE_COLOR 0x100
-#define APPEARANCE_ALL_HAIR (APPEARANCE_HAIR|APPEARANCE_HAIR_COLOR|APPEARANCE_FACIAL_HAIR|APPEARANCE_FACIAL_HAIR_COLOR)
-#define APPEARANCE_ALL       0xFFFF
+#define APPEARANCE_UPDATE_DNA (1<<0)
+#define APPEARANCE_RACE       ((1<<1) | APPEARANCE_UPDATE_DNA)
+#define APPEARANCE_GENDER     ((1<<2) | APPEARANCE_UPDATE_DNA)
+#define APPEARANCE_SKIN        (1<<3)
+#define APPEARANCE_HAIR        (1<<4)
+#define APPEARANCE_HAIR_COLOR  (1<<5)
+#define APPEARANCE_FACIAL_HAIR (1<<6)
+#define APPEARANCE_FACIAL_HAIR_COLOR (1<<7)
+#define APPEARANCE_EYE_COLOR (1<<8)
+#define APPEARANCE_ALL_HAIR (APPEARANCE_HAIR | APPEARANCE_HAIR_COLOR | APPEARANCE_FACIAL_HAIR | APPEARANCE_FACIAL_HAIR_COLOR)
+#define APPEARANCE_ALL       ALL
 
 // Click cooldown
 #define DEFAULT_ATTACK_COOLDOWN 8 //Default timeout for aggressive actions
@@ -131,8 +132,7 @@
 #define CLASS_LOWMID		"Underpaid"
 #define CLASS_LOWER			"Poor"
 
-#define ECONOMIC_CLASS		list(CLASS_UPPER,CLASS_UPMID,CLASS_MIDDLE,CLASS_LOWMID,CLASS_LOWER)
-
+#define ECONOMIC_CLASS		list(CLASS_UPPER, CLASS_UPMID, CLASS_MIDDLE, CLASS_LOWMID, CLASS_LOWER)
 
 // Defines mob sizes, used by lockers and to determine what is considered a small sized mob, etc.
 #define MOB_HUGE  		40
@@ -160,18 +160,18 @@
 #define DRONE_SPAWN_DELAY  round(config_legacy.respawn_delay / 3)
 
 // Incapacitation flags, used by the mob/proc/incapacitated() proc
-#define INCAPACITATION_RESTRAINED 1
-#define INCAPACITATION_BUCKLED_PARTIALLY 2
-#define INCAPACITATION_BUCKLED_FULLY 4
-#define INCAPACITATION_STUNNED 8
-#define INCAPACITATION_FORCELYING 16 //needs a better name - represents being knocked down BUT still conscious.
-#define INCAPACITATION_KNOCKOUT 32
-#define INCAPACITATION_NONE 0
+#define INCAPACITATION_RESTRAINED 		(1<<0)
+#define INCAPACITATION_BUCKLED_PARTIALLY (1<<1)
+#define INCAPACITATION_BUCKLED_FULLY 	(1<<2)
+#define INCAPACITATION_STUNNED 			(1<<3)
+#define INCAPACITATION_FORCELYING 		(1<<4) //needs a better name - represents being knocked down BUT still conscious.
+#define INCAPACITATION_KNOCKOUT			(1<<5)
+#define INCAPACITATION_NONE NONE
 
-#define INCAPACITATION_DEFAULT (INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY)
-#define INCAPACITATION_KNOCKDOWN (INCAPACITATION_KNOCKOUT|INCAPACITATION_FORCELYING)
-#define INCAPACITATION_DISABLED (INCAPACITATION_KNOCKDOWN|INCAPACITATION_STUNNED)
-#define INCAPACITATION_ALL (~INCAPACITATION_NONE)
+#define INCAPACITATION_DEFAULT (INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)
+#define INCAPACITATION_KNOCKDOWN (INCAPACITATION_KNOCKOUT | INCAPACITATION_FORCELYING)
+#define INCAPACITATION_DISABLED (INCAPACITATION_KNOCKDOWN | INCAPACITATION_STUNNED)
+#define INCAPACITATION_ALL ALL
 
 #define MODIFIER_STACK_FORBID	1	// Disallows stacking entirely.
 #define MODIFIER_STACK_EXTEND	2	// Disallows a second instance, but will extend the first instance if possible.
@@ -346,7 +346,7 @@
 #define MOB_CLASS_ILLUSION		(1<<8)		// Fake mobs, e.g. Technomancer illusions.
 #define MOB_CLASS_PHOTONIC		(1<<9)		// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
 
-#define MOB_CLASS_ALL			(~MOB_CLASS_NONE)
+#define MOB_CLASS_ALL			ALL
 
 // For slime commanding.  Higher numbers allow for more actions.
 #define SLIME_COMMAND_OBEY		1 // When disciplined.
@@ -392,26 +392,26 @@
 #define BODY_LAYER		-100
 
 // Clothing flags, organized in roughly top-bottom
-#define EXAMINE_SKIPHELMET			0x0001
-#define EXAMINE_SKIPEARS			0x0002
-#define EXAMINE_SKIPEYEWEAR			0x0004
-#define EXAMINE_SKIPMASK			0x0008
-#define EXAMINE_SKIPJUMPSUIT		0x0010
-#define EXAMINE_SKIPTIE				0x0020
-#define EXAMINE_SKIPHOLSTER			0x0040
-#define EXAMINE_SKIPSUITSTORAGE		0x0080
-#define EXAMINE_SKIPBACKPACK		0x0100
-#define EXAMINE_SKIPGLOVES			0x0200
-#define EXAMINE_SKIPBELT			0x0400
-#define EXAMINE_SKIPSHOES			0x0800
+#define EXAMINE_SKIPHELMET			(1<<0)
+#define EXAMINE_SKIPEARS			(1<<1)
+#define EXAMINE_SKIPEYEWEAR			(1<<2)
+#define EXAMINE_SKIPMASK			(1<<3)
+#define EXAMINE_SKIPJUMPSUIT		(1<<4)
+#define EXAMINE_SKIPTIE				(1<<5)
+#define EXAMINE_SKIPHOLSTER			(1<<6)
+#define EXAMINE_SKIPSUITSTORAGE		(1<<7)
+#define EXAMINE_SKIPBACKPACK		(1<<8)
+#define EXAMINE_SKIPGLOVES			(1<<9)
+#define EXAMINE_SKIPBELT			(1<<10)
+#define EXAMINE_SKIPSHOES			(1<<11)
 
 // Body flags
-#define EXAMINE_SKIPHEAD			0x0001
-#define EXAMINE_SKIPEYES			0x0002
-#define EXAMINE_SKIPFACE			0x0004
-#define EXAMINE_SKIPBODY			0x0008
-#define EXAMINE_SKIPGROIN			0x0010
-#define EXAMINE_SKIPARMS			0x0020
-#define EXAMINE_SKIPHANDS			0x0040
-#define EXAMINE_SKIPLEGS			0x0080
-#define EXAMINE_SKIPFEET			0x0100
+#define EXAMINE_SKIPHEAD			(1<<0)
+#define EXAMINE_SKIPEYES			(1<<1)
+#define EXAMINE_SKIPFACE			(1<<2)
+#define EXAMINE_SKIPBODY			(1<<3)
+#define EXAMINE_SKIPGROIN			(1<<4)
+#define EXAMINE_SKIPARMS			(1<<5)
+#define EXAMINE_SKIPHANDS			(1<<6)
+#define EXAMINE_SKIPLEGS			(1<<7)
+#define EXAMINE_SKIPFEET			(1<<8)

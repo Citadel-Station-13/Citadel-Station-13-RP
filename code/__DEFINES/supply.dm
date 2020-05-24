@@ -8,9 +8,9 @@
 #define SUP_SHUTTLE_AWAY 5
 
 // Supply computer access levels
-#define SUP_SEND_SHUTTLE 0x1 // Send the shuttle back and forth
-#define SUP_ACCEPT_ORDERS 0x2 // Accept orders
-#define SUP_CONTRABAND	  0x4 // Able to order contraband supply packs
+#define SUP_SEND_SHUTTLE	(1<<0) // Send the shuttle back and forth
+#define SUP_ACCEPT_ORDERS	(1<<1) // Accept orders
+#define SUP_CONTRABAND		(1<<2) // Able to order contraband supply packs
 
 // Supply_order status values
 #define SUP_ORDER_REQUESTED "Requested"

@@ -22,7 +22,7 @@
 #define MOON_PHASE_LAST_QUARTER		"last quarter"
 #define MOON_PHASE_WANING_CRESCENT	"waning crescent"
 
-#define PLANET_PROCESS_SUN		0x1
-#define PLANET_PROCESS_TEMP		0x2
+#define PLANET_PROCESS_SUN		(1<<0)
+#define PLANET_PROCESS_TEMP		(1<<1)
 
 #define PLANET_TIME_MODIFIER		1 // If you want planet time to go faster than realtime, increase this number.

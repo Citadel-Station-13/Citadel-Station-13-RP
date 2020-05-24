@@ -31,11 +31,11 @@
  * */
 
 //Recipe type defines. Used to determine what machine makes them
-#define MICROWAVE			0x1
-#define FRYER				0x2
-#define OVEN				0x4
-#define CANDYMAKER			0x8
-#define CEREALMAKER			0x10
+#define MICROWAVE			(1<<0)
+#define FRYER				(1<<1)
+#define OVEN				(1<<2)
+#define CANDYMAKER			(1<<3)
+#define CEREALMAKER			(1<<4)
 
 /datum/recipe
 	var/list/reagents // example: = list("berryjuice" = 5) // do not list same reagent twice

@@ -1,5 +1,5 @@
 // Bitflags for mutations.
-#define STRUCDNASIZE 27
+#define STRUCDNASIZE 27 //this is NOT a bitflag
 #define   UNIDNASIZE 13
 
 // Generic mutations:
@@ -31,16 +31,16 @@
 #define mSmallsize     110 // Table climbing.
 
 // disabilities
-#define NEARSIGHTED 0x1
-#define EPILEPSY    0x2
-#define COUGHING    0x4
-#define TOURETTES   0x8
-#define NERVOUS     0x10
+#define NEARSIGHTED (1<<0)
+#define EPILEPSY    (1<<1)
+#define COUGHING    (1<<2)
+#define TOURETTES   (1<<3)
+#define NERVOUS     (1<<4)
 
 // sdisabilities
-#define BLIND 0x1
-#define MUTE  0x2
-#define DEAF  0x4
+#define BLIND (1<<0)
+#define MUTE  (1<<1)
+#define DEAF  (1<<2)
 
 // The way blocks are handled badly needs a rewrite, this is horrible.
 // Too much of a project to handle at the moment, TODO for later.

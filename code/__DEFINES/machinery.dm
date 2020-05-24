@@ -1,5 +1,5 @@
 var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called manually after an event.
-
+//wait WHY THE HELL IS THIS NOT GLOBAL??? /\
 #define CELLRATE 0.002 // Multiplier for watts per tick <> cell storage (e.g., 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
                        // It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 
@@ -23,11 +23,11 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define TOTAL   4 // For total power used only.
 
 // Bitflags for machine stat variable.
-#define BROKEN   0x1
-#define NOPOWER  0x2
-#define POWEROFF 0x4  // TBD.
-#define MAINT    0x8  // Under maintenance.
-#define EMPED    0x10 // Temporary broken by EMP pulse.
+#define BROKEN	(1<<0)
+#define NOPOWER	(1<<1)
+#define POWEROFF(1<<2)  	// TBD.
+#define MAINT	(1<<3)		// under maintaince
+#define EMPED	(1<<4)		// temporary broken by EMP pulse
 
 // Used by firelocks
 #define FIREDOOR_OPEN 1
