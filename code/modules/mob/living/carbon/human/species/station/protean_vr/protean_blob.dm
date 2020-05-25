@@ -65,6 +65,7 @@
 		refactory = locate() in humanform.internal_organs
 		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
+		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 	else
 		update_icon()
 
@@ -150,7 +151,7 @@
 		..()
 
 /mob/living/simple_mob/protean_blob/ventcrawl_carry()
-	return TRUE //proteans can have literally any item inside them and should still be able to ventcrawl regardless.
+	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount)
 	if(humanform)
@@ -347,6 +348,14 @@
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
 			root.remove_from_mob(I)
+
+/mob/living/simple_mob/protean_blob/proc/useradio()
+	set name = "Utilize Radio"
+	set desc = "Allows a protean blob to interact with its internal radio."
+	set category = "Abilities"
+
+	if(mob_radio)
+		mob_radio.attack_self(src)
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
