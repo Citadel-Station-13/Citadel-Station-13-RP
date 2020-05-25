@@ -13,7 +13,7 @@
 	var/icon_deny //Icon_state when denying access
 
 	// Power
-	use_power = USE_POWER_IDLE
+	use_power = 1
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
@@ -709,6 +709,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/small/ale = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/beer = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/cider = 15,
+					/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/orangejuice = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/tomatojuice = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/limejuice = 5,
@@ -783,13 +784,15 @@
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 10,/obj/item/reagent_containers/food/drinks/cans/starkist = 10,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 10,/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 10,
-					/obj/item/reagent_containers/food/drinks/cans/gingerale = 10)
+					/obj/item/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
+					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1,/obj/item/reagent_containers/food/drinks/cans/starkist = 1,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/reagent_containers/food/drinks/cans/space_up = 1,
 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 1,/obj/item/reagent_containers/food/drinks/cans/grape_juice = 1,
-					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1)
+					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1,
+					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.

@@ -46,7 +46,7 @@
 	var/obj/prev_right_hand
 
 	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
-
+	holder_type = /obj/item/holder/protoblob
 	can_buckle = TRUE //Blobsurfing
 
 /datum/say_list/protean_blob
@@ -66,6 +66,8 @@
 		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
+		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
+
 	else
 		update_icon()
 
@@ -86,21 +88,6 @@
 	if(humanform)
 		humanform.species.Stat(humanform)
 
-/mob/living/simple_mob/protean_blob/update_icon()
-	if(humanform)
-		//Still have a refactory
-		if(istype(refactory))
-			icon_living = "puddle2"
-
-		//Else missing one
-		else
-			icon_living = "puddle1"
-
-	//Not human-based
-	else
-		icon_living = "puddle0"
-
-	..()
 
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
@@ -240,6 +227,11 @@
 	else
 		return ..()
 
+/mob/living/simple_mob/protean_blob/attack_hand(mob/living/L)
+	if(src.get_effective_size() <= 0.5)
+		src.get_scooped(L) //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	else
+		..()
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
 		return
@@ -414,3 +406,20 @@
 
 	//Return ourselves in case someone wants it
 	return src
+
+/mob/living/simple_mob/protean_blob/proc/appearanceswitch()
+	set name = "Switch Appearance"
+	set desc = "Allows a protean blob to switch its outwards appearance."
+	set category = "Abilities"
+
+	var/blobstyle = input(src, "Which blob style would you like?") in list("Red and Blue Stars", "Blue Star", "Plain")
+	switch(blobstyle)
+		if("Red and Blue Stars")
+			icon_living = "puddle2"
+			update_icon()
+		if("Blue Star")
+			icon_living = "puddle1"
+			update_icon()
+		if("Plain")
+			icon_living = "puddle0"
+			update_icon()

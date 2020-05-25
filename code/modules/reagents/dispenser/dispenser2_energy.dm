@@ -10,7 +10,7 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(--process_tick <= 0)
-		process_tick = 15
+		process_tick = 5
 		. = 0
 		for(var/id in dispense_reagents)
 			var/datum/reagent/R = SSchemistry.chemical_reagents[id]
@@ -46,7 +46,8 @@
 /obj/machinery/chemical_dispenser/bar_soft
 	dispense_reagents = list(
 		"water", "ice", "coffee", "cream", "tea", "icetea", "cola", "spacemountainwind", "dr_gibb", "space_up", "tonic",
-		"sodawater", "lemon_lime", "sugar", "orangejuice", "limejuice", "watermelonjuice", "thirteenloko", "grapesoda"
+		"sodawater", "lemon_lime", "sugar", "orangejuice", "limejuice", "watermelonjuice", "thirteenloko", "grapesoda",
+		"sarsaparilla", "sassafras"
 		)
 
 /obj/machinery/chemical_dispenser/bar_alc

@@ -125,7 +125,7 @@
 	return TRUE
 
 /datum/keybinding/mob/ooc
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("O")
 	name = "ooc"
 	full_name = "OOC"
 	description = "Says something in global OOC"

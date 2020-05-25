@@ -42,8 +42,6 @@
 				config_legacy.chat_webhook_key = value
 			if ("engine_map")
 				config_legacy.engine_map = splittext(value, ",")
-			if ("fax_export_dir")
-				config_legacy.fax_export_dir = value
 			if ("items_survive_digestion")
 				config_legacy.items_survive_digestion = 1
 			if ("limit_interns")

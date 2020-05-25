@@ -22,6 +22,9 @@ GLOBAL_PROTECT(round_id)
 /// Config loading error/config validation errors
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
+/// Map error logging
+GLOBAL_VAR(world_map_error_log)
+GLOBAL_PROTECT(world_map_error_log)
 /// datum/controller/subsystem logging in general
 GLOBAL_VAR(subsystem_log)
 GLOBAL_PROTECT(subsystem_log)
