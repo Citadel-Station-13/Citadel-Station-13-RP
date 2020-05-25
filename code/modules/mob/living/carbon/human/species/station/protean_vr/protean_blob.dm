@@ -291,6 +291,8 @@
 	for(var/obj/item/radio/headset/H in things_to_not_drop)
 		blob.mob_radio.keyslot1 = H.keyslot1
 		blob.mob_radio.keyslot2 = H.keyslot2
+		if(H.adhoc_fallback)
+			blob.mob_radio.adhoc_fallback = TRUE
 		blob.mob_radio.recalculateChannels()
 
 	for(var/obj/item/pda/P in things_to_not_drop)
@@ -355,7 +357,7 @@
 	set category = "Abilities"
 
 	if(mob_radio)
-		mob_radio.attack_self(src)
+		mob_radio.ui_interact(src, state = interactive_state)
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))

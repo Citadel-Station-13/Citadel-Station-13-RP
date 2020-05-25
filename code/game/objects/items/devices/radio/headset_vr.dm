@@ -27,9 +27,11 @@
 	desc = "An updated, modular intercom that requires no hands to operate. Takes encryption keys"
 
 /obj/item/radio/headset/mob_headset/receive_range(freq, level)
-	if(ismob(src.loc))
 		return ..(freq, level)
-	return -1
+
+
+/obj/item/radio/headset/mob_headset/ui_interact(src, var/state = interactive_state)
+	..()
 
 /obj/item/radio/headset/mob_headset/afterattack(var/atom/movable/target, mob/living/user, proximity)
 	if(!proximity)
