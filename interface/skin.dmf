@@ -196,17 +196,6 @@ window "mainwindow"
 		menu = "menu"
 		outer-size = 1046x879
 		inner-size = 1024x793
-	elem "hotkeytoggle"
-		type = BUTTON
-		pos = 936,746
-		size = 80x20
-		anchor1 = 100,100
-		anchor2 = none
-		background-color = none
-		saved-params = "is-checked"
-		text = "Hotkey Toggle"
-		command = ".winset \"input.focus=true?map.focus=true input.background-color=\"#F0F0F0\":input.focus=true input.background-color=\"#D3B5B5\"\""
-		button-type = pushbox
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
@@ -220,7 +209,7 @@ window "mainwindow"
 	elem "input"
 		type = INPUT
 		pos = 3,746
-		size = 906x20
+		size = 984x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = #d3b5b5
@@ -229,7 +218,7 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 906,746
+		pos = 990,746
 		size = 30x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -240,7 +229,7 @@ window "mainwindow"
 		button-type = pushbox
 	elem "tooltip"
 		type = BROWSER
-		pos = -8,0
+		pos = -15,1
 		size = 999x999
 		anchor1 = none
 		anchor2 = none

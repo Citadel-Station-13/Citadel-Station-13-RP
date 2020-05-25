@@ -34,23 +34,23 @@
 		if(LOC_SECURITY)
 			spawn_area_type = /area/security/
 			locstring = "security department"
-			spawncount = rand(5 * severity, 10 * severity)
+			spawncount = rand(7 * severity, 13 * severity)
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "chapel"
-			spawncount = rand(2 * severity, 3 * severity)
+			spawncount = rand(3 * severity, 5 * severity)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "library"
-			spawncount = rand(2 * severity, 3 * severity)
+			spawncount = rand(3 * severity, 5 * severity)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics bay"
-			spawncount = rand(2,4 * severity)
+			spawncount = rand(3,5 * severity)
 		if(LOC_MEDBAY)
 			spawn_area_type = /area/medical
 			locstring = "medbay"
-			spawncount = rand(3 * severity, 5 * severity)
+			spawncount = rand(4 * severity, 8 * severity)
 		if(LOC_TETHER)
 			spawn_area_type = /area/tether/surfacebase
 			locstring = "tether surface halls"

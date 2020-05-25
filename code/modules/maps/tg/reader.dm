@@ -147,10 +147,6 @@
 					if(xcrd >= 1)
 						var/model_key = copytext(line, tpos, tpos + key_len)
 						line_keys[++line_keys.len] = model_key
-						#ifdef TESTING
-						else
-							++turfsSkipped
-						#endif
 						CHECK_TICK
 					maxx = max(maxx, xcrd++)
 				key_list[++key_list.len] = line_keys
