@@ -149,6 +149,9 @@
 	else
 		..()
 
+/mob/living/simple_mob/protean_blob/ventcrawl_carry()
+	return TRUE //proteans can have literally any item inside them and should still be able to ventcrawl regardless.
+
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount)
 	if(humanform)
 		humanform.adjustFireLoss(amount)
