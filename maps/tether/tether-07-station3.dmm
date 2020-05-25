@@ -27176,6 +27176,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"QS" = (
+/turf/simulated/floor/airless,
+/area/supply/station{
+	base_turf = /turf/simulated/floor/airless;
+	dynamic_lighting = 0
+	})
 "QT" = (
 /obj/effect/landmark/map_data/virgo3b,
 /turf/space,
@@ -44012,11 +44018,11 @@ vt
 AY
 AY
 CS
-CS
-CS
-CS
-CS
-CS
+QS
+QS
+QS
+QS
+QS
 AY
 AY
 AY
@@ -44154,11 +44160,11 @@ ae
 AY
 AY
 CS
-CS
-CS
-CS
-CS
-CS
+QS
+QS
+QS
+QS
+QS
 AY
 AY
 AY
