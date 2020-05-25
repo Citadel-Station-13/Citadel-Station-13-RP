@@ -32,6 +32,10 @@
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
+	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
+		return
 	if(!canClick()) return
 	setClickCooldown(4)
 	// You are responsible for checking config_legacy.ghost_interaction when you override this function

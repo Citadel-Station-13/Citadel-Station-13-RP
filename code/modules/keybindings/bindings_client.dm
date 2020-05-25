@@ -48,12 +48,10 @@
 		qdel(src)
 		return
 
-	//Focus Chat failsafe. Overrides movement checks to prevent WASD.
-	if(!prefs.hotkeys && length(_key) == 1 && _key != "Alt" && _key != "Ctrl" && _key != "Shift")
-		winset(src, null, "input.focus=true ; input.text=[url_encode(_key)]")
+	if(_key == "Tab")
+		ForceAllKeysUp()		//groan, more hacky kevcode
 		return
 
-	//offset by 1 because the buffer address is 0 indexed because the math was simpler
 	if(length(keys_held) > MAX_HELD_KEYS)
 		keys_held.Cut(1,2)
 	keys_held[_key] = TRUE
@@ -82,6 +80,15 @@
 	holder?.key_down(_key, src)
 	mob.focus?.key_down(_key, src)
 
+/// Keyup's all keys held down.
+/client/proc/ForceAllKeysUp()
+	// simulate a user releasing all keys except for the mod keys. groan. i hate this. thanks, byond. why aren't keyups able to be forced to fire on macro change aoaoaoao.
+	// groan
+	for(var/key in keys_held)		// all of these won't be the 3 mod keys.
+		if((key == "Ctrl") || (key == "Alt") || (key == "Shift"))
+			continue
+		keyUp("[key]")
+
 /client/verb/keyUp(_key as text)
 	set instant = TRUE
 	set hidden = TRUE
@@ -95,7 +102,7 @@
 	// can hold different keys and releasing any should be handled by the key binding specifically
 	for (var/kb_name in prefs.key_bindings[_key])
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
-		if(kb.up(src))
+		if(kb.can_use(src) && kb.up(src))
 			break
 	holder?.key_up(_key, src)
 	mob.focus?.key_up(_key, src)
