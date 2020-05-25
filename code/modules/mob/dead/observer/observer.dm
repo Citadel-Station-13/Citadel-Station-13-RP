@@ -1,4 +1,4 @@
-w/mob/observer
+/mob/observer
 	name = "observer"
 	desc = "This shouldn't appear"
 	density = 0
