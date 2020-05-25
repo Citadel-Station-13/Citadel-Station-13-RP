@@ -991,7 +991,6 @@
 	pokephrase = "Hug!"
 
 //foxes are basically the best
-
 /obj/item/toy/plushie/red_fox
 	name = "red fox plushie"
 	icon_state = "redfox"
@@ -1078,7 +1077,6 @@
 	pokephrase = "Mrowww!!"
 
 // nah, squids are better than foxes :>
-
 /obj/item/toy/plushie/squid/green
 	name = "green squid plushie"
 	desc = "A small, cute and loveable squid friend. This one is green."
@@ -1127,6 +1125,7 @@
 	slot_flags = SLOT_HEAD
 	pokephrase = "Wobble!"
 
+//Therapy Dolls, aka show me on the doll where the furry touched you
 /obj/item/toy/plushie/therapy/red
 	name = "red therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is red."
@@ -1168,6 +1167,17 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "therapygreen"
 	item_state = "egg3" // It's the green egg in items_left/righthand
+
+//Pingus, the aristocrat's choice of plushie.
+/obj/item/toy/plushie/penguin_emperor
+	name = "emperor penguin plushie"
+	icon_state = "emperor_penguin_plush"
+	pokephrase = "Noot Noot!"
+
+/obj/item/toy/plushie/penguin_baby
+	name = "baby penguin plushie"
+	icon_state = "baby_penguin_plush"
+	pokephrase = "Noot!"
 
 
 //Toy cult sword
