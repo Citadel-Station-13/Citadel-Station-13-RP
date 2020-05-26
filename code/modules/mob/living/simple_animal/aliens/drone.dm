@@ -44,7 +44,7 @@
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 
 
-	var/datum/effect_system/ion_trail_follow/ion_trail
+	var/datum/effect_system/trail_follow/ion/ion_trail
 	var/turf/patrol_target
 	var/explode_chance = 1
 	var/disabled = 0

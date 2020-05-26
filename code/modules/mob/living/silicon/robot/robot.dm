@@ -77,8 +77,7 @@
 	var/modtype = "Default"
 	var/lower_mod = 0
 	var/jetpack = 0
-	var/datum/effect_system/ion_trail_follow/ion_trail = null
-	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
+	var/datum/effect_system/trail_follow/ion/ion_trail = null
 	var/jeton = 0
 	var/killswitch = 0
 	var/killswitch_time = 60
@@ -98,10 +97,6 @@
 	)
 
 /mob/living/silicon/robot/New(loc,var/unfinished = 0)
-	spark_system = new /datum/effect_system/spark_spread()
-	spark_system.set_up(5, 0, src)
-	spark_system.attach(src)
-
 	add_language("Robot Talk", 1)
 	add_language(LANGUAGE_GALCOM, 1)
 	add_language(LANGUAGE_EAL, 1)
@@ -411,7 +406,7 @@
 /mob/living/silicon/robot/verb/spark_plug() //So you can still sparkle on demand without violence.
 	set category = "Robot Commands"
 	set name = "Emit Sparks"
-	spark_system.start()
+	do_sparks(5, 0, src)
 
 // this function displays jetpack pressure in the stat panel
 /mob/living/silicon/robot/proc/show_jetpack_pressure()
@@ -455,7 +450,8 @@
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
 	..(Proj)
-	if(prob(75) && Proj.damage > 0) spark_system.start()
+	if(prob(75) && Proj.damage > 0)
+		do_sparks(5, 0, src)
 	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
@@ -661,7 +657,7 @@
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
 			if(W.force > 0)
-				spark_system.start()
+				do_sparks(5, 0, src)
 		return ..()
 
 /mob/living/silicon/robot/proc/module_reset()
