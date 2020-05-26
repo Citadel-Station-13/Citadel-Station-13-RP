@@ -30,7 +30,7 @@
 		return ..(freq, level)
 
 
-/obj/item/radio/headset/mob_headset/ui_interact(src, var/ui = null, var/state = interactive_state)
+/obj/item/radio/headset/mob_headset/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/state = interactive_state)
 	ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430, state = interactive_state)
 	..()
 
