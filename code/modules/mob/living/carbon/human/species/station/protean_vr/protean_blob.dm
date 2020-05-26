@@ -25,6 +25,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	attacktext = list("slashed")
+
 	aquatic_movement = 1
 	min_oxy = 0
 	max_oxy = 0
