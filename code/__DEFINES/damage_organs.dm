@@ -1,35 +1,4 @@
-// Damage things. TODO: Merge these down to reduce on defines.
-// Way to waste perfectly good damage-type names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext(damagetype) in the proc.
-#define BRUTE		"brute"
-#define BURN 		"fire"
-#define TOX 		"tox"
-#define OXY			"oxy"
-#define CLONE		"clone"
-#define HALLOSS		"halloss"
-#define ELECTROCUTE	"electrocute"
-#define BIOACID 	"bioacid"
-#define SEARING		"searing"
-
-#define CUT       "cut"
-#define BRUISE    "bruise"
-#define PIERCE    "pierce"
-
-#define STUN      "stun"
-#define WEAKEN    "weaken"
-#define PARALYZE  "paralize"
-#define IRRADIATE "irradiate"
-#define AGONY     "agony"     // Added in PAIN!
-#define SLUR      "slur"
-#define STUTTER   "stutter"
-#define EYE_BLUR  "eye_blur"
-#define DROWSY    "drowsy"
-
-// I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches.
-#define BRUTELOSS (1<<0)
-#define FIRELOSS  (1<<1)
-#define TOXLOSS   (1<<2)
-#define OXYLOSS   (1<<3)
-
+//aaa should this be in atmospherics.dm or here???
 #define FIRE_DAMAGE_MODIFIER 0.0215 // Higher values result in more external fire damage to the skin. (default 0.0215)
 #define  AIR_DAMAGE_MODIFIER 2.025  // More means less damage from hot air scalding lungs, less = more damage. (default 2.025)
 

@@ -44,14 +44,15 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 // get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
 #define HEAR					(1<<11)
 
-
-//Flags for items (equipment) - Used in /obj/item/var/item_flags
-#define THICKMATERIAL			(1<<0)	// Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.
-#define AIRTIGHT				(1<<1)	// Functions with internals.
-#define NOSLIP					(1<<2)	// Prevents from slipping on wet floors, in space, etc.
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<3)	// Blocks the effect that chemical clouds would have on a mob -- glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
-#define FLEXIBLEMATERIAL		(1<<4)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
-#define ALLOW_SURVIVALFOOD		(1<<5)	// Allows special survival food items to be eaten through it
+//turf-only flags
+#define NOJAUNT_1					(1<<0)
+// #define UNUSED_RESERVATION_TURF_1	(1<<1)
+// If a turf can be made dirty at roundstart. This is also used in areas.
+// #define CAN_BE_DIRTY_1				(1<<2)
+// Blocks lava rivers being generated on the turf.
+//#define NO_LAVA_GEN_1				(1<<6)
+// Blocks ruins spawning on the turf.
+//#define NO_RUINS_1					(1<<10)
 
 /*
 	These defines are used specifically with the atom/pass_flags bitmask
@@ -67,3 +68,11 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PASSCLOSEDTURF	(1<<5)
 #define LETPASSTHROW	(1<<6)
 */
+
+//Flags for items (equipment) - Used in /obj/item/var/item_flags
+#define THICKMATERIAL			(1<<0)	// Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.
+#define AIRTIGHT				(1<<1)	// Functions with internals.
+#define NOSLIP					(1<<2)	// Prevents from slipping on wet floors, in space, etc.
+#define BLOCK_GAS_SMOKE_EFFECT	(1<<3)	// Blocks the effect that chemical clouds would have on a mob -- glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
+#define FLEXIBLEMATERIAL		(1<<4)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
+#define ALLOW_SURVIVALFOOD		(1<<5)	// Allows special survival food items to be eaten through it

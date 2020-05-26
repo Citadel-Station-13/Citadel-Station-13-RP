@@ -1,4 +1,5 @@
 //Color defines used by the assembly detailer.
+//THROW THIS IN THE CIRCUIT DEFINES!!!
 #define COLOR_ASSEMBLY_BLACK    "#545454"
 #define COLOR_ASSEMBLY_BGRAY    "#9497AB"
 #define COLOR_ASSEMBLY_WHITE    "#E2E2E2"

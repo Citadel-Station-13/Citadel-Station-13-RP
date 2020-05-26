@@ -3,7 +3,7 @@
 
 #define RANDOM_BLOOD_TYPE pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
 
-#define to_world(message) to_chat(world, messaget)
+#define to_world(message) to_chat(world, message)
 #define to_file(file_entry, source_var) file_entry << source_var
 #define from_file(file_entry, target_var) file_entry >> target_var
 

@@ -25,7 +25,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 // Bitflags for machine stat variable.
 #define BROKEN	(1<<0)
 #define NOPOWER	(1<<1)
-#define POWEROFF(1<<2)  	// TBD.
+#define POWEROFF (1<<2)  	// TBD.
 #define MAINT	(1<<3)		// under maintaince
 #define EMPED	(1<<4)		// temporary broken by EMP pulse
 

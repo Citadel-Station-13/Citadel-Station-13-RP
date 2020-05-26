@@ -15,6 +15,10 @@
 #define BANTYPE_JOB_TEMP    4
 #define BANTYPE_ANY_FULLBAN 5 // Used to locate stuff to unban.
 
+//#define BANTYPE_ADMIN_PERMA	7
+//#define BANTYPE_ADMIN_TEMP	8
+//#define BANTYPE_ANY_JOB		9 //used to remove jobbans
+
 // Admin permissions.
 #define R_BUILDMODE     (1<<0)
 #define R_ADMIN         (1<<1)
@@ -34,11 +38,6 @@
 #define R_HOST          (1<<15) //higher than this will overflow
 
 #define R_MAXPERMISSION (1<<15) // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
-
-#define SMITE_BREAKLEGS				"Break Legs"
-#define SMITE_BLUESPACEARTILLERY	"Bluespace Artillery"
-#define SMITE_SPONTANEOUSCOMBUSTION	"Spontaneous Combustion"
-#define SMITE_LIGHTNINGBOLT			"Lightning Bolt"
 
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=[REF(user)]'>?</a>)"
 #define ADMIN_FLW(user) "(<a href='?_src_=holder;adminplayerobservefollow=[REF(user)]'>FLW</a>)"
@@ -62,6 +61,25 @@
 #define AREACOORD(src) "[src ? "[get_area_name(src, TRUE)] ([src.x], [src.y], [src.z])" : "nonexistent location"]"
 #define ADMIN_COORDJMP(src) "[src ? "[COORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
 #define ADMIN_VERBOSEJMP(src) "[src ? "[AREACOORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
+//#define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];individuallog=[REF(user)]'>LOGS</a>)"
+// !HEY! port HrefToken()!!
+
+#define SMITE_BREAKLEGS				"Break Legs"
+#define SMITE_BLUESPACEARTILLERY	ADMIN_PUNISHMENT_BSA
+#define SMITE_SPONTANEOUSCOMBUSTION	"Spontaneous Combustion"
+#define SMITE_LIGHTNINGBOLT			ADMIN_PUNISHMENT_LIGHTNING
+
+#define ADMIN_PUNISHMENT_LIGHTNING "Lightning bolt"
+//#define ADMIN_PUNISHMENT_BRAINDAMAGE "Brain damage"
+//#define ADMIN_PUNISHMENT_GIB "Gib"
+#define ADMIN_PUNISHMENT_BSA "Bluespace Artillery Device"
+//#define ADMIN_PUNISHMENT_FIREBALL "Fireball"
+//#define ADMIN_PUNISHMENT_ROD "Immovable Rod"
+//#define ADMIN_PUNISHMENT_SUPPLYPOD_QUICK "Supply Pod (Quick)"
+//#define ADMIN_PUNISHMENT_SUPPLYPOD "Supply Pod"
+//#define ADMIN_PUNISHMENT_MAZING "Puzzle"
+//#define ADMIN_PUNISHMENT_PIE "Cream Pie"
+//#define ADMIN_PUNISHMENT_CUSTOM_PIE "Custom Cream Pie"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
@@ -69,6 +87,5 @@
 
 #define ROUNDSTART_LOGOUT_REPORT_TIME 6000 // Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
 
-// Number of identical messages required to get the spam-prevention auto-mute thing to trigger warnings and automutes.
-#define SPAM_TRIGGER_WARNING  5
-#define SPAM_TRIGGER_AUTOMUTE 10
+#define SPAM_TRIGGER_WARNING	5	//Number of identical messages required before the spam-prevention will warn you to stfu
+#define SPAM_TRIGGER_AUTOMUTE	10	//Number of identical messages required before the spam-prevention will automute you
