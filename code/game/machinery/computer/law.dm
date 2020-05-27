@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
 /obj/machinery/computer/aiupload
 	name = "\improper AI upload console"
 	desc = "Used to upload laws to the AI."
@@ -7,8 +5,7 @@
 	icon_screen = "command"
 	circuit = /obj/item/circuitboard/aiupload
 	var/mob/living/silicon/ai/current = null
-	var/opened = 0
-
+	var/opened = FALSE
 
 /obj/machinery/computer/aiupload/verb/AccessInternals()
 	set category = "Object"
@@ -24,37 +21,42 @@
 		to_chat(usr, "<span class='notice'>The access panel is now closed.</span>")
 	return
 
-
-/obj/machinery/computer/aiupload/attackby(obj/item/O as obj, mob/user as mob)
-	if (GLOB.using_map && !(user.z in GLOB.using_map.contact_levels))
-		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
-		return
-	if(istype(O, /obj/item/aiModule))
+/obj/machinery/computer/aiupload/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/aiModule)) //if caution does not exist, replace with `danger`
 		var/obj/item/aiModule/M = O
+		if(!current)
+			to_chat(user, "<span class='caution'>You haven't selected anything to transmit laws to!</span>")
+			return
+		if(current.stat == DEAD || current.control_disabled)
+			to_chat(user, "<span class='caution'>Upload failed!</span> Check to make sure [current.name] is functioning properly.")
+			current = null
+			return
+		//var/turf/currentloc = get_turf(current)
+		if(GLOB.using_map && !(user.z in GLOB.using_map.contact_levels))//if(currentloc && user.z != currentloc.z)
+			to_chat(user, "<span class='caution'>Upload failed!</span> Unable to establish a connection to [current.name]. You're too far away!")
+			current = null
+			return
 		M.install(src, user)
 	else
-		..()
+		return ..()
 
-
-/obj/machinery/computer/aiupload/attack_hand(var/mob/user as mob)
-	if(src.stat & NOPOWER)
+/obj/machinery/computer/aiupload/attack_hand(mob/user)
+	if(CHECK_BITFIELD(stat, NOPOWER)) //*AAAAAA*
 		to_chat(user, "The upload computer has no power!")
 		return
-	if(src.stat & BROKEN)
+	if(CHECK_BITFIELD(stat, BROKEN))
 		to_chat(user, "The upload computer is broken!")
 		return
 
-	src.current = select_active_ai(user)
+	current = select_active_ai(user)
 
-	if (!src.current)
+	if(!current)
 		to_chat(user, "No active AIs detected.")
 	else
 		to_chat(user, "[src.current.name] selected for law changes.")
-	return
 
-/obj/machinery/computer/aiupload/attack_ghost(user as mob)
-	return 1
-
+/obj/machinery/computer/aiupload/attack_ghost(mob/user)
+	return TRUE
 
 /obj/machinery/computer/borgupload
 	name = "cyborg upload console"
@@ -64,29 +66,39 @@
 	circuit = /obj/item/circuitboard/borgupload
 	var/mob/living/silicon/robot/current = null
 
-
-/obj/machinery/computer/borgupload/attackby(obj/item/aiModule/module as obj, mob/user as mob)
-	if(istype(module, /obj/item/aiModule))
-		module.install(src, user)
+/obj/machinery/computer/borgupload/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/aiModule))
+		var/obj/item/aiModule/M = O
+		if(!current)
+			to_chat(user, "<span class='caution'>You haven't selected anything to transmit laws to!</span>")
+			return
+		if(current.stat == DEAD || current.control_disabled)
+			to_chat(user, "<span class='caution'>Upload failed!</span> Check to make sure [current.name] is functioning properly.")
+			current = null
+			return
+		//var/turf/currentloc = get_turf(current)
+		if(GLOB.using_map && !(user.z in GLOB.using_map.contact_levels))//if(currentloc && user.z != currentloc.z)
+			to_chat(user, "<span class='caution'>Upload failed!</span> Unable to establish a connection to [current.name]. You're too far away!")
+			current = null
+			return
+		M.install(src, user)
 	else
 		return ..()
 
-
-/obj/machinery/computer/borgupload/attack_hand(var/mob/user as mob)
-	if(src.stat & NOPOWER)
+/obj/machinery/computer/borgupload/attack_hand(mob/user)
+	if(CHECK_BITFIELD(stat, NOPOWER)) //*AAAAAA*
 		to_chat(user, "The upload computer has no power!")
 		return
-	if(src.stat & BROKEN)
+	if(CHECK_BITFIELD(stat, BROKEN))
 		to_chat(user, "The upload computer is broken!")
 		return
 
-	src.current = freeborg()
+	current = active_free_borgs(user)
 
-	if (!src.current)
+	if(!current)
 		to_chat(user, "No free cyborgs detected.")
 	else
-		to_chat(user, "[src.current.name] selected for law changes.")
-	return
+		to_chat(user, "[current.name] selected for law changes.")
 
-/obj/machinery/computer/borgupload/attack_ghost(user as mob)
-	return 1
+/obj/machinery/computer/borgupload/attack_ghost(mob/user)
+	return TRUE

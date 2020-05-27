@@ -19,30 +19,31 @@ SUBSYSTEM_DEF(jobs)
 	LoadJobs("config/jobs.txt")
 	return ..()
 
-/datum/controller/subsystem/jobs/proc/SetupOccupations(var/faction = "Station")
+/datum/controller/subsystem/jobs/proc/SetupOccupations(faction = "Station")
 	occupations = list()
-	//var/list/all_jobs = typesof(/datum/job)
+	//var/list/all_jobs = typesof(/datum/job) subtypeof(now included), not typesof!
 	var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
 	if(!all_jobs.len)
-		world << "<span class='warning'>Error setting up jobs, no job datums found!</span>"
-		return 0
+		to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
+		return FALSE
+
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
-		if(!job)	continue
-		if(job.faction != faction)	continue
-		occupations += job
+		if(!job)
+			continue
+		if(job.faction != faction)
+			continue
+		LAZYADD(occupations, job) //null is bad
 	sortTim(occupations, /proc/cmp_job_datums)
-	return 1
+	return TRUE
 
-
-/datum/controller/subsystem/jobs/proc/Debug(var/text)
+/datum/controller/subsystem/jobs/proc/Debug(text)
 	if(!Debug2)
-		return 0
+		return FALSE
 	job_debug.Add(text)
-	return 1
+	return TRUE
 
-
-/datum/controller/subsystem/jobs/proc/GetJob(var/rank)
+/datum/controller/subsystem/jobs/proc/GetJob(rank)
 	if(!rank)
 		return null
 	for(var/datum/job/J in occupations)
@@ -55,20 +56,20 @@ SUBSYSTEM_DEF(jobs)
 /datum/controller/subsystem/jobs/proc/GetPlayerAltTitle(mob/new_player/player, rank)
 	return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
 
-/datum/controller/subsystem/jobs/proc/AssignRole(var/mob/new_player/player, var/rank, var/latejoin = 0)
+/datum/controller/subsystem/jobs/proc/AssignRole(mob/new_player/player, rank, latejoin = FALSE)
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
 		var/datum/job/job = GetJob(rank)
 		if(!job)
-			return 0
+			return FALSE
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
-			return 0
+			return FALSE
 		if(jobban_isbanned(player, rank))
-			return 0
+			return FALSE
 		if(!job.player_old_enough(player.client))
-			return 0
+			return FALSE
 		if(!is_job_whitelisted(player, rank)) //VOREStation Code
-			return 0
+			return FALSE
 
 		var/position_limit = job.total_positions
 		if(!latejoin)
@@ -79,16 +80,16 @@ SUBSYSTEM_DEF(jobs)
 			player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 			unassigned -= player
 			job.current_positions++
-			return 1
+			return TRUE
 	Debug("AR has failed, Player: [player], Rank: [rank]")
-	return 0
+	return FALSE
 
-/datum/controller/subsystem/jobs/proc/FreeRole(var/rank)	//making additional slot on the fly
+/datum/controller/subsystem/jobs/proc/FreeRole(rank)	//making additional slot on the fly
 	var/datum/job/job = GetJob(rank)
 	if(job && job.total_positions != -1)
 		job.total_positions++
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/controller/subsystem/jobs/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
@@ -116,7 +117,7 @@ SUBSYSTEM_DEF(jobs)
 			candidates += player
 	return candidates
 
-/datum/controller/subsystem/jobs/proc/GiveRandomJob(var/mob/new_player/player)
+/datum/controller/subsystem/jobs/proc/GiveRandomJob(mob/new_player/player)
 	Debug("GRJ Giving random job, Player: [player]")
 	for(var/datum/job/job in shuffle(occupations))
 		if(!job)
@@ -203,7 +204,7 @@ SUBSYSTEM_DEF(jobs)
 
 
 ///This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
-/datum/controller/subsystem/jobs/proc/CheckHeadPositions(var/level)
+/datum/controller/subsystem/jobs/proc/CheckHeadPositions(level)
 	for(var/command_position in command_positions)
 		var/datum/job/job = GetJob(command_position)
 		if(!job)	continue
@@ -236,7 +237,8 @@ SUBSYSTEM_DEF(jobs)
 			unassigned += player
 
 	Debug("DO, Len: [unassigned.len]")
-	if(unassigned.len == 0)	return 0
+	if(unassigned.len == 0)	
+		return FALSE
 
 	//Shuffle players and jobs
 	unassigned = shuffle(unassigned)
@@ -434,12 +436,12 @@ SUBSYSTEM_DEF(jobs)
 			else
 				var/metadata = H.client.prefs.gear[G.display_name]
 				if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-					H << "<span class='notice'>Equipping you with \the [thing]!</span>"
+					to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
 					custom_equip_slots.Add(G.slot)
 				else
 					spawn_in_storage += thing
 	else
-		H << "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator."
+		to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
 	H.job = rank
 	log_game("JOINED [key_name(H)] as \"[rank]\"")
@@ -616,7 +618,7 @@ SUBSYSTEM_DEF(jobs)
 	if(!config_legacy.load_jobs_from_txt)
 		return 0
 
-	var/list/jobEntries = file2list(jobsfile)
+	var/list/jobEntries = world.file2list(jobsfile)
 
 	for(var/job in jobEntries)
 		if(!job)

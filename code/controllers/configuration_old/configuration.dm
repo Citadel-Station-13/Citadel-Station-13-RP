@@ -278,7 +278,7 @@
 	src.votable_modes += "secret"
 
 /datum/configuration_legacy/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 
 	for(var/t in Lines)
 		if(!t)	continue
@@ -904,7 +904,7 @@
 					log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 	for(var/t in Lines)
 		if(!t)	continue
 
@@ -950,7 +950,7 @@
 				log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 	for(var/t in Lines)
 		if(!t)	continue
 
