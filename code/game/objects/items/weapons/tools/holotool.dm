@@ -230,10 +230,11 @@
 
 //Unique adminspawn switchtool. Has all the tools.
 /obj/item/switchtool/holo
-	name = "holo switchtool"
+	name = "Tool"
 	icon_state = "holo_switchtool"
 	item_state = "holoswitchtool"
 	desc = "An object that can take on the holographic hardlight form of nearly any tool in use today."
+	description_fluff = "Mankind's first tool was likely a blade crudely shaped from flint. Versatile, at the time - one could skin creatures, use it as a weapon, hack at trees and cut plants. This is, potentially, mankind's last tool- able to be dynamically upgraded to support different holoprojector setups, allowing even more tools to be used by one device, once a working holoprojector setup for an application is implemented."
 	var/brightness_max = 4
 	var/brightness_min = 2
 	deploy_sound = "sound/weapons/switchsound.ogg"
@@ -272,7 +273,7 @@
 	name = "Chief Engineer's holotool"
 	icon_state = "ce_switchtool"
 	item_state = "ceswitchtool"
-	desc = "An finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
+	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
 	light_color =  LIGHT_COLOR_ORANGE
 
 	stored_modules = list(
