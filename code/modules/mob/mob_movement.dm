@@ -491,8 +491,6 @@
 		return FALSE
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return FALSE
-	if(anchored)
-		return FALSE
 	if(transforming)
 		return FALSE
 	if(restrained())
