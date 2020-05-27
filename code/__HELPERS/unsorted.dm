@@ -729,7 +729,7 @@ GLOBAL_LIST_INIT(WALLITEMS_INVERSE, typecacheof(list(
 
 /proc/format_text(text)
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
-
+/* //no "FACING_SAME_DIR"
 /proc/check_target_facings(mob/living/initator, mob/living/target)
 	/*This can be used to add additional effects on interactions between mobs depending on how the mobs are facing each other, such as adding a crit damage to blows to the back of a guy's head.
 	Given how click code currently works (Nov '13), the initiating mob will be facing the target mob most of the time
@@ -743,7 +743,7 @@ GLOBAL_LIST_INIT(WALLITEMS_INVERSE, typecacheof(list(
 		return FACING_EACHOTHER
 	if(initator.dir + 2 == target.dir || initator.dir - 2 == target.dir || initator.dir + 6 == target.dir || initator.dir - 6 == target.dir) //Initating mob is looking at the target, while the target mob is looking in a direction perpendicular to the 1st
 		return FACING_INIT_FACING_TARGET_TARGET_FACING_PERPENDICULAR
-
+*/
 /proc/random_step(atom/movable/AM, steps, chance)
 	var/initial_chance = chance
 	while(steps > 0)
@@ -1563,6 +1563,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		world.TgsChatBroadcast()
 
 //Checks to see if either the victim has a garlic necklace or garlic in their blood
+/*
 /proc/blood_sucking_checks(mob/living/carbon/target, check_neck, check_blood)
 	//Bypass this if the target isnt carbon.
 	if(!iscarbon(target))
@@ -1574,7 +1575,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(target.reagents.has_reagent(/datum/reagent/consumable/garlic))
 			return FALSE
 	return TRUE
-
+*/
 /*
  * Vorestation specific
  */
@@ -2046,19 +2047,14 @@ proc/is_hot(obj/item/W as obj)
 //Checks if all high bits in req_mask are set in bitfield
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
-//supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
-#define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
+
 
 //Returns the middle-most value
 /proc/dd_range(low, high, num)
-	return max(low,min(high,num))
+	return max(low, min(high, num))
 
 //Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
-/proc/between(var/low, var/middle, var/high)
+/proc/between(low, middle, high)
 	return max(min(middle, high), low)
 
 /proc/LinkBlocked(turf/A, turf/B)

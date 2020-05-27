@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
-
+/*
 /proc/cmp_clientcolour_priority(datum/client_colour/A, datum/client_colour/B)
 	return B.priority - A.priority
 
@@ -52,7 +52,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_ruincost_priority(datum/map_template/ruin/A, datum/map_template/ruin/B)
 	return initial(A.cost) - initial(B.cost)
-
+*/
 /proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
 	. = B.hard_delete_time - A.hard_delete_time
 	if (!.)
@@ -81,13 +81,13 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 		return A.plane - B.plane
 	else
 		return A.layer - B.layer
-
+/*
 /proc/cmp_advdisease_resistance_asc(datum/disease/advance/A, datum/disease/advance/B)
 	return A.totalResistance() - B.totalResistance()
 
 /proc/cmp_job_display_asc(datum/job/A, datum/job/B)
 	return A.display_order - B.display_order
-
+*/
 /proc/cmp_uplink_items_dsc(datum/uplink_item/A, datum/uplink_item/B)
 	return sorttext(initial(B.name), initial(A.name))
 
@@ -99,7 +99,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_reagents_asc(datum/reagent/a, datum/reagent/b)
 	return sorttext(initial(b.name),initial(a.name))
-
+/*
 /proc/cmp_quirk_asc(datum/quirk/A, datum/quirk/B)
 	var/a_sign = num2sign(initial(A.value) * -1)
 	var/b_sign = num2sign(initial(B.value) * -1)
@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 		return a_sign - b_sign
 	else
 		return sorttext(b_name, a_name)
-
+*/
 /proc/cmp_item_block_priority_asc(obj/item/A, obj/item/B)
 	return A.block_priority - B.block_priority
 /*
@@ -132,14 +132,17 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 	if (. == 0) //Already in head/nothead spot, sort by name
 		. = sorttext(b.title, a.title)
 
-// Sorts entries in a performance stats list.
-/proc/cmp_generic_stat_item_time(list/A, list/B)
-	. = B[STAT_ENTRY_TIME] - A[STAT_ENTRY_TIME]
-	if (!.)
-		. = B[STAT_ENTRY_COUNT] - A[STAT_ENTRY_COUNT]
-
 // Compares complexity of recipes for use in cooking, etc. This is for telling which recipe to make, not for showing things to the player.
 /proc/cmp_recipe_complexity_dsc(datum/recipe/A, datum/recipe/B)
 	var/a_score = LAZYLEN(A.items) + LAZYLEN(A.reagents) + LAZYLEN(A.fruit)
 	var/b_score = LAZYLEN(B.items) + LAZYLEN(B.reagents) + LAZYLEN(B.fruit)
 	return b_score - a_score
+
+/proc/cmp_area_names_asc(area/A, area/B)
+	return sorttext(B.name, A.name)
+
+/proc/cmp_area_names_dsc(area/A, area/B)
+	return sorttext(A.name, B.name)
+
+/proc/cmp_surgery_priority_asc(datum/surgery_step/A, datum/surgery_step/B)
+	return B.priority - A.priority

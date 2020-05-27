@@ -19,6 +19,9 @@
 #define FRAME_STYLE_FLOOR "floor"
 #define FRAME_STYLE_WALL "wall"
 
+//let's just pretend fulltile windows being children of border windows is fine
+#define FULLTILE_WINDOW_DIR NORTHEAST
+
 //
 // Disposals Construction
 //

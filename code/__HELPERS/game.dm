@@ -1,4 +1,9 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
+//supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
+#define RANGE_TURFS(RADIUS, CENTER) \
+  block( \
+    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
+    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+  )
 
 /proc/dopage(src,target)
 	var/href_list
@@ -32,8 +37,8 @@
 	var/turf/T = get_turf(A)
 	return T ? T.loc : null
 
-/proc/get_area_name(atom/X, format_text = FALSE)
-	var/area/A = isarea(X) ? X : get_area(X)
+/proc/get_area_name(atom/X, format_text = FALSE, get_base_area = FALSE)
+	var/area/A = get_base_area ? get_base_area(X) : get_area(X)
 	if(!A)
 		return null
 	return format_text ? format_text(A.name) : A.name
@@ -58,7 +63,6 @@
 // Like view but bypasses luminosity check
 
 /proc/hear(var/range, var/atom/source)
-
 	var/lum = source.luminosity
 	source.luminosity = 6
 
@@ -327,75 +331,57 @@
 
 	return list("mobs" = mobs, "objs" = objs)
 
-#define SIGN(X) ((X<0)?-1:1)
+#define SIGNV(X) ((X<0)?-1:1)
 
-proc
-	inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
-		var/turf/T
-		if(X1==X2)
-			if(Y1==Y2)
-				return 1 //Light cannot be blocked on same tile
-			else
-				var/s = SIGN(Y2-Y1)
-				Y1+=s
-				while(Y1!=Y2)
-					T=locate(X1,Y1,Z)
-					if(T.opacity)
-						return 0
-					Y1+=s
+/proc/inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
+	var/turf/T
+	if(X1==X2)
+		if(Y1==Y2)
+			return 1 //Light cannot be blocked on same tile
 		else
-			var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
-			var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
-			var/signX = SIGN(X2-X1)
-			var/signY = SIGN(Y2-Y1)
-			if(X1<X2)
-				b+=m
-			while(X1!=X2 || Y1!=Y2)
-				if(round(m*X1+b-Y1))
-					Y1+=signY //Line exits tile vertically
-				else
-					X1+=signX //Line exits tile horizontally
+			var/s = SIGN(Y2-Y1)
+			Y1+=s
+			while(Y1!=Y2)
 				T=locate(X1,Y1,Z)
 				if(T.opacity)
 					return 0
-		return 1
-#undef SIGN
+				Y1+=s
+	else
+		var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
+		var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
+		var/signX = SIGN(X2-X1)
+		var/signY = SIGN(Y2-Y1)
+		if(X1<X2)
+			b+=m
+		while(X1!=X2 || Y1!=Y2)
+			if(round(m*X1+b-Y1))
+				Y1+=signY //Line exits tile vertically
+			else
+				X1+=signX //Line exits tile horizontally
+			T=locate(X1,Y1,Z)
+			if(T.opacity)
+				return 0
+	return 1
+#undef SIGNV
 
-/proc/flick_overlay(image/I, list/show_to, duration, gc_after)
-	for(var/client/C in show_to)
-		C.images += I
-	spawn(duration)
-		if(gc_after)
-			qdel(I)
-		for(var/client/C in show_to)
-			C.images -= I
-
-/proc/flick_overlay_view(image/I, atom/target, duration, gc_after) //wrapper for the above, flicks to everyone who can see the target atom
-	var/list/viewing = list()
-	for(var/m in viewers(target))
-		var/mob/M = m
-		if(M.client)
-			viewing += M.client
-	flick_overlay(I, viewing, duration, gc_after)
-
-proc/isInSight(var/atom/A, var/atom/B)
+/proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
 	var/turf/Bturf = get_turf(B)
 
 	if(!Aturf || !Bturf)
-		return 0
+		return FALSE
 
 	if(inLineOfSight(Aturf.x,Aturf.y, Bturf.x,Bturf.y,Aturf.z))
-		return 1
+		return TRUE
 
 	else
-		return 0
+		return FALSE
 
 /proc/get_cardinal_step_away(atom/start, atom/finish) //returns the position of a step from start away from finish, in one of the cardinal directions
 	//returns only NORTH, SOUTH, EAST, or WEST
 	var/dx = finish.x - start.x
 	var/dy = finish.y - start.y
-	if(abs(dy) > abs (dx)) //slope is above 1:1 (move horizontally in a tie)
+	if(abs(dy) > abs(dx)) //slope is above 1:1 (move horizontally in a tie)
 		if(dy > 0)
 			return get_step(start, SOUTH)
 		else
@@ -406,16 +392,42 @@ proc/isInSight(var/atom/A, var/atom/B)
 		else
 			return get_step(start, EAST)
 
-/proc/get_mob_by_key(var/key)
-	for(var/mob/M in mob_list)
-		if(M.ckey == lowertext(key))
+/proc/get_mob_by_key(key)
+	var/ckey = ckey(key)
+	for(var/i in mob_list) //GLOB.player_list)
+		var/mob/M = i
+		if(M.ckey == ckey)
 			return M
 	return null
 
+/proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
+	if(!isobj(O))
+		O = new /obj/screen/text()
+	O.maptext = maptext
+	O.maptext_height = maptext_height
+	O.maptext_width = maptext_width
+	O.screen_loc = screen_loc
+	return O
+
+/proc/remove_images_from_clients(image/I, list/show_to)
+	for(var/client/C in show_to)
+		C.images -= I
+
+/proc/flick_overlay(image/I, list/show_to, duration)
+	for(var/client/C in show_to)
+		C.images += I
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, I, show_to), duration, TIMER_CLIENT_TIME)
+
+/proc/flick_overlay_view(image/I, atom/target, duration) //wrapper for the above, flicks to everyone who can see the target atom
+	var/list/viewing = list()
+	for(var/m in viewers(target))
+		var/mob/M = m
+		if(M.client)
+			viewing += M.client
+	flick_overlay(I, viewing, duration)
 
 // Will return a list of active candidates. It increases the buffer 5 times until it finds a candidate which is active within the buffer.
-/proc/get_active_candidates(var/buffer = 1)
-
+/proc/get_active_candidates(buffer = 1)
 	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
@@ -427,9 +439,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	return candidates
 
 // Same as above but for alien candidates.
-
 /proc/get_alien_candidates()
-
 	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
@@ -441,16 +451,18 @@ proc/isInSight(var/atom/A, var/atom/B)
 		i++
 	return candidates
 
-/proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))	O = new /obj/screen/text()
-	O.maptext = maptext
-	O.maptext_height = maptext_height
-	O.maptext_width = maptext_width
-	O.screen_loc = screen_loc
-	return O
+/proc/window_flash(client/C, ignorepref = FALSE)
+	if(ismob(C))
+		var/mob/M = C
+		if(M.client)
+			C = M.client
+	if(!C) //|| (!C.prefs.windowflashing && !ignorepref))
+		return
+	winset(C, "mainwindow", "flash=5")
 
 /proc/Show2Group4Delay(obj/O, list/group, delay=0)
-	if(!isobj(O))	return
+	if(!isobj(O))
+		return
 	if(!group)	group = GLOB.clients
 	for(var/client/C in group)
 		C.screen += O
@@ -459,7 +471,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 			for(var/client/C in group)
 				C.screen -= O
 
-datum/projectile_data
+/datum/projectile_data
 	var/src_x
 	var/src_y
 	var/time
@@ -562,12 +574,12 @@ datum/projectile_data
 * Gets the highest and lowest pressures from the tiles in cardinal directions
 * around us, then checks the difference.
 */
-/proc/getOPressureDifferential(var/turf/loc)
-	var/minp=16777216;
-	var/maxp=0;
+/proc/getOPressureDifferential(turf/loc)
+	var/minp = 16777216;
+	var/maxp = 0;
 	for(var/dir in GLOB.cardinals)
 		var/turf/simulated/T=get_turf(get_step(loc,dir))
-		var/cp=0
+		var/cp = 0
 		if(T && istype(T) && T.zone)
 			var/datum/gas_mixture/environment = T.return_air()
 			cp = environment.return_pressure()
@@ -578,13 +590,13 @@ datum/projectile_data
 		if(cp>maxp)maxp=cp
 	return abs(minp-maxp)
 
-/proc/convert_k2c(var/temp)
+/proc/convert_k2c(temp)
 	return ((temp - T0C))
 
-/proc/convert_c2k(var/temp)
+/proc/convert_c2k(temp)
 	return ((temp + T0C))
 
-/proc/getCardinalAirInfo(var/turf/loc, var/list/stats=list("temperature"))
+/proc/getCardinalAirInfo(turf/loc, list/stats=list("temperature"))
 	var/list/temps = new/list(4)
 	for(var/dir in GLOB.cardinals)
 		var/direction
@@ -624,8 +636,3 @@ datum/projectile_data
 
 /proc/SecondsToTicks(var/seconds)
 	return seconds * 10
-
-/proc/window_flash(var/client_or_usr)
-	if (!client_or_usr)
-		return
-	winset(client_or_usr, "mainwindow", "flash=5")
