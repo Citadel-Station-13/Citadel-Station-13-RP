@@ -373,10 +373,11 @@
 
 /obj/machinery/power/fission/proc/announce_warning(var/meltedrods, var/meltingrods, var/core_overheat)
 	if(src.powered() && !exploded && (meltedrods > 0 || meltingrods > 0 || temperature >= max_temp))
+		var/location = sanitize((get_area(src)).name)
 		if((world.timeofday - lastwarning) >= warning_delay * 10)
 			lastwarning = world.timeofday
 			if(core_overheat)
-				radio.autosay("Danger! Fission core is overheating!", "Nuclear Monitor")
+				radio.autosay("Danger! Fission core at [location] is overheating!", "Nuclear Monitor")
 			else if(meltedrods > 0 && meltingrods > 0)
 				radio.autosay("Warning! [meltedrods] rods have melted and [meltingrods] are overheating!", "Nuclear Monitor", "Engineering")
 			else if(meltedrods > 0)
@@ -392,6 +393,9 @@
 
 /obj/machinery/power/fission/proc/go_nuclear()
 	if(health < 1 && !exploded)
+		var/off_station = 0
+		if(!(src.z in GLOB.using_map.station_levels))
+			off_station = 1
 		var/turf/L = get_turf(src)
 		if(!istype(L))
 			return
@@ -410,16 +414,17 @@
 			rod.meltdown()
 		var/rad_power = decay_heat / REACTOR_RADS_TO_MJ
 		if(announce)
-			var/sound = sound('sound/effects/carter_alarm_cut.ogg')
-			for(var/mob/M in player_list)
-				SEND_SOUND(M,sound)
+			var/sound = sound('sound/effects/nuclear_meltdown.ogg')
+			if(!off_station)
+				for(var/mob/M in player_list)
+					SEND_SOUND(M,sound)
 			spawn(1 SECONDS)
-				radio.autosay("Danger! Fission core has breached!", "Nuclear Monitor")
-				radio.autosay("Find shelter immediately!", "Nuclear Monitor")
+				radio.autosay("DANGER! FISSION CORE HAS BREACHED!", "Nuclear Monitor")
+				radio.autosay("FIND SHELTER IMMEDIATELY!", "Nuclear Monitor")
 			spawn(5 SECONDS)
-				radio.autosay("Core breach! Find shelter immediately!", "Nuclear Monitor")
+				radio.autosay("CORE BREACH! FIND SHELTER IMMEDIATELY!", "Nuclear Monitor")
 			spawn(10 SECONDS)
-				radio.autosay("Core breach! Find shelter immediately!", "Nuclear Monitor")
+				radio.autosay("CORE BREACH! FIND SHELTER IMMEDIATELY!", "Nuclear Monitor")
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
@@ -469,6 +474,6 @@
 			var/explosion_power = 4 * decaying_rods
 			if(explosion_power < 1) // If you remove the rods but it's over heating, it's still gunna go bang, but without going nuclear.
 				explosion_power = 1
-			if(!(src.z in GLOB.using_map.station_levels))
+			if(off_station)
 				explosion_power = explosion_power/3 //Bandaid fix. Reduces effectiveness of using a fission reactor for mining.
 			explosion(L, explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
