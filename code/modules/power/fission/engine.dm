@@ -411,11 +411,8 @@
 		var/rad_power = decay_heat / REACTOR_RADS_TO_MJ
 		if(announce)
 			var/sound = sound('sound/effects/carter_alarm_cut.ogg')
-			for(var/a in player_list)
-				var/mob/M = a
-				var/turf/T = get_turf(M)
-				if(T.z == L.z)
-					M.playsound_local(T, soundin = sound, vol = 50, vary = FALSE, is_global = TRUE)
+			for(var/mob/M in player_list)
+				SEND_SOUND(M,sound)
 			spawn(1 SECONDS)
 				radio.autosay("Danger! Fission core has breached!", "Nuclear Monitor")
 				radio.autosay("Find shelter immediately!", "Nuclear Monitor")
@@ -472,4 +469,6 @@
 			var/explosion_power = 4 * decaying_rods
 			if(explosion_power < 1) // If you remove the rods but it's over heating, it's still gunna go bang, but without going nuclear.
 				explosion_power = 1
+			if(!(src.z in GLOB.using_map.station_levels))
+				explosion_power = explosion_power/3 //Bandaid fix. Reduces effectiveness of using a fission reactor for mining.
 			explosion(L, explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
