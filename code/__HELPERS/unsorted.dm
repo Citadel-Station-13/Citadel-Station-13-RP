@@ -1582,73 +1582,80 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Returns: all the areas in the world
 /proc/return_areas()
-	var/list/area/areas = list()
+	. = list()
 	for(var/area/A in all_areas)
-		areas += A
-	return areas
+		. += A
 
 //Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
 	return sortTim(return_areas(), /proc/cmp_area_names_asc)
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
-//Returns: A list of all areas of that type in the world.
-/proc/get_areas(areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
+//Returns: A list of all areas of that type in the world. (or blank list if empty!)
+/proc/get_areas(area/areatype)
+	if(!areatype) 
+		return null
+	if(istext(areatype))
+		areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
 
-	var/list/areas = new/list()
+	. = list()
 	for(var/area/N in all_areas)
-		if(istype(N, areatype)) areas += N
-	return areas
+		if(istype(N, areatype))
+			. += N
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all turfs in areas of that type of that type in the world.
-/proc/get_area_turfs(var/areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
+//this looks dangerously expensive
+/proc/get_area_turfs(area/areatype)
+	if(!areatype)
+		return null
+	if(istext(areatype)) 
+		areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
 
-	var/list/turfs = new/list()
+	. = list()
 	for(var/area/N in all_areas)
-		if(istype(N, areatype))
-			for(var/turf/T in N) turfs += T
-	return turfs
+		if(!istype(N, areatype))
+			continue
+		for(var/turf/T in N) 
+			. += T
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all atoms	(objs, turfs, mobs) in areas of that type of that type in the world.
-/proc/get_area_all_atoms(var/areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
+/proc/get_area_all_atoms(area/areatype)
+	if(!areatype) 
+		return null
+	if(istext(areatype)) 
+		areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
 
-	var/list/atoms = new/list()
+	. = list()
 	for(var/area/N in all_areas)
-		if(istype(N, areatype))
-			for(var/atom/A in N)
-				atoms += A
-	return atoms
+		if(!istype(N, areatype))
+			continue
+		for(var/atom/A in N)
+			. += A
 
 /datum/coords //Simple datum for storing coordinates.
 	var/x_pos = null
 	var/y_pos = null
 	var/z_pos = null
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null) //dunno where to ship
-	//Takes: Area. Optional: turf type to leave behind.
-	//Returns: Nothing.
-	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
-
-	if(!A || !src) return 0
+//Takes: Area. Optional: turf type to leave behind.
+//Returns: Nothing.
+//Notes: Attempts to move the contents of one area to another area.
+//       Movement based on lower left corner. Tiles that do not fit
+//		 into the new area will not be moved.
+/area/proc/move_contents_to(area/A, turftoleave = null, direction = null) //dunno where to ship
+	if(!A || !src) 
+		return 0
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -1683,7 +1690,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	moving:
 		for (var/turf/T in refined_src)
-			var/datum/coords/C_src = refined_src[T]
+			var/datum/coords/C_src = refined_src[T] //T where T is cords
 			for (var/turf/B in refined_trg)
 				var/datum/coords/C_trg = refined_trg[B]
 				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
@@ -1766,149 +1773,13 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 					refined_trg -= B
 					continue moving
 
-/proc/DuplicateObject(obj/original, perfectcopy = FALSE, sameloc = FALSE) //DuplicateObject, ship to holodeck.dm
-	if(!original)
-		return null
-
-	var/obj/O = null
-
-	if(sameloc)
-		O=new original.type(original.loc)
-	else
-		O=new original.type(locate(0,0,0))
-
-	if(perfectcopy)
-		if((O) && (original))
-			for(var/V in original.vars)
-				if(!(V in list("type","loc","locs","vars", "parent", "parent_type","verbs","ckey","key")))
-					O.vars[V] = original.vars[V]
-	return O
-
-
-/area/proc/copy_contents_to(area/A , platingRequired = FALSE) //same as (this)
-	//Takes: Area. Optional: If it should copy to areas that don't have plating
-	//Returns: Nothing.
-	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
-
-	// Does *not* affect gases etc; copied turfs will be changed via ChangeTurf, and the dir, icon, and icon_state copied. All other vars will remain default.
-
-	if(!A || !src) return 0
-
-	var/list/turfs_src = get_area_turfs(src.type)
-	var/list/turfs_trg = get_area_turfs(A.type)
-
-	var/src_min_x = 0
-	var/src_min_y = 0
-	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x	= T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y	= T.y
-
-	var/trg_min_x = 0
-	var/trg_min_y = 0
-	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x	= T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y	= T.y
-
-	var/list/refined_src = new/list()
-	for(var/turf/T in turfs_src)
-		refined_src += T
-		refined_src[T] = new/datum/coords
-		var/datum/coords/C = refined_src[T]
-		C.x_pos = (T.x - src_min_x)
-		C.y_pos = (T.y - src_min_y)
-
-	var/list/refined_trg = new/list()
-	for(var/turf/T in turfs_trg)
-		refined_trg += T
-		refined_trg[T] = new/datum/coords
-		var/datum/coords/C = refined_trg[T]
-		C.x_pos = (T.x - trg_min_x)
-		C.y_pos = (T.y - trg_min_y)
-
-	var/list/toupdate = new/list()
-
-	var/copiedobjs = list()
-
-
-	moving:
-		for (var/turf/T in refined_src)
-			var/datum/coords/C_src = refined_src[T]
-			for (var/turf/B in refined_trg)
-				var/datum/coords/C_trg = refined_trg[B]
-				if(C_src.x_pos == C_trg.x_pos && C_src.y_pos == C_trg.y_pos)
-
-					var/old_dir1 = T.dir
-					var/old_icon_state1 = T.icon_state
-					var/old_icon1 = T.icon
-					var/old_overlays = T.overlays.Copy()
-					var/old_underlays = T.underlays.Copy()
-
-					if(platingRequired)
-						if(istype(B, get_base_turf_by_area(B)))
-							continue moving
-
-					var/turf/X = B
-					X.ChangeTurf(T.type)
-					X.setDir(old_dir1)
-					X.icon_state = old_icon_state1
-					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
-					X.overlays = old_overlays
-					X.underlays = old_underlays
-
-					var/list/objs = new/list()
-					var/list/newobjs = new/list()
-					var/list/mobs = new/list()
-					var/list/newmobs = new/list()
-
-					for(var/obj/O in T)
-
-						if(!istype(O,/obj))
-							continue
-
-						objs += O
-
-
-					for(var/obj/O in objs)
-						newobjs += DuplicateObject(O , 1)
-
-
-					for(var/obj/O in newobjs)
-						O.loc = X
-
-					for(var/mob/M in T)
-
-						if(!istype(M,/mob) || istype(M, /mob/observer/eye)) continue // If we need to check for more mobs, I'll add a variable
-						mobs += M
-
-					for(var/mob/M in mobs)
-						newmobs += DuplicateObject(M , 1)
-
-					for(var/mob/M in newmobs)
-						M.loc = X
-
-					copiedobjs += newobjs
-					copiedobjs += newmobs
-
-//					var/area/AR = X.loc
-
-//					if(AR.dynamic_lighting)
-//						X.opacity = !X.opacity
-//						X.sd_SetOpacity(!X.opacity)			//TODO: rewrite this code so it's not messed by lighting ~Carn
-
-					toupdate += X
-
-					refined_src -= T
-					refined_trg -= B
-					continue moving
+/* =dropdown break= */
 
 /proc/get_mob_with_client_list()
-	var/list/mobs = list()
+	. = list()
 	for(var/mob/M in mob_list)
-		if (M.client)
-			mobs += M
-	return mobs
+		if(M.client)
+			. += M
 
 /proc/get_turf_or_move(turf/location)
 	return get_turf(location)

@@ -2062,6 +2062,7 @@
 #include "code\modules\ghosttrap\trap.dm"
 #include "code\modules\goonchat\browserOutput.dm"
 #include "code\modules\goonchat\jsErrorHandler.dm"
+#include "code\modules\holodeck\area_copy.dm"
 #include "code\modules\holodeck\HolodeckControl.dm"
 #include "code\modules\holodeck\HolodeckObjects.dm"
 #include "code\modules\holodeck\HolodeckPrograms.dm"

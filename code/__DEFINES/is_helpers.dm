@@ -12,6 +12,10 @@
 
 //Turfs
 //#define isturf(A) (istype(A, /turf)) This is actually a byond built-in. Added here for completeness sake.
+//from turfs.dm
+#define iswall(T) (istype(T, /turf/simulated/wall) || istype(T, /turf/unsimulated/wall) || istype(T, /turf/simulated/shuttle/wall))
+//same with this
+#define isfloor(T) (istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor) || istype(T, /turf/simulated/shuttle/floor))
 
 #define isopenspace(A) istype(A, /turf/simulated/open)
 
