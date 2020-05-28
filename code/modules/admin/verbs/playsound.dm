@@ -49,6 +49,7 @@
 	feedback_add_details("admin_verb","PLS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_web_sound()
+	set category = "Fun"
 	to_chat(src, "Due to the fact that the coder who ported this decided to whip this up in less than an hour, this doesn't work. Use the web sound manual verb with a youtube-dl fetched link.")
 	return
 
