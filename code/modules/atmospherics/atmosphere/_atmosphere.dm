@@ -13,6 +13,8 @@
 	/// Chance per iteration to take from restricted gases
 	var/restricted_chance = 10
 
+	/// Pressure to fill base_gases to, if it isn't there. For lazy coders who don't want to pv=nrt.
+	var/base_target_pressure
 	/// Minimum pressure in kPa this atmosphere can be
 	var/minimum_pressure
 	/// Maximum pressure in kPa this atmosphere can be
@@ -37,34 +39,43 @@
 	var/datum/gas_mixture/gasmix = new
 	var/list/gaslist = gasmix.gases
 	gasmix.temperature = rand(minimum_temp, maximum_temp)
-	for(var/i in base_gases)
-		ADD_GAS(i, gaslist)
-		gaslist[i][MOLES] = base_gases[i]
+	for(var/gaspath in base_gases)
+		gaslist[gaspath] = base_gases[gaspath]
+
+	// Make sure base gases are at target pressure if it isn't already
+	if(gasmix.return_pressure() < base_target_pressure)
+		var/mult = base_target_pressure / gasmix.return_pressure()
+		for(var/gaspath in gaslist)
+			gaslist[gaspath] *= mult
 
 	// Now let the random choices begin
-	var/datum/gas/gastype
-	var/amount
-	while(gasmix.return_pressure() < target_pressure)
-		if(!prob(restricted_chance))
-			gastype = pick(normal_gases)
-			amount = normal_gases[gastype]
-		else
-			gastype = pick(restricted_gases)
-			amount = restricted_gases[gastype]
-			if(gaslist[gastype])
-				continue
+	if(length(base_gases | restricted_gases))
+		var/datum/gas/gastype
+		var/amount
+		var/safety = 254
+		while(gasmix.return_pressure() < target_pressure)
+			if(!safety--)
+				stack_trace("[type] ran out of safety in its while loop in generate_gas_string. Something has gone horribly wrong!")
+				break
+			if(!prob(restricted_chance))
+				gastype = pick(normal_gases)
+				amount = normal_gases[gastype]
+			else
+				gastype = pick(restricted_gases)
+				amount = restricted_gases[gastype]
+				if(gaslist[gastype])
+					continue
 
-		amount *= rand(50, 200) / 100	// Randomly modifes the amount from half to double the base for some variety
-		amount *= pressure_scalar		// If we pick a really small target pressure we want roughly the same mix but less of it all
-		amount = CEILING(amount, 0.1)
+			amount *= rand(50, 200) / 100	// Randomly modifes the amount from half to double the base for some variety
+			amount *= pressure_scalar		// If we pick a really small target pressure we want roughly the same mix but less of it all
+			amount = CEILING(amount, 0.1)
 
-		ASSERT_GAS(gastype, gasmix)
-		gaslist[gastype][MOLES] += amount
+			gaslist[gastype] += amount
 
 	// That last one put us over the limit, remove some of it
 	while(gasmix.return_pressure() > target_pressure)
-		gaslist[gastype][MOLES] -= gaslist[gastype][MOLES] * 0.1
-	gaslist[gastype][MOLES] = FLOOR(gaslist[gastype][MOLES], 0.1)
+		gaslist[gastype] -= gaslist[gastype] * 0.1
+	gaslist[gastype] = FLOOR(gaslist[gastype], 0.1)
 	gasmix.garbage_collect()
 
 	// Now finally lets make that string
