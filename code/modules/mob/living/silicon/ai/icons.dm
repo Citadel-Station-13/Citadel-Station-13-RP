@@ -184,7 +184,6 @@ var/list/datum/ai_icon/ai_icons
 	dead_icon = "ai-eager-crash"
 
 //Eros Research Platform Ports
-
 /datum/ai_icon/clown2
 	name = "Honk"
 	alive_icon = "ai-clown2"
@@ -257,6 +256,7 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/godfrey
 	name = "Godfrey"
 	alive_icon = "ai-godfrey"
+//End of Eros Research Platform Ports
 
 //Drof's Ports
 /datum/ai_icon/gondola
@@ -283,3 +283,12 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/terminal
 	name = "Terminal"
 	alive_icon = "ai-terminal"
+
+/datum/ai_icon/cheerful
+	name ="Cheerful"
+	alive_icon = "ai-cheerful"
+
+/datum/ai_icon/stern
+	name = "Stern"
+	alive_icon = "ai-stern"
+//End of Drof's Ports

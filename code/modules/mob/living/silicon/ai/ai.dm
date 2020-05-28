@@ -597,7 +597,7 @@ var/list/ai_verbs_default = list(
 			qdel(dummy)
 			holo_icon = new_holo
 
-		else //A premade from the dmi
+		else //A premade list from the dmi
 			var/icon_list[] = list(
 				"synthetic male",
 				"synthetic female",
@@ -632,7 +632,7 @@ var/list/ai_verbs_default = list(
 				"gondola"
 
 			)
-			input = input("Please select a hologram:") as null|anything in icon_list
+			input = input("Please select a hologram:") as null|anything in icon_list //Holoprojection list
 			if(input)
 				qdel(holo_icon)
 				switch(input)
