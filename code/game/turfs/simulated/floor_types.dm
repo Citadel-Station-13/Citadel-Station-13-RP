@@ -229,14 +229,12 @@
 	icon_state = "carry_ingame"
 
 /turf/simulated/shuttle/plating/skipjack //Skipjack plating
-	oxygen = 0
-	nitrogen = MOLES_N2STANDARD + MOLES_O2STANDARD
+	initial_gas_mix = GAS_STRING_STP_NITROGEN
 
 /turf/simulated/shuttle/floor/skipjack //Skipjack floors
 	name = "skipjack floor"
 	icon_state = "floor_dred"
-	oxygen = 0
-	nitrogen = MOLES_N2STANDARD + MOLES_O2STANDARD
+	initial_gas_mix = GAS_STRING_STP_NITROGEN
 
 /turf/simulated/shuttle/floor/voidcraft
 	name = "voidcraft tiles"

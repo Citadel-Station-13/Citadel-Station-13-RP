@@ -36,8 +36,7 @@
 
 // Normal station/earth air.
 /turf/unsimulated/wall/planetary/normal
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/wall/planetary/firnir
 	temperature = 570

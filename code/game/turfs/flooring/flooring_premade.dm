@@ -215,39 +215,25 @@
 	initial_flooring = /decl/flooring/reinforced
 
 /turf/simulated/floor/reinforced/airless
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/reinforced/airmix
-	oxygen = MOLES_O2ATMOS
-	nitrogen = MOLES_N2ATMOS
+	initial_gas_mix = GAS_STRING_PRIMARY_TANK_AIRMIX
 
 /turf/simulated/floor/reinforced/nitrogen
-	oxygen = 0
-	nitrogen = ATMOSTANK_NITROGEN
+	initial_gas_mix = GAS_STRING_PRIMARY_TANK_NITROGEN
 
 /turf/simulated/floor/reinforced/oxygen
-	oxygen = ATMOSTANK_OXYGEN
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_PRIMARY_TANK_OXYGEN
 
 /turf/simulated/floor/reinforced/phoron
-	oxygen = 0
-	nitrogen = 0
-	phoron = ATMOSTANK_PHORON
+	initial_gas_mix = GAS_STRING_PRIMARY_TANK_PHORON
 
 /turf/simulated/floor/reinforced/carbon_dioxide
-	oxygen = 0
-	nitrogen = 0
-	carbon_dioxide = ATMOSTANK_CO2
+	initial_gas_mix = GAS_STRING_PRIMARY_TANK_CO2
 
 /turf/simulated/floor/reinforced/n20
-	oxygen = 0
-	nitrogen = 0
-
-/turf/simulated/floor/reinforced/n20/Initialize()
-	. = ..()
-	if(!air) make_air()
-	air.adjust_gas("sleeping_agent", ATMOSTANK_NITROUSOXIDE)
+	initial_gas_mix = GAS_STRING_PRIMARY_TANK_N2O
 
 /turf/simulated/floor/cult
 	name = "engraved floor"
