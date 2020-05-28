@@ -505,76 +505,62 @@ var/list/name_to_material
 	created_fulltile_window = /obj/structure/window/basic/full
 	rod_product = /obj/item/stack/material/glass/reinforced
 
-/datum/material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
-
-	if(!user || !used_stack || !created_window || !created_fulltile_window || !window_options.len)
-		return 0
+/datum/material/glass/build_windows(mob/living/user, obj/item/stack/used_stack)
+	if(!user || user.stat || !used_stack || !created_window || !created_fulltile_window || !window_options.len)
+		return FALSE  //why would created_window or created_fulltile_window not exist???
 
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
-		return 1
+		return FALSE
 
-	var/turf/T = user.loc
-	if(!istype(T))
-		to_chat(user, "<span class='warning'>You must be standing on open flooring to build a window.</span>")
-		return 1
+	var/choice = input("Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)", "What would you like to construct?") as null|anything in window_options
+	if(!choice || !user || !used_stack || used_stack.loc != user || user.stat)
+		return FALSE
 
-	var/title = "Sheet-[used_stack.name] ([used_stack.get_amount()] sheet\s left)"
-	var/choice = input(title, "What would you like to construct?") as null|anything in window_options
+	var/obj/D //the object
+	var/req_amount = window_options[choice] //choice returns the number needed
+	switch(choice)
+		if("One Direction")
+			D = created_window
+		if("Full Window")
+			D = created_fulltile_window
+		if("Windoor")
+			D = /obj/structure/windoor_assembly
+			if(is_reinforced())
+				D = /obj/structure/windoor_assembly/secure
 
-	if(!choice || !used_stack || !user || used_stack.loc != user || user.stat || user.loc != T)
-		return 1
-
-	// Get data for building windows here.
-	var/list/possible_directions = cardinal.Copy()
-	var/window_count = 0
-	for (var/obj/structure/window/check_window in user.loc)
-		window_count++
-		possible_directions  -= check_window.dir
-	for (var/obj/structure/windoor_assembly/check_assembly in user.loc)
-		window_count++
-		possible_directions -= check_assembly.dir
-	for (var/obj/machinery/door/window/check_windoor in user.loc)
-		window_count++
-		possible_directions -= check_windoor.dir
-
-	// Get the closest available dir to the user's current facing.
-	var/build_dir = SOUTHWEST //Default to southwest for fulltile windows.
-	var/failed_to_build
-
-	if(window_count >= 4)
-		failed_to_build = 1
-	else
-		if(choice in list("One Direction","Windoor"))
-			if(possible_directions.len)
-				for(var/direction in list(user.dir, turn(user.dir,90), turn(user.dir,270), turn(user.dir,180)))
-					if(direction in possible_directions)
-						build_dir = direction
-						break
-			else
-				failed_to_build = 1
-	if(failed_to_build)
-		to_chat(user, "<span class='warning'>There is no room in this location.</span>")
-		return 1
-
-	var/build_path = /obj/structure/windoor_assembly
-	var/sheets_needed = window_options[choice]
-	if(choice == "Windoor")
-		if(is_reinforced())
-			build_path = /obj/structure/windoor_assembly/secure
-	else if(choice == "Full Window")
-		build_path = created_fulltile_window
-	else
-		build_path = created_window
-
-	if(used_stack.get_amount() < sheets_needed)
-		to_chat(user, "<span class='warning'>You need at least [sheets_needed] sheets to build this.</span>")
-		return 1
-
+	if(used_stack.get_amount() < req_amount)//  * multiplier)
+		if(req_amount > 1)
+			to_chat(user, "<span class='warning'>You haven't got enough [used_stack.name] to build \the [req_amount] [choice]\s!</span>")
+		else
+			to_chat(user, "<span class='warning'>You haven't got enough [used_stack.name] to build \the [choice]!</span>")
+		return FALSE
+	var/turf/T = get_turf(user)
+	
+	if(!valid_window_location(T, initial(D.dir) == FULLTILE_WINDOW_DIR ? FULLTILE_WINDOW_DIR : user.dir))//R.window_checks && 
+		to_chat(user, "<span class='warning'>The [choice] won't fit here!</span>")
+		return FALSE
+	//not gonna add the "one_per_turf" check here.
+	//if(R.on_floor)
+	if(!isfloor(T)) //!isfloorturf(T))
+		to_chat(user, "<span class='warning'>\The [choice] must be constructed on the floor!</span>")
+		return FALSE
+	for(var/obj/AM in T)
+		if(istype(AM, /obj/structure/grille))
+			continue
+		if(istype(AM, /obj/structure/table))
+			continue
+		if(istype(AM, /obj/structure/window))
+			var/obj/structure/window/W = AM
+			if(!W.fulltile)
+				continue
+		if(AM.density)
+			to_chat(user, "<span class='warning'>Theres a [AM.name] here. You cant make a [choice] here!</span>")
+			return FALSE
 	// Build the structure and update sheet count etc.
-	used_stack.use(sheets_needed)
-	new build_path(T, build_dir, 1)
-	return 1
+	used_stack.use(req_amount)
+	new D(T, user.dir, 1)
+	return TRUE
 
 /datum/material/glass/proc/is_reinforced()
 	return (hardness > 35) //todo

@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(ore_types, list(
 		"marble" = /obj/item/ore/marble,
 		"lead" = /obj/item/ore/lead
 	))
-
+/* Not being used yet
 GLOBAL_LIST_EMPTY(landmarks_list)				//list of all landmarks created
 GLOBAL_LIST_EMPTY(start_landmarks_list)			//list of all spawn points created
 GLOBAL_LIST_EMPTY(department_security_spawns)	//list of all department security spawns
@@ -97,5 +97,6 @@ GLOBAL_LIST_EMPTY(stationroom_landmarks) //List of all spawns for stationrooms
 
 // Away missions, VR, random z levels stuff.
 GLOBAL_LIST_EMPTY(random_zlevels_generated)
-//GLOBAL_LIST_INIT(potential_away_levels, generateMapList(filename = "[global.config.directory]/awaymissionconfig.txt"))
-//GLOBAL_LIST_INIT(potential_vr_levels, generateMapList(filename = "[global.config.directory]/vr_config.txt"))
+GLOBAL_LIST_INIT(potential_away_levels, generateMapList(filename = "[global.config.directory]/awaymissionconfig.txt"))
+GLOBAL_LIST_INIT(potential_vr_levels, generateMapList(filename = "[global.config.directory]/vr_config.txt"))
+*/
