@@ -51,6 +51,9 @@
 
 	return ..()
 
+/obj/item/multitool/is_multitool()
+	return TRUE
+
 /obj/item/multitool/proc/mode_switch(mob/living/user)
 	if(++mode_index > modes.len) mode_index = 1
 
