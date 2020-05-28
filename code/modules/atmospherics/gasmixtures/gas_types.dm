@@ -1,20 +1,24 @@
-GLOBAL_LIST_INIT(hardcoded_gases, list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/plasma)) //the main four gases, which were at one time hardcoded
-GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/pluoxium, /datum/gas/stimulum, /datum/gas/nitryl))) //unable to react amongst themselves
+/// List of gases that can't react amongst themselves. KEEP THIS UP TO DATE!
+GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide))
 
+/**
+  * Converts a gas ID to typepath
+  */
 /proc/gas_id2path(id)
-	var/list/meta_gas = GLOB.meta_gas_ids
-	if(id in meta_gas)
-		return id
-	for(var/path in meta_gas)
-		if(meta_gas[path] == id)
-			return path
-	return ""
+	return GLOB.meta_gas_id_lookup[id]
 
-//Unomos - oh god oh fuck oh shit oh lord have mercy this is messy as fuck oh god
-//my addiction to seeing better performance numbers isn't healthy, kids
-//you see this shit, children?
-//i am not a good idol. don't take after me.
-//this is literally worse than my alcohol addiction
+//Unomos - global list inits for all of the meta gas lists.
+//This setup allows procs to only look at one list instead of trying to dig around in lists-within-lists
+GLOBAL_LIST_INIT(meta_gas_specific_heats, meta_gas_heat_list())
+GLOBAL_LIST_INIT(meta_gas_names, meta_gas_name_list())
+GLOBAL_LIST_INIT(meta_gas_visibility, meta_gas_visibility_list())
+GLOBAL_LIST_INIT(meta_gas_overlays, meta_gas_overlay_list())
+GLOBAL_LIST_INIT(meta_gas_dangers, meta_gas_danger_list())
+GLOBAL_LIST_INIT(meta_gas_ids, meta_gas_id_list())
+GLOBAL_LIST_INIT(meta_gas_fusions, meta_gas_fusion_list())
+/// Gas ID to typepath conversion lookup for optimal speed.
+GLOBAL_LIST_INIT(meta_gas_id_lookup, meta_gas_id_lookup_list())
+
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
 	for(var/gas_path in .)
@@ -61,7 +65,11 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 		var/datum/gas/gas = gas_path
 		.[gas_path] = initial(gas.fusion_power)
 
-#warn implement everything above
+/proc/meta_gas_id_lookup_list()
+	var/list/gases = subtypesof(/datum/gas)
+		for(var/gas_path in gases)
+			var/datum/gas/gas = gas_path
+			.[initial(gas.id)] = gas_path
 
 // Visual overlay
 /obj/effect/overlay/gas
