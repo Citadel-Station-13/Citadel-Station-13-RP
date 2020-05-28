@@ -478,3 +478,20 @@
 			gasmix.multiply(gasmix.volume)
 
 	return 1
+
+/**
+  * Parses and copies itself from a specially formatted string.
+  */
+/datum/gas_mixture/proc/parse_gas_string(gas_string)
+	var/list/gases = src.gases
+	var/list/gas = params2list(gas_string)
+	if(gas["TEMP"])
+		temperature = text2num(gas["TEMP"])
+		gas -= "TEMP"
+	gases.Cut()
+	for(var/id in gas)
+		var/path = id
+		if(!ispath(path))
+			path = gas_id2path(path) //a lot of these strings can't have embedded expressions (especially for mappers), so support for IDs needs to stick around
+		gases[path] = text2num(gas[id])
+	return TRUE

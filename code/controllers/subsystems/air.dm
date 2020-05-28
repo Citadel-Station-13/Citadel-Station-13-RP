@@ -13,6 +13,9 @@ SUBSYSTEM_DEF(air)
 	wait = 2 SECONDS // seconds (We probably can speed this up actually)
 	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	/// Associative id = datum list of generated /datum/atmosphere's.
+	var/list/generated_atmospheres
+
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
 	var/cost_turfs = 0
@@ -34,6 +37,8 @@ SUBSYSTEM_DEF(air)
 	air_master = src
 
 /datum/controller/subsystem/air/Initialize(timeofday)
+	generate_atmospheres()
+
 	report_progress("Processing Geometry...")
 
 	current_cycle = 0
@@ -265,6 +270,26 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	// Update next_fire so the MC doesn't try to make up for missed ticks.
 	next_fire = world.time + wait
 	can_fire = TRUE // Unpause
+
+/**
+  * Initializes all subtypes of /datum/atmosphere and indexes them by key.
+  */
+/datum/controller/subsystem/air/generate_atmospheres()
+	atmos_gen = list()
+	for(var/T in subtypesof(/datum/atmosphere))
+		var/datum/atmosphere/atmostype = T
+		atmos_gen["[initial(atmostype.id)]" || "[T]"] = new atmostype
+
+/**
+  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
+  */
+/datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string)
+	if(!atmos_gen)
+		generate_atmos()
+	if(!atmos_gen[gas_string])
+		return gas_string
+	var/datum/atmosphere/mix = atmos_gen[gas_string]
+	return mix.gas_string
 
 //
 // The procs from the ZAS Air Controller are in ZAS/Controller.dm

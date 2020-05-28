@@ -4,6 +4,8 @@
 	icon_state = "0"
 	dynamic_lighting = 0
 
+	#warn what do we do for space gasmixture
+
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	can_build_into_floor = TRUE

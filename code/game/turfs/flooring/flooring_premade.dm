@@ -328,42 +328,30 @@
 //ATMOS PREMADES
 /turf/simulated/floor/reinforced/airless
 	name = "vacuum floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/airless
 	name = "plating"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/tiled/airless
 	name = "floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/bluegrid/airless
 	name = "floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/greengrid/airless
 	name = "floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 /turf/simulated/floor/greengrid/nitrogen
-	oxygen = 0
+	initial_gas_mix = GAS_STRING_STANDARD_NO_OXYGEN
 
 /turf/simulated/floor/tiled/white/airless
 	name = "floor"
-	oxygen = 0
-	nitrogen = 0
-	temperature = TCMB
+	initial_gas_mix = GAS_STRING_VACCUM
 
 // Placeholders
 
