@@ -68,12 +68,6 @@
 //How many moles of fuel are contained within one solid/liquid fuel volume unit
 #define LIQUIDFUEL_AMOUNT_TO_MOL		0.45  //mol/volume unit
 
-// XGM gas flags.
-#define XGM_GAS_FUEL        1
-#define XGM_GAS_OXIDIZER    2
-#define XGM_GAS_CONTAMINANT 4
-#define XGM_GAS_FUSION_FUEL 8
-
 #define TANK_LEAK_PRESSURE     (30.*ONE_ATMOSPHERE) // Tank starts leaking.
 #define TANK_RUPTURE_PRESSURE  (40.*ONE_ATMOSPHERE) // Tank spills all contents into atmosphere.
 #define TANK_FRAGMENT_PRESSURE (50.*ONE_ATMOSPHERE) // Boom 3x3 base explosion.
