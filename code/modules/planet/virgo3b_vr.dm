@@ -77,15 +77,13 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)
 		new_color = weather_holder.current_weather.light_color
 	else
-		var/list/low_color_list = hex2rgb(low_color)
-		var/low_r = low_color_list[1]
-		var/low_g = low_color_list[2]
-		var/low_b = low_color_list[3]
+		var/low_r = hex2num(copytext(low_color, 2, 4))
+		var/low_g = hex2num(copytext(low_color, 4, 6))
+		var/low_b = hex2num(copytext(low_color, 6, 0))
 
-		var/list/high_color_list = hex2rgb(high_color)
-		var/high_r = high_color_list[1]
-		var/high_g = high_color_list[2]
-		var/high_b = high_color_list[3]
+		var/high_r = hex2num(copytext(high_color, 2, 4))
+		var/high_g = hex2num(copytext(high_color, 4, 6))
+		var/high_b = hex2num(copytext(high_color, 6, 0))
 
 		var/new_r = LERP(low_r, high_r, interpolate_weight)
 		var/new_g = LERP(low_g, high_g, interpolate_weight)
@@ -207,7 +205,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinals)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
@@ -240,7 +238,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinals)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))

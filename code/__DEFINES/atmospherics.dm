@@ -81,6 +81,9 @@
 //#define FACTOR_GAS_VISIBLE_MAX				20 //moles_visible * FACTOR_GAS_VISIBLE_MAX = Moles after which gas is at maximum visibility
 //#define MOLES_GAS_VISIBLE_STEP				0.25 //Mole step for alpha updates. This means alpha can update at 0.25, 0.5, 0.75 and so on
 #define MOLES_PHORON_VISIBLE				0.7 // Moles in a standard cell after which phoron is visible.
+// These are for when a mob breathes poisonous air. Compatability Defines
+#define MIN_TOXIN_DAMAGE MIN_TOXIC_GAS_DAMAGE
+#define MAX_TOXIN_DAMAGE MAX_TOXIC_GAS_DAMAGE
 
 // Pressure limits.
 #define PRESSURE_DAMAGE_COEFFICIENT	4 // The amount of pressure damage someone takes is equal to (pressure / HAZARD_HIGH_PRESSURE)*PRESSURE_DAMAGE_COEFFICIENT, with the maximum of MAX_PRESSURE_DAMAGE.

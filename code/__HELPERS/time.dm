@@ -41,11 +41,9 @@ var/next_station_date_change = 1 DAY
 		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
 	return station_date
 
-//ISO 8601
+//Compatability thing
 /proc/time_stamp()
-	var/date_portion = time2text(world.timeofday, "YYYY-MM-DD")
-	var/time_portion = time2text(world.timeofday, "hh:mm:ss")
-	return "[date_portion]T[time_portion]"
+	return SQLtime() 
 
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
@@ -53,24 +51,59 @@ var/next_station_date_change = 1 DAY
 	return time2text(wtime - GLOB.timezoneOffset, format)
 
 /* Returns 1 if it is the selected month and day */
-proc/isDay(var/month, var/day)
+/proc/isDay(month, day)
 	if(isnum(month) && isnum(day))
 		var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
 		var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
 		if(month == MM && day == DD)
 			return 1
 
-		// Uncomment this out when debugging!
-		//else
-			//return 1
+//returns timestamp in a sql and a not-quite-compliant ISO 8601 friendly format
+/proc/SQLtime(timevar)
+	return time2text(timevar || world.timeofday, "YYYY-MM-DD hh:mm:ss")
 
+GLOBAL_VAR_INIT(midnight_rollovers, 0)
+GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
+/proc/update_midnight_rollover()
+	if (world.timeofday < GLOB.rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
+		GLOB.midnight_rollovers++
+	GLOB.rollovercheck_last_timeofday = world.timeofday
+	return GLOB.midnight_rollovers
+
+
+//Takes a value of time in deciseconds.
+//Returns a text value of that number in hours, minutes, or seconds.
+/proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
+	if(!second)
+		return "right now"
+	if(second < 60)
+		return "[second] second[(second != 1)? "s":""]"
+	var/minute = FLOOR(second / 60, 1)
+	second = FLOOR(MODULUS(second, 60), round_seconds_to)
+	var/secondT
+	if(second)
+		secondT = " and [second] second[(second != 1)? "s":""]"
+	if(minute < 60)
+		return "[minute] minute[(minute != 1)? "s":""][secondT]"
+	var/hour = FLOOR(minute / 60, 1)
+	minute = MODULUS(minute, 60)
+	var/minuteT
+	if(minute)
+		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
+	if(hour < 24)
+		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
+	var/day = FLOOR(hour / 24, 1)
+	hour = MODULUS(hour, 24)
+	var/hourT
+	if(hour)
+		hourT = " and [hour] hour[(hour != 1)? "s":""]"
+	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
+
+// Hook things
 var/next_duration_update = 0
 var/last_round_duration = 0
 var/round_start_time = 0
-
-/hook/roundstart/proc/start_timer()
-	round_start_time = world.time
-	return 1
 
 /proc/roundduration2text()
 	if(!round_start_time)
@@ -90,42 +123,10 @@ var/round_start_time = 0
 	next_duration_update = world.time + 1 MINUTES
 	return last_round_duration
 
+/hook/roundstart/proc/start_timer()
+	round_start_time = world.time
+	return TRUE
+
 /hook/startup/proc/set_roundstart_hour()
 	roundstart_hour = pick(2,7,12,17)
-	return 1
-
-/var/midnight_rollovers = 0
-/var/rollovercheck_last_timeofday = 0
-/proc/update_midnight_rollover()
-	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
-		return midnight_rollovers++
-	return midnight_rollovers
-
-//Takes a value of time in deciseconds.
-//Returns a text value of that number in hours, minutes, or seconds.
-/proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
-	var/second = round(time_value * 0.1, round_seconds_to)
-	if(!second)
-		return "right now"
-	if(second < 60)
-		return "[second] second[(second != 1)? "s":""]"
-	var/minute = FLOOR(second / 60, 1)
-	second = MODULUS(second, 60)
-	var/secondT
-	if(second)
-		secondT = " and [second] second[(second != 1)? "s":""]"
-	if(minute < 60)
-		return "[minute] minute[(minute != 1)? "s":""][secondT]"
-	var/hour = FLOOR(minute / 60, 1)
-	minute = MODULUS(minute, 60)
-	var/minuteT
-	if(minute)
-		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
-	if(hour < 24)
-		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
-	var/day = FLOOR(hour / 24, 1)
-	hour = MODULUS(hour, 24)
-	var/hourT
-	if(hour)
-		hourT = " and [hour] hour[(hour != 1)? "s":""]"
-	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
+	return TRUE
