@@ -58,15 +58,15 @@
 	var/hsize = round(input_size/2)
 
 	/*
-	(x,y+isize)----(x+hsize,y+isize)----(x+size,y+isize)
-	  |                 |                  |
-	  |                 |                  |
-	  |                 |                  |
-	(x,y+hsize)----(x+hsize,y+hsize)----(x+isize,y)
-	  |                 |                  |
-	  |                 |                  |
-	  |                 |                  |
-	(x,y)----------(x+hsize,y)----------(x+isize,y)
+	(x, y + isize)----(x + hsize, y + isize)---(x + size, y + isize)
+		  |                 	|						 |
+		  |                 	|						 |
+		  |                 	|						 |
+	(x, y + hsize)----(x + hsize, y + hsize)------(x + isize, y)----
+		  |                 	|						 |
+		  |                		|						 |
+	  	  |                 	|						 |
+	---(x, y)------------(x + hsize, y)-----------(x + isize, y)----
 	*/
 	// Central edge values become average of corners.
 	map[get_map_cell(x+hsize,y+isize)] = round((\
@@ -103,8 +103,9 @@
 		map[current_cell] = max(0,min(cell_range,map[current_cell]))
 
  	// Recurse until size is too small to subdivide.
-	if(isize>3)
-		if(!priority_process) sleep(-1)
+	if(isize > 3)
+		if(!priority_process) 
+			sleep(-1) //what in the unholy retrebution is this
 		iteration++
 		subdivide(iteration, x,       y,       hsize)
 		subdivide(iteration, x+hsize, y,       hsize)
