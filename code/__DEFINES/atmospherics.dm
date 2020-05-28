@@ -21,13 +21,13 @@
 #define BREATH_MOLES        	(ONE_ATMOSPHERE * BREATH_VOLUME / (T20C * R_IDEAL_GAS_EQUATION)) // Amount of air to take a from a tile 
 
 //EXCITED GROUPS
-#define MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND		0.05 //ZAS specific!
+#define MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND		0.012  //ZAS specific! Minimum temperature difference before group processing is suspended.
 //#define EXCITED_GROUP_BREAKDOWN_CYCLES				4		//number of FULL air controller ticks before an excited group breaks down (averages gas contents across turfs)
 //#define EXCITED_GROUP_DISMANTLE_CYCLES				16		//number of FULL air controller ticks before an excited group dismantles and removes its turfs from active
-//#define MINIMUM_AIR_RATIO_TO_SUSPEND				0.1		//Ratio of air that must move to/from a tile to reset group processing
+#define MINIMUM_AIR_RATIO_TO_SUSPEND				0.05	//0.1 //Ratio of air that must move to/from a tile to reset group processing
 //#define MINIMUM_AIR_RATIO_TO_MOVE					0.001	//Minimum ratio of air that must move to/from a tile
-#define MINIMUM_AIR_TO_SUSPEND						(MOLES_CELLSTANDARD * MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND)	//(MINIMUM_AIR_RATIO_TO_SUSPEND) Minimum amount of air that has to move before a group processing can be suspended
-#define MINIMUM_MOLES_DELTA_TO_MOVE					(MOLES_CELLSTANDARD * MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND) //(MINIMUM_AIR_RATIO_TO_MOVE) Either this must be active
+#define MINIMUM_AIR_TO_SUSPEND						(MOLES_CELLSTANDARD * MINIMUM_AIR_RATIO_TO_SUSPEND)	// Minimum amount of air that has to move before a group processing can be suspended
+#define MINIMUM_MOLES_DELTA_TO_MOVE					(MOLES_CELLSTANDARD * MINIMUM_AIR_RATIO_TO_SUSPEND) //(MINIMUM_AIR_RATIO_TO_MOVE) Either this must be active
 #define MINIMUM_TEMPERATURE_TO_MOVE					(T20C+100)			//or this (or both, obviously)
 #define MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND		4		//Minimum temperature difference before group processing is suspended
 #define MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER		0.5		//Minimum temperature difference before the gas temperatures are just set to be equal
@@ -171,6 +171,7 @@
 #define	PIPE_COLOR_BLACK	"#444444"
 #define	PIPE_COLOR_PURPLE	"#5c1ec0"
 //use this nerd
+/*
 GLOBAL_LIST_INIT(pipe_paint_colors, list(
 		"amethyst" = rgb(130,43,255), //supplymain
 		"blue" = rgb(0,0,255),
@@ -185,8 +186,13 @@ GLOBAL_LIST_INIT(pipe_paint_colors, list(
 		"violet" = rgb(64,0,128),
 		"yellow" = rgb(255,198,0)
 ))
-
+*/
 //ZAS SPECIFIC
+#define MINIMUM_AIR_RATIO_TO_SUSPEND 0.05 // Minimum ratio of air that must move to/from a tile to suspend group processing
+#define MINIMUM_AIR_TO_SUSPEND       (MOLES_CELLSTANDARD * MINIMUM_AIR_RATIO_TO_SUSPEND) // Minimum amount of air that has to move before a group processing can be suspended
+#define MINIMUM_MOLES_DELTA_TO_MOVE  (MOLES_CELLSTANDARD * MINIMUM_AIR_RATIO_TO_SUSPEND) // Either this must be active
+#define MINIMUM_TEMPERATURE_TO_MOVE  (T20C + 100)                                        // or this (or both, obviously)
+
 #define HUMAN_NEEDED_OXYGEN (MOLES_CELLSTANDARD * BREATH_PERCENTAGE * 0.16)
 #define HUMAN_HEAT_CAPACITY 280000 //J/K For 80kg person
 
@@ -201,5 +207,5 @@ GLOBAL_LIST_INIT(pipe_paint_colors, list(
 #define ATMOSTANK_NITROUSOXIDE  10000 // N2O doesn't have a real useful use, i guess it's on station just to allow refilling of sec's riot control canisters?.
 
 //Flags for zone sleeping
-#define ZONE_ACTIVE   1
 #define ZONE_SLEEPING 0
+#define ZONE_ACTIVE   1
