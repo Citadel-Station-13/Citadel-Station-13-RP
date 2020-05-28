@@ -712,3 +712,7 @@ datum/gear/uniform/fiendsuit
 datum/gear/uniform/fienddress
 	display_name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
+	
+datum/gear/uniform/leotard
+	display_name = "Black leotard"
+	path = /obj/item/clothing/under/leotard
