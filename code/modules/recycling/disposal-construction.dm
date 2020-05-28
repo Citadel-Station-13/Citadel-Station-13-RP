@@ -2,14 +2,13 @@
 // This is the pipe that you drag around, not the attached ones.
 
 /obj/structure/disposalconstruct
-
 	name = "disposal pipe segment"
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
 	anchored = 0
 	density = 0
-	pressure_resistance = 5*ONE_ATMOSPHERE
+	pressure_resistance = 5 * ONE_ATMOSPHERE
 	matter = list(DEFAULT_WALL_MATERIAL = 1850)
 	level = 2
 	var/sortType = ""
@@ -18,12 +17,12 @@
 	var/dpdir = 0	// directions as disposalpipe
 	var/base_state = "pipe-s"
 
-/obj/structure/disposalconstruct/New(var/newturf, var/newtype, var/newdir, var/flipped, var/newsubtype)
-	..(newturf)
-	ptype = newtype
-	dir = newdir
-	if(ptype == DISPOSAL_PIPE_STRAIGHT && dir in cornerdirs)
-		ptype = DISPOSAL_PIPE_CORNER
+/obj/structure/disposalconstruct/Initialize(loc, _pipe_type, _dir = SOUTH, flip = FALSE, make_from)
+	. = ..()
+	ptype = _pipe_type
+	dir = _dir
+	if(ptype == DISPOSAL_PIPE_STRAIGHT && (dir in GLOB.diagonals))
+		ptype = DISPOSAL_PIPE_CORNER //huh?
 		switch(dir)
 			if(NORTHWEST)
 				dir = WEST
@@ -36,11 +35,11 @@
 
 	switch(ptype)
 		if(DISPOSAL_PIPE_BIN, DISPOSAL_PIPE_OUTLET, DISPOSAL_PIPE_CHUTE)
-			density = 1
+			density = TRUE
 		if(DISPOSAL_PIPE_SORTER, DISPOSAL_PIPE_SORTER_FLIPPED)
-			subtype = newsubtype
+			subtype = make_from
 
-	if(flipped)
+	if(flip)
 		do_a_flip()
 	else
 		update() // do_a_flip() calls update anyway, so, lazy way of catching unupdated pipe!
@@ -122,7 +121,7 @@
 
 // hide called by levelupdate if turf intact status changes
 // change visibility status and force update of icon
-/obj/structure/disposalconstruct/hide(var/intact)
+/obj/structure/disposalconstruct/hide(intact)
 	invisibility = (intact && level==1) ? 101: 0	// hide if floor is intact
 	update()
 
