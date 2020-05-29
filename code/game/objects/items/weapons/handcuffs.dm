@@ -140,6 +140,7 @@ var/last_chew = 0
 	name = "fuzzy cuffs"
 	icon_state = "fuzzycuff"
 	desc = "Use this to keep... 'prisoners' in line."
+	breakouttime = 30 //3sec breakout time. why did this not exist before. bruh moment.
 
 /obj/item/handcuffs/cable
 	name = "cable restraints"
