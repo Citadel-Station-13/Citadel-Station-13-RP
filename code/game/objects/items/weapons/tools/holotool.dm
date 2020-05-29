@@ -27,13 +27,15 @@
 	var/obj/item/deployed//what's currently in use
 	var/switchingtype = "basic"//type for update_icon
 
+
 /obj/item/switchtool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	if(istype(A, /obj/item/storage))//we place automatically
 		return ..()
-	if(istype(A, /atom/movable))
-		var/atom/movable/AM = A
-		if(deployed)
-			return AM.attackby(deployed, user, params, attack_modifier)
+	if(deployed)
+		deployed.resolve_attackby(A, user, params, attack_modifier = 1)
+		A.attackby(deployed, user, params, attack_modifier = 1)
+		return
+	..()
 
 /obj/item/switchtool/New()
 	..()
@@ -181,24 +183,24 @@
 						tool_overlay = mutable_appearance(icon, "[icon_state]_hemostat")
 					if("retractor")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
-					if("bone_clamp")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_bone_clamp")
+					if("boneclamp")
+						tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
 			if("ce")
 				switch(src.deployed.deploytype)
-					if("driver")
+					if("screwdriver")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
 					if("wrench")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
 					if("crowbar")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutters")
+					if("wirecutter")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wirecutters")
 					if("multitool")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
 					if("welder")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
 					if("light")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_light")
+						tool_overlay = mutable_appearance(icon, "[icon_state]_lamp")
 					if("soap")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
 			if("adminholo")
@@ -221,13 +223,13 @@
 						tool_overlay = mutable_appearance(icon, "[icon_state]_retractor")
 					if("boneclamp")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_boneclamp")
-					if("driver")
+					if("screwdriver")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_driver")
 					if("wrench")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
 					if("crowbar")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutters")
+					if("wirecutter")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wirecutters")
 					if("multitool")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
@@ -245,7 +247,8 @@
 
 /obj/item/switchtool/surgery
 	name = "surgeon's switchtool"
-	icon_state = "surgery_switchtool"
+	icon_state = "surgeryswitchtool"
+	item_state = "surgeryswitchtool"
 	desc = "A switchtool containing most of the necessary items for impromptu surgery. For the surgeon on the go."
 	start_modules = list(/obj/item/surgical/scalpel/switchy = null,
 						/obj/item/surgical/hemostat/switchy = null,
@@ -256,7 +259,7 @@
 //Unique adminspawn switchtool. Has all the tools.
 /obj/item/switchtool/holo
 	name = "Tool"
-	icon_state = "holo_switchtool"
+	icon_state = "holoswitchtool"
 	item_state = "holoswitchtool"
 	desc = "An object that can take on the holographic hardlight form of nearly any tool in use today."
 	description_fluff = "Mankind's first tool was likely a blade crudely shaped from flint. Versatile, at the time - one could skin creatures, use it as a weapon, hack at trees and cut plants. This is, potentially, mankind's last tool- able to be dynamically upgraded to support different holoprojector setups, allowing even more tools to be used by one device, once a working holoprojector setup for an application is implemented."
@@ -265,7 +268,7 @@
 	deploy_sound = "sound/weapons/switchsound.ogg"
 	undeploy_sound = "sound/weapons/switchsound.ogg"
 	light_color =  LIGHT_COLOR_CYAN
-
+	switchingtype = "adminholo"
 	start_modules = list(
 						/obj/item/surgical/scalpel/laser3/holoswitch = null,
 						/obj/item/surgical/circular_saw/holoswitch = null,
@@ -286,18 +289,21 @@
 						/obj/item/shield/holoswitch = null)
 
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
+	..()
 	if(module.deploytype == "flashlight")
 		set_light(brightness_max, 4, light_color)
 	else
 		set_light(brightness_min, 1, light_color)
+
 /obj/item/switchtool/holo/undeploy()
+	..()
 	set_light(0)
 
 
 /obj/item/switchtool/holo/CE
 	name = "Chief Engineer's holotool"
-	icon_state = "ce_switchtool"
-	item_state = "ceswitchtool"
+	icon_state = "holoswitchtool"
+	item_state = "holoswitchtool"
 	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
 	light_color =  LIGHT_COLOR_ORANGE
 
