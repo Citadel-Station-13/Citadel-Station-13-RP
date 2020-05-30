@@ -27,6 +27,23 @@
 	var/obj/item/deployed//what's currently in use
 	var/switchingtype = "basic"//type for update_icon
 
+	var/static/radial_driver = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	var/static/radial_wrench = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_wirecutters = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_crowbar = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_welder = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_multitool = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_scalpel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_hemostat = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_retractor = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_saw = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_drill = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_boneclamp = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_cautery = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_light = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_soap = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
+	var/static/radial_shield = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_sword = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
 
 /obj/item/switchtool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	if(istype(A, /obj/item/storage))//we place automatically
@@ -90,32 +107,62 @@
 	return TRUE
 
 /obj/item/switchtool/proc/choose_deploy(mob/user)
-	var/list/potential_modules = list()
-	for(var/obj/item/module in stored_modules)
-		potential_modules += module.name
+	var/list/options = list()
+	switch(switchingtype)
+		if("basic")
+			options["screwdriver"] = radial_driver
+			options["wrench"] = radial_wrench
+			options["wirecutters"] = radial_wirecutters
+			options["crowbar"] = radial_crowbar
+			options["multitool"] = radial_multitool
+		if("surgery")
+			options["scalpel"] = radial_scalpel
+			options["hemostat"] = radial_hemostat
+			options["retractor"] = radial_retractor
+			options["boneclamp"] = radial_boneclamp
+		if("ce")
+			options["screwdriver"] = radial_driver
+			options["wrench"] = radial_wrench
+			options["wirecutters"] = radial_wirecutters
+			options["crowbar"] = radial_crowbar
+			options["multitool"] = radial_multitool
+			options["welder"] = radial_welder
+			options["soap"] = radial_soap
+			options["light"] = radial_light
+		if("adminholo")
+			options["screwdriver"] = radial_driver
+			options["wrench"] = radial_wrench
+			options["wirecutters"] = radial_wirecutters
+			options["crowbar"] = radial_crowbar
+			options["multitool"] = radial_multitool
+			options["welder"] = radial_welder
+			options["scalpel"] = radial_scalpel
+			options["hemostat"] = radial_hemostat
+			options["retractor"] = radial_retractor
+			options["saw"] = radial_saw
+			options["drill"] = radial_drill
+			options["boneclamp"] = radial_boneclamp
+			options["cautery"] = radial_cautery
+			options["soap"] = radial_soap
+			options["light"] = radial_light
+			options["sword"] = radial_sword
+			options["shield"] = radial_shield
 
-	if(!potential_modules.len)
-		to_chat(user, "No modules to deploy.")
+	if(options.len < 1)
 		return
+	var/list/choice = list()
+	choice
+	if(!options.len == 1)
+		choice = show_radial_menu(user, src, options, require_near = TRUE)
+		for(var/module in stored_modules)
+			if(module.deploytype == choice)
+				if(deploy(module))
+					to_chat(user, "You deploy \the [deployed].")
+					return TRUE
+	return FALSE
 
-	else if(potential_modules.len == 1)
-		deploy(potential_modules[1])
-		to_chat(user, "You deploy \the [potential_modules[1]]")
-		return TRUE
 
-	else
-		var/chosen_module = input(user,"What do you want to deploy?", "[src]", "Cancel") as anything in potential_modules
-		if(chosen_module != "Cancel")
-			var/true_module = ""
-			for(var/obj/item/checkmodule in stored_modules)
-				if(checkmodule.name == chosen_module)
-					true_module = checkmodule
-					break
-			if(deploy(true_module))
-				to_chat(user, "You deploy \the [deployed].")
-			return TRUE
-		return
-
+*/
 /obj/item/switchtool/handle_shield(mob/user)
 	if(deployed.deploytype == "shield")
 		return TRUE
@@ -173,10 +220,6 @@
 				switch(src.deployed.deploytype)
 					if("scalpel")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_scalpel")
-					if("saw")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_saw")
-					if("drill")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_drill")
 					if("cautery")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_cautery")
 					if("hemostat")
