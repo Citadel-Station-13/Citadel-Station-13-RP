@@ -1,5 +1,5 @@
 /// List of gases that can't react amongst themselves. KEEP THIS UP TO DATE!
-GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide))
+GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide)))
 
 /**
   * Converts a gas ID to typepath

@@ -72,10 +72,10 @@
 
 			gaslist[gastype] += amount
 
-	// That last one put us over the limit, remove some of it
-	while(gasmix.return_pressure() > target_pressure)
-		gaslist[gastype] -= gaslist[gastype] * 0.1
-	gaslist[gastype] = FLOOR(gaslist[gastype], 0.1)
+		// That last one put us over the limit, remove some of it
+		while(gasmix.return_pressure() > target_pressure)
+			gaslist[gastype] -= gaslist[gastype] * 0.1
+		gaslist[gastype] = FLOOR(gaslist[gastype], 0.1)
 	gasmix.garbage_collect()
 
 	// Now finally lets make that string

@@ -11,11 +11,7 @@
 	blocks_air = 0
 
 	// Set these to get your desired planetary atmosphere.
-	oxygen = 0
-	nitrogen = 0
-	carbon_dioxide = 0
-	phoron = 0
-	temperature = T20C
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/wall/planetary/Initialize(mapload)
 	. = ..()
