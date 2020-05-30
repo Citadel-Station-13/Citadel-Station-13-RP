@@ -179,5 +179,11 @@
 	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
 	desc = "A little lunchbox. This one is a sleek black and red, made of a durable steel!"
 
+/obj/item/storage/toolbox/lunchbox/cyancowgirl
+	name = "Cyan Cowgirl lunchbox"
+	icon_state = "lunchbox_cyancowgirl"
+	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
+	desc = "A little lunchbox. This one has the familiar Cyan Cowgirl backdrop on it!"
+
 /obj/item/storage/toolbox/lunchbox/syndicate/filled
 	filled = TRUE
