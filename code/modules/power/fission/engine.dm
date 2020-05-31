@@ -494,3 +494,22 @@
 				for (var/i = 0, i < rand(1,3), i++)
 					var/a_problem = /obj/tether_away_spawner/underdark_mutspiders
 					new a_problem(spider_spawn)
+
+/obj/tether_away_spawner/underdark_mutspiders // while this should be in underdark_things.dm travis is getting mad about it
+	name = "Underdark Mutant Spiders"
+	faction = "underdark"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	prob_fall = 25
+	mobs_to_pick_from = list(
+		/mob/living/simple_mob/animal/giant_spider/hunter = 3,
+		/mob/living/simple_mob/animal/giant_spider/webslinger = 5,
+		/mob/living/simple_mob/animal/giant_spider/carrier = 5,
+		/mob/living/simple_mob/animal/giant_spider/lurker = 4,
+		/mob/living/simple_mob/animal/giant_spider/tunneler = 5,
+		/mob/living/simple_mob/animal/giant_spider/pepper = 2,
+		/mob/living/simple_mob/animal/giant_spider/thermic = 5,
+		/mob/living/simple_mob/animal/giant_spider/electric = 3,
+		/mob/living/simple_mob/animal/giant_spider/phorogenic = 2,
+		/mob/living/simple_mob/animal/giant_spider/frost = 4
+	)
