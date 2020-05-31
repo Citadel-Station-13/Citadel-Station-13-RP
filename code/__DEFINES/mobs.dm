@@ -156,9 +156,6 @@
 #define ANIMAL_SPAWN_DELAY round(config_legacy.respawn_delay / 6)
 #define DRONE_SPAWN_DELAY  round(config_legacy.respawn_delay / 3)
 
-#define ANIMAL_SPAWN_DELAY round(config_legacy.respawn_delay / 6)
-#define DRONE_SPAWN_DELAY  round(config_legacy.respawn_delay / 3)
-
 // Incapacitation flags, used by the mob/proc/incapacitated() proc
 #define INCAPACITATION_RESTRAINED 		(1<<0)
 #define INCAPACITATION_BUCKLED_PARTIALLY (1<<1)

@@ -25,8 +25,9 @@ var/bomb_set
 	                      // 3 is sealant open, 4 is unwrenched, 5 is removed from bolts.
 	use_power = USE_POWER_OFF
 
-/obj/machinery/nuclearbomb/New()
-	..()
+/obj/machinery/nuclearbomb/Initialize()
+	. = ..()
+	//this is so fucking bad, you can handcraft a permut thing that sends code into this
 	r_code = "[rand(10000, 99999.0)]"//Creates a random code upon object spawn.
 	wires["Red"] = 0
 	wires["Blue"] = 0
@@ -200,8 +201,8 @@ var/bomb_set
 		extended = 1
 	return
 
-obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
-	var/dat as text
+/obj/machinery/nuclearbomb/proc/nukehack_win(mob/user)
+	var/dat = ""
 	dat += "<TT><B>Nuclear Fission Explosive</B><BR>\nNuclear Device Wires:</A><HR>"
 	for(var/wire in wires)
 		dat += text("[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>")
@@ -411,8 +412,8 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 				return
 	return
 
-/obj/item/disk/nuclear/New()
-	..()
+/obj/item/disk/nuclear/Initialize()
+	. = ..()
 	nuke_disks |= src
 
 /obj/item/disk/nuclear/Destroy()

@@ -100,13 +100,13 @@
 		if (istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
 			var/max_multiplier = round(src.get_amount() / R.req_amount)
-			var/title as text
+			var/title = ""
 			var/can_build = 1
 			can_build = can_build && (max_multiplier>0)
 			if (R.res_amount>1)
-				title+= "[R.res_amount]x [R.title]\s"
+				title += "[R.res_amount]x [R.title]\s"
 			else
-				title+= "[R.title]"
+				title += "[R.title]"
 			title+= " ([R.req_amount] [src.singular_name]\s)"
 			if (can_build)
 				t1 += text("<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")

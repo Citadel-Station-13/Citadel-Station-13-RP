@@ -1,10 +1,3 @@
-#define FOR_DVIEW(type, range, center, invis_flags) \
-	GLOB.dview_mob.loc = center; \
-	GLOB.dview_mob.see_invisible = invis_flags; \
-	for(type in view(range, GLOB.dview_mob))
-
-#define END_FOR_DVIEW dview_mob.loc = null
-
 #define LIGHTING_FALLOFF 1 // type of falloff to use for lighting; 1 for circular, 2 for square
 #define LIGHTING_LAMBERTIAN 0 // use lambertian shading for light sources
 #define LIGHTING_HEIGHT 1 // height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
@@ -82,6 +75,11 @@
 #define LIGHT_COLOR_INCANDESCENT_TUBE "#FFFEB8"
 #define LIGHT_COLOR_INCANDESCENT_BULB "#FFDDBB"
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66"
+
+//vars from lighting vr, uncommented due to duplicate defintion
+//#define LIGHT_COLOR_INCANDESCENT_TUBE "#E0EFF0"
+//#define LIGHT_COLOR_INCANDESCENT_BULB "#FFFEB8"
+
 
 //Fake ambient occlusion filter
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, border=4, color="#04080FAA")

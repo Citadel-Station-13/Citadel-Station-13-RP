@@ -39,7 +39,7 @@ What is the naming convention for planes or layers?
 	Also, as it's a define, it is standard practice to use capital letters for the variable so people know this.
 
 */
-
+// 2 SPACE_PLANE(s). Linter is complaning about this. Too bad!
 #define SPACE_PLANE     		-82	// Reserved for use in space/parallax
 #define PARALLAX_PLANE  		-80	// Reserved for use in space/parallax
 

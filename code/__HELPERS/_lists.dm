@@ -29,16 +29,12 @@
 /*
  * Vorestation specific?
  */
-//Picks from the list, with some safeties, and returns the "default" arg if it fails
-#define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_TO_LIST(L) ( islist(L) ? L : list(L) )
 
 #define SAFEPICK(L) (length(L)? pick(L) : null)
 #define SAFEACCESS(L, I) (isnum(I)? (SAFEINDEXACCESS(L, I)) : ((I in L)? L[I] : null))
 #define SAFEINDEXACCESS(L, I) (ISINRANGE(I, 1, length(L))? L[I] : null)
-// Returns the key based on the index
-#define KEYBYINDEX(L, index) (((index <= length(L)) && (index > 0)) ? L[index] : null)
 /* HEY! Move this to the istype.dm things!!! */
 #define islist(L) istype(L, /list)
 

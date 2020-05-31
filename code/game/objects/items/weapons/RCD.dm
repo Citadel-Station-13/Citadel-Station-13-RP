@@ -18,6 +18,7 @@
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 50000)
 	preserve_item = TRUE // RCDs are pretty important.
+
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
 	var/max_stored_matter = RCD_MAX_CAPACITY
@@ -34,9 +35,9 @@
 	var/ammostate
 	var/list/effects = list()
 
-	var/static/image/radial_image_airlock = image(icon = 'icons/mob/radial.dmi', icon_state = "airlock"),
-	var/static/image/radial_image_decon = image(icon= 'icons/mob/radial.dmi', icon_state = "delete"),
-	var/static/image/radial_image_grillewind = image(icon = 'icons/mob/radial.dmi', icon_state = "grillewindow"),
+	var/static/image/radial_image_airlock = image(icon = 'icons/mob/radial.dmi', icon_state = "airlock")
+	var/static/image/radial_image_decon = image(icon= 'icons/mob/radial.dmi', icon_state = "delete")
+	var/static/image/radial_image_grillewind = image(icon = 'icons/mob/radial.dmi', icon_state = "grillewindow")
 	var/static/image/radial_image_floorwall = image(icon = 'icons/mob/radial.dmi', icon_state = "wallfloor")
 
 /obj/item/rcd/Initialize()
@@ -47,8 +48,7 @@
 	return ..()
 
 /obj/item/rcd/Destroy()
-	QDEL_NULL(spark_system)
-	spark_system = null
+	QDEL_NULL(spark_system) //it's a QDEL_NULL for a reason.
 	return ..()
 
 /obj/item/rcd/update_icon()

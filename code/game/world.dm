@@ -101,8 +101,7 @@ GLOBAL_LIST(topic_status_cache)
 		if(config_legacy.ToRban)
 			ToRban_autoupdate()
 
-#undef RECOMMENDED_VERSION
-
+//#undef RECOMMENDED_VERSION
 	return
 
 /world/proc/InitTgs()

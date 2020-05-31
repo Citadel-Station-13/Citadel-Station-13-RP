@@ -77,20 +77,16 @@ var/global/list/datum/dna/gene/dna_genes[0]
 // Used for genes that check for value rather than a binary on/off.
 #define GENE_ALWAYS_ACTIVATE 1
 
-// Skip checking if it's already active.
-// Used for genes that check for value rather than a binary on/off.
-#define GENE_ALWAYS_ACTIVATE 1
-
 /datum/dna
 	// READ-ONLY, GETS OVERWRITTEN
 	// DO NOT FUCK WITH THESE OR BYOND WILL EAT YOUR FACE
-	var/uni_identity="" // Encoded UI
-	var/struc_enzymes="" // Encoded SE
-	var/unique_enzymes="" // MD5 of player name
+	var/uni_identit y ="" // Encoded UI
+	var/struc_enzymes = "" // Encoded SE
+	var/unique_enzymes = "" // MD5 of player name
 
 	// Internal dirtiness checks
-	var/dirtyUI=0
-	var/dirtySE=0
+	var/dirtyUI = 0
+	var/dirtySE = 0
 
 	// Okay to read, but you're an idiot if you do.
 	// BLOCK = VALUE

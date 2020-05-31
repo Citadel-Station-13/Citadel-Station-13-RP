@@ -188,7 +188,7 @@
 //to decide what to do. They may be used again to make another recipe or discarded, or merged into the results,
 //thats no longer the concern of this proc
 	var/obj/temp = new /obj(src)
-	temp.create_reagents(9999999999)
+	temp.create_reagents(1000000) //1e6 instead of -> precision loss of integer constant: "9999999999" to 10000000000
 
 	//Find items we need
 	if (items && items.len)
@@ -234,7 +234,7 @@
 	the single-result's reagents
 	*/
 	var/obj/tempholder = new(src)
-	tempholder.create_reagents(9999999999)
+	tempholder.create_reagents(1000000)
 	var/list/results = list()
 	while (tally < result_quantity)
 		var/obj/result_obj = new result(container)
