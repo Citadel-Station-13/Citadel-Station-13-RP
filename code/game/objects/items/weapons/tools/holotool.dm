@@ -401,7 +401,7 @@
 /obj/item/tool/wirecutters/holoswitch
 	name = "hardlight wire cutting tool"
 	desc = "This should not exist."
-	deploytype = "wirecutter"
+	deploytype = "wirecutters"
 	toolspeed = 0.9
 
 /obj/item/weldingtool/holoswitch
