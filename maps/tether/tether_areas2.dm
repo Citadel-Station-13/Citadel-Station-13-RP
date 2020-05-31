@@ -488,6 +488,9 @@
 	icon_state = "shuttle2"
 	base_turf = /turf/simulated/floor/outdoors/dirt/virgo3b
 
+/area/quartermaster/belterdock
+	name = "\improper Cargo Belter Access"
+	icon_state = "mining"
 // Exploration Shuttle stuff //
 /area/tether/station/excursion_dock
 	name = "\improper Excursion Shuttle Dock"

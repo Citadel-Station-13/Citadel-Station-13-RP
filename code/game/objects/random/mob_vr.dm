@@ -232,3 +232,20 @@
 
 /obj/random/action_figure/supplypack
 	drop_get_turf = FALSE
+
+/obj/random/roguemineloot
+	name = "Random Rogue Mines Item"
+	desc = "Hot Stuff. Hopefully"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spickaxe"
+	spawn_nothing_percentage = 0
+
+/obj/random/roguemineloot/item_to_spawn()
+	return pick(prob(5);/obj/random/mre,
+				prob(5);/obj/random/maintenance,
+				prob(4);/obj/random/firstaid,
+				prob(3);/obj/random/toolbox,
+				prob(2);/obj/random/multiple/minevault,
+				prob(1);/obj/random/coin,
+				prob(1);/obj/random/drinkbottle,
+				prob(1);/obj/random/tool/alien)

@@ -18,7 +18,7 @@
 
 /mob/living/simple_mob/mechanical/corrupt_maint_drone
 	name = "Corrupt Maintenance Drone"
-	desc = "A small, normal-looking drone. It looks like one you'd find on station, except... IT'S COMING AT YOU!"
+	desc = "A small, normal-looking drone. It looks like one you'd find on station, although something seems... off."
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/corrupt_maint_drone)
 
 	icon = 'icons/mob/robots_vr.dmi'
@@ -69,3 +69,32 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/death()
 	..(null,"is smashed into pieces!")
 	qdel(src)
+
+/datum/category_item/catalogue/technology/drone/corrupt_mining_drone
+	name = "Drone - Corrupted Mining Drone"
+	desc = "This drone appears to be a mass-produced Grayson drone, produced by some sort of corrupt fab, \
+	which has caused it to become corrupt and attack anything nearby, except spiders and such, oddy. \
+	If one is found, a swarm of others are not too far away.\
+	<br><br>\
+	The drone can easily deal with large targets due to its inbuilt plasma cutter and mining drills, causing \
+	it to be exceptionally deadly in melee combat. \
+	The simplistic AI inside attempts to brute-force its way through problems such as detected hostiles.\
+	It may utilize evasive tactics to avoid harm."
+	value = CATALOGUER_REWARD_EASY
+
+
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/mining //for beltmining
+	name = "Corrupt Excavation Drone"
+	desc = "A small, normal-looking drone. It looks like one you'd find on station, although something seems... off."
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/corrupt_mining_drone)
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	base_attack_cooldown = 1 SECOND
+	movement_cooldown = 3
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attacktext = list("drilled", "excavated")
+	poison_chance = 0
+	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	maxHealth = 50
+	health = 50
+	faction = "roguemines"

@@ -63,6 +63,10 @@ var/list/all_maps = list()
 	var/ai_shell_restricted = FALSE			//VOREStation Addition - are there z-levels restricted?
 	var/ai_shell_allowed_levels = list()	//VOREStation Addition - which z-levels ARE we allowed to visit?
 
+	var/list/belter_docked_z = list() //Belt Mining/Roguelite Mining
+	var/list/belter_transit_z = list()
+	var/list/belter_belt_z = list()
+
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
 	var/dock_name     = "THE PirateBay"

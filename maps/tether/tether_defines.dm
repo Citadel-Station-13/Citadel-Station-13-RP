@@ -36,10 +36,17 @@
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
 #define Z_LEVEL_ALIENSHIP					14
-#define Z_LEVEL_BEACH						15
-#define Z_LEVEL_BEACH_CAVE					16
-#define Z_LEVEL_AEROSTAT					17
-#define Z_LEVEL_AEROSTAT_SURFACE			18
+#define Z_LEVEL_ROGUEMINE_1					15
+#define Z_LEVEL_ROGUEMINE_2					16
+#define Z_LEVEL_ROGUEMINE_3					17
+#define Z_LEVEL_ROGUEMINE_4					18
+#define Z_LEVEL_ALIENSHIP					19
+#define Z_LEVEL_BEACH						20
+#define Z_LEVEL_BEACH_CAVE					21
+#define Z_LEVEL_AEROSTAT					22
+#define Z_LEVEL_AEROSTAT_SURFACE			23
+#define Z_LEVEL_DEBRISFIELD					24
+#define Z_LEVEL_GATEWAY						25
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
@@ -141,6 +148,7 @@
 
 	lateload_z_levels = list(
 		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"), //Rogue Mining
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
@@ -162,6 +170,14 @@
 		Z_LEVEL_SHIPS,
 		Z_LEVEL_BEACH
 		)
+
+	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
+	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2,
+						 	 	 Z_LEVEL_ROGUEMINE_3,
+								 Z_LEVEL_ROGUEMINE_4)
+
 
 	lateload_single_pick = null //Nothing right now.
 
