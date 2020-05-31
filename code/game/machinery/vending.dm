@@ -1021,7 +1021,8 @@
 	/obj/item/storage/toolbox/lunchbox/mars = 3,
 	/obj/item/storage/toolbox/lunchbox/cti = 3,
 	/obj/item/storage/toolbox/lunchbox/nymph = 3,
-	/obj/item/storage/toolbox/lunchbox/syndicate = 3)
+	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
+	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3)
 	contraband = list(/obj/item/material/knife/butch = 2)
 
 /obj/machinery/vending/sovietsoda
@@ -1161,7 +1162,8 @@
 					/obj/item/toy/plushie/face_hugger = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
-					/obj/item/toy/plushie/tabby_cat = 50)
+					/obj/item/toy/plushie/tabby_cat = 50,
+					/obj/item/toy/plushie/cyancowgirl = 50)
 
 /obj/machinery/vending/fishing
 	name = "Loot Trawler"

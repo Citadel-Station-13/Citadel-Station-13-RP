@@ -620,3 +620,24 @@ Drinks Data
 
 /datum/reagent/drink/soda/sarsaparilla
 	glass_icon_state = "sarsaparilla_glass"
+
+/datum/reagent/ethanol/newsheriff
+	glass_icon_state = "newsheriff"
+
+/datum/reagent/ethanol/thehuckleberry
+	glass_icon_state = "thehuckleberry"
+
+/datum/reagent/ethanol/quickdraw
+	glass_icon_state = "quickdraw"
+
+/datum/reagent/ethanol/dmhand
+	glass_icon_state = "dmhand"
+
+/datum/reagent/ethanol/snakeoil
+	glass_icon_state = "snakeoil"
+
+/datum/reagent/ethanol/highnoon
+	glass_icon_state = "highnoon"
+
+/datum/reagent/ethanol/bloodmeridian
+	glass_icon_state = "bloodmeridian"
