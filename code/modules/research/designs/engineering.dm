@@ -31,7 +31,7 @@
 	build_path = /obj/item/tool/crowbar/power
 	sort_string = "NAAAC"
 
-/datum/design/item/tool/jaws_life
+/datum/design/item/tool/switchtool
 	name = "Switchtool"
 	desc = "A combined wirecutter, screwdriver, crowbar, wrench and multitool. The small size makes it somewhat slower at work."
 	id = "switchtool"
