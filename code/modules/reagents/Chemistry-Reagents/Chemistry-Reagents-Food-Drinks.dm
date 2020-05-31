@@ -3633,6 +3633,9 @@ End Citadel Change */
 	taste_description = "an earthy kick with a lingering burn"
 	strength = 35
 
+	glass_name = "New Sheriff"
+	glass_desc = "A drink to make your saddles blaze!"
+
 /datum/reagent/ethanol/thehuckleberry
 	name = "The Huckleberry"
 	id = "thehuckleberry"
@@ -3641,6 +3644,9 @@ End Citadel Change */
 	strength = 20
 	adj_temp = -10
 
+	glass_name = "The Huckleberry"
+	glass_desc = "If I thought you weren't my best customer, I just don't think I could bear it."
+
 /datum/reagent/ethanol/quickdraw
 	name = "Quickdraw"
 	id = "quickdraw"
@@ -3648,12 +3654,18 @@ End Citadel Change */
 	taste_description = "aged herbs and gunsmoke"
 	strength = 35
 
+	glass_name = "Quickdraw"
+	glass_desc = "Nobody was faster than Beauregard. Nobody could outdraw him. Nobody could aim as true as old Jack. If he died, Nobody saw him."
+
 /datum/reagent/ethanol/dmhand
 	name = "Dead Man's Hand"
 	id = "dmhand"
 	description = "If you find yourself drinking this during a game of poker, keep your back to the wall."
 	taste_description = "a pair of classics and a licorice surprise"
 	strength = 35
+
+	glass_name = "Dead Man's Hand"
+	glass_desc = "If you find yourself drinking this during a game of poker, keep your back to the wall."
 
 /datum/reagent/ethanol/snakeoil
 	name = "Snake Oil"
@@ -3665,6 +3677,9 @@ End Citadel Change */
 	toxicity = 2
 	adj_temp = 5
 
+	glass_name = "Snake Oil"
+	glass_desc = "A 'healthy' potion with a bite! Now with 56% less Arsenic."
+
 /datum/reagent/ethanol/highnoon
 	name = "High Noon"
 	id = "highnoon"
@@ -3673,12 +3688,18 @@ End Citadel Change */
 	strength = 30
 	adj_temp = 2
 
+	glass_name = "High Noon"
+	glass_desc = "There's two kinds of people here on the Frontier, partner. Those with guns, and those who drink. You drink."
+
 /datum/reagent/ethanol/bloodmeridian
 	name = "Blood Meridian"
 	id = "bloodmeridian"
 	description = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 	taste_description = "lingering regret, gunpowder, and blood"
 	strength = 50
+
+	glass_name = "Blood Meridian"
+	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////

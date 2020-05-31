@@ -73,3 +73,12 @@
 	name = "Maebari"
 	icon_state = "maebari"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/chastbelt
+	name = "Chastity Belt"
+	icon_state = "chastbelt"
+
+/datum/category_item/underwear/bottom/chastcage
+	name = "Chastity Cage"
+	icon_state = "chastcage"
+	has_color = TRUE
