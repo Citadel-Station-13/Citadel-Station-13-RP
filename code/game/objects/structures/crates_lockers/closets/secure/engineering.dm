@@ -35,7 +35,7 @@
 		/obj/item/reagent_containers/spray/windowsealant,//VOREStation Add
 		/obj/item/pipe_dispenser, //Citadel Addition
 		/obj/item/shield_diffuser,
-		/obj/item/switchtool/holo/ce) //Citadel Addition
+		/obj/item/switchtool/holo/CE) //Citadel Addition
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
 	if(prob(50))

@@ -354,7 +354,7 @@
 	icon_state = "holoswitchtool"
 	item_state = "holoswitchtool"
 	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
-	light_color = #FED8B1 //lightcolororange sucks lmao
+	light_color = "#FED8B1" //lightcolororange sucks lmao
 
 	start_modules = list(
 						/obj/item/tool/screwdriver/holoswitch = null,
