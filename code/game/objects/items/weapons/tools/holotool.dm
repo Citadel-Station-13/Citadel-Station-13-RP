@@ -27,30 +27,30 @@
 	var/obj/item/deployed//what's currently in use
 	var/switchingtype = "basic"//type for update_icon
 
-	var/static/radial_driver = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	var/static/radial_wrench = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_wirecutters = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_crowbar = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_welder = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_multitool = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_scalpel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_hemostat = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_retractor = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_saw = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_drill = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_boneclamp = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_cautery = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_light = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_soap = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
-	var/static/radial_shield = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
-	var/static/radial_sword = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_use")
+	var/static/radial_driver = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	var/static/radial_wrench = image(icon = 'icons/obj/tools.dmi', icon_state = "wrench")
+	var/static/radial_wirecutters = image(icon = 'icons/obj/tools.dmi', icon_state = "cutters")
+	var/static/radial_crowbar = image(icon = 'icons/obj/tools.dmi', icon_state = "crowbar")
+	var/static/radial_welder = image(icon = 'icons/obj/tools.dmi', icon_state = "tubewelder")
+	var/static/radial_multitool = image(icon = 'icons/obj/device.dmi', icon_state = "multitool")
+	var/static/radial_scalpel = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel")
+	var/static/radial_laserscalpel = image(icon = 'icons/obj/surgery.dmi', icon_state = "scalpel_laser3_on")
+	var/static/radial_hemostat = image(icon = 'icons/obj/surgery.dmi', icon_state = "hemostat")
+	var/static/radial_retractor = image(icon = 'icons/obj/surgery.dmi', icon_state = "retractor")
+	var/static/radial_saw = image(icon = 'icons/obj/surgery.dmi', icon_state = "saw")
+	var/static/radial_drill = image(icon = 'icons/obj/surgery.dmi', icon_state = "drill")
+	var/static/radial_boneclamp = image(icon = 'icons/obj/surgery.dmi', icon_state = "bone_setter")
+	var/static/radial_cautery = image(icon = 'icons/obj/surgery.dmi', icon_state = "cautery")
+	var/static/radial_light = image(icon = 'icons/obj/lighting.dmi', icon_state = "flashlight_yellow-on")
+	var/static/radial_soap = image(icon = 'icons/obj/device.dmi', icon_state = "uv_on")
+	var/static/radial_shield = image(icon = 'icons/obj/weapons.dmi', icon_state = "riot_alt")
+	var/static/radial_sword = image(icon = 'icons/obj/weapons.dmi', icon_state = "blade")
 
 /obj/item/switchtool/resolve_attackby(atom/A, mob/user, params, attack_modifier = 1)
 	if(istype(A, /obj/item/storage))//we place automatically
 		return ..()
 	if(deployed)
 		deployed.resolve_attackby(A, user, params, attack_modifier = 1)
-		A.attackby(deployed, user, params, attack_modifier = 1)
 		return
 	..()
 
@@ -66,10 +66,10 @@
 /obj/item/switchtool/attack_self(mob/user)
 	if(!user)
 		return
-
 	if(deployed)
 		to_chat(user, "You store \the [deployed].")
 		undeploy()
+		return
 	else
 		choose_deploy(user)
 
@@ -136,7 +136,7 @@
 			options["crowbar"] = radial_crowbar
 			options["multitool"] = radial_multitool
 			options["welder"] = radial_welder
-			options["scalpel"] = radial_scalpel
+			options["scalpel"] = radial_laserscalpel
 			options["hemostat"] = radial_hemostat
 			options["retractor"] = radial_retractor
 			options["saw"] = radial_saw
@@ -149,20 +149,20 @@
 			options["shield"] = radial_shield
 
 	if(options.len < 1)
+		to_chat(user, "The [src] doesn't have any available modules!")
 		return
 	var/list/choice = list()
-	choice
-	if(!options.len == 1)
-		choice = show_radial_menu(user, src, options, require_near = TRUE)
-		for(var/module in stored_modules)
-			if(module.deploytype == choice)
-				if(deploy(module))
-					to_chat(user, "You deploy \the [deployed].")
-					return TRUE
-	return FALSE
+	choice = show_radial_menu(user, src, options)
+	for(var/obj/item/module in stored_modules)
+		if(module.deploytype == choice)
+			if(deploy(module))
+				to_chat(user, "You deploy \the [deployed].")
+				return TRUE
 
 
-*/
+
+
+
 /obj/item/switchtool/handle_shield(mob/user)
 	if(deployed.deploytype == "shield")
 		return TRUE
@@ -212,7 +212,7 @@
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
 					if("crowbar")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutter")
+					if("wirecutters")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
 					if("multitool")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
@@ -236,20 +236,20 @@
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
 					if("crowbar")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutter")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_wirecutters")
+					if("wirecutters")
+						tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
 					if("multitool")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
 					if("welder")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_welder")
 					if("light")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_lamp")
+						tool_overlay = mutable_appearance(icon, "[icon_state]_light")
 					if("soap")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
 			if("adminholo")
 				switch(src.deployed.deploytype)
 					if("light")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_lamp")
+						tool_overlay = mutable_appearance(icon, "[icon_state]_light")
 					if("soap")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_soap")
 					if("scalpel")
@@ -272,8 +272,8 @@
 						tool_overlay = mutable_appearance(icon, "[icon_state]_wrench")
 					if("crowbar")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_crowbar")
-					if("wirecutter")
-						tool_overlay = mutable_appearance(icon, "[icon_state]_wirecutters")
+					if("wirecutters")
+						tool_overlay = mutable_appearance(icon, "[icon_state]_cutter")
 					if("multitool")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_multitool")
 					if("welder")
@@ -282,6 +282,8 @@
 						tool_overlay = mutable_appearance(icon, "[icon_state]_shield")
 					if("sword")
 						tool_overlay = mutable_appearance(icon, "[icon_state]_blade")
+		if(light_color)
+			tool_overlay.color = light_color
 		add_overlay(tool_overlay)
 	if(istype(usr,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = usr
@@ -331,6 +333,10 @@
 						/obj/item/melee/energy/sword/holoswitch = null,
 						/obj/item/shield/holoswitch = null)
 
+/obj/item/switchtool/holo/New()
+	..()
+	color = light_color
+
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
 	..()
 	if(module.deploytype == "flashlight")
@@ -348,7 +354,7 @@
 	icon_state = "holoswitchtool"
 	item_state = "holoswitchtool"
 	desc = "A finely crafted device that uses a micro-scale hardlight emitter to form hardlight manipulators in the form of tools. Can also operate in low-power mode as a flashlight and in high-power mode as a UV cleaner."
-	light_color =  LIGHT_COLOR_ORANGE
+	light_color = #FED8B1 //lightcolororange sucks lmao
 
 	start_modules = list(
 						/obj/item/tool/screwdriver/holoswitch = null,
@@ -372,7 +378,7 @@
 	name = "low-power holoemitter"
 	desc = "This should not exist"
 	power_use = 0
-	deploytype = "flashlight"
+	deploytype = "light"
 
 /obj/item/tool/screwdriver/holoswitch
 	name = "hardlight screwdriver"
