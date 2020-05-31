@@ -133,9 +133,9 @@
 	flags = WHITELISTED
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix", "...", "oo", "q", "nq", "x", "xq", "ll", "...", "...", "...") //should sound like there's holes in it
 
-/datum/language/skrell/get_random_name(var/gender)
-	var/list/first_names = file2list('config/names/first_name_skrell.txt')
-	var/list/last_names = file2list('config/names/last_name_skrell.txt')
+/datum/language/skrell/get_random_name(gender)
+	var/list/first_names = world.file2list('config/names/first_name_skrell.txt')
+	var/list/last_names = world.file2list('config/names/last_name_skrell.txt')
 	return "[pick(first_names)] [pick(last_names)]"
 
 /datum/language/human
@@ -148,7 +148,7 @@
 	flags = WHITELISTED
 	//syllables are at the bottom of the file
 
-/datum/language/human/get_spoken_verb(var/msg_end)
+/datum/language/human/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
@@ -156,7 +156,7 @@
 			return ask_verb
 	return speech_verb
 
-/datum/language/human/get_random_name(var/gender)
+/datum/language/human/get_random_name(gender)
 	if (prob(80))
 		if(gender==FEMALE)
 			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))

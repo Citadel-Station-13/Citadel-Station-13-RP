@@ -2,9 +2,9 @@
 /proc/sanitize_frequency(frequency, free = FALSE)
 	frequency = round(frequency)
 	if(free)
-		. = clamp(frequency, PUBLIC_LOW_FREQ, PUBLIC_HIGH_FREQ) //MIN_FREE_FREQ, MAX_FREE_FREQ
+		. = clamp(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ) //MIN_FREE_FREQ, MAX_FREE_FREQ
 	else
-		. = clamp(frequency, MIN_FREQ, MAX_FREQ)
+		. = clamp(frequency, PUBLIC_LOW_FREQ, PUBLIC_HIGH_FREQ) //MIN_FREQ, MAX_FREQ)
 	if(!(. % 2)) // Ensure the last digit is an odd number
 		. += 1
 

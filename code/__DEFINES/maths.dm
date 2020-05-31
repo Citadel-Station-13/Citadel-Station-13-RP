@@ -209,3 +209,16 @@
 
 /// Make sure something is a boolean TRUE/FALSE 1/0 value, since things like bitfield & bitflag doesn't always give 1s and 0s.
 #define FORCE_BOOLEAN(x) ((x)? TRUE : FALSE)
+
+//VORESTATION SPECIFIC.
+#define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
+
+#define IS_CARDINAL(x) ((x & (x - 1)) == 0)
+
+//Vector Algebra
+#define SQUAREDNORM(x, y) (x*x+y*y)
+#define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
+#define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
+#define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
+
+#define DEFAULT(a, b) (a? a : b)

@@ -123,7 +123,7 @@ steam.start() -- spawns the effect
 	name = "sparks"
 	icon_state = "sparks"
 	light_power = 1.3
-	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_range = 2//MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = LIGHT_COLOR_FIRE
 
 /obj/effect/effect/sparks/Initialize()
@@ -211,11 +211,11 @@ steam.start() -- spawns the effect
 		return FALSE
 	if(lifetime < 1)
 		return FALSE
-	//if(C.internal != null || C.has_smoke_protection())
-	//	return FALSE
-	if(C.wear_mask && CHECK_BITFIELD(C.wear_mask.item_flags, AIRTIGHT))
+	if(C.internal != null)// || C.has_smoke_protection())
 		return FALSE
-	if(ishuman(M))
+	if(C.wear_mask && CHECK_BITFIELD(C.wear_mask.item_flags, AIRTIGHT)) //basicaly 'has_smoke_protection'
+		return FALSE
+	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(H.head && CHECK_BITFIELD(H.head.item_flags, AIRTIGHT))
 			return FALSE
@@ -263,7 +263,6 @@ steam.start() -- spawns the effect
 		location = get_turf(loca)
 	amount = radius
 	cardinals = c
-	var/direction = direct
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)
@@ -278,14 +277,14 @@ steam.start() -- spawns the effect
 /////////////////////////////////////////////
 
 /obj/effect/effect/smoke/bad
-	lifetime = 30 // 600 ttl, 8 in tg
+	lifetime = 30 // 600 ttl, 8 in tg (600/10/2)
 
 /obj/effect/effect/smoke/bad/smoke_mob(mob/living/carbon/M)
 	if(..())
-		if(L.needs_to_breathe())
-			L.adjustOxyLoss(1)
+		if(M.needs_to_breathe())
+			M.adjustOxyLoss(1)
 			if(prob(25)) //no timeout yet, so this is needed
-				L.emote("cough")
+				M.emote("cough")
 
 /obj/effect/effect/smoke/bad/CanPass(atom/movable/mover, turf/target) //Crossed()
 	if(istype(mover, /obj/item/projectile/beam))
@@ -371,8 +370,8 @@ steam.start() -- spawns the effect
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 
-/obj/effect/effect/smoke/illumination/Initialize(locparam, lifetime=10, range=null, power=null, color=null)
-	time_to_live = lifetime
+/obj/effect/effect/smoke/illumination/Initialize(locparam, lifetime = 10, range = null, power = null, color = null)
+	src.lifetime = lifetime
 	..()
 	set_light(range, power, color)
 
