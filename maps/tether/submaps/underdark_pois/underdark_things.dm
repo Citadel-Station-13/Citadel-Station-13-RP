@@ -68,6 +68,25 @@
 		/mob/living/simple_mob/vore/aggressive/rat/phoron = 2
 	)
 
+/obj/tether_away_spawner/underdark_mutspiders
+	name = "Underdark Mutant Spiders"
+	faction = "underdark"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	prob_fall = 25
+	mobs_to_pick_from = list(
+		/mob/living/simple_mob/animal/giant_spider/hunter = 3,
+		/mob/living/simple_mob/animal/giant_spider/webslinger = 5,
+		/mob/living/simple_mob/animal/giant_spider/carrier = 5,
+		/mob/living/simple_mob/animal/giant_spider/lurker = 4,
+		/mob/living/simple_mob/animal/giant_spider/tunneler = 5,
+		/mob/living/simple_mob/animal/giant_spider/pepper = 2,
+		/mob/living/simple_mob/animal/giant_spider/thermic = 5,
+		/mob/living/simple_mob/animal/giant_spider/electric = 3,
+		/mob/living/simple_mob/animal/giant_spider/phorogenic = 2,
+		/mob/living/simple_mob/animal/giant_spider/frost = 4
+	)
+
 /obj/tether_away_spawner/underdark_boss
 	name = "Underdark Boss Spawner"
 	faction = "underdark"

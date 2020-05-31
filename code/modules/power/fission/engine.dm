@@ -476,4 +476,24 @@
 				explosion_power = 1
 			if(off_station)
 				explosion_power = explosion_power/3 //Bandaid fix. Reduces effectiveness of using a fission reactor for mining.
+				if(L.z == 13) // underdark z but i can't use the Z_LEVEL_UNDERDARK define
+					oops_all_spiders(L)
 			explosion(L, explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
+
+/obj/machinery/power/fission/proc/oops_all_spiders(var/turf/L) // if there was a better place to put it, that'd be nice
+	message_admins("oops all spiders called")
+	spawn(3 SECONDS)
+	message_admins("go time")
+	if (!istype(L))
+		return
+	var/tx = L.x - 3
+	var/ty = L.y - 3
+	var/turf/spider_spawn
+	for(var/iy = 0,iy < 6, iy++)
+		for(var/ix = 0, ix < 6, ix++)
+			spider_spawn = locate(tx + ix, ty + iy, L.z)
+			if (!istype(spider_spawn, /turf/space))
+				for (var/i = 0, i < rand(1,3), i++)
+					message_admins("this should appear a few times")
+					var/a_problem = /obj/tether_away_spawner/underdark_mutspiders
+					new a_problem(spider_spawn)

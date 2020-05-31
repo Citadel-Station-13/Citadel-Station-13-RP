@@ -618,11 +618,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/mining_main/refinery)
 "abt" = (
-/obj/machinery/mineral/stacking_unit_console{
-	density = 0;
-	layer = 3.3;
-	pixel_y = 30
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/mining_main/refinery)
 "abu" = (
