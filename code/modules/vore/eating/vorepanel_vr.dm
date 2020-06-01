@@ -919,7 +919,7 @@
 			if("Prevent Digestion")
 				user.digestable = FALSE
 
-		message_admins("[key_name(user)] toggled their digestability to [user.digestable] ([user ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[user.loc.];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>" : "null"])")
+		message_admins("[key_name(user)] toggled their digestability to [user.digestable] ([user ? "[ADMIN_COORDJMP(user)]" : "null"])")
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.digestable = user.digestable
@@ -973,7 +973,7 @@
 			if("Prevent Mob Predation")
 				user.allowmobvore = FALSE
 
-		message_admins("[key_name(user)] toggled their mob vore preference to [user.allowmobvore] ([user ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[user.loc.];Y=[user.loc.y];Z=[user.loc.z]'>JMP</a>" : "null"])")
+		message_admins("[key_name(user)] toggled their mob vore preference to [user.allowmobvore] ([user ? "[ADMIN_COORDJMP(user)]" : "null"])")
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.allowmobvore = user.allowmobvore

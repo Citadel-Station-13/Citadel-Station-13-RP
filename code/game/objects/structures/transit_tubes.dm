@@ -439,7 +439,7 @@
 	var/list/connected = list()
 	var/list/connected_auto = list()
 
-	for(var/direction in tube_dir_list)
+	for(var/direction in GLOB.alldirs)
 		var/location = get_step(loc, direction)
 		for(var/obj/structure/transit_tube/tube in location)
 			if(tube.directions() == null && tube.icon_state == "auto")

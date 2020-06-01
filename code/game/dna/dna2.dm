@@ -80,7 +80,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 /datum/dna
 	// READ-ONLY, GETS OVERWRITTEN
 	// DO NOT FUCK WITH THESE OR BYOND WILL EAT YOUR FACE
-	var/uni_identit y ="" // Encoded UI
+	var/uni_identity ="" // Encoded UI
 	var/struc_enzymes = "" // Encoded SE
 	var/unique_enzymes = "" // MD5 of player name
 

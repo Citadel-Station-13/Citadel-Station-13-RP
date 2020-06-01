@@ -309,9 +309,8 @@ var/list/wrapped_species_by_ref = list()
 	
 	shapeshifter_set_eye_color(new_eyes)
 
-/mob/living/carbon/human/proc/shapeshifter_set_eye_color(var/new_eyes)
-	
-	var/list/new_color_rgb_list = hex2rgb(new_eyes)
+/mob/living/carbon/human/proc/shapeshifter_set_eye_color(new_eyes)
+	var/list/new_color_rgb_list = GetHexColors(new_eyes)
 	// First, update mob vars.
 	r_eyes = new_color_rgb_list[1]
 	g_eyes = new_color_rgb_list[2]

@@ -29,7 +29,7 @@
 	name = "strange wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
-	/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench) //assuming this is how it worked
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
 	force = 8

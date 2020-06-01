@@ -2,11 +2,12 @@
 
 /obj/item/organ/internal/eyes
 	name = "eyeballs"
+	desc = "I see you!"
 	icon_state = "eyes"
 	gender = PLURAL
 	organ_tag = O_EYES
 	parent_organ = BP_HEAD
-	var/list/eye_colour = list(0,0,0)
+	var/list/eye_colour = list(0, 0, 0)
 	var/innate_flash_protection = FLASH_PROTECTION_NONE
 
 /obj/item/organ/internal/eyes/robotize()
@@ -17,20 +18,22 @@
 /obj/item/organ/internal/eyes/robot
 	name = "optical sensor"
 
-/obj/item/organ/internal/eyes/robot/New()
+/obj/item/organ/internal/eyes/robot/Initialize()
 	..()
 	robotize()
 
 /obj/item/organ/internal/eyes/grey
 	icon_state = "eyes_grey"
 
-/obj/item/organ/internal/eyes/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/eyes/grey/colormatch/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/item/organ/internal/eyes/grey/colormatch/LateInitialize() //hoomans(as atom) must initialize first!
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H = owner
+		color = H.species.blood_color
 
 /obj/item/organ/internal/eyes/proc/change_eye_color()
 	set name = "Change Eye Color"
@@ -38,11 +41,11 @@
 	set category = "IC"
 	set src in usr
 
-	var/current_color = rgb(eye_colour[1],eye_colour[2],eye_colour[3])
-	var/new_color = input("Pick a new color for your eyes.","Eye Color", current_color) as null|color
+	var/current_color = rgb(eye_colour[1], eye_colour[2], eye_colour[3])
+	var/new_color = input("Pick a new color for your eyes.", "Eye Color", current_color) as color|null
 	if(new_color && owner)
-		// input() supplies us with a hex color, which we can't use, so we convert it to rbg values.
-		var/list/new_color_rgb_list = hex2rgb(new_color)
+		// input() supplies us with a hex color, which we can use, but ths oldcode dosen't support it!
+		var/list/new_color_rgb_list = GetHexColors(new_color)
 		// First, update mob vars.
 		owner.r_eyes = new_color_rgb_list[1]
 		owner.g_eyes = new_color_rgb_list[2]
@@ -52,7 +55,7 @@
 		// Finally, update the eye icon on the mob.
 		owner.regenerate_icons()
 
-/obj/item/organ/internal/eyes/replaced(var/mob/living/carbon/human/target)
+/obj/item/organ/internal/eyes/replaced(mob/living/carbon/human/target)
 
 	// Apply our eye colour to the target.
 	if(istype(target) && eye_colour)
@@ -71,7 +74,7 @@
 		owner.b_eyes ? owner.b_eyes : 0
 		)
 
-/obj/item/organ/internal/eyes/take_damage(amount, var/silent=0)
+/obj/item/organ/internal/eyes/take_damage(amount, silent=0)
 	var/oldbroken = is_broken()
 	..()
 	if(is_broken() && !oldbroken && owner && !owner.stat)
@@ -79,7 +82,8 @@
 
 /obj/item/organ/internal/eyes/process() //Eye damage replaces the old eye_stat var.
 	..()
-	if(!owner) return
+	if(!owner) 
+		return
 
 	if(is_bruised())
 		owner.eye_blurry = 20
@@ -88,7 +92,8 @@
 
 /obj/item/organ/internal/eyes/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.) 
+		return
 
 	//Conjunctivitis
 	if (. >= 1)
@@ -99,10 +104,10 @@
 			owner.custom_pain("Your eyes are watering, making it harder to see clearly for a moment.",1)
 			owner.eye_blurry += 10
 
-/obj/item/organ/internal/eyes/proc/get_total_protection(var/flash_protection = FLASH_PROTECTION_NONE)
+/obj/item/organ/internal/eyes/proc/get_total_protection(flash_protection = FLASH_PROTECTION_NONE)
 	return (flash_protection + innate_flash_protection)
 
-/obj/item/organ/internal/eyes/proc/additional_flash_effects(var/intensity)
+/obj/item/organ/internal/eyes/proc/additional_flash_effects(intensity)
 	return -1
 
 /obj/item/organ/internal/eyes/emp_act(severity)

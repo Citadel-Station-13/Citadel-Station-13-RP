@@ -12,9 +12,10 @@
 	var/require_flavor = FALSE
 
 /hook/startup/proc/read_vs_config()
-	var/list/Lines = file2list("config/legacy/config.txt")
+	var/list/Lines = world.file2list("config/legacy/config.txt")
 	for(var/t in Lines)
-		if(!t)	continue
+		if(!t)
+			continue
 
 		t = trim(t)
 		if (length(t) == 0)

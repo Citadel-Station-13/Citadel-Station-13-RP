@@ -94,4 +94,4 @@
 #undef LOC_MEDBAY
 #undef LOC_TETHER
 #undef LOC_TECH
-#undef LOC_RSEARCH
+#undef LOC_RESEARCH

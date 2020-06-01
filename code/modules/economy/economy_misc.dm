@@ -25,7 +25,7 @@
 #define CELEBRITY_DEATH 23
 #define RESIGNATION 24
 
-#define DEFAULT 1
+#define DEFAULT 1 // this WILL cause issue
 
 #define ADMINISTRATIVE 2
 #define CLOTHING 3

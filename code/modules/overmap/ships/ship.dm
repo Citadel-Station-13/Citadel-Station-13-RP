@@ -74,7 +74,6 @@
 		return INFINITY
 	return get_speed()/get_acceleration()
 
-#define SIGN(X) (X == 0 ? 0 : (X > 0 ? 1 : -1))
 /obj/effect/map/ship/proc/decelerate()
 	if(!is_still() && can_burn())
 		if (speed[1])

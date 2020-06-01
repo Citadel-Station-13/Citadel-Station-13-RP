@@ -17,64 +17,63 @@
 
 /*
 	Class: nS_Parser
+	ntsc parser?
 */
 /n_Parser/nS_Parser
-	var
-/*
-	Var: expecting
-	A variable which keeps track of whether an operator or value is expected. It should be either <OPERATOR> or <VALUE>. See <ParseExpression()>
-	for more information.
-*/
-		expecting=VALUE
+	/*
+		Var: expecting
+		A variable which keeps track of whether an operator or value is expected. It should be either <OPERATOR> or <VALUE>. See <ParseExpression()>
+		for more information.
+	*/
+	var/expecting=VALUE
 
-	proc
 /*
 	Proc: Precedence
 	Compares two operators, decides which is higher in the order of operations, and returns <SHIFT> or <REDUCE>.
 */
-		Precedence(node/expression/operator/top, node/expression/operator/input)
-			if(istype(top))
-				top=top.precedence
-			if(istype(input))
-				input=input:precedence
-			if(top>=input)
-				return REDUCE
-			return SHIFT
-
+/n_Parser/nS_Parser/proc/Precedence(node/expression/operator/top, node/expression/operator/input)
+	if(istype(top))
+		top = top.precedence
+	if(istype(input))
+		input = input:precedence
+	if(top>=input)
+		return REDUCE
+	return SHIFT
+		
 /*
 	Proc: GetExpression
 	Takes a token expected to represent a value and returns an <expression> node.
 */
-		GetExpression(token/T)
-			if(!T) return
-			if(istype(T, /node/expression))
-				return T
-			switch(T.type)
-				if(/token/word)
-					return new/node/expression/value/variable(T.value)
-				if(/token/accessor)
-					var
-						token/accessor/A=T
-						node/expression/value/variable/E//=new(A.member)
-						stack/S=new()
-					while(istype(A.object, /token/accessor))
-						S.Push(A)
-						A=A.object
-					ASSERT(istext(A.object))
+/n_Parser/nS_Parser/proc/GetExpression(token/T)
+	if(!T) 
+		return
+	if(istype(T, /node/expression))
+		return T
+	switch(T.type)
+		if(/token/word)
+			return new/node/expression/value/variable(T.value)
+		if(/token/accessor)
+			var/token/accessor/A = T
+			var/node/expression/value/variable/E	//=new(A.member)
+			var/stack/S = new()
+			while(istype(A.object, /token/accessor))
+				S.Push(A)
+				A = A.object
+			ASSERT(istext(A.object))
 
-					while(A)
-						var/node/expression/value/variable/V=new()
-						V.id=new(A.member)
-						if(E)
-							V.object=E
-						else
-							V.object=new/node/identifier(A.object)
-						E=V
-						A=S.Pop()
-					return E
+			while(A)
+				var/node/expression/value/variable/V = new()
+				V.id = new(A.member)
+				if(E)
+					V.object = E
+				else
+					V.object = new/node/identifier(A.object)
+				E = V
+				A = S.Pop()
+			return E
 
-				if(/token/number, /token/string)
-					return new/node/expression/value/literal(T.value)
+		if(/token/number, /token/string)
+			return new/node/expression/value/literal(T.value)
 
 /*
 	Proc: GetOperator
@@ -91,15 +90,21 @@
 	- <GetBinaryOperator()>
 	- <GetUnaryOperator()>
 */
-		GetOperator(O, type=/node/expression/operator, L[])
-			if(istype(O, type)) return O		//O is already the desired type
-			if(istype(O, /token)) O=O:value //sets O to text
-			if(istext(O))										//sets O to path
-				if(L.Find(O)) O=L[O]
-				else return null
-			if(ispath(O))O=new O						//catches path from last check
-			else return null								//Unknown type
-			return O
+/n_Parser/nS_Parser/proc/GetOperator(O, type=/node/expression/operator, list/L)
+	if(istype(O, type)) 
+		return O		//O is already the desired type
+	if(istype(O, /token)) 
+		O = O:value //sets O to text
+	if(istext(O))										//sets O to path
+		if(L.Find(O)) 
+			O = L[O]
+		else 
+			return null
+	if(ispath(O))
+		O=new O						//catches path from last check
+	else 
+		return null								//Unknown type
+	return O
 
 /*
 	Proc: GetBinaryOperator
@@ -110,8 +115,8 @@
 	- <GetOperator()>
 	- <GetUnaryOperator()>
 */
-		GetBinaryOperator(O)
-			return GetOperator(O, /node/expression/operator/binary, options.binary_operators)
+/n_Parser/nS_Parser/proc/GetBinaryOperator(O)
+	return GetOperator(O, /node/expression/operator/binary, options.binary_operators)
 
 /*
 	Proc: GetUnaryOperator
@@ -122,30 +127,31 @@
 	- <GetOperator()>
 	- <GetBinaryOperator()>
 */
-		GetUnaryOperator(O)
-			return GetOperator(O, /node/expression/operator/unary,  options.unary_operators)
+/n_Parser/nS_Parser/proc/GetUnaryOperator(O)
+	return GetOperator(O, /node/expression/operator/unary,  options.unary_operators)
 
 /*
 	Proc: Reduce
 	Takes the operator on top of the opr stack and assigns its operand(s). Then this proc pushes the value of that operation to the top
 	of the val stack.
 */
-		Reduce(stack/opr, stack/val)
-			var/node/expression/operator/O=opr.Pop()
-			if(!O) return
-			if(!istype(O))
-				errors+=new/scriptError("Error reducing expression - invalid operator.")
-				return
-			//Take O and assign its operands, popping one or two values from the val stack
-			//depending on whether O is a binary or unary operator.
-			if(istype(O, /node/expression/operator/binary))
-				var/node/expression/operator/binary/B=O
-				B.exp2=val.Pop()
-				B.exp =val.Pop()
-				val.Push(B)
-			else
-				O.exp=val.Pop()
-				val.Push(O)
+/n_Parser/nS_Parser/proc/Reduce(stack/opr, stack/val)
+	var/node/expression/operator/O = opr.Pop()
+	if(!O)
+		return
+	if(!istype(O))
+		errors += new /scriptError("Error reducing expression - invalid operator.")
+		return
+	//Take O and assign its operands, popping one or two values from the val stack
+	//depending on whether O is a binary or unary operator.
+	if(istype(O, /node/expression/operator/binary))
+		var/node/expression/operator/binary/B = O
+		B.exp2 = val.Pop()
+		B.exp = val.Pop()
+		val.Push(B)
+	else
+		O.exp = val.Pop()
+		val.Push(O)
 
 /*
 	Proc: EndOfExpression
@@ -154,14 +160,14 @@
 	Parameters:
 	end - A list of values to compare the current token to.
 */
-		EndOfExpression(end[])
-			if(!curToken)
-				return 1
-			if(istype(curToken, /token/symbol) && end.Find(curToken.value))
-				return 1
-			if(istype(curToken, /token/end) && end.Find(/token/end))
-				return 1
-			return 0
+/n_Parser/nS_Parser/proc/EndOfExpression(list/end)
+	if(!curToken)
+		return TRUE
+	if(istype(curToken, /token/symbol) && end.Find(curToken.value))
+		return TRUE
+	if(istype(curToken, /token/end) && end.Find(/token/end))
+		return TRUE
+	return FALSE
 
 /*
 	Proc: ParseExpression
@@ -180,89 +186,89 @@
 	- <ParseParenExpression()>
 	- <ParseParamExpression()>
 */
-		ParseExpression(list/end=list(/token/end), list/ErrChars=list("{", "}"))
-			var/stack
-				opr=new
-				val=new
-			src.expecting=VALUE
-			for()
-				if(EndOfExpression(end))
-					break
-				if(istype(curToken, /token/symbol) && ErrChars.Find(curToken.value))
-					errors+=new/scriptError/BadToken(curToken)
-					break
+/n_Parser/nS_Parser/proc/ParseExpression(list/end = list(/token/end), list/ErrChars = list("{", "}"))
+	var/stack/opr = new
+	var/stack/val = new
 
+	src.expecting = VALUE
+	for() //this might cause an oom? too bad!
+		if(EndOfExpression(end))
+			break
+		if(istype(curToken, /token/symbol) && ErrChars.Find(curToken.value))
+			errors += new/scriptError/BadToken(curToken)
+			break
 
-				if(index>tokens.len)																						//End of File
-					errors+=new/scriptError/EndOfFile()
-					break
-				var/token/ntok
-				if(index+1<=tokens.len)
-					ntok=tokens[index+1]
+		if(index > tokens.len)																						//End of File
+			errors += new/scriptError/EndOfFile()
+			break
+		var/token/ntok
+		if(index + 1 <= tokens.len)
+			nto k =tokens[index + 1]
 
-				if(istype(curToken, /token/symbol) && curToken.value=="(")			//Parse parentheses expression
-					if(expecting!=VALUE)
-						errors+=new/scriptError/ExpectedToken("operator", curToken)
-						NextToken()
-						continue
-					val.Push(ParseParenExpression())
-				else if(istype(curToken, /token/symbol))												//Operator found.
-					var/node/expression/operator/curOperator											//Figure out whether it is unary or binary and get a new instance.
-					if(src.expecting==OPERATOR)
-						curOperator=GetBinaryOperator(curToken)
-						if(!curOperator)
-							errors+=new/scriptError/ExpectedToken("operator", curToken)
-							NextToken()
-							continue
-					else
-						curOperator=GetUnaryOperator(curToken)
-						if(!curOperator) 																						//given symbol isn't a unary operator
-							errors+=new/scriptError/ExpectedToken("expression", curToken)
-							NextToken()
-							continue
-
-					if(opr.Top() && Precedence(opr.Top(), curOperator)==REDUCE)		//Check order of operations and reduce if necessary
-						Reduce(opr, val)
-						continue
-					opr.Push(curOperator)
-					src.expecting=VALUE
-				else if(ntok && ntok.value=="(" && istype(ntok, /token/symbol)\
-											&& istype(curToken, /token/word))								//Parse function call
-					var/token/preToken=curToken
-					var/old_expect=src.expecting
-					var/fex=ParseFunctionExpression()
-					if(old_expect!=VALUE)
-						errors+=new/scriptError/ExpectedToken("operator", preToken)
-						NextToken()
-						continue
-					val.Push(fex)
-				else if(istype(curToken, /token/keyword)) 										//inline keywords
-					var/n_Keyword/kw=options.keywords[curToken.value]
-					kw=new kw(inline=1)
-					if(kw)
-						if(!kw.Parse(src))
-							return
-					else
-						errors+=new/scriptError/BadToken(curToken)
-				else if(istype(curToken, /token/end)) 													//semicolon found where it wasn't expected
-					errors+=new/scriptError/BadToken(curToken)
+		if(istype(curToken, /token/symbol) && curToken.value == "(")			//Parse parentheses expression
+			if(expecting != VALUE)
+				errors += new /scriptError/ExpectedToken("operator", curToken)
+				NextToken()
+				continue
+			val.Push(ParseParenExpression())
+		else if(istype(curToken, /token/symbol))												//Operator found.
+			var/node/expression/operator/curOperator											//Figure out whether it is unary or binary and get a new instance.
+			if(src.expecting == OPERATOR)
+				curOperator = GetBinaryOperator(curToken)
+				if(!curOperator)
+					errors += new /scriptError/ExpectedToken("operator", curToken)
 					NextToken()
 					continue
-				else
-					if(expecting!=VALUE)
-						errors+=new/scriptError/ExpectedToken("operator", curToken)
-						NextToken()
-						continue
-					val.Push(GetExpression(curToken))
-					src.expecting=OPERATOR
-				NextToken()
+			else
+				curOperator = GetUnaryOperator(curToken)
+				if(!curOperator) 																						//given symbol isn't a unary operator
+					errors += new /scriptError/ExpectedToken("expression", curToken)
+					NextToken()
+					continue
 
-			while(opr.Top()) Reduce(opr, val) 																//Reduce the value stack completely
-			.=val.Pop()                       																//Return what should be the last value on the stack
-			if(val.Top())                     																//
-				var/node/N=val.Pop()
-				errors+=new/scriptError("Error parsing expression. Unexpected value left on stack: [N.ToString()].")
-				return null
+			if(opr.Top() && Precedence(opr.Top(), curOperator) == REDUCE)		//Check order of operations and reduce if necessary
+				Reduce(opr, val)
+				continue
+			opr.Push(curOperator)
+			src.expecting = VALUE
+
+		else if(ntok && ntok.value == "(" && istype(ntok, /token/symbol) && istype(curToken, /token/word))	//Parse function call
+			var/token/preToken = curToken
+			var/old_expect = src.expecting
+			var/fex = ParseFunctionExpression()
+
+			if(old_expect! = VALUE)
+				errors += new /scriptError/ExpectedToken("operator", preToken)
+				NextToken()
+				continue
+			val.Push(fex)
+		else if(istype(curToken, /token/keyword)) 										//inline keywords
+			var/n_Keyword/kw = options.keywords[curToken.value]
+			kw = new kw(inline = TRUE)
+			if(kw && !kw.Parse(src)) //stop wasting if's
+				return
+			else
+				errors += new /scriptError/BadToken(curToken)
+		else if(istype(curToken, /token/end)) 													//semicolon found where it wasn't expected
+			errors += new /scriptError/BadToken(curToken)
+			NextToken()
+			continue
+		else
+			if(expecting != VALUE)
+				errors += new /scriptError/ExpectedToken("operator", curToken)
+				NextToken()
+				continue
+			val.Push(GetExpression(curToken))
+			src.expecting = OPERATOR
+		NextToken()
+
+	while(opr.Top()) 
+		Reduce(opr, val) 		//Reduce the value stack completely
+	. = val.Pop()               //Return what should be the last value on the stack
+	if(val.Top())               //
+		var/node/N = val.Pop()
+		errors += new /scriptError("Error parsing expression. Unexpected value left on stack: [N.ToString()].")
+		return null
 
 /*
 	Proc: ParseFunctionExpression
@@ -271,25 +277,24 @@
 	See Also:
 	- <ParseExpression()>
 */
-		ParseFunctionExpression()
-			var/node/expression/FunctionCall/exp=new
-			exp.func_name=curToken.value
-			NextToken() //skip function name
-			NextToken() //skip open parenthesis, already found
-			var/loops = 0
+/n_Parser/nS_Parser/proc/ParseFunctionExpression()
+	var/node/expression/FunctionCall/exp = new
+	exp.func_name = curToken.value
+	NextToken() //skip function name
+	NextToken() //skip open parenthesis, already found
 
-			for()
-				loops++
-				if(loops>=1000)
-					CRASH("Something TERRIBLE has gone wrong in ParseFunctionExpression ;__;")
+	for(var/i in 1 to 1000) //forcefully made it start from 1 to 1000, if it didn't fail then this should not CRASH
+		if(i >= 1000)
+			CRASH("Possible infinite loop in ParseFunctionExpression(). The function call has been halted due to hitting the 1000 loop limit.")
 
-				if(istype(curToken, /token/symbol) && curToken.value==")")
-					return exp
-				exp.parameters+=ParseParamExpression()
-				if(curToken.value==","&&istype(curToken, /token/symbol))NextToken()	//skip comma
-				if(istype(curToken, /token/end))																		//Prevents infinite loop...
-					errors+=new/scriptError/ExpectedToken(")")
-					return exp
+		if(istype(curToken, /token/symbol) && curToken.value == ")")
+			return exp //this breaks the call
+		exp.parameters += ParseParamExpression()
+		if(curToken.value == "," && istype(curToken, /token/symbol))
+			NextToken()	//skip comma
+		if(istype(curToken, /token/end))																		//Prevents infinite loop...
+			errors += new /scriptError/ExpectedToken(")")
+			return exp
 
 /*
 	Proc: ParseParenExpression
@@ -298,10 +303,10 @@
 	See Also:
 	- <ParseExpression()>
 */
-		ParseParenExpression()
-			if(!CheckToken("(", /token/symbol))
-				return
-			return new/node/expression/operator/unary/group(ParseExpression(list(")")))
+/n_Parser/nS_Parser/proc/ParseParenExpression()
+	if(!CheckToken("(", /token/symbol))
+		return
+	return new /node/expression/operator/unary/group(ParseExpression(list(")")))
 
 /*
 	Proc: ParseParamExpression
@@ -310,5 +315,5 @@
 	See Also:
 	- <ParseExpression()>
 */
-		ParseParamExpression()
-			return ParseExpression(list(",", ")"))
+/n_Parser/nS_Parser/proc/ParseParamExpression()
+	return ParseExpression(list(",", ")"))

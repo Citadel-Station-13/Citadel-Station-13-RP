@@ -133,23 +133,23 @@ var/global/list/image/fluidtrack_cache=list()
 
 		// Update ONLY the overlays that have changed.
 		for(var/datum/fluidtrack/track in stack)
-			var/stack_idx=setdirs["[track.direction]"]
-			var/state=coming_state
-			truedir=track.direction
-			if(truedir&240) // Check if we're in the GOING block
-				state=going_state
-				truedir=truedir>>4
+			var/stack_idx = setdirs["[track.direction]"]
+			var/state = coming_state
+			truedir = track.direction
+			if(truedir & 240) // Check if we're in the GOING block
+				state = going_state
+				truedir = (truedir >> 4)
 
 			if(track.overlay)
 				track.overlay=null
-			var/image/I = image(icon, icon_state=state, dir=num2dir(truedir))
+			var/image/I = image(icon, icon_state = state, dir = text2dir(uppertext(dir2text(truedir)))) //This is hacky, but it works. Too bad!
 			I.color = track.basecolor
 
-			track.fresh=0
-			track.overlay=I
-			stack[stack_idx]=track
+			track.fresh = 0
+			track.overlay = I
+			stack[stack_idx] = track
 			overlays += I
-		updatedtracks=0 // Clear our memory of updated tracks.
+		updatedtracks = 0 // Clear our memory of updated tracks.
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "wet footprints"

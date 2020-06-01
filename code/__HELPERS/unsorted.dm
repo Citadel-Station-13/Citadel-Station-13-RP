@@ -1644,6 +1644,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		for(var/atom/A in N)
 			. += A
 
+/atom/proc/get_light_and_color(atom/origin)
+	if(origin)
+		color = origin.color
+		set_light(origin.light_range, origin.light_power, origin.light_color)
+
 /datum/coords //Simple datum for storing coordinates.
 	var/x_pos = null
 	var/y_pos = null

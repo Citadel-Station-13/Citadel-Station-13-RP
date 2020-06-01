@@ -3,8 +3,8 @@
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	var/health = 15
 
 //similar to weeds, but only barfed out by nurses manually
@@ -20,7 +20,7 @@
 				qdel(src)
 	return
 
-/obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/spider/attackby(obj/item/W, mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
 
 	if(W.attack_verb.len)
@@ -40,9 +40,9 @@
 	health -= damage
 	healthcheck()
 
-/obj/effect/spider/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/spider/bullet_act(obj/item/projectile/P)
 	..()
-	health -= Proj.get_structure_damage()
+	health -= P.get_structure_damage()
 	healthcheck()
 
 /obj/effect/spider/proc/healthcheck()
@@ -58,9 +58,9 @@
 	icon_state = "stickyweb1"
 
 /obj/effect/spider/stickyweb/Initialize()
+	. = ..()
 	if(prob(50))
 		icon_state = "stickyweb2"
-	return ..()
 
 /obj/effect/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living/simple_mob/animal/giant_spider))
@@ -82,15 +82,12 @@
 	var/spiders_max = 24
 	var/spider_type = /obj/effect/spider/spiderling
 
-/obj/effect/spider/eggcluster/Initialize()
+/obj/effect/spider/eggcluster/Initialize(location, atom/parent)
+	. = ..()
 	pixel_x = rand(3,-3)
 	pixel_y = rand(3,-3)
-	START_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/effect/spider/eggcluster/New(var/location, var/atom/parent)
 	get_light_and_color(parent)
-	..()
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/eggcluster/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -101,7 +98,7 @@
 	return ..()
 
 /obj/effect/spider/eggcluster/process()
-	amount_grown += rand(0,2)
+	amount_grown += rand(0, 2)
 	if(amount_grown >= 100)
 		var/num = rand(spiders_min, spiders_max)
 		var/obj/item/organ/external/O = null
@@ -139,15 +136,16 @@
 /obj/effect/spider/spiderling/frost
 	grow_as = list(/mob/living/simple_mob/animal/giant_spider/frost)
 
-/obj/effect/spider/spiderling/New(var/location, var/atom/parent)
+/obj/effect/spider/spiderling/Initialize(location, atom/parent)
+	. = ..()
 	pixel_x = rand(6,-6)
 	pixel_y = rand(6,-6)
-	START_PROCESSING(SSobj, src)
 	//50% chance to grow up
 	if(prob(50))
 		amount_grown = 1
 	get_light_and_color(parent)
-	..()
+	//let it do it's magic then do processing
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -286,8 +284,9 @@
 	icon_state = "cocoon1"
 	health = 60
 
-/obj/effect/spider/cocoon/New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/spider/cocoon/Initialize()
+	. = ..()
+	icon_state = pick("cocoon1", "cocoon2", "cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")

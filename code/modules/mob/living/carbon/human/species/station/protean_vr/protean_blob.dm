@@ -267,11 +267,11 @@
 
 	if(slot_gloves && istype(slot_gloves, /obj/item/clothing/gloves/gauntlets/rig)) //drop RIGsuit gauntlets to avoid fucky wucky-ness.
 		var/obj/item/clothing/gloves/riggloves = slot_gloves
-			drop_from_inventory(riggloves)
+		drop_from_inventory(riggloves)
 
 	if(slot_shoes && istype(slot_shoes, /obj/item/clothing/shoes/magboots)) //drop magboots because they're super heavy. also drops RIGsuit boots because they're magboot subtypes.
 		var/obj/item/clothing/shoes/magboots = slot_shoes
-			drop_from_inventory(magboots)
+		drop_from_inventory(magboots)
 
 	if(w_uniform && istype(w_uniform,/obj/item/clothing)) //No webbings tho. We do this after in case a suit was in the way
 		var/obj/item/clothing/uniform = w_uniform

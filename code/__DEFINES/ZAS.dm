@@ -1,4 +1,4 @@
-// Bitflag values for c_airblock()
+// Bitflag values for c_airblock() //this isn't bitflag.
 #define AIR_BLOCKED 1	// Blocked
 #define ZONE_BLOCKED 2	// Not blocked, but zone boundaries will not cross.
 #define BLOCKED 3		// Blocked, zone boundaries will not cross even if opened.

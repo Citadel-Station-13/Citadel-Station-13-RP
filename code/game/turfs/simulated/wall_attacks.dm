@@ -1,6 +1,3 @@
-#define ZONE_BLOCKED 2
-#define AIR_BLOCKED 1
-
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
 
@@ -135,10 +132,10 @@
 		return success_smash(user)
 	return fail_smash(user)
 
-/turf/simulated/wall/attackby(obj/item/W as obj, mob/user as mob)
-
+/turf/simulated/wall/attackby(obj/item/W, mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-	if (!user.)
+
+	if(!user.IsAdvancedToolUser()) //HOW did byond NOT see this (langserver caught it)
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 

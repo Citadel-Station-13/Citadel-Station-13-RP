@@ -26,7 +26,7 @@
 	
 	var/new_pri_color = input("Pick primary ear color:","Ear Color (Pri)", current_pri_color) as null|color
 	if(new_pri_color)
-		var/list/new_color_rgb_list = hex2rgb(new_pri_color)
+		var/list/new_color_rgb_list = GetHexColors(new_pri_color)
 		r_ears = new_color_rgb_list[1]
 		g_ears = new_color_rgb_list[2]
 		b_ears = new_color_rgb_list[3]
@@ -36,7 +36,7 @@
 	
 		var/new_sec_color = input("Pick secondary ear color (only applies to some ears):","Ear Color (sec)", current_sec_color) as null|color
 		if(new_sec_color)
-			new_color_rgb_list = hex2rgb(new_sec_color)
+			new_color_rgb_list = GetHexColors(new_sec_color)
 			r_ears2 = new_color_rgb_list[1]
 			g_ears2 = new_color_rgb_list[2]
 			b_ears2 = new_color_rgb_list[3]
@@ -71,7 +71,7 @@
 	
 	var/new_pri_color = input("Pick primary tail color:","Tail Color (Pri)", current_pri_color) as null|color
 	if(new_pri_color)
-		var/list/new_color_rgb_list = hex2rgb(new_pri_color)
+		var/list/new_color_rgb_list = GetHexColors(new_pri_color)
 		r_tail = new_color_rgb_list[1]
 		g_tail = new_color_rgb_list[2]
 		b_tail = new_color_rgb_list[3]
@@ -81,7 +81,7 @@
 	
 		var/new_sec_color = input("Pick secondary tail color (only applies to some tails):","Tail Color (sec)", current_sec_color) as null|color
 		if(new_sec_color)
-			new_color_rgb_list = hex2rgb(new_sec_color)
+			new_color_rgb_list = GetHexColors(new_sec_color)
 			r_tail2 = new_color_rgb_list[1]
 			g_tail2 = new_color_rgb_list[2]
 			b_tail2 = new_color_rgb_list[3]
@@ -116,7 +116,7 @@
 	
 	var/new_color = input("Pick wing color:","Wing Color", current_color) as null|color
 	if(new_color)
-		var/list/new_color_rgb_list = hex2rgb(new_color)
+		var/list/new_color_rgb_list = GetHexColors(new_color)
 		r_wing = new_color_rgb_list[1]
 		g_wing = new_color_rgb_list[2]
 		b_wing = new_color_rgb_list[3]

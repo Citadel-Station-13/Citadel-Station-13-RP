@@ -26,15 +26,15 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/working/hoverpod/New()
-	..()
+/obj/mecha/working/hoverpod/Initialize()
+	. = ..()
 	ion_trail = new /datum/effect_system/trail_follow/ion()
 	ion_trail.set_up(src)
-	ion_trail.start()
+	//was active when created by default.
 
 //Modified phazon code
 /obj/mecha/working/hoverpod/Topic(href, href_list)
-	..()
+	. = ..()
 	if (href_list["toggle_stabilization"])
 		stabilization_enabled = !stabilization_enabled
 		send_byjax(src.occupant,"exosuit.browser","stabilization_command","[stabilization_enabled?"Dis":"En"]able thruster stabilization")
@@ -58,10 +58,10 @@
 	if (!has_charge(step_energy_drain))
 		ion_trail.stop()
 	else
-		if (!ion_trail.on)
+		if(!ion_trail.active)
 			ion_trail.start()
-		if (stabilization_enabled)
-			return 1
+		if(stabilization_enabled)
+			return TRUE
 
 	return ..()
 
