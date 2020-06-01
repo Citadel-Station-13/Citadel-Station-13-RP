@@ -105,7 +105,7 @@
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
-	alt_titles = list("Drill Technician")
+	alt_titles = list("Drill Technician", "Resource Extraction Specialist", "Asteroid Miner")
 
 //Service
 /datum/job/janitor
