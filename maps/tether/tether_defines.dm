@@ -36,18 +36,17 @@
 #define Z_LEVEL_SHIPS						12
 #define Z_LEVEL_UNDERDARK					13
 #define Z_LEVEL_ALIENSHIP					14
-#define Z_LEVEL_ALIENSHIP					15
-#define Z_LEVEL_BEACH						16
-#define Z_LEVEL_BEACH_CAVE					17
-#define Z_LEVEL_AEROSTAT					18
-#define Z_LEVEL_AEROSTAT_SURFACE			19
-#define Z_LEVEL_DEBRISFIELD					20
-#define Z_LEVEL_GATEWAY						21
-#define Z_LEVEL_ROGUEMINE_1					22
-#define Z_LEVEL_ROGUEMINE_2					23
-#define Z_LEVEL_ROGUEMINE_3					24
-#define Z_LEVEL_ROGUEMINE_4					25
-
+#define Z_LEVEL_ROGUEMINE_1					15
+#define Z_LEVEL_ROGUEMINE_2					16
+#define Z_LEVEL_ROGUEMINE_3					17
+#define Z_LEVEL_ROGUEMINE_4					18
+#define Z_LEVEL_ALIENSHIP					19
+#define Z_LEVEL_BEACH						20
+#define Z_LEVEL_BEACH_CAVE					21
+#define Z_LEVEL_AEROSTAT					22
+#define Z_LEVEL_AEROSTAT_SURFACE			23
+#define Z_LEVEL_DEBRISFIELD					24
+#define Z_LEVEL_GATEWAY						25
 //Camera networks
 #define NETWORK_TETHER "Tether"
 #define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
@@ -148,7 +147,7 @@
 
 	lateload_z_levels = list(
 		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
-		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"), //Rogue Mining
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
