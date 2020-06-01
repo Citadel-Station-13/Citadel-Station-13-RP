@@ -1,6 +1,5 @@
 //Interactions
-/turf/simulated/wall/proc/toggle_open(var/mob/user)
-
+/turf/simulated/wall/proc/toggle_open(mob/user)
 	if(can_open == WALL_OPENING)
 		return
 
@@ -9,24 +8,24 @@
 	if(density)
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_opening", src)
-		density = 0
+		density = FALSE
 		blocks_air = ZONE_BLOCKED
 		update_icon()
 		update_air()
 		set_light(0)
-		src.blocks_air = 0
+		src.blocks_air = FALSE
 		set_opacity(0)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
 	else
 		can_open = WALL_OPENING
 		//flick("[material.icon_base]fwall_closing", src)
-		density = 1
+		density = TRUE
 		blocks_air = AIR_BLOCKED
 		update_icon()
 		update_air()
 		set_light(1)
-		src.blocks_air = 1
+		src.blocks_air = TRUE
 		set_opacity(1)
 		for(var/turf/simulated/turf in loc)
 			air_master.mark_for_update(turf)
@@ -34,8 +33,7 @@
 	can_open = WALL_CAN_OPEN
 	update_icon()
 
-#undef ZONE_BLOCKED
-#undef AIR_BLOCKED
+//WHY IN THE UNHOLY RETREBUTION DID YOU UNDEFINE THOSE GLOBAL DEFINES
 
 /turf/simulated/wall/proc/update_air()
 	if(!air_master)
@@ -45,8 +43,7 @@
 		update_thermal(turf)
 		air_master.mark_for_update(turf)
 
-
-/turf/simulated/wall/proc/update_thermal(var/turf/simulated/source)
+/turf/simulated/wall/proc/update_thermal(turf/simulated/source)
 	if(istype(source))
 		if(density && opacity)
 			source.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT

@@ -99,7 +99,8 @@ Class Procs:
 	ASSERT(isturf(B))
 	#endif
 	var/ablock = A.c_airblock(B)
-	if(ablock == BLOCKED) return BLOCKED
+	if(ablock == BLOCKED) 
+		return BLOCKED
 	return ablock | B.c_airblock(A)
 
 /datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
@@ -152,12 +153,12 @@ Class Procs:
 	if(!B.connections)
 		B.connections = new
 
-	if(A.connections.get(a_to_b)
-		 return
+	if(A.connections.get(a_to_b))
+		return
 	if(B.connections.get(b_to_a))
 		return
-	if(!space)
-		if(A.zone == B.zone) return
+	if(!space && A.zone == B.zone)
+		return
 
 
 	var/connection/c = new /connection(A,B)

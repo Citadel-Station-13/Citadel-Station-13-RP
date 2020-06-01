@@ -184,20 +184,62 @@ Turf and target are separate in case you want to teleport some distance from a t
 	return TRUE
 
 
+//This will update a mob's name, real_name, mind.name, data_core records, pda and id
+//Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
+/mob/proc/fully_replace_character_name(oldname, newname)
+	if(!newname)
+		return FALSE
+	real_name = newname
+	name = newname
+	if(mind)
+		mind.name = newname
+	if(dna)
+		dna.real_name = real_name
 
+	if(!oldname)
+		return TRUE
 
+	//update the datacore records! This is goig to be a bit costly.
+	for(var/list/L in list(data_core.general, data_core.medical, data_core.security, data_core.locked))
+		for(var/datum/data/record/R in L)
+			if(R.fields["name"] == oldname)
+				R.fields["name"] = newname
+				break
 
+	//update our pda and id if we have them on our person
+	var/list/searching = GetAllContents() //this is cheaper now
+	var/done_search_id = FALSE
+	var/done_search_pda = FALSE
+
+	for(var/obj/item/A in searching) //don't bother wasting time by searching everything
+		if(done_search_id && done_search_pda)
+			break
+		if(istype(A, /obj/item/card/id) && !done_search_id)
+			var/obj/item/card/id/ID = A
+			if(ID.registered_name != oldname)
+				continue
+			ID.registered_name = newname
+			ID.name = "[newname]'s ID Card ([ID.assignment])"
+			done_search_id = TRUE
+			
+		if(istype(A, /obj/item/pda) && !done_search_pda)
+			var/obj/item/pda/PDA = A
+			if(PDA.owner != oldname)
+				continue
+			PDA.owner = newname
+			PDA.name = "PDA-[newname] ([PDA.ownjob])"
+			done_search_pda = FALSE
+	return TRUE
 
 //Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
 //Last modified by Carn
 /mob/proc/rename_self(role, allow_numbers = FALSE)
 	spawn(0)
 		var/oldname = real_name
-
 		var/time_passed = world.time
 		var/newname
 
-		for(var/i = 1, i <= 3,i++)	//we get 3 attempts to pick a suitable name.
+		for(var/i = 1, i <= 3, i++)	//we get 3 attempts to pick a suitable name.
 			newname = input(src,"You are \a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
 			if((world.time - time_passed) > 3000)
 				return	//took too long
@@ -216,7 +258,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 		if(!newname)	//we'll stick with the oldname then
 			return
 
-		if(cmptext("ai",role))
+		if(cmptext("ai", role))
 			if(isAI(src))
 				var/mob/living/silicon/ai/A = src
 				oldname = null//don't bother with the records update crap
@@ -224,10 +266,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 				//world << sound('sound/AI/newAI.ogg')
 				// Set eyeobj name
 				A.SetName(newname)
-
-
 		fully_replace_character_name(oldname,newname)
-
 
 
 //Picks a string of symbols to display as the law number for hacked or ion laws
@@ -1032,8 +1071,8 @@ GLOBAL_LIST_INIT(WALLITEMS_INVERSE, typecacheof(list(
 		while (L.len && !target)
 			var/I = rand(1, L.len)
 			var/turf/T = L[I]
-			var/area/X = get_area(T)
-			if(!T.density && X.valid_territory)
+			//var/area/X = get_area(T)
+			if(!T.density)// && X.valid_territory) no unique var that tells a safe area yet!
 				var/clear = TRUE
 				for(var/obj/O in T)
 					if(O.density)

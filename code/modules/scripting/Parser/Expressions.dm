@@ -203,7 +203,7 @@
 			break
 		var/token/ntok
 		if(index + 1 <= tokens.len)
-			nto k =tokens[index + 1]
+			ntok =tokens[index + 1]
 
 		if(istype(curToken, /token/symbol) && curToken.value == "(")			//Parse parentheses expression
 			if(expecting != VALUE)
@@ -237,7 +237,7 @@
 			var/old_expect = src.expecting
 			var/fex = ParseFunctionExpression()
 
-			if(old_expect! = VALUE)
+			if(old_expect != VALUE)
 				errors += new /scriptError/ExpectedToken("operator", preToken)
 				NextToken()
 				continue

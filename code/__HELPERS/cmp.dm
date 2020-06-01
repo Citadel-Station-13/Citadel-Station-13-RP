@@ -118,8 +118,10 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 	else
 		return sorttext(b_name, a_name)
 */
+/*
 /proc/cmp_item_block_priority_asc(obj/item/A, obj/item/B)
 	return A.block_priority - B.block_priority
+*/
 /*
  * Vorestation specific? 
  */

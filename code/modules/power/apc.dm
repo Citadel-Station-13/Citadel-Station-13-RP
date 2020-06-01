@@ -1,29 +1,29 @@
 #define CRITICAL_APC_EMP_PROTECTION 10 // EMP effect duration is divided by this number if the APC has "critical" flag
-//update_state
-#define UPDATE_CELL_IN 1
-#define UPDATE_OPENED1 2
-#define UPDATE_OPENED2 4
-#define UPDATE_MAINT 8
-#define UPDATE_BROKE 16
-#define UPDATE_BLUESCREEN 32
-#define UPDATE_WIREEXP 64
-#define UPDATE_ALLGOOD 128
+//update_state flags
+#define UPDATE_CELL_IN		(1<<0)
+#define UPDATE_OPENED1 		(1<<1)
+#define UPDATE_OPENED2 		(1<<2)
+#define UPDATE_MAINT 		(1<<3)
+#define UPDATE_BROKE		(1<<4)
+#define UPDATE_BLUESCREEN	(1<<5)
+#define UPDATE_WIREEXP		(1<<6)
+#define UPDATE_ALLGOOD		(1<<7)
 
-//update_overlay
-#define APC_UPOVERLAY_CHARGEING0 1
-#define APC_UPOVERLAY_CHARGEING1 2
-#define APC_UPOVERLAY_CHARGEING2 4
-#define APC_UPOVERLAY_EQUIPMENT0 8
-#define APC_UPOVERLAY_EQUIPMENT1 16
-#define APC_UPOVERLAY_EQUIPMENT2 32
-#define APC_UPOVERLAY_LIGHTING0 64
-#define APC_UPOVERLAY_LIGHTING1 128
-#define APC_UPOVERLAY_LIGHTING2 256
-#define APC_UPOVERLAY_ENVIRON0 512
-#define APC_UPOVERLAY_ENVIRON1 1024
-#define APC_UPOVERLAY_ENVIRON2 2048
-#define APC_UPOVERLAY_LOCKED 4096
-#define APC_UPOVERLAY_OPERATING 8192
+//update_overlay flags
+#define APC_UPOVERLAY_CHARGEING0	(1<<0)
+#define APC_UPOVERLAY_CHARGEING1	(1<<1)
+#define APC_UPOVERLAY_CHARGEING2	(1<<2)
+#define APC_UPOVERLAY_EQUIPMENT0	(1<<3)
+#define APC_UPOVERLAY_EQUIPMENT1	(1<<4)
+#define APC_UPOVERLAY_EQUIPMENT2	(1<<5)
+#define APC_UPOVERLAY_LIGHTING0		(1<<6)
+#define APC_UPOVERLAY_LIGHTING1		(1<<7)
+#define APC_UPOVERLAY_LIGHTING2		(1<<8)
+#define APC_UPOVERLAY_ENVIRON0		(1<<9)
+#define APC_UPOVERLAY_ENVIRON1		(1<<10)
+#define APC_UPOVERLAY_ENVIRON2		(1<<11)
+#define APC_UPOVERLAY_LOCKED		(1<<12)
+#define APC_UPOVERLAY_OPERATING		(1<<13)
 
 
 #define APC_UPDATE_ICON_COOLDOWN 100 // 10 seconds
@@ -1173,7 +1173,7 @@
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 // defines a state machine, returns the new state
-/obj/machinery/power/apc/proc/autoset(cur_state, /on)
+/obj/machinery/power/apc/proc/autoset(cur_state, on)
 	switch(cur_state) //autoset will never turn on a channel set to off
 		if(POWERCHAN_OFF_AUTO)
 			if(on == 1)

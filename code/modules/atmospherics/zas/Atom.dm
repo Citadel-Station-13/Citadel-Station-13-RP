@@ -1,7 +1,8 @@
 
 
-/atom/var/pressure_resistance = ONE_ATMOSPHERE
-/atom/var/can_atmos_pass = ATMOS_PASS_YES
+/atom
+	var/pressure_resistance = ONE_ATMOSPHERE
+	var/can_atmos_pass = ATMOS_PASS_YES
 
 // Purpose: Determines if airflow is allowed between T and loc.
 // Called by: Airflow.
@@ -14,7 +15,8 @@
 		else
 			return can_atmos_pass
 
-/turf/can_atmos_pass = ATMOS_PASS_NO
+/turf
+	can_atmos_pass = ATMOS_PASS_NO
 
 /turf/CanZASPass(turf/T, is_zone)
 	if(T.blocks_air || src.blocks_air)
@@ -44,13 +46,17 @@
 // AIR_BLOCKED - Blocked
 // ZONE_BLOCKED - Not blocked, but zone boundaries will not cross.
 // BLOCKED - Blocked, zone boundaries will not cross even if opened.
-atom/proc/c_airblock(turf/other)
+/atom/proc/c_airblock(turf/other)
 	#ifdef ZASDBG
 	ASSERT(isturf(other))
 	#endif
-	return (AIR_BLOCKED*!CanZASPass(other, FALSE))|(ZONE_BLOCKED*!CanZASPass(other, TRUE))
+	. = NONE //none = 0
+	if(!CanZASPass(other, FALSE))
+		ENABLE_BITFIELD(., AIR_BLOCKED) //the fuck is this causing a runtime?
+	if(!CanZASPass(other, TRUE))
+		ENABLE_BITFIELD(., ZONE_BLOCKED)
 
-turf/c_airblock(turf/other)
+/turf/c_airblock(turf/other)
 	#ifdef ZASDBG
 	ASSERT(isturf(other))
 	#endif
@@ -61,9 +67,11 @@ turf/c_airblock(turf/other)
 	#ifdef MULTIZAS
 	if(other.z != src.z)
 		if(other.z < src.z)
-			if(!istype(src, /turf/simulated/open)) return BLOCKED
+			if(!istype(src, /turf/simulated/open)) 
+				return BLOCKED
 		else
-			if(!istype(other, /turf/simulated/open)) return BLOCKED
+			if(!istype(other, /turf/simulated/open))
+				return BLOCKED
 	#endif
 
 	if(((blocks_air & ZONE_BLOCKED) || (other.blocks_air & ZONE_BLOCKED)))
@@ -76,5 +84,6 @@ turf/c_airblock(turf/other)
 	for(var/mm in contents)
 		var/atom/movable/M = mm
 		result |= M.c_airblock(other)
-		if(result == BLOCKED) return BLOCKED
+		if(result == BLOCKED)
+			return BLOCKED
 	return result

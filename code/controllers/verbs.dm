@@ -34,7 +34,6 @@
 	usr.client.debug_variables(target)
 	message_admins("Admin [key_name_admin(usr)] is debugging the [target] [class].")
 
-
 // Debug verbs.
 /client/proc/restart_controller(controller in list("Master", "Failsafe"))
 	set category = "Debug"
@@ -105,3 +104,11 @@
 	feedback_add_details("admin_verb", "DebugController")
 	message_admins("Admin [key_name_admin(mob)] is debugging the [pick] controller.")
 	debug_variables(D)
+	
+//only being used here
+/proc/get_end_section_of_type(type)
+	var/strtype = "[type]"
+	var/delim_pos = findlasttext(strtype, "/")
+	if(delim_pos == 0)
+		return strtype
+	return copytext(strtype, delim_pos)

@@ -72,7 +72,7 @@
 		if(!current)
 			to_chat(user, "<span class='caution'>You haven't selected anything to transmit laws to!</span>")
 			return
-		if(current.stat == DEAD || current.control_disabled)
+		if(current.stat == DEAD)// || current.control_disabled)
 			to_chat(user, "<span class='caution'>Upload failed!</span> Check to make sure [current.name] is functioning properly.")
 			current = null
 			return
