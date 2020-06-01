@@ -126,7 +126,7 @@
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
 				victim.forceMove(src.loc)
 				buckle_mob(victim)
-				victim.setDir(pick(cardinal))
+				victim.setDir(pick(GLOB.cardinals))
 				victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
 				victim.Weaken(1.5) // Powering up weaken power from .5 (Testing)
 				victim.adjustToxLoss(rand(0.5,1.25))

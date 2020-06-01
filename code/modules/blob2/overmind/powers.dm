@@ -180,7 +180,7 @@
 /mob/observer/blob/proc/expand_blob(turf/T)
 	var/obj/structure/blob/B = null
 	var/turf/other_T = null
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		other_T = get_step(T, direction)
 		if(other_T)
 			B = locate(/obj/structure/blob) in other_T
@@ -213,7 +213,7 @@
 			continue // Already has a blob over them.
 
 		var/obj/structure/blob/B = null
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinals)
 			var/turf/T = get_step(L, direction)
 			B = locate(/obj/structure/blob) in T
 			if(B)

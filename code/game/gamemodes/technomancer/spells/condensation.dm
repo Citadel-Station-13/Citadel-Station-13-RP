@@ -21,9 +21,9 @@
 		if(istype(hit_atom, /turf/simulated) && within_range(hit_atom))
 			var/turf/simulated/T = hit_atom
 
-			for(var/direction in alldirs + null) // null is for the center tile.
+			for(var/direction in GLOB.alldirs + null) // null is for the center tile.
 				spawn(1)
-					var/turf/desired_turf = get_step(T,direction)
+					var/turf/desired_turf = get_step(T, direction)
 					if(desired_turf) // This shouldn't fail but...
 						var/obj/effect/effect/water/W = new /obj/effect/effect/water(get_turf(T))
 						W.create_reagents(60)

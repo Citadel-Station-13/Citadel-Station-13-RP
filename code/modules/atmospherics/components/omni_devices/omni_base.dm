@@ -30,7 +30,7 @@
 	icon_state = "base"
 
 	ports = new()
-	for(var/d in cardinal)
+	for(var/d in GLOB.cardinals)
 		var/datum/omni_port/new_port = new(src, d)
 		switch(d)
 			if(NORTH)

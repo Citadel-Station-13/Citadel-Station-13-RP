@@ -58,7 +58,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 		var/starty = 0
 		var/endy = 0
 		var/endx = 0
-		var/startside = pick(cardinal)
+		var/startside = pick(GLOB.cardinals)
 
 		switch(startside)
 			if(NORTH)

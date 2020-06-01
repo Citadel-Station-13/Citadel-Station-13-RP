@@ -5,7 +5,7 @@
 	icon = 'icons/effects/chemsmoke.dmi'
 	opacity = FALSE
 	lifetime = 15 //300 <- old, ((300/10)/2) new
-	pass_flags = PASSTABLE | PASSGRILLE | PASSGLASS //PASSGLASS is fine here, it's just so the visual effect can "flow" around glass
+	//pass_flags = PASSTABLE | PASSGRILLE | PASSGLASS //PASSGLASS is fine here, it's just so the visual effect can "flow" around glass
 
 /obj/effect/effect/smoke/chem/Initialize()
 	. = ..()

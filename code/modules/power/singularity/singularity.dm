@@ -284,7 +284,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	if(!move_self)
 		return 0
 
-	var/movement_dir = pick(alldirs - last_failed_movement)
+	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if(force_move)
 		movement_dir = force_move

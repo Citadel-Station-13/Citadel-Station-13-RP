@@ -1,10 +1,10 @@
 //cast_method flags, needs to be up to date with Technomancer's. They were, for some reason, not working outside it.
-#define CAST_USE		1	// Clicking the spell in your hand.
-#define CAST_MELEE		2	// Clicking an atom in melee range.
-#define CAST_RANGED		4	// Clicking an atom beyond melee range.
-#define CAST_THROW		8	// Throwing the spell and hitting an atom.
-#define CAST_COMBINE	16	// Clicking another spell with this spell.
-#define CAST_INNATE		32	// Activates upon verb usage, used for mobs without hands.
+#define CAST_USE		(1<<0)	// Clicking the spell in your hand.
+#define CAST_MELEE		(1<<1)	// Clicking an atom in melee range.
+#define CAST_RANGED		(1<<2)	// Clicking an atom beyond melee range.
+#define CAST_THROW		(1<<3)	// Throwing the spell and hitting an atom.
+#define CAST_COMBINE	(1<<4)	// Clicking another spell with this spell.
+#define CAST_INNATE		(1<<5)	// Activates upon verb usage, used for mobs without hands.
 
 //Aspects
 #define ASPECT_FIRE			"fire" 		//Damage over time and raising body-temp.  Firesuits protect from this.

@@ -72,7 +72,7 @@ var/global/list/sparring_attack_cache = list()
 					else
 						target.visible_message("<span class='danger'>[target] slams into [T]!</span>")
 					if(prob(50))
-						target.setDir(reverse_dir[target.dir])
+						target.setDir(GLOB.reverse_dir[target.dir])
 					target.apply_effect(attack_damage * 0.4, WEAKEN, armour)
 			if(BP_GROIN)
 				target.visible_message("<span class='warning'>[target] looks like [TT.he] [TT.is] in pain!</span>", "<span class='warning'>[(target.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>") // I see no easy way to fix this for non-organic or neuter characters.

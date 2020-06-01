@@ -19,7 +19,7 @@
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
 			 	// Must be build adjacent to an existing floor/wall, no floating floors
 				var/list/cardinalTurfs = list() // Up a Z level
-				for(var/dir in cardinal)
+				for(var/dir in GLOB.cardinals)
 					var/turf/B = get_step(T, dir)
 					if(B)
 						cardinalTurfs += B
@@ -43,7 +43,7 @@
 
 		// Create a ceiling to shield from the weather
 		if(src.outdoors)
-			for(var/dir in cardinal)
+			for(var/dir in GLOB.cardinals)
 				var/turf/A = get_step(src, dir)
 				if(A && !A.outdoors)
 					if(expended_tile || R.use(1))

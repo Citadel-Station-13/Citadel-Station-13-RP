@@ -52,7 +52,7 @@ var/list/turf_edge_cache = list()
 
 /turf/simulated/proc/update_icon_edge()
 	if(edge_blending_priority && !forbid_turf_edge())
-		for(var/checkdir in cardinal)
+		for(var/checkdir in GLOB.cardinals)
 			var/turf/simulated/T = get_step(src, checkdir)
 			if(istype(T) && T.edge_blending_priority && edge_blending_priority < T.edge_blending_priority && icon_state != T.icon_state && !T.forbid_turf_edge())
 				var/cache_key = "[T.get_edge_icon_state()]-[checkdir]"

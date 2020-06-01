@@ -26,7 +26,7 @@
 	if(!enabled)
 		return
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
 		for(var/obj/effect/energy_field/S in shielded_tile)
 			if(istype(S) && cell.checked_use(10 KILOWATTS * CELLRATE))

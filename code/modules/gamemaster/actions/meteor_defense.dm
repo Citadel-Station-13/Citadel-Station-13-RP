@@ -34,11 +34,11 @@
 		if(EVENT_LEVEL_MODERATE)
 			meteor_types = meteors_catastrophic.Copy()
 
-	direction = pick(cardinal) // alldirs doesn't work with current meteor code unfortunately.
+	direction = pick(GLOB.cardinals) // alldirs doesn't work with current meteor code unfortunately.
 	waves = rand(5, 8)
 	switch(direction)
 		if(NORTH)
-			dir_text = "aft" // For some reason this is needed.
+			dir_text = "aft" // This is needed due to the announcement
 		if(SOUTH)
 			dir_text = "fore"
 		if(EAST)
@@ -63,7 +63,7 @@
 		while(waves)
 			message_admins("[waves] more wave\s of meteors remain.")
 			spawn(1) // Dir is reversed because the direction describes where meteors are going, not what side it's gonna hit.
-				spawn_meteors(rand(8, 12), meteors_threatening, reverse_dir[direction])
+				spawn_meteors(rand(8, 12), meteors_threatening, GLOB.reverse_dir[direction])
 			waves--
 			sleep(30 SECONDS)
 		announcement = "The station has cleared the incoming debris."

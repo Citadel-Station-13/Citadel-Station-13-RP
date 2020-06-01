@@ -18,17 +18,17 @@
 //Meteor spawning global procs
 ///////////////////////////////
 
-/proc/pick_meteor_start(var/startSide = pick(cardinal))
+/proc/pick_meteor_start(startSide = pick(GLOB.cardinals))
 	var/startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
 	var/pickedstart = spaceDebrisStartLoc(startSide, startLevel)
 
 	return list(startLevel, pickedstart)
 
-/proc/spawn_meteors(var/number = 10, var/list/meteortypes, var/startSide)
+/proc/spawn_meteors(number = 10, list/meteortypes, startSide)
 	for(var/i = 0; i < number; i++)
 		spawn_meteor(meteortypes, startSide)
 
-/proc/spawn_meteor(var/list/meteortypes, var/startSide)
+/proc/spawn_meteor(list/meteortypes, startSide)
 	var/start = pick_meteor_start(startSide)
 
 	var/startLevel = start[1]

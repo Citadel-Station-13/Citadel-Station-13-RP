@@ -25,11 +25,11 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/mineral/mint/LateInitialize()
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinals)
 		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(input)
 			break
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinals)
 		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(output)
 			break

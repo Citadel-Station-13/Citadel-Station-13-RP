@@ -53,7 +53,7 @@
 		z_offset = world.maxz + 1
 
 	// If it's not a single dir, default to north (Default orientation)
-	if(!orientation in cardinal)
+	if(!orientation in GLOB.cardinals)
 		orientation = SOUTH
 
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)

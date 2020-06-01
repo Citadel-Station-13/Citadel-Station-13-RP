@@ -53,7 +53,7 @@
 		O.show_message("\icon[src] <span class = 'warning'> The [src.name] beeps! </span>")
 	sleep(50)
 	explosion(get_turf(src), devastate, heavy_impact, light_impact, flash_range)
-	for(var/dirn in cardinal)		//This is to guarantee that C4 at least breaks down all immediately adjacent walls and doors.
+	for(var/dirn in GLOB.cardinals)		//This is to guarantee that C4 at least breaks down all immediately adjacent walls and doors.
 		var/turf/simulated/wall/T = get_step(src,dirn)
 		if(locate(/obj/machinery/door/airlock) in T)
 			var/obj/machinery/door/airlock/D = locate() in T

@@ -47,7 +47,7 @@
 	var/node1_dir
 	var/node2_dir
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(direction&initialize_directions_he)
 			if (!node1_dir)
 				node1_dir = direction
@@ -110,17 +110,8 @@
 			if(abs(pipe_air.temperature - icon_temperature) > 10)
 				icon_temperature = pipe_air.temperature
 
-				var/h_r = heat2color_r(icon_temperature)
-				var/h_g = heat2color_g(icon_temperature)
-				var/h_b = heat2color_b(icon_temperature)
 
-				if(icon_temperature < 2000) //scale up overlay until 2000K
-					var/scale = (icon_temperature - 500) / 1500
-					h_r = 64 + (h_r - 64)*scale
-					h_g = 64 + (h_g - 64)*scale
-					h_b = 64 + (h_b - 64)*scale
-
-				animate(src, color = rgb(h_r, h_g, h_b), time = 20, easing = SINE_EASING)
+				animate(src, color = heat2colour(icon_temperature), time = 20, easing = SINE_EASING)
 
 //
 // Heat Exchange Junction - Interfaces HE pipes to normal pipes

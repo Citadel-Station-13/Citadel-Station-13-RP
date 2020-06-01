@@ -176,7 +176,7 @@
 	for(var/obj/O in T)
 		if(istype(O,typekey))
 			nearby_machines += O
-	for(var/d in cardinal)
+	for(var/d in GLOB.cardinals)
 		var/turf/T2 = get_step(T,d)
 		for(var/obj/O in T2)
 			if(istype(O,typekey))

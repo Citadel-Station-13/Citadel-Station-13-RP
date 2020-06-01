@@ -7,7 +7,7 @@
 
 /datum/event/meteor_wave/setup()
 	waves = 2 + rand(1, severity)		//EVENT_LEVEL_MAJOR is 3-5 waves
-	start_side = pick(cardinal)
+	start_side = pick(GLOB.cardinals)
 	endWhen = worst_case_end()
 
 /datum/event/meteor_wave/announce()

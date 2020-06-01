@@ -74,7 +74,7 @@
 		AM.reset_glide_size()
 
 /obj/machinery/conveyor/proc/update_dir()
-	if(!(dir in cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
+	if(!(dir in GLOB.cardinals)) // Diagonal. Forwards is *away* from dir, curving to the right.
 		forwards = turn(dir, 135)
 		backwards = turn(dir, 45)
 	else

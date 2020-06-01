@@ -97,7 +97,7 @@ On the map:
 1455 for AI access
 */
 
-var/const/RADIO_LOW_FREQ	= 1200
+var/const/RADIO_LOW_FREQ	= 1200 //define this!!!!!
 var/const/PUBLIC_LOW_FREQ	= 1441
 var/const/PUBLIC_HIGH_FREQ	= 1489
 var/const/RADIO_HIGH_FREQ	= 1600

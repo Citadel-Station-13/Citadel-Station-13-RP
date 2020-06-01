@@ -423,7 +423,7 @@ steam.start() -- spawns the effect
 	if(!check_conditions())
 		return stop()
 	if(oldposition && !(oldposition == get_turf(holder)))
-		if(TRUE || !oldposition.has_gravity() || !nograv_required) //HEY!! remove TRUE if hasgrav exists!!
+		if(!oldposition.has_gravity() || !nograv_required) // it does exist.
 			var/obj/effect/effect/E = new effect_type(oldposition)
 			set_dir(E)
 			if(fade)

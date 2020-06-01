@@ -2990,7 +2990,7 @@ End Citadel Change */
 
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
-		step(M, pick(cardinal))
+		step(M, pick(GLOB.cardinals))
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"

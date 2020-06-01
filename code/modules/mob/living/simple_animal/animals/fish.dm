@@ -22,7 +22,7 @@
 		if(lifes_since_move >= turns_per_move)
 			if(!(stop_when_pulled && pulledby)) //Some animals don't move when pulled
 				var/moving_to = 0 // otherwise it always picks 4, fuck if I know.   Did I mention fuck BYOND
-				moving_to = pick(cardinal)
+				moving_to = pick(GLOB.cardinals)
 				dir = moving_to			//How about we turn them the direction they are moving, yay.
 				var/turf/T = get_step(src,moving_to)
 				if(T && is_type_in_list(T, suitable_turf_types))

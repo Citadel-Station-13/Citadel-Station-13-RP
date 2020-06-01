@@ -25,7 +25,7 @@ var/list/blobs = list()
 	update_icon()
 	if(!integrity)
 		integrity = max_integrity
-	setDir(pick(cardinal))
+	setDir(pick(GLOB.cardinals))
 	blobs += src
 	consume_tile()
 
@@ -130,7 +130,7 @@ var/list/blobs = list()
 
 /obj/structure/blob/proc/expand(turf/T = null, controller = null, expand_reaction = 1)
 	if(!T)
-		var/list/dirs = cardinal.Copy()
+		var/list/dirs = GLOB.cardinals.Copy()
 		for(var/i = 1 to 4)
 			var/dirn = pick(dirs)
 			dirs.Remove(dirn)

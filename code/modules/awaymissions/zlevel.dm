@@ -1,26 +1,27 @@
-proc/createRandomZlevel()
+/proc/createRandomZlevel()
 	if(awaydestinations.len || UNIT_TEST)	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
 		return
 
 	var/list/potentialRandomZlevels = list()
 	admin_notice("<font color='red'><B> Searching for away missions...</B></font>", R_DEBUG)
-	var/list/Lines = file2list("maps/RandomZLevels/fileList.txt")
-	if(!Lines.len)	return
-	for (var/t in Lines)
-		if (!t)
+	var/list/Lines = world.file2list("maps/RandomZLevels/fileList.txt")
+	if(!Lines.len)
+		return
+	for(var/t in Lines)
+		if(!t)
 			continue
 
 		t = trim(t)
-		if (length(t) == 0)
+		if(length(t) == 0)
 			continue
-		else if (copytext(t, 1, 2) == "#")
+		else if(copytext(t, 1, 2) == "#")
 			continue
 
 		var/pos = findtext(t, " ")
 		var/name = null
 	//	var/value = null
 
-		if (pos)
+		if(pos)
             // No, don't do lowertext here, that breaks paths on linux
 			name = copytext(t, 1, pos)
 		//	value = copytext(t, pos + 1)
@@ -32,7 +33,6 @@ proc/createRandomZlevel()
 			continue
 
 		potentialRandomZlevels.Add(name)
-
 
 	if(potentialRandomZlevels.len)
 		admin_notice("<font color='red'><B>Loading away mission...</B></font>", R_DEBUG)

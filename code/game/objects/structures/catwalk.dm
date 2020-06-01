@@ -30,7 +30,7 @@
 
 /obj/structure/catwalk/update_icon()
 	var/connectdir = 0
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(locate(/obj/structure/catwalk, get_step(src, direction)))
 			connectdir |= direction
 

@@ -412,7 +412,7 @@
 		if(lifes_since_move >= turns_per_move)
 			if(!(stop_when_pulled && pulledby)) //Some animals don't move when pulled
 				var/moving_to = 0 // otherwise it always picks 4, fuck if I know.   Did I mention fuck BYOND
-				moving_to = pick(cardinal)
+				moving_to = pick(GLOB.cardinals)
 				dir = moving_to			//How about we turn them the direction they are moving, yay.
 				var/turf/T = get_step(src,moving_to)
 				if(avoid_turf(T))
@@ -1463,7 +1463,7 @@
 //Break through windows/other things
 /mob/living/simple_mob/proc/DestroySurroundings(var/direction)
 	if(!direction)
-		direction = pick(cardinal) //FLAIL WILDLY
+		direction = pick(GLOB.cardinals) //FLAIL WILDLY
 
 	var/turf/problem_turf = get_step(src, direction)
 
@@ -1475,7 +1475,7 @@
 			damage_to_do *= M.outgoing_melee_damage_percent
 
 	for(var/obj/structure/window/obstacle in problem_turf)
-		if(obstacle.dir == reverse_dir[dir]) // So that windows get smashed in the right order
+		if(obstacle.dir == GLOB.reverse_dir[dir]) // So that windows get smashed in the right order
 			ai_log("DestroySurroundings() directional window hit",3)
 			obstacle.attack_generic(src, damage_to_do, pick(attacktext))
 			return

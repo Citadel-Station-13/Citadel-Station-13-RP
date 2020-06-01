@@ -64,11 +64,11 @@
 	strength = 8
 	skin_danger = 0.4
 
-/datum/reagent/toxin/neurotoxic_protein/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/toxin/neurotoxic_protein/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
 	if(alien != IS_DIONA)
 		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
-			step(M, pick(cardinal))
+			step(M, pick(GLOB.cardinals))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
 		if(prob(20))
@@ -748,7 +748,7 @@
 
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
-		step(M, pick(cardinal))
+		step(M, pick(GLOB.cardinals))
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))
 
@@ -917,7 +917,7 @@
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
 
-datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+datum/reagent/talum_quem/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
 
@@ -929,7 +929,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
-		step(M, pick(cardinal))
+		step(M, pick(GLOB.cardinals))
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))
 

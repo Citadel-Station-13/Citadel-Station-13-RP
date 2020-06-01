@@ -77,13 +77,13 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	if(weather_holder && weather_holder.current_weather && weather_holder.current_weather.light_color)
 		new_color = weather_holder.current_weather.light_color
 	else
-		var/low_r = hex2num(copytext(low_color, 2, 4))
-		var/low_g = hex2num(copytext(low_color, 4, 6))
-		var/low_b = hex2num(copytext(low_color, 6, 0))
+		var/low_r = GetRedPart(low_color)
+		var/low_g = GetGreenPart(low_color)
+		var/low_b = GetBluePart(low_color)
 
-		var/high_r = hex2num(copytext(high_color, 2, 4))
-		var/high_g = hex2num(copytext(high_color, 4, 6))
-		var/high_b = hex2num(copytext(high_color, 6, 0))
+		var/high_r = GetRedPart(high_color)
+		var/high_g = GetGreenPart(high_color)
+		var/high_b = GetBluePart(high_color)
 
 		var/new_r = LERP(low_r, high_r, interpolate_weight)
 		var/new_g = LERP(low_g, high_g, interpolate_weight)

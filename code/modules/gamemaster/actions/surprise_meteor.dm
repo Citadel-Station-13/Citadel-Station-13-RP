@@ -13,5 +13,5 @@
 /datum/gm_action/surprise_meteors/start()
 	..()
 	spawn(1)
-		spawn_meteors(rand(4, 8), meteors_normal, pick(cardinal))
+		spawn_meteors(rand(4, 8), meteors_normal, pick(GLOB.cardinals))
 	message_admins("Surprise meteors event has ended.")
