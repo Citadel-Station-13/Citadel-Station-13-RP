@@ -112,7 +112,7 @@
 /atom/proc/reveal_blood()
 	return
 
-/atom/proc/assume_air(datum/gas_mixture/giver)
+/atom/proc/assume_air(datum/gas_mixture_old/giver)
 	return null
 
 /atom/proc/remove_air(amount)

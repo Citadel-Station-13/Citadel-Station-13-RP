@@ -11,7 +11,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 /turf/var/obj/fire/fire = null
 
 //Some legacy definitions so fires can be started.
-atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+atom/proc/temperature_expose(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
 	return null
 
 
@@ -23,7 +23,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		return 0
 	if(locate(/obj/fire) in src)
 		return 1
-	var/datum/gas_mixture/air_contents = return_air()
+	var/datum/gas_mixture_old/air_contents = return_air()
 	if(!air_contents || exposed_temperature < PHORON_MINIMUM_BURN_TEMPERATURE)
 		return 0
 
@@ -38,7 +38,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 /zone/proc/process_fire()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, consumption_rate)
-	var/datum/gas_mixture/burn_gas = air.remove_ratio(consumption_rate, fire_tiles.len)
+	var/datum/gas_mixture_old/burn_gas = air.remove_ratio(consumption_rate, fire_tiles.len)
 
 	var/firelevel = burn_gas.zburn(src, fire_tiles, force_burn = 1, no_check = 1)
 
@@ -132,7 +132,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		return 1
 
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
-	var/datum/gas_mixture/air_contents = my_tile.return_air()
+	var/datum/gas_mixture_old/air_contents = my_tile.return_air()
 
 	if(firelevel > 6)
 		icon_state = "3"
@@ -161,7 +161,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 					continue
 
 				//if(!enemy_tile.zone.fire_tiles.len) TODO - optimize
-				var/datum/gas_mixture/acs = enemy_tile.return_air()
+				var/datum/gas_mixture_old/acs = enemy_tile.return_air()
 				var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in enemy_tile
 				if(!acs || !acs.check_combustability(liquid))
 					continue
@@ -191,7 +191,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 	setDir(pick(cardinal))
 
-	var/datum/gas_mixture/air_contents = loc.return_air()
+	var/datum/gas_mixture_old/air_contents = loc.return_air()
 	color = fire_color(air_contents.temperature)
 	set_light(3, 1, color)
 

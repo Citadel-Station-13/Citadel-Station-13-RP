@@ -50,7 +50,7 @@
 			id_with_download += text2num(N)
 
 /obj/machinery/r_n_d/server/process()
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture_old/environment = loc.return_air()
 	switch(environment.temperature)
 		if(0 to T0C)
 			health = min(100, health + 1)
@@ -98,11 +98,11 @@
 	if(!(stat & (NOPOWER|BROKEN))) //Blatently stolen from telecoms
 		var/turf/simulated/L = loc
 		if(istype(L))
-			var/datum/gas_mixture/env = L.return_air()
+			var/datum/gas_mixture_old/env = L.return_air()
 
 			var/transfer_moles = 0.25 * env.total_moles
 
-			var/datum/gas_mixture/removed = env.remove(transfer_moles)
+			var/datum/gas_mixture_old/removed = env.remove(transfer_moles)
 
 			if(removed)
 				var/heat_produced = idle_power_usage	//obviously can't produce more heat than the machine draws from it's power source

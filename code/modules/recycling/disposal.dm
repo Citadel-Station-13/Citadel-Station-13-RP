@@ -16,7 +16,7 @@
 	icon_state = "disposal"
 	anchored = 1
 	density = 1
-	var/datum/gas_mixture/air_contents	// internal reservoir
+	var/datum/gas_mixture_old/air_contents	// internal reservoir
 	var/mode = 1	// item mode 0=off 1=charging 2=charged
 	var/flush = 0	// true if flush handle is pulled
 	var/obj/structure/disposalpipe/trunk/trunk = null // the attached pipe trunk
@@ -39,7 +39,7 @@
 		else
 			trunk.linked = src	// link the pipe trunk to self
 
-		air_contents = new/datum/gas_mixture(PRESSURE_TANK_VOLUME)
+		air_contents = new/datum/gas_mixture_old(PRESSURE_TANK_VOLUME)
 		update()
 
 /obj/machinery/disposal/Destroy()
@@ -390,7 +390,7 @@
 		return
 
 	var/atom/L = loc						// recharging from loc turf
-	var/datum/gas_mixture/env = L.return_air()
+	var/datum/gas_mixture_old/env = L.return_air()
 
 	var/power_draw = -1
 	if(env && env.temperature > 0)
@@ -492,7 +492,7 @@
 
 /obj/structure/disposalholder
 	invisibility = 101
-	var/datum/gas_mixture/gas = null	// gas used to flush, will appear at exit point
+	var/datum/gas_mixture_old/gas = null	// gas used to flush, will appear at exit point
 	var/active = 0	// true if the holder is moving, otherwise inactive
 	dir = 0
 	var/count = 2048	//*** can travel 2048 steps before going inactive (in case of loops)
@@ -504,7 +504,7 @@
 
 
 	// initialize a holder from the contents of a disposal unit
-	proc/init(var/obj/machinery/disposal/D, var/datum/gas_mixture/flush_gas)
+	proc/init(var/obj/machinery/disposal/D, var/datum/gas_mixture_old/flush_gas)
 		gas = flush_gas// transfer gas resv. into holder object -- let's be explicit about the data this proc consumes, please.
 
 		//Check for any living mobs trigger hasmob.

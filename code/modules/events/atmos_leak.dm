@@ -60,7 +60,7 @@
 	// TODO - Maybe having it released from a single point and thus causing airflow to blow stuff around
 
 	// Fow now just add a bunch of it to the air
-	var/datum/gas_mixture/air_contents = new
+	var/datum/gas_mixture_old/air_contents = new
 	air_contents.temperature = T20C + ((severity - 1) * rand(-50, 50))
 	air_contents.gas[gas_type] = 10 * MOLES_CELLSTANDARD
 	target_turf.assume_air(air_contents)

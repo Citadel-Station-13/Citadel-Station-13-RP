@@ -66,7 +66,7 @@
 /obj/item/gun/energy/particle/special_check(var/mob/user)
 	if (..())
 		var/turf/T = get_turf(src)
-		var/datum/gas_mixture/environment = T ? T.return_air() : null
+		var/datum/gas_mixture_old/environment = T ? T.return_air() : null
 		var/pressure =  environment ? environment.return_pressure() : 0
 
 		if (!power_supply || power_supply.charge < charge_cost)

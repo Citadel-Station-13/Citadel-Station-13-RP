@@ -5,7 +5,7 @@
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
 	//layer = TURF_LAYER+0.1
 
-	var/datum/gas_mixture/air_contents
+	var/datum/gas_mixture_old/air_contents
 
 	var/obj/machinery/atmospherics/node
 

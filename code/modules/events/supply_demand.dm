@@ -223,7 +223,7 @@
 //
 /datum/supply_demand_order/gas
 	name = "gas mixture"
-	var/datum/gas_mixture/mixture
+	var/datum/gas_mixture_old/mixture
 
 /datum/supply_demand_order/gas/describe()
 	var/pressure = mixture.return_pressure()
@@ -236,7 +236,7 @@
 /datum/supply_demand_order/gas/match_item(var/obj/machinery/portable_atmospherics/canister)
 	if(!istype(canister))
 		return
-	var/datum/gas_mixture/canmix = canister.air_contents
+	var/datum/gas_mixture_old/canmix = canister.air_contents
 	if(!canmix || canmix.total_moles <= 0)
 		return
 	if(canmix.return_pressure() < mixture.return_pressure())
@@ -320,7 +320,7 @@
 	return
 /*
 /datum/event/supply_demand/proc/choose_atmos_items(var/differentTypes)
-	var/datum/gas_mixture/mixture = new
+	var/datum/gas_mixture_old/mixture = new
 	mixture.temperature = T20C
 	var/unpickedTypes = gas_data.gases.Copy()
 	unpickedTypes -= "volatile_fuel" // Don't do that one

@@ -720,7 +720,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
@@ -767,7 +767,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles
@@ -797,7 +797,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/total_moles = environment.total_moles
 
@@ -826,7 +826,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/total_moles = environment.total_moles
 
@@ -856,7 +856,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/total_moles = environment.total_moles
 
@@ -886,7 +886,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/total_moles = environment.total_moles
 
@@ -916,7 +916,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) //Invalid input
 		return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 
 	var/total_moles = environment.total_moles
 

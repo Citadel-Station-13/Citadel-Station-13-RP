@@ -13,7 +13,7 @@
 	to_chat(user, "<span class='warning'>Your [src] flashes a red light as it fails to analyze \the [A].</span>")
 	return 0
 
-/proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture/mixture, var/mob/user)
+/proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture_old/mixture, var/mob/user)
 	var/list/results = list()
 
 	if (mixture && mixture.total_moles > 0)
@@ -65,7 +65,7 @@
 	return atmosanalyzer_scan(src, src.output.air, user)
 	
 /obj/machinery/meter/atmosanalyze(var/mob/user)
-	var/datum/gas_mixture/mixture = null
+	var/datum/gas_mixture_old/mixture = null
 	if(src.target)
 		mixture = src.target.parent.air
 	return atmosanalyzer_scan(src, mixture, user)

@@ -36,7 +36,7 @@
 
 	// First let's set up the gasmix and base gases for this template
 	// We make the string from a gasmix in this proc because gases need to calculate their pressure
-	var/datum/gas_mixture/gasmix = new
+	var/datum/gas_mixture_old/gasmix = new
 	var/list/gaslist = gasmix.gases
 	gasmix.temperature = rand(minimum_temp, maximum_temp)
 	for(var/gaspath in base_gases)

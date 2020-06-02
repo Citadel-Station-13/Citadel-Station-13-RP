@@ -2,7 +2,7 @@
 /turf/simulated/var/open_directions
 
 /turf/var/needs_air_update = 0
-/turf/var/datum/gas_mixture/air
+/turf/var/datum/gas_mixture_old/air
 
 /turf/simulated/proc/update_graphic(list/graphic_add = null, list/graphic_remove = null)
 	if(LAZYLEN(graphic_add))
@@ -228,7 +228,7 @@
 /turf/proc/post_update_air_properties()
 	if(connections) connections.update_all()
 
-/turf/assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
+/turf/assume_air(datum/gas_mixture_old/giver) //use this for machines to adjust air
 	return 0
 
 /turf/proc/assume_gas(gasid, moles, temp = 0)
@@ -236,7 +236,7 @@
 
 /turf/return_air()
 	//Create gas mixture to hold data for passing
-	var/datum/gas_mixture/GM = new
+	var/datum/gas_mixture_old/GM = new
 
 	GM.adjust_multi("oxygen", oxygen, "carbon_dioxide", carbon_dioxide, "nitrogen", nitrogen, "phoron", phoron)
 	GM.temperature = temperature
@@ -244,7 +244,7 @@
 	return GM
 
 /turf/remove_air(amount as num)
-	var/datum/gas_mixture/GM = new
+	var/datum/gas_mixture_old/GM = new
 
 	var/sum = oxygen + carbon_dioxide + nitrogen + phoron
 	if(sum>0)
@@ -258,12 +258,12 @@
 
 	return GM
 
-/turf/simulated/assume_air(datum/gas_mixture/giver)
-	var/datum/gas_mixture/my_air = return_air()
+/turf/simulated/assume_air(datum/gas_mixture_old/giver)
+	var/datum/gas_mixture_old/my_air = return_air()
 	my_air.merge(giver)
 
 /turf/simulated/assume_gas(gasid, moles, temp = null)
-	var/datum/gas_mixture/my_air = return_air()
+	var/datum/gas_mixture_old/my_air = return_air()
 
 	if(isnull(temp))
 		my_air.adjust_gas(gasid, moles)
@@ -273,7 +273,7 @@
 	return 1
 
 /turf/simulated/remove_air(amount as num)
-	var/datum/gas_mixture/my_air = return_air()
+	var/datum/gas_mixture_old/my_air = return_air()
 	return my_air.remove(amount)
 
 /turf/simulated/return_air()
@@ -292,13 +292,13 @@
 		return air
 
 /turf/proc/make_air()
-	air = new/datum/gas_mixture
+	air = new/datum/gas_mixture_old
 	air.temperature = temperature
 	air.adjust_multi("oxygen", oxygen, "carbon_dioxide", carbon_dioxide, "nitrogen", nitrogen, "phoron", phoron)
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
 
 /turf/simulated/proc/c_copy_air()
-	if(!air) air = new/datum/gas_mixture
+	if(!air) air = new/datum/gas_mixture_old
 	air.copy_from(zone.air)
 	air.group_multiplier = 1

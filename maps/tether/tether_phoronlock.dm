@@ -21,7 +21,7 @@ obj/machinery/airlock_sensor/phoron
 
 obj/machinery/airlock_sensor/phoron/process()
 	if(on)
-		var/datum/gas_mixture/air_sample = return_air()
+		var/datum/gas_mixture_old/air_sample = return_air()
 		var/pressure = round(air_sample.return_pressure(), 0.1)
 		var/phoron = ("phoron" in air_sample.gas) ? round(air_sample.gas["phoron"], 0.1) : 0
 
@@ -101,9 +101,9 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	..()
 
 	if(on)
-		var/datum/gas_mixture/env = loc.return_air()
+		var/datum/gas_mixture_old/env = loc.return_air()
 		if(env && abs(env.temperature - target_temp) > 0.1)
-			var/datum/gas_mixture/removed = env.remove_ratio(0.99)
+			var/datum/gas_mixture_old/removed = env.remove_ratio(0.99)
 			if(removed)
 				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
 				removed.add_thermal_energy(min(heating_power,heat_transfer))

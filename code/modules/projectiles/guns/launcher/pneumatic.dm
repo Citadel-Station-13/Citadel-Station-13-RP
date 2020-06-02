@@ -85,7 +85,7 @@
 	var/environment_pressure = 10
 	var/turf/T = get_turf(src)
 	if(T)
-		var/datum/gas_mixture/environment = T.return_air()
+		var/datum/gas_mixture_old/environment = T.return_air()
 		if(environment)
 			environment_pressure = environment.return_pressure()
 
@@ -117,7 +117,7 @@
 /obj/item/gun/launcher/pneumatic/handle_post_fire()
 	if(tank)
 		var/lost_gas_amount = tank.air_contents.total_moles*(pressure_setting/100)
-		var/datum/gas_mixture/removed = tank.air_contents.remove(lost_gas_amount)
+		var/datum/gas_mixture_old/removed = tank.air_contents.remove(lost_gas_amount)
 
 		var/turf/T = get_turf(src.loc)
 		if(T) T.assume_air(removed)

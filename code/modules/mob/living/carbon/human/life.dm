@@ -328,7 +328,7 @@
 
 	/** breathing **/
 
-/mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
+/mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture_old/environment)
 	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 	if(glasses && (glasses.item_flags & BLOCK_GAS_SMOKE_EFFECT))
@@ -337,7 +337,7 @@
 		return
 	..()
 
-/mob/living/carbon/human/handle_post_breath(datum/gas_mixture/breath)
+/mob/living/carbon/human/handle_post_breath(datum/gas_mixture_old/breath)
 	..()
 	//spread some viruses while we are at it
 	if(breath && virus2.len > 0 && prob(10))
@@ -365,7 +365,7 @@
 	return null
 
 
-/mob/living/carbon/human/handle_breath(datum/gas_mixture/breath)
+/mob/living/carbon/human/handle_breath(datum/gas_mixture_old/breath)
 	if(status_flags & GODMODE)
 		return
 
@@ -604,7 +604,7 @@
 	breath.update_values()
 	return 1
 
-/mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
+/mob/living/carbon/human/handle_environment(datum/gas_mixture_old/environment)
 	if(!environment)
 		return
 	//Stuff like the xenomorph's plasma regen happens here.

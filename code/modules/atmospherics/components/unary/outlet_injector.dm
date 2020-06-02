@@ -62,7 +62,7 @@
 		return
 
 	var/power_draw = -1
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture_old/environment = loc.return_air()
 
 	if(environment && air_contents.temperature > 0)
 		var/transfer_moles = (volume_rate/air_contents.volume)*air_contents.total_moles //apply flow rate limit
@@ -81,7 +81,7 @@
 	if(injecting || (stat & NOPOWER))
 		return 0
 
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture_old/environment = loc.return_air()
 	if (!environment)
 		return 0
 

@@ -3,7 +3,7 @@
 //
 /obj/machinery/atmospherics/pipe
 
-	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
+	var/datum/gas_mixture_old/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent
 	var/volume = 0
 

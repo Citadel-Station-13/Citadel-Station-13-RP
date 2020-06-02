@@ -9,7 +9,7 @@
 	//if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell)) return
 	if(!should_have_organ(O_LUNGS)) return
 
-	var/datum/gas_mixture/breath = null
+	var/datum/gas_mixture_old/breath = null
 
 	//First, check if we can breathe at all
 	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
@@ -32,7 +32,7 @@
 		if(!breath)
 			breath = get_breath_from_environment() //No breath from internals so let's try to get air from our location
 		if(!breath)
-			var/static/datum/gas_mixture/vacuum //avoid having to create a new gas mixture for each breath in space
+			var/static/datum/gas_mixture_old/vacuum //avoid having to create a new gas mixture for each breath in space
 			if(!vacuum) vacuum = new
 
 			breath = vacuum //still nothing? must be vacuum
@@ -56,9 +56,9 @@
 	return null
 
 /mob/living/carbon/proc/get_breath_from_environment(var/volume_needed=BREATH_VOLUME)
-	var/datum/gas_mixture/breath = null
+	var/datum/gas_mixture_old/breath = null
 
-	var/datum/gas_mixture/environment
+	var/datum/gas_mixture_old/environment
 	if(loc)
 		environment = loc.return_air_for_internal_lifeform(src)
 
@@ -70,13 +70,13 @@
 		//handle mask filtering
 		if(istype(wear_mask, /obj/item/clothing/mask) && breath)
 			var/obj/item/clothing/mask/M = wear_mask
-			var/datum/gas_mixture/gas_filtered = M.filter_air(breath)
+			var/datum/gas_mixture_old/gas_filtered = M.filter_air(breath)
 			loc.assume_air(gas_filtered)
 		return breath
 	return null
 
 //Handle possble chem smoke effect
-/mob/living/carbon/proc/handle_chemical_smoke(var/datum/gas_mixture/environment)
+/mob/living/carbon/proc/handle_chemical_smoke(var/datum/gas_mixture_old/environment)
 	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 
@@ -87,9 +87,9 @@
 			// I dunno, maybe the reagents enter the blood stream through the lungs?
 			break // If they breathe in the nasty stuff once, no need to continue checking
 
-/mob/living/carbon/proc/handle_breath(datum/gas_mixture/breath)
+/mob/living/carbon/proc/handle_breath(datum/gas_mixture_old/breath)
 	return
 
-/mob/living/carbon/proc/handle_post_breath(datum/gas_mixture/breath)
+/mob/living/carbon/proc/handle_post_breath(datum/gas_mixture_old/breath)
 	if(breath)
 		loc.assume_air(breath) //by default, exhale

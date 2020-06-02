@@ -14,8 +14,8 @@
 	var/list/filtered_gases = list("phoron", "sleeping_agent")
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 75, rad = 0)
 
-/obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
-	var/datum/gas_mixture/gas_filtered = new
+/obj/item/clothing/mask/gas/filter_air(datum/gas_mixture_old/air)
+	var/datum/gas_mixture_old/gas_filtered = new
 
 	for(var/g in filtered_gases)
 		if(air.gas[g])

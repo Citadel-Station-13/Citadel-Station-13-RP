@@ -140,7 +140,7 @@
 	if(!use_power || (stat & (NOPOWER|BROKEN)))
 		return 0
 
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture_old/environment = loc.return_air()
 
 	var/power_draw = -1
 	if(scrubbing)

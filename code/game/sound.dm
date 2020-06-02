@@ -99,8 +99,8 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		var/pressure_factor = 1
 		if(pressure_affected)
 			//Atmosphere affects sound
-			var/datum/gas_mixture/hearer_env = T.return_air()
-			var/datum/gas_mixture/source_env = turf_source.return_air()
+			var/datum/gas_mixture_old/hearer_env = T.return_air()
+			var/datum/gas_mixture_old/source_env = turf_source.return_air()
 
 			if(hearer_env && source_env)
 				var/pressure = min(hearer_env.return_pressure(), source_env.return_pressure())

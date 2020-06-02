@@ -112,7 +112,7 @@
 
 	var/turf/T = H.loc
 	if(!T) return
-	var/datum/gas_mixture/environment = T.return_air()
+	var/datum/gas_mixture_old/environment = T.return_air()
 	if(!environment) return
 
 	if(environment.gas["phoron"] > 0 || locate(/obj/effect/alien/weeds) in T)

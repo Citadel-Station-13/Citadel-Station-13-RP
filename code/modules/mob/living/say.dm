@@ -313,7 +313,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/turf/T = get_turf(src)
 	if(T)
 		//Air is too thin to carry sound at all, contact speech only
-		var/datum/gas_mixture/environment = T.return_air()
+		var/datum/gas_mixture_old/environment = T.return_air()
 		var/pressure = (environment)? environment.return_pressure() : 0
 		if(pressure < SOUND_MINIMUM_PRESSURE)
 			message_range = 1

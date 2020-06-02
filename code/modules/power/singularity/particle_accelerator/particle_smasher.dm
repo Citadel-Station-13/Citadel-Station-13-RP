@@ -190,7 +190,7 @@
 			if(istype(target, R.required_material))
 				if(energy >= R.required_energy_min && energy <= R.required_energy_max)	// The machine has enough Vaguely Defined 'Energy'.
 					var/turf/T = get_turf(src)
-					var/datum/gas_mixture/environment = T.return_air()
+					var/datum/gas_mixture_old/environment = T.return_air()
 					if(environment.temperature >= R.required_atmos_temp_min && environment.temperature <= R.required_atmos_temp_max)	// Too hot, or too cold.
 						if(R.reagents && R.reagents.len)
 							if(!reagent_container || R.check_reagents(reagent_container.reagents) == -1)	// It doesn't have a reagent storage when it needs it, or it's lacking what is needed.

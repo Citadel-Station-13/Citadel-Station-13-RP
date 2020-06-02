@@ -63,7 +63,7 @@
 		data["not_connected"] = 0
 		data["powered"] = 1
 		data["integrity_percentage"] = round(linked.get_integrity())
-		var/datum/gas_mixture/env = null
+		var/datum/gas_mixture_old/env = null
 		if(!isnull(linked.loc) && !istype(linked.loc, /turf/space))
 			env = linked.loc.return_air()
 

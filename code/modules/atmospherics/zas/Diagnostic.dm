@@ -23,7 +23,7 @@ client/proc/Zone_Info(turf/T as null|turf)
 			T:zone:dbg_data(src)
 		else
 			to_chat(mob, "No zone here.")
-			var/datum/gas_mixture/mix = T.return_air()
+			var/datum/gas_mixture_old/mix = T.return_air()
 			to_chat(mob, "[mix.return_pressure()] kPa [mix.temperature]C")
 			for(var/g in mix.gas)
 				to_chat(mob, "[g]: [mix.gas[g]]\n")

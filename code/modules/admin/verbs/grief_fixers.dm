@@ -21,7 +21,7 @@
 
 	// Remove all gases from all pipenets
 	for(var/datum/pipe_network/PN in pipe_networks)
-		for(var/datum/gas_mixture/G in PN.gases)
+		for(var/datum/gas_mixture_old/G in PN.gases)
 			G.gas = list()
 			G.update_values()
 

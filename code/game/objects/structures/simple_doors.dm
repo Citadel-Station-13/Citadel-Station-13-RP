@@ -13,7 +13,7 @@
 	var/hardness = 1
 	var/oreAmount = 7
 
-/obj/structure/simple_door/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/structure/simple_door/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
 	TemperatureAct(exposed_temperature)
 
 /obj/structure/simple_door/proc/TemperatureAct(temperature)

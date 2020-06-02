@@ -391,7 +391,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!( istype(usr.loc, /turf) ))
 		return
 
-	var/datum/gas_mixture/environment = usr.loc.return_air()
+	var/datum/gas_mixture_old/environment = usr.loc.return_air()
 
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles

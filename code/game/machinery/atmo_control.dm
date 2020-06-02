@@ -32,7 +32,7 @@
 		signal.data["tag"] = id_tag
 		signal.data["timestamp"] = world.time
 
-		var/datum/gas_mixture/air_sample = return_air()
+		var/datum/gas_mixture_old/air_sample = return_air()
 
 		if(output&1)
 			signal.data["pressure"] = num2text(round(air_sample.return_pressure(),0.1),)

@@ -2,7 +2,7 @@
 	name = "atmoalter"
 	use_power = USE_POWER_OFF
 	layer = OBJ_LAYER // These are mobile, best not be under everything.
-	var/datum/gas_mixture/air_contents = new
+	var/datum/gas_mixture_old/air_contents = new
 
 	var/obj/machinery/atmospherics/portables_connector/connected_port
 	var/obj/item/tank/holding

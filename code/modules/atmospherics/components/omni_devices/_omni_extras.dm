@@ -25,7 +25,7 @@
 	var/concentration = 0
 	var/con_lock = 0
 	var/transfer_moles = 0
-	var/datum/gas_mixture/air
+	var/datum/gas_mixture_old/air
 	var/obj/machinery/atmospherics/node
 	var/datum/pipe_network/network
 

@@ -30,7 +30,7 @@
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/power_compressor
 	var/obj/machinery/power/turbine/turbine
-	var/datum/gas_mixture/gas_contained
+	var/datum/gas_mixture_old/gas_contained
 	var/turf/simulated/inturf
 	var/starter = 0
 	var/rpm = 0
@@ -152,11 +152,11 @@
 	overlays.Cut()
 
 	rpm = 0.9* rpm + 0.1 * rpmtarget
-	var/datum/gas_mixture/environment = inturf.return_air()
+	var/datum/gas_mixture_old/environment = inturf.return_air()
 
 	// It's a simplified version taking only 1/10 of the moles from the turf nearby. It should be later changed into a better version
 	var/transfer_moles = environment.total_moles / 10
-	var/datum/gas_mixture/removed = inturf.remove_air(transfer_moles)
+	var/datum/gas_mixture_old/removed = inturf.remove_air(transfer_moles)
 	gas_contained.merge(removed)
 
 	// RPM function to include compression friction - be advised that too low/high of a compfriction value can make things screwy
@@ -265,7 +265,7 @@
 
 	if(compressor.gas_contained.total_moles>0)
 		var/oamount = min(compressor.gas_contained.total_moles, (compressor.rpm+100)/35000*compressor.capacity)
-		var/datum/gas_mixture/removed = compressor.gas_contained.remove(oamount)
+		var/datum/gas_mixture_old/removed = compressor.gas_contained.remove(oamount)
 		outturf.assume_air(removed)
 
 	// If it works, put an overlay that it works!

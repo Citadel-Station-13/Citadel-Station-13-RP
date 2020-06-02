@@ -67,7 +67,7 @@
 		if(!T)
 			active = null
 			return
-		var/datum/gas_mixture/air = T.return_air()
+		var/datum/gas_mixture_old/air = T.return_air()
 		if(!istype(air))
 			active = null
 			return

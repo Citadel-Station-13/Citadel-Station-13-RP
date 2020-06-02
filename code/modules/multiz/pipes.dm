@@ -63,7 +63,7 @@ obj/machinery/atmospherics/pipe/zpipe/process()
 		. = PROCESS_KILL
 
 obj/machinery/atmospherics/pipe/zpipe/check_pressure(pressure)
-	var/datum/gas_mixture/environment = loc.return_air()
+	var/datum/gas_mixture_old/environment = loc.return_air()
 
 	var/pressure_difference = pressure - environment.return_pressure()
 

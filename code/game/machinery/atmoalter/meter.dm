@@ -40,7 +40,7 @@
 		icon_state = "meter0"
 		return 0
 
-	var/datum/gas_mixture/environment = target.return_air()
+	var/datum/gas_mixture_old/environment = target.return_air()
 	if(!environment)
 		icon_state = "meterX"
 		return 0
@@ -86,7 +86,7 @@
 		t += "<span class='warning'>The display is off.</span>"
 
 	else if(src.target)
-		var/datum/gas_mixture/environment = target.return_air()
+		var/datum/gas_mixture_old/environment = target.return_air()
 		if(environment)
 			t += "The pressure gauge reads [round(environment.return_pressure(), 0.01)] kPa; [round(environment.temperature,0.01)]K ([round(environment.temperature-T0C,0.01)]&deg;C)"
 		else

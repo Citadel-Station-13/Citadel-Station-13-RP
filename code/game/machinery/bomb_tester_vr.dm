@@ -29,7 +29,7 @@
 
 	var/simulation_results
 
-	var/datum/gas_mixture/faketank
+	var/datum/gas_mixture_old/faketank
 	var/faketank_integrity
 
 /obj/machinery/bomb_tester/Initialize()
@@ -321,7 +321,7 @@
 	faketank.copy_from(tank1.air_contents)
 	faketank_integrity = tank1.integrity
 
-	var/datum/gas_mixture/fakecanister = new
+	var/datum/gas_mixture_old/fakecanister = new
 	fakecanister.volume = test_canister.air_contents.volume
 	fakecanister.copy_from(test_canister.air_contents)
 	var/fakecanister_RFL = test_canister.release_flow_rate
@@ -366,7 +366,7 @@
 		P.name = "Explosive Simulator printout"
 		P.info = simulation_results
 
-/obj/machinery/bomb_tester/proc/format_gas_for_results(var/datum/gas_mixture/G)
+/obj/machinery/bomb_tester/proc/format_gas_for_results(var/datum/gas_mixture_old/G)
 	G.update_values() //Just in case
 	var/results = ""
 	var/pressure = G.return_pressure()

@@ -50,7 +50,7 @@ Class Procs:
 
 /zone/var/list/edges = list()
 
-/zone/var/datum/gas_mixture/air = new
+/zone/var/datum/gas_mixture_old/air = new
 
 /zone/var/list/graphic_add = list()
 /zone/var/list/graphic_remove = list()
@@ -70,7 +70,7 @@ Class Procs:
 
 	if(!istype(T))
 		return
-	var/datum/gas_mixture/turf_air = T.return_air()
+	var/datum/gas_mixture_old/turf_air = T.return_air()
 	add_tile_air(turf_air)
 	T.zone = src
 	contents.Add(T)
@@ -145,7 +145,7 @@ Class Procs:
 		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
 		air_master.mark_for_update(T)
 
-/zone/proc/add_tile_air(datum/gas_mixture/tile_air)
+/zone/proc/add_tile_air(datum/gas_mixture_old/tile_air)
 	//air.volume += CELL_VOLUME
 	air.group_multiplier = 1
 	air.multiply(contents.len)

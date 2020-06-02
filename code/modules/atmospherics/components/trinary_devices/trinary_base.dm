@@ -7,9 +7,9 @@
 	var/mirrored = FALSE
 	var/tee = FALSE
 
-	var/datum/gas_mixture/air1
-	var/datum/gas_mixture/air2
-	var/datum/gas_mixture/air3
+	var/datum/gas_mixture_old/air1
+	var/datum/gas_mixture_old/air2
+	var/datum/gas_mixture_old/air3
 
 	var/obj/machinery/atmospherics/node3
 

@@ -57,7 +57,7 @@
 	var/use_internal_tank = 0
 	var/internal_tank_valve = ONE_ATMOSPHERE
 	var/obj/machinery/portable_atmospherics/canister/internal_tank
-	var/datum/gas_mixture/cabin_air
+	var/datum/gas_mixture_old/cabin_air
 	var/obj/machinery/atmospherics/portables_connector/connected_port = null
 
 	var/obj/item/radio/radio = null
@@ -727,7 +727,7 @@
 	check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
 
-/obj/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/mecha/fire_act(datum/gas_mixture_old/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
 		src.log_message("Exposed to dangerous temperature.",1)
 		src.take_damage(5,"fire")
@@ -1001,7 +1001,7 @@
 	if(use_internal_tank)
 		. =  cabin_air.return_pressure()
 	else
-		var/datum/gas_mixture/t_air = get_turf_air()
+		var/datum/gas_mixture_old/t_air = get_turf_air()
 		if(t_air)
 			. = t_air.return_pressure()
 	return
@@ -1012,7 +1012,7 @@
 	if(use_internal_tank)
 		. = cabin_air.temperature
 	else
-		var/datum/gas_mixture/t_air = get_turf_air()
+		var/datum/gas_mixture_old/t_air = get_turf_air()
 		if(t_air)
 			. = t_air.temperature
 	return
@@ -1274,7 +1274,7 @@
 	/*
 		if(ishuman(occupant) && (return_pressure() > HAZARD_HIGH_PRESSURE))
 			use_internal_tank = 0
-			var/datum/gas_mixture/environment = get_turf_air()
+			var/datum/gas_mixture_old/environment = get_turf_air()
 			if(environment)
 				var/env_pressure = environment.return_pressure()
 				var/pressure_delta = (cabin.return_pressure() - env_pressure)
@@ -1285,7 +1285,7 @@
 					transfer_moles = pressure_delta*environment.volume/(cabin.return_temperature() * R_IDEAL_GAS_EQUATION)
 
 			//Actually transfer the gas
-					var/datum/gas_mixture/removed = cabin.air_contents.remove(transfer_moles)
+					var/datum/gas_mixture_old/removed = cabin.air_contents.remove(transfer_moles)
 					loc.assume_air(removed)
 
 			occupant.SetStunned(5)
@@ -1934,8 +1934,8 @@
 
 /datum/global_iterator/mecha_tank_give_air/process(var/obj/mecha/mecha)
 	if(mecha.internal_tank)
-		var/datum/gas_mixture/tank_air = mecha.internal_tank.return_air()
-		var/datum/gas_mixture/cabin_air = mecha.cabin_air
+		var/datum/gas_mixture_old/tank_air = mecha.internal_tank.return_air()
+		var/datum/gas_mixture_old/cabin_air = mecha.cabin_air
 
 		var/release_pressure = mecha.internal_tank_valve
 		var/cabin_pressure = cabin_air.return_pressure()
@@ -1944,16 +1944,16 @@
 		if(pressure_delta > 0) //cabin pressure lower than release pressure
 			if(tank_air.temperature > 0)
 				transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
+				var/datum/gas_mixture_old/removed = tank_air.remove(transfer_moles)
 				cabin_air.merge(removed)
 		else if(pressure_delta < 0) //cabin pressure higher than release pressure
-			var/datum/gas_mixture/t_air = mecha.get_turf_air()
+			var/datum/gas_mixture_old/t_air = mecha.get_turf_air()
 			pressure_delta = cabin_pressure - release_pressure
 			if(t_air)
 				pressure_delta = min(cabin_pressure - t_air.return_pressure(), pressure_delta)
 			if(pressure_delta > 0) //if location pressure is lower than cabin pressure
 				transfer_moles = pressure_delta*cabin_air.volume/(cabin_air.temperature * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
+				var/datum/gas_mixture_old/removed = cabin_air.remove(transfer_moles)
 				if(t_air)
 					t_air.merge(removed)
 				else //just delete the cabin gas, we're in space or some shit
@@ -1985,7 +1985,7 @@
 		if(mecha.internal_tank)
 			if(mecha.internal_tank.return_pressure()>mecha.internal_tank.maximum_pressure && !(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)))
 				mecha.setInternalDamage(MECHA_INT_TANK_BREACH)
-			var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
+			var/datum/gas_mixture_old/int_tank_air = mecha.internal_tank.return_air()
 			if(int_tank_air && int_tank_air.volume>0) //heat the air_contents
 				int_tank_air.temperature = min(6000+T0C, int_tank_air.temperature+rand(10,15))
 		if(mecha.cabin_air && mecha.cabin_air.volume>0)
@@ -1996,8 +1996,8 @@
 		mecha.pr_int_temp_processor.stop()
 	if(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)) //remove some air from internal tank
 		if(mecha.internal_tank)
-			var/datum/gas_mixture/int_tank_air = mecha.internal_tank.return_air()
-			var/datum/gas_mixture/leaked_gas = int_tank_air.remove_ratio(0.10)
+			var/datum/gas_mixture_old/int_tank_air = mecha.internal_tank.return_air()
+			var/datum/gas_mixture_old/leaked_gas = int_tank_air.remove_ratio(0.10)
 			if(mecha.loc && hascall(mecha.loc,"assume_air"))
 				mecha.loc.assume_air(leaked_gas)
 			else

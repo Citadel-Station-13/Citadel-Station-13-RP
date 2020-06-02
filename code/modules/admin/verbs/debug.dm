@@ -82,7 +82,7 @@
 	if (!( istype(T, /turf) ))
 		return
 
-	var/datum/gas_mixture/env = T.return_air()
+	var/datum/gas_mixture_old/env = T.return_air()
 
 	var/t = "<font color='blue'>Coordinates: [T.x],[T.y],[T.z]\n</font>"
 	t += "<font color='red'>Temperature: [env.temperature]\n</font>"

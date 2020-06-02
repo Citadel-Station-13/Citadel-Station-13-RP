@@ -57,9 +57,9 @@
 			temperature = between(0, temperature, ROD_TEMPERATURE_CUTOFF)
 			sharer.temperature += (new_temperature - sharer.temperature) * efficiency
 			sharer.temperature = between(0, sharer.temperature, ROD_TEMPERATURE_CUTOFF)
-	else if(istype(E, /datum/gas_mixture))
-		var/datum/gas_mixture/env = E
-		var/datum/gas_mixture/sharer = env.remove(efficiency * env.total_moles)
+	else if(istype(E, /datum/gas_mixture_old))
+		var/datum/gas_mixture_old/env = E
+		var/datum/gas_mixture_old/sharer = env.remove(efficiency * env.total_moles)
 		var/share_heatcap = sharer.heat_capacity()
 
 		if(our_heatcap + share_heatcap)

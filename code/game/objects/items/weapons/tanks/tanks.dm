@@ -23,7 +23,7 @@ var/list/global/tank_gauge_cache = list()
 	throw_speed = 1
 	throw_range = 4
 
-	var/datum/gas_mixture/air_contents = null
+	var/datum/gas_mixture_old/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
 	var/integrity = 20
 	var/maxintegrity = 20
@@ -62,7 +62,7 @@ var/list/global/tank_gauge_cache = list()
 	START_PROCESSING(SSobj, src)
 
 	src.init_proxy()
-	src.air_contents = new /datum/gas_mixture()
+	src.air_contents = new /datum/gas_mixture_old()
 	src.air_contents.volume = volume //liters
 	src.air_contents.temperature = T20C
 	update_gauge()
@@ -330,7 +330,7 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/tank/return_air()
 	return air_contents
 
-/obj/item/tank/assume_air(datum/gas_mixture/giver)
+/obj/item/tank/assume_air(datum/gas_mixture_old/giver)
 	air_contents.merge(giver)
 
 	check_status()
@@ -495,7 +495,7 @@ var/list/global/tank_gauge_cache = list()
 			var/turf/simulated/T = get_turf(src)
 			if(!T)
 				return
-			var/datum/gas_mixture/environment = loc.return_air()
+			var/datum/gas_mixture_old/environment = loc.return_air()
 			var/env_pressure = environment.return_pressure()
 			var/tank_pressure = src.air_contents.return_pressure()
 
@@ -503,7 +503,7 @@ var/list/global/tank_gauge_cache = list()
 			if(tank_pressure)
 				release_ratio = CLAMP(0.002, sqrt(max(tank_pressure-env_pressure,0)/tank_pressure),1)
 
-			var/datum/gas_mixture/leaked_gas = air_contents.remove_ratio(release_ratio)
+			var/datum/gas_mixture_old/leaked_gas = air_contents.remove_ratio(release_ratio)
 			//dynamic air release based on ambient pressure
 
 			T.assume_air(leaked_gas)
