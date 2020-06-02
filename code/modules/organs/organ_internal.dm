@@ -20,7 +20,7 @@
 			owner.internal_organs -= null
 		var/obj/item/organ/external/E = owner.organs_by_name[parent_organ]
 		if(istype(E)) E.internal_organs -= src
-	return ..()
+	. = ..()
 
 /obj/item/organ/internal/remove_rejuv()
 	if(owner)

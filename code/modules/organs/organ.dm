@@ -43,12 +43,15 @@ var/list/organ_cache = list()
 	var/forgiving_class = TRUE	// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
 
 /obj/item/organ/Destroy()
-
 	handle_organ_mod_special(TRUE)
-	if(owner)           owner = null
-	if(transplant_data) transplant_data.Cut()
-	if(autopsy_data)    autopsy_data.Cut()
-	if(trace_chemicals) trace_chemicals.Cut()
+	if(owner)
+		owner = null
+	if(transplant_data)
+		transplant_data.Cut()
+	if(autopsy_data)
+		autopsy_data.Cut()
+	if(trace_chemicals)
+		trace_chemicals.Cut()
 	dna = null
 	species = null
 
@@ -57,8 +60,8 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/update_health()
 	return
 
-/obj/item/organ/New(var/mob/living/carbon/holder, var/internal)
-	..(holder)
+/obj/item/organ/Initialize(mob/living/carbon/holder, internal)
+	. = ..()
 	create_reagents(5)
 	if(!max_damage)
 		max_damage = min_broken_damage * 2
@@ -91,7 +94,7 @@ var/list/organ_cache = list()
 
 	handle_organ_mod_special()
 
-/obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/proc/set_dna(datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()
 		if(blood_DNA)

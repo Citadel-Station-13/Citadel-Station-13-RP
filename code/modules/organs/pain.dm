@@ -8,7 +8,7 @@ mob/var/next_pain_time = 0
 // message is the custom message to be displayed
 // power decides how much painkillers will stop the message
 // force means it ignores anti-spam timer
-mob/living/carbon/proc/custom_pain(message, power, force)
+/mob/living/carbon/proc/custom_pain(message, power, force)
 	if(!message || stat || !can_feel_pain() || chem_effects[CE_PAINKILLER] > power)
 		return 0
 	message = "<span class='danger'>[message]</span>"
@@ -18,10 +18,10 @@ mob/living/carbon/proc/custom_pain(message, power, force)
 	// Anti message spam checks
 	if(force || (message != last_pain_message) || (world.time >= next_pain_time))
 		last_pain_message = message
-		src << message
+		to_chat(src, message)
 	next_pain_time = world.time + (100-power)
 
-mob/living/carbon/human/proc/handle_pain()
+/mob/living/carbon/human/proc/handle_pain()
 	if(stat)
 		return
 
