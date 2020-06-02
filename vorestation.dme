@@ -95,6 +95,7 @@
 #include "code\__DEFINES\atmospherics\constants.dm"
 #include "code\__DEFINES\atmospherics\flags.dm"
 #include "code\__DEFINES\atmospherics\gas_strings.dm"
+#include "code\__DEFINES\atmospherics\helpers.dm"
 #include "code\__DEFINES\color\colour_priority.dm"
 #include "code\__DEFINES\color\interface.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"

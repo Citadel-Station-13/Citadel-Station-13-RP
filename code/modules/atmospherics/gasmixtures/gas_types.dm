@@ -18,6 +18,10 @@ GLOBAL_LIST_INIT(meta_gas_ids, meta_gas_id_list())
 GLOBAL_LIST_INIT(meta_gas_fusions, meta_gas_fusion_list())
 /// Gas ID to typepath conversion lookup for optimal speed.
 GLOBAL_LIST_INIT(meta_gas_id_lookup, meta_gas_id_lookup_list())
+/// Gas flags by gas
+GLOBAL_LIST_INIT(meta_gas_flags, meta_gas_flag_list())
+/// Gases by gas flag
+GLOBAL_LIST_INIT(meta_gas_by_lag, meta_gas_by_flag_list())
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -67,9 +71,27 @@ GLOBAL_LIST_INIT(meta_gas_id_lookup, meta_gas_id_lookup_list())
 
 /proc/meta_gas_id_lookup_list()
 	var/list/gases = subtypesof(/datum/gas)
-		for(var/gas_path in gases)
-			var/datum/gas/gas = gas_path
-			.[initial(gas.id)] = gas_path
+	. = list()
+	for(var/gas_path in gases)
+		var/datum/gas/gas = gas_path
+		.[initial(gas.id)] = gas_path
+
+/proc/meta_gas_flag_list()
+	. = subtypesof(/datum/gas)
+	for(var/gas_path in .)
+		var/datum/gas/gas = gas_path
+		.[gas_path] = initial(gas.flags)
+
+/proc/meta_gas_by_flag_list()
+	. = list()
+	// slightly more tricky
+	var/list/gases = subtypesof(/datum/gas)
+	// for each gas
+	for(var/gas_path in gases)
+		var/datum/gas/gas = gas_path
+		// for each bitfield
+		for(var/i in GLOB.bitflags)
+
 
 // Visual overlay
 /obj/effect/overlay/gas
