@@ -211,3 +211,8 @@
 	icon_state = "ntposter09"
 	name = "Regulations and You"
 	desc = "This poster showcases an NT security guard reading from her PDA. The blurb advocates for the reader to keep corporate regulations in mind at all times, as an emergency can occur at any time."
+
+/datum/poster/nanostrasen/ccc_1
+	icon_state = "cccposter01"
+	name = "The Lost Frontier"
+	desc = "This poster is a print of a famous paninting commissioned and most commonly used by the Cyan Consumables Corporation. The brass plate on the bottom lists the name of the piece, but the artist's signature has been defaced."

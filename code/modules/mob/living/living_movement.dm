@@ -1,3 +1,11 @@
+/mob/living/Moved()
+	. = ..()
+	//update_turf_movespeed(loc)
+	if(is_shifted)
+		is_shifted = FALSE
+		pixel_x = get_standard_pixel_x_offset(lying)
+		pixel_y = get_standard_pixel_y_offset(lying)
+
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
 	if(ismob(mover))
 		var/mob/moving_mob = mover
@@ -59,7 +67,7 @@
 	if(!(mobility_flags & MOBILITY_MOVE))
 		return FALSE
 */
-	if(!canmove)
+	if(stat != CONSCIOUS)
 		return FALSE
 	return ..()
 

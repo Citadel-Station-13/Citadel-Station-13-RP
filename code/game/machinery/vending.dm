@@ -13,7 +13,7 @@
 	var/icon_deny //Icon_state when denying access
 
 	// Power
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
@@ -785,14 +785,14 @@
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 10,/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10, /obj/item/reagent_containers/food/drinks/cans/grape_juice = 10,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10,
-					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 10)
+					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/reagent_containers/food/snacks/liquidfood = 6)
 	prices = list(/obj/item/reagent_containers/food/drinks/cans/cola = 1,/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 1,
 					/obj/item/reagent_containers/food/drinks/cans/dr_gibb = 1,/obj/item/reagent_containers/food/drinks/cans/starkist = 1,
 					/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,/obj/item/reagent_containers/food/drinks/cans/space_up = 1,
 					/obj/item/reagent_containers/food/drinks/cans/iced_tea = 1,/obj/item/reagent_containers/food/drinks/cans/grape_juice = 1,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 1, /obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1,
-					/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 1)
+					/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 1)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.
@@ -1021,7 +1021,8 @@
 	/obj/item/storage/toolbox/lunchbox/mars = 3,
 	/obj/item/storage/toolbox/lunchbox/cti = 3,
 	/obj/item/storage/toolbox/lunchbox/nymph = 3,
-	/obj/item/storage/toolbox/lunchbox/syndicate = 3)
+	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
+	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3)
 	contraband = list(/obj/item/material/knife/butch = 2)
 
 /obj/machinery/vending/sovietsoda
@@ -1161,7 +1162,8 @@
 					/obj/item/toy/plushie/face_hugger = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
-					/obj/item/toy/plushie/tabby_cat = 50)
+					/obj/item/toy/plushie/tabby_cat = 50,
+					/obj/item/toy/plushie/cyancowgirl = 50)
 
 /obj/machinery/vending/fishing
 	name = "Loot Trawler"
