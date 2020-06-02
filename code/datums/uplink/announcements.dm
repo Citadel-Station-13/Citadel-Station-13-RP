@@ -43,9 +43,9 @@
 	desc = "Creates a fake crew arrival announcement as well as fake crew records, using your current appearance (including held items!) and worn id card. Trigger with care!"
 	item_cost = 30
 
-/datum/uplink_item/abstract/announcements/fake_crew_arrival/get_goods(var/obj/item/uplink/U, var/loc, var/mob/user, var/list/args)
+/datum/uplink_item/abstract/announcements/fake_crew_arrival/get_goods(obj/item/uplink/U, loc, mob/user, list/args)
 	if(!user)
-		return 0
+		return FALSE
 
 	var/obj/item/card/id/I = user.GetIdCard()
 	var/datum/data/record/random_general_record
@@ -93,8 +93,11 @@
 		medical.fields["b_type"]	= I.blood_type
 		medical.fields["b_dna"]		= I.dna_hash
 
-	AnnounceArrivalSimple(general.fields["name"], general.fields["rank"])
-	return 1
+	if(!global_announcer) //null is bad, so just don't announce.
+		return TRUE
+	global_announcer.autosay("[general.fields["name"]], [general.fields["rank"]], will arrive at the station shortly.", "Arrivals Announcement Computer")
+	return TRUE
+
 
 /datum/uplink_item/abstract/announcements/fake_ion_storm
 	name = "Ion Storm Announcement"

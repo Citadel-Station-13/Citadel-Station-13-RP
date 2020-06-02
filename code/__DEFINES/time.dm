@@ -9,6 +9,7 @@
 #define TICKS *world.tick_lag
 
 // Compatability things
+// HEY! THIS MIGHT GET REMOVED SOON&trade;
 #define SECOND SECONDS
 #define MINUTE MINUTES
 #define HOUR HOURS
