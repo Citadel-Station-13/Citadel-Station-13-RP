@@ -5,7 +5,10 @@
 
 /area/tether/surfacebase
 	icon = 'icons/turf/areas_vr.dmi'
-
+//fUCK YOU I PUT SHIT WHERE I WANT
+/area/quartermaster/belterdock
+	name = "\improper Cargo Belter Access"
+	icon_state = "mining"
 
 /area/tether/surfacebase/outside
 	name = "Outside - Surface"

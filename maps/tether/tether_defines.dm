@@ -40,7 +40,10 @@
 #define Z_LEVEL_BEACH_CAVE					16
 #define Z_LEVEL_AEROSTAT					17
 #define Z_LEVEL_AEROSTAT_SURFACE			18
-
+#define Z_LEVEL_ROGUEMINE_1					19
+#define Z_LEVEL_ROGUEMINE_2					20
+#define Z_LEVEL_ROGUEMINE_3					21
+#define Z_LEVEL_ROGUEMINE_4					22
 //Camera networks
 #define NETWORK_TETHER "Tether"
 #define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
@@ -139,11 +142,19 @@
 		/area/tether/surfacebase/emergency_storage/rnd,
 		/area/tether/surfacebase/emergency_storage/atrium)
 
+
+	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
+	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2,
+						 	 	 Z_LEVEL_ROGUEMINE_3,
+								 Z_LEVEL_ROGUEMINE_4)
 	lateload_z_levels = list(
 		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
 		list("Alien Ship - Z1 Ship"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
+		list("ZAsteroid Belt 1","ZAsteroid Belt 2","ZAsteroid Belt 3","ZAsteroid Belt 4")
 	)
 
 	ai_shell_restricted = TRUE
