@@ -286,7 +286,7 @@
 
 /datum/category_item/player_setup_item/proc/get_max_age()
 	var/datum/species/S = all_species[pref.species ? pref.species : "Human"]
-	if(!is_FBP())
+	if(!is_FBP() && S) //null pointer exempts
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()
 	switch(FBP_type)
