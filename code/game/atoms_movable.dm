@@ -21,6 +21,8 @@
 	var/inertia_next_move = 0
 	/// Delay between each drifting move.
 	var/inertia_move_delay = 5
+	/// Pass flags.
+	//var/pass_flags = NONE
 	/// Movement types, see __DEFINES/flags/movement.dm
 	var/movement_type = GROUND
 	/// The orbiter component of the thing we're orbiting.
@@ -28,7 +30,7 @@
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
-	var/anchored = 0
+	var/anchored = FALSE
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
@@ -50,9 +52,7 @@
 
 /atom/movable/Destroy()
 	. = ..()
-	if(reagents)
-		qdel(reagents)
-		reagents = null
+	//reagents gets deleted by atoms already.
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	var/turf/un_opaque

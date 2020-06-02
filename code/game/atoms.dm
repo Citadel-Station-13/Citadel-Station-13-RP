@@ -1,50 +1,92 @@
 /atom
-	layer = TURF_LAYER //This was here when I got here. Why though?
+	layer = TURF_LAYER
+	//plane = GAME_PLANE
 	var/level = 2
-	var/flags = NONE
-	var/list/fingerprints
-	var/list/fingerprintshidden
-	var/fingerprintslast = null
-	var/list/blood_DNA
-	var/was_bloodied
-	var/blood_color
-	var/last_bumped = 0
-	var/pass_flags = NONE
-	var/throwpass = 0
-	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
-	var/simulated = 1 //filter for actions - used by lighting overlays
-	var/fluorescent // Shows up under a UV light.
+	var/article  // If non-null, overrides a/an/some in all cases
+
+	var/flags = NONE // We're still using flag_0
+//	var/interaction_flags_atom = NONE
+	var/datum/reagents/reagents = null
+	
+	/*
+	//This atom's HUD (med/sec, etc) images. Associative list.
+	var/list/image/hud_list = null
+	//HUD images that this atom can provide.
+	var/list/hud_possible
+	*/
+
+	//Value used to increment ex_act() if reactionary_explosions is on
+	//var/explosion_block = FALSE
 
 	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
-
-	/// The orbiter comopnent if we're being orbited.
-	var/datum/component/orbiter/orbiters
-	///Chemistry.
-	var/datum/reagents/reagents = null
-
-	//var/chem_is_open_container = 0
-	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	///Chemistry.
-
-/*		New overlay system
+	/*
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 	var/list/remove_overlays // a very temporary list of overlays to remove
 	var/list/add_overlays // a very temporary list of overlays to add
 
 	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
-*/
+	///overlays managed by update_overlays() to prevent removing overlays that weren't added by the same proc
+	var/list/managed_overlays
+	*/
+	//var/datum/proximity_monitor/proximity_monitor
+	var/fingerprintslast
+	/*
+	var/list/filter_data //For handling persistent filters
+
+	var/custom_price
+	var/custom_premium_price
+	*/
+	var/datum/component/orbiter/orbiters
+	/*
+	var/rad_flags = NONE // Will move to flags_1 when i can be arsed to
+	var/rad_insulation = RAD_NO_INSULATION
+	
+	///The custom materials this atom is made of, used by a lot of things like furniture, walls, and floors (if I finish the functionality, that is.)
+	var/list/custom_materials
+	///Bitfield for how the atom handles materials.
+	var/material_flags = NONE
+	///Modifier that raises/lowers the effect of the amount of a material, prevents small and easy to get items from being death machines.
+	var/material_modifier = 1
+	*/
+	//var/datum/wires/wires = null
+
+	//var/icon/blood_splatter_icon
+	var/list/fingerprints
+	var/list/fingerprintshidden
+	var/list/blood_DNA
+	//var/list/suit_fibers
+	/* Runechat
+	/// Last name used to calculate a color for the chatmessage overlays
+	var/chat_color_name
+	/// Last color calculated for the the chatmessage overlays
+	var/chat_color
+	/// A luminescence-shifted value of the last color calculated for chatmessage overlays
+	var/chat_color_darkened
+	*/
+
+	//Vorestation specific vars
+	var/was_bloodied
+	var/blood_color
+	var/last_bumped = 0
+	var/pass_flags = NONE //movable moves, however normal atmos don't
+	var/throwpass = 0
+	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
+	var/simulated = 1 //filter for actions - used by lighting overlays
+	var/fluorescent // Shows up under a UV light.
+
+	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
+	//var/chem_is_open_container = 0
 
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
 
-	// Overlays
+	// Old Overlays
 	var/list/our_overlays	//our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
 	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 
 /atom/New(loc, ...)
-	// During dynamic mapload (reader.dm) this assigns the var overrides from the .dmm file
-	// Native BYOND maploading sets those vars before invoking New(), by doing this FIRST we come as close to that behavior as we can.
+	//atom creation method that preloads variables at creation
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		world.preloader_load(src)
 
@@ -57,23 +99,18 @@
 		if(SSatoms.InitAtom(src, args))
 			//we were deleted
 			return
-	// Don't call ..() unless /datum/New() ever exists
 
-	// Uncomment if anything ever uses the return value of SSatoms.InitializeAtoms ~Leshana
-	// If a map is being loaded, it might want to know about newly created objects so they can be handled.
-	// var/list/created = SSatoms.created_atoms
-	// if(created)
-	// 	created += src
+//Called after New if the map is being loaded. mapload = TRUE
+//Called from base of New if the map is not being loaded. mapload = FALSE
+//This base must be called or derivatives must set initialized to TRUE
+//must not sleep
+//Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
+//Must return an Initialize hint. Defined in __DEFINES/subsystems.dm
 
-// Note: I removed "auto_init" feature (letting types disable auto-init) since it shouldn't be needed anymore.
-// 	You can replicate the same by checking the value of the first parameter to initialize() ~Leshana
+//Note: the following functions don't call the base for optimization and must copypasta:
+// /turf/Initialize
+// /turf/open/space/Initialize
 
-// Called after New if the map is being loaded, with mapload = TRUE
-// Called from base of New if the map is not being loaded, with mapload = FALSE
-// This base must be called or derivatives must set initialized to TRUE
-// Must not sleep!
-// Other parameters are passed from New (excluding loc), this does not happen if mapload is TRUE
-// Must return an Initialize hint. Defined in code/__defines/subsystems.dm
 /atom/proc/Initialize(mapload, ...)
 	if(flags & INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -83,20 +120,24 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-/*
 	if (light_power && light_range)
 		update_light()
 
 	if (opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
-*/
 
 /*
 	if (canSmoothWith)
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
 */
-
+/*
+	var/temp_list = list()
+	for(var/i in custom_materials)
+		temp_list[SSmaterials.GetMaterialRef(i)] = custom_materials[i] //Get the proper instanced version
+	custom_materials = null //Null the list to prepare for applying the materials properly
+	set_custom_materials(temp_list)
+*/
 	ComponentInitialize()
 
 	return INITIALIZE_HINT_NORMAL
@@ -108,6 +149,23 @@
 // Put your AddComponent() calls here
 /atom/proc/ComponentInitialize()
 	return
+
+/atom/Destroy()
+	/*
+	if(alternate_appearances)
+		for(var/K in alternate_appearances)
+			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+			AA.remove_from_hud(src)
+	*/
+	if(reagents)
+		qdel(reagents)
+
+	//LAZYCLEARLIST(overlays)
+	//LAZYCLEARLIST(priority_overlays)
+
+	QDEL_NULL(light)
+
+	return ..()
 
 /atom/proc/reveal_blood()
 	return

@@ -42,7 +42,7 @@
 			light.update(.)
 		else
 			light = new /datum/light_source(src, .)
-
+/*
 /atom/New()
 	. = ..()
 
@@ -52,13 +52,14 @@
 	if(opacity && isturf(loc))
 		var/turf/T = loc
 		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
-
+*/
+/*
 /atom/Destroy()
 	if(light)
 		light.destroy()
 		light = null
-	return ..()
-
+	. = ..()
+*/
 /atom/movable/Destroy()
 	var/turf/T = loc
 	if(opacity && istype(T))
