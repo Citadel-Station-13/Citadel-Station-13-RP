@@ -2,6 +2,15 @@
 // An asteroid object, could be spawned in, or not
 // May or may not include phat lewt
 //////////////////////////////
+/turf/simulated/mineral/vacuum
+	oxygen = 0
+	nitrogen = 0
+	temperature	= TCMB
+
+/turf/simulated/mineral/floor/vacuum
+	oxygen = 0
+	nitrogen = 0
+	temperature	= TCMB
 
 /datum/rogue/asteroid
 	//Composition
