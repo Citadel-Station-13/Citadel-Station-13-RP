@@ -89,9 +89,14 @@ GLOBAL_LIST_INIT(meta_gas_by_lag, meta_gas_by_flag_list())
 	// for each gas
 	for(var/gas_path in gases)
 		var/datum/gas/gas = gas_path
+		// cache flags
+		var/gas_flags = initial(gas.gas_flags)
 		// for each bitfield
 		for(var/i in GLOB.bitflags)
-
+			// if we have it
+			if(gas_flags & i)
+				// add to list
+				LAZYADD(.["[i]"], gas_path)
 
 // Visual overlay
 /obj/effect/overlay/gas
