@@ -3239,6 +3239,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
+/obj/item/book/manual/the_humanized_mice,
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "ff" = (
