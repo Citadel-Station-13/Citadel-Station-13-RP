@@ -1,5 +1,8 @@
 
-
+#define Z_LEVEL_ROGUEMINE_1					19
+#define Z_LEVEL_ROGUEMINE_2					20
+#define Z_LEVEL_ROGUEMINE_3					21
+#define Z_LEVEL_ROGUEMINE_4					22
 
 /datum/map_template/tether_lateload/tether_roguemines1
 	name = "ZAsteroid Belt 1"
