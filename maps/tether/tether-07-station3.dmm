@@ -28024,12 +28024,25 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "St" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
+/obj/machinery/door/airlock/glass_external{
+	frequency = 2020;
+	icon_state = "door_locked";
+	id_tag = "belt_dock_exterior";
+	locked = 1;
+	name = "Docking Port Airlock";
+	req_one_access = list(48)
 	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/belter/station)
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 2020;
+	master_tag = "belt_dock";
+	name = "exterior access button";
+	pixel_x = 32;
+	pixel_y = 0;
+	req_access = list(18)
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "Su" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/standard_operating_procedure,
@@ -28240,6 +28253,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
+"SN" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/belter/station)
 "SO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/airlock/glass_external{
@@ -28273,25 +28293,6 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/belter/station)
-"SQ" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 2020;
-	icon_state = "door_locked";
-	id_tag = "belt_dock_exterior";
-	locked = 1;
-	name = "Docking Port Airlock"
-	},
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 2020;
-	master_tag = "belt_dock";
-	name = "exterior access button";
-	pixel_x = 32;
-	pixel_y = 0;
-	req_access = list(18)
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/belterdock)
 "SR" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 4
@@ -42324,9 +42325,9 @@ ab
 ab
 aa
 Sl
-St
-St
-St
+SN
+SN
+SN
 Sx
 aa
 ab
@@ -42890,7 +42891,7 @@ Sy
 SL
 SO
 Sz
-SQ
+St
 Sd
 SF
 SR
