@@ -112,7 +112,7 @@
 	force = 12
 	throwforce = 15 //Discount shuriken.
 	icon_state = "icepick"
-	item_state = "icepick"
+	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
 	matter = list(DEFAULT_WALL_MATERIAL = 2750, "titanium" = 2000) //Titanium pick. Fancy. Only way to ge titanium reliably.
 	digspeed = 15 //More expensive than a diamond pick, a lot smaller but decently slower.
