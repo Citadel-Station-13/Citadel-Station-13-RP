@@ -83,6 +83,41 @@
 		T.air_zone = src
 	qdel(other, TRUE, TRUE)
 
+/**
+  * "Gives" a turf to another zone, updating our volume and transferring air logically on the turf accordingly.
+  *
+  * @params
+  * * turf/T - turf to give
+  * * datum/gas_mixture/turf/zone/other - Zone to transfer to
+  * * transfer_air - Defaults to TRUE. If false, air that would logically be on the turf is not transferred, and is instead kept. This is probably not what you want.
+  */
+/datum/gas_mixture/turf/zone/proc/give_tile_to_other(turf/T, datum/gas_mixture/turf/zone/other, transfer_air = TRUE)
+	// transfer air if necessary
+	if(transfer_air)
+		other.merge(remove_ratio(CELL_VOLUME / volume))
+	// then transfer turf
+	turfs -= T
+	other.turfs += T
+	// then update volumes
+	other.volume += CELL_VOLUME
+	volume -= CELL_VOLUME
+	// call turf updates as necessary
+	T.update_air_graphics()
+
+/**
+  * Removes a turf from us.
+  *
+  * @params
+  * * turf/T - turf to give
+  * * keep_air - Defaults to FALSE. If true, we will keep the air that was on the turf instead of destroying it. This is probably not what you want.
+  */
+/datum/gas_mixture/turf/zone/proc/remove_turf(turf/T, keep_air)
+	if(!keep_air)
+		remove_ratio(CELL_VOLUME / volume)
+	turfs -= T
+	volume -= CELL_VOLUME
+	T.update_air_graphics()
+
 /*
 
 Overview:

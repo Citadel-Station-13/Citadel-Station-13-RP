@@ -1,7 +1,10 @@
 /turf
 	/// ZAS air zone it's currently in
 	var/datum/gas_mixture/turf/zone/air_zone
-
+	/// Air status. See [__DEFINES/atmospherics/air_status.dm]
+	var/air_status = AIR_STATUS_BLOCK
+	/// Air flags. See [__DEFINES/atmospherics/flags.dm]
+	var/air_flags = NONE
 
 
 

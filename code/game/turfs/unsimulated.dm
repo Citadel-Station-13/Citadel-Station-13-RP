@@ -1,7 +1,9 @@
 /turf/unsimulated
 	name = "command"
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
+
+	air_status = AIR_STATUS_IMMUTABLE
+
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/Initialize(mapload)
 	flags |= INITIALIZED
@@ -17,6 +19,7 @@
 /turf/unsimulated/fake_space/New()
 	..()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+
 //VOREStation Add End
 
 // Better nip this just in case.

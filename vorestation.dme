@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "__DEFINES\atmospherics\air_status.dm"
 #include "code\_away_mission_tests.dm"
 #include "code\_macros.dm"
 #include "code\_map_tests.dm"
@@ -1624,7 +1625,7 @@
 #include "code\modules\atmospherics\zas\Connection.dm"
 #include "code\modules\atmospherics\zas\ConnectionManager.dm"
 #include "code\modules\atmospherics\zas\Controller.dm"
-#include "code\modules\atmospherics\zas\Debug.dm"
+#include "code\modules\atmospherics\zas\debug.dm"
 #include "code\modules\atmospherics\zas\Diagnostic.dm"
 #include "code\modules\atmospherics\zas\edge.dm"
 #include "code\modules\atmospherics\zas\Fire.dm"
