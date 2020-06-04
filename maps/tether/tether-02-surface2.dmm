@@ -19291,6 +19291,7 @@
 /obj/effect/floor_decal/corner/lime/border{
 	dir = 9
 	},
+/obj/item/paicard,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_two)
 "Xk" = (
