@@ -199,6 +199,9 @@
 
 	return ..()
 
+/obj/machinery/power/apc/get_cell()
+	return cell
+
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
 	..()
