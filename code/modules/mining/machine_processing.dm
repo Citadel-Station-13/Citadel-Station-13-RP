@@ -198,6 +198,11 @@
 			ore_data[OD.name] = OD
 			ores_processing[OD.name] = 0
 			ores_stored[OD.name] = 0
+	else
+		for(var/oretype in typesof(/datum/ore)-/datum/ore)
+			var/datum/ore/OD = new oretype()
+			ores_processing[OD.name] = 0
+			ores_stored[OD.name] = 0
 
 /obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
